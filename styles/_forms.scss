@@ -1,0 +1,103 @@
+/***** Forms *****/
+
+.form {
+  max-width: 650px;
+}
+
+.form-field ~ .form-field {
+  margin-top: 25px;
+}
+
+.form-field label {
+  display: block;
+  font-size: $font-size-small;
+  margin-bottom: 5px;
+}
+
+.form-field input {
+  border: 1px solid $border-color;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+
+  &:focus { border: 1px solid $accent-color; }
+}
+
+.form-field input[type="text"] {
+  border: 1px solid $border-color;
+  border-radius: 4px;
+
+  &:focus { border: 1px solid $accent-color; }
+}
+
+.form-field input[type="checkbox"] {
+  width: auto;
+}
+
+// Select box
+.form-field .nesty-input {
+  border-radius: 4px;
+  height: 40px;
+  line-height: 40px;
+  outline: none;
+  vertical-align: middle;
+
+  &:focus {
+    border: 1px solid $accent-color;
+    text-decoration: none;
+  }
+}
+
+.form-field textarea {
+  vertical-align: middle;
+}
+
+.form-field input[type="checkbox"] + label {
+  margin: 0 0 0 10px;
+}
+
+.form-field.required > label::after {
+  content: "*";
+  color: #f00;
+  margin-left: 2px;
+}
+
+.form-field p {
+  color: $secondary-text-color;
+  font-size: 12px;
+  margin: 5px 0;
+}
+
+[data-loading="true"] input,
+[data-loading="true"] textarea {
+  background: transparent url("/hc/assets/loader.gif") 99% 50% no-repeat;
+  background-size: 16px 16px;
+}
+
+.form footer {
+  margin-top: 40px;
+  padding-top: 30px;
+}
+
+.form footer a {
+  color: $secondary-text-color;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.form .suggestion-list {
+  font-size: $font-size-small;
+  margin-top: 30px;
+
+  label {
+    border-bottom: 1px solid $border-color;
+    display: block;
+    padding-bottom: 5px;
+  }
+
+  li {
+    padding: 10px 0;
+
+    a:visited { color: $visited-link-color; }
+  }
+}

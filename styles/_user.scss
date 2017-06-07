@@ -1,0 +1,76 @@
+/***** User info in header *****/
+.user-info {
+  display: inline-block;
+
+  .dropdown-toggle::after {
+    @include tablet { display: inline-block;}
+    display: none;
+  }
+
+  > [role="button"] {
+    border: 0;
+    color: $link-color;
+    min-width: 0;
+    padding: 0;
+    white-space: nowrap;
+
+    &:hover {
+      color: $link-color;
+      background-color: transparent;
+    }
+
+    &::after {
+      color: $link-color;
+      padding-right: 15px;
+
+      [dir="rtl"] & {
+        padding-left: 15px;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+// Selector is this strong to override the styles set with ids
+#user #user-name {
+  @include tablet { display: inline-block; }
+  display: none;
+  font-size: 14px;
+
+  &:hover { text-decoration: underline; }
+}
+
+/***** User avatar *****/
+.user-avatar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.avatar {
+  display: inline-block;
+  position: relative;
+
+  img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .icon-agent::before {
+    background-color: $accent-color;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    bottom: -4px;
+    color: $accent-color-hover-text;
+    content: "\1F464";
+    font-size: 14px;
+    height: 14px;
+    line-height: 14px;
+    position: absolute;
+    right: -2px;
+    text-align: center;
+    width: 14px;
+  }
+}

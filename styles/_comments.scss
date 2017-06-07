@@ -1,0 +1,162 @@
+/***** Comments *****/
+/* Styles comments inside articles, posts and requests */
+.comment {
+  border-bottom: 1px solid $border-color;
+  padding: 20px 0;
+
+  &-heading {
+    margin-bottom: 5px;
+    margin-top: 0;
+  }
+
+  &-overview {
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    padding: 20px 0;
+
+    p { margin-top: 0; }
+  }
+
+  &-callout {
+    color: $secondary-text-color;
+    display: inline-block;
+    font-weight: $font-weight-light;
+    font-size: $font-size-small;
+    margin-bottom: 0;
+
+    a { color: $accent-color; }
+  }
+
+
+  &-sorter {
+    display: inline-block;
+    float: right;
+
+    a {
+      color: $secondary-text-color;
+      font-weight: $font-weight-light;
+      font-size: $font-size-small;
+      text-decoration: none;
+    }
+
+    [dir="rtl"] & {
+      float: left;
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &.comment-official {
+      @include tablet { padding-top: 20px; }
+
+      border: 1px solid $accent-color;
+      padding: 40px 20px 20px; // 20 + 20 of official commment badge
+    }
+  }
+
+  &-info {
+    min-width: 0;
+    padding-right: 20px;
+    width: 100%;
+
+    [dir="rtl"] & {
+      padding-right: 0;
+      padding-left: 20px;
+    }
+  }
+
+  &-author {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+
+    @include tablet { justify-content: space-between; }
+  }
+
+  &-avatar {
+    margin-right: 10px;
+
+    [dir="rtl"] & {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+  }
+
+  &-meta {
+    flex: 1 0 auto;
+  }
+
+  &-labels {
+    flex-basis: 100%;
+
+    @include tablet {
+      flex-basis: auto;
+    }
+  }
+
+  .status-label:not(.status-label-official) {
+    margin-top: 10px;
+
+    @include tablet { margin-top: 0; }
+  }
+
+  &-form {
+    display: flex;
+    padding-top: 30px;
+    word-wrap: break-word;
+  }
+
+  &-container { width: 100%; }
+
+  &-form-controls {
+    @include tablet {
+      [dir="ltr"] & {
+        text-align: right;
+      }
+    }
+    display: none;
+    margin-top: 10px;
+    text-align: left;
+
+    input[type="submit"] {
+      @include desktop {
+        margin-left: 15px;
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: 15px;
+        }
+      }
+      margin-top: 15px;
+    }
+
+    input[type="checkbox"] {
+      margin-right: 5px;
+
+      [dir="rtl"] { margin-left: 5px; }
+    }
+  }
+
+  &-ccs { display: none; }
+  &-ccs + textarea { margin-top: 10px; }
+
+  &-attachments {
+    margin-top: 10px;
+
+    a { color: $accent-color; }
+  }
+
+  &-body {
+    @include text-overflow;
+    @include content-body;
+    font-family: $font-family-content;
+    line-height: 1.6;
+  }
+
+  &-mark-as-solved {
+    display: inline-block;
+  }
+}

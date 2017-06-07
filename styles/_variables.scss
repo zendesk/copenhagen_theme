@@ -1,0 +1,45 @@
+// Variables
+
+// Colors
+$accent-color: #0072ef !default;
+$accent-color-hover-text: #fff !default; //Color for text with an accent color background
+$text-color: #333 !default;
+$link-color: #0072ef !default;
+$background-color: #fff !default;
+
+$visited-link-color: zass-darken($link-color, 20%);
+$hover-button-color: zass-darken($accent-color, 20%);
+$secondary-text-color: zass-lighten($text-color, 20%);
+
+$primary-shade: zass-darken($background-color, 3%); //#f8f8f8 for the default background-color
+$secondary-shade: zass-darken($background-color, 5%); //#f2f2f2 for the default background-color
+
+$font-size-bigger: 16px;
+$font-size-base: 15px;
+$font-size-navigation: 14px;
+$font-size-small: 13px;
+$font-size-smaller: 11px;
+
+$border-color: #ddd;
+
+$button-color: $accent-color;
+
+$input-font-size: 14px;
+$field-text-color: #999;
+$field-text-focus-color: #555;
+
+$home-search-background-image: "/hc/assets/homepage_background_image.svg" !default;
+$home-community-background-image: "/hc/assets/community_background_image.svg" !default;
+$home-community-image: "/hc/assets/community_image.svg" !default;
+
+// Breakpoints variables
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$max-width-container: 1160px;
+
+// Fonts
+$font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
+$font-family-content: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
+$font-weight-base: 400;
+$font-weight-light: 300;
+$font-weight-semibold: 600;

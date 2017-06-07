@@ -1,0 +1,137 @@
+/***** Community *****/
+.community {
+  &-hero {
+    background-image: url($home-community-background-image);
+    margin-bottom: 10px;
+  }
+
+  &-footer {
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  &-featured-posts,
+  &-activity {
+    padding-top: 40px;
+    width: 100%;
+  }
+
+  &-header {
+    margin-bottom: 30px;
+
+    h4 { margin-bottom: 0; }
+  }
+}
+
+.post-to-community {
+  @include tablet { margin: 0; }
+  margin-top: 10px;
+}
+
+/* Community topics grid */
+.topics {
+  max-width: none;
+  width: 100%;
+
+  &-item {
+    .meta-group {
+      justify-content: center;
+      margin-top: 20px;
+    }
+  }
+}
+
+/* Community topic page */
+
+.topic-header {
+  @include tablet { padding-bottom: 10px; }
+  border-bottom: 1px solid $border-color;
+  font-size: $font-size-small;
+
+  .dropdown {
+    @include tablet {
+      border-top: 0;
+      display: inline-block;
+      margin-right: 20px;
+      padding: 0;
+    }
+
+    display: block;
+    border-top: 1px solid $border-color;
+    padding: 10px 0;
+  }
+}
+
+.no-posts-with-filter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Topic, post and user follow button */
+.community-follow {
+  @include tablet {
+    margin-bottom: 0;
+    width: auto;
+  }
+
+  margin-bottom: 10px;
+  width: 100%;
+
+  .dropdown {
+    width: 100%;
+  }
+
+  [role="button"] {
+    @include tablet { width: auto;}
+
+    line-height: 30px;
+    padding: 0 10px 0 15px;
+    position: relative;
+    width: 100%;
+
+    &:hover { background-color: $accent-color; }
+
+    &:hover::after, &:focus::after {
+      border-color: $accent-color-hover-text;
+      color: $accent-color-hover-text;
+    }
+
+    &[aria-selected="true"] {
+      background-color: $accent-color;
+      color: $accent-color-hover-text;
+
+      &::after {
+        border-left: 1px solid $accent-color-hover-text;
+        color: $accent-color-hover-text;
+      }
+
+      &:hover {
+        background-color: $hover-button-color;
+        border-color: $hover-button-color;
+      }
+    }
+
+    &::after {
+      @include tablet {
+        position: static;
+      }
+
+      border-left: 1px solid $button-color;
+      content: attr(data-follower-count);
+      color: $button-color;
+      display: inline-block;
+      font-family: $font-family;
+      margin-left: 15px;
+      padding-left: 10px;
+      position: absolute;
+      right: 10px;
+
+      [dir="rtl"] & {
+        border-left: 0;
+        border-right: 1px solid $button-color;
+        margin: 0 10px 0 0;
+        padding: 0 10px 0 0;
+      }
+    }
+  }
+}

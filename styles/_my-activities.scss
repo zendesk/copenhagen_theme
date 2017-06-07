@@ -1,0 +1,251 @@
+/***** My activities *****/
+.my-activities {
+  &-nav {
+    background-color: $secondary-shade;
+    border: 0;
+    margin-bottom: 20px;
+  }
+
+  &-sub-nav {
+    @include tablet {
+      li:hover { border-bottom: 4px solid #ddd; }
+    }
+
+    background-color: transparent;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 30px;
+
+    li[aria-selected="true"] { border-color: $accent-color; }
+  }
+
+  &-table {
+    .striped-list-title { /* My activities tables */
+      @include desktop {
+        margin-bottom: 0;
+        max-width: 500px;
+        min-width: 350px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      display: block;
+      margin-bottom: 10px;
+      max-width: 350px;
+      white-space: normal;
+    }
+
+    thead {
+      @include tablet { display: table-header-group; }
+      display: none;
+    }
+
+    th:first-child,
+    td:first-child {
+      @include desktop { width: 500px; }
+      padding-left: 0;
+    }
+
+    th:last-child,
+    td:last-child {
+      padding-right: 0;
+    }
+
+    // On mobile, only show the first column
+    td:not(:first-child) {
+      @include tablet { display: table-cell; }
+
+      display: none;
+    }
+  }
+}
+
+/* Requests table */
+.requests {
+  &-search {
+    width: 100%;
+  }
+
+  &-table-toolbar {
+    @include tablet {
+      flex-direction: row;
+    }
+
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+
+    .search {
+      flex: 1;
+      width: 100%;
+    }
+
+    .request-table-filter {
+      @include tablet {
+        width: auto;
+      }
+
+      width: 100%;
+    }
+
+    .request-filter {
+      @include tablet {
+        margin: 0 0 0 30px;
+        [dir="rtl"] & { margin: 0 30px 0 0; }
+      }
+
+      display: block;
+    }
+
+    .request-filter-label {
+      @include tablet {
+        margin-top: 0;
+      }
+
+      font-size: $font-size-small;
+      margin-top: 30px;
+    }
+
+    select {
+      @include tablet {
+        margin-bottom: 0;
+        max-width: 300px;
+        width: auto;
+      }
+
+      max-height: 40px;
+      margin-bottom: 30px;
+      width: 100%;
+    }
+
+    .organization-subscribe,
+    .organization-unsubscribe {
+      @include tablet {
+        margin-left: 10px;
+        [dir="rtl"] & { margin: 0 10px 0 0; }
+      }
+
+      line-height: 40px;
+      max-height: 40px;
+      padding: 0 20px;
+    }
+
+    .organization-unsubscribe {
+      background-color: $button-color;
+      color: $accent-color-hover-text;
+    }
+
+    & + .requests-search-info {
+      margin-top: 15px;
+
+      &.meta-data::after {
+        content: "";
+        margin: 0;
+      }
+
+      & + .requests {
+        margin-top: 20px;
+      }
+    }
+
+    & + .requests {
+      margin-top: 40px;
+    }
+  }
+
+  .requests-table {
+    &-meta {
+      @include tablet {
+        display: none;
+      }
+
+      display: block;
+    }
+
+    thead {
+      @include tablet { display: table-header-group; }
+      display: none;
+    }
+
+    &-info {
+      @include tablet {
+        display: table-cell;
+        vertical-align: middle;
+        width: auto;
+      }
+
+      display: block;
+    }
+
+    .requests-link {
+      position: relative;
+    }
+
+    .requests-sort-symbol {
+      position: absolute;
+      left: calc(100% + 3px);
+      bottom: 0;
+      font-size: 10px;
+    }
+  }
+}
+
+/* Following table */
+.subscriptions {
+  &-unsubscribe a {
+    @include tablet { width: auto; }
+
+    background: $button-color;
+    border-radius: 4px;
+    color: $accent-color-hover-text;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 2.34; //Taken from Zendesk garden bedrock
+    padding: 0 20px;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+      background-color: $hover-button-color;
+      text-decoration: none;
+    }
+  }
+
+  &-table {
+    td:last-child {
+      @include tablet { display: table-cell; }
+      display: block;
+    }
+
+    td:first-child {
+      display: flex;
+      align-items: center;
+    }
+
+    .user-avatar {
+      margin-right: 10px;
+    }
+  }
+
+  .striped-list-title {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+/* Contributions table */
+.contributions-table {
+  td:last-child {
+    @include tablet {
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    color: $secondary-text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+  }
+}
+
+.no-activities { color: $secondary-text-color; }

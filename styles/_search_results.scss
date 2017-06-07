@@ -1,0 +1,88 @@
+/***** Search results *****/
+.search-results {
+  @include desktop {
+    flex-direction: row;
+  }
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  &-column {
+    @include desktop {
+      flex: 0 0 45%;
+    }
+
+    flex: 1;
+  }
+
+  &-list {
+    margin-bottom: 25px;
+    > li {
+      border-bottom: 1px solid $border-color;
+      padding: 20px 0;
+      &:first-child {
+        border-top: 1px solid $border-color;
+      }
+    }
+  }
+}
+
+.search-result {
+
+  &-description {
+    margin-top: 15px;
+  }
+
+  &-votes,
+  &-meta-count {
+    color: $secondary-text-color;
+    display: inline-block;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+    padding: 4px 5px;
+    position: relative;
+
+    &::before {
+      @extend .icon;
+      color: $accent-color;
+    }
+
+    [dir="ltr"] & {
+      margin-left: 5px;
+      &::before {
+        margin-right: 3px;
+      }
+    }
+
+    [dir="rtl"] & {
+      margin-right: 5px;
+      &::before {
+        margin-left: 3px;
+      }
+    }
+  }
+
+  &-votes::before {
+    content: "\1F44D";
+  }
+
+  &-meta-count::before {
+    content: "\1F4AC";
+  }
+
+  .meta-group {
+    align-items: center;
+  }
+
+  &-breadcrumbs {
+    margin: 0;
+
+    li:last-child::after {
+       content: "·";
+       display: inline-block;
+       margin: 0 5px;
+    }
+  }
+}

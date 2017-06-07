@@ -1,0 +1,20 @@
+/***** Footer *****/
+.footer {
+  border-top: 1px solid $border-color;
+  margin-top: 60px;
+  padding: 30px 0;
+
+  a { color: $secondary-text-color; }
+
+  &-inner {
+    @include max-width-container;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-language-selector {
+    color: $secondary-text-color;
+    display: inline-block;
+    font-weight: $font-weight-light;
+  }
+}

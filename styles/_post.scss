@@ -1,0 +1,157 @@
+/***** Post *****/
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
+*/
+.post {
+  @include desktop {
+    flex: 1 0 70%;
+    max-width: 70%;
+  }
+
+  flex: 1;
+  margin-bottom: 10px;
+
+  &-container {
+    @include desktop {
+      flex-direction: row;
+    }
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-header {
+    @include tablet {
+      align-items: baseline;
+      flex-direction: row;
+    }
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .status-label { vertical-align: super; }
+  }
+
+  &-title {
+    @include tablet {
+      margin-bottom: 0;
+      padding-right: 10px;
+    }
+    margin-bottom: 20px;
+    width: 100%;
+
+    h1 {
+      @include tablet { margin-right: 5px; }
+      display: inline;
+      vertical-align: middle;
+    }
+  }
+
+  &-author {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-avatar {
+    margin-bottom: 30px;
+  }
+
+  &-content {
+    font-family: $font-family-content;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+  &-info-container {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+
+  &-info {
+    @include desktop { padding-right: 20px; }
+    flex: 1;
+
+    [dir="rtl"] & {
+      padding-left: 45px;
+      padding-right: 0;
+    }
+  }
+
+  &-meta {
+    display: inline-block;
+    flex: 1;
+    margin-left: 10px;
+    vertical-align: middle;
+
+    [dir="rtl"] & {
+      margin-left: 0;
+      margin-right: 10px;
+    }
+  }
+
+  &-body {
+    @include content-body;
+  }
+
+  &-footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+
+  &-comment-count {
+    color: $secondary-text-color;
+    font-weight: $font-weight-light;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    .icon-comments {
+      color: $accent-color;
+      content: "\1F4AC";
+      display: inline-block;
+      font-size: 18px;
+      padding: 5px;
+    }
+  }
+
+  &-sidebar {
+    @include desktop {
+      border: 0;
+      flex: 1 0 30%;
+      padding: 0 0 0 50px;
+      text-align: initial;
+
+      [dir="rtl"] & { padding: 0 50px 0 0; }
+    }
+
+    border-top: 1px solid $border-color;
+    flex: 1;
+    padding: 30px 0;
+    text-align: center;
+
+    h5 {
+      @include desktop {
+        border-bottom: 1px solid $border-color;
+        padding-bottom: 20px;
+      }
+
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  &-comments {
+    @include desktop { margin-bottom: 0; }
+    margin-bottom: 20px;
+  }
+}

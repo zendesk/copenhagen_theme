@@ -1,0 +1,48 @@
+/***** Social share links *****/
+
+.share {
+  padding: 0;
+  white-space: nowrap;
+}
+
+.share li, .share a {
+  display: inline-block;
+}
+
+.share a {
+  border-radius: 50%;
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  width: 25px;
+}
+
+.share a::before {
+  @extend .icon;
+  color: $secondary-text-color;
+  display: block;
+  font-size: 23px;
+  text-align: center;
+  width: 100%;
+}
+
+.share a:hover {
+  text-decoration: none;
+  &::before { color: $accent-color; }
+}
+
+.share-twitter::before {
+  content: "\e901";
+}
+
+.share-facebook::before {
+  content: "\e903";
+}
+
+.share-linkedin::before {
+  content: "\e900";
+}
+
+.share-googleplus::before {
+  content: "\e902";
+}

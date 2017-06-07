@@ -1,0 +1,18 @@
+/***** Section pages *****/
+.section {
+  &-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-content {
+    @include desktop {
+      flex: 0 0 80%;
+    }
+    flex: 1;
+  }
+
+  &-subscribe {
+    .dropdown-toggle::after { display: none; }
+  }
+}

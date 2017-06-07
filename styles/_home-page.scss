@@ -1,0 +1,75 @@
+/***** Homepage *****/
+
+.section {
+  @include tablet {
+    margin-bottom: 60px;
+  }
+
+  margin-bottom: 40px;
+}
+
+.section h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/***** Promoted articles *****/
+
+.promoted-articles {
+  @include desktop { flex-direction: row; }
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+
+  &-item {
+    @include desktop {
+      align-self: flex-end;
+      flex: 0 0 auto;
+      padding-right: 30px;
+      width: 33%; /* Three columns on desktop */
+
+      [dir="rtl"] & { padding: 0 0 0 30px; }
+    }
+
+    flex: 1 0 auto;
+
+    &:nth-child(3n) {
+      padding-right: 0;
+    }
+
+    a {
+      border-bottom: 1px solid $border-color;
+      color: $text-color;
+      display: block;
+      padding: 15px 0;
+    }
+
+    &:last-child a {
+      @include desktop {
+        border-bottom: 1px solid $border-color;
+      }
+
+      border: 0;
+    }
+  }
+
+}
+
+/***** Community section in homepage *****/
+.community {
+  text-align: center;
+
+  &-image {
+    min-height: 300px;
+    background-image: url($home-community-image);
+    background-position: center;
+    background-repeat: no-repeat;
+    max-width: 100%;
+  }
+}
+
+.community,
+.activity {
+  border-top: 1px solid $border-color;
+  padding: 30px 0;
+}

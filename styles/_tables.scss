@@ -1,0 +1,43 @@
+/***** Tables *****/
+.table {
+  @include tablet { table-layout: auto; }
+
+  width: 100%;
+  table-layout: fixed;
+
+  th,
+  th a {
+    color: $secondary-text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+    text-align: left;
+
+    [dir="rtl"] & { text-align: right; }
+  }
+
+  tr {
+    @include tablet { display: table-row; }
+
+    border-bottom: 1px solid $border-color;
+    display: block;
+    padding: 20px 0;
+  }
+
+  td {
+    @include tablet {
+      display: table-cell;
+    }
+
+    display: block;
+  }
+
+  td, th {
+    @include desktop {
+      padding: 20px 30px;
+    }
+    @include tablet {
+      padding: 10px 20px;
+      height: 60px;
+    }
+  }
+}

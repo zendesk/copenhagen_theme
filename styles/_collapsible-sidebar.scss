@@ -1,0 +1,39 @@
+/* Sidebar navigation that collapses on mobile */
+.collapsible-sidebar {
+  @include desktop {
+    max-height: none;
+    padding: 0;
+  }
+  flex: 1;
+  max-height: 45px;
+  overflow: hidden;
+  padding: 10px 0;
+  position: relative;
+
+  &[aria-expanded="true"] {
+    max-height: none;
+
+    .collapsible-sidebar-title::after {
+      @include desktop { display: none; }
+      content: "\2715";
+    }
+  }
+
+  &-title {
+    margin-top: 0;
+
+      &::after {
+      @extend .icon;
+      @include desktop { display: none; }
+      @include vertical-align;
+      content: "\25BE";
+      position: absolute;
+      right: 10px;
+
+      [dir="rtl"] & {
+        left: 10px;
+        right: auto;
+      }
+    }
+  }
+}

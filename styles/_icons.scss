@@ -1,0 +1,109 @@
+/***** Icons *****/
+
+[class^="icon-"]::before,
+[class*=" icon-"]::before,
+.icon {
+  font-family: "copenhagen-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  line-height: 1em;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-lock::before {
+  content: "\1F512";
+}
+
+.icon-star::before {
+  content: "\2605";
+}
+
+.icon-linkedin::before {
+  content: "\e900";
+}
+
+.icon-twitter::before {
+  content: "\e901";
+}
+
+.icon-googleplus-::before {
+  content: "\e902";
+}
+
+.icon-facebook::before {
+  content: "\e903";
+}
+
+.icon-agent::before {
+  content: "\1F464";
+}
+
+.icon-close::before {
+  content: "\2715";
+}
+
+.icon-arrow-up::before {
+  content: "\2B06";
+}
+
+.icon-arrow-down::before {
+  content: "\2B07";
+}
+
+.icon-attachments::before {
+  content: "\1F4CE";
+}
+
+.icon-comments::before {
+  content: "\1F4AC";
+}
+
+.icon-search::before {
+  content: "\1F50D";
+}
+
+.icon-vote::before {
+  content: "\1F44D";
+}
+
+.icon-handle::before {
+  content: "\25BE";
+}
+
+.icon-check::before {
+  content: "\2713";
+}
+
+.icon-gear::before {
+  content: "\2699";
+}
+
+.icon-menu::before {
+  content: "\2630";
+}
+
+.icon-article::before {
+  content: "\1F4C4";
+}
+
+.icon-post::before {
+  content: "\1F4D4";
+}
+
+.icon-notification-alert::before {
+  content: "\26A0";
+}
+
+.icon-notification-error::before {
+  content: "\00D7";
+}
+
+.icon-notification-info::before {
+  content: "\2139";
+}
+
+.icon-notification-success::before {
+  content: "\2714";
+}
