@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "settings": {
+    "color_1": "#0072ef",
+    "color_2": "#ffffff",
+    "color_3": "#333333",
+    "color_4": "#0072ef",
+    "color_5": "#ffffff",
+    "font_1": "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
+    "font_2": "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"
+  },
+  "features": ["community_v2"]
+}
