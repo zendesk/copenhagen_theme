@@ -1,0 +1,85 @@
+<section class="section hero community-hero">
+  <div class="hero-inner">
+    {{search submit=false class='search search-full' scoped=true}}
+  </div>
+</section>
+
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+  </nav>
+
+  <header class="page-header community-header">
+    <div class="page-header-item dropdown">
+      <div class="dropdown-toggle">
+        <h4>{{t 'community_topics'}}</h4>
+      </div>
+      <span class="dropdown-menu" role="menu">
+        {{#link 'topics' role='menuitem' selected='true'}}
+          {{t 'show_topics'}}
+        {{/link}}
+        {{#link 'posts' role='menuitem'}}
+          {{t 'show_all_posts'}}
+        {{/link}}
+      </span>
+    </div>
+    <span class="page-header-item post-to-community">
+      {{link 'new_post' role='button' class='button-large'}}
+    </span>
+  </header>
+
+  {{#unless topics}}
+    <p>{{t 'no_content'}}</p>
+  {{/unless}}
+
+  <div class="blocks topics">
+    <ul class="blocks-list topics-list">
+      {{#each topics}}
+        <li class="blocks-item topics-item {{#if internal}}blocks-item-internal{{/if}}">
+           <a href="{{url}}" class="blocks-item-link">
+             <h4 class="blocks-item-title">
+               {{name}}
+
+               {{#if internal}}
+                 <span class="icon-lock" title="{{t 'internal'}}"></span>
+               {{/if}}
+             </h4>
+             <p class="blocks-item-description">{{excerpt description}}</p>
+             <ul class="meta-group">
+               <li class="meta-data">{{t 'post_count' count=post_count}}</li>
+               <li class="meta-data">{{t 'follower_count' count=follower_count}}</li>
+             </ul>
+           </a>
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+
+  {{pagination}}
+
+  {{#if featured_posts}}
+    <section class="section community-featured-posts">
+      <h3>{{t 'featured_posts'}}</h3>
+      <ul class="promoted-articles">
+        {{#each featured_posts}}
+          <li class="promoted-articles-item">
+            <a href="{{url}}">
+              {{title}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  {{/if}}
+
+  <section class="community-activity activity">
+    {{#if help_center.community_enabled}}
+      {{recent_activity scope='community'}}
+    {{/if}}
+  </section>
+
+  <section class="container community-footer">
+    <h4>{{t 'suggest_new_post'}}</h4>
+    {{link 'new_post' role='button' class='button-large'}}
+  </section>
+</div>

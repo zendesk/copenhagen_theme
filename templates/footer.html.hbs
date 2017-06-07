@@ -1,0 +1,22 @@
+<footer class="footer">
+  <div class="footer-inner">
+    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+
+    <div class="footer-language-selector">
+      {{#if alternative_locales}}
+        <div class="dropdown language-selector" aria-haspopup="true">
+          <a class="dropdown-toggle">
+            {{current_locale.name}}
+          </a>
+          <span class="dropdown-menu dropdown-menu-end" role="menu">
+            {{#each alternative_locales}}
+              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                {{name}}
+              </a>
+            {{/each}}
+          </span>
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</footer>

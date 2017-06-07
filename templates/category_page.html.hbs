@@ -1,0 +1,56 @@
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{search submit=false}}
+  </nav>
+
+  <div class="category-container">
+    <div class="category-content">
+      <header class="page-header">
+        <h1>{{category.name}}</h1>
+        {{#if category.description}}
+          <p class="page-header-description">{{category.description}}</p>
+        {{/if}}
+      </header>
+
+      <div class="section-tree">
+        {{#each sections}}
+          <section class="section">
+            <h3 class="section-tree-title">
+              <a href="{{url}}">{{name}}</a>
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
+            </h3>
+            {{#if articles}}
+              <ul class="article-list">
+                {{#each articles}}
+                  <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
+                    {{#if promoted}}
+                      <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+                    {{/if}}
+                    <a href="{{url}}" class="article-list-link">{{title}}</a>
+                  </li>
+                {{/each}}
+              </ul>
+              {{#if more_articles}}
+                <a href="{{url}}" class="see-all-articles">
+                  {{t 'show_all_articles' count=article_count}}
+                </a>
+              {{/if}}
+            {{else}}
+              <i class="section-empty">
+                <a href="{{url}}">{{t 'empty'}}</a>
+              </i>
+            {{/if}}
+          </section>
+        {{else}}
+          <i class="category-empty">
+            <a href="{{category.url}}">{{t 'empty'}}</a>
+          </i>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
