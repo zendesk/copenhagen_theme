@@ -1,13 +1,24 @@
 # Copenhagen Theme by Zendesk
 
-The Copenhagen theme is a responsive theme for your Zendesk Guide's Help Center(?).
+The Copenhagen theme is a responsive theme for Zendesk Guide.
 
 The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
 
 ## How to use
-This is the latest version of the Copenhagen theme available for Help Center, feel free to fork this and adjust it to suit your needs!
-Then import to theming center (?)
-The only thing you need to do before using it is compile the Sass files into CSS files running `sass styles/index.scss style.css` on `copenhagen_theme/`
+This is the latest version of the Copenhagen theme available for Guide. Use this as a starting point to build your own custom theme. You can fork this repository as you see fit.
+
+## Publishing Your theme
+**Compile Sass** -  The Sass files in /styles need to be compiled before publishing. To compile the Sass files into a CSS file run `sass styles/index.scss style.css` on `copenhagen_theme/`
+
+**Upload Templates** - From there you will need to copy and paste the templates into your theme by navigating to Customize design > Edit theme in Guide. The naming convention in these templates maps to template names in the application. We convert snake case to sentence case names and drop the file extension. For example, `article_page.html.hbs` in this theme is used for the `Article page` template in the application.
+
+**Upload CSS and JavaScript** - Copy and paste the generated `style.css` into the CSS tab and `script.js` into the JS tab.
+
+**Upload Assets** - You can upload the assets in `/assets` folder via the Assets tab. Click Add file button or drag and drop them onto to button.
+
+**Preview** - Once your template, CSS, JavaScript and asset changes are uploaded, click the Preview button to verify everything looks as intended.
+
+**Save & Publish** - Once everything looks good click the Save button and then publish your theme live.
 
 ## Templates
 The theme includes all the templates that are used for a Help Center that has *all* the features available.
