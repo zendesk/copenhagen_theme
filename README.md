@@ -5,7 +5,7 @@ The Copenhagen theme is a responsive theme for Zendesk Guide.
 The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
 
 ## How to use
-This is the latest version of the Copenhagen theme available for Guide. Use this as a starting point to build your own custom theme. You can fork this repository as you see fit.
+This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
 
 ## Publishing Your theme
 **Compile Sass** -  The Sass files in /styles need to be compiled before publishing. To compile the Sass files into a CSS file run `sass styles/index.scss style.css` on `copenhagen_theme/`
