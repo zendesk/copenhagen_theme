@@ -1,0 +1,22 @@
+.sub-nav {
+  @include tablet {
+    align-items: baseline;
+    flex-direction: row;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  min-height: 50px;
+  padding-bottom: 15px;
+
+  //Inner pages search field
+  input[type="search"] {
+    @include tablet {
+      min-width: 300px;
+    }
+
+    &::after { font-size: $font-size-base; }
+  }
+}

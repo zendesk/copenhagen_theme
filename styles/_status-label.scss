@@ -1,0 +1,85 @@
+/***** Status labels *****/
+/* Styles labels used in posts, articles and requests */
+.status-label {
+  background-color: #1eb848;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  margin-right: 2px;
+  padding: 3px 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-block;
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+  }
+
+  &-pinned,
+  &-featured,
+  &-official {
+    background-color: $accent-color;
+  }
+
+  &-official {
+    border-radius: 0;
+    margin-right: 0;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 100%;
+
+    @include tablet {
+      border-radius: 0 0 4px 4px;
+      right: 30px;
+      width: auto;
+    }
+
+    [dir="rtl"] & {
+      left: 30px;
+      right: auto;
+    }
+  }
+
+  &-pending,
+  &-not-planned {
+    background-color: #eee;
+    color: $secondary-text-color;
+  }
+
+  &-pending {
+    text-align: center;
+  }
+
+  &-open {
+    background-color: #e03b30;
+  }
+
+
+  &-closed {
+    background-color: #ddd;
+  }
+
+  &-solved {
+    background-color: #999;
+  }
+
+  &-new {
+    background-color: #ffd12a;
+  }
+
+  &-hold {
+    background-color: #000;
+  }
+
+  &-open,
+  &-closed,
+  &-solved,
+  &-new,
+  &-hold {
+    text-transform: lowercase; // To be consistent with Lotus
+  }
+}

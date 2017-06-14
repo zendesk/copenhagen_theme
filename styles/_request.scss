@@ -1,0 +1,186 @@
+/***** Request *****/
+.request {
+  &-container {
+    @include desktop {
+      align-items: flex-start;
+      flex-direction: row;
+    }
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .comment-container {
+      min-width: 0;
+    }
+  }
+
+  &-breadcrumbs {
+    @include desktop { margin-bottom: 60px; }
+    margin-bottom: 40px;
+  }
+
+  &-main {
+    flex: 1 0 auto;
+    order: 1;
+
+    .comment-fields, .request-submit-comment {
+      display: none;
+    }
+
+    .comment-fields.shown { display: block; }
+    .request-submit-comment.shown { display: inline; }
+
+    @include desktop {
+      flex: 0 0 66%; // 4% spacing
+      order: 0;
+      min-width: 0; // Tricky detail to show truncated text https://css-tricks.com/flexbox-truncated-text/
+    }
+
+    .comment-form-controls {
+      display: block;
+    }
+    .comment-ccs { display: block; }
+
+    .comment-show-container {
+      border-radius: 2px;
+      border: 1px solid $border-color;
+      cursor: pointer;
+      display: flex;
+      padding: 8px 15px;
+      width: 100%;
+
+      &.hidden {
+        display: none;
+      }
+
+      &-content {
+        align-self: center;
+        color: $secondary-text-color;
+        margin-left: 10px;
+      }
+    }
+
+    .form-field.comment-ccs {
+      & > ul {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+
+        &[data-hc-focus="true"] {
+          border: 1px solid $accent-color;
+        }
+      }
+
+      & > input[type="text"] {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-bottom: 0;
+      }
+    }
+
+    .comment-ccs + textarea {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 0;
+
+      &:focus {
+        border-top: 1px solid $accent-color;
+      }
+    }
+
+    input#mark_as_solved { display: none; }
+  }
+
+  &-title {
+    @include desktop {
+      border-bottom: 1px solid $border-color;
+      margin-bottom: 0;
+      max-width: 66%; //Same as main container
+      padding-bottom: 20px;
+    }
+
+    width: 100%;
+  }
+
+  &-sidebar {
+    @include desktop {
+      background-color: $primary-shade;
+      border: 0;
+      font-size: $font-size-small;
+      flex: 0 0 auto;
+      padding: 0 20px;
+      width: 30%; //IE11 fix
+    }
+
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    flex: 1 0 auto;
+    order: 0; //Bring to top
+
+    h5 {
+      @include desktop {
+        display: none;
+      }
+
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+      position: relative;
+    }
+  }
+
+  &-details {
+    border-bottom: 1px solid $border-color;
+    font-size: 0; // To remove whitespace and do a 40%/60% split
+    margin: 0;
+    padding-bottom: 20px;
+
+    &:last-child { border: 0; }
+
+    dt, dd {
+      display: inline-block;
+      vertical-align: top;
+      font-size: $font-size-small;
+      margin: 20px 0 0 0;
+    }
+
+    dd {
+      padding: 0 10px;
+      width: 60%;
+
+      &::after {
+        content: "\A";
+        white-space: pre;
+      }
+    }
+
+    dt {
+      color: $secondary-text-color;
+      font-weight: $font-weight-light;
+      width: 40%;
+    }
+
+    .request-collaborators {
+      display: inline-block;
+    }
+  }
+
+  &-attachments {
+    dt, dd {
+      width: 100%;
+    }
+
+    dd {
+      margin: 10px 0 0 0;
+    }
+  }
+
+  &-form textarea {
+    min-height: 120px;
+  }
+
+  &-follow-up {
+    padding-top: 20px;
+  }
+}

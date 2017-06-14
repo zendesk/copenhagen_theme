@@ -1,0 +1,276 @@
+/***** Article *****/
+.article {
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+  */
+  @include desktop {
+    flex: 1 0 66%;
+    max-width: 66%;
+    min-width: 640px;
+    padding: 0 30px;
+  }
+
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+
+  &-container {
+    @include desktop {
+      flex-direction: row;
+    }
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-header {
+    @include tablet {
+      flex-direction: row;
+      margin-top: 0;
+    }
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+
+  &-author {
+    margin-bottom: 10px;
+  }
+
+  &-title {
+    @include tablet {
+      flex-basis: 100%; /* Take entire row */
+    }
+
+    .icon-lock::before {
+      content: "\1F512";
+      font-size: 20px;
+      position: relative;
+      left: -5px;
+      vertical-align: baseline;
+    }
+  }
+
+  [role="button"] {
+    @include tablet { width: auto; }
+    flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
+    width: 100%;
+  }
+
+  &-info {
+    max-width: 100%;
+  }
+
+  &-meta {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+
+  &-body {
+    @include content-body;
+    > p:last-child { margin-bottom: 0; }
+  }
+
+  &-content {
+    line-height: 1.6;
+    margin: 40px 0;
+    word-wrap: break-word;
+  }
+
+  &-footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+  }
+
+  &-comment-count {
+    color: $secondary-text-color;
+    font-weight: $font-weight-light;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    .icon-comments {
+      color: $accent-color;
+      content: "\1F4AC";
+      display: inline-block;
+      font-size: 18px;
+      padding: 5px;
+    }
+  }
+
+  &-sidebar {
+    @include desktop {
+      border: 0;
+      flex: 0 0 17%;
+      height: auto;
+    }
+
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+    margin-bottom: 20px;
+    padding: 0;
+  }
+
+  &-relatives {
+    @include tablet {
+      flex-direction: row;
+    }
+
+    border-top: 1px solid $border-color;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+
+    > * {
+      flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+      margin-right: 0;
+
+      &:last-child { margin: 0; }
+
+      @include tablet { margin-right: 20px; }
+    }
+  }
+
+
+  &-votes {
+    border-top: 1px solid $border-color;
+    padding: 30px 0;
+    text-align: center;
+  }
+
+  &-vote {
+    background: transparent;
+    border: 1px solid $accent-color;
+    color: $accent-color;
+    margin: 10px 5px;
+    min-width: 90px;
+    width: auto;
+
+    &::before {
+      @extend .icon;
+      font-size: 8px;
+      margin-right: 10px;
+
+      [dir="rtl"] & {
+        margin-right: 0;
+        margin-left: 10px;
+      }
+    }
+
+    &::after {
+      content: attr(title); /* Yes/No label*/
+    }
+
+    &:focus,
+    &:active {
+      background-color: transparent;
+      color: $accent-color;
+    }
+
+    &:hover {
+      background-color: $accent-color;
+    }
+
+    &:hover::before,
+    &:hover::after,
+    &[aria-selected="true"]::before,
+    &[aria-selected="true"]::after {
+      color: $accent-color-hover-text;
+    }
+  }
+
+  &-vote-up::before {
+    content: "\2713";
+  }
+
+  &-vote-down::before {
+    content: "\2715";
+  }
+
+  &-more-questions {
+    margin: 10px 0 20px;
+    text-align: center;
+  }
+
+  &-return-to-top {
+    @include desktop { display: none; }
+
+    border-top: 1px solid $border-color;
+
+    a {
+      color: $text-color;
+      display: block;
+      padding: 20px 0;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .icon-arrow-up::before {
+      font-size: 16px;
+      margin-left: 5px;
+
+      [dir="rtl"] & {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &-unsubscribe {
+    background-color: $button-color;
+    color: $accent-color-hover-text;
+    text-decoration: none;
+
+    &:hover {
+      background-color: $hover-button-color;
+      border-color: $hover-button-color;
+    }
+  }
+}
+
+.sidenav {
+  &-title {
+    font-size: $font-size-base;
+    position: relative;
+  }
+
+  &-item {
+    border-radius: 4px;
+    color: $text-color;
+    display: block;
+    font-weight: $font-weight-light;
+    margin-bottom: 10px;
+    padding: 10px;
+
+    &.current-article,
+    &:hover {
+      background-color: $accent-color;
+      color: $accent-color-hover-text;
+      text-decoration: none;
+    }
+  }
+}
+
+.recent-articles,
+.related-articles {
+  h3 {
+    font-size: $font-size-base;
+    margin: 20px 0;
+  }
+
+  li {
+    margin-bottom: 15px;
+  }
+}

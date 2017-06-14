@@ -1,0 +1,87 @@
+/***** Recent activity *****/
+
+.recent-activity {
+  &-header {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  &-list { padding: 0; }
+
+  &-item {
+    border-bottom: 1px solid $border-color;
+    overflow: auto;
+    padding: 20px 0;
+  }
+
+  &-item-parent {
+    font-size: $font-size-bigger;
+  }
+
+  &-item-parent,
+  &-item-link {
+    @include tablet {
+      width: 70%;
+      margin: 0;
+    }
+
+    margin: 6px 0;
+    color: $text-color;
+    display: inline-block;
+    width: 100%;
+  }
+
+  &-item-link {
+    font-size: 14px;
+    font-weight: $font-weight-light;
+  }
+
+  &-item-meta {
+    @include tablet {
+      margin: 0;
+      float: right;
+
+      [dir="rtl"] & { float: left; }
+
+    }
+
+    margin: 15px 0 0 0;
+    float: none;
+  }
+
+  &-item-time,
+  &-item-comment {
+    color: $secondary-text-color;
+    display: inline-block;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+  }
+
+  &-item-comment {
+    padding-left: 5px;
+
+    [dir="rtl"] & { padding: 0 5px 0 0; }
+
+    &::before {
+      display: inline-block;
+    }
+
+    span::before {
+      @extend .icon;
+      color: $accent-color;
+      content: "\1F4AC";
+      display: inline-block;
+      font-size: $font-size-base;
+      padding-right: 3px;
+      vertical-align: middle;
+
+      [dir="rtl"] & {
+        padding-left: 3px;
+      }
+    }
+  }
+
+  &-controls {
+    padding-top: 15px;
+  }
+}

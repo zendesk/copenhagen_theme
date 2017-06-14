@@ -1,0 +1,97 @@
+/* Navigation element that collapses on mobile */
+.collapsible-nav {
+  @include tablet {
+    border: 0;
+    height: auto;
+    flex-direction: row;
+    max-height: none;
+  }
+
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $border-color;
+  flex-direction: column;
+  max-height: 45px;
+  overflow: hidden;
+  font-size: $font-size-navigation;
+}
+
+.collapsible-nav-list {
+  @include tablet {
+    flex-direction: row;
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  li {
+    @include tablet {
+      line-height: normal;
+      margin-right: 30px;
+
+      [dir="rtl"] & {
+        margin-left: 30px;
+        margin-right: 0;
+      }
+
+      a {
+        text-decoration: none;
+        padding: 15px 0;
+      }
+    }
+
+    color: $text-color;
+    line-height: 45px;
+    order: 1; // All elements have the same order
+
+    a {
+      color: $text-color;
+      display: block;
+    }
+  }
+
+  li:hover {
+    @include tablet {
+      border-bottom: 4px solid #ddd;
+
+      a {
+        padding: 15px 0 11px 0;
+        text-decoration: none;
+      }
+    }
+  }
+
+  li[aria-selected="true"] {
+    @include tablet {
+      border-bottom: 4px solid $accent-color;
+      order: 1;
+      padding: 15px 0 11px 0;
+    }
+
+    order: 0; //Move to top of menu
+    position: relative;
+
+    a { color: $text-color; }
+  }
+
+  li[aria-selected="true"]::after {
+    @extend .icon;
+    @include tablet { display: none; }
+    @include vertical-align;
+    content: "\25BE";
+    position: absolute;
+    right: 0;
+
+    [dir="rtl"] & {
+      left: 0;
+      right: auto;
+    }
+  }
+}
+
+.collapsible-nav[aria-expanded="true"] {
+  max-height: none;
+
+  li[aria-selected="true"]::after {
+    content: "\2715";
+  }
+}

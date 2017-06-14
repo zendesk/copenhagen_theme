@@ -1,0 +1,82 @@
+/***** Blocks *****/
+/* Used in Homepage#categories and Community#topics */
+.blocks {
+  &-list {
+    @include tablet {
+      margin: 0 -15px;
+    }
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    list-style: none;
+    padding: 0;
+  }
+
+  &-item {
+    @include tablet {
+      margin: 0 15px 30px;
+    }
+
+    border: 1px solid $accent-color;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: $accent-color;
+    display: flex;
+    flex: 1 0 340px;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 0 30px;
+    max-width: 100%;
+    text-align: center;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $accent-color;
+
+      * {
+        color: $accent-color-hover-text;
+        text-decoration: none;
+      }
+    }
+
+    &-internal {
+      background-color: transparent;
+      border: 1px solid $border-color;
+
+      .icon-lock::before {
+        content: "\1F512";
+        font-size: 15px;
+        bottom: 5px;
+        position: relative;
+      }
+
+      a { color: $text-color; }
+    }
+  }
+
+  &-item-link {
+    color: $accent-color;
+    padding: 20px 30px;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: none;
+    }
+  }
+
+  &-item-title {
+    margin-bottom: 0;
+  }
+
+  &-item-description {
+    font-weight: $font-weight-light;
+    margin: 0;
+  }
+
+  &-item-description:not(:empty) {
+    margin-top: 10px;
+  }
+}

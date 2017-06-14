@@ -1,0 +1,22 @@
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{search submit=false}}
+  </nav>
+
+  <h1>
+    {{t 'submit_a_request'}}
+    {{#if follow_up}}
+      <span class="follow-up-hint">
+        {{follow_up}}
+      </span>
+    {{/if}}
+  </h1>
+
+  <div class="form">
+    {{request_form}}
+  </div>
+
+  {{chat}}
+</div>

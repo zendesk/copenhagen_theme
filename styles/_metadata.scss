@@ -1,0 +1,19 @@
+/***** Metadata *****/
+.meta-group {
+  display: block;
+}
+
+.meta-group * {
+  display: inline;
+}
+
+.meta-data {
+  color: $secondary-text-color;
+  font-size: $font-size-small;
+  font-weight: $font-weight-light;
+
+  &:not(:last-child)::after {
+    content: "\00B7";
+    margin: 0 5px;
+  }
+}

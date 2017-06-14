@@ -1,0 +1,88 @@
+/***** Buttons *****/
+.button, [role="button"] {
+  @include tablet { width: auto; }
+
+  border: 1px solid $button-color;
+  border-radius: 4px;
+  color: $button-color;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 2.34; //Taken from Zendesk garden bedrock
+  margin: 0;
+  padding: 0 20px;
+  text-align: center;
+  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+  user-select: none;
+  white-space: nowrap;
+  width: 100%;
+  -webkit-touch-callout: none;
+
+  &::after {
+    color: $button-color;
+  }
+
+  &:hover,
+  &:active,
+  &:focus,
+  &[aria-selected="true"] {
+    background-color: $accent-color;
+    color: $accent-color-hover-text;
+    text-decoration: none;
+  }
+
+  &[aria-selected="true"] {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $hover-button-color;
+      border-color: $hover-button-color;
+    }
+  }
+
+  &[data-disabled] {
+    cursor: default;
+  }
+}
+
+.button-large, input[type="submit"] {
+  @include tablet {
+    width: auto;
+  }
+
+  background-color: $button-color;
+  border: 0;
+  border-radius: 4px;
+  color: $accent-color-hover-text;
+  font-size: 14px;
+  font-weight: $font-weight-base;
+  line-height: 2.72;
+  min-width: 190px;
+  padding: 0 1.9286em;
+  width: 100%;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: $hover-button-color;
+  }
+
+
+  &[disabled] {
+    background-color: #ddd;
+  }
+}
+
+.button-secondary {
+  color: $secondary-text-color;
+  border: 1px solid $border-color;
+  background-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $text-color;
+    border: 1px solid $border-color;
+    background-color: $primary-shade;
+  }
+}

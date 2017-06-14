@@ -1,0 +1,29 @@
+/***** Actions *****/
+/* Styles admin and en user actions(edit, delete, change status) in comments and posts */
+.actions {
+  text-align: center;
+  flex-shrink: 0; /*Avoid collapsing elements in Safari*/
+
+  .dropdown-toggle {
+    font-size: 0;
+    margin: 15px 0;
+
+    &:hover::before,
+    &:focus::before,
+    &:active::before {
+      background-color: $primary-shade;
+    }
+
+    &::before {
+      @extend .icon;
+      background-color: transparent;
+      border-radius: 50%;
+      color: $secondary-text-color;
+      content: "\2699";
+      display: block;
+      font-size: $font-size-small;
+      margin: auto;
+      padding: 5px;
+    }
+  }
+}

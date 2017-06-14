@@ -1,0 +1,54 @@
+/***** Vote *****/
+/* Used in article comments, post comments and post */
+.vote {
+  display: inline-block;
+  text-align: center;
+  width: 35px;
+  a {
+    outline: none;
+
+    &:active,
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
+
+.vote-sum {
+  color: $secondary-text-color;
+  display: block;
+  margin: 3px 0;
+
+  [dir="rtl"] & {
+    direction: ltr;
+    unicode-bidi: bidi-override;
+  }
+}
+
+.vote-up:hover::before,
+.vote-down:hover::before {
+  color: $accent-color;
+}
+
+.vote-up::before, .vote-down::before {
+  @extend .icon;
+  color: $secondary-text-color;
+  font-size: 24px;
+}
+
+.vote-up::before {
+  content: "\2B06";
+}
+
+.vote-down::before {
+  content: "\2B07";
+}
+
+.vote-voted::before {
+  color: $accent-color;
+}
+
+.vote-voted:hover::before {
+  color: $hover-button-color;
+}
