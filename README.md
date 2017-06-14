@@ -1,5 +1,7 @@
 # Copenhagen Theme by Zendesk
 
+NOTE: These files are not yet the source of truth for Copenhagen theme.
+
 The Copenhagen theme is a responsive theme for Zendesk Guide.
 
 The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
