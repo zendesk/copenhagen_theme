@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   // show form controls when the textarea receives focus or backbutton is used and value exists
   var $commentContainerTextarea = $(".comment-container textarea"),
-  $commentContainerFormControls = $(".comment-form-controls, .comment-ccs");
+    $commentContainerFormControls = $(".comment-form-controls, .comment-ccs");
 
   $commentContainerTextarea.one("focus", function() {
     $commentContainerFormControls.show();

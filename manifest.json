@@ -1,13 +1,122 @@
 {
-  "version": 3,
-  "settings": {
-    "color_1": "#0072ef",
-    "color_2": "#ffffff",
-    "color_3": "#333333",
-    "color_4": "#0072ef",
-    "color_5": "#ffffff",
-    "font_1": "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif",
-    "font_2": "-apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif"
-  },
-  "features": ["community_v2"]
+  "name": "Copenhagen",
+  "author": "Zendesk",
+  "version": "1.0.0",
+  "api_version": 1,
+  "settings": [{
+    "label": "Colors",
+    "variables": [{
+      "identifier": "brand_color",
+      "type": "color",
+      "description": "Brand color for major navigational elements",
+      "label": "Brand color",
+      "value": "#7B7B7B"
+    }, {
+      "identifier": "brand_text_color",
+      "type": "color",
+      "description": "Brand color for hover and active states",
+      "label": "Brand text color",
+      "value": "#404040"
+    }, {
+      "identifier": "text_color",
+      "type": "color",
+      "description": "Text color for body and heading elements",
+      "label": "Text color",
+      "value": "#333333"
+    }, {
+      "identifier": "link_color",
+      "type": "color",
+      "description": "Text color for link elements",
+      "label": "Link color",
+      "value": "#1A74B0"
+    }, {
+      "identifier": "background_color",
+      "type": "color",
+      "description": "Background color of your Help Center",
+      "label": "Background color",
+      "value": "#FFFFFF"
+    }]
+  }, {
+    "label": "Fonts",
+    "variables": [{
+      "identifier": "heading_font",
+      "type": "list",
+      "description": "Font for headings",
+      "label": "Heading Font",
+      "options": [
+        { "label": "System", "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif" },
+        { "label": "Arial", "value": "Arial, 'Helvetica Neue', Helvetica, sans-serif" },
+        { "label": "Arial Black", "value": "'Arial Black', Arial, 'Helvetica Neue', Helvetica, sans-serif" },
+        { "label": "Baskerville", "value": "Baskerville, 'Times New Roman', Times, serif" },
+        { "label": "Century Gothic", "value": "'Century Gothic', AppleGothic, sans-serif" },
+        { "label": "Copperplate Light", "value": "'Copperplate Light', 'Copperplate Gothic Light', serif" },
+        { "label": "Courier New", "value": "'Courier New', Courier, monospace" },
+        { "label":"Futura", "value": "Futura, 'Century Gothic', AppleGothic, sans-serif" },
+        { "label":"Garamond", "value": "Garamond, 'Hoefler Text', Times New Roman, Times, serif" },
+        { "label":"Geneva", "value": "Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif" },
+        { "label":"Georgia", "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif" },
+        { "label": "Helvetica", "value": "Helvetica, Arial, sans-serif" },
+        { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
+        { "label":"Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
+        { "label":"Lucida Grande", "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
+        { "label":"Trebuchet MS", "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" }
+      ],
+      "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+    }, {
+      "identifier": "text_font",
+      "type": "list",
+      "description": "Font for body text",
+      "label": "Text Font",
+      "options": [
+        { "label": "System", "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"},
+        { "label": "Arial", "value": "Arial, 'Helvetica Neue', Helvetica, sans-serif"},
+        { "label": "Arial Black", "value": "'Arial Black', Arial, 'Helvetica Neue', Helvetica, sans-serif"},
+        { "label": "Baskerville", "value": "Baskerville, 'Times New Roman', Times, serif"},
+        { "label": "Century Gothic", "value": "'Century Gothic', AppleGothic, sans-serif"},
+        { "label": "Copperplate Light", "value": "'Copperplate Light', 'Copperplate Gothic Light', serif"},
+        { "label": "Courier New", "value": "'Courier New', Courier, monospace"},
+        { "label":"Futura", "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"},
+        { "label":"Garamond", "value": "Garamond, 'Hoefler Text', Times New Roman, Times, serif"},
+        { "label":"Geneva", "value": "Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif"},
+        { "label":"Georgia", "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif" },
+        { "label": "Helvetica", "value": "Helvetica, Arial, sans-serif" },
+        { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
+        { "label":"Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
+        { "label":"Lucida Grande", "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
+        { "label":"Trebuchet MS", "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" }
+      ],
+      "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+    }]
+  }, {
+    "label": "Brand",
+    "variables": [{
+      "identifier": "logo",
+      "type": "file",
+      "description": "Company logo",
+      "label": "Logo"
+    }, {
+      "identifier": "favicon",
+      "type": "file",
+      "description": "Icon displayed in the address bar of your browser",
+      "label": "Favicon"
+    }]
+  }, {
+    "label": "Images",
+    "variables": [{
+      "identifier": "homepage_background_image",
+      "type": "file",
+      "description": "Hero image on the home page",
+      "label": "Home hero image"
+    }, {
+      "identifier": "community_background_image",
+      "type": "file",
+      "description": "Hero image on the community topics page",
+      "label": "Community hero image"
+    }, {
+      "identifier": "community_image",
+      "type": "file",
+      "description": "Image for the community section on the home page",
+      "label": "Community banner"
+    }]
+  }]
 }
