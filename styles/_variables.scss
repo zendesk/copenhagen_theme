@@ -7,7 +7,7 @@ $text_color: #333 !default;
 $link_color: #0072ef !default;
 $background_color: #fff !default;
 
-$visited-link_color: zass-darken($link_color, 20%);
+$visited-link-color: zass-darken($link_color, 20%);
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 
