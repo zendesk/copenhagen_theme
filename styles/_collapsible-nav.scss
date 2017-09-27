@@ -39,12 +39,12 @@
       }
     }
 
-    color: $text-color;
+    color: $text_color;
     line-height: 45px;
     order: 1; // All elements have the same order
 
     a {
-      color: $text-color;
+      color: $text_color;
       display: block;
     }
   }
@@ -62,7 +62,7 @@
 
   li[aria-selected="true"] {
     @include tablet {
-      border-bottom: 4px solid $accent-color;
+      border-bottom: 4px solid $brand_color;
       order: 1;
       padding: 15px 0 11px 0;
     }
@@ -70,7 +70,7 @@
     order: 0; //Move to top of menu
     position: relative;
 
-    a { color: $text-color; }
+    a { color: $text_color; }
   }
 
   li[aria-selected="true"]::after {

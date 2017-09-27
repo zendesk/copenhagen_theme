@@ -26,7 +26,7 @@
     }
 
     margin: 6px 0;
-    color: $text-color;
+    color: $text_color;
     display: inline-block;
     width: 100%;
   }
@@ -68,7 +68,7 @@
 
     span::before {
       @extend .icon;
-      color: $accent-color;
+      color: $brand_color;
       content: "\1F4AC";
       display: inline-block;
       font-size: $font-size-base;

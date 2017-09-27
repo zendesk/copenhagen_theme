@@ -99,7 +99,7 @@
     }
 
     .icon-comments {
-      color: $accent-color;
+      color: $brand_color;
       content: "\1F4AC";
       display: inline-block;
       font-size: 18px;
@@ -150,8 +150,8 @@
 
   &-vote {
     background: transparent;
-    border: 1px solid $accent-color;
-    color: $accent-color;
+    border: 1px solid $brand_color;
+    color: $brand_color;
     margin: 10px 5px;
     min-width: 90px;
     width: auto;
@@ -174,18 +174,18 @@
     &:focus,
     &:active {
       background-color: transparent;
-      color: $accent-color;
+      color: $brand_color;
     }
 
     &:hover {
-      background-color: $accent-color;
+      background-color: $brand_color;
     }
 
     &:hover::before,
     &:hover::after,
     &[aria-selected="true"]::before,
     &[aria-selected="true"]::after {
-      color: $accent-color-hover-text;
+      color: $brand_text_color;
     }
   }
 
@@ -208,7 +208,7 @@
     border-top: 1px solid $border-color;
 
     a {
-      color: $text-color;
+      color: $text_color;
       display: block;
       padding: 20px 0;
 
@@ -230,7 +230,7 @@
 
   &-unsubscribe {
     background-color: $button-color;
-    color: $accent-color-hover-text;
+    color: $brand_text_color;
     text-decoration: none;
 
     &:hover {
@@ -248,7 +248,7 @@
 
   &-item {
     border-radius: 4px;
-    color: $text-color;
+    color: $text_color;
     display: block;
     font-weight: $font-weight-light;
     margin-bottom: 10px;
@@ -256,8 +256,8 @@
 
     &.current-article,
     &:hover {
-      background-color: $accent-color;
-      color: $accent-color-hover-text;
+      background-color: $brand_color;
+      color: $brand_text_color;
       text-decoration: none;
     }
   }

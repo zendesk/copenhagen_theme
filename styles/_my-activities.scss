@@ -15,7 +15,7 @@
     border-bottom: 1px solid $border-color;
     margin-bottom: 30px;
 
-    li[aria-selected="true"] { border-color: $accent-color; }
+    li[aria-selected="true"] { border-color: $brand_color; }
   }
 
   &-table {
@@ -132,7 +132,7 @@
 
     .organization-unsubscribe {
       background-color: $button-color;
-      color: $accent-color-hover-text;
+      color: $brand_text_color;
     }
 
     & + .requests-search-info {
@@ -197,7 +197,7 @@
 
     background: $button-color;
     border-radius: 4px;
-    color: $accent-color-hover-text;
+    color: $brand_text_color;
     display: inline-block;
     font-size: 12px;
     line-height: 2.34; //Taken from Zendesk garden bedrock

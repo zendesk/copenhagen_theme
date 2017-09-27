@@ -46,7 +46,7 @@
 
     &::before {
       @extend .icon;
-      color: $accent-color;
+      color: $brand_color;
     }
 
     [dir="ltr"] & {

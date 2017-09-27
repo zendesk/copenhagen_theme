@@ -28,7 +28,7 @@
 
 .share a:hover {
   text-decoration: none;
-  &::before { color: $accent-color; }
+  &::before { color: $brand_color; }
 }
 
 .share-twitter::before {

@@ -4,9 +4,9 @@
 }
 
 body {
-  background-color: $background-color;
-  color: $text-color;
-  font-family: $font-family-content;
+  background-color: $background_color;
+  color: $text_color;
+  font-family: $text_font;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: 1.5;
@@ -20,7 +20,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $font-family;
+  font-family: $heading_font;
   font-weight: $font-weight-base;
   margin-top: 0;
 }
@@ -35,7 +35,7 @@ h3 {
 h4 { font-size: 16px; }
 
 a {
-  color: $link-color;
+  color: $link_color;
   text-decoration: none;
 
   &:hover,
@@ -59,7 +59,7 @@ input {
   transition: border .12s ease-in-out;
 
   &:focus {
-    border: 1px solid $accent-color;
+    border: 1px solid $brand_color;
   }
 }
 
@@ -70,7 +70,7 @@ input[disabled] {
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: url("/hc/assets/dropdown-arrow.svg") no-repeat #fff;
+  background: url($assets-dropdown-arrow-svg) no-repeat #fff;
   background-position: right 10px center;
   border: 1px solid $border-color;
   border-radius: 4px;
@@ -80,7 +80,7 @@ select {
   width: 100%;
 
   &:focus {
-    border: 1px solid $accent-color;
+    border: 1px solid $brand_color;
   }
 
   &::-ms-expand {
@@ -97,7 +97,7 @@ textarea {
   padding: 10px;
 
   &:focus {
-    border: 1px solid $accent-color;
+    border: 1px solid $brand_color;
   }
 }
 

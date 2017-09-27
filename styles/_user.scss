@@ -9,18 +9,18 @@
 
   > [role="button"] {
     border: 0;
-    color: $link-color;
+    color: $link_color;
     min-width: 0;
     padding: 0;
     white-space: nowrap;
 
     &:hover {
-      color: $link-color;
+      color: $link_color;
       background-color: transparent;
     }
 
     &::after {
-      color: $link-color;
+      color: $link_color;
       padding-right: 15px;
 
       [dir="rtl"] & {
@@ -59,11 +59,11 @@
   }
 
   .icon-agent::before {
-    background-color: $accent-color;
+    background-color: $brand_color;
     border: 2px solid #fff;
     border-radius: 50%;
     bottom: -4px;
-    color: $accent-color-hover-text;
+    color: $brand_text_color;
     content: "\1F464";
     font-size: 14px;
     height: 14px;

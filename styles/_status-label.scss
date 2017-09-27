@@ -20,7 +20,7 @@
   &-pinned,
   &-featured,
   &-official {
-    background-color: $accent-color;
+    background-color: $brand_color;
   }
 
   &-official {
@@ -79,7 +79,8 @@
   &-closed,
   &-solved,
   &-new,
-  &-hold {
+  &-hold,
+  &-answered {
     text-transform: lowercase; // To be consistent with Lotus
   }
 }
