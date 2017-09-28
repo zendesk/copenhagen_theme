@@ -3,24 +3,63 @@
 NOTE: These files are not yet the source of truth for Copenhagen theme.
 
 The Copenhagen theme is a responsive theme for Zendesk Guide.
+You can see the theme live [here](https://copenhagentheme.zendesk.com/hc/en-us).
 
 The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
 
 ## How to use
 This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
 
-## Publishing Your theme
-**Compile Sass** -  The Sass files in /styles need to be compiled before publishing. To compile the Sass files into a CSS file run `sass styles/index.scss style.css` on `copenhagen_theme/`
+## Customizing your theme
+Once you have forked this repository you can feel free to edit templates, CSS in `style.css` (if you would like to use SASS go to the [Using SASS section](#using-sass)), javascript and manage assets.
 
-**Upload Templates** - From there you will need to copy and paste the templates into your theme by navigating to Customize design > Edit theme in Guide. The naming convention in these templates maps to template names in the application. We convert snake case to sentence case names and drop the file extension. For example, `article_page.html.hbs` in this theme is used for the `Article page` template in the application.
+### Manifest file
+The manifest file allows you to add settings to your theme and change the values of these settings through the UI.
+For example, if you update the manifest file to look like this and you then import your theme to Theming Center:
+```js
+{
+  "name": "Copenhagen",
+  "author": "Zendesk",
+  "version": "1.0.1",
+  "api_version": 1,
+  "settings": [{
+    "label": "Colors",
+    "variables": [{
+      "identifier": "brand_color",
+      "type": "color",
+      "description": "Brand color for major navigational elements",
+      "label": "Brand color",
+      "value": "#7B7B7B"
+    }]
+  }, {
+   "label": "Custom setting group",
+   "variables": [{
+     "identifier": "custom_var",
+  	 "type": "text",
+  	 "description": "Custom variable to change the title",
+  	 "label": "Title",
+  	 "value": "Welcome to our Help Center"
+   }]
+  }]
+}
 
-**Upload CSS and JavaScript** - Copy and paste the generated `style.css` into the CSS tab and `script.js` into the JS tab.
+```
+You would see two setting groups with a variable each in your theme inside Theming Center with the correct input types:
+![Manifest](https://zendesk.box.com/s/7hq7ohd7dt5buh56izawxipybi41fs80)
 
-**Upload Assets** - You can upload the assets in `/assets` folder via the Assets tab. Click Add file button or drag and drop them onto to button.
+You can read more about the manifest file [here](https://support.zendesk.com/hc/en-us/articles/115012547687--THEMING-CENTER-BETA-Settings-manifest-reference)
 
-**Preview** - Once your template, CSS, JavaScript and asset changes are uploaded, click the Preview button to verify everything looks as intended.
+### Adding assets
+You can add assets to the asset folder and use them in your CSS, Javascript and templates.
+You can read more about assets [here](https://support.zendesk.com/hc/en-us/articles/115012399428--THEMING-CENTER-BETA-Using-your-own-theme-assets-for-Help-Center)
 
-**Save & Publish** - Once everything looks good click the Save button and then publish your theme live.
+
+## Publishing your theme
+After you have customized your theme you can download the repository as a `zip` file and import it into Theming Center.
+
+You can follow the documentation for importing [here](https://support.zendesk.com/hc/en-us/articles/115012794168--THEMING-CENTER-BETA-Importing-and-exporting-your-theme-and-manifest-file#topic_jpd_zdc_hbb).
+
+You can also preview your theme before you import it to Theming Center with the Zendesk App Tools framework, you can read more about local preview [here](https://support.zendesk.com/hc/en-us/community/posts/115007717507-Local-Theme-Preview-via-Zendesk-Application-Tools)
 
 ## Templates
 The theme includes all the templates that are used for a Help Center that has *all* the features available.
@@ -46,8 +85,10 @@ List of templates in the theme:
 * User profile page
 
 ## Styles
-The styles for the theme are split using Sass partials, all the partials are under [styles/](/blob/master/styles/), they are all included in the "main" file [index.scss](/blob/master/styles/index.scss) and then compiled to CSS running:
-`sass styles/index.scss style.css`
+The styles that Theming Center needs to use in the theme are in the `style.css` file in the root folder.
+
+The styles for the theme are split using Sass partials, all the partials are under [styles/](/blob/master/styles/), they are all included in the "main" file [index.scss](/blob/master/styles/index.scss) and then compiled to CSS.
+If you wish to use SASS you can go to the [using SASS section](#using-sass)
 
 ## Assets
 These are the images and font files that are needed for the theme.
@@ -60,5 +101,22 @@ These includes:
 * Entypo icon font
 * Dropdown arrow
 
-## Contributing
+# Using SASS
+In order to use SASS for development, you just need to compile it into the CSS that Theming Center understands.
+
+## Requirements
+
+- Install Ruby, we use `sassc` gem to compile our `.scss` files. You can see how to install Ruby [here](https://www.ruby-lang.org/en/documentation/installation/).
+- Install `sassc` gem. You can run:
+```
+    gem install sassc
+```
+
+Now you can compile your SASS files running:
+```
+./bin/compile
+```
+Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Theming Center.
+
+# Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
