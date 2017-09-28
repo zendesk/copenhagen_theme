@@ -1,0 +1,106 @@
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{search submit=false}}
+  </nav>
+
+  <div class="results">
+    <section class="results-sidebar">
+      {{#if help_center.community_enabled}}
+        <section class="filters-in-section collapsible-sidebar">
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
+            <ul>
+              {{#each filters}}
+                <li>
+                  <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}}</a>
+                </li>
+              {{/each}}
+          </ul>
+        </section>
+      {{/if}}
+      {{#if subfilters}}
+        <section class="filters-in-section collapsible-sidebar">
+          {{#is current_filter.identifier 'knowledge_base'}}
+            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h3>
+          {{/is}}
+          {{#is current_filter.identifier 'community'}}
+            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h3>
+          {{/is}}
+          <ul>
+            {{#each subfilters}}
+              <li>
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        </section>
+      {{/if}}
+    </section>
+
+    <section class="results-column">
+      <h3 class="results-subheading">
+      {{#is current_filter.identifier 'unified'}}
+        {{t 'preview_result_header' query=query count=results_count}}
+      {{else}}
+        {{#is current_subfilter.identifier 'all'}}
+          {{t 'results' query=query count=results_count}}
+        {{else}}
+          {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
+        {{/is}}
+      {{/is}}
+      </h3>
+      {{#if results}}
+        <ul class="results-list">
+          {{#each results}}
+            <li class="results-list-item result-{{type}}">
+              <a href="{{url}}" class="results-list-item-link">{{title}}</a>
+              <div class="results-icons">
+                {{#if vote_sum}}
+                  <span class="results-votes">{{vote_sum}}</span>
+                {{/if}}
+                {{#if comment_count}}
+                  <span class="results-meta-count">
+                    {{comment_count}}
+                  </span>
+                {{/if}}
+              </div>
+              <ul class="meta-group">
+                <li>
+                  <ol class="breadcrumbs results-breadcrumbs">
+                    {{#each path_steps}}
+                      <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                    {{/each}}
+                  </ol>
+                </li>
+                <li class="meta-data">{{author.name}}</li>
+                <li class="meta-data">{{date created_at}}</li>
+              </ul>
+              <div class="results-description">{{text}}</div>
+            </li>
+          {{/each}}
+        </ul>
+          {{#is current_filter.identifier 'unified'}}
+            {{#if knowledge_base_result_count}}
+              {{#link 'search_result' query=query filter_by='knowledge_base' class='filter-link'}}
+                {{t 'see_more_knowledge_base' count=knowledge_base_result_count}}
+              {{/link}}
+            {{/if}}
+            {{#if community_result_count}}
+              {{#link 'search_result' query=query filter_by='community' class='filter-link'}}
+                {{t 'see_more_community' count=community_result_count}}
+              {{/link}}
+            {{/if}}
+          {{/is}}
+      {{else}}
+        <p>
+          {{t 'no_results_unified'}}
+          {{#link 'help_center'}}
+            {{t 'browse_help_center'}}
+          {{/link}}
+        </p>
+      {{/if}}
+    </section>
+  </div>
+  {{pagination}}
+</div>
