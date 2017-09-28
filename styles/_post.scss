@@ -63,25 +63,24 @@
   }
 
   &-content {
-    font-family: $font-family-content;
+    font-family: $text_font;
     line-height: 1.6;
     word-break: break-word;
   }
 
   &-info-container {
-    align-items: flex-start;
     display: flex;
-    justify-content: space-between;
     margin-bottom: 40px;
   }
 
   &-info {
-    @include desktop { padding-right: 20px; }
-    flex: 1;
+    min-width: 0;
+    padding-right: 20px;
+    width: 100%;
 
     [dir="rtl"] & {
-      padding-left: 45px;
       padding-right: 0;
+      padding-left: 20px;
     }
   }
 
@@ -117,7 +116,7 @@
     }
 
     .icon-comments {
-      color: $accent-color;
+      color: $brand_color;
       content: "\1F4AC";
       display: inline-block;
       font-size: 18px;

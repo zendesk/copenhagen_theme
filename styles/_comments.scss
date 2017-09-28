@@ -24,7 +24,7 @@
     font-size: $font-size-small;
     margin-bottom: 0;
 
-    a { color: $accent-color; }
+    a { color: $brand_color; }
   }
 
 
@@ -46,13 +46,12 @@
 
   &-wrapper {
     display: flex;
-    justify-content: space-between;
     position: relative;
 
     &.comment-official {
       @include tablet { padding-top: 20px; }
 
-      border: 1px solid $accent-color;
+      border: 1px solid $brand_color;
       padding: 40px 20px 20px; // 20 + 20 of official commment badge
     }
   }
@@ -146,13 +145,13 @@
   &-attachments {
     margin-top: 10px;
 
-    a { color: $accent-color; }
+    a { color: $brand_color; }
   }
 
   &-body {
     @include text-overflow;
     @include content-body;
-    font-family: $font-family-content;
+    font-family: $text_font;
     line-height: 1.6;
   }
 

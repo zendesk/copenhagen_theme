@@ -22,7 +22,7 @@
   }
 
   &-title {
-    color: $link-color;
+    color: $link_color;
     margin-bottom: 10px;
     margin-right: 5px;
 
@@ -67,7 +67,7 @@
 
   &-number {
     @include tablet {
-      color: $text-color;
+      color: $text_color;
       display: block;
       font-weight: $font-weight-base;
     }

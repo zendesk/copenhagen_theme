@@ -26,8 +26,8 @@
   &:active,
   &:focus,
   &[aria-selected="true"] {
-    background-color: $accent-color;
-    color: $accent-color-hover-text;
+    background-color: $brand_color;
+    color: $brand_text_color;
     text-decoration: none;
   }
 
@@ -53,7 +53,7 @@
   background-color: $button-color;
   border: 0;
   border-radius: 4px;
-  color: $accent-color-hover-text;
+  color: $brand_text_color;
   font-size: 14px;
   font-weight: $font-weight-base;
   line-height: 2.72;
@@ -81,7 +81,7 @@
   &:hover,
   &:focus,
   &:active {
-    color: $text-color;
+    color: $text_color;
     border: 1px solid $border-color;
     background-color: $primary-shade;
   }

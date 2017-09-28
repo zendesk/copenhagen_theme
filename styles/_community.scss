@@ -1,7 +1,7 @@
 /***** Community *****/
 .community {
   &-hero {
-    background-image: url($home-community-background-image);
+    background-image: url($community_background_image);
     margin-bottom: 10px;
   }
 
@@ -89,20 +89,20 @@
     position: relative;
     width: 100%;
 
-    &:hover { background-color: $accent-color; }
+    &:hover { background-color: $brand_color; }
 
     &:hover::after, &:focus::after {
-      border-color: $accent-color-hover-text;
-      color: $accent-color-hover-text;
+      border-color: $brand_text_color;
+      color: $brand_text_color;
     }
 
     &[aria-selected="true"] {
-      background-color: $accent-color;
-      color: $accent-color-hover-text;
+      background-color: $brand_color;
+      color: $brand_text_color;
 
       &::after {
-        border-left: 1px solid $accent-color-hover-text;
-        color: $accent-color-hover-text;
+        border-left: 1px solid $brand_text_color;
+        color: $brand_text_color;
       }
 
       &:hover {
@@ -120,7 +120,7 @@
       content: attr(data-follower-count);
       color: $button-color;
       display: inline-block;
-      font-family: $font-family;
+      font-family: $heading_font;
       margin-left: 15px;
       padding-left: 10px;
       position: absolute;

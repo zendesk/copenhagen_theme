@@ -33,7 +33,7 @@
   &-title {
     margin-bottom: 0;
 
-    a { color: $text-color; }
+    a { color: $text_color; }
   }
 
   .see-all-articles {
@@ -48,11 +48,11 @@
     font-size: $font-size-bigger;
     padding: 15px 0;
 
-    a { color: $text-color; }
+    a { color: $text_color; }
   }
 }
 
 .icon-star::before {
-  color: $accent-color;
+  color: $brand_color;
   font-size: 18px;
 }

@@ -29,7 +29,7 @@
     background-color: #f3f3f3;
 
     span, a {
-      color: $text-color;
+      color: $text_color;
       text-decoration: none;
     }
   }
@@ -47,8 +47,8 @@
 }
 
 .pagination-current {
-  background-color: $accent-color;
-  a, span { color: $accent-color-hover-text; }
+  background-color: $brand_color;
+  a, span { color: $brand_text_color; }
 }
 
 .pagination-first {

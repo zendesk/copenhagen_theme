@@ -28,7 +28,7 @@
 
 .vote-up:hover::before,
 .vote-down:hover::before {
-  color: $accent-color;
+  color: $brand_color;
 }
 
 .vote-up::before, .vote-down::before {
@@ -46,7 +46,7 @@
 }
 
 .vote-voted::before {
-  color: $accent-color;
+  color: $brand_color;
 }
 
 .vote-voted:hover::before {

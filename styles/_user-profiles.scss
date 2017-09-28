@@ -90,9 +90,9 @@
 }
 
 .profile-header .options [data-action="edit-profile"] {
-  background-color: $accent-color;
+  background-color: $brand_color;
   border: 0;
-  color: $accent-color-hover-text;
+  color: $brand_text_color;
   line-height: normal;
   padding: 8px 20px;
 }
@@ -223,9 +223,9 @@
 
 .profile-private-badge {
   flex-basis: 100%;
-  border: solid 1px $accent-color;
+  border: solid 1px $brand_color;
   border-radius: 4px;
-  color: $accent-color;
+  color: $brand_color;
   padding: 5px 20px;
   font-size: 12px;
   text-align: center;
@@ -540,7 +540,7 @@
   content: "";
   background-size: 14px 14px;
   background-repeat: no-repeat;
-  background-color: $background-color;
+  background-color: $background_color;
   background-position: 50% 50%;
   text-align: center;
   line-height: 40px;

@@ -18,10 +18,10 @@
       margin: 0 15px 30px;
     }
 
-    border: 1px solid $accent-color;
+    border: 1px solid $brand_color;
     border-radius: 4px;
     box-sizing: border-box;
-    color: $accent-color;
+    color: $brand_color;
     display: flex;
     flex: 1 0 340px;
     flex-direction: column;
@@ -33,10 +33,10 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: $accent-color;
+      background-color: $brand_color;
 
       * {
-        color: $accent-color-hover-text;
+        color: $brand_text_color;
         text-decoration: none;
       }
     }
@@ -52,12 +52,12 @@
         position: relative;
       }
 
-      a { color: $text-color; }
+      a { color: $text_color; }
     }
   }
 
   &-item-link {
-    color: $accent-color;
+    color: $brand_color;
     padding: 20px 30px;
 
     &:hover,

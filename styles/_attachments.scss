@@ -10,7 +10,7 @@
 
     &::before {
       @extend .icon;
-      color: $text-color;
+      color: $text_color;
       content: "\1F4CE";
       font-size: $font-size-base;
       left: 0;
