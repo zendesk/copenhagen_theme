@@ -10,13 +10,13 @@
       "type": "color",
       "description": "Brand color for major navigational elements",
       "label": "Brand color",
-      "value": "#7B7B7B"
+      "value": "#0072EF"
     }, {
       "identifier": "brand_text_color",
       "type": "color",
       "description": "Brand color for hover and active states",
       "label": "Brand text color",
-      "value": "#404040"
+      "value": "#FFFFFF"
     }, {
       "identifier": "text_color",
       "type": "color",
@@ -28,7 +28,7 @@
       "type": "color",
       "description": "Text color for link elements",
       "label": "Link color",
-      "value": "#1A74B0"
+      "value": "#0072EF"
     }, {
       "identifier": "background_color",
       "type": "color",
