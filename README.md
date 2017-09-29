@@ -2,7 +2,8 @@
 
 NOTE: These files are not yet the source of truth for Copenhagen theme.
 
-The Copenhagen theme is a responsive theme for Zendesk Guide.
+The Copenhagen theme is a responsive theme for Zendesk Guide. It is designed to be used together with [Theming Center](https://support.zendesk.com/hc/en-us/community/topics/115000528387-Zendesk-Guide-beta-Theming-Center)
+
 You can see the theme live [here](https://copenhagentheme.zendesk.com/hc/en-us).
 
 The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
@@ -48,6 +49,29 @@ You would see two setting groups with a variable each in your theme inside Themi
 ![Manifest](https://zendesk.box.com/s/7hq7ohd7dt5buh56izawxipybi41fs80)
 
 You can read more about the manifest file [here](https://support.zendesk.com/hc/en-us/articles/115012547687--THEMING-CENTER-BETA-Settings-manifest-reference)
+
+### Settings folder
+If in your manifest file you would like to have variables of type `file`, you need to provide a fallback for that variable and have it in the `/settings` folder, this file will be used and shown in the settings panel until another one is uploaded.
+Ex.
+If you would like to have a variable for the background image of a section, the variable in your manifest file would look something like this:
+
+```js
+{
+  ...
+  "settings": [{
+    "label": "Images",
+    "variables": [{
+      "identifier": "background_image",
+      "type": "file",
+      "description": "Background image for X section",
+      "label": "Background image",
+    }]
+  }]
+}
+
+```
+
+And this would look for a file inside the settings folder named: `background_image`
 
 ### Adding assets
 You can add assets to the asset folder and use them in your CSS, Javascript and templates.
@@ -103,6 +127,7 @@ These includes:
 
 # Using SASS
 In order to use SASS for development, you just need to compile it into the CSS that Theming Center understands.
+Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does not support live SASS compilation.
 
 ## Requirements
 
