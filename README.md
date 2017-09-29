@@ -1,7 +1,5 @@
 # Copenhagen Theme by Zendesk
 
-NOTE: These files are not yet the source of truth for Copenhagen theme.
-
 The Copenhagen theme is a responsive theme for Zendesk Guide. It is designed to be used together with [Theming Center](https://support.zendesk.com/hc/en-us/community/topics/115000528387-Zendesk-Guide-beta-Theming-Center)
 
 You can see the theme live [here](https://copenhagentheme.zendesk.com/hc/en-us).
@@ -15,7 +13,7 @@ This is the latest version of the Copenhagen theme available for Guide. It is po
 Once you have forked this repository you can feel free to edit templates, CSS in `style.css` (if you would like to use SASS go to the [Using SASS section](#using-sass)), javascript and manage assets.
 
 ### Manifest file
-The manifest file allows you to add settings to your theme and change the values of these settings through the UI.
+The manifest allows you to define a group of settings for your theme that can then be changed via the UI in Theming Center.
 For example, if you update the manifest file to look like this and you then import your theme to Theming Center:
 ```js
 {
@@ -51,7 +49,7 @@ You would see two setting groups with a variable each in your theme inside Themi
 You can read more about the manifest file [here](https://support.zendesk.com/hc/en-us/articles/115012547687--THEMING-CENTER-BETA-Settings-manifest-reference)
 
 ### Settings folder
-If in your manifest file you would like to have variables of type `file`, you need to provide a fallback for that variable and have it in the `/settings` folder, this file will be used and shown in the settings panel until another one is uploaded.
+If you have a variable of type file, you need to provide a default file for that variable in the `/settings` folder. This file will be used on the settings panel by default and users can upload a different file if they like.
 Ex.
 If you would like to have a variable for the background image of a section, the variable in your manifest file would look something like this:
 
@@ -72,6 +70,7 @@ If you would like to have a variable for the background image of a section, the 
 ```
 
 And this would look for a file inside the settings folder named: `background_image`
+You can find more information about adding assets [here](https://support.zendesk.com/hc/en-us/articles/115012399428--THEMING-CENTER-BETA-Using-your-own-theme-assets-for-Help-Center)
 
 ### Adding assets
 You can add assets to the asset folder and use them in your CSS, Javascript and templates.
