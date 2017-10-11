@@ -1,0 +1,155 @@
+#
+# This file is part of the internal Zendesk translation system. It is used to generate the
+# translations/*.json files in the Copenhagen theme GitHub repository.
+#
+# If you are building your own theme, you should remove this file and modify
+# translation/*.json files directly.
+#
+
+---
+title: "Help Center Copenhagen theme"
+packages:
+  - default
+  - help_center_copenhagen_theme
+
+parts:
+  - translation:
+      key: "txt.help_center_copenhagen_theme.colors_group_label"
+      title: "Label for the color setting group"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Colors"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.brand_color_description"
+      title: "Description for the brand color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Brand color for major navigational elements"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.brand_color_label"
+      title: "Label for the brand color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Brand color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.brand_text_color_description"
+      title: "Description for the brand text color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Brand color for hover and active states"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.brand_text_color_label"
+      title: "Label for the brand text color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Brand text color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.text_color_description"
+      title: "Description for the text color settings"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Text color for body and heading elements"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.text_color_label"
+      title: "Label for the text color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Text color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.link_color_description"
+      title: "Description for the link color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Text color for link elements"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.link_color_label"
+      title: "Label for the link color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Link color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.background_color_description"
+      title: "Description for the background color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Background color of your Help Center"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.background_color_label"
+      title: "Label for the background color setting"
+      screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
+      value: "Background color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.fonts_group_label"
+      title: "Label for the fonts setting group"
+      screenshot: "https://zendesk.box.com/s/l203jfwo8m7tcurohau3xwdr4gflneo3"
+      value: "Fonts"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.heading_font_description"
+      title: "Description for the heading font setting"
+      screenshot: "https://zendesk.box.com/s/l203jfwo8m7tcurohau3xwdr4gflneo3"
+      value: "Font for headings"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.heading_font_label"
+      title: "Label for the heading font setting"
+      screenshot: "https://zendesk.box.com/s/l203jfwo8m7tcurohau3xwdr4gflneo3"
+      value: "Heading Font"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.text_font_description"
+      title: "Description for the text font setting"
+      screenshot: "https://zendesk.box.com/s/l203jfwo8m7tcurohau3xwdr4gflneo3"
+      value: "Font for body text"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.text_font_label"
+      title: "Label for the text font setting"
+      screenshot: "https://zendesk.box.com/s/l203jfwo8m7tcurohau3xwdr4gflneo3"
+      value: "Text Font"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.brand_group_label"
+      title: "Label for the brand settings group"
+      screenshot: "https://zendesk.box.com/s/cffw5at7onzirw9g54kmecdji28zk02x"
+      value: "Brand"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.logo_description"
+      title: "Description for the logo setting"
+      screenshot: "https://zendesk.box.com/s/cffw5at7onzirw9g54kmecdji28zk02x"
+      value: "Company logo"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.logo_label"
+      title: "Label for the logo setting"
+      screenshot: "https://zendesk.box.com/s/cffw5at7onzirw9g54kmecdji28zk02x"
+      value: "Logo"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.favicon_description"
+      title: "Description for the favicon setting"
+      screenshot: "https://zendesk.box.com/s/cffw5at7onzirw9g54kmecdji28zk02x"
+      value: "Icon displayed in the address bar of your browser"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.favicon_label"
+      title: "Label for the favicon setting"
+      screenshot: "https://zendesk.box.com/s/cffw5at7onzirw9g54kmecdji28zk02x"
+      value: "Favicon"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.images_group_label"
+      title: "Label for the images settings group"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Images"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.homepage_background_image_description"
+      title: "Description for the homepage background image setting"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Hero image on the home page"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.homepage_background_image_label"
+      title: "Label for the homepage background image setting"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Home hero image"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.community_background_image_description"
+      title: "Description for the community background image setting"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Hero image on the community topics page"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.community_background_image_label"
+      title: "Label for the community background image setting"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Community hero image"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.community_image_description"
+      title: "Description for the community image setting"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Image for the community section on the home page"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.community_image_label"
+      title: "Label for the community image setting"
+      screenshot: "https://zendesk.box.com/s/9kigi6qd5ufgskmqtefk0cfpgrmxn78y"
+      value: "Community banner"
