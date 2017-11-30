@@ -138,7 +138,7 @@ Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does n
 
 Now you can compile your SASS files running:
 ```
-./bin/compile
+./bin/compile.rb
 ```
 Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Theming Center.
 
