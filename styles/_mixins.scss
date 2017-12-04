@@ -55,7 +55,7 @@
   }
 
   // Sub level list
-  ul > ul, ol > ol, ol > ul, ul > ol {
+  ul > ul, ol > ol, ol > ul, ul > ol, li > ul, li > ol {
     margin: 0;
   }
 
