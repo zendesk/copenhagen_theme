@@ -144,3 +144,4 @@ Which will take all the `scss` files inside the `styles/` folder and create the 
 
 # Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
+Please mention @zendesk/delta when creating a bug report or a pull request.
