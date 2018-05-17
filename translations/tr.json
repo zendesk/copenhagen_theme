@@ -21,10 +21,10 @@
   "favicon_description": "Tarayıcınızın adres çubuğunda görüntülenen simge",
   "favicon_label": "Site simgesi",
   "images_group_label": "Resimler",
-  "homepage_background_image_description": "Ana sayfadaki kahraman resmi",
-  "homepage_background_image_label": "Ana sayfa kahraman resmi",
-  "community_background_image_description": "Topluluk konuları sayfasındaki kahraman resmi",
-  "community_background_image_label": "Topluluk kahramanı resmi",
+  "homepage_background_image_description": "Ana sayfadaki büyük başlık resmi",
+  "homepage_background_image_label": "Ana sayfa büyük başlık resmi",
+  "community_background_image_description": "Topluluk konuları sayfasındaki büyük başlık resmi",
+  "community_background_image_label": "Topluluk büyük başlık resmi",
   "community_image_description": "Ana sayfadaki topluluk bölümü için resim",
   "community_image_label": "Topluluk başlık resmi"
 }

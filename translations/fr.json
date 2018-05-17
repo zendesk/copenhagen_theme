@@ -8,7 +8,7 @@
   "text_color_label": "Couleur du texte",
   "link_color_description": "Couleur du texte pour les liens",
   "link_color_label": "Couleur des liens",
-  "background_color_description": "Couleur d’arrière-plan de votre centre d’aide",
+  "background_color_description": "Couleur d’arrière-plan de votre Centre d’aide",
   "background_color_label": "Couleur d’arrière-plan",
   "fonts_group_label": "Polices",
   "heading_font_description": "Police pour les titres",
@@ -22,9 +22,9 @@
   "favicon_label": "Favicon",
   "images_group_label": "Images",
   "homepage_background_image_description": "Image de héros sur la page d’accueil",
-  "homepage_background_image_label": "Image de héros de la page d’accueil",
+  "homepage_background_image_label": "Hero image de la page d’accueil",
   "community_background_image_description": "Image de héros sur la page des sujets de la communauté",
-  "community_background_image_label": "Image de héros pour la communauté",
+  "community_background_image_label": "Hero image pour la communauté",
   "community_image_description": "Image pour la section Communauté de la page d’accueil",
   "community_image_label": "Bannière Communauté"
 }
