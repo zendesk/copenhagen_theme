@@ -21,10 +21,10 @@
   "favicon_description": "ブラウザのアドレスバーに表示するアイコン",
   "favicon_label": "ファビコン",
   "images_group_label": "画像",
-  "homepage_background_image_description": "ホームページのヒーロー画像",
-  "homepage_background_image_label": "ホームページヒーロー画像",
-  "community_background_image_description": "コミュニティのトピックページのヒーロー画像",
-  "community_background_image_label": "コミュニティヒーロー画像",
+  "homepage_background_image_description": "ホームページのトップイメージ",
+  "homepage_background_image_label": "ホームページトップイメージ",
+  "community_background_image_description": "コミュニティのトピックページのトップイメージ",
+  "community_background_image_label": "コミュニティトップイメージ",
   "community_image_description": "ホームページのコミュニティセクションの画像",
   "community_image_label": "コミュニティバナー"
 }
