@@ -21,10 +21,10 @@
   "favicon_description": "Pictogram dat wordt weergegeven op de adresbalk van uw browser",
   "favicon_label": "Favicon",
   "images_group_label": "Afbeeldingen",
-  "homepage_background_image_description": "Held-afbeelding op startpagina",
-  "homepage_background_image_label": "Held-afbeelding op startpagina",
-  "community_background_image_description": "Held-afbeelding op de communitypagina met onderwerpen",
-  "community_background_image_label": "Afbeelding van community-held",
+  "homepage_background_image_description": "Hero image op de startpagina",
+  "homepage_background_image_label": "Hero image startpagina",
+  "community_background_image_description": "Hero image op de community pagina met onderwerpen",
+  "community_background_image_label": "Hero image Community",
   "community_image_description": "Afbeelding voor het communitygedeelte op de startpagina",
   "community_image_label": "Banner voor community"
 }
