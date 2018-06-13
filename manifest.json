@@ -119,5 +119,14 @@
       "description": "community_image_description",
       "label": "community_image_label"
     }]
+  }, {
+    "label": "element_visibility_group_label",
+    "variables": [{
+      "identifier": "instant_search_enabled",
+      "type": "checkbox",
+      "description": "instant_search_visibility_description",
+      "label": "instant_search_visibility_label",
+      "value": true
+    }]
   }]
 }
