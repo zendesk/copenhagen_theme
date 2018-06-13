@@ -63,7 +63,9 @@
     </section>
   {{/if}}
 
-  <section class="section activity">
-    {{recent_activity}}
-  </section>
+  {{#if settings.show_recent_activity}}
+    <section class="section activity">
+      {{recent_activity}}
+    </section>
+  {{/if}}
 </div>

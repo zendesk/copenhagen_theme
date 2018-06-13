@@ -72,11 +72,13 @@
     </section>
   {{/if}}
 
-  <section class="community-activity activity">
-    {{#if help_center.community_enabled}}
-      {{recent_activity scope='community'}}
-    {{/if}}
-  </section>
+  {{#if settings.show_recent_activity}}
+    <section class="community-activity activity">
+      {{#if help_center.community_enabled}}
+        {{recent_activity scope='community'}}
+      {{/if}}
+    </section>
+  {{/if}}
 
   <section class="container community-footer">
     <h4>{{t 'suggest_new_post'}}</h4>

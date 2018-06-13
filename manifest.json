@@ -133,6 +133,12 @@
       "description": "related_articles_visibility_description",
       "label": "related_articles_visibility_label",
       "value": true
+    }, {
+      "identifier": "show_recent_activity",
+      "type": "checkbox",
+      "description": "recent_activity_visibility_description",
+      "label": "recent_activity_visibility_label",
+      "value": true
     }]
   }]
 }
