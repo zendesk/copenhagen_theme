@@ -145,6 +145,12 @@
       "description": "recently_viewed_visibility_description",
       "label": "recently_viewed_visibility_label",
       "value": true
+    }, {
+      "identifier": "show_articles_in_sections",
+      "type": "checkbox",
+      "description": "articles_in_sections_visibility_description",
+      "label": "articles_in_sections_visibility_label",
+      "value": true
     }]
   }]
 }

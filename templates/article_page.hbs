@@ -7,6 +7,7 @@
 
   <div class="article-container" id="article-container">
     <section class="article-sidebar">
+      {{#if settings.show_articles_in_sections}}
       <section class="section-articles collapsible-sidebar">
         <h3 class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
         <ul>
@@ -20,6 +21,7 @@
           <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
         {{/if}}
       </section>
+    {{/if}}
     </section>
 
     <article class="article">
