@@ -31,11 +31,13 @@
                     {{/each}}
                   </ol>
                 </li>
-                <li class="meta-data">
-                  {{#link 'user_profile' id=author.id}}
-                    {{author.name}}
-                  {{/link}}
-                </li>
+                {{#if ../settings.show_author}}
+                  <li class="meta-data">
+                    {{#link 'user_profile' id=author.id}}
+                      {{author.name}}
+                    {{/link}}
+                  </li>
+                {{/if}}
                 <li class="meta-data">{{date created_at timeago=true}}</li>
               </ul>
               <div class="search-result-description">{{text}}</div>
@@ -73,11 +75,13 @@
                       {{/each}}
                     </ol>
                   </li>
-                  <li class="meta-data">
-                    {{#link 'user_profile' id=author.id}}
-                      {{author.name}}
-                    {{/link}}
-                  </li>
+                  {{#if ../settings.show_author}}
+                    <li class="meta-data">
+                      {{#link 'user_profile' id=author.id}}
+                        {{author.name}}
+                      {{/link}}
+                    </li>
+                  {{/if}}
                   <li class="meta-data">{{date created_at timeago=true}}</li>
                 </ul>
                 <div class="search-result-description">

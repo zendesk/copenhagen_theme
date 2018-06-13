@@ -74,7 +74,9 @@
             </span>
 
             <ul class="meta-group">
-              <li class="meta-data">{{author.name}}</li>
+              {{#if ../settings.show_author}}
+                <li class="meta-data">{{author.name}}</li>
+              {{/if}}
               {{#if editor}}
                 <li class="meta-data">{{date edited_at timeago=true}}</li>
                 <li class="meta-data">{{t 'edited'}}</li>

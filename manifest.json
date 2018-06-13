@@ -151,6 +151,12 @@
       "description": "articles_in_sections_visibility_description",
       "label": "articles_in_sections_visibility_label",
       "value": true
+    }, {
+      "identifier": "show_author",
+      "type": "checkbox",
+      "description": "author_visibility_description",
+      "label": "author_visibility_label",
+      "value": true
     }]
   }]
 }

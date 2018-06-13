@@ -34,16 +34,20 @@
         </h1>
 
         <div class="article-author">
-          <div class="avatar article-avatar">
-            {{#if article.author.agent}}
-              <span class="icon-agent"></span>
-            {{/if}}
-            <img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
-          </div>
+          {{#if settings.show_author}}
+            <div class="avatar article-avatar">
+                {{#if article.author.agent}}
+                  <span class="icon-agent"></span>
+                {{/if}}
+                <img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+            </div>
+          {{/if}}
           <div class="article-meta">
-            {{#link 'user_profile' id=article.author.id}}
-              {{article.author.name}}
-            {{/link}}
+            {{#if settings.show_author}}
+              {{#link 'user_profile' id=article.author.id}}
+                {{article.author.name}}
+              {{/link}}
+            {{/if}}
 
             <ul class="meta-group">
               {{#is article.created_at article.edited_at}}

@@ -561,6 +561,7 @@ ul {
 .avatar {
   display: inline-block;
   position: relative;
+  margin-right: 10px;
 }
 
 .avatar img {
@@ -1228,7 +1229,6 @@ ul {
 
 .article-meta {
   display: inline-block;
-  margin-left: 10px;
   vertical-align: middle;
 }
 
