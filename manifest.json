@@ -127,6 +127,12 @@
       "description": "instant_search_visibility_description",
       "label": "instant_search_visibility_label",
       "value": true
+    }, {
+      "identifier": "show_related_articles",
+      "type": "checkbox",
+      "description": "related_articles_visibility_description",
+      "label": "related_articles_visibility_label",
+      "value": true
     }]
   }]
 }

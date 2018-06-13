@@ -109,7 +109,9 @@
 
       <section class="article-relatives">
         {{recent_articles}}
-        {{related_articles}}
+        {{#if settings.show_related_articles}}
+          {{related_articles}}
+        {{/if}}
       </section>
       <div class="article-comments" id="article-comments">
         <section class="comments">
