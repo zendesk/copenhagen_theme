@@ -108,7 +108,9 @@
       </footer>
 
       <section class="article-relatives">
-        {{recent_articles}}
+        {{#if settings.show_recently_viewed}}
+          {{recent_articles}}
+        {{/if}}
         {{#if settings.show_related_articles}}
           {{related_articles}}
         {{/if}}

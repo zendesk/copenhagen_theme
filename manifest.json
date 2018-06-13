@@ -139,6 +139,12 @@
       "description": "recent_activity_visibility_description",
       "label": "recent_activity_visibility_label",
       "value": true
+    }, {
+      "identifier": "show_recently_viewed",
+      "type": "checkbox",
+      "description": "recently_viewed_visibility_description",
+      "label": "recently_viewed_visibility_label",
+      "value": true
     }]
   }]
 }
