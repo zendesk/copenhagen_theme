@@ -120,14 +120,29 @@
       "label": "community_image_label"
     }]
   }, {
-    "label": "element_visibility_group_label",
-    "variables": [{
-      "identifier": "instant_search_enabled",
+    "label": "search_group_label",
+    "variables":[{
+      "identifier": "instant_search",
       "type": "checkbox",
-      "description": "instant_search_visibility_description",
-      "label": "instant_search_visibility_label",
+      "description": "instant_search_description",
+      "label": "instant_search_label",
       "value": true
     }, {
+      "identifier": "scoped_hc_search",
+      "type": "checkbox",
+      "description": "scoped_help_center_search_description",
+      "label": "scoped_help_center_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_community_search",
+      "type": "checkbox",
+      "description": "scoped_community_search_description",
+      "label": "scoped_community_search_label",
+      "value": true
+    }]
+  }, {
+    "label": "element_visibility_group_label",
+    "variables": [{
       "identifier": "show_related_articles",
       "type": "checkbox",
       "description": "related_articles_visibility_description",
