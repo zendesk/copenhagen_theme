@@ -119,5 +119,26 @@
       "description": "community_image_description",
       "label": "community_image_label"
     }]
+  }, {
+    "label": "search_group_label",
+    "variables":[{
+      "identifier": "instant_search",
+      "type": "checkbox",
+      "description": "instant_search_description",
+      "label": "instant_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_kb_search",
+      "type": "checkbox",
+      "description": "scoped_knowledge_base_search_description",
+      "label": "scoped_knowledge_base_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_community_search",
+      "type": "checkbox",
+      "description": "scoped_community_search_description",
+      "label": "scoped_community_search_label",
+      "value": true
+    }]
   }]
 }
