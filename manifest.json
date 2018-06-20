@@ -195,6 +195,15 @@
       "value": true
     }]
   }, {
+    "label": "section_page_group_label",
+    "variables": [{
+      "identifier": "show_follow_section",
+      "type": "checkbox",
+      "description": "follow_section_description",
+      "label": "follow_section_label",
+      "value": true
+    }]
+  }, {
     "label": "community_post_group_label",
     "variables": [{
       "identifier": "show_follow_post",

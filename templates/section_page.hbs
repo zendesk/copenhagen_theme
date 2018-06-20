@@ -14,7 +14,9 @@
             <span class="icon-lock" title="{{t 'internal'}}"></span>
           {{/if}}
         </h1>
-        {{subscribe}}
+        {{#if settings.show_follow_section}}
+          {{subscribe}}
+        {{/if}}
         {{#if section.description}}
           <p class="page-header-description">{{section.description}}</p>
         {{/if}}
