@@ -194,5 +194,20 @@
       "label": "article_sharing_label",
       "value": true
     }]
+  }, {
+    "label": "community_post_group_label",
+    "variables": [{
+      "identifier": "show_follow_post",
+      "type": "checkbox",
+      "description": "follow_post_description",
+      "label": "follow_post_label",
+      "value": true
+    }, {
+      "identifier": "show_post_sharing",
+      "type": "checkbox",
+      "description": "post_sharing_description",
+      "label": "post_sharing_label",
+      "value": true
+    }]
   }]
 }
