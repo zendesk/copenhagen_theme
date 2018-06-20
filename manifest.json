@@ -218,5 +218,14 @@
       "label": "post_sharing_label",
       "value": true
     }]
+  }, {
+    "label": "community_topic_group_label",
+    "variables": [{
+      "identifier": "show_follow_topic",
+      "type": "checkbox",
+      "description": "follow_topic_description",
+      "label": "follow_topic_label",
+      "value": true
+    }]
   }]
 }
