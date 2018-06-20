@@ -561,6 +561,7 @@ ul {
 .avatar {
   display: inline-block;
   position: relative;
+  margin-right: 10px;
 }
 
 .avatar img {
@@ -1156,10 +1157,11 @@ ul {
 
 @media (min-width: 1024px) {
   .article {
-    flex: 1 0 66%;
+    flex: 1;
     max-width: 66%;
     min-width: 640px;
     padding: 0 30px;
+    margin: 0 auto;
   }
 }
 
@@ -1202,6 +1204,10 @@ ul {
   }
 }
 
+.article-title.no-author {
+  margin-bottom: 0.067em;
+}
+
 .article-title .icon-lock::before {
   content: "\1F512";
   font-size: 20px;
@@ -1228,7 +1234,6 @@ ul {
 
 .article-meta {
   display: inline-block;
-  margin-left: 10px;
   vertical-align: middle;
 }
 

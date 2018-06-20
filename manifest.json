@@ -149,5 +149,50 @@
       "label": "recent_activity_label",
       "value": true
     }]
+  }, {
+    "label": "article_page_group_label",
+    "variables": [{
+      "identifier": "show_articles_in_section",
+      "type": "checkbox",
+      "description": "articles_in_section_description",
+      "label": "articles_in_section_label",
+      "value": true
+    }, {
+      "identifier": "show_article_author",
+      "type": "checkbox",
+      "description": "article_author_description",
+      "label": "article_author_label",
+      "value": true
+    }, {
+      "identifier": "show_article_comments",
+      "type": "checkbox",
+      "description": "article_comments_description",
+      "label": "article_comments_label",
+      "value": true
+    }, {
+      "identifier": "show_follow_article",
+      "type": "checkbox",
+      "description": "follow_article_description",
+      "label": "follow_article_label",
+      "value": true
+    }, {
+      "identifier": "show_recently_viewed_articles",
+      "type": "checkbox",
+      "description": "recently_viewed_articles_description",
+      "label": "recently_viewed_articles_label",
+      "value": true
+    }, {
+      "identifier": "show_related_articles",
+      "type": "checkbox",
+      "description": "related_articles_description",
+      "label": "related_articles_label",
+      "value": true
+    }, {
+      "identifier": "show_article_sharing",
+      "type": "checkbox",
+      "description": "article_sharing_description",
+      "label": "article_sharing_label",
+      "value": true
+    }]
   }]
 }
