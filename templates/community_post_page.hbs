@@ -2,7 +2,7 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search scoped=true submit=false}}
+    {{search scoped=settings.scoped_community_search submit=false}}
   </nav>
 
   <div class="post-container">
@@ -35,18 +35,22 @@
         <section class="post-info-container">
           <div class="post-info">
             <div class="post-author">
-              <div class="avatar post-avatar">
-                {{#if post.author.agent}}
-                  <span class="icon-agent"></span>
-                {{/if}}
-                <img src="{{post.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
-              </div>
+              {{#if settings.show_author}}
+                <div class="avatar post-avatar">
+                    {{#if post.author.agent}}
+                      <span class="icon-agent"></span>
+                    {{/if}}
+                    <img src="{{post.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                </div>
+              {{/if}}
               <div class="post-meta">
-                <span title="{{post.author.name}}">
-                  {{#link 'user_profile' id=post.author.id}}
-                    {{post.author.name}}
-                  {{/link}}
-                </span>
+                {{#if settings.show_author}}
+                  <span title="{{post.author.name}}">
+                    {{#link 'user_profile' id=post.author.id}}
+                      {{post.author.name}}
+                    {{/link}}
+                  </span>
+                {{/if}}
 
                 <ul class="meta-group">
                   {{#if post.editor}}

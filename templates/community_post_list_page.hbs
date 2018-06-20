@@ -84,7 +84,9 @@
             </span>
 
             <ul class="meta-group">
-              <li class="meta-data">{{author.name}}</li>
+              {{#if ../settings.show_author}}
+                <li class="meta-data">{{author.name}}</li>
+              {{/if}}
               {{#if editor}}
                 <li class="meta-data">{{date edited_at timeago=true}}</li>
                 <li class="meta-data">{{t 'edited'}}</li>
@@ -126,11 +128,13 @@
     </section>
   {{/if}}
 
-  <section class="community-activity activity">
-    {{#if help_center.community_enabled}}
-      {{recent_activity scope='community'}}
-    {{/if}}
-  </section>
+  {{#if settings.show_recent_activity}}
+    <section class="community-activity activity">
+      {{#if help_center.community_enabled}}
+        {{recent_activity scope='community'}}
+      {{/if}}
+    </section>
+  {{/if}}
 
   <section class="container community-footer">
     <h4>{{t 'suggest_new_post'}}</h4>

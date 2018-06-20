@@ -119,5 +119,59 @@
       "description": "community_image_description",
       "label": "community_image_label"
     }]
+  }, {
+    "label": "search_group_label",
+    "variables":[{
+      "identifier": "instant_search",
+      "type": "checkbox",
+      "description": "instant_search_description",
+      "label": "instant_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_hc_search",
+      "type": "checkbox",
+      "description": "scoped_help_center_search_description",
+      "label": "scoped_help_center_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_community_search",
+      "type": "checkbox",
+      "description": "scoped_community_search_description",
+      "label": "scoped_community_search_label",
+      "value": true
+    }]
+  }, {
+    "label": "element_visibility_group_label",
+    "variables": [{
+      "identifier": "show_related_articles",
+      "type": "checkbox",
+      "description": "related_articles_visibility_description",
+      "label": "related_articles_visibility_label",
+      "value": true
+    }, {
+      "identifier": "show_recent_activity",
+      "type": "checkbox",
+      "description": "recent_activity_visibility_description",
+      "label": "recent_activity_visibility_label",
+      "value": true
+    }, {
+      "identifier": "show_recently_viewed",
+      "type": "checkbox",
+      "description": "recently_viewed_visibility_description",
+      "label": "recently_viewed_visibility_label",
+      "value": true
+    }, {
+      "identifier": "show_articles_in_sections",
+      "type": "checkbox",
+      "description": "articles_in_sections_visibility_description",
+      "label": "articles_in_sections_visibility_label",
+      "value": true
+    }, {
+      "identifier": "show_author",
+      "type": "checkbox",
+      "description": "author_visibility_description",
+      "label": "author_visibility_label",
+      "value": true
+    }]
   }]
 }

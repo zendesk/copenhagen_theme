@@ -2,11 +2,12 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search scoped=true submit=false}}
+    {{search scoped=settings.scoped_hc_search submit=false}}
   </nav>
 
   <div class="article-container" id="article-container">
     <section class="article-sidebar">
+      {{#if settings.show_articles_in_sections}}
       <section class="section-articles collapsible-sidebar">
         <h3 class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
         <ul>
@@ -20,6 +21,7 @@
           <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
         {{/if}}
       </section>
+    {{/if}}
     </section>
 
     <article class="article">
@@ -32,16 +34,20 @@
         </h1>
 
         <div class="article-author">
-          <div class="avatar article-avatar">
-            {{#if article.author.agent}}
-              <span class="icon-agent"></span>
-            {{/if}}
-            <img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
-          </div>
+          {{#if settings.show_author}}
+            <div class="avatar article-avatar">
+                {{#if article.author.agent}}
+                  <span class="icon-agent"></span>
+                {{/if}}
+                <img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+            </div>
+          {{/if}}
           <div class="article-meta">
-            {{#link 'user_profile' id=article.author.id}}
-              {{article.author.name}}
-            {{/link}}
+            {{#if settings.show_author}}
+              {{#link 'user_profile' id=article.author.id}}
+                {{article.author.name}}
+              {{/link}}
+            {{/if}}
 
             <ul class="meta-group">
               {{#is article.created_at article.edited_at}}
@@ -108,8 +114,12 @@
       </footer>
 
       <section class="article-relatives">
-        {{recent_articles}}
-        {{related_articles}}
+        {{#if settings.show_recently_viewed}}
+          {{recent_articles}}
+        {{/if}}
+        {{#if settings.show_related_articles}}
+          {{related_articles}}
+        {{/if}}
       </section>
       <div class="article-comments" id="article-comments">
         <section class="comments">
