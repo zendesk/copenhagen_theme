@@ -212,7 +212,7 @@ parts:
       key: "txt.help_center_copenhagen_theme.articles_in_section_label"
       title: "Label for the articles in section setting"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
-      value: "Articles in Section"
+      value: "Articles in section"
   - translation:
       key: "txt.help_center_copenhagen_theme.articles_in_section_description"
       title: "Description for the articles in section setting"
