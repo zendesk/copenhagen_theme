@@ -247,7 +247,7 @@ parts:
       key: "txt.help_center_copenhagen_theme.follow_article_description"
       title: "Description for the follow article setting"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
-      value: "Users can follow a specifc article"
+      value: "Users can follow a specific article"
   - translation:
       key: "txt.help_center_copenhagen_theme.recently_viewed_articles_label"
       title: "Label for the recently viewed articles setting"
