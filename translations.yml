@@ -298,6 +298,12 @@ parts:
       title: "Label for the community post elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Community post elements"
+      obsolete: "2018-08-10"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.community_post_group_label"
+      title: "Label for the community post elements settings group"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Community post elements"
   - translation:
       key: "txt.help_center_copenhagen_theme.follow_post_label"
       title: "Label for the follow post setting"
@@ -320,6 +326,12 @@ parts:
       value: "Show social media sharing on post"
   - translation:
       key: "txt.help_center_copenhagen_theme.comunity_topic_group_label"
+      title: "Label for the community topic elements settings group"
+      screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
+      value: "Community topics elements"
+      obsolete: "2018-08-10"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.community_topic_group_label"
       title: "Label for the community topic elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Community topics elements"
