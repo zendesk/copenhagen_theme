@@ -334,7 +334,7 @@ parts:
       key: "txt.help_center_copenhagen_theme.community_topic_group_label"
       title: "Label for the community topic elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
-      value: "Community topics elements"
+      value: "Community topic elements"
   - translation:
       key: "txt.help_center_copenhagen_theme.follow_topic_label"
       title: "Label for the follow topic setting"
