@@ -55,12 +55,12 @@
   "section_page_group_label": "Елементи на страницата на раздел",
   "follow_section_label": "Следене",
   "follow_section_description": "Потребителите могат да следят конкретен раздел",
-  "comunity_post_group_label": "Елементи на постингите в общността",
+  "community_post_group_label": "Елементи на постингите в общността",
   "follow_post_label": "Следене",
   "follow_post_description": "Потребителите могат да следят конкретен постинг",
   "post_sharing_label": "Социални мрежи",
   "post_sharing_description": "Показване на икони за споделяне на постинга в социални мрежи",
-  "comunity_topic_group_label": "Елементи на темите в общността",
+  "community_topic_group_label": "Елементи на темите в общността",
   "follow_topic_label": "Следене",
   "follow_topic_description": "Потребителите могат да следят конкретна тема"
 }

@@ -55,12 +55,12 @@
   "section_page_group_label": "Section page elements",
   "follow_section_label": "Follow",
   "follow_section_description": "Users can follow a specific section",
-  "comunity_post_group_label": "Community post elements",
+  "community_post_group_label": "Community post elements",
   "follow_post_label": "Follow",
   "follow_post_description": "Users can follow a specific post",
   "post_sharing_label": "Social sharing",
   "post_sharing_description": "Show social media sharing on post",
-  "comunity_topic_group_label": "Community topics elements",
+  "community_topic_group_label": "Community topic elements",
   "follow_topic_label": "Follow",
   "follow_topic_description": "Users can follow a specific topic"
 }

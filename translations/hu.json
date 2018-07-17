@@ -55,12 +55,12 @@
   "section_page_group_label": "Szakaszlap elemei",
   "follow_section_label": "Követés",
   "follow_section_description": "A felhasználók követhetnek egy adott szakaszt",
-  "comunity_post_group_label": "Közösségi bejegyzés elemei",
+  "community_post_group_label": "Közösségi bejegyzések elemei",
   "follow_post_label": "Követés",
   "follow_post_description": "A felhasználók követhetnek egy adott bejegyzést",
   "post_sharing_label": "Közösségi megosztás",
   "post_sharing_description": "Közösségi megosztás lehetőségének megjelenítése a bejegyzéshez",
-  "comunity_topic_group_label": "Közösségi témakörök elemei",
+  "community_topic_group_label": "Közösségi témakörök elemei",
   "follow_topic_label": "Követés",
   "follow_topic_description": "A felhasználók követhetnek egy adott témakört"
 }

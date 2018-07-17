@@ -43,7 +43,7 @@
   "article_author_label": "Autor",
   "article_author_description": "Bild und Namen des Autors anzeigen",
   "article_comments_label": "Kommentare",
-  "article_comments_description": "Kommentare in Beiträgen anzeigen",
+  "article_comments_description": "Kommentare zu Beiträgen anzeigen",
   "follow_article_label": "Folgen",
   "follow_article_description": "Benutzer können einem bestimmten Beitrag folgen",
   "recently_viewed_articles_label": "Zuletzt aufgerufene Beiträge",
@@ -55,12 +55,12 @@
   "section_page_group_label": "Elemente auf Abschnittsseiten",
   "follow_section_label": "Folgen",
   "follow_section_description": "Benutzer können einem bestimmten Abschnitt folgen",
-  "comunity_post_group_label": "Elemente in Community-Posts",
+  "community_post_group_label": "Elemente in Community-Posts",
   "follow_post_label": "Folgen",
   "follow_post_description": "Benutzer können einem bestimmten Post folgen",
   "post_sharing_label": "Teilen auf Social Media",
   "post_sharing_description": "Funktionen zum Teilen auf Social Media in Post anzeigen",
-  "comunity_topic_group_label": "Elemente in Community-Themen",
+  "community_topic_group_label": "Elemente in Community-Themen",
   "follow_topic_label": "Folgen",
   "follow_topic_description": "Benutzer können einem bestimmten Thema folgen"
 }

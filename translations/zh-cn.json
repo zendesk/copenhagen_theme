@@ -55,12 +55,12 @@
   "section_page_group_label": "组别页面元素",
   "follow_section_label": "关注",
   "follow_section_description": "用户可关注特定的组别",
-  "comunity_post_group_label": "社区帖子元素",
+  "community_post_group_label": "社区帖子元素",
   "follow_post_label": "关注",
   "follow_post_description": "用户可关注特定的帖子",
   "post_sharing_label": "社交分享",
-  "post_sharing_description": "显示帖子的社交媒体分享",
-  "comunity_topic_group_label": "社区主题元素",
+  "post_sharing_description": "在帖子显示社交媒体分享功能",
+  "community_topic_group_label": "社区主题元素",
   "follow_topic_label": "关注",
   "follow_topic_description": "用户可关注特定的主题"
 }

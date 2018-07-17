@@ -32,7 +32,7 @@
   "instant_search_description": "Vis foreslåtte artikler i søk",
   "scoped_knowledge_base_search_label": "Begrenset søk i Kunnskapsbase",
   "scoped_knowledge_base_search_description": "Søkeresultater er begrenset til kategorien brukeren er i",
-  "scoped_community_search_label": "Begrenset søk i nettsamfunn",
+  "scoped_community_search_label": "Begrenset søk i Nettsamfunn",
   "scoped_community_search_description": "Søkeresultater er begrenset til emnet brukeren er i",
   "home_page_group_label": "Hjemmesideelementer",
   "recent_activity_label": "Nylig aktivitet",
@@ -55,12 +55,12 @@
   "section_page_group_label": "Seksjonssideelementer",
   "follow_section_label": "Følg",
   "follow_section_description": "Brukere kan følge en bestemt seksjon",
-  "comunity_post_group_label": "Elementer for nettsamfunninnlegg",
+  "community_post_group_label": "Elementer for nettsamfunninnlegg",
   "follow_post_label": "Følg",
   "follow_post_description": "Brukere kan følge et bestemt innlegg",
   "post_sharing_label": "Deling i sosiale medier",
   "post_sharing_description": "Vis hvordan innlegg er delt i sosiale medier",
-  "comunity_topic_group_label": "Elementer for nettsamfunnemner",
+  "community_topic_group_label": "Elementer for nettsamfunnemner",
   "follow_topic_label": "Følg",
   "follow_topic_description": "Brukere kan følge et bestemt emne"
 }

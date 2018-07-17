@@ -32,7 +32,7 @@
   "instant_search_description": "Mostra articoli suggeriti nella ricerca",
   "scoped_knowledge_base_search_label": "Ricerca limitata nella Knowledge base",
   "scoped_knowledge_base_search_description": "Risultati di ricerca limitati alla categoria visualizzata dall’utente",
-  "scoped_community_search_label": "Ricerca limitata nella community",
+  "scoped_community_search_label": "Ricerca limitata nella Community",
   "scoped_community_search_description": "Risultati di ricerca limitati all’argomento visualizzato dall’utente",
   "home_page_group_label": "Elementi home page",
   "recent_activity_label": "Attività recente",
@@ -55,12 +55,12 @@
   "section_page_group_label": "Elementi pagina sezione",
   "follow_section_label": "Segui",
   "follow_section_description": "Gli utenti possono seguire una sezione specifica",
-  "comunity_post_group_label": "Elementi post della community",
+  "community_post_group_label": "Elementi post della community",
   "follow_post_label": "Segui",
   "follow_post_description": "Gli utenti possono seguire un post specifico",
   "post_sharing_label": "Condivisione social media",
   "post_sharing_description": "Mostra condivisione sui social media nel post",
-  "comunity_topic_group_label": "Elementi argomenti della community",
+  "community_topic_group_label": "Elementi argomento della community",
   "follow_topic_label": "Segui",
   "follow_topic_description": "Gli utenti possono seguire un argomento specifico"
 }
