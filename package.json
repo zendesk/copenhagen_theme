@@ -4,5 +4,8 @@
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "dependencies": {
     "node-fetch": "^2.1.2"
+  },
+  "devDependencies": {
+    "js-yaml": "^3.12.0"
   }
 }
