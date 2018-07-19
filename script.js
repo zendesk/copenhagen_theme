@@ -84,11 +84,31 @@ $(document).ready(function() {
     });
   }
 
-  $(".header .icon-menu").on("click", function(e) {
-    e.stopPropagation();
+  function toggleNavigation(toggleElement) {
     var menu = document.getElementById("user-nav");
     var isExpanded = menu.getAttribute("aria-expanded") === "true";
     menu.setAttribute("aria-expanded", !isExpanded);
+    toggleElement.setAttribute("aria-expanded", !isExpanded);
+  }
+
+  $(".header .icon-menu").on("click", function(e) {
+    e.stopPropagation();
+    toggleNavigation(this);
+  });
+
+  $(".header .icon-menu").on("keyup", function(e) {
+    if (e.keyCode === 13) { // Enter key
+      e.stopPropagation();
+      toggleNavigation(this);
+    }
+  });
+
+  $("#user-nav").on("keyup", function(e) {
+    if (e.keyCode === 27) { // Escape key
+      e.stopPropagation();
+      this.setAttribute("aria-expanded", false);
+      $(".header .icon-menu").attr("aria-expanded", false);
+    }
   });
 
   if ($("#user-nav").children().length === 0) {

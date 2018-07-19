@@ -64,13 +64,24 @@ $header-height: 71px;
 
   .icon-menu {
     @include tablet { display: none; }
+    border: 0;
+    color: $link_color;
+    cursor: pointer;
     display: inline-block;
     margin-right: 10px;
-    color: $link_color;
+    padding: 0;
+    width: auto;
 
     [dir="rtl"] & {
       margin-left: 10px;
       margin-right: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+      color: $link_color;
     }
   }
 }
