@@ -36,7 +36,7 @@
             {{#if article.author.agent}}
               <span class="icon-agent"></span>
             {{/if}}
-            <img src="{{article.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+            <img src="{{article.author.avatar_url}}" alt="" class="user-avatar"/>
           </div>
           <div class="article-meta">
             {{#link 'user_profile' id=article.author.id}}
@@ -140,7 +140,7 @@
                         {{#if author.agent}}
                           <span class="icon-agent"></span>
                         {{/if}}
-                        <img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
+                        <img src="{{author.avatar_url}}" alt="" class="user-avatar"/>
                       </div>
                       <div class="comment-meta">
                         <span title="{{author.name}}">
