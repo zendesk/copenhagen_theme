@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -118,6 +118,114 @@
       "type": "file",
       "description": "community_image_description",
       "label": "community_image_label"
+    }]
+  }, {
+    "label": "search_group_label",
+    "variables":[{
+      "identifier": "instant_search",
+      "type": "checkbox",
+      "description": "instant_search_description",
+      "label": "instant_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_kb_search",
+      "type": "checkbox",
+      "description": "scoped_knowledge_base_search_description",
+      "label": "scoped_knowledge_base_search_label",
+      "value": true
+    }, {
+      "identifier": "scoped_community_search",
+      "type": "checkbox",
+      "description": "scoped_community_search_description",
+      "label": "scoped_community_search_label",
+      "value": true
+    }]
+  }, {
+    "label": "home_page_group_label",
+    "variables": [{
+      "identifier": "show_recent_activity",
+      "type": "checkbox",
+      "description": "recent_activity_description",
+      "label": "recent_activity_label",
+      "value": true
+    }]
+  }, {
+    "label": "article_page_group_label",
+    "variables": [{
+      "identifier": "show_articles_in_section",
+      "type": "checkbox",
+      "description": "articles_in_section_description",
+      "label": "articles_in_section_label",
+      "value": true
+    }, {
+      "identifier": "show_article_author",
+      "type": "checkbox",
+      "description": "article_author_description",
+      "label": "article_author_label",
+      "value": true
+    }, {
+      "identifier": "show_article_comments",
+      "type": "checkbox",
+      "description": "article_comments_description",
+      "label": "article_comments_label",
+      "value": true
+    }, {
+      "identifier": "show_follow_article",
+      "type": "checkbox",
+      "description": "follow_article_description",
+      "label": "follow_article_label",
+      "value": true
+    }, {
+      "identifier": "show_recently_viewed_articles",
+      "type": "checkbox",
+      "description": "recently_viewed_articles_description",
+      "label": "recently_viewed_articles_label",
+      "value": true
+    }, {
+      "identifier": "show_related_articles",
+      "type": "checkbox",
+      "description": "related_articles_description",
+      "label": "related_articles_label",
+      "value": true
+    }, {
+      "identifier": "show_article_sharing",
+      "type": "checkbox",
+      "description": "article_sharing_description",
+      "label": "article_sharing_label",
+      "value": true
+    }]
+  }, {
+    "label": "section_page_group_label",
+    "variables": [{
+      "identifier": "show_follow_section",
+      "type": "checkbox",
+      "description": "follow_section_description",
+      "label": "follow_section_label",
+      "value": true
+    }]
+  }, {
+    "label": "community_post_group_label",
+    "variables": [{
+      "identifier": "show_follow_post",
+      "type": "checkbox",
+      "description": "follow_post_description",
+      "label": "follow_post_label",
+      "value": true
+    }, {
+      "identifier": "show_post_sharing",
+      "type": "checkbox",
+      "description": "post_sharing_description",
+      "label": "post_sharing_label",
+      "value": true
+    }]
+  }, {
+    "label": "community_topic_group_label",
+    "variables": [{
+      "identifier": "show_follow_topic",
+      "type": "checkbox",
+      "description": "follow_topic_description",
+      "label": "follow_topic_label",
+      "value": true
     }]
   }]
 }

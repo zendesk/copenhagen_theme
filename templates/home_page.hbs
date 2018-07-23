@@ -1,6 +1,6 @@
 <section class="section hero">
   <div class="hero-inner">
-    {{search submit=false instant=true class='search search-full'}}
+    {{search submit=false instant=settings.instant_search class='search search-full'}}
   </div>
 </section>
 
@@ -64,6 +64,8 @@
   {{/if}}
 
   <section class="section activity">
-    {{recent_activity}}
+    {{#if settings.show_recent_activity}}
+      {{recent_activity}}
+    {{/if}}
   </section>
 </div>

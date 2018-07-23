@@ -2,7 +2,7 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search scoped=true submit=false}}
+    {{search scoped=settings.scoped_community_search submit=false}}
   </nav>
 
   <div class="post-container">
@@ -29,7 +29,9 @@
               <span class="status-label-{{post.status_dasherized}} status-label">{{post.status_name}}</span>
             {{/is}}
           </div>
-          <div class="community-follow">{{subscribe}}</div>
+          {{#if settings.show_follow_post}}
+            <div class="community-follow">{{subscribe}}</div>
+          {{/if}}
         </header>
 
         <section class="post-info-container">
@@ -90,15 +92,17 @@
           </div>
         </section>
 
-        <footer class="post-footer">
-          <div class="post-share">{{share}}</div>
-          {{#if comments}}
-            <a href="#comment-overview" class="post-comment-count">
-              <span class="icon-comments"></span>
-              {{post.comment_count}}
-            </a>
-          {{/if}}
-        </footer>
+        {{#if settings.show_post_sharing}}
+          <footer class="post-footer">
+            <div class="post-share">{{share}}</div>
+            {{#if comments}}
+              <a href="#comment-overview" class="post-comment-count">
+                <span class="icon-comments"></span>
+                {{post.comment_count}}
+              </a>
+            {{/if}}
+          </footer>
+        {{/if}}
       </article>
 
       <section class="comment-overview" id="comment-overview">
