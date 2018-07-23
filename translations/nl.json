@@ -55,12 +55,12 @@
   "section_page_group_label": "Elementen op sectiepagina",
   "follow_section_label": "Volgen",
   "follow_section_description": "Gebruikers kunnen een bepaalde sectie volgen",
-  "comunity_post_group_label": "Elementen van communityberichten",
+  "community_post_group_label": "Elementen van communitybericht",
   "follow_post_label": "Volgen",
   "follow_post_description": "Gebruikers kunnen een bepaald bericht volgen",
   "post_sharing_label": "Delen via sociale netwerken",
   "post_sharing_description": "Delen van bericht via sociale media weergeven",
-  "comunity_topic_group_label": "Elementen van communityonderwerpen",
+  "community_topic_group_label": "Elementen van communityonderwerp",
   "follow_topic_label": "Volgen",
   "follow_topic_description": "Gebruikers kunnen een bepaald onderwerp volgen"
 }

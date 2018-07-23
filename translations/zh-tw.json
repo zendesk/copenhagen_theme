@@ -55,12 +55,12 @@
   "section_page_group_label": "段落頁面元素",
   "follow_section_label": "追蹤",
   "follow_section_description": "使用者可追蹤指定段落",
-  "comunity_post_group_label": "社區貼文元素",
+  "community_post_group_label": "社區貼文元素",
   "follow_post_label": "追蹤",
   "follow_post_description": "使用者可追蹤指定貼文",
   "post_sharing_label": "社群分享",
-  "post_sharing_description": "顯示貼文社群媒體分享",
-  "comunity_topic_group_label": "社區主題元素",
+  "post_sharing_description": "在貼文顯示社群媒體分享功能",
+  "community_topic_group_label": "社區主題元素",
   "follow_topic_label": "追蹤",
   "follow_topic_description": "使用者可追蹤指定主題"
 }

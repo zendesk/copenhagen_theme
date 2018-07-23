@@ -55,12 +55,12 @@
   "section_page_group_label": "Элементы страницы раздела",
   "follow_section_label": "Подписаться",
   "follow_section_description": "Пользователи могут подписаться на определенный раздел",
-  "comunity_post_group_label": "Элементы публикации в сообществе",
+  "community_post_group_label": "Элементы публикации в сообществе",
   "follow_post_label": "Подписаться",
   "follow_post_description": "Пользователи могут подписаться на определенную публикацию",
   "post_sharing_label": "Социальные сети",
   "post_sharing_description": "Показывать социальные сети, в которых опубликована публикация",
-  "comunity_topic_group_label": "Элементы тем в сообществе",
+  "community_topic_group_label": "Элементы темы в сообществе",
   "follow_topic_label": "Подписаться",
   "follow_topic_description": "Пользователи могут подписаться на определенную тему"
 }

@@ -55,12 +55,12 @@
   "section_page_group_label": "Éléments de la page de section",
   "follow_section_label": "S’abonner",
   "follow_section_description": "Les utilisateurs peuvent s’abonner à une section spécifique",
-  "comunity_post_group_label": "Éléments des publications dans la communauté",
+  "community_post_group_label": "Éléments des publications dans la communauté",
   "follow_post_label": "S’abonner",
   "follow_post_description": "Les utilisateurs peuvent s’abonner à une publication spécifique",
   "post_sharing_label": "Partage social",
   "post_sharing_description": "Afficher les partages de la publication sur les réseaux sociaux",
-  "comunity_topic_group_label": "Éléments des sujets de la communauté",
+  "community_topic_group_label": "Éléments des sujets de la communauté",
   "follow_topic_label": "S’abonner",
   "follow_topic_description": "Les utilisateurs peuvent s’abonner à un sujet spécifique"
 }

@@ -55,12 +55,12 @@
   "section_page_group_label": "Elemente pagină de secțiune",
   "follow_section_label": "Urmăresc",
   "follow_section_description": "Utilizatorii pot urmări o anumită secțiune",
-  "comunity_post_group_label": "Elemente postare în Comunitate",
+  "community_post_group_label": "Elemente postare în Comunitate",
   "follow_post_label": "Urmăresc",
   "follow_post_description": "Utilizatorii pot urmări o anumită postare",
   "post_sharing_label": "Partajare în mediile de socializare",
   "post_sharing_description": "Afișare partajare în mediile de socializare la postare",
-  "comunity_topic_group_label": "Elemente subiecte în Comunitate",
+  "community_topic_group_label": "Elemente subiect în Comunitate",
   "follow_topic_label": "Urmăresc",
   "follow_topic_description": "Utilizatorii pot urmări un anumit subiect"
 }

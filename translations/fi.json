@@ -55,12 +55,12 @@
   "section_page_group_label": "Osio-sivun elementit",
   "follow_section_label": "Seuraa",
   "follow_section_description": "Käyttäjät voivat seurata tiettyä osiota",
-  "comunity_post_group_label": "Yhteisöviestielementit",
+  "community_post_group_label": "Yhteisöviestielementit",
   "follow_post_label": "Seuraa",
   "follow_post_description": "Käyttäjät voivat seurata tiettyä viestiä",
   "post_sharing_label": "Sosiaalinen jakaminen",
   "post_sharing_description": "Näytä viestin jakaminen sosiaalisessa mediassa",
-  "comunity_topic_group_label": "Yhteisöaihe-elementit",
+  "community_topic_group_label": "Yhteisöaihe-elementit",
   "follow_topic_label": "Seuraa",
   "follow_topic_description": "Käyttäjät voivat seurata tiettyä aihetta"
 }

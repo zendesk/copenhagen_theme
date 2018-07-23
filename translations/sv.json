@@ -55,12 +55,12 @@
   "section_page_group_label": "Element på sidavsnitt",
   "follow_section_label": "Följ",
   "follow_section_description": "Användare kan följa ett specifikt avsnitt",
-  "comunity_post_group_label": "Communityinläggselement",
+  "community_post_group_label": "Element i communityinlägg",
   "follow_post_label": "Följ",
   "follow_post_description": "Användare kan följa ett specifikt inlägg",
   "post_sharing_label": "Social delning",
   "post_sharing_description": "Visa delning på sociala medier i inlägg",
-  "comunity_topic_group_label": "Communityämneselement",
+  "community_topic_group_label": "Element i communityärenden",
   "follow_topic_label": "Följ",
   "follow_topic_description": "Användare kan följa ett specifikt ämne"
 }

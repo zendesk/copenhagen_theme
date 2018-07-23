@@ -55,12 +55,12 @@
   "section_page_group_label": "섹션 페이지 요소",
   "follow_section_label": "팔로우",
   "follow_section_description": "사용자가 특정 섹션을 팔로우할 수 있음",
-  "comunity_post_group_label": "커뮤니티 게시물 요소",
+  "community_post_group_label": "커뮤니티 게시물 요소",
   "follow_post_label": "팔로우",
   "follow_post_description": "사용자가 특정 게시물을 팔로우할 수 있음",
   "post_sharing_label": "소셜 공유",
   "post_sharing_description": "게시물에 소셜 미디어 공유 표시",
-  "comunity_topic_group_label": "커뮤니티 주제 요소",
+  "community_topic_group_label": "커뮤니티 주제 요소",
   "follow_topic_label": "팔로우",
   "follow_topic_description": "사용자가 특정 주제를 팔로우할 수 있음"
 }

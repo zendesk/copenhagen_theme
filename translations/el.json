@@ -55,12 +55,12 @@
   "section_page_group_label": "Στοιχεία σελίδας ενοτήτων",
   "follow_section_label": "Παρακολούθηση",
   "follow_section_description": "Οι χρήστες μπορούν να παρακολουθούν μια συγκεκριμένη ενότητα",
-  "comunity_post_group_label": "Στοιχεία αναρτήσεων κοινότητας",
+  "community_post_group_label": "Στοιχεία αναρτήσεων κοινότητας",
   "follow_post_label": "Παρακολούθηση",
   "follow_post_description": "Οι χρήστες μπορούν να παρακολουθούν μια συγκεκριμένη ανάρτηση",
   "post_sharing_label": "Κοινοποίηση σε μέσα κοινωνικής δικτύωσης",
   "post_sharing_description": "Εμφάνιση κοινοποίησης σε μέσα κοινωνικής δικτύωσης σε αναρτήσεις",
-  "comunity_topic_group_label": "Στοιχεία θεμάτων κοινότητας",
+  "community_topic_group_label": "Στοιχεία θεμάτων κοινότητας",
   "follow_topic_label": "Παρακολούθηση",
   "follow_topic_description": "Οι χρήστες μπορούν να παρακολουθούν ένα συγκεκριμένο θέμα"
 }

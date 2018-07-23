@@ -55,12 +55,12 @@
   "section_page_group_label": "Elementos de página de la sección",
   "follow_section_label": "Seguir",
   "follow_section_description": "Los usuarios pueden seguir una sección específica",
-  "comunity_post_group_label": "Elementos de publicación de la comunidad",
+  "community_post_group_label": "Elementos de publicación de la comunidad",
   "follow_post_label": "Seguir",
   "follow_post_description": "Los usuarios pueden seguir una publicación específica",
   "post_sharing_label": "Compartir en redes sociales",
   "post_sharing_description": "Mostrar opción para compartir en redes sociales en la publicación",
-  "comunity_topic_group_label": "Elementos de temas de la comunidad",
+  "community_topic_group_label": "Elementos de tema de la comunidad",
   "follow_topic_label": "Seguir",
   "follow_topic_description": "Los usuarios pueden seguir un tema específico"
 }

@@ -41,7 +41,7 @@
   "articles_in_section_label": "บทความในหมวด",
   "articles_in_section_description": "แสดงแถบด้านข้างของบทความในหมวด",
   "article_author_label": "ผู้เขียน",
-  "article_author_description": "ดูรูปและชื่อของผู้เขียน",
+  "article_author_description": "แสดงรูปและชื่อของผู้เขียน",
   "article_comments_label": "ข้อคิดเห็น",
   "article_comments_description": "แสดงข้อคิดเห็นบนบทความ",
   "follow_article_label": "ติดตาม",
@@ -55,12 +55,12 @@
   "section_page_group_label": "องค์ประกอบของหน้าหมวด",
   "follow_section_label": "ติดตาม",
   "follow_section_description": "ผู้ใช้สามารถติดตามหมวดที่เฉพาะเจาะจงได้",
-  "comunity_post_group_label": "องค์ประกอบหน้าโพสต์ของชุมชน",
+  "community_post_group_label": "องค์ประกอบหน้าโพสต์ของชุมชน",
   "follow_post_label": "ติดตาม",
   "follow_post_description": "ผู้ใช้สามารถติดตามโพสต์ที่เฉพาะเจาะจงได้",
   "post_sharing_label": "การแชร์ทางโซเชียล",
   "post_sharing_description": "แสดงการแชร์ทางโซเชียลมีเดียบนโพสต์",
-  "comunity_topic_group_label": "องค์ประกอบหัวข้อของชุมชน",
+  "community_topic_group_label": "องค์ประกอบหัวข้อของชุมชน",
   "follow_topic_label": "ติดตาม",
   "follow_topic_description": "ผู้ใช้สามารถติดตามหัวข้อที่เฉพาะเจาะจงได้"
 }

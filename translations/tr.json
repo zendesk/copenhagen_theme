@@ -55,12 +55,12 @@
   "section_page_group_label": "Bölüm sayfası öğeleri",
   "follow_section_label": "Takip et",
   "follow_section_description": "Kullanıcılar belirli bir bölümü takip edebilir",
-  "comunity_post_group_label": "Topluluk gönderisi öğeleri",
+  "community_post_group_label": "Topluluk gönderisi öğeleri",
   "follow_post_label": "Takip et",
   "follow_post_description": "Kullanıcılar belirli bir gönderiyi takip edebilir",
   "post_sharing_label": "Sosyal paylaşım",
   "post_sharing_description": "Gönderide sosyal medya paylaşımını göster",
-  "comunity_topic_group_label": "Topluluk konu başlığı öğeleri",
+  "community_topic_group_label": "Topluluk konu başlığı öğeleri",
   "follow_topic_label": "Takip et",
   "follow_topic_description": "Kullanıcılar belirli bir konu başlığını takip edebilir"
 }
