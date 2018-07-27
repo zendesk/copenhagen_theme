@@ -279,6 +279,16 @@ parts:
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Show social media sharing on article"
   - translation:
+      key: "txt.help_center_copenhagen_theme.article_voting_label"
+      title: "Label for the article voting setting"
+      screenshot: "https://drive.google.com/open?id=1D6Pj6tKOzdERgJXodEi8N5WaVtVnFk4h"
+      value: "Voting"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.article_voting_description"
+      title: "Description for the article voting setting"
+      screenshot: "https://drive.google.com/open?id=1D6Pj6tKOzdERgJXodEi8N5WaVtVnFk4h"
+      value: "Users can vote on articles"
+  - translation:
       key: "txt.help_center_copenhagen_theme.section_page_group_label"
       title: "Label for the section page elements settings group"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
