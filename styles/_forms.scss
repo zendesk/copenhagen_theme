@@ -48,6 +48,12 @@
   }
 }
 
+.form-field .hc-multiselect-toggle:focus {
+  outline: none;
+  border: 1px solid $brand_color;
+  text-decoration: none;
+}
+
 .form-field textarea {
   vertical-align: middle;
 }
