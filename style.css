@@ -344,6 +344,12 @@ ul {
   text-decoration: none;
 }
 
+.form-field .hc-multiselect-toggle:focus {
+  outline: none;
+  border: 1px solid $brand_color;
+  text-decoration: none;
+}
+
 .form-field textarea {
   vertical-align: middle;
 }
@@ -480,9 +486,13 @@ ul {
 }
 
 .nav-wrapper .icon-menu {
+  border: 0;
+  color: $link_color;
+  cursor: pointer;
   display: inline-block;
   margin-right: 10px;
-  color: $link_color;
+  padding: 0;
+  width: auto;
 }
 
 @media (min-width: 768px) {
@@ -494,6 +504,11 @@ ul {
 [dir="rtl"] .nav-wrapper .icon-menu {
   margin-left: 10px;
   margin-right: 0;
+}
+
+.nav-wrapper .icon-menu:hover, .nav-wrapper .icon-menu:focus, .nav-wrapper .icon-menu:active {
+  background-color: transparent;
+  color: $link_color;
 }
 
 /***** User info in header *****/
@@ -561,7 +576,6 @@ ul {
 .avatar {
   display: inline-block;
   position: relative;
-  margin-right: 10px;
 }
 
 .avatar img {
@@ -680,7 +694,7 @@ ul {
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
-  color: #ddd;
+  color: #777;
   content: "\1F50D";
   font-size: 18px;
   position: absolute;
@@ -1157,11 +1171,10 @@ ul {
 
 @media (min-width: 1024px) {
   .article {
-    flex: 1;
+    flex: 1 0 66%;
     max-width: 66%;
     min-width: 640px;
     padding: 0 30px;
-    margin: 0 auto;
   }
 }
 
@@ -1193,6 +1206,10 @@ ul {
   }
 }
 
+.article-avatar {
+  margin-right: 10px;
+}
+
 .article-author {
   margin-bottom: 10px;
 }
@@ -1202,10 +1219,6 @@ ul {
     flex-basis: 100%;
     /* Take entire row */
   }
-}
-
-.article-title.no-author {
-  margin-bottom: 0.067em;
 }
 
 .article-title .icon-lock::before {
@@ -2212,7 +2225,7 @@ ul {
 }
 
 .status-label-open {
-  background-color: #e03b30;
+  background-color: #cc3340;
 }
 
 .status-label-closed {
@@ -2341,6 +2354,7 @@ ul {
 .post-meta {
   display: inline-block;
   flex: 1;
+  margin-left: 10px;
   vertical-align: middle;
 }
 
@@ -3453,6 +3467,7 @@ ul {
   color: $brand_text_color;
   line-height: normal;
   padding: 8px 20px;
+  outline-color: $brand_color;
 }
 
 .profile-header .description {
