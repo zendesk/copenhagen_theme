@@ -193,6 +193,12 @@
       "description": "article_sharing_description",
       "label": "article_sharing_label",
       "value": true
+    }, {
+      "identifier": "show_article_voting",
+      "type": "checkbox",
+      "description": "article_voting_description",
+      "label": "article_voting_label",
+      "value": true
     }]
   }, {
     "label": "section_page_group_label",
