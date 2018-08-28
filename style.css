@@ -534,7 +534,7 @@ ul {
   white-space: nowrap;
 }
 
-.user-info > [role="button"]:hover {
+.user-info > [role="button"]:hover, .user-info > [role="button"]:focus {
   color: $link_color;
   background-color: transparent;
 }
