@@ -48,7 +48,7 @@ $(document).ready(function() {
   // Change Mark as solved text according to whether comment is filled
   var $requestCommentTextarea = $(".request-container .comment-container textarea");
 
-  $requestCommentTextarea.on("keyup", function() {
+  $requestCommentTextarea.on("input", function() {
     if ($requestCommentTextarea.val() !== "") {
       $requestMarkAsSolvedButton.text($requestMarkAsSolvedButton.data("solve-and-submit-translation"));
       $requestCommentSubmitButton.prop("disabled", false);
