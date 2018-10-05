@@ -26,10 +26,6 @@
     flex: initial;
   }
 
-  .icon-lock::before {
-    vertical-align: baseline;
-  }
-
   &-title {
     margin-bottom: 0;
 
@@ -49,6 +45,10 @@
     padding: 15px 0;
 
     a { color: $text_color; }
+
+    .icon-lock::before {
+      vertical-align: baseline;
+    }
   }
 }
 
