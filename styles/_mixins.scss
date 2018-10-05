@@ -33,6 +33,7 @@
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
   word-break: break-word;
+  word-wrap: break-word; //IE/Edge compatibility
 }
 
 @mixin content-body {
