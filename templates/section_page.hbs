@@ -10,9 +10,6 @@
       <header class="page-header">
         <h1>
           {{section.name}}
-          {{#if section.internal}}
-            <span class="icon-lock" title="{{t 'internal'}}"></span>
-          {{/if}}
         </h1>
         {{#if settings.show_follow_section}}
           {{subscribe}}
@@ -31,6 +28,9 @@
                 <span data-title="{{t 'promoted'}}" class="icon-star"></span>
               {{/if}}
               <a href="{{url}}" class="article-list-link">{{title}}</a>
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
             </li>
           {{/each}}
         </ul>

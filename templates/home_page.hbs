@@ -18,13 +18,10 @@
             </li>
           {{else}}
             {{#each sections}}
-              <li class="blocks-item {{#if internal}}blocks-item-internal{{/if}}">
+              <li class="blocks-item">
                 <a href='{{url}}' class="blocks-item-link">
                   <h4 class="blocks-item-title">
                     {{name}}
-                    {{#if internal}}
-                      <span class="icon-lock" title="{{t 'internal'}}"></span>
-                    {{/if}}
                   </h4>
                   <p class="blocks-item-description">{{excerpt description}}</p>
                 </a>
@@ -45,6 +42,9 @@
               <a href="{{url}}">
                 {{title}}
               </a>
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
             </li>
           {{/each}}
         </ul>
