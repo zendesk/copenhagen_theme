@@ -82,7 +82,7 @@ After you have customized your theme you can download the repository as a `zip` 
 
 You can follow the documentation for importing [here](https://support.zendesk.com/hc/en-us/articles/115012794168--THEMING-CENTER-BETA-Importing-and-exporting-your-theme-and-manifest-file#topic_jpd_zdc_hbb).
 
-You can also preview your theme before you import it to Theming Center with the Zendesk App Tools framework, you can read more about local preview [here](https://support.zendesk.com/hc/en-us/community/posts/115007717507-Local-Theme-Preview-via-Zendesk-Application-Tools)
+You can also preview your theme before you import it to Theming Center with the Zendesk App Tools framework, you can read more about local preview [here](https://support.zendesk.com/hc/en-us/articles/115012793547-Previewing-theme-changes-locally-Guide-Professional-and-Enterprise-)
 
 ## Templates
 The theme includes all the templates that are used for a Help Center that has *all* the features available.
