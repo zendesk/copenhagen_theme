@@ -10,19 +10,21 @@
   </nav>
 
   <header class="page-header community-header">
-    <span class="dropdown">
-      <span class="dropdown-toggle">
-        <h4>{{t 'all_posts'}}</h4>
+    <h4>
+      <span class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          {{t 'all_posts'}}
+        </button>
+        <span class="dropdown-menu" role="menu">
+          {{#link 'topics' role='menuitem'}}
+            {{t 'show_topics'}}
+          {{/link}}
+          {{#link 'posts' role='menuitem' selected='true'}}
+            {{t 'show_all_posts'}}
+          {{/link}}
+        </span>
       </span>
-      <span class="dropdown-menu" role="menu">
-        {{#link 'topics' role='menuitem'}}
-          {{t 'show_topics'}}
-        {{/link}}
-        {{#link 'posts' role='menuitem' selected='true'}}
-          {{t 'show_all_posts'}}
-        {{/link}}
-      </span>
-    </span>
+    </h4>
     <span class="post-to-community">
       {{link 'new_post' role='button' class='button-large'}}
     </span>
@@ -31,9 +33,9 @@
   <div class="topic-header">
     <span class="topic-filters">
       <span class="dropdown">
-        <span class="dropdown-toggle">
+        <button class="dropdown-toggle" aria-haspopup="true">
           {{current_filter.label}}
-        </span>
+        </button>
         <span class="dropdown-menu" role="menu">
           {{#each filters}}
             <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
@@ -43,9 +45,9 @@
         </span>
       </span>
       <span class="dropdown">
-        <span class="dropdown-toggle">
+        <button class="dropdown-toggle" aria-haspopup="true">
           {{current_sorter.label}}
-        </span>
+        </button>
         <span class="dropdown-menu" role="menu">
           {{#each sorters}}
             <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">

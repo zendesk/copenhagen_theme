@@ -10,20 +10,22 @@
   </nav>
 
   <header class="page-header community-header">
-    <div class="page-header-item dropdown">
-      <div class="dropdown-toggle">
-        <h4>{{t 'community_topics'}}</h4>
-      </div>
-      <span class="dropdown-menu" role="menu">
-        {{#link 'topics' role='menuitem' selected='true'}}
-          {{t 'show_topics'}}
-        {{/link}}
-        {{#link 'posts' role='menuitem'}}
-          {{t 'show_all_posts'}}
-        {{/link}}
+    <h4>
+      <span class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          {{t 'community_topics'}}
+        </button>
+        <span class="dropdown-menu" role="menu">
+          {{#link 'topics' role='menuitem' selected='true'}}
+            {{t 'show_topics'}}
+          {{/link}}
+          {{#link 'posts' role='menuitem'}}
+            {{t 'show_all_posts'}}
+          {{/link}}
+        </span>
       </span>
-    </div>
-    <span class="page-header-item post-to-community">
+    </h4>
+    <span class="post-to-community">
       {{link 'new_post' role='button' class='button-large'}}
     </span>
   </header>

@@ -12,7 +12,7 @@
         <span class="icon-lock" title="{{t 'internal'}}"></span>
       {{/if}}
     </h1>
-    <span class="post-to-community page-header-item">
+    <span class="post-to-community">
       {{link 'new_post' role='button' topic_id=topic.id class='button button-large'}}
     </span>
   </header>
@@ -28,9 +28,9 @@
   <div class="topic-header">
     <span class="topic-filters">
       <span class="dropdown">
-        <span class="dropdown-toggle">
+        <button class="dropdown-toggle" aria-haspopup="true">
           {{current_filter.label}}
-        </span>
+        </button>
         <span class="dropdown-menu" role="menu">
           {{#each filters}}
             <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
@@ -40,9 +40,9 @@
         </span>
       </span>
       <span class="dropdown">
-        <span class="dropdown-toggle">
+        <button class="dropdown-toggle" aria-haspopup="true">
           {{current_sorter.label}}
-        </span>
+        </button>
         <span class="dropdown-menu" role="menu">
           {{#each sorters}}
             <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">

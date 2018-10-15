@@ -138,7 +138,9 @@
               <p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
               {{#if comments}}
                 <div class="dropdown comment-sorter">
-                  <a class="dropdown-toggle">{{t 'sort_by'}}</a>
+                  <button class="dropdown-toggle" aria-haspopup="true">
+                    {{t 'sort_by'}}
+                  </button>
                   <span class="dropdown-menu" role="menu">
                     {{#each comment_sorters}}
                       <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
