@@ -364,6 +364,11 @@ ul {
   margin-left: 2px;
 }
 
+.form-field .optional {
+  color: lighten($text_color, 20%);
+  margin-left: 4px;
+}
+
 .form-field p {
   color: lighten($text_color, 20%);
   font-size: 12px;

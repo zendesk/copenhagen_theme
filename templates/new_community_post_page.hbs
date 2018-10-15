@@ -11,8 +11,14 @@
 
   <div class="form">
     {{#form 'post' class='new_community_post'}}
-      <div class="form-field {{#required 'title'}} required {{/required}}">
-        {{label 'title'}}
+      <div class="form-field">
+        {{#required 'title'}}
+          {{label 'title'}}
+        {{else}}
+          {{#label 'title'}}
+            {{t 'title_label'}}<span class="optional">({{t 'optional'}})</span>
+          {{/label}}
+        {{/required}}
         {{input 'title' autofocus=true}}
         {{#validate 'title'}}
           <div class="notification notification-error notification-inline">
@@ -23,8 +29,14 @@
 
       {{suggestion_list class='suggestion-list'}}
 
-      <div class="form-field {{#required 'details'}} required {{/required}}">
-        {{label 'details'}}
+      <div class="form-field">
+        {{#required 'details'}}
+          {{label 'details'}}
+        {{else}}
+          {{#label 'details'}}
+            {{t 'details_label'}}<span class="optional">({{t 'optional'}})</span>
+          {{/label}}
+        {{/required}}
         {{wysiwyg 'details'}}
         {{#validate 'details'}}
           <div class="notification notification-error notification-inline">
@@ -33,8 +45,14 @@
         {{/validate}}
       </div>
 
-      <div class="form-field {{#required 'topic'}} required {{/required}}">
-        {{label 'topic'}}
+      <div class="form-field">
+        {{#required 'topic'}}
+          {{label 'topic'}}
+        {{else}}
+          {{#label 'topic'}}
+            {{t 'topic_label'}}<span class="optional">({{t 'optional'}})</span>
+          {{/label}}
+        {{/required}}
         {{select 'topic'}}
         {{#validate 'topic'}}
           <div class="notification notification-error notification-inline">
