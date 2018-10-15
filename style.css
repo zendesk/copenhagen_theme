@@ -145,6 +145,18 @@ ul {
   }
 }
 
+.dropdown-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: initial;
+}
+
+.dropdown-toggle:focus {
+  outline: 0;
+  text-decoration: underline;
+}
+
 .dropdown-toggle::after {
   color: inherit;
 }
@@ -1641,11 +1653,10 @@ ul {
   float: right;
 }
 
-.comment-sorter a {
+.comment-sorter .dropdown-toggle {
   color: lighten($text_color, 20%);
   font-weight: 300;
   font-size: 13px;
-  text-decoration: none;
 }
 
 [dir="rtl"] .comment-sorter {
