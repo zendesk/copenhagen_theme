@@ -120,6 +120,17 @@ ul {
   @include max-width-container;
 }
 
+.dropdown-toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  text-align: initial;
+}
+ .dropdown-toggle:focus {
+  outline: 0;
+  text-decoration: underline;
+}
+
 .dropdown-toggle::after {
   color: inherit;
 }

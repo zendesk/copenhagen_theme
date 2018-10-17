@@ -15,9 +15,9 @@
 
   <div class="my-activities-following-header">
     <span class="dropdown">
-      <span class="dropdown-toggle">
+      <button class="dropdown-toggle" aria-haspopup="true">
         {{current_filter.label}}
-      </span>
+      </button>
       <span class="dropdown-menu" role="menu">
         {{#each filters}}
           <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">

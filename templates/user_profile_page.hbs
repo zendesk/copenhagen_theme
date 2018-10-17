@@ -191,9 +191,9 @@
               {{#if sorters}}
                 <span class="profile-section-description">{{sorter_description}}</span>
                 <span class="profile-section-sorter dropdown">
-                  <span class="dropdown-toggle">
+                  <button class="dropdown-toggle" aria-haspopup="true">
                     {{current_sorter.label}}
-                  </span>
+                  </button>
                   <span class="dropdown-menu" role="menu">
                     {{#each sorters}}
                       <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">

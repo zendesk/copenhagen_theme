@@ -4,10 +4,10 @@
 
     <div class="footer-language-selector">
       {{#if alternative_locales}}
-        <div class="dropdown language-selector" aria-haspopup="true">
-          <a class="dropdown-toggle">
+        <div class="dropdown language-selector">
+          <button class="dropdown-toggle" aria-haspopup="true">
             {{current_locale.name}}
-          </a>
+          </button>
           <span class="dropdown-menu dropdown-menu-end" role="menu">
             {{#each alternative_locales}}
               <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
