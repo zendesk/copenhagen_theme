@@ -3029,20 +3029,14 @@ ul {
 .request-main .comment-show-container {
   border-radius: 2px;
   border: 1px solid #ddd;
-  cursor: pointer;
-  display: flex;
-  padding: 8px 15px;
+  color: lighten($text_color, 20%);
+  text-align: inherit;
+  padding: 8px 25px;
   width: 100%;
 }
 
 .request-main .comment-show-container.hidden {
   display: none;
-}
-
-.request-main .comment-show-container-content {
-  align-self: center;
-  color: lighten($text_color, 20%);
-  margin-left: 10px;
 }
 
 .request-main .form-field.comment-ccs > ul {

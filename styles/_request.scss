@@ -46,19 +46,13 @@
     .comment-show-container {
       border-radius: 2px;
       border: 1px solid $border-color;
-      cursor: pointer;
-      display: flex;
-      padding: 8px 15px;
+      color: $secondary-text-color;
+      text-align: inherit;
+      padding: 8px 25px;
       width: 100%;
 
       &.hidden {
         display: none;
-      }
-
-      &-content {
-        align-self: center;
-        color: $secondary-text-color;
-        margin-left: 10px;
       }
     }
 
