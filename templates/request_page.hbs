@@ -75,11 +75,9 @@
         </div>
 
         <div class="comment-container">
-          <div class="comment-show-container {{#validate 'body'}}hidden{{/validate}}">
-            <span class="comment-show-container-content">
-              {{t 'add_to_conversation'}}
-            </span>
-          </div>
+          <button type="button" class="comment-show-container {{#validate 'body'}}hidden{{/validate}}">
+            {{t 'add_to_conversation'}}
+          </button>
 
           <div class="comment-fields {{#validate 'body'}}shown{{/validate}}">
             {{#if help_center.request_ccs_enabled}}
@@ -101,11 +99,11 @@
             {{checkbox 'mark_as_solved'}}
 
             {{#if request.can_be_marked_as_solved}}
-              <a role="button" class="button-large button-secondary mark-as-solved"
+              <button type="button" class="button-large button-secondary mark-as-solved"
                 data-solve-translation="{{t 'mark_as_solved'}}"
                 data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}">
                 {{t 'mark_as_solved'}}
-              </a>
+              </button>
             {{/if}}
 
             <span class="request-submit-comment {{#validate 'body'}}shown{{/validate}}">
