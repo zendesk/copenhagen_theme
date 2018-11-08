@@ -152,6 +152,7 @@
     @include content-body;
     font-family: $text_font;
     line-height: 1.6;
+    overflow-x: auto;
   }
 
   &-mark-as-solved {
