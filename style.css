@@ -939,25 +939,28 @@ ul {
 
 .promoted-articles-item {
   flex: 1 0 auto;
-  border-bottom: 1px solid #ddd;
-  padding: 15px 0;
 }
 
 @media (min-width: 1024px) {
   .promoted-articles-item {
     align-self: flex-end;
     flex: 0 0 auto;
-    margin-right: 30px;
+    padding-right: 30px;
     width: 33%;
     /* Three columns on desktop */
   }
   [dir="rtl"] .promoted-articles-item {
-    margin: 0 0 0 30px;
+    padding: 0 0 0 30px;
   }
 }
 
 .promoted-articles-item:nth-child(3n) {
-  margin-right: 0;
+  padding-right: 0;
+}
+
+.promoted-articles-item div {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
 }
 
 .promoted-articles-item a {
@@ -968,12 +971,12 @@ ul {
   vertical-align: baseline;
 }
 
-.promoted-articles-item:last-child {
+.promoted-articles-item:last-child div {
   border: 0;
 }
 
 @media (min-width: 1024px) {
-  .promoted-articles-item:last-child {
+  .promoted-articles-item:last-child div {
     border-bottom: 1px solid #ddd;
   }
 }

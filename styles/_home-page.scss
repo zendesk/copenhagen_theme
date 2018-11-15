@@ -25,18 +25,21 @@
     @include desktop {
       align-self: flex-end;
       flex: 0 0 auto;
-      margin-right: 30px;
+      padding-right: 30px;
       width: 33%; /* Three columns on desktop */
 
-      [dir="rtl"] & { margin: 0 0 0 30px; }
+      [dir="rtl"] & { padding: 0 0 0 30px; }
     }
 
     flex: 1 0 auto;
-    border-bottom: 1px solid $border-color;
-    padding: 15px 0;
 
     &:nth-child(3n) {
-      margin-right: 0;
+      padding-right: 0;
+    }
+
+    div {
+      border-bottom: 1px solid $border-color;
+      padding: 15px 0;
     }
 
     a {
@@ -47,7 +50,7 @@
       vertical-align: baseline;
     }
 
-    &:last-child {
+    &:last-child div {
       @include desktop {
         border-bottom: 1px solid $border-color;
       }
