@@ -37,12 +37,10 @@
       padding-right: 0;
     }
 
-    div {
+    a {
+      display: block;
       border-bottom: 1px solid $border-color;
       padding: 15px 0;
-    }
-
-    a {
       color: $text_color;
     }
 
@@ -50,7 +48,7 @@
       vertical-align: baseline;
     }
 
-    &:last-child div {
+    &:last-child a {
       @include desktop {
         border-bottom: 1px solid $border-color;
       }

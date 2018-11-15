@@ -958,12 +958,10 @@ ul {
   padding-right: 0;
 }
 
-.promoted-articles-item div {
+.promoted-articles-item a {
+  display: block;
   border-bottom: 1px solid #ddd;
   padding: 15px 0;
-}
-
-.promoted-articles-item a {
   color: $text_color;
 }
 
@@ -971,12 +969,12 @@ ul {
   vertical-align: baseline;
 }
 
-.promoted-articles-item:last-child div {
+.promoted-articles-item:last-child a {
   border: 0;
 }
 
 @media (min-width: 1024px) {
-  .promoted-articles-item:last-child div {
+  .promoted-articles-item:last-child a {
     border-bottom: 1px solid #ddd;
   }
 }
