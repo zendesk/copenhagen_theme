@@ -39,12 +39,13 @@
         <ul class="article-list promoted-articles">
           {{#each promoted_articles}}
             <li class="promoted-articles-item">
-              <a href="{{url}}">
-                {{title}}
-              </a>
-              {{#if internal}}
-                <span class="icon-lock" title="{{t 'internal'}}"></span>
-              {{/if}}
+                <a href="{{url}}">
+                  {{title}}
+
+                  {{#if internal}}
+                    <span class="icon-lock" title="{{t 'internal'}}"></span>
+                  {{/if}}
+                </a>
             </li>
           {{/each}}
         </ul>
