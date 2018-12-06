@@ -1805,6 +1805,7 @@ ul {
   word-wrap: break-word;
   font-family: $text_font;
   line-height: 1.6;
+  overflow-x: auto;
 }
 
 .comment-body img {
