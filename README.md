@@ -116,13 +116,16 @@ If you wish to use SASS you can go to the [using SASS section](#using-sass)
 ## Assets
 These are the images and font files that are needed for the theme.
 These includes:
+* Dropdown arrow
+* Loader
+
+## Settings
+These are the images and files that are needed for theme settings.
+These includes:
 * Default Favicon
 * Home page banner image
-* Community banner image (for Community topics list page)
+* Community banner image (for Community topics list and Community post list page)
 * Community image (for Community section in Home page)
-* Copenhagen icons font
-* Entypo icon font
-* Dropdown arrow
 
 # Using SASS
 In order to use SASS for development, you just need to compile it into the CSS that Theming Center understands.
