@@ -1,13 +1,13 @@
 # Copenhagen Theme by Zendesk
 
-The Copenhagen theme is the default Zendesk Guide, designed to be responsive and accessible.
+The Copenhagen theme is the default Zendesk Guide theme. It is designed to be responsive and accessible.
 Learn more about customizing Zendesk Guide [here](https://support.zendesk.com/hc/en-us/sections/206670747).
 
 The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
 
 ## How to use
 This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
-You can develop in your favorite IDE using the command line tool [ZAT](https://support.zendesk.com/hc/en-us/articles/115014810447) and then import it to Zendesk Guide.
+You can use your favorite IDE to develop themes and preview your changes locally in a web browser using the Zendesk Apps Tools (ZAT). For details, see [Previewing theme changes locally](https://support.zendesk.com/hc/en-us/articles/115014810447).
 
 ## Customizing your theme
 Once you have forked this repository you can feel free to edit templates, CSS in `style.css` (if you would like to use SASS go to the [Using SASS section](#using-sass)), javascript and manage assets.
