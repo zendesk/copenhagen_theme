@@ -1,5 +1,21 @@
-
 document.addEventListener('DOMContentLoaded', function() {
+
+  function matches (element, selector) {
+    return Element.prototype.matches && element.matches(selector)
+      || Element.prototype.msMatchesSelector && element.msMatchesSelector(selector)
+      || Element.prototype.webkitMatchesSelector && element.webkitMatchesSelector(selector);
+  }
+
+  function closest (element, selector) {
+    if (Element.prototype.closest) {
+      return element.closest(selector);
+    }
+    do {
+      if (matches(element, selector)) return element;
+      element = element.parentElement || element.parentNode;
+    } while (element !== null && element.nodeType === 1);
+    return null;
+  }
 
   // social share popups
   [].forEach.call(document.querySelectorAll('.share a'), function(anchor) {
@@ -50,10 +66,8 @@ document.addEventListener('DOMContentLoaded', function() {
     requestMarkAsSolvedCheckbox.setAttribute('checked', true);
     requestCommentSubmitButton.disabled = true;
     this.setAttribute('data-disabled', true);
-    // Element.closest is supported in modern browsers and has a polyfill available for still in use outdated versions
-    // See https://caniuse.com/#feat=element-closest
-    // TODO: Should polyfill be installed? 
-    this.closest('form').submit();
+    // Element.closest is not supported in IE11
+    closest(this, 'form').submit();
   });
 
   // Change Mark as solved text according to whether comment is filled
