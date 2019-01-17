@@ -1,6 +1,6 @@
 <section class="section hero">
   <div class="hero-inner">
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    {{search submit=false instant=true class='search search-full'}}
   </div>
 </section>
 
@@ -18,10 +18,13 @@
             </li>
           {{else}}
             {{#each sections}}
-              <li class="blocks-item">
+              <li class="blocks-item {{#if internal}}blocks-item-internal{{/if}}">
                 <a href='{{url}}' class="blocks-item-link">
                   <h4 class="blocks-item-title">
                     {{name}}
+                    {{#if internal}}
+                      <span class="icon-lock" title="{{t 'internal'}}"></span>
+                    {{/if}}
                   </h4>
                   <p class="blocks-item-description">{{excerpt description}}</p>
                 </a>
@@ -32,27 +35,77 @@
       </ul>
       {{pagination}}
     </section>
+		
+			<div class="row">
+        <div class="col-md-5">
+          {{#if promoted_articles}}
+            <section class="articles">
+              <h3>Frequently Asked Questions</h3>
+              <ul class="article-list promoted-articles">
+                {{#each promoted_articles}}
+                  <li class="promoted-articles-item">
+                    <a href="{{url}}">
+                      {{title}}
+                    </a>
+                  </li>
+                {{/each}}
+              </ul>
+            </section>
+          {{/if}}
+        </div>
 
-    {{#if promoted_articles}}
+      <!--Known Issues -->
+    <div class="col-md-5 col-md-offset-2">
       <section class="articles">
-        <h3>{{t 'promoted_articles'}}</h3>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
+        <h3>Known Issues</h3>
+          <ul class="article-list known-issues">
+                {{#each categories}}
+                {{#is name 'iOS'}}
 
-                  {{#if internal}}
-                    <span class="icon-lock" title="{{t 'internal'}}"></span>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
+                {{#each sections}}
+                {{#is name 'Known Issues'}}
+                {{#each articles}}
+
+                  <li class="known-issues-item">
+                    <a href="{{url}}">{{title}}</a>
+                  </li>
+
+                {{/each}}
+                {{/is}}
+
+                {{/each}}
+                {{/is}}
+
+                {{#is name 'Android'}}
+
+                {{#each sections}}
+                {{#is name 'Known Issues'}}
+                {{#each articles}}
+
+                  <li class="known-issues-item">
+                    <a href="{{url}}">{{title}}</a>
+                  </li>
+
+                {{/each}}
+                {{/is}}
+
+                {{/each}}
+                {{/is}}
+
+                {{/each}}
+              </ul>
       </section>
-    {{/if}}
-  </section>
 
+
+    </div> 
+    </div>
+    
+    
+    </section>
+    </div>
+  
+
+<div class="container">
   {{#if help_center.community_enabled}}
     <section class="section community">
       <h2>{{t 'community'}}</h2>
@@ -65,8 +118,6 @@
   {{/if}}
 
   <section class="section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
+    {{recent_activity}}
   </section>
 </div>

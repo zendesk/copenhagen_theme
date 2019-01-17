@@ -2,7 +2,7 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search scoped=settings.scoped_community_search submit=false}}
+    {{search scoped=true submit=false}}
   </nav>
 
   <div class="post-container">
@@ -29,9 +29,7 @@
               <span class="status-label-{{post.status_dasherized}} status-label">{{post.status_name}}</span>
             {{/is}}
           </div>
-          {{#if settings.show_follow_post}}
-            <div class="community-follow">{{subscribe}}</div>
-          {{/if}}
+          <div class="community-follow">{{subscribe}}</div>
         </header>
 
         <section class="post-info-container">
@@ -41,7 +39,7 @@
                 {{#if post.author.agent}}
                   <span class="icon-agent"></span>
                 {{/if}}
-                <img src="{{post.author.avatar_url}}" alt="" class="user-avatar"/>
+                <img src="{{post.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
               </div>
               <div class="post-meta">
                 <span title="{{post.author.name}}">
@@ -92,17 +90,15 @@
           </div>
         </section>
 
-        {{#if settings.show_post_sharing}}
-          <footer class="post-footer">
-            <div class="post-share">{{share}}</div>
-            {{#if comments}}
-              <a href="#comment-overview" class="post-comment-count">
-                <span class="icon-comments"></span>
-                {{post.comment_count}}
-              </a>
-            {{/if}}
-          </footer>
-        {{/if}}
+        <footer class="post-footer">
+          <div class="post-share">{{share}}</div>
+          {{#if comments}}
+            <a href="#comment-overview" class="post-comment-count">
+              <span class="icon-comments"></span>
+              {{post.comment_count}}
+            </a>
+          {{/if}}
+        </footer>
       </article>
 
       <section class="comment-overview" id="comment-overview">
@@ -112,9 +108,7 @@
           <p class="comment-callout">{{t 'comments_count' count=post.comment_count}}</p>
           {{#if comments}}
             <div class="dropdown comment-sorter">
-              <button class="dropdown-toggle" aria-haspopup="true">
-                {{t 'sort_by'}}
-              </button>
+              <a class="dropdown-toggle">{{t 'sort_by'}}</a>
               <span class="dropdown-menu" role="menu">
                 {{#each comment_sorters}}
                   <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
@@ -138,7 +132,7 @@
                     {{#if author.agent}}
                       <span class="icon-agent"></span>
                     {{/if}}
-                    <img src="{{author.avatar_url}}" alt="" class="user-avatar"/>
+                    <img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
                   </div>
                   <div class="comment-meta">
                     <span title="{{author.name}}">

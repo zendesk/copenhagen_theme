@@ -2,7 +2,7 @@
 <div class="container">
    <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search scoped=settings.scoped_community_search submit=false}}
+    {{search scoped=true submit=false}}
   </nav>
 
   <header class="page-header">
@@ -12,25 +12,23 @@
         <span class="icon-lock" title="{{t 'internal'}}"></span>
       {{/if}}
     </h1>
-    <span class="post-to-community">
+    <span class="post-to-community page-header-item">
       {{link 'new_post' role='button' topic_id=topic.id class='button button-large'}}
     </span>
   </header>
   <div class="community-header">
     <p class="page-header-description">{{topic.description}}</p>
-    {{#if settings.show_follow_topic}}
-      <div class="community-follow">
-        {{subscribe}}
-      </div>
-    {{/if}}
+    <div class="community-follow">
+      {{subscribe}}
+    </div>
   </div>
 
   <div class="topic-header">
     <span class="topic-filters">
       <span class="dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true">
+        <span class="dropdown-toggle">
           {{current_filter.label}}
-        </button>
+        </span>
         <span class="dropdown-menu" role="menu">
           {{#each filters}}
             <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
@@ -40,9 +38,9 @@
         </span>
       </span>
       <span class="dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true">
+        <span class="dropdown-toggle">
           {{current_sorter.label}}
-        </button>
+        </span>
         <span class="dropdown-menu" role="menu">
           {{#each sorters}}
             <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">

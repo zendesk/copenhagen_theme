@@ -15,9 +15,9 @@
 
   <div class="my-activities-following-header">
     <span class="dropdown">
-      <button class="dropdown-toggle" aria-haspopup="true">
+      <span class="dropdown-toggle">
         {{current_filter.label}}
-      </button>
+      </span>
       <span class="dropdown-menu" role="menu">
         {{#each filters}}
           <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
@@ -44,7 +44,7 @@
             <tr>
               <td>
                 {{#is type 'user'}}
-                  <img class="user-avatar" src="{{avatar_url}}" alt="">
+                  <img class="user-avatar" src="{{avatar_url}}" alt="Avatar">
                 {{/is}}
                 <a href="{{url}}" title="{{title}}" class="striped-list-title">
                   {{excerpt title characters=60}}

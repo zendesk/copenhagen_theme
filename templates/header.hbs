@@ -1,14 +1,19 @@
 <header class="header">
   <div class="logo">
     {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+      <img src="{{logo_url}}" alt="{{t 'logo'}}">
     {{/link}}
   </div>
   <div class="nav-wrapper">
-    <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
+    <span class="icon-menu"></span>
     <nav class="user-nav" id="user-nav">
       {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
+       <a href="https://www.gaiagps.com/hike/">Find a Hike</a> 
+      {{#if signed_in}}
+      	{{link 'new_request' class='submit-a-request'}}
+      {{else}}
+       <a href="https://help.gaiagps.com/hc/en-us/signin?return_to=https://help.gaiagps.com/hc/en-us/requests/new">Submit a request</a>
+     	{{/if}}
     </nav>
     {{user_info}}
   </div>

@@ -1,6 +1,6 @@
 <section class="section hero community-hero">
   <div class="hero-inner">
-    {{search submit=false class='search search-full' scoped=settings.scoped_community_search}}
+    {{search submit=false class='search search-full' scoped=true}}
   </div>
 </section>
 
@@ -10,22 +10,20 @@
   </nav>
 
   <header class="page-header community-header">
-    <h4>
-      <span class="dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true">
-          {{t 'community_topics'}}
-        </button>
-        <span class="dropdown-menu" role="menu">
-          {{#link 'topics' role='menuitem' selected='true'}}
-            {{t 'show_topics'}}
-          {{/link}}
-          {{#link 'posts' role='menuitem'}}
-            {{t 'show_all_posts'}}
-          {{/link}}
-        </span>
+    <div class="page-header-item dropdown">
+      <div class="dropdown-toggle">
+        <h4>{{t 'community_topics'}}</h4>
+      </div>
+      <span class="dropdown-menu" role="menu">
+        {{#link 'topics' role='menuitem' selected='true'}}
+          {{t 'show_topics'}}
+        {{/link}}
+        {{#link 'posts' role='menuitem'}}
+          {{t 'show_all_posts'}}
+        {{/link}}
       </span>
-    </h4>
-    <span class="post-to-community">
+    </div>
+    <span class="page-header-item post-to-community">
       {{link 'new_post' role='button' class='button-large'}}
     </span>
   </header>

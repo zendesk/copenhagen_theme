@@ -48,7 +48,7 @@
           {{#link 'help_center'}}
             {{t 'browse_knowledge_base'}}
           {{/link}}
-        </p>
+      	</p>
       {{/if}}
     </section>
 
@@ -95,9 +95,23 @@
           </p>
         {{/if}}
       </section>
-    {{/if}}
-
+    {{/if}}	 
   </div>
 
+  {{#if post_results}}
+        {{else}}
+        <br>
+        <br>
+        <br>
+        <section class="page-footer">
+          <h3 class="search-results-subheading">
+            Looking for a specific Hiking Trail, Park, or Forest?
+        	</h3>
+          <a href="https://www.gaiagps.com/hike/"> 
+            Click here to search for hikes near you.
+          </a>
+        </section>
+       {{/if}}
   {{pagination}}
 </div>
+  
