@@ -4,10 +4,10 @@
 
     <div class="footer-language-selector">
       {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
+        <div class="dropdown language-selector" aria-haspopup="true">
+          <a class="dropdown-toggle">
             {{current_locale.name}}
-          </button>
+          </a>
           <span class="dropdown-menu dropdown-menu-end" role="menu">
             {{#each alternative_locales}}
               <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
@@ -15,8 +15,21 @@
               </a>
             {{/each}}
           </span>
+          
+         	
         </div>
       {{/if}}
+      
+      <div class="social-media">  
+            <a href="http://www.facebook.com/gaiagps"><img src ="//p5.zdassets.com/hc/theme_assets/897348/200201747/facebook2.png" /></a>
+      <a href="http://www.instagram.com/gaiagps"><img src ="//p5.zdassets.com/hc/theme_assets/897348/200201747/instagram2.png" /></a>
+      <a href="http://www.twitter.com/gaiagps"> <img src ="//p5.zdassets.com/hc/theme_assets/897348/200201747/twitter2.png" /></a>
+       <a href="http://www.reddit.com/r/gaiagps"><img src ="//p5.zdassets.com/hc/theme_assets/897348/200201747/reddit2.png" /></a>
+      <a href="http://www.youtube.com/gaiagps"><img src ="//p5.zdassets.com/hc/theme_assets/897348/200201747/youtube2.png" /></a>
+
+      
+         <a href="http://www.gaiagps.com"><p class="action-return">Go back to gaiagps.com</p></a>
+    </div>
     </div>
   </div>
 </footer>
