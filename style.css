@@ -1389,17 +1389,19 @@ ul {
 }
 
 .article-relatives > * {
-  flex: 1 0 auto;
+  flex: 1 0 50%;
+  min-width: 50%;
+  overflow-wrap: break-word;
   margin-right: 0;
 }
 
 .article-relatives > *:last-child {
-  margin: 0;
+  padding: 0;
 }
 
 @media (min-width: 768px) {
   .article-relatives > * {
-    margin-right: 20px;
+    padding-right: 20px;
   }
 }
 
