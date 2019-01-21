@@ -1,24 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-
-  function matches (element, selector) {
-    return Element.prototype.matches && element.matches(selector)
-      || Element.prototype.msMatchesSelector && element.msMatchesSelector(selector)
-      || Element.prototype.webkitMatchesSelector && element.webkitMatchesSelector(selector);
-  }
-
   function closest (element, selector) {
     if (Element.prototype.closest) {
       return element.closest(selector);
     }
     do {
-      if (matches(element, selector)) return element;
+      if (Element.prototype.matches && element.matches(selector)
+        || Element.prototype.msMatchesSelector && element.msMatchesSelector(selector)
+        || Element.prototype.webkitMatchesSelector && element.webkitMatchesSelector(selector)) {
+        return element;
+      }
       element = element.parentElement || element.parentNode;
     } while (element !== null && element.nodeType === 1);
     return null;
   }
 
   // social share popups
-  [].forEach.call(document.querySelectorAll('.share a'), function(anchor) {
+  Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       window.open(this.href, '', 'height = 500, width = 500');
@@ -48,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (showRequestCommentContainerTrigger) {
     showRequestCommentContainerTrigger.addEventListener('click', function() {
       showRequestCommentContainerTrigger.style.display = 'none';
-      [].forEach.call(requestCommentFields, function(e) { e.style.display = 'block'; });
+      Array.prototype.forEach.call(requestCommentFields, function(e) { e.style.display = 'block'; });
       requestCommentSubmit.style.display = 'inline-block';
 
       if (commentContainerTextarea) {
@@ -62,30 +59,34 @@ document.addEventListener('DOMContentLoaded', function() {
     requestMarkAsSolvedCheckbox = document.querySelector('.request-container .comment-container input[type=checkbox]'),
     requestCommentSubmitButton = document.querySelector('.request-container .comment-container input[type=submit]');
 
-  requestMarkAsSolvedButton && requestMarkAsSolvedButton.addEventListener('click', function () {
-    requestMarkAsSolvedCheckbox.setAttribute('checked', true);
-    requestCommentSubmitButton.disabled = true;
-    this.setAttribute('data-disabled', true);
-    // Element.closest is not supported in IE11
-    closest(this, 'form').submit();
-  });
+  if (requestMarkAsSolvedButton) {
+    requestMarkAsSolvedButton.addEventListener('click', function () {
+      requestMarkAsSolvedCheckbox.setAttribute('checked', true);
+      requestCommentSubmitButton.disabled = true;
+      this.setAttribute('data-disabled', true);
+      // Element.closest is not supported in IE11
+      closest(this, 'form').submit();
+    });
+  }
 
   // Change Mark as solved text according to whether comment is filled
   var requestCommentTextarea = document.querySelector('.request-container .comment-container textarea');
 
-  requestCommentTextarea && requestCommentTextarea.addEventListener('input', function() {
-    if (requestCommentTextarea.value !== '') {
-      if (requestMarkAsSolvedButton) {
-        requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-and-submit-translation');
+  if (requestCommentTextarea) {
+    requestCommentTextarea.addEventListener('input', function() {
+      if (requestCommentTextarea.value === '') {
+        if (requestMarkAsSolvedButton) {
+          requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-translation');
+        }
+        requestCommentSubmitButton.disabled = true;
+      } else {
+        if (requestMarkAsSolvedButton) {
+          requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-and-submit-translation');
+        }
+        requestCommentSubmitButton.disabled = false;
       }
-      requestCommentSubmitButton.disabled = false;
-    } else {
-      if (requestMarkAsSolvedButton) {
-        requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-translation');
-      }
-      requestCommentSubmitButton.disabled = true;
-    }
-  });
+    });
+  }
 
   // Disable submit button if textarea is empty
   if (requestCommentTextarea && requestCommentTextarea.value === '') {
@@ -93,24 +94,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Submit requests filter form in the request list page
-  [].forEach.call(document.querySelectorAll('#request-status-select, #request-organization-select'), function(el) {
+  Array.prototype.forEach.call(document.querySelectorAll('#request-status-select, #request-organization-select'), function(el) {
     el.addEventListener('change', function() {
       search();
     });
   });
 
   // Submit requests filter form in the request list page
-  const quickSearch = document.querySelector('#quick-search')
-  quickSearch && quickSearch.addEventListener('keypress', function(e) {
-    if (e.which === 13) { // Enter key
-      search();
-    }
-  });
+  var quickSearch = document.querySelector('#quick-search');
+  if (quickSearch) {
+    quickSearch.addEventListener('keypress', function(e) {
+      if (e.which === 13) { // Enter key
+        search();
+      }
+    });
+  }
 
   function search() {
-    const quickSearch = document.querySelector('#quick-search');
-    const requestStatusSelect = document.querySelector('#request-status-select');
-    const requestOrganizationSelect = document.querySelector('#request-organization-select');
+    var quickSearch = document.querySelector('#quick-search');
+    var requestStatusSelect = document.querySelector('#request-status-select');
+    var requestOrganizationSelect = document.querySelector('#request-organization-select');
 
     window.location.search = $.param({
       query: quickSearch && quickSearch.value,
@@ -126,8 +129,8 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleElement.setAttribute('aria-expanded', !isExpanded);
   }
 
-  const burgerMenu = document.querySelector('.header .icon-menu');
-  const userMenu = document.querySelector('#user-nav');
+  var burgerMenu = document.querySelector('.header .icon-menu');
+  var userMenu = document.querySelector('#user-nav');
 
   burgerMenu.addEventListener('click', function(e) {
     e.stopPropagation();
@@ -154,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Submit organization form in the request page
-  const requestOrganisationSelect = document.querySelector('#request-organization select');
+  var requestOrganisationSelect = document.querySelector('#request-organization select');
 
   if (requestOrganisationSelect) {
     requestOrganisationSelect.addEventListener('change', function() {
@@ -163,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Toggles expanded aria to collapsible elements
-  [].forEach.call(document.querySelectorAll('.collapsible-nav, .collapsible-sidebar'), function(el) {
+  Array.prototype.forEach.call(document.querySelectorAll('.collapsible-nav, .collapsible-sidebar'), function(el) {
     el.addEventListener('click', function(e) {
       e.stopPropagation();
       var isExpanded = this.getAttribute('aria-expanded') === 'true';
