@@ -95,8 +95,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Submit requests filter form in the request list page
   Array.prototype.forEach.call(document.querySelectorAll('#request-status-select, #request-organization-select'), function(el) {
-    el.addEventListener('change', function() {
-      search();
+    el.addEventListener('change', function(e) {
+      e.stopPropagation();
+      closest(this, 'form').submit();
     });
   });
 
@@ -105,20 +106,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (quickSearch) {
     quickSearch.addEventListener('keypress', function(e) {
       if (e.which === 13) { // Enter key
-        search();
+        e.stopPropagation();
       }
-    });
-  }
-
-  function search() {
-    var quickSearch = document.querySelector('#quick-search');
-    var requestStatusSelect = document.querySelector('#request-status-select');
-    var requestOrganizationSelect = document.querySelector('#request-organization-select');
-
-    window.location.search = $.param({
-      query: quickSearch && quickSearch.value,
-      status: requestStatusSelect && requestStatusSelect.value,
-      organization_id: requestOrganizationSelect && requestOrganizationSelect.value
     });
   }
 
