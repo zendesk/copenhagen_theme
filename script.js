@@ -101,16 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Submit requests filter form in the request list page
-  var quickSearch = document.querySelector('#quick-search');
-  if (quickSearch) {
-    quickSearch.addEventListener('keypress', function(e) {
-      if (e.which === 13) { // Enter key
-        e.stopPropagation();
-      }
-    });
-  }
-
   function toggleNavigation(toggleElement) {
     var menu = document.getElementById('user-nav');
     var isExpanded = menu.getAttribute('aria-expanded') === 'true';
