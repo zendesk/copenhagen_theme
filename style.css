@@ -4080,3 +4080,12 @@ ul {
   display: inline-block;
   margin: 0 5px;
 }
+
+/* Don't display CJK results in italic */
+/* Add a yellow background instead */
+html[lang|="zh"] .search-result-description em,
+html[lang|="ko"] .search-result-description em,
+html[lang|="ja"] .search-result-description em {
+  font-style: normal;
+  background: yellow;
+}
