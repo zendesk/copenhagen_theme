@@ -4028,6 +4028,7 @@ ul {
 
 .search-result-description {
   margin-top: 15px;
+  word-break: break-word;
 }
 
 .search-result-votes, .search-result-meta-count {
