@@ -1183,31 +1183,6 @@ ul {
   margin: 40px 0;
 }
 
-.section-list-item:first-child {
-  border-top: 1px solid #ddd;
-}
-
-.section-list-item {
-  border-bottom: 1px solid #ddd;
-  font-size: 16px;
-  padding: 15px 0;
-}
-
-.section-list-item a {
-  align-items: center;
-  color: $text_color;
-  display: flex;
-  justify-content: space-between;
-}
-
-.section-list {
-  margin: 40px 0;
-}
-
-.section-list-item:first-child {
-  border-top: 1px solid #ddd;
-}
-
 .section-list--collapsed .section-list-item:nth-child(1n + 6) {
   display: none;
 }
@@ -1216,6 +1191,10 @@ ul {
   border-bottom: 1px solid #ddd;
   font-size: 16px;
   padding: 15px 0;
+}
+
+.section-list-item:first-child {
+  border-top: 1px solid #ddd;
 }
 
 .section-list-item a {
