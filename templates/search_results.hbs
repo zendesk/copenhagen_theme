@@ -5,103 +5,90 @@
     {{search submit=false}}
   </nav>
 
-  <header class="page-header">
-    <h1>{{t 'search_results'}}</h1>
-    <p class="page-header-description">{{t 'results' query=query count=results_count}}</p>
-  </header>
+  <div class="results">
+    <section class="results-sidebar">
+      {{#if help_center.community_enabled}}
+        <section class="filters-in-section collapsible-sidebar">
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
+            <ul>
+              {{#each filters}}
+                <li>
+                  <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}}</a>
+                </li>
+              {{/each}}
+          </ul>
+        </section>
+      {{/if}}
+      {{#if subfilters}}
+        <section class="filters-in-section collapsible-sidebar">
+          {{#is current_filter.identifier 'knowledge_base'}}
+            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h3>
+          {{/is}}
+          {{#is current_filter.identifier 'community'}}
+            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h3>
+          {{/is}}
+          <ul>
+            {{#each subfilters}}
+              <li>
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}}</a>
+              </li>
+            {{/each}}
+          </ul>
+        </section>
+      {{/if}}
+    </section>
 
-  <div class="search-results">
-    <section class="search-results-column">
-      <h3 class="search-results-subheading">
-        {{t 'knowledge_base'}}
+    <section class="results-column">
+      <h3 class="results-subheading">
+      {{#is current_filter.identifier 'unified'}}
+        {{t 'preview_result_header' query=query count=results_count}}
+      {{else}}
+        {{#is current_subfilter.identifier 'all'}}
+          {{t 'results' query=query count=results_count}}
+        {{else}}
+          {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
+        {{/is}}
+      {{/is}}
       </h3>
-      {{#if article_results}}
-        <ul class="search-results-list">
-          {{#each article_results}}
-            <li class="search-result">
-              <a href="{{url}}" class="search-result-link">{{title}}</a>
-              {{#if vote_sum}}
-                <span class="search-result-votes meta-count">{{vote_sum}}</span>
-              {{/if}}
+      {{#if results}}
+        <ul class="results-list">
+          {{#each results}}
+            <li class="results-list-item result-{{type}}">
+              <a href="{{url}}" class="results-list-item-link">{{title}}</a>
+              <div class="results-icons">
+                {{#if vote_sum}}
+                  <span class="results-votes">{{vote_sum}}</span>
+                {{/if}}
+                {{#if comment_count}}
+                  <span class="results-meta-count">
+                    {{comment_count}}
+                  </span>
+                {{/if}}
+              </div>
               <ul class="meta-group">
                 <li>
-                  <ol class="breadcrumbs search-result-breadcrumbs">
+                  <ol class="breadcrumbs results-breadcrumbs">
                     {{#each path_steps}}
-                      {{#is url '#'}}
-                        <li title="{{name}}">{{name}}</li>
-                      {{else}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                      {{/is}}
+                      <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
                     {{/each}}
                   </ol>
                 </li>
-                <li class="meta-data">
-                  {{#link 'user_profile' id=author.id}}
-                    {{author.name}}
-                  {{/link}}
-                </li>
-                <li class="meta-data">{{date created_at timeago=true}}</li>
+                <li class="meta-data">{{author.name}}</li>
+                <li class="meta-data">{{date created_at}}</li>
               </ul>
-              <div class="search-result-description">{{text}}</div>
+              <div class="results-description">{{text}}</div>
             </li>
           {{/each}}
         </ul>
       {{else}}
         <p>
-          {{t 'no_results' query=query}}
+          {{t 'no_results_unified'}}
           {{#link 'help_center'}}
-            {{t 'browse_knowledge_base'}}
+            {{t 'browse_help_center'}}
           {{/link}}
         </p>
       {{/if}}
     </section>
-
-    {{#if help_center.community_enabled}}
-      <section class="search-results-column">
-        <h3 class="search-results-subheading">
-          {{t 'community'}}
-        </h3>
-        {{#if post_results}}
-          <ul class="search-results-list">
-            {{#each post_results}}
-              <li class="search-result">
-                <a href="{{url}}" class="search-result-link">{{title}}</a>
-                <span class="search-result-meta-count">
-                  {{comment_count}}
-                </span>
-                <ul class="meta-group">
-                  <li>
-                    <ol class="breadcrumbs search-result-breadcrumbs">
-                      {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                      {{/each}}
-                    </ol>
-                  </li>
-                  <li class="meta-data">
-                    {{#link 'user_profile' id=author.id}}
-                      {{author.name}}
-                    {{/link}}
-                  </li>
-                  <li class="meta-data">{{date created_at timeago=true}}</li>
-                </ul>
-                <div class="search-result-description">
-                  {{text}}
-                </div>
-              </li>
-            {{/each}}
-          </ul>
-        {{else}}
-          <p>
-            {{t 'no_results' query=query}}
-            {{#link 'topics'}}
-              {{t 'browse_community'}}
-            {{/link}}
-          </p>
-        {{/if}}
-      </section>
-    {{/if}}
-
   </div>
-
   {{pagination}}
 </div>

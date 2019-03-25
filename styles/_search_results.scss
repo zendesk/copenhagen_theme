@@ -1,5 +1,5 @@
 /***** Search results *****/
-.search-results {
+.results {
   @include desktop {
     flex-direction: row;
   }
@@ -11,50 +11,93 @@
 
   &-column {
     @include desktop {
-      flex: 0 0 45%;
+      flex: 0 0 75%;
     }
 
-    flex: 1;
+    flex: 1 0 auto;
+  }
+
+  &-subheading {
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 15px;
+    margin-bottom: 0;
   }
 
   &-list {
     margin-bottom: 25px;
-    > li {
-      border-bottom: 1px solid $border-color;
-      padding: 20px 0;
-      &:first-child {
-        border-top: 1px solid $border-color;
-      }
+  }
+
+  &-list-item {
+    padding: 14px 0;
+    position: relative;
+  }
+
+  &-list-item-link {
+    font-size: $font-size-bigger;
+  }
+
+  &-sidebar {
+    @include desktop {
+      border: 0;
+      flex: 0 0 20%;
+      height: auto;
     }
+
+    border-top: 1px solid $border-color;
+    flex: 1 0 auto;
+    margin-bottom: 20px;
+    padding: 0;
   }
 }
 
-.search-result {
+.filter-link { display: block; }
 
-  &-description {
-    margin-top: 15px;
-    word-break: break-word;
+.filters-in-section {
+  @include desktop {
+    border-bottom: 0;
+  }
+
+  border-bottom: 1px solid $border-color;
+}
+
+.sidenav {
+  &-item[aria-selected="true"] {
+    background-color: $brand_color;
+    color: $brand_text_color;
+    text-decoration: none;
+  }
+}
+
+.results {
+  &-description,
+  &-meta {
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &-meta-count,
+  &-votes {
+    color: $secondary-text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
+  }
+
+  &-icons {
+    position: absolute;
+    right: 0;
+    top: 10px;
   }
 
   &-votes,
   &-meta-count {
-    color: $secondary-text-color;
     display: inline-block;
-    font-size: $font-size-small;
-    font-weight: $font-weight-light;
     padding: 4px 5px;
-    position: relative;
+    margin-left: 5px;
 
     &::before {
       @extend .icon;
-      color: $brand_color;
-    }
-
-    [dir="ltr"] & {
-      margin-left: 5px;
-      &::before {
-        margin-right: 3px;
-      }
+      margin-right: 3px;
     }
 
     [dir="rtl"] & {
@@ -66,35 +109,24 @@
   }
 
   &-votes::before {
+    color: $brand_color;
     content: "\1F44D";
   }
 
   &-meta-count::before {
+    color: $brand_color;
     content: "\1F4AC";
   }
 
-  .meta-group {
-    align-items: center;
-  }
-
   &-breadcrumbs {
-    margin: 0;
-
     li:last-child::after {
-       content: "·";
-       display: inline-block;
-       margin: 0 5px;
+      content: "·";
+      display: inline-block;
+      margin: 0 5px;
     }
-  }
-}
 
-/* Don't display CJK results in italic */
-/* Add a yellow background instead */
-html[lang|="zh"],
-html[lang|="ko"],
-html[lang|="ja"] {
-  .search-result-description em {
-    font-style: normal;
-    background: yellow;
+    a {
+      color: $secondary-text-color;
+    }
   }
 }

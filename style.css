@@ -3315,8 +3315,8 @@ ul {
 .actions .dropdown-toggle::before,
 .collapsible-nav-list li[aria-selected="true"]::after,
 .collapsible-sidebar-title::after,
-.search-result-votes::before,
-.search-result-meta-count::before {
+.results-votes::before,
+.results-meta-count::before {
   font-family: "copenhagen-icons";
   font-style: normal;
   font-weight: normal;
@@ -4025,7 +4025,7 @@ ul {
 }
 
 /***** Search results *****/
-.search-results {
+.results {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -4033,95 +4033,127 @@ ul {
 }
 
 @media (min-width: 1024px) {
-  .search-results {
+  .results {
     flex-direction: row;
   }
 }
 
-.search-results-column {
-  flex: 1;
+.results-column {
+  flex: 1 0 auto;
 }
 
 @media (min-width: 1024px) {
-  .search-results-column {
-    flex: 0 0 45%;
+  .results-column {
+    flex: 0 0 75%;
   }
 }
 
-.search-results-list {
+.results-subheading {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 15px;
+  margin-bottom: 0;
+}
+
+.results-list {
   margin-bottom: 25px;
 }
 
-.search-results-list > li {
-  border-bottom: 1px solid #ddd;
-  padding: 20px 0;
-}
-
-.search-results-list > li:first-child {
-  border-top: 1px solid #ddd;
-}
-
-.search-result-description {
-  margin-top: 15px;
-  word-break: break-word;
-}
-
-.search-result-votes, .search-result-meta-count {
-  color: lighten($text_color, 20%);
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 300;
-  padding: 4px 5px;
+.results-list-item {
+  padding: 14px 0;
   position: relative;
 }
 
-.search-result-votes::before, .search-result-meta-count::before {
-  color: $brand_color;
+.results-list-item-link {
+  font-size: 16px;
 }
 
-[dir="ltr"] .search-result-votes, [dir="ltr"] .search-result-meta-count {
+.results-sidebar {
+  border-top: 1px solid #ddd;
+  flex: 1 0 auto;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .results-sidebar {
+    border: 0;
+    flex: 0 0 20%;
+    height: auto;
+  }
+}
+
+.filter-link {
+  display: block;
+}
+
+.filters-in-section {
+  border-bottom: 1px solid #ddd;
+}
+
+@media (min-width: 1024px) {
+  .filters-in-section {
+    border-bottom: 0;
+  }
+}
+
+.sidenav-item[aria-selected="true"] {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
+}
+
+.results-description, .results-meta {
+  margin-bottom: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.results-meta-count, .results-votes {
+  color: lighten($text_color, 20%);
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.results-icons {
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+
+.results-votes, .results-meta-count {
+  display: inline-block;
+  padding: 4px 5px;
   margin-left: 5px;
 }
 
-[dir="ltr"] .search-result-votes::before, [dir="ltr"] .search-result-meta-count::before {
+.results-votes::before, .results-meta-count::before {
   margin-right: 3px;
 }
 
-[dir="rtl"] .search-result-votes, [dir="rtl"] .search-result-meta-count {
+[dir="rtl"] .results-votes, [dir="rtl"] .results-meta-count {
   margin-right: 5px;
 }
 
-[dir="rtl"] .search-result-votes::before, [dir="rtl"] .search-result-meta-count::before {
+[dir="rtl"] .results-votes::before, [dir="rtl"] .results-meta-count::before {
   margin-left: 3px;
 }
 
-.search-result-votes::before {
+.results-votes::before {
+  color: $brand_color;
   content: "\1F44D";
 }
 
-.search-result-meta-count::before {
+.results-meta-count::before {
+  color: $brand_color;
   content: "\1F4AC";
 }
 
-.search-result .meta-group {
-  align-items: center;
-}
-
-.search-result-breadcrumbs {
-  margin: 0;
-}
-
-.search-result-breadcrumbs li:last-child::after {
+.results-breadcrumbs li:last-child::after {
   content: "·";
   display: inline-block;
   margin: 0 5px;
 }
 
-/* Don't display CJK results in italic */
-/* Add a yellow background instead */
-html[lang|="zh"] .search-result-description em,
-html[lang|="ko"] .search-result-description em,
-html[lang|="ja"] .search-result-description em {
-  font-style: normal;
-  background: yellow;
+.results-breadcrumbs a {
+  color: lighten($text_color, 20%);
 }
