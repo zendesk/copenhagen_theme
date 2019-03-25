@@ -152,4 +152,17 @@ document.addEventListener('DOMContentLoaded', function() {
       this.setAttribute('aria-expanded', !isExpanded);
     });
   });
+
+  // If a section has more than 6 subsections, we collapse the list, and show a trigger to display them all
+  const seeAllTrigger = document.querySelector("#see-all-sections-trigger");
+  const subsectionsList = document.querySelector(".section-list");
+
+  if (subsectionsList && subsectionsList.children.length > 6) {
+    seeAllTrigger.setAttribute("aria-hidden", false);
+
+    seeAllTrigger.addEventListener("click", function(e) {
+      subsectionsList.classList.remove("section-list--collapsed");
+      seeAllTrigger.parentNode.removeChild(seeAllTrigger);
+    });
+  }
 });
