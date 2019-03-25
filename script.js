@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     seeAllTrigger.addEventListener("click", function(e) {
       subsectionsList.classList.remove("section-list--collapsed");
-      seeAllTrigger.remove();
+      seeAllTrigger.parentNode.removeChild(seeAllTrigger);
     });
   }
 });
