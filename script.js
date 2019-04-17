@@ -120,6 +120,9 @@ $(document).ready(function() {
     this.form.submit();
   });
 
+  // Change title of subit request page
+  $("h1:contains('Submit a request')").text("Contact Support");
+
   // Toggles expanded aria to collapsible elements
   $(".collapsible-nav, .collapsible-sidebar").on("click", function(e) {
     e.stopPropagation();
