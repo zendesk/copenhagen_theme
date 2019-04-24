@@ -4117,7 +4117,7 @@ ul {
   margin: 0 5px;
 }
 
-/* Non-latin search results highlight*/
+/* Non-latin search results highlight */
 /* Add a yellow background for Chinese */
 html[lang|="zh"] .search-result-description em {
   font-style: normal;
