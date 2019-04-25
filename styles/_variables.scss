@@ -1,10 +1,10 @@
 // Variables
 
 // Colors
-$brand_color: #0072ef !default;
+$brand_color: #C9510D !default;
 $brand_text_color: #fff !default; //Color for text with an accent color background
-$text_color: #333 !default;
-$link_color: #0072ef !default;
+$text_color: #000 !default;
+$link_color: #C9510D !default;
 $background_color: #fff !default;
 
 $visited-link-color: zass-darken($link_color, 20%);
@@ -14,19 +14,19 @@ $secondary-text-color: zass-lighten($text_color, 20%);
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
-$font-size-bigger: 16px;
-$font-size-base: 15px;
+$font-size-bigger: 18px;
+$font-size-base: 16px;
 $font-size-navigation: 14px;
-$font-size-small: 13px;
+$font-size-small: 14px;
 $font-size-smaller: 11px;
 
-$border-color: #ddd;
+$border-color: #e8e8e8;
 
 $button-color: $brand_color;
 
 $input-font-size: 14px;
-$field-text-color: #999;
-$field-text-focus-color: #555;
+$field-text-color: #333;
+$field-text-focus-color: #000;
 
 // Breakpoints variables
 $tablet-width: 768px;
@@ -34,8 +34,9 @@ $desktop-width: 1024px;
 $max-width-container: 1160px;
 
 // Fonts
-$heading_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
-$text_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
+$heading_font: 'Arial Black', Arial, 'Helvetica Neue', Helvetica, sans-serif !default;
+$text_font: Arial, 'Helvetica Neue', Helvetica, sans-serif !default;
 $font-weight-base: 400;
 $font-weight-light: 300;
 $font-weight-semibold: 600;
+$font-weight-bold: 700;
