@@ -1,7 +1,7 @@
 {
-  "name": "Copenhagen",
-  "author": "Zendesk",
-  "version": "1.5.0",
+  "name": "Artstor Support Theme based on Zendesk Copenhagen",
+  "author": "Zendesk, ITHAKA",
+  "version": "0.1.0",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -11,7 +11,7 @@
       "type": "color",
       "description": "brand_color_description",
       "label": "brand_color_label",
-      "value": "#0072EF"
+      "value": "#C9510D"
     }, {
       "identifier": "brand_text_color",
       "type": "color",
@@ -23,13 +23,13 @@
       "type": "color",
       "description": "text_color_description",
       "label": "text_color_label",
-      "value": "#333333"
+      "value": "#000000"
     }, {
       "identifier": "link_color",
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#0072EF"
+      "value": "#C9510D"
     }, {
       "identifier": "background_color",
       "type": "color",

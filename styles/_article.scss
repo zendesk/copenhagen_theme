@@ -34,8 +34,12 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     margin-top: 20px;
+
+    h1 {
+     margin-bottom: 4px;
+    }
   }
 
   &-avatar {
@@ -82,7 +86,7 @@
 
   &-content {
     line-height: 1.6;
-    margin: 40px 0;
+    margin: 20px 0;
     word-wrap: break-word;
   }
 
@@ -248,22 +252,23 @@
 .sidenav {
   &-title {
     font-size: $font-size-base;
+    font-weight: normal;
+    font-style: italic;
     position: relative;
   }
 
   &-item {
-    border-radius: 4px;
     color: $text_color;
     display: block;
     font-weight: $font-weight-light;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 5px;
 
-    &.current-article,
+    &.current-article {
+      font-weight: 700;
+    }
     &:hover {
-      background-color: $brand_color;
-      color: $brand_text_color;
-      text-decoration: none;
+      text-decoration: underline;
     }
   }
 }
