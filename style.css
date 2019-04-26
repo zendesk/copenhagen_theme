@@ -461,8 +461,8 @@ ul {
   border: 0;
   color: $color_4;
   display: none;
-  font-size: 14px;
-  padding: 0 20px 0 0;
+  font-size: 12px;
+  padding: 10px 10px 0 0;
   width: auto;
 }
 
@@ -522,7 +522,7 @@ ul {
   border: 0;
   color: $color_4;
   min-width: 0;
-  padding: 0;
+  padding: 0 0 2px 0;
   white-space: nowrap;
 }
 
