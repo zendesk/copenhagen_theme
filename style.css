@@ -1648,10 +1648,6 @@ ul {
   content: "\e900";
 }
 
-.share-googleplus::before {
-  content: "\e902";
-}
-
 /***** Comments *****/
 /* Styles comments inside articles, posts and requests */
 .comment {
