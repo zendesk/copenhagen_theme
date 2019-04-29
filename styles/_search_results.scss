@@ -88,13 +88,27 @@
   }
 }
 
-/* Don't display CJK results in italic */
-/* Add a yellow background instead */
-html[lang|="zh"],
-html[lang|="ko"],
-html[lang|="ja"] {
+/* Non-latin search results highlight */
+
+/* Add a yellow background for Chinese */
+html[lang|="zh"] {
   .search-result-description em {
     font-style: normal;
     background: yellow;
+  }
+}
+
+/* Use bold to highlight for the rest of supported non-latin languages */
+html[lang|="ar"],
+html[lang|="bg"],
+html[lang|="el"],
+html[lang|="he"],
+html[lang|="hi"],
+html[lang|="ko"],
+html[lang|="ja"],
+html[lang|="ru"],
+html[lang|="th"] {
+  .search-result-description em {
+    font-style: bold;
   }
 }
