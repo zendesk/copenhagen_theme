@@ -129,4 +129,24 @@ $(document).ready(function() {
     var isExpanded = this.getAttribute("aria-expanded") === "true";
     this.setAttribute("aria-expanded", !isExpanded);
   });
+
+    // Forum Agent Badges
+  $(document).ready(function() {
+
+  var moderators = ["Robyn", "Chris Hill", "Nathan"];
+
+  var supportManagers = ["Ashli Baldwin"];
+    
+  $('.post-author').each(function(index) {
+
+  var name = ($.trim($(this).text()).split('\n')[0]) //select name, stop at new line
+
+  if ($.inArray(name, moderators) > -1) {
+    $(this).addClass('moderator');
+  }
+  
+  else if ($.inArray(name, supportManagers) > -1) {
+    $(this).addClass('support-manager');
+  }
+  });
 });

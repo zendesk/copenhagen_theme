@@ -4319,5 +4319,23 @@ ul {
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
+.moderator:after, .support-manager:after {
+
+content: "Support Staff";
+
+background-color: #1eb848;
+
+border-radius: 3px;
+
+color: white;
+  
+margin-left: 8px;
+
+padding: 2px 15px;
+
+font-size: 12px;
+
+}
+
 accordioncss.txt
 Displaying accordioncss.txt.
