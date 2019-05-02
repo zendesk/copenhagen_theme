@@ -3338,10 +3338,6 @@ ul {
   content: "\e901";
 }
 
-.icon-googleplus-::before {
-  content: "\e902";
-}
-
 .icon-facebook::before {
   content: "\e903";
 }
