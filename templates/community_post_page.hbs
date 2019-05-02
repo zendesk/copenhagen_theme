@@ -42,7 +42,11 @@
                 <img src="{{post.author.avatar_url}}" alt="Avatar" class="user-avatar"/>
               </div>
               <div class="post-meta">
-                <span title="{{post.author.name}}">
+                {{#if post.author.agent}}
+                  <span title="{{post.author.name}}" class="moderator">
+                {{else}}
+                  <span title="{{post.author.name}}"
+                {{/if}}
                   {{#link 'user_profile' id=post.author.id}}
                     {{post.author.name}}
                   {{/link}}
@@ -135,7 +139,11 @@
                     <img src="{{author.avatar_url}}" alt="Avatar" class="user-avatar"/>
                   </div>
                   <div class="comment-meta">
-                    <span title="{{author.name}}">
+                    {{#if author.agent}}
+                      <span title="{{author.name}}" class="moderator">
+                    {{else}}
+                      <span title="{{author.name}}">
+                    {{/if}}
                       {{#link 'user_profile' id=author.id}}
                         {{author.name}}
                       {{/link}}

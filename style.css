@@ -4319,5 +4319,16 @@ ul {
     content: "\e080";    /* adjust as needed, taken from bootstrap.css */
 }
 
+.moderator:after {
+  /* badges for community mods*/
+  content: "Gaia GPS Staff";
+  background-color: #1eb848;
+  border-radius: 3px;
+  color: white;
+  margin-left: 8px;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
 accordioncss.txt
 Displaying accordioncss.txt.
