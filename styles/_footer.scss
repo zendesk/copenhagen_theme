@@ -3,8 +3,23 @@
   border-top: 1px solid $border-color;
   margin-top: 60px;
   padding: 30px 0;
+  background-color: #f9f9f9;
 
-  a { color: $secondary-text-color; }
+  p {
+    line-height: 1;
+    font-size: 80%;
+  }
+
+  li {
+    font-size: $font-size-small;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.8rem;
+  }
+
+  a {
+    color: $secondary-text-color;
+    font-weight: $font-weight-bold;
+  }
 
   &-inner {
     @include max-width-container;
@@ -12,9 +27,46 @@
     justify-content: space-between;
   }
 
+  &-logo {
+    width: 16.6667%;
+  }
+
+  &-links {
+    width: 58.3333%;
+  }
+
+  &-legal {
+    width:25%;
+  }
+
   &-language-selector {
     color: $secondary-text-color;
     display: inline-block;
     font-weight: $font-weight-light;
   }
+}
+
+.row {
+  max-width: 1120px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bottom-section {
+  margin: 5px auto 2.5rem;
+
+  & .top-spacing {
+    margin-top:45px;
+  }
+}
+
+.columns {
+  display: inline-block;
+  float: left;
+  padding-right: 0.85714rem;
+  padding-left: 0.85714rem;
+}
+
+.linklist {
+  width: 33.33333%;
 }
