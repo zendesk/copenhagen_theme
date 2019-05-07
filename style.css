@@ -48,6 +48,11 @@ h4 {
   font-family: $text_font;
 }
 
+small {
+  font-size: 80%;
+  line-height: 1.1;
+}
+
 a {
   color: $link_color;
   text-decoration: none;
@@ -623,13 +628,19 @@ ul {
 
 /***** Footer *****/
 .footer {
-  border-top: 1px solid #e8e8e8;
   margin-top: 60px;
   padding: 30px 0;
+  background-color: #f9f9f9;
+}
+
+.footer li {
+  font-size: 14px;
+  margin-bottom: 0.8rem;
 }
 
 .footer a {
-  color: lighten($text_color, 20%);
+  color: $text_color;
+  font-weight: 700;
 }
 
 .footer-inner {
@@ -647,10 +658,59 @@ ul {
   }
 }
 
+.footer-logo {
+  width: 16.6667%;
+}
+
+.footer-links {
+  width: 58.3333%;
+}
+
+.footer-legal {
+  width: 25%;
+}
+
 .footer-language-selector {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-weight: 300;
+}
+
+.footer .icon-link i.fi-social-twitter {
+  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png");
+}
+
+.footer .icon-link i.fi-social-facebook {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  margin-bottom: 3px;
+  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png");
+}
+
+.row {
+  max-width: 1120px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.bottom-section {
+  margin: 5px auto 2.5rem;
+}
+
+.bottom-section .top-spacing {
+  margin-top: 45px;
+}
+
+.columns {
+  display: inline-block;
+  float: left;
+  padding-right: 0.85714rem;
+  padding-left: 0.85714rem;
+}
+
+.linklist {
+  width: 33.33333%;
 }
 
 /***** Breadcrumbs *****/
