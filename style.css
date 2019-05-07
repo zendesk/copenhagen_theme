@@ -633,18 +633,6 @@ ul {
   background-color: #f9f9f9;
 }
 
-.footer .icon-link i.fi-social-twitter {
-  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png");
-}
-
-.footer .icon-link i.fi-social-facebook {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
-  margin-bottom: 3px;
-  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png");
-}
-
 .footer li {
   font-size: 14px;
   margin-bottom: 0.8rem;
@@ -686,6 +674,18 @@ ul {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-weight: 300;
+}
+
+.footer .icon-link i.fi-social-twitter {
+  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png");
+}
+
+.footer .icon-link i.fi-social-facebook {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+  margin-bottom: 3px;
+  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png");
 }
 
 .row {

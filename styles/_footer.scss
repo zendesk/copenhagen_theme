@@ -4,19 +4,6 @@
   padding: 30px 0;
   background-color: #f9f9f9;
 
-  .icon-link i.fi-social-twitter {
-    background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png');
-  }
-
-  .icon-link i.fi-social-facebook {
-    width: 24px;
-    height: 24px;
-    margin-left: 10px;
-    margin-bottom: 3px;
-    background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png');
-
-  }
-
   li {
     font-size: $font-size-small;
     margin-bottom: 0.8rem;
@@ -49,6 +36,18 @@
     color: $secondary-text-color;
     display: inline-block;
     font-weight: $font-weight-light;
+  }
+
+  .icon-link i.fi-social-twitter {
+    background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png');
+  }
+
+  .icon-link i.fi-social-facebook {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png');
   }
 }
 
