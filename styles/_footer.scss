@@ -38,6 +38,8 @@
     font-weight: $font-weight-light;
   }
 
+  ul.social-icons li { display: inline-block; margin-bottom: 0; }
+
   .icon-link i.fi-social-twitter {
     background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png');
   }

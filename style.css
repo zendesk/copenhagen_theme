@@ -142,6 +142,14 @@ ul {
   padding: 0;
 }
 
+.show-for-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
 .error-page {
   max-width: 1160px;
   margin: 0 auto;
@@ -674,6 +682,11 @@ ul {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-weight: 300;
+}
+
+.footer ul.social-icons li {
+  display: inline-block;
+  margin-bottom: 0;
 }
 
 .footer .icon-link i.fi-social-twitter {

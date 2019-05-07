@@ -132,6 +132,15 @@ ul {
   padding: 0;
 }
 
+//This is to show text for a screen reader when you use background images
+.show-for-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
 .error-page {
   @include max-width-container;
 }
