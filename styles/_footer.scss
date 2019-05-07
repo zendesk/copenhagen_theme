@@ -1,23 +1,29 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $border-color;
   margin-top: 60px;
   padding: 30px 0;
   background-color: #f9f9f9;
 
-  p {
-    line-height: 1;
-    font-size: 80%;
+  .icon-link i.fi-social-twitter {
+    background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png');
+  }
+
+  .icon-link i.fi-social-facebook {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+    background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png');
+
   }
 
   li {
     font-size: $font-size-small;
-    font-weight: $font-weight-bold;
     margin-bottom: 0.8rem;
   }
 
   a {
-    color: $secondary-text-color;
+    color: $text_color;
     font-weight: $font-weight-bold;
   }
 
