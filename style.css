@@ -142,12 +142,30 @@ ul {
   padding: 0;
 }
 
+ul.list-horizontal li {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
 .show-for-sr {
   position: absolute !important;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+.compact-bottom {
+  margin-bottom: 0 !important;
+}
+
+.compact-top {
+  margin-top: 0rem !important;
+}
+
+.compact {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
 }
 
 .error-page {
@@ -637,8 +655,14 @@ ul {
 /***** Footer *****/
 .footer {
   margin-top: 60px;
-  padding: 30px 0;
+  padding: 30px 0 0 0;
   background-color: #f9f9f9;
+}
+
+.footer p {
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 2rem;
 }
 
 .footer li {
@@ -686,7 +710,7 @@ ul {
 
 .footer ul.social-icons li {
   display: inline-block;
-  margin-bottom: 0;
+  margin-bottom: 0.8rem;
 }
 
 .footer .icon-link i {
@@ -709,10 +733,63 @@ ul {
   background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png");
 }
 
+.footer > .expanded.row {
+  border: 0;
+  background: #e8e8e8;
+  padding-top: 35.5px;
+  padding-bottom: 71.6px;
+  margin-bottom: 0;
+}
+
+.footer .goog-te-gadget-simple {
+  border: 1px solid rgba(0, 106, 132, 0.5);
+  color: #006a84;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 2px 2px 0 #D6D6D6;
+  height: 2.78571rem;
+  padding: 0.57143rem;
+  margin: 0 0 1.14286rem;
+  font-size: 1.14286rem;
+  font-family: inherit;
+  line-height: normal;
+  border-radius: 3px;
+  background: white url(nav-arrow.svg) no-repeat right -1.14286rem center;
+  background-origin: content-box;
+  padding-right: 1.71429rem;
+  background-size: 1.21429rem;
+  width: 100%;
+}
+
+.footer a.goog-te-menu-value {
+  color: inherit;
+}
+
+.footer a.goog-te-menu-value:hover {
+  border: 0;
+}
+
+.footer a.goog-te-menu-value span:not(:first-child) {
+  display: none;
+}
+
+@media screen and (max-width: 42.79464rem) {
+  .footer > .expanded.row ul {
+    margin-bottom: 20px;
+  }
+}
+
 .row {
   max-width: 1120px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.row.expanded {
+  display: block;
+  clear: both;
+  min-height: 40px;
+  max-width: none;
 }
 
 .bottom-section {
