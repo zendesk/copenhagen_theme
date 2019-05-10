@@ -10,8 +10,13 @@ $header-height: 71px;
   justify-content: space-between;
 }
 
-.logo img {
-  max-height: 37px;
+.logo {
+  position: absolute;
+  top: 30px;
+
+  img {
+    max-height: 37px;
+  }
 }
 
 .user-nav {

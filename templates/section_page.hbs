@@ -43,12 +43,9 @@
         <ul class="section-list section-list--collapsed">
           {{#each section.sections}}
           <li class="section-list-item">
-              <a href="{{url}}">
+              <h2><a href="{{url}}">
                 <span>{{name}}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 14.5l6.1-6.1c.2-.2.2-.5 0-.7L5 1.5"/>
-                </svg>
-              </a>
+              </a></h2>
             </li>
           {{/each}}
           <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>

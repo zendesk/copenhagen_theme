@@ -14,7 +14,7 @@
   //Inner pages search field
   input[type="search"] {
     @include tablet {
-      min-width: 300px;
+      min-width: 230px;
     }
 
     &::after { font-size: $font-size-base; }

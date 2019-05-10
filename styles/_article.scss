@@ -11,7 +11,7 @@
     flex: 1 0 75%;
     max-width: 75%;
     min-width: 640px;
-    padding: 0 60px;
+    padding: 0 60px 0 0;
   }
 
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11

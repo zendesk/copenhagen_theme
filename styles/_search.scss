@@ -4,7 +4,6 @@
 
   input[type="search"] {
     border: 1px solid $border-color;
-    border-radius: 30px;
     box-sizing: border-box;
     color: $field-text-color;
     height: 40px;
@@ -19,7 +18,6 @@
     }
 
     &:focus {
-      border: 1px solid $brand_color;
       color: $field-text-focus-color;
     }
   }

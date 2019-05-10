@@ -31,13 +31,14 @@
 .section-list-item {
   font-size: $font-size-bigger;
   display: inline-block;
-  padding: 20px;
+  padding: 0;
   margin-right: 60px;
 
   a {
     align-items: center;
     display: flex;
     justify-content: space-between;
+    color: $text_color;
   }
 }
 
