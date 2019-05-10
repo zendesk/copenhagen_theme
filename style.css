@@ -901,13 +901,18 @@ ul.list-horizontal li {
 
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 100px;
   padding: 0 20px;
   text-align: center;
   width: 100%;
+  margin-bottom: 120px !important;
+}
+
+.hero h1 {
+  margin-bottom: 0;
+  margin-top: 40px;
 }
 
 .hero-inner {
@@ -916,6 +921,8 @@ ul.list-horizontal li {
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
+  border: 1px solid #ced4da;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
 .page-header {
