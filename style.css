@@ -56,6 +56,7 @@ small {
 a {
   color: $link_color;
   text-decoration: none;
+  font-weight: 700;
 }
 
 a:hover, a:active, a:focus {
@@ -132,7 +133,6 @@ textarea:focus {
 }
 
 .container-divider {
-  border-top: 1px solid #e8e8e8;
   margin-bottom: 20px;
 }
 
@@ -142,12 +142,20 @@ ul {
   padding: 0;
 }
 
-.show-for-sr {
+.show-for-sr, .show-on-focus {
   position: absolute !important;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+.show-for-sr:active, .show-for-sr:focus, .show-on-focus:active, .show-on-focus:focus {
+  position: static !important;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
 }
 
 .error-page {
@@ -493,11 +501,12 @@ ul {
 
 .nav-wrapper a {
   border: 0;
-  color: $link_color;
+  color: $text_color;
   display: none;
   font-size: 14px;
-  padding: 0 20px 0 0;
+  padding: 20px 20px 0 0;
   width: auto;
+  font-weight: 700;
 }
 
 @media (min-width: 768px) {
@@ -512,7 +521,7 @@ ul {
 
 .nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
   background-color: transparent;
-  color: $link_color;
+  color: $text_color;
   text-decoration: underline;
 }
 
@@ -1251,14 +1260,12 @@ ul {
   justify-content: flex-end;
 }
 
-.section-content {
-  flex: 1;
+.section-container h1 {
+  margin-bottom: 40px;
 }
 
-@media (min-width: 1024px) {
-  .section-content {
-    flex: 0 0 80%;
-  }
+.section-content {
+  flex: 1;
 }
 
 .section-subscribe .dropdown-toggle::after {
@@ -1274,18 +1281,14 @@ ul {
 }
 
 .section-list-item {
-  border-bottom: 1px solid #e8e8e8;
   font-size: 18px;
-  padding: 15px 0;
-}
-
-.section-list-item:first-child {
-  border-top: 1px solid #e8e8e8;
+  display: inline-block;
+  padding: 20px;
+  margin-right: 60px;
 }
 
 .section-list-item a {
   align-items: center;
-  color: $text_color;
   display: flex;
   justify-content: space-between;
 }
@@ -1303,20 +1306,22 @@ ul {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
 
 @media (min-width: 1024px) {
   .article {
-    flex: 1 0 66%;
-    max-width: 66%;
+    flex: 1 0 75%;
+    max-width: 75%;
     min-width: 640px;
-    padding: 0 30px;
+    padding: 0 60px;
   }
 }
 
@@ -1495,8 +1500,9 @@ ul {
 @media (min-width: 1024px) {
   .article-sidebar {
     border: 0;
-    flex: 0 0 17%;
+    flex: 0 0 25%;
     height: auto;
+    padding: 0 0 0 60px;
   }
 }
 
@@ -1706,17 +1712,19 @@ ul {
 }
 
 .share a {
-  border-radius: 50%;
-  height: 25px;
-  line-height: 25px;
+  height: 22px;
+  line-height: 22px;
   overflow: hidden;
-  width: 25px;
+  width: 22px;
+  margin-right: 3px;
 }
 
 .share a::before {
-  color: lighten($text_color, 20%);
+  font-family: 'FontAwesome' !important;
+  color: $text_color;
   display: block;
-  font-size: 23px;
+  font-size: 18px;
+  line-height: 1em;
   text-align: center;
   width: 100%;
 }
@@ -1730,19 +1738,15 @@ ul {
 }
 
 .share-twitter::before {
-  content: "\e901";
+  content: "\f099";
 }
 
 .share-facebook::before {
-  content: "\e903";
+  content: "\f09a";
 }
 
 .share-linkedin::before {
-  content: "\e900";
-}
-
-.share-googleplus::before {
-  content: "\e902";
+  content: "\f0e1";
 }
 
 /***** Comments *****/
@@ -2401,10 +2405,10 @@ ul {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -3402,7 +3406,6 @@ ul {
 .recent-activity-item-comment span::before,
 .article-vote::before,
 .attachments .attachment-item::before,
-.share a::before,
 .vote-up::before,
 .vote-down::before,
 .actions .dropdown-toggle::before,
