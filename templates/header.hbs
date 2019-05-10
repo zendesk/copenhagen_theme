@@ -1,15 +1,19 @@
 <header class="header">
+  <div id="skipNav"><a class="show-on-focus" href="#main-content">Skip to Main Content</a></div>
   <div class="logo">
     {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="Artstor Support">
+      <img src="{{settings.a-logo-horz-bw-hex-387px}}" alt="Artstor Support">
     {{/link}}
   </div>
   <div class="nav-wrapper">
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
-      {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
+      <a href="https://www.artstor.org/about/">About Artstor</a>
+      <a href="https://www.artstor.org/about/">Login to Artstor</a>
+      <a href="https://www.artstor.org/contact-us/">Contact Us</a>
+      <!--{{link 'new_request' class='submit-a-request'}}-->
     </nav>
+    // need to figure out what to do this zd login
     {{user_info}}
   </div>
 </header>

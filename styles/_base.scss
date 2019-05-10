@@ -53,6 +53,7 @@ small {
 a {
   color: $link_color;
   text-decoration: none;
+  font-weight: $font-weight-bold;
 
   &:hover,
   &:active,
@@ -122,7 +123,6 @@ textarea {
 }
 
 .container-divider {
-  border-top: 1px solid $border-color;
   margin-bottom: 20px;
 }
 
@@ -137,13 +137,22 @@ ul {
   }
 }
 
-//This is to show text for a screen reader when you use background images
-.show-for-sr {
+//show-for-sr is to show text for a screen reader when you use background images
+//show-on-focus is used on the Skip to Main Content link
+.show-for-sr, .show-on-focus {
   position: absolute !important;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+
+  &:active, &:focus {
+    position: static !important;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
 }
 
 .compact-bottom {
@@ -175,3 +184,5 @@ ul {
 .dropdown-toggle::after {
   color: inherit;
 }
+
+

@@ -43,11 +43,12 @@ $header-height: 71px;
     }
 
     border: 0;
-    color: $link_color;
+    color: $text_color;
     display: none;
     font-size: 14px;
-    padding: 0 20px 0 0;
+    padding: 20px 20px 0 0;
     width: auto;
+    font-weight: $font-weight-bold;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
 
@@ -55,7 +56,7 @@ $header-height: 71px;
     &:focus,
     &:active {
       background-color: transparent;
-      color: $link_color;
+      color: $text_color;
       text-decoration: underline;
     }
 
