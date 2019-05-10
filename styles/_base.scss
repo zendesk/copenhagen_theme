@@ -130,6 +130,11 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+
+  &.list-horizontal li {
+    display: inline-block;
+    margin-right: 1.5rem;
+  }
 }
 
 //show-for-sr is to show text for a screen reader when you use background images
@@ -149,6 +154,17 @@ ul {
     clip: auto;
   }
 }
+
+.compact-bottom {
+  margin-bottom: 0 !important;
+}
+
+.compact-top {
+ margin-top: 0rem !important; }
+
+.compact {
+ margin-bottom: 0 !important;
+ margin-top: 0 !important; }
 
 .error-page {
   @include max-width-container;

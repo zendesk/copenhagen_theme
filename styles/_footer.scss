@@ -1,8 +1,14 @@
 /***** Footer *****/
 .footer {
   margin-top: 60px;
-  padding: 30px 0;
+  padding: 30px 0 0 0;
   background-color: #f9f9f9;
+
+  p {
+    line-height: 1;
+    letter-spacing: 0;
+    margin-bottom: 2rem;
+  }
 
   li {
     font-size: $font-size-small;
@@ -38,7 +44,7 @@
     font-weight: $font-weight-light;
   }
 
-  ul.social-icons li { display: inline-block; margin-bottom: 0; }
+  ul.social-icons li { display: inline-block; margin-bottom: 0.8rem; }
 
  .icon-link i {
   width: 28px;
@@ -59,12 +65,60 @@
     margin-bottom: 3px;
     background-image: url('//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png');
   }
+
+  & > .expanded.row {
+  border: 0;
+  background: #e8e8e8;
+  padding-top: 35.5px;
+  padding-bottom: 71.6px;
+  margin-bottom: 0;
+  //padding: 35.5px 0 71.6;
+  }
+
+  .goog-te-gadget-simple {
+  border: 1px solid rgba(0, 106, 132, 0.5);
+  color: #006a84;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 2px 2px 0 #D6D6D6;
+  height: 2.78571rem;
+  padding: 0.57143rem;
+  margin: 0 0 1.14286rem;
+  font-size: 1.14286rem;
+  font-family: inherit;
+  line-height: normal;
+  border-radius: 3px;
+  background: white url(nav-arrow.svg) no-repeat right -1.14286rem center;
+  background-origin: content-box;
+  padding-right: 1.71429rem;
+  background-size: 1.21429rem;
+  width: 100%;
+  }
+  a.goog-te-menu-value {
+    color: inherit;
+  }
+  a.goog-te-menu-value:hover {
+    border: 0;
+  }
+  a.goog-te-menu-value span:not(:first-child) {
+    display: none;
+  }
 }
+
+@media screen and (max-width: 42.79464rem) {
+  .footer > .expanded.row ul {
+    margin-bottom: 20px; } }
 
 .row {
   max-width: 1120px;
   margin-right: auto;
   margin-left: auto;
+  &.expanded {
+    display: block;
+    clear: both;
+    min-height: 40px;
+    max-width: none;
+  }
 }
 
 .bottom-section {
