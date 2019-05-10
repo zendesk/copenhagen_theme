@@ -10,18 +10,19 @@
 }
 
 .share a {
-  border-radius: 50%;
-  height: 25px;
-  line-height: 25px;
+  height: 22px;
+  line-height: 22px;
   overflow: hidden;
-  width: 25px;
+  width: 22px;
+  margin-right: 3px;
 }
 
 .share a::before {
-  @extend .icon;
-  color: $secondary-text-color;
+  font-family: 'FontAwesome' !important;
+  color: $text-color;
   display: block;
-  font-size: 23px;
+  font-size: 18px;
+  line-height: 1em;
   text-align: center;
   width: 100%;
 }
@@ -32,17 +33,13 @@
 }
 
 .share-twitter::before {
-  content: "\e901";
+  content: "\f099";
 }
 
 .share-facebook::before {
-  content: "\e903";
+  content: "\f09a";
 }
 
 .share-linkedin::before {
-  content: "\e900";
-}
-
-.share-googleplus::before {
-  content: "\e902";
+  content: "\f0e1";
 }

@@ -56,6 +56,7 @@ small {
 a {
   color: $link_color;
   text-decoration: none;
+  font-weight: 700;
 }
 
 a:hover, a:active, a:focus {
@@ -132,7 +133,6 @@ textarea:focus {
 }
 
 .container-divider {
-  border-top: 1px solid #e8e8e8;
   margin-bottom: 20px;
 }
 
@@ -142,12 +142,38 @@ ul {
   padding: 0;
 }
 
-.show-for-sr {
+ul.list-horizontal li {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.show-for-sr, .show-on-focus {
   position: absolute !important;
   width: 1px;
   height: 1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
+}
+
+.show-for-sr:active, .show-for-sr:focus, .show-on-focus:active, .show-on-focus:focus {
+  position: static !important;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+}
+
+.compact-bottom {
+  margin-bottom: 0 !important;
+}
+
+.compact-top {
+  margin-top: 0rem !important;
+}
+
+.compact {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
 }
 
 .error-page {
@@ -493,11 +519,12 @@ ul {
 
 .nav-wrapper a {
   border: 0;
-  color: $link_color;
+  color: $text_color;
   display: none;
   font-size: 14px;
-  padding: 0 20px 0 0;
+  padding: 20px 20px 0 0;
   width: auto;
+  font-weight: 700;
 }
 
 @media (min-width: 768px) {
@@ -512,7 +539,7 @@ ul {
 
 .nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
   background-color: transparent;
-  color: $link_color;
+  color: $text_color;
   text-decoration: underline;
 }
 
@@ -637,8 +664,14 @@ ul {
 /***** Footer *****/
 .footer {
   margin-top: 60px;
-  padding: 30px 0;
+  padding: 30px 0 0 0;
   background-color: #f9f9f9;
+}
+
+.footer p {
+  line-height: 1;
+  letter-spacing: 0;
+  margin-bottom: 2rem;
 }
 
 .footer li {
@@ -686,7 +719,7 @@ ul {
 
 .footer ul.social-icons li {
   display: inline-block;
-  margin-bottom: 0;
+  margin-bottom: 0.8rem;
 }
 
 .footer .icon-link i {
@@ -709,10 +742,63 @@ ul {
   background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png");
 }
 
+.footer > .expanded.row {
+  border: 0;
+  background: #e8e8e8;
+  padding-top: 35.5px;
+  padding-bottom: 71.6px;
+  margin-bottom: 0;
+}
+
+.footer .goog-te-gadget-simple {
+  border: 1px solid rgba(0, 106, 132, 0.5);
+  color: #006a84;
+  font-weight: 400;
+  cursor: pointer;
+  box-shadow: 0 2px 2px 0 #D6D6D6;
+  height: 2.78571rem;
+  padding: 0.57143rem;
+  margin: 0 0 1.14286rem;
+  font-size: 1.14286rem;
+  font-family: inherit;
+  line-height: normal;
+  border-radius: 3px;
+  background: white url(nav-arrow.svg) no-repeat right -1.14286rem center;
+  background-origin: content-box;
+  padding-right: 1.71429rem;
+  background-size: 1.21429rem;
+  width: 100%;
+}
+
+.footer a.goog-te-menu-value {
+  color: inherit;
+}
+
+.footer a.goog-te-menu-value:hover {
+  border: 0;
+}
+
+.footer a.goog-te-menu-value span:not(:first-child) {
+  display: none;
+}
+
+@media screen and (max-width: 42.79464rem) {
+  .footer > .expanded.row ul {
+    margin-bottom: 20px;
+  }
+}
+
 .row {
   max-width: 1120px;
   margin-right: auto;
   margin-left: auto;
+}
+
+.row.expanded {
+  display: block;
+  clear: both;
+  min-height: 40px;
+  max-width: none;
 }
 
 .bottom-section {
@@ -1272,14 +1358,12 @@ ul {
   justify-content: flex-end;
 }
 
-.section-content {
-  flex: 1;
+.section-container h1 {
+  margin-bottom: 40px;
 }
 
-@media (min-width: 1024px) {
-  .section-content {
-    flex: 0 0 80%;
-  }
+.section-content {
+  flex: 1;
 }
 
 .section-subscribe .dropdown-toggle::after {
@@ -1295,18 +1379,14 @@ ul {
 }
 
 .section-list-item {
-  border-bottom: 1px solid #e8e8e8;
   font-size: 18px;
-  padding: 15px 0;
-}
-
-.section-list-item:first-child {
-  border-top: 1px solid #e8e8e8;
+  display: inline-block;
+  padding: 20px;
+  margin-right: 60px;
 }
 
 .section-list-item a {
   align-items: center;
-  color: $text_color;
   display: flex;
   justify-content: space-between;
 }
@@ -1328,16 +1408,18 @@ ul {
   * The article grid is defined this way to optimize readability:
   * Sidebar | Content | Free space
   * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
 
 @media (min-width: 1024px) {
   .article {
-    flex: 1 0 66%;
-    max-width: 66%;
+    flex: 1 0 75%;
+    max-width: 75%;
     min-width: 640px;
-    padding: 0 30px;
+    padding: 0 60px;
   }
 }
 
@@ -1516,8 +1598,9 @@ ul {
 @media (min-width: 1024px) {
   .article-sidebar {
     border: 0;
-    flex: 0 0 17%;
+    flex: 0 0 25%;
     height: auto;
+    padding: 0 0 0 60px;
   }
 }
 
@@ -1727,17 +1810,19 @@ ul {
 }
 
 .share a {
-  border-radius: 50%;
-  height: 25px;
-  line-height: 25px;
+  height: 22px;
+  line-height: 22px;
   overflow: hidden;
-  width: 25px;
+  width: 22px;
+  margin-right: 3px;
 }
 
 .share a::before {
-  color: lighten($text_color, 20%);
+  font-family: 'FontAwesome' !important;
+  color: $text_color;
   display: block;
-  font-size: 23px;
+  font-size: 18px;
+  line-height: 1em;
   text-align: center;
   width: 100%;
 }
@@ -1751,19 +1836,15 @@ ul {
 }
 
 .share-twitter::before {
-  content: "\e901";
+  content: "\f099";
 }
 
 .share-facebook::before {
-  content: "\e903";
+  content: "\f09a";
 }
 
 .share-linkedin::before {
-  content: "\e900";
-}
-
-.share-googleplus::before {
-  content: "\e902";
+  content: "\f0e1";
 }
 
 /***** Comments *****/
@@ -3423,7 +3504,6 @@ ul {
 .recent-activity-item-comment span::before,
 .article-vote::before,
 .attachments .attachment-item::before,
-.share a::before,
 .vote-up::before,
 .vote-down::before,
 .actions .dropdown-toggle::before,
