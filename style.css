@@ -907,17 +907,7 @@ ul.list-horizontal li {
   padding: 0 20px;
   text-align: center;
   width: 100%;
-  /* This section was taken from library.arstor.org 
- .form-control {
-    display: block;
-    padding: .375rem .75rem;
-        padding-right: 0.75rem;
-    font-weight: 400;
-    line-height: 1.5;
-    background-color: #fff;
-    background-clip: padding-box;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-  }*/
+  margin-bottom: 120px !important;
 }
 
 .hero h1 {
@@ -1349,10 +1339,6 @@ ul.list-horizontal li {
 }
 
 /***** Section pages *****/
-.section.hero {
-  margin-bottom: 120px;
-}
-
 .section-container {
   display: flex;
   justify-content: flex-end;
