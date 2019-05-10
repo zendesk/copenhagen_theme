@@ -1,16 +1,36 @@
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 100px;
   padding: 0 20px;
   text-align: center;
   width: 100%;
+  margin-bottom: 120px !important;
+  }
+
+  h1 {
+    margin-bottom: 0;
+    margin-top: 40px;
+  }
 
   &-inner {
     @include vertical-align;
     max-width: 610px;
     margin: 0 auto;
+    border: 1px solid #ced4da;
+    box-shadow: 0 2px 15px 0 rgba(0,0,0,.15);
   }
+
+/* This section was taken from library.arstor.org 
+ .form-control {
+    display: block;
+    padding: .375rem .75rem;
+        padding-right: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    background-color: #fff;
+    background-clip: padding-box;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }*/
 }
