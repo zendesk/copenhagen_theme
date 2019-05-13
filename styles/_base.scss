@@ -105,6 +105,10 @@ select {
   }
 }
 
+.page-title {
+  font-size: 46px;
+}
+
 textarea {
   border: 1px solid $border-color;
   border-radius: 2px;
@@ -137,6 +141,10 @@ ul {
   }
 }
 
+.text-center {
+  text-align: center;
+}
+
 //show-for-sr is to show text for a screen reader when you use background images
 //show-on-focus is used on the Skip to Main Content link
 .show-for-sr, .show-on-focus {
@@ -160,7 +168,7 @@ ul {
 }
 
 .compact-top {
- margin-top: 0rem !important; }
+ margin-top: 0.3rem !important; }
 
 .compact {
  margin-bottom: 0 !important;
@@ -168,6 +176,16 @@ ul {
 
 .error-page {
   @include max-width-container;
+}
+
+.fit {
+  max-width: 500px;
+}
+
+.caption-text {
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 1em 0 2rem;
 }
 
 .dropdown-toggle {
@@ -189,7 +207,7 @@ ul {
   position: relative;
   top: -20px;
 
-  a { 
+  a {
     font-weight: normal;
     font-size: 14px;
     padding-left: 6px;

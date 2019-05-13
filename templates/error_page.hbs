@@ -1,21 +1,13 @@
 <div class="container-divider"></div>
-<div class="error-page">
-  <h1>{{t 'oops'}}</h1>
-
-  {{#is error 'unauthorized'}}
-    <h2>{{link 'sign_in'}}</h2>
-  {{/is}}
-
-  {{#is error 'forbidden'}}
-    <h2>{{t 'not_authorized'}}</h2>
-  {{/is}}
-
-  {{#is error 'not_found'}}
-    <h2>{{t 'nonexistent_page'}}</h2>
-    <p>{{t 'mistyped_address_or_moved_page'}}</p>
-  {{/is}}
-
-  {{#link 'help_center'}}
-    {{t 'back_to_homepage'}}
-  {{/link}}
+<div class="error-page text-center">
+  <h1 class="page-title compact-bottom">404</h1>
+  <h2 class="compact-top">Page not found</h2>
+  <p>The link you followed may be broken or we may have moved the page. If you cannot find what you are looking for, <a href="https://www.artstor.org/contact-us">contact us</a>.
+  <p>
+  	<a href="/" class="button">Back to Homepage</a>
+  	<a href="http://support.artstor.org/" class="button hollow" target="_blank">Get Help</a>
+  </p>
+<div>
+  <img class="fit" src="https://theme.zdassets.com/theme_assets/1006386/1afd840bddc97c7702e5d701be71eba177e0a776.jpg" alt="Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art">
+  <p class="caption-text compact">Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art.</p>
 </div>
