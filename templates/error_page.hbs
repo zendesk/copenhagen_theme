@@ -1,5 +1,15 @@
 <div class="container-divider"></div>
 <div class="error-page text-center">
+
+  {{#is error 'unauthorized'}}
+    <h2>{{link 'sign_in'}}</h2>
+  {{/is}}
+
+  {{#is error 'forbidden'}}
+    <h2>{{t 'not_authorized'}}</h2>
+  {{/is}}
+
+{{#is error 'not_found'}}
   <h1 class="page-title compact-bottom">404</h1>
   <h2 class="compact-top">Page not found</h2>
   <p>The link you followed may be broken or we may have moved the page. If you cannot find what you are looking for, <a href="https://www.artstor.org/contact-us">contact us</a>.
@@ -11,3 +21,29 @@
   <img class="fit" src="https://theme.zdassets.com/theme_assets/1006386/1afd840bddc97c7702e5d701be71eba177e0a776.jpg" alt="Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art">
   <p class="caption-text compact">Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art.</p>
 </div>
+<script>
+  var base_pattern = 'https://support.artstor.org/';
+  /*the below is slicing off everything in the URL bar that appears after the base_pattern*/
+  var t_url = window.location.href.slice( base_pattern.length );
+
+  /*below is the end of the URL that a user inputs in the URL bar*/
+  var redirect_from_array = [
+  "?article=group-online-training-2",
+  "?article=materials-4"
+];
+
+/*the below is where a user is redirected to*/
+  var redirect_to_array = [
+  "sections/360003844874",
+  "articles/360021395193"
+];
+  /*The below looks at the end of the base URL (t_url), and gives the position in the array named redirect_from_array.*/
+  var idx = redirect_from_array.indexOf( t_url );
+
+  /*as long as t_url is in redirect_from_array, it should have an idx value of >=0. If it's not in the array, nothing is redirected*/
+  if ( idx >= 0 ) {
+      window.location.replace(base_pattern + 'hc/en-us/' + redirect_to_array[idx]);
+  }
+
+</script>
+{{/is}}
