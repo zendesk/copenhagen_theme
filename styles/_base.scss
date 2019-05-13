@@ -185,4 +185,13 @@ ul {
   color: inherit;
 }
 
+#skipNav {
+  position: relative;
+  top: -20px;
 
+  a { 
+    font-weight: normal;
+    font-size: 14px;
+    padding-left: 6px;
+  }
+}

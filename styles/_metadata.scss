@@ -13,7 +13,6 @@
   font-weight: $font-weight-light;
 
   &:not(:last-child)::after {
-    content: "\00B7";
     margin: 0 5px;
   }
 }

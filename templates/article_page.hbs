@@ -36,8 +36,8 @@
               {{#is article.created_at article.edited_at}}
                 <li class="meta-data">{{date article.created_at timeago=true}}</li>
               {{else}}
-                <li class="meta-data">{{date article.edited_at timeago=true}}</li>
                 <li class="meta-data">{{t 'updated'}}</li>
+                <li class="meta-data">{{date article.edited_at timeago=true}}</li>
               {{/is}}
             </ul>
           </div>
