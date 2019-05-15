@@ -1559,10 +1559,36 @@ ul.list-horizontal li {
   margin-bottom: 0;
 }
 
+.article-anchorbox {
+  background-color: #e8e8e8;
+  padding: 15px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.article-anchorbox > p {
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.article-anchorbox > ul {
+  margin-bottom: 0px;
+  margin-top: 0px;
+  margin-left: 5px;
+}
+
 .article-content {
   line-height: 1.6;
   margin: 20px 0;
   word-wrap: break-word;
+}
+
+.article img {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
+}
+
+.article-attachments {
+  display: none;
 }
 
 .article-footer {
