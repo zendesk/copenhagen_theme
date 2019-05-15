@@ -2056,30 +2056,6 @@ ul {
   padding: 0 10px 0 0;
 }
 
-.moderator:after, .support-manager:after, {
-
-content: "Support Team";
-
-background-color: grey;
-
-border-radius: 3px;
-
-color: white;
-
-margin-left: 8px;
-
-padding: 2px 5px;
-
-font-size: 10px;
-
-}
-
-.support-manager:after {
-
-content: "Support Manager";
-
-}
-
 /***** Striped list *****/
 /* Used in community posts list and requests list */
 .striped-list {
