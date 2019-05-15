@@ -473,7 +473,7 @@ ul {
 }
 
 [dir="rtl"] .nav-wrapper a {
-  padding: 0 0 0 20px;
+  padding: 0 0 0 10px;
 }
 
 .nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
@@ -1711,7 +1711,6 @@ ul {
 }
 
 .comment-form-controls {
-  display: none;
   margin-top: 10px;
   text-align: left;
 }
@@ -2055,6 +2054,30 @@ ul {
   border-right: 1px solid $color_1;
   margin: 0 10px 0 0;
   padding: 0 10px 0 0;
+}
+
+.moderator:after, .support-manager:after, {
+
+content: "Support Team";
+
+background-color: grey;
+
+border-radius: 3px;
+
+color: white;
+
+margin-left: 8px;
+
+padding: 2px 5px;
+
+font-size: 10px;
+
+}
+
+.support-manager:after {
+
+content: "Support Manager";
+
 }
 
 /***** Striped list *****/
@@ -4328,6 +4351,43 @@ ul {
   margin-left: 8px;
   padding: 2px 5px;
   font-size: 12px;
+}
+
+/*style vertical tabs for search results*/
+.tabs {
+  display:inline-block;
+  float: left;
+  background-color: white;
+  height: auto;
+  margin-right:10px;
+}
+
+.tabs a {
+  display: block;
+  color: black;
+  font-size:15px;
+  font-family: inherit;
+  padding: 10px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tabs a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.tabs li.active {
+  background-color: #ddd;
+}
+
+.tab-pane {
+  float: left;
+  padding: 0px 12px;   
+}
+.search-results-pannel{
+  margin-left:20px;
 }
 
 accordioncss.txt
