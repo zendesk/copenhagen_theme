@@ -147,6 +147,10 @@ ul.list-horizontal li {
   margin-right: 1.5rem;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .show-for-sr, .show-on-focus {
   position: absolute !important;
   width: 1px;
@@ -168,7 +172,7 @@ ul.list-horizontal li {
 }
 
 .compact-top {
-  margin-top: 0rem !important;
+  margin-top: 0.3rem !important;
 }
 
 .compact {
@@ -180,6 +184,7 @@ ul.list-horizontal li {
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 5%;
+  margin-top: 60px;
 }
 
 @media (min-width: 1160px) {
@@ -187,6 +192,12 @@ ul.list-horizontal li {
     padding: 0;
     width: 90%;
   }
+}
+
+.caption-text {
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 1em 0 2rem;
 }
 
 .dropdown-toggle {
@@ -1401,12 +1412,12 @@ ul.list-horizontal li {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -2500,10 +2511,10 @@ ul.list-horizontal li {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
