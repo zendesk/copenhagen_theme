@@ -105,10 +105,6 @@ select {
   }
 }
 
-.page-title {
-  font-size: 46px;
-}
-
 textarea {
   border: 1px solid $border-color;
   border-radius: 2px;
@@ -176,10 +172,7 @@ ul {
 
 .error-page {
   @include max-width-container;
-}
-
-.fit {
-  max-width: 500px;
+  margin-top: 60px;
 }
 
 .caption-text {

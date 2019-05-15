@@ -106,10 +106,6 @@ select::-ms-expand {
   display: none;
 }
 
-.page-title {
-  font-size: 46px;
-}
-
 textarea {
   border: 1px solid #000;
   border-radius: 2px;
@@ -188,6 +184,7 @@ ul.list-horizontal li {
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 5%;
+  margin-top: 60px;
 }
 
 @media (min-width: 1160px) {
@@ -195,10 +192,6 @@ ul.list-horizontal li {
     padding: 0;
     width: 90%;
   }
-}
-
-.fit {
-  max-width: 500px;
 }
 
 .caption-text {
