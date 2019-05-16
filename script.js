@@ -12,7 +12,7 @@ $(document).ready(function() {
 
   // show form controls when the textarea receives focus or backbutton is used and value exists
   var $commentContainerTextarea = $(".comment-container textarea"),
-    $commentContainerFormControls = $(".comment-form-controls, .comment-ccs");
+  $commentContainerFormControls = $(".comment-form-controls, .comment-ccs");
 
   $commentContainerTextarea.one("focus", function() {
     $commentContainerFormControls.show();
@@ -48,7 +48,7 @@ $(document).ready(function() {
   // Change Mark as solved text according to whether comment is filled
   var $requestCommentTextarea = $(".request-container .comment-container textarea");
 
-  $requestCommentTextarea.on("input", function() {
+  $requestCommentTextarea.on("keyup", function() {
     if ($requestCommentTextarea.val() !== "") {
       $requestMarkAsSolvedButton.text($requestMarkAsSolvedButton.data("solve-and-submit-translation"));
       $requestCommentSubmitButton.prop("disabled", false);
@@ -84,31 +84,11 @@ $(document).ready(function() {
     });
   }
 
-  function toggleNavigation(toggleElement) {
+  $(".header .icon-menu").on("click", function(e) {
+    e.stopPropagation();
     var menu = document.getElementById("user-nav");
     var isExpanded = menu.getAttribute("aria-expanded") === "true";
     menu.setAttribute("aria-expanded", !isExpanded);
-    toggleElement.setAttribute("aria-expanded", !isExpanded);
-  }
-
-  $(".header .icon-menu").on("click", function(e) {
-    e.stopPropagation();
-    toggleNavigation(this);
-  });
-
-  $(".header .icon-menu").on("keyup", function(e) {
-    if (e.keyCode === 13) { // Enter key
-      e.stopPropagation();
-      toggleNavigation(this);
-    }
-  });
-
-  $("#user-nav").on("keyup", function(e) {
-    if (e.keyCode === 27) { // Escape key
-      e.stopPropagation();
-      this.setAttribute("aria-expanded", false);
-      $(".header .icon-menu").attr("aria-expanded", false);
-    }
   });
 
   if ($("#user-nav").children().length === 0) {
@@ -120,13 +100,31 @@ $(document).ready(function() {
     this.form.submit();
   });
 
-  // Change title of subit request page
-  $("h1:contains('Submit a request')").text("Contact Support");
-
   // Toggles expanded aria to collapsible elements
   $(".collapsible-nav, .collapsible-sidebar").on("click", function(e) {
     e.stopPropagation();
     var isExpanded = this.getAttribute("aria-expanded") === "true";
     this.setAttribute("aria-expanded", !isExpanded);
+  });
+  
+  // Change title of subit request page
+  $("h1:contains('Submit a request')").text("Contact Support");
+  
+  // Capture submit request event
+  $('a.submit-a-request, .article-more-questions a').on('click', function(e) {
+      var path = window.location.pathname;
+      ga('send', 'event', 'Submit Request', 'Submit Request From', path);
+  });
+  
+  $(function() {
+  var url = window.location.hostname; 
+  var refer= document.referrer;
+  if(refer.includes('/community/')) {
+    $('#community').addClass('active');
+    $('#comm').addClass('active');
+    $('#help-center').removeClass('active');
+    $('#help').removeClass('active');
+    console.log(refer.includes('/community/'))
+  }
   });
 });
