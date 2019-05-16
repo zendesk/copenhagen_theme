@@ -129,4 +129,9 @@ $(document).ready(function() {
     var isExpanded = this.getAttribute("aria-expanded") === "true";
     this.setAttribute("aria-expanded", !isExpanded);
   });
+  
+   // change new post button to new feature request
+  $("a:contains('New post')").text("New Feature Request");
+   // change new post button to new feature request
+  $("a:contains('New post')").text("New Feature Request");
 });
