@@ -267,6 +267,16 @@ ul.list-horizontal li {
   border-color: darken($brand_color, 20%);
 }
 
+.button.hollow, [role="button"].hollow {
+  background-color: transparent;
+}
+
+.button.hollow:hover, .button.hollow:focus, .button.hollow:active, [role="button"].hollow:hover, [role="button"].hollow:focus, [role="button"].hollow:active {
+  background-color: $brand_color;
+  border-color: $brand_color;
+  color: #fff;
+}
+
 .button[data-disabled], [role="button"][data-disabled] {
   cursor: default;
 }
@@ -4322,12 +4332,12 @@ html[lang|="ja"] .search-result-description em {
 }
 
 /***** Below code is for styling the WAYFless URL generator*****/
-fieldset {
+#wayfless fieldset {
   padding: 15px;
   border: 3px solid;
 }
 
-div.field_container {
+#wayfless .field_container {
   position: relative;
   display: block;
   width: 100%;
@@ -4335,14 +4345,14 @@ div.field_container {
   margin-bottom: 25px;
 }
 
-div.field_container label.fieldname {
+#wayfless .field_container label.fieldname {
   position: relative;
   display: block;
   font-weight: bold;
   font-size: 16px;
 }
 
-div.field_container input[type="text"] {
+#wayfless .field_container input[type="text"] {
   position: relative;
   display: block;
   width: 100%;
@@ -4355,7 +4365,7 @@ div.field_container input[type="text"] {
   margin-top: 10px;
 }
 
-div.field_container select {
+#wayfless div.field_container select {
   position: relative;
   display: block;
   width: 215px;
@@ -4363,14 +4373,14 @@ div.field_container select {
   margin-top: 10px;
 }
 
-div.field_container label.help {
+#wayfless div.field_container label.help {
   position: relative;
   display: block;
   font-size: 14px;
   line-height: 1.4;
 }
 
-div.field_container label.error {
+#wayfless div.field_container label.error {
   position: relative;
   display: block;
   width: 430px;
@@ -4378,7 +4388,7 @@ div.field_container label.error {
   color: #DC2A2a;
 }
 
-div#url {
+#wayfless div#url {
   display: block;
   position: relative;
   width: 100%;
@@ -4394,8 +4404,4 @@ div#url {
   appearance: none;
   margin-top: -10px;
   margin-bottom: -10px;
-}
-
-.wayflessbuttons > input {
-  background-color: transparent;
 }
