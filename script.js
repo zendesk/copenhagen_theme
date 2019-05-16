@@ -116,8 +116,7 @@ $(document).ready(function() {
       ga('send', 'event', 'Submit Request', 'Submit Request From', path);
   });
   
-  $(function() {
-  var url = window.location.hostname; 
+  $(function() { 
   var refer= document.referrer;
   if(refer.includes('/community/')) {
     $('#community').addClass('active');
