@@ -124,7 +124,6 @@ $(document).ready(function() {
     $('#comm').addClass('active');
     $('#help-center').removeClass('active');
     $('#help').removeClass('active');
-    console.log(refer.includes('/community/'))
   }
   });
 });
