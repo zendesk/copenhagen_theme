@@ -1587,10 +1587,6 @@ ul.list-horizontal li {
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
-.article-attachments {
-  display: none;
-}
-
 .article-footer {
   align-items: center;
   display: flex;
