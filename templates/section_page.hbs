@@ -14,9 +14,6 @@
         {{#if settings.show_follow_section}}
           {{subscribe}}
         {{/if}}
-        {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
-        {{/if}}
       </header>
 
       {{#if section.articles}}
@@ -33,10 +30,6 @@
             </li>
           {{/each}}
         </ul>
-      {{else}}
-        <i class="section-empty">
-          <a href="{{section.url}}">{{t 'empty'}}</a>
-        </i>
       {{/if}}
 
       {{#if section.sections}}
@@ -46,6 +39,7 @@
               <h2><a href="{{url}}">
                 <span>{{name}}</span>
               </a></h2>
+              <p class="page-header-description">{{description}}</p>
             </li>
           {{/each}}
           <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>

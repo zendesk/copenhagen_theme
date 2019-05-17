@@ -36,11 +36,13 @@ h2 {
   font-size: 24.5px;
   letter-spacing: -1.34px;
   line-height: 30px;
+  margin: 40px 0 0;
 }
 
 h3 {
   font-size: 20px;
   font-family: $text_font;
+  margin: 40px 0 0;
 }
 
 h4 {
@@ -928,12 +930,11 @@ ul.list-horizontal li {
   padding: 0 20px;
   text-align: center;
   width: 100%;
-  margin-bottom: 120px !important;
+  margin: 80px 0 40px !important;
 }
 
 .hero h1 {
-  margin-bottom: 0;
-  margin-top: 40px;
+  line-height: 0;
 }
 
 .hero-inner {
@@ -977,9 +978,6 @@ ul.list-horizontal li {
 }
 
 .page-header-description {
-  font-style: italic;
-  font-weight: 300;
-  margin: 0 0 30px 0;
   word-break: break-word;
 }
 
@@ -1040,7 +1038,6 @@ ul.list-horizontal li {
 }
 
 .blocks-item {
-  border: 1px solid $brand_color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
@@ -1048,14 +1045,13 @@ ul.list-horizontal li {
   flex: 1 0 340px;
   flex-direction: column;
   justify-content: center;
-  margin: 0 0 30px;
+  margin: 0 0 10px;
   max-width: 100%;
-  text-align: center;
 }
 
 @media (min-width: 768px) {
   .blocks-item {
-    margin: 0 15px 30px;
+    margin: 0 5px 10px;
   }
 }
 
@@ -1100,6 +1096,7 @@ ul.list-horizontal li {
 .blocks-item-description {
   font-weight: 300;
   margin: 0;
+  color: #000;
 }
 
 .blocks-item-description:not(:empty) {
@@ -1118,8 +1115,10 @@ ul.list-horizontal li {
 }
 
 .section h2 {
-  margin-bottom: 10px;
-  text-align: center;
+  margin-top: 0;
+  font-size: 22px;
+  letter-spacing: -0.8px;
+  font-family: $text_font;
 }
 
 /***** Promoted articles *****/
@@ -1372,18 +1371,11 @@ ul.list-horizontal li {
 }
 
 .section-list {
-  margin: 40px 0;
+  margin: 20px 0;
 }
 
 .section-list--collapsed .section-list-item:nth-child(1n + 6) {
   display: none;
-}
-
-.section-list-item {
-  font-size: 18px;
-  display: inline-block;
-  padding: 0;
-  margin-right: 60px;
 }
 
 .section-list-item a {
@@ -1391,6 +1383,10 @@ ul.list-horizontal li {
   display: flex;
   justify-content: space-between;
   color: $text_color;
+}
+
+.section-list-item .page-header-description {
+  font-size: 16px;
 }
 
 .see-all-sections-trigger {
@@ -1406,12 +1402,12 @@ ul.list-horizontal li {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -1574,7 +1570,6 @@ ul.list-horizontal li {
 .article-anchorbox > ul {
   margin-bottom: 0px;
   margin-top: 0px;
-  margin-left: 5px;
 }
 
 .article-content {
@@ -1583,8 +1578,8 @@ ul.list-horizontal li {
   word-wrap: break-word;
 }
 
-.article img {
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
+.article-content li {
+  margin-bottom: 10px;
 }
 
 .article-footer {
@@ -1592,6 +1587,10 @@ ul.list-horizontal li {
   display: flex;
   justify-content: space-between;
   padding-bottom: 20px;
+}
+
+.article-share {
+  padding-top: 20px;
 }
 
 .article-comment-count {
@@ -1629,7 +1628,6 @@ ul.list-horizontal li {
 }
 
 .article-relatives {
-  border-top: 1px solid #000;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -1659,7 +1657,6 @@ ul.list-horizontal li {
 }
 
 .article-votes {
-  border-top: 1px solid #000;
   padding: 30px 0;
   text-align: center;
 }
@@ -1752,6 +1749,10 @@ ul.list-horizontal li {
 .article-unsubscribe:hover {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
+}
+
+.article img {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 .sidenav-title {
@@ -1884,8 +1885,6 @@ ul.list-horizontal li {
 }
 
 .comment-overview {
-  border-bottom: 1px solid #000;
-  border-top: 1px solid #000;
   padding: 20px 0;
 }
 
@@ -2527,10 +2526,10 @@ ul.list-horizontal li {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
