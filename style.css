@@ -473,7 +473,7 @@ ul {
 }
 
 [dir="rtl"] .nav-wrapper a {
-  padding: 0 0 0 20px;
+  padding: 0 0 0 10px;
 }
 
 .nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
@@ -1711,7 +1711,6 @@ ul {
 }
 
 .comment-form-controls {
-  display: none;
   margin-top: 10px;
   text-align: left;
 }
@@ -4334,6 +4333,44 @@ ul {
 h4 a {
   color: $color_4;
   text-decoration: none;
+}
+
+/*style vertical tabs for search results*/
+.tabs {
+  display:inline-block;
+  float: left;
+  background-color: white;
+  height: auto;
+  margin-right:10px;
+}
+
+.tabs a {
+  display: block;
+  color: black;
+  font-size:15px;
+  font-family: inherit;
+  padding: 10px 16px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.tabs a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.tabs li.active {
+  background-color: #ddd;
+}
+
+.tab-pane {
+  float: left;
+  padding: 0px 12px;   
+}
+
+.search-results-pannel{
+  margin-left:20px;
 }
 
 accordioncss.txt
