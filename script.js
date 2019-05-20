@@ -106,6 +106,9 @@ $(document).ready(function() {
     var isExpanded = this.getAttribute("aria-expanded") === "true";
     this.setAttribute("aria-expanded", !isExpanded);
   });
+
+  // change new post button to new feature request
+  $("a:contains('New post')").text("New Feature Request");
   
   // Change title of subit request page
   $("h1:contains('Submit a request')").text("Contact Support");

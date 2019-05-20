@@ -4329,6 +4329,12 @@ ul {
   font-size: 12px;
 }
 
+/*Style for submitting a Forum Post*/
+h4 a {
+  color: $color_4;
+  text-decoration: none;
+}
+
 /*style vertical tabs for search results*/
 .tabs {
   display:inline-block;
@@ -4362,6 +4368,7 @@ ul {
   float: left;
   padding: 0px 12px;   
 }
+
 .search-results-pannel{
   margin-left:20px;
 }
