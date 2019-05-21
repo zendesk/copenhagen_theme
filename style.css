@@ -774,9 +774,11 @@ ul.list-horizontal li {
 .footer > .expanded.row {
   border: 0;
   background: #e8e8e8;
-  padding-top: 35.5px;
-  padding-bottom: 71.6px;
-  margin-bottom: 0;
+  padding-top: 16px;
+}
+
+.footer > .expanded.row ul.list-horizontal {
+  padding-top: 11.2px;
 }
 
 .footer .goog-te-gadget-simple {
@@ -824,9 +826,6 @@ ul.list-horizontal li {
 }
 
 .row.expanded {
-  display: block;
-  clear: both;
-  min-height: 40px;
   max-width: none;
 }
 
@@ -1402,12 +1401,12 @@ ul.list-horizontal li {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -2526,10 +2525,10 @@ ul.list-horizontal li {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
