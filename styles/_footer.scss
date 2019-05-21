@@ -69,10 +69,12 @@
   & > .expanded.row {
   border: 0;
   background: #e8e8e8;
-  padding-top: 35.5px;
-  padding-bottom: 71.6px;
-  margin-bottom: 0;
-  //padding: 35.5px 0 71.6;
+  padding-top: 16px;
+  display: flex;
+
+  ul.list-horizontal {
+    padding-top: 11.2px;
+    }
   }
 
   .goog-te-gadget-simple {
@@ -114,9 +116,6 @@
   margin-right: auto;
   margin-left: auto;
   &.expanded {
-    display: block;
-    clear: both;
-    min-height: 40px;
     max-width: none;
   }
 }
