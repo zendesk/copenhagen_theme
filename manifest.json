@@ -1,9 +1,9 @@
 {
-  "name": "Copenhagen",
+  "name": "Macaso",
   "author": "Zendesk",
-  "version": "1.5.2",
+  "version": "1.0.0",
   "api_version": 1,
-  "default_locale": "en-us",
+  "default_locale": "ja-JP",
   "settings": [{
     "label": "colors_group_label",
     "variables": [{
@@ -11,7 +11,7 @@
       "type": "color",
       "description": "brand_color_description",
       "label": "brand_color_label",
-      "value": "#0072EF"
+      "value": "#00BF80"
     }, {
       "identifier": "brand_text_color",
       "type": "color",
