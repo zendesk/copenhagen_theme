@@ -88,6 +88,12 @@
   &-body {
     @include content-body;
     > p:last-child { margin-bottom: 0; }
+    img {
+      box-shadow: 0 2px 15px 0 rgba(0,0,0,.3);
+    }
+    .noshadow {
+      box-shadow: none !important;
+    }
   }
 
   &-anchorbox {
@@ -105,7 +111,7 @@
     ul {
       margin: 0 20px 0;
     }
-    
+
   }
 
   &-content {
@@ -277,10 +283,6 @@
       background-color: $hover-button-color;
       border-color: $hover-button-color;
     }
-  }
-
-  img {
-    box-shadow: 0 2px 15px 0 rgba(0,0,0,.3);
   }
 }
 

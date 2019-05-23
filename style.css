@@ -1395,12 +1395,12 @@ table td, table th {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -1527,15 +1527,13 @@ table td, table th {
 .article-body code {
   background: darken($background_color, 3%);
   border: 1px solid #000;
-  border-radius: 3px;
-  padding: 0 5px;
-  margin: 0 2px;
+  padding: 10px 15px;
+  display: block;
 }
 
 .article-body pre {
   background: darken($background_color, 3%);
   border: 1px solid #000;
-  border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
   white-space: pre;
@@ -1550,6 +1548,14 @@ table td, table th {
 
 .article-body > p:last-child {
   margin-bottom: 0;
+}
+
+.article-body img {
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
+}
+
+.article-body .noshadow {
+  box-shadow: none !important;
 }
 
 .article-anchorbox {
@@ -1746,10 +1752,6 @@ table td, table th {
 .article-unsubscribe:hover {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
-}
-
-.article img {
-  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.3);
 }
 
 .sidenav-title {
@@ -2095,15 +2097,13 @@ table td, table th {
 .comment-body code {
   background: darken($background_color, 3%);
   border: 1px solid #000;
-  border-radius: 3px;
-  padding: 0 5px;
-  margin: 0 2px;
+  padding: 10px 15px;
+  display: block;
 }
 
 .comment-body pre {
   background: darken($background_color, 3%);
   border: 1px solid #000;
-  border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
   white-space: pre;
@@ -2525,10 +2525,10 @@ table td, table th {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -2672,15 +2672,13 @@ table td, table th {
 .post-body code {
   background: darken($background_color, 3%);
   border: 1px solid #000;
-  border-radius: 3px;
-  padding: 0 5px;
-  margin: 0 2px;
+  padding: 10px 15px;
+  display: block;
 }
 
 .post-body pre {
   background: darken($background_color, 3%);
   border: 1px solid #000;
-  border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
   white-space: pre;
