@@ -18,25 +18,25 @@
       margin: 0 5px 10px;
     }
 
-    border-radius: 4px;
     box-sizing: border-box;
     color: $brand_color;
     display: flex;
     flex: 1 0 340px;
     flex-direction: column;
-    justify-content: center;
     margin: 0 0 10px;
     max-width: 100%;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
 
-      * {
-        color: $brand_text_color;
-        text-decoration: none;
+      text-decoration: none;
+
+      h2 {
+      color: $brand-color;
+      text-decoration: underline;
       }
+
     }
 
     &-internal {
@@ -56,7 +56,8 @@
 
   &-item-link {
     color: $brand_color;
-    padding: 20px 30px;
+    padding: 15px 20px;
+    text-decoration: none;
 
     &:hover,
     &:focus,
@@ -70,9 +71,14 @@
   }
 
   &-item-description {
+    font-size: $font-size-small;
     font-weight: $font-weight-light;
     margin: 0;
     color: #000;
+    
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &-item-description:not(:empty) {

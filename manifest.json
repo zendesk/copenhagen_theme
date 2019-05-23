@@ -1,7 +1,7 @@
 {
   "name": "Artstor Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -147,7 +147,7 @@
       "type": "checkbox",
       "description": "recent_activity_description",
       "label": "recent_activity_label",
-      "value": true
+      "value": false
     }]
   }, {
     "label": "article_page_group_label",
@@ -156,7 +156,7 @@
       "type": "checkbox",
       "description": "articles_in_section_description",
       "label": "articles_in_section_label",
-      "value": true
+      "value": false
     }, {
       "identifier": "show_article_author",
       "type": "checkbox",
@@ -174,13 +174,13 @@
       "type": "checkbox",
       "description": "follow_article_description",
       "label": "follow_article_label",
-      "value": true
+      "value": false
     }, {
       "identifier": "show_recently_viewed_articles",
       "type": "checkbox",
       "description": "recently_viewed_articles_description",
       "label": "recently_viewed_articles_label",
-      "value": true
+      "value": false
     }, {
       "identifier": "show_related_articles",
       "type": "checkbox",

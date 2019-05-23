@@ -1,8 +1,17 @@
 <section class="section hero">
-  <h1>Artstor Support</h1>
-  <div class="hero-inner">
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    <div class="hero-inner">
+    <h1>Artstor Support</h1>
+
+    {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search our help center'}}
   </div>
+  {{#if promoted_articles}}
+      <p class="popular-topics">
+        <strong>Popular topics:</strong>
+          {{#each promoted_articles}}
+                <a href="{{url}}">{{title}}</a> 
+          {{/each}}
+      </p>
+    {{/if}}
 </section>
 
 <div class="container">
@@ -14,7 +23,7 @@
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
                 <h2 class="blocks-item-title">{{name}}</h2>
-                <p class="blocks-item-description">{{excerpt description}}</p>
+                <p class="blocks-item-description compact-top">{{excerpt description}}</p>
               </a>
             </li>
           {{else}}
@@ -24,7 +33,7 @@
                   <h2 class="blocks-item-title">
                     {{name}}
                   </h2>
-                  <p class="blocks-item-description">{{excerpt description}}</p>
+                  <p class="blocks-item-description compact-top">{{excerpt description}}</p>
                 </a>
               </li>
             {{/each}}
@@ -35,21 +44,20 @@
     </section>
 
     {{#if promoted_articles}}
-      <section class="articles">
-        <h3>{{t 'promoted_articles'}}</h3>
-        <ul class="article-list promoted-articles">
+      <section class="promoted-articles">
+        <strong>Popular Topics:</strong>
+        
           {{#each promoted_articles}}
-            <li class="promoted-articles-item">
+            
                 <a href="{{url}}">
                   {{title}}
-
                   {{#if internal}}
                     <span class="icon-lock" title="{{t 'internal'}}"></span>
                   {{/if}}
                 </a>
-            </li>
+            
           {{/each}}
-        </ul>
+        
       </section>
     {{/if}}
   </section>
