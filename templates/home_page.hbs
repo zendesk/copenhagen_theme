@@ -42,23 +42,5 @@
       </ul>
       {{pagination}}
     </section>
-
-    {{#if promoted_articles}}
-      <section class="promoted-articles">
-        <strong>Popular Topics:</strong>
-        
-          {{#each promoted_articles}}
-            
-                <a href="{{url}}">
-                  {{title}}
-                  {{#if internal}}
-                    <span class="icon-lock" title="{{t 'internal'}}"></span>
-                  {{/if}}
-                </a>
-            
-          {{/each}}
-        
-      </section>
-    {{/if}}
   </section>
 </div>
