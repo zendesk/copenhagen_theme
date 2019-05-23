@@ -2,6 +2,7 @@
 .button, [role="button"] {
   @include tablet { width: auto; }
 
+  background: #fff;
   border: 1px solid $button-color;
   border-radius: 4px;
   color: $button-color;
@@ -12,6 +13,7 @@
   margin: 0;
   padding: 0 20px;
   text-align: center;
+  text-decoration: none;
   transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
   user-select: none;
   white-space: nowrap;

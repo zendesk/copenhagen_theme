@@ -5,7 +5,7 @@
     display: flex;
     justify-content: flex-end;
 
-    h1 {margin-bottom: 40px;}
+    h1 {margin-bottom: 20px;}
 
   }
 
@@ -21,7 +21,7 @@
 }
 
 .section-list {
-  margin: 20px 0;
+  margin: 0;
 }
 
 .section-list--collapsed .section-list-item:nth-child(1n + 6) {
@@ -29,6 +29,11 @@
 }
 
 .section-list-item {
+  h3 {
+    font-size: $font-size-bigger;
+    margin-top: 20px;
+  }
+
   a {
     align-items: center;
     display: flex;
@@ -37,7 +42,7 @@
   }
 
   .page-header-description {
-    font-size: $font-size-base;
+    font-size: $font-size-small;
   }
 }
 

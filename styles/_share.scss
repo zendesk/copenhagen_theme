@@ -12,9 +12,11 @@
 .share a {
   height: 22px;
   line-height: 22px;
-  overflow: hidden;
-  width: 22px;
   margin-right: 3px;
+  overflow: hidden;
+  text-decoration: none;
+  width: 22px;
+  
 }
 
 .share a::before {

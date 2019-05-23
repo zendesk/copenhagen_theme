@@ -81,26 +81,31 @@
     vertical-align: middle;
   }
 
+  &-list {
+    margin-bottom: 20px;
+  }
+
   &-body {
     @include content-body;
     > p:last-child { margin-bottom: 0; }
   }
 
   &-anchorbox {
-    background-color: $gray;
-    padding: 15px;
+    background-color: $lighter-gray;
+    border: 1px solid $med-gray;
+    border-width: 1px 0;
     font-weight: $font-weight-bold;
     margin-bottom: 30px;
+    padding: 15px;
 
-    & > p {
-      margin-top: 0px;
-      margin-bottom: 10px;
+    p {
+      margin: 0 0 10px;
     }
 
-    & > ul {
-      margin-bottom: 0px;
-      margin-top: 0px;
+    ul {
+      margin: 0 20px 0;
     }
+    
   }
 
   &-content {
@@ -306,11 +311,12 @@
 .recent-articles,
 .related-articles {
   h3 {
-    font-size: $font-size-base;
-    margin: 20px 0;
+    font-size: $font-size-bigger;
+    margin: 0 0 10px;
   }
 
   li {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    font-size: $font-size-base;
   }
 }

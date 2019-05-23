@@ -33,16 +33,16 @@ h1 {
 }
 
 h2 {
-  font-size: 24.5px;
-  letter-spacing: -1.34px;
+  font-family: $text_font;
+  font-size: 22px;
   line-height: 30px;
   margin: 40px 0 0;
 }
 
 h3 {
-  font-size: 20px;
   font-family: $text_font;
-  margin: 40px 0 0;
+  font-size: 18px;
+  margin: 30px 0 0;
 }
 
 h4 {
@@ -57,12 +57,11 @@ small {
 
 a {
   color: $link_color;
-  text-decoration: none;
-  font-weight: 700;
+  text-decoration: underline;
 }
 
 a:hover, a:active, a:focus {
-  text-decoration: underline;
+  color: darken($link_color, 20%);
 }
 
 input,
@@ -169,17 +168,21 @@ ul.list-horizontal li {
   clip: auto;
 }
 
+.compact {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+
+.compact-top {
+  margin-top: 0 !important;
+}
+
 .compact-bottom {
   margin-bottom: 0 !important;
 }
 
-.compact-top {
-  margin-top: 0.3rem !important;
-}
-
-.compact {
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
+.top-20 {
+  margin-top: 20px !important;
 }
 
 .error-page {
@@ -231,6 +234,7 @@ ul.list-horizontal li {
 
 /***** Buttons *****/
 .button, [role="button"] {
+  background: #fff;
   border: 1px solid $brand_color;
   border-radius: 4px;
   color: $brand_color;
@@ -241,6 +245,7 @@ ul.list-horizontal li {
   margin: 0;
   padding: 0 20px;
   text-align: center;
+  text-decoration: none;
   transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
   user-select: none;
   white-space: nowrap;
@@ -313,63 +318,54 @@ ul.list-horizontal li {
 }
 
 /***** Tables *****/
-.table {
+table {
+  margin-top: 10px;
   width: 100%;
   table-layout: fixed;
 }
 
 @media (min-width: 768px) {
-  .table {
+  table {
     table-layout: auto;
   }
 }
 
-.table th,
-.table th a {
-  color: lighten($text_color, 20%);
+table th {
+  color: $text_color;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 700;
   text-align: left;
 }
 
-[dir="rtl"] .table th, [dir="rtl"]
-.table th a {
+[dir="rtl"] table th {
   text-align: right;
 }
 
-.table tr {
-  border-bottom: 1px solid #000;
+table tr {
   display: block;
-  padding: 20px 0;
 }
 
 @media (min-width: 768px) {
-  .table tr {
+  table tr {
     display: table-row;
   }
 }
 
-.table td {
+table td {
   display: block;
 }
 
 @media (min-width: 768px) {
-  .table td {
+  table td {
     display: table-cell;
   }
 }
 
-@media (min-width: 1024px) {
-  .table td, .table th {
-    padding: 20px 30px;
-  }
-}
-
-@media (min-width: 768px) {
-  .table td, .table th {
-    padding: 10px 20px;
-    height: 60px;
-  }
+table td, table th {
+  padding: 10px;
+  border: 1px solid #cccccc;
+  vertical-align: top;
+  text-align: left;
 }
 
 /***** Forms *****/
@@ -551,9 +547,10 @@ ul.list-horizontal li {
   color: $text_color;
   display: none;
   font-size: 14px;
-  padding: 20px 20px 0 0;
-  width: auto;
   font-weight: 700;
+  padding: 20px 20px 0 0;
+  text-decoration: none;
+  width: auto;
 }
 
 @media (min-width: 768px) {
@@ -736,6 +733,14 @@ ul.list-horizontal li {
   width: 58.3333%;
 }
 
+.footer-links a {
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
 .footer-legal {
   width: 25%;
 }
@@ -780,6 +785,14 @@ ul.list-horizontal li {
 
 .footer > .expanded.row ul.list-horizontal {
   padding-top: 11.2px;
+}
+
+.footer > .expanded.row a {
+  text-decoration: none;
+}
+
+.footer > .expanded.row a:hover {
+  text-decoration: underline;
 }
 
 .footer .goog-te-gadget-simple {
@@ -886,18 +899,20 @@ ul.list-horizontal li {
 }
 
 .search input[type="search"] {
-  border: 1px solid #000;
+  border: 1px solid #cccccc;
+  border-radius: 3px 0 0 3px;
+  box-shadow: inset 1px 0 10px -3px #cccccc;
   box-sizing: border-box;
   color: #333;
   height: 40px;
-  padding-left: 40px;
+  padding-left: 15px;
   padding-right: 20px;
   -webkit-appearance: none;
   width: 100%;
 }
 
 [dir="rtl"] .search input[type="search"] {
-  padding-right: 40px;
+  padding-right: 15px;
   padding-left: 20px;
 }
 
@@ -914,7 +929,7 @@ ul.list-horizontal li {
   content: "\1F50D";
   font-size: 18px;
   position: absolute;
-  left: 15px;
+  right: 15px;
 }
 
 [dir="rtl"] .search::before {
@@ -924,24 +939,24 @@ ul.list-horizontal li {
 
 /***** Hero component *****/
 .hero {
-  background-position: center;
+  background: #e8e8e8 center;
   background-size: cover;
-  height: 100px;
+  height: 220px;
+  margin: 20px 0 !important;
   padding: 0 20px;
   text-align: center;
   width: 100%;
-  margin: 80px 0 40px !important;
 }
 
 .hero h1 {
-  line-height: 0;
+  line-height: 0.2;
 }
 
 .hero-inner {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 610px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -1038,13 +1053,11 @@ ul.list-horizontal li {
 }
 
 .blocks-item {
-  border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
   display: flex;
   flex: 1 0 340px;
   flex-direction: column;
-  justify-content: center;
   margin: 0 0 10px;
   max-width: 100%;
 }
@@ -1056,12 +1069,12 @@ ul.list-horizontal li {
 }
 
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+  text-decoration: none;
 }
 
-.blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
-  color: $brand_text_color;
-  text-decoration: none;
+.blocks-item:hover h2, .blocks-item:focus h2, .blocks-item:active h2 {
+  color: $brand_color;
+  text-decoration: underline;
 }
 
 .blocks-item-internal {
@@ -1082,7 +1095,8 @@ ul.list-horizontal li {
 
 .blocks-item-link {
   color: $brand_color;
-  padding: 20px 30px;
+  padding: 15px 20px;
+  text-decoration: none;
 }
 
 .blocks-item-link:hover, .blocks-item-link:focus, .blocks-item-link:active {
@@ -1094,9 +1108,14 @@ ul.list-horizontal li {
 }
 
 .blocks-item-description {
+  font-size: 14px;
   font-weight: 300;
   margin: 0;
   color: #000;
+}
+
+.blocks-item-description:hover {
+  text-decoration: none;
 }
 
 .blocks-item-description:not(:empty) {
@@ -1121,59 +1140,28 @@ ul.list-horizontal li {
   font-family: $text_font;
 }
 
+.section.knowledge-base {
+  margin-top: 40px;
+}
+
+.section.articles {
+  margin-left: 20px;
+}
+
+.section.articles h3 {
+  margin-bottom: 10px;
+}
+
 /***** Promoted articles *****/
-.promoted-articles {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+.popular-topics {
+  font-size: 14px;
+  position: relative;
+  top: 85px;
 }
 
-@media (min-width: 1024px) {
-  .promoted-articles {
-    flex-direction: row;
-  }
-}
-
-.promoted-articles-item {
-  flex: 1 0 auto;
-}
-
-@media (min-width: 1024px) {
-  .promoted-articles-item {
-    align-self: flex-end;
-    flex: 0 0 auto;
-    padding-right: 30px;
-    width: 33%;
-    /* Three columns on desktop */
-  }
-  [dir="rtl"] .promoted-articles-item {
-    padding: 0 0 0 30px;
-  }
-}
-
-.promoted-articles-item:nth-child(3n) {
-  padding-right: 0;
-}
-
-.promoted-articles-item a {
-  display: block;
-  border-bottom: 1px solid #000;
-  padding: 15px 0;
+.popular-topics a {
+  padding-right: 10px;
   color: $text_color;
-}
-
-.promoted-articles-item .icon-lock::before {
-  vertical-align: baseline;
-}
-
-.promoted-articles-item:last-child a {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  .promoted-articles-item:last-child a {
-    border-bottom: 1px solid #000;
-  }
 }
 
 /***** Community section in homepage *****/
@@ -1339,8 +1327,8 @@ ul.list-horizontal li {
 }
 
 .article-list-item {
-  font-size: 18px;
-  padding: 15px 0;
+  font-size: 16px;
+  padding: 5px 0;
 }
 
 .article-list-item .icon-lock::before {
@@ -1359,7 +1347,7 @@ ul.list-horizontal li {
 }
 
 .section-container h1 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .section-content {
@@ -1371,11 +1359,16 @@ ul.list-horizontal li {
 }
 
 .section-list {
-  margin: 20px 0;
+  margin: 0;
 }
 
 .section-list--collapsed .section-list-item:nth-child(1n + 6) {
   display: none;
+}
+
+.section-list-item h3 {
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .section-list-item a {
@@ -1386,7 +1379,7 @@ ul.list-horizontal li {
 }
 
 .section-list-item .page-header-description {
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .see-all-sections-trigger {
@@ -1402,12 +1395,12 @@ ul.list-horizontal li {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -1497,6 +1490,10 @@ ul.list-horizontal li {
   vertical-align: middle;
 }
 
+.article-list {
+  margin-bottom: 20px;
+}
+
 .article-body img {
   height: auto;
   max-width: 100%;
@@ -1556,20 +1553,20 @@ ul.list-horizontal li {
 }
 
 .article-anchorbox {
-  background-color: #e8e8e8;
-  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #cccccc;
+  border-width: 1px 0;
   font-weight: 700;
   margin-bottom: 30px;
+  padding: 15px;
 }
 
-.article-anchorbox > p {
-  margin-top: 0px;
-  margin-bottom: 10px;
+.article-anchorbox p {
+  margin: 0 0 10px;
 }
 
-.article-anchorbox > ul {
-  margin-bottom: 0px;
-  margin-top: 0px;
+.article-anchorbox ul {
+  margin: 0 20px 0;
 }
 
 .article-content {
@@ -1780,13 +1777,14 @@ ul.list-horizontal li {
 
 .recent-articles h3,
 .related-articles h3 {
-  font-size: 16px;
-  margin: 20px 0;
+  font-size: 18px;
+  margin: 0 0 10px;
 }
 
 .recent-articles li,
 .related-articles li {
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
 }
 
 /***** Attachments *****/
@@ -1837,9 +1835,10 @@ ul.list-horizontal li {
 .share a {
   height: 22px;
   line-height: 22px;
-  overflow: hidden;
-  width: 22px;
   margin-right: 3px;
+  overflow: hidden;
+  text-decoration: none;
+  width: 22px;
 }
 
 .share a::before {
@@ -2526,10 +2525,10 @@ ul.list-horizontal li {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -4340,4 +4339,17 @@ html[lang|="ko"] .search-result-description em,
 html[lang|="ja"] .search-result-description em {
   font-style: normal;
   background: yellow;
+}
+
+.callout {
+  border: 1px solid #cccccc;
+  border-width: 1px 0;
+  background: #f9f9f9;
+  color: $text_color;
+  margin: 20px 0;
+  padding: 30px;
+}
+
+.callout.alert {
+  background: #ffefc3;
 }

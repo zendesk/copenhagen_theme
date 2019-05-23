@@ -32,6 +32,12 @@
 
   &-links {
     width: 58.3333%;
+
+    a {
+      text-decoration: none;
+
+      &:hover {text-decoration: underline;}
+    }
   }
 
   &-legal {
@@ -47,11 +53,11 @@
   ul.social-icons li { display: inline-block; margin-bottom: 0.8rem; }
 
  .icon-link i {
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  background-size: cover;
-  border-radius: 3px;
+    width: 28px;
+    height: 28px;
+    display: inline-block;
+    background-size: cover;
+    border-radius: 3px;
 }
 
   .icon-link i.fi-social-twitter {
@@ -67,34 +73,41 @@
   }
 
   & > .expanded.row {
-  border: 0;
-  background: #e8e8e8;
-  padding-top: 16px;
-  display: flex;
+    border: 0;
+    background: #e8e8e8;
+    padding-top: 16px;
+    display: flex;
 
-  ul.list-horizontal {
-    padding-top: 11.2px;
+    ul.list-horizontal {
+      padding-top: 11.2px;
+      }
+
+    a {
+      text-decoration: none;
+
+      &:hover {text-decoration: underline;}
     }
+
   }
 
   .goog-te-gadget-simple {
-  border: 1px solid rgba(0, 106, 132, 0.5);
-  color: #006a84;
-  font-weight: 400;
-  cursor: pointer;
-  box-shadow: 0 2px 2px 0 #D6D6D6;
-  height: 2.78571rem;
-  padding: 0.57143rem;
-  margin: 0 0 1.14286rem;
-  font-size: 1.14286rem;
-  font-family: inherit;
-  line-height: normal;
-  border-radius: 3px;
-  background: white url(nav-arrow.svg) no-repeat right -1.14286rem center;
-  background-origin: content-box;
-  padding-right: 1.71429rem;
-  background-size: 1.21429rem;
-  width: 100%;
+    border: 1px solid rgba(0, 106, 132, 0.5);
+    color: #006a84;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 #D6D6D6;
+    height: 2.78571rem;
+    padding: 0.57143rem;
+    margin: 0 0 1.14286rem;
+    font-size: 1.14286rem;
+    font-family: inherit;
+    line-height: normal;
+    border-radius: 3px;
+    background: white url(nav-arrow.svg) no-repeat right -1.14286rem center;
+    background-origin: content-box;
+    padding-right: 1.71429rem;
+    background-size: 1.21429rem;
+    width: 100%;
   }
   a.goog-te-menu-value {
     color: inherit;

@@ -51,9 +51,10 @@ $header-height: 71px;
     color: $text_color;
     display: none;
     font-size: 14px;
-    padding: 20px 20px 0 0;
-    width: auto;
     font-weight: $font-weight-bold;
+    padding: 20px 20px 0 0;
+    text-decoration: none;
+    width: auto;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
 

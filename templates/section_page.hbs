@@ -20,9 +20,6 @@
         <ul class="article-list">
           {{#each section.articles}}
             <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-              {{#if promoted}}
-                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-              {{/if}}
               <a href="{{url}}" class="article-list-link">{{title}}</a>
               {{#if internal}}
                 <span class="icon-lock" title="{{t 'internal'}}"></span>
@@ -36,10 +33,10 @@
         <ul class="section-list section-list--collapsed">
           {{#each section.sections}}
           <li class="section-list-item">
-              <h2><a href="{{url}}">
+              <h3><a href="{{url}}">
                 <span>{{name}}</span>
-              </a></h2>
-              <p class="page-header-description">{{description}}</p>
+              </a></h3>
+              <p class="page-header-description compact-top">{{description}}</p>
             </li>
           {{/each}}
           <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
