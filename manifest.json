@@ -1,9 +1,9 @@
 {
   "name": "Macaso",
   "author": "Zendesk",
-  "version": "1.0.0",
+  "version": "2.0.2",
   "api_version": 1,
-  "default_locale": "ja-JP",
+  "default_locale": "en-us",
   "settings": [{
     "label": "colors_group_label",
     "variables": [{
