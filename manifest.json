@@ -1,7 +1,7 @@
 {
   "name": "Macaso",
   "author": "Zendesk",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "api_version": 1,
   "default_locale": "ja",
   "settings": [{
@@ -29,7 +29,7 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#0072EF"
+      "value": "#00bf80"
     }, {
       "identifier": "background_color",
       "type": "color",
