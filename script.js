@@ -165,34 +165,4 @@ document.addEventListener('DOMContentLoaded', function() {
       seeAllTrigger.parentNode.removeChild(seeAllTrigger);
     });
   }
-/* this code was taken from the JSTOR support site. Needs to be tweaked to work in this JS file, currently not working properly
-//show myactivities if manager
-var userRole = HelpCenter.user.role;
-if (userRole === "manager") {
-    $('a[href$="requests/new"]').show();
-    $('.my-activities').show();
-    $('#user-menu .my-activities').show();
-    $('a.submit-a-request').show();
-}
-
-  //show myactivities if agent
-var userRole = HelpCenter.user.role;
-if (userRole === "agent") {
-    $('a[href$="requests/new"]').show();
-    $('.my-activities').show();
-    $('#user-menu .my-activities').show();
-    $('a.submit-a-request').show();
-}
-
-// show myactivities for orgs = ithaka
-var orgs = HelpCenter.user.organizations;
-for (var i = 0; i < orgs.length; i++) {
-if (orgs[i].name == 'Ithaka') {
-    $('a[href$="requests/new"]').show();
-    $('.my-activities').show();
-    $('#user-menu .my-activities').show();
-    $('a.submit-a-request').show();
-}
-}
-*/
 });
