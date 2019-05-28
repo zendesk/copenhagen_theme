@@ -599,6 +599,11 @@ table td, table th {
   color: $link_color;
 }
 
+/*this hides Activities from menu when a user is logged in. See JS for code that shows My Activities to internal users and users within ITHAKA org */
+.my-activities, #user-menu .my-activities {
+  display: none;
+}
+
 /***** User info in header *****/
 .user-info {
   display: inline-block;
