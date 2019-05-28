@@ -694,20 +694,26 @@ table td, table th {
 
 /***** Footer *****/
 .footer {
-  margin-top: 60px;
   padding: 30px 0 0 0;
   background-color: #f9f9f9;
+  /* Google Translate styles */
+}
+
+@media (min-width: 1024px) {
+  .footer {
+    margin-top: 60px;
+  }
 }
 
 .footer p {
   line-height: 1;
   letter-spacing: 0;
-  margin-bottom: 2rem;
 }
 
 .footer li {
   font-size: 14px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 11.2px;
+  padding-right: 5px;
 }
 
 .footer a {
@@ -731,15 +737,29 @@ table td, table th {
 }
 
 .footer-logo {
-  width: 16.6667%;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .footer-logo {
+    width: 16.6667%;
+  }
 }
 
 .footer-links {
-  width: 58.3333%;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 1024px) {
+  .footer-links {
+    width: 58.3333%;
+  }
 }
 
 .footer-links a {
   text-decoration: none;
+  padding-right: 5px;
 }
 
 .footer-links a:hover {
@@ -747,38 +767,23 @@ table td, table th {
 }
 
 .footer-legal {
-  width: 25%;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .footer-legal {
+    width: 25%;
+  }
+}
+
+.footer .linklist {
+  width: 33.33333%;
 }
 
 .footer-language-selector {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-weight: 300;
-}
-
-.footer ul.social-icons li {
-  display: inline-block;
-  margin-bottom: 0.8rem;
-}
-
-.footer .icon-link i {
-  width: 28px;
-  height: 28px;
-  display: inline-block;
-  background-size: cover;
-  border-radius: 3px;
-}
-
-.footer .icon-link i.fi-social-twitter {
-  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/Twitter-icon.png");
-}
-
-.footer .icon-link i.fi-social-facebook {
-  width: 24px;
-  height: 24px;
-  margin-left: 10px;
-  margin-bottom: 3px;
-  background-image: url("//p6.zdassets.com/hc/theme_assets/1006386/200489087/facebook-icon.png");
 }
 
 .footer > .expanded.row {
@@ -798,6 +803,64 @@ table td, table th {
 
 .footer > .expanded.row a:hover {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 42.79464rem) {
+  .footer .footer > .expanded.row ul {
+    margin-bottom: 20px;
+  }
+}
+
+.footer .row {
+  max-width: 1120px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.footer .row.expanded {
+  max-width: none;
+}
+
+.footer .row.expanded .row {
+  max-width: 1160px;
+  width: 90%;
+}
+
+.footer .bottom-section {
+  margin: 5px auto 35px;
+}
+
+.footer .bottom-section .top-spacing {
+  margin-top: 25px;
+}
+
+@media (min-width: 1024px) {
+  .footer .bottom-section .top-spacing {
+    margin-top: 45px;
+  }
+}
+
+.footer .columns {
+  float: left;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+@media (min-width: 1024px) {
+  .footer .columns {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+  .footer .columns.large-9 {
+    width: 75%;
+  }
+  .footer .columns.large-3 {
+    width: 25%;
+  }
+}
+
+.footer .columns .columns {
+  padding: 0;
 }
 
 .footer .goog-te-gadget-simple {
@@ -820,51 +883,16 @@ table td, table th {
   width: 100%;
 }
 
-.footer a.goog-te-menu-value {
+.footer .goog-te-gadget-simple a.goog-te-menu-value {
   color: inherit;
 }
 
-.footer a.goog-te-menu-value:hover {
+.footer .goog-te-gadget-simple a.goog-te-menu-value:hover {
   border: 0;
 }
 
-.footer a.goog-te-menu-value span:not(:first-child) {
+.footer .goog-te-gadget-simple a.goog-te-menu-value span:not(:first-child) {
   display: none;
-}
-
-@media screen and (max-width: 42.79464rem) {
-  .footer > .expanded.row ul {
-    margin-bottom: 20px;
-  }
-}
-
-.row {
-  max-width: 1120px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.row.expanded {
-  max-width: none;
-}
-
-.bottom-section {
-  margin: 5px auto 2.5rem;
-}
-
-.bottom-section .top-spacing {
-  margin-top: 45px;
-}
-
-.columns {
-  display: inline-block;
-  float: left;
-  padding-right: 0.85714rem;
-  padding-left: 0.85714rem;
-}
-
-.linklist {
-  width: 33.33333%;
 }
 
 /***** Breadcrumbs *****/
@@ -961,8 +989,15 @@ table td, table th {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+  top: 35%;
   max-width: 500px;
   margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .hero-inner {
+    top: 50%;
+  }
 }
 
 .page-header {
@@ -1100,8 +1135,14 @@ table td, table th {
 
 .blocks-item-link {
   color: $brand_color;
-  padding: 15px 20px;
+  padding: 10px 0;
   text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+  .blocks-item-link {
+    padding: 15px 20px;
+  }
 }
 
 .blocks-item-link:hover, .blocks-item-link:focus, .blocks-item-link:active {
@@ -1145,8 +1186,10 @@ table td, table th {
   font-family: $text_font;
 }
 
-.section.knowledge-base {
-  margin-top: 40px;
+@media (min-width: 1024px) {
+  .section.knowledge-base {
+    margin-top: 40px;
+  }
 }
 
 .section.articles {
@@ -1161,7 +1204,13 @@ table td, table th {
 .popular-topics {
   font-size: 14px;
   position: relative;
-  top: 85px;
+  top: 40px;
+}
+
+@media (min-width: 1024px) {
+  .popular-topics {
+    top: 85px;
+  }
 }
 
 .popular-topics a {
@@ -1400,12 +1449,12 @@ table td, table th {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -1437,13 +1486,12 @@ table td, table th {
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 @media (min-width: 768px) {
   .article-header {
     flex-direction: row;
-    margin-top: 0;
   }
 }
 
@@ -1619,10 +1667,8 @@ table td, table th {
 }
 
 .article-sidebar {
-  border-bottom: 1px solid #000;
-  border-top: 1px solid #000;
   flex: 1 0 auto;
-  margin-bottom: 20px;
+  margin: 30px 0 0;
   padding: 0;
 }
 
@@ -1719,10 +1765,6 @@ table td, table th {
   text-align: center;
 }
 
-.article-return-to-top {
-  border-top: 1px solid #000;
-}
-
 @media (min-width: 1024px) {
   .article-return-to-top {
     display: none;
@@ -1736,6 +1778,10 @@ table td, table th {
 }
 
 .article-return-to-top a:hover, .article-return-to-top a:focus {
+  text-decoration: none;
+}
+
+.article-return-to-top a .icon-arrow-up {
   text-decoration: none;
 }
 
@@ -2530,10 +2576,10 @@ table td, table th {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;

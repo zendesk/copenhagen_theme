@@ -16,7 +16,9 @@
   }
 
   &.knowledge-base {
-    margin-top: 40px;
+    @include desktop {
+      margin-top: 40px;
+    }
   }
 
   &.articles {
@@ -32,9 +34,12 @@
 /***** Promoted articles *****/
 
 .popular-topics {
-  font-size: $font-size-small;
-  position: relative; 
-  top: 85px;
+  @include desktop {
+    top: 85px;
+  }
+    font-size: $font-size-small;
+    position: relative; 
+    top: 40px;
 
     a {
       padding-right: 10px;
