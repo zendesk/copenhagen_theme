@@ -138,6 +138,7 @@
   &-comment-count {
     color: $secondary-text-color;
     font-weight: $font-weight-light;
+    text-decoration: none !important;
 
     &:hover {
       text-decoration: none;
@@ -254,13 +255,11 @@
     border-top: 1px solid $border-color;
 
     a {
-      color: $text_color;
       display: block;
       padding: 20px 0;
 
       &:hover,
       &:focus {
-        text-decoration: none;
       }
     }
 
