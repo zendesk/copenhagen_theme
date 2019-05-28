@@ -19,20 +19,14 @@
 
   &-list {
     margin-bottom: 25px;
-    > li {
-      border-bottom: 1px solid $border-color;
-      padding: 20px 0;
-      &:first-child {
-        border-top: 1px solid $border-color;
-      }
-    }
   }
 }
 
 .search-result {
 
   &-description {
-    margin-top: 15px;
+    margin-top: 5px;
+    font-size: $font-size-small;
     word-break: break-word;
   }
 

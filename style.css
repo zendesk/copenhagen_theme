@@ -1449,12 +1449,12 @@ table td, table th {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -2576,10 +2576,10 @@ table td, table th {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -3483,17 +3483,15 @@ table td, table th {
 }
 
 .pagination li {
-  border-radius: 50%;
   height: 40px;
   float: left;
-  margin-left: 5px;
-  width: 40px;
+  width: 28px;
 }
 
 @media (min-width: 768px) {
   .pagination li {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 28px;
   }
 }
 
@@ -3502,33 +3500,38 @@ table td, table th {
 }
 
 .pagination li:hover:not(.pagination-current) {
-  background-color: #f3f3f3;
+  background-color: #e8e8e8;
+  border-color: #e8e8e8;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  border-radius: 3px;
 }
 
 .pagination li:hover:not(.pagination-current) span, .pagination li:hover:not(.pagination-current) a {
-  color: $text_color;
   text-decoration: none;
 }
 
 .pagination a, .pagination span {
   font-size: 16px;
-  color: lighten($text_color, 20%);
-  padding: 10px 12px;
+  font-weight: 700;
+  color: $link_color;
+  padding-top: 9px;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
   .pagination a, .pagination span {
     font-size: 14px;
-    padding: 5px 12px;
+    font-weight: 700;
+    padding-top: 9px;
   }
 }
 
 .pagination-current {
-  background-color: $brand_color;
+  border-bottom: 4px solid $brand_color;
 }
 
 .pagination-current a, .pagination-current span {
-  color: $brand_text_color;
+  color: $text_color;
 }
 
 .pagination-first {
@@ -4316,17 +4319,9 @@ table td, table th {
   margin-bottom: 25px;
 }
 
-.search-results-list > li {
-  border-bottom: 1px solid #000;
-  padding: 20px 0;
-}
-
-.search-results-list > li:first-child {
-  border-top: 1px solid #000;
-}
-
 .search-result-description {
-  margin-top: 15px;
+  margin-top: 5px;
+  font-size: 14px;
   word-break: break-word;
 }
 
