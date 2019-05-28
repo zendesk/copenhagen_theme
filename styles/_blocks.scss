@@ -55,8 +55,12 @@
   }
 
   &-item-link {
+    @include desktop {
+      padding: 15px 20px;
+    }
+
     color: $brand_color;
-    padding: 15px 20px;
+    padding: 10px 0;
     text-decoration: none;
 
     &:hover,
