@@ -11,7 +11,7 @@
 
   &-column {
     @include desktop {
-      flex: 0 0 45%;
+      flex: 1 0 75%;
     }
 
     flex: 1;
@@ -24,13 +24,13 @@
 
 .search-result {
 
-  h3 {
+  h2 {
     display: inline-block;
   }
 
   &-description {
     margin-top: 5px;
-    font-size: $font-size-small;
+    font-size: $font-size-base;
     word-break: break-word;
 
     em {
@@ -49,7 +49,6 @@
 
     &::before {
       @extend .icon;
-      color: $brand_color;
     }
 
     [dir="ltr"] & {
@@ -77,6 +76,7 @@
 
   .meta-group {
     align-items: center;
+    margin-top: -6px;
   }
 
   &-breadcrumbs {
