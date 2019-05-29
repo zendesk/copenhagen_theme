@@ -14,7 +14,13 @@
 
   &-inner {
     @include vertical-align;
+        @include desktop {
+      top: 50%;
+    }
+    top: 35%;
     max-width: 500px;
     margin: 0 auto;
+
+
   }
 }

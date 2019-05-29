@@ -9,10 +9,12 @@
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
       <a href="https://www.artstor.org/about/">About Artstor</a>
-      <a href="https://www.artstor.org/about/">Log in to Artstor</a>
+      <a href="https://library.artstor.org/#/login">Log in to Artstor</a>
       <a href="https://www.artstor.org/contact-us/">Contact Us</a>
       <!--{{link 'new_request' class='submit-a-request'}}-->
     </nav>
+    {{#if signed_in}}
     {{user_info}}
+    {{/if}}
   </div>
 </header>
