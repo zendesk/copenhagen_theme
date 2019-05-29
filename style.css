@@ -232,6 +232,16 @@ ul.list-horizontal li {
   padding-left: 6px;
 }
 
+.dropdown-menu [role="menuitem"] {
+  text-decoration: none;
+  border-left: 4px solid #ffffff;
+}
+
+.dropdown-menu [role="menuitem"][aria-selected="true"], .dropdown-menu [role="menuitem"]:hover, .dropdown-menu [role="menuitem"]:active, .dropdown-menu [role="menuitem"]:focus {
+  background: #e8e8e8;
+  border-color: $text_color;
+}
+
 /***** Buttons *****/
 .button, [role="button"] {
   background: #fff;
@@ -1652,6 +1662,7 @@ table td, table th {
 .article-comment-count {
   color: lighten($text_color, 20%);
   font-weight: 300;
+  text-decoration: none !important;
 }
 
 .article-comment-count:hover {
@@ -1772,13 +1783,8 @@ table td, table th {
 }
 
 .article-return-to-top a {
-  color: $text_color;
   display: block;
   padding: 20px 0;
-}
-
-.article-return-to-top a:hover, .article-return-to-top a:focus {
-  text-decoration: none;
 }
 
 .article-return-to-top a .icon-arrow-up {
@@ -2181,6 +2187,7 @@ table td, table th {
 
 .vote a {
   outline: none;
+  text-decoration: none !important;
 }
 
 .vote a:active, .vote a:hover, .vote a:focus {

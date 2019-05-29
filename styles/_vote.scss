@@ -4,8 +4,10 @@
   display: inline-block;
   text-align: center;
   width: 35px;
+
   a {
     outline: none;
+    text-decoration: none !important;
 
     &:active,
     &:hover,
