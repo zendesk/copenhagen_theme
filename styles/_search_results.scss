@@ -24,10 +24,18 @@
 
 .search-result {
 
+  h3 {
+    display: inline-block;
+  }
+
   &-description {
     margin-top: 5px;
     font-size: $font-size-small;
     word-break: break-word;
+
+    em {
+      font-weight: $font-weight-bold;
+    }
   }
 
   &-votes,

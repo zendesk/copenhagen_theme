@@ -4319,10 +4319,18 @@ table td, table th {
   margin-bottom: 25px;
 }
 
+.search-result h3 {
+  display: inline-block;
+}
+
 .search-result-description {
   margin-top: 5px;
   font-size: 14px;
   word-break: break-word;
+}
+
+.search-result-description em {
+  font-weight: 700;
 }
 
 .search-result-votes, .search-result-meta-count {
