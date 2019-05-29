@@ -11,25 +11,25 @@
 
 .pagination li {
   @include tablet {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 28px;
   }
 
-  border-radius: 50%;
   height: 40px;
   float: left;
-  margin-left: 5px;
-  width: 40px;
+  width: 28px;
 
   [dir="rtl"] & {
     float: right;
   }
 
   &:hover:not(.pagination-current) {
-    background-color: #f3f3f3;
+    background-color: $gray;
+    border-color: $gray;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    border-radius: 3px;
 
     span, a {
-      color: $text_color;
       text-decoration: none;
     }
   }
@@ -38,17 +38,23 @@
 .pagination a, .pagination span {
   @include tablet {
     font-size: $font-size-small;
-    padding: 5px 12px;
+    font-weight: $font-weight-bold;
+    padding-top: 9px;
+
   }
 
   font-size: $font-size-base;
-  color: $secondary-text-color;
-  padding: 10px 12px;
+  font-weight: $font-weight-bold;
+  color: $link_color;
+  padding-top: 9px;
+  text-decoration: none;
 }
 
 .pagination-current {
-  background-color: $brand_color;
-  a, span { color: $brand_text_color; }
+  border-bottom: 4px solid $brand_color;
+  a, span {
+    color: $text_color;
+  }
 }
 
 .pagination-first {

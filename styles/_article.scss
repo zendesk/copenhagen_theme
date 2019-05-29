@@ -137,6 +137,7 @@
   &-comment-count {
     color: $secondary-text-color;
     font-weight: $font-weight-light;
+    text-decoration: none !important;
 
     &:hover {
       text-decoration: none;
@@ -249,13 +250,11 @@
     @include desktop { display: none; }
 
     a {
-      color: $text_color;
       display: block;
       padding: 20px 0;
 
       &:hover,
       &:focus {
-        text-decoration: none;
       }
       .icon-arrow-up {text-decoration: none;}
     }
