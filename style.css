@@ -3490,17 +3490,15 @@ table td, table th {
 }
 
 .pagination li {
-  border-radius: 50%;
   height: 40px;
   float: left;
-  margin-left: 5px;
-  width: 40px;
+  width: 28px;
 }
 
 @media (min-width: 768px) {
   .pagination li {
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 28px;
   }
 }
 
@@ -3509,33 +3507,38 @@ table td, table th {
 }
 
 .pagination li:hover:not(.pagination-current) {
-  background-color: #f3f3f3;
+  background-color: #e8e8e8;
+  border-color: #e8e8e8;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  border-radius: 3px;
 }
 
 .pagination li:hover:not(.pagination-current) span, .pagination li:hover:not(.pagination-current) a {
-  color: $text_color;
   text-decoration: none;
 }
 
 .pagination a, .pagination span {
   font-size: 16px;
-  color: lighten($text_color, 20%);
-  padding: 10px 12px;
+  font-weight: 700;
+  color: $link_color;
+  padding-top: 9px;
+  text-decoration: none;
 }
 
 @media (min-width: 768px) {
   .pagination a, .pagination span {
     font-size: 14px;
-    padding: 5px 12px;
+    font-weight: 700;
+    padding-top: 9px;
   }
 }
 
 .pagination-current {
-  background-color: $brand_color;
+  border-bottom: 4px solid $brand_color;
 }
 
 .pagination-current a, .pagination-current span {
-  color: $brand_text_color;
+  color: $text_color;
 }
 
 .pagination-first {
@@ -4315,7 +4318,7 @@ table td, table th {
 
 @media (min-width: 1024px) {
   .search-results-column {
-    flex: 0 0 45%;
+    flex: 1 0 75%;
   }
 }
 
@@ -4323,18 +4326,18 @@ table td, table th {
   margin-bottom: 25px;
 }
 
-.search-results-list > li {
-  border-bottom: 1px solid #000;
-  padding: 20px 0;
-}
-
-.search-results-list > li:first-child {
-  border-top: 1px solid #000;
+.search-result h2 {
+  display: inline-block;
 }
 
 .search-result-description {
-  margin-top: 15px;
+  margin-top: 5px;
+  font-size: 16px;
   word-break: break-word;
+}
+
+.search-result-description em {
+  font-weight: 700;
 }
 
 .search-result-votes, .search-result-meta-count {
@@ -4344,10 +4347,6 @@ table td, table th {
   font-weight: 300;
   padding: 4px 5px;
   position: relative;
-}
-
-.search-result-votes::before, .search-result-meta-count::before {
-  color: $brand_color;
 }
 
 [dir="ltr"] .search-result-votes, [dir="ltr"] .search-result-meta-count {
@@ -4376,6 +4375,7 @@ table td, table th {
 
 .search-result .meta-group {
   align-items: center;
+  margin-top: -6px;
 }
 
 .search-result-breadcrumbs {
