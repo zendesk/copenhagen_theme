@@ -15,6 +15,16 @@
     width: 28px;
   }
 
+  &.pagination-last,
+  &.pagination-first,
+  &.pagination-next {
+    width: 50px;
+  }
+
+  &.pagination-prev {
+    width: 90px;
+  }
+
   height: 40px;
   float: left;
   width: 28px;
@@ -60,9 +70,24 @@
 .pagination-first {
   border-radius: 3px 0 0 3px;
   [dir="rtl"] & { border-radius: 0 3px 3px 0; }
+  a::after {
+    content: " First";
+  }
+}
+
+.pagination-prev a::after {
+  content: " Previous";
+}
+
+.pagination-next a::before {
+  content: "Next ";
 }
 
 .pagination-last {
   border-radius: 0 3px 3px 0;
+
   [dir="rtl"] & { border-radius: 3px 0 0 3px; }
+  a::before {
+    content: "Last ";
+  }
 }

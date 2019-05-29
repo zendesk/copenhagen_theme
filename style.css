@@ -3502,6 +3502,14 @@ table td, table th {
   }
 }
 
+.pagination li.pagination-last, .pagination li.pagination-first, .pagination li.pagination-next {
+  width: 50px;
+}
+
+.pagination li.pagination-prev {
+  width: 90px;
+}
+
 [dir="rtl"] .pagination li {
   float: right;
 }
@@ -3549,12 +3557,28 @@ table td, table th {
   border-radius: 0 3px 3px 0;
 }
 
+.pagination-first a::after {
+  content: " First";
+}
+
+.pagination-prev a::after {
+  content: " Previous";
+}
+
+.pagination-next a::before {
+  content: "Next ";
+}
+
 .pagination-last {
   border-radius: 0 3px 3px 0;
 }
 
 [dir="rtl"] .pagination-last {
   border-radius: 3px 0 0 3px;
+}
+
+.pagination-last a::before {
+  content: "Last ";
 }
 
 /***** Metadata *****/
