@@ -41,9 +41,6 @@
 		          <ul class="article-list">
 			          {{#each articles}}
 			            <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
-			              {{#if promoted}}
-			                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-			              {{/if}}
 			              <a href="{{url}}" class="article-list-link">{{title}}</a>
 			              {{#if internal}}
 			                <span class="icon-lock" title="{{t 'internal'}}"></span>
