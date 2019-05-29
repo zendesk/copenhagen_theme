@@ -56,6 +56,10 @@
   [dir="rtl"] & { border-radius: 0 3px 3px 0; }
 }
 
+.pagination-next a::before {
+  content: "Next";
+}
+
 .pagination-last {
   border-radius: 0 3px 3px 0;
   [dir="rtl"] & { border-radius: 3px 0 0 3px; }

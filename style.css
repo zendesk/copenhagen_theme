@@ -1449,12 +1449,12 @@ table td, table th {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -2576,10 +2576,10 @@ table td, table th {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -3537,6 +3537,10 @@ table td, table th {
 
 [dir="rtl"] .pagination-first {
   border-radius: 0 3px 3px 0;
+}
+
+.pagination-next a::before {
+  content: "Next";
 }
 
 .pagination-last {
