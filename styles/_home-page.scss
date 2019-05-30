@@ -35,16 +35,23 @@
 
 .popular-topics {
   @include desktop {
-    top: 85px;
+    top: 50px;
   }
     font-size: $font-size-small;
     position: relative; 
-    top: 40px;
+    top: 14px;
 
     a {
-      padding-right: 10px;
-      color: $text-color;
+      padding: 0 5px;
+      color: $secondary_link_color;
+
+    &:hover,
+    &:active,
+    &:focus, {
+      color: $secondary_link_hover;
+      text-decoration: none;
     }
+  }
 }
 
 
