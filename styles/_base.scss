@@ -162,11 +162,11 @@ ul {
 
 .compact {
  margin-bottom: 0 !important;
- margin-top: 0 !important; 
+ margin-top: 0 !important;
  }
 
 .compact-top {
- margin-top: 0 !important; 
+ margin-top: 0 !important;
  }
 
 .compact-bottom {
@@ -211,5 +211,18 @@ ul {
     font-weight: normal;
     font-size: 14px;
     padding-left: 6px;
+  }
+}
+
+.dropdown-menu [role="menuitem"] {
+  text-decoration: none;
+  border-left: 4px solid #ffffff;
+
+  &[aria-selected="true"],
+  &:hover,
+  &:active,
+  &:focus {
+    background: $gray;
+    border-color: $text_color;
   }
 }
