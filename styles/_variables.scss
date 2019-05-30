@@ -5,10 +5,12 @@ $brand_color: #C9510D !default;
 $brand_text_color: #fff !default; //Color for text with an accent color background
 $text_color: #000 !default;
 $link_color: #C9510D !default;
+$secondary_link_color: #555555;
+$secondary_link_hover: #333333;
 $background_color: #fff !default;
 
-$visited-link-color: zass-darken($link_color, 20%);
-$hover-button-color: zass-darken($brand_color, 20%);
+$visited-link-color: #993e0a;
+$hover-button-color: #993e0a;
 $secondary-text-color: zass-lighten($text_color, 20%);
 
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
@@ -27,6 +29,8 @@ $font-size-smaller: 11px;
 $border-color: #000;
 
 $button-color: $brand_color;
+$vote-up: #6EB032;
+$vote-down: #E04A35;
 
 $input-font-size: 14px;
 $field-text-color: #333;

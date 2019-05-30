@@ -20,6 +20,14 @@
 
     flex-shrink: 0; //Avoid collapsing elements in Safari
     margin-bottom: 10px;
+
+    [role="button"] {
+      @include tablet {
+        width: 100%;
+      }
+      
+      width: 40%;
+    }
   }
 
   h1 {
