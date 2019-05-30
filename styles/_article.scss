@@ -257,10 +257,10 @@
       &:focus {
         text-decoration: none;
       }
-      .icon-arrow-up {text-decoration: none;}
     }
 
     .icon-arrow-up::before {
+      display: inline-block;
       font-size: 16px;
       margin-left: 5px;
 
