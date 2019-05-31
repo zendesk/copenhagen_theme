@@ -1,15 +1,21 @@
 /***** Tables *****/
-.table {
+table {
   @include tablet { table-layout: auto; }
 
+  margin-top: 10px;
   width: 100%;
   table-layout: fixed;
 
-  th,
-  th a {
-    color: $secondary-text-color;
+  caption {
+  text-align: left;
+  font-weight: $font-weight-bold;
+  padding-bottom: 8px;
+  }
+
+  th {
+    color: $text-color;
     font-size: $font-size-small;
-    font-weight: $font-weight-light;
+    font-weight: $font-weight-bold;
     text-align: left;
 
     [dir="rtl"] & { text-align: right; }
@@ -18,9 +24,7 @@
   tr {
     @include tablet { display: table-row; }
 
-    border-bottom: 1px solid $border-color;
     display: block;
-    padding: 20px 0;
   }
 
   td {
@@ -32,12 +36,9 @@
   }
 
   td, th {
-    @include desktop {
-      padding: 20px 30px;
-    }
-    @include tablet {
-      padding: 10px 20px;
-      height: 60px;
-    }
+    padding: 10px;
+    border: 1px solid $med-gray;
+    vertical-align: top;
+    text-align: left;
   }
 }

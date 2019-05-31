@@ -6,16 +6,13 @@
   </nav>
 
   <div class="section-container">
-    <section class="section-content">
-      <header class="page-header">
+    <section id="main-content" class="section-content">
+      <header id="main-content" class="page-header">
         <h1>
           {{section.name}}
         </h1>
         {{#if settings.show_follow_section}}
           {{subscribe}}
-        {{/if}}
-        {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
         {{/if}}
       </header>
 
@@ -23,9 +20,6 @@
         <ul class="article-list">
           {{#each section.articles}}
             <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-              {{#if promoted}}
-                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-              {{/if}}
               <a href="{{url}}" class="article-list-link">{{title}}</a>
               {{#if internal}}
                 <span class="icon-lock" title="{{t 'internal'}}"></span>
@@ -33,22 +27,34 @@
             </li>
           {{/each}}
         </ul>
-      {{else}}
-        <i class="section-empty">
-          <a href="{{section.url}}">{{t 'empty'}}</a>
-        </i>
       {{/if}}
 
       {{#if section.sections}}
         <ul class="section-list section-list--collapsed">
           {{#each section.sections}}
-          <li class="section-list-item">
-              <h2><a href="{{url}}">
+            <li class="section-list-item">
+              <h3>
                 <span>{{name}}</span>
-              </a></h2>
+              </h3>
             </li>
+            {{#if articles}}
+		          <ul class="article-list">
+			          {{#each articles}}
+			            <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
+			              <a href="{{url}}" class="article-list-link">{{title}}</a>
+			              {{#if internal}}
+			                <span class="icon-lock" title="{{t 'internal'}}"></span>
+			              {{/if}}
+			            </li>
+			          {{/each}}
+		          </ul>
+		          {{#if more_articles}}
+			          <a href="{{url}}" class="see-all-articles">
+			          {{t 'show_all_articles' count=article_count}}
+			          </a>
+		          {{/if}}
+		        {{/if}}
           {{/each}}
-          <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
         </ul>
       {{/if}}
 

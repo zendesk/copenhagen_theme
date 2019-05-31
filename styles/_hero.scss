@@ -1,21 +1,26 @@
 /***** Hero component *****/
 .hero {
-  background-position: center;
+  background: #e8e8e8 center;
   background-size: cover;
-  height: 100px;
+  height: 220px;
+  margin: 20px 0 !important;
   padding: 0 20px;
   text-align: center;
   width: 100%;
-  margin-bottom: 120px !important;
 
   h1 {
-    margin-bottom: 0;
-    margin-top: 40px;
+    line-height: 1;
   }
 
   &-inner {
     @include vertical-align;
-    max-width: 610px;
+        @include desktop {
+      top: 40%;
+    }
+    top: 30%;
+    max-width: 500px;
     margin: 0 auto;
+
+
   }
 }

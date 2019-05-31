@@ -51,9 +51,10 @@ $header-height: 71px;
     color: $text_color;
     display: none;
     font-size: 14px;
-    padding: 20px 20px 0 0;
-    width: auto;
     font-weight: $font-weight-bold;
+    padding: 20px 20px 0 0;
+    text-decoration: none;
+    width: auto;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
 
@@ -91,3 +92,8 @@ $header-height: 71px;
     }
   }
 }
+
+/*this hides Activities from menu when a user is logged in. See JS for code that shows My Activities to internal users and users within ITHAKA org */
+   .my-activities, #user-menu .my-activities {
+     display: none;
+   }

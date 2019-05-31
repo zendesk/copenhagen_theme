@@ -6,58 +6,54 @@
   }
 
   margin-bottom: 40px;
-}
 
-.section h2 {
-  margin-bottom: 10px;
-  text-align: center;
-}
 
-/***** Promoted articles *****/
+  h2 {
+    margin-top: 0;
+    font-size: 22px;
+    letter-spacing: -0.8px;
+    font-family: $text_font;
+  }
 
-.promoted-articles {
-  @include desktop { flex-direction: row; }
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  &-item {
+  &.knowledge-base {
     @include desktop {
-      align-self: flex-end;
-      flex: 0 0 auto;
-      padding-right: 30px;
-      width: 33%; /* Three columns on desktop */
-
-      [dir="rtl"] & { padding: 0 0 0 30px; }
+      margin-top: 40px;
     }
+  }
 
-    flex: 1 0 auto;
+  &.articles {
+  margin-left: 20px;
 
-    &:nth-child(3n) {
-      padding-right: 0;
-    }
-
-    a {
-      display: block;
-      border-bottom: 1px solid $border-color;
-      padding: 15px 0;
-      color: $text_color;
-    }
-
-    .icon-lock::before {
-      vertical-align: baseline;
-    }
-
-    &:last-child a {
-      @include desktop {
-        border-bottom: 1px solid $border-color;
-      }
-
-      border: 0;
+    h3 {
+      margin-bottom:10px;
     }
   }
 
 }
+
+/***** Promoted articles *****/
+
+.popular-topics {
+  @include desktop {
+    top: 50px;
+  }
+    font-size: $font-size-small;
+    position: relative; 
+    top: 14px;
+
+    a {
+      padding: 0 5px;
+      color: $secondary_link_color;
+
+    &:hover,
+    &:active,
+    &:focus, {
+      color: $secondary_link_hover;
+      text-decoration: none;
+    }
+  }
+}
+
 
 /***** Community section in homepage *****/
 .community {

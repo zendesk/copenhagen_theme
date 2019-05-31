@@ -5,7 +5,7 @@
     display: flex;
     justify-content: flex-end;
 
-    h1 {margin-bottom: 40px;}
+    h1 {margin-bottom: 20px;}
 
   }
 
@@ -21,7 +21,7 @@
 }
 
 .section-list {
-  margin: 40px 0;
+  margin: 0;
 }
 
 .section-list--collapsed .section-list-item:nth-child(1n + 6) {
@@ -29,16 +29,20 @@
 }
 
 .section-list-item {
-  font-size: $font-size-bigger;
-  display: inline-block;
-  padding: 0;
-  margin-right: 60px;
+  h3 {
+    font-size: $font-size-bigger;
+    margin-top: 20px;
+  }
 
   a {
     align-items: center;
     display: flex;
     justify-content: space-between;
     color: $text_color;
+  }
+
+  .page-header-description {
+    font-size: $font-size-small;
   }
 }
 

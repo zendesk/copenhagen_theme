@@ -15,30 +15,28 @@
 
   &-item {
     @include tablet {
-      margin: 0 15px 30px;
+      margin: 0 5px 10px;
     }
 
-    border: 1px solid $brand_color;
-    border-radius: 4px;
     box-sizing: border-box;
     color: $brand_color;
     display: flex;
     flex: 1 0 340px;
     flex-direction: column;
-    justify-content: center;
-    margin: 0 0 30px;
+    margin: 0 0 10px;
     max-width: 100%;
-    text-align: center;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
 
-      * {
-        color: $brand_text_color;
-        text-decoration: none;
+      text-decoration: none;
+
+      h2 {
+      color: $brand-color;
+      text-decoration: underline;
       }
+
     }
 
     &-internal {
@@ -57,8 +55,13 @@
   }
 
   &-item-link {
+    @include desktop {
+      padding: 15px 20px;
+    }
+
     color: $brand_color;
-    padding: 20px 30px;
+    padding: 10px 0;
+    text-decoration: none;
 
     &:hover,
     &:focus,
@@ -72,8 +75,14 @@
   }
 
   &-item-description {
+    font-size: $font-size-small;
     font-weight: $font-weight-light;
     margin: 0;
+    color: $secondary-link-color;
+    
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &-item-description:not(:empty) {

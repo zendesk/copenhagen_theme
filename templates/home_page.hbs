@@ -1,8 +1,17 @@
-<section class="section hero">
-  <h1>Artstor Support</h1>
-  <div class="hero-inner">
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+<section id="main-content" class="section hero">
+    <div class="hero-inner">
+    <h1>Artstor Support</h1>
+
+    {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search our help center'}}
   </div>
+  {{#if promoted_articles}}
+      <p class="popular-topics">
+        <strong>Popular topics:</strong>
+          {{#each promoted_articles}}
+                <a href="{{url}}">{{title}}</a> 
+          {{/each}}
+      </p>
+    {{/if}}
 </section>
 
 <div class="container">
@@ -13,18 +22,18 @@
           {{#if ../has_multiple_categories}}
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
-                <h4 class="blocks-item-title">{{name}}</h4>
-                <p class="blocks-item-description">{{excerpt description}}</p>
+                <h2 class="blocks-item-title">{{name}}</h2>
+                <p class="blocks-item-description compact-top">{{excerpt description}}</p>
               </a>
             </li>
           {{else}}
             {{#each sections}}
               <li class="blocks-item">
                 <a href='{{url}}' class="blocks-item-link">
-                  <h4 class="blocks-item-title">
+                  <h2 class="blocks-item-title">
                     {{name}}
-                  </h4>
-                  <p class="blocks-item-description">{{excerpt description}}</p>
+                  </h2>
+                  <p class="blocks-item-description compact-top">{{excerpt description}}</p>
                 </a>
               </li>
             {{/each}}
@@ -33,24 +42,5 @@
       </ul>
       {{pagination}}
     </section>
-
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h3>{{t 'promoted_articles'}}</h3>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
-
-                  {{#if internal}}
-                    <span class="icon-lock" title="{{t 'internal'}}"></span>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
-      </section>
-    {{/if}}
   </section>
 </div>

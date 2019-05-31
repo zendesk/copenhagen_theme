@@ -31,13 +31,15 @@ h1 {
   letter-spacing: -1.55px;
 }
 h2 {
-  font-size: 24.5px;
-  letter-spacing: -1.34px;
+  font-family: $text_font;
+  font-size: 22px;
   line-height: 30px;
+  margin: 40px 0 0;
 }
 h3 {
-  font-size: 20px;
   font-family: $text_font;
+  font-size: 18px;
+  margin: 30px 0 0;
 }
 
 h4 {
@@ -52,13 +54,12 @@ small {
 
 a {
   color: $link_color;
-  text-decoration: none;
-  font-weight: $font-weight-bold;
+  text-decoration: underline;
 
   &:hover,
   &:active,
   &:focus {
-    text-decoration: underline;
+    color: $visited-link-color;
   }
 }
 
@@ -159,16 +160,22 @@ ul {
   }
 }
 
+.compact {
+ margin-bottom: 0 !important;
+ margin-top: 0 !important;
+ }
+
+.compact-top {
+ margin-top: 0 !important;
+ }
+
 .compact-bottom {
   margin-bottom: 0 !important;
 }
 
-.compact-top {
- margin-top: 0.3rem !important; }
-
-.compact {
- margin-bottom: 0 !important;
- margin-top: 0 !important; }
+.top-20 {
+  margin-top: 20px !important;
+}
 
 .error-page {
   @include max-width-container;
@@ -204,5 +211,18 @@ ul {
     font-weight: normal;
     font-size: 14px;
     padding-left: 6px;
+  }
+}
+
+.dropdown-menu [role="menuitem"] {
+  text-decoration: none;
+  border-left: 4px solid #ffffff;
+
+  &[aria-selected="true"],
+  &:hover,
+  &:active,
+  &:focus {
+    background: $gray;
+    border-color: $text_color;
   }
 }
