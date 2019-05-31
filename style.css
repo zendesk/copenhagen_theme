@@ -4456,6 +4456,81 @@ html[lang|="ja"] .search-result-description em {
   background: yellow;
 }
 
+/***** Below code is for styling the WAYFless URL generator*****/
+#wayfless fieldset {
+  padding: 15px;
+  border: 3px solid;
+}
+
+#wayfless .field_container {
+  position: relative;
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+#wayfless .field_container label.fieldname {
+  position: relative;
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#wayfless .field_container input[type="text"] {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 7px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+  margin-top: 10px;
+}
+
+#wayfless div.field_container select {
+  position: relative;
+  display: block;
+  width: 215px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+#wayfless div.field_container label.help {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#wayfless div.field_container label.error {
+  position: relative;
+  display: block;
+  width: 430px;
+  font-size: 14px;
+  color: #DC2A2a;
+}
+
+#wayfless div#url {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  height: 20%;
+  line-height: 19px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  word-wrap: break-word;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #333;
+  appearance: none;
+  margin-top: -10px;
+  margin-bottom: -10px;
+}
+
 .callout {
   border: 1px solid #cccccc;
   border-width: 1px 0;
