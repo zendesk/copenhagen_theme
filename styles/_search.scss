@@ -2,6 +2,13 @@
 .search {
   position: relative;
 
+  @include desktop {
+    flex: 1 0 75%;
+    max-width: 75%;
+    min-width: 640px;
+    padding: 0 60px 0 0;
+  }
+
   &-artstor-box {
     background-color: $alert-color;
   	padding-left: 20px;
