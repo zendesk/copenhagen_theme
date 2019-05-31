@@ -1625,13 +1625,13 @@ table td, table th {
   background-color: #f9f9f9;
   border: 1px solid #cccccc;
   border-width: 1px 0;
-  font-weight: 700;
   margin-bottom: 30px;
   padding: 15px;
 }
 
 .article-anchorbox p {
   margin: 0 0 10px;
+  font-weight: 700;
 }
 
 .article-anchorbox ul {
