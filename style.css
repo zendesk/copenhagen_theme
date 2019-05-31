@@ -340,6 +340,12 @@ table {
   }
 }
 
+table caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 8px;
+}
+
 table th {
   color: $text_color;
   font-size: 14px;
@@ -1482,12 +1488,12 @@ table td, table th {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -1612,7 +1618,6 @@ table td, table th {
 
 .article-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #000;
   padding: 10px 15px;
   display: block;
 }
@@ -1648,13 +1653,13 @@ table td, table th {
   background-color: #f9f9f9;
   border: 1px solid #cccccc;
   border-width: 1px 0;
-  font-weight: 700;
   margin-bottom: 30px;
   padding: 15px;
 }
 
 .article-anchorbox p {
   margin: 0 0 10px;
+  font-weight: 700;
 }
 
 .article-anchorbox ul {
@@ -2192,7 +2197,6 @@ table td, table th {
 
 .comment-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #000;
   padding: 10px 15px;
   display: block;
 }
@@ -2546,19 +2550,12 @@ table td, table th {
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
-  background-color: #1eb848;
-  border-radius: 4px;
-  color: #fff;
+  background-color: transparent;
+  color: $link_color;
   font-size: 12px;
-  margin-right: 2px;
-  padding: 3px 10px;
   vertical-align: middle;
   white-space: nowrap;
   display: inline-block;
-}
-
-.status-label:hover, .status-label:active, .status-label:focus {
-  text-decoration: none;
 }
 
 .status-label-pinned, .status-label-featured, .status-label-official {
@@ -2622,10 +2619,10 @@ table td, table th {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -2768,7 +2765,6 @@ table td, table th {
 
 .post-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #000;
   padding: 10px 15px;
   display: block;
 }

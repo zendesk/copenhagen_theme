@@ -99,12 +99,12 @@
     background-color: $lighter-gray;
     border: 1px solid $med-gray;
     border-width: 1px 0;
-    font-weight: $font-weight-bold;
     margin-bottom: 30px;
     padding: 15px;
 
     p {
       margin: 0 0 10px;
+      font-weight: $font-weight-bold;
     }
 
     ul {
