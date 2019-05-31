@@ -955,6 +955,14 @@ table td, table th {
   position: relative;
 }
 
+.search-artstor-box {
+  background-color: #e8e8e8;
+  padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+}
+
 .search input[type="search"] {
   border: 1px solid #cccccc;
   border-radius: 3px 0 0 3px;

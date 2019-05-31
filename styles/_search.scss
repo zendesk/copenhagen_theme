@@ -2,6 +2,14 @@
 .search {
   position: relative;
 
+  &-artstor-box {
+    background-color: #e8e8e8;
+  	padding-left: 20px;
+  	padding-top: 10px;
+  	padding-bottom: 10px;
+  	padding-right: 10px;
+  }
+
   input[type="search"] {
     border: 1px solid $med-gray;
     border-radius: 3px 0 0 3px;
