@@ -340,6 +340,12 @@ table {
   }
 }
 
+table caption {
+  text-align: left;
+  font-weight: 700;
+  padding-bottom: 8px;
+}
+
 table th {
   color: $text_color;
   font-size: 14px;
@@ -1612,7 +1618,6 @@ table td, table th {
 
 .article-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #000;
   padding: 10px 15px;
   display: block;
 }
@@ -2192,7 +2197,6 @@ table td, table th {
 
 .comment-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #000;
   padding: 10px 15px;
   display: block;
 }
@@ -2768,7 +2772,6 @@ table td, table th {
 
 .post-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #000;
   padding: 10px 15px;
   display: block;
 }
