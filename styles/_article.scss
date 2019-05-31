@@ -119,7 +119,7 @@
     word-wrap: break-word;
 
     li {
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
   }
 
@@ -194,8 +194,8 @@
 
   &-vote {
     background: transparent;
-    border: 1px solid $brand_color;
-    color: $brand_color;
+    border: 1px solid #989898;
+    color: $secondary-link-color;
     margin: 10px 5px;
     min-width: 90px;
     width: auto;
@@ -213,32 +213,40 @@
 
     &::after {
       content: attr(title); /* Yes/No label*/
+      color: $text-color;
     }
 
     &:focus,
-    &:active {
+    &:active,
+    &:hover {
       background-color: transparent;
-      color: $brand_color;
+      color: $text-color;
     }
 
     &:hover {
-      background-color: $brand_color;
+      border-color: $text-color;
     }
 
-    &:hover::before,
-    &:hover::after,
-    &[aria-selected="true"]::before,
-    &[aria-selected="true"]::after {
-      color: $brand_text_color;
-    }
   }
 
   &-vote-up::before {
     content: "\2713";
+    color: $vote-up;
   }
 
   &-vote-down::before {
     content: "\2715";
+    color: $vote-down;
+  }
+
+  &-vote-up.button[aria-selected="true"] {
+    border: 2px solid $vote-up;
+    background-color: transparent;
+  }
+
+  &-vote-down.button[aria-selected="true"] {
+    border: 2px solid $vote-down;
+    background-color: transparent;
   }
 
   &-more-questions {
@@ -256,10 +264,10 @@
       &:hover,
       &:focus {
       }
-      .icon-arrow-up {text-decoration: none;}
     }
 
     .icon-arrow-up::before {
+      display: inline-block;
       font-size: 16px;
       margin-left: 5px;
 
@@ -308,12 +316,20 @@
 .recent-articles,
 .related-articles {
   h3 {
-    font-size: $font-size-bigger;
+    font-size: $font-size-base;
     margin: 0 0 10px;
   }
 
   li {
     margin-bottom: 10px;
-    font-size: $font-size-base;
+    font-size: $font-size-small;
+
+    a {
+      color: $secondary-link-color;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 }

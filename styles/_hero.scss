@@ -9,15 +9,15 @@
   width: 100%;
 
   h1 {
-    line-height: 0.2;
+    line-height: 1;
   }
 
   &-inner {
     @include vertical-align;
         @include desktop {
-      top: 50%;
+      top: 40%;
     }
-    top: 35%;
+    top: 30%;
     max-width: 500px;
     margin: 0 auto;
 

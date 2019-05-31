@@ -78,7 +78,7 @@
     font-size: $font-size-small;
     font-weight: $font-weight-light;
     margin: 0;
-    color: #000;
+    color: $secondary-link-color;
     
     &:hover {
       text-decoration: none;
