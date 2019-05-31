@@ -955,15 +955,6 @@ table td, table th {
   position: relative;
 }
 
-@media (min-width: 1024px) {
-  .search {
-    flex: 1 0 75%;
-    max-width: 75%;
-    min-width: 640px;
-    padding: 0 60px 0 0;
-  }
-}
-
 .search-artstor-box {
   background-color: #ffefc3;
   padding-left: 20px;
