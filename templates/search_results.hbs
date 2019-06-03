@@ -29,11 +29,13 @@
         </ul>
       {{else}}
         <p>
-          {{t 'no_results' query=query}}
-          {{#link 'help_center'}}
-            {{t 'browse_knowledge_base'}}
-          {{/link}}
+          We couldn't find any support articles related to "{{query}}."
+          Try browsing our {{#link 'help_center'}} help center{{/link}}.
         </p>
+        <br>
+        <div class="callout alert">
+          Looking for Artstor Digital Library search results instead? <a href="https://library.artstor.org">Continue searching on the Artstor homepage</a>
+        </div>
       {{/if}}
     </section>
   </div>

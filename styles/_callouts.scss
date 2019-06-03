@@ -1,4 +1,4 @@
-.callout {   
+.callout {
     border: 1px solid $med-gray;
     border-width: 1px 0;
     background: $lighter-gray;
@@ -7,6 +7,6 @@
     padding: 30px;
 
     &.alert {
-      background: #ffefc3;
+      background: $alert-color;
     }
 }
