@@ -22,6 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // In some cases we should preserve focus after page reload
+  function saveFocus() {
+    var activeElementId = document.activeElement.getAttribute("id");
+    sessionStorage.setItem('returnFocusTo', '#' + activeElementId);
+  }
+  var returnFocusTo = sessionStorage.getItem('returnFocusTo');
+  if (returnFocusTo) {
+    sessionStorage.removeItem('returnFocusTo');
+    var returnFocusToEl = document.querySelector(returnFocusTo);
+    returnFocusToEl && returnFocusToEl.focus && returnFocusToEl.focus();
+  }
+
   // show form controls when the textarea receives focus or backbutton is used and value exists
   var commentContainerTextarea = document.querySelector('.comment-container textarea'),
     commentContainerFormControls = document.querySelector('.comment-form-controls, .comment-ccs');
@@ -93,12 +105,22 @@ document.addEventListener('DOMContentLoaded', function() {
     requestCommentSubmitButton.disabled = true;
   }
 
-  // Submit requests filter form in the request list page
+  // Submit requests filter form on status or organization change in the request list page
   Array.prototype.forEach.call(document.querySelectorAll('#request-status-select, #request-organization-select'), function(el) {
     el.addEventListener('change', function(e) {
       e.stopPropagation();
+      saveFocus();
       closest(this, 'form').submit();
     });
+  });
+
+  // Submit requests filter form on search in the request list page
+  document.querySelector('#quick-search').addEventListener('keyup', function(e) {
+    if (e.keyCode === 13) { // Enter key
+      e.stopPropagation();
+      saveFocus();
+      closest(this, 'form').submit();
+    }
   });
 
   function toggleNavigation(toggleElement) {
