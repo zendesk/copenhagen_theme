@@ -62,5 +62,6 @@
   "post_sharing_description": "ソーシャルメディアへの共有を投稿に表示します",
   "community_topic_group_label": "コミュニティトピックの要素",
   "follow_topic_label": "フォローする",
-  "follow_topic_description": "ユーザーは特定のトピックのフォローができます"
+  "follow_topic_description": "ユーザーは特定のトピックのフォローができます",
+  "submit_a_request":"お問い合わせフォーム"
 }
