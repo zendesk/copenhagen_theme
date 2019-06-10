@@ -6,12 +6,18 @@ $header-height: 71px;
   position: relative;
   align-items: center;
   display: flex;
-  height: $header-height;
   justify-content: space-between;
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
 }
 
-.logo img {
-  max-height: 37px;
+.logo {
+  width: 170px;
+  img {
+    width: 100%;
+    display: block;
+    height: auto;
+  }
 }
 
 .user-nav {
@@ -45,8 +51,9 @@ $header-height: 71px;
     border: 0;
     color: $link_color;
     display: none;
-    font-size: 14px;
+    font-size: 18px;
     padding: 0 20px 0 0;
+    font-weight: 500;
     width: auto;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}

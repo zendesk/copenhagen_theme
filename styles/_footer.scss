@@ -1,20 +1,161 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $border-color;
   margin-top: 60px;
-  padding: 30px 0;
+  background: #2c2a29;
+  color: white;
 
-  a { color: $secondary-text-color; }
+  a { color: white; }
 
   &-inner {
     @include max-width-container;
-    display: flex;
-    justify-content: space-between;
+    overflow: hidden;
   }
-
+  .footer-inner {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+  }
   &-language-selector {
+    display: none;
     color: $secondary-text-color;
     display: inline-block;
     font-weight: $font-weight-light;
   }
+
+  .company-info {
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    padding: 0 0 20px;
+    @include tablet {
+      padding: 0;
+      float: left;
+      width: 310px;
+      text-align: left;
+    }
+    img {
+      width: 78px;
+      margin: 0 auto 15px;
+      @include tablet {
+        margin: 5px 15px 0 0;
+        float: left;
+      }
+      @include tablet {
+        margin: 5px 25px 0 0;
+      }
+    }
+    address {
+      overflow: hidden;
+      display: block;
+      margin: 0;
+      font-style: normal;
+    }
+  }
+  .footer-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    @include tablet {
+      float: right;
+    }
+    li {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 20px;
+      line-height: 28px;
+      margin: 0 15px;
+      @include tablet {
+        margin: 0 0 0 30px;
+      }
+      a {
+        color: white;
+      }
+    }
+  }
+  .center-content {
+    text-align: center;
+    overflow: hidden;
+    @include tablet {
+      float: left;
+      width: 100%;
+    }
+    @include desktop {
+      float: none;
+      width: auto;
+    }
+  }
+  .footer-sub-nav {
+    padding: 0;
+    margin: 0 0 10px;
+    list-style: none;
+    text-align: center;
+    padding: 10px 0 0;
+    li {
+      display: inline-block;
+      vertical-align: top;
+      font-size: 15px;
+      line-height: 20px;
+      &::before {
+        padding: 0 5px;
+        content: "|";
+      }
+      &:first-child {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+  .copyright {
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .contact-block {
+    text-align: center;
+    color: black;
+    padding: 30px 0 80px;
+    position: relative;
+    background: #fff url($dots_bg) repeat-x 50% 100%;
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      content: '';
+      height: 10px;
+      background: linear-gradient(to right, #3dbdbf 0%, #f1ba46 100%);
+    }
+    &:before {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: '';
+      height: 30px;
+      background: rgba(black, .3);
+    }
+    h1 {
+      font-size: 35px;
+      line-height: 44px;
+      font-weight: 600;
+      margin: 0 0 20px;
+    }
+    .btn {
+      display: inline-block;
+      color: white;
+      min-width: 180px;
+      padding: 10px 10px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 500;
+      background: #006b9c;
+      border-radius: 5px;
+    }
+  }
+}
+.powered-by-zendesk {
+  display: none;
 }

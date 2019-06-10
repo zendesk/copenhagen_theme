@@ -29,7 +29,7 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#0072EF"
+      "value": "#3dbdbf"
     }, {
       "identifier": "background_color",
       "type": "color",
@@ -60,6 +60,7 @@
         { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
         { "label": "Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
         { "label": "Lucida Grande", "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
+        { "label": "Rajdhani", "value": "'Rajdhani', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
         { "label": "Trebuchet MS", "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" }
       ],
       "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -84,6 +85,7 @@
         { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
         { "label": "Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
         { "label": "Lucida Grande", "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
+        { "label": "Rajdhani", "value": "'Rajdhani', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
         { "label": "Trebuchet MS", "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" }
       ],
       "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
@@ -114,6 +116,16 @@
       "description": "community_background_image_description",
       "label": "community_background_image_label"
     }, {
+      "identifier": "dots_bg",
+      "type": "file",
+      "description": "dots_background_image_description",
+      "label": "dots_background_image_label"
+    }, {
+      "identifier": "mit_footer_logo",
+      "type": "file",
+      "description": "mit_footer_logo_description",
+      "label": "mit_footer_logo_label"
+    }, {
       "identifier": "community_image",
       "type": "file",
       "description": "community_image_description",
@@ -140,7 +152,18 @@
       "label": "scoped_community_search_label",
       "value": true
     }]
-  }, {
+  },
+    {
+      "label": "footer_label",
+      "variables": [
+        {
+          "identifier": "instant_search",
+          "type": "checkbox",
+          "description": "instant_search_description",
+          "label": "instant_search_label",
+          "value": true
+        }]
+    }, {
     "label": "home_page_group_label",
     "variables": [{
       "identifier": "show_recent_activity",

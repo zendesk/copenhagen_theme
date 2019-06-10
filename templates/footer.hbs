@@ -1,7 +1,32 @@
 <footer class="footer">
+  <div class="contact-block">
+    <div class="footer-inner">
+      <h1>Can't find what you're looking for?</h1>
+      {{#link 'new_request' class='submit-a-request btn' role='button'}}
+        Contact US
+      {{/link}}
+    </div>
+  </div>
   <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
-
+    <div class="company-info">
+        <img src="{{settings.mit_footer_logo}}">
+        <address>
+          Massachusetts Institute of Technology <br>77 Massachusetts Avenue <br>Cambridge, MA
+          02139<br>617-253-1000
+        </address>
+      </div>
+    <ul class="footer-nav">
+      <li><a href="#">MITxPro Home</a></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+    <div class="center-content">
+      <ul class="footer-sub-nav">
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Honor Code</a></li>
+      </ul>
+      <span class="copyright">© 2019 All rights reserved. <a href="#">MIT xPRO</a>.</span>
+    </div>
     <div class="footer-language-selector">
       {{#if alternative_locales}}
         <div class="dropdown language-selector">

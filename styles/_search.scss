@@ -4,18 +4,19 @@
 
   input[type="search"] {
     border: 1px solid $border-color;
-    border-radius: 30px;
+    border-radius: 8px;
     box-sizing: border-box;
     color: $field-text-color;
-    height: 40px;
-    padding-left: 40px;
-    padding-right: 20px;
+    height: 65px;
+    font-size: 24px;
+    padding-left: 20px;
+    padding-right: 60px;
     -webkit-appearance: none;
     width: 100%;
 
     [dir="rtl"] & {
-      padding-right: 40px;
-      padding-left: 20px;
+      padding-right: 20px;
+      padding-left: 60px;
     }
 
     &:focus {
@@ -31,13 +32,13 @@
     background-color: #fff;
     color: #777;
     content: "\1F50D";
-    font-size: 18px;
+    font-size: 30px;
     position: absolute;
-    left: 15px;
+    right: 15px;
 
     [dir="rtl"] & {
-      right: 15px;
-      left: auto;
+      left: 15px;
+      right: auto;
     }
   }
 
