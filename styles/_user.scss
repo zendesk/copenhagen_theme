@@ -23,6 +23,7 @@
     &::after {
       color: $link_color;
       padding-right: 15px;
+      font-size: 20px;
 
       [dir="rtl"] & {
         padding-left: 15px;
@@ -36,7 +37,9 @@
 #user #user-name {
   @include tablet { display: inline-block; }
   display: none;
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 0 0 20px;
 
   &:hover { text-decoration: underline; }
 }
