@@ -1,18 +1,50 @@
 /* Navigation element that collapses on mobile */
 .collapsible-nav {
   @include tablet {
-    border: 0;
-    height: auto;
     flex-direction: row;
-    max-height: none;
+  }
+
+  flex-direction: column;
+  font-size: $font-size-navigation;
+  position: relative;
+}
+
+.collapsible-nav-border {
+  @include tablet {
+    border-top: 0;
   }
 
   border-bottom: 1px solid $border-color;
   border-top: 1px solid $border-color;
-  flex-direction: column;
-  max-height: 45px;
-  overflow: hidden;
-  font-size: $font-size-navigation;
+}
+
+.collapsible-nav-toggle {
+  @include tablet { display: none; }
+  top: calc(45px / 2);
+  transform: translateY(-50%);
+  position: absolute;
+  right: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+
+  [dir="rtl"] & {
+    left: 0;
+    right: auto;
+  }
+
+  &::after {
+    @extend .icon;
+    content: "\25BE";
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $brand_color;
+  }
 }
 
 .collapsible-nav-list {
@@ -60,6 +92,11 @@
     }
   }
 
+  li:not([aria-selected="true"]) {
+    @include tablet { display: block; }
+    display: none;
+  }
+
   li[aria-selected="true"] {
     @include tablet {
       border-bottom: 4px solid $brand_color;
@@ -72,26 +109,15 @@
 
     a { color: $text_color; }
   }
-
-  li[aria-selected="true"]::after {
-    @extend .icon;
-    @include tablet { display: none; }
-    @include vertical-align;
-    content: "\25BE";
-    position: absolute;
-    right: 0;
-
-    [dir="rtl"] & {
-      left: 0;
-      right: auto;
-    }
-  }
 }
 
 .collapsible-nav[aria-expanded="true"] {
-  max-height: none;
 
-  li[aria-selected="true"]::after {
+  .collapsible-nav-toggle::after {
     content: "\2715";
+  }
+
+  li:not([aria-selected="true"]) {
+    display: block;
   }
 }
