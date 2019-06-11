@@ -1,10 +1,15 @@
-<nav class="my-activities-nav collapsible-nav">
-  <ul class="collapsible-nav-list container">
-    <li aria-selected=true>{{t 'requests'}}</li>
-    <li>{{link 'contributions'}}</li>
-    <li>{{link 'subscriptions'}}</li>
-  </ul>
-</nav>
+<div class="my-activities-nav">
+  <div class="container">
+    <nav class="collapsible-nav">
+      <button class="collapsible-nav-toggle" aria-label={{t 'toggle_navigation'}} aria-expanded="false"></button>
+      <ul class="collapsible-nav-list">
+        <li aria-selected=true>{{t 'requests'}}</li>
+        <li>{{link 'contributions'}}</li>
+        <li>{{link 'subscriptions'}}</li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <div class="container">
   <div class="request-breadcrumbs">{{breadcrumbs}}</div>
