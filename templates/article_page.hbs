@@ -9,17 +9,20 @@
     <section class="article-sidebar">
       {{#if settings.show_articles_in_section}}
         <section class="section-articles collapsible-sidebar">
-        <h3 class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
-        <ul>
-          {{#each section.articles}}
-            <li>
-              <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
-            </li>
-          {{/each}}
-        </ul>
-        {{#if section.more_articles}}
-          <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-        {{/if}}
+          <button class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false"></button>
+          <h3 id="section-articles-title" class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
+          <div class="collapsible-sidebar-body">
+            <ul>
+              {{#each section.articles}}
+                <li>
+                  <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+                </li>
+              {{/each}}
+            </ul>
+            {{#if section.more_articles}}
+              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
+            {{/if}}
+          </div>
         </section>
       {{/if}}
     </section>
