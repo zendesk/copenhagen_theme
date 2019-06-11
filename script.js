@@ -124,11 +124,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  function toggleNavigation(toggleElement) {
-    var menu = document.getElementById('user-nav');
+  function toggleNavigation(toggle, menu) {
     var isExpanded = menu.getAttribute('aria-expanded') === 'true';
     menu.setAttribute('aria-expanded', !isExpanded);
-    toggleElement.setAttribute('aria-expanded', !isExpanded);
+    toggle.setAttribute('aria-expanded', !isExpanded);
+  }
+
+  function closeNavigation(toggle, menu) {
+    menu.setAttribute('aria-expanded', false);
+    toggle.setAttribute('aria-expanded', false);
+    toggle.focus();
   }
 
   var burgerMenu = document.querySelector('.header .icon-menu');
@@ -136,27 +141,43 @@ document.addEventListener('DOMContentLoaded', function() {
 
   burgerMenu.addEventListener('click', function(e) {
     e.stopPropagation();
-    toggleNavigation(this);
+    toggleNavigation(this, userMenu);
   });
 
   burgerMenu.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) { // Enter key
       e.stopPropagation();
-      toggleNavigation(this);
+      toggleNavigation(this, userMenu);
     }
   });
 
   userMenu.addEventListener('keyup', function(e) {
     if (e.keyCode === 27) { // Escape key
       e.stopPropagation();
-      this.setAttribute('aria-expanded', false);
-      burgerMenu.setAttribute('aria-expanded', false);
+      closeNavigation(burgerMenu, this);
     }
   });
 
   if (userMenu.children.length === 0) {
     burgerMenu.style.display = 'none';
   }
+
+  // Toggles expanded aria to collapsible elements
+  var collapsible = document.querySelectorAll('.collapsible-nav, .collapsible-sidebar');
+
+  Array.prototype.forEach.call(collapsible, function(el) {
+    var toggle = el.querySelector('.collapsible-nav-toggle, .collapsible-sidebar-toggle');
+
+    el.addEventListener('click', function(e) {
+      toggleNavigation(toggle, this);
+    });
+
+    el.addEventListener('keyup', function(e) {
+      if (e.keyCode === 27) { // Escape key
+        closeNavigation(toggle, this);
+      }
+    });
+  });
 
   // Submit organization form in the request page
   var requestOrganisationSelect = document.querySelector('#request-organization select');
@@ -166,15 +187,6 @@ document.addEventListener('DOMContentLoaded', function() {
       closest(this, 'form').submit();
     });
   }
-
-  // Toggles expanded aria to collapsible elements
-  Array.prototype.forEach.call(document.querySelectorAll('.collapsible-nav, .collapsible-sidebar'), function(el) {
-    el.addEventListener('click', function(e) {
-      e.stopPropagation();
-      var isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-    });
-  });
 
   // If a section has more than 6 subsections, we collapse the list, and show a trigger to display them all
   const seeAllTrigger = document.querySelector("#see-all-sections-trigger");
