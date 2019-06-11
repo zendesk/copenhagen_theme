@@ -5,6 +5,7 @@
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
+  font-weight: 600;
   margin-right: 2px;
   padding: 3px 10px;
   vertical-align: middle;
@@ -44,31 +45,28 @@
     }
   }
 
-  &-pending,
-  &-not-planned {
-    background-color: #eee;
+  &-not-planned,
+  &-closed {
+    background-color: #e9ebed;
     color: $secondary-text-color;
   }
 
   &-pending {
+    background-color: #1f73b7;
     text-align: center;
   }
 
   &-open {
-    background-color: #cc3340;
-  }
-
-
-  &-closed {
-    background-color: #ddd;
+    background-color: #c72a1c;
   }
 
   &-solved {
-    background-color: #999;
+    background-color: #68737d;
   }
 
   &-new {
-    background-color: #ffd12a;
+    background-color: #ffb648;
+    color: #703b15;
   }
 
   &-hold {
