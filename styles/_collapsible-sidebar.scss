@@ -10,30 +10,54 @@
   padding: 10px 0;
   position: relative;
 
-  &[aria-expanded="true"] {
-    max-height: none;
+  &-title {
+    margin-top: 0;
+  }
 
-    .collapsible-sidebar-title::after {
-      @include desktop { display: none; }
-      content: "\2715";
+  &-toggle {
+    @include desktop { display: none; }
+    position: absolute;
+    top: calc(45px / 2);
+    transform: translateY(-50%);
+    right: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    [dir="rtl"] & {
+      left: 0;
+      right: auto;
+    }
+
+    &::after {
+      @extend .icon;
+      @include vertical-align;
+      content: "\25BE";
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $brand_color;
     }
   }
 
-  &-title {
-    margin-top: 0;
+  &-body {
+    @include desktop { display: block; }
+    display: none;
+  }
 
-      &::after {
-      @extend .icon;
-      @include desktop { display: none; }
-      @include vertical-align;
-      content: "\25BE";
-      position: absolute;
-      right: 10px;
+  &[aria-expanded="true"] {
+    max-height: none;
 
-      [dir="rtl"] & {
-        left: 10px;
-        right: auto;
-      }
+    .collapsible-sidebar-toggle::after {
+      content: "\2715";
+    }
+
+    .collapsible-sidebar-body {
+      display: block;
     }
   }
 }
