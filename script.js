@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // Submit requests filter form on search in the request list page
-  document.querySelector('#quick-search').addEventListener('keyup', function(e) {
+  var quickSearch = document.querySelector('#quick-search');
+  quickSearch && quickSearch.addEventListener('keyup', function(e) {
     if (e.keyCode === 13) { // Enter key
       e.stopPropagation();
       saveFocus();
