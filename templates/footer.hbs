@@ -1,7 +1,39 @@
 <footer class="footer">
+  {{#if settings.show_contact_us_section}}
+      <div class="contact-block">
+        <div class="footer-inner">
+          <h1>{{settings.contact_us_header}}</h1>
+          {{#link 'new_request' class='submit-a-request btn' role='button'}}
+            Contact US
+          {{else}}
+          <span class='link-not-found'>
+            Contact US link is not available for you.
+          </span>
+          {{/link}}
+        </div>
+      </div>
+  {{/if}}
   <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
-
+    <div class="company-info">
+        <img src="{{settings.mit_footer_logo}}">
+        <address>
+          {{settings.mit_address}}
+          <br>
+          {{settings.mit_phone_number}}
+        </address>
+      </div>
+    <ul class="footer-nav">
+      <li><a href={{settings.mit_home}}>MITxPro Home</a></li>
+      <li><a href={{settings.mit_about_us}}>About Us</a></li>
+    </ul>
+    <div class="center-content">
+      <ul class="footer-sub-nav">
+        <li><a href={{settings.mit_tos}}>Terms of Service</a></li>
+        <li><a href={{settings.mit_privacy_policy}}>Privacy Policy</a></li>
+        <li><a href={{settings.mit_honor_code}}>Honor Code</a></li>
+      </ul>
+      <span class="copyright">© 2019 All rights reserved. <a href={{settings.mit_home}}>MIT xPRO</a>.</span>
+    </div>
     <div class="footer-language-selector">
       {{#if alternative_locales}}
         <div class="dropdown language-selector">

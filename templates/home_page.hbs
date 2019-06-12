@@ -1,6 +1,7 @@
 <section class="section hero">
   <div class="hero-inner">
     {{search submit=false instant=settings.instant_search class='search search-full'}}
+    <span class="title">Search for answer</span>
   </div>
 </section>
 
@@ -11,9 +12,20 @@
         {{#each categories}}
           {{#if ../has_multiple_categories}}
             <li class="blocks-item">
+              <div class='category-image'>
+                {{#is name 'COURSES & PROGRAMS'}}
+                    <img src="{{asset 'icon-program.png'}}" />
+                {{/is}}
+                {{#is name 'PAYMENTS & REFUNDS'}}
+                    <img src="{{asset 'icon-payment.png'}}" />
+                {{/is}}
+                {{#is name 'GENERAL FAQs'}}
+                    <img src="{{asset 'icon-faqs.png'}}" />
+                {{/is}}
+              </div>
               <a href='{{url}}' class="blocks-item-link">
                 <h4 class="blocks-item-title">{{name}}</h4>
-                <p class="blocks-item-description">{{excerpt description}}</p>
+                <p class="blocks-item-description">{{excerpt description}} </p>
               </a>
             </li>
           {{else}}
