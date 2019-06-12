@@ -2000,8 +2000,9 @@ ul {
   margin-bottom: 30px;
 }
 
-.community-header h4 {
+.community-header h1 {
   margin-bottom: 0;
+  font-size: 16px;
 }
 
 .post-to-community {
