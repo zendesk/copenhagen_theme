@@ -55,7 +55,7 @@
         { "label": "Futura", "value": "Futura, 'Century Gothic', AppleGothic, sans-serif" },
         { "label": "Garamond", "value": "Garamond, 'Hoefler Text', 'Times New Roman', Times, serif" },
         { "label": "Geneva", "value": "Geneva, 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif" },
-        { "label": "Georgia", "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif" }
+        { "label": "Georgia", "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif" },
         { "label": "Helvetica", "value": "Helvetica, Arial, sans-serif" },
         { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
         { "label": "Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
