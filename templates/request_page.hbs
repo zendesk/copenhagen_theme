@@ -1,7 +1,7 @@
 <div class="my-activities-nav">
   <div class="container">
     <nav class="collapsible-nav">
-      <button class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
       <ul class="collapsible-nav-list">
         <li aria-selected=true>{{t 'requests'}}</li>
         <li>{{link 'contributions'}}</li>
@@ -120,7 +120,7 @@
     </section>
 
     <section class="request-sidebar collapsible-sidebar">
-      <button class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false"></button>
+      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false"></button>
       <h5 id="request-sidebar-title" class="collapsible-sidebar-title">{{t 'ticket_details'}}</h5>
       <div class="collapsible-sidebar-body">
         {{#if request.followup_source_id}}
