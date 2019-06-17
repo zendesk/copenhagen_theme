@@ -2,20 +2,11 @@
 .my-activities {
   &-nav {
     background-color: $secondary-shade;
-    border: 0;
     margin-bottom: 20px;
   }
 
   &-sub-nav {
-    @include tablet {
-      li:hover { border-bottom: 4px solid #ddd; }
-    }
-
-    background-color: transparent;
-    border-bottom: 1px solid $border-color;
     margin-bottom: 30px;
-
-    li[aria-selected="true"] { border-color: $brand_color; }
   }
 
   &-table {

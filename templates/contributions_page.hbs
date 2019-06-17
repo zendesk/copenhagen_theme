@@ -1,31 +1,39 @@
-<nav class="my-activities-nav collapsible-nav">
-  <ul class="collapsible-nav-list container">
-    {{#if help_center.request_management_enabled}}
-      <li>{{link 'requests'}}</li>
-    {{/if}}
-    <li aria-selected=true>{{t 'contributions'}}</li>
-    <li>{{link 'subscriptions'}}</li>
-  </ul>
-</nav>
+<div class="my-activities-nav">
+  <div class="container">
+    <nav class="collapsible-nav">
+      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+      <ul class="collapsible-nav-list">
+        {{#if help_center.request_management_enabled}}
+          <li>{{link 'requests'}}</li>
+        {{/if}}
+        <li aria-selected=true>{{t 'contributions'}}</li>
+        <li>{{link 'subscriptions'}}</li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <div class="container">
   <header class="my-activities-header">
     <h1>{{t 'contributions'}}</h1>
-    <nav class="my-activities-sub-nav collapsible-nav">
-      <ul class="collapsible-nav-list">
-        {{#each filters}}
-          {{#if selected}}
-            <li aria-selected=true>{{name}}</li>
-          {{else}}
-            <li>
-              <a href="{{url}}">{{name}}</a>
-            </li>
-          {{/if}}
-        {{/each}}
-      </ul>
-    </nav>
-  </header>
 
+    <div class="my-activities-sub-nav">
+      <nav class="collapsible-nav collapsible-nav-border">
+        <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+        <ul class="collapsible-nav-list">
+          {{#each filters}}
+            {{#if selected}}
+              <li aria-selected=true>{{name}}</li>
+            {{else}}
+              <li>
+                <a href="{{url}}">{{name}}</a>
+              </li>
+            {{/if}}
+          {{/each}}
+        </ul>
+      </nav>
+    </div>
+  </header>
 
   <div class="requests">
     {{#if contributions}}

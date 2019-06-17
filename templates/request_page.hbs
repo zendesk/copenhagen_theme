@@ -1,10 +1,15 @@
-<nav class="my-activities-nav collapsible-nav">
-  <ul class="collapsible-nav-list container">
-    <li aria-selected=true>{{t 'requests'}}</li>
-    <li>{{link 'contributions'}}</li>
-    <li>{{link 'subscriptions'}}</li>
-  </ul>
-</nav>
+<div class="my-activities-nav">
+  <div class="container">
+    <nav class="collapsible-nav">
+      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+      <ul class="collapsible-nav-list">
+        <li aria-selected=true>{{t 'requests'}}</li>
+        <li>{{link 'contributions'}}</li>
+        <li>{{link 'subscriptions'}}</li>
+      </ul>
+    </nav>
+  </div>
+</div>
 
 <div class="container">
   <div class="request-breadcrumbs">{{breadcrumbs}}</div>
@@ -115,108 +120,111 @@
     </section>
 
     <section class="request-sidebar collapsible-sidebar">
-      <h5 class="collapsible-sidebar-title">{{t 'ticket_details'}}</h5>
-      {{#if request.followup_source_id}}
+      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false"></button>
+      <h5 id="request-sidebar-title" class="collapsible-sidebar-title">{{t 'ticket_details'}}</h5>
+      <div class="collapsible-sidebar-body">
+        {{#if request.followup_source_id}}
+          <dl class="request-details">
+            <dt>{{t 'followup'}}</dt>
+            <dd>{{link 'request' id=request.followup_source_id}}</dd>
+          </dl>
+        {{/if}}
         <dl class="request-details">
-          <dt>{{t 'followup'}}</dt>
-          <dd>{{link 'request' id=request.followup_source_id}}</dd>
+          <dt>{{t 'requester'}}</dt>
+          <dd>{{request.requester.name}}</dd>
+
+          <dt>{{t 'created'}}</dt>
+          <dd>{{date request.created_at}}</dd>
+
+          <dt>{{t 'last_activity'}}</dt>
+          <dd>{{date request.updated_at}}</dd>
+
+          {{#if collaborators}}
+            <dt>{{t 'ccs'}}</dt>
+            <dd>
+              <ul class="request-collaborators">
+                {{#each collaborators}}
+                  <li title="{{name}}">{{name}}</li>
+                {{/each}}
+              </ul>
+            </dd>
+          {{/if}}
         </dl>
-      {{/if}}
-      <dl class="request-details">
-        <dt>{{t 'requester'}}</dt>
-        <dd>{{request.requester.name}}</dd>
 
-        <dt>{{t 'created'}}</dt>
-        <dd>{{date request.created_at}}</dd>
+        <dl class="request-details">
+          {{#if assignee}}
+            <dt>{{t 'assignee'}}</dt>
+            <dd>
+              {{assignee.name}}
+            </dd>
+          {{/if}}
 
-        <dt>{{t 'last_activity'}}</dt>
-        <dd>{{date request.updated_at}}</dd>
+          <dt>{{t 'id'}}</dt>
+          <dd>#{{request.id}}</dd>
 
-        {{#if collaborators}}
-          <dt>{{t 'ccs'}}</dt>
+          {{#form 'organization' id='request-organization'}}
+            <dt>{{t 'organization'}}</dt>
+            <dd>{{select 'organization'}}</dd>
+          {{/form}}
+
+          {{#if group}}
+            <dt>{{t 'group'}}</dt>
+            <dd>
+              {{group.name}}
+            </dd>
+          {{/if}}
+
+          <dt>{{t 'status'}}</dt>
           <dd>
-            <ul class="request-collaborators">
-              {{#each collaborators}}
-                <li title="{{name}}">{{name}}</li>
-              {{/each}}
-            </ul>
+            <span class="status-label status-label-{{request.status}}" title="{{request.status_description}}">
+              {{request.status_name}}
+            </span>
           </dd>
-        {{/if}}
-      </dl>
 
-      <dl class="request-details">
-        {{#if assignee}}
-          <dt>{{t 'assignee'}}</dt>
-          <dd>
-            {{assignee.name}}
-          </dd>
-        {{/if}}
+          {{#if request.type}}
+            <dt>{{t 'type'}}</dt>
+            <dd>
+              {{request.type_name}}
+              {{#is request.type 'task'}}
+                {{t 'task_due_date' due_date=request.due_date}}
+              {{/is}}
+            </dd>
+          {{/if}}
 
-        <dt>{{t 'id'}}</dt>
-        <dd>#{{request.id}}</dd>
+          {{#if request.priority}}
+            <dt>{{t 'priority'}}</dt>
+            <dd>
+              {{request.priority_name}}
+            </dd>
+          {{/if}}
 
-        {{#form 'organization' id='request-organization'}}
-          <dt>{{t 'organization'}}</dt>
-          <dd>{{select 'organization'}}</dd>
-        {{/form}}
-
-        {{#if group}}
-          <dt>{{t 'group'}}</dt>
-          <dd>
-            {{group.name}}
-          </dd>
-        {{/if}}
-
-        <dt>{{t 'status'}}</dt>
-        <dd>
-          <span class="status-label status-label-{{request.status}}" title="{{request.status_description}}">
-            {{request.status_name}}
-          </span>
-        </dd>
-
-        {{#if request.type}}
-          <dt>{{t 'type'}}</dt>
-          <dd>
-            {{request.type_name}}
-            {{#is request.type 'task'}}
-              {{t 'task_due_date' due_date=request.due_date}}
-            {{/is}}
-          </dd>
-        {{/if}}
-
-        {{#if request.priority}}
-          <dt>{{t 'priority'}}</dt>
-          <dd>
-            {{request.priority_name}}
-          </dd>
-        {{/if}}
-
-        {{#each custom_fields}}
-          <dt>{{title}}</dt>
-          <dd>
-            {{value}}
-          </dd>
-        {{/each}}
-      </dl>
-
-      {{#if attachments}}
-        <dl class="request-details request-attachments">
-          <dt>{{t 'attachments_heading'}}</dt>
-          <dd>
-            <ul class="attachments">
-              {{#each attachments}}
-                <li class="attachment-item">
-                  <a href="{{url}}" target="_blank">{{name}}</a>
-                  <div class="attachment-meta meta-group">
-                    <span class="attachment-meta-item meta-data">{{size}}</span>
-                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-          </dd>
+          {{#each custom_fields}}
+            <dt>{{title}}</dt>
+            <dd>
+              {{value}}
+            </dd>
+          {{/each}}
         </dl>
-      {{/if}}
+
+        {{#if attachments}}
+          <dl class="request-details request-attachments">
+            <dt>{{t 'attachments_heading'}}</dt>
+            <dd>
+              <ul class="attachments">
+                {{#each attachments}}
+                  <li class="attachment-item">
+                    <a href="{{url}}" target="_blank">{{name}}</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">{{size}}</span>
+                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </dd>
+          </dl>
+        {{/if}}
+      </div>
     </section>
   </div>
 </div>
