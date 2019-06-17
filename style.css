@@ -1993,6 +1993,11 @@ ul {
   text-align: center;
 }
 
+.community-footer-title {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
 .community-featured-posts, .community-activity {
   padding-top: 40px;
   width: 100%;
