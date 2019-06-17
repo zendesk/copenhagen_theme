@@ -1658,6 +1658,8 @@ ul {
 .comment-heading {
   margin-bottom: 5px;
   margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .comment-overview {
@@ -2515,15 +2517,9 @@ ul {
   }
 }
 
-.post-sidebar h5 {
+.post-sidebar-title {
+  font-size: 18px;
   font-weight: 600;
-}
-
-@media (min-width: 1024px) {
-  .post-sidebar h5 {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
-  }
 }
 
 .post-comments {
