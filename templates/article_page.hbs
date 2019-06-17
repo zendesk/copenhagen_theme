@@ -6,11 +6,13 @@
   </nav>
 
   <div class="article-container" id="article-container">
-    <section class="article-sidebar">
+    <aside class="article-sidebar">
       {{#if settings.show_articles_in_section}}
-        <section class="section-articles collapsible-sidebar">
+        <div class="collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false"></button>
-          <h3 id="section-articles-title" class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
+          <h3 id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
+            {{t 'articles_in_section'}}
+          </h3>
           <div class="collapsible-sidebar-body">
             <ul>
               {{#each section.articles}}
@@ -23,9 +25,9 @@
               <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
             {{/if}}
           </div>
-        </section>
+        </div>
       {{/if}}
-    </section>
+    </aside>
 
     <article class="article">
       <header class="article-header">
