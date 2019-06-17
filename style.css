@@ -3175,14 +3175,14 @@ ul {
   }
 }
 
-.request-sidebar h5 {
+.request-sidebar h2 {
   font-size: 15px;
   font-weight: 600;
   position: relative;
 }
 
 @media (min-width: 1024px) {
-  .request-sidebar h5 {
+  .request-sidebar h2 {
     display: none;
   }
 }
