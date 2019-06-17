@@ -4078,6 +4078,11 @@ ul {
   }
 }
 
+.search-results-subheading {
+  font-size: 18px;
+  font-weight: 600;
+}
+
 .search-results-list {
   margin-bottom: 25px;
 }
