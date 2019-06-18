@@ -919,7 +919,7 @@ ul {
   }
 }
 
-.section h2 {
+.home-section h2 {
   margin-bottom: 10px;
   text-align: center;
 }
@@ -1130,6 +1130,8 @@ ul {
 
 .section-tree-title {
   margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .section-tree-title a {
@@ -1658,6 +1660,8 @@ ul {
 .comment-heading {
   margin-bottom: 5px;
   margin-top: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .comment-overview {
@@ -1991,6 +1995,11 @@ ul {
   text-align: center;
 }
 
+.community-footer-title {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
 .community-featured-posts, .community-activity {
   padding-top: 40px;
   width: 100%;
@@ -2000,8 +2009,9 @@ ul {
   margin-bottom: 30px;
 }
 
-.community-header h4 {
+.community-header h1 {
   margin-bottom: 0;
+  font-size: 16px;
 }
 
 .post-to-community {
@@ -2514,15 +2524,9 @@ ul {
   }
 }
 
-.post-sidebar h5 {
+.post-sidebar-title {
+  font-size: 18px;
   font-weight: 600;
-}
-
-@media (min-width: 1024px) {
-  .post-sidebar h5 {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
-  }
 }
 
 .post-comments {
@@ -3174,14 +3178,14 @@ ul {
   }
 }
 
-.request-sidebar h5 {
+.request-sidebar h2 {
   font-size: 15px;
   font-weight: 600;
   position: relative;
 }
 
 @media (min-width: 1024px) {
-  .request-sidebar h5 {
+  .request-sidebar h2 {
     display: none;
   }
 }
@@ -4075,6 +4079,11 @@ ul {
   .search-results-column {
     flex: 0 0 45%;
   }
+}
+
+.search-results-subheading {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .search-results-list {

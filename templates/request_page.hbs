@@ -14,7 +14,7 @@
 <div class="container">
   <div class="request-breadcrumbs">{{breadcrumbs}}</div>
 
-  <h2 class="request-title">{{request.subject}}</h2>
+  <h1 class="request-title">{{request.subject}}</h1>
 
   <div class="request-container">
     <section class="request-main">
@@ -121,7 +121,9 @@
 
     <section class="request-sidebar collapsible-sidebar">
       <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false"></button>
-      <h5 id="request-sidebar-title" class="collapsible-sidebar-title">{{t 'ticket_details'}}</h5>
+      <h2 id="request-sidebar-title" class="collapsible-sidebar-title">
+        {{t 'ticket_details'}}
+      </h2>
       <div class="collapsible-sidebar-body">
         {{#if request.followup_source_id}}
           <dl class="request-details">
@@ -129,6 +131,7 @@
             <dd>{{link 'request' id=request.followup_source_id}}</dd>
           </dl>
         {{/if}}
+
         <dl class="request-details">
           <dt>{{t 'requester'}}</dt>
           <dd>{{request.requester.name}}</dd>

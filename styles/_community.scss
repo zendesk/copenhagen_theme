@@ -8,6 +8,11 @@
   &-footer {
     padding-top: 50px;
     text-align: center;
+
+    &-title {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
   }
 
   &-featured-posts,
@@ -19,7 +24,10 @@
   &-header {
     margin-bottom: 30px;
 
-    h4 { margin-bottom: 0; }
+    h1 {
+      margin-bottom: 0;
+      font-size: 16px;
+    }
   }
 }
 

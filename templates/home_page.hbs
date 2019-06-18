@@ -54,7 +54,7 @@
   </section>
 
   {{#if help_center.community_enabled}}
-    <section class="section community">
+    <section class="section home-section community">
       <h2>{{t 'community'}}</h2>
       {{#link 'community' class='community-link'}}
         {{t 'join_conversation'}}
@@ -64,7 +64,7 @@
     </section>
   {{/if}}
 
-  <section class="section activity">
+  <section class="section home-section activity">
     {{#if settings.show_recent_activity}}
       {{recent_activity}}
     {{/if}}

@@ -113,7 +113,7 @@
     flex: 1 0 auto;
     order: 0; //Bring to top
 
-    h5 {
+    h2 {
       @include desktop {
         display: none;
       }
