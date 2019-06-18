@@ -1,15 +1,20 @@
 <header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
-    {{/link}}
-  </div>
+    <div class="header-left">
+      <div class="logo">
+        {{#link 'help_center'}}
+          <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+        {{/link}}
+      </div>
+      <strong class="support-center">SUPPORT CENTER</strong>
+   </div>
   <div class="nav-wrapper">
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
-      {{#link 'new_request' class='submit-a-request'}}Contact US{{/link}}
+      {{#link 'new_request' class='submit-a-request'}}Contact Us{{/link}}
       {{link 'community'}}
     </nav>
-    {{user_info}}
+    {{#if settings.show_user_info}}
+        {{user_info}}
+    {{/if}}
   </div>
 </header>

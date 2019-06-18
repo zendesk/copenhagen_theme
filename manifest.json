@@ -29,13 +29,19 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#3dbdbf"
+      "value": "#355b6b"
     }, {
       "identifier": "background_color",
       "type": "color",
       "description": "background_color_description",
       "label": "background_color_label",
       "value": "#FFFFFF"
+    }, {
+      "identifier": "site_theme_color",
+      "type": "color",
+      "description": "site_theme_base_color_description",
+      "label": "site_theme_base_color_label",
+      "value": "#A32034"
     }]
   }, {
     "label": "fonts_group_label",
@@ -132,6 +138,15 @@
       "label": "community_image_label"
     }]
   }, {
+    "label": "header_page_group_label",
+    "variables": [{
+      "identifier": "show_user_info",
+      "type": "checkbox",
+      "description": "user_info_description",
+      "label": "user_info_label",
+      "value": false
+    }]
+  },{
     "label": "search_group_label",
     "variables":[{
       "identifier": "instant_search",
@@ -270,7 +285,7 @@
       "type": "text",
       "description": "mit_home_description",
       "label": "mit_home_label",
-      "value": "https://www.mit.edu/"
+      "value": "https://xpro.mit.edu/"
     }, {
       "identifier": "mit_about_us",
       "type": "text",
