@@ -919,7 +919,7 @@ ul {
   }
 }
 
-.section h2 {
+.home-section h2 {
   margin-bottom: 10px;
   text-align: center;
 }
@@ -1130,6 +1130,8 @@ ul {
 
 .section-tree-title {
   margin-bottom: 0;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .section-tree-title a {
