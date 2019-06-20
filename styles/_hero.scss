@@ -14,7 +14,7 @@
   &-inner {
 
     @include vertical-align;
-    max-width: 610px;
+    max-width: 765px;
     margin: 0 auto;
   }
 
@@ -26,5 +26,42 @@
     display: block;
     text-align: left;
     padding: 10px 0 0;
+  }
+
+  .search {
+    overflow: hidden;
+
+    &:before {
+      right: 125px;
+      @include tablet {
+        right: 165px;
+      }
+    }
+
+    input[type="submit"] {
+      float: right;
+      width: 100px;
+      background: #355B6B;
+      font-size: 20px;
+      font-weight: 600;
+      height: 65px;
+      min-width: 100px;
+      padding: 0 10px;
+      text-transform: uppercase;
+
+      @include tablet {
+        width: 134px;
+      }
+    }
+
+    input[type="search"] {
+      float: left;
+      width: calc(100% - 110px);
+      font-weight: 600;
+
+      @include tablet {
+        width: calc(100% - 150px);
+      }
+    }
   }
 }
