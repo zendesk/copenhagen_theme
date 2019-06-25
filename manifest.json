@@ -11,7 +11,7 @@
       "type": "color",
       "description": "brand_color_description",
       "label": "brand_color_label",
-      "value": "#0072EF"
+      "value": "#006b9c"
     }, {
       "identifier": "brand_text_color",
       "type": "color",
@@ -145,8 +145,20 @@
       "description": "user_info_description",
       "label": "user_info_label",
       "value": false
+    }, {
+      "identifier": "mit_link",
+      "type": "text",
+      "description": "mit_link_description",
+      "label": "mit_link_label",
+      "value": "https://mit.edu/"
+    }, {
+      "identifier": "xpro_link",
+      "type": "text",
+      "description": "xpro_link_description",
+      "label": "xpro_link_label",
+      "value": "https://xpro.mit.edu/"
     }]
-  },{
+  }, {
     "label": "search_group_label",
     "variables":[{
       "identifier": "instant_search",

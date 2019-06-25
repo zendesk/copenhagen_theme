@@ -166,3 +166,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+$( document ).ready(function() {
+  $('a.submit-a-request').each(function () {
+    if (location.pathname.indexOf('/requests/new') > -1) {
+      $(this).hide();
+      $('.contact-block').hide();
+    }
+  });
+});

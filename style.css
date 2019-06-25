@@ -394,7 +394,6 @@ ul {
 }
 
 .form footer {
-  margin-top: 40px;
   padding-top: 30px;
 }
 
@@ -402,6 +401,12 @@ ul {
   color: lighten($text_color, 20%);
   cursor: pointer;
   margin-right: 15px;
+}
+
+.form input[type=submit] {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .form .suggestion-list {
@@ -436,6 +441,10 @@ ul {
   padding-bottom: 20px !important;
 }
 
+.header .submit-a-request {
+  text-transform: uppercase;
+}
+
 @media (min-width: 1160px) {
   .header {
     padding: 0;
@@ -461,9 +470,29 @@ ul {
 }
 
 .logo {
-  width: 120px;
+  position: relative;
   float: left;
   margin: 0 10px 0 0;
+}
+
+.logo .mit-link, .logo .xpro-link {
+  position: absolute;
+  z-index: 2;
+  opacity: .5;
+}
+
+.logo .mit-link {
+  left: 0;
+  top: 7px;
+  width: 72px;
+  height: 39px;
+}
+
+.logo .xpro-link {
+  left: 100px;
+  top: 15px;
+  width: 69px;
+  height: 25px;
 }
 
 @media (min-width: 768px) {
@@ -655,9 +684,13 @@ ul {
 
 /***** Footer *****/
 .footer {
-  margin-top: 60px;
+  margin-top: 30px;
   background: #2c2a29;
   color: white;
+}
+
+.footer .submit-a-request {
+  text-transform: uppercase;
 }
 
 .footer a {
@@ -1189,82 +1222,86 @@ ul {
 }
 
 /***** Homepage *****/
-.section {
+.container {
+  margin-top: 60px;
+  /***** Promoted articles *****/
+  /***** Community section in homepage *****/
+}
+
+.container .section {
   margin-bottom: 40px;
 }
 
 @media (min-width: 768px) {
-  .section {
-    margin-bottom: 60px;
+  .container .section {
+    margin-bottom: 10px;
   }
 }
 
-.section h2 {
+.container .section h2 {
   margin-bottom: 10px;
   text-align: center;
 }
 
-/***** Promoted articles *****/
-.promoted-articles {
+.container .promoted-articles {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
 }
 
 @media (min-width: 1024px) {
-  .promoted-articles {
+  .container .promoted-articles {
     flex-direction: row;
   }
 }
 
-.promoted-articles-item {
+.container .promoted-articles-item {
   flex: 1 0 auto;
 }
 
 @media (min-width: 1024px) {
-  .promoted-articles-item {
+  .container .promoted-articles-item {
     align-self: flex-end;
     flex: 0 0 auto;
     padding-right: 30px;
     width: 33%;
     /* Three columns on desktop */
   }
-  [dir="rtl"] .promoted-articles-item {
+  [dir="rtl"] .container .promoted-articles-item {
     padding: 0 0 0 30px;
   }
 }
 
-.promoted-articles-item:nth-child(3n) {
+.container .promoted-articles-item:nth-child(3n) {
   padding-right: 0;
 }
 
-.promoted-articles-item a {
+.container .promoted-articles-item a {
   display: block;
   border-bottom: 1px solid #ddd;
   padding: 15px 0;
   color: $text_color;
 }
 
-.promoted-articles-item .icon-lock::before {
+.container .promoted-articles-item .icon-lock::before {
   vertical-align: baseline;
 }
 
-.promoted-articles-item:last-child a {
+.container .promoted-articles-item:last-child a {
   border: 0;
 }
 
 @media (min-width: 1024px) {
-  .promoted-articles-item:last-child a {
+  .container .promoted-articles-item:last-child a {
     border-bottom: 1px solid #ddd;
   }
 }
 
-/***** Community section in homepage *****/
-.community {
+.container .community {
   text-align: center;
 }
 
-.community-image {
+.container .community-image {
   min-height: 300px;
   background-image: url($community_image);
   background-position: center;
@@ -1272,43 +1309,43 @@ ul {
   max-width: 100%;
 }
 
-.community,
-.activity {
+.container .community,
+.container .activity {
   border-top: 1px solid #ddd;
   padding: 30px 0;
 }
 
-.blocks-list li {
+.container .blocks-list li {
   border-color: $link_color;
 }
 
-.blocks-list li h4 {
+.container .blocks-list li h4 {
   color: $link_color;
   font-size: 24px;
   line-height: 25px;
   font-weight: 600;
 }
 
-.blocks-list li p {
+.container .blocks-list li p {
   color: black;
   font-size: 18px;
   line-height: 22px;
   font-weight: 600;
 }
 
-.blocks-list li:hover {
+.container .blocks-list li:hover {
   background: none;
 }
 
-.blocks-list li:hover a h4 {
+.container .blocks-list li:hover a h4 {
   color: $link_color;
 }
 
-.blocks-list li:hover a p {
+.container .blocks-list li:hover a p {
   color: black;
 }
 
-.blocks-list li .category-image {
+.container .blocks-list li .category-image {
   padding-top: 15px;
 }
 
