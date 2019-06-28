@@ -2,6 +2,11 @@
 $header-height: 71px;
 
 .header {
+
+  .submit-a-request {
+    text-transform: uppercase;
+  }
+
   @include max-width-container;
   position: relative;
   align-items: center;
@@ -27,9 +32,29 @@ $header-height: 71px;
 }
 
 .logo {
-  width: 120px;
+  position: relative;
   float: left;
   margin: 0 10px 0 0;
+
+  .mit-link, .xpro-link {
+    position: absolute;
+    z-index: 2;
+    opacity: .5;
+  }
+
+  .mit-link {
+    left: 0;
+    top: 7px;
+    width: 72px;
+    height: 39px;
+  }
+
+  .xpro-link {
+    left: 100px;
+    top: 15px;
+    width: 69px;
+    height: 25px;
+  }
 
   @include tablet {
     width: 170px;

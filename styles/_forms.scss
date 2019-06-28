@@ -86,7 +86,6 @@
 }
 
 .form footer {
-  margin-top: 40px;
   padding-top: 30px;
 }
 
@@ -94,6 +93,12 @@
   color: $secondary-text-color;
   cursor: pointer;
   margin-right: 15px;
+}
+
+.form input[type=submit] {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .form .suggestion-list {

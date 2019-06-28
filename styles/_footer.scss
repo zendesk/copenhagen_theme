@@ -1,8 +1,12 @@
 /***** Footer *****/
 .footer {
-  margin-top: 60px;
+  margin-top: 30px;
   background: #2c2a29;
   color: white;
+
+  .submit-a-request {
+    text-transform: uppercase;
+  }
 
   a { color: white; }
 

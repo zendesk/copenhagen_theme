@@ -15,11 +15,14 @@
                 {{#is name 'COURSES & PROGRAMS'}}
                     <img src="{{asset 'icon-program.png'}}" />
                 {{/is}}
-                {{#is name 'PAYMENTS & REFUNDS'}}
+                {{#is name 'PAYMENTS'}}
                     <img src="{{asset 'icon-payment.png'}}" />
                 {{/is}}
                 {{#is name 'GENERAL FAQs'}}
                     <img src="{{asset 'icon-faqs.png'}}" />
+                {{/is}}
+                {{#is name 'TROUBLESHOOTING'}}
+                    <img src="{{asset 'icon-troubleshooting.png'}}" />
                 {{/is}}
               </div>
               <a href='{{url}}' class="blocks-item-link">
@@ -63,7 +66,7 @@
       </section>
     {{/if}}
   </section>
-
+<!--
   {{#if help_center.community_enabled}}
     <section class="section community">
       <h2>{{t 'community'}}</h2>
@@ -80,4 +83,5 @@
       {{recent_activity}}
     {{/if}}
   </section>
+ -->
 </div>
