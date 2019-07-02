@@ -287,12 +287,6 @@
       "label": "mit_address_label",
       "value": "Massachusetts Institute of Technology 77 Massachusetts Avenue Cambridge, MA 02139"
     }, {
-      "identifier": "mit_phone_number",
-      "type": "text",
-      "description": "mit_phone_number_description",
-      "label": "mit_phone_number_label",
-      "value": "617-253-1000"
-    }, {
       "identifier": "mit_home",
       "type": "text",
       "description": "mit_home_description",
