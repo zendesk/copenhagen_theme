@@ -8,7 +8,7 @@ body {
   background-color: #fff;
   color: $text_color;
   font-family: $text_font;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 35px;
 }
 
 h2 {
@@ -35,7 +35,7 @@ h2 {
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 600;
 }
 
@@ -259,7 +259,7 @@ ul {
 .table th,
 .table th a {
   color: lighten($text_color, 20%);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 300;
   text-align: left;
 }
@@ -315,7 +315,7 @@ ul {
 
 .form-field label {
   display: block;
-  font-size: 13px;
+  font-size: 18px;
   margin-bottom: 5px;
 }
 
@@ -410,7 +410,7 @@ ul {
 }
 
 .form .suggestion-list {
-  font-size: 13px;
+  font-size: 18px;
   margin-top: 30px;
 }
 
@@ -918,7 +918,7 @@ ul {
   color: lighten($text_color, 20%);
   display: inline;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 18px;
   max-width: 450px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1135,7 +1135,7 @@ ul {
 }
 
 .sub-nav input[type="search"]::after {
-  font-size: 15px;
+  font-size: 18px;
 }
 
 /***** Blocks *****/
@@ -1406,7 +1406,7 @@ ul {
 .recent-activity-item-time, .recent-activity-item-comment {
   color: lighten($text_color, 20%);
   display: inline-block;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 300;
 }
 
@@ -1426,7 +1426,7 @@ ul {
   color: $brand_color;
   content: "\1F4AC";
   display: inline-block;
-  font-size: 15px;
+  font-size: 18px;
   padding-right: 3px;
   vertical-align: middle;
 }
@@ -1503,6 +1503,10 @@ ul {
 
 .article-list-item .icon-lock::before {
   vertical-align: baseline;
+}
+
+.article-list li.article-list-item {
+  font-size: 18px;
 }
 
 .icon-star::before {
@@ -1888,7 +1892,7 @@ ul {
 }
 
 .sidenav-title {
-  font-size: 15px;
+  font-size: 18px;
   position: relative;
 }
 
@@ -1909,7 +1913,7 @@ ul {
 
 .recent-articles h3,
 .related-articles h3 {
-  font-size: 15px;
+  font-size: 18px;
   margin: 20px 0;
 }
 
@@ -1933,7 +1937,7 @@ ul {
 .attachments .attachment-item::before {
   color: $text_color;
   content: "\1F4CE";
-  font-size: 15px;
+  font-size: 18px;
   left: 0;
   position: absolute;
   top: 5px;
@@ -2025,7 +2029,7 @@ ul {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-weight: 300;
-  font-size: 13px;
+  font-size: 18px;
   margin-bottom: 0;
 }
 
@@ -2041,7 +2045,7 @@ ul {
 .comment-sorter .dropdown-toggle {
   color: lighten($text_color, 20%);
   font-weight: 300;
-  font-size: 13px;
+  font-size: 18px;
 }
 
 [dir="rtl"] .comment-sorter {
@@ -2326,7 +2330,7 @@ ul {
   color: lighten($text_color, 20%);
   content: "\2699";
   display: block;
-  font-size: 13px;
+  font-size: 18px;
   margin: auto;
   padding: 5px;
 }
@@ -2379,7 +2383,7 @@ ul {
 /* Community topic page */
 .topic-header {
   border-bottom: 1px solid #ddd;
-  font-size: 13px;
+  font-size: 18px;
 }
 
 @media (min-width: 768px) {
@@ -2534,7 +2538,7 @@ ul {
 .striped-list-count {
   color: lighten($text_color, 20%);
   font-weight: 300;
-  font-size: 13px;
+  font-size: 18px;
   justify-content: flex-start;
   text-transform: capitalize;
 }
@@ -3177,7 +3181,7 @@ ul {
 }
 
 .requests-table-toolbar .request-filter-label {
-  font-size: 13px;
+  font-size: 18px;
   margin-top: 30px;
 }
 
@@ -3335,7 +3339,7 @@ ul {
 /* Contributions table */
 .contributions-table td:last-child {
   color: lighten($text_color, 20%);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 300;
 }
 
@@ -3480,7 +3484,7 @@ ul {
   .request-sidebar {
     background-color: darken(#fff, 3%);
     border: 0;
-    font-size: 13px;
+    font-size: 18px;
     flex: 0 0 auto;
     padding: 0 20px;
     width: 30%;
@@ -3488,7 +3492,7 @@ ul {
 }
 
 .request-sidebar h5 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
   position: relative;
 }
@@ -3513,7 +3517,7 @@ ul {
 .request-details dt, .request-details dd {
   display: inline-block;
   vertical-align: top;
-  font-size: 13px;
+  font-size: 18px;
   margin: 20px 0 0 0;
 }
 
@@ -3592,14 +3596,14 @@ ul {
 }
 
 .pagination a, .pagination span {
-  font-size: 15px;
+  font-size: 18px;
   color: lighten($text_color, 20%);
   padding: 10px 12px;
 }
 
 @media (min-width: 768px) {
   .pagination a, .pagination span {
-    font-size: 13px;
+    font-size: 18px;
     padding: 5px 12px;
   }
 }
@@ -3639,7 +3643,7 @@ ul {
 
 .meta-data {
   color: lighten($text_color, 20%);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 300;
 }
 
@@ -3878,7 +3882,7 @@ ul {
 }
 
 .profile-stats {
-  font-size: 13px;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -4057,7 +4061,7 @@ ul {
   padding: 10px 0;
   color: lighten($text_color, 20%);
   font-weight: 300;
-  font-size: 13px;
+  font-size: 18px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -4073,7 +4077,7 @@ ul {
 .profile-section-sorter {
   flex-basis: 100%;
   border-top: solid 1px #eee;
-  font-size: 13px;
+  font-size: 18px;
 }
 
 .profile-section-sorter .dropdown-toggle {
@@ -4412,7 +4416,7 @@ ul {
 .search-result-votes, .search-result-meta-count {
   color: lighten($text_color, 20%);
   display: inline-block;
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 300;
   padding: 4px 5px;
   position: relative;
