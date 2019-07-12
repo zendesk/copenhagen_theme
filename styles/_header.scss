@@ -93,6 +93,15 @@ $header-height: 71px;
   }
 }
 
+#errormessage {
+	align-items: center;
+	background-color: #ffefc2;
+	padding: 32px;
+	margin-bottom: 15px;
+	border: 1px solid rgba(51,51,51,0.25);
+    border-radius: 3px;
+}
+
 /*this hides Activities from menu when a user is logged in. See JS for code that shows My Activities to internal users and users within ITHAKA org */
    .my-activities, #user-menu .my-activities {
      display: none;

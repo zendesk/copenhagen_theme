@@ -3,7 +3,30 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Start of status page code -->
-<!--<script src="{{asset 'statuspage.js'}}"></script>-->
+<script src="{{asset 'statuspage.js'}}"></script>
+<!--Below is what generates the banner HTML-->
+
+<div id = "errormessage"></div>
+
+<script>
+   var client = StatusPage("0gfvqy6xtsss");
+   client.subscribe(function(error, data) {
+   if (error) {
+       console.error(error);
+   } else {
+       console.log(data);
+       console.log(data.status);
+       var x = document.getElementById("errormessage");
+       if(data.status  != "resolved"){
+           x.style.display = "block";
+           x.innerHTML = '<i class="fa fa-exclamation fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;' + data.body
+       } else {
+           x.style.display = "none";
+           x.html = ''
+       }
+   }
+   });
+</script>
 <!-- End of status page code -->
 
 <script type="text/javascript">
