@@ -3,7 +3,7 @@ const ENDPOINTS = {
   prod: "https://status-app.jstor.org/components/"
 };
 const defaultConfig = {
-  environment: "test",
+  environment: "prod",
   webClient: fetch.bind(window),
   timerInterval: /* ms */ 1000 * /* s */ 30
 };
