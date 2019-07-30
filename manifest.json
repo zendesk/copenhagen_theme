@@ -1,7 +1,7 @@
 {
   "name": "Artstor Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -226,6 +226,15 @@
       "description": "follow_topic_description",
       "label": "follow_topic_label",
       "value": true
+    }]
+  }, {
+    "label": "site_specific_variables",
+    "variables": [{
+      "identifier": "product_homepage",
+      "type": "text",
+      "description": "URL_for_product_homepage",
+      "label": "product_homepage_label",
+      "value": "https://library.artstor.org"
     }]
   }]
 }
