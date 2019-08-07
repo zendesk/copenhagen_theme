@@ -20,7 +20,14 @@ function StatusPage(identifier, config = {}) {
 
   return {
     get() {
-      return config.webClient(url, {credentials: "include"}).then(response => response.json());
+      return config
+        .webClient(url, { credentials: "include" })
+        .then(response => {
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
+          return response.json();
+        });
     },
     subscribe(handler) {
       if (clearId) {
@@ -34,6 +41,10 @@ function StatusPage(identifier, config = {}) {
           .catch(response => (error = response))
           .finally(() => {
             clearId = setTimeout(trigger, defaultConfig.timerInterval);
+            if (data && !data.component_id) {
+              error = data;
+              data = null;
+            }
             handler(error, data);
           });
       };
