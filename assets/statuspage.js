@@ -20,7 +20,7 @@ function StatusPage(identifier, config = {}) {
 
   return {
     get() {
-      return config.webClient(url).then(response => response.json());
+      return config.webClient(url, {credentials: "include"}).then(response => response.json());
     },
     subscribe(handler) {
       if (clearId) {
