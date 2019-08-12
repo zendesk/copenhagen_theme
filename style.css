@@ -4077,8 +4077,29 @@ ul {
 
 @media (min-width: 1024px) {
   .search-results-column {
-    flex: 0 0 45%;
+    flex: 0 0 75%;
   }
+}
+
+.search-results-sidebar {
+  border-top: 1px solid #ddd;
+  flex: 1 0 auto;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .search-results-sidebar {
+    border: 0;
+    flex: 0 0 20%;
+    height: auto;
+  }
+}
+
+.search-results-sidebar .sidenav-item[aria-selected="true"] {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
 }
 
 .search-results-subheading {
@@ -4091,12 +4112,19 @@ ul {
 }
 
 .search-results-list > li {
-  border-bottom: 1px solid #ddd;
   padding: 20px 0;
 }
 
 .search-results-list > li:first-child {
   border-top: 1px solid #ddd;
+}
+
+.search-results-list > li h2 {
+  margin-bottom: 0;
+}
+
+.search-result-title {
+  font-size: 16px;
 }
 
 .search-result-description {

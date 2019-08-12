@@ -11,10 +11,29 @@
 
   &-column {
     @include desktop {
-      flex: 0 0 45%;
+      flex: 0 0 75%;
     }
 
     flex: 1;
+  }
+
+  &-sidebar {
+    border-top: 1px solid $border-color;
+    flex: 1 0 auto;
+    margin-bottom: 20px;
+    padding: 0;
+
+    @include desktop {
+      border: 0;
+      flex: 0 0 20%;
+      height: auto;
+    }
+
+    .sidenav-item[aria-selected="true"] {
+      background-color: $brand_color;
+      color: $brand_text_color;
+      text-decoration: none;
+    }
   }
 
   &-subheading {
@@ -25,16 +44,23 @@
   &-list {
     margin-bottom: 25px;
     > li {
-      border-bottom: 1px solid $border-color;
       padding: 20px 0;
       &:first-child {
         border-top: 1px solid $border-color;
+      }
+
+      h2 {
+        margin-bottom: 0;
       }
     }
   }
 }
 
 .search-result {
+
+  &-title {
+    font-size: $font-size-bigger;
+  }
 
   &-description {
     margin-top: 15px;
