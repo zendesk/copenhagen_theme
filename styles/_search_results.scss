@@ -60,11 +60,16 @@
 
   &-title {
     font-size: $font-size-bigger;
+    display: inline-block;
   }
 
   &-description {
     margin-top: 15px;
     word-break: break-word;
+  }
+
+  &-icons {
+    float: right;
   }
 
   &-votes,
