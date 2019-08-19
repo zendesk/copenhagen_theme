@@ -132,6 +132,22 @@
                           <span class="status-label status-label-pending">{{t 'pending_approval'}}</span>
                         {{/if}}
 
+                        {{#if flagged}}
+                          {{#is object_type 'post'}}
+                            <span class="status-label status-label-flagged">{{t 'post_flagged'}}</span>
+                          {{else}}
+                            <span class="status-label status-label-flagged">{{t 'comment_flagged'}}</span>
+                          {{/is}}
+                        {{/if}}
+
+                        {{#if hidden}}
+                          {{#is object_type 'post'}}
+                            <span class="status-label status-label-hidden">{{t 'post_hidden'}}</span>
+                          {{else}}
+                            <span class="status-label status-label-hidden">{{t 'comment_hidden'}}</span>
+                          {{/is}}
+                        {{/if}}
+
                         {{#if official}}
                           <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                         {{/if}}
@@ -225,6 +241,22 @@
 
                     {{#if pending}}
                       <span class="status-label status-label-pending">{{t 'pending_approval'}}</span>
+                    {{/if}}
+
+                    {{#if flagged}}
+                      {{#is object_type 'post'}}
+                        <span class="status-label status-label-flagged">{{t 'post_flagged'}}</span>
+                      {{else}}
+                        <span class="status-label status-label-flagged">{{t 'comment_flagged'}}</span>
+                      {{/is}}
+                    {{/if}}
+
+                    {{#if hidden}}
+                      {{#is object_type 'post'}}
+                        <span class="status-label status-label-hidden">{{t 'post_hidden'}}</span>
+                      {{else}}
+                        <span class="status-label status-label-hidden">{{t 'comment_hidden'}}</span>
+                      {{/is}}
                     {{/if}}
 
                     {{#if official}}
