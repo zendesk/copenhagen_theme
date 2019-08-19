@@ -2291,6 +2291,16 @@ ul {
   text-align: center;
 }
 
+.status-label-flagged {
+  background-color: #dea639;
+  text-align: center;
+}
+
+.status-label-hidden {
+  background-color: #c07160;
+  text-align: center;
+}
+
 .status-label-open {
   background-color: #c72a1c;
 }

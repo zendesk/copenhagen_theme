@@ -192,6 +192,12 @@
                           {{#if pending}}
                             <span class="comment-pending status-label status-label-pending">{{t 'pending_approval'}}</span>
                           {{/if}}
+                          {{#if flagged}}
+                            <span class="comment-flagged status-label status-label-flagged">{{t 'comment_flagged'}}</span>
+                          {{/if}}
+                          {{#if hidden}}
+                            <span class="comment-hidden status-label status-label-hidden">{{t 'comment_hidden'}}</span>
+                          {{/if}}
                         </div>
                       </div>
 

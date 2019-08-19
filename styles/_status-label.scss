@@ -56,6 +56,16 @@
     text-align: center;
   }
 
+  &-flagged {
+    background-color: #dea639;
+    text-align: center;
+  }
+
+  &-hidden {
+    background-color: #c07160;
+    text-align: center;
+  }
+
   &-open {
     background-color: #c72a1c;
   }
