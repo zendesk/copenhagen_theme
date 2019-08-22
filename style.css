@@ -4102,6 +4102,24 @@ ul {
   text-decoration: none;
 }
 
+.search-results-sidebar .collapsible-sidebar {
+  padding-bottom: 15px;
+}
+
+.search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
+  display: none;
+}
+
+.search-results-sidebar .see-all-filters-trigger {
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+}
+
+.search-results-sidebar .see-all-filters-trigger[aria-hidden="true"] {
+  display: none;
+}
+
 .search-results-subheading {
   font-size: 18px;
   font-weight: 600;

@@ -9,18 +9,21 @@
     <section class="search-results-sidebar">
       {{#if help_center_filters}}
         <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_help_center'}}</h3>
-          <ul>
+          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each help_center_filters}}
               <li>
                 <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
               </li>
             {{/each}}
+            <a tabindex="0" class="see-all-filters-trigger" aria-hidden="true" title="{{t 'see_more'}}">{{t 'see_more'}}</a>
           </ul>
         </section>
       {{/if}}
       {{#if help_center.community_enabled}}
         <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
           <ul>
             {{#each filters}}
@@ -33,18 +36,20 @@
       {{/if}}
       {{#if subfilters}}
         <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           {{#is current_filter.identifier 'knowledge_base'}}
             <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h3>
           {{/is}}
           {{#is current_filter.identifier 'community'}}
             <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h3>
           {{/is}}
-          <ul>
+          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each subfilters}}
               <li>
                 <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
               </li>
             {{/each}}
+            <a tabindex="0" class="see-all-filters-trigger" aria-hidden="true" title="{{t 'see_more'}}">{{t 'see_more'}}</a>
           </ul>
         </section>
       {{/if}}

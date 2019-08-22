@@ -34,6 +34,24 @@
       color: $brand_text_color;
       text-decoration: none;
     }
+
+    .collapsible-sidebar {
+      padding-bottom: 15px;
+    }
+
+    .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
+      display: none;
+    }
+
+    .see-all-filters-trigger {
+      cursor: pointer;
+      display: block;
+      padding: 10px;
+
+      &[aria-hidden="true"] {
+        display: none;
+      }
+    }
   }
 
   &-subheading {
