@@ -4096,28 +4096,33 @@ ul {
   }
 }
 
-.search-results-sidebar .sidenav-item[aria-selected="true"] {
-  background-color: $brand_color;
-  color: $brand_text_color;
+.search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item[aria-selected="true"] {
+  background-color: #e9ebed;
+  color: inherit;
   text-decoration: none;
 }
 
 .search-results-sidebar .collapsible-sidebar {
-  padding-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
   display: none;
 }
 
-.search-results-sidebar .see-all-filters-trigger {
+.search-results-sidebar .see-all-filters {
   cursor: pointer;
   display: block;
   padding: 10px;
 }
 
-.search-results-sidebar .see-all-filters-trigger[aria-hidden="true"] {
+.search-results-sidebar .see-all-filters[aria-hidden="true"] {
   display: none;
+}
+
+.search-results-sidebar .see-all-filters:after {
+  content: ' \2304';
+  font-weight: bold;
 }
 
 .search-results-subheading {
@@ -4206,22 +4211,14 @@ ul {
   margin: 0 5px;
 }
 
-/* Non-latin search results highlight */
-/* Add a yellow background for Chinese */
-html[lang|="zh"] .search-result-description em {
+/* By default use bold instead of italic to highlight */
+.search-results-description em {
   font-style: normal;
-  background: yellow;
+  font-weight: bold;
 }
 
-/* Use bold to highlight for the rest of supported non-latin languages */
-html[lang|="ar"] .search-result-description em,
-html[lang|="bg"] .search-result-description em,
-html[lang|="el"] .search-result-description em,
-html[lang|="he"] .search-result-description em,
-html[lang|="hi"] .search-result-description em,
-html[lang|="ko"] .search-result-description em,
-html[lang|="ja"] .search-result-description em,
-html[lang|="ru"] .search-result-description em,
-html[lang|="th"] .search-result-description em {
-  font-style: bold;
+/* Add a yellow background for Chinese */
+html[lang|="zh"] .search-results-description em {
+  font-style: normal;
+  background: yellow;
 }

@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
   Array.prototype.forEach.call(multibrandFilterLists, function(filter) {
     if (filter.children.length > 5) {
       // Display the show more button
-      var trigger = filter.querySelector(".see-all-filters-trigger");
+      var trigger = filter.querySelector(".see-all-filters");
       trigger.setAttribute("aria-hidden", false);
 
       // Add event handler for click
