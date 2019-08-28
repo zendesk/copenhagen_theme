@@ -46,6 +46,18 @@
       display: none;
     }
 
+    .multibrand-filter-list .doc-count {
+      color: $field_text_color;
+
+      &::before {
+        content: "(";
+      }
+
+      &::after {
+        content: ")";
+      }
+    }
+
     .see-all-filters {
       cursor: pointer;
       display: block;
@@ -55,7 +67,7 @@
         display: none;
       }
 
-      &:after {
+      &::after {
         content: ' \2304';
         font-weight: bold;
       }
@@ -80,6 +92,34 @@
       }
     }
   }
+
+  .meta-group {
+    display: flex;
+    align-items: center;
+    clear: right;
+    color: $field_text_color;
+
+    li:first-child {
+      margin-right: auto;
+    }
+
+    .meta-data {
+      color: inherit;
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &-description {
+    margin-top: 10px;
+    word-break: break-word;
+  }
 }
 
 .search-result {
@@ -87,11 +127,6 @@
   &-title {
     font-size: $font-size-bigger;
     display: inline-block;
-  }
-
-  &-description {
-    margin-top: 15px;
-    word-break: break-word;
   }
 
   &-icons {
@@ -140,12 +175,15 @@
   }
 
   &-breadcrumbs {
+    display: table-row;
     margin: 0;
 
-    li:last-child::after {
-       content: "·";
-       display: inline-block;
-       margin: 0 5px;
+    li {
+      display: table-cell;
+    }
+
+    li, li a, li a:visited {
+      color: inherit;
     }
   }
 }
