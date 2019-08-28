@@ -46,6 +46,18 @@
       display: none;
     }
 
+    .multibrand-filter-list .doc-count {
+      color: $field-text-color;
+
+      &::before {
+        content: "(";
+      }
+
+      &::after {
+        content: ")";
+      }
+    }
+
     .see-all-filters {
       cursor: pointer;
       display: block;
@@ -55,7 +67,7 @@
         display: none;
       }
 
-      &:after {
+      &::after {
         content: ' \2304';
         font-weight: bold;
       }
@@ -80,6 +92,46 @@
       }
     }
   }
+
+  .meta-group {
+    display: flex;
+    align-items: center;
+    clear: both;
+    color: #666;
+
+    li:first-child {
+      [dir="ltr"] & {
+        margin-right: auto;
+      }
+
+      [dir="rtl"] & {
+        margin-left: auto;
+      }
+    }
+
+    .meta-data {
+      color: inherit;
+
+      &:not(:last-child) {
+        [dir="ltr"] & {
+          margin-right: 20px;
+        }
+
+        [dir="rtl"] & {
+          margin-left: 20px;
+        }
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &-description {
+    margin-top: 10px;
+    word-break: break-word;
+  }
 }
 
 .search-result {
@@ -89,13 +141,14 @@
     display: inline-block;
   }
 
-  &-description {
-    margin-top: 15px;
-    word-break: break-word;
-  }
-
   &-icons {
-    float: right;
+    [dir="ltr"] & {
+      float: right;
+    }
+
+    [dir="rtl"] & {
+      float: left;
+    }
   }
 
   &-votes,
@@ -140,12 +193,15 @@
   }
 
   &-breadcrumbs {
+    display: table-row;
     margin: 0;
 
-    li:last-child::after {
-       content: "·";
-       display: inline-block;
-       margin: 0 5px;
+    li {
+      display: table-cell;
+    }
+
+    li, li a, li a:visited {
+      color: inherit;
     }
   }
 }

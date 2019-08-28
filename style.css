@@ -4110,6 +4110,18 @@ ul {
   display: none;
 }
 
+.search-results-sidebar .multibrand-filter-list .doc-count {
+  color: #999;
+}
+
+.search-results-sidebar .multibrand-filter-list .doc-count::before {
+  content: "(";
+}
+
+.search-results-sidebar .multibrand-filter-list .doc-count::after {
+  content: ")";
+}
+
 .search-results-sidebar .see-all-filters {
   cursor: pointer;
   display: block;
@@ -4120,7 +4132,7 @@ ul {
   display: none;
 }
 
-.search-results-sidebar .see-all-filters:after {
+.search-results-sidebar .see-all-filters::after {
   content: ' \2304';
   font-weight: bold;
 }
@@ -4146,18 +4158,53 @@ ul {
   margin-bottom: 0;
 }
 
+.search-results .meta-group {
+  display: flex;
+  align-items: center;
+  clear: both;
+  color: #666;
+}
+
+[dir="ltr"] .search-results .meta-group li:first-child {
+  margin-right: auto;
+}
+
+[dir="rtl"] .search-results .meta-group li:first-child {
+  margin-left: auto;
+}
+
+.search-results .meta-group .meta-data {
+  color: inherit;
+}
+
+[dir="ltr"] .search-results .meta-group .meta-data:not(:last-child) {
+  margin-right: 20px;
+}
+
+[dir="rtl"] .search-results .meta-group .meta-data:not(:last-child) {
+  margin-left: 20px;
+}
+
+.search-results .meta-group .meta-data::after {
+  content: none;
+}
+
+.search-results-description {
+  margin-top: 10px;
+  word-break: break-word;
+}
+
 .search-result-title {
   font-size: 16px;
   display: inline-block;
 }
 
-.search-result-description {
-  margin-top: 15px;
-  word-break: break-word;
+[dir="ltr"] .search-result-icons {
+  float: right;
 }
 
-.search-result-icons {
-  float: right;
+[dir="rtl"] .search-result-icons {
+  float: left;
 }
 
 .search-result-votes, .search-result-meta-count {
@@ -4202,13 +4249,16 @@ ul {
 }
 
 .search-result-breadcrumbs {
+  display: table-row;
   margin: 0;
 }
 
-.search-result-breadcrumbs li:last-child::after {
-  content: "·";
-  display: inline-block;
-  margin: 0 5px;
+.search-result-breadcrumbs li {
+  display: table-cell;
+}
+
+.search-result-breadcrumbs li, .search-result-breadcrumbs li a, .search-result-breadcrumbs li a:visited {
+  color: inherit;
 }
 
 /* By default use bold instead of italic to highlight */

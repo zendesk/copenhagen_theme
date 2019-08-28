@@ -14,7 +14,7 @@
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each help_center_filters}}
               <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} <span class="doc-count">{{count}}</span></a>
               </li>
             {{/each}}
             <a tabindex="0" class="see-all-filters" aria-hidden="true" title="{{t 'show_more_help_centers'}}">{{t 'show_more_help_centers'}}</a>
@@ -25,10 +25,10 @@
         <section class="filters-in-section collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
-          <ul>
+          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each filters}}
               <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} <span class="doc-count">{{count}}</span></a>
               </li>
             {{/each}}
           </ul>
@@ -46,7 +46,7 @@
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each subfilters}}
               <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} ({{count}})</a>
+                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">{{name}} <span class="doc-count">{{count}}</span></a>
               </li>
             {{/each}}
             {{#is current_filter.identifier 'knowledge_base'}}
@@ -79,17 +79,17 @@
               <h2 class="search-result-title">
                 <a href="{{url}}" class="results-list-item-link">{{title}}</a>
               </h2>
+              <div class="search-result-icons">
+                {{#if vote_sum}}
+                  <span class="search-result-votes">{{vote_sum}}</span>
+                {{/if}}
+                {{#if comment_count}}
+                  <span class="search-result-meta-count">
+                    {{comment_count}}
+                  </span>
+                {{/if}}
+              </div>
               <article>
-                <div class="search-result-icons">
-                  {{#if vote_sum}}
-                    <span class="search-result-votes">{{vote_sum}}</span>
-                  {{/if}}
-                  {{#if comment_count}}
-                    <span class="search-result-meta-count">
-                      {{comment_count}}
-                    </span>
-                  {{/if}}
-                </div>
                 <ul class="meta-group">
                   <li>
                     <ol class="breadcrumbs search-result-breadcrumbs">
