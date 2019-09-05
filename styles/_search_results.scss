@@ -38,6 +38,10 @@
       }
     }
 
+    .sidenav-subitem {
+      unicode-bidi: embed;
+    }
+
     .collapsible-sidebar {
       margin-bottom: 30px;
     }
@@ -48,14 +52,6 @@
 
     .multibrand-filter-list .doc-count {
       color: $field-text-color;
-
-      &::before {
-        content: "(";
-      }
-
-      &::after {
-        content: ")";
-      }
     }
 
     .see-all-filters {

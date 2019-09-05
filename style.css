@@ -4102,6 +4102,10 @@ ul {
   text-decoration: none;
 }
 
+.search-results-sidebar .sidenav-subitem {
+  unicode-bidi: embed;
+}
+
 .search-results-sidebar .collapsible-sidebar {
   margin-bottom: 30px;
 }
@@ -4112,14 +4116,6 @@ ul {
 
 .search-results-sidebar .multibrand-filter-list .doc-count {
   color: #999;
-}
-
-.search-results-sidebar .multibrand-filter-list .doc-count::before {
-  content: "(";
-}
-
-.search-results-sidebar .multibrand-filter-list .doc-count::after {
-  content: ")";
 }
 
 .search-results-sidebar .see-all-filters {
