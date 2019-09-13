@@ -4240,8 +4240,8 @@ a{
 }
 
 .cat-img {
-  background: #F8F9F9;
-  width: 120px;
+  background: #ffffff;
+  /* width: 120px; */
   height: 120px;
   position: absolute;
   left: 0;
@@ -4251,7 +4251,7 @@ a{
 
 .cat-section a{
   color: #03363d;
-  padding: 1rem 1rem 1rem calc(120px + 1rem);
+  padding: 1rem 1rem 1rem calc(80px + 1rem);
   position: absolute;
   left: 0;
   right: 0;
