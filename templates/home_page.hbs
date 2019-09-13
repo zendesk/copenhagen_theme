@@ -1,72 +1,158 @@
-<section class="section hero">
-  <div class="hero-inner">
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+<!--<section class="section hero">-->
+  <!--<div class="hero-inner">-->
+    <!--{{search submit=false instant=settings.instant_search class='search search-full'}}-->
+  <!--</div>-->
+<!--</section>-->
+<!--my own code-->
+
+
+<div id="hero-banner" data-page="home">
+    <div class="hero-container" data-alignment="left" data-font="dark" style="background-image: url(//theme.zdassets.com/theme_assets/1/aae515f9779fac48b5de00d1543e15ebfb7bfb3f.jpg)">
+        <div class="hero-content">
+            <h1 class="text-justify">Hay House help</h1>
+            <h5 class="text-justify h6-heading">Hi, how can we help?</h5>
+            <div class="search-container">
+
+                {{search submit=false instant=settings.instant_search class='search search-full'}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--end-->
+
+<div class="container" style="margin-top: 80px">
+
+    <h3>Browse by Category</h3>
+
+    <div class="row justify-content-md-center">
+
+    <!--{{#each categories}}-->
+        <!--<div class="col-lg-4 col-md-4 col-sm-12">-->
+        <!--<div class="cat-section hoverImages">-->
+        <!--<img class="cat-img" src="https://image.flaticon.com/icons/svg/149/149150.svg" width="64">-->
+        <!--<a href="{{url}}">{{name}}</a>-->
+        <!--</div>-->
+        <!--</div>-->
+            <!--{{/each}}-->
+          <div class="col-lg-4 col-md-4 col-sm-12">
+                  <div class="cat-section hoverImages">
+                      <img class="cat-img" src="https://image.flaticon.com/icons/svg/813/813776.svg" width="64">
+                      <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203902688-General">General</a>
+                  </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="cat-section hoverImages">
+                  <img class="cat-img" src="https://image.flaticon.com/icons/svg/1246/1246351.svg" width="64">
+                  <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203922447-Your-Account">Your Account</a>
+              </div>
+          </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="cat-section hoverImages">
+                <img class="cat-img" src="https://image.flaticon.com/icons/svg/15/15111.svg" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915668-Technical-Digital-Support">Technical & Digital Support</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="cat-section hoverImages">
+                <img class="cat-img" src="https://image.flaticon.com/icons/svg/149/149125.svg" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915468-Your-Digital-Library-">Your Digital Library</a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="cat-section hoverImages">
+                <img class="cat-img"  src="https://image.flaticon.com/icons/svg/149/149095.svg" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915648-Online-Courses">Online Courses</a>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="cat-section hoverImages">
+                <img class="cat-img" src="https://image.flaticon.com/icons/svg/1186/1186562.svg" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915568-Hay-House-Radio">Hay House Radio</a>
+            </div>
+        </div>
   </div>
-</section>
+
+    <div class="row justify-content-md-center">
+
+    </div>
+
+</div>
 
 <div class="container">
-  <section class="section knowledge-base">
-    <section class="categories blocks">
-      <ul class="blocks-list">
-        {{#each categories}}
-          {{#if ../has_multiple_categories}}
-            <li class="blocks-item">
-              <a href='{{url}}' class="blocks-item-link">
-                <h4 class="blocks-item-title">{{name}}</h4>
-                <p class="blocks-item-description">{{excerpt description}}</p>
-              </a>
-            </li>
-          {{else}}
-            {{#each sections}}
-              <li class="blocks-item">
-                <a href='{{url}}' class="blocks-item-link">
-                  <h4 class="blocks-item-title">
-                    {{name}}
-                  </h4>
-                  <p class="blocks-item-description">{{excerpt description}}</p>
-                </a>
-              </li>
-            {{/each}}
-          {{/if}}
-        {{/each}}
-      </ul>
-      {{pagination}}
-    </section>
+    <h3>Browse common asked questions</h3>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-user"></i> Account</h5>
+                    <ul>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/227181428-How-Do-I-Update-My-E-Mail-Address-">How Do I Update My E-Mail Address?</a> </li>
+                        <li><a  href="https://hayhouse.zendesk.com/hc/en-us/articles/360026786513-How-Do-I-Reset-My-Account-Password-">How do I Reset My Account Password?</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/227168968-How-Do-I-Manage-My-Address-Book-">How Do I Manage My Address Book?</a> </li>
+                      <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/360034469193-I-m-Having-Problems-Signing-In">I'm Having Problems Signing In</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-shopping-cart"></i> Billing & Purchases</h5>
+                    <ul>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/360034283473-Where-Can-I-View-My-Order-History-">Where Can I View My Order History?</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/227597428-What-Is-Your-Return-Policy-">What Is Your Return Policy?</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/115004831768-Change-Card-for-Auto-Renewal">Change Card for Auto-Renewal</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/227548927-Can-I-Cancel-My-Order-">Can I Cancel My Order?</a> </li>
+                    </ul>
 
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h3>{{t 'promoted_articles'}}</h3>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-shield-alt"></i> Data Privacy & Email Preference</h5>
+                    <ul>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/360006371473-GDPR-General-Information">GDPR General Information</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/360034044653-How-Do-I-Request-To-Have-My-Data-Removed-">How Do I Request To Have My Data Removed?</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/115004749147-Privacy-Policy">Hay House Privacy Policy</a> </li>
+                        <li><a href="https://hayhouse.zendesk.com/hc/en-us/articles/227532507-How-Do-I-Manage-My-Newsletter-Subscriptions-">How Do I Manage My Newsletter Subscriptions?</a> </li>
 
-                  {{#if internal}}
-                    <span class="icon-lock" title="{{t 'internal'}}"></span>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
-      </section>
-    {{/if}}
-  </section>
+                    </ul>
 
-  {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="demo-banner" data-page="home">
+    <div id="demo-banner" class="container">
+        <div class="demo-block">
+            <div class="container">
+                <h4 class="title">Didn't find the answer? Live Chat with us</h4>
+               <a href="https://v2.zopim.com/widget/popout.html?key=t44GhLk3amYogOaqLhJTUeapo8Pi2iLB" target="_blank"><button class="btn btn-secondary btn-orange">Live Chat</button></a>
+            </div>
+        </div>
+    </div>
+</div>
 
-      <div class="community-image"></div>
-    </section>
-  {{/if}}
+  <!--{{#if help_center.community_enabled}}-->
+    <!--<section class="section home-section community">-->
+      <!--<h2>{{t 'community'}}</h2>-->
+      <!--{{#link 'community' class='community-link'}}-->
+        <!--{{t 'join_conversation'}}-->
+      <!--{{/link}}-->
 
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section>
+      <!--<div class="community-image"></div>-->
+    <!--</section>-->
+  <!--{{/if}}-->
+
+  <!--<section class="section home-section activity">-->
+    <!--{{#if settings.show_recent_activity}}-->
+      <!--{{recent_activity}}-->
+    <!--{{/if}}-->
+  <!--</section>-->
 </div>

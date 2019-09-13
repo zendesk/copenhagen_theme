@@ -1,15 +1,18 @@
-<header class="header">
+<header class="header" id="main-header">
   <div class="logo">
     {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+      <!--<img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">-->
+        <img src="https://static.hayhouse.com/static/version1568175034/frontend/Corra/hayhouse/en_US/images/logo.svg" alt="Hay House Publishing" width="70" height="101">
     {{/link}}
   </div>
   <div class="nav-wrapper">
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
-      {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
+      <!--{{link 'community'}}-->
+         <!--{{link 'new_request' class='submit-a-request'}}-->
+        <a href="https://hayhouse.zendesk.com/hc/en-us/requests/new"><button class="btn btn-sm btn-primary">Submit Request</button></a>
     </nav>
-    {{user_info}}
+      {{user_info}}
   </div>
 </header>
+
