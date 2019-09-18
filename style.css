@@ -4338,3 +4338,7 @@ ul a{
   background-color: #e85c02!important;
   border-color: #e85c02!important;
 }
+
+.card{
+  margin-bottom: 20px;
+}
