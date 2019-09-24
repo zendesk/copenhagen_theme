@@ -55,12 +55,19 @@
     }
 
     .see-all-filters {
+      background: none;
+      border: none;
       cursor: pointer;
       display: block;
       padding: 10px;
+      color: $link_color;
 
       &[aria-hidden="true"] {
         display: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
       }
 
       &::after {

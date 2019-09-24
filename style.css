@@ -4119,13 +4119,20 @@ ul {
 }
 
 .search-results-sidebar .see-all-filters {
+  background: none;
+  border: none;
   cursor: pointer;
   display: block;
   padding: 10px;
+  color: $link_color;
 }
 
 .search-results-sidebar .see-all-filters[aria-hidden="true"] {
   display: none;
+}
+
+.search-results-sidebar .see-all-filters:hover {
+  text-decoration: underline;
 }
 
 .search-results-sidebar .see-all-filters::after {

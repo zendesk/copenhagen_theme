@@ -6,7 +6,7 @@
   </nav>
 
   <div class="search-results">
-    <section class="search-results-sidebar">
+    <aside class="search-results-sidebar">
       {{#if help_center_filters}}
         <section class="filters-in-section collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
@@ -20,7 +20,7 @@
                 </a>
               </li>
             {{/each}}
-            <a tabindex="0" class="see-all-filters" aria-hidden="true" title="{{t 'show_more_help_centers'}}">{{t 'show_more_help_centers'}}</a>
+            <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_help_centers'}}">{{t 'show_more_help_centers'}}</button>
           </ul>
         </section>
       {{/if}}
@@ -59,15 +59,15 @@
               </li>
             {{/each}}
             {{#is current_filter.identifier 'knowledge_base'}}
-              <a tabindex="0" class="see-all-filters" aria-hidden="true" title="{{t 'show_more_categories'}}">{{t 'show_more_categories'}}</a>
+              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_categories'}}">{{t 'show_more_categories'}}</button>
             {{/is}}
             {{#is current_filter.identifier 'community'}}
-              <a tabindex="0" class="see-all-filters" aria-hidden="true" title="{{t 'show_more_topics'}}">{{t 'show_more_topics'}}</a>
+              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_topics'}}">{{t 'show_more_topics'}}</button>
             {{/is}}
           </ul>
         </section>
       {{/if}}
-    </section>
+    </aside>
 
     <section class="search-results-column">
       <h1 class="search-results-subheading">
