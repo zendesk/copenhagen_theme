@@ -1,8 +1,13 @@
 /***** Hero component *****/
 .hero {
-  background: #e8e8e8 center;
+  @include desktop {
+    height: 220px;
+  }
+
+  background: $hero_background;
   background-size: cover;
-  height: 220px;
+  color: $hero-text-color;
+  height: 300px;
   margin: 20px 0 !important;
   padding: 0 20px;
   text-align: center;
