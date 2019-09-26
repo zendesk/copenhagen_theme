@@ -237,11 +237,32 @@
       "value": "https://library.artstor.org"
     }],
     "variables": [{
-      "identifier": "marketing-page",
+      "identifier": "google-tag",
       "type": "text",
-      "description": "Marketing_page_link",
-      "label": "Marketing_page_label",
-      "value": "https://www.artstor.org/about/"
+      "description": "Google_tag_id_text",
+      "label": "Google_tag_id_text_label",
+      "value": "GTM-MCJFWS5"
+    }],
+    "variables": [{
+      "identifier": "statuspage-component",
+      "type": "text",
+      "description": "Statuspage_component_id",
+      "label": "Statuspage_component_id",
+      "value": "cmy3vpk5tq18"
+    }],
+    "variables": [{
+      "identifier": "product-name-text",
+      "type": "text",
+      "description": "Product_name_text",
+      "label": "Product_name_text_label",
+      "value": "Artstor Digital Library"
+    }],
+    "variables": [{
+      "identifier": "support-name-text",
+      "type": "text",
+      "description": "Support_name_text",
+      "label": "Support_name_text_label",
+      "value": "Artstor Support"
     }]
   }]
 }
