@@ -265,6 +265,12 @@
       "description": "support_name_text",
       "label": "support_name_text_label",
       "value": "Artstor Support"
+    },{
+      "identifier": "contact_us_page",
+      "type": "text",
+      "description": "contact_us_page_url",
+      "label": "contact_us_page_url",
+      "value": "https://www.artstor.org/contact-us/"
     }]
   }]
 }
