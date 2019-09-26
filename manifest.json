@@ -235,41 +235,15 @@
       "description": "URL_for_product_homepage",
       "label": "product_homepage_label",
       "value": "https://library.artstor.org"
-    }],
+    }]
+  },{
+    "label": "tags_variable",
     "variables": [{
       "identifier": "google_tag",
       "type": "text",
       "description": "google_tag_id_text",
       "label": "google_tag_id_text_label",
       "value": "GTM-MCJFWS5"
-    }],
-    "variables": [{
-      "identifier": "marketing_page",
-      "type": "text",
-      "description": "marketing_page_link",
-      "label": "marketing_page_label",
-      "value": "https://www.artstor.org/about/"
-    }],
-    "variables": [{
-      "identifier": "statuspage_component",
-      "type": "text",
-      "description": "statuspage_component_id",
-      "label": "statuspage_component_id",
-      "value": "cmy3vpk5tq18"
-    }],
-    "variables": [{
-      "identifier": "product_name_text",
-      "type": "text",
-      "description": "product_name_text",
-      "label": "product_name_text_label",
-      "value": "Artstor Digital Library"
-    }],
-    "variables": [{
-      "identifier": "support_name_text",
-      "type": "text",
-      "description": "support_name_text",
-      "label": "support_name_text_label",
-      "value": "Artstor Support"
     }]
   }]
 }
