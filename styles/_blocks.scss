@@ -43,9 +43,9 @@
       background-color: transparent;
       border: 1px solid $border-color;
 
-      .icon-lock::before {
-        content: "\1F512";
-        font-size: 15px;
+      .icon-lock {
+        height: 15px;
+        width: 15px;
         bottom: 5px;
         position: relative;
       }
