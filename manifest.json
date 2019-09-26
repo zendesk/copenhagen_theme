@@ -235,13 +235,6 @@
       "description": "URL_for_product_homepage",
       "label": "product_homepage_label",
       "value": "https://library.artstor.org"
-    }],
-    "variables": [{
-      "identifier": "google_tag",
-      "type": "text",
-      "description": "Google_tag_id_text",
-      "label": "Google_tag_id_text_label",
-      "value": "GTM-MCJFWS5"
     }]
   }]
 }
