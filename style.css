@@ -1010,13 +1010,20 @@ table td, table th {
 
 /***** Hero component *****/
 .hero {
-  background: #e8e8e8 center;
+  background: #e8e8e8;
   background-size: cover;
-  height: 220px;
+  color: $text_color;
+  height: 300px;
   margin: 20px 0 !important;
   padding: 0 20px;
   text-align: center;
   width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 220px;
+  }
 }
 
 .hero h1 {
@@ -1217,13 +1224,9 @@ table td, table th {
 }
 
 /***** Homepage *****/
-.section {
-  margin-bottom: 40px;
-}
-
 @media (min-width: 768px) {
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
 }
 
@@ -1252,18 +1255,21 @@ table td, table th {
 .popular-topics {
   font-size: 14px;
   position: relative;
-  top: 14px;
+  top: 25px;
 }
 
 @media (min-width: 1024px) {
   .popular-topics {
     top: 50px;
+    max-width: 60%;
+    margin: 0 auto;
   }
 }
 
 .popular-topics a {
   padding: 0 5px;
   color: #555555;
+  display: inline-block;
 }
 
 .popular-topics a:hover, .popular-topics a:active, .popular-topics a:focus {
