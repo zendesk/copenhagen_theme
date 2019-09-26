@@ -235,6 +235,132 @@
       "description": "URL_for_product_homepage",
       "label": "product_homepage_label",
       "value": "https://library.artstor.org"
+    }],
+    "variables": [{
+      "identifier": "contact-us",
+      "type": "text",
+      "description": "Contact_us_link",
+      "label": "contact_us_label",
+      "value": "https://www.artstor.org/contact-us/"
+    }],
+    "variables": [{
+      "identifier": "marketing-page",
+      "type": "text",
+      "description": "Marketing_page_link",
+      "label": "Marketing_page_label",
+      "value": "https://www.artstor.org/about/"
+    }],
+    "variables": [{
+      "identifier": "get-product",
+      "type": "text",
+      "description": "Purchase_info_link",
+      "label": "Purchase_info_label",
+      "value": "https://www.artstor.org/get-artstor/"
+    }],
+    "variables": [{
+      "identifier": "blog-news-page",
+      "type": "text",
+      "description": "Blog_news_page_link",
+      "label": "Blog_news_page_label",
+      "value": "https://about.jstor.org/news/"
+    }],
+    "variables": [{
+      "identifier": "webinars-page",
+      "type": "text",
+      "description": "Webinar_page_link",
+      "label": "Webinar_page_label",
+      "value": "https://www.artstor.org/webinars/"
+    }],
+    "variables": [{
+      "identifier": "careers-page",
+      "type": "text",
+      "description": "Careers_page_link",
+      "label": "Careers_page_label",
+      "value": "https://www.ithaka.org/careers/"
+    }],
+    "variables": [{
+      "identifier": "libguides-page",
+      "type": "text",
+      "description": "LibGuides_page_link",
+      "label": "LibGuides_page_label",
+      "value": "https://artstor.libguides.com/"
+    }],
+    "variables": [{
+      "identifier": "terms-and-conditions-page",
+      "type": "text",
+      "description": "Terms_and_conditions_page_link",
+      "label": "Terms_and_conditions_page_label",
+      "value": "https://www.artstor.org/artstor-terms/"
+    }],
+    "variables": [{
+      "identifier": "privacy-policy-page",
+      "type": "text",
+      "description": "Privacy_policy_page_link",
+      "label": "Privacy_policy_page_label",
+      "value": "https://www.artstor.org/privacy-policy/"
+    }],
+    "variables": [{
+      "identifier": "cookies-policy-page",
+      "type": "text",
+      "description": "Cookies_policy_page_link",
+      "label": "Cookies_policy_page_label",
+      "value": "https://www.ithaka.org/cookies/"
+    }],
+    "variables": [{
+      "identifier": "accessibility-page",
+      "type": "text",
+      "description": "Accessibility_page_link",
+      "label": "Accessibility_page_label",
+      "value": "https://www.artstor.org/accessibility/"
+    }],
+    "variables": [{
+      "identifier": "login-page",
+      "type": "text",
+      "description": "Login_page_link",
+      "label": "Login_page_label",
+      "value": "https://library.artstor.org/#/login"
+    }],
+    "variables": [{
+      "identifier": "legal-statement-text",
+      "type": "text",
+      "description": "Legal_statement_text",
+      "label": "Legal_statement_text_label",
+      "value": "Artstor is a part of <a href="https://www.ithaka.org">ITHAKA</a>, a not-for-profit organization helping the academic community use digital technologies to preserve the scholarly record and to advance research and teaching in sustainable ways."
+    }],
+    "variables": [{
+      "identifier": "rights-statement-text",
+      "type": "text",
+      "description": "Rights_statement_text",
+      "label": "Rights_statement_text_label",
+      "value": "©2000-2019 ITHAKA. All Rights Reserved. JSTOR®, and Artstor®, ITHAKA® are registered trademarks of ITHAKA."
+    }],
+    "variables": [{
+      "identifier": "google-tag",
+      "type": "text",
+      "description": "Google_tag_id_text",
+      "label": "Google_tag_id_text_label",
+      "value": "GTM-MCJFWS5"
+    }],
+    "variables": [{
+      "identifier": "statuspage-component",
+      "type": "text",
+      "description": "Statuspage_component_id_text",
+      "label": "Statuspage_component_id_text_label",
+      "value": "cmy3vpk5tq18"
+    }],
+    "variables": [{
+      "identifier": "product-name-text",
+      "type": "text",
+      "description": "Product_name_text",
+      "label": "Product_name_text_label",
+      "value": "Artstor Digital Library"
+    }],
+    "variables": [{
+      "identifier": "support-name-text",
+      "type": "text",
+      "description": "Support_name_text",
+      "label": "Support_name_text_label",
+      "value": "Artstor Support"
     }]
   }]
 }
