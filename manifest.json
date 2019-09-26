@@ -29,7 +29,7 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#C9510D"
+      "value": "$brand_color"
     }, {
       "identifier": "background_color",
       "type": "color",
