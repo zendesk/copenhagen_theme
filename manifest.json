@@ -271,6 +271,12 @@
       "description": "contact_us_page_url",
       "label": "contact_us_page_url",
       "value": "https://www.artstor.org/contact-us/"
+    },{
+      "identifier": "login_link",
+      "type": "text",
+      "description": "login_link_url",
+      "label": "login_link_url",
+      "value": "https://library.artstor.org/#/login"
     }]
   }]
 }
