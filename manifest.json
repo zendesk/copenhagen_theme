@@ -237,7 +237,7 @@
       "value": "https://library.artstor.org"
     }],
     "variables": [{
-      "identifier": "google-tag",
+      "identifier": "google_tag",
       "type": "text",
       "description": "Google_tag_id_text",
       "label": "Google_tag_id_text_label",
