@@ -4162,18 +4162,30 @@ ul {
 }
 
 .search-results .meta-group {
-  display: flex;
+  display: block;
   align-items: center;
   clear: both;
   color: #666;
 }
 
-[dir="ltr"] .search-results .meta-group li:first-child {
-  margin-right: auto;
+@media (min-width: 1024px) {
+  .search-results .meta-group {
+    display: flex;
+  }
 }
 
-[dir="rtl"] .search-results .meta-group li:first-child {
-  margin-left: auto;
+.search-results .meta-group > li {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .search-results .meta-group > li {
+    display: inline;
+  }
+}
+
+.search-results .meta-group li:first-child {
+  flex: 1;
 }
 
 .search-results .meta-group .meta-data {

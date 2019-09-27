@@ -97,19 +97,19 @@
   }
 
   .meta-group {
-    display: flex;
+    display: block;
+    @include desktop { display: flex; }
     align-items: center;
     clear: both;
     color: #666;
 
-    li:first-child {
-      [dir="ltr"] & {
-        margin-right: auto;
-      }
+    > li {
+      display: block;
+      @include desktop { display: inline }
+    }
 
-      [dir="rtl"] & {
-        margin-left: auto;
-      }
+    li:first-child {
+      flex: 1;
     }
 
     .meta-data {
