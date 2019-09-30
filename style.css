@@ -4077,8 +4077,77 @@ ul {
 
 @media (min-width: 1024px) {
   .search-results-column {
-    flex: 0 0 45%;
+    flex: 0 0 75%;
   }
+}
+
+.search-results-sidebar {
+  border-top: 1px solid #ddd;
+  flex: 1 0 auto;
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+@media (min-width: 1024px) {
+  .search-results-sidebar {
+    border: 0;
+    flex: 0 0 20%;
+    height: auto;
+  }
+}
+
+.search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item[aria-selected="true"] {
+  background-color: #e9ebed;
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-results-sidebar .sidenav-subitem {
+  unicode-bidi: embed;
+}
+
+.search-results-sidebar .collapsible-sidebar {
+  margin-bottom: 30px;
+}
+
+.search-results-sidebar .collapsible-sidebar[aria-expanded="false"] .multibrand-filter-list {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .search-results-sidebar .collapsible-sidebar[aria-expanded="false"] .multibrand-filter-list {
+    display: block;
+  }
+}
+
+.search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
+  display: none;
+}
+
+.search-results-sidebar .multibrand-filter-list .doc-count {
+  color: #999;
+}
+
+.search-results-sidebar .see-all-filters {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  padding: 10px;
+  color: $link_color;
+}
+
+.search-results-sidebar .see-all-filters[aria-hidden="true"] {
+  display: none;
+}
+
+.search-results-sidebar .see-all-filters:hover {
+  text-decoration: underline;
+}
+
+.search-results-sidebar .see-all-filters::after {
+  content: ' \2304';
+  font-weight: bold;
 }
 
 .search-results-subheading {
@@ -4091,7 +4160,6 @@ ul {
 }
 
 .search-results-list > li {
-  border-bottom: 1px solid #ddd;
   padding: 20px 0;
 }
 
@@ -4099,9 +4167,71 @@ ul {
   border-top: 1px solid #ddd;
 }
 
-.search-result-description {
-  margin-top: 15px;
+.search-results-list > li h2 {
+  margin-bottom: 0;
+}
+
+.search-results .meta-group {
+  display: block;
+  align-items: center;
+  clear: both;
+  color: #666;
+}
+
+@media (min-width: 1024px) {
+  .search-results .meta-group {
+    display: flex;
+  }
+}
+
+.search-results .meta-group > li {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .search-results .meta-group > li {
+    display: inline;
+  }
+}
+
+@media (min-width: 1024px) {
+  .search-results .meta-group li:first-child {
+    flex: 1;
+  }
+}
+
+.search-results .meta-group .meta-data {
+  color: inherit;
+}
+
+[dir="ltr"] .search-results .meta-group .meta-data:not(:last-child) {
+  margin-right: 20px;
+}
+
+[dir="rtl"] .search-results .meta-group .meta-data:not(:last-child) {
+  margin-left: 20px;
+}
+
+.search-results .meta-group .meta-data::after {
+  content: none;
+}
+
+.search-results-description {
+  margin-top: 10px;
   word-break: break-word;
+}
+
+.search-result-title {
+  font-size: 16px;
+  display: inline-block;
+}
+
+[dir="ltr"] .search-result-icons {
+  float: right;
+}
+
+[dir="rtl"] .search-result-icons {
+  float: left;
 }
 
 .search-result-votes, .search-result-meta-count {
@@ -4149,28 +4279,30 @@ ul {
   margin: 0;
 }
 
-.search-result-breadcrumbs li:last-child::after {
-  content: "·";
-  display: inline-block;
-  margin: 0 5px;
+@media (min-width: 1024px) {
+  .search-result-breadcrumbs {
+    display: table-row;
+  }
 }
 
-/* Non-latin search results highlight */
+@media (min-width: 1024px) {
+  .search-result-breadcrumbs li {
+    display: table-cell;
+  }
+}
+
+.search-result-breadcrumbs li, .search-result-breadcrumbs li a, .search-result-breadcrumbs li a:visited {
+  color: inherit;
+}
+
+/* By default use bold instead of italic to highlight */
+.search-results-description em {
+  font-style: normal;
+  font-weight: bold;
+}
+
 /* Add a yellow background for Chinese */
-html[lang|="zh"] .search-result-description em {
+html[lang|="zh"] .search-results-description em {
   font-style: normal;
   background: yellow;
-}
-
-/* Use bold to highlight for the rest of supported non-latin languages */
-html[lang|="ar"] .search-result-description em,
-html[lang|="bg"] .search-result-description em,
-html[lang|="el"] .search-result-description em,
-html[lang|="he"] .search-result-description em,
-html[lang|="hi"] .search-result-description em,
-html[lang|="ko"] .search-result-description em,
-html[lang|="ja"] .search-result-description em,
-html[lang|="ru"] .search-result-description em,
-html[lang|="th"] .search-result-description em {
-  font-style: bold;
 }

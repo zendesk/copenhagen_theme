@@ -11,10 +11,77 @@
 
   &-column {
     @include desktop {
-      flex: 0 0 45%;
+      flex: 0 0 75%;
     }
 
     flex: 1;
+  }
+
+  &-sidebar {
+    border-top: 1px solid $border-color;
+    flex: 1 0 auto;
+    margin-bottom: 20px;
+    padding: 0;
+
+    @include desktop {
+      border: 0;
+      flex: 0 0 20%;
+      height: auto;
+    }
+
+    .sidenav-item {
+      &:hover,
+      &[aria-selected="true"] {
+        background-color: #e9ebed;
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+
+    .sidenav-subitem {
+      unicode-bidi: embed;
+    }
+
+    .collapsible-sidebar {
+      margin-bottom: 30px;
+
+      &[aria-expanded="false"] {
+        .multibrand-filter-list {
+          display: none;
+          @include desktop { display: block; }
+        }
+      }
+    }
+
+    .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
+      display: none;
+    }
+
+    .multibrand-filter-list .doc-count {
+      color: $field-text-color;
+    }
+
+    .see-all-filters {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: block;
+      padding: 10px;
+      color: $link_color;
+
+      &[aria-hidden="true"] {
+        display: none;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &::after {
+        content: ' \2304';
+        font-weight: bold;
+      }
+    }
   }
 
   &-subheading {
@@ -25,20 +92,73 @@
   &-list {
     margin-bottom: 25px;
     > li {
-      border-bottom: 1px solid $border-color;
       padding: 20px 0;
       &:first-child {
         border-top: 1px solid $border-color;
       }
+
+      h2 {
+        margin-bottom: 0;
+      }
     }
+  }
+
+  .meta-group {
+    display: block;
+    @include desktop { display: flex; }
+    align-items: center;
+    clear: both;
+    color: #666;
+
+    > li {
+      display: block;
+      @include desktop { display: inline }
+    }
+
+    li:first-child {
+      @include desktop { flex: 1; }
+    }
+
+    .meta-data {
+      color: inherit;
+
+      &:not(:last-child) {
+        [dir="ltr"] & {
+          margin-right: 20px;
+        }
+
+        [dir="rtl"] & {
+          margin-left: 20px;
+        }
+      }
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+
+  &-description {
+    margin-top: 10px;
+    word-break: break-word;
   }
 }
 
 .search-result {
 
-  &-description {
-    margin-top: 15px;
-    word-break: break-word;
+  &-title {
+    font-size: $font-size-bigger;
+    display: inline-block;
+  }
+
+  &-icons {
+    [dir="ltr"] & {
+      float: right;
+    }
+
+    [dir="rtl"] & {
+      float: left;
+    }
   }
 
   &-votes,
@@ -83,37 +203,29 @@
   }
 
   &-breadcrumbs {
+    @include desktop { display: table-row; }
     margin: 0;
 
-    li:last-child::after {
-       content: "·";
-       display: inline-block;
-       margin: 0 5px;
+    li {
+      @include desktop { display: table-cell; }
+    }
+
+    li, li a, li a:visited {
+      color: inherit;
     }
   }
 }
 
-/* Non-latin search results highlight */
+/* By default use bold instead of italic to highlight */
+.search-results-description em {
+  font-style: normal;
+  font-weight: bold;
+}
 
 /* Add a yellow background for Chinese */
 html[lang|="zh"] {
-  .search-result-description em {
+  .search-results-description em {
     font-style: normal;
     background: yellow;
-  }
-}
-
-/* Use bold to highlight for the rest of supported non-latin languages */
-html[lang|="ar"],
-html[lang|="bg"],
-html[lang|="el"],
-html[lang|="he"],
-html[lang|="hi"],
-html[lang|="ko"],
-html[lang|="ja"],
-html[lang|="ru"],
-html[lang|="th"] {
-  .search-result-description em {
-    font-style: bold;
   }
 }
