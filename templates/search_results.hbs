@@ -8,7 +8,7 @@
   <div class="search-results">
     <aside class="search-results-sidebar">
       {{#if help_center_filters}}
-        <section class="filters-in-section collapsible-sidebar">
+        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_help_center'}}</h3>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
@@ -25,7 +25,7 @@
         </section>
       {{/if}}
       {{#if help_center.community_enabled}}
-        <section class="filters-in-section collapsible-sidebar">
+        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
@@ -41,7 +41,7 @@
         </section>
       {{/if}}
       {{#if subfilters}}
-        <section class="filters-in-section collapsible-sidebar">
+        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
           {{#is current_filter.identifier 'knowledge_base'}}
             <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h3>

@@ -44,6 +44,13 @@
 
     .collapsible-sidebar {
       margin-bottom: 30px;
+
+      &[aria-expanded="false"] {
+        .multibrand-filter-list {
+          display: none;
+          @include desktop { display: block; }
+        }
+      }
     }
 
     .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
@@ -109,7 +116,7 @@
     }
 
     li:first-child {
-      flex: 1;
+      @include desktop { flex: 1; }
     }
 
     .meta-data {
@@ -196,11 +203,11 @@
   }
 
   &-breadcrumbs {
-    display: table-row;
+    @include desktop { display: table-row; }
     margin: 0;
 
     li {
-      display: table-cell;
+      @include desktop { display: table-cell; }
     }
 
     li, li a, li a:visited {
