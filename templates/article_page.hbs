@@ -192,9 +192,23 @@
     </article>
 
     <section class="article-sidebar">
-        {{#if settings.show_related_articles}}
-          {{related_articles}}
+      <!--Check manifest for the below settings-->
+      {{#if settings.show_related_articles}}
+        {{related_articles}}
+      {{/if}}
+      {{#if settings.show_articles_in_section}}
+        <h3 class="sidenav-title">{{t 'articles_in_section'}}</h3>
+        <ul>
+          {{#each section.articles}}
+            <li>
+              <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+        {{#if section.more_articles}}
+          <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
         {{/if}}
+      {{/if}}
     </section>
   </div>
 </div>

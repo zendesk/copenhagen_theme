@@ -1669,6 +1669,16 @@ table td, table th {
   box-shadow: none !important;
 }
 
+.article-body ul.checklist, .article-body ol.checklist {
+  list-style: none;
+  padding: 0;
+}
+
+.article-body ul.checklist li:before, .article-body ol.checklist li:before {
+  content: "\f0c8";
+  padding-right: 6px;
+}
+
 .article-anchorbox {
   background-color: #f9f9f9;
   border: 1px solid #cccccc;
@@ -1738,6 +1748,11 @@ table td, table th {
     height: auto;
     padding: 0 0 0 60px;
   }
+}
+
+.article-sidebar h3.sidenav-title {
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 .article-relatives {
@@ -1865,27 +1880,14 @@ table td, table th {
   border-color: #993e0a;
 }
 
-.sidenav-title {
-  font-size: 16px;
-  font-weight: normal;
-  font-style: italic;
-  position: relative;
-}
-
 .sidenav-item {
-  color: $text_color;
+  font-size: 14px;
   display: block;
-  font-weight: 300;
   margin-bottom: 10px;
-  padding: 5px;
 }
 
 .sidenav-item.current-article {
   font-weight: 700;
-}
-
-.sidenav-item:hover {
-  text-decoration: underline;
 }
 
 .recent-articles h3,
