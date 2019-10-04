@@ -16,7 +16,7 @@
   overflow: hidden;
   text-decoration: none;
   width: 22px;
-  
+
 }
 
 .share a::before {
@@ -44,4 +44,8 @@
 
 .share-linkedin::before {
   content: "\f0e1";
+}
+
+.share-youtube::before {
+  content: "\f16a";
 }

@@ -7,14 +7,13 @@ table {
   table-layout: fixed;
 
   caption {
-  text-align: left;
-  font-weight: $font-weight-bold;
-  padding-bottom: 8px;
+    text-align: left;
+    font-weight: $font-weight-bold;
+    padding-bottom: 8px;
   }
 
   th {
     color: $text-color;
-    font-size: $font-size-small;
     font-weight: $font-weight-bold;
     text-align: left;
 
@@ -40,5 +39,6 @@ table {
     border: 1px solid $med-gray;
     vertical-align: top;
     text-align: left;
+    font-size: $font-size-small;
   }
 }
