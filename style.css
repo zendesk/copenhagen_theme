@@ -348,7 +348,6 @@ table caption {
 
 table th {
   color: $text_color;
-  font-size: 14px;
   font-weight: 700;
   text-align: left;
 }
@@ -382,6 +381,7 @@ table td, table th {
   border: 1px solid #cccccc;
   vertical-align: top;
   text-align: left;
+  font-size: 14px;
 }
 
 /***** Forms *****/
@@ -1994,6 +1994,10 @@ table td, table th {
 
 .share-linkedin::before {
   content: "\f0e1";
+}
+
+.share-youtube::before {
+  content: "\f16a";
 }
 
 /***** Comments *****/
@@ -3775,6 +3779,15 @@ table td, table th {
 
 .icon-notification-success::before {
   content: "\2714";
+}
+
+.fa-check {
+  font-family: 'FontAwesome' !important;
+  color: $text_color;
+  content: "\f00c";
+  display: inline-block;
+  font-size: 16px;
+  padding-right: 5px;
 }
 
 /* User Profiles */
