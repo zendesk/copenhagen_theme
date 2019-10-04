@@ -1,5 +1,5 @@
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCJFWS5"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{settings.google_tag}}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 <!-- Start of status page code -->
@@ -9,7 +9,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id = "errormessage" style="display:None"></div>
 
 <script>
-   var client = StatusPage("cmy3vpk5tq18");
+   var client = StatusPage("{{settings.statuspage_component}}");
    client.subscribe(function(error, data) {
    if (error) {
        console.error(error);
@@ -30,31 +30,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End of status page code -->
 
-<script type="text/javascript">
-window.zESettings = {
-    webWidget: {
-        launcher: {
-            label: {
-                'en-US': 'Ask us a question',
-            }
-        }
-    }
-};
-</script>
-
 <header class="header">
   <div id="skipNav"><a class="show-on-focus" href="#main-content">Skip to Main Content</a></div>
   <div class="logo">
     <a href="{{settings.product_homepage}}">
-      <img src="{{settings.logo}}" alt="Artstor Digital Library">
+      <img src="{{settings.logo}}" alt="{{settings.product_name_text}}">
     </a>
   </div>
   <div class="nav-wrapper">
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
-      <a href="https://www.artstor.org/about/">About Artstor</a>
-      <a href="https://library.artstor.org/#/login">Log in to Artstor</a>
-      <a href="https://www.artstor.org/contact-us/">Contact Us</a>
+      <a href="{{settings.marketing_page}}">About {{settings.marketing_page_name}}</a>
+      <a class="current" href="/hc/en/">Support</a>
+      <a href="{{settings.contact_us_page}}">Contact Us</a>
+      <a class="button" href="{{settings.login_link}}">Log in to {{settings.login_product_name}}</a>
       <!--{{link 'new_request' class='submit-a-request'}}-->
     </nav>
     {{#if signed_in}}
