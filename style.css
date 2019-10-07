@@ -919,25 +919,29 @@ ul {
   color: #555;
 }
 
-.search::before {
+.search-full input[type="search"] {
+  border: 1px solid #fff;
+}
+
+.search-icon {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  background-color: #fff;
-  color: #777;
-  content: "\1F50D";
-  font-size: 18px;
   position: absolute;
   left: 15px;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  color: #777;
 }
 
-[dir="rtl"] .search::before {
+[dir="rtl"] .search-icon {
   right: 15px;
   left: auto;
 }
 
-.search-full input[type="search"] {
-  border: 1px solid #fff;
+.search-container {
+  position: relative;
 }
 
 /***** Hero component *****/
@@ -3565,7 +3569,6 @@ ul {
 [class^="icon-"]::before,
 [class*=" icon-"]::before,
 .icon,
-.search::before,
 .article-vote::before,
 .attachments .attachment-item::before,
 .share a::before,
