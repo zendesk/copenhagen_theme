@@ -1,6 +1,6 @@
 <section id="main-content" class="section hero">
     <div class="hero-inner">
-    <h1>Artstor Support</h1>
+    <h1>{{settings.support_name_text}}</h1>
 
     {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search our help center'}}
   </div>
@@ -8,7 +8,7 @@
       <p class="popular-topics">
         <strong>Popular topics:</strong>
           {{#each promoted_articles}}
-                <a href="{{url}}">{{title}}</a> 
+                <a href="{{url}}">{{title}}</a>
           {{/each}}
       </p>
     {{/if}}

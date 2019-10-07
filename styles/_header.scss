@@ -47,26 +47,41 @@ $header-height: 71px;
       display: inline-block;
     }
 
-    border: 0;
+    border-bottom: 3px solid transparent;
     color: $text_color;
     display: none;
     font-size: 14px;
     font-weight: $font-weight-bold;
-    padding: 20px 20px 0 0;
+    margin: 20px 20px 0 0;
+    padding: 2px 0;
     text-decoration: none;
     width: auto;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
 
+    &.current,
     &:hover,
     &:focus,
     &:active {
       background-color: transparent;
+      border-color: $text_color;
       color: $text_color;
-      text-decoration: underline;
+      text-decoration: none;
     }
 
     &.login { display: inline-block; }
+    &.button {
+      background: $brand_color;
+      border: 1px solid $brand_color;
+      color: $brand_text_color;
+      padding: 0 20px;
+
+      &:hover {
+        background: $brand_text_color;
+        color: $brand_color;
+        text-decoration: none;
+      }
+    }
   }
 
   .icon-menu {
