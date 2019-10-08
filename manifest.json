@@ -1,7 +1,7 @@
 {
   "name": "Artstor Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -289,6 +289,12 @@
       "description": "login_product_name",
       "label": "login_product_name",
       "value": "Artstor"
+    },{
+      "identifier": "footer_scss_name",
+      "type": "text",
+      "description": "footer_scss_name",
+      "label": "footer_scss_name",
+      "value": "artstor_footer"
     }]
   }]
 }
