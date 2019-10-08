@@ -1796,10 +1796,8 @@ ul {
   margin-bottom: 0;
 }
 
-.attachments .attachment-item::before {
+.attachments .attachment-item .attachment-icon {
   color: $text_color;
-  content: "\1F4CE";
-  font-size: 15px;
   left: 0;
   position: absolute;
   top: 5px;
@@ -1810,7 +1808,7 @@ ul {
   padding-right: 20px;
 }
 
-[dir="rtl"] .attachments .attachment-item::before {
+[dir="rtl"] .attachments .attachment-item .attachment-icon {
   left: auto;
   right: 0;
 }
@@ -3574,7 +3572,6 @@ ul {
 [class*=" icon-"]::before,
 .icon,
 .article-vote::before,
-.attachments .attachment-item::before,
 .share a::before,
 .collapsible-sidebar-toggle::after {
   font-family: "copenhagen-icons";
