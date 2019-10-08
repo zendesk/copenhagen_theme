@@ -289,12 +289,6 @@
       "description": "login_product_name",
       "label": "login_product_name",
       "value": "Artstor"
-    },{
-      "identifier": "footer_scss_name",
-      "type": "text",
-      "description": "footer_scss_name",
-      "label": "footer_scss_name",
-      "value": "artstor_footer"
     }]
   }]
 }

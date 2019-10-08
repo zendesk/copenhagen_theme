@@ -1,4 +1,4 @@
-/***** Footer *****/
+/***** Artstor Footer *****/
 .footer {
   @include desktop {
     margin-top: 60px;
@@ -106,7 +106,7 @@
 
   .bottom-section {
     margin: 5px auto 35px;
-      
+
       .top-spacing {
         @include desktop {
           margin-top: 45px;
@@ -161,15 +161,13 @@
     a.goog-te-menu-value {
       color: inherit;
     }
-    
+
     a.goog-te-menu-value:hover {
       border: 0;
     }
-    
+
     a.goog-te-menu-value span:not(:first-child) {
       display: none;
     }
   }
 }
-
-
