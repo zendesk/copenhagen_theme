@@ -1,5 +1,17 @@
 <footer id="htmlfooter" class="footer">
 </footer>
+{{#is help_center.name 'JSTOR Forum Support'}}
 <script>
-  $("#htmlfooter").load("{{asset 'footer.html'}}");
+  $("#htmlfooter").load("{{asset 'forum_footer.html'}}");
 </script>
+{{/is}}
+{{#is help_center.name 'JSTOR Support'}}
+<script>
+  $("#htmlfooter").load("{{asset 'jstor_footer.html'}}");
+</script>
+{{/is}}
+{{#is help_center.name 'Artstor Support'}}
+<script>
+  $("#htmlfooter").load("{{asset 'artstor_footer.html'}}");
+</script>
+{{/is}}

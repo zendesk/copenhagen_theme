@@ -1,0 +1,173 @@
+/***** Artstor Footer *****/
+.footer {
+  @include desktop {
+    margin-top: 60px;
+    padding-top: 30px;
+  }
+    margin-top: 30px;
+    padding: 0;
+    background-color: #f9f9f9;
+
+  p {
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  li {
+    font-size: $font-size-small;
+    margin-bottom: 11.2px;
+    padding-right: 5px;
+  }
+
+  a {
+    color: $text_color;
+    font-weight: $font-weight-bold;
+  }
+
+  &-inner {
+    @include max-width-container;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    @include desktop {
+      width: 16.6667%;
+    }
+    width: 100%;
+  }
+
+  &-links {
+    @include desktop {
+      width: 58.3333%;
+    }
+    width: 100%;
+    padding-bottom: 10px;
+
+    a {
+      text-decoration: none;
+      padding-right: 5px;
+
+      &:hover {text-decoration: underline;}
+    }
+  }
+
+  &-legal {
+    @include desktop {
+      width:25%;
+    }
+    width: 100%;
+  }
+
+  .linklist {
+    width: 33.33333%;
+  }
+
+  &-language-selector {
+    color: $secondary-text-color;
+    display: inline-block;
+    font-weight: $font-weight-light;
+  }
+
+  & > .expanded.row {
+    border: 0;
+    background: #e8e8e8;
+    padding-top: 16px;
+    display: flex;
+
+    ul.list-horizontal {
+      padding-top: 11.2px;
+      }
+
+    a {
+      text-decoration: none;
+
+      &:hover {text-decoration: underline;}
+    }
+
+  }
+
+  @media screen and (max-width: 42.79464rem) {
+    .footer > .expanded.row ul {
+      margin-bottom: 20px; } }
+
+  .row {
+    max-width: 1120px;
+    margin-right: auto;
+    margin-left: auto;
+    &.expanded {
+      max-width: none;
+        .row {
+          max-width: 1160px;
+          width: 90%;
+        }
+    }
+  }
+
+  .bottom-section {
+    margin: 5px auto 35px;
+
+      .top-spacing {
+        @include desktop {
+          margin-top: 45px;
+        }
+        margin-top: 25px;
+      }
+  }
+
+  .columns {
+    @include desktop {
+      padding-right: 12px;
+      padding-left: 12px;
+
+      &.large-9 {
+        width: 75%;
+      }
+      &.large-3 {
+        width: 25%;
+      }
+
+    }
+    float: left;
+    padding-right: 24px;
+    padding-left: 24px;
+
+      .columns {
+        padding: 0;
+      }
+  }
+
+  /* Google Translate styles */
+
+  .goog-te-gadget-simple {
+    border: 1px solid rgba(0, 106, 132, 0.5);
+    color: #006a84;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0 2px 2px 0 #D6D6D6;
+    height: 2.78571rem;
+    padding: 0.57143rem;
+    margin: 0 0 1.14286rem;
+    font-size: 1.14286rem;
+    font-family: inherit;
+    line-height: normal;
+    border-radius: 3px;
+    background: white url(nav-arrow.svg) no-repeat right -1.14286rem center;
+    background-origin: content-box;
+    padding-right: 1.71429rem;
+    background-size: 1.21429rem;
+    width: 100%;
+
+    a.goog-te-menu-value {
+      color: inherit;
+    }
+
+    a.goog-te-menu-value:hover {
+      border: 0;
+    }
+
+    a.goog-te-menu-value span:not(:first-child) {
+      display: none;
+    }
+  }
+}
