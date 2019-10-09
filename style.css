@@ -1413,7 +1413,7 @@ table td, table th {
 
 @media (min-width: 1024px) {
   .category-content {
-    flex: 0 0 80%;
+    flex: 1 0 80%;
   }
 }
 
@@ -1436,7 +1436,7 @@ table td, table th {
 
 @media (min-width: 768px) {
   .section-tree .section {
-    flex: 0 0 45%;
+    flex: 0 0 75%;
     /* Two columns for tablet and desktop. Leaving 5% separation between columns */
   }
 }
