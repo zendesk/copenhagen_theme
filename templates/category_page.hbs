@@ -9,24 +9,18 @@
     <div class="category-content">
       <header id="main-content" class="page-header">
         <h1>{{category.name}}</h1>
-        {{#if category.description}}
-          <p class="page-header-description">{{category.description}}</p>
-        {{/if}}
       </header>
 
       <div class="section-tree">
         {{#each sections}}
           <section class="section">
             <h3 class="section-tree-title">
-              <a href="{{url}}">{{name}}</a>
+              {{name}}
             </h3>
             {{#if articles}}
               <ul class="article-list">
                 {{#each articles}}
                   <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
-                    {{#if promoted}}
-                      <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-                    {{/if}}
                     <a href="{{url}}" class="article-list-link">{{title}}</a>
                     {{#if internal}}
                       <span class="icon-lock" title="{{t 'internal'}}"></span>
@@ -41,10 +35,6 @@
               {{/if}}
             {{/if}}
           </section>
-        {{else}}
-          <i class="category-empty">
-            <a href="{{category.url}}">{{t 'empty'}}</a>
-          </i>
         {{/each}}
       </div>
     </div>
