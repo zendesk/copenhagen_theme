@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.focus();
   }
 
-  var burgerMenu = document.querySelector('.header .icon-menu');
+  var burgerMenu = document.querySelector('.header .menu-button');
   var userMenu = document.querySelector('#user-nav');
 
   burgerMenu.addEventListener('click', function(e) {
@@ -144,12 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleNavigation(this, userMenu);
   });
 
-  burgerMenu.addEventListener('keyup', function(e) {
-    if (e.keyCode === 13) { // Enter key
-      e.stopPropagation();
-      toggleNavigation(this, userMenu);
-    }
-  });
 
   userMenu.addEventListener('keyup', function(e) {
     if (e.keyCode === 27) { // Escape key
