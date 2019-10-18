@@ -24,8 +24,6 @@
     color: $brand_color;
     display: flex;
     flex: 1 0 340px;
-    flex-direction: column;
-    justify-content: center;
     margin: 0 0 30px;
     max-width: 100%;
     text-align: center;
@@ -59,10 +57,19 @@
   &-item-link {
     color: $brand_color;
     padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    justify-content: center;
+    border-radius: inherit;
 
     &:hover,
-    &:focus,
     &:active {
+      text-decoration: none;
+    }
+    
+    &:focus {
+      @include focus-ring;
       text-decoration: none;
     }
   }
