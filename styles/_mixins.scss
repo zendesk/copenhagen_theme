@@ -36,6 +36,11 @@
   word-wrap: break-word; //IE/Edge compatibility
 }
 
+@mixin focus-ring {
+  outline: 0;
+  box-shadow: 0 0 0 3px $brand_color;
+}
+
 @mixin content-body {
   img {
     height: auto;
