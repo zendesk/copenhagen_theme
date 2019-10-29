@@ -85,23 +85,30 @@
     @include tablet {
       border-bottom: 4px solid #ddd;
 
-      a {
+      a:not([aria-current="page"]) {
         padding: 15px 0 11px 0;
         text-decoration: none;
       }
     }
   }
 
-  li:not([aria-selected="true"]) {
+  li:not([aria-selected="true"]),
+  li:not(.current) {
     @include tablet { display: block; }
     display: none;
   }
 
   li[aria-selected="true"] {
     @include tablet {
+      padding: 15px 0 11px 0;
+    }
+  }
+
+  li[aria-selected="true"],
+  li.current {
+    @include tablet {
       border-bottom: 4px solid $brand_color;
       order: 1;
-      padding: 15px 0 11px 0;
     }
 
     order: 0; //Move to top of menu
@@ -117,7 +124,8 @@
     content: "\2715";
   }
 
-  li:not([aria-selected="true"]) {
+  li:not([aria-selected="true"]),
+  li:not(.current) {
     display: block;
   }
 }
