@@ -7,7 +7,7 @@
 
   &-content {
     @include desktop {
-      flex: 0 0 80%;
+      flex: 1 0 80%;
     }
 
     flex: 1;
@@ -22,7 +22,7 @@
   justify-content: space-between;
 
   .section {
-    @include tablet { flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */ }
+    @include tablet { flex: 0 0 75%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */ }
     flex: initial;
   }
 

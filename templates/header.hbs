@@ -1,21 +1,49 @@
 <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCJFWS5"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{settings.google_tag}}"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<!-- Start of status page code -->
+<script src="{{asset 'statuspage.js'}}"></script>
+<!--Below is what generates the banner HTML-->
+
+<div id = "errormessage" style="display:None"></div>
+
+<script>
+   var client = StatusPage("{{settings.statuspage_component}}");
+   client.subscribe(function(error, data) {
+   if (error) {
+       console.error(error);
+   } else {
+       console.log(data);
+       console.log(data.status);
+       var x = document.getElementById("errormessage");
+       if(data.status  != "resolved"){
+           x.style.display = "block";
+           x.innerHTML = '<i class="fa fa-exclamation fa-2x" aria-hidden="true"></i>&nbsp; &nbsp;' + data.body
+       } else {
+           x.style.display = "none";
+           x.html = ''
+       }
+   }
+   });
+</script>
+
+<!-- End of status page code -->
 
 <header class="header">
   <div id="skipNav"><a class="show-on-focus" href="#main-content">Skip to Main Content</a></div>
   <div class="logo">
-    <a href="https://library.artstor.org/">
-      <img src="{{settings.logo}}" alt="Artstor Support">
+    <a href="{{settings.product_homepage}}">
+      <img src="{{settings.logo}}" alt="{{settings.product_name_text}}">
     </a>
   </div>
   <div class="nav-wrapper">
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
-      <a href="https://www.artstor.org/about/">About Artstor</a>
-      <a href="https://library.artstor.org/#/login">Log in to Artstor</a>
-      <a href="https://www.artstor.org/contact-us/">Contact Us</a>
+      <a href="{{settings.marketing_page}}">About {{settings.marketing_page_name}}</a>
+      <a class="current" href="/hc/en/">Support</a>
+      <a href="{{settings.contact_us_page}}">Contact Us</a>
+      <a class="button" href="{{settings.login_link}}">Log in to {{settings.login_product_name}}</a>
       <!--{{link 'new_request' class='submit-a-request'}}-->
     </nav>
     {{#if signed_in}}

@@ -1,7 +1,7 @@
 {
   "name": "Artstor Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
-  "version": "1.0.0",
+  "version": "1.1.10",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -156,7 +156,7 @@
       "type": "checkbox",
       "description": "articles_in_section_description",
       "label": "articles_in_section_label",
-      "value": false
+      "value": true
     }, {
       "identifier": "show_article_author",
       "type": "checkbox",
@@ -186,7 +186,7 @@
       "type": "checkbox",
       "description": "related_articles_description",
       "label": "related_articles_label",
-      "value": true
+      "value": false
     }, {
       "identifier": "show_article_sharing",
       "type": "checkbox",
@@ -226,6 +226,69 @@
       "description": "follow_topic_description",
       "label": "follow_topic_label",
       "value": true
+    }]
+  }, {
+    "label": "site_specific_variables",
+    "variables": [{
+      "identifier": "product_homepage",
+      "type": "text",
+      "description": "URL_for_product_homepage",
+      "label": "product_homepage_label",
+      "value": "https://library.artstor.org"
+    },{
+      "identifier": "google_tag",
+      "type": "text",
+      "description": "google_tag_id_text",
+      "label": "google_tag_id_text_label",
+      "value": "GTM-MCJFWS5"
+    },{
+      "identifier": "marketing_page",
+      "type": "text",
+      "description": "marketing_page_link",
+      "label": "marketing_page_label",
+      "value": "https://www.artstor.org/about/"
+    },{
+      "identifier": "marketing_page_name",
+      "type": "text",
+      "description": "marketing_page_text",
+      "label": "marketing_page_text_label",
+      "value": "Artstor"
+    },{
+      "identifier": "statuspage_component",
+      "type": "text",
+      "description": "statuspage_component_id",
+      "label": "statuspage_component_id",
+      "value": "cmy3vpk5tq18"
+    },{
+      "identifier": "product_name_text",
+      "type": "text",
+      "description": "product_name_text",
+      "label": "product_name_text_label",
+      "value": "Artstor Digital Library"
+    },{
+      "identifier": "support_name_text",
+      "type": "text",
+      "description": "support_name_text",
+      "label": "support_name_text_label",
+      "value": "Artstor Support"
+    },{
+      "identifier": "contact_us_page",
+      "type": "text",
+      "description": "contact_us_page_url",
+      "label": "contact_us_page_url",
+      "value": "https://www.artstor.org/contact-us/"
+    },{
+      "identifier": "login_link",
+      "type": "text",
+      "description": "login_link_url",
+      "label": "login_link_url",
+      "value": "https://library.artstor.org/#/login"
+    },{
+      "identifier": "login_product_name",
+      "type": "text",
+      "description": "login_product_name",
+      "label": "login_product_name",
+      "value": "Artstor"
     }]
   }]
 }

@@ -93,6 +93,17 @@
     .noshadow {
       box-shadow: none !important;
     }
+    ul, ol {
+      &.checklist {
+        list-style: none;
+        padding: 0;
+
+        li:before {
+          content: "\f0c8";
+          padding-right: 6px;
+        }
+      }
+    }
   }
 
   &-anchorbox {
@@ -163,6 +174,11 @@
     flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
     margin: 30px 0 0;
     padding: 0;
+
+    h3.sidenav-title {
+      font-size: $font-size-base;
+      margin-bottom: 10px;
+    }
   }
 
   &-relatives {
@@ -290,25 +306,13 @@
 }
 
 .sidenav {
-  &-title {
-    font-size: $font-size-base;
-    font-weight: normal;
-    font-style: italic;
-    position: relative;
-  }
-
   &-item {
-    color: $text_color;
+    font-size: $font-size-small;
     display: block;
-    font-weight: $font-weight-light;
     margin-bottom: 10px;
-    padding: 5px;
 
     &.current-article {
       font-weight: 700;
-    }
-    &:hover {
-      text-decoration: underline;
     }
   }
 }

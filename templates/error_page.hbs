@@ -1,23 +1,55 @@
 <div class="container-divider"></div>
-<div id="main-content" class="error-page text-center">
+{{#isnt help_center.name 'JSTOR Forum Support'}}
+  <div id="main-content" class="error-page text-center">
 
-  {{#is error 'unauthorized'}}
-    <h2>{{link 'sign_in'}}</h2>
+    {{#is error 'unauthorized'}}
+      <h2>{{link 'sign_in'}}</h2>
+    {{/is}}
+
+    {{#is error 'forbidden'}}
+      <h2>{{t 'not_authorized'}}</h2>
+    {{/is}}
+
+  {{#is error 'not_found'}}
+    <h1 class="compact-bottom">404</h1>
+    <h2 class="compact-top">Page not found</h2>
+    <p>The link you followed may be broken or we may have moved the page. If you cannot find what you are looking for, <a href="http://support.forum.jstor.org">contact us</a>.
+    <p>
+      <a href="/" class="button">Back to Homepage</a>
+    </p>
+    {{#is help_center.name 'Artstor Support'}}
+      <div>
+        <img src="{{asset 'Error-page-art.jpg'}}" alt="Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art">
+        <p class="caption-text compact">Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art.</p>
+      </div>
+    {{/is}}
+    {{#is help_center.name 'JSTOR Support'}}
+      <div>
+        <img src="{{asset 'stacks_update.png'}}" alt="Perspective of library stacks">
+      </div>
+    {{/is}}
   {{/is}}
+{{/isnt}}
 
-  {{#is error 'forbidden'}}
-    <h2>{{t 'not_authorized'}}</h2>
-  {{/is}}
+{{#is help_center.name 'JSTOR Forum Support'}}
+  <div class="container-divider"></div>
+  <div id="main-content" class="error-page">
 
-{{#is error 'not_found'}}
-  <h1 class="compact-bottom">404</h1>
-  <h2 class="compact-top">Page not found</h2>
-  <p>The link you followed may be broken or we may have moved the page. If you cannot find what you are looking for, <a href="https://www.artstor.org/contact-us">contact us</a>.
-  <p>
-  	<a href="/" class="button">Back to Homepage</a>
-  </p>
-<div>
-  <img src="{{asset 'Error-page-art.jpg'}}" alt="Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art">
-  <p class="caption-text compact">Philippe Mercier, The Sense of Sight, 1744 – 1747. Yale Center for British Art.</p>
-</div>
+    {{#is error 'unauthorized'}}
+      <h2>{{link 'sign_in'}}</h2>
+    {{/is}}
+
+    {{#is error 'forbidden'}}
+      <h2>{{t 'not_authorized'}}</h2>
+    {{/is}}
+
+    {{#is error 'not_found'}}
+      <h1 class="compact-bottom">404</h1>
+      <h2 class="compact-top">Page not found</h2>
+      <p>The link you followed may be broken or we may have moved the page. <br>If you cannot find what you are looking for, <a href="/hc/en-us/articles/360023452452-Contact-Us">contact us</a>.</p>
+      <p>
+        <a href="/hc/en/" class="button">Back to JSTOR Forum Support</a>
+      </p>
+    {{/is}}
+  </div>
 {{/is}}

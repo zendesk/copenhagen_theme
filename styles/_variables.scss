@@ -4,19 +4,23 @@
 $brand_color: #C9510D !default;
 $brand_text_color: #fff !default; //Color for text with an accent color background
 $text_color: #000 !default;
-$link_color: #C9510D !default;
+$link_color: $brand_color !default;
 $secondary_link_color: #555555;
 $secondary_link_hover: #333333;
 $background_color: #fff !default;
 
 $visited-link-color: #993e0a;
-$hover-button-color: #993e0a;
+$hover-button-color: $visited-link-color;
 $secondary-text-color: zass-lighten($text_color, 20%);
 
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 //added colors
+$hero-background: #e8e8e8; //hex used for Forum is from platform header
+$hero-text-color: $text_color;
+$hero-link-text-color: $secondary_link_color;
+$hero-link-text-hover: $secondary_link_hover;
 $dark-gray: #333333;
 $med-gray: #cccccc;
 $gray: #e8e8e8; //article anchor box, bottom of footer

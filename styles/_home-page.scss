@@ -2,11 +2,8 @@
 
 .section {
   @include tablet {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
   }
-
-  margin-bottom: 40px;
-
 
   h2 {
     margin-top: 0;
@@ -36,19 +33,22 @@
 .popular-topics {
   @include desktop {
     top: 50px;
+    max-width: 60%;
+    margin: 0 auto;
   }
     font-size: $font-size-small;
-    position: relative; 
-    top: 14px;
+    position: relative;
+    top: 25px;
 
     a {
       padding: 0 5px;
-      color: $secondary_link_color;
+      color: $hero-link-text-color;
+      display: inline-block;
 
     &:hover,
     &:active,
     &:focus, {
-      color: $secondary_link_hover;
+      color: $hero-link-text-hover;
       text-decoration: none;
     }
   }
