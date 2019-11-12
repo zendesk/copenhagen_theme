@@ -1,5 +1,5 @@
 {
-  "name": "Artstor Support Theme based on Zendesk Copenhagen",
+  "name": "Forum Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
   "version": "1.2.0",
   "api_version": 1,
@@ -11,7 +11,7 @@
       "type": "color",
       "description": "brand_color_description",
       "label": "brand_color_label",
-      "value": "#C9510D"
+      "value": "#006179"
     }, {
       "identifier": "brand_text_color",
       "type": "color",
@@ -29,7 +29,7 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#C9510D"
+      "value": "#006179"
     }, {
       "identifier": "background_color",
       "type": "color",
@@ -234,13 +234,13 @@
       "type": "text",
       "description": "URL_for_product_homepage",
       "label": "product_homepage_label",
-      "value": "https://library.artstor.org"
+      "value": "https://forum.jstor.org/"
     },{
       "identifier": "google_tag",
       "type": "text",
       "description": "google_tag_id_text",
       "label": "google_tag_id_text_label",
-      "value": "GTM-MCJFWS5"
+      "value": "GTM-5HC7SLD"
     },{
       "identifier": "marketing_page",
       "type": "text",
