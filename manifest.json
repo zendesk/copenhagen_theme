@@ -29,7 +29,7 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#0072EF"
+      "value": "#1F73B7"
     }, {
       "identifier": "background_color",
       "type": "color",
