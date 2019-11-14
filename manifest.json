@@ -1,7 +1,7 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -29,7 +29,7 @@
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#0072EF"
+      "value": "#1F73B7"
     }, {
       "identifier": "background_color",
       "type": "color",
