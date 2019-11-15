@@ -34,7 +34,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="skipNav"><a class="show-on-focus" href="#main-content">Skip to Main Content</a></div>
   <div class="logo">
     <a href="{{settings.product_homepage}}">
-      <img src="{{settings.logo}}" alt="{{settings.product_name_text}}">
+      {{#is help_center.name 'JSTOR Forum Support'}}
+      <img src="{{settings.logo_forum}}" alt="{{settings.product_name_text}}">
+      {{/is}}
+      {{#is help_center.name 'JSTOR Support'}}
+      <img src="{{settings.logo_jstor}}" alt="{{settings.product_name_text}}">
+      {{/is}}
+      {{#is help_center.name 'Artstor Support'}}
+      <img src="{{settings.logo_artstor}}" alt="{{settings.product_name_text}}">
+      {{/is}}
     </a>
   </div>
   <div class="nav-wrapper">
