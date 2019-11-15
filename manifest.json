@@ -1,5 +1,5 @@
 {
-  "name": "Artstor Support Theme based on Zendesk Copenhagen",
+  "name": "JSTOR Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
   "version": "2.0.0",
   "api_version": 1,
@@ -11,7 +11,7 @@
       "type": "color",
       "description": "brand_color_description",
       "label": "brand_color_label",
-      "value": "#C9510D"
+      "value": "#006179"
     }, {
       "identifier": "brand_text_color",
       "type": "color",
@@ -23,13 +23,13 @@
       "type": "color",
       "description": "text_color_description",
       "label": "text_color_label",
-      "value": "#000000"
+      "value": "#333333"
     }, {
       "identifier": "link_color",
       "type": "color",
       "description": "link_color_description",
       "label": "link_color_label",
-      "value": "#C9510D"
+      "value": "#006179"
     }, {
       "identifier": "background_color",
       "type": "color",
@@ -234,61 +234,61 @@
       "type": "text",
       "description": "URL_for_product_homepage",
       "label": "product_homepage_label",
-      "value": "https://library.artstor.org"
+      "value": "https://www.jstor.org/"
     },{
       "identifier": "google_tag",
       "type": "text",
       "description": "google_tag_id_text",
       "label": "google_tag_id_text_label",
-      "value": "GTM-MCJFWS5"
+      "value": "GTM-NM4N39Z"
     },{
       "identifier": "marketing_page",
       "type": "text",
       "description": "marketing_page_link",
       "label": "marketing_page_label",
-      "value": "https://www.artstor.org/about/"
+      "value": "https://about.jstor.org/"
     },{
       "identifier": "marketing_page_name",
       "type": "text",
       "description": "marketing_page_text",
       "label": "marketing_page_text_label",
-      "value": "Artstor"
+      "value": "JSTOR"
     },{
       "identifier": "statuspage_component",
       "type": "text",
       "description": "statuspage_component_id",
       "label": "statuspage_component_id",
-      "value": "cmy3vpk5tq18"
+      "value": "lcl8nmkfysby"
     },{
       "identifier": "product_name_text",
       "type": "text",
       "description": "product_name_text",
       "label": "product_name_text_label",
-      "value": "Artstor Digital Library"
+      "value": "JSTOR"
     },{
       "identifier": "support_name_text",
       "type": "text",
       "description": "support_name_text",
       "label": "support_name_text_label",
-      "value": "Artstor Support"
+      "value": "JSTOR Support"
     },{
       "identifier": "contact_us_page",
       "type": "text",
       "description": "contact_us_page_url",
       "label": "contact_us_page_url",
-      "value": "https://www.artstor.org/contact-us/"
+      "value": "https://www.jstor.org/contact-us/"
     },{
       "identifier": "login_link",
       "type": "text",
       "description": "login_link_url",
       "label": "login_link_url",
-      "value": "https://library.artstor.org/#/login"
+      "value": "https://www.jstor.org/action/showLogin"
     },{
       "identifier": "login_product_name",
       "type": "text",
       "description": "login_product_name",
       "label": "login_product_name",
-      "value": "Artstor"
+      "value": "JSTOR"
     }]
   }]
 }
