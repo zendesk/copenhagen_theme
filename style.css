@@ -161,6 +161,20 @@ ul {
   color: inherit;
 }
 
+.visibility-hidden, .recent-activity-accessibility-label {
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
 /***** Buttons *****/
 .button, [role="button"] {
   border: 1px solid $brand_color;
@@ -1086,21 +1100,25 @@ ul {
   display: inline-block;
 }
 
-.recent-activity-item-comment span::before {
-  color: $brand_color;
-  content: "\1F4AC";
-  display: inline-block;
-  font-size: 15px;
-  padding-right: 3px;
-  vertical-align: middle;
-}
-
-[dir="rtl"] .recent-activity-item-comment span::before {
-  padding-left: 3px;
-}
-
 .recent-activity-controls {
   padding-top: 15px;
+}
+
+.recent-activity-comment-icon svg {
+  vertical-align: middle;
+  color: $brand_color;
+  width: 16px;
+  height: 16px;
+}
+
+.recent-activity-comment-icon:after {
+  content: attr(data-comment-count);
+  margin-left: 3px;
+}
+
+[dir="rtl"] .recent-activity-comment-icon:after {
+  margin-left: 0;
+  margin-right: 3px;
 }
 
 /***** Category pages *****/
@@ -3370,7 +3388,6 @@ ul {
 [class*=" icon-"]::before,
 .icon,
 .search::before,
-.recent-activity-item-comment span::before,
 .article-vote::before,
 .attachments .attachment-item::before,
 .share a::before,
