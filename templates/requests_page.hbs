@@ -1,9 +1,18 @@
 <div class="my-activities-nav">
   <div class="container">
     <nav class="collapsible-nav">
-      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon chevron-icon">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon x-icon">
+          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+        </svg>
+      </button>
       <ul class="collapsible-nav-list">
-        <li aria-selected=true>{{t 'requests'}}</li>
+        <li class="current">
+          <a href="{{page_path 'requests'}}" aria-current="page">{{ t 'requests' }}</a>
+        </li>
         <li>{{link 'contributions'}}</li>
         <li>{{link 'subscriptions'}}</li>
       </ul>
@@ -17,7 +26,14 @@
 
     <div class="my-activities-sub-nav">
       <nav class="collapsible-nav collapsible-nav-border">
-        <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+        <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon x-icon">
+            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+          </svg>
+        </button>
         <ul class="collapsible-nav-list">
           {{#each filters}}
             {{#if selected}}
@@ -35,6 +51,10 @@
 
   {{#form 'requests_filter' id="main-content" class='requests-table-toolbar'}}
     <div class="search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
       {{label 'query' for='quick-search' class='visibility-hidden'}}
       {{input 'query' id='quick-search' type='search' class='requests-search'}}
     </div>
@@ -45,7 +65,7 @@
       </div>
     {{/if}}
 
-    <div class="request-table-filter">
+    <div class="request-table-filter organization-subscribe">
       {{subscribe}}
     </div>
 

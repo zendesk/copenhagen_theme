@@ -46,14 +46,10 @@
     padding: 15px 0;
 
     a { color: $text_color; }
-
-    .icon-lock::before {
-      vertical-align: baseline;
-    }
   }
 }
 
-.icon-star::before {
+.icon-star {
   color: $brand_color;
   font-size: 18px;
 }

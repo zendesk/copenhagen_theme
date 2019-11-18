@@ -32,10 +32,20 @@
       right: auto;
     }
 
-    &::after {
-      @extend .icon;
-      @include vertical-align;
-      content: "\25BE";
+    &-icon {
+      display: none;
+    }
+  
+    &[aria-expanded="false"] {
+      .chevron-icon {
+        display: inline-block;
+      }
+    }
+    
+    &[aria-expanded="true"] {
+      .x-icon {
+        display: inline-block;
+      }
     }
 
     &:focus {
@@ -51,10 +61,6 @@
 
   &[aria-expanded="true"] {
     max-height: none;
-
-    .collapsible-sidebar-toggle::after {
-      content: "\2715";
-    }
 
     .collapsible-sidebar-body {
       display: block;

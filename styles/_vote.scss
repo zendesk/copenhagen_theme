@@ -34,9 +34,15 @@
 }
 
 .vote-up, .vote-down {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
   color: $secondary-text-color;
-  min-height: 44px;
-  min-width: 44px;
+  cursor: pointer;
+  min-height: 35px;
+  min-width: 35px;
   display: flex;
   align-items: center;
   justify-content: center;

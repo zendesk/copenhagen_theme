@@ -1,7 +1,12 @@
 <h1 class="visibility-hidden">{{ t 'community'}}</h1>
 
 <section class="section hero community-hero">
+  <h2 class="visibility-hidden">{{ t 'search'}}</h2>
   <div class="hero-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+    </svg>
     {{search submit=false class='search search-full' scoped=settings.scoped_community_search}}
   </div>
 </section>
@@ -17,6 +22,9 @@
           <h2 class="title">
             {{t 'all_posts'}}
           </h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
         </button>
         <span class="dropdown-menu" role="menu">
           {{#link 'topics' role='menuitem'}}
@@ -28,7 +36,7 @@
         </span>
       </span>
     <span class="post-to-community">
-      {{link 'new_post' role='button' class='button-large'}}
+      {{link 'new_post' class='button button-large'}}
     </span>
   </header>
 
@@ -37,6 +45,9 @@
       <span class="dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
           {{current_filter.label}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
         </button>
         <span class="dropdown-menu" role="menu">
           {{#each filters}}
@@ -49,6 +60,9 @@
       <span class="dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
           {{current_sorter.label}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
         </button>
         <span class="dropdown-menu" role="menu">
           {{#each sorters}}
@@ -138,6 +152,6 @@
 
   <section class="container community-footer">
     <h2 class="community-footer-title">{{t 'suggest_new_post'}}</h2>
-    {{link 'new_post' role='button' class='button-large'}}
+    {{link 'new_post' class='button button-large'}}
   </section>
 </div>

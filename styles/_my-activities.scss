@@ -109,21 +109,21 @@
       width: 100%;
     }
 
-    .organization-subscribe,
-    .organization-unsubscribe {
+    .organization-subscribe {
       @include tablet {
         margin-left: 10px;
         [dir="rtl"] & { margin: 0 10px 0 0; }
       }
 
-      line-height: 40px;
+      button {
+        @extend .button;
+        line-height: 40px;
       max-height: 40px;
       padding: 0 20px;
-    }
-
-    .organization-unsubscribe {
-      background-color: $button-color;
-      color: $brand_text_color;
+        &[data-selected="true"] {
+          @extend .button-primary;
+        }
+      }
     }
 
     & + .requests-search-info {
@@ -183,22 +183,11 @@
 
 /* Following table */
 .subscriptions {
-  &-unsubscribe a {
+  &-subscribe button {
     @include tablet { width: auto; }
-
-    background: $button-color;
-    border-radius: 4px;
-    color: $brand_text_color;
-    display: inline-block;
-    font-size: 12px;
-    line-height: 2.34; //Taken from Zendesk garden bedrock
-    padding: 0 20px;
-    text-align: center;
-    width: 100%;
-
-    &:hover {
-      background-color: $hover-button-color;
-      text-decoration: none;
+    @extend .button;
+    &[data-selected="true"] {
+      @extend .button-primary;
     }
   }
 
