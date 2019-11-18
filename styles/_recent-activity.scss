@@ -65,23 +65,32 @@
     &::before {
       display: inline-block;
     }
-
-    span::before {
-      @extend .icon;
-      color: $brand_color;
-      content: "\1F4AC";
-      display: inline-block;
-      font-size: $font-size-base;
-      padding-right: 3px;
-      vertical-align: middle;
-
-      [dir="rtl"] & {
-        padding-left: 3px;
-      }
-    }
   }
 
   &-controls {
     padding-top: 15px;
+  }
+
+  &-accessibility-label {
+    @extend .visibility-hidden
+  }
+
+  &-comment-icon {
+    svg {
+      vertical-align: middle;
+      color: $brand_color;
+      width: 16px;
+      height: 16px;
+    }
+
+    &:after {
+      content: attr(data-comment-count);
+      margin-left: 3px;
+      
+      [dir="rtl"] & {
+        margin-left: 0;
+        margin-right: 3px;
+      }
+    }
   }
 }
