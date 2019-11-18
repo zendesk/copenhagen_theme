@@ -9,36 +9,21 @@
   display: inline-block;
 }
 
-.share a {
-  border-radius: 50%;
+.share li {
   height: 25px;
-  line-height: 25px;
-  overflow: hidden;
   width: 25px;
 }
 
-.share a::before {
-  @extend .icon;
+.share a {
   color: $secondary-text-color;
-  display: block;
-  font-size: 23px;
-  text-align: center;
-  width: 100%;
-}
-
-.share a:hover {
-  text-decoration: none;
-  &::before { color: $brand_color; }
-}
-
-.share-twitter::before {
-  content: "\e901";
-}
-
-.share-facebook::before {
-  content: "\e903";
-}
-
-.share-linkedin::before {
-  content: "\e900";
+  &:hover {
+    text-decoration: none;
+    color: $brand_color;
+  }
+  
+  & svg {
+    height: 18px;
+    width: 18px;
+    display: block;  
+  }
 }

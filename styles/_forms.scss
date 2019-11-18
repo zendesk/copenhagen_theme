@@ -62,12 +62,6 @@
   margin: 0 0 0 10px;
 }
 
-.form-field.required > label::after {
-  content: "*";
-  color: #f00;
-  margin-left: 2px;
-}
-
 .form-field .optional {
   color: $secondary-text-color;
   margin-left: 4px;

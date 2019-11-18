@@ -24,24 +24,26 @@
     }
   }
 
-
-  &::before {
-    @extend .icon;
-    @include vertical-align;
-    background-color: #fff;
-    color: #777;
-    content: "\1F50D";
-    font-size: 18px;
-    position: absolute;
-    left: 15px;
-
-    [dir="rtl"] & {
-      right: 15px;
-      left: auto;
-    }
-  }
-
   &-full input[type="search"] {
     border: 1px solid #fff;
   }
+}
+
+.search-icon {
+  @include vertical-align;
+  position: absolute;
+  left: 15px;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  color: #777;
+
+  [dir="rtl"] & {
+    right: 15px;
+    left: auto;
+  }
+}
+
+.search-container {
+  position: relative;
 }

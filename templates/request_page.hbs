@@ -1,7 +1,14 @@
 <div class="my-activities-nav">
   <div class="container">
     <nav class="collapsible-nav">
-      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
+      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon chevron-icon">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon x-icon">
+          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+        </svg>
+      </button>
       <ul class="collapsible-nav-list">
         <li aria-selected=true>{{t 'requests'}}</li>
         <li>{{link 'contributions'}}</li>
@@ -27,7 +34,9 @@
                 <div class="comment-author">
                   <div class="avatar comment-avatar">
                     {{#if author.agent}}
-                      <span class="icon-agent"></span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-agent">
+                        <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
+                      </svg>
                     {{/if}}
                     <img src="{{author.avatar_url}}" alt="" class="user-avatar"/>
                   </div>
@@ -51,6 +60,9 @@
                   <ul class="attachments">
                     {{#each attachments}}
                       <li class="attachment-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                        </svg>
                         <a href="{{url}}" target="_blank">{{name}}</a>
                         <div class="attachment-meta meta-group">
                           <span class="attachment-meta-item meta-data">{{size}}</span>
@@ -68,11 +80,9 @@
 
       {{pagination}}
 
-      {{#if comment_callout}}
-        <div class="request-follow-up">
-          {{comment_callout}}
-        </div>
-      {{/if}}
+      <div class="request-follow-up">
+        {{comment_callout}}
+      </div>
 
       {{#form 'comment' class='comment-form'}}
         <div class="avatar comment-avatar">
@@ -93,11 +103,9 @@
 
             {{textarea 'body' rows='7'}}
 
-            {{#if upload}}
-              <div class="comment-attachments">
-                {{upload}}
-              </div>
-            {{/if}}
+            <div class="comment-attachments">
+              {{upload}}
+            </div>
           </div>
 
           <div class="comment-form-controls">
@@ -112,7 +120,7 @@
             {{/if}}
 
             <span class="request-submit-comment {{#validate 'body'}}shown{{/validate}}">
-              {{input type='submit'}}
+              {{input type='submit' class="button button-large"}}
             </span>
           </div>
         </div>
@@ -120,7 +128,14 @@
     </section>
 
     <section class="request-sidebar collapsible-sidebar">
-      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false"></button>
+      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+        </svg>
+      </button>
       <h2 id="request-sidebar-title" class="collapsible-sidebar-title">
         {{t 'ticket_details'}}
       </h2>
@@ -216,6 +231,9 @@
               <ul class="attachments">
                 {{#each attachments}}
                   <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                    </svg>
                     <a href="{{url}}" target="_blank">{{name}}</a>
                     <div class="attachment-meta meta-group">
                       <span class="attachment-meta-item meta-data">{{size}}</span>

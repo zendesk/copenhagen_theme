@@ -1,0 +1,136 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  background: none;
+  border: 0;
+  display: inline-block;
+  padding: 0;
+  text-align: initial;
+  vertical-align: middle;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  > * {
+    display: inline-block;
+  }
+}
+
+.dropdown-menu {
+  background: #fff;
+  border: 1px solid rgb(216, 216, 216);
+  border-radius: 3px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0 , .1);
+  display: none;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  left: 0;
+  margin-top: 1px;
+  min-width: 170px;
+  padding: 10px 0;
+  position: absolute;
+  text-align: left;
+  z-index: 1000;
+
+  [dir="rtl"] & {
+    text-align: right;
+  }
+
+  &[aria-expanded="true"] {
+    display: block;
+  }
+
+  [role="separator"] {
+    border-bottom: 1px solid rgb(216, 216, 216);
+    color: rgb(150, 150, 150);
+    display: block;
+    font-weight: normal;
+    font-size: 11px;
+    padding: 5px 0;
+    margin: 5px 20px 10px 20px;
+  }
+
+  [role="menuitem"] {
+    color: #333;
+    cursor: pointer;
+    display: block;
+    padding: 7px 40px 7px 20px;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    text-align: start;
+    line-height: inherit;
+    width: 100%;
+
+    [dir="rtl"] & {
+      padding: 7px 20px 7px 40px;
+    }
+    &:hover,
+    &:focus {
+      background: #f3f3f3;
+      text-decoration: none;
+      color: #333;
+    }
+
+    &[aria-selected="true"] {
+      cursor: default;
+
+      &::after {
+        content: "";
+        background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 7l3 3 7-7'%3E%3C/path%3E%3C/svg%3E");
+        display: inline-block;
+        height: 12px;
+        margin-left: 10px;
+        width: 12px;
+
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: 10px;
+          float: left;
+        }
+
+      }
+
+    }
+
+    &[hidden], &[aria-hidden="true"] {
+      display: none !important;
+    }
+  }
+}
+
+.dropdown-menu-end {
+  left: auto;
+  right: 0;
+}
+
+.dropdown-menu-top {
+  bottom: 100%;
+  margin-bottom: 1px;
+}
+
+[dir="rtl"] {
+
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+    text-align: right;
+  }
+
+  .dropdown-menu-end {
+    left: 0;
+    right: auto;
+  }
+
+}
+
+.dropdown-chevron-icon {
+  vertical-align: middle;
+}

@@ -31,7 +31,7 @@
 
     .sidenav-item {
       &:hover,
-      &[aria-selected="true"] {
+      &.current {
         background-color: #e9ebed;
         color: inherit;
         text-decoration: none;
