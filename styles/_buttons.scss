@@ -1,7 +1,8 @@
 /***** Buttons *****/
-.button, [role="button"] {
+.button {
   @include tablet { width: auto; }
 
+  background-color: transparent;
   border: 1px solid $button-color;
   border-radius: 4px;
   color: $button-color;
@@ -18,20 +19,16 @@
   width: 100%;
   -webkit-touch-callout: none;
 
-  &::after {
-    color: $button-color;
-  }
-
   &:hover,
   &:active,
   &:focus,
-  &[aria-selected="true"] {
+  &.button-primary {
     background-color: $brand_color;
     color: $brand_text_color;
     text-decoration: none;
   }
 
-  &[aria-selected="true"] {
+  &.button-primary {
     &:hover,
     &:focus,
     &:active {
@@ -50,6 +47,7 @@
     width: auto;
   }
 
+  cursor: pointer;
   background-color: $button-color;
   border: 0;
   border-radius: 4px;

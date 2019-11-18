@@ -51,9 +51,7 @@
       flex-basis: 100%; /* Take entire row */
     }
 
-    .icon-lock::before {
-      content: "\1F512";
-      font-size: 20px;
+    .icon-lock {
       position: relative;
       left: -5px;
       vertical-align: baseline;
@@ -153,48 +151,9 @@
   }
 
   &-vote {
-    background: transparent;
-    border: 1px solid $brand_color;
-    color: $brand_color;
     margin: 10px 5px;
     min-width: 90px;
     width: auto;
-
-    &::before {
-      @extend .icon;
-      font-size: 8px;
-      margin-right: 10px;
-
-      [dir="rtl"] & {
-        margin-right: 0;
-        margin-left: 10px;
-      }
-    }
-
-    &::after {
-      content: attr(title); /* Yes/No label*/
-    }
-
-    &:focus,
-    &:active {
-      background-color: transparent;
-      color: $brand_color;
-    }
-
-    &:hover {
-      background-color: $brand_color;
-    }
-
-    &:hover::before,
-    &:hover::after,
-    &[aria-selected="true"]::before,
-    &[aria-selected="true"]::after {
-      color: $brand_text_color;
-    }
-
-    .icon {
-      vertical-align: middle;
-    }
   }
 
   &-more-questions {
@@ -218,24 +177,15 @@
       }
     }
 
-    .icon-arrow-up::before {
-      font-size: 16px;
-      margin-left: 5px;
-
-      [dir="rtl"] & {
-        margin-right: 10px;
-      }
+    &-icon {
+      transform: rotate(0.5turn);
     }
   }
 
-  &-unsubscribe {
-    background-color: $button-color;
-    color: $brand_text_color;
-    text-decoration: none;
-
-    &:hover {
-      background-color: $hover-button-color;
-      border-color: $hover-button-color;
+  &-subscribe button {
+    @extend .button;
+    &[data-selected="true"] {
+      @extend .button-primary;
     }
   }
 }
