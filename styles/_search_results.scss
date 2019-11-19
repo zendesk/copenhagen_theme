@@ -170,9 +170,11 @@
     padding: 4px 5px;
     position: relative;
 
-    &::before {
-      @extend .icon;
+    &-icon {
       color: $brand_color;
+      vertical-align: middle;
+      width: 13px;
+      height: 13px;
     }
 
     [dir="ltr"] & {
@@ -188,14 +190,6 @@
         margin-left: 3px;
       }
     }
-  }
-
-  &-votes::before {
-    content: "\1F44D";
-  }
-
-  &-meta-count::before {
-    content: "\1F4AC";
   }
 
   .meta-group {
