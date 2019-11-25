@@ -540,7 +540,7 @@ table td, table th {
 }
 
 .logo.logo-jstor img {
-  max-height: auto;
+  max-height: None;
 }
 
 .user-nav {
