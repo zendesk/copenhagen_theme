@@ -9,6 +9,15 @@ $header-height: 71px;
   height: $header-height;
   justify-content: space-between;
 
+  .logo {
+    position: absolute;
+    top: 30px;
+
+    img {
+      max-height: 37px;
+    }
+  }
+
   .header-jstor {
     height: 90px;
 
@@ -19,15 +28,6 @@ $header-height: 71px;
         max-height: auto;
       }
     }
-  }
-}
-
-.logo {
-  position: absolute;
-  top: 30px;
-
-  img {
-    max-height: 37px;
   }
 }
 

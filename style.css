@@ -522,6 +522,15 @@ table td, table th {
   }
 }
 
+.header .logo {
+  position: absolute;
+  top: 30px;
+}
+
+.header .logo img {
+  max-height: 37px;
+}
+
 .header .header-jstor {
   height: 90px;
 }
@@ -532,15 +541,6 @@ table td, table th {
 
 .header .header-jstor .logo img {
   max-height: auto;
-}
-
-.logo {
-  position: absolute;
-  top: 30px;
-}
-
-.logo img {
-  max-height: 37px;
 }
 
 .user-nav {
