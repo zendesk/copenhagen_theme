@@ -531,15 +531,15 @@ table td, table th {
   max-height: 37px;
 }
 
-.header .header-jstor {
+.header.header-jstor {
   height: 90px;
 }
 
-.header .header-jstor .logo {
+.header.header-jstor .logo {
   top: 12px;
 }
 
-.header .header-jstor .logo img {
+.header.header-jstor .logo img {
   max-height: auto;
 }
 
