@@ -36,7 +36,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header class="header">
 {{/is}}
   <div id="skipNav"><a class="show-on-focus" href="#main-content">Skip to Main Content</a></div>
+  {{#is help_center.name 'JSTOR Support'}}
+  <div class="logo logo-jstor"> 
+  {{else}}
   <div class="logo">
+  {{/is}}
     <a href="{{settings.product_homepage}}">
       <img src="{{settings.logo}}" alt="{{settings.product_name_text}}">
     </a>

@@ -535,11 +535,11 @@ table td, table th {
   height: 90px;
 }
 
-.header.header-jstor .logo {
+.header.header-jstor .logo-jstor {
   top: 12px;
 }
 
-.header.header-jstor .logo img {
+.header.header-jstor .logo-jstor img {
   max-height: auto;
 }
 
