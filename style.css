@@ -522,6 +522,18 @@ table td, table th {
   }
 }
 
+.header .header-jstor {
+  height: 90px;
+}
+
+.header .header-jstor .logo {
+  top: 12px;
+}
+
+.header .header-jstor .logo img {
+  max-height: auto;
+}
+
 .logo {
   position: absolute;
   top: 30px;
