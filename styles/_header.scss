@@ -9,28 +9,27 @@ $header-height: 71px;
   height: $header-height;
   justify-content: space-between;
 
-  .logo {
-    position: absolute;
-    top: 30px;
-
-    img {
-      max-height: 37px;
-    }
-  }
-
   &.header-jstor {
     height: 90px;
-
-    .logo-jstor {
-      top: 12px;
-
-      img {
-        max-height: auto;
-      }
-    }
   }
 }
 
+.logo {
+  position: absolute;
+  top: 30px;
+
+  img {
+    max-height: 37px;
+  }
+
+  &.logo-jstor {
+    top: 12px;
+
+    img {
+      max-height: auto;
+    }
+  }
+}
 .user-nav {
   @include tablet { position: relative; }
   display: inline-block;
