@@ -30,26 +30,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- End of status page code -->
 
+{{#is help_center.name 'JSTOR Support'}}
+<header class="header header-jstor">
+{{else}}
 <header class="header">
+{{/is}}
   <div id="skipNav"><a class="show-on-focus" href="#main-content">Skip to Main Content</a></div>
-  {{#is help_center.name 'JSTOR Support'}}
   <div class="logo">
     <a href="{{settings.product_homepage}}">
-      <img src="{{settings 'logo.png'}}" alt="{{settings.product_name_text}}">
+      <img src="{{settings.logo}}" alt="{{settings.product_name_text}}">
     </a>
   </div>
-  {{else}}
-  <div class="logo">
-    <a href="{{settings.product_homepage}}">
-      {{#is help_center.name 'JSTOR Forum Support'}}
-      <img src="{{asset 'logo_forum.png'}}" alt="{{settings.product_name_text}}">
-      {{/is}}
-      {{#is help_center.name 'Artstor Support'}}
-      <img src="{{asset 'logo_artstor.png'}}" alt="{{settings.product_name_text}}">
-      {{/is}}
-    </a>
-  </div>
-  {{/is}}
 
   <div class="nav-wrapper">
     <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
