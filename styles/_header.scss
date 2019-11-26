@@ -8,6 +8,10 @@ $header-height: 71px;
   display: flex;
   height: $header-height;
   justify-content: space-between;
+
+  &.header-jstor {
+    height: 90px;
+  }
 }
 
 .logo {
@@ -17,8 +21,15 @@ $header-height: 71px;
   img {
     max-height: 37px;
   }
-}
 
+  &.logo-jstor {
+    top: 12px;
+
+    img {
+      max-height: None;
+    }
+  }
+}
 .user-nav {
   @include tablet { position: relative; }
   display: inline-block;
