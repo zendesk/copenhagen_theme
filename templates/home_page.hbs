@@ -12,18 +12,18 @@
           {{#if ../has_multiple_categories}}
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
-                <h4 class="blocks-item-title">{{name}}</h4>
-                <p class="blocks-item-description">{{excerpt description}}</p>
+                <span class="blocks-item-title">{{name}}</span>
+                <span class="blocks-item-description">{{excerpt description}}</span>
               </a>
             </li>
           {{else}}
             {{#each sections}}
               <li class="blocks-item">
                 <a href='{{url}}' class="blocks-item-link">
-                  <h4 class="blocks-item-title">
+                  <span class="blocks-item-title">
                     {{name}}
-                  </h4>
-                  <p class="blocks-item-description">{{excerpt description}}</p>
+                  </span>
+                  <span class="blocks-item-description">{{excerpt description}}</span>
                 </a>
               </li>
             {{/each}}

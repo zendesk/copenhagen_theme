@@ -39,14 +39,14 @@
       {{#each topics}}
         <li class="blocks-item topics-item {{#if internal}}blocks-item-internal{{/if}}">
            <a href="{{url}}" class="blocks-item-link">
-             <h4 class="blocks-item-title">
+             <span class="blocks-item-title">
                {{name}}
 
                {{#if internal}}
                  <span class="icon-lock" title="{{t 'internal'}}"></span>
                {{/if}}
-             </h4>
-             <p class="blocks-item-description">{{excerpt description}}</p>
+             </span>
+             <span class="blocks-item-description">{{excerpt description}}</span>
              <ul class="meta-group">
                <li class="meta-data">{{t 'post_count' count=post_count}}</li>
                <li class="meta-data">{{t 'follower_count' count=follower_count}}</li>
