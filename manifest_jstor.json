@@ -1,7 +1,7 @@
 {
   "name": "JSTOR Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
