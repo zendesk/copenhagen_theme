@@ -1,11 +1,15 @@
+<h1 class="visibility-hidden">{{ help_center.name }}</h1>
+
 <section class="section hero">
   <div class="hero-inner">
+    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
     {{search submit=false instant=settings.instant_search class='search search-full'}}
   </div>
 </section>
 
 <div class="container">
   <section class="section knowledge-base">
+    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
     <section class="categories blocks">
       <ul class="blocks-list">
         {{#each categories}}
@@ -35,7 +39,7 @@
 
     {{#if promoted_articles}}
       <section class="articles">
-        <h3>{{t 'promoted_articles'}}</h3>
+        <h2>{{t 'promoted_articles'}}</h2>
         <ul class="article-list promoted-articles">
           {{#each promoted_articles}}
             <li class="promoted-articles-item">
