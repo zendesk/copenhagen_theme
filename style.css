@@ -1418,12 +1418,11 @@ ul {
   text-decoration: none;
 }
 
-.article-comment-count .icon-comments {
+.article-comment-count-icon {
+  vertical-align: middle;
   color: $brand_color;
-  content: "\1F4AC";
-  display: inline-block;
-  font-size: 18px;
-  padding: 5px;
+  width: 18px;
+  height: 18px;
 }
 
 .article-sidebar {
