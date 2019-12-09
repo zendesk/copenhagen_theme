@@ -1,7 +1,7 @@
 {
-  "name": "Copenhagen",
+  "name": "Help GetJobber 2019",
   "author": "Zendesk",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "api_version": 1,
   "default_locale": "en-us",
   "settings": [{
@@ -35,7 +35,7 @@
       "type": "color",
       "description": "background_color_description",
       "label": "background_color_label",
-      "value": "#FFFFFF"
+      "value": "#012939"
     }]
   }, {
     "label": "fonts_group_label",
