@@ -1,0 +1,37 @@
+name: Lighthouse
+"on": [push]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: "sudo apt-get install zip"
+      - run: "zip --exclude=*.git* -r theme.zip ."
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.x'
+      - run: gem install faraday
+      - run: gem install faraday_middleware
+      - run: ruby ./.github/workflows/theme_upload.rb
+        env:
+          zendesk_email: ${{ secrets.zendesk_email }}
+          zendesk_password: ${{ secrets.zendesk_password }}
+          brand_id: ${{ secrets.brand_id }}
+          subdomain: ${{ secrets.subdomain }}
+      - name: Audit URLs using Lighthouse
+        uses: treosh/lighthouse-ci-action@v2
+        with:
+          urls: |
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/sections/360003307259
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/articles/360010829359
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/new
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Help+Center
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics/360000644279
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/360006766799
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/profiles/364655812519
+          configPath: ./.github/workflows/lighthouserc.json
