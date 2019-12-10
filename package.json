@@ -3,9 +3,24 @@
   "version": "1.0.0",
   "description": "ZenDesk theme for 2019 support site",
   "license": "MIT",
+  "husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"./src/**/*.js": [
+			"npm run lint:js",
+			"git add"
+		],
+		"./src/**/*.(css|scss)": [
+			"npm run lint:styles",
+			"git add"
+		]
+	},
   "scripts": {
     "lint:js": "eslint './**/*.js'",
-    "lint:styles": "stylelint './**/*.scss'",
+    "lint:styles": "stylelint './**/*.(css|scss)'",
     "lint": "npm run lint:js && npm run lint:styles"
   },
   "repository": {
@@ -26,7 +41,9 @@
   "devDependencies": {
     "@jobber/eslint-config": "^0.4.1",
     "eslint": "^6.7.2",
+    "husky": "^3.1.0",
     "js-yaml": "^3.13.1",
+    "lint-staged": "^9.5.0",
     "stylelint": "^12.0.0",
     "stylelint-config-property-sort-order-smacss": "^5.2.0",
     "stylelint-config-recommended-scss": "^4.1.0",
