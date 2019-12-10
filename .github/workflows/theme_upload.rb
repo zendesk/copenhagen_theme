@@ -6,7 +6,7 @@ brand_id = ENV["brand_id"]
 subdomain =  ENV["subdomain"]
 file_path = File.expand_path("theme.zip")
 email = ENV["zendesk_email"]
-password = ENV["zendesk_password"]
+token = ENV["zendesk_token"]
 
 base_url = "https://#{subdomain}.zendesk.com/api/guide/theming/#{brand_id}"
 
@@ -15,7 +15,7 @@ logger.level = Logger::INFO
 
 # Step 1
 zendesk_connection = Faraday.new do |faraday|
-  faraday.basic_auth(email, password)
+  faraday.basic_auth("#{email}/token", token)
   faraday.url_prefix = base_url
   faraday.request :json
   faraday.response :json, content_type: /json/
