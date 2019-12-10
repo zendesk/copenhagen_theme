@@ -16,7 +16,7 @@ jobs:
       - run: ruby ./.github/workflows/theme_upload.rb
         env:
           zendesk_email: ${{ secrets.zendesk_email }}
-          zendesk_password: ${{ secrets.zendesk_password }}
+          zendesk_password: ${{ secrets.zendesk_token }}
           brand_id: ${{ secrets.brand_id }}
           subdomain: ${{ secrets.subdomain }}
       - name: Audit URLs using Lighthouse
