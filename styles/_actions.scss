@@ -14,7 +14,7 @@
       background-color: $primary-shade;
     }
 
-    &:efore {
+    &::before {
       @extend .icon;
       background-color: transparent;
       border-radius: 50%;
