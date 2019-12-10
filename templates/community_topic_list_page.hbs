@@ -1,4 +1,7 @@
+<h1 class="visibility-hidden">{{ t 'community'}}</h1>
+
 <section class="section hero community-hero">
+  <h2 class="visibility-hidden">{{ t 'search'}}</h2>
   <div class="hero-inner">
     {{search submit=false class='search search-full' scoped=settings.scoped_community_search}}
   </div>
@@ -10,11 +13,12 @@
   </nav>
 
   <header class="page-header community-header">
-    <h1>
       <span class="dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true">
-          {{t 'community_topics'}}
-        </button>
+          <button class="dropdown-toggle" aria-haspopup="true">
+            <h2 class="title">
+              {{t 'community_topics'}}
+            </h2>
+          </button>
         <span class="dropdown-menu" role="menu">
           {{#link 'topics' role='menuitem' selected='true'}}
             {{t 'show_topics'}}
@@ -24,7 +28,6 @@
           {{/link}}
         </span>
       </span>
-    </h1>
     <span class="post-to-community">
       {{link 'new_post' role='button' class='button-large'}}
     </span>
@@ -61,7 +64,7 @@
 
   {{#if featured_posts}}
     <section class="section community-featured-posts">
-      <h3>{{t 'featured_posts'}}</h3>
+      <h2 class="title">{{t 'featured_posts'}}</h2>
       <ul class="promoted-articles">
         {{#each featured_posts}}
           <li class="promoted-articles-item">
