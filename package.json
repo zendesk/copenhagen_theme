@@ -9,11 +9,11 @@
 		}
 	},
 	"lint-staged": {
-		"./src/**/*.js": [
+		"./**/*.js": [
 			"npm run lint:js",
 			"git add"
 		],
-		"./src/**/*.(css|scss)": [
+		"./**/*.(css|scss)": [
 			"npm run lint:styles",
 			"git add"
 		]
