@@ -1,11 +1,36 @@
 {
-  "name": "copenhagen_theme",
+  "name": "jobberhelp_2019_theme",
   "version": "1.0.0",
-  "repository": "git@github.com:zendesk/copenhagen_theme.git",
+  "description": "ZenDesk theme for 2019 support site",
+  "license": "MIT",
+  "scripts": {
+    "lint:js": "eslint './**/*.js'",
+    "lint:styles": "stylelint './**/*.scss'",
+    "lint": "npm run lint:js && npm run lint:styles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GetJobber/jobber-marketing-theme-2019.git"
+  },
+  "homepage": "https://github.com/GetJobber/help_theme_2019#readme",
   "dependencies": {
     "node-fetch": "^2.1.2"
   },
+  "stylelint": {
+    "extends": "stylelint-config-recommended-scss",
+    "rules": {
+      "no-descending-specificity": null,
+      "at-rule-no-unknown": null
+    }
+  },
   "devDependencies": {
-    "js-yaml": "^3.13.1"
+    "@jobber/eslint-config": "^0.4.1",
+    "eslint": "^6.7.2",
+    "js-yaml": "^3.13.1",
+    "stylelint": "^12.0.0",
+    "stylelint-config-property-sort-order-smacss": "^5.2.0",
+    "stylelint-config-recommended-scss": "^4.1.0",
+    "stylelint-scss": "^3.13.0",
+    "typescript": "^3.7.3"
   }
 }
