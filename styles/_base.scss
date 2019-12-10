@@ -126,14 +126,6 @@ ul {
   padding: 0;
   text-align: initial;
 }
- .dropdown-toggle:focus {
-  outline: 0;
-  text-decoration: underline;
-}
-
-.dropdown-toggle::after {
-  color: inherit;
-}
 
 .visibility-hidden {
   border: 0;
