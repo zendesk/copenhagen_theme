@@ -18,7 +18,7 @@
 
 .logo {
 
-  img {
+  &__image {
     @include fluid-value( max-height, $min-width, $max-width, 25px, 35px);
     @include tablet { 
       padding-right: 16px;
@@ -29,10 +29,7 @@
   }
 
   &__text {
-    @include tablet { 
-      display: inline-block; 
-    }
-
+    
     display: block;
     font-family: $font--heading;
     font-weight: $font__weight--black;
@@ -41,6 +38,9 @@
     text-transform: uppercase;
     line-height: 1.5;
     
+    @include tablet { 
+      display: inline-block; 
+    }
   }
 }
 

@@ -32,7 +32,7 @@ body {
   body {
     color: #000;
     font-size: 16pt;
-    font-family: Garmond, serif;
+    font-family: "Garmond, serif";
   }
 }
 
@@ -496,25 +496,25 @@ ul {
   }
 }
 
-.logo img {
+.logo__image {
   max-height: 25px;
   vertical-align: middle;
 }
 
 @media screen and (min-width: 320px) {
-  .logo img {
+  .logo__image {
     max-height: calc( 25px + 10 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .logo img {
+  .logo__image {
     max-height: 35px;
   }
 }
 
 @media (min-width: 768px) {
-  .logo img {
+  .logo__image {
     padding-right: 16px;
     border-right: solid 2px #012939;
     margin-right: 16px;

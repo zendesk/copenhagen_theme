@@ -12,9 +12,9 @@ body {
   line-height: 1.5;
 
   @media print {
-    color: #000;
+    color: $black;
     font-size: 16pt;
-    font-family: Garmond, serif;
+    font-family: $font--print;
   }
 
   > main {
