@@ -32,7 +32,7 @@ body {
   body {
     color: #000;
     font-size: 16pt;
-    font-family: Garmond, serif;
+    font-family: "Garmond, serif";
   }
 }
 
@@ -548,6 +548,12 @@ ul {
   letter-spacing: 1px;
   text-transform: uppercase;
   line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .logo__text {
+    display: inline-block;
+  }
 }
 
 .user-nav {
