@@ -21,7 +21,7 @@ jobs:
           subdomain: ${{ secrets.subdomain }}
       - run: npm install --save puppeteer
       - name: Audit URLs using Lighthouse
-        uses: augustocravosilva/lighthouse-ci-action
+        uses: augustocravosilva/lighthouse-ci-action@master
         with:
           urls: |
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
