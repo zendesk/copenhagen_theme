@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/* HEADER SPECIFIC VARIABLES */
 /**
  * Source: https://www.smashingmagazine.com/2016/05/fluid-typography/
  */
@@ -72,6 +73,10 @@ a {
 
 a:hover, a:active, a:focus {
   text-decoration: underline;
+}
+
+a:focus {
+  outline: #7db00e auto 5px;
 }
 
 input,
@@ -464,29 +469,20 @@ ul {
   background-color: #fff;
   margin: 0 auto;
   max-width: 1440px;
+  box-shadow: 0 3px 5px rgba(184, 184, 184, 0.15);
 }
 
 .header__inner {
-  max-width: 1195px;
-  margin: 0 auto;
-  padding: 0 5%;
   position: relative;
   align-items: center;
   display: flex;
-  height: 100px;
+  height: 80px;
   justify-content: space-between;
-}
-
-@media (min-width: 1195px) {
-  .header__inner {
-    padding: 0;
-    width: 90%;
-  }
 }
 
 @media screen and (min-width: 320px) {
   .header__inner {
-    height: calc( 100px + 38 * ( 100vw - 320px ) / 1046);
+    height: calc( 80px + 58 * ( 100vw - 320px ) / 1046);
   }
 }
 
@@ -496,7 +492,11 @@ ul {
   }
 }
 
-.logo img {
+.logo__link:hover {
+  text-decoration: none;
+}
+
+.logo__image {
   max-height: 18.5px;
   margin-right: 4px;
   padding-right: 6px;
@@ -505,37 +505,37 @@ ul {
 }
 
 @media screen and (min-width: 320px) {
-  .logo img {
+  .logo__image {
     max-height: calc( 18.5px + 16.5 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .logo img {
+  .logo__image {
     max-height: 35px;
   }
 }
 
 @media screen and (min-width: 320px) {
-  .logo img {
+  .logo__image {
     margin-right: calc( 4px + 12 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .logo img {
+  .logo__image {
     margin-right: 16px;
   }
 }
 
 @media screen and (min-width: 320px) {
-  .logo img {
+  .logo__image {
     padding-right: calc( 6px + 10 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .logo img {
+  .logo__image {
     padding-right: 16px;
   }
 }
@@ -545,9 +545,9 @@ ul {
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   font-size: 0.8em;
+  line-height: 1.5;
   letter-spacing: 1px;
   text-transform: uppercase;
-  line-height: 1.5;
 }
 
 @media (min-width: 768px) {
@@ -569,18 +569,18 @@ ul {
 }
 
 .user-nav[aria-expanded="true"] {
-  background-color: #fff;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
-  border: solid 1px #ddd;
   right: 0;
   left: 0;
-  top: 125px;
+  top: 80px;
   z-index: 1;
+  background-color: #fff;
+  border-top: solid 1px #012939;
+  box-shadow: 0 3px 5px rgba(184, 184, 184, 0.15);
 }
 
 @media screen and (min-width: 320px) {
   .user-nav[aria-expanded="true"] {
-    top: calc( 125px + 13 * ( 100vw - 320px ) / 1046);
+    top: calc( 80px + 58 * ( 100vw - 320px ) / 1046);
   }
 }
 
@@ -597,39 +597,51 @@ ul {
 
 .nav-wrapper a {
   color: #012939;
+  border-color: #012939;
   display: none;
   font-size: 0.8em;
   font-family: "Poppins", sans-serif;
   font-weight: 900;
   letter-spacing: 1px;
   text-transform: uppercase;
-  padding: 0 16px 0 0;
+  text-decoration: none;
+  margin: 0 16px 0 0;
   width: auto;
+  transition: color 300ms;
 }
 
-@media (min-width: 768px) {
-  .nav-wrapper a {
-    display: inline-block;
-  }
+.nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
+  color: #4d6974;
+  border-bottom: solid 1px #4d6974;
 }
 
 .nav-wrapper a.button {
   padding: 0 16px;
   margin-right: 16px;
+  color: #fff;
+  background-color: #012939;
+  border-radius: 0;
+}
+
+.nav-wrapper a.button:hover, .nav-wrapper a.button:focus, .nav-wrapper a.button:active {
+  background-color: #fff;
+  color: #012939;
+  text-decoration: none;
+  border: solid 1px #012939;
 }
 
 [dir="rtl"] .nav-wrapper a {
   padding: 0 0 0 20px;
 }
 
-.nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
-  background-color: transparent;
-  color: $link_color;
-  text-decoration: underline;
-}
-
 .nav-wrapper a.login {
   display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .nav-wrapper a {
+    display: inline-block;
+  }
 }
 
 .nav-wrapper .menu-button {
@@ -660,7 +672,7 @@ ul {
 
 .nav-wrapper .menu-button:hover, .nav-wrapper .menu-button:focus, .nav-wrapper .menu-button:active {
   background-color: transparent;
-  color: $link_color;
+  color: #7db00e;
 }
 
 /***** User info in header *****/
