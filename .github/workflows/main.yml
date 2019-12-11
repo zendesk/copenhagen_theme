@@ -19,6 +19,7 @@ jobs:
           zendesk_token: ${{ secrets.zendesk_token }}
           brand_id: ${{ secrets.brand_id }}
           subdomain: ${{ secrets.subdomain }}
+      - run: npm install --save puppeteer
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v2
         with:
