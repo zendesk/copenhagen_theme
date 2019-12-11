@@ -60,9 +60,10 @@
         { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
         { "label": "Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
         { "label": "Lucida Grande", "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
+        { "label": "Poppins", "value": "Poppins, sans-serif" },
         { "label": "Trebuchet MS", "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" }
       ],
-      "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+      "value": "Poppins, sans-serif"
     }, {
       "identifier": "text_font",
       "type": "list",
@@ -84,9 +85,10 @@
         { "label": "Helvetica Neue", "value": "'Helvetica Neue', Arial, Helvetica, sans-serif" },
         { "label": "Impact", "value": "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif" },
         { "label": "Lucida Grande", "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif" },
+        { "label": "Source Sans Pro", "value": "'Source Sans Pro', sans-serif" },
         { "label": "Trebuchet MS", "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif" }
       ],
-      "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+      "value": "'Source Sans Pro', sans-serif"
     }]
   }, {
     "label": "brand_group_label",

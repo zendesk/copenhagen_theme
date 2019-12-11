@@ -1,19 +1,24 @@
 <header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
-    {{/link}}
-  </div>
-  <div class="nav-wrapper">
-    <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-      </svg>
-    </button>
-    <nav class="user-nav" id="user-nav">
-      {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
-    </nav>
-    {{user_info}}
+  <div class="header__inner">
+    <div class="logo">
+      {{#link 'help_center'}}
+        <img class="logo__image" src="{{ asset 'jobber_logo.svg'}}" alt="{{t 'home_page' name=help_center.name}}">
+      {{/link}}
+      <span class="logo__text">
+        Help Center
+      </span>
+    </div>
+    <div class="nav-wrapper">
+      <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
+        </svg>
+      </button>
+      <nav class="user-nav" id="user-nav">
+        <a href="https://getjobber.com">Back to Jobber</a>
+        {{link 'new_request' class='submit-a-request'}}
+        <a href="javascript:Intercom('showNewMessage');" class="button" role="button">Chat Now</a>
+      </nav>
+    </div>
   </div>
 </header>

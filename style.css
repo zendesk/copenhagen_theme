@@ -1,17 +1,39 @@
 @charset "UTF-8";
+/**
+ * Source: https://www.smashingmagazine.com/2016/05/fluid-typography/
+ */
 /***** Base *****/
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-color: $background_color;
-  color: $text_color;
-  font-family: $text_font;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  color: #012939;
+  background-color: #012939;
+  font-size: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 320px) {
+  body {
+    font-size: calc( 16px + 4 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  body {
+    font-size: 20px;
+  }
+}
+
+@media print {
+  body {
+    color: #000;
+    font-size: 16pt;
+    font-family: "Garmond, serif";
+  }
 }
 
 @media (min-width: 1024px) {
@@ -109,12 +131,12 @@ textarea:focus {
 }
 
 .container {
-  max-width: 1160px;
+  max-width: 1195px;
   margin: 0 auto;
   padding: 0 5%;
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1195px) {
   .container {
     padding: 0;
     width: 90%;
@@ -133,12 +155,12 @@ ul {
 }
 
 .error-page {
-  max-width: 1160px;
+  max-width: 1195px;
   margin: 0 auto;
   padding: 0 5%;
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1195px) {
   .error-page {
     padding: 0;
     width: 90%;
@@ -439,25 +461,80 @@ ul {
 
 /***** Header *****/
 .header {
-  max-width: 1160px;
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+.header__inner {
+  max-width: 1195px;
   margin: 0 auto;
   padding: 0 5%;
   position: relative;
   align-items: center;
   display: flex;
-  height: 71px;
+  height: 100px;
   justify-content: space-between;
 }
 
-@media (min-width: 1160px) {
-  .header {
+@media (min-width: 1195px) {
+  .header__inner {
     padding: 0;
     width: 90%;
   }
 }
 
-.logo img {
-  max-height: 37px;
+@media screen and (min-width: 320px) {
+  .header__inner {
+    height: calc( 100px + 38 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .header__inner {
+    height: 138px;
+  }
+}
+
+.logo__image {
+  max-height: 25px;
+  vertical-align: middle;
+}
+
+@media screen and (min-width: 320px) {
+  .logo__image {
+    max-height: calc( 25px + 10 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .logo__image {
+    max-height: 35px;
+  }
+}
+
+@media (min-width: 768px) {
+  .logo__image {
+    padding-right: 16px;
+    border-right: solid 2px #012939;
+    margin-right: 16px;
+  }
+}
+
+.logo__text {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .logo__text {
+    display: inline-block;
+  }
 }
 
 .user-nav {
@@ -478,8 +555,20 @@ ul {
   border: solid 1px #ddd;
   right: 0;
   left: 0;
-  top: 71px;
+  top: 125px;
   z-index: 1;
+}
+
+@media screen and (min-width: 320px) {
+  .user-nav[aria-expanded="true"] {
+    top: calc( 125px + 13 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .user-nav[aria-expanded="true"] {
+    top: 138px;
+  }
 }
 
 .user-nav[aria-expanded="true"] > a {
@@ -488,11 +577,14 @@ ul {
 }
 
 .nav-wrapper a {
-  border: 0;
-  color: $link_color;
+  color: #012939;
   display: none;
-  font-size: 14px;
-  padding: 0 20px 0 0;
+  font-size: 0.8em;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 0 16px 0 0;
   width: auto;
 }
 
@@ -500,6 +592,11 @@ ul {
   .nav-wrapper a {
     display: inline-block;
   }
+}
+
+.nav-wrapper a.button {
+  padding: 0 16px;
+  margin-right: 16px;
 }
 
 [dir="rtl"] .nav-wrapper a {
@@ -648,14 +745,14 @@ ul {
 }
 
 .footer-inner {
-  max-width: 1160px;
+  max-width: 1195px;
   margin: 0 auto;
   padding: 0 5%;
   display: flex;
   justify-content: space-between;
 }
 
-@media (min-width: 1160px) {
+@media (min-width: 1195px) {
   .footer-inner {
     padding: 0;
     width: 90%;
