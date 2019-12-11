@@ -1588,12 +1588,6 @@ ul {
   text-decoration: none;
 }
 
-.recent-articles h3,
-.related-articles h3 {
-  font-size: 15px;
-  margin: 20px 0;
-}
-
 .recent-articles li,
 .related-articles li {
   margin-bottom: 15px;
@@ -1687,7 +1681,8 @@ ul {
   padding: 20px 0;
 }
 
-.comment-heading {
+.comment-heading, .recent-articles-title,
+.related-articles-title {
   margin-bottom: 5px;
   margin-top: 0;
   font-size: 18px;
