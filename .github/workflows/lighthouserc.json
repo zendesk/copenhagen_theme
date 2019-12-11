@@ -1,7 +1,8 @@
 {
   "ci": {
     "collect": {
-      "puppeteer-script": ".github/workflows/login.js"
+      "puppeteer-script": "./.github/workflows/login.js",
+      "puppeteerScript": "./.github/workflows/login.js"
     },
     "assert": {
       "assertMatrix": [
