@@ -234,7 +234,7 @@
   &::after {
     content: "\1f512";
     margin-left: 5px;
-    font-family: "copenhagen-icons";
+    font-family: $font-zendesk-icons;
     vertical-align: middle;
     line-height: 15px;
   }
@@ -372,7 +372,7 @@
   position: absolute;
   font-size: 16px;
   color: #ccc;
-  font-family: "copenhagen-icons";
+  font-family: $font-zendesk-icons;
   line-height: 25px;
 
   [dir="rtl"] & {
@@ -425,7 +425,7 @@
 
 .profile-section .private-activity::before {
   content: "\1f512";
-  font-family: "copenhagen-icons";
+  font-family: $font-zendesk-icons;
   font-style: normal;
   font-size: 12px;
   font-weight: normal;
@@ -546,7 +546,7 @@
   line-height: 40px;
   font-size: 16px;
   color: #ccc;
-  font-family: "copenhagen-icons";
+  font-family: $font-zendesk-icons;
 
  [dir="rtl"] & {
     right: 0;

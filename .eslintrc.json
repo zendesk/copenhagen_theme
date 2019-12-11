@@ -1,0 +1,15 @@
+{
+    "extends": "@jobber/eslint-config",
+    "root":true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "globals": {
+        "window":true,
+        "document": true,
+        "jQuery": true,
+        "datalayer": true
+    }
+}
