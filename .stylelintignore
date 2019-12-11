@@ -1,0 +1,4 @@
+**/node_modules/**
+**/*.min.css
+**/*/*.js
+style.css

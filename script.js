@@ -1,3 +1,4 @@
+/* eslint-disable */
 document.addEventListener('DOMContentLoaded', function() {
   function closest (element, selector) {
     if (Element.prototype.closest) {
