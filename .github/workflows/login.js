@@ -10,4 +10,5 @@ module.exports = async (browser, context) => {
     await frames[1].type('#user_password', process.env.zendesk_password);
     await frames[1].click('[name="commit"]');
     await page.waitForNavigation();
+    console.log('Login is completed');
 };
