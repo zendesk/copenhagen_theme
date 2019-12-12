@@ -1570,6 +1570,7 @@ ul {
 .sidenav-title {
   font-size: 15px;
   position: relative;
+  font-weight: 600;
 }
 
 .sidenav-item {
@@ -1585,12 +1586,6 @@ ul {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
-}
-
-.recent-articles h3,
-.related-articles h3 {
-  font-size: 15px;
-  margin: 20px 0;
 }
 
 .recent-articles li,
@@ -1686,7 +1681,8 @@ ul {
   padding: 20px 0;
 }
 
-.comment-heading {
+.comment-heading, .recent-articles-title,
+.related-articles-title {
   margin-bottom: 5px;
   margin-top: 0;
   font-size: 18px;

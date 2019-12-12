@@ -6,13 +6,13 @@
   </nav>
 
   <div class="article-container" id="article-container">
-    <aside class="article-sidebar">
+    <aside class="article-sidebar" aria-labelledby="section-articles-title">
       {{#if settings.show_articles_in_section}}
         <div class="collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false"></button>
-          <h3 id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
+          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
             {{t 'articles_in_section'}}
-          </h3>
+          </span>
           <div class="collapsible-sidebar-body">
             <ul>
               {{#each section.articles}}
@@ -132,14 +132,14 @@
         </div>
       </footer>
 
-      <section class="article-relatives">
+      <div class="article-relatives">
         {{#if settings.show_recently_viewed_articles}}
           {{recent_articles}}
         {{/if}}
         {{#if settings.show_related_articles}}
           {{related_articles}}
         {{/if}}
-      </section>
+      </div>
       {{#if settings.show_article_comments}}
         <div class="article-comments" id="article-comments">
           <section class="comments">

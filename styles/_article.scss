@@ -248,6 +248,7 @@
   &-title {
     font-size: $font-size-base;
     position: relative;
+    font-weight: 600;
   }
 
   &-item {
@@ -269,9 +270,8 @@
 
 .recent-articles,
 .related-articles {
-  h3 {
-    font-size: $font-size-base;
-    margin: 20px 0;
+  &-title {
+    @extend .comment-heading
   }
 
   li {
