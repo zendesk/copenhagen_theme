@@ -3,7 +3,7 @@
   background-color: $white;
   margin: 0 auto;
   max-width: $max-width-page-container;
-  box-shadow: 0 3px 5px hsla(0,0%,72.2%,.15);
+  box-shadow: 0 3px 5px rgba($grey, 0.15);
 
   &__inner {
     position: relative;
@@ -17,13 +17,14 @@
 .logo {
 
   &__link {
+    
     &:hover {
       text-decoration: none;
     }
   }
 
   &__image {
-    @include fluid-value( max-height, $min-width, $max-width, 18.50px, 35px);
+    @include fluid-value( max-height, $min-width, $max-width, 18px, 35px);
     @include fluid-value( margin-right, $min-width, $max-width, 4px, $header__padding--max);
     @include fluid-value( padding-right, $min-width, $max-width, 6px, $header__padding--max);
     border-right: solid 2px $primary;
@@ -56,9 +57,9 @@
     left: 0;
     @include fluid-value( top, $min-width, $max-width, $header__height--min, $header__height--max);
     z-index: 1;
-    background-color: #fff;
+    background-color: $white;
     border-top: solid $border--width $primary;
-    box-shadow: 0 3px 5px hsla(0,0%,72.2%,.15);
+    box-shadow: 0 3px 5px rgba($grey, 0.15);
 
     > a {
       display: block;
@@ -68,7 +69,7 @@
 }
 
 .nav-wrapper {
-  a {
+  .user-nav__link {
     color: $primary;
     border-color: $primary;
     display: none;
@@ -106,7 +107,7 @@
       }
     }
 
-    [dir="rtl"] & { padding: 0 0 0 20px;}
+    [dir="rtl"] & { padding: 0 0 0 20px; }
 
     &.login { display: inline-block; }
     
