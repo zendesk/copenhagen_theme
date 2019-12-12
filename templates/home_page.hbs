@@ -1,6 +1,24 @@
 <section class="section hero">
-  <div class="hero-inner">
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+  <div class="container hero-inner">
+    <h1>How can we help?</h1>
+    {{search submit=false placeholder='Search Help Center' instant=settings.instant_search class='search search-full'}}
+    {{#if promoted_articles}}
+      <ul class="hero__popular-topics" aria-labelledby="popular-topics" role="list">
+        <li class="hero__popular-topics--item"  aria-hidden="true">Popular Topics:</li>
+        {{#each promoted_articles}}
+          {{#if @index < 1}}
+          <li class="hero__popular-topics--item">
+            <a class="hero__popular-topics--link" href="{{url}}" role="listitem">
+              {{title}}
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
+            </a>
+          </li>
+          {{/if}}
+        {{/each}}
+      </ul>
+    {{/if}}
   </div>
 </section>
 

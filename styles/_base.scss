@@ -18,6 +18,10 @@ body {
   }
 
   > main {
+    background-color: $white;
+    margin: 0 auto;
+    max-width: $max-width-page-container;
+    
     @include desktop {
       min-height: 65vh;
     }
@@ -25,19 +29,59 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $heading_font;
-  font-weight: $font-weight-base;
   margin-top: 0;
+  font-family: $font--heading;
+  font-weight: $font__weight--black;
+  text-transform: uppercase;
+
+  @media print {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: $font--print-heading;
+      letter-spacing: 0;
+    }
+  }
 }
 
-h1 { font-size: 32px; }
-h2 { font-size: 22px; }
+h1 {
+  @include fluid-value( font-size, $min-width, $max-width, $typescale__step3, $typescale__step4 );
+  @include fluid-value( line-height, $min-width, $max-width, 1.25, 1.1666666667);
+}
+
+h2 {
+  @include fluid-value( font-size, $min-width, $max-width, $typescale__step2, $typescale__step3 );
+  @include fluid-value( line-height, $min-width, $max-width, 1.375, 1.25 );
+}
+
 h3 {
-  font-size: 18px;
-  font-weight: $font-weight-semibold;
+  @include fluid-value( font-size, $min-width, $max-width, $typescale__step1, $typescale__step2 );
+  @include fluid-value( line-height, $min-width, $max-width, 1.375, 1.375 );
 }
 
-h4 { font-size: 16px; }
+h4 {
+  font-weight: $font__weight--extra-bold;
+  @include fluid-value( font-size, $min-width, $max-width, $typescale__step0, $typescale__step1 );
+  line-height: 1.375;
+  letter-spacing: 0;
+}
+
+h5 {
+  font-weight: $font__weight--extra-bold;
+  @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $typescale__step0 );
+  line-height: 1.375;
+}
+
+h6 {
+  font-weight: $font__weight--extra-bold;
+  @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $typescale__step0 );
+  line-height: 1.375;
+  text-transform: unset;
+}
+
 
 a {
   color: $link_color;

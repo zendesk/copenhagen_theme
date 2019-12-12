@@ -1,16 +1,17 @@
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
-  background-position: center;
-  background-size: cover;
-  height: 300px;
+  background-color: $secondary;
+  @include fluid-value( height, $min-width, $max-width, 300px, 550px);
   padding: 0 20px;
   text-align: center;
   width: 100%;
 
   &-inner {
     @include vertical-align;
-    max-width: 610px;
+    max-width: 750px;
     margin: 0 auto;
+    h1 {
+      margin-bottom: 30px;
+    }
   }
 }

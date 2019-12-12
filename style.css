@@ -37,6 +37,12 @@ body {
   }
 }
 
+body > main {
+  background-color: #fff;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
 @media (min-width: 1024px) {
   body > main {
     min-height: 65vh;
@@ -44,26 +50,190 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $heading_font;
-  font-weight: 400;
   margin-top: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+@media print {
+  h1 h1,
+  h1 h2,
+  h1 h3,
+  h1 h4,
+  h1 h5,
+  h1 h6, h2 h1,
+  h2 h2,
+  h2 h3,
+  h2 h4,
+  h2 h5,
+  h2 h6, h3 h1,
+  h3 h2,
+  h3 h3,
+  h3 h4,
+  h3 h5,
+  h3 h6, h4 h1,
+  h4 h2,
+  h4 h3,
+  h4 h4,
+  h4 h5,
+  h4 h6, h5 h1,
+  h5 h2,
+  h5 h3,
+  h5 h4,
+  h5 h5,
+  h5 h6, h6 h1,
+  h6 h2,
+  h6 h3,
+  h6 h4,
+  h6 h5,
+  h6 h6 {
+    font-family: "Bookman, serif";
+    letter-spacing: 0;
+  }
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 48px;
+  line-height: 1.25;
+}
+
+@media screen and (min-width: 320px) {
+  h1 {
+    font-size: calc( 48px + 24 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h1 {
+    font-size: 72px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  h1 {
+    line-height: calc( 1.25 + -0.0833333333 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h1 {
+    line-height: 1.1666666667;
+  }
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 32px;
+  line-height: 1.375;
+}
+
+@media screen and (min-width: 320px) {
+  h2 {
+    font-size: calc( 32px + 16 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h2 {
+    font-size: 48px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  h2 {
+    line-height: calc( 1.375 + -0.125 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h2 {
+    line-height: 1.25;
+  }
 }
 
 h3 {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.375;
+}
+
+@media screen and (min-width: 320px) {
+  h3 {
+    font-size: calc( 24px + 8 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h3 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  h3 {
+    line-height: calc( 1.375 + 0 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h3 {
+    line-height: 1.375;
+  }
 }
 
 h4 {
+  font-weight: 800;
   font-size: 16px;
+  line-height: 1.375;
+  letter-spacing: 0;
+}
+
+@media screen and (min-width: 320px) {
+  h4 {
+    font-size: calc( 16px + 8 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h4 {
+    font-size: 24px;
+  }
+}
+
+h5 {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.375;
+}
+
+@media screen and (min-width: 320px) {
+  h5 {
+    font-size: calc( 16px + 0 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h5 {
+    font-size: 16px;
+  }
+}
+
+h6 {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.375;
+  text-transform: unset;
+}
+
+@media screen and (min-width: 320px) {
+  h6 {
+    font-size: calc( 16px + 0 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  h6 {
+    font-size: 16px;
+  }
 }
 
 a {
@@ -833,7 +1003,6 @@ ul {
 
 .search input[type="search"] {
   border: 1px solid #ddd;
-  border-radius: 30px;
   box-sizing: border-box;
   color: #999;
   height: 40px;
@@ -858,7 +1027,7 @@ ul {
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
-  color: #777;
+  color: #012939;
   content: "\1F50D";
   font-size: 18px;
   position: absolute;
@@ -871,26 +1040,50 @@ ul {
 }
 
 .search-full input[type="search"] {
-  border: 1px solid #fff;
+  border: 5px solid #e9e9e9;
+  height: 75px;
+  font-size: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #012939;
+}
+
+.search-full input[type="search"]::-webkit-input-placeholder {
+  color: #012939;
 }
 
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
-  background-position: center;
-  background-size: cover;
+  background-color: #7db00e;
   height: 300px;
   padding: 0 20px;
   text-align: center;
   width: 100%;
 }
 
+@media screen and (min-width: 320px) {
+  .hero {
+    height: calc( 300px + 250 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .hero {
+    height: 550px;
+  }
+}
+
 .hero-inner {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 610px;
+  max-width: 750px;
   margin: 0 auto;
+}
+
+.hero-inner h1 {
+  margin-bottom: 30px;
 }
 
 .page-header {

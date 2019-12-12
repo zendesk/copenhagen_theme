@@ -44,6 +44,12 @@ $font-weight-semibold: 600;
 
 $base-font-size: 16px;
 $base-font-size--desktop: 20px;
+$typescale__step0: $base-font-size;
+$typescale__step1: 24px;
+$typescale__step2: 32px;
+$typescale__step3: 48px;
+$typescale__step4: 72px;
+
 
 $min-width: 320px;
 $max-width: 1366px;
@@ -75,6 +81,7 @@ $black: #000;
 $font--heading: "Poppins", sans-serif;
 $font--default: "Source Sans Pro", sans-serif;
 $font--print: "Garmond, serif";
+$font--print-heading: "Bookman, serif";
 $font__weight--regular: 400;
 $font__weight--bold: 700;
 $font__weight--extra-bold: 800;
