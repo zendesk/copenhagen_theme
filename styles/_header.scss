@@ -9,7 +9,7 @@
     position: relative;
     align-items: center;
     display: flex;
-    @include fluid-value( height, $min-width, $max-width, $header__height--min, $header__height--max);
+    @include fluid-value( height, $min-width, $max-width, $header__height--min, $header__height--max );
     justify-content: space-between;
   }
 }
@@ -18,15 +18,16 @@
 
   &__link {
     box-shadow: unset;
+
     &:hover  {
       box-shadow: unset;
     }
   }
 
   &__image {
-    @include fluid-value( max-height, $min-width, $max-width, 18px, 35px);
-    @include fluid-value( margin-right, $min-width, $max-width, 4px, $header__padding--max);
-    @include fluid-value( padding-right, $min-width, $max-width, 6px, $header__padding--max);
+    @include fluid-value( max-height, $min-width, $max-width, 18px, 35px );
+    @include fluid-value( margin-right, $min-width, $max-width, 4px, $header__padding--max );
+    @include fluid-value( padding-right, $min-width, $max-width, 6px, $header__padding--max );
     border-right: solid 2px $primary;
     vertical-align: middle;
   }
@@ -55,7 +56,7 @@
   &[aria-expanded="true"] {
     right: 0;
     left: 0;
-    @include fluid-value( top, $min-width, $max-width, $header__height--min, $header__height--max);
+    @include fluid-value( top, $min-width, $max-width, $header__height--min, $header__height--max );
     z-index: 1;
     background-color: $white;
     border-top: solid $border--width $primary;

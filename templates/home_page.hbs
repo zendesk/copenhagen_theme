@@ -1,13 +1,13 @@
 <section class="section hero">
   <div class="container hero-inner">
-    <h1>How can we help?</h1>
-    {{search submit=false placeholder='Search Help Center' instant=settings.instant_search class='search search-full'}}
+    <h1 class="hero__title">How can we help?</h1>
+    {{search submit=false placeholder='Search the Help Center' instant=settings.instant_search class='search search-full'}}
     {{#if promoted_articles}}
       <ul class="hero__popular-topics" role="list">
-        <li class="hero__popular-topics--item" role="listitem">Popular Topics:</li>
+        <li class="hero__popular-topics-item" role="listitem">Popular Topics:</li>
         {{#each promoted_articles}}
-          <li class="hero__popular-topics--item" role="listitem">
-            <a class="hero__popular-topics--link" href="{{url}}">
+          <li class="hero__popular-topics-item" role="listitem">
+            <a class="hero__popular-topics-link" href="{{url}}">
               {{title}}
               {{#if internal}}
                 <span class="icon-lock" title="{{t 'internal'}}"></span>

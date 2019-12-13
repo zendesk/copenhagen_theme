@@ -11,17 +11,17 @@
     @include vertical-align;
     max-width: 750px;
     margin: 0 auto;
-    
-    h1 {
-      @include fluid-value( margin-bottom, $min-width, $max-width, $spacing, $spacing--desktop);
-      @include fluid-value( line-height, $min-width, $max-width, 1.10, 1.1666666667);
-    }
+  }
+
+  &__title {
+    @include fluid-value( margin-bottom, $min-width, $max-width, $spacing, $spacing--desktop);
+    @include fluid-value( line-height, $min-width, $max-width, 1.10, 1.1666666667);
   }
 
   &__popular-topics {
     @include fluid-value( margin-top, $min-width, $max-width, $spacing, $spacing--desktop);
 
-    &--item {
+    &-item {
       display: inline-block;
       font-weight: $font__weight--bold;
       
@@ -32,7 +32,7 @@
       }
     }
 
-    &--link {
+    &-link {
       font-weight: $font__weight--regular;
       box-shadow: 0 -2px 0 0 $primary inset;
 

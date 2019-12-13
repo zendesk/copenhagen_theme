@@ -1157,31 +1157,31 @@ ul {
   margin: 0 auto;
 }
 
-.hero-inner h1 {
+.hero__title {
   margin-bottom: 15px;
   line-height: 1.1;
 }
 
 @media screen and (min-width: 320px) {
-  .hero-inner h1 {
+  .hero__title {
     margin-bottom: calc( 15px + 15 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .hero-inner h1 {
+  .hero__title {
     margin-bottom: 30px;
   }
 }
 
 @media screen and (min-width: 320px) {
-  .hero-inner h1 {
+  .hero__title {
     line-height: calc( 1.1 + 0.0666666667 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .hero-inner h1 {
+  .hero__title {
     line-height: 1.1666666667;
   }
 }
@@ -1202,26 +1202,26 @@ ul {
   }
 }
 
-.hero__popular-topics--item {
+.hero__popular-topics-item {
   display: inline-block;
   font-weight: 700;
 }
 
-.hero__popular-topics--item:not(:first-child):not(:last-child):after {
+.hero__popular-topics-item:not(:first-child):not(:last-child):after {
   content: ",";
 }
 
-.hero__popular-topics--link {
+.hero__popular-topics-link {
   font-weight: 400;
   box-shadow: 0 -2px 0 0 #012939 inset;
 }
 
-.hero__popular-topics--link:hover, .hero__popular-topics--link:active, .hero__popular-topics--link:focus {
+.hero__popular-topics-link:hover, .hero__popular-topics-link:active, .hero__popular-topics-link:focus {
   text-decoration: none;
   box-shadow: 0 -12px 0 0 rgba(255, 255, 255, 0.25) inset;
 }
 
-.hero__popular-topics--link:focus {
+.hero__popular-topics-link:focus {
   outline: #ddc30f auto 5px;
 }
 
