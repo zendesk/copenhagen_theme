@@ -1,42 +1,44 @@
 /***** Header *****/
-
-
 .header {
   background-color: $white;
   margin: 0 auto;
   max-width: $max-width-page-container;
+  box-shadow: 0 3px 5px rgba($grey, 0.15);
 
   &__inner {
-    @include max-width-container;
     position: relative;
     align-items: center;
     display: flex;
-    @include fluid-value( height, $min-width, $max-width, 100px, 138px);
+    @include fluid-value( height, $min-width, $max-width, $header__height--min, $header__height--max);
     justify-content: space-between;
   }
 }
 
 .logo {
 
-  &__image {
-    @include fluid-value( max-height, $min-width, $max-width, 25px, 35px);
-    @include tablet { 
-      padding-right: 16px;
-      border-right: solid 2px $primary;
-      margin-right: 16px;
+  &__link {
+    
+    &:hover {
+      text-decoration: none;
     }
+  }
+
+  &__image {
+    @include fluid-value( max-height, $min-width, $max-width, 18px, 35px);
+    @include fluid-value( margin-right, $min-width, $max-width, 4px, $header__padding--max);
+    @include fluid-value( padding-right, $min-width, $max-width, 6px, $header__padding--max);
+    border-right: solid 2px $primary;
     vertical-align: middle;
   }
 
   &__text {
-    
-    display: block;
+    display: inline-block;
     font-family: $font--heading;
     font-weight: $font__weight--black;
     font-size: 0.8em;
+    line-height: 1.5;
     letter-spacing: 1px;
     text-transform: uppercase;
-    line-height: 1.5;
     
     @include tablet { 
       display: inline-block; 
@@ -49,15 +51,15 @@
   display: inline-block;
   position: absolute;
   white-space: nowrap;
-
+  
   &[aria-expanded="true"] {
-    background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15), 0 4px 10px 0 rgba(0, 0, 0, .1);
-    border: solid 1px #ddd;
     right: 0;
     left: 0;
-    @include fluid-value( top, $min-width, $max-width, 125px, 138px);
+    @include fluid-value( top, $min-width, $max-width, $header__height--min, $header__height--max);
     z-index: 1;
+    background-color: $white;
+    border-top: solid $border--width $primary;
+    box-shadow: 0 3px 5px rgba($grey, 0.15);
 
     > a {
       display: block;
@@ -67,53 +69,66 @@
 }
 
 .nav-wrapper {
-  a {
-    @include tablet {
-      display: inline-block;
-    }
-
+  .user-nav__link {
     color: $primary;
+    border-color: $primary;
     display: none;
     font-size: 0.8em;
     font-family: $font--heading;
     font-weight: $font__weight--black;
     letter-spacing: 1px;
     text-transform: uppercase;
-    padding: 0 16px 0 0;
+    text-decoration: none;
+    margin: 0 $header__padding--max 0 0;
     width: auto;
-
-    &.button {
-      padding: 0 16px;
-      margin-right: 16px;
-    }
-
-    [dir="rtl"] & { padding: 0 0 0 20px;}
+    transition: color 300ms;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: transparent;
-      color: $link_color;
-      text-decoration: underline;
+      color: $primary--light;
+      border-bottom: solid $border--width $primary--light;
     }
 
+    &.button {
+      padding: 0 $header__padding--max;
+      margin-right: $header__padding--max;
+      color: $white;
+      background-color: $primary;
+      border-radius: 0;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $white;
+        color: $primary;
+        text-decoration: none;
+        border: solid $border--width $primary;
+      }
+    }
+
+    [dir="rtl"] & { padding: 0 0 0 20px; }
+
     &.login { display: inline-block; }
+    
+    @include tablet {
+      display: inline-block;
+    }
   }
 
   .menu-button {
     @include tablet { display: none; }
     background: none;
     border: 0;
-    color: $link_color;
+    color: $primary;
     display: inline-block;
-    margin-right: 10px;
     padding: 0;
     width: auto;
-
+    
     .icon-menu {
       vertical-align: middle;
-      width: 13px;
-      height: 13px;
+      width: $header__icon-menu--dimension;
+      height: $header__icon-menu--dimension;
     }
 
     [dir="rtl"] & {
@@ -125,7 +140,7 @@
     &:focus,
     &:active {
       background-color: transparent;
-      color: $link_color;
+      color: $secondary;
     }
   }
 }

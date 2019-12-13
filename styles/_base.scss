@@ -48,6 +48,10 @@ a {
   &:focus {
     text-decoration: underline;
   }
+  
+  &:focus {
+    outline: $secondary auto $focus--width;
+  }
 }
 
 input,
