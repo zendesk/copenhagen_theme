@@ -54,12 +54,12 @@
     </span>
   </div>
 
-  <ul class="posts-list striped-list">
+  <div class="posts-list striped-list">
     {{#each posts}}
-      <li>
+      <section role="region" aria-labelledby="title-{{id}}">
         <div class="striped-list-item {{#if featured}}post-featured{{/if}}">
           <span class="striped-list-info">
-            <a href="{{url}}" title="{{title}}" class="striped-list-title">{{title}}</a>
+            <a href="{{url}}" id="title-{{id}}" class="striped-list-title">{{title}}</a>
             <span class="post-overview-item">
               {{#if pinned}}
                 <span class="status-label status-label-pinned">{{t 'pinned'}}</span>
@@ -97,9 +97,9 @@
             </span>
           </div>
         </div>
-      </li>
+      </section>
     {{/each}}
-  </ul>
+  </div>
   {{pagination}}
 </div>
 
