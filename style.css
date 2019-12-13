@@ -238,23 +238,10 @@ h6 {
 }
 
 a {
-  color: $link_color;
-  text-decoration: none;
-}
-
-a:hover, a:active, a:focus {
-  text-decoration: underline;
-}
-
-a:focus {
-  outline: #7db00e auto 5px;
-}
-
-a {
   transition: all 300ms;
-  box-shadow: 0 -2px 0 0 #7db00e inset;
   color: #012939;
   text-decoration: none;
+  box-shadow: 0 -2px 0 0 #7db00e inset;
 }
 
 a:hover, a:active, a:focus {
@@ -680,12 +667,11 @@ ul {
   }
 }
 
-.logo__link:not(.button) {
+.logo__link {
   box-shadow: unset;
 }
 
-.logo__link:not(.button):hover {
-  text-decoration: none;
+.logo__link:hover {
   box-shadow: unset;
 }
 
@@ -799,15 +785,6 @@ ul {
   text-decoration: none;
   margin: 0 16px 0 0;
   width: auto;
-<<<<<<< HEAD
-=======
-  transition: color 300ms;
-}
-
-.nav-wrapper .user-nav__link:hover, .nav-wrapper .user-nav__link:focus, .nav-wrapper .user-nav__link:active {
-  color: #4d6974;
-  border-bottom: solid 1px #4d6974;
->>>>>>> 9ec5df161044a3167872dba34579b59c63d8caef
 }
 
 .nav-wrapper .user-nav__link.button {
@@ -821,15 +798,9 @@ ul {
   border-radius: 0;
 }
 
-<<<<<<< HEAD
-.nav-wrapper a.button:hover, .nav-wrapper a.button:focus, .nav-wrapper a.button:active {
+.nav-wrapper .user-nav__link.button:hover, .nav-wrapper .user-nav__link.button:focus, .nav-wrapper .user-nav__link.button:active {
   background-color: #012939;
   color: #fff;
-=======
-.nav-wrapper .user-nav__link.button:hover, .nav-wrapper .user-nav__link.button:focus, .nav-wrapper .user-nav__link.button:active {
-  background-color: #fff;
-  color: #012939;
->>>>>>> 9ec5df161044a3167872dba34579b59c63d8caef
   text-decoration: none;
   border: solid 2px #012939;
 }

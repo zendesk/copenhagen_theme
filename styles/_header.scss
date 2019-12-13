@@ -17,9 +17,8 @@
 .logo {
 
   &__link {
-    
-    &:hover {
-      text-decoration: none;
+    box-shadow: unset;
+    &:hover  {
       box-shadow: unset;
     }
   }
