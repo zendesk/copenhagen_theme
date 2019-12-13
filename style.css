@@ -690,7 +690,7 @@ ul {
 }
 
 .logo__image {
-  max-height: 18.5px;
+  max-height: 18px;
   margin-right: 4px;
   padding-right: 6px;
   border-right: solid 2px #012939;
@@ -699,7 +699,7 @@ ul {
 
 @media screen and (min-width: 320px) {
   .logo__image {
-    max-height: calc( 18.5px + 16.5 * ( 100vw - 320px ) / 1046);
+    max-height: calc( 18px + 17 * ( 100vw - 320px ) / 1046);
   }
 }
 
@@ -788,7 +788,7 @@ ul {
   margin: 20px;
 }
 
-.nav-wrapper a {
+.nav-wrapper .user-nav__link {
   color: #012939;
   display: none;
   font-size: 0.8em;
@@ -799,9 +799,18 @@ ul {
   text-decoration: none;
   margin: 0 16px 0 0;
   width: auto;
+<<<<<<< HEAD
+=======
+  transition: color 300ms;
 }
 
-.nav-wrapper a.button {
+.nav-wrapper .user-nav__link:hover, .nav-wrapper .user-nav__link:focus, .nav-wrapper .user-nav__link:active {
+  color: #4d6974;
+  border-bottom: solid 1px #4d6974;
+>>>>>>> 9ec5df161044a3167872dba34579b59c63d8caef
+}
+
+.nav-wrapper .user-nav__link.button {
   padding: 0 16px;
   margin-right: 16px;
   transition: all 300ms;
@@ -812,23 +821,29 @@ ul {
   border-radius: 0;
 }
 
+<<<<<<< HEAD
 .nav-wrapper a.button:hover, .nav-wrapper a.button:focus, .nav-wrapper a.button:active {
   background-color: #012939;
   color: #fff;
+=======
+.nav-wrapper .user-nav__link.button:hover, .nav-wrapper .user-nav__link.button:focus, .nav-wrapper .user-nav__link.button:active {
+  background-color: #fff;
+  color: #012939;
+>>>>>>> 9ec5df161044a3167872dba34579b59c63d8caef
   text-decoration: none;
   border: solid 2px #012939;
 }
 
-[dir="rtl"] .nav-wrapper a {
+[dir="rtl"] .nav-wrapper .user-nav__link {
   padding: 0 0 0 20px;
 }
 
-.nav-wrapper a.login {
+.nav-wrapper .user-nav__link.login {
   display: inline-block;
 }
 
 @media (min-width: 768px) {
-  .nav-wrapper a {
+  .nav-wrapper .user-nav__link {
     display: inline-block;
   }
 }
