@@ -48,6 +48,7 @@
     font-weight: $font__weight--extra-bold;
     border: 5px solid $grey--lighter;
     text-transform: uppercase;
+    transition: border $transition-speed ease-out, color $transition-speed ease-out;
 
     &::-webkit-input-placeholder {
       color: $primary;

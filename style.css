@@ -1064,6 +1064,7 @@ ul {
   font-weight: 800;
   border: 5px solid #e9e9e9;
   text-transform: uppercase;
+  transition: border 300ms ease-out, color 300ms ease-out;
 }
 
 @media screen and (min-width: 320px) {
