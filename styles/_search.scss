@@ -27,29 +27,39 @@
   &::before {
     @extend .icon;
     @include vertical-align;
-    background-color: #fff;
+    background-color: $white;
     color: $primary;
     content: "\1F50D";
-    font-size: 18px;
+    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
     position: absolute;
     left: 15px;
 
     [dir="rtl"] & {
-      right: 15px;
+      right: $spacing;
       left: auto;
     }
   }
 
   &-full input[type="search"] {
-    border: 5px solid #e9e9e9;
-    height: 75px;
-    font-size: 20px;
+    @include fluid-value( height, $min-width, $max-width, 50px, 75px );
+    color: $primary;
+    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
     font-family: $font--heading;
     font-weight: $font__weight--extra-bold;
+    border: 5px solid $grey--lighter;
     text-transform: uppercase;
-    color: $primary;
+
     &::-webkit-input-placeholder {
       color: $primary;
+    }
+    
+    &:focus {
+      color: $grey;
+      border: 5px solid $primary;
+
+      &::-webkit-input-placeholder {
+        color: $grey;
+      }
     }
   }
 }

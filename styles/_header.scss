@@ -16,9 +16,12 @@
 
 .logo {
 
-  &__link {
+  &__link:not(.button) {
+    box-shadow: unset;
+
     &:hover {
       text-decoration: none;
+      box-shadow: unset;
     }
   }
 
@@ -70,7 +73,6 @@
 .nav-wrapper {
   a {
     color: $primary;
-    border-color: $primary;
     display: none;
     font-size: 0.8em;
     font-family: $font--heading;
@@ -80,29 +82,24 @@
     text-decoration: none;
     margin: 0 $header__padding--max 0 0;
     width: auto;
-    transition: color 300ms;
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: $primary--light;
-      border-bottom: solid $border--width $primary--light;
-    }
 
     &.button {
       padding: 0 $header__padding--max;
       margin-right: $header__padding--max;
-      color: $white;
-      background-color: $primary;
+      transition: all $transition-speed;
+      color: $primary;
+      background-color: $white;
+      border-color: $primary;
+      border-width: 2px;
       border-radius: 0;
 
       &:hover,
       &:focus,
       &:active {
-        background-color: $white;
-        color: $primary;
+        background-color: $primary;
+        color: $white;
         text-decoration: none;
-        border: solid $border--width $primary;
+        border: solid 2px $primary;
       }
     }
 

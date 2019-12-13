@@ -1,5 +1,69 @@
 // Variables
 
+// CUSTOM JOBBER VARIABLES FOR THE 2019 THEME
+
+$base-font-size: 16px;
+$base-font-size--desktop: 20px;
+$typescale__step0: $base-font-size;
+$typescale__step1: 24px;
+$typescale__step2: 32px;
+$typescale__step3: 48px;
+$typescale__step4: 72px;
+
+
+$min-width: 320px;
+$max-width: 1366px;
+$max-width-page-container: 1440px;
+
+$primary: #012939;
+$primary--light: #4d6974;
+$primary--lightest: #3ca2e0;
+$primary--dark: #011b25;
+
+$secondary: #7db00e;
+$secondary--light: #a0d72a;
+$secondary--dark: #649700;
+
+$tertiary: #ef5733;
+$tertiary--light: #fef3f0;
+
+$grey: #b8b8b8;
+$grey--light: #888;
+$grey--lighter: #e9e9e9;
+$grey--lightest: #f3f3f3;
+
+$yellow: #ddc30f;
+$yellow-lightest: #faf6db;
+
+$white: #fff;
+$black: #000;
+
+$transition-speed: 300ms;
+
+$font--heading: "Poppins", sans-serif;
+$font--default: "Source Sans Pro", sans-serif;
+$font--print: "Garmond, serif";
+$font--print-heading: "Bookman, serif";
+$font__weight--regular: 400;
+$font__weight--bold: 700;
+$font__weight--extra-bold: 800;
+$font__weight--black: 900;
+
+$spacing: 15px;
+$spacing--desktop: 30px;
+
+$border--width: 1px;
+$border--radius: 8px;
+$focus--width: 5px;
+$font-zendesk-icons: "copenhagen-icons";
+
+/* HEADER SPECIFIC VARIABLES */
+$header__height--min: 80px;
+$header__height--max: 138px;
+$header__padding--max: 16px;
+$header__icon-menu--dimension: 40px;
+
+/* ZENDESK DEFAULTS */
 // Colors
 $brand_color: #0072ef !default;
 $brand_text_color: #fff !default; //Color for text with an accent color background
@@ -40,63 +104,3 @@ $font-weight-base: 400;
 $font-weight-light: 300;
 $font-weight-semibold: 600;
 
-// CUSTOM JOBBER VARIABLES FOR THE 2019 THEME
-
-$base-font-size: 16px;
-$base-font-size--desktop: 20px;
-$typescale__step0: $base-font-size;
-$typescale__step1: 24px;
-$typescale__step2: 32px;
-$typescale__step3: 48px;
-$typescale__step4: 72px;
-
-
-$min-width: 320px;
-$max-width: 1366px;
-$max-width-page-container: 1440px;
-
-$primary: #012939;
-$primary--light: #4d6974;
-$primary--lightest: #3ca2e0;
-$primary--dark: #011b25;
-
-$secondary: #7db00e;
-$secondary--light: #a0d72a;
-$secondary--dark: #649700;
-
-$tertiary: #ef5733;
-$tertiary--light: #fef3f0;
-
-$grey: #b8b8b8;
-$grey--light: #888;
-$grey--lighter: #e9e9e9;
-$grey--lightest: #f3f3f3;
-
-$yellow: #ddc30f;
-$yellow-lightest: #faf6db;
-
-$white: #fff;
-$black: #000;
-
-$font--heading: "Poppins", sans-serif;
-$font--default: "Source Sans Pro", sans-serif;
-$font--print: "Garmond, serif";
-$font--print-heading: "Bookman, serif";
-$font__weight--regular: 400;
-$font__weight--bold: 700;
-$font__weight--extra-bold: 800;
-$font__weight--black: 900;
-
-$spacing: 15px;
-$spacing--desktop: 30px;
-
-$border--width: 1px;
-$border--radius: 8px;
-$focus--width: 5px;
-$font-zendesk-icons: "copenhagen-icons";
-
-/* HEADER SPECIFIC VARIABLES */
-$header__height--min: 80px;
-$header__height--max: 138px;
-$header__padding--max: 16px;
-$header__icon-menu--dimension: 40px;

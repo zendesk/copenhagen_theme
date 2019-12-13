@@ -82,16 +82,18 @@ h6 {
   text-transform: unset;
 }
 
-
 a {
-  color: $link_color;
+  transition: all $transition-speed;
+  color: $primary;
   text-decoration: none;
+  box-shadow: 0 -2px 0 0 $secondary inset;
 
   &:hover,
   &:active,
   &:focus {
-    text-decoration: underline;
+    box-shadow: 0 -12px 0 0 rgba($secondary, 0.25) inset;
   }
+
   &:focus {
     outline: $secondary auto $focus--width;
   }
