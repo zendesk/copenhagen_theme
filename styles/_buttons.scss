@@ -3,6 +3,7 @@
   @include tablet { width: auto; }
 
   border: 1px solid $button-color;
+  box-shadow: unset;
   border-radius: 4px;
   color: $button-color;
   cursor: pointer;
@@ -26,6 +27,7 @@
   &:active,
   &:focus,
   &[aria-selected="true"] {
+    box-shadow: unset;
     background-color: $brand_color;
     color: $brand_text_color;
     text-decoration: none;

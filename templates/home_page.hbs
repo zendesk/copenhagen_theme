@@ -1,72 +1,21 @@
 <section class="section hero">
-  <div class="hero-inner">
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
-  </div>
-</section>
-
-<div class="container">
-  <section class="section knowledge-base">
-    <section class="categories blocks">
-      <ul class="blocks-list">
-        {{#each categories}}
-          {{#if ../has_multiple_categories}}
-            <li class="blocks-item">
-              <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title">{{name}}</span>
-                <span class="blocks-item-description">{{excerpt description}}</span>
-              </a>
-            </li>
-          {{else}}
-            {{#each sections}}
-              <li class="blocks-item">
-                <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
-                </a>
-              </li>
-            {{/each}}
-          {{/if}}
+  <div class="container hero-inner">
+    <h1 class="hero__title">How can we help?</h1>
+    {{search submit=false placeholder='Search the Help Center' instant=settings.instant_search class='search search-full'}}
+    {{#if promoted_articles}}
+      <ul class="hero__popular-topics" role="list">
+        <li class="hero__popular-topics-item" role="listitem">Popular Topics:</li>
+        {{#each promoted_articles}}
+          <li class="hero__popular-topics-item" role="listitem">
+            <a class="hero__popular-topics-link" href="{{url}}">
+              {{title}}
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
+            </a>
+          </li>
         {{/each}}
       </ul>
-      {{pagination}}
-    </section>
-
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h3>{{t 'promoted_articles'}}</h3>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
-
-                  {{#if internal}}
-                    <span class="icon-lock" title="{{t 'internal'}}"></span>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
-      </section>
     {{/if}}
-  </section>
-
-  {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
-
-      <div class="community-image"></div>
-    </section>
-  {{/if}}
-
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section>
-</div>
+  </div>
+</section>

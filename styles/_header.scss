@@ -9,7 +9,7 @@
     position: relative;
     align-items: center;
     display: flex;
-    @include fluid-value( height, $min-width, $max-width, $header__height--min, $header__height--max);
+    @include fluid-value( height, $min-width, $max-width, $header__height--min, $header__height--max );
     justify-content: space-between;
   }
 }
@@ -17,16 +17,17 @@
 .logo {
 
   &__link {
-    
-    &:hover {
-      text-decoration: none;
+    box-shadow: unset;
+
+    &:hover  {
+      box-shadow: unset;
     }
   }
 
   &__image {
-    @include fluid-value( max-height, $min-width, $max-width, 18px, 35px);
-    @include fluid-value( margin-right, $min-width, $max-width, 4px, $header__padding--max);
-    @include fluid-value( padding-right, $min-width, $max-width, 6px, $header__padding--max);
+    @include fluid-value( max-height, $min-width, $max-width, 18px, 35px );
+    @include fluid-value( margin-right, $min-width, $max-width, 4px, $header__padding--max );
+    @include fluid-value( padding-right, $min-width, $max-width, 6px, $header__padding--max );
     border-right: solid 2px $primary;
     vertical-align: middle;
   }
@@ -55,7 +56,7 @@
   &[aria-expanded="true"] {
     right: 0;
     left: 0;
-    @include fluid-value( top, $min-width, $max-width, $header__height--min, $header__height--max);
+    @include fluid-value( top, $min-width, $max-width, $header__height--min, $header__height--max );
     z-index: 1;
     background-color: $white;
     border-top: solid $border--width $primary;
@@ -71,7 +72,6 @@
 .nav-wrapper {
   .user-nav__link {
     color: $primary;
-    border-color: $primary;
     display: none;
     font-size: 0.8em;
     font-family: $font--heading;
@@ -81,29 +81,24 @@
     text-decoration: none;
     margin: 0 $header__padding--max 0 0;
     width: auto;
-    transition: color 300ms;
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: $primary--light;
-      border-bottom: solid $border--width $primary--light;
-    }
 
     &.button {
       padding: 0 $header__padding--max;
       margin-right: $header__padding--max;
-      color: $white;
-      background-color: $primary;
+      transition: all $transition-speed;
+      color: $primary;
+      background-color: $white;
+      border-color: $primary;
+      border-width: 2px;
       border-radius: 0;
 
       &:hover,
       &:focus,
       &:active {
-        background-color: $white;
-        color: $primary;
+        background-color: $primary;
+        color: $white;
         text-decoration: none;
-        border: solid $border--width $primary;
+        border: solid 2px $primary;
       }
     }
 
