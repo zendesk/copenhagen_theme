@@ -1,7 +1,8 @@
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
 .blocks {
-  &-list {
+  &__list {
+
     @include tablet {
       margin: 0 -15px;
     }
@@ -13,35 +14,38 @@
     padding: 0;
   }
 
-  &-item {
-    @include tablet {
-      margin: 0 15px 30px;
-    }
-
-    border: 1px solid $brand_color;
-    border-radius: 4px;
+  &__item {
+    border: 1px solid $white;
     box-sizing: border-box;
-    color: $brand_color;
+    color: $primary;
     display: flex;
     flex: 1 0 340px;
     margin: 0 0 30px;
     max-width: 100%;
-    text-align: center;
+    text-align: left;
+    box-shadow: unset;
+    background-color: $white; 
+    transition: all $transition-speed;
+
+    @include tablet {
+      margin: 0 $spacing $spacing--desktop;
+    }
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
+      background-color: $primary;
+      box-shadow: unset;
 
       * {
-        color: $brand_text_color;
+        color: $white;
         text-decoration: none;
       }
     }
 
     &-internal {
-      background-color: transparent;
-      border: 1px solid $border-color;
+      background-color: $white;
+      border: 1px solid $primary  ;
 
       .icon-lock::before {
         content: "\1F512";
@@ -50,41 +54,37 @@
         position: relative;
       }
 
-      a { color: $text_color; }
+      a { color: $primary; }
     }
   }
 
-  &-item-link {
-    color: $brand_color;
+  &__item-link {
+    color: $primary;
     padding: 20px 30px;
     display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: center;
-    border-radius: inherit;
+    box-shadow: unset;
 
-    &:hover,
-    &:active {
-      text-decoration: none;
+    &:hover {
+      box-shadow: unset;
     }
-    
+
+    &:active,
     &:focus {
-      @include focus-ring;
       text-decoration: none;
+      box-shadow: unset;
+      @include focus-ring;
     }
   }
 
-  &-item-title {
+  &__item-title {
+    margin-top: 0;
     margin-bottom: 0;
-    font-size: 16px;
   }
 
-  &-item-description {
-    font-weight: $font-weight-light;
-    margin: 0;
-  }
-
-  &-item-description:not(:empty) {
+  &__item-description:not(:empty) {
     margin-top: 10px;
   }
 }

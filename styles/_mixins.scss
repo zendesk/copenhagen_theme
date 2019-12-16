@@ -38,7 +38,7 @@
 
 @mixin focus-ring {
   outline: 0;
-  box-shadow: 0 0 0 3px $brand_color;
+  box-shadow: 0 0 0 3px $secondary;
 }
 
 @mixin content-body {

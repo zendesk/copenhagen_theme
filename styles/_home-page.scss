@@ -1,16 +1,67 @@
 /***** Homepage *****/
 
-.section {
-  @include tablet {
-    margin-bottom: 60px;
-  }
-
-  margin-bottom: 40px;
+/***** Knowledge Base ********/
+.knowledge-base__wrapper {
+  background-color: $grey--lightest;
+  @include fluid-value( padding-top, $min-width, $max-width, $whitespace-medium, $whitespace-medium--desktop );
+  @include fluid-value( padding-bottom, $min-width, $max-width, $whitespace-medium, $whitespace-medium--desktop );
 }
 
-.home-section h2 {
-  margin-bottom: 10px;
-  text-align: center;
+.knowledge-base {
+  
+  &__title {
+    text-align: center;
+  }
+}
+
+/***** Jobber Resources ******/
+.jobber-resources__wrapper {
+  background-color: $white;
+  @include fluid-value( padding-top, $min-width, $max-width, $whitespace-medium, $whitespace-medium--desktop );
+  @include fluid-value( padding-bottom, $min-width, $max-width, $whitespace-medium, $whitespace-medium--desktop );
+}
+
+.jobber-resources {
+  
+  &__title {
+    text-align: center;
+  }
+
+  &-cards {
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &-card {
+    
+    &:not(:last-child){
+      margin-bottom: $spacing--desktop;
+    }
+
+    @include tablet {
+      padding: 0 $spacing;
+      margin-bottom: 0;
+    }
+
+    &__image {
+      margin: 0;
+      padding: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    &__title {
+      margin-top: $spacing;
+    }
+
+    &__description {
+      margin: $spacing 0;
+    }
+  }
 }
 
 /***** Promoted articles *****/

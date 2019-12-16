@@ -19,6 +19,8 @@
   }
 
   &__popular-topics {
+    margin: 0;
+    padding: 0;
     @include fluid-value( margin-top, $min-width, $max-width, $spacing, $spacing--desktop);
 
     &-item {
