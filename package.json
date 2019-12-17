@@ -20,7 +20,6 @@
   },
   "scripts": {
     "lint:js": "eslint './**/*.js'",
-    "prelint:styles": "stylelint --fix './**/*.scss'",
     "lint:styles": "stylelint './**/*.scss'",
     "lint": "npm run lint:js && npm run lint:styles"
   },
@@ -33,7 +32,10 @@
     "node-fetch": "^2.1.2"
   },
   "stylelint": {
-    "extends": "stylelint-config-recommended-scss",
+    "extends": [
+      "@zendeskgarden/stylelint-config",
+      "stylelint-config-property-sort-order-smacss"
+    ],
     "rules": {
       "no-descending-specificity": null,
       "at-rule-no-unknown": null
@@ -48,9 +50,7 @@
     "lint-staged": "^9.5.0",
     "stylelint": "^12.0.0",
     "stylelint-config-property-sort-order-smacss": "^5.2.0",
-    "stylelint-config-recommended-scss": "^4.1.0",
     "stylelint-order": "^3.1.1",
-    "stylelint-scss": "^3.13.0",
     "typescript": "^3.7.3"
   }
 }
