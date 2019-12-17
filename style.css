@@ -953,10 +953,6 @@ textarea:focus {
   }
 }
 
-.footer__inner {
-  display: block;
-}
-
 .footer__logo-link {
   padding-bottom: 32px;
   box-shadow: unset;
