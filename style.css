@@ -1714,8 +1714,12 @@ footer .footer-copyright-list-link:hover, footer .footer-copyright-list-link:act
 @media (min-width: 768px) {
   .jobber-resources-cards {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
   }
+}
+
+.jobber-resources-card {
+  flex-grow: 1;
 }
 
 .jobber-resources-card:not(:last-child) {
@@ -1726,6 +1730,10 @@ footer .footer-copyright-list-link:hover, footer .footer-copyright-list-link:act
   .jobber-resources-card {
     padding: 0 15px;
     margin-bottom: 0;
+    width: 33%;
+  }
+  .jobber-resources-card:not(:last-child) {
+    margin-bottom: unset;
   }
 }
 
@@ -1746,78 +1754,26 @@ footer .footer-copyright-list-link:hover, footer .footer-copyright-list-link:act
   margin: 15px 0;
 }
 
-/***** Promoted articles *****/
-.promoted-articles {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+/**** MID CTA *****/
+.home-mid-cta__wrapper {
+  background-color: #f3f3f3;
 }
 
-@media (min-width: 1024px) {
-  .promoted-articles {
-    flex-direction: row;
+.home-mid-cta__pre-title {
+  text-transform: uppercase;
+  font-size: 48px;
+}
+
+@media screen and (min-width: 320px) {
+  .home-mid-cta__pre-title {
+    font-size: calc( 48px + 24 * ( 100vw - 320px ) / 1046);
   }
 }
 
-.promoted-articles-item {
-  flex: 1 0 auto;
-}
-
-@media (min-width: 1024px) {
-  .promoted-articles-item {
-    align-self: flex-end;
-    flex: 0 0 auto;
-    padding-right: 30px;
-    width: 33%;
-    /* Three columns on desktop */
+@media screen and (min-width: 1366px) {
+  .home-mid-cta__pre-title {
+    font-size: 72px;
   }
-  [dir="rtl"] .promoted-articles-item {
-    padding: 0 0 0 30px;
-  }
-}
-
-.promoted-articles-item:nth-child(3n) {
-  padding-right: 0;
-}
-
-.promoted-articles-item a {
-  display: block;
-  border-bottom: 1px solid #ddd;
-  padding: 15px 0;
-  color: $text_color;
-}
-
-.promoted-articles-item .icon-lock::before {
-  vertical-align: baseline;
-}
-
-.promoted-articles-item:last-child a {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  .promoted-articles-item:last-child a {
-    border-bottom: 1px solid #ddd;
-  }
-}
-
-/***** Community section in homepage *****/
-.community {
-  text-align: center;
-}
-
-.community-image {
-  min-height: 300px;
-  background-image: url($community_image);
-  background-position: center;
-  background-repeat: no-repeat;
-  max-width: 100%;
-}
-
-.community,
-.activity {
-  border-top: 1px solid #ddd;
-  padding: 30px 0;
 }
 
 /***** Recent activity *****/
