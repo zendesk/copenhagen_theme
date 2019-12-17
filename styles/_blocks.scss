@@ -13,78 +13,83 @@
     list-style: none;
     padding: 0;
   }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0;
+  list-style: none;
+}
 
-  &__item {
-    border: 1px solid $white;
-    box-sizing: border-box;
-    color: $primary;
-    display: flex;
-    flex: 1 0 340px;
-    margin: 0 0 30px;
-    max-width: 100%;
-    text-align: left;
-    box-shadow: unset;
-    background-color: $white; 
-    transition: all $transition-speed;
+.blocks__item {
+  border: 1px solid $white;
+  box-sizing: border-box;
+  color: $primary;
+  display: flex;
+  flex: 1 0 340px;
+  margin: 0 0 30px;
+  max-width: 100%;
+  text-align: left;
+  box-shadow: unset;
+  background-color: $white;
+  transition: all $transition-speed;
 
-    @include tablet {
-      margin: 0 $spacing $spacing--desktop;
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $primary;
-      box-shadow: unset;
-
-      * {
-        color: $white;
-        text-decoration: none;
-      }
-    }
-
-    &-internal {
-      background-color: $white;
-      border: 1px solid $primary  ;
-
-      .icon-lock::before {
-        content: "\1F512";
-        font-size: 15px;
-        bottom: 5px;
-        position: relative;
-      }
-
-      a { color: $primary; }
-    }
+  @include tablet {
+    margin: 0 $spacing $spacing--desktop;
   }
 
-  &__item-link {
-    color: $primary;
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primary;
     box-shadow: unset;
 
-    &:hover {
-      box-shadow: unset;
-    }
-
-    &:active,
-    &:focus {
+    * {
+      color: $white;
       text-decoration: none;
-      box-shadow: unset;
-      @include focus-ring;
     }
   }
+}
 
-  &__item-title {
-    margin-top: 0;
-    margin-bottom: 0;
+.blocks-internal {
+  background-color: $white;
+  border: 1px solid $primary  ;
+
+  .icon-lock::before {
+    content: '\1F512';
+    position: relative;
+    bottom: 5px;
+    font-size: 15px;
   }
 
-  &__item-description:not(:empty) {
-    margin-top: 10px;
+  a { color: $primary; }
+}
+
+.blocks__item-link {
+  color: $primary;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  box-shadow: unset;
+
+  &:hover {
+    box-shadow: unset;
   }
+
+  &:active,
+  &:focus {
+    text-decoration: none;
+    box-shadow: unset;
+    @include focus-ring;
+  }
+}
+
+.blocks__item-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.blocks__item-description:not(:empty) {
+  margin-top: 10px;
 }

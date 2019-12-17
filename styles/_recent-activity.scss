@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Recent activity *****/
 
 .recent-activity {
@@ -9,9 +10,9 @@
   &-list { padding: 0; }
 
   &-item {
-    border-bottom: 1px solid $border-color;
-    overflow: auto;
     padding: 20px 0;
+    overflow: auto;
+    border-bottom: 1px solid $border-color;
   }
 
   &-item-parent {
@@ -24,11 +25,10 @@
       width: 70%;
       margin: 0;
     }
-
-    margin: 6px 0;
-    color: $text_color;
     display: inline-block;
     width: 100%;
+    margin: 6px 0;
+    color: $text_color;
   }
 
   &-item-link {
@@ -41,18 +41,16 @@
       margin: 0;
       float: right;
 
-      [dir="rtl"] & { float: left; }
-
+      [dir='rtl'] & { float: left; }
     }
-
-    margin: 15px 0 0 0;
+    margin: 15px 0 0;
     float: none;
   }
 
   &-item-time,
   &-item-comment {
-    color: $secondary-text-color;
     display: inline-block;
+    color: $secondary-text-color;
     font-size: $font-size-small;
     font-weight: $font-weight-light;
   }
@@ -60,7 +58,7 @@
   &-item-comment {
     padding-left: 5px;
 
-    [dir="rtl"] & { padding: 0 5px 0 0; }
+    [dir='rtl'] & { padding: 0 5px 0 0; }
 
     &::before {
       display: inline-block;
@@ -68,14 +66,14 @@
 
     span::before {
       @extend .icon;
-      color: $brand_color;
-      content: "\1F4AC";
+      content: '\1F4AC';
       display: inline-block;
-      font-size: $font-size-base;
       padding-right: 3px;
+      color: $brand_color;
+      font-size: $font-size-base;
       vertical-align: middle;
 
-      [dir="rtl"] & {
+      [dir='rtl'] & {
         padding-left: 3px;
       }
     }

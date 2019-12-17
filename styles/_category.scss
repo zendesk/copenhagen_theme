@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Category pages *****/
 .category {
   &-container {
@@ -9,7 +10,6 @@
     @include desktop {
       flex: 0 0 80%;
     }
-
     flex: 1;
   }
 }
@@ -42,8 +42,8 @@
 
 .article-list {
   &-item {
-    font-size: $font-size-bigger;
     padding: 15px 0;
+    font-size: $font-size-bigger;
 
     a { color: $text_color; }
 

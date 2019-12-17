@@ -1,22 +1,22 @@
+/* stylelint-disable */
 /***** Buttons *****/
-.button, [role="button"] {
+.button, [role='button'] {
   @include tablet { width: auto; }
-
-  border: 1px solid $button-color;
-  box-shadow: unset;
-  border-radius: 4px;
-  color: $button-color;
-  cursor: pointer;
   display: inline-block;
-  font-size: 12px;
-  line-height: 2.34; //Taken from Zendesk garden bedrock
+  width: 100%;
   margin: 0;
   padding: 0 20px;
-  text-align: center;
   transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
-  user-select: none;
+  border: 1px solid $button-color;
+  border-radius: 4px;
+  box-shadow: unset;
+  color: $button-color;
+  font-size: 12px;
+  line-height: 2.34; //Taken from Zendesk garden bedrock
+  text-align: center;
   white-space: nowrap;
-  width: 100%;
+  cursor: pointer;
+  user-select: none;
   -webkit-touch-callout: none;
 
   &::after {
@@ -26,19 +26,19 @@
   &:hover,
   &:active,
   &:focus,
-  &[aria-selected="true"] {
-    box-shadow: unset;
+  &[aria-selected='true'] {
     background-color: $brand_color;
+    box-shadow: unset;
     color: $brand_text_color;
     text-decoration: none;
   }
 
-  &[aria-selected="true"] {
+  &[aria-selected='true'] {
     &:hover,
     &:focus,
     &:active {
-      background-color: $hover-button-color;
       border-color: $hover-button-color;
+      background-color: $hover-button-color;
     }
   }
 
@@ -47,21 +47,20 @@
   }
 }
 
-.button-large, input[type="submit"] {
+.button-large, input[type='submit'] {
   @include tablet {
     width: auto;
   }
-
-  background-color: $button-color;
+  width: 100%;
+  min-width: 190px;
+  padding: 0 1.9286em;
   border: 0;
   border-radius: 4px;
+  background-color: $button-color;
   color: $brand_text_color;
   font-size: 14px;
   font-weight: $font-weight-base;
   line-height: 2.72;
-  min-width: 190px;
-  padding: 0 1.9286em;
-  width: 100%;
 
   &:hover,
   &:active,
@@ -69,22 +68,21 @@
     background-color: $hover-button-color;
   }
 
-
   &[disabled] {
     background-color: #ddd;
   }
 }
 
 .button-secondary {
-  color: $secondary-text-color;
   border: 1px solid $border-color;
   background-color: transparent;
+  color: $secondary-text-color;
 
   &:hover,
   &:focus,
   &:active {
-    color: $text_color;
     border: 1px solid $border-color;
     background-color: $primary-shade;
+    color: $text_color;
   }
 }

@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Pagination *****/
 
 .pagination {
@@ -11,17 +12,16 @@
 
 .pagination li {
   @include tablet {
-    height: 30px;
     width: 30px;
+    height: 30px;
   }
-
-  border-radius: 50%;
-  height: 40px;
-  float: left;
-  margin-left: 5px;
   width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  float: left;
+  border-radius: 50%;
 
-  [dir="rtl"] & {
+  [dir='rtl'] & {
     float: right;
   }
 
@@ -37,26 +37,28 @@
 
 .pagination a, .pagination span {
   @include tablet {
-    font-size: $font-size-small;
     padding: 5px 12px;
+    font-size: $font-size-small;
   }
-
-  font-size: $font-size-base;
-  color: $secondary-text-color;
   padding: 10px 12px;
+  color: $secondary-text-color;
+  font-size: $font-size-base;
 }
 
 .pagination-current {
   background-color: $brand_color;
+
   a, span { color: $brand_text_color; }
 }
 
 .pagination-first {
   border-radius: 3px 0 0 3px;
-  [dir="rtl"] & { border-radius: 0 3px 3px 0; }
+
+  [dir='rtl'] & { border-radius: 0 3px 3px 0; }
 }
 
 .pagination-last {
   border-radius: 0 3px 3px 0;
-  [dir="rtl"] & { border-radius: 3px 0 0 3px; }
+
+  [dir='rtl'] & { border-radius: 3px 0 0 3px; }
 }

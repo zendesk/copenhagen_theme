@@ -4,24 +4,28 @@
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  color: $primary;
   background-color: $primary;
-  @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
+  color: $primary;
   font-family: $font--default;
+  -webkit-font-smoothing: antialiased;
   line-height: 1.5;
-
+  @include fluid-value(
+    font-size,
+    $min-width,
+    $max-width,
+    $base-font-size,
+    $base-font-size--desktop
+  );
   @media print {
     color: $black;
-    font-size: 16pt;
     font-family: $font--print;
+    font-size: 16pt;
   }
 
   > main {
-    background-color: $white;
-    margin: 0 auto;
     max-width: $max-width-page-container;
-    
+    margin: 0 auto;
+    background-color: $white;
     @include desktop {
       min-height: 65vh;
     }
@@ -33,7 +37,6 @@ h1, h2, h3, h4, h5, h6, .h4class {
   font-family: $font--heading;
   font-weight: $font__weight--black;
   text-transform: uppercase;
-
   @media print {
     h1,
     h2,
@@ -49,53 +52,94 @@ h1, h2, h3, h4, h5, h6, .h4class {
 }
 
 h1 {
-  @include fluid-value( font-size, $min-width, $max-width, $typescale__step3, $typescale__step4 );
-  @include fluid-value( line-height, $min-width, $max-width, 1.25, 1.1666666667);
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $typescale__step3,
+  $typescale__step4 );
+  @include fluid-value( line-height,
+  $min-width,
+  $max-width,
+  1.25,
+  1.1666666667);
 }
 
 h2 {
-  @include fluid-value( font-size, $min-width, $max-width, $typescale__step2, $typescale__step3 );
-  @include fluid-value( line-height, $min-width, $max-width, 1.375, 1.25 );
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $typescale__step2,
+  $typescale__step3 );
+  @include fluid-value( line-height,
+  $min-width,
+  $max-width,
+  1.375,
+  1.25 );
 }
 
 h3 {
-  @include fluid-value( font-size, $min-width, $max-width, $typescale__step1, $typescale__step2 );
-  @include fluid-value( line-height, $min-width, $max-width, 1.375, 1.375 );
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $typescale__step1,
+  $typescale__step2
+);
+  @include fluid-value( line-height,
+  $min-width,
+  $max-width,
+  1.375,
+  1.375
+);
 }
 
-h4, 
+h4,
 .h4class {
   font-weight: $font__weight--extra-bold;
-  @include fluid-value( font-size, $min-width, $max-width, $typescale__step0, $typescale__step1 );
-  line-height: 1.375;
   letter-spacing: 0;
+  line-height: 1.375;
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $typescale__step0,
+  $typescale__step1
+);
 }
 
 h5 {
   font-weight: $font__weight--extra-bold;
-  @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $typescale__step0 );
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $base-font-size,
+  $typescale__step0
+);
   line-height: 1.375;
 }
 
 h6 {
   font-weight: $font__weight--extra-bold;
-  @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $typescale__step0 );
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $base-font-size,
+  $typescale__step0
+);
   line-height: 1.375;
   text-transform: unset;
 }
 
 a {
   transition: all $transition-speed;
+  box-shadow: 0 -2px 0 0 $secondary inset;
   color: $primary;
   text-decoration: none;
-  box-shadow: 0 -2px 0 0 $secondary inset;
 
   &:hover,
   &:active,
   &:focus {
-    box-shadow: 0 -12px 0 0 rgba($secondary, 0.25) inset;
+    box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
   }
-  
+
   &:focus {
     outline: $secondary auto $focus--width;
   }
@@ -108,11 +152,11 @@ textarea {
 }
 
 input {
-  font-weight: $font-weight-light;
-  max-width: 100%;
   box-sizing: border-box;
-  outline: none;
+  max-width: 100%;
   transition: border .12s ease-in-out;
+  outline: none;
+  font-weight: $font-weight-light;
 
   &:focus {
     border: 1px solid $brand_color;
@@ -124,16 +168,16 @@ input[disabled] {
 }
 
 select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background: url($assets-dropdown-arrow-svg) no-repeat #fff;
-  background-position: right 10px center;
+  width: 100%;
+  padding: 8px 30px 8px 10px;
   border: 1px solid $border-color;
   border-radius: 4px;
-  padding: 8px 30px 8px 10px;
   outline: none;
+  background: url($assets-dropdown-arrow-svg) no-repeat #fff;
+  background-position: right 10px center;
   color: $field-text-focus-color;
-  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 
   &:focus {
     border: 1px solid $brand_color;
@@ -145,12 +189,12 @@ select {
 }
 
 textarea {
+  width: 100%;
+  padding: 10px;
   border: 1px solid $border-color;
   border-radius: 2px;
-  resize: vertical;
-  width: 100%;
   outline: none;
-  padding: 10px;
+  resize: vertical;
 
   &:focus {
     border: 1px solid $brand_color;
@@ -162,8 +206,14 @@ textarea {
 }
 
 .container-divider {
-  border-top: 1px solid $border-color;
   margin-bottom: 20px;
+  border-top: 1px solid $border-color;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .error-page {
@@ -171,12 +221,13 @@ textarea {
 }
 
 .dropdown-toggle {
-  background: none;
-  border: 0;
   padding: 0;
+  border: 0;
+  background: none;
   text-align: initial;
 }
- .dropdown-toggle:focus {
+
+.dropdown-toggle:focus {
   outline: 0;
   text-decoration: underline;
 }
@@ -186,15 +237,15 @@ textarea {
 }
 
 .visibility-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
   position: absolute;
   width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  border: 0;
   white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
 }

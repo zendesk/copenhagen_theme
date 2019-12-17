@@ -1,30 +1,31 @@
+/* stylelint-disable */
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
 .attachments {
   .attachment-item {
-    padding-left: 20px;
     position: relative;
     margin-bottom: 10px;
+    padding-left: 20px;
 
     &:last-child { margin-bottom: 0; }
 
     &::before {
       @extend .icon;
-      color: $text_color;
-      content: "\1F4CE";
-      font-size: $font-size-base;
-      left: 0;
+      content: '\1F4CE';
       position: absolute;
       top: 5px;
+      left: 0;
+      color: $text_color;
+      font-size: $font-size-base;
     }
 
-    [dir="rtl"] & {
-      padding-left: 0;
+    [dir='rtl'] & {
       padding-right: 20px;
+      padding-left: 0;
 
       &::before {
-        left: auto;
         right: 0;
+        left: auto;
       }
     }
   }

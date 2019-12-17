@@ -1,49 +1,48 @@
+/* stylelint-disable */
 /* Navigation element that collapses on mobile */
 .collapsible-nav {
   @include tablet {
     flex-direction: row;
   }
-
+  position: relative;
   flex-direction: column;
   font-size: $font-size-navigation;
-  position: relative;
 }
 
 .collapsible-nav-border {
   @include tablet {
     border-top: 0;
   }
-
-  border-bottom: 1px solid $border-color;
   border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
 }
 
 .collapsible-nav-toggle {
   @include tablet { display: none; }
-  top: calc(45px / 2);
-  transform: translateY(-50%);
   position: absolute;
+  top: calc(45px / 2);
   right: 0;
-  padding: 0;
-  border: 0;
-  background: none;
   width: 25px;
   height: 25px;
+  padding: 0;
+  transform: translateY(-50%);
+  border: 0;
   border-radius: 50%;
+  background: none;
 
-  [dir="rtl"] & {
-    left: 0;
+  [dir='rtl'] & {
     right: auto;
+    left: 0;
   }
 
   &::after {
     @extend .icon;
-    content: "\25BE";
+    content: '\25BE';
   }
 
   &:focus {
-    outline: none;
     border: 1px solid $brand_color;
+    outline: none;
   }
 }
 
@@ -51,33 +50,31 @@
   @include tablet {
     flex-direction: row;
   }
-
   display: flex;
   flex-direction: column;
 
   li {
     @include tablet {
-      line-height: normal;
       margin-right: 30px;
+      line-height: normal;
 
-      [dir="rtl"] & {
-        margin-left: 30px;
+      [dir='rtl'] & {
         margin-right: 0;
+        margin-left: 30px;
       }
 
       a {
-        text-decoration: none;
         padding: 15px 0;
+        text-decoration: none;
       }
     }
-
+    order: 1; // All elements have the same order
     color: $text_color;
     line-height: 45px;
-    order: 1; // All elements have the same order
 
     a {
-      color: $text_color;
       display: block;
+      color: $text_color;
     }
   }
 
@@ -85,46 +82,44 @@
     @include tablet {
       border-bottom: 4px solid #ddd;
 
-      a:not([aria-current="page"]) {
-        padding: 15px 0 11px 0;
+      a:not([aria-current='page']) {
+        padding: 15px 0 11px;
         text-decoration: none;
       }
     }
   }
 
-  li:not([aria-selected="true"]),
+  li:not([aria-selected='true']),
   li:not(.current) {
     @include tablet { display: block; }
     display: none;
   }
 
-  li[aria-selected="true"] {
+  li[aria-selected='true'] {
     @include tablet {
-      padding: 15px 0 11px 0;
+      padding: 15px 0 11px;
     }
   }
 
-  li[aria-selected="true"],
+  li[aria-selected='true'],
   li.current {
     @include tablet {
-      border-bottom: 4px solid $brand_color;
       order: 1;
+      border-bottom: 4px solid $brand_color;
     }
-
-    order: 0; //Move to top of menu
     position: relative;
+    order: 0; //Move to top of menu
 
     a { color: $text_color; }
   }
 }
 
-.collapsible-nav[aria-expanded="true"] {
-
+.collapsible-nav[aria-expanded='true'] {
   .collapsible-nav-toggle::after {
-    content: "\2715";
+    content: '\2715';
   }
 
-  li:not([aria-selected="true"]),
+  li:not([aria-selected='true']),
   li:not(.current) {
     display: block;
   }

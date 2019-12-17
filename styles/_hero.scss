@@ -1,53 +1,80 @@
 /***** Hero component *****/
 .hero {
-  background-color: $secondary;
-  @include fluid-value( height, $min-width, $max-width, 300px, 550px);
-  @include fluid-value( padding-left, $min-width, $max-width, $spacing, $spacing--desktop);
-  @include fluid-value( padding-right, $min-width, $max-width, $spacing, $spacing--desktop);
-  text-align: center;
   width: 100%;
+  background-color: $secondary;
+  text-align: center;
+  @include fluid-value( height,
+  $min-width,
+  $max-width,
+  300px,
+  550px
+);
+  @include fluid-value( padding-left,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop
+);
+  @include fluid-value( padding-right,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop
+);
+}
 
-  &-inner {
-    @include vertical-align;
-    max-width: 750px;
-    margin: 0 auto;
-  }
+.hero-inner {
+  @include vertical-align;
+  max-width: 750px;
+  margin: 0 auto;
+}
 
-  &__title {
-    @include fluid-value( margin-bottom, $min-width, $max-width, $spacing, $spacing--desktop);
-    @include fluid-value( line-height, $min-width, $max-width, 1.10, 1.1666666667);
-  }
+.hero__title {
+  @include fluid-value( margin-bottom,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop);
+  @include fluid-value( line-height,
+  $min-width,
+  $max-width,
+  1.1,
+  1.1666666667
+);
+}
 
-  &__popular-topics {
-    margin: 0;
-    padding: 0;
-    @include fluid-value( margin-top, $min-width, $max-width, $spacing, $spacing--desktop);
+.hero__popular-topics {
+  @include fluid-value( margin-top,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop
+);
 
-    &-item {
-      display: inline-block;
-      font-weight: $font__weight--bold;
-      
-      &:not(:first-child):not(:last-child) {
-        &:after {
-          content: ",";
-        }
-      }
+  &-link {
+    box-shadow: 0 -2px 0 0 $primary inset;
+    font-weight: $font__weight--regular;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 -12px 0 0 rgba($white, .25) inset;
+      text-decoration: none;
     }
 
-    &-link {
-      font-weight: $font__weight--regular;
-      box-shadow: 0 -2px 0 0 $primary inset;
+    &:focus {
+      outline: $yellow auto $focus--width;
+    }
+  }
+}
 
-      &:hover,
-      &:active,
-      &:focus {
-        text-decoration: none;
-        box-shadow: 0 -12px 0 0 rgba($white, 0.25) inset;
-      }
+.hero__popular-topics-item {
+  display: inline-block;
+  font-weight: $font__weight--bold;
 
-      &:focus {
-        outline: $yellow auto $focus--width;
-      }
+  &:not(:first-child):not(:last-child) {
+    &::after {
+      content: ',';
     }
   }
 }
