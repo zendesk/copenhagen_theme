@@ -1,25 +1,16 @@
 /***** Footer *****/
-footer {
+.footer {
   margin: 0 auto;
   @include fluid-value( padding-top, $min-width, $max-width, $whitespace-medium, $whitespace-medium--desktop );
   max-width: $max-width-page-container;
   background-color: $primary--light;
   color: $white;
 
-  .footer-inner {
+  &__inner {
     display: block;
-
-    &-column-wrap {
-      @include fluid-value( margin-top, $min-width, $max-width, $whitespace-small, $whitespace-small--desktop );
-      
-      @include tablet{
-        display: flex;
-        justify-content: space-between;
-      }
-    }
   }
-
-  .footer-logo-link {
+  
+  &__logo-link {
     padding-bottom: $whitespace-small;
     box-shadow: unset;
     
@@ -30,166 +21,175 @@ footer {
     }
   }
 
-  .footer-logo {
+  &__logo {
     color: $white;
     max-width: 242px;
   }
+}
 
-  .footer {
-
-    &-title {
-      font-family: $font--heading;
-      font-weight: $font__weight--extra-bold;
-      @include fluid-value( font-size, $min-width, $max-width, $typescale__step0, $typescale__step1 );
-      line-height: 1.375;
-      letter-spacing: 0;
-      text-transform: uppercase;
-      margin-top: $spacing--desktop;
-      margin-bottom: 10px;
-
-      @include tablet {
-        margin-top: 0;
-      }
-    }
-
-    &-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-
-      &__link {
-        transition: all $transition-speed;
-        color: $white;
-        box-shadow: 0 -1px 0 0 $primary--lighter inset;
+.footer-column {
+  &__wrap {
+    @include fluid-value( margin-top, $min-width, $max-width, $whitespace-small, $whitespace-small--desktop );
     
-        &:hover,
-        &:active,
-        &:focus {
-          box-shadow: 0 -12px 0 0 rgba($secondary, 0.25) inset;
-        }
-      }
-    }
-
-    &-social {
-
-      &-list {
-        margin: $spacing 0 0 0;
-        padding: 0;
-        list-style: none;
-        display: flex;
-        align-items: center;
-        
-        @include tablet{
-          justify-content: space-between;
-        }
-      }
-
-      &__item {
-        padding-right: $spacing;
-
-        @include tablet {
-          padding-right: 0;
-        }
-      }
-      
-      &__icon {
-        width: 32px;
-      }
-
-      &__link {
-
-        g,
-        path,
-        svg {
-          fill: $primary--lighter;
-          transition: fill 0ms;
-        }
-
-        &:hover,
-        &:active,
-        &:focus {
-
-          g,
-          path,
-          svg {
-            fill: $white;
-          }
-        }
-      }
+    @include tablet{
+      display: flex;
+      justify-content: space-between;
     }
   }
-  .app-badges,
-  .footer-social, {
 
-    &__link {
-      box-shadow: unset;
-      display:block;
-    
-      &:hover,
-      &:focus,
-      &:active {
-        box-shadow: unset;
-      }
-    }
-  }
-  .app-badges {
+  &__title {
+    font-family: $font--heading;
+    font-weight: $font__weight--extra-bold;
+    @include fluid-value( font-size, $min-width, $max-width, $typescale__step0, $typescale__step1 );
+    line-height: 1.375;
+    letter-spacing: 0;
+    text-transform: uppercase;
     margin-top: $spacing--desktop;
+    margin-bottom: 10px;
 
     @include tablet {
       margin-top: 0;
     }
+  }
+}
 
-    &__badge {
-      width: 170px;
-      min-width: 170px;
+.footer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__link {
+    transition: all $transition-speed;
+    color: $white;
+    box-shadow: 0 -1px 0 0 $primary--lighter inset;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 -12px 0 0 rgba($secondary, 0.25) inset;
+    }
+  }
+}
+
+.footer-social {
+
+  &__list {
+    margin: $spacing 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    
+    @include tablet {
+      justify-content: space-between;
     }
   }
 
-  .footer-copyright {
-    font-size: $base-font-size;
-    line-height: 1.5;
-    @include fluid-value( margin-top, $min-width, $max-width, $whitespace-small, $whitespace-small--desktop );
-    border-top: solid $border--width $white;
-    @include fluid-value( padding-top, $min-width, $max-width, $spacing, $whitespace-small );
-    @include fluid-value( padding-bottom, $min-width, $max-width, $spacing, $whitespace-small );
-    
+  &__item {
+    padding-right: $spacing;
+
     @include tablet {
-      line-height: 1;
+      padding-right: 0;
+    }
+  }
+
+  &__icon {
+    width: 32px;
+  }
+
+  &__link {
+    box-shadow: unset;
+    display:block;
+    
+    g,
+    path,
+    svg {
+      fill: $primary--lighter;
+      transition: fill 0ms;
     }
 
-    &-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: unset;
 
-      @include tablet {
-        text-align: right;
+      g,
+      path,
+      svg {
+        fill: $white;
       }
     }
+  }
+}
 
-    &-list-item {
+.app-badges {
+  margin-top: $spacing--desktop;
 
-      @include tablet {
-        display: inline-block;
+  @include tablet {
+    margin-top: 0;
+  }
 
-        &:not(:last-child) {
-          padding-right: $spacing;
-          border-right: solid $border--width $white;
-          margin-right: $spacing;  
-        }
-      }
-    }
-
-    &-list-link {
-      transition: all $transition-speed;
-      color: $white;
-      box-shadow: 0 -1px 0 0 $primary--lighter inset;
+  &__link {
+    box-shadow: unset;
+    display:block;
   
-      &:hover,
-      &:active,
-      &:focus {
-        box-shadow: 0 -12px 0 0 rgba($secondary, 0.25) inset;
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: unset;
+    }
+  }
+
+  &__badge {
+    width: 170px;
+    min-width: 170px;
+  }
+}
+
+.footer-copyright {
+  font-size: $base-font-size;
+  line-height: 1.5;
+  @include fluid-value( margin-top, $min-width, $max-width, $whitespace-small, $whitespace-small--desktop );
+  border-top: solid $border--width $white;
+  @include fluid-value( padding-top, $min-width, $max-width, $spacing, $whitespace-small );
+  @include fluid-value( padding-bottom, $min-width, $max-width, $spacing, $whitespace-small );
+  
+  @include tablet {
+    line-height: 1;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include tablet {
+      text-align: right;
+    }
+  }
+
+  &__item {
+
+    @include tablet {
+      display: inline-block;
+
+      &:not(:last-child) {
+        padding-right: $spacing;
+        border-right: solid $border--width $white;
+        margin-right: $spacing;  
       }
+    }
+  }
+
+  &__link {
+    transition: all $transition-speed;
+    color: $white;
+    box-shadow: 0 -1px 0 0 $primary--lighter inset;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 -12px 0 0 rgba($secondary, 0.25) inset;
     }
   }
 }
