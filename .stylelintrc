@@ -1,0 +1,3 @@
+{
+  "extends": "@zendeskgarden/stylelint-config"
+}

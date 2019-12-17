@@ -4,23 +4,24 @@
   "description": "ZenDesk theme for 2019 support site",
   "license": "MIT",
   "husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"./**/*.js": [
-			"npm run lint:js",
-			"git add"
-		],
-		"./**/*.(css|scss)": [
-			"npm run lint:styles",
-			"git add"
-		]
-	},
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./**/*.js": [
+      "npm run lint:js",
+      "git add"
+    ],
+    "./**/*.(css|scss)": [
+      "npm run lint:styles",
+      "git add"
+    ]
+  },
   "scripts": {
     "lint:js": "eslint './**/*.js'",
-    "lint:styles": "stylelint './**/*.(css|scss)'",
+    "prelint:styles": "stylelint --fix './**/*.scss'",
+    "lint:styles": "stylelint './**/*.scss'",
     "lint": "npm run lint:js && npm run lint:styles"
   },
   "repository": {
@@ -40,6 +41,7 @@
   },
   "devDependencies": {
     "@jobber/eslint-config": "^0.4.1",
+    "@zendeskgarden/stylelint-config": "^12.0.0",
     "eslint": "^6.7.2",
     "husky": "^3.1.0",
     "js-yaml": "^3.13.1",
@@ -47,6 +49,7 @@
     "stylelint": "^12.0.0",
     "stylelint-config-property-sort-order-smacss": "^5.2.0",
     "stylelint-config-recommended-scss": "^4.1.0",
+    "stylelint-order": "^3.1.1",
     "stylelint-scss": "^3.13.0",
     "typescript": "^3.7.3"
   }
