@@ -212,4 +212,30 @@ document.addEventListener('DOMContentLoaded', function() {
       })
     }
   });
+
+  //HIGHLIGHT TEXT
+  const isInView = ( elm ) => {
+    const topBoundary = window.innerHeight / 5;
+    const bottomBoundary = window.innerHeight - topBoundary;
+    const { top, bottom } = elm.getBoundingClientRect();
+
+    return ( top >= topBoundary ) && ( bottom <= bottomBoundary );
+  };
+
+  const HIGHLIGHT_TEXT = document.querySelectorAll( '.highlight-text' );
+  document.addEventListener( 'DOMContentLoaded', () => {
+    HIGHLIGHT_TEXT.forEach( ( elm ) => {
+      if ( isInView( elm ) ) {
+        elm.classList.add( 'highlight-text--in-view' );
+      }
+    } );
+  } );
+
+  window.addEventListener( 'scroll', () => {
+    HIGHLIGHT_TEXT.forEach( ( elm ) => {
+      if ( isInView( elm ) ) {
+        elm.classList.add( 'highlight-text--in-view' );
+      }
+    } );
+  } );
 });

@@ -1,0 +1,47 @@
+/* stylelint-disable max-line-length */
+$highlight-color: $secondary--light;
+$highlight-dark-color: $secondary;
+$highlight-light-color: $white;
+$highlight-transition-speed: $transition-speed * 3;
+
+.highlight-text {
+  display: inline;
+  margin-left: -.25rem;
+  padding: 0 .25rem;
+  transition: background-position $highlight-transition-speed;
+  background-image: linear-gradient(to right, transparent 50%, $highlight-color 50%);
+  background-repeat: repeat-x;
+  background-position: 0 75%;
+  background-size: 200% 52%;
+  background-origin: 0;
+
+  &.text-rotate {
+    &::after {
+      width: calc(100% + .2rem);
+    }
+  }
+
+  &--in-view {
+    background-position: -100% 75%;
+  }
+
+  &--dark {
+    background-image: linear-gradient(to right, transparent 50%, $highlight-dark-color 50%);
+  }
+
+  &--blue {
+    background-image: linear-gradient(to right, transparent 50%, $primary 50%);
+  }
+
+  &--block {
+    display: block;
+  }
+
+  &--light {
+    background-image: linear-gradient(to right, transparent 50%, $highlight-light-color 50%);
+  }
+
+  &--caption {
+    background-image: linear-gradient(to right, transparent 50%, $yellow 50%);
+  }
+}

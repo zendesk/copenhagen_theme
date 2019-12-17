@@ -70,12 +70,14 @@
 }
 
 .user-nav {
-  @include tablet {
-    position: relative;
-  }
   display: inline-block;
   position: absolute;
   white-space: nowrap;
+  @include tablet {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
 
   &[aria-expanded='true'] {
     z-index: 1;
@@ -111,29 +113,9 @@
   text-decoration: none;
   text-transform: uppercase;
 
-  &.button {
-    margin-right: $header__padding--max;
-    padding: 0 $header__padding--max;
-    transition: all $transition-speed;
-    border-width: 2px;
-    border-radius: 0;
-    border-color: $primary;
-    background-color: $white;
-    color: $primary;
-
-    &:hover,
-    &:focus,
-    &:active {
-      border: solid 2px $primary;
-      background-color: $primary;
-      color: $white;
-      text-decoration: none;
-    }
+  &.login {
+    display: inline-block;
   }
-
-  [dir='rtl'] & { padding: 0 0 0 20px; }
-
-  &.login { display: inline-block; }
   @include tablet {
     display: inline-block;
   }
