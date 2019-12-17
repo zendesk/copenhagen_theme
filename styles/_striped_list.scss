@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Striped list *****/
 /* Used in community posts list and requests list */
 .striped-list {
@@ -5,16 +6,15 @@
 
   &-item {
     @include tablet {
-      align-items: center;
       flex-direction: row;
+      align-items: center;
     }
-
-    align-items: flex-start;
-    border-bottom: 1px solid $border-color;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-end;
     padding: 20px 0;
+    border-bottom: 1px solid $border-color;
   }
 
   &-info {
@@ -22,9 +22,9 @@
   }
 
   &-title {
-    color: $link_color;
-    margin-bottom: 10px;
     margin-right: 5px;
+    margin-bottom: 10px;
+    color: $link_color;
 
     &:hover,
     &:focus,
@@ -45,19 +45,17 @@
       flex: 1;
       justify-content: space-around;
     }
-
-    color: $secondary-text-color;
-    font-weight: $font-weight-light;
-    font-size: $font-size-small;
     justify-content: flex-start;
+    color: $secondary-text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
     text-transform: capitalize;
   }
 
   &-count-item {
     &::after {
       @include tablet { display: none; }
-
-      content: "·";
+      content: '·';
       display: inline-block;
       padding: 0 5px;
     }
@@ -67,11 +65,10 @@
 
   &-number {
     @include tablet {
-      color: $text_color;
       display: block;
+      color: $text_color;
       font-weight: $font-weight-base;
     }
-
     font-weight: $font-weight-light;
     text-align: center;
   }

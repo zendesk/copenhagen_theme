@@ -1,9 +1,9 @@
+/* stylelint-disable */
 /***** Search results *****/
 .search-results {
   @include desktop {
     flex-direction: row;
   }
-
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -13,25 +13,23 @@
     @include desktop {
       flex: 0 0 75%;
     }
-
     flex: 1;
   }
 
   &-sidebar {
-    border-top: 1px solid $border-color;
     flex: 1 0 auto;
     margin-bottom: 20px;
     padding: 0;
-
+    border-top: 1px solid $border-color;
     @include desktop {
-      border: 0;
       flex: 0 0 20%;
       height: auto;
+      border: 0;
     }
 
     .sidenav-item {
       &:hover,
-      &[aria-selected="true"] {
+      &[aria-selected='true'] {
         background-color: #e9ebed;
         color: inherit;
         text-decoration: none;
@@ -45,7 +43,7 @@
     .collapsible-sidebar {
       margin-bottom: 30px;
 
-      &[aria-expanded="false"] {
+      &[aria-expanded='false'] {
         .multibrand-filter-list {
           display: none;
           @include desktop { display: block; }
@@ -62,14 +60,14 @@
     }
 
     .see-all-filters {
-      background: none;
-      border: none;
-      cursor: pointer;
       display: block;
       padding: 10px;
+      border: none;
+      background: none;
       color: $link_color;
+      cursor: pointer;
 
-      &[aria-hidden="true"] {
+      &[aria-hidden='true'] {
         display: none;
       }
 
@@ -91,8 +89,10 @@
 
   &-list {
     margin-bottom: 25px;
+
     > li {
       padding: 20px 0;
+
       &:first-child {
         border-top: 1px solid $border-color;
       }
@@ -112,7 +112,7 @@
 
     > li {
       display: block;
-      @include desktop { display: inline }
+      @include desktop { display: inline; }
     }
 
     li:first-child {
@@ -123,11 +123,11 @@
       color: inherit;
 
       &:not(:last-child) {
-        [dir="ltr"] & {
+        [dir='ltr'] & {
           margin-right: 20px;
         }
 
-        [dir="rtl"] & {
+        [dir='rtl'] & {
           margin-left: 20px;
         }
       }
@@ -145,47 +145,48 @@
 }
 
 .search-result {
-
   &-title {
-    font-size: $font-size-bigger;
     display: inline-block;
+    font-size: $font-size-bigger;
   }
 
   &-icons {
-    [dir="ltr"] & {
+    [dir='ltr'] & {
       float: right;
     }
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       float: left;
     }
   }
 
   &-votes,
   &-meta-count {
-    color: $secondary-text-color;
     display: inline-block;
+    position: relative;
+    padding: 4px 5px;
+    color: $secondary-text-color;
     font-size: $font-size-small;
     font-weight: $font-weight-light;
-    padding: 4px 5px;
-    position: relative;
 
     &-icon {
-      color: $brand_color;
-      vertical-align: middle;
       width: 13px;
       height: 13px;
+      color: $brand_color;
+      vertical-align: middle;
     }
 
-    [dir="ltr"] & {
+    [dir='ltr'] & {
       margin-left: 5px;
+
       &::before {
         margin-right: 3px;
       }
     }
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       margin-right: 5px;
+
       &::before {
         margin-left: 3px;
       }
@@ -217,9 +218,9 @@
 }
 
 /* Add a yellow background for Chinese */
-html[lang|="zh"] {
+html[lang|='zh'] {
   .search-results-description em {
-    font-style: normal;
     background: yellow;
+    font-style: normal;
   }
 }

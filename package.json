@@ -38,7 +38,9 @@
     ],
     "rules": {
       "no-descending-specificity": null,
-      "at-rule-no-unknown": null
+      "at-rule-no-unknown": null,
+      "selector-no-qualifying-type": null,
+      "property-no-vendor-prefix": null
     }
   },
   "devDependencies": {

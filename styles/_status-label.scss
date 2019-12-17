@@ -1,16 +1,16 @@
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
-  background-color: #038153;
+  display: inline-block;
+  margin-right: 2px;
+  padding: 3px 10px;
   border-radius: 4px;
+  background-color: #038153;
   color: #fff;
   font-size: 12px;
   font-weight: $font-weight-semibold;
-  margin-right: 2px;
-  padding: 3px 10px;
   vertical-align: middle;
   white-space: nowrap;
-  display: inline-block;
 
   &:hover,
   &:active,
@@ -25,23 +25,22 @@
   }
 
   &-official {
-    border-radius: 0;
-    margin-right: 0;
     position: absolute;
-    right: 0;
-    text-align: center;
     top: 0;
+    right: 0;
     width: 100%;
-
+    margin-right: 0;
+    border-radius: 0;
+    text-align: center;
     @include tablet {
-      border-radius: 0 0 4px 4px;
       right: 30px;
       width: auto;
+      border-radius: 0 0 4px 4px;
     }
 
-    [dir="rtl"] & {
-      left: 30px;
+    [dir='rtl'] & {
       right: auto;
+      left: 30px;
     }
   }
 

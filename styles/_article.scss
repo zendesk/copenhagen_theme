@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Article *****/
 .article {
   /*
@@ -7,18 +8,16 @@
   */
   @include desktop {
     flex: 1 0 66%;
-    max-width: 66%;
     min-width: 640px;
+    max-width: 66%;
     padding: 0 30px;
   }
-
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
 
   &-container {
     @include desktop {
       flex-direction: row;
     }
-
     display: flex;
     flex-direction: column;
   }
@@ -28,14 +27,13 @@
       flex-direction: row;
       margin-top: 0;
     }
-
-    align-items: flex-start;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 40px;
     margin-top: 20px;
+    margin-bottom: 40px;
   }
 
   &-avatar {
@@ -52,17 +50,17 @@
     }
 
     .icon-lock::before {
-      content: "\1F512";
-      font-size: 20px;
+      content: '\1F512';
       position: relative;
       left: -5px;
+      font-size: 20px;
       vertical-align: baseline;
     }
   }
 
-  [role="button"] {
+  [role='button'] {
     @include tablet { width: auto; }
-    flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
+    flex-shrink: 0; /* Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored) */
     width: 100%;
   }
 
@@ -77,18 +75,19 @@
 
   &-body {
     @include content-body;
+
     > p:last-child { margin-bottom: 0; }
   }
 
   &-content {
-    line-height: 1.6;
     margin: 40px 0;
+    line-height: 1.6;
     word-wrap: break-word;
   }
 
   &-footer {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding-bottom: 20px;
   }
@@ -102,78 +101,74 @@
     }
 
     .icon-comments {
-      color: $brand_color;
-      content: "\1F4AC";
+      content: '\1F4AC';
       display: inline-block;
-      font-size: 18px;
       padding: 5px;
+      color: $brand_color;
+      font-size: 18px;
     }
   }
 
   &-sidebar {
     @include desktop {
-      border: 0;
       flex: 0 0 17%;
       height: auto;
+      border: 0;
     }
-
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
     flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
     margin-bottom: 20px;
     padding: 0;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
   }
 
   &-relatives {
     @include tablet {
       flex-direction: row;
     }
-
-    border-top: 1px solid $border-color;
     display: flex;
     flex-direction: column;
     padding: 20px 0;
+    border-top: 1px solid $border-color;
 
     > * {
       flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
       min-width: 50%;
-      overflow-wrap: break-word;
       margin-right: 0;
+      overflow-wrap: break-word;
 
       &:last-child { padding: 0; }
-
       @include tablet { padding-right: 20px; }
     }
   }
 
-
   &-votes {
-    border-top: 1px solid $border-color;
     padding: 30px 0;
+    border-top: 1px solid $border-color;
     text-align: center;
   }
 
   &-vote {
-    background: transparent;
-    border: 1px solid $brand_color;
-    color: $brand_color;
-    margin: 10px 5px;
-    min-width: 90px;
     width: auto;
+    min-width: 90px;
+    margin: 10px 5px;
+    border: 1px solid $brand_color;
+    background: transparent;
+    color: $brand_color;
 
     &::before {
       @extend .icon;
-      font-size: 8px;
       margin-right: 10px;
+      font-size: 8px;
 
-      [dir="rtl"] & {
+      [dir='rtl'] & {
         margin-right: 0;
         margin-left: 10px;
       }
     }
 
     &::after {
-      content: attr(title); /* Yes/No label*/
+      content: attr(title); /* Yes/No label */
     }
 
     &:focus,
@@ -188,18 +183,18 @@
 
     &:hover::before,
     &:hover::after,
-    &[aria-selected="true"]::before,
-    &[aria-selected="true"]::after {
+    &[aria-selected='true']::before,
+    &[aria-selected='true']::after {
       color: $brand_text_color;
     }
   }
 
   &-vote-up::before {
-    content: "\2713";
+    content: '\2713';
   }
 
   &-vote-down::before {
-    content: "\2715";
+    content: '\2715';
   }
 
   &-more-questions {
@@ -209,13 +204,12 @@
 
   &-return-to-top {
     @include desktop { display: none; }
-
     border-top: 1px solid $border-color;
 
     a {
-      color: $text_color;
       display: block;
       padding: 20px 0;
+      color: $text_color;
 
       &:hover,
       &:focus {
@@ -224,10 +218,10 @@
     }
 
     .icon-arrow-up::before {
-      font-size: 16px;
       margin-left: 5px;
+      font-size: 16px;
 
-      [dir="rtl"] & {
+      [dir='rtl'] & {
         margin-right: 10px;
       }
     }
@@ -239,25 +233,25 @@
     text-decoration: none;
 
     &:hover {
-      background-color: $hover-button-color;
       border-color: $hover-button-color;
+      background-color: $hover-button-color;
     }
   }
 }
 
 .sidenav {
   &-title {
-    font-size: $font-size-base;
     position: relative;
+    font-size: $font-size-base;
   }
 
   &-item {
-    border-radius: 4px;
-    color: $text_color;
     display: block;
-    font-weight: $font-weight-light;
     margin-bottom: 10px;
     padding: 10px;
+    border-radius: 4px;
+    color: $text_color;
+    font-weight: $font-weight-light;
 
     &.current-article,
     &:hover {
@@ -271,8 +265,8 @@
 .recent-articles,
 .related-articles {
   h3 {
-    font-size: $font-size-base;
     margin: 20px 0;
+    font-size: $font-size-base;
   }
 
   li {
