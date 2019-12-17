@@ -90,16 +90,30 @@
 /**** MID CTA *****/
 .home-mid-cta {
   &__wrapper {
-    background-color: $grey--lightest;
-  }
-
-  &__pre-title {
-    text-transform: uppercase;
-    @include fluid-value( font-size,
+    @include fluid-value( padding-top,
     $min-width,
     $max-width,
     $whitespace-medium,
     $whitespace-medium--desktop
+  );
+    @include fluid-value( padding-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+    background-color: $grey--lightest;
+  }
+
+  &__pre-title {
+    font-family: $font--default;
+    font-weight: $font__weight--black;
+    text-transform: uppercase;
+    @include fluid-value( font-size,
+    $min-width,
+    $max-width,
+    15px,
+    18px
   );
   }
 }
