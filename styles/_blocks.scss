@@ -2,37 +2,29 @@
 /* Used in Homepage#categories and Community#topics */
 .blocks {
   &__list {
-
-    @include tablet {
-      margin: 0 -15px;
-    }
-
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    list-style: none;
     padding: 0;
+    list-style: none;
+    @include tablet {
+      margin: 0 -15px;
+    }
   }
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 0;
-  list-style: none;
 }
 
 .blocks__item {
-  border: 1px solid $white;
-  box-sizing: border-box;
-  color: $primary;
   display: flex;
+  box-sizing: border-box;
   flex: 1 0 340px;
-  margin: 0 0 30px;
   max-width: 100%;
-  text-align: left;
-  box-shadow: unset;
-  background-color: $white;
+  margin: 0 0 30px;
   transition: all $transition-speed;
-
+  border: 1px solid $white;
+  background-color: $white;
+  box-shadow: unset;
+  color: $primary;
+  text-align: left;
   @include tablet {
     margin: 0 $spacing $spacing--desktop;
   }
@@ -51,8 +43,8 @@
 }
 
 .blocks-internal {
+  border: 1px solid $primary;
   background-color: $white;
-  border: 1px solid $primary  ;
 
   .icon-lock::before {
     content: '\1F512';
@@ -61,17 +53,19 @@
     font-size: 15px;
   }
 
-  a { color: $primary; }
+  a {
+    color: $primary;
+  }
 }
 
 .blocks__item-link {
-  color: $primary;
-  padding: 20px 30px;
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   justify-content: center;
+  padding: 20px 30px;
   box-shadow: unset;
+  color: $primary;
 
   &:hover {
     box-shadow: unset;
@@ -79,8 +73,8 @@
 
   &:active,
   &:focus {
-    text-decoration: none;
     box-shadow: unset;
+    text-decoration: none;
     @include focus-ring;
   }
 }

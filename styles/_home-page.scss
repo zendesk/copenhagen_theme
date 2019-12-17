@@ -9,13 +9,13 @@
     $max-width,
     $whitespace-medium,
     $whitespace-medium--desktop
-    );
+  );
     @include fluid-value( padding-bottom,
     $min-width,
     $max-width,
     $whitespace-medium,
     $whitespace-medium--desktop
-    );
+  );
   }
 
   &__title {
@@ -32,13 +32,13 @@
     $max-width,
     $whitespace-medium,
     $whitespace-medium--desktop
-    );
+  );
     @include fluid-value( padding-bottom,
     $min-width,
     $max-width,
     $whitespace-medium,
     $whitespace-medium--desktop
-    );
+  );
   }
 
   &__title {
@@ -54,18 +54,17 @@
 }
 
 .jobber-resources-card {
-
   flex-grow: 1;
 
-  &:not(:last-child){
+  &:not(:last-child) {
     margin-bottom: $spacing--desktop;
   }
   @include tablet {
-    padding: 0 $spacing;
-    margin-bottom: 0;
     width: 33%;
+    margin-bottom: 0;
+    padding: 0 $spacing;
 
-    &:not(:last-child){
+    &:not(:last-child) {
       margin-bottom: unset;
     }
   }
@@ -101,11 +100,6 @@
     $max-width,
     $whitespace-medium,
     $whitespace-medium--desktop
-    );
-  }
-
-  &__link {
-
+  );
   }
 }
-
