@@ -1,18 +1,19 @@
+/* stylelint-disable */
 /***** Search field *****/
 .search {
   position: relative;
 
-  input[type="search"] {
-    border: 1px solid $border-color;
+  input[type='search'] {
     box-sizing: border-box;
-    color: $field-text-color;
-    height: 40px;
-    padding-left: 40px;
-    padding-right: 20px;
-    -webkit-appearance: none;
     width: 100%;
+    height: 40px;
+    padding-right: 20px;
+    padding-left: 40px;
+    border: 1px solid $border-color;
+    color: $field-text-color;
+    -webkit-appearance: none;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       padding-right: 40px;
       padding-left: 20px;
     }
@@ -23,40 +24,39 @@
     }
   }
 
-
   &::before {
     @extend .icon;
     @include vertical-align;
-    background-color: $white;
-    color: $primary;
-    content: "\1F50D";
-    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
+    content: '\1F50D';
     position: absolute;
     left: 15px;
+    background-color: $white;
+    color: $primary;
+    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       right: $spacing;
       left: auto;
     }
   }
 
-  &-full input[type="search"] {
+  &-full input[type='search'] {
     @include fluid-value( height, $min-width, $max-width, 50px, 75px );
+    transition: border $transition-speed ease-out, color $transition-speed ease-out;
+    border: 5px solid $grey--lighter;
     color: $primary;
-    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
     font-family: $font--heading;
     font-weight: $font__weight--extra-bold;
-    border: 5px solid $grey--lighter;
     text-transform: uppercase;
-    transition: border $transition-speed ease-out, color $transition-speed ease-out;
+    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
 
     &::-webkit-input-placeholder {
       color: $primary;
     }
-    
+
     &:focus {
-      color: $grey;
       border: 5px solid $primary;
+      color: $grey;
 
       &::-webkit-input-placeholder {
         color: $grey;

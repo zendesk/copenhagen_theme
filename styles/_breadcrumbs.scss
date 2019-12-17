@@ -3,23 +3,23 @@
   @include tablet {
     margin: 0;
   }
-
-  margin: 0 0 15px 0;
+  margin: 0 0 15px;
   padding: 0;
 
   li {
-    color: $secondary-text-color;
     display: inline;
-    font-weight: $font-weight-light;
-    font-size: $font-size-small;
     max-width: 450px;
     overflow: hidden;
+    color: $secondary-text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
     text-overflow: ellipsis;
 
     + li::before {
-      content: ">";
+      content: '>';
       margin: 0 4px;
     }
+
     a:visited {
       color: $link_color;
     }

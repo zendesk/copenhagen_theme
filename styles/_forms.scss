@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Forms *****/
 
 .form {
@@ -10,36 +11,36 @@
 
 .form-field label {
   display: block;
-  font-size: $font-size-small;
   margin-bottom: 5px;
+  font-size: $font-size-small;
 }
 
 .form-field input {
-  border: 1px solid $border-color;
-  border-radius: 4px;
-  padding: 10px;
   width: 100%;
-
-  &:focus { border: 1px solid $brand_color; }
-}
-
-.form-field input[type="text"] {
+  padding: 10px;
   border: 1px solid $border-color;
   border-radius: 4px;
 
   &:focus { border: 1px solid $brand_color; }
 }
 
-.form-field input[type="checkbox"] {
+.form-field input[type='text'] {
+  border: 1px solid $border-color;
+  border-radius: 4px;
+
+  &:focus { border: 1px solid $brand_color; }
+}
+
+.form-field input[type='checkbox'] {
   width: auto;
 }
 
 // Select box
 .form-field .nesty-input {
-  border-radius: 4px;
   height: 40px;
-  line-height: 40px;
+  border-radius: 4px;
   outline: none;
+  line-height: 40px;
   vertical-align: middle;
 
   &:focus {
@@ -49,8 +50,8 @@
 }
 
 .form-field .hc-multiselect-toggle:focus {
-  outline: none;
   border: 1px solid $brand_color;
+  outline: none;
   text-decoration: none;
 }
 
@@ -58,29 +59,29 @@
   vertical-align: middle;
 }
 
-.form-field input[type="checkbox"] + label {
+.form-field input[type='checkbox'] + label {
   margin: 0 0 0 10px;
 }
 
 .form-field.required > label::after {
-  content: "*";
-  color: #f00;
+  content: '*';
   margin-left: 2px;
+  color: #f00;
 }
 
 .form-field .optional {
-  color: $secondary-text-color;
   margin-left: 4px;
+  color: $secondary-text-color;
 }
 
 .form-field p {
+  margin: 5px 0;
   color: $secondary-text-color;
   font-size: 12px;
-  margin: 5px 0;
 }
 
-[data-loading="true"] input,
-[data-loading="true"] textarea {
+[data-loading='true'] input,
+[data-loading='true'] textarea {
   background: transparent url($assets-loader-gif) 99% 50% no-repeat;
   background-size: 16px 16px;
 }
@@ -91,19 +92,19 @@
 }
 
 .form footer a {
+  margin-right: 15px;
   color: $secondary-text-color;
   cursor: pointer;
-  margin-right: 15px;
 }
 
 .form .suggestion-list {
-  font-size: $font-size-small;
   margin-top: 30px;
+  font-size: $font-size-small;
 
   label {
-    border-bottom: 1px solid $border-color;
     display: block;
     padding-bottom: 5px;
+    border-bottom: 1px solid $border-color;
   }
 
   li {

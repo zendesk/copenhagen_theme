@@ -5,11 +5,11 @@
   max-width: $max-width-page-container;
   background-color: $primary--light;
   color: $white;
-  
+
   &__logo-link {
     padding-bottom: $whitespace-small;
     box-shadow: unset;
-    
+
     &:hover,
     &:focus,
     &:active {
@@ -26,7 +26,7 @@
 .footer-column {
   &__wrap {
     @include fluid-value( margin-top, $min-width, $max-width, $whitespace-small, $whitespace-small--desktop );
-    
+
     @include tablet{
       display: flex;
       justify-content: space-between;
@@ -75,7 +75,7 @@
     list-style: none;
     display: flex;
     align-items: center;
-    
+
     @include tablet {
       justify-content: space-between;
     }
@@ -96,7 +96,7 @@
   &__link {
     box-shadow: unset;
     display:block;
-    
+
     g,
     path,
     svg {
@@ -128,7 +128,7 @@
   &__link {
     box-shadow: unset;
     display:block;
-  
+
     &:hover,
     &:focus,
     &:active {
@@ -149,7 +149,7 @@
   border-top: solid $border--width $white;
   @include fluid-value( padding-top, $min-width, $max-width, $spacing, $whitespace-small );
   @include fluid-value( padding-bottom, $min-width, $max-width, $spacing, $whitespace-small );
-  
+
   @include tablet {
     line-height: 1;
   }
@@ -172,7 +172,7 @@
       &:not(:last-child) {
         padding-right: $spacing;
         border-right: solid $border--width $white;
-        margin-right: $spacing;  
+        margin-right: $spacing;
       }
     }
   }

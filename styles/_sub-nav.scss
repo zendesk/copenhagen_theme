@@ -1,18 +1,18 @@
+/* stylelint-disable */
 .sub-nav {
   @include tablet {
-    align-items: baseline;
     flex-direction: row;
+    align-items: baseline;
   }
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 30px;
   min-height: 50px;
+  margin-bottom: 30px;
   padding-bottom: 15px;
 
   //Inner pages search field
-  input[type="search"] {
+  input[type='search'] {
     @include tablet {
       min-width: 300px;
     }

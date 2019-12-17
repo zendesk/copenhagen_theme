@@ -13,10 +13,9 @@
 
 @mixin max-width-container {
   @media (min-width: #{$max-width-container}) {
-    padding: 0;
     width: 90%;
+    padding: 0;
   }
-
   max-width: $max-width-container;
   margin: 0 auto;
   padding: 0 5%;
@@ -29,11 +28,11 @@
 }
 
 @mixin text-overflow {
+  word-wrap: break-word; //IE/Edge compatibility
+  word-break: break-word;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
   -webkit-hyphens: auto;
-  word-break: break-word;
-  word-wrap: break-word; //IE/Edge compatibility
 }
 
 @mixin focus-ring {
@@ -43,20 +42,20 @@
 
 @mixin content-body {
   img {
-    height: auto;
     max-width: 100%;
+    height: auto;
   }
 
   ul, ol {
+    margin: 20px 0 20px 20px;
     padding-left: 20px;
     list-style-position: outside;
-    margin: 20px 0 20px 20px;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
+      margin-right: 20px;
+      margin-left: 0;
       padding-right: 20px;
       padding-left: 0;
-      margin-left: 0;
-      margin-right: 20px;
     }
   }
 
@@ -72,27 +71,27 @@
   a:visited { color: $visited-link-color; }
 
   code {
-    background: $primary-shade;
+    margin: 0 2px;
+    padding: 0 5px;
     border: 1px solid $border-color;
     border-radius: 3px;
-    padding: 0 5px;
-    margin: 0 2px;
+    background: $primary-shade;
   }
 
   pre {
-    background: $primary-shade;
-    border: 1px solid $border-color;
-    border-radius: 3px;
     padding: 10px 15px;
     overflow: auto;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    background: $primary-shade;
     white-space: pre;
   }
 
   blockquote {
+    padding: 0 15px;
     border-left: 1px solid $border-color;
     color: $secondary-text-color;
     font-style: italic;
-    padding: 0 15px;
   }
 }
 
@@ -101,28 +100,26 @@
 /**
  * Source: https://www.smashingmagazine.com/2016/05/fluid-typography/
  */
- @mixin fluid-value( $properties, $min-vw, $max-vw, $min-value, $max-value ) {
+@mixin fluid-value( $properties, $min-vw, $max-vw, $min-value, $max-value ) {
   @each $property in $properties {
     #{$property}: $min-value;
   }
-
   @media screen and (min-width: $min-vw) {
     @each $property in $properties {
-      #{$property}: calc(
-        #{$min-value} + #{strip-unit($max-value - $min-value)} *
-          (
-            100vw - #{$min-vw}
-          ) / #{strip-unit($max-vw - $min-vw)}
-      );
+      #{$property}:
+        calc(#{$min-value} + #{strip-unit($max-value - $min-value)} *
+        (
+          100vw - #{$min-vw}
+        ) / #{strip-unit($max-vw - $min-vw)});
     }
   }
-
   @media screen and (min-width: $max-vw) {
     @each $property in $properties {
       #{$property}: $max-value;
     }
   }
 }
+
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
 }

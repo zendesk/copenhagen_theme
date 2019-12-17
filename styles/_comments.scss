@@ -1,34 +1,34 @@
+/* stylelint-disable */
 /***** Comments *****/
 /* Styles comments inside articles, posts and requests */
 .comment {
-  border-bottom: 1px solid $border-color;
   padding: 20px 0;
+  border-bottom: 1px solid $border-color;
 
   &-heading {
-    margin-bottom: 5px;
     margin-top: 0;
+    margin-bottom: 5px;
     font-size: 18px;
     font-weight: $font-weight-semibold;
   }
 
   &-overview {
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
     padding: 20px 0;
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
 
     p { margin-top: 0; }
   }
 
   &-callout {
-    color: $secondary-text-color;
     display: inline-block;
-    font-weight: $font-weight-light;
-    font-size: $font-size-small;
     margin-bottom: 0;
+    color: $secondary-text-color;
+    font-size: $font-size-small;
+    font-weight: $font-weight-light;
 
     a { color: $brand_color; }
   }
-
 
   &-sorter {
     display: inline-block;
@@ -36,11 +36,11 @@
 
     .dropdown-toggle {
       color: $secondary-text-color;
-      font-weight: $font-weight-light;
       font-size: $font-size-small;
+      font-weight: $font-weight-light;
     }
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       float: left;
     }
   }
@@ -51,38 +51,36 @@
 
     &.comment-official {
       @include tablet { padding-top: 20px; }
-
-      border: 1px solid $brand_color;
       padding: 40px 20px 20px; // 20 + 20 of official commment badge
+      border: 1px solid $brand_color;
     }
   }
 
   &-info {
+    width: 100%;
     min-width: 0;
     padding-right: 20px;
-    width: 100%;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       padding-right: 0;
       padding-left: 20px;
     }
   }
 
   &-author {
-    align-items: flex-end;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-end;
     margin-bottom: 20px;
-
     @include tablet { justify-content: space-between; }
   }
 
   &-avatar {
     margin-right: 10px;
 
-    [dir="rtl"] & {
-      margin-left: 10px;
+    [dir='rtl'] & {
       margin-right: 0;
+      margin-left: 10px;
     }
   }
 
@@ -92,7 +90,6 @@
 
   &-labels {
     flex-basis: 100%;
-
     @include tablet {
       flex-basis: auto;
     }
@@ -100,7 +97,6 @@
 
   .status-label:not(.status-label-official) {
     margin-top: 10px;
-
     @include tablet { margin-top: 0; }
   }
 
@@ -114,7 +110,7 @@
 
   &-form-controls {
     @include tablet {
-      [dir="ltr"] & {
+      [dir='ltr'] & {
         text-align: right;
       }
     }
@@ -122,25 +118,27 @@
     margin-top: 10px;
     text-align: left;
 
-    input[type="submit"] {
+    input[type='submit'] {
       @include desktop {
         margin-left: 15px;
-        [dir="rtl"] & {
-          margin-left: 0;
+
+        [dir='rtl'] & {
           margin-right: 15px;
+          margin-left: 0;
         }
       }
       margin-top: 15px;
     }
 
-    input[type="checkbox"] {
+    input[type='checkbox'] {
       margin-right: 5px;
 
-      [dir="rtl"] { margin-left: 5px; }
+      [dir='rtl'] { margin-left: 5px; }
     }
   }
 
   &-ccs { display: none; }
+
   &-ccs + textarea { margin-top: 10px; }
 
   &-attachments {
@@ -152,9 +150,9 @@
   &-body {
     @include text-overflow;
     @include content-body;
+    overflow-x: auto;
     font-family: $text_font;
     line-height: 1.6;
-    overflow-x: auto;
   }
 
   &-mark-as-solved {

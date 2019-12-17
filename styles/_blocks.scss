@@ -1,90 +1,88 @@
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
-.blocks {
-  &-list {
-    @include tablet {
-      margin: 0 -15px;
-    }
-
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    list-style: none;
-    padding: 0;
+.blocks-list {
+  @include tablet {
+    margin: 0 -15px;
   }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0;
+  list-style: none;
+}
 
-  &-item {
-    @include tablet {
-      margin: 0 15px 30px;
-    }
-
-    border: 1px solid $brand_color;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: $brand_color;
-    display: flex;
-    flex: 1 0 340px;
-    margin: 0 0 30px;
-    max-width: 100%;
-    text-align: center;
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $brand_color;
-
-      * {
-        color: $brand_text_color;
-        text-decoration: none;
-      }
-    }
-
-    &-internal {
-      background-color: transparent;
-      border: 1px solid $border-color;
-
-      .icon-lock::before {
-        content: "\1F512";
-        font-size: 15px;
-        bottom: 5px;
-        position: relative;
-      }
-
-      a { color: $text_color; }
-    }
+.blocks-item {
+  @include tablet {
+    margin: 0 15px 30px;
   }
+  display: flex;
+  box-sizing: border-box;
+  flex: 1 0 340px;
+  max-width: 100%;
+  margin: 0 0 30px;
+  border: 1px solid $brand_color;
+  border-radius: 4px;
+  color: $brand_color;
+  text-align: center;
 
-  &-item-link {
-    color: $brand_color;
-    padding: 20px 30px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    justify-content: center;
-    border-radius: inherit;
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $brand_color;
 
-    &:hover,
-    &:active {
-      text-decoration: none;
-    }
-    
-    &:focus {
-      @include focus-ring;
+    * {
+      color: $brand_text_color;
       text-decoration: none;
     }
   }
+}
 
-  &-item-title {
-    margin-bottom: 0;
-    font-size: 16px;
+.blocks-internal {
+  border: 1px solid $border-color;
+  background-color: transparent;
+
+  .icon-lock::before {
+    content: '\1F512';
+    position: relative;
+    bottom: 5px;
+    font-size: 15px;
   }
 
-  &-item-description {
-    font-weight: $font-weight-light;
-    margin: 0;
+  a {
+    color: $text_color;
+  }
+}
+
+.blocks-item-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px 30px;
+  border-radius: inherit;
+  color: $brand_color;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
   }
 
-  &-item-description:not(:empty) {
-    margin-top: 10px;
+  &:focus {
+    @include focus-ring;
+    text-decoration: none;
   }
+}
+
+.blocks-item-title {
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.blocks-item-description {
+  margin: 0;
+  font-weight: $font-weight-light;
+}
+
+.blocks-item-description:not(:empty) {
+  margin-top: 10px;
 }
