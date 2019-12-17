@@ -1,8 +1,8 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $border-color;
   margin-top: 60px;
   padding: 30px 0;
+  border-top: 1px solid $border-color;
 
   a { color: $secondary-text-color; }
 
@@ -13,8 +13,8 @@
   }
 
   &-language-selector {
-    color: $secondary-text-color;
     display: inline-block;
+    color: $secondary-text-color;
     font-weight: $font-weight-light;
   }
 }

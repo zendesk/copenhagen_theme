@@ -1,3 +1,4 @@
+/* stylelint-disable */
 /***** Post *****/
 /*
 * The post grid is defined this way:
@@ -9,7 +10,6 @@
     flex: 1 0 70%;
     max-width: 70%;
   }
-
   flex: 1;
   margin-bottom: 10px;
 
@@ -17,20 +17,18 @@
     @include desktop {
       flex-direction: row;
     }
-
     display: flex;
     flex-direction: column;
   }
 
   &-header {
     @include tablet {
-      align-items: baseline;
       flex-direction: row;
+      align-items: baseline;
     }
-
-    align-items: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
 
@@ -42,8 +40,8 @@
       margin-bottom: 0;
       padding-right: 10px;
     }
-    margin-bottom: 20px;
     width: 100%;
+    margin-bottom: 20px;
 
     h1 {
       @include tablet { margin-right: 5px; }
@@ -53,8 +51,8 @@
   }
 
   &-author {
-    align-items: flex-start;
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
   }
 
@@ -74,11 +72,11 @@
   }
 
   &-info {
+    width: 100%;
     min-width: 0;
     padding-right: 20px;
-    width: 100%;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       padding-right: 0;
       padding-left: 20px;
     }
@@ -90,9 +88,9 @@
     margin-left: 10px;
     vertical-align: middle;
 
-    [dir="rtl"] & {
-      margin-left: 0;
+    [dir='rtl'] & {
       margin-right: 10px;
+      margin-left: 0;
     }
   }
 
@@ -101,8 +99,8 @@
   }
 
   &-footer {
-    align-items: center;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding-bottom: 20px;
   }
@@ -116,27 +114,26 @@
     }
 
     .icon-comments {
-      color: $brand_color;
-      content: "\1F4AC";
+      content: '\1F4AC';
       display: inline-block;
-      font-size: 18px;
       padding: 5px;
+      color: $brand_color;
+      font-size: 18px;
     }
   }
 
   &-sidebar {
     @include desktop {
-      border: 0;
       flex: 1 0 30%;
       padding: 0 0 0 50px;
+      border: 0;
       text-align: initial;
 
-      [dir="rtl"] & { padding: 0 50px 0 0; }
+      [dir='rtl'] & { padding: 0 50px 0 0; }
     }
-
-    border-top: 1px solid $border-color;
     flex: 1;
     padding: 30px 0;
+    border-top: 1px solid $border-color;
     text-align: center;
 
     &-title {

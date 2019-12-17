@@ -1,11 +1,11 @@
+/* stylelint-disable */
 /***** Request *****/
 .request {
   &-container {
     @include desktop {
-      align-items: flex-start;
       flex-direction: row;
+      align-items: flex-start;
     }
-
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -30,8 +30,8 @@
     }
 
     .comment-fields.shown { display: block; }
-    .request-submit-comment.shown { display: inline; }
 
+    .request-submit-comment.shown { display: inline; }
     @include desktop {
       flex: 0 0 66%; // 4% spacing
       order: 0;
@@ -41,15 +41,16 @@
     .comment-form-controls {
       display: block;
     }
+
     .comment-ccs { display: block; }
 
     .comment-show-container {
-      border-radius: 2px;
+      width: 100%;
+      padding: 8px 25px;
       border: 1px solid $border-color;
+      border-radius: 2px;
       color: $secondary-text-color;
       text-align: inherit;
-      padding: 8px 25px;
-      width: 100%;
 
       &.hidden {
         display: none;
@@ -58,26 +59,26 @@
 
     .form-field.comment-ccs {
       & > ul {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
         border-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
 
-        &[data-hc-focus="true"] {
+        &[data-hc-focus='true'] {
           border: 1px solid $brand_color;
         }
       }
 
-      & > input[type="text"] {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
+      & > input[type='text'] {
         border-bottom: 0;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
       }
     }
 
     .comment-ccs + textarea {
+      margin-top: 0;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      margin-top: 0;
 
       &:focus {
         border-top: 1px solid $brand_color;
@@ -89,70 +90,67 @@
 
   &-title {
     @include desktop {
-      border-bottom: 1px solid $border-color;
-      margin-bottom: 0;
       max-width: 66%; //Same as main container
+      margin-bottom: 0;
       padding-bottom: 20px;
+      border-bottom: 1px solid $border-color;
     }
-
     width: 100%;
   }
 
   &-sidebar {
     @include desktop {
-      background-color: $primary-shade;
-      border: 0;
-      font-size: $font-size-small;
       flex: 0 0 auto;
-      padding: 0 20px;
       width: 30%; //IE11 fix
+      padding: 0 20px;
+      border: 0;
+      background-color: $primary-shade;
+      font-size: $font-size-small;
     }
-
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
     flex: 1 0 auto;
     order: 0; //Bring to top
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
 
     h2 {
       @include desktop {
         display: none;
       }
-
+      position: relative;
       font-size: $font-size-base;
       font-weight: $font-weight-semibold;
-      position: relative;
     }
   }
 
   &-details {
-    border-bottom: 1px solid $border-color;
-    font-size: 0; // To remove whitespace and do a 40%/60% split
     margin: 0;
     padding-bottom: 20px;
+    border-bottom: 1px solid $border-color;
+    font-size: 0; // To remove whitespace and do a 40%/60% split
 
     &:last-child { border: 0; }
 
     dt, dd {
       display: inline-block;
-      vertical-align: top;
+      margin: 20px 0 0;
       font-size: $font-size-small;
-      margin: 20px 0 0 0;
+      vertical-align: top;
     }
 
     dd {
-      padding: 0 10px;
       width: 60%;
+      padding: 0 10px;
 
       &::after {
-        content: "\A";
+        content: '\A';
         white-space: pre;
       }
     }
 
     dt {
+      width: 40%;
       color: $secondary-text-color;
       font-weight: $font-weight-light;
-      width: 40%;
     }
 
     .request-collaborators {
@@ -166,7 +164,7 @@
     }
 
     dd {
-      margin: 10px 0 0 0;
+      margin: 10px 0 0;
     }
   }
 

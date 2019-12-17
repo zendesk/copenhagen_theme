@@ -1,12 +1,13 @@
 /***** Actions *****/
-/* Styles admin and en user actions(edit, delete, change status) in comments and posts */
+/* Styles admin and en user actions(edit, delete, change status)
+in comments and posts */
 .actions {
+  flex-shrink: 0; /* Avoid collapsing elements in Safari */
   text-align: center;
-  flex-shrink: 0; /*Avoid collapsing elements in Safari*/
 
   .dropdown-toggle {
-    font-size: 0;
     margin: 15px 0;
+    font-size: 0;
 
     &:hover::before,
     &:focus::before,
@@ -16,14 +17,14 @@
 
     &::before {
       @extend .icon;
-      background-color: transparent;
-      border-radius: 50%;
-      color: $secondary-text-color;
-      content: "\2699";
+      content: '\2699';
       display: block;
-      font-size: $font-size-small;
       margin: auto;
       padding: 5px;
+      border-radius: 50%;
+      background-color: transparent;
+      color: $secondary-text-color;
+      font-size: $font-size-small;
     }
   }
 }

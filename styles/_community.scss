@@ -1,8 +1,9 @@
+/* stylelint-disable */
 /***** Community *****/
 .community {
   &-hero {
-    background-image: url($community_background_image);
     margin-bottom: 10px;
+    background-image: url($community_background_image);
   }
 
   &-footer {
@@ -10,15 +11,15 @@
     text-align: center;
 
     &-title {
-      font-size: 16px;
       margin-bottom: 20px;
+      font-size: 16px;
     }
   }
 
   &-featured-posts,
   &-activity {
-    padding-top: 40px;
     width: 100%;
+    padding-top: 40px;
   }
 
   &-header {
@@ -38,8 +39,8 @@
 
 /* Community topics grid */
 .topics {
-  max-width: none;
   width: 100%;
+  max-width: none;
 
   &-item {
     .meta-group {
@@ -58,15 +59,14 @@
 
   .dropdown {
     @include tablet {
-      border-top: 0;
       display: inline-block;
       margin-right: 20px;
       padding: 0;
+      border-top: 0;
     }
-
     display: block;
-    border-top: 1px solid $border-color;
     padding: 10px 0;
+    border-top: 1px solid $border-color;
   }
 }
 
@@ -78,24 +78,22 @@
 /* Topic, post and user follow button */
 .community-follow {
   @include tablet {
-    margin-bottom: 0;
     width: auto;
+    margin-bottom: 0;
   }
-
-  margin-bottom: 10px;
   width: 100%;
+  margin-bottom: 10px;
 
   .dropdown {
     width: 100%;
   }
 
-  [role="button"] {
-    @include tablet { width: auto;}
-
-    line-height: 30px;
-    padding: 0 10px 0 15px;
+  [role='button'] {
+    @include tablet { width: auto; }
     position: relative;
     width: 100%;
+    padding: 0 10px 0 15px;
+    line-height: 30px;
 
     &:hover { background-color: $brand_color; }
 
@@ -104,7 +102,7 @@
       color: $brand_text_color;
     }
 
-    &[aria-selected="true"] {
+    &[aria-selected='true'] {
       background-color: $brand_color;
       color: $brand_text_color;
 
@@ -114,8 +112,8 @@
       }
 
       &:hover {
-        background-color: $hover-button-color;
         border-color: $hover-button-color;
+        background-color: $hover-button-color;
       }
     }
 
@@ -123,22 +121,21 @@
       @include tablet {
         position: static;
       }
-
-      border-left: 1px solid $button-color;
       content: attr(data-follower-count);
-      color: $button-color;
       display: inline-block;
-      font-family: $heading_font;
-      margin-left: 15px;
-      padding-left: 10px;
       position: absolute;
       right: 10px;
+      margin-left: 15px;
+      padding-left: 10px;
+      border-left: 1px solid $button-color;
+      color: $button-color;
+      font-family: $heading_font;
 
-      [dir="rtl"] & {
-        border-left: 0;
-        border-right: 1px solid $button-color;
+      [dir='rtl'] & {
         margin: 0 10px 0 0;
         padding: 0 10px 0 0;
+        border-right: 1px solid $button-color;
+        border-left: 0;
       }
     }
   }

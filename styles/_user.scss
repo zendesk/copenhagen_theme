@@ -1,32 +1,33 @@
+/* stylelint-disable */
 /***** User info in header *****/
 .user-info {
   display: inline-block;
 
   .dropdown-toggle::after {
-    @include tablet { display: inline-block;}
+    @include tablet { display: inline-block; }
     display: none;
   }
 
-  > [role="button"] {
-    border: 0;
-    color: $link_color;
+  > [role='button'] {
     min-width: 0;
     padding: 0;
+    border: 0;
+    color: $link_color;
     white-space: nowrap;
 
     &:hover,
     &:focus {
-      color: $link_color;
       background-color: transparent;
+      color: $link_color;
     }
 
     &::after {
-      color: $link_color;
       padding-right: 15px;
+      color: $link_color;
 
-      [dir="rtl"] & {
-        padding-left: 15px;
+      [dir='rtl'] & {
         padding-right: 0;
+        padding-left: 15px;
       }
     }
   }
@@ -43,10 +44,10 @@
 
 /***** User avatar *****/
 .user-avatar {
-  height: 25px;
-  width: 25px;
-  border-radius: 50%;
   display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
   vertical-align: middle;
 }
 
@@ -55,23 +56,23 @@
   position: relative;
 
   img {
-    height: 40px;
     width: 40px;
+    height: 40px;
   }
 
   .icon-agent::before {
-    background-color: $brand_color;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    bottom: -4px;
-    color: $brand_text_color;
-    content: "\1F464";
-    font-size: 14px;
-    height: 14px;
-    line-height: 14px;
+    content: '\1F464';
     position: absolute;
     right: -2px;
-    text-align: center;
+    bottom: -4px;
     width: 14px;
+    height: 14px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background-color: $brand_color;
+    color: $brand_text_color;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: center;
   }
 }

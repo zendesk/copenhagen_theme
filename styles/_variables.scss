@@ -10,7 +10,6 @@ $typescale__step2: 32px;
 $typescale__step3: 48px;
 $typescale__step4: 72px;
 
-
 $min-width: 320px;
 $max-width: 1366px;
 $max-width-page-container: 1440px;
@@ -40,10 +39,10 @@ $black: #000;
 
 $transition-speed: 300ms;
 
-$font--heading: "Poppins", sans-serif;
-$font--default: "Source Sans Pro", sans-serif;
-$font--print: "Garmond, serif";
-$font--print-heading: "Bookman, serif";
+$font--heading: 'Poppins', 'Poppins';
+$font--default: 'Source Sans Pro', sans-serif;
+$font--print: 'Garmond, serif';
+$font--print-heading: 'Bookman, serif';
 $font__weight--regular: 400;
 $font__weight--bold: 700;
 $font__weight--extra-bold: 800;
@@ -55,7 +54,7 @@ $spacing--desktop: 30px;
 $border--width: 1px;
 $border--radius: 8px;
 $focus--width: 5px;
-$font-zendesk-icons: "copenhagen-icons";
+$font-zendesk-icons: 'copenhagen-icons';
 
 /* HEADER SPECIFIC VARIABLES */
 $header__height--min: 80px;
@@ -66,7 +65,7 @@ $header__icon-menu--dimension: 40px;
 /* ZENDESK DEFAULTS */
 // Colors
 $brand_color: #0072ef !default;
-$brand_text_color: #fff !default; //Color for text with an accent color background
+$brand_text_color: #fff !default;
 $text_color: #333 !default;
 $link_color: #0072ef !default;
 $background_color: #fff !default;
@@ -75,8 +74,8 @@ $visited-link-color: zass-darken($link_color, 20%);
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 
-$primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
-$secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
+$primary-shade: zass-darken($background_color, 3%);
+$secondary-shade: zass-darken($background_color, 5%);
 
 $font-size-bigger: 16px;
 $font-size-base: 15px;
@@ -103,4 +102,3 @@ $text_font: 'Open Sans Pro', sans-serif !default;
 $font-weight-base: 400;
 $font-weight-light: 300;
 $font-weight-semibold: 600;
-
