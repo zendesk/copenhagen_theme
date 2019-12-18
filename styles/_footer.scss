@@ -1,5 +1,5 @@
 /***** Footer *****/
-footer {
+.footer {
   max-width: $max-width-page-container;
   margin: 0 auto;
   @include fluid-value( padding-top,
@@ -10,4 +10,203 @@ footer {
 );
   background-color: $primary--light;
   color: $white;
+
+  &__logo-link {
+    padding-bottom: $whitespace-small;
+    box-shadow: unset;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: unset;
+    }
+  }
+
+  &__logo {
+    max-width: 242px;
+    color: $white;
+  }
+}
+
+.footer-column {
+  &__wrap {
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__title {
+    margin-top: $spacing--desktop;
+    margin-bottom: 10px;
+    font-family: $font--heading;
+    font-weight: $font__weight--extra-bold;
+    @include fluid-value( font-size,
+    $min-width,
+    $max-width,
+    $typescale__step0,
+    $typescale__step1
+  );
+    letter-spacing: 0;
+    line-height: 1.375;
+    text-transform: uppercase;
+    @include tablet {
+      margin-top: 0;
+    }
+  }
+}
+
+.footer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__link {
+    transition: all $transition-speed;
+    box-shadow: 0 -1px 0 0 $primary--lighter inset;
+    color: $white;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+    }
+  }
+}
+
+.footer-social {
+  &__list {
+    display: flex;
+    align-items: center;
+    margin: $spacing 0 0 0;
+    padding: 0;
+    list-style: none;
+    @include tablet {
+      justify-content: space-between;
+    }
+  }
+
+  &__item {
+    padding-right: $spacing;
+    @include tablet {
+      padding-right: 0;
+    }
+  }
+
+  &__icon {
+    width: 32px;
+  }
+}
+
+.footer-social__link {
+  display: block;
+  box-shadow: unset;
+
+  g,
+  path,
+  svg {
+    transition: fill 0ms;
+    fill: $primary--lighter;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: unset;
+
+    g,
+    path,
+    svg {
+      fill: $white;
+    }
+  }
+}
+
+.app-badges {
+  margin-top: $spacing--desktop;
+  @include tablet {
+    margin-top: 0;
+  }
+
+  &__link {
+    display: block;
+    box-shadow: unset;
+
+    &:hover,
+    &:focus,
+    &:active {
+      box-shadow: unset;
+    }
+  }
+
+  &__badge {
+    width: 170px;
+    min-width: 170px;
+  }
+}
+
+.footer-copyright {
+  border-top: solid $border--width $white;
+  font-size: $base-font-size;
+  line-height: 1.5;
+  @include fluid-value( margin-top,
+  $min-width,
+  $max-width,
+  $whitespace-small,
+  $whitespace-small--desktop
+);
+  @include fluid-value( padding-top,
+  $min-width,
+  $max-width,
+  $spacing,
+  $whitespace-small
+);
+  @include fluid-value( padding-bottom,
+  $min-width,
+  $max-width,
+  $spacing,
+  $whitespace-small
+);
+  @include tablet {
+    line-height: 1;
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    @include tablet {
+      text-align: right;
+    }
+  }
+}
+
+.footer-copyright__item {
+  @include tablet {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: $spacing;
+      padding-right: $spacing;
+      border-right: solid $border--width $white;
+    }
+  }
+}
+
+.footer-copyright__link {
+  transition: all $transition-speed;
+  box-shadow: 0 -1px 0 0 $primary--lighter inset;
+  color: $white;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+  }
 }
