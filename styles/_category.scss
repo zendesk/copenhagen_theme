@@ -1,10 +1,6 @@
 /* stylelint-disable */
 /***** Category pages *****/
 .category {
-  &-container {
-    display: flex;
-    justify-content: flex-end;
-  }
 
   &-content {
     @include desktop {
