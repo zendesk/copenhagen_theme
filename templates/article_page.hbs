@@ -60,19 +60,19 @@
       </div>
       {{#with article}}
         <div class="article-votes">
-          <span class="article-votes-question">{{t 'was_this_article_helpful'}}</span>
-          <div class="article-votes-controls" role='radiogroup'>
-            {{vote 'up' role='radio' class='button article-vote article-vote-up'}}
-            {{vote 'down' role='radio' class='button article-vote article-vote-down'}}
-          </div>
+          <h4 class="article-votes-question">{{t 'was_this_article_helpful'}}</h4>
           <small class="article-votes-count">
             {{vote 'label' class='article-vote-label'}}
           </small>
+          <div class="article-votes-controls" role='radiogroup'>
+            {{vote 'up' role='radio' class='button button-ghost article-vote article-vote-up'}}
+            {{vote 'down' role='radio' class='button button-ghost article-vote article-vote-down'}}
+          </div>
         </div>
       {{/with}}
 
       <div class="article-more-questions">
-        {{request_callout}}
+        <a href="#">Still have questions?</a>
       </div>
       <div class="article-return-to-top">
         <a href="#article-container">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
@@ -87,103 +87,6 @@
         {{related_articles}}
       {{/if}}
     </section>
-    {{#if settings.show_article_comments}}
-      <div class="article-comments" id="article-comments">
-        <section class="comments">
-          <header class="comment-overview">
-            <h2 class="comment-heading">
-              {{t 'comments'}}
-            </h2>
-            <p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
-            {{#if comments}}
-              <div class="dropdown comment-sorter">
-                <button class="dropdown-toggle" aria-haspopup="true">
-                  {{t 'sort_by'}}
-                </button>
-                <span class="dropdown-menu" role="menu">
-                  {{#each comment_sorters}}
-                    <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
-                  {{/each}}
-                </span>
-              </div>
-            {{/if}}
-          </header>
 
-          <ul id="comments" class="comment-list">
-            {{#each comments}}
-              <li id="{{anchor}}" class="comment">
-                <div class="comment-wrapper">
-                  <div class="comment-info">
-                    <div class="comment-author">
-                      <div class="avatar comment-avatar">
-                        {{#if author.agent}}
-                          <span class="icon-agent"></span>
-                        {{/if}}
-                        <img src="{{author.avatar_url}}" alt="" class="user-avatar"/>
-                      </div>
-                      <div class="comment-meta">
-                        <span title="{{author.name}}">
-                          {{#link 'user_profile' id=author.id}}
-                            {{author.name}}
-                          {{/link}}
-                        </span>
-
-                        <ul class="meta-group">
-                          {{#if editor}}
-                            <li class="meta-data">{{date edited_at timeago=true}}</li>
-                            <li class="meta-data">{{t 'edited'}}</li>
-                          {{else}}
-                            <li class="meta-data">{{date created_at timeago=true}}</li>
-                          {{/if}}
-                        </ul>
-                      </div>
-                      <div class="comment-labels">
-                        {{#with ticket}}
-                          <a href="{{url}}" target="_zendesk_lotus" class="status-label escalation-badge">
-                            {{t 'request'}}{{id}}
-                          </a>
-                        {{/with}}
-                        {{#if pending}}
-                          <span class="comment-pending status-label status-label-pending">{{t 'pending_approval'}}</span>
-                        {{/if}}
-                      </div>
-                    </div>
-
-                    <section class="comment-body">{{body}}</section>
-                  </div>
-
-                  <div class="comment-actions-container">
-                    <div class="comment-vote vote" role='radiogroup'>
-                      {{vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
-                      {{vote 'sum' class='vote-sum'}}
-                      {{vote 'down' role='radio' class='vote-down' selected_class='vote-voted'}}
-                    </div>
-                    <div class="comment-actions actions">
-                      {{actions}}
-                    </div>
-                  </div>
-                </div>
-              </li>
-            {{/each}}
-          </ul>
-
-          {{pagination}}
-
-          {{#form 'comment' class='comment-form'}}
-            <div class="avatar comment-avatar">
-              {{user_avatar class='user-avatar'}}
-            </div>
-            <div class="comment-container">
-              {{wysiwyg 'body'}}
-              <div class="comment-form-controls">
-                {{input type='submit'}}
-              </div>
-            </div>
-          {{/form}}
-
-          <p class="comment-callout">{{comment_callout}}</p>
-        </section>
-      </div>
-    {{/if}}
   </div>
 </article>

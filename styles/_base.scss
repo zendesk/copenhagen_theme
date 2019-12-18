@@ -154,7 +154,30 @@ a {
 
   @media print {
     color: $black;
-    box-shadow: unset;
+    box-shadow: none;
+    text-decoration: dotted;
+  }
+}
+
+.greyLink {
+  transition: all $transition-speed;
+  box-shadow: 0 -1px 0 0 $grey inset;
+  color: $primary;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+  }
+
+  &:focus {
+    outline: $secondary auto $focus--width;
+  }
+
+  @media print {
+    color: $black;
+    box-shadow: none;
     text-decoration: dotted;
   }
 }
@@ -224,7 +247,7 @@ textarea {
   $min-width,
   $max-width,
   $whitespace-small,
-  $whitespace-medium--desktop
+  $whitespace-small--desktop
 );
   border-top: 1px solid $border-color;
 }

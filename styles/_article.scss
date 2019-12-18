@@ -75,11 +75,160 @@
     flex: 1 0 69%;
     min-width: 640px;
     max-width: 69%;
-    padding: 0 30px;
+    padding: 0 30px 0 0;
   }
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
 
   & > p:last-child {
     margin-bottom: 0;
+  }
+}
+
+.article-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+
+.article-comment-count {
+  color: $secondary-text-color;
+  font-weight: $font-weight-light;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  .icon-comments {
+    content: '\1F4AC';
+    display: inline-block;
+    padding: 5px;
+    color: $brand_color;
+    font-size: 18px;
+  }
+}
+
+.article-relatives {
+  @include tablet {
+    flex-direction: row;
+  }
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-top: 1px solid $border-color;
+
+  > * {
+    flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
+    min-width: 50%;
+    margin-right: 0;
+    overflow-wrap: break-word;
+
+    &:last-child { padding: 0; }
+    @include tablet { padding-right: 20px; }
+  }
+}
+
+.article-votes {
+  padding: 30px 0 0 0;
+
+  &-question {
+    margin-bottom: -4px;
+  }
+
+  @media print {
+    display: none;
+  }
+}
+
+.article-vote {
+  width: auto;
+  min-width: 90px;
+  margin: 10px 5px;
+  border: 1px solid $brand_color;
+  background: transparent;
+  color: $brand_color;
+
+  &::before {
+    @extend .icon;
+    margin-right: 10px;
+    font-size: 8px;
+
+    [dir='rtl'] & {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+
+  &::after {
+    content: attr(title); /* Yes/No label */
+  }
+
+  &:focus,
+  &:active {
+    background-color: transparent;
+    color: $brand_color;
+  }
+
+  &:hover {
+    background-color: $brand_color;
+  }
+
+  &:hover::before,
+  &:hover::after,
+  &[aria-selected='true']::before,
+  &[aria-selected='true']::after {
+    color: $brand_text_color;
+  }
+}
+
+.article-votes-controls {
+  margin-top: 10px;
+}
+
+.article-vote-up::before {
+  content: '\2713';
+}
+
+.article-vote-down::before {
+  content: '\2715';
+}
+
+.article-vote-down::before {
+  content: '\2715';
+}
+
+.article-more-questions {
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.article-return-to-top {
+  @include desktop { display: none; }
+  border-top: 1px solid $border-color;
+
+  a {
+    display: block;
+    padding: 20px 0;
+    color: $text_color;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .icon-arrow-up::before {
+    margin-left: 5px;
+    font-size: 16px;
+
+    [dir='rtl'] & {
+      margin-right: 10px;
+    }
+  }
+}
+
+.article-relatives {
+  a {
+    @extend .greyLink;
   }
 }

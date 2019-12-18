@@ -13,11 +13,12 @@
       }
     }
   }
+
   a {
     @media print {
       border-bottom: dotted 1px $grey--light;
       color: $grey--light;
-      box-shadow: unset;
+      box-shadow: none;
 
       &:after {
         color: $black;
@@ -25,13 +26,14 @@
       }
     }
   }
+
   .popup {
-    box-shadow: unset;
+    box-shadow: none;
 
     &:hover,
     &:active,
     &:focus {
-      box-shadow: unset;
+      box-shadow: none;
     }
 
     @media print {
@@ -44,9 +46,6 @@
     border: solid $border--width $grey;
     height: auto;
     max-width: 100%;
-    @include tablet{
-      max-width: 30%;
-    }
 
     &.mfp-img {
       border: none;
