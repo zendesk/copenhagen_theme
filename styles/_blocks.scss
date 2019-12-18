@@ -1,45 +1,50 @@
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
-.blocks-list {
-  @include tablet {
-    margin: 0 -15px;
+.blocks {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding: 0;
+    list-style: none;
+    @include tablet {
+      margin: 0 -15px;
+    }
   }
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  padding: 0;
-  list-style: none;
 }
 
-.blocks-item {
-  @include tablet {
-    margin: 0 15px 30px;
-  }
+.blocks__item {
   display: flex;
   box-sizing: border-box;
   flex: 1 0 340px;
   max-width: 100%;
   margin: 0 0 30px;
-  border: 1px solid $brand_color;
-  border-radius: 4px;
-  color: $brand_color;
-  text-align: center;
+  transition: all $transition-speed;
+  border: 1px solid $white;
+  background-color: $white;
+  box-shadow: unset;
+  color: $primary;
+  text-align: left;
+  @include tablet {
+    margin: 0 $spacing $spacing--desktop;
+  }
 
   &:hover,
   &:focus,
   &:active {
-    background-color: $brand_color;
+    background-color: $primary;
+    box-shadow: unset;
 
     * {
-      color: $brand_text_color;
+      color: $white;
       text-decoration: none;
     }
   }
 }
 
 .blocks-internal {
-  border: 1px solid $border-color;
-  background-color: transparent;
+  border: 1px solid $primary;
+  background-color: $white;
 
   .icon-lock::before {
     content: '\1F512';
@@ -49,40 +54,36 @@
   }
 
   a {
-    color: $text_color;
+    color: $primary;
   }
 }
 
-.blocks-item-link {
+.blocks__item-link {
   display: flex;
   flex: 1;
   flex-direction: column;
   justify-content: center;
   padding: 20px 30px;
-  border-radius: inherit;
-  color: $brand_color;
+  box-shadow: unset;
+  color: $primary;
 
-  &:hover,
-  &:active {
-    text-decoration: none;
+  &:hover {
+    box-shadow: unset;
   }
 
+  &:active,
   &:focus {
-    @include focus-ring;
+    box-shadow: unset;
     text-decoration: none;
+    @include focus-ring;
   }
 }
 
-.blocks-item-title {
+.blocks__item-title {
+  margin-top: 0;
   margin-bottom: 0;
-  font-size: 16px;
 }
 
-.blocks-item-description {
-  margin: 0;
-  font-weight: $font-weight-light;
-}
-
-.blocks-item-description:not(:empty) {
+.blocks__item-description:not(:empty) {
   margin-top: 10px;
 }

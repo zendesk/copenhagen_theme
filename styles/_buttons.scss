@@ -1,45 +1,40 @@
-/* stylelint-disable */
 /***** Buttons *****/
 .button, [role='button'] {
-  @include tablet { width: auto; }
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-  padding: 0 20px;
-  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
-  border: 1px solid $button-color;
-  border-radius: 4px;
-  box-shadow: none;
-  color: $button-color;
-  font-size: 12px;
-  line-height: 2.34; //Taken from Zendesk garden bedrock
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  padding: .75rem 1.75rem .6rem;
+  overflow: hidden;
+  transition:
+    background $transition-speed,
+    color $transition-speed,
+    fill $transition-speed,
+    padding $transition-speed;
+  border: solid 3px $primary;
+  background: $primary;
+  box-shadow: unset;
+  fill: $white;
+  color: $white;
+  font-family: $font--heading;
+  font-weight: $font__weight--extra-bold;
+  letter-spacing: 1px;
   text-align: center;
-  white-space: nowrap;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: bottom;
   cursor: pointer;
   user-select: none;
   -webkit-touch-callout: none;
-
-  &::after {
-    color: $button-color;
-  }
 
   &:hover,
   &:active,
   &:focus,
   &[aria-selected='true'] {
-    background-color: $brand_color;
-    box-shadow: none;
-    color: $brand_text_color;
+    background-color: transparent;
+    box-shadow: unset;
+    fill: $primary;
+    color: $primary;
     text-decoration: none;
-  }
-
-  &[aria-selected='true'] {
-    &:hover,
-    &:focus,
-    &:active {
-      border-color: $hover-button-color;
-      background-color: $hover-button-color;
-    }
   }
 
   &[data-disabled] {
@@ -47,42 +42,31 @@
   }
 }
 
-.button-large, input[type='submit'] {
-  @include tablet {
-    width: auto;
-  }
-  width: 100%;
-  min-width: 190px;
-  padding: 0 1.9286em;
-  border: 0;
-  border-radius: 4px;
-  background-color: $button-color;
-  color: $brand_text_color;
-  font-size: 14px;
-  font-weight: $font-weight-base;
-  line-height: 2.72;
+.button-secondary {
+  border: solid 3px $secondary;
+  background: $secondary;
+  color: $white;
 
   &:hover,
   &:active,
-  &:focus {
-    background-color: $hover-button-color;
-  }
-
-  &[disabled] {
-    background-color: #ddd;
+  &:focus,
+  &[aria-selected='true'] {
+    background-color: $white;
+    fill: transparent;
+    color: transparent;
   }
 }
 
-.button-secondary {
-  border: 1px solid $border-color;
-  background-color: transparent;
-  color: $secondary-text-color;
+.button--ghost {
+  border: solid 3px $primary;
+  background: transparent;
+  color: $primary;
 
   &:hover,
+  &:active,
   &:focus,
-  &:active {
-    border: 1px solid $border-color;
-    background-color: $primary-shade;
-    color: $text_color;
+  &[aria-selected='true'] {
+    background-color: $primary;
+    color: $white;
   }
 }

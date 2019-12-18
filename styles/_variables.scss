@@ -16,6 +16,7 @@ $max-width-page-container: 1440px;
 
 $primary: #012939;
 $primary--light: #4d6974;
+$primary--lighter: #99a9b0;
 $primary--lightest: #3ca2e0;
 $primary--dark: #011b25;
 
@@ -70,10 +71,10 @@ $header__icon-menu--dimension: 40px;
 
 /* ZENDESK DEFAULTS */
 // Colors
-$brand_color: #0072ef !default;
-$brand_text_color: #fff !default;
-$text_color: #333 !default;
-$link_color: #0072ef !default;
+$brand_color: $primary;
+$brand_text_color: $white;
+$text_color: $primary;
+$link_color: $primary;
 $background_color: #fff !default;
 
 $visited-link-color: zass-darken($link_color, 20%);
@@ -83,11 +84,11 @@ $secondary-text-color: zass-lighten($text_color, 20%);
 $primary-shade: zass-darken($background_color, 3%);
 $secondary-shade: zass-darken($background_color, 5%);
 
-$font-size-bigger: 16px;
-$font-size-base: 15px;
-$font-size-navigation: 14px;
-$font-size-small: 16px;
-$font-size-smaller: 11px;
+$font-size-bigger: 24px;
+$font-size-base: 20px;
+$font-size-navigation: 20px;
+$font-size-small: 18px;
+$font-size-smaller: 16px;
 
 $border-color: #ddd;
 
