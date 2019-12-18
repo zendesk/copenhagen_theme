@@ -7,10 +7,10 @@
 
 
 <div id="hero-banner" data-page="home">
-    <div class="hero-container" data-alignment="left" data-font="dark" style="background-image: url(//theme.zdassets.com/theme_assets/1/aae515f9779fac48b5de00d1543e15ebfb7bfb3f.jpg)">
+    <div class="hero-container" data-alignment="left" data-font="dark" style="background-image:url({{asset 'banner3.jpg'}});">
         <div class="hero-content">
-            <h1>Hay House help</h1>
-            <h5 class="h6-heading">Hi, how can we help?</h5>
+            <h1 class="white-text">Hay House help</h1>
+            <h5 class="h6-heading white-text">Hi, how can we help?</h5>
             <div class="search-container">
 
                 {{search submit=false instant=settings.instant_search class='search search-full'}}
@@ -21,70 +21,78 @@
 
 <!--end-->
 
-<div class="container" style="margin-top: 80px">
+<div class="container top-margin">
 
     <h3>Browse by Category</h3>
 
     <div class="row justify-content-md-center">
 
-    <!--{{#each categories}}-->
-        <!--<div class="col-lg-4 col-md-4 col-sm-12">-->
-        <!--<div class="cat-section hoverImages">-->
-        <!--<img class="cat-img" src="https://image.flaticon.com/icons/svg/149/149150.svg" width="64">-->
-        <!--<a href="{{url}}">{{name}}</a>-->
-        <!--</div>-->
-        <!--</div>-->
-            <!--{{/each}}-->
           <div class="col-lg-4 col-md-4 col-sm-12">
                   <div class="cat-section hoverImages">
-                      <img class="cat-img" src="https://image.flaticon.com/icons/svg/813/813776.svg" width="64">
+                      <img class="cat-img" src="{{asset 'general.svg'}}" width="64">
                       <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203902688-General">General</a>
                   </div>
           </div>
           <div class="col-lg-4 col-md-4 col-sm-12">
               <div class="cat-section hoverImages">
-                  <img class="cat-img" src="https://image.flaticon.com/icons/svg/1246/1246351.svg" width="64">
-                  <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203922447-Your-Account">Your Account</a>
+                  <img class="cat-img" src="{{asset 'course.svg'}}" width="64">
+                  <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915648-Online-Courses">Online Courses</a>
               </div>
           </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="cat-section hoverImages">
-                <img class="cat-img" src="https://image.flaticon.com/icons/svg/15/15111.svg" width="64">
-                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915668-Technical-Digital-Support">Technical & Digital Support</a>
+                <img class="cat-img" src="{{asset 'audio.svg'}}" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/360002822254-Audio-Downloads">Audio Downloads</a>
             </div>
         </div>
 
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="cat-section hoverImages">
-                <img class="cat-img" src="https://image.flaticon.com/icons/svg/149/149125.svg" width="64">
-                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915468-Your-Digital-Library-">Your Digital Library</a>
+                <img class="cat-img" src="{{asset 'event.svg'}}" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/360002822274-Events">Events</a>
+            </div>
+        </div>
+        <div class="col-lg-4  col-md-4 col-sm-12">
+            <div class="cat-section hoverImages">
+                <img class="cat-img"  src="{{asset 'membership.svg'}}" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/360002822294-Memerships">Memberships</a>
             </div>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="cat-section hoverImages">
-                <img class="cat-img"  src="https://image.flaticon.com/icons/svg/149/149095.svg" width="64">
-                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915648-Online-Courses">Online Courses</a>
+                <img class="cat-img" src="{{asset 'order.svg'}}" width="64">
+                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/360002822314-Online-Orders">Online Orders</a>
             </div>
         </div>
-        <div class="col-lg-4 col-md-4 col-sm-12">
-            <div class="cat-section hoverImages">
-                <img class="cat-img" src="https://image.flaticon.com/icons/svg/1186/1186562.svg" width="64">
-                <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203915568-Hay-House-Radio">Hay House Radio</a>
-            </div>
-        </div>
+         <div class="col-lg-4 col-md-4 col-sm-12">
+                  <div class="cat-section hoverImages">
+                      <img class="cat-img" src="{{asset 'app.svg'}}" width="64">
+                      <a href="https://hayhouse.zendesk.com/hc/en-us/categories/360002822334-Mobile-Apps">Mobile Apps</a>
+                  </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12">
+              <div class="cat-section hoverImages">
+                  <img class="cat-img" src="{{asset 'ebook.svg'}}" width="64">
+                  <a href="https://hayhouse.zendesk.com/hc/en-us/categories/360002822354-eBooks">eBooks</a>
+              </div>
+          </div>
+           <div class="col-lg-4 col-md-4 col-sm-12">
+                  <div class="cat-section hoverImages">
+                      <img class="cat-img" src="{{asset 'video.svg'}}" width="64">
+                      <a href="https://hayhouse.zendesk.com/hc/en-us/categories/203902688-General">Video</a>
+                  </div>
+          </div>
+          
+
   </div>
-
-    <div class="row justify-content-md-center">
-
-    </div>
 
 </div>
 
-<div class="container">
+<div class="container top-margin">
     <h3>Browse common questions</h3>
     <hr>
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-4 top-padding-10">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-user"></i> Account</h5>
@@ -97,7 +105,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 top-padding-10">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-shopping-cart"></i> Billing & Purchases</h5>
@@ -111,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 top-padding-10">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-shield-alt"></i> Data Privacy & Email Preference</h5>

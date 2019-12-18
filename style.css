@@ -4224,66 +4224,6 @@ a{
   font-family: 'Lato', sans-serif!important;
 }
 
-.cat-section{
-  border: solid 1px #ebebeb;
-  border-radius: 5px;
-  box-sizing: border-box;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.125);
-  display: inline-block;
-  position: relative;
-  top: 0;
-  transition: top 0.25s;
-  overflow: hidden;
-  margin-bottom: 40px;
-  width: 300px;
-  height: 120px;
-}
-
-.cat-img {
-  background: #ffffff;
-  /* width: 120px; */
-  height: 120px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 10px;
-}
-
-.cat-section a{
-  color: #03363d;
-  padding: 1rem 1rem 1rem calc(80px + 1rem);
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  font-weight: bold;
-  font-size: 1.25rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  word-wrap: break-word;
-  text-decoration: none!important;
-}
-
-
-div.hoverImages {
-  margin:20px;
-  padding: 3px;
-  -webkit-transition: margin 0.5s ease-out;
-  -moz-transition: margin 0.5s ease-out;
-  -o-transition: margin 0.5s ease-out;
-}
-
-div.hoverImages:hover {
-  cursor:pointer;
-  margin-top: 5px;
-}
-
 h2 a{
   color: #094987 !important;
 }
@@ -4339,6 +4279,79 @@ ul a{
   border-color: #e85c02!important;
 }
 
-.card{
-  margin-bottom: 20px;
+
+.white-text{
+  color: white!important;
+}
+
+.full-width {
+  position: relative;
+  width: 100%;
+}
+
+/* Ipad media queries */
+
+.top-margin{
+  margin-top: 80px;
+}
+
+.cat-section{
+  border: solid 1px #ebebeb;
+  border-radius: 5px;
+  box-sizing: border-box;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.125);
+  display: inline-block;
+  position: relative;
+  top: 0;
+  transition: top 0.25s;
+  overflow: hidden;
+  margin-bottom: 40px;
+  width: 90%;
+  height: 120px;
+}
+
+.cat-img {
+  background: #ffffff;
+  /* width: 120px; */
+  height: 120px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+}
+
+.cat-section a{
+  color: #03363d;
+  position: absolute;
+  left: 30px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-weight: bold;
+  font-size: 1.25rem;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-decoration: none!important;
+}
+
+
+div.hoverImages {
+  margin:20px;
+  padding: 3px;
+  -webkit-transition: margin 0.5s ease-out;
+  -moz-transition: margin 0.5s ease-out;
+  -o-transition: margin 0.5s ease-out;
+}
+
+div.hoverImages:hover {
+  cursor:pointer;
+  margin-top: 5px;
+}
+
+.top-padding-10{
+  padding-top: 10px;
 }
