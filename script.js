@@ -214,50 +214,29 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   //HIGHLIGHT TEXT
-  /**
- * IE Shiv
- */
-(() => {
-	if (typeof NodeList.prototype.forEach === "function") {
-		return false;
-	} else {
-		NodeList.prototype.forEach = Array.prototype.forEach;
-	}
 
-	Element.prototype.remove = function() {
-		this.parentElement.removeChild(this);
-	}
-	NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
-		for(var i = this.length - 1; i >= 0; i--) {
-			if(this[i] && this[i].parentElement) {
-				this[i].parentElement.removeChild(this[i]);
-			}
-		}
-	}
-})()
-
-  const isInView = ( elm ) => {
+  function isInView ( elm ) {
     const topBoundary = window.innerHeight / 5;
     const bottomBoundary = window.innerHeight - topBoundary;
-    const { top, bottom } = elm.getBoundingClientRect();
-
-    return ( top >= topBoundary ) && ( bottom <= bottomBoundary );
+    const elementRect = elm.getBoundingClientRect();
+    return ( elementRect.top >= topBoundary ) && ( elementRect.bottom <= bottomBoundary );
   };
 
-  const HIGHLIGHT_TEXT = document.querySelectorAll( '.highlight-text' );
-  document.addEventListener( 'DOMContentLoaded', () => {
-    HIGHLIGHT_TEXT.forEach( ( elm ) => {
-      if ( isInView( elm ) ) {
-        elm.classList.add( 'highlight-text--in-view' );
+  const HIGHLIGHT_TEXT = $( '.highlight-text' );
+
+  document.addEventListener( 'DOMContentLoaded', function() {
+    for( var i = 0; i < HIGHLIGHT_TEXT.length; i++ ) {
+      if ( isInView( HIGHLIGHT_TEXT[i] ) ) {
+        HIGHLIGHT_TEXT[i].classList.add( 'highlight-text--in-view' );
       }
-    } );
+    }
   } );
 
-  window.addEventListener( 'scroll', () => {
-    HIGHLIGHT_TEXT.forEach( ( elm ) => {
-      if ( isInView( elm ) ) {
-        elm.classList.add( 'highlight-text--in-view' );
+  window.addEventListener( 'scroll', function() {
+    for( var i = 0; i < HIGHLIGHT_TEXT.length; i++ ) {
+      if ( isInView( HIGHLIGHT_TEXT[i] ) ) {
+        HIGHLIGHT_TEXT[i].classList.add( 'highlight-text--in-view' );
       }
-    } );
+    };
   } );
 });
