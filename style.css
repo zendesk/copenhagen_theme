@@ -400,7 +400,7 @@ ul {
   display: inline-flex;
   position: relative;
   align-items: center;
-  padding: .75rem 1.75rem 0.6rem;
+  padding: .75rem 1.75rem .6rem;
   overflow: hidden;
   transition: background 300ms, color 300ms, fill 300ms, padding 300ms;
   border: solid 3px #012939;
@@ -805,6 +805,10 @@ ul {
   letter-spacing: 1px;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.user-nav__link:last-child {
+  margin: 0;
 }
 
 .user-nav__link.login {
@@ -1824,8 +1828,8 @@ ul {
   .home-mid-cta__action {
     flex-basis: 33.3333333333%;
     max-width: 33.3333333333%;
-    padding-left: 30px;
     padding-top: none;
+    padding-left: 30px;
     text-align: right;
   }
 }

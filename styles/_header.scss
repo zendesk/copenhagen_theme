@@ -77,7 +77,6 @@
     display: flex;
     position: relative;
     align-items: center;
-    justify-content: space-between;
   }
 
   &[aria-expanded='true'] {
@@ -113,6 +112,10 @@
   letter-spacing: 1px;
   text-decoration: none;
   text-transform: uppercase;
+
+  &:last-child {
+    margin: 0;
+  }
 
   &.login {
     display: inline-block;
