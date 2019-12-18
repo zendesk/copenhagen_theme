@@ -16,6 +16,7 @@ $max-width-page-container: 1440px;
 
 $primary: #012939;
 $primary--light: #4d6974;
+$primary--lighter: #99a9b0;
 $primary--lightest: #3ca2e0;
 $primary--dark: #011b25;
 
@@ -50,6 +51,12 @@ $font__weight--black: 900;
 
 $spacing: 15px;
 $spacing--desktop: 30px;
+$whitespace-small: 32px;
+$whitespace-medium: 48px;
+$whitespace-large: 72px;
+$whitespace-small--desktop: 48px;
+$whitespace-medium--desktop: 72px;
+$whitespace-large--desktop: 96px;
 
 $border--width: 1px;
 $border--radius: 8px;
