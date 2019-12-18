@@ -106,21 +106,21 @@
       </article>
 
       <section class="comment-overview" id="comment-overview">
-        <h2 class="comment-heading">
-          {{t 'comments'}}
-        </h2>
-        <p class="comment-callout">{{t 'comments_count' count=post.comment_count}}</p>
-        {{#if comments}}
-          <div class="dropdown comment-sorter">
-            <button class="dropdown-toggle" aria-haspopup="true">
-              {{t 'sort_by'}}
-            </button>
-            <span class="dropdown-menu" role="menu">
-              {{#each comment_sorters}}
-                <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
-              {{/each}}
-            </span>
-          </div>
+          <h3 class="comment-heading">
+            {{t 'comments'}}
+          </h3>
+          <p class="comment-callout">{{t 'comments_count' count=post.comment_count}}</p>
+          {{#if comments}}
+            <div class="dropdown comment-sorter">
+              <button class="dropdown-toggle" aria-haspopup="true">
+                {{t 'sort_by'}}
+              </button>
+              <span class="dropdown-menu" role="menu">
+                {{#each comment_sorters}}
+                  <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
+                {{/each}}
+              </span>
+            </div>
         {{/if}}
       </section>
 
@@ -210,7 +210,7 @@
     </div>
 
     <section class="post-sidebar">
-      <h2 class="post-sidebar-title">{{t 'suggest_new_post'}}</h2>
+      <h3 class="sidebar-title">{{t 'suggest_new_post'}}</h3>
       <span class="post-to-community">
         {{link 'new_post' role='button' class='button-large'}}
       </span>

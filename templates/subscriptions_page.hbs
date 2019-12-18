@@ -1,17 +1,12 @@
-<div class="my-activities-nav">
-  <div class="container">
-    <nav class="collapsible-nav">
-      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false"></button>
-      <ul class="collapsible-nav-list">
-        {{#if help_center.request_management_enabled}}
-          <li>{{link 'requests'}}</li>
-        {{/if}}
-        <li>{{link 'contributions'}}</li>
-        <li aria-selected=true>{{t 'following'}}</li>
-      </ul>
-    </nav>
-  </div>
-</div>
+<nav class="my-activities-nav collapsible-nav">
+  <ul class="collapsible-nav-list container">
+    {{#if help_center.request_management_enabled}}
+      <li>{{link 'requests'}}</li>
+    {{/if}}
+    <li>{{link 'contributions'}}</li>
+    <li aria-selected=true>{{t 'following'}}</li>
+  </ul>
+</nav>
 
 <div class="container">
   <header class="my-activities-header">

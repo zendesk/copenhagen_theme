@@ -1,3 +1,46 @@
+<!-- CUSTOM SIDEBAR -->
+<main class="main-sidebar" role="main">
+<div id="sidebar" class="sidebar-panel">
+  <ul class="sidebar">
+    <li class="sidebar-item sidebar-home open">
+       <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title">
+        <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+        Academy and training
+      </a>
+    </li>
+     <li class="sidebar-item sidebar-home open">
+       <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title">
+         <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+         System recommendations
+      </a>
+    </li>
+     <li class="sidebar-item sidebar-home open">
+       <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title">
+         <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+         Release notes
+      </a>
+    </li>
+     <li class="sidebar-item sidebar-home open custom-margin-bottom">
+      <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title">
+        <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+        Forums
+      </a>
+    </li>
+    <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
+    	<h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      	<ul v-if='category.id === activeSection'>
+        	<li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
+          	<a :href='section.html_url' class="sidebar-item-link">
+            	{[{section.name}]} 
+            </a>
+          </li>
+      	</ul>
+    	</li>
+  	</ul>
+	</div>
+  
+<!-- END CUSTOM SIDEBAR -->
+
 <div class="container-divider"></div>
 <div class="container">
   <nav class="sub-nav">
@@ -6,28 +49,23 @@
   </nav>
 
   <div class="article-container" id="article-container">
-    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+    <section class="article-sidebar">
       {{#if settings.show_articles_in_section}}
-        <div class="collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false"></button>
-          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
-          </span>
-          <div class="collapsible-sidebar-body">
-            <ul>
-              {{#each section.articles}}
-                <li>
-                  <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
-                </li>
-              {{/each}}
-            </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
-          </div>
-        </div>
+        <section class="section-articles collapsible-sidebar">
+        <h3 class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
+        <ul>
+          {{#each section.articles}}
+            <li>
+              <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+            </li>
+          {{/each}}
+        </ul>
+        {{#if section.more_articles}}
+          <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
+        {{/if}}
+        </section>
       {{/if}}
-    </aside>
+    </section>
 
     <article class="article">
       <header class="article-header">
@@ -97,16 +135,9 @@
           {{/if}}
           {{#if settings.show_article_comments}}
             {{#if comments}}
-              <a href="#article-comments" class="article-comment-count" title="{{t 'go_to_comments'}}">
-                <span class="visibility-hidden">
-                  {{t 'comments_count' count=article.comment_count}}
-                </span>
-                <span aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="article-comment-count-icon">
-                    <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
-                  </svg>
-                  {{article.comment_count}}
-                </span>
+              <a href="#article-comments" class="article-comment-count">
+                <span class="icon-comments"></span>
+                {{article.comment_count}}
               </a>
             {{/if}}
           {{/if}}
@@ -132,21 +163,21 @@
         </div>
       </footer>
 
-      <div class="article-relatives">
+      <section class="article-relatives">
         {{#if settings.show_recently_viewed_articles}}
           {{recent_articles}}
         {{/if}}
         {{#if settings.show_related_articles}}
           {{related_articles}}
         {{/if}}
-      </div>
+      </section>
       {{#if settings.show_article_comments}}
         <div class="article-comments" id="article-comments">
           <section class="comments">
             <header class="comment-overview">
-              <h2 class="comment-heading">
+              <h3 class="comment-heading">
                 {{t 'comments'}}
-              </h2>
+              </h3>
               <p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
               {{#if comments}}
                 <div class="dropdown comment-sorter">
@@ -241,3 +272,5 @@
     </article>
   </div>
 </div>
+<script>sidebar.$mount("main");</script>
+</main>

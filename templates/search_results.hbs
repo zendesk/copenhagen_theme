@@ -5,121 +5,70 @@
     {{search submit=false}}
   </nav>
 
-  <div class="search-results">
-    <aside class="search-results-sidebar">
-      {{#if help_center_filters}}
-        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_help_center'}}</h3>
-          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
-            {{#each help_center_filters}}
-              <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">
-                  <span class="sidenav-subitem filter-name">{{name}}</span>
-                  <span class="sidenav-subitem doc-count">({{count}})</span>
-                </a>
-              </li>
-            {{/each}}
-            <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_help_centers'}}">{{t 'show_more_help_centers'}}</button>
-          </ul>
-        </section>
-      {{/if}}
-      {{#if help_center.community_enabled}}
-        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
-          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
-            {{#each filters}}
-              <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">
-                  <span class="sidenav-subitem filter-name">{{name}}</span>
-                  <span class="sidenav-subitem doc-count">({{count}})</span>
-                </a>
-              </li>
-            {{/each}}
-          </ul>
-        </section>
-      {{/if}}
-      {{#if subfilters}}
-        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false"></button>
-          {{#is current_filter.identifier 'knowledge_base'}}
-            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h3>
-          {{/is}}
-          {{#is current_filter.identifier 'community'}}
-            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h3>
-          {{/is}}
-          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
-            {{#each subfilters}}
-              <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">
-                  <span class="sidenav-subitem filter-name">{{name}}</span>
-                  <span class="sidenav-subitem doc-count">({{count}})</span>
-                </a>
-              </li>
-            {{/each}}
-            {{#is current_filter.identifier 'knowledge_base'}}
-              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_categories'}}">{{t 'show_more_categories'}}</button>
-            {{/is}}
-            {{#is current_filter.identifier 'community'}}
-              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_topics'}}">{{t 'show_more_topics'}}</button>
-            {{/is}}
-          </ul>
-        </section>
-      {{/if}}
-    </aside>
+  <header class="page-header">
+    <h1>{{t 'search_results'}}</h1>
+    <p class="page-header-description">{{t 'results' query=query count=results_count}}</p>
+  </header>
 
+  <div class="search-results">
     <section class="search-results-column">
-      <h1 class="search-results-subheading">
-        {{#is current_filter.identifier 'unified'}}
-          {{t 'results' query=query count=results_count}}
-        {{else}}
-          {{#unless current_subfilter.identifier}}
-            {{t 'results' query=query count=results_count}}
-          {{else}}
-            {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
-          {{/unless}}
-        {{/is}}
-      </h1>
-      {{#if results}}
+      <h3 class="search-results-subheading">
+        {{t 'knowledge_base'}}
+      </h3>
+      {{#if article_results}}
         <ul class="search-results-list">
-          {{#each results}}
-            <li class="search-result-list-item result-{{type}}">
-              <h2 class="search-result-title">
-                <a href="{{url}}" class="results-list-item-link">{{title}}</a>
-              </h2>
-              <div class="search-result-icons">
-                {{#if vote_sum}}
-                  <span class="search-result-votes">
-                    <span class="visibility-hidden">
-                      {{t 'votes_sum' count=vote_sum}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-votes-icon">
-                        <g fill="none" stroke="currentColor">
-                          <path stroke-linejoin="round" d="M10.77 4.5a.73.73 0 01.73.73C11.43 7 11.21 11.5 10 11.5H5a.5.5 0 01-.5-.5V4.5s1-.5 1-3a1 1 0 012 0v3z"/>
-                          <rect width="2" height="7" x=".5" y="4.5" rx=".5" ry=".5"/>
-                        </g>
-                      </svg>
-                      {{vote_sum}}
-                    </span>
-                  </span>
-                {{/if}}
-                {{#if comment_count}}
-                  <span class="search-result-meta-count">
-                    <span class="visibility-hidden">
-                      {{t 'comments_count' count=comment_count}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-meta-count-icon">
-                        <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
-                      </svg>
-                      {{comment_count}}
-                    </span>
-                  </span>
-                {{/if}}
-              </div>
-              <article>
+          {{#each article_results}}
+            <li class="search-result">
+              <a href="{{url}}" class="search-result-link">{{title}}</a>
+              {{#if vote_sum}}
+                <span class="search-result-votes meta-count">{{vote_sum}}</span>
+              {{/if}}
+              <ul class="meta-group">
+                <li>
+                  <ol class="breadcrumbs search-result-breadcrumbs">
+                    {{#each path_steps}}
+                      {{#is url '#'}}
+                        <li title="{{name}}">{{name}}</li>
+                      {{else}}
+                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                      {{/is}}
+                    {{/each}}
+                  </ol>
+                </li>
+                <li class="meta-data">
+                  {{#link 'user_profile' id=author.id}}
+                    {{author.name}}
+                  {{/link}}
+                </li>
+                <li class="meta-data">{{date created_at timeago=true}}</li>
+              </ul>
+              <div class="search-result-description">{{text}}</div>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>
+          {{t 'no_results' query=query}}
+          {{#link 'help_center'}}
+            {{t 'browse_knowledge_base'}}
+          {{/link}}
+        </p>
+      {{/if}}
+    </section>
+
+    {{#if help_center.community_enabled}}
+      <section class="search-results-column">
+        <h3 class="search-results-subheading">
+          {{t 'community'}}
+        </h3>
+        {{#if post_results}}
+          <ul class="search-results-list">
+            {{#each post_results}}
+              <li class="search-result">
+                <a href="{{url}}" class="search-result-link">{{title}}</a>
+                <span class="search-result-meta-count">
+                  {{comment_count}}
+                </span>
                 <ul class="meta-group">
                   <li>
                     <ol class="breadcrumbs search-result-breadcrumbs">
@@ -128,23 +77,31 @@
                       {{/each}}
                     </ol>
                   </li>
-                  <li class="meta-data">{{author.name}}</li>
-                  <li class="meta-data">{{date created_at}}</li>
+                  <li class="meta-data">
+                    {{#link 'user_profile' id=author.id}}
+                      {{author.name}}
+                    {{/link}}
+                  </li>
+                  <li class="meta-data">{{date created_at timeago=true}}</li>
                 </ul>
-                <div class="search-results-description">{{text}}</div>
-              </article>
-            </li>
-          {{/each}}
-        </ul>
-      {{else}}
-        <p>
-          {{t 'no_results_unified'}}
-          {{#link 'help_center'}}
-            {{t 'browse_help_center'}}
-          {{/link}}
-        </p>
-      {{/if}}
-    </section>
+                <div class="search-result-description">
+                  {{text}}
+                </div>
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <p>
+            {{t 'no_results' query=query}}
+            {{#link 'topics'}}
+              {{t 'browse_community'}}
+            {{/link}}
+          </p>
+        {{/if}}
+      </section>
+    {{/if}}
+
   </div>
+
   {{pagination}}
 </div>
