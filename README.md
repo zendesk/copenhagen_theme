@@ -1,4 +1,4 @@
-# Copenhagen Theme by Zendesk
+# Copenhagen Theme by Zendesk 
 
 The Copenhagen theme is the default Zendesk Guide theme. It is designed to be responsive and accessible.
 Learn more about customizing Zendesk Guide [here](https://support.zendesk.com/hc/en-us/sections/206670747).
