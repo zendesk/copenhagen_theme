@@ -395,17 +395,17 @@ ul {
   clip-path: inset(50%);
 }
 
-/* stylelint-disable */
 /***** Buttons *****/
 .button, [role='button'] {
   display: inline-flex;
   position: relative;
   align-items: center;
-  padding: 0.75rem 1.75rem;
+  padding: .75rem 1.75rem;
   overflow: hidden;
   transition: background 300ms, color 300ms, fill 300ms, padding 300ms;
   border: 0;
   background: #012939;
+  box-shadow: unset;
   fill: #fff;
   color: #fff;
   font-family: "Poppins", "Poppins";
@@ -418,7 +418,6 @@ ul {
   cursor: pointer;
   user-select: none;
   -webkit-touch-callout: none;
-  box-shadow: unset;
 }
 
 .button:hover, .button:active, .button:focus, .button[aria-selected='true'], [role='button']:hover, [role='button']:active, [role='button']:focus, [role='button'][aria-selected='true'] {
@@ -637,10 +636,11 @@ ul {
   color: darken(#012939, 20%);
 }
 
+/* stylelint-disable max-line-length */
 .highlight-text {
   display: inline;
-  margin-left: -0.25rem;
-  padding: 0 0.25rem;
+  margin-left: -.25rem;
+  padding: 0 .25rem;
   transition: background-position 900ms;
   background-image: linear-gradient(to right, transparent 50%, #a0d72a 50%);
   background-repeat: repeat-x;
@@ -650,31 +650,11 @@ ul {
 }
 
 .highlight-text.text-rotate::after {
-  width: calc(100% + 0.2rem);
+  width: calc(100% + .2rem);
 }
 
 .highlight-text--in-view {
   background-position: -100% 75%;
-}
-
-.highlight-text--dark {
-  background-image: linear-gradient(to right, transparent 50%, #7db00e 50%);
-}
-
-.highlight-text--blue {
-  background-image: linear-gradient(to right, transparent 50%, #012939 50%);
-}
-
-.highlight-text--block {
-  display: block;
-}
-
-.highlight-text--light {
-  background-image: linear-gradient(to right, transparent 50%, #fff 50%);
-}
-
-.highlight-text--caption {
-  background-image: linear-gradient(to right, transparent 50%, #ddc30f 50%);
 }
 
 /***** Header *****/
