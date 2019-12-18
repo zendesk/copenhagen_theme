@@ -152,15 +152,6 @@ ul {
   text-align: initial;
 }
 
-.dropdown-toggle:focus {
-  outline: 0;
-  text-decoration: underline;
-}
-
-.dropdown-toggle::after {
-  color: inherit;
-}
-
 .visibility-hidden, .recent-activity-accessibility-label {
   border: 0;
   clip: rect(0 0 0 0);
@@ -557,7 +548,7 @@ ul {
   }
 }
 
-.user-info > [role="button"] {
+.user-info > button {
   border: 0;
   color: $link_color;
   min-width: 0;
@@ -565,17 +556,17 @@ ul {
   white-space: nowrap;
 }
 
-.user-info > [role="button"]:hover, .user-info > [role="button"]:focus {
+.user-info > button:hover, .user-info > button:focus {
   color: $link_color;
   background-color: transparent;
 }
 
-.user-info > [role="button"]::after {
+.user-info > button::after {
   color: $link_color;
   padding-right: 15px;
 }
 
-[dir="rtl"] .user-info > [role="button"]::after {
+[dir="rtl"] .user-info > button::after {
   padding-left: 15px;
   padding-right: 0;
 }
@@ -1933,13 +1924,9 @@ ul {
 /***** Vote *****/
 /* Used in article comments, post comments and post */
 .vote {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  width: 35px;
-}
-
-.vote a {
-  outline: none;
 }
 
 .vote a:active, .vote a:hover, .vote a:focus {
@@ -1957,29 +1944,25 @@ ul {
   unicode-bidi: bidi-override;
 }
 
-.vote-up:hover::before,
-.vote-down:hover::before {
+.vote-up:hover,
+.vote-down:hover {
   color: $brand_color;
 }
 
-.vote-up::before, .vote-down::before {
+.vote-up, .vote-down {
   color: lighten($text_color, 20%);
-  font-size: 24px;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.vote-up::before {
-  content: "\2B06";
-}
-
-.vote-down::before {
-  content: "\2B07";
-}
-
-.vote-voted::before {
+.vote-voted {
   color: $brand_color;
 }
 
-.vote-voted:hover::before {
+.vote-voted:hover {
   color: darken($brand_color, 20%);
 }
 
@@ -1994,21 +1977,21 @@ ul {
 .actions .dropdown-toggle {
   font-size: 0;
   margin: 15px 0;
-}
-
-.actions .dropdown-toggle:hover::before, .actions .dropdown-toggle:focus::before, .actions .dropdown-toggle:active::before {
-  background-color: darken($background_color, 3%);
-}
-
-.actions .dropdown-toggle::before {
   background-color: transparent;
   border-radius: 50%;
   color: lighten($text_color, 20%);
-  content: "\2699";
   display: block;
   font-size: 13px;
   margin: auto;
   padding: 5px;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  justify-content: center;
+}
+
+.actions .dropdown-toggle:hover, .actions .dropdown-toggle:focus, .actions .dropdown-toggle:active {
+  background-color: darken($background_color, 3%);
 }
 
 /***** Community *****/
@@ -3385,9 +3368,6 @@ ul {
 .article-vote::before,
 .attachments .attachment-item::before,
 .share a::before,
-.vote-up::before,
-.vote-down::before,
-.actions .dropdown-toggle::before,
 .collapsible-nav-toggle::after,
 .collapsible-sidebar-toggle::after,
 .search-result-votes::before,
