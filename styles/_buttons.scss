@@ -3,14 +3,14 @@
   display: inline-flex;
   position: relative;
   align-items: center;
-  padding: .75rem 1.75rem;
+  padding: .75rem 1.75rem .6rem;
   overflow: hidden;
   transition:
     background $transition-speed,
     color $transition-speed,
     fill $transition-speed,
     padding $transition-speed;
-  border: 0;
+  border: solid 3px $primary;
   background: $primary;
   box-shadow: unset;
   fill: $white;
@@ -30,7 +30,7 @@
   &:active,
   &:focus,
   &[aria-selected='true'] {
-    background-color: $white;
+    background-color: transparent;
     box-shadow: unset;
     fill: $primary;
     color: $primary;
@@ -43,7 +43,7 @@
 }
 
 .button-secondary {
-  border: solid 2px $secondary;
+  border: solid 3px $secondary;
   background: $secondary;
   color: $white;
 
@@ -52,14 +52,14 @@
   &:focus,
   &[aria-selected='true'] {
     background-color: $white;
-    fill: $secondary;
-    color: $secondary;
+    fill: transparent;
+    color: transparent;
   }
 }
 
 .button--ghost {
-  border: solid 2px $primary;
-  background: $white;
+  border: solid 3px $primary;
+  background: transparent;
   color: $primary;
 
   &:hover,

@@ -111,7 +111,13 @@
     @include tablet {
       display: flex;
       align-items: center;
-      width: 60%;
+      width: 93%;
+    }
+    @include desktop {
+      width: 80%;
+    }
+    @media (min-width: 1180px) {
+      width: 70%;
     }
   }
 
@@ -129,7 +135,9 @@
     @include tablet {
       flex-basis: 33.3333333333%;
       max-width: 33.3333333333%;
-      padding-top: unset;
+      padding-top: none;
+      padding-left: $spacing--desktop;
+      text-align: right;
     }
   }
 
