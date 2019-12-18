@@ -1514,12 +1514,8 @@ ul {
   color: $brand_text_color;
 }
 
-.article-vote-up::before {
-  content: "\2713";
-}
-
-.article-vote-down::before {
-  content: "\2715";
+.article-vote > * {
+  vertical-align: middle;
 }
 
 .article-more-questions {
