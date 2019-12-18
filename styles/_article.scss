@@ -91,41 +91,8 @@
   padding-bottom: 20px;
 }
 
-.article-comment-count {
-  color: $secondary-text-color;
-  font-weight: $font-weight-light;
+.article-share {
 
-  &:hover {
-    text-decoration: none;
-  }
-
-  .icon-comments {
-    content: '\1F4AC';
-    display: inline-block;
-    padding: 5px;
-    color: $brand_color;
-    font-size: 18px;
-  }
-}
-
-.article-relatives {
-  @include tablet {
-    flex-direction: row;
-  }
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-  border-top: 1px solid $border-color;
-
-  > * {
-    flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
-    min-width: 50%;
-    margin-right: 0;
-    overflow-wrap: break-word;
-
-    &:last-child { padding: 0; }
-    @include tablet { padding-right: 20px; }
-  }
 }
 
 .article-votes {
@@ -228,7 +195,33 @@
 }
 
 .article-relatives {
+  @include tablet {
+    flex-direction: row;
+  }
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-top: 1px solid $border-color;
+
+  > * {
+    flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
+    min-width: 50%;
+    margin-right: 0;
+    overflow-wrap: break-word;
+
+    &:last-child { padding: 0; }
+    @include tablet { padding-right: 20px; }
+  }
+
   a {
     @extend .greyLink;
+  }
+
+  .recent-articles-title {
+    margin-bottom: 0;
+  }
+
+  .related-articles-title {
+    margin-bottom: 0;
   }
 }
