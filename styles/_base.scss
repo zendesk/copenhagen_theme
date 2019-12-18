@@ -18,7 +18,7 @@ body {
   );
   @media print {
     color: $black;
-    font-family: $font--print;
+    font-family:a $font--print;
     font-size: 16pt;
   }
 
@@ -126,6 +126,16 @@ h6 {
   text-transform: unset;
 }
 
+p {
+  @include fluid-value( margin-bottom,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop
+);
+  margin-top: 0;
+}
+
 a {
   transition: all $transition-speed;
   box-shadow: 0 -2px 0 0 $secondary inset;
@@ -140,6 +150,12 @@ a {
 
   &:focus {
     outline: $secondary auto $focus--width;
+  }
+
+  @media print {
+    color: $black;
+    box-shadow: unset;
+    text-decoration: dotted;
   }
 }
 
@@ -204,7 +220,12 @@ textarea {
 }
 
 .container-divider {
-  margin-bottom: 20px;
+  @include fluid-value( margin-bottom,
+  $min-width,
+  $max-width,
+  $whitespace-small,
+  $whitespace-medium--desktop
+);
   border-top: 1px solid $border-color;
 }
 

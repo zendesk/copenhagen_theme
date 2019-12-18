@@ -212,4 +212,27 @@ document.addEventListener('DOMContentLoaded', function() {
       })
     }
   });
+
+  //Content image popup
+  $('.popup').magnificPopup({
+    type: 'image',
+    closeOnContentClick: true,
+    mainClass: 'mfp-img-mobile mfp-with-zoom',
+    image: {
+      verticalFit: true,
+    },
+    closeOnContentClick: true,
+    closeBtnInside: false,
+    fixedContentPos: true,
+    disableOn: function() {
+      if( $(window).width() < 400 ) {
+        return false;
+      }
+      return true;
+    },
+    zoom: {
+      enabled: true,
+      duration: 300 // don't foget to change the duration also in CSS
+    }
+  });
 });

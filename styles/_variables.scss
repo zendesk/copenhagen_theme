@@ -50,6 +50,12 @@ $font__weight--black: 900;
 
 $spacing: 15px;
 $spacing--desktop: 30px;
+$whitespace-small: 32px;
+$whitespace-medium: 48px;
+$whitespace-large: 72px;
+$whitespace-small--desktop: 48px;
+$whitespace-medium--desktop: 72px;
+$whitespace-large--desktop: 96px;
 
 $border--width: 1px;
 $border--radius: 8px;
@@ -80,7 +86,7 @@ $secondary-shade: zass-darken($background_color, 5%);
 $font-size-bigger: 16px;
 $font-size-base: 15px;
 $font-size-navigation: 14px;
-$font-size-small: 13px;
+$font-size-small: 16px;
 $font-size-smaller: 11px;
 
 $border-color: #ddd;
