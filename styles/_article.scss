@@ -49,6 +49,7 @@
   }
   @media print {
     background-color: $white;
+    padding: 0;
 
     &__title {
       color: $black;
@@ -58,27 +59,32 @@
 
 .article-info {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  @include desktop {
+    flex-direction: row;
+  }
 }
 
 .article-sidebar {
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
-  border: solid 1px red;
+  order: 1;
+  max-width: 100%;
   @include desktop {
     flex: 1 0 30%;
-    order: 1;
     max-width: 30%;
   }
 }
 
 .article-content {
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+  max-width: 100%;
   @include desktop {
     flex: 1 0 69%;
     min-width: 640px;
     max-width: 69%;
     padding: 0 30px 0 0;
   }
-  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
 
   & > p:last-child {
     margin-bottom: 0;
@@ -90,10 +96,19 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
+
+  @media print {
+    display: none;
+  }
 }
 
 .article-share {
-
+  a {
+    @extend .noshadow;
+  }
+  @media print {
+    display: none;
+  }
 }
 
 .article-votes {
@@ -109,16 +124,19 @@
 
 .article-vote {
   width: auto;
-  min-width: 90px;
+  min-width: 50px;
   margin: 10px 5px;
-  border: 1px solid $brand_color;
+  padding: 5px 15px;
+  border: 1px solid $primary;
   background: transparent;
-  color: $brand_color;
+  color: $primary;
+  font-family: $font--default;
+  font-size: .8em;
 
   &::before {
     @extend .icon;
-    margin-right: 10px;
-    font-size: 8px;
+    margin-right: 5px;
+    font-size: .5em;
 
     [dir='rtl'] & {
       margin-right: 0;
@@ -133,18 +151,21 @@
   &:focus,
   &:active {
     background-color: transparent;
-    color: $brand_color;
+    color: $primary;
   }
 
   &:hover {
-    background-color: $brand_color;
+    background-color: $primary;
+    color: $white;
   }
 
   &:hover::before,
   &:hover::after,
   &[aria-selected='true']::before,
-  &[aria-selected='true']::after {
-    color: $brand_text_color;
+  &[aria-selected='true']::after,
+  &[aria-selected='true'] {
+    color: $white;
+    background-color: $primary;
   }
 }
 
@@ -167,6 +188,10 @@
 .article-more-questions {
   margin-bottom: 30px;
   font-size: 16px;
+
+  @media print {
+    display: none;
+  }
 }
 
 .article-return-to-top {
@@ -192,6 +217,10 @@
       margin-right: 10px;
     }
   }
+
+  @media print {
+    display: none;
+  }
 }
 
 .article-relatives {
@@ -200,8 +229,25 @@
   }
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
-  border-top: 1px solid $border-color;
+  @include fluid-value(padding-top,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+  @include fluid-value(padding-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+  @include fluid-value(margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+  border-top: 3px solid $border-color;
 
   > * {
     flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
@@ -223,5 +269,8 @@
 
   .related-articles-title {
     margin-bottom: 0;
+  }
+  @media print {
+    display: none;
   }
 }

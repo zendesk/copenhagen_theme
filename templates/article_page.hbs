@@ -1,7 +1,7 @@
 <article class="article">
   <header class="article-header">
     <div class="container">
-      <h1 title="{{article.title}}" class="article-header__title">
+      <h1 class="h2 article-header__title" title="{{article.title}}">
         {{article.title}}
         {{#if article.internal}}
           <span class="icon-lock" title="{{t 'internal'}}"></span>
@@ -22,8 +22,6 @@
     </nav>
     <section class="article-info">
       <aside class="article-sidebar">
-        <h3>My name is Tammy</h3>
-        <p>This is my life</p>
       </aside>
       <div class="article-content">
         <div class="article-body">{{article.body}}</div>
@@ -65,8 +63,8 @@
             {{vote 'label' class='article-vote-label'}}
           </small>
           <div class="article-votes-controls" role='radiogroup'>
-            {{vote 'up' role='radio' class='button button-ghost article-vote article-vote-up'}}
-            {{vote 'down' role='radio' class='button button-ghost article-vote article-vote-down'}}
+            {{vote 'up' role='radio' class='button article-vote article-vote-up'}}
+            {{vote 'down' role='radio' class='button article-vote article-vote-down'}}
           </div>
         </div>
       {{/with}}

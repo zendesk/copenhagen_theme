@@ -65,8 +65,13 @@
   }
 
   iframe[src*='youtube'] {
-    width: 100%;
     max-width: 100%;
+    @media print {
+      display: none;
+    }
+  }
+
+  .wistia_responsive_padding {
     @media print {
       display: none;
     }
@@ -117,12 +122,22 @@
     list-style-type: lower-latin;
   }
 
+  li > p {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+
   /** CODE SAMPLE **/
   pre {
+    width: inherit;
+    max-width: 100%;
     padding: $spacing;
     border: solid $border--width $grey;
     border-radius: $border--radius;
     background-color: $grey--lightest;
+    word-wrap: break-word;
+    white-space: pre-wrap;
     @media print {
       border: solid $border--width $black;
       background-color: $white;
@@ -165,4 +180,6 @@
   .wysiwyg-indent2 {
     margin-left: 2em;
   }
+
+  table { display: none; }
 }

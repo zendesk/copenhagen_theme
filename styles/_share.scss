@@ -21,7 +21,7 @@
   @extend .icon;
   display: block;
   width: 100%;
-  color: $secondary-text-color;
+  color: $primary;
   font-size: 23px;
   text-align: center;
 }
@@ -29,7 +29,7 @@
 .share a:hover {
   text-decoration: none;
 
-  &::before { color: $brand_color; }
+  &::before { color: $grey--light; }
 }
 
 .share-twitter::before {

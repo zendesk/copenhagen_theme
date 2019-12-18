@@ -61,6 +61,12 @@
   }
 }
 
+.nav-wrapper {
+  @media print {
+    display: none;
+  }
+}
+
 .user-nav {
   display: inline-block;
   position: absolute;

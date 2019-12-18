@@ -26,6 +26,9 @@
     max-width: 242px;
     color: $white;
   }
+  @media print {
+    display: none;
+  }
 }
 
 .footer-column {
