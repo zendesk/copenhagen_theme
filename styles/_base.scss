@@ -143,6 +143,38 @@ a {
   }
 }
 
+a.greyLink {
+  transition: all $transition-speed;
+  box-shadow: 0 -1px 0 0 $secondary inset;
+  color: $grey;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+  }
+
+  &:focus {
+    outline: $secondary auto $focus--width;
+  }
+}
+
+a.noshadow {
+  box-shadow: none;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none;
+  }
+
+  &:focus {
+    outline: $secondary auto $focus--width;
+  }
+}
+
 input,
 textarea {
   color: #000;
