@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //HIGHLIGHT TEXT
 
-  function isInView ( elm ) {
+  function isInView( elm ) {
     const topBoundary = window.innerHeight / 5;
     const bottomBoundary = window.innerHeight - topBoundary;
     const elementRect = elm.getBoundingClientRect();
