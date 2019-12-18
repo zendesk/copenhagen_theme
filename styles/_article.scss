@@ -235,12 +235,6 @@
     $whitespace-medium,
     $whitespace-medium--desktop
   );
-  @include fluid-value(padding-bottom,
-    $min-width,
-    $max-width,
-    $whitespace-medium,
-    $whitespace-medium--desktop
-  );
   @include fluid-value(margin-top,
     $min-width,
     $max-width,
@@ -248,6 +242,14 @@
     $whitespace-medium--desktop
   );
   border-top: 3px solid $border-color;
+  @include tablet {
+    @include fluid-value(padding-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+  }
 
   > * {
     flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
@@ -268,7 +270,11 @@
   }
 
   .related-articles-title {
+    margin-top: 30px;
     margin-bottom: 0;
+    @include tablet {
+      margin-top: 0;
+    }
   }
   @media print {
     display: none;
