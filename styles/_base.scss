@@ -32,7 +32,7 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, .h3, .h4 {
   margin-top: 0;
   font-family: $font--heading;
   font-weight: $font__weight--black;
@@ -43,7 +43,9 @@ h1, h2, h3, h4, h5, h6 {
     h3,
     h4,
     h5,
-    h6 {
+    h6,
+    .h3,
+    .h4 {
       font-family: $font--print-heading;
       letter-spacing: 0;
     }
@@ -76,22 +78,19 @@ h2 {
   1.25 );
 }
 
-h3 {
+h3,
+.h3 {
   @include fluid-value( font-size,
   $min-width,
   $max-width,
   $typescale__step1,
   $typescale__step2
 );
-  @include fluid-value( line-height,
-  $min-width,
-  $max-width,
-  1.375,
-  1.375
-);
+  line-height: 1.375;
 }
 
-h4 {
+h4,
+.h4 {
   font-weight: $font__weight--extra-bold;
   letter-spacing: 0;
   line-height: 1.375;

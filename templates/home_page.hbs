@@ -19,3 +19,97 @@
     {{/if}}
   </div>
 </section>
+
+
+<div class="knowledge-base__wrapper">
+  <section class="container section knowledge-base">
+    <h2 class="knowledge-base__title">Learn about our features</h2>
+    <section class="categories blocks">
+      <ul class="blocks__list">
+        {{#each categories}}
+          {{#if ../has_multiple_categories}}
+            <li class="blocks__item">
+              <a href='{{url}}' class="blocks__item-link">
+                <span class="blocks__item-title h4">{{name}}</span>
+                <span class="blocks__item-description">{{excerpt description}}</span>
+              </a>
+            </li>
+          {{else}}
+            {{#each sections}}
+              <li class="blocks__item">
+                <a href='{{url}}' class="blocks__item-link">
+                  <span class="blocks__item-title">
+                    {{name}}
+                  </span>
+                  <span class="blocks__item-description">{{excerpt description}}</span>
+                </a>
+              </li>
+            {{/each}}
+          {{/if}}
+        {{/each}}
+      </ul>
+      {{pagination}}
+    </section>
+</div>
+
+<div class="jobber-resources__wrapper">
+  <section class="container jobber-resources">
+    <h2 class="jobber-resources__title">Jobber Resources</h2>
+    <section class="jobber-resources-cards">
+      <div class="jobber-resources-card">
+        <figure class="jobber-resources-card__image">
+          <img src="{{ asset 'thumb_glossary.png' }}" alt="A white Jobber logo on a navy background">
+        </figure>
+        <div class="jobber-resources-card__title h4">
+          Jobber Glossary
+        </div>
+        <p class="jobber-resources-card__description">
+          Confused by language we use in Jobber? Definitions right this way.
+        </p>
+        <a title="Go to the Jobber Glossary" class="jobber-resources-card__link" href="https://help.getjobber.com/hc/en-us/sections/115002368127-Jobber-Glossary">
+          Learn more
+        </a>
+      </div>
+      <div class="jobber-resources-card">
+        <figure class="jobber-resources-card__image">
+          <img src="{{ asset 'thumb_videos.png' }}" alt="A video screen on a green background">
+        </figure>
+        <div class="jobber-resources-card__title h4">
+          Instructional Videos
+        </div>
+        <p class="jobber-resources-card__description">
+          We walk you through our biggest features and point out the essentials.
+        </p>
+        <a title="Watch instructional videos" class="jobber-resources-card__link" href="https://help.getjobber.com/hc/en-us/categories/115001335727-Instructional-Videos">
+          Learn more
+        </a>
+      </div>
+      <div class="jobber-resources-card">
+        <figure class="jobber-resources-card__image">
+          <img src="{{ asset 'thumb_academy.png' }}" alt="Jobber Academy logo on a grey background">
+        </figure>
+        <div class="jobber-resources-card__title h4">
+          Jobber Academy
+        </div>
+        <p class="jobber-resources-card__description">
+          Jobber Academy helps people looking to run smarter service businesses.
+        </p>
+        <a title="New tab goes to the Jobber Academy website" class="jobber-resources-card__link" href="https://academy.getjobber.com/" target="_blank">
+          Learn more
+        </a>
+      </div>
+    </section>
+  </section>
+</div>
+
+<div class="home-mid-cta">
+  <section class="container">
+    <div class="home-mid-cta__content">
+      <div class="home-mid-cta__pre-title">WE’RE HERE TO HELP</div>
+      <div class="home-mid-cta__title h3"><span class="highlight-text">Talk to a real person.</span> <br /> No matter the question.</div>
+    </div>
+    <div class="home-mid-cta__action">
+      <a class="button button-large home-mid-cta__link" href="#">Contact Us</a>
+    </div>
+  </section>
+</div>

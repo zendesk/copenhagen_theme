@@ -1,72 +1,155 @@
 /***** Homepage *****/
 
-.section {
-  @include tablet {
-    margin-bottom: 60px;
+/***** Knowledge Base ********/
+.knowledge-base {
+  &__wrapper {
+    background-color: $grey--lightest;
+    @include fluid-value( padding-top,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+    @include fluid-value( padding-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
   }
-  margin-bottom: 40px;
+
+  &__title {
+    text-align: center;
+  }
 }
 
-.home-section h2 {
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-/***** Promoted articles *****/
-
-.promoted-articles {
-  @include desktop { flex-direction: row; }
-  display: flex;
-  flex-flow: column wrap;
-}
-
-.promoted-articles-item {
-  @include desktop {
-    flex: 0 0 auto;
-    align-self: flex-end;
-    width: 33%; /* Three columns on desktop */
-    padding-right: 30px;
-  }
-  flex: 1 0 auto;
-
-  &:nth-child(3n) {
-    padding-right: 0;
+/***** Jobber Resources ******/
+.jobber-resources {
+  &__wrapper {
+    background-color: $white;
+    @include fluid-value( padding-top,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
+    @include fluid-value( padding-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-medium,
+    $whitespace-medium--desktop
+  );
   }
 
-  a {
-    display: block;
-    padding: 15px 0;
-    border-bottom: 1px solid $border-color;
-    color: $text_color;
+  &__title {
+    text-align: center;
   }
 
-  .icon-lock::before {
-    vertical-align: baseline;
-  }
-
-  &:last-child a {
-    @include desktop {
-      border-bottom: 1px solid $border-color;
+  &-cards {
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
     }
-    border: 0;
   }
 }
 
-/***** Community section in homepage *****/
-.community {
-  text-align: center;
+.jobber-resources-card {
+  flex-grow: 1;
 
-  &-image {
+  &:not(:last-child) {
+    margin-bottom: $spacing--desktop;
+  }
+  @include tablet {
+    width: 33%;
+    margin-bottom: 0;
+    padding: 0 $spacing;
+
+    &:not(:last-child) {
+      margin-bottom: unset;
+    }
+  }
+
+  &__image {
+    margin: 0;
+    padding: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    margin-top: $spacing;
+  }
+
+  &__description {
+    margin: $spacing 0;
+  }
+}
+
+/**** MID CTA *****/
+.home-mid-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include fluid-value( padding-top,
+  $min-width,
+  $max-width,
+  $whitespace-medium,
+  $whitespace-medium--desktop
+);
+  @include fluid-value( padding-bottom,
+  $min-width,
+  $max-width,
+  $whitespace-medium,
+  $whitespace-medium--desktop
+);
+  background-color: $grey--lightest;
+
+  .container {
+    width: 100%;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      width: 93%;
+    }
+    @include desktop {
+      width: 80%;
+    }
+    @media (min-width: 1180px) {
+      width: 70%;
+    }
+  }
+
+  &__content {
     max-width: 100%;
-    min-height: 300px;
-    background-image: url($community_image);
-    background-repeat: no-repeat;
-    background-position: center;
+    @include tablet {
+      flex-basis: 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
   }
-}
 
-.community,
-.activity {
-  padding: 30px 0;
-  border-top: 1px solid $border-color;
+  &__action {
+    max-width: 100%;
+    padding-top: $spacing;
+    @include tablet {
+      flex-basis: 33.3333333333%;
+      max-width: 33.3333333333%;
+      padding-top: none;
+      padding-left: $spacing--desktop;
+      text-align: right;
+    }
+  }
+
+  &__pre-title {
+    font-family: $font--default;
+    font-weight: $font__weight--black;
+    text-transform: uppercase;
+    @include fluid-value( font-size,
+    $min-width,
+    $max-width,
+    15px,
+    18px
+  );
+  }
 }
