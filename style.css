@@ -1880,6 +1880,10 @@ ul {
   }
 }
 
+.article-content > p:last-child {
+  margin-bottom: 0;
+}
+
 /* stylelint-disable */
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
