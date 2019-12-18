@@ -50,7 +50,7 @@ body > main {
   }
 }
 
-h1, h2, h3, h4, h5, h6, .h3class, .h4class {
+h1, h2, h3, h4, h5, h6, .h3, .h4 {
   margin-top: 0;
   font-family: "Poppins", "Poppins";
   font-weight: 900;
@@ -64,57 +64,57 @@ h1, h2, h3, h4, h5, h6, .h3class, .h4class {
   h1 h4,
   h1 h5,
   h1 h6,
-  h1 .h3class,
-  h1 .h4class, h2 h1,
+  h1 .h3,
+  h1 .h4, h2 h1,
   h2 h2,
   h2 h3,
   h2 h4,
   h2 h5,
   h2 h6,
-  h2 .h3class,
-  h2 .h4class, h3 h1,
+  h2 .h3,
+  h2 .h4, h3 h1,
   h3 h2,
   h3 h3,
   h3 h4,
   h3 h5,
   h3 h6,
-  h3 .h3class,
-  h3 .h4class, h4 h1,
+  h3 .h3,
+  h3 .h4, h4 h1,
   h4 h2,
   h4 h3,
   h4 h4,
   h4 h5,
   h4 h6,
-  h4 .h3class,
-  h4 .h4class, h5 h1,
+  h4 .h3,
+  h4 .h4, h5 h1,
   h5 h2,
   h5 h3,
   h5 h4,
   h5 h5,
   h5 h6,
-  h5 .h3class,
-  h5 .h4class, h6 h1,
+  h5 .h3,
+  h5 .h4, h6 h1,
   h6 h2,
   h6 h3,
   h6 h4,
   h6 h5,
   h6 h6,
-  h6 .h3class,
-  h6 .h4class, .h3class h1,
-  .h3class h2,
-  .h3class h3,
-  .h3class h4,
-  .h3class h5,
-  .h3class h6,
-  .h3class .h3class,
-  .h3class .h4class, .h4class h1,
-  .h4class h2,
-  .h4class h3,
-  .h4class h4,
-  .h4class h5,
-  .h4class h6,
-  .h4class .h3class,
-  .h4class .h4class {
+  h6 .h3,
+  h6 .h4, .h3 h1,
+  .h3 h2,
+  .h3 h3,
+  .h3 h4,
+  .h3 h5,
+  .h3 h6,
+  .h3 .h3,
+  .h3 .h4, .h4 h1,
+  .h4 h2,
+  .h4 h3,
+  .h4 h4,
+  .h4 h5,
+  .h4 h6,
+  .h4 .h3,
+  .h4 .h4 {
     font-family: "Bookman, serif";
     letter-spacing: 0;
   }
@@ -179,27 +179,27 @@ h2 {
 }
 
 h3,
-.h3class {
+.h3 {
   font-size: 24px;
   line-height: 1.375;
 }
 
 @media screen and (min-width: 320px) {
   h3,
-  .h3class {
+  .h3 {
     font-size: calc(24px + 8 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
   h3,
-  .h3class {
+  .h3 {
     font-size: 32px;
   }
 }
 
 h4,
-.h4class {
+.h4 {
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.375;
@@ -208,14 +208,14 @@ h4,
 
 @media screen and (min-width: 320px) {
   h4,
-  .h4class {
+  .h4 {
     font-size: calc(16px + 8 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
   h4,
-  .h4class {
+  .h4 {
     font-size: 24px;
   }
 }

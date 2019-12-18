@@ -32,7 +32,7 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6, .h3class, .h4class {
+h1, h2, h3, h4, h5, h6, .h3, .h4 {
   margin-top: 0;
   font-family: $font--heading;
   font-weight: $font__weight--black;
@@ -44,8 +44,8 @@ h1, h2, h3, h4, h5, h6, .h3class, .h4class {
     h4,
     h5,
     h6,
-    .h3class,
-    .h4class {
+    .h3,
+    .h4 {
       font-family: $font--print-heading;
       letter-spacing: 0;
     }
@@ -79,7 +79,7 @@ h2 {
 }
 
 h3,
-.h3class {
+.h3 {
   @include fluid-value( font-size,
   $min-width,
   $max-width,
@@ -90,7 +90,7 @@ h3,
 }
 
 h4,
-.h4class {
+.h4 {
   font-weight: $font__weight--extra-bold;
   letter-spacing: 0;
   line-height: 1.375;

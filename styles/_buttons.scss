@@ -1,14 +1,18 @@
-/* stylelint-disable */
 /***** Buttons *****/
 .button, [role='button'] {
   display: inline-flex;
-	position: relative;
-	align-items: center;
-	padding: 0.75rem 1.75rem;
+  position: relative;
+  align-items: center;
+  padding: .75rem 1.75rem;
   overflow: hidden;
-  transition: background $transition-speed, color $transition-speed, fill $transition-speed, padding $transition-speed;
+  transition:
+    background $transition-speed,
+    color $transition-speed,
+    fill $transition-speed,
+    padding $transition-speed;
   border: 0;
   background: $primary;
+  box-shadow: unset;
   fill: $white;
   color: $white;
   font-family: $font--heading;
@@ -21,7 +25,6 @@
   cursor: pointer;
   user-select: none;
   -webkit-touch-callout: none;
-  box-shadow: unset;
 
   &:hover,
   &:active,

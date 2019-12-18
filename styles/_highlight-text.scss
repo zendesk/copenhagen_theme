@@ -24,24 +24,4 @@ $highlight-transition-speed: $transition-speed * 3;
   &--in-view {
     background-position: -100% 75%;
   }
-
-  &--dark {
-    background-image: linear-gradient(to right, transparent 50%, $highlight-dark-color 50%);
-  }
-
-  &--blue {
-    background-image: linear-gradient(to right, transparent 50%, $primary 50%);
-  }
-
-  &--block {
-    display: block;
-  }
-
-  &--light {
-    background-image: linear-gradient(to right, transparent 50%, $highlight-light-color 50%);
-  }
-
-  &--caption {
-    background-image: linear-gradient(to right, transparent 50%, $yellow 50%);
-  }
 }

@@ -214,6 +214,28 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   //HIGHLIGHT TEXT
+  /**
+ * IE Shiv
+ */
+(() => {
+	if (typeof NodeList.prototype.forEach === "function") {
+		return false;
+	} else {
+		NodeList.prototype.forEach = Array.prototype.forEach;
+	}
+
+	Element.prototype.remove = function() {
+		this.parentElement.removeChild(this);
+	}
+	NodeList.prototype.remove = HTMLCollection.prototype.remove = function() {
+		for(var i = this.length - 1; i >= 0; i--) {
+			if(this[i] && this[i].parentElement) {
+				this[i].parentElement.removeChild(this[i]);
+			}
+		}
+	}
+})()
+
   const isInView = ( elm ) => {
     const topBoundary = window.innerHeight / 5;
     const bottomBoundary = window.innerHeight - topBoundary;
