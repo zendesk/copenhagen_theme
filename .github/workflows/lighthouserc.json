@@ -29,7 +29,7 @@
         {
           "matchingUrlPattern": ".+articles.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }]
+            "categories:accessibility": ["error", { "minScore": 0.87 }]
           }
         },
         {
@@ -65,7 +65,7 @@
         {
           "matchingUrlPattern": ".+community/posts.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }]
+            "categories:accessibility": ["error", { "minScore": 0.87 }]
           }
         },
         {
