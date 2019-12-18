@@ -21,14 +21,6 @@
 }
 
 .logo {
-  &__link {
-    box-shadow: none;
-
-    &:hover {
-      box-shadow: none;
-    }
-  }
-
   &__image {
     @include fluid-value(
       max-height,

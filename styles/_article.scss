@@ -8,11 +8,12 @@
   $whitespace-large--desktop
 );
   @media print {
-    &:after {
-      content: "Please visit help.getjobber.com for updated documents";
+    &::after {
+      content: 'Please visit help.getjobber.com for updated documents';
     }
   }
 }
+
 .article-header {
   background-color: $primary--light;
   @include fluid-value( padding-top,
@@ -46,7 +47,6 @@
     font-size: 20px;
     vertical-align: baseline;
   }
-
   @media print {
     background-color: $white;
 
@@ -59,17 +59,18 @@
 .article-info {
   display: flex;
   justify-content: space-between;
-
 }
+
 .article-sidebar {
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
   border: solid 1px red;
   @include desktop {
     flex: 1 0 30%;
-    max-width: 30%;
     order: 1;
+    max-width: 30%;
   }
-  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
 }
+
 .article-content {
   @include desktop {
     flex: 1 0 69%;
@@ -96,12 +97,11 @@
 }
 
 .article-votes {
-  padding: 30px 0 0 0;
+  padding: 30px 0 0;
 
   &-question {
     margin-bottom: -4px;
   }
-
   @media print {
     display: none;
   }

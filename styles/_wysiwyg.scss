@@ -2,14 +2,19 @@
 
 .article-body {
   /* LINKS */
-  a[href*="//"]:not([href*="cloudinary.com"]:not([href*="help.getjobber.com"])) {
-    &:after {
-      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
-    }
-    @media print {
-      &:after {
+
+  /* stylelint-disable-next-line selector-max-specificity */
+  a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com']) {
+    /* stylelint-disable-next-line selector-max-specificity */
+    &::after {
+      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
+      max-width: 15px;
+      height: auto;
+      margin-left: 5px;
+      /* stylelint-disable-next-line max-nesting-depth */
+      @media print {
+        content: ' [' attr(href) ']';
         color: $black;
-        content: " [" attr(href) "]";
       }
     }
   }
@@ -17,12 +22,12 @@
   a {
     @media print {
       border-bottom: dotted 1px $grey--light;
-      color: $grey--light;
       box-shadow: none;
-
-      &:after {
+      color: $grey--light;
+      /* stylelint-disable-next-line max-nesting-depth */
+      &::after {
+        content: ' [' attr(href) ']';
         color: $black;
-        content: " [" attr(href) "]";
       }
     }
   }
@@ -35,7 +40,6 @@
     &:focus {
       box-shadow: none;
     }
-
     @media print {
       cursor: not-allowed;
     }
@@ -43,25 +47,24 @@
 
   /* MEDIA */
   img {
-    border: solid $border--width $grey;
-    height: auto;
     max-width: 100%;
+    height: auto;
+    border: solid $border--width $grey;
 
     &.mfp-img {
       border: none;
     }
-
     @media print {
-      max-width: 90%;
       display: block;
-
-      &:after {
-        content: " [Image source: " attr(href) "]";
+      max-width: 90%;
+      /* stylelint-disable-next-line max-nesting-depth */
+      &::after {
+        content: ' [Image source: ' attr(href) ']';
       }
     }
   }
 
-  iframe[src*="youtube"] {
+  iframe[src*='youtube'] {
     width: 100%;
     max-width: 100%;
     @media print {
@@ -79,9 +82,10 @@
     $spacing--desktop
   );
   }
+
   ul {
-    list-style-type: disc;
     list-style-position: inside;
+    list-style-type: disc;
     @include fluid-value( margin-left,
     $min-width,
     $max-width,
@@ -89,36 +93,36 @@
     $spacing--desktop
   );
   }
+
   ol {
-      list-style-type: decimal;
-      list-style-position: inside;
-      @include fluid-value( margin-left,
+    list-style-position: inside;
+    list-style-type: decimal;
+    @include fluid-value( margin-left,
     $min-width,
     $max-width,
     $spacing,
     $spacing--desktop
   );
-
   }
+
   ul ul, ol ul {
-      list-style-type: circle;
-      list-style-position: inside;
-      margin-left: $spacing--desktop
-  }
-  ol ol, ul ol {
-      list-style-type: lower-latin;
-      list-style-position: inside;
-      margin-left: $spacing--desktop
+    margin-left: $spacing--desktop;
+    list-style-position: inside;
+    list-style-type: circle;
   }
 
+  ol ol, ul ol {
+    margin-left: $spacing--desktop;
+    list-style-position: inside;
+    list-style-type: lower-latin;
+  }
 
   /** CODE SAMPLE **/
   pre {
+    padding: $spacing;
     border: solid $border--width $grey;
     border-radius: $border--radius;
     background-color: $grey--lightest;
-    padding: $spacing;
-
     @media print {
       border: solid $border--width $black;
       background-color: $white;
@@ -133,27 +137,32 @@
   .wysiwyg-text-align-center {
     text-align: center;
   }
+
   .wysiwyg-text-align-right {
     text-align: right;
   }
+
   .wysiwyg-text-align-left {
     text-align: left;
   }
 
   .wysiwyg-font-size-small {
-    font-size: 0.875em;
+    font-size: .875em;
   }
+
   .wysiwyg-font-size-medium {
     font-size: 1em;
   }
+
   .wysiwyg-font-size-large {
     font-size: 1.25em;
   }
+
   .wysiwyg-font-size-x-large {
     font-size: 1.5em;
   }
 
   .wysiwyg-indent2 {
+    margin-left: 2em;
   }
-
 }

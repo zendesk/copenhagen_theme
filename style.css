@@ -33,7 +33,7 @@ body {
 @media print {
   body {
     color: #000;
-    font-family: a "Garmond, serif";
+    font-family: "Garmond, serif";
     font-size: 16pt;
   }
 }
@@ -271,8 +271,8 @@ a:focus {
 
 @media print {
   a {
-    color: #000;
     box-shadow: none;
+    color: #000;
     text-decoration: dotted;
   }
 }
@@ -294,10 +294,38 @@ a:focus {
 
 @media print {
   .greyLink, .article-relatives a {
-    color: #000;
     box-shadow: none;
+    color: #000;
     text-decoration: dotted;
   }
+}
+
+a.greyLink, .article-relatives a {
+  transition: all 300ms;
+  box-shadow: 0 -1px 0 0 #7db00e inset;
+  color: #b8b8b8;
+  text-decoration: none;
+}
+
+a.greyLink:hover, .article-relatives a:hover, a.greyLink:active, .article-relatives a:active, a.greyLink:focus, .article-relatives a:focus {
+  box-shadow: 0 -12px 0 0 rgba(125, 176, 14, 0.25) inset;
+}
+
+a.greyLink:focus, .article-relatives a:focus {
+  outline: #7db00e auto 5px;
+}
+
+a.noshadow {
+  box-shadow: none;
+  text-decoration: none;
+}
+
+a.noshadow:hover, a.noshadow:active, a.noshadow:focus {
+  box-shadow: none;
+}
+
+a.noshadow:focus {
+  outline: #7db00e auto 5px;
 }
 
 input,
@@ -730,14 +758,6 @@ ul {
   }
 }
 
-.logo__link {
-  box-shadow: none;
-}
-
-.logo__link:hover {
-  box-shadow: none;
-}
-
 .logo__image {
   max-height: 18px;
   margin-right: 4px;
@@ -1048,9 +1068,9 @@ ul {
 
 .breadcrumbs li {
   display: inline;
+  max-width: 100%;
   overflow: hidden;
   color: #012939;
-  max-width: 100%;
   font-size: 16px;
   font-weight: 300;
   text-overflow: ellipsis;
@@ -1809,8 +1829,8 @@ ul {
 }
 
 @media print {
-  .article:after {
-    content: "Please visit help.getjobber.com for updated documents";
+  .article::after {
+    content: 'Please visit help.getjobber.com for updated documents';
   }
 }
 
@@ -1878,15 +1898,15 @@ ul {
 }
 
 .article-sidebar {
-  border: solid 1px red;
   flex: 1 0 auto;
+  border: solid 1px red;
 }
 
 @media (min-width: 1024px) {
   .article-sidebar {
     flex: 1 0 30%;
-    max-width: 30%;
     order: 1;
+    max-width: 30%;
   }
 }
 
@@ -1915,7 +1935,7 @@ ul {
 }
 
 .article-votes {
-  padding: 30px 0 0 0;
+  padding: 30px 0 0;
 }
 
 .article-votes-question {
@@ -4803,35 +4823,95 @@ html[lang|='zh'] .search-results-description em {
   font-style: normal;
 }
 
+/* stylelint-disable */
+/** Magnific Popop styling **/
+.article-body {
+  /* padding-bottom and top for image */
+  /* position of shadow behind the image */
+  /* padding for main container */
+  /*
+
+  for zoom animation
+  uncomment this part if you haven't added this code anywhere else
+
+  */
+}
+
+.article-body .mfp-no-margins img.mfp-img {
+  padding: 0;
+}
+
+.article-body .mfp-no-margins .mfp-figure::after {
+  top: 0;
+  bottom: 0;
+}
+
+.article-body .mfp-no-margins .mfp-container {
+  padding: 0;
+}
+
+.article-body .mfp-with-zoom .mfp-container,
+.article-body .mfp-with-zoom.mfp-bg {
+  -webkit-backface-visibility: hidden;
+  -webkit-transition: all .3s ease-out;
+  -moz-transition: all .3s ease-out;
+  -o-transition: all .3s ease-out;
+  transition: all .3s ease-out;
+  opacity: 0;
+}
+
+.article-body .mfp-with-zoom.mfp-ready .mfp-container {
+  opacity: 1;
+}
+
+.article-body .mfp-with-zoom.mfp-ready.mfp-bg {
+  opacity: .8;
+}
+
+.article-body .mfp-with-zoom.mfp-removing .mfp-container,
+.article-body .mfp-with-zoom.mfp-removing.mfp-bg {
+  opacity: 0;
+}
+
 /* WYSIWYG styling inside certain elements only */
 .article-body {
   /* LINKS */
+  /* stylelint-disable-next-line selector-max-specificity */
   /* MEDIA */
   /** LISTS **/
   /** CODE SAMPLE **/
   /** Zendesk Classes **/
 }
 
-.article-body a[href*="//"] :after {
-  content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
+.article-body a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com']) {
+  /* stylelint-disable-next-line selector-max-specificity */
+}
+
+.article-body a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com'])::after {
+  content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
+  max-width: 15px;
+  height: auto;
+  margin-left: 5px;
+  /* stylelint-disable-next-line max-nesting-depth */
 }
 
 @media print {
-  .article-body a[href*="//"] :after {
-    color: #000;
+  .article-body a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com'])::after {
     content: " [" attr(href) "]";
+    color: #000;
   }
 }
 
 @media print {
   .article-body a {
     border-bottom: dotted 1px #888;
-    color: #888;
     box-shadow: none;
+    color: #888;
+    /* stylelint-disable-next-line max-nesting-depth */
   }
-  .article-body a:after {
-    color: #000;
+  .article-body a::after {
     content: " [" attr(href) "]";
+    color: #000;
   }
 }
 
@@ -4850,9 +4930,9 @@ html[lang|='zh'] .search-results-description em {
 }
 
 .article-body img {
-  border: solid 1px #b8b8b8;
-  height: auto;
   max-width: 100%;
+  height: auto;
+  border: solid 1px #b8b8b8;
 }
 
 .article-body img.mfp-img {
@@ -4861,21 +4941,22 @@ html[lang|='zh'] .search-results-description em {
 
 @media print {
   .article-body img {
-    max-width: 90%;
     display: block;
+    max-width: 90%;
+    /* stylelint-disable-next-line max-nesting-depth */
   }
-  .article-body img:after {
+  .article-body img::after {
     content: " [Image source: " attr(href) "]";
   }
 }
 
-.article-body iframe[src*="youtube"] {
+.article-body iframe[src*='youtube'] {
   width: 100%;
   max-width: 100%;
 }
 
 @media print {
-  .article-body iframe[src*="youtube"] {
+  .article-body iframe[src*='youtube'] {
     display: none;
   }
 }
@@ -4900,8 +4981,8 @@ html[lang|='zh'] .search-results-description em {
 }
 
 .article-body ul {
-  list-style-type: disc;
   list-style-position: inside;
+  list-style-type: disc;
   margin-left: 15px;
 }
 
@@ -4918,8 +4999,8 @@ html[lang|='zh'] .search-results-description em {
 }
 
 .article-body ol {
-  list-style-type: decimal;
   list-style-position: inside;
+  list-style-type: decimal;
   margin-left: 15px;
 }
 
@@ -4936,22 +5017,22 @@ html[lang|='zh'] .search-results-description em {
 }
 
 .article-body ul ul, .article-body ol ul {
-  list-style-type: circle;
-  list-style-position: inside;
   margin-left: 30px;
+  list-style-position: inside;
+  list-style-type: circle;
 }
 
 .article-body ol ol, .article-body ul ol {
-  list-style-type: lower-latin;
-  list-style-position: inside;
   margin-left: 30px;
+  list-style-position: inside;
+  list-style-type: lower-latin;
 }
 
 .article-body pre {
+  padding: 15px;
   border: solid 1px #b8b8b8;
   border-radius: 8px;
   background-color: #f3f3f3;
-  padding: 15px;
 }
 
 @media print {
@@ -4978,7 +5059,7 @@ html[lang|='zh'] .search-results-description em {
 }
 
 .article-body .wysiwyg-font-size-small {
-  font-size: 0.875em;
+  font-size: .875em;
 }
 
 .article-body .wysiwyg-font-size-medium {
@@ -4993,52 +5074,6 @@ html[lang|='zh'] .search-results-description em {
   font-size: 1.5em;
 }
 
-/* stylelint-disable */
-/** Magnific Popop styling **/
-.article-body {
-  /* padding-bottom and top for image */
-  /* position of shadow behind the image */
-  /* padding for main container */
-  /*
-
-  for zoom animation
-  uncomment this part if you haven't added this code anywhere else
-
-  */
-}
-
-.article-body .mfp-no-margins img.mfp-img {
-  padding: 0;
-}
-
-.article-body .mfp-no-margins .mfp-figure:after {
-  top: 0;
-  bottom: 0;
-}
-
-.article-body .mfp-no-margins .mfp-container {
-  padding: 0;
-}
-
-.article-body .mfp-with-zoom .mfp-container,
-.article-body .mfp-with-zoom.mfp-bg {
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-  -webkit-transition: all 0.3s ease-out;
-  -moz-transition: all 0.3s ease-out;
-  -o-transition: all 0.3s ease-out;
-  transition: all 0.3s ease-out;
-}
-
-.article-body .mfp-with-zoom.mfp-ready .mfp-container {
-  opacity: 1;
-}
-
-.article-body .mfp-with-zoom.mfp-ready.mfp-bg {
-  opacity: 0.8;
-}
-
-.article-body .mfp-with-zoom.mfp-removing .mfp-container,
-.article-body .mfp-with-zoom.mfp-removing.mfp-bg {
-  opacity: 0;
+.article-body .wysiwyg-indent2 {
+  margin-left: 2em;
 }

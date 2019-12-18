@@ -8,9 +8,9 @@
 
   li {
     display: inline;
+    max-width: 100%;
     overflow: hidden;
     color: $primary;
-    max-width: 100%;
     font-size: $font-size-small;
     font-weight: $font-weight-light;
     text-overflow: ellipsis;
@@ -27,7 +27,6 @@
       color: $primary;
     }
   }
-
   @media print {
     display: none;
   }

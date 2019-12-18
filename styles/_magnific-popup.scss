@@ -6,7 +6,7 @@
     padding: 0;
   }
   /* position of shadow behind the image */
-  .mfp-no-margins .mfp-figure:after {
+  .mfp-no-margins .mfp-figure::after {
     top: 0;
     bottom: 0;
   }
@@ -24,19 +24,20 @@
 
   .mfp-with-zoom .mfp-container,
   .mfp-with-zoom.mfp-bg {
-    opacity: 0;
     -webkit-backface-visibility: hidden;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
+    -webkit-transition: all .3s ease-out;
+    -moz-transition: all .3s ease-out;
+    -o-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+    opacity: 0;
   }
 
   .mfp-with-zoom.mfp-ready .mfp-container {
     opacity: 1;
   }
+
   .mfp-with-zoom.mfp-ready.mfp-bg {
-    opacity: 0.8;
+    opacity: .8;
   }
 
   .mfp-with-zoom.mfp-removing .mfp-container,
