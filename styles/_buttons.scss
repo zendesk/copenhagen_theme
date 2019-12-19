@@ -12,7 +12,7 @@
     padding $transition-speed;
   border: solid 3px $primary;
   background: $primary;
-  box-shadow: unset;
+  box-shadow: none;
   fill: $white;
   color: $white;
   font-family: $font--heading;
@@ -31,7 +31,7 @@
   &:focus,
   &[aria-selected='true'] {
     background-color: transparent;
-    box-shadow: unset;
+    box-shadow: none;
     fill: $primary;
     color: $primary;
     text-decoration: none;
