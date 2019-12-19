@@ -7,9 +7,9 @@
           <span class="icon-lock" title="{{t 'internal'}}"></span>
         {{/if}}
         {{#is article.created_at article.edited_at}}
-          <div class="article-header__date">{{date article.created_at timeago=true}}</div>
+          <span class="article-header__date">{{date article.created_at timeago=true}}</span>
         {{else}}
-          <div class="article-header__date">{{t 'updated'}} {{date article.edited_at timeago=true}}</div>
+          <span class="article-header__date">{{t 'updated'}} {{date article.edited_at timeago=true}}</span>
         {{/is}}
       </h1>
     </div>

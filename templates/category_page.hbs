@@ -1,33 +1,31 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
-
-  <div class="category-container">
-    <div class="category-content">
-      <header class="page-header">
-        <h1>{{category.name}}</h1>
-        {{#if category.description}}
-          <p class="page-header-description">{{category.description}}</p>
-        {{/if}}
-      </header>
-
+<div class="category">
+  <header class="page-header">
+    <div class="container">
+    <h1 class="h2 page-header__title">{{category.name}}
+      {{#if category.description}}
+        <div class="page-header__description">{{category.description}}</div>
+      {{/if}}
+    </h1>
+    </div>
+  </header>
+  <div class="category__content">
+    <div class="container-divider"></div>
+    <div class="container">
+      <nav class="sub-nav">
+        {{breadcrumbs}}
+        {{search submit=false}}
+      </nav>
       <div class="section-tree">
         {{#each sections}}
-          <section class="section">
-            <h2 class="section-tree-title">
-              <a href="{{url}}">{{name}}</a>
+          <section class="section-tree__section">
+            <h2 class="section-tree__title h3">
+              {{name}}
             </h2>
             {{#if articles}}
               <ul class="article-list">
                 {{#each articles}}
-                  <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
-                    {{#if promoted}}
-                      <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-                    {{/if}}
-                    <a href="{{url}}" class="article-list-link">{{title}}</a>
+                  <li class="article-list__item">
+                    <a href="{{url}}" class="article-list__link greyLink">{{title}}</a>
                     {{#if internal}}
                       <span class="icon-lock" title="{{t 'internal'}}"></span>
                     {{/if}}

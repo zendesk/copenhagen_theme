@@ -1,59 +1,34 @@
-/* stylelint-disable */
 /***** Category pages *****/
 .category {
-  &-container {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  &-content {
-    @include desktop {
-      flex: 0 0 80%;
-    }
-    flex: 1;
-  }
-}
-
-.section-tree {
-  @include tablet { flex-direction: row; }
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  .section {
-    @include tablet { flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */ }
-    flex: initial;
-  }
-
-  &-title {
-    margin-bottom: 0;
-    font-size: 18px;
-    font-weight: $font-weight-semibold;
-
-    a { color: $text_color; }
-  }
-
-  .see-all-articles {
-    display: block;
-    padding: 15px 0;
-  }
-}
-
-.article-list {
-  &-item {
-    padding: 15px 0;
-    font-size: $font-size-bigger;
-
-    a { color: $text_color; }
-
-    .icon-lock::before {
-      vertical-align: baseline;
+  @include fluid-value( padding-bottom,
+  $min-width,
+  $max-width,
+  $whitespace-large,
+  $whitespace-large--desktop
+);
+  @media print {
+    &::after {
+      content: 'Please visit help.getjobber.com for updated documents';
     }
   }
 }
 
-.icon-star::before {
-  color: $brand_color;
-  font-size: 18px;
+.section-tree__section:not(:first-child) {
+  @include fluid-value( margin-top,
+  $min-width,
+  $max-width,
+  $whitespace-small,
+  $whitespace-small--desktop
+);
+}
+
+.see-all-articles {
+  display: inline-block;
+  @include fluid-value( margin-top,
+  $min-width,
+  $max-width,
+  10px,
+  $spacing
+);
+  font-weight: $font__weight--bold;
 }

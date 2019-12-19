@@ -1517,58 +1517,64 @@ ul {
   content: ',';
 }
 
-/* stylelint-disable */
 .page-header {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 10px 0;
+  background-color: #e9e9e9;
+  padding-top: 72px;
+  padding-bottom: 72px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 320px) {
   .page-header {
-    flex-direction: row;
-    align-items: baseline;
-    margin: 0;
+    padding-top: calc(72px + 24 * ( 100vw - 320px ) / 1046);
   }
 }
 
-.page-header .section-subscribe {
-  flex-shrink: 0;
-  margin-bottom: 10px;
-}
-
-@media (min-width: 768px) {
-  .page-header .section-subscribe {
-    margin-bottom: 0;
+@media screen and (min-width: 1366px) {
+  .page-header {
+    padding-top: 96px;
   }
 }
 
-.page-header h1 {
-  flex-grow: 1;
-  margin-bottom: 10px;
-}
-
-.page-header-description {
-  margin: 0 0 30px;
-  font-style: italic;
-  font-weight: 300;
-  word-break: break-word;
-}
-
-@media (min-width: 1024px) {
-  .page-header-description {
-    flex-basis: 100%;
+@media screen and (min-width: 320px) {
+  .page-header {
+    padding-bottom: calc(72px + 24 * ( 100vw - 320px ) / 1046);
   }
 }
 
-.page-header .icon-lock::before {
-  content: '\1F512';
-  position: relative;
-  left: -5px;
-  font-size: 20px;
-  vertical-align: baseline;
+@media screen and (min-width: 1366px) {
+  .page-header {
+    padding-bottom: 96px;
+  }
+}
+
+@media print {
+  .page-header {
+    background-color: #fff;
+  }
+}
+
+.page-header__title {
+  margin-bottom: 0;
+  color: #012939;
+}
+
+@media print {
+  .page-header__title {
+    color: #000;
+  }
+}
+
+.page-header__description {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: .3333333333em;
+  font-weight: 400;
+  text-transform: none;
+}
+
+@media print {
+  .page-header__description {
+    color: #000;
+  }
 }
 
 /* stylelint-disable */
@@ -1998,137 +2004,86 @@ ul {
   padding-top: 15px;
 }
 
-/* stylelint-disable */
 /***** Category pages *****/
-.category-container {
-  display: flex;
-  justify-content: flex-end;
+.category {
+  padding-bottom: 72px;
 }
 
-.category-content {
-  flex: 1;
-}
-
-@media (min-width: 1024px) {
-  .category-content {
-    flex: 0 0 80%;
+@media screen and (min-width: 320px) {
+  .category {
+    padding-bottom: calc(72px + 24 * ( 100vw - 320px ) / 1046);
   }
 }
 
-.section-tree {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-@media (min-width: 768px) {
-  .section-tree {
-    flex-direction: row;
+@media screen and (min-width: 1366px) {
+  .category {
+    padding-bottom: 96px;
   }
 }
 
-.section-tree .section {
-  flex: initial;
-}
-
-@media (min-width: 768px) {
-  .section-tree .section {
-    flex: 0 0 45%;
-    /* Two columns for tablet and desktop. Leaving 5% separation between columns */
+@media print {
+  .category::after {
+    content: 'Please visit help.getjobber.com for updated documents';
   }
 }
 
-.section-tree-title {
-  margin-bottom: 0;
-  font-size: 18px;
-  font-weight: 600;
+.section-tree__section:not(:first-child) {
+  margin-top: 32px;
 }
 
-.section-tree-title a {
-  color: #012939;
+@media screen and (min-width: 320px) {
+  .section-tree__section:not(:first-child) {
+    margin-top: calc(32px + 16 * ( 100vw - 320px ) / 1046);
+  }
 }
 
-.section-tree .see-all-articles {
-  display: block;
-  padding: 15px 0;
+@media screen and (min-width: 1366px) {
+  .section-tree__section:not(:first-child) {
+    margin-top: 48px;
+  }
 }
 
-.article-list-item {
-  padding: 15px 0;
-  font-size: 24px;
+.see-all-articles {
+  display: inline-block;
+  margin-top: 10px;
+  font-weight: 700;
 }
 
-.article-list-item a {
-  color: #012939;
+@media screen and (min-width: 320px) {
+  .see-all-articles {
+    margin-top: calc(10px + 5 * ( 100vw - 320px ) / 1046);
+  }
 }
 
-.article-list-item .icon-lock::before {
-  vertical-align: baseline;
-}
-
-.icon-star::before {
-  color: #012939;
-  font-size: 18px;
+@media screen and (min-width: 1366px) {
+  .see-all-articles {
+    margin-top: 15px;
+  }
 }
 
 /***** Section pages *****/
-.section-container {
-  display: flex;
-  justify-content: flex-end;
+.section {
+  padding-bottom: 72px;
 }
 
-.section-content {
-  flex: 1;
-}
-
-@media (min-width: 1024px) {
-  .section-content {
-    flex: 0 0 80%;
+@media screen and (min-width: 320px) {
+  .section {
+    padding-bottom: calc(72px + 24 * ( 100vw - 320px ) / 1046);
   }
 }
 
-.section-subscribe .dropdown-toggle::after {
-  display: none;
+@media screen and (min-width: 1366px) {
+  .section {
+    padding-bottom: 96px;
+  }
 }
 
-.section-list {
-  margin: 40px 0;
+@media print {
+  .section::after {
+    content: 'Please visit help.getjobber.com for updated documents';
+  }
 }
 
-.section-list--collapsed .section-list-item:nth-child(1n + 6) {
-  display: none;
-}
-
-.section-list-item {
-  padding: 15px 0;
-  border-bottom: 1px solid #ddd;
-  font-size: 24px;
-}
-
-.section-list-item:first-child {
-  border-top: 1px solid #ddd;
-}
-
-.section-list-item a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #012939;
-}
-
-.see-all-sections-trigger {
-  display: block;
-  padding: 15px;
-  text-align: center;
-  cursor: pointer;
-}
-
-.see-all-sections-trigger[aria-hidden='true'] {
-  display: none;
-}
-
-/* stylelint-disable */
 /***** Article *****/
 .article {
   padding-bottom: 72px;
@@ -2188,6 +2143,7 @@ ul {
 }
 
 .article-header__date {
+  display: block;
   font-family: "Source Sans Pro", sans-serif;
   font-size: .3333333333em;
   font-weight: 400;
@@ -2203,8 +2159,8 @@ ul {
 
 @media print {
   .article-header {
-    background-color: #fff;
     padding: 0;
+    background-color: #fff;
   }
   .article-header__title {
     color: #000;
@@ -2325,8 +2281,8 @@ ul {
 }
 
 .article-vote:hover::before, .article-vote:hover::after, .article-vote[aria-selected='true']::before, .article-vote[aria-selected='true']::after, .article-vote[aria-selected='true'] {
-  color: #fff;
   background-color: #012939;
+  color: #fff;
 }
 
 .article-votes-controls {
@@ -2335,10 +2291,6 @@ ul {
 
 .article-vote-up::before {
   content: '\2713';
-}
-
-.article-vote-down::before {
-  content: '\2715';
 }
 
 .article-vote-down::before {

@@ -1,4 +1,3 @@
-/* stylelint-disable */
 /***** Article *****/
 .article {
   @include fluid-value( padding-bottom,
@@ -35,6 +34,7 @@
   }
 
   &__date {
+    display: block;
     font-family: $font--default;
     font-size: .3333333333em;
     font-weight: $font__weight--regular;
@@ -48,8 +48,8 @@
     vertical-align: baseline;
   }
   @media print {
-    background-color: $white;
     padding: 0;
+    background-color: $white;
 
     &__title {
       color: $black;
@@ -96,7 +96,6 @@
   align-items: center;
   justify-content: space-between;
   padding-bottom: 20px;
-
   @media print {
     display: none;
   }
@@ -164,8 +163,8 @@
   &[aria-selected='true']::before,
   &[aria-selected='true']::after,
   &[aria-selected='true'] {
-    color: $white;
     background-color: $primary;
+    color: $white;
   }
 }
 
@@ -181,14 +180,9 @@
   content: '\2715';
 }
 
-.article-vote-down::before {
-  content: '\2715';
-}
-
 .article-more-questions {
   margin-bottom: 30px;
   font-size: 16px;
-
   @media print {
     display: none;
   }
@@ -217,7 +211,6 @@
       margin-right: 10px;
     }
   }
-
   @media print {
     display: none;
   }
@@ -230,17 +223,17 @@
   display: flex;
   flex-direction: column;
   @include fluid-value(padding-top,
-    $min-width,
-    $max-width,
-    $whitespace-medium,
-    $whitespace-medium--desktop
-  );
+  $min-width,
+  $max-width,
+  $whitespace-medium,
+  $whitespace-medium--desktop
+);
   @include fluid-value(margin-top,
-    $min-width,
-    $max-width,
-    $whitespace-medium,
-    $whitespace-medium--desktop
-  );
+  $min-width,
+  $max-width,
+  $whitespace-medium,
+  $whitespace-medium--desktop
+);
   border-top: 3px solid $border-color;
   @include tablet {
     @include fluid-value(padding-bottom,
@@ -252,7 +245,7 @@
   }
 
   > * {
-    flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
+    flex: 1 0 50%;
     min-width: 50%;
     margin-right: 0;
     overflow-wrap: break-word;
