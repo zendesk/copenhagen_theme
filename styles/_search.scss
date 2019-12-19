@@ -1,4 +1,3 @@
-/* stylelint-disable */
 /***** Search field *****/
 .search {
   position: relative;
@@ -9,7 +8,10 @@
     height: 40px;
     padding-right: 20px;
     padding-left: 40px;
-    border: 1px solid $border-color;
+    transition:
+      border $transition-speed ease-out,
+      color $transition-speed ease-out;
+    border: 3px solid $border-color;
     color: $field-text-color;
     -webkit-appearance: none;
 
@@ -19,8 +21,8 @@
     }
 
     &:focus {
-      border: 1px solid $brand_color;
-      color: $field-text-focus-color;
+      border: 3px solid $primary--light;
+      color: $primary--light;
     }
   }
 
@@ -31,36 +33,54 @@
     position: absolute;
     left: 15px;
     background-color: $white;
-    color: $primary;
-    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
+    color: $primary--light;
+    @include fluid-value( font-size,
+    $min-width,
+    $max-width,
+    $base-font-size,
+    $base-font-size--desktop
+  );
 
     [dir='rtl'] & {
       right: $spacing;
       left: auto;
     }
   }
+}
 
-  &-full input[type='search'] {
-    @include fluid-value( height, $min-width, $max-width, 50px, 75px );
-    transition: border $transition-speed ease-out, color $transition-speed ease-out;
-    border: 5px solid $grey--lighter;
+.search-full input[type='search'] {
+  @include fluid-value( height,
+  $min-width,
+  $max-width,
+  50px,
+  75px
+);
+  transition:
+    border $transition-speed ease-out,
+    color $transition-speed ease-out;
+  border: 5px solid $grey--lighter;
+  color: $primary;
+  font-family: $font--heading;
+  font-weight: $font__weight--extra-bold;
+  text-transform: uppercase;
+  @include fluid-value( font-size,
+  $min-width,
+  $max-width,
+  $base-font-size,
+  $base-font-size--desktop
+);
+  /* stylelint-disable-next-line */
+  &::-webkit-input-placeholder, &::-ms-input-placeholder {
     color: $primary;
-    font-family: $font--heading;
-    font-weight: $font__weight--extra-bold;
-    text-transform: uppercase;
-    @include fluid-value( font-size, $min-width, $max-width, $base-font-size, $base-font-size--desktop );
+  }
 
-    &::-webkit-input-placeholder {
-      color: $primary;
-    }
+  &:focus {
+    border: 5px solid $primary;
+    color: $grey;
 
-    &:focus {
-      border: 5px solid $primary;
+    /* stylelint-disable-next-line */
+    &::-webkit-input-placeholder, &::-ms-input-placeholder {
       color: $grey;
-
-      &::-webkit-input-placeholder {
-        color: $grey;
-      }
     }
   }
   @media print {

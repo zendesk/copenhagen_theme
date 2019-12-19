@@ -1,6 +1,12 @@
 /* WYSIWYG styling inside certain elements only */
 
 .article-body {
+
+  /* HEADINGS */
+  h1, h2, h3, h4, h5, h6, .h2, .h3, .h4 {
+    margin-bottom: .25em;
+  }
+
   /* LINKS */
 
   /* stylelint-disable-next-line selector-max-specificity */
