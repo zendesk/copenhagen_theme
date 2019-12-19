@@ -181,5 +181,40 @@
     margin-left: 2em;
   }
 
+  .toc {
+    background-color: $grey--lightest;
+    @include fluid-value( padding,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+
+    ol:first-of-type {
+      margin: 0;
+      padding-left: 0;
+    }
+
+    h2 {
+      @extend .h4;
+    }
+
+    a {
+      @extend .greyLink;
+    }
+  }
+
   table { display: none; }
 }
