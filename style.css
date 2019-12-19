@@ -50,7 +50,7 @@ body > main {
   }
 }
 
-h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
+h1, h2, h3, h4, h5, h6, .h2, .h3, .article-body .accordion-title, .h4, .article-body .toc h2 {
   margin-top: 0;
   font-family: "Poppins", "Poppins";
   font-weight: 900;
@@ -66,6 +66,8 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   h1 h6,
   h1 .h2,
   h1 .h3,
+  h1 .article-body .accordion-title,
+  .article-body h1 .accordion-title,
   h1 .h4,
   h1 .article-body .toc h2,
   .article-body .toc h1 h2, h2 h1,
@@ -76,6 +78,8 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   h2 h6,
   h2 .h2,
   h2 .h3,
+  h2 .article-body .accordion-title,
+  .article-body h2 .accordion-title,
   h2 .h4,
   h2 .article-body .toc h2,
   .article-body .toc h2 h2, h3 h1,
@@ -86,6 +90,8 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   h3 h6,
   h3 .h2,
   h3 .h3,
+  h3 .article-body .accordion-title,
+  .article-body h3 .accordion-title,
   h3 .h4,
   h3 .article-body .toc h2,
   .article-body .toc h3 h2, h4 h1,
@@ -96,6 +102,8 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   h4 h6,
   h4 .h2,
   h4 .h3,
+  h4 .article-body .accordion-title,
+  .article-body h4 .accordion-title,
   h4 .h4,
   h4 .article-body .toc h2,
   .article-body .toc h4 h2, h5 h1,
@@ -106,6 +114,8 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   h5 h6,
   h5 .h2,
   h5 .h3,
+  h5 .article-body .accordion-title,
+  .article-body h5 .accordion-title,
   h5 .h4,
   h5 .article-body .toc h2,
   .article-body .toc h5 h2, h6 h1,
@@ -116,6 +126,8 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   h6 h6,
   h6 .h2,
   h6 .h3,
+  h6 .article-body .accordion-title,
+  .article-body h6 .accordion-title,
   h6 .h4,
   h6 .article-body .toc h2,
   .article-body .toc h6 h2, .h2 h1,
@@ -126,19 +138,34 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   .h2 h6,
   .h2 .h2,
   .h2 .h3,
+  .h2 .article-body .accordion-title,
+  .article-body .h2 .accordion-title,
   .h2 .h4,
   .h2 .article-body .toc h2,
-  .article-body .toc .h2 h2, .h3 h1,
+  .article-body .toc .h2 h2, .h3 h1, .article-body .accordion-title h1,
   .h3 h2,
+  .article-body .accordion-title h2,
   .h3 h3,
+  .article-body .accordion-title h3,
   .h3 h4,
+  .article-body .accordion-title h4,
   .h3 h5,
+  .article-body .accordion-title h5,
   .h3 h6,
+  .article-body .accordion-title h6,
   .h3 .h2,
+  .article-body .accordion-title .h2,
   .h3 .h3,
+  .article-body .accordion-title .h3,
+  .h3 .article-body .accordion-title,
+  .article-body .h3 .accordion-title,
+  .article-body .accordion-title .accordion-title,
   .h3 .h4,
+  .article-body .accordion-title .h4,
   .h3 .article-body .toc h2,
-  .article-body .toc .h3 h2, .h4 h1, .article-body .toc h2 h1,
+  .article-body .toc .h3 h2,
+  .article-body .accordion-title .toc h2,
+  .article-body .toc .accordion-title h2, .h4 h1, .article-body .toc h2 h1,
   .h4 h2,
   .article-body .toc h2 h2,
   .h4 h3,
@@ -153,6 +180,9 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   .article-body .toc h2 .h2,
   .h4 .h3,
   .article-body .toc h2 .h3,
+  .h4 .article-body .accordion-title,
+  .article-body .h4 .accordion-title,
+  .article-body .toc h2 .accordion-title,
   .h4 .h4,
   .article-body .toc h2 .h4,
   .h4 .article-body .toc h2,
@@ -226,22 +256,19 @@ h2,
   }
 }
 
-h3,
-.h3 {
+h3, .h3, .article-body .accordion-title {
   font-size: 24px;
   line-height: 1.375;
 }
 
 @media screen and (min-width: 320px) {
-  h3,
-  .h3 {
+  h3, .h3, .article-body .accordion-title {
     font-size: calc(24px + 8 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  h3,
-  .h3 {
+  h3, .h3, .article-body .accordion-title {
     font-size: 32px;
   }
 }
@@ -5271,7 +5298,7 @@ html[lang|='zh'] .search-results-description em {
   /** Zendesk Classes **/
 }
 
-.article-body h1, .article-body h2, .article-body h3, .article-body h4, .article-body h5, .article-body h6, .article-body .h2, .article-body .h3, .article-body .h4, .article-body .toc h2 {
+.article-body h1, .article-body h2, .article-body h3, .article-body h4, .article-body h5, .article-body h6, .article-body .h2, .article-body .h3, .article-body .accordion-title, .article-body .h4, .article-body .toc h2 {
   margin-bottom: .25em;
 }
 
@@ -5532,6 +5559,39 @@ html[lang|='zh'] .search-results-description em {
 .article-body .toc ol:first-of-type {
   margin: 0;
   padding-left: 0;
+}
+
+.article-body .accordion-section {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 320px) {
+  .article-body .accordion-section {
+    margin-top: calc(32px + 16 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .article-body .accordion-section {
+    margin-top: 48px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .article-body .accordion-section {
+    margin-bottom: calc(32px + 16 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .article-body .accordion-section {
+    margin-bottom: 48px;
+  }
+}
+
+.article-body .accordion-title {
+  text-transform: none;
 }
 
 .article-body table {
