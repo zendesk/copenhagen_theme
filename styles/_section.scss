@@ -1,5 +1,5 @@
 /***** Section pages *****/
-.section:not(.hero) {
+.section:not(.hero):not(.knowledge-base) {
   @include fluid-value( padding-bottom,
   $min-width,
   $max-width,

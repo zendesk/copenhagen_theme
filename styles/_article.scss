@@ -189,7 +189,13 @@
 }
 
 .article-return-to-top {
-  border-top: 1px solid $border-color;
+  margin-top: 35px;
+  @include fluid-value(margin-bottom,
+  $min-width,
+  $max-width,
+  18px,
+  52px
+);
 
   a {
     display: block;

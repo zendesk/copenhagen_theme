@@ -110,6 +110,9 @@
   letter-spacing: 1px;
   text-decoration: none;
   text-transform: uppercase;
+  @include tablet {
+    display: inline-block;
+  }
 
   &:last-child {
     margin: 0;
@@ -118,8 +121,18 @@
   &.login {
     display: inline-block;
   }
+}
+
+.user-nav__link:not(.button) {
+  @extend .noshadow;
   @include tablet {
-    display: inline-block;
+    box-shadow: 0 -2px 0 0 $secondary inset;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-<article class="article">
+<article id="#top" class="article">
   <header class="article-header">
     <div class="container">
       <h1 class="h2 article-header__title" title="{{article.title}}">
@@ -70,10 +70,10 @@
       {{/with}}
 
       <div class="article-more-questions">
-        <a href="#">Still have questions?</a>
+        <a  href="javascript:Intercom('showNewMessage');">Still have questions?</a>
       </div>
       <div class="article-return-to-top">
-        <a class="noshadow" href="#article">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
+        <a class="noshadow" href="#top">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
       </div>
     </footer>
 
