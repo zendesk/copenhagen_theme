@@ -1514,12 +1514,8 @@ ul {
   color: $brand_text_color;
 }
 
-.article-vote-up::before {
-  content: "\2713";
-}
-
-.article-vote-down::before {
-  content: "\2715";
+.article-vote .icon, .article-vote .search::before, .article-vote .recent-activity-item-comment span::before, .recent-activity-item-comment .article-vote span::before, .article-vote .article-vote::before, .article-vote .attachments .attachment-item::before, .attachments .article-vote .attachment-item::before, .article-vote .share a::before, .share .article-vote a::before, .article-vote .actions .dropdown-toggle::before, .actions .article-vote .dropdown-toggle::before, .article-vote .collapsible-nav-toggle::after, .article-vote .collapsible-sidebar-toggle::after {
+  vertical-align: middle;
 }
 
 .article-more-questions {
@@ -1931,13 +1927,9 @@ ul {
 /***** Vote *****/
 /* Used in article comments, post comments and post */
 .vote {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  width: 35px;
-}
-
-.vote a {
-  outline: none;
 }
 
 .vote a:active, .vote a:hover, .vote a:focus {
@@ -1955,29 +1947,25 @@ ul {
   unicode-bidi: bidi-override;
 }
 
-.vote-up:hover::before,
-.vote-down:hover::before {
+.vote-up:hover,
+.vote-down:hover {
   color: $brand_color;
 }
 
-.vote-up::before, .vote-down::before {
+.vote-up, .vote-down {
   color: lighten($text_color, 20%);
-  font-size: 24px;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.vote-up::before {
-  content: "\2B06";
-}
-
-.vote-down::before {
-  content: "\2B07";
-}
-
-.vote-voted::before {
+.vote-voted {
   color: $brand_color;
 }
 
-.vote-voted:hover::before {
+.vote-voted:hover {
   color: darken($brand_color, 20%);
 }
 
@@ -3384,8 +3372,6 @@ ul {
 .article-vote::before,
 .attachments .attachment-item::before,
 .share a::before,
-.vote-up::before,
-.vote-down::before,
 .actions .dropdown-toggle::before,
 .collapsible-nav-toggle::after,
 .collapsible-sidebar-toggle::after {

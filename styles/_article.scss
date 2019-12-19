@@ -191,14 +191,10 @@
     &[aria-selected="true"]::after {
       color: $brand_text_color;
     }
-  }
 
-  &-vote-up::before {
-    content: "\2713";
-  }
-
-  &-vote-down::before {
-    content: "\2715";
+    .icon {
+      vertical-align: middle;
+    }
   }
 
   &-more-questions {
