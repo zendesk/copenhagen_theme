@@ -11,20 +11,21 @@
   background-color: $primary--light;
   color: $white;
 
+  &__logo {
+    max-width: 242px;
+    height: 40px;
+    color: $white;
+  }
+
   &__logo-link {
     padding-bottom: $whitespace-small;
-    box-shadow: unset;
+    box-shadow: none;
 
     &:hover,
     &:focus,
     &:active {
-      box-shadow: unset;
+      box-shadow: none;
     }
-  }
-
-  &__logo {
-    max-width: 242px;
-    color: $white;
   }
   @media print {
     display: none;
@@ -109,7 +110,12 @@
 
 .footer-social__link {
   display: block;
-  box-shadow: unset;
+  box-shadow: none;
+
+  svg {
+    height: 32px;
+    max-height: 32px;
+  }
 
   g,
   path,
@@ -121,7 +127,7 @@
   &:hover,
   &:active,
   &:focus {
-    box-shadow: unset;
+    box-shadow: none;
 
     g,
     path,
@@ -139,18 +145,20 @@
 
   &__link {
     display: block;
-    box-shadow: unset;
+    box-shadow: none;
 
     &:hover,
     &:focus,
     &:active {
-      box-shadow: unset;
+      box-shadow: none;
     }
   }
 
   &__badge {
     width: 170px;
     min-width: 170px;
+    height: 56px;
+    max-height: 56px;
   }
 }
 

@@ -22,7 +22,7 @@
   transition: all $transition-speed;
   border: 1px solid $white;
   background-color: $white;
-  box-shadow: unset;
+  box-shadow: none;
   color: $primary;
   text-align: left;
   @include tablet {
@@ -67,7 +67,7 @@
 
   &:active,
   &:focus {
-    box-shadow: unset;
+    box-shadow: none;
     text-decoration: none;
     @include focus-ring;
   }

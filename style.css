@@ -287,7 +287,7 @@ h6 {
   font-weight: 800;
   font-size: 16px;
   line-height: 1.375;
-  text-transform: unset;
+  text-transform: none;
 }
 
 @media screen and (min-width: 320px) {
@@ -529,7 +529,7 @@ ul {
   transition: background 300ms, color 300ms, fill 300ms, padding 300ms;
   border: solid 3px #012939;
   background: #012939;
-  box-shadow: unset;
+  box-shadow: none;
   fill: #fff;
   color: #fff;
   font-family: "Poppins", "Poppins";
@@ -546,7 +546,7 @@ ul {
 
 .button:hover, .button:active, .button:focus, .button[aria-selected='true'], [role='button']:hover, [role='button']:active, [role='button']:focus, [role='button'][aria-selected='true'] {
   background-color: transparent;
-  box-shadow: unset;
+  box-shadow: none;
   fill: #012939;
   color: #012939;
   text-decoration: none;
@@ -1032,13 +1032,17 @@ ul {
   }
 }
 
+.footer__logo {
+  height: 40px;
+}
+
 .footer__logo-link {
   padding-bottom: 32px;
-  box-shadow: unset;
+  box-shadow: none;
 }
 
 .footer__logo-link:hover, .footer__logo-link:focus, .footer__logo-link:active {
-  box-shadow: unset;
+  box-shadow: none;
 }
 
 .footer__logo {
@@ -1150,7 +1154,12 @@ ul {
 
 .footer-social__link {
   display: block;
-  box-shadow: unset;
+  box-shadow: none;
+}
+
+.footer-social__link svg {
+  height: 32px;
+  max-height: 32px;
 }
 
 .footer-social__link g,
@@ -1161,7 +1170,7 @@ ul {
 }
 
 .footer-social__link:hover, .footer-social__link:active, .footer-social__link:focus {
-  box-shadow: unset;
+  box-shadow: none;
 }
 
 .footer-social__link:hover g,
@@ -1186,16 +1195,18 @@ ul {
 
 .app-badges__link {
   display: block;
-  box-shadow: unset;
+  box-shadow: none;
 }
 
 .app-badges__link:hover, .app-badges__link:focus, .app-badges__link:active {
-  box-shadow: unset;
+  box-shadow: none;
 }
 
 .app-badges__badge {
   width: 170px;
   min-width: 170px;
+  height: 56px;
+  max-height: 56px;
 }
 
 .footer-copyright {
@@ -1691,7 +1702,7 @@ ul {
   transition: all 300ms;
   border: 1px solid #fff;
   background-color: #fff;
-  box-shadow: unset;
+  box-shadow: none;
   color: #012939;
   text-align: left;
 }
@@ -1737,7 +1748,7 @@ ul {
 }
 
 .blocks__item-link:active, .blocks__item-link:focus {
-  box-shadow: unset;
+  box-shadow: none;
   text-decoration: none;
   outline: 0;
   box-shadow: 0 0 0 3px #7db00e;
@@ -1845,7 +1856,7 @@ ul {
     padding: 0 15px;
   }
   .jobber-resources-card:not(:last-child) {
-    margin-bottom: unset;
+    margin-bottom: none;
   }
 }
 
@@ -2788,9 +2799,6 @@ ul {
 
 /**** MID CTA *****/
 .jobber-mid-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   padding-top: 48px;
   padding-bottom: 48px;
   background-color: #f3f3f3;
@@ -2833,6 +2841,7 @@ ul {
 @media (min-width: 768px) {
   .jobber-mid-cta .container {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 93%;
   }
@@ -2856,7 +2865,7 @@ ul {
 
 @media (min-width: 768px) {
   .jobber-mid-cta__content {
-    flex-basis: 66.6666666667%;
+    flex: 1 1 66.6666666667%;
     max-width: 66.6666666667%;
   }
 }
@@ -2868,7 +2877,7 @@ ul {
 
 @media (min-width: 768px) {
   .jobber-mid-cta__action {
-    flex-basis: 33.3333333333%;
+    flex: 1 1 33.3333333333%;
     max-width: 33.3333333333%;
     padding-top: none;
     padding-left: 30px;

@@ -1,8 +1,5 @@
 /**** MID CTA *****/
 .jobber-mid-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
   @include fluid-value( padding-top,
   $min-width,
   $max-width,
@@ -25,6 +22,7 @@
     @include tablet {
       display: flex;
       align-items: center;
+      justify-content: center;
       width: 93%;
     }
     @include desktop {
@@ -38,7 +36,7 @@
   &__content {
     max-width: 100%;
     @include tablet {
-      flex-basis: 66.6666666667%;
+      flex: 1 1 66.6666666667%;
       max-width: 66.6666666667%;
     }
   }
@@ -47,7 +45,7 @@
     max-width: 100%;
     padding-top: $spacing;
     @include tablet {
-      flex-basis: 33.3333333333%;
+      flex: 1 1 33.3333333333%;
       max-width: 33.3333333333%;
       padding-top: none;
       padding-left: $spacing--desktop;
