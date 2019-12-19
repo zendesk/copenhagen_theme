@@ -5314,10 +5314,6 @@ html[lang|='zh'] .search-results-description em {
   border: solid 1px #b8b8b8;
 }
 
-.article-body img.mfp-img {
-  border: none;
-}
-
 @media print {
   .article-body img {
     display: block;
@@ -5327,6 +5323,10 @@ html[lang|='zh'] .search-results-description em {
   .article-body img::after {
     content: " [Image source: " attr(href) "]";
   }
+}
+
+.article-body img.mfp-img {
+  border: none;
 }
 
 .article-body iframe[src*='youtube'] {

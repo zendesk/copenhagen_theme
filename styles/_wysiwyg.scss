@@ -50,10 +50,6 @@
     max-width: 100%;
     height: auto;
     border: solid $border--width $grey;
-
-    &.mfp-img {
-      border: none;
-    }
     @media print {
       display: block;
       max-width: 90%;
@@ -61,6 +57,10 @@
       &::after {
         content: ' [Image source: ' attr(href) ']';
       }
+    }
+
+    &.mfp-img {
+      border: none;
     }
   }
 
