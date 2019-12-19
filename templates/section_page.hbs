@@ -1,22 +1,19 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
-
-  <div class="section-container">
-    <section class="section-content">
-      <header class="page-header">
-        <h1>{{section.name}}</h1>
-        {{#if settings.show_follow_section}}
-          {{subscribe}}
-        {{/if}}
-        {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
-        {{/if}}
-      </header>
-
+<div class="section">
+  <header class="page-header">
+    <div class="container">
+      <h1 class="h2 page-header__title">{{section.name}}</h1>
+      {{#if section.description}}
+        <p class="page-header__description">{{section.description}}</p>
+      {{/if}}
+    </div>
+  </header>
+  <section class="section__content">
+    <div class="container-divider"></div>
+    <div class="container">
+      <nav class="sub-nav">
+        {{breadcrumbs}}
+        {{search submit=false}}
+      </nav>
       {{#if section.sections}}
         <ul class="section-list section-list--collapsed">
           {{#each section.sections}}
@@ -33,15 +30,11 @@
         </ul>
       {{/if}}
 
-
       {{#if section.articles}}
         <ul class="article-list">
           {{#each section.articles}}
-            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-              {{#if promoted}}
-                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-              {{/if}}
-              <a href="{{url}}" class="article-list-link">{{title}}</a>
+            <li class="article-list__item">
+              <a href="{{url}}" class="article-list__link greyLink">{{title}}</a>
               {{#if internal}}
                 <span class="icon-lock" title="{{t 'internal'}}"></span>
               {{/if}}
@@ -53,9 +46,7 @@
           <a href="{{section.url}}">{{t 'empty'}}</a>
         </i>
       {{/if}}
-
       {{pagination}}
-
     </section>
   </div>
 </div>

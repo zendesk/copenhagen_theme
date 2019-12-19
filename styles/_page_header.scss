@@ -1,5 +1,37 @@
-/* stylelint-disable */
 // Component made for elements that are separated with space between
 .page-header {
-  background-color: $grey;
+  background-color: $grey--lighter;
+  @include fluid-value( padding-top,
+  $min-width,
+  $max-width,
+  $whitespace-large,
+  $whitespace-large--desktop
+);
+  @include fluid-value( padding-bottom,
+  $min-width,
+  $max-width,
+  $whitespace-large,
+  $whitespace-large--desktop
+);
+  @media print {
+    background-color: $white;
+  }
+}
+
+.page-header__title {
+  margin-bottom: 0;
+  color: $primary;
+  @media print {
+    color: $black;
+  }
+}
+
+.page-header__description {
+  font-family: $font--default;
+  font-size: .3333333333em;
+  font-weight: $font__weight--regular;
+  text-transform: none;
+  @media print {
+    color: $black;
+  }
 }
