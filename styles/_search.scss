@@ -40,6 +40,9 @@
     $base-font-size,
     $base-font-size--desktop
   );
+    @media print {
+      display: none;
+    }
 
     [dir='rtl'] & {
       right: $spacing;
@@ -69,6 +72,10 @@
   $base-font-size,
   $base-font-size--desktop
 );
+  @media print {
+    display: none;
+  }
+
   /* stylelint-disable-next-line */
   &::-webkit-input-placeholder, &::-ms-input-placeholder {
     color: $primary;
@@ -82,8 +89,5 @@
     &::-webkit-input-placeholder, &::-ms-input-placeholder {
       color: $primary;
     }
-  }
-  @media print {
-    display: none;
   }
 }

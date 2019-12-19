@@ -1367,6 +1367,12 @@ ul {
   }
 }
 
+@media print {
+  .search::before {
+    display: none;
+  }
+}
+
 [dir='rtl'] .search::before {
   right: 15px;
   left: auto;
@@ -1408,6 +1414,12 @@ ul {
   }
 }
 
+@media print {
+  .search-full input[type='search'] {
+    display: none;
+  }
+}
+
 .search-full input[type='search']::-webkit-input-placeholder, .search-full input[type='search']::-ms-input-placeholder {
   color: #012939;
 }
@@ -1420,12 +1432,6 @@ ul {
 
 .search-full input[type='search']:focus::-webkit-input-placeholder, .search-full input[type='search']:focus::-ms-input-placeholder {
   color: #012939;
-}
-
-@media print {
-  .search-full input[type='search'] {
-    display: none;
-  }
 }
 
 /***** Hero component *****/
@@ -1471,6 +1477,14 @@ ul {
 @media screen and (min-width: 1366px) {
   .hero {
     padding-right: 30px;
+  }
+}
+
+@media print {
+  .hero {
+    height: 200px;
+    color: #000;
+    text-align: left;
   }
 }
 
@@ -1524,6 +1538,12 @@ ul {
 @media screen and (min-width: 1366px) {
   .hero__popular-topics {
     margin-top: 30px;
+  }
+}
+
+@media print {
+  .hero__popular-topics {
+    display: none;
   }
 }
 
@@ -1599,7 +1619,7 @@ ul {
 
 .page-header__description {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: .3333333333em;
+  font-size: .45em;
   font-weight: 400;
   text-transform: none;
 }
@@ -2775,6 +2795,12 @@ ul {
 @media screen and (min-width: 1366px) {
   .jobber-mid-cta {
     padding-bottom: 72px;
+  }
+}
+
+@media print {
+  .jobber-mid-cta {
+    display: none;
   }
 }
 
