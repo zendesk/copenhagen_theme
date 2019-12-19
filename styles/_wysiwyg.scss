@@ -223,5 +223,25 @@
     }
   }
 
+  .accordion-section {
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+  }
+
+  .accordion-title {
+    @extend .h3;
+    text-transform: none;
+  }
+
   table { display: none; }
 }
