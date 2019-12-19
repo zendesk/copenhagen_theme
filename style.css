@@ -404,7 +404,7 @@ select {
   width: 100%;
   padding: 8px 30px 8px 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 0;
   outline: none;
   background: url($assets-dropdown-arrow-svg) no-repeat #fff;
   background-position: right 10px center;
@@ -425,7 +425,7 @@ textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 2px;
+  border-radius: 0;
   outline: none;
   resize: vertical;
 }
@@ -654,12 +654,12 @@ ul {
 
 .form-field .optional {
   margin-left: 4px;
-  color: lighten(#012939, 20%);
+  color: #012939;
 }
 
 .form-field p {
   margin: 5px 0;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 12px;
 }
 
@@ -676,7 +676,7 @@ ul {
 
 .form footer a {
   margin-right: 15px;
-  color: lighten(#012939, 20%);
+  color: #012939;
   cursor: pointer;
 }
 
@@ -1414,12 +1414,12 @@ ul {
 
 .search-full input[type='search']:focus {
   border: 5px solid #012939;
-  color: #b8b8b8;
+  color: #012939;
   /* stylelint-disable-next-line */
 }
 
 .search-full input[type='search']:focus::-webkit-input-placeholder, .search-full input[type='search']:focus::-ms-input-placeholder {
-  color: #b8b8b8;
+  color: #012939;
 }
 
 @media print {
@@ -1675,7 +1675,6 @@ ul {
 
 .blocks__item:hover, .blocks__item:focus, .blocks__item:active {
   background-color: #012939;
-  box-shadow: unset;
 }
 
 .blocks__item:hover *, .blocks__item:focus *, .blocks__item:active * {
@@ -1705,12 +1704,7 @@ ul {
   flex-direction: column;
   justify-content: center;
   padding: 20px 30px;
-  box-shadow: unset;
   color: #012939;
-}
-
-.blocks__item-link:hover {
-  box-shadow: unset;
 }
 
 .blocks__item-link:active, .blocks__item-link:focus {
@@ -1843,109 +1837,6 @@ ul {
   margin: 15px 0;
 }
 
-/**** MID CTA *****/
-.home-mid-cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 48px;
-  padding-bottom: 48px;
-  background-color: #f3f3f3;
-}
-
-@media screen and (min-width: 320px) {
-  .home-mid-cta {
-    padding-top: calc(48px + 24 * ( 100vw - 320px ) / 1046);
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .home-mid-cta {
-    padding-top: 72px;
-  }
-}
-
-@media screen and (min-width: 320px) {
-  .home-mid-cta {
-    padding-bottom: calc(48px + 24 * ( 100vw - 320px ) / 1046);
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .home-mid-cta {
-    padding-bottom: 72px;
-  }
-}
-
-.home-mid-cta .container {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .home-mid-cta .container {
-    display: flex;
-    align-items: center;
-    width: 93%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .home-mid-cta .container {
-    width: 80%;
-  }
-}
-
-@media (min-width: 1180px) {
-  .home-mid-cta .container {
-    width: 70%;
-  }
-}
-
-.home-mid-cta__content {
-  max-width: 100%;
-}
-
-@media (min-width: 768px) {
-  .home-mid-cta__content {
-    flex-basis: 66.6666666667%;
-    max-width: 66.6666666667%;
-  }
-}
-
-.home-mid-cta__action {
-  max-width: 100%;
-  padding-top: 15px;
-}
-
-@media (min-width: 768px) {
-  .home-mid-cta__action {
-    flex-basis: 33.3333333333%;
-    max-width: 33.3333333333%;
-    padding-top: none;
-    padding-left: 30px;
-    text-align: right;
-  }
-}
-
-.home-mid-cta__pre-title {
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 15px;
-}
-
-@media screen and (min-width: 320px) {
-  .home-mid-cta__pre-title {
-    font-size: calc(15px + 3 * ( 100vw - 320px ) / 1046);
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .home-mid-cta__pre-title {
-    font-size: 18px;
-  }
-}
-
 /* stylelint-disable */
 /***** Recent activity *****/
 .recent-activity-header {
@@ -2003,7 +1894,7 @@ ul {
 
 .recent-activity-item-time, .recent-activity-item-comment {
   display: inline-block;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
 }
@@ -2497,7 +2388,7 @@ ul {
 }
 
 .upload-dropzone span {
-  color: lighten(#012939, 20%);
+  color: #012939;
 }
 
 /***** Social share links *****/
@@ -2574,7 +2465,7 @@ ul {
 .comment-callout {
   display: inline-block;
   margin-bottom: 0;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
 }
@@ -2589,7 +2480,7 @@ ul {
 }
 
 .comment-sorter .dropdown-toggle {
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
 }
@@ -2792,7 +2683,7 @@ ul {
 .comment-body blockquote {
   padding: 0 15px;
   border-left: 1px solid #ddd;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-style: italic;
 }
 
@@ -2819,7 +2710,7 @@ ul {
 .vote-sum {
   display: block;
   margin: 3px 0;
-  color: lighten(#012939, 20%);
+  color: #012939;
 }
 
 [dir='rtl'] .vote-sum {
@@ -2833,7 +2724,7 @@ ul {
 }
 
 .vote-up::before, .vote-down::before {
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 24px;
 }
 
@@ -2851,6 +2742,109 @@ ul {
 
 .vote-voted:hover::before {
   color: darken(#012939, 20%);
+}
+
+/**** MID CTA *****/
+.jobber-mid-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 48px;
+  padding-bottom: 48px;
+  background-color: #f3f3f3;
+}
+
+@media screen and (min-width: 320px) {
+  .jobber-mid-cta {
+    padding-top: calc(48px + 24 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .jobber-mid-cta {
+    padding-top: 72px;
+  }
+}
+
+@media screen and (min-width: 320px) {
+  .jobber-mid-cta {
+    padding-bottom: calc(48px + 24 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .jobber-mid-cta {
+    padding-bottom: 72px;
+  }
+}
+
+.jobber-mid-cta .container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .jobber-mid-cta .container {
+    display: flex;
+    align-items: center;
+    width: 93%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .jobber-mid-cta .container {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1180px) {
+  .jobber-mid-cta .container {
+    width: 70%;
+  }
+}
+
+.jobber-mid-cta__content {
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .jobber-mid-cta__content {
+    flex-basis: 66.6666666667%;
+    max-width: 66.6666666667%;
+  }
+}
+
+.jobber-mid-cta__action {
+  max-width: 100%;
+  padding-top: 15px;
+}
+
+@media (min-width: 768px) {
+  .jobber-mid-cta__action {
+    flex-basis: 33.3333333333%;
+    max-width: 33.3333333333%;
+    padding-top: none;
+    padding-left: 30px;
+    text-align: right;
+  }
+}
+
+.jobber-mid-cta__pre-title {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+@media screen and (min-width: 320px) {
+  .jobber-mid-cta__pre-title {
+    font-size: calc(15px + 3 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 1366px) {
+  .jobber-mid-cta__pre-title {
+    font-size: 18px;
+  }
 }
 
 /***** Actions *****/
@@ -2878,7 +2872,7 @@ in comments and posts */
   padding: 5px;
   border-radius: 50%;
   background-color: transparent;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
 }
 
@@ -3092,7 +3086,7 @@ in comments and posts */
 
 .striped-list-count {
   justify-content: flex-start;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
   text-transform: capitalize;
@@ -3135,13 +3129,14 @@ in comments and posts */
   }
 }
 
+/* stylelint-disable */
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
   display: inline-block;
   margin-right: 2px;
   padding: 3px 10px;
-  border-radius: 4px;
+  border-radius: 0;
   background-color: #038153;
   color: #fff;
   font-size: 12px;
@@ -3183,7 +3178,7 @@ in comments and posts */
 
 .status-label-not-planned, .status-label-closed {
   background-color: #e9ebed;
-  color: lighten(#012939, 20%);
+  color: #012939;
 }
 
 .status-label-pending {
@@ -3378,7 +3373,7 @@ in comments and posts */
 .post-body blockquote {
   padding: 0 15px;
   border-left: 1px solid #ddd;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-style: italic;
 }
 
@@ -3390,7 +3385,7 @@ in comments and posts */
 }
 
 .post-comment-count {
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-weight: 300;
 }
 
@@ -3894,7 +3889,7 @@ in comments and posts */
   display: inline-block;
   width: 100%;
   padding: 0 20px;
-  border-radius: 4px;
+  border-radius: 0;
   background: #012939;
   color: #fff;
   font-size: 12px;
@@ -3939,7 +3934,7 @@ in comments and posts */
 
 /* Contributions table */
 .contributions-table td:last-child {
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
 }
@@ -3953,7 +3948,7 @@ in comments and posts */
 }
 
 .no-activities {
-  color: lighten(#012939, 20%);
+  color: #012939;
 }
 
 /* stylelint-disable */
@@ -4023,8 +4018,8 @@ in comments and posts */
   width: 100%;
   padding: 8px 25px;
   border: 1px solid #ddd;
-  border-radius: 2px;
-  color: lighten(#012939, 20%);
+  border-radius: 0;
+  color: #012939;
   text-align: inherit;
 }
 
@@ -4135,7 +4130,7 @@ in comments and posts */
 
 .request-details dt {
   width: 40%;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-weight: 300;
 }
 
@@ -4194,7 +4189,7 @@ in comments and posts */
 
 .pagination a, .pagination span {
   padding: 10px 12px;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 20px;
 }
 
@@ -4239,7 +4234,7 @@ in comments and posts */
 }
 
 .meta-data {
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
 }
@@ -4488,7 +4483,7 @@ in comments and posts */
 .profile-stats .stat-label {
   flex: 0 0 100px;
   margin-right: 10px;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-weight: 300;
 }
 
@@ -4602,7 +4597,7 @@ in comments and posts */
   flex-basis: 100%;
   padding: 5px 20px;
   border: solid 1px #012939;
-  border-radius: 4px;
+  border-radius: 0;
   color: #012939;
   font-size: 12px;
   text-align: center;
@@ -4651,7 +4646,7 @@ in comments and posts */
   flex-basis: 100%;
   padding: 10px 0;
   overflow: hidden;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
   text-overflow: ellipsis;
@@ -5144,7 +5139,7 @@ in comments and posts */
   display: inline-block;
   position: relative;
   padding: 4px 5px;
-  color: lighten(#012939, 20%);
+  color: #012939;
   font-size: 18px;
   font-weight: 300;
 }

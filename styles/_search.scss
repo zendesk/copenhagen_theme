@@ -76,11 +76,11 @@
 
   &:focus {
     border: 5px solid $primary;
-    color: $grey;
+    color: $primary;
 
     /* stylelint-disable-next-line */
     &::-webkit-input-placeholder, &::-ms-input-placeholder {
-      color: $grey;
+      color: $primary;
     }
   }
   @media print {

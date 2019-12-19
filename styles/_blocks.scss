@@ -33,7 +33,6 @@
   &:focus,
   &:active {
     background-color: $primary;
-    box-shadow: unset;
 
     * {
       color: $white;
@@ -64,12 +63,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px 30px;
-  box-shadow: unset;
   color: $primary;
-
-  &:hover {
-    box-shadow: unset;
-  }
 
   &:active,
   &:focus {

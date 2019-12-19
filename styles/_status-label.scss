@@ -1,10 +1,11 @@
+/* stylelint-disable */
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
   display: inline-block;
   margin-right: 2px;
   padding: 3px 10px;
-  border-radius: 4px;
+  border-radius: 0;
   background-color: #038153;
   color: #fff;
   font-size: 12px;

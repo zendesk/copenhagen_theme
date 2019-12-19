@@ -1,0 +1,66 @@
+/**** MID CTA *****/
+.jobber-mid-cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  @include fluid-value( padding-top,
+  $min-width,
+  $max-width,
+  $whitespace-medium,
+  $whitespace-medium--desktop
+);
+  @include fluid-value( padding-bottom,
+  $min-width,
+  $max-width,
+  $whitespace-medium,
+  $whitespace-medium--desktop
+);
+  background-color: $grey--lightest;
+
+  .container {
+    width: 100%;
+    @include tablet {
+      display: flex;
+      align-items: center;
+      width: 93%;
+    }
+    @include desktop {
+      width: 80%;
+    }
+    @media (min-width: 1180px) {
+      width: 70%;
+    }
+  }
+
+  &__content {
+    max-width: 100%;
+    @include tablet {
+      flex-basis: 66.6666666667%;
+      max-width: 66.6666666667%;
+    }
+  }
+
+  &__action {
+    max-width: 100%;
+    padding-top: $spacing;
+    @include tablet {
+      flex-basis: 33.3333333333%;
+      max-width: 33.3333333333%;
+      padding-top: none;
+      padding-left: $spacing--desktop;
+      text-align: right;
+    }
+  }
+
+  &__pre-title {
+    font-family: $font--default;
+    font-weight: $font__weight--black;
+    text-transform: uppercase;
+    @include fluid-value( font-size,
+    $min-width,
+    $max-width,
+    15px,
+    18px
+  );
+  }
+}

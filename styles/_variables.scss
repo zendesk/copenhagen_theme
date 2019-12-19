@@ -79,7 +79,7 @@ $background_color: #fff !default;
 
 $visited-link-color: zass-darken($link_color, 20%);
 $hover-button-color: zass-darken($brand_color, 20%);
-$secondary-text-color: zass-lighten($text_color, 20%);
+$secondary-text-color: $primary;
 
 $primary-shade: zass-darken($background_color, 3%);
 $secondary-shade: zass-darken($background_color, 5%);
