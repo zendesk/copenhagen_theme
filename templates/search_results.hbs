@@ -86,39 +86,8 @@
           {{#each results}}
             <li class="search-result-list-item result-{{type}}">
               <h2 class="search-result-title">
-                <a href="{{url}}" class="results-list-item-link">{{title}}</a>
+                <a href="{{url}}" class="results-list-item-link noshadow">{{title}}</a>
               </h2>
-              <div class="search-result-icons">
-                {{#if vote_sum}}
-                  <span class="search-result-votes">
-                    <span class="visibility-hidden">
-                      {{t 'votes_sum' count=vote_sum}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-votes-icon">
-                        <g fill="none" stroke="currentColor">
-                          <path stroke-linejoin="round" d="M10.77 4.5a.73.73 0 01.73.73C11.43 7 11.21 11.5 10 11.5H5a.5.5 0 01-.5-.5V4.5s1-.5 1-3a1 1 0 012 0v3z"/>
-                          <rect width="2" height="7" x=".5" y="4.5" rx=".5" ry=".5"/>
-                        </g>
-                      </svg>
-                      {{vote_sum}}
-                    </span>
-                  </span>
-                {{/if}}
-                {{#if comment_count}}
-                  <span class="search-result-meta-count">
-                    <span class="visibility-hidden">
-                      {{t 'comments_count' count=comment_count}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-meta-count-icon">
-                        <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
-                      </svg>
-                      {{comment_count}}
-                    </span>
-                  </span>
-                {{/if}}
-              </div>
               <article>
                 <ul class="meta-group">
                   <li>
@@ -128,8 +97,7 @@
                       {{/each}}
                     </ol>
                   </li>
-                  <li class="meta-data">{{author.name}}</li>
-                  <li class="meta-data">{{date created_at}}</li>
+                  <li class="meta-data">{{date created_at format='short'}}</li>
                 </ul>
                 <div class="search-results-description">{{text}}</div>
               </article>

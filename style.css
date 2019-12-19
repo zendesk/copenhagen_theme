@@ -50,9 +50,8 @@ body > main {
   }
 }
 
-h1, h2, h3, h4, h5, h6, .h3, .h4, .article-body .toc h2 {
+h1, h2, h3, h4, h5, h6, .h2, .h3, .h4, .article-body .toc h2 {
   margin-top: 0;
-  margin-bottom: .25em;
   font-family: "Poppins", "Poppins";
   font-weight: 900;
   text-transform: uppercase;
@@ -119,7 +118,17 @@ h1, h2, h3, h4, h5, h6, .h3, .h4, .article-body .toc h2 {
   h6 .h3,
   h6 .h4,
   h6 .article-body .toc h2,
-  .article-body .toc h6 h2, .h3 h1,
+  .article-body .toc h6 h2, .h2 h1,
+  .h2 h2,
+  .h2 h3,
+  .h2 h4,
+  .h2 h5,
+  .h2 h6,
+  .h2 .h2,
+  .h2 .h3,
+  .h2 .h4,
+  .h2 .article-body .toc h2,
+  .article-body .toc .h2 h2, .h3 h1,
   .h3 h2,
   .h3 h3,
   .h3 h4,
@@ -333,39 +342,39 @@ a:focus {
   }
 }
 
-.greyLink, .article-relatives a, .article-body .toc a {
+.greyLink, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
   transition: all 300ms;
   box-shadow: 0 -1px 0 0 #b8b8b8 inset;
   color: #012939;
   text-decoration: none;
 }
 
-.greyLink:hover, .article-relatives a:hover, .article-body .toc a:hover, .greyLink:active, .article-relatives a:active, .article-body .toc a:active, .greyLink:focus, .article-relatives a:focus, .article-body .toc a:focus {
+.greyLink:hover, .article-relatives a:hover, .search-results-sidebar .sidenav-item:hover, .article-body .toc a:hover, .greyLink:active, .article-relatives a:active, .search-results-sidebar .sidenav-item:active, .article-body .toc a:active, .greyLink:focus, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
   box-shadow: 0 -12px 0 0 rgba(125, 176, 14, 0.25) inset;
 }
 
-.greyLink:focus, .article-relatives a:focus, .article-body .toc a:focus {
+.greyLink:focus, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
   outline: #7db00e auto 5px;
 }
 
 @media print {
-  .greyLink, .article-relatives a, .article-body .toc a {
+  .greyLink, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
     box-shadow: none;
     color: #000;
     text-decoration: dotted;
   }
 }
 
-.noshadow, .article-share a {
+.noshadow, .article-share a, .pagination a, .pagination span {
   box-shadow: none;
   text-decoration: none;
 }
 
-.noshadow:hover, .article-share a:hover, .noshadow:active, .article-share a:active, .noshadow:focus, .article-share a:focus {
+.noshadow:hover, .article-share a:hover, .pagination a:hover, .pagination span:hover, .noshadow:active, .article-share a:active, .pagination a:active, .pagination span:active, .noshadow:focus, .article-share a:focus, .pagination a:focus, .pagination span:focus {
   box-shadow: none;
 }
 
-.noshadow:focus, .article-share a:focus {
+.noshadow:focus, .article-share a:focus, .pagination a:focus, .pagination span:focus {
   outline: #7db00e auto 5px;
 }
 
@@ -1307,7 +1316,6 @@ ul {
   }
 }
 
-/* stylelint-disable */
 /***** Search field *****/
 .search {
   position: relative;
@@ -1319,7 +1327,8 @@ ul {
   height: 40px;
   padding-right: 20px;
   padding-left: 40px;
-  border: 1px solid #ddd;
+  transition: border 300ms ease-out, color 300ms ease-out;
+  border: 3px solid #ddd;
   color: #999;
   -webkit-appearance: none;
 }
@@ -1330,8 +1339,8 @@ ul {
 }
 
 .search input[type='search']:focus {
-  border: 1px solid #012939;
-  color: #555;
+  border: 3px solid #4d6974;
+  color: #4d6974;
 }
 
 .search::before {
@@ -1342,7 +1351,7 @@ ul {
   position: absolute;
   left: 15px;
   background-color: #fff;
-  color: #012939;
+  color: #4d6974;
   font-size: 16px;
 }
 
@@ -1372,6 +1381,7 @@ ul {
   font-weight: 800;
   text-transform: uppercase;
   font-size: 16px;
+  /* stylelint-disable-next-line */
 }
 
 @media screen and (min-width: 320px) {
@@ -1398,21 +1408,22 @@ ul {
   }
 }
 
-.search-full input[type='search']::-webkit-input-placeholder {
+.search-full input[type='search']::-webkit-input-placeholder, .search-full input[type='search']::-ms-input-placeholder {
   color: #012939;
 }
 
 .search-full input[type='search']:focus {
   border: 5px solid #012939;
   color: #b8b8b8;
+  /* stylelint-disable-next-line */
 }
 
-.search-full input[type='search']:focus::-webkit-input-placeholder {
+.search-full input[type='search']:focus::-webkit-input-placeholder, .search-full input[type='search']:focus::-ms-input-placeholder {
   color: #b8b8b8;
 }
 
 @media print {
-  .search {
+  .search-full input[type='search'] {
     display: none;
   }
 }
@@ -2084,24 +2095,24 @@ ul {
 }
 
 /***** Section pages *****/
-.section {
+.section:not(.hero) {
   padding-bottom: 72px;
 }
 
 @media screen and (min-width: 320px) {
-  .section {
+  .section:not(.hero) {
     padding-bottom: calc(72px + 24 * ( 100vw - 320px ) / 1046);
   }
 }
 
 @media screen and (min-width: 1366px) {
-  .section {
+  .section:not(.hero) {
     padding-bottom: 96px;
   }
 }
 
 @media print {
-  .section::after {
+  .section:not(.hero)::after {
     content: 'Please visit help.getjobber.com for updated documents';
   }
 }
@@ -4151,7 +4162,7 @@ in comments and posts */
 /* stylelint-disable */
 /***** Pagination *****/
 .pagination {
-  margin: 20px 0;
+  padding-bottom: 45px;
   text-align: center;
 }
 
@@ -4162,16 +4173,10 @@ in comments and posts */
 .pagination li {
   width: 40px;
   height: 40px;
+  padding-top: 1px;
   margin-left: 5px;
   float: left;
   border-radius: 50%;
-}
-
-@media (min-width: 768px) {
-  .pagination li {
-    width: 30px;
-    height: 30px;
-  }
 }
 
 [dir='rtl'] .pagination li {
@@ -4179,7 +4184,7 @@ in comments and posts */
 }
 
 .pagination li:hover:not(.pagination-current) {
-  background-color: #f3f3f3;
+  background-color: #e9e9e9;
 }
 
 .pagination li:hover:not(.pagination-current) span, .pagination li:hover:not(.pagination-current) a {
@@ -4998,7 +5003,7 @@ in comments and posts */
 }
 
 .search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item[aria-selected='true'] {
-  background-color: #e9ebed;
+  background-color: rgba(125, 176, 14, 0.3);
   color: inherit;
   text-decoration: none;
 }
@@ -5205,12 +5210,17 @@ html[lang|='zh'] .search-results-description em {
 
 /* WYSIWYG styling inside certain elements only */
 .article-body {
+  /* HEADINGS */
   /* LINKS */
   /* stylelint-disable-next-line selector-max-specificity */
   /* MEDIA */
   /** LISTS **/
   /** CODE SAMPLE **/
   /** Zendesk Classes **/
+}
+
+.article-body h1, .article-body h2, .article-body h3, .article-body h4, .article-body h5, .article-body h6, .article-body .h2, .article-body .h3, .article-body .h4, .article-body .toc h2 {
+  margin-bottom: .25em;
 }
 
 .article-body a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com']) {

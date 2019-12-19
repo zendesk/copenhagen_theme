@@ -2,7 +2,7 @@
 /***** Pagination *****/
 
 .pagination {
-  margin: 20px 0;
+  padding-bottom: 45px;
   text-align: center;
 }
 
@@ -11,12 +11,9 @@
 }
 
 .pagination li {
-  @include tablet {
-    width: 30px;
-    height: 30px;
-  }
   width: 40px;
   height: 40px;
+  padding-top: 1px;
   margin-left: 5px;
   float: left;
   border-radius: 50%;
@@ -26,7 +23,7 @@
   }
 
   &:hover:not(.pagination-current) {
-    background-color: #f3f3f3;
+    background-color: $grey--lighter;
 
     span, a {
       color: $text_color;
@@ -36,6 +33,7 @@
 }
 
 .pagination a, .pagination span {
+  @extend .noshadow;
   @include tablet {
     padding: 5px 12px;
     font-size: $font-size-small;
@@ -48,7 +46,7 @@
 .pagination-current {
   background-color: $brand_color;
 
-  a, span { color: $brand_text_color; }
+  a, span { color: $white; }
 }
 
 .pagination-first {
