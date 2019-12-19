@@ -21,6 +21,11 @@
   $spacing,
   $spacing--desktop
 );
+  @media print {
+    height: 200px;
+    color: $black;
+    text-align: left;
+  }
 }
 
 .hero-inner {
@@ -50,6 +55,9 @@
   $spacing,
   $spacing--desktop
 );
+  @media print {
+    display: none;
+  }
 
   &-link {
     box-shadow: 0 -2px 0 0 $primary inset;

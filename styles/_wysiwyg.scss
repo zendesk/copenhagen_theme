@@ -13,10 +13,11 @@
   a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com']) {
     /* stylelint-disable-next-line selector-max-specificity */
     &::after {
-      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
-      max-width: 15px;
-      height: auto;
+      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
+      width: 15px;
+      height: 15px;
       margin-left: 5px;
+      color: inherit;
       /* stylelint-disable-next-line max-nesting-depth */
       @media print {
         content: ' [' attr(href) ']';
@@ -53,9 +54,9 @@
 
   /* MEDIA */
   img {
-    max-width: 100%;
+    max-width: 98%;
     height: auto;
-    border: solid $border--width $grey;
+    border: solid 2px $grey--lighter;
     @media print {
       display: block;
       max-width: 90%;

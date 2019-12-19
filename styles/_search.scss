@@ -40,6 +40,9 @@
     $base-font-size,
     $base-font-size--desktop
   );
+    @media print {
+      display: none;
+    }
 
     [dir='rtl'] & {
       right: $spacing;
@@ -69,6 +72,10 @@
   $base-font-size,
   $base-font-size--desktop
 );
+  @media print {
+    display: none;
+  }
+
   /* stylelint-disable-next-line */
   &::-webkit-input-placeholder, &::-ms-input-placeholder {
     color: $primary;
@@ -76,14 +83,11 @@
 
   &:focus {
     border: 5px solid $primary;
-    color: $grey;
+    color: $primary;
 
     /* stylelint-disable-next-line */
     &::-webkit-input-placeholder, &::-ms-input-placeholder {
-      color: $grey;
+      color: $primary;
     }
-  }
-  @media print {
-    display: none;
   }
 }

@@ -1,4 +1,4 @@
-<article class="article">
+<article id="#top" class="article">
   <header class="article-header">
     <div class="container">
       <h1 class="h2 article-header__title" title="{{article.title}}">
@@ -70,10 +70,10 @@
       {{/with}}
 
       <div class="article-more-questions">
-        <a href="#">Still have questions?</a>
+        <a  href="javascript:Intercom('showNewMessage');">Still have questions?</a>
       </div>
       <div class="article-return-to-top">
-        <a class="noshadow" href="#article">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
+        <a class="noshadow" href="#top">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
       </div>
     </footer>
 
@@ -85,6 +85,16 @@
         {{related_articles}}
       {{/if}}
     </section>
-
   </div>
 </article>
+<div class="jobber-mid-cta">
+  <section class="container">
+    <div class="jobber-mid-cta__content">
+      <div class="jobber-mid-cta__pre-title">WE’RE HERE TO HELP</div>
+      <div class="jobber-mid-cta__title h3"><span class="highlight-text">Talk to a real person.</span> <br /> No matter the question.</div>
+    </div>
+    <div class="jobber-mid-cta__action">
+      <a class="button button-large jobber-mid-cta__link" href="https://getjobber.com/contact/">Contact Us</a>
+    </div>
+  </section>
+</div>
