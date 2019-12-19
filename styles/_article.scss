@@ -189,7 +189,6 @@
 }
 
 .article-return-to-top {
-  @include desktop { display: none; }
   border-top: 1px solid $border-color;
 
   a {
