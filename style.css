@@ -5186,56 +5186,6 @@ html[lang|='zh'] .search-results-description em {
   font-style: normal;
 }
 
-/* stylelint-disable */
-/** Magnific Popop styling **/
-.article-body {
-  /* padding-bottom and top for image */
-  /* position of shadow behind the image */
-  /* padding for main container */
-  /*
-
-  for zoom animation
-  uncomment this part if you haven't added this code anywhere else
-
-  */
-}
-
-.article-body .mfp-no-margins img.mfp-img {
-  padding: 0;
-}
-
-.article-body .mfp-no-margins .mfp-figure::after {
-  top: 0;
-  bottom: 0;
-}
-
-.article-body .mfp-no-margins .mfp-container {
-  padding: 0;
-}
-
-.article-body .mfp-with-zoom .mfp-container,
-.article-body .mfp-with-zoom.mfp-bg {
-  -webkit-backface-visibility: hidden;
-  -webkit-transition: all .3s ease-out;
-  -moz-transition: all .3s ease-out;
-  -o-transition: all .3s ease-out;
-  transition: all .3s ease-out;
-  opacity: 0;
-}
-
-.article-body .mfp-with-zoom.mfp-ready .mfp-container {
-  opacity: 1;
-}
-
-.article-body .mfp-with-zoom.mfp-ready.mfp-bg {
-  opacity: .8;
-}
-
-.article-body .mfp-with-zoom.mfp-removing .mfp-container,
-.article-body .mfp-with-zoom.mfp-removing.mfp-bg {
-  opacity: 0;
-}
-
 /* WYSIWYG styling inside certain elements only */
 .article-body {
   /* LINKS */
