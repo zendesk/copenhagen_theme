@@ -2143,6 +2143,7 @@ ul {
 }
 
 .article-header__date {
+  display: block;
   font-family: "Source Sans Pro", sans-serif;
   font-size: .3333333333em;
   font-weight: 400;

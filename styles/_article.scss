@@ -34,6 +34,7 @@
   }
 
   &__date {
+    display: block;
     font-family: $font--default;
     font-size: .3333333333em;
     font-weight: $font__weight--regular;
