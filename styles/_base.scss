@@ -34,6 +34,7 @@ body {
 
 h1, h2, h3, h4, h5, h6, .h3, .h4 {
   margin-top: 0;
+  margin-bottom: .25em;
   font-family: $font--heading;
   font-weight: $font__weight--black;
   text-transform: uppercase;
@@ -44,6 +45,7 @@ h1, h2, h3, h4, h5, h6, .h3, .h4 {
     h4,
     h5,
     h6,
+    .h2,
     .h3,
     .h4 {
       font-family: $font--print-heading;
@@ -65,7 +67,8 @@ h1 {
   1.1666666667);
 }
 
-h2 {
+h2,
+.h2 {
   @include fluid-value( font-size,
   $min-width,
   $max-width,
@@ -125,6 +128,16 @@ h6 {
   text-transform: unset;
 }
 
+p {
+  @include fluid-value( margin-bottom,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop
+);
+  margin-top: 0;
+}
+
 a {
   transition: all $transition-speed;
   box-shadow: 0 -2px 0 0 $secondary inset;
@@ -135,6 +148,48 @@ a {
   &:active,
   &:focus {
     box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+  }
+
+  &:focus {
+    outline: $secondary auto $focus--width;
+  }
+  @media print {
+    box-shadow: none;
+    color: $black;
+    text-decoration: dotted;
+  }
+}
+
+.greyLink {
+  transition: all $transition-speed;
+  box-shadow: 0 -1px 0 0 $grey inset;
+  color: $primary;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+  }
+
+  &:focus {
+    outline: $secondary auto $focus--width;
+  }
+  @media print {
+    box-shadow: none;
+    color: $black;
+    text-decoration: dotted;
+  }
+}
+
+.noshadow {
+  box-shadow: none;
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    box-shadow: none;
   }
 
   &:focus {
@@ -203,8 +258,16 @@ textarea {
 }
 
 .container-divider {
-  margin-bottom: 20px;
+  @include fluid-value( margin-bottom,
+  $min-width,
+  $max-width,
+  $whitespace-small,
+  $whitespace-small--desktop
+);
   border-top: 1px solid $border-color;
+  @media print {
+    display: none;
+  }
 }
 
 ul {

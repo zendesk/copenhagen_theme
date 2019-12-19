@@ -21,14 +21,6 @@
 }
 
 .logo {
-  &__link {
-    box-shadow: unset;
-
-    &:hover {
-      box-shadow: unset;
-    }
-  }
-
   &__image {
     @include fluid-value(
       max-height,
@@ -66,6 +58,12 @@
     @include tablet {
       display: inline-block;
     }
+  }
+}
+
+.nav-wrapper {
+  @media print {
+    display: none;
   }
 }
 

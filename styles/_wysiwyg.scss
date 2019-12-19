@@ -1,0 +1,185 @@
+/* WYSIWYG styling inside certain elements only */
+
+.article-body {
+  /* LINKS */
+
+  /* stylelint-disable-next-line selector-max-specificity */
+  a[href*='//']:not([href*='cloudinary.com']):not([href*='getjobber.com']) {
+    /* stylelint-disable-next-line selector-max-specificity */
+    &::after {
+      content: url("data:image/svg+xml; utf8, <svg xmlns='http://www.w3.org/2000/svg' width='15' height='15' viewBox='0 0 15 15' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M18 14v5a2 2 0 01-2 2H5a2 2 0 01-2-2V8c0-1.1.9-2 2-2h5m5-3h6v6m-11 5L20.2 3.8' fill-rule='evenodd'/></svg>");
+      max-width: 15px;
+      height: auto;
+      margin-left: 5px;
+      /* stylelint-disable-next-line max-nesting-depth */
+      @media print {
+        content: ' [' attr(href) ']';
+        color: $black;
+      }
+    }
+  }
+
+  a {
+    @media print {
+      border-bottom: dotted 1px $grey--light;
+      box-shadow: none;
+      color: $grey--light;
+      /* stylelint-disable-next-line max-nesting-depth */
+      &::after {
+        content: ' [' attr(href) ']';
+        color: $black;
+      }
+    }
+  }
+
+  .popup {
+    box-shadow: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      box-shadow: none;
+    }
+    @media print {
+      cursor: not-allowed;
+    }
+  }
+
+  /* MEDIA */
+  img {
+    max-width: 100%;
+    height: auto;
+    border: solid $border--width $grey;
+
+    &.mfp-img {
+      border: none;
+    }
+    @media print {
+      display: block;
+      max-width: 90%;
+      /* stylelint-disable-next-line max-nesting-depth */
+      &::after {
+        content: ' [Image source: ' attr(href) ']';
+      }
+    }
+  }
+
+  iframe[src*='youtube'] {
+    max-width: 100%;
+    @media print {
+      display: none;
+    }
+  }
+
+  .wistia_responsive_padding {
+    @media print {
+      display: none;
+    }
+  }
+
+  /** LISTS **/
+  & > ul,
+  & > ol {
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+  }
+
+  ul {
+    list-style-position: inside;
+    list-style-type: disc;
+    @include fluid-value( margin-left,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+  }
+
+  ol {
+    list-style-position: inside;
+    list-style-type: decimal;
+    @include fluid-value( margin-left,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+  }
+
+  ul ul, ol ul {
+    margin-left: $spacing--desktop;
+    list-style-position: inside;
+    list-style-type: circle;
+  }
+
+  ol ol, ul ol {
+    margin-left: $spacing--desktop;
+    list-style-position: inside;
+    list-style-type: lower-latin;
+  }
+
+  li > p {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+
+  /** CODE SAMPLE **/
+  pre {
+    width: inherit;
+    max-width: 100%;
+    padding: $spacing;
+    border: solid $border--width $grey;
+    border-radius: $border--radius;
+    background-color: $grey--lightest;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    @media print {
+      border: solid $border--width $black;
+      background-color: $white;
+    }
+  }
+
+  /** Zendesk Classes **/
+  .wysiwyg-underline {
+    text-decoration: underline;
+  }
+
+  .wysiwyg-text-align-center {
+    text-align: center;
+  }
+
+  .wysiwyg-text-align-right {
+    text-align: right;
+  }
+
+  .wysiwyg-text-align-left {
+    text-align: left;
+  }
+
+  .wysiwyg-font-size-small {
+    font-size: .875em;
+  }
+
+  .wysiwyg-font-size-medium {
+    font-size: 1em;
+  }
+
+  .wysiwyg-font-size-large {
+    font-size: 1.25em;
+  }
+
+  .wysiwyg-font-size-x-large {
+    font-size: 1.5em;
+  }
+
+  .wysiwyg-indent2 {
+    margin-left: 2em;
+  }
+
+  table { display: none; }
+}

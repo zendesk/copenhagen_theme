@@ -1,19 +1,22 @@
 /***** Breadcrumbs *****/
 .breadcrumbs {
+  margin: 0 0 30px;
+  padding: 0;
   @include tablet {
     margin: 0;
   }
-  margin: 0 0 15px;
-  padding: 0;
 
   li {
     display: inline;
-    max-width: 450px;
+    max-width: 100%;
     overflow: hidden;
-    color: $secondary-text-color;
+    color: $primary;
     font-size: $font-size-small;
     font-weight: $font-weight-light;
     text-overflow: ellipsis;
+    @include tablet {
+      max-width: 450px;
+    }
 
     + li::before {
       content: '>';
@@ -21,7 +24,10 @@
     }
 
     a:visited {
-      color: $link_color;
+      color: $primary;
     }
+  }
+  @media print {
+    display: none;
   }
 }

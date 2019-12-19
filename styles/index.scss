@@ -2,7 +2,7 @@
 @import 'mixins';
 @import 'base';
 @import 'buttons';
-@import 'tables';
+// @import 'tables';
 @import 'forms';
 @import 'highlight-text';
 @import 'header';
@@ -36,4 +36,5 @@
 @import 'metadata';
 @import 'icons';
 @import 'user-profiles';
-@import 'search_results'
+@import 'search_results';
+@import 'wysiwyg';
