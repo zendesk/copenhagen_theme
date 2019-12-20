@@ -20,11 +20,10 @@
   </div>
 </section>
 
-
 <div class="knowledge-base__wrapper">
   <section class="container section knowledge-base">
     <h2 class="knowledge-base__title">Learn about our features</h2>
-    <section class="categories blocks">
+    <div class="categories blocks">
       <ul class="blocks__list">
         {{#each categories}}
           {{#if ../has_multiple_categories}}
@@ -38,9 +37,7 @@
             {{#each sections}}
               <li class="blocks__item">
                 <a href='{{url}}' class="blocks__item-link">
-                  <span class="blocks__item-title">
-                    {{name}}
-                  </span>
+                  <span class="blocks__item-title">{{name}}</span>
                   <span class="blocks__item-description">{{excerpt description}}</span>
                 </a>
               </li>
@@ -49,13 +46,14 @@
         {{/each}}
       </ul>
       {{pagination}}
-    </section>
+    </div>
+  </section>
 </div>
 
 <div class="jobber-resources__wrapper">
   <section class="container jobber-resources">
     <h2 class="jobber-resources__title">Jobber Resources</h2>
-    <section class="jobber-resources-cards">
+    <div class="jobber-resources-cards">
       <div class="jobber-resources-card">
         <figure class="jobber-resources-card__image">
           <img src="{{ asset 'thumb_glossary.png' }}" alt="A white Jobber logo on a navy background">
@@ -98,7 +96,7 @@
           Learn more
         </a>
       </div>
-    </section>
+    </div>
   </section>
 </div>
 
