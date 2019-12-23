@@ -2,7 +2,7 @@
 .breadcrumbs {
   margin: 0 0 30px;
   padding: 0;
-  @include tablet {
+  @include desktop {
     margin: 0;
   }
 
@@ -14,7 +14,7 @@
     font-size: $font-size-small;
     font-weight: $font-weight-light;
     text-overflow: ellipsis;
-    @include tablet {
+    @include desktop {
       max-width: 450px;
     }
 

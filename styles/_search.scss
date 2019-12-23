@@ -8,10 +8,17 @@
     height: 40px;
     padding-right: 20px;
     padding-left: 40px;
+    @include fluid-value( font-size,
+    $min-width,
+    $max-width,
+    $base-font-size,
+    $base-font-size--desktop
+  );
     transition:
       border $transition-speed ease-out,
       color $transition-speed ease-out;
     border: 3px solid $border-color;
+    border-radius: 0;
     color: $field-text-color;
     -webkit-appearance: none;
 
@@ -62,6 +69,7 @@
     border $transition-speed ease-out,
     color $transition-speed ease-out;
   border: 5px solid $grey--lighter;
+  border-radius: 0;
   color: $primary;
   font-family: $font--heading;
   font-weight: $font__weight--extra-bold;

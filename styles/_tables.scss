@@ -1,41 +1,42 @@
-/* stylelint-disable */
 /***** Tables *****/
-.table {
-  @include tablet { table-layout: auto; }
-  width: 100%;
-  table-layout: fixed;
-
-  th,
-  th a {
-    color: $secondary-text-color;
-    font-size: $font-size-small;
-    font-weight: $font-weight-light;
-    text-align: left;
-
-    [dir='rtl'] & { text-align: right; }
+.article-body {
+  table {
+    display: inline-block;
+    max-width: 100%;
+    overflow-x: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+    box-shadow: 2px 2px 4px hsla(0, 0%, 80%, .15);
+    vertical-align: top;
+    // TODO: Finish styling table pivot
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    // optional - looks better for small cell values
+    white-space: nowrap;
   }
 
-  tr {
-    @include tablet { display: table-row; }
-    display: block;
-    padding: 20px 0;
-    border-bottom: 1px solid $border-color;
+  th {
+    border: solid $border--width $grey--light;
+    @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
+    background-color: $grey--lightest;
+    font-weight: $font__weight--bold;
+    line-height: 1em;
+    text-align: left;
+    text-transform: uppercase;
   }
 
   td {
-    @include tablet {
-      display: table-cell;
-    }
-    display: block;
-  }
-
-  td, th {
-    @include desktop {
-      padding: 20px 30px;
-    }
-    @include tablet {
-      height: 60px;
-      padding: 10px 20px;
-    }
+    border: solid $border--width $grey--light;
+    @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
   }
 }
