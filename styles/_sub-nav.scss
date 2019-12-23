@@ -1,6 +1,6 @@
 /* stylelint-disable */
 .sub-nav {
-  @include tablet {
+  @include desktop {
     flex-direction: row;
     align-items: baseline;
   }
@@ -13,7 +13,7 @@
 
   //Inner pages search field
   input[type='search'] {
-    @include tablet {
+    @include desktop {
       min-width: 300px;
     }
 

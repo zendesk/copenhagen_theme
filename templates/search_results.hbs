@@ -2,7 +2,7 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    {{search submit=false}}
+    {{search submit=false class='search' instant=settings.instant_search placeholder='Search the Help Center'}}
   </nav>
 
   <div class="search-results">
@@ -101,7 +101,7 @@
                   </li>
                   <li class="meta-data">{{date edited_at format='short'}}</li>
                 </ul>
-                <div class="search-results-description">{{text}}</div>
+                <div class="search-results-description">{{text}}...</div>
               </article>
             </li>
           {{/each}}

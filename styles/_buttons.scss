@@ -6,10 +6,10 @@
   padding: .75rem 1.75rem .6rem;
   overflow: hidden;
   transition:
-    background $transition-speed,
-    color $transition-speed,
-    fill $transition-speed,
-    padding $transition-speed;
+    background-color $transition-speed ease-out,
+    color $transition-speed ease-out,
+    fill $transition-speed ease-out,
+    padding $transition-speed ease-out;
   border: solid 3px $primary;
   background: $primary;
   box-shadow: none;

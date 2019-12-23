@@ -12,3 +12,9 @@
     }
   }
 }
+
+.article-list {
+  &__item {
+    margin: $spacing 0;
+  }
+}

@@ -64,6 +64,12 @@
       margin-top: 0;
     }
   }
+
+  &__inner:not(:first-child) {
+    @include tablet {
+      margin-left: $spacing;
+    }
+  }
 }
 
 .footer-list {
