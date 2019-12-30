@@ -5,7 +5,7 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run build:css"
     }
   },
   "lint-staged": {
@@ -22,8 +22,7 @@
     "lint:js": "eslint './**/*.js'",
     "lint:styles": "stylelint './**/*.scss'",
     "lint": "npm run lint:js && npm run lint:styles",
-    "minify-css": "postcss ./style-ugly.css > ./style.css",
-    "build": "./bin/compile.rb && npm run minify-css"
+    "build:css": "./bin/compile.rb && postcss ./style-ugly.css > ./style.css"
   },
   "repository": {
     "type": "git",

@@ -32,3 +32,9 @@
 );
   font-weight: $font__weight--bold;
 }
+
+.article-list {
+  &__item {
+    margin: $spacing 0;
+  }
+}

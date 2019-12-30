@@ -223,7 +223,7 @@
     }
   }
 
-  .accordion-section {
+  .accordion-section:not(:first-child) {
     @include fluid-value( margin-top,
     $min-width,
     $max-width,
@@ -242,6 +242,4 @@
     @extend .h3;
     text-transform: none;
   }
-
-  table { display: none; }
 }
