@@ -424,12 +424,12 @@ ul {
 }
 
 /***** Header *****/
-.header {
-  max-width: 1160px;
+..header {
   margin: 0 auto;
   padding: 0 5%;
   position: relative;
   align-items: center;
+  max-width: 1370px;
   display: flex;
   height: 71px;
   justify-content: space-between;
