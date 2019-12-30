@@ -4981,7 +4981,9 @@ main.main-sidebar {
 
 /*** change the background color by editing "background" ***/
 /*** change the text color by editing "color"  ***/
+
 .ns-box {
+  display: flex;
 	background: rgba(192, 57, 43,0.85);
 	padding: 10px 20px 20px 20px;
 	line-height: 1.4;
@@ -5018,8 +5020,9 @@ main.main-sidebar {
 
 .ns-close {
 	width: 20px;
-	height: 20px;
-	position: absolute;
+  height: 20px;
+  display: block;
+	position: inherit;
 	right: 4px;
 	top: 4px;
 	overflow: hidden;
@@ -5061,6 +5064,7 @@ main.main-sidebar {
 }
 
 .ns-box-inner i {
+    display: flex;
     color: #fff;
     font-size: 3.8em;
 }
