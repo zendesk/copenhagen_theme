@@ -1,0 +1,15 @@
+<div class="container-divider"></div>
+<div class="container">
+  <div class="category-container">
+    <div class="category-content">
+      <header class="page-header">
+        <h1>Contact Page</h1>
+      </header>
+      {{#each sections}}
+    		{{#is name 'Chat'}}
+      		<a href='{{url}}' class="blocks-item-link"><p>Go to chat</p></a>
+    		{{/is}}
+    	{{/each}}
+    </div>
+  </div>
+</div>

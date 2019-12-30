@@ -1,22 +1,77 @@
-<footer class="footer">
-  <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
-
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{current_locale.name}}
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
-          </span>
-        </div>
-      {{/if}}
-    </div>
+<!-- Custom footer -->
+<div class="custom-contact-button-container">
+  <h1>Still need help?</h1>
+  <div class="btn custom-contact-page-button" role="button">
+    <a href=""><p class="custom-button">Contact us</p></a>
   </div>
+</div>
+<footer class="custom-footer footer">
+  <div class="custom-footer-inner footer-inner">
+    <div class="custom-footer-logo">
+      <div class="logo">
+    		{{#link 'help_center'}}
+	      	<img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+   			{{/link}}
+  		</div> 
+		</div>
+    <div class="custom-footer-link-container">
+      <div class="custom-footer-links-card">
+        <h2>Solutions</h2>
+        <a href="https://www.configura.com/solutions/industry" target="_blank"><p>Industry solutions</p></a>
+        <a href="https://www.configura.com/solutions/our-platform" target="_blank"><p>Our platform</p></a>
+        <a href="https://www.configura.com/solutions/services" target="_blank"><p>Services</p></a>
+        <a href="https://www.configura.com/solutions/case-studies" target="_blank"><p>Case studies</p></a>
+      </div>
+      <div class="custom-footer-links-card">
+        <h2>Products</h2>
+       	<a href="https://www.configura.com/products/cet-designer" target="_blank"><p>CET Designer</p></a>
+        <a href="https://www.configura.com/products/cet-developer" target="_blank"><p>CET Developer</p></a>
+        <a href="https://www.configura.com/products/catalogue-creator" target="_blank"><p>Catalogue Creator</p></a>
+        <a href="https://www.configura.com/products/configura-software" target="_blank"><p>Configura Software</p></a>
+        <a href="https://www.configura.com/products/instantplanner" target="_blank"><p>InstantPlanner</p></a>
+      </div>
+      <div class="custom-footer-links-card">
+        <h2>Partners</h2>
+        <a href="https://www.configura.com/partners/become" target="_blank"><p>Become a partner</p></a>
+        <a href="https://www.configura.com/partners/our-partners" target="_blank"><p>Our partners</p></a>
+      </div>
+      <div class="custom-footer-links-card">
+        <h2>Academy</h2>
+        <a href="https://www.configura.com/academy/cet-designer" target="_blank"><p>CET Designer</p></a>
+        <a href="https://www.configura.com/academy/cet-developer" target="_blank"><p>Developers</p></a>
+        <a href="https://www.configura.com/academy/education-program" target="_blank"><p>Education program</p></a>
+      </div>
+      <div class="custom-footer-links-card">
+        <h2>Company</h2>
+        <a href="https://www.configura.com/company/about" target="_blank"><p>About</p></a>
+        <a href="https://www.configura.com/company/contact" target="_blank"><p>Our offices</p></a>
+        <a href="https://www.configura.com/careers" target="_blank"><p>Careers</p></a>
+      </div>
+    </div>
+    
+    <div class="custom-footer-socialmedia-container">
+      <div class="custom-socialmedia-icon">
+      	 <a href="https://www.facebook.com/ConfiguraIntl/" rel="noopener noreferrer" 
+            target="_blank" title="Configura on Facebook">
+           <img class="custom-socialmedia-icon" src="{{asset 'facebook.svg'}}" />
+        </a>
+        <a href="https://www.twitter.com/configura" rel="noopener noreferrer" 
+           target="_blank" title="Configura on Twitter">
+          <img class="custom-socialmedia-icon" src="{{asset 'twitter.svg'}}" />
+        </a>
+        <a href="https://www.instagram.com/configurans/" rel="noopener noreferrer" 
+           target="_blank" title="Configura on Instagram">
+          <img class="custom-socialmedia-icon" src="{{asset 'instagram.svg'}}" />
+        </a>
+          <a href="https://www.linkedin.com/company/configura" rel="noopener noreferrer" 
+             target="_blank" title="Configura on Linkedin">
+            <img class="custom-socialmedia-icon" src="{{asset 'linked_in.svg'}}" />
+        </a>
+      </div>
+    </div>
+ 
+  <div class="custom-copyright-container">
+    <p>Copyright 2020 Configura</p><p><a href="https://www.configura.com/terms-of-use">Terms</a><a href="https://www.configura.com/privacy-notice">Privacy notice</a></p>	
+  </div>
+ </div>
 </footer>
