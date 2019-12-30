@@ -14,6 +14,7 @@
       "git add"
     ],
     "./**/*.(css|scss)": [
+      "npm run build:css",
       "npm run lint:styles",
       "git add"
     ]
@@ -22,7 +23,7 @@
     "lint:js": "eslint './**/*.js'",
     "lint:styles": "stylelint './**/*.scss'",
     "lint": "npm run lint:js && npm run lint:styles",
-    "build:css": "./bin/compile.rb && postcss ./style-ugly.css > ./style.css"
+    "build:css": "./bin/compile.rb && postcss ./style-ugly.css > ./style.css && echo 'style-ugly.css minified as style.css' "
   },
   "repository": {
     "type": "git",
