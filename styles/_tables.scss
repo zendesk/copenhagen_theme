@@ -24,6 +24,11 @@
     white-space: nowrap;
   }
 
+  caption {
+    font-weight: $font__weight--bold;
+    text-align: left;
+  }
+
   th {
     border: solid $border--width $grey--light;
     @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
@@ -40,10 +45,17 @@
   }
   @media print {
     table {
+      position: relative;
       width: 100%;
+      page-break-inside: avoid;
       overflow: visible;
       table-layout: fixed;
       white-space: normal;
+    }
+
+    td {
+      position: relative;
+      page-break-inside: avoid;
     }
   }
 }
