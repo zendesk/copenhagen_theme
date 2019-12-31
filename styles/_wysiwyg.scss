@@ -74,12 +74,36 @@
 
   iframe[src*='youtube'] {
     max-width: 100%;
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
     @media print {
       display: none;
     }
   }
 
   .wistia_responsive_padding {
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
     @media print {
       display: none;
     }
