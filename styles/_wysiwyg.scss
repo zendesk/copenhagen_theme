@@ -60,6 +60,7 @@
     @media print {
       display: block;
       max-width: 90%;
+      page-break-inside: avoid;
       /* stylelint-disable-next-line max-nesting-depth */
       &::after {
         content: ' [Image source: ' attr(href) ']';
@@ -96,6 +97,7 @@
   }
 
   ul {
+    padding: 0;
     list-style-position: inside;
     list-style-type: disc;
     @include fluid-value( margin-left,
@@ -107,6 +109,7 @@
   }
 
   ol {
+    padding: 0;
     list-style-position: inside;
     list-style-type: decimal;
     @include fluid-value( margin-left,
@@ -148,6 +151,7 @@
     @media print {
       border: solid $border--width $black;
       background-color: $white;
+      white-space: normal;
     }
   }
 
@@ -209,9 +213,8 @@
     $whitespace-small--desktop
   );
 
-    ol:first-of-type {
+    > ol {
       margin: 0;
-      padding-left: 0;
     }
 
     h2 {

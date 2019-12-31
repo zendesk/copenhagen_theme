@@ -8,7 +8,6 @@
     border-collapse: collapse;
     box-shadow: 2px 2px 4px hsla(0, 0%, 80%, .15);
     vertical-align: top;
-    // TODO: Finish styling table pivot
     @include fluid-value( margin-top,
     $min-width,
     $max-width,
@@ -38,5 +37,13 @@
   td {
     border: solid $border--width $grey--light;
     @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
+  }
+  @media print {
+    table {
+      width: 100%;
+      overflow: visible;
+      table-layout: fixed;
+      white-space: normal;
+    }
   }
 }

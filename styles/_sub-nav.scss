@@ -19,4 +19,7 @@
 
     &::after { font-size: $font-size-base; }
   }
+  @media print {
+    display: none;
+  }
 }
