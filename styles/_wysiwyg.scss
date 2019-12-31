@@ -60,6 +60,7 @@
     @media print {
       display: block;
       max-width: 90%;
+      page-break-inside: avoid;
       /* stylelint-disable-next-line max-nesting-depth */
       &::after {
         content: ' [Image source: ' attr(href) ']';
@@ -148,6 +149,7 @@
     @media print {
       border: solid $border--width $black;
       background-color: $white;
+      white-space: normal;
     }
   }
 

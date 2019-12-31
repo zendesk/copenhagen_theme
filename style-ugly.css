@@ -683,6 +683,15 @@ ul {
   }
 }
 
+@media print {
+  .article-body table {
+    width: 100%;
+    overflow: visible;
+    table-layout: fixed;
+    white-space: normal;
+  }
+}
+
 /* stylelint-disable */
 /***** Forms *****/
 .form {
@@ -1437,12 +1446,6 @@ ul {
   color: #012939;
 }
 
-@media print {
-  .breadcrumbs {
-    display: none;
-  }
-}
-
 /***** Search field *****/
 .search {
   position: relative;
@@ -1797,6 +1800,12 @@ ul {
 
 .sub-nav input[type='search']::after {
   font-size: 20px;
+}
+
+@media print {
+  .sub-nav {
+    display: none;
+  }
 }
 
 /***** Blocks *****/
@@ -5470,6 +5479,7 @@ html[lang|='zh'] .search-results-description em {
   .article-body img {
     display: block;
     max-width: 90%;
+    page-break-inside: avoid;
     /* stylelint-disable-next-line max-nesting-depth */
   }
   .article-body img::after {
@@ -5585,6 +5595,7 @@ html[lang|='zh'] .search-results-description em {
   .article-body pre {
     border: solid 1px #000;
     background-color: #fff;
+    white-space: normal;
   }
 }
 
