@@ -1763,6 +1763,7 @@ ul {
 }
 
 .page-header__description {
+  display: block;
   font-family: "Source Sans Pro", sans-serif;
   font-size: .45em;
   font-weight: 400;
@@ -4563,7 +4564,7 @@ in comments and posts */
 /* User Profiles */
 .profile-header {
   padding: 30px 0;
-  background-color: darken($background_color, 3%);
+  background-color: #fff;
 }
 
 .profile-header .container {
@@ -4657,7 +4658,7 @@ in comments and posts */
   padding: 8px 20px;
   border: 0;
   outline-color: #012939;
-  background-color: #012939;
+  background-color: #fff;
   color: #fff;
   line-height: normal;
 }
@@ -4823,7 +4824,7 @@ in comments and posts */
 
 .profile-nav {
   margin-bottom: 37px;
-  background-color: darken($background_color, 5%);
+  background-color: #fff;
 }
 
 .profile-section {
@@ -5101,7 +5102,7 @@ in comments and posts */
   margin-top: 10px;
   padding: 20px;
   border-radius: 8px;
-  background-color: darken($background_color, 3%);
+  background-color: #fff;
 }
 
 @media (min-width: 768px) {
