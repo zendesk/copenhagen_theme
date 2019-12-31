@@ -1,11 +1,58 @@
-<div class="container-divider"></div>
+<div class="container-divider" aria-hidden="true"></div>
 <div class="container">
-  <nav class="sub-nav">
+  <nav aria-label="Site breadcrumbs and search" class="sub-nav">
     {{breadcrumbs}}
     {{search submit=false class='search' instant=settings.instant_search placeholder='Search the Help Center'}}
   </nav>
 
-  <div class="search-results">
+  <div id="search-results" class="search-results">
+    <section aria-label="{{results_count}} search results for {{query}}" class="search-results-column">
+      <header>
+        <h1 class="search-results-subheading">
+          {{#is current_filter.identifier 'unified'}}
+            {{t 'results' query=query count=results_count}}
+          {{else}}
+            {{#unless current_subfilter.identifier}}
+              {{t 'results' query=query count=results_count}}
+            {{else}}
+              {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
+            {{/unless}}
+          {{/is}}
+        </h1>
+      </header>
+
+      {{#if results}}
+        <ul aria-label="Search Results" class="search-results-list">
+          {{#each results}}
+            <li class="search-result-list-item result-{{type}}">
+              <article>
+                <h2 class="search-result-title">
+                  <a href="{{url}}" class="results-list-item-link noshadow">{{title}}</a>
+                </h2>
+                <ul aria-label="Search result meta information" class="meta-group">
+                  <li>
+                    <ol aria-label="Search result breadcrumbs" class="breadcrumbs search-result-breadcrumbs">
+                      {{#each path_steps}}
+                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                      {{/each}}
+                    </ol>
+                  </li>
+                  <li aria-label="Date last edited" class="meta-data">{{date edited_at format='short'}}</li>
+                </ul>
+                <div class="search-results-description">{{text}}...</div>
+              </article>
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>
+          {{t 'no_results_unified'}}
+          {{#link 'help_center'}}
+            {{t 'browse_help_center'}}
+          {{/link}}
+        </p>
+      {{/if}}
+    </section>
     <aside class="search-results-sidebar">
       {{#if help_center_filters}}
         <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
@@ -70,51 +117,6 @@
         </section>
       {{/if}}
     </aside>
-
-    <section class="search-results-column">
-      <h1 class="search-results-subheading">
-        {{#is current_filter.identifier 'unified'}}
-          {{t 'results' query=query count=results_count}}
-        {{else}}
-          {{#unless current_subfilter.identifier}}
-            {{t 'results' query=query count=results_count}}
-          {{else}}
-            {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
-          {{/unless}}
-        {{/is}}
-      </h1>
-      {{#if results}}
-        <ul class="search-results-list">
-          {{#each results}}
-            <li class="search-result-list-item result-{{type}}">
-              <h2 class="search-result-title">
-                <a href="{{url}}" class="results-list-item-link noshadow">{{title}}</a>
-              </h2>
-              <article>
-                <ul class="meta-group">
-                  <li>
-                    <ol class="breadcrumbs search-result-breadcrumbs">
-                      {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                      {{/each}}
-                    </ol>
-                  </li>
-                  <li class="meta-data">{{date edited_at format='short'}}</li>
-                </ul>
-                <div class="search-results-description">{{text}}...</div>
-              </article>
-            </li>
-          {{/each}}
-        </ul>
-      {{else}}
-        <p>
-          {{t 'no_results_unified'}}
-          {{#link 'help_center'}}
-            {{t 'browse_help_center'}}
-          {{/link}}
-        </p>
-      {{/if}}
-    </section>
   </div>
   {{pagination}}
 </div>
