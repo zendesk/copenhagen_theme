@@ -369,23 +369,23 @@ a:focus {
   }
 }
 
-.greyLink, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
+.greyLink, .section-tree-with-article div.article-body a:last-child, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
   transition: all 300ms;
   box-shadow: 0 -1px 0 0 #b8b8b8 inset;
   color: #012939;
   text-decoration: none;
 }
 
-.greyLink:hover, .article-relatives a:hover, .search-results-sidebar .sidenav-item:hover, .article-body .toc a:hover, .greyLink:active, .article-relatives a:active, .search-results-sidebar .sidenav-item:active, .article-body .toc a:active, .greyLink:focus, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
+.greyLink:hover, .section-tree-with-article div.article-body a:hover:last-child, .article-relatives a:hover, .search-results-sidebar .sidenav-item:hover, .article-body .toc a:hover, .greyLink:active, .section-tree-with-article div.article-body a:active:last-child, .article-relatives a:active, .search-results-sidebar .sidenav-item:active, .article-body .toc a:active, .greyLink:focus, .section-tree-with-article div.article-body a:focus:last-child, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
   box-shadow: 0 -12px 0 0 rgba(125, 176, 14, 0.25) inset;
 }
 
-.greyLink:focus, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
+.greyLink:focus, .section-tree-with-article div.article-body a:focus:last-child, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
   outline: #7db00e auto 5px;
 }
 
 @media print {
-  .greyLink, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
+  .greyLink, .section-tree-with-article div.article-body a:last-child, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
     box-shadow: none;
     color: #000;
     text-decoration: dotted;
@@ -2170,6 +2170,24 @@ ul {
 
 .article-list__item {
   margin: 15px 0;
+}
+
+.section-tree-with-article {
+  /* stylelint-disable-next-line */
+  /* stylelint-disable-next-line */
+}
+
+.section-tree-with-article li {
+  margin-bottom: 15px;
+}
+
+.section-tree-with-article article.article-body a:last-child {
+  display: none;
+}
+
+.section-tree-with-article div.article-body a:last-child {
+  display: inline-block;
+  font-size: .8em;
 }
 
 /***** Section pages *****/
