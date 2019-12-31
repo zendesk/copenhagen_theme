@@ -5,7 +5,7 @@
 
 .profile-header {
   padding: 30px 0;
-  background-color: $primary-shade;
+  background-color: $white;
 }
 
 .profile-header .container {
@@ -92,7 +92,7 @@
   padding: 8px 20px;
   border: 0;
   outline-color: $brand_color;
-  background-color: $brand_color;
+  background-color: $white;
   color: $brand_text_color;
   line-height: normal;
 }
@@ -240,7 +240,7 @@
 
 .profile-nav {
   margin-bottom: 37px;
-  background-color: $secondary-shade;
+  background-color: $white;
 }
 
 // Sections
@@ -500,7 +500,7 @@
   margin-top: 10px;
   padding: 20px;
   border-radius: 8px;
-  background-color: $primary-shade;
+  background-color: $white;
   @include tablet {
     margin-top: 0;
     margin-left: 50px;
