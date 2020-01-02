@@ -38,3 +38,20 @@
     margin: $spacing 0;
   }
 }
+
+.section-tree-with-article {
+  li {
+    margin-bottom: 15px;
+  }
+  /* stylelint-disable-next-line */
+  article.article-body a:last-child {
+    display: none;
+  }
+
+  /* stylelint-disable-next-line */
+  div.article-body a:last-child {
+    display: inline-block;
+    font-size: .8em;
+    @extend .greyLink;
+  }
+}
