@@ -1,6 +1,7 @@
 /***** Overrides *****/
 .article {
   padding: 0;
+  max-width: 63%;
   margin: 0 4rem 0 0;
 }
 
@@ -32,6 +33,7 @@ h6 {
 
 .header {
   max-width: 1370px;
+  margin: 0 5%;
 }
 
 .sidebar {
@@ -43,6 +45,22 @@ h6 {
   position: relative;
 }
 
+.search {
+  width: 20em;
+  height: 4em;
+  border: 2px solid var(--color-blue);
+  border: #006ab3; /* default supported fallback style */
+  border-radius: 0;
+}
+
+.search input[type="search"] {
+  width: 20em;
+  height: 4em;
+  border: 2px solid var(--color-blue);
+  border: #006ab3; /* default supported fallback style */
+  border-radius: 0;
+}
+
 .sidenav-item {
   border-radius: 4px;
   color: $text_color;
@@ -50,6 +68,16 @@ h6 {
   font-weight: 300;
   margin-bottom: 10px;
   padding: 10px 1rem;
+}
+
+@media (min-width: 1160px) {
+  .custom-page-search .search input[type="search"] {
+    width: 20em;
+    height: 4em;
+    border: 2px solid var(--color-blue);
+    border: #006ab3; /* default supported fallback style */
+    border-radius: 0;
+  }
 }
 
 /***** Alerts *****/
@@ -498,7 +526,7 @@ h2 {
     display: inline-block;
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */
-    font-size: 20px;
+    font-size: 26px;
     border-left: 1px solid var(--color-white);
     border-left: 1px solid #ffffff; /* default supported fallback style */
     padding-left: 1em;
