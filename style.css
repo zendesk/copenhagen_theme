@@ -5469,4 +5469,19 @@ main.main-sidebar {
   width: 70%;
 }
 
+@media only screen and (min-device-width: 320px) and (max-device-width: 420px) {
+  .notification-body-width {
+    font-size: 0.7rem;
+  }
+  .ns-effect-slidetop {
+    font-size: 0.7rem;
+  }
+  .ns-close {
+    position: relative;
+  }
+  .ns-box-inner {
+    width: 95%;
+  }
+}
+
 /*** END NOTIFICATION BANNER ***/
