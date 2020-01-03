@@ -5461,4 +5461,12 @@ main.main-sidebar {
   }
 }
 
+.notification-title-width {
+  width: 30%;
+}
+
+.notification-body-width {
+  width: 70%;
+}
+
 /*** END NOTIFICATION BANNER ***/
