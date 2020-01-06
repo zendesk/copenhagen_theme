@@ -11,8 +11,8 @@ jobs:
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.x'
-      - run: gem install faraday
-      - run: gem install faraday_middleware
+      - run: gem install faraday -v 0.16.0
+      - run: gem install faraday_middleware -v 0.13.1
       - run: ruby ./.github/workflows/theme_upload.rb
         env:
           zendesk_email: ${{ secrets.zendesk_email }}
