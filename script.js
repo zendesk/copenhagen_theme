@@ -535,7 +535,8 @@ function handleRebootOrRefresh() {
 /**** END CUSTOM CHAT ****/
 
 /**** NOTIFICATION BANNER ****/
-
+var alertId;
+var number = 0;
 $.get(
   "/api/v2/help_center/" +
     $("html")
@@ -545,18 +546,26 @@ $.get(
 ).done(function(data) {
   $.each(data.articles, function(index, item) {
     var style1 =
-      '<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show"><div class="ns-box-inner"><span class="megaphone"></span></i><p><a href="' +
+      '<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show" id="not-' +
+      number +
+      '"><div class="ns-box-inner" ><span class="megaphone"></span></i><p><a href="' +
       item.html_url +
       '">' +
       item.title +
       "</a>" +
       item.body +
-      '</p></div><span class="ns-close"></span></div>';
+      '</p></div><span class="ns-close" id=' +
+      number +
+      "></span></div>";
 
     $(".alertbox").append(style1);
+    number++;
   });
-  $(".ns-close").on("click", function() {
-    $(".alertbox").remove();
+  $(".ns-close").click(function() {
+    var id = $(".ns-close").attr("id");
+    console.log(id);
+    $("#not-" + id + "").remove();
+    console.log("#not-" + id + "");
   });
 });
 
