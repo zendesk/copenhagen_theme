@@ -684,7 +684,8 @@ h1, h2 {
 /**** CUSTOM SIDEBAR ****/
 
 .custom-sidebar-item-title {
-  display: flex;
+  // display: flex;
+  display: inline-block;
 	font-weight: 600;
 }
 
@@ -855,6 +856,8 @@ main.main-sidebar {
 
   /* Support for IE. */
   font-feature-settings: 'liga';
+
+  vertical-align: top;
 }
 
 /**** END CUSTOM STYLE ****/
