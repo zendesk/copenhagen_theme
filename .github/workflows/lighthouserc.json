@@ -11,78 +11,67 @@
         {
           "matchingUrlPattern": "hc/en-us$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.96 }]
           }
         },
         {
           "matchingUrlPattern": ".+categories.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.96 }]
           }
         },
         {
           "matchingUrlPattern": ".+sections.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.89 }]
           }
         },
         {
           "matchingUrlPattern": ".+articles.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.87 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.87 }]
           }
         },
         {
           "matchingUrlPattern": "requests/new$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.96 }]
           }
         },
         {
           "matchingUrlPattern": ".+search.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.89 }]
           }
         },
         {
           "matchingUrlPattern": "community/topics$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.96 }]
           }
         },
         {
           "matchingUrlPattern": ".+community/topics.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.89 }]
           }
         },
         {
           "matchingUrlPattern": "community/posts$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.96 }]
           }
         },
         {
           "matchingUrlPattern": ".+community/posts.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.87 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.87 }]
           }
         },
         {
           "matchingUrlPattern": ".+profiles.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.88 }],
-            "tabindex": ["off", {}]
+            "categories:accessibility": ["error", { "minScore": 0.88 }]
           }
         },
         {"assertions": {
