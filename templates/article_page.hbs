@@ -5,25 +5,25 @@
     <li class="sidebar-item sidebar-home open">
        <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">school</i>
-        Academy and training
+         Academy and training
       </a>
     </li>
     <li class="sidebar-item sidebar-home open">
       <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">laptop</i>
-        System recommendations
+         System recommendations
       </a>
     </li>
     <li class="sidebar-item sidebar-home open">
       <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">book</i>
-        Release notes
+         Release notes
       </a>
     </li>
     <li class="sidebar-item sidebar-home open custom-margin-bottom">
       <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title" target="_blank">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">forum</i>
-        Forums
+         Forums
       </a>
     </li>
     <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
