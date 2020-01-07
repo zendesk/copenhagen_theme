@@ -3,41 +3,41 @@
 <div id="sidebar" class="sidebar-panel">
   <ul class="sidebar">
     <li class="sidebar-item sidebar-home open">
-       <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
-        <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+      <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
+        <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">school</i>
         Academy and training
       </a>
     </li>
-     <li class="sidebar-item sidebar-home open">
-       <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
-         <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
-         System recommendations
+    <li class="sidebar-item sidebar-home open">
+      <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
+        <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">laptop</i>
+        System recommendations
       </a>
     </li>
-     <li class="sidebar-item sidebar-home open">
-       <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
-         <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
-         Release notes
+    <li class="sidebar-item sidebar-home open">
+      <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
+        <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">book</i>
+        Release notes
       </a>
     </li>
-     <li class="sidebar-item sidebar-home open custom-margin-bottom">
+    <li class="sidebar-item sidebar-home open custom-margin-bottom">
       <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title" target="_blank">
-        <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+        <i class="material-icons custom-sidebar-icon custom-icon-margin-right material-black">forum</i>
         Forums
       </a>
     </li>
     <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
-    	<h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
-      	<ul v-if='category.id === activeSection'>
-        	<li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
-          	<a :href='section.html_url' class="sidebar-item-link">
-            	{[{section.name}]} 
-            </a>
-          </li>
-      	</ul>
-    	</li>
-  	</ul>
-	</div>
+      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      <ul v-if='category.id === activeSection'>
+        <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
+          <a :href='section.html_url' class="sidebar-item-link">
+            {[{section.name}]} 
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
   
 <!-- END CUSTOM SIDEBAR -->
 
