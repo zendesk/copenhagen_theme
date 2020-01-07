@@ -1738,13 +1738,8 @@ ul {
   text-decoration: none;
 }
 
-.article-return-to-top .icon-arrow-up::before {
-  font-size: 16px;
-  margin-left: 5px;
-}
-
-[dir="rtl"] .article-return-to-top .icon-arrow-up::before {
-  margin-right: 10px;
+.article-return-to-top-icon {
+  transform: rotate(0.5turn);
 }
 
 .article-unsubscribe {
