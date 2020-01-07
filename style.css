@@ -4272,7 +4272,7 @@ h1, h2 {
 }
 
 .custom-link-item-title {
-  display: flex;
+  display: inline-block;
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
