@@ -2802,8 +2802,16 @@ ul {
   right: auto;
 }
 
-.collapsible-nav-toggle::after {
-  content: "\25BE";
+.collapsible-nav-toggle-icon {
+  display: none;
+}
+
+.collapsible-nav-toggle[aria-expanded="false"] .chevron-icon {
+  display: inline-block;
+}
+
+.collapsible-nav-toggle[aria-expanded="true"] .x-icon {
+  display: inline-block;
 }
 
 .collapsible-nav-toggle:focus {
@@ -2893,10 +2901,6 @@ ul {
 .collapsible-nav-list li[aria-selected="true"] a,
 .collapsible-nav-list li.current a {
   color: $text_color;
-}
-
-.collapsible-nav[aria-expanded="true"] .collapsible-nav-toggle::after {
-  content: "\2715";
 }
 
 .collapsible-nav[aria-expanded="true"] li:not([aria-selected="true"]),
@@ -3572,7 +3576,6 @@ ul {
 .article-vote::before,
 .attachments .attachment-item::before,
 .share a::before,
-.collapsible-nav-toggle::after,
 .collapsible-sidebar-toggle::after {
   font-family: "copenhagen-icons";
   font-style: normal;
