@@ -2950,11 +2950,16 @@ ul {
   right: auto;
 }
 
-.collapsible-sidebar-toggle::after {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  content: "\25BE";
+.collapsible-sidebar-toggle-icon {
+  display: none;
+}
+
+.collapsible-sidebar-toggle[aria-expanded="false"] .chevron-icon {
+  display: inline-block;
+}
+
+.collapsible-sidebar-toggle[aria-expanded="true"] .x-icon {
+  display: inline-block;
 }
 
 .collapsible-sidebar-toggle:focus {
@@ -2974,10 +2979,6 @@ ul {
 
 .collapsible-sidebar[aria-expanded="true"] {
   max-height: none;
-}
-
-.collapsible-sidebar[aria-expanded="true"] .collapsible-sidebar-toggle::after {
-  content: "\2715";
 }
 
 .collapsible-sidebar[aria-expanded="true"] .collapsible-sidebar-body {
@@ -3572,8 +3573,7 @@ ul {
 [class*=" icon-"]::before,
 .icon,
 .article-vote::before,
-.share a::before,
-.collapsible-sidebar-toggle::after {
+.share a::before {
   font-family: "copenhagen-icons";
   font-style: normal;
   font-weight: normal;
