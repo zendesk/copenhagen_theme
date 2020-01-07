@@ -4976,4 +4976,9 @@ main.main-sidebar {
   vertical-align: top;
 }
 
+.material-black {
+  color: var(--color-almost-black);
+  color: #424242;
+}
+
 /**** END CUSTOM STYLE ****/
