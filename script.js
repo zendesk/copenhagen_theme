@@ -563,9 +563,7 @@ $.get(
   });
   $(".ns-close").click(function() {
     var id = $(".ns-close").attr("id");
-    console.log(id);
     $("#not-" + id + "").remove();
-    console.log("#not-" + id + "");
   });
 });
 
