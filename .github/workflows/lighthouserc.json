@@ -8,117 +8,75 @@
     },
     "assert": {
       "assertMatrix": [
+        {"assertions": {
+          "color-contrast": ["error", {}]
+        }
+        },
         {
           "matchingUrlPattern": "hc/en-us$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+categories.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+sections.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+articles.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.87 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": "requests/new$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+search.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": "community/topics$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+community/topics.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.89 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": "community/posts$",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.96 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+community/posts.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.87 }]
+            "color-contrast": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+profiles.+",
           "assertions": {
-            "categories:accessibility": ["error", { "minScore": 0.88 }]
+            "color-contrast": ["warn", {}]
           }
-        },
-        {"assertions": {
-            "test-invalid-rule": ["warn", {}],
-            "accesskeys": ["warn", {}],
-            "aria-allowed-attr": ["warn", {}],
-            "aria-hidden-body": ["warn", {}],
-            "aria-hidden-focus": ["warn", {}],
-            "aria-input-field-name": ["warn", {}],
-            "aria-required-attr": ["warn", {}],
-            "aria-required-children": ["warn", {}],
-            "aria-required-parent": ["warn", {}],
-            "aria-roles": ["warn", {}],
-            "aria-toggle-field-name": ["warn", {}],
-            "aria-valid-attr-value": ["warn", {}],
-            "aria-valid-attr": ["warn", {}],
-            "audio-caption": ["warn", {}],
-            "button-name": ["warn", {}],
-            "bypass": ["warn", {}],
-            "color-contrast": ["warn", {}],
-            "definition-list": ["warn", {}],
-            "dlitem": ["warn", {}],
-            "document-title": ["warn", {}],
-            "duplicate-id-active": ["warn", {}],
-            "duplicate-id-aria": ["warn", {}],
-            "form-field-multiple-labels": ["warn", {}],
-            "frame-title": ["warn", {}],
-            "heading-order": ["warn", {}],
-            "html-has-lang": ["warn", {}],
-            "html-lang-valid": ["warn", {}],
-            "image-alt": ["warn", {}],
-            "input-image-alt": ["warn", {}],
-            "label": ["warn", {}],
-            "layout-table": ["warn", {}],
-            "link-name": ["warn", {}],
-            "list": ["warn", {}],
-            "listitem": ["warn", {}],
-            "meta-refresh": ["warn", {}],
-            "meta-viewport": ["warn", {}],
-            "object-alt": ["warn", {}],
-            "tabindex": ["warn", {}],
-            "td-headers-attr": ["warn", {}],
-            "th-has-data-cells": ["warn", {}],
-            "valid-lang": ["warn", {}],
-            "video-caption": ["warn", {}],
-            "video-description": ["warn", {}]
-        }
         }
       ]
     }
