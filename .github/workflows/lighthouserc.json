@@ -25,12 +25,15 @@
         {
           "matchingUrlPattern": ".+sections.+",
           "assertions": {
+            "aria-allowed-attr": ["warn", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+articles.+",
           "assertions": {
+            "aria-allowed-attr": ["warn", {}],
+            "link-name": ["warn", {}]
           }
         },
         {
@@ -43,6 +46,8 @@
         {
           "matchingUrlPattern": ".+search.+",
           "assertions": {
+            "aria-allowed-attr": ["warn", {}],
+            "link-name": ["warn", {}]
           }
         },
         {
@@ -55,6 +60,7 @@
         {
           "matchingUrlPattern": ".+community/topics.+",
           "assertions": {
+            "aria-allowed-attr": ["warn", {}],
             "link-name": ["error", {}]
           }
         },
@@ -68,11 +74,14 @@
         {
           "matchingUrlPattern": ".+community/posts.+",
           "assertions": {
+            "aria-allowed-attr": ["warn", {}],
+            "link-name": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+profiles.+",
           "assertions": {
+            "aria-allowed-attr": ["warn", {}],
             "link-name": ["error", {}]
           }
         },
