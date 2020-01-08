@@ -75,6 +75,7 @@
           }
         },
         {"assertions": {
+            "test-invalid-rule": ["warn", {}],
             "accesskeys": ["warn", {}],
             "aria-allowed-attr": ["warn", {}],
             "aria-hidden-body": ["warn", {}],
