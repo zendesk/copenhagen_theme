@@ -110,6 +110,7 @@
             "meta-refresh": ["error", {}],
             "meta-viewport": ["error", {}],
             "object-alt": ["error", {}],
+            "tabindex": ["warn", {}],
             "td-headers-attr": ["error", {}],
             "th-has-data-cells": ["error", {}],
             "valid-lang": ["error", {}],
