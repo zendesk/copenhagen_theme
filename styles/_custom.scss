@@ -214,7 +214,7 @@ h2 {
 }
 
 .custom-link-item-title {
-  display: flex;
+  display: inline-block;
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
@@ -763,9 +763,9 @@ h2 {
 
 /**** CUSTOM SIDEBAR ****/
 
-.custom-sidebar-item-title {
-  display: flex;
-  font-weight: 600;
+.custom-sidebar-item-title {  
+  display: inline-block;
+	font-weight: 600;
 }
 
 .custom-margin-bottom {
@@ -773,8 +773,8 @@ h2 {
 }
 
 .custom-sidebar-icon {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
 }
 
 .custom-icon-margin-right {
@@ -933,7 +933,14 @@ main.main-sidebar {
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+  font-feature-settings: 'liga';
+
+  vertical-align: top;
+}
+
+.black-icon {
+  color: var(--color-almost-black);
+  color: #424242;
 }
 
 /**** END CUSTOM STYLE ****/
