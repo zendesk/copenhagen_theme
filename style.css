@@ -4129,7 +4129,7 @@ html[lang|="ja"] .search-result-description em {
 /***** Overrides *****/
 .article {
   padding: 0;
-  max-width: 63%;
+  max-width: 62%;
   margin: 0 4rem 0 0;
 }
 
@@ -4164,25 +4164,23 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .sidenav-title {
-  font-size: 15px;
+  font-size: 21px;
   position: relative;
 }
 
-.search {
-  width: 20em;
-  height: 4em;
-  border: 2px solid var(--color-blue);
-  border: #006ab3;
-  /* default supported fallback style */
-  border-radius: 0;
+.sidenav-item {
+  border-radius: 4px;
+  color: $text_color;
+  display: block;
+  font-weight: 300;
+  margin-bottom: 10px;
+  padding: 10px 1rem;
 }
 
 .search input[type="search"] {
-  width: 20em;
-  height: 4em;
-  border: 2px solid var(--color-blue);
-  border: #006ab3;
-  /* default supported fallback style */
+  width: 26.8em;
+  height: 3em;
+  border: 1px solid #006ab3;
   border-radius: 0;
 }
 
@@ -4197,56 +4195,9 @@ h1, h2, h3, h4, h5, h6 {
 
 @media (min-width: 1160px) {
   .custom-page-search .search input[type="search"] {
-    width: 20em;
-    height: 4em;
-    border: 2px solid var(--color-blue);
-    border: #006ab3;
-    /* default supported fallback style */
-    border-radius: 0;
-  }
-}
-
-.sidebar {
-  min-width: 17em;
-}
-
-.sidenav-title {
-  font-size: 15px;
-  position: relative;
-}
-
-.search {
-  width: 20em;
-  height: 4em;
-  border: 2px solid var(--color-blue);
-  border: #006ab3;
-  /* default supported fallback style */
-  border-radius: 0;
-}
-
-.search input[type="search"] {
-  width: 20em;
-  height: 4em;
-  border: 2px solid var(--color-blue);
-  border: #006ab3;
-  /* default supported fallback style */
-  border-radius: 0;
-}
-
-.sidenav-item {
-  border-radius: 4px;
-  color: $text_color;
-  display: block;
-  font-weight: 300;
-  margin-bottom: 10px;
-  padding: 10px 1rem;
-}
-
-@media (min-width: 1160px) {
-  .custom-page-search .search input[type="search"] {
-    width: 20em;
-    height: 4em;
-    border: 2px solid var(--color-blue);
+    width: 26.8em;
+    height: 3em;
+    border: 1px solid #006ab3;
     border: #006ab3;
     /* default supported fallback style */
     border-radius: 0;
