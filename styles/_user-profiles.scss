@@ -231,11 +231,8 @@
   font-size: 12px;
   text-align: center;
 
-  &::after {
-    content: "\1f512";
+  .profile-private-icon {
     margin-left: 5px;
-    font-family: "copenhagen-icons";
-    vertical-align: middle;
     line-height: 15px;
   }
 
@@ -367,16 +364,18 @@
   border-bottom: 1px solid #eee;
 }
 
-.profile-contribution-list > .profile-contribution::before {
+.profile-contribution-icon {
   left: 0;
   position: absolute;
-  font-size: 16px;
   color: #ccc;
-  font-family: "copenhagen-icons";
   line-height: 25px;
 
   [dir="rtl"] & {
     right: 0;
+  }
+
+  svg {
+    vertical-align: middle;
   }
 }
 
@@ -423,13 +422,7 @@
   color: #999;
 }
 
-.profile-section .private-activity::before {
-  content: "\1f512";
-  font-family: "copenhagen-icons";
-  font-style: normal;
-  font-size: 12px;
-  font-weight: normal;
-  vertical-align: middle;
+.private-activity-icon {
   margin-right: 10px;
 
   [dir="rtl"] & {
@@ -532,21 +525,18 @@
 
 // Icons
 
-.profile-activity::before {
+.profile-activity-icon {
   position: absolute;
   left: 0;
   width: 28px;
+  height: 28px;
   border-radius: 50%;
-  content: "";
   background-size: 14px 14px;
   background-repeat: no-repeat;
   background-color: $background_color;
   background-position: 50% 50%;
   text-align: center;
-  line-height: 40px;
-  font-size: 16px;
   color: #ccc;
-  font-family: "copenhagen-icons";
 
  [dir="rtl"] & {
     right: 0;
@@ -561,20 +551,10 @@
   }
 }
 
-// Icons
-
-.profile-articles > .profile-contribution::before,
-.profile-activity-list > li[class$="-article"]::before {
-  content: "\1f4c4";
-}
-
-.profile-posts > .profile-contribution::before,
-.profile-activity-list > li[class$="-post"]::before {
-  content: "\1f4d4";
-}
-
-.profile-comments > .profile-contribution::before,
-.profile-activity-list > li[class$="-comment"]::before {
-  content: "\1f4ac";
-  line-height: 35px;
+.profile-activity-icon svg {
+  @include vertical-align;
+  // display: block;
+  width: 1em;
+  height: 1em;
+  margin: auto;
 }

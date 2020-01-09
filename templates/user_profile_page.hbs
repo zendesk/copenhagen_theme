@@ -20,7 +20,13 @@
       </div>
       <div class="options">
         {{#if private_profile}}
-          <span class="profile-private-badge">{{t 'private'}}</span>
+          <span class="profile-private-badge">
+            {{t 'private'}}
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="profile-private-icon">
+              <path fill="none" stroke="currentColor" d="M3.5 5.5V3a2.5 2.5 0 015 0v2.5"/>
+              <rect width="10" height="7" x="1" y="5" fill="currentColor" rx="1" ry="1"/>
+            </svg>
+          </span>
         {{/if}}
         {{edit}}
         <div class="community-follow">{{subscribe}}</div>
@@ -121,6 +127,23 @@
               {{#each activities}}
 
                 <li class="profile-activity profile-activity-{{type}}">
+                  <span aria-hidden="true" class="profile-activity-icon">
+                    {{#contains type "article"}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"/>
+                      </svg>
+                    {{/contains}}
+                    {{#contains type "post"}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 6.5H1C.7 6.5.5 6.3.5 6V1C.5.7.7.5 1 .5h7c.3 0 .5.2.5.5v2.5m-6-1h4m-1 5h4m-4 2h4M4 5.5h7c.3 0 .5.2.5.5v5c0 .3-.2.5-.5.5H4c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5z"/>
+                      </svg>
+                    {{/contains}}
+                    {{#contains type "comment"}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
+                        <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
+                      </svg>
+                    {{/contains}}
+                  </span>
                   <header class="profile-activity-header">
                     <img class="user-avatar" src="{{../user.avatar_url}}" alt=""/>
                     <p class="profile-activity-description">{{label}}</p>
@@ -223,6 +246,23 @@
               {{#each contributions}}
 
                 <li class="profile-contribution">
+                  <span class="profile-contribution-icon" aria-hidden="true">
+                    {{#is object_type "article"}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"/>
+                      </svg>
+                    {{/is}}
+                    {{#is object_type "post"}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 6.5H1C.7 6.5.5 6.3.5 6V1C.5.7.7.5 1 .5h7c.3 0 .5.2.5.5v2.5m-6-1h4m-1 5h4m-4 2h4M4 5.5h7c.3 0 .5.2.5.5v5c0 .3-.2.5-.5.5H4c-.3 0-.5-.2-.5-.5V6c0-.3.2-.5.5-.5z"/>
+                      </svg>
+                    {{/is}}
+                    {{#is object_type "comment"}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
+                        <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
+                      </svg>
+                    {{/is}}
+                  </span>
                   <header class="profile-contribution-header">
                     {{#isnt object_type 'comment'}}
                       <h3 class="profile-contribution-title"><a href="{{url}}">{{title}}</a></h3>
@@ -305,7 +345,13 @@
 {{#unless visible}}
   <div class="container">
     <section class="profile-section">
-      <span class="private-activity">{{t 'private_activity'}}</span>
+      <span class="private-activity">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="private-activity-icon">
+          <path fill="none" stroke="currentColor" d="M3.5 5.5V3a2.5 2.5 0 015 0v2.5"/>
+          <rect width="10" height="7" x="1" y="5" fill="currentColor" rx="1" ry="1"/>
+        </svg>
+        {{t 'private_activity'}}
+      </span>
     </section>
   </div>
 {{/unless}}
