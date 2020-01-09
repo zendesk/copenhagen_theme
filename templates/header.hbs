@@ -1,37 +1,41 @@
 <!-- Custom header -->
 <div class="custom-background-color-blue">
-<header class="header custom-background-color-blue custom-header">
-  <div class="custom-header-container">
-  <div class="custom-logo logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
-    {{/link}}
-  </div>
-    <a href="/hc/en-us" class="custom-help-center-link"><strong>HELP</strong> CENTER</a>
-  </div>
-  <div class="custom-nav-wrapper nav-wrapper">
-    <span class="icon-menu" tabindex="0" role="button" 
-          aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-    </span>
-    <div class="custom-myconfigura-container">
-    	<a href="https://my.configura.com/">
-      	<img class="custom-header-icon custom-header-margin-right" src="{{asset 'back_arrow.svg'}}" />
-      	Back to MyConfigura
-    	</a>
+  <header class="header custom-background-color-blue custom-header">
+    <div class="custom-header-container">
+      <div class="custom-logo logo">
+        {{#link 'help_center'}}
+        <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+        {{/link}}
+      </div>
+      <div title="Go to Home page">
+        <a href="/hc/en-us" class="custom-help-center-link"><strong>HELP</strong> CENTER</a>
+      </div>
+
     </div>
-    <div class="custom-marketplace-btn-container">
-    	<div class="btn with-image" role="button">
-        <a href="https://my.configura.com/index.pl?page=marketplace">
-          <img class="custom-header-icon" src="{{asset 'cart.svg'}}" />
+    <div class="custom-nav-wrapper nav-wrapper">
+      <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false"
+        aria-label="{{t 'toggle_navigation'}}">
+      </span>
+      <div class="custom-myconfigura-container" title="Go to MyConfigura">
+        <a href="https://my.configura.com/">
+          <img class="custom-header-icon custom-header-margin-right" src="{{asset 'back_arrow.svg'}}" />
+          Back to MyConfigura
         </a>
       </div>
+      <div class="custom-marketplace-btn-container" title="Go to Marketplace">
+        <div class="btn with-image" role="button">
+          <a href="https://my.configura.com/index.pl?page=marketplace">
+            <img class="custom-header-icon" src="{{asset 'cart.svg'}}" />
+          </a>
+        </div>
+      </div>
+      <nav class="user-nav custom-display-links" id="user-nav">
+        <a href="/"></a>
+        <!-- To add links to burger menu look at script.js CUSTOM MOBILE MENU ITEMS -->
+      </nav>
+      <div title="User information">
+        {{user_info}}
+      </div>
     </div>
-    <nav class="user-nav custom-display-links" id="user-nav">
-      <a href="/"></a>
-      <!-- To add links to burger menu look at script.js CUSTOM MOBILE MENU ITEMS -->
-    </nav>
-    {{user_info}} 
-  </div>
-</header>
+  </header>
 </div>
- 
