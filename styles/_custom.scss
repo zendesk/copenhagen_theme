@@ -88,6 +88,21 @@ h6 {
   font-size: 15px;
   position: relative;
 }
+.search {
+  width: 20em;
+  height: 4em;
+  border: 2px solid var(--color-blue);
+  border: #006ab3; /* default supported fallback style */
+  border-radius: 0;
+}
+
+.search input[type="search"] {
+  width: 20em;
+  height: 4em;
+  border: 2px solid var(--color-blue);
+  border: #006ab3; /* default supported fallback style */
+  border-radius: 0;
+}
 
 .sidenav-item {
   border-radius: 4px;
@@ -96,6 +111,16 @@ h6 {
   font-weight: 300;
   margin-bottom: 10px;
   padding: 10px 1rem;
+}
+
+@media (min-width: 1160px) {
+  .custom-page-search .search input[type="search"] {
+    width: 20em;
+    height: 4em;
+    border: 2px solid var(--color-blue);
+    border: #006ab3; /* default supported fallback style */
+    border-radius: 0;
+  }
 }
 
 /***** Alerts *****/

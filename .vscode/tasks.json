@@ -4,7 +4,7 @@
     {
       "label": "compile scss",
       "type": "shell",
-      "command": "cd bin && ./compile.rb",
+      "command": "./bin/compile.rb",
       "group": {
         "kind": "build",
         "isDefault": true
