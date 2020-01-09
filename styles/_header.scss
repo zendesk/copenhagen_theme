@@ -91,3 +91,29 @@ $header-height: 71px;
     }
   }
 }
+
+.skip-navigation {
+  align-items: center;
+  background-color: black;
+  color: white;
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  left: -999px;
+  margin: 20px;
+  padding: 20px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  z-index: -999;
+
+  &:focus,
+  &:active {
+    left: auto;
+    overflow: auto;
+    text-align: center;
+    text-decoration: none;
+    top: auto;
+    z-index: 999;
+  }
+}
