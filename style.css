@@ -733,7 +733,7 @@ ul {
   border: 1px solid #ddd;
   border-radius: 30px;
   box-sizing: border-box;
-  color: #999;
+  color: #666;
   height: 40px;
   padding-left: 40px;
   padding-right: 20px;
@@ -4171,7 +4171,7 @@ ul {
 }
 
 .search-results-sidebar .multibrand-filter-list .doc-count {
-  color: #999;
+  color: #666;
 }
 
 .search-results-sidebar .see-all-filters {
