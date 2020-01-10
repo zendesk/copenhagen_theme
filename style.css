@@ -4256,12 +4256,7 @@ body {
   font-family: "hannah_banana";
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: "hannah_banana";
 }
 
@@ -5378,6 +5373,11 @@ main.main-sidebar {
   transform: translate3d(0, -20%, 0);
 }
 
+.ns-article {
+  display: flex;
+  flex-direction: row;
+}
+
 .ns-effect-slidetop p {
   padding: 0 3.2em;
   font-size: 1.2em;
@@ -5472,6 +5472,15 @@ main.main-sidebar {
 @media only screen and (min-device-width: 320px) and (max-device-width: 420px) {
   .notification-body-width {
     font-size: 0.7rem;
+    width: 100%;
+  }
+  .notification-title-width {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .ns-article {
+    display: flex;
+    flex-direction: column;
   }
   .ns-effect-slidetop {
     font-size: 0.7rem;

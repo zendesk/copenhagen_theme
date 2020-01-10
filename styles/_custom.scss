@@ -1126,6 +1126,11 @@ main.main-sidebar {
   transform: translate3d(0, -20%, 0);
 }
 
+.ns-article {
+  display: flex;
+  flex-direction: row;
+}
+
 .ns-effect-slidetop p {
   padding: 0 3.2em;
   font-size: 1.2em;
@@ -1206,11 +1211,19 @@ main.main-sidebar {
   width: 70%;
 }
 
-@media only screen
-and (min-device-width: 320px)
-and (max-device-width: 420px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 420px) {
   .notification-body-width {
     font-size: 0.7rem;
+    width: 100%;
+  }
+  .notification-title-width {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .ns-article {
+    display: flex;
+    flex-direction: column;
   }
 
   .ns-effect-slidetop {
