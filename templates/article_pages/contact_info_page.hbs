@@ -1,0 +1,69 @@
+<!-- CUSTOM SIDEBAR -->
+<main class="main-sidebar" role="main">
+<div id="sidebar" class="sidebar-panel">
+  <ul class="sidebar">
+    <li class="sidebar-item sidebar-home open">
+       <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
+        <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+        Academy and training
+      </a>
+    </li>
+     <li class="sidebar-item sidebar-home open">
+       <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
+         <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+         System recommendations
+      </a>
+    </li>
+     <li class="sidebar-item sidebar-home open">
+       <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
+         <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+         Release notes
+      </a>
+    </li>
+     <li class="sidebar-item sidebar-home open custom-margin-bottom">
+      <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title" target="_blank">
+        <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+        Forums
+      </a>
+    </li>
+    <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
+    	<h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      	<ul v-if='category.id === activeSection'>
+        	<li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
+          	<a :href='section.html_url' class="sidebar-item-link">
+            	{[{section.name}]} 
+            </a>
+          </li>
+      	</ul>
+    	</li>
+  	</ul>
+	</div>
+<!-- END CUSTOM SIDEBAR -->
+
+<div class="container-divider"></div>
+<div class="custom-container container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{search scoped=settings.scoped_kb_search submit=false}}
+  </nav>
+  <div class="category-container custom-category-container">   
+    <article class="category-content">
+      <header class="page-header">
+        <h1>
+          {{article.title}}
+          {{#if article.internal}}
+            <span class="icon-lock" title="{{t 'internal'}}"></span>
+          {{/if}}
+        </h1>        
+      </header>
+
+      <section class="article-info">
+        <div class="article-content">
+          <div class="article-body">{{article.body}}</div>          
+        </div>
+      </section>               
+    </article>
+  </div>
+</div>
+<script>sidebar.$mount("main");</script>
+</main>
