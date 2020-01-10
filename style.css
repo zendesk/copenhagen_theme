@@ -4326,6 +4326,36 @@ h2 {
   /* default supported fallback style */
 }
 
+.custom-contact-card-wrapper {
+  width: 19em;
+  height: 16em;
+  overflow: visible;
+  margin-bottom: 2em;
+}
+
+.custom-contact-header-desc {
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 0 30px 0;
+  word-break: break-word;
+}
+
+@media (min-width: 1024px) {
+  .custom-contact-header-desc {
+    flex-basis: 100%;
+  }
+}
+
+.custom-contact-header-additional-desc {
+  margin-bottom: 3em;
+}
+
+.custom-card-logo-container .material-icons {
+  color: var(--color-almost-black);
+  color: #424242;
+  /* default supported fallback style */
+}
+
 .custom-button {
   color: var(--color-white);
   color: #ffffff;
@@ -4512,6 +4542,10 @@ h2 {
 @media (min-width: 768px) {
   .custom-card {
     margin-right: 1em;
+  }
+  .custom-contact-card-wrapper.custom-contact-card-left {
+    margin-right: auto;
+    margin-left: 2.5em;
   }
 }
 
