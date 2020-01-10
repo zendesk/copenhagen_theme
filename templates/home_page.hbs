@@ -1,163 +1,166 @@
 <div class="hero-container">
-	<!-- Custom hero banner -->
+  <!-- Custom hero banner -->
   <div class="custom-banner-container">
-  	<div class="container">
-  		<section class="section custom-banner">
-				<div class="custom-banner-info custom-page-search">
-      		<h1>Hey, is it me you're looking for?</h1>
-     			{{search submit=false instant=settings.instant_search class='search search-full'}}
-    		</div>
-    		<div class="custom-banner-picture">
-      		<img src="{{asset 'lionel.png'}}" style="width:50%"/>
-    		</div>
-  		</section>
-  	</div>
-	</div>
+    <div class="container">
+      <section class="section custom-banner">
+        <div class="custom-banner-info custom-page-search">
+          <h1>Hey, is it me you're looking for?</h1>
+          {{search submit=false instant=settings.instant_search class='search search-full'}}
+        </div>
+
+      </section>
+    </div>
+  </div>
   <!-- End -->
-	<div class="container">
+  <div class="container">
     <section class="section knowledge-base">
       <section class="categories blocks">
         <ul class="custom-blocks-list blocks-list">
           {{#each categories}}
-            {{#if ../has_multiple_categories}}
-          		{{#isnt name 'Contact page'}}
-                <li class="custom-blocks-item">
-                  <a href='{{url}}' class="blocks-item-link">
+          {{#if ../has_multiple_categories}}
+          {{#isnt name 'Contact page'}}
+          <li class="custom-blocks-item">
+            <a href='{{url}}' class="blocks-item-link">
 
-                    <!-- Custom code for img on blocks item -->
-                    <div class="custom-logo-container">
-                      {{#is name 'CET Designer'}}
-                        <img src="{{asset 'cet_designer.svg'}}" class="custom-img-size-100"/>
-                      {{/is}}
-                      {{#is name 'CET Developer'}}
-                        <img src="{{asset 'cet_developer.svg'}}" class="custom-img-size-100"/>
-                      {{/is}}
-                      {{#is name 'MyConfigura'}}
-                        <img src="{{asset 'myconfigura.svg'}}" class="custom-img-size-80"/>
-                      {{/is}}
-                      {{#is name 'Catalogues'}}
-                        <img src="{{asset 'catalogue.svg'}}" class="custom-img-size-50" /> 
-                      {{/is}}
-                    </div>
-                    <!-- End -->
+              <!-- Custom code for img on blocks item -->
+              <div class="custom-logo-container">
+                {{#is name 'CET Designer'}}
+                <img src="{{asset 'cet_designer.svg'}}" class="custom-img-size-100" />
+                {{/is}}
+                {{#is name 'CET Developer'}}
+                <img src="{{asset 'cet_developer.svg'}}" class="custom-img-size-100" />
+                {{/is}}
+                {{#is name 'MyConfigura'}}
+                <img src="{{asset 'myconfigura.svg'}}" class="custom-img-size-80" />
+                {{/is}}
+                {{#is name 'Catalogues'}}
+                <img src="{{asset 'catalogue.svg'}}" class="custom-img-size-50" />
+                {{/is}}
+              </div>
+              <!-- End -->
 
-                    <div class="custom-blocks-item-title-container">
-                      <div class="custom-blocks-text-wrapper">
-                      	<h3 class="blocks-item-title">{{name}}</h3>
-                      	<p>{{description}}</p>
-                      </div>
-                      <a href='{{url}}'>Browse...</a>
-                    </div>
-                  </a>
-            		</li>
-            	{{/isnt}}
-          		{{else}}
-            		{{#each sections}}
-              		<li class="custom-blocks-item blocks-item">
-                		<a href='{{url}}' class="blocks-item-link">
-                  		<h4 class="blocks-item-title">
-                    		{{name}}
-                  		</h4>
-                  		<p class="blocks-item-description">{{excerpt description}}</p>
-                		</a>
-              		</li>
-            		{{/each}}
-          		{{/if}}
-        		{{/each}}
-      		</ul>
-      	{{pagination}}
-    	</section>
-    	<section class="custom-link-section">
+              <div class="custom-blocks-item-title-container">
+                <div class="custom-blocks-text-wrapper">
+                  <h3 class="blocks-item-title">{{name}}</h3>
+                  <p>{{description}}</p>
+                </div>
+                <a href='{{url}}'>Browse...</a>
+              </div>
+            </a>
+          </li>
+          {{/isnt}}
+          {{else}}
+          {{#each sections}}
+          <li class="custom-blocks-item blocks-item">
+            <a href='{{url}}' class="blocks-item-link">
+              <h4 class="blocks-item-title">
+                {{name}}
+              </h4>
+              <p class="blocks-item-description">{{excerpt description}}</p>
+            </a>
+          </li>
+          {{/each}}
+          {{/if}}
+          {{/each}}
+        </ul>
+        {{pagination}}
+      </section>
+      <section class="custom-link-section">
         <ul class="custom-link-container">
           <li class="custom-link-padding-right">
             <a href="https://www.configura.com/academy/cet-designer" class="custom-link-item-title">
               <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">school</i>
-               Academy and training
+              Academy and training
             </a>
           </li>
           <li class="custom-link-padding-right">
-            <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-link-item-title">
+            <a href="https://www.configura.com/products/system-recommendations/cet-designer"
+              class="custom-link-item-title">
               <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">laptop</i>
-               System recommendations
+              System recommendations
             </a>
           </li>
           <li class="custom-link-padding-right">
             <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-link-item-title">
               <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">book</i>
-               Release notes
+              Release notes
             </a>
           </li>
           <li class="custom-link-padding-right">
             <a href=" https://www.configura.com/my/forum" class="custom-link-item-title">
               <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">forum</i>
-               Forums
+              Forums
             </a>
           </li>
         </ul>
       </section>
-      
+
       <!-- CUSTOM CARDS -->
-    	<h1 class="custom-topic-header">Browse popular topics</h1>
+      <h1 class="custom-topic-header">Browse popular topics</h1>
       <div class="custom-topic-container">
         {{#each categories}}
-          {{#each sections}}
-            {{#is id 360003354354}}
-              <section class="custom-card">
-                <a href="{{url}}" class="custom-card-link">
-                  <div class="custom-card-logo-container">
-                    <i class="material-icons black-icon">camera</i>
-                  </div>
-                  <h3 class="custom-card-title">      
-                    {{name}}
-                  </h3>
-                </a>
-              </section>
-            {{/is}}
-            {{#is id 360005707714}}
-              <section class="custom-card">
-                <a href="{{url}}" class="custom-card-link">
-                  <div class="custom-card-logo-container">
-                    <i class="material-icons black-icon">camera</i>
-                  </div>
-                  <h3 class="custom-card-title">      
-                    {{name}}
-                  </h3>
-                </a>
-              </section>
-            {{/is}}
-            {{#is id 360005707714}}
-              <section class="custom-card">
-                <a href="{{url}}" class="custom-card-link">
-                  <div class="custom-card-logo-container">
-                    <i class="material-icons black-icon">camera</i>
-                  </div>
-                  <h3 class="custom-card-title">      
-                    {{name}}
-                  </h3>
-                </a>
-              </section>
-            {{/is}}
-          {{/each}}
+        {{#each sections}}
+        {{#is id 360003354354}}
+        <section class="custom-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container">
+              <i class="material-icons black-icon">camera</i>
+            </div>
+            <h3 class="custom-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/is}}
+        {{#is id 360005707714}}
+        <section class="custom-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container">
+              <i class="material-icons black-icon">camera</i>
+            </div>
+            <h3 class="custom-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/is}}
+        {{#is id 360005707714}}
+        <section class="custom-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container">
+              <i class="material-icons black-icon">camera</i>
+            </div>
+            <h3 class="custom-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/is}}
         {{/each}}
-    	</div>
+        {{/each}}
+      </div>
       <!-- END CUSTOM CARDS -->
-  	</section>
-	</div>
+    </section>
+  </div>
 </div>
 <!-- Custom banner -->
 <div class="custom-banner-container">
   <div class="container">
-  <section class="section custom-banner">
-		<div class="custom-banner-info">
-      <h1>We don't give to get, we get to give.</h1>
-      <p class="custom-child-with">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500</p>
-			<div class="btn custom-contact-page-button" role="button">
-    		<a href="" class="custom-banner-button"><p class="custom-button">Ask the Community</p><img class="custom-banner-button-icon" src="{{asset 'open_in_new-24px.svg'}}"></a>
-			</div>
-    </div>
-    <div class="custom-banner-picture">
-      <img src="{{asset 'grumpy_cat.jpg'}}"/>
-    </div>
-  </section>
+    <section class="section custom-banner">
+      <div class="custom-banner-info">
+        <h1>We don't give to get, we get to give.</h1>
+        <p class="custom-child-with">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+          Ipsum has been the industry's standard dummy text ever since the 1500</p>
+        <div class="btn custom-contact-page-button" role="button">
+          <a href="" class="custom-banner-button">
+            <p class="custom-button">Ask the Community</p><img class="custom-banner-button-icon"
+              src="{{asset 'open_in_new-24px.svg'}}">
+          </a>
+        </div>
+      </div>
+      <div class="custom-banner-picture">
+        <img src="{{asset 'grumpy_cat.jpg'}}" />
+      </div>
+    </section>
   </div>
 </div>
