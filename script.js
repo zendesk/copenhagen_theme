@@ -554,9 +554,7 @@ $.get(
       item.title +
       "</a>" +
       item.body +
-      '</p></div><span class="ns-close" id=' +
-      number +
-      "></span></div>";
+      "</p></div></div>";
 
     $(".alertbox").append(style1);
     number++;
