@@ -1,15 +1,118 @@
+<!-- CUSTOM SIDEBAR -->
+<main class="main-sidebar" role="main">
+  <div id="sidebar" class="sidebar-panel">
+    <ul class="sidebar">
+      <li class="sidebar-item sidebar-home open">
+        <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
+          <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+          Academy and training
+        </a>
+      </li>
+      <li class="sidebar-item sidebar-home open">
+        <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
+          <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+          System recommendations
+        </a>
+      </li>
+      <li class="sidebar-item sidebar-home open">
+        <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
+          <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+          Release notes
+        </a>
+      </li>
+      <li class="sidebar-item sidebar-home open custom-margin-bottom">
+        <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title" target="_blank">
+          <img class="custom-sidebar-icon custom-icon-margin-right" src="{{asset 'bug_report-24px.svg'}}" />
+          Forums
+        </a>
+      </li>
+      <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
+    	  <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      	  <ul v-if='category.id === activeSection'>
+        	  <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
+              <a :href='section.html_url' class="sidebar-item-link">
+                {[{section.name}]} 
+              </a>
+            </li>
+      	  </ul>
+    	</li>
+  	</ul>
+	</div>
+
 <div class="container-divider"></div>
-<div class="container">
-  <div class="category-container">
+<div class="custom-container container custom-page-search">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    {{search submit=false}}
+  </nav>
+  <div class="category-container custom-category-container">
     <div class="category-content">
       <header class="page-header">
-        <h1>Contact Page</h1>
+        <h1>{{category.name}}</h1>
+        {{#if category.description}}
+          <p class="custom-contact-header-desc">{{category.description}}</p>
+        {{/if}}        
+        <b class="custom-contact-header-additional-desc">You can always send an email to <a href="mailto:cetsupport@configura.com">cetsupport@configura.com</a></b>
       </header>
-      {{#each sections}}
-    		{{#is name 'Chat'}}
-      		<a href='{{url}}' class="blocks-item-link"><p>Go to chat</p></a>
-    		{{/is}}
-    	{{/each}}
+      <!-- CUSTOM CARDS -->
+      <div class="custom-card-container">
+        {{#each sections}}        
+          {{#is id 360006737154}} {{!-- Manufacturer Extension --}}
+            <div class="custom-contact-card-wrapper">
+          {{else}}
+            <div class="custom-contact-card-wrapper">
+          {{/is}}
+        	<section class="custom-card">
+            {{#is id 360006761373}} {{!-- Forum --}}
+              <a href="https://www.configura.com/my/forum" class="custom-card-link">
+            {{else}}
+              {{#is id 360006761393}} {{!-- FAQ --}}
+                <a href="https://configura.zendesk.com/hc/en-us/sections/360005929073-FAQ" class="custom-card-link">
+              {{else}}
+                {{#is id 360006730714}} {{!-- Call --}}
+                  <a href="https://configura.zendesk.com/hc/en-us/articles/360041358813-Call" class="custom-card-link">
+                {{else}}
+                  {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                    <a href="https://configura.zendesk.com/hc/en-us/articles/360040873234-Manufacturer-Extensions" class="custom-card-link">
+                  {{else}}
+                    {{#is id 360006753914}} {{!-- Chat --}}
+                      <a href="{{url}}" class="custom-card-link" onclick="window.open(this.href+window.location.search.replace('ref1','account').replace('ref2', 'email'),'CETDesignerSupport','resizable=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=no,width=404,height=500,status'); return false" >
+                    {{else}}
+                      <a href="{{url}}" class="custom-card-link">
+                    {{/is}}  
+                  {{/is}}
+                {{/is}}
+              {{/is}}
+            {{/is}}
+              	<div class="custom-card-logo-container">
+                  <i class="material-icons">camera</i>
+                </div>
+                {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                  <h3 class="custom-card-title custom-text-align-center">
+                {{else}}
+                  <h3 class="custom-card-title">
+                {{/is}}          			
+                	{{name}}
+              	</h3>
+              </a>
+              <!-- END CUSTOM CARDS -->
+            	{{#if internal}}
+            		<span class="icon-lock" title="{{t 'internal'}}"></span>
+            	{{/if}}              
+        	</section>
+          {{description}}
+          </div>
+					{{else}}
+						<i class="category-empty">
+							<a href="{{category.url}}">{{t 'empty'}}</a>
+						</i>
+					{{/each}}
+        <div class="test">
+      </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>sidebar.$mount("main");</script>
+</main>
