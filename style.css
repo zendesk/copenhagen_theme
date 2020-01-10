@@ -4184,6 +4184,11 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 0;
 }
 
+.search-full input[type="search"] {
+  border: 1px solid #fff;
+  width: 28em;
+}
+
 .sidenav-item {
   border-radius: 4px;
   color: $text_color;
@@ -5082,7 +5087,7 @@ main.main-sidebar {
   /* Support for Firefox. */
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
   vertical-align: top;
 }
 

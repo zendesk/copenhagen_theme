@@ -61,6 +61,11 @@ h6 {
   border-radius: 0;
 }
 
+.search-full input[type="search"] {
+  border: 1px solid #fff;
+  width: 28em;
+}
+
 .sidenav-item {
   border-radius: 4px;
   color: $text_color;
@@ -207,10 +212,10 @@ h2 {
 }
 
 .custom-contact-card-wrapper {
-  width: 19em;    
+  width: 19em;
   height: 16em;
   overflow: visible;
-  margin-bottom: 2em;  
+  margin-bottom: 2em;
 }
 
 .custom-contact-header-desc {
@@ -230,7 +235,7 @@ h2 {
   margin-bottom: 3em;
 }
 
-.custom-card-logo-container .material-icons{
+.custom-card-logo-container .material-icons {
   color: var(--color-almost-black);
   color: #424242; /* default supported fallback style */
 }
@@ -421,7 +426,7 @@ h2 {
     margin-right: 1em;
   }
   .custom-contact-card-wrapper.custom-contact-card-left {
-    margin-right: auto;    
+    margin-right: auto;
     margin-left: 2.5em;
   }
 }
@@ -558,7 +563,7 @@ h2 {
   .custom-help-center-link {
     display: inline-block;
     color: var(--color-white);
-    color: #ffffff;  /* default supported fallback style */
+    color: #ffffff; /* default supported fallback style */
     font-size: 26px;
     border-left: 1px solid var(--color-white);
     border-left: 1px solid #ffffff; /* default supported fallback style */
@@ -796,9 +801,9 @@ h2 {
 
 /**** CUSTOM SIDEBAR ****/
 
-.custom-sidebar-item-title {  
+.custom-sidebar-item-title {
   display: inline-block;
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .custom-margin-bottom {
@@ -966,7 +971,7 @@ main.main-sidebar {
   -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: 'liga';
+  font-feature-settings: "liga";
 
   vertical-align: top;
 }
