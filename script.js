@@ -551,8 +551,7 @@ $.get(
       "</a>" +
       '<div class="notification-body-width">' +
       item.body +
-      "</div>" +
-      "</p></div></div></div>";
+      "</div></p></div></div></div>";
 
     $(".alertbox").append(style1);
   });
