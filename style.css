@@ -4187,6 +4187,8 @@ h1, h2, h3, h4, h5, h6 {
 .search-full input[type="search"] {
   border: 1px solid #fff;
   width: 28em;
+  height: 3em;
+  border-radius: 0;
 }
 
 .sidenav-item {
