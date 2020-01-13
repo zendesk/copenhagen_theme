@@ -4527,7 +4527,7 @@ h2 {
   background-color: var(--color-grey);
   background-color: #f7f6f6;
   /* default supported fallback style */
-  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
   text-decoration: none;
 }
 
@@ -4781,7 +4781,7 @@ h2 {
   background-color: var(--color-grey);
   background-color: #f7f6f6;
   /* default supported fallback style */
-  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 .custom-blocks-item-title-container {
