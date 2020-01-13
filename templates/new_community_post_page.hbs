@@ -1,9 +1,9 @@
 <div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
+<div class="custom-container container">
+    <nav class="sub-nav">
+      {{breadcrumbs}}
+      {{search scoped=settings.scoped_kb_search submit=false}}
+    </nav>
 
   <h1 class="form-header">
     {{t 'what_is_your_post_about'}}

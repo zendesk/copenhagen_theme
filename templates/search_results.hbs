@@ -1,9 +1,9 @@
 <div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
+<div class="custom-container container">
+    <nav class="sub-nav">
+      {{breadcrumbs}}
+      {{search scoped=settings.scoped_kb_search submit=false}}
+    </nav>
 
   <header class="page-header">
     <h1>{{t 'search_results'}}</h1>

@@ -42,11 +42,11 @@
 <!-- END CUSTOM SIDEBAR -->
 
 <div class="container-divider"></div>
-<div class="custom-container container custom-page-search">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    {{search submit=false}}
-  </nav>
+<div class="custom-container container">
+    <nav class="sub-nav">
+      {{breadcrumbs}}
+      {{search scoped=settings.scoped_kb_search submit=false}}
+    </nav>
 
   <div class="section-container custom-section-container">
     <section class="section-content">
