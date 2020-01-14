@@ -3,8 +3,7 @@ $sidebar-width: 300px;
 
 .article {
   padding: 0;
-  max-width: 62%;
-  margin: 0 4rem 0 0;
+  margin: 0 1rem;
 }
 
 .article-sidebar {
@@ -57,7 +56,6 @@ h6 {
 }
 
 .search input[type="search"] {
-  width: 26.8em;
   height: 3em;
   border: 1px solid #006ab3;
   border-radius: 0;
@@ -65,7 +63,6 @@ h6 {
 
 .search-full input[type="search"] {
   border: 1px solid #fff;
-  width: 29em !important;
 }
 
 .sidenav-item {
@@ -228,8 +225,23 @@ h2 {
 }
 
 @media (min-width: 1024px) {
+  .article {
+    padding: 0;
+    max-width: 62%;
+    margin: 0 4rem 0 0;
+  }
   .custom-contact-header-desc {
     flex-basis: 100%;
+  }
+  .search input[type="search"] {
+    width: 26.8em;
+    height: 3em;
+    border: 1px solid #006ab3;
+    border-radius: 0;
+  }
+  .search-full input[type="search"] {
+    border: 1px solid #fff;
+    width: 29em !important;
   }
 }
 
