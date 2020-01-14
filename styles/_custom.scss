@@ -692,6 +692,10 @@ h2 {
 
 /**** CUSTOM FOOTER ****/
 
+.custom-footer-container {
+  padding-left: $sidebar-width;
+}
+
 .custom-footer {
   background-color: black;
   color: var(--color-white);
@@ -868,6 +872,9 @@ body {
 @media (max-width: 768px) {
   .sidebar-panel {
     display: none;
+  }
+  .custom-footer-container {
+    padding-left: 0;
   }
 }
 
