@@ -19,7 +19,6 @@ var sidebar = new Vue({
 
 	mounted: function() {
 		// Add class for styling purpose
-		// $("main").addClass("main-sidebar");
 	},
 
 	methods: {
