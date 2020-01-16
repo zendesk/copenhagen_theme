@@ -17,9 +17,7 @@ var sidebar = new Vue({
 		this.fetchData();
 	},
 
-	mounted: function() {
-		// Add class for styling purpose
-	},
+	mounted: function() {},
 
 	methods: {
 		/**
@@ -81,6 +79,21 @@ var sidebar = new Vue({
 
 						this.mapSubsectionsToSections(this.subsections, this.sections);
 						this.mapSectionsToCategories(this.sections, this.categories);
+
+						var pageId = this._getPageId(window.location.href);
+						var currentSection = _.find(this.sections, function(section) {
+							return section.id === pageId;
+						});
+						var id;
+						if (!currentSection) {
+							var currentCategory = _.find(this.categories, function(category) {
+								return category.id === pageId;
+							});
+							id = currentCategory.id;
+						} else {
+							id = currentSection.category_id;
+						}
+						this.setActiveSection(id);
 
 						if (data.next_page) {
 							this.fetchData(data.next_page + "&per_page=100");
