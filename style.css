@@ -4190,6 +4190,10 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #fff;
 }
 
+.sub-nav {
+  margin: 1rem 0;
+}
+
 .sidenav-item {
   border-radius: 4px;
   color: $text_color;
@@ -4275,7 +4279,7 @@ h2 {
 
 /* Custom container on category and section page*/
 .custom-container {
-  margin: 0 auto;
+  margin: 0 6%;
 }
 
 .custom-category-container,
