@@ -1,4 +1,6 @@
 /***** Overrides *****/
+$sidebar-width: 300px;
+
 .article {
   padding: 0;
   max-width: 62%;
@@ -156,7 +158,7 @@ h2 {
 
 /* Custom container on category and section page*/
 .custom-container {
-  margin: 1em 5%;
+  margin: 0 auto;
 }
 
 .custom-category-container,
@@ -539,6 +541,7 @@ h2 {
 .custom-background-color-blue {
   background-color: var(--color-blue);
   background-color: #006ab3; /* default supported fallback style */
+  z-index: 1;
 }
 
 .custom-header-icon {
@@ -689,6 +692,10 @@ h2 {
 
 /**** CUSTOM FOOTER ****/
 
+.custom-footer-container {
+  padding-left: $sidebar-width;
+}
+
 .custom-footer {
   background-color: black;
   color: var(--color-white);
@@ -835,19 +842,39 @@ body {
 }
 
 .sidebar-panel {
-  padding: 40px 30px 30px;
-  max-width: 19em;
-  background: var(--color-grey);
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
   background: #f7f6f6; /* default supported fallback style */
+  background: var(--color-grey);
+  height: 100vh;
+  left: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: none;
+  padding: 140px 30px 30px;
+  position: fixed;
+  top: 0;
+  width: $sidebar-width;
+}
+
+@media (min-width: 768px) {
+  .main-sidebar {
+    padding-left: $sidebar-width;
+  }
+}
+
+@media (max-width: 1160px + $sidebar-width + $sidebar-width) and (min-width: 768px) {
+  .main-sidebar,
+  .main-sidebar+.custom-footer-container {
+    padding-left: $sidebar-width;
+  }
 }
 
 @media (max-width: 768px) {
   .sidebar-panel {
     display: none;
+  }
+  .custom-footer-container {
+    padding-left: 0;
   }
 }
 
@@ -948,32 +975,32 @@ main.main-sidebar {
     url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// .material-icons {
+//   font-family: "Material Icons";
+//   font-weight: normal;
+//   font-style: normal;
+//   font-size: 24px; /* Preferred icon size */
+//   display: inline-block;
+//   line-height: 1;
+//   text-transform: none;
+//   letter-spacing: normal;
+//   word-wrap: normal;
+//   white-space: nowrap;
+//   direction: ltr;
 
   /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+//   font-feature-settings: "liga";
 
-  vertical-align: top;
-}
+//   vertical-align: top;
+// }
 
 .black-icon {
   color: var(--color-almost-black);
