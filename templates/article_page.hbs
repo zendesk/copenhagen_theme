@@ -1,4 +1,48 @@
 <main class="main-sidebar" role="main">
+  <div id="sidebar" class="sidebar-panel">
+    <ul class="sidebar">
+      <li class="sidebar-item sidebar-home open">
+        <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
+          <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">school</i>
+          Academy and training
+        </a>
+      </li>
+      <li class="sidebar-item sidebar-home open">
+        <a href="https://www.configura.com/products/system-recommendations/cet-designer"
+          class="custom-sidebar-item-title" target="_blank">
+          <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">laptop</i>
+          System recommendations
+        </a>
+      </li>
+      <li class="sidebar-item sidebar-home open">
+        <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title"
+          target="_blank">
+          <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">book</i>
+          Release notes
+        </a>
+      </li>
+      <li class="sidebar-item sidebar-home open custom-margin-bottom">
+        <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title" target="_blank">
+          <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">forum</i>
+          Forums
+        </a>
+      </li>
+      <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
+        <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
+        <ul v-if='category.id === activeSection'>
+          <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
+            <a :href='section.html_url' class="sidebar-item-link">
+              {[{section.name}]}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- END CUSTOM SIDEBAR -->
+
+  <div class="container-divider"></div>
   <div class="custom-container container">
     <nav class="sub-nav">
       {{breadcrumbs}}
@@ -49,22 +93,21 @@
         </header>
 
         <section class="article-info">
+          <div class="article-attachments">
+            <ul class="attachments">
+              {{#each attachments}}
+              <li class="attachment-item">
+                <a href="{{url}}" target="_blank">{{name}}</a>
+                <div class="attachment-meta meta-group">
+                  <span class="attachment-meta-item meta-data">{{size}}</span>
+                  <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
           <div class="article-content">
             <div class="article-body">{{article.body}}</div>
-
-            <div class="article-attachments">
-              <ul class="attachments">
-                {{#each attachments}}
-                <li class="attachment-item">
-                  <a href="{{url}}" target="_blank">{{name}}</a>
-                  <div class="attachment-meta meta-group">
-                    <span class="attachment-meta-item meta-data">{{size}}</span>
-                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">Download</a>
-                  </div>
-                </li>
-                {{/each}}
-              </ul>
-            </div>
           </div>
         </section>
 
@@ -95,9 +138,6 @@
           </div>
           {{/with}}
 
-          <div class="article-more-questions">
-            {{request_callout}}
-          </div>
           <div class="article-return-to-top">
             <a href="#article-container">{{t 'return_to_top'}}<span class="icon-arrow-up"></span></a>
           </div>
@@ -242,13 +282,15 @@
       </a>
     </li>
     <li class="sidebar-item sidebar-home open">
-      <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
+      <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title"
+        target="_blank">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">laptop</i>
         System recommendations
       </a>
     </li>
     <li class="sidebar-item sidebar-home open">
-      <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
+      <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title"
+        target="_blank">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right black-icon">book</i>
         Release notes
       </a>
@@ -260,11 +302,11 @@
       </a>
     </li>
     <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
-      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
       <ul v-if='category.id === activeSection'>
         <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
           <a :href='section.html_url' class="sidebar-item-link">
-            {[{section.name}]} 
+            {[{section.name}]}
           </a>
         </li>
       </ul>
