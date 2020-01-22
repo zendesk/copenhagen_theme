@@ -1593,46 +1593,27 @@ ul {
 /***** Hero component *****/
 .hero {
   width: 100%;
+  padding: 30px 15px;
   background-color: #7db00e;
   text-align: center;
-  height: 300px;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
-@media screen and (min-width: 320px) {
+@media screen and (min-width: 376px) {
   .hero {
-    height: calc(300px + 250 * ( 100vw - 320px ) / 1046);
+    height: 400px;
+    padding: 0;
   }
 }
 
-@media screen and (min-width: 1366px) {
+@media screen and (min-width: 376px) and (min-width: 320px) {
+  .hero {
+    height: calc(400px + 150 * ( 100vw - 320px ) / 1046);
+  }
+}
+
+@media screen and (min-width: 376px) and (min-width: 1366px) {
   .hero {
     height: 550px;
-  }
-}
-
-@media screen and (min-width: 320px) {
-  .hero {
-    padding-left: calc(15px + 15 * ( 100vw - 320px ) / 1046);
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .hero {
-    padding-left: 30px;
-  }
-}
-
-@media screen and (min-width: 320px) {
-  .hero {
-    padding-right: calc(15px + 15 * ( 100vw - 320px ) / 1046);
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .hero {
-    padding-right: 30px;
   }
 }
 
@@ -1645,11 +1626,16 @@ ul {
 }
 
 .hero-inner {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   max-width: 750px;
   margin: 0 auto;
+}
+
+@media screen and (min-width: 375px) {
+  .hero-inner {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
 .hero__title {
