@@ -610,7 +610,7 @@ ul {
 .article-body table {
   display: inline-block;
   max-width: 100%;
-  overflow-x: auto;
+  overflow-x: scroll;
   border-spacing: 0;
   border-collapse: collapse;
   box-shadow: 2px 2px 4px rgba(204, 204, 204, 0.15);
@@ -3044,6 +3044,12 @@ ul {
   }
 }
 
+@media screen and (min-width: 768px) and (max-width: 787px) {
+  .jobber-mid-cta__action {
+    padding-left: 0;
+  }
+}
+
 .jobber-mid-cta__pre-title {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 900;
@@ -4404,15 +4410,15 @@ in comments and posts */
 }
 
 .pagination a, .pagination span {
-  padding: 10px 12px;
-  color: #012939;
-  font-size: 20px;
+  padding: 5px 12px;
+  font-size: 18px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .pagination a, .pagination span {
-    padding: 5px 12px;
-    font-size: 18px;
+    padding: 10px 12px;
+    color: #012939;
+    font-size: 20px;
   }
 }
 
