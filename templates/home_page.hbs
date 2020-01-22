@@ -3,10 +3,10 @@
     <h1 class="hero__title">How can we help?</h1>
     {{search submit=false placeholder='Search the Help Center' instant=settings.instant_search class='search search-full'}}
     {{#if promoted_articles}}
-      <ul class="hero__popular-topics" role="list">
-        <li class="hero__popular-topics-item" role="listitem">Popular Topics:</li>
+      <ul class="hero__popular-topics">
+        <li class="hero__popular-topics-item">Popular Topics:</li>
         {{#each promoted_articles}}
-          <li class="hero__popular-topics-item" role="listitem">
+          <li class="hero__popular-topics-item">
             <a class="hero__popular-topics-link" href="{{url}}">
               {{title}}
               {{#if internal}}
