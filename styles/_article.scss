@@ -205,14 +205,9 @@
 );
 
   a {
-    display: block;
-    padding: 20px 0;
+    display: inline-block;
+    margin: 20px 0;
     color: $text_color;
-
-    &:hover,
-    &:focus {
-      text-decoration: none;
-    }
   }
 
   .icon-arrow-up::before {

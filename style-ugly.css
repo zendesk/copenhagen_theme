@@ -2453,13 +2453,9 @@ ul {
 }
 
 .article-return-to-top a {
-  display: block;
-  padding: 20px 0;
+  display: inline-block;
+  margin: 20px 0;
   color: #012939;
-}
-
-.article-return-to-top a:hover, .article-return-to-top a:focus {
-  text-decoration: none;
 }
 
 .article-return-to-top .icon-arrow-up::before {
