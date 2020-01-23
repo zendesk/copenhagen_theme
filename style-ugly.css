@@ -1593,44 +1593,44 @@ ul {
 /***** Hero component *****/
 .hero {
   width: 100%;
-  padding: 30px 15px;
+  padding: 1.875rem 0.9375rem;
   background-color: #7db00e;
   text-align: center;
 }
 
-@media screen and (min-width: 376px) {
+@media screen and (min-width: 23.5rem) {
   .hero {
-    height: 400px;
+    height: 25rem;
     padding: 0;
   }
 }
 
-@media screen and (min-width: 376px) and (min-width: 20rem) {
+@media screen and (min-width: 23.5rem) and (min-width: 20rem) {
   .hero {
-    height: calc(400px + 150 * ( 100vw - 20rem ) / 65.375);
+    height: calc(25rem + 9.375 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
-@media screen and (min-width: 376px) and (min-width: 85.375rem) {
+@media screen and (min-width: 23.5rem) and (min-width: 85.375rem) {
   .hero {
-    height: 550px;
+    height: 34.375rem;
   }
 }
 
 @media print {
   .hero {
-    height: 200px;
+    height: 12.5rem;
     color: #000;
     text-align: left;
   }
 }
 
 .hero-inner {
-  max-width: 750px;
+  max-width: 46.875rem;
   margin: 0 auto;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 23.4375rem) {
   .hero-inner {
     position: relative;
     top: 50%;
@@ -1695,7 +1695,7 @@ ul {
 }
 
 .hero__popular-topics-link:hover, .hero__popular-topics-link:active, .hero__popular-topics-link:focus {
-  box-shadow: 0 -12px 0 0 rgba(255, 255, 255, 0.25) inset;
+  box-shadow: 0 -0.75rem 0 0 rgba(255, 255, 255, 0.25) inset;
   text-decoration: none;
 }
 
