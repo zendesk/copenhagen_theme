@@ -62,8 +62,8 @@
   @include fluid-value( height,
   $min-width,
   $max-width,
-  50px,
-  75px
+  3.125rem,
+  4.6875rem
 );
   transition:
     border $transition-speed ease-out,
