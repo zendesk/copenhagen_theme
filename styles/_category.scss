@@ -27,7 +27,7 @@
   @include fluid-value( margin-top,
   $min-width,
   $max-width,
-  10px,
+  .625rem,
   $spacing
 );
   font-weight: $font__weight--bold;
