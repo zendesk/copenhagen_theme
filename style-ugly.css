@@ -1465,9 +1465,9 @@ ul {
 .search input[type='search'] {
   box-sizing: border-box;
   width: 100%;
-  height: 40px;
+  height: 2.5rem;
   padding-right: 20px;
-  padding-left: 40px;
+  padding-left: 2.5rem;
   font-size: 1rem;
   transition: border 300ms ease-out, color 300ms ease-out;
   border: 3px solid #ddd;
@@ -1489,7 +1489,7 @@ ul {
 }
 
 [dir='rtl'] .search input[type='search'] {
-  padding-right: 40px;
+  padding-right: 2.5rem;
   padding-left: 20px;
 }
 
@@ -1534,7 +1534,7 @@ ul {
 }
 
 .search-full input[type='search'] {
-  height: 50px;
+  height: 3.125rem;
   transition: border 300ms ease-out, color 300ms ease-out;
   border: 5px solid #e9e9e9;
   border-radius: 0;
@@ -1548,13 +1548,13 @@ ul {
 
 @media screen and (min-width: 20rem) {
   .search-full input[type='search'] {
-    height: calc(50px + 25 * ( 100vw - 20rem ) / 65.375);
+    height: calc(3.125rem + 1.5625 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
 @media screen and (min-width: 85.375rem) {
   .search-full input[type='search'] {
-    height: 75px;
+    height: 4.6875rem;
   }
 }
 
