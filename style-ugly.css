@@ -2271,8 +2271,8 @@ ul {
 .article-header .icon-lock::before {
   content: '\1F512';
   position: relative;
-  left: -5px;
-  font-size: 20px;
+  left: -.3125rem;
+  font-size: 1.25rem;
   vertical-align: baseline;
 }
 
@@ -2319,9 +2319,9 @@ ul {
 @media (min-width: 1024px) {
   .article-content {
     flex: 1 0 69%;
-    min-width: 640px;
+    min-width: 40rem;
     max-width: 69%;
-    padding: 0 30px 0 0;
+    padding: 0 1.875rem 0 0;
   }
 }
 
@@ -2333,7 +2333,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 }
 
 @media print {
@@ -2349,7 +2349,7 @@ ul {
 }
 
 .article-votes {
-  padding: 30px 0 0;
+  padding: 1.875rem 0 0;
 }
 
 .article-votes-question {
@@ -2364,9 +2364,9 @@ ul {
 
 .article-vote {
   width: auto;
-  min-width: 50px;
-  margin: 10px 5px;
-  padding: 5px 15px;
+  min-width: 3.125rem;
+  margin: .625rem .3125rem;
+  padding: .3125rem 15px;
   border: 1px solid #012939;
   background: transparent;
   color: #012939;
@@ -2375,13 +2375,13 @@ ul {
 }
 
 .article-vote::before {
-  margin-right: 5px;
+  margin-right: .3125rem;
   font-size: .5em;
 }
 
 [dir='rtl'] .article-vote::before {
   margin-right: 0;
-  margin-left: 10px;
+  margin-left: .625rem;
 }
 
 .article-vote::after {
@@ -2409,7 +2409,7 @@ ul {
 }
 
 .article-votes-controls {
-  margin-top: 10px;
+  margin-top: .625rem;
 }
 
 .article-vote-up::before {
@@ -2421,8 +2421,8 @@ ul {
 }
 
 .article-more-questions {
-  margin-bottom: 30px;
-  font-size: 16px;
+  margin-bottom: 1.875rem;
+  font-size: 1rem;
 }
 
 @media print {
@@ -2436,7 +2436,7 @@ ul {
 }
 
 .article-return-to-top {
-  margin-top: 35px;
+  margin-top: 2.1875rem;
   margin-bottom: 18px;
 }
 
@@ -2454,17 +2454,17 @@ ul {
 
 .article-return-to-top a {
   display: inline-block;
-  margin: 20px 0;
+  margin: 1.25rem 0;
   color: #012939;
 }
 
 .article-return-to-top .icon-arrow-up::before {
-  margin-left: 5px;
-  font-size: 16px;
+  margin-left: .3125rem;
+  font-size: 1rem;
 }
 
 [dir='rtl'] .article-return-to-top .icon-arrow-up::before {
-  margin-right: 10px;
+  margin-right: .625rem;
 }
 
 @media print {
@@ -2542,7 +2542,7 @@ ul {
 
 @media (min-width: 768px) {
   .article-relatives > * {
-    padding-right: 20px;
+    padding-right: 1.25rem;
   }
 }
 
@@ -2551,7 +2551,7 @@ ul {
 }
 
 .article-relatives .related-articles-title {
-  margin-top: 30px;
+  margin-top: 1.875rem;
   margin-bottom: 0;
 }
 

@@ -43,8 +43,8 @@
   .icon-lock::before {
     content: '\1F512';
     position: relative;
-    left: -5px;
-    font-size: 20px;
+    left: -.3125rem;
+    font-size: 1.25rem;
     vertical-align: baseline;
   }
   @media print {
@@ -81,9 +81,9 @@
   max-width: 100%;
   @include desktop {
     flex: 1 0 69%;
-    min-width: 640px;
+    min-width: 40rem;
     max-width: 69%;
-    padding: 0 30px 0 0;
+    padding: 0 1.875rem 0 0;
   }
 
   & > p:last-child {
@@ -95,7 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
   @media print {
     display: none;
   }
@@ -111,7 +111,7 @@
 }
 
 .article-votes {
-  padding: 30px 0 0;
+  padding: 1.875rem 0 0;
 
   &-question {
     margin-bottom: -4px;
@@ -123,9 +123,9 @@
 
 .article-vote {
   width: auto;
-  min-width: 50px;
-  margin: 10px 5px;
-  padding: 5px 15px;
+  min-width: 3.125rem;
+  margin: .625rem .3125rem;
+  padding: .3125rem 15px;
   border: 1px solid $primary;
   background: transparent;
   color: $primary;
@@ -134,12 +134,12 @@
 
   &::before {
     @extend .icon;
-    margin-right: 5px;
+    margin-right: .3125rem;
     font-size: .5em;
 
     [dir='rtl'] & {
       margin-right: 0;
-      margin-left: 10px;
+      margin-left: .625rem;
     }
   }
 
@@ -172,7 +172,7 @@
 }
 
 .article-votes-controls {
-  margin-top: 10px;
+  margin-top: .625rem;
 }
 
 .article-vote-up::before {
@@ -184,8 +184,8 @@
 }
 
 .article-more-questions {
-  margin-bottom: 30px;
-  font-size: 16px;
+  margin-bottom: 1.875rem;
+  font-size: 1rem;
   @media print {
     display: none;
   }
@@ -196,7 +196,7 @@
 }
 
 .article-return-to-top {
-  margin-top: 35px;
+  margin-top: 2.1875rem;
   @include fluid-value(margin-bottom,
   $min-width,
   $max-width,
@@ -206,16 +206,16 @@
 
   a {
     display: inline-block;
-    margin: 20px 0;
+    margin: 1.25rem 0;
     color: $text_color;
   }
 
   .icon-arrow-up::before {
-    margin-left: 5px;
-    font-size: 16px;
+    margin-left: .3125rem;
+    font-size: 1rem;
 
     [dir='rtl'] & {
-      margin-right: 10px;
+      margin-right: .625rem;
     }
   }
   @media print {
@@ -258,7 +258,7 @@
     overflow-wrap: break-word;
 
     &:last-child { padding: 0; }
-    @include tablet { padding-right: 20px; }
+    @include tablet { padding-right: 1.25rem; }
   }
 
   a {
@@ -270,7 +270,7 @@
   }
 
   .related-articles-title {
-    margin-top: 30px;
+    margin-top: 1.875rem;
     margin-bottom: 0;
     @include tablet {
       margin-top: 0;
