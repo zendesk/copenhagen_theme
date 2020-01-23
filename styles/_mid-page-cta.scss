@@ -63,8 +63,8 @@
     @include fluid-value( font-size,
     $min-width,
     $max-width,
-    15px,
-    18px
+    .9375rem,
+    1.125rem
   );
   }
 }

@@ -31,7 +31,7 @@
 
   th {
     border: solid $border--width $grey--light;
-    @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
+    @include fluid-value( padding, $min-width, $max-width, .3125rem, .625rem );
     background-color: $grey--lightest;
     font-weight: $font__weight--bold;
     line-height: 1em;
@@ -41,7 +41,7 @@
 
   td {
     border: solid $border--width $grey--light;
-    @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
+    @include fluid-value( padding, $min-width, $max-width, .3125rem, .625rem );
   }
   @media print {
     table {
