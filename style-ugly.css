@@ -5547,32 +5547,7 @@ html[lang|='zh'] .search-results-description em {
 }
 
 .article-body .wistia_responsive_padding {
-  margin-bottom: 0.9375rem;
-  margin-top: 0.9375rem;
-}
-
-@media screen and (min-width: 20rem) {
-  .article-body .wistia_responsive_padding {
-    margin-bottom: calc(0.9375rem + 0.9375 * ( 100vw - 20rem ) / 65.375);
-  }
-}
-
-@media screen and (min-width: 85.375rem) {
-  .article-body .wistia_responsive_padding {
-    margin-bottom: 1.875rem;
-  }
-}
-
-@media screen and (min-width: 20rem) {
-  .article-body .wistia_responsive_padding {
-    margin-top: calc(0.9375rem + 0.9375 * ( 100vw - 20rem ) / 65.375);
-  }
-}
-
-@media screen and (min-width: 85.375rem) {
-  .article-body .wistia_responsive_padding {
-    margin-top: 1.875rem;
-  }
+  margin: 3rem auto;
 }
 
 @media print {
