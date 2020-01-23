@@ -4569,7 +4569,9 @@ a {
 
 .custom-banner-button-icon {
   padding-left: 10px;
-  height: 16px;
+  height: 25px;
+  color: var(--color-white);
+  color: #ffffff;
 }
 
 @media (min-width: 768px) {
@@ -4616,15 +4618,16 @@ a {
   border: 1px solid #f7f6f6;
   /* default supported fallback style */
   width: 19em;
+  height: min-content;
   margin-bottom: 2em;
-}
-
-.custom-card a:hover {
-  text-decoration: none;
 }
 
 .custom-card-link {
   display: flex;
+}
+
+.custom-card-link:hover, .custom-card-link:active, .custom-card-link:focus {
+  text-decoration: none;
 }
 
 .custom-card-title {
@@ -4649,7 +4652,7 @@ a {
   background-color: var(--color-white);
   background-color: #ffffff;
   /* default supported fallback style */
-  height: 7em;
+  height: 6.9em;
   padding: 0 2em;
   display: flex;
   justify-content: center;
@@ -4663,9 +4666,6 @@ a {
 
 /* Big screen friendly */
 @media (min-width: 768px) {
-  .custom-card {
-    margin-right: 1em;
-  }
   .custom-contact-card-wrapper.custom-contact-card-left {
     margin-right: auto;
     margin-left: 2.5em;
@@ -4897,7 +4897,7 @@ sup > .ask-community-sup-icon {
     display: inline-block;
   }
   .custom-myconfigura-container a {
-    display: flex;
+    display: inline-block;
     align-items: center;
   }
   .custom-marketplace-btn-container a {
@@ -5321,11 +5321,14 @@ main.main-sidebar {
   color: #006ab3;
 }
 
+<<<<<<< cdeac07f88abac49ca960f37df80b2f00e16e5df
 .red-icon {
   color: var(--color-red);
   color: #e66359;
 }
 
+=======
+>>>>>>> [web-4993] Rebase
 /**** END CUSTOM STYLE ****/
 /*** NOTIFICATION BANNER ***/
 /*** Common, default styles for the notification box ***/
@@ -5570,6 +5573,7 @@ main.main-sidebar {
 }
 
 /*** END NOTIFICATION BANNER ***/
+<<<<<<< cdeac07f88abac49ca960f37df80b2f00e16e5df
 /**** HOMEPAGE VIDEO SECTION ****/
 .custom-video-more-link {
   display: flex;
@@ -5609,11 +5613,18 @@ main.main-sidebar {
 .empty-div {
   width: 0em;
   height: 0em;
+=======
+.empty-div {
+  width: 0em;
+>>>>>>> [web-4993] Rebase
 }
 
 @media (min-width: 1160px) {
   .empty-div {
     width: 19em;
+<<<<<<< cdeac07f88abac49ca960f37df80b2f00e16e5df
     height: 16em;
+=======
+>>>>>>> [web-4993] Rebase
   }
 }
