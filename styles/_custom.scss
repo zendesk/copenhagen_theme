@@ -1,3 +1,18 @@
+$break-small: 400px;
+$break-large: 1024px;
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
 /***** Overrides *****/
 $sidebar-width: 300px;
 
@@ -805,9 +820,10 @@ sup > .ask-community-sup-icon {
   border: 1px solid var(--color-grey);
   border: 1px solid #c0c0c0; /* default supported fallback style */
   border-radius: 0;
-  max-width: 15em;
   justify-content: end;
   text-align: initial;
+  @include respond-to(medium-screens) { max-width: 15em; }
+  @include respond-to(wide-screens) { max-width: 15em; }
 }
 
 .custom-blocks-item:hover,

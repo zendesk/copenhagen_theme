@@ -4939,9 +4939,20 @@ sup > .ask-community-sup-icon {
   border: 1px solid #c0c0c0;
   /* default supported fallback style */
   border-radius: 0;
-  max-width: 15em;
   justify-content: end;
   text-align: initial;
+}
+
+@media only screen and (min-width: 401px) and (max-width: 1023px) {
+  .custom-blocks-item {
+    max-width: 15em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .custom-blocks-item {
+    max-width: 15em;
+  }
 }
 
 .custom-blocks-item:hover,
