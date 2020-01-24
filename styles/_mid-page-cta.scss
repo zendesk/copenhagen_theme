@@ -51,9 +51,6 @@
       padding-left: $spacing--desktop;
       text-align: right;
     }
-    @media screen and (min-width: 768px) and (max-width: 787px) {
-      padding-left: 0;
-    }
   }
 
   &__pre-title {

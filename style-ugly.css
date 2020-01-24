@@ -560,12 +560,14 @@ ul {
   fill: #fff;
   color: #fff;
   font-family: "Poppins", "Poppins";
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   vertical-align: bottom;
+  white-space: nowrap;
   cursor: pointer;
   user-select: none;
   -webkit-touch-callout: none;
@@ -3041,12 +3043,6 @@ ul {
     padding-top: none;
     padding-left: 1.875rem;
     text-align: right;
-  }
-}
-
-@media screen and (min-width: 768px) and (max-width: 787px) {
-  .jobber-mid-cta__action {
-    padding-left: 0;
   }
 }
 

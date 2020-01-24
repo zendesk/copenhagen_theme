@@ -16,12 +16,14 @@
   fill: $white;
   color: $white;
   font-family: $font--heading;
+  font-size: 1.25rem;
   font-weight: $font__weight--extra-bold;
   letter-spacing: 1px;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
   vertical-align: bottom;
+  white-space: nowrap;
   cursor: pointer;
   user-select: none;
   -webkit-touch-callout: none;
