@@ -728,8 +728,7 @@ sup > .ask-community-sup-icon {
 /* Big screen friendly */
 @media (min-width: 1160px) {
   .custom-header {
-    max-width: 96em;
-    margin: 0 6%;
+    margin: 0 auto;
   }
 }
 
