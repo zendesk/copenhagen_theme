@@ -4145,6 +4145,19 @@ html[lang|="ja"] .search-result-description em {
   margin: 0 4px;
 }
 
+body {
+  font-family: "hannah_banana";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "hannah_banana";
+}
+
 .hero {
   background: none;
 }
@@ -4368,7 +4381,7 @@ a {
 
 /* Custom container on category and section page*/
 .custom-container {
-  margin: 0 6%;
+  margin: 0 auto;
 }
 
 .custom-category-container,
@@ -5260,30 +5273,6 @@ main.main-sidebar {
   src: url("$assets-materialicons-regular-eot");
   /* For IE6-8 */
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
-}
-
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
-  vertical-align: top;
 }
 
 .black-icon {
