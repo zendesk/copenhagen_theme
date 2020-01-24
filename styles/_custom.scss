@@ -1,5 +1,5 @@
 $break-small: 768px;
-$break-large: 1024px;
+$break-large: 1920px;
 
 @mixin respond-to($media) {
   @if $media == handhelds {
@@ -256,6 +256,8 @@ a {
 /* Custom container on category and section page*/
 .custom-container {
   margin: 0 auto;
+  max-width: 1144px;
+  padding: 0 1rem;
 }
 
 .custom-category-container,
@@ -729,6 +731,7 @@ sup > .ask-community-sup-icon {
 @media (min-width: 1160px) {
   .custom-header {
     margin: 0 auto;
+    max-width: 1144px;
   }
 }
 
@@ -866,6 +869,7 @@ sup > .ask-community-sup-icon {
 
 .custom-footer-container {
   padding-left: $sidebar-width;
+  @include respond-to(wide-screens) { padding-left: 0; }
 }
 
 .custom-footer-links-card p {
@@ -1035,12 +1039,6 @@ body {
   position: fixed;
   top: 0;
   width: $sidebar-width;
-}
-
-@media (min-width: 768px) {
-  .main-sidebar {
-    padding-left: $sidebar-width;
-  }
 }
 
 @media (max-width: 1160px + $sidebar-width + $sidebar-width) and (min-width: 768px) {
