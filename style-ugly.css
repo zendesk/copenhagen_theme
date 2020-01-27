@@ -5590,6 +5590,24 @@ html[lang|='zh'] .search-results-description em {
   }
 }
 
+.article-body .this-is-a-vertical-video {
+  max-width: 400px;
+  margin: 3rem auto;
+  /* stylelint-disable-next-line declaration-no-important */
+  padding: 0 !important;
+}
+
+@media print {
+  .article-body .this-is-a-vertical-video {
+    display: none;
+  }
+}
+
+.article-body .this-is-a-vertical-video > div {
+  /* stylelint-disable-next-line declaration-no-important */
+  position: relative !important;
+}
+
 .article-body > ul,
 .article-body > ol {
   margin-bottom: 0.9375rem;

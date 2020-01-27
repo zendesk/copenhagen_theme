@@ -110,6 +110,21 @@
     }
   }
 
+  .this-is-a-vertical-video {
+    max-width: 400px;
+    margin: 3rem auto;
+    /* stylelint-disable-next-line declaration-no-important */
+    padding: 0 !important;
+    @media print {
+      display: none;
+    }
+  }
+
+  .this-is-a-vertical-video > div {
+    /* stylelint-disable-next-line declaration-no-important */
+    position: relative !important;
+  }
+
   /** LISTS **/
   & > ul,
   & > ol {
