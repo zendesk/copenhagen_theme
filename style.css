@@ -1019,7 +1019,7 @@ table td, table th {
 
 /***** Hero component *****/
 .hero {
-  background-image: url("{{asset 'JSTOR-support-hero.jpg'}}");
+  background-image: url($homepage_background_jstor);
   background-size: cover;
   color: $brand_text_color;
   height: 300px;

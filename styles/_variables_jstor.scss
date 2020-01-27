@@ -17,7 +17,7 @@ $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default ba
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 //added colors
-$hero-background: url("{{asset 'JSTOR-support-hero.jpg'}}");
+$hero-background: url($homepage_background_jstor);
 $hero-text-color: $brand_text_color;
 $hero-link-text-color: $brand_text_color;
 $hero-link-text-hover: $brand_text_color;
