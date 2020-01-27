@@ -1019,7 +1019,7 @@ table td, table th {
 
 /***** Hero component *****/
 .hero {
-  background-image: url(https://theme.zdassets.com/theme_assets/1006386/c2ff3d876c440e708ff14685622b157ff2835d5a.jpg);
+  background-image: url("{{asset 'JSTOR-support-hero.jpg'}}");
   background-size: cover;
   color: $brand_text_color;
   height: 300px;
