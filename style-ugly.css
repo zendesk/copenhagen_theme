@@ -5913,6 +5913,10 @@ html[lang|='zh'] .search-results-description em {
   }
 }
 
+.article-body .jobber-info p {
+  margin: 15px 0;
+}
+
 .article-body .jobber-info *:last-child {
   margin-bottom: 0;
 }
