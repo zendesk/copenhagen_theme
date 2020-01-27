@@ -116,3 +116,14 @@ Which will take all the `scss` files inside the `styles/` folder and create the 
 # Contributing
 Bug reports and pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
 Please mention @zendesk/guide-growth when creating a bug report or a pull request.
+
+# JOBBER EDITS
+
+## How to test this theme
+Run `zat theme preview` from the command line when you are in the theme repo folder.
+Username: marketing+docs@getjobber.com
+Password: check lastpass
+
+## How to build the theme
+
+`npm run build:css` will hit the ruby compiler for you and do linting.

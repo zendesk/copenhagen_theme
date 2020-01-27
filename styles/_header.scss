@@ -26,21 +26,21 @@
       max-height,
       $min-width,
       $max-width,
-      18px,
-      35px
+      1.125rem,
+      2.1875rem
     );
     @include fluid-value(
       margin-right,
       $min-width,
       $max-width,
-      4px,
+      .25rem,
       $header__padding--max
     );
     @include fluid-value(
       padding-right,
       $min-width,
       $max-width,
-      6px,
+      .375rem,
       $header__padding--max
     );
     border-right: solid 2px $primary;
@@ -94,7 +94,7 @@
 
     > a {
       display: block;
-      margin: 20px;
+      margin: 1.25rem;
     }
   }
 }
@@ -131,7 +131,7 @@
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 -12px 0 0 rgba($secondary, .25) inset;
+      box-shadow: 0 -.75rem 0 0 rgba($secondary, .25) inset;
     }
   }
 }
@@ -153,7 +153,7 @@
 
   [dir='rtl'] & {
     margin-right: 0;
-    margin-left: 10px;
+    margin-left: .625rem;
   }
 
   &:hover,

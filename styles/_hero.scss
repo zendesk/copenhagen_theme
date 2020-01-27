@@ -1,37 +1,31 @@
 /***** Hero component *****/
 .hero {
   width: 100%;
+  padding: 1.875rem $spacing;
   background-color: $secondary;
   text-align: center;
-  @include fluid-value( height,
-  $min-width,
-  $max-width,
-  300px,
-  550px
-);
-  @include fluid-value( padding-left,
-  $min-width,
-  $max-width,
-  $spacing,
-  $spacing--desktop
-);
-  @include fluid-value( padding-right,
-  $min-width,
-  $max-width,
-  $spacing,
-  $spacing--desktop
-);
+  @media screen and (min-width: 23.5rem) {
+    @include fluid-value( height,
+    $min-width,
+    $max-width,
+    25rem,
+    34.375rem
+  );
+    padding: 0;
+  }
   @media print {
-    height: 200px;
+    height: 12.5rem;
     color: $black;
     text-align: left;
   }
 }
 
 .hero-inner {
-  @include vertical-align;
-  max-width: 750px;
+  max-width: 46.875rem;
   margin: 0 auto;
+  @media screen and (min-width: 23.4375rem) {
+    @include vertical-align;
+  }
 }
 
 .hero__title {
@@ -66,7 +60,7 @@
     &:hover,
     &:active,
     &:focus {
-      box-shadow: 0 -12px 0 0 rgba($white, .25) inset;
+      box-shadow: 0 -.75rem 0 0 rgba($white, .25) inset;
       text-decoration: none;
     }
 
