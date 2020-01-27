@@ -17,7 +17,7 @@ $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default ba
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 //added colors
-$hero-background: #4b525f; //hex used on Forum platform header
+$hero-background: $assets-jstor-support-hero-jpg;
 $hero-text-color: $brand_text_color;
 $hero-link-text-color: $brand_text_color;
 $hero-link-text-hover: $brand_text_color;
