@@ -34,13 +34,14 @@
 
 .pagination a, .pagination span {
   @extend .noshadow;
-  @include tablet {
     padding: 5px 12px;
     font-size: $font-size-small;
+  @include desktop {
+    padding: 10px 12px;
+    color: $secondary-text-color;
+    font-size: $font-size-base;
   }
-  padding: 10px 12px;
-  color: $secondary-text-color;
-  font-size: $font-size-base;
+
 }
 
 .pagination-current {

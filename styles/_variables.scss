@@ -2,17 +2,17 @@
 
 // CUSTOM JOBBER VARIABLES FOR THE 2019 THEME
 
-$base-font-size: 16px;
-$base-font-size--desktop: 20px;
+$base-font-size: 1rem;
+$base-font-size--desktop: 1.25rem;
 $typescale__step0: $base-font-size;
-$typescale__step1: 24px;
-$typescale__step2: 32px;
-$typescale__step3: 48px;
-$typescale__step4: 72px;
+$typescale__step1: 1.5rem;
+$typescale__step2: 2rem;
+$typescale__step3: 3rem;
+$typescale__step4: 4.5rem;
 
-$min-width: 320px;
-$max-width: 1366px;
-$max-width-page-container: 1440px;
+$min-width: 20rem;
+$max-width: 85.375rem;
+$max-width-page-container: 90rem;
 
 $primary: #012939;
 $primary--light: #4d6974;
@@ -49,14 +49,14 @@ $font__weight--bold: 700;
 $font__weight--extra-bold: 800;
 $font__weight--black: 900;
 
-$spacing: 15px;
-$spacing--desktop: 30px;
-$whitespace-small: 32px;
-$whitespace-medium: 48px;
-$whitespace-large: 72px;
-$whitespace-small--desktop: 48px;
-$whitespace-medium--desktop: 72px;
-$whitespace-large--desktop: 96px;
+$spacing: .9375rem;
+$spacing--desktop: 1.875rem;
+$whitespace-small: 2rem;
+$whitespace-medium: 3rem;
+$whitespace-large: 4.5rem;
+$whitespace-small--desktop: 3rem;
+$whitespace-medium--desktop: 4.5rem;
+$whitespace-large--desktop: 6rem;
 
 $border--width: 1px;
 $border--radius: 8px;
@@ -64,10 +64,10 @@ $focus--width: 5px;
 $font-zendesk-icons: 'copenhagen-icons';
 
 /* HEADER SPECIFIC VARIABLES */
-$header__height--min: 80px;
-$header__height--max: 138px;
-$header__padding--max: 16px;
-$header__icon-menu--dimension: 40px;
+$header__height--min: 5rem;
+$header__height--max: 8.625rem;
+$header__padding--max: 1rem;
+$header__icon-menu--dimension: 2.5rem;
 
 /* ZENDESK DEFAULTS */
 // Colors

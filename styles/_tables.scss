@@ -3,7 +3,7 @@
   table {
     display: inline-block;
     max-width: 100%;
-    overflow-x: auto;
+    overflow-x: scroll;
     border-spacing: 0;
     border-collapse: collapse;
     box-shadow: 2px 2px 4px hsla(0, 0%, 80%, .15);
@@ -31,7 +31,7 @@
 
   th {
     border: solid $border--width $grey--light;
-    @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
+    @include fluid-value( padding, $min-width, $max-width, .3125rem, .625rem );
     background-color: $grey--lightest;
     font-weight: $font__weight--bold;
     line-height: 1em;
@@ -41,7 +41,7 @@
 
   td {
     border: solid $border--width $grey--light;
-    @include fluid-value( padding, $min-width, $max-width, 5px, 10px );
+    @include fluid-value( padding, $min-width, $max-width, .3125rem, .625rem );
   }
   @media print {
     table {
