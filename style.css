@@ -2187,6 +2187,7 @@ ul {
   min-height: 44px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .actions .dropdown-toggle:hover, .actions .dropdown-toggle:focus, .actions .dropdown-toggle:active {
