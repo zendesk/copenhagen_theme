@@ -57,6 +57,18 @@
     max-width: 98%;
     height: auto;
     border: solid 2px $grey--lighter;
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $spacing,
+    $spacing--desktop
+  );
     @media print {
       display: block;
       max-width: 90%;
@@ -155,6 +167,18 @@
   pre {
     width: inherit;
     max-width: 100%;
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
     padding: $spacing;
     border: solid $border--width $grey;
     border-radius: $border--radius;
@@ -257,5 +281,46 @@
   .accordion-title {
     @extend .h3;
     text-transform: none;
+  }
+
+  .jobber-info {
+    width: 90%;
+    max-width: 100%;
+    margin: 0 auto;
+    @include fluid-value( margin-top,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    @include fluid-value( margin-bottom,
+    $min-width,
+    $max-width,
+    $whitespace-small,
+    $whitespace-small--desktop
+  );
+    padding: $spacing;
+    border: solid $border--width $grey;
+    border-radius: $border--radius;
+    background-color: $grey--lightest;
+    color: $black;
+    font-size: 90%;
+    @media print {
+      border: solid $border--width $black;
+      background-color: $white;
+      white-space: normal;
+    }
+  }
+
+  .jobber-info p {
+    margin: $spacing 0;
+  }
+
+  .jobber-info *:last-child {
+    margin-bottom: 0;
+  }
+
+  .jobber-info p:first-child {
+    margin-top: 0;
   }
 }

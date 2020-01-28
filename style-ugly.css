@@ -331,7 +331,7 @@ h6 {
 
 p {
   margin-bottom: 0.9375rem;
-  margin-top: 0;
+  margin-top: 0.9375rem;
 }
 
 @media screen and (min-width: 20rem) {
@@ -343,6 +343,18 @@ p {
 @media screen and (min-width: 85.375rem) {
   p {
     margin-bottom: 1.875rem;
+  }
+}
+
+@media screen and (min-width: 20rem) {
+  p {
+    margin-top: calc(0.9375rem + 0.9375 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  p {
+    margin-top: 1.875rem;
   }
 }
 
@@ -5488,6 +5500,32 @@ html[lang|='zh'] .search-results-description em {
   max-width: 98%;
   height: auto;
   border: solid 2px #e9e9e9;
+  margin-top: 0.9375rem;
+  margin-bottom: 0.9375rem;
+}
+
+@media screen and (min-width: 20rem) {
+  .article-body img {
+    margin-top: calc(0.9375rem + 0.9375 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  .article-body img {
+    margin-top: 1.875rem;
+  }
+}
+
+@media screen and (min-width: 20rem) {
+  .article-body img {
+    margin-bottom: calc(0.9375rem + 0.9375 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  .article-body img {
+    margin-bottom: 1.875rem;
+  }
 }
 
 @media print {
@@ -5630,12 +5668,38 @@ html[lang|='zh'] .search-results-description em {
 .article-body pre {
   width: inherit;
   max-width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 0.9375rem;
   border: solid 1px #b8b8b8;
-  border-radius: 8px;
+  border-radius: 1px;
   background-color: #f3f3f3;
   word-wrap: break-word;
   white-space: pre-wrap;
+}
+
+@media screen and (min-width: 20rem) {
+  .article-body pre {
+    margin-top: calc(2rem + 1 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  .article-body pre {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 20rem) {
+  .article-body pre {
+    margin-bottom: calc(2rem + 1 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  .article-body pre {
+    margin-bottom: 3rem;
+  }
 }
 
 @media print {
@@ -5760,4 +5824,62 @@ html[lang|='zh'] .search-results-description em {
 
 .article-body .accordion-title {
   text-transform: none;
+}
+
+.article-body .jobber-info {
+  width: 90%;
+  max-width: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0.9375rem;
+  border: solid 1px #b8b8b8;
+  border-radius: 1px;
+  background-color: #f3f3f3;
+  color: #000;
+  font-size: 90%;
+}
+
+@media screen and (min-width: 20rem) {
+  .article-body .jobber-info {
+    margin-top: calc(2rem + 1 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  .article-body .jobber-info {
+    margin-top: 3rem;
+  }
+}
+
+@media screen and (min-width: 20rem) {
+  .article-body .jobber-info {
+    margin-bottom: calc(2rem + 1 * ( 100vw - 20rem ) / 65.375);
+  }
+}
+
+@media screen and (min-width: 85.375rem) {
+  .article-body .jobber-info {
+    margin-bottom: 3rem;
+  }
+}
+
+@media print {
+  .article-body .jobber-info {
+    border: solid 1px #000;
+    background-color: #fff;
+    white-space: normal;
+  }
+}
+
+.article-body .jobber-info p {
+  margin: 0.9375rem 0;
+}
+
+.article-body .jobber-info *:last-child {
+  margin-bottom: 0;
+}
+
+.article-body .jobber-info p:first-child {
+  margin-top: 0;
 }

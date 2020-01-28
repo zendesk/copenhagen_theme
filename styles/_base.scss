@@ -134,7 +134,12 @@ p {
   $spacing,
   $spacing--desktop
 );
-  margin-top: 0;
+  @include fluid-value( margin-top,
+  $min-width,
+  $max-width,
+  $spacing,
+  $spacing--desktop
+);
 }
 
 a {
