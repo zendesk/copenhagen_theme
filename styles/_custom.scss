@@ -154,19 +154,17 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: "geogrotesque";
+  color:  var(--color-black);
+  color: #000000; /* default supported fallback style */
 }
 
 h1 {
   font-weight: 600;
-  color:  var(--color-black);
-  color: #000000; /* default supported fallback style */
   font-size: 32px;
 }
 
 h2 {
   font-weight: 600;
-  color:  var(--color-black);
-  color: #000000; /* default supported fallback style */
   font-size: 22px;
 }
 
@@ -183,6 +181,14 @@ a {
   font-weight: 500;
   color: var(--color-blue);
   color: #006ab3; /* default supported fallback style */
+}
+
+.article-body li {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color:  var(--color-black);
+  color: #000000; /* default supported fallback style */
 }
 
 .breadcrumbs a {
@@ -462,8 +468,6 @@ a {
 }
 
 .custom-card-title {
-  color: var(--color-almost-black);
-  color: #424242; /* default supported fallback style */
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -789,8 +793,8 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-blocks-item .blocks-item-link {
-  color: var(--color-almost-black);
-  color: #424242; /* default supported fallback style */
+  color: var(--color-black);
+  color: #000000; /* default supported fallback style */
   padding: 0;
 }
 
