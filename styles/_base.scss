@@ -126,10 +126,6 @@ ul {
   padding: 0;
   text-align: initial;
 }
- .dropdown-toggle:focus {
-  outline: 0;
-  text-decoration: underline;
-}
 
 .dropdown-toggle::after {
   color: inherit;
@@ -147,4 +143,9 @@ ul {
   position: absolute;
   width: 1px;
   white-space: nowrap;
+}
+
+:focus {
+  outline: $brand-color solid 2px;
+  outline-offset: 2px
 }
