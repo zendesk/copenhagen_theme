@@ -175,10 +175,6 @@ p {
   color: #000000; /* default supported fallback style */
 }
 
-.custom-blocks-item-p {
-  line-height: 1.3;
-}
-
 a {
   font-size: 15px;
   font-weight: 500;
@@ -193,7 +189,11 @@ a {
 .breadcrumbs li a:visited {
   color: var(--color-blue);
   color: #006ab3; /* default supported fallback style */
-} 
+}
+
+.custom-blocks-item-p {
+  line-height: 1.3;
+}
 
 .custom-nav-wrapper a {
   color:  var(--color-black);
