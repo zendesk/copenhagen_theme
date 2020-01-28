@@ -239,4 +239,44 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
   } );
+
+  function centerWistiaVids() {
+    window._wq = window._wq || [];
+
+    const wistiaIds = window.wistiaEmbeds && window.wistiaEmbeds.map(({ _hashedId }) => _hashedId);
+
+    wistiaIds.forEach(HashId => {
+      _wq.push({
+        id: HashId,
+        onReady: video => {
+          const videoContainer = document.querySelector(`.wistia_async_${HashId}`);
+          const grandParent = videoContainer.parentNode.parentNode;
+          const aspect = video.aspect();
+
+          if (aspect < 1) {
+            grandParent.classList.add("this-is-a-vertical-video");
+          }
+        }
+      });
+    });
+  }
+  var numVideos =  document.getElementsByClassName("wistia_embed").length;
+  if( numVideos > 0 ) {
+    function tryPageLoad() {
+      if(window.wistiaEmbeds) {
+        if( window.wistiaEmbeds.length === numVideos ) {
+          centerWistiaVids();
+        } else {
+          setTimeout(tryPageLoad, 100);
+        }
+      }
+      else {
+        setTimeout(tryPageLoad, 100);
+      }
+    }
+    tryPageLoad();
+  }
 });
+
+
+
