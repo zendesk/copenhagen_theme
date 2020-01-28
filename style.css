@@ -4302,6 +4302,12 @@ a {
   /* default supported fallback style */
 }
 
+.article-body a:visited {
+  color: var(--color-blue);
+  color: #006ab3;
+  /* default supported fallback style */
+}
+
 .article-body li {
   font-size: 15px;
   font-weight: 300;
@@ -4321,6 +4327,11 @@ a {
   /* default supported fallback style */
 }
 
+.comment-heading {
+  font-weight: 600;
+  font-size: 22px;
+}
+
 .custom-blocks-item-p {
   line-height: 1.3;
 }
@@ -4330,6 +4341,13 @@ a {
   color: #000000;
   /* default supported fallback style */
   font-size: 14px;
+}
+
+.recent-articles h3,
+.related-articles h3 {
+  font-weight: 600;
+  font-size: 22px;
+  margin: 20px 0;
 }
 
 /* Custom container on category and section page*/
@@ -4756,6 +4774,7 @@ a {
 
 @media (min-width: 990px) {
   .custom-help-center-link {
+    font-family: "geogrotesque";
     display: inline-block;
     color: var(--color-white);
     color: #ffffff;
