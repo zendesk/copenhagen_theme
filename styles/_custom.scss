@@ -172,7 +172,7 @@ h2 {
 
 p {
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 200;
   line-height: 1.5;
   color:  var(--color-black);
   color: #000000; /* default supported fallback style */
@@ -538,6 +538,11 @@ a {
   text-align: left;
 }
 
+.custom-activity .recent-activity-item-parent {
+  font-weight: 600;
+}
+
+
 /* Big screen friendly */
 @media (min-width: 768px) {
   .custom-card-container {
@@ -790,7 +795,7 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-blocks-text-wrapper {
-  height: 10em;
+  height: 11em;
 }
 
 /**** CUSTOM ICONS ****/
