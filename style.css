@@ -4261,7 +4261,6 @@ html[lang|="ja"] .search-result-description em {
   --color-almost-black: #424242;
   --color-black: #000000;
   --color-blue: #006ab3;
-  --color-blue-link: #0072ef;
 }
 
 body {
@@ -4444,9 +4443,6 @@ a {
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
-  color: var(--color-blue-link);
-  color: #0072ef;
-  /* default supported fallback style */
   font-weight: 600;
 }
 
@@ -4668,8 +4664,8 @@ a {
 }
 
 .custom-section-list .article-list-item a {
-  color: var(--color-blue-link);
-  color: #0072ef;
+  color: var(--color-blue);
+  color: #006ab3;
   /* default supported fallback style */
 }
 
@@ -5011,7 +5007,7 @@ a {
 }
 
 .custom-icon-margin-right {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 /***** Custom Vue Sidebar Code from git *****/
@@ -5118,8 +5114,8 @@ main.main-sidebar {
 
 .sidebar-item.open > .sidebar-item-title,
 .sidebar-item.current .sidebar-item-link {
-  color: var(--color-blue-link);
-  color: #0072ef;
+  color: var(--color-blue);
+  color: #006ab3;
   /* default supported fallback style */
   font-weight: 600;
 }
