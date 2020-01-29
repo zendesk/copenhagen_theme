@@ -257,7 +257,8 @@ a {
 .custom-container {
   margin: 0 auto;
   max-width: 1144px;
-  padding: 0 1rem;
+  padding-left: calc(env(safe-area-inset-left, 0) + 0.75rem);
+  padding-right: calc(env(safe-area-inset-left, 0) + 0.75rem);
 }
 
 .custom-category-container,
@@ -683,6 +684,7 @@ a {
 .custom-background-color-blue {
   background-color: var(--color-blue);
   background-color: #006ab3; /* default supported fallback style */
+  height: 64px;
   z-index: 1;
 }
 
