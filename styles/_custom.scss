@@ -19,19 +19,6 @@ $sidebar-width: 300px;
   margin: 0 4px;
 }
 
-body {
-  font-family: "hannah_banana";
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "hannah_banana";
-}
-
 .hero {
   background: none;
 }
@@ -137,14 +124,13 @@ h6 {
 /**** CUSTOM FONT ****/
 
 @font-face {
-  font-family: "hannah_banana";
-  src: local ("hannah_banana");
+  font-family: "geogrotesque";
+  src: local ("geogrotesque");
   src: url("$assets-ge2003-rg-eot");
   src: url("$assets-ge2003-rg-eot#iefix") format("eot"),
     url("$assets-ge2003-rg-woff") format("woff"),
     url("$assets-ge2003-rg-ttf") format("truetype"),
     url("$assets-ge2003-rg-svg#webfont") format("svg");
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -152,13 +138,85 @@ h6 {
   --color-grey: #f7f6f6;
   --color-white: #ffffff;
   --color-almost-black: #424242;
+  --color-black: #000000;
   --color-blue: #006ab3;
-  --color-blue-link: #0072ef;
 }
 
-h1,
+body {
+  font-family: 'Roboto', sans-serif;
+  font-variant-ligatures: no-common-ligatures;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: "geogrotesque";
+  color:  var(--color-black);
+  color: #000000; /* default supported fallback style */
+}
+
+h1 {
+  font-weight: 600;
+  font-size: 32px;
+}
+
 h2 {
   font-weight: 600;
+  font-size: 22px;
+}
+
+p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color:  var(--color-black);
+  color: #000000; /* default supported fallback style */
+}
+
+a {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
+}
+
+.article-body a:visited {
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
+}
+
+.article-body li {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.5;
+  color:  var(--color-black);
+  color: #000000; /* default supported fallback style */
+}
+
+.breadcrumbs a {
+  font-size: 13px;
+}
+
+.breadcrumbs li a:visited {
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
+}
+
+.comment-heading {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.custom-blocks-item-p {
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+.recent-articles,
+.related-articles {
+  h3 {
+    font-weight: 600;
+    font-size: 22px;
+    margin: 20px 0;
+  }
 }
 
 /* Custom container on category and section page*/
@@ -274,8 +332,6 @@ h2 {
   cursor: pointer;
   font-size: 16px;
   text-decoration: none;
-  color: var(--color-blue-link);
-  color: #0072ef; /* default supported fallback style */
   font-weight: 600;
 }
 
@@ -409,8 +465,6 @@ h2 {
 }
 
 .custom-card-title {
-  color: var(--color-almost-black);
-  color: #424242; /* default supported fallback style */
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -472,6 +526,11 @@ h2 {
   text-align: left;
 }
 
+.custom-activity .recent-activity-item-parent {
+  font-weight: 600;
+}
+
+
 /* Big screen friendly */
 @media (min-width: 768px) {
   .custom-card-container {
@@ -499,8 +558,8 @@ h2 {
 }
 
 .custom-section-list .article-list-item a {
-  color: var(--color-blue-link);
-  color: #0072ef; /* default supported fallback style */
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
 }
 
 .custom-section-list .article-list-item {
@@ -536,6 +595,9 @@ h2 {
 .custom-nav-wrapper .icon-menu:hover,
 .custom-nav-wrapper .icon-menu:focus,
 .custom-nav-wrapper .icon-menu:active,
+.custom-nav-wrapper a,
+.custom-nav-wrapper a:visited,
+.custom-nav-wrapper a:hover,
 .custom-nav-wrapper .user-info > [role="button"]:hover {
   color: var(--color-white);
   color: #ffffff; /* default supported fallback style */
@@ -583,6 +645,7 @@ h2 {
 
 @media (min-width: 990px) {
   .custom-help-center-link {
+    font-family: "geogrotesque";
     display: inline-block;
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */
@@ -608,7 +671,8 @@ h2 {
   .custom-nav-wrapper .user-info > [role="button"],
   .user-info > [role="button"]::after,
   .custom-nav-wrapper a,
-  .custom-nav-wrapper a:hover {
+  .custom-nav-wrapper a:hover
+  .custom-nav-wrapper a:visited {
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */
   }
@@ -688,13 +752,13 @@ h2 {
 }
 
 .custom-blocks-item .blocks-item-link {
-  color: var(--color-almost-black);
-  color: #424242; /* default supported fallback style */
+  color: var(--color-black);
+  color: #000000; /* default supported fallback style */
   padding: 0;
 }
 
 .custom-blocks-text-wrapper {
-  height: 8em;
+  height: 11em;
 }
 
 /**** CUSTOM ICONS ****/
@@ -842,7 +906,7 @@ h2 {
 }
 
 .custom-icon-margin-right {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 /***** Custom Vue Sidebar Code from git *****/
@@ -914,11 +978,13 @@ main.main-sidebar {
 }
 
 .sidebar-item-title {
+  font-family: 'Roboto', sans-serif;
   display: block;
-  color: #666;
+  color: #000000;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 15px;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .sidebar-item-title:hover {
@@ -947,8 +1013,8 @@ main.main-sidebar {
 
 .sidebar-item.open > .sidebar-item-title,
 .sidebar-item.current .sidebar-item-link {
-  color: var(--color-blue-link);
-  color: #0072ef; /* default supported fallback style */
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
   font-weight: 600;
 }
 
@@ -988,6 +1054,7 @@ main.main-sidebar {
   font-style: normal;
   font-weight: 400;
   src: url("$assets-materialicons-regular-eot"); /* For IE6-8 */
+  
   src: local("Material Icons"), local("MaterialIcons-Regular"),
     url("$assets-materialicons-regular-woff2") format("woff2"),
     url("$assets-materialicons-regular-woff") format("woff"),
@@ -1020,7 +1087,7 @@ main.main-sidebar {
   font-feature-settings: "liga";
 
   vertical-align: top;
-}
+} 
 
 .black-icon {
   color: var(--color-almost-black);
