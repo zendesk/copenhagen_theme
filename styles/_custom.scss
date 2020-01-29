@@ -637,6 +637,16 @@ a {
   margin-right: 5px;
 }
 
+.custom-user-info a:visited {
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
+}
+
+.nav-wrapper a {
+  color: var(--color-white);
+  color: #ffffff; /* default supported fallback style */
+}
+
 /* Big screen friendly */
 @media (min-width: 1160px) {
   .custom-header {
@@ -673,7 +683,8 @@ a {
   .custom-nav-wrapper .user-info > [role="button"],
   .user-info > [role="button"]::after,
   .custom-nav-wrapper a,
-  .custom-nav-wrapper a:hover {
+  .custom-nav-wrapper a:hover
+  .custom-nav-wrapper a:visited {
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */
   }
