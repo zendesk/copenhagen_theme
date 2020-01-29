@@ -4825,13 +4825,13 @@ sup > .ask-community-sup-icon {
   margin-right: 5px;
 }
 
-.custom-user-info a:visited {
-  color: var(--color-blue);
-  color: #006ab3;
+.custom-user-info a a:visited a:hover {
+  color: var(--color-white);
+  color: #ffffff;
   /* default supported fallback style */
 }
 
-.nav-wrapper a {
+.nav-wrapper a a:visited a:hover {
   color: var(--color-white);
   color: #ffffff;
   /* default supported fallback style */
