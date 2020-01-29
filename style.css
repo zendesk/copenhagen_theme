@@ -4623,3 +4623,7 @@ html[dir="rtl"] .notification-left-aligned {
   padding-left: auto;
   padding-right: 0;
 }
+
+.dropdown-chevron-icon {
+  vertical-align: middle;
+}
