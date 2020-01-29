@@ -741,10 +741,11 @@ sup > .ask-community-sup-icon {
     display: inline-block;
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */
-    font-size: 26px;
+    font-size: 20px;
     border-left: 1px solid var(--color-white);
     border-left: 1px solid #ffffff; /* default supported fallback style */
     padding-left: 1em;
+    padding-bottom: 3px;
   }
 }
 
@@ -758,6 +759,11 @@ sup > .ask-community-sup-icon {
   .custom-logo {
     position: relative;
     right: 19px;
+  }
+
+  .custom-logo-dimensions {
+    width: 118px;
+    height: 28px;
   }
 
   .custom-nav-wrapper .user-info > [role="button"],
