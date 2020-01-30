@@ -4181,6 +4181,7 @@ html[lang|="ja"] .search-result-description em {
 
 .search-full input[type="search"] {
   height: 3.5em !important;
+  max-width: 32rem !important;
   border: 1px solid #006ab3 !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19) !important;
 }
@@ -4296,6 +4297,7 @@ h1 {
   font-weight: 600;
   font-size: 32px;
 }
+
 h2 {
   font-weight: 600;
   font-size: 22px;
@@ -4332,7 +4334,6 @@ a {
   color: #000000;
   /* default supported fallback style */
 }
-
 
 .academy-link-icon {
   font-size: smaller !important;
