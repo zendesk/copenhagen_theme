@@ -430,12 +430,6 @@ a {
   height: 16px;
 }
 
-/* Big screen friendly */
-@media (min-width: 1160px) {
-  .custom-page-search .search input[type="search"] {
-    width: 28em;
-  }
-}
 
 @media (min-width: 768px) {
   .custom-link-container {
@@ -503,6 +497,7 @@ a {
   align-items: center;
   margin: 0 auto;
   padding: 1em;
+  text-align: center;
 }
 
 .custom-card:hover,
@@ -1450,6 +1445,7 @@ main.main-sidebar {
 }
 
 /*** END NOTIFICATION BANNER ***/
+<<<<<<< HEAD
 
 /**** HOMEPAGE VIDEO SECTION ****/
 .custom-video-more-link {
@@ -1487,3 +1483,16 @@ main.main-sidebar {
 }
 
 /**** END OF HOMEPAGE VIDEO SECTION ****/
+=======
+.empty-div {
+  width: 0em;
+  height: 0em;
+}
+
+@media (min-width: 1160px) {
+  .empty-div {
+    width: 19em;
+    height: 16em;
+  }
+}
+>>>>>>> [web-5013-a] Fixes

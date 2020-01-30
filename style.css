@@ -4561,13 +4561,6 @@ a {
   height: 16px;
 }
 
-/* Big screen friendly */
-@media (min-width: 1160px) {
-  .custom-page-search .search input[type="search"] {
-    width: 28em;
-  }
-}
-
 @media (min-width: 768px) {
   .custom-link-container {
     justify-content: center;
@@ -4629,6 +4622,7 @@ a {
   align-items: center;
   margin: 0 auto;
   padding: 1em;
+  text-align: center;
 }
 
 .custom-card:hover,
