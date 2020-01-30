@@ -29,11 +29,11 @@
     @extend .icon;
     @include vertical-align;
     background-color: #fff;
-    color: #777;
+    color: #006ab3;
     content: "\1F50D";
     font-size: 18px;
     position: absolute;
-    left: 15px;
+    right: 15px;
 
     [dir="rtl"] & {
       right: 15px;

@@ -50,11 +50,26 @@ $sidebar-width: 300px;
   height: 3em;
   border: 1px solid #006ab3;
   border-radius: 0;
+  padding-left: 1rem;
 }
 
 .search-full input[type="search"] {
-  border: 1px solid #fff;
+  height: 3.5em!important;
+  border: 1px solid #006ab3!important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)!important;
 }
+
+.custom-page-search .search input[type="search"] {
+  width: 20em;
+  height: 4em;
+  border: 2px solid var(--color-blue);
+  border: #006ab3;
+  /* default supported fallback style */
+  border-radius: 0;
+  padding-left: 1rem;
+  font-style: italic;
+}
+
 
 .sub-nav {
   margin: 1rem 0;
@@ -76,6 +91,7 @@ $sidebar-width: 300px;
     border: 1px solid #006ab3;
     border: #006ab3; /* default supported fallback style */
     border-radius: 0;
+    padding-left: 1rem;
   }
 }
 
@@ -142,6 +158,7 @@ $sidebar-width: 300px;
   --color-blue: #006ab3;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   --color-blue-link: #0072ef;
   --color-red: #e66359;
 =======
@@ -152,6 +169,8 @@ $sidebar-width: 300px;
   --color-red: #e66359;
 >>>>>>> [web-5012] Fixes
 >>>>>>> [web-5012] Fixes
+=======
+>>>>>>> Test fixes
 }
 
 body {
@@ -201,6 +220,10 @@ a {
   line-height: 1.5;
   color:  var(--color-black);
   color: #000000; /* default supported fallback style */
+}
+
+.academy-link-icon {
+  font-size: smaller!important;
 }
 
 .breadcrumbs a {
@@ -329,9 +352,11 @@ a {
     border: 1px solid #006ab3;
     border-radius: 0;
   }
+  
   .search-full input[type="search"] {
-    border: 1px solid #fff;
-    width: 29em !important;
+    height: 3em;
+    border: 1px solid #006ab3;
+    // width: 29em !important;
   }
 }
 
@@ -373,6 +398,7 @@ a {
 .custom-topic-container {
   display: flex;
   flex-direction: column;
+  flex-flow: column wrap;
   align-items: center;
   justify-content: center;
 }
@@ -1124,13 +1150,13 @@ main.main-sidebar {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url("$assets-materialicons-regular-eot"); /* For IE6-8 */
+  // src: url("$assets-materialicons-regular-eot"); /* For IE6-8 */
   
-  src: local("Material Icons"), local("MaterialIcons-Regular"),
-    url("$assets-materialicons-regular-woff2") format("woff2"),
-    url("$assets-materialicons-regular-woff") format("woff"),
-    url("$assets-materialicons-regular-svg#webfont") format("svg"),
-    url("$assets-materialicons-regular-ttf") format("truetype");
+  // src: local("Material Icons"), local("MaterialIcons-Regular"),
+  //   url("$assets-materialicons-regular-woff2") format("woff2"),
+  //   url("$assets-materialicons-regular-woff") format("woff"),
+  //   url("$assets-materialicons-regular-svg#webfont") format("svg"),
+  //   url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
 .material-icons {
