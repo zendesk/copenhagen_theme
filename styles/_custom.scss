@@ -253,6 +253,11 @@ a {
   }
 }
 
+.wysiwyg-color-blue90 {
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
+}
+
 /* Custom container on category and section page*/
 .custom-container {
   margin: 0 auto;

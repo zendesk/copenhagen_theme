@@ -4145,19 +4145,6 @@ html[lang|="ja"] .search-result-description em {
   margin: 0 4px;
 }
 
-body {
-  font-family: "hannah_banana";
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "hannah_banana";
-}
-
 .hero {
   background: none;
 }
@@ -4272,10 +4259,6 @@ h6 {
   border-left-width: 5px;
 }
 
-.alert-box {
-  z-index: 1;
-}
-
 /***************************
  * CUSTOM STYLE OVERRIDE *
  ***************************/
@@ -4381,6 +4364,12 @@ a {
   font-weight: 600;
   font-size: 22px;
   margin: 20px 0;
+}
+
+.wysiwyg-color-blue90 {
+  color: var(--color-blue);
+  color: #006ab3;
+  /* default supported fallback style */
 }
 
 /* Custom container on category and section page*/
@@ -5011,15 +5000,15 @@ sup > .ask-community-sup-icon {
   padding-left: 300px;
 }
 
-.custom-footer-links-card p {
-  line-height: 1;
-  color: white;
-}
-
 @media only screen and (min-width: 1920px) {
   .custom-footer-container {
     padding-left: 0;
   }
+}
+
+.custom-footer-links-card p {
+  line-height: 1;
+  color: white;
 }
 
 .custom-footer {
@@ -5299,10 +5288,30 @@ main.main-sidebar {
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-/* Support for all WebKit browsers. */
-/* Support for Safari and Chrome. */
-/* Support for Firefox. */
-/* Support for IE. */
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+  vertical-align: top;
+}
+
 .black-icon {
   color: var(--color-almost-black);
   color: #424242;
@@ -5598,3 +5607,14 @@ main.main-sidebar {
 }
 
 /**** END OF HOMEPAGE VIDEO SECTION ****/
+.empty-div {
+  width: 0em;
+  height: 0em;
+}
+
+@media (min-width: 1160px) {
+  .empty-div {
+    width: 19em;
+    height: 16em;
+  }
+}
