@@ -4,10 +4,12 @@
     <div class="container">
       <section class="section custom-banner">
         <div class="custom-banner-info custom-page-search">
-          <h1>Hey, is it me you're looking for?</h1>
-          {{search submit=false instant=settings.instant_search class='search search-full'}}
+          <h1>Hey, what are you looking for?</h1>
+          {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search for help articles, videos and more' }}
+          <div class="trending-div">
+            <i class="material-icons red-icon">whatshot</i><a href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=photo+lab">photo lab</a>, <a href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Image+sketchup">image sketchup</a>, <a href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=edit+graphics">edit graphics</a>, <a href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=selecting+components">selecting components</a>
+          </div>
         </div>
-
       </section>
     </div>
   </div>
@@ -18,7 +20,7 @@
         <ul class="custom-blocks-list blocks-list">
           {{#each categories}}
           {{#if ../has_multiple_categories}}
-          {{#isnt name 'Contact page'}}
+          {{#isnt name 'Contact Us'}}
           <li class="custom-blocks-item">
             <a href='{{url}}' class="blocks-item-link">
 
@@ -100,37 +102,73 @@
       <div class="custom-topic-container">
         {{#each categories}}
         {{#each sections}}
-        {{#is id 360003354354}}
-        <section class="custom-card">
+        {{#is id 360003354354}} <!-- FAQ -->
+        <section class="custom-card small-card">
           <a href="{{url}}" class="custom-card-link">
-            <div class="custom-card-logo-container">
-              <i class="material-icons black-icon">camera</i>
+            <div class="custom-card-logo-container square-container">
+              <i class="material-icons black-icon">help</i>
             </div>
-            <h3 class="custom-card-title">
+            <h3 class="custom-card-title small-card-title">
               {{name}}
             </h3>
           </a>
         </section>
         {{/is}}
-        {{#is id 360005707714}}
-        <section class="custom-card">
+        {{#is id 360006621153}} <!-- Video tutorial -->
+        <section class="custom-card small-card">
           <a href="{{url}}" class="custom-card-link">
-            <div class="custom-card-logo-container">
-              <i class="material-icons black-icon">camera</i>
+            <div class="custom-card-logo-container square-container">
+              <i class="material-icons black-icon">ondemand_video</i>
             </div>
-            <h3 class="custom-card-title">
+            <h3 class="custom-card-title small-card-title">
               {{name}}
             </h3>
           </a>
         </section>
         {{/is}}
-        {{#is id 360005707714}}
-        <section class="custom-card">
+        {{#is id 360005899854}} <!-- Drawing in CET Designer -->
+        <section class="custom-card small-card">
           <a href="{{url}}" class="custom-card-link">
-            <div class="custom-card-logo-container">
+            <div class="custom-card-logo-container square-container">
+              <i class="material-icons black-icon">brush</i>
+            </div>
+            <h3 class="custom-card-title small-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/is}}
+        {{#is id 360005926173}} <!-- Photo Lab -->
+        <section class="custom-card small-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container square-container">
               <i class="material-icons black-icon">camera</i>
             </div>
-            <h3 class="custom-card-title">
+            <h3 class="custom-card-title small-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/is}}
+        {{#is id 360005926133}} <!-- Component Tabs -->
+        <section class="custom-card small-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container square-container">
+              <i class="material-icons black-icon">tab</i>
+            </div>
+            <h3 class="custom-card-title small-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/is}}
+        {{#is id 360005899834}} <!-- Additional Extensions -->
+        <section class="custom-card small-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container square-container">
+              <i class="material-icons black-icon">layers</i>
+            </div>
+            <h3 class="custom-card-title small-card-title">
               {{name}}
             </h3>
           </a>
@@ -150,11 +188,11 @@
       <div class="custom-banner-info">
         <h1>We don't give to get, we get to give.</h1>
         <p class="custom-child-with">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-          Ipsum has been the industry's standard dummy text ever since the 1500</p>
+          Ipsum has been the industry's standard dummy text ever since the 1500 <a href="">Academy<sup><i class="material-icons academy-link-icon">open_in_new</i></sup></a></p>
         <div class="btn custom-contact-page-button" role="button">
-          <a href="https://configura.zendesk.com/hc/en-us/community/topics" class="custom-banner-button">
-            <p class="custom-button">Ask the Community</p><img class="custom-banner-button-icon"
-              src="{{asset 'open_in_new-24px.svg'}}">
+          <a href="https://www.configura.com/my/forum" class="custom-banner-button">
+            <p class="custom-button">Forums</p>
+              <sup><i class="material-icons custom-banner-button-icon ask-community-sup-icon">open_in_new</i></sup>
           </a>
         </div>
       </div>
@@ -163,4 +201,61 @@
       </div>
     </section>
   </div>
+</div>
+
+<div class="container">
+  <h1 class="custom-topic-header">New to CET Designer?</h1>
+  <a href="https://configura.zendesk.com/hc/en-us/sections/360006621153" class="custom-video-more-link">Browse all video tutorials</a>
+  <section class="categories blocks">
+    <ul class="custom-blocks-list blocks-list">
+
+      <li class="custom-video-blocks-item">
+        <a href="/hc/en-us/articles/360038532034-Control-Panel-Video-tutorial" class="videos-item-link">          
+          <div class="custom-video-container">
+            <img src="{{asset 'video_placeholder.jpg'}}" />
+          </div>             
+        </a>
+        <div class="custom-video-blocks-item-title-container">
+            <div class="custom-blocks-text-wrapper">
+              <a href="/hc/en-us/articles/360038532034-Control-Panel-Video-tutorial" class="blocks-item-link">
+                <h3 class="blocks-item-title">Control Panel</h3>
+              </a>
+              <p class="video-blocks-item-desc">Don't fret, if you don't find the answer you're looking for you can always chat or call in.</p>
+            </div>
+        </div>      
+      </li>
+        
+      <li class="custom-video-blocks-item">
+        <a href="/hc/en-us/articles/360039031733-Views-and-Navigation-Video-tutorial" class="videos-item-link">
+          <div class="custom-video-container">      
+            <img src="{{asset 'video_placeholder.jpg'}}" />
+          </div>            
+        </a>
+        <div class="custom-video-blocks-item-title-container">
+            <div class="custom-blocks-text-wrapper">
+              <a href="/hc/en-us/articles/360039031733-Views-and-Navigation-Video-tutorial" class="blocks-item-link">
+                <h3 class="blocks-item-title">Views and Navigation</h3>
+              </a>          
+              <p class="video-blocks-item-desc">Learn about our platform for drawing, specifying, and presenting your amazing design work!</p>
+            </div>
+        </div> 
+      </li>
+
+      <li class="custom-video-blocks-item">
+        <a href="/hc/en-us/articles/360038533654-Import-AutoCAD-Drawings-Video-tutorial" class="videos-item-link">
+          <div class="custom-video-container">
+            <img src="{{asset 'video_placeholder.jpg'}}" />
+          </div>
+        </a>
+        <div class="custom-video-blocks-item-title-container">
+            <div class="custom-blocks-text-wrapper">
+              <a href="/hc/en-us/articles/360038533654-Import-AutoCAD-Drawings-Video-tutorial" class="blocks-item-link">
+                  <h3 class="blocks-item-title">AutoCAD Import</h3>
+              </a>          
+              <p class="video-blocks-item-desc">Learn about creating Catalogues! Topics include Catalogue Creator, Model Lab, Data Import, Geometry, Material Lab, and more!</p>
+            </div>
+        </div>      
+      </li>
+    </ul>
+  </section>
 </div>
