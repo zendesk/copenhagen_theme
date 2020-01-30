@@ -31,7 +31,6 @@ $sidebar-width: 300px;
 .sidebar {
   min-width: 17em;
 }
-
 .sidenav-title {
   font-size: 21px;
   position: relative;
@@ -55,6 +54,7 @@ $sidebar-width: 300px;
 
 .search-full input[type="search"] {
   height: 3.5em!important;
+  width: 25rem!important;
   border: 1px solid #006ab3!important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)!important;
 }
@@ -410,6 +410,7 @@ a {
 
 .custom-banner-info {
   display: flex;
+  width: 25rem;
   align-items: center;
   justify-content: center;
   flex-direction: column;
