@@ -1,3 +1,18 @@
+$break-small: 768px;
+$break-large: 1920px;
+
+@mixin respond-to($media) {
+  @if $media == handhelds {
+    @media only screen and (max-width: $break-small) { @content; }
+  }
+  @else if $media == medium-screens {
+    @media only screen and (min-width: $break-small + 1) and (max-width: $break-large - 1) { @content; }
+  }
+  @else if $media == wide-screens {
+    @media only screen and (min-width: $break-large) { @content; }
+  }
+}
+
 /***** Overrides *****/
 $sidebar-width: 300px;
 
@@ -240,7 +255,10 @@ a {
 
 /* Custom container on category and section page*/
 .custom-container {
-  margin: 0 6%;
+  margin: 0 auto;
+  max-width: 1144px;
+  padding-left: calc(env(safe-area-inset-left, 0) + 0.75rem);
+  padding-right: calc(env(safe-area-inset-left, 0) + 0.75rem);
 }
 
 .custom-category-container,
@@ -666,6 +684,7 @@ a {
 .custom-background-color-blue {
   background-color: var(--color-blue);
   background-color: #006ab3; /* default supported fallback style */
+  height: 64px;
   z-index: 1;
 }
 
@@ -713,8 +732,8 @@ sup > .ask-community-sup-icon {
 /* Big screen friendly */
 @media (min-width: 1160px) {
   .custom-header {
-    max-width: 96em;
-    margin: 0 6%;
+    margin: 0 auto;
+    max-width: 1144px;
   }
 }
 
@@ -724,10 +743,11 @@ sup > .ask-community-sup-icon {
     display: inline-block;
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */
-    font-size: 26px;
+    font-size: 20px;
     border-left: 1px solid var(--color-white);
     border-left: 1px solid #ffffff; /* default supported fallback style */
     padding-left: 1em;
+    padding-bottom: 3px;
   }
 }
 
@@ -741,6 +761,11 @@ sup > .ask-community-sup-icon {
   .custom-logo {
     position: relative;
     right: 19px;
+  }
+
+  .custom-logo-dimensions {
+    width: 118px;
+    height: 28px;
   }
 
   .custom-nav-wrapper .user-info > [role="button"],
@@ -805,9 +830,10 @@ sup > .ask-community-sup-icon {
   border: 1px solid var(--color-grey);
   border: 1px solid #c0c0c0; /* default supported fallback style */
   border-radius: 0;
-  max-width: 15em;
   justify-content: end;
   text-align: initial;
+  @include respond-to(medium-screens) { max-width: 15em; }
+  @include respond-to(wide-screens) { max-width: 15em; }
 }
 
 .custom-blocks-item:hover,
@@ -851,6 +877,7 @@ sup > .ask-community-sup-icon {
 
 .custom-footer-container {
   padding-left: $sidebar-width;
+  @include respond-to(wide-screens) { padding-left: 0; }
 }
 
 .custom-footer-links-card p {
@@ -1020,12 +1047,6 @@ body {
   position: fixed;
   top: 0;
   width: $sidebar-width;
-}
-
-@media (min-width: 768px) {
-  .main-sidebar {
-    padding-left: $sidebar-width;
-  }
 }
 
 @media (max-width: 1160px + $sidebar-width + $sidebar-width) and (min-width: 768px) {
@@ -1446,7 +1467,6 @@ main.main-sidebar {
 }
 
 /*** END NOTIFICATION BANNER ***/
-<<<<<<< HEAD
 
 /**** HOMEPAGE VIDEO SECTION ****/
 .custom-video-more-link {
@@ -1484,7 +1504,6 @@ main.main-sidebar {
 }
 
 /**** END OF HOMEPAGE VIDEO SECTION ****/
-=======
 .empty-div {
   width: 0em;
   height: 0em;
@@ -1496,4 +1515,3 @@ main.main-sidebar {
     height: 16em;
   }
 }
->>>>>>> [web-5013-a] Fixes

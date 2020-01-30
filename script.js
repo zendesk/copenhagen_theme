@@ -436,6 +436,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	);
 
 	/**** END CUSTOM MOBILE MENU ITEMS ****/
+
+	var footer = document.getElementById("footer");
+	var sidebar = document.getElementById("sidebar");
+	if (!sidebar) {
+		footer.style.paddingLeft = 0;
+	}
 });
 
 /**** CUSTOM CHAT ****/

@@ -4145,6 +4145,19 @@ html[lang|="ja"] .search-result-description em {
   margin: 0 4px;
 }
 
+body {
+  font-family: "hannah_banana";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "hannah_banana";
+}
+
 .hero {
   background: none;
 }
@@ -4259,6 +4272,10 @@ html[lang|="ja"] .search-result-description em {
   border-left-width: 5px;
 }
 
+.alert-box {
+  z-index: 1;
+}
+
 /***************************
  * CUSTOM STYLE OVERRIDE *
  ***************************/
@@ -4368,7 +4385,10 @@ a {
 
 /* Custom container on category and section page*/
 .custom-container {
-  margin: 0 6%;
+  margin: 0 auto;
+  max-width: 1144px;
+  padding-left: calc(env(safe-area-inset-left, 0) + 0.75rem);
+  padding-right: calc(env(safe-area-inset-left, 0) + 0.75rem);
 }
 
 .custom-category-container,
@@ -4792,6 +4812,7 @@ a {
   background-color: var(--color-blue);
   background-color: #006ab3;
   /* default supported fallback style */
+  height: 64px;
   z-index: 1;
 }
 
@@ -4838,8 +4859,8 @@ sup > .ask-community-sup-icon {
 /* Big screen friendly */
 @media (min-width: 1160px) {
   .custom-header {
-    max-width: 96em;
-    margin: 0 6%;
+    margin: 0 auto;
+    max-width: 1144px;
   }
 }
 
@@ -4850,11 +4871,12 @@ sup > .ask-community-sup-icon {
     color: var(--color-white);
     color: #ffffff;
     /* default supported fallback style */
-    font-size: 26px;
+    font-size: 20px;
     border-left: 1px solid var(--color-white);
     border-left: 1px solid #ffffff;
     /* default supported fallback style */
     padding-left: 1em;
+    padding-bottom: 3px;
   }
 }
 
@@ -4867,6 +4889,10 @@ sup > .ask-community-sup-icon {
   .custom-logo {
     position: relative;
     right: 19px;
+  }
+  .custom-logo-dimensions {
+    width: 118px;
+    height: 28px;
   }
   .custom-nav-wrapper .user-info > [role="button"],
   .user-info > [role="button"]::after,
@@ -4926,9 +4952,20 @@ sup > .ask-community-sup-icon {
   border: 1px solid #c0c0c0;
   /* default supported fallback style */
   border-radius: 0;
-  max-width: 15em;
   justify-content: end;
   text-align: initial;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1919px) {
+  .custom-blocks-item {
+    max-width: 15em;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .custom-blocks-item {
+    max-width: 15em;
+  }
 }
 
 .custom-blocks-item:hover,
@@ -4977,6 +5014,12 @@ sup > .ask-community-sup-icon {
 .custom-footer-links-card p {
   line-height: 1;
   color: white;
+}
+
+@media only screen and (min-width: 1920px) {
+  .custom-footer-container {
+    padding-left: 0;
+  }
 }
 
 .custom-footer {
@@ -5144,12 +5187,6 @@ body {
   width: 300px;
 }
 
-@media (min-width: 768px) {
-  .main-sidebar {
-    padding-left: 300px;
-  }
-}
-
 @media (max-width: 1760px) and (min-width: 768px) {
   .main-sidebar,
   .main-sidebar + .custom-footer-container {
@@ -5262,30 +5299,10 @@ main.main-sidebar {
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
-  vertical-align: top;
-}
-
+/* Support for all WebKit browsers. */
+/* Support for Safari and Chrome. */
+/* Support for Firefox. */
+/* Support for IE. */
 .black-icon {
   color: var(--color-almost-black);
   color: #424242;
