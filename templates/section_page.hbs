@@ -48,7 +48,7 @@
       {{search scoped=settings.scoped_kb_search submit=false}}
     </nav>
 
-  <div class="section-container custom-section-container">
+  {{!-- <div class="section-container custom-section-container">
     <section class="section-content">
       <header class="page-header">
         <h1>
@@ -90,16 +90,80 @@
             </li>
           {{/each}}
         </ul>
-      {{else}}
-        <i class="section-empty">
-          <a href="{{section.url}}">{{t 'empty'}}</a>
-        </i>
+     
+      
       {{/if}}
 
       {{pagination}}
 
     </section>
-  </div>
+  </div> --}}
+
+   <header class="page-header">
+        <h1>
+          {{section.name}}
+        </h1>
+        {{#if settings.show_follow_section}}
+          {{subscribe}}
+        {{/if}}
+        {{#if section.description}}
+          <p class="page-header-description">{{section.description}}</p>
+        {{/if}}
+      </header>
+      
+      {{#if section.sections}}
+      <div class="section-container custom-section-container">
+       <section class="section-list">
+      
+     
+    <section class="custom-subsection">
+      {{#each section.sections}}
+      
+      <section class="custom-subsection-section">
+        <h2 class="section-tree-title">
+          <a href="{{url}}">{{name}}</a>
+       </h2>
+
+          {{#if articles}}
+            <ul class="article-list">
+                 {{#each articles}}
+                     <li class="custom-article-list-item{{#if promoted}} article-promoted{{/if}}">
+                          {{#if promoted}}
+                              <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+                           {{/if}}
+                            <a href="{{url}}" class="article-list-link">{{title}}</a>
+                       </li>
+                   {{/each}}
+              </ul>
+           {{/if}}
+      </section>
+           
+      {{/each}}
+    </section>
+    </div>
+      {{/if}}
+
+      </section>
+      {{#if section.articles}}
+      
+        <ul class="article-list">
+          {{#each section.articles}}
+            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+              {{#if promoted}}
+                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+              {{/if}}
+              <a href="{{url}}" class="article-list-link">{{title}}</a>
+              {{#if internal}}
+                <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+     
+      
+      {{/if}}
+      
+      </div>
 </div>
 <script>sidebar.$mount("main");</script>
 </main>

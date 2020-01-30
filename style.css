@@ -4682,6 +4682,14 @@ a {
   border-bottom: none;
 }
 
+.custom-article-list-item {
+  padding: 13px 0;
+  color: var(--color-blue);
+  color: #006ab3;
+  /* default supported fallback style */
+  border-bottom: 1px solid #006ab3;
+}
+
 .custom-section-list .article-list-item a {
   color: var(--color-blue);
   color: #006ab3;
@@ -5115,6 +5123,45 @@ main.main-sidebar {
   color: #333;
 }
 
+.section-tree-title a {
+  font-size: 28px;
+  font-weight: bold;
+  color: $text_color;
+}
+
+.section-list {
+  margin: 0rem;
+  margin-bottom: 2rem;
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.custom-subsection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.custom-subsection-section {
+  width: 18rem;
+  margin-bottom: 2rem;
+}
+
+.section-list-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 420px;
+  flex: 1 0 420px;
+  padding: 5px 0;
+  max-width: 100%;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
 .sidebar-item-title:before {
   content: "\E75E";
   font-family: "entypo";
@@ -5177,9 +5224,6 @@ main.main-sidebar {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url("$assets-materialicons-regular-eot");
-  /* For IE6-8 */
-  src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
 .material-icons {
