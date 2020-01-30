@@ -156,21 +156,8 @@ $sidebar-width: 300px;
   --color-almost-black: #424242;
   --color-black: #000000;
   --color-blue: #006ab3;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   --color-blue-link: #0072ef;
   --color-red: #e66359;
-=======
->>>>>>> [web4902] Target blank. Margin to icons. Removed blue-link color.
-=======
-=======
-  --color-blue-link: #0072ef;
-  --color-red: #e66359;
->>>>>>> [web-5012] Fixes
->>>>>>> [web-5012] Fixes
-=======
->>>>>>> Test fixes
 }
 
 body {
@@ -871,6 +858,11 @@ sup > .ask-community-sup-icon {
 
 .custom-footer-container {
   padding-left: $sidebar-width;
+}
+
+.custom-footer-links-card p {
+  line-height: 1;
+  color: white;
 }
 
 .custom-footer {

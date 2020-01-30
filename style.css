@@ -4276,11 +4276,8 @@ html[lang|="ja"] .search-result-description em {
   --color-almost-black: #424242;
   --color-black: #000000;
   --color-blue: #006ab3;
-<<<<<<< HEAD
   --color-blue-link: #0072ef;
   --color-red: #e66359;
-=======
->>>>>>> [web4902] Target blank. Margin to icons. Removed blue-link color.
 }
 
 body {
@@ -4979,6 +4976,11 @@ sup > .ask-community-sup-icon {
 /**** CUSTOM FOOTER ****/
 .custom-footer-container {
   padding-left: 300px;
+}
+
+.custom-footer-links-card p {
+  line-height: 1;
+  color: white;
 }
 
 .custom-footer {
