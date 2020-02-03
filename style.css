@@ -5703,3 +5703,13 @@ main.main-sidebar {
   align-items: flex-start;
   flex-direction: column;
 }
+
+.custom-support-team-banner {
+  max-width: 1144px;
+}
+
+.custom-support-team-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
