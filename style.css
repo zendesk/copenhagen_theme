@@ -5358,10 +5358,30 @@ main.main-sidebar {
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-/* Support for all WebKit browsers. */
-/* Support for Safari and Chrome. */
-/* Support for Firefox. */
-/* Support for IE. */
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: "liga";
+  vertical-align: top;
+}
+
 .black-icon {
   color: var(--color-almost-black);
   color: #424242;
