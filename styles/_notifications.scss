@@ -60,7 +60,7 @@
 
 /* Alert / Lock */
 
-.notification-alert, .notification-lock {
+.notification-alert {
   color: #ad5e18;
   background: #fff8ed;
   border-color: #fcdba9;
@@ -68,10 +68,6 @@
 
 .notification-alert .notification-icon::before {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23ad5e18' stroke-linecap='round' d='M5.06 1.27l-4.5 8.5c-.18.33.06.73.44.73h9c.38 0 .62-.4.44-.73l-4.5-8.5a.494.494 0 00-.88 0zM5.5 4v2'/%3E%3Ccircle cx='5.5' cy='8' r='.8' fill='%23ad5e18'/%3E%3C/svg%3E");
-}
-
-.notification-lock .notification-icon::before {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%23ad5e18' d='M3.5 5.5V3a2.5 2.5 0 015 0v2.5'/%3E%3Crect width='10' height='7' x='1' y='5' fill='%23ad5e18' rx='1' ry='1'/%3E%3C/svg%3E");
 }
 
 .notification-icon::before {
