@@ -447,7 +447,11 @@ a {
 }
 
 .custom-banner-picture {
+  align-items: center;
+  display: flex;
+  justify-content: center;
   padding-top: 2em;
+  width: 50%;
 }
 
 .custom-banner-button {
@@ -486,13 +490,15 @@ a {
   }
 
   .custom-banner {
-    flex-direction: row;
     align-items: inherit;
-    justify-content: space-around;
-    background-color: var(--color-grey);
     background-color: #f7f6f6; /* default supported fallback style */
+    background-color: var(--color-grey);
+    display: flex;
+    flex-direction: row;
     height: auto;
+    justify-content: space-around;
     padding: 2em 0;
+    width: 100%;
   }
 
   .custom-banner-info {
@@ -927,6 +933,7 @@ sup > .ask-community-sup-icon {
 
 .custom-footer-inner {
   display: block;
+  max-width: 1144px;
 }
 
 .custom-footer-logo {
@@ -1235,32 +1242,32 @@ main.main-sidebar {
     url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// .material-icons {
+//   font-family: "Material Icons";
+//   font-weight: normal;
+//   font-style: normal;
+//   font-size: 24px; /* Preferred icon size */
+//   display: inline-block;
+//   line-height: 1;
+//   text-transform: none;
+//   letter-spacing: normal;
+//   word-wrap: normal;
+//   white-space: nowrap;
+//   direction: ltr;
 
   /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+  // font-feature-settings: "liga";
 
-  vertical-align: top;
-} 
+//   vertical-align: top;
+// } 
 
 .black-icon {
   color: var(--color-almost-black);
@@ -1597,4 +1604,28 @@ main.main-sidebar {
     width: 19em;
     height: 16em;
   }
+}
+
+.custom-forums-page-button {
+  margin-left: 0;
+  margin-top: 2rem;
+}
+
+.img-forums {
+  max-width: 350px;
+}
+
+.custom-logo {
+  margin-left: -1.35rem;
+}
+
+.custom-forums-section {
+  display: flex;
+}
+
+.custom-forums-banner {
+  display: flex;
+  width: 50%;
+  align-items: flex-start;
+  flex-direction: column;
 }
