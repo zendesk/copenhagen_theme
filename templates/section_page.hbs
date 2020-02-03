@@ -118,13 +118,13 @@
      
     <section class="custom-subsection">
       {{#each section.sections}}
-      
+       {{#if articles}}
       <section class="custom-subsection-section">
         <h2 class="section-tree-title">
           <a href="{{url}}">{{name}}</a>
        </h2>
 
-          {{#if articles}}
+         
             <ul class="article-list">
                  {{#each articles}}
                      <li class="custom-article-list-item{{#if promoted}} article-promoted{{/if}}">
