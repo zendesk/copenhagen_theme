@@ -1005,6 +1005,7 @@ main.main-sidebar {
 }
 
 .section-list {
+  width: 100%;
   margin: 0rem;
   margin-bottom: 2rem;
   list-style-type: none;
@@ -1017,6 +1018,7 @@ main.main-sidebar {
 }
 
 .custom-subsection {
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
