@@ -4327,6 +4327,10 @@ a {
   /* default supported fallback style */
 }
 
+.section-container {
+  display: contents;
+}
+
 .comment-heading {
   font-weight: 600;
   font-size: 22px;
@@ -4568,6 +4572,10 @@ a {
   .custom-child-with {
     width: 100%;
   }
+}
+
+.section-container {
+  display: contents;
 }
 
 /****  CUSTOM CARD ****/
@@ -5130,8 +5138,8 @@ main.main-sidebar {
 }
 
 .section-list {
-  width: 95%;
-  margin: 0rem;
+  width: 30%;
+  margin: 0rem 2rem;
   margin-bottom: 2rem;
   list-style-type: none;
   display: -webkit-box;
