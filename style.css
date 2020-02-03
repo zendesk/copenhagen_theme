@@ -5138,8 +5138,7 @@ main.main-sidebar {
 }
 
 .section-list {
-  width: 30%;
-  margin: 0rem 2rem;
+  margin: 0rem;
   margin-bottom: 2rem;
   list-style-type: none;
   display: -webkit-box;
@@ -5159,6 +5158,7 @@ main.main-sidebar {
 
 .custom-subsection-section {
   width: 18rem;
+  margin: 0 2rem;
   margin-bottom: 2rem;
 }
 
