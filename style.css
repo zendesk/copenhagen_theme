@@ -5108,6 +5108,12 @@ main.main-sidebar {
   flex: 1 1 auto;
 }
 
+.section-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .sidebar-item {
   padding: 6px 0;
   color: #333;
@@ -5143,9 +5149,6 @@ main.main-sidebar {
   list-style-type: none;
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
   text-align: left;
 }
 
