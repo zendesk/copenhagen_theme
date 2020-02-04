@@ -18,9 +18,9 @@ $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default 
 
 //added colors
 $hero-background: #e8e8e8; //hex used for Forum is from platform header
-$hero-text-color: $text_color;
-$hero-link-text-color: $secondary_link_color;
-$hero-link-text-hover: $secondary_link_hover;
+$hero-text-color: $brand_text_color;
+$hero-link-text-color: $brand_text_color;
+$hero-link-text-hover: $brand_text_color;
 $dark-gray: #333333;
 $med-gray: #cccccc;
 $gray: #e8e8e8; //article anchor box, bottom of footer
