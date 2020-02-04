@@ -4384,6 +4384,7 @@ a {
   max-width: 1144px;
   padding-left: calc(env(safe-area-inset-left, 0) + 0.75rem);
   padding-right: calc(env(safe-area-inset-left, 0) + 0.75rem);
+  padding-bottom: 1rem;
 }
 
 .custom-category-container,
@@ -4514,15 +4515,8 @@ a {
   /* default supported fallback style */
 }
 
-.custom-button {
-  color: var(--color-white);
-  color: #ffffff;
-  /* default supported fallback style */
-  font-size: 16px;
-  text-transform: uppercase;
-}
-
 .custom-contacts-button {
+  border: none;
   color: black;
   /* default supported fallback style */
   color: var(--color-black);
@@ -5185,9 +5179,9 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-contact-button-container {
+  align-items: center;
   display: flex;
   justify-content: center;
-  flex-direction: initial;
   padding-bottom: 3em;
   padding-top: 3em;
   background-color: #18181a;
@@ -5195,13 +5189,13 @@ sup > .ask-community-sup-icon {
 
 @media only screen and (max-width: 768px) {
   .custom-contact-button-container {
-    align-items: center;
     flex-direction: column;
   }
 }
 
 .custom-contact-title {
   color: #ffffff;
+  margin-bottom: 0;
 }
 
 /* Big screen friendly */
@@ -5776,7 +5770,6 @@ main.main-sidebar {
   border-radius: 0;
   display: flex;
   margin-left: 0;
-  margin-left: 20px;
   margin-top: 2rem;
   max-height: 4em;
   width: auto;
@@ -5786,6 +5779,15 @@ main.main-sidebar {
   .custom-forums-page-button {
     margin-left: 0;
   }
+}
+
+.custom-forums-button {
+  color: var(--color-white);
+  color: #ffffff;
+  /* default supported fallback style */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .img-forums {
