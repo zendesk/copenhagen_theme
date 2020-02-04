@@ -5321,14 +5321,11 @@ main.main-sidebar {
   color: #006ab3;
 }
 
-<<<<<<< cdeac07f88abac49ca960f37df80b2f00e16e5df
 .red-icon {
   color: var(--color-red);
   color: #e66359;
 }
 
-=======
->>>>>>> [web-4993] Rebase
 /**** END CUSTOM STYLE ****/
 /*** NOTIFICATION BANNER ***/
 /*** Common, default styles for the notification box ***/
@@ -5573,7 +5570,6 @@ main.main-sidebar {
 }
 
 /*** END NOTIFICATION BANNER ***/
-<<<<<<< cdeac07f88abac49ca960f37df80b2f00e16e5df
 /**** HOMEPAGE VIDEO SECTION ****/
 .custom-video-more-link {
   display: flex;
@@ -5612,19 +5608,11 @@ main.main-sidebar {
 /**** END OF HOMEPAGE VIDEO SECTION ****/
 .empty-div {
   width: 0em;
-  height: 0em;
-=======
-.empty-div {
-  width: 0em;
->>>>>>> [web-4993] Rebase
 }
 
 @media (min-width: 1160px) {
   .empty-div {
     width: 19em;
-<<<<<<< cdeac07f88abac49ca960f37df80b2f00e16e5df
     height: 16em;
-=======
->>>>>>> [web-4993] Rebase
   }
 }
