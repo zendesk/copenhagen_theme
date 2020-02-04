@@ -1037,7 +1037,7 @@ table td, table th {
 
 /***** Hero component *****/
 .hero {
-  background-image: #e8e8e8;
+  background-image: url($homepage_background_artstor);
   background-size: cover;
   color: $brand_text_color;
   height: 300px;
