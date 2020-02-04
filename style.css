@@ -1277,12 +1277,12 @@ table td, table th {
 
 .popular-topics a {
   padding: 0 5px;
-  color: $brand_text_color;
+  color: #555555;
   display: inline-block;
 }
 
 .popular-topics a:hover, .popular-topics a:active, .popular-topics a:focus {
-  color: $brand_text_color;
+  color: #333333;
   text-decoration: none;
 }
 
