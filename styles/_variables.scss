@@ -18,7 +18,7 @@ $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default 
 
 //added colors
 $hero-background: url($homepage_background_jstor);
-$hero-text-color: $brand_text_color;
+$hero-text-color: $secondary_link_hover;
 $hero-link-text-color: $brand_text_color;
 $hero-link-text-hover: $brand_text_color;
 $dark-gray: #333333;

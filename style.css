@@ -1021,7 +1021,7 @@ table td, table th {
 .hero {
   background-image: url($homepage_background_jstor);
   background-size: cover;
-  color: $brand_text_color;
+  color: #333333;
   height: 300px;
   margin: 20px 0 !important;
   padding: 0 20px;
