@@ -330,6 +330,7 @@ a {
   @include respond-to(handhelds) { margin-left: 0; }
   align-items: center;
   background-color: var(--color-white);
+  border: none;
   border-radius: 0;
   display: flex;
   margin-left: 20px;
@@ -394,7 +395,6 @@ a {
 }
 
 .custom-contacts-button {
-  border: none;
   color: black; /* default supported fallback style */
   color: var(--color-black);
   font-size: 16px;

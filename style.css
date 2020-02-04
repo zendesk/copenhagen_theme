@@ -4444,6 +4444,7 @@ a {
 .custom-contact-page-button {
   align-items: center;
   background-color: var(--color-white);
+  border: none;
   border-radius: 0;
   display: flex;
   margin-left: 20px;
@@ -4516,7 +4517,6 @@ a {
 }
 
 .custom-contacts-button {
-  border: none;
   color: black;
   /* default supported fallback style */
   color: var(--color-black);
