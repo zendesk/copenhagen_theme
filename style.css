@@ -4666,6 +4666,9 @@ a {
 
 /* Big screen friendly */
 @media (min-width: 768px) {
+  .custom-card {
+    margin-right: 1em;
+  }
   .custom-contact-card-wrapper.custom-contact-card-left {
     margin-right: auto;
     margin-left: 2.5em;
