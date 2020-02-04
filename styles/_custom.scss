@@ -334,6 +334,7 @@ a {
   background-color: var(--color-blue);
   background-color: #006ab3; /* default supported fallback style */
   margin-left: 20px;
+  @include respond-to(handhelds) { margin-left: 0; }
 }
 
 .custom-contact-card-wrapper {
@@ -428,13 +429,15 @@ a {
 }
 
 .custom-banner {
+  align-items: center;
+  background-color: #f7f6f6; /* default supported fallback style */
+  background-color: var(--color-grey);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  background-color: var(--color-grey);
-  background-color: #f7f6f6; /* default supported fallback style */
   height: auto;
-  padding: 2em;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  @include respond-to(handhelds) { padding: 1rem; }
 }
 
 .custom-banner-info {
@@ -450,8 +453,20 @@ a {
   align-items: center;
   display: flex;
   justify-content: center;
-  padding-top: 2em;
+  padding-top: 2rem;
   width: 50%;
+  @include respond-to(handhelds) { display: none; }
+}
+
+.custom-banner-picture-mobile {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  @include respond-to(medium-screens) { display: none; }
+  @include respond-to(wide-screens) { display: none; }
 }
 
 .custom-banner-button {
@@ -497,7 +512,7 @@ a {
     flex-direction: row;
     height: auto;
     justify-content: space-around;
-    padding: 2em 0;
+    padding: 2rem;
     width: 100%;
   }
 
@@ -1004,6 +1019,10 @@ sup > .ask-community-sup-icon {
   padding-bottom: 3em;
   padding-top: 3em;
   background-color: black;
+  @include respond-to(handhelds) {
+    align-items: center;
+    flex-direction: column;
+  }
 }
 
 .custom-contact-title {
@@ -1242,32 +1261,32 @@ main.main-sidebar {
     url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// .material-icons {
+//   font-family: "Material Icons";
+//   font-weight: normal;
+//   font-style: normal;
+//   font-size: 24px; /* Preferred icon size */
+//   display: inline-block;
+//   line-height: 1;
+//   text-transform: none;
+//   letter-spacing: normal;
+//   word-wrap: normal;
+//   white-space: nowrap;
+//   direction: ltr;
 
   /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+  // font-feature-settings: "liga";
 
-  vertical-align: top;
-} 
+//   vertical-align: top;
+// } 
 
 .black-icon {
   color: var(--color-almost-black);
@@ -1615,8 +1634,13 @@ main.main-sidebar {
   max-width: 350px;
 }
 
+.img-forums-mobile {
+  max-width: 200px;
+}
+
 .custom-logo {
   margin-left: -1.35rem;
+  @include respond-to(handhelds) { margin-left: 0; }
 }
 
 .custom-forums-section {
@@ -1628,6 +1652,10 @@ main.main-sidebar {
   width: 50%;
   align-items: flex-start;
   flex-direction: column;
+  @include respond-to(handhelds) {
+    align-items: center;
+    width: 100%;
+  }
 }
 
 .custom-support-team-banner {
