@@ -4441,21 +4441,32 @@ a {
 }
 
 .custom-contact-page-button {
-  display: flex;
   align-items: center;
+  background-color: var(--color-white);
+  border-radius: 0;
+  display: flex;
+  margin-left: 20px;
   max-height: 4em;
   width: auto;
-  border-radius: 0;
-  background-color: var(--color-blue);
-  background-color: #006ab3;
-  /* default supported fallback style */
-  margin-left: 20px;
+  color: var(--color-black);
 }
 
 @media only screen and (max-width: 768px) {
   .custom-contact-page-button {
     margin-left: 0;
   }
+}
+
+.custom-contact-page-button:hover {
+  background-color: var(--color-white);
+}
+
+.custom-contact-page-button:active {
+  background-color: var(--color-white);
+}
+
+.custom-contact-page-button:focus {
+  background-color: var(--color-white);
 }
 
 .custom-contact-card-wrapper {
@@ -4508,6 +4519,15 @@ a {
   color: #ffffff;
   /* default supported fallback style */
   font-size: 16px;
+  text-transform: uppercase;
+}
+
+.custom-contacts-button {
+  color: black;
+  /* default supported fallback style */
+  color: var(--color-black);
+  font-size: 16px;
+  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -5169,7 +5189,7 @@ sup > .ask-community-sup-icon {
   flex-direction: initial;
   padding-bottom: 3em;
   padding-top: 3em;
-  background-color: black;
+  background-color: #18181a;
 }
 
 @media only screen and (max-width: 768px) {
@@ -5728,8 +5748,23 @@ main.main-sidebar {
 }
 
 .custom-forums-page-button {
+  align-items: center;
+  background-color: #006ab3;
+  /* default supported fallback style */
+  background-color: var(--color-blue);
+  border-radius: 0;
+  display: flex;
   margin-left: 0;
+  margin-left: 20px;
   margin-top: 2rem;
+  max-height: 4em;
+  width: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-forums-page-button {
+    margin-left: 0;
+  }
 }
 
 .img-forums {
@@ -5776,4 +5811,16 @@ main.main-sidebar {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.no-text-decoration:active {
+  text-decoration: none;
+}
+
+.no-text-decoration:focus {
+  text-decoration: none;
+}
+
+.no-text-decoration:hover {
+  text-decoration: none;
 }

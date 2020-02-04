@@ -326,15 +326,24 @@ a {
 }
 
 .custom-contact-page-button {
-  display: flex;
+  @include respond-to(handhelds) { margin-left: 0; }
   align-items: center;
+  background-color: var(--color-white);
+  border-radius: 0;
+  display: flex;
+  margin-left: 20px;
   max-height: 4em;
   width: auto;
-  border-radius: 0;
-  background-color: var(--color-blue);
-  background-color: #006ab3; /* default supported fallback style */
-  margin-left: 20px;
-  @include respond-to(handhelds) { margin-left: 0; }
+  color: var(--color-black);
+  &:hover {
+    background-color: var(--color-white);
+  }
+  &:active {
+    background-color: var(--color-white);
+  }
+  &:focus {
+    background-color: var(--color-white);
+  }
 }
 
 .custom-contact-card-wrapper {
@@ -387,6 +396,14 @@ a {
   color: var(--color-white);
   color: #ffffff; /* default supported fallback style */
   font-size: 16px;
+  text-transform: uppercase;
+}
+
+.custom-contacts-button {
+  color: black; /* default supported fallback style */
+  color: var(--color-black);
+  font-size: 16px;
+  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -1018,7 +1035,7 @@ sup > .ask-community-sup-icon {
   flex-direction: initial;
   padding-bottom: 3em;
   padding-top: 3em;
-  background-color: black;
+  background-color: #18181a;
   @include respond-to(handhelds) {
     align-items: center;
     flex-direction: column;
@@ -1626,8 +1643,17 @@ main.main-sidebar {
 }
 
 .custom-forums-page-button {
+  @include respond-to(handhelds) { margin-left: 0; }
+  align-items: center;
+  background-color: #006ab3; /* default supported fallback style */
+  background-color: var(--color-blue);
+  border-radius: 0;
+  display: flex;
   margin-left: 0;
+  margin-left: 20px;
   margin-top: 2rem;
+  max-height: 4em;
+  width: auto;
 }
 
 .img-forums {
@@ -1666,4 +1692,16 @@ main.main-sidebar {
   align-items: center;
   display: flex;
   justify-content: center;
+}
+
+.no-text-decoration {
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
+  }
 }
