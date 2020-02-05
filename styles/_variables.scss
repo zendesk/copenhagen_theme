@@ -17,7 +17,7 @@ $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default ba
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 //added colors
-$hero-background: url($homepage_background_forum); //file in settings
+$hero-background: url($homepage_background_jstor);
 $hero-text-color: $secondary_link_hover;
 $hero-link-text-color: $secondary_link_color;
 $hero-link-text-hover: $secondary_link_hover;
