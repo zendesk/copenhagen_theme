@@ -109,11 +109,6 @@
       "description": "homepage_background_image_description",
       "label": "homepage_background_image_label"
     }, {
-      "identifier": "homepage_background_jstor",
-      "type": "file",
-      "description": "homepage_background_jstor_description",
-      "label": "homepage_background_jstor_label"
-    }, {
       "identifier": "community_background_image",
       "type": "file",
       "description": "community_background_image_description",

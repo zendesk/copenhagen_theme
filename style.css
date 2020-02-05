@@ -1019,7 +1019,7 @@ table td, table th {
 
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_jstor);
+  background-image: url($homepage_background_image);
   background-size: cover;
   color: #333333;
   height: 300px;
