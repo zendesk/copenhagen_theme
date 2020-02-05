@@ -5147,6 +5147,13 @@ sup > .ask-community-sup-icon {
   padding: 0 10px;
 }
 
+.custom-copyright-container p {
+  color: var(--color-white);
+  color: #ffffff;
+  /* default supported fallback style */
+  padding: 0 10px;
+}
+
 .custom-footer-links-card {
   width: 15em;
   padding: 2em 1em 1em 1em;
@@ -5836,6 +5843,7 @@ main.main-sidebar {
 
 .custom-support-team-banner {
   max-width: 1144px;
+  width: 100%;
 }
 
 .custom-support-team-container {
