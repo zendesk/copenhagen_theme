@@ -457,7 +457,9 @@ a {
 
 .custom-banner-button-icon {
   padding-left: 10px;
-  height: 16px;
+  height: 25px;
+  color: var(--color-white);
+  color: #ffffff;
 }
 
 
@@ -512,16 +514,17 @@ a {
   background-color: #f7f6f6; /* default supported fallback style */
   border: 1px solid var(--color-grey);
   border: 1px solid #f7f6f6; /* default supported fallback style */
-  width: 19em;
+  width: 19em;  
+  height: min-content;
   margin-bottom: 2em;
-}
-
-.custom-card a:hover {
-  text-decoration: none;
 }
 
 .custom-card-link {
   display: flex;
+
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
 }
 
 .custom-card-title {
@@ -544,7 +547,7 @@ a {
 .custom-card-logo-container {
   background-color: var(--color-white);
   background-color: #ffffff; /* default supported fallback style */
-  height: 7em;
+  height: 6.9em;
   padding: 0 2em;
   display: flex;
   justify-content: center;
@@ -561,6 +564,7 @@ a {
   .custom-card {
     margin-right: 1em;
   }
+
   .custom-contact-card-wrapper.custom-contact-card-left {
     margin-right: auto;
     margin-left: 2.5em;
@@ -814,7 +818,7 @@ sup > .ask-community-sup-icon {
   }
 
   .custom-myconfigura-container a {
-    display: flex;
+    display: inline-block;
     align-items: center;
   }
 
@@ -1586,7 +1590,6 @@ main.main-sidebar {
 /**** END OF HOMEPAGE VIDEO SECTION ****/
 .empty-div {
   width: 0em;
-  height: 0em;
 }
 
 @media (min-width: 1160px) {

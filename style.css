@@ -4575,7 +4575,9 @@ a {
 
 .custom-banner-button-icon {
   padding-left: 10px;
-  height: 16px;
+  height: 25px;
+  color: var(--color-white);
+  color: #ffffff;
 }
 
 @media (min-width: 768px) {
@@ -4626,15 +4628,16 @@ a {
   border: 1px solid #f7f6f6;
   /* default supported fallback style */
   width: 19em;
+  height: min-content;
   margin-bottom: 2em;
-}
-
-.custom-card a:hover {
-  text-decoration: none;
 }
 
 .custom-card-link {
   display: flex;
+}
+
+.custom-card-link:hover, .custom-card-link:active, .custom-card-link:focus {
+  text-decoration: none;
 }
 
 .custom-card-title {
@@ -4659,7 +4662,7 @@ a {
   background-color: var(--color-white);
   background-color: #ffffff;
   /* default supported fallback style */
-  height: 7em;
+  height: 6.9em;
   padding: 0 2em;
   display: flex;
   justify-content: center;
@@ -4922,7 +4925,7 @@ sup > .ask-community-sup-icon {
     display: inline-block;
   }
   .custom-myconfigura-container a {
-    display: flex;
+    display: inline-block;
     align-items: center;
   }
   .custom-marketplace-btn-container a {
@@ -5681,7 +5684,6 @@ main.main-sidebar {
 /**** END OF HOMEPAGE VIDEO SECTION ****/
 .empty-div {
   width: 0em;
-  height: 0em;
 }
 
 @media (min-width: 1160px) {
