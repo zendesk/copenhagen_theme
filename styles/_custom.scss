@@ -293,6 +293,7 @@ a {
 
 .trending-div {
   margin-top: 15px;
+  @include respond-to(handhelds) { text-align: center; }
 }
 
 .trending-div > a {
@@ -466,13 +467,37 @@ a {
   @include respond-to(handhelds) { padding: 1rem; }
 }
 
+.custom-hero-banner-container {
+  background-image: url('./assets/hero_support.jpg');
+  background-size: cover;
+  @include respond-to(wide-screens) { height: 500px; }
+  @include respond-to(medium-screens) {height: 350px; }
+}
+
+.custom-hero-banner {
+  display: flex;
+  justify-content: start;
+  background-color: rgba(0, 0, 0, 0);
+  height: auto;
+  padding: 2em;
+  @include respond-to(handhelds) {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
 .custom-banner-info {
   display: flex;
   width: 25rem;
-  align-items: center;
-  justify-content: center;
+  align-items: start;
+  justify-content: start;
   flex-direction: column;
-  text-align: center;
+  @include respond-to(handhelds) {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .custom-banner-picture {
@@ -540,10 +565,6 @@ a {
     justify-content: space-around;
     padding: 2rem;
     width: 100%;
-  }
-
-  .custom-banner-info {
-    text-align: left;
   }
 
   .custom-child-with {
@@ -1304,32 +1325,32 @@ main.main-sidebar {
     url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// .material-icons {
+//   font-family: "Material Icons";
+//   font-weight: normal;
+//   font-style: normal;
+//   font-size: 24px; /* Preferred icon size */
+//   display: inline-block;
+//   line-height: 1;
+//   text-transform: none;
+//   letter-spacing: normal;
+//   word-wrap: normal;
+//   white-space: nowrap;
+//   direction: ltr;
 
   /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+//   font-feature-settings: "liga";
 
-  vertical-align: top;
-} 
+//   vertical-align: top;
+// } 
 
 .black-icon {
   color: var(--color-almost-black);
