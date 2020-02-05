@@ -381,7 +381,6 @@ a {
   .search-full input[type="search"] {
     height: 3em;
     border: 1px solid #006ab3;
-    // width: 29em !important;
   }
 }
 
@@ -1597,6 +1596,13 @@ main.main-sidebar {
 
   .ns-box-inner {
     width: 95%;
+  }
+
+  .search-full input[type="search"] {
+    height: 3.5em!important;
+    width: 90%!important;
+    border: 1px solid #006ab3!important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)!important;
   }
 }
 
