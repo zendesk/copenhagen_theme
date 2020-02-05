@@ -660,10 +660,6 @@ ul {
   }
 }
 
-.breadcrumbs :last-child {
-  color: #000;
-}
-
 .breadcrumbs li {
   color: lighten($text_color, 20%);
   display: inline;
@@ -681,6 +677,10 @@ ul {
 
 .breadcrumbs li a:visited {
   color: $link_color;
+}
+
+.breadcrumbs li a:visited :last-child {
+  color: black;
 }
 
 /***** Search field *****/

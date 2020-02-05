@@ -7,10 +7,6 @@
   margin: 0 0 15px 0;
   padding: 0;
 
-  :last-child {
-    color:#000;
-  }
-
   li {
     color: $secondary-text-color;
     display: inline;
@@ -19,13 +15,15 @@
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
-
-
+    
     + li::before {
       content: ">";
       margin: 0 4px;
     }
     a:visited {
+      :last-child{
+        color:black;
+      }
       color: $link_color;
     }
     
