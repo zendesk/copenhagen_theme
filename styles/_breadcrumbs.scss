@@ -20,8 +20,10 @@
       content: ">";
       margin: 0 4px;
     }
-    a:visited {
+    a:last-child { 
       color: $link_color;
     }
+
+
   }
 }
