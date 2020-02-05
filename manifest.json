@@ -1,5 +1,5 @@
 {
-  "name": "JSTOR Support Theme based on Zendesk Copenhagen",
+  "name": "Forum Support Theme based on Zendesk Copenhagen",
   "author": "Zendesk, ITHAKA",
   "version": "2.0.2",
   "api_version": 1,
@@ -23,7 +23,7 @@
       "type": "color",
       "description": "text_color_description",
       "label": "text_color_label",
-      "value": "#333333"
+      "value": "#000000"
     }, {
       "identifier": "link_color",
       "type": "color",
@@ -234,61 +234,61 @@
       "type": "text",
       "description": "URL_for_product_homepage",
       "label": "product_homepage_label",
-      "value": "https://www.jstor.org/"
+      "value": "https://forum.jstor.org/"
     },{
       "identifier": "google_tag",
       "type": "text",
       "description": "google_tag_id_text",
       "label": "google_tag_id_text_label",
-      "value": "GTM-NM4N39Z"
+      "value": "GTM-5HC7SLD"
     },{
       "identifier": "marketing_page",
       "type": "text",
       "description": "marketing_page_link",
       "label": "marketing_page_label",
-      "value": "https://about.jstor.org/"
+      "value": "https://www.artstor.org/jstorforum/"
     },{
       "identifier": "marketing_page_name",
       "type": "text",
       "description": "marketing_page_text",
       "label": "marketing_page_text_label",
-      "value": "JSTOR"
+      "value": "JSTOR Forum"
     },{
       "identifier": "statuspage_component",
       "type": "text",
       "description": "statuspage_component_id",
       "label": "statuspage_component_id",
-      "value": "lcl8nmkfysby"
+      "value": "dqtfdmjwhyxs"
     },{
       "identifier": "product_name_text",
       "type": "text",
       "description": "product_name_text",
       "label": "product_name_text_label",
-      "value": "JSTOR"
+      "value": "JSTOR Forum"
     },{
       "identifier": "support_name_text",
       "type": "text",
       "description": "support_name_text",
       "label": "support_name_text_label",
-      "value": "JSTOR Support"
+      "value": "JSTOR Forum Support"
     },{
       "identifier": "contact_us_page",
       "type": "text",
       "description": "contact_us_page_url",
       "label": "contact_us_page_url",
-      "value": "https://www.jstor.org/contact-us/"
+      "value": "https://support.forum.jstor.org/hc/en-us/articles/360033529354"
     },{
       "identifier": "login_link",
       "type": "text",
       "description": "login_link_url",
       "label": "login_link_url",
-      "value": "https://www.jstor.org/action/showLogin"
+      "value": "https://forum.jstor.org/"
     },{
       "identifier": "login_product_name",
       "type": "text",
       "description": "login_product_name",
       "label": "login_product_name",
-      "value": "JSTOR"
+      "value": "Forum"
     }]
   }]
 }
