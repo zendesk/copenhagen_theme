@@ -20,10 +20,12 @@
       content: ">";
       margin: 0 4px;
     }
-    a:last-child { 
+    li:last-child{
+      color: #f3f3f3
+    }
+    a:visited {
       color: $link_color;
     }
-
-
+    
   }
 }

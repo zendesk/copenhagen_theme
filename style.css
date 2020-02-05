@@ -675,7 +675,11 @@ ul {
   margin: 0 4px;
 }
 
-.breadcrumbs li a:last-child {
+.breadcrumbs li li:last-child {
+  color: #f3f3f3;
+}
+
+.breadcrumbs li a:visited {
   color: $link_color;
 }
 
