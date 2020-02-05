@@ -270,6 +270,7 @@ a {
   max-width: 1144px;
   padding-left: calc(env(safe-area-inset-left, 0) + 0.75rem);
   padding-right: calc(env(safe-area-inset-left, 0) + 0.75rem);
+  padding-bottom: 2rem;
 }
 
 .custom-category-container,
@@ -326,14 +327,25 @@ a {
 }
 
 .custom-contact-page-button {
-  display: flex;
+  @include respond-to(handhelds) { margin-left: 0; }
   align-items: center;
+  background-color: var(--color-white);
+  border: none;
+  border-radius: 0;
+  display: flex;
+  margin-left: 20px;
   max-height: 4em;
   width: auto;
-  border-radius: 0;
-  background-color: var(--color-blue);
-  background-color: #006ab3; /* default supported fallback style */
-  margin-left: 20px;
+  color: var(--color-black);
+  &:hover {
+    background-color: var(--color-white);
+  }
+  &:active {
+    background-color: var(--color-white);
+  }
+  &:focus {
+    background-color: var(--color-white);
+  }
 }
 
 .custom-contact-card-wrapper {
@@ -382,10 +394,11 @@ a {
   color: #424242; /* default supported fallback style */
 }
 
-.custom-button {
-  color: var(--color-white);
-  color: #ffffff; /* default supported fallback style */
+.custom-contacts-button {
+  color: black; /* default supported fallback style */
+  color: var(--color-black);
   font-size: 16px;
+  font-weight: bold;
   text-transform: uppercase;
 }
 
@@ -427,14 +440,23 @@ a {
   background-color: #f7f6f6; /* default supported fallback style */
 }
 
-.custom-banner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.custom-hero-banner-container {
+  width: 100%;
   background-color: var(--color-grey);
   background-color: #f7f6f6; /* default supported fallback style */
+  margin-bottom: 1rem;
+}
+
+.custom-banner {
+  align-items: center;
+  background-color: #f7f6f6; /* default supported fallback style */
+  background-color: var(--color-grey);
+  display: flex;
+  flex-direction: column;
   height: auto;
-  padding: 2em;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  @include respond-to(handhelds) { padding: 1rem; }
 }
 
 .custom-banner-info {
@@ -447,7 +469,23 @@ a {
 }
 
 .custom-banner-picture {
-  padding-top: 2em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  width: 50%;
+  @include respond-to(handhelds) { display: none; }
+}
+
+.custom-banner-picture-mobile {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  width: 100%;
+  @include respond-to(medium-screens) { display: none; }
+  @include respond-to(wide-screens) { display: none; }
 }
 
 .custom-banner-button {
@@ -486,13 +524,15 @@ a {
   }
 
   .custom-banner {
-    flex-direction: row;
     align-items: inherit;
-    justify-content: space-around;
-    background-color: var(--color-grey);
     background-color: #f7f6f6; /* default supported fallback style */
+    background-color: var(--color-grey);
+    display: flex;
+    flex-direction: row;
     height: auto;
-    padding: 2em 0;
+    justify-content: space-around;
+    padding: 2rem;
+    width: 100%;
   }
 
   .custom-banner-info {
@@ -927,6 +967,7 @@ sup > .ask-community-sup-icon {
 
 .custom-footer-inner {
   display: block;
+  max-width: 1144px;
 }
 
 .custom-footer-logo {
@@ -943,20 +984,36 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-copyright-container {
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  @include respond-to(handhelds) {
+    align-items: stretch;
+    flex-direction: column;
+  }
 }
 
 .custom-copyright-container a {
   color: var(--color-white);
   color: #ffffff; /* default supported fallback style */
-  padding: 0 10px;
+  padding-left: 1rem;
+  @include respond-to(handhelds) { padding-left: 0; }
+}
+
+.custom-copyright-container div {
+  color: var(--color-white);
+  color: #ffffff; /* default supported fallback style */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1rem;
 }
 
 .custom-footer-links-card {
   width: 15em;
-  padding: 2em 1em 1em 1em;
+  padding: 2em 1em 1em 0;
 }
 
 .custom-footer-links-card a {
@@ -969,6 +1026,7 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-footer-links-card h2 {
+  color: white;
   text-transform: uppercase;
 }
 
@@ -991,31 +1049,27 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-contact-button-container {
+  align-items: center;
   display: flex;
   justify-content: center;
-  flex-direction: initial;
   padding-bottom: 3em;
   padding-top: 3em;
-  background-color: black;
+  background-color: #18181a;
+  @include respond-to(handhelds) {
+    flex-direction: column;
+  }
 }
 
 .custom-contact-title {
   color: #ffffff;
+  margin-bottom: 0;
+  @include respond-to(handhelds) { padding-bottom: 1rem; }
 }
 
 /* Big screen friendly */
 @media (min-width: 768px) {
   .custom-footer-socialmedia-container {
     justify-content: flex-end;
-  }
-
-  .custom-copyright-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .custom-copyright-container a {
-    padding-left: 25px;
   }
 }
 
@@ -1596,5 +1650,77 @@ main.main-sidebar {
   .empty-div {
     width: 19em;
     height: 16em;
+  }
+}
+
+.custom-forums-page-button {
+  @include respond-to(handhelds) { margin-left: 0; }
+  align-items: center;
+  background-color: #006ab3; /* default supported fallback style */
+  background-color: var(--color-blue);
+  border-radius: 0;
+  display: flex;
+  margin-left: 0;
+  margin-top: 2rem;
+  max-height: 4em;
+  width: auto;
+}
+
+.custom-forums-button {
+  color: var(--color-white);
+  color: #ffffff; /* default supported fallback style */
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.img-forums {
+  max-width: 350px;
+}
+
+.img-forums-mobile {
+  max-width: 200px;
+}
+
+.custom-logo {
+  margin-left: -1.35rem;
+  @include respond-to(handhelds) { margin-left: 0; }
+}
+
+.custom-forums-section {
+  display: flex;
+}
+
+.custom-forums-banner {
+  display: flex;
+  width: 50%;
+  align-items: flex-start;
+  flex-direction: column;
+  @include respond-to(handhelds) {
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.custom-support-team-banner {
+  max-width: 1144px;
+  width: 100%;
+}
+
+.custom-support-team-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.no-text-decoration {
+  &:active {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+  &:hover {
+    text-decoration: none;
   }
 }

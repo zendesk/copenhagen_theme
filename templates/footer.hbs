@@ -1,15 +1,18 @@
 <!-- Custom footer -->
 <div id="footer" class="custom-footer-container">
+  <div class="custom-support-team-container">
+    <img class="custom-support-team-banner" src="{{ asset 'support_team.jpg' }}"/>
+  </div>
   <div class="custom-contact-button-container">
     <h1 class="custom-contact-title">Do you still need help?</h1>
-    <div class="btn custom-contact-page-button" role="button">
-      <a href="https://configura.zendesk.com/hc/en-us/categories/360002370413"><p class="custom-button">Contact us</p></a>
+    <div class="custom-contact-page-button" role="button">
+      <a class="no-text-decoration" href="https://configura.zendesk.com/hc/en-us/categories/360002370413"><p class="custom-contacts-button">Contact us</p class="custom-contacts-button"></a>
     </div>
   </div>
   <footer class="custom-footer footer">
     <div class="custom-footer-inner footer-inner">
       <div class="custom-footer-logo">
-        <div class="logo">
+        <div class="custom-logo logo">
           {{#link 'help_center'}}
             <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
           {{/link}}
@@ -72,7 +75,12 @@
       </div>
   
     <div class="custom-copyright-container">
-      <p>Copyright 2020 Configura</p><p><a href="https://www.configura.com/terms-of-use">Terms</a><a href="https://www.configura.com/privacy-notice">Privacy notice</a></p>	
+      <div>Copyright © 2020 Configura Sverige AB. All rights reserved.</div>
+      <div>
+        <a href="https://www.configura.com/legal-terms">Legal Terms</a>
+        <a href="https://www.configura.com/privacy-notice">Privacy Notice</a>
+        <a href="https://www.configura.com/terms-of-use">Terms of Use</a>
+      </div>	
     </div>
   </div>
   </footer>
