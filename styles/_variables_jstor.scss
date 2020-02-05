@@ -18,9 +18,9 @@ $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default 
 
 //added colors
 $hero-background: url($homepage_background_image); //file in assets
-$hero-text-color: $secondary_link_hover;
-$hero-link-text-color: $secondary_link_color;
-$hero-link-text-hover: $secondary_link_hover;
+$hero-text-color: $text_color;
+$hero-link-text-color: $text_color;
+$hero-link-text-hover: $text_color;
 $dark-gray: #333333;
 $med-gray: #cccccc;
 $gray: #e8e8e8; //article anchor box, bottom of footer
