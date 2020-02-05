@@ -5760,7 +5760,7 @@ main.main-sidebar {
   flex-direction: column;
   margin: 0 15px 30px;
   flex: 1 0 200px;
-  max-width: 25em;
+  max-width: 23em;
   justify-content: end;
   text-align: initial;
 }
