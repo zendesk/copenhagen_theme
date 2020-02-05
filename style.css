@@ -660,6 +660,10 @@ ul {
   }
 }
 
+.breadcrumbs :last-child {
+  color: #000;
+}
+
 .breadcrumbs li {
   color: lighten($text_color, 20%);
   display: inline;
@@ -668,10 +672,6 @@ ul {
   max-width: 450px;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.breadcrumbs li :last-child {
-  color: #000;
 }
 
 .breadcrumbs li + li::before {

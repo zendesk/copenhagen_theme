@@ -7,6 +7,10 @@
   margin: 0 0 15px 0;
   padding: 0;
 
+  :last-child {
+    color:#000;
+  }
+
   li {
     color: $secondary-text-color;
     display: inline;
@@ -16,9 +20,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
-    :last-child {
-      color:#000;
-    }
 
     + li::before {
       content: ">";
