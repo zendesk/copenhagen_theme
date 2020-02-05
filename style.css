@@ -5719,6 +5719,10 @@ main.main-sidebar {
     flex-direction: column;
     flex-wrap: wrap;
   }
+  .trending-div {
+    margin-top: 15px;
+    max-width: 90%;
+  }
   .notification-body-width {
     font-size: 0.7rem;
     width: 100%;

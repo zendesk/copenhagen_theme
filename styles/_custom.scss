@@ -1557,7 +1557,6 @@ main.main-sidebar {
   width: 70%;
 }
 
-
 @media only screen  and (max-device-width: 420px) {
   .section-list {
     margin: 0rem;
@@ -1573,6 +1572,11 @@ main.main-sidebar {
     flex-wrap: wrap;
   }
   
+  .trending-div {
+    margin-top: 15px;
+    max-width: 90%;
+  }
+
   .notification-body-width {
     font-size: 0.7rem;
     width: 100%;
