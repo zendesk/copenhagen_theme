@@ -1021,7 +1021,7 @@ table td, table th {
 .hero {
   background-image: url($homepage_background_image);
   background-size: cover;
-  color: #333333;
+  color: $text_color;
   height: 300px;
   margin: 20px 0 !important;
   padding: 0 20px;
@@ -1278,12 +1278,12 @@ table td, table th {
 
 .popular-topics a {
   padding: 0 5px;
-  color: #333333;
+  color: $text_color;
   display: inline-block;
 }
 
 .popular-topics a:hover, .popular-topics a:active, .popular-topics a:focus {
-  color: #333333;
+  color: $text_color;
   text-decoration: none;
 }
 
