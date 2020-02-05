@@ -5706,7 +5706,7 @@ main.main-sidebar {
   width: 70%;
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 420px) {
+@media only screen and (max-device-width: 420px) {
   .section-list {
     margin: 0rem;
     margin-bottom: 2rem;
