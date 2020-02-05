@@ -234,6 +234,12 @@ a {
   color: #006ab3; /* default supported fallback style */
 }
 
+.custom-subsection{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .comment-heading {
   font-weight: 600;
   font-size: 22px;
@@ -495,6 +501,9 @@ a {
     width: 100%;
   }
 }
+.section-container{
+  display: contents;
+}
 
 /****  CUSTOM CARD ****/
 
@@ -622,6 +631,13 @@ a {
   border-bottom: none;
 }
 
+.custom-article-list-item {
+  padding: 13px 0;
+  color: var(--color-blue);
+  color: #006ab3; /* default supported fallback style */
+  border-bottom: 1px solid #006ab3;
+}
+
 .custom-section-list .article-list-item a {
   color: var(--color-blue);
   color: #006ab3; /* default supported fallback style */
@@ -657,6 +673,7 @@ a {
 }
 
 .custom-nav-wrapper .icon-menu,
+
 .custom-nav-wrapper .icon-menu:hover,
 .custom-nav-wrapper .icon-menu:focus,
 .custom-nav-wrapper .icon-menu:active,
@@ -738,6 +755,13 @@ sup > .ask-community-sup-icon {
   .custom-header {
     margin: 0 auto;
     max-width: 1144px;
+  }
+  .section-list {
+    margin: 0rem;
+    margin-bottom: 2rem;
+    list-style-type: none;
+    display: contents;
+    text-align: left;
   }
 }
 
@@ -1075,6 +1099,12 @@ main.main-sidebar {
   flex: 1 1 auto;
 }
 
+.section-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .sidebar-item {
   padding: 6px 0;
   color: #333;
@@ -1096,6 +1126,38 @@ main.main-sidebar {
 
 .sidebar-item-title:hover {
   color: #333;
+}
+
+.section-tree-title a {
+  font-size: 28px;
+  font-weight: bold;
+  color: $text_color;
+}
+
+.section-list {
+  margin: 0rem;
+  margin-bottom: 2rem;
+  list-style-type: none;
+  display: contents;
+  text-align: left;
+}
+
+
+.custom-subsection-section {
+  width: 18rem;
+  margin: 0 2rem 0 0;
+  margin-bottom: 2rem;
+}
+ 
+
+.section-list-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 420px;
+  flex: 1 0 420px;
+  padding: 5px 0;
+  max-width: 100%;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .sidebar-item-title:before {
@@ -1160,13 +1222,13 @@ main.main-sidebar {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url("$assets-materialicons-regular-eot"); /* For IE6-8 */
+  // src: url("$assets-materialicons-regular-eot"); /* For IE6-8 */
   
-  src: local("Material Icons"), local("MaterialIcons-Regular"),
-    url("$assets-materialicons-regular-woff2") format("woff2"),
-    url("$assets-materialicons-regular-woff") format("woff"),
-    url("$assets-materialicons-regular-svg#webfont") format("svg"),
-    url("$assets-materialicons-regular-ttf") format("truetype");
+  // src: local("Material Icons"), local("MaterialIcons-Regular"),
+  //   url("$assets-materialicons-regular-woff2") format("woff2"),
+  //   url("$assets-materialicons-regular-woff") format("woff"),
+  //   url("$assets-materialicons-regular-svg#webfont") format("svg"),
+  //   url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
 .material-icons {
@@ -1443,6 +1505,20 @@ main.main-sidebar {
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 420px) {
+  .section-list {
+    margin: 0rem;
+    margin-bottom: 2rem;
+    list-style-type: none;
+    display: contents;
+    text-align: left;
+  }
+
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  
   .notification-body-width {
     font-size: 0.7rem;
     width: 100%;
