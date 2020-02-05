@@ -635,7 +635,7 @@ a {
   padding: 13px 0;
   color: var(--color-blue);
   color: #006ab3; /* default supported fallback style */
-  border-bottom: 1px solid #006ab3;
+  border-bottom: 1px solid $border-color;
 }
 
 .custom-section-list .article-list-item a {
