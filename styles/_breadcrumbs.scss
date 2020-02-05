@@ -16,12 +16,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
 
+    :last-child {
+      color:#000;
+    }
+
     + li::before {
       content: ">";
       margin: 0 4px;
-    }
-    li:last-child{
-      color: #f3f3f3
     }
     a:visited {
       color: $link_color;

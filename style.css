@@ -670,13 +670,13 @@ ul {
   text-overflow: ellipsis;
 }
 
+.breadcrumbs li :last-child {
+  color: #000;
+}
+
 .breadcrumbs li + li::before {
   content: ">";
   margin: 0 4px;
-}
-
-.breadcrumbs li li:last-child {
-  color: #f3f3f3;
 }
 
 .breadcrumbs li a:visited {
