@@ -1972,7 +1972,7 @@ ul {
   unicode-bidi: bidi-override;
 }
 
-.vote-up svg {
+.vote-up img {
   transform: scale(1, -1);
 }
 

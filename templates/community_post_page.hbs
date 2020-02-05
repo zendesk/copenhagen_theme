@@ -80,16 +80,12 @@
           <div class="post-actions-wrapper">
             <div class="post-vote vote" role='radiogroup'>
               {{#with post}}
-                {{#vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4 6.5l3.6 3.6c.2.2.5.2.7 0L12 6.5"/>
-                </svg>
-                {{/vote}}
+              {{#vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
+              <img src="{{asset 'chevron-down-stroke.svg'}}" />
+              {{/vote}}
                 {{vote 'sum' class='vote-sum'}}
                 {{#vote 'down' role='radio' class='vote-down' selected_class='vote-voted'}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4 6.5l3.6 3.6c.2.2.5.2.7 0L12 6.5"/>
-                </svg>
+                <img src="{{asset 'chevron-down-stroke.svg'}}" />
                 {{/vote}}
               {{/with}}
             </div>
