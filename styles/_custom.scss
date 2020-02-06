@@ -65,6 +65,7 @@ $sidebar-width: 300px;
   border: 1px solid #006ab3;
   border-radius: 0;
   padding-left: 1rem;
+  font-style: italic
 }
 
 .search-full input[type="search"] {
@@ -107,6 +108,7 @@ $sidebar-width: 300px;
     border: #006ab3; /* default supported fallback style */
     border-radius: 0;
     padding-left: 1rem;
+    font-style: italic
   }
 }
 
@@ -286,6 +288,7 @@ a {
   border: 2px solid var(--color-blue);
   border: #006ab3; /* default supported fallback style */
   border-radius: 0;
+  font-style: italic
 }
 
 .trending-div {
@@ -376,12 +379,17 @@ a {
     height: 3em;
     border: 1px solid #006ab3;
     border-radius: 0;
+    font-style: italic
   }
   
   .search-full input[type="search"] {
     height: 3em;
     border: 1px solid #006ab3;
   }
+}
+
+.category-content {
+  flex: 0 0 100%;
 }
 
 .custom-contact-header-additional-desc {
@@ -753,7 +761,7 @@ a {
 }
 
 .download-extensions-btn-div {
-  padding-left: 4px;;
+  padding: 0 4px;
 }
 
 .download-extensions-icon {
@@ -764,6 +772,10 @@ a {
   color: var(--color-blue);
   color: #006ab3;
   font-weight: 600;
+}
+
+.download-extensions-link a{
+  padding: 0rem;
 }
 
 .download-extensions-link:hover,
@@ -863,14 +875,17 @@ sup > .ask-community-sup-icon {
 
   .custom-marketplace-btn-container a {
     position: relative;
+    padding: 0rem;
   }
 
   .custom-marketplace-btn-container {
+    padding: 0 0.5rem;
     display: inline-block;
     margin-right: 10px;
   }
 
   .custom-marketplace-btn-container > [role="button"] {
+    display: table-cell;
     border: 1px solid var(--color-white);
     border: 1px solid #ffffff; /* default supported fallback style */
     border-radius: 0;
@@ -915,8 +930,13 @@ sup > .ask-community-sup-icon {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
-.custom-blocks-item-title-container {
+.custom-blocks-text-wrapper {
   padding: 20px;
+  height: 11em;
+}
+
+.custom-blocks-item-title-container {
+  padding: 0px;
   line-height: 1;
   text-align: center;
 }
@@ -1336,7 +1356,7 @@ main.main-sidebar {
 /*** change the text color by editing "color"  ***/
 .ns-box {
   display: flex;
-  background: rgba(192, 57, 43, 0.85);
+  background: #e66359;
   padding: 10px 20px 20px 20px;
   line-height: 1.4;
   z-index: 1000;
@@ -1351,7 +1371,7 @@ main.main-sidebar {
 }
 
 .ns-box a {
-  color: inherit;
+  color: #ffffff;
   opacity: 0.7;
   font-weight: 700;
 }
@@ -1478,6 +1498,7 @@ main.main-sidebar {
 }
 
 .ns-effect-slidetop p {
+  color: #ffffff;
   padding: 0 3.2em;
   font-size: 1.2em;
   display: inline-block;
@@ -1656,7 +1677,6 @@ main.main-sidebar {
 @media (min-width: 1160px) {
   .empty-div {
     width: 19em;
-    height: 16em;
   }
 }
 
