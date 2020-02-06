@@ -679,6 +679,10 @@ ul {
   color: $link_color;
 }
 
+.breadcrumbs li a:visited :last-child {
+  color: black;
+}
+
 .breadcrumbs li:last-child {
   pointer-events: none;
   cursor: default;
@@ -5101,11 +5105,6 @@ sup > .ask-community-sup-icon {
   background-color: #f7f6f6;
   /* default supported fallback style */
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
-.custom-blocks-text-wrapper {
-  padding: 20px;
-  height: 11em;
 }
 
 .custom-blocks-item-title-container {
