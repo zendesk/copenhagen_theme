@@ -4919,6 +4919,10 @@ a {
   font-weight: 600;
 }
 
+.download-extensions-link a {
+  padding: 0rem;
+}
+
 .download-extensions-link:hover,
 .download-extensions-link:focus,
 .download-extensions-link:active {
@@ -5010,12 +5014,15 @@ sup > .ask-community-sup-icon {
   }
   .custom-marketplace-btn-container a {
     position: relative;
+    padding: 0rem;
   }
   .custom-marketplace-btn-container {
+    padding: 0 0.5rem;
     display: inline-block;
     margin-right: 10px;
   }
   .custom-marketplace-btn-container > [role="button"] {
+    display: table-cell;
     border: 1px solid var(--color-white);
     border: 1px solid #ffffff;
     /* default supported fallback style */
