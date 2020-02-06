@@ -251,9 +251,8 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
   font-style: italic;
   height: 3.5rem;
-  width: 23rem;
-  @include respond-to(medium-screens) { width: 25rem; }
-  @include respond-to(wide-screens) { width: 27rem; }
+  width: 35rem;
+  @include respond-to(handhelds) { width: 90vw; }
   &:focus {
     border-radius: 0;
     border: #006ab3;
@@ -268,8 +267,7 @@ a {
 }
 
 .trending-div > a {
-  color: var(--color-almost-black);
-  color: #424242;
+  color: var(--color-black);
   text-decoration: underline;
   font-weight: 600;
 }
@@ -412,11 +410,14 @@ a {
   background-color: var(--color-grey);
   background-image: url($assets-hero_support-jpg);
   background-size: cover;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  max-height: 500px;
   width: 100%;
-  max-height: 1000px;
-  @include respond-to(wide-screens) { height: 500px; }
-  @include respond-to(medium-screens) { height: 350px; }
+  @include respond-to(handhelds) {
+    background-position: center;
+  }
+  @include respond-to(wide-screens) { height: 70vh; }
+  @include respond-to(medium-screens) { height: 70vh; }
 }
 
 .custom-banner {
@@ -436,17 +437,18 @@ a {
   justify-content: start;
   background-color: rgba(0, 0, 0, 0);
   height: auto;
-  padding: 2em;
+  padding: 2rem 2rem 2rem 0;
   @include respond-to(handhelds) {
     align-items: center;
     flex-direction: column;
+    padding: 2rem;
     justify-content: center;
   }
 }
 
 .custom-banner-info {
   display: flex;
-  width: 25rem;
+  width: 35rem;
   align-items: start;
   justify-content: start;
   flex-direction: column;
@@ -454,6 +456,7 @@ a {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   }
 }
 
@@ -1285,32 +1288,32 @@ main.main-sidebar {
     url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// .material-icons {
+//   font-family: "Material Icons";
+//   font-weight: normal;
+//   font-style: normal;
+//   font-size: 24px; /* Preferred icon size */
+//   display: inline-block;
+//   line-height: 1;
+//   text-transform: none;
+//   letter-spacing: normal;
+//   word-wrap: normal;
+//   white-space: nowrap;
+//   direction: ltr;
 
   /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+//   font-feature-settings: "liga";
 
-  vertical-align: top;
-} 
+//   vertical-align: top;
+// } 
 
 .black-icon {
   color: var(--color-almost-black);

@@ -4375,18 +4375,12 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
   font-style: italic;
   height: 3.5rem;
-  width: 23rem;
+  width: 35rem;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1919px) {
+@media only screen and (max-width: 768px) {
   .custom-page-search input[type="search"] {
-    width: 25rem;
-  }
-}
-
-@media only screen and (min-width: 1920px) {
-  .custom-page-search input[type="search"] {
-    width: 27rem;
+    width: 90vw;
   }
 }
 
@@ -4408,8 +4402,7 @@ a {
 }
 
 .trending-div > a {
-  color: var(--color-almost-black);
-  color: #424242;
+  color: var(--color-black);
   text-decoration: underline;
   font-weight: 600;
 }
@@ -4565,20 +4558,26 @@ a {
   background-color: var(--color-grey);
   background-image: url($assets-hero_support-jpg);
   background-size: cover;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+  max-height: 500px;
   width: 100%;
-  max-height: 1000px;
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-hero-banner-container {
+    background-position: center;
+  }
 }
 
 @media only screen and (min-width: 1920px) {
   .custom-hero-banner-container {
-    height: 500px;
+    height: 70vh;
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1919px) {
   .custom-hero-banner-container {
-    height: 350px;
+    height: 70vh;
   }
 }
 
@@ -4605,20 +4604,21 @@ a {
   justify-content: start;
   background-color: transparent;
   height: auto;
-  padding: 2em;
+  padding: 2rem 2rem 2rem 0;
 }
 
 @media only screen and (max-width: 768px) {
   .custom-hero-banner {
     align-items: center;
     flex-direction: column;
+    padding: 2rem;
     justify-content: center;
   }
 }
 
 .custom-banner-info {
   display: flex;
-  width: 25rem;
+  width: 35rem;
   align-items: start;
   justify-content: start;
   flex-direction: column;
@@ -4629,6 +4629,7 @@ a {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
   }
 }
 
@@ -5493,30 +5494,10 @@ main.main-sidebar {
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
-  vertical-align: top;
-}
-
+/* Support for all WebKit browsers. */
+/* Support for Safari and Chrome. */
+/* Support for Firefox. */
+/* Support for IE. */
 .black-icon {
   color: var(--color-almost-black);
   color: #424242;
