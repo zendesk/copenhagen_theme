@@ -1709,7 +1709,7 @@ ul {
   color: $brand_text_color;
 }
 
-.article-vote .icon, .article-vote .article-vote::before, .article-vote .share a::before, .share .article-vote a::before {
+.article-vote .icon, .article-vote .article-vote::before {
   vertical-align: middle;
 }
 
@@ -1823,39 +1823,20 @@ ul {
 }
 
 .share a {
-  border-radius: 50%;
   height: 25px;
-  line-height: 25px;
-  overflow: hidden;
   width: 25px;
-}
-
-.share a::before {
   color: lighten($text_color, 20%);
-  display: block;
-  font-size: 23px;
-  text-align: center;
-  width: 100%;
 }
 
 .share a:hover {
   text-decoration: none;
-}
-
-.share a:hover::before {
   color: $brand_color;
 }
 
-.share-twitter::before {
-  content: "\e901";
-}
-
-.share-facebook::before {
-  content: "\e903";
-}
-
-.share-linkedin::before {
-  content: "\e900";
+.share a svg {
+  height: 18px;
+  width: 18px;
+  display: block;
 }
 
 /***** Comments *****/
