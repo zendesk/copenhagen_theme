@@ -4518,6 +4518,10 @@ a {
   }
 }
 
+.category-content {
+  flex: 0 0 100%;
+}
+
 .custom-contact-header-additional-desc {
   margin-bottom: 3em;
 }
