@@ -4189,6 +4189,7 @@ html[lang|="ja"] .search-result-description em {
   border: 1px solid #006ab3;
   border-radius: 0;
   padding-left: 1rem;
+  font-style: italic;
 }
 
 .search-full input[type="search"] {
@@ -4231,6 +4232,7 @@ html[lang|="ja"] .search-result-description em {
     /* default supported fallback style */
     border-radius: 0;
     padding-left: 1rem;
+    font-style: italic;
   }
 }
 
@@ -4412,6 +4414,7 @@ a {
   border: #006ab3;
   /* default supported fallback style */
   border-radius: 0;
+  font-style: italic;
 }
 
 .trending-div {
@@ -4511,6 +4514,7 @@ a {
     height: 3em;
     border: 1px solid #006ab3;
     border-radius: 0;
+    font-style: italic;
   }
   .search-full input[type="search"] {
     height: 3em;
