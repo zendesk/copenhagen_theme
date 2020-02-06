@@ -4889,13 +4889,18 @@ a {
 .custom-nav-wrapper .icon-menu,
 .custom-nav-wrapper .icon-menu:hover,
 .custom-nav-wrapper .icon-menu:focus,
-.custom-nav-wrapper .icon-menu:active,
+.custom-nav-wrapper .icon-menu:active {
+  color: var(--color-white);
+  color: #ffffff;
+  /* default supported fallback style */
+}
+
 .custom-nav-wrapper a,
 .custom-nav-wrapper a:visited,
 .custom-nav-wrapper a:hover,
 .custom-nav-wrapper .user-info > [role="button"]:hover {
-  color: var(--color-white);
-  color: #ffffff;
+  color: var(--color-black);
+  color: #000000;
   /* default supported fallback style */
 }
 
