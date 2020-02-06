@@ -442,6 +442,16 @@ document.addEventListener("DOMContentLoaded", function() {
 	if (!sidebar) {
 		footer.style.paddingLeft = 0;
 	}
+
+	// Modify behavior of search input
+	var input = document.getElementById("query");
+	input.addEventListener("input", function(event) {
+		if (this.value) {
+			input.style.fontStyle = "normal";
+		} else {
+			input.style.fontStyle = "italic";
+		}
+	});
 });
 
 /**** CUSTOM CHAT ****/

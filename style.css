@@ -702,7 +702,7 @@ ul {
   box-sizing: border-box;
   color: #999;
   height: 40px;
-  padding-left: 40px;
+  padding-left: 20px;
   padding-right: 20px;
   -webkit-appearance: none;
   width: 100%;
@@ -4184,32 +4184,6 @@ html[lang|="ja"] .search-result-description em {
   padding: 10px 1rem;
 }
 
-.search input[type="search"] {
-  height: 3em;
-  border: 1px solid #006ab3;
-  border-radius: 0;
-  padding-left: 1rem;
-  font-style: italic;
-}
-
-.search-full input[type="search"] {
-  height: 3.5em !important;
-  width: 25rem !important;
-  border: 1px solid #006ab3 !important;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19) !important;
-}
-
-.custom-page-search .search input[type="search"] {
-  width: 20em;
-  height: 4em;
-  border: 2px solid var(--color-blue);
-  border: #006ab3;
-  /* default supported fallback style */
-  border-radius: 0;
-  padding-left: 1rem;
-  font-style: italic;
-}
-
 .sub-nav {
   margin: 1rem 0;
 }
@@ -4221,19 +4195,6 @@ html[lang|="ja"] .search-result-description em {
   font-weight: 300;
   margin-bottom: 10px;
   padding: 10px 1rem;
-}
-
-@media (min-width: 1160px) {
-  .custom-page-search .search input[type="search"] {
-    width: 26.8em;
-    height: 3em;
-    border: 1px solid #006ab3;
-    border: #006ab3;
-    /* default supported fallback style */
-    border-radius: 0;
-    padding-left: 1rem;
-    font-style: italic;
-  }
 }
 
 /***** Alerts *****/
@@ -4407,14 +4368,33 @@ a {
 }
 
 /**** CUSTOM HOME PAGE ****/
-.custom-page-search .search input[type="search"] {
-  width: 20em;
-  height: 4em;
-  border: 2px solid var(--color-blue);
-  border: #006ab3;
-  /* default supported fallback style */
+.custom-page-search input[type="search"] {
   border-radius: 0;
+  border: #006ab3;
+  border: 2px solid var(--color-blue);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
   font-style: italic;
+  height: 3.5rem;
+  width: 23rem;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1919px) {
+  .custom-page-search input[type="search"] {
+    width: 25rem;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .custom-page-search input[type="search"] {
+    width: 27rem;
+  }
+}
+
+.custom-page-search input[type="search"]:focus {
+  border-radius: 0;
+  border: #006ab3;
+  border: 2px solid var(--color-blue);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
 .trending-div {
@@ -4515,17 +4495,6 @@ a {
   .custom-contact-header-desc {
     flex-basis: 100%;
   }
-  .search input[type="search"] {
-    width: 26.8em;
-    height: 3em;
-    border: 1px solid #006ab3;
-    border-radius: 0;
-    font-style: italic;
-  }
-  .search-full input[type="search"] {
-    height: 3em;
-    border: 1px solid #006ab3;
-  }
 }
 
 .category-content {
@@ -4591,11 +4560,26 @@ a {
 }
 
 .custom-hero-banner-container {
-  width: 100%;
-  background-color: var(--color-grey);
   background-color: #f7f6f6;
   /* default supported fallback style */
-  margin-bottom: 1rem;
+  background-color: var(--color-grey);
+  background-image: url("./assets/hero_support.jpg");
+  background-size: cover;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-height: 1000px;
+}
+
+@media only screen and (min-width: 1920px) {
+  .custom-hero-banner-container {
+    height: 500px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1919px) {
+  .custom-hero-banner-container {
+    height: 350px;
+  }
 }
 
 .custom-banner {
@@ -4613,23 +4597,6 @@ a {
 @media only screen and (max-width: 768px) {
   .custom-banner {
     padding: 1rem;
-  }
-}
-
-.custom-hero-banner-container {
-  background-image: url("./assets/hero_support.jpg");
-  background-size: cover;
-}
-
-@media only screen and (min-width: 1920px) {
-  .custom-hero-banner-container {
-    height: 500px;
-  }
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1919px) {
-  .custom-hero-banner-container {
-    height: 350px;
   }
 }
 
@@ -5106,7 +5073,6 @@ sup > .ask-community-sup-icon {
   border: 1px solid #c0c0c0;
   /* default supported fallback style */
   border-radius: 0;
-  justify-content: end;
   text-align: initial;
 }
 
@@ -5137,8 +5103,12 @@ sup > .ask-community-sup-icon {
 }
 
 .custom-blocks-item-title-container {
-  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
   line-height: 1;
+  padding: 20px;
   text-align: center;
 }
 
