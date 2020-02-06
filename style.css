@@ -5936,7 +5936,3 @@ main.main-sidebar {
 .no-text-decoration:hover {
   text-decoration: none;
 }
-
-.white-text {
-  color: var(--color-white);
-}
