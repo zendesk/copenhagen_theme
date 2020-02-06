@@ -27,16 +27,16 @@
           Forums
         </a>
       </li>
-      <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
-        <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
-        <ul v-if='category.id === activeSection'>
-          <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
-            <a :href='section.html_url' class="sidebar-item-link">
-              {[{section.name}]}
-            </a>
-          </li>
-        </ul>
-      </li>
+      <li :class="['sidebar-item', isOpen(category.id)]" v-if="category.id !== 360002370413" v-for='category in categories' :data-id='category.id'>
+      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      <ul v-if='category.id === activeSection'>
+        <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
+          <a :href='section.html_url' class="sidebar-item-link">
+            {[{section.name}]} 
+          </a>
+        </li>
+      </ul>
+    </li>
     </ul>
   </div>
 
