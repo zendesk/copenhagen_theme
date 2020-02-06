@@ -5471,6 +5471,9 @@ main.main-sidebar {
   font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
+  src: url("$assets-materialicons-regular-eot");
+  /* For IE6-8 */
+  src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
 .material-icons {
