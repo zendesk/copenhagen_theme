@@ -4913,6 +4913,7 @@ a {
 }
 
 .custom-nav-wrapper #user #user-name {
+  color: var(--color-white);
   padding: 5px;
 }
 
