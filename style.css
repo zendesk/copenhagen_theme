@@ -4563,7 +4563,7 @@ a {
   background-color: #f7f6f6;
   /* default supported fallback style */
   background-color: var(--color-grey);
-  background-image: url("./assets/hero_support.jpg");
+  background-image: url($assets-hero_support-jpg);
   background-size: cover;
   margin-bottom: 2rem;
   width: 100%;
