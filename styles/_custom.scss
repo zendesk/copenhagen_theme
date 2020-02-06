@@ -1348,7 +1348,7 @@ main.main-sidebar {
 /*** change the text color by editing "color"  ***/
 .ns-box {
   display: flex;
-  background: rgba(192, 57, 43, 0.85);
+  background: #e66359;
   padding: 10px 20px 20px 20px;
   line-height: 1.4;
   z-index: 1000;
@@ -1363,7 +1363,7 @@ main.main-sidebar {
 }
 
 .ns-box a {
-  color: inherit;
+  color: #ffffff;
   opacity: 0.7;
   font-weight: 700;
 }
@@ -1490,6 +1490,7 @@ main.main-sidebar {
 }
 
 .ns-effect-slidetop p {
+  color: #ffffff;
   padding: 0 3.2em;
   font-size: 1.2em;
   display: inline-block;
