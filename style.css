@@ -4395,6 +4395,21 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
+.custom-page-search-mini input[type="search"] {
+  border-radius: 0;
+  border: #006ab3;
+  border: 2px solid var(--color-blue);
+  font-style: italic;
+  height: 3.5rem;
+  width: 20rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-page-search-mini input[type="search"] {
+    width: 95vw;
+  }
+}
+
 .trending-div {
   margin-top: 15px;
 }

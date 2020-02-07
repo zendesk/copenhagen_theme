@@ -261,6 +261,16 @@ a {
   }
 }
 
+.custom-page-search-mini input[type="search"] {
+  border-radius: 0;
+  border: #006ab3;
+  border: 2px solid var(--color-blue);
+  font-style: italic;
+  height: 3.5rem;
+  width: 20rem;
+  @include respond-to(handhelds) { width: 95vw; }
+}
+
 .trending-div {
   margin-top: 15px;
   @include respond-to(handhelds) { text-align: center; }
