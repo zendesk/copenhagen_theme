@@ -4401,12 +4401,13 @@ a {
   border: 2px solid var(--color-blue);
   font-style: italic;
   height: 3.5rem;
-  width: 20rem;
+  max-width: 28rem;
+  width: 28rem;
 }
 
 @media only screen and (max-width: 768px) {
   .custom-page-search-mini input[type="search"] {
-    width: 95vw;
+    width: 93vw;
   }
 }
 
@@ -5082,6 +5083,24 @@ sup > .ask-community-sup-icon {
   .custom-display-links {
     display: none;
   }
+}
+
+.custom-links, .custom-myconfigura-link a, .custom-signin-link a {
+  color: white;
+}
+
+.custom-links:active, .custom-myconfigura-link a:active, .custom-signin-link a:active, .custom-links:focus, .custom-myconfigura-link a:focus, .custom-signin-link a:focus, .custom-links:hover, .custom-myconfigura-link a:hover, .custom-signin-link a:hover, .custom-links:visited, .custom-myconfigura-link a:visited, .custom-signin-link a:visited {
+  color: white;
+}
+
+@media only screen and (max-width: 768px) {
+  .custom-myconfigura-link a {
+    display: none;
+  }
+}
+
+.custom-signin-link a {
+  padding-right: 0;
 }
 
 /**** CUSTOM BLOCKS ****/

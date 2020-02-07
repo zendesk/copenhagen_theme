@@ -267,8 +267,9 @@ a {
   border: 2px solid var(--color-blue);
   font-style: italic;
   height: 3.5rem;
-  width: 20rem;
-  @include respond-to(handhelds) { width: 95vw; }
+  max-width: 28rem;
+  width: 28rem;
+  @include respond-to(handhelds) { width: 93vw; }
 }
 
 .trending-div {
@@ -866,6 +867,7 @@ sup > .ask-community-sup-icon {
     display: inline-block;
   }
 
+  // Not using this for now
   .custom-myconfigura-container a {
     align-items: center;
     color: white;
@@ -899,6 +901,26 @@ sup > .ask-community-sup-icon {
   .custom-display-links {
     display: none;
   }
+}
+
+.custom-links {
+  color: white;
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
+    color: white;
+  }
+}
+
+.custom-myconfigura-link a {
+  @extend .custom-links;
+  @include respond-to(handhelds) { display: none; }
+}
+
+.custom-signin-link a {
+  @extend .custom-links;
+  padding-right: 0;
 }
 
 /**** CUSTOM BLOCKS ****/
