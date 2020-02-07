@@ -745,6 +745,14 @@ a {
   .user-avatar {
     margin-left: 5px;
   }
+
+  .user-info {
+    > [role="button"],
+    > [role="button"]::after {
+      color: var(--color-white);
+      color: #ffffff; /* default supported fallback style */
+    }
+  }
 }
 
 .custom-marketplace-btn-container,
@@ -850,15 +858,6 @@ sup > .ask-community-sup-icon {
     height: 28px;
   }
 
-  .custom-nav-wrapper .user-info > [role="button"],
-  .user-info > [role="button"]::after,
-  .custom-nav-wrapper a,
-  .custom-nav-wrapper a:hover,
-  .custom-nav-wrapper a:visited {
-    color: var(--color-white);
-    color: #ffffff; /* default supported fallback style */
-  }
-
   .custom-nav-wrapper {
     flex-direction: row;
   }
@@ -868,8 +867,12 @@ sup > .ask-community-sup-icon {
   }
 
   .custom-myconfigura-container a {
-    display: inline-block;
     align-items: center;
+    color: white;
+    display: inline-block;
+    &:hover {
+      color: white;
+    }
   }
 
   .custom-marketplace-btn-container a {
