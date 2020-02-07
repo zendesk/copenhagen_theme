@@ -48,7 +48,7 @@ var sidebar = new Vue({
 				url ||
 				"/api/v2/help_center/" +
 					this._getLocale() +
-					"/sections.json?include=categories";
+					"/sections.json?include=categories&per_page=100";
 
 			$.get(
 				url_sections,
