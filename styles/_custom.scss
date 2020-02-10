@@ -268,7 +268,7 @@ a {
   font-style: italic;
   height: 3rem;
   max-width: 50rem;
-  width: 24rem;
+  width: 25.1rem;
   @include respond-to(handhelds) { width: 93vw; }
 }
 
@@ -355,7 +355,7 @@ a {
 @media (min-width: 1024px) {
   .article {
     padding: 0;
-    max-width: 62%;
+    max-width: 59%;
     margin: 0 4rem 0 0;
   }
   .custom-contact-header-desc {
