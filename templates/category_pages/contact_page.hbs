@@ -3,30 +3,30 @@
 <div id="sidebar" class="sidebar-panel">
   <ul class="sidebar">
     <li class="sidebar-item sidebar-home open">
-      <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title" target="_blank">
+      <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right blue-icon">school</i>
          Academy and training
       </a>
     </li>
     <li class="sidebar-item sidebar-home open">
-      <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title" target="_blank">
+      <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title">         
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right blue-icon">computer</i>
          System recommendations
       </a>
     </li>
     <li class="sidebar-item sidebar-home open">
-      <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title" target="_blank">
+      <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right blue-icon">import_contacts</i>
          Release notes
       </a>
     </li>
     <li class="sidebar-item sidebar-home open custom-margin-bottom">
-      <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title" target="_blank">
+      <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title">
         <i class="material-icons custom-sidebar-icon custom-icon-margin-right blue-icon">forum</i>
          Forums
       </a>
     </li>
-    <li :class="['sidebar-item', isOpen(category.id)]" v-for='category in categories' :data-id='category.id'>
+    <li :class="['sidebar-item', isOpen(category.id)]" v-if="category.id !== 360002370413" v-for='category in categories' :data-id='category.id'>
       <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
       <ul v-if='category.id === activeSection'>
         <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
@@ -36,8 +36,8 @@
         </li>
       </ul>
     </li>
-  </ul>
-</div>
+  	</ul>
+	</div>
 
 <div class="container-divider"></div>
 <div class="custom-container container">
