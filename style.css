@@ -4542,7 +4542,6 @@ a {
 .custom-link-item-title {
   display: inline-block;
   cursor: pointer;
-  font-size: 16px;
   text-decoration: none;
   font-weight: 600;
 }
@@ -4556,6 +4555,7 @@ a {
 .custom-link-container {
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 
 .custom-topic-container {
@@ -4794,11 +4794,6 @@ a {
   align-items: center;
 }
 
-.custom-card-icon {
-  height: 25px;
-  width: 25px;
-}
-
 /* Big screen friendly */
 @media (min-width: 768px) {
   .custom-card {
@@ -4814,13 +4809,12 @@ a {
   border: 1px solid #c0c0c0;
 }
 
-.small-card-title {
-  height: 5.9em;
-}
-
-.square-container {
-  width: 7em;
-  height: 7em;
+.small-card .custom-card-logo-container {
+  font-size: 30px;
+  flex-shrink: 0;
+  width: 3.5em;
+  height: 3.5em;
+  padding: 0;
 }
 
 /**** CUSTOM CATEGORY PAGE ****/
@@ -4944,7 +4938,6 @@ a {
   /* default supported fallback style */
 }
 
-.custom-marketplace-btn-container,
 .custom-help-center-link {
   display: none;
 }
@@ -4957,48 +4950,10 @@ a {
   z-index: 1;
 }
 
-.download-extensions-btn-div {
-  padding: 0 4px;
-}
-
-.download-extensions-icon {
-  margin-top: 6px;
-}
-
-.download-extensions-text {
-  color: var(--color-blue);
-  color: #006ab3;
-  font-weight: 600;
-}
-
-.download-extensions-link a {
-  padding: 0rem;
-}
-
-.download-extensions-link:hover,
-.download-extensions-link:focus,
-.download-extensions-link:active {
-  text-decoration: none;
-}
-
-sup > .download-extensions-sup-icon {
-  font-size: 10px;
-  margin-top: 11px;
-}
-
-.custom-header-icon {
-  width: 20px;
-  height: 20px;
-}
-
 sup > .ask-community-sup-icon {
   font-size: 10px;
   color: var(--color-white);
   padding-left: 5px;
-}
-
-.custom-header-margin-right {
-  margin-right: 5px;
 }
 
 /* Big screen friendly */
@@ -5052,34 +5007,6 @@ sup > .ask-community-sup-icon {
   .custom-nav-wrapper a {
     display: inline-block;
   }
-  .custom-myconfigura-container a {
-    align-items: center;
-    color: white;
-    display: inline-block;
-  }
-  .custom-myconfigura-container a:hover {
-    color: white;
-  }
-  .custom-marketplace-btn-container a {
-    position: relative;
-    padding: 0rem;
-  }
-  .custom-marketplace-btn-container {
-    padding: 0 0.5rem;
-    display: inline-block;
-    margin-right: 10px;
-  }
-  .custom-marketplace-btn-container > [role="button"] {
-    display: table-cell;
-    border: 1px solid var(--color-white);
-    border: 1px solid #ffffff;
-    /* default supported fallback style */
-    border-radius: 0;
-    background-color: var(--color-white);
-    background-color: #ffffff;
-    /* default supported fallback style */
-    width: 15em;
-  }
   .custom-display-links {
     display: none;
   }
@@ -5094,18 +5021,42 @@ sup > .ask-community-sup-icon {
   }
 }
 
-.custom-links, .custom-myconfigura-link a, .custom-signin-link a [class="login"] {
+.custom-links, a.custom-myconfigura-link, .custom-signin-link a [class="login"] {
   color: white;
 }
 
-.custom-links:active, .custom-myconfigura-link a:active, .custom-signin-link a [class="login"]:active, .custom-links:focus, .custom-myconfigura-link a:focus, .custom-signin-link a [class="login"]:focus, .custom-links:hover, .custom-myconfigura-link a:hover, .custom-signin-link a [class="login"]:hover, .custom-links:visited, .custom-myconfigura-link a:visited, .custom-signin-link a [class="login"]:visited {
+.custom-links:active, a.custom-myconfigura-link:active, .custom-signin-link a [class="login"]:active, .custom-links:focus, a.custom-myconfigura-link:focus, .custom-signin-link a [class="login"]:focus, .custom-links:hover, a.custom-myconfigura-link:hover, .custom-signin-link a [class="login"]:hover, .custom-links:visited, a.custom-myconfigura-link:visited, .custom-signin-link a [class="login"]:visited {
   color: white;
 }
 
 @media only screen and (max-width: 768px) {
-  .custom-myconfigura-link a {
+  a.custom-myconfigura-link {
     display: none;
   }
+}
+
+a.custom-download-extensions-btn {
+  line-height: 1.5;
+  padding: 10px;
+  margin: 0 20px 0 0;
+  border: 1px solid var(--color-white);
+  border: 1px solid #ffffff;
+  /* default supported fallback style */
+  border-radius: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  a.custom-download-extensions-btn {
+    display: none;
+  }
+}
+
+a.custom-download-extensions-btn, a.custom-download-extensions-btn:active, a.custom-download-extensions-btn:focus, a.custom-download-extensions-btn:hover, a.custom-download-extensions-btn:visited {
+  color: var(--color-blue);
+  color: #006ab3;
+  background-color: var(--color-white);
+  background-color: #ffffff;
+  /* default supported fallback style */
 }
 
 .custom-signin-link a [class="login"] {
@@ -5556,8 +5507,6 @@ main.main-sidebar {
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -5574,6 +5523,18 @@ main.main-sidebar {
   /* Support for IE. */
   font-feature-settings: "liga";
   vertical-align: top;
+}
+
+.material-icons-margin-right {
+  margin-right: 5px;
+}
+
+.material-icons-big {
+  line-height: 1.5em;
+}
+
+.material-icons-big .material-icons {
+  font-size: 1.5em;
 }
 
 .black-icon {

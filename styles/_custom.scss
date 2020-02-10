@@ -387,7 +387,6 @@ a {
 .custom-link-item-title {
   display: inline-block;
   cursor: pointer;
-  font-size: 16px;
   text-decoration: none;
   font-weight: 600;
 }
@@ -401,6 +400,7 @@ a {
 .custom-link-container {
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 
 .custom-topic-container {
@@ -559,7 +559,7 @@ a {
   background-color: #f7f6f6; /* default supported fallback style */
   border: 1px solid var(--color-grey);
   border: 1px solid #f7f6f6; /* default supported fallback style */
-  width: 19em;  
+  width: 19em;
   height: min-content;
   margin-bottom: 2em;
 }
@@ -599,11 +599,6 @@ a {
   align-items: center;
 }
 
-.custom-card-icon {
-  height: 25px;
-  width: 25px;
-}
-
 /* Big screen friendly */
 @media (min-width: 768px) {
   .custom-card {
@@ -618,15 +613,14 @@ a {
 
 .small-card {
   border: 1px solid #c0c0c0;
-}
 
-.small-card-title {
-  height: 5.9em;
-}
-
-.square-container {
-  width: 7em;
-  height: 7em;
+  .custom-card-logo-container {
+    font-size: 30px;
+    flex-shrink: 0;
+    width: 3.5em;
+    height: 3.5em;
+    padding: 0;
+  }
 }
 
 /**** CUSTOM CATEGORY PAGE ****/
@@ -752,7 +746,6 @@ a {
   }
 }
 
-.custom-marketplace-btn-container,
 .custom-help-center-link {
   display: none;
 }
@@ -764,49 +757,10 @@ a {
   z-index: 1;
 }
 
-.download-extensions-btn-div {
-  padding: 0 4px;
-}
-
-.download-extensions-icon {
-  margin-top: 6px;
-}
-
-.download-extensions-text {
-  color: var(--color-blue);
-  color: #006ab3;
-  font-weight: 600;
-}
-
-.download-extensions-link a{
-  padding: 0rem;
-}
-
-.download-extensions-link:hover,
-.download-extensions-link:focus,
-.download-extensions-link:active {
-  text-decoration: none;
-}
-
-sup > .download-extensions-sup-icon {
-  font-size: 10px;
-  margin-top: 11px;
-}
-
-.custom-header-icon {
-  width: 20px;
-  height: 20px;
-}
-
-
 sup > .ask-community-sup-icon {
   font-size: 10px;
   color: var(--color-white);
   padding-left: 5px;
-}
-
-.custom-header-margin-right {
-  margin-right: 5px;
 }
 
 /* Big screen friendly */
@@ -863,37 +817,6 @@ sup > .ask-community-sup-icon {
     display: inline-block;
   }
 
-  // Not using this for now
-  .custom-myconfigura-container a {
-    align-items: center;
-    color: white;
-    display: inline-block;
-    &:hover {
-      color: white;
-    }
-  }
-
-  .custom-marketplace-btn-container a {
-    position: relative;
-    padding: 0rem;
-  }
-
-  .custom-marketplace-btn-container {
-    padding: 0 0.5rem;
-    display: inline-block;
-    margin-right: 10px;
-  }
-
-  .custom-marketplace-btn-container > [role="button"] {
-    display: table-cell;
-    border: 1px solid var(--color-white);
-    border: 1px solid #ffffff; /* default supported fallback style */
-    border-radius: 0;
-    background-color: var(--color-white);
-    background-color: #ffffff; /* default supported fallback style */
-    width: 15em;
-  }
-
   .custom-display-links {
     display: none;
   }
@@ -920,9 +843,27 @@ sup > .ask-community-sup-icon {
   }
 }
 
-.custom-myconfigura-link a {
-  @extend .custom-links;
+a.custom-myconfigura-link {
   @include respond-to(handhelds) { display: none; }
+  @extend .custom-links;
+}
+
+a.custom-download-extensions-btn {
+  @include respond-to(handhelds) { display: none; }
+
+  line-height: 1.5;
+  padding: 10px;
+  margin: 0 20px 0 0;
+  border: 1px solid var(--color-white);
+  border: 1px solid #ffffff; /* default supported fallback style */
+  border-radius: 0;
+
+  &, &:active, &:focus, &:hover, &:visited {
+    color: var(--color-blue);
+    color: #006ab3;
+    background-color: var(--color-white);
+    background-color: #ffffff; /* default supported fallback style */
+  }
 }
 
 .custom-signin-link {
@@ -1255,7 +1196,7 @@ main.main-sidebar {
   margin: 0 2rem 0 0;
   margin-bottom: 2rem;
 }
- 
+
 
 .section-list-item {
   -webkit-box-flex: 1;
@@ -1330,7 +1271,7 @@ main.main-sidebar {
   font-style: normal;
   font-weight: 400;
   src: url("$assets-materialicons-regular-eot"); /* For IE6-8 */
-  
+
   src: local("Material Icons"), local("MaterialIcons-Regular"),
     url("$assets-materialicons-regular-woff2") format("woff2"),
     url("$assets-materialicons-regular-woff") format("woff"),
@@ -1342,7 +1283,6 @@ main.main-sidebar {
   font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -1363,7 +1303,18 @@ main.main-sidebar {
   font-feature-settings: "liga";
 
   vertical-align: top;
-} 
+}
+
+.material-icons-margin-right {
+  margin-right: 5px;
+}
+
+.material-icons-big {
+  line-height: 1.5em;
+  & .material-icons {
+    font-size:1.5em;
+  }
+}
 
 .black-icon {
   color: var(--color-almost-black);
@@ -1641,7 +1592,7 @@ main.main-sidebar {
     flex-direction: column;
     flex-wrap: wrap;
   }
-  
+
   .trending-div {
     margin-top: 15px;
     max-width: 90%;
