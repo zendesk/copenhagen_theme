@@ -719,15 +719,15 @@ a {
       color: #ffffff; /* default supported fallback style */
   }
 
-  a {
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-black);
-      color: #000000; /* default supported fallback style */
-    }
-  }
+  // a {
+  //   &,
+  //   &:hover,
+  //   &:focus,
+  //   &:active {
+  //     color: var(--color-black);
+  //     color: #000000; /* default supported fallback style */
+  //   }
+  // }
 
   .user-info > [role="button"]:hover {
     color: var(--color-black);
@@ -903,6 +903,17 @@ sup > .ask-community-sup-icon {
   }
 }
 
+.custom-display-links {
+  @include respond-to(handhelds) {
+    > a {
+      color: black;
+      &:active, &:hover, &:focus, &:visited {
+        color: black;
+      }
+    }
+  }
+}
+
 .custom-links {
   color: white;
   &:active,
@@ -918,9 +929,29 @@ sup > .ask-community-sup-icon {
   @include respond-to(handhelds) { display: none; }
 }
 
+/*
 .custom-signin-link a {
   @extend .custom-links;
   padding-right: 0;
+  div[role="menu"] a {
+    background-color: brown;
+    color: black;
+    &:visited {
+      color: black;
+    }
+  }
+}
+*/
+.custom-signin-link {
+  a [class="login"] {
+    @extend .custom-links;
+    padding-right: 0;
+  }
+
+  a [role="menuitem"] {
+    color: black;
+    &:active, &:focus, &:hover, &:visited { color: black; }
+  }
 }
 
 /**** CUSTOM BLOCKS ****/
@@ -1324,32 +1355,32 @@ main.main-sidebar {
     url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
+// .material-icons {
+//   font-family: "Material Icons";
+//   font-weight: normal;
+//   font-style: normal;
+//   font-size: 24px; /* Preferred icon size */
+//   display: inline-block;
+//   line-height: 1;
+//   text-transform: none;
+//   letter-spacing: normal;
+//   word-wrap: normal;
+//   white-space: nowrap;
+//   direction: ltr;
 
   /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
+  // text-rendering: optimizeLegibility;
 
   /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
+  // -moz-osx-font-smoothing: grayscale;
 
   /* Support for IE. */
-  font-feature-settings: "liga";
+//   font-feature-settings: "liga";
 
-  vertical-align: top;
-} 
+//   vertical-align: top;
+// } 
 
 .black-icon {
   color: var(--color-almost-black);

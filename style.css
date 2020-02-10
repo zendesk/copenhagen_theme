@@ -499,6 +499,7 @@ ul {
 }
 
 .nav-wrapper a.login {
+  color: white;
   display: inline-block;
 }
 
@@ -4912,12 +4913,6 @@ a {
   /* default supported fallback style */
 }
 
-.custom-nav-wrapper a, .custom-nav-wrapper a:hover, .custom-nav-wrapper a:focus, .custom-nav-wrapper a:active {
-  color: var(--color-black);
-  color: #000000;
-  /* default supported fallback style */
-}
-
 .custom-nav-wrapper .user-info > [role="button"]:hover {
   color: var(--color-black);
   color: #000000;
@@ -5085,11 +5080,20 @@ sup > .ask-community-sup-icon {
   }
 }
 
-.custom-links, .custom-myconfigura-link a, .custom-signin-link a {
+@media only screen and (max-width: 768px) {
+  .custom-display-links > a {
+    color: black;
+  }
+  .custom-display-links > a:active, .custom-display-links > a:hover, .custom-display-links > a:focus, .custom-display-links > a:visited {
+    color: black;
+  }
+}
+
+.custom-links, .custom-myconfigura-link a, .custom-signin-link a [class="login"] {
   color: white;
 }
 
-.custom-links:active, .custom-myconfigura-link a:active, .custom-signin-link a:active, .custom-links:focus, .custom-myconfigura-link a:focus, .custom-signin-link a:focus, .custom-links:hover, .custom-myconfigura-link a:hover, .custom-signin-link a:hover, .custom-links:visited, .custom-myconfigura-link a:visited, .custom-signin-link a:visited {
+.custom-links:active, .custom-myconfigura-link a:active, .custom-signin-link a [class="login"]:active, .custom-links:focus, .custom-myconfigura-link a:focus, .custom-signin-link a [class="login"]:focus, .custom-links:hover, .custom-myconfigura-link a:hover, .custom-signin-link a [class="login"]:hover, .custom-links:visited, .custom-myconfigura-link a:visited, .custom-signin-link a [class="login"]:visited {
   color: white;
 }
 
@@ -5099,8 +5103,29 @@ sup > .ask-community-sup-icon {
   }
 }
 
+/*
 .custom-signin-link a {
+  @extend .custom-links;
   padding-right: 0;
+  div[role="menu"] a {
+    background-color: brown;
+    color: black;
+    &:visited {
+      color: black;
+    }
+  }
+}
+*/
+.custom-signin-link a [class="login"] {
+  padding-right: 0;
+}
+
+.custom-signin-link a [role="menuitem"] {
+  color: black;
+}
+
+.custom-signin-link a [role="menuitem"]:active, .custom-signin-link a [role="menuitem"]:focus, .custom-signin-link a [role="menuitem"]:hover, .custom-signin-link a [role="menuitem"]:visited {
+  color: black;
 }
 
 /**** CUSTOM BLOCKS ****/
@@ -5535,30 +5560,10 @@ main.main-sidebar {
   src: local("Material Icons"), local("MaterialIcons-Regular"), url("$assets-materialicons-regular-woff2") format("woff2"), url("$assets-materialicons-regular-woff") format("woff"), url("$assets-materialicons-regular-svg#webfont") format("svg"), url("$assets-materialicons-regular-ttf") format("truetype");
 }
 
-.material-icons {
-  font-family: "Material Icons";
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;
-  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-  /* Support for IE. */
-  font-feature-settings: "liga";
-  vertical-align: top;
-}
-
+/* Support for all WebKit browsers. */
+/* Support for Safari and Chrome. */
+/* Support for Firefox. */
+/* Support for IE. */
 .black-icon {
   color: var(--color-almost-black);
   color: #424242;

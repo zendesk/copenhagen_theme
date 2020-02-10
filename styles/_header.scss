@@ -59,7 +59,10 @@ $header-height: 71px;
       text-decoration: underline;
     }
 
-    &.login { display: inline-block; }
+    &.login {
+      color: white;
+      display: inline-block;
+    }
   }
 
   .icon-menu {
