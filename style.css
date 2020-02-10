@@ -5896,7 +5896,7 @@ main.main-sidebar {
 @media (min-width: 1160px) {
   .empty-div {
     width: 19em;
-    padding: 1rem;
+    margin-right: 1rem;
   }
 }
 
