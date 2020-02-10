@@ -1613,6 +1613,16 @@ main.main-sidebar {
 }
 
 @media only screen  and (max-device-width: 420px) {
+
+  .article-body {
+    p {
+      iframe{
+        width: auto;
+        height: auto;
+      }
+    }
+  }
+
   .section-list {
     margin: 0rem;
     margin-bottom: 2rem;

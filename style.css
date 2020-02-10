@@ -4628,7 +4628,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   height: auto;
   padding: 2rem 2rem 2rem 0;
 }
@@ -5812,6 +5812,10 @@ main.main-sidebar {
 }
 
 @media only screen and (max-device-width: 420px) {
+  .article-body p iframe {
+    width: auto;
+    height: auto;
+  }
   .section-list {
     margin: 0rem;
     margin-bottom: 2rem;
