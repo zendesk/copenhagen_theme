@@ -1177,7 +1177,7 @@ body {
   height: 100vh;
   left: 0;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 140px 30px 30px;
   position: fixed;
   top: 0;
@@ -1388,6 +1388,11 @@ main.main-sidebar {
 
 /*** change the background color by editing "background" ***/
 /*** change the text color by editing "color"  ***/
+
+.alertbox {
+  z-index:1;
+}
+
 .ns-box {
   display: flex;
   background: #e66359;
