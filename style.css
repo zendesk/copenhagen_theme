@@ -4623,7 +4623,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   height: auto;
   padding: 2rem 2rem 2rem 0;
 }
@@ -5896,6 +5896,7 @@ main.main-sidebar {
 @media (min-width: 1160px) {
   .empty-div {
     width: 19em;
+    padding: 1rem;
   }
 }
 
