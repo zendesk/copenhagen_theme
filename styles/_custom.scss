@@ -267,9 +267,15 @@ a {
   border: 2px solid var(--color-blue);
   font-style: italic;
   height: 3.5rem;
-  max-width: 28rem;
+  max-width: 50rem;
   width: 28rem;
   @include respond-to(handhelds) { width: 93vw; }
+}
+
+.search {
+  @extend .search;
+  display: flex;
+  justify-content: space-around;
 }
 
 .trending-div {

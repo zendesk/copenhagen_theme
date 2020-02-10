@@ -4402,7 +4402,7 @@ a {
   border: 2px solid var(--color-blue);
   font-style: italic;
   height: 3.5rem;
-  max-width: 28rem;
+  max-width: 50rem;
   width: 28rem;
 }
 
@@ -4410,6 +4410,11 @@ a {
   .custom-page-search-mini input[type="search"] {
     width: 93vw;
   }
+}
+
+.search {
+  display: flex;
+  justify-content: space-around;
 }
 
 .trending-div {
@@ -4623,7 +4628,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   height: auto;
   padding: 2rem 2rem 2rem 0;
 }
