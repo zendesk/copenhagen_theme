@@ -690,7 +690,7 @@ ul {
   font-family: sans-serif;
 }
 
-.breadcrumbs li:last-child a:visited {
+.breadcrumbs li:last-child a:visited a:link {
   color: #424242 !important;
   font-weight: 300;
   font-size: 13px;
