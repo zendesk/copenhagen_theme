@@ -89,7 +89,9 @@ var sidebar = new Vue({
 							var currentCategory = _.find(this.categories, function(category) {
 								return category.id === pageId;
 							});
-							id = currentCategory.id;
+							if (currentCategory) {
+								id = currentCategory.id;
+							}
 						} else {
 							id = currentSection.category_id;
 						}
@@ -574,8 +576,8 @@ $.get(
 ).done(function(data) {
 	$.each(data.articles, function(index, item) {
 		var style1 =
-		'<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show"><div class="ns-box-inner"><span class="megaphone"></span></i><div class="ns-article"><p class="notification-title-width">' +
-		item.title +
+			'<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show"><div class="ns-box-inner"><span class="megaphone"></span></i><div class="ns-article"><p class="notification-title-width">' +
+			item.title +
 			"</a>" +
 			'<div class="notification-body-width">' +
 			item.body +
