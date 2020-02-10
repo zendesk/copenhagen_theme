@@ -250,7 +250,7 @@ a {
   border: 2px solid var(--color-blue);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
   font-style: italic;
-  height: 3rem;
+  height: 3.5rem;
   width: 35rem;
   @include respond-to(handhelds) { width: 90vw; }
   &:focus {
