@@ -475,6 +475,18 @@ a {
     justify-content: center;
     width: 100%;
   }
+  > h1 {
+    @include respond-to(medium-screens) { font-size: 60px; }
+    @include respond-to(wide-screens) { font-size: 60px; }
+    font-family: "Geogrotesque Light";
+    font-weight: 400;
+    margin-bottom: 0;
+    > div {
+      display: inline-block;
+      font-family: 'Geogrotesque SemiBold';
+      font-weight: 900;
+    }
+  }
 }
 
 .custom-banner-picture {

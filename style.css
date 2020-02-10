@@ -4659,6 +4659,30 @@ a {
   }
 }
 
+.custom-banner-info > h1 {
+  font-family: "Geogrotesque Light";
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1919px) {
+  .custom-banner-info > h1 {
+    font-size: 60px;
+  }
+}
+
+@media only screen and (min-width: 1920px) {
+  .custom-banner-info > h1 {
+    font-size: 60px;
+  }
+}
+
+.custom-banner-info > h1 > div {
+  display: inline-block;
+  font-family: 'Geogrotesque SemiBold';
+  font-weight: 900;
+}
+
 .custom-banner-picture {
   align-items: center;
   display: flex;
