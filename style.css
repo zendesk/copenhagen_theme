@@ -499,6 +499,7 @@ ul {
 }
 
 .nav-wrapper a.login {
+  color: white;
   display: inline-block;
 }
 
@@ -4912,12 +4913,6 @@ a {
   /* default supported fallback style */
 }
 
-.custom-nav-wrapper a, .custom-nav-wrapper a:hover, .custom-nav-wrapper a:focus, .custom-nav-wrapper a:active {
-  color: var(--color-black);
-  color: #000000;
-  /* default supported fallback style */
-}
-
 .custom-nav-wrapper .user-info > [role="button"]:hover {
   color: var(--color-black);
   color: #000000;
@@ -5085,11 +5080,20 @@ sup > .ask-community-sup-icon {
   }
 }
 
-.custom-links, .custom-myconfigura-link a, .custom-signin-link a {
+@media only screen and (max-width: 768px) {
+  .custom-display-links > a {
+    color: black;
+  }
+  .custom-display-links > a:active, .custom-display-links > a:hover, .custom-display-links > a:focus, .custom-display-links > a:visited {
+    color: black;
+  }
+}
+
+.custom-links, .custom-myconfigura-link a, .custom-signin-link a [class="login"] {
   color: white;
 }
 
-.custom-links:active, .custom-myconfigura-link a:active, .custom-signin-link a:active, .custom-links:focus, .custom-myconfigura-link a:focus, .custom-signin-link a:focus, .custom-links:hover, .custom-myconfigura-link a:hover, .custom-signin-link a:hover, .custom-links:visited, .custom-myconfigura-link a:visited, .custom-signin-link a:visited {
+.custom-links:active, .custom-myconfigura-link a:active, .custom-signin-link a [class="login"]:active, .custom-links:focus, .custom-myconfigura-link a:focus, .custom-signin-link a [class="login"]:focus, .custom-links:hover, .custom-myconfigura-link a:hover, .custom-signin-link a [class="login"]:hover, .custom-links:visited, .custom-myconfigura-link a:visited, .custom-signin-link a [class="login"]:visited {
   color: white;
 }
 
@@ -5099,8 +5103,16 @@ sup > .ask-community-sup-icon {
   }
 }
 
-.custom-signin-link a {
+.custom-signin-link a [class="login"] {
   padding-right: 0;
+}
+
+.custom-signin-link a [role="menuitem"] {
+  color: black;
+}
+
+.custom-signin-link a [role="menuitem"]:active, .custom-signin-link a [role="menuitem"]:focus, .custom-signin-link a [role="menuitem"]:hover, .custom-signin-link a [role="menuitem"]:visited {
+  color: black;
 }
 
 /**** CUSTOM BLOCKS ****/

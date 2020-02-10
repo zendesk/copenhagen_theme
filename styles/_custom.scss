@@ -719,16 +719,6 @@ a {
       color: #ffffff; /* default supported fallback style */
   }
 
-  a {
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      color: var(--color-black);
-      color: #000000; /* default supported fallback style */
-    }
-  }
-
   .user-info > [role="button"]:hover {
     color: var(--color-black);
     color: #000000; /* default supported fallback style */
@@ -903,6 +893,17 @@ sup > .ask-community-sup-icon {
   }
 }
 
+.custom-display-links {
+  @include respond-to(handhelds) {
+    > a {
+      color: black;
+      &:active, &:hover, &:focus, &:visited {
+        color: black;
+      }
+    }
+  }
+}
+
 .custom-links {
   color: white;
   &:active,
@@ -918,9 +919,16 @@ sup > .ask-community-sup-icon {
   @include respond-to(handhelds) { display: none; }
 }
 
-.custom-signin-link a {
-  @extend .custom-links;
-  padding-right: 0;
+.custom-signin-link {
+  a [class="login"] {
+    @extend .custom-links;
+    padding-right: 0;
+  }
+
+  a [role="menuitem"] {
+    color: black;
+    &:active, &:focus, &:hover, &:visited { color: black; }
+  }
 }
 
 /**** CUSTOM BLOCKS ****/
