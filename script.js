@@ -179,8 +179,6 @@ var sidebar = new Vue({
 	}
 });
 
-
-
 /**** END SIDEBAR ****/
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -584,7 +582,6 @@ $.get(
 			"</div></p></div></div></div>";
 
 		$(".alertbox").append(style1);
-		;
 	});
 	$(".ns-close").on("click", function() {
 		$(".alertbox").remove();
@@ -594,17 +591,13 @@ $.get(
 	for (let i = 0; i < array.length; i++) {
 		height += array[i].clientHeight;
 	}
-		var sidebar = document.querySelector(".sidebar");
-		if (sidebar !== null){
-			sidebar.style.paddingTop = parseInt($(".sidebar").css("padding-top")) +  height + "px";
-		}
-		
+	var sidebar = document.querySelector(".sidebar");
+	if (sidebar !== null) {
+		sidebar.style.paddingTop =
+			parseInt($(".sidebar").css("padding-top")) + height + "px";
+	}
 });
 
-
-$(() => {
-	
-});
-
+$(() => {});
 
 /**** END NOTIFICATION BANNER ****/
