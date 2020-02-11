@@ -5435,12 +5435,21 @@ body {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .sidebar-panel {
     display: none;
   }
   .custom-footer-container {
     padding-left: 0;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 768px) {
+  .sub-nav {
+    flex-direction: column;
+  }
+  .custom-page-search-mini input[type="search"] {
+    width: auto;
   }
 }
 
