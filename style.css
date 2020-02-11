@@ -4897,6 +4897,12 @@ a {
   border-bottom: 1px solid #ddd;
 }
 
+.article-list-item a {
+  color: var(--color-blue);
+  color: #006ab3;
+  /* default supported fallback style */
+}
+
 .custom-section-list .article-list-item a {
   color: var(--color-blue);
   color: #006ab3;
@@ -5341,6 +5347,10 @@ a.custom-download-extensions-btn, a.custom-download-extensions-btn:active, a.cus
 
 .custom-icon-margin-right {
   margin-right: 10px;
+}
+
+.see-more {
+  padding-top: 13px;
 }
 
 /***** Custom Vue Sidebar Code from git *****/

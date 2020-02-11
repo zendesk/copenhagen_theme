@@ -121,7 +121,7 @@
        {{#if articles}}
       <section class="custom-subsection-section">
         <h3 class="section-tree-title">
-          <a href="{{url}}">{{name}}</a>
+          {{name}}
        </h3>
 
          
@@ -134,7 +134,15 @@
                             <a href="{{url}}" class="article-list-link">{{title}}</a>
                        </li>
                    {{/each}}
+                   {{#if more_articles}}
+                        <li class="see-more">
+                            <a href="{{url}}" class="article-list-link" >
+                              See more
+                            </a>
+                       </li>
+                  {{/if}}
               </ul>
+              
            {{/if}}
       </section>
            
@@ -159,7 +167,8 @@
             </li>
           {{/each}}
         </ul>
-     
+
+       
       
       {{/if}}
       
