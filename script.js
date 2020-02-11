@@ -89,7 +89,9 @@ var sidebar = new Vue({
 							var currentCategory = _.find(this.categories, function(category) {
 								return category.id === pageId;
 							});
-							id = currentCategory.id;
+							if (currentCategory) {
+								id = currentCategory.id;
+							}
 						} else {
 							id = currentSection.category_id;
 						}
@@ -176,8 +178,6 @@ var sidebar = new Vue({
 		}
 	}
 });
-
-
 
 /**** END SIDEBAR ****/
 
@@ -574,15 +574,14 @@ $.get(
 ).done(function(data) {
 	$.each(data.articles, function(index, item) {
 		var style1 =
-		'<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show"><div class="ns-box-inner"><span class="megaphone"></span></i><div class="ns-article"><p class="notification-title-width">' +
-		item.title +
+			'<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show"><div class="ns-box-inner"><span class="megaphone"></span></i><div class="ns-article"><p class="notification-title-width">' +
+			item.title +
 			"</a>" +
 			'<div class="notification-body-width">' +
 			item.body +
 			"</div></p></div></div></div>";
 
 		$(".alertbox").append(style1);
-		;
 	});
 	$(".ns-close").on("click", function() {
 		$(".alertbox").remove();
@@ -592,17 +591,13 @@ $.get(
 	for (let i = 0; i < array.length; i++) {
 		height += array[i].clientHeight;
 	}
-		var sidebar = document.querySelector(".sidebar");
-		if (sidebar !== null){
-			sidebar.style.paddingTop = parseInt($(".sidebar").css("padding-top")) +  height + "px";
-		}
-		
+	var sidebar = document.querySelector(".sidebar");
+	if (sidebar !== null) {
+		sidebar.style.paddingTop =
+			parseInt($(".sidebar").css("padding-top")) + height + "px";
+	}
 });
 
-
-$(() => {
-	
-});
-
+$(() => {});
 
 /**** END NOTIFICATION BANNER ****/
