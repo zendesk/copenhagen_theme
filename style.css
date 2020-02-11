@@ -4628,7 +4628,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   height: auto;
   padding: 2rem 2rem 2rem 0;
 }
@@ -4660,7 +4660,7 @@ a {
 }
 
 .custom-banner-info > h1 {
-  font-family: "Geogrotesque Light";
+  font-family: "geogrotesque light", "geogrotesque";
   font-weight: 400;
   margin-bottom: 0;
 }
@@ -4679,7 +4679,7 @@ a {
 
 .custom-banner-info > h1 > div {
   display: inline-block;
-  font-family: 'Geogrotesque SemiBold';
+  font-family: "geogrotesque semibold", "geogrotesque";
   font-weight: 900;
 }
 
