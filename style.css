@@ -5844,6 +5844,11 @@ main.main-sidebar {
     width: auto;
     height: auto;
   }
+  .custom-subsection-section {
+    width: 16rem;
+    margin: 0rem;
+    margin-bottom: 2rem;
+  }
   .section-list {
     margin: 0rem;
     margin-bottom: 2rem;
