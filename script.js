@@ -593,7 +593,9 @@ $.get(
 		height += array[i].clientHeight;
 	}
 		var sidebar = document.querySelector(".sidebar");
-		sidebar.style.paddingTop = parseInt($(".sidebar").css("padding-top")) +  height + "px";
+		if (sidebar !== null){
+			sidebar.style.paddingTop = parseInt($(".sidebar").css("padding-top")) +  height + "px";
+		}
 		
 });
 
