@@ -36,9 +36,20 @@
     right: auto;
   }
 
-  &::after {
-    @extend .icon;
-    content: "\25BE";
+  &-icon {
+    display: none;
+  }
+
+  &[aria-expanded="false"] {
+    .chevron-icon {
+      display: inline-block;
+    }
+  }
+  
+  &[aria-expanded="true"] {
+    .x-icon {
+      display: inline-block;
+    }
   }
 
   &:focus {
@@ -119,11 +130,6 @@
 }
 
 .collapsible-nav[aria-expanded="true"] {
-
-  .collapsible-nav-toggle::after {
-    content: "\2715";
-  }
-
   li:not([aria-selected="true"]),
   li:not(.current) {
     display: block;

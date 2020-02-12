@@ -37,9 +37,9 @@
     word-break: break-word;
   }
 
-  .icon-lock::before {
-    content: "\1F512";
-    font-size: 20px;
+  .icon-lock {
+    height: 20px;
+    width: 20px;
     position: relative;
     left: -5px;
     vertical-align: baseline;
