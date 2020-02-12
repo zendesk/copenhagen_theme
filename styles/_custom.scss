@@ -144,7 +144,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "geogrotesque";
+  font-family: $geoFont;
   color:  var(--color-black);
   color: #000000; /* default supported fallback style */
 }
@@ -479,13 +479,13 @@ a {
   > h1 {
     @include respond-to(medium-screens) { font-size: 60px; }
     @include respond-to(wide-screens) { font-size: 60px; }
-    font-family: "geogrotesque light", "geogrotesque";
-    font-weight: 400;
+    font-family: $geoFont;
+    font-weight: 300;
     margin-bottom: 0;
     > div {
       display: inline-block;
-      font-family: "geogrotesque semibold", "geogrotesque";
-      font-weight: 900;
+      font-family: $geoFont;
+      font-weight: 600;
     }
   }
 }
@@ -798,7 +798,7 @@ sup > .ask-community-sup-icon {
 
 @media (min-width: 990px) {
   .custom-help-center-link {
-    font-family: "geogrotesque";
+    font-family: $geoFont;
     display: inline-block;
     color: var(--color-white);
     color: #ffffff; /* default supported fallback style */

@@ -4267,7 +4267,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-  font-family: "geogrotesque";
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: var(--color-black);
   color: #000000;
   /* default supported fallback style */
@@ -4629,7 +4629,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   height: auto;
   padding: 2rem 2rem 2rem 0;
 }
@@ -4661,8 +4661,8 @@ a {
 }
 
 .custom-banner-info > h1 {
-  font-family: "geogrotesque light", "geogrotesque";
-  font-weight: 400;
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 300;
   margin-bottom: 0;
 }
 
@@ -4680,8 +4680,8 @@ a {
 
 .custom-banner-info > h1 > div {
   display: inline-block;
-  font-family: "geogrotesque semibold", "geogrotesque";
-  font-weight: 900;
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-weight: 600;
 }
 
 .custom-banner-picture {
@@ -5004,7 +5004,7 @@ sup > .ask-community-sup-icon {
 
 @media (min-width: 990px) {
   .custom-help-center-link {
-    font-family: "geogrotesque";
+    font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     display: inline-block;
     color: var(--color-white);
     color: #ffffff;
