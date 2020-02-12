@@ -343,6 +343,7 @@ a {
   height: 16em;
   overflow: visible;
   margin-bottom: 2em;
+  margin-right: 1em;
 }
 
 .custom-contact-header-desc {
@@ -683,7 +684,7 @@ a {
 .custom-section-list .section-list-item:first-child,
 .custom-section-list .section-list-item {
   border-top: none;
-  border-bottom: none;
+border-bottom: none;
 }
 
 .custom-article-list-item {
@@ -1704,6 +1705,10 @@ main.main-sidebar {
 /**** END OF HOMEPAGE VIDEO SECTION ****/
 .empty-div {
   width: 0em;
+}
+
+.contact-empty-div {
+  width: 19em;
 }
 
 @media (min-width: 1160px) {
