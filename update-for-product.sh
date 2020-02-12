@@ -11,3 +11,4 @@ cp styles/_variables_${PRODUCT}.scss styles/_variables.scss
 cp styles/index_${PRODUCT}.scss styles/index.scss
 cp assets/favicon_${PRODUCT}.ico settings/favicon.ico
 cp assets/logo_${PRODUCT}.png settings/logo.png
+cp assets/homepage_background_${PRODUCT}.jpg settings/homepage_background_image.jpg

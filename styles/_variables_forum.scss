@@ -17,10 +17,10 @@ $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default ba
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 //added colors
-$hero-background: #4b525f; //hex used on Forum platform header
-$hero-text-color: $brand_text_color;
-$hero-link-text-color: $brand_text_color;
-$hero-link-text-hover: $brand_text_color;
+$hero-background: url($homepage_background_image); //file in assets
+$hero-text-color: #000000;
+$hero-link-text-color: #000000;
+$hero-link-text-hover: #000000;
 $dark-gray: #333333;
 $med-gray: #cccccc;
 $gray: #e8e8e8; //article anchor box, bottom of footer

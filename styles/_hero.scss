@@ -4,7 +4,7 @@
     height: 220px;
   }
 
-  background: $hero-background;
+  background-image: $hero-background;
   background-size: cover;
   color: $hero-text-color;
   height: 300px;
@@ -12,6 +12,7 @@
   padding: 0 20px;
   text-align: center;
   width: 100%;
+  background-position: center;
 
   h1 {
     line-height: 1;

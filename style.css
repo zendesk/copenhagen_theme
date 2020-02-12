@@ -61,7 +61,7 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 input,
@@ -280,8 +280,8 @@ ul.list-horizontal li {
 }
 
 .button[aria-selected="true"]:hover, .button[aria-selected="true"]:focus, .button[aria-selected="true"]:active, [role="button"][aria-selected="true"]:hover, [role="button"][aria-selected="true"]:focus, [role="button"][aria-selected="true"]:active {
-  background-color: #1291ae;
-  border-color: #1291ae;
+  background-color: #993e0a;
+  border-color: #993e0a;
 }
 
 .button[data-disabled], [role="button"][data-disabled] {
@@ -308,7 +308,7 @@ ul.list-horizontal li {
 }
 
 .button-large:hover, .button-large:active, .button-large:focus, input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
-  background-color: #1291ae;
+  background-color: #993e0a;
 }
 
 .button-large[disabled], input[type="submit"][disabled] {
@@ -500,7 +500,7 @@ table td, table th {
 }
 
 .form .suggestion-list li a:visited {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 /***** Header *****/
@@ -749,7 +749,7 @@ table td, table th {
   width: 14px;
 }
 
-/***** Forum Footer *****/
+/***** Artstor Footer *****/
 .footer {
   margin-top: 30px;
   padding: 0;
@@ -759,6 +759,7 @@ table td, table th {
 
 @media (min-width: 1024px) {
   .footer {
+    margin-top: 60px;
     padding-top: 30px;
   }
 }
@@ -794,6 +795,16 @@ table td, table th {
   }
 }
 
+.footer-logo {
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .footer-logo {
+    width: 16.6667%;
+  }
+}
+
 .footer-links {
   width: 100%;
   padding-bottom: 10px;
@@ -801,8 +812,7 @@ table td, table th {
 
 @media (min-width: 1024px) {
   .footer-links {
-    width: 66.67%;
-    padding-left: 0 !important;
+    width: 58.3333%;
   }
 }
 
@@ -817,13 +827,11 @@ table td, table th {
 
 .footer-legal {
   width: 100%;
-  margin-top: 10px;
 }
 
 @media (min-width: 1024px) {
   .footer-legal {
-    width: 33.33%;
-    margin-top: 0;
+    width: 25%;
   }
 }
 
@@ -893,7 +901,8 @@ table td, table th {
 
 .footer .columns {
   float: left;
-  padding: 0;
+  padding-right: 24px;
+  padding-left: 24px;
 }
 
 @media (min-width: 1024px) {
@@ -1028,7 +1037,7 @@ table td, table th {
 
 /***** Hero component *****/
 .hero {
-  background: #4b525f;
+  background-image: url($homepage_background_image);
   background-size: cover;
   color: $brand_text_color;
   height: 300px;
@@ -1036,6 +1045,7 @@ table td, table th {
   padding: 0 20px;
   text-align: center;
   width: 100%;
+  background-position: center;
 }
 
 @media (min-width: 1024px) {
@@ -1526,12 +1536,12 @@ table td, table th {
 
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-
-  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 17%     | 66%     | 17%
+
+  Testing out 75% (content/article) | 25% (sidebar) -- we can always revert back
   */
   flex: 1 0 auto;
 }
@@ -1651,7 +1661,7 @@ table td, table th {
 }
 
 .article-body a:visited {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 .article-body code {
@@ -1894,8 +1904,8 @@ table td, table th {
 }
 
 .article-unsubscribe:hover {
-  background-color: #1291ae;
-  border-color: #1291ae;
+  background-color: #993e0a;
+  border-color: #993e0a;
 }
 
 .sidenav-item {
@@ -2236,7 +2246,7 @@ table td, table th {
 }
 
 .comment-body a:visited {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 .comment-body code {
@@ -2315,7 +2325,7 @@ table td, table th {
 }
 
 .vote-voted:hover::before {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 /***** Actions *****/
@@ -2473,8 +2483,8 @@ table td, table th {
 }
 
 .community-follow [role="button"][aria-selected="true"]:hover {
-  background-color: #1291ae;
-  border-color: #1291ae;
+  background-color: #993e0a;
+  border-color: #993e0a;
 }
 
 .community-follow [role="button"]::after {
@@ -2539,7 +2549,7 @@ table td, table th {
 }
 
 .striped-list-title:visited {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 .striped-list .meta-group {
@@ -2663,10 +2673,10 @@ table td, table th {
 }
 
 /***** Post *****/
-/*
-* The post grid is defined this way:
-* Content | Sidebar
-* 70%     | 30%
+/*
+* The post grid is defined this way:
+* Content | Sidebar
+* 70%     | 30%
 */
 .post {
   flex: 1;
@@ -2804,7 +2814,7 @@ table td, table th {
 }
 
 .post-body a:visited {
-  color: #1291ae;
+  color: #993e0a;
 }
 
 .post-body code {
@@ -3309,7 +3319,7 @@ table td, table th {
 }
 
 .subscriptions-unsubscribe a:hover {
-  background-color: #1291ae;
+  background-color: #993e0a;
   text-decoration: none;
 }
 
