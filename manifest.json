@@ -251,14 +251,14 @@
           "type": "checkbox",
           "description": "scoped_knowledge_base_search_description",
           "label": "scoped_knowledge_base_search_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "scoped_community_search",
           "type": "checkbox",
           "description": "scoped_community_search_description",
           "label": "scoped_community_search_label",
-          "value": true
+          "value": false
         }
       ]
     },
@@ -303,7 +303,7 @@
           "type": "checkbox",
           "description": "follow_article_description",
           "label": "follow_article_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_recently_viewed_articles",
@@ -324,7 +324,7 @@
           "type": "checkbox",
           "description": "article_sharing_description",
           "label": "article_sharing_label",
-          "value": true
+          "value": false
         }
       ]
     },
