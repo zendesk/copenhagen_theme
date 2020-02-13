@@ -117,6 +117,7 @@ $sidebar-width: 300px;
 
 /**** CUSTOM FONT ****/
 
+/*
 @font-face {
   font-family: "geogrotesque";
   src: local ("geogrotesque");
@@ -127,6 +128,7 @@ $sidebar-width: 300px;
     url("$assets-ge2003-rg-svg#webfont") format("svg");
   font-style: normal;
 }
+*/
 
 :root {
   --color-grey: #f7f6f6;
@@ -479,12 +481,12 @@ a {
   > h1 {
     @include respond-to(medium-screens) { font-size: 60px; }
     @include respond-to(wide-screens) { font-size: 60px; }
-    font-family: $geoFont;
+    font-family: $geoLight;
     font-weight: 300;
     margin-bottom: 0;
     > div {
       display: inline-block;
-      font-family: $geoFont;
+      font-family: $geoSemiBold;
       font-weight: 600;
     }
   }
