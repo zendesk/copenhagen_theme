@@ -884,8 +884,8 @@ a.custom-download-extensions-btn {
   border: 1px solid #c0c0c0; /* default supported fallback style */
   border-radius: 0;
   text-align: initial;
-  @include respond-to(medium-screens) { max-width: 15em; }
-  @include respond-to(wide-screens) { max-width: 15em; }
+  @include respond-to(medium-screens) { max-width: 17em; }
+  @include respond-to(wide-screens) { max-width: 17em; }
   &:active,
   &:focus,
   &:hover {
@@ -904,7 +904,16 @@ a.custom-download-extensions-btn {
     flex-direction: column;
     justify-content: space-between;
     line-height: 1;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
+    text-align: center;
+    flex-grow: 0;
+  }
+  &-browse-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    line-height: 1;
+    padding: 0.75rem 1.5rem 1.5rem 1.5rem;
     text-align: center;
     flex-grow: 0;
   }
