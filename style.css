@@ -349,7 +349,7 @@ ul {
 }
 
 /***** Buttons *****/
-.button, [role="button"] {
+.button {
   border: 1px solid $brand_color;
   border-radius: 4px;
   color: $brand_color;
@@ -368,27 +368,27 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .button, [role="button"] {
+  .button {
     width: auto;
   }
 }
 
-.button::after, [role="button"]::after {
+.button::after {
   color: $brand_color;
 }
 
-.button:hover, .button:active, .button:focus, .button[aria-selected="true"], [role="button"]:hover, [role="button"]:active, [role="button"]:focus, [role="button"][aria-selected="true"] {
+.button:hover, .button:active, .button:focus, .button[aria-selected="true"] {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
 }
 
-.button[aria-selected="true"]:hover, .button[aria-selected="true"]:focus, .button[aria-selected="true"]:active, [role="button"][aria-selected="true"]:hover, [role="button"][aria-selected="true"]:focus, [role="button"][aria-selected="true"]:active {
+.button[aria-selected="true"]:hover, .button[aria-selected="true"]:focus, .button[aria-selected="true"]:active {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
 
-.button[data-disabled], [role="button"][data-disabled] {
+.button[data-disabled] {
   cursor: default;
 }
 
