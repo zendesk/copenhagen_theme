@@ -1,5 +1,5 @@
 /***** Buttons *****/
-.button, [role="button"] {
+.button {
   @include tablet { width: auto; }
 
   border: 1px solid $button-color;
