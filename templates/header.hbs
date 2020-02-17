@@ -2,13 +2,11 @@
 <div class="alertbox"></div>
 <!-- Custom header -->
 <div class="custom-background-color-blue">
-  <header class="header custom-background-color-blue custom-header">
+  <header class="header container">
     <div class="custom-header-container">
-      <div class="custom-logo logo">
-        {{#link 'help_center'}}
-        <img class="custom-logo-dimensions" src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
-        {{/link}}
-      </div>
+      {{#link 'help_center' class='custom-logo logo'}}
+        <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
+      {{/link}}
       <div title="Go to Home page">
         <a href="/hc/en-us" class="custom-help-center-link"><strong>HELP</strong> CENTER</a>
       </div>

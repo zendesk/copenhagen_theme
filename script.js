@@ -105,7 +105,7 @@ var sidebar = new Vue({
 			);
 		},
 
-		/** 
+		/**
      * Map list of subsections to section IDs
      * @param  {array} subsections
      * @param  {array} sections
@@ -438,12 +438,6 @@ document.addEventListener("DOMContentLoaded", function() {
 	);
 
 	/**** END CUSTOM MOBILE MENU ITEMS ****/
-
-	var footer = document.getElementById("footer");
-	var sidebar = document.getElementById("sidebar");
-	if (!sidebar) {
-		footer.style.paddingLeft = 0;
-	}
 
 	// Modify behavior of search input
 	var input = document.getElementById("query");

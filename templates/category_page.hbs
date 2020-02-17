@@ -1,5 +1,5 @@
 <!-- CUSTOM SIDEBAR -->
-<main class="main-sidebar" role="main">
+
 <div id="sidebar" class="sidebar-panel">
   <ul class="sidebar">
     <li class="sidebar-item sidebar-home open material-icons-big">
@@ -27,22 +27,22 @@
       </a>
     </li>
     <li :class="['sidebar-item', isOpen(category.id)]" v-if="category.id !== 360002370413" v-for='category in categories' :data-id='category.id'>
-      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
       <ul v-if='category.id === activeSection'>
         <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
           <a :href='section.html_url' class="sidebar-item-link">
-            {[{section.name}]} 
+            {[{section.name}]}
           </a>
         </li>
       </ul>
     </li>
   </ul>
 </div>
-  
+
 <!-- END CUSTOM SIDEBAR -->
 
 <div class="container-divider"></div>
-<div class="custom-container container">
+<div class="container">
     <nav class="sub-nav custom-page-search-mini">
       {{breadcrumbs}}
       {{search scoped=settings.scoped_kb_search submit=false placeholder='Search for help articles, videos and more'}}
@@ -137,11 +137,11 @@
 																														<i class="material-icons black-icon">power_settings_new</i>
 																													{{else}}
 																														{{#is id 360005905054}} {{!--  License Administration --}}
-																															<img class="material-icons black-icon" src="{{asset 'how_to_reg-24px.svg'}}" />																															
+																															<img class="material-icons black-icon" src="{{asset 'how_to_reg-24px.svg'}}" />
 																														{{else}}
 																															{{#is id 360005516633}} {{!--  License Extension Management  --}}
 																																<i class="material-icons black-icon">build</i>
-																															{{else}}																																
+																															{{else}}
 																																{{#is id 360006893833}} {{!--  Toolbox Creator  --}}
 																																	<i class="material-icons black-icon">create</i>
 																																{{else}}
@@ -165,18 +165,18 @@
 																				{{/is}}
 																			{{/is}}
 																		{{/is}}
-																	{{/is}}	
-																{{/is}}	
-															{{/is}}	
-														{{/is}}	
-													{{/is}}	
+																	{{/is}}
+																{{/is}}
+															{{/is}}
+														{{/is}}
+													{{/is}}
 												{{/is}}
 											{{/is}}
 										{{/is}}
 									{{/is}}
 								{{/is}}
 							{{/is}}
-						{{/is}}	
+						{{/is}}
 				  	{{/is}}
 					</div>
 					<h3 class="custom-card-title">
@@ -204,4 +204,4 @@
   </div>
 </div>
 <script>sidebar.$mount("main");</script>
-</main>
+

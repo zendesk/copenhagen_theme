@@ -1,4 +1,3 @@
-<main class="main-sidebar" role="main">
 <div id="sidebar" class="sidebar-panel">
   <ul class="sidebar">
     <li class="sidebar-item sidebar-home open material-icons-big">
@@ -27,11 +26,11 @@
     </li>
 
     <li :class="['sidebar-item', isOpen(category.id)]" v-if="category.id !== 360002370413" v-for='category in categories' :data-id='category.id'>
-      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>   
+      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
       <ul v-if='category.id === activeSection'>
         <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
           <a :href='section.html_url' class="sidebar-item-link">
-            {[{section.name}]} 
+            {[{section.name}]}
           </a>
         </li>
       </ul>
@@ -39,17 +38,35 @@
 
   </ul>
 </div>
-  
+
 <!-- END CUSTOM SIDEBAR -->
 
   <div class="container-divider"></div>
-  <div class="custom-container container">
+  <div class="container">
     <nav class="sub-nav custom-page-search-mini">
       {{breadcrumbs}}
       {{search scoped=settings.scoped_kb_search submit=false placeholder='Search for help articles, videos and more'}}
     </nav>
 
     <div class="article-container" id="article-container">
+
+      <section class="article-sidebar">
+        {{#if settings.show_articles_in_section}}
+        <section class="section-articles collapsible-sidebar">
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
+          <ul>
+            {{#each section.articles}}
+            <li>
+              <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+            </li>
+            {{/each}}
+          </ul>
+          {{#if section.more_articles}}
+          <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
+          {{/if}}
+        </section>
+        {{/if}}
+      </section>
 
       <article class="article">
         <header class="article-header">
@@ -250,24 +267,7 @@
         </div>
         {{/if}}
       </article>
-      <section class="article-sidebar">
-        {{#if settings.show_articles_in_section}}
-        <section class="section-articles collapsible-sidebar">
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'articles_in_section'}}</h3>
-          <ul>
-            {{#each section.articles}}
-            <li>
-              <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
-            </li>
-            {{/each}}
-          </ul>
-          {{#if section.more_articles}}
-          <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-          {{/if}}
-        </section>
-        {{/if}}
-      </section>
+
     </div>
   </div>
   <script>sidebar.$mount("main");</script>
-</main>
