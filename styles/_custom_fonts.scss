@@ -1,0 +1,34 @@
+/**** CUSTOM FONT ****/
+
+@font-face {
+    font-family: "geogrotesque";
+    src: local ("geogrotesque");
+    src: url("$assets-ge2003-rg-eot");
+    src: url("$assets-ge2003-rg-eot#iefix") format("eot"),
+      url("$assets-ge2003-rg-woff") format("woff"),
+      url("$assets-ge2003-rg-ttf") format("truetype"),
+      url("$assets-ge2003-rg-svg#webfont") format("svg");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "geogrotesque light";
+    src: local ("geogrotesque light");
+    src: url("$assets-ge2003-lt-eot");
+    src: url("$assets-ge2003-lt-eot#iefix") format("eot"),
+      url("$assets-ge2003-lt-woff") format("woff"),
+      url("$assets-ge2003-lt-ttf") format("truetype"),
+      url("$assets-ge2003-lt-svg#webfont") format("svg");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "geogrotesque semibold";
+    src: local ("geogrotesque semibold");
+    src: url("$assets-ge2003-smbd-eot");
+    src: url("$assets-ge2003-smbd-eot#iefix") format("eot"),
+      url("$assets-ge2003-smbd-woff") format("woff"),
+      url("$assets-ge2003-smbd-ttf") format("truetype"),
+      url("$assets-ge2003-smbd-svg#webfont") format("svg");
+    font-style: normal;
+}
