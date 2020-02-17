@@ -1818,9 +1818,12 @@ ul {
   display: inline-block;
 }
 
-.share a {
+.share li {
   height: 25px;
   width: 25px;
+}
+
+.share a {
   color: lighten($text_color, 20%);
 }
 
