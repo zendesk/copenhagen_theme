@@ -4150,22 +4150,49 @@ html[lang|="ja"] .search-result-description em {
   src: url("$assets-ge2003-rg-eot");
   src: url("$assets-ge2003-rg-eot#iefix") format("eot"), url("$assets-ge2003-rg-woff") format("woff"), url("$assets-ge2003-rg-ttf") format("truetype"), url("$assets-ge2003-rg-svg#webfont") format("svg");
   font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: "geogrotesque light";
+  font-family: "geogrotesque";
   src: local "geogrotesque light";
   src: url("$assets-ge2003-lt-eot");
   src: url("$assets-ge2003-lt-eot#iefix") format("eot"), url("$assets-ge2003-lt-woff") format("woff"), url("$assets-ge2003-lt-ttf") format("truetype"), url("$assets-ge2003-lt-svg#webfont") format("svg");
   font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
 
 @font-face {
-  font-family: "geogrotesque semibold";
+  font-family: "geogrotesque";
   src: local "geogrotesque semibold";
   src: url("$assets-ge2003-smbd-eot");
   src: url("$assets-ge2003-smbd-eot#iefix") format("eot"), url("$assets-ge2003-smbd-woff") format("woff"), url("$assets-ge2003-smbd-ttf") format("truetype"), url("$assets-ge2003-smbd-svg#webfont") format("svg");
   font-style: normal;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+}
+
+/**
+* Helper classes
+**/
+.geo-light {
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.geo-regular {
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.geo-semibold {
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-style: normal;
+  font-weight: 600;
 }
 
 /***** Overrides *****/
@@ -4694,8 +4721,6 @@ a {
 }
 
 .custom-banner-info > h1 {
-  font-family: "geogrotesque light";
-  font-weight: 300;
   margin-bottom: 0;
 }
 
@@ -4713,8 +4738,6 @@ a {
 
 .custom-banner-info > h1 > div {
   display: inline-block;
-  font-family: "geogrotesque semibold";
-  font-weight: 600;
 }
 
 .custom-banner-picture {

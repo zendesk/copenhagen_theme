@@ -9,10 +9,12 @@
       url("$assets-ge2003-rg-ttf") format("truetype"),
       url("$assets-ge2003-rg-svg#webfont") format("svg");
     font-style: normal;
+    font-weight: 400;
+	  text-rendering: optimizeLegibility;
 }
 
 @font-face {
-    font-family: "geogrotesque light";
+    font-family: "geogrotesque";
     src: local ("geogrotesque light");
     src: url("$assets-ge2003-lt-eot");
     src: url("$assets-ge2003-lt-eot#iefix") format("eot"),
@@ -20,10 +22,12 @@
       url("$assets-ge2003-lt-ttf") format("truetype"),
       url("$assets-ge2003-lt-svg#webfont") format("svg");
     font-style: normal;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
 }
 
 @font-face {
-    font-family: "geogrotesque semibold";
+    font-family: "geogrotesque";
     src: local ("geogrotesque semibold");
     src: url("$assets-ge2003-smbd-eot");
     src: url("$assets-ge2003-smbd-eot#iefix") format("eot"),
@@ -31,4 +35,40 @@
       url("$assets-ge2003-smbd-ttf") format("truetype"),
       url("$assets-ge2003-smbd-svg#webfont") format("svg");
     font-style: normal;
+    font-weight: 600;
+    text-rendering: optimizeLegibility;
+}
+
+@mixin geo-light {
+	font-family: $geoFont;
+	font-style: normal;
+	font-weight: 300;
+}
+
+@mixin geo-regular {
+	font-family: $geoFont;
+	font-style: normal;
+	font-weight: 400;
+}
+
+@mixin geo-semibold {
+	font-family: $geoFont;
+	font-style: normal;
+	font-weight: 600;
+}
+
+/**
+* Helper classes
+**/
+
+.geo-light {
+	@include geo-light;
+}
+
+.geo-regular {
+	@include geo-regular;
+}
+
+.geo-semibold {
+	@include geo-semibold;
 }
