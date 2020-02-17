@@ -8,7 +8,7 @@ file_path = File.expand_path("theme.zip")
 email = ENV["zendesk_email"]
 token = ENV["zendesk_token"]
 
-base_url = "https://#{subdomain}.zendesk.com/api/guide/theming/#{brand_id}"
+base_url = "https://#{subdomain}.zendesk.com/api/v2/guide/theming"
 
 logger = Logger.new($stdout)
 logger.level = Logger::INFO
@@ -23,7 +23,7 @@ zendesk_connection = Faraday.new do |faraday|
   faraday.adapter :net_http
 end
 
-job_response = zendesk_connection.post("jobs/themes/import/zip")
+job_response = zendesk_connection.post("jobs/themes/imports", { job: { attributes: { brand_id: brand_id, format: "zip" } } })
 
 job_id = job_response.body['job']['id']
 theme_id = job_response.body['job']['data']['theme_id']
@@ -67,7 +67,7 @@ zendesk_connection.post("themes/#{theme_id}/publish")
 
 # Clear old themes
 
-themes = zendesk_connection.get("themes").body["themes"]
+themes = zendesk_connection.get("themes?brand_id=#{brand_id}").body["themes"]
 
 themes.each do |theme|
   next if theme["id"] == theme_id
