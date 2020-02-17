@@ -4,12 +4,10 @@
         "sourceMap": true,
         "noImplicitAny": true,
         "module": "commonjs",
-        "target": "es2015",
+        "target": "es5",
         "jsx": "react",
-        "lib": [
-            "es2015",
-            "dom"
-        ]
+        "lib": ["dom", "dom.iterable", "es2015"],
+        "esModuleInterop": true,
     },
     "include": [
         "./js/**/*"

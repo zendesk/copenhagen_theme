@@ -2,75 +2,36 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import Sidebar from "./components/Sidebar";
 
-var category1 = [
-    {
-      name: "CET Designer",
-      sections: [
-        {
-          name: "One",
-          id: 1,
-          href: "/"
-        },
-        {
-          name: "Two",
-          id: 2,
-          href: "/"
-        }
-      ]
-    },
-    {
-      name: "Catalogues",
-      sections: [
-        {
-          name: "One",
-          id: 21,
-          href: "/"
-        },
-        {
-          name: "Two",
-          id: 22,
-          href: "/"
-        }
-      ]
-    },
-    {
-      name: "MyConfigura",
-      sections: [
-        {
-          name: "One",
-          id: 21,
-          href: "/"
-        },
-        {
-          name: "One",
-          id: 21,
-          href: "/"
-        },
-        {
-          name: "One",
-          id: 21,
-          href: "/"
-        },
-        {
-          name: "One",
-          id: 21,
-          href: "/"
-        },
-        {
-          name: "One",
-          id: 21,
-          href: "/"
-        },
-        {
-          name: "Two",
-          id: 22,
-          href: "/"
-        }
-      ]
-    }
-  ];
-  
+// function index() {
+// React.useEffect(() => {
+//   // Create an scoped async function in the hook
+//   async function fetchData () {
+//     await fetch("/api/v2/help_center/en-us/sections.json?include=categories&per_page=100")
+//       .then(res => res.json())
+//       .then(res => {setCategory(res)})
+//       .catch(() => this.setState({ hasErrors: true }));
+//   }
+// }, []);
 
-ReactDOM.render(<Sidebar categories={category1} />, document.getElementById("sidebar"));
+// return category
+// }
 
-{}
+// async function fetchData () {
+//   fetch("/api/v2/help_center/en-us/sections.json?include=categories&per_page=100")
+//     .then(res => res.json())
+//     .then(res => this.setState({ planets: res }))
+//     .catch(() => this.setState({ hasErrors: true }));
+// }
+
+function domReady(callback: () => void) {
+  document.readyState === "interactive" || document.readyState === "complete"
+    ? callback()
+    : document.addEventListener("DOMContentLoaded", callback);
+}
+
+domReady(() => {
+  ReactDOM.render(
+    <Sidebar />,
+    document.body.appendChild(document.createElement("DIV"))
+  );
+});

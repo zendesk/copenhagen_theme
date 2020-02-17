@@ -1,3 +1,3 @@
 #!/bin/bash
 
-webpack --watch 
+webpack --watch --mode development

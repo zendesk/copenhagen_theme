@@ -4201,13 +4201,15 @@ html[lang|="ja"] .search-result-description em {
 }
 
 @media only screen and (max-width: 768px) {
-  .article, .article-sidebar {
+  .article,
+  .article-sidebar {
     width: 100%;
   }
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1023px) {
-  .article, .article-sidebar {
+  .article,
+  .article-sidebar {
     width: 100%;
   }
 }
@@ -4318,11 +4320,15 @@ html[lang|="ja"] .search-result-description em {
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-variant-ligatures: no-common-ligatures;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   color: var(--color-black);
   color: #000000;
@@ -4689,7 +4695,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0);
   height: auto;
   padding: 2rem 0;
 }
@@ -5442,7 +5448,7 @@ main.main-sidebar {
 }
 
 .sidebar-item-title {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: block;
   color: #000000;
   cursor: pointer;

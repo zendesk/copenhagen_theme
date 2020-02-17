@@ -1,136 +1,97 @@
-<!-- CUSTOM SIDEBAR -->
-
-<div id="sidebar" class="sidebar-panel">
-  <ul class="sidebar">
-    <li class="sidebar-item sidebar-home open material-icons-big">
-      <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title">
-        <i class="material-icons custom-icon-margin-right blue-icon">school</i>
-         Academy and training
-      </a>
-    </li>
-    <li class="sidebar-item sidebar-home open material-icons-big">
-      <a href="https://www.configura.com/products/system-recommendations/cet-designer" class="custom-sidebar-item-title">
-        <i class="material-icons custom-icon-margin-right blue-icon">computer</i>
-         System recommendations
-      </a>
-    </li>
-    <li class="sidebar-item sidebar-home open material-icons-big">
-      <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title">
-        <i class="material-icons custom-icon-margin-right blue-icon">import_contacts</i>
-         Release notes
-      </a>
-    </li>
-    <li class="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
-      <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title">
-        <i class="material-icons custom-icon-margin-right blue-icon">forum</i>
-         Forums
-      </a>
-    </li>
-    <li :class="['sidebar-item', isOpen(category.id)]" v-if="category.id !== 360002370413" v-for='category in categories' :data-id='category.id'>
-      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
-      <ul v-if='category.id === activeSection'>
-        <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
-          <a :href='section.html_url' class="sidebar-item-link">
-            {[{section.name}]}
-          </a>
-        </li>
-      </ul>
-    </li>
-  	</ul>
-	</div>
-
 <div class="container-divider"></div>
 <div class="container">
-    <nav class="sub-nav custom-page-search-mini">
-      {{breadcrumbs}}
-      {{search scoped=settings.scoped_kb_search submit=false placeholder='Search for help articles, videos and more'}}
-    </nav>
+  <nav class="sub-nav custom-page-search-mini">
+    {{breadcrumbs}}
+    {{search scoped=settings.scoped_kb_search submit=false placeholder='Search for help articles, videos and more'}}
+  </nav>
   <div class="category-container custom-category-container">
     <div class="category-content">
       <header class="page-header">
         <h1>{{category.name}}</h1>
         {{#if category.description}}
-          <p class="custom-contact-header-desc">{{category.description}}</p>
+        <p class="custom-contact-header-desc">{{category.description}}</p>
         {{/if}}
-        <b class="custom-contact-header-additional-desc">You can always send an email to <a href="mailto:cetsupport@configura.com">cetsupport@configura.com</a></b>
+        <b class="custom-contact-header-additional-desc">You can always send an email to <a
+            href="mailto:cetsupport@configura.com">cetsupport@configura.com</a></b>
       </header>
       <!-- CUSTOM CARDS -->
       <div class="custom-card-container">
         {{#each sections}}
-          {{#is id 360006737154}} {{!-- Manufacturer Extension --}}
-            <div class="custom-contact-card-wrapper">
+        {{#is id 360006737154}} {{!-- Manufacturer Extension --}}
+        <div class="custom-contact-card-wrapper">
           {{else}}
-            <div class="custom-contact-card-wrapper">
-          {{/is}}
-        	<section class="custom-card small-card">
-            {{#is id 360006761373}} {{!-- Forum --}}
-              <a href="https://www.configura.com/my/forum" class="custom-card-link">
-            {{else}}
-              {{#is id 360006761393}} {{!-- FAQ --}}
-                <a href="https://support.configura.com/hc/en-us/sections/360006761393" class="custom-card-link">
-              {{else}}
-                {{#is id 360006730714}} {{!-- Call --}}
-                  <a href="https://support.configura.com/hc/en-us/articles/360041358813" class="custom-card-link">
-                {{else}}
-                  {{#is id 360006737154}} {{!-- Manufacturer extension --}}
-                    <a href="https://support.configura.com/hc/en-us/articles/360040873234" class="custom-card-link">
-                  {{else}}
-                    {{#is id 360006753914}} {{!-- Chat --}}
-                      <a href="https://www.configura.com/support/chat" class="custom-card-link" onclick="window.open(this.href+window.location.search.replace('ref1','account').replace('ref2', 'email'),'CETDesignerSupport','resizable=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=no,width=404,height=500,status'); return false" >
-                    {{else}}
-                      <a href="{{url}}" class="custom-card-link">
-                    {{/is}}
-                  {{/is}}
-                {{/is}}
-              {{/is}}
+          <div class="custom-contact-card-wrapper">
             {{/is}}
-              	<div class="custom-card-logo-container">
-                  {{#is id 360006761373}} {{!-- Forum --}}
-                    <i class="material-icons black-icon">forum</i>
-                  {{else}}
-                    {{#is id 360006761393}} {{!-- FAQ --}}
-                      <i class="material-icons black-icon">help</i>
-                    {{else}}
-                      {{#is id 360006730714}} {{!-- Call --}}
-                        <i class="material-icons black-icon">call</i>
-                      {{else}}
-                        {{#is id 360006737154}} {{!-- Manufacturer extension --}}
-                          <i class="material-icons black-icon">business</i>
-                        {{else}}
-                          {{#is id 360006753914}} {{!-- Chat --}}
-                            <i class="material-icons black-icon">textsms</i>
-                          {{else}}
-                            <i class="material-icons black-icon">camera</i>
-                          {{/is}}
-                        {{/is}}
-                      {{/is}}
-                    {{/is}}
-                  {{/is}}
-                </div>
-                {{#is id 360006737154}} {{!-- Manufacturer extension --}}
-                  <h3 class="custom-card-title custom-text-align-center">
+            <section class="custom-card small-card">
+              {{#is id 360006761373}} {{!-- Forum --}}
+              <a href="https://www.configura.com/my/forum" class="custom-card-link">
                 {{else}}
-                  <h3 class="custom-card-title">
-                {{/is}}
-                	{{name}}
-              	</h3>
-              </a>
-              <!-- END CUSTOM CARDS -->
-            	{{#if internal}}
-            		<span class="icon-lock" title="{{t 'internal'}}"></span>
-            	{{/if}}
-        	</section>
-          {{description}}
+                {{#is id 360006761393}} {{!-- FAQ --}}
+                <a href="https://support.configura.com/hc/en-us/sections/360006761393" class="custom-card-link">
+                  {{else}}
+                  {{#is id 360006730714}} {{!-- Call --}}
+                  <a href="https://support.configura.com/hc/en-us/articles/360041358813" class="custom-card-link">
+                    {{else}}
+                    {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                    <a href="https://support.configura.com/hc/en-us/articles/360040873234" class="custom-card-link">
+                      {{else}}
+                      {{#is id 360006753914}} {{!-- Chat --}}
+                      <a href="https://www.configura.com/support/chat" class="custom-card-link"
+                        onclick="window.open(this.href+window.location.search.replace('ref1','account').replace('ref2', 'email'),'CETDesignerSupport','resizable=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=no,width=404,height=500,status'); return false">
+                        {{else}}
+                        <a href="{{url}}" class="custom-card-link">
+                          {{/is}}
+                          {{/is}}
+                          {{/is}}
+                          {{/is}}
+                          {{/is}}
+                          <div class="custom-card-logo-container">
+                            {{#is id 360006761373}} {{!-- Forum --}}
+                            <i class="material-icons black-icon">forum</i>
+                            {{else}}
+                            {{#is id 360006761393}} {{!-- FAQ --}}
+                            <i class="material-icons black-icon">help</i>
+                            {{else}}
+                            {{#is id 360006730714}} {{!-- Call --}}
+                            <i class="material-icons black-icon">call</i>
+                            {{else}}
+                            {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                            <i class="material-icons black-icon">business</i>
+                            {{else}}
+                            {{#is id 360006753914}} {{!-- Chat --}}
+                            <i class="material-icons black-icon">textsms</i>
+                            {{else}}
+                            <i class="material-icons black-icon">camera</i>
+                            {{/is}}
+                            {{/is}}
+                            {{/is}}
+                            {{/is}}
+                            {{/is}}
+                          </div>
+                          {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                          <h3 class="custom-card-title custom-text-align-center">
+                            {{else}}
+                            <h3 class="custom-card-title">
+                              {{/is}}
+                              {{name}}
+                            </h3>
+                        </a>
+                        <!-- END CUSTOM CARDS -->
+                        {{#if internal}}
+                        <span class="icon-lock" title="{{t 'internal'}}"></span>
+                        {{/if}}
+            </section>
+            {{description}}
           </div>
-					{{else}}
-						<i class="category-empty">
-							<a href="{{category.url}}">{{t 'empty'}}</a>
-						</i>
-					{{/each}}
-        <div class="contact-empty-div">
+          {{else}}
+          <i class="category-empty">
+            <a href="{{category.url}}">{{t 'empty'}}</a>
+          </i>
+          {{/each}}
+          <div class="contact-empty-div">
+          </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
-
-<script>sidebar.$mount("main");</script>

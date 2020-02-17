@@ -1,12 +1,22 @@
+$base-font-size: 16px;
+
+@function px-to-rem($target) {
+  @return ($target / $base-font-size) * 1rem;
+}
+
 @mixin respond-to($media) {
   @if $media == handhelds {
-    @media only screen and (max-width: $tablet-width) { @content; }
-  }
-  @else if $media == medium-screens {
-    @media only screen and (min-width: $tablet-width + 1) and (max-width: $desktop-width - 1) { @content; }
-  }
-  @else if $media == wide-screens {
-    @media only screen and (min-width: $desktop-width) { @content; }
+    @media only screen and (max-width: $tablet-width) {
+      @content;
+    }
+  } @else if $media == medium-screens {
+    @media only screen and (min-width: $tablet-width + 1) and (max-width: $desktop-width - 1) {
+      @content;
+    }
+  } @else if $media == wide-screens {
+    @media only screen and (min-width: $desktop-width) {
+      @content;
+    }
   }
 }
 
@@ -17,13 +27,20 @@ $sidebar-width: 300px;
   align-items: baseline;
 }
 
-.article, .article-sidebar {
-  @include respond-to(handhelds) { width:100% }
-  @include respond-to(medium-screens) { width:100% }
+.article,
+.article-sidebar {
+  @include respond-to(handhelds) {
+    width: 100%;
+  }
+  @include respond-to(medium-screens) {
+    width: 100%;
+  }
 }
 
 .custom-article-push {
-  @include respond-to(wide-screens) { flex: 0 0 17%; }
+  @include respond-to(wide-screens) {
+    flex: 0 0 17%;
+  }
 }
 
 .article-content table {
@@ -130,13 +147,17 @@ $sidebar-width: 300px;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-variant-ligatures: no-common-ligatures;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: $geoFont;
-  color:  var(--color-black);
+  color: var(--color-black);
   color: #000000; /* default supported fallback style */
 }
 
@@ -153,7 +174,7 @@ p {
   font-size: 15px;
   font-weight: 300;
   line-height: 1.5;
-  color:  var(--color-black);
+  color: var(--color-black);
   color: #000000; /* default supported fallback style */
 }
 
@@ -173,12 +194,12 @@ a {
   font-size: 15px;
   font-weight: 300;
   line-height: 1.5;
-  color:  var(--color-black);
+  color: var(--color-black);
   color: #000000; /* default supported fallback style */
 }
 
 .academy-link-icon {
-  font-size: smaller!important;
+  font-size: smaller !important;
 }
 
 .breadcrumbs a {
@@ -190,7 +211,7 @@ a {
   color: #006ab3; /* default supported fallback style */
 }
 
-.custom-subsection{
+.custom-subsection {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -199,8 +220,10 @@ a {
 
 .custom-subsection-section {
   width: 30%;
-  margin-bottom: 2rem;;
-  @include respond-to(handhelds) { width: 100% }
+  margin-bottom: 2rem;
+  @include respond-to(handhelds) {
+    width: 100%;
+  }
 }
 
 .comment-heading {
@@ -249,7 +272,9 @@ a {
   font-style: italic;
   height: 3.5rem;
   width: 35rem;
-  @include respond-to(handhelds) { width: 90vw; }
+  @include respond-to(handhelds) {
+    width: 90vw;
+  }
   &:focus {
     border-radius: 0;
     border: #006ab3;
@@ -266,7 +291,9 @@ a {
   height: 3rem;
   max-width: 50rem;
   width: 25.1rem;
-  @include respond-to(handhelds) { width: 100%; }
+  @include respond-to(handhelds) {
+    width: 100%;
+  }
 }
 
 .search {
@@ -276,7 +303,9 @@ a {
 
 .trending-div {
   margin-top: 15px;
-  @include respond-to(handhelds) { text-align: center; }
+  @include respond-to(handhelds) {
+    text-align: center;
+  }
 }
 
 .trending-div > a {
@@ -313,7 +342,9 @@ a {
 }
 
 .custom-contact-page-button {
-  @include respond-to(handhelds) { margin-left: 0; }
+  @include respond-to(handhelds) {
+    margin-left: 0;
+  }
   align-items: center;
   background-color: var(--color-white);
   border: none;
@@ -425,8 +456,12 @@ a {
   @include respond-to(handhelds) {
     background-position: center;
   }
-  @include respond-to(wide-screens) { height: 70vh; }
-  @include respond-to(medium-screens) { height: 70vh; }
+  @include respond-to(wide-screens) {
+    height: 70vh;
+  }
+  @include respond-to(medium-screens) {
+    height: 70vh;
+  }
 }
 
 .custom-banner {
@@ -438,7 +473,9 @@ a {
   height: auto;
   margin-bottom: 1rem;
   padding: 2rem 0;
-  @include respond-to(handhelds) { padding: 1rem 0; }
+  @include respond-to(handhelds) {
+    padding: 1rem 0;
+  }
 }
 
 .custom-hero-banner {
@@ -468,8 +505,12 @@ a {
     width: 100%;
   }
   > h1 {
-    @include respond-to(medium-screens) { font-size: 60px; }
-    @include respond-to(wide-screens) { font-size: 60px; }
+    @include respond-to(medium-screens) {
+      font-size: 60px;
+    }
+    @include respond-to(wide-screens) {
+      font-size: 60px;
+    }
     margin-bottom: 0;
     > div {
       display: inline-block;
@@ -483,7 +524,9 @@ a {
   justify-content: center;
   padding-top: 2rem;
   width: 50%;
-  @include respond-to(handhelds) { display: none; }
+  @include respond-to(handhelds) {
+    display: none;
+  }
 }
 
 .custom-banner-picture-mobile {
@@ -493,8 +536,12 @@ a {
   padding-top: 1rem;
   padding-bottom: 1rem;
   width: 100%;
-  @include respond-to(medium-screens) { display: none; }
-  @include respond-to(wide-screens) { display: none; }
+  @include respond-to(medium-screens) {
+    display: none;
+  }
+  @include respond-to(wide-screens) {
+    display: none;
+  }
 }
 
 .custom-banner-button {
@@ -508,7 +555,6 @@ a {
   color: var(--color-white);
   color: #ffffff;
 }
-
 
 @media (min-width: 768px) {
   .custom-link-container {
@@ -543,7 +589,7 @@ a {
     width: 100%;
   }
 }
-.section-container{
+.section-container {
   display: contents;
 }
 
@@ -562,7 +608,9 @@ a {
 .custom-card-link {
   display: flex;
 
-  &:hover, &:active, &:focus {
+  &:hover,
+  &:active,
+  &:focus {
     text-decoration: none;
   }
 }
@@ -642,7 +690,6 @@ a {
   font-weight: 600;
 }
 
-
 /* Big screen friendly */
 @media (min-width: 768px) {
   .custom-card-container {
@@ -666,7 +713,7 @@ a {
 .custom-section-list .section-list-item:first-child,
 .custom-section-list .section-list-item {
   border-top: none;
-border-bottom: none;
+  border-bottom: none;
 }
 
 .custom-article-list-item {
@@ -715,8 +762,8 @@ border-bottom: none;
   align-items: center;
 
   .icon-menu::before {
-      color: var(--color-white);
-      color: #ffffff; /* default supported fallback style */
+    color: var(--color-white);
+    color: #ffffff; /* default supported fallback style */
   }
 
   .user-info > [role="button"]:hover {
@@ -814,7 +861,10 @@ sup > .ask-community-sup-icon {
   @include respond-to(handhelds) {
     > a {
       color: black;
-      &:active, &:hover, &:focus, &:visited {
+      &:active,
+      &:hover,
+      &:focus,
+      &:visited {
         color: black;
       }
     }
@@ -832,12 +882,16 @@ sup > .ask-community-sup-icon {
 }
 
 a.custom-myconfigura-link {
-  @include respond-to(handhelds) { display: none; }
+  @include respond-to(handhelds) {
+    display: none;
+  }
   @extend .custom-links;
 }
 
 a.custom-download-extensions-btn {
-  @include respond-to(handhelds) { display: none; }
+  @include respond-to(handhelds) {
+    display: none;
+  }
 
   line-height: 1.5;
   padding: 10px;
@@ -846,7 +900,11 @@ a.custom-download-extensions-btn {
   border: 1px solid #ffffff; /* default supported fallback style */
   border-radius: 0;
 
-  &, &:active, &:focus, &:hover, &:visited {
+  &,
+  &:active,
+  &:focus,
+  &:hover,
+  &:visited {
     color: var(--color-blue);
     color: #006ab3;
     background-color: var(--color-white);
@@ -862,7 +920,12 @@ a.custom-download-extensions-btn {
 
   a [role="menuitem"] {
     color: black;
-    &:active, &:focus, &:hover, &:visited { color: black; }
+    &:active,
+    &:focus,
+    &:hover,
+    &:visited {
+      color: black;
+    }
   }
 }
 
@@ -890,7 +953,8 @@ a.custom-download-extensions-btn {
   &:hover {
     background-color: var(--color-grey);
     background-color: #f7f6f6; /* default supported fallback style */
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19) !important;
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2),
+      0 4px 10px 0 rgba(0, 0, 0, 0.19) !important;
   }
   .blocks-item-link {
     color: var(--color-black);
@@ -979,7 +1043,9 @@ a.custom-download-extensions-btn {
   color: var(--color-white);
   color: #ffffff; /* default supported fallback style */
   padding-left: 1rem;
-  @include respond-to(handhelds) { padding-left: 0; }
+  @include respond-to(handhelds) {
+    padding-left: 0;
+  }
 }
 
 .custom-copyright-container div {
@@ -1044,7 +1110,9 @@ a.custom-download-extensions-btn {
 .custom-contact-title {
   color: #ffffff;
   margin-bottom: 0;
-  @include respond-to(handhelds) { padding-bottom: 1rem; }
+  @include respond-to(handhelds) {
+    padding-bottom: 1rem;
+  }
 }
 
 /* Big screen friendly */
@@ -1080,7 +1148,7 @@ a.custom-download-extensions-btn {
   margin-right: 10px;
 }
 
-.see-more{
+.see-more {
   padding-top: 13px;
 }
 
@@ -1143,7 +1211,7 @@ main.main-sidebar {
 }
 
 .sidebar-item-title {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   display: block;
   color: #000000;
   cursor: pointer;
@@ -1284,7 +1352,7 @@ main.main-sidebar {
 .material-icons-big {
   line-height: 1.5em;
   & .material-icons {
-    font-size:1.5em;
+    font-size: 1.5em;
   }
 }
 
@@ -1313,7 +1381,7 @@ main.main-sidebar {
 /*** change the text color by editing "color"  ***/
 
 .alertbox {
-  z-index:1;
+  z-index: 1;
 }
 
 .ns-box {
@@ -1599,10 +1667,10 @@ main.main-sidebar {
   }
 
   .search-full input[type="search"] {
-    height: 3.5em!important;
-    width: 19em!important;
-    border: 1px solid #006ab3!important;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19)!important;
+    height: 3.5em !important;
+    width: 19em !important;
+    border: 1px solid #006ab3 !important;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19) !important;
   }
 }
 
@@ -1660,7 +1728,9 @@ main.main-sidebar {
 }
 
 .custom-forums-page-button {
-  @include respond-to(handhelds) { margin-left: 0; }
+  @include respond-to(handhelds) {
+    margin-left: 0;
+  }
   align-items: center;
   background-color: #006ab3; /* default supported fallback style */
   background-color: var(--color-blue);
