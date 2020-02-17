@@ -884,8 +884,7 @@ a.custom-download-extensions-btn {
   border: 1px solid #c0c0c0; /* default supported fallback style */
   border-radius: 0;
   text-align: initial;
-  @include respond-to(medium-screens) { max-width: 17em; }
-  @include respond-to(wide-screens) { max-width: 17em; }
+  max-width: 17em;
   &:active,
   &:focus,
   &:hover {

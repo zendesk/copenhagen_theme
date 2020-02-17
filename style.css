@@ -5161,18 +5161,7 @@ a.custom-download-extensions-btn, a.custom-download-extensions-btn:active, a.cus
   /* default supported fallback style */
   border-radius: 0;
   text-align: initial;
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1023px) {
-  .custom-blocks-item {
-    max-width: 17em;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .custom-blocks-item {
-    max-width: 17em;
-  }
+  max-width: 17em;
 }
 
 .custom-blocks-item:active, .custom-blocks-item:focus, .custom-blocks-item:hover {
