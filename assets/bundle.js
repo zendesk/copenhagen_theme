@@ -271,60 +271,8 @@ var ThemeTemplate;
   ThemeTemplate["SectionPagesChatPage"] = "section_pages/chat_page";
 })(ThemeTemplate = exports.ThemeTemplate || (exports.ThemeTemplate = {}));
 
-var category1 = [{
-  name: "CET Designer",
-  sections: [{
-    name: "One",
-    id: 1,
-    href: "/"
-  }, {
-    name: "Two",
-    id: 2,
-    href: "/"
-  }]
-}, {
-  name: "Catalogues",
-  sections: [{
-    name: "One",
-    id: 21,
-    href: "/"
-  }, {
-    name: "Two",
-    id: 22,
-    href: "/"
-  }]
-}, {
-  name: "MyConfigura",
-  sections: [{
-    name: "One",
-    id: 21,
-    href: "/"
-  }, {
-    name: "One",
-    id: 21,
-    href: "/"
-  }, {
-    name: "One",
-    id: 21,
-    href: "/"
-  }, {
-    name: "One",
-    id: 21,
-    href: "/"
-  }, {
-    name: "One",
-    id: 21,
-    href: "/"
-  }, {
-    name: "Two",
-    id: 22,
-    href: "/"
-  }]
-}];
-
-function Sidebar(props) {
-  var _this = this; // const [open, setOpen] = useState(false);
-
+function Sidebar() {
+  var _this = this;
 
   var _a = react_1.useState(0),
       openId = _a[0],
@@ -333,10 +281,6 @@ function Sidebar(props) {
   var _b = react_1.useState(),
       data = _b[0],
       setData = _b[1];
-
-  var _c = react_1.useState("sidebar-item"),
-      liClass = _c[0],
-      setListClass = _c[1];
 
   var url = "/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
 
@@ -347,49 +291,29 @@ function Sidebar(props) {
       }
 
       return id;
-    }); // setOpen(!open);
-  }
-
-  function fetchUrl() {
-    return __awaiter(this, void 0, void 0, function () {
-      var response, json;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            return [4
-            /*yield*/
-            , fetch(url)];
-
-          case 1:
-            response = _a.sent();
-            return [4
-            /*yield*/
-            , response.json()];
-
-          case 2:
-            json = _a.sent();
-            return [2
-            /*return*/
-            , json];
-        }
-      });
     });
   }
 
   react_1.useEffect(function () {
     (function () {
       return __awaiter(_this, void 0, void 0, function () {
-        var response;
+        var response, json;
         return __generator(this, function (_a) {
           switch (_a.label) {
             case 0:
               return [4
               /*yield*/
-              , fetchUrl()];
+              , fetch(url)];
 
             case 1:
               response = _a.sent();
-              setData(response);
+              return [4
+              /*yield*/
+              , response.json()];
+
+            case 2:
+              json = _a.sent();
+              setData(json);
               return [2
               /*return*/
               ];
@@ -398,18 +322,8 @@ function Sidebar(props) {
       });
     })();
   }, []);
-  console.log(data);
   var categories = data && data.categories;
   var sections = data && data.sections;
-
-  function updateStyle(id) {
-    // if (openId === id) {
-    //   setListClass("sidebar-item open");
-    // } else {
-    //   setListClass("sidebar-item");
-    // }
-    setListClass(openId == id ? "sidebar-item" : "sidebar-item open");
-  }
 
   if (document.getElementById("home")) {
     return react_1.default.createElement(react_1.default.Fragment, null, " ");
@@ -459,7 +373,7 @@ function Sidebar(props) {
       className: category.id === openId ? "sidebar-item open" : "sidebar-item",
       key: index,
       onClick: function (e) {
-        expand(category.id); // updateStyle(category.id);
+        expand(category.id);
       }
     }, react_1.default.createElement("h4", {
       className: "sidebar-item-title"

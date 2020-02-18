@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export interface Data {
+export interface SidebarData {
   sections: Section[];
   page: number;
   previous_page: null;
@@ -59,83 +59,9 @@ export enum ThemeTemplate {
   SectionPagesChatPage = "section_pages/chat_page"
 }
 
-interface Props {
-  // categories: Category[];
-}
-
-var category1 = [
-  {
-    name: "CET Designer",
-    sections: [
-      {
-        name: "One",
-        id: 1,
-        href: "/"
-      },
-      {
-        name: "Two",
-        id: 2,
-        href: "/"
-      }
-    ]
-  },
-  {
-    name: "Catalogues",
-    sections: [
-      {
-        name: "One",
-        id: 21,
-        href: "/"
-      },
-      {
-        name: "Two",
-        id: 22,
-        href: "/"
-      }
-    ]
-  },
-  {
-    name: "MyConfigura",
-    sections: [
-      {
-        name: "One",
-        id: 21,
-        href: "/"
-      },
-      {
-        name: "One",
-        id: 21,
-        href: "/"
-      },
-      {
-        name: "One",
-        id: 21,
-        href: "/"
-      },
-      {
-        name: "One",
-        id: 21,
-        href: "/"
-      },
-      {
-        name: "One",
-        id: 21,
-        href: "/"
-      },
-      {
-        name: "Two",
-        id: 22,
-        href: "/"
-      }
-    ]
-  }
-];
-
-export default function Sidebar(props: Props) {
-  // const [open, setOpen] = useState(false);
+export default function Sidebar() {
   const [openId, setOpenId] = useState(0);
-  const [data, setData] = useState<Data>();
-  const [liClass, setListClass] = useState("sidebar-item");
+  const [data, setData] = useState<SidebarData>();
   const url =
     "/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
 
@@ -146,35 +72,20 @@ export default function Sidebar(props: Props) {
       }
       return id;
     });
-    // setOpen(!open);
-  }
-
-  async function fetchUrl() {
-    const response = await fetch(url);
-    const json = await response.json();
-
-    return json;
   }
 
   useEffect(() => {
     (async () => {
-      const response = await fetchUrl();
-      setData(response);
+      const response = await fetch(url);
+      const json = await response.json();
+
+      setData(json);
     })();
   }, []);
 
-  console.log(data);
   const categories = data && data.categories;
   const sections = data && data.sections;
 
-  function updateStyle(id: number) {
-    // if (openId === id) {
-    //   setListClass("sidebar-item open");
-    // } else {
-    //   setListClass("sidebar-item");
-    // }
-    setListClass(openId == id ? "sidebar-item" : "sidebar-item open");
-  }
   if (document.getElementById("home")) {
     return <> </>;
   }
@@ -245,7 +156,6 @@ export default function Sidebar(props: Props) {
                   key={index}
                   onClick={e => {
                     expand(category.id);
-                    // updateStyle(category.id);
                   }}
                 >
                   <h4 className="sidebar-item-title">{category.name}</h4>
