@@ -183,23 +183,8 @@
 
 /* Following table */
 .subscriptions {
-  &-unsubscribe a {
+  &-subscribe button {
     @include tablet { width: auto; }
-
-    background: $button-color;
-    border-radius: 4px;
-    color: $brand_text_color;
-    display: inline-block;
-    font-size: 12px;
-    line-height: 2.34; //Taken from Zendesk garden bedrock
-    padding: 0 20px;
-    text-align: center;
-    width: 100%;
-
-    &:hover {
-      background-color: $hover-button-color;
-      text-decoration: none;
-    }
   }
 
   &-table {

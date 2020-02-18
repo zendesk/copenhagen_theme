@@ -120,13 +120,6 @@ ul {
   @include max-width-container;
 }
 
-.dropdown-toggle {
-  background: none;
-  border: 0;
-  padding: 0;
-  text-align: initial;
-}
-
 .visibility-hidden {
   border: 0;
   clip: rect(0 0 0 0);

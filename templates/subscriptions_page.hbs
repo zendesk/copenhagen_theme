@@ -66,8 +66,10 @@
                 </a>
               </td>
               <td>{{name}}</td>
-              <td>{{subscribe}}</td>
-              <td class="subscriptions-unsubscribe">{{unsubscribe}}</td>
+              <td>{{following}}</td>
+              <td class="subscriptions-subscribe">
+                {{subscribe class="button" selected_class="button-primary"}}
+              </td>
             </tr>
           {{/each}}
         </tbody>
