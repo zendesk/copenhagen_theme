@@ -18,10 +18,6 @@
   width: 100%;
   -webkit-touch-callout: none;
 
-  &::after {
-    color: $button-color;
-  }
-
   &:hover,
   &:active,
   &:focus,
