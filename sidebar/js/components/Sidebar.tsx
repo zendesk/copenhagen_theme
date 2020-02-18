@@ -77,6 +77,11 @@ export default function Sidebar() {
   useEffect(() => {
     (async () => {
       const response = await fetch(url);
+
+      if (!response.ok) {
+        console.log(response);
+      }
+
       const json = await response.json();
 
       setData(json);
@@ -161,6 +166,7 @@ export default function Sidebar() {
                   <h4 className="sidebar-item-title">{category.name}</h4>
                   <ul>
                     {openId === category.id &&
+                      sections &&
                       sections
                         .filter(
                           section =>
