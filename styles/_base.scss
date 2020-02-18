@@ -55,11 +55,14 @@ input {
   font-weight: $font-weight-light;
   max-width: 100%;
   box-sizing: border-box;
-  outline: none;
   transition: border .12s ease-in-out;
 
-  &:focus {
-    border: 1px solid $brand_color;
+  &:not([type="checkbox"]) {
+    outline: none;
+    
+    &:focus {
+      border: 1px solid $brand_color;
+    }
   }
 }
 

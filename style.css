@@ -244,11 +244,14 @@ input {
   font-weight: 300;
   max-width: 100%;
   box-sizing: border-box;
-  outline: none;
   transition: border .12s ease-in-out;
 }
 
-input:focus {
+input:not([type="checkbox"]) {
+  outline: none;
+}
+
+input:not([type="checkbox"]):focus {
   border: 1px solid $brand_color;
 }
 
