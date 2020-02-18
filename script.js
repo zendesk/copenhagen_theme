@@ -191,8 +191,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // If a section has more than 6 subsections, we collapse the list, and show a trigger to display them all
-  const seeAllTrigger = document.querySelector("#see-all-sections-trigger");
-  const subsectionsList = document.querySelector(".section-list");
+  var seeAllTrigger = document.querySelector("#see-all-sections-trigger");
+  var subsectionsList = document.querySelector(".section-list");
 
   if (subsectionsList && subsectionsList.children.length > 6) {
     seeAllTrigger.setAttribute("aria-hidden", false);
@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // If multibrand search has more than 5 help centers or categories collapse the list
-  const multibrandFilterLists = document.querySelectorAll(".multibrand-filter-list");
+  var multibrandFilterLists = document.querySelectorAll(".multibrand-filter-list");
   Array.prototype.forEach.call(multibrandFilterLists, function(filter) {
     if (filter.children.length > 6) {
       // Display the show more button
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   // If there are any error notifications below an input field, focus that field
-  const notificationElm = document.querySelector(".notification-error");
+  var notificationElm = document.querySelector(".notification-error");
   if (
     notificationElm &&
     notificationElm.previousElementSibling &&
@@ -271,11 +271,11 @@ document.addEventListener('DOMContentLoaded', function() {
     },
 
     handleOverflow: function() {
-      var { left, width, top, height } = this.menu.getBoundingClientRect();
+      var rect = this.menu.getBoundingClientRect();
 
       var overflow = {
-        right: left < 0 || left + width > window.innerWidth,
-        bottom: top < 0 || top + height > window.innerHeight
+        right: rect.left < 0 || rect.left + rect.width > window.innerWidth,
+        bottom: rect.top < 0 || rect.top + rect.height > window.innerHeight
       };
 
       if (overflow.right || this.menuPlacement.end) {
