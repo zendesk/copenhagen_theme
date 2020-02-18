@@ -14,7 +14,9 @@
           <li>{{link 'requests'}}</li>
         {{/if}}
         <li>{{link 'contributions'}}</li>
-        <li aria-selected=true>{{t 'following'}}</li>
+        <li class="current">
+          <a href="{{page_path 'following'}}" aria-current="page">{{ t 'following' }}</a>
+        </li>
       </ul>
     </nav>
   </div>

@@ -13,7 +13,9 @@
         {{#if help_center.request_management_enabled}}
           <li>{{link 'requests'}}</li>
         {{/if}}
-        <li aria-selected=true>{{t 'contributions'}}</li>
+        <li class="current">
+          <a href="{{page_path 'contributions'}}" aria-current="page">{{ t 'contributions' }}</a>
+        </li>
         <li>{{link 'subscriptions'}}</li>
       </ul>
     </nav>
