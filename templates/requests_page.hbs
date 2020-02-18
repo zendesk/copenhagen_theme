@@ -10,7 +10,9 @@
         </svg>
       </button>
       <ul class="collapsible-nav-list">
-        <li aria-selected=true>{{t 'requests'}}</li>
+        <li class="current">
+          <a href="{{page_path 'requests'}}" aria-current="page">{{ t 'requests' }}</a>
+        </li>
         <li>{{link 'contributions'}}</li>
         <li>{{link 'subscriptions'}}</li>
       </ul>
