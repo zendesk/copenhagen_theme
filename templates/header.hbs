@@ -33,7 +33,9 @@
         </div>
       </div>
     {{else}}
-      {{link "sign_in"}}
+      {{#link "sign_in"}}
+        {{t 'sign_in'}}
+      {{/link}}
     {{/if}}
   </div>
 </header>
