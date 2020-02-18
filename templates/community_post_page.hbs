@@ -39,7 +39,9 @@
             {{/is}}
           </div>
           {{#if settings.show_follow_post}}
-            <div class="community-follow">{{subscribe}}</div>
+            <div class="community-follow">
+              {{subscribe class="button" selected_class="button-primary"}}
+            </div>
           {{/if}}
         </header>
 

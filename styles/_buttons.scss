@@ -25,13 +25,13 @@
   &:hover,
   &:active,
   &:focus,
-  &[aria-selected="true"] {
+  &.button-primary {
     background-color: $brand_color;
     color: $brand_text_color;
     text-decoration: none;
   }
 
-  &[aria-selected="true"] {
+  &.button-primary {
     &:hover,
     &:focus,
     &:active {
