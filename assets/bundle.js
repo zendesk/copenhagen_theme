@@ -425,25 +425,7 @@ var React = __importStar(__webpack_require__(/*! react */ "./node_modules/react/
 
 var ReactDOM = __importStar(__webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js"));
 
-var Sidebar_1 = __importDefault(__webpack_require__(/*! ./components/Sidebar */ "./js/components/Sidebar.tsx")); // function index() {
-// React.useEffect(() => {
-//   // Create an scoped async function in the hook
-//   async function fetchData () {
-//     await fetch("/api/v2/help_center/en-us/sections.json?include=categories&per_page=100")
-//       .then(res => res.json())
-//       .then(res => {setCategory(res)})
-//       .catch(() => this.setState({ hasErrors: true }));
-//   }
-// }, []);
-// return category
-// }
-// async function fetchData () {
-//   fetch("/api/v2/help_center/en-us/sections.json?include=categories&per_page=100")
-//     .then(res => res.json())
-//     .then(res => this.setState({ planets: res }))
-//     .catch(() => this.setState({ hasErrors: true }));
-// }
-
+var Sidebar_1 = __importDefault(__webpack_require__(/*! ./components/Sidebar */ "./js/components/Sidebar.tsx"));
 
 function domReady(callback) {
   document.readyState === "interactive" || document.readyState === "complete" ? callback() : document.addEventListener("DOMContentLoaded", callback);
