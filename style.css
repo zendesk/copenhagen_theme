@@ -4105,7 +4105,7 @@ ul {
   }
 }
 
-.search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item[aria-selected="true"] {
+.search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
   background-color: #e9ebed;
   color: inherit;
   text-decoration: none;
