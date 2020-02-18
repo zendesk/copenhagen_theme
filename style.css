@@ -388,7 +388,7 @@ ul {
   cursor: default;
 }
 
-.button-large, input[type="submit"] {
+.button-large {
   background-color: $brand_color;
   border: 0;
   border-radius: 4px;
@@ -402,16 +402,16 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .button-large, input[type="submit"] {
+  .button-large {
     width: auto;
   }
 }
 
-.button-large:hover, .button-large:active, .button-large:focus, input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
+.button-large:hover, .button-large:active, .button-large:focus {
   background-color: darken($brand_color, 20%);
 }
 
-.button-large[disabled], input[type="submit"][disabled] {
+.button-large[disabled] {
   background-color: #ddd;
 }
 
