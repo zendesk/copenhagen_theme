@@ -5161,18 +5161,7 @@ a.custom-download-extensions-btn, a.custom-download-extensions-btn:active, a.cus
   /* default supported fallback style */
   border-radius: 0;
   text-align: initial;
-}
-
-@media only screen and (min-width: 769px) and (max-width: 1023px) {
-  .custom-blocks-item {
-    max-width: 15em;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .custom-blocks-item {
-    max-width: 15em;
-  }
+  max-width: 17em;
 }
 
 .custom-blocks-item:active, .custom-blocks-item:focus, .custom-blocks-item:hover {
@@ -5195,7 +5184,17 @@ a.custom-download-extensions-btn, a.custom-download-extensions-btn:active, a.cus
   flex-direction: column;
   justify-content: space-between;
   line-height: 1;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
+  text-align: center;
+  flex-grow: 0;
+}
+
+.custom-blocks-item-browse-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  line-height: 1;
+  padding: 0.75rem 1.5rem 1.5rem 1.5rem;
   text-align: center;
   flex-grow: 0;
 }
