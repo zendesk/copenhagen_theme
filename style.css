@@ -346,6 +346,7 @@ ul {
 
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .edit-profile-button > * {
+  background-color: transparent;
   border: 1px solid $brand_color;
   border-radius: 4px;
   color: $brand_color;
