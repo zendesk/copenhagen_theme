@@ -2252,11 +2252,7 @@ ul {
   }
 }
 
-.community-follow .dropdown {
-  width: 100%;
-}
-
-.community-follow [role="button"] {
+.community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link {
   line-height: 30px;
   padding: 0 10px 0 15px;
   position: relative;
@@ -2264,36 +2260,36 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .community-follow [role="button"] {
+  .community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link {
     width: auto;
   }
 }
 
-.community-follow [role="button"]:hover {
+.community-follow .button:hover, .community-follow .pagination-next-link:hover, .community-follow .pagination-prev-link:hover, .community-follow .pagination-first-link:hover, .community-follow .pagination-last-link:hover {
   background-color: $brand_color;
 }
 
-.community-follow [role="button"]:hover::after, .community-follow [role="button"]:focus::after {
+.community-follow .button:hover::after, .community-follow .pagination-next-link:hover::after, .community-follow .pagination-prev-link:hover::after, .community-follow .pagination-first-link:hover::after, .community-follow .pagination-last-link:hover::after, .community-follow .button:focus::after, .community-follow .pagination-next-link:focus::after, .community-follow .pagination-prev-link:focus::after, .community-follow .pagination-first-link:focus::after, .community-follow .pagination-last-link:focus::after {
   border-color: $brand_text_color;
   color: $brand_text_color;
 }
 
-.community-follow [role="button"][aria-selected="true"] {
+.community-follow .button.button-primary, .community-follow .button-primary.pagination-next-link, .community-follow .button-primary.pagination-prev-link, .community-follow .button-primary.pagination-first-link, .community-follow .button-primary.pagination-last-link {
   background-color: $brand_color;
   color: $brand_text_color;
 }
 
-.community-follow [role="button"][aria-selected="true"]::after {
+.community-follow .button.button-primary::after, .community-follow .button-primary.pagination-next-link::after, .community-follow .button-primary.pagination-prev-link::after, .community-follow .button-primary.pagination-first-link::after, .community-follow .button-primary.pagination-last-link::after {
   border-left: 1px solid $brand_text_color;
   color: $brand_text_color;
 }
 
-.community-follow [role="button"][aria-selected="true"]:hover {
+.community-follow .button.button-primary:hover, .community-follow .button-primary.pagination-next-link:hover, .community-follow .button-primary.pagination-prev-link:hover, .community-follow .button-primary.pagination-first-link:hover, .community-follow .button-primary.pagination-last-link:hover {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
 
-.community-follow [role="button"]::after {
+.community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after {
   border-left: 1px solid $brand_color;
   content: attr(data-follower-count);
   color: $brand_color;
@@ -2306,12 +2302,12 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .community-follow [role="button"]::after {
+  .community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after {
     position: static;
   }
 }
 
-[dir="rtl"] .community-follow [role="button"]::after {
+[dir="rtl"] .community-follow .button::after, [dir="rtl"] .community-follow .pagination-next-link::after, [dir="rtl"] .community-follow .pagination-prev-link::after, [dir="rtl"] .community-follow .pagination-first-link::after, [dir="rtl"] .community-follow .pagination-last-link::after {
   border-left: 0;
   border-right: 1px solid $brand_color;
   margin: 0 10px 0 0;
