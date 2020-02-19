@@ -89,7 +89,8 @@
   }
 }
 
-.profile-header .options [data-action="edit-profile"] {
+.edit-profile-button > * {
+  @extend .button;
   background-color: $brand_color;
   border: 0;
   color: $brand_text_color;
