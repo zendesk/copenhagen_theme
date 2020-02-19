@@ -24,6 +24,10 @@
   }
 }
 
+.vote-up svg {
+  transform: scale(1, -1);
+}
+
 .vote-up:hover,
 .vote-down:hover {
   color: $brand_color;
