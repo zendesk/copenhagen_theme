@@ -389,6 +389,7 @@ ul {
 }
 
 .button-large, input[type="submit"] {
+  cursor: pointer;
   background-color: $brand_color;
   border: 0;
   border-radius: 4px;
@@ -2256,7 +2257,7 @@ ul {
   }
 }
 
-.community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link {
+.community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link, .community-follow .edit-profile-button > * {
   line-height: 30px;
   padding: 0 10px 0 15px;
   position: relative;
@@ -2264,36 +2265,36 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link {
+  .community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link, .community-follow .edit-profile-button > * {
     width: auto;
   }
 }
 
-.community-follow .button:hover, .community-follow .pagination-next-link:hover, .community-follow .pagination-prev-link:hover, .community-follow .pagination-first-link:hover, .community-follow .pagination-last-link:hover {
+.community-follow .button:hover, .community-follow .pagination-next-link:hover, .community-follow .pagination-prev-link:hover, .community-follow .pagination-first-link:hover, .community-follow .pagination-last-link:hover, .community-follow .edit-profile-button > :hover {
   background-color: $brand_color;
 }
 
-.community-follow .button:hover::after, .community-follow .pagination-next-link:hover::after, .community-follow .pagination-prev-link:hover::after, .community-follow .pagination-first-link:hover::after, .community-follow .pagination-last-link:hover::after, .community-follow .button:focus::after, .community-follow .pagination-next-link:focus::after, .community-follow .pagination-prev-link:focus::after, .community-follow .pagination-first-link:focus::after, .community-follow .pagination-last-link:focus::after {
+.community-follow .button:hover::after, .community-follow .pagination-next-link:hover::after, .community-follow .pagination-prev-link:hover::after, .community-follow .pagination-first-link:hover::after, .community-follow .pagination-last-link:hover::after, .community-follow .edit-profile-button > :hover::after, .community-follow .button:focus::after, .community-follow .pagination-next-link:focus::after, .community-follow .pagination-prev-link:focus::after, .community-follow .pagination-first-link:focus::after, .community-follow .pagination-last-link:focus::after, .community-follow .edit-profile-button > :focus::after {
   border-color: $brand_text_color;
   color: $brand_text_color;
 }
 
-.community-follow .button.button-primary, .community-follow .button-primary.pagination-next-link, .community-follow .button-primary.pagination-prev-link, .community-follow .button-primary.pagination-first-link, .community-follow .button-primary.pagination-last-link {
+.community-follow .button.button-primary, .community-follow .button-primary.pagination-next-link, .community-follow .button-primary.pagination-prev-link, .community-follow .button-primary.pagination-first-link, .community-follow .button-primary.pagination-last-link, .community-follow .edit-profile-button > .button-primary {
   background-color: $brand_color;
   color: $brand_text_color;
 }
 
-.community-follow .button.button-primary::after, .community-follow .button-primary.pagination-next-link::after, .community-follow .button-primary.pagination-prev-link::after, .community-follow .button-primary.pagination-first-link::after, .community-follow .button-primary.pagination-last-link::after {
+.community-follow .button.button-primary::after, .community-follow .button-primary.pagination-next-link::after, .community-follow .button-primary.pagination-prev-link::after, .community-follow .button-primary.pagination-first-link::after, .community-follow .button-primary.pagination-last-link::after, .community-follow .edit-profile-button > .button-primary::after {
   border-left: 1px solid $brand_text_color;
   color: $brand_text_color;
 }
 
-.community-follow .button.button-primary:hover, .community-follow .button-primary.pagination-next-link:hover, .community-follow .button-primary.pagination-prev-link:hover, .community-follow .button-primary.pagination-first-link:hover, .community-follow .button-primary.pagination-last-link:hover {
+.community-follow .button.button-primary:hover, .community-follow .button-primary.pagination-next-link:hover, .community-follow .button-primary.pagination-prev-link:hover, .community-follow .button-primary.pagination-first-link:hover, .community-follow .button-primary.pagination-last-link:hover, .community-follow .edit-profile-button > .button-primary:hover {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
 
-.community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after {
+.community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after, .community-follow .edit-profile-button > ::after {
   border-left: 1px solid $brand_color;
   content: attr(data-follower-count);
   color: $brand_color;
@@ -2306,12 +2307,12 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after {
+  .community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after, .community-follow .edit-profile-button > ::after {
     position: static;
   }
 }
 
-[dir="rtl"] .community-follow .button::after, [dir="rtl"] .community-follow .pagination-next-link::after, [dir="rtl"] .community-follow .pagination-prev-link::after, [dir="rtl"] .community-follow .pagination-first-link::after, [dir="rtl"] .community-follow .pagination-last-link::after {
+[dir="rtl"] .community-follow .button::after, [dir="rtl"] .community-follow .pagination-next-link::after, [dir="rtl"] .community-follow .pagination-prev-link::after, [dir="rtl"] .community-follow .pagination-first-link::after, [dir="rtl"] .community-follow .pagination-last-link::after, [dir="rtl"] .community-follow .edit-profile-button > ::after {
   border-left: 0;
   border-right: 1px solid $brand_color;
   margin: 0 10px 0 0;
@@ -4458,6 +4459,7 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .dropdown-toggle {
+  cursor: pointer;
   background: none;
   border: 0;
   display: inline-block;
