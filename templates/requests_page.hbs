@@ -35,6 +35,7 @@
 
   {{#form 'requests_filter' id="main-content" class='requests-table-toolbar'}}
     <div class="search">
+      {{label 'query' for='quick-search' class='visibility-hidden'}}
       {{input 'query' id='quick-search' type='search' class='requests-search'}}
     </div>
     {{#if help_center.multiple_organizations_enabled}}
