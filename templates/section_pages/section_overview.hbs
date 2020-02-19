@@ -1,163 +1,118 @@
-<!-- CUSTOM SIDEBAR -->
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav custom-page-search-mini">
+    {{breadcrumbs}}
+    {{search scoped=settings.scoped_kb_search submit=false placeholder='Search for help articles, videos and more'}}
+  </nav>
 
-  <div id="sidebar" class="sidebar-panel">
-    <ul class="sidebar">
-      <li class="sidebar-item sidebar-home open material-icons-big">
-        <a href="https://www.configura.com/academy/cet-designer" class="custom-sidebar-item-title">
-          <i class="material-icons custom-icon-margin-right blue-icon">school</i>
-          Academy and training
-        </a>
-      </li>
-      <li class="sidebar-item sidebar-home open material-icons-big">
-        <a href="https://www.configura.com/products/system-recommendations/cet-designer"
-          class="custom-sidebar-item-title">
-          <i class="material-icons custom-icon-margin-right blue-icon">computer</i>
-          System recommendations
-        </a>
-      </li>
-      <li class="sidebar-item sidebar-home open material-icons-big">
-        <a href="https://www.configura.com/products/release-notes/cet-designer" class="custom-sidebar-item-title">
-          <i class="material-icons custom-icon-margin-right blue-icon">import_contacts</i>
-          Release notes
-        </a>
-      </li>
-      <li class="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
-        <a href=" https://www.configura.com/my/forum" class="custom-sidebar-item-title">
-          <i class="material-icons custom-icon-margin-right blue-icon">forum</i>
-          Forums
-        </a>
-      </li>
-      <li :class="['sidebar-item', isOpen(category.id)]" v-if="category.id !== 360002370413" v-for='category in categories' :data-id='category.id'>
-      <h4 class="sidebar-item-title" @click='setActiveSection(category.id)' v-cloak>{[{category.name}]}</h4>
-      <ul v-if='category.id === activeSection'>
-        <li :class="['sidebar-item', isCurrent(section.id)]" v-for='section in category.sections'>
-          <a :href='section.html_url' class="sidebar-item-link">
-            {[{section.name}]}
-          </a>
-        </li>
-      </ul>
-    </li>
-    </ul>
-  </div>
-
-  <!-- END CUSTOM SIDEBAR -->
-
-  <div class="container-divider"></div>
-  <div class="container">
-    <nav class="sub-nav custom-page-search-mini">
-      {{breadcrumbs}}
-      {{search scoped=settings.scoped_kb_search submit=false placeholder='Search for help articles, videos and more'}}
-    </nav>
-
-    <div class="section-container custom-section-container">
-      <section class="section-content">
-        <header class="page-header">
-          <h1>
-            {{section.name}}
-          </h1>
-          {{#if settings.show_follow_section}}
-          {{subscribe}}
-          {{/if}}
-          {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
-          {{/if}}
-        </header>
-
-        {{#if section.sections}}
-
-        {{#is section.id 360006621153}}
-        <h2>Beginner</h2>
-        <div class="custom-card-container">
-          {{#each section.sections}}
-
-          <section class="custom-card">
-            <a href="{{url}}" class="custom-card-link">
-              <div class="custom-card-logo-container">
-                <i class="material-icons">camera</i>
-              </div>
-              <h3 class="custom-card-title">
-                {{name}}
-              </h3>
-            </a>
-          </section>
-          {{/each}}
-        </div>
-        <h2>Intermediate</h2>
-        <div class="custom-card-container">
-          {{#each section.sections}}
-
-          <section class="custom-card">
-            <a href="{{url}}" class="custom-card-link">
-              <div class="custom-card-logo-container">
-                <i class="material-icons">camera</i>
-              </div>
-              <h3 class="custom-card-title">
-                {{name}}
-              </h3>
-            </a>
-          </section>
-          {{/each}}
-        </div>
-        <h2>Advanced</h2>
-        <div class="custom-card-container">
-          {{#each section.sections}}
-
-          <section class="custom-card">
-            <a href="{{url}}" class="custom-card-link">
-              <div class="custom-card-logo-container">
-                <i class="material-icons">camera</i>
-              </div>
-              <h3 class="custom-card-title">
-                {{name}}
-              </h3>
-            </a>
-          </section>
-          {{/each}}
-        </div>
-        {{else}}
-        <div class="custom-section-list section-list section-list--collapsed">
-
-
-          {{#each section.sections}}
-          <div class="custom-section-list-container">
-            <div class="section-list-item">
-              <a href="{{url}}">
-                <h2>{{name}}</h2>
-              </a>
-            </div>
-            {{#if articles}}
-            <ul class="article-list">
-              {{#each articles}}
-              <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-                {{#if promoted}}
-                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-                {{/if}}
-                <a href="{{url}}" class="article-list-link">{{title}}</a>
-                {{#if internal}}
-                <span class="icon-lock" title="{{t 'internal'}}"></span>
-                {{/if}}
-              </li>
-              {{/each}}
-            </ul>
-            {{/if}}
-            <br>
-            {{#if more_articles}}
-            <a href="{{url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
-          </div>
-          {{/each}}
-          <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger"
-            title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
-        </div>
-        {{/is}}
-
-
-
+  <div class="section-container custom-section-container">
+    <section class="section-content">
+      <header class="page-header">
+        <h1>
+          {{section.name}}
+        </h1>
+        {{#if settings.show_follow_section}}
+        {{subscribe}}
         {{/if}}
+        {{#if section.description}}
+        <p class="page-header-description">{{section.description}}</p>
+        {{/if}}
+      </header>
 
-        {{pagination}}
+      {{#if section.sections}}
 
-      </section>
-    </div>
+      {{#is section.id 360006621153}}
+      <h2>Beginner</h2>
+      <div class="custom-card-container">
+        {{#each section.sections}}
+
+        <section class="custom-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container">
+              <i class="material-icons">camera</i>
+            </div>
+            <h3 class="custom-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/each}}
+      </div>
+      <h2>Intermediate</h2>
+      <div class="custom-card-container">
+        {{#each section.sections}}
+
+        <section class="custom-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container">
+              <i class="material-icons">camera</i>
+            </div>
+            <h3 class="custom-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/each}}
+      </div>
+      <h2>Advanced</h2>
+      <div class="custom-card-container">
+        {{#each section.sections}}
+
+        <section class="custom-card">
+          <a href="{{url}}" class="custom-card-link">
+            <div class="custom-card-logo-container">
+              <i class="material-icons">camera</i>
+            </div>
+            <h3 class="custom-card-title">
+              {{name}}
+            </h3>
+          </a>
+        </section>
+        {{/each}}
+      </div>
+      {{else}}
+      <div class="custom-section-list section-list section-list--collapsed">
+
+
+        {{#each section.sections}}
+        <div class="custom-section-list-container">
+          <div class="section-list-item">
+            <a href="{{url}}">
+              <h2>{{name}}</h2>
+            </a>
+          </div>
+          {{#if articles}}
+          <ul class="article-list">
+            {{#each articles}}
+            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
+              {{#if promoted}}
+              <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+              {{/if}}
+              <a href="{{url}}" class="article-list-link">{{title}}</a>
+              {{#if internal}}
+              <span class="icon-lock" title="{{t 'internal'}}"></span>
+              {{/if}}
+            </li>
+            {{/each}}
+          </ul>
+          {{/if}}
+          <br>
+          {{#if more_articles}}
+          <a href="{{url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
+          {{/if}}
+        </div>
+        {{/each}}
+        <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger"
+          title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
+      </div>
+      {{/is}}
+
+
+
+      {{/if}}
+
+      {{pagination}}
+
+    </section>
   </div>
-  <script>sidebar.$mount("main");</script>
+</div>
