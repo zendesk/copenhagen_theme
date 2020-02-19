@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import fetch from "unfetch";
 
 export interface SidebarData {
   sections: Section[];
@@ -75,17 +76,20 @@ export default function Sidebar() {
   }
 
   useEffect(() => {
-    (async () => {
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        console.log(response);
-      }
-
-      const json = await response.json();
-
-      setData(json);
-    })();
+    fetch(url)
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error(response.statusText);
+        }
+      })
+      .then(responseJson => {
+        setData(responseJson);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }, []);
 
   const categories = data && data.categories;
