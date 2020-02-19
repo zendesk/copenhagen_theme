@@ -2,6 +2,7 @@
 .button {
   @include tablet { width: auto; }
 
+  background-color: transparent;
   border: 1px solid $button-color;
   border-radius: 4px;
   color: $button-color;
