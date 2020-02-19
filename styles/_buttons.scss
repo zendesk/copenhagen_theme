@@ -45,7 +45,7 @@
   }
 }
 
-.button-large {
+.button-large, input[type="submit"] {
   @include tablet {
     width: auto;
   }
