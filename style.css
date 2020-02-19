@@ -369,6 +369,10 @@ ul {
   }
 }
 
+.button::after, .pagination-next-link::after, .pagination-prev-link::after, .pagination-first-link::after, .pagination-last-link::after {
+  color: $brand_color;
+}
+
 .button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .button.button-primary, .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link {
   background-color: $brand_color;
   color: $brand_text_color;
@@ -1665,14 +1669,44 @@ ul {
 }
 
 .article-vote {
+  background: transparent;
+  border: 1px solid $brand_color;
+  color: $brand_color;
   margin: 10px 5px;
   min-width: 90px;
   width: auto;
 }
 
+.article-vote::before {
+  font-size: 8px;
+  margin-right: 10px;
+}
+
+[dir="rtl"] .article-vote::before {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
 .article-vote::after {
   content: attr(title);
   /* Yes/No label*/
+}
+
+.article-vote:focus, .article-vote:active {
+  background-color: transparent;
+  color: $brand_color;
+}
+
+.article-vote:hover {
+  background-color: $brand_color;
+}
+
+.article-vote:hover::before, .article-vote:hover::after, .article-vote[aria-selected="true"]::before, .article-vote[aria-selected="true"]::after {
+  color: $brand_text_color;
+}
+
+.article-vote .icon, .article-vote .article-vote::before {
+  vertical-align: middle;
 }
 
 .article-more-questions {
@@ -2087,10 +2121,6 @@ ul {
 }
 
 .vote-up, .vote-down {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
   color: lighten($text_color, 20%);
   min-height: 44px;
   min-width: 44px;
