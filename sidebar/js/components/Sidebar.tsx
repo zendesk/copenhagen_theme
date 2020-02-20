@@ -180,7 +180,7 @@ export default function Sidebar() {
                         .map(section => {
                           return (
                             <li key={section.id}>
-                              <a href={section.url}>{section.name}</a>
+                              <a href={section.html_url}>{section.name}</a>
                             </li>
                           );
                         })}
