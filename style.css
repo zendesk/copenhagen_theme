@@ -4166,11 +4166,21 @@ html[lang|="ja"] .search-result-description em {
 
 @font-face {
   font-family: "geogrotesque";
+  src: local "geogrotesque medium";
+  src: url("$assets-ge2003-md-eot");
+  src: url("$assets-ge2003-md-eot#iefix") format("eot"), url("$assets-ge2003-md-woff") format("woff"), url("$assets-ge2003-md-ttf") format("truetype"), url("$assets-ge2003-md-svg#webfont") format("svg");
+  font-style: normal;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: "geogrotesque";
   src: local "geogrotesque semibold";
   src: url("$assets-ge2003-smbd-eot");
   src: url("$assets-ge2003-smbd-eot#iefix") format("eot"), url("$assets-ge2003-smbd-woff") format("woff"), url("$assets-ge2003-smbd-ttf") format("truetype"), url("$assets-ge2003-smbd-svg#webfont") format("svg");
   font-style: normal;
-  font-weight: 600;
+  font-weight: 800;
   text-rendering: optimizeLegibility;
 }
 
@@ -4189,10 +4199,16 @@ html[lang|="ja"] .search-result-description em {
   font-weight: 400;
 }
 
-.geo-semibold {
+.geo-medium {
   font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   font-style: normal;
   font-weight: 600;
+}
+
+.geo-semibold {
+  font-family: "geogrotesque", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", "Microsoft YaHei", "微软雅黑", "STXihei", "华文细黑", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  font-style: normal;
+  font-weight: 800;
 }
 
 /***** Overrides *****/
@@ -4695,7 +4711,7 @@ a {
 .custom-hero-banner {
   display: flex;
   justify-content: start;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   height: auto;
   padding: 2rem 0;
 }
