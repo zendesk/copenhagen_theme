@@ -63,6 +63,7 @@ export enum ThemeTemplate {
 export default function Sidebar() {
   const [openId, setOpenId] = useState(0);
   const [data, setData] = useState<SidebarData>();
+  const [linkClass, setLinkClass] = useState<string>();
   const url =
     "/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
 
@@ -92,8 +93,43 @@ export default function Sidebar() {
       });
   }, []);
 
+  useEffect(() => {
+    getCurrentCategory();
+  }, [data]);
+
+  function getPageInfo() {
+    let _t = window.location.href.split("/hc/");
+    _t = _t[1].split("-")[1].split("/");
+    return { type: _t[1], id: _t[2] };
+  }
+
   const categories = data && data.categories;
   const sections = data && data.sections;
+
+  function getCurrentCategory() {
+    const page = getPageInfo();
+    const pageType = page.type;
+    let pageId = parseInt(page.id);
+
+    if (pageType === "sections") {
+      const section = sections?.filter(section => section.id === pageId)[0];
+      console.log(section);
+
+      pageId = section ? section.category_id : pageId;
+    }
+
+    if (pageType === "articles") {
+      const div = document.getElementById("section-id");
+      let sectionId = 0;
+      if (div && div.dataset["sectionId"]) {
+        sectionId = parseInt(div.dataset["sectionId"]);
+      }
+      const section = sections?.filter(section => section.id === sectionId)[0];
+
+      pageId = section ? section.category_id : pageId;
+    }
+    expand(pageId);
+  }
 
   if (document.getElementById("home")) {
     return <> </>;
@@ -180,7 +216,9 @@ export default function Sidebar() {
                         .map(section => {
                           return (
                             <li key={section.id}>
-                              <a href={section.html_url}>{section.name}</a>
+                              <a href={section.html_url} className={}>
+                                {section.name}
+                              </a>
                             </li>
                           );
                         })}
