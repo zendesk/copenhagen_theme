@@ -80,11 +80,9 @@
 
       {{pagination}}
 
-      {{#if comment_callout}}
-        <div class="request-follow-up">
-          {{comment_callout}}
-        </div>
-      {{/if}}
+      <div class="request-follow-up">
+        {{comment_callout}}
+      </div>
 
       {{#form 'comment' class='comment-form'}}
         <div class="avatar comment-avatar">
@@ -105,11 +103,9 @@
 
             {{textarea 'body' rows='7'}}
 
-            {{#if upload}}
-              <div class="comment-attachments">
-                {{upload}}
-              </div>
-            {{/if}}
+            <div class="comment-attachments">
+              {{upload}}
+            </div>
           </div>
 
           <div class="comment-form-controls">
