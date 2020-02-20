@@ -27,6 +27,19 @@
 }
 
 @font-face {
+  font-family: "geogrotesque";
+  src: local ("geogrotesque medium");
+  src: url("$assets-ge2003-md-eot");
+  src: url("$assets-ge2003-md-eot#iefix") format("eot"),
+    url("$assets-ge2003-md-woff") format("woff"),
+    url("$assets-ge2003-md-ttf") format("truetype"),
+    url("$assets-ge2003-md-svg#webfont") format("svg");
+  font-style: normal;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
     font-family: "geogrotesque";
     src: local ("geogrotesque semibold");
     src: url("$assets-ge2003-smbd-eot");
@@ -35,7 +48,7 @@
       url("$assets-ge2003-smbd-ttf") format("truetype"),
       url("$assets-ge2003-smbd-svg#webfont") format("svg");
     font-style: normal;
-    font-weight: 600;
+    font-weight: 800;
     text-rendering: optimizeLegibility;
 }
 
@@ -51,10 +64,16 @@
 	font-weight: 400;
 }
 
-@mixin geo-semibold {
+@mixin geo-medium {
 	font-family: $geoFont;
 	font-style: normal;
 	font-weight: 600;
+}
+
+@mixin geo-semibold {
+	font-family: $geoFont;
+	font-style: normal;
+	font-weight: 800;
 }
 
 /**
@@ -67,6 +86,10 @@
 
 .geo-regular {
 	@include geo-regular;
+}
+
+.geo-medium {
+  @include geo-medium;
 }
 
 .geo-semibold {
