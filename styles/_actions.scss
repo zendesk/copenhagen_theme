@@ -1,12 +1,16 @@
 /***** Actions *****/
 /* Styles admin and en user actions(edit, delete, change status) in comments and posts */
 .actions {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
   text-align: center;
   flex-shrink: 0; /*Avoid collapsing elements in Safari*/
+
+  & button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 15px 0;
+  }
 }
