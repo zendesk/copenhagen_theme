@@ -221,14 +221,10 @@
     }
   }
 
-  &-unsubscribe {
-    background-color: $button-color;
-    color: $brand_text_color;
-    text-decoration: none;
-
-    &:hover {
-      background-color: $hover-button-color;
-      border-color: $hover-button-color;
+  &-subscribe button {
+    @extend .button;
+    &[data-selected="true"] {
+      @extend .button-primary;
     }
   }
 }

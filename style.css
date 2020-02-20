@@ -345,7 +345,7 @@ ul {
 }
 
 /***** Buttons *****/
-.button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .edit-profile-button > * {
+.button, .section-subscribe button, .article-subscribe button, .community-follow button, .requests-table-toolbar .organization-subscribe button, .subscriptions-subscribe button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .edit-profile-button > button {
   background-color: transparent;
   border: 1px solid $brand_color;
   border-radius: 4px;
@@ -365,27 +365,27 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .edit-profile-button > * {
+  .button, .section-subscribe button, .article-subscribe button, .community-follow button, .requests-table-toolbar .organization-subscribe button, .subscriptions-subscribe button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .edit-profile-button > button {
     width: auto;
   }
 }
 
-.button::after, .pagination-next-link::after, .pagination-prev-link::after, .pagination-first-link::after, .pagination-last-link::after, .edit-profile-button > ::after {
+.button::after, .section-subscribe button::after, .article-subscribe button::after, .community-follow button::after, .requests-table-toolbar .organization-subscribe button::after, .subscriptions-subscribe button::after, .pagination-next-link::after, .pagination-prev-link::after, .pagination-first-link::after, .pagination-last-link::after, .edit-profile-button > ::after {
   color: $brand_color;
 }
 
-.button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .edit-profile-button > :hover, .button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .edit-profile-button > :active, .button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .edit-profile-button > :focus, .button.button-primary, .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .edit-profile-button > .button-primary {
+.button:hover, .section-subscribe button:hover, .article-subscribe button:hover, .community-follow button:hover, .requests-table-toolbar .organization-subscribe button:hover, .subscriptions-subscribe button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .edit-profile-button > :hover, .button:active, .section-subscribe button:active, .article-subscribe button:active, .community-follow button:active, .requests-table-toolbar .organization-subscribe button:active, .subscriptions-subscribe button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .edit-profile-button > :active, .button:focus, .section-subscribe button:focus, .article-subscribe button:focus, .community-follow button:focus, .requests-table-toolbar .organization-subscribe button:focus, .subscriptions-subscribe button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .edit-profile-button > :focus, .button.button-primary, .section-subscribe button.button-primary, .section-subscribe button[data-selected="true"], .article-subscribe button.button-primary, .article-subscribe button[data-selected="true"], .community-follow button.button-primary, .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected="true"], .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected="true"], .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .edit-profile-button > .button-primary {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
 }
 
-.button.button-primary:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .edit-profile-button > .button-primary:hover, .button.button-primary:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .edit-profile-button > .button-primary:focus, .button.button-primary:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .edit-profile-button > .button-primary:active {
+.button.button-primary:hover, .section-subscribe button.button-primary:hover, .section-subscribe button[data-selected="true"]:hover, .article-subscribe button.button-primary:hover, .article-subscribe button[data-selected="true"]:hover, .community-follow button.button-primary:hover, .requests-table-toolbar .organization-subscribe button.button-primary:hover, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:hover, .subscriptions-subscribe button.button-primary:hover, .subscriptions-subscribe button[data-selected="true"]:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .edit-profile-button > button.button-primary:hover, .button.button-primary:focus, .section-subscribe button.button-primary:focus, .section-subscribe button[data-selected="true"]:focus, .article-subscribe button.button-primary:focus, .article-subscribe button[data-selected="true"]:focus, .community-follow button.button-primary:focus, .requests-table-toolbar .organization-subscribe button.button-primary:focus, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:focus, .subscriptions-subscribe button.button-primary:focus, .subscriptions-subscribe button[data-selected="true"]:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .edit-profile-button > button.button-primary:focus, .button.button-primary:active, .section-subscribe button.button-primary:active, .section-subscribe button[data-selected="true"]:active, .article-subscribe button.button-primary:active, .article-subscribe button[data-selected="true"]:active, .community-follow button.button-primary:active, .requests-table-toolbar .organization-subscribe button.button-primary:active, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:active, .subscriptions-subscribe button.button-primary:active, .subscriptions-subscribe button[data-selected="true"]:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .edit-profile-button > button.button-primary:active {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
 
-.button[data-disabled], .pagination-next-link[data-disabled], .pagination-prev-link[data-disabled], .pagination-first-link[data-disabled], .pagination-last-link[data-disabled], .edit-profile-button > [data-disabled] {
+.button[data-disabled], .section-subscribe button[data-disabled], .article-subscribe button[data-disabled], .community-follow button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .subscriptions-subscribe button[data-disabled], .pagination-next-link[data-disabled], .pagination-prev-link[data-disabled], .pagination-first-link[data-disabled], .pagination-last-link[data-disabled], .edit-profile-button > button[data-disabled] {
   cursor: default;
 }
 
@@ -1402,10 +1402,6 @@ ul {
   }
 }
 
-.section-subscribe .dropdown-toggle::after {
-  display: none;
-}
-
 .section-list {
   margin: 40px 0;
 }
@@ -1738,17 +1734,6 @@ ul {
 
 .article-return-to-top-icon {
   transform: rotate(0.5turn);
-}
-
-.article-unsubscribe {
-  background-color: $brand_color;
-  color: $brand_text_color;
-  text-decoration: none;
-}
-
-.article-unsubscribe:hover {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
 }
 
 .sidenav-title {
@@ -2263,7 +2248,7 @@ ul {
   }
 }
 
-.community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link, .community-follow .edit-profile-button > * {
+.community-follow button {
   line-height: 30px;
   padding: 0 10px 0 15px;
   position: relative;
@@ -2271,36 +2256,36 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .community-follow .button, .community-follow .pagination-next-link, .community-follow .pagination-prev-link, .community-follow .pagination-first-link, .community-follow .pagination-last-link, .community-follow .edit-profile-button > * {
+  .community-follow button {
     width: auto;
   }
 }
 
-.community-follow .button:hover, .community-follow .pagination-next-link:hover, .community-follow .pagination-prev-link:hover, .community-follow .pagination-first-link:hover, .community-follow .pagination-last-link:hover, .community-follow .edit-profile-button > :hover {
+.community-follow button:hover {
   background-color: $brand_color;
 }
 
-.community-follow .button:hover::after, .community-follow .pagination-next-link:hover::after, .community-follow .pagination-prev-link:hover::after, .community-follow .pagination-first-link:hover::after, .community-follow .pagination-last-link:hover::after, .community-follow .edit-profile-button > :hover::after, .community-follow .button:focus::after, .community-follow .pagination-next-link:focus::after, .community-follow .pagination-prev-link:focus::after, .community-follow .pagination-first-link:focus::after, .community-follow .pagination-last-link:focus::after, .community-follow .edit-profile-button > :focus::after {
+.community-follow button:hover::after, .community-follow button:focus::after {
   border-color: $brand_text_color;
   color: $brand_text_color;
 }
 
-.community-follow .button.button-primary, .community-follow .button-primary.pagination-next-link, .community-follow .button-primary.pagination-prev-link, .community-follow .button-primary.pagination-first-link, .community-follow .button-primary.pagination-last-link, .community-follow .edit-profile-button > .button-primary {
+.community-follow button[data-selected="true"] {
   background-color: $brand_color;
   color: $brand_text_color;
 }
 
-.community-follow .button.button-primary::after, .community-follow .button-primary.pagination-next-link::after, .community-follow .button-primary.pagination-prev-link::after, .community-follow .button-primary.pagination-first-link::after, .community-follow .button-primary.pagination-last-link::after, .community-follow .edit-profile-button > .button-primary::after {
+.community-follow button[data-selected="true"]::after {
   border-left: 1px solid $brand_text_color;
   color: $brand_text_color;
 }
 
-.community-follow .button.button-primary:hover, .community-follow .button-primary.pagination-next-link:hover, .community-follow .button-primary.pagination-prev-link:hover, .community-follow .button-primary.pagination-first-link:hover, .community-follow .button-primary.pagination-last-link:hover, .community-follow .edit-profile-button > .button-primary:hover {
+.community-follow button[data-selected="true"]:hover {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
 
-.community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after, .community-follow .edit-profile-button > ::after {
+.community-follow button::after {
   border-left: 1px solid $brand_color;
   content: attr(data-follower-count);
   color: $brand_color;
@@ -2313,12 +2298,12 @@ ul {
 }
 
 @media (min-width: 768px) {
-  .community-follow .button::after, .community-follow .pagination-next-link::after, .community-follow .pagination-prev-link::after, .community-follow .pagination-first-link::after, .community-follow .pagination-last-link::after, .community-follow .edit-profile-button > ::after {
+  .community-follow button::after {
     position: static;
   }
 }
 
-[dir="rtl"] .community-follow .button::after, [dir="rtl"] .community-follow .pagination-next-link::after, [dir="rtl"] .community-follow .pagination-prev-link::after, [dir="rtl"] .community-follow .pagination-first-link::after, [dir="rtl"] .community-follow .pagination-last-link::after, [dir="rtl"] .community-follow .edit-profile-button > ::after {
+[dir="rtl"] .community-follow button::after {
   border-left: 0;
   border-right: 1px solid $brand_color;
   margin: 0 10px 0 0;
@@ -3088,27 +3073,19 @@ ul {
   }
 }
 
-.requests-table-toolbar .organization-subscribe,
-.requests-table-toolbar .organization-unsubscribe {
-  line-height: 40px;
-  max-height: 40px;
-  padding: 0 20px;
-}
-
 @media (min-width: 768px) {
-  .requests-table-toolbar .organization-subscribe,
-  .requests-table-toolbar .organization-unsubscribe {
+  .requests-table-toolbar .organization-subscribe {
     margin-left: 10px;
   }
-  [dir="rtl"] .requests-table-toolbar .organization-subscribe, [dir="rtl"]
-  .requests-table-toolbar .organization-unsubscribe {
+  [dir="rtl"] .requests-table-toolbar .organization-subscribe {
     margin: 0 10px 0 0;
   }
 }
 
-.requests-table-toolbar .organization-unsubscribe {
-  background-color: $brand_color;
-  color: $brand_text_color;
+.requests-table-toolbar .organization-subscribe button {
+  line-height: 40px;
+  max-height: 40px;
+  padding: 0 20px;
 }
 
 .requests-table-toolbar + .requests-search-info {
@@ -3582,7 +3559,7 @@ ul {
   }
 }
 
-.edit-profile-button > * {
+.edit-profile-button > button {
   background-color: $brand_color;
   border: 0;
   color: $brand_text_color;
