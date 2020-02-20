@@ -2155,6 +2155,7 @@ ul {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-color: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
