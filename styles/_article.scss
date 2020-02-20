@@ -185,8 +185,8 @@
 
     &:hover::before,
     &:hover::after,
-    &[aria-selected="true"]::before,
-    &[aria-selected="true"]::after {
+    &[aria-pressed="true"]::before,
+    &[aria-pressed="true"]::after {
       color: $brand_text_color;
     }
 

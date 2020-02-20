@@ -26,13 +26,15 @@
   &:hover,
   &:active,
   &:focus,
-  &.button-primary {
+  &.button-primary,
+  &[aria-pressed="true"] {
     background-color: $brand_color;
     color: $brand_text_color;
     text-decoration: none;
   }
 
-  &.button-primary {
+  &.button-primary,
+  &[aria-pressed="true"] {
     &:hover,
     &:focus,
     &:active {

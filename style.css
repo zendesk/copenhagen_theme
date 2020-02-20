@@ -374,13 +374,13 @@ ul {
   color: $brand_color;
 }
 
-.button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .edit-profile-button > :hover, .button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .edit-profile-button > :active, .button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .edit-profile-button > :focus, .button.button-primary, .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .edit-profile-button > .button-primary {
+.button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .edit-profile-button > :hover, .button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .edit-profile-button > :active, .button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .edit-profile-button > :focus, .button.button-primary, .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .edit-profile-button > .button-primary, .button[aria-pressed="true"], .pagination-next-link[aria-pressed="true"], .pagination-prev-link[aria-pressed="true"], .pagination-first-link[aria-pressed="true"], .pagination-last-link[aria-pressed="true"], .edit-profile-button > [aria-pressed="true"] {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
 }
 
-.button.button-primary:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .edit-profile-button > .button-primary:hover, .button.button-primary:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .edit-profile-button > .button-primary:focus, .button.button-primary:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .edit-profile-button > .button-primary:active {
+.button.button-primary:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .edit-profile-button > .button-primary:hover, .button.button-primary:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .edit-profile-button > .button-primary:focus, .button.button-primary:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .edit-profile-button > .button-primary:active, .button[aria-pressed="true"]:hover, .pagination-next-link[aria-pressed="true"]:hover, .pagination-prev-link[aria-pressed="true"]:hover, .pagination-first-link[aria-pressed="true"]:hover, .pagination-last-link[aria-pressed="true"]:hover, .edit-profile-button > [aria-pressed="true"]:hover, .button[aria-pressed="true"]:focus, .pagination-next-link[aria-pressed="true"]:focus, .pagination-prev-link[aria-pressed="true"]:focus, .pagination-first-link[aria-pressed="true"]:focus, .pagination-last-link[aria-pressed="true"]:focus, .edit-profile-button > [aria-pressed="true"]:focus, .button[aria-pressed="true"]:active, .pagination-next-link[aria-pressed="true"]:active, .pagination-prev-link[aria-pressed="true"]:active, .pagination-first-link[aria-pressed="true"]:active, .pagination-last-link[aria-pressed="true"]:active, .edit-profile-button > [aria-pressed="true"]:active {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
@@ -1703,7 +1703,7 @@ ul {
   background-color: $brand_color;
 }
 
-.article-vote:hover::before, .article-vote:hover::after, .article-vote[aria-selected="true"]::before, .article-vote[aria-selected="true"]::after {
+.article-vote:hover::before, .article-vote:hover::after, .article-vote[aria-pressed="true"]::before, .article-vote[aria-pressed="true"]::after {
   color: $brand_text_color;
 }
 
