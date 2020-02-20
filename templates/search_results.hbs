@@ -87,7 +87,11 @@
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each subfilters}}
               <li>
-                <a href="{{url}}" class="sidenav-item" aria-selected="{{selected}}">
+                {{#if selected}}
+                  <a href="{{url}}" class="sidenav-item current" aria-current="page">
+                {{else}}
+                  <a href="{{url}}" class="sidenav-item">
+                {{/if}}
                   <span class="sidenav-subitem filter-name">{{name}}</span>
                   <span class="sidenav-subitem doc-count">({{count}})</span>
                 </a>
