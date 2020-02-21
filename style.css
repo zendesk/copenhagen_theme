@@ -2076,6 +2076,7 @@ ul {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background-color: transparent;
   border: none;
   color: lighten($text_color, 20%);
   cursor: pointer;
