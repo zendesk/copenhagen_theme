@@ -148,8 +148,8 @@ function Sidebar() {
       setData = _b[1];
 
   var _c = react_1.useState(),
-      linkClass = _c[0],
-      setLinkClass = _c[1];
+      openSectionId = _c[0],
+      setOpenSectionId = _c[1];
 
   var url = "/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
 
@@ -204,7 +204,7 @@ function Sidebar() {
       var section = (_a = sections) === null || _a === void 0 ? void 0 : _a.filter(function (section) {
         return section.id === pageId;
       })[0];
-      console.log(section);
+      setOpenSectionId(section ? section.id : pageId);
       pageId = section ? section.category_id : pageId;
     }
 
@@ -219,10 +219,12 @@ function Sidebar() {
       var section = (_b = sections) === null || _b === void 0 ? void 0 : _b.filter(function (section) {
         return section.id === sectionId_1;
       })[0];
+      setOpenSectionId(section ? section.id : 0);
       pageId = section ? section.category_id : pageId;
     }
 
     expand(pageId);
+    console.log(pageId);
   }
 
   if (document.getElementById("home")) {
@@ -284,7 +286,7 @@ function Sidebar() {
         key: section.id
       }, react_1.default.createElement("a", {
         href: section.html_url,
-        className: linkClass
+        className: section.id === openSectionId ? "sidebar-item-link-open" : "sidebar-item-link"
       }, section.name));
     })));
   })));

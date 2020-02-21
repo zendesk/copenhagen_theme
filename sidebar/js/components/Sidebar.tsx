@@ -63,7 +63,7 @@ export enum ThemeTemplate {
 export default function Sidebar() {
   const [openId, setOpenId] = useState(0);
   const [data, setData] = useState<SidebarData>();
-  const [linkClass, setLinkClass] = useState<string>();
+  const [openSectionId, setOpenSectionId] = useState<number>();
   const url =
     "/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
 
@@ -113,7 +113,8 @@ export default function Sidebar() {
 
     if (pageType === "sections") {
       const section = sections?.filter(section => section.id === pageId)[0];
-      console.log(section);
+
+      setOpenSectionId(section ? section.id : pageId);
 
       pageId = section ? section.category_id : pageId;
     }
@@ -126,9 +127,13 @@ export default function Sidebar() {
       }
       const section = sections?.filter(section => section.id === sectionId)[0];
 
+      setOpenSectionId(section ? section.id : 0);
+
       pageId = section ? section.category_id : pageId;
     }
     expand(pageId);
+
+    console.log(pageId);
   }
 
   if (document.getElementById("home")) {
@@ -216,7 +221,14 @@ export default function Sidebar() {
                         .map(section => {
                           return (
                             <li key={section.id}>
-                              <a href={section.html_url} className={linkClass}>
+                              <a
+                                href={section.html_url}
+                                className={
+                                  section.id === openSectionId
+                                    ? "sidebar-item-link-open"
+                                    : "sidebar-item-link"
+                                }
+                              >
                                 {section.name}
                               </a>
                             </li>

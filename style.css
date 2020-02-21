@@ -5530,6 +5530,13 @@ main.main-sidebar {
   text-decoration: none;
 }
 
+.sidebar-item-link-open {
+  color: var(--color-blue);
+  color: #006ab3;
+  /* default supported fallback style */
+  font-weight: 600;
+}
+
 .sidebar-item-link:hover {
   color: #333;
 }
