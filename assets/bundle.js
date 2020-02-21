@@ -223,8 +223,9 @@ function Sidebar() {
       pageId = section ? section.category_id : pageId;
     }
 
-    expand(pageId);
-    console.log(pageId);
+    if (pageId !== openId) {
+      expand(pageId);
+    }
   }
 
   if (document.getElementById("home")) {
@@ -279,7 +280,11 @@ function Sidebar() {
       }
     }, react_1.default.createElement("h4", {
       className: "sidebar-item-title"
-    }, category.name), react_1.default.createElement("ul", null, openId === category.id && sections && sections.filter(function (section) {
+    }, category.name), react_1.default.createElement("ul", {
+      onClick: function (e) {
+        return e.stopPropagation();
+      }
+    }, openId === category.id && sections && sections.filter(function (section) {
       return section.category_id === category.id && !section.parent_section_id;
     }).map(function (section) {
       return react_1.default.createElement("li", {

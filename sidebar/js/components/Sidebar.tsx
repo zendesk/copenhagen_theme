@@ -131,9 +131,10 @@ export default function Sidebar() {
 
       pageId = section ? section.category_id : pageId;
     }
-    expand(pageId);
 
-    console.log(pageId);
+    if (pageId !== openId) {
+      expand(pageId);
+    }
   }
 
   if (document.getElementById("home")) {
@@ -209,7 +210,7 @@ export default function Sidebar() {
                   }}
                 >
                   <h4 className="sidebar-item-title">{category.name}</h4>
-                  <ul>
+                  <ul onClick={e => e.stopPropagation()}>
                     {openId === category.id &&
                       sections &&
                       sections
