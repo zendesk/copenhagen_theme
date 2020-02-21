@@ -148,12 +148,8 @@ function Sidebar() {
       setData = _b[1];
 
   var _c = react_1.useState(),
-      currentCategoryId = _c[0],
-      setCurrentCategoryId = _c[1];
-
-  var _d = react_1.useState(),
-      currentSectionId = _d[0],
-      setCurrentSectionId = _d[1];
+      linkClass = _c[0],
+      setLinkClass = _c[1];
 
   var url = "/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
 
@@ -287,7 +283,8 @@ function Sidebar() {
       return react_1.default.createElement("li", {
         key: section.id
       }, react_1.default.createElement("a", {
-        href: section.html_url
+        href: section.html_url,
+        className: linkClass
       }, section.name));
     })));
   })));

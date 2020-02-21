@@ -216,7 +216,7 @@ export default function Sidebar() {
                         .map(section => {
                           return (
                             <li key={section.id}>
-                              <a href={section.html_url} className={}>
+                              <a href={section.html_url} className={linkClass}>
                                 {section.name}
                               </a>
                             </li>
