@@ -4893,9 +4893,6 @@ a {
 
 /* Big screen friendly */
 @media (min-width: 768px) {
-  .custom-card {
-    margin-right: 1em;
-  }
   .custom-contact-card-wrapper.custom-contact-card-left {
     margin-right: auto;
     margin-left: 2.5em;
@@ -5427,16 +5424,16 @@ body {
   /* default supported fallback style */
   background: var(--color-grey);
   height: 100vh;
-  left: 0;
+  right: 0;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 140px 30px 30px;
   position: fixed;
   top: 0;
-  width: 300px;
+  width: 270px;
 }
 
-@media (max-width: 1760px) {
+@media (max-width: 1700px) {
   .sidebar-panel {
     display: none;
   }
@@ -5521,7 +5518,8 @@ main.main-sidebar {
   opacity: 1;
 }
 
-.sidenav-item.current-article, .sidenav-item:hover {
+.sidenav-item.current-article,
+.sidenav-item:hover {
   border-radius: 0px;
   background-color: #a5aeb5;
   color: #ffffff;

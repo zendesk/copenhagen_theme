@@ -21,7 +21,7 @@ $base-font-size: 16px;
 }
 
 /***** Overrides *****/
-$sidebar-width: 300px;
+$sidebar-width: 270px;
 
 .article-container {
   align-items: baseline;
@@ -645,10 +645,6 @@ a {
 
 /* Big screen friendly */
 @media (min-width: 768px) {
-  .custom-card {
-    margin-right: 1em;
-  }
-
   .custom-contact-card-wrapper.custom-contact-card-left {
     margin-right: auto;
     margin-left: 2.5em;
@@ -1175,7 +1171,7 @@ body {
   background: #f7f6f6; /* default supported fallback style */
   background: var(--color-grey);
   height: 100vh;
-  left: 0;
+  right: 0;
   overflow-x: hidden;
   overflow-y: auto; // has to be auto to allow scroll
   padding: 140px 30px 30px;
