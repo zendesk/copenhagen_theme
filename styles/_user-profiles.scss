@@ -89,7 +89,7 @@
   }
 }
 
-.edit-profile-button > * {
+.edit-profile-button a {
   @extend .button;
   background-color: $brand_color;
   border: 0;
