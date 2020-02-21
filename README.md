@@ -43,7 +43,6 @@ And this would look for a file inside the settings folder named: `background_ima
 You can add assets to the asset folder and use them in your CSS, Javascript and templates.
 You can read more about assets [here](https://support.zendesk.com/hc/en-us/articles/115012399428)
 
-
 ## Publishing your theme
 After you have customized your theme you can download the repository as a `zip` file and import it into Theming Center.
 
@@ -113,5 +112,6 @@ Now you can compile your SASS files running:
 Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
 
 # Contributing
-Bug reports and pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
-Please mention @zendesk/guide-growth when creating a bug report or a pull request.
+Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
+Please mention @zendesk/guide-growth when creating a pull request.
+Bug reports must be submitted through Zendesk's standard support channels: https://www.zendesk.com/contact/
