@@ -8,11 +8,8 @@
 
     &:last-child { margin-bottom: 0; }
 
-    &::before {
-      @extend .icon;
+    .attachment-icon {
       color: $text_color;
-      content: "\1F4CE";
-      font-size: $font-size-base;
       left: 0;
       position: absolute;
       top: 5px;
@@ -22,7 +19,7 @@
       padding-left: 0;
       padding-right: 20px;
 
-      &::before {
+      .attachment-icon {
         left: auto;
         right: 0;
       }

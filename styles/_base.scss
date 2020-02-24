@@ -55,11 +55,14 @@ input {
   font-weight: $font-weight-light;
   max-width: 100%;
   box-sizing: border-box;
-  outline: none;
   transition: border .12s ease-in-out;
 
-  &:focus {
-    border: 1px solid $brand_color;
+  &:not([type="checkbox"]) {
+    outline: none;
+    
+    &:focus {
+      border: 1px solid $brand_color;
+    }
   }
 }
 
@@ -118,21 +121,6 @@ ul {
 
 .error-page {
   @include max-width-container;
-}
-
-.dropdown-toggle {
-  background: none;
-  border: 0;
-  padding: 0;
-  text-align: initial;
-}
- .dropdown-toggle:focus {
-  outline: 0;
-  text-decoration: underline;
-}
-
-.dropdown-toggle::after {
-  color: inherit;
 }
 
 .visibility-hidden {

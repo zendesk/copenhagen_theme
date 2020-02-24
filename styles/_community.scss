@@ -90,11 +90,8 @@
   margin-bottom: 10px;
   width: 100%;
 
-  .dropdown {
-    width: 100%;
-  }
-
-  [role="button"] {
+  button {
+    @extend .button;
     @include tablet { width: auto;}
 
     line-height: 30px;
@@ -109,7 +106,7 @@
       color: $brand_text_color;
     }
 
-    &[aria-selected="true"] {
+    &[data-selected="true"] {
       background-color: $brand_color;
       color: $brand_text_color;
 

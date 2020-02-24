@@ -12,9 +12,10 @@
     flex: 1;
   }
 
-  &-subscribe {
-    .dropdown-toggle::after {
-      display: none;
+  &-subscribe button {
+    @extend .button;
+    &[data-selected="true"] {
+      @extend .button-primary;
     }
   }
 }

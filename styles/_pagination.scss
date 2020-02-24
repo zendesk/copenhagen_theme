@@ -3,60 +3,55 @@
 .pagination {
   margin: 20px 0;
   text-align: center;
-}
 
-.pagination * {
-  display: inline-block;
-}
-
-.pagination li {
-  @include tablet {
-    height: 30px;
-    width: 30px;
-  }
-
-  border-radius: 50%;
-  height: 40px;
-  float: left;
-  margin-left: 5px;
-  width: 40px;
-
-  [dir="rtl"] & {
-    float: right;
-  }
-
-  &:hover:not(.pagination-current) {
-    background-color: #f3f3f3;
-
-    span, a {
-      color: $text_color;
-      text-decoration: none;
+  &-next, &-prev, &-first, &-last {
+    display: inline-block;
+    &-link {
+      @extend .button;
     }
   }
-}
 
-.pagination a, .pagination span {
-  @include tablet {
-    font-size: $font-size-small;
-    padding: 5px 12px;
+  &-first, &-last {
+    &-link {
+      padding: 0 10px;
+    }
+
+    &-text {
+      @extend .visibility-hidden;
+    }
   }
 
-  font-size: $font-size-base;
-  color: $secondary-text-color;
-  padding: 10px 12px;
-}
+  &-next {
+    &-link {
+      padding-right: 10px;
+    }
+    &-text {
+      margin-right: 10px;
+    }
+    [dir="rtl"] & {
+      &-link {
+        padding-left: 10px;
+      }
+      &-text {
+        margin-left: 10px;
+      }
+    }
+  }
 
-.pagination-current {
-  background-color: $brand_color;
-  a, span { color: $brand_text_color; }
-}
-
-.pagination-first {
-  border-radius: 3px 0 0 3px;
-  [dir="rtl"] & { border-radius: 0 3px 3px 0; }
-}
-
-.pagination-last {
-  border-radius: 0 3px 3px 0;
-  [dir="rtl"] & { border-radius: 3px 0 0 3px; }
+  &-prev {
+    &-link {
+      padding-left: 10px;
+    }
+    &-text {
+      margin-left: 10px;
+    }
+    [dir="rtl"] & {
+      &-link {
+        padding-right: 10px;
+      }
+      &-text {
+        margin-right: 10px;
+      }
+    }
+  }
 }

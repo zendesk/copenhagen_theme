@@ -117,10 +117,11 @@
 
     .icon-comments {
       color: $brand_color;
-      content: "\1F4AC";
       display: inline-block;
-      font-size: 18px;
-      padding: 5px;
+      width: 18px;
+      height: 18px;
+      margin: 5px;
+      vertical-align: middle;
     }
   }
 
