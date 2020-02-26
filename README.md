@@ -113,5 +113,5 @@ Which will take all the `scss` files inside the `styles/` folder and create the 
 
 # Contributing
 Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
-Please mention @zendesk/guide-growth when creating a pull request.
+Please mention @zendesk/vikings when creating a pull request.
 Bug reports must be submitted through Zendesk's standard support channels: https://www.zendesk.com/contact/
