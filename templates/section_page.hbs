@@ -12,7 +12,7 @@
   </nav>
 
   <div class="section-container">
-    <section class="section-content">
+    <section id="main-content" class="section-content">
       <header class="page-header">
         <h1>{{section.name}}</h1>
         {{#if settings.show_follow_section}}
@@ -24,7 +24,7 @@
       </header>
 
       {{#if section.sections}}
-        <ul id="main-content" class="section-list section-list--collapsed">
+        <ul class="section-list section-list--collapsed">
           {{#each section.sections}}
           <li class="section-list-item">
               <a href="{{url}}">
