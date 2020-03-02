@@ -6,6 +6,7 @@
     "node-fetch": "^2.1.2"
   },
   "devDependencies": {
-    "js-yaml": "^3.13.1"
+    "js-yaml": "^3.13.1",
+    "semantic-release": "^17.0.4"
   }
 }
