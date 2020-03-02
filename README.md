@@ -87,12 +87,6 @@ The styles that Theming Center needs to use in the theme are in the `style.css` 
 The styles for the theme are split using Sass partials, all the partials are under [styles/](/blob/master/styles/), they are all included in the "main" file [index.scss](/blob/master/styles/index.scss) and then compiled to CSS.
 If you wish to use SASS you can go to the [using SASS section](#using-sass)
 
-## Assets
-These are the images that are needed for the theme.
-These include:
-* Loader
-* Dropdown arrow
-
 # Using SASS
 In order to use SASS for development, you just need to compile it into the CSS that Zendesk Guide understands.
 Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does not support live SASS compilation.
