@@ -73,12 +73,6 @@
   margin: 5px 0;
 }
 
-[data-loading="true"] input,
-[data-loading="true"] textarea {
-  background: transparent url($assets-loader-gif) 99% 50% no-repeat;
-  background-size: 16px 16px;
-}
-
 .form footer {
   margin-top: 40px;
   padding-top: 30px;
