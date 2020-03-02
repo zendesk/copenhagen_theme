@@ -8,5 +8,13 @@
   "devDependencies": {
     "js-yaml": "^3.13.1",
     "semantic-release": "^17.0.4"
+  },
+  "release": {
+    "branches": ["master"],
+    "plugins": [
+      '@semantic-release/commit-analyzer',
+      '@semantic-release/release-notes-generator',
+      '@semantic-release/github'
+    ]
   }
 }
