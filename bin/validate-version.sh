@@ -18,7 +18,7 @@ LOWER_VERSION=$(printf '%s\n' "$BRANCH_VERSION" "$MASTER_VERSION" | sort -V | he
 echo "$MASTER_VERSION -> $BRANCH_VERSION"
 
 if [ "$BRANCH_VERSION" = "$LOWER_VERSION" ]; then
-    echo "Please bump your manifest version."
+    echo "Please bump the version inside manifest.json"
     exit 1;
 else
     echo "Manifest version was bumped."
