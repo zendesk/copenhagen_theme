@@ -3,11 +3,14 @@
 # EXIT ON ERROR
 set -e
 
-# GET BRANCH MANIFEST VERSION
-BRANCH_VERSION=$(jq -r  '.version' manifest.json)
+# FETCH MASTER
+git fetch origin master
 
 # GET MASTER MANIFEST VERSION
 MASTER_VERSION=$(git show origin/master:manifest.json | jq -r  '.version')
+
+# GET BRANCH MANIFEST VERSION
+BRANCH_VERSION=$(jq -r  '.version' manifest.json)
 
 # COMPARE VERSIONS
 LOWER_VERSION=$(printf '%s\n' "$BRANCH_VERSION" "$MASTER_VERSION" | sort -V | head -n1)
