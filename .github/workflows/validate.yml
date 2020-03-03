@@ -8,6 +8,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: git fetch origin master
+      - name: Fetch master
+        run: git fetch origin master
       - name: Validate
         run: ./bin/validate-version.sh
