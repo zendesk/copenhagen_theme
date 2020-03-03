@@ -18,6 +18,12 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate
+        uses: bin/validate-version.sh
   release:
     name: Release
     runs-on: ubuntu-latest
