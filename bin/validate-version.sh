@@ -4,7 +4,7 @@
 set -e
 
 # FETCH MASTER
-git fetch origin master
+git fetch -q origin master
 
 # GET MASTER MANIFEST VERSION
 MASTER_VERSION=$(git show origin/master:manifest.json | jq -r  '.version')
