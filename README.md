@@ -88,10 +88,7 @@ The styles for the theme are split using Sass partials, all the partials are und
 If you wish to use SASS you can go to the [using SASS section](#using-sass)
 
 ## Assets
-These are the images that are needed for the theme.
-These include:
-* Loader
-* Dropdown arrow
+The Copenhagen theme doesn't have any assets, but you can add assets to your theme by placing them in the `assets` folder.
 
 # Using SASS
 In order to use SASS for development, you just need to compile it into the CSS that Zendesk Guide understands.
