@@ -5,12 +5,13 @@ on:
     types: ['opened', 'edited', 'reopened', 'synchronize']
     
 jobs:
-  validate:
-    name: Validate manifest.json
+  validate_manifest:
+    name: manifest.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - run: git branch
+      - name: Branches
+        run: git branch
       - name: Compare manifest version
         run: ./bin/validate-version.sh
