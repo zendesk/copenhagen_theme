@@ -1,8 +1,8 @@
 name: Validate
 
 on:
-  check_run:
-    types: [rerequested, requested_action]
+  pull_request:
+    types: ['opened', 'edited', 'reopened', 'synchronize']
     
 jobs:
   validate:
@@ -13,3 +13,4 @@ jobs:
         uses: actions/checkout@v2
       - name: Validate
         run: ./bin/validate-version.sh
+        
