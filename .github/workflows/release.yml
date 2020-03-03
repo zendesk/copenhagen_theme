@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Validate
-        uses: bin/validate-version.sh
+        uses: ./bin/validate-version.sh
   release:
     name: Release
     runs-on: ubuntu-latest
