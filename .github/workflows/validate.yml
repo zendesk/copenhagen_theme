@@ -1,14 +1,15 @@
+name: Validate
+
 on:
   pull_request:
     types: ['opened', 'edited', 'reopened', 'synchronize']
     
 jobs:
   validate:
+    name: Validate manifest.json
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Fetch master
-        run: git fetch origin master
-      - name: Validate
+      - name: Compare manifest version
         run: ./bin/validate-version.sh
