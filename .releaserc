@@ -6,8 +6,11 @@
         "@semantic-release/commit-analyzer",
         "@semantic-release/release-notes-generator",
         "@semantic-release/changelog",
+        ["@semantic-release/exec", {
+            "prepareCmd": "./bin/update-manifest-version.sh ${nextRelease.version}"
+        }],
         ["@semantic-release/git", {
-            "assets": ["CHANGELOG.md"],
+            "assets": ["manifest.json", "CHANGELOG.md"],
             "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
         }],
         "@semantic-release/github"
