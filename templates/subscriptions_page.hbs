@@ -15,7 +15,7 @@
         {{/if}}
         <li>{{link 'contributions'}}</li>
         <li class="current">
-          <a href="{{page_path 'following'}}" aria-current="page">{{ t 'following' }}</a>
+          <a href="{{page_path 'following'}}" aria-current="page" title="{{ t 'following' }}">{{ t 'following' }}</a>
         </li>
       </ul>
     </nav>
@@ -61,7 +61,7 @@
             <tr>
               <td>
                 {{#is type 'user'}}
-                  <img class="user-avatar" src="{{avatar_url}}" alt="">
+                  <img class="user-avatar" src="{{avatar_url}}" alt="User Avatar">
                 {{/is}}
                 <a href="{{url}}" title="{{title}}" class="striped-list-title">
                   {{excerpt title characters=60}}
