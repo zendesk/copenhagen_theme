@@ -109,6 +109,68 @@ Now you can compile your SASS files running:
 Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
 
 # Contributing
-Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme
-Please mention @zendesk/vikings when creating a pull request.
+Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme. Please mention @zendesk/vikings when creating a pull request.
+
+We use [conventional commits](https://conventionalcommits.org/) to improve readability of the project history and to automate the release process. The commit message should therefore respect the following format:
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+
+```
+
+- type: describes the category of the change. See [supported types](#commit-types).
+- scope: (optional) describes what is affected by the change
+- subject: a small description of the change
+- body: (optional) additional contextual information about the change
+- footer: (optional) adds external links, issue references and other meta-information
+
+i.e.: 
+
+```
+chore: automate release
+fix(styles): fix button padding
+feat(script): add auto focus to fields with errors
+```
+
+We use [`husky`](https://github.com/typicode/husky) and [`commitlint`](https://github.com/conventional-changelog/commitlint) to validate messages when commiting.
+
+We use [Github actions](https://github.com/features/actions) together with [`semantic-release`](https://github.com/semantic-release/semantic-release) to release a new version of the theme once a PR gets merged. On each merge, `semantic-release` analyses the commit messages and infers a semantic version bump. It then creates a git tag, updates the manifest version and generates the corresponding [changelog](CHANGELOG.md).
+
+## Commit types
+
+The list bellow describes the supported commit types and their effect in the release and changelog.
+
+| Type     | Description                                                                                            | Release | Changelog                |
+|----------|--------------------------------------------------------------------------------------------------------|---------|--------------------------|
+| build    | Changes that affect the build system or external dependencies                                          | -       | -                        |
+| chore    | Other changes that don't modify the source code                                                        | -       | -                        |
+| ci       | Changes to our CI configuration files and scripts                                                      | -       | -                        |
+| docs     | Documentation only changes                                                                             | -       | -                        |
+| feat     | A new feature                                                                                          | minor   | Features                 |
+| fix      | A bug fix                                                                                              | patch   | Bug Fixes                |
+| perf     | A code change that improves performance                                                                | patch   | Performance Improvements |
+| refactor | A code change that neither fixes a bug nor adds a feature                                              | -       | -                        |
+| revert   | Reverts a previous commit                                                                              | patch   | Reverts                  |
+| style    | Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc) | -       | -                        |
+| test     | Adding missing tests or correcting existing tests                                                      | -       | -                        |
+
+## Breaking changes
+
+Commits that add a breaking change should include `BREAKING CHANGE` in the body or footer of the commit message.
+
+i.e.:
+
+```
+feat: update theme to use theming api v2
+
+BREAKING CHANGE: theme is now relying on functionality that is exclusive to the theming api v2
+```
+
+This will then generate a major release and add a `BREAKING CHANGES` section in the [changelog](CHANGELOG.md).
+
+# Bug reports
 Bug reports must be submitted through Zendesk's standard support channels: https://www.zendesk.com/contact/
