@@ -11,82 +11,72 @@
         {
           "matchingUrlPattern": "hc/en-us$",
           "assertions": {
-            "aria-allowed-attr": ["error", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+categories.+",
           "assertions": {
-            "aria-allowed-attr": ["error", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+sections.+",
           "assertions": {
-            "aria-allowed-attr": ["warn", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+articles.+",
           "assertions": {
-            "aria-allowed-attr": ["warn", {}],
             "link-name": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": "requests/new$",
           "assertions": {
-            "aria-allowed-attr": ["error", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+search.+",
           "assertions": {
-            "aria-allowed-attr": ["warn", {}],
             "link-name": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": "community/topics$",
           "assertions": {
-            "aria-allowed-attr": ["error", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+community/topics.+",
           "assertions": {
-            "aria-allowed-attr": ["warn", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": "community/posts$",
           "assertions": {
-            "aria-allowed-attr": ["error", {}],
             "link-name": ["error", {}]
           }
         },
         {
           "matchingUrlPattern": ".+community/posts.+",
           "assertions": {
-            "aria-allowed-attr": ["warn", {}],
             "link-name": ["warn", {}]
           }
         },
         {
           "matchingUrlPattern": ".+profiles.+",
           "assertions": {
-            "aria-allowed-attr": ["warn", {}],
             "link-name": ["error", {}]
           }
         },
         {"assertions": {
             "accesskeys": ["error", {}],
+            "aria-allowed-attr": ["error", {}],
             "aria-required-attr": ["error", {}],
             "aria-required-children": ["error", {}],
             "aria-required-parent": ["error", {}],
