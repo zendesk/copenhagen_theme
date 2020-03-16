@@ -7,108 +7,40 @@
       }
     },
     "assert": {
-      "assertMatrix": [
-        {
-          "matchingUrlPattern": "hc/en-us$",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+categories.+",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+sections.+",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+articles.+",
-          "assertions": {
-            "link-name": ["warn", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": "requests/new$",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+search.+",
-          "assertions": {
-            "link-name": ["warn", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": "community/topics$",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+community/topics.+",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": "community/posts$",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+community/posts.+",
-          "assertions": {
-            "link-name": ["warn", {}]
-          }
-        },
-        {
-          "matchingUrlPattern": ".+profiles.+",
-          "assertions": {
-            "link-name": ["error", {}]
-          }
-        },
-        {"assertions": {
-            "accesskeys": ["error", {}],
-            "aria-allowed-attr": ["error", {}],
-            "aria-required-attr": ["error", {}],
-            "aria-required-children": ["error", {}],
-            "aria-required-parent": ["error", {}],
-            "aria-roles": ["error", {}],
-            "aria-valid-attr-value": ["error", {}],
-            "aria-valid-attr": ["error", {}],
-            "audio-caption": ["error", {}],
-            "button-name": ["error", {}],
-            "bypass": ["error", {}],
-            "definition-list": ["error", {}],
-            "dlitem": ["error", {}],
-            "document-title": ["error", {}],
-            "html-has-lang": ["error", {}],
-            "html-lang-valid": ["error", {}],
-            "image-alt": ["error", {}],
-            "input-image-alt": ["error", {}],
-            "label": ["error", {}],
-            "layout-table": ["error", {}],
-            "list": ["error", {}],
-            "listitem": ["error", {}],
-            "meta-refresh": ["error", {}],
-            "meta-viewport": ["error", {}],
-            "object-alt": ["error", {}],
-            "tabindex": ["warn", {}],
-            "td-headers-attr": ["error", {}],
-            "th-has-data-cells": ["error", {}],
-            "valid-lang": ["error", {}],
-            "video-caption": ["error", {}],
-            "video-description": ["error", {}]
+      "assertions": {
+        "accesskeys": ["error", {}],
+        "aria-allowed-attr": ["error", {}],
+        "aria-required-attr": ["error", {}],
+        "aria-required-children": ["error", {}],
+        "aria-required-parent": ["error", {}],
+        "aria-roles": ["error", {}],
+        "aria-valid-attr-value": ["error", {}],
+        "aria-valid-attr": ["error", {}],
+        "audio-caption": ["error", {}],
+        "button-name": ["error", {}],
+        "bypass": ["error", {}],
+        "definition-list": ["error", {}],
+        "dlitem": ["error", {}],
+        "document-title": ["error", {}],
+        "html-has-lang": ["error", {}],
+        "html-lang-valid": ["error", {}],
+        "image-alt": ["error", {}],
+        "input-image-alt": ["error", {}],
+        "label": ["error", {}],
+        "layout-table": ["error", {}],
+        "link-name": ["error", {}],
+        "list": ["error", {}],
+        "listitem": ["error", {}],
+        "meta-refresh": ["error", {}],
+        "meta-viewport": ["error", {}],
+        "object-alt": ["error", {}],
+        "tabindex": ["warn", {}],
+        "td-headers-attr": ["error", {}],
+        "th-has-data-cells": ["error", {}],
+        "valid-lang": ["error", {}],
+        "video-caption": ["error", {}],
+        "video-description": ["error", {}]
         }
-        }
-      ]
     }
   }
 }
