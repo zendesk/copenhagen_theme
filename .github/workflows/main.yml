@@ -35,9 +35,13 @@ jobs:
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/360006766799
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/profiles/364655812519
+            https://${{ secrets.subdomain }}.zendesk.com/hc/contributions/posts?locale=en-us
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/subscriptions
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/3
+            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/new
           configPath: ./.github/workflows/lighthouserc.json
         env:
           end_user_email: ${{ secrets.end_user_email }}
           end_user_password: ${{ secrets.end_user_password }}
           subdomain: ${{ secrets.subdomain }}
-          
