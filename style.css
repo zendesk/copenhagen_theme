@@ -2414,7 +2414,7 @@ ul {
   color: lighten($text_color, 20%);
 }
 
-.status-label-pending {
+.status-label-pending, .status-label-pending-moderation {
   background-color: #1f73b7;
   text-align: center;
 }
@@ -2436,7 +2436,7 @@ ul {
   background-color: #000;
 }
 
-.status-label-open, .status-label-closed, .status-label-solved, .status-label-new, .status-label-hold {
+.status-label-open, .status-label-closed, .status-label-solved, .status-label-new, .status-label-hold, .status-label-pending {
   text-transform: lowercase;
 }
 

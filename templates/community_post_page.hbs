@@ -74,7 +74,7 @@
               </div>
 
               {{#if post.pending}}
-                <span class="status-label status-label-pending">{{t 'pending_approval'}}</span>
+                <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
               {{/if}}
 
               {{#with post.ticket}}
@@ -196,7 +196,7 @@
                       </a>
                     {{/with}}
                     {{#if pending}}
-                      <span class="comment-pending status-label status-label-pending">{{t 'pending_approval'}}</span>
+                      <span class="comment-pending status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
                     {{/if}}
                   </div>
                 </div>
