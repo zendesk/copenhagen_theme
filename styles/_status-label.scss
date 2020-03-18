@@ -51,7 +51,8 @@
     color: $secondary-text-color;
   }
 
-  &-pending {
+  &-pending,
+  &-pending-moderation {
     background-color: #1f73b7;
     text-align: center;
   }
@@ -78,7 +79,7 @@
   &-solved,
   &-new,
   &-hold,
-  &-answered {
+  &-pending {
     text-transform: lowercase; // To be consistent with Lotus
   }
 }
