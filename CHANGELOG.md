@@ -1,3 +1,11 @@
+## [2.2.2](https://github.com/zendesk/copenhagen_theme/compare/v2.2.1...v2.2.2) (2020-03-19)
+
+
+### Bug Fixes
+
+* **styles:** do not lowercase "answered" status-label ([fd40ae1](https://github.com/zendesk/copenhagen_theme/commit/fd40ae1b54bd3bff72e21e02033e4810ad2f3254))
+* **styles:** do not lowercase "pending" moderation status-label ([85fc649](https://github.com/zendesk/copenhagen_theme/commit/85fc649a530d399fc762b4617f1a58c90c68f827))
+
 ## [2.2.1](https://github.com/zendesk/copenhagen_theme/compare/v2.2.0...v2.2.1) (2020-03-16)
 
 
