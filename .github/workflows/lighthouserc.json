@@ -4,7 +4,8 @@
       "numberOfRuns": 1,
       "settings": {
         "emulatedFormFactor": "desktop"
-      }
+      },
+      "puppeteerScript" : ".github/workflows/puppeteer-script.js"
     },
     "assert": {
       "assertions": {
