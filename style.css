@@ -32,7 +32,13 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
   margin-top: 0px !important;
 }
-
+h0 {
+  font-family: 'Arimo', sans-serif;
+  font-weight: bold;
+  font-size: calc(40px + (75 - 40) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1em + (1.5 - 1.5) * ((100vw - 300px)/(1600 - 300)));
+  color: white;
+}
 h1 {
   font-size: 32px;
 }
@@ -712,12 +718,14 @@ ul {
   text-align: center;
   width: 100%;
 }
-
+.hero-title {
+  position: relative;
+  top: 20%;
+}
 .hero-inner {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 610px;
+  top: 40%;
+  max-width: 400px;
   margin: 0 auto;
 }
 
