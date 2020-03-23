@@ -107,6 +107,12 @@ $header-height: 71px;
   top: auto;
   z-index: -999;
 
+
+  [dir="rtl"] & {
+    left: initial;
+    right: -999px;
+  }
+
   &:focus,
   &:active {
     left: auto;
@@ -115,5 +121,11 @@ $header-height: 71px;
     text-decoration: none;
     top: auto;
     z-index: 999;
+
+
+  [dir="rtl"] & {
+    left: initial;
+    right: auto;
+  }
   }
 }
