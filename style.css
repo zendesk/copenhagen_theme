@@ -721,6 +721,11 @@ ul {
   z-index: -999;
 }
 
+[dir="rtl"] .skip-navigation {
+  left: initial;
+  right: -999px;
+}
+
 .skip-navigation:focus, .skip-navigation:active {
   left: auto;
   overflow: auto;
@@ -728,6 +733,11 @@ ul {
   text-decoration: none;
   top: auto;
   z-index: 999;
+}
+
+[dir="rtl"] .skip-navigation:focus, [dir="rtl"] .skip-navigation:active {
+  left: initial;
+  right: auto;
 }
 
 /***** User info in header *****/
