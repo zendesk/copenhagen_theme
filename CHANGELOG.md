@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/zendesk/copenhagen_theme/compare/v2.2.2...v2.2.3) (2020-03-23)
+
+
+### Bug Fixes
+
+* Add rtl styling for Skip Navigation link ([3e64455](https://github.com/zendesk/copenhagen_theme/commit/3e644550eef595f0ce574748325823135071083f))
+
 ## [2.2.2](https://github.com/zendesk/copenhagen_theme/compare/v2.2.1...v2.2.2) (2020-03-19)
 
 
