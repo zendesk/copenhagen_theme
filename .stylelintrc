@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "unit-blacklist": "px",
+    "at-rule-no-unknown": null,
+    "number-leading-zero": null,
+    "no-descending-specificity": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "selector-class-pattern": "^(sui-g-|sui-a-|sui-m-|sui-o-|sui-l-|sui-p-|sui-h-|sui-prj-|sui-gov-|sui-app-|as--)[a-z]+"
+  }
+}
