@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Dropdowns
-  
+
   function Dropdown(toggle, menu) {
     this.toggle = toggle;
     this.menu = menu;

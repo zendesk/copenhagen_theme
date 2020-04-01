@@ -42,8 +42,7 @@ export const watchScss = () => watch('./src/scss/*.scss', series(buildScss, buil
 
 export const build = series(
   buildScss,
-  buildDefaultScss,
-  lintScss
+  buildDefaultScss
 );
 
 export const start = series(

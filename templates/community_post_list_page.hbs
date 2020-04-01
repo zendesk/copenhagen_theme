@@ -155,3 +155,160 @@
     {{link 'new_post' class='button button-large'}}
   </section>
 </div>
+<h1 class="visibility-hidden">{{ t 'community'}}</h1>
+
+<section class="section hero community-hero">
+  <h2 class="visibility-hidden">{{ t 'search'}}</h2>
+  <div class="hero-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+    </svg>
+    {{search submit=false class='search search-full' scoped=settings.scoped_community_search}}
+  </div>
+</section>
+
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+  </nav>
+
+  <header class="page-header community-header">
+      <span class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          <h2 class="title">
+            {{t 'all_posts'}}
+          </h2>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
+        </button>
+        <span class="dropdown-menu" role="menu">
+          {{#link 'topics' role='menuitem'}}
+            {{t 'show_topics'}}
+          {{/link}}
+          {{#link 'posts' role='menuitem' selected='true'}}
+            {{t 'show_all_posts'}}
+          {{/link}}
+        </span>
+      </span>
+    <span class="post-to-community">
+      {{link 'new_post' class='button button-large'}}
+    </span>
+  </header>
+
+  <div class="topic-header">
+    <span class="topic-filters">
+      <span class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          {{current_filter.label}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
+        </button>
+        <span class="dropdown-menu" role="menu">
+          {{#each filters}}
+            <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
+              {{name}}
+            </a>
+          {{/each}}
+        </span>
+      </span>
+      <span class="dropdown">
+        <button class="dropdown-toggle" aria-haspopup="true">
+          {{current_sorter.label}}
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
+        </button>
+        <span class="dropdown-menu" role="menu">
+          {{#each sorters}}
+            <a href="{{url}}" aria-selected="{{selected}}" role="menuitem">
+              {{name}}
+            </a>
+          {{/each}}
+        </span>
+      </span>
+    </span>
+  </div>
+
+  <div id="main-content" class="posts-list striped-list">
+    {{#unless posts}}
+      <div class="no-posts-with-filter">
+        {{t 'no_posts_with_filter'}}
+      </div>
+    {{/unless}}
+    {{#each posts}}
+      <section role="region" aria-labelledby="title-{{id}}">
+        <div class="striped-list-item {{#if featured}}post-featured{{/if}}">
+          <span class="striped-list-info">
+            <a href="{{url}}" id="title-{{id}}" class="striped-list-title">{{title}}</a>
+            <span class="post-overview-item">
+              {{#if pinned}}
+                <span class="status-label status-label-pinned">{{t 'pinned'}}</span>
+              {{/if}}
+
+              {{#if featured}}
+                <span class="status-label status-label-featured">{{t 'featured'}}</span>
+              {{/if}}
+
+              {{#is status 'none'}}
+              {{else}}
+                <span class="status-label-{{status_dasherized}} status-label striped-list-status">{{status_name}}</span>
+              {{/is}}
+            </span>
+
+            <ul class="meta-group">
+              <li class="meta-data">{{author.name}}</li>
+              {{#if editor}}
+                <li class="meta-data">{{date edited_at timeago=true}}</li>
+                <li class="meta-data">{{t 'edited'}}</li>
+              {{else}}
+                <li class="meta-data">{{date created_at timeago=true}}</li>
+              {{/if}}
+            </ul>
+          </span>
+
+          <div class="post-overview-count striped-list-count">
+            <span class="striped-list-count-item">
+              <span class="striped-list-number">{{vote_sum}}</span>
+              {{t 'vote' count=vote_sum}}
+            </span>
+            <span class="striped-list-count-item">
+              <span class="striped-list-number">{{comment_count}}</span>
+              {{t 'comment' count=comment_count}}
+            </span>
+          </div>
+        </div>
+      </section>
+    {{/each}}
+  </div>
+
+  {{pagination}}
+
+  {{#if featured_posts}}
+    <section class="section community-featured-posts">
+      <h2 class="title">{{t 'featured_posts'}}</h2>
+      <ul class="promoted-articles">
+        {{#each featured_posts}}
+          <li class="promoted-articles-item">
+            <a href="{{url}}">
+              {{title}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  {{/if}}
+
+  <section class="community-activity activity">
+    {{#if help_center.community_enabled}}
+      {{recent_activity scope='community'}}
+    {{/if}}
+  </section>
+
+  <section class="container community-footer">
+    <h2 class="community-footer-title">{{t 'suggest_new_post'}}</h2>
+    {{link 'new_post' class='button button-large'}}
+  </section>
+</div>
