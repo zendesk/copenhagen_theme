@@ -330,7 +330,7 @@ ul {
   }
 }
 
-.visibility-hidden, .recent-activity-accessibility-label, .pagination-first-text, .pagination-last-text {
+.visibility-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   -webkit-clip-path: inset(50%);
@@ -1298,6 +1298,20 @@ ul {
 
 .recent-activity-controls {
   padding-top: 15px;
+}
+
+.recent-activity-accessibility-label {
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }
 
 .recent-activity-comment-icon svg {
@@ -3386,6 +3400,20 @@ ul {
 
 .pagination-first-link, .pagination-last-link {
   padding: 0 10px;
+}
+
+.pagination-first-text, .pagination-last-text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
 }
 
 .pagination-next-link {
