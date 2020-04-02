@@ -1,3 +1,11 @@
+## [2.2.4](https://github.com/zendesk/copenhagen_theme/compare/v2.2.3...v2.2.4) (2020-04-02)
+
+
+### Bug Fixes
+
+* **header:** Hide the user name on mobile screen ([2ce963b](https://github.com/zendesk/copenhagen_theme/commit/2ce963b83c52fa15eca2f8d58dd0bf57e4249ff9))
+* **header:** Make sign in link visible on mobile ([d8b8a80](https://github.com/zendesk/copenhagen_theme/commit/d8b8a80931095c791268ebdaff072203a1989955))
+
 ## [2.2.3](https://github.com/zendesk/copenhagen_theme/compare/v2.2.2...v2.2.3) (2020-03-23)
 
 
