@@ -72,7 +72,7 @@
   }
 
   &-accessibility-label {
-    @extend .visibility-hidden
+    @include visually-hidden;
   }
 
   &-comment-icon {
