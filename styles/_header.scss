@@ -62,6 +62,12 @@ $header-height: 71px;
     &.sign-in { display: inline-block; }
   }
 
+  .hide-on-mobile {
+    @include mobile {
+      @include visually-hidden;
+    }
+  }
+
   .menu-button {
     @include tablet { display: none; }
     background: none;
