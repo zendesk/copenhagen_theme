@@ -1,0 +1,25 @@
+@mixin suiUtilDisplay ($suffix: '') {
+  .sui-h-display-none#{$suffix} {
+    display: none;
+  }
+
+  .sui-h-display-block#{$suffix} {
+    display: block;
+  }
+
+  .sui-h-display-inline#{$suffix} {
+    display: inline;
+  }
+
+  .sui-h-display-inline-block#{$suffix} {
+    display: inline-block;
+  }
+
+  .sui-h-display-flex#{$suffix} {
+    display: flex;
+  }
+
+  .sui-h-display-inline-flex#{$suffix} {
+    display: inline-flex;
+  }
+}

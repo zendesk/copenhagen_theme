@@ -1,141 +1,129 @@
-<!--section class="section hero">
-<div class="hero-inner">
-  {{search submit=false instant=true class='search search-full'}}
-</div>
-</section>-->
 <!--HERO-->
 <section class="l-homepage-hero">
   <div class="l-homepage-hero__container">
     <h2 class="l-homepage-hero__title">Welcome to Saagie Help Center </h2>
     <h3 class="l-homepage-hero__subtitle">How can we <strong>help you </strong> today?</h3>
-    <div class="l-homepage-hero__search">{{search scoped=true submit=false}}</div>
+    <div class="l-homepage-hero__search">{{search scoped=true instant=true submit=false}}</div>
     {{#if signed_in}}
-    <ul>
-      <li>
+    <div class="sui-g-grid as--gutter-none as--auto as--between as--stretch as--middle">
+      <div class="sui-g-grid-item">
         <a href='/hc/requests/new'><span class="l-homepage-hero__links-icon"><i class="fas fa-plus"></i></span>Open a new ticket</a>
-      </li>
-      <li>
+      </div>
+      <div class="sui-g-grid-item">
         <a href='/hc/requests'><span class="l-homepage-hero__links-icon"><i class="far fa-eye"></i></span>My tickets</a>
-      </li>
-      <li>
+      </div>
+      <div class="sui-g-grid-item">
         <a href='/hc/requests/organization'><span class="l-homepage-hero__links-icon"><i class="fas fa-list-ul"></i></span>My Organisation's tickets</a>
-      </li>
-    </ul>
+      </div>
+    </div>
 		{{/if}}
 	</div>
 </section>
 
-
-<!--MENU GENERAL-->
-<div class="section-wrapper-light-color">
-  <div class="container">
-    <section class="knowledge-base">
-        <section class="categories blocks">
-          <ul class="blocks-list">
-            <!--DOCV2-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001478212' class="blocks-item-link">
-                    <img src="{{asset 'icon-documentation.png'}}" alt="Documentation" class="blocks-item-icon" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">User Documentation</h4>
-                    <p class="blocks-item-description">
-                      View in-depth articles for all tools and features included in Saagie Data Fabric</p>
-                </a>
-            </li>
-            <!--Getting Started-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001262471-Getting-started' class="blocks-item-link">
-                    <img src="{{asset 'icon-GettingStarted.png'}}" alt="Getting Started" class="blocks-item-icon" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Getting Started</h4>
-                    <p class="blocks-item-description">
-                    Following these articles will walk you through how to accomplish common tasks</p>
-                </a>
-            </li>
-            <!--Tutorials-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001317331-Tutorials' class="blocks-item-link" >
-                    <img src="{{asset 'icon-Tutorials.png'}}" alt="Tutorials" class="blocks-item-icon" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Tutorials</h4>
-                    <p class="blocks-item-description">
-                    Tutorials will provide you with basic introductions to various data integration tools</p>
-                </a>
-            </li>
-            <!--FAQ-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001309011-F-A-Q'>
-                    <img class="blocks-item-icon" src="{{asset 'icon-F.A.Q.png'}}" alt="Plugins" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">F.A.Q</h4>
-                    <p class="blocks-item-description">All the commonly asked questions about our Data Fabric</p>
-                </a>
-            </li>
-            <!--DOCV1-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://creativedata.atlassian.net/wiki/spaces/SAP/overview' class="blocks-item-link"  target="_blank">
-                    <img src="{{asset 'icon-DocV1.png'}}" alt="Documentation V1" class="blocks-item-icon" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Documentation V1 (Legacy)</h4>
-                    <p class="blocks-item-description">
-                      Our Wiki page dedicated to all the features and tools offered in the first version of Data Fabric</p>
-                </a>
-            </li>
-            <!--PLUGINS-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://www.saagie.com/product/plugins'target="_blank">
-                    <img class="blocks-item-icon" src="{{asset 'icon-Plugin.png'}}" alt="Plugins" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Plugins</h4>
-                    <p class="blocks-item-description">Enhance your RStudio, Jupyter, Java or Spark project</p>
-                </a>
-            </li>
-						<!--Installation-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/articles/360012610839-Installation-guide' class="blocks-item-link">
-                  <img class="blocks-item-icon" src="{{asset 'icon-Installation.png'}}" alt="Installation" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Installation Documentation</h4>
-                    <p class="blocks-item-description">
-                      Install Saagie on your Kubernetes cluster</p>
-                </a>
-            </li>
-            <!--Operations-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/articles/360012876619' class="blocks-item-link">
-                  <img class="blocks-item-icon" src="{{asset 'icon-Production-doc.png'}}" alt="Operations" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Operations Documentation</h4>
-                    <p class="blocks-item-description">
-                    Operate Saagie in production</p>
-                </a>
-            </li>
-            <!--SDK-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='#' class="blocks-item-link" >
-                  <img class="blocks-item-icon" src="{{asset 'icon-SDK.png'}}" alt="SDK" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">SDK</h4>
-                    <p class="blocks-item-description">
-                    Integrate new technologies to orchestrate within Saagie (coming soon)</p>
-                </a>
-            </li>
-            <!--Troubleshooting-->
-            <li class="blocks-item">
-                <a class="blocks-item-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001270891-Troubleshooting'>
-                    <img class="blocks-item-icon" src="{{asset 'icon-Troubleshooting.png'}}" alt="Troubleshooting" width="70px" height="auto"/>
-                    <h4 class="blocks-item-title">Troubleshooting</h4>
-                    <p class="blocks-item-description">Need help? Our Support team is here to assist</p>
-                </a>
-            </li>
-          </ul>
-        </section>
-    </section>
-  </div>
+<!--MENU TILES-->
+<div class="l-homepage-tiles as--dark">
+   <div class="wrapper">
+      <section class="sui-g-grid as--stretch">
+        <!--DOCV2-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001478212' class="blocks-item-link">
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-documentation.png'}}" alt="Documentation" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">User Documentation</h4>
+                <p class="l-homepage-tiles__tile-description">
+                  View in-depth articles for all tools and features included in Saagie Data Fabric</p>
+            </a>
+        </div>
+        <!--Getting Started-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001262471-Getting-started' class="blocks-item-link">
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-GettingStarted.png'}}" alt="Getting Started" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Getting Started</h4>
+                <p class="l-homepage-tiles__tile-description">
+                Following these articles will walk you through how to accomplish common tasks</p>
+            </a>
+        </div>
+        <!--Tutorials-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001317331-Tutorials' class="blocks-item-link" >
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-Tutorials.png'}}" alt="Tutorials" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Tutorials</h4>
+                <p class="l-homepage-tiles__tile-description">
+                Tutorials will provide you with basic introductions to various data integration tools</p>
+            </a>
+        </div>
+        <!--FAQ-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001309011-F-A-Q'>
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-F.A.Q.png'}}" alt="Plugins" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">F.A.Q</h4>
+                <p class="l-homepage-tiles__tile-description">All the commonly asked questions about our Data Fabric</p>
+            </a>
+        </div>
+        <!--DOCV1-->
+        <div class="sui-g-grid-item  l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://creativedata.atlassian.net/wiki/spaces/SAP/overview' class="blocks-item-link"  target="_blank">
+                <img src="{{asset 'icon-DocV1.png'}}" alt="Documentation V1" class="l-homepage-tiles__tile-icon" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Documentation V1 (Legacy)</h4>
+                <p class="l-homepage-tiles__tile-description">
+                  Our Wiki page dedicated to all the features and tools offered in the first version of Data Fabric</p>
+            </a>
+        </div>
+        <!--Plugins-->
+        <div class=" sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://www.saagie.com/product/plugins'target="_blank">
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-Plugin.png'}}" alt="Plugins" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Plugins</h4>
+                <p class="l-homepage-tiles__tile-description">Enhance your RStudio, Jupyter, Java or Spark project</p>
+            </a>
+        </div>
+        <!--Installation-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/articles/360012610839-Installation-guide' class="blocks-item-link">
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-Installation.png'}}" alt="Installation" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Installation Documentation</h4>
+                <p class="l-homepage-tiles__tile-description">
+                Install Saagie on your Kubernetes cluster</p>
+            </a>
+        </div>
+      <!--Operations-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/articles/360012876619' class="blocks-item-link">
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-Production-doc.png'}}" alt="Operations" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Operations Documentation</h4>
+                <p class="l-homepage-tiles__tile-description">
+                Operate Saagie in production</p>
+            </a>
+        </div>
+        <!--SDK-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='#' class="blocks-item-link" >
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-SDK.png'}}" alt="SDK" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">SDK</h4>
+                <p class="l-homepage-tiles__tile-description">
+                Integrate new technologies to orchestrate within Saagie (coming soon)</p>
+            </a>
+        </div>
+        <!--Troubleshooting-->
+        <div class="sui-g-grid-item l-homepage-tiles__tile">
+            <a class="l-homepage-tiles__tile-link" href='https://saagie.zendesk.com/hc/en-us/categories/360001270891-Troubleshooting'>
+                <img class="l-homepage-tiles__tile-icon" src="{{asset 'icon-Troubleshooting.png'}}" alt="Troubleshooting" width="70px" height="auto"/>
+                <h4 class="l-homepage-tiles__tile-title">Troubleshooting</h4>
+                <p class="l-homepage-tiles__tile-description">Need help? Our Support team is here to assist</p>
+            </a>
+        </div>
+      </section>
+    </div>
 </div>
-
 
 <!--COMMUNITY-->
   <!--<div class="section-wrapper">
     <div class="container">
       {{#if help_center.community_enabled}}
-      <!--<section class="section community">
+      <section class="section community">
         <h2>{{t 'community'}}</h2>
         {{#link 'community' class='community-link'}}
           {{t 'join_conversation'}}
         {{/link}}
-
         <div class="community-image"></div>
       </section>
     {{/if}}
@@ -143,13 +131,14 @@
 </div>-->
 
 <!--RECENT ACTIVITIES-->
-<div class="section-wrapper as--last-child">
-  <div class="container">
-    <section class="activity">
+<div class="l-homepage-recent-activity as--light">
+  <div class="wrapper">
+    <section>
     {{recent_activity}}
-  </section>
+    </section>
   </div>
 </div>
+
   <!--PROMOTED ARTICLES-->
   <!--<div class="section-wrapper-light-color">
   <div class="container">

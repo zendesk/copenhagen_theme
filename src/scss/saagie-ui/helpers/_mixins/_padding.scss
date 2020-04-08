@@ -1,0 +1,31 @@
+@mixin suiUtilPadding($suffix, $size) {
+  .sui-h-p-#{$suffix} {
+    padding: $size;
+  }
+
+  .sui-h-pt-#{$suffix} {
+    padding-top: $size;
+  }
+
+  .sui-h-pb-#{$suffix} {
+    padding-bottom: $size;
+  }
+
+  .sui-h-pl-#{$suffix} {
+    padding-left: $size;
+  }
+
+  .sui-h-pr-#{$suffix} {
+    padding-right: $size;
+  }
+
+  .sui-h-pv-#{$suffix} {
+    padding-top: $size;
+    padding-bottom: $size;
+  }
+
+  .sui-h-ph-#{$suffix} {
+    padding-left: $size;
+    padding-right: $size;
+  }
+}

@@ -14,6 +14,10 @@
 @import "saagie-ui/_mixins/media-queries";
 @import "saagie-ui/_mixins/reponsive-modifiers";
 @import "saagie-ui/grid/_mixins/grid";
+@import "saagie-ui/helpers/_mixins/margin";
+@import "saagie-ui/helpers/_mixins/padding";
+@import "saagie-ui/helpers/_mixins/display";
+@import "saagie-ui/helpers/_mixins/text";
 
 // -------------------------
 //    Settings
@@ -36,6 +40,14 @@
 @import "saagie-ui/grid/grid";
 
 // -------------------------
+//    Helpers
+// -------------------------
+@import "saagie-ui/helpers/margin";
+@import "saagie-ui/helpers/display";
+@import "saagie-ui/helpers/padding";
+@import "saagie-ui/helpers/text";
+
+// -------------------------
 //    Zendesk theme
 // -------------------------
 // Base
@@ -54,4 +66,6 @@
 
 // Components base
 @import "components/table";
-//@import "components/legacy";
+
+// Components base
+@import "components/legacy";

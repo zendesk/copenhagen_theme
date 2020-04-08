@@ -1,43 +1,31 @@
 .l-header {
-  max-width: rem(1160);
-  margin: 0 auto;
-  padding: 0 5%;
   position: relative;
-  align-items: center;
-  display: flex;
-  height: rem(55);
-  justify-content: space-between;
-  border-bottom: rem(4) solid $sui-color-brand-akane;
 
-  @media (min-width: rem(1160)) {
-    padding: 0;
-    width: 90%;
-  }
-
-  &__item {
-    display: inline-flex;
-    align-items: center;
-
+  &__branding {
     span {
       padding-left: rem(15);
       position: relative;
-      padding-bottom: rem(5);
+      line-height: rem(20);
       font-family: $sui-font-family-primary;
-    }
 
-    span::before {
-      content: "";
-      border-left: rem(1) solid $sui-color-primary;
-      position: absolute;
-      height: rem(25);
-      top: 0;
-      left: rem(5);
+      &::before {
+        content: "";
+        border-left: rem(1) solid $sui-color-text;
+        position: absolute;
+        height: rem(24);
+        top: rem(-2);
+        left: rem(2);
+      }
     }
   }
 
   &__logo {
+    padding-right: rem(6);
+
     img {
-      max-height: rem(37);
+      width: auto;
+      height: rem(49);
+      padding-top: rem(7);
     }
   }
 
@@ -46,4 +34,166 @@
     width: 100%;
     background-color: $sui-color-brand-akane;
   }
+}
+
+/***** nav-wrapper header *****/
+.nav-wrapper a {
+  border: 0;
+  color: $link_color;
+  display: none;
+  font-size: 14px;
+  padding: 0 20px 0 0;
+  width: auto;
+}
+
+@media (min-width: 768px) {
+  .nav-wrapper a {
+    display: inline-block;
+  }
+}
+
+[dir="rtl"] .nav-wrapper a {
+  padding: 0 0 0 20px;
+}
+
+.nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
+  background-color: transparent;
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.nav-wrapper a.login {
+  display: inline-block;
+}
+
+.nav-wrapper .icon-menu {
+  display: inline-block;
+  margin-right: 10px;
+  color: $link_color;
+}
+
+@media (min-width: 768px) {
+  .nav-wrapper .icon-menu {
+    display: none;
+  }
+}
+
+[dir="rtl"] .nav-wrapper .icon-menu {
+  margin-left: 10px;
+  margin-right: 0;
+}
+
+.user-nav {
+  display: inline-block;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+  .user-nav {
+    position: relative;
+  }
+}
+
+.user-nav[aria-expanded="true"] {
+  background-color: #fff;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+  border: solid 1px #ddd;
+  right: 0;
+  left: 0;
+  top: 71px;
+  z-index: 1;
+}
+
+.user-nav[aria-expanded="true"] > a {
+  display: block;
+  margin: 20px;
+}
+
+/***** User info in header *****/
+.user-info {
+  display: inline-block;
+}
+
+.user-info .dropdown-toggle::after {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .user-info .dropdown-toggle::after {
+    display: inline-block;
+  }
+}
+
+.user-info > [role="button"] {
+  border: 0;
+  color: $link_color;
+  min-width: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.user-info > [role="button"]:hover {
+  color: $link_color;
+  background-color: transparent;
+}
+
+.user-info > [role="button"]::after {
+  color: $link_color;
+  padding-right: 15px;
+}
+
+[dir="rtl"] .user-info > [role="button"]::after {
+  padding-left: 15px;
+  padding-right: 0;
+}
+
+#user #user-name {
+  display: none;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  #user #user-name {
+    display: inline-block;
+  }
+}
+
+#user #user-name:hover {
+  text-decoration: underline;
+}
+
+/***** User avatar *****/
+.user-avatar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.avatar {
+  display: inline-block;
+  position: relative;
+}
+
+.avatar img {
+  height: 40px;
+  width: 40px;
+}
+
+.avatar .icon-agent::before {
+  background-color: $brand_color;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  bottom: -4px;
+  color: $brand_text_color;
+  content: "\1F464";
+  font-size: 14px;
+  height: 14px;
+  line-height: 14px;
+  position: absolute;
+  right: -2px;
+  text-align: center;
+  width: 14px;
 }

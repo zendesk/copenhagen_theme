@@ -1,41 +1,11 @@
 /***** Footer *****/
-.footer {
-  border-top: 1px solid #ddd;
-  padding: 30px 0;
-  background-color:#263D5C;
-}
+.l-footer {
+  padding: rem(20) 0;
+  background-color: $sui-color-brand-denim-700;
 
-.footer a {
-  color:white;
-}
-
-.footer-inner {
-  max-width: 1160px;
-  margin: 0 auto;
-  align-items: baseline;
-  padding: 0 5%;
-  display: flex;
-  justify-content: space-between;
-}
-
-@media (min-width: 1160px) {
-  .footer-inner {
-    padding: 0;
-    width: 90%;
+  a {
+    color: $sui-color-brand-denim-100;
   }
-}
-.footer-inner-item {
-   width: 50%;
-}
-.footer-inner-item ul {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    margin: 0;
-    padding: 0;
-}
-.footer-inner-item ul li {
-    margin-left:10px;
 }
 
 .footer-language-selector {

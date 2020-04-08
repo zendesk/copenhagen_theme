@@ -12,12 +12,21 @@ body {
   font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-@media (min-width: rem(1024)) {
-  body > main {
+body > main {
+  flex-grow: 1;
+  @media (min-width: rem(1024)) {
     min-height: 65vh;
   }
+}
+
+.wrapper {
+  max-width: rem(1160);
+  margin: auto;
 }
 
 h1,

@@ -1,0 +1,13 @@
+@mixin suiUtilTextAlign ($suffix: '') {
+  .sui-h-text-left#{$suffix} {
+    text-align: left;
+  }
+
+  .sui-h-text-center#{$suffix} {
+    text-align: center;
+  }
+
+  .sui-h-text-right#{$suffix} {
+    text-align: right;
+  }
+}

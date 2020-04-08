@@ -1,17 +1,25 @@
 <header class="l-header">
-  <div class="l-header__item">
-    <div class="l-header__logo">
-      {{#link 'help_center'}}
-      <img src="{{asset 'logo.png'}}" alt="{{t 'logo'}}">
-      {{/link}}
+  <div class="wrapper">
+    <div class="sui-g-grid as--gutter-none as--auto as--between as--stretch as--middle">
+      <div class="sui-g-grid-item">
+        <div class=" sui-g-grid as--stretch as--gutter-none as--middle as--auto l-header__branding">
+          <div class="sui-g-grid-item l-header__logo">
+            {{#link 'help_center'}}
+            <img src="{{asset 'logo.png'}}" alt="{{t 'logo'}}">
+            {{/link}}
+          </div>
+          <div class="sui-g-grid-item">
+            <span>Help Center</span>
+          </div>
+        </div>
+      </div>
+      <div class="sui-g-grid-item nav-wrapper">
+        <span class="icon-menu"></span>
+        <nav class="user-nav" id="user-nav">
+          {{link 'new_request' class='submit-a-request'}}
+        </nav>
+      </div>
     </div>
-    <span>Help Center </span>
-  </div>
-  <div class="nav-wrapper">
-    <span class="icon-menu"></span>
-    <nav class="user-nav" id="user-nav">
-      {{link 'new_request' class='submit-a-request'}}
-    </nav>
   </div>
 </header>
 <div class="l-header__line"></div>

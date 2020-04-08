@@ -5,29 +5,11 @@
     background-position: center;
     background-size: cover;
     height: rem(600);
-    padding: 0 rem(20);
     text-align: center;
     width: 100%;
 
     @media (min-width: rem(640)) {
-      height: rem(400);
-    }
-
-    ul {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    ul li {
-      margin-right: rem(20);
-      flex: auto;
-      width: 100%;
-      padding-bottom: rem(15);
-
-      @media (min-width: rem(640)) {
-        width: auto;
-      }
+      height: rem(480);
     }
 
     a {
@@ -41,8 +23,7 @@
       max-width: rem(610);
       margin: 0 auto;
       color: $sui-color-brand-denim-100;
-      font-family: 'Varela Round', sans-serif;
-      padding-top: rem(15);
+      font-family: $sui-font-family-primary;
     }
 
     &__title {
@@ -71,4 +52,92 @@
       font-size: rem(17);
     }
   }
+
+  &-tiles {
+    padding-top: rem(76);
+    padding-bottom: rem(55);
+
+    &__tile {
+      border: rem(1) solid $sui-color-border;
+      border-radius: rem(3);
+      box-sizing: border-box;
+      color: $sui-color-text;
+      display: flex;
+      flex: 1 0 rem(340);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      text-align: center;
+      margin: 0 rem(15) rem(30);
+      padding: 0 !important;
+
+      &:hover,
+      &:focus {
+        border: rem(1) solid $sui-color-primary;
+        box-shadow: 0 0 rem(1) $sui-color-primary;
+        background-color: transparent;
+        color: $sui-color-text;
+      }
+
+      &:hover *,
+      &:focus * {
+        text-decoration: none;
+        background-color: transparent;
+        color: $sui-color-text;
+      }
+
+      &-link {
+        color: $sui-color-text;
+        padding: rem(25) rem(50);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &:hover,
+        &:focus {
+          text-decoration: none;
+        }
+      }
+
+      &-title {
+        margin-bottom: 0;
+        font-family: $sui-font-family-primary;
+        font-weight: 600;
+        font-size: rem(20);
+      }
+
+      &-description {
+        font-weight: 300;
+        font-size: rem(14);
+        margin: 0;
+        font-family: $sui-font-family-secondary;
+
+        &:not(:empty) {
+          margin-top: rem(5);
+        }
+      }
+
+      &-icon {
+        margin-bottom: rem(20);
+      }
+    }
+  }
+
+  &-recent-activity {
+    padding-top: rem(70);
+    padding-bottom: rem(70);
+
+    .recent-activity-header {
+      text-align: left;
+    }
+  }
+}
+
+.as--light {
+  background-color: $sui-color-brand-denim-100;
+}
+
+.as--dark {
+  background-color: $sui-color-brand-denim-200;
 }

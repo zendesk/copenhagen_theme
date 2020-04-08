@@ -1,0 +1,31 @@
+@mixin suiUtilMargin($suffix, $size) {
+  .sui-h-m-#{$suffix} {
+    margin: $size;
+  }
+
+  .sui-h-mt-#{$suffix} {
+    margin-top: $size;
+  }
+
+  .sui-h-mb-#{$suffix} {
+    margin-bottom: $size;
+  }
+
+  .sui-h-ml-#{$suffix} {
+    margin-left: $size;
+  }
+
+  .sui-h-mr-#{$suffix} {
+    margin-right: $size;
+  }
+
+  .sui-h-mv-#{$suffix} {
+    margin-top: $size;
+    margin-bottom: $size;
+  }
+
+  .sui-h-mh-#{$suffix} {
+    margin-left: $size;
+    margin-right: $size;
+  }
+}
