@@ -1,0 +1,49 @@
+.l-header {
+  max-width: rem(1160);
+  margin: 0 auto;
+  padding: 0 5%;
+  position: relative;
+  align-items: center;
+  display: flex;
+  height: rem(55);
+  justify-content: space-between;
+  border-bottom: rem(4) solid $sui-color-brand-akane;
+
+  @media (min-width: rem(1160)) {
+    padding: 0;
+    width: 90%;
+  }
+
+  &__item {
+    display: inline-flex;
+    align-items: center;
+
+    span {
+      padding-left: rem(15);
+      position: relative;
+      padding-bottom: rem(5);
+      font-family: $sui-font-family-primary;
+    }
+
+    span::before {
+      content: "";
+      border-left: rem(1) solid $sui-color-primary;
+      position: absolute;
+      height: rem(25);
+      top: 0;
+      left: rem(5);
+    }
+  }
+
+  &__logo {
+    img {
+      max-height: rem(37);
+    }
+  }
+
+  &__line {
+    height: rem(4);
+    width: 100%;
+    background-color: $sui-color-brand-akane;
+  }
+}

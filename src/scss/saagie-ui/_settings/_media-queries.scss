@@ -1,0 +1,28 @@
+$sui-breakpoint-xxs: rem(450) !default;
+$sui-breakpoint-xs:  rem(600) !default;
+$sui-breakpoint-sm:  rem(800) !default;
+$sui-breakpoint-md:  rem(1000) !default;
+$sui-breakpoint-lg:  rem(1200) !default;
+$sui-breakpoint-xl:  rem(1400) !default;
+$sui-breakpoint-xxl: rem(1600) !default;
+
+$sui-breakpoint-navigation: $sui-breakpoint-md;
+$sui-breakpoint-datalist: $sui-breakpoint-md; /* DEPRECATED - LEGACY 0.48.0 */
+
+$sui-breakpoint-modifiers:
+  $sui-breakpoint-xxs \@xxs,
+  $sui-breakpoint-xs \@xs,
+  $sui-breakpoint-sm \@sm,
+  $sui-breakpoint-md \@md,
+  $sui-breakpoint-lg \@lg,
+  $sui-breakpoint-xl \@xl,
+  $sui-breakpoint-xxl \@xxl !default;
+
+$sui-breakpoints:
+  $sui-breakpoint-xxs xxs,
+  $sui-breakpoint-xs xs,
+  $sui-breakpoint-sm sm,
+  $sui-breakpoint-md md,
+  $sui-breakpoint-lg lg,
+  $sui-breakpoint-xl xl,
+  $sui-breakpoint-xxl xxl !default;

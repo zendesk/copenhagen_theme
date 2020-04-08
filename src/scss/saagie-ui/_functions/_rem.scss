@@ -1,0 +1,15 @@
+/* stylelint-disable unit-blacklist  */
+
+$sui-font-size-context: 16px !default;
+
+@function rem($pixels, $context: $sui-font-size-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}

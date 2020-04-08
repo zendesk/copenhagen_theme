@@ -1,0 +1,29 @@
+.sui-g-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  @include suiGridGutter($sui-space-md);
+  @include suiGridModifiers();
+
+  @each $breakpoint in $sui-breakpoint-modifiers {
+    @include suiMediaMin(nth($breakpoint, 1)) {
+      @include suiGridModifiers(nth($breakpoint, 2));
+    }
+  }
+
+  & > * {
+    flex: 0 1 auto;
+    min-width: 0;
+    max-width: 100%;
+    flex-basis: 100%;
+
+    @include suiGridItemModifiers();
+
+    @each $breakpoint in $sui-breakpoint-modifiers {
+      @include suiMediaMin(nth($breakpoint, 1)) {
+        @include suiGridItemModifiers(nth($breakpoint, 2));
+      }
+    }
+  }
+}

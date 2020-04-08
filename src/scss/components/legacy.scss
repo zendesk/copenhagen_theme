@@ -1490,6 +1490,7 @@ input:-webkit-autofill {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   text-align: left;
+  margin: 40px 0 0 0;
 }
 
 .section-list-item {
@@ -1501,6 +1502,7 @@ input:-webkit-autofill {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
  border-bottom: 1px solid #ddd;
+ background-color: pink;
 }
 
 .section-list-item a {
@@ -1508,7 +1510,7 @@ input:-webkit-autofill {
   color: $text_color;
 }
 
-.section-list-item a:hover{
+.section-list-item a:hover {
   color: $link_color;
 }
 

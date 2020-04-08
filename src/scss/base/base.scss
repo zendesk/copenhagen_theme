@@ -1,0 +1,128 @@
+
+/***** Base *****/
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $sui-color-brand-denim-100;
+  color: $sui-color-text;
+  font-family: $sui-font-family-primary;
+  font-size: rem(16);
+  font-weight: 400;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: rem(1024)) {
+  body > main {
+    min-height: 65vh;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $sui-font-family-primary;
+  font-weight: 400;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: rem(44);
+  font-weight: 600;
+}
+
+h2 {
+  font-size: rem(40);
+}
+
+h3 {
+  font-size: rem(32);
+}
+
+h4 {
+  font-size: rem(26);
+}
+
+h5 {
+  font-weight: 600;
+  font-size: rem(20);
+  font-family: $sui-font-family-secondary;
+}
+
+h6 {
+  font-weight: 600;
+  font-size: $sui-font-size-ml;
+  font-family: $sui-font-family-secondary;
+}
+
+a {
+  color: $sui-color-primary;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  text-decoration: underline;
+}
+
+input,
+textarea {
+  color: #000;
+  font-size: rem(14);
+}
+
+input {
+  font-weight: 300;
+  max-width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border .12s ease-in-out;
+}
+
+input:focus {
+  border: rem(1) solid $sui-color-brand-akane;
+}
+
+input[disabled] {
+  background-color: #ddd;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  //background: url($assets-dropdown-arrow-svg) no-repeat #fff;
+  background-position: right rem(10) center;
+  border: rem(1) solid #ddd;
+  border-radius: rem(4);
+  padding: rem(8) rem(30) rem(8) rem(10);
+  outline: none;
+  color: #555;
+  width: 100%;
+}
+
+select:focus {
+  border: rem(1) solid $sui-color-brand-akane;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+textarea {
+  border: rem(1) solid #ddd;
+  border-radius: rem(2);
+  resize: vertical;
+  width: 100%;
+  outline: none;
+  padding: rem(10);
+}
+
+textarea:focus {
+  border: rem(1) solid $sui-color-brand-akane;
+}

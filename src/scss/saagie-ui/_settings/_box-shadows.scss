@@ -1,0 +1,45 @@
+/* stylelint-disable unit-blacklist  */
+
+$sui-shadow-100:
+  0 rem(2) rem(2) 0 rgba(32, 47, 71, 0.1),
+  0 0 rem(4) 0 rgba(32, 47, 71, 0.05),
+  0 0 0 rem(1) rgba(32, 47, 71, 0.03);
+
+$sui-shadow-200:
+  0 rem(3) rem(4) rem(-1) rgba(32, 47, 71, 0.08),
+  0 rem(2) rem(7) 0 rgba(32, 47, 71, 0.06),
+  0 rem(-3) rem(3) rem(-2) rgba(32, 47, 71, 0.04),
+  0 0 0 rem(1) rgba(32, 47, 71, 0.03);
+
+$sui-shadow-300:
+  0 rem(13) rem(7) rem(-7) rgba(32, 47, 71, 0.06),
+  rem(10) rem(4) rem(7) rem(-8) rgba(32, 47, 71, 0.08),
+  rem(-10) rem(4) rem(7) rem(-8) rgba(32, 47, 71, 0.08),
+  0 rem(3) rem(6) 0 rgba(32, 47, 71, 0.06),
+  0 rem(-4) rem(8) rem(-2) rgba(32, 47, 71, 0.04),
+  0 0 0 rem(1) rgba(32, 47, 71, 0.03);
+
+$sui-shadow-400:
+  rem(12) rem(4) rem(12) rem(-8) rgba(32, 47, 71, 0.08),
+  rem(-12) rem(4) rem(12) rem(-8) rgba(32, 47, 71, 0.08),
+  0 rem(12) rem(12) rem(-6) rgba(32, 47, 71, 0.08),
+  0 rem(6) rem(8) 0 rgba(32, 47, 71, 0.06),
+  0 rem(-8) rem(8) rem(-2) rgba(32, 47, 71, 0.02),
+  0 0 0 rem(1) rgba(32, 47, 71, 0.03);
+
+$sui-shadow-500:
+  rem(15) rem(4) rem(15) rem(-8) rgba(32, 47, 71, 0.08),
+  rem(-15) rem(4) rem(15) rem(-8) rgba(32, 47, 71, 0.08),
+  0 rem(20) rem(20) rem(-6) rgba(32, 47, 71, 0.08),
+  0 rem(14) rem(10) rem(-4) rgba(32, 47, 71, 0.06),
+  0 rem(-4) rem(8) rem(-2) rgba(32, 47, 71, 0.02),
+  0 0 0 rem(1) rgba(32, 47, 71, 0.03);
+
+$sui-shadow-600:
+  rem(20) rem(4) rem(20) rem(-8) rgba(32, 47, 71, 0.08),
+  rem(-20) rem(4) rem(20) rem(-8) rgba(32, 47, 71, 0.08),
+  0 rem(20) rem(26) rem(-2) rgba(32, 47, 71, 0.08),
+  0 rem(30) rem(26) rem(-8) rgba(32, 47, 71, 0.06),
+  0 0 0 rem(1) rgba(32, 47, 71, 0.03);
+
+$sui-box-shadow: $sui-shadow-100 !default; /* DEPRECATED - LEGACY 0.42.3 */

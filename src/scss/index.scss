@@ -1,3 +1,57 @@
-// Components
+// Saagie ui
+
+// -------------------------
+//    Functions
+// -------------------------
+@import "saagie-ui/_functions/rem";
+@import "saagie-ui/_functions/colorvariant";
+@import "saagie-ui/_functions/contrast";
+
+// -------------------------
+//    Mixins
+// -------------------------
+@import "saagie-ui/_mixins/focus-effect";
+@import "saagie-ui/_mixins/media-queries";
+@import "saagie-ui/_mixins/reponsive-modifiers";
+@import "saagie-ui/grid/_mixins/grid";
+
+// -------------------------
+//    Settings
+// -------------------------
+@import "saagie-ui/_settings/border-radius";
+@import "saagie-ui/_settings/box-shadows";
+@import "saagie-ui/_settings/colors";
+@import "saagie-ui/_settings/images";
+@import "saagie-ui/_settings/media-queries";
+@import "saagie-ui/_settings/sizes";
+@import "saagie-ui/_settings/spaces";
+@import "saagie-ui/_settings/curves";
+@import "saagie-ui/_settings/typography";
+@import "saagie-ui/_settings/font-awesome";
+@import "saagie-ui/_settings/z-index";
+
+// -------------------------
+//    Grids
+// -------------------------
+@import "saagie-ui/grid/grid";
+
+// -------------------------
+//    Zendesk theme
+// -------------------------
+// Base
+@import "base/base";
+@import "base/typography";
+
+// Components settings
+@import "settings/colors";
+
+// Layout
+@import "layout/homepage";
+@import "layout/category";
+@import "layout/article";
+@import "layout/header";
+@import "layout/footer";
+
+// Components base
 @import "components/table";
-@import "components/legacy";
+//@import "components/legacy";

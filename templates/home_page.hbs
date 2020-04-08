@@ -4,26 +4,24 @@
 </div>
 </section>-->
 <!--HERO-->
-<section class="hero">
-  <div class="hero-inner">
-    <h2 class="hero-inner-title">Welcome to Saagie Help Center </h2>
-    <h3 class="hero-inner-subtitle">How can we <strong>help you </strong> today?</h3>
-    <div class="hero-inner-search">{{search scoped=true submit=false}}</div>
+<section class="l-homepage-hero">
+  <div class="l-homepage-hero__container">
+    <h2 class="l-homepage-hero__title">Welcome to Saagie Help Center </h2>
+    <h3 class="l-homepage-hero__subtitle">How can we <strong>help you </strong> today?</h3>
+    <div class="l-homepage-hero__search">{{search scoped=true submit=false}}</div>
     {{#if signed_in}}
     <ul>
       <li>
-        <a href='/hc/requests/new'><span class="hero-inner-links-icon"><i class="fas fa-plus"></i></span>Open a new ticket</a>
+        <a href='/hc/requests/new'><span class="l-homepage-hero__links-icon"><i class="fas fa-plus"></i></span>Open a new ticket</a>
       </li>
       <li>
-        <a href='/hc/requests'><span class="hero-inner-links-icon"><i class="far fa-eye"></i></span>My tickets</a>
+        <a href='/hc/requests'><span class="l-homepage-hero__links-icon"><i class="far fa-eye"></i></span>My tickets</a>
       </li>
       <li>
-        <a href='/hc/requests/organization'><span class="hero-inner-links-icon"><i class="fas fa-list-ul"></i></span>My Organisation's tickets</a>
+        <a href='/hc/requests/organization'><span class="l-homepage-hero__links-icon"><i class="fas fa-list-ul"></i></span>My Organisation's tickets</a>
       </li>
     </ul>
-
 		{{/if}}
-
 	</div>
 </section>
 

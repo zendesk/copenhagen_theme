@@ -1,0 +1,74 @@
+
+.l-homepage {
+  &-hero {
+    background-image: url($homepage_background_image);
+    background-position: center;
+    background-size: cover;
+    height: rem(600);
+    padding: 0 rem(20);
+    text-align: center;
+    width: 100%;
+
+    @media (min-width: rem(640)) {
+      height: rem(400);
+    }
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    ul li {
+      margin-right: rem(20);
+      flex: auto;
+      width: 100%;
+      padding-bottom: rem(15);
+
+      @media (min-width: rem(640)) {
+        width: auto;
+      }
+    }
+
+    a {
+      color: $sui-color-brand-denim-100;
+    }
+
+    &__container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: rem(610);
+      margin: 0 auto;
+      color: $sui-color-brand-denim-100;
+      font-family: 'Varela Round', sans-serif;
+      padding-top: rem(15);
+    }
+
+    &__title {
+      font-size: rem(40);
+      line-height: 1.2;
+      font-weight: inherit;
+      margin: 0;
+    }
+
+    &__subtitle {
+      padding-top: rem(15);
+      font-size: rem(30);
+      line-height: 1.3;
+      font-weight: 200;
+      margin: 0;
+      opacity: .9;
+    }
+
+    &__search {
+      margin-top: rem(70);
+      margin-bottom: rem(70);
+    }
+
+    &__links-icon {
+      margin-right: rem(10);
+      font-size: rem(17);
+    }
+  }
+}

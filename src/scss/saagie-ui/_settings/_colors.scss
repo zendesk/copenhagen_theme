@@ -1,0 +1,110 @@
+// Brand colors
+$sui-color-brand-akane: #e52728 !default;
+
+$sui-color-brand-denim-base: 214;
+
+$sui-color-brand-denim: hsl($sui-color-brand-denim-base, 42%, 25%) !default;
+$sui-color-brand-denim-800: hsl($sui-color-brand-denim-base, 40%, 20%) !default;
+$sui-color-brand-denim-700: hsl($sui-color-brand-denim-base, 42%, 25%) !default;
+$sui-color-brand-denim-600: hsl($sui-color-brand-denim-base, 25%, 46%) !default;
+$sui-color-brand-denim-500: hsl($sui-color-brand-denim-base, 28%, 71%) !default;
+$sui-color-brand-denim-400: hsl($sui-color-brand-denim-base, 41%, 80%) !default;
+$sui-color-brand-denim-300: hsl($sui-color-brand-denim-base, 60%, 94%) !default;
+$sui-color-brand-denim-200: hsl($sui-color-brand-denim-base, 67%, 99%) !default;
+$sui-color-brand-denim-100: hsl($sui-color-brand-denim-base, 0%, 100%) !default;
+
+// Interfaces colors
+$sui-color-primary-base: 212;
+
+$sui-color-primary: hsl($sui-color-primary-base, 100%, 48%) !default;
+$sui-color-primary-dark: suicolorvariantdark($sui-color-primary-base) !default;
+$sui-color-primary-light: suicolorvariantlight($sui-color-primary-base) !default;
+
+$sui-color-danger-base: 354;
+
+$sui-color-danger: hsl($sui-color-danger-base, 73%, 54%) !default;
+$sui-color-danger-dark: suicolorvariantdark($sui-color-danger-base) !default;
+$sui-color-danger-light: suicolorvariantlight($sui-color-danger-base) !default;
+$sui-color-danger-text: darken($sui-color-danger, 10%) !default;
+
+$sui-color-warning-base: 30;
+
+$sui-color-warning: hsl($sui-color-warning-base, 100%, 67%) !default;
+$sui-color-warning-dark: suicolorvariantdark($sui-color-warning-base) !default;
+$sui-color-warning-light: suicolorvariantlight($sui-color-warning-base) !default;
+$sui-color-warning-text: darken($sui-color-warning, 22%) !default;
+
+$sui-color-success-base: 160;
+
+$sui-color-success: hsl($sui-color-success-base, 65%, 39%) !default;
+$sui-color-success-dark: suicolorvariantdark($sui-color-success-base, $l: 20%) !default;
+$sui-color-success-light: suicolorvariantlight($sui-color-success-base) !default;
+$sui-color-success-text: darken($sui-color-success, 7.5%) !default;
+
+// Text colors
+$sui-color-text: $sui-color-brand-denim !default;
+$sui-color-text-light: $sui-color-brand-denim-600 !default;
+
+// Border colors
+$sui-color-border: hsl(228, 15%, 87%) !default;
+$sui-color-border-light: hsl(210, 7%, 94%) !default;
+
+// Status colors
+$sui-color-stromgray-base: 240;
+
+$sui-color-stromgray: hsl($sui-color-stromgray-base, 5%, 47%) !default;
+$sui-color-stromgray-dark: hsl($sui-color-stromgray-base, 5%, 29%) !default;
+$sui-color-stromgray-light: hsl($sui-color-stromgray-base, 5%, 90%) !default;
+
+$sui-color-heliotrope-base: 260;
+
+$sui-color-heliotrope: hsl($sui-color-heliotrope-base, 99%, 74%) !default;
+$sui-color-heliotrope-dark: suicolorvariantdark($sui-color-heliotrope-base) !default;
+$sui-color-heliotrope-light: suicolorvariantlight($sui-color-heliotrope-base) !default;
+
+$sui-color-dogerblue-base: 226;
+
+$sui-color-dogerblue: hsl($sui-color-dogerblue-base, 100%, 64%) !default;
+$sui-color-dogerblue-dark: suicolorvariantdark($sui-color-dogerblue-base) !default;
+$sui-color-dogerblue-light: suicolorvariantlight($sui-color-dogerblue-base) !default;
+
+$sui-color-malibu-base: 196;
+
+$sui-color-malibu: hsl($sui-color-malibu-base, 83%, 72%) !default;
+$sui-color-malibu-dark: suicolorvariantdark($sui-color-malibu-base) !default;
+$sui-color-malibu-light: suicolorvariantlight($sui-color-malibu-base) !default;
+
+$sui-color-shamrock-base: 154;
+
+$sui-color-shamrock: hsl($sui-color-shamrock-base, 65%, 55%) !default;
+$sui-color-shamrock-dark: suicolorvariantdark($sui-color-shamrock-base) !default;
+$sui-color-shamrock-light: suicolorvariantlight($sui-color-shamrock-base) !default;
+
+$sui-color-tangerine-base: 37;
+
+$sui-color-tangerine: hsl($sui-color-tangerine-base, 100%, 55%) !default;
+$sui-color-tangerine-dark: suicolorvariantdark($sui-color-tangerine-base) !default;
+$sui-color-tangerine-light: suicolorvariantlight($sui-color-tangerine-base) !default;
+
+$sui-color-flamingo-base: 331;
+
+$sui-color-flamingo: hsl($sui-color-flamingo-base, 75%, 58%) !default;
+$sui-color-flamingo-dark: suicolorvariantdark($sui-color-flamingo-base) !default;
+$sui-color-flamingo-light: suicolorvariantlight($sui-color-flamingo-base) !default;
+
+$sui-color-chili-base: 360;
+
+$sui-color-chili: hsl($sui-color-chili-base, 87%, 60%) !default;
+$sui-color-chili-dark: suicolorvariantdark($sui-color-chili-base) !default;
+$sui-color-chili-light: suicolorvariantlight($sui-color-chili-base) !default;
+
+$sui-brand-primary: $sui-color-brand-akane !default;   /* DEPRECATED - LEGACY 0.42.3 */
+$sui-brand-secondary: $sui-color-brand-denim !default; /* DEPRECATED - LEGACY 0.42.3 */
+
+$sui-color-base-lighter: $sui-color-brand-denim-200 !default;      /* DEPRECATED - LEGACY 0.42.3 */
+$sui-color-base-light: $sui-color-brand-denim-300 !default;        /* DEPRECATED - LEGACY 0.42.3 */
+$sui-color-base-medium-light: $sui-color-brand-denim-400 !default; /* DEPRECATED - LEGACY 0.42.3 */
+$sui-color-base-medium: $sui-color-brand-denim-500 !default;       /* DEPRECATED - LEGACY 0.42.3 */
+$sui-color-base-medium-dark: $sui-color-brand-denim-600 !default;  /* DEPRECATED - LEGACY 0.42.3 */
+$sui-color-base-dark: $sui-color-brand-denim-700 !default;         /* DEPRECATED - LEGACY 0.42.3 */
+$sui-color-base-darker: $sui-color-brand-denim-800 !default;       /* DEPRECATED - LEGACY 0.42.3 */

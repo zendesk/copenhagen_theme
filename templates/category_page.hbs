@@ -1,63 +1,150 @@
 <div class="container-divider"></div>
 <div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
-    </div>
-  </nav>
-
-  <div class="category-container">
-    <div class="category-content">
-      <header class="page-header">
-        <h1>{{category.name}}</h1>
-        {{#if category.description}}
-          <p class="page-header-description">{{category.description}}</p>
+    <nav class="sub-nav">
+        {{breadcrumbs}}
+        {{search submit=false}}
+    </nav>
+    <div class="category-container">
+        {{#if category}}
+            {{#is category.name 'Platform Documentation'}}
+            <div>
+            {{else}}
+            <div class="category-content">
+             {{/is}}
         {{/if}}
-      </header>
+                <header class="page-header">
+                    <h1>{{category.name}}</h1>
 
-      <div id="main-content" class="section-tree">
-        {{#each sections}}
-          <section class="section">
-            <h2 class="section-tree-title">
-              <a href="{{url}}">{{name}}</a>
-            </h2>
-            {{#if articles}}
-              <ul class="article-list">
-                {{#each articles}}
-                  <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
-                    {{#if promoted}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
-                        <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z"/>
-                      </svg>
+                    {{#if category.description}}
+                    <p class="page-header-description">{{category.description}}</p>
                     {{/if}}
-                    <a href="{{url}}" class="article-list-link">{{title}}</a>
-                    {{#if internal}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                        <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                        <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                      </svg>
+
+
+                    {{#if category}}
+                        {{#is category.name'Troubleshooting'}}
+                        <p>Our friendly support team is available to help you from Monday to Friday (8 am to 6 pm French time). You can call us on <a href="tel:0033186651119">+33 1 86 65 11 19</a>.</p><p>If <strong>you have a Saagie Support Account</strong>, please <strong>sign in for faster service</strong> and report or track your issue by selecting one of the options below:</p>
+                        <section class="section-feature-list">
+                            <ul>
+                                <li>
+                                    <a class="section-feature-list-button" href='/hc/requests/new'><span class="hero-inner-links-icon"><i class="fas fa-plus"></i></span>Open a new ticket</a>
+                                </li>
+                                <li>
+                                    <a href='/hc/requests' class="section-feature-list-button"><span class="hero-inner-links-icon"><i class="far fa-eye"></i></span>My tickets</a>
+                                </li>
+                                <li>
+                                    <a href='/hc/requests/organization' class="section-feature-list-button"><span class="hero-inner-links-icon"><i class="fas fa-list-ul"></i></span>My Organisation's tickets</a>
+                                </li>
+                            </ul>
+                        </section>
+                        {{/is}}
+
+                        {{#is category.name'Platform Documentation'}}
+                        <div class="g-grid">
+                            <!--Projects & Jobs-->
+                            <div class="g-grid-item">
+                                <div class="section-feature-card as--projects">
+                                    <a class="section-feature-card-content" href='https://saagie.zendesk.com/hc/en-us/categories/360001159692-Projects-Jobs' class="blocks-item-link">
+                                        <div class="section-feature-card-header">
+                                            <span>feature</span>
+                                            <h4>Projects & Jobs</h4>
+                                        </div>
+                                        <div class="section-feature-card-action">
+                                            <button class="section-feature-card-button"  href='https://saagie.zendesk.com/hc/en-us/categories/360001159692-Projects-Jobs' class="blocks-item-link">Read more</button>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Governance-->
+                            <div class="g-grid-item" >
+                                <div class="section-feature-card as--governance">
+                                    <a class="section-feature-card-content" href='https://saagie.zendesk.com/hc/en-us/categories/360001141512-Governance' class="blocks-item-link">
+                                        <div class="section-feature-card-header">
+                                            <span>feature</span>
+                                            <h4>Governance</h4>
+                                        </div>
+                                        <button class="section-feature-card-button"  href='https://saagie.zendesk.com/hc/en-us/categories/360001159692-Projects-Jobs' class="blocks-item-link">Read more</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Security-->
+                            <div class="g-grid-item">
+                                <div class="section-feature-card as--security">
+                                    <a class="section-feature-card-content" href='https://saagie.zendesk.com/hc/en-us/categories/360001141452-Security' class="blocks-item-link">
+                                        <div class="section-feature-card-header">
+                                            <span>feature</span>
+                                            <h4>Security</h4>
+                                        </div>
+                                        <button class="section-feature-card-button"  href='https://saagie.zendesk.com/hc/en-us/categories/360001159692-Projects-Jobs' class="blocks-item-link">Read more</button>
+                                    </a>
+                                </div>
+                            </div>
+                            <!--Data Storage-->
+                            <div class="g-grid-item">
+                                <div class="section-feature-card as--dataStorage">
+                                    <a class="section-feature-card-content" href='https://saagie.zendesk.com/hc/en-us/categories/360001159732-Data-storage' class="blocks-item-link">
+                                        <div class="section-feature-card-header">
+                                            <span>feature</span>
+                                            <h4>Data Storage</h4>
+                                        </div>
+                                        <button class="section-feature-card-button"  href='https://saagie.zendesk.com/hc/en-us/categories/360001159692-Projects-Jobs' class="blocks-item-link">Read more</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/is}}
                     {{/if}}
-                  </li>
-                {{/each}}
-              </ul>
-              {{#if more_articles}}
-                <a href="{{url}}" class="see-all-articles">
-                  {{t 'show_all_articles' count=article_count}}
-                </a>
-              {{/if}}
-            {{/if}}
-          </section>
-        {{else}}
-          <i class="category-empty">
-            <a href="{{category.url}}">{{t 'empty'}}</a>
-          </i>
-        {{/each}}
-      </div>
+                </header>
+
+                <div class="section-tree">
+                    {{#each sections}}
+                    <section class="section" id="section-{{id}}">
+                        <h3 class="section-tree-title">
+                            <a href="{{url}}">{{name}}</a>
+
+                            <!--<span class="icon-lock" title="{{t 'internal'}}"></span>-->
+
+                        </h3>
+                      {{#if sections}}
+                       <ul class="section-list">
+                           {{#each sections}}
+                              <li class="section-list-item"><a href="{{url}}">{{name}}</a></li>
+                           {{/each}}
+                       </ul>
+               				{{/if}}
+                        {{#if articles}}
+                        <ul class="article-list">
+                            {{#each articles}}
+                            <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
+                                {{#if promoted}}
+                                <span data-title="{{t 'promoted'}}" class="icon-star"></span>
+                                {{/if}}
+                                <a href="{{url}}" class="article-list-link">{{title}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
+                        {{#if more_articles}}
+                        <a href="{{url}}" class="see-all-articles">
+                            {{t 'show_all_articles' count=article_count}}
+                        </a>
+                        {{/if}}
+                        {{else}}
+                        <i class="section-empty">
+                            <p>Coming soon</p>
+                        </i>
+                        {{/if}}
+                    </section>
+                    {{else}}
+                    <i class="category-empty">
+                        {{#if category}}
+                        {{#is category.name 'Troubleshooting' }}
+                        {{else}}
+                        <p>Coming soon</p>
+                        {{/is}}
+                        {{/if}}
+                    </i>
+                    {{/each}}
+                </div>
+
+            </div><!--categorie content or div-->
     </div>
-  </div>
 </div>
