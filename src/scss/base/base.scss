@@ -27,6 +27,12 @@ body > main {
 .wrapper {
   max-width: rem(1160);
   margin: auto;
+  padding: 0 5%;
+
+  @media (min-width: rem(1190)) {
+    padding: 0;
+    width: rem(1190);
+  }
 }
 
 h1,

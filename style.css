@@ -8789,6 +8789,14 @@ body > main {
 .wrapper {
   max-width: 72.5rem;
   margin: auto;
+  padding: 0 5%;
+}
+
+@media (min-width: 74.375rem) {
+  .wrapper {
+    padding: 0;
+    width: 74.375rem;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -8898,6 +8906,7 @@ textarea:focus {
   height: 37.5rem;
   text-align: center;
   width: 100%;
+  padding: 0 5%;
 }
 
 @media (min-width: 40rem) {
@@ -9067,77 +9076,70 @@ textarea:focus {
   background-color: #e52728;
 }
 
-.nav-wrapper a {
+.l-header__nav-wrapper {
   border: 0;
-  color: #0072f5;
-  display: none;
-  font-size: 14px;
-  padding: 0 20px 0 0;
+  color: #253c5b;
+  display: inline-block;
+  font-size: .875rem;
+  padding: 0 1.25rem 0 0;
   width: auto;
 }
 
-@media (min-width: 768px) {
-  .nav-wrapper a {
-    display: inline-block;
+@media only screen and (min-width: 50rem) {
+  .l-header__nav-wrapper {
+    display: none;
   }
 }
 
-[dir="rtl"] .nav-wrapper a {
-  padding: 0 0 0 20px;
-}
-
-.nav-wrapper a:active, .nav-wrapper a:focus, .nav-wrapper a:hover {
+.l-header__nav-wrapper:focus *, .l-header__nav-wrapper:hover * {
   background-color: transparent;
   color: #0072f5;
   text-decoration: underline;
 }
 
-.nav-wrapper a.login {
+.l-header__nav-wrapper[dir=rtl] {
+  padding: 0 0 0 1.25rem;
+}
+
+.l-header__nav-wrapper .login {
   display: inline-block;
 }
 
-.nav-wrapper .icon-menu {
+.l-header__icon-menu {
   display: inline-block;
-  margin-right: 10px;
   color: #0072f5;
 }
 
-@media (min-width: 768px) {
-  .nav-wrapper .icon-menu {
-    display: none;
-  }
-}
-
-[dir=rtl] .nav-wrapper .icon-menu {
-  margin-left: 10px;
+.l-header__icon-menu[dir=rtl] {
+  margin-left: .625rem;
   margin-right: 0;
 }
 
-.user-nav {
+.l-header__user-nav {
   display: inline-block;
   position: absolute;
   white-space: nowrap;
 }
 
-@media (min-width: 768px) {
-  .user-nav {
+@media only screen and (min-width: 50rem) {
+  .l-header__user-nav {
     position: relative;
   }
 }
 
-.user-nav[aria-expanded="true"] {
+.l-header__user-nav[aria-expanded=true] {
   background-color: #fff;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
-  border: 1px solid #ddd;
+  box-shadow: 0 0 0.25rem 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+  border: .0625rem solid #ddd;
   right: 0;
   left: 0;
-  top: 71px;
+  top: 4.4375rem;
   z-index: 1;
 }
 
-.user-nav[aria-expanded="true"] > a {
+.l-header__user-nav[aria-expanded=true] > a {
   display: block;
-  margin: 20px;
+  margin: 1.25rem;
 }
 
 .user-info {

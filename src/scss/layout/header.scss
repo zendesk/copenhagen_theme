@@ -34,80 +34,69 @@
     width: 100%;
     background-color: $sui-color-brand-akane;
   }
-}
 
-/***** nav-wrapper header *****/
-.nav-wrapper a {
-  border: 0;
-  color: $link_color;
-  display: none;
-  font-size: 14px;
-  padding: 0 20px 0 0;
-  width: auto;
-}
-
-@media (min-width: 768px) {
-  .nav-wrapper a {
+  &__nav-wrapper {
+    border: 0;
+    color: $sui-color-text;
     display: inline-block;
+    font-size: rem(14);
+    padding: 0 rem(20) 0 0;
+    width: auto;
+
+    @include suiMediaMin($sui-breakpoint-sm) {
+      display: none;
+    }
+
+    &:hover *,
+    &:focus * {
+      background-color: transparent;
+      color: $sui-color-primary;
+      text-decoration: underline;
+    }
+
+    &[dir="rtl"] {
+      padding: 0 0 0 rem(20);
+    }
+
+    .login {
+      display: inline-block;
+    }
   }
-}
 
-[dir="rtl"] .nav-wrapper a {
-  padding: 0 0 0 20px;
-}
+  &__icon-menu {
+    display: inline-block;
+    color: $link_color;
 
-.nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
-  background-color: transparent;
-  color: $link_color;
-  text-decoration: underline;
-}
-
-.nav-wrapper a.login {
-  display: inline-block;
-}
-
-.nav-wrapper .icon-menu {
-  display: inline-block;
-  margin-right: 10px;
-  color: $link_color;
-}
-
-@media (min-width: 768px) {
-  .nav-wrapper .icon-menu {
-    display: none;
+    &[dir="rtl"] {
+      margin-left: rem(10);
+      margin-right: 0;
+    }
   }
-}
 
-[dir="rtl"] .nav-wrapper .icon-menu {
-  margin-left: 10px;
-  margin-right: 0;
-}
+  &__user-nav {
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
 
-.user-nav {
-  display: inline-block;
-  position: absolute;
-  white-space: nowrap;
-}
+    @include suiMediaMin($sui-breakpoint-sm) {
+      position: relative;
+    }
 
-@media (min-width: 768px) {
-  .user-nav {
-    position: relative;
+    &[aria-expanded="true"] {
+      background-color: #fff;
+      box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+      border: solid rem(1) #ddd;
+      right: 0;
+      left: 0;
+      top: rem(71);
+      z-index: 1;
+    }
+
+    &[aria-expanded="true"] > a {
+      display: block;
+      margin: rem(20);
+    }
   }
-}
-
-.user-nav[aria-expanded="true"] {
-  background-color: #fff;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
-  border: solid 1px #ddd;
-  right: 0;
-  left: 0;
-  top: 71px;
-  z-index: 1;
-}
-
-.user-nav[aria-expanded="true"] > a {
-  display: block;
-  margin: 20px;
 }
 
 /***** User info in header *****/

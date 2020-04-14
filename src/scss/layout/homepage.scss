@@ -1,4 +1,3 @@
-
 .l-homepage {
   &-hero {
     background-image: url($homepage_background_image);
@@ -7,6 +6,7 @@
     height: rem(600);
     text-align: center;
     width: 100%;
+    padding: 0 5%;
 
     @media (min-width: rem(640)) {
       height: rem(480);
