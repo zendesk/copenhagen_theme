@@ -7,6 +7,10 @@
       position: relative;
       line-height: rem(20);
       font-family: $sui-font-family-primary;
+      font-size: rem(14);
+      @media (min-width: rem(640)) {
+        font-size: rem(16);
+      }
 
       &::before {
         content: "";
@@ -24,8 +28,12 @@
 
     img {
       width: auto;
-      height: rem(49);
+      height: rem(32);
       padding-top: rem(7);
+
+      @media (min-width: rem(640)) {
+        height: rem(49);
+      }
     }
   }
 
@@ -40,12 +48,7 @@
     color: $sui-color-text;
     display: inline-block;
     font-size: rem(14);
-    padding: 0 rem(20) 0 0;
     width: auto;
-
-    @include suiMediaMin($sui-breakpoint-sm) {
-
-    }
 
     &:hover *,
     &:focus * {

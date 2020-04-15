@@ -163,7 +163,9 @@
 </div>-->
 
 <script>
- $(document).ready(function() {
-   $('.recent-activity-header').text("Latest Articles");
- });
+  document.addEventListener('DOMContentLoaded', function() {
+	  var elem = document.querySelector('.recent-activity-header');
+    var html = elem.innerHTML;
+    elem.innerHTML = 'Latest Articles';
+});
 </script>

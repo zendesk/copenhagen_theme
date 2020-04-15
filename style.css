@@ -9049,6 +9049,13 @@ textarea:focus {
   position: relative;
   line-height: 1.25rem;
   font-family: Luengo,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: .875rem;
+}
+
+@media (min-width: 40rem) {
+  .l-header__branding span {
+    font-size: 1rem;
+  }
 }
 
 .l-header__branding span:before {
@@ -9066,8 +9073,14 @@ textarea:focus {
 
 .l-header__logo img {
   width: auto;
-  height: 3.0625rem;
+  height: 2rem;
   padding-top: .4375rem;
+}
+
+@media (min-width: 40rem) {
+  .l-header__logo img {
+    height: 3.0625rem;
+  }
 }
 
 .l-header__line {
@@ -9081,7 +9094,6 @@ textarea:focus {
   color: #253c5b;
   display: inline-block;
   font-size: .875rem;
-  padding: 0 1.25rem 0 0;
   width: auto;
 }
 

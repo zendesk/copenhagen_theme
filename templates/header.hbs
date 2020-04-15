@@ -2,7 +2,7 @@
 <header class="l-header">
   <div class="wrapper">
     <div class="sui-g-grid as--gutter-none as--auto as--between as--stretch as--middle">
-      <div class="sui-g-grid-item">
+      <div class="sui-g-grid-item ">
         <div class=" sui-g-grid as--stretch as--gutter-none as--middle as--auto l-header__branding">
           <div class="sui-g-grid-item l-header__logo">
             {{#link 'help_center'}}
@@ -14,22 +14,13 @@
           </div>
         </div>
       </div>
-      <div class="sui-g-grid-item ">
+      <div class="sui-g-grid-item">
         <div class=" l-header__nav-wrapper nav-wrapper">
-          <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="l-header__icon-menu icon-menu">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-            </svg>
-          </button>
-          <nav class="l-header__user-nav user-nav" id="user-nav">
-          {{link 'community'}}
-          {{link 'new_request' class='submit-a-request'}}
-          </nav>
           {{#if signed_in}}
-            <div class="user-info dropdown">
+            <div class="user-info dropdown sui-h-pr-md">
               <button class="dropdown-toggle" aria-haspopup="true">
                 {{user_avatar class="user-avatar"}}
-                <span class="hide-on-mobile">
+                <span class="hide-on-mobile  sui-h-pl-xs">
                   {{user_name}}
                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
                     <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
@@ -48,6 +39,15 @@
               {{t 'sign_in'}}
             {{/link}}
           {{/if}}
+          <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="l-header__icon-menu icon-menu">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
+            </svg>
+          </button>
+          <nav class="l-header__user-nav user-nav" id="user-nav">
+          {{link 'community'}}
+          {{link 'new_request' class='submit-a-request'}}
+          </nav>
         </div>
       </div>
     </div>
