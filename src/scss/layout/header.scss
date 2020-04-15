@@ -44,7 +44,7 @@
     width: auto;
 
     @include suiMediaMin($sui-breakpoint-sm) {
-      display: none;
+
     }
 
     &:hover *,

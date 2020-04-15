@@ -9085,12 +9085,6 @@ textarea:focus {
   width: auto;
 }
 
-@media only screen and (min-width: 50rem) {
-  .l-header__nav-wrapper {
-    display: none;
-  }
-}
-
 .l-header__nav-wrapper:focus *, .l-header__nav-wrapper:hover * {
   background-color: transparent;
   color: #0072f5;
