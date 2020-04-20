@@ -1,0 +1,86 @@
+/***** My activities *****/
+.o-my-activities-nav {
+
+}
+
+.my-activities-nav {
+  background-color: darken($background_color, 5%);
+  border: 0;
+  margin-bottom: 20px;
+}
+
+.my-activities-sub-nav {
+  background-color: transparent;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .my-activities-sub-nav li:hover {
+    border-bottom: 4px solid #ddd;
+  }
+}
+
+.my-activities-sub-nav li[aria-selected="true"] {
+  border-color: $brand_color;
+}
+
+.my-activities-table .striped-list-title {
+  /* My activities tables */
+  display: block;
+  margin-bottom: 10px;
+  max-width: 350px;
+  white-space: normal;
+}
+
+@media (min-width: 1024px) {
+  .my-activities-table .striped-list-title {
+    margin-bottom: 0;
+    max-width: 500px;
+    min-width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.my-activities-table thead {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .my-activities-table thead {
+    display: table-header-group;
+  }
+}
+
+.my-activities-table th:first-child,
+.my-activities-table td:first-child {
+  padding-left: 0;
+}
+
+@media (min-width: 1024px) {
+  .my-activities-table th:first-child,
+  .my-activities-table td:first-child {
+    width: 500px;
+  }
+}
+
+.my-activities-table th:last-child,
+.my-activities-table td:last-child {
+  padding-right: 0;
+}
+
+.my-activities-table td:not(:first-child) {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .my-activities-table td:not(:first-child) {
+    display: table-cell;
+  }
+}
+
+.no-activities {
+  color: lighten($text_color, 20%);
+}

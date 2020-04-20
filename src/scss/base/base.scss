@@ -141,3 +141,9 @@ textarea {
 textarea:focus {
   border: rem(1) solid $sui-color-brand-akane;
 }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}

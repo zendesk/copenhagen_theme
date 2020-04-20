@@ -57,15 +57,47 @@
 // Components settings
 @import "settings/colors";
 
+// Atoms
+@import "atoms/asciiDoc-icons";
+@import "atoms/button";
+@import "atoms/icon";
+@import "atoms/status-label";
+
+// Molecules
+@import "molecules/actions";
+@import "molecules/attachment";
+@import "molecules/breadcrumbs";
+@import "molecules/form";
+@import "molecules/meta-data";
+@import "molecules/search-field";
+@import "molecules/share";
+@import "molecules/striped-lists";
+@import "molecules/subscriptions";
+@import "molecules/table";
+@import "molecules/vote";
+
+// Organisms
+@import "organisms/collapsible-nav";
+@import "organisms/comments";
+@import "organisms/contributions";
+@import "organisms/dropdowns";
+@import "organisms/my-activities";
+@import "organisms/post";
+@import "organisms/recent-activity";
+@import "organisms/requests";
+@import "organisms/sidebar";
+@import "organisms/sub-nav";
+
 // Layout
-@import "layout/homepage";
-@import "layout/category";
 @import "layout/article";
-@import "layout/header";
+@import "layout/category";
+@import "layout/community";
+@import "layout/error-page.scss";
 @import "layout/footer";
-
-// Components base
-@import "components/table";
-
-// Components base
-@import "components/legacy";
+@import "layout/header";
+@import "layout/homepage";
+@import "layout/page-header";
+@import "layout/pagination";
+@import "layout/search-results";
+@import "layout/section";
+@import "layout/user-profiles.scss";

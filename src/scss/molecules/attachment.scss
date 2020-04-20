@@ -1,0 +1,37 @@
+/* Styles attachments inside posts, articles and comments */
+.m-attachment {
+
+}
+
+.attachments .attachment-item {
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.attachments .attachment-item:last-child {
+  margin-bottom: 0;
+}
+
+.attachments .attachment-item::before {
+  color: $text_color;
+  content: "\1F4CE";
+  font-size: 15px;
+  left: 0;
+  position: absolute;
+  top: 5px;
+}
+
+[dir="rtl"] .attachments .attachment-item {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+[dir="rtl"] .attachments .attachment-item::before {
+  left: auto;
+  right: 0;
+}
+
+.upload-dropzone span {
+  color: lighten($text_color, 20%);
+}

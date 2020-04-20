@@ -1,0 +1,81 @@
+/***** icone Ascii Doc *****/
+.a-asciiDoc-icons {
+
+}
+
+.admonitionblock .icon .title {
+  display :none
+}
+
+.admonitionblock .table {
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.admonitionblock td {
+  padding: 9px 18px 9px 18px;
+  vertical-align: middle;
+}
+
+.admonitionblock td.icon {
+  width:60px;
+  position:relative;
+   border-bottom-style: none
+}
+
+.admonitionblock .content {
+ text-align: left;
+ border-left: 1px solid #E7EEF8;
+ color: #587193;
+ border-bottom-style: none;
+}
+
+.note .icon:before {
+  content: "";
+  color: #A67BFE;
+  font-size: 32px;
+  font-family: 'FontAwesome';
+  vertical-align: middle;
+  position: absolute;
+  left: 16px;
+}
+
+.tip .icon:before {
+  content: "";
+  color: #41D796;
+  font-size: 32px;
+  font-family: 'FontAwesome';
+  vertical-align: middle;
+  position: absolute;
+  left: 20px;
+}
+
+.important .icon:before {
+  content: "";
+  color: #ffd755;
+  font-size: 32px;
+  font-family: 'FontAwesome';
+  vertical-align: middle;
+  position: absolute;
+  left: 14px;
+}
+
+.warning .icon:before {
+  content: "";
+  color: #DE3345;
+  font-size: 32px;
+  font-family: 'FontAwesome';
+  vertical-align: middle;
+  position: absolute;
+  left: 16px;
+}
+
+.caution .icon:before {
+  content: "";
+  color: #FFAA55;
+  font-size: 32px;
+  font-family: 'FontAwesome';
+  vertical-align: middle;
+  position: absolute;
+  left: 16px;
+}

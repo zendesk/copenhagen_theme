@@ -1,0 +1,24 @@
+
+.o-sidebar {
+
+}
+
+.sidenav-title {
+  font-size: 15px;
+  position: relative;
+}
+
+.sidenav-item {
+  border-radius: 4px;
+  color: $text_color;
+  display: block;
+  font-weight: 300;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.sidenav-item.current-article, .sidenav-item:hover {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
+}

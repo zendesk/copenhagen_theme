@@ -1,0 +1,177 @@
+/***** Community section in homepage *****/
+.l-community {
+
+}
+
+.community {
+  text-align: center;
+}
+
+/***** Community *****/
+.community-hero {
+  //background-image: url($community_background_image);
+  margin-bottom: 10px;
+}
+
+.community-footer {
+  padding-top: 50px;
+  text-align: center;
+}
+
+.community-featured-posts, .community-activity {
+  padding-top: 40px;
+  width: 100%;
+}
+
+.community-header {
+  margin-bottom: 30px;
+}
+
+.community-header h4 {
+  margin-bottom: 0;
+}
+
+.post-to-community {
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .post-to-community {
+    margin: 0;
+  }
+}
+
+/* Community topics grid */
+.topics {
+  max-width: none;
+  width: 100%;
+}
+
+.topics-item .meta-group {
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Community topic page */
+.topic-header {
+  border-bottom: 1px solid #ddd;
+  font-size: 13px;
+}
+
+@media (min-width: 768px) {
+  .topic-header {
+    padding-bottom: 10px;
+  }
+}
+
+.topic-header .dropdown {
+  display: block;
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .topic-header .dropdown {
+    border-top: 0;
+    display: inline-block;
+    margin-right: 20px;
+    padding: 0;
+  }
+}
+
+.no-posts-with-filter {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Topic, post and user follow button */
+.community-follow {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .community-follow {
+    margin-bottom: 0;
+    width: auto;
+  }
+}
+
+.community-follow .dropdown {
+  width: 100%;
+}
+
+.community-follow [role="button"] {
+  line-height: 30px;
+  padding: 0 10px 0 15px;
+  position: relative;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .community-follow [role="button"] {
+    width: auto;
+  }
+}
+
+.community-follow [role="button"]:hover {
+  background-color: $brand_color;
+}
+
+.community-follow [role="button"]:hover::after, .community-follow [role="button"]:focus::after {
+  border-color: $brand_text_color;
+  color: $brand_text_color;
+}
+
+.community-follow [role="button"][aria-selected="true"] {
+  background-color: $brand_color;
+  color: $brand_text_color;
+}
+
+.community-follow [role="button"][aria-selected="true"]::after {
+  border-left: 1px solid $brand_text_color;
+  color: $brand_text_color;
+}
+
+.community-follow [role="button"][aria-selected="true"]:hover {
+  background-color: darken($brand_color, 20%);
+  border-color: darken($brand_color, 20%);
+}
+
+.community-follow [role="button"]::after {
+  border-left: 1px solid $brand_color;
+  content: attr(data-follower-count);
+  color: $brand_color;
+  display: inline-block;
+  font-family: $heading_font;
+  margin-left: 15px;
+  padding-left: 10px;
+  position: absolute;
+  right: 10px;
+}
+
+@media (min-width: 768px) {
+  .community-follow [role="button"]::after {
+    position: static;
+  }
+}
+
+[dir="rtl"] .community-follow [role="button"]::after {
+  border-left: 0;
+  border-right: 1px solid $brand_color;
+  margin: 0 10px 0 0;
+  padding: 0 10px 0 0;
+}
+
+.community-image {
+  min-height: 300px;
+  //background-image: url($community_image);
+  background-position: center;
+  background-repeat: no-repeat;
+  max-width: 100%;
+}
+
+.community {
+  border-top: 1px solid #ddd;
+  padding: 30px 0;
+}
