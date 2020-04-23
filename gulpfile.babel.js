@@ -38,7 +38,7 @@ export const lintScss = () => src('src/scss/*.scss')
 
 export const buildDefaultScss = (cb) => execCommand('ruby ./bin/compile.rb', cb);
 
-export const watchScss = () => watch('./src/scss/*.scss', series(buildScss, buildDefaultScss));
+export const watchScss = () => watch('./src/scss/**/*.scss', series(buildScss, buildDefaultScss));
 
 export const build = series(
   buildScss,
