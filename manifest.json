@@ -370,6 +370,81 @@
           "value": true
         }
       ]
+    },
+    {
+      "label": "Homepage links",
+      "variables": [
+        {
+          "identifier": "link_01",
+          "type": "text",
+          "description": " ",
+          "label": "User documentation URL",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_02",
+          "type": "text",
+          "description": " ",
+          "label": "Getting started",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_03",
+          "type": "text",
+          "description": " ",
+          "label": "Tutorials",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_04",
+          "type": "text",
+          "description": " ",
+          "label": "FAQ",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_05",
+          "type": "text",
+          "description": " ",
+          "label": "Documentation V1 (Legacy)",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_06",
+          "type": "text",
+          "description": " ",
+          "label": "Plugins",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_07",
+          "type": "text",
+          "description": " ",
+          "label": "Instalation documentation",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_08",
+          "type": "text",
+          "description": " ",
+          "label": "Operations documentation",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_09",
+          "type": "text",
+          "description": " ",
+          "label": "SDK",
+          "value": "URL"
+        },
+        {
+          "identifier": "link_10",
+          "type": "text",
+          "description": " ",
+          "label": "Troubleshooting",
+          "value": "URL"
+        }
+      ]
     }
   ]
 }
