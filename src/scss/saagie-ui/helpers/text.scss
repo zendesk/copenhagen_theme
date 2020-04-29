@@ -1,0 +1,66 @@
+// Text transform
+// -------------------------
+.sui-h-text-uppercase {
+  text-transform: uppercase;
+}
+
+.sui-h-text-lowercase {
+  text-transform: lowercase;
+}
+
+.sui-h-text-capitalize {
+  text-transform: capitalize;
+}
+
+// Vertical align
+// -------------------------
+.sui-h-text-middle {
+  vertical-align: middle;
+}
+
+// Long text
+// -------------------------
+
+.sui-h-text-el {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+// Text colors
+// -------------------------
+.sui-h-text-success {
+  color: $sui-color-success-text;
+}
+
+.sui-h-text-warning {
+  color: $sui-color-warning-text;
+}
+
+.sui-h-text-danger {
+  color: $sui-color-danger-text;
+}
+
+.sui-h-text-white {
+  color: $sui-color-brand-denim-100;
+}
+
+.sui-h-text-primary {
+  color: $sui-color-primary;
+}
+
+.sui-h-text-brand-primary {
+  color: $sui-color-brand-akane;
+}
+
+//Text alignment
+// -------------------------
+@include suiUtilTextAlign();
+
+@each $breakpoint in $sui-breakpoint-modifiers {
+  @include suiMediaMin(nth($breakpoint, 1)) {
+    @include suiUtilTextAlign(nth($breakpoint, 2));
+  }
+}

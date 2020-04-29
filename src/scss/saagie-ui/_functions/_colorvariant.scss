@@ -1,0 +1,7 @@
+@function suicolorvariantdark($color-base, $s: 74%, $l: 29%) {
+  @return hsl($color-base, $s, $l);
+}
+
+@function suicolorvariantlight($color-base, $s: 92, $l: 90%) {
+  @return hsl($color-base, $s, $l);
+}

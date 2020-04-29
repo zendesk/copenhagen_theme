@@ -1,0 +1,81 @@
+/***** Status labels *****/
+
+/* Styles labels used in posts, articles and requests */
+.a-status-label {
+
+}
+.status-label {
+  background-color: #1eb848;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  margin-right: 2px;
+  padding: 3px 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.status-label:hover, .status-label:active, .status-label:focus {
+  text-decoration: none;
+}
+
+.status-label-pinned, .status-label-featured, .status-label-official {
+  background-color: $brand_color;
+}
+
+.status-label-official {
+  border-radius: 0;
+  margin-right: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .status-label-official {
+    border-radius: 0 0 4px 4px;
+    right: 30px;
+    width: auto;
+  }
+}
+
+[dir="rtl"] .status-label-official {
+  left: 30px;
+  right: auto;
+}
+
+.status-label-pending, .status-label-not-planned {
+  background-color: #eee;
+  color: lighten($text_color, 20%);
+}
+
+.status-label-pending {
+  text-align: center;
+}
+
+.status-label-open {
+  background-color: #e03b30;
+}
+
+.status-label-closed {
+  background-color: #ddd;
+}
+
+.status-label-solved {
+  background-color: #999;
+}
+
+.status-label-new {
+  background-color: #ffd12a;
+}
+
+.status-label-hold {
+  background-color: #000;
+}
+
+.status-label-open, .status-label-closed, .status-label-solved, .status-label-new, .status-label-hold, .status-label-answered {
+  text-transform: lowercase;
+}

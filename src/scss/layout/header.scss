@@ -1,0 +1,191 @@
+.l-header {
+  position: relative;
+
+  &__branding {
+    span {
+      padding-left: rem(15);
+      position: relative;
+      line-height: rem(20);
+      font-family: $sui-font-family-primary;
+      font-size: rem(14);
+      @media (min-width: rem(640)) {
+        font-size: rem(16);
+      }
+
+      &::before {
+        content: "";
+        border-left: rem(1) solid $sui-color-text;
+        position: absolute;
+        height: rem(24);
+        top: rem(-2);
+        left: rem(2);
+      }
+    }
+  }
+
+  &__logo {
+    padding-right: rem(6);
+
+    img {
+      width: auto;
+      height: rem(32);
+      padding-top: rem(7);
+
+      @media (min-width: rem(640)) {
+        height: rem(49);
+      }
+    }
+  }
+
+  &__line {
+    height: rem(4);
+    width: 100%;
+    background-color: $sui-color-brand-akane;
+  }
+
+  &__nav-wrapper {
+    border: 0;
+    color: $sui-color-text;
+    display: inline-block;
+    font-size: rem(14);
+    width: auto;
+
+    &:hover *,
+    &:focus * {
+      background-color: transparent;
+      color: $sui-color-primary;
+      text-decoration: underline;
+    }
+
+    &[dir="rtl"] {
+      padding: 0 0 0 rem(20);
+    }
+
+    .login {
+      display: inline-block;
+    }
+  }
+
+  &__icon-menu {
+    display: inline-block;
+    color: $link_color;
+
+    &[dir="rtl"] {
+      margin-left: rem(10);
+      margin-right: 0;
+    }
+  }
+
+  &__user-nav {
+    display: inline-block;
+    position: absolute;
+    white-space: nowrap;
+
+    @include suiMediaMin($sui-breakpoint-sm) {
+      position: relative;
+    }
+
+    &[aria-expanded="true"] {
+      background-color: #fff;
+      box-shadow: 0 0 rem(4) 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
+      border: solid rem(1) #ddd;
+      right: 0;
+      left: 0;
+      top: rem(71);
+      z-index: 1;
+    }
+
+    &[aria-expanded="true"] > a {
+      display: block;
+      margin: rem(20);
+    }
+  }
+}
+
+/***** User info in header *****/
+.user-info {
+  display: inline-block;
+}
+
+.user-info .dropdown-toggle::after {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .user-info .dropdown-toggle::after {
+    display: inline-block;
+  }
+}
+
+.user-info > [role="button"] {
+  border: 0;
+  color: $link_color;
+  min-width: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.user-info > [role="button"]:hover {
+  color: $link_color;
+  background-color: transparent;
+}
+
+.user-info > [role="button"]::after {
+  color: $link_color;
+  padding-right: 15px;
+}
+
+[dir="rtl"] .user-info > [role="button"]::after {
+  padding-left: 15px;
+  padding-right: 0;
+}
+
+#user #user-name {
+  display: none;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  #user #user-name {
+    display: inline-block;
+  }
+}
+
+#user #user-name:hover {
+  text-decoration: underline;
+}
+
+/***** User avatar *****/
+.user-avatar {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.avatar {
+  display: inline-block;
+  position: relative;
+}
+
+.avatar img {
+  height: 40px;
+  width: 40px;
+}
+
+.avatar .icon-agent::before {
+  background-color: $brand_color;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  bottom: -4px;
+  color: $brand_text_color;
+  content: "\1F464";
+  font-size: 14px;
+  height: 14px;
+  line-height: 14px;
+  position: absolute;
+  right: -2px;
+  text-align: center;
+  width: 14px;
+}

@@ -1,0 +1,36 @@
+/***** tables *****/
+.m-table {
+
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  font-family: 'Open Sans', sans-serif;
+  border-collapse: collapse;
+}
+
+th,td {
+  padding: 9px 18px 9px 9px;
+  border-bottom: 1px solid #eff0f1;
+  text-align: left;
+  min-width: 33%;
+  vertical-align: top;
+  color: #253c5b;
+}
+
+th {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+td {
+  font-size: 16px;
+}
+
+.table th a {
+  color: #0172F5;
+  font-size: 16px;
+  text-align: left;
+}

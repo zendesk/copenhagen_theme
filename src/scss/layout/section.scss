@@ -1,0 +1,360 @@
+/***** sections *****/
+.l-section {
+
+}
+
+.section-wrapper {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.section-wrapper-light-color {
+  width: 100%;
+  background-color:#FAFBFE;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.as--last-child {
+  padding-bottom: 50px;
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+@media (min-width: 1160px) {
+  .container {
+    padding: 0;
+    width: 90%;
+  }
+}
+
+.container-divider {
+  border-top: 1px solid #ddd;
+  margin-bottom: 20px;
+}
+
+.section-feature-list h2 {
+  margin-bottom:30px;
+}
+
+.section-feature-list ul{
+	width: 100%;
+  overflow: hidden;
+	display: flex;
+  flex-wrap: wrap;
+}
+
+.section-feature-list ul li {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1rem;
+  line-height: 22px;
+  margin-bottom: 30px;
+  padding-right: 10px;
+  flex: auto;
+  width: 100%;
+  position: relative;
+}
+
+@media (min-width: 650px) {
+  .section-feature-list ul li {
+  width: auto;
+  }
+}
+
+.section-feature-card{
+  border-radius: 3px;
+  box-sizing: border-box;
+}
+
+.as--projects{
+  background-color:#587193;
+  //background-image: url($assets-icon-project-white-png);
+  background-repeat: no-repeat;
+  background-position: 150% 50%;
+  background-size: 250px auto;
+}
+
+@media (min-width: 550px) {
+.as--projects {
+ background-position: 110% 50%;
+ background-size: 250px auto;
+  }
+}
+
+@media (min-width: 1240px) {
+  .as--projects {
+  background-position: 700% 50%;
+  background-size: 250px auto;
+  }
+}
+
+.as--governance {
+  background-color:#587193;
+  //background-image:url($assets-icon-governance-white-png);
+  background-repeat: no-repeat;
+  background-position: 115% 50%;
+  background-size: 200px auto;
+}
+
+@media (min-width: 550px) {
+.as--governance {
+  background-position: 105% 50%;
+  background-size: 200px auto;
+  }
+}
+
+.as--security{
+  background-color:#587193;
+  //background-image:url($assets-icon-security-white-png);
+  background-repeat: no-repeat;
+  background-position: 120% 60%;
+  background-size: 190px auto;
+}
+
+@media (min-width: 550px) {
+.as--security {
+	background-position: 110% 60%;
+  background-size: 190px auto;
+  }
+}
+
+.as--dataStorage {
+  background-color:#587193;
+  //background-image:url($assets-icon-datastorage-white-png);
+  background-repeat: no-repeat;
+  background-position: 120% 35%;
+  background-size: 215px auto;
+}
+
+@media (min-width: 550px) {
+.as--dataStorage {
+  background-position: 120% 35%;
+  background-size: 215px auto;
+  }
+}
+
+.section-feature-card-content {
+  position: relative;
+  -ms-flex: 1 1;
+  flex: 1 1;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-decoration: none!important;
+  padding: 30px 50px;
+}
+
+.section-feature-card-header {
+  height: 30px;
+}
+
+.section-feature-card-header span {
+  text-transform: uppercase;
+  color:#fff;
+  font-weight: 400;
+  font-size: 12px;
+}
+.section-feature-card-header h4 {
+  font-size: 20px;
+}
+
+.section-feature-card-button {
+  width: 100%;
+  display: inline-block;
+  font-size: 16px;
+  padding: .7em 1em;
+  text-align: center;
+  background: none;
+  border: 2px solid white;
+  font-weight: 400;
+  border-radius: 4px;
+  color: white;
+  text-decoration: none!important;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.section-feature-card-button:hover {
+    background: white;
+    font-weight: 400;
+    border-radius: 4px;
+    color: #587193;
+  	font-size: 16px;
+}
+
+.section-feature-card-header {
+  margin-bottom: 130px;
+  color:#FFF;
+}
+
+.section-feature-list-button {
+  width: 100%;
+  display: inline-block;
+  font-size: 14px;
+  padding: .7em 1em;
+  text-align: center;
+  background: #FFF;
+  border: 2px solid #263D5C;
+  font-weight: 400;
+  border-radius: 4px;
+  color: #263D5C;
+  text-decoration: none!important;
+  cursor: pointer;
+  transition: .2s;
+}
+.section-feature-list-button:hover {
+  background: #0065F1;
+  border: 2px solid#0065F1;
+  color: #FFF;
+}
+.section-feature-list-button h4 {
+  padding: O;
+  margin: 0;
+}
+
+/***** Section pages *****/
+.section-container {
+  display: flex;
+  /*justify-content: flex-end;*/
+}
+
+.section-content {
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+
+  .section-container {
+  display: flex;
+  flex-direction: row;
+	}
+
+  .section-content {
+    /*flex: 0 0 80%;*/
+  }
+}
+
+.section-subscribe .dropdown-toggle::after {
+  display: none;
+}
+
+.section-empty p {
+  opacity: 0.5;
+}
+
+.category-empty p{
+  opacity: 0.5;
+}
+
+/***** SECTION TREE STYLE  *****/
+.section-list {
+  list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  text-align: left;
+  margin: 40px 0 0 0;
+}
+
+.section-list-item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 420px;
+  flex: 1 0 420px;
+  padding: 15px 0;
+  max-width: 100%;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+ border-bottom: 1px solid #ddd;
+}
+
+.section-list-item a {
+  font-size: 16px;
+  color: $text_color;
+  justify-content: flex-start;
+}
+
+.section-list-item a:hover {
+  color: $link_color;
+}
+
+.article-list-item a:before {
+  font-family: 'FontAwesome';
+  content: '';
+  margin: 0 10px 0 -15px;
+  color: $text_color;
+  padding-left: 25px;
+}
+
+.section-list-item a:before {
+  font-family: 'FontAwesome';
+  content: '';
+  margin: 0 10px 0 -15px;
+  color: $text_color;
+  padding-left: 25px;
+}
+.section-list-item a:hover:before {
+  color:$link_color;
+}
+.section-tree {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .section-tree {
+    flex-direction: row;
+  }
+}
+
+.section-tree .section {
+  flex: initial;
+}
+
+@media (min-width: 768px) {
+  .section-tree .section {
+    flex: 0 0 45%;
+    /* Two columns for tablet and desktop. Leaving 5% separation between columns */
+  }
+}
+
+.section-tree .icon-lock::before {
+  vertical-align: baseline;
+}
+
+.section-tree-title {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.section-tree-title a {
+  color: #587193;
+}
+
+.section-tree-title a:hover {
+  color: $link_color;
+}
+
+.section-tree .see-all-articles {
+  display: block;
+  padding: 15px 0;
+}
+
+
+/* Saagie Specifications */
+
+#section-360003804332,
+#section-360003807851 {
+  display: none;
+}

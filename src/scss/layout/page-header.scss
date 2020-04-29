@@ -1,0 +1,57 @@
+/***** page-header *****/
+.l-page-header {
+
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .page-header {
+    align-items: baseline;
+    flex-direction: row;
+    margin-bottom: 30px;
+  }
+}
+
+.page-header .section-subscribe {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .page-header .section-subscribe {
+    margin-bottom: 0;
+  }
+}
+
+.page-header h1 {
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.page-header-description {
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 0 30px 0;
+  word-break: break-word;
+}
+
+@media (min-width: 1024px) {
+  .page-header-description {
+    flex-basis: 100%;
+  }
+}
+
+.page-header .icon-lock::before {
+  content: "\1F512";
+  font-size: 20px;
+  position: relative;
+  left: -5px;
+  vertical-align: baseline;
+}

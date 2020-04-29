@@ -1,0 +1,51 @@
+/* Following table */
+.m-subscriptions {
+
+}
+
+.subscriptions-unsubscribe a {
+  background: $brand_color;
+  border-radius: 4px;
+  color: $brand_text_color;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 2.34;
+  padding: 0 20px;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .subscriptions-unsubscribe a {
+    width: auto;
+  }
+}
+
+.subscriptions-unsubscribe a:hover {
+  background-color: darken($brand_color, 20%);
+  text-decoration: none;
+}
+
+.subscriptions-table td:last-child {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .subscriptions-table td:last-child {
+    display: table-cell;
+  }
+}
+
+.subscriptions-table td:first-child {
+  display: flex;
+  align-items: center;
+}
+
+.subscriptions-table .user-avatar {
+  margin-right: 10px;
+}
+
+.subscriptions .striped-list-title {
+  display: inline-block;
+  vertical-align: middle;
+}

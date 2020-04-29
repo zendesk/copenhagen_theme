@@ -1,0 +1,33 @@
+/***** Category pages *****/
+.l-category {
+
+}
+
+.category-container {
+  //display: flex;
+  justify-content: flex-start;
+}
+
+.category-content {
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .category-content {
+    flex: 0 0 80%;
+  }
+}
+
+.article-list-item {
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  padding: 15px 0;
+}
+
+.article-list-item a {
+  color: $text_color;
+}
+
+.article-list-item a:hover {
+  color: $link_color;
+}

@@ -1,0 +1,94 @@
+/***** Search results *****/
+.l-search-results {
+
+}
+.search-results {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+@media (min-width: 1024px) {
+  .search-results {
+    flex-direction: row;
+  }
+}
+
+.search-results-column {
+  flex: 1;
+}
+
+@media (min-width: 1024px) {
+  .search-results-column {
+    flex: 0 0 45%;
+  }
+}
+
+.search-results-list {
+  margin-bottom: 25px;
+}
+
+.search-results-list > li {
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0;
+}
+
+.search-results-list > li:first-child {
+  border-top: 1px solid #ddd;
+}
+
+.search-result-description {
+  margin-top: 15px;
+}
+
+.search-result-votes, .search-result-meta-count {
+  color: lighten($text_color, 20%);
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 300;
+  padding: 4px 5px;
+  position: relative;
+}
+
+.search-result-votes::before, .search-result-meta-count::before {
+  color: $brand_color;
+}
+
+[dir="ltr"] .search-result-votes, [dir="ltr"] .search-result-meta-count {
+  margin-left: 5px;
+}
+
+[dir="ltr"] .search-result-votes::before, [dir="ltr"] .search-result-meta-count::before {
+  margin-right: 3px;
+}
+
+[dir="rtl"] .search-result-votes, [dir="rtl"] .search-result-meta-count {
+  margin-right: 5px;
+}
+
+[dir="rtl"] .search-result-votes::before, [dir="rtl"] .search-result-meta-count::before {
+  margin-left: 3px;
+}
+
+.search-result-votes::before {
+  content: "\1F44D";
+}
+
+.search-result-meta-count::before {
+  content: "\1F4AC";
+}
+
+.search-result .meta-group {
+  align-items: center;
+}
+
+.search-result-breadcrumbs {
+  margin: 0;
+}
+
+.search-result-breadcrumbs li:last-child::after {
+  content: "·";
+  display: inline-block;
+  margin: 0 5px;
+}

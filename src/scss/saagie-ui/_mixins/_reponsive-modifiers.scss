@@ -1,0 +1,13 @@
+@mixin suiResponsiveModifiers($name, $prefix: '&.', $suffix: '') {
+  #{ $prefix }#{ $name }#{ $suffix } {
+    @content;
+  }
+
+  @each $breakpoint in $sui-breakpoint-modifiers {
+    @include suiMediaMin(nth($breakpoint, 1)) {
+      #{ $prefix }#{ $name }#{ nth($breakpoint, 2) }#{ $suffix } {
+        @content;
+      }
+    }
+  }
+}

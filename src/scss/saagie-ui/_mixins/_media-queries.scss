@@ -1,0 +1,19 @@
+@mixin suiMediaMin($breakpoint) {
+  @media only screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+
+// Remove 1px on max to prevent min and max overlap
+@mixin suiMediaMax($breakpoint) {
+  @media only screen and (max-width: $breakpoint - rem(1)) {
+    @content;
+  }
+}
+
+// Remove 1px on max to prevent min and max overlap
+@mixin suiMediaMinMax($sui-breakpoint-min, $sui-breakpoint-max) {
+  @media only screen and (min-width: $sui-breakpoint-min) and (max-width: $sui-breakpoint-max - rem(1)) {
+    @content;
+  }
+}
