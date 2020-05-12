@@ -59,135 +59,135 @@ h1, h2, h3, h4, h5, h6, .h2, .h3, .article-body .accordion-title, .h4, .article-
 
 @media print {
   h1 h1,
-  h1 h2,
-  h1 h3,
-  h1 h4,
-  h1 h5,
-  h1 h6,
-  h1 .h2,
-  h1 .h3,
-  h1 .article-body .accordion-title,
-  .article-body h1 .accordion-title,
-  h1 .h4,
-  h1 .article-body .toc h2,
-  .article-body .toc h1 h2, h2 h1,
-  h2 h2,
-  h2 h3,
-  h2 h4,
-  h2 h5,
-  h2 h6,
-  h2 .h2,
-  h2 .h3,
-  h2 .article-body .accordion-title,
-  .article-body h2 .accordion-title,
-  h2 .h4,
-  h2 .article-body .toc h2,
-  .article-body .toc h2 h2, h3 h1,
-  h3 h2,
-  h3 h3,
-  h3 h4,
-  h3 h5,
-  h3 h6,
-  h3 .h2,
-  h3 .h3,
-  h3 .article-body .accordion-title,
-  .article-body h3 .accordion-title,
-  h3 .h4,
-  h3 .article-body .toc h2,
-  .article-body .toc h3 h2, h4 h1,
-  h4 h2,
-  h4 h3,
-  h4 h4,
-  h4 h5,
-  h4 h6,
-  h4 .h2,
-  h4 .h3,
-  h4 .article-body .accordion-title,
-  .article-body h4 .accordion-title,
-  h4 .h4,
-  h4 .article-body .toc h2,
-  .article-body .toc h4 h2, h5 h1,
-  h5 h2,
-  h5 h3,
-  h5 h4,
-  h5 h5,
-  h5 h6,
-  h5 .h2,
-  h5 .h3,
-  h5 .article-body .accordion-title,
-  .article-body h5 .accordion-title,
-  h5 .h4,
-  h5 .article-body .toc h2,
-  .article-body .toc h5 h2, h6 h1,
-  h6 h2,
-  h6 h3,
-  h6 h4,
-  h6 h5,
-  h6 h6,
-  h6 .h2,
-  h6 .h3,
-  h6 .article-body .accordion-title,
-  .article-body h6 .accordion-title,
-  h6 .h4,
-  h6 .article-body .toc h2,
-  .article-body .toc h6 h2, .h2 h1,
-  .h2 h2,
-  .h2 h3,
-  .h2 h4,
-  .h2 h5,
-  .h2 h6,
-  .h2 .h2,
-  .h2 .h3,
-  .h2 .article-body .accordion-title,
-  .article-body .h2 .accordion-title,
-  .h2 .h4,
-  .h2 .article-body .toc h2,
-  .article-body .toc .h2 h2, .h3 h1, .article-body .accordion-title h1,
-  .h3 h2,
-  .article-body .accordion-title h2,
-  .h3 h3,
-  .article-body .accordion-title h3,
-  .h3 h4,
-  .article-body .accordion-title h4,
-  .h3 h5,
-  .article-body .accordion-title h5,
-  .h3 h6,
-  .article-body .accordion-title h6,
-  .h3 .h2,
-  .article-body .accordion-title .h2,
-  .h3 .h3,
-  .article-body .accordion-title .h3,
-  .h3 .article-body .accordion-title,
-  .article-body .h3 .accordion-title,
-  .article-body .accordion-title .accordion-title,
-  .h3 .h4,
-  .article-body .accordion-title .h4,
-  .h3 .article-body .toc h2,
-  .article-body .toc .h3 h2,
-  .article-body .accordion-title .toc h2,
-  .article-body .toc .accordion-title h2, .h4 h1, .article-body .toc h2 h1,
-  .h4 h2,
-  .article-body .toc h2 h2,
-  .h4 h3,
-  .article-body .toc h2 h3,
-  .h4 h4,
-  .article-body .toc h2 h4,
-  .h4 h5,
-  .article-body .toc h2 h5,
-  .h4 h6,
-  .article-body .toc h2 h6,
-  .h4 .h2,
-  .article-body .toc h2 .h2,
-  .h4 .h3,
-  .article-body .toc h2 .h3,
-  .h4 .article-body .accordion-title,
-  .article-body .h4 .accordion-title,
-  .article-body .toc h2 .accordion-title,
-  .h4 .h4,
-  .article-body .toc h2 .h4,
-  .h4 .article-body .toc h2,
-  .article-body .toc .h4 h2,
-  .article-body .toc h2 h2 {
+h1 h2,
+h1 h3,
+h1 h4,
+h1 h5,
+h1 h6,
+h1 .h2,
+h1 .h3,
+h1 .article-body .accordion-title,
+.article-body h1 .accordion-title,
+h1 .h4,
+h1 .article-body .toc h2,
+.article-body .toc h1 h2, h2 h1,
+h2 h2,
+h2 h3,
+h2 h4,
+h2 h5,
+h2 h6,
+h2 .h2,
+h2 .h3,
+h2 .article-body .accordion-title,
+.article-body h2 .accordion-title,
+h2 .h4,
+h2 .article-body .toc h2,
+.article-body .toc h2 h2, h3 h1,
+h3 h2,
+h3 h3,
+h3 h4,
+h3 h5,
+h3 h6,
+h3 .h2,
+h3 .h3,
+h3 .article-body .accordion-title,
+.article-body h3 .accordion-title,
+h3 .h4,
+h3 .article-body .toc h2,
+.article-body .toc h3 h2, h4 h1,
+h4 h2,
+h4 h3,
+h4 h4,
+h4 h5,
+h4 h6,
+h4 .h2,
+h4 .h3,
+h4 .article-body .accordion-title,
+.article-body h4 .accordion-title,
+h4 .h4,
+h4 .article-body .toc h2,
+.article-body .toc h4 h2, h5 h1,
+h5 h2,
+h5 h3,
+h5 h4,
+h5 h5,
+h5 h6,
+h5 .h2,
+h5 .h3,
+h5 .article-body .accordion-title,
+.article-body h5 .accordion-title,
+h5 .h4,
+h5 .article-body .toc h2,
+.article-body .toc h5 h2, h6 h1,
+h6 h2,
+h6 h3,
+h6 h4,
+h6 h5,
+h6 h6,
+h6 .h2,
+h6 .h3,
+h6 .article-body .accordion-title,
+.article-body h6 .accordion-title,
+h6 .h4,
+h6 .article-body .toc h2,
+.article-body .toc h6 h2, .h2 h1,
+.h2 h2,
+.h2 h3,
+.h2 h4,
+.h2 h5,
+.h2 h6,
+.h2 .h2,
+.h2 .h3,
+.h2 .article-body .accordion-title,
+.article-body .h2 .accordion-title,
+.h2 .h4,
+.h2 .article-body .toc h2,
+.article-body .toc .h2 h2, .h3 h1, .article-body .accordion-title h1,
+.h3 h2,
+.article-body .accordion-title h2,
+.h3 h3,
+.article-body .accordion-title h3,
+.h3 h4,
+.article-body .accordion-title h4,
+.h3 h5,
+.article-body .accordion-title h5,
+.h3 h6,
+.article-body .accordion-title h6,
+.h3 .h2,
+.article-body .accordion-title .h2,
+.h3 .h3,
+.article-body .accordion-title .h3,
+.h3 .article-body .accordion-title,
+.article-body .h3 .accordion-title,
+.article-body .accordion-title .accordion-title,
+.h3 .h4,
+.article-body .accordion-title .h4,
+.h3 .article-body .toc h2,
+.article-body .accordion-title .article-body .toc h2,
+.article-body .toc .h3 h2,
+.article-body .toc .accordion-title h2, .h4 h1, .article-body .toc h2 h1,
+.h4 h2,
+.article-body .toc h2 h2,
+.h4 h3,
+.article-body .toc h2 h3,
+.h4 h4,
+.article-body .toc h2 h4,
+.h4 h5,
+.article-body .toc h2 h5,
+.h4 h6,
+.article-body .toc h2 h6,
+.h4 .h2,
+.article-body .toc h2 .h2,
+.h4 .h3,
+.h4 .article-body .accordion-title,
+.article-body .h4 .accordion-title,
+.article-body .toc h2 .h3,
+.article-body .toc h2 .accordion-title,
+.h4 .h4,
+.article-body .toc h2 .h4,
+.h4 .article-body .toc h2,
+.article-body .toc .h4 h2,
+.article-body .toc h2 h2 {
     font-family: "Bookman, serif";
     letter-spacing: 0;
   }
@@ -230,50 +230,58 @@ h2,
 
 @media screen and (min-width: 20rem) {
   h2,
-  .h2 {
+.h2 {
     font-size: calc(2rem + 1 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
 @media screen and (min-width: 85.375rem) {
   h2,
-  .h2 {
+.h2 {
     font-size: 3rem;
   }
 }
 
 @media screen and (min-width: 20rem) {
   h2,
-  .h2 {
+.h2 {
     line-height: calc(1.375 + -0.125 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
 @media screen and (min-width: 85.375rem) {
   h2,
-  .h2 {
+.h2 {
     line-height: 1.25;
   }
 }
 
-h3, .h3, .article-body .accordion-title {
+h3,
+.h3,
+.article-body .accordion-title {
   font-size: 1.5rem;
   line-height: 1.375;
 }
 
 @media screen and (min-width: 20rem) {
-  h3, .h3, .article-body .accordion-title {
+  h3,
+.h3,
+.article-body .accordion-title {
     font-size: calc(1.5rem + 0.5 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
 @media screen and (min-width: 85.375rem) {
-  h3, .h3, .article-body .accordion-title {
+  h3,
+.h3,
+.article-body .accordion-title {
     font-size: 2rem;
   }
 }
 
-h4, .h4, .article-body .toc h2 {
+h4,
+.h4,
+.article-body .toc h2 {
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.375;
@@ -281,13 +289,17 @@ h4, .h4, .article-body .toc h2 {
 }
 
 @media screen and (min-width: 20rem) {
-  h4, .h4, .article-body .toc h2 {
+  h4,
+.h4,
+.article-body .toc h2 {
     font-size: calc(1rem + 0.5 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
 @media screen and (min-width: 85.375rem) {
-  h4, .h4, .article-body .toc h2 {
+  h4,
+.h4,
+.article-body .toc h2 {
     font-size: 1.5rem;
   }
 }
@@ -381,39 +393,39 @@ a:focus {
   }
 }
 
-.greyLink, .section-tree-with-article div.article-body a:last-child, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
+.greyLink, .article-body .toc a, .search-results-sidebar .sidenav-item, .article-relatives a, .section-tree-with-article div.article-body a:last-child {
   transition: all 300ms;
   box-shadow: 0 -1px 0 0 #b8b8b8 inset;
   color: #012939;
   text-decoration: none;
 }
 
-.greyLink:hover, .section-tree-with-article div.article-body a:hover:last-child, .article-relatives a:hover, .search-results-sidebar .sidenav-item:hover, .article-body .toc a:hover, .greyLink:active, .section-tree-with-article div.article-body a:active:last-child, .article-relatives a:active, .search-results-sidebar .sidenav-item:active, .article-body .toc a:active, .greyLink:focus, .section-tree-with-article div.article-body a:focus:last-child, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
+.greyLink:hover, .article-body .toc a:hover, .search-results-sidebar .sidenav-item:hover, .article-relatives a:hover, .section-tree-with-article div.article-body a:hover:last-child, .greyLink:active, .article-body .toc a:active, .search-results-sidebar .sidenav-item:active, .article-relatives a:active, .section-tree-with-article div.article-body a:active:last-child, .greyLink:focus, .article-body .toc a:focus, .search-results-sidebar .sidenav-item:focus, .article-relatives a:focus, .section-tree-with-article div.article-body a:focus:last-child {
   box-shadow: 0 -12px 0 0 rgba(125, 176, 14, 0.25) inset;
 }
 
-.greyLink:focus, .section-tree-with-article div.article-body a:focus:last-child, .article-relatives a:focus, .search-results-sidebar .sidenav-item:focus, .article-body .toc a:focus {
+.greyLink:focus, .article-body .toc a:focus, .search-results-sidebar .sidenav-item:focus, .article-relatives a:focus, .section-tree-with-article div.article-body a:focus:last-child {
   outline: #7db00e auto 5px;
 }
 
 @media print {
-  .greyLink, .section-tree-with-article div.article-body a:last-child, .article-relatives a, .search-results-sidebar .sidenav-item, .article-body .toc a {
+  .greyLink, .article-body .toc a, .search-results-sidebar .sidenav-item, .article-relatives a, .section-tree-with-article div.article-body a:last-child {
     box-shadow: none;
     color: #000;
     text-decoration: dotted;
   }
 }
 
-.noshadow, .user-nav__link:not(.button), .article-share a, .pagination a, .pagination span {
+.noshadow, .pagination a, .pagination span, .article-share a, .user-nav__link:not(.button) {
   box-shadow: none;
   text-decoration: none;
 }
 
-.noshadow:hover, .user-nav__link:hover:not(.button), .article-share a:hover, .pagination a:hover, .pagination span:hover, .noshadow:active, .user-nav__link:active:not(.button), .article-share a:active, .pagination a:active, .pagination span:active, .noshadow:focus, .user-nav__link:focus:not(.button), .article-share a:focus, .pagination a:focus, .pagination span:focus {
+.noshadow:hover, .pagination a:hover, .pagination span:hover, .article-share a:hover, .user-nav__link:hover:not(.button), .noshadow:active, .pagination a:active, .pagination span:active, .article-share a:active, .user-nav__link:active:not(.button), .noshadow:focus, .pagination a:focus, .pagination span:focus, .article-share a:focus, .user-nav__link:focus:not(.button) {
   box-shadow: none;
 }
 
-.noshadow:focus, .user-nav__link:focus:not(.button), .article-share a:focus, .pagination a:focus, .pagination span:focus {
+.noshadow:focus, .pagination a:focus, .pagination span:focus, .article-share a:focus, .user-nav__link:focus:not(.button) {
   outline: #7db00e auto 5px;
 }
 
@@ -1644,7 +1656,7 @@ ul {
   margin: 0 auto;
 }
 
-@media screen and (min-width: 23.4375rem) {
+@media screen and (min-width: 23.5rem) {
   .hero-inner {
     position: relative;
     top: 50%;
@@ -3777,7 +3789,7 @@ in comments and posts */
 
 @media (min-width: 768px) {
   .collapsible-nav-list li:not([aria-selected='true']),
-  .collapsible-nav-list li:not(.current) {
+.collapsible-nav-list li:not(.current) {
     display: block;
   }
 }
@@ -3796,7 +3808,7 @@ in comments and posts */
 
 @media (min-width: 768px) {
   .collapsible-nav-list li[aria-selected='true'],
-  .collapsible-nav-list li.current {
+.collapsible-nav-list li.current {
     order: 1;
     border-bottom: 4px solid #012939;
   }
@@ -3941,7 +3953,7 @@ in comments and posts */
 
 @media (min-width: 1024px) {
   .my-activities-table th:first-child,
-  .my-activities-table td:first-child {
+.my-activities-table td:first-child {
     width: 500px;
   }
 }
@@ -4040,11 +4052,10 @@ in comments and posts */
 
 @media (min-width: 768px) {
   .requests-table-toolbar .organization-subscribe,
-  .requests-table-toolbar .organization-unsubscribe {
+.requests-table-toolbar .organization-unsubscribe {
     margin-left: 10px;
   }
-  [dir='rtl'] .requests-table-toolbar .organization-subscribe, [dir='rtl']
-  .requests-table-toolbar .organization-unsubscribe {
+  [dir='rtl'] .requests-table-toolbar .organization-subscribe, [dir='rtl'] .requests-table-toolbar .organization-unsubscribe {
     margin: 0 10px 0 0;
   }
 }
@@ -5608,21 +5619,18 @@ html[lang|='zh'] .search-results-description em {
   position: relative !important;
 }
 
-.article-body > ul,
-.article-body > ol {
+.article-body > ul, .article-body > ol {
   margin-bottom: 0.9375rem;
 }
 
 @media screen and (min-width: 20rem) {
-  .article-body > ul,
-  .article-body > ol {
+  .article-body > ul, .article-body > ol {
     margin-bottom: calc(0.9375rem + 0.9375 * ( 100vw - 20rem ) / 65.375);
   }
 }
 
 @media screen and (min-width: 85.375rem) {
-  .article-body > ul,
-  .article-body > ol {
+  .article-body > ul, .article-body > ol {
     margin-bottom: 1.875rem;
   }
 }

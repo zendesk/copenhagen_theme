@@ -23,7 +23,7 @@
 .hero-inner {
   max-width: 46.875rem;
   margin: 0 auto;
-  @media screen and (min-width: 23.4375rem) {
+  @media screen and (min-width: 23.5rem) {
     @include vertical-align;
   }
 }
