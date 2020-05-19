@@ -47,6 +47,14 @@ $sidebar-width: 270px;
   display: table-row-group;
 }
 
+.article-body li > ul {
+  list-style-type: circle;
+
+  > li > ul {
+    list-style-type: square;
+  }
+}
+
 .breadcrumbs li + li::before {
   content: "/";
   margin: 0 4px;
