@@ -92,6 +92,13 @@
 
             <ul class="meta-group">
               <li class="meta-data">{{author.name}}</li>
+              {{#each author.badges}}
+                {{#is category_slug "titles"}}
+                  <li class="meta-data">
+                    <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">{{name}}</span>
+                  </li>
+                {{/is}}
+              {{/each}}
               {{#if editor}}
                 <li class="meta-data">{{date edited_at timeago=true}}</li>
                 <li class="meta-data">{{t 'edited'}}</li>

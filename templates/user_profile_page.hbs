@@ -16,7 +16,23 @@
           {{else}}
             {{user.name}}
           {{/if}}
+          {{#each user.badges}}
+            {{#is category_slug "titles"}}
+              <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">{{name}}</span>
+            {{/is}}
+          {{/each}}
         </h1>
+        <div class="community-badge-container-achievements">
+          {{#each user.badges}}
+            {{#is category_slug "achievements"}}
+          		{{#if icon_url}}
+                <div class="community-badge community-badge-{{category_slug}}">
+                  <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
+          		  </div>
+              {{/if}}
+        		{{/is}}
+          {{/each}}
+        </div>
       </div>
       <div class="options">
         {{#if private_profile}}
