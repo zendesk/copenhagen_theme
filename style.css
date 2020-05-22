@@ -4558,7 +4558,7 @@ a {
 
 .custom-contact-page-button {
   align-items: center;
-  background-color: var(--color-white);
+  background-color: white;
   border: none;
   border-radius: 0;
   display: flex;
@@ -4575,15 +4575,15 @@ a {
 }
 
 .custom-contact-page-button:hover {
-  background-color: var(--color-white);
+  background-color: white;
 }
 
 .custom-contact-page-button:active {
-  background-color: var(--color-white);
+  background-color: white;
 }
 
 .custom-contact-page-button:focus {
-  background-color: var(--color-white);
+  background-color: white;
 }
 
 .custom-contact-card-wrapper {
