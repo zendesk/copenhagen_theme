@@ -355,7 +355,7 @@ a {
     margin-left: 0;
   }
   align-items: center;
-  background-color: var(--color-white);
+  background-color: white;
   border: none;
   border-radius: 0;
   display: flex;
@@ -364,13 +364,13 @@ a {
   width: auto;
   color: var(--color-black);
   &:hover {
-    background-color: var(--color-white);
+    background-color: white;
   }
   &:active {
-    background-color: var(--color-white);
+    background-color: white;
   }
   &:focus {
-    background-color: var(--color-white);
+    background-color: white;
   }
 }
 
