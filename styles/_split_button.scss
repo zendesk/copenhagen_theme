@@ -1,0 +1,31 @@
+/***** Split button *****/
+.split-button {
+  display: flex;
+}
+
+.split-button button {
+  @extend .button;
+  background-color: $brand_color;
+  border: 0;
+  color: $brand_text_color;
+  line-height: normal;
+  outline-color: $brand_color;
+}
+
+.split-button button:not(:only-child) {
+  &:first-child {
+    border-top-right-radius: unset;
+    border-bottom-right-radius: unset;
+    border-right: 1px solid $brand_text_color;
+    padding: 8px 20px;
+  }
+
+  &:last-child {
+    border-top-left-radius: unset;
+    border-bottom-left-radius: unset;
+    width: 26px;
+    min-width: 26px;
+    max-width: 26px;
+    padding: 0;
+  }
+}

@@ -99,6 +99,11 @@
   outline-color: $brand_color;
 }
 
+.user-profile-actions {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
 .profile-header .description {
   @include text-overflow;
   margin: 15px 0;
@@ -539,7 +544,7 @@
   text-align: center;
   color: #ccc;
 
- [dir="rtl"] & {
+  [dir="rtl"] & {
     right: 0;
   }
 
