@@ -439,19 +439,36 @@ ul {
 }
 
 .split-button button:not(:only-child):first-child {
-  border-top-right-radius: unset;
-  border-bottom-right-radius: unset;
-  border-right: 1px solid $brand_text_color;
   padding: 8px 20px;
 }
 
-.split-button button:not(:only-child):last-child {
+[dir="rtl"] .split-button button:not(:only-child):first-child {
+  border-left: 1px solid $brand_text_color;
   border-top-left-radius: unset;
   border-bottom-left-radius: unset;
+}
+
+[dir="ltr"] .split-button button:not(:only-child):first-child {
+  border-right: 1px solid $brand_text_color;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+
+.split-button button:not(:only-child):last-child {
   width: 26px;
   min-width: 26px;
   max-width: 26px;
   padding: 0;
+}
+
+[dir="rtl"] .split-button button:not(:only-child):last-child {
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+
+[dir="ltr"] .split-button button:not(:only-child):last-child {
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
 }
 
 /***** Tables *****/
