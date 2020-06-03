@@ -674,10 +674,9 @@ a {
 /**** CUSTOM CATEGORY PAGE ****/
 
 .custom-card-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19em, 0fr));
+  justify-content: space-between;
 }
 
 .custom-activity {
@@ -693,14 +692,6 @@ a {
 
 .custom-activity .recent-activity-item-parent {
   font-weight: 600;
-}
-
-/* Big screen friendly */
-@media (min-width: 768px) {
-  .custom-card-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
 }
 
 /**** CUSTOM SECTION OVERVIEW PAGE ****/
