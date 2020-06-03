@@ -7,15 +7,16 @@
   font-size: 12px;
   font-weight: $font-weight-semibold;
   margin-right: 2px;
-  padding: 3px 10px;
+  padding: 2px 8px;
   vertical-align: middle;
   white-space: nowrap;
   display: inline-block;
+  margin-left: 10px;
 }
 
 .posts-list .community-badge-titles {
   background-color: #f0f0f0;
-  color: #1f73b7;
+  color: #04444D;
   font-size: 10px;
 }
 
@@ -29,8 +30,8 @@
 }
 
 .community-badge img {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
 }
 
 .profile-info .community-badge img {
