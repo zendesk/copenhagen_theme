@@ -2781,12 +2781,18 @@ ul {
   margin-right: 0.5em;
 }
 
-.community-badge img {
+.community-badge-achievements img {
   width: 22px;
   height: 22px;
 }
 
-.profile-info .community-badge img {
+.community-badge-titles img {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: text-bottom;
+}
+
+.profile-info .community-badge-achievements img {
   width: 40px;
   height: 40px;
 }
