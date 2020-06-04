@@ -225,6 +225,7 @@ a {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
+  width: 100%;
 }
 
 .custom-subsection-section {
@@ -1838,5 +1839,16 @@ main.main-sidebar {
   }
   &:hover {
     text-decoration: none;
+  }
+}
+
+/*********************************************************
+ * Paddings
+ *********************************************************/
+
+@for $i from 0 through 2000 {
+  .ut-padding-vertical-#{$i} {
+    padding-top: #{$i}px;
+    padding-bottom: #{$i}px;
   }
 }
