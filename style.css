@@ -2787,8 +2787,10 @@ ul {
 }
 
 .community-badge-titles img {
-  width: 1.1em;
-  height: 1.1em;
+  width: 1.6em;
+  height: 1.6em;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
   vertical-align: text-bottom;
 }
 
