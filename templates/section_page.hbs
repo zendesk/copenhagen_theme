@@ -24,13 +24,13 @@
       {{#each section.sections}}
       {{#if articles}}
       <section class="custom-subsection-section">
-        <h3 class="section-tree-title">
+        <h3 class="section-tree-title ut-padding-vertical-15">
           {{name}}
         </h3>
 
         <ul class="article-list">
           {{#each articles}}
-          <li class="custom-article-list-item{{#if promoted}} article-promoted{{/if}}">
+          <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
             {{#if promoted}}
             <span data-title="{{t 'promoted'}}" class="icon-star"></span>
             {{/if}}
