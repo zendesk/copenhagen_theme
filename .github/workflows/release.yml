@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: zendesk/checkout@v2
         with:
           persist-credentials: false
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: zendesk/setup-node@v1
         with:
           node-version: 12
       - name: Install dependencies
