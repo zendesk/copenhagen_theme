@@ -17,7 +17,7 @@
         "aria-roles": ["error", {}],
         "aria-valid-attr-value": ["error", {}],
         "aria-valid-attr": ["error", {}],
-        "audio-caption": ["error", {}],
+        "audio-caption": ["warn", {}],
         "button-name": ["error", {}],
         "bypass": ["error", {}],
         "definition-list": ["error", {}],
