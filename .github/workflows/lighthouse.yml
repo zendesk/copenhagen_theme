@@ -5,12 +5,12 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: zendesk/checkout@v2
       - run: "sudo apt-get install zip"
       - run: "zip --exclude=*.git* -r theme.zip ."
-      - uses: actions/setup-ruby@v1
+      - uses: zendesk/setup-ruby@v1
         with:
-          ruby-version: '2.x'
+          ruby-version: '2.6'
       - run: gem install faraday -v 0.16.0
       - run: gem install faraday_middleware -v 0.13.1
       - run: npm install puppeteer@2.1.1
@@ -21,7 +21,7 @@ jobs:
           brand_id: ${{ secrets.brand_id }}
           subdomain: ${{ secrets.subdomain }}
       - name: Audit URLs using Lighthouse
-        uses: treosh/lighthouse-ci-action@v2
+        uses: zendesk/lighthouse-ci-action@v3
         with:
           urls: |
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
