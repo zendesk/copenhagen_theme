@@ -289,7 +289,9 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	}
 
-	var $headers = $(".article-body h2");
+	var $headers = $(
+		".article-body h2, .article-body h3, .article-body h4, .article-body h5, .article-body h6"
+	);
 
 	if ($headers.length > 1) {
 		var $toc = $('<div class="toc"><h2>Contents</h2>');
@@ -300,38 +302,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		$firstUl.appendTo($toc);
 		$toc.prependTo("section.table-of-contents");
 
-		// start with first H1
-		insertHeading($headers[0]);
-	}
-
-	function insertHeading(heading) {
-		var $heading = $(heading);
-		// what level heading are we on?
-		var current_level = headingLevel(heading);
-
-		// if it's an H1, add it to the original list
-		if (current_level === 1) {
-			newLi($heading, $firstUl);
-			$currentUl = $firstUl;
-		}
-
-		// if it's the same as the one before it, add it to the current list
-		else if (current_level === previous_level) {
-			newLi($heading, $currentUl);
-		}
-
-		// if it's one level higher than the one before it... time to make a new nested list
-		else if (current_level > previous_level) {
-			nestUl();
-			newLi($heading, $currentUl);
-		}
-
-		previous_level = current_level;
-
-		var $nextHeading = $heading
-			.nextAll("h1, h2, h3, h4, h5, h6")
-			.first()[0];
-		if ($nextHeading) insertHeading($nextHeading);
+		customInsertHeading($headers);
 	}
 
 	function nestUl() {
@@ -378,6 +349,25 @@ document.addEventListener("DOMContentLoaded", function () {
 						"." +
 						place_in_parent
 				);
+		}
+	}
+
+	function customInsertHeading($headings) {
+		var current_level;
+		for (var i = 0; i < $headings.length; i++) {
+			current_level = headingLevel($headings[i]);
+
+			if (current_level === 1) {
+				newLi($headings[i], $firstUl);
+				$currentUl = $firstUl;
+			} else if (current_level === previous_level) {
+				newLi($headings[i], $currentUl);
+			} else if (current_level > previous_level) {
+				nestUl();
+				newLi($headings[i], $currentUl);
+			}
+
+			previous_level = current_level;
 		}
 	}
 });
