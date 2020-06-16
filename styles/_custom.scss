@@ -1842,6 +1842,33 @@ main.main-sidebar {
   }
 }
 
+.table-of-contents {
+  @include respond-to(medium-screens) {
+    display: none;
+  }
+  @include respond-to(handhelds) {
+    display: none;
+  }
+}
+
+.toc {
+  display: flex;
+  flex-direction: column;
+
+  .first-ul {
+    padding: 0;
+
+    li:not(:first-child) {
+      padding-top: 0.5rem;
+    }
+  }
+
+  ul {
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+  }
+}
+
 /*********************************************************
  * Paddings
  *********************************************************/

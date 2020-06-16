@@ -6076,6 +6076,36 @@ main.main-sidebar {
   text-decoration: none;
 }
 
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .table-of-contents {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .table-of-contents {
+    display: none;
+  }
+}
+
+.toc {
+  display: flex;
+  flex-direction: column;
+}
+
+.toc .first-ul {
+  padding: 0;
+}
+
+.toc .first-ul li:not(:first-child) {
+  padding-top: 0.5rem;
+}
+
+.toc ul {
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+}
+
 /*********************************************************
  * Paddings
  *********************************************************/
