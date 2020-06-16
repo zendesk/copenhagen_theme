@@ -6076,16 +6076,16 @@ main.main-sidebar {
   text-decoration: none;
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1023px) {
-  .table-of-contents {
+.table-of-contents {
+  /*
+  @include respond-to(medium-screens) {
     display: none;
   }
-}
-
-@media only screen and (max-width: 768px) {
-  .table-of-contents {
+  @include respond-to(handhelds) {
     display: none;
   }
+  */
+  display: none;
 }
 
 .toc {

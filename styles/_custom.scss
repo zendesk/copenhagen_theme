@@ -1843,12 +1843,15 @@ main.main-sidebar {
 }
 
 .table-of-contents {
+  /*
   @include respond-to(medium-screens) {
     display: none;
   }
   @include respond-to(handhelds) {
     display: none;
   }
+  */
+  display: none;
 }
 
 .toc {
