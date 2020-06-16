@@ -370,6 +370,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			previous_level = current_level;
 		}
 	}
+	/* Table of contents END */
 });
 
 /**** CUSTOM CHAT ****/
