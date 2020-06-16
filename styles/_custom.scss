@@ -1846,6 +1846,9 @@ main.main-sidebar {
   @include respond-to(medium-screens) {
     display: none;
   }
+  @include respond-to(handhelds) {
+    display: none;
+  }
 }
 
 .toc {

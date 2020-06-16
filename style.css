@@ -6082,6 +6082,12 @@ main.main-sidebar {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .table-of-contents {
+    display: none;
+  }
+}
+
 .toc {
   display: flex;
   flex-direction: column;
