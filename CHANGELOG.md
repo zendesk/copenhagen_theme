@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/zendesk/copenhagen_theme/compare/v2.2.4...v2.3.0) (2020-06-24)
+
+
+### Features
+
+* **user-profile:** Add {{actions}} helper to the user profile page. This includes support for split buttons ([f2aa052](https://github.com/zendesk/copenhagen_theme/commit/f2aa052d56477da956f1257e70ef59aa7eccf68e))
+
 ## [2.2.4](https://github.com/zendesk/copenhagen_theme/compare/v2.2.3...v2.2.4) (2020-04-02)
 
 
