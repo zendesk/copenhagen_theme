@@ -89,14 +89,9 @@
   }
 }
 
-.edit-profile-button a {
-  @extend .button;
-  background-color: $brand_color;
-  border: 0;
-  color: $brand_text_color;
-  line-height: normal;
-  padding: 8px 20px;
-  outline-color: $brand_color;
+.user-profile-actions {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
 .profile-header .description {
@@ -539,7 +534,7 @@
   text-align: center;
   color: #ccc;
 
- [dir="rtl"] & {
+  [dir="rtl"] & {
     right: 0;
   }
 
