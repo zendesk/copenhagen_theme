@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var DOWN = 40;
   var TAB = 9;
 
-  function closest (element, selector) {
+  function closest(element, selector) {
     if (Element.prototype.closest) {
       return element.closest(selector);
     }
@@ -231,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Dropdowns
-  
+
   function Dropdown(toggle, menu) {
     this.toggle = toggle;
     this.menu = menu;
@@ -397,4 +397,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // Hide Powered by ZenDesk element
+  var poweredByElem = document.querySelector('.powered-by-zendesk');
+  console.log('elem', poweredByElem);
+  if (poweredByElem) {
+     poweredByElem.parentNode.removeChild(poweredByElem);
+  }
 });

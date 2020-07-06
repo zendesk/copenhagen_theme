@@ -1,7 +1,7 @@
 {
-  "name": "Copenhagen",
-  "author": "Zendesk",
-  "version": "2.3.0",
+  "name": "Snapmaker-Copenhagen",
+  "author": "Snapmaker",
+  "version": "2.3.1",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#0072EF"
+          "value": "#28A7E1"
         },
         {
           "identifier": "brand_text_color",
