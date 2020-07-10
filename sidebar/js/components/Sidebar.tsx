@@ -14,6 +14,10 @@ export interface SidebarData {
 	categories: Category[];
 }
 
+export interface UserData {
+	role: string;
+}
+
 export interface Category {
 	id: number;
 	url: string;
@@ -63,9 +67,11 @@ export enum ThemeTemplate {
 export default function Sidebar() {
 	const [openId, setOpenId] = useState(0);
 	const [data, setData] = useState<SidebarData>();
+	const [currentUserData, setCurrentUserData] = useState<UserData>();
 	const [openSectionId, setOpenSectionId] = useState<number>();
 	const url =
 		"/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
+	const currentUserUrl = "/api/v2/users/me.json";
 
 	function expand(id: number) {
 		setOpenId((prevState) => {
@@ -87,6 +93,23 @@ export default function Sidebar() {
 			})
 			.then((responseJson) => {
 				setData(responseJson);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}, []);
+
+	useEffect(() => {
+		fetch(currentUserUrl)
+			.then((response) => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					throw new Error(response.statusText);
+				}
+			})
+			.then((responseJson) => {
+				setCurrentUserData(responseJson);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -196,18 +219,20 @@ export default function Sidebar() {
 						Forums
 					</a>
 				</li>
-				<li className="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
-					<a
-						href="https://support.configura.com/hc/en-us/articles/360050652674"
-						className="custom-sidebar-item-title"
-						target="_blank"
-					>
-						<i className="material-icons custom-icon-margin-right blue-icon">
-							bug_report
-						</i>
-						Known Issues
-					</a>
-				</li>
+				{currentUserData?.role !== "end-user" && (
+					<li className="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
+						<a
+							href="https://support.configura.com/hc/en-us/articles/360050652674"
+							className="custom-sidebar-item-title"
+							target="_blank"
+						>
+							<i className="material-icons custom-icon-margin-right blue-icon">
+								bug_report
+							</i>
+							Known Issues
+						</a>
+					</li>
+				)}
 
 				{categories &&
 					categories
