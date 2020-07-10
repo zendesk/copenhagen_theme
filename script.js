@@ -371,6 +371,13 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 	/* Table of contents END */
+
+	if (
+		HelpCenter.user.role === "anonymous" ||
+		HelpCenter.user.role === "end_user"
+	) {
+		$(".agent-manager-only").hide();
+	}
 });
 
 /**** CUSTOM CHAT ****/
