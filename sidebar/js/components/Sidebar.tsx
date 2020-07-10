@@ -198,7 +198,7 @@ export default function Sidebar() {
 				</li>
 				<li className="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
 					<a
-						href="https://configura.zendesk.com/knowledge/articles/360050652674/en-us?brand_id=360002007553"
+						href="https://support.configura.com/hc/en-us/articles/360050652674"
 						className="custom-sidebar-item-title"
 						target="_blank"
 					>
