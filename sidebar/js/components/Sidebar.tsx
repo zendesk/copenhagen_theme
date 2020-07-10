@@ -109,6 +109,7 @@ export default function Sidebar() {
 				}
 			})
 			.then((responseJson) => {
+				console.log({ responseJson });
 				setCurrentUserData(responseJson);
 			})
 			.catch((error) => {
