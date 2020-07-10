@@ -15,7 +15,9 @@ export interface SidebarData {
 }
 
 export interface UserData {
-	role: string;
+	user: {
+		role: string;
+	};
 }
 
 export interface Category {
@@ -109,7 +111,6 @@ export default function Sidebar() {
 				}
 			})
 			.then((responseJson) => {
-				console.log({ responseJson });
 				setCurrentUserData(responseJson);
 			})
 			.catch((error) => {
@@ -220,7 +221,7 @@ export default function Sidebar() {
 						Forums
 					</a>
 				</li>
-				{currentUserData?.role !== "end-user" && (
+				{currentUserData && currentUserData.user.role !== "end-user" && (
 					<li className="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
 						<a
 							href="https://support.configura.com/hc/en-us/articles/360050652674"
