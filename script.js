@@ -3,6 +3,8 @@
 // Refer to sidebar folder
 /**** END SIDEBAR ****/
 
+var KNOWN_ISSUES_ARTICLE_ID = 360050652674;
+
 document.addEventListener("DOMContentLoaded", function () {
 	function closest(element, selector) {
 		if (Element.prototype.closest) {
@@ -372,12 +374,18 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 	/* Table of contents END */
 
-	if (
-		HelpCenter.user.role === "anonymous" ||
-		HelpCenter.user.role === "end_user"
-	) {
-		$(".agent-manager-only").hide();
-	}
+	$.get(
+		"/api/v2/help_center/" +
+			getLocale() +
+			"/articles/" +
+			KNOWN_ISSUES_ARTICLE_ID +
+			".json"
+	).done(function (data) {
+		if (!data.article.draft) {
+			$(".custom-known-issues-link").show();
+			$(".known-issues").show();
+		}
+	});
 });
 
 /**** CUSTOM CHAT ****/

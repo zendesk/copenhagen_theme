@@ -14,12 +14,6 @@ export interface SidebarData {
 	categories: Category[];
 }
 
-export interface UserData {
-	user: {
-		role: string;
-	};
-}
-
 export interface Category {
 	id: number;
 	url: string;
@@ -66,14 +60,19 @@ export enum ThemeTemplate {
 	SectionPagesChatPage = "section_pages/chat_page",
 }
 
+const KNOWN_ISSUES_ARTICLE_ID = 360050652674;
+
+function getArticleUrl(articleId: number) {
+	return `/api/v2/help_center/en-us/articles/${articleId}.json`;
+}
+
 export default function Sidebar() {
 	const [openId, setOpenId] = useState(0);
 	const [data, setData] = useState<SidebarData>();
-	const [currentUserData, setCurrentUserData] = useState<UserData>();
+	const [isDraft, setIsDraft] = useState<boolean>(false);
 	const [openSectionId, setOpenSectionId] = useState<number>();
 	const url =
 		"/api/v2/help_center/en-us/sections.json?include=categories&per_page=100";
-	const currentUserUrl = "/api/v2/users/me.json";
 
 	function expand(id: number) {
 		setOpenId((prevState) => {
@@ -102,7 +101,7 @@ export default function Sidebar() {
 	}, []);
 
 	useEffect(() => {
-		fetch(currentUserUrl)
+		fetch(getArticleUrl(KNOWN_ISSUES_ARTICLE_ID))
 			.then((response) => {
 				if (response.ok) {
 					return response.json();
@@ -111,7 +110,7 @@ export default function Sidebar() {
 				}
 			})
 			.then((responseJson) => {
-				setCurrentUserData(responseJson);
+				setIsDraft(responseJson.article.draft);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -221,7 +220,7 @@ export default function Sidebar() {
 						Forums
 					</a>
 				</li>
-				{currentUserData && currentUserData.user.role !== "end-user" && (
+				{!isDraft && (
 					<li className="sidebar-item sidebar-home open custom-margin-bottom material-icons-big">
 						<a
 							href="https://support.configura.com/hc/en-us/articles/360050652674"

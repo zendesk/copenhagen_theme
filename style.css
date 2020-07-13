@@ -5157,6 +5157,7 @@ a.custom-known-issues-link {
   border: 2px solid #ffffff;
   /* default supported fallback style */
   border-radius: 0;
+  display: none;
 }
 
 .custom-signin-link a [class="login"] {
@@ -6119,6 +6120,10 @@ main.main-sidebar {
 .toc ul {
   padding-left: 1rem;
   padding-top: 0.5rem;
+}
+
+.known-issues {
+  display: none;
 }
 
 /*********************************************************
