@@ -5111,11 +5111,11 @@ sup > .ask-community-sup-icon {
   }
 }
 
-.custom-links, a.custom-myconfigura-link, .custom-signin-link a [class="login"] {
+.custom-links, a.custom-myconfigura-link, a.custom-known-issues-link, .custom-signin-link a [class="login"] {
   color: white;
 }
 
-.custom-links:active, a.custom-myconfigura-link:active, .custom-signin-link a [class="login"]:active, .custom-links:focus, a.custom-myconfigura-link:focus, .custom-signin-link a [class="login"]:focus, .custom-links:hover, a.custom-myconfigura-link:hover, .custom-signin-link a [class="login"]:hover, .custom-links:visited, a.custom-myconfigura-link:visited, .custom-signin-link a [class="login"]:visited {
+.custom-links:active, a.custom-myconfigura-link:active, a.custom-known-issues-link:active, .custom-signin-link a [class="login"]:active, .custom-links:focus, a.custom-myconfigura-link:focus, a.custom-known-issues-link:focus, .custom-signin-link a [class="login"]:focus, .custom-links:hover, a.custom-myconfigura-link:hover, a.custom-known-issues-link:hover, .custom-signin-link a [class="login"]:hover, .custom-links:visited, a.custom-myconfigura-link:visited, a.custom-known-issues-link:visited, .custom-signin-link a [class="login"]:visited {
   color: white;
 }
 
@@ -5147,6 +5147,17 @@ a.custom-download-extensions-btn, a.custom-download-extensions-btn:active, a.cus
   background-color: var(--color-white);
   background-color: #ffffff;
   /* default supported fallback style */
+}
+
+a.custom-known-issues-link {
+  line-height: 1.5;
+  padding: 10px;
+  margin: 0 20px 0 0;
+  border: 2px solid var(--color-white);
+  border: 2px solid #ffffff;
+  /* default supported fallback style */
+  border-radius: 0;
+  display: none;
 }
 
 .custom-signin-link a [class="login"] {
@@ -5633,6 +5644,11 @@ main.main-sidebar {
   color: #e66359;
 }
 
+.white-icon {
+  color: var(--color-white);
+  color: #ffffff;
+}
+
 /**** END CUSTOM STYLE ****/
 /*** NOTIFICATION BANNER ***/
 /*** Common, default styles for the notification box ***/
@@ -6104,6 +6120,10 @@ main.main-sidebar {
 .toc ul {
   padding-left: 1rem;
   padding-top: 0.5rem;
+}
+
+.known-issues {
+  display: none;
 }
 
 /*********************************************************

@@ -909,6 +909,17 @@ a.custom-download-extensions-btn {
   }
 }
 
+a.custom-known-issues-link {
+  @extend .custom-links;
+  line-height: 1.5;
+  padding: 10px;
+  margin: 0 20px 0 0;
+  border: 2px solid var(--color-white);
+  border: 2px solid #ffffff; /* default supported fallback style */
+  border-radius: 0;
+  display: none;
+}
+
 .custom-signin-link {
   a [class="login"] {
     @extend .custom-links;
@@ -1384,6 +1395,11 @@ main.main-sidebar {
 .red-icon {
   color: var(--color-red);
   color: #e66359;
+}
+
+.white-icon {
+  color: var(--color-white);
+  color: #ffffff;
 }
 
 /**** END CUSTOM STYLE ****/
@@ -1870,6 +1886,10 @@ main.main-sidebar {
     padding-left: 1rem;
     padding-top: 0.5rem;
   }
+}
+
+.known-issues {
+  display: none;
 }
 
 /*********************************************************
