@@ -1,25 +1,36 @@
+// Common
 @import "normalize";
+
+$fa-font-path: "assets";
+@import "../node_modules/font-awesome/scss/font-awesome";
+
 @import "variables";
 @import "mixins";
 @import "base";
+
+
+// Components
 @import "buttons";
 @import "split_button";
 @import "tables";
 @import "forms";
-@import "header";
-@import "user";
-@import "footer";
+
+@import "blocks";
+@import "collapsible-nav";
+@import "collapsible-sidebar";
+@import "metadata";
+@import "sub-nav";
+
+// Filters
 @import "breadcrumbs";
 @import "search";
-@import "hero";
+
+// Uncategorized
 @import "page_header";
-@import "sub-nav";
-@import "blocks";
-@import "home-page";
 @import "recent-activity";
 @import "category";
 @import "section";
-@import "article";
+
 @import "attachments";
 @import "share";
 @import "comments";
@@ -29,13 +40,24 @@
 @import "striped_list";
 @import "status-label";
 @import "post";
-@import "collapsible-nav";
-@import "collapsible-sidebar";
 @import "my-activities";
 @import "request";
 @import "pagination";
-@import "metadata";
 @import "user-profiles";
 @import "search_results";
 @import "notifications";
 @import "dropdowns";
+
+// Header
+@import "user";
+@import "header";
+
+// Footer
+@import "footer";
+
+// Home
+@import "hero";
+@import "home-page";
+
+// Article
+@import "article";

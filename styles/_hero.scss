@@ -1,16 +1,26 @@
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
+  background-image: url($assets-pic_nav_bg_1920x456-png);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 456px;
+  margin-top: -$header-height;
   padding: 0 20px;
   text-align: center;
   width: 100%;
 
+  &-title {
+    color: $white_text_color;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 auto;
+    padding-top: 173px;
+  }
+
   &-inner {
-    @include vertical-align;
+    position: relative;
     max-width: 610px;
     margin: 0 auto;
+    margin-top: 42px;
   }
 }

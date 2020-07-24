@@ -1,5 +1,5 @@
 /***** Header *****/
-$header-height: 71px;
+$header-height: 78px;
 
 .header {
   @include max-width-container;
@@ -10,30 +10,20 @@ $header-height: 71px;
   justify-content: space-between;
 }
 
-.logo img {
-  max-height: 37px;
+.logo .logo-image {
+  background-image: url($assets-pic_nav_logo_black_236x34-png);
+  display: inline-block;
+  width: 236px;
+  height: 34px;
 }
 
 .user-nav {
-  @include tablet { position: relative; }
+  @include tablet {
+    position: relative;
+  }
   display: inline-block;
   position: absolute;
   white-space: nowrap;
-
-  &[aria-expanded="true"] {
-    background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15), 0 4px 10px 0 rgba(0, 0, 0, .1);
-    border: solid 1px #ddd;
-    right: 0;
-    left: 0;
-    top: $header-height;
-    z-index: 1;
-
-    > a {
-      display: block;
-      margin: 20px;
-    }
-  }
 }
 
 .nav-wrapper {
@@ -45,11 +35,13 @@ $header-height: 71px;
     border: 0;
     color: $link_color;
     display: none;
-    font-size: 14px;
+    font-size: $font-size-bigger;
     padding: 0 20px 0 0;
     width: auto;
 
-    [dir="rtl"] & { padding: 0 0 0 20px;}
+    [dir="rtl"] & {
+      padding: 0 0 0 20px;
+    }
 
     &:hover,
     &:focus,
@@ -59,7 +51,9 @@ $header-height: 71px;
       text-decoration: underline;
     }
 
-    &.sign-in { display: inline-block; }
+    &.sign-in {
+      display: inline-block;
+    }
   }
 
   .hide-on-mobile {
@@ -69,7 +63,9 @@ $header-height: 71px;
   }
 
   .menu-button {
-    @include tablet { display: none; }
+    @include tablet {
+      display: none;
+    }
     background: none;
     border: 0;
     color: $link_color;
@@ -129,9 +125,9 @@ $header-height: 71px;
     z-index: 999;
 
 
-  [dir="rtl"] & {
-    left: initial;
-    right: auto;
-  }
+    [dir="rtl"] & {
+      left: initial;
+      right: auto;
+    }
   }
 }

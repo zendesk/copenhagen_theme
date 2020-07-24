@@ -1,15 +1,9 @@
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-  */
   @include desktop {
     flex: 1 0 66%;
-    max-width: 66%;
     min-width: 640px;
-    padding: 0 30px;
+    margin-left: 60px;
   }
 
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
@@ -34,22 +28,18 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     margin-top: 20px;
-  }
-
-  &-avatar {
-    margin-right: 10px;
-  }
-
-  &-author {
-    margin-bottom: 10px;
   }
 
   &-title {
     @include tablet {
       flex-basis: 100%; /* Take entire row */
     }
+
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
 
     .icon-lock {
       position: relative;
@@ -58,59 +48,46 @@
     }
   }
 
-  [role="button"] {
-    @include tablet { width: auto; }
-    flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
-    width: 100%;
+  &-author {
+    margin-bottom: 10px;
+  }
+
+  &-avatar {
+    margin-right: 10px;
+  }
+
+  &-meta {
+    display: inline-block;
+    vertical-align: middle;
+
+    a {
+      color: $text_color;
+      font-weight: bold;
+    }
   }
 
   &-info {
     max-width: 100%;
   }
 
-  &-meta {
-    display: inline-block;
-    vertical-align: middle;
-  }
-
   &-body {
     @include content-body;
-    > p:last-child { margin-bottom: 0; }
+
+    > p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &-content {
     line-height: 1.6;
-    margin: 40px 0;
+    margin: 20px 0;
     word-wrap: break-word;
-  }
-
-  &-footer {
-    align-items: center;
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 20px;
-  }
-
-  &-comment-count {
-    color: $secondary-text-color;
-    font-weight: $font-weight-light;
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &-icon {
-      vertical-align: middle;
-      color: $brand_color;
-      width: 18px;
-      height: 18px;
-    }
   }
 
   &-sidebar {
     @include desktop {
       border: 0;
-      flex: 0 0 17%;
+      flex: 0 0 320px;
       height: auto;
     }
 
@@ -120,29 +97,6 @@
     margin-bottom: 20px;
     padding: 0;
   }
-
-  &-relatives {
-    @include tablet {
-      flex-direction: row;
-    }
-
-    border-top: 1px solid $border-color;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 0;
-
-    > * {
-      flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
-      min-width: 50%;
-      overflow-wrap: break-word;
-      margin-right: 0;
-
-      &:last-child { padding: 0; }
-
-      @include tablet { padding-right: 20px; }
-    }
-  }
-
 
   &-votes {
     border-top: 1px solid $border-color;
@@ -156,13 +110,10 @@
     width: auto;
   }
 
-  &-more-questions {
-    margin: 10px 0 20px;
-    text-align: center;
-  }
-
   &-return-to-top {
-    @include desktop { display: none; }
+    @include desktop {
+      display: none;
+    }
 
     border-top: 1px solid $border-color;
 
@@ -184,6 +135,7 @@
 
   &-subscribe button {
     @extend .button;
+
     &[data-selected="true"] {
       @extend .button-primary;
     }
@@ -192,35 +144,29 @@
 
 .sidenav {
   &-title {
-    font-size: $font-size-base;
     position: relative;
+    margin-bottom: 15px;
+    color: $text_color;
+    font-size: 24px;
     font-weight: 600;
   }
 
   &-item {
-    border-radius: 4px;
-    color: $text_color;
     display: block;
-    font-weight: $font-weight-light;
-    margin-bottom: 10px;
-    padding: 10px;
+    margin-bottom: 20px;
+    color: $text_color;
 
     &.current-article,
     &:hover {
-      background-color: $brand_color;
-      color: $brand_text_color;
+      color: $brand_color;
       text-decoration: none;
     }
   }
-}
-
-.recent-articles,
-.related-articles {
-  &-title {
-    @extend .comment-heading
-  }
-
-  li {
-    margin-bottom: 15px;
+  &-last-item {
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid $brand_color;
+    border-radius: 4px;
+    color: $brand_color;
   }
 }

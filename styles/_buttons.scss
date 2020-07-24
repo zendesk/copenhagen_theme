@@ -1,6 +1,8 @@
 /***** Buttons *****/
 .button {
-  @include tablet { width: auto; }
+  @include tablet {
+    width: auto;
+  }
 
   background-color: transparent;
   border: 1px solid $button-color;
@@ -8,8 +10,8 @@
   color: $button-color;
   cursor: pointer;
   display: inline-block;
-  font-size: 12px;
-  line-height: 2.34; //Taken from Zendesk garden bedrock
+  font-size: $font-size-base;
+  line-height: 2.34; // Taken from Zendesk garden bedrock
   margin: 0;
   padding: 0 20px;
   text-align: center;
@@ -40,6 +42,19 @@
   &[data-disabled] {
     cursor: default;
   }
+
+  &.button-secondary {
+    background-color: transparent;
+    color: $button-color;
+    border: 1px solid $button-color;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $hover-button-color;
+      border: 1px solid $hover-button-color;
+    }
+  }
 }
 
 .button-large, input[type="submit"] {
@@ -69,18 +84,19 @@
   &[disabled] {
     background-color: #ddd;
   }
-}
 
-.button-secondary {
-  color: $secondary-text-color;
-  border: 1px solid $border-color;
-  background-color: transparent;
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: $text_color;
+  &.button-secondary {
+    color: $secondary-text-color;
     border: 1px solid $border-color;
-    background-color: $primary-shade;
+    background-color: transparent;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $text_color;
+      border: 1px solid $border-color;
+      background-color: $primary-shade;
+    }
   }
 }
+

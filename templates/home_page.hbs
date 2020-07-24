@@ -1,83 +1,124 @@
+<style>
+    .logo .logo-image {
+        background-image: url({{asset 'pic_nav_logo_white_236x34.png' }});
+    }
+
+    .nav-wrapper a {
+        color: #fff;
+    }
+
+    .nav-wrapper a:hover {
+        color: #fff;
+    }
+
+    .user-info button {
+        color: #fff;
+    }
+
+    .user-info button:hover, .user-info button:focus {
+        color: #fff;
+    }
+</style>
+
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
-  <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
-  </div>
+    <div class="hero-title">
+        <span>How can we help you?</span>
+    </div>
+    <div class="hero-inner">
+        <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+            <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor" />
+            <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5" />
+        </svg>
+        {{search submit=false instant=settings.instant_search class='search search-full'}}
+    </div>
 </section>
 
-<div class="container">
-  <section class="section knowledge-base">
-    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
-    <section class="categories blocks">
-      <ul class="blocks-list">
-        {{#each categories}}
-          {{#if ../has_multiple_categories}}
-            <li class="blocks-item">
-              <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title">{{name}}</span>
-                <span class="blocks-item-description">{{excerpt description}}</span>
-              </a>
-            </li>
-          {{else}}
-            {{#each sections}}
-              <li class="blocks-item">
-                <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
-                </a>
-              </li>
+<section class="home-section home-section-default">
+    <div class="container">
+        <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
+        <ul class="home-categories">
+            {{#each categories}}
+                <li class="home-category">
+                    <a href="{{url}}">
+                        {{#is id 360000327114 }} {{! Snapmaker Original }}
+                            <img src="{{asset 'pic_category_original_270x220.png' }}" alt="">
+                        {{/is}}
+                        {{#is id 360001781913 }} {{! Snapmaker 2.0 }}
+                            <img src="{{asset 'pic_category_2.0_270x220.png' }}" alt="">
+                        {{/is}}
+                        {{#is id 360003536313 }} {{! Snapmaker Academy }}
+                            <img src="{{asset 'pic_category_academy_270x220.png' }}" alt="">
+                        {{/is}}
+                        {{#is id 360004337173 }} {{! Snapmaker Services }}
+                            <img src="{{asset 'pic_category_service_270x220.png' }}" alt="">
+                        {{/is}}
+                        <span class="home-category-title">{{name}}</span>
+                        <span class="home-category-description">{{excerpt description}}</span>
+                    </a>
+                </li>
             {{/each}}
-          {{/if}}
-        {{/each}}
-      </ul>
-      {{pagination}}
-    </section>
-
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h2>{{t 'promoted_articles'}}</h2>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
-
-                  {{#if internal}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                    </svg>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
         </ul>
-      </section>
-    {{/if}}
-  </section>
+    </div>
+</section>
 
-  {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
+<section class="home-section home-section-default">
+    <div class="container home-get-started">
+        <h2>New to Snapmaker? Get started here.</h2>
+        <div class="home-get-started-blocks">
+            <div class="home-get-started-block">
+                <img src="{{asset 'ic_youtube_60x60.png' }}" alt="" />
+                <h3>Youtube Channel</h3>
+                <p>See what’s new in the video tutorials, third-party reviews, and many more.</p>
+                <a href="https://www.youtube.com/channel/UCtXHu_nugZF3uxgJJjZfcoA" target="_blank">Watch now</a>
+            </div>
+            <div class="home-get-started-block">
+                <img src="{{asset 'ic_discussion_60x60.png' }}" alt="" />
+                <h3>Popular Discussions</h3>
+                <p>View the top and latest topics, or search for help on our forum.</p>
+                <a href="https://forum.snapmaker.com" target="_blank">Visit forum</a>
+            </div>
+        </div>
+    </div>
+</section>
 
-      <div class="community-image"></div>
+{{#if promoted_articles}}
+    <section class="home-section home-section-default">
+        <div class="container home-promoted-articles">
+            <h2>{{t 'promoted_articles'}}</h2>
+            <ul class="article-list">
+                {{#each promoted_articles}}
+                    <li class="article-list-item">
+                        <a href="{{url}}">
+                            {{title}}
+
+                            {{#if internal}}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                                    <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1" />
+                                    <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5" />
+                                </svg>
+                            {{/if}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
     </section>
-  {{/if}}
+{{/if}}
 
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section>
-</div>
+<section class="home-section home-section-grey">
+    <div class="container home-need-help">
+        <h2 class="home-need-help-title">Still need help?</h2>
+        <p class="home-need-help-desc">Get solutions from Snapmaker Team by sending an inquiry.</p>
+        <div class="home-need-help-buttons">
+            <a class="button button-primary" href="javascript:void(0)" onclick="zE(function() { zE.activate() });" target="_blank">
+                {{t 'submit_a_request' }}
+            </a>
+            <a class="button button-secondary" href="https://forum.snapmaker.com" target="_blank">
+                Visit the forum
+            </a>
+        </div>
+    </div>
+</section>

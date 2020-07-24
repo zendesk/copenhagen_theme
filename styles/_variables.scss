@@ -1,15 +1,23 @@
 // Variables
 
 // Colors
-$brand_color: #0072ef !default;
+$brand_color: #28a7e1 !default;
+$light_brand_color: #46c0fa;
+
 $brand_text_color: #fff !default; //Color for text with an accent color background
-$text_color: #333 !default;
-$link_color: #0072ef !default;
+$text_color: #272829 !default;
+$link_color: #272829 !default;
+
 $background_color: #fff !default;
+$grey_background_color: #f7f8f9;
+
+$white_text_color: #fff;
 
 $visited-link-color: zass-darken($link_color, 20%);
-$hover-button-color: zass-darken($brand_color, 20%);
-$secondary-text-color: zass-lighten($text_color, 20%);
+$secondary-text-color: #676869;
+
+$descriptive-text-color: #979899;
+$helper-text-color: #c8c8c8;
 
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
@@ -20,9 +28,10 @@ $font-size-navigation: 14px;
 $font-size-small: 13px;
 $font-size-smaller: 11px;
 
-$border-color: #ddd;
+$border-color: #e7e8e9;
 
 $button-color: $brand_color;
+$hover-button-color: $light_brand_color;
 
 $input-font-size: 14px;
 $field-text-color: #666;
@@ -31,7 +40,7 @@ $field-text-focus-color: #555;
 // Breakpoints variables
 $tablet-width: 768px;
 $desktop-width: 1024px;
-$max-width-container: 1160px;
+$max-width-container: 1160px; // 1152?
 
 // Fonts
 $heading_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;

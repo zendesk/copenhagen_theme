@@ -1,20 +1,147 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $border-color;
-  margin-top: 60px;
-  padding: 30px 0;
+  //border-top: 1px solid $border-color;
+  margin-top: -15px;
+  padding-top: 60px;
+  background: $grey_background_color;
 
-  a { color: $secondary-text-color; }
+  a {
+    color: $secondary-text-color;
+  }
 
   &-inner {
     @include max-width-container;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
   }
 
-  &-language-selector {
-    color: $secondary-text-color;
-    display: inline-block;
-    font-weight: $font-weight-light;
+  &-column-1 {
+    flex: 2 0 20%;
   }
+
+  &-column-2,
+  &-column-3,
+  &-column-4 {
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      line-height: 2;
+      font-weight: bold;
+      color: $helper-text-color;
+    }
+
+    a {
+      font-size: $font-size-navigation;
+      text-decoration: none;
+      color: $text_color;
+
+      &:hover {
+        color: $brand_color;
+      }
+    }
+
+    h2 a {
+      font-size: 1.25rem;
+      line-height: 2;
+      font-weight: bold;
+      color: $helper-text-color;
+    }
+  }
+
+  &-column-2,
+  &-column-3 {
+    flex: 1 0 20%;
+  }
+
+  &-column-4 {
+    position: relative;
+    flex: 1 0 30%;
+
+    .contact-us-block {
+      padding-left: 0.125rem;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    i {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      line-height: 38px;
+      font-size: 20px;
+      text-align: center;
+      vertical-align: middle;
+      color: #fff;
+      border-radius: 50%;
+      background-color: #33383b;
+    }
+
+    i.fa-envelope, i.fa-phone {
+      position: absolute;
+      top: 4px;
+    }
+
+    .contact-item {
+      margin-left: 50px;
+      font-size: $font-size-small;
+
+      a {
+        font-size: $font-size-small;
+      }
+    }
+
+    .contact-us-social {
+      padding-left: 0.125rem;
+      margin: 2rem 0 1rem;
+    }
+
+    .contact-us-social-item {
+      margin-right: 4px;
+
+      i {
+        border-radius: 10%;
+      }
+    }
+  }
+
+  .language-selector {
+    height: 38px;
+    margin-left: 60px;
+    vertical-align: middle;
+    border-radius: 6px;
+    background-color: #33383b;
+
+    .dropdown-toggle {
+      height: 100%;
+      color: #fff;
+      padding: 6px 10px;
+    }
+
+    .dropdown-menu {
+      background-color: #33383b;
+
+      [role="menuitem"] {
+        color: #fff;
+      }
+      [role="menuitem"]:hover,
+      [role="menuitem"]:focus {
+        background: #73383b;
+      }
+    }
+  }
+
+  &-copyright {
+    margin-top: 60px;
+    text-align: center;
+    color: $descriptive-text-color;
+  }
+}
+
+.mb-3 {
+  margin-bottom: 3rem;
 }

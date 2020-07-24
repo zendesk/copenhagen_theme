@@ -8,20 +8,19 @@
   padding: 0;
 
   li {
-    color: $secondary-text-color;
     display: inline;
-    font-weight: $font-weight-light;
-    font-size: $font-size-small;
+    font-size: $font-size-base;
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
 
     + li::before {
-      content: ">";
+      color: $descriptive-text-color;
+      content: "/";
       margin: 0 4px;
     }
-    a:visited {
-      color: $link_color;
+    a {
+      color: $descriptive-text-color;
     }
   }
 }

@@ -5,7 +5,7 @@
     padding: 0;
   }
   flex: 1;
-  max-height: 45px;
+  max-height: 60px;
   overflow: hidden;
   padding: 10px 0;
   position: relative;
@@ -17,7 +17,7 @@
   &-toggle {
     @include desktop { display: none; }
     position: absolute;
-    top: calc(45px / 2);
+    top: calc(60px / 2);
     transform: translateY(-50%);
     right: 0;
     padding: 0;
@@ -35,13 +35,13 @@
     &-icon {
       display: none;
     }
-  
+
     &[aria-expanded="false"] {
       .chevron-icon {
         display: inline-block;
       }
     }
-    
+
     &[aria-expanded="true"] {
       .x-icon {
         display: inline-block;

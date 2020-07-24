@@ -1,25 +1,94 @@
 <footer class="footer">
-  <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+    <div class="footer-inner">
+        <!--{{#link 'help_center'}}{{help_center.name}}{{/link}}-->
 
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{current_locale.name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
-          </span>
+        <div class="footer-column-1">
+            {{#link 'help_center'}}
+                <img src="{{asset 'ic_footer_logo.svg'}}" alt="Snapmaker" width="180px" />
+            {{/link}}
         </div>
-      {{/if}}
+
+        <div class="footer-column-2">
+            <div class="mb-3">
+                <h2><a href="https://snapmaker.com/products">Products</a></h2>
+                <ul>
+                    <li><a href="https://snapmaker.com/product">Snapmaker Original</a></li>
+                    <li><a href="https://snapmaker.com/platform">Snapmaker 2.0</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-column-3">
+            <div>
+                <h2>Learn</h2>
+                <ul>
+                    <li><a href="https://snapmaker.com/community">Community</a></li>
+                    <li><a href="https://forum.snapmaker.com/">Forum</a></li>
+                    <li><a href="https://shop.snapmaker.com/blogs/blog">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-column-4">
+            <div>
+                <h2>Contact Us</h2>
+                <div class="contact-us-block">
+                    <i class="fa fa-envelope"></i>
+                    <p class="contact-item">
+                        Pre-sales and Logistics: <a href="mailto:info@snapmaker.com">info@snapmaker.com</a>
+                    </p>
+                    <p class="contact-item">
+                        Technical Support: <a href="mailto:support@snapmaker.com">support@snapmaker.com</a>
+                    </p>
+                    <p class="contact-item">
+                        Reselling: <a href="mailto:sales@snapmaker.com">sales@snapmaker.com</a>
+                    </p>
+                </div>
+                <div class="contact-us-block">
+                    <i class="fa fa-phone"></i>
+                    <p class="contact-item">
+                        Tel: +86(0)755 26926117
+                    </p>
+                    <p class="contact-item">
+                        Office Hours: Monday to Friday, 9:30-18:30 (GMT+8:00)
+                    </p>
+                </div>
+                <div class="contact-us-social">
+                    <a class="contact-us-social-item" href="https://www.facebook.com/snapmaker/" target="_blank">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="contact-us-social-item" href="https://twitter.com/snapmaker" target="_blank">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="contact-us-social-item" href="https://www.youtube.com/channel/UCtXHu_nugZF3uxgJJjZfcoA" target="_blank">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                    <a class="contact-us-social-item" href="https://www.instagram.com/snapmakerinc/" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    {{#if alternative_locales}}
+                        <div class="dropdown language-selector">
+                            <button class="dropdown-toggle" aria-haspopup="true">
+                                {{current_locale.name}}
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
+                                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
+                                </svg>
+                            </button>
+                            <span class="dropdown-menu dropdown-menu-end" role="menu">
+                                {{#each alternative_locales}}
+                                    <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                                        {{name}}
+                                    </a>
+                                {{/each}}
+                            </span>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    <div class="footer-copyright">
+        <p>&copy;2020 Snapmaker All Rights Reserved</p>
+    </div>
 </footer>
