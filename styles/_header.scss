@@ -17,6 +17,11 @@ $header-height: 78px;
   height: 34px;
 }
 
+.header .search-container {
+  display: inline-block;
+  margin-right: 20px;
+}
+
 .user-nav {
   @include tablet {
     position: relative;

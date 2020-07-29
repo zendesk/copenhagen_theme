@@ -1,8 +1,8 @@
 /***** Footer *****/
 .footer {
   //border-top: 1px solid $border-color;
-  margin-top: -15px;
   padding-top: 60px;
+  padding-bottom: 10px;
   background: $grey_background_color;
 
   a {
@@ -27,8 +27,7 @@
       margin: 0;
       font-size: 1.25rem;
       line-height: 2;
-      font-weight: bold;
-      color: $helper-text-color;
+      color: $descriptive-text-color;
     }
 
     a {
@@ -39,13 +38,6 @@
       &:hover {
         color: $brand_color;
       }
-    }
-
-    h2 a {
-      font-size: 1.25rem;
-      line-height: 2;
-      font-weight: bold;
-      color: $helper-text-color;
     }
   }
 
@@ -128,6 +120,7 @@
       [role="menuitem"] {
         color: #fff;
       }
+
       [role="menuitem"]:hover,
       [role="menuitem"]:focus {
         background: #73383b;
@@ -139,6 +132,10 @@
     margin-top: 60px;
     text-align: center;
     color: $descriptive-text-color;
+
+    p {
+      margin: 0;
+    }
   }
 }
 

@@ -32,8 +32,7 @@
     .sidenav-item {
       &:hover,
       &.current {
-        background-color: #e9ebed;
-        color: inherit;
+        color: $brand_color;
         text-decoration: none;
       }
     }
@@ -48,7 +47,9 @@
       &[aria-expanded="false"] {
         .multibrand-filter-list {
           display: none;
-          @include desktop { display: block; }
+          @include desktop {
+            display: block;
+          }
         }
       }
     }
@@ -91,8 +92,10 @@
 
   &-list {
     margin-bottom: 25px;
+
     > li {
       padding: 20px 0;
+
       &:first-child {
         border-top: 1px solid $border-color;
       }
@@ -105,18 +108,24 @@
 
   .meta-group {
     display: block;
-    @include desktop { display: flex; }
+    @include desktop {
+      display: flex;
+    }
     align-items: center;
     clear: both;
     color: #666;
 
     > li {
       display: block;
-      @include desktop { display: inline }
+      @include desktop {
+        display: inline
+      }
     }
 
     li:first-child {
-      @include desktop { flex: 1; }
+      @include desktop {
+        flex: 1;
+      }
     }
 
     .meta-data {
@@ -179,6 +188,7 @@
 
     [dir="ltr"] & {
       margin-left: 5px;
+
       &::before {
         margin-right: 3px;
       }
@@ -186,6 +196,7 @@
 
     [dir="rtl"] & {
       margin-right: 5px;
+
       &::before {
         margin-left: 3px;
       }
@@ -197,11 +208,15 @@
   }
 
   &-breadcrumbs {
-    @include desktop { display: table-row; }
+    @include desktop {
+      display: table-row;
+    }
     margin: 0;
 
     li {
-      @include desktop { display: table-cell; }
+      @include desktop {
+        display: table-cell;
+      }
     }
 
     li, li a, li a:visited {

@@ -13,12 +13,14 @@
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: $descriptive-text-color;
 
     + li::before {
       color: $descriptive-text-color;
       content: "/";
       margin: 0 4px;
     }
+
     a {
       color: $descriptive-text-color;
     }

@@ -27,7 +27,7 @@
     }
 
     padding-top: 60px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -36,11 +36,12 @@
 
   .home-category {
     @include tablet {
-      margin: 0 10px;
+      margin: 0 10px 10px;
     }
 
     display: flex;
     flex: 0 0 270px;
+    margin: 0 0 10px;
 
     border: 1px solid $border-color;
     border-radius: 4px;
@@ -125,7 +126,7 @@
         color: $brand_color;
         text-decoration: underline;
         display: block;
-        margin: 10px 0;
+        margin: 10px 0 20px;
         padding-left: 100px;
         padding-right: 30px;
       }
@@ -141,62 +142,7 @@
 .home-section {
   .home-promoted-articles {
     padding-top: 60px;
-    padding-bottom: 60px;
-  }
-
-  .article-list {
-    @include desktop {
-      flex-direction: row;
-    }
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    margin-top: 60px;
-  }
-
-  .article-list-item {
-    @include desktop {
-      align-self: flex-end;
-      flex: 1 0 auto;
-      padding-right: 30px;
-      margin-right: 24px;
-      width: 26%; /* Three columns on desktop */
-
-      [dir="rtl"] & {
-        padding: 0 0 0 30px;
-      }
-    }
-
-    flex: 1 0 auto;
-    border-bottom: 1px solid $border-color;
-
-    &:nth-child(3n) {
-      padding-right: 0;
-    }
-
-    a {
-      display: block;
-      padding: 15px 0;
-      color: $text_color;
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: $brand_color;
-      text-decoration: none;
-    }
-
-    .icon-lock {
-      vertical-align: baseline;
-    }
-
-    &:last-child a {
-      @include desktop {
-        border-bottom: 1px solid $border-color;
-      }
-
-      border: 0;
-    }
+    padding-bottom: 80px;
   }
 }
 
@@ -204,6 +150,7 @@
   .home-need-help {
     padding-top: 60px;
     padding-bottom: 40px;
+    margin-bottom: -15px;
 
     &-desc {
       text-align: center;

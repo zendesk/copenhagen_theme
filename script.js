@@ -402,4 +402,22 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Video section
+    var videoSections = document.querySelectorAll('.video-list');
+
+    if (videoSections.length) {
+        videoSections.forEach(function (section) {
+            var items = section.querySelectorAll('.video-list-item');
+
+            // Replace cover with first image in article body
+            items.forEach(function (item) {
+                const cover = item.getElementsByClassName('video-list-item-cover-img')[0];
+                const body = item.getElementsByClassName('article-body')[0];
+
+                const firstImage = body.getElementsByTagName('img')[0];
+                cover.src = firstImage.src;
+            });
+        });
+    }
 });

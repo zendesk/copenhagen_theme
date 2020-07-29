@@ -1,62 +1,79 @@
 /***** Category pages *****/
-.category {
-  &-container {
-    display: flex;
-    justify-content: flex-end;
+.category-container {
+  @include desktop {
+    flex: 0 0 80%;
   }
 
-  &-content {
-    @include desktop {
-      flex: 0 0 80%;
-    }
-
-    flex: 1;
-  }
+  flex: 1;
 }
 
-.section-tree {
-  @include tablet {
-    flex-direction: row;
-  }
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.category-sections {
 
-  .section {
-    @include tablet {
-      flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */
-    }
-    flex: initial;
+}
+
+.category-section {
+  display: block;
+  margin-bottom: 20px;
+
+  &-header {
+    display: block;
+    height: 60px;
+    background-color: $grey_background_color;
+  }
+
+  &-body {
+    display: block;
+    padding: 10px 20px;
   }
 
   &-title {
-    margin-bottom: 0;
-    font-size: 18px;
-    font-weight: $font-weight-semibold;
+    font-size: 24px;
+    font-weight: bold;
+    color: $text_color;
+    padding: 0 20px;
+    line-height: 60px;
+  }
 
-    a {
+  // articles
+  .category-section-articles, .category-section-subsections {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 10px;
+  }
+
+  .category-section-article {
+    flex: 1 0 40%;
+    padding: 10px 0;
+
+    &-link {
       color: $text_color;
+      font-size: $font-size-base;
     }
   }
 
-  .see-all-articles {
-    display: block;
-    padding: 15px 0;
-  }
+  // subsection
+  .category-section-subsection {
+    flex: 1 0 40%;
+    margin-bottom: 60px;
 
-  .article-list {
-    &-item {
-      font-size: $font-size-bigger;
-      padding: 15px 0;
+    &-title {
+      display: block;
+      font-size: 20px;
+      font-weight: bold;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
 
-      a {
-        color: $text_color;
-      }
+    &-articles {
+      padding: 0;
+    }
+
+    &-article {
+      padding: 10px 0;
     }
   }
 }
-
 
 .icon-star {
   color: $brand_color;
