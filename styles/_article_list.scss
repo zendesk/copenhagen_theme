@@ -79,12 +79,16 @@
 
   flex: 0 0 90%; // 1 columns
   padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 
   &:nth-child(3n) {
     padding-right: 0;
   }
 
   &-title {
+    display: block;
+    margin-top: 15px;
     color: $text_color;
     font-size: $font-size-base;
   }

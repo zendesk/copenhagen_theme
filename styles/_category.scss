@@ -17,13 +17,49 @@
 
   &-header {
     display: block;
+    position: relative;
     height: 60px;
     background-color: $grey_background_color;
   }
 
+  &-toggle {
+    position: absolute;
+    top: calc(60px / 2);
+    right: 20px;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: none;
+
+    &-icon {
+      display: none;
+    }
+
+    &[aria-expanded="false"] {
+      .chevron-icon {
+        display: inline-block;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .x-icon {
+        display: inline-block;
+      }
+    }
+  }
+
   &-body {
-    display: block;
+    display: none;
     padding: 10px 20px;
+  }
+
+  &[aria-expanded="true"] {
+    .category-section-body {
+      display: block;
+    }
   }
 
   &-title {
@@ -72,6 +108,10 @@
     &-article {
       padding: 10px 0;
     }
+  }
+
+  .video-list {
+    margin-top: 5px;
   }
 }
 

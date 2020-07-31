@@ -251,13 +251,6 @@
       "label": "article_page_group_label",
       "variables": [
         {
-          "identifier": "show_articles_in_section",
-          "type": "checkbox",
-          "description": "articles_in_section_description",
-          "label": "articles_in_section_label",
-          "value": true
-        },
-        {
           "identifier": "show_article_author",
           "type": "checkbox",
           "description": "article_author_description",

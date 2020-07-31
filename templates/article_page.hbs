@@ -6,33 +6,24 @@
 
     <div class="article-container" id="article-container">
         <aside class="article-sidebar" aria-labelledby="section-articles-title">
-            {{#if settings.show_articles_in_section}}
-                <div class="collapsible-sidebar">
-                    <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-                            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-                        </svg>
-                    </button>
-                    <div id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-                        {{section.name}}
-                    </div>
-                    <div class="collapsible-sidebar-body">
-                        <ul>
-                            {{#each section.articles}}
-                                <li>
-                                    <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
-                                </li>
-                            {{/each}}
-                        </ul>
-                        {{#if section.more_articles}}
-                            <a href="{{section.url}}" class="sidenav-last-item">{{t 'show_all_articles' count=section.article_count}}</a>
-                        {{/if}}
-                    </div>
+            <div class="collapsible-sidebar">
+                <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+                        <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
+                    </svg>
+                </button>
+                <div id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
+                    Table of Contents
                 </div>
-            {{/if}}
+                <div class="collapsible-sidebar-body">
+                    <div id="scrollnav-toc"></div>
+                </div>
+            </div>
+
+            {{related_articles}}
         </aside>
 
         <article id="main-content" class="article">
@@ -69,7 +60,7 @@
 
             <section class="article-info">
                 <div class="article-content">
-                    <div class="article-body">{{article.body}}</div>
+                    <div class="article-body" id="article-body">{{article.body}}</div>
 
                     <div class="article-attachments">
                         <ul class="attachments">

@@ -6,7 +6,7 @@
   }
   flex: 1;
   max-height: 60px;
-  overflow: hidden;
+  //overflow: hidden;
   padding: 10px 0;
   position: relative;
 
@@ -15,7 +15,9 @@
   }
 
   &-toggle {
-    @include desktop { display: none; }
+    @include desktop {
+      display: none;
+    }
     position: absolute;
     top: calc(60px / 2);
     transform: translateY(-50%);
@@ -55,7 +57,9 @@
   }
 
   &-body {
-    @include desktop { display: block; }
+    @include desktop {
+      display: block;
+    }
     display: none;
   }
 

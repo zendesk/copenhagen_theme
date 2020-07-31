@@ -1,4 +1,88 @@
 /***** Article *****/
+// container
+.article-container {
+  @include desktop {
+    flex-direction: row;
+  }
+
+  display: flex;
+  flex-direction: column;
+}
+
+// sidebar
+.article-sidebar {
+  @include desktop {
+    border: 0;
+    flex: 0 0 320px;
+    height: auto;
+    align-self: self-start;
+    position: sticky;
+    top: 100px;
+  }
+
+  border-bottom: 1px solid $border-color;
+  border-top: 1px solid $border-color;
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+  margin-bottom: 20px;
+  padding: 0;
+  align-self: stretch;
+
+  .collapsible-sidebar {
+    @include desktop {
+      margin-bottom: 60px;
+    }
+    margin-bottom: 0;
+  }
+
+  .collapsible-sidebar-title {
+    position: relative;
+    margin-bottom: 15px;
+    color: $text_color;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .related-articles {
+    @include desktop {
+      display: block;
+    }
+
+    display: none;
+    margin-bottom: 20px;
+
+    &-title {
+      position: relative;
+      margin-bottom: 15px;
+      color: $text_color;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+
+    li {
+      padding-bottom: 10px;
+    }
+
+    a {
+      color: $secondary-text-color;
+      text-decoration: none;
+    }
+
+    li:hover,
+    li:focus {
+      a {
+        color: $brand_color;
+      }
+    }
+  }
+}
+
+// article
 .article {
   @include desktop {
     flex: 1 0 66%;
@@ -8,15 +92,6 @@
   }
 
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
-
-  &-container {
-    @include desktop {
-      flex-direction: row;
-    }
-
-    display: flex;
-    flex-direction: column;
-  }
 
   &-header {
     @include tablet {
@@ -32,6 +107,7 @@
     margin-bottom: 30px;
     margin-top: 20px;
   }
+
 
   &-title {
     @include tablet {
@@ -85,20 +161,6 @@
     word-wrap: break-word;
   }
 
-  &-sidebar {
-    @include desktop {
-      border: 0;
-      flex: 0 0 320px;
-      height: auto;
-    }
-
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
-    flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
-    margin-bottom: 20px;
-    padding: 0;
-  }
-
   &-votes {
     border-top: 1px solid $border-color;
     padding: 30px 0;
@@ -143,31 +205,3 @@
   }
 }
 
-.sidenav {
-  &-title {
-    position: relative;
-    margin-bottom: 15px;
-    color: $text_color;
-    font-size: 24px;
-    font-weight: 600;
-  }
-
-  &-item {
-    display: block;
-    margin-bottom: 20px;
-    color: $text_color;
-
-    &.current-article,
-    &:hover {
-      color: $brand_color;
-      text-decoration: none;
-    }
-  }
-  &-last-item {
-    display: inline-block;
-    padding: 6px 10px;
-    border: 1px solid $brand_color;
-    border-radius: 4px;
-    color: $brand_color;
-  }
-}

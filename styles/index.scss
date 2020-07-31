@@ -15,12 +15,13 @@ $fa-font-path: "assets";
 @import "tables";
 @import "forms";
 
+@import "article_list";
 @import "blocks";
 @import "collapsible-nav";
 @import "collapsible-sidebar";
 @import "metadata";
+@import "scrollnav";
 @import "sub-nav";
-@import "article_list";
 
 // Filters
 @import "breadcrumbs";
