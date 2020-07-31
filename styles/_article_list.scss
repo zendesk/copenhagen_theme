@@ -74,7 +74,7 @@
   }
 
   @include desktop {
-    flex: 1 0 33%; // 3 columns
+    flex: 0 0 33%; // 3 columns
   }
 
   flex: 0 0 90%; // 1 columns
