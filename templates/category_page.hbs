@@ -12,12 +12,8 @@
                         <div class="category-section-header">
                             <span class="category-section-title">{{name}}</span>
                             <button type="button" class="category-section-toggle" aria-expanded="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="category-section-toggle-icon chevron-icon">
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="category-section-toggle-icon x-icon">
-                                    <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-                                </svg>
+                                <i class="category-section-toggle-icon icon-up"></i>
+                                <i class="category-section-toggle-icon icon-down"></i>
                             </button>
                         </div>
                         <div class="category-section-body">
@@ -29,7 +25,7 @@
                                 {{/each}}
                             </ul>
                             {{#if more_articles}}
-                                <a href="{{url}}" class="button button-secondary">
+                                <a href="{{url}}" class="button button-secondary see-more-article">
                                     {{t 'show_all_articles' count=article_count}}
                                 </a>
                             {{/if}}
@@ -43,29 +39,25 @@
                         <div class="category-section-header">
                             <span class="category-section-title">{{name}}</span>
                             <button type="button" class="category-section-toggle" aria-expanded="true">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="category-section-toggle-icon chevron-icon">
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-                                </svg>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="category-section-toggle-icon x-icon">
-                                    <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-                                </svg>
+                                <i class="category-section-toggle-icon icon-up"></i>
+                                <i class="category-section-toggle-icon icon-down"></i>
                             </button>
                         </div>
                         <div class="category-section-body">
                             <ul class="video-list">
                                 {{#each articles}}
                                     <li class="video-list-item">
-                                        <div class="video-list-item-cover">
+                                        <a href="{{url}}" class="video-list-item-cover">
                                             <img class="video-list-item-cover-img" src="#" alt="" />
                                             <i class="video-list-item-cover-icon"></i>
-                                        </div>
+                                        </a>
                                         <a class="video-list-item-title" href="{{url}}">{{title}}</a>
                                         <div class="article-body">{{body}}</div>
                                     </li>
                                 {{/each}}
                             </ul>
                             {{#if more_articles}}
-                                <a href="{{url}}" class="button button-secondary" style="margin-top: 10px">
+                                <a href="{{url}}" class="button button-secondary see-more-article">
                                     {{t 'show_all_articles' count=article_count}}
                                 </a>
                             {{/if}}
@@ -74,16 +66,12 @@
                 {{/is}}
             {{/each}}
 
-            <li class="category-section" aria-expanded="true">
+            <li class="category-section category-section-faq" aria-expanded="true">
                 <div class="category-section-header">
                     <span class="category-section-title">FAQ</span>
                     <button type="button" class="category-section-toggle" aria-expanded="true">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="category-section-toggle-icon chevron-icon">
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-                        </svg>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="category-section-toggle-icon x-icon">
-                            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-                        </svg>
+                        <i class="category-section-toggle-icon icon-up"></i>
+                        <i class="category-section-toggle-icon icon-down"></i>
                     </button>
                 </div>
                 <div class="category-section-body">
@@ -113,7 +101,7 @@
                                     </ul>
 
                                     {{#if more_articles}}
-                                        <a href="{{url}}" class="button button-secondary">
+                                        <a href="{{url}}" class="button button-secondary see-more-article">
                                             {{t 'show_all_articles' count=article_count}}
                                         </a>
                                     {{/if}}

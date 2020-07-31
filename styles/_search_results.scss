@@ -229,12 +229,5 @@
 .search-results-description em {
   font-style: normal;
   font-weight: bold;
-}
-
-/* Add a yellow background for Chinese */
-html[lang|="zh"] {
-  .search-results-description em {
-    font-style: normal;
-    background: yellow;
-  }
+  background: yellow;
 }

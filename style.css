@@ -3234,6 +3234,10 @@ template {
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   background-color: $background_color;
   color: #272829;
@@ -3790,14 +3794,20 @@ ul {
   padding-right: 0;
 }
 
-.video-list-item-title {
+.video-list-item a.video-list-item-title {
   display: block;
   margin-top: 15px;
   color: #272829;
   font-size: 15px;
+  text-decoration: none;
+}
+
+.video-list-item:hover .video-list-item-title, .video-list-item:focus .video-list-item-title {
+  color: #28a7e1;
 }
 
 .video-list-item-cover {
+  display: block;
   position: relative;
   width: 360px;
   height: 200px;
@@ -4494,13 +4504,23 @@ ul {
 
 .category-section-toggle-icon {
   display: none;
+  width: 24px;
+  height: 24px;
 }
 
-.category-section-toggle[aria-expanded="true"] .chevron-icon {
+.category-section-toggle .icon-up {
+  background-image: url($assets-ic_up_24x24-svg);
+}
+
+.category-section-toggle .icon-down {
+  background-image: url($assets-ic_down_24x24-svg);
+}
+
+.category-section-toggle[aria-expanded="false"] .icon-down {
   display: inline-block;
 }
 
-.category-section-toggle[aria-expanded="false"] .x-icon {
+.category-section-toggle[aria-expanded="true"] .icon-up {
   display: inline-block;
 }
 
@@ -4536,6 +4556,11 @@ ul {
 .category-section .category-section-article-link {
   color: #272829;
   font-size: 15px;
+  text-decoration: none;
+}
+
+.category-section .category-section-article-link:hover, .category-section .category-section-article-link:focus {
+  color: #28a7e1;
 }
 
 .category-section .category-section-subsection {
@@ -4561,6 +4586,10 @@ ul {
 
 .category-section .video-list {
   margin-top: 5px;
+}
+
+.category-section .see-more-article {
+  margin-top: 10px;
 }
 
 .icon-star {
@@ -6884,11 +6913,6 @@ ul {
 .search-results-description em {
   font-style: normal;
   font-weight: bold;
-}
-
-/* Add a yellow background for Chinese */
-html[lang|="zh"] .search-results-description em {
-  font-style: normal;
   background: yellow;
 }
 
@@ -7538,7 +7562,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 .footer .language-selector .dropdown-menu [role="menuitem"]:hover,
 .footer .language-selector .dropdown-menu [role="menuitem"]:focus {
-  background: #73383b;
+  background: #676869;
 }
 
 .footer-copyright {

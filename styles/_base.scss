@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
   background-color: $background_color;
   color: $text_color;
@@ -59,7 +63,7 @@ input {
 
   &:not([type="checkbox"]) {
     outline: none;
-    
+
     &:focus {
       border: 1px solid $brand_color;
     }

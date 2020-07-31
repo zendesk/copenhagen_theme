@@ -36,16 +36,26 @@
 
     &-icon {
       display: none;
+      width: 24px;
+      height: 24px;
+    }
+
+    .icon-up {
+      background-image: url($assets-ic_up_24x24-svg);
+    }
+
+    .icon-down {
+      background-image: url($assets-ic_down_24x24-svg);
     }
 
     &[aria-expanded="false"] {
-      .chevron-icon {
+      .icon-down {
         display: inline-block;
       }
     }
 
     &[aria-expanded="true"] {
-      .x-icon {
+      .icon-up {
         display: inline-block;
       }
     }
@@ -85,6 +95,12 @@
     &-link {
       color: $text_color;
       font-size: $font-size-base;
+      text-decoration: none;
+
+      &:hover,
+      &:focus {
+        color: $brand_color;
+      }
     }
   }
 
@@ -112,6 +128,10 @@
 
   .video-list {
     margin-top: 5px;
+  }
+
+  .see-more-article {
+    margin-top: 10px;
   }
 }
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>ic_up_24x24</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="support-original" transform="translate(-1492.000000, -395.000000)" fill="#000000" fill-rule="nonzero">
+            <g id="下拉箭头备份" transform="translate(1504.000000, 407.000000) scale(1, -1) translate(-1504.000000, -407.000000) translate(1492.000000, 395.000000)">
+                <rect id="矩形" opacity="0" x="1" y="1" width="22.4" height="22.4"></rect>
+                <path d="M12.2,16.4 C12.3813,16.4 12.5451,16.3293 12.66935,16.21625 L12.67075,16.218 L20.37075,9.218 L20.369,9.21625 C20.51005,9.08815 20.6,8.90545 20.6,8.7 C20.6,8.31340068 20.2865993,8 19.9,8 C19.7187,8 19.55525,8.0707 19.43065,8.18375 L19.4289,8.182 L12.2,14.75395 L4.9711,8.182 L4.96935,8.18375 C4.84139917,8.06593621 4.6739292,8.0003719 4.5,8 C4.11340068,8 3.8,8.31340068 3.8,8.7 C3.8,8.9051 3.88995,9.08815 4.03065,9.21625 L4.0289,9.218 L11.7289,16.218 L11.73065,16.21625 C11.8549,16.3293 12.0187,16.4 12.2,16.4 Z" id="路径"></path>
+            </g>
+        </g>
+    </g>
+</svg>

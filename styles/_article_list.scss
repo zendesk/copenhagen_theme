@@ -86,14 +86,22 @@
     padding-right: 0;
   }
 
-  &-title {
+  a.video-list-item-title {
     display: block;
     margin-top: 15px;
     color: $text_color;
     font-size: $font-size-base;
+    text-decoration: none;
+  }
+
+  &:hover, &:focus {
+    .video-list-item-title {
+      color: $brand_color;
+    }
   }
 
   &-cover {
+    display: block;
     position: relative;
     width: 360px;
     height: 200px;
