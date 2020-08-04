@@ -4679,3 +4679,10 @@ html[dir="rtl"] .notification-left-aligned {
 .dropdown-chevron-icon {
   vertical-align: middle;
 }
+
+.badge {
+  align-self: center;
+  margin: 1ex;
+  height: 40px;
+  width: 40px;
+}
