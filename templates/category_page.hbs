@@ -7,6 +7,34 @@
     <div class="category-container">
         <ul id="main-content2" class="category-sections">
             {{#each sections}}
+                {{#is description 'Type-QSG' }}
+                    <li class="category-section category-section-qsg" aria-expanded="true">
+                        <div class="category-section-header">
+                            <span class="category-section-title">{{name}}</span>
+                            <button type="button" class="category-section-toggle" aria-expanded="true">
+                                <i class="category-section-toggle-icon icon-up"></i>
+                                <i class="category-section-toggle-icon icon-down"></i>
+                            </button>
+                        </div>
+                        <div class="category-section-body">
+                            <ul class="category-section-articles">
+                                {{#each articles}}
+                                    <li class="category-section-article">
+                                        <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                        <div class="article-body">{{body}}</div>
+                                    </li>
+                                {{/each}}
+                            </ul>
+                            {{#if more_articles}}
+                                <a href="{{url}}" class="button button-secondary see-more-article">
+                                    {{t 'show_all_articles' count=article_count}}
+                                </a>
+                            {{/if}}
+                        </div>
+                    </li>
+                {{/is}}
+            {{/each}}
+            {{#each sections}}
                 {{#is description 'Type-Default' }}
                     <li class="category-section" aria-expanded="true">
                         <div class="category-section-header">
@@ -52,6 +80,7 @@
                                             <i class="video-list-item-cover-icon"></i>
                                         </a>
                                         <a class="video-list-item-title" href="{{url}}">{{title}}</a>
+                                        <ol class="video-list-item-labels"></ol>
                                         <div class="article-body">{{body}}</div>
                                     </li>
                                 {{/each}}

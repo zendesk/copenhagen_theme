@@ -613,7 +613,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /**
-     * Hack for video section in category page
+     * Category page: extract video cover and labels from article.
      */
     var videoSections = document.querySelectorAll('.video-list');
 
@@ -624,18 +624,55 @@ document.addEventListener('DOMContentLoaded', function () {
             // Replace cover with first image in article body
             items.forEach(function (item) {
                 const cover = item.getElementsByClassName('video-list-item-cover-img')[0];
+                const labels = item.getElementsByClassName('video-list-item-labels')[0];
+
                 const body = item.getElementsByClassName('article-body')[0];
 
-                const firstImage = body.getElementsByTagName('img')[0];
+                // extract cover image
+                let firstImage = body.getElementsByTagName('img');
+                firstImage = firstImage && firstImage[0];
                 if (firstImage) {
                     cover.src = firstImage.src;
+                }
+
+                // extract labels
+                const bodyLabels = body.getElementsByClassName('sm-label');
+                if (bodyLabels) {
+                    for (const bodyLabel of bodyLabels) {
+                        const elem = document.createElement('li');
+                        elem.textContent = bodyLabel.textContent;
+
+                        labels.appendChild(elem);
+                    }
                 }
             });
         });
     }
 
     /**
-     * Hack for empty FAQ in category page
+     * Category page: convert article link to download link.
+     *
+     */
+    const qsgSection = document.querySelector('.category-section-qsg');
+    if (qsgSection) {
+        const items = qsgSection.querySelectorAll('.category-section-article');
+
+        items.forEach(function (item) {
+            const link = item.querySelector('.category-section-article-link');
+            const body = item.querySelector('.article-body');
+
+            let firstLink = body.getElementsByTagName('a');
+            firstLink = firstLink && firstLink[0];
+            if (firstLink) {
+                link.download = 'download';
+                link.target = '_blank';
+                link.href = firstLink.href;
+            }
+        });
+    }
+
+    /**
+     * Category page: If no FAQ sections available, hide section title.
      */
     var faqSection = document.querySelector('.category-section-faq');
     if (faqSection) {

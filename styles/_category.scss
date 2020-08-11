@@ -88,6 +88,7 @@
     margin-top: 10px;
   }
 
+  // TODO: Can be unified with article-list?
   .category-section-article {
     flex: 1 0 40%;
     padding: 10px 0;
@@ -101,6 +102,10 @@
       &:focus {
         color: $brand_color;
       }
+    }
+
+    .article-body {
+      display: none;
     }
   }
 

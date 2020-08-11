@@ -3767,7 +3767,8 @@ ul {
   text-decoration: none;
 }
 
-.article-list-item a:hover {
+.article-list-item a:hover,
+.article-list-item a:focus {
   color: #28a7e1;
   text-decoration: none;
 }
@@ -3842,6 +3843,23 @@ ul {
   width: 40px;
   height: 40px;
   background: url($assets-ic_play_40x40-png);
+}
+
+.video-list-item ol.video-list-item-labels {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.video-list-item ol.video-list-item-labels li {
+  flex: 0 0 auto;
+  padding: 4px 8px;
+  margin-right: 10px;
+  color: #676869;
+  background-color: #f7f8f9;
 }
 
 /***** Blocks *****/
@@ -4577,6 +4595,10 @@ ul {
 
 .category-section .category-section-article-link:hover, .category-section .category-section-article-link:focus {
   color: #28a7e1;
+}
+
+.category-section .category-section-article .article-body {
+  display: none;
 }
 
 .category-section .category-section-subsection {

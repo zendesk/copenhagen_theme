@@ -45,7 +45,8 @@
     text-decoration: none;
   }
 
-  a:hover {
+  a:hover,
+  a:focus {
     color: $brand_color;
     text-decoration: none;
   }
@@ -120,5 +121,23 @@
     width: 40px;
     height: 40px;
     background: url($assets-ic_play_40x40-png);
+  }
+
+  ol.video-list-item-labels {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    li {
+      font-size: 14px;
+      flex: 0 0 auto;
+      padding: 4px 8px;
+      margin-right: 10px;
+      color: $secondary-text-color;
+      background-color: $grey_background_color;
+    }
   }
 }
