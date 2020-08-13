@@ -9,6 +9,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
 
+  // content column
   &-column {
     @include desktop {
       flex: 0 0 75%;
@@ -17,6 +18,7 @@
     flex: 1;
   }
 
+  // sidebar
   &-sidebar {
     border-top: 1px solid $border-color;
     flex: 1 0 auto;
@@ -85,149 +87,112 @@
     }
   }
 
+  // subheading of search results
   &-subheading {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: $font-weight-semibold;
   }
 
+  // list
   &-list {
     margin-bottom: 25px;
 
     > li {
       padding: 20px 0;
 
-      &:first-child {
-        border-top: 1px solid $border-color;
+      & {
+        border-bottom: 1px solid $border-color;
       }
 
-      h2 {
-        margin-bottom: 0;
+      &:last-child {
+        border-bottom: 0;
       }
     }
   }
 
-  .meta-group {
+  // title
+  .search-result-title {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    color: $text_color;
+    text-decoration: none;
+    margin-bottom: 10px;
+
+    a:hover,
+    a:focus {
+      color: $brand_color;
+      text-decoration: none;
+    }
+  }
+
+  // breadcrumbs
+  .search-result-breadcrumbs {
     display: block;
-    @include desktop {
-      display: flex;
-    }
-    align-items: center;
-    clear: both;
-    color: #666;
+    margin: 0;
 
-    > li {
-      display: block;
-      @include desktop {
-        display: inline
+    li, li a, li a:visited {
+      color: $descriptive-text-color;
+      text-decoration: none;
+    }
+  }
+
+  // icons
+  .search-result {
+    &-icons {
+      [dir="ltr"] & {
+        float: right;
+      }
+
+      [dir="rtl"] & {
+        float: left;
       }
     }
 
-    li:first-child {
-      @include desktop {
-        flex: 1;
+    &-votes,
+    &-meta-count {
+      color: $secondary-text-color;
+      display: inline-block;
+      font-size: $font-size-small;
+      font-weight: $font-weight-light;
+      padding: 4px 5px;
+      position: relative;
+
+      &-icon {
+        color: $brand_color;
+        vertical-align: middle;
+        width: 13px;
+        height: 13px;
       }
-    }
 
-    .meta-data {
-      color: inherit;
+      [dir="ltr"] & {
+        margin-left: 5px;
 
-      &:not(:last-child) {
-        [dir="ltr"] & {
-          margin-right: 20px;
+        &::before {
+          margin-right: 3px;
         }
-
-        [dir="rtl"] & {
-          margin-left: 20px;
-        }
       }
 
-      &::after {
-        content: none;
+      [dir="rtl"] & {
+        margin-right: 5px;
+
+        &::before {
+          margin-left: 3px;
+        }
       }
     }
   }
 
-  &-description {
+  // description
+  .search-result-description {
     margin-top: 10px;
     word-break: break-word;
   }
-}
 
-.search-result {
-
-  &-title {
-    font-size: $font-size-bigger;
-    display: inline-block;
+  /* By default use bold instead of italic to highlight */
+  .search-result-description em {
+    font-style: normal;
+    font-weight: bold;
+    background: yellow;
   }
-
-  &-icons {
-    [dir="ltr"] & {
-      float: right;
-    }
-
-    [dir="rtl"] & {
-      float: left;
-    }
-  }
-
-  &-votes,
-  &-meta-count {
-    color: $secondary-text-color;
-    display: inline-block;
-    font-size: $font-size-small;
-    font-weight: $font-weight-light;
-    padding: 4px 5px;
-    position: relative;
-
-    &-icon {
-      color: $brand_color;
-      vertical-align: middle;
-      width: 13px;
-      height: 13px;
-    }
-
-    [dir="ltr"] & {
-      margin-left: 5px;
-
-      &::before {
-        margin-right: 3px;
-      }
-    }
-
-    [dir="rtl"] & {
-      margin-right: 5px;
-
-      &::before {
-        margin-left: 3px;
-      }
-    }
-  }
-
-  .meta-group {
-    align-items: center;
-  }
-
-  &-breadcrumbs {
-    @include desktop {
-      display: table-row;
-    }
-    margin: 0;
-
-    li {
-      @include desktop {
-        display: table-cell;
-      }
-    }
-
-    li, li a, li a:visited {
-      color: inherit;
-    }
-  }
-}
-
-/* By default use bold instead of italic to highlight */
-.search-results-description em {
-  font-style: normal;
-  font-weight: bold;
-  background: yellow;
 }

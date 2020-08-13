@@ -58,8 +58,9 @@
 
 // video
 .video-list {
-  @include desktop {
+  @include tablet {
     flex-direction: row;
+    margin-right: -15px;
   }
 
   display: flex;
@@ -74,17 +75,21 @@
     display: none;
   }
 
-  @include desktop {
-    flex: 0 0 33%; // 3 columns
+  flex: 0 0 100%; // 1 columns
+  margin-bottom: 20px;
+
+  @include tablet {
+    flex: 0 0 50%; // 2 columns
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
-  flex: 0 0 90%; // 1 columns
-  padding-right: 15px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-  &:nth-child(3n) {
-    padding-right: 0;
+  @include desktop {
+    flex: 0 0 33%; // 3 columns
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 
   a.video-list-item-title {
@@ -104,13 +109,11 @@
   &-cover {
     display: block;
     position: relative;
-    width: 360px;
-    height: 200px;
   }
 
   &-cover-img {
-    width: 360px;
-    height: 200px;
+    display: block;
+    width: 100%;
   }
 
   &-cover-icon {

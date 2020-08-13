@@ -1,10 +1,12 @@
 /***** Category pages *****/
 .category-container {
-  @include desktop {
+  @include tablet {
     flex: 0 0 80%;
+    margin: 0;
   }
 
   flex: 1;
+  margin: 0 -20px; // cancel out padding of .container
 }
 
 .category-sections {
@@ -90,8 +92,12 @@
 
   // TODO: Can be unified with article-list?
   .category-section-article {
-    flex: 1 0 40%;
-    padding: 10px 0;
+    @include tablet {
+      flex: 1 0 40%;
+    }
+
+    flex: 1 0 100%;
+    padding: 10px 20px 10px 0;
 
     &-link {
       color: $text_color;
@@ -111,8 +117,14 @@
 
   // subsection
   .category-section-subsection {
-    flex: 1 0 40%;
-    margin-bottom: 60px;
+    @include tablet {
+      flex: 1 0 40%;
+      margin-bottom: 50px;
+    }
+
+    flex: 0 0 100%;
+    padding: 10px 20px 10px 0;
+    margin-bottom: 20px;
 
     &-title {
       display: block;
@@ -137,6 +149,7 @@
 
   .see-more-article {
     margin-top: 10px;
+    width: auto;
   }
 }
 

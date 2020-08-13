@@ -1,188 +1,424 @@
-// scrollnav@v3.0.2
-!function (f, h) {
-    "object" == typeof exports && "undefined" != typeof module ? module.exports = h() : "function" == typeof define && define.amd ? define(h) : f.scrollnav = h()
-}(this, function () {
-    function f(f, h) {
-        var y, w = {};
-        for (y in f) Object.prototype.hasOwnProperty.call(f, y) && (w[y] = f[y]);
-        for (y in h) Object.prototype.hasOwnProperty.call(h, y) && (w[y] = h[y]);
-        return w
+// https://github.com/jimmynotjim/scrollnav
+// Most from scrollnav@v3.0.2, with little modifications.
+const scrollnav = (function () {
+    function extend(defaults, options) {
+        const extended = {};
+
+
+        let prop;
+        for (prop in defaults) {
+            if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
+                extended[prop] = defaults[prop];
+            }
+        }
+        for (prop in options) {
+            if (Object.prototype.hasOwnProperty.call(options, prop)) {
+                extended[prop] = options[prop];
+            }
+        }
+
+        return extended;
     }
 
-    function h(f, h) {
-        if ("object" != typeof f) return Promise.reject(new Error("First argument must be an object"));
-        if ("object" != typeof (h = h || document.body)) return Promise.reject(new Error("Second argument must be an object"));
-        var y = h.getBoundingClientRect();
-        return f.getBoundingClientRect().top - y.top
+    function isElement(element) {
+        return element instanceof Element;
     }
 
-    function y(f, w, E) {
-        void 0 === E && (E = "scroll-nav");
-        var L = [];
-        return E += "__", f.forEach(function (f, O) {
-            var x = [], j = function (f, h) {
-                if ("object" != typeof f) return Promise.reject(new Error("First argument must be an object"));
-                var y = f.id;
-                if (!y) {
-                    if ("string" != typeof h) return Promise.reject(new Error("Second argument must be a string"));
-                    f.id = y = h
-                }
-                return y
-            }(f, E + (O + 1));
-            w.subSections && f.matches(w.sections) && (x = y(function (f, h, y) {
-                var w = [];
-                for (f = f.nextElementSibling; f && !f.matches(h);) !y || f.matches(y) ? (w.push(f), f = f.nextElementSibling) : f = f.nextElementSibling;
-                return w
-            }(f, w.sections, w.subSections), w, j));
-            L.push({ id: j, text: f.innerText || f.textContent, offsetTop: h(f), subSections: x })
-        }), L
+    function nextUntil(elem, selector, filter) {
+        var siblings = [];
+
+        elem = elem.nextElementSibling;
+
+        while (elem) {
+            if (elem.matches(selector)) break;
+
+            if (filter && !elem.matches(filter)) {
+                elem = elem.nextElementSibling;
+                continue;
+            }
+
+            siblings.push(elem);
+
+            elem = elem.nextElementSibling;
+        }
+
+        return siblings;
     }
 
-    function w(f) {
-        var h = document.createElement("nav");
-        return h.className = "scroll-nav", h.innerHTML = function f(h, y) {
-            void 0 === y && (y = !1);
-            var w = "scroll-nav" + (y ? "__sub-" : "__"), E = "\n    " + h.map(function (h) {
-                return '<li class="' + w + 'item" data-sn-section="' + h.id + '">\n            <a class="' + w + 'link" href="#' + h.id + '">' + h.text + "</a>\n            " + (h.subSections && h.subSections.length ? "" + f(h.subSections, !0) : "") + "\n          </li>"
-            }).join("") + "\n  ";
-            return '\n    <ol class="' + w + 'list">\n      ' + E + "\n    </ol>\n  "
-        }(f), h
+    function getOrSetID(elem, setID) {
+        let id = elem.id;
+
+        if (!id) {
+            id = setID;
+            elem.id = id;
+        }
+        return id;
     }
 
-    function E(f) {
-        return f.forEach(function (f) {
-            var y = document.querySelector("#" + f.id);
-            f.offsetTop = h(y), f.subSections.length && (f.subSections = E(f.subSections))
-        }), f
+    function getYPosition(elem, parent) {
+        if (typeof elem !== 'object') {
+            return Promise.reject(new Error('First argument must be an object'));
+        }
+
+        parent = parent || document.body;
+        if (typeof parent !== 'object') {
+            return Promise.reject(new Error('Second argument must be an object'));
+        }
+
+        const bodyRect = parent.getBoundingClientRect();
+        const elemRect = elem.getBoundingClientRect();
+
+        return elemRect.top - bodyRect.top;
     }
 
-    function L(f, h) {
-        var y = f.getAttribute("href");
-        return "#" === y.charAt(0) && (y = y.substr(1)), function f(h, y) {
-            var w;
-            h.forEach(function (h) {
-                h.id === y && (w = h), h.subSections && void 0 === w && (w = f(h.subSections, y))
+    function populateSectionData(sections, settings, prefix) {
+        prefix = prefix || 'scroll-nav';
+        prefix = prefix + '__';
+
+        const sectionData = [];
+
+        sections.forEach((elem, i) => {
+            let subSectionData = [];
+            const id = getOrSetID(elem, prefix + (i + 1));
+
+            if (settings.subSections && elem.matches(settings.sections)) {
+                const subSectionDom = nextUntil(
+                    elem,
+                    settings.sections,
+                    settings.subSections
+                );
+                subSectionData = populateSectionData(subSectionDom, settings, id);
+            }
+
+            sectionData.push({
+                id: id,
+                text: elem.innerText || elem.textContent,
+                offsetTop: getYPosition(elem),
+                subSections: subSectionData
             });
-            return w
-        }(h, y).offsetTop
+        });
+
+        return sectionData;
     }
 
-    var O, x, j, _ = function (f) {
-        return function (h) {
-            return Math.pow(h, f)
+    function updatePositionData(data) {
+        data.forEach(section => {
+            const sectionDom = document.querySelector(`#${section.id}`);
+            section.offsetTop = getYPosition(sectionDom);
+
+            if (section.subSections.length) {
+                section.subSections = updatePositionData(section.subSections);
+            }
+        });
+
+        return data;
+    }
+
+    function filterData(data, id) {
+        let targetSection;
+
+        data.forEach(section => {
+            if (section.id === id) {
+                targetSection = section;
+            }
+
+            if (section.subSections && targetSection === undefined) {
+                targetSection = filterData(section.subSections, id);
+            }
+        });
+
+        return targetSection;
+    }
+
+    function getTargetYPosition(target, data) {
+        let id = target.getAttribute('href');
+        if (id.charAt(0) === '#') {
+            id = id.substr(1);
         }
-    }, I = function (f) {
-        return function (h) {
-            return 1 - Math.abs(Math.pow(h - 1, f))
+
+        const targetSection = filterData(data, id);
+
+        return targetSection.offsetTop;
+    }
+
+    function createList(data, isSubList = false) {
+        const suffix = isSubList ? '__sub-' : '__';
+        const baseClass = 'scroll-nav' + suffix;
+
+        const itemsMarkup = data.map(item =>
+            `<li class="${baseClass}item" data-sn-section="${item.id}">
+                 <a class="${baseClass}link" href="#${item.id}">${item.text}</a>
+                 ${item.subSections && item.subSections.length ? `${createList(item.subSections, true)}` : ''}
+            </li>`
+        ).join('');
+
+        const list = `
+        <ol class="${baseClass}list">
+            ${itemsMarkup}
+        </ol>
+    `;
+
+        return list;
+    }
+
+    function createNav(data) {
+        const nav = document.createElement('nav');
+        nav.className = 'scroll-nav';
+        nav.innerHTML = createList(data);
+
+        return nav;
+    }
+
+    function insertNav(scrollnav) {
+        const target = scrollnav.settings.insertTarget;
+        const location = scrollnav.settings.insertLocation;
+
+        if (location === 'append') {
+            target.appendChild(scrollnav.nav);
+        } else if (location === 'prepend') {
+            target.insertBefore(scrollnav.nav, target.firstChild);
+        } else if (location === 'before') {
+            target.parentNode.insertBefore(scrollnav.nav, target);
+        } else if (location === 'after') {
+            target.parentNode.insertBefore(scrollnav.nav, target.nextSibling);
         }
-    }, Q = function (f) {
-        return function (h) {
-            return h < .5 ? _(f)(2 * h) / 2 : I(f)(2 * h - 1) / 2 + .5
-        }
-    }, C = {
-        linear: Q(1),
-        easeInQuad: _(2),
-        easeOutQuad: I(2),
-        easeInOutQuad: Q(2),
-        easeInCubic: _(3),
-        easeOutCubic: I(3),
-        easeInOutCubic: Q(3),
-        easeInQuart: _(4),
-        easeOutQuart: I(4),
-        easeInOutQuart: Q(4),
-        easeInQuint: _(5),
-        easeOutQuint: I(5),
-        easeInOutQuint: Q(5)
+    }
+
+    const easeIn = p => t => Math.pow(t, p);
+    const easeOut = p => t => 1 - Math.abs(Math.pow(t - 1, p));
+    const easeInOut = p => t =>
+        t < 0.5 ? easeIn(p)(t * 2) / 2 : easeOut(p)(t * 2 - 1) / 2 + 0.5;
+
+    const easing = {
+        linear: easeInOut(1),
+        easeInQuad: easeIn(2),
+        easeOutQuad: easeOut(2),
+        easeInOutQuad: easeInOut(2),
+        easeInCubic: easeIn(3),
+        easeOutCubic: easeOut(3),
+        easeInOutCubic: easeInOut(3),
+        easeInQuart: easeIn(4),
+        easeOutQuart: easeOut(4),
+        easeInOutQuart: easeInOut(4),
+        easeInQuint: easeIn(5),
+        easeOutQuint: easeOut(5),
+        easeInOutQuint: easeInOut(5)
     };
 
-    function M(f, h) {
-        return new Promise(function (y, w) {
-            if ("number" != typeof f) return w(new Error("First argument must be a number"));
-            if ("string" != typeof (h = h || "linear")) return w(new Error("Second argument must be a string"));
-            var E, L = window.pageYOffset, O = f - L, x = function (f) {
-                var h = Math.abs(f / 2);
-                return Math.min(Math.max(h, 250), 1200)
-            }(O), j = 20, _ = 0;
-            !function f() {
-                E = C[h]((_ += j) / x), window.scroll(0, E * O + L), _ < x ? setTimeout(f, j) : y(window.pageYOffset)
-            }()
-        })
+    function calculateScrollDuration(distance) {
+        const halfDistance = Math.abs(distance / 2);
+
+        return Math.min(Math.max(halfDistance, 250), 1200);
     }
 
-    function q(f) {
-        function h() {
-            var h = window.scrollY || window.pageYOffset || document.body.scrollTop, y = h + .4 * window.innerHeight,
-                w = function f(h, y, w) {
-                    var E, L;
-                    h.forEach(function (f) {
-                        f.offsetTop > w ? !E && f.offsetTop < y && (E = f) : E = f
-                    }), E && E.subSections.length && (L = f(E.subSections, y, w)) && (E = L);
-                    return E
-                }(f.data, h, y);
-            return function (f, h) {
-                var y = h.querySelector("[data-sn-active]");
-                if (f) {
-                    var w = h.querySelector("[data-sn-section=" + f.id + "]");
-                    w && w !== y && (y && (y.classList.remove("scroll-nav__item--active"), y.removeAttribute("data-sn-active")), w.classList.add("scroll-nav__item--active"), w.setAttribute("data-sn-active", !0))
-                } else y && (y.classList.remove("scroll-nav__item--active"), y.removeAttribute("data-sn-active"))
-            }(w, f.nav), w
+    function scrollTo(targetPosition, easingStyle) {
+        return new Promise((resolve, reject) => {
+            if (typeof targetPosition !== 'number') {
+                return reject(new Error('First argument must be a number'));
+            }
+
+            easingStyle = easingStyle || 'linear';
+            if (typeof easingStyle !== 'string') {
+                return reject(new Error('Second argument must be a string'));
+            }
+
+
+            const startingPosition = window.pageYOffset;
+            const distance = targetPosition - startingPosition;
+            const duration = calculateScrollDuration(distance);
+            const framerate = 50;
+            const increment = 1000 / framerate;
+            let ellapsedTime = 0;
+            let easedTime;
+            let next;
+
+            function animateScroll() {
+                ellapsedTime += increment;
+                easedTime = easing[easingStyle](ellapsedTime / duration);
+                next = easedTime * distance + startingPosition;
+                window.scroll(0, next);
+
+                if (ellapsedTime < duration) {
+                    setTimeout(animateScroll, increment);
+                } else {
+                    resolve(window.pageYOffset);
+                }
+            }
+
+            animateScroll();
+        });
+    }
+
+    function getActiveSection(data, boundryTop, boundryBottom) {
+        let activeSection;
+
+        data.forEach(section => {
+            if (section.offsetTop > boundryBottom) {
+                if (!activeSection && section.offsetTop < boundryTop) {
+                    activeSection = section;
+                }
+            } else {
+                activeSection = section;
+            }
+        });
+
+        if (activeSection && activeSection.subSections.length) {
+            let activeSubSection;
+
+            activeSubSection = getActiveSection(
+                activeSection.subSections,
+                boundryTop,
+                boundryBottom
+            );
+
+            if (activeSubSection) {
+                activeSection = activeSubSection;
+            }
         }
 
-        return window.addEventListener("scroll", h), h
+        return activeSection;
     }
 
-    function B(f) {
-        return f instanceof Element
+    function updateActiveNavItem(activeSection, nav) {
+        const previousActive = nav.querySelector('[data-sn-active]');
+
+        if (!activeSection) {
+            if (previousActive) {
+                previousActive.classList.remove('scroll-nav__item--active');
+                previousActive.removeAttribute('data-sn-active');
+            }
+
+            return;
+        }
+
+        const newActive = nav.querySelector(
+            '[data-sn-section=' + activeSection.id + ']'
+        );
+
+        if (newActive && newActive !== previousActive) {
+            if (previousActive) {
+                previousActive.classList.remove('scroll-nav__item--active');
+                previousActive.removeAttribute('data-sn-active');
+            }
+            newActive.classList.add('scroll-nav__item--active');
+            newActive.setAttribute('data-sn-active', true);
+        }
     }
+
+    function setupClickHandlers(scrollnav) {
+        const settings = scrollnav.settings;
+
+        function clickHandler(event) {
+            event.preventDefault();
+
+            const activeArea = 70; // window.innerHeight * 0.39;
+            const targetYPosition = getTargetYPosition(event.target, scrollnav.data);
+            const scrollYTarget = targetYPosition - activeArea;
+
+            /* istanbul ignore next */
+            return scrollTo(scrollYTarget, settings.easingStyle).then(() => {
+                if (settings.onScroll) {
+                    settings.onScroll();
+                }
+            });
+        }
+
+        const links = scrollnav.nav.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', clickHandler);
+        });
+    }
+
+    function setupScrollHandler(scrollnav) {
+        function scrollHandler() {
+            const top = window.scrollY || window.pageYOffset || document.body.scrollTop;
+            const boundryTop = top;
+            const boundryBottom = top + 70;
+            const activeSection = getActiveSection(
+                scrollnav.data,
+                boundryTop,
+                boundryBottom
+            );
+
+            updateActiveNavItem(activeSection, scrollnav.nav);
+
+            return activeSection;
+        }
+
+        window.addEventListener('scroll', scrollHandler);
+
+        return scrollHandler;
+    }
+
+    function setupResizeHandler(scrollnav) {
+        function resizeHandler() {
+            scrollnav.data = updatePositionData(scrollnav.data);
+        }
+
+        window.addEventListener('resize', resizeHandler);
+
+        return resizeHandler;
+    }
+
+    function init(elem, options) {
+        console.log('init');
+        const defaults = {
+            sections: 'h2',
+            insertTarget: elem,
+            insertLocation: 'before',
+            easingStyle: 'easeOutQuad'
+        };
+        this.settings = extend(defaults, options);
+
+        const locationOptions = ['append', 'prepend', 'after', 'before'];
+
+        if (!isElement(elem)) {
+            return;
+        }
+
+        if (this.settings.insertTarget && !isElement(this.settings.insertTarget)) {
+            return;
+        }
+
+        if (!locationOptions.includes(this.settings.insertLocation)) {
+            return;
+        }
+
+        const sectionsDom = elem.querySelectorAll(this.settings.sections);
+
+        if (!sectionsDom.length) {
+            return;
+        }
+
+        this.data = populateSectionData(sectionsDom, this.settings);
+        this.nav = createNav(this.data);
+
+        insertNav(this);
+        setupClickHandlers(this);
+        setupScrollHandler(this);
+        setupResizeHandler(this);
+
+        if (this.settings.onInit) return this.settings.onInit();
+    }
+
+    function destory(options) {
+
+    }
+
+    function updatePositions(options) {
+        this.settings = extend(this.settings, options);
+        this.data = updatePositionData(this.data);
+
+        if (this.settings.onUpdatePositions) return this.settings.onUpdatePositions();
+    }
+
 
     return {
-        init: function (h, _) {
-            if (this.settings = f({
-                sections: "h2",
-                insertTarget: h,
-                insertLocation: "before",
-                easingStyle: "easeOutQuad",
-                updateHistory: !0
-            }, _), B(h)) if (!this.settings.insertTarget || B(this.settings.insertTarget)) if (["append", "prepend", "after", "before"].includes(this.settings.insertLocation)) {
-                var I, Q, C, F, R = h.querySelectorAll(this.settings.sections);
-                if (R.length) return this.data = y(R, this.settings), this.nav = w(this.data), Q = (I = this).settings.insertTarget, "append" === (C = I.settings.insertLocation) ? Q.appendChild(I.nav) : "prepend" === C ? Q.insertBefore(I.nav, Q.firstChild) : "before" === C ? Q.parentNode.insertBefore(I.nav, Q) : "after" === C && Q.parentNode.insertBefore(I.nav, Q.nextSibling), O = function (f) {
-                    var h = f.settings;
-
-                    function y(y) {
-                        y.preventDefault();
-                        var w = .39 * window.innerHeight;
-                        return M(L(y.target, f.data) - w, h.easingStyle).then(function () {
-                            h.updateHistory && history.replaceState({}, "", y.target.getAttribute("href")), h.onScroll && h.onScroll()
-                        })
-                    }
-
-                    return f.nav.querySelectorAll("a").forEach(function (f) {
-                        f.addEventListener("click", y)
-                    }), y
-                }(this), x = q(this), j = function (f) {
-                    function h() {
-                        f.data = E(f.data)
-                    }
-
-                    return window.addEventListener("resize", h), h
-                }(this), this.settings.debug && ((F = document.createElement("div")).className = "snDebugger", F.setAttribute("style", "\n      position: fixed;\n      top: 40%;\n      height: 0px;\n      border-bottom:5px solid red;\n      border-top: 5px solid blue;\n      width: 100%;\n      opacity: .5;\n      pointer-events: none;\n    "), document.body.appendChild(F)), this.settings.onInit ? this.settings.onInit() : void 0;
-                this.settings.debug && console.error('\n        scrollnav build failed, could not find any "' + this.settings.sections + '"\n        elements inside of "' + h + '"\n      ')
-            } else this.settings.debug && console.error('\n        scrollnav build failed, options.insertLocation "' + this.settings.insertLocation + '" is not a valid option\n      '); else this.settings.debug && console.error('\n        scrollnav build failed, options.insertTarget "' + h + '" is not an HTML Element\n      '); else this.settings.debug && console.error('\n        scrollnav build failed, content argument "' + h + '" is not an HTML Element\n      ')
-        }, destroy: function (h) {
-            if (this.settings = f(this.settings, h), function (f, h) {
-                f.querySelectorAll("a").forEach(function (f) {
-                    f.removeEventListener("click", h)
-                })
-            }(this.nav, O), function (f) {
-                window.removeEventListener("scroll", f)
-            }(x), function (f) {
-                window.removeEventListener("resize", f)
-            }(j), this.nav.remove(), this.settings.onDestroy) return this.settings.onDestroy()
-        }, updatePositions: function (h) {
-            if (this.settings = f(this.settings, h), this.data = E(this.data), this.settings.onUpdatePositions) return this.settings.onUpdatePositions()
-        }
+        init: init,
+        updatePositions: updatePositions
     }
-});
+})();
+
 
 document.addEventListener('DOMContentLoaded', function () {
     // Key map
@@ -321,46 +557,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    //***** User Menu *****
-    var burgerMenu = document.querySelector('.header .menu-button');
-    var userMenu = document.querySelector('#user-nav');
-
-    burgerMenu.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleNavigation(this, userMenu);
-    });
-
-
-    userMenu.addEventListener('keyup', function (e) {
-        if (e.keyCode === ESCAPE) {
-            e.stopPropagation();
-            closeNavigation(burgerMenu, this);
-        }
-    });
-
-    if (userMenu.children.length === 0) {
-        burgerMenu.style.display = 'none';
-    }
-
     // Submit organization form in the request page
     var requestOrganisationSelect = document.querySelector('#request-organization select');
 
     if (requestOrganisationSelect) {
         requestOrganisationSelect.addEventListener('change', function () {
             closest(this, 'form').submit();
-        });
-    }
-
-    // If a section has more than 6 subsections, we collapse the list, and show a trigger to display them all
-    var seeAllTrigger = document.querySelector("#see-all-sections-trigger");
-    var subsectionsList = document.querySelector(".section-list");
-
-    if (subsectionsList && subsectionsList.children.length > 6) {
-        seeAllTrigger.setAttribute("aria-hidden", false);
-
-        seeAllTrigger.addEventListener("click", function (e) {
-            subsectionsList.classList.remove("section-list--collapsed");
-            seeAllTrigger.parentNode.removeChild(seeAllTrigger);
         });
     }
 
@@ -423,6 +625,29 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    /**
+     * Header user-nav
+     */
+    var burgerMenu = document.querySelector('.header .menu-button');
+    var userMenu = document.querySelector('#user-nav');
+
+    burgerMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleNavigation(this, userMenu);
+    });
+
+
+    userMenu.addEventListener('keyup', function (e) {
+        if (e.keyCode === ESCAPE) {
+            e.stopPropagation();
+            closeNavigation(burgerMenu, this);
+        }
+    });
+
+    if (userMenu.children.length === 0) {
+        burgerMenu.style.display = 'none';
+    }
 
     /**
      * Category page: collapsible category section
@@ -682,7 +907,9 @@ document.addEventListener('DOMContentLoaded', function () {
             faqSection.style.display = 'none';
         }
     }
+});
 
+window.onload = function () {
     /**
      * Hack for table of contents in article page
      */
@@ -692,6 +919,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var sidenavTOC = document.getElementById('scrollnav-toc');
 
         var success = scrollnav.init(articleContent, {
+            sections: 'h2',
+            subSections: 'h3',
             insertTarget: sidenavTOC,
             insertLocation: 'append',
             onInit: function () {
@@ -706,5 +935,4 @@ document.addEventListener('DOMContentLoaded', function () {
             tocTitle.style.display = 'none';
         }
     }
-});
-
+};

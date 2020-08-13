@@ -3,9 +3,9 @@ $header-height: 78px;
 
 .header {
   @include max-width-container;
+  display: flex;
   position: relative;
   align-items: center;
-  display: flex;
   height: $header-height;
   justify-content: space-between;
 }
@@ -22,42 +22,80 @@ $header-height: 78px;
   margin-right: 20px;
 }
 
-.user-nav {
-  @include tablet {
-    position: relative;
-  }
-  display: inline-block;
-  position: absolute;
-  white-space: nowrap;
-}
-
 .nav-wrapper {
-  a {
-    @include tablet {
+  .user-nav {
+    @include desktop {
+      position: relative;
       display: inline-block;
     }
 
-    border: 0;
-    color: $link_color;
     display: none;
-    font-size: $font-size-bigger;
-    padding: 0 20px 0 0;
-    width: auto;
+    position: absolute;
+    white-space: nowrap;
 
-    [dir="rtl"] & {
-      padding: 0 0 0 20px;
+    // expanded on mobile
+    &[aria-expanded="true"] {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      background: $background_color;
+      padding: 20px;
+      z-index: 100;
+      border-bottom: 1px solid $border-color;
+
+      > a {
+        display: block;
+        margin-top: 20px;
+      }
+
+      .search-container {
+        display: block;
+        margin-top: 20px;
+      }
+
+      > .logo {
+        display: block;
+      }
     }
 
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-      color: $link_color;
-      text-decoration: underline;
+    > .logo {
+      display: none;
     }
 
-    &.sign-in {
+    > a {
       display: inline-block;
+      border: 0;
+      margin: 0 20px 0 0;
+      width: auto;
+      font-size: $font-size-bigger;
+      color: $link_color;
+      text-decoration: none;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $link_color;
+        text-decoration: none;
+      }
+    }
+
+    .user-info {
+      @include desktop {
+        display: inline-block;
+      }
+
+      display: none;
+    }
+
+    .sign-out {
+      @include desktop {
+        display: none;
+      }
+
+      display: block;
     }
   }
 
@@ -68,21 +106,26 @@ $header-height: 78px;
   }
 
   .menu-button {
-    @include tablet {
+    @include desktop {
       display: none;
     }
+
+    display: inline-block;
     background: none;
     border: 0;
     color: $link_color;
-    display: inline-block;
     margin-right: 10px;
     padding: 0;
     width: auto;
+    z-index: 101;
+    position: absolute;
+    right: 20px;
+    top: ($header-height) / 2 - 16px;
 
     .icon-menu {
       vertical-align: middle;
-      width: 13px;
-      height: 13px;
+      width: 26px;
+      height: 26px;
     }
 
     [dir="rtl"] & {
@@ -95,6 +138,24 @@ $header-height: 78px;
     &:active {
       background-color: transparent;
       color: $link_color;
+    }
+
+    &[aria-expanded="false"] {
+      .icon-menu.icon-open {
+        display: inline-block;
+      }
+      .icon-menu.icon-close {
+        display: none;
+      }
+    }
+
+    &[aria-expanded="true"] {
+      .icon-menu.icon-open {
+        display: none;
+      }
+      .icon-menu.icon-close {
+        display: inline-block;
+      }
     }
   }
 }
