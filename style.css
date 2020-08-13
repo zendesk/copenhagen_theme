@@ -3722,12 +3722,13 @@ ul {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: stretch;
-  margin-top: 50px;
+  margin-top: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article-list {
     flex-direction: row;
+    margin-top: 50px;
   }
 }
 
@@ -3793,11 +3794,18 @@ ul {
 
 .video-list-item {
   flex: 0 0 100%;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .video-list-item .article-body {
   display: none;
+}
+
+@media (min-width: 768px) {
+  .video-list-item {
+    margin-top: 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -4717,7 +4725,13 @@ ul {
   text-align: center;
   font-size: 40px;
   font-weight: 600;
-  margin: 0 0 50px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .section-container h2 {
+    margin: 0 0 50px;
+  }
 }
 
 /***** Attachments *****/
@@ -5030,6 +5044,12 @@ ul {
   color: #676869;
   font-style: italic;
   padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .comment-body iframe {
+    width: 100%;
+  }
 }
 
 .comment-mark-as-solved {
@@ -5609,6 +5629,12 @@ ul {
   color: #676869;
   font-style: italic;
   padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .post-body iframe {
+    width: 100%;
+  }
 }
 
 .post-footer {
@@ -6776,7 +6802,7 @@ ul {
 /***** Search results *****/
 .search-results {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
   justify-content: space-between;
   /* By default use bold instead of italic to highlight */
@@ -6799,7 +6825,6 @@ ul {
 }
 
 .search-results-sidebar {
-  border-top: 1px solid #e7e8e9;
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -6813,6 +6838,43 @@ ul {
   }
 }
 
+.search-results-sidebar .dropdown-toggle {
+  display: flex;
+  padding: 8px 10px;
+  background-color: #f7f8f9;
+}
+
+.search-results-sidebar .dropdown-toggle span {
+  margin-right: 8px;
+}
+
+.search-results-sidebar .dropdown-toggle span:last-child {
+  margin-right: 0;
+}
+
+.search-results-sidebar .dropdown-toggle-text {
+  vertical-align: top;
+  line-height: 24px;
+}
+
+.search-results-sidebar .dropdown-menu {
+  min-width: 0;
+}
+
+.search-results-sidebar .icon-filter {
+  background-image: url($assets-ic_filter_24x24-png);
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.search-results-sidebar .icon-down {
+  background-image: url($assets-ic_down_24x24-svg);
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
 .search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
   color: #28a7e1;
   text-decoration: none;
@@ -6820,28 +6882,6 @@ ul {
 
 .search-results-sidebar .sidenav-subitem {
   unicode-bidi: embed;
-}
-
-.search-results-sidebar .collapsible-sidebar {
-  margin-bottom: 30px;
-}
-
-.search-results-sidebar .collapsible-sidebar[aria-expanded="false"] .multibrand-filter-list {
-  display: none;
-}
-
-@media (min-width: 1024px) {
-  .search-results-sidebar .collapsible-sidebar[aria-expanded="false"] .multibrand-filter-list {
-    display: block;
-  }
-}
-
-.search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
-  display: none;
-}
-
-.search-results-sidebar .multibrand-filter-list .doc-count {
-  color: #666;
 }
 
 .search-results-sidebar .see-all-filters {
@@ -7378,6 +7418,7 @@ html[dir="rtl"] .notification-left-aligned {
   padding: 20px;
   z-index: 100;
   border-bottom: 1px solid #e7e8e9;
+  box-shadow: 0 2px 20px 2px #eee;
 }
 
 .nav-wrapper .user-nav[aria-expanded="true"] > a {
@@ -7816,7 +7857,13 @@ html[dir="rtl"] .notification-left-aligned {
 
 /* Home get started */
 .home-section .home-get-started {
-  padding-top: 60px;
+  padding-top: 20px;
+}
+
+@media (min-width: 768px) {
+  .home-section .home-get-started {
+    padding-top: 60px;
+  }
 }
 
 .home-section .home-get-started-blocks {
@@ -7824,7 +7871,13 @@ html[dir="rtl"] .notification-left-aligned {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
-  margin: 60px -12px 40px;
+  margin: 20px -12px 40px;
+}
+
+@media (min-width: 768px) {
+  .home-section .home-get-started-blocks {
+    margin: 60px -12px 40px;
+  }
 }
 
 .home-section .home-get-started-block {
@@ -8108,6 +8161,12 @@ html[dir="rtl"] .notification-left-aligned {
   color: #676869;
   font-style: italic;
   padding: 0 15px;
+}
+
+@media (max-width: 768px) {
+  .article-body iframe {
+    width: 100%;
+  }
 }
 
 .article-body > p:last-child {

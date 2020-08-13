@@ -45,6 +45,7 @@ $header-height: 78px;
       padding: 20px;
       z-index: 100;
       border-bottom: 1px solid $border-color;
+      box-shadow: 0 2px 20px 2px #eee;
 
       > a {
         display: block;

@@ -94,14 +94,21 @@
 /* Home get started */
 .home-section {
   .home-get-started {
-    padding-top: 60px;
+    @include tablet {
+      padding-top: 60px;
+    }
+    padding-top: 20px;
 
     &-blocks {
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-between;
-      margin: 60px -12px 40px;
+      margin: 20px -12px 40px;
+
+      @include tablet {
+        margin: 60px -12px 40px;
+      }
     }
 
     &-block {

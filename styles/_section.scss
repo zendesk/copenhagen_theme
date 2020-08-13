@@ -19,10 +19,17 @@
   padding-bottom: 80px;
 
   h2 {
+    @include tablet {
+      margin: 0 0 50px;
+    }
     text-align: center;
     font-size: 40px;
     font-weight: 600;
-    margin: 0 0 50px;
+    margin: 0;
+  }
+
+  .article-list {
+
   }
 }
 

@@ -2,14 +2,15 @@
 
 // article
 .article-list {
-  @include desktop {
+  @include tablet {
     flex-direction: row;
+    margin-top: 50px;
   }
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   align-items: stretch;
-  margin-top: 50px;
+  margin-top: 0;
 }
 
 .article-list-item {
@@ -75,7 +76,12 @@
     display: none;
   }
 
+  @include tablet {
+    margin-top: 0;
+  }
+
   flex: 0 0 100%; // 1 columns
+  margin-top: 20px;
   margin-bottom: 20px;
 
   @include tablet {

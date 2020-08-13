@@ -5,7 +5,7 @@
   }
 
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   flex-wrap: wrap;
   justify-content: space-between;
 
@@ -20,7 +20,6 @@
 
   // sidebar
   &-sidebar {
-    border-top: 1px solid $border-color;
     flex: 1 0 auto;
     margin-bottom: 20px;
     padding: 0;
@@ -29,6 +28,43 @@
       border: 0;
       flex: 0 0 20%;
       height: auto;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      padding: 8px 10px;
+      background-color: $grey_background_color;
+
+      span {
+        margin-right: 8px;
+      }
+
+      span:last-child {
+        margin-right: 0;
+      }
+    }
+
+    .dropdown-toggle-text {
+      vertical-align: top;
+      line-height: 24px;
+    }
+
+    .dropdown-menu {
+      min-width: 0;
+    }
+
+    .icon-filter {
+      background-image: url($assets-ic_filter_24x24-png);
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+
+    .icon-down {
+      background-image: url($assets-ic_down_24x24-svg);
+      display: inline-block;
+      width: 24px;
+      height: 24px;
     }
 
     .sidenav-item {
@@ -41,27 +77,6 @@
 
     .sidenav-subitem {
       unicode-bidi: embed;
-    }
-
-    .collapsible-sidebar {
-      margin-bottom: 30px;
-
-      &[aria-expanded="false"] {
-        .multibrand-filter-list {
-          display: none;
-          @include desktop {
-            display: block;
-          }
-        }
-      }
-    }
-
-    .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
-      display: none;
-    }
-
-    .multibrand-filter-list .doc-count {
-      color: $field-text-color;
     }
 
     .see-all-filters {

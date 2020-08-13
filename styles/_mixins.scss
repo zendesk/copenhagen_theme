@@ -75,7 +75,9 @@
     list-style-type: disc;
   }
 
-  a:visited { color: $visited-link-color; }
+  a:visited {
+    color: $visited-link-color;
+  }
 
   code {
     background: $primary-shade;
@@ -99,6 +101,12 @@
     color: $secondary-text-color;
     font-style: italic;
     padding: 0 15px;
+  }
+
+  iframe {
+    @include mobile {
+      width: 100%;
+    }
   }
 }
 
