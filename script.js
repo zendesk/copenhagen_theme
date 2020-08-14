@@ -397,4 +397,43 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  const splitAt = (n, xs) => [xs.slice(0, n), xs.slice(n)];
+
+  const makePlaceholder = () => "data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7";
+
+  const makeTruncateElement = (achievements) => {
+    const txt = achievements.map(({description}) => description).join("\n");
+    const span = document.createElement("span");
+    const img = document.createElement("img");
+    img.setAttribute("src", makePlaceholder(achievements.length));
+    span.setAttribute("title", txt);
+    span.appendChild(img);
+    return span;
+  };
+
+  const recoverAchievement = (elt) => {
+    const img = elt.firstElementChild;
+    return {
+      badgeCategorySlug: elt.dataset.badgeCategorySlug,
+      description: img.getAttribute("alt"),
+      iconUrl: img.getAttribute("src")
+    };
+  };
+
+  const showAchievements = 5;
+  function truncateAchievement(container) {
+    const achievements = [...container.children];
+    if(achievements.length <= showAchievements) return;
+    const [show, hidden] = splitAt(showAchievements, achievements);
+    hidden.forEach((elt) => elt.remove());
+    const truncateElement = makeTruncateElement(hidden.map(recoverAchievement));
+    container.appendChild(truncateElement);
+  }
+
+  function truncateAchievements() {
+    Array.prototype.forEach.call(document.querySelectorAll(".achievements"), truncateAchievement);
+  }
+
+  truncateAchievements();
 });
