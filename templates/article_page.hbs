@@ -212,7 +212,12 @@
                             {{/link}}
                             {{#each author.badges}}
                               {{#is category_slug "titles"}}
-                                <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">{{name}}</span>
+                                <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">
+                                  {{#if icon_url}}
+                                    <img src="{{icon_url}}" alt="" />
+                                  {{/if}}
+                                  {{name}}
+                                </span>
                               {{/is}}
                             {{/each}}
                           </span>
