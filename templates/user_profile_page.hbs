@@ -253,15 +253,15 @@
 
               <div class="profile-badges-items">
                 {{#each user.badges}}
-                  <div class="profile-badges-item">
+                  <section role="region" class="profile-badges-item" aria-labelledby="title-{{id}}" aria-describedby="desc-{{id}}">
                     <div class="profile-badges-item-image">
-                      <img class="badge" src="{{icon_url}}">
+                      <img class="badge" src="{{icon_url}}" alt="">
                     </div>
                     <div>
-                      <div class="profile-badges-item-title">
+                      <div id="title-{{id}}" class="profile-badges-item-title">
                         {{name}}
                       </div>
-                      <p class="profile-badges-item-description">
+                      <p id="desc-{{id}}" class="profile-badges-item-description">
                         {{description}}
                       </p>
                     </div>
@@ -273,7 +273,7 @@
                         {{date assigned_at format='medium'}}
                       </p>
                     </div>
-                  </div>
+                  </section>
                 {{/each}}
               </div>
             {{else}}
