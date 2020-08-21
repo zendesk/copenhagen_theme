@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/zendesk/copenhagen_theme/compare/v2.3.0...v2.3.1) (2020-07-13)
+
+
+### Bug Fixes
+
+* **split-button:** correct button height and hover-color ([21d8db7](https://github.com/zendesk/copenhagen_theme/commit/21d8db734eac4a37d3c0d6d650e2ae8d415cd1ef))
+
 # [2.3.0](https://github.com/zendesk/copenhagen_theme/compare/v2.2.4...v2.3.0) (2020-06-24)
 
 

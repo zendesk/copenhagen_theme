@@ -3,14 +3,18 @@
   display: flex;
 }
 
+.split-button button:hover {
+  @extend .button-primary:hover;
+}
+
 .split-button button {
   @extend .button;
   background-color: $brand_color;
   border: 0;
   color: $brand_text_color;
-  line-height: normal;
+  height: 32px;
+  line-height: 16px;
   outline-color: $brand_color;
-  padding: 8px 20px;
 }
 
 .split-button button:not(:only-child) {
@@ -29,6 +33,9 @@
   }
 
   &:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 26px;
     min-width: 26px;
     max-width: 26px;
