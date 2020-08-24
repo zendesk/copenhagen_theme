@@ -255,7 +255,9 @@
                 {{#each user.badges}}
                   <section role="region" class="profile-badges-item" aria-labelledby="title-{{id}}" aria-describedby="desc-{{id}}">
                     <div class="profile-badges-item-image">
-                      <img class="badge" src="{{icon_url}}" alt="">
+                      {{#if icon_url}}
+                        <img class="badge" src="{{icon_url}}" alt="">
+                      {{/if}}
                     </div>
                     <div>
                       <div id="title-{{id}}" class="profile-badges-item-title">
