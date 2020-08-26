@@ -2754,6 +2754,49 @@ ul {
   }
 }
 
+/***** Community Badges *****/
+/* Styles labels used next to the authors of article comments, community posts, and community comments */
+.community-badge-titles {
+  background-color: #04444D;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 2px;
+  padding: 2px 8px;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.community-badge-container-achievements {
+  margin-top: 0.4em;
+}
+
+.community-badge-achievements {
+  display: inline-block;
+  margin-right: 0.5em;
+}
+
+.community-badge-achievements img {
+  width: 22px;
+  height: 22px;
+}
+
+.community-badge-titles img {
+  width: 1.6em;
+  height: 1.6em;
+  margin-top: -0.2em;
+  margin-bottom: -0.2em;
+  vertical-align: text-bottom;
+}
+
+.profile-info .community-badge-achievements img {
+  width: 40px;
+  height: 40px;
+}
+
 /* Navigation element that collapses on mobile */
 .collapsible-nav {
   flex-direction: column;
@@ -3515,6 +3558,14 @@ ul {
   display: block;
 }
 
+.meta-group-opposite {
+  float: right;
+}
+
+[dir="rtl"] .meta-group-opposite {
+  float: left;
+}
+
 .meta-group * {
   display: inline;
 }
@@ -3567,8 +3618,8 @@ ul {
 }
 
 .profile-avatar .user-avatar {
-  width: 65px;
-  height: 65px;
+  width: 80px;
+  height: 80px;
 }
 
 .profile-avatar .icon-agent {
@@ -3865,6 +3916,60 @@ ul {
     margin-left: 0;
     margin-right: 20px;
   }
+}
+
+.profile-badges-items {
+  margin-top: 25px;
+}
+
+.profile-badges-item {
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 27px 12px;
+}
+
+.profile-badges-item > div {
+  padding-right: 12px;
+  padding-left: 12px;
+}
+
+.profile-badges-item-image {
+  height: 40px;
+  width: 40px;
+  margin-right: 12px;
+}
+
+.profile-badges-item-image img {
+  max-height: 40px;
+}
+
+.profile-badges-item-title, .profile-badges-item-metadata-title {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.profile-badges-item-title {
+  font-weight: 600;
+}
+
+.profile-badges-item-description, .profile-badges-item-metadata-description {
+  color: lighten($text_color, 20%);
+  font-size: 13px;
+  margin: 0;
+}
+
+.profile-badges-item-metadata {
+  margin-left: auto;
+  text-align: right;
+}
+
+[dir="rtl"] .profile-badges-item-metadata {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
 }
 
 .profile-contribution {

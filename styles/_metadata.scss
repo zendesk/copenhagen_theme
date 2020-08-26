@@ -3,6 +3,14 @@
   display: block;
 }
 
+.meta-group-opposite {
+  float: right;
+}
+
+[dir="rtl"] .meta-group-opposite {
+  float: left;
+}
+
 .meta-group * {
   display: inline;
 }

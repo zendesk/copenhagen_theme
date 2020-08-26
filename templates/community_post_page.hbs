@@ -61,9 +61,18 @@
                   {{#link 'user_profile' id=post.author.id}}
                     {{post.author.name}}
                   {{/link}}
+                  {{#each post.author.badges}}
+                    {{#is category_slug "titles"}}
+                      <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">
+                        {{#if icon_url}}
+                          <img src="{{icon_url}}" alt="" />
+                        {{/if}}
+                        {{name}}
+                      </span>
+                    {{/is}}
+                  {{/each}}
                 </span>
-
-                <ul class="meta-group">
+                <ul class="meta-group meta-group-opposite">
                   {{#if post.editor}}
                     <li class="meta-data">{{date post.edited_at timeago=true}}</li>
                     <li class="meta-data">{{t 'edited'}}</li>
@@ -71,6 +80,17 @@
                     <li class="meta-data">{{date post.created_at timeago=true}}</li>
                   {{/if}}
                 </ul>
+                <div class="community-badge-container-achievements">
+                  {{#each post.author.badges}}
+                    {{#is category_slug "achievements"}}
+                      {{#if icon_url}}
+                        <div class="community-badge community-badge-{{category_slug}}">
+                          <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
+                        </div>
+                      {{/if}}
+                    {{/is}}
+                  {{/each}}
+                </div>
               </div>
 
               {{#if post.pending}}
@@ -178,9 +198,19 @@
                       {{#link 'user_profile' id=author.id}}
                         {{author.name}}
                       {{/link}}
+                      {{#each author.badges}}
+                        {{#is category_slug "titles"}}
+                          <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">
+                            {{#if icon_url}}
+                              <img src="{{icon_url}}" alt="" />
+                            {{/if}}
+                            {{name}}
+                          </span>
+                        {{/is}}
+                      {{/each}}
                     </span>
 
-                    <ul class="meta-group">
+                    <ul class="meta-group meta-group-opposite">
                       {{#if editor}}
                         <li class="meta-data">{{date edited_at timeago=true}}</li>
                         <li class="meta-data">{{t 'edited'}}</li>
@@ -188,6 +218,19 @@
                         <li class="meta-data">{{date created_at timeago=true}}</li>
                       {{/if}}
                     </ul>
+
+                    <div class="community-badge-container-achievements">
+                      {{#each author.badges}}
+                        {{#is category_slug "achievements"}}
+                          {{#if icon_url}}
+                            <div class="community-badge community-badge-{{category_slug}}">
+                              <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
+                            </div>
+                          {{/if}}
+                        {{/is}}
+                      {{/each}}
+                    </div>
+
                   </div>
                   <div class="comment-labels">
                     {{#with ticket}}

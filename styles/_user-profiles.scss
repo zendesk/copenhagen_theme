@@ -36,8 +36,8 @@
 }
 
 .profile-avatar .user-avatar {
-  width: 65px;
-  height: 65px;
+  width: 80px;
+  height: 80px;
 }
 
 .profile-avatar .icon-agent {
@@ -313,6 +313,64 @@
     [dir="rtl"] & {
       margin-left: 0;
       margin-right: 20px;
+    }
+  }
+}
+
+// Profile badges
+
+.profile-badges {
+  &-items {
+    margin-top: 25px;
+  }
+
+  &-item {
+    border-top: 1px solid $border-color;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 27px 12px;
+
+    & > div {
+      padding-right: 12px;
+      padding-left: 12px;
+    }
+
+    &-image {
+      height: 40px;
+      width: 40px;
+      margin-right: 12px;
+
+      img {
+        max-height: 40px;
+      }
+    }
+
+    &-title, &-metadata-title {
+      font-size: $font-size-base;
+      margin-bottom: 10px;
+    }
+
+    &-title {
+      font-weight: $font-weight-semibold;
+    }
+
+    &-description, &-metadata-description {
+      color: $secondary-text-color;
+      font-size: $font-size-small;
+      margin: 0;
+    }
+
+    &-metadata {
+      margin-left: auto;
+      text-align: right;
+
+      [dir="rtl"] & {
+        margin-left: 0;
+        margin-right: auto;
+        text-align: left;
+      }
     }
   }
 }
