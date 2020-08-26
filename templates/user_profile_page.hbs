@@ -20,7 +20,7 @@
             {{#is category_slug "titles"}}
               <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">
                 {{#if icon_url}}
-                	<img src="{{icon_url}}" alt="" />
+                  <img src="{{icon_url}}" alt="" />
                 {{/if}}
                 {{name}}
               </span>
@@ -316,7 +316,7 @@
               <ul class="profile-contribution-list profile-{{current_filter.identifier}}">
                 {{#each contributions}}
 
-                  <li class="profile-contribu tion">
+                  <li class="profile-contribution">
                     <span class="profile-contribution-icon" aria-hidden="true">
                       {{#is object_type "article"}}
                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
