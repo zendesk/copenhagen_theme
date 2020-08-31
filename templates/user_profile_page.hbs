@@ -18,7 +18,7 @@
           {{/if}}
           {{#each user.badges}}
             {{#is category_slug "titles"}}
-              <span class="community-badge community-badge-{{category_slug}}" title="{{description}}">
+              <span class="community-badge community-badge-titles" title="{{description}}" aria-label="{{name}}">
                 {{#if icon_url}}
                   <img src="{{icon_url}}" alt="" />
                 {{/if}}
@@ -31,8 +31,8 @@
           {{#each user.badges}}
             {{#is category_slug "achievements"}}
               {{#if icon_url}}
-                <div class="community-badge community-badge-{{category_slug}}">
-                  <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
+                <div class="community-badge community-badge-achievements">
+                  <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" aria-label="{{name}}" />
                 </div>
               {{/if}}
             {{/is}}
@@ -250,9 +250,9 @@
               <span class="profile-section-description">{{t 'badges_description' name=user.name}}</span>
             </header>
 
-            <div class="profile-badges-items">
+            <ul class="profile-badges-items">
               {{#each user.badges}}
-                <section role="region" class="profile-badges-item" aria-labelledby="title-{{id}}" aria-describedby="desc-{{id}}">
+                <li role="region" class="profile-badges-item" aria-labelledby="title-{{id}}" aria-describedby="desc-{{id}}">
                   <div class="profile-badges-item-image">
                     {{#if icon_url}}
                       <img class="badge" src="{{icon_url}}" alt="">
@@ -274,9 +274,9 @@
                       {{date assigned_at format='medium'}}
                     </p>
                   </div>
-                </section>
+                </li>
               {{/each}}
-            </div>
+            </ul>
           {{else}}
             <span class="no-activity">{{t 'no_badges'}}</span>
           {{/if}}
