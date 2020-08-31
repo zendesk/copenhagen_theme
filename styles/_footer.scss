@@ -82,6 +82,13 @@
       top: 4px;
     }
 
+    i.fa-bilibili {
+      background-repeat: no-repeat;
+      background-position-x: 9px;
+      background-position-y: 9px;
+      background-image: url($assets-ic_fa_bilibili_22x22-png);
+    }
+
     .contact-item {
       margin-left: 50px;
       font-size: $font-size-small;
@@ -102,6 +109,23 @@
 
       i {
         border-radius: 10%;
+      }
+    }
+
+    .footer-modal {
+      position: absolute;
+      bottom: 0;
+      left: -185px;
+      background-color: white;
+      margin-bottom: 1rem;
+      display: none;
+      box-shadow: 0 5px 20px #999;
+      border-radius: 4px;
+
+      img {
+        display: block;
+        width: 180px;
+        height: 180px;
       }
     }
   }

@@ -3,6 +3,10 @@
         background-image: url({{asset 'pic_nav_logo_white_236x34.png' }});
     }
 
+    .header > .logo .logo-image-zh {
+        background-image: url({{asset 'pic_nav_logo_white_zh_242x34.png' }});
+    }
+
     .nav-wrapper .user-nav > a, .nav-wrapper .user-nav > a:hover {
         color: #fff;
     }
@@ -32,7 +36,7 @@
 
 <section id="main-content" class="section hero">
     <div class="hero-title">
-        <span>How can we help you?</span>
+        <span>{{dc 'home_hero_title'}}</span>
     </div>
     <div class="hero-inner">
         <h2 class="visibility-hidden">{{ t 'search' }}</h2>
@@ -74,20 +78,18 @@
 
 <section class="home-section home-section-default">
     <div class="container home-get-started">
-        <h2>New to Snapmaker? Get started here.</h2>
+        <h2>{{dc 'home_get_started'}}</h2>
         <div class="home-get-started-blocks">
+            <!--
             <div class="home-get-started-block">
-                <img src="{{asset 'ic_youtube_60x60.png' }}" alt="" />
+                <span class="icon-discussion"></span>
                 <h3>Youtube Channel</h3>
                 <p>See what’s new in the video tutorials, third-party reviews, and many more.</p>
                 <a href="https://www.youtube.com/channel/UCtXHu_nugZF3uxgJJjZfcoA" target="_blank">Watch now</a>
             </div>
-            <div class="home-get-started-block">
-                <img src="{{asset 'ic_discussion_60x60.png' }}" alt="" />
-                <h3>Popular Discussions</h3>
-                <p>View the top and latest topics, or search for help on our forum.</p>
-                <a href="https://forum.snapmaker.com" target="_blank">Visit forum</a>
-            </div>
+            -->
+            {{dc 'home_get_started_youtube'}}
+            {{dc 'home_get_started_discussion_block'}}
         </div>
     </div>
 </section>
@@ -119,15 +121,23 @@
 
 <section class="home-section home-section-grey">
     <div class="container home-need-help">
-        <h2 class="home-need-help-title">Still need help?</h2>
-        <p class="home-need-help-desc">Get solutions from Snapmaker Team by sending an inquiry.</p>
+        <h2 class="home-need-help-title">{{dc 'home_need_help'}}</h2>
+        <p class="home-need-help-desc">{{dc 'home_need_help_desc'}}</p>
         <div class="home-need-help-buttons">
             <a class="button button-primary" href="javascript:void(0)" onclick="zE(function() { zE.activate() });">
                 {{t 'submit_a_request' }}
             </a>
-            <a class="button button-secondary" href="https://forum.snapmaker.com" target="_blank">
-                Visit the forum
+            {{!
+            <a id="home-need-help-weixin-button" class="button button-secondary" href="https://forum.snapmaker.com" target="_blank">
+                Visit to the forum
             </a>
+            }}
+            {{dc 'home_need_help_button2'}}
+            <div id="home-weixin-qrcode">
+                <div class="home-need-help-modal">
+                    <img src="{{asset 'pic_weixin_qrcode_120x120.png'}}" alt="" />
+                </div>
+            </div>
         </div>
     </div>
 </section>

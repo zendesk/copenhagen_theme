@@ -7389,6 +7389,13 @@ html[dir="rtl"] .notification-left-aligned {
   height: 34px;
 }
 
+.logo .logo-image-zh {
+  background-image: url($assets-pic_nav_logo_black_zh_242x34-png);
+  display: inline-block;
+  width: 242px;
+  height: 34px;
+}
+
 .header .search-container {
   display: inline-block;
   margin-right: 20px;
@@ -7669,6 +7676,13 @@ html[dir="rtl"] .notification-left-aligned {
   top: 4px;
 }
 
+.footer-column-4 i.fa-bilibili {
+  background-repeat: no-repeat;
+  background-position-x: 9px;
+  background-position-y: 9px;
+  background-image: url($assets-ic_fa_bilibili_22x22-png);
+}
+
 .footer-column-4 .contact-item {
   margin-left: 50px;
   font-size: 13px;
@@ -7690,6 +7704,23 @@ html[dir="rtl"] .notification-left-aligned {
 
 .footer-column-4 .contact-us-social-item i {
   border-radius: 10%;
+}
+
+.footer-column-4 .footer-modal {
+  position: absolute;
+  bottom: 0;
+  left: -185px;
+  background-color: white;
+  margin-bottom: 1rem;
+  display: none;
+  box-shadow: 0 5px 20px #999;
+  border-radius: 4px;
+}
+
+.footer-column-4 .footer-modal img {
+  display: block;
+  width: 180px;
+  height: 180px;
 }
 
 .footer .language-selector {
@@ -7888,10 +7919,31 @@ html[dir="rtl"] .notification-left-aligned {
   position: relative;
 }
 
-.home-section .home-get-started-block img {
+.home-section .home-get-started-block .icon-youtube {
   position: absolute;
   display: inline-block;
   margin: 30px 12px;
+  width: 60px;
+  height: 60px;
+  background-image: url($assets-ic_youtube_60x60-png);
+}
+
+.home-section .home-get-started-block .icon-bilibili {
+  position: absolute;
+  display: inline-block;
+  margin: 30px 12px;
+  width: 60px;
+  height: 60px;
+  background-image: url($assets-ic_bilibili_60x60-png);
+}
+
+.home-section .home-get-started-block .icon-discussion {
+  position: absolute;
+  display: inline-block;
+  margin: 30px 12px;
+  width: 60px;
+  height: 60px;
+  background-image: url($assets-ic_discussion_60x60-png);
 }
 
 .home-section .home-get-started-block h3 {
@@ -7946,7 +7998,31 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .home-section .home-need-help-buttons .button, .home-section .home-need-help-buttons .split-button button, .split-button .home-section .home-need-help-buttons button, .home-section .home-need-help-buttons .community-follow button, .community-follow .home-section .home-need-help-buttons button, .home-section .home-need-help-buttons .requests-table-toolbar .organization-subscribe button, .requests-table-toolbar .organization-subscribe .home-section .home-need-help-buttons button, .home-section .home-need-help-buttons .subscriptions-subscribe button, .subscriptions-subscribe .home-section .home-need-help-buttons button, .home-section .home-need-help-buttons .pagination-next-link, .home-section .home-need-help-buttons .pagination-prev-link, .home-section .home-need-help-buttons .pagination-first-link, .home-section .home-need-help-buttons .pagination-last-link, .home-section .home-need-help-buttons .article-subscribe button, .article-subscribe .home-section .home-need-help-buttons button {
+  width: 192px;
   margin: 0 12px;
+}
+
+.home-section .home-need-help #home-weixin-qrcode {
+  position: absolute;
+  display: none;
+}
+
+.home-section .home-need-help #home-weixin-qrcode .home-need-help-modal {
+  display: block;
+  position: absolute;
+  left: 12px;
+  top: 43px;
+  background-color: $background_color;
+  width: 192px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px #979899;
+}
+
+.home-section .home-need-help #home-weixin-qrcode img {
+  display: block;
+  width: 120px;
+  margin: 30px 38px;
 }
 
 /***** Article *****/

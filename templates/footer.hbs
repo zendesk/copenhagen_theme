@@ -9,17 +9,20 @@
         </div>
 
         <div class="footer-column-2">
-            <div class="mb-3">
+            {{!
+            <div>
                 <h2>Products</h2>
                 <ul>
                     <li><a href="https://snapmaker.com/product">Snapmaker Original</a></li>
                     <li><a href="https://snapmaker.com/platform">Snapmaker 2.0</a></li>
                 </ul>
             </div>
-
+            }}
+            {{dc 'footer_product_block'}}
         </div>
 
         <div class="footer-column-3">
+            {{!
             <div>
                 <h2>Learn</h2>
                 <ul>
@@ -28,10 +31,13 @@
                     <li><a href="https://shop.snapmaker.com/blogs/blog" target="_blank">Blog</a></li>
                 </ul>
             </div>
+            }}
+            {{dc 'footer_learn_block'}}
         </div>
 
         <div class="footer-column-4">
             <div>
+                {{!
                 <h2>Contact Us</h2>
                 <div class="contact-us-block">
                     <i class="fa fa-envelope"></i>
@@ -54,7 +60,10 @@
                         Office Hours: Monday to Friday, 9:30-18:30 (GMT+8:00)
                     </p>
                 </div>
+                }}
+                {{dc 'footer_contact_us_block_fragment1'}}
                 <div class="contact-us-social">
+                    {{!
                     <a class="contact-us-social-item" href="https://www.facebook.com/snapmaker/" target="_blank">
                         <i class="fa fa-facebook"></i>
                     </a>
@@ -67,6 +76,11 @@
                     <a class="contact-us-social-item" href="https://www.instagram.com/snapmakerinc/" target="_blank">
                         <i class="fa fa-instagram"></i>
                     </a>
+                    }}
+                    <div class="footer-modal" id="footer-weixin-qrcode">
+                        <img src="{{asset 'pic_weixin_official_qrcode_258x258.jpg'}}" alt="" />
+                    </div>
+                    {{dc 'footer_contact_us_block_fragment2'}}
                     {{#if alternative_locales}}
                         <div class="dropdown language-selector">
                             <button class="dropdown-toggle" aria-haspopup="true">

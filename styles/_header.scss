@@ -17,6 +17,13 @@ $header-height: 78px;
   height: 34px;
 }
 
+.logo .logo-image-zh {
+  background-image: url($assets-pic_nav_logo_black_zh_242x34-png);
+  display: inline-block;
+  width: 242px;
+  height: 34px;
+}
+
 .header .search-container {
   display: inline-block;
   margin-right: 20px;
@@ -145,6 +152,7 @@ $header-height: 78px;
       .icon-menu.icon-open {
         display: inline-block;
       }
+
       .icon-menu.icon-close {
         display: none;
       }
@@ -154,6 +162,7 @@ $header-height: 78px;
       .icon-menu.icon-open {
         display: none;
       }
+
       .icon-menu.icon-close {
         display: inline-block;
       }

@@ -627,48 +627,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     /**
-     * Header user-nav
-     */
-    var burgerMenu = document.querySelector('.header .menu-button');
-    var userMenu = document.querySelector('#user-nav');
-
-    burgerMenu.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleNavigation(this, userMenu);
-    });
-
-
-    userMenu.addEventListener('keyup', function (e) {
-        if (e.keyCode === ESCAPE) {
-            e.stopPropagation();
-            closeNavigation(burgerMenu, this);
-        }
-    });
-
-    if (userMenu.children.length === 0) {
-        burgerMenu.style.display = 'none';
-    }
-
-    /**
-     * Category page: collapsible category section
-     */
-    function toggleCategorySection(categorySection, toggle) {
-        var isExpanded = categorySection.getAttribute('aria-expanded') === 'true';
-        categorySection.setAttribute('aria-expanded', !isExpanded);
-        toggle.setAttribute('aria-expanded', !isExpanded);
-    }
-
-    var categorySections = document.querySelectorAll('.category-section');
-    categorySections.forEach(function (el) {
-        var header = el.querySelector('.category-section-header');
-        var toggle = el.querySelector('.category-section-toggle');
-
-        header.addEventListener('click', function (e) {
-            toggleCategorySection(el, toggle);
-        })
-    });
-
-    /**
      * Dropdown
      */
     function Dropdown(toggle, menu) {
@@ -835,6 +793,83 @@ document.addEventListener('DOMContentLoaded', function () {
                 dropdown.dismiss();
             }
         });
+    });
+
+    /**
+     * Header user-nav
+     */
+    var burgerMenu = document.querySelector('.header .menu-button');
+    var userMenu = document.querySelector('#user-nav');
+
+    burgerMenu.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleNavigation(this, userMenu);
+    });
+
+
+    userMenu.addEventListener('keyup', function (e) {
+        if (e.keyCode === ESCAPE) {
+            e.stopPropagation();
+            closeNavigation(burgerMenu, this);
+        }
+    });
+
+    if (userMenu.children.length === 0) {
+        burgerMenu.style.display = 'none';
+    }
+
+    /**
+     * Footer weixin QR Code
+     */
+    const footer = document.querySelector('.footer');
+    const footerWeixinIcon = footer.querySelector('.fa-weixin');
+    if (footerWeixinIcon) {
+        const qrcode = footer.querySelector('#footer-weixin-qrcode');
+        footerWeixinIcon.addEventListener('mouseover', function (e) {
+            qrcode.style.display = 'block';
+        });
+        footerWeixinIcon.addEventListener('mouseout', function (e) {
+            qrcode.style.display = 'none';
+        });
+    }
+
+    /**
+     * Home page
+     */
+    const homeNeedHelpSection = document.querySelector('.home-need-help');
+    if (homeNeedHelpSection) {
+        const needHelpWeixinButton = homeNeedHelpSection.querySelector('#home-need-help-weixin-button');
+
+        if (needHelpWeixinButton) {
+            console.log('?', needHelpWeixinButton);
+            const qrcode = homeNeedHelpSection.querySelector('#home-weixin-qrcode');
+            console.log('!', qrcode);
+            needHelpWeixinButton.addEventListener('mouseover', function (e) {
+                qrcode.style.display = 'block';
+            });
+            needHelpWeixinButton.addEventListener('mouseout', function (e) {
+                qrcode.style.display = 'none';
+            });
+        }
+    }
+
+    /**
+     * Category page: collapsible category section
+     */
+    function toggleCategorySection(categorySection, toggle) {
+        var isExpanded = categorySection.getAttribute('aria-expanded') === 'true';
+        categorySection.setAttribute('aria-expanded', !isExpanded);
+        toggle.setAttribute('aria-expanded', !isExpanded);
+    }
+
+    var categorySections = document.querySelectorAll('.category-section');
+    categorySections.forEach(function (el) {
+        var header = el.querySelector('.category-section-header');
+        var toggle = el.querySelector('.category-section-toggle');
+
+        header.addEventListener('click', function (e) {
+            toggleCategorySection(el, toggle);
+        })
     });
 
     /**
