@@ -2765,29 +2765,22 @@ ul {
   padding: 2px 8px;
   vertical-align: middle;
   white-space: nowrap;
-  display: inline-block;
-  margin-left: 10px;
-  margin-right: 2px;
-}
-
-[dir="rtl"] .community-badge-titles {
-  margin-right: 10px;
-  margin-left: 2px;
+  display: inline-flex;
+  line-height: 20px;
+  margin: 0 2px;
 }
 
 .community-badge-container-achievements {
-  margin-top: 5px;
+  padding-top: 5px;
 }
 
 .community-badge-achievements {
   display: inline-block;
-  margin-left: 0px;
-  margin-right: 5px;
+  margin: 0 3px 0 0;
 }
 
 [dir="rtl"] .community-badge-achievements {
-  margin-right: 0px;
-  margin-left: 0px;
+  margin: 0 0 0 3px;
 }
 
 .community-badge-achievements img {
@@ -2796,11 +2789,8 @@ ul {
 }
 
 .community-badge-titles img {
-  width: 1.6em;
-  height: 1.6em;
-  margin-top: -0.2em;
-  margin-bottom: -0.2em;
-  vertical-align: text-bottom;
+  width: 20px;
+  height: 20px;
 }
 
 .profile-info .community-badge-achievements img {
@@ -3654,6 +3644,7 @@ ul {
 
 .profile-header .basic-info .name {
   margin: 0;
+  line-height: 25px;
 }
 
 .profile-header .options {
@@ -3955,6 +3946,11 @@ ul {
 
 .profile-badges-item-image img {
   max-height: 40px;
+}
+
+[dir="rtl"] .profile-badges-item-image {
+  margin-left: 12px;
+  margin-right: 0;
 }
 
 .profile-badges-item-title, .profile-badges-item-metadata-title {

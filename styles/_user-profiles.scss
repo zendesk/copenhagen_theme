@@ -56,6 +56,7 @@
 
   .name {
     margin: 0;
+    line-height: 25px;
   }
 }
 
@@ -345,9 +346,15 @@
       img {
         max-height: 40px;
       }
+
+      [dir="rtl"] & {
+        margin-left: 12px;
+        margin-right: 0;
+      }
     }
 
-    &-title, &-metadata-title {
+    &-title,
+    &-metadata-title {
       font-size: $font-size-base;
       margin-bottom: 10px;
     }
@@ -356,7 +363,8 @@
       font-weight: $font-weight-semibold;
     }
 
-    &-description, &-metadata-description {
+    &-description,
+    &-metadata-description {
       color: $secondary-text-color;
       font-size: $font-size-small;
       margin: 0;
