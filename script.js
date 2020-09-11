@@ -507,14 +507,45 @@ $.get(
 		"/articles.json?label_names=alert"
 ).done(function (data) {
 	$.each(data.articles, function (index, item) {
-		var style1 =
-			'<div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show"><div class="ns-box-inner"><span class="megaphone"></span></i><div class="ns-article"><p class="notification-title-width">' +
-			item.title +
-			"</a>" +
-			'<div class="notification-body-width">' +
-			item.body +
-			"</div></p></div></div></div>";
+		var style1 = `
+			<div class="ns-box ns-box--alert ns-bar ns-effect-slidetop ns-type-notice ns-show">
+				<div class="ns-box-inner">
+					<span class="material-icons yellow-icon">error</span>
+					<div>${item.body}</div>
+				</div>
+			</div>
+		`;
+		$(".alertbox").append(style1);
+	});
+	$(".ns-close").on("click", function () {
+		$(".alertbox").remove();
+	});
+	var array = document.querySelectorAll(".alertbox");
+	var height = 0;
+	for (let i = 0; i < array.length; i++) {
+		height += array[i].clientHeight;
+	}
+	var sidebar = document.querySelector(".sidebar");
+	if (sidebar !== null) {
+		sidebar.style.paddingTop =
+			parseInt($(".sidebar").css("padding-top")) + height + "px";
+	}
+});
 
+$.get(
+	"/api/v2/help_center/" +
+		$("html").attr("lang").toLowerCase() +
+		"/articles.json?label_names=warning"
+).done(function (data) {
+	$.each(data.articles, function (index, item) {
+		var style1 = `
+			<div class="ns-box ns-box--warning ns-bar ns-effect-slidetop ns-type-notice ns-show">
+				<div class="ns-box-inner">
+					<span class="material-icons red-icon">warning</span>
+					<div>${item.body}</div>
+				</div>
+			</div>
+		`;
 		$(".alertbox").append(style1);
 	});
 	$(".ns-close").on("click", function () {

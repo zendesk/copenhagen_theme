@@ -152,6 +152,7 @@ $sidebar-width: 270px;
   --color-blue: #006ab3;
   --color-blue-link: #0072ef;
   --color-red: #e66359;
+  --color-yellow: #ffdb4f;
 }
 
 body {
@@ -1402,6 +1403,11 @@ main.main-sidebar {
   color: #ffffff;
 }
 
+.yellow-icon {
+  color: var(--color-yellow);
+  color: #ffdb4f;
+}
+
 /**** END CUSTOM STYLE ****/
 
 /*** NOTIFICATION BANNER ***/
@@ -1417,14 +1423,19 @@ main.main-sidebar {
 
 .ns-box {
   display: flex;
-  background: #e66359;
+  background: #1f1f1f;
   padding: 10px 20px 20px 20px;
   line-height: 1.4;
   z-index: 1000;
   pointer-events: none;
   color: rgba(250, 251, 255, 0.95);
   font-size: 85%;
-  border-bottom: 1px solid #ddd;
+  &--alert {
+    border-top: 7px solid #ffdb4f;
+  }
+  &--warning {
+    border-top: 7px solid #e74f3d;
+  }
 }
 
 .ns-box.ns-show {
@@ -1498,10 +1509,20 @@ main.main-sidebar {
 
 .ns-box-inner {
   display: flex;
+  align-items: center;
   width: 100%;
+  padding-top: 7px;
   i {
     color: #fff;
     font-size: 3.8em;
+  }
+  span {
+    font-size: 30px;
+    flex-basis: 30px;
+  }
+  div {
+    text-align: center;
+    flex-basis: 100%;
   }
 }
 
@@ -1538,9 +1559,7 @@ main.main-sidebar {
 }
 
 /* Slide on top */
-.ns-effect-slidetop {
-  box-shadow: inset 5.4em 0 rgba(0, 0, 0, 0.1);
-}
+.ns-effect-slidetop {}
 
 .ns-effect-slidetop .icon {
   position: absolute;

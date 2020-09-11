@@ -4341,6 +4341,7 @@ html[lang|="ja"] .search-result-description em {
   --color-blue: #006ab3;
   --color-blue-link: #0072ef;
   --color-red: #e66359;
+  --color-yellow: #ffdb4f;
 }
 
 body {
@@ -5649,6 +5650,11 @@ main.main-sidebar {
   color: #ffffff;
 }
 
+.yellow-icon {
+  color: var(--color-yellow);
+  color: #ffdb4f;
+}
+
 /**** END CUSTOM STYLE ****/
 /*** NOTIFICATION BANNER ***/
 /*** Common, default styles for the notification box ***/
@@ -5660,14 +5666,21 @@ main.main-sidebar {
 
 .ns-box {
   display: flex;
-  background: #e66359;
+  background: #1f1f1f;
   padding: 10px 20px 20px 20px;
   line-height: 1.4;
   z-index: 1000;
   pointer-events: none;
   color: rgba(250, 251, 255, 0.95);
   font-size: 85%;
-  border-bottom: 1px solid #ddd;
+}
+
+.ns-box--alert {
+  border-top: 7px solid #ffdb4f;
+}
+
+.ns-box--warning {
+  border-top: 7px solid #e74f3d;
 }
 
 .ns-box.ns-show {
@@ -5741,12 +5754,24 @@ main.main-sidebar {
 
 .ns-box-inner {
   display: flex;
+  align-items: center;
   width: 100%;
+  padding-top: 7px;
 }
 
 .ns-box-inner i {
   color: #fff;
   font-size: 3.8em;
+}
+
+.ns-box-inner span {
+  font-size: 30px;
+  flex-basis: 30px;
+}
+
+.ns-box-inner div {
+  text-align: center;
+  flex-basis: 100%;
 }
 
 .megaphone:before {
@@ -5782,10 +5807,6 @@ main.main-sidebar {
 }
 
 /* Slide on top */
-.ns-effect-slidetop {
-  box-shadow: inset 5.4em 0 rgba(0, 0, 0, 0.1);
-}
-
 .ns-effect-slidetop .icon, .ns-effect-slidetop .search::before, .ns-effect-slidetop .recent-activity-item-comment span::before, .recent-activity-item-comment .ns-effect-slidetop span::before, .ns-effect-slidetop .article-vote::before, .ns-effect-slidetop .attachments .attachment-item::before, .attachments .ns-effect-slidetop .attachment-item::before, .ns-effect-slidetop .share a::before, .share .ns-effect-slidetop a::before, .ns-effect-slidetop .vote-up::before, .ns-effect-slidetop .vote-down::before, .ns-effect-slidetop .actions .dropdown-toggle::before, .actions .ns-effect-slidetop .dropdown-toggle::before, .ns-effect-slidetop .collapsible-nav-list li[aria-selected="true"]::after, .collapsible-nav-list .ns-effect-slidetop li[aria-selected="true"]::after, .ns-effect-slidetop .collapsible-sidebar-title::after, .ns-effect-slidetop .search-result-votes::before, .ns-effect-slidetop .search-result-meta-count::before {
   position: absolute;
   display: block;
