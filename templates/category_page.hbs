@@ -142,7 +142,7 @@
 
             {{#each sections}}
                 {{#is description 'Type-Service' }}
-                    <li class="category-section category-section-qsg" aria-expanded="true">
+                    <li class="category-section" aria-expanded="true">
                         <div class="category-section-header">
                             <span class="category-section-title">{{name}}</span>
                             <button type="button" class="category-section-toggle" aria-expanded="true">
@@ -155,7 +155,6 @@
                                 {{#each articles}}
                                     <li class="category-section-article">
                                         <a class="category-section-article-link" href="{{url}}">{{title}}</a>
-                                        <div class="article-body">{{body}}</div>
                                     </li>
                                 {{/each}}
                             </ul>
