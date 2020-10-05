@@ -8,15 +8,7 @@
             <div class="geo-semibold">HELP</div> CENTER
           </h1>
           {{search submit=false instant=settings.instant_search placeholder='Search for help articles, videos and more' }}
-          <div class="trending-div material-icons-big">
-            <i class="material-icons red-icon">whatshot</i><a
-              href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=photo+lab">photo lab</a>, <a
-              href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Image+sketchup">import
-              sketchup</a>, <a
-              href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=edit+graphics">edit graphics</a>,
-            <a href="https://configura.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=selecting+components">selecting
-              components</a>
-          </div>
+          {{dc 'search_trending'}}
         </div>
       </section>
     </div>
@@ -52,7 +44,7 @@
                 <h2 class="blocks-item-title">{{name}}</h3>
                   <p class="custom-blocks-item-p">{{description}}</p>
               </div>
-              <a class="custom-blocks-item-browse-button" href='{{url}}'>Browse ...</a>
+              <a class="custom-blocks-item-browse-button" href='{{url}}'>{{dc 'text_browse'}}...</a>
             </a>
           </li>
           {{/isnt}}
@@ -74,41 +66,12 @@
       </section>
       <section class="custom-link-section">
         <ul class="custom-link-container">
-          <li class="material-icons-big custom-link-padding-right">
-            <a href="https://www.configura.com/academy/cet-designer" target="_blank" rel="noopener noreferrer"
-              class="custom-link-item-title">
-              <i class="material-icons material-icons-margin-right blue-icon">school</i>Academy and training
-            </a>
-          </li>
-          <li class="material-icons-big custom-link-padding-right">
-            <a href="https://www.configura.com/products/system-recommendations/cet-designer" target="_blank"
-              rel="noopener noreferrer" class="custom-link-item-title">
-              <i class="material-icons material-icons-margin-right blue-icon">computer</i>System recommendations
-            </a>
-          </li>
-          <li class="material-icons-big custom-link-padding-right">
-            <a href="https://www.configura.com/products/release-notes/cet-designer" target="_blank"
-              rel="noopener noreferrer" class="custom-link-item-title">
-              <i class="material-icons material-icons-margin-right blue-icon">import_contacts</i>Release notes
-            </a>
-          </li>
-          <li class="material-icons-big custom-link-padding-right">
-            <a href=" https://www.configura.com/my/forum" target="_blank" rel="noopener noreferrer"
-              class="custom-link-item-title">
-              <i class="material-icons material-icons-margin-right blue-icon">forum</i>Forums
-            </a>
-          </li>
-          <li class="material-icons-big known-issues">
-            <a href="https://support.configura.com/hc/en-us/articles/360050652674" target="_blank" rel="noopener noreferrer"
-              class="custom-link-item-title">
-              <i class="material-icons material-icons-margin-right blue-icon">bug_report</i>Known Issues
-            </a>
-          </li>
+          {{dc 'middle_links'}}
         </ul>
       </section>
 
       <!-- CUSTOM CARDS -->
-      <h1 class="custom-topic-header">Browse popular topics</h1>
+      {{dc 'browse_popular_topics'}}
       <div class="custom-topic-container">
         {{#each categories}}
         {{#each sections}}
@@ -204,16 +167,7 @@
       <div class="custom-banner-picture-mobile">
         <img class="img-forums-mobile" src="{{asset 'forums.png'}}" />
       </div>
-      <div class="custom-forums-banner">
-        <h1>We don't give to get, we get to give.</h1>
-        <p class="custom-child-with">Let the wealth of knowledge our CET Designer community has to offer help answer
-          your questions and solve your issues</p>
-        <div class="btn custom-forums-page-button" role="button">
-          <a href="https://www.configura.com/my/forum" class="custom-banner-button">
-            <p class="custom-forums-button">Forums</p>
-          </a>
-        </div>
-      </div>
+      {{dc 'forums_banner'}}
       <div class="custom-banner-picture">
         <img class="img-forums" src="{{asset 'forums.png'}}" />
       </div>
@@ -222,55 +176,36 @@
 </div>
 
 <div class="container">
-  <h1 class="custom-topic-header">New to CET Designer?</h1>
-  <a href="https://configura.zendesk.com/hc/en-us/sections/360006621153" class="custom-video-more-link">Browse all video
-    tutorials</a>
+  {{dc 'blocks_list_header'}}
+  {{dc 'browse_all_video'}}
   <section class="categories blocks">
     <ul class="custom-blocks-list blocks-list">
 
       <li class="custom-video-blocks-item">
-        <a href="/hc/en-us/articles/360038532034-Control-Panel-Video-tutorial" class="videos-item-link">
+        <a href={{dc 'control_panel_video_path'}} class="videos-item-link">
           <div class="custom-video-container">
             <img src="{{asset 'control_panel.png'}}" />
           </div>
         </a>
-        <div class="custom-video-blocks-item-title-container">
-          <div>
-            <a href="/hc/en-us/articles/360038532034-Control-Panel-Video-tutorial" class="blocks-item-link">
-              <h3 class="blocks-item-title">Control Panel</h3>
-            </a>
-          </div>
-        </div>
+        {{dc 'control_panel_video'}}
       </li>
 
       <li class="custom-video-blocks-item">
-        <a href="/hc/en-us/articles/360039031733-Views-and-Navigation-Video-tutorial" class="videos-item-link">
+        <a href={{dc 'views_and_navigation_video_path'}} class="videos-item-link">
           <div class="custom-video-container">
             <img src="{{asset 'views_navigation.png'}}" />
           </div>
         </a>
-        <div class="custom-video-blocks-item-title-container">
-          <div>
-            <a href="/hc/en-us/articles/360039031733-Views-and-Navigation-Video-tutorial" class="blocks-item-link">
-              <h3 class="blocks-item-title">Views and Navigation</h3>
-            </a>
-          </div>
-        </div>
+        {{dc 'views_and_navigation_video'}}
       </li>
 
       <li class="custom-video-blocks-item">
-        <a href="/hc/en-us/articles/360038533654-Import-AutoCAD-Drawings-Video-tutorial" class="videos-item-link">
+        <a href={{dc 'import_autocad_video_path'}} class="videos-item-link">
           <div class="custom-video-container">
             <img src="{{asset 'import.png'}}" />
           </div>
         </a>
-        <div class="custom-video-blocks-item-title-container">
-          <div>
-            <a href="/hc/en-us/articles/360038533654-Import-AutoCAD-Drawings-Video-tutorial" class="blocks-item-link">
-              <h3 class="blocks-item-title">AutoCAD Import</h3>
-            </a>
-          </div>
-        </div>
+        {{dc 'import_autocad_video'}}
       </li>
     </ul>
   </section>

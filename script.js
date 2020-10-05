@@ -435,6 +435,29 @@ document.addEventListener("DOMContentLoaded", function () {
 			$(".language-ul").hide();
 		});
 	});
+
+	switch (getPageLang().toUpperCase()) {
+		case "EN-US":
+			$("input").attr(
+				"placeholder",
+				"Search for help articles, videos and more"
+			);
+			break;
+		case "ZH-CN":
+			break;
+		case "DE":
+			break;
+		case "JA":
+			break;
+		case "ES":
+			break;
+		case "SV":
+			$("input").attr(
+				"placeholder",
+				"Sök efter hjälpartiklar, videos och mer"
+			);
+			break;
+	}
 });
 
 /**** CUSTOM CHAT ****/
