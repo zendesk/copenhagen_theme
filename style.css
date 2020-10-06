@@ -6147,6 +6147,12 @@ main.main-sidebar {
   display: none;
 }
 
+@media only screen and (max-width: 768px) {
+  .language-display {
+    display: none;
+  }
+}
+
 .language-container {
   position: relative;
 }
