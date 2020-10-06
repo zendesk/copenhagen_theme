@@ -250,6 +250,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	/**** CUSTOM MOBILE MENU ITEMS ****/
 
+	/**
+	 * Language dropdown
+	 */
+	var locales;
+	$.get("/api/v2/locales.json").done(function (data) {
+		locales = data.locales;
+
+		var listItems = "";
+
+		var userMenu = $("#user-nav");
+
+		if (data.locales.length > 0) {
+			for (var locale of data.locales) {
+				listItems += `
+					<li class="language-li">
+						<a href="${getLangPath(locale.locale)}">${locale.name}</a>
+					</li>
+				`;
+			}
+		}
+
+		var currLocaleObj = data.locales.filter(function (locale) {
+			return locale.locale.toUpperCase() === getPageLang().toUpperCase();
+		})[0];
+
+		var fullList = `
+			<div class="language-container">
+				<div id="language-display" class="language-dropdown">${currLocaleObj.name}</div>
+				<ul class="language-ul">${listItems}</ul>
+			</div>
+		`;
+
+		$("#language-dd").append(fullList);
+
+		$("#language-display").mouseover(function () {
+			$(".language-ul").show();
+		});
+
+		$(".language-ul").mouseleave(function () {
+			$(".language-ul").hide();
+		});
+	});
+
 	var menu = "";
 	$.get(
 		"https://configura.zendesk.com/api/v2/help_center/" +
@@ -275,8 +318,12 @@ document.addEventListener("DOMContentLoaded", function () {
 						category.name +
 						"</a>";
 				});
-				$("#user-nav").html(menu);
 			}
+			for (var locale of locales) {
+				menu += `<a href="/hc/${locale.locale}">${locale.name}</a>`;
+			}
+
+			$("#user-nav").html(menu);
 		}
 	);
 
@@ -396,44 +443,6 @@ document.addEventListener("DOMContentLoaded", function () {
 			$(".custom-known-issues-link").show();
 			$(".known-issues").show();
 		}
-	});
-
-	/**
-	 * Language dropdown
-	 */
-	$.get("/api/v2/locales.json").done(function (data) {
-		var listItems = "";
-
-		if (data.locales.length > 0) {
-			for (var locale of data.locales) {
-				listItems += `
-					<li class="language-li">
-						<a href=${getLangPath(locale.locale)}>${locale.name}</a>
-					</li>
-				`;
-			}
-		}
-
-		var currLocaleObj = data.locales.filter(function (locale) {
-			return locale.locale.toUpperCase() === getPageLang().toUpperCase();
-		})[0];
-
-		var fullList = `
-			<div class="language-container">
-				<div id="language-display" class="language-dropdown">${currLocaleObj.name}</div>
-				<ul class="language-ul">${listItems}</ul>
-			</div>
-		`;
-
-		$("#language-dd").append(fullList);
-
-		$("#language-display").mouseover(function () {
-			$(".language-ul").show();
-		});
-
-		$(".language-ul").mouseleave(function () {
-			$(".language-ul").hide();
-		});
 	});
 
 	switch (getPageLang().toUpperCase()) {
