@@ -1,3 +1,10 @@
+## [2.4.1](https://github.com/zendesk/copenhagen_theme/compare/v2.4.0...v2.4.1) (2020-10-06)
+
+
+### Bug Fixes
+
+* **article:** use t helper for article attachments download string ([7959d9c](https://github.com/zendesk/copenhagen_theme/commit/7959d9c165aaaa90bd4e59e233aebf21c7e0edca))
+
 # [2.4.0](https://github.com/zendesk/copenhagen_theme/compare/v2.3.1...v2.4.0) (2020-08-31)
 
 
