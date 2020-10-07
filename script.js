@@ -265,7 +265,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			for (var locale of data.locales) {
 				listItems += `
 					<li class="language-li">
-						<a href="${getLangPath(locale.locale)}">${locale.name}</a>
+						<a href="${getLangPath(locale.locale)}">${locale.presentation_name}</a>
 					</li>
 				`;
 			}
@@ -321,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 			var languages = "";
 			for (var locale of locales) {
-				languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.name}</a>`;
+				languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.presentation_name}</a>`;
 			}
 
 			$("#user-nav").html(menu);

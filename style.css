@@ -6173,9 +6173,9 @@ main.main-sidebar {
   display: none;
   left: 50%;
   list-style-type: none;
-  margin-left: -100px;
+  margin-left: -125px;
   position: absolute;
-  width: 200px;
+  width: 250px;
 }
 
 .language-li {
