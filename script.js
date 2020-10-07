@@ -319,11 +319,24 @@ document.addEventListener("DOMContentLoaded", function () {
 						"</a>";
 				});
 			}
+			var languages = "";
 			for (var locale of locales) {
-				menu += `<a href="/hc/${locale.locale}">${locale.name}</a>`;
+				languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.name}</a>`;
 			}
 
 			$("#user-nav").html(menu);
+
+			$(
+				`<a id="mobile-languages" class="mobile-languages">Languages</a>`
+			).appendTo("#user-nav");
+			$("#mobile-languages").click(function () {
+				var languageLinks = $(".mobile-language-option");
+				if (languageLinks.length === 0) {
+					$("#user-nav").append(languages);
+				} else {
+					$(".mobile-language-option").remove();
+				}
+			});
 		}
 	);
 
