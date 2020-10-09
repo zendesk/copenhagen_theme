@@ -275,7 +275,6 @@ const scrollnav = (function () {
                 activeSection = activeSubSection;
             }
         }
-
         return activeSection;
     }
 
@@ -342,8 +341,20 @@ const scrollnav = (function () {
 
             updateActiveNavItem(activeSection, scrollnav.nav);
 
+
             return activeSection;
         }
+        // main-content
+        // let mainContent = scrollnav.nav.parentElement.parentElement.parentElement.parentElement.nextElementSibling;
+        // scrollnav.nav.addEventListener('wheel', function(event){
+        //     event.preventDefault();
+        //     let list = scrollnav.nav.getElementsByClassName('scroll-nav__list')[0];
+        //     const wheelData = -event.wheelDeltaY*40;
+        //     list.style.marginTop = `${wheelData}px`;
+        // });
+        // mainContent.addEventListener('wheel', function () {
+        //     scrollHandler();
+        // });
 
         window.addEventListener('scroll', scrollHandler);
 
@@ -361,7 +372,6 @@ const scrollnav = (function () {
     }
 
     function init(elem, options) {
-        console.log('init');
         const defaults = {
             sections: 'h2',
             insertTarget: elem,
@@ -841,9 +851,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const needHelpWeixinButton = homeNeedHelpSection.querySelector('#home-need-help-weixin-button');
 
         if (needHelpWeixinButton) {
-            console.log('?', needHelpWeixinButton);
             const qrcode = homeNeedHelpSection.querySelector('#home-weixin-qrcode');
-            console.log('!', qrcode);
             needHelpWeixinButton.addEventListener('mouseover', function (e) {
                 qrcode.style.display = 'block';
             });
