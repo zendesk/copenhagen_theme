@@ -8044,13 +8044,17 @@ html[dir="rtl"] .notification-left-aligned {
   margin-bottom: 20px;
   padding: 0;
   align-self: stretch;
+  height: 800px;
+  overflow-y: scroll;
+}
+.article-sidebar::-webkit-scrollbar {
+  width: 0 !important
 }
 
 @media (min-width: 1024px) {
   .article-sidebar {
     border: 0;
     flex: 0 0 320px;
-    height: auto;
     align-self: self-start;
     position: sticky;
     top: 100px;
