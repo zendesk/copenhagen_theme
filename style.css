@@ -4283,8 +4283,7 @@ ul {
   padding-right: 10px;
 }
 
-.scroll-nav .scroll-nav__sub-link:hover,
-.scroll-nav .scroll-nav__sub-link:focus {
+.scroll-nav .scroll-nav__sub-link:hover{
   color: #28a7e1;
 }
 
