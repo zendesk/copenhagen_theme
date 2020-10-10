@@ -4269,7 +4269,7 @@ ul {
   content: url($assets-ic_circle_8x8-svg);
   padding-right: 10px;
 }
-
+/* focus need to be remove */
 .scroll-nav__link:hover, .scroll-nav__link:focus,
 .scroll-nav__item--active > .scroll-nav__link,
 .scroll-nav__item--active > .scroll-nav__sub-link {
@@ -8044,7 +8044,6 @@ html[dir="rtl"] .notification-left-aligned {
   margin-bottom: 20px;
   padding: 0;
   align-self: stretch;
-  height: 800px;
   overflow-y: scroll;
 }
 .article-sidebar::-webkit-scrollbar {
@@ -8055,6 +8054,7 @@ html[dir="rtl"] .notification-left-aligned {
   .article-sidebar {
     border: 0;
     flex: 0 0 320px;
+    height: 800px;
     align-self: self-start;
     position: sticky;
     top: 100px;

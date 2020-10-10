@@ -251,9 +251,9 @@ const scrollnav = (function () {
 
     function getActiveSection(data, boundryTop, boundryBottom) {
         let activeSection;
-
-        data.forEach(section => {
-            if (section.offsetTop > boundryBottom) {
+        data.forEach((section,index) => {
+            // TODO: calculation accuracy
+            if (section.offsetTop >= boundryBottom+2) {
                 if (!activeSection && section.offsetTop < boundryTop) {
                     activeSection = section;
                 }
