@@ -4269,14 +4269,14 @@ ul {
   content: url($assets-ic_circle_8x8-svg);
   padding-right: 10px;
 }
-/* focus need to be remove */
-.scroll-nav__link:hover, .scroll-nav__link:focus,
+/* focus need to be remove  .scroll-nav__link:focus*/
+.scroll-nav__link:hover,
 .scroll-nav__item--active > .scroll-nav__link,
 .scroll-nav__item--active > .scroll-nav__sub-link {
   color: #28a7e1;
 }
 
-.scroll-nav__link:hover:before, .scroll-nav__link:focus:before,
+.scroll-nav__link:hover:before,
 .scroll-nav__item--active > .scroll-nav__link:before,
 .scroll-nav__item--active > .scroll-nav__sub-link:before {
   content: url($assets-ic_circle_highlighted_8x8-svg);
