@@ -99,7 +99,7 @@ Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does n
 - Install Ruby, we use `sassc` gem to compile our `.scss` files. You can see how to install Ruby [here](https://www.ruby-lang.org/en/documentation/installation/).
 - Install `sassc` gem. You can run:
 ```
-    gem install sassc
+    gem install sassc:1.12.1
 ```
 
 Now you can compile your SASS files running:
