@@ -1,3 +1,10 @@
+## [2.5.1](https://github.com/zendesk/copenhagen_theme/compare/v2.5.0...v2.5.1) (2020-10-13)
+
+
+### Bug Fixes
+
+* **styles:** fix language selector styles ([439ae4d](https://github.com/zendesk/copenhagen_theme/commit/439ae4d28b497a566e523bcf1614a255b59065cc))
+
 # [2.5.0](https://github.com/zendesk/copenhagen_theme/compare/v2.4.1...v2.5.0) (2020-10-13)
 
 
