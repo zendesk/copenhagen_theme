@@ -915,7 +915,7 @@ ul {
   }
 }
 
-.footer-language-selector {
+.footer-language-selector button {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-weight: 300;
