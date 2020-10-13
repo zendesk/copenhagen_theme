@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/zendesk/copenhagen_theme/compare/v2.4.1...v2.5.0) (2020-10-13)
+
+
+### Features
+
+* **requests:** [GATHER-55] Enable WYSIWYG editor on (new) request page ([b38cf05](https://github.com/zendesk/copenhagen_theme/commit/b38cf050e4e2d04f4a4a8f65e282e963f7042de7))
+
 ## [2.4.1](https://github.com/zendesk/copenhagen_theme/compare/v2.4.0...v2.4.1) (2020-10-06)
 
 
