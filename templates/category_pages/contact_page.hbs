@@ -39,47 +39,55 @@
                       <a href="https://www.configura.com/support/chat" class="custom-card-link"
                         onclick="window.open(this.href+window.location.search.replace('ref1','account').replace('ref2', 'email'),'CETDesignerSupport','resizable=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,fullscreen=no,dependent=no,width=404,height=500,status'); return false">
                         {{else}}
-                        <a href="{{url}}" class="custom-card-link">
-                          {{/is}}
-                          {{/is}}
-                          {{/is}}
-                          {{/is}}
-                          {{/is}}
-                          <div class="custom-card-logo-container">
-                            {{#is id 360006761373}} {{!-- Forum --}}
-                            <i class="material-icons black-icon">forum</i>
-                            {{else}}
-                            {{#is id 360006761393}} {{!-- FAQ --}}
-                            <i class="material-icons black-icon">help</i>
-                            {{else}}
-                            {{#is id 360006730714}} {{!-- Call --}}
-                            <i class="material-icons black-icon">call</i>
-                            {{else}}
-                            {{#is id 360006737154}} {{!-- Manufacturer extension --}}
-                            <i class="material-icons black-icon">business</i>
-                            {{else}}
-                            {{#is id 360006753914}} {{!-- Chat --}}
-                            <i class="material-icons black-icon">textsms</i>
-                            {{else}}
-                            <i class="material-icons black-icon">camera</i>
+                        {{#is id 360006737154}} {{!-- Global Support Availability --}}
+                        <a href="https://support.configura.com/hc/en-us/articles/360056184914-Global-Support-Availability" class="custom-card-link">
+                          {{else}}
+                          <a href="{{url}}" class="custom-card-link">
                             {{/is}}
                             {{/is}}
                             {{/is}}
                             {{/is}}
                             {{/is}}
-                          </div>
-                          {{#is id 360006737154}} {{!-- Manufacturer extension --}}
-                          <h3 class="custom-card-title custom-text-align-center">
-                            {{else}}
-                            <h3 class="custom-card-title">
+                            {{/is}}
+                            <div class="custom-card-logo-container">
+                              {{#is id 360006761373}} {{!-- Forum --}}
+                              <i class="material-icons black-icon">forum</i>
+                              {{else}}
+                              {{#is id 360006761393}} {{!-- FAQ --}}
+                              <i class="material-icons black-icon">help</i>
+                              {{else}}
+                              {{#is id 360006730714}} {{!-- Call --}}
+                              <i class="material-icons black-icon">call</i>
+                              {{else}}
+                              {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                              <i class="material-icons black-icon">business</i>
+                              {{else}}
+                              {{#is id 360006753914}} {{!-- Chat --}}
+                              <i class="material-icons black-icon">textsms</i>
+                              {{else}}
+                              {{#is id 360010596194}} {{!-- Global Support Availability --}}
+                              <i class="material-icons black-icon">access_time</i>
+                              {{else}}
+                              <i class="material-icons black-icon">camera</i>
                               {{/is}}
-                              {{name}}
-                            </h3>
-                        </a>
-                        <!-- END CUSTOM CARDS -->
-                        {{#if internal}}
-                        <span class="icon-lock" title="{{t 'internal'}}"></span>
-                        {{/if}}
+                              {{/is}}
+                              {{/is}}
+                              {{/is}}
+                              {{/is}}
+                              {{/is}}
+                            </div>
+                            {{#is id 360006737154}} {{!-- Manufacturer extension --}}
+                            <h3 class="custom-card-title custom-text-align-center">
+                              {{else}}
+                              <h3 class="custom-card-title">
+                                {{/is}}
+                                {{name}}
+                              </h3>
+                          </a>
+                          <!-- END CUSTOM CARDS -->
+                          {{#if internal}}
+                          <span class="icon-lock" title="{{t 'internal'}}"></span>
+                          {{/if}}
             </section>
             {{description}}
           </div>
