@@ -11,7 +11,7 @@
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "husky": "^4.2.3",
+    "husky": "^4.3.0",
     "js-yaml": "^3.13.1",
     "semantic-release": "^17.0.4"
   },
