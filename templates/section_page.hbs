@@ -17,47 +17,10 @@
     {{/if}}
   </header>
 
-  {{!-- {{#if section.sections}}
-  <div class="section-container custom-section-container">
-
-    <section class="custom-subsection">
-      {{#each section.sections}}
-      {{#if articles}}
-      <section class="custom-subsection-section">
-        <h3 class="section-tree-title ut-padding-vertical-15">
-          {{name}}
-        </h3>
-
-        <ul class="article-list">
-          {{#each articles}}
-          <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
-            {{#if promoted}}
-            <span data-title="{{t 'promoted'}}" class="icon-star"></span>
-            {{/if}}
-            <a href="{{url}}" class="article-list-link">{{title}}</a>
-          </li>
-          {{/each}}
-          {{#if more_articles}}
-          <li class="see-more">
-            <a href="{{url}}" class="article-list-link">
-              See more
-            </a>
-          </li>
-          {{/if}}
-        </ul>
-
-      </section>
-      {{/if}}
-
-      {{/each}}
-    </section>
-  </div>
-  {{/if}} --}}
-
   {{#if section.sections}}
   <section class="custom-card-container">
     {{#each section.sections}}
-    <div class="custom-card">
+    <div class="custom-card small-card">
       <a href="{{url}}" class="custom-card-link">
         <div class="custom-card-logo-container">
           <i class="material-icons">camera</i>
