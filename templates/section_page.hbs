@@ -17,7 +17,7 @@
     {{/if}}
   </header>
 
-  {{#if section.sections}}
+  {{!-- {{#if section.sections}}
   <div class="section-container custom-section-container">
 
     <section class="custom-subsection">
@@ -52,10 +52,26 @@
       {{/each}}
     </section>
   </div>
+  {{/if}} --}}
+
+  {{#if section.sections}}
+  <section class="custom-card-container">
+    {{#each section.sections}}
+    <div class="custom-card">
+      <a href="{{url}}" class="custom-card-link">
+        <div class="custom-card-logo-container">
+          <i class="material-icons">camera</i>
+        </div>
+        <h3 class="custom-card-title">
+          {{name}}
+        </h3>
+      </a>
+    </div>
+    {{/each}}
+  </section>
   {{/if}}
 
   {{#if section.articles}}
-
   <ul class="article-list">
     {{#each section.articles}}
     <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
@@ -69,9 +85,6 @@
     </li>
     {{/each}}
   </ul>
-
-
-
   {{/if}}
 
 </div>
