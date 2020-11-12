@@ -1,3 +1,10 @@
+## [2.5.2](https://github.com/zendesk/copenhagen_theme/compare/v2.5.1...v2.5.2) (2020-11-12)
+
+
+### Bug Fixes
+
+* **request:** remove lowercase styling for request status ([146618b](https://github.com/zendesk/copenhagen_theme/commit/146618bea943997440ba2d8c4ff85e4daa250312))
+
 ## [2.5.1](https://github.com/zendesk/copenhagen_theme/compare/v2.5.0...v2.5.1) (2020-10-13)
 
 
