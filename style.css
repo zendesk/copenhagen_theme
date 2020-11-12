@@ -2522,10 +2522,6 @@ ul {
   background-color: #000;
 }
 
-.status-label-open, .status-label-closed, .status-label-solved, .status-label-new, .status-label-hold, .status-label-pending {
-  text-transform: lowercase;
-}
-
 /***** Post *****/
 /*
 * The post grid is defined this way:
