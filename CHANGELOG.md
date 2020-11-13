@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/zendesk/copenhagen_theme/compare/v2.5.2...v2.5.3) (2020-11-13)
+
+
+### Bug Fixes
+
+* **article:** don't render attachments if there are none ([d6026a5](https://github.com/zendesk/copenhagen_theme/commit/d6026a5753062029ec2c7d19ae235d445821bb40))
+
 ## [2.5.2](https://github.com/zendesk/copenhagen_theme/compare/v2.5.1...v2.5.2) (2020-11-12)
 
 
