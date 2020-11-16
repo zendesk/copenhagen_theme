@@ -200,7 +200,7 @@
           </dd>
 
           {{#if request.type}}
-            <dt>{{t 'type'}}</dt>
+            <dt>{{request.type_title}}</dt>
             <dd>
               {{request.type_name}}
               {{#is request.type 'task'}}
@@ -210,7 +210,7 @@
           {{/if}}
 
           {{#if request.priority}}
-            <dt>{{t 'priority'}}</dt>
+            <dt>{{request.priority_title}}</dt>
             <dd>
               {{request.priority_name}}
             </dd>
