@@ -1,3 +1,10 @@
+## [2.5.4](https://github.com/zendesk/copenhagen_theme/compare/v2.5.3...v2.5.4) (2020-11-16)
+
+
+### Bug Fixes
+
+* **request:** render title values for priority and type fields ([4c28714](https://github.com/zendesk/copenhagen_theme/commit/4c28714246177a1489eb9a1923d1489eed30bbe3))
+
 ## [2.5.3](https://github.com/zendesk/copenhagen_theme/compare/v2.5.2...v2.5.3) (2020-11-13)
 
 
