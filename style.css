@@ -1482,10 +1482,6 @@ ul {
   margin: 40px 0;
 }
 
-.section-list--collapsed .section-list-item:nth-child(1n + 6) {
-  display: none;
-}
-
 .section-list-item {
   border-bottom: 1px solid #ddd;
   font-size: 16px;
