@@ -293,6 +293,21 @@ document.addEventListener("DOMContentLoaded", function () {
 		});
 	});
 
+	/**
+	 * Redirect articles that do not have translations
+	 */
+	var notDefaultLanguage = window.location.href.indexOf("/en-us/") == -1;
+	var isArticle = window.location.href.indexOf("/articles/") > -1;
+	var isErrorPage = $(".error-page").length > 0;
+
+	if (isArticle && notDefaultLanguage && isErrorPage) {
+		var newURL = window.location.href.replace(
+			/(.*\/hc\/)([\w-]+)(\/.*)/,
+			"$1en-us$3"
+		);
+		window.location.href = newURL;
+	}
+
 	var menu = "";
 	$.get(
 		"https://configura.zendesk.com/api/v2/help_center/" +
@@ -320,8 +335,10 @@ document.addEventListener("DOMContentLoaded", function () {
 				});
 			}
 			var languages = "";
-			for (var locale of locales) {
-				languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.presentation_name}</a>`;
+			if (locales && locales.length > 0) {
+				for (var locale of locales) {
+					languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.presentation_name}</a>`;
+				}
 			}
 
 			$("#user-nav").html(menu);
@@ -344,13 +361,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Modify behavior of search input
 	var input = document.getElementById("query");
-	input.addEventListener("input", function (event) {
-		if (this.value) {
-			input.style.fontStyle = "normal";
-		} else {
-			input.style.fontStyle = "italic";
-		}
-	});
+	if (input) {
+		input.addEventListener("input", function (event) {
+			if (this.value) {
+				input.style.fontStyle = "normal";
+			} else {
+				input.style.fontStyle = "italic";
+			}
+		});
+	}
 
 	/**** Table of contents ****/
 	// add id so we can refer to them
@@ -466,8 +485,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			);
 			break;
 		case "ZH-CN":
+			$("input").attr("placeholder", "搜索帮助文章，视频等");
 			break;
 		case "DE":
+			$("input").attr(
+				"placeholder",
+				"Suche nach Hilfeartikeln, Videos und mehr"
+			);
 			break;
 		case "JA":
 			break;
