@@ -19,7 +19,6 @@
       <section class="categories blocks">
         <ul class="custom-blocks-list blocks-list">
           {{#each categories}}
-          {{!-- {{#if ../has_multiple_categories}} --}}
           {{#isnt id 360002370413}}
           <li class="custom-blocks-item">
             <a href='{{url}}' class="blocks-item-link">
@@ -48,18 +47,6 @@
             </a>
           </li>
           {{/isnt}}
-          {{!-- {{else}}
-          {{#each sections}}
-          <li class="custom-blocks-item blocks-item">
-            <a href='{{url}}' class="blocks-item-link">
-              <h4 class="blocks-item-title">
-                {{name}}
-              </h4>
-              <p class="blocks-item-description">{{excerpt description}}</p>
-            </a>
-          </li>
-          {{/each}}
-          {{/if}} --}}
           {{/each}}
         </ul>
         {{pagination}}
