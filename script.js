@@ -190,19 +190,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // If a section has more than 6 subsections, we collapse the list, and show a trigger to display them all
-  var seeAllTrigger = document.querySelector("#see-all-sections-trigger");
-  var subsectionsList = document.querySelector(".section-list");
-
-  if (subsectionsList && subsectionsList.children.length > 6) {
-    seeAllTrigger.setAttribute("aria-hidden", false);
-
-    seeAllTrigger.addEventListener("click", function(e) {
-      subsectionsList.classList.remove("section-list--collapsed");
-      seeAllTrigger.parentNode.removeChild(seeAllTrigger);
-    });
-  }
-
   // If multibrand search has more than 5 help centers or categories collapse the list
   var multibrandFilterLists = document.querySelectorAll(".multibrand-filter-list");
   Array.prototype.forEach.call(multibrandFilterLists, function(filter) {

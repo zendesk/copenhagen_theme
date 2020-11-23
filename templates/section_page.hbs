@@ -24,7 +24,7 @@
       </header>
 
       {{#if section.sections}}
-        <ul class="section-list section-list--collapsed">
+        <ul class="section-list">
           {{#each section.sections}}
           <li class="section-list-item">
               <a href="{{url}}">
@@ -35,10 +35,10 @@
               </a>
             </li>
           {{/each}}
-          <a tabindex="0" class="see-all-sections-trigger" aria-hidden="true" id="see-all-sections-trigger" title="{{t 'see_all_sections'}}">{{t 'see_all_sections'}}</a>
         </ul>
       {{/if}}
 
+      {{pagination "section.sections"}}
 
       {{#if section.articles}}
         <ul class="article-list">
@@ -65,7 +65,7 @@
         </i>
       {{/if}}
 
-      {{pagination}}
+      {{pagination "section.articles"}}
 
     </section>
   </div>
