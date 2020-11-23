@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/zendesk/copenhagen_theme/compare/v2.5.4...v2.6.0) (2020-11-23)
+
+
+### Features
+
+* add subsections pagination to section template ([6d0dcba](https://github.com/zendesk/copenhagen_theme/commit/6d0dcba859872a210a97efa980541c5098bebe2c))
+
 ## [2.5.4](https://github.com/zendesk/copenhagen_theme/compare/v2.5.3...v2.5.4) (2020-11-16)
 
 
