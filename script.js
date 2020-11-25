@@ -5,6 +5,17 @@
 
 var KNOWN_ISSUES_ARTICLE_ID = 360050652674;
 
+function getLangPath(lang) {
+	const pathArr = window.location.pathname.split("/");
+	pathArr.splice(2, 1, lang.toLowerCase());
+	return pathArr.join("/");
+}
+
+function getPageLang() {
+	const pathname = window.location.pathname;
+	return pathname.split("/")[2];
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 	function closest(element, selector) {
 		if (Element.prototype.closest) {
@@ -77,11 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
 			"click",
 			function () {
 				showRequestCommentContainerTrigger.style.display = "none";
-				Array.prototype.forEach.call(requestCommentFields, function (
-					e
-				) {
-					e.style.display = "block";
-				});
+				Array.prototype.forEach.call(
+					requestCommentFields,
+					function (e) {
+						e.style.display = "block";
+					}
+				);
 				requestCommentSubmit.style.display = "inline-block";
 
 				if (commentContainerTextarea) {
@@ -239,6 +251,66 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	/**** CUSTOM MOBILE MENU ITEMS ****/
 
+	/**
+	 * Language dropdown
+	 */
+	var locales;
+	$.get("/api/v2/locales.json").done(function (data) {
+		locales = data.locales;
+
+		var listItems = "";
+
+		var userMenu = $("#user-nav");
+
+		if (data.locales.length > 0) {
+			for (var locale of data.locales) {
+				if (locale.locale === "es" || locale.locale === "sv") continue;
+
+				listItems += `
+					<li class="language-li">
+						<a href="${getLangPath(locale.locale)}">${locale.presentation_name}</a>
+					</li>
+				`;
+			}
+		}
+
+		var currLocaleObj = data.locales.filter(function (locale) {
+			return locale.locale.toUpperCase() === getPageLang().toUpperCase();
+		})[0];
+
+		var fullList = `
+			<div class="language-container">
+				<div id="language-display" class="language-dropdown">${currLocaleObj.name}</div>
+				<ul class="language-ul">${listItems}</ul>
+			</div>
+		`;
+
+		$("#language-dd").append(fullList);
+
+		$("#language-display").mouseover(function () {
+			$(".language-ul").show();
+		});
+
+		$(".language-ul").mouseleave(function () {
+			$(".language-ul").hide();
+		});
+	});
+
+	/**
+	 * Redirect articles that do not have translations
+	 */
+	var notDefaultLanguage = window.location.href.indexOf("/en-us/") == -1;
+	var isArticle = window.location.href.indexOf("/articles/") > -1;
+	var isErrorPage = $(".error-page").length > 0;
+
+	if (isArticle && notDefaultLanguage && isErrorPage) {
+		var newURL = window.location.href.replace(
+			/(.*\/hc\/)([\w-]+)(\/.*)/,
+			"$1en-us$3"
+		);
+		window.location.href = newURL;
+	}
+
 	var menu = "";
 	$.get(
 		"https://configura.zendesk.com/api/v2/help_center/" +
@@ -264,8 +336,30 @@ document.addEventListener("DOMContentLoaded", function () {
 						category.name +
 						"</a>";
 				});
-				$("#user-nav").html(menu);
 			}
+			var languages = "";
+			if (locales && locales.length > 0) {
+				for (var locale of locales) {
+					if (locale.locale === "es" || locale.locale === "sv")
+						continue;
+
+					languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.presentation_name}</a>`;
+				}
+			}
+
+			$("#user-nav").html(menu);
+
+			$(
+				`<a id="mobile-languages" class="mobile-languages">Languages</a>`
+			).appendTo("#user-nav");
+			$("#mobile-languages").click(function () {
+				var languageLinks = $(".mobile-language-option");
+				if (languageLinks.length === 0) {
+					$("#user-nav").append(languages);
+				} else {
+					$(".mobile-language-option").remove();
+				}
+			});
 		}
 	);
 
@@ -273,13 +367,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Modify behavior of search input
 	var input = document.getElementById("query");
-	input.addEventListener("input", function (event) {
-		if (this.value) {
-			input.style.fontStyle = "normal";
-		} else {
-			input.style.fontStyle = "italic";
-		}
-	});
+	if (input) {
+		input.addEventListener("input", function (event) {
+			if (this.value) {
+				input.style.fontStyle = "normal";
+			} else {
+				input.style.fontStyle = "italic";
+			}
+		});
+	}
 
 	/**** Table of contents ****/
 	// add id so we can refer to them
@@ -386,6 +482,34 @@ document.addEventListener("DOMContentLoaded", function () {
 			$(".known-issues").show();
 		}
 	});
+
+	switch (getPageLang().toUpperCase()) {
+		case "EN-US":
+			$("input").attr(
+				"placeholder",
+				"Search for help articles, videos and more"
+			);
+			break;
+		case "ZH-CN":
+			$("input").attr("placeholder", "搜索帮助文章，视频等");
+			break;
+		case "DE":
+			$("input").attr(
+				"placeholder",
+				"Suche nach Hilfeartikeln, Videos und mehr"
+			);
+			break;
+		case "JA":
+			break;
+		case "ES":
+			break;
+		case "SV":
+			$("input").attr(
+				"placeholder",
+				"Sök efter hjälpartiklar, videos och mer"
+			);
+			break;
+	}
 });
 
 /**** CUSTOM CHAT ****/

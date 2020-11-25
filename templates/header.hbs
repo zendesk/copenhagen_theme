@@ -7,24 +7,14 @@
       {{#link 'help_center' class='custom-logo logo'}}
         <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
       {{/link}}
-      <div title="Go to Home page">
-        <a href="/hc/en-us" class="custom-help-center-link"><strong>HELP</strong> CENTER</a>
-      </div>
+      {{dc 'to_home_page'}}
 
     </div>
     <div class="custom-nav-wrapper nav-wrapper">
       <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false"
         aria-label="{{t 'toggle_navigation'}}">
       </span>
-      <a href="https://my.configura.com/" class="custom-myconfigura-link material-icons-big" title="Back to MyConfigura" target="_blank" rel="noopener noreferrer" >
-        <i class="material-icons material-icons-margin-right">keyboard_backspace</i>Back to MyConfigura
-      </a>
-      <a href="https://my.configura.com/index.pl?page=marketplace" class="btn custom-download-extensions-btn material-icons-big" role="button" title="Download Extensions" target="_blank" rel="noopener noreferrer" >
-        <i class="material-icons material-icons-margin-right blue-icon">layers</i>Download Extensions
-      </a>
-      <a href="https://support.configura.com/hc/en-us/articles/360050652674" class="btn custom-known-issues-link material-icons-big" role="button" title="Download Extensions" target="_blank" rel="noopener noreferrer" >
-        <i class="material-icons material-icons-margin-right white-icon">bug_report</i>Known Issues
-      </a>
+      {{dc 'header_links'}}
       <nav class="user-nav custom-display-links" id="user-nav">
         <a href="/"></a>
         <!-- To add links to burger menu look at script.js CUSTOM MOBILE MENU ITEMS -->
@@ -32,6 +22,7 @@
       <div class="custom-signin-link" title="User information">
         {{user_info}}
       </div>
+      <div id="language-dd" class="language-display"></div>
     </div>
   </header>
 </div>

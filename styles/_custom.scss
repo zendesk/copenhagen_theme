@@ -1911,6 +1911,54 @@ main.main-sidebar {
   display: none;
 }
 
+// Language selector
+.language-display {
+  @include respond-to(handhelds) {
+    display: none;
+  }
+}
+
+.language-container {
+  position: relative;
+}
+
+.language-dropdown {
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: 12px;
+
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.language-ul {
+  background-color: var(--color-white);
+  box-shadow: 0 0 10px rgba(0,0,0,.08);
+  display: none;
+  left: 50%;
+  list-style-type: none;
+  margin-left: -125px;
+  position: absolute;
+  width: 250px;
+}
+
+.language-li {
+  display: flex;
+  justify-content: center;
+
+  a {
+    padding: 5px;
+    font-size: 12px;
+    color: var(--color-almost-black);
+    cursor: pointer;
+    &:hover {
+      color: var(--color-almost-black);
+      text-decoration: underline;
+    }
+  }
+}
+
 /*********************************************************
  * Paddings
  *********************************************************/

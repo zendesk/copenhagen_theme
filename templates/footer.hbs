@@ -3,12 +3,7 @@
   <div class="container custom-support-team-container">
     <img class="custom-support-team-banner" src="{{ asset 'support_team.jpg' }}"/>
   </div>
-  <div class="custom-contact-button-container">
-    <h1 class="custom-contact-title">Do you still need help?</h1>
-    <div class="custom-contact-page-button" role="button">
-      <a class="no-text-decoration" href="https://configura.zendesk.com/hc/en-us/categories/360002370413"><p class="custom-contacts-button">Contact us</p class="custom-contacts-button"></a>
-    </div>
-  </div>
+  {{dc 'contact_us'}}
   <footer class="custom-footer footer">
     <div class="container custom-footer-inner footer-inner">
       <div class="custom-footer-logo">
@@ -16,41 +11,7 @@
           <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}">
         {{/link}}
       </div>
-      <div class="custom-footer-link-container">
-        <div class="custom-footer-links-card">
-          <h2>Solutions</h2>
-          <a href="https://www.configura.com/solutions/industry" target="_blank"><p>Industry solutions</p></a>
-          <a href="https://www.configura.com/solutions/our-platform" target="_blank"><p>Our platform</p></a>
-          <a href="https://www.configura.com/solutions/services" target="_blank"><p>Services</p></a>
-          <a href="https://www.configura.com/solutions/case-studies" target="_blank"><p>Case studies</p></a>
-        </div>
-        <div class="custom-footer-links-card">
-          <h2>Products</h2>
-          <a href="https://www.configura.com/products/cet-designer" target="_blank"><p>CET Designer</p></a>
-          <a href="https://www.configura.com/products/cet-developer" target="_blank"><p>CET Developer</p></a>
-          <a href="https://www.configura.com/products/catalogue-creator" target="_blank"><p>Catalogue Creator</p></a>
-          <a href="https://www.configura.com/products/configura-software" target="_blank"><p>Configura Software</p></a>
-          <a href="https://www.configura.com/products/instantplanner" target="_blank"><p>InstantPlanner</p></a>
-        </div>
-        <div class="custom-footer-links-card">
-          <h2>Partners</h2>
-          <a href="https://www.configura.com/partners/become" target="_blank"><p>Become a partner</p></a>
-          <a href="https://www.configura.com/partners/our-partners" target="_blank"><p>Our partners</p></a>
-        </div>
-        <div class="custom-footer-links-card">
-          <h2>Academy</h2>
-          <a href="https://www.configura.com/academy/cet-designer" target="_blank"><p>CET Designer</p></a>
-          <a href="https://www.configura.com/academy/cet-developer" target="_blank"><p>Developers</p></a>
-          <a href="https://www.configura.com/academy/education-program" target="_blank"><p>Education program</p></a>
-        </div>
-        <div class="custom-footer-links-card">
-          <h2>Company</h2>
-          <a href="https://www.configura.com/company/about" target="_blank"><p>About</p></a>
-          <a href="https://www.configura.com/company/contact#NA" target="_blank"><p>Our offices</p></a>
-          <a href="https://www.configura.com/careers" target="_blank"><p>Careers</p></a>
-        </div>
-      </div>
-
+      {{dc 'footer'}}
       <div class="custom-footer-socialmedia-container">
         <div class="custom-socialmedia-icon">
           <a href="https://www.facebook.com/ConfiguraIntl/" rel="noopener noreferrer"
@@ -71,13 +32,12 @@
           </a>
         </div>
       </div>
-
     <div class="custom-copyright-container">
-      <div>Copyright © 2020 Configura Sverige AB. All rights reserved.</div>
+      <div>{{dc 'copyright'}}</div>
       <div>
-        <a href="https://www.configura.com/legal-terms">Legal Terms</a>
-        <a href="https://www.configura.com/privacy-notice">Privacy Notice</a>
-        <a href="https://www.configura.com/terms-of-use">Terms of Use</a>
+        <a href="https://www.configura.com/legal-terms">{{dc 'legal_terms'}}</a>
+        <a href="https://www.configura.com/privacy-notice">{{dc 'privacy_notice'}}</a>
+        <a href="https://www.configura.com/terms-of-use">{{dc 'terms_of_use'}}</a>
       </div>
     </div>
   </div>
