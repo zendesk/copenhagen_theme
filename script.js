@@ -88,11 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
 			"click",
 			function () {
 				showRequestCommentContainerTrigger.style.display = "none";
-				Array.prototype.forEach.call(requestCommentFields, function (
-					e
-				) {
-					e.style.display = "block";
-				});
+				Array.prototype.forEach.call(
+					requestCommentFields,
+					function (e) {
+						e.style.display = "block";
+					}
+				);
 				requestCommentSubmit.style.display = "inline-block";
 
 				if (commentContainerTextarea) {
@@ -263,6 +264,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (data.locales.length > 0) {
 			for (var locale of data.locales) {
+				if (locale.locale === "es" || locale.locale === "sv") continue;
+
 				listItems += `
 					<li class="language-li">
 						<a href="${getLangPath(locale.locale)}">${locale.presentation_name}</a>
@@ -337,6 +340,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			var languages = "";
 			if (locales && locales.length > 0) {
 				for (var locale of locales) {
+					if (locale.locale === "es" || locale.locale === "sv")
+						continue;
+
 					languages += `<a class="mobile-language-option" href="/hc/${locale.locale}">${locale.presentation_name}</a>`;
 				}
 			}
