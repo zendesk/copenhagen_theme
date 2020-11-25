@@ -31,6 +31,18 @@
       "label": "link_color_label",
       "value": "#355b6b"
     }, {
+      "identifier": "article_link_color",
+      "type": "color",
+      "description": "article_link_color_description",
+      "label": "article_link_color_label",
+      "value": "#1F73B7"
+    }, {
+      "identifier": "visited_article_link_color",
+      "type": "color",
+      "description": "visited_article_link_color_description",
+      "label": "visited_article_link_color_label",
+      "value": "#A31F34"
+    }, {
       "identifier": "background_color",
       "type": "color",
       "description": "background_color_description",

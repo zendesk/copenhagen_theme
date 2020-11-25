@@ -35,6 +35,15 @@
   .see-all-articles {
     display: block;
     padding: 15px 0;
+
+    a {
+      text-decoration: underline;
+      color: $article_link_color;
+
+      &:visited {
+        color: $visited_article_link_color;
+      }
+    }
   }
 }
 
