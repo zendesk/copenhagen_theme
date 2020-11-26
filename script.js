@@ -260,16 +260,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		var listItems = "";
 
-		var userMenu = $("#user-nav");
-
 		if (data.locales.length > 0) {
 			for (var locale of data.locales) {
-				if (locale.locale === "es" || locale.locale === "sv") continue;
+				var langDisplay = locale.locale;
+
+				if (langDisplay === "es" || langDisplay === "sv") continue;
+
+				if (langDisplay === "en-US") {
+					langDisplay = "EN";
+				} else if (langDisplay === "zh-cn") {
+					langDisplay = "ZH";
+				}
 
 				listItems += `
-					<li class="language-li">
-						<a href="${getLangPath(locale.locale)}">${locale.presentation_name}</a>
-					</li>
+					<div>
+						<a href="${getLangPath(locale.locale)}">${langDisplay.toUpperCase()}</a>
+					</div>
 				`;
 			}
 		}
@@ -278,21 +284,39 @@ document.addEventListener("DOMContentLoaded", function () {
 			return locale.locale.toUpperCase() === getPageLang().toUpperCase();
 		})[0];
 
+		let currLang = currLocaleObj.locale.toUpperCase();
+		if (currLang === "EN-US") {
+			currLang = "EN";
+		} else if (currLang === "ZH-CN") {
+			currLang = "ZH";
+		}
+
 		var fullList = `
 			<div class="language-container">
-				<div id="language-display" class="language-dropdown">${currLocaleObj.name}</div>
-				<ul class="language-ul">${listItems}</ul>
+				<div id="language-display" class="language-menu">
+					<div class="language-dropdown">${currLang}</div>
+				</div>
+				<span class="btn with-image dropdown-toggle language-chevron">
+					<div id="language-list" class="dropdown-menu dropdown-menu-end dropdown-menu-caret language-list" role="menu">${listItems}</div>
+				</span>
 			</div>
 		`;
 
 		$("#language-dd").append(fullList);
 
-		$("#language-display").mouseover(function () {
-			$(".language-ul").show();
+		$("#language-list").hide();
+
+		$(".language-container").click(function () {
+			var list = $("#language-list");
+			list.show();
 		});
 
-		$(".language-ul").mouseleave(function () {
-			$(".language-ul").hide();
+		$(document).mouseup(function (event) {
+			var target = $(event.target);
+
+			if (!target.closest("#language-list").length) {
+				$("#language-list").hide();
+			}
 		});
 	});
 

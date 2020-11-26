@@ -6154,45 +6154,59 @@ main.main-sidebar {
 }
 
 .language-container {
+  color: var(--color-white);
+  font-size: 14px;
+  padding-left: 1rem;
   position: relative;
+  display: flex;
+}
+
+.language-menu {
+  display: flex;
+}
+
+.language-chevron {
+  font-size: 12px;
+  padding-left: 0.25rem;
 }
 
 .language-dropdown {
   color: var(--color-white);
   cursor: pointer;
-  font-size: 12px;
 }
 
 .language-dropdown:hover {
   text-decoration: underline;
 }
 
-.language-ul {
-  background-color: var(--color-white);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
-  display: none;
-  left: 50%;
-  list-style-type: none;
-  margin-left: -125px;
-  position: absolute;
-  width: 250px;
-}
-
-.language-li {
+.language-list {
+  align-items: center;
+  color: var(--color-black);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  left: 30%;
+  margin-top: 40px;
+  min-width: 50px;
+  position: absolute;
 }
 
-.language-li a {
-  padding: 5px;
-  font-size: 12px;
+.language-list a {
   color: var(--color-almost-black);
-  cursor: pointer;
+  padding: 3px;
 }
 
-.language-li a:hover {
+.language-list a:hover {
   color: var(--color-almost-black);
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.language-list div {
+  text-align: center;
+  width: 100%;
+}
+
+.language-list div:hover {
+  background-color: var(--color-grey);
 }
 
 /*********************************************************
