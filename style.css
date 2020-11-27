@@ -6184,9 +6184,9 @@ main.main-sidebar {
   color: var(--color-black);
   display: flex;
   flex-direction: column;
-  left: 30%;
+  right: -25%;
   margin-top: 40px;
-  min-width: 50px;
+  min-width: 110px;
   position: absolute;
 }
 

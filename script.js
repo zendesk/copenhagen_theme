@@ -262,19 +262,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 		if (data.locales.length > 0) {
 			for (var locale of data.locales) {
-				var langDisplay = locale.locale;
+				var langDisplay = locale.native_name;
 
-				if (langDisplay === "es" || langDisplay === "sv") continue;
+				if (locale.locale === "es" || locale.locale === "sv") continue;
 
-				if (langDisplay === "en-US") {
-					langDisplay = "EN";
-				} else if (langDisplay === "zh-cn") {
-					langDisplay = "ZH";
-				}
+				if (locale.locale === "en-US") langDisplay = locale.name;
+
+				if (locale.locale === "zh-cn") langDisplay = "简体中文";
 
 				listItems += `
 					<div>
-						<a href="${getLangPath(locale.locale)}">${langDisplay.toUpperCase()}</a>
+						<a href="${getLangPath(locale.locale)}">${langDisplay}</a>
 					</div>
 				`;
 			}
