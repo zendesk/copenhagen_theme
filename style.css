@@ -6168,6 +6168,7 @@ main.main-sidebar {
 .language-chevron {
   font-size: 12px;
   padding-left: 0.25rem;
+  padding-top: 1px;
 }
 
 .language-dropdown {
