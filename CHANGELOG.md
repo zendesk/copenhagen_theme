@@ -1,3 +1,10 @@
+# [2.7.0](https://github.com/zendesk/copenhagen_theme/compare/v2.6.0...v2.7.0) (2020-11-30)
+
+
+### Features
+
+* **requests:** [COMM-1283] Check for "emptiness" when using WYSIWYG ([f9c81da](https://github.com/zendesk/copenhagen_theme/commit/f9c81dab432144790a41dff1dbc984fdd44ceb30))
+
 # [2.6.0](https://github.com/zendesk/copenhagen_theme/compare/v2.5.4...v2.6.0) (2020-11-23)
 
 
