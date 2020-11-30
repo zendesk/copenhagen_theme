@@ -92,9 +92,23 @@ document.addEventListener('DOMContentLoaded', function() {
   // Change Mark as solved text according to whether comment is filled
   var requestCommentTextarea = document.querySelector('.request-container .comment-container textarea');
 
+  var usesWysiwyg = requestCommentTextarea.dataset.helper === "wysiwyg";
+
+  function isEmptyPlaintext(s) {
+    return s.trim() === '';
+  }
+
+  function isEmptyHtml(xml) {
+    var doc = new DOMParser().parseFromString(`<_>${xml}</_>`, "text/xml");
+    var img = doc.querySelector("img");
+    return img === null && isEmptyPlaintext(doc.children[0].textContent);
+  };
+
+  var isEmpty = usesWysiwyg ? isEmptyHtml : isEmptyPlaintext;
+
   if (requestCommentTextarea) {
     requestCommentTextarea.addEventListener('input', function() {
-      if (requestCommentTextarea.value === '') {
+      if (isEmpty(requestCommentTextarea.value)) {
         if (requestMarkAsSolvedButton) {
           requestMarkAsSolvedButton.innerText = requestMarkAsSolvedButton.getAttribute('data-solve-translation');
         }
