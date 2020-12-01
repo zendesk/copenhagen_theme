@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Change Mark as solved text according to whether comment is filled
   var requestCommentTextarea = document.querySelector('.request-container .comment-container textarea');
 
-  var usesWysiwyg = requestCommentTextarea.dataset.helper === "wysiwyg";
+  var usesWysiwyg = requestCommentTextarea && requestCommentTextarea.dataset.helper === "wysiwyg";
 
   function isEmptyPlaintext(s) {
     return s.trim() === '';
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Disable submit button if textarea is empty
-  if (requestCommentTextarea && requestCommentTextarea.value === '') {
+  if (requestCommentTextarea && isEmpty(requestCommentTextarea.value)) {
     requestCommentSubmitButton.disabled = true;
   }
 
