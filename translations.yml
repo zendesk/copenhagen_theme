@@ -345,3 +345,13 @@ parts:
       title: "Description for the follow topic setting"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Users can follow a specific topic"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_brand_name_label"
+      title: "Label for the show brand name setting"
+      screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
+      value: "Show Help Center name"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_brand_name_description"
+      title: "Description for the show brand name setting"
+      screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
+      value: "Display the Help Center name next to the logo"
