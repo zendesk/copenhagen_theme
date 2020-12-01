@@ -90,9 +90,15 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Change Mark as solved text according to whether comment is filled
-  var requestCommentTextarea = document.querySelector('.request-container .comment-container textarea');
+  var
+    requestCommentTextarea = document.querySelector(
+      ".request-container .comment-container textarea"
+    ),
+    usesWysiwyg = false;
 
-  var usesWysiwyg = requestCommentTextarea.dataset.helper === "wysiwyg";
+  if (requestCommentTextarea) {
+    usesWysiwyg = requestCommentTextarea.dataset.helper === "wysiwyg";
+  }
 
   function isEmptyPlaintext(s) {
     return s.trim() === '';
