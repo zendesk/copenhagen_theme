@@ -1,3 +1,10 @@
+## [2.7.1](https://github.com/zendesk/copenhagen_theme/compare/v2.7.0...v2.7.1) (2020-12-01)
+
+
+### Bug Fixes
+
+* **script:** [COMM-1283] Fix null error ([8f71ff8](https://github.com/zendesk/copenhagen_theme/commit/8f71ff804c8ada770b0c984dc0b1d49afbbed9e9))
+
 # [2.7.0](https://github.com/zendesk/copenhagen_theme/compare/v2.6.0...v2.7.0) (2020-11-30)
 
 
