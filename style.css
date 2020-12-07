@@ -9,7 +9,7 @@ body {
   color: $text_color;
   font-family: $text_font;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -917,7 +917,7 @@ ul {
 .breadcrumbs li {
   color: lighten($text_color, 20%);
   display: inline;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   max-width: 450px;
   overflow: hidden;
@@ -1492,6 +1492,15 @@ ul {
   padding: 15px 0;
 }
 
+.section-tree .see-all-articles a {
+  text-decoration: underline;
+  color: $article_link_color;
+}
+
+.section-tree .see-all-articles a:visited {
+  color: $visited_article_link_color;
+}
+
 .article-list-item {
   font-size: 16px;
   padding: 15px 0;
@@ -1687,8 +1696,13 @@ ul {
   list-style-type: disc;
 }
 
+.article-body a {
+  text-decoration: underline;
+  color: $article_link_color;
+}
+
 .article-body a:visited {
-  color: darken($link_color, 20%);
+  color: $visited_article_link_color;
 }
 
 .article-body code {
@@ -1900,7 +1914,7 @@ ul {
   border-radius: 4px;
   color: $text_color;
   display: block;
-  font-weight: 300;
+  font-weight: 400;
   margin-bottom: 10px;
   padding: 10px;
 }
@@ -1920,6 +1934,17 @@ ul {
 .recent-articles li,
 .related-articles li {
   margin-bottom: 15px;
+}
+
+.recent-articles a,
+.related-articles a {
+  text-decoration: underline;
+  color: $article_link_color;
+}
+
+.recent-articles a:visited,
+.related-articles a:visited {
+  color: $visited_article_link_color;
 }
 
 /***** Attachments *****/
@@ -3644,7 +3669,7 @@ ul {
 .meta-data {
   color: lighten($text_color, 20%);
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .meta-data:not(:last-child)::after {
