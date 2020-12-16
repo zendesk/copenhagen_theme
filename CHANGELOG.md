@@ -1,3 +1,10 @@
+## [2.7.2](https://github.com/zendesk/copenhagen_theme/compare/v2.7.1...v2.7.2) (2020-12-16)
+
+
+### Bug Fixes
+
+* **search:** Use scoped search based on category user is in for sections and category ([42cee53](https://github.com/zendesk/copenhagen_theme/commit/42cee535d15f6de9033e0a95492a894890f43ce2))
+
 ## [2.7.1](https://github.com/zendesk/copenhagen_theme/compare/v2.7.0...v2.7.1) (2020-12-01)
 
 
