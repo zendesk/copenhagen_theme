@@ -6,7 +6,7 @@
     "node-fetch": "^2.1.2"
   },
   "scripts": {
-    "build": "npx tailwindcss-cli@latest build styles/style.css -o style.css",
+    "build": "postcss build styles/style.css -o style.css",
     "watch": "watch 'npm run build' styles/"
   },
   "devDependencies": {
@@ -16,11 +16,16 @@
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
     "autoprefixer": "^10.1.0",
+    "cssnano": "^4.1.10",
     "husky": "^4.2.3",
     "js-yaml": "^3.13.1",
     "postcss": "^8.2.1",
+    "postcss-cli": "^8.3.1",
+    "postcss-import": "^14.0.0",
+    "postcss-nested": "^5.0.3",
     "semantic-release": "^17.0.4",
     "tailwindcss": "^2.0.2",
+    "tailwindcss-line-clamp": "^1.0.5",
     "watch": "^1.0.2"
   },
   "commitlint": {
