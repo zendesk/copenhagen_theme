@@ -1,9 +1,13 @@
 {
-  "name": "copenhagen_theme",
+  "name": "zapnito-helpdesk",
   "version": "1.0.0",
-  "repository": "git@github.com:zendesk/copenhagen_theme.git",
+  "repository": "git@github.com:zapnito/zapnito-helpdesk.git",
   "dependencies": {
     "node-fetch": "^2.1.2"
+  },
+  "scripts": {
+    "build": "npx tailwindcss-cli@latest build styles/style.css -o style.css",
+    "watch": "watch 'npm run build' styles/"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -11,9 +15,13 @@
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
+    "autoprefixer": "^10.1.0",
     "husky": "^4.2.3",
     "js-yaml": "^3.13.1",
-    "semantic-release": "^17.0.4"
+    "postcss": "^8.2.1",
+    "semantic-release": "^17.0.4",
+    "tailwindcss": "^2.0.2",
+    "watch": "^1.0.2"
   },
   "commitlint": {
     "extends": [
