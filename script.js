@@ -681,7 +681,7 @@ $.get(
 	for (let i = 0; i < array.length; i++) {
 		height += array[i].clientHeight;
 	}
-	var sidebar = document.querySelector(".sidebar");
+	var sidebar = document.getElementById("sidebar-list");
 	if (sidebar !== null) {
 		sidebar.style.paddingTop =
 			parseInt($(".sidebar").css("padding-top")) + height + "px";

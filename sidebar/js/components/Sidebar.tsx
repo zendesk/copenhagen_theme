@@ -171,7 +171,7 @@ export default function Sidebar() {
 
 	return (
 		<div id="sidebar" className="sidebar-panel">
-			<ul className="sidebar">
+			<ul id="sidebar-list" className="sidebar">
 				<li className="sidebar-item sidebar-home open material-icons-big">
 					<a
 						href="https://www.configura.com/academy/cet-designer"
