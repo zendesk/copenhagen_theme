@@ -648,21 +648,31 @@ function handleRebootOrRefresh() {
 
 /**** NOTIFICATION BANNER ****/
 $.get(
-	"/api/v2/help_center/" +
-		$("html").attr("lang").toLowerCase() +
-		"/articles.json?label_names=alert"
+	"/api/v2/help_center/articles/search.json?label_names=alert,warning"
 ).done(function (data) {
-	$.each(data.articles, function (index, item) {
-		var style1 = `
-			<div class="ns-box ns-box--alert ns-bar ns-effect-slidetop ns-type-notice ns-show">
-				<div class="ns-box-inner">
-					<span class="material-icons yellow-icon">error</span>
-					<div>${item.body}</div>
-				</div>
-			</div>
-		`;
-		$(".alertbox").append(style1);
-	});
+	var alerts = data.results
+		.filter((item) => item.label_names.indexOf("alert") > -1)
+		.map(
+			(alert) => `
+				<div class="ns-box ns-box--alert ns-bar ns-effect-slidetop ns-type-notice ns-show">
+					<div class="ns-box-inner">
+						<span class="material-icons yellow-icon">error</span>
+						<div>${alert.body}</div>
+					</div>
+				</div>`
+		);
+	var warnings = data.results
+		.filter((item) => item.label_names.indexOf("warning") > -1)
+		.map(
+			(warning) => `
+				<div class="ns-box ns-box--warning ns-bar ns-effect-slidetop ns-type-notice ns-show">
+					<div class="ns-box-inner">
+						<span class="material-icons red-icon">warning</span>
+						<div>${warning.body}</div>
+					</div>
+				</div>`
+		);
+	$(".alertbox").append([...warnings, ...alerts]);
 	$(".ns-close").on("click", function () {
 		$(".alertbox").remove();
 	});
@@ -671,38 +681,7 @@ $.get(
 	for (let i = 0; i < array.length; i++) {
 		height += array[i].clientHeight;
 	}
-	var sidebar = document.querySelector(".sidebar");
-	if (sidebar !== null) {
-		sidebar.style.paddingTop =
-			parseInt($(".sidebar").css("padding-top")) + height + "px";
-	}
-});
-
-$.get(
-	"/api/v2/help_center/" +
-		$("html").attr("lang").toLowerCase() +
-		"/articles.json?label_names=warning"
-).done(function (data) {
-	$.each(data.articles, function (index, item) {
-		var style1 = `
-			<div class="ns-box ns-box--warning ns-bar ns-effect-slidetop ns-type-notice ns-show">
-				<div class="ns-box-inner">
-					<span class="material-icons red-icon">warning</span>
-					<div>${item.body}</div>
-				</div>
-			</div>
-		`;
-		$(".alertbox").append(style1);
-	});
-	$(".ns-close").on("click", function () {
-		$(".alertbox").remove();
-	});
-	var array = document.querySelectorAll(".alertbox");
-	var height = 0;
-	for (let i = 0; i < array.length; i++) {
-		height += array[i].clientHeight;
-	}
-	var sidebar = document.querySelector(".sidebar");
+	var sidebar = document.getElementById("sidebar-list");
 	if (sidebar !== null) {
 		sidebar.style.paddingTop =
 			parseInt($(".sidebar").css("padding-top")) + height + "px";
