@@ -62,5 +62,7 @@
   "post_sharing_description": "Hiển thị chức năng chia sẻ về bài đăng lên phương tiện truyền thông xã hội",
   "community_topic_group_label": "Các phần tử trong chủ đề cộng đồng",
   "follow_topic_label": "Theo dõi",
-  "follow_topic_description": "Người dùng có thể theo dõi một chủ đề cụ thể"
+  "follow_topic_description": "Người dùng có thể theo dõi một chủ đề cụ thể",
+  "show_brand_name_label": "Hiển thị tên Trung tâm trợ giúp",
+  "show_brand_name_description": "Hiển thị tên Trung tâm trợ giúp bên cạnh biểu tượng"
 }

@@ -62,5 +62,7 @@
   "post_sharing_description": "Zobrazit u příspěvku sdílení na sociálních sítích",
   "community_topic_group_label": "Elementy tématu komunity",
   "follow_topic_label": "Sledovat",
-  "follow_topic_description": "Uživatelé mohou sledovat určité téma"
+  "follow_topic_description": "Uživatelé mohou sledovat určité téma",
+  "show_brand_name_label": "Zobrazit název Centra nápovědy",
+  "show_brand_name_description": "Zobrazit název Centra nápovědy vedle loga"
 }

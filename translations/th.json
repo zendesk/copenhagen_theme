@@ -62,5 +62,7 @@
   "post_sharing_description": "แสดงการแชร์ทางโซเชียลมีเดียบนโพสต์",
   "community_topic_group_label": "องค์ประกอบหัวข้อของชุมชน",
   "follow_topic_label": "ติดตาม",
-  "follow_topic_description": "ผู้ใช้สามารถติดตามหัวข้อที่เฉพาะเจาะจงได้"
+  "follow_topic_description": "ผู้ใช้สามารถติดตามหัวข้อที่เฉพาะเจาะจงได้",
+  "show_brand_name_label": "แสดงชื่อศูนย์ความช่วยเหลือ",
+  "show_brand_name_description": "แสดงชื่อศูนย์ความช่วยเหลือถัดจากโลโก้"
 }

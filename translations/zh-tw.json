@@ -62,5 +62,7 @@
   "post_sharing_description": "在貼文顯示社群媒體分享功能",
   "community_topic_group_label": "社區主題元素",
   "follow_topic_label": "追蹤",
-  "follow_topic_description": "使用者可追蹤指定主題"
+  "follow_topic_description": "使用者可追蹤指定主題",
+  "show_brand_name_label": "顯示客服中心名稱",
+  "show_brand_name_description": "在標誌的旁邊顯示客服中心名稱"
 }

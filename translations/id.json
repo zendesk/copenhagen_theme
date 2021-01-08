@@ -62,5 +62,7 @@
   "post_sharing_description": "Tampilkan berbagi di media sosial di posting",
   "community_topic_group_label": "Elemen topik komunitas",
   "follow_topic_label": "Ikuti",
-  "follow_topic_description": "Pengguna dapat mengikuti topik spesifik"
+  "follow_topic_description": "Pengguna dapat mengikuti topik spesifik",
+  "show_brand_name_label": "Tampilkan nama Pusat Bantuan",
+  "show_brand_name_description": "Tampilkan nama Pusat Bantuan di samping logo"
 }

@@ -62,5 +62,7 @@
   "post_sharing_description": "Közösségi megosztás lehetőségének megjelenítése a bejegyzéshez",
   "community_topic_group_label": "Közösségi témakörök elemei",
   "follow_topic_label": "Követés",
-  "follow_topic_description": "A felhasználók követhetnek egy adott témakört"
+  "follow_topic_description": "A felhasználók követhetnek egy adott témakört",
+  "show_brand_name_label": "Súgóközpont nevének megjelenítése",
+  "show_brand_name_description": "A Súgóközpont nevének megjelenítése az embléma mellett"
 }

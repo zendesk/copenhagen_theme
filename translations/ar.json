@@ -62,5 +62,7 @@
   "post_sharing_description": "إظهار مشاركة الوسائط الاجتماعية على منشور",
   "community_topic_group_label": "عناصر مواضيع المجتمع",
   "follow_topic_label": "تابع",
-  "follow_topic_description": "يمكن للمستخدمين متابعة موضوع معين"
+  "follow_topic_description": "يمكن للمستخدمين متابعة موضوع معين",
+  "show_brand_name_label": "إظهار اسم مركز المساعدة",
+  "show_brand_name_description": "عرض اسم مركز المساعدة إلى جانب الشعار"
 }

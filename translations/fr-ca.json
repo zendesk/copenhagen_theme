@@ -19,12 +19,12 @@
   "logo_description": "Logo de l’entreprise",
   "logo_label": "Logo",
   "favicon_description": "Icône affichée dans la barre d’adresse de votre navigateur",
-  "favicon_label": "Favicon",
+  "favicon_label": "Favoricône",
   "images_group_label": "Images",
-  "homepage_background_image_description": "Image de héros sur la page d’accueil",
-  "homepage_background_image_label": "Hero image de la page d’accueil",
-  "community_background_image_description": "Image de héros sur la page des sujets de la communauté",
-  "community_background_image_label": "Hero image pour la communauté",
+  "homepage_background_image_description": "Image de premier plan sur la page d’accueil",
+  "homepage_background_image_label": "Image de premier plan de la page d’accueil",
+  "community_background_image_description": "Image de premier plan sur la page des sujets de la communauté",
+  "community_background_image_label": "Image de premier plan pour la communauté",
   "community_image_description": "Image pour la section Communauté de la page d’accueil",
   "community_image_label": "Bannière Communauté",
   "search_group_label": "Paramètres de recherche",
@@ -62,5 +62,7 @@
   "post_sharing_description": "Afficher les partages de la publication sur les réseaux sociaux",
   "community_topic_group_label": "Éléments des sujets de la communauté",
   "follow_topic_label": "S’abonner",
-  "follow_topic_description": "Les utilisateurs peuvent s’abonner à un sujet spécifique"
+  "follow_topic_description": "Les utilisateurs peuvent s’abonner à un sujet en particulier",
+  "show_brand_name_label": "Afficher le nom du Centre d’aide",
+  "show_brand_name_description": "Affichez le nom du Centre d’aide en regard du logo"
 }

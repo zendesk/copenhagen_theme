@@ -62,5 +62,7 @@
   "post_sharing_description": "게시물에 소셜 미디어 공유 표시",
   "community_topic_group_label": "커뮤니티 주제 요소",
   "follow_topic_label": "팔로우",
-  "follow_topic_description": "사용자가 특정 주제를 팔로우할 수 있음"
+  "follow_topic_description": "사용자가 특정 주제를 팔로우할 수 있음",
+  "show_brand_name_label": "헬프 센터 이름 표시",
+  "show_brand_name_description": "로고 옆에 헬프 센터 이름 표시"
 }
