@@ -59,6 +59,16 @@ parts:
       screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
       value: "Link color"
   - translation:
+      key: "txt.help_center_copenhagen_theme.visited_link_color_description"
+      title: "Description for the visited link color setting"
+      screenshot: "https://drive.google.com/file/d/1ZOoBb6K_mpYtyd3ulkEKawmSj1dZPuFw/view?usp=sharing"
+      value: "Text color for visited link elements"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.visited_link_color_label"
+      title: "Label for the visited link color setting"
+      screenshot: "https://drive.google.com/file/d/1ZOoBb6K_mpYtyd3ulkEKawmSj1dZPuFw/view?usp=sharing"
+      value: "Visited link color"
+  - translation:
       key: "txt.help_center_copenhagen_theme.background_color_description"
       title: "Description for the background color setting"
       screenshot: "https://zendesk.box.com/s/ufzzcaedpey0zp92nozg2yzhytsrhd8f"
