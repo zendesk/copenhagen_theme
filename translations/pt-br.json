@@ -62,5 +62,7 @@
   "post_sharing_description": "Mostrar opções de compartilhamento em redes sociais na publicação",
   "community_topic_group_label": "Elementos do tópico da comunidade",
   "follow_topic_label": "Seguir",
-  "follow_topic_description": "Os usuários podem seguir um tópico específico"
+  "follow_topic_description": "Os usuários podem seguir um tópico específico",
+  "show_brand_name_label": "Exibir nome da Central de Ajuda",
+  "show_brand_name_description": "Exibir o nome da Central de Ajuda ao lado do logotipo"
 }

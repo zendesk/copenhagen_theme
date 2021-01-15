@@ -62,5 +62,7 @@
   "post_sharing_description": "Vis hvordan innlegg er delt i sosiale medier",
   "community_topic_group_label": "Elementer for nettsamfunnemner",
   "follow_topic_label": "Følg",
-  "follow_topic_description": "Brukere kan følge et bestemt emne"
+  "follow_topic_description": "Brukere kan følge et bestemt emne",
+  "show_brand_name_label": "Vis kundesenternavn",
+  "show_brand_name_description": "Vis kundesenternavnet ved siden av logoen"
 }

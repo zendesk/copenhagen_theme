@@ -62,5 +62,7 @@
   "post_sharing_description": "Näytä viestin jakaminen sosiaalisessa mediassa",
   "community_topic_group_label": "Yhteisöaihe-elementit",
   "follow_topic_label": "Seuraa",
-  "follow_topic_description": "Käyttäjät voivat seurata tiettyä aihetta"
+  "follow_topic_description": "Käyttäjät voivat seurata tiettyä aihetta",
+  "show_brand_name_label": "Näytä Tukiportaalin nimi",
+  "show_brand_name_description": "Näytä Tukiportaalin nimi logon vieressä"
 }

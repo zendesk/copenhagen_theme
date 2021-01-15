@@ -2,7 +2,7 @@
   "colors_group_label": "颜色",
   "brand_color_description": "主要导航元素的品牌颜色",
   "brand_color_label": "品牌颜色",
-  "brand_text_color_description": "悬停和活动状态的品牌颜色",
+  "brand_text_color_description": "悬停和活跃的状态的品牌颜色",
   "brand_text_color_label": "品牌文本颜色",
   "text_color_description": "正文和标题元素的文本颜色",
   "text_color_label": "文本颜色",
@@ -62,5 +62,7 @@
   "post_sharing_description": "在帖子显示社交媒体分享功能",
   "community_topic_group_label": "社区主题元素",
   "follow_topic_label": "关注",
-  "follow_topic_description": "用户可关注特定的主题"
+  "follow_topic_description": "用户可关注特定的主题",
+  "show_brand_name_label": "显示帮助中心名称",
+  "show_brand_name_description": "在徽标旁显示帮助中心名称"
 }

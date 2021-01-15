@@ -62,5 +62,7 @@
   "post_sharing_description": "Afficher les partages de la publication sur les réseaux sociaux",
   "community_topic_group_label": "Éléments des sujets de la communauté",
   "follow_topic_label": "S’abonner",
-  "follow_topic_description": "Les utilisateurs peuvent s’abonner à un sujet spécifique"
+  "follow_topic_description": "Les utilisateurs peuvent s’abonner à un sujet spécifique",
+  "show_brand_name_label": "Afficher le nom du Centre d’aide",
+  "show_brand_name_description": "Affichez le nom du Centre d’aide en regard du logo"
 }

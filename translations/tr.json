@@ -62,5 +62,7 @@
   "post_sharing_description": "Gönderide sosyal medya paylaşımını göster",
   "community_topic_group_label": "Topluluk konu başlığı öğeleri",
   "follow_topic_label": "Takip et",
-  "follow_topic_description": "Kullanıcılar belirli bir konu başlığını takip edebilir"
+  "follow_topic_description": "Kullanıcılar belirli bir konu başlığını takip edebilir",
+  "show_brand_name_label": "Yardım Merkezi adını göster",
+  "show_brand_name_description": "Yardım Merkezi adını logonun yanında görüntüleyin"
 }

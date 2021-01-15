@@ -62,5 +62,7 @@
   "post_sharing_description": "Показване на икони за споделяне на постинга в социални мрежи",
   "community_topic_group_label": "Елементи на темите в общността",
   "follow_topic_label": "Следене",
-  "follow_topic_description": "Потребителите могат да следят конкретна тема"
+  "follow_topic_description": "Потребителите могат да следят конкретна тема",
+  "show_brand_name_label": "Показване на името на помощния център",
+  "show_brand_name_description": "Показване на името на помощния център до логото"
 }

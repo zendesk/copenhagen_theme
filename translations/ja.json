@@ -62,5 +62,7 @@
   "post_sharing_description": "ソーシャルメディアへの共有を投稿に表示します",
   "community_topic_group_label": "コミュニティトピックの要素",
   "follow_topic_label": "フォローする",
-  "follow_topic_description": "ユーザーは特定のトピックのフォローができます"
+  "follow_topic_description": "ユーザーは特定のトピックのフォローができます",
+  "show_brand_name_label": "ヘルプセンターの名前を表示する",
+  "show_brand_name_description": "ロゴの横にヘルプセンターの名前を表示します"
 }

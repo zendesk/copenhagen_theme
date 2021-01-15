@@ -62,5 +62,7 @@
   "post_sharing_description": "पोस्ट पर सोशल मीडिया साझाकरण दिखाएं",
   "community_topic_group_label": "समुदाय विषय के तत्व",
   "follow_topic_label": "अनुसरण करें",
-  "follow_topic_description": "उपयोगकर्ता एक विशिष्ट विषय का अनुसरण कर सकते हैं"
+  "follow_topic_description": "उपयोगकर्ता एक विशिष्ट विषय का अनुसरण कर सकते हैं",
+  "show_brand_name_label": "सहायता केंद्र का नाम दिखाएं",
+  "show_brand_name_description": "लोगो के आगे सहायता केंद्र का नाम दिखाएं"
 }

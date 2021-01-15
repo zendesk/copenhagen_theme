@@ -62,5 +62,7 @@
   "post_sharing_description": "Показывать социальные сети, в которых опубликована публикация",
   "community_topic_group_label": "Элементы темы в сообществе",
   "follow_topic_label": "Подписаться",
-  "follow_topic_description": "Пользователи могут подписаться на определенную тему"
+  "follow_topic_description": "Пользователи могут подписаться на определенную тему",
+  "show_brand_name_label": "Показывать название Справочного центра",
+  "show_brand_name_description": "Показывать около логотипа название Справочного центра"
 }
