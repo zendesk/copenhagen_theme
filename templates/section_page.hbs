@@ -23,7 +23,43 @@
     <div class="custom-card small-card">
       <a href="{{url}}" class="custom-card-link">
         <div class="custom-card-logo-container">
-          <i class="material-icons">camera</i>
+          {{#is id 360009733874}}
+          <img class="material-icons black-icon" src="{{asset 'rule-24px.svg'}}" />
+          {{else}}
+          {{#is id 360010838733}}
+          <i class="material-icons black-icon">storage</i>
+          {{else}}
+          {{#is id 360009734414}}
+          <img class="material-icons black-icon" src="{{asset 'text_snippet-24px.svg'}}" />
+          {{else}}
+          {{#is id 360009734354}}
+          <i class="material-icons black-icon">low_priority</i>
+          {{else}}
+          {{#is id 360009734434}}
+          <i class="material-icons black-icon">settings_system_daydream</i>
+          {{else}}
+          {{#is id 360010838813}}
+          <i class="material-icons black-icon">developer_mode</i>
+          {{else}}
+          {{#is id 360010838853}}
+          <img class="material-icons black-icon" src="{{asset 'api-24px.svg'}}" />
+          {{else}}
+          {{#is id 360010838833}}
+          <img class="material-icons black-icon" src="{{asset 'grading-24px.svg'}}" />
+          {{else}}
+          {{#is id 360010839453}}
+          <i class="material-icons black-icon">more_horiz</i>
+          {{else}}
+          <i class="material-icons black-icon">camera</i>
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
+          {{/is}}
         </div>
         <h3 class="custom-card-title">
           {{name}}
