@@ -1,13 +1,12 @@
 // Variables
 
 // Colors
-$brand_color: #0072ef !default;
+$brand_color: #17494d !default;
 $brand_text_color: #fff !default; //Color for text with an accent color background
 $text_color: #333 !default;
-$link_color: #0072ef !default;
+$link_color: #17494d !default;
 $background_color: #fff !default;
 
-$visited-link-color: zass-darken($link_color, 20%);
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 

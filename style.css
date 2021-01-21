@@ -637,7 +637,7 @@ ul {
 }
 
 .form .suggestion-list li a:visited {
-  color: darken($link_color, 20%);
+  color: $visited_link_color;
 }
 
 /***** Header *****/
@@ -661,6 +661,20 @@ ul {
 
 .logo img {
   max-height: 37px;
+  vertical-align: middle;
+}
+
+.logo span {
+  margin: 0 10px;
+  color: $brand_color;
+}
+
+.logo a {
+  display: inline-block;
+}
+
+.logo a:hover, .logo a:focus, .logo a:active {
+  text-decoration: none;
 }
 
 .user-nav {
@@ -1273,6 +1287,7 @@ ul {
 
 .community-image {
   min-height: 300px;
+  margin-top: 32px;
   background-image: url($community_image);
   background-position: center;
   background-repeat: no-repeat;
@@ -1626,7 +1641,7 @@ ul {
 }
 
 .article-body a:visited {
-  color: darken($link_color, 20%);
+  color: $visited_link_color;
 }
 
 .article-body code {
@@ -2085,7 +2100,7 @@ ul {
 }
 
 .comment-body a:visited {
-  color: darken($link_color, 20%);
+  color: $visited_link_color;
 }
 
 .comment-body code {
@@ -2393,7 +2408,7 @@ ul {
 }
 
 .striped-list-title:visited {
-  color: darken($link_color, 20%);
+  color: $visited_link_color;
 }
 
 .striped-list .meta-group {
@@ -2660,7 +2675,7 @@ ul {
 }
 
 .post-body a:visited {
-  color: darken($link_color, 20%);
+  color: $visited_link_color;
 }
 
 .post-body code {
