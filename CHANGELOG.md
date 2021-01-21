@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/zendesk/copenhagen_theme/compare/v2.7.2...v2.8.0) (2021-01-21)
+
+
+### Features
+
+* Visual update (images, colors, margins) ([5c208ef](https://github.com/zendesk/copenhagen_theme/commit/5c208ef4a117810f2aa575b4954c36f169015d57))
+
 ## [2.7.2](https://github.com/zendesk/copenhagen_theme/compare/v2.7.1...v2.7.2) (2020-12-16)
 
 
