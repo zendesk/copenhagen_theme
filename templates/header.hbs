@@ -1,23 +1,36 @@
 <header class="header">
-    <div class="header-left">
-      <div class="logo">
-        <a href={{settings.mit_link}} class="mit-link" />
-        <a href={{settings.xpro_link}} class="xpro-link"> </a>
-        <img src="{{settings.logo}}" class="site-logo" />
-      </div>
-      {{#link 'help_center' class="support-center"}}
-        SUPPORT CENTER
-      {{/link}}
+  <div class="header-left">
+    <div class="logo">
+      <a href={{settings.mit_link}} class="mit-link" />
+      <a href={{settings.xpro_link}} class="xpro-link"> </a>
+      <img src="{{settings.logo}}" class="site-logo" />
+    </div>
+    {{#link 'help_center' class="support-center"}}
+      SUPPORT CENTER
+    {{/link}}
 
-   </div>
+  </div>
   <div class="nav-wrapper">
-    <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}"></span>
+    <span class="icon-menu" tabindex="0" role="button" aria-controls="user-nav" aria-expanded="false"
+      aria-label="{{t 'toggle_navigation'}}"></span>
     <nav class="user-nav" id="user-nav">
       {{#link 'new_request' class='submit-a-request'}}Contact Us{{/link}}
       <!-- {{link 'community'}} -->
     </nav>
     {{#if settings.show_user_info}}
-        {{user_info}}
+      {{user_info}}
     {{/if}}
   </div>
 </header>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-MT2XTXB');</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT2XTXB" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
