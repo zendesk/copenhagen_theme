@@ -8,6 +8,8 @@
   "text_color_label": "Colore testo",
   "link_color_description": "Colore del testo per i link",
   "link_color_label": "Colore link",
+  "visited_link_color_description": "Colore del testo per i link selezionati",
+  "visited_link_color_label": "Colore link selezionati",
   "background_color_description": "Colore di sfondo del Centro assistenza",
   "background_color_label": "Colore di sfondo",
   "fonts_group_label": "Carattere",

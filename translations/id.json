@@ -8,6 +8,8 @@
   "text_color_label": "Warna teks",
   "link_color_description": "Warna teks untuk elemen tautan",
   "link_color_label": "Warna tautan",
+  "visited_link_color_description": "Warna teks untuk elemen tautan yang dikunjungi",
+  "visited_link_color_label": "Warna tautan yang dikunjungi",
   "background_color_description": "Warna latar belakang Pusat Bantuan Anda",
   "background_color_label": "Warna latar belakang",
   "fonts_group_label": "Font",

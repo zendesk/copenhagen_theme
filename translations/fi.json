@@ -8,6 +8,8 @@
   "text_color_label": "Tekstin väri",
   "link_color_description": "Linkkielementtien tekstin väri",
   "link_color_label": "Linkin väri",
+  "visited_link_color_description": "Vierailtujen linkkielementtien tekstin väri",
+  "visited_link_color_label": "Vierailtujen linkkien väri",
   "background_color_description": "Tukiportaalin taustaväri",
   "background_color_label": "Taustaväri",
   "fonts_group_label": "Fontit",

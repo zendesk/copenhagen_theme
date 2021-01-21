@@ -8,6 +8,8 @@
   "text_color_label": "Textfärg",
   "link_color_description": "Textfärg för länkelement",
   "link_color_label": "Länkfärg",
+  "visited_link_color_description": "Textfärg för besökta länkelement",
+  "visited_link_color_label": "Färg för besökt länk",
   "background_color_description": "Bakgrundsfärg för ditt Helpcenter",
   "background_color_label": "Bakgrundsfärg",
   "fonts_group_label": "Typsnitt",

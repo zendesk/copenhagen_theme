@@ -8,6 +8,8 @@
   "text_color_label": "Цвят на текста",
   "link_color_description": "Цвят на текста за елементите-линкове",
   "link_color_label": "Цвят на линка",
+  "visited_link_color_description": "Цвят на текста за посетените линкове",
+  "visited_link_color_label": "Цвят на посетен линк",
   "background_color_description": "Цвят на фона на вашия Помощен център",
   "background_color_label": "Цвят на фона",
   "fonts_group_label": "Шрифтове",

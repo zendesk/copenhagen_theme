@@ -8,6 +8,8 @@
   "text_color_label": "Szöveg színe",
   "link_color_description": "Linkek szövegének színe",
   "link_color_label": "Link színe",
+  "visited_link_color_description": "Meglátogatott hivatkozások szövegének színe",
+  "visited_link_color_label": "Meglátogatott hivatkozás színe",
   "background_color_description": "A Súgóközpontja háttérszíne",
   "background_color_label": "Háttérszín",
   "fonts_group_label": "Betűtípusok",

@@ -8,6 +8,8 @@
   "text_color_label": "Barva textu",
   "link_color_description": "Barva textu pro elementy odkazů",
   "link_color_label": "Barva odkazu",
+  "visited_link_color_description": "Barva textu pro navštívené elementy odkazů",
+  "visited_link_color_label": "Barva navštíveného odkazu",
   "background_color_description": "Barva pozadí vašeho Centra nápovědy",
   "background_color_label": "Barva pozadí",
   "fonts_group_label": "Písma",

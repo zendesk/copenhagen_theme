@@ -8,6 +8,8 @@
   "text_color_label": "Χρώμα κειμένου",
   "link_color_description": "Χρώμα κειμένου για στοιχεία συνδέσμων",
   "link_color_label": "Χρώμα συνδέσμων",
+  "visited_link_color_description": "Χρώμα κειμένου για στοιχεία συνδέσμων με επισκέψεις",
+  "visited_link_color_label": "Χρώμα συνδέσμων με επισκέψεις",
   "background_color_description": "Χρώμα φόντου του Κέντρου βοήθειας",
   "background_color_label": "Χρώμα φόντου",
   "fonts_group_label": "Γραμματοσειρές",

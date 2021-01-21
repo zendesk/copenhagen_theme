@@ -8,6 +8,8 @@
   "text_color_label": "Text colour",
   "link_color_description": "Text colour for link elements",
   "link_color_label": "Link colour",
+  "visited_link_color_description": "Text colour for visited link elements",
+  "visited_link_color_label": "Visited link colour",
   "background_color_description": "Background colour of your Help Centre",
   "background_color_label": "Background colour",
   "fonts_group_label": "Fonts",

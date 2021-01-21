@@ -8,6 +8,8 @@
   "text_color_label": "Culoare text",
   "link_color_description": "Culoarea textului pentru elementele tip link",
   "link_color_label": "Culoare link",
+  "visited_link_color_description": "Culoarea textului pentru elementele linkului vizitat",
+  "visited_link_color_label": "Culoarea linkului vizitat",
   "background_color_description": "Culoarea de fundal a Centrului de asistență",
   "background_color_label": "Culoare fundal",
   "fonts_group_label": "Fonturi",

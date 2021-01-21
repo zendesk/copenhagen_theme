@@ -8,6 +8,8 @@
   "text_color_label": "Couleur du texte",
   "link_color_description": "Couleur du texte pour les liens",
   "link_color_label": "Couleur des liens",
+  "visited_link_color_description": "Couleur du texte pour les éléments de liens consultés",
+  "visited_link_color_label": "Couleur des liens consultés",
   "background_color_description": "Couleur d’arrière-plan de votre Centre d’aide",
   "background_color_label": "Couleur d’arrière-plan",
   "fonts_group_label": "Polices",
