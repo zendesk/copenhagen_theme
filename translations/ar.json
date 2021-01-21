@@ -8,6 +8,8 @@
   "text_color_label": "لون النص",
   "link_color_description": "لون النص لعناصر الروابط",
   "link_color_label": "لون الروابط",
+  "visited_link_color_description": "لون النص لعناصر الروابط التي تمت زيارتها",
+  "visited_link_color_label": "لون الروابط التي تمت زيارتها",
   "background_color_description": "لون خلفية مركز المساعدة",
   "background_color_label": "لون الخلفية",
   "fonts_group_label": "الخطوط",

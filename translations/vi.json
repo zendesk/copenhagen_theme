@@ -8,6 +8,8 @@
   "text_color_label": "Màu văn bản",
   "link_color_description": "Màu văn bản cho các thành phần liên kết",
   "link_color_label": "Màu liên kết",
+  "visited_link_color_description": "Màu văn bản cho các thành phần liên kết đã truy cập",
+  "visited_link_color_label": "Màu liên kết đã truy cập",
   "background_color_description": "Màu nền của Trung tâm Trợ giúp của bạn",
   "background_color_label": "Màu nền",
   "fonts_group_label": "Phông chữ",

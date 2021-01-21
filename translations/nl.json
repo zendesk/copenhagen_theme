@@ -8,6 +8,8 @@
   "text_color_label": "Tekstkleur",
   "link_color_description": "Tekstkleur voor linkelementen",
   "link_color_label": "Kleur van link",
+  "visited_link_color_description": "Tekstkleur voor bezochte linkelementen",
+  "visited_link_color_label": "Kleur van bezochte link",
   "background_color_description": "Achtergrondkleur van uw Helpcenter",
   "background_color_label": "Achtergrondkleur",
   "fonts_group_label": "Lettertypen",

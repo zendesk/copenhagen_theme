@@ -8,6 +8,8 @@
   "text_color_label": "文本颜色",
   "link_color_description": "链接元素的文本颜色",
   "link_color_label": "链接颜色",
+  "visited_link_color_description": "已访问链接元素的文本颜色",
+  "visited_link_color_label": "已访问链接颜色",
   "background_color_description": "您的帮助中心的背景颜色",
   "background_color_label": "背景颜色",
   "fonts_group_label": "字体",

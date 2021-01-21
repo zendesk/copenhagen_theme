@@ -8,6 +8,8 @@
   "text_color_label": "Tekstfarge",
   "link_color_description": "Tekstfarge for lenkeelementer",
   "link_color_label": "Lenkefarge",
+  "visited_link_color_description": "Tekstfarge for besøkte lenkeelementer",
+  "visited_link_color_label": "Farge på besøkt lenke",
   "background_color_description": "Bakgrunnsfarge i Kundesenter",
   "background_color_label": "Bakgrunnsfarge",
   "fonts_group_label": "Skrifter",

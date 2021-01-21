@@ -8,6 +8,8 @@
   "text_color_label": "Kolor tekstu",
   "link_color_description": "Kolor tekstu elementów łączy",
   "link_color_label": "Kolor łączy",
+  "visited_link_color_description": "Kolor tekstu elementów użytych łączy",
+  "visited_link_color_label": "Kolor użytych łączy",
   "background_color_description": "Kolor tła Centrum pomocy",
   "background_color_label": "Kolor tła",
   "fonts_group_label": "Czcionki",

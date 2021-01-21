@@ -8,6 +8,8 @@
   "text_color_label": "Textfarbe",
   "link_color_description": "Textfarbe für Linkelemente",
   "link_color_label": "Linkfarbe",
+  "visited_link_color_description": "Textfarbe für besuchte Linkelemente",
+  "visited_link_color_label": "Farbe für besuchte Links",
   "background_color_description": "Hintergrundfarbe für Ihr Help Center",
   "background_color_label": "Hintergrundfarbe",
   "fonts_group_label": "Schriftarten",

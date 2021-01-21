@@ -8,6 +8,8 @@
   "text_color_label": "Tekstfarve",
   "link_color_description": "Tekstfarve til link-elementer",
   "link_color_label": "Farve på link",
+  "visited_link_color_description": "Tekstfarve til besøgte link-elementer",
+  "visited_link_color_label": "Farve til besøgt link",
   "background_color_description": "Baggrundsfarve på dit Help Center",
   "background_color_label": "Baggrundsfarve",
   "fonts_group_label": "Skrifttyper",

@@ -8,6 +8,8 @@
   "text_color_label": "Цвет текста",
   "link_color_description": "Цвет текста для элементов ссылок",
   "link_color_label": "Цвет ссылки",
+  "visited_link_color_description": "Цвет текста для элементов посещенных ссылок",
+  "visited_link_color_label": "Цвет посещенной ссылки",
   "background_color_description": "Цвет фона Справочного центра",
   "background_color_label": "Цвет фона",
   "fonts_group_label": "Шрифты",

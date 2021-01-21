@@ -8,6 +8,8 @@
   "text_color_label": "Metin rengi",
   "link_color_description": "Bağlantı öğeleri için metin rengi",
   "link_color_label": "Bağlantı rengi",
+  "visited_link_color_description": "Ziyaret edilmiş bağlantı öğeleri için metin rengi",
+  "visited_link_color_label": "Ziyaret edilmiş bağlantı rengi",
   "background_color_description": "Yardım Merkezi'nizin arka plan rengi",
   "background_color_label": "Arka plan rengi",
   "fonts_group_label": "Yazı tipleri",

@@ -8,6 +8,8 @@
   "text_color_label": "文字色彩",
   "link_color_description": "連結元素文字色彩",
   "link_color_label": "連結色彩",
+  "visited_link_color_description": "已造訪連結元素文字色彩",
+  "visited_link_color_label": "已造訪連結色彩",
   "background_color_description": "客服中心背景色彩",
   "background_color_label": "背景色彩",
   "fonts_group_label": "字型",

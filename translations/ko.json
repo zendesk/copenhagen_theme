@@ -8,6 +8,8 @@
   "text_color_label": "텍스트 색",
   "link_color_description": "링크 요소의 텍스트 색",
   "link_color_label": "링크 색",
+  "visited_link_color_description": "방문한 링크 요소의 텍스트 색",
+  "visited_link_color_label": "방문한 링크 색",
   "background_color_description": "헬프 센터 배경 색",
   "background_color_label": "배경 색",
   "fonts_group_label": "글꼴",

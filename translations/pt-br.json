@@ -8,6 +8,8 @@
   "text_color_label": "Cor do texto",
   "link_color_description": "Cor do texto para elementos de link",
   "link_color_label": "Cor do link",
+  "visited_link_color_description": "Cor do texto para elementos de links visitados",
+  "visited_link_color_label": "Cor de links visitados",
   "background_color_description": "Cor do plano de fundo da sua Central de Ajuda",
   "background_color_label": "Cor do plano de fundo",
   "fonts_group_label": "Fontes",
