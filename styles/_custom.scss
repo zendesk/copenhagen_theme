@@ -1383,6 +1383,10 @@ main.main-sidebar {
   }
 }
 
+.almost-black-img {
+  filter: invert(24%) sepia(21%) saturate(0%) hue-rotate(219deg) brightness(99%) contrast(95%);
+}
+
 .black-icon {
   color: var(--color-almost-black);
   color: #424242;
