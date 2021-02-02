@@ -37,7 +37,7 @@
 							<i class="material-icons black-icon">help</i>
 							{{else}}
 							{{#is id 360006783753}} {{!-- Release Notes --}}
-							<i class="material-icons black-icon">import_contacts</i>
+							<img class="material-icons almost-black-img" src="{{asset 'post_add-24px.svg'}}" />
 							{{else}}
 							{{#is id 360005926153}} {{!-- Paper View --}}
 							<i class="material-icons black-icon">insert_photo</i>
@@ -138,10 +138,18 @@
 							{{#is id 360009868154}}
 							<i class="material-icons black-icon">publish</i>
 							{{else}}
+							{{#is id 360011991593}}
+							<i class="material-icons black-icon">memory</i>
+							{{else}}
 							{{#is id 360009868174}}
 							<img class="material-icons almost-black-img" src="{{asset 'quality_assurance-24px.svg'}}" />
 							{{else}}
+							{{#is id 360009600793}}
+							<img class="material-icons almost-black-img" src="{{asset 'post_add-24px.svg'}}" />
+							{{else}}
 							<i class="material-icons black-icon">camera</i>
+							{{/is}}
+							{{/is}}
 							{{/is}}
 							{{/is}}
 							{{/is}}
