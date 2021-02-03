@@ -30,7 +30,7 @@
         <li><a href={{settings.mit_privacy_policy}}>Privacy Policy</a></li>
         <li><a href={{settings.mit_honor_code}}>Honor Code</a></li>
       </ul>
-      <span class="copyright">© 2019 All rights reserved. <a href={{settings.mit_home}}>MIT xPRO</a>.</span>
+      <span class="copyright">© <span id="date"></span> All rights reserved. <a href={{settings.mit_home}}>MIT xPRO</a>.</span>
     </div>
     <div class="footer-language-selector">
       {{#if alternative_locales}}
@@ -50,3 +50,6 @@
     </div>
   </div>
 </footer>
+<script>
+  document.getElementById("date").append(new Date().getFullYear());
+</script>
