@@ -1072,6 +1072,89 @@ ul {
   color: #7db00e;
 }
 
+.jobbar-banner {
+  display: none;
+  top: 5rem;
+  left: 50%;
+  width: 100%;
+  min-height: 3.875rem;
+  background: #7db00e;
+  font-family: "Poppins", "Poppins";
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .jobbar-banner {
+    min-height: 5.1875rem;
+    font-family: "Poppins", "Poppins";
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+}
+
+.jobbar-banner__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .jobbar-banner__container {
+    flex-direction: row;
+  }
+}
+
+.jobbar-banner__content {
+  flex: 1;
+  width: 100%;
+  padding: 0;
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .jobbar-banner__content {
+    width: auto;
+    padding: .5rem 0;
+  }
+}
+
+.jobbar-banner__subtitle {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: .875rem;
+}
+
+@media (min-width: 768px) {
+  .jobbar-banner__subtitle {
+    font-size: 1rem;
+  }
+}
+
+.jobbar-banner .button {
+  display: block;
+  width: 100%;
+  margin-top: .75rem;
+  padding: .5rem 1.5rem;
+  font-size: .8em;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .jobbar-banner .button {
+    width: auto;
+    margin-top: 0;
+    margin-left: 1.5rem;
+    padding: .75rem 1.75rem .6rem;
+    font-size: 1rem;
+  }
+}
+
 /* stylelint-disable */
 /***** User info in header *****/
 .user-info {
