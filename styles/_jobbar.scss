@@ -1,0 +1,73 @@
+$jobbar-height: 3.875rem;
+$jobbar-height-medium: 5.1875rem;
+
+.jobbar-banner {
+  display: none;
+  top: 5rem;
+  left: 50%;
+  width: 100%;
+  min-height: $jobbar-height;
+  background: $secondary;
+  font-family: $font--heading;
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  @include tablet {
+    min-height: $jobbar-height-medium;
+    font-family: $font--heading;
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    @include tablet {
+      flex-direction: row;
+    }
+    @mixin max-width-container {
+      width: 90%;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    width: 100%;
+    padding: 0;
+    line-height: 1.1;
+    @include tablet {
+      width: auto;
+      padding: .5rem 0;
+    }
+  }
+
+  &__subtitle {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-family: $font--default;
+    font-size: .875rem;
+    @include tablet {
+      font-size: 1rem;
+    }
+  }
+
+  .button {
+    display: block;
+    width: 100%;
+    margin-top: .75rem;
+    padding: .5rem 1.5rem;
+    font-size: .8em;
+    text-align: center;
+    @include tablet {
+      width: auto;
+      margin-top: 0;
+      margin-left: 1.5rem;
+      padding: .75rem 1.75rem .6rem;
+      font-size: 1rem;
+    }
+  }
+}
