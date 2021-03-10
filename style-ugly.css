@@ -52,7 +52,7 @@ body > main {
 
 h1, h2, h3, h4, h5, h6, .h2, .h3, .article-body .accordion-title, .h4, .article-body .toc h2 {
   margin-top: 0;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -583,7 +583,7 @@ ul {
   box-shadow: none;
   fill: #fff;
   color: #fff;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: 1px;
@@ -944,7 +944,7 @@ ul {
 
 .logo__text {
   display: inline-block;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-size: .8em;
   font-weight: 900;
   letter-spacing: 1px;
@@ -1010,7 +1010,7 @@ ul {
   width: auto;
   margin: 0 1rem 0 0;
   color: #012939;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-size: .8em;
   font-weight: 900;
   letter-spacing: 1px;
@@ -1079,7 +1079,7 @@ ul {
   width: 100%;
   min-height: 3.875rem;
   background: #7db00e;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-size: 1rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -1088,7 +1088,7 @@ ul {
 @media (min-width: 768px) {
   .jobbar-banner {
     min-height: 5.1875rem;
-    font-family: "Poppins", "Poppins";
+    font-family: "Poppins", sans-serif;
     font-size: 1.5rem;
     font-weight: 900;
   }
@@ -1312,7 +1312,7 @@ ul {
 .footer-column__title {
   margin-top: 1.875rem;
   margin-bottom: 10px;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   font-size: 1rem;
   letter-spacing: 0;
@@ -1648,7 +1648,7 @@ ul {
   border: 5px solid #e9e9e9;
   border-radius: 0;
   color: #012939;
-  font-family: "Poppins", "Poppins";
+  font-family: "Poppins", sans-serif;
   font-weight: 800;
   text-transform: uppercase;
   font-size: 1rem;
