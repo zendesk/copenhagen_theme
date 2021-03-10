@@ -174,6 +174,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Show the webinar bar on some whole sections and some specific articles
+  var checkSectionEl = document.querySelector('.js-check-section');
+  var webinarWhitelist = [
+    '360000372333', // Get Started category
+    '360000883273', // What do you need help with section
+    '115001334107', // Settings category
+    '115002622868', // Company Settings section
+    '115001335727', // Videos category
+    '115002328508', // Videos section
+    '115004125828', // Getting Started Videos section
+    '115001344107', // Glossary
+    '115009450867', // Client basics
+    '360034980534', // Import your clients
+    '115009378727', // Quote basics
+    '115009379027', // Job basics
+    '115009685047', // Invoice Basics
+    '360052416073', // Import your calendar
+    '115009233447', // Calendar overview
+    '115009571387', // Jobber payments basics
+    '115009786848'  // Setting up QuickBooks Online Sync
+  ]
+
+  if (checkSectionEl) {
+    var currentSection = checkSectionEl.dataset.section;
+    var articleID = checkSectionEl.dataset.id;
+    var banner = document.querySelector('#jobbar-banner');
+    if (webinarWhitelist.includes(currentSection) || webinarWhitelist.includes(articleID)){
+      banner.style.display = "flex";
+    }
+  }
+
   // Submit organization form in the request page
   var requestOrganisationSelect = document.querySelector('#request-organization select');
 
