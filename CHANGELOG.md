@@ -1,3 +1,10 @@
+# [2.9.0](https://github.com/zendesk/copenhagen_theme/compare/v2.8.0...v2.9.0) (2021-03-15)
+
+
+### Features
+
+* federated search helpers for search_results ([4c47243](https://github.com/zendesk/copenhagen_theme/commit/4c472433a5b5aa9692237c0d28a501012697d94e))
+
 # [2.8.0](https://github.com/zendesk/copenhagen_theme/compare/v2.7.2...v2.8.0) (2021-01-21)
 
 
