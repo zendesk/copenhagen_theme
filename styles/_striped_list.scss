@@ -47,12 +47,10 @@
     }
 
     color: $secondary-text-color;
-    font-weight: $font-weight-light;
     font-size: $font-size-small;
     justify-content: flex-start;
     text-transform: capitalize;
   }
-
   &-count-item {
     &::after {
       @include tablet { display: none; }
@@ -69,10 +67,7 @@
     @include tablet {
       color: $text_color;
       display: block;
-      font-weight: $font-weight-base;
     }
-
-    font-weight: $font-weight-light;
     text-align: center;
   }
 }

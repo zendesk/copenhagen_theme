@@ -191,7 +191,6 @@ body {
   color: $text_color;
   font-family: $text_font;
   font-size: 15px;
-  font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -204,7 +203,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading_font;
-  font-weight: 400;
   margin-top: 0;
 }
 
@@ -241,7 +239,6 @@ textarea {
 }
 
 input {
-  font-weight: 300;
   max-width: 100%;
   box-sizing: border-box;
   transition: border .12s ease-in-out;
@@ -392,7 +389,6 @@ ul {
   border-radius: 4px;
   color: $brand_text_color;
   font-size: 14px;
-  font-weight: 400;
   line-height: 2.72;
   min-width: 190px;
   padding: 0 1.9286em;
@@ -489,7 +485,6 @@ ul {
 .table th a {
   color: lighten($text_color, 20%);
   font-size: 13px;
-  font-weight: 300;
   text-align: left;
 }
 
@@ -932,7 +927,6 @@ ul {
 .footer-language-selector button {
   color: lighten($text_color, 20%);
   display: inline-block;
-  font-weight: 300;
 }
 
 /***** Breadcrumbs *****/
@@ -950,7 +944,6 @@ ul {
 .breadcrumbs li {
   color: lighten($text_color, 20%);
   display: inline;
-  font-weight: 300;
   font-size: 13px;
   max-width: 450px;
   overflow: hidden;
@@ -1071,7 +1064,6 @@ ul {
 
 .page-header-description {
   font-style: italic;
-  font-weight: 300;
   margin: 0 0 30px 0;
   word-break: break-word;
 }
@@ -1201,7 +1193,6 @@ ul {
 }
 
 .blocks-item-description {
-  font-weight: 300;
   margin: 0;
 }
 
@@ -1336,7 +1327,6 @@ ul {
 
 .recent-activity-item-link {
   font-size: 14px;
-  font-weight: 300;
 }
 
 .recent-activity-item-meta {
@@ -1358,7 +1348,6 @@ ul {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-size: 13px;
-  font-weight: 300;
 }
 
 .recent-activity-item-comment {
@@ -1687,7 +1676,6 @@ ul {
 
 .article-comment-count {
   color: lighten($text_color, 20%);
-  font-weight: 300;
 }
 
 .article-comment-count:hover {
@@ -1798,7 +1786,6 @@ ul {
   border-radius: 4px;
   color: $text_color;
   display: block;
-  font-weight: 300;
   margin-bottom: 10px;
   padding: 10px;
 }
@@ -1905,7 +1892,6 @@ ul {
 .comment-callout {
   color: lighten($text_color, 20%);
   display: inline-block;
-  font-weight: 300;
   font-size: 13px;
   margin-bottom: 0;
 }
@@ -1921,7 +1907,6 @@ ul {
 
 .comment-sorter .dropdown-toggle {
   color: lighten($text_color, 20%);
-  font-weight: 300;
   font-size: 13px;
 }
 
@@ -2417,7 +2402,6 @@ ul {
 
 .striped-list-count {
   color: lighten($text_color, 20%);
-  font-weight: 300;
   font-size: 13px;
   justify-content: flex-start;
   text-transform: capitalize;
@@ -2448,7 +2432,6 @@ ul {
 }
 
 .striped-list-number {
-  font-weight: 300;
   text-align: center;
 }
 
@@ -2456,7 +2439,6 @@ ul {
   .striped-list-number {
     color: $text_color;
     display: block;
-    font-weight: 400;
   }
 }
 
@@ -2711,7 +2693,6 @@ ul {
 
 .post-comment-count {
   color: lighten($text_color, 20%);
-  font-weight: 300;
 }
 
 .post-comment-count:hover {
@@ -3284,7 +3265,6 @@ ul {
 .contributions-table td:last-child {
   color: lighten($text_color, 20%);
   font-size: 13px;
-  font-weight: 300;
 }
 
 @media (min-width: 768px) {
@@ -3477,7 +3457,6 @@ ul {
 
 .request-details dt {
   color: lighten($text_color, 20%);
-  font-weight: 300;
   width: 40%;
 }
 
@@ -3581,7 +3560,6 @@ ul {
 .meta-data {
   color: lighten($text_color, 20%);
   font-size: 13px;
-  font-weight: 300;
 }
 
 .meta-data:not(:last-child)::after {
@@ -3712,7 +3690,6 @@ ul {
 
 .profile-stats .stat-label {
   color: lighten($text_color, 20%);
-  font-weight: 300;
   flex: 0 0 100px;
   margin-right: 10px;
 }
@@ -3873,7 +3850,6 @@ ul {
   flex-basis: 100%;
   padding: 10px 0;
   color: lighten($text_color, 20%);
-  font-weight: 300;
   font-size: 13px;
   white-space: nowrap;
   overflow: hidden;
@@ -4410,7 +4386,6 @@ ul {
   color: lighten($text_color, 20%);
   display: inline-block;
   font-size: 13px;
-  font-weight: 300;
   padding: 4px 5px;
   position: relative;
 }

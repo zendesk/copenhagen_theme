@@ -8,7 +8,6 @@ body {
   color: $text_color;
   font-family: $text_font;
   font-size: $font-size-base;
-  font-weight: $font-weight-base;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 
@@ -21,7 +20,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading_font;
-  font-weight: $font-weight-base;
   margin-top: 0;
 }
 
@@ -52,7 +50,6 @@ textarea {
 }
 
 input {
-  font-weight: $font-weight-light;
   max-width: 100%;
   box-sizing: border-box;
   transition: border .12s ease-in-out;
