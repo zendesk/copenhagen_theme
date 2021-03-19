@@ -1,3 +1,10 @@
+## [2.9.1](https://github.com/zendesk/copenhagen_theme/compare/v2.9.0...v2.9.1) (2021-03-19)
+
+
+### Bug Fixes
+
+* **styles:** [GG-1634] Remove unnecessary font weights ([9abc295](https://github.com/zendesk/copenhagen_theme/commit/9abc295dc2e53d9c554bd7cc02c0946c9878baad))
+
 # [2.9.0](https://github.com/zendesk/copenhagen_theme/compare/v2.8.0...v2.9.0) (2021-03-15)
 
 
