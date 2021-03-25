@@ -539,6 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	if (role === "end_user") {
 		$(".post-to-community").hide();
 		$(".community-footer").hide();
+		$(".end-user").hide();
 	}
 });
 
