@@ -16,15 +16,13 @@
           {{else}}
             {{user.name}}
           {{/if}}
-          {{#each user.badges}}
-            {{#is category_slug "titles"}}
-              <span class="community-badge community-badge-titles" title="{{description}}" aria-label="{{name}}">
-                {{#if icon_url}}
-                  <img src="{{icon_url}}" alt="" />
-                {{/if}}
-                {{name}}
-              </span>
-            {{/is}}
+          {{#each (filter user.badges on="category_slug" equals="titles")}}
+            <span class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+              {{#if icon_url}}
+                <img src="{{icon_url}}" alt="" />
+              {{/if}}
+              {{name}}
+            </span>
           {{/each}}
         </h1>
         <div class="community-badge-container-achievements">

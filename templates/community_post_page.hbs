@@ -61,16 +61,6 @@
                   {{#link 'user_profile' id=post.author.id}}
                     {{post.author.name}}
                   {{/link}}
-                  {{#each post.author.badges}}
-                    {{#is category_slug "titles"}}
-                      <span class="community-badge community-badge-titles" title="{{description}}" aria-label="{{name}}">
-                        {{#if icon_url}}
-                          <img src="{{icon_url}}" alt="" />
-                        {{/if}}
-                        {{name}}
-                      </span>
-                    {{/is}}
-                  {{/each}}
                 </span>
                 <ul class="meta-group meta-group-opposite">
                   {{#if post.editor}}
@@ -103,6 +93,17 @@
                       <div class="community-badge-achievements-rest">+{{calc post.author.badges.length "-" 4}}</div>
                     </div>
                   {{/if}}
+
+                  <div class="community-badge community-badge-titles">
+                    {{#each (filter post.author.badges on="category_slug" equals="titles")}}
+                      <div class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+                        {{#if icon_url}}
+                          <img src="{{icon_url}}" alt="" />
+                        {{/if}}
+                        {{name}}
+                      </div>
+                    {{/each}}
+                  </div>
                 </div>
               </div>
 
@@ -211,16 +212,6 @@
                       {{#link 'user_profile' id=author.id}}
                         {{author.name}}
                       {{/link}}
-                      {{#each author.badges}}
-                        {{#is category_slug "titles"}}
-                          <span class="community-badge community-badge-titles" title="{{description}}" aria-label="{{name}}">
-                            {{#if icon_url}}
-                              <img src="{{icon_url}}" alt="" />
-                            {{/if}}
-                            {{name}}
-                          </span>
-                        {{/is}}
-                      {{/each}}
                     </span>
 
                     <ul class="meta-group meta-group-opposite">
@@ -255,6 +246,17 @@
                           <div class="community-badge-achievements-rest">+{{calc author.badges.length "-" 4}}</div>
                         </div>
                       {{/if}}
+
+                      <div class="community-badge community-badge-titles">
+                        {{#each (filter author.badges on="category_slug" equals="titles")}}
+                          <div class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+                            {{#if icon_url}}
+                              <img src="{{icon_url}}" alt="" />
+                            {{/if}}
+                            {{name}}
+                          </div>
+                        {{/each}}
+                      </div>
                     </div>
 
                   </div>
