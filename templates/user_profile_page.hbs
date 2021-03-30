@@ -28,15 +28,28 @@
           {{/each}}
         </h1>
         <div class="community-badge-container-achievements">
-          {{#each user.badges}}
-            {{#is category_slug "achievements"}}
-              {{#if icon_url}}
-                <div class="community-badge community-badge-achievements">
-                  <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" aria-label="{{name}}" />
-                </div>
-              {{/if}}
-            {{/is}}
+          {{#each (
+            slice
+              (
+                filter
+                  (filter user.badges on="category_slug" equals="achievements")
+                  on="icon_url"
+                  starts_with="https"
+              )
+              0
+              4
+            )
+          }}
+            <div class="community-badge community-badge-achievements">
+              <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
+            </div>
           {{/each}}
+
+          {{#if (compare (calc user.badges.length "-" 4) ">" 0)}}
+            <div class="community-badge community-badge-achievements">
+              <div class="community-badge-achievements-rest">+{{calc user.badges.length "-" 4}}</div>
+            </div>
+          {{/if}}
         </div>
       </div>
       <div class="options">

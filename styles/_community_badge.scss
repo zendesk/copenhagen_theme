@@ -15,21 +15,35 @@
 }
 
 .community-badge-container-achievements {
+  display: flex;
   padding-top: 5px;
 }
 
 .community-badge-achievements {
-  display: inline-block;
+  display: block;
+  float: left;
+  height: 20px;
   margin: 0 3px 0 0;
+  width: 20px;
 }
 
 [dir="rtl"] .community-badge-achievements {
   margin: 0 0 0 3px;
 }
 
+.community-badge-achievements-rest {
+  background-color: #c2c8cc;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 12px;
+  font-weight: $font-weight-semibold;
+  line-height: 20px;
+  text-align: center;
+}
+
 .community-badge-achievements img {
-  width: 22px;
-  height: 22px;
+  width: 100%;
+  height: 100%;
 }
 
 .community-badge-titles img {
@@ -37,7 +51,12 @@
   height: 20px;
 }
 
-.profile-info .community-badge-achievements img {
+.profile-info .community-badge-achievements {
   width: 40px;
   height: 40px;
+}
+
+.profile-info .community-badge-achievements-rest {
+  line-height: 40px;
+  font-size: 20px;
 }
