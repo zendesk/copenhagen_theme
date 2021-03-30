@@ -1,3 +1,17 @@
+## [2.9.1](https://github.com/zendesk/copenhagen_theme/compare/v2.9.0...v2.9.1) (2021-03-19)
+
+
+### Bug Fixes
+
+* **styles:** [GG-1634] Remove unnecessary font weights ([9abc295](https://github.com/zendesk/copenhagen_theme/commit/9abc295dc2e53d9c554bd7cc02c0946c9878baad))
+
+# [2.9.0](https://github.com/zendesk/copenhagen_theme/compare/v2.8.0...v2.9.0) (2021-03-15)
+
+
+### Features
+
+* federated search helpers for search_results ([4c47243](https://github.com/zendesk/copenhagen_theme/commit/4c472433a5b5aa9692237c0d28a501012697d94e))
+
 # [2.8.0](https://github.com/zendesk/copenhagen_theme/compare/v2.7.2...v2.8.0) (2021-01-21)
 
 

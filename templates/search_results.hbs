@@ -13,7 +13,7 @@
 
   <div class="search-results">
     <aside class="search-results-sidebar">
-      {{#if help_center_filters}}
+      {{#if source_filters}}
         <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
@@ -23,9 +23,9 @@
               <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
             </svg>
           </button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_help_center'}}</h3>
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_source'}}</h3>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
-            {{#each help_center_filters}}
+            {{#each source_filters}}
               <li>
               {{#if selected}}
                 <a href="{{url}}" class="sidenav-item current" aria-current="page">
@@ -37,11 +37,11 @@
                 </a>
               </li>
             {{/each}}
-            <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_help_centers'}}">{{t 'show_more_help_centers'}}</button>
+            <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_sources'}}">{{t 'show_more_sources'}}</button>
           </ul>
         </section>
       {{/if}}
-      {{#if help_center.community_enabled}}
+      {{#if type_filters}}
         <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
@@ -51,9 +51,9 @@
               <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
             </svg>
           </button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_type'}}</h3>
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_type'}}</h3>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
-            {{#each filters}}
+            {{#each type_filters}}
               <li>
               {{#if selected}}
                 <a href="{{url}}" class="sidenav-item current" aria-current="page">
@@ -125,7 +125,15 @@
           {{#each results}}
             <li class="search-result-list-item result-{{type}}">
               <h2 class="search-result-title">
-                <a href="{{url}}" class="results-list-item-link">{{title}}</a>
+                <a href="{{url}}" class="results-list-item-link"  {{#if is_external}} target="_blank" {{/if}}>
+                  {{title}}
+                  {{#if is_external}}
+                    <svg viewBox="0 0 12 12" height="12" id="zd-svg-icon-12-new-window-fill">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M10.5 8.5V10c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V2c0-.28.22-.5.5-.5h1.5M6 6l4-4"></path>
+                      <path fill="currentColor" d="M10.5 6.5a.47.47 0 0 1-.35-.15l-4.5-4.5a.474.474 0 0 1-.11-.54C5.62 1.12 5.8 1 6 1h4c.55 0 1 .45 1 1v4c0 .2-.12.38-.31.46-.06.03-.13.04-.19.04z"></path>
+                    </svg>
+                  {{/if}}
+                </a>
               </h2>
               <div class="search-result-icons">
                 {{#if vote_sum}}
@@ -163,11 +171,13 @@
                   <li>
                     <ol class="breadcrumbs search-result-breadcrumbs">
                       {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
+                        <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
                       {{/each}}
                     </ol>
                   </li>
-                  <li class="meta-data">{{author.name}}</li>
+                  {{#unless is_external}}
+                    <li class="meta-data">{{author.name}}</li>
+                  {{/unless}}
                   <li class="meta-data">{{date created_at}}</li>
                 </ul>
                 <div class="search-results-description">{{text}}</div>
