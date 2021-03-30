@@ -16,6 +16,11 @@ function getPageLang() {
 	return pathname.split("/")[2];
 }
 
+function isCommunity() {
+	const pathname = window.location.pathname;
+	return pathname.split("/")[3] === "community";
+}
+
 document.addEventListener("DOMContentLoaded", function () {
 	function closest(element, selector) {
 		if (Element.prototype.closest) {
@@ -533,6 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			break;
 	}
 
+	// Hide and redirect away from Community
 	const { user } = HelpCenter;
 	const { role } = user;
 
@@ -540,6 +546,11 @@ document.addEventListener("DOMContentLoaded", function () {
 		$(".post-to-community").hide();
 		$(".community-footer").hide();
 		$(".end-user").hide();
+	}
+
+	const currPageLang = getPageLang();
+	if ((role === "end_user" || role === "anonymous") && isCommunity()) {
+		location.replace(`/hc/${currPageLang}`);
 	}
 });
 
