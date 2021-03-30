@@ -1,3 +1,10 @@
+# [2.10.0](https://github.com/zendesk/copenhagen_theme/compare/v2.9.1...v2.10.0) (2021-03-30)
+
+
+### Features
+
+* Set the `show_brand_name` setting to true ([10fc33f](https://github.com/zendesk/copenhagen_theme/commit/10fc33f9d88af15bb834e557cfe47190dba7e8a4))
+
 ## [2.9.1](https://github.com/zendesk/copenhagen_theme/compare/v2.9.0...v2.9.1) (2021-03-19)
 
 
