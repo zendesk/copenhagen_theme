@@ -532,6 +532,15 @@ document.addEventListener("DOMContentLoaded", function () {
 			);
 			break;
 	}
+
+	const { user } = HelpCenter;
+	const { role } = user;
+
+	if (role === "end_user" || role === "anonymous") {
+		$(".post-to-community").hide();
+		$(".community-footer").hide();
+		$(".end-user").hide();
+	}
 });
 
 /**** CUSTOM CHAT ****/
@@ -688,6 +697,6 @@ $.get(
 	}
 });
 
-$(() => {});
-
 /**** END NOTIFICATION BANNER ****/
+
+$(() => {});
