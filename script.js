@@ -542,6 +542,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	const { user } = HelpCenter;
 	const { role } = user;
 
+	console.log({ user });
+
 	if (role === "end_user" || role === "anonymous") {
 		$(".post-to-community").hide();
 		$(".community-footer").hide();
