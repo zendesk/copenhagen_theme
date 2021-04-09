@@ -760,11 +760,11 @@ async function initCommunityCheck() {
 }
 
 function canVisitCommunity(role, userSegmentExists) {
-	if (role === "admin" || role === "agent") {
+	if (role === "manager" || role === "agent") {
 		return true;
 	}
 
-	if (userSegmentExists) {
+	if (userSegmentExists && role === "end_user") {
 		return true;
 	}
 
