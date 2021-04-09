@@ -538,22 +538,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			break;
 	}
 
-	// Hide and redirect away from Community
-	const { user } = HelpCenter;
-	const { role } = user;
-
-	console.log({ user });
-
-	if (role === "end_user" || role === "anonymous") {
-		$(".post-to-community").hide();
-		$(".community-footer").hide();
-		$(".end-user").hide();
-	}
-
-	const currPageLang = getPageLang();
-	if ((role === "end_user" || role === "anonymous") && isCommunity()) {
-		location.replace(`/hc/${currPageLang}`);
-	}
+	initCommunityCheck();
 });
 
 /**** CUSTOM CHAT ****/
@@ -711,5 +696,81 @@ $.get(
 });
 
 /**** END NOTIFICATION BANNER ****/
+
+/**** GET USER DATA ****/
+
+const USER_FEEDBACK_COMMUNITY_ID = 1500000140542;
+const ALLOWED_COMMUNITIES = [USER_FEEDBACK_COMMUNITY_ID];
+
+async function getUser() {
+	const userResponse = await fetch("/api/v2/users/me");
+	const userJson = await userResponse.json();
+	return userJson;
+}
+
+async function getUserSegment(id) {
+	const userSegmentsResponse = await fetch(
+		`/api/v2/help_center/users/${id}/user_segments`
+	);
+	const userSegmentJson = await userSegmentsResponse.json();
+	return userSegmentJson;
+}
+
+async function initCommunityCheck() {
+	const { user } = HelpCenter;
+	const { role } = user;
+
+	$(".post-to-community").hide();
+	$(".community-footer").hide();
+	$(".end-user").hide();
+
+	const userData = await getUser();
+	const id = userData?.user?.id;
+
+	if (!id) {
+		if (isCommunity()) location.replace(`/hc/${currPageLang}`);
+		return;
+	}
+
+	const userSegmentData = await getUserSegment(id);
+	const userSegments = userSegmentData?.user_segments;
+
+	if (!userSegments) {
+		return;
+	}
+
+	const filtered = userSegments.filter(
+		(userSegment) => ALLOWED_COMMUNITIES.indexOf(userSegment.id) !== -1
+	);
+	const userSegmentExists = filtered.length > 0;
+
+	const currPageLang = getPageLang();
+
+	if (canVisitCommunity(role, userSegmentExists)) {
+		$(".post-to-community").show();
+		$(".community-footer").show();
+		$(".end-user").show();
+	}
+
+	if (isCommunity() && !canVisitCommunity(role, userSegmentExists)) {
+		location.replace(`/hc/${currPageLang}`);
+	}
+
+	return;
+}
+
+function canVisitCommunity(role, userSegmentExists) {
+	if (role === "admin" || role === "agent") {
+		return true;
+	}
+
+	if (userSegmentExists) {
+		return true;
+	}
+
+	return false;
+}
+
+/**** END GET USER DATA ****/
 
 $(() => {});
