@@ -718,10 +718,16 @@ async function getUserSegment(id) {
 
 async function getSegment(segmentId) {
 	const segmentResponse = await fetch(
-		`/api/v2/help_center/user_segments/${segmentId}`
+		`/api/v2/community/topics/${segmentId}`
 	);
 	const segmentJson = await segmentResponse.json();
 	return segmentJson;
+}
+
+async function getTopics() {
+	const topicsResponse = await fetch(`/api/v2/community/topics`);
+	const topicsJson = await topicsResponse.json();
+	return topicsJson;
 }
 
 async function initCommunityCheck() {
@@ -740,8 +746,13 @@ async function initCommunityCheck() {
 		return;
 	}
 
+	/*
 	const segment = await getSegment(USER_FEEDBACK_COMMUNITY_ID);
 	console.log({ segment });
+	*/
+
+	const topics = await getTopics();
+	console.log({ topics });
 
 	/*
 	const userSegmentData = await getUserSegment(id);
