@@ -718,6 +718,7 @@ async function getUserSegment(id) {
 
 async function initCommunityCheck() {
 	const { user } = HelpCenter;
+	console.log({ user });
 	const { role } = user;
 
 	$(".post-to-community").hide();
@@ -725,6 +726,7 @@ async function initCommunityCheck() {
 	$(".end-user").hide();
 
 	const userData = await getUser();
+	console.log({ userData });
 	const id = userData?.user?.id;
 
 	if (!id) {
@@ -733,7 +735,6 @@ async function initCommunityCheck() {
 	}
 
 	const userSegmentData = await getUserSegment(id);
-	console.log({ userSegmentData });
 	const userSegments = userSegmentData?.user_segments;
 
 	if (!userSegments) {
