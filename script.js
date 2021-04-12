@@ -720,8 +720,6 @@ async function initCommunityCheck() {
 	const { user } = HelpCenter;
 	const { role } = user;
 
-	console.log({ user });
-
 	$(".post-to-community").hide();
 	$(".community-footer").hide();
 	$(".end-user").hide();
@@ -729,17 +727,14 @@ async function initCommunityCheck() {
 	const userData = await getUser();
 	const id = userData?.user?.id;
 
-	console.log({ id });
-
 	if (!id) {
 		if (isCommunity()) location.replace(`/hc/${currPageLang}`);
 		return;
 	}
 
 	const userSegmentData = await getUserSegment(id);
+	console.log({ userSegmentData });
 	const userSegments = userSegmentData?.user_segments;
-
-	console.log({ userSegments });
 
 	if (!userSegments) {
 		return;
@@ -751,11 +746,6 @@ async function initCommunityCheck() {
 	const userSegmentExists = filtered.length > 0;
 
 	const currPageLang = getPageLang();
-
-	console.log(
-		"Can see community?",
-		canVisitCommunity(role, userSegmentExists)
-	);
 
 	if (canVisitCommunity(role, userSegmentExists)) {
 		$(".post-to-community").show();
