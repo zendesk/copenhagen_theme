@@ -700,28 +700,11 @@ $.get(
 /**** GET USER DATA ****/
 
 const USER_FEEDBACK_COMMUNITY_ID = 1500000140542;
-const ALLOWED_COMMUNITIES = [USER_FEEDBACK_COMMUNITY_ID];
 
 async function getUser() {
 	const userResponse = await fetch("/api/v2/users/me");
 	const userJson = await userResponse.json();
 	return userJson;
-}
-
-async function getUserSegment(id) {
-	const userSegmentsResponse = await fetch(
-		`/api/v2/help_center/users/${id}/user_segments`
-	);
-	const userSegmentJson = await userSegmentsResponse.json();
-	return userSegmentJson;
-}
-
-async function getSegment(segmentId) {
-	const segmentResponse = await fetch(
-		`/api/v2/community/topics/${segmentId}`
-	);
-	const segmentJson = await segmentResponse.json();
-	return segmentJson;
 }
 
 async function getTopics() {
@@ -746,24 +729,15 @@ async function initCommunityCheck() {
 		return;
 	}
 
-	/*
-	const segment = await getSegment(USER_FEEDBACK_COMMUNITY_ID);
-	console.log({ segment });
-	*/
+	const topicsObj = await getTopics();
+	const { topics } = topicsObj;
 
-	const topics = await getTopics();
-	console.log({ topics });
-
-	/*
-	const userSegmentData = await getUserSegment(id);
-	const userSegments = userSegmentData?.user_segments;
-
-	if (!userSegments) {
+	if (!topics) {
 		return;
 	}
 
-	const filtered = userSegments.filter(
-		(userSegment) => ALLOWED_COMMUNITIES.indexOf(userSegment.id) !== -1
+	const filtered = topics.filter(
+		(topic) => topic.user_segment_id === USER_FEEDBACK_COMMUNITY_ID
 	);
 	const userSegmentExists = filtered.length > 0;
 
@@ -778,7 +752,6 @@ async function initCommunityCheck() {
 	if (isCommunity() && !canVisitCommunity(role, userSegmentExists)) {
 		location.replace(`/hc/${currPageLang}`);
 	}
-	*/
 
 	return;
 }
