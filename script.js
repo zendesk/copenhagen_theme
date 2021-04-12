@@ -716,9 +716,16 @@ async function getUserSegment(id) {
 	return userSegmentJson;
 }
 
+async function getSegment(segmentId) {
+	const segmentResponse = await fetch(
+		`/api/v2/help_center/user_segments/${segmentId}`
+	);
+	const segmentJson = await segmentResponse.json();
+	return segmentJson;
+}
+
 async function initCommunityCheck() {
 	const { user } = HelpCenter;
-	console.log({ user });
 	const { role } = user;
 
 	$(".post-to-community").hide();
@@ -726,7 +733,6 @@ async function initCommunityCheck() {
 	$(".end-user").hide();
 
 	const userData = await getUser();
-	console.log({ userData });
 	const id = userData?.user?.id;
 
 	if (!id) {
@@ -734,6 +740,10 @@ async function initCommunityCheck() {
 		return;
 	}
 
+	const segment = await getSegment(USER_FEEDBACK_COMMUNITY_ID);
+	console.log({ segment });
+
+	/*
 	const userSegmentData = await getUserSegment(id);
 	const userSegments = userSegmentData?.user_segments;
 
@@ -757,6 +767,7 @@ async function initCommunityCheck() {
 	if (isCommunity() && !canVisitCommunity(role, userSegmentExists)) {
 		location.replace(`/hc/${currPageLang}`);
 	}
+	*/
 
 	return;
 }
