@@ -729,6 +729,8 @@ async function initCommunityCheck() {
 	const userData = await getUser();
 	const id = userData?.user?.id;
 
+	console.log({ id });
+
 	if (!id) {
 		if (isCommunity()) location.replace(`/hc/${currPageLang}`);
 		return;
