@@ -211,14 +211,14 @@ document.addEventListener('DOMContentLoaded', function() {
   sp.summary({
     success: function (data) {
       var statusIndicator = data.status.indicator;
-      if (statusIndicator !== "none") {
-        var statusSource = statusIndicator === "maintenance" ? data.scheduled_maintenances[0] : data.incidents[0];
-        document.getElementById("jobbar-banner").innerHTML = '<div class="container jobbar-banner__container"><div class="jobbar-banner__content"><div>'+statusSource.name+'</div><div class="jobbar-banner__subtitle">'+statusSource.incident_updates[0].body+'</div></div><a href="https://www.jobberstatus.net/" class="button">LEARN MORE</a></div>';
+      if(data.status.indicator !== 'none'){
+        var statusTitle = (data.incidents.length) ? 'SERVICE DISRUPTION' : 'SCHEDULED MAINTENANCE';
+        var statusBody = (data.incidents.length) ? 'Some parts of Jobber are currently down. We’re sorry for the inconvenience, and we’re working to get things back up and running ASAP.' : 'Jobber is undergoing scheduled maintenance right now. Thank you for your patience. ';
+        document.getElementById("jobbar-banner").innerHTML = '<div class="container jobbar-banner__container"><div class="jobbar-banner__content"><div>'+statusTitle+'</div><div class="jobbar-banner__subtitle">'+statusBody+'</div></div><a href="https://www.jobberstatus.net/" class="button">LEARN MORE</a></div>';
         document.getElementById("jobbar-banner").style.display = "flex";
       }
     }
   });
-
   
   // Submit organization form in the request page
   var requestOrganisationSelect = document.querySelector('#request-organization select');
