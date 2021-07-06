@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   // display a message if jobberstatus.net is reporting maintenance or an outage
-  var sp = new StatusPage.page({ page : '7qns4hqkcjx5' }); // 7qns4hqkcjx5 for live, p2lpv5tmvf9q for stage
+  var sp = new StatusPage.page({ page : '7qns4hqkcjx5' });
   sp.summary({
     success: function (data) {
       var statusIndicator = data.status.indicator;
