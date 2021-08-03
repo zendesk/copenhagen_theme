@@ -62,7 +62,7 @@
       <ul class="profile-stats profile-stats-activity">
         <li class="stat">
           <span class="stat-label">{{t 'total_activity'}}</span>
-          <span class="stat-value">{{total_activity}}</span>
+          <span class="stat-value" id="total-activity">{{total_activity}}</span>
         </li>
         <li class="stat">
           <span class="stat-label">{{t 'last_activity'}}</span>
@@ -89,19 +89,19 @@
     <ul class="profile-stats profile-stats-counters">
       <li class="stat">
         <span class="stat-label">{{t 'following_users'}}</span>
-        <span class="stat-value">{{t 'users_count' count=following_count}}</span>
+        <span class="stat-value" id="following-count">{{t 'users_count' count=following_count}}</span>
       </li>
       <li class="stat">
         <span class="stat-label">{{t 'followed_by'}}</span>
-        <span class="stat-value">{{t 'users_count' count=follower_count}}</span>
+        <span class="stat-value" id="follower-count">{{t 'users_count' count=follower_count}}</span>
       </li>
       <li class="stat">
         <span class="stat-label">{{t 'votes'}}</span>
-        <span class="stat-value">{{vote_count}}</span>
+        <span class="stat-value" id="vote-count">{{vote_count}}</span>
       </li>
       <li class="stat">
         <span class="stat-label">{{t 'subscriptions'}}</span>
-        <span class="stat-value">{{subscription_count}}</span>
+        <span class="stat-value" id="subscription-count">{{subscription_count}}</span>
       </li>
     </ul>
   </div>
