@@ -2755,19 +2755,16 @@ ul {
   white-space: nowrap;
   display: inline-flex;
   line-height: 18px;
-  margin: 1px 2px;
+  vertical-align: middle;
 }
 
 .profile-info .community-badge-title {
   padding: 2px 8px;
-  vertical-align: middle;
   line-height: 20px;
-  margin: 0 2px;
 }
 
 .community-badge-container-achievements {
   display: flex;
-  padding-top: 5px;
 }
 
 .community-badge-container-achievements > .community-badge-titles {
@@ -2778,26 +2775,38 @@ ul {
   margin-right: calc(28px - 0.5em);
 }
 
-.community-badge-achievements {
-  display: block;
-  float: left;
-  height: 20px;
-  margin: 0 3px 0 0;
-  width: 20px;
+.community-name-and-title-badges {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-[dir="rtl"] .community-badge-achievements {
-  margin: 0 0 0 3px;
+.community-badge {
+  margin: 2px;
+}
+
+.community-badge-achievements {
+  display: block;
+  height: 16px;
+  white-space: nowrap;
+  width: 16px;
+}
+
+.profile-info .community-badge-achievements {
+  height: 40px;
+  width: 40px;
+}
+
+.community-title-badges {
+  flex-basis: 100%;
+  margin-top: 15px;
 }
 
 .community-badge-achievements-rest {
-  background-color: #c2c8cc;
-  border-radius: 50%;
-  color: #fff;
   font-size: 12px;
   font-weight: 600;
   line-height: 20px;
   text-align: center;
+  vertical-align: top;
 }
 
 .community-badge-achievements img {
@@ -2808,11 +2817,6 @@ ul {
 .community-badge-titles img {
   width: 20px;
   height: 20px;
-}
-
-.profile-info .community-badge-achievements {
-  width: 40px;
-  height: 40px;
 }
 
 .profile-info .community-badge-achievements-rest {

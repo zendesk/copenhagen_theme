@@ -213,6 +213,14 @@
                             {{/link}}
                           </span>
 
+                          <span aria-label="{{t 'badges'}}" class="community-badge community-badge-titles">
+                            {{#each (filter author.badges on="category_slug" equals="titles")}}
+                              <div class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+                                {{name}}
+                              </div>
+                            {{/each}}
+                          </span>
+
                           <ul class="meta-group meta-group-opposite">
                             {{#if editor}}
                               <li class="meta-data">{{date edited_at timeago=true}}</li>
@@ -222,7 +230,7 @@
                             {{/if}}
                           </ul>
 
-                          <div class="community-badge-container-achievements">
+                          <div aria-label="{{t 'badges'}}" class="community-badge-container-achievements">
                             {{#each (
                               slice
                                 (
@@ -242,20 +250,9 @@
 
                             {{#if (compare (calc author.badges.length "-" 4) ">" 0)}}
                               <div class="community-badge community-badge-achievements">
-                                <div class="community-badge-achievements-rest">+{{calc author.badges.length "-" 4}}</div>
+                                {{#link "user_profile" id=author.id filter_by="badges" class="community-badge-achievements-rest"}}{{t 'plus_more' count=(calc author.badges.length "-" 4)}}{{/link}}
                               </div>
                             {{/if}}
-                            
-                            <div class="community-badge community-badge-titles">
-                              {{#each (filter author.badges on="category_slug" equals="titles")}}
-                                <div class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
-                                  {{#if icon_url}}
-                                    <img src="{{icon_url}}" alt="" />
-                                  {{/if}}
-                                  {{name}}
-                                </div>
-                              {{/each}}
-                            </div>
                           </div>
                         </div>
                         <div class="comment-labels">
