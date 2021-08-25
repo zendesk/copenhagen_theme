@@ -1,0 +1,16 @@
+name: SASS
+"on": [push]
+
+jobs:
+  sass:
+    runs-on: ubuntu-latest
+    env:
+      GEM_HOME: "."
+    steps:
+      - uses: zendesk/checkout@v2
+      # - uses: zendesk/setup-ruby@v1
+      #   with:
+      #     bundler-cache: true
+      - run: gem install sassc:1.12.1
+      - run: "./bin/compile.rb"
+      - run: git diff --quiet style.css
