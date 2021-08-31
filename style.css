@@ -1125,8 +1125,8 @@ ul {
 }
 
 .blocks-item {
-  border: 1px solid $brand_color;
-  border-radius: 4px;
+  border: 2px solid $brand_color;
+  border-radius: 15px;
   box-sizing: border-box;
   color: $brand_color;
   display: flex;
