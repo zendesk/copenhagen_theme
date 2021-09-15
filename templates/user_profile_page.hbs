@@ -19,7 +19,7 @@
             {{/if}}
           </h1>
 
-          <div hidden="true" aria-label="{{t 'badges'}}" />
+          <div hidden="true" aria-label="{{t 'badges'}}"></div>
           {{#each (filter user.badges on="category_slug" equals="titles")}}
             <span class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
               {{name}}
