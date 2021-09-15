@@ -1,3 +1,10 @@
+## [2.11.1](https://github.com/zendesk/copenhagen_theme/compare/v2.11.0...v2.11.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* [COMM-1046] Fix an issue with a self-closing div tag ([55491f2](https://github.com/zendesk/copenhagen_theme/commit/55491f2382870f25141cee4fa86b70dd6b9ae45d))
+
 # [2.11.0](https://github.com/zendesk/copenhagen_theme/compare/v2.10.0...v2.11.0) (2021-09-14)
 
 
