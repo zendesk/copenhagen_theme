@@ -10,33 +10,45 @@
         <img class="user-avatar" src="{{user.avatar_url}}" alt=""/>
       </div>
       <div class="basic-info">
-        <h1 class="name">
-          {{#if user.url}}
-            <a href="{{user.url}}" target="_zendesk_lotus" title="{{t 'open_user_in_support'}}">{{user.name}}</a>
-          {{else}}
-            {{user.name}}
+        <div class="community-name-and-title-badges">
+          <h1 class="name">
+            {{#if user.url}}
+              <a href="{{user.url}}" target="_zendesk_lotus" title="{{t 'open_user_in_support'}}">{{user.name}}</a>
+            {{else}}
+              {{user.name}}
+            {{/if}}
+          </h1>
+
+          <div hidden="true" aria-label="{{t 'badges'}}"></div>
+          {{#each (filter user.badges on="category_slug" equals="titles")}}
+            <span class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+              {{name}}
+            </span>
+          {{/each}}
+        </div>
+        <div aria-label="{{t 'badges'}}" class="community-badge-container-achievements">
+          {{#each (
+            slice
+              (
+                filter
+                  (filter user.badges on="category_slug" equals="achievements")
+                  on="icon_url"
+                  starts_with="https"
+              )
+              0
+              4
+            )
+          }}
+            <div class="community-badge community-badge-achievements">
+              <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
+            </div>
+          {{/each}}
+
+          {{#if (compare (calc user.badges.length "-" 4) ">" 0)}}
+            <div class="community-badge community-badge-achievements">
+              {{#link "user_profile" id=user.id filter_by="badges" class="community-badge-achievements-rest"}}{{t 'plus_more' count=(calc user.badges.length "-" 4)}}{{/link}}
+            </div>
           {{/if}}
-          {{#each user.badges}}
-            {{#is category_slug "titles"}}
-              <span class="community-badge community-badge-titles" title="{{description}}" aria-label="{{name}}">
-                {{#if icon_url}}
-                  <img src="{{icon_url}}" alt="" />
-                {{/if}}
-                {{name}}
-              </span>
-            {{/is}}
-          {{/each}}
-        </h1>
-        <div class="community-badge-container-achievements">
-          {{#each user.badges}}
-            {{#is category_slug "achievements"}}
-              {{#if icon_url}}
-                <div class="community-badge community-badge-achievements">
-                  <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" aria-label="{{name}}" />
-                </div>
-              {{/if}}
-            {{/is}}
-          {{/each}}
         </div>
       </div>
       <div class="options">

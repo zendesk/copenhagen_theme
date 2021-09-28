@@ -1,3 +1,19 @@
+## [2.11.1](https://github.com/zendesk/copenhagen_theme/compare/v2.11.0...v2.11.1) (2021-09-15)
+
+
+### Bug Fixes
+
+* [COMM-1046] Fix an issue with a self-closing div tag ([55491f2](https://github.com/zendesk/copenhagen_theme/commit/55491f2382870f25141cee4fa86b70dd6b9ae45d))
+
+# [2.11.0](https://github.com/zendesk/copenhagen_theme/compare/v2.10.0...v2.11.0) (2021-09-14)
+
+
+### Features
+
+* [COMM-1046] Update layout for badge widget ([274b091](https://github.com/zendesk/copenhagen_theme/commit/274b0914d2ee6974a120f3fa2c9992feeba7aa61))
+* implement +n badge widget ([5f08c9a](https://github.com/zendesk/copenhagen_theme/commit/5f08c9a7aff9c633111b0a2f853e380a325e98fb))
+* move badge titles next to achievement badges ([21f855d](https://github.com/zendesk/copenhagen_theme/commit/21f855d02665f7d51884df4131db327b31c32217))
+
 # [2.10.0](https://github.com/zendesk/copenhagen_theme/compare/v2.9.1...v2.10.0) (2021-03-30)
 
 
