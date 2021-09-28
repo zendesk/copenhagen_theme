@@ -1441,6 +1441,9 @@ ul {
   margin-bottom: 0;
   font-size: 18px;
   font-weight: 600;
+  border: solid 2px #41b8e9;
+  border-radius: 15px;
+  padding: 15px;
 }
 
 .section-tree-title a {
