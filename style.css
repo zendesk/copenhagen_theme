@@ -655,12 +655,12 @@ ul {
 }
 
 .logo img {
-  max-height: 37px;
+  max-height: 20px;
   vertical-align: middle;
 }
 
 .logo span {
-  margin: 0 10px;
+  margin: 0 5px;
   color: $brand_color;
 }
 
@@ -1189,7 +1189,8 @@ ul {
 
 .blocks-item-title {
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .blocks-item-description {
