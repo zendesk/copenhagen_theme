@@ -12,6 +12,7 @@ body {
 
 main {
   display: block;
+  background-color: #F5F5F5;
 }
 
 h1 {
@@ -1125,7 +1126,7 @@ ul {
 }
 
 .blocks-item {
-  border: 1px solid $brand_color;
+  border: 1px solid #eee
   border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
@@ -1134,6 +1135,7 @@ ul {
   margin: 0 0 30px;
   max-width: 100%;
   text-align: center;
+  background-color: #FFFFFF;
 }
 
 @media (min-width: 768px) {
