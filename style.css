@@ -1025,7 +1025,7 @@ ul {
 
 .hero-inner {
   position: relative;
-  top: 50%;
+  top: 30%;
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
@@ -1126,12 +1126,13 @@ ul {
 }
 
 .blocks-item {
-  border: 1px solid #eee
+  border: 1px solid #eee;
   border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
   display: flex;
   flex: 1 0 340px;
+  align-items: flex-start;
   margin: 0 0 30px;
   max-width: 100%;
   text-align: center;
@@ -1193,10 +1194,17 @@ ul {
   margin-bottom: 0;
   font-size: 18px;
   font-weight: bold;
+  border-bottom: 1px;
+  border-bottom-color: #f5f5f5;
+  border-bottom-style: groove;
+  text-align: left;
+  color: black;
 }
 
 .blocks-item-description {
   margin: 0;
+  text-align: left;
+  color: #2C2C2C;
 }
 
 .blocks-item-description:not(:empty) {
@@ -4760,4 +4768,33 @@ html[dir="rtl"] .notification-left-aligned {
 
 .dropdown-chevron-icon {
   vertical-align: middle;
+}
+
+
+/* Custom CSS classes added for Adobe Rebranding */
+
+.hero-title{
+  color: white;
+  position: relative;
+  top: 15%;
+  text-shadow: 2px 3px 8px #2c2c2c;
+}
+
+.hero-title h1{
+  font-size: 48px;
+  margin-bottom: 0px;
+}
+
+.hero-title p{
+  font-size: 20px;
+  margin-top: 0px;
+}
+
+@media only screen and (max-width: 768px){
+  .hero-title{
+    display: none;
+  }
+  .hero-inner{
+    top:50%
+  }
 }
