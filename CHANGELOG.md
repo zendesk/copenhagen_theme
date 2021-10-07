@@ -1,3 +1,10 @@
+## [2.11.2](https://github.com/zendesk/copenhagen_theme/compare/v2.11.1...v2.11.2) (2021-10-07)
+
+
+### Bug Fixes
+
+* Adding topic ID to the bottom New post button ([4d06689](https://github.com/zendesk/copenhagen_theme/commit/4d066890e68f529275e7fc34cc296ff52dc648f3))
+
 ## [2.11.1](https://github.com/zendesk/copenhagen_theme/compare/v2.11.0...v2.11.1) (2021-09-15)
 
 
