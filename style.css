@@ -638,13 +638,13 @@ ul {
 
 /***** Header *****/
 .header {
-  max-width: 1160px;
+  /* max-width: 1160px; */
   margin: 0 auto;
   padding: 0 5%;
   position: relative;
   align-items: center;
   display: flex;
-  height: 71px;
+  height: 46px;
   justify-content: space-between;
 }
 
@@ -1017,7 +1017,7 @@ ul {
   background-image: url($homepage_background_image);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 273px;
   padding: 0 20px;
   text-align: center;
   width: 100%;
