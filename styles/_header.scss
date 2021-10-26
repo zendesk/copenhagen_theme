@@ -50,6 +50,15 @@ $header-height: 71px;
   }
 }
 
+.user-nav-list {
+  display: block;
+  list-style: none;
+
+  > li {
+    display: inline-block;
+  }
+}
+
 .nav-wrapper {
   a {
     @include tablet {
