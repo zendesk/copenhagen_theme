@@ -16,8 +16,17 @@
       </svg>
     </button>
     <nav class="user-nav" id="user-nav">
-      {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
+      <ul class="user-nav-list">
+        <li>{{link 'community'}}</li>
+        <li>{{link 'new_request' class='submit-a-request'}}</li>
+        {{#unless signed_in}}
+          <li>
+            {{#link "sign_in" class="sign-in"}}
+              {{t 'sign_in'}}
+            {{/link}}
+          </li>
+        {{/unless}}
+      </ul>
     </nav>
     {{#if signed_in}}
       <div class="user-info dropdown">
@@ -38,10 +47,6 @@
           {{link "sign_out" role="menuitem"}}
         </div>
       </div>
-    {{else}}
-      {{#link "sign_in" class="sign-in"}}
-        {{t 'sign_in'}}
-      {{/link}}
     {{/if}}
   </div>
 </header>

@@ -699,6 +699,15 @@ ul {
   margin: 20px;
 }
 
+.user-nav-list {
+  display: block;
+  list-style: none;
+}
+
+.user-nav-list > li {
+  display: inline-block;
+}
+
 .nav-wrapper a {
   border: 0;
   color: $link_color;
