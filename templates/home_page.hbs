@@ -1,5 +1,5 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
-
+<div class = 'homepage-container'>
 <section id="main-content" class="section hero">
   <div class = 'hero-title'>
     <h1>Adobe Commerce 2.4 Help Center</h1>
@@ -14,6 +14,7 @@
     {{search submit=false instant=settings.instant_search class='search search-full'}}
   </div>
 </section>
+
 
 <div class="container">
   <section class="section knowledge-base">
@@ -67,7 +68,10 @@
       </section>
     {{/if}}
   </section>
+  </div>
+ </div>
 
+<div class="container">
   {{#if help_center.community_enabled}}
     <section class="section home-section community">
       <h2>{{t 'community'}}</h2>
@@ -85,3 +89,4 @@
     {{/if}}
   </section>
 </div>
+

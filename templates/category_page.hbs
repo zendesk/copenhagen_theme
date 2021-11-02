@@ -10,8 +10,9 @@
       {{search scoped=settings.scoped_kb_search submit=false}}
     </div>
   </nav>
+</div>
 
-  <div class="category-container">
+  {{!-- <div class="category-container">
     <div class="category-content">
       <header class="page-header">
         <h1>{{category.name}}</h1>
@@ -59,5 +60,62 @@
         {{/each}}
       </div>
     </div>
+  </div> --}}
+  <section class="hero-banner mb-5 mt-3 bg-white py-1">
+  <div class="container">
+    <div class="row row align-items-center">
+      <div class="col-lg-5 offset-lg-1 order-lg-1">
+        <img
+          src="{{asset category.id suffix=".png"}}"
+          class="img-fluid"
+          alt="Web Development"
+        />
+      </div>
+      <div class="col-lg-6">
+        <h1>{{category.name}}</h1>
+        <p class="lead text-secondary my-5">{{category.description}}</p>
+        <a
+          href="https://support.magento.com/hc/en-us/articles/4410899569165-Adobe-Commerce-support-tools-at-a-glance"
+          class="btn btn-outline-primary btn-lg"
+        >Learn more</a>
+      </div>
+    </div>
   </div>
+</section>
+<div class= 'homepage-container'>
+  <div class="mb-5">
+    <div class="container bg-full">
+      <div class="category-container">
+        <div class="category-content">
+          <div class="row">
+            {{#each sections}}
+              <div class="col-sm-4">
+                <div
+                  class="card border-light shadow text-dark bg-white mb-4 mx-auto"
+                  style="height: 200px;"
+                >
+                  <div
+                    class="card-body d-flex flex-column justify-content-between"
+                  >
+                    <div class="d-flex flex-column justify-content-start">
+                      <h5 class="card-title text-dark fw-bold">
+                        {{name}}
+                      </h5>
+                      <p class="card-text text-secondary">{{description}}</p>
+                    </div>
+                  </div>
+                  <div class="card-footer bg-light d-flex flex-row-reverse">
+                    <a href="{{url}}" class="link-primary mx-2 my-1">See all
+                      {{article_count}}
+                      articles</a>
+                  </div>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </div>

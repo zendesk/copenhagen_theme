@@ -12,7 +12,8 @@ body {
 
 main {
   display: block;
-  background-color: #F5F5F5;
+  /* background-color: #F5F5F5; */
+  background-color: white;
 }
 
 h1 {
@@ -226,7 +227,7 @@ h4 {
 
 a {
   color: $link_color;
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 a:hover, a:active, a:focus {
@@ -902,7 +903,7 @@ ul {
 /***** Footer *****/
 .footer {
   border-top: 1px solid #ddd;
-  margin-top: 60px;
+  margin-top: 0px;
   padding: 30px 0;
 }
 
@@ -1198,7 +1199,7 @@ ul {
   border-bottom-color: #f5f5f5;
   border-bottom-style: groove;
   text-align: left;
-  color: black;
+  color: #2799f6;
 }
 
 .blocks-item-description {
@@ -1408,11 +1409,7 @@ ul {
   margin-right: 3px;
 }
 
-/***** Category pages *****/
-.category-container {
-  display: flex;
-  justify-content: flex-end;
-}
+
 
 .category-content {
   flex: 1;
@@ -4798,3 +4795,95 @@ html[dir="rtl"] .notification-left-aligned {
     top:50%
   }
 }
+
+/* For Holiday Notice */
+span.holiday_heading:before {
+  /*   content: '\1F514'; */
+    color: blue;
+    font-size: 18px;
+  }
+  
+  /* The close button */
+  .holiday_close_btn {
+    margin-left: 15px;
+    color: #f16321;
+    font-weight: bold;
+    float: right;
+    font-size: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .holiday_close_btn:hover {
+    color: black;
+  }
+  
+  /* Bootstrap Card for Category page customization */
+  
+  .card {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .card-title {
+    border-bottom-width: thin;
+    border-bottom-style: inset;
+    padding-bottom: 5px;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .hero-banner h1 {
+    font-size: 48px;
+  }
+  
+  @media (max-width: 1366px){
+    .header{
+      padding: 0 0 0 20px;
+    }
+  }
+  
+  .gh-links {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    padding: 0 0 0 20px;
+    font-size: 16px;
+  }
+  
+  .popular h1{
+    padding-left: 2.5rem;
+  }
+  
+  /* Class for hiding submit a ticket on request pages. */
+  
+  .hide-submit-a-ticket{
+    display: none !important;
+  }
+  
+  
+  .holiday_heading {
+    font-weight: bold;
+  }
+  
+  .temporary_holiday_notice_banner{
+    font-size: 16px;
+    padding: 5px 15px !important;
+    margin: 0 auto;
+    margin-top: 15px;
+    background-color: #E8EFF7;
+    border: 2px solid #B6C4D1;
+  }
+
+  .homepage-container {
+    background-color: #f5f5f5;
+    padding-bottom: 5px;
+  }
+
+  .category-container {
+    padding-top: 2.5rem;
+  }
