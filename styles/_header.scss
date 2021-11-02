@@ -47,6 +47,17 @@ $header-height: 71px;
       display: block;
       margin: 20px;
     }
+
+    > .user-nav-list {
+      li {
+        display: block;
+      }
+
+      a {
+        display: block;
+        margin: 20px;
+      }
+    }
   }
 }
 
@@ -81,8 +92,6 @@ $header-height: 71px;
       color: $link_color;
       text-decoration: underline;
     }
-
-    &.sign-in { display: inline-block; }
   }
 
   .hide-on-mobile {

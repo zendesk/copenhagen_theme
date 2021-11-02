@@ -699,6 +699,15 @@ ul {
   margin: 20px;
 }
 
+.user-nav[aria-expanded="true"] > .user-nav-list li {
+  display: block;
+}
+
+.user-nav[aria-expanded="true"] > .user-nav-list a {
+  display: block;
+  margin: 20px;
+}
+
 .user-nav-list {
   display: block;
   list-style: none;
@@ -731,10 +740,6 @@ ul {
   background-color: transparent;
   color: $link_color;
   text-decoration: underline;
-}
-
-.nav-wrapper a.sign-in {
-  display: inline-block;
 }
 
 @media (max-width: 768px) {
