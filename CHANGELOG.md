@@ -1,3 +1,10 @@
+# [2.12.0](https://github.com/zendesk/copenhagen_theme/compare/v2.11.2...v2.12.0) (2021-11-10)
+
+
+### Features
+
+* menu item for upcoming contact details modal ([57b7a94](https://github.com/zendesk/copenhagen_theme/commit/57b7a94e9542f60111a03b37444ff43a672a3800))
+
 ## [2.11.2](https://github.com/zendesk/copenhagen_theme/compare/v2.11.1...v2.11.2) (2021-10-07)
 
 
