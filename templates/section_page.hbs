@@ -2,6 +2,12 @@
 <div class="container">
     <nav class="sub-nav">
         {{breadcrumbs}}
+
+        {{#if settings.show_follow_section }}
+            <div class="follow-btn">
+                {{subscribe}}
+            </div>
+        {{/if}}
     </nav>
     <div class="section-container">
         {{#with section}}

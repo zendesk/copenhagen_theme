@@ -8131,7 +8131,7 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .article-header {
-  align-items: flex-start;
+  align-items: stretch;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -8293,3 +8293,26 @@ html[dir="rtl"] .notification-left-aligned {
 .article-return-to-top-icon {
   transform: rotate(0.5turn);
 }
+
+
+
+.follow-btn {
+  border: 0;
+  display: flex;
+  align-items: center;
+}
+.follow-btn button{
+  width: 111px;
+  height: 34px;
+  border: 0;
+  border-radius: 2px;
+  border: 1px solid #00A8E7;
+  background-color: transparent;
+  color: #28A7E1;
+  font-family: Roboto-Regular, Roboto;
+  font-size: 15px;
+  cursor: pointer;
+}
+/* .follow-btn button:hover {
+  color: aquamarine
+} */

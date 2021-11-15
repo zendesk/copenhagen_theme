@@ -56,6 +56,11 @@
                         </ul>
                     </div>
                 </div>
+                {{#if settings.show_follow_section}}
+                    <div class="follow-btn">
+                        {{subscribe}}
+                    </div>
+                {{/if}}
             </header>
 
             <section class="article-info">
