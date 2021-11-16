@@ -44,20 +44,6 @@
           "value": "rgba(93, 64, 200, 1)"
         },
         {
-          "identifier": "accent_color",
-          "type": "color",
-          "description": "accent_color_description",
-          "label": "accent_color_label",
-          "value": "rgba(247,72,87, 1)"
-        },
-        {
-          "identifier": "highlight_color",
-          "type": "color",
-          "description": "highlight_color_description",
-          "label": "highlight_color_label",
-          "value": "rgba(243,242,247, 1)"
-        },
-        {
           "identifier": "background_color",
           "type": "color",
           "description": "background_color_description",
