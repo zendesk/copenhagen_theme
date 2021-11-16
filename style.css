@@ -17,17 +17,7 @@ Firstup Brand Text Colors
 - link lilac #a27efc
 */
 
-/* Import Gilroy Heading */
-/* Zendesk
-@font-face {
-   font-family: 'Gilroy';
-   src: url('$assets-GilroyMedium-woff2') format('woff2'),
-          url('$assets-GilroyMedium-woff') format('woff');
-   font-weight: normal;
-   font-style: normal;
-}
-*/
-
+/* Import Gilroy Heading Fonts */
 @font-face{
     font-family:'Gilroy';
     font-style:normal;
@@ -36,7 +26,6 @@ Firstup Brand Text Colors
     src:url(https://firstup.io/wp-content/uploads/2021/09/GilroyMedium.woff2) format('woff2'),
       url(https://firstup.io/wp-content/uploads/2021/09/GilroyMedium.woff) format('woff');
 }
-
 @font-face{
   font-family:'Gilroy';
   font-style:normal;
@@ -4866,26 +4855,40 @@ html[dir="rtl"] .notification-left-aligned {
   margin-bottom: 40px;
 }
 
-@media (min-width: 768px) {
-  .feature-banner {
-    margin-top: -60px;
-    margin-bottom: 60px;
-  }
-}
-
-.feature-banner .container {
-  display: flex;
-  max-width: 900px;
-  align-items: center;
-}
-
 .intro-text {
-  width: calc(100% / 3 * 1);
+  width: 100%;
   padding-right: 40px;
 }
 
 .intro-content {
-  width: calc(100% / 3 * 2);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .feature-banner .container {
+    display: flex;
+    align-items: center;
+  }
+  .intro-text {
+    width: calc(100% / 3 * 1);
+  }
+
+  .intro-content {
+    width: calc(100% / 3 * 2);
+  }
+}
+
+@media (min-width: 1024px) {
+  .feature-banner {
+    margin-top: -60px;
+    margin-bottom: 60px;
+  }
+  .feature-banner .container {
+    max-width: 900px;
+  }
+  .feature-banner h2 {
+    font-size: 32px
+  }
 }
 
 .article table {
