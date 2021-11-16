@@ -4903,22 +4903,22 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .nav-wrapper a.hc_button {
-  min-width: 170px;
+  /*min-width: 170px;*/
   font-size: 12px;
   padding: 12px 24px;
   border-radius: 50px;
   letter-spacing: .3px;
-  text-align: center;
-  font-weight: 600;
+  /*text-align: center;*/
+  font-weight: 500;
   line-height: 1.2;
   box-shadow: none;
-  background-color: $link_color;
-  color: $brand_text_color;
+  background-color: $highlight_color;
+  color: $link_color;
   margin-right: 10px;
 }
 
 .nav-wrapper a.hc_button:hover, .nav-wrapper a.hc_button:active, .nav-wrapper a.hc_button:focus {
-  background-color: $visited_link_color;
+  background-color: $highlight_color;
   color: $brand_text_color;
   	text-decoration: none;
 }
