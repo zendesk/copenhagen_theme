@@ -1,7 +1,7 @@
 {
   "name": "Firstup Copenhagen",
   "author": "Zendesk with Firstup",
-  "version": "2.12.01",
+  "version": "2.12.02",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "rgba(48, 30, 107, 1)"
+          "value": "#301E6B"
         },
         {
           "identifier": "brand_text_color",
@@ -27,28 +27,42 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "rgba(41, 41, 51, 1)"
+          "value": "#292933"
         },
         {
           "identifier": "link_color",
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "rgba(116, 80, 250, 1)"
+          "value": "#7450FA"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "rgba(93, 64, 200, 1)"
+          "value": "5d40c8"
+        },
+        {
+          "identifier": "accent_color",
+          "type": "color",
+          "description": "accent_color_description",
+          "label": "accent_color_label",
+          "value": "#f74857"
+        },
+        {
+          "identifier": "highlight_color",
+          "type": "color",
+          "description": "highlight_color_description",
+          "label": "highlight_color_label",
+          "value": "#f3f2f7"
         },
         {
           "identifier": "background_color",
           "type": "color",
           "description": "background_color_description",
           "label": "background_color_label",
-          "value": "#FFFFFF"
+          "value": "#ffffff"
         }
       ]
     },

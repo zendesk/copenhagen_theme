@@ -1,5 +1,21 @@
-/*Firstup Brand Primary Colors - deep purple 301E6B - solar red F74857 - accent 2 lighter purple #5533c9*/
-/*Firstup Brand Text Colors - text 1 berry black #181547 - text 2 white #ffffff - text 3 dark grey #646464 - text 4 stone #f5f5f5 - link lilac #a27efc*/
+/*
+Firstup Brand Primary Colors
+$brand_color: #301E6B / deep purple
+$accent_color: #f74857 / solar red
+$link_color: #7450FA / mid purple
+$text_color: #292933 / soft black
+$highlight_color: #f3f2f7 / stone
+
+- #5533c9 / royal purple
+- #a27efc / bright purple
+
+Firstup Brand Text Colors
+- text 1 berry black #181547
+- text 2 white #ffffff
+- text 3 dark grey #646464
+- text 4 stone #f5f5f5
+- link lilac #a27efc
+*/
 
 /* Import Gilroy Heading */
 @font-face {
@@ -9,8 +25,6 @@
    font-weight: normal;
    font-style: normal;
 }
-
-$accent_color: #f74857 /* solar red */
 
 @charset "UTF-8";
 /***** Normalize.css *****/
