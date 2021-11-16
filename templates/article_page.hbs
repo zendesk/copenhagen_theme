@@ -38,29 +38,31 @@
                     {{/if}}
                 </div>
 
-                <div class="article-author">
-                    {{#if settings.show_article_author}}
-                        <div class="avatar article-avatar">
-                            <img src="{{article.author.avatar_url}}" alt="" class="user-avatar" />
+                <div style="display: flex; flex-direction: row;justify-content: space-between;width: 100%;">
+                    <div class="article-author">
+                        {{#if settings.show_article_author}}
+                            <div class="avatar article-avatar">
+                                <img src="{{article.author.avatar_url}}" alt="" class="user-avatar" />
+                            </div>
+                        {{/if}}
+                        <div class="article-meta">
+                            {{#if settings.show_article_author}}
+                                {{#link 'user_profile' id=article.author.id}}
+                                    {{article.author.name}}
+                                {{/link}}
+                            {{/if}}
+
+                            <ul class="meta-group">
+                                <li class="meta-data">{{date article.edited_at format="long"}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{#if settings.show_follow_section}}
+                        <div class="follow-btn">
+                            {{subscribe}}
                         </div>
                     {{/if}}
-                    <div class="article-meta">
-                        {{#if settings.show_article_author}}
-                            {{#link 'user_profile' id=article.author.id}}
-                                {{article.author.name}}
-                            {{/link}}
-                        {{/if}}
-
-                        <ul class="meta-group">
-                            <li class="meta-data">{{date article.edited_at format="long"}}</li>
-                        </ul>
-                    </div>
                 </div>
-                {{#if settings.show_follow_section}}
-                    <div class="follow-btn">
-                        {{subscribe}}
-                    </div>
-                {{/if}}
             </header>
 
             <section class="article-info">

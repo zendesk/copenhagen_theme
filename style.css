@@ -8295,11 +8295,14 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 
+.breadcrums-box {
+  flex-direction: row;
+}
 
 .follow-btn {
   border: 0;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
 }
 .follow-btn button{
   width: 111px;
