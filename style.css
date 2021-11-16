@@ -4884,4 +4884,9 @@ html[dir="rtl"] .notification-left-aligned {
 .article table thead{
   background-color: $brand_color;
   color: $brand_text_color;
+  border-color: lighten($brand_color, 20%);
+}
+
+.article h2 {
+    margin-top: 24px;
 }
