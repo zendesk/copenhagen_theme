@@ -1,3 +1,16 @@
+/*Firstup Brand Primary Colors - deep purple 301E6B - solar red F74857 - accent 2 lighter purple #5533c9*/
+/*Firstup Brand Text Colors - text 1 berry black #181547 - text 2 white #ffffff - text 3 dark grey #646464 - text 4 stone #f5f5f5 - link lilac #a27efc*/
+
+/* Import Gilroy Heading */
+@font-face {
+   font-family: 'Gilroy';
+   src: url('$assets-GilroyMedium-woff2') format('woff2'),
+          url('$assets-GilroyMedium-woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+
+
 @charset "UTF-8";
 /***** Normalize.css *****/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
@@ -71,10 +84,18 @@ sub {
 sup {
   top: -0.5em;
 }
+/*ANGELA FREY CHANGE
+Replace Original Style:
 
 img {
   border-style: none;
 }
+
+With Firstup style so that screenshots of white environment have borders by default:*/
+.article-body img {
+    border: 1px solid #f5f5f5;
+}
+
 
 button,
 input,
@@ -191,6 +212,7 @@ body {
   color: $text_color;
   font-family: $text_font;
   font-size: 15px;
+  font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -203,7 +225,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading_font;
+  font-weight: 500;
   margin-top: 0;
+  line-height: 1.25;
 }
 
 h1 {
@@ -389,6 +413,7 @@ ul {
   border-radius: 4px;
   color: $brand_text_color;
   font-size: 14px;
+  font-weight: 400;
   line-height: 2.72;
   min-width: 190px;
   padding: 0 1.9286em;
@@ -1020,6 +1045,7 @@ ul {
   padding: 0 20px;
   text-align: center;
   width: 100%;
+  color: #ffffff;
 }
 
 .hero-inner {
@@ -1028,6 +1054,14 @@ ul {
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
+}
+
+.hero-inner a {
+  color: $accent_color;
+}
+
+.hero-inner a:hover, .hero-inner a:active {
+  color: darken($accent_color, 20%);
 }
 
 .page-header {
@@ -1043,6 +1077,16 @@ ul {
     align-items: baseline;
     flex-direction: row;
     margin: 0;
+  }
+  .hero-inner {
+  	max-width: 900px;
+	}
+  .hero-inner .search {
+    max-width: 610px;
+    margin: 0 auto;
+  }
+  .hero-inner h1 {
+    font-size: 48px;
   }
 }
 
@@ -1190,6 +1234,7 @@ ul {
 .blocks-item-title {
   margin-bottom: 0;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .blocks-item-description {
@@ -1309,6 +1354,7 @@ ul {
 
 .recent-activity-item-parent {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .recent-activity-item-parent, .recent-activity-item-link {
@@ -1567,6 +1613,10 @@ ul {
 
 .article-author {
   margin-bottom: 10px;
+}
+
+.article-title {
+  font-size: 36px
 }
 
 @media (min-width: 768px) {

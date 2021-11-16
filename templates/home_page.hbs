@@ -3,11 +3,20 @@
 <section id="main-content" class="section hero">
   <div class="hero-inner">
     <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+    <!--ANGELA FREY INSERTING HEADER TEXT -->
+      <p>Classic Studio is Still Documented at <a href='https://howto.socialchorus.com/hc/en-us'>howto.socialchorus.com</a></p>
+      <h1>Firstup "New" Studio Knowledge Base</h1>
+    <!-- END INSERTED TEXT -->
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
       <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
       <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
     </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+
+<!--ANGELA FREY SWAP OUT THIS ORIGINAL SEARCH -->
+<!-- search submit=false instant=settings.instant_search class='search search-full'-->
+<!--WITH THIS CUSTOM SEARCH-->
+  {{search submit=false instant=true class='search search-full' placeholder='Search the New Studio Knowledge Base...'}}
+
   </div>
 </section>
 

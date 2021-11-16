@@ -1,6 +1,6 @@
 {
-  "name": "Copenhagen",
-  "author": "Zendesk",
+  "name": "Firstup Copenhagen",
+  "author": "Zendesk+Firstup",
   "version": "2.12.0",
   "api_version": 2,
   "default_locale": "en-us",
@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "rgba(48, 30, 107, 1)"
         },
         {
           "identifier": "brand_text_color",
@@ -27,21 +27,35 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#2F3941"
+          "value": "rgba(41, 41, 51, 1)"
         },
         {
           "identifier": "link_color",
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#1F73B7"
+          "value": "rgba(116, 80, 250, 1)"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "#4B61C3"
+          "value": "rgba(93, 64, 200, 1)"
+        },
+        {
+          "identifier": "accent_color",
+          "type": "color",
+          "description": "accent_color_description",
+          "label": "accent_color_label",
+          "value": "rgba(247,72,87, 1)"
+        },
+        {
+          "identifier": "highlight_color",
+          "type": "color",
+          "description": "highlight_color_description",
+          "label": "highlight_color_label",
+          "value": "rgba(243,242,247, 1)"
         },
         {
           "identifier": "background_color",
@@ -106,6 +120,10 @@
               "value": "Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman', serif"
             },
             {
+              "label": "Gilroy",
+              "value": "'Gilroy', 'Montserrat', Helvetica, Arial, sans-serif"
+            },
+            {
               "label": "Helvetica",
               "value": "Helvetica, Arial, sans-serif"
             },
@@ -120,6 +138,10 @@
             {
               "label": "Lucida Grande",
               "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
+            },
+            {
+              "label": "Montserrat",
+              "value": "'Montserrat', Helvetica, Arial, sans-serif"
             },
             {
               "label": "Trebuchet MS",
@@ -195,11 +217,14 @@
               "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
             },
             {
+              "label": "Montserrat",
+              "value": "'Montserrat', Helvetica, Arial, sans-serif"
+            },
+            {
               "label": "Trebuchet MS",
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
-          ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          ]
         }
       ]
     },
@@ -217,7 +242,7 @@
           "type": "checkbox",
           "description": "show_brand_name_description",
           "label": "show_brand_name_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "favicon",
@@ -338,7 +363,7 @@
           "type": "checkbox",
           "description": "article_sharing_description",
           "label": "article_sharing_label",
-          "value": true
+          "value": false
         }
       ]
     },
