@@ -17,13 +17,22 @@ Firstup Brand Text Colors
 - link lilac #a27efc
 */
 
-/* Import Gilroy Heading */
+/* Import Gilroy Heading
 @font-face {
    font-family: 'Gilroy';
    src: url('$assets-GilroyMedium-woff2') format('woff2'),
           url('$assets-GilroyMedium-woff') format('woff');
    font-weight: normal;
    font-style: normal;
+}
+*/
+
+@font-face {
+  font-family: 'GilroyMedium';
+  src: local ("GilroyMedium");
+  src: url('$assets-GilroyMedium-woff2'),url('$assets-GilroyMedium-woff');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @charset "UTF-8";
@@ -1461,7 +1470,7 @@ ul {
 /***** Category pages *****/
 .category-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .category-content {
