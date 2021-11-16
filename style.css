@@ -1285,6 +1285,7 @@ ul {
 .home-section h2 {
   margin-bottom: 10px;
   text-align: center;
+  font-size: 32px;
 }
 
 /***** Promoted articles *****/
@@ -4836,9 +4837,19 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 /* Additional Custom Styles */
-.featured-banner {
+.feature-banner {
   background-color: $highlight_color;
   padding: 40px 0;
+  margin-top: -40px;
+}
+
+@media (min-width: 768px) {
+  .feature-banner {
+    margin-top: -60px;
+  }
+}
+
+.feature-banner .container {
   display: flex;
 }
 
