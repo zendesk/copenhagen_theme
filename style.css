@@ -17,7 +17,8 @@ Firstup Brand Text Colors
 - link lilac #a27efc
 */
 
-/* Import Gilroy Heading
+/* Import Gilroy Heading */
+/* Zendesk
 @font-face {
    font-family: 'Gilroy';
    src: url('$assets-GilroyMedium-woff2') format('woff2'),
@@ -27,12 +28,13 @@ Firstup Brand Text Colors
 }
 */
 
-@font-face {
-  font-family: 'GilroyMedium';
-  src: local ("GilroyMedium");
-  src: url('$assets-GilroyMedium-woff2'),url('$assets-GilroyMedium-woff');
-  font-weight: 500;
-  font-style: normal;
+@font-face{
+    font-family:'Gilroy';
+    font-style:normal;
+    font-weight:500;
+    font-display:auto;
+    src:url(https://firstup.io/wp-content/uploads/2021/09/GilroyMedium.woff2) format('woff2'),
+      url(https://firstup.io/wp-content/uploads/2021/09/GilroyMedium.woff) format('woff');
 }
 
 @charset "UTF-8";
