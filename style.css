@@ -1867,7 +1867,6 @@ ul {
   font-size: 15px;
   position: relative;
   font-weight: 600;
-  margin-bottom: 1em;
 }
 
 .sidenav-item {
@@ -3139,6 +3138,7 @@ ul {
 @media (min-width: 1024px) {
   .collapsible-sidebar-body {
     display: block;
+    margin-top: 12px;
   }
 }
 
@@ -4895,4 +4895,25 @@ html[dir="rtl"] .notification-left-aligned {
 
 .article h2 {
     margin-top: 24px;
+}
+
+.nav-wrapper a.hc_button {
+  min-width: 170px;
+  font-size: 12px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  letter-spacing: .3px;
+  text-align: center;
+  font-weight: 600;
+  line-height: 1.2;
+  box-shadow: none;
+  background-color: $link_color;
+  color: $brand_text_color;
+  margin-right: 10px;
+}
+
+.nav-wrapper a.hc_button:hover, .nav-wrapper a.hc_button:active, .nav-wrapper a.hc_button:focus {
+  background-color: $visited_link_color;
+  color: $brand_text_color;
+  	text-decoration: none;
 }
