@@ -4919,6 +4919,6 @@ html[dir="rtl"] .notification-left-aligned {
 
 .nav-wrapper a.hc_button:hover, .nav-wrapper a.hc_button:active, .nav-wrapper a.hc_button:focus {
   background-color: $highlight_color;
-  color: $brand_text_color;
+  color: $brand_color;
   	text-decoration: none;
 }
