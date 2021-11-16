@@ -1867,10 +1867,11 @@ ul {
   font-size: 15px;
   position: relative;
   font-weight: 600;
+  margin-bottom: 1em;
 }
 
 .sidenav-item {
-  border-radius: 4px;
+  /*border-radius: 4px;*/
   color: $text_color;
   display: block;
   margin-bottom: 10px;
@@ -1878,10 +1879,15 @@ ul {
 }
 
 .sidenav-item.current-article, .sidenav-item:hover {
+    border-left: 5px solid $brand_color;
+    text-decoration: none;
+}
+
+/*.sidenav-item.current-article, .sidenav-item:hover {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
-}
+}*/
 
 .recent-articles li,
 .related-articles li {
