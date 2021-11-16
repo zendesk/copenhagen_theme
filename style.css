@@ -1875,11 +1875,16 @@ ul {
   display: block;
   margin-bottom: 10px;
   padding: 10px;
+  border-left: 5px solid transparent;
 }
 
 .sidenav-item.current-article, .sidenav-item:hover {
-    border-left: 5px solid $brand_color;
+    border-color: $brand_color;
     text-decoration: none;
+}
+
+.sidenav-item:hover {
+    background: $highlight_color;
 }
 
 /*.sidenav-item.current-article, .sidenav-item:hover {
