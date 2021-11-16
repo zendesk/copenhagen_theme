@@ -1105,7 +1105,7 @@ ul {
     margin: 0;
   }
   .hero-inner {
-  	max-width: 900px;
+  	max-width: 950px;
 	}
   .hero-inner .search {
     max-width: 610px;
@@ -4833,4 +4833,20 @@ html[dir="rtl"] .notification-left-aligned {
 
 .dropdown-chevron-icon {
   vertical-align: middle;
+}
+
+/* Additional Custom Styles */
+.featured-banner {
+  background-color: $highlight_color;
+  padding: 40px 0;
+  display: flex;
+}
+
+.intro-text {
+  width: calc(100% / 3 * 1);
+  padding-right: 40px;
+}
+
+.intro-content {
+  width: calc(100% / 3 * 2);
 }
