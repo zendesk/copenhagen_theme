@@ -4875,3 +4875,13 @@ html[dir="rtl"] .notification-left-aligned {
 .intro-content {
   width: calc(100% / 3 * 2);
 }
+
+.article table {
+  border: 1px solid #ddd;
+  border-collapse: collapse;
+}
+
+.article table thead{
+  background-color: $brand_color;
+  color: $brand_text_color;
+}
