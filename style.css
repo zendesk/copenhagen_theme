@@ -1879,7 +1879,7 @@ ul {
 }
 
 .sidenav-item.current-article, .sidenav-item:hover {
-    border-color: $brand_color;
+    border-color: $link_color;
     text-decoration: none;
 }
 
@@ -4898,7 +4898,7 @@ html[dir="rtl"] .notification-left-aligned {
   border-color: lighten($brand_color, 20%);
 }
 
-.article h2 {
+.article h1, .article h2 {
     margin-top: 24px;
 }
 
