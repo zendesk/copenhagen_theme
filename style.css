@@ -1552,7 +1552,7 @@ ul {
 /***** Section pages *****/
 .section-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .section-content {
