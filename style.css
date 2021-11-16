@@ -4841,16 +4841,20 @@ html[dir="rtl"] .notification-left-aligned {
   background-color: $highlight_color;
   padding: 40px 0;
   margin-top: -40px;
+  margin-bottom: 40px;
 }
 
 @media (min-width: 768px) {
   .feature-banner {
     margin-top: -60px;
+    margin-bottom: 60px;
   }
 }
 
 .feature-banner .container {
   display: flex;
+  max-width: 900px;
+  align-items: center;
 }
 
 .intro-text {
