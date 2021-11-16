@@ -1,7 +1,7 @@
 {
   "name": "Firstup Copenhagen",
   "author": "Zendesk with Firstup",
-  "version": "2.12.0",
+  "version": "2.12.01",
   "api_version": 2,
   "default_locale": "en-us",
   "settings": [
@@ -60,7 +60,7 @@
           "type": "list",
           "description": "heading_font_description",
           "label": "heading_font_label",
-          "value": "'Helvetica Neue', Arial, Helvetica, sans-serif",
+          "value": "'Gilroy', 'Montserrat', Helvetica, Arial, sans-serif",
           "options": [
             {
               "label": "System",
@@ -141,7 +141,7 @@
           "type": "list",
           "description": "text_font_description",
           "label": "text_font_label",
-          "value": "'Helvetica Neue', Arial, Helvetica, sans-serif",
+          "value": "'Montserrat', Helvetica, Arial, sans-serif",
           "options": [
             {
               "label": "System",

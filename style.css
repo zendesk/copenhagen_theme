@@ -10,6 +10,7 @@
    font-style: normal;
 }
 
+$accent_color: #f74857 /* solar red */
 
 @charset "UTF-8";
 /***** Normalize.css *****/
