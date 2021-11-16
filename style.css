@@ -37,6 +37,15 @@ Firstup Brand Text Colors
       url(https://firstup.io/wp-content/uploads/2021/09/GilroyMedium.woff) format('woff');
 }
 
+@font-face{
+  font-family:'Gilroy';
+  font-style:normal;
+  font-weight:600;
+  font-display:auto;
+  src:url(https://firstup.io/wp-content/uploads/2021/09/GilroySemiBold.woff2) format('woff2'),
+    url(https://firstup.io/wp-content/uploads/2021/09/GilroySemiBold.woff) format('woff');
+}
+
 @charset "UTF-8";
 /***** Normalize.css *****/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
