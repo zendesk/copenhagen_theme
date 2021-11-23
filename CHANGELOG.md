@@ -1,3 +1,10 @@
+## [2.12.1](https://github.com/zendesk/copenhagen_theme/compare/v2.12.0...v2.12.1) (2021-11-23)
+
+
+### Bug Fixes
+
+* Remove refs to AppleGothic ([8951af5](https://github.com/zendesk/copenhagen_theme/commit/8951af5290537984e8b2297e9a60ef796c98c6b4))
+
 # [2.12.0](https://github.com/zendesk/copenhagen_theme/compare/v2.11.2...v2.12.0) (2021-11-10)
 
 
