@@ -79,7 +79,7 @@
             },
             {
               "label": "Century Gothic",
-              "value": "'Century Gothic', AppleGothic, sans-serif"
+              "value": "'Century Gothic', sans-serif"
             },
             {
               "label": "Copperplate Light",
@@ -91,7 +91,7 @@
             },
             {
               "label": "Futura",
-              "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"
+              "value": "Futura, 'Century Gothic', sans-serif"
             },
             {
               "label": "Garamond",
@@ -152,7 +152,7 @@
             },
             {
               "label": "Century Gothic",
-              "value": "'Century Gothic', AppleGothic, sans-serif"
+              "value": "'Century Gothic', sans-serif"
             },
             {
               "label": "Copperplate Light",
@@ -164,7 +164,7 @@
             },
             {
               "label": "Futura",
-              "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"
+              "value": "Futura, 'Century Gothic', sans-serif"
             },
             {
               "label": "Garamond",
