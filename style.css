@@ -966,6 +966,7 @@ ul {
 
 .search input[type="search"] {
   border: 1px solid #ddd;
+  background-color: white;
   border-radius: 30px;
   box-sizing: border-box;
   color: #666;
