@@ -1,3 +1,10 @@
+## [2.12.2](https://github.com/zendesk/copenhagen_theme/compare/v2.12.1...v2.12.2) (2021-11-24)
+
+
+### Bug Fixes
+
+* search input field background color in iOS ([1e0059e](https://github.com/zendesk/copenhagen_theme/commit/1e0059ed1961c7580f644e6fed72539601c7d58a))
+
 ## [2.12.1](https://github.com/zendesk/copenhagen_theme/compare/v2.12.0...v2.12.1) (2021-11-23)
 
 
