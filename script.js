@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var doc = new DOMParser().parseFromString(`<_>${xml}</_>`, "text/xml");
     var img = doc.querySelector("img");
     return img === null && isEmptyPlaintext(doc.children[0].textContent);
-  };
+  }
 
   var isEmpty = usesWysiwyg ? isEmptyHtml : isEmptyPlaintext;
 
@@ -158,25 +158,21 @@ document.addEventListener('DOMContentLoaded', function() {
     toggle.focus();
   }
 
-  var burgerMenu = document.querySelector('.header .menu-button');
-  var userMenu = document.querySelector('#user-nav');
+  var menuButton = document.querySelector('.header .menu-button-mobile');
+  var menuList = document.querySelector('#user-nav-mobile');
 
-  burgerMenu.addEventListener('click', function(e) {
+  menuButton.addEventListener('click', function(e) {
     e.stopPropagation();
-    toggleNavigation(this, userMenu);
+    toggleNavigation(this, menuList);
   });
 
 
-  userMenu.addEventListener('keyup', function(e) {
+  menuList.addEventListener('keyup', function(e) {
     if (e.keyCode === ESCAPE) {
       e.stopPropagation();
-      closeNavigation(burgerMenu, this);
+      closeNavigation(menuButton, this);
     }
   });
-
-  if (userMenu.children.length === 0) {
-    burgerMenu.style.display = 'none';
-  }
 
   // Toggles expanded aria to collapsible elements
   var collapsible = document.querySelectorAll('.collapsible-nav, .collapsible-sidebar');
@@ -245,7 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
     this.toggle.addEventListener("click", this.clickHandler.bind(this));
     this.toggle.addEventListener("keydown", this.toggleKeyHandler.bind(this));
     this.menu.addEventListener("keydown", this.menuKeyHandler.bind(this));
-  };
+  }
 
   Dropdown.prototype = {
 
