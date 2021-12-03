@@ -62,6 +62,7 @@
 /***** Community section in homepage *****/
 .community {
   text-align: center;
+  display: none;
 
   &-image {
     min-height: 300px;
@@ -75,6 +76,16 @@
 
 .community,
 .activity {
-  border-top: 1px solid $border-color;
   padding: 30px 0;
+}
+
+.home-section.categories {
+  background-color: $primary-shade;
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+
+  padding-top: 40px;
+  padding-bottom: 10px;
 }

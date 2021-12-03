@@ -1,7 +1,11 @@
 /***** Header *****/
-$header-height: 71px;
+$header-height: 65px;
 
 .header {
+  background-color: $brand_color;
+}
+
+.header-content {
   @include max-width-container;
   position: relative;
   align-items: center;
@@ -11,7 +15,7 @@ $header-height: 71px;
 }
 
 .logo img {
-  max-height: 37px;
+  max-height: 18px;
   vertical-align: middle;
 }
 
@@ -56,10 +60,13 @@ $header-height: 71px;
       display: inline-block;
     }
 
+    font-family: $text_font_medium;
+    font-weight: $font-weight-semibold;
     border: 0;
-    color: $link_color;
+    color: $brand_text_color;
     display: none;
-    font-size: 14px;
+    font-size: $font-size-navigation;
+    line-height: 21px;
     padding: 0 20px 0 0;
     width: auto;
 
@@ -69,8 +76,8 @@ $header-height: 71px;
     &:focus,
     &:active {
       background-color: transparent;
-      color: $link_color;
-      text-decoration: underline;
+      color: $link_color_hover;
+      text-decoration: none;
     }
 
     &.sign-in { display: inline-block; }

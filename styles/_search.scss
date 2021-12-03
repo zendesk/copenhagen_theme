@@ -5,10 +5,10 @@
   input[type="search"] {
     border: 1px solid $border-color;
     background-color: white;
-    border-radius: 30px;
+    border-radius: $border-radius;
     box-sizing: border-box;
     color: $field-text-color;
-    height: 40px;
+    height: 41px;
     padding-left: 40px;
     padding-right: 20px;
     -webkit-appearance: none;
@@ -20,7 +20,6 @@
     }
 
     &:focus {
-      border: 1px solid $brand_color;
       color: $field-text-focus-color;
     }
   }

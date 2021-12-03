@@ -8,16 +8,41 @@
   }
 
   > button {
+    font-family: $text_font_medium;
+    font-weight: $font-weight-semibold;
     border: 0;
-    color: $link_color;
+    color: $brand_text_color;
     min-width: 0;
     padding: 0;
     white-space: nowrap;
+    font-size: $font-size-navigation;
+    line-height: 21px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: baseline;
+    -webkit-box-align: baseline;
+    -ms-flex-align: baseline;
+    align-items: baseline;
 
     &:hover,
     &:focus {
-      color: $link_color;
+      color: $link_color_hover;
       background-color: transparent;
+    }
+
+    &::before {
+      content: " ";
+      display: block;
+      position: relative;
+      top: 2px;
+      margin-right: 5px;
+      width: 16px;
+      height: 16px;
+      background-image: url($assets-user-png);
+      background-size: contain;
+      background-repeat: no-repeat;
     }
 
     &::after {
@@ -45,9 +70,12 @@
 .user-avatar {
   height: 25px;
   width: 25px;
-  border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
+  background-image: url($assets-user-png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: none !important;
 }
 
 .avatar {

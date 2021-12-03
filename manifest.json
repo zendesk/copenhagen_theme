@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "#222222"
         },
         {
           "identifier": "brand_text_color",
@@ -27,21 +27,21 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#2F3941"
+          "value": "#222222"
         },
         {
           "identifier": "link_color",
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#1F73B7"
+          "value": "#45be76"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "#4B61C3"
+          "value": "#45be76"
         },
         {
           "identifier": "background_color",
@@ -63,7 +63,7 @@
           "options": [
             {
               "label": "System",
-              "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+              "value": "'Styrene B Bold', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
             },
             {
               "label": "Arial",
@@ -126,7 +126,7 @@
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "'Styrene B Bold', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
         },
         {
           "identifier": "text_font",
@@ -136,7 +136,7 @@
           "options": [
             {
               "label": "System",
-              "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+              "value": "'Styrene B Regular', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
             },
             {
               "label": "Arial",
@@ -199,7 +199,7 @@
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "'Styrene B Regular', BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
         }
       ]
     },
@@ -217,7 +217,7 @@
           "type": "checkbox",
           "description": "show_brand_name_description",
           "label": "show_brand_name_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "favicon",

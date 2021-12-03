@@ -1,6 +1,12 @@
 /***** Hero component *****/
+.section.hero {
+  margin-bottom: 0;
+}
+
 .hero {
-  background-image: url($homepage_background_image);
+  // background-image: url($homepage_background_image);
+  background-color: $brand_color;
+  color: $brand_text_color;
   background-position: center;
   background-size: cover;
   height: 300px;
@@ -13,4 +19,14 @@
     max-width: 610px;
     margin: 0 auto;
   }
+}
+
+.hero-search {
+  position: relative;
+}
+
+.hero-note {
+  color: $color-gray-dark;
+  text-align: left;
+  margin-top: 10px;
 }

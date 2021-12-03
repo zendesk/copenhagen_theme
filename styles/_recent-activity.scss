@@ -9,12 +9,14 @@
   &-list { padding: 0; }
 
   &-item {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $color-gray-main;
     overflow: auto;
     padding: 20px 0;
   }
 
   &-item-parent {
+    font-family: $text_font_medium;
+    font-weight: $font-weight-semibold;
     font-size: $font-size-bigger;
   }
 
@@ -76,7 +78,7 @@
   &-comment-icon {
     svg {
       vertical-align: middle;
-      color: $brand_color;
+      color: $link_color;
       width: 16px;
       height: 16px;
     }
@@ -84,7 +86,7 @@
     &:after {
       content: attr(data-comment-count);
       margin-left: 3px;
-      
+
       [dir="rtl"] & {
         margin-left: 0;
         margin-right: 3px;

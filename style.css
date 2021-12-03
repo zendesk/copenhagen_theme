@@ -182,17 +182,49 @@ template {
 }
 
 /***** Base *****/
+@font-face {
+  font-family: 'Styrene B Regular';
+  src: url("$assets-StyreneB-Regular-Web-woff2") format("woff2"), url("$assets-StyreneB-Regular-Web-woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene B Medium';
+  src: url("$assets-StyreneB-Medium-Web-woff2") format("woff2"), url("$assets-StyreneB-Medium-Web-woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Styrene B Bold';
+  src: url("$assets-StyreneB-Bold-Web-woff2") format("woff2"), url("$assets-StyreneB-Bold-Web-woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
+}
+
+*::selection {
+  background: #ed1c24;
+  color: $brand_text_color;
 }
 
 body {
   background-color: $background_color;
   color: $text_color;
   font-family: $text_font;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.15px;
 }
 
 @media (min-width: 1024px) {
@@ -207,16 +239,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 36px;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 24px;
 }
 
 h3 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 h4 {
@@ -229,13 +261,14 @@ a {
 }
 
 a:hover, a:active, a:focus {
-  text-decoration: underline;
+  color: #59d28a;
+  text-decoration: none !important;
 }
 
 input,
 textarea {
   color: #000;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 input {
@@ -261,11 +294,11 @@ select {
   -moz-appearance: none;
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
   background-position: right 10px center;
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 4px;
   padding: 8px 30px 8px 10px;
   outline: none;
-  color: #555;
+  color: #222;
   width: 100%;
 }
 
@@ -278,7 +311,7 @@ select::-ms-expand {
 }
 
 textarea {
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 2px;
   resize: vertical;
   width: 100%;
@@ -304,7 +337,7 @@ textarea:focus {
 }
 
 .container-divider {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   margin-bottom: 20px;
 }
 
@@ -374,8 +407,8 @@ ul {
 }
 
 .button.button-primary:hover, .split-button button:hover, .section-subscribe button.button-primary:hover, .section-subscribe button:hover[data-selected="true"], .article-subscribe button.button-primary:hover, .article-subscribe button:hover[data-selected="true"], .community-follow button.button-primary:hover, .requests-table-toolbar .organization-subscribe button.button-primary:hover, .requests-table-toolbar .organization-subscribe button:hover[data-selected="true"], .subscriptions-subscribe button.button-primary:hover, .subscriptions-subscribe button:hover[data-selected="true"], .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .button.button-primary:focus, .split-button button.button-primary:focus, .section-subscribe button.button-primary:focus, .section-subscribe button:focus[data-selected="true"], .article-subscribe button.button-primary:focus, .article-subscribe button:focus[data-selected="true"], .community-follow button.button-primary:focus, .requests-table-toolbar .organization-subscribe button.button-primary:focus, .requests-table-toolbar .organization-subscribe button:focus[data-selected="true"], .subscriptions-subscribe button.button-primary:focus, .subscriptions-subscribe button:focus[data-selected="true"], .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .button.button-primary:active, .split-button button.button-primary:active, .section-subscribe button.button-primary:active, .section-subscribe button:active[data-selected="true"], .article-subscribe button.button-primary:active, .article-subscribe button:active[data-selected="true"], .community-follow button.button-primary:active, .requests-table-toolbar .organization-subscribe button.button-primary:active, .requests-table-toolbar .organization-subscribe button:active[data-selected="true"], .subscriptions-subscribe button.button-primary:active, .subscriptions-subscribe button:active[data-selected="true"], .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
+  background-color: darken($brand_color, 50%);
+  border-color: darken($brand_color, 50%);
 }
 
 .button[data-disabled], .split-button button[data-disabled], .section-subscribe button[data-disabled], .article-subscribe button[data-disabled], .community-follow button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .subscriptions-subscribe button[data-disabled], .pagination-next-link[data-disabled], .pagination-prev-link[data-disabled], .pagination-first-link[data-disabled], .pagination-last-link[data-disabled] {
@@ -402,7 +435,7 @@ ul {
 }
 
 .button-large:hover, .button-large:active, .button-large:focus, input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
-  background-color: darken($brand_color, 20%);
+  background-color: darken($brand_color, 50%);
 }
 
 .button-large[disabled], input[type="submit"][disabled] {
@@ -410,14 +443,14 @@ ul {
 }
 
 .button-secondary {
-  color: lighten($text_color, 20%);
-  border: 1px solid #ddd;
+  color: lighten($text_color, 50%);
+  border: 1px solid #fff;
   background-color: transparent;
 }
 
 .button-secondary:hover, .button-secondary:focus, .button-secondary:active {
   color: $text_color;
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   background-color: darken($background_color, 3%);
 }
 
@@ -483,8 +516,8 @@ ul {
 
 .table th,
 .table th a {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
   text-align: left;
 }
 
@@ -494,7 +527,7 @@ ul {
 }
 
 .table tr {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   display: block;
   padding: 20px 0;
 }
@@ -539,12 +572,12 @@ ul {
 
 .form-field label {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 
 .form-field input {
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 4px;
   padding: 10px;
   width: 100%;
@@ -555,7 +588,7 @@ ul {
 }
 
 .form-field input[type="text"] {
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 4px;
 }
 
@@ -595,12 +628,12 @@ ul {
 }
 
 .form-field .optional {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   margin-left: 4px;
 }
 
 .form-field p {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   font-size: 12px;
   margin: 5px 0;
 }
@@ -611,18 +644,18 @@ ul {
 }
 
 .form footer a {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   cursor: pointer;
   margin-right: 15px;
 }
 
 .form .suggestion-list {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 30px;
 }
 
 .form .suggestion-list label {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   display: block;
   padding-bottom: 5px;
 }
@@ -637,25 +670,29 @@ ul {
 
 /***** Header *****/
 .header {
+  background-color: $brand_color;
+}
+
+.header-content {
   max-width: 1160px;
   margin: 0 auto;
   padding: 0 5%;
   position: relative;
   align-items: center;
   display: flex;
-  height: 71px;
+  height: 65px;
   justify-content: space-between;
 }
 
 @media (min-width: 1160px) {
-  .header {
+  .header-content {
     padding: 0;
     width: 90%;
   }
 }
 
 .logo img {
-  max-height: 37px;
+  max-height: 18px;
   vertical-align: middle;
 }
 
@@ -690,7 +727,7 @@ ul {
   border: solid 1px #ddd;
   right: 0;
   left: 0;
-  top: 71px;
+  top: 65px;
   z-index: 1;
 }
 
@@ -700,10 +737,13 @@ ul {
 }
 
 .nav-wrapper a {
+  font-family: "Styrene B Medium", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-weight: 500;
   border: 0;
-  color: $link_color;
+  color: $brand_text_color;
   display: none;
   font-size: 14px;
+  line-height: 21px;
   padding: 0 20px 0 0;
   width: auto;
 }
@@ -720,8 +760,8 @@ ul {
 
 .nav-wrapper a:hover, .nav-wrapper a:focus, .nav-wrapper a:active {
   background-color: transparent;
-  color: $link_color;
-  text-decoration: underline;
+  color: #59d28a;
+  text-decoration: none;
 }
 
 .nav-wrapper a.sign-in {
@@ -827,16 +867,41 @@ ul {
 }
 
 .user-info > button {
+  font-family: "Styrene B Medium", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-weight: 500;
   border: 0;
-  color: $link_color;
+  color: $brand_text_color;
   min-width: 0;
   padding: 0;
   white-space: nowrap;
+  font-size: 14px;
+  line-height: 21px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: baseline;
+  -webkit-box-align: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
 }
 
 .user-info > button:hover, .user-info > button:focus {
-  color: $link_color;
+  color: #59d28a;
   background-color: transparent;
+}
+
+.user-info > button::before {
+  content: " ";
+  display: block;
+  position: relative;
+  top: 2px;
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  background-image: url($assets-user-png);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .user-info > button::after {
@@ -868,9 +933,12 @@ ul {
 .user-avatar {
   height: 25px;
   width: 25px;
-  border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
+  background-image: url($assets-user-png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: none !important;
 }
 
 .avatar {
@@ -900,13 +968,12 @@ ul {
 
 /***** Footer *****/
 .footer {
-  border-top: 1px solid #ddd;
   margin-top: 60px;
   padding: 30px 0;
 }
 
 .footer a {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 .footer-inner {
@@ -925,7 +992,7 @@ ul {
 }
 
 .footer-language-selector button {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   display: inline-block;
 }
 
@@ -942,9 +1009,9 @@ ul {
 }
 
 .breadcrumbs li {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   display: inline;
-  font-size: 13px;
+  font-size: 14px;
   max-width: 450px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -965,12 +1032,12 @@ ul {
 }
 
 .search input[type="search"] {
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   background-color: white;
-  border-radius: 30px;
+  border-radius: 5px;
   box-sizing: border-box;
-  color: #666;
-  height: 40px;
+  color: #222;
+  height: 41px;
   padding-left: 40px;
   padding-right: 20px;
   -webkit-appearance: none;
@@ -983,8 +1050,7 @@ ul {
 }
 
 .search input[type="search"]:focus {
-  border: 1px solid $brand_color;
-  color: #555;
+  color: #222;
 }
 
 .search-full input[type="search"] {
@@ -1013,8 +1079,13 @@ ul {
 }
 
 /***** Hero component *****/
+.section.hero {
+  margin-bottom: 0;
+}
+
 .hero {
-  background-image: url($homepage_background_image);
+  background-color: $brand_color;
+  color: $brand_text_color;
   background-position: center;
   background-size: cover;
   height: 300px;
@@ -1029,6 +1100,16 @@ ul {
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
+}
+
+.hero-search {
+  position: relative;
+}
+
+.hero-note {
+  color: #888;
+  text-align: left;
+  margin-top: 10px;
 }
 
 .page-header {
@@ -1106,7 +1187,7 @@ ul {
 }
 
 .sub-nav input[type="search"]::after {
-  font-size: 15px;
+  font-size: 16px;
 }
 
 /***** Blocks *****/
@@ -1126,8 +1207,9 @@ ul {
 }
 
 .blocks-item {
-  border: 1px solid $brand_color;
-  border-radius: 4px;
+  border: 1px solid $background_color;
+  background-color: $background_color;
+  border-radius: 5px;
   box-sizing: border-box;
   color: $brand_color;
   display: flex;
@@ -1144,17 +1226,28 @@ ul {
 }
 
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+  border-color: $background_color;
 }
 
 .blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
-  color: $brand_text_color;
   text-decoration: none;
+}
+
+.blocks-item:nth-of-type(1) .blocks-item-icon {
+  background-image: url($assets-accounts-png);
+}
+
+.blocks-item:nth-of-type(2) .blocks-item-icon {
+  background-image: url($assets-cards-png);
+}
+
+.blocks-item:nth-of-type(3) .blocks-item-icon {
+  background-image: url($assets-cx-png);
 }
 
 .blocks-item-internal {
   background-color: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
 }
 
 .blocks-item-internal .icon-lock {
@@ -1179,18 +1272,28 @@ ul {
 }
 
 .blocks-item-link:hover, .blocks-item-link:active {
+  color: $brand_color;
   text-decoration: none;
 }
 
 .blocks-item-link:focus {
-  outline: 0;
-  box-shadow: 0 0 0 3px $brand_color;
   text-decoration: none;
 }
 
+.blocks-item-icon {
+  display: inline-block;
+  width: 41px;
+  height: 41px;
+  background-image: url($assets-cx-png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 0 auto 10px auto;
+}
+
 .blocks-item-title {
+  font-family: "Styrene B Medium", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-weight: 500;
   margin-bottom: 0;
-  font-size: 16px;
 }
 
 .blocks-item-description {
@@ -1253,7 +1356,7 @@ ul {
 
 .promoted-articles-item a {
   display: block;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   padding: 15px 0;
   color: $text_color;
 }
@@ -1268,13 +1371,14 @@ ul {
 
 @media (min-width: 1024px) {
   .promoted-articles-item:last-child a {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
   }
 }
 
 /***** Community section in homepage *****/
 .community {
   text-align: center;
+  display: none;
 }
 
 .community-image {
@@ -1288,8 +1392,20 @@ ul {
 
 .community,
 .activity {
-  border-top: 1px solid #ddd;
   padding: 30px 0;
+}
+
+.home-section.categories {
+  background-color: darken($background_color, 3%);
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .home-section.categories {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
 }
 
 /***** Recent activity *****/
@@ -1309,6 +1425,8 @@ ul {
 }
 
 .recent-activity-item-parent {
+  font-family: "Styrene B Medium", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  font-weight: 500;
   font-size: 16px;
 }
 
@@ -1346,9 +1464,9 @@ ul {
 }
 
 .recent-activity-item-time, .recent-activity-item-comment {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .recent-activity-item-comment {
@@ -1383,7 +1501,7 @@ ul {
 
 .recent-activity-comment-icon svg {
   vertical-align: middle;
-  color: $brand_color;
+  color: $link_color;
   width: 16px;
   height: 16px;
 }
@@ -1441,7 +1559,7 @@ ul {
 .section-tree-title {
   margin-bottom: 0;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .section-tree-title a {
@@ -1488,13 +1606,13 @@ ul {
 }
 
 .section-list-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   font-size: 16px;
   padding: 15px 0;
 }
 
 .section-list-item:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
 }
 
 .section-list-item a {
@@ -1636,7 +1754,7 @@ ul {
 
 .article-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
@@ -1644,7 +1762,7 @@ ul {
 
 .article-body pre {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
@@ -1652,8 +1770,8 @@ ul {
 }
 
 .article-body blockquote {
-  border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  border-left: 1px solid #fff;
+  color: lighten($text_color, 50%);
   font-style: italic;
   padding: 0 15px;
 }
@@ -1676,7 +1794,7 @@ ul {
 }
 
 .article-comment-count {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 .article-comment-count:hover {
@@ -1691,8 +1809,8 @@ ul {
 }
 
 .article-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -1707,7 +1825,7 @@ ul {
 }
 
 .article-relatives {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -1737,7 +1855,7 @@ ul {
 }
 
 .article-votes {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   padding: 30px 0;
   text-align: center;
 }
@@ -1754,7 +1872,7 @@ ul {
 }
 
 .article-return-to-top {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
 }
 
 @media (min-width: 1024px) {
@@ -1778,7 +1896,7 @@ ul {
 }
 
 .sidenav-title {
-  font-size: 15px;
+  font-size: 16px;
   position: relative;
   font-weight: 600;
 }
@@ -1832,7 +1950,7 @@ ul {
 }
 
 .upload-dropzone span {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 /***** Social share links *****/
@@ -1851,7 +1969,7 @@ ul {
 }
 
 .share a {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 .share a:hover {
@@ -1868,7 +1986,7 @@ ul {
 /***** Comments *****/
 /* Styles comments inside articles, posts and requests */
 .comment {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   padding: 20px 0;
 }
 
@@ -1877,12 +1995,12 @@ ul {
   margin-bottom: 5px;
   margin-top: 0;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .comment-overview {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
   padding: 20px 0;
 }
 
@@ -1891,9 +2009,9 @@ ul {
 }
 
 .comment-callout {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 0;
 }
 
@@ -1907,8 +2025,8 @@ ul {
 }
 
 .comment-sorter .dropdown-toggle {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
 }
 
 [dir="rtl"] .comment-sorter {
@@ -2091,7 +2209,7 @@ ul {
 
 .comment-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
@@ -2099,7 +2217,7 @@ ul {
 
 .comment-body pre {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
@@ -2107,8 +2225,8 @@ ul {
 }
 
 .comment-body blockquote {
-  border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  border-left: 1px solid #fff;
+  color: lighten($text_color, 50%);
   font-style: italic;
   padding: 0 15px;
 }
@@ -2130,7 +2248,7 @@ ul {
 }
 
 .vote-sum {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   display: block;
   margin: 3px 0;
 }
@@ -2155,7 +2273,7 @@ ul {
   appearance: none;
   background-color: transparent;
   border: none;
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   cursor: pointer;
   min-height: 35px;
   min-width: 35px;
@@ -2169,7 +2287,7 @@ ul {
 }
 
 .vote-voted:hover {
-  color: darken($brand_color, 20%);
+  color: darken($brand_color, 50%);
 }
 
 /***** Actions *****/
@@ -2252,8 +2370,8 @@ ul {
 
 /* Community topic page */
 .topic-header {
-  border-bottom: 1px solid #ddd;
-  font-size: 13px;
+  border-bottom: 1px solid #fff;
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -2264,7 +2382,7 @@ ul {
 
 .topic-header .dropdown {
   display: block;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   padding: 10px 0;
 }
 
@@ -2328,8 +2446,8 @@ ul {
 }
 
 .community-follow button[data-selected="true"]:hover {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
+  background-color: darken($brand_color, 50%);
+  border-color: darken($brand_color, 50%);
 }
 
 .community-follow button::after {
@@ -2365,7 +2483,7 @@ ul {
 
 .striped-list-item {
   align-items: flex-start;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -2402,8 +2520,8 @@ ul {
 }
 
 .striped-list-count {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
   justify-content: flex-start;
   text-transform: capitalize;
 }
@@ -2450,7 +2568,7 @@ ul {
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   margin-right: 2px;
   padding: 3px 10px;
   vertical-align: middle;
@@ -2491,7 +2609,7 @@ ul {
 
 .status-label-not-planned, .status-label-closed {
   background-color: #e9ebed;
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 .status-label-pending, .status-label-pending-moderation {
@@ -2663,7 +2781,7 @@ ul {
 
 .post-body code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
@@ -2671,7 +2789,7 @@ ul {
 
 .post-body pre {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid #fff;
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
@@ -2679,8 +2797,8 @@ ul {
 }
 
 .post-body blockquote {
-  border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  border-left: 1px solid #fff;
+  color: lighten($text_color, 50%);
   font-style: italic;
   padding: 0 15px;
 }
@@ -2693,7 +2811,7 @@ ul {
 }
 
 .post-comment-count {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 .post-comment-count:hover {
@@ -2710,7 +2828,7 @@ ul {
 }
 
 .post-sidebar {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   flex: 1;
   padding: 30px 0;
   text-align: center;
@@ -2730,7 +2848,7 @@ ul {
 
 .post-sidebar-title {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .post-comments {
@@ -2750,7 +2868,7 @@ ul {
   border-radius: 4px;
   color: #fff;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   padding: 0px 8px;
   vertical-align: top;
   white-space: nowrap;
@@ -2804,7 +2922,7 @@ ul {
 
 .community-badge-achievements-rest {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 20px;
   text-align: center;
   vertical-align: top;
@@ -2839,8 +2957,8 @@ ul {
 }
 
 .collapsible-nav-border {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
 }
 
 @media (min-width: 768px) {
@@ -3170,7 +3288,7 @@ ul {
 }
 
 .requests-table-toolbar .request-filter-label {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 30px;
 }
 
@@ -3302,8 +3420,8 @@ ul {
 
 /* Contributions table */
 .contributions-table td:last-child {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
 }
 
 @media (min-width: 768px) {
@@ -3315,7 +3433,7 @@ ul {
 }
 
 .no-activities {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
 }
 
 /***** Request *****/
@@ -3382,8 +3500,8 @@ ul {
 
 .request-main .comment-show-container {
   border-radius: 2px;
-  border: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  border: 1px solid #fff;
+  color: lighten($text_color, 50%);
   text-align: inherit;
   padding: 8px 25px;
   width: 100%;
@@ -3429,7 +3547,7 @@ ul {
 
 @media (min-width: 1024px) {
   .request-title {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #fff;
     margin-bottom: 0;
     max-width: 66%;
     padding-bottom: 20px;
@@ -3437,8 +3555,8 @@ ul {
 }
 
 .request-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
+  border-top: 1px solid #fff;
   flex: 1 0 auto;
   order: 0;
 }
@@ -3447,7 +3565,7 @@ ul {
   .request-sidebar {
     background-color: darken($background_color, 3%);
     border: 0;
-    font-size: 13px;
+    font-size: 14px;
     flex: 0 0 auto;
     padding: 0 20px;
     width: 30%;
@@ -3455,8 +3573,8 @@ ul {
 }
 
 .request-sidebar h2 {
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   position: relative;
 }
 
@@ -3467,7 +3585,7 @@ ul {
 }
 
 .request-details {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #fff;
   font-size: 0;
   margin: 0;
   padding-bottom: 20px;
@@ -3480,7 +3598,7 @@ ul {
 .request-details dt, .request-details dd {
   display: inline-block;
   vertical-align: top;
-  font-size: 13px;
+  font-size: 14px;
   margin: 20px 0 0 0;
 }
 
@@ -3495,7 +3613,7 @@ ul {
 }
 
 .request-details dt {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   width: 40%;
 }
 
@@ -3597,8 +3715,8 @@ ul {
 }
 
 .meta-data {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
 }
 
 .meta-data:not(:last-child)::after {
@@ -3716,7 +3834,7 @@ ul {
 }
 
 .profile-stats {
-  font-size: 13px;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -3728,7 +3846,7 @@ ul {
 }
 
 .profile-stats .stat-label {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   flex: 0 0 100px;
   margin-right: 10px;
 }
@@ -3888,8 +4006,8 @@ ul {
 .profile-section-description {
   flex-basis: 100%;
   padding: 10px 0;
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3905,7 +4023,7 @@ ul {
 .profile-section-sorter {
   flex-basis: 100%;
   border-top: solid 1px #eee;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .profile-section-sorter .dropdown-toggle {
@@ -3947,7 +4065,7 @@ ul {
 }
 
 .profile-badges-item {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -3976,17 +4094,17 @@ ul {
 }
 
 .profile-badges-item-title, .profile-badges-item-metadata-title {
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 
 .profile-badges-item-title {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .profile-badges-item-description, .profile-badges-item-metadata-description {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: lighten($text_color, 50%);
+  font-size: 14px;
   margin: 0;
 }
 
@@ -4186,7 +4304,7 @@ ul {
 }
 
 .profile-activity-description span:first-child {
-  font-weight: 600;
+  font-weight: 500;
   display: inline;
 }
 
@@ -4269,7 +4387,7 @@ ul {
 }
 
 .search-results-sidebar {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -4312,7 +4430,7 @@ ul {
 }
 
 .search-results-sidebar .multibrand-filter-list .doc-count {
-  color: #666;
+  color: #222;
 }
 
 .search-results-sidebar .see-all-filters {
@@ -4339,7 +4457,7 @@ ul {
 
 .search-results-subheading {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .search-results-list {
@@ -4351,7 +4469,7 @@ ul {
 }
 
 .search-results-list > li:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #fff;
 }
 
 .search-results-list > li h2 {
@@ -4422,9 +4540,9 @@ ul {
 }
 
 .search-result-votes, .search-result-meta-count {
-  color: lighten($text_color, 20%);
+  color: lighten($text_color, 50%);
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   padding: 4px 5px;
   position: relative;
 }

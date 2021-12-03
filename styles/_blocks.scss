@@ -18,8 +18,9 @@
       margin: 0 15px 30px;
     }
 
-    border: 1px solid $brand_color;
-    border-radius: 4px;
+    border: 1px solid $background_color;
+    background-color: $background_color;
+    border-radius: $border-radius;
     box-sizing: border-box;
     color: $brand_color;
     display: flex;
@@ -31,12 +32,22 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
-
+      border-color: $background_color;
       * {
-        color: $brand_text_color;
         text-decoration: none;
       }
+    }
+
+    &:nth-of-type(1) &-icon {
+      background-image: url($assets-accounts-png);
+    }
+
+    &:nth-of-type(2) &-icon {
+      background-image: url($assets-cards-png);
+    }
+
+    &:nth-of-type(3) &-icon {
+      background-image: url($assets-cx-png);
     }
 
     &-internal {
@@ -65,18 +76,29 @@
 
     &:hover,
     &:active {
+      color: $brand_color;
       text-decoration: none;
     }
-    
+
     &:focus {
-      @include focus-ring;
       text-decoration: none;
     }
   }
 
+  &-item-icon {
+    display: inline-block;
+    width: 41px;
+    height: 41px;
+    background-image: url($assets-cx-png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto 10px auto;
+  }
+
   &-item-title {
+    font-family: $text_font_medium;
+    font-weight: $font-weight-semibold;
     margin-bottom: 0;
-    font-size: 16px;
   }
 
   &-item-description {
