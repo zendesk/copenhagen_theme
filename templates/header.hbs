@@ -64,11 +64,12 @@
               {{user_avatar class="menu-profile-avatar"}}
               <div class="menu-profile-name">
                 <div>{{user_name}}</div>
-                <div class="my-profile-tooltip">{{t 'my_profile'}}</div>
+                <div class="my-profile-tooltip">{{t 'profile'}}</div>
               </div>
             {{/my_profile}}
           </li>
-          <li class="item">{{link "my_activities" role="menuitem"}}</li>
+          <li class="item">{{link "requests" role="menuitem"}}</li>
+          <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
           <li class="item">{{contact_details role="menuitem"}}</li>
           <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
           <li class="nav-divider"></li>
