@@ -36,8 +36,9 @@
           </span>
         </button>
         <div class="dropdown-menu" role="menu">
-          {{link "my_activities" role="menuitem"}}
-          {{my_profile role="menuitem"}}
+          {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
+          {{link "requests" role="menuitem"}}
+          {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
           {{contact_details role="menuitem"}}
           {{change_password role="menuitem"}}
           {{link "sign_out" role="menuitem"}}
