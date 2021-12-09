@@ -114,12 +114,12 @@ $header-height: 71px;
       vertical-align: middle;
       width: 30px;
       height: 30px;
+      border-radius: 50%;
     }
 
     &[aria-expanded="true"] {
       .icon-menu {
-        background: rgba(31, 115, 183, 0.2);
-        border-radius: 50%;
+        background: #f3f3f3;
       }
     }
   }
@@ -128,7 +128,7 @@ $header-height: 71px;
     position: absolute;
     background-color: #fff;
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .15);
-    border-top: solid 0.1px #ddd;
+    border-top: solid 1px #ddd;
     border-bottom: solid 1px #ddd;
     right: 0;
     left: 0;
@@ -174,7 +174,7 @@ $header-height: 71px;
       text-align: start;
 
       &:active, &:focus, &:hover {
-        background-color: rgba(31, 115, 183, 0.1);
+        background-color: #f3f3f3;
         text-decoration: underline;
       }
     }
@@ -187,7 +187,7 @@ $header-height: 71px;
       color: $text_color;
 
       &:active, &:focus, &:hover {
-        background-color: rgba(31, 115, 183, 0.1);
+        background-color: #f3f3f3;
       }
     }
 

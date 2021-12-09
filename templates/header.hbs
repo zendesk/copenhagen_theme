@@ -28,7 +28,7 @@
       <div class="user-info dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
           {{user_avatar class="user-avatar"}}
-          <span class="hide-on-mobile">
+          <span>
             {{user_name}}
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
@@ -75,14 +75,14 @@
           <li class="nav-divider"></li>
         {{else}}
           <li class="item">
-            {{#link "sign_in"}}
+            {{#link "sign_in" role="menuitem"}}
               {{t 'sign_in'}}
             {{/link}}
           </li>
           <li class="nav-divider"></li>
         {{/if}}
-        <li class="item">{{link 'community'}}</li>
-        <li class="item">{{link 'new_request' class='submit-a-request'}}</li>
+        <li class="item">{{link 'community' role="menuitem"}}</li>
+        <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
         <li class="nav-divider"></li>
         {{#if signed_in}}
           <li class="item">

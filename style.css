@@ -779,18 +779,18 @@ ul {
   vertical-align: middle;
   width: 30px;
   height: 30px;
+  border-radius: 50%;
 }
 
 .nav-wrapper-mobile .menu-button-mobile[aria-expanded="true"] .icon-menu {
-  background: rgba(31, 115, 183, 0.2);
-  border-radius: 50%;
+  background: #f3f3f3;
 }
 
 .nav-wrapper-mobile .menu-list-mobile {
   position: absolute;
   background-color: #fff;
   box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
-  border-top: solid 0.1px #ddd;
+  border-top: solid 1px #ddd;
   border-bottom: solid 1px #ddd;
   right: 0;
   left: 0;
@@ -835,7 +835,7 @@ ul {
 }
 
 .nav-wrapper-mobile .menu-list-mobile-items button:active, .nav-wrapper-mobile .menu-list-mobile-items button:focus, .nav-wrapper-mobile .menu-list-mobile-items button:hover {
-  background-color: rgba(31, 115, 183, 0.1);
+  background-color: #f3f3f3;
   text-decoration: underline;
 }
 
@@ -848,7 +848,7 @@ ul {
 }
 
 .nav-wrapper-mobile .menu-list-mobile-items a:active, .nav-wrapper-mobile .menu-list-mobile-items a:focus, .nav-wrapper-mobile .menu-list-mobile-items a:hover {
-  background-color: rgba(31, 115, 183, 0.1);
+  background-color: #f3f3f3;
 }
 
 .nav-wrapper-mobile .menu-list-mobile-items .my-profile {
