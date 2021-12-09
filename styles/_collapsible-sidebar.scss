@@ -12,6 +12,7 @@
 
   &-title {
     margin-top: 0;
+    @include desktop { display: none; }
   }
 
   &-toggle {
@@ -35,27 +36,34 @@
     &-icon {
       display: none;
     }
-  
+
     &[aria-expanded="false"] {
       .chevron-icon {
         display: inline-block;
+        vertical-align: middle;
       }
     }
-    
+
     &[aria-expanded="true"] {
       .x-icon {
         display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        top: 2px
       }
     }
 
     &:focus {
       outline: none;
-      border: 1px solid $brand_color;
     }
   }
 
   &-body {
-    @include desktop { display: block; }
+    @include desktop {
+      display: block;
+      padding-top: 0;
+    }
+    padding-top: 10px;
     display: none;
   }
 

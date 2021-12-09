@@ -5,9 +5,10 @@
   padding: 20px 0;
 
   &-heading {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     margin-top: 0;
-    font-size: 18px;
+    font-size: $font-size-base;
+    font-family: $text_font_medium;
     font-weight: $font-weight-semibold;
   }
 
@@ -76,6 +77,7 @@
   }
 
   &-avatar {
+    display: none;
     margin-right: 10px;
 
     [dir="rtl"] & {
@@ -104,8 +106,8 @@
 
   &-form {
     display: flex;
-    padding-top: 30px;
     word-wrap: break-word;
+    padding-top: 30px;
   }
 
   &-container { width: 100%; }

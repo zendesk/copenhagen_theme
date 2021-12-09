@@ -27,6 +27,12 @@
   }
 }
 
+.upload-dropzone {
+  border-color: $brand_text_color;
+  background-color: $brand_text_color;
+  border-radius: $border-radius;
+}
+
 .upload-dropzone span {
   color: $secondary-text-color;
 }

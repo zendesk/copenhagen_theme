@@ -2,17 +2,38 @@
 .footer {
   margin-top: 60px;
   padding: 30px 0;
+  background-color: $brand_color;
+  color: $brand_text_color;
+  font-size: $font-size-small;
 
-  a { color: $secondary-text-color; }
+  a {
+    color: $secondary-text-color;
+  }
 
   &-inner {
     @include max-width-container;
-    display: flex;
-    justify-content: space-between;
   }
 
   &-language-selector button {
     color: $secondary-text-color;
     display: inline-block;
+  }
+
+  &-social {
+    display: flex;
+    margin-left: -10px;
+    margin-right: -10px;
+    & a {
+      display: block;
+      padding: 10px;
+    }
+
+    & svg {
+      width: 16px;
+      height: 16px;
+      & path {
+        fill: #ffffff;
+      }
+    }
   }
 }

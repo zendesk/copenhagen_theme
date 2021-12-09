@@ -1,7 +1,9 @@
 /***** Forms *****/
 
 .form {
-  max-width: 650px;
+  max-width: 770px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .form-field ~ .form-field {
@@ -10,24 +12,30 @@
 
 .form-field label {
   display: block;
+  font-family: $text_font_medium;
+  font-weight: $font-weight-semibold;
   font-size: $font-size-small;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 
 .form-field input {
-  border: 1px solid $border-color;
-  border-radius: 4px;
-  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: $border-radius;
+  padding: 9px;
   width: 100%;
 
-  &:focus { border: 1px solid $brand_color; }
+  &:focus {
+    border-color: $link_color;
+  }
 }
 
 .form-field input[type="text"] {
-  border: 1px solid $border-color;
-  border-radius: 4px;
+  border: 1px solid #ffffff;
+  border-radius: $border-radius;
 
-  &:focus { border: 1px solid $brand_color; }
+  &:focus {
+    border-color: $link_color;
+  }
 }
 
 .form-field input[type="checkbox"] {
@@ -74,8 +82,9 @@
 }
 
 .form footer {
-  margin-top: 40px;
+  margin-top: 30px;
   padding-top: 30px;
+  text-align: center;
 }
 
 .form footer a {
@@ -100,3 +109,15 @@
     a:visited { color: $visited_link_color; }
   }
 }
+
+.form .request_description {
+  & div[role=application] {
+    border-color: $brand_text_color !important;
+  }
+  & div[role=toolbar] {
+    border-color: $brand_text_color !important;
+    border-bottom-color: $secondary-shade !important;
+  }
+}
+
+

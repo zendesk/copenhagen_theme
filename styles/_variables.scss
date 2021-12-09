@@ -7,18 +7,22 @@ $text_color: #222 !default;
 $link_color: #45be76 !default;
 $background_color: #fff !default;
 
-$link_color_hover: #59d28a;
+$hover-link-color: #59d28a;
 
-$hover-button-color: zass-darken($brand_color, 50%);
-$secondary-text-color: zass-lighten($text_color, 50%);
+$button-color: $link_color;
+$hover-button-color: $hover-link-color;
 
-$primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
-$secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
-
-$border-radius: 5px;
 $color-gray-dark: #888;
 $color-gray-main: #ddd;
 $color-red: #ed1c24;
+
+$line-height-default: 1.5;
+$line-height-small: 1.2;
+
+$secondary-text-color: $color-gray-dark;
+
+$primary-shade: zass-darken($background_color, 4%); //#f5f5f5
+$secondary-shade: zass-darken($background_color, 4%); //#f5f5f5
 
 $font-size-bigger: 16px;
 $font-size-base: 16px;
@@ -26,11 +30,10 @@ $font-size-navigation: 14px;
 $font-size-small: 14px;
 $font-size-smaller: 12px;
 
-$border-color: #fff;
+$border-radius: 5px;
+$border-color: $color-gray-main;
 
-$button-color: $brand_color;
-
-$input-font-size: 16px;
+$input-font-size: $font-size-small;
 $field-text-color: #222;
 $field-text-focus-color: #222;
 
@@ -40,7 +43,8 @@ $desktop-width: 1024px;
 $max-width-container: 1160px;
 
 // Fonts
-$heading_font: "Styrene B Bold", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
-$text_font: "Styrene B Regular", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
-$text_font_medium: "Styrene B Medium", BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
+$heading_font: "Styrene B Bold", Verdana, sans-serif !default;
+$text_font: "Styrene B Regular", Verdana, sans-serif !default;
+$text_font_medium: "Styrene B Medium", Verdana, sans-serif !default;
+$font-weight-bold: 700;
 $font-weight-semibold: 500;

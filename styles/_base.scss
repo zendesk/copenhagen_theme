@@ -1,8 +1,8 @@
 /***** Base *****/
 @font-face {
   font-family: 'Styrene B Regular';
-  src: url('$assets-StyreneB-Regular-Web-woff2') format('woff2'),
-  url('$assets-StyreneB-Regular-Web-woff') format('woff');
+  src: url($assets-styrene-b-regular-woff2) format('woff2'),
+  url($assets-styrene-b-regular-woff) format('woff');
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
@@ -11,8 +11,8 @@
 
 @font-face {
   font-family: 'Styrene B Medium';
-  src: url('$assets-StyreneB-Medium-Web-woff2') format('woff2'),
-  url('$assets-StyreneB-Medium-Web-woff') format('woff');
+  src: url($assets-styrene-b-medium-woff2) format('woff2'),
+  url($assets-styrene-b-medium-woff) format('woff');
   font-weight: 500;
   font-style: normal;
   font-stretch: normal;
@@ -21,8 +21,8 @@
 
 @font-face {
   font-family: 'Styrene B Bold';
-  src: url('$assets-StyreneB-Bold-Web-woff2') format('woff2'),
-  url('$assets-StyreneB-Bold-Web-woff') format('woff');
+  src: url($assets-styrene-b-bold-woff2) format('woff2'),
+  url($assets-styrene-b-bold-woff) format('woff');
   font-weight: 700;
   font-style: normal;
   font-stretch: normal;
@@ -45,27 +45,60 @@ body {
   font-size: $font-size-base;
   line-height: 1.5;
   letter-spacing: -0.15px;
+  text-size-adjust: 100%;
+
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
 
   > main {
-    @include desktop {
-      min-height: 65vh;
-    }
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
   }
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading_font;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-small;
   margin-top: 0;
 }
 
-h1 { font-size: 36px; }
-h2 { font-size: 24px; }
+h1 {
+  @include tablet {
+    font-size: 30px;
+  }
+
+  @include desktop {
+    font-size: 36px;
+  }
+
+  font-size: 24px;
+}
+
+h2 {
+  @include tablet {
+    font-size: 24px;
+  }
+
+  font-size: 21px;
+}
+
 h3 {
   font-size: 18px;
   font-weight: $font-weight-semibold;
 }
-
-h4 { font-size: 16px; }
+h4 {
+  font-size: 16px;
+  font-weight: $font-weight-semibold;
+}
 
 a {
   color: $link_color;
@@ -74,15 +107,18 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: $link_color_hover;
+    color: $hover-link-color;
     text-decoration: none !important;
   }
 }
 
 input,
 textarea {
-  color: #000;
+  font-family: $text_font;
+  font-weight: 400;
+  color: $field-text-color;
   font-size: $input-font-size;
+  resize: none;
 }
 
 input {
@@ -126,14 +162,14 @@ select {
 
 textarea {
   border: 1px solid $border-color;
-  border-radius: 2px;
+  border-radius: $border-radius;
   resize: vertical;
   width: 100%;
   outline: none;
   padding: 10px;
 
   &:focus {
-    border: 1px solid $brand_color;
+    border: 1px solid $link_color;
   }
 }
 
@@ -142,8 +178,7 @@ textarea {
 }
 
 .container-divider {
-  border-top: 1px solid $border-color;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 ul {

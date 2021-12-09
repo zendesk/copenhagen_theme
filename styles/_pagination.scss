@@ -4,6 +4,17 @@
   margin: 20px 0;
   text-align: center;
 
+  li {
+    vertical-align: top;
+  }
+
+  a {
+    display: block;
+    line-height: 30px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   &-next, &-prev, &-first, &-last {
     display: inline-block;
     &-link {

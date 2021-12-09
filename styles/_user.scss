@@ -28,7 +28,7 @@
 
     &:hover,
     &:focus {
-      color: $link_color_hover;
+      color: $hover-link-color;
       background-color: transparent;
     }
 
@@ -40,7 +40,7 @@
       margin-right: 5px;
       width: 16px;
       height: 16px;
-      background-image: url($assets-user-png);
+      background-image: url($assets-user-svg);
       background-size: contain;
       background-repeat: no-repeat;
     }
@@ -72,7 +72,7 @@
   width: 25px;
   display: inline-block;
   vertical-align: middle;
-  background-image: url($assets-user-png);
+  background-image: url($assets-user-svg);
   background-size: contain;
   background-repeat: no-repeat;
   display: none !important;
@@ -100,5 +100,6 @@
     right: -2px;
     text-align: center;
     width: 17px;
+    display: none;
   }
 }

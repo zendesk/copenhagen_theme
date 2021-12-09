@@ -99,7 +99,7 @@
     position: relative;
     width: 100%;
 
-    &:hover { background-color: $brand_color; }
+    &:hover { background-color: $hover-button-color; }
 
     &:hover::after, &:focus::after {
       border-color: $brand_text_color;
@@ -107,7 +107,7 @@
     }
 
     &[data-selected="true"] {
-      background-color: $brand_color;
+      background-color: $hover-button-color;
       color: $brand_text_color;
 
       &::after {
@@ -126,9 +126,9 @@
         position: static;
       }
 
-      border-left: 1px solid $button-color;
+      border-left: 1px solid $brand_text_color;
       content: attr(data-follower-count);
-      color: $button-color;
+      color: $brand_text_color;
       display: inline-block;
       font-family: $heading_font;
       margin-left: 15px;
@@ -138,7 +138,7 @@
 
       [dir="rtl"] & {
         border-left: 0;
-        border-right: 1px solid $button-color;
+        border-right: 1px solid $brand_text_color;
         margin: 0 10px 0 0;
         padding: 0 10px 0 0;
       }

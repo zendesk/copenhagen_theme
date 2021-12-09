@@ -39,15 +39,16 @@
     }
 
     &:nth-of-type(1) &-icon {
-      background-image: url($assets-accounts-png);
+      background-image: url($assets-accounts-svg);
     }
 
     &:nth-of-type(2) &-icon {
-      background-image: url($assets-cards-png);
+      background-image: url($assets-cards-svg);
     }
 
     &:nth-of-type(3) &-icon {
-      background-image: url($assets-cx-png);
+      background-image: url($assets-cx-svg);
+      transform: scale(0.85);
     }
 
     &-internal {
@@ -89,7 +90,7 @@
     display: inline-block;
     width: 41px;
     height: 41px;
-    background-image: url($assets-cx-png);
+    background-image: url($assets-cx-svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin: 0 auto 10px auto;

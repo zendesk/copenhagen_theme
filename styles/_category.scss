@@ -7,7 +7,7 @@
 
   &-content {
     @include desktop {
-      flex: 0 0 80%;
+      flex: 0 0 100%;
     }
 
     flex: 1;
@@ -22,21 +22,37 @@
   justify-content: space-between;
 
   .section {
-    @include tablet { flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */ }
+    @include tablet { flex: 0 0 100%; }
     flex: initial;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid $border-color;
+
+    &:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
   }
 
   &-title {
-    margin-bottom: 0;
-    font-size: 18px;
+    font-family: $text_font_medium;
     font-weight: $font-weight-semibold;
+    font-size: 18px;
 
-    a { color: $text_color; }
+    a {
+      color: $text_color;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $hover-link-color;
+      }
+    }
   }
 
   .see-all-articles {
     display: block;
-    padding: 15px 0;
+    padding: 15px 0 0;
   }
 }
 
@@ -45,7 +61,14 @@
     font-size: $font-size-bigger;
     padding: 15px 0;
 
-    a { color: $text_color; }
+    a {
+      color: $text_color;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $hover-link-color;
+      }
+    }
   }
 }
 

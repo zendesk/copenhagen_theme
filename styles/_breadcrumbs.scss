@@ -1,4 +1,14 @@
 /***** Breadcrumbs *****/
+.breadcrumbs-container {
+  @include desktop {
+    margin-bottom: 60px;
+  }
+
+  padding: 12px 0;
+  margin-bottom: 30px;
+  background-color: $secondary-shade;
+}
+
 .breadcrumbs {
   @include tablet {
     margin: 0;
@@ -19,8 +29,16 @@
       content: ">";
       margin: 0 4px;
     }
-    a:visited {
-      color: $link_color;
+    a {
+      color: $text_color;
+      &:hover,
+      &:focus,
+      &:active {
+        color: $hover-link-color !important;
+      }
+      &:visited {
+        color: $text_color;
+      }
     }
   }
 }

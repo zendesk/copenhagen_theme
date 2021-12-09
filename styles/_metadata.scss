@@ -21,6 +21,6 @@
 
   &:not(:last-child)::after {
     content: "\00B7";
-    margin: 0 5px;
+    margin: 0 1px 0 5px;
   }
 }

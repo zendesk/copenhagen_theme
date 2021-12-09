@@ -26,7 +26,6 @@
   &-header {
     @include tablet {
       flex-direction: row;
-      margin-top: 0;
     }
 
     align-items: flex-start;
@@ -34,15 +33,18 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
+    margin-bottom: 30px;
   }
 
   &-avatar {
-    margin-right: 10px;
+    display: none;
   }
 
   &-author {
+    @include tablet {
+      margin-bottom: 0;
+    }
+    line-height: $line-height-small;
     margin-bottom: 10px;
   }
 
@@ -79,8 +81,7 @@
   }
 
   &-content {
-    line-height: 1.6;
-    margin: 40px 0;
+    margin: 30px 0;
     word-wrap: break-word;
   }
 
@@ -88,7 +89,7 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
   }
 
   &-comment-count {
@@ -109,15 +110,19 @@
   &-sidebar {
     @include desktop {
       border: 0;
-      flex: 0 0 17%;
+      flex: 0 0 20%;
       height: auto;
     }
 
     border-bottom: 1px solid $border-color;
     border-top: 1px solid $border-color;
     flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     padding: 0;
+
+    &-item {
+      margin-left: 10px;
+    }
   }
 
   &-relatives {
@@ -125,42 +130,57 @@
       flex-direction: row;
     }
 
-    border-top: 1px solid $border-color;
+    @include desktop {
+      padding-top: 60px;
+    }
+
     display: flex;
     flex-direction: column;
-    padding: 20px 0;
+    padding: 30px 0;
 
     > * {
       flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
       min-width: 50%;
       overflow-wrap: break-word;
       margin-right: 0;
+      margin-bottom: 30px;
 
-      &:last-child { padding: 0; }
+      &:last-child {
+        padding: 0;
+        margin-bottom: 0;
+      }
 
-      @include tablet { padding-right: 20px; }
+      @include tablet {
+        margin-bottom: 0;
+        padding-right: 30px;
+      }
     }
   }
 
 
   &-votes {
-    border-top: 1px solid $border-color;
-    padding: 30px 0;
+    padding: 0 0 30px;
     text-align: center;
+  }
+
+  &-votes-question {
+    font-family: $text_font_medium;
+    font-weight: $font-weight-semibold;
   }
 
   &-vote {
     margin: 10px 5px;
-    min-width: 90px;
+    min-width: 80px;
     width: auto;
   }
 
   &-more-questions {
-    margin: 10px 0 20px;
+    margin: 0 0 30px;
     text-align: center;
   }
 
   &-return-to-top {
+    display: none;
     @include desktop { display: none; }
 
     border-top: 1px solid $border-color;
@@ -192,21 +212,25 @@
 .sidenav {
   &-title {
     font-size: $font-size-base;
+    font-family: $text_font_medium;
     position: relative;
-    font-weight: 600;
+    font-weight: $font-weight-semibold;
+    padding: 0 10px;
   }
 
   &-item {
-    border-radius: 4px;
+    border-radius: $border-radius;
     color: $text_color;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     padding: 10px;
 
     &.current-article,
-    &:hover {
-      background-color: $brand_color;
-      color: $brand_text_color;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $primary-shade;
+      color: $text_color !important;
       text-decoration: none;
     }
   }
@@ -219,6 +243,6 @@
   }
 
   li {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 }
