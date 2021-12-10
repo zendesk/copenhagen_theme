@@ -779,6 +779,13 @@ ul {
   text-decoration: none;
 }
 
+.logo-link {
+  display: inline-block;
+  line-height: 1;
+  padding: 10px;
+  margin-left: -10px;
+}
+
 .user-nav {
   display: inline-block;
   position: absolute;

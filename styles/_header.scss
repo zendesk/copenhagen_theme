@@ -33,6 +33,13 @@ $header-height: 65px;
   text-decoration: none;
 }
 
+.logo-link {
+  display: inline-block;
+  line-height: 1;
+  padding: 10px;
+  margin-left: -10px;
+}
+
 .user-nav {
   @include tablet { position: relative; }
   display: inline-block;
