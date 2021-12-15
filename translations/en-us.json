@@ -66,5 +66,8 @@
   "follow_topic_label": "Follow",
   "follow_topic_description": "Users can follow a specific topic",
   "show_brand_name_label": "Show Help Center name",
-  "show_brand_name_description": "Display the Help Center name next to the logo"
+  "show_brand_name_description": "Display the Help Center name next to the logo",
+  "navigation_settings_label": "Navigation Settings",
+  "show_new_request_label": "Submit a request",
+  "show_new_request_description": "Show the submit a request link in the navigation"
 }

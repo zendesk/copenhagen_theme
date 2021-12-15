@@ -384,6 +384,18 @@
           "value": true
         }
       ]
+    },
+    {
+      "label": "navigation_settings_label",
+      "variables": [
+        {
+          "identifier": "show_new_request",
+          "type": "checkbox",
+          "description": "show_new_request_description",
+          "label": "show_new_request_label",
+          "value": true
+        }
+      ]
     }
   ]
 }

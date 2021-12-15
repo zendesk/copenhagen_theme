@@ -365,3 +365,19 @@ parts:
       title: "Description for the show brand name setting"
       screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
       value: "Display the Help Center name next to the logo"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.navigation_settings_label"
+      title: "Label for navigation settings group"
+      screenshot: "https://drive.google.com/file/d/1Rk7x7YrGfKvgivs1fXcjrsIjZ2EchWTh/view"
+      value: "Navigation Settings"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_new_request_label"
+      title: "Label for the show new request link setting"
+      screenshot: "https://drive.google.com/file/d/1Rk7x7YrGfKvgivs1fXcjrsIjZ2EchWTh/view"
+      value: "Submit a request"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.show_new_request_description"
+      title: "Description for the show new request link setting"
+      screenshot: "https://drive.google.com/file/d/1Rk7x7YrGfKvgivs1fXcjrsIjZ2EchWTh/view"
+      value: "Show submit a request link in the navigation"
+
