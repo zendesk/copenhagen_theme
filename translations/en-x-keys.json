@@ -26,5 +26,8 @@
   "community_background_image_description": "txt.help_center_copenhagen_theme.community_background_image_description",
   "community_background_image_label": "txt.help_center_copenhagen_theme.community_background_image_label",
   "community_image_description": "txt.help_center_copenhagen_theme.community_image_description",
-  "community_image_label": "txt.help_center_copenhagen_theme.community_image_label"
+  "community_image_label": "txt.help_center_copenhagen_theme.community_image_label",
+  "navigation_settings_label": "txt.help_center_copenhagen_theme.navigation_settings_label",
+  "show_new_request_label": "txt.help_center_copenhagen_theme.show_new_request_label",
+  "show_new_request_description": "txt.help_center_copenhagen_theme.show_new_request_description"
 }
