@@ -90,7 +90,7 @@
 
       <section class="article-info">
         <div class="article-content">
-          <div class="article-body">{{article.body}}</div>
+          <div class="article-body" id="contents">{{article.body}}</div>
           {{#if attachments}}
             <div class="article-attachments">
               <ul class="attachments">
@@ -320,7 +320,7 @@
   </div>
 </div>
 
-<script>
+<!--<script>
 /* ============================================================================================== */
 /* ============================== Custom Article Table of Contents ============================== */
 /* ============================================================================================== */
@@ -436,4 +436,4 @@ var place_in_parent = $list.children('li').length;
 
 $heading.html("<a name=\"" + $anchorname + "\"></a>" + $link.find('.index').text() + ' ' + $heading.text());
 }
-</script>
+</script>-->
