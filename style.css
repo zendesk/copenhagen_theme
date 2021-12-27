@@ -256,20 +256,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 36px;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 30px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 18px;
 }
 
 a {
@@ -4937,4 +4937,36 @@ html[dir="rtl"] .notification-left-aligned {
   background-color: $highlight_color;
   color: $brand_color;
   	text-decoration: none;
+}
+
+/* 2022 New TOC */
+
+#toc {
+  background-color: $highlight_color;
+  padding: 20px;
+}
+
+#toc ul::before {
+  content: "In this article";
+}
+
+#toc ul {
+  list-style-type: revert;
+}
+
+#toc ul li {
+  margin: 0px 0 0px 10px;
+}
+
+#toc ul li a {
+  border-radius: 4px;
+  color: $text_color;
+  display: block;
+  padding-left: 10px;
+}
+
+#toc ul li a:hover {
+  background-color: $brand_color;
+  color: $brand_text_color;
+  text-decoration: none;
 }
