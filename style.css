@@ -4894,6 +4894,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 .article table {
   border-collapse: collapse;
+  width: 100%;
 }
 
 .article td, .article th {
