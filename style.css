@@ -4946,16 +4946,13 @@ html[dir="rtl"] .notification-left-aligned {
   padding: 20px;
 }
 
-#toc ul::before {
-  content: "In this article";
-}
-
 #toc ul {
   list-style-type: revert;
+  list-style-position: inside;
 }
 
 #toc ul li {
-  margin: 0px 0 0px 10px;
+  margin-left: 10px;
 }
 
 #toc ul li a {
@@ -4969,4 +4966,9 @@ html[dir="rtl"] .notification-left-aligned {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
+}
+
+/* Sets Anchor headlines to text color */
+.article-body h1 a, .article-body h2 a, .article-body h3 a, .article-body h4 a {
+  color: $text_color;
 }
