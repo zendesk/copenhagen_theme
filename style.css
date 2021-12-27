@@ -15,6 +15,7 @@ Firstup Brand Text Colors
 - text 3 dark grey #646464
 - text 4 stone #f5f5f5
 - link lilac #a27efc
+- border light gray #dfdee3
 */
 
 /* Import Gilroy Heading Fonts */
@@ -4892,14 +4893,19 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .article table {
-  border: 1px solid #ddd;
   border-collapse: collapse;
 }
 
-.article table thead{
+.article td, .article th {
+  border: 1px solid #dfdee3;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.article thead th{
   background-color: $brand_color;
   color: $brand_text_color;
-  border-color: lighten($brand_color, 20%);
+  border-color: lighten($brand_color, 5%);
 }
 
 .article h1, .article h2 {
@@ -4908,6 +4914,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 .article h1.article-title {
     margin-top: 0;
+    margin-bottom: 0;
 }
 
 .nav-wrapper a.hc_button {
