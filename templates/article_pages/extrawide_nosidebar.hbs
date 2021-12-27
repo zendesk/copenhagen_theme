@@ -1,0 +1,195 @@
+<div class="container-divider"></div>
+<div class="container">
+  <nav class="sub-nav">
+    {{breadcrumbs}}
+    <div class="search-container">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search scoped=settings.scoped_kb_search submit=false}}
+    </div>
+  </nav>
+
+    <article id="main-content" class="article">
+      <header class="article-header">
+        <h1 title="{{article.title}}" class="article-title">
+          {{article.title}}
+          {{#if article.internal}}
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+              <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+              <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+            </svg>
+          {{/if}}
+        </h1>
+
+          <div class="article-subscribe">{{subscribe}}</div>
+      </header>
+
+      <section class="article-info">
+        <div class="article-content">
+          <div class="article-body">{{article.body}}</div>
+          {{#if attachments}}
+            <div class="article-attachments">
+              <ul class="attachments">
+                {{#each attachments}}
+                  <li class="attachment-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                    </svg>
+                    <a href="{{url}}" target="_blank">{{name}}</a>
+                    <div class="attachment-meta meta-group">
+                      <span class="attachment-meta-item meta-data">{{size}}</span>
+                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                    </div>
+                  </li>
+                {{/each}}
+              </ul>
+            </div>
+          {{/if}}
+        </div>
+      </section>
+
+      <footer>
+        <div class="article-more-questions">
+          {{request_callout}}
+        </div>
+        <div class="article-return-to-top">
+          <a href="#article-container">
+            {{t 'return_to_top'}}
+            <svg xmlns="http://www.w3.org/2000/svg" class="article-return-to-top-icon" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+            </svg>
+          </a>
+        </div>
+      </footer>
+
+      <div class="article-relatives">
+        {{#if settings.show_recently_viewed_articles}}
+          {{recent_articles}}
+        {{/if}}
+        {{#if settings.show_related_articles}}
+          {{related_articles}}
+        {{/if}}
+      </div>
+    </article>
+  </div>
+
+
+<script>
+/* ============================================================================================== */
+/* ============================== Custom Article Table of Contents ============================== */
+/* ============================================================================================== */
+
+var $headers = $('.article-body:first h1');
+
+if ($headers.length == 0) $headers = $('.article-body:first h2');
+
+if ($headers.length > 0) {
+var $toc = $('<div class="toc" style="margin-bottom: 25px">');
+var $firstUl = $('<ul>');
+var $currentUl = $firstUl;
+var previous_level = 1;
+var $arrayUl = [];
+
+
+$firstUl.appendTo($toc);
+$('#table-of-contents').length > 0 ? $toc.appendTo('#table-of-contents') : $toc.prependTo('.article-body:first');
+
+// start with first H1
+insertHeading($headers[0]);
+}
+
+function insertHeading(heading) {
+var $heading = $(heading);
+// what level heading are we on?
+var current_level = headingLevel(heading);
+
+
+// if it's an H1, add it to the original list
+if (current_level === 1) {
+newLi($heading, $firstUl);
+$currentUl = $firstUl;
+$arrayUl = [];
+$arrayUl.push($firstUl);
+}
+
+// if it's the same as the one before it, add it to the current list
+else if (current_level === previous_level) {
+newLi($heading, $currentUl);
+}
+
+// if it's one level higher than the one before it... time to make a new nested list
+else if (current_level > previous_level) {
+nestUl();
+$arrayUl.push($currentUl);
+newLi($heading, $currentUl);
+}
+
+else if (current_level<previous_level){
+for (i = 0; i < (previous_level-current_level); i++) {
+$arrayUl.pop();
+}
+$currentUl = $arrayUl[$arrayUl.length-1];
+newLi($heading, $currentUl);
+}
+
+previous_level = current_level;
+
+var $nextHeading = $heading.nextAll("h1, h2, h3, h4, h5, h6").first()[0];
+// if there's any headings left... run this again
+if ($nextHeading) insertHeading($nextHeading);
+}
+
+// adds a new UL to the current UL
+function nestUl() {
+var $newUl = $('<ul>');
+$newUl.appendTo($currentUl);
+$currentUl = $newUl;
+}
+
+// returns a numerical value for each heading
+function headingLevel(heading) {
+switch (heading.nodeName) {
+case 'H1':
+return 1;
+break;
+case 'H2':
+return 2;
+break;
+case 'H3':
+return 3;
+break;
+case 'H4':
+return 4;
+break;
+case 'H5':
+return 5;
+break;
+case 'H6':
+return 6;
+break;
+default:
+return 0;
+}
+}
+
+// inserts a new line to the current list
+function newLi(heading, $list) {
+var $heading = $(heading);
+if ($heading.text().replace(/\s/g, '') == '') return null;
+var $wrapper = $('<li></li>');
+//var $link = $('<a>').prop('href', '#' + $heading.prop('id'));
+var $anchorname = $heading[0].outerText.replace (/\s/g,'');
+var $link = $('<a>').prop('href', '#' + $anchorname);
+
+$link.html($heading.text());
+$link.appendTo($wrapper);
+
+$wrapper.appendTo($list);
+
+var place_in_parent = $list.children('li').length;
+
+$heading.html("<a name=\"" + $anchorname + "\"></a>" + $link.find('.index').text() + ' ' + $heading.text());
+}
+</script>
