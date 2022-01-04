@@ -4947,25 +4947,34 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 #toc ul {
-  list-style-type: revert;
+  list-style-type: disc;
   list-style-position: inside;
 }
 
 #toc ul li {
-  margin-left: 10px;
+    /*padding-bottom: 0.125rem;*/
+}
+
+#toc ul > ul > ul {
+    margin-top: 0.25em;
+    padding-left: 1.5em;
+    list-style-type: circle;
 }
 
 #toc ul li a {
-  border-radius: 4px;
   color: $text_color;
-  display: block;
-  padding-left: 10px;
+  padding: 4px 6px;
+  border-radius: 2px;
 }
 
 #toc ul li a:hover {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
+}
+
+#toc:empty {
+    padding: 0;
 }
 
 /* Sets Anchor headlines to text color */
