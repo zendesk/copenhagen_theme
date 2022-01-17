@@ -53,27 +53,42 @@
         <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
         <ul class="home-category-list">
             {{#each categories}}
-                <li class="home-category-item">
-                    <a class="home-category" href="{{url}}">
-                        {{#is id 4403461255959 }} {{! Snapmaker Original }}
+                {{#is id 4403461255959 }} {{! Snapmaker Original }}
+                    <li class="home-category-item">
+                        <a class="home-category" href="{{url}}">
                             <img src="{{asset 'pic_category_original_270x220.png' }}" alt="">
-                        {{/is}}
-                        <!-- {{#is id 360000327114 }} {{! Snapmaker Original }}
-                            <img src="{{asset 'pic_category_original_270x220.png' }}" alt="">
-                        {{/is}} -->
-                        {{#is id 360001781913 }} {{! Snapmaker 2.0 }}
-                            <img src="{{asset 'pic_category_2.0_270x220.png' }}" alt="">
-                        {{/is}}
-                        {{#is id 360003536313 }} {{! Snapmaker Academy }}
+                            <span class="home-category-title">{{name}}</span>
+                            <span class="home-category-description">{{excerpt description}}</span>
+                        </a>
+                    </li>
+                {{/is}}
+                {{#is id 360001781913 }} {{! Snapmaker 2.0 }}
+                    <li class="home-category-item">
+                        <a class="home-category" href="{{url}}">
+                                <img src="{{asset 'pic_category_2.0_270x220.png' }}" alt="">
+                            <span class="home-category-title">{{name}}</span>
+                            <span class="home-category-description">{{excerpt description}}</span>
+                        </a>
+                    </li>
+                {{/is}}
+                {{#is id 360003536313 }} {{! Snapmaker Academy }}
+                    <li class="home-category-item">
+                        <a class="home-category" href="{{url}}">
                             <img src="{{asset 'pic_category_academy_270x220.png' }}" alt="">
-                        {{/is}}
-                        {{#is id 360005617793 }} {{! Snapmaker Download }}
-                            <img src="{{asset 'pic_category_download_270x220.png' }}" alt="">
-                        {{/is}}
-                        <span class="home-category-title">{{name}}</span>
-                        <span class="home-category-description">{{excerpt description}}</span>
-                    </a>
-                </li>
+                            <span class="home-category-title">{{name}}</span>
+                            <span class="home-category-description">{{excerpt description}}</span>
+                        </a>
+                    </li>
+                {{/is}}
+                {{#is id 360005617793 }} {{! Snapmaker Download }}
+                    <li class="home-category-item">
+                        <a class="home-category" href="{{url}}">
+                                <img src="{{asset 'pic_category_download_270x220.png' }}" alt="">
+                            <span class="home-category-title">{{name}}</span>
+                            <span class="home-category-description">{{excerpt description}}</span>
+                        </a>
+                    </li>
+                {{/is}}
             {{/each}}
         </ul>
     </div>
