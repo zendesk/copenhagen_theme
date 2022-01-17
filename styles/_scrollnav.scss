@@ -48,7 +48,6 @@
   }
 
   &__link:hover,
-  &__link:focus,
   &__item--active > .scroll-nav__link,
   &__item--active > .scroll-nav__sub-link {
     color: $brand_color;
@@ -59,8 +58,7 @@
     }
   }
 
-  .scroll-nav__sub-link:hover ,
-  .scroll-nav__sub-link:focus {
+  .scroll-nav__sub-link:hover  {
     color: $brand_color;
   }
 }
