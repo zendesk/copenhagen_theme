@@ -1,0 +1,470 @@
+body {
+  color: $black_white_1;
+}
+
+
+
+.big-title-1, .big-title-2, .title-1, .title-2, .title-3, .title-4{
+  letter-spacing: -0.015em;
+}
+/* adaptive title */
+.big-title-1 {
+  font-family: $fontFamily;
+  font-size: 84px;
+  line-height: 92px;
+}
+.big-title-2 {
+  font-family: $fontFamily;
+  font-size: 60px;
+  line-height: 68px;
+}
+
+/* adaptive font */
+.title-1 {
+  font-family: $fontFamily;
+  font-size: 44px;
+  line-height: 56px;
+}
+.title-2 {
+  font-family: $fontFamily;
+  font-size: 36px;
+  line-height: 44px;
+}
+.title-3 {
+  font-family: $fontFamily;
+  font-size: 24px;
+  line-height: 32px;
+}
+.title-4 {
+  font-family: $fontFamily;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/* normal font */
+.font-1 {
+  font-family: $fontFamily;
+  font-size: 16px;
+  line-height: 24px;
+}
+.font-2 {
+  font-family: $fontFamily;
+  font-size: 14px;
+  line-height: 20px;
+}
+.font-3 {
+  font-family: $fontFamily;
+  font-size: 12px;
+  line-height: 20px;
+} 
+
+// padding,margin
+$xxxl: 100px;
+$xxl: 68px;
+$xl: 44px;
+$l: 24px;
+$m: 16px;
+$s: 12px;
+$xs: 8px;
+$xxs: 4px;
+@import './space.scss';
+@media (min-width: $breakPoint_xl) and (max-width: $breakPoint_xxl) {
+  .big-title-1 {
+    font-size: 72px;
+    line-height: 80px;
+  }
+  .big-title-2 {
+    font-size: 52px;
+    line-height: 60px;
+  }
+
+  /* adaptive font */
+  .title-1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .title-2 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+  .title-3 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .title-4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+  
+}
+@media (min-width: $breakPoint_l) and (max-width : $breakPoint_xl) {
+  .big-title-1 {
+    font-size: 60px;
+    line-height: 68px;
+  }
+  .big-title-2 {
+    font-size: 44px;
+    line-height: 56px;
+  }
+
+  /* adaptive font */
+  .title-1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .title-2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .title-3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .title-4 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  $xxxl: 80px;
+  $xxl: 52px;
+  $xl: 32px;
+  @import './space.scss';
+
+}
+@media (min-width: $breakPoint_m) and (max-width : $breakPoint_l) {
+  .big-title-1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .big-title-2 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .title-1 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .title-2 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .title-3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .title-4 {
+    font-size: 16px;
+    line-height: 14px;
+  }
+
+
+  $xxxl: 60px;
+  $xxl: 40px;
+  $xl: 28px;
+  @import './space.scss';
+}
+@media (min-width: $breakPoint_s) and (max-width : $breakPoint_m) {
+  .big-title-1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .big-title-2 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .title-1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .title-2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .title-3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .title-4 {
+    font-size: 16px;
+    line-height: 14px;
+  }
+
+  $xxxl:  48px;
+  $xxl: 36px;
+  $xl: 28px;
+  @import './space.scss';
+
+}
+@media (max-width : $breakPoint_s) {
+  .big-title-1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .big-title-2 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  .title-1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+  .title-2 {
+    font-size: 24px;
+    line-height: 32px;
+  }
+  .title-3 {
+    font-size: 20px;
+    line-height: 28px;
+  }
+  .title-4 {
+    font-size: 16px;
+    line-height: 14px;
+  }
+  $xxxl:  40px;
+  $xxl: 36px;
+  $xl: 28px;
+  @import './space.scss';
+} 
+
+
+
+// buttons
+.snmk {
+  &-primary-btn, &-btn, &-link-btn, &-float-btn {  
+    display: inline-block;
+    position: relative;
+    min-width: 9em;
+    padding: 1rem 2em;
+    border: none;
+    cursor: pointer;
+    border-radius: $radius;
+  }
+  &-primary-btn {
+    background-color: $blue;
+    color: #fff;
+  
+    &:hover,&:active {
+      background-color: $btn-hover-blue;
+    }
+    
+    &:disabled {
+      color: #fff;
+      background-color: $black_white_4;
+      cursor: not-allowed ;
+    }
+  }
+  &-btn {
+    color: $blue;
+    background-color: white;
+    border: #0C63E2 1px solid;
+  
+    &:hover,&:active {
+      border: #0A4FB5 1px solid;
+      color: #0A4FB5;
+    }
+  
+    &:disabled {
+      color: $black_white_4;
+      background-color: white;
+      border: $black_white_4 1px solid;
+      cursor: not-allowed ;
+    }
+  } 
+  &-float-btn {
+    color: $blue;
+    background-color: white;
+    border: #0C63E2 1px solid;
+  
+    &:hover,&:active {
+      border: #0A4FB5 1px solid;
+      color: #0A4FB5;
+    }
+  
+    &:disabled {
+      color: $black_white_4;
+      background-color: white;
+      border: $black_white_4 1px solid;
+      cursor: not-allowed ;
+    }
+  } 
+  &-link {
+    position: relative;
+    // min-width: 9em;
+    // padding: 1em 2em;
+    border: none;
+    cursor: pointer;
+    color: $black_white_1;
+    // background-color: white;
+    border-radius: 0;
+    // text-decoration: underline;
+
+    
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: $black_white_1;
+      // background-color: $blue;
+      // transition: all 0.3s ease-in-out;
+    }
+  
+    &:hover,&:active {
+      color: $blue;
+      &::after { background-color: $blue; }
+    }
+  
+    &[disabled] {
+      color: $black_white_4;
+      cursor: not-allowed ;
+    }
+  } 
+  &-link-btn {
+    min-width: 0;
+    padding: 0;
+    color: $black_white_1;
+    // background-color: white;
+    border-radius: 0;
+  
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 1px;
+      position: absolute;
+      // left: 2em;
+      // bottom: 0.8em;
+      bottom: 0;
+      background-color: $blue;
+      transition: all 0.3s ease-in-out;
+    }
+  
+    &:hover {
+      color: $blue;
+      &::after {
+        width: 100%;
+      }
+    }
+  
+    &:disabled {
+      color: $black_white_4;
+      background-color: white;
+      cursor: not-allowed ;
+      &:hover {
+        &::after {
+          width: 0;
+        }
+      }
+    }
+  } 
+}
+
+
+// specific device's width show/hidden
+@media (min-width: $breakPoint_l) {
+  .not-pc {
+    display: none !important;
+  }
+  .only-tablet {
+    display: none !important;
+  }
+  .only-mob {
+    display: none !important;
+  }
+}
+@media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+  .only-pc {
+    display: none !important;
+  }
+  .not-tablet{
+    display: none !important;
+  }
+  .only-mob {
+    display: none !important;
+  }
+}
+@media (max-width: $breakPoint_m) {
+  .only-pc {
+    display: none !important;
+  }
+  .only-tablet {
+    display: none !important;
+  }
+  .not-mob{
+    display: none !important;
+  }
+}
+
+
+.w-100 {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+.w-25 {
+  width: 25%;
+}
+.h-100 {
+  height: 100%;
+}
+.h-50 {
+  height: 50;
+}
+.bg-white {
+  background-color: white;
+}
+.text-center {
+  text-align: center;
+}
+.horizontal-center {
+  display: flex;
+  justify-content: center;
+} 
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+// add this to <body> classlist will forbid screen scrolling  
+.body-no-scroll {
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+
+.font-blue {
+  color: $blue;
+}
+
+.font-bw-1 {
+  color: $black_white_1;
+}
+.font-bw-2 {
+  color: $black_white_2;
+}
+.font-bw-3 {
+  color: $black_white_3;
+}
+.font-bw-4 {
+  color: $black_white_4;
+}
+.font-bw-5 {
+  color: $black_white_5;
+}
+.font-bw-6 {
+  color: $black_white_6;
+}
+.font-bw-7 {
+  color: $black_white_7;
+}
+.font-bw-8 {
+  color: $black_white_8;
+}

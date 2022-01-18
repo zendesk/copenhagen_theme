@@ -1,0 +1,433 @@
+// body {
+//   // overflow-x: hidden;
+//     max-width: calc(#{$breakPoint_xxxl} - 1px);
+//     position: relative;
+//     left: 50%;
+//     transform: translateX(-50%);
+// }
+
+@media (min-width: $breakPoint_xl ) {
+  $desingGutter: 24px; // 设计稿 水槽大小
+  $desingMargin: 96px; // 设计稿 margin大小
+  $desingCols: 12;     //  列数
+  $gutter: $desingGutter / 2; 
+  $margin: $desingMargin - $gutter;
+  $colWidth: 100% / $desingCols;
+
+  .snmk-container{
+    display: flex;
+    justify-content: start;
+    margin: 0 $margin;
+    // margin-right: -$gutter;
+    // margin-left: -$gutter;
+    flex-wrap: wrap;
+  }
+  .snmk-col-1, 
+  .snmk-col-2, 
+  .snmk-col-3, 
+  .snmk-col-4, 
+  .snmk-col-5, 
+  .snmk-col-6, 
+  .snmk-col-7, 
+  .snmk-col-8, 
+  .snmk-col-9, 
+  .snmk-col-10, 
+  .snmk-col-11, 
+  .snmk-col-12 {
+    margin: 0 $gutter;
+  }
+
+  .snmk-col-1 {
+    width: calc(#{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-2 {
+    width: calc(2 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-3 {
+    width: calc(3 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-4 {
+    width: calc(4 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-5 {
+    width: calc(5 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-6 {
+    width: calc(6 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-7 {
+    width: calc(7 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-8 {
+    width: calc(8 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-9 {
+    width: calc(9 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-10 {
+    width: calc(10 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-11 {
+    width: calc(11 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-12 {
+    width: calc(12 * #{$colWidth} - #{$desingGutter});
+  }
+
+  
+  .snmk-col-offset-1 {
+    margin-left: calc(#{$colWidth}*1 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-2 {
+    margin-left: calc(#{$colWidth}*2 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-3 {
+    margin-left: calc(#{$colWidth}*3 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-4 {
+    margin-left: calc(#{$colWidth}*4 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-5 {
+    margin-left: calc(#{$colWidth}*5 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-6 {
+    margin-left: calc(#{$colWidth}*6 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-7 {
+    margin-left: calc(#{$colWidth}*7 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-8 {
+    margin-left: calc(#{$colWidth}*8 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-9 {
+    margin-left: calc(#{$colWidth}*9 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-10 {
+    margin-left: calc(#{$colWidth}*10 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-11 {
+    margin-left: calc(#{$colWidth}*11 + #{$gutter}) ;
+  } 
+  .snmk-col-offset-12 {
+    margin-left: calc(#{$colWidth}*12 + #{$gutter}) ;
+  }
+}
+
+
+
+@media (min-width: $breakPoint_xxxl) {
+  .snmk-container{
+    max-width: calc(#{$breakPoint_xxxl} - 1px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (min-width: $breakPoint_l) and (max-width : $breakPoint_xl) {
+  $desingGutter: 16px; // 设计稿 水槽大小
+  $desingMargin: 60px; // 设计稿 margin大小
+  $desingCols: 12;     //  列数
+  $gutter: $desingGutter / 2; 
+  $margin: $desingMargin - $gutter;
+  $colWidth: 100% / $desingCols;
+  
+  .snmk-container{
+    display: flex;
+    margin: 0 $margin;
+    // margin-right: -$gutter;
+    // margin-left: -$gutter;
+    flex-wrap: wrap;
+  }
+  .snmk-col-l-1, 
+  .snmk-col-l-2, 
+  .snmk-col-l-3, 
+  .snmk-col-l-4, 
+  .snmk-col-l-5, 
+  .snmk-col-l-6, 
+  .snmk-col-l-7, 
+  .snmk-col-l-8, 
+  .snmk-col-l-9, 
+  .snmk-col-l-10, 
+  .snmk-col-l-11, 
+  .snmk-col-l-12 {
+    margin: 0 $gutter;
+  }
+  
+  .snmk-col-l-1 {
+    width: calc(#{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-2 {
+    width: calc(2 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-3 {
+    width: calc(3 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-4 {
+    width: calc(4 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-5 {
+    width: calc(5 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-6 {
+    width: calc(6 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-7 {
+    width: calc(7 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-8 {
+    width: calc(8 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-9 {
+    width: calc(9 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-10 {
+    width: calc(10 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-11 {
+    width: calc(11 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-l-12 {
+    width: calc(12 * #{$colWidth} - #{$desingGutter});
+  }
+
+  .snmk-col-l-offset-1 {
+    margin-left: calc(#{$colWidth}*1 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-2 {
+    margin-left: calc(#{$colWidth}*2 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-3 {
+    margin-left: calc(#{$colWidth}*3 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-4 {
+    margin-left: calc(#{$colWidth}*4 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-5 {
+    margin-left: calc(#{$colWidth}*5 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-6 {
+    margin-left: calc(#{$colWidth}*6 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-7 {
+    margin-left: calc(#{$colWidth}*7 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-8 {
+    margin-left: calc(#{$colWidth}*8 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-9 {
+    margin-left: calc(#{$colWidth}*9 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-10 {
+    margin-left: calc(#{$colWidth}*10 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-11 {
+    margin-left: calc(#{$colWidth}*11 + #{$gutter}) ;
+  } 
+  .snmk-col-l-offset-12 {
+    margin-left: calc(#{$colWidth}*12 + #{$gutter}) ;
+  }
+}
+@media (min-width: $breakPoint_m) and (max-width : $breakPoint_l) {
+  $desingGutter: 16px; // 设计稿 水槽大小
+  $desingMargin: 40px; // 设计稿 margin大小
+  $desingCols: 8;      //  列数
+  $gutter: $desingGutter / 2; 
+  $margin: $desingMargin - $gutter;
+  $colWidth: 100% / $desingCols;
+
+  .snmk-container{
+    display: flex;
+    margin: 0 $margin;
+    // margin-right: -$gutter;
+    // margin-left: -$gutter;
+    flex-wrap: wrap;
+  }
+  
+  .snmk-col-m-1, 
+  .snmk-col-m-2, 
+  .snmk-col-m-3, 
+  .snmk-col-m-4, 
+  .snmk-col-m-5, 
+  .snmk-col-m-6, 
+  .snmk-col-m-7, 
+  .snmk-col-m-8 {
+    margin: 0 $gutter;
+  }
+    
+  .snmk-col-m-1 {
+    width: calc(#{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-2 {
+    width: calc(2 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-3 {
+    width: calc(3 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-4 {
+    width: calc(4 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-5 {
+    width: calc(5 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-6 {
+    width: calc(6 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-7 {
+    width: calc(7 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-m-8 {
+    width: calc(8 * #{$colWidth} - #{$desingGutter});
+  }
+
+  .snmk-col-m-offset-1 {
+    margin-left: calc(#{$colWidth}*1 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-2 {
+    margin-left: calc(#{$colWidth}*2 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-3 {
+    margin-left: calc(#{$colWidth}*3 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-4 {
+    margin-left: calc(#{$colWidth}*4 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-5 {
+    margin-left: calc(#{$colWidth}*5 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-6 {
+    margin-left: calc(#{$colWidth}*6 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-7 {
+    margin-left: calc(#{$colWidth}*7 + #{$gutter}) ;
+  } 
+  .snmk-col-m-offset-8 {
+    margin-left: calc(#{$colWidth}*8 + #{$gutter}) ;
+  } 
+}
+@media (min-width: $breakPoint_s) and (max-width : $breakPoint_m) {
+  $desingGutter: 16px; // 设计稿 水槽大小
+  $desingMargin: 24px; // 设计稿 margin大小
+  $desingCols: 4;      //  列数
+  $gutter: $desingGutter / 2; 
+  $margin: $desingMargin - $gutter;
+  $colWidth: 100% / $desingCols;
+  
+  .snmk-container{
+    display: flex;
+    margin: 0 $margin;
+    // margin-right: -$gutter;
+    // margin-left: -$gutter;
+    flex-wrap: wrap;
+  }
+  // , 
+  // .snmk-col-s-5, 
+  // .snmk-col-s-6, 
+  // .snmk-col-s-7, 
+  // .snmk-col-s-8
+  .snmk-col-s-1, 
+  .snmk-col-s-2, 
+  .snmk-col-s-3, 
+  .snmk-col-s-4 {
+    margin: 0 $gutter;
+  }
+    
+  .snmk-col-s-1 {
+    width: calc(#{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-s-2 {
+    width: calc(2 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-s-3 {
+    width: calc(3 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-s-4 {
+    width: calc(4 * #{$colWidth} - #{$desingGutter});
+  }
+  // .snmk-col-s-5 {
+  //   width: calc(5 * #{$colWidth} - #{$desingGutter});
+  // }
+  // .snmk-col-s-6 {
+  //   width: calc(6 * #{$colWidth} - #{$desingGutter});
+  // }
+  // .snmk-col-s-7 {
+  //   width: calc(7 * #{$colWidth} - #{$desingGutter});
+  // }
+  // .snmk-col-s-8 {
+  //   width: calc(8 * #{$colWidth} - #{$desingGutter});
+  // }
+
+  .snmk-col-s-offset-1 {
+    margin-left: calc(#{$colWidth}*1 + #{$gutter}) ;
+  } 
+  .snmk-col-s-offset-2 {
+    margin-left: calc(#{$colWidth}*2 + #{$gutter}) ;
+  } 
+  .snmk-col-s-offset-3 {
+    margin-left: calc(#{$colWidth}*3 + #{$gutter}) ;
+  } 
+  .snmk-col-s-offset-4 {
+    margin-left: calc(#{$colWidth}*4 + #{$gutter}) ;
+  } 
+  // .snmk-col-s-offset-5 {
+  //   margin-left: calc(#{$colWidth}*5 + #{$gutter}) ;
+  // } 
+  // .snmk-col-s-offset-6 {
+  //   margin-left: calc(#{$colWidth}*6 + #{$gutter}) ;
+  // } 
+  // .snmk-col-s-offset-7 {
+  //   margin-left: calc(#{$colWidth}*7 + #{$gutter}) ;
+  // } 
+  // .snmk-col-s-offset-8 {
+  //   margin-left: calc(#{$colWidth}*8 + #{$gutter}) ;
+  // } 
+}
+@media (max-width : $breakPoint_s) {
+  $desingGutter: 16px;
+  $desingMargin: 16px;
+  $desingCols: 4;
+  $gutter: $desingGutter / 2;
+  $margin: $desingMargin - $gutter;
+  $colWidth: 100% / $desingCols;
+  
+  .snmk-container{
+    display: flex;
+    margin: 0 $margin;
+    // margin-right: -$gutter;
+    // margin-left: -$gutter;
+    flex-wrap: wrap;
+  }
+
+  .snmk-col-xs-1, 
+  .snmk-col-xs-2, 
+  .snmk-col-xs-3, 
+  .snmk-col-xs-4 {
+    margin: 0 $gutter;
+  }
+  
+  .snmk-col-xs-1 {
+    width: calc(#{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-xs-2 {
+    width: calc(2 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-xs-3 {
+    width: calc(3 * #{$colWidth} - #{$desingGutter});
+  }
+  .snmk-col-xs-4 {
+    width: calc(4 * #{$colWidth} - #{$desingGutter});
+  }
+
+  .snmk-col-xs-offset-1 {
+    margin-left: calc(#{$colWidth}*1 + #{$gutter}) ;
+  } 
+  .snmk-col-xs-offset-2 {
+    margin-left: calc(#{$colWidth}*2 + #{$gutter}) ;
+  } 
+  .snmk-col-xs-offset-3 {
+    margin-left: calc(#{$colWidth}*3 + #{$gutter}) ;
+  } 
+  .snmk-col-xs-offset-4 {
+    margin-left: calc(#{$colWidth}*4 + #{$gutter}) ;
+  } 
+} 
