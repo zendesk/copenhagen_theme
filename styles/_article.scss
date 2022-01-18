@@ -11,10 +11,13 @@
 
 // sidebar
 .article-sidebar {
+  &::-webkit-scrollbar {
+    width: 0 !important
+  }
   @include desktop {
     border: 0;
     flex: 0 0 320px;
-    height: auto;
+    height: 800px;
     align-self: self-start;
     position: sticky;
     top: 100px;
@@ -26,6 +29,7 @@
   margin-bottom: 20px;
   padding: 0;
   align-self: stretch;
+  overflow-y: scroll;
 
   .collapsible-sidebar {
     @include desktop {
@@ -99,7 +103,7 @@
       margin-top: 0;
     }
 
-    align-items: flex-start;
+    align-items: stretch;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
