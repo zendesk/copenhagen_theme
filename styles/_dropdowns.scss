@@ -47,13 +47,12 @@
   }
 
   [role="separator"] {
-    border-bottom: 1px solid rgb(216, 216, 216);
+    border-bottom: 1px solid $border-color;
     color: rgb(150, 150, 150);
     display: block;
     font-weight: normal;
     font-size: 11px;
-    padding: 5px 0;
-    margin: 5px 20px 10px 20px;
+    margin: 4px 0;
   }
 
   [role="menuitem"] {
