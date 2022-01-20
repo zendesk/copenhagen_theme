@@ -251,9 +251,9 @@ const scrollnav = (function () {
 
     function getActiveSection(data, boundryTop, boundryBottom) {
         let activeSection;
-        data.forEach((section,index) => {
+        data.forEach((section, index) => {
             // TODO: calculation accuracy
-            if (section.offsetTop >= boundryBottom+2) {
+            if (section.offsetTop >= boundryBottom + 2) {
                 if (!activeSection && section.offsetTop < boundryTop) {
                     activeSection = section;
                 }
@@ -811,20 +811,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var burgerMenu = document.querySelector('.header .menu-button');
     var userMenu = document.querySelector('#user-nav');
 
-    burgerMenu.addEventListener('click', function (e) {
+    burgerMenu && burgerMenu.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleNavigation(this, userMenu);
     });
 
 
-    userMenu.addEventListener('keyup', function (e) {
+    userMenu && userMenu.addEventListener('keyup', function (e) {
         if (e.keyCode === ESCAPE) {
             e.stopPropagation();
             closeNavigation(burgerMenu, this);
         }
     });
 
-    if (userMenu.children.length === 0) {
+    if (userMenu && userMenu.children && userMenu.children.length === 0) {
         burgerMenu.style.display = 'none';
     }
 
@@ -950,6 +950,58 @@ document.addEventListener('DOMContentLoaded', function () {
             faqSection.style.display = 'none';
         }
     }
+
+    /**
+     * Header Component: control header show or not when scroll  
+     */
+    const headersHeight = 156
+    const firstBarHeight = 80
+    let lastScrollPosition = 0
+
+    const header = document.querySelector('header[class=header]')
+    const firstBar = document.querySelector('div[class~=first-bar]')
+
+    const showFirstBar = () => {
+        header.style.height = headersHeight + 'px'
+        firstBar.style.height = firstBarHeight + 'px'
+        firstBar.style.borderBottom = null
+    }
+    const hiddenFirstBar = () => {
+        header.style.height = (headersHeight - firstBarHeight) + 'px'
+        firstBar.style.height = 0 + 'px'
+        firstBar.style.borderBottom = 0 + 'px'
+    }
+
+    window.addEventListener('scroll', throttle(function (e) {
+        // Get the current scroll position
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+
+        // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
+        if (currentScrollPosition < 60) {
+            showFirstBar()
+            return
+        }
+
+        // Stop executing this function if the difference between
+        // current scroll position and last scroll position is less than some offset
+        if (Math.abs(currentScrollPosition - lastScrollPosition) < 60) {
+            return
+        }
+
+        // Here we determine whether we need to show or hide the navbar
+        if (currentScrollPosition > lastScrollPosition && !headerController.isFirstBarActive) {
+            hiddenFirstBar()
+        } else {
+            showFirstBar()
+        }
+        // Set the current scroll position as the last scroll position
+        lastScrollPosition = currentScrollPosition
+    }, 100))
+
+
+    /**
+     * 
+     */
 });
 
 window.onload = function () {
@@ -979,3 +1031,129 @@ window.onload = function () {
         }
     }
 };
+
+
+function throttle(fn, threshold) {
+    let cando = true
+    return function (...args) {
+        if (!cando) {
+            return
+        }
+        fn.apply(this, args)
+        cando = false
+        setTimeout(() => {
+            cando = true
+        }, threshold)
+    }
+}
+
+
+/**
+ * header controller
+ */
+const headerController = {
+    _isFirstBarActive: false,
+    _isSecondBarActive: false,
+}
+Object.defineProperties(headerController, {
+    isFirstBarActive:{
+        get() { return this._isFirstBarActive},
+        set(value) {
+            this._isFirstBarActive = value
+
+            if(value) {
+                this.isSecondBarActive = false
+            }
+            handleCollectionIcon(this._isFirstBarActive)
+        }
+    },
+    isSecondBarActive:{
+        get() { return this._isSecondBarActive},
+        set(value) {
+            this._isSecondBarActive = value
+
+            if(value) {
+                this.isFirstBarActive = false
+            }
+            handleSecondBarCollection(this._isSecondBarActive)
+        }
+    }
+})
+
+const collectionIcon = document.querySelector('.bar-burger')
+const firstBarMenus = document.querySelector('nav[class~=menus')
+const firstBar = document.querySelector('div[class~=first-bar')
+const secondBarIcon = document.querySelector('#second-bar-icon')
+const secondBarNavItems = document.querySelector('div[class~=nav-items')
+const mask = document.querySelector('.mask')
+
+// first header bar, tablet/mobile, click icon open/close collection 
+function toggleCollectionIcon(){
+    headerController.isFirstBarActive = !headerController.isFirstBarActive
+}
+function handleCollectionIcon(isOpen) {
+    if (isOpen) {
+        collectionIcon.classList.add('is-active')
+        toggleCollectionCss(isOpen)
+        document.documentElement.classList.add('body-no-scroll')
+        mask.style.display = 'block'
+    } else {
+        toggleCollectionCss(isOpen)
+        collectionIcon.classList.remove('is-active')
+        document.documentElement.classList.remove('body-no-scroll')
+        mask.style.display = 'none'
+    }
+}
+function toggleCollectionCss (isOpen) {
+  	const left = firstBarMenus.getBoundingClientRect().left
+    if (isOpen) {
+        firstBar.style.overflow = 'visible'
+        firstBarMenus.style.width = window.innerWidth + 'px'
+      	firstBarMenus.style.left = `-${left}px`
+      	firstBarMenus.style.padding = `0 ${left}px`
+    } else {
+        firstBar.style.overflow = null
+        firstBarMenus.style.width = null
+      	firstBarMenus.style.left = null
+    }
+}
+
+// second header bar, tablet/mobile, click icon open/close collection 
+function toggleSecondBarCollection(){
+    headerController.isSecondBarActive = !headerController.isSecondBarActive
+}
+function handleSecondBarCollection(isOpen) {
+    if (isOpen) {
+        toggleSecondBarCollectionCss(isOpen)
+        secondBarIcon.classList.add('is-open')
+        document.documentElement.classList.add('body-no-scroll')
+        mask.style.display = 'block'
+    } else {
+        toggleSecondBarCollectionCss(isOpen)
+        secondBarIcon.classList.remove('is-open')
+        document.documentElement.classList.remove('body-no-scroll')
+        mask.style.display = 'none'
+    }
+
+}
+function toggleSecondBarCollectionCss (isOpen) {
+    if (isOpen) {
+        secondBarNavItems.style.height = 'auto'
+    } else {
+        secondBarNavItems.style.height = '0'
+    }
+}
+
+// collection mask, click then close collection
+function onClickMask() {
+    headerController.isFirstBarActive = false
+    headerController.isSecondBarActive = false
+    mask.style.display = 'none'
+}
+
+
+
+
+function onFooterCollectionClick(event){
+    console.log(event)
+}

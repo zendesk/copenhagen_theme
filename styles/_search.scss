@@ -30,12 +30,16 @@
 }
 
 .search-icon {
+  $icon-width: 31px;
+
   @include vertical-align;
   position: absolute;
   left: 15px;
   z-index: 1;
-  width: 18px;
-  height: 18px;
+  width: $icon-width;
+  height: $icon-width;
+  line-height: $icon-width;
+  font-size: 20px;
   color: #777;
 
   [dir="rtl"] & {

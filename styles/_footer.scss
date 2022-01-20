@@ -5,9 +5,9 @@
   padding-bottom: 10px;
   background: $grey_background_color;
 
-  a {
-    color: $secondary-text-color;
-  }
+  // a {
+  //   color: $secondary-text-color;
+  // }
 
   &-inner {
     @include max-width-container;
@@ -171,4 +171,139 @@
 
 .mb-3 {
   margin-bottom: 3rem;
+}
+
+
+
+.footer {
+  background-color: $black; 
+}
+
+.footer-related-links-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.footer-related-links-block {
+
+}
+.footer-related-links-title {
+  color: white;
+  font-weight: 500;
+}
+.footer-related-links {
+  font-weight: 500;
+
+  a {
+    color: $black_white_4;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+.footer-related-link {
+  
+}
+
+.contact-us {
+  .contact-us-title {
+    color: white;
+    font-weight: 500;
+  }
+
+  .newsletter-input {
+    background-color: $black_white_2;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0.4166vw 1.82vw 0.4166vw 1vw;
+    border: none;
+    color: white;
+
+  }
+  .newsletter-btn {
+    background-color: #0C63E2;
+    color: #FBFFFF;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 0.4166vw 0.832vw;
+    border: none;
+  }
+
+  .contact-way {
+    display: flex;
+    align-items: center;
+
+    .iconfont {
+      flex: 0 0 32px;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      justify-content: center;
+      background-color: $black_white_2;
+    }
+  }
+
+}
+.footer-social-icon {
+  a { color: white; font-size: 32px;}
+}
+
+ 
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #595959;
+}
+
+
+@media (min-width: $breakPoint_l) {
+  .footer-related-links-block {
+    width: 33.33%;
+    margin-bottom: 44px;
+    padding-right: 24px;
+  
+    &:nth-child(3n) {
+      text-align: right;
+    }
+  }
+  
+}
+
+@media (min-width: $breakPoint_m) and (max-width: $breakPoint_l){
+  .footer-related-links-block {
+    width: 50%;
+    margin-bottom: 40px;
+    padding-right: 24px;
+
+    &:first-child, &:nth-child(2) {
+      margin-top: 24px;
+    }
+  }
+}
+
+@media (max-width: $breakPoint_m) {
+  .footer-related-links-container {
+    flex-direction: column;
+  }
+  .footer-related-links-block {
+    width: 100%;
+    border-bottom: 1px solid $black_white_2;
+    padding-bottom: 24px;
+
+      // &:first-child {
+      //   margin-top: 24px;
+      // }
+  }
+  .footer-related-links {
+    display: none;
+  }
+  .footer-related-links-title {
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+
 }

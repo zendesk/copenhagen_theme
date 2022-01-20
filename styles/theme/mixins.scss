@@ -1,0 +1,74 @@
+@mixin grid-system-variable($type) {  
+  @media (min-width: $breakPoint_xl ) {
+    $desingGutter: 24px; // 设计稿 水槽大小
+    $desingMargin: 96px; // 设计稿 margin大小
+    $desingCols: 12;     //  列数
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+   @if $type == "padding" {
+     padding: 0 $desingMargin;
+   }
+   @if $type == "margin" {
+     margin: 0 $desingMargin;
+   }
+  }
+  
+  @media (min-width: $breakPoint_l) and (max-width : $breakPoint_xl) {
+    $desingGutter: 16px; // 设计稿 水槽大小
+    $desingMargin: 60px; // 设计稿 margin大小
+    $desingCols: 12;     //  列数
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }
+  }
+  @media (min-width: $breakPoint_m) and (max-width : $breakPoint_l) {
+    $desingGutter: 16px; // 设计稿 水槽大小
+    $desingMargin: 40px; // 设计稿 margin大小
+    $desingCols: 8;      //  列数
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }  
+  }
+  @media (min-width: $breakPoint_s) and (max-width : $breakPoint_m) {
+    $desingGutter: 16px; // 设计稿 水槽大小
+    $desingMargin: 24px; // 设计稿 margin大小
+    $desingCols: 4;      //  列数
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }
+  }
+  @media (max-width : $breakPoint_s) {
+    $desingGutter: 16px;
+    $desingMargin: 16px;
+    $desingCols: 4;
+    $gutter: $desingGutter / 2;
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }
+  } 
+  
+}
