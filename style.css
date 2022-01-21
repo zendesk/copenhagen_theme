@@ -4778,11 +4778,7 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .dropdown-menu [role="separator"] {
-  border-bottom: 1px solid #ddd;
-  color: #969696;
-  display: block;
-  font-weight: normal;
-  font-size: 11px;
+  border-bottom: 1px solid #e9ebed;
   margin: 4px 0;
 }
 
