@@ -4778,13 +4778,8 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .dropdown-menu [role="separator"] {
-  border-bottom: 1px solid #d8d8d8;
-  color: #969696;
-  display: block;
-  font-weight: normal;
-  font-size: 11px;
-  padding: 5px 0;
-  margin: 5px 20px 10px 20px;
+  border-bottom: 1px solid #e9ebed;
+  margin: 4px 0;
 }
 
 .dropdown-menu [role="menuitem"] {
