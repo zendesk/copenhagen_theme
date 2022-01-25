@@ -1,3 +1,11 @@
+## [2.13.2](https://github.com/zendesk/copenhagen_theme/compare/v2.13.1...v2.13.2) (2022-01-25)
+
+
+### Bug Fixes
+
+* add separator in user dropdown ([fcfab74](https://github.com/zendesk/copenhagen_theme/commit/fcfab748cf1353961d8b670b839efccec274191d))
+* change separator color according to design ([76346d4](https://github.com/zendesk/copenhagen_theme/commit/76346d4cf1059621fd38b913bce6a552551c2799))
+
 ## [2.13.1](https://github.com/zendesk/copenhagen_theme/compare/v2.13.0...v2.13.1) (2021-12-14)
 
 
