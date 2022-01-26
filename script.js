@@ -128,27 +128,12 @@ document.addEventListener('DOMContentLoaded', function() {
     returnFocusToEl && returnFocusToEl.focus && returnFocusToEl.focus();
   }
 
-  // show form controls when the textarea receives focus or backbutton is used and value exists
-  var commentContainerTextarea = document.querySelector('.comment-container textarea'),
-    commentContainerFormControls = document.querySelector('.comment-form-controls, .comment-ccs');
-
-  if (commentContainerTextarea) {
-    commentContainerTextarea.addEventListener('focus', function focusCommentContainerTextarea() {
-      commentContainerFormControls.style.display = 'block';
-      commentContainerTextarea.removeEventListener('focus', focusCommentContainerTextarea);
-    });
-
-    if (commentContainerTextarea.value !== '') {
-      commentContainerFormControls.style.display = 'block';
-    }
-  }
-
   // Expand Request comment form when Add to conversation is clicked
   var showRequestCommentContainerTrigger = document.querySelector('.request-container .comment-container .comment-show-container'),
     requestCommentFields = document.querySelectorAll('.request-container .comment-container .comment-fields'),
     requestCommentSubmit = document.querySelector('.request-container .comment-container .request-submit-comment');
 
-  if (showRequestCommentContainerTrigger) {
+    if (showRequestCommentContainerTrigger) {
     showRequestCommentContainerTrigger.addEventListener('click', function() {
       showRequestCommentContainerTrigger.style.display = 'none';
       Array.prototype.forEach.call(requestCommentFields, function(e) { e.style.display = 'block'; });
