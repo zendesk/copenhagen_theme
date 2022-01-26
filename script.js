@@ -133,14 +133,14 @@ document.addEventListener('DOMContentLoaded', function() {
     requestCommentFields = document.querySelectorAll('.request-container .comment-container .comment-fields'),
     requestCommentSubmit = document.querySelector('.request-container .comment-container .request-submit-comment');
 
-    if (showRequestCommentContainerTrigger) {
+  if (showRequestCommentContainerTrigger) {
     showRequestCommentContainerTrigger.addEventListener('click', function() {
       showRequestCommentContainerTrigger.style.display = 'none';
       Array.prototype.forEach.call(requestCommentFields, function(e) { e.style.display = 'block'; });
       requestCommentSubmit.style.display = 'inline-block';
 
-      if (commentContainerTextarea) {
-        commentContainerTextarea.focus();
+      if (window.tinymce && window.tinymce.editors.length === 1) {
+        window.tinymce.editors[0].focus();
       }
     });
   }
