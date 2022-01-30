@@ -1,185 +1,364 @@
-<script>
-    {{#is category.id 4403461255959 }} {{! Snapmaker Original }}
-        window.location = 'https://support.snapmaker.com/hc/en-us'
-    {{/is}}
-    {{#is category.id 360001781913 }} {{! Snapmaker 2.0 }}
-        window.location = 'https://support.snapmaker.com/hc/en-us'
-    {{/is}}
-    {{#is category.id 360005617793 }} {{! Snapmaker Download }}
-        window.location = 'https://support.snapmaker.com/hc/en-us'
-    {{/is}}
-</script>
-<div class="container-divider"></div>
-<div class="snmk-container">
-	<div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
-    <nav class="sub-nav">
-        {{breadcrumbs}}
-    </nav>
 
-    <div class="category-container">
-        <ul id="main-content2" class="category-sections">
-            {{#each sections}}
-                {{#is description 'Type-QSG' }}
-                    <li class="category-section category-section-qsg" aria-expanded="true">
-                        <div class="category-section-header">
-                            <span class="category-section-title">{{name}}</span>
-                            <button type="button" class="category-section-toggle" aria-expanded="true">
-                                <i class="category-section-toggle-icon icon-up"></i>
-                                <i class="category-section-toggle-icon icon-down"></i>
-                            </button>
-                        </div>
-                        <div class="category-section-body">
-                            <ul class="category-section-articles">
-                                {{#each articles}}
-                                    <li class="category-section-article">
-                                        <a class="category-section-article-link" href="{{url}}">{{title}}</a>
-                                        <div class="article-body">{{body}}</div>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                            {{#if more_articles}}
-                                <a href="{{url}}" class="button button-secondary see-more-article">
-                                    {{t 'show_all_articles' count=article_count}}
-                                </a>
-                            {{/if}}
-                        </div>
-                    </li>
-                {{/is}}
-            {{/each}}
-            {{#each sections}}
-                {{#is description 'Type-Default' }}
-                    <li class="category-section" aria-expanded="true">
-                        <div class="category-section-header">
-                            <span class="category-section-title">{{name}}</span>
-                            <button type="button" class="category-section-toggle" aria-expanded="true">
-                                <i class="category-section-toggle-icon icon-up"></i>
-                                <i class="category-section-toggle-icon icon-down"></i>
-                            </button>
-                        </div>
-                        <div class="category-section-body">
-                            <ul class="category-section-articles">
-                                {{#each articles}}
-                                    <li class="category-section-article">
-                                        <a class="category-section-article-link" href="{{url}}">{{title}}</a>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                            {{#if more_articles}}
-                                <a href="{{url}}" class="button button-secondary see-more-article">
-                                    {{t 'show_all_articles' count=article_count}}
-                                </a>
-                            {{/if}}
-                        </div>
-                    </li>
-                {{/is}}
-            {{/each}}
-            {{#each sections}}
-                {{#is description 'Type-Video' }}
-                    <li class="category-section" aria-expanded="true">
-                        <div class="category-section-header">
-                            <span class="category-section-title">{{name}}</span>
-                            <button type="button" class="category-section-toggle" aria-expanded="true">
-                                <i class="category-section-toggle-icon icon-up"></i>
-                                <i class="category-section-toggle-icon icon-down"></i>
-                            </button>
-                        </div>
-                        <div class="category-section-body">
-                            <ul class="video-list">
-                                {{#each articles}}
-                                    <li class="video-list-item">
-                                        <a href="{{url}}" class="video-list-item-cover">
-                                            <img class="video-list-item-cover-img" src="#" alt="" />
-                                            <i class="video-list-item-cover-icon"></i>
-                                        </a>
-                                        <a class="video-list-item-title" href="{{url}}">{{title}}</a>
-                                        <ol class="video-list-item-labels"></ol>
-                                        <div class="article-body">{{body}}</div>
-                                    </li>
-                                {{/each}}
-                            </ul>
-                            {{#if more_articles}}
-                                <a href="{{url}}" class="button button-secondary see-more-article">
-                                    {{t 'show_all_articles' count=article_count}}
-                                </a>
-                            {{/if}}
-                        </div>
-                    </li>
-                {{/is}}
-            {{/each}}
-            <li class="category-section category-section-faq" aria-expanded="true">
-                <div class="category-section-header">
-                    <span class="category-section-title">FAQ</span>
-                    <button type="button" class="category-section-toggle" aria-expanded="true">
-                        <i class="category-section-toggle-icon icon-up"></i>
-                        <i class="category-section-toggle-icon icon-down"></i>
-                    </button>
-                </div>
-                <div class="category-section-body">
-                    <ul class="category-section-subsections">
-                        {{#each sections}}
-                            {{#is description 'Type-FAQ' }}
-                                <li class="category-section-subsection">
-                                    <span class="category-section-subsection-title">{{name}}</span>
+{{#isnt help_center.locale 'zh-cn'}}
+    <script>
+        {{#is category.id 4403461255959 }} {{! Snapmaker Original }}
+            window.location = 'https://support.snapmaker.com/hc/en-us'
+        {{/is}}
+        {{#is category.id 360001781913 }} {{! Snapmaker 2.0 }}
+            window.location = 'https://support.snapmaker.com/hc/en-us'
+        {{/is}}
+        {{#is category.id 360005617793 }} {{! Snapmaker Download }}
+            window.location = 'https://support.snapmaker.com/hc/en-us'
+        {{/is}}
+    </script>
+    <div class="container-divider"></div>
+    <div class="snmk-container">
+        <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+            <nav class="sub-nav">
+                {{breadcrumbs}}
+            </nav>
 
-                                    <ul class="category-section-subsection-articles">
+            <div class="category-container">
+                <ul id="main-content2" class="category-sections">
+                    {{#each sections}}
+                        {{#is description 'Type-QSG' }}
+                            <li class="category-section category-section-qsg" aria-expanded="true">
+                                <div class="category-section-header">
+                                    <span class="category-section-title">{{name}}</span>
+                                    <button type="button" class="category-section-toggle" aria-expanded="true">
+                                        <i class="category-section-toggle-icon icon-up"></i>
+                                        <i class="category-section-toggle-icon icon-down"></i>
+                                    </button>
+                                </div>
+                                <div class="category-section-body">
+                                    <ul class="category-section-articles">
                                         {{#each articles}}
-                                            <li class="category-section-subsection-article">
-                                                {{#if promoted}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
-                                                        <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z" />
-                                                    </svg>
-                                                {{/if}}
+                                            <li class="category-section-article">
                                                 <a class="category-section-article-link" href="{{url}}">{{title}}</a>
-                                                {{#if internal}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                                                        <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1" />
-                                                        <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5" />
-                                                    </svg>
-                                                {{/if}}
+                                                <div class="article-body">{{body}}</div>
                                             </li>
                                         {{/each}}
                                     </ul>
-
                                     {{#if more_articles}}
                                         <a href="{{url}}" class="button button-secondary see-more-article">
                                             {{t 'show_all_articles' count=article_count}}
                                         </a>
                                     {{/if}}
-                                </li>
-                            {{/is}}
-                        {{/each}}
-                    </ul>
-                </div>
-            </li>
-
-            {{#each sections}}
-                {{#is description 'Type-Service' }}
-                    <li class="category-section" aria-expanded="true">
+                                </div>
+                            </li>
+                        {{/is}}
+                    {{/each}}
+                    {{#each sections}}
+                        {{#is description 'Type-Default' }}
+                            <li class="category-section" aria-expanded="true">
+                                <div class="category-section-header">
+                                    <span class="category-section-title">{{name}}</span>
+                                    <button type="button" class="category-section-toggle" aria-expanded="true">
+                                        <i class="category-section-toggle-icon icon-up"></i>
+                                        <i class="category-section-toggle-icon icon-down"></i>
+                                    </button>
+                                </div>
+                                <div class="category-section-body">
+                                    <ul class="category-section-articles">
+                                        {{#each articles}}
+                                            <li class="category-section-article">
+                                                <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                    {{#if more_articles}}
+                                        <a href="{{url}}" class="button button-secondary see-more-article">
+                                            {{t 'show_all_articles' count=article_count}}
+                                        </a>
+                                    {{/if}}
+                                </div>
+                            </li>
+                        {{/is}}
+                    {{/each}}
+                    {{#each sections}}
+                        {{#is description 'Type-Video' }}
+                            <li class="category-section" aria-expanded="true">
+                                <div class="category-section-header">
+                                    <span class="category-section-title">{{name}}</span>
+                                    <button type="button" class="category-section-toggle" aria-expanded="true">
+                                        <i class="category-section-toggle-icon icon-up"></i>
+                                        <i class="category-section-toggle-icon icon-down"></i>
+                                    </button>
+                                </div>
+                                <div class="category-section-body">
+                                    <ul class="video-list">
+                                        {{#each articles}}
+                                            <li class="video-list-item">
+                                                <a href="{{url}}" class="video-list-item-cover">
+                                                    <img class="video-list-item-cover-img" src="#" alt="" />
+                                                    <i class="video-list-item-cover-icon"></i>
+                                                </a>
+                                                <a class="video-list-item-title" href="{{url}}">{{title}}</a>
+                                                <ol class="video-list-item-labels"></ol>
+                                                <div class="article-body">{{body}}</div>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                    {{#if more_articles}}
+                                        <a href="{{url}}" class="button button-secondary see-more-article">
+                                            {{t 'show_all_articles' count=article_count}}
+                                        </a>
+                                    {{/if}}
+                                </div>
+                            </li>
+                        {{/is}}
+                    {{/each}}
+                    <li class="category-section category-section-faq" aria-expanded="true">
                         <div class="category-section-header">
-                            <span class="category-section-title">{{name}}</span>
+                            <span class="category-section-title">FAQ</span>
                             <button type="button" class="category-section-toggle" aria-expanded="true">
                                 <i class="category-section-toggle-icon icon-up"></i>
                                 <i class="category-section-toggle-icon icon-down"></i>
                             </button>
                         </div>
                         <div class="category-section-body">
-                            <ul class="category-section-articles">
-                                {{#each articles}}
-                                    <li class="category-section-article">
-                                        <a class="category-section-article-link" href="{{url}}">{{title}}</a>
-                                    </li>
+                            <ul class="category-section-subsections">
+                                {{#each sections}}
+                                    {{#is description 'Type-FAQ' }}
+                                        <li class="category-section-subsection">
+                                            <span class="category-section-subsection-title">{{name}}</span>
+
+                                            <ul class="category-section-subsection-articles">
+                                                {{#each articles}}
+                                                    <li class="category-section-subsection-article">
+                                                        {{#if promoted}}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
+                                                                <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z" />
+                                                            </svg>
+                                                        {{/if}}
+                                                        <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                                        {{#if internal}}
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                                                                <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1" />
+                                                                <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5" />
+                                                            </svg>
+                                                        {{/if}}
+                                                    </li>
+                                                {{/each}}
+                                            </ul>
+
+                                            {{#if more_articles}}
+                                                <a href="{{url}}" class="button button-secondary see-more-article">
+                                                    {{t 'show_all_articles' count=article_count}}
+                                                </a>
+                                            {{/if}}
+                                        </li>
+                                    {{/is}}
                                 {{/each}}
                             </ul>
-                            {{#if more_articles}}
-                                <a href="{{url}}" class="button button-secondary see-more-article">
-                                    {{t 'show_all_articles' count=article_count}}
-                                </a>
-                            {{/if}}
                         </div>
                     </li>
-                {{/is}}
-            {{/each}}
-        </ul>
+
+                    {{#each sections}}
+                        {{#is description 'Type-Service' }}
+                            <li class="category-section" aria-expanded="true">
+                                <div class="category-section-header">
+                                    <span class="category-section-title">{{name}}</span>
+                                    <button type="button" class="category-section-toggle" aria-expanded="true">
+                                        <i class="category-section-toggle-icon icon-up"></i>
+                                        <i class="category-section-toggle-icon icon-down"></i>
+                                    </button>
+                                </div>
+                                <div class="category-section-body">
+                                    <ul class="category-section-articles">
+                                        {{#each articles}}
+                                            <li class="category-section-article">
+                                                <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                    {{#if more_articles}}
+                                        <a href="{{url}}" class="button button-secondary see-more-article">
+                                            {{t 'show_all_articles' count=article_count}}
+                                        </a>
+                                    {{/if}}
+                                </div>
+                            </li>
+                        {{/is}}
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
+{{/isnt}}
+
+{{#is help_center.locale 'zh-cn'}}
+    <div class="container-divider"></div>
+    <div class="container">
+        <nav class="sub-nav">
+            {{breadcrumbs}}
+        </nav>
+
+        <div class="category-container">
+            <ul id="main-content2" class="category-sections">
+                {{#each sections}}
+                    {{#is description 'Type-QSG' }}
+                        <li class="category-section category-section-qsg" aria-expanded="true">
+                            <div class="category-section-header">
+                                <span class="category-section-title">{{name}}</span>
+                                <button type="button" class="category-section-toggle" aria-expanded="true">
+                                    <i class="category-section-toggle-icon icon-up"></i>
+                                    <i class="category-section-toggle-icon icon-down"></i>
+                                </button>
+                            </div>
+                            <div class="category-section-body">
+                                <ul class="category-section-articles">
+                                    {{#each articles}}
+                                        <li class="category-section-article">
+                                            <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                            <div class="article-body">{{body}}</div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                                {{#if more_articles}}
+                                    <a href="{{url}}" class="button button-secondary see-more-article">
+                                        {{t 'show_all_articles' count=article_count}}
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/is}}
+                {{/each}}
+                {{#each sections}}
+                    {{#is description 'Type-Default' }}
+                        <li class="category-section" aria-expanded="true">
+                            <div class="category-section-header">
+                                <span class="category-section-title">{{name}}</span>
+                                <button type="button" class="category-section-toggle" aria-expanded="true">
+                                    <i class="category-section-toggle-icon icon-up"></i>
+                                    <i class="category-section-toggle-icon icon-down"></i>
+                                </button>
+                            </div>
+                            <div class="category-section-body">
+                                <ul class="category-section-articles">
+                                    {{#each articles}}
+                                        <li class="category-section-article">
+                                            <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                                {{#if more_articles}}
+                                    <a href="{{url}}" class="button button-secondary see-more-article">
+                                        {{t 'show_all_articles' count=article_count}}
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/is}}
+                {{/each}}
+                {{#each sections}}
+                    {{#is description 'Type-Video' }}
+                        <li class="category-section" aria-expanded="true">
+                            <div class="category-section-header">
+                                <span class="category-section-title">{{name}}</span>
+                                <button type="button" class="category-section-toggle" aria-expanded="true">
+                                    <i class="category-section-toggle-icon icon-up"></i>
+                                    <i class="category-section-toggle-icon icon-down"></i>
+                                </button>
+                            </div>
+                            <div class="category-section-body">
+                                <ul class="video-list">
+                                    {{#each articles}}
+                                        <li class="video-list-item">
+                                            <a href="{{url}}" class="video-list-item-cover">
+                                                <img class="video-list-item-cover-img" src="#" alt="" />
+                                                <i class="video-list-item-cover-icon"></i>
+                                            </a>
+                                            <a class="video-list-item-title" href="{{url}}">{{title}}</a>
+                                            <ol class="video-list-item-labels"></ol>
+                                            <div class="article-body">{{body}}</div>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                                {{#if more_articles}}
+                                    <a href="{{url}}" class="button button-secondary see-more-article">
+                                        {{t 'show_all_articles' count=article_count}}
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/is}}
+                {{/each}}
+                <li class="category-section category-section-faq" aria-expanded="true">
+                    <div class="category-section-header">
+                        <span class="category-section-title">FAQ</span>
+                        <button type="button" class="category-section-toggle" aria-expanded="true">
+                            <i class="category-section-toggle-icon icon-up"></i>
+                            <i class="category-section-toggle-icon icon-down"></i>
+                        </button>
+                    </div>
+                    <div class="category-section-body">
+                        <ul class="category-section-subsections">
+                            {{#each sections}}
+                                {{#is description 'Type-FAQ' }}
+                                    <li class="category-section-subsection">
+                                        <span class="category-section-subsection-title">{{name}}</span>
+
+                                        <ul class="category-section-subsection-articles">
+                                            {{#each articles}}
+                                                <li class="category-section-subsection-article">
+                                                    {{#if promoted}}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
+                                                            <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z" />
+                                                        </svg>
+                                                    {{/if}}
+                                                    <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                                    {{#if internal}}
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                                                            <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1" />
+                                                            <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5" />
+                                                        </svg>
+                                                    {{/if}}
+                                                </li>
+                                            {{/each}}
+                                        </ul>
+
+                                        {{#if more_articles}}
+                                            <a href="{{url}}" class="button button-secondary see-more-article">
+                                                {{t 'show_all_articles' count=article_count}}
+                                            </a>
+                                        {{/if}}
+                                    </li>
+                                {{/is}}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </li>
+
+                {{#each sections}}
+                    {{#is description 'Type-Service' }}
+                        <li class="category-section" aria-expanded="true">
+                            <div class="category-section-header">
+                                <span class="category-section-title">{{name}}</span>
+                                <button type="button" class="category-section-toggle" aria-expanded="true">
+                                    <i class="category-section-toggle-icon icon-up"></i>
+                                    <i class="category-section-toggle-icon icon-down"></i>
+                                </button>
+                            </div>
+                            <div class="category-section-body">
+                                <ul class="category-section-articles">
+                                    {{#each articles}}
+                                        <li class="category-section-article">
+                                            <a class="category-section-article-link" href="{{url}}">{{title}}</a>
+                                        </li>
+                                    {{/each}}
+                                </ul>
+                                {{#if more_articles}}
+                                    <a href="{{url}}" class="button button-secondary see-more-article">
+                                        {{t 'show_all_articles' count=article_count}}
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </li>
+                    {{/is}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+{{/is}}
+

@@ -22,9 +22,11 @@
       <div class="footer-related-links-block" data-toggle="5">
         {{dc 'footer_software_support'}}
       </div>
-      <div class="footer-related-links-block" data-toggle="6">
-        {{dc 'footer_faq'}}
-      </div>
+      {{#is help_center.locale 'en-us'}}
+        <div class="footer-related-links-block" data-toggle="6">
+          {{dc 'footer_faq'}}
+        </div>
+      {{/is}}
     </div>
     <div class="snmk-col-3 snmk-col-l-3 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 font-2">
       

@@ -1,91 +1,270 @@
-<style>
-    .header > .logo .logo-image {
-        background-image: url({{asset 'pic_nav_logo_white_236x34.png' }});
-    }
 
-    .header > .logo .logo-image-zh {
-        background-image: url({{asset 'pic_nav_logo_white_zh_242x34.png' }});
-    }
+{{#isnt help_center.locale 'zh-cn'}}
+    <style>
+        .header > .logo .logo-image {
+            background-image: url({{asset 'pic_nav_logo_white_236x34.png' }});
+        }
 
-    .nav-wrapper .user-nav > a, .nav-wrapper .user-nav > a:hover {
-        color: #fff;
-    }
+        .header > .logo .logo-image-zh {
+            background-image: url({{asset 'pic_nav_logo_white_zh_242x34.png' }});
+        }
 
-    .nav-wrapper .user-nav[aria-expanded="true"] > a, .nav-wrapper .user-nav[aria-expanded="true"] > a:hover {
-        color: #272829;
-    }
+        .nav-wrapper .user-nav > a, .nav-wrapper .user-nav > a:hover {
+            color: #fff;
+        }
 
-    .user-info button, .user-info button:hover, .user-info button:focus {
-        color: #fff;
-    }
+        .nav-wrapper .user-nav[aria-expanded="true"] > a, .nav-wrapper .user-nav[aria-expanded="true"] > a:hover {
+            color: #272829;
+        }
 
-    .nav-wrapper .menu-button .icon-menu {
-        color: #fff;
-    }
+        .user-info button, .user-info button:hover, .user-info button:focus {
+            color: #fff;
+        }
 
-    .nav-wrapper .menu-button[aria-expanded="true"] .icon-menu {
-        color: #272829;
-    }
+        .nav-wrapper .menu-button .icon-menu {
+            color: #fff;
+        }
 
-</style>
+        .nav-wrapper .menu-button[aria-expanded="true"] .icon-menu {
+            color: #272829;
+        }
+
+    </style>
 
 
-<section id="main-content" class="section hero home-search-container">
-  <div class="search-text-container snmk-container" style="width:100%">
-    <div class="snmk-col-6 snmk-col-l-6 snmk-col-m-6 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-3 snmk-col-l-offset-3 snmk-col-m-offset-1"> 
-      <div class="hero-title">
-          <span>{{dc 'home_search_title'}}</span>
-      </div>
-      <div class="hero-inner">
-          <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
-        	{{#is help_center.locale 'zh-cn'}}
-          	{{search placeholder="您需要什么帮助？" submit=false instant=settings.instant_search class='search search-full'}}
-        	{{/is}}
-        	{{#isnt help_center.locale 'zh-cn'}}
-        		{{search placeholder="How can we help you?" submit=false instant=settings.instant_search class='search search-full'}}
-        	{{/isnt}}
-      </div>
-      <div class="quick-links mt-l font-1">
-        {{dc 'home_search_quick_links'}}
-      </div>
-    </div>
-  </div>
-</section>
-
-<div>
-  <h2 class="section-title title-1 font-bw-1 bold mt-3xl mb-xl">Product Support</h2>
-  <div class="snmk-container" >
-    <div class="snmk-col-10 snmk-col-l-10 snmk-col-offset-1 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-l-offset-1 product-category">
-      {{#each categories}}
-      	{{#is description  'Products'}}
-          <div class="title-2 font-bw-1 bold mr-xs mb-xl mt-2xl">{{name}}</div>
-      		<div class="category-sections">
-            {{#each sections}}
-                <a class="product-img font-bw-8 mr-l mt-l" href="{{url}}">
-                  <img src="{{description}}" alt="{{name}}">
-                  <div class="text-center mt-xs"><span class="snmk-link-btn">{{name}}</span></div>
-                </a>
-            {{/each}}
-      		</div>      
-      	{{/is}}
-      {{/each}}
-      
-    </div>  
-</div>
-    
-<div class="my-3xl">
-  <h2 class="section-title title-1 font-bw-1 bold mb-xl">Software Support</h2>
-  {{#each categories}}
-    {{#is description  'Software'}}
-      <div class="snmk-container">
-        <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 software-category">
-          {{#each sections}}
-						{{dc description}}
-          {{/each}}
+    <section id="main-content" class="section hero home-search-container">
+        <div class="search-text-container snmk-container" style="width:100%">
+            <div class="snmk-col-6 snmk-col-l-6 snmk-col-m-6 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-3 snmk-col-l-offset-3 snmk-col-m-offset-1"> 
+            <div class="hero-title">
+                <span>{{dc 'home_search_title'}}</span>
+            </div>
+            <div class="hero-inner">
+                <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
+                    {{#is help_center.locale 'zh-cn'}}
+                    {{search placeholder="您需要什么帮助？" submit=false instant=settings.instant_search class='search search-full'}}
+                    {{/is}}
+                    {{#isnt help_center.locale 'zh-cn'}}
+                        {{search placeholder="How can we help you?" submit=false instant=settings.instant_search class='search search-full'}}
+                    {{/isnt}}
+            </div>
+            <div class="quick-links mt-l font-1">
+                {{dc 'home_search_quick_links'}}
+            </div>
+            </div>
         </div>
-      </div>
-    {{/is}}
-  {{/each}}
-</div>
-    
-      
+    </section>
+
+    <div>
+        <h2 class="section-title title-1 font-bw-1 bold mt-3xl mb-xl">
+            {{#is help_center.locale 'zh-cn'}}
+                产品支持
+            {{/is}}
+            {{#isnt help_center.locale 'zh-cn'}}
+                Product Support
+            {{/isnt}}
+        </h2>
+        <div class="snmk-container" >
+        <div class="snmk-col-10 snmk-col-l-10 snmk-col-offset-1 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-l-offset-1 product-category">
+            {{#each categories}}
+                {{#is description  'Products'}}
+                <div class="title-2 font-bw-1 bold mr-xs mb-xl mt-2xl">{{name}}</div>
+                    <div class="category-sections">
+                    {{#each sections}}
+                        <a class="product-img font-bw-8 mr-l mt-l" href="{{url}}">
+                        <img src="{{description}}" alt="{{name}}">
+                        <div class="text-center mt-xs"><span class="snmk-link-btn">{{name}}</span></div>
+                        </a>
+                    {{/each}}
+                    </div>      
+                {{/is}}
+            {{/each}}
+        </div>  
+    </div>
+        
+    <div class="my-3xl">
+    <h2 class="section-title title-1 font-bw-1 bold mb-xl">
+            {{#is help_center.locale 'zh-cn'}}
+                软件支持
+            {{/is}}
+            {{#isnt help_center.locale 'zh-cn'}}
+                Software Support
+            {{/isnt}}
+        </h2>
+        {{#each categories}}
+            {{#is description  'Software'}}
+            <div class="snmk-container">
+                <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 software-category">
+                {{#each sections}}
+                    {{dc description}}
+                {{/each}}
+                </div>
+            </div>
+            {{/is}}
+        {{/each}}
+    </div>
+{{/isnt}}
+{{#is help_center.locale 'zh-cn'}}
+    <style> 
+        .header > .logo .logo-image {
+            background-image: url({{asset 'pic_nav_logo_white_236x34.png' }});
+        }
+        .header > .logo .logo-image-zh {
+            background-image: url({{asset 'pic_nav_logo_white_zh_242x34.png' }});
+        }
+        .nav-wrapper .user-nav > a, .nav-wrapper .user-nav > a:hover {
+            color: #fff;
+        }
+        .nav-wrapper .user-nav[aria-expanded="true"] > a, .nav-wrapper .user-nav[aria-expanded="true"] > a:hover {
+            color: #272829;
+        }
+        .user-info button, .user-info button:hover, .user-info button:focus {
+            color: #fff;
+        }
+        .nav-wrapper .menu-button .icon-menu {
+            color: #fff;
+        }
+        .nav-wrapper .menu-button[aria-expanded="true"] .icon-menu {
+            color: #272829;
+        }
+        .header .search-container {
+            display: none;
+        }
+        .hero {
+            background-image: url({{asset 'pic_nav_bg_1920x456.png' }});
+        }
+        svg.search-icon {
+            width: 18px;
+            height: 18px;
+            line-height: unset;
+            font-size: unset;
+        }
+    </style>
+
+    <h1 class="visibility-hidden">{{ help_center.name }}</h1>
+
+    <section id="main-content" class="section hero">
+        <div class="hero-title">
+            <span>{{dc 'home_hero_title'}}</span>
+        </div>
+        <div class="hero-inner">
+            <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+                <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor" />
+                <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5" />
+            </svg>
+            {{search submit=false instant=settings.instant_search class='search search-full'}}
+        </div>
+    </section>
+
+    <section class="home-section home-section-default">
+        <div class="container">
+            <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
+            <ul class="home-category-list">
+                {{#each categories}}
+                    {{#is id 4403461255959 }} {{! Snapmaker Original }}
+                        <li class="home-category-item">
+                            <a class="home-category" href="{{url}}">
+                                <img src="{{asset 'pic_category_original_270x220.png' }}" alt="">
+                                <span class="home-category-title">{{name}}</span>
+                                <span class="home-category-description">{{excerpt description}}</span>
+                            </a>
+                        </li>
+                    {{/is}}
+                    {{#is id 360001781913 }} {{! Snapmaker 2.0 }}
+                        <li class="home-category-item">
+                            <a class="home-category" href="{{url}}">
+                                    <img src="{{asset 'pic_category_2.0_270x220.png' }}" alt="">
+                                <span class="home-category-title">{{name}}</span>
+                                <span class="home-category-description">{{excerpt description}}</span>
+                            </a>
+                        </li>
+                    {{/is}}
+                    {{#is id 360003536313 }} {{! Snapmaker Academy }}
+                        <li class="home-category-item">
+                            <a class="home-category" href="{{url}}">
+                                <img src="{{asset 'pic_category_academy_270x220.png' }}" alt="">
+                                <span class="home-category-title">{{name}}</span>
+                                <span class="home-category-description">{{excerpt description}}</span>
+                            </a>
+                        </li>
+                    {{/is}}
+                    {{#is id 360005617793 }} {{! Snapmaker Download }}
+                        <li class="home-category-item">
+                            <a class="home-category" href="{{url}}">
+                                    <img src="{{asset 'pic_category_download_270x220.png' }}" alt="">
+                                <span class="home-category-title">{{name}}</span>
+                                <span class="home-category-description">{{excerpt description}}</span>
+                            </a>
+                        </li>
+                    {{/is}}
+                {{/each}}
+            </ul>
+        </div>
+    </section>
+
+    <section class="home-section home-section-default">
+        <div class="container home-get-started">
+            <h2>{{dc 'home_get_started'}}</h2>
+            <div class="home-get-started-blocks">
+                <!--
+                <div class="home-get-started-block">
+                    <span class="icon-discussion"></span>
+                    <h3>Youtube Channel</h3>
+                    <p>See what’s new in the video tutorials, third-party reviews, and many more.</p>
+                    <a href="https://www.youtube.com/channel/UCtXHu_nugZF3uxgJJjZfcoA" target="_blank">Watch now</a>
+                </div>
+                -->
+                {{dc 'home_get_started_youtube'}}
+                {{dc 'home_get_started_discussion_block'}}
+            </div>
+        </div>
+    </section>
+
+    {{#if promoted_articles}}
+        <section class="home-section home-section-default">
+            <div class="container home-promoted-articles">
+                <h2>{{t 'promoted_articles'}}</h2>
+                <ul class="article-list">
+                    {{#each promoted_articles}}
+                        <li class="article-list-item">
+                            <div class="article-item">
+                                <a href="{{url}}">
+                                    {{title}}
+                                    {{#if internal}}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                                            <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1" />
+                                            <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5" />
+                                        </svg>
+                                    {{/if}}
+                                </a>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </section>
+    {{/if}}
+
+    <section class="home-section home-section-grey">
+        <div class="container home-need-help">
+            <h2 class="home-need-help-title">{{dc 'home_need_help'}}</h2>
+            <p class="home-need-help-desc">{{dc 'home_need_help_desc'}}</p>
+            <div class="home-need-help-buttons">
+                <a class="button button-primary" href="javascript:void(0)" onclick="zE(function() { zE.activate() });">
+                    {{t 'submit_a_request' }}
+                </a>
+                {{!
+                <a id="home-need-help-weixin-button" class="button button-secondary" href="https://forum.snapmaker.com" target="_blank">
+                    Visit to the forum
+                </a>
+                }}
+                {{dc 'home_need_help_button2'}}
+                <div id="home-weixin-qrcode">
+                    <div class="home-need-help-modal">
+                        <img src="{{asset 'pic_weixin_qrcode_120x120.png'}}" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{{/is}}
