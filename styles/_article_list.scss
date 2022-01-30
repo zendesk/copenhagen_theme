@@ -48,7 +48,7 @@
 
   a:hover,
   a:focus {
-    color: $brand_color;
+    color: $blue;
     text-decoration: none;
   }
 
@@ -108,7 +108,7 @@
 
   &:hover, &:focus {
     .video-list-item-title {
-      color: $brand_color;
+      color: $blue;
     }
   }
 
