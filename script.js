@@ -1308,6 +1308,7 @@ function handleSectionUMArticles() {
 async function handleSectionResource(id, locale) {
     const compatibleContainer = getEl('#compatible-container') || {}
     const fileResourceContainer = getEl('#file-resource-container') || {}
+    const compatibleLabelContainer = getEl('#compatible-label-container') || {}
 
     const fold = locale === 'zh-cn' ? 'cn' : 'en'
     const configuration = ajax({
@@ -1323,11 +1324,16 @@ async function handleSectionResource(id, locale) {
         res = await Promise.resolve(configuration)
     }
 
-    let compatibleHtml = ``
-    res.compatible.forEach(item => {
-        compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`
-    })
-    compatibleContainer.innerHTML = compatibleHtml
+    if(res.compatible) {
+        let compatibleHtml = ``
+        res.compatible.forEach(item => {
+            compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`
+        })
+        compatibleContainer.innerHTML = compatibleHtml
+    }else{
+        compatibleLabelContainer.style.display = 'none'
+    }
+
     if (res.productImgSrc) {
         getEl('#section-product-img').src = res.productImgSrc
     }
