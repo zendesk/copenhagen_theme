@@ -1,59 +1,86 @@
-<a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
-
 <header class="header">
-    <div class="logo">
-        {{#link 'help_center'}}
-            {{dc 'home_logo'}}
-        {{/link}}
-    </div>
-    <div class="nav-wrapper">
-        <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" focusable="false" viewBox="0 0 32 32" class="icon-menu icon-open">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M6 7h26m-26 8h26m-26 8h26" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" class="icon-menu icon-close">
-                <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
-            </svg>
-        </button>
-        <nav class="user-nav" id="user-nav">
+    <div class="snmk-container">
+        <div
+            class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-bw-2 first-bar font-1">
+            <div class="not-pc bar-burger burger" onclick="toggleCollectionIcon()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
             <div class="logo">
-                {{#link 'help_center'}}
-                    {{dc 'home_logo'}}
-                {{/link}}
+                <a href="https://snapmaker.com/" class="iconfont" style="color: #070707">&#xe618;</a>
             </div>
-            <div class="search-container">
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
-                    <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor" />
-                    <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5" />
-                </svg>
-                {{search submit=false}}
+
+            <nav class="menus">
+                <a class="menu" href="https://snapmaker.com/products">
+                    {{dc 'header_first_bar_first_item'}}
+                    <span class="iconfont not-pc">&#xe60a;</span>
+                </a>
+                <a class="menu" href="https://snapmaker.com/snapmaker-luban">
+                    {{dc 'header_first_bar_second_item'}}
+                    <span class="iconfont not-pc">&#xe60a;</span>
+                </a>
+                <a class="menu" href="/hc/{{help_center.locale}}">
+                    {{dc 'header_first_bar_third_item'}}
+                    <span class="iconfont not-pc">&#xe60a;</span>
+                </a>
+                <a class="menu" href="https://snapmaker.com/community">
+                    {{dc 'header_first_bar_fourth_item'}}
+                    <span class="iconfont not-pc">&#xe60a;</span>
+                </a>
+            </nav>
+
+            <a style="color: white;min-width: auto" class="snmk-primary-btn my-s" href="https://us.snapmaker.com/"
+                target="'_blank'">
+                {{dc 'header_store_button_text'}}
+            </a>
+        </div>
+
+        <div
+            class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-bw-2 second-bar font-3">
+            <div class="vertical-center font-bw-1 title-3 bold" onclick="toggleSecondBarCollection()">
+                <a class="only-pc" href="http://support.snapmaker.com/hc/{{help_center.locale}}">Support</a>
+                <span class="not-pc">Support</span>
+                <span id="second-bar-icon" class="iconfont not-pc ml-xs font-bw-2">&#xe7b2;</span>
             </div>
-            <a href="javascript:void(0)" onclick="zE(function() { zE.activate() });">{{t 'submit_a_request' }}</a>
-            <a href="https://snapmaker.com/community" target="_blank">{{t 'community' }}</a>
-            {{#if signed_in}}
-                <div class="user-info dropdown">
-                    <button class="dropdown-toggle" aria-haspopup="true">
-                        {{user_avatar class="user-avatar"}}
-                        <span class="hide-on-mobile">
-                            {{user_name}}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-                                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-                            </svg>
-                        </span>
-                    </button>
-                    <div class="dropdown-menu" role="menu">
-                        {{link "my_activities" role="menuitem"}}
-                        {{my_profile role="menuitem"}}
-                        {{change_password role="menuitem"}}
-                        {{link "sign_out" role="menuitem"}}
+            <div class="right-nav">
+                <div class="nav-items">
+                    <a href="http://support.snapmaker.com/hc/{{help_center.locale}}" id="nav-home" class="ml-2xl nav-item">
+                       {{dc 'header_second_bar_first_item'}}
+                    </a>
+                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}/categories/360003536313-Snapmaker-Academy" id="nav-academy" class="ml-2xl nav-item">{{dc 'header_second_bar_second_item'}}</a>
+                    <a class="ml-2xl nav-item" href="https://forum.snapmaker.com/">{{dc 'header_second_bar_third_item'}}</a>
+                    <div class="search-container ml-2xl">
+                        <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
+                        {{search submit=false placeholder="Search Support" class="search search-form"}}
                     </div>
                 </div>
-                {{link "sign_out" class="sign-out"}}
-            {{else}}
-                {{#link "sign_in" class="sign-in"}}
-                    {{t 'sign_in'}}
-                {{/link}}
-            {{/if}}
-        </nav>
+
+                {{#if signed_in}}
+                    <div class="user-info dropdown ml-2xl">
+                        <button class="dropdown-toggle" aria-haspopup="true">
+                            {{user_avatar class="user-avatar"}}
+                            <span class="hide-on-mobile font-bw-2">
+                                {{user_name}}
+                            </span>
+                        </button>
+                        <div class="dropdown-menu" role="menu">
+                            {{link "my_activities" role="menuitem"}}
+                            {{my_profile role="menuitem"}}
+                            {{change_password role="menuitem"}}
+                            {{link "sign_out" role="menuitem"}}
+                        </div>
+                    </div>
+                    {{link "sign_out" class="sign-out"}}
+                {{else}}
+                    {{#link "sign_in" class="sign-in"}}
+                        {{t 'sign_in'}}
+                    {{/link}}
+                {{/if}}
+            </div>
+        </div>
     </div>
 </header>
+
+<div class="mask" onclick="onClickMask()"></div>

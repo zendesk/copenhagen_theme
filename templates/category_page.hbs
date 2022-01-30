@@ -1,5 +1,17 @@
+<script>
+    {{#is category.id 4403461255959 }} {{! Snapmaker Original }}
+        window.location = 'https://support.snapmaker.com/hc/en-us'
+    {{/is}}
+    {{#is category.id 360001781913 }} {{! Snapmaker 2.0 }}
+        window.location = 'https://support.snapmaker.com/hc/en-us'
+    {{/is}}
+    {{#is category.id 360005617793 }} {{! Snapmaker Download }}
+        window.location = 'https://support.snapmaker.com/hc/en-us'
+    {{/is}}
+</script>
 <div class="container-divider"></div>
-<div class="container">
+<div class="snmk-container">
+	<div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
     <nav class="sub-nav">
         {{breadcrumbs}}
     </nav>
@@ -169,4 +181,5 @@
             {{/each}}
         </ul>
     </div>
+  </div>
 </div>

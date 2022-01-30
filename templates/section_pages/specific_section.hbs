@@ -1,0 +1,59 @@
+<div class="container-divider"></div>
+<div class="snmk-container">
+	<div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+    <nav class="sub-nav breadcrums-box">
+        {{breadcrumbs}}
+
+        {{#if settings.show_follow_section }}
+            <div class="follow-btn">
+                {{subscribe}}
+            </div>
+        {{/if}}
+    </nav>
+    <div class="section-container">
+        {{#with section}}
+            <h2>{{#is description 'Type-FAQ'}}FAQ-{{/is}}{{name}}</h2>
+
+            {{#if articles}}
+                {{#is description 'Type-Video'}} {{! video }}
+                    <ul class="video-list">
+                        {{#each articles}}
+                            <li class="video-list-item">
+                                <div class="video-list-item-cover">
+                                    <img class="video-list-item-cover-img" src="#" alt="" />
+                                    <i class="video-list-item-cover-icon"></i>
+                                </div>
+                                <a class="video-list-item-title" href="{{url}}">{{title}}</a>
+                                <ol class="video-list-item-labels"></ol>
+                                <div class="article-body">{{body}}</div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/is}}
+
+                {{#isnt description 'Type-Video'}} {{! article }}
+                    <ul class="article-list">
+                        {{#each articles}}
+                            <li class="article-list-item">
+                                <div class="article-item">
+                                    <a href="{{url}}" class="article-list-link">
+                                      {{#if promoted}}{{dc 'icon-promoted'}}{{/if}}
+                                      {{title}}
+                                      {{#if internal}}{{dc 'icon-internal'}}{{/if}}
+                                    </a>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                {{/isnt}}
+            {{else}}
+                <i class="section-empty">
+                    <a href="{{url}}">{{t 'empty'}}</a>
+                </i>
+            {{/if}}
+        {{/with}}
+
+        {{pagination}}
+    </div>
+  </div>
+</div>

@@ -1,108 +1,140 @@
-<footer class="footer">
-    <div class="footer-inner">
-        <!--{{#link 'help_center'}}{{help_center.name}}{{/link}}-->
-
-        <div class="footer-column-1">
-            {{#link 'help_center'}}
-                <img src="{{asset 'ic_footer_logo.svg'}}" alt="Snapmaker" width="180px" />
-            {{/link}}
-        </div>
-
-        <div class="footer-column-2">
-            {{!
-            <div>
-                <h2>Products</h2>
-                <ul>
-                    <li><a href="https://snapmaker.com/product">Snapmaker Original</a></li>
-                    <li><a href="https://snapmaker.com/platform">Snapmaker 2.0</a></li>
-                </ul>
-            </div>
-            }}
-            {{dc 'footer_product_block'}}
-        </div>
-
-        <div class="footer-column-3">
-            {{!
-            <div>
-                <h2>Learn</h2>
-                <ul>
-                    <li><a href="https://snapmaker.com/community" target="_blank">Community</a></li>
-                    <li><a href="https://forum.snapmaker.com/" target="_blank">Forum</a></li>
-                    <li><a href="https://shop.snapmaker.com/blogs/blog" target="_blank">Blog</a></li>
-                </ul>
-            </div>
-            }}
-            {{dc 'footer_learn_block'}}
-        </div>
-
-        <div class="footer-column-4">
-            <div>
-                {{!
-                <h2>Contact Us</h2>
-                <div class="contact-us-block">
-                    <i class="fa fa-envelope"></i>
-                    <p class="contact-item">
-                        Pre-sales and Logistics: <a href="mailto:info@snapmaker.com">info@snapmaker.com</a>
-                    </p>
-                    <p class="contact-item">
-                        Technical Support: <a href="mailto:support@snapmaker.com">support@snapmaker.com</a>
-                    </p>
-                    <p class="contact-item">
-                        Reselling: <a href="mailto:sales@snapmaker.com">sales@snapmaker.com</a>
-                    </p>
-                </div>
-                <div class="contact-us-block">
-                    <i class="fa fa-phone"></i>
-                    <p class="contact-item">
-                        Tel: +86(0)755 26926117
-                    </p>
-                    <p class="contact-item">
-                        Office Hours: Monday to Friday, 9:30-18:30 (GMT+8:00)
-                    </p>
-                </div>
-                }}
-                {{dc 'footer_contact_us_block_fragment1'}}
-                <div class="contact-us-social">
-                    {{!
-                    <a class="contact-us-social-item" href="https://www.facebook.com/snapmaker/" target="_blank">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="contact-us-social-item" href="https://twitter.com/snapmaker" target="_blank">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a class="contact-us-social-item" href="https://www.youtube.com/channel/UCtXHu_nugZF3uxgJJjZfcoA" target="_blank">
-                        <i class="fa fa-youtube"></i>
-                    </a>
-                    <a class="contact-us-social-item" href="https://www.instagram.com/snapmakerinc/" target="_blank">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                    }}
-                    <div class="footer-modal" id="footer-weixin-qrcode">
-                        <img src="{{asset 'pic_weixin_official_qrcode_258x258.jpg'}}" alt="" />
-                    </div>
-                    {{dc 'footer_contact_us_block_fragment2'}}
-                    {{#if alternative_locales}}
-                        <div class="dropdown language-selector">
-                            <button class="dropdown-toggle" aria-haspopup="true">
-                                {{current_locale.name}}
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
-                                </svg>
-                            </button>
-                            <span class="dropdown-menu dropdown-menu-end" role="menu">
-                                {{#each alternative_locales}}
-                                    <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                                        {{name}}
-                                    </a>
-                                {{/each}}
-                            </span>
-                        </div>
-                    {{/if}}
-                </div>
-            </div>
-        </div>
+<footer class="footer mt-3xl">
+  <div class="snmk-container">
+    <div class="snmk-col-2 snmk-col-l-2 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-2">
+      <a style="color: white;font-size: 16px" href="https://www.snapmaker.com">Snapmaker</a> 
+      <span class="iconfont" style="color: white">&#xe60a;</span>
+      <a class="font-bw-4" href="http://support.snapmaker.com/hc/{{help_center.locale}}" >Support</a>
     </div>
-    <div class="footer-copyright">
-        <p>&copy;2021 Snapmaker All Rights Reserved</p>
+    <div onclick="onFooterCollectionClick(event)"
+         class="snmk-col-5 snmk-col-l-5 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 font-2 footer-related-links-container">
+      <div class="footer-related-links-block" data-toggle="1">
+        {{dc 'footer-snapmaker2'}}
+      </div>
+      <div class="footer-related-links-block" data-toggle="2">
+        {{dc 'footer_addons'}}
+      </div>
+      <div class="footer-related-links-block" data-toggle="3">
+        {{dc 'footer_connect'}}
+      </div>
+      <div class="footer-related-links-block" data-toggle="4">
+        {{dc 'footer_snapmaker_original'}}
+      </div>
+      <div class="footer-related-links-block" data-toggle="5">
+        {{dc 'footer_software_support'}}
+      </div>
+      <div class="footer-related-links-block" data-toggle="6">
+        {{dc 'footer_faq'}}
+      </div>
     </div>
+    <div class="snmk-col-3 snmk-col-l-3 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 font-2">
+      
+      
+      
+  <div class="contact-us">
+    <div class="contact-us-title font-1 ">{{dc 'footer_contact_us_title'}}</div>
+    <div >
+      <div class="mt-m font-2 font-bw-4">{{dc 'footer_contact_us_description'}}</div>
+      <div class="mt-l">
+        <div class="parent">
+          <div v-if="!successMessage" style="display: flex">
+            <div class="input-wrapper">
+              {{#isnt help_center.locale 'zh-cn'}}
+                <input autocomplete="off" name="EMAIL" type="text" placeholder="Your email address" id="emailInside" />
+              {{/isnt}}
+              {{#is help_center.locale 'zh-cn'}}
+              	<input autocomplete="off" name="EMAIL" type="text" placeholder="邮件" id="emailInside" />
+              {{/is}}
+            </div>
+            <div class="submit-wrapper">
+              {{#isnt help_center.locale 'zh-cn'}}
+                <input type="submit" value="Subscribe" onclick="mailchimpSubscribe()" />
+              {{/isnt}}
+              {{#is help_center.locale 'zh-cn'}}
+              	<input type="submit" value="订阅" onclick="mailchimpSubscribe()" />
+              {{/is}}
+            </div>
+          </div>
+          <p class="message warn" id="footer-error-msg" transition="fade"></p>
+          <p class="message success" id="footer-success-msg" transition="fade"></p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-l contact-way font-bw-4">
+      <div class="vertical-center mr-m iconfont"> &#xe77e;</div>
+      <div style="flex: 1 1;">
+        <div class="font-2" style="line-height: 24px" v-for="way of contactWay.ways" :key="way">
+          {{dc 'footer_contact_us_emails'}}
+        </div>
+      </div>
+    </div>
+      
+    <div class="mt-l contact-way font-bw-4">
+      <div class="vertical-center mr-m iconfont">&#xe61b;</div>
+      <div style="flex: 1 1;">
+        <div class="font-2" style="line-height: 24px" v-for="way of contactWay.ways" :key="way">
+          {{dc 'footer_contact_us_phone'}}
+        </div>
+      </div>
+    </div>
+    <div class="footer-social-icon my-xl" style="display: flex">
+        <a class="iconfont mr-m" href="https://www.facebook.com/snapmaker/" target="_blank">
+        	&#xe88d;
+        </a>
+        <a class="iconfont mr-m" href="https://twitter.com/snapmaker" target="_blank">
+        	&#xe700;
+        </a>
+        <a class="iconfont mr-m" href="https://www.youtube.com/c/Snapmaker" target="_blank">
+        	&#xe883;
+        </a>
+        <a class="iconfont mr-m" href="https://www.instagram.com/snapmakerinc/" target="_blank">
+        	&#xe88f;
+        </a>
+        <a class="iconfont mr-m" href="https://www.linkedin.com/company/snapmaker/" target="_blank">
+        	&#xe600;
+        </a>
+    </div>
+  </div>
+      
+      
+      
+    </div>
+    <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-2 footer-bottom pt-l pb-xl">
+      <span style="color: white">
+        ©2022 Snapmaker All Rights Reserved
+      </span>
+      <div>
+        {{#if alternative_locales}}
+        	{{#is current_locale.name 'English (US)'}}
+            {{#each alternative_locales}}
+        			{{#is name '简体中文'}}
+        				<a href="{{url}}" class="change-language font-2" dir="{{direction}}" rel="nofollow" role="menuitem">China / 简体中文</a>
+        			{{/is}}
+            {{/each}}
+        	{{/is}}
+        	{{#isnt current_locale.name 'English (US)'}}
+            {{#each alternative_locales}}
+        			{{#is name 'English (US)'}}
+        				<a href="{{url}}" class="change-language font-2" dir="{{direction}}" rel="nofollow" role="menuitem">English / 英文</a>
+        			{{/is}}
+            {{/each}}
+        	{{/isnt}}
+        {{/if}}
+        {{! #if alternative_locales}}
+<!--           <div class="dropdown language-selector">
+              <button class="dropdown-toggle" aria-haspopup="true">
+                  {{current_locale.name}}
+                  <i class="icon-down"></i>
+              </button>
+              <span class="dropdown-menu dropdown-menu-end" role="menu">
+                  {{#each alternative_locales}}
+                      <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                          {{name}}
+                      </a>
+                  {{/each}}
+              </span>
+          </div> -->
+        {{! /if}}
+      </div>
+    </div>
+  </div>
 </footer>
