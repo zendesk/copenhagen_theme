@@ -1104,6 +1104,12 @@ ul {
   -webkit-appearance: none;
 }
 
+.search input[type="search"]:-webkit-autofill, .search input[type="search"]:-webkit-autofill:hover,
+.search input[type="search"] input[type="search"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  border-right-color: transparent;
+}
+
 .search input[type="search"],
 .search .clear-button {
   background-color: #fff;
@@ -1139,7 +1145,7 @@ ul {
   justify-content: center;
   padding: 0 15px;
   pointer-events: none;
-  transition: .12s ease-in-out;
+  transition: border .12s ease-in-out, color .12s ease-in-out;
 }
 
 [dir="rtl"] .search .clear-button {
