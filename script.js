@@ -39,48 +39,64 @@ document.addEventListener('DOMContentLoaded', function() {
   function buildSearchClearButton() {
     const button = document.createElement("button");
     button.setAttribute("type", "button");
+    button.setAttribute("aria-controls", searchInput.id);
     button.classList.add("clear-button");
     const icon = "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='Clear Search field'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>";
     button.innerHTML = icon;
     button.addEventListener("click", function(event) {
       console.log("clear button clicked");
-      const input = event.target.previousElementSibling;
-      console.log("input", input);
-      input.value = "";
-      input.focus();
+      searchInput.value = "";
+      searchInput.focus();
     })
+    // button.addEventListener("blur", bar);
     return button;
   }
 
-  function appendSearchClearButton(event) {
-    const woo = event.target.parentNode;
-    let clearButton = woo.querySelector(".clear-button");
-    if (clearButton === null) {
-      clearButton = buildSearchClearButton();
-      woo.append(clearButton);
+  function foo() {
+    if (searchInput.value.length > 0) {
+      searchClearButton.classList.add("is-available");
+      searchArea.classList.add("search-has-value");
     }
+  }
+
+  function bar(event) {
+    // Hide the clear button on blur...
+    // but not when the next element to receive focus is the clear button
+    if (event.relatedTarget !== searchClearButton) {
+      searchClearButton.classList.remove("is-available");
+      searchArea.classList.remove("search-has-value");
+    }
+  }
+
+  function appendSearchClearButton() {
+    searchClearButton = buildSearchClearButton();
+    searchArea.append(searchClearButton);
+    // if (searchInput.value.length > 0) {
+      foo();
+    // }
   }
   
   function buzz(event) {
     const woo = event.target.parentNode;
     let clearButton = woo.querySelector(".clear-button");
-    if (event.target.value.length > 0) {
-      const classes = [...clearButton.classList];
-      clearButton.classList.add("is-available");
-      woo.classList.add("search-has-value");
-    } else {
-      clearButton.classList.remove("is-available");
-      woo.classList.remove("search-has-value");
-    }
+    // if (event.target.value.length > 0) {
+      foo();
+    // } else {
+      // bar();
+    // }
   }
 
   const debouncedFunction = debounce(buzz, 200)
 
-  const fizzbuzz = document.querySelector("[type='search']");
-  fizzbuzz.addEventListener("focus", appendSearchClearButton, {once: true});
-  fizzbuzz.addEventListener("keyup", debouncedFunction);
-  // fizzbuzz.addEventListener("focus", foo);
-  // fizzbuzz.addEventListener("blur", bar);
+  const searchArea = document.querySelector("form.search");
+  
+  const searchInput = searchArea.querySelector("input[type='search']");
+  searchInput.addEventListener("keyup", debouncedFunction);
+  searchInput.addEventListener("focus", foo);
+  searchInput.addEventListener("blur", bar);
+
+  let searchClearButton = null;
+  appendSearchClearButton();
 
   /* -------------------------------------------------------------------------------- */
 

@@ -1119,13 +1119,11 @@ ul {
 .search-has-value input[type="search"] {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
-  border-right-width: 0;
 }
 
 [dir="rtl"] .search-has-value input[type="search"] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
-  border-left-width: 0;
 }
 
 .search .clear-button {
@@ -1137,7 +1135,7 @@ ul {
   display: none;
   flex: none;
   justify-content: center;
-  min-width: 44px;
+  padding: 0 15px;
   transition: border 0.12s ease-in-out;
 }
 
