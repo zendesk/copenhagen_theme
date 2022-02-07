@@ -53,14 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return button;
   }
 
-  function bar(event) {
-    // Hide the clear button on blur...
-    // but not when the next element to receive focus is the clear button
-    if (event.relatedTarget !== searchClearButton) {
-      searchClearButton.classList.remove("is-available");
-    }
-  }
-
   function appendSearchClearButton() {
     searchClearButton = buildSearchClearButton();
     searchArea.append(searchClearButton);
@@ -70,8 +62,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function buzz(event) {
-    const woo = event.target.parentNode;
-    let clearButton = woo.querySelector(".clear-button");
     if (event.target.value.length > 0) {
       searchArea.classList.add("search-has-value");
     } else {
@@ -85,8 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const searchInput = searchArea.querySelector("input[type='search']");
   searchInput.addEventListener("keyup", debouncedFunction);
-  // searchInput.addEventListener("focus", foo);
-  // searchInput.addEventListener("blur", bar);
 
   let searchClearButton = null;
   appendSearchClearButton();
