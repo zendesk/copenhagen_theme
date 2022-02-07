@@ -69,7 +69,7 @@ textarea {
 input {
   max-width: 100%;
   box-sizing: border-box;
-  transition: $border-transition;
+  transition: border .12s ease-in-out;
 
   &:not([type="checkbox"]) {
     outline: none;

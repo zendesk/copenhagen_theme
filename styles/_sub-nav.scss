@@ -12,11 +12,17 @@
   padding-bottom: 15px;
 
   //Inner pages search field
+  .search-container {
+    flex: 0 1 300px;
+  }
+
   input[type="search"] {
     @include tablet {
-      min-width: 300px;
+      // min-width: 300px;
     }
 
-    &::after { font-size: $font-size-base; }
+    &::after { 
+      font-size: $font-size-base; 
+    }
   }
 }

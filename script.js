@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
     button.innerHTML = icon;
     button.addEventListener("click", function(event) {
       console.log("clear button clicked");
+      searchArea.classList.remove("search-has-value");
       searchInput.value = "";
       searchInput.focus();
     })
@@ -52,38 +53,30 @@ document.addEventListener('DOMContentLoaded', function() {
     return button;
   }
 
-  function foo() {
-    if (searchInput.value.length > 0) {
-      searchClearButton.classList.add("is-available");
-      searchArea.classList.add("search-has-value");
-    }
-  }
-
   function bar(event) {
     // Hide the clear button on blur...
     // but not when the next element to receive focus is the clear button
     if (event.relatedTarget !== searchClearButton) {
       searchClearButton.classList.remove("is-available");
-      searchArea.classList.remove("search-has-value");
     }
   }
 
   function appendSearchClearButton() {
     searchClearButton = buildSearchClearButton();
     searchArea.append(searchClearButton);
-    // if (searchInput.value.length > 0) {
-      foo();
-    // }
+    if (searchInput.value.length > 0) {
+      searchArea.classList.add("search-has-value");
+    }
   }
   
   function buzz(event) {
     const woo = event.target.parentNode;
     let clearButton = woo.querySelector(".clear-button");
-    // if (event.target.value.length > 0) {
-      foo();
-    // } else {
-      // bar();
-    // }
+    if (event.target.value.length > 0) {
+      searchArea.classList.add("search-has-value");
+    } else {
+      searchArea.classList.remove("search-has-value");
+    }
   }
 
   const debouncedFunction = debounce(buzz, 200)
@@ -92,8 +85,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   const searchInput = searchArea.querySelector("input[type='search']");
   searchInput.addEventListener("keyup", debouncedFunction);
-  searchInput.addEventListener("focus", foo);
-  searchInput.addEventListener("blur", bar);
+  // searchInput.addEventListener("focus", foo);
+  // searchInput.addEventListener("blur", bar);
 
   let searchClearButton = null;
   appendSearchClearButton();

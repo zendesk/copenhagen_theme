@@ -250,7 +250,7 @@ textarea {
 input {
   max-width: 100%;
   box-sizing: border-box;
-  transition: border 0.12s ease-in-out;
+  transition: border .12s ease-in-out;
 }
 
 input:not([type="checkbox"]) {
@@ -1119,11 +1119,13 @@ ul {
 .search-has-value input[type="search"] {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
+  border-right-color: transparent;
 }
 
 [dir="rtl"] .search-has-value input[type="search"] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
+  border-left-color: transparent;
 }
 
 .search .clear-button {
@@ -1131,12 +1133,12 @@ ul {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   border-left-color: transparent;
-  color: #777;
+  color: transparent;
   display: none;
   flex: none;
   justify-content: center;
   padding: 0 15px;
-  transition: border 0.12s ease-in-out;
+  transition: .12s ease-in-out;
 }
 
 [dir="rtl"] .search .clear-button {
@@ -1145,17 +1147,17 @@ ul {
   border-right-color: transparent;
 }
 
-.search .clear-button.is-available {
-  display: flex;
-}
-
 .search .clear-button:focus {
   border: 1px solid $brand_color;
   outline: none;
 }
 
-.search .clear-button svg {
-  flex: none;
+.search-has-value .clear-button {
+  display: flex;
+}
+
+.search:focus-within .clear-button {
+  color: #777;
 }
 
 .search-icon {
@@ -1267,10 +1269,8 @@ ul {
   }
 }
 
-@media (min-width: 768px) {
-  .sub-nav input[type="search"] {
-    min-width: 300px;
-  }
+.sub-nav .search-container {
+  flex: 0 1 300px;
 }
 
 .sub-nav input[type="search"]::after {
