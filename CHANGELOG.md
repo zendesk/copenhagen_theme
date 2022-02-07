@@ -1,3 +1,11 @@
+## [2.13.3](https://github.com/zendesk/copenhagen_theme/compare/v2.13.2...v2.13.3) (2022-02-07)
+
+
+### Bug Fixes
+
+* **styles:** make search icon click through ([f812829](https://github.com/zendesk/copenhagen_theme/commit/f8128297cc56a208fc36c373524d0401d4314a64))
+* mark search icon as decorative to improve a11y ([0427a7d](https://github.com/zendesk/copenhagen_theme/commit/0427a7dea78d63f1b177fd7d0b1387b8d7f5eb1f))
+
 ## [2.13.2](https://github.com/zendesk/copenhagen_theme/compare/v2.13.1...v2.13.2) (2022-01-25)
 
 
