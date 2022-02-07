@@ -22,6 +22,58 @@ document.addEventListener('DOMContentLoaded', function() {
     return null;
   }
 
+  /* -------------------------------------------------------------------------------- */
+
+  // 
+  function debounce(callback, wait) {
+    let timeoutId = null;
+    return (...args) => {
+      window.clearTimeout(timeoutId);
+      timeoutId = window.setTimeout(() => {
+        callback.apply(null, args);
+      }, wait);
+    };
+  }
+
+  // TODO: Ask about how translated string gets here
+  function buildSearchClearButton() {
+    const button = document.createElement("button");
+    button.setAttribute("type", "button");
+    button.classList.add("clear-button");
+    const icon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' focusable='false' viewBox='0 0 16 16'><path stroke='currentColor' stroke-linecap='round' d='M3 13L13 3m0 10L3 3'/></svg>";
+    button.innerHTML = icon;
+    return button;
+  }
+  
+  function buzz(event) {
+    const woo = event.target.parentNode;
+    let clearButton = document.querySelector(".search .clear-button");
+    if (event.target.value.length > 0) {
+      console.log("value greater than 1");
+      if (clearButton === null) {
+        clearButton = buildSearchClearButton();
+        woo.append(clearButton);
+      }
+      const classes = [...clearButton.classList];
+      console.log("clear button:", classes);
+      clearButton.classList.add("pew");
+      woo.classList.add("search-has-value");
+    } else {
+      console.log("value less than 1");
+      clearButton.classList.remove("pew");
+      woo.classList.remove("search-has-value");
+    }
+  }
+
+  const debouncedFunction = debounce(buzz, 250)
+
+  const fizzbuzz = document.querySelector("[type='search']");
+  fizzbuzz.addEventListener("keyup", debouncedFunction);
+  // fizzbuzz.addEventListener("focus", foo);
+  // fizzbuzz.addEventListener("blur", bar);
+
+  /* -------------------------------------------------------------------------------- */
+
   // social share popups
   Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
     anchor.addEventListener('click', function(e) {

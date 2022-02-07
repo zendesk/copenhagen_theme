@@ -1,32 +1,98 @@
 /***** Search field *****/
+
+$padding-left: 40px;
+$padding-right: 20px;
+
+
 .search {
+  display: flex;
   position: relative;
 
   input[type="search"] {
-    border: 1px solid $border-color;
-    background-color: white;
-    border-radius: 30px;
+    appearance: none;
+    -webkit-appearance: none;
     box-sizing: border-box;
     color: $field-text-color;
+    flex: 1 1 auto;
     height: 40px;
-    padding-left: 40px;
-    padding-right: 20px;
-    -webkit-appearance: none;
+    padding-left: $padding-left;
+    padding-right: $padding-right;
     width: 100%;
 
     [dir="rtl"] & {
-      padding-right: 40px;
-      padding-left: 20px;
+      padding-right: $padding-left;
+      padding-left: $padding-right;
     }
 
     &:focus {
       border: 1px solid $brand_color;
       color: $field-text-focus-color;
     }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+
   }
 
-  &-full input[type="search"] {
+  input[type="search"], 
+  .clear-button {
+    background-color: #fff;
+    border: 1px solid $border-color;
+    border-radius: 30px;
+  }
+
+  &-full input[type="search"], 
+  &-full .clear-button {
     border: 1px solid #fff;
+  }
+  
+  &-has-value input[type="search"] {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right-width: 0;
+
+    [dir="rtl"] & {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+      border-left-width: 0;
+    }
+
+  }
+
+  .clear-button {
+    align-items: center;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left-color: transparent;
+    display: none;
+    flex: none;
+    justify-content: center;
+    min-width: 44px;
+    transition: $border-transition;
+
+    [dir="rtl"] & {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+      border-right-color: transparent;
+    }
+
+    &.pew {
+      display: flex;
+    }
+
+    &:focus {
+      border: 1px solid $brand_color;
+      outline: none;
+    }
+
+    svg {
+      flex: none;
+    }
+
   }
 }
 
