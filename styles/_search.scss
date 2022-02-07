@@ -38,6 +38,7 @@
   width: 18px;
   height: 18px;
   color: #777;
+  pointer-events: none;
 
   [dir="rtl"] & {
     right: 15px;
