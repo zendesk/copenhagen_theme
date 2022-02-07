@@ -11,7 +11,7 @@
         }],
         ["@semantic-release/git", {
             "assets": ["manifest.json", "CHANGELOG.md"],
-            "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
+            "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}\n\nskip-checks: true"
         }],
         "@semantic-release/github"
     ]
