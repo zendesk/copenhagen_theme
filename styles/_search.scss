@@ -3,6 +3,8 @@
 $padding-left: 40px;
 $padding-right: 20px;
 
+$icon-color: #777;
+
 
 .search {
   display: flex;
@@ -68,10 +70,11 @@ $padding-right: 20px;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     border-left-color: transparent;
+    color: $icon-color;
     display: none;
     flex: none;
     justify-content: center;
-    min-width: 44px;
+    padding: 0 15px;
     transition: $border-transition;
 
     [dir="rtl"] & {
@@ -80,7 +83,7 @@ $padding-right: 20px;
       border-right-color: transparent;
     }
 
-    &.pew {
+    &.is-available {
       display: flex;
     }
 
@@ -103,7 +106,7 @@ $padding-right: 20px;
   z-index: 1;
   width: 18px;
   height: 18px;
-  color: #777;
+  color: $icon-color;
   pointer-events: none;
 
   [dir="rtl"] & {

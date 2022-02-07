@@ -40,34 +40,44 @@ document.addEventListener('DOMContentLoaded', function() {
     const button = document.createElement("button");
     button.setAttribute("type", "button");
     button.classList.add("clear-button");
-    const icon = "<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' focusable='false' viewBox='0 0 16 16'><path stroke='currentColor' stroke-linecap='round' d='M3 13L13 3m0 10L3 3'/></svg>";
+    const icon = "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='Clear Search field'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>";
     button.innerHTML = icon;
+    button.addEventListener("click", function(event) {
+      console.log("clear button clicked");
+      const input = event.target.previousElementSibling;
+      console.log("input", input);
+      input.value = "";
+      input.focus();
+    })
     return button;
+  }
+
+  function appendSearchClearButton(event) {
+    const woo = event.target.parentNode;
+    let clearButton = woo.querySelector(".clear-button");
+    if (clearButton === null) {
+      clearButton = buildSearchClearButton();
+      woo.append(clearButton);
+    }
   }
   
   function buzz(event) {
     const woo = event.target.parentNode;
-    let clearButton = document.querySelector(".search .clear-button");
+    let clearButton = woo.querySelector(".clear-button");
     if (event.target.value.length > 0) {
-      console.log("value greater than 1");
-      if (clearButton === null) {
-        clearButton = buildSearchClearButton();
-        woo.append(clearButton);
-      }
       const classes = [...clearButton.classList];
-      console.log("clear button:", classes);
-      clearButton.classList.add("pew");
+      clearButton.classList.add("is-available");
       woo.classList.add("search-has-value");
     } else {
-      console.log("value less than 1");
-      clearButton.classList.remove("pew");
+      clearButton.classList.remove("is-available");
       woo.classList.remove("search-has-value");
     }
   }
 
-  const debouncedFunction = debounce(buzz, 250)
+  const debouncedFunction = debounce(buzz, 200)
 
   const fizzbuzz = document.querySelector("[type='search']");
+  fizzbuzz.addEventListener("focus", appendSearchClearButton, {once: true});
   fizzbuzz.addEventListener("keyup", debouncedFunction);
   // fizzbuzz.addEventListener("focus", foo);
   // fizzbuzz.addEventListener("blur", bar);

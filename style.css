@@ -1133,6 +1133,7 @@ ul {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   border-left-color: transparent;
+  color: #777;
   display: none;
   flex: none;
   justify-content: center;
@@ -1146,7 +1147,7 @@ ul {
   border-right-color: transparent;
 }
 
-.search .clear-button.pew {
+.search .clear-button.is-available {
   display: flex;
 }
 
