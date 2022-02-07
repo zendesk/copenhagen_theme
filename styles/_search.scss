@@ -75,6 +75,7 @@ $icon-color: #777;
     flex: none;
     justify-content: center;
     padding: 0 15px;
+    pointer-events: none;
     transition: .12s ease-in-out;
 
     [dir="rtl"] & {
@@ -96,6 +97,7 @@ $icon-color: #777;
 
   &:focus-within .clear-button {
     color: $icon-color;
+    pointer-events: auto;
   }
 
 }

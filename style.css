@@ -1138,6 +1138,7 @@ ul {
   flex: none;
   justify-content: center;
   padding: 0 15px;
+  pointer-events: none;
   transition: .12s ease-in-out;
 }
 
@@ -1158,6 +1159,7 @@ ul {
 
 .search:focus-within .clear-button {
   color: #777;
+  pointer-events: auto;
 }
 
 .search-icon {
@@ -1254,19 +1256,22 @@ ul {
 }
 
 .sub-nav {
+  align-items: baseline;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px 30px;
   justify-content: space-between;
-  margin-bottom: 30px;
-  min-height: 50px;
-  padding-bottom: 15px;
+  margin-bottom: 55px;
 }
 
 @media (min-width: 768px) {
   .sub-nav {
     align-items: baseline;
-    flex-direction: row;
   }
+}
+
+.sub-nav .breadcrumbs {
+  margin: 0;
 }
 
 .sub-nav .search-container {

@@ -1,17 +1,25 @@
 .sub-nav {
   @include tablet {
     align-items: baseline;
-    flex-direction: row;
+    // flex-direction: row;
   }
 
+  align-items: baseline;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px 30px;
   justify-content: space-between;
-  margin-bottom: 30px;
-  min-height: 50px;
-  padding-bottom: 15px;
+  margin-bottom: 55px;
+  // min-height: 50px;
+  // padding-bottom: 15px;
 
-  //Inner pages search field
+  // Inner pages breadcrumbs
+  .breadcrumbs {
+    margin: 0;
+  }
+
+  // Inner pages search field
   .search-container {
     flex: 0 1 300px;
   }
