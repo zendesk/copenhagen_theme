@@ -175,6 +175,23 @@
 .category-section[aria-expanded="false"] .section-title-collection{
   display: none; 
 }
+.category-section-toggle {
+  .iconfont {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    transition: all 0.3s;
+  }
+  &[aria-expanded="false"] .iconfont{
+    transform: rotate(0);
+  }
+
+  &[aria-expanded="true"]  .iconfont{
+    transform: rotate(180deg);
+  }
+}
+
+
 .video-list-item {
   &:nth-child(1),&:nth-child(2),&:nth-child(3) {
     margin-top: 0;

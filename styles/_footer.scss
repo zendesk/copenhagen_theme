@@ -415,6 +415,10 @@ input::placeholder {
     padding-top: 24px;
     display: flex;
     justify-content: space-between;
+
+    .iconfont {
+      transition: all 0.3s;
+    }
   }
 
   .contact-us {

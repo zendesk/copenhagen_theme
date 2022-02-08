@@ -1189,8 +1189,11 @@ function onFooterCollectionClick(event) {
     const toggleNo = event && event.target && event.target.dataset && event.target.dataset.toggle
     const targetEl = document.querySelector(`#footer-link-part${toggleNo}`)
     if (!targetEl) return
-    const targetDisplay = window.getComputedStyle(targetEl).display
-    targetEl.style.display = targetDisplay === 'none' ? 'block' : 'none'
+    const isTargetNotDisplay = window.getComputedStyle(targetEl).display === 'none'
+    targetEl.style.display = isTargetNotDisplay  ? 'block' : 'none'
+    
+    const iconEl = document.querySelector(`.iconfont[data-toggle="${toggleNo}"]`)
+    if(iconEl) iconEl.style.transform = isTargetNotDisplay ? 'rotate(90deg)' : 'rotate(0deg)'
 }
 
 /**
@@ -1298,7 +1301,6 @@ function handleSectionUMArticles() {
         }
     })
 }
-
 
 /**
  * @description section page: first screen, right side, get data of download resource and format for template  
@@ -1627,103 +1629,6 @@ async function handleLubanSoftware(locale) {
     return handleSelectDownload(templateData)
 }
 
-
-/**
- * @description get the version and installers package of Luban; data from GitHub API(side effect: with times limit)
- * @param locale current page language ({{help_center.locale}})
- * @returns the innerHTML of Software(Luban) block
- */
-// async function handleLubanSoftware(locale) {
-//     const res = await ajax({
-//         method: 'GET',
-//         url: 'https://api.github.com/repos/Snapmaker/Luban/releases/latest'
-//     })
-//     const softwareVersion = res.name
-//     const installersAssets = res.assets.filter(v => v.name.indexOf('.yml') === -1 && v.name.indexOf('.dmg') === -1)
-
-//     let templateData
-//     // if(new RegExp('/hc/zh-cn[/]*').test(window.location.pathname)){
-//     if (locale === 'zh-cn') {
-//         templateData = {
-//             "title": "软件",
-//             "time": "Sep 28, 2021",
-//             "type": "select",
-//             "text": "下载 Luban ",
-//             "description": [
-//                 {
-//                     "text": "Download previous versions from our ",
-//                     "link": ""
-//                 },
-//                 {
-//                     "text": "GitHub",
-//                     "link": "https://github.com/Snapmaker/Luban/releases"
-//                 },
-//                 {
-//                     "text": ".<br>",
-//                     "link": ""
-//                 },
-//                 {
-//                     "text": " Jump start your making journey with our software ",
-//                     "link": ""
-//                 },
-//                 {
-//                     "text": "user manual",
-//                     "link": "https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual"
-//                 },
-//                 {
-//                     "text": ".",
-//                     "link": ""
-//                 }
-//             ]
-//         }
-//     } else {
-//         templateData = {
-//             "title": "Software",
-//             "time": "Sep 28, 2021",
-//             "type": "select",
-//             "text": "Download Luban ",
-//             "description": [
-//                 {
-//                     "text": "Download previous versions from our ",
-//                     "link": ""
-//                 },
-//                 {
-//                     "text": "GitHub",
-//                     "link": "https://github.com/Snapmaker/Luban/releases"
-//                 },
-//                 {
-//                     "text": ".<br>",
-//                     "link": ""
-//                 },
-//                 {
-//                     "text": " Jump start your making journey with our software ",
-//                     "link": ""
-//                 },
-//                 {
-//                     "text": "user manual",
-//                     "link": "https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual"
-//                 },
-//                 {
-//                     "text": ".",
-//                     "link": ""
-//                 }
-//             ]
-//         }
-//     }
-
-//     templateData.text += softwareVersion
-//     templateData.dropdown = installersAssets.map(v => {
-//         return {
-//             text: v.name,
-//             link: v.browser_download_url,
-//         }
-//     }).concat([
-//         { text: 'Source code (zip)', link: res.zipball_url },
-//         { text: 'Source code (tar.gz)', link: res.tarball_url }
-//     ])
-
-//     return handleSelectDownload(templateData)
-// }
 //============================================== utils ==============================================
 /**
  * @description throttle func

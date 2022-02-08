@@ -9,26 +9,51 @@
             </div>
 
             <div class="logo">
-                <a href="https://snapmaker.com/" class="iconfont" style="color: #070707">&#xe618;</a>
+                {{#isnt help_center.locale 'zh-cn'}}
+                    <a href="https://snapmaker.com/" class="iconfont" style="color: #070707">&#xe618;</a>
+                {{/isnt}}
+                {{#is help_center.locale 'zh-cn'}}
+                    <a href="https://snapmaker.cn/" class="iconfont" style="color: #070707">&#xe618;</a>
+                {{/is}}
             </div>
 
             <nav class="menus">
-                <a class="menu" href="https://snapmaker.com/products">
-                    {{dc 'header_first_bar_first_item'}}
-                    <span class="iconfont not-pc">&#xe60a;</span>
-                </a>
-                <a class="menu" href="https://snapmaker.com/snapmaker-luban">
-                    {{dc 'header_first_bar_second_item'}}
-                    <span class="iconfont not-pc">&#xe60a;</span>
-                </a>
-                <a class="menu" href="/hc/{{help_center.locale}}">
-                    {{dc 'header_first_bar_third_item'}}
-                    <span class="iconfont not-pc">&#xe60a;</span>
-                </a>
-                <a class="menu" href="https://snapmaker.com/community">
-                    {{dc 'header_first_bar_fourth_item'}}
-                    <span class="iconfont not-pc">&#xe60a;</span>
-                </a>
+                {{#isnt help_center.locale 'zh-cn'}}
+                    <a class="menu" href="https://snapmaker.com/products">
+                        {{dc 'header_first_bar_first_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                    <a class="menu" href="https://snapmaker.com/snapmaker-luban">
+                        {{dc 'header_first_bar_second_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                    <a class="menu" href="/hc/{{help_center.locale}}">
+                        {{dc 'header_first_bar_third_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                    <a class="menu" href="https://snapmaker.com/community">
+                        {{dc 'header_first_bar_fourth_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                {{/isnt}}
+                {{#is help_center.locale 'zh-cn'}}
+                    <a class="menu" href="https://snapmaker.cn/products">
+                        {{dc 'header_first_bar_first_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                    <a class="menu" href="https://snapmaker.com/snapmaker-luban">
+                        {{dc 'header_first_bar_second_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                    <a class="menu" href="/hc/{{help_center.locale}}">
+                        {{dc 'header_first_bar_third_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                    <a class="menu" href="https://snapmaker.cn/community">
+                        {{dc 'header_first_bar_fourth_item'}}
+                        <span class="iconfont not-pc">&#xe60a;</span>
+                    </a>
+                {{/is}}
             </nav>
 
             <a style="color: white;min-width: auto" class="snmk-primary-btn my-s" href="https://us.snapmaker.com/"
