@@ -56,10 +56,18 @@
                 {{/is}}
             </nav>
 
-            <a style="color: white;min-width: auto" class="snmk-primary-btn my-s" href="https://us.snapmaker.com/"
-                target="'_blank'">
-                {{dc 'header_store_button_text'}}
-            </a>
+            {{#isnt help_center.locale 'zh-cn'}}
+                <a style="color: white;min-width: auto" class="snmk-primary-btn my-s" href="https://us.snapmaker.com/"
+                    target="'_blank'">
+                    {{dc 'header_store_button_text'}}
+                </a>
+            {{/isnt}}
+            {{#is help_center.locale 'zh-cn'}}
+                <a style="color: white;min-width: auto" class="snmk-primary-btn my-s" href="https://snapmaker.tmall.com/?spm=a1z10.3-b.w5001-21696184167.3.40be7f386PAuCQ&scene=taobao_shop"
+                    target="'_blank'">
+                    {{dc 'header_store_button_text'}}
+                </a>
+            {{/is}}
         </div>
 
         <div
