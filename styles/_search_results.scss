@@ -202,10 +202,6 @@
     li {
       @include desktop { display: table-cell; }
     }
-
-    li, li a, li a:visited {
-      color: inherit;
-    }
   }
 }
 

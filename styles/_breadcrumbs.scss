@@ -19,8 +19,12 @@
       content: ">";
       margin: 0 4px;
     }
-    a:visited {
+    a {
       color: $link_color;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

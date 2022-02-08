@@ -1054,8 +1054,12 @@ ul {
   margin: 0 4px;
 }
 
-.breadcrumbs li a:visited {
+.breadcrumbs li a {
   color: $link_color;
+}
+
+.breadcrumbs li a:hover {
+  text-decoration: underline;
 }
 
 /***** Search field *****/
@@ -4570,10 +4574,6 @@ ul {
   .search-result-breadcrumbs li {
     display: table-cell;
   }
-}
-
-.search-result-breadcrumbs li, .search-result-breadcrumbs li a, .search-result-breadcrumbs li a:visited {
-  color: inherit;
 }
 
 /* By default use bold instead of italic to highlight */
