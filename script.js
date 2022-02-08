@@ -1,3 +1,50 @@
+// Vanilla JS debounce function, by Josh W. Comeau:
+// https://www.joshwcomeau.com/snippets/javascript/debounce/
+function debounce(callback, wait) {
+  let timeoutId = null;
+  return (...args) => {
+    window.clearTimeout(timeoutId);
+    timeoutId = window.setTimeout(() => {
+      callback.apply(null, args);
+    }, wait);
+  };
+}
+
+// Define variables for search field
+let searchForm, searchInput, searchClearButton;
+let searchFormFilledClassName = "search-has-value";
+
+// Clear the search input, and then return focus to it
+function clearSearchInput() {
+  searchForm.classList.remove(searchFormFilledClassName);
+  searchInput.value = "";
+  searchInput.focus();
+}
+
+// Create an HTML button that all users -- especially keyboard users -- 
+// can interact with, to clear the search input.
+// To learn more about this, see:
+// https://adrianroselli.com/2019/07/ignore-typesearch.html#Delete 
+function buildClearSearchButton() {
+  const button = document.createElement("button");
+  button.setAttribute("type", "button");
+  button.setAttribute("aria-controls", searchInput.id);
+  button.classList.add("clear-button");
+  const icon = "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='Clear search text field'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>";
+  button.innerHTML = icon;
+  button.addEventListener("click", clearSearchInput);
+  return button;
+}
+
+// Append the clear button to the search field
+function appendClearSearchButton() {
+  searchClearButton = buildClearSearchButton();
+  searchForm.append(searchClearButton);
+  if (searchInput.value.length > 0) {
+    searchForm.classList.add(searchFormFilledClassName);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   // Key map
   var ENTER = 13;
@@ -22,64 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
     return null;
   }
 
-  /* -------------------------------------------------------------------------------- */
-
-  // 
-  function debounce(callback, wait) {
-    let timeoutId = null;
-    return (...args) => {
-      window.clearTimeout(timeoutId);
-      timeoutId = window.setTimeout(() => {
-        callback.apply(null, args);
-      }, wait);
-    };
-  }
-
-  // TODO: Ask about how translated string gets here
-  function buildSearchClearButton() {
-    const button = document.createElement("button");
-    button.setAttribute("type", "button");
-    button.setAttribute("aria-controls", searchInput.id);
-    button.classList.add("clear-button");
-    const icon = "<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='Clear Search field'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>";
-    button.innerHTML = icon;
-    button.addEventListener("click", function(event) {
-      console.log("clear button clicked");
-      searchArea.classList.remove("search-has-value");
-      searchInput.value = "";
-      searchInput.focus();
-    })
-    // button.addEventListener("blur", bar);
-    return button;
-  }
-
-  function appendSearchClearButton() {
-    searchClearButton = buildSearchClearButton();
-    searchArea.append(searchClearButton);
-    if (searchInput.value.length > 0) {
-      searchArea.classList.add("search-has-value");
-    }
-  }
-  
-  function buzz(event) {
-    if (event.target.value.length > 0) {
-      searchArea.classList.add("search-has-value");
-    } else {
-      searchArea.classList.remove("search-has-value");
-    }
-  }
-
-  const debouncedFunction = debounce(buzz, 200)
-
-  const searchArea = document.querySelector("form.search");
-  
-  const searchInput = searchArea.querySelector("input[type='search']");
-  searchInput.addEventListener("keyup", debouncedFunction);
-
-  let searchClearButton = null;
-  appendSearchClearButton();
-
-  /* -------------------------------------------------------------------------------- */
+  // Set up clear functionality for the search field
+  searchForm = document.querySelector("form[role='search']");
+  const toggleClearSearchButtonVisibility = debounce(function(event) {
+    searchForm.classList.toggle(searchFormFilledClassName, event.target.value.length > 0);
+  }, 200)
+  searchInput = searchForm.querySelector("input[type='search']");
+  searchInput.addEventListener("keyup", toggleClearSearchButtonVisibility);
+  appendClearSearchButton();
 
   // social share popups
   Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
