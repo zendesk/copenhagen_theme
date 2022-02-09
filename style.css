@@ -1364,7 +1364,6 @@ ul {
   display: block;
   border-bottom: 1px solid #ddd;
   padding: 15px 0;
-  color: $text_color;
 }
 
 .promoted-articles-item .icon-lock {
