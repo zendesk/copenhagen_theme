@@ -1,6 +1,6 @@
 
 {{#isnt help_center.locale 'zh-cn'}}
-  <script>
+  <script defer>
     const sectionIDs = [
       {{#each section.sections}}
         {{#is description 'Manual-Type' }}
@@ -9,7 +9,7 @@
       {{/each}}
     ]
     const locale = '{{help_center.locale}}'
-    window.addEventListener('load', function () {
+    window.addEventListener('DOMContentLoaded', function () {
         setTimeout(()=>handleSectionResource('{{section.id}}', '{{help_center.locale}}'))
     })
   </script>
