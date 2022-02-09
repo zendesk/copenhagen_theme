@@ -1148,7 +1148,7 @@ function handleCollectionIcon(isOpen) {
     }
 }
 function toggleCollectionCss(isOpen) {
-    if(!firstBar || firstBarMenus) {
+    if(!firstBar || !firstBarMenus) {
         console.log('error: no el')
         return
     }
