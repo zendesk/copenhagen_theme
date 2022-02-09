@@ -53,7 +53,8 @@
     max-width: 100%;
   }
 
-  ul, ol {
+  ul,
+  ol {
     padding-left: 20px;
     list-style-position: outside;
     margin: 20px 0 20px 20px;
@@ -67,7 +68,12 @@
   }
 
   // Sub level list
-  ul > ul, ol > ol, ol > ul, ul > ol, li > ul, li > ol {
+  ul > ul,
+  ol > ol,
+  ol > ul,
+  ul > ol,
+  li > ul,
+  li > ol {
     margin: 0;
   }
 
@@ -75,7 +81,20 @@
     list-style-type: disc;
   }
 
-  a:visited { color: $visited_link_color; }
+  a {
+    color: $link_color;
+    text-decoration: underline;
+
+    &:visited {
+      color: $visited_link_color;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $hover_link_color;
+    }
+  }
 
   code {
     background: $primary-shade;

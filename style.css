@@ -201,7 +201,12 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $heading_font;
   margin-top: 0;
 }
@@ -228,6 +233,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: $visited_link_color;
+}
+
 a:hover, a:active, a:focus {
   text-decoration: underline;
 }
@@ -241,7 +250,7 @@ textarea {
 input {
   max-width: 100%;
   box-sizing: border-box;
-  transition: border .12s ease-in-out;
+  transition: border 0.12s ease-in-out;
 }
 
 input:not([type="checkbox"]) {
@@ -1713,20 +1722,27 @@ ul {
   max-width: 100%;
 }
 
-.article-body ul, .article-body ol {
+.article-body ul,
+.article-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
 
-[dir="rtl"] .article-body ul, [dir="rtl"] .article-body ol {
+[dir="rtl"] .article-body ul, [dir="rtl"]
+.article-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.article-body ul > ul, .article-body ol > ol, .article-body ol > ul, .article-body ul > ol, .article-body li > ul, .article-body li > ol {
+.article-body ul > ul,
+.article-body ol > ol,
+.article-body ol > ul,
+.article-body ul > ol,
+.article-body li > ul,
+.article-body li > ol {
   margin: 0;
 }
 
@@ -1734,8 +1750,17 @@ ul {
   list-style-type: disc;
 }
 
+.article-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
 .article-body a:visited {
   color: $visited_link_color;
+}
+
+.article-body a:hover, .article-body a:active, .article-body a:focus {
+  color: $hover_link_color;
 }
 
 .article-body code {
@@ -2168,20 +2193,27 @@ ul {
   max-width: 100%;
 }
 
-.comment-body ul, .comment-body ol {
+.comment-body ul,
+.comment-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
 
-[dir="rtl"] .comment-body ul, [dir="rtl"] .comment-body ol {
+[dir="rtl"] .comment-body ul, [dir="rtl"]
+.comment-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.comment-body ul > ul, .comment-body ol > ol, .comment-body ol > ul, .comment-body ul > ol, .comment-body li > ul, .comment-body li > ol {
+.comment-body ul > ul,
+.comment-body ol > ol,
+.comment-body ol > ul,
+.comment-body ul > ol,
+.comment-body li > ul,
+.comment-body li > ol {
   margin: 0;
 }
 
@@ -2189,8 +2221,17 @@ ul {
   list-style-type: disc;
 }
 
+.comment-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
 .comment-body a:visited {
   color: $visited_link_color;
+}
+
+.comment-body a:hover, .comment-body a:active, .comment-body a:focus {
+  color: $hover_link_color;
 }
 
 .comment-body code {
@@ -2740,20 +2781,27 @@ ul {
   max-width: 100%;
 }
 
-.post-body ul, .post-body ol {
+.post-body ul,
+.post-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
 
-[dir="rtl"] .post-body ul, [dir="rtl"] .post-body ol {
+[dir="rtl"] .post-body ul, [dir="rtl"]
+.post-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.post-body ul > ul, .post-body ol > ol, .post-body ol > ul, .post-body ul > ol, .post-body li > ul, .post-body li > ol {
+.post-body ul > ul,
+.post-body ol > ol,
+.post-body ol > ul,
+.post-body ul > ol,
+.post-body li > ul,
+.post-body li > ol {
   margin: 0;
 }
 
@@ -2761,8 +2809,17 @@ ul {
   list-style-type: disc;
 }
 
+.post-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
 .post-body a:visited {
   color: $visited_link_color;
+}
+
+.post-body a:hover, .post-body a:active, .post-body a:focus {
+  color: $hover_link_color;
 }
 
 .post-body code {
