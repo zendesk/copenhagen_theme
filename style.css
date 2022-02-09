@@ -1394,6 +1394,19 @@ ul {
   max-width: 100%;
 }
 
+.community a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.community a:visited {
+  color: $visited_link_color;
+}
+
+.community a:hover, .community a:active, .community a:focus {
+  color: $hover_link_color;
+}
+
 .community,
 .activity {
   border-top: 1px solid #ddd;

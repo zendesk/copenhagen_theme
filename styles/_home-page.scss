@@ -70,6 +70,8 @@
     background-repeat: no-repeat;
     max-width: 100%;
   }
+
+  @include standalone-link;
 }
 
 .community,
