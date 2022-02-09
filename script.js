@@ -1587,19 +1587,12 @@ function closeAllDownloadDropdown(containerEl) {
  * @returns the innerHTML of Software(Luban) block
  */
 async function handleLubanSoftware(locale) {
-    const res = await ajax({
-        method: 'GET',
-        url: 'https://api.snapmaker.com/v1/versions'
-    })
-    const softwareVersion = res.luban
-
     let templateData
-    // if(new RegExp('/hc/zh-cn[/]*').test(window.location.pathname)){
     if (locale === 'zh-cn') {
         templateData = {
             "title": "软件",
             "time": "Sep 28, 2021",
-            "type": "select",
+            "type": "download",
             "text": "下载 Luban ",
             "description": [
                 {
@@ -1632,7 +1625,7 @@ async function handleLubanSoftware(locale) {
         templateData = {
             "title": "Software",
             "time": "Sep 28, 2021",
-            "type": "select",
+            "type": "download",
             "text": "Download Luban ",
             "description": [
                 {
@@ -1662,18 +1655,61 @@ async function handleLubanSoftware(locale) {
             ]
         }
     }
-    const isUpper = (softwareVersion[0] - 0) >= 4
-    const upperCase = 'Snapmaker-Luban';
-    const lowerCase = 'snapmaker-luban';
-    templateData.text += softwareVersion
-    templateData.dropdown = [
-        { text: 'Win 64 bit' , link: `https://s3-us-west-2.amazonaws.com/snapmaker.com/download/luban/${isUpper ? upperCase : lowerCase}-${softwareVersion}-win-x64.exe`},
-        { text: 'Win 32 bit', link: `https://s3-us-west-2.amazonaws.com/snapmaker.com/download/luban/${isUpper ? upperCase : lowerCase}-${softwareVersion}-win-ia32.exe` },
-        { text: 'Mac', link: `https://s3-us-west-2.amazonaws.com/snapmaker.com/download/luban/${isUpper ? upperCase : lowerCase}-${softwareVersion}-mac-x64.dmg`},
-    ]
 
-    return handleSelectDownload(templateData)
+    const res = await ajax({
+        method: 'GET',
+        url: 'https://api.github.com/repos/Snapmaker/Luban/releases/latest'
+    })
+    const softwareVersion = res.name
+    const installersAssets = res.assets.filter(v => v.name.indexOf('.yml') === -1 && v.name.indexOf('.dmg') === -1)
+
+
+    const finder = (orignal, target) => new RegExp(target).test(orignal)
+    
+    const uaParser = new UAParser()
+    const ua = uaParser.getResult()
+    const checkOS = (osType, CheckString) => {
+        return installersAssets
+                .filter(v=>finder(v.name, osType))
+                .filter(
+                    v=>finder(v.name.toLowerCase().replace(/snapmaker-luban-/, '') ,CheckString)
+                )[0]
+    }
+
+    let isFoundVersion = false
+
+    switch (ua.os.name) {
+        case 'Windows': {
+            const targetAssets = checkOS('win', ua.cpu.architecture)
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('win', 'x64').browser_download_url
+            break
+        }
+        case 'Mac OS': {
+            const targetAssets = checkOS('mac', '.dmg')
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('mac', 'zip').browser_download_url
+            break
+        }
+        case 'Ubuntu':
+        case 'Debian': {
+            const targetAssets = checkOS('linux', '.deb')
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url
+            break
+        }
+        case 'Linux': {
+            const targetAssets = checkOS('linux', ua.cpu.architecture)
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url
+            break
+        }
+        default: {
+            isFoundVersion = false
+        }
+    }
+    isFoundVersion = !!templateData.download_link
+    templateData.text = isFoundVersion ? templateData.text+softwareVersion : 'Installer Not Found. Please Download from the GitHub'
+    
+    return handleDownloadFile(templateData)
 }
+
 
 //============================================== utils ==============================================
 /**
