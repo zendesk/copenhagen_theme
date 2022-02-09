@@ -1063,12 +1063,8 @@ ul {
   margin: 0 4px;
 }
 
-.breadcrumbs li a {
+.breadcrumbs li a:visited {
   color: $link_color;
-}
-
-.breadcrumbs li a:hover {
-  text-decoration: underline;
 }
 
 /***** Search field *****/
