@@ -1913,17 +1913,9 @@ ul {
 }
 
 .sidenav-item {
-  border-radius: 4px;
-  color: $text_color;
   display: block;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.sidenav-item.current-article, .sidenav-item:hover {
-  background-color: $brand_color;
-  color: $brand_text_color;
-  text-decoration: none;
+  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
 .recent-articles li,
