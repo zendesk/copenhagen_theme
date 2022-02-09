@@ -2028,7 +2028,16 @@ ul {
 }
 
 .comment-callout a {
-  color: $brand_color;
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.comment-callout a:visited {
+  color: $visited_link_color;
+}
+
+.comment-callout a:hover, .comment-callout a:active, .comment-callout a:focus {
+  color: $hover_link_color;
 }
 
 .comment-sorter {
