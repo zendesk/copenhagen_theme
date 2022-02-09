@@ -1419,11 +1419,11 @@ ul {
 
 .recent-activity-item-parent {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .recent-activity-item-parent, .recent-activity-item-link {
   margin: 6px 0;
-  color: $text_color;
   display: inline-block;
   width: 100%;
 }
@@ -1440,6 +1440,7 @@ ul {
 }
 
 .recent-activity-item-meta {
+  color: $text_color;
   margin: 15px 0 0 0;
   float: none;
 }
@@ -1455,7 +1456,6 @@ ul {
 }
 
 .recent-activity-item-time, .recent-activity-item-comment {
-  color: lighten($text_color, 20%);
   display: inline-block;
   font-size: 13px;
 }
@@ -1474,6 +1474,19 @@ ul {
 
 .recent-activity-controls {
   padding-top: 15px;
+}
+
+.recent-activity-controls a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.recent-activity-controls a:visited {
+  color: $visited_link_color;
+}
+
+.recent-activity-controls a:hover, .recent-activity-controls a:active, .recent-activity-controls a:focus {
+  color: $hover_link_color;
 }
 
 .recent-activity-accessibility-label {
