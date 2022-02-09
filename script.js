@@ -21,6 +21,15 @@ function clearSearchInput() {
   searchInput.focus();
 }
 
+// Have the search input and clear button respond 
+// when someone presses the escape key, per:
+// https://twitter.com/adambsilver/status/1152452833234554880
+function clearSearchInputOnEscape(event) {
+  if (event.key === "Esc") {
+    clearSearchInput();
+  }
+}
+
 // Create an HTML button that all users -- especially keyboard users -- 
 // can interact with, to clear the search input.
 // To learn more about this, see:
@@ -33,16 +42,30 @@ function buildClearSearchButton() {
   const icon = `<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='${window.searchClearButtonLabel}'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>`;
   button.innerHTML = icon;
   button.addEventListener("click", clearSearchInput);
+  button.addEventListener("keyup", clearSearchInputOnEscape);
   return button;
 }
 
-// Append the clear button to the search field
+// Append the clear button to the search form
 function appendClearSearchButton() {
   searchClearButton = buildClearSearchButton();
   searchForm.append(searchClearButton);
   if (searchInput.value.length > 0) {
     searchForm.classList.add(searchFormFilledClassName);
   }
+}
+
+// Add a class to the search form when the input has a value;
+// Remove that class from the search form when the input doesn't have a value.
+// Do this on a delay, rather than on every keystroke. 
+const toggleClearSearchButtonAvailability = debounce(function() {
+  searchForm.classList.toggle(searchFormFilledClassName, searchInput.value.length > 0);
+}, 200)
+
+// Ensure the search field responds appropriately to typing + keyboard interactions
+function handleSearchInputKeyup(event) {
+  clearSearchInputOnEscape(event);
+  toggleClearSearchButtonAvailability();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -71,11 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Set up clear functionality for the search field
   searchForm = document.querySelector("form[role='search']");
-  const toggleClearSearchButtonVisibility = debounce(function(event) {
-    searchForm.classList.toggle(searchFormFilledClassName, event.target.value.length > 0);
-  }, 200)
   searchInput = searchForm.querySelector("input[type='search']");
-  searchInput.addEventListener("keyup", toggleClearSearchButtonVisibility);
+  searchInput.addEventListener("keyup", handleSearchInputKeyup);
   appendClearSearchButton();
 
   // social share popups
