@@ -431,6 +431,20 @@ const scrollnav = (function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    /* header */
+    window.collectionIcon = document.querySelector('.bar-burger')
+    
+    window.firstBarMenus = document.querySelector('nav[class~=menus')
+    window.firstBar = document.querySelector('div[class~=first-bar')
+    window.secondBarIcon = document.querySelector('#second-bar-icon')
+    window.secondBarNavItems = document.querySelector('div[class~=nav-items')
+    
+    window.mask = document.querySelector('.mask')
+    window.removeMask = () => mask.style.display = 'none'
+    window.openMask = () => mask.style.display = 'block'
+    window.announcementModal = getEl('#announcement-modal')
+    // console.log(firstBarMenus, firstBar)
+    hanldeRefatorAnnouncementModal()
     secondBarActive()
     // Key map
     var ENTER = 13;
@@ -1050,6 +1064,35 @@ window.onload = function () {
 
 
 //============================================== refator(2022.1~) ==============================================
+/**
+ * Refatoring change the structure of zendesk background data, so after publishing this template, we need time to update 
+ * zendesk background data.
+ * During the update the structure of zendesk background data, showing a modal to placate users;
+ */
+function hanldeRefatorAnnouncementModal(){
+    const get = key => window.localStorage.getItem(key)
+    const set = (key, value) => window.localStorage.setItem(key, value)
+
+    if(get('is_announcement_get') === 'get') {
+        return 
+    }
+
+    set('is_announcement_get', 'get')
+    showAnnouncementModal()
+}
+
+function showAnnouncementModal(){
+    openMask()
+    announcementModal.style.display = 'block'
+    mask.style.zIndex = '1110'
+}
+
+function closeAnnouncementModal(){
+    announcementModal.style.display = 'none'
+    removeMask()
+}
+
+
 
 /**
  * header controller
@@ -1083,13 +1126,6 @@ Object.defineProperties(headerController, {
     }
 })
 
-const collectionIcon = document.querySelector('.bar-burger')
-const firstBarMenus = document.querySelector('nav[class~=menus')
-const firstBar = document.querySelector('div[class~=first-bar')
-const secondBarIcon = document.querySelector('#second-bar-icon')
-const secondBarNavItems = document.querySelector('div[class~=nav-items')
-const mask = document.querySelector('.mask')
-
 /**
  * @description  first header bar, tablet/mobile, click icon open/close collection 
  */
@@ -1101,16 +1137,22 @@ function handleCollectionIcon(isOpen) {
         collectionIcon.classList.add('is-active')
         toggleCollectionCss(isOpen)
         document.documentElement.classList.add('body-no-scroll')
-        mask.style.display = 'block'
+        // mask.style.display = 'block'
+        openMask()
     } else {
         toggleCollectionCss(isOpen)
         collectionIcon.classList.remove('is-active')
         document.documentElement.classList.remove('body-no-scroll')
-        mask.style.display = 'none'
+        // mask.style.display = 'none'
+        removeMask()
     }
 }
 function toggleCollectionCss(isOpen) {
-    const left = firstBarMenus.getBoundingClientRect().left
+    if(!firstBar || firstBarMenus) {
+        console.log('error: no el')
+        return
+    }
+    const left =  firstBarMenus.getBoundingClientRect().left
     if (isOpen) {
         firstBar.style.overflow = 'visible'
         firstBarMenus.style.width = window.innerWidth + 'px'
@@ -1135,12 +1177,14 @@ function handleSecondBarCollection(isOpen) {
         toggleSecondBarCollectionCss(isOpen)
         secondBarIcon.classList.add('is-open')
         document.documentElement.classList.add('body-no-scroll')
-        mask.style.display = 'block'
+        // mask.style.display = 'block'
+        openMask()
     } else {
         toggleSecondBarCollectionCss(isOpen)
         secondBarIcon.classList.remove('is-open')
         document.documentElement.classList.remove('body-no-scroll')
-        mask.style.display = 'none'
+        // mask.style.display = 'none'
+        removeMask()
     }
 
 }
@@ -1156,9 +1200,11 @@ function toggleSecondBarCollectionCss(isOpen) {
  * @description  collection mask, click then close collection
  */
 function onClickMask() {
+    announcementModal.style.display = 'none'
+
     headerController.isFirstBarActive = false
     headerController.isSecondBarActive = false
-    mask.style.display = 'none'
+    removeMask()
 }
 
 /**
@@ -1518,7 +1564,7 @@ function handleSectionResourceDescription(description, title) {
 
     let descriptionHtml = ``
     description.forEach(v => {
-        descriptionHtml += !v.link ? `<span>${v.text}</span>` : `<a class="snmk-link-btn" href="${v.link}">${v.text}</a>`
+        descriptionHtml += !v.link ? `<span class="font-2">${v.text}</span>` : `<a class="snmk-link-btn" href="${v.link}">${v.text}</a>`
     })
     return descriptionHtml
 }

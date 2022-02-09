@@ -253,13 +253,16 @@ $xxs: 4px;
     }
   }
   &-btn {
-    color: $blue;
+    color: $link;
     background-color: white;
-    border: #0C63E2 1px solid;
+    border: $blue 1px solid;
   
     &:hover,&:active {
-      border: #0A4FB5 1px solid;
-      color: #0A4FB5;
+      background-color: rgba(12, 99, 226, 0.2);
+      border: 1px solid $link;
+      text-decoration: none;
+      // border: #0A4FB5 1px solid;
+      // color: #0A4FB5;
     }
   
     &:disabled {
@@ -416,6 +419,18 @@ $xxs: 4px;
 .bg-white {
   background-color: white;
 }
+.c-yellow {
+  color: $yellow;
+}
+.c-black {
+  color: $black;
+
+}
+.c-blue {
+  color: $blue;
+}
+
+
 .text-center {
   text-align: center;
 }

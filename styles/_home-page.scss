@@ -343,14 +343,19 @@ $product-img-mr: 24px;
 
 }
 
-
-
-
 .software-category {
   background-color: $black;
   color: white;
   display: flex;
   border-radius: 8px;
+
+  &:hover{ 
+    text-decoration: none;
+
+    .snmk-primary-btn {
+      background-color: $btn-hover-blue;
+    }
+  }
 }
 .software-text-container .snmk-primary-btn{
   text-decoration: none;

@@ -19,18 +19,9 @@
       <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
         <nav class="sub-nav breadcrums-box">
             {{breadcrumbs}}
-
-            {{#if settings.show_follow_section }}
-                <div class="follow-btn">
-                    {{subscribe}}
-                </div>
-            {{/if}}
         </nav>
 
         <div>
-          <div class="products-display">
-
-          </div>
           <div class="section-resource">
             <div class="section-metadata px-xl">
               <img id="section-product-img" src="{{section.description}}" />
@@ -59,11 +50,12 @@
   <div class="snmk-container" id="secitons-articles-container">
     <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
       <div>
+        {{!-- Video-Type --}}
         <div class="category-section" video-type aria-expanded="true"
             {{#each (slice (filter section.sections on="description" equals="Video-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
           {{#each (slice (filter section.sections on="description" equals="Video-Type") 0 1)}}
             <div class="category-section-header " >
-                <span class="category-section-title">
+                <span class="category-section-title title-3">
                   {{dc 'section_video_subsection_title'}}
                 </span>
                 <button type="button" class="category-section-toggle vertical-center" aria-expanded="true">
@@ -73,8 +65,8 @@
           {{/each}}
           {{#each section.sections}}
             {{#is description 'Video-Type' }}
-              <div class="section-title-collection" is-video-type-exist>
-                <div class="title-3 bold font-bw-1 my-xl" >{{name}}</div>
+              <div class="section-title-collection mb-3xl" is-video-type-exist>
+                <div class="title-4 bold font-bw-1 my-xl" >{{name}}</div>
                 <ul class="video-list">
                     {{#each articles}}
                         <li class="video-list-item mt-2xl">
@@ -82,14 +74,13 @@
                               <img class="video-list-item-cover-img" src="#" alt="" />
                               <span class="iconfont video-list-item-play-icon">&#xe603;</span>
                             </a>
-                            <a class="video-list-item-title" href="{{url}}">{{title}}</a>
-  <!--                             <ol class="video-list-item-labels"></ol> -->
+                            <a class="video-list-item-title font-1 mt-s" href="{{url}}">{{title}}</a>
                             <div class="article-body">{{body}}</div>
                         </li>
                     {{/each}}
                 </ul>
                 {{#if more_articles}}
-                    <a href="{{url}}" class="button button-secondary see-more-article">
+                    <a href="{{url}}" class="snmk-btn">
                         {{t 'show_all_articles' count=article_count}}
                     </a>
                 {{/if}}
@@ -98,11 +89,12 @@
           {{/each}}
         </div>
 
+        {{!-- Manual-Type --}}
         <div class="category-section" manual-type aria-expanded="true"
             {{#each (slice (filter section.sections on="description" equals="Manual-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
           {{#each (slice (filter section.sections on="description" equals="Manual-Type") 0 1)}}
             <div class="category-section-header">
-                <span class="category-section-title">
+                <span class="category-section-title title-3">
                   {{dc 'section_manual_subsection_title'}}
                 </span>
                 <button type="button" class="category-section-toggle vertical-center" aria-expanded="true">
@@ -115,7 +107,7 @@
             {{#each section.sections}}
               {{#is description 'Manual-Type' }}
                 <div class="subsections-container mt-2xl" is-manual-type-exist>
-                  <div class="font-bw-1 title-3 bold">{{name}}</div>
+                  <div class="font-bw-1 title-4 bold">{{name}}</div>
                   <ul class="article-list" id="um-{{id}}">
                     {{#each (slice articles 0 article_count)}}
                         <li class="article-list-item">
@@ -135,11 +127,12 @@
           </div>
         </div>
 
+        {{!-- Tips-Type --}}
         <div class="category-section" tips-type  aria-expanded="true"
             {{#each (slice (filter section.sections on="description" equals="Tips-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
           {{#each (slice (filter section.sections on="description" equals="Tips-Type") 0 1)}}
             <div class="category-section-header">
-                <span class="category-section-title">
+                <span class="category-section-title title-3">
                   {{dc 'section_tips_subsection_title'}}
                 </span>
                 <button type="button" class="category-section-toggle vertical-center" aria-expanded="true">
@@ -152,7 +145,7 @@
             {{#each section.sections}}
               {{#is description 'Tips-Type' }}
                 <div class="subsections-container mt-2xl" is-tips-type-exist>
-                  <div class="font-bw-1 title-3 bold">{{name}}</div>
+                  <div class="font-bw-1 title-4 bold">{{name}}</div>
                   <ul class="article-list">
                     {{#each articles}}
                         <li class="article-list-item">
@@ -167,7 +160,7 @@
                     {{/each}}
                   </ul>
                   {{#if more_articles}}
-                      <a href="{{url}}" class="button button-secondary see-more-article">
+                      <a href="{{url}}" class="snmk-btn">
                           {{t 'show_all_articles' count=article_count}}
                       </a>
                   {{/if}}
@@ -177,11 +170,12 @@
           </div>
         </div>
 
+        {{!-- Inquiry-Type --}}
         <div class="category-section" inquiry-type aria-expanded="true"
             {{#each (slice (filter section.sections on="description" equals="Inquiry-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
           {{#each (slice (filter section.sections on="description" equals="Inquiry-Type") 0 1)}}
             <div class="category-section-header">
-                <span class="category-section-title">
+                <span class="category-section-title title-3">
                   {{dc 'section_inquiry_subsection_title'}}
                 </span>
                 <button type="button" class="category-section-toggle vertical-center" aria-expanded="true">
@@ -194,44 +188,7 @@
             {{#each section.sections}}
               {{#is description 'Inquiry-Type' }}
                 <div class="subsections-container mt-2xl" is-inquiry-type-exist>
-                  <div class="font-bw-1 title-3 bold">{{name}}</div>
-                  <ul class="article-list">
-                    {{#each articles}}
-                        <li class="article-list-item">
-                            <div class="article-item">
-                                <a href="{{url}}" class="article-list-link">
-                                    {{#if promoted}}{{dc 'icon-promoted'}}{{/if}}
-                                    {{title}}
-                                    {{#if internal}}{{dc 'icon-internal'}}{{/if}}
-                                </a>
-                            </div>
-                        </li>
-                    {{/each}}
-                  </ul>
-                </div>
-              {{/is}}
-            {{/each}}
-          </div>
-        </div>
-
-        <div class="category-section" troubleshooting-type aria-expanded="true" 
-            {{#each (slice (filter section.sections on="description" equals="Troubleshooting-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
-          {{#each (slice (filter section.sections on="description" equals="Troubleshooting-Type") 0 1)}}
-            <div class="category-section-header">
-                <span class="category-section-title">
-                  {{dc 'section_troubleshooting_subsection_title'}}
-                </span>
-                <button type="button" class="category-section-toggle vertical-center" aria-expanded="true">
-                    <span class="iconfont bold" >&#xe7b2;</span>
-                </button>
-            </div>
-          {{/each}}
-          <div class="subsections-list normal-article section-title-collection
-            {{#each (slice (filter section.sections on="description" equals="Troubleshooting-Type") 0 1)}} mt-xl  mb-3xl{{/each}}">
-            {{#each section.sections}}
-              {{#is description 'Troubleshooting-Type' }}
-                <div class="subsections-container mt-2xl" is-troubleshooting-type-exist>
-                  <div class="font-bw-1 title-3 bold">{{name}}</div>
+                  <div class="font-bw-1 title-4 bold">{{name}}</div>
                   <ul class="article-list">
                     {{#each articles}}
                         <li class="article-list-item">
@@ -246,7 +203,50 @@
                     {{/each}}
                   </ul>
                   {{#if more_articles}}
-                      <a href="{{url}}" class="button button-secondary see-more-article">
+                      <a href="{{url}}" class="snmk-btn">
+                          {{t 'show_all_articles' count=article_count}}
+                      </a>
+                  {{/if}}
+                </div>
+              {{/is}}
+            {{/each}}
+          </div>
+        </div>
+
+        {{!-- Troubleshooting-Type --}}
+        <div class="category-section" troubleshooting-type aria-expanded="true" 
+            {{#each (slice (filter section.sections on="description" equals="Troubleshooting-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
+          {{#each (slice (filter section.sections on="description" equals="Troubleshooting-Type") 0 1)}}
+            <div class="category-section-header">
+                <span class="category-section-title title-3">
+                  {{dc 'section_troubleshooting_subsection_title'}}
+                </span>
+                <button type="button" class="category-section-toggle vertical-center" aria-expanded="true">
+                    <span class="iconfont bold" >&#xe7b2;</span>
+                </button>
+            </div>
+          {{/each}}
+          <div class="subsections-list normal-article section-title-collection
+            {{#each (slice (filter section.sections on="description" equals="Troubleshooting-Type") 0 1)}} mt-xl  mb-3xl{{/each}}">
+            {{#each section.sections}}
+              {{#is description 'Troubleshooting-Type' }}
+                <div class="subsections-container mt-2xl" is-troubleshooting-type-exist>
+                  <div class="font-bw-1 title-4 bold">{{name}}</div>
+                  <ul class="article-list">
+                    {{#each articles}}
+                        <li class="article-list-item">
+                            <div class="article-item">
+                                <a href="{{url}}" class="article-list-link">
+                                    {{#if promoted}}{{dc 'icon-promoted'}}{{/if}}
+                                    {{title}}
+                                    {{#if internal}}{{dc 'icon-internal'}}{{/if}}
+                                </a>
+                            </div>
+                        </li>
+                    {{/each}}
+                  </ul>
+                  {{#if more_articles}}
+                      <a href="{{url}}" class="snmk-btn">
                           {{t 'show_all_articles' count=article_count}}
                       </a>
                   {{/if}}

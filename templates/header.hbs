@@ -79,12 +79,12 @@
             </div>
             <div class="right-nav">
                 <div class="nav-items">
-                    <a href="http://support.snapmaker.com/hc/{{help_center.locale}}" id="nav-home" class="ml-2xl nav-item">
+                    <a href="http://support.snapmaker.com/hc/{{help_center.locale}}" id="nav-home" class="nav-item">
                        {{dc 'header_second_bar_first_item'}}
                     </a>
                     <a href="https://support.snapmaker.com/hc/{{help_center.locale}}/categories/360003536313-Snapmaker-Academy" id="nav-academy" class="ml-2xl nav-item">{{dc 'header_second_bar_second_item'}}</a>
-                    <a class="ml-2xl nav-item" href="https://forum.snapmaker.com/">{{dc 'header_second_bar_third_item'}}</a>
-                    <div class="search-container ml-2xl">
+                    <a class="nav-item" href="https://forum.snapmaker.com/">{{dc 'header_second_bar_third_item'}}</a>
+                    <div class="search-container">
                         <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
                         {{search submit=false placeholder="Search Support" class="search search-form"}}
                     </div>
@@ -117,3 +117,10 @@
 </header>
 
 <div class="mask" onclick="onClickMask()"></div>
+
+<div id="announcement-modal" class="modal-wrapper">
+    <span class="close-icon mt-m mr-m iconfont" onclick="closeAnnouncementModal()">&#xe61e;</span>
+    <div class="modal-body my-xl mx-2xl">
+        {{dc 'announcement_modal'}}
+    </div>
+</div>

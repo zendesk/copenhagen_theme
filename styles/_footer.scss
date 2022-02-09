@@ -435,4 +435,12 @@ input::placeholder {
       }
     }
   }
+
+  .footer-bottom {
+    flex-direction: column;
+    .change-language {
+      margin-top: 12px;
+      display: block;
+    }
+  }
 }

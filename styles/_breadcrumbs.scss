@@ -14,16 +14,21 @@
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: $descriptive-text-color;
+    color: $black_white_1;
 
     + li::before {
-      color: $descriptive-text-color;
+      color: $black_white_1;
       content: "/";
       margin: 0 4px;
     }
 
     a {
-      color: $descriptive-text-color;
+      color: $black_white_1;
+    }
+
+
+    &:last-child, &:last-child a, &:last-child::before{
+      color: $black_white_3;
     }
   }
 }

@@ -16,7 +16,8 @@ $second-bar-height: 76px;
   z-index: 100;
   background-color: white;
   height: $first-bar-height + $second-bar-height;
-  box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px;
+  // box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px;
+  border: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
 
   a:hover {
@@ -323,7 +324,16 @@ $halfWidth: $width/2;
   height: 100%;
 }
 .nav-item {
+  padding: 0 12px;
+  line-height: 24px;
+  margin-left: 44px;
   color: $black_white_2;
+}
+.nav-items .search-container {
+  margin-left: 52px;
+}
+.nav-items .search-container input::placeholder{
+  color: $black_white_3;
 }
 
 .mask {

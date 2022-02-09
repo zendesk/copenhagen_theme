@@ -9,14 +9,16 @@
   /* align-items: center; */
 }
 .follow-btn button{
-  width: 111px;
-  height: 34px;
-  border: 0;
-  border-radius: 2px;
-  border: 1px solid #00A8E7;
-  background-color: transparent;
-  color: #28A7E1;
-  font-family: Roboto-Regular, Roboto;
-  font-size: 15px;
-  cursor: pointer;
+  // width: 111px;
+  // height: 34px;
+  // border: 0;
+  // border-radius: 2px;
+  // border: 1px solid #00A8E7;
+  // background-color: transparent;
+  // color: #28A7E1;
+  // font-family: Roboto-Regular, Roboto;
+  // font-size: 15px;
+  // cursor: pointer;
+  @extend .snmk-btn;
+  min-width: unset;
 }
