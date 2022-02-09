@@ -47,7 +47,26 @@
   box-shadow: 0 0 0 3px $brand_color;
 }
 
+@mixin standalone-link {
+  a {
+    color: $link_color;
+    text-decoration: underline;
+
+    &:visited {
+      color: $visited_link_color;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $hover_link_color;
+    }
+  }
+}
+
 @mixin content-body {
+  @include standalone-link;
+
   img {
     height: auto;
     max-width: 100%;
@@ -79,21 +98,6 @@
 
   ul {
     list-style-type: disc;
-  }
-
-  a {
-    color: $link_color;
-    text-decoration: underline;
-
-    &:visited {
-      color: $visited_link_color;
-    }
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: $hover_link_color;
-    }
   }
 
   code {

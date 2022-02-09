@@ -1713,6 +1713,19 @@ ul {
   vertical-align: middle;
 }
 
+.article-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.article-body a:visited {
+  color: $visited_link_color;
+}
+
+.article-body a:hover, .article-body a:active, .article-body a:focus {
+  color: $hover_link_color;
+}
+
 .article-body img {
   height: auto;
   max-width: 100%;
@@ -1744,19 +1757,6 @@ ul {
 
 .article-body ul {
   list-style-type: disc;
-}
-
-.article-body a {
-  color: $link_color;
-  text-decoration: underline;
-}
-
-.article-body a:visited {
-  color: $visited_link_color;
-}
-
-.article-body a:hover, .article-body a:active, .article-body a:focus {
-  color: $hover_link_color;
 }
 
 .article-body code {
@@ -1876,6 +1876,19 @@ ul {
 .article-more-questions {
   margin: 10px 0 20px;
   text-align: center;
+}
+
+.article-more-questions a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.article-more-questions a:visited {
+  color: $visited_link_color;
+}
+
+.article-more-questions a:hover, .article-more-questions a:active, .article-more-questions a:focus {
+  color: $hover_link_color;
 }
 
 .article-return-to-top {
@@ -2176,6 +2189,19 @@ ul {
   overflow-x: auto;
 }
 
+.comment-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.comment-body a:visited {
+  color: $visited_link_color;
+}
+
+.comment-body a:hover, .comment-body a:active, .comment-body a:focus {
+  color: $hover_link_color;
+}
+
 .comment-body img {
   height: auto;
   max-width: 100%;
@@ -2207,19 +2233,6 @@ ul {
 
 .comment-body ul {
   list-style-type: disc;
-}
-
-.comment-body a {
-  color: $link_color;
-  text-decoration: underline;
-}
-
-.comment-body a:visited {
-  color: $visited_link_color;
-}
-
-.comment-body a:hover, .comment-body a:active, .comment-body a:focus {
-  color: $hover_link_color;
 }
 
 .comment-body code {
@@ -2764,6 +2777,19 @@ ul {
   margin-right: 10px;
 }
 
+.post-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.post-body a:visited {
+  color: $visited_link_color;
+}
+
+.post-body a:hover, .post-body a:active, .post-body a:focus {
+  color: $hover_link_color;
+}
+
 .post-body img {
   height: auto;
   max-width: 100%;
@@ -2795,19 +2821,6 @@ ul {
 
 .post-body ul {
   list-style-type: disc;
-}
-
-.post-body a {
-  color: $link_color;
-  text-decoration: underline;
-}
-
-.post-body a:visited {
-  color: $visited_link_color;
-}
-
-.post-body a:hover, .post-body a:active, .post-body a:focus {
-  color: $hover_link_color;
 }
 
 .post-body code {
