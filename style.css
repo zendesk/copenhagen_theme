@@ -1287,7 +1287,8 @@ ul {
   border-radius: inherit;
 }
 
-.blocks-item-link:hover, .blocks-item-link:active {
+.blocks-item-link:visited, .blocks-item-link:hover, .blocks-item-link:active {
+  color: inherit;
   text-decoration: none;
 }
 
