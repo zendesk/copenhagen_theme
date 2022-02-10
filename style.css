@@ -4480,6 +4480,12 @@ ul {
   }
 }
 
+.search-results-sidebar .sidenav-item {
+  border-radius: 4px;
+  padding: 10px 36px;
+  margin-bottom: 4px;
+}
+
 .search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
   background-color: #e9ebed;
   color: inherit;

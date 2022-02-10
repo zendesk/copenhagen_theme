@@ -30,6 +30,10 @@
     }
 
     .sidenav-item {
+      border-radius: 4px;
+      padding: 10px 36px;
+      margin-bottom: 4px;
+
       &:hover,
       &.current {
         background-color: #e9ebed;
