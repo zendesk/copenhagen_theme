@@ -250,7 +250,9 @@
 
                             {{#if (compare (calc author.badges.length "-" 4) ">" 0)}}
                               <div class="community-badge community-badge-achievements">
-                                {{#link "user_profile" id=author.id filter_by="badges" class="community-badge-achievements-rest"}}{{t 'plus_more' count=(calc author.badges.length "-" 4)}}{{/link}}
+                                <a href="{{page_path "user_profile" id=author.id filter_by="badges"}}" class="community-badge-achievements-rest"  aria-label="{{t 'more_awards_to' count=(calc author.badges.length "-" 4) name=author.name}}">
+                                  {{t 'plus_more' count=(calc author.badges.length "-" 4)}}
+                                </a>
                               </div>
                             {{/if}}
                           </div>
