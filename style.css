@@ -7644,9 +7644,10 @@ ul {
   align-items: center;
 }
 
-.compatible-wrapper hr {
+.compatible-wrapper .hr {
   width: 100%;
-  border-color: #e0e0e0;
+  height: 1px;
+  background-color: #e0e0e0;
 }
 
 .compatible {
@@ -7669,10 +7670,13 @@ ul {
 .products-label-btn {
   margin-top: 8px;
   margin-right: 8px;
-  padding: .5em 1em;
+  padding: 8px 16px;
   border: 1px solid #d6d6d6;
   border-radius: 46px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 }
 
 .products-label-btn:hover {
@@ -7690,6 +7694,7 @@ ul {
 
 .file-resource-container {
   width: 33%;
+  color: #5c5c5c;
 }
 
 .file-resource-container .dropdown {
@@ -7842,6 +7847,19 @@ ul {
   color: white;
 }
 
+.video-list .video-list-item a.video-list-item-title {
+  color: #5c5c5c;
+}
+
+.iconfont.video-list-item-play-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  left: 24px;
+  bottom: 24px;
+}
+
 .snmk-container .category-section {
   margin-bottom: 0px;
 }
@@ -7919,6 +7937,7 @@ ul {
 * icon User Manual
 */
 .book-icon {
+  flex: 0 0 30px;
   width: 30px;
   height: 30px;
   background-color: #f5f5f5;
@@ -7961,7 +7980,7 @@ ul {
     margin-top: 0;
   }
   .video-list .video-list-item {
-    margin-top: 68px;
+    margin-top: 44px;
   }
   .manual-article .subsections-container:nth-child(1), .manual-article .subsections-container:nth-child(2), .manual-article .subsections-container:nth-child(3) {
     margin-top: 0;
@@ -8009,7 +8028,7 @@ ul {
     margin-top: 0;
   }
   .video-list .video-list-item {
-    margin-top: 40px;
+    margin-top: 32px;
   }
   .manual-article .subsections-container {
     width: 50%;
@@ -8065,7 +8084,7 @@ ul {
     margin-top: 0;
   }
   .video-list .video-list-item {
-    margin-top: 36px;
+    margin-top: 28px;
   }
   .manual-article .subsections-container {
     width: 100%;
@@ -11352,6 +11371,10 @@ html[dir="rtl"] .notification-left-aligned {
   background-color: #1C1E20;
 }
 
+.footer .snmk-container {
+  align-items: flex-start;
+}
+
 .footer-related-links-container {
   display: flex;
   justify-content: flex-start;
@@ -12068,6 +12091,9 @@ input::placeholder {
   }
   .product-img:nth-child(1), .product-img:nth-child(2) {
     margin-top: 0;
+  }
+  a.product-img {
+    margin-right: 16px;
   }
   .software-category {
     padding-left: 16px;

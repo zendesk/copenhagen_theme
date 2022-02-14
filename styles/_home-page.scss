@@ -458,6 +458,9 @@ $product-img-mr: 24px;
   .product-img:nth-child(1),.product-img:nth-child(2) {
   	margin-top: 0;  
   }
+  a.product-img {
+    margin-right: 16px ;
+  }
   
   
   .software-category {

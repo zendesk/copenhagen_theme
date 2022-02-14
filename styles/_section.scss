@@ -37,9 +37,11 @@
   display: flex;
   align-items: center;
 }
-.compatible-wrapper hr{
+.compatible-wrapper .hr{
   width: 100%;
-  border-color: $black_white_6;
+  height: 1px;
+  // border-color: $black_white_6;
+  background-color: $black_white_6;
 }
 .compatible {
   background-color: white;
@@ -59,10 +61,13 @@
 .products-label-btn {
   margin-top: 8px;
   margin-right: 8px;
-  padding: .5em 1em;
+  padding: 8px 16px;
   border: 1px solid $black_white_5;
   border-radius: 46px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 
   &:hover {
     text-decoration: none;
@@ -79,6 +84,7 @@
 }
 .file-resource-container {
   width: 33%;
+  color: $black_white_2;
 
   .dropdown {
     position: absolute;
@@ -215,6 +221,18 @@
 
   &:hover { color: rgba($color: #fff, $alpha: 1.0);}
 }
+.video-list .video-list-item  a.video-list-item-title {
+  margin-top: 16px;
+  color: $black_white_2;
+}
+.iconfont.video-list-item-play-icon {
+  font-size: 48px;
+  width: 48px;
+  height: 48px;
+  line-height: 48px;
+  left: 24px;
+  bottom: 24px;
+}
 
 .snmk-container .category-section {
   margin-bottom: 0px;
@@ -291,6 +309,7 @@ $icon-triangle-height: $icon-height/6;
 $color: $black_white_8;
 $bg-color: white;
 .book-icon {
+  flex: 0 0 $icon-width;
   width: $icon-width;
   height: $icon-height;
   background-color: $color;
@@ -336,7 +355,7 @@ $bg-color: white;
     }
   }
   .video-list .video-list-item {
-    margin-top: 68px;
+    margin-top: 44px;
   }
 
   .manual-article .subsections-container {
@@ -396,7 +415,7 @@ $bg-color: white;
     }
   }
   .video-list .video-list-item {
-    margin-top: 40px;
+    margin-top: 32px;
   }
   .manual-article .subsections-container {
     width: 50%;
@@ -458,7 +477,7 @@ $bg-color: white;
     }
   }
   .video-list .video-list-item {
-    margin-top: 36px;
+    margin-top: 28px;
   }
   
   .manual-article .subsections-container {

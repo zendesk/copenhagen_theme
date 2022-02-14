@@ -27,13 +27,13 @@
               <img id="section-product-img" src="{{section.description}}" />
               <span class="title-3 bold">{{section.name}}</span>
               <div class="mt-l mb-xs compatible-wrapper" id="compatible-label-container">
-                <hr>
-                  {{#is help_center.locale 'zh-cn'}}
-                    <div class="compatible" style="min-width: 60px">兼容</div>
-                  {{/is}}
-                  {{#isnt help_center.locale 'zh-cn'}}
-                    <div class="compatible">Compatible with</div>
-                  {{/isnt}}
+                <div class="hr"></div>
+                {{#is help_center.locale 'zh-cn'}}
+                  <div class="compatible" style="min-width: 60px">兼容</div>
+                {{/is}}
+                {{#isnt help_center.locale 'zh-cn'}}
+                  <div class="compatible">Compatible with</div>
+                {{/isnt}}
               </div>
               <div class="products-label-btn-container pb-xl" id="compatible-container">
                 {{! insert }}
@@ -66,10 +66,10 @@
           {{#each section.sections}}
             {{#is description 'Video-Type' }}
               <div class="section-title-collection mb-3xl" is-video-type-exist>
-                <div class="title-4 bold font-bw-1 my-xl" >{{name}}</div>
+                <div class="title-4 bold font-bw-1 mt-xl mb-l" >{{name}}</div>
                 <ul class="video-list">
                     {{#each articles}}
-                        <li class="video-list-item mt-2xl">
+                        <li class="video-list-item mt-xl">
                             <a href="{{url}}" class="video-list-item-cover">
                               <img class="video-list-item-cover-img" src="#" alt="" />
                               <span class="iconfont video-list-item-play-icon">&#xe603;</span>

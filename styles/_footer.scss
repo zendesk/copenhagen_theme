@@ -177,6 +177,10 @@
 
 .footer {
   background-color: $black; 
+
+  .snmk-container {
+    align-items: flex-start;
+  }
 }
 
 .footer-related-links-container {

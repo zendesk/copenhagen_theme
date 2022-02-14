@@ -443,9 +443,18 @@ document.addEventListener('DOMContentLoaded', function () {
     window.removeMask = () => mask.style.display = 'none'
     window.openMask = () => mask.style.display = 'block'
     window.announcementModal = getEl('#announcement-modal')
-    // console.log(firstBarMenus, firstBar)
     hanldeRefatorAnnouncementModal()
+    
     secondBarActive()
+
+    // home page remove header search
+    console.log('ready remove')
+    if(new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)(/*)$','ig').test(window.location)) {
+        console.log('remove')
+        const headerSearch = getEl('#header-search')
+        if(headerSearch) headerSearch.style.display = 'none'
+    }
+
     // Key map
     var ENTER = 13;
     var ESCAPE = 27;
@@ -1028,7 +1037,9 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.onload = function () {
+    console.log('haha1')
     handleSectionUMArticles()
+    console.log('haha')
 
     /**
      * Hack for table of contents in article page
