@@ -7,6 +7,8 @@
   transform: translate(-50%, -50%);
   z-index: 1111;
   border-radius: 12px;
+  font-size: 14px;
+  color: black;
 }
 
 .close-icon {
@@ -66,21 +68,21 @@
 
 @media (min-width: $breakPoint_l){
   .modal-wrapper {
-    min-width: 560px;
+    width: 560px;
   }
 }
 
 
 @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l){
   .modal-wrapper {
-    min-width: 444px;
+    width: 444px;
   }
 
 }
 
 @media (max-width: $breakPoint_m) {
   .modal-wrapper {
-    min-width: 344px;
+    width: 344px;
   }
 
 }
