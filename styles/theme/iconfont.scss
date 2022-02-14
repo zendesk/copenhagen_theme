@@ -1,0 +1,18 @@
+
+@font-face {
+  font-family: "iconfont"; /* Project id 3001564 */
+  src: url('$assets-iconfont-woff2') format('woff2'),
+  url('$assets-iconfont-woff') format('woff'),
+  url('$assets-iconfont-tt') format('truetype');
+  // src: url('https://ditfjx9w4x3vl.cloudfront.net/assets/font-family/iconfont.woff2?t=1640748636181') format('woff2'),
+  // url('https://ditfjx9w4x3vl.cloudfront.net/assets/font-family/iconfont.woff?t=1640748636181') format('woff'),
+  // url('https://ditfjx9w4x3vl.cloudfront.net/assets/font-family/iconfont.ttf?t=1640748636181') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  // font-size: 16px;
+  // font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

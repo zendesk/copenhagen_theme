@@ -1,10 +1,10 @@
 /***** Hero component *****/
 .hero {
-  background-image: url($assets-pic_nav_bg_1920x456-png);
+  // background-image: url($assets-pic_nav_bg_1920x456-png);
   background-position: center;
   background-size: cover;
   height: 456px;
-  margin-top: -$header-height;
+  // margin-top: -$second-bar-height;
   padding: 0 20px;
   text-align: center;
   width: 100%;
@@ -21,6 +21,6 @@
     position: relative;
     max-width: 610px;
     margin: 0 auto;
-    margin-top: 42px;
+    margin-top: 50px;
   }
 }

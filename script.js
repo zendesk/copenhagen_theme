@@ -251,9 +251,9 @@ const scrollnav = (function () {
 
     function getActiveSection(data, boundryTop, boundryBottom) {
         let activeSection;
-        data.forEach((section,index) => {
+        data.forEach((section, index) => {
             // TODO: calculation accuracy
-            if (section.offsetTop >= boundryBottom+2) {
+            if (section.offsetTop >= boundryBottom + 2) {
                 if (!activeSection && section.offsetTop < boundryTop) {
                     activeSection = section;
                 }
@@ -431,6 +431,28 @@ const scrollnav = (function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    /* header */
+    window.collectionIcon = document.querySelector('.bar-burger')
+    
+    window.firstBarMenus = document.querySelector('nav[class~=menus')
+    window.firstBar = document.querySelector('div[class~=first-bar')
+    window.secondBarIcon = document.querySelector('#second-bar-icon')
+    window.secondBarNavItems = document.querySelector('div[class~=nav-items')
+    
+    window.mask = document.querySelector('.mask')
+    window.removeMask = () => mask.style.display = 'none'
+    window.openMask = () => mask.style.display = 'block'
+    window.announcementModal = getEl('#announcement-modal')
+    hanldeRefatorAnnouncementModal()
+    
+    secondBarActive()
+
+    // home page remove header search
+    if(new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)(/*)$','ig').test(window.location)) {
+        const headerSearch = getEl('#header-search')
+        if(headerSearch) headerSearch.style.display = 'none'
+    }
+
     // Key map
     var ENTER = 13;
     var ESCAPE = 27;
@@ -565,6 +587,13 @@ document.addEventListener('DOMContentLoaded', function () {
             saveFocus();
             closest(this, 'form').submit();
         }
+    });
+    // Submit requests filter form on search icon in the request list page
+    var quickSearch = document.querySelector('.search-text-container .search-icon');
+    quickSearch && quickSearch.addEventListener('click', function (e) {
+        e.stopPropagation();
+        saveFocus();
+        document.querySelector('.search-text-container .search-icon ~ form').submit();
     });
 
     // Submit organization form in the request page
@@ -811,20 +840,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var burgerMenu = document.querySelector('.header .menu-button');
     var userMenu = document.querySelector('#user-nav');
 
-    burgerMenu.addEventListener('click', function (e) {
+    burgerMenu && burgerMenu.addEventListener('click', function (e) {
         e.stopPropagation();
         toggleNavigation(this, userMenu);
     });
 
 
-    userMenu.addEventListener('keyup', function (e) {
+    userMenu && userMenu.addEventListener('keyup', function (e) {
         if (e.keyCode === ESCAPE) {
             e.stopPropagation();
             closeNavigation(burgerMenu, this);
         }
     });
 
-    if (userMenu.children.length === 0) {
+    if (userMenu && userMenu.children && userMenu.children.length === 0) {
         burgerMenu.style.display = 'none';
     }
 
@@ -875,7 +904,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var header = el.querySelector('.category-section-header');
         var toggle = el.querySelector('.category-section-toggle');
 
-        header.addEventListener('click', function (e) {
+        header && header.addEventListener('click', function (e) {
             toggleCategorySection(el, toggle);
         })
     });
@@ -910,7 +939,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         const elem = document.createElement('li');
                         elem.textContent = bodyLabel.textContent;
 
-                        labels.appendChild(elem);
+                        labels && labels.appendChild(elem);
                     }
                 }
             });
@@ -950,9 +979,63 @@ document.addEventListener('DOMContentLoaded', function () {
             faqSection.style.display = 'none';
         }
     }
+
+    /**
+     * Header Component: control header show or not when scroll  
+     */
+    const headersHeight = 156
+    const firstBarHeight = 80
+    let lastScrollPosition = 0
+
+    const header = document.querySelector('header[class=header]')
+    const firstBar = document.querySelector('div[class~=first-bar]')
+
+    const showFirstBar = () => {
+        header.style.height = headersHeight + 'px'
+        firstBar.style.height = firstBarHeight + 'px'
+        firstBar.style.borderBottom = null
+    }
+    const hiddenFirstBar = () => {
+        header.style.height = (headersHeight - firstBarHeight) + 'px'
+        firstBar.style.height = 0 + 'px'
+        firstBar.style.borderBottom = 0 + 'px'
+    }
+
+    window.addEventListener('scroll', throttle(function (e) {
+        // Get the current scroll position
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+
+        // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
+        if (currentScrollPosition < 60) {
+            showFirstBar()
+            return
+        }
+
+        // Stop executing this function if the difference between
+        // current scroll position and last scroll position is less than some offset
+        if (Math.abs(currentScrollPosition - lastScrollPosition) < 60) {
+            return
+        }
+
+        // Here we determine whether we need to show or hide the navbar
+        if (currentScrollPosition > lastScrollPosition && !headerController.isFirstBarActive) {
+            hiddenFirstBar()
+        } else {
+            showFirstBar()
+        }
+        // Set the current scroll position as the last scroll position
+        lastScrollPosition = currentScrollPosition
+    }, 100))
+
+
+    /**
+     * 
+     */
 });
 
 window.onload = function () {
+    handleSectionUMArticles()
+
     /**
      * Hack for table of contents in article page
      */
@@ -978,4 +1061,777 @@ window.onload = function () {
             tocTitle.style.display = 'none';
         }
     }
+
+    const selectsDropdownContainer = getEl('#file-resource-container')
+    if (selectsDropdownContainer) {
+        document.body.addEventListener('click', () => closeAllDownloadDropdown(selectsDropdownContainer))
+    }
 };
+
+
+//============================================== refator(2022.1~) ==============================================
+/**
+ * Refatoring change the structure of zendesk background data, so after publishing this template, we need time to update 
+ * zendesk background data.
+ * During the update the structure of zendesk background data, showing a modal to placate users;
+ */
+function hanldeRefatorAnnouncementModal(){
+    const get = key => window.localStorage.getItem(key)
+    const set = (key, value) => window.localStorage.setItem(key, value)
+
+    if(get('is_announcement_get') === 'get') {
+        return 
+    }
+
+    set('is_announcement_get', 'get')
+    showAnnouncementModal()
+}
+
+function showAnnouncementModal(){
+    openMask()
+    announcementModal.style.display = 'block'
+    mask.style.zIndex = '1110'
+}
+
+function closeAnnouncementModal(){
+    announcementModal.style.display = 'none'
+    removeMask()
+}
+
+
+
+/**
+ * header controller
+ */
+const headerController = {
+    _isFirstBarActive: false,
+    _isSecondBarActive: false,
+}
+Object.defineProperties(headerController, {
+    isFirstBarActive: {
+        get() { return this._isFirstBarActive },
+        set(value) {
+            this._isFirstBarActive = value
+
+            if (value) {
+                this.isSecondBarActive = false
+            }
+            handleCollectionIcon(this._isFirstBarActive)
+        }
+    },
+    isSecondBarActive: {
+        get() { return this._isSecondBarActive },
+        set(value) {
+            this._isSecondBarActive = value
+
+            if (value) {
+                this.isFirstBarActive = false
+            }
+            handleSecondBarCollection(this._isSecondBarActive)
+        }
+    }
+})
+
+/**
+ * @description  first header bar, tablet/mobile, click icon open/close collection 
+ */
+function toggleCollectionIcon() {
+    headerController.isFirstBarActive = !headerController.isFirstBarActive
+}
+function handleCollectionIcon(isOpen) {
+    if (isOpen) {
+        collectionIcon.classList.add('is-active')
+        toggleCollectionCss(isOpen)
+        document.documentElement.classList.add('body-no-scroll')
+        // mask.style.display = 'block'
+        openMask()
+    } else {
+        toggleCollectionCss(isOpen)
+        collectionIcon.classList.remove('is-active')
+        document.documentElement.classList.remove('body-no-scroll')
+        // mask.style.display = 'none'
+        removeMask()
+    }
+}
+function toggleCollectionCss(isOpen) {
+    if(!firstBar || !firstBarMenus) {
+        console.log('error: no el')
+        return
+    }
+    const left =  firstBarMenus.getBoundingClientRect().left
+    if (isOpen) {
+        firstBar.style.overflow = 'visible'
+        firstBarMenus.style.width = window.innerWidth + 'px'
+        firstBarMenus.style.left = `-${left}px`
+        firstBarMenus.style.padding = `0 ${left}px`
+    } else {
+        firstBar.style.overflow = null
+        firstBarMenus.style.width = null
+        firstBarMenus.style.left = null
+    }
+}
+
+/**
+ * @description  second header bar, tablet/mobile, click icon open/close collection 
+ */
+function toggleSecondBarCollection() {
+    if (window.innerWidth > 1024) { return }
+    headerController.isSecondBarActive = !headerController.isSecondBarActive
+}
+function handleSecondBarCollection(isOpen) {
+    if (isOpen) {
+        toggleSecondBarCollectionCss(isOpen)
+        secondBarIcon.classList.add('is-open')
+        document.documentElement.classList.add('body-no-scroll')
+        // mask.style.display = 'block'
+        openMask()
+    } else {
+        toggleSecondBarCollectionCss(isOpen)
+        secondBarIcon.classList.remove('is-open')
+        document.documentElement.classList.remove('body-no-scroll')
+        // mask.style.display = 'none'
+        removeMask()
+    }
+
+}
+function toggleSecondBarCollectionCss(isOpen) {
+    if (isOpen) {
+        secondBarNavItems.style.height = 'auto'
+    } else {
+        secondBarNavItems.style.height = '0'
+    }
+}
+
+/**
+ * @description  collection mask, click then close collection
+ */
+function onClickMask() {
+    announcementModal.style.display = 'none'
+
+    headerController.isFirstBarActive = false
+    headerController.isSecondBarActive = false
+    removeMask()
+}
+
+/**
+ * @description  header component: second bar item active or not handle
+ */
+function secondBarActive() {
+    const navHome = getEl('#nav-home')
+    const navAcademy = getEl('#nav-academy')
+    if (new RegExp('/hc/(en-us|zh-cn)[/]*$').test(window.location.pathname)) {
+        navHome.classList.add('active-nav-item')
+        navAcademy.classList.remove('active-nav-item')
+        return
+    }
+    if (window.location.pathname.includes('360003536313')) {
+        navHome.classList.remove('active-nav-item')
+        navAcademy.classList.add('active-nav-item')
+        return
+    }
+}
+
+
+/**
+ * @description footer component: unfold/fold
+ * @param querySelector css selector
+ */
+function onFooterCollectionClick(event) {
+    if(window.innerWidth > 1024 ) return
+    const toggleNo = event && event.target && event.target.dataset && event.target.dataset.toggle
+    const targetEl = document.querySelector(`#footer-link-part${toggleNo}`)
+    if (!targetEl) return
+    const isTargetNotDisplay = window.getComputedStyle(targetEl).display === 'none'
+    targetEl.style.display = isTargetNotDisplay  ? 'block' : 'none'
+    
+    const iconEl = document.querySelector(`.iconfont[data-toggle="${toggleNo}"]`)
+    if(iconEl) iconEl.style.transform = isTargetNotDisplay ? 'rotate(90deg)' : 'rotate(0deg)'
+}
+
+/**
+ * @description footer component: mailchimp Subscribe func
+ */
+function mailchimpSubscribe() {
+    const email = getEl('#emailInside').value
+    const action = '//snapmaker.us14.list-manage.com/subscribe/post-json'
+    const params = {
+        'u': '0f4c0a37d13c4941ec88bb242',
+        'id': 'bfa2592e18',
+        'c': 'jsonpCallback',
+        'EMAIL': encodeURIComponent(email),
+    }
+    const clickId = 'footer-inline';
+
+    gtmPush({
+        event: 'general-event',
+        eventData: {
+            eventCategory: 'subscribe',
+            eventAction: 'initial',
+            eventLabel: clickId
+        }
+    });
+
+    jsonp({
+        url: action,
+        params,
+    }).then((res) => {
+        if (res.result === 'success') {
+            const successEl = getEl('#footer-success-msg')
+            successEl.innerHTML = res.msg
+            successEl.style.display = 'block'
+            getEl('#footer-error-msg').style.display = 'none'
+            gtmPush({
+                event: 'general-event',
+                eventData: {
+                    eventCategory: 'subscribe',
+                    eventAction: 'return-success',
+                    eventLabel: clickId
+                }
+            });
+        } else {
+            getEl('#footer-success-msg').style.display = 'none'
+            const errEl = getEl('#footer-error-msg')
+            errEl.innerHTML = res.msg
+            errEl.style.display = 'block'
+            gtmPush({
+                event: 'general-event',
+                eventData: {
+                    eventCategory: 'subscribe',
+                    eventAction: 'return-fail',
+                    eventLabel: clickId
+                }
+            });
+        }
+    })
+}
+
+/**
+ * @description
+ */
+function onChangeFileSelect(el, e) {
+    const isExpanded = el.getAttribute('aria-expanded') === 'true';
+
+    // close other select dropdown
+    if (!isExpanded) {
+        closeAllDownloadDropdown(getEl('#file-resource-container'))
+    }
+
+    // close this select dropdown
+    el.setAttribute('aria-expanded', !isExpanded);
+
+    e.stopPropagation()
+}
+
+/**
+ * @description  Section page UserManual block show all articles. (template only support 5 articles.)
+ */
+function handleSectionUMArticles() {
+    setTimeout(() => {
+        try {
+            sectionIDs && sectionIDs.forEach(async function (id) {
+                const res = await ajax({
+                    method: 'GET',
+                    url: `/api/v2/help_center/${locale}/sections/${id}/articles`,
+                })
+                let html = ``
+                for (let i = 0; i < res.articles.length; i++) {
+                    const curr = res.articles[i]
+                    html += `
+                    <li class="article-list-item">
+                        <div class="article-item">
+                            <a href="${curr.html_url}" class="article-list-link">
+                                <span class="book-icon font-bw-2 mr-m"></span>
+                                ${curr.title}
+                            </a>
+                        </div>
+                    </li>`
+                }
+                getEl('#um-' + id).innerHTML = html
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    })
+}
+
+/**
+ * @description section page: first screen, right side, get data of download resource and format for template  
+ * @param {*} id section's id
+ * @param {*} locale current page's locale(from {{help_center.locale}})
+ */
+async function handleSectionResource(id, locale) {
+    const compatibleContainer = getEl('#compatible-container') || {}
+    const fileResourceContainer = getEl('#file-resource-container') || {}
+    const compatibleLabelContainer = getEl('#compatible-label-container') || {}
+
+    const fold = locale === 'zh-cn' ? 'cn' : 'en'
+    const configuration = ajax({
+        method: 'GET',
+        url: `https://s3.us-west-2.amazonaws.com/snapmaker.com/download/support-resource/products-configuration/${fold}/${id}.json`,
+    })
+    let resourceDownload, res
+    try {
+        [res, resourceDownload] = await Promise.all([configuration, handleLubanSoftware(locale)])
+    } catch (e) {
+        console.log('Repeat. Retry in five minutes, err:',e)
+        resourceDownload = ``
+        res = await Promise.resolve(configuration)
+    }
+
+    if(res.compatible) {
+        let compatibleHtml = ``
+        res.compatible.forEach(item => {
+            compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`
+        })
+        compatibleContainer.innerHTML = compatibleHtml
+    }else{
+        compatibleLabelContainer.style.display = 'none'
+    }
+
+    if (res.productImgSrc) {
+        getEl('#section-product-img').src = res.productImgSrc
+    }
+
+    res.resource.forEach(v => resourceDownload += handleResourceDownload(v))
+    fileResourceContainer.innerHTML = resourceDownload
+}
+function handleResourceDownload(resource) {
+    return resource.type == "download" ? handleDownloadFile(resource) : handleSelectDownload(resource)
+}
+function handleDownloadFile(resource) {
+    const description = handleSectionResourceDescription(resource.description, resource.title)
+    return `<div class="file-resource-container mr-l mt-xl">
+      <div class="resource-title-container">
+        <span class="title-3 bold font-bw-1 resource-title" title="${resource.title}">${resource.title}</span>
+        <span class="font-1 font-bw-3 resource-time" title="${resource.time}">${resource.time}</span>
+      </div>
+      <a href="${resource.download_link}" download class="file-download-btn w-100 mt-m" title="${resource.text}" target="_blank">
+        <span>${resource.text}</span> 
+        <span class="iconfont">&#xe721;</span>
+      </a>
+      <p class="mt-s">${description}</p>
+    </div>
+    `
+}
+function handleSelectDownload(resource) {
+    const description = handleSectionResourceDescription(resource.description, resource.title)
+    let dropdown = ``
+    resource.dropdown.forEach(v => {
+        dropdown += `<li><a class="py-s" href="${v.link}" title="${v.text}" target="_blank">${v.text}</a></li>`
+    })
+    return `
+    <div class="file-resource-container mr-l mt-xl">
+      <div class="resource-title-container">
+        <span class="title-3 bold font-bw-1 resource-title" title="${resource.title}">${resource.title}</span>
+        <span class="font-1 font-bw-3 resource-time" title="${resource.time}">${resource.time}</span>
+      </div>
+      <div class="resource-select"  aria-expanded="false" onclick="onChangeFileSelect(this, event)">
+        <div class="file-download-btn w-100 mt-m" title="${resource.text}">
+          <span>${resource.text}</span>
+          <span class="iconfont down">&#xe7b2;</span>
+        </div>
+        <ul class="dropdown">${dropdown}</ul>
+      </div>
+      <p class="mt-s">${description}</p>
+    </div>`
+}
+function handleSectionResourceDescription(description, title) {
+    const defaultDesc = {
+        "Driver": [
+            {
+                "text": "Download and install the driver if you can’t find any serial port to connect to Luban.",
+                "link": ""
+            }
+        ],
+        "Third-party Configs": [
+            {
+                "text": "Download and set up the configuration files to generate G-code on third-party CAD or CAM software, including Fusion 360, FreeCAD, ArtCAM, Aspire, and more to be added.",
+                "link": ""
+            }
+        ],
+        "Firmware": [
+            {
+                "text": "Read this ",
+                "link": ""
+            },
+            {
+                "text": "article",
+                "link": "https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402"
+            },
+            {
+                "text": " before you upgrade the firmware to version 1.12.0.<br>",
+                "link": ""
+            },
+            {
+                "text": "Download previous versions from our ",
+                "link": ""
+            },
+            {
+                "text": " forum.",
+                "link": "https://forum.snapmaker.com/"
+            }
+        ],
+        "Quick Start Guide (A Model)": [
+            {
+                "text": "Read this guide to get you started with your making journey.",
+                "link": ""
+            }
+        ],
+        "Quick Start Guide (AT Model)": [
+            {
+                "text": "Read this guide to get you started with your making journey.",
+                "link": ""
+            }
+        ],
+        "Quick Start Guide": [
+            {
+                "text": "Read this guide to get you started with your making journey.",
+                "link": ""
+            }
+        ],
+        "User Manual": [
+            {
+                "text": "Read this manual to unlock advanced options.",
+                "link": ""
+            }
+        ],
+         "Troubleshooting Guide": [
+            {
+                "text": "Read this guide to troubleshoot your 2.0 models, Enclosure, Rotary Module, Touchscreen, and Luban.",
+                "link": ""
+            }
+        ],
+        "驱动": [
+            {
+                "text": "如果无法找到串口连接 Luban，请下载并安装驱动程序。",
+                "link": ""
+            }
+        ],
+        "第三方配置文件": [
+            {
+                "text": "如果想用 Fusion 360、FreeCAD、ArtCAM、Aspire 等第三方 CAD/CAM 软件生成 G 代码，请下载并设置配置文件。",
+                "link": ""
+            }
+        ],
+        "固件": [
+            {
+                "text": "升级至固件 1.12.0 前，请阅读这篇",
+                "link": ""
+            },
+            {
+                "text": "文章",
+                "link": "https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402"
+            },
+            {
+                "text": "。<br>",
+                "link": ""
+            },
+            {
+                "text": "在",
+                "link": ""
+            },
+            {
+                "text": "论坛",
+                "link": "https://forum.snapmaker.com/"
+            },
+            {
+                "text": "下载历史版本。",
+                "link": ""
+            }
+        ],
+        "快速入门指南（A 型号）": [
+            {
+                "text": "阅读本指南，开启创客之旅。",
+                "link": ""
+            }
+        ],
+        "快速入门指南（AT 型号）": [
+            {
+                "text": "阅读本指南，开启创客之旅。",
+                "link": ""
+            }
+        ],
+        "用户手册": [
+            {
+                "text": "阅读本手册，解锁进阶玩法。",
+                "link": ""
+            }
+        ],
+         "故障排查指南": [
+            {
+                "text": "阅读本指南，排查产品故障。",
+                "link": ""
+            }
+        ]
+    }
+    if(!description && !!title){
+        description = defaultDesc[title] || []
+    }
+
+    let descriptionHtml = ``
+    description.forEach(v => {
+        descriptionHtml += !v.link ? `<span class="font-2">${v.text}</span>` : `<a class="snmk-link-btn" href="${v.link}">${v.text}</a>`
+    })
+    return descriptionHtml
+}
+
+/**
+ * @description close all select dropdwon of containerEl element
+ * @param containerEl the parent element of all select dropdwon
+ */
+function closeAllDownloadDropdown(containerEl) {
+    const selectsDropdown = containerEl.querySelectorAll('.resource-select[aria-expanded]')
+    selectsDropdown.forEach(el => {
+        if (el.getAttribute('aria-expanded') === 'false') return
+        el.setAttribute('aria-expanded', 'false');
+    })
+}
+
+/**
+ * @description get the version and installers package of Luban; data from https://api.snapmaker.com/v1/versions and aws
+ * @param locale current page language ({{help_center.locale}})
+ * @returns the innerHTML of Software(Luban) block
+ */
+async function handleLubanSoftware(locale) {
+    let templateData
+    if (locale === 'zh-cn') {
+        templateData = {
+            "title": "软件",
+            "time": "Sep 28, 2021",
+            "type": "download",
+            "text": "下载 Luban ",
+            "description": [
+                {
+                    "text": "在",
+                    "link": ""
+                },
+                {
+                    "text": "GitHub",
+                    "link": "https://github.com/Snapmaker/Luban/releases"
+                },
+                {
+                    "text": "下载历史版本。<br>",
+                    "link": ""
+                },
+                {
+                    "text": "阅读",
+                    "link": ""
+                },
+                {
+                    "text": "软件手册",
+                    "link": "https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual"
+                },
+                {
+                    "text": "，开启创客之旅。",
+                    "link": ""
+                }
+            ]
+        }
+    } else {
+        templateData = {
+            "title": "Software",
+            "time": "Sep 28, 2021",
+            "type": "download",
+            "text": "Download Luban ",
+            "description": [
+                {
+                    "text": "Download previous versions from our ",
+                    "link": ""
+                },
+                {
+                    "text": "GitHub",
+                    "link": "https://github.com/Snapmaker/Luban/releases"
+                },
+                {
+                    "text": ".<br>",
+                    "link": ""
+                },
+                {
+                    "text": " Jump start your making journey with our software ",
+                    "link": ""
+                },
+                {
+                    "text": "user manual",
+                    "link": "https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual"
+                },
+                {
+                    "text": ".",
+                    "link": ""
+                }
+            ]
+        }
+    }
+
+    const res = await ajax({
+        method: 'GET',
+        url: 'https://api.github.com/repos/Snapmaker/Luban/releases/latest'
+    })
+    const softwareVersion = res.name
+    const installersAssets = res.assets.filter(v => v.name.indexOf('.yml') === -1 && v.name.indexOf('.dmg') === -1)
+
+
+    const finder = (orignal, target) => new RegExp(target).test(orignal)
+    
+    const uaParser = new UAParser()
+    const ua = uaParser.getResult()
+    const checkOS = (osType, CheckString) => {
+        return installersAssets
+                .filter(v=>finder(v.name, osType))
+                .filter(
+                    v=>finder(v.name.toLowerCase().replace(/snapmaker-luban-/, '') ,CheckString)
+                )[0]
+    }
+
+    let isFoundVersion = false
+
+    switch (ua.os.name) {
+        case 'Windows': {
+            const targetAssets = checkOS('win', ua.cpu.architecture)
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('win', 'x64').browser_download_url
+            break
+        }
+        case 'Mac OS': {
+            const targetAssets = checkOS('mac', '.dmg')
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('mac', 'zip').browser_download_url
+            break
+        }
+        case 'Ubuntu':
+        case 'Debian': {
+            const targetAssets = checkOS('linux', '.deb')
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url
+            break
+        }
+        case 'Linux': {
+            const targetAssets = checkOS('linux', ua.cpu.architecture)
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url
+            break
+        }
+        default: {
+            isFoundVersion = false
+        }
+    }
+    isFoundVersion = !!templateData.download_link
+    templateData.text = isFoundVersion ? templateData.text+softwareVersion : 'Installer Not Found. Please Download from the GitHub'
+    
+    return handleDownloadFile(templateData)
+}
+
+
+//============================================== utils ==============================================
+/**
+ * @description throttle func
+ * @param fn the func will be enhance
+ * @param threshold time  
+ */
+function throttle(fn, threshold) {
+    let cando = true
+    return function (...args) {
+        if (!cando) {
+            return
+        }
+        fn.apply(this, args)
+        cando = false
+        setTimeout(() => {
+            cando = true
+        }, threshold)
+    }
+}
+
+/**
+ * @description excute document.querySelector( )
+ * @param querySelector css selector
+ */
+function getEl(selector) {
+    return document.querySelector(selector)
+}
+
+/**
+ * @description send http require
+ * @param {Object} options 
+ * @returns Promise
+ * @example ajax({
+ *  method: 'GET'
+ *  url: 'https://example.com',
+ * })
+ */
+function ajax(options) {
+    const paramString = handleParam(options.params)
+    const url = options.url + paramString
+    return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest()
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) {
+                    const result = xhr.responseText
+                    try {
+                        resolve(JSON.parse(result))
+                    } catch (e) {
+                        reject({ errorMsg: '数据格式错误' })
+                    }
+                } else {
+                    console.error('error:xmlhttp.status =', xhr.status)
+                    reject(xhr)
+                }
+            }
+        }
+        xhr.onerror = function (e) {
+            reject(e)
+        }
+
+        xhr.open(options.method || 'GET', url, true);
+        for (let key in options.headers) {
+            xhr.setRequestHeader(key, options.headers[key]);
+        }
+        xhr.send(options.body)
+    })
+}
+function handleParam(params) {
+    if (params === undefined) return ''
+    if (typeof params !== 'object') return params
+    const paramArr = []
+    for (let key in params) {
+        paramArr.push(`${key}=${params[key]}`)
+    }
+    return '?' + paramArr.join('&')
+}
+
+/**
+ * @description send http require
+ * @param {Object} options 
+ * @returns Promise
+ * @example ajax({
+ *  params: {age: 16}
+ *  url: 'https://example.com',
+ * })
+ */
+function jsonp(options) {
+    window.res = {}
+    window.jsonpCallback = v => res = v
+
+    const paramString = handleParam(Object.assign(options.params || {}, { 'c': 'jsonpCallback' }))
+    const script = document.createElement('script')
+    script.src = options.url + paramString
+    document.body.appendChild(script)
+
+    return new Promise((resolve, reject) => {
+        script.onload = function () {
+            // async to last execute
+            setTimeout(() => {
+                const result = window.res
+                delete window.res
+                delete window.jsonpCallback
+                resolve(result)
+            })
+        }
+    })
+}
+
+// GTM
+function gtmPush(event) {
+    window.dataLayer = window.dataLayer || []
+    window.dataLayer.push(event)
+}
+
+
+

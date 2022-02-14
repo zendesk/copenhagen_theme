@@ -1,5 +1,6 @@
 // Common
 @import "normalize";
+@import "./theme/index.scss";
 
 @import "../node_modules/font-awesome/scss/font-awesome";
 @font-face {
@@ -37,6 +38,7 @@
 @import "scrollnav";
 @import "sub-nav";
 @import "follow";
+@import "tips_modal";
 
 // Filters
 @import "breadcrumbs";

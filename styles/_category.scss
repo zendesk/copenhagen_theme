@@ -7,11 +7,30 @@
 
   flex: 1;
   margin: 0 -20px; // cancel out padding of .container
+
+  .category-section {
+    width: 100%;
+  }
 }
 
-.category-sections {
-
+.snmk-container .category-sections .category-section {
+  margin-bottom: 2px;
 }
+.snmk-container .category-section-body {
+  padding: 0;
+}
+.snmk-container .category-section-title {
+  padding: 0 24px;
+}
+@media (max-width: $breakPoint_m) {
+  .snmk-container .category-section .category-section-article {
+    padding: 10px 24px;
+  }
+  .category-section-body .snmk-btn {
+    margin-left: 24px;
+  }
+}
+
 
 .category-section {
   display: block;

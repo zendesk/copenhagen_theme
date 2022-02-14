@@ -1,0 +1,88 @@
+.modal-wrapper {
+  display: none;
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1111;
+  border-radius: 12px;
+  font-size: 14px;
+  color: black;
+}
+
+.close-icon {
+  color: $black_white_3;
+  width: 24px;
+  height: 24px;
+  margin-top: 16px;
+  margin-right: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+
+  float: right;
+
+  line-height: 24px;
+  font-family: Roboto;
+  font-size: 20px;
+
+  
+  text-align: center;
+  
+}
+
+.modal-body {
+  text-align: center;
+}
+.modal-body .iconfont {
+  font-size: 72px;
+  color: $black_white_2;
+}
+
+.modal-confirm {
+  display: inline-block;
+  position: relative;
+  border: none;
+  cursor: pointer;
+  color: $link;
+  background-color: transparent;
+
+  &::after {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: $blue;
+    background-color: $blue;
+    transition: all 0.3s ease-in-out;
+  }
+
+  
+  &:hover,&:active {
+    &::after { width: 100%; }
+  }
+}
+
+
+@media (min-width: $breakPoint_l){
+  .modal-wrapper {
+    width: 560px;
+  }
+}
+
+
+@media (min-width: $breakPoint_m) and (max-width: $breakPoint_l){
+  .modal-wrapper {
+    width: 444px;
+  }
+
+}
+
+@media (max-width: $breakPoint_m) {
+  .modal-wrapper {
+    width: 344px;
+  }
+
+}

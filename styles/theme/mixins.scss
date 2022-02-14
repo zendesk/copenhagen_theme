@@ -1,0 +1,74 @@
+@mixin grid-system-variable($type) {  
+  @media (min-width: $breakPoint_xl ) {
+    $desingGutter: 24px; // Design draft gutter
+    $desingMargin: 96px; // Design draft page margin
+    $desingCols: 12;     // column
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+   @if $type == "padding" {
+     padding: 0 $desingMargin;
+   }
+   @if $type == "margin" {
+     margin: 0 $desingMargin;
+   }
+  }
+  
+  @media (min-width: $breakPoint_l) and (max-width : $breakPoint_xl) {
+    $desingGutter: 16px; // Design draft gutter
+    $desingMargin: 60px; // Design draft page margin
+    $desingCols: 12;     // column
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }
+  }
+  @media (min-width: $breakPoint_m) and (max-width : $breakPoint_l) {
+    $desingGutter: 16px; // Design draft gutter
+    $desingMargin: 40px; // Design draft page margin
+    $desingCols: 8;      // column
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }  
+  }
+  @media (min-width: $breakPoint_s) and (max-width : $breakPoint_m) {
+    $desingGutter: 16px; // Design draft gutter
+    $desingMargin: 24px; // Design draft page margin
+    $desingCols: 4;      // column
+    $gutter: $desingGutter / 2; 
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }
+  }
+  @media (max-width : $breakPoint_s) {
+    $desingGutter: 16px;
+    $desingMargin: 16px;
+    $desingCols: 4;
+    $gutter: $desingGutter / 2;
+    $margin: $desingMargin - $gutter;
+    $colWidth: 100% / $desingCols;
+    @if $type == "padding" {
+      padding: 0 $desingMargin;
+    }
+    @if $type == "margin" {
+      margin: 0 $desingMargin;
+    }
+  } 
+  
+}
