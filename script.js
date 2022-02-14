@@ -448,9 +448,7 @@ document.addEventListener('DOMContentLoaded', function () {
     secondBarActive()
 
     // home page remove header search
-    console.log('ready remove')
     if(new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)(/*)$','ig').test(window.location)) {
-        console.log('remove')
         const headerSearch = getEl('#header-search')
         if(headerSearch) headerSearch.style.display = 'none'
     }
@@ -593,7 +591,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Submit requests filter form on search icon in the request list page
     var quickSearch = document.querySelector('.search-text-container .search-icon');
     quickSearch && quickSearch.addEventListener('click', function (e) {
-        console.log('click')
         e.stopPropagation();
         saveFocus();
         document.querySelector('.search-text-container .search-icon ~ form').submit();
@@ -1037,9 +1034,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.onload = function () {
-    console.log('haha1')
     handleSectionUMArticles()
-    console.log('haha')
 
     /**
      * Hack for table of contents in article page

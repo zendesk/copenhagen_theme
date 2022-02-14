@@ -6148,7 +6148,7 @@ textarea:focus {
 }
 
 .container-divider {
-  border-top: 1px solid #e7e8e9;
+  border-top: 1px solid white;
   margin-bottom: 20px;
 }
 
@@ -7848,7 +7848,13 @@ ul {
 }
 
 .video-list .video-list-item a.video-list-item-title {
+  margin-top: 16px;
+  font-size: 16px;
   color: #5c5c5c;
+}
+
+.video-list .video-list-item a.video-list-item-title:hover {
+  color: #0C63E2;
 }
 
 .iconfont.video-list-item-play-icon {
@@ -10731,7 +10737,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 /***** Header *****/
 .snmk-container {
-  font-family: "Roboto","Droid Sans","Helvetica Neue","Helvetica","Arial","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: "Roboto",-apple-system, BlinkMacSystemFont, "Segoe UI", "Droid Sans","Helvetica Neue","Helvetica","Arial","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }

@@ -223,7 +223,12 @@
 }
 .video-list .video-list-item  a.video-list-item-title {
   margin-top: 16px;
+  font-size: 16px;
   color: $black_white_2;
+
+  &:hover {
+    color: $link;
+  }
 }
 .iconfont.video-list-item-play-icon {
   font-size: 48px;
