@@ -64,6 +64,16 @@ parts:
       screenshot: "https://drive.google.com/file/d/1ZOoBb6K_mpYtyd3ulkEKawmSj1dZPuFw/view?usp=sharing"
       value: "Text color for visited link elements"
   - translation:
+      key: "txt.help_center_copenhagen_theme.hover_link_color_label"
+      title: "Label for the hover link color setting"
+      screenshot: "https://drive.google.com/file/d/14Wh8h1I-ej3d2TRrPHFMvydDeEO_8sxr/view?usp=sharing"
+      value: "Hover link color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.hover_link_color_description"
+      title: "Description for the hover link color setting"
+      screenshot: "https://drive.google.com/file/d/14Wh8h1I-ej3d2TRrPHFMvydDeEO_8sxr/view?usp=sharing"
+      value: "Text color for the hover state of link elements"
+  - translation:
       key: "txt.help_center_copenhagen_theme.visited_link_color_label"
       title: "Label for the visited link color setting"
       screenshot: "https://drive.google.com/file/d/1ZOoBb6K_mpYtyd3ulkEKawmSj1dZPuFw/view?usp=sharing"
