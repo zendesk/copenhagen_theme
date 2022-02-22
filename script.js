@@ -447,6 +447,8 @@ document.addEventListener('DOMContentLoaded', function () {
     
     secondBarActive()
 
+    handleBreadcrumbs()
+
     // home page remove header search
     if(new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)(/*)$','ig').test(window.location)) {
         const headerSearch = getEl('#header-search')
@@ -1071,6 +1073,17 @@ window.onload = function () {
 
 //============================================== refator(2022.1~) ==============================================
 /**
+ * handle breadcrumbs because we need some extra level to store some data (sorry for that shit)
+ * then operators or sales just found that they not pretty enough, so we need to hide these shits
+ */
+function handleBreadcrumbs() {
+    // replace 'Snapmaker' to "Support"
+    const breadcrumbEls = getEl('.breadcrums-box').firstElementChild.children
+    breadcrumbEls[0].textContent = 'Support'
+}
+
+
+/**
  * Refatoring change the structure of zendesk background data, so after publishing this template, we need time to update 
  * zendesk background data.
  * During the update the structure of zendesk background data, showing a modal to placate users;
@@ -1664,7 +1677,7 @@ async function handleLubanSoftware(locale) {
 
     const res = await ajax({
         method: 'GET',
-        url: 'https://api.github.com/repos/Snapmaker/Luban/releases/latest'
+        url: 'https://api.snapmaker.com/luban-installers'
     })
     const softwareVersion = res.name
     const installersAssets = res.assets.filter(v => v.name.indexOf('.yml') === -1 && v.name.indexOf('.dmg') === -1)

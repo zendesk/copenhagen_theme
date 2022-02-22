@@ -182,9 +182,9 @@ template {
 }
 
 /****************** snapmaker theme start ******************/
-/* 品牌色/快造黑 */
-/* 品牌色/科技蓝 */
-/* 品牌色/活力黄 */
+/* brand color/Snapmaker black */
+/* brand color/Tech blue */
+/* brand color/Vibrant yellow */
 @font-face {
   font-family: "iconfont";
   /* Project id 3001564 */
@@ -2611,6 +2611,38 @@ body {
 
 .font-bw-8 {
   color: #f5f5f5;
+}
+
+.bg-bw-1 {
+  background-color: #1f1f1f;
+}
+
+.bg-bw-2 {
+  background-color: #5c5c5c;
+}
+
+.bg-bw-3 {
+  background-color: #999;
+}
+
+.bg-bw-4 {
+  background-color: #c2c2c2;
+}
+
+.bg-bw-5 {
+  background-color: #d6d6d6;
+}
+
+.bg-bw-6 {
+  background-color: #e0e0e0;
+}
+
+.bg-bw-7 {
+  background-color: #ebebeb;
+}
+
+.bg-bw-8 {
+  background-color: #f5f5f5;
 }
 
 @media (min-width: 1441px) {
