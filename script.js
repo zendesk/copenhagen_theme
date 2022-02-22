@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
     window.removeMask = () => mask.style.display = 'none'
     window.openMask = () => mask.style.display = 'block'
     window.announcementModal = getEl('#announcement-modal')
-    hanldeRefatorAnnouncementModal()
+    // hanldeRefatorAnnouncementModal()
     
     secondBarActive()
 
@@ -1079,7 +1079,7 @@ window.onload = function () {
 function handleBreadcrumbs() {
     // replace 'Snapmaker' to "Support"
     const breadcrumbEls = getEl('.breadcrums-box').firstElementChild.children
-    breadcrumbEls[0].textContent = 'Support'
+    breadcrumbEls[0].querySelector('a').textContent = 'Support'
 }
 
 
