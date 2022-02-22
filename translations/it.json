@@ -9,13 +9,15 @@
   "link_color_description": "Colore del testo per i link",
   "link_color_label": "Colore link",
   "visited_link_color_description": "Colore del testo per i link selezionati",
+  "hover_link_color_label": "Colore dei link al passaggio del mouse",
+  "hover_link_color_description": "Colore del testo per lo stato dei link al passaggio del mouse",
   "visited_link_color_label": "Colore link selezionati",
   "background_color_description": "Colore di sfondo del Centro assistenza",
   "background_color_label": "Colore di sfondo",
   "fonts_group_label": "Carattere",
   "heading_font_description": "Carattere per intestazioni",
   "heading_font_label": "Carattere intestazione",
-  "text_font_description": "Carattere del testo del corpo",
+  "text_font_description": "Carattere del corpo di testo",
   "text_font_label": "Carattere testo",
   "brand_group_label": "Brand",
   "logo_description": "Logo azienda",
@@ -65,6 +67,6 @@
   "community_topic_group_label": "Elementi argomento della community",
   "follow_topic_label": "Segui",
   "follow_topic_description": "Gli utenti possono seguire un argomento specifico",
-  "show_brand_name_label": "Mostra nome del centro assistenza",
-  "show_brand_name_description": "Visualizza il nome del centro assistenza accanto al logo"
+  "show_brand_name_label": "Mostra nome del Centro assistenza",
+  "show_brand_name_description": "Visualizza il nome del Centro assistenza accanto al logo"
 }

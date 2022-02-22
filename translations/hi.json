@@ -9,6 +9,8 @@
   "link_color_description": "लिंक तत्वों के लिए पाठ रंग",
   "link_color_label": "लिंक रंग",
   "visited_link_color_description": "विज़िट किए गए लिंक तत्वों के लिए पाठ रंग",
+  "hover_link_color_label": "होवर लिंक रंग",
+  "hover_link_color_description": "लिंक तत्वों की होवर स्थिति के लिए टेक्स्ट का रंग",
   "visited_link_color_label": "विज़िट किए गए लिंक के रंग",
   "background_color_description": "आपके सहायता केंद्र की पृष्ठभूमि का रंग",
   "background_color_label": "पृष्ठभूमि का रंग",

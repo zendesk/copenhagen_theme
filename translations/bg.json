@@ -9,6 +9,8 @@
   "link_color_description": "Цвят на текста за елементите-линкове",
   "link_color_label": "Цвят на линка",
   "visited_link_color_description": "Цвят на текста за посетените линкове",
+  "hover_link_color_label": "Цвят на линка при задържане на курсора",
+  "hover_link_color_description": "Цвят на текста при състояние на задържане на курсора над елементите на линка",
   "visited_link_color_label": "Цвят на посетен линк",
   "background_color_description": "Цвят на фона на вашия Помощен център",
   "background_color_label": "Цвят на фона",

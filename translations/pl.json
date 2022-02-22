@@ -9,6 +9,8 @@
   "link_color_description": "Kolor tekstu elementów łączy",
   "link_color_label": "Kolor łączy",
   "visited_link_color_description": "Kolor tekstu elementów użytych łączy",
+  "hover_link_color_label": "Kolor łącza w dymku",
+  "hover_link_color_description": "Kolor tekstu stanu elementu łącza po najechaniu myszą",
   "visited_link_color_label": "Kolor użytych łączy",
   "background_color_description": "Kolor tła Centrum pomocy",
   "background_color_label": "Kolor tła",

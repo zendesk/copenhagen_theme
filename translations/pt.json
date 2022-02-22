@@ -9,6 +9,8 @@
   "link_color_description": "Cor do texto para elementos de link",
   "link_color_label": "Cor do link",
   "visited_link_color_description": "Cor do texto para elementos de links visitados",
+  "hover_link_color_label": "Cor do link ao passar o mouse",
+  "hover_link_color_description": "Cor do texto para o estado de foco ao passar o mouse nos elementos do link",
   "visited_link_color_label": "Cor de links visitados",
   "background_color_description": "Cor do plano de fundo da sua Central de Ajuda",
   "background_color_label": "Cor do plano de fundo",

@@ -9,6 +9,8 @@
   "link_color_description": "สีข้อความสำหรับองค์ประกอบลิงก์",
   "link_color_label": "สีลิงก์",
   "visited_link_color_description": "สีข้อความสำหรับองค์ประกอบลิงก์ที่เข้าชม",
+  "hover_link_color_label": "สีการโฮเวอร์ลิงก์",
+  "hover_link_color_description": "สีข้อความสำหรับสถานะการโฮเวอร์องค์ประกอบลิงก์",
   "visited_link_color_label": "สีลิงก์ที่เข้าชม",
   "background_color_description": "สีพื้นหลังของศูนย์ความช่วยเหลือของคุณ",
   "background_color_label": "สีพื้นหลัง",

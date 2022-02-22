@@ -9,6 +9,8 @@
   "link_color_description": "Linkkielementtien tekstin väri",
   "link_color_label": "Linkin väri",
   "visited_link_color_description": "Vierailtujen linkkielementtien tekstin väri",
+  "hover_link_color_label": "Osoittimen linkin väri",
+  "hover_link_color_description": "Tekstin väri linkin elementtien osoitustilalle",
   "visited_link_color_label": "Vierailtujen linkkien väri",
   "background_color_description": "Tukiportaalin taustaväri",
   "background_color_label": "Taustaväri",

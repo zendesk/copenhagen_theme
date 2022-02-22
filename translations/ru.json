@@ -9,6 +9,8 @@
   "link_color_description": "Цвет текста для элементов ссылок",
   "link_color_label": "Цвет ссылки",
   "visited_link_color_description": "Цвет текста для элементов посещенных ссылок",
+  "hover_link_color_label": "Цвет ссылки при наведении курсора",
+  "hover_link_color_description": "Цвет текста при наведении курсора на элементы ссылки",
   "visited_link_color_label": "Цвет посещенной ссылки",
   "background_color_description": "Цвет фона Справочного центра",
   "background_color_label": "Цвет фона",
