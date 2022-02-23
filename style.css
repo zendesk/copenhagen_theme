@@ -12152,6 +12152,9 @@ input::placeholder {
     width: 100%;
     height: auto;
   }
+  .home-need-help-buttons .snmk-btn, .home-need-help-buttons .follow-btn button, .follow-btn .home-need-help-buttons button {
+    margin-top: 8px;
+  }
 }
 
 /***** Article *****/

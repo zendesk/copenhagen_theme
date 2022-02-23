@@ -204,6 +204,7 @@
         width: 192px;
         margin: 0 12px;
       }
+
     }
 
     #home-weixin-qrcode {
@@ -478,5 +479,10 @@ $product-img-mr: 24px;
   .software-category img{
     width: 100%;
     height: auto;
+  }
+
+  
+  .home-need-help-buttons .snmk-btn {
+    margin-top: 8px;
   }
 }
