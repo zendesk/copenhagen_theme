@@ -1120,19 +1120,28 @@ ul {
   -webkit-appearance: none;
 }
 
+.search input[type="search"]:-webkit-autofill, .search input[type="search"]:-webkit-autofill:hover, .search input[type="search"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
 .search .clear-button {
   align-items: center;
   box-sizing: border-box;
   color: #777;
+  cursor: pointer;
   display: none;
   flex: none;
   justify-content: center;
   padding: 0 15px;
-  transition: border 0.12s ease-in-out, color 0.12s ease-in-out;
+}
+
+.search .clear-button:hover, .search .clear-button:focus {
+  background-color: $brand_color;
+  color: #fff;
 }
 
 .search .clear-button:focus {
-  border: 1px solid $brand_color;
+  box-shadow: 0 0 0 3px $brand_color;
   outline: none;
 }
 

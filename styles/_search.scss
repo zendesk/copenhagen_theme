@@ -59,15 +59,11 @@ $padding-right: 20px;
       -webkit-appearance: none;
     }
 
-    // &:-webkit-autofill,
-    // &:-webkit-autofill:hover, 
-    // &:-webkit-autofill:focus {
-    //   -webkit-box-shadow: 0 0 0 1000px #fff inset;
-    // }
-
-    // &:-webkit-autofill {
-    //   border-right: 1px solid transparent;
-    // }
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    }
 
   }
 
@@ -75,14 +71,20 @@ $padding-right: 20px;
     align-items: center;
     box-sizing: border-box;
     color: $icon-color;
+    cursor: pointer;
     display: none;
     flex: none;
     justify-content: center;
     padding: 0 15px;
-    transition: border $input-transition, color $input-transition;
+
+    &:hover,
+    &:focus {
+      background-color: $brand-color;
+      color: #fff;
+    }
 
     &:focus {
-      border: 1px solid $brand_color;
+      box-shadow: 0 0 0 3px $brand_color;
       outline: none;
     }
 
