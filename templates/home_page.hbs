@@ -54,16 +54,15 @@
         </div>
     </section>
 
-    <div>
-        <h2 class="section-title title-1 font-bw-1 bold mt-3xl mb-xl">
-            {{#is help_center.locale 'zh-cn'}}
-                产品支持
-            {{/is}}
-            {{#isnt help_center.locale 'zh-cn'}}
-                Product Support
-            {{/isnt}}
-        </h2>
-        <div class="snmk-container" >
+    <h2 class="section-title title-1 font-bw-1 bold mt-3xl mb-xl">
+        {{#is help_center.locale 'zh-cn'}}
+            产品支持
+        {{/is}}
+        {{#isnt help_center.locale 'zh-cn'}}
+            Product Support
+        {{/isnt}}
+    </h2>
+    <div class="snmk-container" >
         <div class="snmk-col-10 snmk-col-l-10 snmk-col-offset-1 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-l-offset-1 product-category">
             {{#each categories}}
                 {{#is description  'Products'}}
@@ -81,7 +80,7 @@
         </div>  
     </div>
         
-    <div class="my-3xl">
+    <div class="mt-3xl py-3xl bg-bw-8">
         <h2 class="section-title title-1 font-bw-1 bold mb-xl"> 
             {{#is help_center.locale 'zh-cn'}}
                 软件支持
@@ -101,6 +100,17 @@
             </div>
             {{/is}}
         {{/each}}
+    </div>
+
+    <div class="pt-3xl snmk-container">
+        <div class="snmk-col-12 snmk-col-l-12 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 text-center">
+            <h2 class="font-bw-1 title-2 bold">{{dc 'home_need_help'}}</h2>
+            <p class="font-bw-2 font-1 mt-m mb-xl">{{dc 'home_need_help_desc'}}</p>
+            <div class="home-need-help-buttons">
+                <button class="snmk-primary-btn" onclick="zE(function() { zE.activate() });">{{t 'submit_a_request' }}</button>
+                <a class="snmk-btn mt-xs" href="https://forum.snapmaker.com/">Visit the forum</a>
+            </div>
+        </div>    
     </div>
 {{/isnt}}
 {{#is help_center.locale 'zh-cn'}}
