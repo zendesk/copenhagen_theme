@@ -24,8 +24,9 @@ function clearSearchInput() {
 // Have the search input and clear button respond 
 // when someone presses the escape key, per:
 // https://twitter.com/adambsilver/status/1152452833234554880
-function clearSearchInputOnEscape(event) {
-  if (event.key === "Esc") {
+function clearSearchInputOnKeypress(event) {
+  const searchInputDeleteKeys = ["Delete", "Escape"];
+  if (searchInputDeleteKeys.includes(event.key)) {
     clearSearchInput();
   }
 }
@@ -34,15 +35,17 @@ function clearSearchInputOnEscape(event) {
 // can interact with, to clear the search input.
 // To learn more about this, see:
 // https://adrianroselli.com/2019/07/ignore-typesearch.html#Delete 
+// https://www.scottohara.me/blog/2022/02/19/custom-clear-buttons.html
 function buildClearSearchButton() {
   const button = document.createElement("button");
   button.setAttribute("type", "button");
   button.setAttribute("aria-controls", searchInput.id);
+  button.setAttribute("tabindex", "-1");
   button.classList.add("clear-button");
   const icon = `<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='${window.searchClearButtonLabel}'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>`;
   button.innerHTML = icon;
   button.addEventListener("click", clearSearchInput);
-  button.addEventListener("keyup", clearSearchInputOnEscape);
+  button.addEventListener("keyup", clearSearchInputOnKeypress);
   return button;
 }
 
@@ -64,7 +67,7 @@ const toggleClearSearchButtonAvailability = debounce(function() {
 
 // Ensure the search field responds appropriately to typing + keyboard interactions
 function handleSearchInputKeyup(event) {
-  clearSearchInputOnEscape(event);
+  clearSearchInputOnKeypress(event);
   toggleClearSearchButtonAvailability();
 }
 

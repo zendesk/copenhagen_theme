@@ -1078,22 +1078,23 @@ ul {
 }
 
 .search {
+  border-color: #ddd;
+  border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
   display: flex;
   position: relative;
+}
+
+.search:focus-within {
+  border-color: $brand_color;
 }
 
 .search input[type="search"],
 .search .clear-button {
   background-color: #fff;
-  border-color: #ddd;
   border-radius: 30px;
-  border-style: solid;
-  border-width: 1px;
-}
-
-.search input[type="search"]:focus,
-.search .clear-button:focus {
-  border-color: $brand_color;
+  border: none;
 }
 
 .search-full input[type="search"],
