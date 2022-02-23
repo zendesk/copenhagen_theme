@@ -1078,8 +1078,12 @@ window.onload = function () {
  */
 function handleBreadcrumbs() {
     // replace 'Snapmaker' to "Support"
-    const breadcrumbEls = getEl('.breadcrums-box').firstElementChild.children
-    breadcrumbEls[0].querySelector('a').textContent = 'Support'
+    try{
+        const breadcrumbEls = getEl('.breadcrums-box').firstElementChild.children
+        breadcrumbEls[0].querySelector('a').textContent = 'Support'
+    }catch(e) {
+        console.log(e)
+    }
 }
 
 
