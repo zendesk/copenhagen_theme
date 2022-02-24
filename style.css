@@ -1135,14 +1135,14 @@ ul {
   padding: 0 15px;
 }
 
-.search .clear-button:hover, .search .clear-button:focus {
+.search .clear-button:hover {
   background-color: $brand_color;
   color: #fff;
 }
 
 .search .clear-button:focus {
+  outline: 0;
   box-shadow: 0 0 0 3px $brand_color;
-  outline: none;
 }
 
 .search-has-value .clear-button {
@@ -1291,6 +1291,7 @@ ul {
 .sub-nav {
   align-items: baseline;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 15px 30px;
   justify-content: space-between;
@@ -1299,7 +1300,7 @@ ul {
 
 @media (min-width: 768px) {
   .sub-nav {
-    align-items: baseline;
+    flex-direction: row;
   }
 }
 
@@ -1308,7 +1309,14 @@ ul {
 }
 
 .sub-nav .search-container {
-  flex: 0 1 300px;
+  max-width: 300px;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .sub-nav .search-container {
+    flex: 0 1 300px;
+  }
 }
 
 .sub-nav input[type="search"]::after {

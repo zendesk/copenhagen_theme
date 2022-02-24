@@ -1,18 +1,15 @@
 .sub-nav {
-  @include tablet {
-    align-items: baseline;
-    // flex-direction: row;
-  }
-
   align-items: baseline;
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 15px 30px;
   justify-content: space-between;
   margin-bottom: 55px;
-  // min-height: 50px;
-  // padding-bottom: 15px;
+
+  @include tablet {
+    flex-direction: row;
+  }
 
   // Inner pages breadcrumbs
   .breadcrumbs {
@@ -21,14 +18,15 @@
 
   // Inner pages search field
   .search-container {
-    flex: 0 1 300px;
+    max-width: 300px;
+    width: 100%;
+
+    @include tablet {
+      flex: 0 1 300px;
+    }
   }
 
   input[type="search"] {
-    @include tablet {
-      // min-width: 300px;
-    }
-
     &::after { 
       font-size: $font-size-base; 
     }
