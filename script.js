@@ -1412,7 +1412,11 @@ async function handleSectionResource(id, locale) {
     res.resource.forEach(v => resourceDownload += handleResourceDownload(v))
     fileResourceContainer.innerHTML = resourceDownload
 
-    handleScrollText(fileResourceContainer)
+    try {
+        handleScrollText(fileResourceContainer)
+    } catch (e) {
+        console.log(e)
+    }
 }
 function handleResourceDownload(resource) {
     return resource.type == "download" ? handleDownloadFile(resource) : handleSelectDownload(resource)
