@@ -313,7 +313,7 @@ $product-img-mr: 24px;
   border-radius: 8px;
   
 
-  img {
+  .img {
     // padding: 24px;
     padding: $padding;
     width: 100%;
@@ -392,7 +392,8 @@ $product-img-mr: 24px;
     justify-content: center;
   }
   .software-category img {
-    height: 19.47vw;
+    max-height: 19.47vw;
+    max-width: 100%;
     padding-left: 8px;
   }
 }
@@ -411,7 +412,7 @@ $product-img-mr: 24px;
     padding-bottom: $padding;
 
 
-    img { 
+    .img { 
       padding: $padding;
       &:hover {
         padding: 1.5vw;
@@ -448,7 +449,7 @@ $product-img-mr: 24px;
     width: calc((100% - #{$product-img-mr}*1)/2);
     padding-bottom: $padding;
 
-    img {
+    .img {
       padding: $padding;
     }
 
