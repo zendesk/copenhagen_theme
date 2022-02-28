@@ -1411,6 +1411,12 @@ async function handleSectionResource(id, locale) {
 
     res.resource.forEach(v => resourceDownload += handleResourceDownload(v))
     fileResourceContainer.innerHTML = resourceDownload
+
+    try {
+        handleScrollText(fileResourceContainer)
+    } catch (e) {
+        console.log(e)
+    }
 }
 function handleResourceDownload(resource) {
     return resource.type == "download" ? handleDownloadFile(resource) : handleSelectDownload(resource)
@@ -1419,11 +1425,15 @@ function handleDownloadFile(resource) {
     const description = handleSectionResourceDescription(resource.description, resource.title)
     return `<div class="file-resource-container mr-l mt-xl">
       <div class="resource-title-container">
-        <span class="title-3 bold font-bw-1 resource-title" title="${resource.title}">${resource.title}</span>
-        <span class="font-1 font-bw-3 resource-time" title="${resource.time}">${resource.time}</span>
+        <div class="scroll-text-title resource-title">
+            <span class="title-3 bold font-bw-1 text-box" title="${resource.title}">${resource.title}</span>
+        </div>
+        <div class="scroll-text-time resource-time">
+            <span class="font-1 font-bw-3 text-box" title="${resource.time}">${resource.time}</span>
+        </div>
       </div>
       <a href="${resource.download_link}" download class="file-download-btn w-100 mt-m" title="${resource.text}" target="_blank">
-        <span>${resource.text}</span> 
+        <div class="scroll-text-btn"><span class="text-box">${resource.text}</span></div>
         <span class="iconfont">&#xe721;</span>
       </a>
       <p class="mt-s">${description}</p>
@@ -1439,12 +1449,16 @@ function handleSelectDownload(resource) {
     return `
     <div class="file-resource-container mr-l mt-xl">
       <div class="resource-title-container">
-        <span class="title-3 bold font-bw-1 resource-title" title="${resource.title}">${resource.title}</span>
-        <span class="font-1 font-bw-3 resource-time" title="${resource.time}">${resource.time}</span>
+        <div class="scroll-text-title resource-title">
+            <span class="title-3 bold font-bw-1 text-box" title="${resource.title}">${resource.title}</span>
+        </div>
+        <div class="scroll-text-time resource-time">
+            <span class="font-1 font-bw-3 text-box" title="${resource.time}">${resource.time}</span>
+        </div>
       </div>
       <div class="resource-select"  aria-expanded="false" onclick="onChangeFileSelect(this, event)">
         <div class="file-download-btn w-100 mt-m" title="${resource.text}">
-          <span>${resource.text}</span>
+          <div class="scroll-text-btn"><span class="text-box">${resource.text}</span></div>
           <span class="iconfont down">&#xe7b2;</span>
         </div>
         <ul class="dropdown">${dropdown}</ul>
@@ -1733,6 +1747,55 @@ async function handleLubanSoftware(locale) {
     return handleDownloadFile(templateData)
 }
 
+
+function handleScrollText(targetsWrapper){
+    const getWidth = el => el.offsetWidth
+
+    const titleWrapper = targetsWrapper.firstElementChild.querySelector('.resource-title')
+    const timeWrapper = targetsWrapper.firstElementChild.querySelector('.resource-time')
+    const btnWrapper = targetsWrapper.firstElementChild.querySelector('.file-download-btn .scroll-text-btn')
+    const titleWrapperWidth = getWidth(titleWrapper)
+    const timeWrapperWidth = getWidth(timeWrapper)
+    const btnWrapperWidth = getWidth(btnWrapper)
+    
+    const animationStyle = document.createElement('style')
+    animationStyle.innerHTML = `
+        @keyframes scroll-word-title {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(calc(${titleWrapperWidth-20}px - 100%)); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes scroll-word-time {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(calc(${timeWrapperWidth-20}px - 100%)); }
+            100% { transform: translateX(0); }
+        }
+        @keyframes scroll-word-btn {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(calc(${btnWrapperWidth-20}px - 100%)); }
+            100% { transform: translateX(0); }
+        }
+    `
+    document.head.appendChild(animationStyle)
+
+    new Array(...targetsWrapper.children).forEach(el=>{
+        const title = el.querySelector('.resource-title').firstElementChild
+        const time = el.querySelector('.resource-time').firstElementChild
+        const btn = el.querySelector('.file-download-btn').firstElementChild
+
+        if(titleWrapperWidth > getWidth(title)) { 
+            title.classList.remove('text-box')
+        }
+
+        if(timeWrapperWidth > getWidth(time)) { 
+            time.classList.remove('text-box')
+        }
+
+        if(btnWrapperWidth > getWidth(btn)) { 
+            btn.classList.remove('text-box')
+        }
+    })
+}
 
 //============================================== utils ==============================================
 /**

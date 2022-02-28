@@ -268,9 +268,12 @@
   background-color: $black_white_2;
   font-size: 16px;
   line-height: 24px;
-  padding: 8px 16px;
+  padding: 8px 46px 8px 16px;
   border: none;
   color: white;
+
+  margin-right: -50px;
+  border-radius: 46px;
 
   input {
     background-color: $black_white_2;
@@ -290,7 +293,7 @@
   input {
     line-height: calc(1.5rem + 10px);
     border-style: none;
-    border-radius: 0;
+    border-radius: 30px;
     font-size: 16px;
     line-height: 24px;
     padding: 8px 16px;

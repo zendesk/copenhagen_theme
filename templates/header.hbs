@@ -84,6 +84,7 @@
                     </a>
                     <a href="https://support.snapmaker.com/hc/{{help_center.locale}}/categories/360003536313-Snapmaker-Academy" id="nav-academy" class="ml-2xl nav-item">{{dc 'header_second_bar_second_item'}}</a>
                     <a class="nav-item" href="https://forum.snapmaker.com/">{{dc 'header_second_bar_third_item'}}</a>
+                    <a class="nav-item" style="cursor: pointer;" onclick="zE(function() { zE.activate() });">{{dc 'header_second_bar_submit_request'}}</a>
                     <div class="search-container" id="header-search">
                         <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
                         {{search submit=false placeholder="Search Support" class="search search-form"}}
@@ -91,7 +92,7 @@
                 </div>
 
                 {{#if signed_in}}
-                    <div class="user-info dropdown ml-2xl">
+                    <div class="user-info dropdown ml-l">
                         <button class="dropdown-toggle" aria-haspopup="true">
                             {{user_avatar class="user-avatar"}}
                             <span class="hide-on-mobile font-bw-2">
@@ -106,7 +107,7 @@
                         </div>
                     </div>
                 {{else}}
-                    {{#link "sign_in" class="sign-in ml-xl"}}
+                    {{#link "sign_in" class="sign-in ml-l"}}
                         {{t 'sign_in'}}
                     {{/link}}
                 {{/if}}
