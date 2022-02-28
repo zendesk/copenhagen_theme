@@ -92,7 +92,7 @@
                 </div>
 
                 {{#if signed_in}}
-                    <div class="user-info dropdown ml-2xl">
+                    <div class="user-info dropdown ml-l">
                         <button class="dropdown-toggle" aria-haspopup="true">
                             {{user_avatar class="user-avatar"}}
                             <span class="hide-on-mobile font-bw-2">
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                 {{else}}
-                    {{#link "sign_in" class="sign-in ml-xl"}}
+                    {{#link "sign_in" class="sign-in ml-l"}}
                         {{t 'sign_in'}}
                     {{/link}}
                 {{/if}}
