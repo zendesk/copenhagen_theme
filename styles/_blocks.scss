@@ -63,8 +63,10 @@
     justify-content: center;
     border-radius: inherit;
 
+    &:visited,
     &:hover,
     &:active {
+      color: inherit;
       text-decoration: none;
     }
     

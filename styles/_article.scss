@@ -59,7 +59,9 @@
   }
 
   [role="button"] {
-    @include tablet { width: auto; }
+    @include tablet {
+      width: auto;
+    }
     flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
     width: 100%;
   }
@@ -75,7 +77,9 @@
 
   &-body {
     @include content-body;
-    > p:last-child { margin-bottom: 0; }
+    > p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &-content {
@@ -136,12 +140,15 @@
       overflow-wrap: break-word;
       margin-right: 0;
 
-      &:last-child { padding: 0; }
+      &:last-child {
+        padding: 0;
+      }
 
-      @include tablet { padding-right: 20px; }
+      @include tablet {
+        padding-right: 20px;
+      }
     }
   }
-
 
   &-votes {
     border-top: 1px solid $border-color;
@@ -158,10 +165,13 @@
   &-more-questions {
     margin: 10px 0 20px;
     text-align: center;
+    @include standalone-link;
   }
 
   &-return-to-top {
-    @include desktop { display: none; }
+    @include desktop {
+      display: none;
+    }
 
     border-top: 1px solid $border-color;
 
@@ -197,25 +207,16 @@
   }
 
   &-item {
-    border-radius: 4px;
-    color: $text_color;
     display: block;
-    margin-bottom: 10px;
-    padding: 10px;
-
-    &.current-article,
-    &:hover {
-      background-color: $brand_color;
-      color: $brand_text_color;
-      text-decoration: none;
-    }
+    margin-top: 10px;
+    margin-bottom: 16px;
   }
 }
 
 .recent-articles,
 .related-articles {
   &-title {
-    @extend .comment-heading
+    @extend .comment-heading;
   }
 
   li {

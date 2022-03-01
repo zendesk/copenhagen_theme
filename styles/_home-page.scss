@@ -41,7 +41,6 @@
       display: block;
       border-bottom: 1px solid $border-color;
       padding: 15px 0;
-      color: $text_color;
     }
 
     .icon-lock {
@@ -71,6 +70,8 @@
     background-repeat: no-repeat;
     max-width: 100%;
   }
+
+  @include standalone-link;
 }
 
 .community,

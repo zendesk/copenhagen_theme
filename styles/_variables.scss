@@ -1,12 +1,6 @@
 // Variables
 
 // Colors
-$brand_color: #17494d !default;
-$brand_text_color: #fff !default; //Color for text with an accent color background
-$text_color: #333 !default;
-$link_color: #17494d !default;
-$background_color: #fff !default;
-
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 
@@ -32,7 +26,4 @@ $tablet-width: 768px;
 $desktop-width: 1024px;
 $max-width-container: 1160px;
 
-// Fonts
-$heading_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
-$text_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
 $font-weight-semibold: 600;

@@ -30,10 +30,14 @@
     }
 
     .sidenav-item {
+      border-radius: 4px;
+      padding: 10px 36px;
+      margin-bottom: 4px;
+      color: $text_color;
+
       &:hover,
       &.current {
         background-color: #e9ebed;
-        color: inherit;
         text-decoration: none;
       }
     }
@@ -201,10 +205,6 @@
 
     li {
       @include desktop { display: table-cell; }
-    }
-
-    li, li a, li a:visited {
-      color: inherit;
     }
   }
 }

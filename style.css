@@ -201,7 +201,12 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: $heading_font;
   margin-top: 0;
 }
@@ -228,6 +233,10 @@ a {
   text-decoration: none;
 }
 
+a:visited {
+  color: $visited_link_color;
+}
+
 a:hover, a:active, a:focus {
   text-decoration: underline;
 }
@@ -241,7 +250,7 @@ textarea {
 input {
   max-width: 100%;
   box-sizing: border-box;
-  transition: border .12s ease-in-out;
+  transition: border 0.12s ease-in-out;
 }
 
 input:not([type="checkbox"]) {
@@ -367,7 +376,7 @@ ul {
   }
 }
 
-.button:hover, .split-button button:hover, .section-subscribe button:hover, .article-subscribe button:hover, .community-follow button:hover, .requests-table-toolbar .organization-subscribe button:hover, .subscriptions-subscribe button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .button:active, .split-button button:active, .section-subscribe button:active, .article-subscribe button:active, .community-follow button:active, .requests-table-toolbar .organization-subscribe button:active, .subscriptions-subscribe button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .button:focus, .split-button button:focus, .section-subscribe button:focus, .article-subscribe button:focus, .community-follow button:focus, .requests-table-toolbar .organization-subscribe button:focus, .subscriptions-subscribe button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .button.button-primary, .split-button button.button-primary, .section-subscribe button.button-primary, .section-subscribe button[data-selected="true"], .article-subscribe button.button-primary, .article-subscribe button[data-selected="true"], .community-follow button.button-primary, .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected="true"], .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected="true"], .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link {
+.button:visited, .split-button button:visited, .section-subscribe button:visited, .article-subscribe button:visited, .community-follow button:visited, .requests-table-toolbar .organization-subscribe button:visited, .subscriptions-subscribe button:visited, .pagination-next-link:visited, .pagination-prev-link:visited, .pagination-first-link:visited, .pagination-last-link:visited, .button:hover, .split-button button:hover, .section-subscribe button:hover, .article-subscribe button:hover, .community-follow button:hover, .requests-table-toolbar .organization-subscribe button:hover, .subscriptions-subscribe button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .button:active, .split-button button:active, .section-subscribe button:active, .article-subscribe button:active, .community-follow button:active, .requests-table-toolbar .organization-subscribe button:active, .subscriptions-subscribe button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .button:focus, .split-button button:focus, .section-subscribe button:focus, .article-subscribe button:focus, .community-follow button:focus, .requests-table-toolbar .organization-subscribe button:focus, .subscriptions-subscribe button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .button.button-primary, .split-button button.button-primary, .section-subscribe button.button-primary, .section-subscribe button[data-selected="true"], .article-subscribe button.button-primary, .article-subscribe button[data-selected="true"], .community-follow button.button-primary, .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected="true"], .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected="true"], .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
@@ -1028,6 +1037,11 @@ ul {
   display: inline-block;
 }
 
+.powered-by-zendesk a,
+.powered-by-zendesk a:visited {
+  color: lighten($text_color, 20%);
+}
+
 /***** Breadcrumbs *****/
 .breadcrumbs {
   margin: 0 0 15px 0;
@@ -1278,7 +1292,8 @@ ul {
   border-radius: inherit;
 }
 
-.blocks-item-link:hover, .blocks-item-link:active {
+.blocks-item-link:visited, .blocks-item-link:hover, .blocks-item-link:active {
+  color: inherit;
   text-decoration: none;
 }
 
@@ -1355,7 +1370,6 @@ ul {
   display: block;
   border-bottom: 1px solid #ddd;
   padding: 15px 0;
-  color: $text_color;
 }
 
 .promoted-articles-item .icon-lock {
@@ -1386,6 +1400,19 @@ ul {
   max-width: 100%;
 }
 
+.community a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.community a:visited {
+  color: $visited_link_color;
+}
+
+.community a:hover, .community a:active, .community a:focus {
+  color: $hover_link_color;
+}
+
 .community,
 .activity {
   border-top: 1px solid #ddd;
@@ -1410,11 +1437,11 @@ ul {
 
 .recent-activity-item-parent {
   font-size: 16px;
+  font-weight: 600;
 }
 
 .recent-activity-item-parent, .recent-activity-item-link {
   margin: 6px 0;
-  color: $text_color;
   display: inline-block;
   width: 100%;
 }
@@ -1431,6 +1458,7 @@ ul {
 }
 
 .recent-activity-item-meta {
+  color: $text_color;
   margin: 15px 0 0 0;
   float: none;
 }
@@ -1446,7 +1474,6 @@ ul {
 }
 
 .recent-activity-item-time, .recent-activity-item-comment {
-  color: lighten($text_color, 20%);
   display: inline-block;
   font-size: 13px;
 }
@@ -1465,6 +1492,19 @@ ul {
 
 .recent-activity-controls {
   padding-top: 15px;
+}
+
+.recent-activity-controls a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.recent-activity-controls a:visited {
+  color: $visited_link_color;
+}
+
+.recent-activity-controls a:hover, .recent-activity-controls a:active, .recent-activity-controls a:focus {
+  color: $hover_link_color;
 }
 
 .recent-activity-accessibility-label {
@@ -1704,34 +1744,50 @@ ul {
   vertical-align: middle;
 }
 
+.article-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.article-body a:visited {
+  color: $visited_link_color;
+}
+
+.article-body a:hover, .article-body a:active, .article-body a:focus {
+  color: $hover_link_color;
+}
+
 .article-body img {
   height: auto;
   max-width: 100%;
 }
 
-.article-body ul, .article-body ol {
+.article-body ul,
+.article-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
 
-[dir="rtl"] .article-body ul, [dir="rtl"] .article-body ol {
+[dir="rtl"] .article-body ul, [dir="rtl"]
+.article-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.article-body ul > ul, .article-body ol > ol, .article-body ol > ul, .article-body ul > ol, .article-body li > ul, .article-body li > ol {
+.article-body ul > ul,
+.article-body ol > ol,
+.article-body ol > ul,
+.article-body ul > ol,
+.article-body li > ul,
+.article-body li > ol {
   margin: 0;
 }
 
 .article-body ul {
   list-style-type: disc;
-}
-
-.article-body a:visited {
-  color: $visited_link_color;
 }
 
 .article-body code {
@@ -1853,6 +1909,19 @@ ul {
   text-align: center;
 }
 
+.article-more-questions a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.article-more-questions a:visited {
+  color: $visited_link_color;
+}
+
+.article-more-questions a:hover, .article-more-questions a:active, .article-more-questions a:focus {
+  color: $hover_link_color;
+}
+
 .article-return-to-top {
   border-top: 1px solid #ddd;
 }
@@ -1884,17 +1953,9 @@ ul {
 }
 
 .sidenav-item {
-  border-radius: 4px;
-  color: $text_color;
   display: block;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-
-.sidenav-item.current-article, .sidenav-item:hover {
-  background-color: $brand_color;
-  color: $brand_text_color;
-  text-decoration: none;
+  margin-top: 10px;
+  margin-bottom: 16px;
 }
 
 .recent-articles li,
@@ -1998,7 +2059,16 @@ ul {
 }
 
 .comment-callout a {
-  color: $brand_color;
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.comment-callout a:visited {
+  color: $visited_link_color;
+}
+
+.comment-callout a:hover, .comment-callout a:active, .comment-callout a:focus {
+  color: $hover_link_color;
 }
 
 .comment-sorter {
@@ -2159,34 +2229,50 @@ ul {
   overflow-x: auto;
 }
 
+.comment-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.comment-body a:visited {
+  color: $visited_link_color;
+}
+
+.comment-body a:hover, .comment-body a:active, .comment-body a:focus {
+  color: $hover_link_color;
+}
+
 .comment-body img {
   height: auto;
   max-width: 100%;
 }
 
-.comment-body ul, .comment-body ol {
+.comment-body ul,
+.comment-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
 
-[dir="rtl"] .comment-body ul, [dir="rtl"] .comment-body ol {
+[dir="rtl"] .comment-body ul, [dir="rtl"]
+.comment-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.comment-body ul > ul, .comment-body ol > ol, .comment-body ol > ul, .comment-body ul > ol, .comment-body li > ul, .comment-body li > ol {
+.comment-body ul > ul,
+.comment-body ol > ol,
+.comment-body ol > ul,
+.comment-body ul > ol,
+.comment-body li > ul,
+.comment-body li > ol {
   margin: 0;
 }
 
 .comment-body ul {
   list-style-type: disc;
-}
-
-.comment-body a:visited {
-  color: $visited_link_color;
 }
 
 .comment-body code {
@@ -2731,34 +2817,50 @@ ul {
   margin-right: 10px;
 }
 
+.post-body a {
+  color: $link_color;
+  text-decoration: underline;
+}
+
+.post-body a:visited {
+  color: $visited_link_color;
+}
+
+.post-body a:hover, .post-body a:active, .post-body a:focus {
+  color: $hover_link_color;
+}
+
 .post-body img {
   height: auto;
   max-width: 100%;
 }
 
-.post-body ul, .post-body ol {
+.post-body ul,
+.post-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
 
-[dir="rtl"] .post-body ul, [dir="rtl"] .post-body ol {
+[dir="rtl"] .post-body ul, [dir="rtl"]
+.post-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
 
-.post-body ul > ul, .post-body ol > ol, .post-body ol > ul, .post-body ul > ol, .post-body li > ul, .post-body li > ol {
+.post-body ul > ul,
+.post-body ol > ol,
+.post-body ol > ul,
+.post-body ul > ol,
+.post-body li > ul,
+.post-body li > ol {
   margin: 0;
 }
 
 .post-body ul {
   list-style-type: disc;
-}
-
-.post-body a:visited {
-  color: $visited_link_color;
 }
 
 .post-body code {
@@ -4383,9 +4485,15 @@ ul {
   }
 }
 
+.search-results-sidebar .sidenav-item {
+  border-radius: 4px;
+  padding: 10px 36px;
+  margin-bottom: 4px;
+  color: $text_color;
+}
+
 .search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
   background-color: #e9ebed;
-  color: inherit;
   text-decoration: none;
 }
 
@@ -4570,10 +4678,6 @@ ul {
   .search-result-breadcrumbs li {
     display: table-cell;
   }
-}
-
-.search-result-breadcrumbs li, .search-result-breadcrumbs li a, .search-result-breadcrumbs li a:visited {
-  color: inherit;
 }
 
 /* By default use bold instead of italic to highlight */
