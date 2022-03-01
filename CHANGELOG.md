@@ -1,3 +1,22 @@
+## [2.13.4](https://github.com/zendesk/copenhagen_theme/compare/v2.13.3...v2.13.4) (2022-03-01)
+
+
+### Bug Fixes
+
+* ensure powered by zendesk does not get visited color ([1f1287e](https://github.com/zendesk/copenhagen_theme/commit/1f1287e9e5b31a50c20b20313ea1e9ebf25c2d75))
+* prevent blocks from showing visited color ([8459dc8](https://github.com/zendesk/copenhagen_theme/commit/8459dc8ba6665f6ba328d59e2b05aa71fcf1ef90))
+* prevent button from showing visited color ([c282f53](https://github.com/zendesk/copenhagen_theme/commit/c282f536d1dc44e7a5e8b0d3c39dfa4efce38d65))
+* remove link color from search filters ([f59c97a](https://github.com/zendesk/copenhagen_theme/commit/f59c97a6cc2d2c853680e69296e3a68ff57b655b))
+* revert style changes to search result filters ([f40ddfd](https://github.com/zendesk/copenhagen_theme/commit/f40ddfd26aa5fb10bedadf6fe87079e771d150de))
+* style Join the converstation link as standalone ([8bbd100](https://github.com/zendesk/copenhagen_theme/commit/8bbd10031f03b8325fcb18959d53a1855feba32b))
+* style promoted article links according to design ([a67fc23](https://github.com/zendesk/copenhagen_theme/commit/a67fc2347e021db4dafe480e1f84a9032e2e9ab9))
+* style recent activity links according to design ([78cc954](https://github.com/zendesk/copenhagen_theme/commit/78cc954e67dc8f38981eed32d5ee64b7e0aefb2a))
+* style sign in link as standalone ([95376cb](https://github.com/zendesk/copenhagen_theme/commit/95376cb86b5341e1d5f05528b9d6a9ae333e42e7))
+* style Submit a request link as standalone ([8fea59a](https://github.com/zendesk/copenhagen_theme/commit/8fea59a10d9d967ca4b66ce5034a0c1cf5202d86))
+* update link styles according to designs ([b79e595](https://github.com/zendesk/copenhagen_theme/commit/b79e59540773206887f128515bbf467e799dd185))
+* update style of article side nav links according to design ([78af755](https://github.com/zendesk/copenhagen_theme/commit/78af7554e159375780644673c471dc17adaba012))
+* **style:** make breadcrumb link color different from text ([2ea4283](https://github.com/zendesk/copenhagen_theme/commit/2ea428384054d05d82fa486bbfa71ee940fa9a32))
+
 ## [2.13.3](https://github.com/zendesk/copenhagen_theme/compare/v2.13.2...v2.13.3) (2022-02-07)
 
 
