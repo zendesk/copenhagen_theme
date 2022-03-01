@@ -1084,6 +1084,7 @@ ul {
   border-width: 1px;
   display: flex;
   position: relative;
+  transition: border 0.12s ease-in-out;
 }
 
 .search:focus-within {
