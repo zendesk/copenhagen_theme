@@ -9,6 +9,8 @@
   "link_color_description": "El color del texto para los elementos de vínculos",
   "link_color_label": "Color de vínculos",
   "visited_link_color_description": "El color del texto para los elementos de los vínculos visitados",
+  "hover_link_color_label": "Color del vínculo flotante",
+  "hover_link_color_description": "Color de texto para el estado al pasar el mouse por encima de los elementos de vínculo",
   "visited_link_color_label": "Color de vínculo visitado",
   "background_color_description": "El color de fondo del Centro de ayuda",
   "background_color_label": "Color de fondo",

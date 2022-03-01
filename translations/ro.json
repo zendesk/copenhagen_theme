@@ -9,6 +9,8 @@
   "link_color_description": "Culoarea textului pentru elementele tip link",
   "link_color_label": "Culoare link",
   "visited_link_color_description": "Culoarea textului pentru elementele linkului vizitat",
+  "hover_link_color_label": "Culoarea textului afișat la trecerea cu mouse-ul",
+  "hover_link_color_description": "Culoarea textului pentru starea elementelor de tip link, afișată la trecerea cu mouse-ul",
   "visited_link_color_label": "Culoarea linkului vizitat",
   "background_color_description": "Culoarea de fundal a Centrului de asistență",
   "background_color_label": "Culoare fundal",

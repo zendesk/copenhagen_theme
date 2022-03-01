@@ -9,6 +9,8 @@
   "link_color_description": "Tekstfarge for lenkeelementer",
   "link_color_label": "Lenkefarge",
   "visited_link_color_description": "Tekstfarge for besøkte lenkeelementer",
+  "hover_link_color_label": "Lenkefarge for over-bevegelse",
+  "hover_link_color_description": "Tekstfarge for over-bevegelses-statusen til lenkeelementene",
   "visited_link_color_label": "Farge på besøkt lenke",
   "background_color_description": "Bakgrunnsfarge i Kundesenter",
   "background_color_label": "Bakgrunnsfarge",

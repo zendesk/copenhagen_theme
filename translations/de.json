@@ -9,6 +9,8 @@
   "link_color_description": "Textfarbe für Linkelemente",
   "link_color_label": "Linkfarbe",
   "visited_link_color_description": "Textfarbe für besuchte Linkelemente",
+  "hover_link_color_label": "Farbe des Hover-Links",
+  "hover_link_color_description": "Textfarbe für den Hover-Status von Link-Elementen",
   "visited_link_color_label": "Farbe für besuchte Links",
   "background_color_description": "Hintergrundfarbe für Ihr Help Center",
   "background_color_label": "Hintergrundfarbe",

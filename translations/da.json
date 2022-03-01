@@ -9,6 +9,8 @@
   "link_color_description": "Tekstfarve til link-elementer",
   "link_color_label": "Farve på link",
   "visited_link_color_description": "Tekstfarve til besøgte link-elementer",
+  "hover_link_color_label": "Farve på link når der peges",
+  "hover_link_color_description": "Tekstfarve for linkelementer i pegetilstand",
   "visited_link_color_label": "Farve til besøgt link",
   "background_color_description": "Baggrundsfarve på dit Help Center",
   "background_color_label": "Baggrundsfarve",

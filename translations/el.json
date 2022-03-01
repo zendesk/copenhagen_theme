@@ -9,6 +9,8 @@
   "link_color_description": "Χρώμα κειμένου για στοιχεία συνδέσμων",
   "link_color_label": "Χρώμα συνδέσμων",
   "visited_link_color_description": "Χρώμα κειμένου για στοιχεία συνδέσμων με επισκέψεις",
+  "hover_link_color_label": "Χρώμα συνδέσμου κατάδειξης",
+  "hover_link_color_description": "Χρώμα κειμένου για την κατάσταση κατάδειξης των στοιχείων συνδέσμου",
   "visited_link_color_label": "Χρώμα συνδέσμων με επισκέψεις",
   "background_color_description": "Χρώμα φόντου του Κέντρου βοήθειας",
   "background_color_label": "Χρώμα φόντου",

@@ -9,6 +9,8 @@
   "link_color_description": "Warna teks untuk elemen tautan",
   "link_color_label": "Warna tautan",
   "visited_link_color_description": "Warna teks untuk elemen tautan yang dikunjungi",
+  "hover_link_color_label": "Arahkan warna tautan",
+  "hover_link_color_description": "Warna teks untuk status hover elemen tautan",
   "visited_link_color_label": "Warna tautan yang dikunjungi",
   "background_color_description": "Warna latar belakang Pusat Bantuan Anda",
   "background_color_label": "Warna latar belakang",

@@ -9,6 +9,8 @@
   "link_color_description": "リンク要素のテキストの色",
   "link_color_label": "リンクの色",
   "visited_link_color_description": "訪問済みリンク要素のテキストの色",
+  "hover_link_color_label": "ホバー時のリンク色",
+  "hover_link_color_description": "ホバー状態のリンク要素のテキスト色",
   "visited_link_color_label": "訪問済みリンクの色",
   "background_color_description": "ヘルプセンターの背景色",
   "background_color_label": "背景色",
