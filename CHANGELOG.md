@@ -1,3 +1,10 @@
+## [2.13.7](https://github.com/zendesk/copenhagen_theme/compare/v2.13.6...v2.13.7) (2022-03-02)
+
+
+### Bug Fixes
+
+* add aria-label on agent markers ([b17f9b6](https://github.com/zendesk/copenhagen_theme/commit/b17f9b6744d53998ac070c4fa55022e460bf6c56))
+
 ## [2.13.6](https://github.com/zendesk/copenhagen_theme/compare/v2.13.5...v2.13.6) (2022-03-02)
 
 
