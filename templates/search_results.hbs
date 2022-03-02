@@ -15,7 +15,7 @@
     <aside class="search-results-sidebar">
       {{#if source_filters}}
         <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_source_menu'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
@@ -43,7 +43,7 @@
       {{/if}}
       {{#if type_filters}}
         <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_type_menu'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
@@ -70,7 +70,7 @@
       {{/if}}
       {{#if subfilters}}
         <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_subfilter_menu'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
