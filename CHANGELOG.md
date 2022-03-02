@@ -1,3 +1,10 @@
+## [2.13.5](https://github.com/zendesk/copenhagen_theme/compare/v2.13.4...v2.13.5) (2022-03-02)
+
+
+### Bug Fixes
+
+* add aria-label to search results submenu toggle buttons ([8b66a0a](https://github.com/zendesk/copenhagen_theme/commit/8b66a0ad599e0bd62ec07bc8ecef6a76a61a977e))
+
 ## [2.13.4](https://github.com/zendesk/copenhagen_theme/compare/v2.13.3...v2.13.4) (2022-03-01)
 
 
