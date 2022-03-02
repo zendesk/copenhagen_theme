@@ -1,3 +1,10 @@
+## [2.13.6](https://github.com/zendesk/copenhagen_theme/compare/v2.13.5...v2.13.6) (2022-03-02)
+
+
+### Bug Fixes
+
+* add aria-label to the '+ N more badges' links ([e478a82](https://github.com/zendesk/copenhagen_theme/commit/e478a82f7fbb856469b51ac011dc5f0a125eabf0))
+
 ## [2.13.5](https://github.com/zendesk/copenhagen_theme/compare/v2.13.4...v2.13.5) (2022-03-02)
 
 
