@@ -1073,35 +1073,131 @@ ul {
 }
 
 /***** Search field *****/
-.search {
+.search-container {
   position: relative;
 }
 
-.search input[type="search"] {
-  border: 1px solid #ddd;
-  background-color: white;
+.search {
+  border-color: #ddd;
   border-radius: 30px;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  position: relative;
+  transition: border 0.12s ease-in-out;
+}
+
+.search:focus-within {
+  border-color: $brand_color;
+}
+
+.search input[type="search"],
+.search .clear-button {
+  background-color: #fff;
+  border-radius: 30px;
+  border: none;
+}
+
+.search-full input[type="search"],
+.search-full .clear-button {
+  border-color: #fff;
+}
+
+.search input[type="search"] {
+  appearance: none;
+  -webkit-appearance: none;
   box-sizing: border-box;
   color: #666;
+  flex: 1 1 auto;
   height: 40px;
-  padding-left: 40px;
-  padding-right: 20px;
-  -webkit-appearance: none;
   width: 100%;
 }
 
-[dir="rtl"] .search input[type="search"] {
-  padding-right: 40px;
-  padding-left: 20px;
-}
-
 .search input[type="search"]:focus {
-  border: 1px solid $brand_color;
   color: #555;
 }
 
-.search-full input[type="search"] {
-  border: 1px solid #fff;
+.search input[type="search"]::-webkit-search-decoration, .search input[type="search"]::-webkit-search-cancel-button, .search input[type="search"]::-webkit-search-results-button, .search input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+.search input[type="search"]:-webkit-autofill, .search input[type="search"]:-webkit-autofill:hover, .search input[type="search"]:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+}
+
+.search .clear-button {
+  align-items: center;
+  box-sizing: border-box;
+  color: #777;
+  cursor: pointer;
+  display: none;
+  flex: none;
+  justify-content: center;
+  padding: 0 15px;
+}
+
+.search .clear-button:hover {
+  background-color: $brand_color;
+  color: #fff;
+}
+
+.search .clear-button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 3px $brand_color;
+}
+
+.search-has-value .clear-button {
+  display: flex;
+}
+
+[dir="ltr"] .search input[type="search"] {
+  padding-left: 40px;
+  padding-right: 20px;
+}
+
+[dir="ltr"] .search-has-value input[type="search"] {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-right-color: transparent;
+}
+
+[dir="ltr"] .search-has-value input[type="search"]:focus {
+  border-right-color: $brand_color;
+}
+
+[dir="ltr"] .search .clear-button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left-color: transparent;
+}
+
+[dir="ltr"] .search .clear-button:focus {
+  border-left-color: $brand_color;
+}
+
+[dir="rtl"] .search input[type="search"] {
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+[dir="rtl"] .search-has-value input[type="search"] {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left-color: transparent;
+}
+
+[dir="rtl"] .search-has-value input[type="search"]:focus {
+  border-left-color: $brand_color;
+}
+
+[dir="rtl"] .search .clear-button {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-right-color: transparent;
+}
+
+[dir="rtl"] .search .clear-button:focus {
+  border-right-color: $brand_color;
 }
 
 .search-icon {
@@ -1118,12 +1214,8 @@ ul {
 }
 
 [dir="rtl"] .search-icon {
-  right: 15px;
   left: auto;
-}
-
-.search-container {
-  position: relative;
+  right: 15px;
 }
 
 /***** Hero component *****/
@@ -1198,24 +1290,33 @@ ul {
 }
 
 .sub-nav {
+  align-items: baseline;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  gap: 15px 30px;
   justify-content: space-between;
-  margin-bottom: 30px;
-  min-height: 50px;
-  padding-bottom: 15px;
+  margin-bottom: 55px;
 }
 
 @media (min-width: 768px) {
   .sub-nav {
-    align-items: baseline;
     flex-direction: row;
   }
 }
 
+.sub-nav .breadcrumbs {
+  margin: 0;
+}
+
+.sub-nav .search-container {
+  max-width: 300px;
+  width: 100%;
+}
+
 @media (min-width: 768px) {
-  .sub-nav input[type="search"] {
-    min-width: 300px;
+  .sub-nav .search-container {
+    flex: 0 1 300px;
   }
 }
 
