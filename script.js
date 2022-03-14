@@ -40,13 +40,6 @@ function clearSearchInputOnKeypress(event) {
   }
 }
 
-// Ensure there's always a label for the search clear button,
-// just in case the localized label isn't available.
-// This label is a big part of what makes the custom button accessible.
-function getClearSearchButtonLabel() {
-  return window.searchClearButtonLabelLocalized === undefined || window.searchClearButtonLabelLocalized === "" ? "Clear search" : window.searchClearButtonLabelLocalized;
-}
-
 // Create an HTML button that all users -- especially keyboard users -- 
 // can interact with, to clear the search input.
 // To learn more about this, see:
@@ -57,7 +50,7 @@ function buildClearSearchButton(inputId) {
   button.setAttribute("type", "button");
   button.setAttribute("aria-controls", inputId);
   button.classList.add("clear-button");
-  const buttonLabel = getClearSearchButtonLabel();
+  const buttonLabel = window.searchClearButtonLabelLocalized;
   const icon = `<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='${buttonLabel}'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>`;
   button.innerHTML = icon;
   button.addEventListener("click", clearSearchInput);
