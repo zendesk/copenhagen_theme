@@ -1,3 +1,34 @@
+# [2.14.0](https://github.com/zendesk/copenhagen_theme/compare/v2.13.8...v2.14.0) (2022-03-14)
+
+
+### Bug Fixes
+
+* added new line at the end of _variabless.scss ([be0a379](https://github.com/zendesk/copenhagen_theme/commit/be0a379f025f94443510036597c3dd4cdbc6fe4a))
+* added search input border transition back in ([5407814](https://github.com/zendesk/copenhagen_theme/commit/540781454f538bcf6c69a559edfdfb5cc7653f47))
+* cleaned up Search styles to use $brand_color ([e81f8ff](https://github.com/zendesk/copenhagen_theme/commit/e81f8ffb59b38491abf5339f04217635d503f369))
+* remove label fallback string ([be45a40](https://github.com/zendesk/copenhagen_theme/commit/be45a40c021ff98407274d6866b9a96dbd4224d6))
+
+
+### Features
+
+* added clear button label translation key + fallback label ([90c5806](https://github.com/zendesk/copenhagen_theme/commit/90c58068b4a69def7cf13ac12c24a5b4e6911901))
+* added click handler to clear button; updated x SVG ([f05b206](https://github.com/zendesk/copenhagen_theme/commit/f05b206254c58e806aa6e50885282d95f4549a89))
+* added escape key responses to search input and clear button ([011b832](https://github.com/zendesk/copenhagen_theme/commit/011b8329a9e9643509dae452c15fe57ccbebb476))
+* assigned clear button label to window variable ([4985167](https://github.com/zendesk/copenhagen_theme/commit/498516770e7c38ed843deff55211a5151c47f26b))
+* cleaned up search button JS ([ea8d8e7](https://github.com/zendesk/copenhagen_theme/commit/ea8d8e7a6005c51b1fd64797591710f34efbc83b))
+* cleaned up search-related scripts ([5f016e6](https://github.com/zendesk/copenhagen_theme/commit/5f016e6259070be8cf37135b0d628608e943d9fd))
+* commented out autofill-related styles ([05c6999](https://github.com/zendesk/copenhagen_theme/commit/05c699909fa70fbd36c21237e590cfeb5d471adc))
+* continued working on keyboard navigation ([c69f450](https://github.com/zendesk/copenhagen_theme/commit/c69f450a069b81ff4f1179239478723cfa402fa1))
+* extended clear search scripts to allow multiple forms/inputs ([a3c0e94](https://github.com/zendesk/copenhagen_theme/commit/a3c0e94afcf7ea99bd4810da766c9e79a10b518f))
+* refined styles for keyboard navigation ([0472a01](https://github.com/zendesk/copenhagen_theme/commit/0472a011462061573ebbb32f40d456fbd9a18706))
+* removed tabindex from button + tidied inner page styles ([7f95d4f](https://github.com/zendesk/copenhagen_theme/commit/7f95d4fa985ce0b44b62f34116f4f9de3270cb8c))
+* started incorporating Scott O'Hara's pattern ([cbd84e5](https://github.com/zendesk/copenhagen_theme/commit/cbd84e5b68a10aa598cc01d8799bc29b3316b607))
+* started updating search styles for smaller viewports ([1fa9e54](https://github.com/zendesk/copenhagen_theme/commit/1fa9e5475cbcc64b9a1a747686ab03c9a011c256))
+* started working on autofill colors ([2967bfa](https://github.com/zendesk/copenhagen_theme/commit/2967bfa026cc84f4b47826f0ff7a47fda97bfd10))
+* started writing scripts + styles for search clear button ([e4ba8e1](https://github.com/zendesk/copenhagen_theme/commit/e4ba8e14d713b4f7b8ac413ba4da6b1dca2f2800))
+* updated search form + clear button styles ([ca91727](https://github.com/zendesk/copenhagen_theme/commit/ca91727a3117d3e8ec4206fbbf9a3382b8cf4d45))
+* vetted + refined rtl styles for search input + clear button ([e585acd](https://github.com/zendesk/copenhagen_theme/commit/e585acd4ae0659dc5d349bbfdbafd0c8524d0fc5))
+
 ## [2.13.8](https://github.com/zendesk/copenhagen_theme/compare/v2.13.7...v2.13.8) (2022-03-14)
 
 
