@@ -1,3 +1,10 @@
+## [2.13.8](https://github.com/zendesk/copenhagen_theme/compare/v2.13.7...v2.13.8) (2022-03-14)
+
+
+### Bug Fixes
+
+* making go to comments more accessible ([67b2e39](https://github.com/zendesk/copenhagen_theme/commit/67b2e39bd3507a43bb62ad582578d73fca480f0d))
+
 ## [2.13.7](https://github.com/zendesk/copenhagen_theme/compare/v2.13.6...v2.13.7) (2022-03-02)
 
 
