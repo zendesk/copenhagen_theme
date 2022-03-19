@@ -319,3 +319,85 @@
     </article>
   </div>
 </div>
+<script>
+document.querySelectorAll(".breadcrumbs li").each(function()
+  {
+    let link = this.children("a"),
+      title = link.innerText,
+      id = HC.Utils.getPageId(link.attr("href"));
+  
+    if (id === HC.SETTINGS.tutorialCategory)
+    {
+      this.innerHTML = title;
+      $(".breadcrumbs li:last-child").remove();
+    }
+  })
+  
+  document.getElementByClassName("breadcrumbs").classList.add("in");
+  
+  
+  document.addEventListener("DOMContentLoaded", () => {
+      if (document.getElementById('gh_filepath')){
+          addGhLinks()
+      }
+      else{
+          addLogIssueLink()
+      }
+      function createDivUl(){
+          linksDiv = document.createElement('div')
+          unorderedList = document.createElement('ul')
+          linksDiv.className = 'logo'
+          unorderedList.className = 'logo'
+      }
+  
+      function appendLinks(){
+          linksDiv.append(unorderedList)
+          document.getElementsByClassName('article-header')[0].appendChild(linksDiv)
+      }
+  
+      function addGhLinks(){
+          let gitUrl = 'https:
+          let issueUrl = 'https:
+          let gh_filepath = document.getElementById('gh_filepath').title
+          issueTitle = `Feedback on page: ${gh_filepath}`
+          let editUrl = `${gitUrl}${gh_filepath}`
+          issueUrl = `${issueUrl}${issueTitle}`
+          createDivUl()
+          createListItem(editUrl, 'Edit on GitHub')
+          createListItem(issueUrl, 'Report article issues')
+          appendLinks()
+      }
+    
+      function addLogIssueLink(){
+          let issueUrl = "https:
+          let zdUrl = document.URL
+          createDivUl()
+          issueTitle = `Feedback on page: ${zdUrl}`
+          issueUrl = `${issueUrl}${issueTitle}`
+          createListItem(issueUrl, 'Report article issues')
+          appendLinks()
+      }
+  
+      function createListItem(url, label){
+          let listItem = document.createElement('li')
+          let linkTag = document.createElement('a')
+          let img = document.createElement('img')
+          if(label == 'Report article issues'){
+              img.src = `{{asset 'Smock_Bug_18_N.svg'}}`
+          }
+          else if(label == 'Edit on GitHub'){
+              img.src = `{{asset 'Smock_Edit_18_N.svg'}}`
+          }
+          img.className = "gh-icons"
+          listItem.className = 'gh-link'
+          linkTag.title = label; 
+          linkTag.textContent = label; 
+          linkTag.className = 'logo'
+          linkTag.href = url;
+          linkTag.target = '_blank';
+          linkTag.prepend(img);
+          listItem.append(linkTag);
+          unorderedList.appendChild(listItem)
+      }
+    });
+  </script>

@@ -2,7 +2,7 @@
 <div class = 'homepage-container'>
 <section id="main-content" class="section hero">
   <div class = 'hero-title'>
-    <h1>Adobe Commerce 2.4 Help Center</h1>
+    <h1>Adobe Commerce Help Center</h1>
     <p>Everything you need to troubleshoot and maintain your Commerce store.</p>
   </div>
   <div class="hero-inner">
@@ -11,7 +11,7 @@
       <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
       <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
     </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    {{search submit=false instant=true placeholder='Looking for something specific?' class='search search-full'}}
   </div>
 </section>
 
@@ -26,7 +26,7 @@
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
                 <span class="blocks-item-title">{{name}}</span>
-                <span class="blocks-item-description">{{excerpt description}}</span>
+                <span class="blocks-item-description">{{description}}</span>
               </a>
             </li>
           {{else}}
@@ -36,7 +36,7 @@
                   <span class="blocks-item-title">
                     {{name}}
                   </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
+                  <span class="blocks-item-description">{{description}}</span>
                 </a>
               </li>
             {{/each}}
@@ -45,48 +45,98 @@
       </ul>
       {{pagination}}
     </section>
-
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h2>{{t 'promoted_articles'}}</h2>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
-
-                  {{#if internal}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                    </svg>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
-      </section>
-    {{/if}}
   </section>
   </div>
  </div>
-
-{{!-- <div class="container">
-  {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
-
-      <div class="community-image"></div>
+ <section class="external-resources" style="background-color:white; padding-top: 10px; padding-bottom: 2rem;">
+  <div class="container">
+        {{#if promoted_articles}}
+        <section class="articles">
+          <h2 style="text-align:left; font-size:26px; margin-top:1.5rem;">Promoted Articles</h2><br>
+          <ul class="article-list promoted-articles">
+            {{#each promoted_articles}}
+              <li class="promoted-articles-item">
+                  <a href="{{url}}">
+                    {{title}}
+                    {{#if internal}}
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                        <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                        <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                      </svg>
+                    {{/if}}
+                  </a>
+              </li>
+            {{/each}}
+          </ul>
+        </section>
+      {{/if}}
+    <section class="categories blocks">
+      <h2 style="text-align:left; font-size:26px; margin:2rem 0;">Additional Resources</h2><br>
+      
+      <ul class="blocks-list additional-resources">
+        <li class="additional-resource">
+          <a href="https://magento.com/resources/technical" target="_blank">
+            <img src="{{asset 'icon-tech-resources.svg'}}" alt="Read the Magento Tech Resources" class="hidden-xs home-page-img" />
+          </a>
+          <div class="blocks-desc">
+            <h3 style="margin-bottom:10px;font-size:20px">
+              <a href="https://magento.com/resources/technical" target="_blank">Tech Resources</a>
+            </h3>
+            Easy-to-follow tutorials, user guides, release information, downloads, security updates and more.
+          </div>
+        </li>
+        <li class="additional-resource">
+          <a href="http://devdocs.magento.com/" target="_blank">
+            <img src="{{asset 'icon-dev-docs.svg'}}" alt="Read Developer Documentation" class="hidden-xs home-page-img" />
+          </a>
+          <div class="blocks-desc">
+            <h3 style="margin-bottom:10px;font-size:20px">
+              <a href="http://devdocs.magento.com/" target="_blank">Developer Documentation</a>
+            </h3>Everything you need to build and manage a customized Magento store.
+          </div>
+        </li>
+      </ul>
+      <br class="hidden-xs">  
+      <ul class="blocks-list additional-resources">
+        <li class="additional-resource">
+          <a href="https://community.magento.com/" target="_blank">
+            <img src="{{asset 'icon-forums.svg'}}" alt="Go to Magento Forums" class="hidden-xs home-page-img" />
+          </a>
+          <div class="blocks-desc">
+            <h3 style="margin-bottom:10px;font-size:20px">
+              <a href="https://community.magento.com/" target="_blank">Magento Forums</a>
+            </h3>
+            Share tips, tricks and support with your fellow Magento enthusiasts.
+          </div>
+        </li>
+        <li class="additional-resource">
+          <a href="https://partners.magento.com/portal/directory/?partner_type=1" target="_blank">
+            <img src="{{asset 'icon-solution-partner.svg'}}" alt="Find a Solution Partner" class="hidden-xs home-page-img" />
+          </a>
+          <div class="blocks-desc">
+            <h3 style="margin-bottom:10px;font-size:20px">
+              <a href="https://partners.magento.com/portal/directory/?partner_type=1" target="_blank">Solution Partners</a>
+            </h3>
+            Ready for a consultation? Reach out to one of our certified solution partners.
+          </div>
+        </li>
+      </ul>
+      <br class="hidden-xs">  
+      <ul class="blocks-list additional-resources">
+        <li class="additional-resource" style="justify-content: center">
+          <a href="https://community.magento.com/" target="_blank">
+            <img src="{{asset 'icon-userGuide.svg'}}" style="width:70px" alt="Go to Adobe Commerce User Guide" class="hidden-xs home-page-img" />
+          </a>
+          <div class="blocks-desc" style="width:30%">
+            <h3 style="margin-bottom:10px;font-size:20px">
+              <a href="https://docs.magento.com/user-guide/" target="_blank">Adobe Commerce User Guide</a>
+            </h3>
+            Merchant-focused documentation for both Adobe Commerce and Magento Open Source.
+          </div>
+        </li>
+      </ul>
     </section>
-  {{/if}}
-
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section> --}}
+  </div>
+</section>
 </div>
 
