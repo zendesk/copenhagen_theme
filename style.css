@@ -1169,6 +1169,7 @@ ul {
   font-family: adobe-clean, sans-serif;
   font-weight: 400;
   font-style: normal;
+  color: #6e6e6e
 }
 
 @media (min-width: 768px) {
@@ -1213,7 +1214,7 @@ ul {
   font-size: 22px;
   font-weight: bold;
   text-align: left;
-  color: #323232;
+  color: #2799f6;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1253,9 +1254,9 @@ ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   margin: 0;
-  padding: 0;
+  padding: 0 18px;
   align-items: stretch;
   height: 95%;
 }
@@ -1268,15 +1269,17 @@ ul {
 
 .promoted-articles-item {
   flex: 1 0 auto;
-  display:block;
+  list-style: auto;
+  color: #6e6e6e;
+  font-family: adobe-clean, sans-serif;
 }
 
 @media (min-width: 1024px) {
   .promoted-articles-item {
     align-self: flex-start;
     flex: 0 0 auto;
-    padding-right: 30px;
-    display: block;
+    margin-bottom: 20px;
+    list-style: disc;
   }
   [dir="rtl"] .promoted-articles-item {
     padding: 0 0 0 30px;
@@ -1291,6 +1294,7 @@ ul {
   display: block;
   padding: 0px 0;
   color: #2799f6;
+  /* margin-left: 5px */
 }
 
 .promoted-articles-item .icon-lock {

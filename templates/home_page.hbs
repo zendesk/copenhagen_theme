@@ -25,7 +25,7 @@
           {{#if ../has_multiple_categories}}
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title link-container-header">{{name}}<img class="category-icon" src="{{asset name suffix='.svg'}}" /></span>
+                <span class="blocks-item-title link-container-header">{{name}}</span>
                 <span class="blocks-item-description">{{description}}</span>
               </a>
             </li>
@@ -47,7 +47,7 @@
     </section>
     {{#if promoted_articles}}
         <section class="articles">
-          <h2 class='link-container-header'>Popular Articles<img class="category-icon" src="{{asset 'Popular Articles.svg'}}" /></h2>
+          <span class="blocks-item-title link-container-header" style="color:#4d4d4d">Popular Articles</span>
           <ul class="article-list promoted-articles">
             {{#each promoted_articles}}
               <li class="promoted-articles-item">
@@ -70,29 +70,10 @@
  </div>
  <section class="external-resources" style="background-color:#f5f5f5; ">
   <div class="container">
-        {{!-- {{#if promoted_articles}}
-        <section class="articles">
-          <h2 style="text-align:left; font-size:26px; margin-top:1.5rem;">Promoted Articles</h2><br>
-          <ul class="article-list promoted-articles">
-            {{#each promoted_articles}}
-              <li class="promoted-articles-item">
-                  <a href="{{url}}">
-                    {{title}}
-                    {{#if internal}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                        <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                        <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                      </svg>
-                    {{/if}}
-                  </a>
-              </li>
-            {{/each}}
-          </ul>
-        </section>
-      {{/if}} --}}
     <section class="additional-resources-container">
-      <h2 class='link-container-header'>Additional Resources<img class="category-icon" src="{{asset 'additionalResources.svg'}}" /></h2><br>
-      
+      <span class="blocks-item-title link-container-header" style="color:#4d4d4d">Additional Resources</span>
+      <br>
+  
       <ul class="blocks-list additional-resources">
         <li class="additional-resource">
           <a href="https://magento.com/resources/technical" target="_blank">
@@ -151,7 +132,7 @@
             <h3 style="margin-bottom:10px;font-size:20px">
               <a href="https://docs.magento.com/user-guide/" target="_blank">Adobe Commerce User Guide</a>
             </h3>
-            Merchant-focused documentation for both Adobe Commerce and Magento Open Source. test to test
+            Merchant-focused documentation for both Adobe Commerce and Magento Open Source.
           </div>
         </li>
       </ul>
