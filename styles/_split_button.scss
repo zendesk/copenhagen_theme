@@ -4,7 +4,7 @@
 }
 
 .split-button button:hover {
-  @extend .button-primary:hover;
+  @extend .button-primary, :hover;
 }
 
 .split-button button {
