@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
+    "start": "webpack --watch",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
     "test-a11y": "node bin/lighthouse/index.js"
