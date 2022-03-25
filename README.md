@@ -85,28 +85,18 @@ Learn more [here](https://support.zendesk.com/hc/en-us/articles/360001948367).
 The styles that Theming Center needs to use in the theme are in the `style.css` file in the root folder.
 
 The styles for the theme are split using Sass partials, all the partials are under [styles/](/blob/master/styles/), they are all included in the "main" file [index.scss](/blob/master/styles/index.scss) and then compiled to CSS.
-If you wish to use SASS you can go to the [using SASS section](#using-sass)
+We use webpack to compile the stylesheet and watch for changes. To get started:
+
+```bs
+$ yarn install --offline
+$ yarn start
+```
+
+This will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
+Our custom webpack loaders will make sure that the settings variables remain untouched.
 
 ## Assets
 The Copenhagen theme doesn't have any assets, but you can add assets to your theme by placing them in the `assets` folder.
-
-# Using SASS
-In order to use SASS for development, you just need to compile it into the CSS that Zendesk Guide understands.
-Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does not support live SASS compilation.
-
-## Requirements
-
-- Install Ruby, we use `sassc` gem to compile our `.scss` files. You can see how to install Ruby [here](https://www.ruby-lang.org/en/documentation/installation/).
-- Install `sassc` gem. You can run:
-```console
-  gem install sassc:1.12.1
-```
-
-Now you can compile your SASS files running:
-```console
-./bin/compile.rb
-```
-Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
 
 # Accessibility testing
 
