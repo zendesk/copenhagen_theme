@@ -16,8 +16,7 @@ body {
 
 main {
   display: block;
-  /* background-color: #F5F5F5; */
-  background-color: white;
+  background-color: #F5F5F5;
   font-family: adobe-clean, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -196,7 +195,7 @@ template {
 }
 
 body {
-  background-color: #f5f5f5 !important;
+  background-color: #fff !important;
   color: $text_color;
   font-family: adobe-clean, sans-serif;
   font-size: 15px;
@@ -909,7 +908,8 @@ ul {
 
 /***** Footer *****/
 .footer {
-  margin-top: 50px;
+  margin-top: 0px;
+  background-color: #f6f6f6;
 }
 
 .footer a {
@@ -919,14 +919,14 @@ ul {
 .footer-inner {
   max-width: 95%;
   margin: 0 auto;
-  padding: 20px 5%;
+  padding: 30px 0 10px 0px;
   display: flex;
   justify-content: space-between;
 }
 
 @media (min-width: 1160px) {
   .footer-inner {
-    padding: 20px 0;
+    padding: 30px 0 10px 0px;
     width: 100%;
   }
 }

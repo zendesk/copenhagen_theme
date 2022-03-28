@@ -61,8 +61,8 @@
       </div>
     </div>
   </div> --}}
-  <section class="hero-banner mb-5 mt-3 bg-white py-1">
-  <div class="container">
+<div class="container">
+  <section class="additional-resources-container" style="margin:30px 0">
     <div class="row row align-items-center">
       <div class="col-lg-5 offset-lg-1 order-lg-1">
         <img
@@ -80,9 +80,12 @@
         >Learn more</a>
       </div>
     </div>
-  </div>
-</section>
-<div class= 'homepage-container'>
+  </section>
+</div>
+
+
+
+{{!-- <div class= 'homepage-container'>
   <div class="mb-5">
     <div class="container bg-full">
       <div class="category-container">
@@ -117,5 +120,25 @@
       </div>
     </div>
   </div>
+</div> --}}
+
+<div class="container">
+  <section class="section knowledge-base">
+        <section class="categories blocks">
+      <ul class="blocks-list" style="height:100%;">
+        {{#each sections}}
+            <li class="blocks-item">
+              <a href='{{url}}' class="blocks-item-link">
+                <span class="blocks-item-title link-container-header">{{name}}</span>
+                <span class="blocks-item-description">{{description}}</span>
+              </a>
+            </li>
+        {{/each}}
+      </ul>
+    </section>
+  </section>
 </div>
+
+
+
 </div>
