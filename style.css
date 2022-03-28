@@ -1232,12 +1232,12 @@ ul {
 
 /***** Homepage *****/
 .section {
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 768px) {
   .section {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     font-family: adobe-clean, sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -1493,18 +1493,21 @@ ul {
 }
 
 .article-list-item a {
-  color: $text_color;
+  color: #2799f6;
 }
 
 .icon-star {
-  color: $brand_color;
+  color: goldenrod;
   font-size: 18px;
+  margin-right: 5px !important;
 }
 
 /***** Section pages *****/
 .section-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-top: 30px;
+  width: 100%;
 }
 
 .section-content {
@@ -1518,13 +1521,22 @@ ul {
 }
 
 .section-list {
-  margin: 40px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
+    align-items: stretch;
+    columns: 2; 
+    -webkit-columns: 2; 
+    -moz-columns: 2;
+    padding-left: 0px;
 }
 
 .section-list-item {
-  border-bottom: 1px solid #ddd;
+  /* border-bottom: 1px solid #ddd;s */
   font-size: 16px;
   padding: 15px 0;
+  width: 50%;
 }
 
 .section-list-item:first-child {
@@ -1533,7 +1545,7 @@ ul {
 
 .section-list-item a {
   align-items: center;
-  color: $text_color;
+  color: #2799f6;
   display: flex;
   justify-content: space-between;
 }
@@ -3561,6 +3573,7 @@ ul {
 .pagination {
   margin: 20px 0;
   text-align: center;
+  justify-content: flex-end;
 }
 
 .pagination-next, .pagination-prev, .pagination-first, .pagination-last {
