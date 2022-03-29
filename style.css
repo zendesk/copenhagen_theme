@@ -234,7 +234,7 @@ h4 {
 }
 
 a {
-  color: #2799f6 !important;
+  color: #2680eb !important;
   text-decoration: none !important;
 }
 
@@ -380,7 +380,7 @@ ul {
 }
 
 .button:hover, .split-button button:hover, .section-subscribe button:hover, .article-subscribe button:hover, .community-follow button:hover, .requests-table-toolbar .organization-subscribe button:hover, .subscriptions-subscribe button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .button:active, .split-button button:active, .section-subscribe button:active, .article-subscribe button:active, .community-follow button:active, .requests-table-toolbar .organization-subscribe button:active, .subscriptions-subscribe button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .button:focus, .split-button button:focus, .section-subscribe button:focus, .article-subscribe button:focus, .community-follow button:focus, .requests-table-toolbar .organization-subscribe button:focus, .subscriptions-subscribe button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .button.button-primary, .split-button button.button-primary, .section-subscribe button.button-primary, .section-subscribe button[data-selected="true"], .article-subscribe button.button-primary, .article-subscribe button[data-selected="true"], .community-follow button.button-primary, .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected="true"], .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected="true"], .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link {
-  background-color: #2799f6;
+  background-color: #2680eb;
   color: white;
   text-decoration: none;
 }
@@ -712,9 +712,8 @@ ul {
 
 .nav-wrapper a {
   border: 0;
-  color: $link_color;
   display: none;
-  font-size: 14px;
+  font-size: 16px;
   padding: 0 20px 0 0;
   width: auto;
 }
@@ -834,7 +833,7 @@ ul {
 
 .user-info > button {
   border: 0;
-  color: $link_color;
+  color: #2680eb;
   min-width: 0;
   padding: 0;
   white-space: nowrap;
@@ -1153,7 +1152,7 @@ ul {
 }
 
 .additional-resource a {
-  color: #2799f6 !important; 
+  color: #2680eb !important; 
 }
  
 .additional-resource a:hover {
@@ -1208,7 +1207,7 @@ a.blocks-item-link{
 .blocks-item:hover, .blocks-item:active {
   box-shadow: 4px 6px 4px rgb(0 0 0 / 20%);
   border: 1px solid #ababab;
-  background-color: #2799f6;
+  background-color: #2680eb;
 }
 
 li.blocks-item:hover span {
@@ -1221,7 +1220,7 @@ li.blocks-item:hover span {
   font-size: 22px;
   font-weight: bold;
   text-align: left;
-  color: #2799f6;
+  color: #2680eb;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1230,7 +1229,7 @@ li.blocks-item:hover span {
 .blocks-item-description {
   margin: 0;
   text-align: left;
-  color: #6e6e6e;
+  color: #4b4b4b;
 }
 
 .blocks-item-description:not(:empty) {
@@ -1300,7 +1299,7 @@ li.blocks-item:hover span {
 .promoted-articles-item a {
   display: block;
   padding: 0px 0;
-  color: #2799f6;
+  color: #2680eb;
   /* margin-left: 5px */
 }
 
@@ -1500,7 +1499,7 @@ li.blocks-item:hover span {
 }
 
 .article-list-item a {
-  color: #2799f6;
+  color: #2680eb;
 }
 
 .icon-star {
@@ -1552,7 +1551,7 @@ li.blocks-item:hover span {
 
 .section-list-item a {
   align-items: center;
-  color: #2799f6;
+  color: #2680eb;
   display: flex;
   justify-content: space-between;
 }
@@ -1856,7 +1855,7 @@ li.blocks-item:hover span {
   text-decoration: none;
   box-shadow: 4px 6px 4px rgb(0 0 0 / 20%);
   border: 1px solid #ababab;
-  background-color: #2799f6;
+  background-color: #2680eb;
   color: white !important;
 }
 
@@ -5090,7 +5089,7 @@ span.holiday_heading:before {
 
   .article-sidebar-item {
     align-self: flex-end;
-    color: #2799f6;
+    color: #2680eb;
   }
   
   .gh-links-div {
