@@ -15,28 +15,24 @@
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
       {{#if settings.show_articles_in_section}}
         <div class="collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-            </svg>
-          </button>
-          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
-          </span>
           <div class="collapsible-sidebar-body">
             <ul class="article-page-sidebar-ul">
+              <li>
+                <span class="sidenav-title">
+                  Articles in this section
+                </span>
+              </li>
               {{#each section.articles}}
                 <li>
                   <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
                 </li>
               {{/each}}
+                <li>
+                  {{#if section.more_articles}}
+                    <a href="{{section.url}}" class="sidenav-item" style="text-align: center;">See all articles ->></a>
+                  {{/if}}
+                </li>
             </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
           </div>
         </div>
       {{/if}}
@@ -58,10 +54,11 @@
           <div class="article-meta">
             <ul class="meta-group">
               {{#is article.created_at article.edited_at}}
-                <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                <li class="meta-data">{{t 'created'}}</li>
+                <li class="meta-data">{{date article.created_at}}</li>
               {{else}}
-                <li class="meta-data">{{date article.edited_at timeago=true}}</li>
                 <li class="meta-data">{{t 'updated'}}</li>
+                <li class="meta-data">{{date article.edited_at}}</li>
               {{/is}}
             </ul>
           </div>
@@ -130,23 +127,7 @@
     </article>
   </div>
 </div>
-<script>
-document.querySelectorAll(".breadcrumbs li").each(function()
-  {
-    let link = this.children("a"),
-      title = link.innerText,
-      id = HC.Utils.getPageId(link.attr("href"));
-  
-    if (id === HC.SETTINGS.tutorialCategory)
-    {
-      this.innerHTML = title;
-      $(".breadcrumbs li:last-child").remove();
-    }
-  })
-  
-  document.getElementByClassName("breadcrumbs").classList.add("in");
-  
-  
+<script>  
   document.addEventListener("DOMContentLoaded", () => {
       if (document.getElementById('gh_filepath')){
           addGhLinks()
@@ -157,22 +138,21 @@ document.querySelectorAll(".breadcrumbs li").each(function()
       function createDivUl(){
           linksDiv = document.createElement('div')
           unorderedList = document.createElement('ul')
-          linksDiv.className = 'logo'
-          unorderedList.className = 'logo'
+          linksDiv.className = 'gh-links-div'
+          unorderedList.className = 'gh-links-div'
       }
   
       function appendLinks(){
           linksDiv.append(unorderedList)
-          document.getElementsByClassName('article-header')[0].appendChild(linksDiv)
+          document.getElementsByClassName('article-author')[0].appendChild(linksDiv)
       }
   
       function addGhLinks(){
-          let gitUrl = 'https:
-          let issueUrl = 'https:
+          let gitUrl = 'https://github.com/magento/knowledge-base/blob/main/'
+          let issueUrl = 'https://github.com/magento/knowledge-base/issues/new/choose'
           let gh_filepath = document.getElementById('gh_filepath').title
           issueTitle = `Feedback on page: ${gh_filepath}`
           let editUrl = `${gitUrl}${gh_filepath}`
-          issueUrl = `${issueUrl}${issueTitle}`
           createDivUl()
           createListItem(editUrl, 'Edit on GitHub')
           createListItem(issueUrl, 'Report article issues')
@@ -180,7 +160,7 @@ document.querySelectorAll(".breadcrumbs li").each(function()
       }
     
       function addLogIssueLink(){
-          let issueUrl = "https:
+          let issueUrl = "https:"
           let zdUrl = document.URL
           createDivUl()
           issueTitle = `Feedback on page: ${zdUrl}`
@@ -203,7 +183,7 @@ document.querySelectorAll(".breadcrumbs li").each(function()
           listItem.className = 'gh-link'
           linkTag.title = label; 
           linkTag.textContent = label; 
-          linkTag.className = 'logo'
+          linkTag.className = 'gh-links-div'
           linkTag.href = url;
           linkTag.target = '_blank';
           linkTag.prepend(img);
