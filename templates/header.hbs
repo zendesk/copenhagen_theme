@@ -15,10 +15,10 @@
         <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
       </svg>
     </button>
-    <nav class="user-nav" id="user-nav">
-      {{link 'new_request' class='submit-a-request'}}
-    </nav>
     {{#if signed_in}}
+      <nav class="user-nav" id="user-nav">
+        {{link 'new_request' class='submit-a-request'}}
+      </nav>
       <div class="user-info dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
           {{user_avatar class="user-avatar"}}
