@@ -2,15 +2,8 @@
 <div class="container">
   <nav class="sub-nav">
     {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
-    </div>
   </nav>
-
+<div class="temporary_banner"><span class = "banner_heading">Data Privacy Notice</span><span class="banner_close_btn">&times;</span><br>Adobe technical support may require access to your Magento related data in order to provide support. The primary Magento account holder can choose to provide this authorization in their Magento account privacy settings. Allowing this access prior to  support request creation will help ensure the issue can be properly investigated and/or help increase the speed of resolution.<br>For more information, please visit: <a href='https://support.magento.com/hc/en-us/articles/360052293411' target='_blank'>https://support.magento.com/hc/en-us/articles/360052293411</a></div>
   <h1>
     {{t 'submit_a_request'}}
     <span class="follow-up-hint">
@@ -22,3 +15,8 @@
     {{request_form wysiwyg=true}}
   </div>
 </div>
+
+<script>
+$("body").addClass("no-subfooter");
+$(".submit-a-request").addClass("hide");
+</script>
