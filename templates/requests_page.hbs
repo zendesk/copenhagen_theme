@@ -97,10 +97,10 @@
                 </a>
 
                 <!-- Visible on mobile -->
-                <div class="requests-table-meta meta-group">
+                <div class="requests-table-meta">
                   <span class="meta-data">#{{id}}</span>
                   <span class="meta-data">{{date created_at timeago=true}}</span>
-                  <span class="status-label status-label-{{status}}" title="{{status_description}}">
+                  <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
                     {{status_name}}
                   </span>
                 </div>
@@ -115,7 +115,7 @@
               </td>
               <td>{{date updated_at timeago=true}}</td>
               <td class="requests-table-status">
-                <span class="status-label status-label-{{status}}" title="{{status_description}}">
+                <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
                   {{status_name}}
                 </span>
               </td>

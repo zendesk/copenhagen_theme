@@ -2803,6 +2803,19 @@ ul {
   background-color: #000;
 }
 
+.status-label-request {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .status-label-request {
+    max-width: 150px;
+  }
+}
+
 /***** Post *****/
 /*
 * The post grid is defined this way:
