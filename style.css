@@ -303,9 +303,10 @@ textarea:focus {
 }
 
 .container {
-  max-width: 1160px;
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 5%;
+  font-size: 16px;
 }
 
 @media (min-width: 1160px) {
@@ -1101,11 +1102,9 @@ td {
 
 .sub-nav {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  /* margin-bottom: 30px; */
   min-height: 50px;
-  padding-top: 10px;
+  padding-top: 0px;
 }
 
 @media (min-width: 768px) {
@@ -1525,7 +1524,7 @@ li.blocks-item:hover span {
 .section-container {
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 10px;
   width: 100%;
 }
 
@@ -1604,6 +1603,7 @@ li.blocks-item:hover span {
 .article-container {
   display: flex;
   flex-direction: column;
+  padding-top: 10px;
 }
 
 @media (min-width: 1024px) {
@@ -1764,7 +1764,6 @@ li.blocks-item:hover span {
   border-top: 1px solid #ddd;
   flex: 1 0 auto;
   margin-bottom: 20px;
-  margin-top:30px !important;
   padding: 0;
 }
 
@@ -1851,7 +1850,8 @@ li.blocks-item:hover span {
   display: block;
   margin-bottom: 10px;
   text-align: start;
-  font-weight: 500;
+  font-weight: 300;
+  text-transform:uppercase;
 }
 
 .sidenav-item {
@@ -4340,7 +4340,7 @@ li.blocks-item:hover span {
 
 /***** Search results *****/
 .search-results {
-  padding-top: 30px;
+  padding-top: 0px;
 }
 
 @media (min-width: 1024px) {
@@ -5108,7 +5108,6 @@ span.holiday_heading:before {
     border-radius: 4px;
     box-shadow: 0px 1px 3px rgb(0 0 0 / 10%);
     margin-left: 30px;
-    margin-top: 30px;
   }
 
   .article-sidebar-item {
@@ -5136,7 +5135,7 @@ span.holiday_heading:before {
   }
 
 #algolia-facets {
-  margin-top: -90px !important;
+  margin-top: -80px !important;
   border-radius: 4px;
   box-shadow: 0px 1px 3px rgb(0 0 0 / 10%);
   background: white;
@@ -5208,9 +5207,13 @@ span.holiday_heading:before {
   line-height: 0;
   position: absolute;
   text-align: center;
-  top: 18px;
+  top: 14px !important;
   width: 2.2em;
   z-index: 1;
+}
+
+.ais-with-style.ais-search-box {
+  height: 40px !important;
 }
 
 #algolia-hits {
@@ -5219,4 +5222,38 @@ span.holiday_heading:before {
 
 .article-promoted {
   display: block;
+}
+
+pre[class*="language-" ],
+code[class*="language-"] {
+    white-space: normal !important;
+    overflow: auto;
+    word-break: break-word;
+}
+
+.search-result-votes {
+  display:none;
+  }
+#algolia-facets {
+  margin-top: -130px
+}
+
+.categories {
+  width: 100%;
+}
+
+.category-hero {
+  display: flex;
+  flex-direction: row;
+}
+
+.category-hero-img {
+  width: 100%;
+  height: auto;
+}
+
+.category-hero-description-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
