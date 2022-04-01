@@ -165,7 +165,8 @@
     font-size: 16px;
     padding: 5px 15px !important;
     margin: 0 auto;
-    margin-top: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
     background-color: #E8EFF7;
     border: 2px solid #B6C4D1;
   }
