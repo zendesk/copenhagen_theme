@@ -17,7 +17,7 @@
     </button>
     {{#if signed_in}}
       <nav class="user-nav" id="user-nav">
-        {{link 'new_request' class='submit-a-request'}}
+        {{#link 'new_request' class='submit-a-request'}}Submit a ticket{{/link}}
       </nav>
       <div class="user-info dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
