@@ -196,19 +196,26 @@ template {
 }
 
 body {
-  background-color: #fff !important;
-  color: $text_color;
+  background-color: #f5f5f5 !important;
   font-family: adobe-clean, sans-serif;
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  position: relative;
 }
 
-@media (min-width: 1024px) {
-  body > main {
-    min-height: 88vh;
-  }
+main {
+  padding-bottom: 5rem;
 }
+
+
+
+/* @media (min-width: 1024px) {
+  body > main {
+    min-height: 92vh;
+  }
+} */
 
 h1, h2, h3, h4, h5, h6 {
   font-family: adobe-clean, sans-serif;
@@ -671,10 +678,14 @@ td {
   font-style: normal;
 }
 
+header {
+  background: white;
+}
+
 @media (min-width: 1160px) {
   .header {
+    width: 100%;
     padding: 0;
-    width: 90%;
   }
 }
 
@@ -919,8 +930,19 @@ td {
 
 /***** Footer *****/
 .footer {
-  margin-top: 0px;
-  background-color: #f6f6f6;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2rem 5% 1rem 5%;
+  align-content: center;
+}
+
+.footer-links, .copyright-date {
+  align-self: center;
 }
 
 .footer a {
@@ -4941,7 +4963,7 @@ span.holiday_heading:before {
   
   @media (max-width: 1366px){
     .header{
-      padding: 0 0 0 20px;
+      padding: 0 5%;
     }
   }
    
@@ -5074,10 +5096,11 @@ span.holiday_heading:before {
 
   .additional-resources-container {
     background: white;
-    padding:30px 40px;
+    padding:20px 40px;
     border: 1px solid #eee;
     border-radius: 4px;
     box-shadow: 0px 1px 3px rgb(0 0 0 / 10%);
+    margin-bottom: 30px;
   }
 
   .link-container-header {
@@ -5245,15 +5268,60 @@ code[class*="language-"] {
 .category-hero {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  max-height: 25vh;
 }
+
+.home-page-categories {
+  width: 75%;
+}
+
+@media (max-width: 768px) {
+  #category-hero {
+    display: none;
+  }
+
+  .search-container{
+    display: none;
+  }
+
+  .footer-container, .footer-nav{
+    flex-direction: column;
+  }
+
+  .footer-inner {
+    margin: 0px 30px;
+  }
+
+  .knowledge-base {
+    flex-direction: column;
+  }
+
+  .home-page-categories {
+    width: 100%;
+  }
+
+  .articles {
+    margin-left: 0;
+  }
+  
+
+}
+
+
 
 .category-hero-img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .category-hero-description-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 50%
+}
+
+.category-hero-image-div {
+  width: 50%;
 }

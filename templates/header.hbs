@@ -1,45 +1,47 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
-<header class="header container">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
-      {{#if settings.show_brand_name}}
-        <span aria-hidden="true" style="color: #4d4d4d; font-size: 16px;"><span style="color:#EB1000; font-weight:600; margin-right:7px">Adobe</span>|<span style="margin-left:7px; font-weight:500;">Commerce Help Center</span></span>
-      {{/if}}
-    {{/link}}
-  </div>
-  <div class="nav-wrapper">
-    <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-      </svg>
-    </button>
-    {{#if signed_in}}
-      <nav class="user-nav" id="user-nav">
-        {{#link 'new_request' class='submit-a-request'}}Submit a ticket{{/link}}
-      </nav>
-      <div class="user-info dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true">
-          {{user_avatar class="user-avatar"}}
-          <span class="hide-on-mobile">
-            {{user_name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </span>
-        </button>
-        <div class="dropdown-menu" role="menu">
-          {{#link "my_activities" role="menuitem"}}My Tickets{{/link}}
-          {{change_password role="menuitem"}}
-          {{link "sign_out" role="menuitem"}}
-        </div>
-      </div>
-    {{else}}
-      {{#link "sign_in" class="sign-in"}}
-        {{t 'sign_in'}}
+<header>
+  <div class="container header">
+    <div class="logo">
+      {{#link 'help_center'}}
+        <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
+        {{#if settings.show_brand_name}}
+          <span aria-hidden="true" style="color: #4d4d4d; font-size: 16px;"><span style="color:#EB1000; font-weight:600; margin-right:7px">Adobe</span>|<span style="margin-left:7px; font-weight:500;">Commerce Help Center</span></span>
+        {{/if}}
       {{/link}}
-    {{/if}}
+    </div>
+    <div class="nav-wrapper">
+      <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
+        </svg>
+      </button>
+      {{#if signed_in}}
+        <nav class="user-nav" id="user-nav">
+          {{#link 'new_request' class='submit-a-request'}}Submit a ticket{{/link}}
+        </nav>
+        <div class="user-info dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true">
+            {{user_avatar class="user-avatar"}}
+            <span class="hide-on-mobile">
+              {{user_name}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+              </svg>
+            </span>
+          </button>
+          <div class="dropdown-menu" role="menu">
+            {{#link "my_activities" role="menuitem"}}My Tickets{{/link}}
+            {{change_password role="menuitem"}}
+            {{link "sign_out" role="menuitem"}}
+          </div>
+        </div>
+      {{else}}
+        {{#link "sign_in" class="sign-in"}}
+          {{t 'sign_in'}}
+        {{/link}}
+      {{/if}}
+    </div>
   </div>
 
 <script>

@@ -197,12 +197,6 @@
     font-size: 48px;
   }
   
-  @media (max-width: 1366px){
-    .header{
-      padding: 0 0 0 20px;
-    }
-  }
-  
   .gh-links {
     display: flex;
     align-items: center;
