@@ -5269,7 +5269,8 @@ code[class*="language-"] {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  max-height: 25vh;
+  padding: 1.5% 3%;
+  /* max-height: 35vh; */
 }
 
 .home-page-categories {
@@ -5312,16 +5313,17 @@ code[class*="language-"] {
 
 .category-hero-img {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .category-hero-description-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%
+  width: 48.5%;
+  text-align: center;
 }
 
 .category-hero-image-div {
-  width: 50%;
+  width: 48.5%;
 }
