@@ -1530,6 +1530,8 @@ li.blocks-item:hover span {
 .article-list-item {
   font-size: 16px;
   padding: 15px 0;
+  width: 50%;
+  padding-right: 20px;
 }
 
 .article-list-item a {
@@ -1801,7 +1803,7 @@ li.blocks-item:hover span {
   border-top: 1px solid #ddd;
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
+  padding-top: 20px;
 }
 
 @media (min-width: 768px) {
@@ -1909,6 +1911,8 @@ li.blocks-item:hover span {
 
 .related-articles ul {
   padding-left: 0;
+  list-style: disc;
+  list-style-position: inside;
 }
 
 /***** Attachments *****/
@@ -5277,7 +5281,47 @@ code[class*="language-"] {
   width: 75%;
 }
 
+
+/* RESPONSIVE CSS FOR MOBILE */
 @media (max-width: 768px) {
+
+  .article-container {
+    margin-bottom: 30px;
+  }
+
+  .recent-articles ul {
+    list-style: none;
+  }
+  
+  .related-articles ul {
+    list-style: none;
+  }
+
+  .promoted-articles-item a {
+    margin: 15px 0;
+  }
+
+  .gh-links-div {
+    display: none;
+  }
+
+  .article-list-item {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .article-card-container {
+    margin-left: 0;
+  }
+
+  .section-list {
+    list-style: none;
+  }
+
+  .article-sidebar {
+    display: none;
+  }
+
   #category-hero {
     display: none;
   }
@@ -5305,7 +5349,17 @@ code[class*="language-"] {
   .articles {
     margin-left: 0;
   }
+
+  .user-nav[aria-expanded="true"] {
+    top: 46px;
+    text-align: center;
+  }
   
+  .section-list {
+    -webkit-columns: 1;  
+    -moz-columns: 1;
+    columns: 1;
+  }
 
 }
 
