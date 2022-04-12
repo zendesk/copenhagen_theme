@@ -222,6 +222,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   font-style: normal;
   margin-top: 0;
+  color: #2c2c2c;
 }
 
 h1 {
@@ -5135,7 +5136,10 @@ span.holiday_heading:before {
     border-radius: 4px;
     box-shadow: 0px 1px 3px rgb(0 0 0 / 10%);
     margin-left: 30px;
+    color: #4b4b4b;
+    font-size: 18px;
   }
+
 
   .article-sidebar-item {
     align-self: flex-end;
