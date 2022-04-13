@@ -5392,3 +5392,11 @@ code[class*="language-"] {
 .category-hero-image-div {
   width: 48.5%;
 }
+
+.feds-header-wrapper{
+  position: relative !important;
+}
+
+.feds-header-wrapper--sticky {
+  position: relative !important;
+}
