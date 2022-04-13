@@ -484,21 +484,18 @@ ul {
   border-bottom-left-radius: unset;
 }
 
-/***** Tables *****/
-/* div.article-body table {
+/* **** Tables *****/
+div.article-body table {
   width: 100% !important;
   border-spacing: 0 !important;
+  margin-bottom: 30px;
 }
 
-div.article-body td {
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
-
-div.article-body tr, tbody, td, tfoot, thead, th {
+div.article-body td{
   border: 1px solid #2c2c2c !important;
   text-align: center !important;
-} */
+  padding: 0 5px;
+} 
 
 table {
   width: 100% !important;
