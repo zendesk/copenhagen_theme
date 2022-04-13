@@ -1,0 +1,211 @@
+/* Style the buttons that are used to open and close the zd-accordion-sections */
+.zd-accordion-panel {
+    margin-top: 1em;
+  }
+  .zd-accordion-section {
+      background-color: #eee;
+      color: #444;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      text-align: left;
+      border: none;
+      outline: none;
+      transition: 0.4s;
+    }
+  
+  .zd-accordion-text {
+      padding: 0 18px;
+      background-color: white;
+      overflow: hidden;
+      }
+    
+  .zd-accordion-section:hover {
+      background-color: #ccc;
+    }
+
+  
+  /*----------------------Hide Customer Time Zone Field--------------------------*/
+  /* sandbox */
+  #request_custom_fields_360021492451 {
+    opacity: 0;
+    position: absolute; 
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  /* prod */
+  #request_custom_fields_360021625652 {
+    opacity: 0;
+    position: absolute;
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  
+  /*----------------------Hide Customer Timezone Offset Field--------------------------*/
+  /* sandbox */
+  #request_custom_fields_360021537571 {
+    opacity: 0;
+    position: absolute; 
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  /* prod */
+  #request_custom_fields_360021690131 {
+    opacity: 0;
+    position: absolute; 
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  
+  /*----------------------Hide Customer Region Field--------------------------*/
+  /* sandbox */
+  #request_custom_fields_360021532111 {
+    opacity: 0;
+    position: absolute; 
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  /* prod */
+  #request_custom_fields_360021625892 {
+    opacity: 0;
+    position: absolute; 
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  
+  /*----------------------Hide Customer Project ID Field--------------------------*/
+  /* sandbox */
+  #request_custom_fields_360014467932 {
+    opacity: 0;
+    position: absolute; 
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  /* prod */
+  #request_custom_fields_114103558454 {
+    opacity: 0;
+    position: absolute;
+    -webkit-appearance: none;
+         -moz-appearance: none;
+              appearance: none;
+  }
+  /*----------------------See All Articles Button--------------------------*/
+  .container.see-all-articles-btn,.all-articles-section, .search-and-sort{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .sortBtn {
+    font-size: 14px;
+    margin: 0 0 0 10px;
+  }
+  
+  @media(min-width: 768px) {
+    button.all-articles-button {
+      border: none;
+      border-radius: 3px;
+      background-color: orange;
+    }
+  }
+  
+  #all-articles-btn {
+    color: white;
+  }
+  
+  @media(max-width: 767px) {
+    #alphaSort {
+      display: none;
+    }
+  }
+  
+  /*----------------------Algolia Responsive Styling--------------------------*/
+  
+  @media(max-width: 768px) {
+    .search-header h1 {
+      padding-left: 0px;
+    }  
+  }
+  
+  /* For Holiday Notice */
+  span.banner_heading:before {
+  /*   content: '\1F514'; */
+    color: blue;
+    font-size: 18px;
+  }
+  
+  /* The close button */
+  .banner_close_btn {
+    margin-left: 15px;
+    color: #f16321;
+    font-weight: bold;
+    float: right;
+    font-size: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* When moving the mouse over the close button */
+  .banner_close_btn:hover {
+    color: black;
+  }
+  
+  .banner_heading {
+    font-weight: bold;
+  }
+  
+  .temporary_banner{
+    font-size: 16px;
+    padding: 5px 15px !important;
+    margin: 0 auto;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    background-color: #E8EFF7;
+    border: 2px solid #B6C4D1;
+  }
+  
+  /* Class for hiding submit a ticket on request pages. */
+  
+  .hide {
+    display: none !important;
+  }
+  
+  /* Bootstrap Card for Category page customization */
+  
+  .card {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .card-title {
+    border-bottom-width: thin;
+    border-bottom-style: inset;
+    padding-bottom: 5px;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 0.8rem 0.5rem rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  .hero-banner h1 {
+    font-size: 48px;
+  }
+  
+  .gh-links {
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    padding: 0 0 0 20px;
+    font-size: 16px;
+  }
+  
+  .popular h1{
+    padding-left: 2.5rem;
+  }

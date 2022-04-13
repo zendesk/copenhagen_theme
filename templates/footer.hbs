@@ -1,25 +1,12 @@
 <footer class="footer">
-  <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
-
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{current_locale.name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
-          </span>
-        </div>
-      {{/if}}
+    <div class="footer-links">
+      <ul class="footer-nav">
+        <li><a href="http://www.adobe.com/privacy/policy.html">Privacy</a></li>
+        <li><a href="http://www.adobe.com/legal/terms.html">Terms of Use</a></li>
+        <li><a href="#" id="openCookieModal" onclick="adobePrivacy.showConsentPopup();">Cookie Preferences</a></li>
+        <div id="feds-footer"></div>
+        <li><a href="https://adobe.com/legal/terms">Do not sell my personal information</a></li>
+      </ul>
     </div>
-  </div>
+    <div class="copyright-date">© 2016-2022 Adobe. All rights reserved.</div>
 </footer>

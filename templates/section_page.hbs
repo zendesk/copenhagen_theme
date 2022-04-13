@@ -7,26 +7,18 @@
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
-      {{search scoped=settings.scoped_kb_search submit=false}}
+      {{search scoped=settings.scoped_kb_search submit=false placeholder="Looking for something specific?"}}
     </div>
   </nav>
 
   <div class="section-container">
-    <section id="main-content" class="section-content">
-      <header class="page-header">
-        <h1>{{section.name}}</h1>
-        {{#if settings.show_follow_section}}
-          <div class="section-subscribe">{{subscribe}}</div>
-        {{/if}}
-        {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
-        {{/if}}
-      </header>
+    <section id="main-content" class="articles" style="width: inherit; margin-left:0px;">
+      <span class="blocks-item-title link-container-header" style="color:#4d4d4d">{{section.name}}</span>
 
       {{#if section.sections}}
-        <ul class="section-list">
+        <ul class="article-list promoted-articles" style="padding-left: 0px;">
           {{#each section.sections}}
-          <li class="section-list-item">
+          <li class="promoted-articles-item">
               <a href="{{url}}">
                 <span>{{name}}</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
@@ -41,7 +33,7 @@
       {{pagination "section.sections"}}
 
       {{#if section.articles}}
-        <ul class="article-list">
+        <ul class="section-list">
           {{#each section.articles}}
             <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
               {{#if promoted}}

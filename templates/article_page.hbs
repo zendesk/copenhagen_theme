@@ -7,7 +7,7 @@
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
-      {{search scoped=settings.scoped_kb_search submit=false}}
+      {{search scoped=settings.scoped_kb_search submit=false placeholder="Looking for something specific?"}}
     </div>
   </nav>
 
@@ -15,34 +15,30 @@
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
       {{#if settings.show_articles_in_section}}
         <div class="collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-            </svg>
-          </button>
-          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
-          </span>
           <div class="collapsible-sidebar-body">
-            <ul>
+            <ul class="article-page-sidebar-ul">
+              <li>
+                <span class="sidenav-title">
+                  Articles in this section
+                </span>
+              </li>
               {{#each section.articles}}
                 <li>
                   <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
                 </li>
               {{/each}}
+                <li>
+                  {{#if section.more_articles}}
+                    <a href="{{section.url}}" class="sidenav-item" style="text-align: center;">See all articles ->></a>
+                  {{/if}}
+                </li>
             </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
           </div>
         </div>
       {{/if}}
     </aside>
 
-    <article id="main-content" class="article">
+    <article id="main-content" class="article article-card-container">
       <header class="article-header">
         <h1 title="{{article.title}}" class="article-title">
           {{article.title}}
@@ -55,37 +51,18 @@
         </h1>
 
         <div class="article-author">
-          {{#if settings.show_article_author}}
-            <div class="avatar article-avatar">
-              {{#if article.author.agent}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-agent">
-                  <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
-                </svg>
-              {{/if}}
-              <img src="{{article.author.avatar_url}}" alt="" class="user-avatar"/>
-            </div>
-          {{/if}}
           <div class="article-meta">
-            {{#if settings.show_article_author}}
-              {{#link 'user_profile' id=article.author.id}}
-                {{article.author.name}}
-              {{/link}}
-            {{/if}}
-
             <ul class="meta-group">
               {{#is article.created_at article.edited_at}}
-                <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                <li class="meta-data">{{t 'created'}}</li>
+                <li class="meta-data">{{date article.created_at}}</li>
               {{else}}
-                <li class="meta-data">{{date article.edited_at timeago=true}}</li>
                 <li class="meta-data">{{t 'updated'}}</li>
+                <li class="meta-data">{{date article.edited_at}}</li>
               {{/is}}
             </ul>
           </div>
         </div>
-
-        {{#if settings.show_follow_article}}
-          <div class="article-subscribe">{{subscribe}}</div>
-        {{/if}}
       </header>
 
       <section class="article-info">
@@ -113,26 +90,6 @@
       </section>
 
       <footer>
-        <div class="article-footer">
-          {{#if settings.show_article_sharing}}
-            <div class="article-share">{{share}}</div>
-          {{/if}}
-          {{#if settings.show_article_comments}}
-            {{#if comments}}
-              <a href="#article-comments" class="article-comment-count" title="{{t 'go_to_comments'}}">
-                <span class="visibility-hidden">
-                  {{t 'comments_count' count=article.comment_count}}
-                </span>
-                <span aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="article-comment-count-icon">
-                    <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
-                  </svg>
-                  {{article.comment_count}}
-                </span>
-              </a>
-            {{/if}}
-          {{/if}}
-        </div>
         {{#with article}}
           <div class="article-votes">
             <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
@@ -146,9 +103,6 @@
           </div>
         {{/with}}
 
-        <div class="article-more-questions">
-          {{request_callout}}
-        </div>
         <div class="article-return-to-top">
           <a href="#article-container">
             {{t 'return_to_top'}}
@@ -167,155 +121,71 @@
           {{related_articles}}
         {{/if}}
       </div>
-      {{#if settings.show_article_comments}}
-        <div class="article-comments" id="article-comments">
-          <section class="comments">
-            <header class="comment-overview">
-              <h2 class="comment-heading">
-                {{t 'comments'}}
-              </h2>
-              <p class="comment-callout">{{t 'comments_count' count=article.comment_count}}</p>
-              {{#if comments}}
-                <div class="dropdown comment-sorter">
-                  <button class="dropdown-toggle" aria-haspopup="true">
-                    {{t 'sort_by'}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-                    </svg>
-                  </button>
-                  <span class="dropdown-menu" role="menu">
-                    {{#each comment_sorters}}
-                      <a aria-selected="{{selected}}" href="{{url}}" role="menuitem">{{name}}</a>
-                    {{/each}}
-                  </span>
-                </div>
-              {{/if}}
-            </header>
-
-            <ul id="comments" class="comment-list">
-              {{#each comments}}
-                <li id="{{anchor}}" class="comment">
-                  <div class="comment-wrapper">
-                    <div class="comment-info">
-                      <div class="comment-author">
-                        <div class="avatar comment-avatar">
-                          {{#if author.agent}}
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-agent">
-                              <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
-                            </svg>
-                          {{/if}}
-                          <img src="{{author.avatar_url}}" alt="" class="user-avatar"/>
-                        </div>
-                        <div class="comment-meta">
-                          <span title="{{author.name}}">
-                            {{#link 'user_profile' id=author.id}}
-                              {{author.name}}
-                            {{/link}}
-                          </span>
-
-                          <span aria-label="{{t 'badges'}}" class="community-badge community-badge-titles">
-                            {{#each (filter author.badges on="category_slug" equals="titles")}}
-                              <div class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
-                                {{name}}
-                              </div>
-                            {{/each}}
-                          </span>
-
-                          <ul class="meta-group meta-group-opposite">
-                            {{#if editor}}
-                              <li class="meta-data">{{date edited_at timeago=true}}</li>
-                              <li class="meta-data">{{t 'edited'}}</li>
-                            {{else}}
-                              <li class="meta-data">{{date created_at timeago=true}}</li>
-                            {{/if}}
-                          </ul>
-
-                          <div aria-label="{{t 'badges'}}" class="community-badge-container-achievements">
-                            {{#each (
-                              slice
-                                (
-                                  filter
-                                    (filter author.badges on="category_slug" equals="achievements")
-                                    on="icon_url"
-                                    starts_with="https"
-                                )
-                                0
-                                4
-                              )
-                            }}
-                              <div class="community-badge community-badge-achievements">
-                                <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
-                              </div>
-                            {{/each}}
-
-                            {{#if (compare (calc author.badges.length "-" 4) ">" 0)}}
-                              <div class="community-badge community-badge-achievements">
-                                {{#link "user_profile" id=author.id filter_by="badges" class="community-badge-achievements-rest"}}{{t 'plus_more' count=(calc author.badges.length "-" 4)}}{{/link}}
-                              </div>
-                            {{/if}}
-                          </div>
-                        </div>
-                        <div class="comment-labels">
-                          {{#with ticket}}
-                            <a href="{{url}}" target="_zendesk_lotus" class="status-label escalation-badge">
-                              {{t 'request'}}{{id}}
-                            </a>
-                          {{/with}}
-                          {{#if pending}}
-                            <span class="comment-pending status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
-                          {{/if}}
-                        </div>
-                      </div>
-
-                      <section class="comment-body">{{body}}</section>
-                    </div>
-
-                    <div class="comment-actions-container">
-                      <div class="comment-vote vote" role="group">
-                        {{#vote 'up' role='radio' class='vote-up' selected_class='vote-voted'}}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16">
-                          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4 6.5l3.6 3.6c.2.2.5.2.7 0L12 6.5"/>
-                        </svg>
-                        {{/vote}}
-                        {{vote 'sum' class='vote-sum'}}
-                        {{#vote 'down' role='radio' class='vote-down' selected_class='vote-voted'}}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16">
-                          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4 6.5l3.6 3.6c.2.2.5.2.7 0L12 6.5"/>
-                        </svg>
-                        {{/vote}}
-                      </div>
-                      <div class="comment-actions actions">
-                        {{#actions}}
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16">
-                         <path fill="none" stroke="currentColor" d="M13.17 3.07l-1.64.71c-.48-.4-1.03-.72-1.63-.94l-.22-1.79a.511.511 0 00-.4-.44C8.86.54 8.44.5 8 .5c-.44 0-.86.04-1.28.11-.22.04-.38.22-.4.44l-.21 1.79c-.6.22-1.15.54-1.63.94l-1.65-.71a.491.491 0 00-.58.13c-.55.65-.99 1.4-1.29 2.21-.08.21 0 .44.18.58l1.45 1.08a4.91 4.91 0 000 1.87l-1.45 1.08c-.18.13-.25.37-.18.58.3.81.74 1.55 1.28 2.2.14.17.38.22.58.13l1.65-.71c.48.4 1.03.72 1.63.94l.21 1.79c.03.22.19.4.4.44.43.07.85.11 1.29.11.44 0 .86-.04 1.28-.11.22-.04.38-.22.4-.44l.21-1.79c.6-.22 1.15-.54 1.63-.94l1.65.71c.2.09.44.04.58-.13.54-.65.98-1.39 1.28-2.2.08-.21 0-.44-.18-.57L13.4 8.95c.07-.32.1-.63.1-.95s-.03-.63-.09-.94l1.45-1.08c.18-.13.25-.37.18-.58-.3-.81-.74-1.55-1.28-2.2a.51.51 0 00-.59-.13z"/>
-                         <circle cx="8" cy="8" r="2.5" fill="none" stroke="currentColor"/>
-                        </svg>
-                        {{/actions}}
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              {{/each}}
-            </ul>
-
-            {{pagination}}
-
-            {{#form 'comment' class='comment-form'}}
-              <div class="avatar comment-avatar">
-                {{user_avatar class='user-avatar'}}
-              </div>
-              <div class="comment-container">
-                {{wysiwyg 'body'}}
-                <div class="comment-form-controls">
-                  {{input type='submit' class="button button-large"}}
-                </div>
-              </div>
-            {{/form}}
-
-            <p class="comment-callout">{{comment_callout}}</p>
-          </section>
-        </div>
-      {{/if}}
     </article>
   </div>
 </div>
+<script>  
+  document.addEventListener("DOMContentLoaded", () => {
+      if (document.getElementById('gh_filepath')){
+          addGhLinks()
+      }
+      else{
+          addLogIssueLink()
+      }
+      function createDivUl(){
+          linksDiv = document.createElement('div')
+          unorderedList = document.createElement('ul')
+          linksDiv.className = 'gh-links-div'
+          unorderedList.className = 'gh-links-div'
+      }
+  
+      function appendLinks(){
+          linksDiv.append(unorderedList)
+          document.getElementsByClassName('article-author')[0].appendChild(linksDiv)
+      }
+  
+      function addGhLinks(){
+          let gitUrl = 'https://github.com/magento/knowledge-base/blob/main/'
+          let issueUrl = 'https://github.com/magento/knowledge-base/issues/new/choose'
+          let gh_filepath = document.getElementById('gh_filepath').title
+          issueTitle = `Feedback on page: ${gh_filepath}`
+          let editUrl = `${gitUrl}${gh_filepath}`
+          createDivUl()
+          createListItem(editUrl, 'Edit on GitHub')
+          createListItem(issueUrl, 'Report article issues')
+          appendLinks()
+      }
+    
+      function addLogIssueLink(){
+          let issueUrl = "https:"
+          let zdUrl = document.URL
+          createDivUl()
+          issueTitle = `Feedback on page: ${zdUrl}`
+          issueUrl = `${issueUrl}${issueTitle}`
+          createListItem(issueUrl, 'Report article issues')
+          appendLinks()
+      }
+  
+      function createListItem(url, label){
+          let listItem = document.createElement('li')
+          let linkTag = document.createElement('a')
+          let img = document.createElement('img')
+          if(label == 'Report article issues'){
+              img.src = `{{asset 'gh_bug.svg'}}`
+          }
+          else if(label == 'Edit on GitHub'){
+              img.src = `{{asset 'gh_edit.svg'}}`
+          }
+          img.className = "gh-icons"
+          listItem.className = 'gh-link'
+          linkTag.title = label; 
+          linkTag.textContent = label; 
+          linkTag.className = 'gh-links-div'
+          linkTag.href = url;
+          linkTag.target = '_blank';
+          linkTag.prepend(img);
+          listItem.append(linkTag);
+          unorderedList.appendChild(listItem)
+      }
+    });
+  </script>
