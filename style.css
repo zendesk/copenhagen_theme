@@ -5285,7 +5285,7 @@ code[class*="language-"] {
   flex-direction: row;
   justify-content: space-between;
   padding: 1.5% 3%;
-  /* max-height: 35vh; */
+  max-height: 25vh;
 }
 
 .home-page-categories {
@@ -5377,7 +5377,7 @@ code[class*="language-"] {
 
 
 .category-hero-img {
-  width: 100%;
+  width: 50%;
   height: auto;
 }
 
@@ -5390,7 +5390,11 @@ code[class*="language-"] {
 }
 
 .category-hero-image-div {
-  width: 48.5%;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .feds-header-wrapper{
