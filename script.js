@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         var statusTitle = (data.incidents.length) ? 'SERVICE DISRUPTION' : 'SCHEDULED MAINTENANCE';
-        var maintenance_message =  typeof maintenance_component_name !== 'undefined' ? 'Jobber&rsquo;s ' + maintenance_component_name + ' is undergoing scheduled maintenance right now. Thank you for your patience.'  : 'Jobber is undergoing scheduled maintenance right now. Thank you for your patience. '
+        var maintenance_message =  typeof maintenance_component_name !== 'undefined' ? 'We&rsquo;re doing scheduled maintenance on our ' + maintenance_component_name + ' right now. Thank you for your patience.'  : 'Jobber is undergoing scheduled maintenance right now. Thank you for your patience. '
         var statusBody = (data.incidents.length) ? 'Some parts of Jobber are currently down. We’re sorry for the inconvenience, and we’re working to get things back up and running ASAP.' : maintenance_message;
         document.getElementById("jobbar-banner").innerHTML = '<div class="container jobbar-banner__container"><div class="jobbar-banner__content"><div>'+statusTitle+'</div><div class="jobbar-banner__subtitle">'+statusBody+'</div></div><a href="https://www.jobberstatus.net/" class="button">LEARN MORE</a></div>';
         document.getElementById("jobbar-banner").style.display = "flex";
