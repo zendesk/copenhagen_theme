@@ -208,12 +208,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // display a message if jobberstatus.net is reporting maintenance or an outage
   var sp = new StatusPage.page({ page : '7qns4hqkcjx5' });
+  // var sp = new StatusPage.page({ page : 'p2lpv5tmvf9q' }); //'Statusbar Test' dev account
   sp.summary({
     success: function (data) {
       var statusIndicator = data.status.indicator;
       if(data.incidents.length || statusIndicator === 'maintenance'){
+
+        var maintenance_component_name;
+        if (statusIndicator === 'maintenance'){
+          data.components.forEach(component => {
+            if (component.status == 'under_maintenance') {
+              maintenance_component_name = component.name;
+            }
+          });
+        }
+
         var statusTitle = (data.incidents.length) ? 'SERVICE DISRUPTION' : 'SCHEDULED MAINTENANCE';
-        var statusBody = (data.incidents.length) ? 'Some parts of Jobber are currently down. We’re sorry for the inconvenience, and we’re working to get things back up and running ASAP.' : 'Jobber is undergoing scheduled maintenance right now. Thank you for your patience. ';
+        var maintenance_message =  typeof maintenance_component_name !== 'undefined' ? 'We&rsquo;re doing scheduled maintenance on our ' + maintenance_component_name + ' right now. Thank you for your patience.'  : 'Jobber is undergoing scheduled maintenance right now. Thank you for your patience. '
+        var statusBody = (data.incidents.length) ? 'Some parts of Jobber are currently down. We’re sorry for the inconvenience, and we’re working to get things back up and running ASAP.' : maintenance_message;
         document.getElementById("jobbar-banner").innerHTML = '<div class="container jobbar-banner__container"><div class="jobbar-banner__content"><div>'+statusTitle+'</div><div class="jobbar-banner__subtitle">'+statusBody+'</div></div><a href="https://www.jobberstatus.net/" class="button">LEARN MORE</a></div>';
         document.getElementById("jobbar-banner").style.display = "flex";
       }
