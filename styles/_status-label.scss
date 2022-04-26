@@ -73,4 +73,14 @@
   &-hold {
     background-color: #000;
   }
+
+  &-request {
+    @include mobile {
+      max-width: 150px;
+    }
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
