@@ -1,3 +1,10 @@
+# [2.15.0](https://github.com/zendesk/copenhagen_theme/compare/v2.14.0...v2.15.0) (2022-04-26)
+
+
+### Features
+
+* trim the statuses if they're over 20 characters long ([89abe72](https://github.com/zendesk/copenhagen_theme/commit/89abe72a1b40a5a093e916225841c2b63269f471))
+
 # [2.14.0](https://github.com/zendesk/copenhagen_theme/compare/v2.13.8...v2.14.0) (2022-03-14)
 
 
