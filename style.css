@@ -5285,7 +5285,7 @@ code[class*="language-"] {
   flex-direction: row;
   justify-content: space-between;
   padding: 1.5% 3%;
-  max-height: 25vh;
+  max-height: 27vh;
 }
 
 .home-page-categories {
@@ -5385,7 +5385,7 @@ code[class*="language-"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 48.5%;
+  width: 50%;
   text-align: center;
 }
 
