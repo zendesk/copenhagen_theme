@@ -399,3 +399,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// function for the zd-accordion articles to work (ZD-154)
+$('.zd-accordion-text').hide();
+
+$('.zd-accordion-section').click(function() {
+  if($(this).siblings().is(':hidden')) {
+    $(this).siblings().slideDown();
+  } else {
+    $(this).siblings(".zd-accordion-text").slideUp()
+  }
+});
+
+  $('a.accordion-anchor').click(function(e) {
+    $('div.zd-accordion-panel').css('margin-top', '1em');
+
+    var hash = $(e.target.hash);
+    hash.css('margin-top', '2em');
+    $('.zd-accordion-text').slideUp();
+    hash.children().slideDown();
+});
+
+  $('a.accordion-back-to-step-1').click(function(e) {
+    e.preventDefault();
+    $('.zd-accordion-text').slideUp();
+    $(e.target.hash).slideDown();
+    var offset = $(e.target).offset();
+    var step1 = $('.zd-accordion').offset();
+    window.scrollTo(offset.left, step1.top - offset.top);
+  });
