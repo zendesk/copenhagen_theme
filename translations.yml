@@ -375,3 +375,13 @@ parts:
       title: "Description for the show brand name setting"
       screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
       value: "Display the Help Center name next to the logo"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.request_list_beta_label"
+      title: "Label for the request list beta setting"
+      screenshot: "https://drive.google.com/file/d/1muzNJHcGzM96cpgXheHb_0mhWkdKEg4E/view?usp=sharing"
+      value: "New request list experience"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.request_list_beta_description"
+      title: "Description of the request list beta setting"
+      screenshot: "https://drive.google.com/file/d/1muzNJHcGzM96cpgXheHb_0mhWkdKEg4E/view?usp=sharing"
+      value: "Users can sort and filter requests, add and remove columns"
