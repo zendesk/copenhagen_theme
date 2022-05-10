@@ -1,130 +1,138 @@
 <div class="container">
-  <header class="my-activities-header">
-    <h1>{{t 'my_requests'}}</h1>
+  {{#if settings.request_list_beta}}
+    <header class="my-activities-header">
+      <h1>{{t 'requests'}}</h1>
+    </header>
 
-    <div class="my-activities-sub-nav">
-      <nav class="collapsible-nav collapsible-nav-border">
-        <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon chevron-icon">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-          </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon x-icon">
-            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-          </svg>
-        </button>
-        <ul class="collapsible-nav-list">
-          {{#each filters}}
-            {{#if selected}}
-              <li class="current">
-                <a href="{{url}}" aria-current="page">{{name}}</a>
-              </li>
-            {{else}}
-              <li><a href="{{url}}">{{name}}</a></li>
-            {{/if}}
-          {{/each}}
-        </ul>
-      </nav>
-    </div>
-  </header>
+    {{request_list}}
+  {{else}}
+    <header class="my-activities-header">
+      <h1>{{t 'my_requests'}}</h1>
 
-  {{#form 'requests_filter' id="main-content" class='requests-table-toolbar'}}
-    <div class="search">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{label 'query' for='quick-search' class='visibility-hidden'}}
-      {{input 'query' id='quick-search' type='search' class='requests-search'}}
-    </div>
-    {{#if help_center.multiple_organizations_enabled}}
-      <div class="request-table-filter">
-        {{label 'organization' for='request-organization-select' class='request-filter request-filter-label'}}
-        {{select 'organization' id='request-organization-select' class='request-filter'}}
+      <div class="my-activities-sub-nav">
+        <nav class="collapsible-nav collapsible-nav-border">
+          <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon chevron-icon">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon x-icon">
+              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+            </svg>
+          </button>
+          <ul class="collapsible-nav-list">
+            {{#each filters}}
+              {{#if selected}}
+                <li class="current">
+                  <a href="{{url}}" aria-current="page">{{name}}</a>
+                </li>
+              {{else}}
+                <li><a href="{{url}}">{{name}}</a></li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </nav>
       </div>
+    </header>
+
+    {{#form 'requests_filter' id="main-content" class='requests-table-toolbar'}}
+      <div class="search">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+          <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+          <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+        </svg>
+        {{label 'query' for='quick-search' class='visibility-hidden'}}
+        {{input 'query' id='quick-search' type='search' class='requests-search'}}
+      </div>
+      {{#if help_center.multiple_organizations_enabled}}
+        <div class="request-table-filter">
+          {{label 'organization' for='request-organization-select' class='request-filter request-filter-label'}}
+          {{select 'organization' id='request-organization-select' class='request-filter'}}
+        </div>
+      {{/if}}
+
+      <div class="request-table-filter organization-subscribe">
+        {{subscribe}}
+      </div>
+
+      <div class="request-table-filter">
+        {{label 'status' for='request-status-select' class='request-filter request-filter-label'}}
+        {{select 'status' id='request-status-select' class='request-filter'}}
+      </div>
+    {{/form}}
+
+    {{#if query}}
+      <div class="requests-search-info meta-data">
+        {{t 'requests_search_results_info' count=requests.length query=query}}
+      </div>
+    {{else}}
+      {{#unless requests}}
+        <p class="no-activities">{{t 'no_requests'}}</p>
+      {{/unless}}
     {{/if}}
 
-    <div class="request-table-filter organization-subscribe">
-      {{subscribe}}
-    </div>
+    <div class="requests">
+      {{#if requests}}
+        <table class="table my-activities-table requests-table {{current_filter.identifier}}-requests">
+          <thead>
+            <tr>
+              <th>{{t 'subject'}}</th>
+              <th>{{t 'id'}}</th>
+              <th>
+                {{#is current_filter.identifier 'my'}}
+                  {{#link 'requests' sort_by='created_at'}}{{t 'created'}}{{/link}}
+                {{else}}
+                  {{t 'requester'}}
+                {{/is}}
+              </th>
+              <th>{{#link 'requests' sort_by='updated_at'}}{{t 'last_activity'}}{{/link}}</th>
+              <th>
+                {{t 'status'}}
+              </th>
+            </tr>
+          </thead>
 
-    <div class="request-table-filter">
-      {{label 'status' for='request-status-select' class='request-filter request-filter-label'}}
-      {{select 'status' id='request-status-select' class='request-filter'}}
-    </div>
-  {{/form}}
+          <tbody>
+            {{#each requests}}
+              <tr {{#is status 'closed'}} class="request-closed" {{/is}}>
+                <td class="request-info requests-table-info">
+                  <a href="{{url}}" class="striped-list-title" title="{{subject}}">
+                    {{#if subject}}
+                      {{subject}}
+                    {{else}}
+                      {{excerpt description characters=50}}
+                    {{/if}}
+                  </a>
 
-  {{#if query}}
-    <div class="requests-search-info meta-data">
-      {{t 'requests_search_results_info' count=requests.length query=query}}
-    </div>
-  {{else}}
-    {{#unless requests}}
-      <p class="no-activities">{{t 'no_requests'}}</p>
-    {{/unless}}
-  {{/if}}
-
-  <div class="requests">
-    {{#if requests}}
-      <table class="table my-activities-table requests-table {{current_filter.identifier}}-requests">
-        <thead>
-          <tr>
-            <th>{{t 'subject'}}</th>
-            <th>{{t 'id'}}</th>
-            <th>
-              {{#is current_filter.identifier 'my'}}
-                {{#link 'requests' sort_by='created_at'}}{{t 'created'}}{{/link}}
-              {{else}}
-                {{t 'requester'}}
-              {{/is}}
-            </th>
-            <th>{{#link 'requests' sort_by='updated_at'}}{{t 'last_activity'}}{{/link}}</th>
-            <th>
-              {{t 'status'}}
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {{#each requests}}
-            <tr {{#is status 'closed'}} class="request-closed" {{/is}}>
-              <td class="request-info requests-table-info">
-                <a href="{{url}}" class="striped-list-title" title="{{subject}}">
-                  {{#if subject}}
-                    {{subject}}
+                  <!-- Visible on mobile -->
+                  <div class="requests-table-meta">
+                    <span class="meta-data">#{{id}}</span>
+                    <span class="meta-data">{{date created_at timeago=true}}</span>
+                    <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
+                      {{status_name}}
+                    </span>
+                  </div>
+                </td>
+                <td>#{{id}}</td>
+                <td>
+                  {{#is ../current_filter.identifier 'my'}}
+                    {{date created_at timeago=true}}
                   {{else}}
-                    {{excerpt description characters=50}}
-                  {{/if}}
-                </a>
-
-                <!-- Visible on mobile -->
-                <div class="requests-table-meta">
-                  <span class="meta-data">#{{id}}</span>
-                  <span class="meta-data">{{date created_at timeago=true}}</span>
+                    {{requester.name}}
+                  {{/is}}
+                </td>
+                <td>{{date updated_at timeago=true}}</td>
+                <td class="requests-table-status">
                   <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
                     {{status_name}}
                   </span>
-                </div>
-              </td>
-              <td>#{{id}}</td>
-              <td>
-                {{#is ../current_filter.identifier 'my'}}
-                  {{date created_at timeago=true}}
-                {{else}}
-                  {{requester.name}}
-                {{/is}}
-              </td>
-              <td>{{date updated_at timeago=true}}</td>
-              <td class="requests-table-status">
-                <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
-                  {{status_name}}
-                </span>
-              </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    {{/if}}
-  </div>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{/if}}
+    </div>
 
-  {{pagination}}
+    {{pagination}}
+  {{/if}}
 </div>
