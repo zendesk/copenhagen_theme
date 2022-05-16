@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "dependencies": {
-    "node-fetch": "^2.1.2"
+    "node-fetch": "^2.6.7"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
