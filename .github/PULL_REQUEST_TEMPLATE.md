@@ -11,7 +11,7 @@
 - [ ] :green_book: all commit messages follow the [conventional commits](https://conventionalcommits.org/) standard
 - [ ] :nail_care: SASS files are compiled
 - [ ] :arrow_left: changes are compatible with RTL direction
-- [ ] :wheelchair: changes are accessible
+- [ ] :wheelchair: changes are accessible (at minimum: keyboard navigation testing and an automated tool such as Lighthouse or axe DevTools)
 - [ ] :memo: changes are tested in Chrome, Firefox, Safari and Edge
 - [ ] :iphone: changes are responsive and tested in mobile
 - [ ] :+1: PR is approved by @zendesk/vikings
