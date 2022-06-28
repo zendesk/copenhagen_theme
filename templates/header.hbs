@@ -14,6 +14,20 @@
     <nav class="user-nav" id="user-nav">
       <ul class="user-nav-list">
         <li>{{link 'community'}}</li>
+        <li class="d-flex">
+          <label class="mb-0 me-3" for="themeToggle">
+              <input id="themeToggle" class="toggle-checkbox theme-toggle" type="checkbox" aria-label="Toggle theme settings" />
+                <div class="toggle-slot">
+                    <div class="sun-icon-wrapper">
+                        <div class="sun-icon"></div>
+                    </div>
+                    <div class="toggle-button"></div>
+                    <div class="moon-icon-wrapper">
+                        <div class="moon-icon"></div>
+                    </div>
+                </div>
+          </label>
+        </li>
         <li>{{link 'new_request' class='submit-a-request'}}</li>
         {{#unless signed_in}}
           <li>

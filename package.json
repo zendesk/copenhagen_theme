@@ -1,5 +1,6 @@
 {
   "name": "copenhagen_theme",
+  "packageManager": "yarn@3.2.1",
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "dependencies": {
@@ -11,6 +12,7 @@
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/exec": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
+    "choco-theme": "git+https://github.com/chocolatey/choco-theme.git",
     "husky": "^4.2.3",
     "js-yaml": "^3.13.1",
     "semantic-release": "^17.0.4"
