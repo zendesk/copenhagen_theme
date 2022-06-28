@@ -270,11 +270,11 @@ select {
   -moz-appearance: none;
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
   background-position: right 10px center;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 4px;
   padding: 8px 30px 8px 10px;
   outline: none;
-  color: #555;
+  color: var(--text);
   width: 100%;
 }
 
@@ -287,7 +287,7 @@ select::-ms-expand {
 }
 
 textarea {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 2px;
   resize: vertical;
   width: 100%;
@@ -313,7 +313,7 @@ textarea:focus {
 }
 
 .container-divider {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   margin-bottom: 20px;
 }
 
@@ -383,8 +383,8 @@ ul {
 }
 
 .button.button-primary:hover, .split-button button:hover, .section-subscribe button.button-primary:hover, .section-subscribe button:hover[data-selected="true"], .article-subscribe button.button-primary:hover, .article-subscribe button:hover[data-selected="true"], .community-follow button.button-primary:hover, .requests-table-toolbar .organization-subscribe button.button-primary:hover, .requests-table-toolbar .organization-subscribe button:hover[data-selected="true"], .subscriptions-subscribe button.button-primary:hover, .subscriptions-subscribe button:hover[data-selected="true"], .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .button.button-primary:focus, .split-button button.button-primary:focus, .section-subscribe button.button-primary:focus, .section-subscribe button:focus[data-selected="true"], .article-subscribe button.button-primary:focus, .article-subscribe button:focus[data-selected="true"], .community-follow button.button-primary:focus, .requests-table-toolbar .organization-subscribe button.button-primary:focus, .requests-table-toolbar .organization-subscribe button:focus[data-selected="true"], .subscriptions-subscribe button.button-primary:focus, .subscriptions-subscribe button:focus[data-selected="true"], .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .button.button-primary:active, .split-button button.button-primary:active, .section-subscribe button.button-primary:active, .section-subscribe button:active[data-selected="true"], .article-subscribe button.button-primary:active, .article-subscribe button:active[data-selected="true"], .community-follow button.button-primary:active, .requests-table-toolbar .organization-subscribe button.button-primary:active, .requests-table-toolbar .organization-subscribe button:active[data-selected="true"], .subscriptions-subscribe button.button-primary:active, .subscriptions-subscribe button:active[data-selected="true"], .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
+  background-color: lighten($brand_color, 20%);
+  border-color: lighten($brand_color, 20%);
 }
 
 .button[data-disabled], .split-button button[data-disabled], .section-subscribe button[data-disabled], .article-subscribe button[data-disabled], .community-follow button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .subscriptions-subscribe button[data-disabled], .pagination-next-link[data-disabled], .pagination-prev-link[data-disabled], .pagination-first-link[data-disabled], .pagination-last-link[data-disabled] {
@@ -411,7 +411,7 @@ ul {
 }
 
 .button-large:hover, .button-large:active, .button-large:focus, input[type="submit"]:hover, input[type="submit"]:active, input[type="submit"]:focus {
-  background-color: darken($brand_color, 20%);
+  background-color: lighten($brand_color, 20%);
 }
 
 .button-large[disabled], input[type="submit"][disabled] {
@@ -420,13 +420,13 @@ ul {
 
 .button-secondary {
   color: lighten($text_color, 20%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   background-color: transparent;
 }
 
 .button-secondary:hover, .button-secondary:focus, .button-secondary:active {
   color: $text_color;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   background-color: darken($background_color, 3%);
 }
 
@@ -476,67 +476,6 @@ ul {
   border-bottom-left-radius: unset;
 }
 
-/***** Tables *****/
-.table {
-  width: 100%;
-  table-layout: fixed;
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-@media (min-width: 768px) {
-  .table {
-    table-layout: auto;
-  }
-}
-
-.table th,
-.table th a {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
-  text-align: left;
-}
-
-[dir="rtl"] .table th, [dir="rtl"]
-.table th a {
-  text-align: right;
-}
-
-.table tr {
-  border-bottom: 1px solid #ddd;
-  display: block;
-  padding: 20px 0;
-}
-
-@media (min-width: 768px) {
-  .table tr {
-    display: table-row;
-  }
-}
-
-.table td {
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .table td {
-    display: table-cell;
-  }
-}
-
-@media (min-width: 1024px) {
-  .table td, .table th {
-    padding: 20px 30px;
-  }
-}
-
-@media (min-width: 768px) {
-  .table td, .table th {
-    padding: 10px 20px;
-    height: 60px;
-  }
-}
-
 /***** Forms *****/
 .form {
   max-width: 650px;
@@ -553,7 +492,7 @@ ul {
 }
 
 .form-field input {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 4px;
   padding: 10px;
   width: 100%;
@@ -564,7 +503,7 @@ ul {
 }
 
 .form-field input[type="text"] {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 4px;
 }
 
@@ -631,7 +570,7 @@ ul {
 }
 
 .form .suggestion-list label {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   display: block;
   padding-bottom: 5px;
 }
@@ -1008,7 +947,7 @@ ul {
 
 /***** Footer *****/
 .footer {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   margin-top: 60px;
   padding: 30px 0;
 }
@@ -1078,7 +1017,7 @@ ul {
 }
 
 .search {
-  border-color: #ddd;
+  border-color: var(--border);
   border-radius: 30px;
   border-style: solid;
   border-width: 1px;
@@ -1107,14 +1046,14 @@ ul {
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
-  color: #666;
+  color: var(--text);
   flex: 1 1 auto;
   height: 40px;
   width: 100%;
 }
 
 .search input[type="search"]:focus {
-  color: #555;
+  color: var(--text);
 }
 
 .search input[type="search"]::-webkit-search-decoration, .search input[type="search"]::-webkit-search-cancel-button, .search input[type="search"]::-webkit-search-results-button, .search input[type="search"]::-webkit-search-results-decoration {
@@ -1369,7 +1308,7 @@ ul {
 
 .blocks-item-internal {
   background-color: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
 }
 
 .blocks-item-internal .icon-lock {
@@ -1469,7 +1408,7 @@ ul {
 
 .promoted-articles-item a {
   display: block;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   padding: 15px 0;
 }
 
@@ -1483,7 +1422,7 @@ ul {
 
 @media (min-width: 1024px) {
   .promoted-articles-item:last-child a {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
   }
 }
 
@@ -1516,7 +1455,7 @@ ul {
 
 .community,
 .activity {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   padding: 30px 0;
 }
 
@@ -1531,7 +1470,7 @@ ul {
 }
 
 .recent-activity-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   overflow: auto;
   padding: 20px 0;
 }
@@ -1729,13 +1668,13 @@ ul {
 }
 
 .section-list-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   font-size: 16px;
   padding: 15px 0;
 }
 
 .section-list-item:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
 }
 
 .section-list-item a {
@@ -1893,7 +1832,7 @@ ul {
 
 .article-body :not(pre) > code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
@@ -1901,7 +1840,7 @@ ul {
 
 .article-body pre {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
@@ -1909,7 +1848,7 @@ ul {
 }
 
 .article-body blockquote {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid var(--border);
   color: lighten($text_color, 20%);
   font-style: italic;
   padding: 0 15px;
@@ -1948,8 +1887,8 @@ ul {
 }
 
 .article-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -1964,7 +1903,7 @@ ul {
 }
 
 .article-relatives {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -1994,7 +1933,7 @@ ul {
 }
 
 .article-votes {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   padding: 30px 0;
   text-align: center;
 }
@@ -2024,7 +1963,7 @@ ul {
 }
 
 .article-return-to-top {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
 }
 
 @media (min-width: 1024px) {
@@ -2130,7 +2069,7 @@ ul {
 /***** Comments *****/
 /* Styles comments inside articles, posts and requests */
 .comment {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   padding: 20px 0;
 }
 
@@ -2143,8 +2082,8 @@ ul {
 }
 
 .comment-overview {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   padding: 20px 0;
 }
 
@@ -2378,7 +2317,7 @@ ul {
 
 .comment-body :not(pre) > code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
@@ -2386,7 +2325,7 @@ ul {
 
 .comment-body pre {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
@@ -2394,7 +2333,7 @@ ul {
 }
 
 .comment-body blockquote {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid var(--border);
   color: lighten($text_color, 20%);
   font-style: italic;
   padding: 0 15px;
@@ -2456,7 +2395,7 @@ ul {
 }
 
 .vote-voted:hover {
-  color: darken($brand_color, 20%);
+  color: lighten($brand_color, 20%);
 }
 
 /***** Actions *****/
@@ -2539,7 +2478,7 @@ ul {
 
 /* Community topic page */
 .topic-header {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   font-size: 13px;
 }
 
@@ -2551,7 +2490,7 @@ ul {
 
 .topic-header .dropdown {
   display: block;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   padding: 10px 0;
 }
 
@@ -2615,8 +2554,8 @@ ul {
 }
 
 .community-follow button[data-selected="true"]:hover {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
+  background-color: lighten($brand_color, 20%);
+  border-color: lighten($brand_color, 20%);
 }
 
 .community-follow button::after {
@@ -2652,7 +2591,7 @@ ul {
 
 .striped-list-item {
   align-items: flex-start;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -2979,7 +2918,7 @@ ul {
 
 .post-body :not(pre) > code {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
@@ -2987,7 +2926,7 @@ ul {
 
 .post-body pre {
   background: darken($background_color, 3%);
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
@@ -2995,7 +2934,7 @@ ul {
 }
 
 .post-body blockquote {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid var(--border);
   color: lighten($text_color, 20%);
   font-style: italic;
   padding: 0 15px;
@@ -3026,7 +2965,7 @@ ul {
 }
 
 .post-sidebar {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   flex: 1;
   padding: 30px 0;
   text-align: center;
@@ -3155,8 +3094,8 @@ ul {
 }
 
 .collapsible-nav-border {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
 }
 
 @media (min-width: 768px) {
@@ -3698,7 +3637,7 @@ ul {
 
 .request-main .comment-show-container {
   border-radius: 2px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   color: lighten($text_color, 20%);
   text-align: inherit;
   padding: 8px 25px;
@@ -3745,7 +3684,7 @@ ul {
 
 @media (min-width: 1024px) {
   .request-title {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
     margin-bottom: 0;
     max-width: 66%;
     padding-bottom: 20px;
@@ -3753,8 +3692,8 @@ ul {
 }
 
 .request-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   flex: 1 0 auto;
   order: 0;
 }
@@ -3783,7 +3722,7 @@ ul {
 }
 
 .request-details {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--border);
   font-size: 0;
   margin: 0;
   padding-bottom: 20px;
@@ -4263,7 +4202,7 @@ ul {
 }
 
 .profile-badges-item {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -4585,7 +4524,7 @@ ul {
 }
 
 .search-results-sidebar {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -4634,7 +4573,7 @@ ul {
 }
 
 .search-results-sidebar .multibrand-filter-list .doc-count {
-  color: #666;
+  color: var(--text);
 }
 
 .search-results-sidebar .see-all-filters {
@@ -4673,7 +4612,7 @@ ul {
 }
 
 .search-results-list > li:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
 }
 
 .search-results-list > li h2 {

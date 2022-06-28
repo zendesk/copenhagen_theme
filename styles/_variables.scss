@@ -1,7 +1,7 @@
 // Variables
 
 // Colors
-$hover-button-color: zass-darken($brand_color, 20%);
+$hover-button-color: zass-lighten($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
@@ -13,13 +13,13 @@ $font-size-navigation: 14px;
 $font-size-small: 13px;
 $font-size-smaller: 11px;
 
-$border-color: #ddd;
+$border-color: var(--border);
 
 $button-color: $brand_color;
 
 $input-font-size: 14px;
-$field-text-color: #666;
-$field-text-focus-color: #555;
+$field-text-color: var(--text);
+$field-text-focus-color: var(--text);
 
 // Breakpoints variables
 $tablet-width: 768px;

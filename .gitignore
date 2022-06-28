@@ -1,4 +1,13 @@
 .sass-cache/
 style.css.map
+.DS_STORE
 node_modules/
 .zat
+cache/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
