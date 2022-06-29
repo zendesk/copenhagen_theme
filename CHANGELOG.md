@@ -1,3 +1,11 @@
+# [2.16.0](https://github.com/zendesk/copenhagen_theme/compare/v2.15.0...v2.16.0) (2022-06-29)
+
+
+### Features
+
+* add request list beta setting ([a38acac](https://github.com/zendesk/copenhagen_theme/commit/a38acacffc0aa001d2fbed15398811b62ae1ab62))
+* add request_list to the requests_page.hbs template ([810a0b1](https://github.com/zendesk/copenhagen_theme/commit/810a0b1ff4514c911c8a1ed91073ad721fd2e771))
+
 # [2.15.0](https://github.com/zendesk/copenhagen_theme/compare/v2.14.0...v2.15.0) (2022-04-26)
 
 
