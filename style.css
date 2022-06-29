@@ -1891,7 +1891,7 @@ ul {
   list-style-type: disc;
 }
 
-.article-body code {
+.article-body :not(pre) > code {
   background: darken($background_color, 3%);
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -2376,7 +2376,7 @@ ul {
   list-style-type: disc;
 }
 
-.comment-body code {
+.comment-body :not(pre) > code {
   background: darken($background_color, 3%);
   border: 1px solid #ddd;
   border-radius: 3px;
@@ -2977,7 +2977,7 @@ ul {
   list-style-type: disc;
 }
 
-.post-body code {
+.post-body :not(pre) > code {
   background: darken($background_color, 3%);
   border: 1px solid #ddd;
   border-radius: 3px;

@@ -100,7 +100,7 @@
     list-style-type: disc;
   }
 
-  code {
+  :not(pre) > code {
     background: $primary-shade;
     border: 1px solid $border-color;
     border-radius: 3px;
