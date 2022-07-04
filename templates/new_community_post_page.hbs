@@ -66,6 +66,22 @@
           </div>
         {{/validate}}
       </div>
+    
+    <div class="form-field">
+        {{#required 'content_tags'}}
+          {{label 'content_tags'}}
+        {{else}}
+          {{#label 'content_tags'}}
+            Relates to<span class="optional">({{t 'optional'}})</span>
+          {{/label}}
+        {{/required}}
+        {{multiselect 'content_tags'}}
+        {{#validate 'content_tags'}}
+          <div class="notification notification-error notification-inline">
+            {{error 'content_tags'}}
+          </div>
+        {{/validate}}
+      </div>
 
       <footer>{{input type='submit'}}</footer>
     {{/form}}

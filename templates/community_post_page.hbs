@@ -38,6 +38,7 @@
               <span class="status-label-{{post.status_dasherized}} status-label">{{post.status_name}}</span>
             {{/is}}
           </div>
+          
           {{#if settings.show_follow_post}}
             <div class="community-follow">
               {{subscribe}}
@@ -123,6 +124,20 @@
             <div class="post-content">
               <div class="post-body">{{post.details}}</div>
             </div>
+            
+            
+            {{#if (compare post.content_tags.length ">" 0)}}
+            	<section class="post-content-tags">
+              	<p>Relates to:</p>
+              	<ul class="content-tag-list">
+                	{{#each post.content_tags}}
+                		<li class="content-tag-item" data-content-tag-id="{{id}}"><a href="#" target="_blank">{{name}}</a></li>
+                	{{/each}}
+              	</ul>
+              </section>
+            {{/if}}
+                
+                
           </div>
 
           <div class="post-actions-wrapper">
