@@ -1,3 +1,10 @@
+## [2.16.1](https://github.com/zendesk/copenhagen_theme/compare/v2.16.0...v2.16.1) (2022-07-12)
+
+
+### Bug Fixes
+
+* add main content id to the request list container ([a05b4bd](https://github.com/zendesk/copenhagen_theme/commit/a05b4bdd80879cc47c54a92c2eedf153e4ca26d9))
+
 # [2.16.0](https://github.com/zendesk/copenhagen_theme/compare/v2.15.0...v2.16.0) (2022-06-29)
 
 
