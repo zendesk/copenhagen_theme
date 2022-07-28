@@ -88,7 +88,7 @@ The styles for the theme are split using Sass partials, all the partials are und
 We use webpack to compile the stylesheet and watch for changes. To get started:
 
 ```bs
-$ yarn install --offline
+$ yarn install
 $ yarn start
 ```
 
