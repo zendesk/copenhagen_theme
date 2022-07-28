@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -33,7 +34,17 @@ module.exports = {
     ],
   },
   plugins: [
-    new MiniCssExtractPlugin()
+    new MiniCssExtractPlugin(),
+    {
+      apply(compiler) {
+        const name = 'DeleteEmptyJSFilePlugin';
+        compiler.hooks.thisCompilation.tap(name, (compilation) => {
+          compilation.hooks.processAssets.tap(name, () => {
+            compilation.deleteAsset('style.js');
+          });
+        });
+      }
+    }
   ],
 };
 
