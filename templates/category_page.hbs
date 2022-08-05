@@ -16,9 +16,7 @@
         {{search submit=false instant=settings.instant_search placeholder='Search the Help Center'}}
       </nav>
 
-        {{#is 115001344107 category.id }}
-            {{section_tree_with_article}}
-        {{else}}
+
           <div class="section-tree">
             {{#each sections}}
               <section class="section-tree__section">
@@ -49,8 +47,6 @@
               </i>
             {{/each}}
           </div>
-
-        {{/is}}
     </div>
   </div>
 </div>
