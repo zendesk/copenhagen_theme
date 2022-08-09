@@ -106,6 +106,35 @@
           </ul>
         </section>
       {{/if}}
+      {{#if content_tag_filters}}
+        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+            </svg>
+          </button>
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_content_tag'}}</h3>
+          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
+            {{#each content_tag_filters}}
+            	{{#if selected}}
+                <li class="sidenav-tag">
+                  <a href="{{url}}" aria-current="page">
+                    <span class="label">{{name}}</span>
+                    <span>
+                      <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false"  aria-hidden="true" >
+                          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+                      </svg>
+                    </span>
+                  </a>
+                </li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </section>
+      {{/if}}
     </aside>
 
     <section id="main-content" class="search-results-column">

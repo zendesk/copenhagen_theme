@@ -4615,6 +4615,39 @@ ul {
   unicode-bidi: embed;
 }
 
+.search-results-sidebar .sidenav-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-grow: 0;
+}
+
+.search-results-sidebar .sidenav-tag a {
+  background: #E9EBED;
+  border-radius: 4px;
+  padding: 4px 12px;
+  text-decoration: none;
+}
+
+.search-results-sidebar .sidenav-tag a .label {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: -0.000427656px;
+  color: #49545C;
+  flex-grow: 0;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.search-results-sidebar .sidenav-tag a .close-icon {
+  color: #555555;
+  vertical-align: middle;
+  display: inline-block;
+}
+
 .search-results-sidebar .collapsible-sidebar {
   margin-bottom: 30px;
 }
