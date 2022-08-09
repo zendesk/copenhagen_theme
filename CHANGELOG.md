@@ -1,3 +1,10 @@
+## [2.16.2](https://github.com/zendesk/copenhagen_theme/compare/v2.16.1...v2.16.2) (2022-07-28)
+
+
+### Bug Fixes
+
+* attempt to fix lighthouse check ([526a997](https://github.com/zendesk/copenhagen_theme/commit/526a9978b51ce5aa89fc85c347308ac6e9c7596e))
+
 ## [2.16.1](https://github.com/zendesk/copenhagen_theme/compare/v2.16.0...v2.16.1) (2022-07-12)
 
 
