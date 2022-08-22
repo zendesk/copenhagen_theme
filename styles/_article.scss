@@ -197,6 +197,16 @@
       @extend .button-primary;
     }
   }
+
+  td > p:first-child,
+  th > p:first-child {
+    margin-top: 0;
+  }
+
+  td > p:last-child,
+  th > p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .sidenav {

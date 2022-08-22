@@ -2047,6 +2047,16 @@ ul {
   transform: rotate(0.5turn);
 }
 
+.article td > p:first-child,
+.article th > p:first-child {
+  margin-top: 0;
+}
+
+.article td > p:last-child,
+.article th > p:last-child {
+  margin-bottom: 0;
+}
+
 .sidenav-title {
   font-size: 15px;
   position: relative;
