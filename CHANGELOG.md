@@ -1,3 +1,10 @@
+## [2.16.3](https://github.com/zendesk/copenhagen_theme/compare/v2.16.2...v2.16.3) (2022-08-22)
+
+
+### Bug Fixes
+
+* **article.scss:** Fix paragraph margins inside of table cells ([0307580](https://github.com/zendesk/copenhagen_theme/commit/03075808e2540866a14f90d2bc996be002253dbc))
+
 ## [2.16.2](https://github.com/zendesk/copenhagen_theme/compare/v2.16.1...v2.16.2) (2022-07-28)
 
 
