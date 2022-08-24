@@ -9,6 +9,8 @@ if (location.hostname === 'magento1544124303.zendesk.com') {
   var mbi_ticket_form_id = "360000457971";
   var shipping_ticket_form_id = "360000451992";
   var payments_ticket_form_id = "";
+  var services_ticket_form_id = "";
+  var store_fulfillment_ticket_form_id = "";
   var cloud_trial_ticket_form_id = "";
   var magento_version_field_id = "360014467892";
   var commerce_contact_reason_field_id = "360018810091";
@@ -26,6 +28,8 @@ if (location.hostname === 'magento1544124303.zendesk.com') {
     var mbi_ticket_form_id = "360000174392";
     var shipping_ticket_form_id = "360000091093";
     var payments_ticket_form_id = "360000124611";
+    var services_ticket_form_id = "6210338860429";
+    var store_fulfillment_ticket_form_id = "5134951460749";
     var cloud_trial_ticket_form_id = "360000044974";
     var magento_version_field_id = "114098094614";
     var commerce_contact_reason_field_id = "360020836751";
@@ -73,6 +77,9 @@ $('span.banner_close_btn').click(function() {
   if ($.inArray("entitlement_payments", userEntitlement) == -1) {
     $("option[value=" + payments_ticket_form_id +"]").remove();
   }
+  if ($.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1) {
+    $("option[value=" + store_fulfillment_ticket_form_id +"]").remove();
+  }
   if ($.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
     $.inArray("tut_pro_cloud_trial", userEntitlement) == -1) {
     $("option[value=" + cloud_trial_ticket_form_id + "]").remove();
@@ -87,11 +94,13 @@ $('span.banner_close_btn').click(function() {
     $("option[value=" + mbi_ticket_form_id + "]").remove();
   }
 
+
   
   //hide stuff is not entitled at all
   if (userEntitlement.length == 0) {
   	  $(".request-follow-up").remove();
     	console.log('no entitlements');
+      // $("option[value=" + services_ticket_form_id + "]").remove();
 	}
 
   // hide submit ticket and my tickets if not entitled
@@ -100,81 +109,101 @@ $('span.banner_close_btn').click(function() {
       $.inArray("entitlement_mc_ams", userEntitlement) == -1 &&
       $.inArray("entitlement_partner", userEntitlement) == -1 &&
       $.inArray("entitlement_payments", userEntitlement) == -1 &&
+      $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
 			$.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
 			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
       $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
       $.inArray("tut_pro_cloud_trial", userEntitlement) == -1) {
-    $(".submit-a-request").remove();
-    $(".my-activities").remove();
-    $(".subfooter").remove();
-  }
-
-  // Show Form if User has only 1 Org Product Tag
-  if ($("#new_request .form-field").length == 1) {
-    var formUrl;
-    if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
-      $.inArray("entitlement_partner", userEntitlement) == -1 &&
-      $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("entitlement_payments", userEntitlement) == -1 &&
-			$.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
-			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
-      $.inArray("entitlement_mc_cloud", userEntitlement) != -1) {
-      formUrl = $("option[value=" + commerce_ticket_form_id + "]").attr("data-url");
-      //Commerce Value
-    }    
-    	if ($.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
-      $.inArray("entitlement_partner", userEntitlement) == -1 &&
-      $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("entitlement_payments", userEntitlement) == -1 &&
-			$.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
-			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
-      $.inArray("entitlement_mc_onprem", userEntitlement) != -1) {
-      formUrl = $("option[value=" + commerce_ticket_form_id + "]").attr("data-url");
-      //On Prem Value
-    }
-      if ($.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
-      $.inArray("entitlement_partner", userEntitlement) == -1 &&
-      $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("entitlement_payments", userEntitlement) == -1 &&
-			$.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
-			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
-      $.inArray("entitlement_mc_ams", userEntitlement) != -1) {
-      formUrl = $("option[value=" + commerce_ticket_form_id + "]").attr("data-url");
-      //AMS Value
-    }
-
-			if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
-			$.inArray("entitlement_partner", userEntitlement) == -1 &&
-			$.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
-			$.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
-			$.inArray("entitlement_cloud", userEntitlement) == -1 &&
-			$.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
-			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
-			$.inArray("entitlement_payments", userEntitlement) != -1) {
-			formUrl = $("option[value=" + payments_ticket_form_id + "]").attr("data-url");
-			//Payments Value
-			}
-
-    if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
-      $.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
-      $.inArray("entitlement_partner", userEntitlement) == -1 &&
-      $.inArray("entitlement_payments", userEntitlement) == -1 &&
-			$.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
-			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
-      $.inArray("tut_starter_cloud_trial", userEntitlement) != -1) {
-      formUrl = $("option[value=" + cloud_trial_ticket_form_id + "]").attr("data-url");
-      //Cloud Trial Value
-    }
-    
-    if ($.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
-      $.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
-      $.inArray("entitlement_partner", userEntitlement) == -1 &&
-			$.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
-			$.inArray("entitlement_mbi", userEntitlement) == -1 &&
-      $.inArray("entitlement_payments", userEntitlement) == -1 &&
+        $(".submit-a-request").remove();
+        $(".my-activities").remove();
+        $(".subfooter").remove();
+        // $("option[value=" + services_ticket_form_id + "]").remove();
+      }
+      
+      // Show Form if User has only 1 Org Product Tag
+      if ($("#new_request .form-field").length == 1) {
+        var formUrl;
+        if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("entitlement_payments", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
+        $.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_cloud", userEntitlement) != -1) {
+          formUrl = $("option[value=" + commerce_ticket_form_id + "]").attr("data-url");
+          //Commerce Value
+        }    
+        if ($.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("entitlement_payments", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
+        $.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_onprem", userEntitlement) != -1) {
+          formUrl = $("option[value=" + commerce_ticket_form_id + "]").attr("data-url");
+          //On Prem Value
+        }
+        if ($.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("entitlement_payments", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
+        $.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_ams", userEntitlement) != -1) {
+          formUrl = $("option[value=" + commerce_ticket_form_id + "]").attr("data-url");
+          //AMS Value
+        }
+        
+        if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
+        $.inArray("entitlement_cloud", userEntitlement) == -1 &&
+        $.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("entitlement_payments", userEntitlement) != -1) {
+          formUrl = $("option[value=" + payments_ticket_form_id + "]").attr("data-url");
+          //Payments Value
+        }
+        
+        if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("tut_pro_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("entitlement_cloud", userEntitlement) == -1 &&
+        $.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) != -1) {
+          formUrl = $("option[value=" + store_fulfillment_ticket_form_id + "]").attr("data-url");
+          //Store Fulfillment Value
+        }
+        
+        if ($.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("entitlement_payments", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
+        $.inArray("entitlement_magento_order_management", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("tut_starter_cloud_trial", userEntitlement) != -1) {
+          formUrl = $("option[value=" + cloud_trial_ticket_form_id + "]").attr("data-url");
+          //Cloud Trial Value
+        }
+        
+        if ($.inArray("tut_starter_cloud_trial", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_cloud", userEntitlement) == -1 &&
+        $.inArray("entitlement_partner", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_onprem", userEntitlement) == -1 &&
+        $.inArray("entitlement_mbi", userEntitlement) == -1 &&
+        $.inArray("entitlement_payments", userEntitlement) == -1 &&
+        $.inArray("entitlement_mc_store_fulfillment", userEntitlement) == -1 &&
       $.inArray("entitlement_magento_order_management", userEntitlement) != -1) {
       formUrl = $("option[value=" + mom_ticket_form_id + "]").attr("data-url");
       //MOM Value
