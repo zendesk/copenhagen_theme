@@ -895,20 +895,3 @@
 })(typeof window === 'object' ? window : this);
 
 </script>
-
-<!-- Start of snapmaker Zendesk Widget script -->
-<script defer>
-  (function () {
-    let ref
-    ref = setInterval(() => {
-  		if(zE){
-      	zE('webWidget', 'open')
-  			clearInterval(ref)
-  		}
-    }, 1000)
-    setTimeout(() => {
-      clearInterval(ref)
-    }, 100 * 1000)
-  })()
-</script>
-<!-- End of snapmaker Zendesk Widget script -->
