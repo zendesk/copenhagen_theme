@@ -324,7 +324,7 @@ $('span.banner_close_btn').click(function() {
         return id;
       });
       
-      var private_options = ['com_cr_proactive_outage_notification', 'com_cr_proactive_infrastructure_notification']
+      var private_options = ['com_cr_proactive_outage_notification', 'com_cr_proactive_infrastructure_notification', 'com_cr_rca_request']
       
       //filter for only the desired values
       var remove_cr = all_cr_options.filter(function(cr){
