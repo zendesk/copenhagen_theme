@@ -446,15 +446,21 @@ document.addEventListener('DOMContentLoaded', function () {
     // hanldeRefatorAnnouncementModal()
 
     handleBreadcrumbs()
+    const isHomePage = new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)((/*)|#(.*))$','ig').test(window.location.href)
 
-    // home page remove footer search
-    if(new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)((/*)|#(.*))$','ig').test(window.location.href)) {
+    // entry home 
+    if(isHomePage) {
+        // home page remove footer search
         const footerSearch = getEl('#footer-search')
         if(footerSearch) footerSearch.style.display = 'none'
-      
-       const footer = getEl('#footer')
-        // if(footer) footer.classList.add('mt-3xl')
 
+        // home page add second bar
+        const secondNavBar = getEl('#second-nav-bar')
+        if(secondNavBar) secondNavBar.style.display = 'flex'
+        const headerNavBar = getEl('#header-nav-bar')
+        if(headerNavBar) headerNavBar.classList.add('has-second-bar')
+
+        // second bar interactive init
         const initFn = ()=>{
             initSecondBarActive();
             secondBarActive();
@@ -1007,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /**
      * Header Component: control header show or not when scroll  
      */
-    const headersHeight = 156
+    const headersHeight = isHomePage ? 156 :  80
     const firstBarHeight = 80
     let lastScrollPosition = 0
 

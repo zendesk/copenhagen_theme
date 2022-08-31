@@ -10,14 +10,15 @@
 $first-bar-height: 80px;
 $second-bar-height: 76px;
 
+.has-second-bar {
+  height: $first-bar-height + $second-bar-height;
+}
 
 .header {
   position: sticky;
   top: -1px;
   z-index: 100;
   background-color: white;
-  height: $first-bar-height + $second-bar-height;
-  // box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px;
   border: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
 
@@ -225,7 +226,6 @@ $second-bar-height: 76px;
   height: $first-bar-height;
   align-items: center;
   // background-color: #979797;
-  border-bottom: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
   overflow: hidden;
   a {
@@ -239,6 +239,9 @@ $second-bar-height: 76px;
   .snmk-primary-btn {
     padding: 0.5em 1em;
   }
+}
+.has-second-bar .first-bar {
+  border-bottom: 1px solid #EFEFEF;
 }
 
 /* collection icon */
@@ -403,11 +406,14 @@ $halfWidth: $width/2;
   .menus {
     width: 100%;
     position: absolute;
-    top: calc(100% + 1px);
+    top: 100%;
     left: 0;
     flex-direction: column;
     z-index: 10;
     background-color: white;
+  }
+  .has-second-bar .menus{
+    top: calc(100% + 1px);
   }
   .menu{ 
     height: 64px;

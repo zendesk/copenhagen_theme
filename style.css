@@ -11095,12 +11095,15 @@ html[dir="rtl"] .notification-left-aligned {
   line-height: 1.5;
 }
 
+.has-second-bar {
+  height: 156px;
+}
+
 .header {
   position: sticky;
   top: -1px;
   z-index: 100;
   background-color: white;
-  height: 156px;
   border: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
 }
@@ -11305,7 +11308,6 @@ html[dir="rtl"] .notification-left-aligned {
   justify-content: space-between;
   height: 80px;
   align-items: center;
-  border-bottom: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
   overflow: hidden;
 }
@@ -11320,6 +11322,10 @@ html[dir="rtl"] .notification-left-aligned {
 
 .first-bar .snmk-primary-btn {
   padding: 0.5em 1em;
+}
+
+.has-second-bar .first-bar {
+  border-bottom: 1px solid #EFEFEF;
 }
 
 /* collection icon */
@@ -11480,11 +11486,14 @@ html[dir="rtl"] .notification-left-aligned {
   .menus {
     width: 100%;
     position: absolute;
-    top: calc(100% + 1px);
+    top: 100%;
     left: 0;
     flex-direction: column;
     z-index: 10;
     background-color: white;
+  }
+  .has-second-bar .menus {
+    top: calc(100% + 1px);
   }
   .menu {
     height: 64px;
