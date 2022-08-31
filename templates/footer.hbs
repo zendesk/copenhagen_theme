@@ -1,4 +1,17 @@
-<footer class="footer mt-3xl">
+
+<div class="search-container mt-3xl py-3xl" id="footer-search">
+  <div class="search-title title-3 bold-700">Search Snapmaker Support</div>
+  <div class="search-wrapper mt-xl">
+    <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
+    {{#is help_center.locale 'zh-cn'}}
+      {{search placeholder="您需要什么帮助？" submit=false instant=settings.instant_search class='search search-full'}}
+    {{/is}}
+    {{#isnt help_center.locale 'zh-cn'}}
+      {{search placeholder="How can we help you?" submit=false instant=settings.instant_search class='search search-full'}}
+    {{/isnt}}
+  </div>
+</div>
+<footer class="footer" id="footer">
   <div class="snmk-container">
     <div class="snmk-col-2 snmk-col-l-2 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-2">
       <a style="color: white;font-size: 16px" href="https://www.snapmaker.com">Snapmaker</a> 

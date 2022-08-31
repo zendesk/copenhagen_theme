@@ -432,6 +432,9 @@ $xxs: 4px;
 }
 
 
+.text-left {
+  text-align: left;
+}
 .text-center {
   text-align: center;
 }
@@ -509,4 +512,11 @@ $xxs: 4px;
 }
 .bg-bw-8 {
   background-color: $black_white_8;
+}
+
+.pos-relative {
+  position: relative;
+}
+.pos-absolute {
+  position: absolute;
 }

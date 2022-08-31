@@ -237,10 +237,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url($assets-search-background-jpg);
+  background-image: url($assets-support_top_banner_2560_520-jpg);
+ 
   background-repeat: no-repeat;
-  background-size: 2560px 442px;
-  height: 442px;
+  background-size: 2560px 520px;
+  height: 520px;
   background-position:  center;
 
   .hero-title {
@@ -253,6 +254,10 @@
   .search input {
     padding-left: 44px;
     padding-right: 44px;
+    @include mobile {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
     height: 64px;
     border-radius: 104px;
     font-size: 24px;
@@ -268,6 +273,7 @@
 
   .search-icon {
     right: 44px;
+    @include mobile { right: 24px; }
     left: unset;
     font-size: 24px;
     background: white;
@@ -289,6 +295,9 @@
 .section-title {
   text-align: center;
 }
+.product-category  {
+  overflow: hidden;
+}
 .product-category .title-2.font-bw-1.bold:first-child {
   margin-top: 0;
 }
@@ -308,7 +317,7 @@ $product-img-mr: 24px;
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: $black_white_8;
+  background-color: white;
   padding-bottom: $padding;
   border-radius: 8px;
   
@@ -343,12 +352,30 @@ $product-img-mr: 24px;
   }
 
 }
+#drawer-anchor {
+  position: absolute;
+  bottom: 0;
+}
+.drawer-cover {
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #F5F5F5 79.65%);
+  width: 100%;
+  height: 410px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: center;
+}
 
 .software-category {
-  background-color: $black;
-  color: white;
+  // background-color: $black;
+  // color: white;
+  background-color: #F5F5F5;
+  color: $black_white_1;
   display: flex;
   border-radius: 8px;
+  margin-top: 24px;
 
   &:hover{ 
     text-decoration: none;
@@ -356,6 +383,10 @@ $product-img-mr: 24px;
     .snmk-primary-btn {
       background-color: $btn-hover-blue;
     }
+  }
+
+  &:first-child {
+    margin-top: 0;
   }
 }
 .software-text-container .snmk-primary-btn{
@@ -365,6 +396,83 @@ $product-img-mr: 24px;
 .margin-block-unset {
   margin-block: unset;
 }
+
+
+.section-academy {
+  background-image: url($assets-support-academy-banner-jpg);
+  background-attachment: fixed;
+  background-size: auto 100%;
+  background-position: center;
+
+  color: white;
+  @include mobile {
+    text-align: center;
+  }
+
+}
+.section-academy a {
+  text-decoration: unset;
+}
+.section-academy .snmk-container {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+.section-service {
+  background-color: white;
+}
+.section-service .services-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.section-services {
+  background-color: white;
+}
+
+.services-wrapper {
+  display: flex;
+  @include no-mobile {
+    padding-left: 9%;
+    padding-right: 9%;
+  }
+  @include mobile { flex-direction: column;}
+}
+.service-care, .product-warranty {
+  background-color: #F5F5F5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+  width: 50%;
+  text-align: center;
+  @include mobile { width: 100%; }
+
+  img {
+    width: 146px;
+    margin-bottom: 42px;
+  }
+
+  a {
+    color: $blue;
+    margin-top: 24px;
+    text-decoration: none;
+  }
+}
+@include no-mobile {
+  .service-care { 
+    margin-right: 12px; 
+  }
+  .product-warranty {
+    margin-left: 12px;
+  }
+}
+@include mobile {
+  .product-warranty {
+    margin-top: 16px;
+  }
+}
+
 
 @media (min-width: $breakPoint_l){
   .product-img:nth-child(4n) {  

@@ -10,6 +10,10 @@
     height: 40px;
     padding-left: 40px;
     padding-right: 20px;
+    @include mobile { 
+      padding-left: 20px;
+      padding-right: 20px;
+    }
     -webkit-appearance: none;
     width: 100%;
 
@@ -50,4 +54,28 @@
 
 .search-container {
   position: relative;
+}
+
+
+.search-container {
+  width: 100%;
+  background-color: #F5F5F5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center
+}
+.search-wrapper {
+  width: 40%;
+  position: relative;
+  @include mobile { width: 70%; }
+}
+.search-wrapper .search-icon {
+	left: unset;
+  right: 15px;
+}
+
+.bold-700 {
+  font-weight: 700;
 }

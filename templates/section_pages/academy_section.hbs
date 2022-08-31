@@ -1,0 +1,110 @@
+<style>
+  .breadcrumbs li a {
+    color: white;
+  }
+  .breadcrumbs li + li::before {
+    color: #C2C2C2;
+  }
+  .breadcrumbs li:last-child, .breadcrumbs li:last-child a, .breadcrumbs li:last-child::before {
+    color: #C2C2C2;
+  }
+  .academy-banner {
+    background-image: 
+    {{#is section.id 360008076253}} url(https://s3-us-west-2.amazonaws.com/snapmaker.com/download/support-resource/academy/academy_3dp.jpg) {{/is}}  {{!-- 360004170574 --}}
+    {{#is section.id 360009734754}} url(https://s3-us-west-2.amazonaws.com/snapmaker.com/download/support-resource/academy/academy_laser.jpg) {{/is}}
+    {{#is section.id 360009349014}} url(https://s3-us-west-2.amazonaws.com/snapmaker.com/download/support-resource/academy/academy_cnc.jpg) {{/is}}
+    ;
+  }
+</style>
+<main class="text-center">
+  <section class="academy-banner text-center">
+    <div class="snmk-container">
+      <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+        <nav class="sub-nav breadcrums-box">
+            {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+    <div class="snmk-container">
+      <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+        <div class="big-title-1 bold-700 c-white">Academy</div>
+        <div class="font-1 mt-s mb-xl font-bw-7">From theoretical knowledge to high-level tips and tricks on using your Snapmaker, here is everything you need on your way to mastery of creating.</div>
+        <div style="display: inline-block;">
+          <div class="section-all not-pc mob-tab-option" onclick="openTabPanel()">
+            <span class="mr-s">
+              {{#is section.id 360008076253}}3D Printing{{/is}}
+              {{#is section.id 360009734754}}Laser Engraving and Cutting{{/is}}
+              {{#is section.id 360009349014}}CNC Carving{{/is}}
+            </span>
+            <span class="iconfont">&#xe7b2;</span>
+          </div>
+          <div class="tab-options" id="tab-panel">
+            <a href="https://support.snapmaker.com/hc/en-us/categories/360003536313-Snapmaker-Academy" class="section-all tab-option">ALL</a>
+            {{#is section.id 360009734754}}<div class="divide-line"></div> {{/is}}
+            {{#is section.id 360009349014}}<div class="divide-line"></div> {{/is}}
+            <a href="https://support.snapmaker.com/hc/en-us/sections/360008076253-3D-Printing" class="section-3dp tab-option {{#is section.id 360008076253}}tab-option-active{{/is}}">3D Printing</a>
+            {{#is section.id 360009349014}}<div class="divide-line"></div> {{/is}}
+            <a href="https://support.snapmaker.com/hc/en-us/sections/360009734754-Laser" class="section-laser tab-option {{#is section.id 360009734754}}tab-option-active{{/is}}">Laser Engraving and Cutting</a>
+            {{#is section.id 360008076253}}<div class="divide-line"></div> {{/is}}
+            <a href="https://support.snapmaker.com/hc/en-us/sections/360009349014-CNC" class="section-cnc tab-option {{#is section.id 360009349014}}tab-option-active{{/is}}">CNC Carving</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-center">
+    <div class="snmk-container">
+      <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+        {{#with section}}
+          <div class="section-title-collection {{#isnt more_articles true}}pb-2xl{{/isnt}}" id="{{name}}">
+            <div class="title-2 bold-700 font-bw-1 mt-2xl" >{{name}}</div>
+            <ul class="academy-extract-img-list">
+                {{#each articles}}
+                  <li class="mt-xl extract-img-item">
+                      <a href="{{url}}" class="extract-img-item-cover">
+                        <img class="extract-img-item-cover-img" src="#" alt="" />
+                        <div class="video-list-item-title mt-l" href="{{url}}">
+                          <div class="title-4 font-bw-1 bold-700 ">{{title}}</div>
+                          <div class="title-4 font-bw-3 mt-l">{{date updated_at format='long'}}</div>
+                        </div>
+                      </a>
+                      <div class="article-body">{{body}}</div>
+                  </li>
+                {{/each}}
+                <i></i>
+                <i></i>
+                <i></i>
+            </ul>
+            {{#if more_articles}}
+                <a href="{{url}}" class="snmk-btn mt-2xl mb-3xl">
+                    {{t 'show_all_articles' count=article_count}}
+                </a>
+            {{/if}}
+          </div>
+        {{/with}}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .search-container{ 
+      margin-top: 0;
+    }
+  </style>
+  <script>
+    let isOpen = false
+    function openTabPanel() {
+      const panel = document.querySelector('#tab-panel')
+      if(!isOpen) {
+        panel.style.display = `flex`
+        isOpen = true
+      }else{
+        panel.style.display = ``
+        isOpen = false
+      }
+    }
+  </script>
+
+  
+</main>

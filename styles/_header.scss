@@ -336,6 +336,15 @@ $halfWidth: $width/2;
 .nav-items .search-container input::placeholder{
   color: $black_white_3;
 }
+.sub-nav-item {
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $black_white_1;
+  background-color: $black_white_7;
+  border-radius: 30px;
+}
 
 .mask {
   display: none;
@@ -411,15 +420,16 @@ $halfWidth: $width/2;
   }
 
   .second-bar .is-open{
+    display: inline-block;
     transform: rotate(180deg);
   }
   .nav-items {
     @include grid-system-variable("padding");
-    width: 100%;
+    width: 100vw;
     height: 0;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -1px;
     flex-direction: column;
     z-index: 1;
     background-color: white;
@@ -442,5 +452,13 @@ $halfWidth: $width/2;
   }
   .search-container {
     width: 100%;
+  }
+}
+@include not-pc {  
+  .mob-w-100 {
+    width: 100%;
+  }
+  .nav-curr-item {
+    display: none;
   }
 }
