@@ -1,0 +1,36 @@
+.content-tags {
+  > p {
+    color: #68737D;
+    margin-top: 32px;
+    margin-bottom: 4px;
+  }
+
+  &-add-hint {
+    color: #68737D;
+    font-size: 14px;
+  }
+}
+
+.content-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-word;
+
+  li {
+    border-right: 1px solid #C2C8CC;
+    margin-bottom: 4px;
+
+    [dir="ltr"] & {
+      padding-right: 8px;
+      margin-right: 8px;
+    }
+    [dir="rtl"] & {
+      padding-left: 8px;
+      margin-left: 8px;
+    }
+
+    &:last-child {
+      border: none;
+    }
+  }
+}
