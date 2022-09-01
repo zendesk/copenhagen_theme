@@ -520,3 +520,17 @@ $xxs: 4px;
 .pos-absolute {
   position: absolute;
 }
+
+.display-flex {
+  display: flex;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-spacebetween {
+  display: flex;
+  justify-content: space-between;
+}

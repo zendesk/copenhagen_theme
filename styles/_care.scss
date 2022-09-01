@@ -18,9 +18,208 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+
+  @include mobile {
+    top: 30%;
+  }
+
+  @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+    h1 {
+      text-align: left;
+      margin-left: 30px;
+    }
+  }
 }
 
 .service-content {
   width: 25%;
   @include mobile { width: 100%; }
+  img {
+    max-width: 100%;
+  }
+}
+.enable-service-model-item {
+  width: 30.666%;
+  @include mobile { width: 100%; }
+
+  a {
+    text-decoration: underline;
+  }
+  img {
+    max-width: 100%;
+  }
+
+}
+.pucharse-snap {
+  position: relative;
+  margin-top: 35px;
+  flex: 1 1 auto;
+  background: #F4F4F4;
+  border-radius: 20px;
+  overflow: hidden;
+  @include mobile {
+    padding: 22px 0;
+    margin-top: 36px;
+  }
+  
+
+  img {
+    position: absolute;
+    bottom: 32px;
+    right: 0;
+    @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+      bottom: 50px;
+    }
+    @include mobile {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      bottom: unset;
+    }
+  }
+}
+
+.purchase-step {
+  margin-top: 21px;
+  padding: 19px 0;
+  position: relative;
+  color: black;
+  border-radius: 8px;
+  background-color: $black_white_8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  $triangleWidth: 21px;
+  $triangleHeight: 21px;
+  &::before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: $triangleWidth solid transparent;
+    border-right: $triangleWidth solid transparent;
+    border-bottom: 0px solid transparent;
+    border-top: $triangleHeight solid white;
+    background-color: $black_white_8;
+    
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &::after {
+    content: '';
+    width: 0;
+    height: 0;
+    // background-color: $black_white_8;
+    border-left: $triangleWidth solid transparent;
+    border-right: $triangleWidth solid transparent;
+    border-bottom: 0px solid transparent;
+    border-top: $triangleHeight solid $black_white_8;
+    background-color: white;
+    
+    position: absolute;
+    bottom: -$triangleHeight;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:first-child::before {
+    border: transparent;
+  }
+  &:last-child::after {
+    border: transparent;
+  }
+  @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+    $triangleWidth: 17px;
+    $triangleHeight: 21px;
+    &::before {
+      border-left: $triangleWidth solid transparent;
+      border-right: $triangleWidth solid transparent;
+      border-top: $triangleHeight solid white;
+    }
+    &::after {
+      border-left: $triangleWidth solid transparent;
+      border-right: $triangleWidth solid transparent;
+      border-top: $triangleHeight solid $black_white_8;
+      bottom: -$triangleHeight;
+    }
+  }
+  @include mobile {
+    $triangleWidth: 17px;
+    $triangleHeight: 21px;
+    &::before {
+      border-left: $triangleWidth solid transparent;
+      border-right: $triangleWidth solid transparent;
+      border-top: $triangleHeight solid white;
+    }
+    &::after {
+      border-left: $triangleWidth solid transparent;
+      border-right: $triangleWidth solid transparent;
+      border-top: $triangleHeight solid $black_white_8;
+      bottom: -$triangleHeight;
+    }
+  }
+}
+
+.obain-service {
+  padding: 44px 90px;
+  background-color: $black_white_8;
+  border-radius: 20px;
+  color: black;
+
+  @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+    padding: 40px 81px;
+  }
+  @include mobile { padding: 0 29px 24px; }
+}
+.obain-service-content {
+  display: flex;
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+    
+    &:first-child {
+      padding-top: 24px;
+    }
+  }
+}
+.obain-service-icon {
+  width: 62px;
+}
+.obain-service-text {
+  flex: 1 1 auto;
+  margin-left: 40px;
+  text-align: left;
+
+  @include mobile {
+    text-align: center;
+    margin-top: 12px;
+  }
+}
+.obain-service-down-icon {
+  text-align: left;
+  margin-left: 18px;
+  font-size: 28px;
+  line-height: 28px;
+
+  @include mobile {
+    text-align: center;
+  }
+}
+
+.qa {
+  text-align: left;
+  margin-top: 20px;
+  &:first-child {
+    margin-top: 0;
+  }
+
+  @include mobile {
+    .question, .answer {
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
 }
