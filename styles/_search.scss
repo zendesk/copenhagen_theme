@@ -6,8 +6,11 @@
     border: 1px solid $border-color;
     border-radius: 30px;
     box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    color: $black_white_3;
     color: $field-text-color;
-    height: 40px;
+    height: 52px;
     padding-left: 40px;
     padding-right: 20px;
     @include mobile { 
@@ -67,13 +70,15 @@
   justify-content: center
 }
 .search-wrapper {
-  width: 40%;
+  width: 45%;
   position: relative;
-  @include mobile { width: 70%; }
+  max-width: 852px;
+  @include mobile { width: 100%; padding: 0 16px;}
 }
 .search-wrapper .search-icon {
 	left: unset;
   right: 15px;
+  @include mobile {  right: 28px;}
 }
 
 .bold-700 {

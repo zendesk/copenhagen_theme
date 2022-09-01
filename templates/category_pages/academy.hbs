@@ -50,10 +50,12 @@
                 {{#each articles}}
                     <li class="mt-xl extract-img-item">
                         <a href="{{url}}" class="extract-img-item-cover">
-                          <img class="extract-img-item-cover-img" src="#" alt="" />
+                          <div class="extract-img-box">
+                            <img class="extract-img-item-cover-img" src="#" alt="" />
+                          </div>
                           <div class="video-list-item-title mt-l" href="{{url}}">
                             <div class="title-4 font-bw-1 bold-700 ">{{title}}</div>
-                            <div class="title-4 font-bw-3 mt-l">{{date updated_at format='long'}}</div>
+                            <div class="font-1 font-bw-3 mt-l">{{date updated_at format='long'}}</div>
                           </div>
                         </a>
                         <div class="article-body">{{body}}</div>
@@ -92,5 +94,16 @@
         isOpen = false
       }
     }
+
+    
+    const extractImgItem = document.querySelector('.extract-img-item')
+    const style = document.createElement('style')
+    function initExtractImgBoxHeight() {
+      const width = extractImgItem && extractImgItem.clientWidth 
+      style.innerHTML = `.extract-img-box { height: ${width * (124 / 207)}px }`
+      document.body.appendChild(style)
+    }
+    window.addEventListener('resize', initExtractImgBoxHeight)
+    initExtractImgBoxHeight()
   </script>
 </main>

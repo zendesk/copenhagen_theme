@@ -359,6 +359,13 @@ $halfWidth: $width/2;
   background-color: rgba(10,10,10,.6);
 }
 
+.shop-btn{
+  padding: 0.25em 0.8em;
+  display: flex;
+  min-width: unset;
+  background-image: linear-gradient(106.08deg, #0C63E2 13.29%, #08BFF7 91.26%);
+}
+
 @media (min-width: $breakPoint_l) {
   .first-bar {
     position: relative;
