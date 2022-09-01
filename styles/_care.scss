@@ -1,9 +1,26 @@
 .care-banner {
-  height: 994px;
-  width: 1920px;
-  border-bottom: 1px solid black;
+  position: relative;
+  height: calc((100vw - 17px) * (994 / 1920));
+  background-image: url($assets-banner-pc-jpg);
+  background-position: center;
+  background-size: 100% 100%;
+  @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+    height: calc((100vw - 17px) * (535 / 1022));
+    background-image: url($assets-banner-tab-jpg); 
+  }
+  @include mobile { 
+    height: calc((100vw - 17px) * (414 / 375));
+    background-image: url($assets-banner-mob-jpg); 
+  }
+}
+.care-banner-text-wrapper {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.enable-service-model {
-
+.service-content {
+  width: 25%;
+  @include mobile { width: 100%; }
 }

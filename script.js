@@ -1021,11 +1021,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const firstBar = document.querySelector('div[class~=first-bar]')
 
     const showFirstBar = () => {
+        if(!header || !firstBar) return
         header.style.height = headersHeight + 'px'
         firstBar.style.height = firstBarHeight + 'px'
         firstBar.style.borderBottom = null
     }
     const hiddenFirstBar = () => {
+        if(!header || !firstBar) return
         header.style.height = (headersHeight - firstBarHeight) + 'px'
         firstBar.style.height = 0 + 'px'
         firstBar.style.borderBottom = 0 + 'px'
