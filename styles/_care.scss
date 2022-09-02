@@ -19,14 +19,31 @@
   top: 50%;
   transform: translateY(-50%);
 
+  .care-banner-text {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-size: 100px;
+    line-height: 92px;
+    letter-spacing: -3px;
+  }
+
   @include mobile {
     top: 30%;
+    .care-banner-text {
+      font-size: 68px;
+      line-height: 92px;
+    }
   }
 
   @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
     h1 {
       text-align: left;
       margin-left: 30px;
+    }
+    .care-banner-text {
+      font-size: 40px;
+      line-height: 48px;
+      letter-spacing: -0.24px;
     }
   }
 }

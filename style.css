@@ -13015,9 +13015,21 @@ html[dir="rtl"] .notification-left-aligned {
   transform: translateY(-50%);
 }
 
+.care-banner-text-wrapper .care-banner-text {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-size: 100px;
+  line-height: 92px;
+  letter-spacing: -3px;
+}
+
 @media (max-width: 768px) {
   .care-banner-text-wrapper {
     top: 30%;
+  }
+  .care-banner-text-wrapper .care-banner-text {
+    font-size: 68px;
+    line-height: 92px;
   }
 }
 
@@ -13025,6 +13037,11 @@ html[dir="rtl"] .notification-left-aligned {
   .care-banner-text-wrapper h1 {
     text-align: left;
     margin-left: 30px;
+  }
+  .care-banner-text-wrapper .care-banner-text {
+    font-size: 40px;
+    line-height: 48px;
+    letter-spacing: -0.24px;
   }
 }
 
