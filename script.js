@@ -1,3 +1,8 @@
+
+const isCN = new RegExp('https://support.snapmaker.com/hc/zh-cn(.*)$','ig').test(window.location.href)
+if(isCN){
+    window.location = 'https://snapmaker.cn/support-cn/home'
+}
 // https://github.com/jimmynotjim/scrollnav
 // Most from scrollnav@v3.0.2, with little modifications.
 const scrollnav = (function () {
@@ -431,6 +436,7 @@ const scrollnav = (function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+
     /* header */
     window.collectionIcon = document.querySelector('.bar-burger')
     
