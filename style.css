@@ -5115,3 +5115,39 @@ html[dir="rtl"] .notification-left-aligned {
 .dropdown-chevron-icon {
   vertical-align: middle;
 }
+
+.content-tags > p {
+  color: #68737D;
+  margin-top: 32px;
+  margin-bottom: 4px;
+}
+
+.content-tags-add-hint {
+  color: #68737D;
+  font-size: 14px;
+}
+
+.content-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.content-tag-list li {
+  border-right: 1px solid #C2C8CC;
+  margin-bottom: 4px;
+}
+
+[dir="ltr"] .content-tag-list li {
+  padding-right: 8px;
+  margin-right: 8px;
+}
+
+[dir="rtl"] .content-tag-list li {
+  padding-left: 8px;
+  margin-left: 8px;
+}
+
+.content-tag-list li:last-child {
+  border: none;
+}

@@ -1,3 +1,10 @@
+# [2.17.0](https://github.com/zendesk/copenhagen_theme/compare/v2.16.3...v2.17.0) (2022-09-01)
+
+
+### Features
+
+* introduce content tags ([7e6ab58](https://github.com/zendesk/copenhagen_theme/commit/7e6ab58eaf5e234f84806500f0ea810d520e9d09))
+
 ## [2.16.3](https://github.com/zendesk/copenhagen_theme/compare/v2.16.2...v2.16.3) (2022-08-22)
 
 
