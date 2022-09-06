@@ -431,6 +431,11 @@ const scrollnav = (function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    const isCN = new RegExp('https://support.snapmaker.com/hc/zh-cn(.*)$','ig').test(window.location.href)
+    if(isCN){
+        window.location = 'https://snapmaker.cn/support-cn/home'
+    }
+
     /* header */
     window.collectionIcon = document.querySelector('.bar-burger')
     
