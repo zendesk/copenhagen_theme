@@ -1,0 +1,109 @@
+<style>
+  .breadcrumbs li a {
+    color: white;
+  }
+  .breadcrumbs li:last-child, .breadcrumbs li:last-child a, .breadcrumbs li:last-child::before {
+    color: #C2C2C2;
+  }
+</style>
+<main class="text-center">
+  <section class="academy-banner text-center">
+    <div class="snmk-container">
+      <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+        <nav class="sub-nav breadcrums-box">
+            {{breadcrumbs}}
+        </nav>
+      </div>
+    </div>
+    <div class="snmk-container">
+      <div class="snmk-col-6 snmk-col-l-6 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-3 snmk-col-l-offset-3">
+        <div class="big-title-1 bold-700 c-white">Academy</div>
+        <div class="font-1 mt-s mb-xl font-bw-7">From theoretical knowledge to high-level tips and tricks on using your Snapmaker, here is everything you need on your way to mastery of creating.</div>
+      </div>
+      <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+        <div style="display: inline-block;position: relative">
+          <div class="section-all not-pc mob-tab-option" onclick="openTabPanel()">
+            ALL <span class="iconfont">&#xe7b2;</span>
+          </div>
+          <div class="tab-options" id="tab-panel">
+            <a href="https://support.snapmaker.com/hc/en-us/categories/360003536313-Snapmaker-Academy" class="section-all tab-option tab-option-active not-mob">
+              ALL
+            </a>
+            <a href="https://support.snapmaker.com/hc/en-us/sections/360008076253-3D-Printing" class="section-3dp tab-option ">3D Printing</a>
+            <div class="divide-line"></div> 
+            <a href="https://support.snapmaker.com/hc/en-us/sections/360009734754-Laser" class="section-laser tab-option ">Laser Engraving and Cutting</a>
+            <div class="divide-line"></div> 
+            <a href="https://support.snapmaker.com/hc/en-us/sections/360009349014-CNC" class="section-cnc tab-option ">CNC Carving</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="text-center">
+    <div class="snmk-container">
+      <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
+        {{#each sections}}
+          <div class="section-title-collection {{#isnt more_articles true}}pb-2xl{{/isnt}}" id="{{name}}">
+            <div class="title-2 bold-700 font-bw-1 mt-2xl" >{{name}}</div>
+            <ul class="academy-extract-img-list">
+                {{#each articles}}
+                    <li class="mt-xl extract-img-item">
+                        <a href="{{url}}" class="extract-img-item-cover">
+                          <div class="extract-img-box">
+                            <img class="extract-img-item-cover-img" src="#" alt="" />
+                          </div>
+                          <div class="video-list-item-title mt-l" href="{{url}}">
+                            <div class="title-4 font-bw-1 bold-700 ">{{title}}</div>
+                            <div class="font-1 font-bw-3 mt-l">{{date updated_at format='long'}}</div>
+                          </div>
+                        </a>
+                        <div class="article-body">{{body}}</div>
+                    </li>
+                {{/each}}
+                <i></i>
+                <i></i>
+                <i></i>
+            </ul>
+            {{#if more_articles}}
+                <a href="{{url}}" class="snmk-btn mt-2xl mb-3xl">
+                    {{t 'show_all_articles' count=article_count}}
+                </a>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .search-container{ 
+      margin-top: 0;
+    }
+  </style>
+
+  <script>
+    let isOpen = false
+    function openTabPanel() {
+      const panel = document.querySelector('#tab-panel')
+      if(!isOpen) {
+        panel.style.display = `flex`
+        isOpen = true
+      }else{
+        panel.style.display = ``
+        isOpen = false
+      }
+    }
+
+    
+    const extractImgItem = document.querySelector('.extract-img-item')
+    const style = document.createElement('style')
+    function initExtractImgBoxHeight() {
+      const width = extractImgItem && extractImgItem.clientWidth 
+      style.innerHTML = `.extract-img-box { height: ${width * (124 / 207)}px }`
+      document.body.appendChild(style)
+    }
+    window.addEventListener('resize', initExtractImgBoxHeight)
+    initExtractImgBoxHeight()
+  </script>
+</main>

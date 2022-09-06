@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" id="header-nav-bar">
     <div class="snmk-container">
         <div
             class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-bw-2 first-bar font-1">
@@ -57,7 +57,7 @@
             </nav>
 
             {{#isnt help_center.locale 'zh-cn'}}
-                <a style="color: white;min-width: auto" class="snmk-primary-btn my-s" href="https://us.snapmaker.com/"
+                <a style="color: white;min-width: auto" class="snmk-primary-btn my-s shop-btn" href="https://us.snapmaker.com/"
                     target="'_blank'">
                     {{dc 'header_store_button_text'}}
                 </a>
@@ -70,28 +70,31 @@
             {{/is}}
         </div>
 
-        <div
+
+        <script>
+            window.mobSubNavText  = ['{{dc 'header_second_bar_product_support'}}', '{{dc 'header_second_bar_software_support'}}', '{{dc 'header_second_bar_academy'}}', '{{dc 'header_second_bar_service'}}', '{{dc 'header_second_bar_still_need_help'}}']
+        </script>
+        <div id="second-nav-bar" style="display: none;"
             class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-bw-2 second-bar font-3">
-            <div class="vertical-center font-bw-1 title-3 bold" onclick="toggleSecondBarCollection()">
-                <a class="only-pc" href="http://support.snapmaker.com/hc/{{help_center.locale}}">Support</a>
-                <span class="not-pc">Support</span>
-                <span id="second-bar-icon" class="iconfont not-pc ml-xs font-bw-2">&#xe7b2;</span>
+            <div class="vertical-center font-bw-1 title-3 bold mob-w-100" style="justify-content: space-between;">
+                <a class="" href="http://support.snapmaker.com/hc/{{help_center.locale}}">Support</a>
+                <span class="sub-nav-item not-pc" onclick="toggleSecondBarCollection()">
+                    <span id="sub-nav-curr-text">{{dc 'header_second_bar_product_support'}}</span>
+                    <span id="second-bar-icon" class="iconfont not-pc ml-xs font-bw-2">&#xe7b2;</span>
+                </span>
             </div>
             <div class="right-nav">
                 <div class="nav-items">
-                    <a href="http://support.snapmaker.com/hc/{{help_center.locale}}" id="nav-home" class="nav-item">
-                       {{dc 'header_second_bar_first_item'}}
+                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}#product-support" id="product_support" class="nav-item" onclick="onClickMask()">
+                       {{dc 'header_second_bar_product_support'}}
                     </a>
-                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}/categories/360003536313-Snapmaker-Academy" id="nav-academy" class="ml-2xl nav-item">{{dc 'header_second_bar_second_item'}}</a>
-                    <a class="nav-item" href="https://forum.snapmaker.com/">{{dc 'header_second_bar_third_item'}}</a>
-                    <a class="nav-item" style="cursor: pointer;" onclick="zE(function() { zE.activate() });">{{dc 'header_second_bar_submit_request'}}</a>
-                    <div class="search-container" id="header-search">
-                        <span class="iconfont font-bw-1 search-icon">&#xe61d;</span>
-                        {{search submit=false placeholder="Search Support" class="search search-form"}}
-                    </div>
+                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}#software-support" id="software_support" class="ml-2xl nav-item" onclick="onClickMask()">{{dc 'header_second_bar_software_support'}}</a>
+                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}#academy" id="bar_academy" class="ml-2xl nav-item" onclick="onClickMask()">{{dc 'header_second_bar_academy'}}</a>
+                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}#service" id="bar_service" class="ml-2xl nav-item" onclick="onClickMask()">{{dc 'header_second_bar_service'}}</a>
+                    <a href="https://support.snapmaker.com/hc/{{help_center.locale}}#still-need-help" id="still_need_help" class="ml-2xl nav-item" onclick="onClickMask()">{{dc 'header_second_bar_still_need_help'}}</a>
                 </div>
 
-                {{#if signed_in}}
+                {{!-- {{#if signed_in}}
                     <div class="user-info dropdown ml-l">
                         <button class="dropdown-toggle" aria-haspopup="true">
                             {{user_avatar class="user-avatar"}}
@@ -110,7 +113,7 @@
                     {{#link "sign_in" class="sign-in ml-l"}}
                         {{t 'sign_in'}}
                     {{/link}}
-                {{/if}}
+                {{/if}} --}}
             </div>
         </div>
     </div>

@@ -1,6 +1,9 @@
 
 {{#isnt help_center.locale 'zh-cn'}}
     <style>
+        main {
+            background-color: #F5F5F5;
+        }
         .header > .logo .logo-image {
             background-image: url({{asset 'pic_nav_logo_white_236x34.png' }});
         }
@@ -31,8 +34,7 @@
 
     </style>
 
-
-    <section id="main-content" class="section hero home-search-container">
+    <section id="main-content" class="section hero home-search-container pos-relative">
         <div class="search-text-container snmk-container" style="position: static;transform: unset;">
             <div class="snmk-col-6 snmk-col-l-6 snmk-col-m-6 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-3 snmk-col-l-offset-3 snmk-col-m-offset-1"> 
             <div class="big-title-2 bold" style="color: #F5F5F5;font-family: inherit">
@@ -52,6 +54,7 @@
             </div>
             </div>
         </div>
+        <div id="product-support" class="pos-absolute" style="bottom: 100px;"></div>
     </section>
 
     <h2 class="section-title title-1 font-bw-1 bold mt-3xl mb-xl">
@@ -62,25 +65,34 @@
             Product Support
         {{/isnt}}
     </h2>
-    <div class="snmk-container" >
-        <div class="snmk-col-10 snmk-col-l-10 snmk-col-offset-1 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-l-offset-1 product-category">
+    <div class="snmk-container pos-relative" >
+        <div id="drawer" class="snmk-col-10 snmk-col-l-10 snmk-col-offset-1 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-l-offset-1 product-category">
             {{#each categories}}
                 {{#is description  'Products'}}
-                <div class="title-2 font-bw-1 bold mr-xs mb-xl mt-2xl">{{name}}</div>
-                    <div class="category-sections">
+                <div class="title-3 font-bw-1 bold mr-xs mb-xl mt-2xl" id="title-{{@index}}">{{name}}</div>
+                    <div class="category-sections pos-relative" id="section-{{@index}}">
                     {{#each sections}}
                         <a class="product-img font-bw-8 mr-l mt-l" href="{{url}}">
                             <div class="img"><img class="w-100" src="{{description}}" alt="{{name}}"></div>
                             <div class="text-center mt-xs"><span class="snmk-link-btn">{{name}}</span></div>
+                            {{#is @../index 1}}
+                                {{#is @index 0}}
+                                    <div id="drawer-anchor"></div>
+                                {{/is}}
+                            {{/is}}
                         </a>
                     {{/each}}
                     </div>      
                 {{/is}}
             {{/each}}
-        </div>  
+        </div>
+        <div class="drawer-cover" id="drawer-cover" onclick="onOpenDrawer()">
+            <div class="snmk-btn text-center">See All</div>
+        </div>
     </div>
         
-    <div class="mt-3xl py-3xl bg-bw-8">
+    <div class="mt-3xl py-3xl  bg-white pos-relative">
+        <div id="software-support" class="pos-relative" style="top: -180px;"></div>
         <h2 class="section-title title-1 font-bw-1 bold mb-xl"> 
             {{#is help_center.locale 'zh-cn'}}
                 软件支持
@@ -102,7 +114,48 @@
         {{/each}}
     </div>
 
-    <div class="pt-3xl snmk-container">
+    <section class="section-academy pos-relative">
+        <div id="academy" class="pos-relative" style="top: -180px;"></div>
+        <div class="snmk-container">
+            <div class="snmk-col-3 snmk-col-l-3 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-8 snmk-col-l-offset-8 snmk-col-m-offset-4 ">
+                <h3 class="title-1 margin-block-unset">Academy</h3>
+                <p class="font-1 mt-s mb-xl">From theoretical knowledge to high-level tips and tricks on using your Snapmaker, here is everything you need on your way to mastery of creating.</p>
+                <a href="https://support.snapmaker.com/hc/en-us/categories/360003536313-Snapmaker-Academy" class="snmk-primary-btn text-center">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-services py-3xl pos-relative">
+        <div id="service" class="pos-relative" style="top: -180px;"></div>
+        <div class="snmk-container">
+            <div class="snmk-col-8 snmk-col-l-8 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-2 snmk-col-l-offset-2">
+                <h2 class="section-title title-1 font-bw-1 bold mb-xl"> 
+                    Service
+                </h2>
+                <div class="services-wrapper">
+                    <div class="service-care px-xl py-2xl">
+                        <div><img src="https://s3-us-west-2.amazonaws.com/snapmaker.com/download/support-resource/home/snpmaker-icon.png" alt="Snapmaker Care"></div>
+                        <div class="font-bw-1 title-3">Snapmaker Care</div>
+                        <div class="font-bw-2 font-1 mt-xs">Comprehensive protection for your peace of mind.</div>
+                        <div>
+                            <a href="https://support.snapmaker.com/hc/p/care" class="snmk-link-btn">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="product-warranty px-xl py-2xl">
+                        <div><img src="https://s3-us-west-2.amazonaws.com/snapmaker.com/download/support-resource/home/product-warranty-icon.png" alt="Product Warranty"></div>
+                        <div class="font-bw-1 title-3">Product Warranty</div>
+                        <div class="font-bw-2 font-1 mt-xs">Get a repair, replacement, or refund.</div>
+                        <div>
+                            <a href="https://support.snapmaker.com/hc/en-us/articles/360051069934-Snapmaker-s-Limited-Warranty" class="snmk-link-btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-3xl snmk-container pos-relative">
+        <div id="still-need-help" class="pos-relative" style="top: -180px;"></div>
         <div class="snmk-col-12 snmk-col-l-12 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 text-center">
             <span class="font-bw-1 title-2 bold">{{dc 'home_need_help'}}</span>
             <p class="font-bw-2 font-1 mt-m mb-xl">{{dc 'home_need_help_desc'}}</p>

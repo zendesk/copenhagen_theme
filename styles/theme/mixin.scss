@@ -1,0 +1,60 @@
+// Mixins
+@mixin desktop {
+  @media (min-width: $breakPoint_l) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $breakPoint_m) {
+    @content;
+  }
+}
+
+@mixin no-mobile {
+  @media (min-width: $breakPoint_m) {
+    @content;
+  }
+}
+@mixin not-pc {
+  @media (max-width: $breakPoint_l) {
+    @content;
+  }
+}
+
+
+@mixin device_xs {
+  @media (max-width: $breakPoint_s) {
+    @content;
+  }
+}
+
+@mixin device_s {
+  @media (min-width: $breakPoint_s) and (max-width: $breakPoint_m) {
+    @content;
+  }
+}
+
+@mixin device_m {
+  @media (min-width: $breakPoint_m) and (max-width: $breakPoint_l) {
+    @content;
+  }
+}
+
+@mixin device_l {
+  @media (min-width: $breakPoint_l) and (max-width: $breakPoint_xl) {
+    @content;
+  }
+}
+
+@mixin device_xl {
+  @media (min-width: $breakPoint_xl) and (max-width: $breakPoint_xxl) {
+    @content;
+  }
+}

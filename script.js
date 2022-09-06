@@ -444,15 +444,40 @@ document.addEventListener('DOMContentLoaded', function () {
     window.openMask = () => mask.style.display = 'block'
     window.announcementModal = getEl('#announcement-modal')
     // hanldeRefatorAnnouncementModal()
-    
-    secondBarActive()
 
     handleBreadcrumbs()
+    const isHomePage = new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)((/*)|#(.*))$','ig').test(window.location.href)
 
-    // home page remove header search
-    if(new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)(/*)$','ig').test(window.location)) {
-        const headerSearch = getEl('#header-search')
-        if(headerSearch) headerSearch.style.display = 'none'
+    // entry home 
+    if(isHomePage) {
+        // home page remove footer search
+        const footerSearch = getEl('#footer-search')
+        if(footerSearch) footerSearch.style.display = 'none'
+
+        // home page add second bar
+        const secondNavBar = getEl('#second-nav-bar')
+        if(secondNavBar) secondNavBar.style.display = 'flex'
+        const headerNavBar = getEl('#header-nav-bar')
+        if(headerNavBar) headerNavBar.classList.add('has-second-bar')
+
+        // second bar interactive init
+        const initFn = ()=>{
+            initSecondBarActive();
+            secondBarActive();
+            drawerInit()
+        }
+        const ref = setInterval(initFn, 500)
+        setTimeout(() => { clearInterval(ref);}, 5000);
+        window.addEventListener('resize', throttle(initFn,100))
+        window.addEventListener('scroll', throttle(function (e) {
+            secondBarActive()
+        }, 100))
+
+        window.onOpenDrawer = () => {
+            openDrawer()
+            initSecondBarActive();
+            secondBarActive();
+        }
     }
 
     // Key map
@@ -948,6 +973,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    var extractComtainer = document.querySelectorAll('.academy-extract-img-list'); 
+    extractFirstImg(extractComtainer)
+
     /**
      * Category page: convert article link to download link.
      *
@@ -985,7 +1013,7 @@ document.addEventListener('DOMContentLoaded', function () {
     /**
      * Header Component: control header show or not when scroll  
      */
-    const headersHeight = 156
+    const headersHeight = isHomePage ? 156 :  80
     const firstBarHeight = 80
     let lastScrollPosition = 0
 
@@ -993,11 +1021,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const firstBar = document.querySelector('div[class~=first-bar]')
 
     const showFirstBar = () => {
+        if(!header || !firstBar) return
         header.style.height = headersHeight + 'px'
         firstBar.style.height = firstBarHeight + 'px'
         firstBar.style.borderBottom = null
     }
     const hiddenFirstBar = () => {
+        if(!header || !firstBar) return
         header.style.height = (headersHeight - firstBarHeight) + 'px'
         firstBar.style.height = 0 + 'px'
         firstBar.style.borderBottom = 0 + 'px'
@@ -1071,7 +1101,7 @@ window.onload = function () {
 };
 
 
-//============================================== refator(2022.1~) ==============================================
+//============================================== refator(2022.1~2022.8.29) ==============================================
 /**
  * handle breadcrumbs because we need some extra level to store some data (sorry for that shit)
  * then operators or sales just found that they not pretty enough, so we need to hide these shits
@@ -1233,19 +1263,50 @@ function onClickMask() {
 /**
  * @description  header component: second bar item active or not handle
  */
+function initSecondBarActive() {
+    window.lastItem = null
+    window.navitemId = ['product_support', 'software_support', 'bar_academy', 'bar_service', 'still_need_help']
+    window.navItems = navitemId.map(v=>document.querySelector(`#${v}`))
+    window.anchorId = ['product-support', 'software-support', 'academy', 'service', 'still-need-help']
+    window.anchorItems = anchorId.map(v=>document.querySelector(`#${v}`))
+    window.anchorScrollTop = anchorItems.map(v=>v && getElDocumentTop(v))
+
+    window.subNavCurrText = document.querySelector(`#sub-nav-curr-text`)
+}
 function secondBarActive() {
-    const navHome = getEl('#nav-home')
-    const navAcademy = getEl('#nav-academy')
-    if (new RegExp('/hc/(en-us|zh-cn)[/]*$').test(window.location.pathname)) {
-        navHome.classList.add('active-nav-item')
-        navAcademy.classList.remove('active-nav-item')
-        return
+    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+    let currIdx = 0
+    for(let i=0; i<navItems.length; i++) {
+        if(currentScrollPosition < (anchorScrollTop[i] - 20)) {
+            if(navItems[currIdx] === lastItem) break
+            navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item')
+            subNavCurrText.innerHTML = mobSubNavText[currIdx]
+            lastItem && lastItem.classList.remove('active-nav-item')
+            lastItem = navItems[currIdx]
+            break
+        }
+        currIdx = i    
     }
-    if (window.location.pathname.includes('360003536313')) {
-        navHome.classList.remove('active-nav-item')
-        navAcademy.classList.add('active-nav-item')
-        return
+    if(currIdx === (navItems.length - 1) && navItems[currIdx] !== lastItem) {
+        navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item')
+        subNavCurrText.innerHTML = mobSubNavText[currIdx]
+        lastItem && lastItem.classList.remove('active-nav-item')
+        lastItem = navItems[currIdx]
     }
+    
+    // used 2022.1~2022.8.29
+    // const navHome = getEl('#nav-home')
+    // const navAcademy = getEl('#nav-academy')
+    // if (new RegExp('/hc/(en-us|zh-cn)[/]*$').test(window.location.pathname)) {
+    //     navHome.classList.add('active-nav-item')
+    //     navAcademy.classList.remove('active-nav-item')
+    //     return
+    // }
+    // if (window.location.pathname.includes('360003536313')) {
+    //     navHome.classList.remove('active-nav-item')
+    //     navAcademy.classList.add('active-nav-item')
+    //     return
+    // }
 }
 
 
@@ -1825,6 +1886,10 @@ function getEl(selector) {
     return document.querySelector(selector)
 }
 
+function getElDocumentTop(element) {
+    return element.getBoundingClientRect().top + document.documentElement.scrollTop
+}
+
 /**
  * @description send http require
  * @param {Object} options 
@@ -1913,5 +1978,71 @@ function gtmPush(event) {
     window.dataLayer.push(event)
 }
 
+/**
+ * @description extract First Img from article
+ * @param {Node} extractComtainer root of the extract node, extract node should container css class `.extract-img-item`
+ * and inside of the extract node should have node with .article-body
+ * 
+ */
+function extractFirstImg(extractComtainer) {
+    if(!extractComtainer) {
+        console.log(`no extract container`)
+        return
+    }
+    try {
+        // var extractComtainer = document.querySelectorAll('.extract-img-list'); 
+        if (extractComtainer.length) {
+            extractComtainer.forEach(function (section) {
+                var items = section.querySelectorAll('.extract-img-item');
+
+                // Replace cover with first image in article body
+                items.forEach(function (item) {
+                    const cover = item.getElementsByClassName('extract-img-item-cover-img')[0];
+                    const labels = item.getElementsByClassName('extract-img-item-labels')[0];
+
+                    const body = item.getElementsByClassName('article-body')[0];
+
+                    // extract cover image
+                    let firstImage = body.getElementsByTagName('img');
+                    firstImage = firstImage && firstImage[0];
+                    if (firstImage) {
+                        cover.src = firstImage.src;
+                    }
+
+                    // remove article dom
+                    const parentEl = body.parentNode
+                    parentEl.removeChild(body)
+                });
+            });
+        }
+    }catch(e){
+        console.log(`extractFirstImg: `, e)
+    }
+}
 
 
+//============================================== update Acady(category) and home page(2022.8.29~) ==============================================
+(function(window) {
+    let container, drawerAnchor, drawer, drawerCover
+    
+    let isOpen = false
+    function drawerInit() {
+        container = document.querySelector(`#section-1`)
+        drawerAnchor = document.querySelector(`#drawer-anchor`)
+        drawer = document.querySelector(`#drawer`)
+        drawerCover = document.querySelector(`#drawer-cover`)
+
+        drawer.style.height = container.offsetTop +  drawerAnchor.offsetTop + 'px'
+        drawerCover.style.height = drawerAnchor.offsetTop + 'px'
+        return container.offsetTop +  drawerAnchor.offsetTop 
+    }
+    function openDrawer(){
+        if(isOpen) return
+        drawer && (drawer.style.height = '')
+        drawerCover && (drawerCover.style.display = 'none')
+        isOpen = true
+    }
+
+    window.drawerInit = drawerInit
+    window.openDrawer = openDrawer
+})(window)

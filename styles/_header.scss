@@ -10,14 +10,15 @@
 $first-bar-height: 80px;
 $second-bar-height: 76px;
 
+.has-second-bar {
+  height: $first-bar-height + $second-bar-height;
+}
 
 .header {
   position: sticky;
   top: -1px;
   z-index: 100;
   background-color: white;
-  height: $first-bar-height + $second-bar-height;
-  // box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px;
   border: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
 
@@ -225,7 +226,6 @@ $second-bar-height: 76px;
   height: $first-bar-height;
   align-items: center;
   // background-color: #979797;
-  border-bottom: 1px solid #EFEFEF;
   transition: all 0.2s ease-in-out;
   overflow: hidden;
   a {
@@ -239,6 +239,9 @@ $second-bar-height: 76px;
   .snmk-primary-btn {
     padding: 0.5em 1em;
   }
+}
+.has-second-bar .first-bar {
+  border-bottom: 1px solid #EFEFEF;
 }
 
 /* collection icon */
@@ -336,6 +339,15 @@ $halfWidth: $width/2;
 .nav-items .search-container input::placeholder{
   color: $black_white_3;
 }
+.sub-nav-item {
+  padding: 10px 16px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: $black_white_1;
+  background-color: $black_white_7;
+  border-radius: 30px;
+}
 
 .mask {
   display: none;
@@ -345,6 +357,13 @@ $halfWidth: $width/2;
   width: 100%;
   height: 100vh;
   background-color: rgba(10,10,10,.6);
+}
+
+.shop-btn{
+  padding: 0.25em 0.8em;
+  display: flex;
+  min-width: unset;
+  background-image: linear-gradient(106.08deg, #0C63E2 13.29%, #08BFF7 91.26%);
 }
 
 @media (min-width: $breakPoint_l) {
@@ -394,11 +413,14 @@ $halfWidth: $width/2;
   .menus {
     width: 100%;
     position: absolute;
-    top: calc(100% + 1px);
+    top: 100%;
     left: 0;
     flex-direction: column;
     z-index: 10;
     background-color: white;
+  }
+  .has-second-bar .menus{
+    top: calc(100% + 1px);
   }
   .menu{ 
     height: 64px;
@@ -411,15 +433,16 @@ $halfWidth: $width/2;
   }
 
   .second-bar .is-open{
+    display: inline-block;
     transform: rotate(180deg);
   }
   .nav-items {
     @include grid-system-variable("padding");
-    width: 100%;
+    width: 100vw;
     height: 0;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -1px;
     flex-direction: column;
     z-index: 1;
     background-color: white;
@@ -442,5 +465,13 @@ $halfWidth: $width/2;
   }
   .search-container {
     width: 100%;
+  }
+}
+@include not-pc {  
+  .mob-w-100 {
+    width: 100%;
+  }
+  .nav-curr-item {
+    display: none;
   }
 }
