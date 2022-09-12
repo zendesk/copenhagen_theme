@@ -4773,6 +4773,32 @@ ul {
   word-break: break-word;
 }
 
+.search-results .no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-results .no-results .headline {
+  color: #2F3941;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: -0.45px;
+}
+
+.search-results .no-results .action-prompt {
+  color: #68737D;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.154px;
+}
+
+.search-results .no-results .action-prompt a {
+  color: #1F73B7;
+}
+
 .search-result-title {
   font-size: 16px;
   display: inline-block;
