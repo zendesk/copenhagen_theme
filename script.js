@@ -2033,6 +2033,7 @@ function extractFirstImg(extractComtainer) {
     
     let isOpen = false
     function drawerInit() {
+        if(isOpen) return
         container = document.querySelector(`#section-1`)
         drawerAnchor = document.querySelector(`#drawer-anchor`)
         drawer = document.querySelector(`#drawer`)
