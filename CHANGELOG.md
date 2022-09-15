@@ -1,3 +1,12 @@
+# [2.18.0](https://github.com/zendesk/copenhagen_theme/compare/v2.17.0...v2.18.0) (2022-09-12)
+
+
+### Features
+
+* add content tag filter to search results ([158e204](https://github.com/zendesk/copenhagen_theme/commit/158e2048acd8490d352570a8745959efcb5cde18))
+* change result head when content tag search ([007f9e6](https://github.com/zendesk/copenhagen_theme/commit/007f9e68658189d35ae1d37b987cfa742e931210))
+* fix variable name ([b46b7c8](https://github.com/zendesk/copenhagen_theme/commit/b46b7c8ebcc0961aadc68a7d864d7aa867fac985))
+
 # [2.17.0](https://github.com/zendesk/copenhagen_theme/compare/v2.16.3...v2.17.0) (2022-09-01)
 
 
