@@ -39,9 +39,11 @@ To preview the changes, you'll need [ZAT](https://developer.zendesk.com/document
 
 After using the command `zat theme preview` on your terminal, you'll need to insert the Zendesk Support subdomain or full URL (with protocol); also, you'll need to insert the auth credentials.
 
-> You can also use an API Token, generated in your Zendesk Support admin pannel. :bulb:
+> You can also use an API Token, generated in your Zendesk Support admin panel. :bulb:
 
 If the login succeeds, the prompt will return an URL, `Ready URL` - copy and paste it in your browser and _voilà_: you're previewing your local theme using the data from your Zendesk Support.
+
+> You must be logged in your Zendesk admin panel in order to see the preview! :warning:
 
 This preview doesn't support HMR, so after every change you'll need to manually refresh your browser to see those changes.
 
