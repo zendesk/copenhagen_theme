@@ -30,9 +30,36 @@ yarn
 zat theme preview
 ```
 
+
 ### :file_folder: Theme structure
 
+#### :page_facing_up: Templates
+
+#### :art: Styles
+Stylesheets are organized using [ITCSS architecture](https://www.xfive.co/blog/itcss-scalable-maintainable-css-architecture/). This approach aims to create layers and define how the style will affect our layout and how they'll interact with other layers.
+
+The theme also uses [Sass](https://sass-lang.com/) as a pre-processor and compiler.
+
+```text
+pier-help-center-theme/
+└── styles/
+    ├── components/ - specific components (.button, .form, .header, .footer...)
+    ├── elements/ - bare elements (typography, form...)
+    ├── generics/ - reset
+    ├── objects - abstract components (.hero, .section...)
+    ├── pages/ - page-based styles
+    ├── settings/ - variables and definitions
+    ├── tools/ - globally used functions (mixins)
+    ├── trumps/ - helpers and/or overrides
+    └── index.scss
+```
+
+
+#### :robot_face: Scripts
+
+
 ### :microscope: Testing
+
 
 ### :mag: Preview 
 To preview the changes, you'll need [ZAT](https://developer.zendesk.com/documentation/apps/zendesk-app-tools-zat/installing-and-using-zat/) and access to Pier's Zendesk auth credentials.
@@ -53,7 +80,7 @@ When you're done, you can stop the preview by clicking `Exit preview` on your br
 This theme uses [conventional commits](https://conventionalcommits.org/) to improve readability of the project history. If you're not familiar with this pattern, take a deep look on the [official guide](https://www.conventionalcommits.org/en/v1.0.0/#summary).
 
 In order to create commits, the commit message should follow the format below:
-```txt
+```text
 <type>[optional scope]: <description>
 
 [optional body]
