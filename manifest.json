@@ -77,7 +77,7 @@
               "value": "Calistoga, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "Calistoga, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
         },
         {
           "identifier": "text_font",
@@ -94,7 +94,7 @@
               "value": "Heebo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "Heebo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
         }
       ]
     },
@@ -147,7 +147,7 @@
           "type": "checkbox",
           "description": "instant_search_description",
           "label": "instant_search_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "scoped_kb_search",
@@ -187,6 +187,13 @@
           "type": "file",
           "description": "homepage_background_image_description",
           "label": "homepage_background_image_label"
+        },
+        {
+          "identifier": "homepage_hero_title",
+          "type": "text",
+          "description": "homepage_hero_title_description",
+          "label": "homepage_hero_title_label",
+          "value": "Como podemos ajudar?"
         }
       ]
     },
