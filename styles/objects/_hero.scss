@@ -1,6 +1,5 @@
 .hero {
   background-color: $homepage_background_color;
-  // background-image: url($homepage_background_image);
   background-position: center;
   background-size: cover;
   height: 300px;
@@ -12,5 +11,9 @@
     @include vertical-align;
     max-width: 610px;
     margin: 0 auto;
+  }
+
+  &--home {
+    background-image: url($homepage_background_image);
   }
 }
