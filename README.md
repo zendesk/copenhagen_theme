@@ -72,7 +72,8 @@ If the login succeeds, the prompt will return an URL, `Ready URL` - copy and pas
 
 > You must be logged in your Zendesk admin panel in order to see the preview! :warning:
 
-This preview doesn't support HMR, so after every change you'll need to manually refresh your browser to see those changes.
+This preview doesn't support HMR, so after every change you'll need to manually refresh your browser to see those changes.  
+To preview changes that affect template structure and/or markup, you must restart the preview in your terminal.
 
 When you're done, you can stop the preview by clicking `Exit preview` on your browser, or stopping the prompt with `Ctrl + C` shortcut.
 
