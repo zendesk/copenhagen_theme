@@ -37,6 +37,8 @@
   "heading_font_label": "Heading Font",
   "homepage_background_image_description": "Hero image on the home page",
   "homepage_background_image_label": "Home hero image",
+  "homepage_background_color_description": "Hero color on the home page",
+  "homepage_background_color_label": "Home hero color",
   "home_page_group_label": "Home page elements",
   "hover_link_color_description": "Text color for the hover state of link elements",
   "hover_link_color_label": "Hover link color",

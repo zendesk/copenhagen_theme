@@ -37,6 +37,8 @@
   "heading_font_label": "Fonte do cabeçalho",
   "homepage_background_image_description": "Imagem principal na página inicial",
   "homepage_background_image_label": "Imagem principal inicial",
+  "homepage_background_color_description": "Cor principal na página inicial",
+  "homepage_background_color_label": "Cor principal inicial",
   "home_page_group_label": "Elementos da página inicial",
   "hover_link_color_description": "Cor do texto para o estado de foco ao passar o mouse nos elementos do link",
   "hover_link_color_label": "Cor do link ao passar o mouse",
