@@ -140,21 +140,25 @@
     <section id="main-content" class="search-results-column">
       <h1 class="search-results-subheading">
         {{#is current_filter.identifier 'unified'}}
-          {{#if results}}
-            {{#if content_tag_filters }}
-              {{#each (filter content_tag_filters on="selected" equals=true)}}
-                {{t 'results_content_tag' content_tag=name count=../results_count}}
-              {{/each}}
-            {{else}}
-              {{t 'results' query=query count=results_count}}
-            {{/if}}
+          {{#if content_tag_filters }}
+            {{#each (filter content_tag_filters on="selected" equals=true)}}
+              {{t 'results_content_tag' content_tag=name count=../results_count}}
+            {{/each}}
+          {{else}}
+            {{t 'results' query=query count=results_count}}
           {{/if}}
         {{else}}
-          {{#unless current_subfilter.identifier}}
-            {{t 'results' query=query count=results_count}}
+          {{#if content_tag_filters }}
+            {{#each (filter content_tag_filters on="selected" equals=true)}}
+              {{t 'results_content_tag' content_tag=name count=../results_count}}
+            {{/each}}
           {{else}}
-            {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
-          {{/unless}}
+            {{#unless current_subfilter.identifier}}
+              {{t 'results' query=query count=results_count}}
+            {{else}}
+              {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
+            {{/unless}}
+          {{/if}}
         {{/is}}
       </h1>
       {{#if results}}
