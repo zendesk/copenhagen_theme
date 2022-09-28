@@ -4800,6 +4800,10 @@ ul {
   color: #1F73B7;
 }
 
+.search-results .no-results .action-prompt a:visited {
+  color: #1F73B7;
+}
+
 .search-result-title {
   font-size: 16px;
   display: inline-block;

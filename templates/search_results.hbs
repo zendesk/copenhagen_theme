@@ -139,27 +139,29 @@
 
     <section id="main-content" class="search-results-column">
       <h1 class="search-results-subheading">
-        {{#is current_filter.identifier 'unified'}}
-          {{#if content_tag_filters }}
-            {{#each (filter content_tag_filters on="selected" equals=true)}}
-              {{t 'results_content_tag' content_tag=name count=../results_count}}
-            {{/each}}
-          {{else}}
-            {{t 'results' query=query count=results_count}}
-          {{/if}}
-        {{else}}
-          {{#if content_tag_filters }}
-            {{#each (filter content_tag_filters on="selected" equals=true)}}
-              {{t 'results_content_tag' content_tag=name count=../results_count}}
-            {{/each}}
-          {{else}}
-            {{#unless current_subfilter.identifier}}
-              {{t 'results' query=query count=results_count}}
+        {{#if results}}
+          {{#is current_filter.identifier 'unified'}}
+            {{#if content_tag_filters }}
+              {{#each (filter content_tag_filters on="selected" equals=true)}}
+                {{t 'results_content_tag' content_tag=name count=../results_count}}
+              {{/each}}
             {{else}}
-              {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
-            {{/unless}}
-          {{/if}}
-        {{/is}}
+              {{t 'results' query=query count=results_count}}
+            {{/if}}
+          {{else}}
+            {{#if content_tag_filters }}
+              {{#each (filter content_tag_filters on="selected" equals=true)}}
+                {{t 'results_content_tag' content_tag=name count=../results_count}}
+              {{/each}}
+            {{else}}
+              {{#unless current_subfilter.identifier}}
+                {{t 'results' query=query count=results_count}}
+              {{else}}
+                {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
+              {{/unless}}
+            {{/if}}
+          {{/is}}
+        {{/if}}
       </h1>
       {{#if results}}
         <ul class="search-results-list">
@@ -237,7 +239,12 @@
             </div>
             <div class="action-prompt">
               {{#link 'help_center'}}
-                {{t 'go_to_help_center'}}
+                {{t 'go_to_help_center'}} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" focusable="false" role="presentation"
+                  data-garden-id="buttons.external_icon" data-garden-version="8.38.0" theme="[object Object]" class="sc-ifAKCX lgxUVw">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round"
+                    d="M10.5 8.5V10c0 .3-.2.5-.5.5H2c-.3 0-.5-.2-.5-.5V2c0-.3.2-.5.5-.5h1.5M6 6l4-4m-3.5-.5H10c.3 0 .5.2.5.5v3.5">
+                  </path>
+                </svg>
               {{/link}}
             </div> 
           </div>

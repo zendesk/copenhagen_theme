@@ -203,6 +203,10 @@
 
       a {
         color: #1F73B7;
+
+        &:visited {
+          color: #1F73B7;
+        }
       }
     }
   }
