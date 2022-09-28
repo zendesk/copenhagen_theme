@@ -1,3 +1,13 @@
+# [2.19.0](https://github.com/zendesk/copenhagen_theme/compare/v2.18.0...v2.19.0) (2022-09-28)
+
+
+### Features
+
+* always display content tag result when content tag shown ([e1cb369](https://github.com/zendesk/copenhagen_theme/commit/e1cb36953a7acb6577acb2feff23e473c733d0a9))
+* fix top padding for no results block ([33e55e3](https://github.com/zendesk/copenhagen_theme/commit/33e55e35499068a781c86c00880b6d0cc04ea3ee))
+* only display results for text when results are available ([98eb93d](https://github.com/zendesk/copenhagen_theme/commit/98eb93d102d9da60e41e589566f5426f754e16cd))
+* redesign no results search page ([51564a7](https://github.com/zendesk/copenhagen_theme/commit/51564a76f65eaad445aabf66717d0f638aeb8ef7))
+
 # [2.18.0](https://github.com/zendesk/copenhagen_theme/compare/v2.17.0...v2.18.0) (2022-09-12)
 
 
