@@ -1,27 +1,19 @@
-/***** Breadcrumbs *****/
 .breadcrumbs {
-  @include tablet {
-    margin: 0;
-  }
-
-  margin: 0 0 15px 0;
+  position: relative;
+  margin: 0 0 32px;
   padding: 0;
 
   li {
-    color: $secondary-text-color;
     display: inline;
-    font-size: $font-size-small;
-    max-width: 450px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-size: 12px;
 
     + li::before {
       content: ">";
       margin: 0 4px;
     }
 
-    a:visited {
-      color: $link_color;
+    a {
+      color: map-get($base-colors-primary, "700");
     }
   }
 }

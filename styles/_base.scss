@@ -1,8 +1,4 @@
 /***** Base *****/
-* {
-  box-sizing: border-box;
-}
-
 body {
   background-color: $background_color;
   color: $text_color;
@@ -24,8 +20,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading_font;
   margin-top: 0;
+  font-family: $heading_font;
+  font-weight: normal;
 }
 
 h1 {
