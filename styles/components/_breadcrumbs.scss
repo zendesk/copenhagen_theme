@@ -7,13 +7,13 @@
     display: inline;
     font-size: 12px;
 
-    + li::before {
-      content: ">";
-      margin: 0 4px;
-    }
-
     a {
       color: map-get($base-colors-primary, "700");
+    }
+
+    & + li:before {
+      content: ">";
+      margin: 0 4px;
     }
   }
 }

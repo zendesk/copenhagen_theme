@@ -1,4 +1,4 @@
-<div class="page-container home-page" id="main-content">
+<div class="page-container category-page" id="main-content">
   <section class="section section--head">
     <div class="section__container">
       <nav class="section__nav">
@@ -6,11 +6,29 @@
       </nav>
 
       <div class="section__category">
-        <h1 class="section__title"><span>Tudo sobre</span> {{ category.name }}</h1>
+        <div class="category">
+          <h1 class="section__title category__title"><span>Tudo sobre</span> {{ category.name }}</h1>
 
-        {{#if category.description}}
-          <p>{{ category.description }}</p>
-        {{/if}}
+          {{#if category.description}}
+            <p class="category__description">{{ category.description }}</p>
+          {{/if}}
+
+          {{#is category.name 'Auto'}}
+            <img class="category__icon" src="{{asset '_draw-auto.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+
+          {{#is category.name 'Celular'}}
+            <img class="category__icon" src="{{asset '_draw-smartphone.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+
+          {{#is category.name 'Pier'}}
+            <img class="category__icon" src="{{asset '_draw-doubt.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+
+          {{#is category.name 'Vídeos'}}
+            <img class="category__icon" src="{{asset '_draw-couch.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+        </div>
       </div>
     </div>
   </section>
@@ -18,10 +36,12 @@
   <section class="section section--topics">
     <div class="section__container">
       <div class="section__subjects">
+        <h3>Assuntos</h3>
+
         <ul>
           {{#each sections}}
             <li>
-              <a href="#{{ name }}">{{ name }}</a>
+              <a href="#section-{{ id }}">{{ name }}</a>
             </li>
           {{/each}}
         </ul>
@@ -29,7 +49,7 @@
 
       <div class="section__articles">
         {{#each sections}}
-          <section id="{{ name }}">
+          <section id="section-{{ id }}">
             <h2>{{ name }}</h2>
 
             {{#if articles}}
