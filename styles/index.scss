@@ -1,43 +1,65 @@
-@import "normalize";
-@import "variables";
-@import "mixins";
-@import "base";
-@import "buttons";
-@import "split_button";
-@import "tables";
-@import "forms";
-@import "header";
-@import "user";
-@import "footer";
-@import "breadcrumbs";
-@import "search";
-@import "hero";
-@import "page_header";
-@import "sub-nav";
-@import "blocks";
-@import "home-page";
-@import "recent-activity";
-@import "category";
-@import "section";
-@import "article";
-@import "attachments";
-@import "share";
-@import "comments";
-@import "vote";
-@import "actions";
-@import "community";
-@import "striped_list";
-@import "status-label";
-@import "post";
-@import "community_badge";
-@import "collapsible-nav";
-@import "collapsible-sidebar";
-@import "my-activities";
-@import "request";
-@import "pagination";
-@import "metadata";
-@import "user-profiles";
-@import "search_results";
-@import "notifications";
-@import "dropdowns";
-@import "content-tags";
+// settings
+@import "settings/_variables";
+
+// tools
+@import "tools/_mixins";
+
+// generics
+@import "generics/_normalize";
+
+// elements
+@import "elements/_typography";
+@import "elements/_forms";
+
+// objects
+@import "objects/_container";
+@import "objects/_hero";
+@import "objects/_section";
+@import "objects/_blocks";
+@import "objects/_metadata";
+
+// components
+@import "components/_header";
+@import "components/_footer";
+@import "components/_breadcrumbs";
+@import "components/_buttons";
+@import "components/_split_button";
+@import "components/_tables";
+@import "components/_forms";
+
+@import "components/_user";
+
+@import "components/_search";
+
+@import "components/_page_header";
+@import "components/_sub-nav";
+
+@import "components/_recent-activity";
+@import "components/_category";
+
+@import "components/_article";
+@import "components/_attachments";
+@import "components/_share";
+@import "components/_comments";
+@import "components/_vote";
+@import "components/_actions";
+@import "components/_community";
+@import "components/_striped_list";
+@import "components/_status-label";
+@import "components/_post";
+@import "components/_community_badge";
+@import "components/_collapsible-nav";
+@import "components/_collapsible-sidebar";
+@import "components/_my-activities";
+@import "components/_request";
+@import "components/_pagination";
+@import "components/_user-profiles";
+@import "components/_search_results";
+@import "components/_notifications";
+@import "components/_dropdowns";
+@import "components/_content-tags";
+
+// trumps
+
+// pages
+@import "pages/_home-page";

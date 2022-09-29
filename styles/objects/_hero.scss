@@ -1,0 +1,19 @@
+.hero {
+  background-color: $homepage_background_color;
+  height: 300px;
+  padding: 0 20px;
+  text-align: center;
+  width: 100%;
+
+  &-inner {
+    @include vertical-align;
+    max-width: 610px;
+    margin: 0 auto;
+  }
+
+  &--home {
+    background-image: url($homepage_background_image);
+    background-position: center;
+    background-size: cover;
+  }
+}
