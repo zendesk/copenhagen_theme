@@ -1,0 +1,34 @@
+.section {
+  padding: 24px;
+
+  // elements
+  &__title {
+    font-size: 32px;
+    color: map-get($base-colors-primary, "700");
+  }
+
+  &__category {
+    h1 {
+      margin-bottom: 16px;
+      font-size: 40px;
+
+      span {
+        display: block;
+        font-family: $text_font;
+        font-size: 16px;
+        font-weight: normal;
+      }
+    }
+
+    p {
+      max-width: 500px;
+      margin: 0;
+      font-size: 16px;
+    }
+  }
+
+  // modifiers
+  &--head {
+    background-color: map-get($colors-background, "yellow");
+  }
+}
