@@ -18,6 +18,22 @@
           {{#if ../has_multiple_categories}}
             <li class="categories-list__item" data-type="multiple">
               <a href="{{url}}" class="category">
+                {{#is name 'Auto'}}
+                  <img class="category__icon" src="{{asset '_draw-auto.svg'}}" alt="{{ name }}" />
+                {{/is}}
+
+                {{#is name 'Celular'}}
+                  <img class="category__icon" src="{{asset '_draw-smartphone.svg'}}" alt="{{ name }}" />
+                {{/is}}
+
+                {{#is name 'Pier'}}
+                  <img class="category__icon" src="{{asset '_draw-doubt.svg'}}" alt="{{ name }}" />
+                {{/is}}
+
+                {{#is name 'Vídeos'}}
+                  <img class="category__icon" src="{{asset '_draw-couch.svg'}}" alt="{{ name }}" />
+                {{/is}}
+
                 <span class="category__title">{{ name }}</span>
                 <span class="category__description">{{excerpt description}}</span>
               </a>
@@ -25,11 +41,9 @@
           {{else}}
             {{#each sections}}
               <li class="blocks-item" data-type="else">
-                <a href="{{url}}" class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
+                <a href="{{url}}" class="category">
+                  <span class="category__title">{{ name }}</span>
+                  <span class="category__description">{{excerpt description}}</span>
                 </a>
               </li>
             {{/each}}
@@ -47,7 +61,10 @@
         <ul class="articles-list">
           {{#each promoted_articles}}
             <li class="articles-list__item">
-              <a href="{{url}}">{{title}}</a>
+              <a href="{{url}}" class="article">
+                <span class="article__title">{{title}}</span>
+                <span class="article__excerpt">{{excerpt body characters=80}}</span>
+              </a>
             </li>
           {{/each}}
         </ul>

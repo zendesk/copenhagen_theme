@@ -16,15 +16,12 @@
       border: 1px solid #787982;
       border-radius: 4px;
     }
-  }
-}
 
-.category {
-  span {
-    display: block;
-  }
-
-  &__title {
-    font-weight: bold;
+    .category {
+      &__icon {
+        height: 80px;
+        margin-bottom: 16px;
+      }
+    }
   }
 }
