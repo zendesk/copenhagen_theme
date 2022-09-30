@@ -92,3 +92,14 @@ In order to create commits, the commit message should follow the format below:
 To validate the commit messages, this theme uses [husky git hooks](https://github.com/typicode/husky) and [commitlint](https://github.com/conventional-changelog/commitlint).
 
 ### :rocket: Deployment
+
+
+## :books: References and resources
+In case of doubt, check out below the official references and resources about Zendesk Help Center theme customization:
+- [Zendesk Copenhagen Theme on GitHub](https://github.com/zendesk/copenhagen_theme)
+- [Zendesk Guide Help - Using themes and customizing your Help Center](https://support.zendesk.com/hc/en-us/sections/206670747)
+- [Zendesk Developer Docs](https://developer.zendesk.com/documentation)
+- [Zendesk Developer Docs - Help Center Templates Introduction](https://developer.zendesk.com/documentation/help_center/help-center-templates/introduction)
+- [Curly template language on GitHub](https://github.com/zendesk/curly)
+- [Curlybars templating library on GitHub](https://github.com/zendesk/curlybars)
+- [Zendesk Developer Docs - Installing and using ZAT](https://developer.zendesk.com/documentation/apps/zendesk-app-tools-zat/installing-and-using-zat/)

@@ -1,0 +1,59 @@
+.category-page {
+  .section--head {
+    .category {
+      &__icon {
+        position: absolute;
+        height: 140px;
+        bottom: -24px;
+        right: 0;
+      }
+    }
+  }
+
+  .section--topics {
+    .section {
+      &__container {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+
+      &__subjects {
+        position: sticky;
+        top: 96px;
+        flex-basis: 25%;
+
+        ul {
+          li {
+            & + li {
+              margin-top: 8px;
+            }
+          }
+        }
+      }
+
+      &__articles {
+        flex-basis: 75%;
+
+        section {
+          h2 {
+            margin: 0 0 24px;
+            font-size: 40px;
+          }
+
+          & + section {
+            margin-top: 56px;
+          }
+        }
+      }
+    }
+
+
+    h3 {
+      font-family: $text_font;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+}

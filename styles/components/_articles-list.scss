@@ -1,0 +1,40 @@
+.articles-list {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 0 -12px;
+
+  &__item {
+    flex-basis: 50%;
+    padding: 12px;
+
+    a {
+      display: block;
+      position: relative;
+      padding: 8px 16px;
+      border: 1px solid map-get($base-colors-grey, "400");
+      border-radius: 4px;
+      color: map-get($base-colors-primary, "700");
+
+      &:before {
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        content: ">";
+        font-weight: bold;
+        transform: translateY(-50%);
+      }
+    }
+  }
+
+  .article {
+    span {
+      display: block;
+    }
+
+    &__title {
+      font-weight: bold;
+    }
+  }
+}

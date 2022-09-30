@@ -9,7 +9,6 @@
 ---
 title: "Help Center Copenhagen theme"
 packages:
-  - default
   - help_center_copenhagen_theme
 
 parts:

@@ -1,0 +1,27 @@
+.categories-list {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 -12px;
+
+  &__item {
+    flex: 1 0 0;
+    padding: 12px;
+    text-align: center;
+
+    a {
+      display: block;
+      padding: 32px 16px;
+      border: 1px solid #787982;
+      border-radius: 4px;
+    }
+
+    .category {
+      &__icon {
+        height: 80px;
+        margin-bottom: 16px;
+      }
+    }
+  }
+}

@@ -12,8 +12,12 @@
   }
 
   &--home {
-    background-image: url($homepage_background_image);
+    // background-image: url($homepage_background_image);
     background-position: center;
     background-size: cover;
+
+    h2 {
+      font-size: 48px;
+    }
   }
 }
