@@ -22,7 +22,9 @@
       &__subjects {
         position: sticky;
         top: 96px;
+        width: 25%;
         flex-basis: 25%;
+        padding-right: 12px;
 
         ul {
           li {
@@ -34,7 +36,9 @@
       }
 
       &__articles {
+        width: 75%;
         flex-basis: 75%;
+        padding-left: 12px;
 
         section {
           h2 {
@@ -51,6 +55,7 @@
 
 
     h3 {
+      margin-bottom: 16px;
       font-family: $text_font;
       font-size: 16px;
       font-weight: bold;

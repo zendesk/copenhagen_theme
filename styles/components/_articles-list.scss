@@ -1,12 +1,11 @@
 .articles-list {
   display: flex;
-  flex-flow: row wrap;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: flex-start;
   margin: 0 -12px;
 
   &__item {
-    flex-basis: 50%;
     padding: 12px;
 
     a {
@@ -21,7 +20,7 @@
         position: absolute;
         top: 50%;
         right: 16px;
-        content: ">";
+        content: "\003E";
         font-weight: bold;
         transform: translateY(-50%);
       }
@@ -35,6 +34,13 @@
 
     &__title {
       font-weight: bold;
+    }
+
+    &__excerpt {
+      width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

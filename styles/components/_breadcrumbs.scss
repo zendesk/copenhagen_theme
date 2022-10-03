@@ -5,14 +5,14 @@
 
   li {
     display: inline;
-    font-size: 12px;
+    font-size: 14px;
 
     a {
       color: map-get($base-colors-primary, "700");
     }
 
     & + li:before {
-      content: ">";
+      content: "\003E";
       margin: 0 4px;
     }
   }
