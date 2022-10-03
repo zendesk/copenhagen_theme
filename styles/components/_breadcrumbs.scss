@@ -12,7 +12,7 @@
     }
 
     & + li:before {
-      content: "\003E";
+      content: "\003E"; // greater than: >
       margin: 0 4px;
     }
   }

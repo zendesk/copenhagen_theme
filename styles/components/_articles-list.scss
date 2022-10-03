@@ -11,7 +11,7 @@
     a {
       display: block;
       position: relative;
-      padding: 8px 16px;
+      padding: 8px 32px 8px 16px;
       border: 1px solid map-get($base-colors-grey, "400");
       border-radius: 4px;
       color: map-get($base-colors-primary, "700");
@@ -20,7 +20,7 @@
         position: absolute;
         top: 50%;
         right: 16px;
-        content: "\003E";
+        content: "\003E"; // greater than: >
         font-weight: bold;
         transform: translateY(-50%);
       }
@@ -30,17 +30,6 @@
   .article {
     span {
       display: block;
-    }
-
-    &__title {
-      font-weight: bold;
-    }
-
-    &__excerpt {
-      width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
   }
 }

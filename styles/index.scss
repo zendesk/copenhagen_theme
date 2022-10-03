@@ -35,11 +35,9 @@
 @import "components/_sub-nav";
 @import "components/_recent-activity";
 @import "components/_category";
-@import "components/_article";
 @import "components/_attachments";
 @import "components/_share";
 @import "components/_comments";
-@import "components/_vote";
 @import "components/_actions";
 @import "components/_community";
 @import "components/_striped_list";
@@ -57,10 +55,12 @@
 @import "components/_dropdowns";
 @import "components/_content-tags";
 
-@import "components/_breadcrumbs";
-@import "components/_section";
+@import "components/_article";
 @import "components/_articles-list";
+@import "components/_breadcrumbs";
 @import "components/_categories-list";
+@import "components/_feedback";
+@import "components/_section";
 
 
 // trumps
