@@ -5011,7 +5011,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 .breadcrumbs {
   position: relative;
-  margin: 0 0 32px;
+  margin: 0;
   padding: 0;
 }
 
@@ -5031,6 +5031,10 @@ html[dir="rtl"] .notification-left-aligned {
 
 .section__title {
   font-size: 32px;
+}
+
+.section__category {
+  margin-top: 32px;
 }
 
 .section__category h1 {
@@ -5178,6 +5182,42 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .category-page .section--topics h3 {
+  font-family: $text_font;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.article-page .section--article .section__container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.article-page .section--article .section__related {
+  position: sticky;
+  top: 96px;
+  flex-basis: 25%;
+}
+
+.article-page .section--article .section__related ul li + li {
+  margin-top: 8px;
+}
+
+.article-page .section--article .section__article {
+  flex-basis: 75%;
+}
+
+.article-page .section--article .section__article section h2 {
+  margin: 0 0 24px;
+  font-size: 40px;
+}
+
+.article-page .section--article .section__article section + section {
+  margin-top: 56px;
+}
+
+.article-page .section--article h3 {
   font-family: $text_font;
   font-size: 16px;
   font-weight: bold;
