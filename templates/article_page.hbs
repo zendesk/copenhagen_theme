@@ -13,17 +13,19 @@
         <div class="section__related">
           <h3>{{t 'articles_in_section'}}</h3>
 
-          <ul>
+          <ul class="articles-list">
             {{#each section.articles}}
-              <li>
-                <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+              <li class="articles-list__item">
+                <a href="{{url}}" class="article {{#is id ../article.id}} article--current {{/is}}">
+                  <span class="article__title">{{title}}</span>
+                </a>
               </li>
             {{/each}}
           </ul>
         </div>
       {{/if}}
 
-      <div class="section__article">
+      <div class="section__article article-container">
         <article class="article" id="main-content">
           <h1
             class="article__title {{#if article.internal}} article__title--internal {{/if}}"
@@ -34,10 +36,10 @@
 
           <div class="article__meta">
             {{#is article.created_at article.edited_at}}
-              <p>{{date article.created_at timeago=true}}</p>
+              <span>{{date article.created_at timeago=true}}</span>
             {{else}}
-              <p>{{date article.edited_at timeago=true}}</p>
-              <p>{{t 'updated'}}</p>
+              <span>{{date article.edited_at timeago=true}}</span>
+              <span>{{t 'updated'}}</span>
             {{/is}}
           </div>
 
@@ -46,15 +48,13 @@
           </div>
 
           {{#with article}}
-            <div class="article__feedback">
-              <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
-              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-                {{vote 'up' role='radio' class='button article-vote article-vote-up' selected_class="button-primary"}}
-                {{vote 'down' role='radio' class='button article-vote article-vote-down' selected_class="button-primary"}}
+            <div class="article__feedback feedback">
+              <h4 class="feedback__title" id="feedback-title">{{t 'was_this_article_helpful'}}</h4>
+
+              <div class="feedback__options" aria-labelledby="feedback-title">
+                {{vote 'up' role='radio' class='button feedback__button feedback__button--up' selected_class="button-primary"}}
+                {{vote 'down' role='radio' class='button feedback__button feedback__button--down' selected_class="button-primary"}}
               </div>
-              <small class="article-votes-count">
-                {{vote 'label' class='article-vote-label'}}
-              </small>
             </div>
           {{/with}}
         </article>
