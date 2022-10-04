@@ -1,4 +1,60 @@
 .article {
+  &__title {
+    font-weight: bold;
+  }
+
+  &__meta {
+    margin-bottom: 40px;
+    font-size: 14px;
+    color: map-get($base-colors-grey, "400");
+
+    span {
+      & + span:before {
+        margin: 0 6px 0 4px;
+        content: "\00B7"; // middle dot/interpunct: ·
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__content {
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid map-get($base-colors-grey, "200");
+    color: map-get($base-colors-secondary, "700");
+
+    a {
+      color: map-get($base-colors-primary, "500");
+      text-decoration: underline;
+    }
+
+    iframe {
+      max-width: 100%;
+      margin-top: 40px;
+    }
+  }
+
+  &__excerpt {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+// article content styles
+.article-container {
+  .article {
+    &__title {
+      margin-bottom: 24px;
+      font-size: 40px;
+      font-weight: normal;
+    }
+  }
+}
+
+
+.z-article {
   /*
   * The article grid is defined this way to optimize readability:
   * Sidebar | Content | Free space

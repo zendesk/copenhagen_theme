@@ -1,0 +1,39 @@
+.feedback {
+  &__title {
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-family: $text_font;
+    font-weight: bold;
+  }
+
+  &__button {
+    position: relative;
+    padding: 16px 16px 16px 38px;
+    font-size: 16px;
+    line-height: 1;
+
+    &:before {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 16px;
+      transform: translateY(-50%);
+    }
+
+    &--up {
+      &:before {
+        content: '\01F60D'; // smiling face with heart-eyes emoji: 😍
+      }
+    }
+
+    &--down {
+      &:before {
+        content: '\01F641'; // slightly frowning face emoji: 🙁
+      }
+    }
+
+    & + .button {
+      margin-left: 16px;
+    }
+  }
+}

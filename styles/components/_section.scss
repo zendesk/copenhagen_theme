@@ -1,6 +1,11 @@
 .section {
   padding: 24px;
 
+  &__container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
   // elements
   &__title {
     font-size: 32px;
@@ -8,6 +13,8 @@
   }
 
   &__category {
+    margin-top: 32px;
+    
     h1 {
       margin-bottom: 16px;
       font-size: 40px;

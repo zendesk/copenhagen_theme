@@ -1,16 +1,5 @@
-.category-page {
-  .section--head {
-    .category {
-      &__icon {
-        position: absolute;
-        height: 140px;
-        bottom: -24px;
-        right: 0;
-      }
-    }
-  }
-
-  .section--topics {
+.article-page {
+  .section--article {
     .section {
       &__container {
         display: flex;
@@ -19,7 +8,7 @@
         justify-content: flex-start;
       }
 
-      &__subjects {
+      &__related {
         position: sticky;
         top: 96px;
         width: 25%;
@@ -35,7 +24,7 @@
         }
       }
 
-      &__articles {
+      &__article {
         width: 75%;
         flex-basis: 75%;
         padding-left: 12px;
@@ -52,7 +41,6 @@
         }
       }
     }
-
 
     h3 {
       margin-bottom: 16px;
