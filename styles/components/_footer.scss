@@ -1,5 +1,5 @@
 .footer {
-  padding: 24px;
+  padding: 64px 24px;
   background-color: map-get($base-colors-secondary, "600");
 
   &__container {
@@ -12,6 +12,8 @@
   }
 
   &__column {
+    display: flex;
+    flex-direction: column;
     grid-column-end: span 2;
   }
 
@@ -52,7 +54,7 @@
         padding: 0 12px;
 
         &:nth-child(1n + 4) {
-          margin-top: 20px;
+          margin-top: 24px;
         }
       }
     }
@@ -103,7 +105,64 @@
     }
   }
 
+  .sitemap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+
+    &__category,
+    &__inner-category {
+      grid-column-end: span 2;
+      margin-bottom: 32px;
+    }
+
+    &__category {
+      &--contact {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+        grid-column-end: span 2;
+      }
+    }
+
+    h6 {
+      margin-bottom: 0;
+      font-family: $text_font;
+      font-size: 12px;
+      font-weight: bold;
+      color: map-get($base-colors-grey, "300");
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      li {
+        margin-top: 16px;
+
+        a {
+          font-size: 16px;
+          color: #f0f0f0;
+
+          b,
+          span {
+            display: block;
+            font-size: 18px;
+            margin: 8px 0;
+          }
+        }
+
+        span {
+          display: block;
+          font-size: 14px;
+          color: map-get($base-colors-grey, "300");
+        }
+      }
+    }
+  }
+
   @media screen and (min-width: 600px) {
+    padding: 64px 32px 48px;
+
     &__container {
       grid-template-columns: repeat(8, 1fr);
       column-gap: 24px;
@@ -114,6 +173,19 @@
       &--sitemap,
       &--disclaimer {
         grid-column-end: span 8;
+      }
+    }
+
+    .sitemap {
+      &,
+      &__category--contact {
+        grid-template-columns: repeat(8, 1fr);
+        column-gap: 24px;
+        grid-column-end: span 12;
+      }
+
+      &__inner-category {
+        grid-column-end: span 2;
       }
     }
   }
@@ -136,5 +208,30 @@
         grid-column-end: span 12;
       }
     }
+
+    .sitemap {
+      &,
+      &__category--contact {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      &__category {
+        &--pier,
+        &--mobile,
+        &--auto {
+          grid-column-end: span 3;
+        }
+      }
+
+      &__inner-category {
+        grid-column-end: span 3;
+      }
+    }
   }
+}
+
+// appended by zendesk
+// after the footer element
+.powered-by-zendesk {
+  display: none;
 }
