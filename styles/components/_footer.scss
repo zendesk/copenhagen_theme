@@ -1,28 +1,74 @@
-/***** Footer *****/
 .footer {
-  border-top: 1px solid $border-color;
-  margin-top: 60px;
-  padding: 30px 0;
+  padding: 24px;
+  background-color: map-get($base-colors-secondary, "600");
 
-  a {
-    color: $secondary-text-color;
+  &__container {
+    max-width: 1224px;
+    margin: 0 auto;
   }
 
-  &-inner {
-    @include max-width-container;
-    display: flex;
-    justify-content: space-between;
+  &__logo,
+  &__social-links,
+  &__download-app {
+    a {
+      display: inline-block;
+      font-size: 0;
+
+      img {
+        display: block;
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
   }
 
-  &-language-selector button {
-    color: $secondary-text-color;
-    display: inline-block;
-  }
-}
+  &__logo {
+    margin-bottom: 32px;
 
-.powered-by-zendesk {
-  a,
-  a:visited {
-    color: $secondary-text-color;
+    a {
+      img {
+        width: 64px;
+      }
+    }
+  }
+
+  &__social-links {
+    margin-bottom: 48px;
+
+    ul {
+      max-width: 200px;
+      margin: 0 -12px;
+
+      li {
+        display: inline-block;
+        padding: 0 12px;
+
+        &:nth-child(1n + 4) {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+
+  &__download-app {
+    ul {
+      li {
+        display: block;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 160px;
+          height: 48px;
+          background-color: $color-black;
+          border-radius: 4px;
+        }
+
+        & + li {
+          margin-top: 24px;
+        }
+      }
+    }
   }
 }
