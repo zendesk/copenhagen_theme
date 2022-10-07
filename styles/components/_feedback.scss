@@ -36,4 +36,11 @@
       margin-left: 16px;
     }
   }
+
+  @media screen and (max-width: map-get($viewports, "tablet")) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
