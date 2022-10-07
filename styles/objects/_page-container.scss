@@ -1,5 +1,8 @@
 .page-container {
   position: relative;
   width: 100%;
-  padding: 0 24px;
+
+  @media screen and (min-width: map-get($viewports, "tablet")) {
+    padding: 0 24px;  
+  }
 }
