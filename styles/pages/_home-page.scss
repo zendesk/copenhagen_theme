@@ -45,6 +45,9 @@
     }
 
     @media screen and (max-width: map-get($viewports, "tablet")) {
+      padding-top: 48px;
+      padding-bottom: 48px;
+
       &:before,
       &:after {
         display: none;
@@ -66,15 +69,20 @@
 
   .section--categories {
     padding-bottom: 48px;
+    padding-bottom: 48px;
 
     .section__container {
       max-width: map-get($container-width, "thin");
+    }
+
+    @media screen and (min-width: map-get($viewports, "desktop")) {
+      padding-top: 64px;
     }
   }
 
   .section--articles {
     padding-top: 48px;
-    padding-bottom: 96px;
+    padding-bottom: 48px;
 
     .section {
       &__container {
@@ -83,20 +91,38 @@
 
       &__title {
         position: relative;
-        padding-left: 48px;
+        padding-left: 32px;
 
         &:before {
           display: block;
           position: absolute;
           top: 50%;
           left: 0;
-          width: 40px;
-          height: 48px;
+          width: 24px;
+          height: 24px;
           background: url($assets-_icon-star-svg) no-repeat center/contain;
           content: '';
           transform: translateY(-50%);
         }
       }
+    }
+
+    @media screen and (max-width: map-get($viewports, "tablet")) {
+      .section {
+        &__title {
+          padding-left: 24px;
+          font-size: 18px;
+
+          &:before {
+            width: 16px;
+            height: 16px;
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width: map-get($viewports, "desktop")) {
+      padding-bottom: 96px;
     }
   }
 }
