@@ -24,4 +24,17 @@
       }
     }
   }
+
+  @media screen and (max-width: map-get($viewports, "tablet")) {
+    .category {
+      &__icon {
+        max-width: 64px;
+        margin-bottom: 8px;
+      }
+
+      &__description {
+        display: none;
+      }
+    }
+  }
 }
