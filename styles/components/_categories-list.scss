@@ -23,7 +23,7 @@
 
     .category {
       &__icon {
-        max-width: 64px;
+        height: 48px;
         margin-bottom: 8px;
         
       }
@@ -38,7 +38,7 @@
     }
   }
 
-  @media screen and (min-width: map-get($viewports, "tablet")) {
+  @media screen and (min-width: map-get($viewports, "desktop")) {
     margin: 0 -12px;
 
     &__item {
