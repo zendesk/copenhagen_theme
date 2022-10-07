@@ -61,6 +61,8 @@
   }
 
   &__download-app {
+    margin-bottom: 48px;
+
     ul {
       li {
         display: block;
@@ -83,7 +85,6 @@
   }
 
   &__disclaimer {
-    margin-top: 32px;
     padding-top: 32px;
     border-top: 1px solid map-get($base-colors-grey, "400");
     font-size: 14px;
