@@ -25,8 +25,6 @@
 
 
 // components
-@import "components/_header";
-@import "components/_footer";
 @import "components/_buttons";
 @import "components/_split_button";
 @import "components/_tables";
@@ -57,6 +55,9 @@
 @import "components/_dropdowns";
 @import "components/_content-tags";
 
+@import "components/_header";
+@import "components/_menu";
+@import "components/_footer";
 @import "components/_article";
 @import "components/_articles-list";
 @import "components/_breadcrumbs";
@@ -66,7 +67,8 @@
 
 
 // trumps
-// not yet
+@import "trumps/_header";
+@import "trumps/_footer";
 
 // pages
 @import "pages/_home-page";
