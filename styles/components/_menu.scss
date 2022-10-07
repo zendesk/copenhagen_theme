@@ -1,0 +1,125 @@
+.menu {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  &__item {
+    position: relative;
+    height: 100%;
+    padding: 0 16px;
+    font-size: 14px;
+
+    & > a,
+    & > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-decoration: none;
+      color: map-get($base-colors-secondary, "600");
+
+      &:after {
+        display: block;
+        position: absolute;
+        content: '';
+      }
+    }
+
+    & > a {
+      &:after {
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: map-get($base-colors-primary, "600");
+        transition: all 250ms ease-out 0s;
+      }
+
+      &:hover {
+        &:after {
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    & > span {
+      padding-right: 16px;
+
+      &:after {
+        top: 50%;
+        right: 16px;
+        width: 10px;
+        height: 10px;
+        background: url($assets-_icon-chevron-svg) no-repeat center/contain;
+        transform: translateY(-50%);
+      }
+    }
+
+    &:hover {
+      .menu__submenu {
+        opacity: 1;
+        visibility: visible;
+
+        &:before {
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__submenu {
+    position: absolute;
+    top: 100%;
+    left: 16px;
+    width: 210px;
+    background-color: $color-white;
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 250ms ease-out 0s, opacity 250ms ease-out 50ms;
+
+    &:before {
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      content: '';
+      background-color: map-get($base-colors-primary, "600");
+      transition: all 250ms ease-out 0s;
+    }
+
+    ul {
+      border: 1px solid map-get($base-colors-grey, "100");
+      border-top-width: 0;
+
+      li {
+        & + li {
+          border-top: 1px solid map-get($base-colors-grey, "100");
+        }
+      }
+    }
+
+    a {
+      position: relative;
+      display: block;
+      padding: 16px;
+
+      &:after {
+        display: block;
+        position: absolute;
+        content: '';
+        top: 50%;
+        right: 16px;
+        width: 10px;
+        height: 10px;
+        background: url($assets-_icon-chevron-svg) no-repeat center/contain;
+        transform: translateY(-50%) rotate(-90deg);
+      }
+    }
+  }
+}
