@@ -1,25 +1,223 @@
 <footer class="footer">
-  <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+  <div class="footer__container">
+    <div class="footer__column footer__column--social">
+      <div class="footer__logo">
+        {{#link 'help_center'}}
+          {{ help_center.name }}
 
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{current_locale.name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
-          </span>
+          <img src="{{asset '_logo-pier.svg'}}" alt="{{ help_center.name }}" />
+        {{/link}}
+      </div>
+
+      <nav class="footer__social-links">
+        <ul>
+          <li>
+            <a
+              href="https://www.facebook.com/pierseguradora/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{{asset '_social-facebook.svg'}}" alt="Facebook" />
+              Facebook
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/pierseguradora/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{{asset '_social-instagram.svg'}}" alt="Instagram" />
+              Instagram
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.linkedin.com/company/pier-seguradora/home/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{{asset '_social-linkedin.svg'}}" alt="LinkedIn" />
+              LinkedIn
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.youtube.com/c/PierSeguradora/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{{asset '_social-youtube.svg'}}" alt="YouTube" />
+              YouTube
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.tiktok.com/@pierseguradora"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{{asset '_social-tiktok.svg'}}" alt="TikTok" />
+              TikTok
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://twitter.com/pierseguradora"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{{asset '_social-twitter.svg'}}" alt="Twitter" />
+              Twitter
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <nav class="footer__download-app">
+        <ul>
+          <li>
+            <a
+              href="https://pier.onelink.me/ulrm/appDownloadFooter"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Baixar na App Store"
+            >
+              Baixar na App Store
+              <img src="{{asset '_app-app-store.svg'}}" alt="Baixar na App Store" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://pier.onelink.me/ulrm/appDownloadFooter"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Disponível no Google Play"
+            >
+              Disponível no Google Play
+              <img src="{{asset '_app-google-play.svg'}}" alt="Disponível no Google Play" />
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <nav class="footer__column footer__column--sitemap">
+      <div class="footer__sitemap sitemap">
+        <div class="sitemap__category sitemap__category--pier">
+          <h6>Pier</h6>
+
+          <ul>
+            <li>
+              <a href="https://www.pier.digital/pedir-reembolso">Pedir reembolso</a>
+            </li>
+            <li>
+              <a href="https://www.pier.digital/carreiras">Carreiras</a>
+            </li>
+            <li>
+              <a href="https://blog.pier.digital/">Blog</a>
+            </li>
+            <li>
+              <a href="https://www.pier.digital/lp/sobre-a-pier">Sobre a Pier</a>
+            </li>
+            <li>
+              <a href="https://my.safe.space/company/pier/a6rmvgmdqy/">Alô, Pier!</a>
+            </li>
+          </ul>
         </div>
-      {{/if}}
+
+        <div class="sitemap__category sitemap__category--mobile">
+          <h6>Celular</h6>
+
+          <ul>
+            <li>
+              <a href="https://www.pier.digital/seguro-celular">Seguro de celular</a>
+            </li>
+            <li>
+              <a href="https://www.pier.digital/seguro-celular/tabela-pipe">Tabela Pipe</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sitemap__category sitemap__category--auto">
+          <h6>Auto</h6>
+
+          <ul>
+            <li>
+              <a href="https://www.pier.digital/seguro-auto">Seguro auto</a>
+            </li>
+            <li>
+              <a href="https://www.pier.digital/seguro-auto/sobre-os-servicos">Assistência</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="sitemap__category sitemap__category--contact">
+          <div class="sitemap__inner-category sitemap__inner-category--chat">
+            <h6>Fale com a gente</h6>
+
+            <ul>
+              <li>
+                <a>Chat</a>
+                <span>Para dúvidas, solicitações ou problemas é só mandar um oi!</span>
+              </li>
+              <li>
+                <a href="https://ajuda.pier.digital/hc/pt-br/requests/new">Email</a>
+              </li>
+              <li>
+                <a href="https://www.pier.digital/imprensa">Imprensa</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sitemap__inner-category sitemap__inner-category--sac">
+            <ul>
+              <li>
+                <a href="tel:0800 775 4031">
+                  SAC
+                  <b>0800 775 4031</b>
+                </a>
+                <span>Estamos sempre prontos para te ajudar com reclamações e cancelamento de contratos, 24h por dia, 7 dias por semana. 😉</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sitemap__inner-category sitemap__inner-category--deaf">
+            <ul>
+              <li>
+                <a href="tel:0800 775 4025">
+                  Deficiente Auditivo
+                  <b>0800 775 4025</b>
+                </a>
+                <span>A Pier está sempre a disposição!</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="sitemap__inner-category sitemap__inner-category--ombudsman">
+            <ul>
+              <li>
+                <a href="tel:0800 765 5510">
+                  Ouvidoria
+                  <b>0800 765 5510</b>
+                </a>
+                <span>O problema não foi resolvido em outros canais? Não se preocupe! É só ligar para a Ouvidoria: segunda a sexta, das 9h às 18h.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="footer__column footer__column--disclaimer">
+      <div class="footer__disclaimer">
+        <p>A Pier Seguradora S.A., popularmente conhecida como Pier, atua sob processos SUSEP n.15414.617775/2022-48 (Seguro Celular) e 15414.617774/2022-01 (Seguro Auto).  O nosso CNPJ é o 39.380.513/0001-00 e o nosso escritório fica na Rua Cláudio Soares, 72, conj. 705, São Paulo, SP, CEP 05422-030. 😉 Não temos vínculo com os fabricantes. O único vínculo é entre a Pier, você e uma vida mais leve 💕</p>
+
+        <nav>
+          <a href="https://www.pier.digital/termos-de-uso">Termos de uso</a>
+          <a href="https://www.pier.digital/politica-de-privacidade">Política de Privacidade</a>
+        </nav>
+      </div>
     </div>
   </div>
 </footer>

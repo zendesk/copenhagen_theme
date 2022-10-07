@@ -1,63 +1,80 @@
-<div class="container-divider"></div>
-<div class="container">
-  <nav class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search scoped=settings.scoped_kb_search submit=false}}
+<div class="page-container category-page" id="main-content">
+  <section class="section section--head">
+    <div class="section__container">
+      <nav class="section__nav">
+        {{breadcrumbs}}
+      </nav>
+
+      <div class="section__category">
+        <div class="category">
+          <h1 class="section__title category__title"><span>Tudo sobre</span> {{ category.name }}</h1>
+
+          {{#if category.description}}
+            <p class="category__description">{{ category.description }}</p>
+          {{/if}}
+
+          {{#is category.name 'Auto'}}
+            <img class="category__icon" src="{{asset '_draw-auto.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+
+          {{#is category.name 'Celular'}}
+            <img class="category__icon" src="{{asset '_draw-smartphone.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+
+          {{#is category.name 'Pier'}}
+            <img class="category__icon" src="{{asset '_draw-doubt.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+
+          {{#is category.name 'Vídeos'}}
+            <img class="category__icon" src="{{asset '_draw-couch.svg'}}" alt="{{ category.name }}" />
+          {{/is}}
+        </div>
+      </div>
     </div>
-  </nav>
+  </section>
 
-  <div class="category-container">
-    <div class="category-content">
-      <header class="page-header">
-        <h1>{{category.name}}</h1>
-        {{#if category.description}}
-          <p class="page-header-description">{{category.description}}</p>
-        {{/if}}
-      </header>
+  <section class="section section--topics">
+    <div class="section__container">
+      <div class="section__subjects">
+        <h3>Assuntos</h3>
 
-      <div id="main-content" class="section-tree">
+        <ul>
+          {{#each sections}}
+            <li>
+              <a href="#section-{{ id }}">{{ name }}</a>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="section__articles">
         {{#each sections}}
-          <section class="section">
-            <h2 class="section-tree-title">
-              <a href="{{url}}">{{name}}</a>
-            </h2>
+          <section id="section-{{ id }}">
+            <h2>{{ name }}</h2>
+
             {{#if articles}}
-              <ul class="article-list">
+              <ul class="articles-list">
                 {{#each articles}}
-                  <li class="article-list-item{{#if promoted}} article-promoted{{/if}}">
-                    {{#if promoted}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
-                        <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z"/>
-                      </svg>
-                    {{/if}}
-                    <a href="{{url}}" class="article-list-link">{{title}}</a>
-                    {{#if internal}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                        <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                        <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                      </svg>
-                    {{/if}}
+                  <li class="articles-list__item">
+                    <a href="{{url}}" class="article">
+                      <span class="article__title">{{title}}</span>
+                      <span class="article__excerpt">{{excerpt body characters=200}}</span>
+                    </a>
                   </li>
                 {{/each}}
               </ul>
-              {{#if more_articles}}
-                <a href="{{url}}" class="see-all-articles">
-                  {{t 'show_all_articles' count=article_count}}
-                </a>
-              {{/if}}
             {{/if}}
           </section>
-        {{else}}
-          <i class="category-empty">
-            <a href="{{category.url}}">{{t 'empty'}}</a>
-          </i>
         {{/each}}
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section section--categories">
+    <div class="section__container">
+      <h2 class="section__title">Categorias</h2>
+
+      <!-- check if it's possible to import categories here -->
+    </div>
+  </section>
 </div>

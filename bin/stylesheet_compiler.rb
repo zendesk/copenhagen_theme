@@ -1,4 +1,4 @@
-gem 'sassc', '1.12.1'
+gem 'sassc', '2.4.0'
 require 'sassc'
 
 # Compiles SCSS to CSS, while allowing some variables to be ignored. This is

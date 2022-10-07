@@ -1,0 +1,237 @@
+.footer {
+  padding: 64px 24px;
+  background-color: map-get($base-colors-secondary, "600");
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+    flex-flow: row wrap;
+    max-width: 1224px;
+    margin: 0 auto;
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    grid-column-end: span 2;
+  }
+
+  &__logo,
+  &__social-links,
+  &__download-app {
+    a {
+      display: inline-block;
+      font-size: 0;
+
+      img {
+        display: block;
+        max-width: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &__logo {
+    margin-bottom: 32px;
+
+    a {
+      img {
+        width: 64px;
+      }
+    }
+  }
+
+  &__social-links {
+    margin-bottom: 48px;
+
+    ul {
+      max-width: 200px;
+      margin: 0 -12px;
+
+      li {
+        display: inline-block;
+        padding: 0 12px;
+
+        &:nth-child(1n + 4) {
+          margin-top: 24px;
+        }
+      }
+    }
+  }
+
+  &__download-app {
+    ul {
+      li {
+        display: block;
+
+        a {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 160px;
+          height: 48px;
+          background-color: $color-black;
+          border-radius: 4px;
+        }
+
+        & + li {
+          margin-top: 24px;
+        }
+      }
+    }
+  }
+
+  &__disclaimer {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid map-get($base-colors-grey, "400");
+    font-size: 14px;
+
+    p {
+      color: map-get($base-colors-grey, "300");
+    }
+
+    a {
+      font-weight: bold;
+      color: map-get($base-colors-primary, "500");
+
+      & + a:before {
+        margin: 0 6px 0 4px;
+        content: "\00B7"; // middle dot/interpunct: ·
+        font-weight: bold;
+        color: $color-white;
+      }
+    }
+  }
+
+  .sitemap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 16px;
+
+    &__category,
+    &__inner-category {
+      grid-column-end: span 2;
+      margin-bottom: 32px;
+    }
+
+    &__category {
+      &--contact {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 16px;
+        grid-column-end: span 2;
+      }
+    }
+
+    h6 {
+      margin-bottom: 0;
+      font-family: $text_font;
+      font-size: 12px;
+      font-weight: bold;
+      color: map-get($base-colors-grey, "300");
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    ul {
+      li {
+        margin-top: 16px;
+
+        a {
+          font-size: 16px;
+          color: #f0f0f0;
+
+          b,
+          span {
+            display: block;
+            font-size: 18px;
+            margin: 8px 0;
+          }
+        }
+
+        span {
+          display: block;
+          font-size: 14px;
+          color: map-get($base-colors-grey, "300");
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 600px) {
+    padding: 64px 32px 48px;
+
+    &__container {
+      grid-template-columns: repeat(8, 1fr);
+      column-gap: 24px;
+    }
+
+    &__column {
+      &--social,
+      &--sitemap,
+      &--disclaimer {
+        grid-column-end: span 8;
+      }
+    }
+
+    .sitemap {
+      &,
+      &__category--contact {
+        grid-template-columns: repeat(8, 1fr);
+        column-gap: 24px;
+        grid-column-end: span 12;
+      }
+
+      &__inner-category {
+        grid-column-end: span 2;
+      }
+    }
+  }
+
+  @media screen and (min-width: 840px) {
+    &__container {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &__column {
+      &--social {
+        grid-column-end: span 3;
+      }
+
+      &--sitemap {
+        grid-column-end: span 9;
+      }
+
+      &--disclaimer {
+        grid-column-end: span 12;
+      }
+    }
+
+    .sitemap {
+      &,
+      &__category--contact {
+        grid-template-columns: repeat(12, 1fr);
+      }
+
+      &__category {
+        &--pier,
+        &--mobile,
+        &--auto {
+          grid-column-end: span 3;
+        }
+      }
+
+      &__inner-category {
+        grid-column-end: span 3;
+      }
+    }
+  }
+}
+
+// appended by zendesk
+// after the footer element
+.powered-by-zendesk {
+  display: none;
+}

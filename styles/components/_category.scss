@@ -1,0 +1,15 @@
+.category {
+  position: relative;
+
+  span {
+    display: block;
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+
+  &__icon {
+    object-fit: contain;
+  }
+}

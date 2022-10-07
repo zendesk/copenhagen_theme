@@ -1,0 +1,58 @@
+/***** Base *****/
+body {
+  background-color: $background_color;
+  color: $text_color;
+  font-family: $text_font;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+
+  > main {
+    @include desktop {
+      min-height: 65vh;
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $heading_font;
+  font-weight: normal;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 22px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: $font-weight-semibold;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+a {
+  color: $link_color;
+  text-decoration: none;
+
+  &:visited {
+    color: $visited_link_color;
+  }
+
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
