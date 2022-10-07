@@ -49,6 +49,8 @@
         padding-left: 12px;
 
         section {
+          scroll-margin-top: $header-height;
+
           h2 {
             margin: 0 0 16px;
             font-size: 32px;

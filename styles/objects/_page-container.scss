@@ -2,7 +2,7 @@
   position: relative;
   width: 100%;
 
-  @media screen and (min-width: map-get($viewports, "tablet")) {
-    padding: 0 24px;  
+  @media screen and (min-width: map-get($viewports, "desktop")) {
+    padding: 24px 24px 0; 
   }
 }
