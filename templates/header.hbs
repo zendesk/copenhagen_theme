@@ -1,98 +1,72 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
 <header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
-      {{#if settings.show_brand_name}}
-        <span aria-hidden="true">{{help_center.name}}</span>
-      {{/if}}
-    {{/link}}
-  </div>
+  <div class="header__container">
+    <nav class="header__menu">
+      <ul class="menu">
+        <li class="menu__item">
+          <span>Celular</span>
 
-  <div class="nav-wrapper-desktop">
-    <nav class="user-nav" id="user-nav">
-      <ul class="user-nav-list">
-        <li>{{link 'community'}}</li>
-        <li>{{link 'new_request' class='submit-a-request'}}</li>
-        {{#unless signed_in}}
-          <li>
-            {{#link "sign_in" class="sign-in"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-        {{/unless}}
+          <div class="menu__submenu">
+            <ul>
+              <li>
+                <a href="https://www.pier.digital/seguro-celular">Seguro de celular</a>
+              </li>
+              <li>
+                <a href="https://www.pier.digital/seguro-celular/tabela-pipe">Tabela Pipe</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="menu__item">
+          <span>Auto</span>
+
+          <div class="menu__submenu">
+            <ul>
+              <li>
+                <a href="https://www.pier.digital/seguro-auto">Seguro auto</a>
+              </li>
+              <li>
+                <a href="https://www.pier.digital/seguro-auto/sobre-os-servicos">Assistência 24h</a>
+              </li>
+              <li>
+                <a href="https://www.pier.digital/seguro-auto/terceiros">Acionar cobertura para terceiros</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="menu__item">
+          <a href="https://blog.pier.digital/">Blog</a>
+        </li>
+        <li class="menu__item">
+          <a href="https://www.pier.digital/carreiras">Carreiras</a>
+        </li>
+        <li class="menu__item">
+          <a href="https://www.pier.digital/seguro-celular/condicoes-gerais">Termos</a>
+        </li>
+        <li class="menu__item">
+          <a href="https://ajuda.pier.digital/hc/pt-br">Dúvidas</a>
+        </li>
       </ul>
     </nav>
-    {{#if signed_in}}
-      <div class="user-info dropdown">
-        <button class="dropdown-toggle" aria-haspopup="true">
-          {{user_avatar class="user-avatar"}}
-          <span>
-            {{user_name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </span>
-        </button>
-        <div class="dropdown-menu" role="menu">
-          {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
-          {{link "requests" role="menuitem"}}
-          {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
-          {{contact_details role="menuitem"}}
-          {{change_password role="menuitem"}}
-          <div class="separator" role="separator"></div>
-          {{link "sign_out" role="menuitem"}}
-        </div>
-      </div>
-    {{/if}}
-  </div>
 
-  <div class="nav-wrapper-mobile">
-    <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-      {{#if signed_in}}
-        {{user_avatar class="user-avatar"}}
-      {{/if}}
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-      </svg>
-    </button>
-    <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
-      <ul class="menu-list-mobile-items">
-        {{#if signed_in}}
-          <li class="user-avatar-item item">
-            {{#my_profile role="menuitem" class="my-profile"}}
-              {{user_avatar class="menu-profile-avatar"}}
-              <div class="menu-profile-name">
-                <div>{{user_name}}</div>
-                <div class="my-profile-tooltip">{{t 'profile'}}</div>
-              </div>
-            {{/my_profile}}
-          </li>
-          <li class="item">{{link "requests" role="menuitem"}}</li>
-          <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
-          <li class="item">{{contact_details role="menuitem"}}</li>
-          <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
-          <li class="nav-divider"></li>
-        {{else}}
-          <li class="item">
-            {{#link "sign_in" role="menuitem"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-          <li class="nav-divider"></li>
-        {{/if}}
-        <li class="item">{{link 'community' role="menuitem"}}</li>
-        <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
-        <li class="nav-divider"></li>
-        {{#if signed_in}}
-          <li class="item">
-            {{link "sign_out" role="menuitem"}}
-          </li>
-        {{/if}}
+    <div class="header__logo">
+      {{#link 'help_center'}}
+        <img src="{{asset '_logo-pier.svg'}}" alt="{{t 'home_page' name=help_center.name}}" />
+      {{/link}}
+    </div>
+
+    <nav class="header__actions">
+      <ul class="menu">
+        <li class="menu__item">
+          <a href="https://www.pier.digital/pedir-reembolso">Pedir reembolso</a>
+        </li>
+        <li class="menu__item">
+          <a href="https://app.pier.digital/auth/session/new?step=kind">Login</a>
         </li>
       </ul>
     </nav>
   </div>
-
 </header>
