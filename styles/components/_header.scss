@@ -1,7 +1,7 @@
 .header {
   position: sticky;
   top: 0;
-  height: 80px;
+  height: $header-height;
   padding: 0 24px;
   background-color: $color-white;
   border-bottom: 1px solid map-get($base-colors-grey, "100");
