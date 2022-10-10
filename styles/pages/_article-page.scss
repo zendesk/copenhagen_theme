@@ -15,8 +15,19 @@
         flex-basis: 25%;
         padding-right: 12px;
 
-        ul {
-          li {
+        .articles-list {
+          flex-flow: column wrap;
+          margin: 0;
+
+          &__item {
+            flex: 1 1 100%;
+            width: 100%;
+            padding: 0;
+
+            .article__title {
+              font-weight: normal;
+            }
+
             & + li {
               margin-top: 8px;
             }
