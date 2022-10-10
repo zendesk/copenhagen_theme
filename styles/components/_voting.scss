@@ -1,5 +1,6 @@
-.feedback {
+.voting {
   &__container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,6 +13,11 @@
     font-size: 16px;
     font-family: $text_font;
     font-weight: bold;
+  }
+
+  h4,
+  p {
+    color: map-get($base-colors-grey, "500");
   }
 
   &__button {
@@ -55,9 +61,44 @@
     margin-top: 24px;
   }
 
+  &__feedback {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: $color-white;
+    opacity: 0;
+    visibility: hidden;
+    transition: all ease-in-out 250ms;
+    z-index: 1;
+
+    &--active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    img {
+      flex: 0 0 86px;
+      width: 86px;
+      margin-right: 16px;
+    }
+
+    h4 {
+      font-size: 18px;
+    }
+
+    .feedback__text {
+      flex: 1;
+    }
+  }
+
   @media screen and (min-width: map-get($viewports, "tablet")) {
     &__container {
-      display: flex;
       flex-flow: row wrap;
       align-items: flex-start;
       justify-content: flex-start;
@@ -71,6 +112,18 @@
 
     &__cta {
       margin-top: 0;
+    }
+
+    &__feedback {
+      img {
+        flex: 0 0 122px;
+        width: 122px;
+        margin-right: 24px;
+      }
+
+      h4 {
+        font-size: 24px;
+      }
     }
   }
 }

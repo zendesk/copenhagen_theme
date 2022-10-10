@@ -54,21 +54,30 @@
           </div>
 
           {{#with article}}
-            <div class="article__feedback feedback">
-              <div class="feedback__container">
-                <div class="feedback__form">
-                  <h4 class="feedback__title" id="feedback-title">{{t 'was_this_article_helpful'}}</h4>
+            <div class="article__voting voting">
+              <div class="voting__container">
+                <div class="voting__form">
+                  <h4 class="voting__title" id="voting-title">{{t 'was_this_article_helpful'}}</h4>
 
-                  <div class="feedback__options" aria-labelledby="feedback-title">
-                    {{vote 'up' role='radio' class='button feedback__button feedback__button--up' selected_class="button-primary"}}
-                    {{vote 'down' role='radio' class='button feedback__button feedback__button--down' selected_class="button-primary"}}
+                  <div class="voting__options" aria-labelledby="voting-title">
+                    {{vote 'up' role='radio' class='button voting__button voting__button--up' selected_class="button-primary"}}
+                    {{vote 'down' role='radio' class='button voting__button voting__button--down' selected_class="button-primary"}}
                   </div>
                 </div>
                 
-                <div class="feedback__cta">
+                <div class="voting__cta">
                   <h4>Não fique com dúvidas!</h4>
 
-                  <a class="button feedback__button feedback__button--msg">Converse com a gente</a>
+                  <a class="button voting__button voting__button--msg">Converse com a gente</a>
+                </div>
+
+                <div class="voting__feedback feedback">
+                  <img src="{{asset '_draw-friends.svg'}}" alt="" />
+
+                  <div class="feedback__text">
+                    <h4>Avaliação registrada!</h4>
+                    <p>Agradecemos pelo feedback.</p>
+                  </div>
                 </div>
               </div>
             </div>

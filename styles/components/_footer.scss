@@ -6,7 +6,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 16px;
-    flex-flow: row wrap;
     max-width: 1224px;
     margin: 0 auto;
   }

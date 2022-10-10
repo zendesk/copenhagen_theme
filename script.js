@@ -481,3 +481,27 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+(function() {
+  const toggleFeedback = function() {
+    const feedback = document.querySelector('.voting__feedback');
+
+    feedback.classList.add('voting__feedback--active');
+
+    setTimeout(function() {
+      feedback.classList.remove('voting__feedback--active');
+    }, 3000);
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const votingButtons = document.querySelectorAll('.voting__button');
+
+    if (votingButtons.length) {
+      votingButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          setTimeout(toggleFeedback, 500);
+        });
+      });
+    }
+  });
+})();
