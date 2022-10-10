@@ -18,17 +18,34 @@
       text-decoration: none;
       transition: all ease-in-out 200ms;
 
-      &:before {
+      &:after {
+        display: block;
         position: absolute;
         top: 50%;
         right: 16px;
-        content: "\003E"; // greater than: >
-        font-weight: bold;
-        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        background: url($assets-_icon-chevron-svg) no-repeat center/contain;
+        content: '';
+        transform: translateY(-50%) rotate(-90deg);
       }
 
       &:hover {
         background-color: $color-light-grey;
+      }
+    }
+
+    &--no-decoration {
+      a {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    &--current {
+      a {
+        background-color: map-get($base-colors-primary, "200");
       }
     }
   }
