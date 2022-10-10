@@ -40,6 +40,12 @@
       }
     }
 
+    &--msg {
+      &:before {
+        content: '\01F4AC'
+      }
+    }
+
     & + .button {
       margin-left: 16px;
     }
