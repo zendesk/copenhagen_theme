@@ -12,9 +12,11 @@
       display: block;
       position: relative;
       padding: 8px 32px 8px 16px;
-      border: 1px solid map-get($base-colors-grey, "400");
+      border: 1px solid map-get($base-colors-grey, "200");
       border-radius: 4px;
-      color: map-get($base-colors-primary, "700");
+      color: map-get($base-colors-secondary, "600");
+      text-decoration: none;
+      transition: all ease-in-out 200ms;
 
       &:before {
         position: absolute;
@@ -23,6 +25,10 @@
         content: "\003E"; // greater than: >
         font-weight: bold;
         transform: translateY(-50%);
+      }
+
+      &:hover {
+        background-color: $color-light-grey;
       }
     }
   }
