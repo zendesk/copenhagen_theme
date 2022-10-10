@@ -55,11 +55,21 @@
 
           {{#with article}}
             <div class="article__feedback feedback">
-              <h4 class="feedback__title" id="feedback-title">{{t 'was_this_article_helpful'}}</h4>
+              <div class="feedback__container">
+                <div class="feedback__form">
+                  <h4 class="feedback__title" id="feedback-title">{{t 'was_this_article_helpful'}}</h4>
 
-              <div class="feedback__options" aria-labelledby="feedback-title">
-                {{vote 'up' role='radio' class='button feedback__button feedback__button--up' selected_class="button-primary"}}
-                {{vote 'down' role='radio' class='button feedback__button feedback__button--down' selected_class="button-primary"}}
+                  <div class="feedback__options" aria-labelledby="feedback-title">
+                    {{vote 'up' role='radio' class='button feedback__button feedback__button--up' selected_class="button-primary"}}
+                    {{vote 'down' role='radio' class='button feedback__button feedback__button--down' selected_class="button-primary"}}
+                  </div>
+                </div>
+                
+                <div class="feedback__cta">
+                  <h4>Não fique com dúvidas!</h4>
+
+                  <a class="button">Converse com a gente</a>
+                </div>
               </div>
             </div>
           {{/with}}

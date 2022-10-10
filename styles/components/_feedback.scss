@@ -1,5 +1,13 @@
 .feedback {
-  &__title {
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  h4 {
     margin-bottom: 16px;
     font-size: 16px;
     font-family: $text_font;
@@ -37,10 +45,26 @@
     }
   }
 
-  @media screen and (max-width: map-get($viewports, "tablet")) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  &__cta {
+    margin-top: 24px;
+  }
+
+  @media screen and (min-width: map-get($viewports, "tablet")) {
+    &__container {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+    }
+
+    &__form,
+    &__cta {
+      flex: 1 0 50%;
+    }
+
+    &__cta {
+      margin-top: 0;
+    }
   }
 }
