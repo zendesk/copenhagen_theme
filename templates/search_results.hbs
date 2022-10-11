@@ -121,14 +121,16 @@
             {{#each content_tag_filters}}
             	{{#if selected}}
                 <li class="sidenav-tag">
-                  <a href="{{url}}" aria-current="page">
+                  <div class="content-tag">
                     <span class="label">{{name}}</span>
-                    <span>
-                      <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false"  aria-hidden="true" >
-                          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-                      </svg>
-                    </span>
-                  </a>
+                    <a href="{{url}}" aria-current="page">
+                      <span>
+                        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false"  aria-hidden="true" >
+                            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
                 </li>
               {{/if}}
             {{/each}}

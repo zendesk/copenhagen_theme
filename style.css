@@ -4632,14 +4632,14 @@ ul {
   flex-grow: 0;
 }
 
-.search-results-sidebar .sidenav-tag a {
+.search-results-sidebar .sidenav-tag .content-tag {
   background: #E9EBED;
   border-radius: 4px;
   padding: 4px 12px;
   text-decoration: none;
 }
 
-.search-results-sidebar .sidenav-tag a .label {
+.search-results-sidebar .sidenav-tag .content-tag .label {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
@@ -4652,7 +4652,7 @@ ul {
   display: inline-block;
 }
 
-.search-results-sidebar .sidenav-tag a .close-icon {
+.search-results-sidebar .sidenav-tag .content-tag .close-icon {
   color: #555555;
   vertical-align: middle;
   display: inline-block;

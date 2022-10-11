@@ -52,7 +52,7 @@
       align-items: flex-start;
       flex-grow: 0;
 
-      a {
+      .content-tag {
         background: #E9EBED;
         border-radius: 4px;
         padding: 4px 12px;
@@ -60,21 +60,21 @@
 
         .label {
           font-style: normal;
-            font-weight: 600;
-            font-size: 12px;
-            line-height: 24px;
-            text-align: center;
-            letter-spacing: -0.000427656px;
-            color: #49545C;
-            flex-grow: 0;
-            vertical-align: middle;
-            display: inline-block;
+          font-weight: 600;
+          font-size: 12px;
+          line-height: 24px;
+          text-align: center;
+          letter-spacing: -0.000427656px;
+          color: #49545C;
+          flex-grow: 0;
+          vertical-align: middle;
+          display: inline-block;
         }
 
         .close-icon {
           color: #555555;
-            vertical-align: middle;
-            display: inline-block;
+          vertical-align: middle;
+          display: inline-block;
         }
       }
     }
