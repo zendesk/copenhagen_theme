@@ -1,3 +1,10 @@
+## [2.19.1](https://github.com/zendesk/copenhagen_theme/compare/v2.19.0...v2.19.1) (2022-10-13)
+
+
+### Bug Fixes
+
+* only close content tag with click on close icon ([7a1b18a](https://github.com/zendesk/copenhagen_theme/commit/7a1b18ab70643c4ea2e9a27a5d88188e50ff3c72))
+
 # [2.19.0](https://github.com/zendesk/copenhagen_theme/compare/v2.18.0...v2.19.0) (2022-09-28)
 
 
