@@ -12,17 +12,42 @@
       display: block;
       position: relative;
       padding: 8px 32px 8px 16px;
-      border: 1px solid map-get($base-colors-grey, "400");
+      border: 1px solid map-get($base-colors-grey, "200");
       border-radius: 4px;
-      color: map-get($base-colors-primary, "700");
+      color: map-get($base-colors-secondary, "600");
+      text-decoration: none;
+      transition: all ease-in-out 200ms;
 
-      &:before {
+      &:after {
+        display: block;
         position: absolute;
         top: 50%;
         right: 16px;
-        content: "\003E"; // greater than: >
-        font-weight: bold;
-        transform: translateY(-50%);
+        width: 10px;
+        height: 10px;
+        background: url($assets-_icon-chevron-svg) no-repeat center/contain;
+        content: '';
+        transform: translateY(-50%) rotate(-90deg);
+      }
+
+      &:hover {
+        background-color: $color-light-grey;
+        border-color: map-get($base-colors-grey, "200");
+      }
+    }
+
+    &--no-decoration {
+      a {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    &--current {
+      a {
+        background-color: map-get($base-colors-primary, "200");
+        border-color: map-get($base-colors-secondary, "600");
       }
     }
   }
@@ -30,6 +55,19 @@
   .article {
     span {
       display: block;
+    }
+  }
+
+  @media screen and (min-width: map-get($viewports, "desktop")) {
+    flex-flow: row wrap;
+
+    &__item {
+      flex: 1 1 50%;
+      width: 50%;
+
+      a {
+        height: 100%;
+      }
     }
   }
 }

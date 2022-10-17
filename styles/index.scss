@@ -1,6 +1,8 @@
 // settings
 @import "settings/_variables";
 @import "settings/_colors";
+@import "settings/_sizes";
+@import "settings/_viewports";
 
 // tools
 @import "tools/_mixins";
@@ -60,7 +62,7 @@
 @import "components/_articles-list";
 @import "components/_breadcrumbs";
 @import "components/_categories-list";
-@import "components/_feedback";
+@import "components/_voting";
 @import "components/_section";
 
 

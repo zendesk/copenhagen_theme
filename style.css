@@ -499,7 +499,12 @@ ul {
 .page-container {
   position: relative;
   width: 100%;
-  padding: 0 24px;
+}
+
+@media screen and (min-width: 1000px) {
+  .page-container {
+    padding: 24px 24px 0;
+  }
 }
 
 /***** Section pages *****/
@@ -551,7 +556,7 @@ ul {
 }
 
 /***** Buttons *****/
-.button, .z-article-subscribe button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .split-button button, .section-subscribe button {
+.button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .split-button button, .section-subscribe button {
   background-color: transparent;
   border: 1px solid $brand_color;
   border-radius: 4px;
@@ -566,28 +571,22 @@ ul {
   transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
   user-select: none;
   white-space: nowrap;
-  width: 100%;
+  width: auto;
   -webkit-touch-callout: none;
 }
 
-@media (min-width: 768px) {
-  .button, .z-article-subscribe button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .split-button button, .section-subscribe button {
-    width: auto;
-  }
-}
-
-.button:visited, .z-article-subscribe button:visited, .pagination-next-link:visited, .pagination-prev-link:visited, .pagination-first-link:visited, .pagination-last-link:visited, .subscriptions-subscribe button:visited, .requests-table-toolbar .organization-subscribe button:visited, .community-follow button:visited, .split-button button:visited, .section-subscribe button:visited, .button:hover, .z-article-subscribe button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .subscriptions-subscribe button:hover, .requests-table-toolbar .organization-subscribe button:hover, .community-follow button:hover, .split-button button:hover, .section-subscribe button:hover, .button:active, .z-article-subscribe button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .subscriptions-subscribe button:active, .requests-table-toolbar .organization-subscribe button:active, .community-follow button:active, .split-button button:active, .section-subscribe button:active, .button:focus, .z-article-subscribe button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .subscriptions-subscribe button:focus, .requests-table-toolbar .organization-subscribe button:focus, .community-follow button:focus, .split-button button:focus, .section-subscribe button:focus, .button.button-primary, .z-article-subscribe button.button-primary, .z-article-subscribe button[data-selected="true"], .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected="true"], .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected="true"], .community-follow button.button-primary, .split-button button.button-primary, .section-subscribe button.button-primary, .section-subscribe button[data-selected="true"] {
+.button:visited, .pagination-next-link:visited, .pagination-prev-link:visited, .pagination-first-link:visited, .pagination-last-link:visited, .subscriptions-subscribe button:visited, .requests-table-toolbar .organization-subscribe button:visited, .community-follow button:visited, .split-button button:visited, .section-subscribe button:visited, .button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .subscriptions-subscribe button:hover, .requests-table-toolbar .organization-subscribe button:hover, .community-follow button:hover, .split-button button:hover, .section-subscribe button:hover, .button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .subscriptions-subscribe button:active, .requests-table-toolbar .organization-subscribe button:active, .community-follow button:active, .split-button button:active, .section-subscribe button:active, .button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .subscriptions-subscribe button:focus, .requests-table-toolbar .organization-subscribe button:focus, .community-follow button:focus, .split-button button:focus, .section-subscribe button:focus, .button.button-primary, .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected="true"], .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected="true"], .community-follow button.button-primary, .split-button button.button-primary, .section-subscribe button.button-primary, .section-subscribe button[data-selected="true"] {
   background-color: $brand_color;
   color: $brand_text_color;
   text-decoration: none;
 }
 
-.button.button-primary:hover, .z-article-subscribe button.button-primary:hover, .z-article-subscribe button[data-selected="true"]:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .subscriptions-subscribe button.button-primary:hover, .subscriptions-subscribe button[data-selected="true"]:hover, .requests-table-toolbar .organization-subscribe button.button-primary:hover, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:hover, .community-follow button.button-primary:hover, .split-button button:hover, .section-subscribe button.button-primary:hover, .section-subscribe button[data-selected="true"]:hover, .button.button-primary:focus, .z-article-subscribe button.button-primary:focus, .z-article-subscribe button[data-selected="true"]:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .subscriptions-subscribe button.button-primary:focus, .subscriptions-subscribe button[data-selected="true"]:focus, .requests-table-toolbar .organization-subscribe button.button-primary:focus, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:focus, .community-follow button.button-primary:focus, .split-button button.button-primary:focus, .section-subscribe button.button-primary:focus, .section-subscribe button[data-selected="true"]:focus, .button.button-primary:active, .z-article-subscribe button.button-primary:active, .z-article-subscribe button[data-selected="true"]:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .subscriptions-subscribe button.button-primary:active, .subscriptions-subscribe button[data-selected="true"]:active, .requests-table-toolbar .organization-subscribe button.button-primary:active, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:active, .community-follow button.button-primary:active, .split-button button.button-primary:active, .section-subscribe button.button-primary:active, .section-subscribe button[data-selected="true"]:active {
+.button.button-primary:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .subscriptions-subscribe button.button-primary:hover, .subscriptions-subscribe button[data-selected="true"]:hover, .requests-table-toolbar .organization-subscribe button.button-primary:hover, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:hover, .community-follow button.button-primary:hover, .split-button button:hover, .section-subscribe button.button-primary:hover, .section-subscribe button[data-selected="true"]:hover, .button.button-primary:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .subscriptions-subscribe button.button-primary:focus, .subscriptions-subscribe button[data-selected="true"]:focus, .requests-table-toolbar .organization-subscribe button.button-primary:focus, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:focus, .community-follow button.button-primary:focus, .split-button button.button-primary:focus, .section-subscribe button.button-primary:focus, .section-subscribe button[data-selected="true"]:focus, .button.button-primary:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .subscriptions-subscribe button.button-primary:active, .subscriptions-subscribe button[data-selected="true"]:active, .requests-table-toolbar .organization-subscribe button.button-primary:active, .requests-table-toolbar .organization-subscribe button[data-selected="true"]:active, .community-follow button.button-primary:active, .split-button button.button-primary:active, .section-subscribe button.button-primary:active, .section-subscribe button[data-selected="true"]:active {
   background-color: darken($brand_color, 20%);
   border-color: darken($brand_color, 20%);
 }
 
-.button[data-disabled], .z-article-subscribe button[data-disabled], .pagination-next-link[data-disabled], .pagination-prev-link[data-disabled], .pagination-first-link[data-disabled], .pagination-last-link[data-disabled], .subscriptions-subscribe button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .community-follow button[data-disabled], .split-button button[data-disabled], .section-subscribe button[data-disabled] {
+.button[data-disabled], .pagination-next-link[data-disabled], .pagination-prev-link[data-disabled], .pagination-first-link[data-disabled], .pagination-last-link[data-disabled], .subscriptions-subscribe button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .community-follow button[data-disabled], .split-button button[data-disabled], .section-subscribe button[data-disabled] {
   cursor: default;
 }
 
@@ -1367,8 +1366,7 @@ ul {
   padding: 20px 0;
 }
 
-.comment-heading, .recent-articles-title,
-.related-articles-title {
+.comment-heading {
   margin-bottom: 5px;
   margin-top: 0;
   font-size: 18px;
@@ -4482,7 +4480,6 @@ html[dir="rtl"] .notification-left-aligned {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   column-gap: 16px;
-  flex-flow: row wrap;
   max-width: 1224px;
   margin: 0 auto;
 }
@@ -4530,6 +4527,10 @@ html[dir="rtl"] .notification-left-aligned {
   margin-top: 24px;
 }
 
+.footer__download-app {
+  margin-bottom: 48px;
+}
+
 .footer__download-app ul li {
   display: block;
 }
@@ -4549,7 +4550,6 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .footer__disclaimer {
-  margin-top: 32px;
   padding-top: 32px;
   border-top: 1px solid #787982;
   font-size: 14px;
@@ -4689,6 +4689,31 @@ html[dir="rtl"] .notification-left-aligned {
   color: #23263B;
 }
 
+.article__content p,
+.article__content ul,
+.article__content ol,
+.article__content li {
+  margin-bottom: 16px;
+}
+
+.article__content p:last-child,
+.article__content ul:last-child,
+.article__content ol:last-child,
+.article__content li:last-child {
+  margin-bottom: 0;
+}
+
+.article__content ul,
+.article__content ol {
+  padding-left: 16px;
+}
+
+.article__content img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
 .article__content a {
   color: #FF80A1;
   text-decoration: underline;
@@ -4712,324 +4737,10 @@ html[dir="rtl"] .notification-left-aligned {
   font-weight: normal;
 }
 
-.z-article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-  */
-  flex: 1 0 auto;
-}
-
-@media (min-width: 1024px) {
-  .z-article {
-    flex: 1 0 66%;
-    max-width: 66%;
-    min-width: 640px;
-    padding: 0 30px;
+@media screen and (min-width: 1000px) {
+  .article-container {
+    max-width: 700px;
   }
-}
-
-.z-article-container {
-  display: flex;
-  flex-direction: column;
-}
-
-@media (min-width: 1024px) {
-  .z-article-container {
-    flex-direction: row;
-  }
-}
-
-.z-article-header {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  margin-top: 20px;
-}
-
-@media (min-width: 768px) {
-  .z-article-header {
-    flex-direction: row;
-    margin-top: 0;
-  }
-}
-
-.z-article-avatar {
-  margin-right: 10px;
-}
-
-.z-article-author {
-  margin-bottom: 10px;
-}
-
-@media (min-width: 768px) {
-  .z-article-title {
-    flex-basis: 100%;
-    /* Take entire row */
-  }
-}
-
-.z-article-title .icon-lock {
-  position: relative;
-  left: -5px;
-  vertical-align: baseline;
-}
-
-.z-article [role="button"] {
-  flex-shrink: 0;
-  /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .z-article [role="button"] {
-    width: auto;
-  }
-}
-
-.z-article-info {
-  max-width: 100%;
-}
-
-.z-article-meta {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.z-article-body a {
-  color: $link_color;
-  text-decoration: underline;
-}
-
-.z-article-body a:visited {
-  color: $visited_link_color;
-}
-
-.z-article-body a:hover, .z-article-body a:active, .z-article-body a:focus {
-  color: $hover_link_color;
-}
-
-.z-article-body img {
-  height: auto;
-  max-width: 100%;
-}
-
-.z-article-body ul,
-.z-article-body ol {
-  padding-left: 20px;
-  list-style-position: outside;
-  margin: 20px 0 20px 20px;
-}
-
-[dir="rtl"] .z-article-body ul, [dir="rtl"] .z-article-body ol {
-  padding-right: 20px;
-  padding-left: 0;
-  margin-left: 0;
-  margin-right: 20px;
-}
-
-.z-article-body ul > ul,
-.z-article-body ol > ol,
-.z-article-body ol > ul,
-.z-article-body ul > ol,
-.z-article-body li > ul,
-.z-article-body li > ol {
-  margin: 0;
-}
-
-.z-article-body ul {
-  list-style-type: disc;
-}
-
-.z-article-body :not(pre) > code {
-  background: darken($background_color, 3%);
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 0 5px;
-  margin: 0 2px;
-}
-
-.z-article-body pre {
-  background: darken($background_color, 3%);
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  padding: 10px 15px;
-  overflow: auto;
-  white-space: pre;
-}
-
-.z-article-body blockquote {
-  border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
-  font-style: italic;
-  padding: 0 15px;
-}
-
-.z-article-body > p:last-child {
-  margin-bottom: 0;
-}
-
-.z-article-body iframe {
-  max-width: 100%;
-}
-
-.z-article-content {
-  line-height: 1.6;
-  margin: 40px 0;
-  word-wrap: break-word;
-}
-
-.z-article-footer {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: 20px;
-}
-
-.z-article-comment-count {
-  color: lighten($text_color, 20%);
-}
-
-.z-article-comment-count:hover, .split-button button.z-article-comment-count:hover {
-  text-decoration: none;
-}
-
-.z-article-comment-count-icon {
-  vertical-align: middle;
-  color: $brand_color;
-  width: 18px;
-  height: 18px;
-}
-
-.z-article-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
-  flex: 1 0 auto;
-  margin-bottom: 20px;
-  padding: 0;
-}
-
-@media (min-width: 1024px) {
-  .z-article-sidebar {
-    border: 0;
-    flex: 0 0 17%;
-    height: auto;
-  }
-}
-
-.z-article-relatives {
-  border-top: 1px solid #ddd;
-  display: flex;
-  flex-direction: column;
-  padding: 20px 0;
-}
-
-@media (min-width: 768px) {
-  .z-article-relatives {
-    flex-direction: row;
-  }
-}
-
-.z-article-relatives > * {
-  flex: 1 0 50%;
-  min-width: 50%;
-  overflow-wrap: break-word;
-  margin-right: 0;
-}
-
-.z-article-relatives > *:last-child {
-  padding: 0;
-}
-
-@media (min-width: 768px) {
-  .z-article-relatives > * {
-    padding-right: 20px;
-  }
-}
-
-.z-article-votes {
-  border-top: 1px solid #ddd;
-  padding: 30px 0;
-  text-align: center;
-}
-
-.z-article-vote {
-  margin: 10px 5px;
-  min-width: 90px;
-  width: auto;
-}
-
-.z-article-more-questions {
-  margin: 10px 0 20px;
-  text-align: center;
-}
-
-.z-article-more-questions a {
-  color: $link_color;
-  text-decoration: underline;
-}
-
-.z-article-more-questions a:visited {
-  color: $visited_link_color;
-}
-
-.z-article-more-questions a:hover, .z-article-more-questions a:active, .z-article-more-questions a:focus {
-  color: $hover_link_color;
-}
-
-.z-article-return-to-top {
-  border-top: 1px solid #ddd;
-}
-
-@media (min-width: 1024px) {
-  .z-article-return-to-top {
-    display: none;
-  }
-}
-
-.z-article-return-to-top a {
-  color: $text_color;
-  display: block;
-  padding: 20px 0;
-}
-
-.z-article-return-to-top a:hover, .z-article-return-to-top a:focus {
-  text-decoration: none;
-}
-
-.z-article-return-to-top-icon {
-  transform: rotate(0.5turn);
-}
-
-.z-article td > p:first-child,
-.z-article th > p:first-child {
-  margin-top: 0;
-}
-
-.z-article td > p:last-child,
-.z-article th > p:last-child {
-  margin-bottom: 0;
-}
-
-.sidenav-title {
-  font-size: 16px;
-  position: relative;
-  font-weight: 600;
-}
-
-.sidenav-item {
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 16px;
-}
-
-.recent-articles li,
-.related-articles li {
-  margin-bottom: 15px;
 }
 
 .articles-list {
@@ -5048,21 +4759,54 @@ html[dir="rtl"] .notification-left-aligned {
   display: block;
   position: relative;
   padding: 8px 32px 8px 16px;
-  border: 1px solid #787982;
+  border: 1px solid #C9CBD1;
   border-radius: 4px;
+  color: #24263B;
+  text-decoration: none;
+  transition: all ease-in-out 200ms;
 }
 
-.articles-list__item a:before, .articles-list__item a.notification-inline.notification-error:before {
+.articles-list__item a:after {
+  display: block;
   position: absolute;
   top: 50%;
   right: 16px;
-  content: "\003E";
-  font-weight: bold;
-  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: url($assets-_icon-chevron-svg) no-repeat center/contain;
+  content: '';
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+.articles-list__item a:hover {
+  background-color: #F5F5F5;
+  border-color: #C9CBD1;
+}
+
+.articles-list__item--no-decoration a:after {
+  display: none;
+}
+
+.articles-list__item--current a {
+  background-color: #FFCCD9;
+  border-color: #24263B;
 }
 
 .articles-list .article span {
   display: block;
+}
+
+@media screen and (min-width: 1000px) {
+  .articles-list {
+    flex-flow: row wrap;
+  }
+  .articles-list__item {
+    flex: 1 1 50%;
+    width: 50%;
+  }
+  .articles-list__item a {
+    height: 100%;
+  }
 }
 
 .breadcrumbs {
@@ -5084,44 +4828,89 @@ html[dir="rtl"] .notification-left-aligned {
 .categories-list {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  margin: 0 -12px;
+  margin: 0 -8px;
 }
 
 .categories-list__item {
-  flex: 1 0 0;
-  padding: 12px;
+  flex: 1 1 50%;
+  padding: 8px;
   text-align: center;
 }
 
 .categories-list__item a {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   padding: 32px 16px;
-  border: 1px solid #787982;
+  border: 1px solid #C9CBD1;
   border-radius: 4px;
+  color: #24263B;
+  text-decoration: none;
+  transition: all ease-in-out 200ms;
+}
+
+.categories-list__item a:hover {
+  background-color: #F5F5F5;
 }
 
 .categories-list__item .category__icon {
-  height: 80px;
-  margin-bottom: 16px;
+  height: 48px;
+  margin-bottom: 8px;
 }
 
-.feedback__title {
+@media screen and (max-width: 744px) {
+  .categories-list .category__description {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .categories-list {
+    margin: 0 -12px;
+  }
+  .categories-list__item {
+    flex: 1 1 25%;
+    padding: 12px;
+  }
+  .categories-list .category__icon {
+    height: 80px;
+    margin-bottom: 16px;
+  }
+}
+
+.voting__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.voting h4 {
   margin-bottom: 16px;
   font-size: 16px;
   font-family: $text_font;
   font-weight: bold;
 }
 
-.feedback__button {
+.voting h4,
+.voting p {
+  color: #39393E;
+}
+
+.voting__button {
   position: relative;
   padding: 16px 16px 16px 38px;
   font-size: 16px;
   line-height: 1;
 }
 
-.feedback__button:before, .feedback__button.notification-inline.notification-error:before {
+.voting__button:before, .voting__button.notification-inline.notification-error:before {
   display: block;
   position: absolute;
   top: 50%;
@@ -5129,19 +4918,87 @@ html[dir="rtl"] .notification-left-aligned {
   transform: translateY(-50%);
 }
 
-.feedback__button--up:before, .feedback__button--up.notification-inline.notification-error:before {
+.voting__button--up:before, .voting__button--up.notification-inline.notification-error:before {
   content: '\01F60D';
 }
 
-.feedback__button--down:before, .feedback__button--down.notification-inline.notification-error:before {
+.voting__button--down:before, .voting__button--down.notification-inline.notification-error:before {
   content: '\01F641';
 }
 
-.feedback__button + .button, .section-subscribe .feedback__button + button, .split-button .feedback__button + button, .community-follow .feedback__button + button, .requests-table-toolbar .organization-subscribe .feedback__button + button, .subscriptions-subscribe .feedback__button + button, .feedback__button + .pagination-next-link, .feedback__button + .pagination-prev-link, .feedback__button + .pagination-first-link, .feedback__button + .pagination-last-link, .z-article-subscribe .feedback__button + button {
+.voting__button--msg:before, .voting__button--msg.notification-inline.notification-error:before {
+  content: '\01F4AC';
+}
+
+.voting__button + .button, .section-subscribe .voting__button + button, .split-button .voting__button + button, .community-follow .voting__button + button, .requests-table-toolbar .organization-subscribe .voting__button + button, .subscriptions-subscribe .voting__button + button, .voting__button + .pagination-next-link, .voting__button + .pagination-prev-link, .voting__button + .pagination-first-link, .voting__button + .pagination-last-link {
   margin-left: 16px;
 }
 
+.voting__cta {
+  margin-top: 24px;
+}
+
+.voting__feedback {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1 0 100%;
+  align-items: flex-start;
+  justify-content: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  opacity: 0;
+  visibility: hidden;
+  transition: all ease-in-out 250ms;
+  z-index: 1;
+}
+
+.voting__feedback--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.voting__feedback img {
+  flex: 0 0 86px;
+  width: 86px;
+  margin-right: 16px;
+}
+
+.voting__feedback h4 {
+  font-size: 18px;
+}
+
+.voting__feedback .feedback__text {
+  flex: 1;
+}
+
+@media screen and (min-width: 744px) {
+  .voting__container {
+    flex-flow: row wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+  }
+  .voting__form, .voting__cta {
+    flex: 1 0 50%;
+  }
+  .voting__cta {
+    margin-top: 0;
+  }
+  .voting__feedback img {
+    flex: 0 0 122px;
+    width: 122px;
+    margin-right: 24px;
+  }
+  .voting__feedback h4 {
+    font-size: 24px;
+  }
+}
+
 .section {
+  position: relative;
   padding: 24px;
 }
 
@@ -5171,7 +5028,8 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .section__category p {
-  max-width: 500px;
+  width: 50vw;
+  max-width: 480px;
   margin: 0;
   font-size: 16px;
 }
@@ -5220,12 +5078,96 @@ html[dir="rtl"] .notification-left-aligned {
 }
 
 .home-page .section--head {
+  padding-top: 64px;
+  padding-bottom: 64px;
   text-align: center;
+}
+
+.home-page .section--head:before, .home-page .section--head:after {
+  display: block;
+  position: absolute;
+  content: '';
+}
+
+.home-page .section--head:before {
+  top: 0;
+  left: 80px;
+  width: 162px;
+  height: 122px;
+  background: url($assets-_graphic-01-svg) no-repeat center/contain;
+}
+
+.home-page .section--head:after {
+  top: 50%;
+  right: 0;
+  width: 130px;
+  height: 196px;
+  background: url($assets-_graphic-02-svg) no-repeat right/contain;
+  transform: translateY(-50%);
+}
+
+.home-page .section--head .section__title {
+  margin-bottom: 24px;
+  font-size: 40px;
+}
+
+.home-page .section--head .section__search {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home-page .section--head .section__search input {
+  background: white url($assets-_icon-mag-svg) no-repeat 16px center/16px;
+}
+
+@media screen and (max-width: 744px) {
+  .home-page .section--head {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+  .home-page .section--head:before, .home-page .section--head:after {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 744px) and (max-width: 1000px) {
+  .home-page .section--head:before {
+    width: 96px;
+    height: 72px;
+  }
+  .home-page .section--head:after {
+    width: 74px;
+    height: 112px;
+  }
+}
+
+.home-page .section--categories {
+  padding-bottom: 48px;
+  padding-bottom: 48px;
+}
+
+.home-page .section--categories .section__container {
+  max-width: 1274px;
+}
+
+@media screen and (min-width: 1000px) {
+  .home-page .section--categories {
+    padding-top: 64px;
+  }
+}
+
+.home-page .section--articles {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.home-page .section--articles .section__container {
+  max-width: 1274px;
 }
 
 .home-page .section--articles .section__title {
   position: relative;
-  padding-left: 48px;
+  padding-left: 32px;
 }
 
 .home-page .section--articles .section__title:before {
@@ -5233,18 +5175,41 @@ html[dir="rtl"] .notification-left-aligned {
   position: absolute;
   top: 50%;
   left: 0;
-  width: 40px;
-  height: 48px;
+  width: 24px;
+  height: 24px;
   background: url($assets-_icon-star-svg) no-repeat center/contain;
   content: '';
   transform: translateY(-50%);
 }
 
+@media screen and (max-width: 744px) {
+  .home-page .section--articles .section__title {
+    padding-left: 24px;
+    font-size: 18px;
+  }
+  .home-page .section--articles .section__title:before {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .home-page .section--articles {
+    padding-bottom: 96px;
+  }
+}
+
 .category-page .section--head .category__icon {
   position: absolute;
-  height: 140px;
+  height: 72px;
   bottom: -24px;
   right: 0;
+}
+
+@media screen and (min-width: 744px) {
+  .category-page .section--head .category__icon {
+    height: 140px;
+  }
 }
 
 .category-page .section--topics .section__container {
@@ -5272,9 +5237,13 @@ html[dir="rtl"] .notification-left-aligned {
   padding-left: 12px;
 }
 
+.category-page .section--topics .section__articles section {
+  scroll-margin-top: 80px;
+}
+
 .category-page .section--topics .section__articles section h2 {
-  margin: 0 0 24px;
-  font-size: 40px;
+  margin: 0 0 16px;
+  font-size: 32px;
 }
 
 .category-page .section--topics .section__articles section + section {
@@ -5286,6 +5255,13 @@ html[dir="rtl"] .notification-left-aligned {
   font-family: $text_font;
   font-size: 16px;
   font-weight: bold;
+}
+
+@media screen and (min-width: 1000px) {
+  .category-page .section--topics .section__articles section h2 {
+    margin: 0 0 24px;
+    font-size: 40px;
+  }
 }
 
 .article-page .section--article .section__container {
@@ -5303,7 +5279,22 @@ html[dir="rtl"] .notification-left-aligned {
   padding-right: 12px;
 }
 
-.article-page .section--article .section__related ul li + li {
+.article-page .section--article .section__related .articles-list {
+  flex-flow: column wrap;
+  margin: 0;
+}
+
+.article-page .section--article .section__related .articles-list__item {
+  flex: 1 1 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.article-page .section--article .section__related .articles-list__item .article__title {
+  font-weight: normal;
+}
+
+.article-page .section--article .section__related .articles-list__item + li {
   margin-top: 8px;
 }
 
