@@ -20,6 +20,7 @@
       height: 100%;
       text-decoration: none;
       color: map-get($base-colors-secondary, "600");
+      cursor: pointer;
 
       &:after {
         display: block;
@@ -38,6 +39,13 @@
         height: 10px;
         background: url($assets-_icon-chevron-svg) no-repeat center/contain;
         transform: translateY(-50%);
+      }
+    }
+
+    &--active {
+      &,
+      .menu__submenu {
+        background-color: $color-light-grey;
       }
     }
   }
@@ -85,8 +93,9 @@
           height: auto;
           padding: 24px;
 
-          a,
-          span {
+          & > a,
+          & > span {
+            display: block;
             height: auto;
             justify-content: flex-start;
           }
@@ -102,6 +111,10 @@
 
       &--active {
         max-height: 330px;
+      }
+
+      ul {
+        padding-top: 16px;
       }
     }
   }
