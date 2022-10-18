@@ -3,6 +3,11 @@
 
 body {
   zd-autocomplete {
+    left: 50% !important;
+    max-width: $search-width;
+    margin: 0 auto;
+    transform: translateX(-50%);
+
     zd-autocomplete {
       &-multibrand {
         padding: 16px 32px;
