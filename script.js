@@ -483,6 +483,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 (function() {
+  const VIEWPORT_WIDE = 1080;
+
   const toggleFeedback = function() {
     const feedback = document.querySelector('.voting__feedback');
 
@@ -495,8 +497,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  const toggleSubmenu = function(submenu, menuItem) {
+    if (submenu.classList.contains('menu__submenu--active')) {
+      submenu.classList.remove('menu__submenu--active');
+      menuItem.classList.remove('menu__item--active');
+    } else {
+      submenu.classList.add('menu__submenu--active');
+      menuItem.classList.add('menu__item--active');
+    }
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     const votingButtons = document.querySelectorAll('.voting__button');
+    const hamburger = document.querySelector('.header__hamburger');
+    const responsiveMenu = document.querySelector('.menu__responsive');
+    const menuItemSpan = document.querySelectorAll('.menu__item > span');
 
     if (votingButtons.length) {
       votingButtons.forEach(function(button) {
@@ -505,5 +520,38 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
     }
+
+    if (hamburger && responsiveMenu) {
+      hamburger.addEventListener('click', function() {
+        if (hamburger.classList.contains('header__hamburger--open')) {
+          hamburger.classList.remove('header__hamburger--open');
+          responsiveMenu.classList.remove('menu__responsive--active')
+        } else {
+          hamburger.classList.add('header__hamburger--open');
+          responsiveMenu.classList.add('menu__responsive--active') 
+        }
+      });
+    }
+
+    if (menuItemSpan.length) {
+      menuItemSpan.forEach(function(span) {
+        span.addEventListener('click', function() {
+          const submenu = span.nextElementSibling;
+          const menuItem = span.parentElement;
+
+          toggleSubmenu(submenu, menuItem);
+        });
+      })
+    }
   });
+
+  window.addEventListener('resize', debounce(function() {
+    if (window.innerWidth >= VIEWPORT_WIDE) {
+      document.querySelector('.header__hamburger')
+        && document.querySelector('.header__hamburger').classList.remove('header__hamburger--open');
+
+      document.querySelector('.menu__responsive')
+        && document.querySelector('.menu__responsive').classList.remove('menu__responsive--active');
+    }
+  }, 400));
 })();
