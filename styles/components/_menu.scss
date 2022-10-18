@@ -16,6 +16,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       height: 100%;
       text-decoration: none;
       color: map-get($base-colors-secondary, "600");
@@ -27,76 +28,24 @@
       }
     }
 
-    & > a {
-      &:after {
-        bottom: 0;
-        right: 0;
-        width: 0;
-        height: 2px;
-        background-color: map-get($base-colors-primary, "600");
-        transition: all 250ms ease-out 0s;
-      }
-
-      &:hover {
-        &:after {
-          left: 0;
-          width: 100%;
-        }
-      }
-    }
-
     & > span {
       padding-right: 16px;
 
       &:after {
         top: 50%;
-        right: 16px;
+        right: 0;
         width: 10px;
         height: 10px;
         background: url($assets-_icon-chevron-svg) no-repeat center/contain;
         transform: translateY(-50%);
       }
     }
-
-    &:hover {
-      .menu__submenu {
-        opacity: 1;
-        visibility: visible;
-
-        &:before {
-          left: 0;
-          width: 100%;
-        }
-      }
-    }
   }
 
   &__submenu {
-    position: absolute;
-    top: 100%;
-    left: 16px;
-    width: 210px;
     background-color: $color-white;
-    opacity: 0;
-    visibility: hidden;
-    transition: transform 250ms ease-out 0s, opacity 250ms ease-out 50ms;
-
-    &:before {
-      display: block;
-      position: absolute;
-      top: -2px;
-      right: 0;
-      width: 0;
-      height: 2px;
-      content: '';
-      background-color: map-get($base-colors-primary, "600");
-      transition: all 250ms ease-out 0s;
-    }
 
     ul {
-      border: 1px solid map-get($base-colors-grey, "100");
-      border-top-width: 0;
-
       li {
         & + li {
           border-top: 1px solid map-get($base-colors-grey, "100");
@@ -105,20 +54,133 @@
     }
 
     a {
-      position: relative;
       display: block;
+      position: relative;
       padding: 16px;
+    }
+  }
 
-      &:after {
+  @media screen and (max-width: map-get($viewports, "wide")) {
+    &__responsive {
+      position: absolute;
+      flex-flow: column;
+      align-items: stretch;
+      justify-content: flex-start;
+      top: 0;
+      left: -100vw;
+      width: 100vw;
+      height: 100vh;
+      margin-top: $header-height;
+      background-color: $color-white;
+      z-index: 1;
+      transform: translateX(0);
+      transition: transform 250ms ease-out 0s;
+
+      &--active {
+        transform: translateX(100vw);
+      }
+
+      .menu {
+        &__item {
+          height: auto;
+          padding: 24px;
+
+          a,
+          span {
+            height: auto;
+            justify-content: flex-start;
+          }
+        }
+      }
+    }
+
+    &__submenu {
+      position: relative;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 250ms ease-out 0s;
+
+      &--active {
+        max-height: 330px;
+      }
+    }
+  }
+
+  @media screen and (min-width: map-get($viewports, "wide")) {
+    &__item {
+      &--mobile {
+        display: none;
+      }
+
+      & > a {
+        &:after {
+          bottom: 0;
+          right: 0;
+          width: 0;
+          height: 2px;
+          background-color: map-get($base-colors-primary, "600");
+          transition: all 250ms ease-out 0s;
+        }
+
+        &:hover {
+          &:after {
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+
+      &:hover {
+        .menu__submenu {
+          opacity: 1;
+          visibility: visible;
+
+          &:before {
+            left: 0;
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &__submenu {
+      position: absolute;
+      top: 100%;
+      left: 16px;
+      width: 210px;
+      opacity: 0;
+      visibility: hidden;
+      transition: transform 250ms ease-out 0s, opacity 250ms ease-out 50ms;
+
+      &:before {
         display: block;
         position: absolute;
+        top: -2px;
+        right: 0;
+        width: 0;
+        height: 2px;
         content: '';
-        top: 50%;
-        right: 16px;
-        width: 10px;
-        height: 10px;
-        background: url($assets-_icon-chevron-svg) no-repeat center/contain;
-        transform: translateY(-50%) rotate(-90deg);
+        background-color: map-get($base-colors-primary, "600");
+        transition: all 250ms ease-out 0s;
+      }
+
+      ul {
+        border: 1px solid map-get($base-colors-grey, "100");
+        border-top-width: 0;
+      }
+
+      a {
+        &:after {
+          display: block;
+          position: absolute;
+          content: '';
+          top: 50%;
+          right: 16px;
+          width: 10px;
+          height: 10px;
+          background: url($assets-_icon-chevron-svg) no-repeat center/contain;
+          transform: translateY(-50%) rotate(-90deg);
+        }
       }
     }
   }
