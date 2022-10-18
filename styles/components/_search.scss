@@ -41,6 +41,7 @@ $padding-right: 20px;
     flex: 1 1 auto;
     height: 40px;
     width: 100%;
+    background: $color-white url($assets-_icon-mag-svg) no-repeat 16px center/16px;
 
     &:focus {
       color: $field-text-focus-color;
