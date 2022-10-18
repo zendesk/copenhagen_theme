@@ -102,11 +102,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set up clear functionality for the search field
   const searchForms = [...document.querySelectorAll(searchFormSelector)];
   const searchInputs = searchForms.map(form => form.querySelector("input[type='search']"));
-  searchInputs.forEach((input) => {
-    appendClearSearchButton(input, input.closest(searchFormSelector));
-    input.addEventListener("keyup", clearSearchInputOnKeypress);
-    input.addEventListener("keyup", toggleClearSearchButtonAvailability);
-  });
+  
+  if (searchInputs.length) {
+    searchInputs.forEach((input) => {
+      appendClearSearchButton(input, input.closest(searchFormSelector));
+      input.addEventListener("keyup", clearSearchInputOnKeypress);
+      input.addEventListener("keyup", toggleClearSearchButtonAvailability);
+    });
+  }
 
   // social share popups
   Array.prototype.forEach.call(document.querySelectorAll('.share a'), function(anchor) {
@@ -121,6 +124,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var activeElementId = document.activeElement.getAttribute("id");
     sessionStorage.setItem('returnFocusTo', '#' + activeElementId);
   }
+
   var returnFocusTo = sessionStorage.getItem('returnFocusTo');
   if (returnFocusTo) {
     sessionStorage.removeItem('returnFocusTo');
@@ -247,18 +251,21 @@ document.addEventListener('DOMContentLoaded', function() {
   var menuButton = document.querySelector('.header .menu-button-mobile');
   var menuList = document.querySelector('#user-nav-mobile');
 
-  menuButton.addEventListener('click', function(e) {
-    e.stopPropagation();
-    toggleNavigation(this, menuList);
-  });
-
-
-  menuList.addEventListener('keyup', function(e) {
-    if (e.keyCode === ESCAPE) {
+  if (menuButton) {
+    menuButton.addEventListener('click', function(e) {
       e.stopPropagation();
-      closeNavigation(menuButton, this);
-    }
-  });
+      toggleNavigation(this, menuList);
+    });
+  }
+
+  if (menuList) {
+    menuList.addEventListener('keyup', function(e) {
+      if (e.keyCode === ESCAPE) {
+        e.stopPropagation();
+        closeNavigation(menuButton, this);
+      }
+    });
+  }
 
   // Toggles expanded aria to collapsible elements
   var collapsible = document.querySelectorAll('.collapsible-nav, .collapsible-sidebar');
