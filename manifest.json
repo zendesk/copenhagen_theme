@@ -147,7 +147,7 @@
           "type": "checkbox",
           "description": "instant_search_description",
           "label": "instant_search_label",
-          "value": false
+          "value": true
         },
         {
           "identifier": "scoped_kb_search",
