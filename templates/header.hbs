@@ -2,8 +2,14 @@
 
 <header class="header">
   <div class="header__container">
-    <nav class="header__menu">
-      <ul class="menu">
+    <nav class="header__menu header__menu--responsive">
+      <button class="header__hamburger" aria-label="Abrir menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="menu menu__responsive">
         <li class="menu__item">
           <span>Celular</span>
 
@@ -48,6 +54,13 @@
         </li>
         <li class="menu__item">
           <a href="https://ajuda.pier.digital/hc/pt-br">Dúvidas</a>
+        </li>
+
+        <li class="menu__item menu__item--mobile">
+          <a href="https://www.pier.digital/pedir-reembolso">Pedir reembolso</a>
+        </li>
+        <li class="menu__item menu__item--mobile">
+          <a href="https://app.pier.digital/auth/session/new?step=kind">Login</a>
         </li>
       </ul>
     </nav>
