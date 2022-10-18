@@ -35,12 +35,8 @@
       }
 
       &__search {
-        max-width: 600px;
+        max-width: $search-width;
         margin: 0 auto;
-
-        input {
-          background: $color-white url($assets-_icon-mag-svg) no-repeat 16px center/16px;
-        }
       }
     }
 
