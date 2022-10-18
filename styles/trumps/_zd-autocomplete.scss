@@ -1,0 +1,33 @@
+// zendesk search results
+// using nested selectors to override default styles without '!important'
+
+body {
+  zd-autocomplete {
+    zd-autocomplete {
+      &-multibrand {
+        padding: 16px 32px;
+        border-bottom: none;
+        transition: all ease-in-out 200ms;
+
+        & + zd-autocomplete-multibrand {
+          border-top: 1px solid map-get($base-colors-grey, "100");
+        }
+
+        &:hover {
+          background-color: $color-light-grey;
+        }
+      }
+
+      &-title-multibrand {
+        padding-bottom: 0;
+        font-size: 16px;
+        color: map-get($base-colors-secondary, "700");
+      }
+
+      &-breadcrumbs-multibrand {
+        margin-top: 4px;
+        color: map-get($base-colors-grey, "400");
+      }
+    }
+  }
+}
