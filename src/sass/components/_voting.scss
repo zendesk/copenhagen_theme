@@ -17,7 +17,7 @@
 
   h4,
   p {
-    color: map-get($base-colors-grey, "500");
+    color: map-get($base-colors-grey, '500');
   }
 
   &__button {
@@ -48,7 +48,7 @@
 
     &--msg {
       &:before {
-        content: '\01F4AC'
+        content: '\01F4AC';
       }
     }
 
@@ -97,7 +97,7 @@
     }
   }
 
-  @media screen and (min-width: map-get($viewports, "tablet")) {
+  @media screen and (min-width: map-get($viewports, 'tablet')) {
     &__container {
       flex-flow: row wrap;
       align-items: flex-start;

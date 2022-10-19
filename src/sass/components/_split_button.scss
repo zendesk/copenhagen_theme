@@ -4,7 +4,7 @@
 }
 
 .split-button button:hover {
-  @extend .button-primary:hover;
+  @extend .button-primary, :hover;
 }
 
 .split-button button {
@@ -19,13 +19,13 @@
 
 .split-button button:not(:only-child) {
   &:first-child {
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       border-left: 1px solid $brand_text_color;
       border-top-left-radius: unset;
       border-bottom-left-radius: unset;
     }
 
-    [dir="ltr"] & {
+    [dir='ltr'] & {
       border-right: 1px solid $brand_text_color;
       border-top-right-radius: unset;
       border-bottom-right-radius: unset;
@@ -41,12 +41,12 @@
     max-width: 26px;
     padding: 0;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       border-top-right-radius: unset;
       border-bottom-right-radius: unset;
     }
 
-    [dir="ltr"] & {
+    [dir='ltr'] & {
       border-top-left-radius: unset;
       border-bottom-left-radius: unset;
     }
