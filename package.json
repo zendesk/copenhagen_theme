@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "repository": "git@github.com:pier-digital/pier-help-center-theme.git",
   "scripts": {
+    "format": "prettier \"{./,tests}/*.{css|js}\" --write",
     "watch": "gulp watch",
     "build": "gulp build",
     "prepreview": "npm run build",
