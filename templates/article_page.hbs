@@ -98,7 +98,7 @@
               <ul class="content-tag-list">
                 {{#each article.content_tags}}
                   <li class="content-tag-item" data-content-tag-id="{{id}}">
-                    {{#link "search_result" content_tag_id=id target="_blank"}}
+                    {{#link "search_result" content_tag_id=id}}
                       {{name}}
                     {{/link}}
                   </li>
