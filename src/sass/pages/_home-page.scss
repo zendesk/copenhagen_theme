@@ -40,7 +40,7 @@
       }
     }
 
-    @media screen and (max-width: map-get($viewports, "tablet")) {
+    @media screen and (max-width: map-get($viewports, 'tablet')) {
       padding-top: 48px;
       padding-bottom: 48px;
 
@@ -50,7 +50,7 @@
       }
     }
 
-    @media screen and (min-width: map-get($viewports, "tablet")) and (max-width: map-get($viewports, "desktop")) {
+    @media screen and (min-width: map-get($viewports, 'tablet')) and (max-width: map-get($viewports, 'desktop')) {
       &:before {
         width: 96px;
         height: 72px;
@@ -68,10 +68,10 @@
     padding-bottom: 48px;
 
     .section__container {
-      max-width: map-get($container-width, "thin");
+      max-width: map-get($container-width, 'thin');
     }
 
-    @media screen and (min-width: map-get($viewports, "desktop")) {
+    @media screen and (min-width: map-get($viewports, 'desktop')) {
       padding-top: 64px;
     }
   }
@@ -82,7 +82,7 @@
 
     .section {
       &__container {
-        max-width: map-get($container-width, "thin");
+        max-width: map-get($container-width, 'thin');
       }
 
       &__title {
@@ -103,7 +103,7 @@
       }
     }
 
-    @media screen and (max-width: map-get($viewports, "tablet")) {
+    @media screen and (max-width: map-get($viewports, 'tablet')) {
       .section {
         &__title {
           padding-left: 24px;
@@ -117,7 +117,7 @@
       }
     }
 
-    @media screen and (min-width: map-get($viewports, "desktop")) {
+    @media screen and (min-width: map-get($viewports, 'desktop')) {
       padding-bottom: 96px;
     }
   }
