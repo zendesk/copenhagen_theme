@@ -132,7 +132,6 @@ const copySettings = () => {
 */
 const watch = () => {
   gulp.watch('./src/sass/**/*.scss', gulp.series(compileSass, unescapeCss));
-  // gulp.watch('./src/sass/**/*.scss', gulp.series(compileSass));
   gulp.watch('./src/js/**', compileJs);
 };
 
