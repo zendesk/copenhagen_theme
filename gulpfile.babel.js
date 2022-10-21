@@ -10,6 +10,7 @@ import dartSass from 'sass';
 import gulpSass from 'gulp-sass';
 import sassVars from 'gulp-sass-vars';
 import imagemin from 'gulp-imagemin';
+import postCss from 'gulp-postcss';
 import autoprefixer from 'autoprefixer';
 import webpack from 'webpack';
 
@@ -76,6 +77,7 @@ const compileSass = async () => {
     .src(`${gulpConfig.sass.input.path}/${gulpConfig.sass.input.file}`)
     .pipe(sassVars(customVars, { verbose: false }))
     .pipe(sassCompiler({ outputStyle: 'compressed' }).on('error', sassCompiler.logError))
+    .pipe(postCss(plugins))
     .pipe(gulp.dest(gulpConfig.sass.output.path));
 };
 
