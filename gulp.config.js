@@ -9,6 +9,16 @@ export const config = {
       file: 'style.css'
     }
   },
+  scripts: {
+    input: {
+      path: './src/js',
+      file: 'index.js'
+    },
+    output: {
+      path: './dist',
+      file: 'script.js'
+    }
+  },
   assets: {
     input: {
       path: './src/assets'
