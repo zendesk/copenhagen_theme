@@ -1,12 +1,13 @@
 import path from 'path';
+import { config as gulpConfig } from './gulp.config';
 
 export const config = {
   entry: {
-    script: './src/js/script.js'
+    script: `${gulpConfig.scripts.input.path}/${gulpConfig.scripts.input.file}`
   },
   output: {
     path: path.resolve(__dirname, './dist/'),
-    filename: '[name].js'
+    filename: gulpConfig.scripts.output.file
   },
   module: {
     rules: [
