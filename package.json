@@ -8,7 +8,6 @@
     "build": "gulp build",
     "prepreview": "npm run build",
     "preview": "zat theme preview --path='dist'",
-    "prestart": "npm run build",
     "start": "npm run watch"
   },
   "dependencies": {
