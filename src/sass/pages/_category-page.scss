@@ -9,7 +9,7 @@
       }
     }
 
-    @media screen and (min-width: map-get($viewports, "tablet")) {
+    @media screen and (min-width: map-get($viewports, 'tablet')) {
       .category {
         &__icon {
           height: 140px;
@@ -19,34 +19,23 @@
   }
 
   .section--topics {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
     .section {
       &__container {
         display: flex;
-        flex-flow: row wrap;
-        align-items: flex-start;
+        flex-flow: column;
+        align-items: stretch;
         justify-content: flex-start;
       }
 
       &__subjects {
-        position: sticky;
-        top: 96px;
-        width: 25%;
-        flex-basis: 25%;
-        padding-right: 12px;
-
-        ul {
-          li {
-            & + li {
-              margin-top: 8px;
-            }
-          }
-        }
+        margin-bottom: 24px;
       }
 
       &__articles {
-        width: 75%;
-        flex-basis: 75%;
-        padding-left: 12px;
+        margin-top: 24px;
 
         section {
           scroll-margin-top: $header-height;
@@ -63,16 +52,31 @@
       }
     }
 
-    h3 {
-      margin-bottom: 16px;
-      font-family: $text_font;
-      font-size: 16px;
-      font-weight: bold;
-    }
+    @media screen and (min-width: map-get($viewports, 'desktop')) {
+      padding-bottom: 96px;
 
-    @media screen and (min-width: map-get($viewports, "desktop")) {
       .section {
+        &__container {
+          flex-flow: row wrap;
+          align-items: flex-start;
+          justify-content: flex-start;
+        }
+
+        &__subjects {
+          position: sticky;
+          top: 96px;
+          width: 25%;
+          flex-basis: 25%;
+          margin-bottom: 0;
+          padding-right: 12px;
+        }
+
         &__articles {
+          width: 75%;
+          flex-basis: 75%;
+          margin-top: 0;
+          padding-left: 12px;
+
           section {
             h2 {
               margin: 0 0 24px;

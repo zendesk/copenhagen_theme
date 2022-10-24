@@ -35,17 +35,19 @@
 
   <section class="section section--topics">
     <div class="section__container">
-      <div class="section__subjects">
-        <h3>Assuntos</h3>
+      <details class="section__subjects collapse collapse--desktop-visible">
+        <summary>Assuntos</summary>
 
-        <ul>
-          {{#each sections}}
-            <li>
-              <a href="#section-{{ id }}">{{ name }}</a>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
+        <div class="collapse__content">
+          <ul>
+            {{#each sections}}
+              <li>
+                <a href="#section-{{ id }}">{{ name }}</a>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
+      </details>
 
       <div class="section__articles">
         {{#each sections}}
