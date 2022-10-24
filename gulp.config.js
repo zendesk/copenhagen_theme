@@ -9,16 +9,18 @@ export const config = {
       file: 'style.css'
     }
   },
+
   scripts: {
     input: {
       path: './src/js',
-      file: 'index.js'
+      file: 'script.js'
     },
     output: {
       path: './dist',
       file: 'script.js'
     }
   },
+
   assets: {
     input: {
       path: './src/assets'
@@ -27,6 +29,7 @@ export const config = {
       path: './dist/assets'
     }
   },
+
   templates: {
     input: {
       path: './src/templates'
@@ -35,6 +38,7 @@ export const config = {
       path: './dist/templates'
     }
   },
+
   settings: {
     input: {
       path: './src/settings'
