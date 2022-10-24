@@ -55,5 +55,5 @@ node_modules/
 dist/assets
 dist/templates
 dist/settings
-dist/style.css
-dist/script.js
+dist/*.css
+dist/*.js
