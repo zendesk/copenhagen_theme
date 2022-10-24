@@ -1,19 +1,18 @@
 .article-page {
   .section--article {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
     .section {
       &__container {
         display: flex;
-        flex-flow: row wrap;
-        align-items: flex-start;
+        flex-flow: column;
+        align-items: stretch;
         justify-content: flex-start;
       }
 
       &__related {
-        position: sticky;
-        top: 96px;
-        width: 25%;
-        flex-basis: 25%;
-        padding-right: 12px;
+        margin-bottom: 24px;
 
         .articles-list {
           flex-flow: column wrap;
@@ -24,8 +23,18 @@
             width: 100%;
             padding: 0;
 
+            a {
+              border-color: transparent;
+            }
+
             .article__title {
               font-weight: normal;
+            }
+
+            &--current {
+              a {
+                background-color: map-get($base-colors-primary, '100');
+              }
             }
 
             & + li {
@@ -36,9 +45,7 @@
       }
 
       &__article {
-        width: 75%;
-        flex-basis: 75%;
-        padding-left: 12px;
+        margin-top: 24px;
 
         section {
           h2 {
@@ -53,11 +60,39 @@
       }
     }
 
-    h3 {
-      margin-bottom: 16px;
-      font-family: $text_font;
-      font-size: 16px;
-      font-weight: bold;
+    @media screen and (min-width: map-get($viewports, 'desktop')) {
+      padding-bottom: 96px;
+
+      .section {
+        &__container {
+          flex-flow: row wrap;
+          align-items: flex-start;
+          justify-content: flex-start;
+        }
+
+        &__related {
+          position: sticky;
+          top: 96px;
+          width: 25%;
+          flex-basis: 25%;
+          margin-bottom: 0;
+          padding-right: 12px;
+        }
+
+        &__article {
+          width: 75%;
+          flex-basis: 75%;
+          margin-top: 0;
+          padding-left: 12px;
+
+          section {
+            h2 {
+              margin: 0 0 24px;
+              font-size: 40px;
+            }
+          }
+        }
+      }
     }
   }
 }

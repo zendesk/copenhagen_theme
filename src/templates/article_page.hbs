@@ -10,25 +10,27 @@
   <section class="section section--article">
     <div class="section__container">
       {{#if settings.show_articles_in_section}}
-        <div class="section__related">
-          <h3>{{t 'articles_in_section'}}</h3>
+        <details class="section__related collapse collapse--desktop-visible">
+          <summary>{{t 'articles_in_section'}}</summary>
 
-          <ul class="articles-list">
-            {{#each section.articles}}
-              <li
-                class="
-                  articles-list__item
-                  articles-list__item--no-decoration
-                  {{#is id ../article.id}} articles-list__item--current {{/is}}
-                "
-              >
-                <a href="{{url}}" class="article">
-                  <span class="article__title">{{title}}</span>
-                </a>
-              </li>
-            {{/each}}
-          </ul>
-        </div>
+          <div class="collapse__content">
+            <ul class="articles-list">
+              {{#each section.articles}}
+                <li
+                  class="
+                    articles-list__item
+                    articles-list__item--no-decoration
+                    {{#is id ../article.id}} articles-list__item--current {{/is}}
+                  "
+                >
+                  <a href="{{url}}" class="article">
+                    <span class="article__title">{{title}}</span>
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+          </div>
+        </details>
       {{/if}}
 
       <div class="section__article article-container">
