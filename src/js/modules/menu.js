@@ -63,6 +63,7 @@ export const menu = {
 
   closeResponsiveMenu() {
     this.responsiveMenu.classList.remove(this.CLASS_NAMES.responsiveMenuActive);
+    document.querySelector('body').classList.remove('no-overflow');
   },
 
   toggleResponsiveMenu() {
@@ -72,6 +73,7 @@ export const menu = {
     } else {
       this.hamburger.classList.add(this.CLASS_NAMES.hamburgerActive);
       this.responsiveMenu.classList.add(this.CLASS_NAMES.responsiveMenuActive);
+      document.querySelector('body').classList.add('no-overflow');
     }
   },
 
