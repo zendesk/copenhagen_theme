@@ -57,3 +57,4 @@ dist/templates
 dist/settings
 dist/*.css
 dist/*.js
+dist/*.md

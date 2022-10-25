@@ -6,6 +6,7 @@
     "format": "prettier \"{./,tests}/*.{css|js}\" --write",
     "watch": "gulp watch",
     "build": "gulp build",
+    "postbuild": "cp README.md ./dist",
     "prepreview": "npm run build",
     "preview": "zat theme preview --path='dist'",
     "start": "npm run watch"

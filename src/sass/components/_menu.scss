@@ -19,7 +19,7 @@
       position: relative;
       height: 100%;
       text-decoration: none;
-      color: map-get($base-colors-secondary, "600");
+      color: map-get($base-colors-secondary, '600');
       cursor: pointer;
 
       &:after {
@@ -56,7 +56,7 @@
     ul {
       li {
         & + li {
-          border-top: 1px solid map-get($base-colors-grey, "100");
+          border-top: 1px solid map-get($base-colors-grey, '100');
         }
       }
     }
@@ -65,10 +65,17 @@
       display: block;
       position: relative;
       padding: 16px;
+      background-color: transparent;
+      color: map-get($base-colors-secondary, '600');
+      text-decoration: none;
+
+      &:hover {
+        background-color: $color-light-grey;
+      }
     }
   }
 
-  @media screen and (max-width: map-get($viewports, "wide")) {
+  @media screen and (max-width: map-get($viewports, 'wide')) {
     &__responsive {
       position: absolute;
       flex-flow: column;
@@ -116,10 +123,16 @@
       ul {
         padding-top: 16px;
       }
+
+      a {
+        &:hover {
+          background-color: map-get($base-colors-grey, '100');
+        }
+      }
     }
   }
 
-  @media screen and (min-width: map-get($viewports, "wide")) {
+  @media screen and (min-width: map-get($viewports, 'wide')) {
     &__item {
       &--mobile {
         display: none;
@@ -131,7 +144,7 @@
           right: 0;
           width: 0;
           height: 2px;
-          background-color: map-get($base-colors-primary, "600");
+          background-color: map-get($base-colors-primary, '600');
           transition: all 250ms ease-out 0s;
         }
 
@@ -173,12 +186,12 @@
         width: 0;
         height: 2px;
         content: '';
-        background-color: map-get($base-colors-primary, "600");
+        background-color: map-get($base-colors-primary, '600');
         transition: all 250ms ease-out 0s;
       }
 
       ul {
-        border: 1px solid map-get($base-colors-grey, "100");
+        border: 1px solid map-get($base-colors-grey, '100');
         border-top-width: 0;
       }
 
