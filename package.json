@@ -9,7 +9,6 @@
     "postbuild": "cp README.md ./dist",
     "prepreview": "npm run build",
     "preview": "zat theme preview --path='dist'",
-    "prestart": "npm run build",
     "start": "npm run watch"
   },
   "dependencies": {

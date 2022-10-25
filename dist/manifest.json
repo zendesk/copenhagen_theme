@@ -34,14 +34,14 @@
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#484C76"
+          "value": "#23263B"
         },
         {
           "identifier": "hover_link_color",
           "type": "color",
           "description": "hover_link_color_description",
           "label": "hover_link_color_label",
-          "value": "#0F3554"
+          "value": "#24263B"
         },
         {
           "identifier": "visited_link_color",

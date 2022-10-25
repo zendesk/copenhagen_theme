@@ -2,7 +2,6 @@
 @import 'settings/_variables';
 @import 'settings/_colors';
 @import 'settings/_sizes';
-@import 'settings/_viewports';
 
 // tools
 @import 'tools/_mixins';
@@ -63,6 +62,7 @@
 @import 'components/_categories-list';
 @import 'components/_voting';
 @import 'components/_section';
+@import 'components/_collapse';
 
 // trumps
 @import 'trumps/_header';

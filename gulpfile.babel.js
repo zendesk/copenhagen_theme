@@ -1,6 +1,7 @@
 // config
 import { config as gulpConfig } from './gulp.config';
 import { config as webpackConfig } from './webpack.config';
+import { viewports } from './tokens';
 
 // plugins
 import { readFile, readdir, writeFile } from 'fs/promises';
@@ -68,14 +69,22 @@ const zendeskSassVars = async () => {
   return variables;
 };
 
-const compileSass = async () => {
+const compileStyles = async () => {
   const sassCompiler = gulpSass(dartSass);
   const plugins = [autoprefixer()];
   const customVars = await zendeskSassVars();
 
   return gulp
     .src(`${gulpConfig.sass.input.path}/${gulpConfig.sass.input.file}`)
-    .pipe(sassVars(customVars, { verbose: false }))
+    .pipe(
+      sassVars(
+        {
+          ...customVars,
+          viewports
+        },
+        { verbose: false }
+      )
+    )
     .pipe(sassCompiler({ outputStyle: 'compressed' }).on('error', sassCompiler.logError))
     .pipe(postCss(plugins))
     .pipe(gulp.dest(gulpConfig.sass.output.path));
@@ -85,6 +94,7 @@ const unescapeCss = () => {
   return readFile(`${gulpConfig.sass.output.path}/${gulpConfig.sass.output.file}`, 'utf8')
     .then((data) => {
       const unescaped = data.replace(/zass-/gm, '').replace(/\"\t/g, '').replace(/\t\"/g, '');
+      console.log(data.lastIndexOf(/\"\t/g));
 
       writeUnescapedCss(unescaped);
     })
@@ -99,12 +109,17 @@ const writeUnescapedCss = (unescapedCss) => {
     .catch((err) => console.error('Error while writing unescaped CSS!', err));
 };
 
-const compileJs = () => {
-  const webpackCompiler = webpack(webpackConfig);
-
+const compileScripts = () => {
   return new Promise((resolve, reject) => {
-    webpackCompiler.run(function (err) {
-      if (err) return reject(err);
+    webpack(webpackConfig, (err, stats) => {
+      if (err) {
+        return reject(err);
+      }
+
+      if (stats.hasErrors()) {
+        return reject(new Error(stats.compilation.errors.join('\n')));
+      }
+
       resolve();
     });
   });
@@ -133,15 +148,16 @@ const copySettings = () => {
   Watchers
 */
 const watch = () => {
-  gulp.watch('./src/sass/**/*.scss', gulp.series(compileSass, unescapeCss));
-  gulp.watch('./src/js/**', compileJs);
+  gulp.watch(`${gulpConfig.sass.input.path}/**/*.scss`, gulp.series(compileStyles, unescapeCss));
+  gulp.watch(`${gulpConfig.scripts.input.path}/**/*.js`, compileScripts);
+  // gulp.watch(`${gulpConfig.sass.output.path}/${gulpConfig.sass.output.file}`, unescapeCss);
 };
 
 /*
   Builders
 */
 const build = gulp.series(
-  gulp.parallel(compileSass, compileJs, compressImages, copyTemplates, copySettings),
+  gulp.parallel(compileStyles, compileScripts, compressImages, copyTemplates, copySettings),
   unescapeCss
 );
 

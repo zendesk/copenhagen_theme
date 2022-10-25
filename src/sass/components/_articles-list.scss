@@ -12,9 +12,9 @@
       display: block;
       position: relative;
       padding: 8px 32px 8px 16px;
-      border: 1px solid map-get($base-colors-grey, "200");
+      border: 1px solid map-get($base-colors-grey, '200');
       border-radius: 4px;
-      color: map-get($base-colors-secondary, "600");
+      color: map-get($base-colors-secondary, '600');
       text-decoration: none;
       transition: all ease-in-out 200ms;
 
@@ -32,7 +32,7 @@
 
       &:hover {
         background-color: $color-light-grey;
-        border-color: map-get($base-colors-grey, "200");
+        border-color: map-get($base-colors-grey, '200');
       }
     }
 
@@ -43,13 +43,6 @@
         }
       }
     }
-
-    &--current {
-      a {
-        background-color: map-get($base-colors-primary, "200");
-        border-color: map-get($base-colors-secondary, "600");
-      }
-    }
   }
 
   .article {
@@ -58,7 +51,7 @@
     }
   }
 
-  @media screen and (min-width: map-get($viewports, "desktop")) {
+  @media screen and (min-width: map-get($viewports, 'desktop')) {
     flex-flow: row wrap;
 
     &__item {

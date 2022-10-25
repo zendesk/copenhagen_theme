@@ -2,18 +2,17 @@ import path from 'path';
 import { config as gulpConfig } from './gulp.config';
 
 export const config = {
-  entry: {
-    script: `${gulpConfig.scripts.input.path}/${gulpConfig.scripts.input.file}`
-  },
+  entry: ['./src/js/index.js', './src/js/legacy.js'],
   output: {
-    path: path.resolve(__dirname, './dist/'),
+    path: path.resolve(__dirname, gulpConfig.scripts.output.path),
     filename: gulpConfig.scripts.output.file
   },
   module: {
     rules: [
       {
         test: /\.js$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
+        exclude: /node_modules/
       }
     ]
   },
