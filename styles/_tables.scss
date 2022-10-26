@@ -19,7 +19,7 @@
   tr {
     @include tablet { display: table-row; }
 
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
     display: block;
     padding: 20px 0;
   }

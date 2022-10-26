@@ -25,12 +25,12 @@
 }
 
 .section-list-item {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $low-contrast-border-color;
   font-size: $font-size-bigger;
   padding: 15px 0;
 
   &:first-child {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $low-contrast-border-color;
   }
 
   a {
