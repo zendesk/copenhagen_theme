@@ -33,7 +33,13 @@
 
             &--current {
               a {
-                background-color: map-get($base-colors-primary, '100');
+                background-color: map-get($base-colors-grey, '100');
+              }
+            }
+
+            &:hover {
+              a {
+                background-color: map-get($base-colors-grey, '200');
               }
             }
 
