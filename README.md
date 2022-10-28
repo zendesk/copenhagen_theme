@@ -1,3 +1,8 @@
+# コミュニティサイト
+
+コミュニティサイトの開発については、以下のページを参考に進めてください。
+[https://jusdev.atlassian.net/wiki/spaces/DEV/pages/2984935458](https://jusdev.atlassian.net/wiki/spaces/DEV/pages/2984935458)
+
 # Copenhagen Theme by Zendesk
 
 The Copenhagen theme is the default Zendesk Guide theme. It is designed to be responsive and accessible.
