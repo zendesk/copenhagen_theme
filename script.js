@@ -10,6 +10,9 @@ function debounce(callback, wait) {
   };
 }
 
+// 最近のアクティビティ
+document.querySelector('.recent-activity-controls').remove();
+
 // Define variables for search field
 let searchFormFilledClassName = "search-has-value";
 let searchFormSelector = "form[role='search']";
@@ -481,3 +484,4 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+	

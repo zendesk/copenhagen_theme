@@ -123,21 +123,6 @@
             <div class="post-content">
               <div class="post-body">{{post.details}}</div>
             </div>
-
-            {{#if (compare post.content_tags.length ">" 0)}}
-              <section class="content-tags">
-                <p>{{t 'content_tags_label'}}</p>
-                <ul class="content-tag-list">
-                  {{#each post.content_tags}}
-                    <li class="content-tag-item" data-content-tag-id="{{id}}">
-                      {{#link "search_result" content_tag_id=id}}
-                        {{name}}
-                      {{/link}}
-                    </li>
-                  {{/each}}
-                </ul>
-              </section>
-            {{/if}}
           </div>
 
           <div class="post-actions-wrapper">

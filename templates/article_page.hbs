@@ -91,22 +91,6 @@
       <section class="article-info">
         <div class="article-content">
           <div class="article-body">{{article.body}}</div>
-
-          {{#if (compare article.content_tags.length ">" 0)}}
-            <section class="content-tags">
-              <p>{{t 'content_tags_label'}}</p>
-              <ul class="content-tag-list">
-                {{#each article.content_tags}}
-                  <li class="content-tag-item" data-content-tag-id="{{id}}">
-                    {{#link "search_result" content_tag_id=id}}
-                      {{name}}
-                    {{/link}}
-                  </li>
-                {{/each}}
-              </ul>
-            </section>
-          {{/if}}
-
           {{#if attachments}}
             <div class="article-attachments">
               <ul class="attachments">

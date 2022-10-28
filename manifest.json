@@ -1,5 +1,5 @@
 {
-  "name": "Copenhagen",
+  "name": "コミュニティサイト",
   "author": "Zendesk",
   "version": "2.19.1",
   "api_version": 2,
@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "rgba(0, 114, 239, 1)"
         },
         {
           "identifier": "brand_text_color",
@@ -27,14 +27,14 @@
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#2F3941"
+          "value": "rgba(51, 51, 51, 1)"
         },
         {
           "identifier": "link_color",
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#1F73B7"
+          "value": "rgba(0, 114, 239, 1)"
         },
         {
           "identifier": "hover_link_color",
@@ -67,6 +67,7 @@
           "type": "list",
           "description": "heading_font_description",
           "label": "heading_font_label",
+          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
           "options": [
             {
               "label": "System",
@@ -132,14 +133,14 @@
               "label": "Trebuchet MS",
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
-          ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          ]
         },
         {
           "identifier": "text_font",
           "type": "list",
           "description": "text_font_description",
           "label": "text_font_label",
+          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif",
           "options": [
             {
               "label": "System",
@@ -205,8 +206,7 @@
               "label": "Trebuchet MS",
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
-          ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          ]
         }
       ]
     },
