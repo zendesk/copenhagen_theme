@@ -1,4 +1,4 @@
-.category-page {
+.section-page {
   .section--head {
     .section__title {
       margin-bottom: 0;
@@ -35,44 +35,11 @@
       }
 
       &__subjects {
-        position: sticky;
-        top: calc($header-height - 1px);
         margin-bottom: 24px;
-        background-color: $color-white;
-        z-index: 1;
-
-        .subjects-list {
-          &__item {
-            &--active {
-              a {
-                background-color: map-get($base-colors-grey, '100');
-              }
-            }
-
-            &:hover {
-              a {
-                background-color: map-get($base-colors-grey, '200');
-              }
-            }
-          }
-        }
       }
 
       &__articles {
         margin-top: 24px;
-
-        section {
-          scroll-margin-top: $header-height;
-
-          h2 {
-            margin: 0 0 16px;
-            font-size: 32px;
-          }
-
-          & + section {
-            margin-top: 56px;
-          }
-        }
       }
     }
 
@@ -87,6 +54,7 @@
         }
 
         &__subjects {
+          position: sticky;
           top: 96px;
           width: 25%;
           flex-basis: 25%;
@@ -100,11 +68,9 @@
           margin-top: 0;
           padding-left: 12px;
 
-          section {
-            h2 {
-              margin: 0 0 24px;
-              font-size: 40px;
-            }
+          &--full {
+            width: 100%;
+            flex-basis: 100%;
           }
         }
       }

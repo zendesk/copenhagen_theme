@@ -13,6 +13,8 @@
     summary {
       display: block;
       position: relative;
+      color: map-get($base-colors-secondary, '700');
+      cursor: pointer;
 
       &:after {
         display: block;

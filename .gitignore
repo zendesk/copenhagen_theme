@@ -18,7 +18,6 @@
 !/tmp/.keep
 
 # Ignore environment files
-.env
 .env*
 
 # Ignore Mac files
@@ -44,7 +43,7 @@ style.css.map
 node_modules/
 
 # Ignore Zendesk files
-.zat
+.zat*
 
 # Editor
 .idea

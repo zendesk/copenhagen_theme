@@ -29,6 +29,10 @@
                 </li>
               {{/each}}
             </ul>
+
+            {{#if section.more_articles}}
+              <a href="{{section.url}}" class="section__cta">{{t 'see_more'}}</a>
+            {{/if}}
           </div>
         </details>
       {{/if}}
@@ -70,7 +74,12 @@
                 <div class="voting__cta">
                   <h4>Não fique com dúvidas!</h4>
 
-                  <a class="button voting__button voting__button--msg">Converse com a gente</a>
+                  <a
+                    href="javascript:toggleChat()"
+                    class="button voting__button voting__button--msg"
+                  >
+                    Converse com a gente
+                  </a>
                 </div>
 
                 <div class="voting__feedback feedback">

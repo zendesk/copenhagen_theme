@@ -6,12 +6,12 @@
   &__meta {
     margin-bottom: 40px;
     font-size: 14px;
-    color: map-get($base-colors-grey, "400");
+    color: map-get($base-colors-grey, '400');
 
     span {
       & + span:before {
         margin: 0 6px 0 4px;
-        content: "\00B7"; // middle dot/interpunct: ·
+        content: '\00B7'; // middle dot/interpunct: ·
         font-weight: bold;
       }
     }
@@ -20,8 +20,8 @@
   &__content {
     margin-bottom: 40px;
     padding-bottom: 40px;
-    border-bottom: 1px solid map-get($base-colors-grey, "200");
-    color: map-get($base-colors-secondary, "700");
+    border-bottom: 1px solid map-get($base-colors-grey, '200');
+    color: map-get($base-colors-secondary, '700');
 
     p,
     ul,
@@ -39,20 +39,41 @@
       padding-left: 16px;
     }
 
+    ul {
+      li {
+        list-style-type: disc;
+      }
+    }
+
+    ol {
+      li {
+        list-style-type: decimal;
+      }
+    }
+
     img {
-      max-width: 100%;
+      display: block;
       height: auto;
+      max-width: 100%;
+      margin-top: 16px;
+      margin-bottom: 16px;
       object-fit: contain;
     }
 
     a {
-      color: map-get($base-colors-primary, "500");
+      color: map-get($base-colors-primary, '500');
       text-decoration: underline;
     }
 
     iframe {
       max-width: 100%;
       margin-top: 40px;
+    }
+
+    @media screen and (max-width: map-get($viewports, 'tablet')) {
+      iframe {
+        width: 100%;
+      }
     }
   }
 
@@ -74,7 +95,7 @@
     }
   }
 
-  @media screen and (min-width: map-get($viewports, "desktop")) {
+  @media screen and (min-width: map-get($viewports, 'desktop')) {
     max-width: 700px;
   }
 }

@@ -1,57 +1,45 @@
-/***** Pagination *****/
-
 .pagination {
-  margin: 20px 0;
-  text-align: center;
+  margin: 24px 0;
 
-  &-next, &-prev, &-first, &-last {
-    display: inline-block;
-    &-link {
-      @extend .button;
+  &-list {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+    li {
+      margin: 0 8px;
+
+      a {
+        display: block;
+        position: relative;
+        padding: 12px;
+        background-color: $color-white;
+        border: 1px solid map-get($base-colors-primary, '600');
+        border-radius: 4px;
+        color: map-get($base-colors-primary, '600');
+        cursor: pointer;
+        font-size: 14px;
+        line-height: 1;
+        text-decoration: none;
+        transition: all ease-in-out 250ms;
+
+        &:hover {
+          background-color: map-get($base-colors-primary, '600');
+          color: $color-white;
+        }
+      }
     }
   }
 
-  &-first, &-last {
+  &-first,
+  &-last {
     &-link {
       padding: 0 10px;
     }
 
     &-text {
-     @include visually-hidden;
-    }
-  }
-
-  &-next {
-    &-link {
-      padding-right: 10px;
-    }
-    &-text {
-      margin-right: 10px;
-    }
-    [dir="rtl"] & {
-      &-link {
-        padding-left: 10px;
-      }
-      &-text {
-        margin-left: 10px;
-      }
-    }
-  }
-
-  &-prev {
-    &-link {
-      padding-left: 10px;
-    }
-    &-text {
-      margin-left: 10px;
-    }
-    [dir="rtl"] & {
-      &-link {
-        padding-right: 10px;
-      }
-      &-text {
-        margin-right: 10px;
-      }
+      @include visually-hidden;
     }
   }
 }

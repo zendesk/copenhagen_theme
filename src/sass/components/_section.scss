@@ -4,18 +4,18 @@
 
   // elements
   &__container {
-    max-width: map-get($container-width, "default");
+    max-width: map-get($container-width, 'default');
     margin: 0 auto;
   }
-  
+
   &__title {
     font-size: 32px;
-    color: map-get($base-colors-primary, "700");
+    color: map-get($base-colors-primary, '700');
   }
 
   &__category {
     margin-top: 32px;
-    
+
     h1 {
       margin-bottom: 16px;
       font-size: 40px;
@@ -36,8 +36,24 @@
     }
   }
 
+  &__cta {
+    display: block;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid map-get($base-colors-grey, '200');
+    font-weight: bold;
+    text-align: right;
+    color: map-get($base-colors-secondary, '700');
+
+    &:after {
+      display: inline-block;
+      margin: 0 4px;
+      content: '\003E'; // greater than: >
+    }
+  }
+
   // modifiers
   &--head {
-    background-color: map-get($colors-background, "yellow");
+    background-color: map-get($colors-background, 'yellow');
   }
 }

@@ -94,7 +94,6 @@ const unescapeCss = () => {
   return readFile(`${gulpConfig.sass.output.path}/${gulpConfig.sass.output.file}`, 'utf8')
     .then((data) => {
       const unescaped = data.replace(/zass-/gm, '').replace(/\"\t/g, '').replace(/\t\"/g, '');
-      console.log(data.lastIndexOf(/\"\t/g));
 
       writeUnescapedCss(unescaped);
     })
