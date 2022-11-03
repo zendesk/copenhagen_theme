@@ -58,8 +58,8 @@
               <ul class="articles-list">
                 {{#each articles}}
                   <li class="articles-list__item">
-                    <a href="{{url}}" class="article">
-                      <span class="article__title">{{title}}</span>
+                    <a href="{{ url }}" class="article">
+                      <span class="article__title">{{ title }}</span>
                       <span class="article__excerpt">{{excerpt body characters=200}}</span>
                     </a>
                   </li>
@@ -67,7 +67,7 @@
               </ul>
 
               {{#if more_articles}}
-                <a href="{{url}}" class="section__cta">
+                <a href="{{ url }}" class="section__cta">
                   {{t 'show_all_articles' count=article_count}}
                 </a>
               {{/if}}
