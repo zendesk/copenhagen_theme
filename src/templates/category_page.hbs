@@ -65,6 +65,12 @@
                   </li>
                 {{/each}}
               </ul>
+
+              {{#if more_articles}}
+                <a href="{{url}}" class="section__cta">
+                  {{t 'show_all_articles' count=article_count}}
+                </a>
+              {{/if}}
             {{/if}}
           </section>
         {{/each}}

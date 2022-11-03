@@ -48,22 +48,6 @@
             }
           }
         }
-
-        .section__cta {
-          display: block;
-          margin-top: 16px;
-          padding-top: 16px;
-          border-top: 1px solid map-get($base-colors-grey, '200');
-          font-weight: bold;
-          text-align: right;
-          color: map-get($base-colors-secondary, '700');
-
-          &:after {
-            display: inline-block;
-            margin: 0 4px;
-            content: '\003E'; // greater than: >
-          }
-        }
       }
 
       &__article {

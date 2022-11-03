@@ -21,12 +21,12 @@
         cursor: pointer;
         font-size: 14px;
         line-height: 1;
+        text-decoration: none;
         transition: all ease-in-out 250ms;
 
         &:hover {
           background-color: map-get($base-colors-primary, '600');
           color: $color-white;
-          text-decoration: none;
         }
       }
     }
