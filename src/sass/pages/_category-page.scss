@@ -1,5 +1,9 @@
 .category-page {
   .section--head {
+    .section__title {
+      margin-bottom: 0;
+    }
+
     .category {
       &__icon {
         position: absolute;
