@@ -29,6 +29,10 @@
                 </li>
               {{/each}}
             </ul>
+
+            {{#if section.more_articles}}
+              <a href="{{section.url}}" class="section__cta">{{t 'see_more'}}</a>
+            {{/if}}
           </div>
         </details>
       {{/if}}
