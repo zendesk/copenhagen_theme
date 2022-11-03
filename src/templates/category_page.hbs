@@ -39,9 +39,9 @@
         <summary>Assuntos</summary>
 
         <div class="collapse__content">
-          <ul>
+          <ul class="subjects-list">
             {{#each sections}}
-              <li>
+              <li class="subjects-list__item" data-section="section-{{ id }}">
                 <a href="#section-{{ id }}">{{ name }}</a>
               </li>
             {{/each}}
