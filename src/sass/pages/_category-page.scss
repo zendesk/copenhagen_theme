@@ -35,7 +35,27 @@
       }
 
       &__subjects {
+        position: sticky;
+        top: calc($header-height - 1px);
         margin-bottom: 24px;
+        background-color: $color-white;
+        z-index: 1;
+
+        .subjects-list {
+          &__item {
+            &--active {
+              a {
+                background-color: map-get($base-colors-grey, '100');
+              }
+            }
+
+            &:hover {
+              a {
+                background-color: map-get($base-colors-grey, '200');
+              }
+            }
+          }
+        }
       }
 
       &__articles {
@@ -67,7 +87,6 @@
         }
 
         &__subjects {
-          position: sticky;
           top: 96px;
           width: 25%;
           flex-basis: 25%;

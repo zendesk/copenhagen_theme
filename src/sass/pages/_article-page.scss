@@ -12,7 +12,11 @@
       }
 
       &__related {
+        position: sticky;
+        top: calc($header-height - 1px);
         margin-bottom: 24px;
+        background-color: $color-white;
+        z-index: 1;
 
         .articles-list {
           flex-flow: column wrap;
@@ -77,7 +81,6 @@
         }
 
         &__related {
-          position: sticky;
           top: 96px;
           width: 25%;
           flex-basis: 25%;
