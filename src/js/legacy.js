@@ -50,7 +50,7 @@ function buildClearSearchButton(inputId) {
 
 // Append the clear button to the search form
 function appendClearSearchButton(input, form) {
-  searchClearButton = buildClearSearchButton(input.id);
+  const searchClearButton = buildClearSearchButton(input.id);
   form.append(searchClearButton);
   if (input.value.length > 0) {
     form.classList.add(searchFormFilledClassName);
