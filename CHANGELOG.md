@@ -1,3 +1,10 @@
+## [2.19.2](https://github.com/zendesk/copenhagen_theme/compare/v2.19.1...v2.19.2) (2022-11-10)
+
+
+### Bug Fixes
+
+* correct visited state for buttons ([0a9a953](https://github.com/zendesk/copenhagen_theme/commit/0a9a953520b4d040ff2f5da91f468cda8eab7da1))
+
 ## [2.19.1](https://github.com/zendesk/copenhagen_theme/compare/v2.19.0...v2.19.1) (2022-10-13)
 
 
