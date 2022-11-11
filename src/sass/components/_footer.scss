@@ -1,6 +1,6 @@
 .footer {
   padding: 64px 24px;
-  background-color: map-get($base-colors-secondary, "600");
+  background-color: map-get($base-colors-secondary, '600');
 
   &__container {
     display: grid;
@@ -85,20 +85,20 @@
 
   &__disclaimer {
     padding-top: 32px;
-    border-top: 1px solid map-get($base-colors-grey, "400");
+    border-top: 1px solid map-get($base-colors-grey, '400');
     font-size: 14px;
 
     p {
-      color: map-get($base-colors-grey, "300");
+      color: map-get($base-colors-grey, '300');
     }
 
     a {
       font-weight: bold;
-      color: map-get($base-colors-primary, "500");
+      color: map-get($base-colors-primary, '500');
 
       & + a:before {
         margin: 0 6px 0 4px;
-        content: "\00B7"; // middle dot/interpunct: ·
+        content: '\00B7'; // middle dot/interpunct: ·
         font-weight: bold;
         color: $color-white;
       }
@@ -130,7 +130,7 @@
       font-family: $text_font;
       font-size: 12px;
       font-weight: bold;
-      color: map-get($base-colors-grey, "300");
+      color: map-get($base-colors-grey, '300');
       text-transform: uppercase;
       letter-spacing: 1px;
     }
@@ -139,7 +139,16 @@
       li {
         margin-top: 16px;
 
-        a {
+        button {
+          margin: 0;
+          padding: 0;
+          background: none;
+          border: none;
+          appearance: none;
+        }
+
+        a,
+        button {
           font-size: 16px;
           color: #f0f0f0;
 
@@ -154,7 +163,7 @@
         span {
           display: block;
           font-size: 14px;
-          color: map-get($base-colors-grey, "300");
+          color: map-get($base-colors-grey, '300');
         }
       }
     }
