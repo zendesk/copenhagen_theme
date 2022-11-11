@@ -1,4 +1,3 @@
-/***** Buttons *****/
 .button {
   background-color: transparent;
   border: 1px solid $button-color;
@@ -11,7 +10,8 @@
   margin: 0;
   padding: 0 20px;
   text-align: center;
-  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+  transition: background-color 0.12s ease-in-out, border-color 0.12s ease-in-out,
+    color 0.15s ease-in-out;
   user-select: none;
   white-space: nowrap;
   width: auto;
@@ -27,7 +27,8 @@
     text-decoration: none;
   }
 
-  &.button-primary {
+  &.button-primary,
+  &--primary {
     &:hover,
     &:focus,
     &:active {
@@ -41,7 +42,8 @@
   }
 }
 
-.button-large, input[type="submit"] {
+.button-large,
+input[type='submit'] {
   @include tablet {
     width: auto;
   }
@@ -62,7 +64,6 @@
   &:focus {
     background-color: $hover-button-color;
   }
-
 
   &[disabled] {
     background-color: #ddd;
