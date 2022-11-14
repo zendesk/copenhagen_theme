@@ -173,7 +173,7 @@
           "type": "checkbox",
           "description": "recent_activity_description",
           "label": "recent_activity_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "homepage_background_color",
