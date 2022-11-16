@@ -157,10 +157,12 @@
             <h6>Fale com a gente</h6>
 
             <ul>
-              <li>
-                <a href="javascript:void(zE('messenger', 'open'))">Chat</a>
-                <span>Para dúvidas, solicitações ou problemas é só mandar um oi!</span>
-              </li>
+              {{#if settings.zendesk_chat_enabled}}
+                <li>
+                  <button class="toggle-chat" title="Iniciar chat">Chat</button>
+                  <span>Para dúvidas, solicitações ou problemas é só mandar um oi!</span>
+                </li>
+              {{/if}}
               <li>
                 <a href="https://ajuda.pier.digital/hc/pt-br/requests/new">Email</a>
               </li>
@@ -221,3 +223,26 @@
     </div>
   </div>
 </footer>
+
+{{#if settings.zendesk_chat_enabled}}
+<script>
+!function(o,p,s,e,c){
+var i,a,h,u=[],d=[];function t(){var t="You must provide a supported major version.";try{if(!c)throw new Error(t);var e,n="https://cdn.smooch.io/",r="smooch";
+if((e="string"==typeof this.response?JSON.parse(this.response):this.response).url){var o=p.getElementsByTagName("script")[0],s=p.createElement("script");s.async=!0;
+var i=c.match(/([0-9]+).?([0-9]+)?.?([0-9]+)?/),a=i&&i[1];if(i&&i[3])s.src=n+r+"."+c+".min.js";else{if(!(4<=a&&e["v"+a]))throw new Error(t);s.src=e["v"+a]}o.parentNode.insertBefore(s,o)}
+}catch(e){e.message===t&&console.error(e)}}o[s]={init:function(){i=arguments;var t={then:function(e){return d.push({type:"t",next:e}),t},catch:function(e){return d.push({type:"c",next:e}),t}};
+return t},on:function(){u.push(arguments)},render:function(){a=arguments},destroy:function(){h=arguments}},o.__onWebMessengerHostReady__=function(e){
+if(delete o.__onWebMessengerHostReady__,o[s]=e,i)for(var t=e.init.apply(e,i),n=0;n<d.length;n++){var r=d[n];t="t"===r.type?t.then(r.next):t.catch(r.next)
+}a&&e.render.apply(e,a),h&&e.destroy.apply(e,h);for(n=0;n<u.length;n++)e.on.apply(e,u[n])};
+var n=new XMLHttpRequest;n.addEventListener("load",t),n.open("GET","https://"+e+".webloader.smooch.io/",!0),n.responseType="json",n.send()
+}(window,document,"Smooch","{{ settings.zendesk_chat_integration_id }}","5");
+
+window.sessionStorage.setItem('ze_chat_enabled', 1);
+window.sessionStorage.setItem('ze_chat_integration_id', "{{ settings.zendesk_chat_integration_id }}");
+</script>
+{{else}}
+<script>
+window.sessionStorage.setItem('ze_chat_enabled', 0);
+window.sessionStorage.removeItem('ze_chat_integration_id');
+</script>
+{{/if}}

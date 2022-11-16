@@ -75,5 +75,10 @@
   "text_font_description": "Fonte do texto do corpo",
   "text_font_label": "Fonte do texto",
   "visited_link_color_description": "Cor do texto para elementos de links visitados",
-  "visited_link_color_label": "Cor de links visitados"
+  "visited_link_color_label": "Cor de links visitados",
+  "zendesk_sunshine_chat": "Zendesk Sunshine Chat",
+  "zendesk_chat_enabled_label": "Habilitar Zendesk Sunshine Chat?",
+  "zendesk_chat_enabled_description": "Habilitar o widget do Zendesk Sunshine Chat",
+  "zendesk_chat_integration_id_label": "Zendesk Sunshine Chat Integration ID",
+  "zendesk_chat_integration_id_description": "A chave de integração do Zendesk Sunshine"
 }

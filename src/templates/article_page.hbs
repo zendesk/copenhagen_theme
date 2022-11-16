@@ -59,40 +59,40 @@
             {{article.body}}
           </div>
 
-          {{#with article}}
-            <div class="article__voting voting">
-              <div class="voting__container">
-                <div class="voting__form">
-                  <h4 class="voting__title" id="voting-title">{{t 'was_this_article_helpful'}}</h4>
+          <div class="article__voting voting">
+            <div class="voting__container">
+              <div class="voting__form">
+                <h4 class="voting__title" id="voting-title">{{t 'was_this_article_helpful'}}</h4>
 
-                  <div class="voting__options" aria-labelledby="voting-title">
-                    {{vote 'up' role='radio' class='button voting__button voting__button--up' selected_class="button-primary"}}
-                    {{vote 'down' role='radio' class='button voting__button voting__button--down' selected_class="button-primary"}}
-                  </div>
+                <div class="voting__options" aria-labelledby="voting-title">
+                  {{article.vote 'up' role='radio' class='button voting__button voting__button--up' selected_class="button-primary"}}
+                  {{article.vote 'down' role='radio' class='button voting__button voting__button--down' selected_class="button-primary"}}
                 </div>
-                
+              </div>
+              
+              {{#if settings.zendesk_chat_enabled}}
                 <div class="voting__cta">
                   <h4>Não fique com dúvidas!</h4>
 
-                  <a
-                    href="javascript:void(zE('messenger', 'open'))"
-                    class="button voting__button voting__button--msg"
+                  <button
+                    class="button button--primary voting__button voting__button--msg toggle-chat"
+                    title="Iniciar chat"
                   >
                     Converse com a gente
-                  </a>
+                  </button>
                 </div>
+              {{/if}}
 
-                <div class="voting__feedback feedback">
-                  <img src="{{asset '_draw-friends.svg'}}" alt="" />
+              <div class="voting__feedback feedback">
+                <img src="{{asset '_draw-friends.svg'}}" alt="" />
 
-                  <div class="feedback__text">
-                    <h4>Avaliação registrada!</h4>
-                    <p>Agradecemos pelo feedback.</p>
-                  </div>
+                <div class="feedback__text">
+                  <h4>Avaliação registrada!</h4>
+                  <p>Agradecemos pelo feedback.</p>
                 </div>
               </div>
             </div>
-          {{/with}}
+          </div>
         </article>
       </div>
     </div>

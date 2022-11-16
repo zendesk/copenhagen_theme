@@ -123,6 +123,25 @@
       ]
     },
     {
+      "label": "zendesk_sunshine_chat",
+      "variables": [
+        {
+          "identifier": "zendesk_chat_enabled",
+          "type": "checkbox",
+          "description": "zendesk_chat_enabled_description",
+          "label": "zendesk_chat_enabled_label",
+          "value": true
+        },
+        {
+          "identifier": "zendesk_chat_integration_id",
+          "type": "text",
+          "description": "zendesk_chat_integration_id_description",
+          "label": "zendesk_chat_integration_id_label",
+          "value": "62829bcdabaeb300f7f64e7b"
+        }
+      ]
+    },
+    {
       "label": "images_group_label",
       "variables": [
         {
