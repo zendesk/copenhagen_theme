@@ -22,6 +22,8 @@ jobs:
       - run: npm install
       - run: npm run build
 
+      - run: sh bin/update-theme-version.sh
+
       - name: Publish to staging branch
         uses: casperdcl/push-dir@v1
         with:
