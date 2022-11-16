@@ -439,12 +439,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
     /* header */
     window.collectionIcon = document.querySelector('.bar-burger')
-    
+
     window.firstBarMenus = document.querySelector('nav[class~=menus')
     window.firstBar = document.querySelector('div[class~=first-bar')
     window.secondBarIcon = document.querySelector('#second-bar-icon')
     window.secondBarNavItems = document.querySelector('div[class~=nav-items')
-    
+
     window.mask = document.querySelector('.mask')
     window.removeMask = () => mask.style.display = 'none'
     window.openMask = () => mask.style.display = 'block'
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function () {
     handleBreadcrumbs()
     const isHomePage = new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)((/*)|#(.*))$','ig').test(window.location.href)
 
-    // entry home 
+    // entry home
     if(isHomePage) {
         // home page remove footer search
         const footerSearch = getEl('#footer-search')
@@ -979,7 +979,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    var extractComtainer = document.querySelectorAll('.academy-extract-img-list'); 
+    var extractComtainer = document.querySelectorAll('.academy-extract-img-list');
     extractFirstImg(extractComtainer)
 
     /**
@@ -1017,7 +1017,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     /**
-     * Header Component: control header show or not when scroll  
+     * Header Component: control header show or not when scroll
      */
     const headersHeight = isHomePage ? 156 :  80
     const firstBarHeight = 80
@@ -1067,7 +1067,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /**
-     * 
+     *
      */
 });
 
@@ -1124,7 +1124,7 @@ function handleBreadcrumbs() {
 
 
 /**
- * Refatoring change the structure of zendesk background data, so after publishing this template, we need time to update 
+ * Refatoring change the structure of zendesk background data, so after publishing this template, we need time to update
  * zendesk background data.
  * During the update the structure of zendesk background data, showing a modal to placate users;
  */
@@ -1133,7 +1133,7 @@ function hanldeRefatorAnnouncementModal(){
     const set = (key, value) => window.localStorage.setItem(key, value)
 
     if(get('is_announcement_get') === 'get') {
-        return 
+        return
     }
 
     set('is_announcement_get', 'get')
@@ -1186,7 +1186,7 @@ Object.defineProperties(headerController, {
 })
 
 /**
- * @description  first header bar, tablet/mobile, click icon open/close collection 
+ * @description  first header bar, tablet/mobile, click icon open/close collection
  */
 function toggleCollectionIcon() {
     headerController.isFirstBarActive = !headerController.isFirstBarActive
@@ -1225,7 +1225,7 @@ function toggleCollectionCss(isOpen) {
 }
 
 /**
- * @description  second header bar, tablet/mobile, click icon open/close collection 
+ * @description  second header bar, tablet/mobile, click icon open/close collection
  */
 function toggleSecondBarCollection() {
     if (window.innerWidth > 1024) { return }
@@ -1291,7 +1291,7 @@ function secondBarActive() {
             lastItem = navItems[currIdx]
             break
         }
-        currIdx = i    
+        currIdx = i
     }
     if(currIdx === (navItems.length - 1) && navItems[currIdx] !== lastItem) {
         navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item')
@@ -1299,7 +1299,7 @@ function secondBarActive() {
         lastItem && lastItem.classList.remove('active-nav-item')
         lastItem = navItems[currIdx]
     }
-    
+
     // used 2022.1~2022.8.29
     // const navHome = getEl('#nav-home')
     // const navAcademy = getEl('#nav-academy')
@@ -1327,7 +1327,7 @@ function onFooterCollectionClick(event) {
     if (!targetEl) return
     const isTargetNotDisplay = window.getComputedStyle(targetEl).display === 'none'
     targetEl.style.display = isTargetNotDisplay  ? 'block' : 'none'
-    
+
     const iconEl = document.querySelector(`.iconfont[data-toggle="${toggleNo}"]`)
     if(iconEl) iconEl.style.transform = isTargetNotDisplay ? 'rotate(90deg)' : 'rotate(0deg)'
 }
@@ -1439,7 +1439,7 @@ function handleSectionUMArticles() {
 }
 
 /**
- * @description section page: first screen, right side, get data of download resource and format for template  
+ * @description section page: first screen, right side, get data of download resource and format for template
  * @param {*} id section's id
  * @param {*} locale current page's locale(from {{help_center.locale}})
  */
@@ -1448,36 +1448,49 @@ async function handleSectionResource(id, locale) {
     const fileResourceContainer = getEl('#file-resource-container') || {}
     const compatibleLabelContainer = getEl('#compatible-label-container') || {}
 
-    const fold = locale === 'zh-cn' ? 'cn' : 'en'
+    const fold = locale === 'zh-cn' ? 'cn' : 'en';
     const configuration = ajax({
         method: 'GET',
         url: `https://s3.us-west-2.amazonaws.com/snapmaker.com/download/support-resource/products-configuration/${fold}/${id}.json`,
-    })
-    let resourceDownload, res
+    });
+    let res;
+    let resourceDownload = '';
+
     try {
-        [res, resourceDownload] = await Promise.all([configuration, handleLubanSoftware(locale)])
+        res = await configuration;
     } catch (e) {
-        console.log('Repeat. Retry in five minutes, err:',e)
-        resourceDownload = ``
-        res = await Promise.resolve(configuration)
+        console.warn(`Unable to download resource file for section: ${id}, err =`, e);
+        res = null;
     }
 
-    if(res.compatible) {
-        let compatibleHtml = ``
+    // Snapmaker J1 is not supported by Luban by now
+    // TODO: add separate configuration for luban support
+    if (id !== '10129930251671') {
+        try {
+            resourceDownload += await handleLubanSoftware(locale);
+        } catch (e) {
+            console.warn(`Unable to fetch Luban software resource file for section: ${id}, err =`, e);
+        }
+    }
+
+    if (res && res.compatible) {
+        let compatibleHtml = ``;
         res.compatible.forEach(item => {
             compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`
-        })
+        });
         compatibleContainer.innerHTML = compatibleHtml
-    }else{
+    } else {
         compatibleLabelContainer.style.display = 'none'
     }
 
-    if (res.productImgSrc) {
+    if (res && res.productImgSrc) {
         getEl('#section-product-img').src = res.productImgSrc
     }
 
-    res.resource.forEach(v => resourceDownload += handleResourceDownload(v))
-    fileResourceContainer.innerHTML = resourceDownload
+    if (res && res.resource) {
+        res.resource.forEach(v => resourceDownload += handleResourceDownload(v));
+        fileResourceContainer.innerHTML = resourceDownload;
+    }
 
     try {
         handleScrollText(fileResourceContainer)
@@ -1769,7 +1782,7 @@ async function handleLubanSoftware(locale) {
 
 
     const finder = (orignal, target) => new RegExp(target).test(orignal)
-    
+
     const uaParser = new UAParser()
     const ua = uaParser.getResult()
     const checkOS = (osType, CheckString) => {
@@ -1810,7 +1823,7 @@ async function handleLubanSoftware(locale) {
     }
     isFoundVersion = !!templateData.download_link
     templateData.text = isFoundVersion ? templateData.text+softwareVersion : 'Installer Not Found. Please Download from the GitHub'
-    
+
     return handleDownloadFile(templateData)
 }
 
@@ -1824,7 +1837,7 @@ function handleScrollText(targetsWrapper){
     const titleWrapperWidth = getWidth(titleWrapper)
     const timeWrapperWidth = getWidth(timeWrapper)
     const btnWrapperWidth = getWidth(btnWrapper)
-    
+
     const animationStyle = document.createElement('style')
     animationStyle.innerHTML = `
         @keyframes scroll-word-title {
@@ -1850,15 +1863,15 @@ function handleScrollText(targetsWrapper){
         const time = el.querySelector('.resource-time').firstElementChild
         const btn = el.querySelector('.file-download-btn').firstElementChild
 
-        if(titleWrapperWidth > getWidth(title)) { 
+        if(titleWrapperWidth > getWidth(title)) {
             title.classList.remove('text-box')
         }
 
-        if(timeWrapperWidth > getWidth(time)) { 
+        if(timeWrapperWidth > getWidth(time)) {
             time.classList.remove('text-box')
         }
 
-        if(btnWrapperWidth > getWidth(btn)) { 
+        if(btnWrapperWidth > getWidth(btn)) {
             btn.classList.remove('text-box')
         }
     })
@@ -1868,7 +1881,7 @@ function handleScrollText(targetsWrapper){
 /**
  * @description throttle func
  * @param fn the func will be enhance
- * @param threshold time  
+ * @param threshold time
  */
 function throttle(fn, threshold) {
     let cando = true
@@ -1898,7 +1911,7 @@ function getElDocumentTop(element) {
 
 /**
  * @description send http require
- * @param {Object} options 
+ * @param {Object} options
  * @returns Promise
  * @example ajax({
  *  method: 'GET'
@@ -1912,29 +1925,29 @@ function ajax(options) {
         const xhr = new XMLHttpRequest()
 
         xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4) {
-                if (xhr.status == 200) {
-                    const result = xhr.responseText
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    const result = xhr.responseText;
                     try {
                         resolve(JSON.parse(result))
                     } catch (e) {
                         reject({ errorMsg: '数据格式错误' })
                     }
                 } else {
-                    console.error('error:xmlhttp.status =', xhr.status)
+                    console.error('error:XMLHttpRequest.status =', xhr.status);
                     reject(xhr)
                 }
             }
-        }
+        };
         xhr.onerror = function (e) {
             reject(e)
-        }
+        };
 
         xhr.open(options.method || 'GET', url, true);
         for (let key in options.headers) {
             xhr.setRequestHeader(key, options.headers[key]);
         }
-        xhr.send(options.body)
+        xhr.send(options.body);
     })
 }
 function handleParam(params) {
@@ -1949,7 +1962,7 @@ function handleParam(params) {
 
 /**
  * @description send http require
- * @param {Object} options 
+ * @param {Object} options
  * @returns Promise
  * @example ajax({
  *  params: {age: 16}
@@ -1988,7 +2001,7 @@ function gtmPush(event) {
  * @description extract First Img from article
  * @param {Node} extractComtainer root of the extract node, extract node should container css class `.extract-img-item`
  * and inside of the extract node should have node with .article-body
- * 
+ *
  */
 function extractFirstImg(extractComtainer) {
     if(!extractComtainer) {
@@ -1996,7 +2009,7 @@ function extractFirstImg(extractComtainer) {
         return
     }
     try {
-        // var extractComtainer = document.querySelectorAll('.extract-img-list'); 
+        // var extractComtainer = document.querySelectorAll('.extract-img-list');
         if (extractComtainer.length) {
             extractComtainer.forEach(function (section) {
                 var items = section.querySelectorAll('.extract-img-item');
@@ -2030,7 +2043,7 @@ function extractFirstImg(extractComtainer) {
 //============================================== update Acady(category) and home page(2022.8.29~) ==============================================
 (function(window) {
     let container, drawerAnchor, drawer, drawerCover
-    
+
     let isOpen = false
     function drawerInit() {
         if(isOpen) return
@@ -2041,7 +2054,7 @@ function extractFirstImg(extractComtainer) {
 
         drawer.style.height = container.offsetTop +  drawerAnchor.offsetTop + 'px'
         drawerCover.style.height = drawerAnchor.offsetTop + 'px'
-        return container.offsetTop +  drawerAnchor.offsetTop 
+        return container.offsetTop +  drawerAnchor.offsetTop
     }
     function openDrawer(){
         if(isOpen) return
