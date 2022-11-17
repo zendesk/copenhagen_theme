@@ -6,7 +6,12 @@
       <h2 class="section__title">{{ settings.homepage_hero_title }}</h2>
 
       <div class="section__search">
-        {{search submit=false placeholder="Digite sua dúvida" instant=settings.instant_search class="search search-full"}}
+        {{search
+          submit=false
+          placeholder=settings.search_placeholder
+          instant=settings.instant_search
+          class="search search-full"
+        }}
       </div>
     </div>
   </section>
