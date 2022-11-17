@@ -207,6 +207,13 @@
           "description": "homepage_hero_title_description",
           "label": "homepage_hero_title_label",
           "value": "Como podemos ajudar?"
+        },
+        {
+          "identifier": "promoted_articles_title",
+          "type": "text",
+          "description": "promoted_articles_title_description",
+          "label": "promoted_articles_title_label",
+          "value": "Artigos em destaque"
         }
       ]
     },

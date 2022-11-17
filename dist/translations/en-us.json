@@ -66,6 +66,8 @@
   "logo_label": "Logo",
   "post_sharing_description": "Show social media sharing on post",
   "post_sharing_label": "Social sharing",
+  "promoted_articles_title_label": "Promoted articles title",
+  "promoted_articles_title_description": "How do we call the promoted articles",
   "recently_viewed_articles_description": "Show recently viewed articles",
   "recently_viewed_articles_label": "Recently viewed",
   "recent_activity_description": "Show recent activity on home page",

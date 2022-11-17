@@ -64,6 +64,8 @@
   "link_color_label": "Cor do link",
   "logo_description": "Logotipo da empresa",
   "logo_label": "Logotipo",
+  "promoted_articles_title_label": "Título dos artigos promovidos",
+  "promoted_articles_title_description": "Como chamamos os artigos que são promovidos",
   "post_sharing_description": "Mostrar opções de compartilhamento em redes sociais na publicação",
   "post_sharing_label": "Compartilhamento em redes sociais",
   "recently_viewed_articles_description": "Mostrar artigos visualizados recentemente",
