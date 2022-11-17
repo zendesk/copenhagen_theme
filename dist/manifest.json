@@ -282,11 +282,32 @@
           "value": "Artigos nessa seção"
         },
         {
+          "identifier": "article_voting_title",
+          "type": "text",
+          "description": "article_voting_title_label",
+          "label": "article_voting_title_description",
+          "value": "Não fique com dúvidas!"
+        },
+        {
           "identifier": "article_voting_contact_cta",
           "type": "text",
           "description": "article_voting_contact_cta_label",
           "label": "article_voting_contact_cta_description",
           "value": "Converse com a gente"
+        },
+        {
+          "identifier": "article_feedback_title",
+          "type": "text",
+          "description": "article_feedback_title_description",
+          "label": "article_feedback_title_label",
+          "value": "Avaliação registrada!"
+        },
+        {
+          "identifier": "article_feedback_text",
+          "type": "text",
+          "description": "article_feedback_text_description",
+          "label": "article_feedback_text_label",
+          "value": "Agradecemos pelo feedback."
         }
       ]
     },
