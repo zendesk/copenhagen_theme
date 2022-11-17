@@ -67,6 +67,8 @@
   "scoped_knowledge_base_search_description": "Search results are confined to the category the user is in",
   "scoped_knowledge_base_search_label": "Scoped search in Knowledge Base",
   "search_group_label": "Search settings",
+  "search_placeholder_label": "Search placeholder",
+  "search_placeholder_description": "Search input placeholder text",
   "section_page_group_label": "Section page elements",
   "show_brand_name_description": "Display the Help Center name next to the logo",
   "show_brand_name_label": "Show Help Center name",

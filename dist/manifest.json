@@ -181,6 +181,13 @@
           "description": "scoped_community_search_description",
           "label": "scoped_community_search_label",
           "value": true
+        },
+        {
+          "identifier": "search_placeholder",
+          "type": "text",
+          "description": "search_placeholder_description",
+          "label": "search_placeholder_label",
+          "value": "Digite sua dúvida"
         }
       ]
     },
@@ -193,13 +200,6 @@
           "description": "recent_activity_description",
           "label": "recent_activity_label",
           "value": false
-        },
-        {
-          "identifier": "homepage_background_color",
-          "type": "color",
-          "description": "homepage_background_color_description",
-          "label": "homepage_background_color_label",
-          "value": "#F9F2E9"
         },
         {
           "identifier": "homepage_background_image",

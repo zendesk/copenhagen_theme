@@ -67,6 +67,8 @@
   "scoped_knowledge_base_search_description": "Os resultados da pesquisa estão restritos à categoria que o usuário está visitando",
   "scoped_knowledge_base_search_label": "Pesquisa dentro do escopo na base de conhecimento",
   "search_group_label": "Configurações de pesquisa",
+  "search_placeholder_label": "Placeholder da busca",
+  "search_placeholder_description": "Texto de placeholder do campo de busca",
   "section_page_group_label": "Elementos da página da seção",
   "show_brand_name_description": "Exibir o nome da Central de Ajuda ao lado do logotipo",
   "show_brand_name_label": "Exibir nome da Central de Ajuda",
