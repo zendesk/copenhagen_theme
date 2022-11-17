@@ -280,6 +280,13 @@
           "description": "article_sidebar_title_description",
           "label": "article_sidebar_title_label",
           "value": "Artigos nessa seção"
+        },
+        {
+          "identifier": "article_voting_contact_cta",
+          "type": "text",
+          "description": "article_voting_contact_cta_label",
+          "label": "article_voting_contact_cta_description",
+          "value": "Converse com a gente"
         }
       ]
     },

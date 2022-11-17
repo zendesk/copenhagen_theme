@@ -10,6 +10,8 @@
   "article_sharing_label": "Compartilhamento em redes sociais",
   "article_sidebar_title_label": "Título da barra lateral",
   "article_sidebar_title_description": "O título mostrado na barra lateral da página do artigo",
+  "article_voting_contact_cta_label": "Texto do botão de contato",
+  "article_voting_contact_cta_description": "Texto mostrado no botão de contato da seção de feedback do artigo",
   "background_color_description": "Cor do plano de fundo da sua Central de Ajuda",
   "background_color_label": "Cor do plano de fundo",
   "brand_color_description": "Cor da marca para os principais elementos da navegação",
