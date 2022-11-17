@@ -188,6 +188,13 @@
           "description": "search_placeholder_description",
           "label": "search_placeholder_label",
           "value": "Digite sua dúvida"
+        },
+        {
+          "identifier": "search_no_results_title",
+          "type": "text",
+          "description": "search_no_results_title_description",
+          "label": "search_no_results_title_label",
+          "value": "Ainda não temos artigos sobre este assunto"
         }
       ]
     },

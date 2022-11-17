@@ -84,6 +84,8 @@
   "search_group_label": "Search settings",
   "search_placeholder_label": "Search placeholder",
   "search_placeholder_description": "Search input placeholder text",
+  "search_no_results_title_label": "Search without results title",
+  "search_no_results_title_description": "Title to display when the search has no results",
   "section_page_group_label": "Section page elements",
   "show_brand_name_description": "Display the Help Center name next to the logo",
   "show_brand_name_label": "Show Help Center name",

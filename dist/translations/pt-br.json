@@ -84,6 +84,8 @@
   "search_group_label": "Configurações de pesquisa",
   "search_placeholder_label": "Placeholder da busca",
   "search_placeholder_description": "Texto de placeholder do campo de busca",
+  "search_no_results_title_label": "Título para busca sem resultados",
+  "search_no_results_title_description": "Título que será mostrado quando uma busca não retornar resultados",
   "section_page_group_label": "Elementos da página da seção",
   "show_brand_name_description": "Exibir o nome da Central de Ajuda ao lado do logotipo",
   "show_brand_name_label": "Exibir nome da Central de Ajuda",
