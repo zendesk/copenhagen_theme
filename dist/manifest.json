@@ -211,6 +211,18 @@
       ]
     },
     {
+      "label": "category_page_group_label",
+      "variables": [
+        {
+          "identifier": "category_page_sidebar_title",
+          "type": "text",
+          "description": "category_page_sidebar_title_description",
+          "label": "category_page_sidebar_title_description",
+          "value": "Assuntos"
+        }
+      ]
+    },
+    {
       "label": "article_page_group_label",
       "variables": [
         {
