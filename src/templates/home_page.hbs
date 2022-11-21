@@ -6,7 +6,12 @@
       <h2 class="section__title">{{ settings.homepage_hero_title }}</h2>
 
       <div class="section__search">
-        {{search submit=false placeholder="Digite sua dúvida" instant=settings.instant_search class="search search-full"}}
+        {{search
+          submit=false
+          placeholder=settings.search_placeholder
+          instant=settings.instant_search
+          class="search search-full"
+        }}
       </div>
     </div>
   </section>
@@ -60,7 +65,7 @@
   {{#if promoted_articles}}
     <section class="section section--articles">
       <div class="section__container">
-        <h2 class="section__title">Artigos em destaque</h2>
+        <h2 class="section__title">{{ settings.promoted_articles_title }}</h2>
 
         <ul class="articles-list">
           {{#each promoted_articles}}
@@ -75,23 +80,4 @@
       </div>
     </section>
   {{/if}}
-
-<!--
-  {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
-
-      <div class="community-image"></div>
-    </section>
-  {{/if}}
-
-  <section class="section home-section activity">
-    {{#if settings.show_recent_activity}}
-      {{recent_activity}}
-    {{/if}}
-  </section>
--->
 </div>

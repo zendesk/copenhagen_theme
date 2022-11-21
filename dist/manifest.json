@@ -181,6 +181,20 @@
           "description": "scoped_community_search_description",
           "label": "scoped_community_search_label",
           "value": true
+        },
+        {
+          "identifier": "search_placeholder",
+          "type": "text",
+          "description": "search_placeholder_description",
+          "label": "search_placeholder_label",
+          "value": "Digite sua dúvida"
+        },
+        {
+          "identifier": "search_no_results_title",
+          "type": "text",
+          "description": "search_no_results_title_description",
+          "label": "search_no_results_title_label",
+          "value": "Ainda não temos artigos sobre este assunto"
         }
       ]
     },
@@ -195,24 +209,30 @@
           "value": false
         },
         {
-          "identifier": "homepage_background_color",
-          "type": "color",
-          "description": "homepage_background_color_description",
-          "label": "homepage_background_color_label",
-          "value": "#F9F2E9"
-        },
-        {
-          "identifier": "homepage_background_image",
-          "type": "file",
-          "description": "homepage_background_image_description",
-          "label": "homepage_background_image_label"
-        },
-        {
           "identifier": "homepage_hero_title",
           "type": "text",
           "description": "homepage_hero_title_description",
           "label": "homepage_hero_title_label",
           "value": "Como podemos ajudar?"
+        },
+        {
+          "identifier": "promoted_articles_title",
+          "type": "text",
+          "description": "promoted_articles_title_description",
+          "label": "promoted_articles_title_label",
+          "value": "Artigos em destaque"
+        }
+      ]
+    },
+    {
+      "label": "category_page_group_label",
+      "variables": [
+        {
+          "identifier": "category_page_sidebar_title",
+          "type": "text",
+          "description": "category_page_sidebar_title_description",
+          "label": "category_page_sidebar_title_description",
+          "value": "Assuntos"
         }
       ]
     },
@@ -238,21 +258,21 @@
           "type": "checkbox",
           "description": "article_comments_description",
           "label": "article_comments_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_follow_article",
           "type": "checkbox",
           "description": "follow_article_description",
           "label": "follow_article_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_recently_viewed_articles",
           "type": "checkbox",
           "description": "recently_viewed_articles_description",
           "label": "recently_viewed_articles_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_related_articles",
@@ -266,7 +286,42 @@
           "type": "checkbox",
           "description": "article_sharing_description",
           "label": "article_sharing_label",
-          "value": true
+          "value": false
+        },
+        {
+          "identifier": "article_sidebar_title",
+          "type": "text",
+          "description": "article_sidebar_title_description",
+          "label": "article_sidebar_title_label",
+          "value": "Artigos nessa seção"
+        },
+        {
+          "identifier": "article_voting_title",
+          "type": "text",
+          "description": "article_voting_title_label",
+          "label": "article_voting_title_description",
+          "value": "Não fique com dúvidas!"
+        },
+        {
+          "identifier": "article_voting_contact_cta",
+          "type": "text",
+          "description": "article_voting_contact_cta_label",
+          "label": "article_voting_contact_cta_description",
+          "value": "Converse com a gente"
+        },
+        {
+          "identifier": "article_feedback_title",
+          "type": "text",
+          "description": "article_feedback_title_description",
+          "label": "article_feedback_title_label",
+          "value": "Avaliação registrada!"
+        },
+        {
+          "identifier": "article_feedback_text",
+          "type": "text",
+          "description": "article_feedback_text_description",
+          "label": "article_feedback_text_label",
+          "value": "Agradecemos pelo feedback."
         }
       ]
     },

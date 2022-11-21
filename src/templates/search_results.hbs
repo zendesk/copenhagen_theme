@@ -6,7 +6,7 @@
       </nav>
 
       <div class="section__search">
-        {{search submit=false}}
+        {{search submit=false placeholder=settings.search_placeholder}}
       </div>
   </section>
 
@@ -57,10 +57,10 @@
         <div class="section__no-results">
           <img src="{{asset '_draw-binoculars.svg'}}" alt="Não encontramos nenhum resultado para a sua pesquisa" />
 
-          <h1>Ainda não temos artigos sobre este assunto.</h1>
+          <h1>{{ settings.search_no_results_title }}</h1>
 
           {{#if promoted_articles}}
-            <p>Experimente um dos nossos <strong>artigos em destaque:</strong></p>
+            <p>Experimente um dos nossos <strong>{{ settings.promoted_articles_title }}:</strong></p>
 
             <ul class="articles-list">
               {{#each promoted_articles}}

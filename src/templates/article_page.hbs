@@ -11,7 +11,7 @@
     <div class="section__container">
       {{#if settings.show_articles_in_section}}
         <details class="section__related collapse collapse--desktop-visible">
-          <summary>{{t 'articles_in_section'}}</summary>
+          <summary>{{ settings.article_sidebar_title }}</summary>
 
           <div class="collapse__content">
             <ul class="articles-list">
@@ -78,7 +78,7 @@
                     class="button button--primary voting__button voting__button--msg toggle-chat"
                     title="Iniciar chat"
                   >
-                    Converse com a gente
+                    {{ settings.article_voting_contact_cta }}
                   </button>
                 </div>
               {{/if}}

@@ -149,6 +149,7 @@ const copySettings = () => {
 const watch = () => {
   gulp.watch(`${gulpConfig.sass.input.path}/**/*.scss`, gulp.series(compileStyles, unescapeCss));
   gulp.watch(`${gulpConfig.scripts.input.path}/**/*.js`, compileScripts);
+  gulp.watch(`${gulpConfig.templates.input.path}/*.hbs`, copyTemplates);
   // gulp.watch(`${gulpConfig.sass.output.path}/${gulpConfig.sass.output.file}`, unescapeCss);
 };
 
