@@ -49,6 +49,8 @@
   "gtm_label": "Google Tag Manager",
   "gtm_container_id_description": "GTM Container ID",
   "gtm_container_id_label": "GTM Container ID",
+  "gtm_enabled_description": "Habilitar GTM no tema - se não marcado, o GTM não será carregado",
+  "gtm_enabled_label": "Habilitar?",
   "heading_font_description": "Fonte para os cabeçalhos",
   "heading_font_label": "Fonte do cabeçalho",
   "homepage_background_image_description": "Imagem principal na página inicial",

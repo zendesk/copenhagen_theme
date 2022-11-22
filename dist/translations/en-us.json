@@ -49,6 +49,8 @@
   "gtm_label": "Google Tag Manager",
   "gtm_container_id_description": "GTM Container ID",
   "gtm_container_id_label": "GTM Container ID",
+  "gtm_enabled_description": "Enable GTM on theme - if unchecked, GTM won't be loaded",
+  "gtm_enabled_label": "Enable GTM?",
   "heading_font_description": "Font for headings",
   "heading_font_label": "Heading Font",
   "homepage_background_image_description": "Hero image on the home page",

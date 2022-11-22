@@ -126,6 +126,13 @@
       "label": "gtm_label",
       "variables": [
         {
+          "identifier": "gtm_enabled",
+          "type": "checkbox",
+          "description": "gtm_enabled_description",
+          "label": "gtm_enabled_label",
+          "value": true
+        },
+        {
           "identifier": "gtm_container_id",
           "type": "text",
           "description": "gtm_container_id_description",
