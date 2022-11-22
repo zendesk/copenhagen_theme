@@ -123,7 +123,26 @@
       ]
     },
     {
-      "label": "zendesk_sunshine_chat",
+      "label": "gtm_label",
+      "variables": [
+        {
+          "identifier": "gtm_enabled",
+          "type": "checkbox",
+          "description": "gtm_enabled_description",
+          "label": "gtm_enabled_label",
+          "value": true
+        },
+        {
+          "identifier": "gtm_container_id",
+          "type": "text",
+          "description": "gtm_container_id_description",
+          "label": "gtm_container_id_label",
+          "value": "GTM-NVW8ZH2"
+        }
+      ]
+    },
+    {
+      "label": "zendesk_sunshine_chat_label",
       "variables": [
         {
           "identifier": "zendesk_chat_enabled",
