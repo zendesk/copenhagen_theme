@@ -11,7 +11,7 @@ export const chat = {
     this.actionTriggers = document.querySelectorAll(`.${this.CLASS_NAMES.toggleChat}`);
     this.isChatOpen = false;
 
-    this.themeHasWidget = window.sessionStorage.getItem('ze_chat_enabled') === 1;
+    this.themeHasWidget = parseInt(window.sessionStorage.getItem('ze_chat_enabled')) === 1;
     this.widgetIntegrationId = window.sessionStorage.getItem('ze_chat_integration_id');
 
     this.bindEvents();
