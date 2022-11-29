@@ -70,13 +70,13 @@
                 <div class="voting__options" aria-labelledby="voting-title">
                   {{article.vote 'up'
                     role='radio'
-                    class='button voting__button voting__button--up mxp-click-event'
+                    class='button voting__button voting__button--up'
                     selected_class="button--primary"
                   }}
 
                   {{article.vote 'down'
                     role='radio'
-                    class='button voting__button voting__button--down mxp-click-event'
+                    class='button voting__button voting__button--down'
                     selected_class="button--primary"
                   }}
                 </div>
@@ -90,7 +90,7 @@
                     class="button button--primary voting__button voting__button--msg toggle-chat mxp-click-event"
                     title="Iniciar chat"
                     data-event="w_all_faq_article_btn1_clk_chat"
-                    data-param="{ title: {{ article.title }} }"
+                    data-params="{ title: {{ article.title }} }"
                   >
                     {{ settings.article_voting_contact_cta }}
                   </button>
