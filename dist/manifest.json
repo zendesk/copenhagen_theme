@@ -138,14 +138,21 @@
           "description": "gtm_container_id_description",
           "label": "gtm_container_id_label",
           "value": "GTM-NVW8ZH2"
-        }
-        ,{
+        },
+        {
           "identifier": "mixpanel_events_enabled",
           "type": "checkbox",
           "description": "mixpanel_events_enabled_description",
           "label": "mixpanel_events_enabled_label",
           "value": true
         },
+        {
+          "identifier": "mixpanel_token",
+          "type": "text",
+          "description": "mixpanel_token_description",
+          "label": "mixpanel_token_label",
+          "value": "b977a1ae2620caa56d3ce2677756bff6"
+        }
       ]
     },
     {

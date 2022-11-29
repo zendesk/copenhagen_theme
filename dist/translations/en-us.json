@@ -70,6 +70,8 @@
   "logo_label": "Logo",
   "mixpanel_events_enabled_description": "Enable Mixpanel event tracking - pageviews, clicks and scrolls",
   "mixpanel_events_enabled_label": "Enable Mixpanel events",
+  "mixpanel_token_description": "Mixpanel Project Token",
+  "mixpanel_token_label": "Mixpanel Project Token",
   "observability_group_label": "Observability",
   "post_sharing_description": "Show social media sharing on post",
   "post_sharing_label": "Social sharing",
