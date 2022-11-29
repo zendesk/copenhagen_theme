@@ -6,7 +6,8 @@ export const mixpanelEvents = {
       pageview: 'mxp-pgv-event',
       click: 'mxp-click-event',
       search: 'mxp-sch-event',
-      scroll: 'mxp-sll-event'
+      scroll: 'mxp-sll-event',
+      upvote: 'voting__button--up'
     };
 
     this.cacheDOM();
@@ -19,6 +20,7 @@ export const mixpanelEvents = {
     this.scrollEventTrigger = document.querySelector(`.${this.CLASS_NAMES.scroll}`);
 
     this.articleIframe = document.querySelector('.article__content iframe');
+    this.articleFeedbackButtons = document.querySelectorAll('.voting__options button');
 
     this.themeHasEvents = parseInt(window.sessionStorage.getItem('mxp_events')) === 1;
     this.mixpanelToken = window.sessionStorage.getItem('mxp_token');
@@ -58,6 +60,12 @@ export const mixpanelEvents = {
         element.addEventListener('click', () => this.clickEvent(element));
       });
     }
+
+    if (this.articleFeedbackButtons.length) {
+      this.articleFeedbackButtons.forEach((button) => {
+        button.addEventListener('click', () => this.feedbackEvent(button));
+      });
+    }
   },
 
   pageViewEvent() {
@@ -75,6 +83,16 @@ export const mixpanelEvents = {
     if (eventName && eventParams) {
       mixpanel.track(eventName, JSON.parse(eventParams));
     }
+  },
+
+  feedbackEvent(button) {
+    const vote = button.classList.contains(this.CLASS_NAMES.upvote) ? 'up' : 'down';
+    const eventParams = {
+      title: document.querySelector('.article__title ').innerText,
+      answer: vote
+    };
+
+    mixpanel.track('w_all_faq_article_btn2_clk_feedback', eventParams);
   },
 
   searchEvent() {
