@@ -1,3 +1,10 @@
+## [2.19.3](https://github.com/zendesk/copenhagen_theme/compare/v2.19.2...v2.19.3) (2022-11-29)
+
+
+### Bug Fixes
+
+* Remove aria-expanded from sections in search_result page ([8fccb2a](https://github.com/zendesk/copenhagen_theme/commit/8fccb2a4eb24fb6a046baafc3438e9759a0a6286))
+
 ## [2.19.2](https://github.com/zendesk/copenhagen_theme/compare/v2.19.1...v2.19.2) (2022-11-10)
 
 
