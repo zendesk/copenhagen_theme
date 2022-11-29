@@ -1,3 +1,5 @@
+import mixpanel from 'mixpanel-browser';
+
 export const mixpanelEvents = {
   init() {
     this.CLASS_NAMES = {
@@ -19,6 +21,7 @@ export const mixpanelEvents = {
     this.articleIframe = document.querySelector('.article__content iframe');
 
     this.themeHasEvents = parseInt(window.sessionStorage.getItem('mxp_events')) === 1;
+    this.mixpanelToken = window.sessionStorage.getItem('mxp_token');
 
     this.bindEvents();
   },
@@ -30,7 +33,9 @@ export const mixpanelEvents = {
   },
 
   setupMixpanel() {
-    console.log('mixpanel setup...');
+    mixpanel.init(this.mixpanelToken, {
+      cross_subdomain_cookie: true
+    });
 
     if (this.pageviewEventTrigger) {
       this.pageViewEvent();
@@ -58,25 +63,31 @@ export const mixpanelEvents = {
   pageViewEvent() {
     const eventName = this.pageviewEventTrigger.dataset['event'] || null;
 
-    console.log('send pageview event', eventName);
+    if (eventName) {
+      mixpanel.track(eventName);
+    }
   },
 
   clickEvent(element) {
     const eventName = element.dataset['event'] || null;
-    const eventParam = element.dataset['param'] || null;
+    const eventParams = element.dataset['params'] || null;
 
-    console.log('send click event', eventName, eventParam);
+    if (eventName && eventParams) {
+      mixpanel.track(eventName, JSON.parse(eventParams));
+    }
   },
 
   searchEvent() {
     const searchURL = new URLSearchParams(window.location.search);
     const searchTerm = searchURL.get('query');
 
-    const hasSearchResults = document.querySelector('.section__results');
-    const eventType = hasSearchResults ? 'success' : 'error';
-    const eventName = `w_all_faq_home_search_${eventType}`;
+    if (searchTerm) {
+      const hasSearchResults = document.querySelector('.section__results');
+      const eventType = hasSearchResults ? 'success' : 'error';
+      const eventName = `w_all_faq_home_search_${eventType}`;
 
-    console.log('send search event', eventName, searchTerm);
+      mixpanel.track(eventName, { keyword: searchTerm });
+    }
   },
 
   videoEvent() {
@@ -87,7 +98,9 @@ export const mixpanelEvents = {
         const eventName = 'w_all_faq_article_video_view';
         const eventParams = { title: document.querySelector('.article__title ').innerText };
 
-        console.log('send video event', eventName, eventParams);
+        if (eventName && eventParams) {
+          mixpanel.track(eventName, eventParams);
+        }
       }
     });
   },
@@ -111,7 +124,7 @@ export const mixpanelEvents = {
   },
 
   sendScrollEvent() {
-    console.log('send scroll event', 'w_all_faq_category_pg_scroll_end');
+    mixpanel.track('w_all_faq_category_pg_scroll_end');
 
     window.removeEventListener('scroll', this.scrollListener);
   }
