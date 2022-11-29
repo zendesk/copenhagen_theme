@@ -12,6 +12,7 @@
     "start": "npm run watch"
   },
   "dependencies": {
+    "mixpanel-browser": "^2.45.0",
     "node-fetch": "^2.1.2"
   },
   "devDependencies": {
