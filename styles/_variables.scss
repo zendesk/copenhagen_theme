@@ -13,7 +13,8 @@ $font-size-navigation: 14px;
 $font-size-small: 13px;
 $font-size-smaller: 11px;
 
-$border-color: #ddd;
+$high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
+$low-contrast-border-color: #ddd; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
 
 $button-color: $brand_color;
 

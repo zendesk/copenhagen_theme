@@ -102,7 +102,7 @@
 
   :not(pre) > code {
     background: $primary-shade;
-    border: 1px solid $border-color;
+    border: 1px solid $low-contrast-border-color;
     border-radius: 3px;
     padding: 0 5px;
     margin: 0 2px;
@@ -110,7 +110,7 @@
 
   pre {
     background: $primary-shade;
-    border: 1px solid $border-color;
+    border: 1px solid $low-contrast-border-color;
     border-radius: 3px;
     padding: 10px 15px;
     overflow: auto;
@@ -118,7 +118,7 @@
   }
 
   blockquote {
-    border-left: 1px solid $border-color;
+    border-left: 1px solid $low-contrast-border-color;
     color: $secondary-text-color;
     font-style: italic;
     padding: 0 15px;

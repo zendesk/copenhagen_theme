@@ -58,7 +58,7 @@
 
 .topic-header {
   @include tablet { padding-bottom: 10px; }
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $low-contrast-border-color;
   font-size: $font-size-small;
 
   .dropdown {
@@ -70,7 +70,7 @@
     }
 
     display: block;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $low-contrast-border-color;
     padding: 10px 0;
   }
 }

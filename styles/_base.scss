@@ -90,7 +90,7 @@ select {
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A")
     no-repeat #fff;
   background-position: right 10px center;
-  border: 1px solid $border-color;
+  border: 1px solid $high-contrast-border-color;
   border-radius: 4px;
   padding: 8px 30px 8px 10px;
   outline: none;
@@ -107,7 +107,7 @@ select {
 }
 
 textarea {
-  border: 1px solid $border-color;
+  border: 1px solid $high-contrast-border-color;
   border-radius: 2px;
   resize: vertical;
   width: 100%;
@@ -124,7 +124,7 @@ textarea {
 }
 
 .container-divider {
-  border-top: 1px solid $border-color;
+  border-top: 1px solid $low-contrast-border-color;
   margin-bottom: 20px;
 }
 

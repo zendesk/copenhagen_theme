@@ -18,7 +18,7 @@
   }
 
   &-sidebar {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $low-contrast-border-color;
     flex: 1 0 auto;
     margin-bottom: 20px;
     padding: 0;
@@ -131,7 +131,7 @@
     > li {
       padding: 20px 0;
       &:first-child {
-        border-top: 1px solid $border-color;
+        border-top: 1px solid $low-contrast-border-color;
       }
 
       h2 {

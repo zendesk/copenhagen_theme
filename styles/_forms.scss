@@ -15,7 +15,7 @@
 }
 
 .form-field input {
-  border: 1px solid $border-color;
+  border: 1px solid $high-contrast-border-color;
   border-radius: 4px;
   padding: 10px;
   width: 100%;
@@ -24,7 +24,7 @@
 }
 
 .form-field input[type="text"] {
-  border: 1px solid $border-color;
+  border: 1px solid $high-contrast-border-color;
   border-radius: 4px;
 
   &:focus { border: 1px solid $brand_color; }
@@ -89,7 +89,7 @@
   margin-top: 30px;
 
   label {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
     display: block;
     padding-bottom: 5px;
   }
