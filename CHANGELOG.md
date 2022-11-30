@@ -1,3 +1,10 @@
+## [2.19.4](https://github.com/zendesk/copenhagen_theme/compare/v2.19.3...v2.19.4) (2022-11-30)
+
+
+### Bug Fixes
+
+* improve contrast for input elements ([e73ddc8](https://github.com/zendesk/copenhagen_theme/commit/e73ddc87811face141873c5ef342f6cb9d23b4f5)), closes [#87929](https://github.com/zendesk/copenhagen_theme/issues/87929)
+
 ## [2.19.3](https://github.com/zendesk/copenhagen_theme/compare/v2.19.2...v2.19.3) (2022-11-29)
 
 
