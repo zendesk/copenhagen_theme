@@ -72,7 +72,7 @@
   "mixpanel_events_enabled_label": "Habilitar eventos do Mixpanel",
   "mixpanel_token_description": "O token de configuração do projeto no Mixpanel",
   "mixpanel_token_label": "Mixpanel Project Token",
-  "observability_group_label": "Observability",
+  "observability_group_label": "Observabilidade",
   "promoted_articles_title_label": "Título dos artigos promovidos",
   "promoted_articles_title_description": "Como chamamos os artigos que são promovidos",
   "post_sharing_description": "Mostrar opções de compartilhamento em redes sociais na publicação",
