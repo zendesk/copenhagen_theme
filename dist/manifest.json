@@ -1,7 +1,7 @@
 {
   "name": "Pier Help Center Theme",
   "author": "Pier Digital",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "api_version": 2,
   "default_locale": "pt-br",
   "settings": [
@@ -123,7 +123,7 @@
       ]
     },
     {
-      "label": "gtm_label",
+      "label": "observability_group_label",
       "variables": [
         {
           "identifier": "gtm_enabled",
@@ -138,6 +138,20 @@
           "description": "gtm_container_id_description",
           "label": "gtm_container_id_label",
           "value": "GTM-NVW8ZH2"
+        },
+        {
+          "identifier": "mixpanel_events_enabled",
+          "type": "checkbox",
+          "description": "mixpanel_events_enabled_description",
+          "label": "mixpanel_events_enabled_label",
+          "value": true
+        },
+        {
+          "identifier": "mixpanel_token",
+          "type": "text",
+          "description": "mixpanel_token_description",
+          "label": "mixpanel_token_label",
+          "value": "f3787d09b3656b4e4cabcaeb0b613b05"
         }
       ]
     },

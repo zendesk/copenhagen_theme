@@ -1,6 +1,6 @@
 {
   "name": "pier-help-center-theme",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "repository": "git@github.com:pier-digital/pier-help-center-theme.git",
   "scripts": {
     "format": "prettier \"{./,tests}/*.{css|js}\" --write",
@@ -12,6 +12,7 @@
     "start": "npm run watch"
   },
   "dependencies": {
+    "mixpanel-browser": "^2.45.0",
     "node-fetch": "^2.1.2"
   },
   "devDependencies": {

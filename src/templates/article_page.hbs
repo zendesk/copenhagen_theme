@@ -1,4 +1,7 @@
-<div class="page-container article-page">
+<div
+  class="page-container article-page mxp-pgv-event"
+  data-event="w_all_faq_article_pg_view"
+>
   <section class="section section--head">
     <div class="section__container">
       <nav class="section__nav">
@@ -38,12 +41,12 @@
       {{/if}}
 
       <div class="section__article article-container">
-        <article class="article" id="main-content">
+        <article id="main-content" class="article">
           <h1
             class="article__title {{#if article.internal}} article__title--internal {{/if}}"
-            title="{{article.title}}"
+            title="{{ article.title }}"
           >
-            {{article.title}}
+            {{ article.title }}
           </h1>
 
           <div class="article__meta">
@@ -65,8 +68,17 @@
                 <h4 class="voting__title" id="voting-title">{{t 'was_this_article_helpful'}}</h4>
 
                 <div class="voting__options" aria-labelledby="voting-title">
-                  {{article.vote 'up' role='radio' class='button voting__button voting__button--up' selected_class="button-primary"}}
-                  {{article.vote 'down' role='radio' class='button voting__button voting__button--down' selected_class="button-primary"}}
+                  {{article.vote 'up'
+                    role='radio'
+                    class='button voting__button voting__button--up'
+                    selected_class="button--primary"
+                  }}
+
+                  {{article.vote 'down'
+                    role='radio'
+                    class='button voting__button voting__button--down'
+                    selected_class="button--primary"
+                  }}
                 </div>
               </div>
               
@@ -75,8 +87,10 @@
                   <h4>Não fique com dúvidas!</h4>
 
                   <button
-                    class="button button--primary voting__button voting__button--msg toggle-chat"
+                    class="button button--primary voting__button voting__button--msg toggle-chat mxp-click-event"
                     title="Iniciar chat"
+                    data-event="w_all_faq_article_btn1_clk_chat"
+                    data-params="{ title: {{ article.title }} }"
                   >
                     {{ settings.article_voting_contact_cta }}
                   </button>

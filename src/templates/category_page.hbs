@@ -1,4 +1,9 @@
-<div class="page-container category-page" id="main-content">
+<div
+  id="main-content"
+  class="page-container category-page mxp-pgv-event mxp-sll-event"
+  data-event="w_all_faq_home_pg_view"
+  data-scroll="footer"
+>
   <section class="section section--head">
     <div class="section__container">
       <nav class="section__nav">
@@ -58,7 +63,12 @@
               <ul class="articles-list">
                 {{#each articles}}
                   <li class="articles-list__item">
-                    <a href="{{ url }}" class="article">
+                    <a
+                      href="{{ url }}"
+                      class="article mxp-click-event"
+                      data-event="w_all_faq_category_list_clk"
+                      data-params="{ title: {{ title }} }"
+                    >
                       <span class="article__title">{{ title }}</span>
                       <span class="article__excerpt">{{excerpt body characters=200}}</span>
                     </a>

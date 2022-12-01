@@ -1,6 +1,10 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
-<div class="page-container home-page" id="main-content">
+<div
+  id="main-content"
+  class="page-container home-page mxp-pgv-event"
+  data-event="w_all_faq_home_pg_view"
+>
   <section class="section section--head">
     <div class="section__container">
       <h2 class="section__title">{{ settings.homepage_hero_title }}</h2>
@@ -22,7 +26,12 @@
         {{#each categories}}
           {{#if ../has_multiple_categories}}
             <li class="categories-list__item" data-type="multiple">
-              <a href="{{url}}" class="category">
+              <a
+                href="{{url}}"
+                class="category mxp-click-event"
+                data-event="w_all_faq_home_card_clk"
+                data-params="{ category: {{ name }} }"
+              >
                 {{#is name 'Auto'}}
                   <img class="category__icon" src="{{asset '_draw-auto.svg'}}" alt="{{ name }}" />
                 {{/is}}
@@ -50,7 +59,12 @@
           {{else}}
             {{#each sections}}
               <li class="blocks-item" data-type="else">
-                <a href="{{url}}" class="category">
+                <a
+                  href="{{url}}"
+                  class="category mxp-click-event"
+                  data-event="w_all_faq_home_card_clk"
+                  data-params="{ category: {{ name }} }"
+                >
                   <span class="category__title">{{ name }}</span>
                   <span class="category__description">{{excerpt description}}</span>
                 </a>
@@ -70,7 +84,11 @@
         <ul class="articles-list">
           {{#each promoted_articles}}
             <li class="articles-list__item">
-              <a href="{{url}}" class="article">
+              <a
+                href="{{ url }}"
+                class="article mxp-click-event"
+                data-event="w_all_faq_home_btn3_clk_highlights"
+              >
                 <span class="article__title">{{title}}</span>
                 <span class="article__excerpt">{{excerpt body characters=200}}</span>
               </a>
