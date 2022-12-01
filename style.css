@@ -1361,7 +1361,7 @@ ul {
   flex: 1 0 340px;
   margin: 0 0 30px;
   max-width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 @media (min-width: 768px) {
@@ -1371,7 +1371,7 @@ ul {
 }
 
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+  background-color: #2EACFF; /*$brand_color;*/
 }
 
 .blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
@@ -1418,11 +1418,15 @@ ul {
 
 .blocks-item-title {
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 21px;
+  color: #222222;
+
 }
 
 .blocks-item-description {
   margin: 0;
+  color: #989EA6;
+  font-size: 12;
 }
 
 .blocks-item-description:not(:empty) {
