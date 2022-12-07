@@ -10,6 +10,8 @@ export const mixpanelEvents = {
       upvote: 'voting__button--up'
     };
 
+    this.MONITOR_INTERVAL = 300;
+
     this.cacheDOM();
   },
 
@@ -19,6 +21,7 @@ export const mixpanelEvents = {
     this.searchEventTrigger = document.querySelector(`.${this.CLASS_NAMES.search}`);
     this.scrollEventTrigger = document.querySelector(`.${this.CLASS_NAMES.scroll}`);
 
+    this.articleTitle = document.querySelector('.article__title');
     this.articleIframe = document.querySelector('.article__content iframe');
     this.articleFeedbackButtons = document.querySelectorAll('.voting__options button');
 
@@ -70,9 +73,10 @@ export const mixpanelEvents = {
 
   pageViewEvent() {
     const eventName = this.pageviewEventTrigger.dataset['event'] || null;
+    const eventParams = this.pageviewEventTrigger.dataset['params'] || {};
 
     if (eventName) {
-      mixpanel.track(eventName);
+      mixpanel.track(eventName, JSON.parse(eventParams));
     }
   },
 
@@ -87,12 +91,11 @@ export const mixpanelEvents = {
 
   feedbackEvent(button) {
     const vote = button.classList.contains(this.CLASS_NAMES.upvote) ? 'up' : 'down';
-    const eventParams = {
-      title: document.querySelector('.article__title ').innerText,
-      answer: vote
-    };
 
-    mixpanel.track('w_all_faq_article_btn2_clk_feedback', eventParams);
+    mixpanel.track('w_all_faq_article_btn2_clk_feedback', {
+      articleTitle: this.articleTitle.innerText,
+      answer: vote
+    });
   },
 
   searchEvent() {
@@ -109,18 +112,17 @@ export const mixpanelEvents = {
   },
 
   videoEvent() {
-    document.body.addEventListener('click', () => {
+    const monitor = setInterval(() => {
       const { activeElement } = document;
 
-      if (activeElement.tagName.toLowerCase() === 'iframe') {
-        const eventName = 'w_all_faq_article_video_view';
-        const eventParams = { title: document.querySelector('.article__title ').innerText };
+      if (activeElement && activeElement.tagName.toLowerCase() === 'iframe') {
+        mixpanel.track('w_all_faq_article_video_view', {
+          articleTitle: this.articleTitle.innerText
+        });
 
-        if (eventName && eventParams) {
-          mixpanel.track(eventName, eventParams);
-        }
+        clearInterval(monitor);
       }
-    });
+    }, this.MONITOR_INTERVAL);
   },
 
   attachScrollEvent() {
