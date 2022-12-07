@@ -23,7 +23,7 @@
               <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
             </svg>
           </button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_source'}}</h3>
+          <h2 class="collapsible-sidebar-title sidenav-title">{{t 'filter_source'}}</h2>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each source_filters}}
               <li>
@@ -51,7 +51,7 @@
               <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
             </svg>
           </button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_type'}}</h3>
+          <h2 class="collapsible-sidebar-title sidenav-title">{{t 'filter_type'}}</h2>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each type_filters}}
               <li>
@@ -79,10 +79,10 @@
             </svg>
           </button>
           {{#is current_filter.identifier 'knowledge_base'}}
-            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h3>
+            <h2 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_category'}}</h2>
           {{/is}}
           {{#is current_filter.identifier 'community'}}
-            <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h3>
+            <h2 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h2>
           {{/is}}
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each subfilters}}
@@ -116,7 +116,7 @@
               <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
             </svg>
           </button>
-          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_content_tag'}}</h3>
+          <h2 class="collapsible-sidebar-title sidenav-title">{{t 'filter_content_tag'}}</h2>
           <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
             {{#each content_tag_filters}}
             	{{#if selected}}
