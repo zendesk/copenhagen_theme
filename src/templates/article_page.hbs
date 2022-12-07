@@ -1,6 +1,7 @@
 <div
   class="page-container article-page mxp-pgv-event"
   data-event="w_all_faq_article_pg_view"
+  data-params="{ articleTitle: {{ article.title }} }"
 >
   <section class="section section--head">
     <div class="section__container">
@@ -90,7 +91,7 @@
                     class="button button--primary voting__button voting__button--msg toggle-chat mxp-click-event"
                     title="Iniciar chat"
                     data-event="w_all_faq_article_btn1_clk_chat"
-                    data-params="{ title: {{ article.title }} }"
+                    data-params="{ articleTitle: {{ article.title }} }"
                   >
                     {{ settings.article_voting_contact_cta }}
                   </button>
