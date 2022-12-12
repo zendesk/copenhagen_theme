@@ -590,6 +590,7 @@ ul {
 
 .form-field .nesty-input {
   border-radius: 4px;
+  border: 1px solid #87929D;
   height: 40px;
   line-height: 40px;
   outline: none;
@@ -599,6 +600,10 @@ ul {
 .form-field .nesty-input:focus {
   border: 1px solid $brand_color;
   text-decoration: none;
+}
+
+.form-field .hc-multiselect-toggle {
+  border: 1px solid #87929D;
 }
 
 .form-field .hc-multiselect-toggle:focus {
@@ -5058,7 +5063,7 @@ html[dir="rtl"] .notification-left-aligned {
 
 .dropdown-menu {
   background: #fff;
-  border: 1px solid #d8d8d8;
+  border: 1px solid #87929D;
   border-radius: 3px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
   display: none;
@@ -5193,4 +5198,14 @@ html[dir="rtl"] .notification-left-aligned {
 
 .content-tag-list li:last-child {
   border: none;
+}
+
+/***** WYSIWYG Editor *****/
+#hc-wysiwyg {
+  border: 1px solid #87929D;
+}
+
+/***** Upload Dropzone *****/
+.upload-dropzone {
+  border: 1px solid #87929D;
 }
