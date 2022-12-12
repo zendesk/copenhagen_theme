@@ -147,12 +147,12 @@
     clear: both;
     color: #666;
 
-    > li {
+    > span {
       display: block;
       @include desktop { display: inline }
     }
 
-    li:first-child {
+    span:first-child {
       @include desktop { flex: 1; }
     }
 

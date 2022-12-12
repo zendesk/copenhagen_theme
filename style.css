@@ -1553,6 +1553,10 @@ ul {
   padding: 20px 0;
 }
 
+.recent-activity-item h3 {
+  margin: 0;
+}
+
 .recent-activity-item-parent {
   font-size: 16px;
   font-weight: 600;
@@ -4753,18 +4757,18 @@ ul {
   }
 }
 
-.search-results .meta-group > li {
+.search-results .meta-group > span {
   display: block;
 }
 
 @media (min-width: 1024px) {
-  .search-results .meta-group > li {
+  .search-results .meta-group > span {
     display: inline;
   }
 }
 
 @media (min-width: 1024px) {
-  .search-results .meta-group li:first-child {
+  .search-results .meta-group span:first-child {
     flex: 1;
   }
 }

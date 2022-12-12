@@ -72,14 +72,14 @@
               {{/link}}
             {{/if}}
 
-            <ul class="meta-group">
+            <div class="meta-group">
               {{#is article.created_at article.edited_at}}
-                <li class="meta-data">{{date article.created_at timeago=true}}</li>
+                <span class="meta-data">{{date article.created_at timeago=true}}</span>
               {{else}}
-                <li class="meta-data">{{date article.edited_at timeago=true}}</li>
-                <li class="meta-data">{{t 'updated'}}</li>
+                <span class="meta-data">{{date article.edited_at timeago=true}}</span>
+                <span class="meta-data">{{t 'updated'}}</span>
               {{/is}}
-            </ul>
+            </div>
           </div>
         </div>
 
@@ -234,14 +234,14 @@
                             {{/each}}
                           </span>
 
-                          <ul class="meta-group meta-group-opposite">
+                          <div class="meta-group meta-group-opposite">
                             {{#if editor}}
-                              <li class="meta-data">{{date edited_at timeago=true}}</li>
-                              <li class="meta-data">{{t 'edited'}}</li>
+                              <span class="meta-data">{{date edited_at timeago=true}}</span>
+                              <span class="meta-data">{{t 'edited'}}</span>
                             {{else}}
-                              <li class="meta-data">{{date created_at timeago=true}}</li>
+                              <span class="meta-data">{{date created_at timeago=true}}</span>
                             {{/if}}
-                          </ul>
+                          </div>
 
                           <div aria-label="{{t 'badges'}}" class="community-badge-container-achievements">
                             {{#each (
