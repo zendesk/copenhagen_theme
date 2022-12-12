@@ -1,3 +1,10 @@
+## [2.19.5](https://github.com/zendesk/copenhagen_theme/compare/v2.19.4...v2.19.5) (2022-12-12)
+
+
+### Bug Fixes
+
+* increase border contrast ratio for more theme elements ([d32f6b3](https://github.com/zendesk/copenhagen_theme/commit/d32f6b33248050a7e54e9513388217ef97f502df))
+
 ## [2.19.4](https://github.com/zendesk/copenhagen_theme/compare/v2.19.3...v2.19.4) (2022-11-30)
 
 
