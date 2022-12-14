@@ -1,3 +1,10 @@
+# [2.20.0](https://github.com/zendesk/copenhagen_theme/compare/v2.19.5...v2.20.0) (2022-12-14)
+
+
+### Features
+
+* aria descriptions on vote controls ([6500305](https://github.com/zendesk/copenhagen_theme/commit/65003055e31593dd0e49545f8a863d8e772badd6))
+
 ## [2.19.5](https://github.com/zendesk/copenhagen_theme/compare/v2.19.4...v2.19.5) (2022-12-12)
 
 
