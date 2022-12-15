@@ -12,6 +12,10 @@
     border-bottom: 1px solid $low-contrast-border-color;
     overflow: auto;
     padding: 20px 0;
+
+    h3 {
+      margin: 0;
+    }
   }
 
   &-item-parent {

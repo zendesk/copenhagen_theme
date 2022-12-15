@@ -214,29 +214,29 @@
 
                       <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
-                      <ul class="meta-group">
+                      <div class="meta-group">
                         {{#is object_type 'comment'}}
-                          <li class="meta-data">
+                          <span class="meta-data">
                             <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
-                          </li>
+                          </span>
                         {{/is}}
-                        <li class="meta-data">{{author.name}}</li>
+                        <span class="meta-data">{{author.name}}</span>
                         {{#if editor}}
-                          <li class="meta-data">{{date edited_at timeago=true}}</li>
-                          <li class="meta-data">
+                          <span class="meta-data">{{date edited_at timeago=true}}</span>
+                          <span class="meta-data">
                             {{#is object_type 'article'}}
                               {{t 'updated'}}
                             {{else}}
                               {{t 'edited'}}
                             {{/is}}
-                          </li>
+                          </span>
                         {{else}}
-                          <li class="meta-data">{{date created_at timeago=true}}</li>
+                          <span class="meta-data">{{date created_at timeago=true}}</span>
                         {{/if}}
                         {{#each stats}}
-                          <li class="meta-data">{{label}}</li>
+                          <span class="meta-data">{{label}}</span>
                         {{/each}}
-                      </ul>
+                      </div>
                     </div>
                   {{/with}}
                 </li>
@@ -375,29 +375,29 @@
 
                     <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
-                    <ul class="meta-group">
+                    <div class="meta-group">
                       {{#is object_type 'comment'}}
-                        <li class="meta-data">
+                        <span class="meta-data">
                           <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
-                        </li>
+                        </span>
                       {{/is}}
-                      <li class="meta-data">{{author.name}}</li>
+                      <span class="meta-data">{{author.name}}</span>
                       {{#if editor}}
-                        <li class="meta-data">{{date edited_at timeago=true}}</li>
-                        <li class="meta-data">
+                        <span class="meta-data">{{date edited_at timeago=true}}</span>
+                        <span class="meta-data">
                           {{#is object_type 'article'}}
                             {{t 'updated'}}
                           {{else}}
                             {{t 'edited'}}
                           {{/is}}
-                        </li>
+                        </span>
                       {{else}}
-                        <li class="meta-data">{{date created_at timeago=true}}</li>
+                        <span class="meta-data">{{date created_at timeago=true}}</span>
                       {{/if}}
                       {{#each stats}}
-                        <li class="meta-data">{{label}}</li>
+                        <span class="meta-data">{{label}}</span>
                       {{/each}}
-                    </ul>
+                    </div>
                   </li>
 
                 {{/each}}

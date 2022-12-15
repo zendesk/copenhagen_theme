@@ -212,19 +212,19 @@
                 {{/if}}
               </div>
               <article>
-                <ul class="meta-group">
-                  <li>
+                <div class="meta-group">
+                  <span>
                     <ol class="breadcrumbs search-result-breadcrumbs">
                       {{#each path_steps}}
                         <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
                       {{/each}}
                     </ol>
-                  </li>
+                  </span>
                   {{#unless is_external}}
-                    <li class="meta-data">{{author.name}}</li>
+                    <span class="meta-data">{{author.name}}</span>
                   {{/unless}}
-                  <li class="meta-data">{{date created_at}}</li>
-                </ul>
+                  <span class="meta-data">{{date created_at}}</span>
+                </div>
                 <div class="search-results-description">{{text}}</div>
               </article>
             </li>
