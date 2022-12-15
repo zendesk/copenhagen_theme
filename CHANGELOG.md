@@ -1,3 +1,12 @@
+## [2.20.1](https://github.com/zendesk/copenhagen_theme/compare/v2.20.0...v2.20.1) (2022-12-15)
+
+
+### Bug Fixes
+
+* improve meta-data markup to better assist a11y tools ([81e11d3](https://github.com/zendesk/copenhagen_theme/commit/81e11d3076ecda9c5893db4e281ba895d1125388))
+* Remove duplicate header to improve screen reader exp ([c28ca15](https://github.com/zendesk/copenhagen_theme/commit/c28ca150bdd4521624a9b264bebc9f62b999c371))
+* **styles:** fix padding on activity header ([efa0929](https://github.com/zendesk/copenhagen_theme/commit/efa0929a0fe98c2ab5460f8367c1334a7f3f839b))
+
 # [2.20.0](https://github.com/zendesk/copenhagen_theme/compare/v2.19.5...v2.20.0) (2022-12-14)
 
 
