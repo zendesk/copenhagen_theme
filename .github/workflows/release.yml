@@ -13,9 +13,9 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup Node.js
-        uses: zendesk/setup-node@v1
+        uses: zendesk/setup-node@v3
         with:
-          node-version: 12
+          node-version-file: '.nvmrc'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Release
