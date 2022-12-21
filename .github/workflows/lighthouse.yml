@@ -5,21 +5,33 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: zendesk/checkout@v2
-      - run: "sudo apt-get install zip"
-      - run: "zip --exclude=*.git* -r theme.zip ."
-      - uses: zendesk/setup-ruby@v1
+      - name: Checkout
+        uses: zendesk/checkout@v3
+      - name: Setup Ruby
+        uses: zendesk/setup-ruby@v1
         with:
-          ruby-version: '2.6'
-      - run: gem install faraday -v 0.16.0
-      - run: gem install faraday_middleware -v 0.13.1
-      - run: npm install puppeteer@2.1.1
-      - run: ruby ./.github/workflows/theme_upload.rb
+          ruby-version: .ruby-version
+      - name: Install gems
+        run: |
+          gem install faraday -v 0.16.0
+          gem install faraday_middleware -v 0.13.1
+      - name: Create theme zip
+        run: |
+          sudo apt-get install zip
+          zip --exclude=*.git* -r theme.zip .
+      - name: Upload theme
+        run: ruby ./.github/workflows/theme_upload.rb
         env:
           zendesk_email: ${{ secrets.zendesk_email }}
           zendesk_token: ${{ secrets.zendesk_token }}
           brand_id: ${{ secrets.brand_id }}
           subdomain: ${{ secrets.subdomain }}
+      - name: Setup Node.js
+        uses: zendesk/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install puppeteer
+        run: npm install puppeteer@2.1.1
       - name: Audit URLs using Lighthouse
         uses: zendesk/lighthouse-ci-action@v3
         with:
