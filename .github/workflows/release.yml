@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: zendesk/checkout@v2
+        uses: zendesk/checkout@v3
         with:
           persist-credentials: false
       - name: Setup Node.js
