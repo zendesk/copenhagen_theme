@@ -4,7 +4,9 @@
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
     "prepare": "husky install",
-    "download-locales": "node ./bin/update-translations"
+    "download-locales": "node ./bin/update-translations",
+    "a11y": "node bin/lighthouse/index.js -d",
+    "a11y-ci": "node bin/lighthouse/index.js"
   },
   "dependencies": {
     "node-fetch": "2.6.7"
@@ -15,9 +17,13 @@
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
+    "dotenv": "16.0.3",
     "husky": "8.0.2",
     "js-yaml": "4.1.0",
-    "semantic-release": "19.0.5"
+    "lighthouse": "9.6.8",
+    "puppeteer": "19.4.1",
+    "semantic-release": "19.0.5",
+    "url-pattern": "1.0.3"
   },
   "commitlint": {
     "extends": [
