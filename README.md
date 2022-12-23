@@ -108,6 +108,57 @@ Now you can compile your SASS files running:
 ```
 Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
 
+# Testing
+
+We use [lighthouse](https://github.com/GoogleChrome/lighthouse) to automate accessibility testing.
+
+To run the accesibility audits locally, do the following:
+
+1. Create a `.zat` file (see [example](.zat.example));
+2. Run the [local theme preview](https://support.zendesk.com/hc/en-us/articles/4408822095642);
+3. In a separate console run:
+
+```
+yarn install
+yarn a11y
+```
+
+This script relies on the local preview provided by [Zendesk App Tools](https://support.zendesk.com/hc/en-us/articles/4408822095642). Please make sure you run `zat theme preview` and have a `.zat` file in the root folder before running the accessibility audits to make sure you're testing your local changes.
+
+## Ignore list
+
+In order to unblock merges, if there is a known accessibility issue that should be ignored or can't be fixed right away, you may add a new entry to the ignore list in our [script's configuration object](bin/lighthouse/config.js). This will turn the accessibility issue into a warning instead of erroring.
+
+The entry should include:
+- the audit id
+- a `path` as a url pattern string
+- a `selector` as a string
+
+For example:
+
+```
+  custom: {
+    ignore: {
+      tabindex: [
+        {
+          path: "*",
+          selector: "body > a.skip-navigation",
+        },
+      ],
+      aria-allowed-attr: [
+        {
+          path: "/hc/:locale/profiles/:id",
+          selector: "body > div.profile-info"
+        }
+      ]
+    },
+  },
+```
+
+In this example, errors for the audit `tabindex` with the selector `body > a.skip-navigation` will be reported as warnings in all pages (`*`). The same will happen for the audit `aria-allowed-attr` with the selector `body > div.profile-info`, but only for the user profile page `/hc/:locale/profiles/:id`.
+
+Please keep in mind that this should only be used when strictly necessarity. Acessibility should be a focus and a priority when making changes to the theme.
+
 # Contributing
 Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme. Please mention @zendesk/vikings when creating a pull request.
 
