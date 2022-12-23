@@ -112,7 +112,7 @@ Which will take all the `scss` files inside the `styles/` folder and create the 
 
 We use [lighthouse](https://github.com/GoogleChrome/lighthouse) to automate accessibility testing.
 
-To run the accesibility audits locally, do the following:
+To run the accessibility audits locally, do the following:
 
 1. Create a `.zat` file (see [example](.zat.example));
 2. Run the [local theme preview](https://support.zendesk.com/hc/en-us/articles/4408822095642);
