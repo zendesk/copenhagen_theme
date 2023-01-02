@@ -45,7 +45,7 @@ const SUPPORTED_LOCALES = [
   'zh-tw'
 ]
 
-const translationDefinitions = yaml.safeLoad(fs.readFileSync('translations.yml', 'utf8')).parts;
+const translationDefinitions = yaml.load(fs.readFileSync('translations.yml', 'utf8')).parts;
 const obsoleteKeys = translationDefinitions
   .filter(part => part.translation.obsolete)
   .reduce((acc, part) => acc.concat(part.translation.key), []);
