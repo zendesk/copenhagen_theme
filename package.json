@@ -6,7 +6,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "node-fetch": "^2.1.2"
+    "node-fetch": "2.6.7"
   },
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
