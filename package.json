@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "download-locales": "node ./bin/update-translations"
   },
   "dependencies": {
     "node-fetch": "2.6.7"
