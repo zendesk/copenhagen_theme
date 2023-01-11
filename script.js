@@ -1,7 +1,6 @@
-
-const isCN = new RegExp('https://support.snapmaker.com/hc/zh-cn(.*)$','ig').test(window.location.href)
-if(isCN){
-    window.location = 'https://snapmaker.cn/support-cn/home'
+const isCN = new RegExp('https://support.snapmaker.com/hc/zh-cn(.*)$', 'ig').test(window.location.href);
+if (isCN) {
+    window.location = 'https://snapmaker.cn/support-cn/home';
 }
 // https://github.com/jimmynotjim/scrollnav
 // Most from scrollnav@v3.0.2, with little modifications.
@@ -349,6 +348,7 @@ const scrollnav = (function () {
 
             return activeSection;
         }
+
         // main-content
         // let mainContent = scrollnav.nav.parentElement.parentElement.parentElement.parentElement.nextElementSibling;
         // scrollnav.nav.addEventListener('wheel', function(event){
@@ -431,59 +431,61 @@ const scrollnav = (function () {
     return {
         init: init,
         updatePositions: updatePositions
-    }
+    };
 })();
 
 
 document.addEventListener('DOMContentLoaded', function () {
 
     /* header */
-    window.collectionIcon = document.querySelector('.bar-burger')
+    window.collectionIcon = document.querySelector('.bar-burger');
 
-    window.firstBarMenus = document.querySelector('nav[class~=menus')
-    window.firstBar = document.querySelector('div[class~=first-bar')
-    window.secondBarIcon = document.querySelector('#second-bar-icon')
-    window.secondBarNavItems = document.querySelector('div[class~=nav-items')
+    window.firstBarMenus = document.querySelector('nav[class~=menus');
+    window.firstBar = document.querySelector('div[class~=first-bar');
+    window.secondBarIcon = document.querySelector('#second-bar-icon');
+    window.secondBarNavItems = document.querySelector('div[class~=nav-items');
 
-    window.mask = document.querySelector('.mask')
-    window.removeMask = () => mask.style.display = 'none'
-    window.openMask = () => mask.style.display = 'block'
-    window.announcementModal = getEl('#announcement-modal')
+    window.mask = document.querySelector('.mask');
+    window.removeMask = () => mask.style.display = 'none';
+    window.openMask = () => mask.style.display = 'block';
+    window.announcementModal = getEl('#announcement-modal');
     // hanldeRefatorAnnouncementModal()
 
-    handleBreadcrumbs()
-    const isHomePage = new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)((/*)|#(.*))$','ig').test(window.location.href)
+    handleBreadcrumbs();
+    const isHomePage = new RegExp('https://support.snapmaker.com/hc/(zh-cn|en-us)((/*)|#(.*))$', 'ig').test(window.location.href);
 
     // entry home
-    if(isHomePage) {
+    if (isHomePage) {
         // home page remove footer search
-        const footerSearch = getEl('#footer-search')
-        if(footerSearch) footerSearch.style.display = 'none'
+        const footerSearch = getEl('#footer-search');
+        if (footerSearch) footerSearch.style.display = 'none';
 
         // home page add second bar
-        const secondNavBar = getEl('#second-nav-bar')
-        if(secondNavBar) secondNavBar.style.display = 'flex'
-        const headerNavBar = getEl('#header-nav-bar')
-        if(headerNavBar) headerNavBar.classList.add('has-second-bar')
+        const secondNavBar = getEl('#second-nav-bar');
+        if (secondNavBar) secondNavBar.style.display = 'flex';
+        const headerNavBar = getEl('#header-nav-bar');
+        if (headerNavBar) headerNavBar.classList.add('has-second-bar');
 
         // second bar interactive init
-        const initFn = ()=>{
+        const initFn = () => {
             initSecondBarActive();
             secondBarActive();
-            drawerInit()
-        }
-        const ref = setInterval(initFn, 500)
-        setTimeout(() => { clearInterval(ref);}, 5000);
-        window.addEventListener('resize', throttle(initFn,100))
+            drawerInit();
+        };
+        const ref = setInterval(initFn, 500);
+        setTimeout(() => {
+            clearInterval(ref);
+        }, 5000);
+        window.addEventListener('resize', throttle(initFn, 100));
         window.addEventListener('scroll', throttle(function (e) {
-            secondBarActive()
-        }, 100))
+            secondBarActive();
+        }, 100));
 
         window.onOpenDrawer = () => {
-            openDrawer()
+            openDrawer();
             initSecondBarActive();
             secondBarActive();
-        }
+        };
     }
 
     // Key map
@@ -519,7 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // In some cases we should preserve focus after page reload
     function saveFocus() {
-        var activeElementId = document.activeElement.getAttribute("id");
+        var activeElementId = document.activeElement.getAttribute('id');
         sessionStorage.setItem('returnFocusTo', '#' + activeElementId);
     }
 
@@ -639,28 +641,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // If multibrand search has more than 5 help centers or categories collapse the list
-    var multibrandFilterLists = document.querySelectorAll(".multibrand-filter-list");
+    var multibrandFilterLists = document.querySelectorAll('.multibrand-filter-list');
     Array.prototype.forEach.call(multibrandFilterLists, function (filter) {
         if (filter.children.length > 6) {
             // Display the show more button
-            var trigger = filter.querySelector(".see-all-filters");
-            trigger.setAttribute("aria-hidden", false);
+            var trigger = filter.querySelector('.see-all-filters');
+            trigger.setAttribute('aria-hidden', false);
 
             // Add event handler for click
-            trigger.addEventListener("click", function (e) {
+            trigger.addEventListener('click', function (e) {
                 e.stopPropagation();
                 trigger.parentNode.removeChild(trigger);
-                filter.classList.remove("multibrand-filter-list--collapsed")
-            })
+                filter.classList.remove('multibrand-filter-list--collapsed');
+            });
         }
     });
 
     // If there are any error notifications below an input field, focus that field
-    var notificationElm = document.querySelector(".notification-error");
+    var notificationElm = document.querySelector('.notification-error');
     if (
         notificationElm &&
         notificationElm.previousElementSibling &&
-        typeof notificationElm.previousElementSibling.focus === "function"
+        typeof notificationElm.previousElementSibling.focus === 'function'
     ) {
         notificationElm.previousElementSibling.focus();
     }
@@ -706,36 +708,36 @@ document.addEventListener('DOMContentLoaded', function () {
         this.menu = menu;
 
         this.menuPlacement = {
-            top: menu.classList.contains("dropdown-menu-top"),
-            end: menu.classList.contains("dropdown-menu-end")
+            top: menu.classList.contains('dropdown-menu-top'),
+            end: menu.classList.contains('dropdown-menu-end')
         };
 
-        this.toggle.addEventListener("click", this.clickHandler.bind(this));
-        this.toggle.addEventListener("keydown", this.toggleKeyHandler.bind(this));
-        this.menu.addEventListener("keydown", this.menuKeyHandler.bind(this));
+        this.toggle.addEventListener('click', this.clickHandler.bind(this));
+        this.toggle.addEventListener('keydown', this.toggleKeyHandler.bind(this));
+        this.menu.addEventListener('keydown', this.menuKeyHandler.bind(this));
     }
 
     Dropdown.prototype = {
 
         get isExpanded() {
-            return this.menu.getAttribute("aria-expanded") === "true";
+            return this.menu.getAttribute('aria-expanded') === 'true';
         },
 
         get menuItems() {
-            return Array.prototype.slice.call(this.menu.querySelectorAll("[role='menuitem']"));
+            return Array.prototype.slice.call(this.menu.querySelectorAll('[role=\'menuitem\']'));
         },
 
         dismiss: function () {
             if (!this.isExpanded) return;
 
-            this.menu.setAttribute("aria-expanded", false);
-            this.menu.classList.remove("dropdown-menu-end", "dropdown-menu-top");
+            this.menu.setAttribute('aria-expanded', false);
+            this.menu.classList.remove('dropdown-menu-end', 'dropdown-menu-top');
         },
 
         open: function () {
             if (this.isExpanded) return;
 
-            this.menu.setAttribute("aria-expanded", true);
+            this.menu.setAttribute('aria-expanded', true);
             this.handleOverflow();
         },
 
@@ -748,15 +750,15 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             if (overflow.right || this.menuPlacement.end) {
-                this.menu.classList.add("dropdown-menu-end");
+                this.menu.classList.add('dropdown-menu-end');
             }
 
             if (overflow.bottom || this.menuPlacement.top) {
-                this.menu.classList.add("dropdown-menu-top");
+                this.menu.classList.add('dropdown-menu-top');
             }
 
             if (this.menu.getBoundingClientRect().top < 0) {
-                this.menu.classList.remove("dropdown-menu-top")
+                this.menu.classList.remove('dropdown-menu-top');
             }
         },
 
@@ -850,16 +852,16 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     var dropdowns = [];
-    var dropdownToggles = Array.prototype.slice.call(document.querySelectorAll(".dropdown-toggle"));
+    var dropdownToggles = Array.prototype.slice.call(document.querySelectorAll('.dropdown-toggle'));
 
     dropdownToggles.forEach(function (toggle) {
         var menu = toggle.nextElementSibling;
-        if (menu && menu.classList.contains("dropdown-menu")) {
+        if (menu && menu.classList.contains('dropdown-menu')) {
             dropdowns.push(new Dropdown(toggle, menu));
         }
     });
 
-    document.addEventListener("click", function (evt) {
+    document.addEventListener('click', function (evt) {
         dropdowns.forEach(function (dropdown) {
             if (!dropdown.toggle.contains(evt.target)) {
                 dropdown.dismiss();
@@ -939,7 +941,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         header && header.addEventListener('click', function (e) {
             toggleCategorySection(el, toggle);
-        })
+        });
     });
 
     /**
@@ -980,7 +982,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     var extractComtainer = document.querySelectorAll('.academy-extract-img-list');
-    extractFirstImg(extractComtainer)
+    extractFirstImg(extractComtainer);
 
     /**
      * Category page: convert article link to download link.
@@ -1019,51 +1021,51 @@ document.addEventListener('DOMContentLoaded', function () {
     /**
      * Header Component: control header show or not when scroll
      */
-    const headersHeight = isHomePage ? 156 :  80
-    const firstBarHeight = 80
-    let lastScrollPosition = 0
+    const headersHeight = isHomePage ? 156 : 80;
+    const firstBarHeight = 80;
+    let lastScrollPosition = 0;
 
-    const header = document.querySelector('header[class=header]')
-    const firstBar = document.querySelector('div[class~=first-bar]')
+    const header = document.querySelector('header[class=header]');
+    const firstBar = document.querySelector('div[class~=first-bar]');
 
     const showFirstBar = () => {
-        if(!header || !firstBar) return
-        header.style.height = headersHeight + 'px'
-        firstBar.style.height = firstBarHeight + 'px'
-        firstBar.style.borderBottom = null
-    }
+        if (!header || !firstBar) return;
+        header.style.height = headersHeight + 'px';
+        firstBar.style.height = firstBarHeight + 'px';
+        firstBar.style.borderBottom = null;
+    };
     const hiddenFirstBar = () => {
-        if(!header || !firstBar) return
-        header.style.height = (headersHeight - firstBarHeight) + 'px'
-        firstBar.style.height = 0 + 'px'
-        firstBar.style.borderBottom = 0 + 'px'
-    }
+        if (!header || !firstBar) return;
+        header.style.height = (headersHeight - firstBarHeight) + 'px';
+        firstBar.style.height = 0 + 'px';
+        firstBar.style.borderBottom = 0 + 'px';
+    };
 
     window.addEventListener('scroll', throttle(function (e) {
         // Get the current scroll position
-        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
         // Because of momentum scrolling on mobiles, we shouldn't continue if it is less than zero
         if (currentScrollPosition < 60) {
-            showFirstBar()
-            return
+            showFirstBar();
+            return;
         }
 
         // Stop executing this function if the difference between
         // current scroll position and last scroll position is less than some offset
         if (Math.abs(currentScrollPosition - lastScrollPosition) < 60) {
-            return
+            return;
         }
 
         // Here we determine whether we need to show or hide the navbar
         if (currentScrollPosition > lastScrollPosition && !headerController.isFirstBarActive) {
-            hiddenFirstBar()
+            hiddenFirstBar();
         } else {
-            showFirstBar()
+            showFirstBar();
         }
         // Set the current scroll position as the last scroll position
-        lastScrollPosition = currentScrollPosition
-    }, 100))
+        lastScrollPosition = currentScrollPosition;
+    }, 100));
 
 
     /**
@@ -1072,7 +1074,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 window.onload = function () {
-    handleSectionUMArticles()
+    handleSectionUMArticles();
 
     /**
      * Hack for table of contents in article page
@@ -1100,9 +1102,9 @@ window.onload = function () {
         }
     }
 
-    const selectsDropdownContainer = getEl('#file-resource-container')
+    const selectsDropdownContainer = getEl('#file-resource-container');
     if (selectsDropdownContainer) {
-        document.body.addEventListener('click', () => closeAllDownloadDropdown(selectsDropdownContainer))
+        document.body.addEventListener('click', () => closeAllDownloadDropdown(selectsDropdownContainer));
     }
 };
 
@@ -1114,11 +1116,11 @@ window.onload = function () {
  */
 function handleBreadcrumbs() {
     // replace 'Snapmaker' to "Support"
-    try{
-        const breadcrumbEls = getEl('.breadcrums-box').firstElementChild.children
-        breadcrumbEls[0].querySelector('a').textContent = 'Support'
-    }catch(e) {
-        console.log(e)
+    try {
+        const breadcrumbEls = getEl('.breadcrums-box').firstElementChild.children;
+        breadcrumbEls[0].querySelector('a').textContent = 'Support';
+    } catch (e) {
+        console.log(e);
     }
 }
 
@@ -1128,29 +1130,28 @@ function handleBreadcrumbs() {
  * zendesk background data.
  * During the update the structure of zendesk background data, showing a modal to placate users;
  */
-function hanldeRefatorAnnouncementModal(){
-    const get = key => window.localStorage.getItem(key)
-    const set = (key, value) => window.localStorage.setItem(key, value)
+function hanldeRefatorAnnouncementModal() {
+    const get = key => window.localStorage.getItem(key);
+    const set = (key, value) => window.localStorage.setItem(key, value);
 
-    if(get('is_announcement_get') === 'get') {
-        return
+    if (get('is_announcement_get') === 'get') {
+        return;
     }
 
-    set('is_announcement_get', 'get')
-    showAnnouncementModal()
+    set('is_announcement_get', 'get');
+    showAnnouncementModal();
 }
 
-function showAnnouncementModal(){
-    openMask()
-    announcementModal.style.display = 'block'
-    mask.style.zIndex = '1110'
+function showAnnouncementModal() {
+    openMask();
+    announcementModal.style.display = 'block';
+    mask.style.zIndex = '1110';
 }
 
-function closeAnnouncementModal(){
-    announcementModal.style.display = 'none'
-    removeMask()
+function closeAnnouncementModal() {
+    announcementModal.style.display = 'none';
+    removeMask();
 }
-
 
 
 /**
@@ -1159,68 +1160,74 @@ function closeAnnouncementModal(){
 const headerController = {
     _isFirstBarActive: false,
     _isSecondBarActive: false,
-}
+};
 Object.defineProperties(headerController, {
     isFirstBarActive: {
-        get() { return this._isFirstBarActive },
+        get() {
+            return this._isFirstBarActive;
+        },
         set(value) {
-            this._isFirstBarActive = value
+            this._isFirstBarActive = value;
 
             if (value) {
-                this.isSecondBarActive = false
+                this.isSecondBarActive = false;
             }
-            handleCollectionIcon(this._isFirstBarActive)
+            handleCollectionIcon(this._isFirstBarActive);
         }
     },
     isSecondBarActive: {
-        get() { return this._isSecondBarActive },
+        get() {
+            return this._isSecondBarActive;
+        },
         set(value) {
-            this._isSecondBarActive = value
+            this._isSecondBarActive = value;
 
             if (value) {
-                this.isFirstBarActive = false
+                this.isFirstBarActive = false;
             }
-            handleSecondBarCollection(this._isSecondBarActive)
+            handleSecondBarCollection(this._isSecondBarActive);
         }
     }
-})
+});
 
 /**
  * @description  first header bar, tablet/mobile, click icon open/close collection
  */
 function toggleCollectionIcon() {
-    headerController.isFirstBarActive = !headerController.isFirstBarActive
+    headerController.isFirstBarActive = !headerController.isFirstBarActive;
 }
+
 function handleCollectionIcon(isOpen) {
     if (isOpen) {
-        collectionIcon.classList.add('is-active')
-        toggleCollectionCss(isOpen)
-        document.documentElement.classList.add('body-no-scroll')
+        collectionIcon.classList.add('is-active');
+        toggleCollectionCss(isOpen);
+        document.documentElement.classList.add('body-no-scroll');
         // mask.style.display = 'block'
-        openMask()
+        openMask();
     } else {
-        toggleCollectionCss(isOpen)
-        collectionIcon.classList.remove('is-active')
-        document.documentElement.classList.remove('body-no-scroll')
+        toggleCollectionCss(isOpen);
+        collectionIcon.classList.remove('is-active');
+        document.documentElement.classList.remove('body-no-scroll');
         // mask.style.display = 'none'
-        removeMask()
+        removeMask();
     }
 }
+
 function toggleCollectionCss(isOpen) {
-    if(!firstBar || !firstBarMenus) {
-        console.log('error: no el')
-        return
+    if (!firstBar || !firstBarMenus) {
+        console.log('error: no el');
+        return;
     }
-    const left =  firstBarMenus.getBoundingClientRect().left
+    const left = firstBarMenus.getBoundingClientRect().left;
     if (isOpen) {
-        firstBar.style.overflow = 'visible'
-        firstBarMenus.style.width = window.innerWidth + 'px'
-        firstBarMenus.style.left = `-${left}px`
-        firstBarMenus.style.padding = `0 ${left}px`
+        firstBar.style.overflow = 'visible';
+        firstBarMenus.style.width = window.innerWidth + 'px';
+        firstBarMenus.style.left = `-${left}px`;
+        firstBarMenus.style.padding = `0 ${left}px`;
     } else {
-        firstBar.style.overflow = null
-        firstBarMenus.style.width = null
-        firstBarMenus.style.left = null
+        firstBar.style.overflow = null;
+        firstBarMenus.style.width = null;
+        firstBarMenus.style.left = null;
     }
 }
 
@@ -1228,30 +1235,34 @@ function toggleCollectionCss(isOpen) {
  * @description  second header bar, tablet/mobile, click icon open/close collection
  */
 function toggleSecondBarCollection() {
-    if (window.innerWidth > 1024) { return }
-    headerController.isSecondBarActive = !headerController.isSecondBarActive
+    if (window.innerWidth > 1024) {
+        return;
+    }
+    headerController.isSecondBarActive = !headerController.isSecondBarActive;
 }
+
 function handleSecondBarCollection(isOpen) {
     if (isOpen) {
-        toggleSecondBarCollectionCss(isOpen)
-        secondBarIcon.classList.add('is-open')
-        document.documentElement.classList.add('body-no-scroll')
+        toggleSecondBarCollectionCss(isOpen);
+        secondBarIcon.classList.add('is-open');
+        document.documentElement.classList.add('body-no-scroll');
         // mask.style.display = 'block'
-        openMask()
+        openMask();
     } else {
-        toggleSecondBarCollectionCss(isOpen)
-        secondBarIcon.classList.remove('is-open')
-        document.documentElement.classList.remove('body-no-scroll')
+        toggleSecondBarCollectionCss(isOpen);
+        secondBarIcon.classList.remove('is-open');
+        document.documentElement.classList.remove('body-no-scroll');
         // mask.style.display = 'none'
-        removeMask()
+        removeMask();
     }
 
 }
+
 function toggleSecondBarCollectionCss(isOpen) {
     if (isOpen) {
-        secondBarNavItems.style.height = 'auto'
+        secondBarNavItems.style.height = 'auto';
     } else {
-        secondBarNavItems.style.height = '0'
+        secondBarNavItems.style.height = '0';
     }
 }
 
@@ -1259,45 +1270,46 @@ function toggleSecondBarCollectionCss(isOpen) {
  * @description  collection mask, click then close collection
  */
 function onClickMask() {
-    announcementModal.style.display = 'none'
+    announcementModal.style.display = 'none';
 
-    headerController.isFirstBarActive = false
-    headerController.isSecondBarActive = false
-    removeMask()
+    headerController.isFirstBarActive = false;
+    headerController.isSecondBarActive = false;
+    removeMask();
 }
 
 /**
  * @description  header component: second bar item active or not handle
  */
 function initSecondBarActive() {
-    window.lastItem = null
-    window.navitemId = ['product_support', 'software_support', 'bar_academy', 'bar_service', 'still_need_help']
-    window.navItems = navitemId.map(v=>document.querySelector(`#${v}`))
-    window.anchorId = ['product-support', 'software-support', 'academy', 'service', 'still-need-help']
-    window.anchorItems = anchorId.map(v=>document.querySelector(`#${v}`))
-    window.anchorScrollTop = anchorItems.map(v=>v && getElDocumentTop(v))
+    window.lastItem = null;
+    window.navitemId = ['product_support', 'software_support', 'bar_academy', 'bar_service', 'still_need_help'];
+    window.navItems = navitemId.map(v => document.querySelector(`#${v}`));
+    window.anchorId = ['product-support', 'software-support', 'academy', 'service', 'still-need-help'];
+    window.anchorItems = anchorId.map(v => document.querySelector(`#${v}`));
+    window.anchorScrollTop = anchorItems.map(v => v && getElDocumentTop(v));
 
-    window.subNavCurrText = document.querySelector(`#sub-nav-curr-text`)
+    window.subNavCurrText = document.querySelector(`#sub-nav-curr-text`);
 }
+
 function secondBarActive() {
-    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
-    let currIdx = 0
-    for(let i=0; i<navItems.length; i++) {
-        if(currentScrollPosition < (anchorScrollTop[i] - 20)) {
-            if(navItems[currIdx] === lastItem) break
-            navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item')
-            subNavCurrText.innerHTML = mobSubNavText[currIdx]
-            lastItem && lastItem.classList.remove('active-nav-item')
-            lastItem = navItems[currIdx]
-            break
+    const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    let currIdx = 0;
+    for (let i = 0; i < navItems.length; i++) {
+        if (currentScrollPosition < (anchorScrollTop[i] - 20)) {
+            if (navItems[currIdx] === lastItem) break;
+            navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item');
+            subNavCurrText.innerHTML = mobSubNavText[currIdx];
+            lastItem && lastItem.classList.remove('active-nav-item');
+            lastItem = navItems[currIdx];
+            break;
         }
-        currIdx = i
+        currIdx = i;
     }
-    if(currIdx === (navItems.length - 1) && navItems[currIdx] !== lastItem) {
-        navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item')
-        subNavCurrText.innerHTML = mobSubNavText[currIdx]
-        lastItem && lastItem.classList.remove('active-nav-item')
-        lastItem = navItems[currIdx]
+    if (currIdx === (navItems.length - 1) && navItems[currIdx] !== lastItem) {
+        navItems[currIdx] && navItems[currIdx].classList.add('active-nav-item');
+        subNavCurrText.innerHTML = mobSubNavText[currIdx];
+        lastItem && lastItem.classList.remove('active-nav-item');
+        lastItem = navItems[currIdx];
     }
 
     // used 2022.1~2022.8.29
@@ -1321,29 +1333,29 @@ function secondBarActive() {
  * @param querySelector css selector
  */
 function onFooterCollectionClick(event) {
-    if(window.innerWidth > 1024 ) return
-    const toggleNo = event && event.target && event.target.dataset && event.target.dataset.toggle
-    const targetEl = document.querySelector(`#footer-link-part${toggleNo}`)
-    if (!targetEl) return
-    const isTargetNotDisplay = window.getComputedStyle(targetEl).display === 'none'
-    targetEl.style.display = isTargetNotDisplay  ? 'block' : 'none'
+    if (window.innerWidth > 1024) return;
+    const toggleNo = event && event.target && event.target.dataset && event.target.dataset.toggle;
+    const targetEl = document.querySelector(`#footer-link-part${toggleNo}`);
+    if (!targetEl) return;
+    const isTargetNotDisplay = window.getComputedStyle(targetEl).display === 'none';
+    targetEl.style.display = isTargetNotDisplay ? 'block' : 'none';
 
-    const iconEl = document.querySelector(`.iconfont[data-toggle="${toggleNo}"]`)
-    if(iconEl) iconEl.style.transform = isTargetNotDisplay ? 'rotate(90deg)' : 'rotate(0deg)'
+    const iconEl = document.querySelector(`.iconfont[data-toggle="${toggleNo}"]`);
+    if (iconEl) iconEl.style.transform = isTargetNotDisplay ? 'rotate(90deg)' : 'rotate(0deg)';
 }
 
 /**
  * @description footer component: mailchimp Subscribe func
  */
 function mailchimpSubscribe() {
-    const email = getEl('#emailInside').value
-    const action = '//snapmaker.us14.list-manage.com/subscribe/post-json'
+    const email = getEl('#emailInside').value;
+    const action = '//snapmaker.us14.list-manage.com/subscribe/post-json';
     const params = {
         'u': '0f4c0a37d13c4941ec88bb242',
         'id': 'bfa2592e18',
         'c': 'jsonpCallback',
         'EMAIL': encodeURIComponent(email),
-    }
+    };
     const clickId = 'footer-inline';
 
     gtmPush({
@@ -1360,10 +1372,10 @@ function mailchimpSubscribe() {
         params,
     }).then((res) => {
         if (res.result === 'success') {
-            const successEl = getEl('#footer-success-msg')
-            successEl.innerHTML = res.msg
-            successEl.style.display = 'block'
-            getEl('#footer-error-msg').style.display = 'none'
+            const successEl = getEl('#footer-success-msg');
+            successEl.innerHTML = res.msg;
+            successEl.style.display = 'block';
+            getEl('#footer-error-msg').style.display = 'none';
             gtmPush({
                 event: 'general-event',
                 eventData: {
@@ -1373,10 +1385,10 @@ function mailchimpSubscribe() {
                 }
             });
         } else {
-            getEl('#footer-success-msg').style.display = 'none'
-            const errEl = getEl('#footer-error-msg')
-            errEl.innerHTML = res.msg
-            errEl.style.display = 'block'
+            getEl('#footer-success-msg').style.display = 'none';
+            const errEl = getEl('#footer-error-msg');
+            errEl.innerHTML = res.msg;
+            errEl.style.display = 'block';
             gtmPush({
                 event: 'general-event',
                 eventData: {
@@ -1386,7 +1398,7 @@ function mailchimpSubscribe() {
                 }
             });
         }
-    })
+    });
 }
 
 /**
@@ -1397,13 +1409,13 @@ function onChangeFileSelect(el, e) {
 
     // close other select dropdown
     if (!isExpanded) {
-        closeAllDownloadDropdown(getEl('#file-resource-container'))
+        closeAllDownloadDropdown(getEl('#file-resource-container'));
     }
 
     // close this select dropdown
     el.setAttribute('aria-expanded', !isExpanded);
 
-    e.stopPropagation()
+    e.stopPropagation();
 }
 
 /**
@@ -1416,10 +1428,10 @@ function handleSectionUMArticles() {
                 const res = await ajax({
                     method: 'GET',
                     url: `/api/v2/help_center/${locale}/sections/${id}/articles`,
-                })
-                let html = ``
+                });
+                let html = ``;
                 for (let i = 0; i < res.articles.length; i++) {
-                    const curr = res.articles[i]
+                    const curr = res.articles[i];
                     html += `
                     <li class="article-list-item">
                         <div class="article-item">
@@ -1428,14 +1440,14 @@ function handleSectionUMArticles() {
                                 ${curr.title}
                             </a>
                         </div>
-                    </li>`
+                    </li>`;
                 }
-                getEl('#um-' + id).innerHTML = html
-            })
+                getEl('#um-' + id).innerHTML = html;
+            });
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    })
+    });
 }
 
 /**
@@ -1444,9 +1456,9 @@ function handleSectionUMArticles() {
  * @param {*} locale current page's locale(from {{help_center.locale}})
  */
 async function handleSectionResource(id, locale) {
-    const compatibleContainer = getEl('#compatible-container') || {}
-    const fileResourceContainer = getEl('#file-resource-container') || {}
-    const compatibleLabelContainer = getEl('#compatible-label-container') || {}
+    const compatibleContainer = getEl('#compatible-container') || {};
+    const fileResourceContainer = getEl('#file-resource-container') || {};
+    const compatibleLabelContainer = getEl('#compatible-label-container') || {};
 
     const fold = locale === 'zh-cn' ? 'cn' : 'en';
     const configuration = ajax({
@@ -1463,28 +1475,25 @@ async function handleSectionResource(id, locale) {
         res = null;
     }
 
-    // Snapmaker J1 is not supported by Luban by now
     // TODO: add separate configuration for luban support
-    if (id !== '10129930251671') {
-        try {
-            resourceDownload += await handleLubanSoftware(locale);
-        } catch (e) {
-            console.warn(`Unable to fetch Luban software resource file for section: ${id}, err =`, e);
-        }
+    try {
+        resourceDownload += await handleLubanSoftware(locale);
+    } catch (e) {
+        console.warn(`Unable to fetch Luban software resource file for section: ${id}, err =`, e);
     }
 
     if (res && res.compatible) {
         let compatibleHtml = ``;
         res.compatible.forEach(item => {
-            compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`
+            compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`;
         });
-        compatibleContainer.innerHTML = compatibleHtml
+        compatibleContainer.innerHTML = compatibleHtml;
     } else {
-        compatibleLabelContainer.style.display = 'none'
+        compatibleLabelContainer.style.display = 'none';
     }
 
     if (res && res.productImgSrc) {
-        getEl('#section-product-img').src = res.productImgSrc
+        getEl('#section-product-img').src = res.productImgSrc;
     }
 
     if (res && res.resource) {
@@ -1493,16 +1502,18 @@ async function handleSectionResource(id, locale) {
     }
 
     try {
-        handleScrollText(fileResourceContainer)
+        handleScrollText(fileResourceContainer);
     } catch (e) {
-        console.log(e)
+        console.log(e);
     }
 }
+
 function handleResourceDownload(resource) {
-    return resource.type == "download" ? handleDownloadFile(resource) : handleSelectDownload(resource)
+    return resource.type == 'download' ? handleDownloadFile(resource) : handleSelectDownload(resource);
 }
+
 function handleDownloadFile(resource) {
-    const description = handleSectionResourceDescription(resource.description, resource.title)
+    const description = handleSectionResourceDescription(resource.description, resource.title);
     return `<div class="file-resource-container mr-l mt-xl">
       <div class="resource-title-container">
         <div class="scroll-text-title resource-title">
@@ -1518,14 +1529,15 @@ function handleDownloadFile(resource) {
       </a>
       <p class="mt-s">${description}</p>
     </div>
-    `
+    `;
 }
+
 function handleSelectDownload(resource) {
-    const description = handleSectionResourceDescription(resource.description, resource.title)
-    let dropdown = ``
+    const description = handleSectionResourceDescription(resource.description, resource.title);
+    let dropdown = ``;
     resource.dropdown.forEach(v => {
-        dropdown += `<li><a class="py-s" href="${v.link}" title="${v.text}" target="_blank">${v.text}</a></li>`
-    })
+        dropdown += `<li><a class="py-s" href="${v.link}" title="${v.text}" target="_blank">${v.text}</a></li>`;
+    });
     return `
     <div class="file-resource-container mr-l mt-xl">
       <div class="resource-title-container">
@@ -1544,146 +1556,147 @@ function handleSelectDownload(resource) {
         <ul class="dropdown">${dropdown}</ul>
       </div>
       <p class="mt-s">${description}</p>
-    </div>`
+    </div>`;
 }
+
 function handleSectionResourceDescription(description, title) {
     const defaultDesc = {
-        "Driver": [
+        'Driver': [
             {
-                "text": "Download and install the driver if you can’t find any serial port to connect to Luban.",
-                "link": ""
+                'text': 'Download and install the driver if you can’t find any serial port to connect to Luban.',
+                'link': ''
             }
         ],
-        "Third-party Configs": [
+        'Third-party Configs': [
             {
-                "text": "Download and set up the configuration files to generate G-code on third-party CAD or CAM software, including Fusion 360, FreeCAD, ArtCAM, Aspire, and more to be added.",
-                "link": ""
+                'text': 'Download and set up the configuration files to generate G-code on third-party CAD or CAM software, including Fusion 360, FreeCAD, ArtCAM, Aspire, and more to be added.',
+                'link': ''
             }
         ],
-        "Firmware": [
+        'Firmware': [
             {
-                "text": "Read this ",
-                "link": ""
+                'text': 'Read this ',
+                'link': ''
             },
             {
-                "text": "article",
-                "link": "https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402"
+                'text': 'article',
+                'link': 'https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402'
             },
             {
-                "text": " before you upgrade the firmware to version 1.12.0.<br>",
-                "link": ""
+                'text': ' before you upgrade the firmware to version 1.12.0.<br>',
+                'link': ''
             },
             {
-                "text": "Download previous versions from our ",
-                "link": ""
+                'text': 'Download previous versions from our ',
+                'link': ''
             },
             {
-                "text": " forum.",
-                "link": "https://forum.snapmaker.com/"
+                'text': ' forum.',
+                'link': 'https://forum.snapmaker.com/'
             }
         ],
-        "Quick Start Guide (A Model)": [
+        'Quick Start Guide (A Model)': [
             {
-                "text": "Read this guide to get you started with your making journey.",
-                "link": ""
+                'text': 'Read this guide to get you started with your making journey.',
+                'link': ''
             }
         ],
-        "Quick Start Guide (AT Model)": [
+        'Quick Start Guide (AT Model)': [
             {
-                "text": "Read this guide to get you started with your making journey.",
-                "link": ""
+                'text': 'Read this guide to get you started with your making journey.',
+                'link': ''
             }
         ],
-        "Quick Start Guide": [
+        'Quick Start Guide': [
             {
-                "text": "Read this guide to get you started with your making journey.",
-                "link": ""
+                'text': 'Read this guide to get you started with your making journey.',
+                'link': ''
             }
         ],
-        "User Manual": [
+        'User Manual': [
             {
-                "text": "Read this manual to unlock advanced options.",
-                "link": ""
+                'text': 'Read this manual to unlock advanced options.',
+                'link': ''
             }
         ],
-         "Troubleshooting Guide": [
+        'Troubleshooting Guide': [
             {
-                "text": "Read this guide to troubleshoot your 2.0 models, Enclosure, Rotary Module, Touchscreen, and Luban.",
-                "link": ""
+                'text': 'Read this guide to troubleshoot your 2.0 models, Enclosure, Rotary Module, Touchscreen, and Luban.',
+                'link': ''
             }
         ],
-        "驱动": [
+        '驱动': [
             {
-                "text": "如果无法找到串口连接 Luban，请下载并安装驱动程序。",
-                "link": ""
+                'text': '如果无法找到串口连接 Luban，请下载并安装驱动程序。',
+                'link': ''
             }
         ],
-        "第三方配置文件": [
+        '第三方配置文件': [
             {
-                "text": "如果想用 Fusion 360、FreeCAD、ArtCAM、Aspire 等第三方 CAD/CAM 软件生成 G 代码，请下载并设置配置文件。",
-                "link": ""
+                'text': '如果想用 Fusion 360、FreeCAD、ArtCAM、Aspire 等第三方 CAD/CAM 软件生成 G 代码，请下载并设置配置文件。',
+                'link': ''
             }
         ],
-        "固件": [
+        '固件': [
             {
-                "text": "升级至固件 1.12.0 前，请阅读这篇",
-                "link": ""
+                'text': '升级至固件 1.12.0 前，请阅读这篇',
+                'link': ''
             },
             {
-                "text": "文章",
-                "link": "https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402"
+                'text': '文章',
+                'link': 'https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402'
             },
             {
-                "text": "。<br>",
-                "link": ""
+                'text': '。<br>',
+                'link': ''
             },
             {
-                "text": "在",
-                "link": ""
+                'text': '在',
+                'link': ''
             },
             {
-                "text": "论坛",
-                "link": "https://forum.snapmaker.com/"
+                'text': '论坛',
+                'link': 'https://forum.snapmaker.com/'
             },
             {
-                "text": "下载历史版本。",
-                "link": ""
+                'text': '下载历史版本。',
+                'link': ''
             }
         ],
-        "快速入门指南（A 型号）": [
+        '快速入门指南（A 型号）': [
             {
-                "text": "阅读本指南，开启创客之旅。",
-                "link": ""
+                'text': '阅读本指南，开启创客之旅。',
+                'link': ''
             }
         ],
-        "快速入门指南（AT 型号）": [
+        '快速入门指南（AT 型号）': [
             {
-                "text": "阅读本指南，开启创客之旅。",
-                "link": ""
+                'text': '阅读本指南，开启创客之旅。',
+                'link': ''
             }
         ],
-        "用户手册": [
+        '用户手册': [
             {
-                "text": "阅读本手册，解锁进阶玩法。",
-                "link": ""
+                'text': '阅读本手册，解锁进阶玩法。',
+                'link': ''
             }
         ],
-         "故障排查指南": [
+        '故障排查指南': [
             {
-                "text": "阅读本指南，排查产品故障。",
-                "link": ""
+                'text': '阅读本指南，排查产品故障。',
+                'link': ''
             }
         ]
-    }
-    if(!description && !!title){
-        description = defaultDesc[title] || []
+    };
+    if (!description && !!title) {
+        description = defaultDesc[title] || [];
     }
 
-    let descriptionHtml = ``
+    let descriptionHtml = ``;
     description.forEach(v => {
-        descriptionHtml += !v.link ? `<span class="font-2">${v.text}</span>` : `<a class="snmk-link-btn" href="${v.link}">${v.text}</a>`
-    })
-    return descriptionHtml
+        descriptionHtml += !v.link ? `<span class="font-2">${v.text}</span>` : `<a class="snmk-link-btn" href="${v.link}">${v.text}</a>`;
+    });
+    return descriptionHtml;
 }
 
 /**
@@ -1691,11 +1704,11 @@ function handleSectionResourceDescription(description, title) {
  * @param containerEl the parent element of all select dropdwon
  */
 function closeAllDownloadDropdown(containerEl) {
-    const selectsDropdown = containerEl.querySelectorAll('.resource-select[aria-expanded]')
+    const selectsDropdown = containerEl.querySelectorAll('.resource-select[aria-expanded]');
     selectsDropdown.forEach(el => {
-        if (el.getAttribute('aria-expanded') === 'false') return
+        if (el.getAttribute('aria-expanded') === 'false') return;
         el.setAttribute('aria-expanded', 'false');
-    })
+    });
 }
 
 /**
@@ -1704,177 +1717,177 @@ function closeAllDownloadDropdown(containerEl) {
  * @returns the innerHTML of Software(Luban) block
  */
 async function handleLubanSoftware(locale) {
-    let templateData
+    let templateData;
     if (locale === 'zh-cn') {
         templateData = {
-            "title": "软件",
-            "time": "Sep 28, 2021",
-            "type": "download",
-            "text": "下载 Luban ",
-            "description": [
+            'title': '软件',
+            'time': 'Sep 28, 2021',
+            'type': 'download',
+            'text': '下载 Luban ',
+            'description': [
                 {
-                    "text": "在",
-                    "link": ""
+                    'text': '在',
+                    'link': ''
                 },
                 {
-                    "text": "GitHub",
-                    "link": "https://github.com/Snapmaker/Luban/releases"
+                    'text': 'GitHub',
+                    'link': 'https://github.com/Snapmaker/Luban/releases'
                 },
                 {
-                    "text": "下载历史版本。<br>",
-                    "link": ""
+                    'text': '下载历史版本。<br>',
+                    'link': ''
                 },
                 {
-                    "text": "阅读",
-                    "link": ""
+                    'text': '阅读',
+                    'link': ''
                 },
                 {
-                    "text": "软件手册",
-                    "link": "https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual"
+                    'text': '软件手册',
+                    'link': 'https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual'
                 },
                 {
-                    "text": "，开启创客之旅。",
-                    "link": ""
+                    'text': '，开启创客之旅。',
+                    'link': ''
                 }
             ]
-        }
+        };
     } else {
         templateData = {
-            "title": "Software",
-            "time": "Sep 28, 2021",
-            "type": "download",
-            "text": "Download Luban ",
-            "description": [
+            'title': 'Software',
+            'time': 'Sep 28, 2021',
+            'type': 'download',
+            'text': 'Download Luban ',
+            'description': [
                 {
-                    "text": "Download previous versions from our ",
-                    "link": ""
+                    'text': 'Download previous versions from our ',
+                    'link': ''
                 },
                 {
-                    "text": "GitHub",
-                    "link": "https://github.com/Snapmaker/Luban/releases"
+                    'text': 'GitHub',
+                    'link': 'https://github.com/Snapmaker/Luban/releases'
                 },
                 {
-                    "text": ".<br>",
-                    "link": ""
+                    'text': '.<br>',
+                    'link': ''
                 },
                 {
-                    "text": " Jump start your making journey with our software ",
-                    "link": ""
+                    'text': ' Jump start your making journey with our software ',
+                    'link': ''
                 },
                 {
-                    "text": "user manual",
-                    "link": "https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual"
+                    'text': 'user manual',
+                    'link': 'https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual'
                 },
                 {
-                    "text": ".",
-                    "link": ""
+                    'text': '.',
+                    'link': ''
                 }
             ]
-        }
+        };
     }
 
     const res = await ajax({
         method: 'GET',
         url: 'https://api.snapmaker.com/luban-installers'
-    })
-    const softwareVersion = res.name
-    const installersAssets = res.assets.filter(v => v.name.indexOf('.yml') === -1 && v.name.indexOf('.dmg') === -1)
+    });
+    const softwareVersion = res.name;
+    const installersAssets = res.assets.filter(v => v.name.indexOf('.yml') === -1 && v.name.indexOf('.dmg') === -1);
 
 
-    const finder = (orignal, target) => new RegExp(target).test(orignal)
+    const finder = (orignal, target) => new RegExp(target).test(orignal);
 
-    const uaParser = new UAParser()
-    const ua = uaParser.getResult()
+    const uaParser = new UAParser();
+    const ua = uaParser.getResult();
     const checkOS = (osType, CheckString) => {
         return installersAssets
-                .filter(v=>finder(v.name, osType))
-                .filter(
-                    v=>finder(v.name.toLowerCase().replace(/snapmaker-luban-/, '') ,CheckString)
-                )[0]
-    }
+            .filter(v => finder(v.name, osType))
+            .filter(
+                v => finder(v.name.toLowerCase().replace(/snapmaker-luban-/, ''), CheckString)
+            )[0];
+    };
 
-    let isFoundVersion = false
+    let isFoundVersion = false;
 
     switch (ua.os.name) {
         case 'Windows': {
-            const targetAssets = checkOS('win', ua.cpu.architecture)
-            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('win', 'x64').browser_download_url
-            break
+            const targetAssets = checkOS('win', ua.cpu.architecture);
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('win', 'x64').browser_download_url;
+            break;
         }
         case 'Mac OS': {
-            const targetAssets = checkOS('mac', '.dmg')
-            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('mac', 'zip').browser_download_url
-            break
+            const targetAssets = checkOS('mac', '.dmg');
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('mac', 'zip').browser_download_url;
+            break;
         }
         case 'Ubuntu':
         case 'Debian': {
-            const targetAssets = checkOS('linux', '.deb')
-            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url
-            break
+            const targetAssets = checkOS('linux', '.deb');
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url;
+            break;
         }
         case 'Linux': {
-            const targetAssets = checkOS('linux', ua.cpu.architecture)
-            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url
-            break
+            const targetAssets = checkOS('linux', ua.cpu.architecture);
+            templateData.download_link = targetAssets ? targetAssets.browser_download_url : checkOS('linux', '.tar.gz').browser_download_url;
+            break;
         }
         default: {
-            isFoundVersion = false
+            isFoundVersion = false;
         }
     }
-    isFoundVersion = !!templateData.download_link
-    templateData.text = isFoundVersion ? templateData.text+softwareVersion : 'Installer Not Found. Please Download from the GitHub'
+    isFoundVersion = !!templateData.download_link;
+    templateData.text = isFoundVersion ? templateData.text + softwareVersion : 'Installer Not Found. Please Download from the GitHub';
 
-    return handleDownloadFile(templateData)
+    return handleDownloadFile(templateData);
 }
 
 
-function handleScrollText(targetsWrapper){
-    const getWidth = el => el.offsetWidth
+function handleScrollText(targetsWrapper) {
+    const getWidth = el => el.offsetWidth;
 
-    const titleWrapper = targetsWrapper.firstElementChild.querySelector('.resource-title')
-    const timeWrapper = targetsWrapper.firstElementChild.querySelector('.resource-time')
-    const btnWrapper = targetsWrapper.firstElementChild.querySelector('.file-download-btn .scroll-text-btn')
-    const titleWrapperWidth = getWidth(titleWrapper)
-    const timeWrapperWidth = getWidth(timeWrapper)
-    const btnWrapperWidth = getWidth(btnWrapper)
+    const titleWrapper = targetsWrapper.firstElementChild.querySelector('.resource-title');
+    const timeWrapper = targetsWrapper.firstElementChild.querySelector('.resource-time');
+    const btnWrapper = targetsWrapper.firstElementChild.querySelector('.file-download-btn .scroll-text-btn');
+    const titleWrapperWidth = getWidth(titleWrapper);
+    const timeWrapperWidth = getWidth(timeWrapper);
+    const btnWrapperWidth = getWidth(btnWrapper);
 
-    const animationStyle = document.createElement('style')
+    const animationStyle = document.createElement('style');
     animationStyle.innerHTML = `
         @keyframes scroll-word-title {
             0% { transform: translateX(0); }
-            50% { transform: translateX(calc(${titleWrapperWidth-20}px - 100%)); }
+            50% { transform: translateX(calc(${titleWrapperWidth - 20}px - 100%)); }
             100% { transform: translateX(0); }
         }
         @keyframes scroll-word-time {
             0% { transform: translateX(0); }
-            50% { transform: translateX(calc(${timeWrapperWidth-20}px - 100%)); }
+            50% { transform: translateX(calc(${timeWrapperWidth - 20}px - 100%)); }
             100% { transform: translateX(0); }
         }
         @keyframes scroll-word-btn {
             0% { transform: translateX(0); }
-            50% { transform: translateX(calc(${btnWrapperWidth-20}px - 100%)); }
+            50% { transform: translateX(calc(${btnWrapperWidth - 20}px - 100%)); }
             100% { transform: translateX(0); }
         }
-    `
-    document.head.appendChild(animationStyle)
+    `;
+    document.head.appendChild(animationStyle);
 
-    new Array(...targetsWrapper.children).forEach(el=>{
-        const title = el.querySelector('.resource-title').firstElementChild
-        const time = el.querySelector('.resource-time').firstElementChild
-        const btn = el.querySelector('.file-download-btn').firstElementChild
+    new Array(...targetsWrapper.children).forEach(el => {
+        const title = el.querySelector('.resource-title').firstElementChild;
+        const time = el.querySelector('.resource-time').firstElementChild;
+        const btn = el.querySelector('.file-download-btn').firstElementChild;
 
-        if(titleWrapperWidth > getWidth(title)) {
-            title.classList.remove('text-box')
+        if (titleWrapperWidth > getWidth(title)) {
+            title.classList.remove('text-box');
         }
 
-        if(timeWrapperWidth > getWidth(time)) {
-            time.classList.remove('text-box')
+        if (timeWrapperWidth > getWidth(time)) {
+            time.classList.remove('text-box');
         }
 
-        if(btnWrapperWidth > getWidth(btn)) {
-            btn.classList.remove('text-box')
+        if (btnWrapperWidth > getWidth(btn)) {
+            btn.classList.remove('text-box');
         }
-    })
+    });
 }
 
 //============================================== utils ==============================================
@@ -1884,17 +1897,17 @@ function handleScrollText(targetsWrapper){
  * @param threshold time
  */
 function throttle(fn, threshold) {
-    let cando = true
+    let cando = true;
     return function (...args) {
         if (!cando) {
-            return
+            return;
         }
-        fn.apply(this, args)
-        cando = false
+        fn.apply(this, args);
+        cando = false;
         setTimeout(() => {
-            cando = true
-        }, threshold)
-    }
+            cando = true;
+        }, threshold);
+    };
 }
 
 /**
@@ -1902,11 +1915,11 @@ function throttle(fn, threshold) {
  * @param querySelector css selector
  */
 function getEl(selector) {
-    return document.querySelector(selector)
+    return document.querySelector(selector);
 }
 
 function getElDocumentTop(element) {
-    return element.getBoundingClientRect().top + document.documentElement.scrollTop
+    return element.getBoundingClientRect().top + document.documentElement.scrollTop;
 }
 
 /**
@@ -1919,28 +1932,28 @@ function getElDocumentTop(element) {
  * })
  */
 function ajax(options) {
-    const paramString = handleParam(options.params)
-    const url = options.url + paramString
+    const paramString = handleParam(options.params);
+    const url = options.url + paramString;
     return new Promise((resolve, reject) => {
-        const xhr = new XMLHttpRequest()
+        const xhr = new XMLHttpRequest();
 
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) {
                 if (xhr.status === 200) {
                     const result = xhr.responseText;
                     try {
-                        resolve(JSON.parse(result))
+                        resolve(JSON.parse(result));
                     } catch (e) {
-                        reject({ errorMsg: '数据格式错误' })
+                        reject({ errorMsg: '数据格式错误' });
                     }
                 } else {
                     console.error('error:XMLHttpRequest.status =', xhr.status);
-                    reject(xhr)
+                    reject(xhr);
                 }
             }
         };
         xhr.onerror = function (e) {
-            reject(e)
+            reject(e);
         };
 
         xhr.open(options.method || 'GET', url, true);
@@ -1948,16 +1961,17 @@ function ajax(options) {
             xhr.setRequestHeader(key, options.headers[key]);
         }
         xhr.send(options.body);
-    })
+    });
 }
+
 function handleParam(params) {
-    if (params === undefined) return ''
-    if (typeof params !== 'object') return params
-    const paramArr = []
+    if (params === undefined) return '';
+    if (typeof params !== 'object') return params;
+    const paramArr = [];
     for (let key in params) {
-        paramArr.push(`${key}=${params[key]}`)
+        paramArr.push(`${key}=${params[key]}`);
     }
-    return '?' + paramArr.join('&')
+    return '?' + paramArr.join('&');
 }
 
 /**
@@ -1970,31 +1984,31 @@ function handleParam(params) {
  * })
  */
 function jsonp(options) {
-    window.res = {}
-    window.jsonpCallback = v => res = v
+    window.res = {};
+    window.jsonpCallback = v => res = v;
 
-    const paramString = handleParam(Object.assign(options.params || {}, { 'c': 'jsonpCallback' }))
-    const script = document.createElement('script')
-    script.src = options.url + paramString
-    document.body.appendChild(script)
+    const paramString = handleParam(Object.assign(options.params || {}, { 'c': 'jsonpCallback' }));
+    const script = document.createElement('script');
+    script.src = options.url + paramString;
+    document.body.appendChild(script);
 
     return new Promise((resolve, reject) => {
         script.onload = function () {
             // async to last execute
             setTimeout(() => {
-                const result = window.res
-                delete window.res
-                delete window.jsonpCallback
-                resolve(result)
-            })
-        }
-    })
+                const result = window.res;
+                delete window.res;
+                delete window.jsonpCallback;
+                resolve(result);
+            });
+        };
+    });
 }
 
 // GTM
 function gtmPush(event) {
-    window.dataLayer = window.dataLayer || []
-    window.dataLayer.push(event)
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(event);
 }
 
 /**
@@ -2004,9 +2018,9 @@ function gtmPush(event) {
  *
  */
 function extractFirstImg(extractComtainer) {
-    if(!extractComtainer) {
-        console.log(`no extract container`)
-        return
+    if (!extractComtainer) {
+        console.log(`no extract container`);
+        return;
     }
     try {
         // var extractComtainer = document.querySelectorAll('.extract-img-list');
@@ -2029,40 +2043,42 @@ function extractFirstImg(extractComtainer) {
                     }
 
                     // remove article dom
-                    const parentEl = body.parentNode
-                    parentEl.removeChild(body)
+                    const parentEl = body.parentNode;
+                    parentEl.removeChild(body);
                 });
             });
         }
-    }catch(e){
-        console.log(`extractFirstImg: `, e)
+    } catch (e) {
+        console.log(`extractFirstImg: `, e);
     }
 }
 
 
 //============================================== update Acady(category) and home page(2022.8.29~) ==============================================
-(function(window) {
-    let container, drawerAnchor, drawer, drawerCover
+(function (window) {
+    let container, drawerAnchor, drawer, drawerCover;
 
-    let isOpen = false
+    let isOpen = false;
+
     function drawerInit() {
-        if(isOpen) return
-        container = document.querySelector(`#section-1`)
-        drawerAnchor = document.querySelector(`#drawer-anchor`)
-        drawer = document.querySelector(`#drawer`)
-        drawerCover = document.querySelector(`#drawer-cover`)
+        if (isOpen) return;
+        container = document.querySelector(`#section-1`);
+        drawerAnchor = document.querySelector(`#drawer-anchor`);
+        drawer = document.querySelector(`#drawer`);
+        drawerCover = document.querySelector(`#drawer-cover`);
 
-        drawer.style.height = container.offsetTop +  drawerAnchor.offsetTop + 'px'
-        drawerCover.style.height = drawerAnchor.offsetTop + 'px'
-        return container.offsetTop +  drawerAnchor.offsetTop
-    }
-    function openDrawer(){
-        if(isOpen) return
-        drawer && (drawer.style.height = '')
-        drawerCover && (drawerCover.style.display = 'none')
-        isOpen = true
+        drawer.style.height = container.offsetTop + drawerAnchor.offsetTop + 'px';
+        drawerCover.style.height = drawerAnchor.offsetTop + 'px';
+        return container.offsetTop + drawerAnchor.offsetTop;
     }
 
-    window.drawerInit = drawerInit
-    window.openDrawer = openDrawer
-})(window)
+    function openDrawer() {
+        if (isOpen) return;
+        drawer && (drawer.style.height = '');
+        drawerCover && (drawerCover.style.display = 'none');
+        isOpen = true;
+    }
+
+    window.drawerInit = drawerInit;
+    window.openDrawer = openDrawer;
+})(window);
