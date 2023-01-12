@@ -1721,7 +1721,7 @@ async function handleLubanSoftware(locale) {
     if (locale === 'zh-cn') {
         templateData = {
             'title': '软件',
-            'time': 'Sep 28, 2021',
+            'time': '2023年1月12日',
             'type': 'download',
             'text': '下载 Luban ',
             'description': [
@@ -1754,7 +1754,7 @@ async function handleLubanSoftware(locale) {
     } else {
         templateData = {
             'title': 'Software',
-            'time': 'Sep 28, 2021',
+            'time': 'Jan 12, 2023',
             'type': 'download',
             'text': 'Download Luban ',
             'description': [
