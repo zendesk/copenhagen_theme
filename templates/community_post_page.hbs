@@ -80,18 +80,7 @@
                   {{/if}}
                 </div>
                 <div class="community-badge-container-achievements">
-                  {{#each (
-                    slice
-                      (
-                        filter
-                          (filter post.author.badges on="category_slug" equals="achievements")
-                          on="icon_url"
-                          starts_with="https"
-                      )
-                      0
-                      4
-                    )
-                  }}
+                  {{#each (slice (filter post.author.badges on="category_slug" equals="achievements") 0 4)}}
                     <div class="community-badge community-badge-achievements">
                       <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
                     </div>
@@ -250,18 +239,7 @@
                     </div>
 
                     <div aria-label="{{t 'badges'}}" class="community-badge-container-achievements">
-                      {{#each (
-                        slice
-                          (
-                            filter
-                              (filter author.badges on="category_slug" equals="achievements")
-                              on="icon_url"
-                              starts_with="https"
-                          )
-                          0
-                          4
-                        )
-                      }}
+                      {{#each (slice (filter author.badges on="category_slug" equals="achievements") 0 4)}}
                         <div class="community-badge community-badge-achievements">
                           <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
                         </div>
