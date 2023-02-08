@@ -199,10 +199,10 @@ document.addEventListener('DOMContentLoaded', function() {
   if (checkSectionEl) {
     var currentSection = checkSectionEl.dataset.section;
     var articleID = checkSectionEl.dataset.id;
-    var banner = document.querySelector('#jobbar-banner');
-    if (webinarWhitelist.includes(currentSection) || webinarWhitelist.includes(articleID)){
-      banner.style.display = "flex";
-    }
+    // var banner = document.querySelector('#jobbar-banner');
+    // if (webinarWhitelist.includes(currentSection) || webinarWhitelist.includes(articleID)){
+    //   banner.style.display = "flex";
+    // }
   }
 
 
