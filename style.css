@@ -2267,7 +2267,7 @@ ul {
 }
 
 .comment-meta {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
 
 .comment-labels {
@@ -3101,52 +3101,29 @@ ul {
   padding: 0px 8px;
   vertical-align: top;
   white-space: nowrap;
-  display: inline-flex;
+  display: inline-block;
   line-height: 18px;
   vertical-align: middle;
 }
 
-.profile-info .community-badge-title {
-  padding: 2px 8px;
-  line-height: 20px;
+.community-badge-titles {
+  display: inline;
 }
 
-.community-badge-container-achievements {
-  display: flex;
-}
-
-.community-badge-container-achievements > .community-badge-titles {
-  margin-left: calc(28px - 0.5em);
-}
-
-[dir="rtl"] .community-badge-container-achievements > .community-badge-titles {
-  margin-right: calc(28px - 0.5em);
-}
-
-.community-name-and-title-badges {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.community-badge {
-  margin: 2px;
-}
-
-.community-badge-achievements {
+.community-badge-achievement {
   display: block;
   height: 16px;
   white-space: nowrap;
   width: 16px;
 }
 
-.profile-info .community-badge-achievements {
-  height: 40px;
-  width: 40px;
+.community-badge-achievement img {
+  width: 100%;
+  height: 100%;
 }
 
-.community-title-badges {
-  flex-basis: 100%;
-  margin-top: 15px;
+.community-badge-achievements {
+  display: flex;
 }
 
 .community-badge-achievements-rest {
@@ -3157,14 +3134,18 @@ ul {
   vertical-align: top;
 }
 
-.community-badge-achievements img {
-  width: 100%;
-  height: 100%;
+.community-badge {
+  margin: 2px;
 }
 
-.community-badge-titles img {
-  width: 20px;
-  height: 20px;
+.profile-info .community-badge-title {
+  padding: 2px 8px;
+  line-height: 20px;
+}
+
+.profile-info .community-badge-achievement {
+  height: 40px;
+  width: 40px;
 }
 
 .profile-info .community-badge-achievements-rest {
@@ -4016,6 +3997,8 @@ ul {
 .profile-header .basic-info .name {
   margin: 0;
   line-height: 25px;
+  vertical-align: middle;
+  display: inline;
 }
 
 .profile-header .options {
