@@ -1,3 +1,10 @@
+# [2.21.0](https://github.com/zendesk/copenhagen_theme/compare/v2.20.1...v2.21.0) (2023-02-08)
+
+
+### Features
+
+* Add a11y to new-post field error messages ([5b53797](https://github.com/zendesk/copenhagen_theme/commit/5b53797da863ba271c94e8bb129b3d8b9ec4d4a8))
+
 ## [2.20.1](https://github.com/zendesk/copenhagen_theme/compare/v2.20.0...v2.20.1) (2022-12-15)
 
 
