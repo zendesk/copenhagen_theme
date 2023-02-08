@@ -1,3 +1,10 @@
+## [2.21.1](https://github.com/zendesk/copenhagen_theme/compare/v2.21.0...v2.21.1) (2023-02-08)
+
+
+### Bug Fixes
+
+* **badges:** render badges as lists ([f89c264](https://github.com/zendesk/copenhagen_theme/commit/f89c2647a72e08a043e5ee8f25b4a63ac30b1614))
+
 # [2.21.0](https://github.com/zendesk/copenhagen_theme/compare/v2.20.1...v2.21.0) (2023-02-08)
 
 
