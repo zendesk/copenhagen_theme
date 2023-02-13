@@ -98,45 +98,85 @@ Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does n
 
 - Install Ruby, we use `sassc` gem to compile our `.scss` files. You can see how to install Ruby [here](https://www.ruby-lang.org/en/documentation/installation/).
 - Install `sassc` gem. You can run:
-```
-    gem install sassc:1.12.1
+```console
+  gem install sassc:1.12.1
 ```
 
 Now you can compile your SASS files running:
-```
+```console
 ./bin/compile.rb
 ```
 Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
 
-# Testing
+# Accessibility testing
 
-We use [lighthouse](https://github.com/GoogleChrome/lighthouse) to automate accessibility testing.
+We use a custom node script that runs [lighthouse](https://github.com/GoogleChrome/lighthouse) for automated accessibility testing.
 
-To run the accessibility audits locally, do the following:
+There are two ways of running the script:
+- **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `zat theme preview` to be running;
+- **CI mode** - it runs the accessibility audits on the live theme of a specific account.
 
-1. Create a `.zat` file (see [example](.zat.example));
-2. Run the [local theme preview](https://support.zendesk.com/hc/en-us/articles/4408822095642);
-3. In a separate console run:
+## Development mode
 
+To run the accessibility audits while changing the theme, one must first preview the changes on a specific account and then run the audits on that preview. To do so:
+
+1. Create a `.zat` file in the root folder (see [example](.zat.example));
+   1. Specify the account/subdomain to preview the theme;
+   2. Fill `username` and `password` with the credentials of an admin user;
+   3. Specify which `urls` to test (if left empty, the script will test all urls);
+2. Preview the local changes by running the [theme preview command](https://support.zendesk.com/hc/en-us/articles/4408822095642):
+
+```console
+zat theme preview
 ```
+
+3. In a separate console install node modules:
+
+```console
 yarn install
+```
+
+4. Then run the accessibility audits in development mode:
+
+```console
 yarn test-a11y
 ```
 
-This script relies on the local preview provided by [Zendesk App Tools](https://support.zendesk.com/hc/en-us/articles/4408822095642). Please make sure you run `zat theme preview` and have a `.zat` file in the root folder before running the accessibility audits to make sure you're testing your local changes.
+## CI mode
+
+To run the accessibility audits on the live theme of a specific account, one must:
+
+1. Install node modules:
+
+```console
+yarn install
+```
+
+2. Set `end_user_email`, `end_user_password`, `subdomain` and `urls` as environment variables and run the accessibility audits in CI mode i.e.:
+
+```console
+end_user_email=<EMAIL> \
+end_user_password=<PASSWORD> \
+subdomain=<SUBDOMAIN> \
+urls="
+    https://<SUBDOMAIN>.zendesk.com/hc/en-us/
+    https://<SUBDOMAIN>.zendesk.com/hc/en-us/requests/new
+    https://<SUBDOMAIN>.zendesk.com/hc/en-us/requests" \
+yarn test-a11y-ci
+```
 
 ## Ignore list
 
-In order to unblock merges, if there is a known accessibility issue that should be ignored or can't be fixed right away, you may add a new entry to the ignore list in our [script's configuration object](bin/lighthouse/config.js). This will turn the accessibility issue into a warning instead of erroring.
+If there is a known accessibility issue that should be ignored or can't be fixed right away, one may add a new entry to the ignore list in the [script's configuration object](bin/lighthouse/config.js). This will turn the accessibility issue into a warning instead of erroring.
 
 The entry should include:
-- the audit id
-- a `path` as a url pattern string
-- a `selector` as a string
+- the audit id;
+- a `path` as a url pattern string;
+- a `selector` as a string.
 
 For example:
 
-```
+```js
   custom: {
     ignore: {
       tabindex: [
@@ -157,7 +197,7 @@ For example:
 
 In this example, errors for the audit `tabindex` with the selector `body > a.skip-navigation` will be reported as warnings in all pages (`*`). The same will happen for the audit `aria-allowed-attr` with the selector `body > div.profile-info`, but only for the user profile page `/hc/:locale/profiles/:id`.
 
-Please keep in mind that this should only be used when strictly necessarity. Acessibility should be a focus and a priority when making changes to the theme.
+Please keep in mind that this should only be used when strictly necessarity. Accessibility should be a focus and a priority when making changes to the theme.
 
 # Contributing
 Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme. Please mention @zendesk/vikings when creating a pull request.
