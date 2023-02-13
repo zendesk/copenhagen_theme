@@ -8,17 +8,16 @@ const login = require("./login");
 const processResults = require("./processor");
 const { ERROR, WARNING } = require("./constants");
 
-const outputAudit = (audit, emoji) => {
-  const { title, description, url, id, selector, snippet, explanation, result } =
-    audit;
-
-  console.log(`\n${emoji} ${id}: ${title}`);
-  console.log(description);
-  console.log("");
-  console.log({ url, selector, snippet });
-  console.log("");
-  console.log(explanation);
-};
+const outputAudit = (
+  { title, description, url, id, selector, snippet, explanation },
+  emoji
+) => {
+  console.log("");  
+  console.log(`${emoji} ${id}: ${title}`);
+  console.log(description, "\n");
+  console.log({ url, selector, snippet }, "\n");
+  console.log(explanation, "\n");
+}
 
 (async () => {
   // TODO: If dev, check if ZAT is running
@@ -29,41 +28,47 @@ const outputAudit = (audit, emoji) => {
   };
 
   // Reading account
-  console.log("Reading account...");
+  console.log("Reading account...", "\n");
   const account = getAccount();
 
   // Build list of urls to audit
   if (!account.urls || account.urls.length === 0) {
-    console.log("No urls were found in .zat or as env variable. Building urls from the API...");
+    console.log(
+      "No urls were found in .zat or as env variable. Building urls from the API...",
+      "\n"
+    );
     account.urls = await buildUrlsFromAPI(account);
   }
 
   // Set login URL
   account.loginUrl = isDev
-  ? `https://${account.subdomain}.zendesk.com/hc/admin/local_preview/start`
-  : `https://${account.subdomain}.zendesk.com/hc/en-us/signin`;
+    ? `https://${account.subdomain}.zendesk.com/hc/admin/local_preview/start`
+    : `https://${account.subdomain}.zendesk.com/hc/en-us/signin`;
 
   // Output account
-  console.log("\nAccount:");
-  console.log({
-    subdomain: account.subdomain,
-    email: account.email,
-    urls: account.urls,
-    loginUrl: account.loginUrl
-  });
+  console.log("Account:");
+  console.log(
+    {
+      subdomain: account.subdomain,
+      email: account.email,
+      urls: account.urls,
+      loginUrl: account.loginUrl,
+    },
+    "\n"
+  );
 
   // Use Puppeteer to launch headless Chrome
-  console.log("\nStarting headless Chrome...");
+  console.log("Starting headless Chrome...");
   const browser = await puppeteer.launch({ headless: true });
 
   // Login
-  console.log(`Logging in using ${account.loginUrl}...`);
+  console.log(`Logging in using ${account.loginUrl}...`, "\n");
   await login(browser, account);
 
   // Run lighthouse on all pages
   for (let url of account.urls) {
-    console.log(`\nRunning lighthouse in ${url}`);
-    
+    console.log(`Running lighthouse in ${url}`);
+
     const { lhr } = await lighthouse(
       url,
       { port: new URL(browser.wsEndpoint()).port, logLevel: "silent" },
@@ -77,6 +82,8 @@ const outputAudit = (audit, emoji) => {
     const { stats, audits } = processResults(lhr);
     results.stats[url] = stats;
     results.audits = [...results.audits, ...audits];
+
+    console.log("");
   }
 
   // Close browser
@@ -95,7 +102,9 @@ const outputAudit = (audit, emoji) => {
 
   // Output totals
   console.log(
-    `\nTotal of ${errors.length} errors and ${warnings.length} warnings\n`
+    "\n",
+    `Total of ${errors.length} errors and ${warnings.length} warnings`,
+    "\n"
   );
 
   // Exit with error if there is at least one audit with an error

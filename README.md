@@ -139,7 +139,7 @@ yarn install
 4. Then run the accessibility audits in development mode:
 
 ```console
-yarn test-a11y
+yarn test-a11y -d
 ```
 
 ## CI mode
@@ -162,7 +162,7 @@ urls="
     https://<SUBDOMAIN>.zendesk.com/hc/en-us/
     https://<SUBDOMAIN>.zendesk.com/hc/en-us/requests/new
     https://<SUBDOMAIN>.zendesk.com/hc/en-us/requests" \
-yarn test-a11y-ci
+yarn test-a11y
 ```
 
 ## Ignore list

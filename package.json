@@ -5,8 +5,7 @@
   "scripts": {
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
-    "test-a11y": "node bin/lighthouse/index.js -d",
-    "test-a11y-ci": "node bin/lighthouse/index.js"
+    "test-a11y": "node bin/lighthouse/index.js"
   },
   "dependencies": {
     "node-fetch": "2.6.7"
