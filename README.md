@@ -120,7 +120,7 @@ To run the accessibility audits locally, do the following:
 
 ```
 yarn install
-yarn a11y
+yarn test-a11y
 ```
 
 This script relies on the local preview provided by [Zendesk App Tools](https://support.zendesk.com/hc/en-us/articles/4408822095642). Please make sure you run `zat theme preview` and have a `.zat` file in the root folder before running the accessibility audits to make sure you're testing your local changes.

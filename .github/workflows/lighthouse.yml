@@ -33,7 +33,7 @@ jobs:
       - name: Install node_modules
         run: yarn install --frozen-lockfile
       - name: Audit URLs using Lighthouse
-        run: yarn a11y-ci
+        run: yarn test-a11y-ci
         env:
           end_user_email: ${{ secrets.end_user_email }}
           end_user_password: ${{ secrets.end_user_password }}
