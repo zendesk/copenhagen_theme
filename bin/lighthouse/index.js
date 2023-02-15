@@ -1,5 +1,5 @@
 require("dotenv").config();
-const lighthouse = require("lighthouse");
+const lighthouse = require("lighthouse/core/index.cjs");
 const puppeteer = require("puppeteer");
 const config = require("./config");
 const getAccount = require("./account");
@@ -69,10 +69,13 @@ const outputAudit = (
   for (let url of account.urls) {
     console.log(`Running lighthouse in ${url}`);
 
+    const page = await browser.newPage();
+    
     const { lhr } = await lighthouse(
       url,
       { port: new URL(browser.wsEndpoint()).port, logLevel: "silent" },
-      config.lighthouse
+      config.lighthouse,
+      page
     );
 
     // Output run warnings

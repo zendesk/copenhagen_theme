@@ -7,7 +7,7 @@ module.exports = {
     settings: {
       maxWaitForLoad: 10000,
       onlyCategories: ["accessibility"],
-      skipAudits: ["full-page-screenshot"],
+      disableFullPageScreenshot: true,
     },
   },
   // custom properties
@@ -17,14 +17,15 @@ module.exports = {
       tabindex: [
         {
           path: "*",
-          selector: "body.community-enabled > a.skip-navigation"
+          selector: "body.community-enabled > a.skip-navigation",
         },
       ],
       "aria-allowed-attr": [
         {
-          path: '/hc/:locale/community/posts/new',
-          selector: 'div#main-content > form.new_community_post > div.form-field > a.nesty-input'
-        }
+          path: "/hc/:locale/community/posts/new",
+          selector:
+            "div#main-content > form.new_community_post > div.form-field > a.nesty-input",
+        },
       ],
     },
   },

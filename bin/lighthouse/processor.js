@@ -16,7 +16,7 @@ function shouldIgnoreError(auditId, url, selector) {
 }
 
 function processResults(lhr) {
-  const url = lhr.finalUrl;
+  const url = lhr.mainDocumentUrl;
   const pageScore = lhr.categories.accessibility.score;
 
   const audits = Object.values(lhr.audits)
