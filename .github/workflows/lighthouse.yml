@@ -30,11 +30,14 @@ jobs:
         uses: zendesk/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - name: Install puppeteer
-        run: npm install puppeteer@2.1.1
+      - name: Install node_modules
+        run: yarn install --frozen-lockfile
       - name: Audit URLs using Lighthouse
-        uses: zendesk/lighthouse-ci-action@v3
-        with:
+        run: yarn test-a11y
+        env:
+          end_user_email: ${{ secrets.end_user_email }}
+          end_user_password: ${{ secrets.end_user_password }}
+          subdomain: ${{ secrets.subdomain }}
           urls: |
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
@@ -52,8 +55,3 @@ jobs:
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/3
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/new
-          configPath: ./.github/workflows/lighthouserc.json
-        env:
-          end_user_email: ${{ secrets.end_user_email }}
-          end_user_password: ${{ secrets.end_user_password }}
-          subdomain: ${{ secrets.subdomain }}

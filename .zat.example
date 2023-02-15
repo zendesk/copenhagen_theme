@@ -1,0 +1,23 @@
+{
+  "subdomain": "",
+  "username": "",
+  "password": "",
+  "urls": [
+    "https://***.zendesk.com/hc/en-us",
+    "https://***.zendesk.com/hc/en-us/categories/:id",
+    "https://***.zendesk.com/hc/en-us/sections/:id",
+    "https://***.zendesk.com/hc/en-us/articles/:id",
+    "https://***.zendesk.com/hc/en-us/requests/new",
+    "https://***.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Help+Center",
+    "https://***.zendesk.com/hc/en-us/community/topics",
+    "https://***.zendesk.com/hc/en-us/community/topics/:id",
+    "https://***.zendesk.com/hc/en-us/community/posts",
+    "https://***.zendesk.com/hc/en-us/community/posts/:id",
+    "https://***.zendesk.com/hc/en-us/profiles/:id",
+    "https://***.zendesk.com/hc/contributions/posts?locale=en-us",
+    "https://***.zendesk.com/hc/en-us/subscriptions",
+    "https://***.zendesk.com/hc/en-us/requests",
+    "https://***.zendesk.com/hc/en-us/requests/:id",
+    "https://***.zendesk.com/hc/en-us/community/posts/new"
+  ]
+}
