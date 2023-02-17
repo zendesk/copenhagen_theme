@@ -82,21 +82,6 @@
                   }}
                 </div>
               </div>
-              
-              {{#if settings.zendesk_chat_enabled}}
-                <div class="voting__cta">
-                  <h4>Não fique com dúvidas!</h4>
-
-                  <button
-                    class="button button--primary voting__button voting__button--msg toggle-chat mxp-click-event"
-                    title="Iniciar chat"
-                    data-event="w_all_faq_article_btn1_clk_chat"
-                    data-params="{ articleTitle: {{ article.title }} }"
-                  >
-                    {{ settings.article_voting_contact_cta }}
-                  </button>
-                </div>
-              {{/if}}
 
               <div class="voting__feedback feedback">
                 <img src="{{asset '_draw-friends.svg'}}" alt="" />
