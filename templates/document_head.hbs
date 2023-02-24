@@ -2,3 +2,77 @@
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
 <script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
+
+<script>
+window.setupGardenTheme = function(defaultTheme, css) {
+    return {
+        ...defaultTheme,
+        colors: {
+            ...defaultTheme.colors,
+            foreground: "{{settings.text_color}}",
+            primaryHue: "{{settings.brand_color}}",
+            link: "{{settings.link_color}}",
+        },
+        components: {
+            "buttons.button": (p) => {
+                if (!p.isPrimary) {
+                    return css`
+                        :hover,
+                        :visited,
+                        :active {
+                            background-color: {{settings.brand_color}};
+                            color: {{settings.brand_text_color}};
+                            text-decoration: none;
+                        }
+
+                        :focus {
+                            box-shadow: 0 0 0 3px {{settings.brand_color}};
+                        }
+                    `;
+                }
+            },
+            "buttons.anchor": css`
+                color: {{settings.link_color}};
+                text-decoration: none;
+
+                :hover,
+                :active,
+                :focus {
+                    background-color: transparent;
+                    text-decoration: underline;
+                    color: {{settings.link_color}};
+                    box-shadow: 0 0 0 0;
+                }
+
+                :visited {
+                    color: {{settings.visited_link_color}};
+                }
+            `,
+            "tabs.tab": (p) => {
+                return css`
+                    color: {{settings.text_color}};
+                    ${p.isSelected
+                        ? `border-color: {{settings.brand_color}} !important;`
+                        : ``}
+
+                    :hover {
+                        color: {{settings.text_color}};
+                        border-color: #ddd !important;
+                    }
+                `;
+            },
+            "tables.row": css`
+                :hover {
+                border-color: ${(p) => p.theme.palette.grey["300"]};
+                }
+            `,
+            "forms.faux_input": css`
+                background: ${(p) => p.theme.palette.white};
+            `,
+            "forms.media_input": css`
+                color: #666;
+            `,
+        },
+    };
+}
+</script>
