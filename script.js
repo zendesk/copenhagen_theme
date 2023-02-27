@@ -1946,6 +1946,7 @@ async function handleFirmWare(id) {
       case '4419708897687':
       case '4419708917911':
       case '4419708918935': 
+      case '4419724290839':
         key = firmwareType.original
         break
       default:
