@@ -1459,6 +1459,8 @@ async function handleSectionResource(id, locale) {
     const compatibleContainer = getEl('#compatible-container') || {};
     const fileResourceContainer = getEl('#file-resource-container') || {};
     const compatibleLabelContainer = getEl('#compatible-label-container') || {};
+    const placeholderSoftware = getEl('#placeholder-software') || {};
+    const placeholderFirmware = getEl('#placeholder-firmware') || {};
 
     const fold = locale === 'zh-cn' ? 'cn' : 'en';
     const configuration = ajax({
@@ -1466,41 +1468,64 @@ async function handleSectionResource(id, locale) {
         url: `https://s3.us-west-2.amazonaws.com/snapmaker.com/download/support-resource/products-configuration/${fold}/${id}.json`,
     });
     let res;
-    let resourceDownload = '';
-
-    try {
-        res = await configuration;
-    } catch (e) {
-        console.warn(`Unable to download resource file for section: ${id}, err =`, e);
-        res = null;
-    }
 
     // TODO: add separate configuration for luban support
     try {
-        resourceDownload += await handleLubanSoftware(locale);
+        softwarePromise = handleLubanSoftware(locale).then(v=>{
+            fileResourceContainer.replaceChild(v, placeholderSoftware);
+        })
     } catch (e) {
         console.warn(`Unable to fetch Luban software resource file for section: ${id}, err =`, e);
     }
 
-    if (res && res.compatible) {
-        let compatibleHtml = ``;
-        res.compatible.forEach(item => {
-            compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`;
-        });
-        compatibleContainer.innerHTML = compatibleHtml;
-    } else {
-        compatibleLabelContainer.style.display = 'none';
+    try {
+        firmwarePromise = handleFirmWare(id)
+    } catch (e) {
+        console.warn(`Unable to fetch firmware resource api for section: ${id}, err =`, e);
     }
 
-    if (res && res.productImgSrc) {
-        getEl('#section-product-img').src = res.productImgSrc;
+    try {
+        res  = await configuration
+        if (res && res.compatible) {
+            let compatibleHtml = ``;
+            res.compatible.forEach(item => {
+                compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`;
+            });
+            compatibleContainer.innerHTML = compatibleHtml;
+        } else {
+            compatibleLabelContainer.style.display = 'none';
+        }
+    
+        if (res && res.productImgSrc) {
+            getEl('#section-product-img').src = res.productImgSrc;
+        }
+    
+        if (res && res.resource) {
+            res.resource
+                .filter(item => item.title !== "Firmware")
+                .forEach(v => fileResourceContainer.appendChild(handleResourceDownload(v)));
+        }
+    } catch (e) {
+        console.warn(`Unable to download resource file for section: ${id}, err =`, e);
     }
 
-    if (res && res.resource) {
-        res.resource.forEach(v => resourceDownload += handleResourceDownload(v));
-        fileResourceContainer.innerHTML = resourceDownload;
+    try {
+        const firmware = await firmwarePromise 
+        let firmwareConfiguration
+        if (res && res.resource) { 
+            firmwareConfiguration = res.resource.find(item => item.title === "Firmware")
+        }
+        if(firmwareConfiguration) {
+            const elFirmware = handleDownloadFile(Object.assign(firmwareConfiguration, firmware)) 
+            fileResourceContainer.replaceChild(elFirmware, placeholderFirmware);
+        }else {
+            fileResourceContainer.removeChild(placeholderFirmware)
+        }
+    } catch (e) {
+        console.warn(`Unable to download resource file for section: ${id}, err =`, e);
     }
-
+    
+    resArr = await Promise.all([configuration, softwarePromise, firmwarePromise])
     try {
         handleScrollText(fileResourceContainer);
     } catch (e) {
@@ -1514,22 +1539,40 @@ function handleResourceDownload(resource) {
 
 function handleDownloadFile(resource) {
     const description = handleSectionResourceDescription(resource.description, resource.title);
-    return `<div class="file-resource-container mr-l mt-xl">
-      <div class="resource-title-container">
-        <div class="scroll-text-title resource-title">
-            <span class="title-3 bold font-bw-1 text-box" title="${resource.title}">${resource.title}</span>
-        </div>
-        <div class="scroll-text-time resource-time">
-            <span class="font-1 font-bw-3 text-box" title="${resource.time}">${resource.time}</span>
-        </div>
+    const el = document.createElement('div')
+    el.classList.add("file-resource-container", "mr-l", "mt-xl")
+    el.innerHTML = `
+    <div class="resource-title-container">
+      <div class="scroll-text-title resource-title">
+          <span class="title-3 bold font-bw-1 text-box" title="${resource.title}">${resource.title}</span>
       </div>
-      <a href="${resource.download_link}" download class="file-download-btn w-100 mt-m" title="${resource.text}" target="_blank">
-        <div class="scroll-text-btn"><span class="text-box">${resource.text}</span></div>
-        <span class="iconfont">&#xe721;</span>
-      </a>
-      <p class="mt-s">${description}</p>
+      <div class="scroll-text-time resource-time">
+          <span class="font-1 font-bw-3 text-box" title="${resource.time}">${resource.time}</span>
+      </div>
     </div>
-    `;
+    <a href="${resource.download_link}" download class="file-download-btn w-100 mt-m" title="${resource.text}" target="_blank">
+      <div class="scroll-text-btn"><span class="text-box">${resource.text}</span></div>
+      <span class="iconfont">&#xe721;</span>
+    </a>
+    <p class="mt-s">${description}</p>
+  `;
+    return el
+//   `<div class="file-resource-container mr-l mt-xl">
+//       <div class="resource-title-container">
+//         <div class="scroll-text-title resource-title">
+//             <span class="title-3 bold font-bw-1 text-box" title="${resource.title}">${resource.title}</span>
+//         </div>
+//         <div class="scroll-text-time resource-time">
+//             <span class="font-1 font-bw-3 text-box" title="${resource.time}">${resource.time}</span>
+//         </div>
+//       </div>
+//       <a href="${resource.download_link}" download class="file-download-btn w-100 mt-m" title="${resource.text}" target="_blank">
+//         <div class="scroll-text-btn"><span class="text-box">${resource.text}</span></div>
+//         <span class="iconfont">&#xe721;</span>
+//       </a>
+//       <p class="mt-s">${description}</p>
+//     </div>
+//     `;
 }
 
 function handleSelectDownload(resource) {
@@ -1538,8 +1581,9 @@ function handleSelectDownload(resource) {
     resource.dropdown.forEach(v => {
         dropdown += `<li><a class="py-s" href="${v.link}" title="${v.text}" target="_blank">${v.text}</a></li>`;
     });
-    return `
-    <div class="file-resource-container mr-l mt-xl">
+    const el = document.createElement('div')
+    el.classList.add("file-resource-container", "mr-l", "mt-xl")
+    el.innerHTML = `
       <div class="resource-title-container">
         <div class="scroll-text-title resource-title">
             <span class="title-3 bold font-bw-1 text-box" title="${resource.title}">${resource.title}</span>
@@ -1555,8 +1599,8 @@ function handleSelectDownload(resource) {
         </div>
         <ul class="dropdown">${dropdown}</ul>
       </div>
-      <p class="mt-s">${description}</p>
-    </div>`;
+      <p class="mt-s">${description}</p>`;
+    return el
 }
 
 function handleSectionResourceDescription(description, title) {
@@ -1574,18 +1618,6 @@ function handleSectionResourceDescription(description, title) {
             }
         ],
         'Firmware': [
-            {
-                'text': 'Read this ',
-                'link': ''
-            },
-            {
-                'text': 'article',
-                'link': 'https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402'
-            },
-            {
-                'text': ' before you upgrade the firmware to version 1.12.0.<br>',
-                'link': ''
-            },
             {
                 'text': 'Download previous versions from our ',
                 'link': ''
@@ -1638,18 +1670,6 @@ function handleSectionResourceDescription(description, title) {
             }
         ],
         '固件': [
-            {
-                'text': '升级至固件 1.12.0 前，请阅读这篇',
-                'link': ''
-            },
-            {
-                'text': '文章',
-                'link': 'https://forum.snapmaker.com/t/upgrade-the-toolheads-separately-with-snapmaker-firmware-v1-12-0/17402'
-            },
-            {
-                'text': '。<br>',
-                'link': ''
-            },
             {
                 'text': '在',
                 'link': ''
@@ -1888,6 +1908,70 @@ function handleScrollText(targetsWrapper) {
             btn.classList.remove('text-box');
         }
     });
+}
+
+
+const firmwareType = {
+    snapmaker2: Symbol('snapmaker2'),
+    j1: Symbol('j1'),
+    artisan: Symbol('artisan'),
+    original: Symbol('original')
+}
+const firmwareMap = new Map()
+firmwareMap.set(firmwareType.snapmaker2, '/v1/fabscreen/version')
+firmwareMap.set(firmwareType.j1, '/v1/j1/version')
+firmwareMap.set(firmwareType.artisan, '/v1/a400/version')
+firmwareMap.set(firmwareType.original, '/v1/original/version')
+  
+/**
+ * @description
+ * @params type feild value: firmwareType.snapmaker | firmwareType.j1 | firmwareType.artisan
+ */
+async function getFirewareResources(type) {
+    return ajax({
+        method: 'GET',
+        url: `https://api.snapmaker.com${type}`
+    });
+}
+  
+async function handleFirmWare(id) {
+    let key = ''
+    switch (id) {
+      case '10129930251671':
+        key = firmwareType.j1
+        break
+      case '10887579611799':
+        key = firmwareType.artisan
+        break
+      case '4419708897687':
+      case '4419708917911':
+      case '4419708918935': 
+        key = firmwareType.original
+        break
+      default:
+        key = firmwareType.snapmaker2
+    }
+    const firmwareData = (await getFirewareResources(firmwareMap.get(key))).data
+    if (!firmwareData) return ''
+    const versionData = firmwareData.new_version
+    const [machineType, version, date] = versionData.version.split('_')
+    const formatedDate = formatDate(date)
+    return {
+        title: 'Firmware',
+        time: formatedDate,
+        type: 'download',
+        text: 'Download Firmware ' + version,
+        download_link: versionData.url
+    }
+}
+/**
+ * @description
+ * @param date value like: 20230213, 20251104 
+ */
+function formatDate(date) {
+    const [year, month, day] = [date.substring(0, 4), date.substring(4, 6), date.substring(6, 8)]
+    const dateArr = new Date(year, month - 1, day).toDateString().split(' ').filter((_,index)=>index!==0)
+    return `${dateArr[0]} ${dateArr[1]}, ${dateArr[2]}`
 }
 
 //============================================== utils ==============================================
