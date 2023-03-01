@@ -21,6 +21,9 @@
     "js-yaml": "4.1.0",
     "lighthouse": "10.0.1",
     "puppeteer": "19.4.1",
+    "rollup": "3.17.3",
+    "rollup-plugin-sass": "1.12.18",
+    "sass": "1.58.3",
     "semantic-release": "19.0.5",
     "url-pattern": "1.0.3"
   },
