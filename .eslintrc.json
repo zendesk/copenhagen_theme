@@ -1,7 +1,8 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:import/recommended"
   ],
   "env": {
     "browser": true
