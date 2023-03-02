@@ -4,6 +4,7 @@
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
     "start": "rollup -c -w",
+    "build": "rollup -c",
     "eslint": "eslint src",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
