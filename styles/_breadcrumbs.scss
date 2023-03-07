@@ -6,10 +6,10 @@
 
   margin: 0 0 15px 0;
   padding: 0;
+  display: flex;
 
   li {
     color: $secondary-text-color;
-    display: inline;
     font-size: $font-size-small;
     max-width: 450px;
     overflow: hidden;

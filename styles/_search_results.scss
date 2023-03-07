@@ -133,51 +133,7 @@
       &:first-child {
         border-top: 1px solid $low-contrast-border-color;
       }
-
-      h2 {
-        margin-bottom: 0;
-      }
     }
-  }
-
-  .meta-group {
-    display: block;
-    @include desktop { display: flex; }
-    align-items: center;
-    clear: both;
-    color: #666;
-
-    > span {
-      display: block;
-      @include desktop { display: inline }
-    }
-
-    span:first-child {
-      @include desktop { flex: 1; }
-    }
-
-    .meta-data {
-      color: inherit;
-
-      &:not(:last-child) {
-        [dir="ltr"] & {
-          margin-right: 20px;
-        }
-
-        [dir="rtl"] & {
-          margin-left: 20px;
-        }
-      }
-
-      &::after {
-        content: none;
-      }
-    }
-  }
-
-  &-description {
-    margin-top: 10px;
-    word-break: break-word;
   }
 
   .no-results {
@@ -202,10 +158,10 @@
       letter-spacing: -0.154px;
 
       a {
-        color: #1F73B7;
+        color: $link_color;
 
         &:visited {
-          color: #1F73B7;
+          color: $link_color;
         }
       }
     }
@@ -213,29 +169,21 @@
 }
 
 .search-result {
+  &-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   &-title {
     font-size: $font-size-bigger;
-    display: inline-block;
-  }
-
-  &-icons {
-    [dir="ltr"] & {
-      float: right;
-    }
-
-    [dir="rtl"] & {
-      float: left;
-    }
+    margin-bottom: 0;
   }
 
   &-votes,
   &-meta-count {
     color: $secondary-text-color;
-    display: inline-block;
     font-size: $font-size-small;
-    padding: 4px 5px;
-    position: relative;
 
     &-icon {
       color: $brand_color;
@@ -245,31 +193,51 @@
     }
 
     [dir="ltr"] & {
-      margin-left: 5px;
-      &::before {
-        margin-right: 3px;
-      }
+      margin-left: 20px;
     }
 
     [dir="rtl"] & {
-      margin-right: 5px;
-      &::before {
-        margin-left: 3px;
+      margin-right: 20px;
+    }
+  }
+
+  &-meta-container {
+    color: #666;
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    nav {
+      @include desktop { flex: 1; }
+    }
+
+    .meta-data {
+      [dir="ltr"] & {
+        @include desktop { margin-left: 20px; }
+      }
+
+      [dir="rtl"] & {
+        @include desktop { margin-right: 20px; }
+      }
+
+      &::after {
+        content: none;
       }
     }
   }
 
-  .meta-group {
-    align-items: center;
+  &-breadcrumbs {
+    margin: 0;
   }
 
-  &-breadcrumbs {
-    @include desktop { display: table-row; }
-    margin: 0;
-
-    li {
-      @include desktop { display: table-cell; }
-    }
+  &-description {
+    margin-top: 10px;
+    margin-bottom: 0;
+    word-break: break-word;
   }
 }
 
