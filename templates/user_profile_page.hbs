@@ -196,11 +196,13 @@
                         {{/if}}
                       </header>
 
-                      <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                        {{#each path_steps}}
-                          <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                        {{/each}}
-                      </ol>
+                      <nav aria-label="Activity location">
+                        <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                          {{#each path_steps}}
+                            <li><a href="{{url}}">{{name}}</a></li>
+                          {{/each}}
+                        </ol>
+                      </nav>
 
                       <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
@@ -357,11 +359,13 @@
                       {{/if}}
                     </header>
 
-                    <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                      {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                      {{/each}}
-                    </ol>
+                    <nav aria-label="Contribution location">
+                      <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                        {{#each path_steps}}
+                          <li><a href="{{url}}">{{name}}</a></li>
+                        {{/each}}
+                      </ol>
+                    </nav>
 
                     <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
