@@ -12,57 +12,62 @@ function closeNavigation(toggle, menu) {
   toggle.focus();
 }
 
-const menuButton = document.querySelector(".header .menu-button-mobile");
-const menuList = document.querySelector("#user-nav-mobile");
+// Navigation
 
-menuButton.addEventListener("click", function (e) {
-  e.stopPropagation();
-  toggleNavigation(this, menuList);
-});
+window.addEventListener("DOMContentLoaded", () => {
+  const menuButton = document.querySelector(".header .menu-button-mobile");
+  const menuList = document.querySelector("#user-nav-mobile");
 
-menuList.addEventListener("keyup", function (e) {
-  if (e.keyCode === ESCAPE) {
-    e.stopPropagation();
-    closeNavigation(menuButton, this);
-  }
-});
-
-// Toggles expanded aria to collapsible elements
-const collapsible = document.querySelectorAll(
-  ".collapsible-nav, .collapsible-sidebar"
-);
-
-Array.prototype.forEach.call(collapsible, function (el) {
-  const toggle = el.querySelector(
-    ".collapsible-nav-toggle, .collapsible-sidebar-toggle"
-  );
-
-  el.addEventListener("click", function () {
-    toggleNavigation(toggle, this);
+  menuButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+    toggleNavigation(menuButton, menuList);
   });
 
-  el.addEventListener("keyup", function (e) {
-    if (e.keyCode === ESCAPE) {
-      closeNavigation(toggle, this);
+  menuList.addEventListener("keyup", (event) => {
+    if (event.keyCode === ESCAPE) {
+      event.stopPropagation();
+      closeNavigation(menuButton, menuList);
     }
   });
-});
 
-// If multibrand search has more than 5 help centers or categories collapse the list
-const multibrandFilterLists = document.querySelectorAll(
-  ".multibrand-filter-list"
-);
-Array.prototype.forEach.call(multibrandFilterLists, function (filter) {
-  if (filter.children.length > 6) {
-    // Display the show more button
-    const trigger = filter.querySelector(".see-all-filters");
-    trigger.setAttribute("aria-hidden", false);
+  // Toggles expanded aria to collapsible elements
+  const collapsible = document.querySelectorAll(
+    ".collapsible-nav, .collapsible-sidebar"
+  );
 
-    // Add event handler for click
-    trigger.addEventListener("click", function (e) {
-      e.stopPropagation();
-      trigger.parentNode.removeChild(trigger);
-      filter.classList.remove("multibrand-filter-list--collapsed");
+  collapsible.forEach((element) => {
+    const toggle = element.querySelector(
+      ".collapsible-nav-toggle, .collapsible-sidebar-toggle"
+    );
+
+    element.addEventListener("click", () => {
+      toggleNavigation(toggle, element);
     });
-  }
+
+    element.addEventListener("keyup", (event) => {
+      console.log("escape");
+      if (event.keyCode === ESCAPE) {
+        closeNavigation(toggle, element);
+      }
+    });
+  });
+
+  // If multibrand search has more than 5 help centers or categories collapse the list
+  const multibrandFilterLists = document.querySelectorAll(
+    ".multibrand-filter-list"
+  );
+  multibrandFilterLists.forEach((filter) => {
+    if (filter.children.length > 6) {
+      // Display the show more button
+      const trigger = filter.querySelector(".see-all-filters");
+      trigger.setAttribute("aria-hidden", false);
+
+      // Add event handler for click
+      trigger.addEventListener("click", (event) => {
+        event.stopPropagation();
+        trigger.parentNode.removeChild(trigger);
+        filter.classList.remove("multibrand-filter-list--collapsed");
+      });
+    }
+  });
 });

@@ -1,8 +1,11 @@
-// social share popups
-const links = document.querySelectorAll(".share a");
-Array.prototype.forEach.call(links, (anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    window.open(this.href, "", "height = 500, width = 500");
+// Share
+
+window.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".share a");
+  links.forEach((anchor) => {
+    anchor.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.open(anchor.href, "", "height = 500, width = 500");
+    });
   });
 });

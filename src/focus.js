@@ -9,7 +9,7 @@ export function returnFocus() {
   const returnFocusTo = sessionStorage.getItem(key);
   if (returnFocusTo) {
     sessionStorage.removeItem("returnFocusTo");
-    var returnFocusToEl = document.querySelector(returnFocusTo);
+    const returnFocusToEl = document.querySelector(returnFocusTo);
     returnFocusToEl && returnFocusToEl.focus && returnFocusToEl.focus();
   }
 }

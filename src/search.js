@@ -72,7 +72,7 @@ function appendClearSearchButton(input, form) {
 // Add a class to the search form when the input has a value;
 // Remove that class from the search form when the input doesn't have a value.
 // Do this on a delay, rather than on every keystroke.
-const toggleClearSearchButtonAvailability = debounce(function (event) {
+const toggleClearSearchButtonAvailability = debounce((event) => {
   const form = event.target.closest(searchFormSelector);
   form.classList.toggle(
     searchFormFilledClassName,
@@ -80,13 +80,17 @@ const toggleClearSearchButtonAvailability = debounce(function (event) {
   );
 }, 200);
 
-// Set up clear functionality for the search field
-const searchForms = [...document.querySelectorAll(searchFormSelector)];
-const searchInputs = searchForms.map((form) =>
-  form.querySelector("input[type='search']")
-);
-searchInputs.forEach((input) => {
-  appendClearSearchButton(input, input.closest(searchFormSelector));
-  input.addEventListener("keyup", clearSearchInputOnKeypress);
-  input.addEventListener("keyup", toggleClearSearchButtonAvailability);
+// Search
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Set up clear functionality for the search field
+  const searchForms = [...document.querySelectorAll(searchFormSelector)];
+  const searchInputs = searchForms.map((form) =>
+    form.querySelector("input[type='search']")
+  );
+  searchInputs.forEach((input) => {
+    appendClearSearchButton(input, input.closest(searchFormSelector));
+    input.addEventListener("keyup", clearSearchInputOnKeypress);
+    input.addEventListener("keyup", toggleClearSearchButtonAvailability);
+  });
 });
