@@ -2139,6 +2139,16 @@ function extractFirstImg(extractComtainer) {
 }
 
 
+function createEl(tag, attr, ...children) {
+    const el = document.createElement(tag)
+    for(let key in attr){
+        el.setAttribute(key, attr[key])
+    }
+    children.forEach(item => {
+        el.appendChild(item)
+    })
+    return el
+}
 //============================================== update Acady(category) and home page(2022.8.29~) ==============================================
 (function (window) {
     let container, drawerAnchor, drawer, drawerCover;
@@ -2167,3 +2177,64 @@ function extractFirstImg(extractComtainer) {
     window.drawerInit = drawerInit;
     window.openDrawer = openDrawer;
 })(window);
+//============================================== zendesk plan shift (2023.3.8) ==============================================
+
+(function(window) {    
+    async function getHomePageConfig() {
+        return homePageConfig
+    }
+    async function homePageRender() {
+        const res = await getHomePageConfig()
+        const el = document.createElement('div')
+        el.innerHTML = renderProductions(res.productions)
+    }
+    
+    function renderProductions(config) {
+        const container = getEl('#drawer')
+        return config.map((productionClass, index) => {
+            const categoriesEl = categoriesElMap(productionClass, index)
+            const fragment = document.createDocumentFragment()
+            const title = createEl('div', {class: "title-3 font-bw-1 bold mr-xs mb-xl mt-2xl", id: `title-${index}`}, document.createTextNode(productionClass.name))
+            const content = createEl('div', {class: 'category-sections pos-relative', id: `section-${index}`}, ...categoriesEl)
+            fragment.appendChild(title)
+            fragment.appendChild(content)
+            container.appendChild(fragment)
+            return fragment
+            // return `
+            //     <div class="title-3 font-bw-1 bold mr-xs mb-xl mt-2xl" id="title-${index}">${productionClass.name}</div>
+            //     <div class="category-sections pos-relative" id="section-${index}">${categoriesEl}</div>  
+            // `
+        })
+        // .join('')
+    
+    }
+    function categoriesElMap(productionClass, topLevelIndex) {
+        const drawerAnchor = (topLevelIndex,index) => topLevelIndex===1 && index === 0 ? createEl('div', {id: "drawer-anchor"}) : document.createTextNode('')
+        // const drawerAnchor = (topLevelIndex,index) => topLevelIndex===1 && index === 0 ? `<div id="drawer-anchor"></div>` : ''
+        const categories = productionClass.categories
+        if(!categories) return ''
+        return categories.map((category, index) => {
+            return createEl('a', {class: "product-img font-bw-8 mr-l mt-l", href: category.url},
+                createEl('div', {class: "img", href: category.url}, 
+                    createEl('img', {class: 'w-100', src: category.img, alt: category.name})
+                ),
+                createEl('div', {class: "text-center mt-xs px-l"}, 
+                    createEl('span', {class: "snmk-link-btn"}, document.createTextNode(category.name))
+                ),
+                drawerAnchor(topLevelIndex, index),
+            )
+        })
+        // return categories.map((category, index) => {
+        //     return `
+        //         <a class="product-img font-bw-8 mr-l mt-l" href="${category.url}">
+        //             <div class="img"><img class="w-100" src="${category.img}" alt="${category.name}"></div>
+        //             <div class="text-center mt-xs"><span class="snmk-link-btn">${name}</span></div>
+        //             ${drawerAnchor(topLevelIndex, index)}
+        //         </a>
+        //     `
+        // }).join('')
+    }
+
+    window.getHomePageConfig = getHomePageConfig
+    window.homePageRender = homePageRender
+})(window)

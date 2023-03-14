@@ -33,6 +33,11 @@
         }
 
     </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            homePageRender()
+        })
+    </script>
 
     <section id="main-content" class="section hero home-search-container pos-relative">
         <div class="search-text-container snmk-container" style="position: static;transform: unset;">
@@ -67,7 +72,7 @@
     </h2>
     <div class="snmk-container pos-relative" >
         <div id="drawer" class="snmk-col-10 snmk-col-l-10 snmk-col-offset-1 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-l-offset-1 product-category">
-            {{#each categories}}
+            {{!-- {{#each categories}}
                 {{#is description  'Products'}}
                 <div class="title-3 font-bw-1 bold mr-xs mb-xl mt-2xl" id="title-{{@index}}">{{name}}</div>
                     <div class="category-sections pos-relative" id="section-{{@index}}">
@@ -84,14 +89,14 @@
                     {{/each}}
                     </div>      
                 {{/is}}
-            {{/each}}
+            {{/each}} --}}
         </div>
         <div class="drawer-cover" id="drawer-cover" onclick="onOpenDrawer()">
             <div class="snmk-btn text-center">See All</div>
         </div>
     </div>
         
-    <div class="mt-3xl pt-3xl bg-white pos-relative">
+    <div class="mt-3xl pt-3xl bg-white pos-relative" id="software-container">
         <div id="software-support" class="pos-relative" style="top: -180px;"></div>
         <h2 class="section-title title-1 font-bw-1 bold mb-xl"> 
             {{#is help_center.locale 'zh-cn'}}
@@ -101,17 +106,18 @@
                 Software Support
             {{/isnt}}
         </h2>
-        {{#each categories}}
-            {{#is description  'Software'}}
-            <div class="snmk-container">
-                <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 ">
-                {{#each sections}}
-                    {{dc description}}
-                {{/each}}
-                </div>
+        <div class="snmk-container">
+            <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 ">
+                <a href="https://support.snapmaker.com/hc/en-us/categories/12963904565271" class="software-category">
+                    <div class="software-text-container my-l">
+                        <h3 class="title-2 margin-block-unset">Snapmaker Luban</h3>
+                        <p class="font-1 mt-l mb-xl">Open source slicing software, empowering you to 3D print, laser engrave and cut, and CNC carve.</p>
+                    <button class="snmk-primary-btn text-center">Learn More</button >
+                    </div>
+                    <img class="" src="https://s3-us-west-2.amazonaws.com/snapmaker.com/download/support-resource/home/pic_snapmaker Luban.png">
+                </a>
             </div>
-            {{/is}}
-        {{/each}}
+        </div>
     </div>
 
     <div class="pt-2xl bg-white pos-relative" style="padding-bottom: 11.66vw">
