@@ -92,7 +92,7 @@ We use Rollup to compile the JS and CSS files that are used in the theme - `styl
 To get started:
 
 ```console
-$ yarn install --offline
+$ yarn install
 $ yarn start
 ```
 
@@ -101,6 +101,8 @@ This will compile all the source code in `src` and `styles` and watch for change
 Notes:
 
 - We intentionally do not use babel so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
+- Both `style.css` and `script.js` are ignored as they'll be regenerated during release. Do not edit these directly.
+  - If you do want to test your changes by importing the branch in Theming Center, you'll need to manually add and commit these files, e.g. `git add -f script.js style.css`
 - You still need to run `zat` to [preview local changes](https://support.zendesk.com/hc/en-us/articles/115014810447) in your test account:
 
 ```console
