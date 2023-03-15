@@ -1,3 +1,11 @@
+## [2.21.2](https://github.com/zendesk/copenhagen_theme/compare/v2.21.1...v2.21.2) (2023-03-15)
+
+
+### Bug Fixes
+
+* **search:** update search result markup to improve a11y ([940b5cf](https://github.com/zendesk/copenhagen_theme/commit/940b5cf0a23ec5ac79960be245cdfb2bb94be67a))
+* **user-profile:** update breadcrumbs markup to improve a11y ([ae6506c](https://github.com/zendesk/copenhagen_theme/commit/ae6506ce2c3eb3ab474c17ba1f7b679af99282b0))
+
 ## [2.21.1](https://github.com/zendesk/copenhagen_theme/compare/v2.21.0...v2.21.1) (2023-02-08)
 
 
