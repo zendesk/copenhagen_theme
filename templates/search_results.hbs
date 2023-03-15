@@ -216,7 +216,11 @@
                     </div>
                   </div>
                   <div class="search-result-meta-container">
-                    <nav aria-label="Search result location">
+                    <nav 
+                      {{#is type 'article'}}aria-label="{{t 'article_location_with_title' title=title}}"{{/is}}
+                      {{#is type 'community_post'}}aria-label="{{t 'post_location_with_title' title=title}}"{{/is}}
+                      {{#is type 'external_content_record'}}aria-label="{{t 'external_content_location_with_title' title=title}}"{{/is}}
+                    >
                       <ol class="breadcrumbs search-result-breadcrumbs">
                         {{#each path_steps}}
                           <li><a href="{{url}}" target="{{target}}">{{name}}</a></li>
