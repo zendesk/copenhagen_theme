@@ -168,64 +168,68 @@
       {{#if results}}
         <ul class="search-results-list">
           {{#each results}}
-            <li class="search-result-list-item result-{{type}}">
-              <h2 class="search-result-title">
-                <a href="{{url}}" class="results-list-item-link"  {{#if is_external}} target="_blank" {{/if}}>
-                  {{title}}
-                  {{#if is_external}}
-                    <svg viewBox="0 0 12 12" height="12" id="zd-svg-icon-12-new-window-fill">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M10.5 8.5V10c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V2c0-.28.22-.5.5-.5h1.5M6 6l4-4"></path>
-                      <path fill="currentColor" d="M10.5 6.5a.47.47 0 0 1-.35-.15l-4.5-4.5a.474.474 0 0 1-.11-.54C5.62 1.12 5.8 1 6 1h4c.55 0 1 .45 1 1v4c0 .2-.12.38-.31.46-.06.03-.13.04-.19.04z"></path>
-                    </svg>
-                  {{/if}}
-                </a>
-              </h2>
-              <div class="search-result-icons">
-                {{#if vote_sum}}
-                  <span class="search-result-votes">
-                    <span class="visibility-hidden">
-                      {{t 'votes_sum' count=vote_sum}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-votes-icon">
-                        <g fill="none" stroke="currentColor">
-                          <path stroke-linejoin="round" d="M10.77 4.5a.73.73 0 01.73.73C11.43 7 11.21 11.5 10 11.5H5a.5.5 0 01-.5-.5V4.5s1-.5 1-3a1 1 0 012 0v3z"/>
-                          <rect width="2" height="7" x=".5" y="4.5" rx=".5" ry=".5"/>
-                        </g>
-                      </svg>
-                      {{vote_sum}}
-                    </span>
-                  </span>
-                {{/if}}
-                {{#if comment_count}}
-                  <span class="search-result-meta-count">
-                    <span class="visibility-hidden">
-                      {{t 'comments_count' count=comment_count}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-meta-count-icon">
-                        <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
-                      </svg>
-                      {{comment_count}}
-                    </span>
-                  </span>
-                {{/if}}
-              </div>
+            <li>
               <article>
-                <div class="meta-group">
-                  <span>
-                    <ol class="breadcrumbs search-result-breadcrumbs">
-                      {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
-                      {{/each}}
-                    </ol>
-                  </span>
-                  {{#unless is_external}}
-                    <span class="meta-data">{{author.name}}</span>
-                  {{/unless}}
-                  <span class="meta-data">{{date created_at}}</span>
-                </div>
-                <div class="search-results-description">{{text}}</div>
+                <header>
+                  <div class="search-result-title-container">
+                    <h2 class="search-result-title">
+                      <a href="{{url}}" {{#if is_external}} target="_blank" {{/if}}>
+                        {{title}}
+                        {{#if is_external}}
+                          <svg viewBox="0 0 12 12" height="12" id="zd-svg-icon-12-new-window-fill">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M10.5 8.5V10c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V2c0-.28.22-.5.5-.5h1.5M6 6l4-4"></path>
+                            <path fill="currentColor" d="M10.5 6.5a.47.47 0 0 1-.35-.15l-4.5-4.5a.474.474 0 0 1-.11-.54C5.62 1.12 5.8 1 6 1h4c.55 0 1 .45 1 1v4c0 .2-.12.38-.31.46-.06.03-.13.04-.19.04z"></path>
+                          </svg>
+                        {{/if}}
+                      </a>
+                    </h2>
+                    <div class="search-result-icons">
+                      {{#if vote_sum}}
+                        <span class="search-result-votes">
+                          <span class="visibility-hidden">
+                            {{t 'votes_sum' count=vote_sum}}
+                          </span>
+                          <span aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-votes-icon">
+                              <g fill="none" stroke="currentColor">
+                                <path stroke-linejoin="round" d="M10.77 4.5a.73.73 0 01.73.73C11.43 7 11.21 11.5 10 11.5H5a.5.5 0 01-.5-.5V4.5s1-.5 1-3a1 1 0 012 0v3z"/>
+                                <rect width="2" height="7" x=".5" y="4.5" rx=".5" ry=".5"/>
+                              </g>
+                            </svg>
+                            {{vote_sum}}
+                          </span>
+                        </span>
+                      {{/if}}
+                      {{#if comment_count}}
+                        <span class="search-result-meta-count">
+                          <span class="visibility-hidden">
+                            {{t 'comments_count' count=comment_count}}
+                          </span>
+                          <span aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-meta-count-icon">
+                              <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
+                            </svg>
+                            {{comment_count}}
+                          </span>
+                        </span>
+                      {{/if}}
+                    </div>
+                  </div>
+                  <div class="search-result-meta-container">
+                    <nav aria-label="Search result location">
+                      <ol class="breadcrumbs search-result-breadcrumbs">
+                        {{#each path_steps}}
+                          <li><a href="{{url}}" target="{{target}}">{{name}}</a></li>
+                        {{/each}}
+                      </ol>
+                    </nav>
+                    {{#unless is_external}}
+                      <span class="meta-data">{{author.name}}</span>
+                    {{/unless}}
+                    <span class="meta-data">{{date created_at}}</span>
+                  </div>
+                </header>
+                <p class="search-result-description">{{text}}</p>
               </article>
             </li>
           {{/each}}
