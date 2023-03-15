@@ -1943,10 +1943,10 @@ async function handleFirmWare(id) {
       case '12963984075031':
         key = firmwareType.artisan
         break
-      case '4419708897687':
-      case '4419708917911':
-      case '4419708918935': 
-      case '4419724290839':
+      case '12964186444055':
+      case '12964182936087':
+      case '12964132858647': 
+      case '12964134655639':
         key = firmwareType.original
         break
       default:
