@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
+    "start": "rollup -c -w",
+    "build": "rollup -c",
+    "eslint": "eslint src",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
     "test-a11y": "node bin/lighthouse/index.js"
@@ -17,10 +20,18 @@
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
     "dotenv": "16.0.3",
+    "eslint": "8.35.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-prettier": "4.2.1",
     "husky": "8.0.2",
     "js-yaml": "4.1.0",
     "lighthouse": "10.0.1",
+    "prettier": "2.8.4",
     "puppeteer": "19.4.1",
+    "rollup": "3.17.3",
+    "rollup-plugin-sass": "1.12.18",
+    "sass": "1.58.3",
     "semantic-release": "19.0.5",
     "url-pattern": "1.0.3"
   },

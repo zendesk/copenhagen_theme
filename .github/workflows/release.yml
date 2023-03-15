@@ -18,6 +18,8 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
       - name: Release
         run: yarn semantic-release
         env:

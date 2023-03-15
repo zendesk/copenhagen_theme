@@ -3,14 +3,18 @@
 The Copenhagen theme is the default Zendesk Guide theme. It is designed to be responsive and accessible.
 Learn more about customizing Zendesk Guide [here](https://support.zendesk.com/hc/en-us/sections/206670747).
 
-The Copenhagen theme for Help Center consists of a [set of templates](#templates), [styles](#styles), a Javascript file used mainly for interactions and an [assets folder](#assets).
+The Copenhagen theme for Help Center consists of:
+- [Manifest file](#manifest-file)
+- [Set of templates](#templates)
+- [Stylesheet and JavaScript files](#stylesheet-and-javascript)
+- [Assets folder](#assets).
 
 ## How to use
 This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
 You can use your favorite IDE to develop themes and preview your changes locally in a web browser using the Zendesk Apps Tools (ZAT). For details, see [Previewing theme changes locally](https://support.zendesk.com/hc/en-us/articles/115014810447).
 
 ## Customizing your theme
-Once you have forked this repository you can feel free to edit templates, CSS in `style.css` (if you would like to use SASS go to the [Using SASS section](#using-sass)), javascript and manage assets.
+Once you have forked this repository you can feel free to edit templates, CSS, JavaScript and manage assets.
 
 ### Manifest file
 The manifest allows you to define a group of settings for your theme that can then be changed via the UI in Theming Center.
@@ -40,7 +44,7 @@ If you would like to have a variable for the background image of a section, the 
 And this would look for a file inside the settings folder named: `background_image`
 
 ### Adding assets
-You can add assets to the asset folder and use them in your CSS, Javascript and templates.
+You can add assets to the asset folder and use them in your CSS, JavaScript and templates.
 You can read more about assets [here](https://support.zendesk.com/hc/en-us/articles/115012399428)
 
 ## Publishing your theme
@@ -81,32 +85,32 @@ You can add up to 10 optional templates for:
 You do this by creating files under the folders `templates/article_pages`, `templates/category_pages` or `templates/section_pages`.
 Learn more [here](https://support.zendesk.com/hc/en-us/articles/360001948367).
 
-## Styles
-The styles that Theming Center needs to use in the theme are in the `style.css` file in the root folder.
+## Stylesheet and JavaScript
 
-The styles for the theme are split using Sass partials, all the partials are under [styles/](/blob/master/styles/), they are all included in the "main" file [index.scss](/blob/master/styles/index.scss) and then compiled to CSS.
-If you wish to use SASS you can go to the [using SASS section](#using-sass)
+We use Rollup to compile the JS and CSS files that are used in the theme - `style.css` and `script.js`. Do not edit these directly as they'll be regenerated during release.
+
+To get started:
+
+```console
+$ yarn install
+$ yarn start
+```
+
+This will compile all the source code in `src` and `styles` and watch for changes.
+
+Notes:
+
+- We intentionally do not use babel so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
+- Both `style.css` and `script.js` are ignored as they'll be regenerated during release. Do not edit these directly.
+  - If you do want to test your changes by importing the branch in Theming Center, you'll need to manually add and commit these files, e.g. `git add -f script.js style.css`
+- You still need to run `zat` to [preview local changes](https://support.zendesk.com/hc/en-us/articles/115014810447) in your test account:
+
+```console
+zat theme preview
+```
 
 ## Assets
 The Copenhagen theme doesn't have any assets, but you can add assets to your theme by placing them in the `assets` folder.
-
-# Using SASS
-In order to use SASS for development, you just need to compile it into the CSS that Zendesk Guide understands.
-Note: Zendesk App Tools [theme preview](#publishing-your-theme) currently does not support live SASS compilation.
-
-## Requirements
-
-- Install Ruby, we use `sassc` gem to compile our `.scss` files. You can see how to install Ruby [here](https://www.ruby-lang.org/en/documentation/installation/).
-- Install `sassc` gem. You can run:
-```console
-  gem install sassc:1.12.1
-```
-
-Now you can compile your SASS files running:
-```console
-./bin/compile.rb
-```
-Which will take all the `scss` files inside the `styles/` folder and create the `style.css` file that is consumable by Zendesk Guide.
 
 # Accessibility testing
 
