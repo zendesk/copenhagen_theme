@@ -1937,10 +1937,10 @@ async function getFirewareResources(type) {
 async function handleFirmWare(id) {
     let key = ''
     switch (id) {
-      case '10129930251671':
+      case '12963989552151':
         key = firmwareType.j1
         break
-      case '10887579611799':
+      case '12963984075031':
         key = firmwareType.artisan
         break
       case '4419708897687':
