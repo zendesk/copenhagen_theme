@@ -11,14 +11,27 @@
     "test-a11y": "node bin/lighthouse/index.js"
   },
   "dependencies": {
-    "node-fetch": "2.6.7"
+    "@zendeskgarden/react-buttons": "^8.63.2",
+    "@zendeskgarden/react-dropdowns": "^8.63.2",
+    "@zendeskgarden/react-theming": "^8.63.2",
+    "@zendeskgarden/svg-icons": "^6.33.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-react": "^7.18.6",
     "@commitlint/cli": "17.3.0",
     "@commitlint/config-conventional": "17.3.0",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-replace": "^5.0.2",
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
+    "@svgr/rollup": "^6.5.1",
     "dotenv": "16.0.3",
     "eslint": "8.35.0",
     "eslint-config-prettier": "8.6.0",
@@ -27,6 +40,7 @@
     "husky": "8.0.2",
     "js-yaml": "4.1.0",
     "lighthouse": "10.0.1",
+    "node-fetch": "2.6.7",
     "prettier": "2.8.4",
     "puppeteer": "19.4.1",
     "rollup": "3.17.3",

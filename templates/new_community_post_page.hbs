@@ -17,6 +17,23 @@
 
   <div id="main-content" class="form">
     {{#form 'post' class='new_community_post'}}
+
+      <div class="form-field">
+        {{#required 'topic'}}
+          {{label 'topic'}}
+        {{else}}
+          {{#label 'topic'}}
+            {{t 'topic_label'}}<span class="optional">({{t 'optional'}})</span>
+          {{/label}}
+        {{/required}}
+        {{select 'topic' aria-describedby="topic-error-notification"}}
+        {{#validate 'topic'}}
+          <div id="topic-error-notification" class="notification notification-error notification-inline">
+            {{error 'topic'}}
+          </div>
+        {{/validate}}
+      </div>
+
       <div class="form-field">
         {{#required 'title'}}
           {{label 'title'}}
@@ -47,22 +64,6 @@
         {{#validate 'details'}}
           <div id="details-error-notification" class="notification notification-error notification-inline">
             {{error 'details'}}
-          </div>
-        {{/validate}}
-      </div>
-
-      <div class="form-field">
-        {{#required 'topic'}}
-          {{label 'topic'}}
-        {{else}}
-          {{#label 'topic'}}
-            {{t 'topic_label'}}<span class="optional">({{t 'optional'}})</span>
-          {{/label}}
-        {{/required}}
-        {{select 'topic' aria-describedby="topic-error-notification"}}
-        {{#validate 'topic'}}
-          <div id="topic-error-notification" class="notification notification-error notification-inline">
-            {{error 'topic'}}
           </div>
         {{/validate}}
       </div>
