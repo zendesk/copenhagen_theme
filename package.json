@@ -11,7 +11,7 @@
     "test-a11y": "node bin/lighthouse/index.js"
   },
   "dependencies": {
-    "node-fetch": "2.6.7"
+    "node-fetch": "2.6.9"
   },
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
