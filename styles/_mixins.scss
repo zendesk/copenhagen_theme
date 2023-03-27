@@ -64,12 +64,59 @@
   }
 }
 
+@mixin image-alignment {
+  &.image-style-align-left {
+    float: left;
+    margin: 8px 20px 6px 0;
+  }
+
+  &.image-style-align-right {
+    float: right;
+    margin: 8px 0px 6px 20px;
+  }
+
+  &.image-style-block-align-right {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  &.image-style-block-align-left {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
 @mixin content-body {
   @include standalone-link;
 
   img {
     height: auto;
     max-width: 100%;
+  }
+
+  p > img {
+    @include image-alignment;
+  }
+
+  figure.image {
+    display: table;
+
+    margin: 0 auto;
+
+    > img {
+      display: block;
+      width: 100%;
+    }
+
+    @include image-alignment;
+  }
+
+
+  figcaption {
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+    background-color: $secondary-shade;
   }
 
   ul,
