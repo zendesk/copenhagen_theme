@@ -596,9 +596,16 @@ $product-img-mr: 24px;
     height: auto;
   }
 
-  
+  .home-need-help-buttons { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   .home-need-help-buttons .snmk-btn {
     margin-top: 8px;
+    margin-bottom: 20px;
+    width: 280px;
   }
   @include mobile {
     .home-need-help-buttons{

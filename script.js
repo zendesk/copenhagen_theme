@@ -1461,6 +1461,7 @@ async function handleSectionResource(id, locale) {
     const compatibleLabelContainer = getEl('#compatible-label-container') || {};
     const placeholderSoftware = getEl('#placeholder-software') || {};
     const placeholderFirmware = getEl('#placeholder-firmware') || {};
+    const placeholderCuraPlugins = getEl('#placeholder-cura-plugins') || {};
 
     const fold = locale === 'zh-cn' ? 'cn' : 'en';
     const configuration = ajax({
@@ -1473,6 +1474,9 @@ async function handleSectionResource(id, locale) {
     try {
         softwarePromise = handleLubanSoftware(locale).then(v=>{
             fileResourceContainer.replaceChild(v, placeholderSoftware);
+        }).catch(err=> {
+            fileResourceContainer.removeChild(placeholderSoftware)
+            console.warn(`Unable to replace Luban resource hmtl node for section: ${id}, err =`, err);
         })
     } catch (e) {
         console.warn(`Unable to fetch Luban software resource file for section: ${id}, err =`, e);
@@ -1482,6 +1486,18 @@ async function handleSectionResource(id, locale) {
         firmwarePromise = handleFirmWare(id)
     } catch (e) {
         console.warn(`Unable to fetch firmware resource api for section: ${id}, err =`, e);
+    }
+
+    try {
+        curaPluginPromise = handleCuraPlugin(id, locale).then(v=>{
+            fileResourceContainer.replaceChild(v, placeholderCuraPlugins);
+        }).catch(err=>{
+            fileResourceContainer.removeChild(placeholderCuraPlugins)
+            // placeholderCuraPlugins.style.display = 'none'
+            console.warn(`Unable to replace CuraPlugin resource hmtl node for section: ${id}, err =`, err);
+        }) 
+    }catch(e) {
+        console.warn(`Unable to fetch CuraPlugin resource api for section: ${id}, err =`, e);
     }
 
     try {
@@ -1525,7 +1541,7 @@ async function handleSectionResource(id, locale) {
         console.warn(`Unable to download resource file for section: ${id}, err =`, e);
     }
     
-    resArr = await Promise.all([configuration, softwarePromise, firmwarePromise])
+    resArr = await Promise.all([configuration, softwarePromise, firmwarePromise, curaPluginPromise])
     try {
         handleScrollText(fileResourceContainer);
     } catch (e) {
@@ -1872,6 +1888,7 @@ function handleScrollText(targetsWrapper) {
     const btnWrapperWidth = getWidth(btnWrapper);
 
     const animationStyle = document.createElement('style');
+  console.log(titleWrapperWidth)
     animationStyle.innerHTML = `
         @keyframes scroll-word-title {
             0% { transform: translateX(0); }
@@ -2238,3 +2255,48 @@ function createEl(tag, attr, ...children) {
     window.getHomePageConfig = getHomePageConfig
     window.homePageRender = homePageRender
 })(window)
+
+
+async function handleCuraPlugin(id, locale) {
+    const activeID = ['12963984075031', '12964066840087', '12963989552151']
+    if (!activeID.includes(id)) return
+    let templateData
+    if (locale === 'zh-cn') {
+      templateData = {
+        'title': '插件',
+        'time': '2023年 1 月 12 日',
+        'type': 'download',
+        'text': '下载 Snapmaker Cura Plugin '
+      }
+    } else {
+      templateData = {
+        'title': 'Plugin',
+        'time': 'Jan 12, 2023',
+        'type': 'download',
+        'text': 'Download Snapmaker Cura Plugin ',
+        'description': [
+            {
+                'text': 'Installation Guide ',
+                'link': 'https://wiki.snapmaker.com/en/Snapmaker_Luban/cura_plugin'
+            }
+        ]
+      }
+    }
+  
+    const dateFormat = function (strDate) {
+      if (typeof strDate !== 'string') return
+      const date = new Date(strDate).toDateString().split(' ').filter((_,index)=>index!==0)
+      return `${date[0]} ${date[1]}, ${date[2]}`
+    }
+  
+    const curaPlugins = await ajax({
+        method: 'GET',
+        url: 'https://api.snapmaker.com/cura-plugins'
+    });
+    templateData.time = dateFormat(curaPlugins.published_at)
+    if (!curaPlugins.assets || !curaPlugins.assets[0]) {
+      curaPlugins.type = '' // remove button
+    }
+    templateData.download_link = curaPlugins.assets[0].browser_download_url
+    return handleDownloadFile(templateData)
+  }

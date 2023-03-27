@@ -11135,7 +11135,8 @@ html[dir="rtl"] .notification-left-aligned {
 
 /***** Header *****/
 .snmk-container {
-  font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Droid Sans","Helvetica Neue","Helvetica","Arial","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Roboto",
+ "Segoe UI", "Droid Sans","Helvetica Neue","Helvetica","Arial","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei","Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -13270,4 +13271,18 @@ html[dir="rtl"] .notification-left-aligned {
     font-size: 12px;
     line-height: 20px;
   }
+}
+
+.home-need-help-buttons .snmk-btn {
+  margin-top: 8px;
+}
+.home-need-help-buttons { 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.home-need-help-buttons .snmk-primary-btn {
+  margin-bottom: 20px;
+  width: 280px;
 }
