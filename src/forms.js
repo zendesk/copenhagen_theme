@@ -105,7 +105,6 @@ window.addEventListener("DOMContentLoaded", () => {
           requestMarkAsSolvedButton.innerText =
             requestMarkAsSolvedButton.getAttribute("data-solve-translation");
         }
-        requestCommentSubmitButton.disabled = true;
       } else {
         if (requestMarkAsSolvedButton) {
           requestMarkAsSolvedButton.innerText =
@@ -113,14 +112,8 @@ window.addEventListener("DOMContentLoaded", () => {
               "data-solve-and-submit-translation"
             );
         }
-        requestCommentSubmitButton.disabled = false;
       }
     });
-  }
-
-  // Disable submit button if textarea is empty
-  if (requestCommentTextarea && isEmpty(requestCommentTextarea.value)) {
-    requestCommentSubmitButton.disabled = true;
   }
 
   const selects = document.querySelectorAll(
