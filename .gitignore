@@ -4,3 +4,4 @@ node_modules/
 .zat
 script.js
 style.css
+*.DS_Store

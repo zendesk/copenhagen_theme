@@ -19,13 +19,13 @@ for (const file of filenames) {
   if (file === ".gitkeep") continue;
   const extname = path.extname(file);
   const basename = path.basename(file, extname).toLowerCase();
-  if (basename.match(/[^a-z0-9-_+]/)) {
+  if (basename.match(/[^a-z0-9-_+.]/)) {
     throw new Error(
-      `The asset "${file}" has illegal characters in its name. Filenames should only have alpha-numerical characters, _, -, and +`
+      `The asset "${file}" has illegal characters in its name. Filenames should only have alpha-numerical characters, ., _, -, and +`
     );
   } else {
     variables.push(
-      `assets-${basename.replace(/\+/g, "-")}-${extname.split(".").pop()}`
+      `assets-${basename.replace(/\+|\./g, "-")}-${extname.split(".").pop()}`
     );
   }
 }
