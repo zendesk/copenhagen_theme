@@ -120,6 +120,9 @@ There are two ways of running the script:
 - **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `zat theme preview` to be running;
 - **CI mode** - it runs the accessibility audits on the live theme of a specific account.
 
+Depending on the scope of testing, some manual testing might be needed in addition to the above.
+Tools like [axe DevTools](https://www.deque.com/axe/devtools/), screen readers e.g. [VoiceOver](https://www.apple.com/voiceover/info/guide/_1121.html), [contrast checkers](https://webaim.org/resources/contrastchecker/) etc. can assist such testing.
+
 ## Development mode
 
 To run the accessibility audits while changing the theme, one must first preview the changes on a specific account and then run the audits on that preview. To do so:
