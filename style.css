@@ -1673,6 +1673,52 @@ ul {
   height: auto;
   max-width: 100%;
 }
+.article-body p > img.image-style-align-left {
+  float: left;
+  margin: 8px 20px 6px 0;
+}
+.article-body p > img.image-style-align-right {
+  float: right;
+  margin: 8px 0px 6px 20px;
+}
+.article-body p > img.image-style-block-align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.article-body p > img.image-style-block-align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+.article-body figure.image {
+  display: table;
+  margin: 0 auto;
+}
+.article-body figure.image > img {
+  display: block;
+  width: 100%;
+}
+.article-body figure.image.image-style-align-left {
+  float: left;
+  margin: 8px 20px 6px 0;
+}
+.article-body figure.image.image-style-align-right {
+  float: right;
+  margin: 8px 0px 6px 20px;
+}
+.article-body figure.image.image-style-block-align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.article-body figure.image.image-style-block-align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+.article-body figcaption {
+  padding: 10px 0;
+  font-size: 12px;
+  text-align: center;
+  background-color: darken($background_color, 5%);
+}
 .article-body ul,
 .article-body ol {
   padding-left: 20px;
@@ -2086,6 +2132,52 @@ ul {
 .comment-body img {
   height: auto;
   max-width: 100%;
+}
+.comment-body p > img.image-style-align-left {
+  float: left;
+  margin: 8px 20px 6px 0;
+}
+.comment-body p > img.image-style-align-right {
+  float: right;
+  margin: 8px 0px 6px 20px;
+}
+.comment-body p > img.image-style-block-align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.comment-body p > img.image-style-block-align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+.comment-body figure.image {
+  display: table;
+  margin: 0 auto;
+}
+.comment-body figure.image > img {
+  display: block;
+  width: 100%;
+}
+.comment-body figure.image.image-style-align-left {
+  float: left;
+  margin: 8px 20px 6px 0;
+}
+.comment-body figure.image.image-style-align-right {
+  float: right;
+  margin: 8px 0px 6px 20px;
+}
+.comment-body figure.image.image-style-block-align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.comment-body figure.image.image-style-block-align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+.comment-body figcaption {
+  padding: 10px 0;
+  font-size: 12px;
+  text-align: center;
+  background-color: darken($background_color, 5%);
 }
 .comment-body ul,
 .comment-body ol {
@@ -2604,6 +2696,52 @@ ul {
 .post-body img {
   height: auto;
   max-width: 100%;
+}
+.post-body p > img.image-style-align-left {
+  float: left;
+  margin: 8px 20px 6px 0;
+}
+.post-body p > img.image-style-align-right {
+  float: right;
+  margin: 8px 0px 6px 20px;
+}
+.post-body p > img.image-style-block-align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.post-body p > img.image-style-block-align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+.post-body figure.image {
+  display: table;
+  margin: 0 auto;
+}
+.post-body figure.image > img {
+  display: block;
+  width: 100%;
+}
+.post-body figure.image.image-style-align-left {
+  float: left;
+  margin: 8px 20px 6px 0;
+}
+.post-body figure.image.image-style-align-right {
+  float: right;
+  margin: 8px 0px 6px 20px;
+}
+.post-body figure.image.image-style-block-align-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+.post-body figure.image.image-style-block-align-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+.post-body figcaption {
+  padding: 10px 0;
+  font-size: 12px;
+  text-align: center;
+  background-color: darken($background_color, 5%);
 }
 .post-body ul,
 .post-body ol {
