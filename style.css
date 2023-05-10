@@ -1662,6 +1662,9 @@ ul {
   display: inline-block;
   vertical-align: middle;
 }
+.article-body {
+  display: flow-root;
+}
 .article-body a {
   color: $link_color;
   text-decoration: underline;
@@ -2118,6 +2121,7 @@ ul {
   -webkit-hyphens: auto;
   word-break: break-word;
   word-wrap: break-word;
+  display: flow-root;
   font-family: $text_font;
   line-height: 1.6;
   overflow-x: auto;
@@ -2685,6 +2689,9 @@ ul {
 [dir=rtl] .post-meta {
   margin-left: 0;
   margin-right: 10px;
+}
+.post-body {
+  display: flow-root;
 }
 .post-body a {
   color: $link_color;
