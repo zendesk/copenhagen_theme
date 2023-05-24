@@ -1,3 +1,10 @@
+## [2.21.5](https://github.com/zendesk/copenhagen_theme/compare/v2.21.4...v2.21.5) (2023-05-24)
+
+
+### Bug Fixes
+
+* **content-body:** fix overflow of floating elements ([3200329](https://github.com/zendesk/copenhagen_theme/commit/3200329172aa7735a2cabdab220de4af13c95831))
+
 ## [2.21.4](https://github.com/zendesk/copenhagen_theme/compare/v2.21.3...v2.21.4) (2023-05-16)
 
 
