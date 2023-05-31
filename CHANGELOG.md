@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/zendesk/copenhagen_theme/compare/v2.21.5...v3.0.0) (2023-05-31)
+
+
+### Features
+
+* update theme to use Templating API v3 ([bba6d15](https://github.com/zendesk/copenhagen_theme/commit/bba6d15124cdddbc371525114439bf159f6240a8))
+
+
+### BREAKING CHANGES
+
+* theme is now relying on functionality that is exclusive to the Templating API v3
+
 ## [2.21.5](https://github.com/zendesk/copenhagen_theme/compare/v2.21.4...v2.21.5) (2023-05-24)
 
 
