@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/zendesk/copenhagen_theme/compare/v3.0.0...v3.0.1) (2023-05-31)
+
+
+### Bug Fixes
+
+* remove role attribute from vote helper ([c7ba508](https://github.com/zendesk/copenhagen_theme/commit/c7ba508970ebdac5a0f23864c73a6c60dcb87143))
+
 # [3.0.0](https://github.com/zendesk/copenhagen_theme/compare/v2.21.5...v3.0.0) (2023-05-31)
 
 
