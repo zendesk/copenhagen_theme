@@ -19,6 +19,8 @@
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
+    "@zendesk/zcli": "1.0.0-beta.33",
+    "concurrently": "8.0.1",
     "dotenv": "16.0.3",
     "eslint": "8.35.0",
     "eslint-config-prettier": "8.6.0",
@@ -33,7 +35,8 @@
     "rollup-plugin-sass": "1.12.18",
     "sass": "1.58.3",
     "semantic-release": "19.0.5",
-    "url-pattern": "1.0.3"
+    "url-pattern": "1.0.3",
+    "wait-on": "7.0.1"
   },
   "commitlint": {
     "extends": [
