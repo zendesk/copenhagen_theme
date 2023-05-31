@@ -7,4 +7,7 @@ export default {
     format: "iife",
   },
   plugins: [zass()],
+  watch: {
+    clearScreen: false,
+  },
 };

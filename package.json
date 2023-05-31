@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
     "build": "rollup -c",
     "eslint": "eslint src",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
-    "test-a11y": "node bin/lighthouse/index.js"
+    "test-a11y": "node bin/lighthouse/index.js",
+    "zcli": "zcli"
   },
   "dependencies": {
     "node-fetch": "2.6.9"
