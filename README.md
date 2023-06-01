@@ -11,7 +11,7 @@ The Copenhagen theme for Help Center consists of:
 
 ## How to use
 This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
-You can use your favorite IDE to develop themes and preview your changes locally in a web browser using the Zendesk Apps Tools (ZAT). For details, see [Previewing theme changes locally](https://support.zendesk.com/hc/en-us/articles/115014810447).
+You can use your favorite IDE to develop themes and preview your changes locally in a web browser using [ZCLI](https://github.com/zendesk/zcli/). For details, read the [zcli themes](https://github.com/zendesk/zcli/blob/master/docs/themes.md) documentation.
 
 ## Customizing your theme
 Once you have forked this repository you can feel free to edit templates, CSS, JavaScript and manage assets.
@@ -21,7 +21,7 @@ The manifest allows you to define a group of settings for your theme that can th
 You can read more about the manifest file [here](https://support.zendesk.com/hc/en-us/articles/115012547687).
 
 ### Settings folder
-If you have a variable of type file, you need to provide a default file for that variable in the `/settings` folder. This file will be used on the settings panel by default and users can upload a different file if they like.
+If you have a variable of type `file`, you need to provide a default file for that variable in the `/settings` folder. This file will be used on the settings panel by default and users can upload a different file if they like.
 Ex.
 If you would like to have a variable for the background image of a section, the variable in your manifest file would look something like this:
 
@@ -52,7 +52,7 @@ After you have customized your theme you can download the repository as a `zip` 
 
 You can follow the documentation for importing [here](https://support.zendesk.com/hc/en-us/articles/115012794168).
 
-You can also import directly from GitHub - learn more [here](https://support.zendesk.com/hc/en-us/community/posts/360004400007).
+You can also import directly from GitHub - learn more [here](https://support.zendesk.com/hc/en-us/articles/4408832476698-Setting-up-the-GitHub-integration-with-your-Guide-theme).
 
 ## Templates
 The theme includes all the templates that are used for a Help Center that has *all* the features available.
@@ -96,18 +96,14 @@ $ yarn install
 $ yarn start
 ```
 
-This will compile all the source code in `src` and `styles` and watch for changes.
+This will compile all the source code in `src` and `styles` and watch for changes. It will also start `preview`.
 
 Notes:
 
 - We intentionally do not use babel so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
 - Both `style.css` and `script.js` are ignored as they'll be regenerated during release. Do not edit these directly.
   - If you do want to test your changes by importing the branch in Theming Center, you'll need to manually add and commit these files, e.g. `git add -f script.js style.css`
-- You still need to run `zat` to [preview local changes](https://support.zendesk.com/hc/en-us/articles/115014810447) in your test account:
-
-```console
-zat theme preview
-```
+- Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
 
 ## Assets
 The Copenhagen theme doesn't have any assets, but you can add assets to your theme by placing them in the `assets` folder.

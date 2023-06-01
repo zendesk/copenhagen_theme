@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
-    "start": "rollup -c -w",
+    "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
     "build": "rollup -c",
     "eslint": "eslint src",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
-    "test-a11y": "node bin/lighthouse/index.js"
+    "test-a11y": "node bin/lighthouse/index.js",
+    "zcli": "zcli"
   },
   "dependencies": {
     "node-fetch": "2.6.9"
@@ -19,6 +20,8 @@
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
+    "@zendesk/zcli": "1.0.0-beta.33",
+    "concurrently": "8.0.1",
     "dotenv": "16.0.3",
     "eslint": "8.35.0",
     "eslint-config-prettier": "8.6.0",
@@ -33,7 +36,8 @@
     "rollup-plugin-sass": "1.12.18",
     "sass": "1.58.3",
     "semantic-release": "19.0.5",
-    "url-pattern": "1.0.3"
+    "url-pattern": "1.0.3",
+    "wait-on": "7.0.1"
   },
   "commitlint": {
     "extends": [
