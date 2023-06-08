@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/zendesk/copenhagen_theme/compare/v3.0.1...v3.0.2) (2023-06-08)
+
+
+### Bug Fixes
+
+* update breadcrumbs aria-label to use translated strings ([c75f24d](https://github.com/zendesk/copenhagen_theme/commit/c75f24df71ca1970e801df49c0e848c0e5b97adb))
+
 ## [3.0.1](https://github.com/zendesk/copenhagen_theme/compare/v3.0.0...v3.0.1) (2023-05-31)
 
 
