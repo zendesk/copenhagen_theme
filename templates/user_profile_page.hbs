@@ -195,8 +195,11 @@
                           <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                         {{/if}}
                       </header>
-
-                      <nav aria-label="Activity location">
+                      <nav
+                        {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                        {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                        {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
+                      >
                         <ol class="breadcrumbs profile-contribution-breadcrumbs">
                           {{#each path_steps}}
                             <li><a href="{{url}}">{{name}}</a></li>
@@ -358,8 +361,11 @@
                         <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                       {{/if}}
                     </header>
-
-                    <nav aria-label="Contribution location">
+                    <nav
+                      {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                      {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                      {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
+                    >
                       <ol class="breadcrumbs profile-contribution-breadcrumbs">
                         {{#each path_steps}}
                           <li><a href="{{url}}">{{name}}</a></li>
