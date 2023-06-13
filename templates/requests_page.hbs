@@ -23,7 +23,9 @@
 <div class="container">
   <header class="my-activities-header">
     <h1>{{t 'my_requests'}}</h1>
-
+      <div class="container">
+          {{request_list}}
+      </div>
     <div class="my-activities-sub-nav">
       <nav class="collapsible-nav collapsible-nav-border">
         <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
@@ -103,9 +105,11 @@
             <th>
               {{t 'status'}}
             </th>
+            <th>
+              tags
+            </th>
           </tr>
         </thead>
-
         <tbody>
           {{#each requests}}
             <tr {{#is status 'closed'}} class="request-closed" {{/is}}>
