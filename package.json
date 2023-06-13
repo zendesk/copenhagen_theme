@@ -2,27 +2,46 @@
   "name": "copenhagen_theme",
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
+  "scripts": {
+    "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
+    "build": "rollup -c",
+    "eslint": "eslint src",
+    "prepare": "husky install",
+    "download-locales": "node ./bin/update-translations",
+    "test-a11y": "node bin/lighthouse/index.js",
+    "zcli": "zcli"
+  },
   "dependencies": {
-    "node-fetch": "^2.1.2"
+    "node-fetch": "2.6.9"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@semantic-release/changelog": "^5.0.0",
-    "@semantic-release/exec": "^5.0.0",
-    "@semantic-release/git": "^9.0.0",
-    "husky": "^4.2.3",
-    "js-yaml": "^3.13.1",
-    "semantic-release": "^17.0.4"
+    "@commitlint/cli": "17.3.0",
+    "@commitlint/config-conventional": "17.3.0",
+    "@semantic-release/changelog": "6.0.2",
+    "@semantic-release/exec": "6.0.3",
+    "@semantic-release/git": "10.0.1",
+    "@zendesk/zcli": "1.0.0-beta.33",
+    "concurrently": "8.0.1",
+    "dotenv": "16.0.3",
+    "eslint": "8.35.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-prettier": "4.2.1",
+    "husky": "8.0.2",
+    "js-yaml": "4.1.0",
+    "lighthouse": "10.0.1",
+    "prettier": "2.8.4",
+    "puppeteer": "19.4.1",
+    "rollup": "3.17.3",
+    "rollup-plugin-sass": "1.12.18",
+    "sass": "1.58.3",
+    "semantic-release": "19.0.5",
+    "url-pattern": "1.0.3",
+    "wait-on": "7.0.1"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }

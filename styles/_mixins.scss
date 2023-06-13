@@ -47,13 +47,82 @@
   box-shadow: 0 0 0 3px $brand_color;
 }
 
+@mixin standalone-link {
+  a {
+    color: $link_color;
+    text-decoration: underline;
+
+    &:visited {
+      color: $visited_link_color;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $hover_link_color;
+    }
+  }
+}
+
+@mixin image-alignment {
+  &.image-style-align-left {
+    float: left;
+    margin: 8px 20px 6px 0;
+  }
+
+  &.image-style-align-right {
+    float: right;
+    margin: 8px 0px 6px 20px;
+  }
+
+  &.image-style-block-align-right {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  &.image-style-block-align-left {
+    margin-left: 0;
+    margin-right: auto;
+  }
+}
+
 @mixin content-body {
+  @include standalone-link;
+
+  display: flow-root;
+
   img {
     height: auto;
     max-width: 100%;
   }
 
-  ul, ol {
+  p > img {
+    @include image-alignment;
+  }
+
+  figure.image {
+    display: table;
+
+    margin: 0 auto;
+
+    > img {
+      display: block;
+      width: 100%;
+    }
+
+    @include image-alignment;
+  }
+
+
+  figcaption {
+    padding: 10px 0;
+    font-size: 12px;
+    text-align: center;
+    background-color: $secondary-shade;
+  }
+
+  ul,
+  ol {
     padding-left: 20px;
     list-style-position: outside;
     margin: 20px 0 20px 20px;
@@ -67,7 +136,12 @@
   }
 
   // Sub level list
-  ul > ul, ol > ol, ol > ul, ul > ol, li > ul, li > ol {
+  ul > ul,
+  ol > ol,
+  ol > ul,
+  ul > ol,
+  li > ul,
+  li > ol {
     margin: 0;
   }
 
@@ -75,11 +149,9 @@
     list-style-type: disc;
   }
 
-  a:visited { color: $visited_link_color; }
-
-  code {
+  :not(pre) > code {
     background: $primary-shade;
-    border: 1px solid $border-color;
+    border: 1px solid $low-contrast-border-color;
     border-radius: 3px;
     padding: 0 5px;
     margin: 0 2px;
@@ -87,7 +159,7 @@
 
   pre {
     background: $primary-shade;
-    border: 1px solid $border-color;
+    border: 1px solid $low-contrast-border-color;
     border-radius: 3px;
     padding: 10px 15px;
     overflow: auto;
@@ -95,7 +167,7 @@
   }
 
   blockquote {
-    border-left: 1px solid $border-color;
+    border-left: 1px solid $low-contrast-border-color;
     color: $secondary-text-color;
     font-style: italic;
     padding: 0 15px;

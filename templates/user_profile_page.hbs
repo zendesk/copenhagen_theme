@@ -3,7 +3,7 @@
     <div class="profile-info">
       <div class="avatar profile-avatar">
         {{#if user.agent}}
-           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-agent">
+           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="icon-agent" aria-label="{{t 'team_member' name=user.name}}">
             <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
           </svg>
         {{/if}}
@@ -19,37 +19,29 @@
             {{/if}}
           </h1>
 
-          <div hidden="true" aria-label="{{t 'badges'}}"></div>
-          {{#each (filter user.badges on="category_slug" equals="titles")}}
-            <span class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
-              {{name}}
-            </span>
-          {{/each}}
+          <ul aria-label="{{t 'badges'}}" class="community-badge-titles">
+            {{#each (filter user.badges on="category_slug" equals="titles")}}
+              <li class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+                {{name}}
+              </li>
+            {{/each}}
+          </ul>
         </div>
-        <div aria-label="{{t 'badges'}}" class="community-badge-container-achievements">
-          {{#each (
-            slice
-              (
-                filter
-                  (filter user.badges on="category_slug" equals="achievements")
-                  on="icon_url"
-                  starts_with="https"
-              )
-              0
-              4
-            )
-          }}
-            <div class="community-badge community-badge-achievements">
+        <ul aria-label="{{t 'badges'}}" class="community-badge-achievements">
+          {{#each (slice (filter user.badges on="category_slug" equals="achievements") 0 4)}}
+            <li class="community-badge community-badge-achievement">
               <img src="{{icon_url}}" alt="{{name}}" title="{{name}} | {{description}}" />
-            </div>
+            </li>
           {{/each}}
 
           {{#if (compare (calc user.badges.length "-" 4) ">" 0)}}
-            <div class="community-badge community-badge-achievements">
-              {{#link "user_profile" id=user.id filter_by="badges" class="community-badge-achievements-rest"}}{{t 'plus_more' count=(calc user.badges.length "-" 4)}}{{/link}}
-            </div>
+            <li class="community-badge community-badge-achievement">
+              <a href="{{page_path "user_profile" id=user.id filter_by="badges"}}" class="community-badge-achievements-rest" aria-label="{{t 'more_awards_to' count=(calc user.badges.length "-" 4) name=user.name}}">
+                {{t 'plus_more' count=(calc user.badges.length "-" 4)}}
+              </a>
+            </li>
           {{/if}}
-        </div>
+        </ul>
       </div>
       <div class="options">
         {{#if private_profile}}
@@ -203,38 +195,43 @@
                           <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                         {{/if}}
                       </header>
-
-                      <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                        {{#each path_steps}}
-                          <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                        {{/each}}
-                      </ol>
+                      <nav
+                        {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                        {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                        {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
+                      >
+                        <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                          {{#each path_steps}}
+                            <li><a href="{{url}}">{{name}}</a></li>
+                          {{/each}}
+                        </ol>
+                      </nav>
 
                       <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
-                      <ul class="meta-group">
+                      <div class="meta-group">
                         {{#is object_type 'comment'}}
-                          <li class="meta-data">
+                          <span class="meta-data">
                             <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
-                          </li>
+                          </span>
                         {{/is}}
-                        <li class="meta-data">{{author.name}}</li>
+                        <span class="meta-data">{{author.name}}</span>
                         {{#if editor}}
-                          <li class="meta-data">{{date edited_at timeago=true}}</li>
-                          <li class="meta-data">
+                          <span class="meta-data">{{date edited_at timeago=true}}</span>
+                          <span class="meta-data">
                             {{#is object_type 'article'}}
                               {{t 'updated'}}
                             {{else}}
                               {{t 'edited'}}
                             {{/is}}
-                          </li>
+                          </span>
                         {{else}}
-                          <li class="meta-data">{{date created_at timeago=true}}</li>
+                          <span class="meta-data">{{date created_at timeago=true}}</span>
                         {{/if}}
                         {{#each stats}}
-                          <li class="meta-data">{{label}}</li>
+                          <span class="meta-data">{{label}}</span>
                         {{/each}}
-                      </ul>
+                      </div>
                     </div>
                   {{/with}}
                 </li>
@@ -364,38 +361,43 @@
                         <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                       {{/if}}
                     </header>
-
-                    <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                      {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}">{{name}}</a></li>
-                      {{/each}}
-                    </ol>
+                    <nav
+                      {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                      {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                      {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
+                    >
+                      <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                        {{#each path_steps}}
+                          <li><a href="{{url}}">{{name}}</a></li>
+                        {{/each}}
+                      </ol>
+                    </nav>
 
                     <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
-                    <ul class="meta-group">
+                    <div class="meta-group">
                       {{#is object_type 'comment'}}
-                        <li class="meta-data">
+                        <span class="meta-data">
                           <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
-                        </li>
+                        </span>
                       {{/is}}
-                      <li class="meta-data">{{author.name}}</li>
+                      <span class="meta-data">{{author.name}}</span>
                       {{#if editor}}
-                        <li class="meta-data">{{date edited_at timeago=true}}</li>
-                        <li class="meta-data">
+                        <span class="meta-data">{{date edited_at timeago=true}}</span>
+                        <span class="meta-data">
                           {{#is object_type 'article'}}
                             {{t 'updated'}}
                           {{else}}
                             {{t 'edited'}}
                           {{/is}}
-                        </li>
+                        </span>
                       {{else}}
-                        <li class="meta-data">{{date created_at timeago=true}}</li>
+                        <span class="meta-data">{{date created_at timeago=true}}</span>
                       {{/if}}
                       {{#each stats}}
-                        <li class="meta-data">{{label}}</li>
+                        <span class="meta-data">{{label}}</span>
                       {{/each}}
-                    </ul>
+                    </div>
                   </li>
 
                 {{/each}}

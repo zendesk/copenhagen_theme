@@ -3,7 +3,7 @@
    <nav class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
@@ -90,15 +90,15 @@
               {{/is}}
             </span>
 
-            <ul class="meta-group">
-              <li class="meta-data">{{author.name}}</li>
+            <div class="meta-group">
+              <span class="meta-data">{{author.name}}</span>
               {{#if editor}}
-                <li class="meta-data">{{date edited_at timeago=true}}</li>
-                <li class="meta-data">{{t 'edited'}}</li>
+                <span class="meta-data">{{date edited_at timeago=true}}</span>
+                <span class="meta-data">{{t 'edited'}}</span>
               {{else}}
-                <li class="meta-data">{{date created_at timeago=true}}</li>
+                <span class="meta-data">{{date created_at timeago=true}}</span>
               {{/if}}
-            </ul>
+            </div>
           </span>
 
           <div class="post-overview-count striped-list-count">

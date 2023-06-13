@@ -3,7 +3,7 @@
   <nav class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
@@ -14,8 +14,8 @@
   <div class="search-results">
     <aside class="search-results-sidebar">
       {{#if source_filters}}
-        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_source_menu'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
@@ -42,8 +42,8 @@
         </section>
       {{/if}}
       {{#if type_filters}}
-        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_type_menu'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
@@ -69,8 +69,8 @@
         </section>
       {{/if}}
       {{#if subfilters}}
-        <section class="filters-in-section collapsible-sidebar" aria-expanded="false">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_subfilter_menu'}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
@@ -106,92 +106,158 @@
           </ul>
         </section>
       {{/if}}
+      {{#if content_tag_filters}}
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+            </svg>
+          </button>
+          <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_content_tag'}}</h3>
+          <ul class="multibrand-filter-list multibrand-filter-list--collapsed">
+            {{#each content_tag_filters}}
+            	{{#if selected}}
+                <li class="sidenav-tag">
+                  <div class="content-tag">
+                    <span class="label">{{name}}</span>
+                    <a href="{{url}}" aria-current="page">
+                      <span>
+                        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false"  aria-hidden="true" >
+                            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </li>
+              {{/if}}
+            {{/each}}
+          </ul>
+        </section>
+      {{/if}}
     </aside>
 
     <section id="main-content" class="search-results-column">
       <h1 class="search-results-subheading">
-        {{#is current_filter.identifier 'unified'}}
-          {{t 'results' query=query count=results_count}}
-        {{else}}
-          {{#unless current_subfilter.identifier}}
-            {{t 'results' query=query count=results_count}}
+        {{#if results}}
+          {{#is current_filter.identifier 'unified'}}
+            {{#if content_tag_filters }}
+              {{#each (filter content_tag_filters on="selected" equals=true)}}
+                {{t 'results_content_tag' content_tag=name count=../results_count}}
+              {{/each}}
+            {{else}}
+              {{t 'results' query=query count=results_count}}
+            {{/if}}
           {{else}}
-            {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
-          {{/unless}}
-        {{/is}}
+            {{#if content_tag_filters }}
+              {{#each (filter content_tag_filters on="selected" equals=true)}}
+                {{t 'results_content_tag' content_tag=name count=../results_count}}
+              {{/each}}
+            {{else}}
+              {{#unless current_subfilter.identifier}}
+                {{t 'results' query=query count=results_count}}
+              {{else}}
+                {{t 'results_with_scope' query=query count=results_count scope_name=current_subfilter.name}}
+              {{/unless}}
+            {{/if}}
+          {{/is}}
+        {{/if}}
       </h1>
       {{#if results}}
         <ul class="search-results-list">
           {{#each results}}
-            <li class="search-result-list-item result-{{type}}">
-              <h2 class="search-result-title">
-                <a href="{{url}}" class="results-list-item-link"  {{#if is_external}} target="_blank" {{/if}}>
-                  {{title}}
-                  {{#if is_external}}
-                    <svg viewBox="0 0 12 12" height="12" id="zd-svg-icon-12-new-window-fill">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M10.5 8.5V10c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V2c0-.28.22-.5.5-.5h1.5M6 6l4-4"></path>
-                      <path fill="currentColor" d="M10.5 6.5a.47.47 0 0 1-.35-.15l-4.5-4.5a.474.474 0 0 1-.11-.54C5.62 1.12 5.8 1 6 1h4c.55 0 1 .45 1 1v4c0 .2-.12.38-.31.46-.06.03-.13.04-.19.04z"></path>
-                    </svg>
-                  {{/if}}
-                </a>
-              </h2>
-              <div class="search-result-icons">
-                {{#if vote_sum}}
-                  <span class="search-result-votes">
-                    <span class="visibility-hidden">
-                      {{t 'votes_sum' count=vote_sum}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-votes-icon">
-                        <g fill="none" stroke="currentColor">
-                          <path stroke-linejoin="round" d="M10.77 4.5a.73.73 0 01.73.73C11.43 7 11.21 11.5 10 11.5H5a.5.5 0 01-.5-.5V4.5s1-.5 1-3a1 1 0 012 0v3z"/>
-                          <rect width="2" height="7" x=".5" y="4.5" rx=".5" ry=".5"/>
-                        </g>
-                      </svg>
-                      {{vote_sum}}
-                    </span>
-                  </span>
-                {{/if}}
-                {{#if comment_count}}
-                  <span class="search-result-meta-count">
-                    <span class="visibility-hidden">
-                      {{t 'comments_count' count=comment_count}}
-                    </span>
-                    <span aria-hidden="true">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-meta-count-icon">
-                        <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
-                      </svg>
-                      {{comment_count}}
-                    </span>
-                  </span>
-                {{/if}}
-              </div>
+            <li>
               <article>
-                <ul class="meta-group">
-                  <li>
-                    <ol class="breadcrumbs search-result-breadcrumbs">
-                      {{#each path_steps}}
-                        <li title="{{name}}"><a href="{{url}}" target="{{target}}">{{name}}</a></li>
-                      {{/each}}
-                    </ol>
-                  </li>
-                  {{#unless is_external}}
-                    <li class="meta-data">{{author.name}}</li>
-                  {{/unless}}
-                  <li class="meta-data">{{date created_at}}</li>
-                </ul>
-                <div class="search-results-description">{{text}}</div>
+                <header>
+                  <div class="search-result-title-container">
+                    <h2 class="search-result-title">
+                      <a href="{{url}}" {{#if is_external}} target="_blank" {{/if}}>
+                        {{title}}
+                        {{#if is_external}}
+                          <svg viewBox="0 0 12 12" height="12" id="zd-svg-icon-12-new-window-fill">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M10.5 8.5V10c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V2c0-.28.22-.5.5-.5h1.5M6 6l4-4"></path>
+                            <path fill="currentColor" d="M10.5 6.5a.47.47 0 0 1-.35-.15l-4.5-4.5a.474.474 0 0 1-.11-.54C5.62 1.12 5.8 1 6 1h4c.55 0 1 .45 1 1v4c0 .2-.12.38-.31.46-.06.03-.13.04-.19.04z"></path>
+                          </svg>
+                        {{/if}}
+                      </a>
+                    </h2>
+                    <div class="search-result-icons">
+                      {{#if vote_sum}}
+                        <span class="search-result-votes">
+                          <span class="visibility-hidden">
+                            {{t 'votes_sum' count=vote_sum}}
+                          </span>
+                          <span aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-votes-icon">
+                              <g fill="none" stroke="currentColor">
+                                <path stroke-linejoin="round" d="M10.77 4.5a.73.73 0 01.73.73C11.43 7 11.21 11.5 10 11.5H5a.5.5 0 01-.5-.5V4.5s1-.5 1-3a1 1 0 012 0v3z"/>
+                                <rect width="2" height="7" x=".5" y="4.5" rx=".5" ry=".5"/>
+                              </g>
+                            </svg>
+                            {{vote_sum}}
+                          </span>
+                        </span>
+                      {{/if}}
+                      {{#if comment_count}}
+                        <span class="search-result-meta-count">
+                          <span class="visibility-hidden">
+                            {{t 'comments_count' count=comment_count}}
+                          </span>
+                          <span aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-result-meta-count-icon">
+                              <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
+                            </svg>
+                            {{comment_count}}
+                          </span>
+                        </span>
+                      {{/if}}
+                    </div>
+                  </div>
+                  <div class="search-result-meta-container">
+                    <nav 
+                      {{#is type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                      {{#is type 'community_post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                      {{#is type 'external_content_record'}}aria-label='{{t 'external_content_location_with_title' title=title}}'{{/is}}
+                    >
+                      <ol class="breadcrumbs search-result-breadcrumbs">
+                        {{#each path_steps}}
+                          <li><a href="{{url}}" target="{{target}}">{{name}}</a></li>
+                        {{/each}}
+                      </ol>
+                    </nav>
+                    {{#unless is_external}}
+                      <span class="meta-data">{{author.name}}</span>
+                    {{/unless}}
+                    <span class="meta-data">{{date created_at}}</span>
+                  </div>
+                </header>
+                <p class="search-result-description">{{text}}</p>
               </article>
             </li>
           {{/each}}
         </ul>
       {{else}}
-        <p>
-          {{t 'no_results_unified'}}
-          {{#link 'help_center'}}
-            {{t 'browse_help_center'}}
-          {{/link}}
-        </p>
+          <div class="no-results">
+            <svg width="161" height="120" viewBox="0 0 161 120" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M130.568 90.859v-7.693h5.387c8.881 0 16.105-6.974 16.105-15.769s-7.224-15.77-16.105-15.77h-20.921v-7.692h20.921c13.163 0 23.872 10.425 23.872 23.462 0 13.037-10.709 23.462-23.872 23.462h-5.387z" fill="#fff"></path><path clip-rule="evenodd" d="M135.955 90.859h-5.387v-7.693h5.387c8.881 0 16.105-6.974 16.105-15.769s-7.224-15.77-16.105-15.77h-20.921v-7.692h20.921c13.163 0 23.872 10.425 23.872 23.462 0 13.037-10.709 23.462-23.872 23.462v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M25.65 90.859h4.725v-7.693h-4.726c-8.88 0-16.105-6.974-16.105-15.769s7.224-15.77 16.105-15.77h20.26v-7.692h-20.26c-13.163 0-23.872 10.425-23.872 23.462 0 13.037 10.71 23.462 23.872 23.462" fill="#fff"></path><path clip-rule="evenodd" d="M25.65 90.859h4.725v-7.693h-4.726c-8.88 0-16.105-6.974-16.105-15.769s7.224-15.77 16.105-15.77h20.26v-7.692h-20.26c-13.163 0-23.872 10.425-23.872 23.462 0 13.037 10.71 23.462 23.872 23.462v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><mask id="a" maskUnits="userSpaceOnUse" x="1" y="0" width="160" height="120" style="mask-type: alpha;"><path fill-rule="evenodd" clip-rule="evenodd" d="M1 120h159.605V0H1v120z" fill="#fff"></path></mask><g mask="url(#a)"><path fill-rule="evenodd" clip-rule="evenodd" d="M50.664 102.135h60.507V76.242H50.664v25.893z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M50.664 102.135h60.507V76.242H50.664v25.893z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M111.171 94.127h20.836V76.242h-20.836v17.885z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M111.171 94.127h20.836V76.242h-20.836v17.885z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M29.42 94.127h21.244V76.242H29.42v17.885z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M29.42 94.127h21.244V76.242H29.42v17.885z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M29.42 80.857h102.588M29.42 85.186h102.588" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M90.907 76.445c0 5.527-4.524 10.008-10.105 10.008-5.58 0-10.105-4.48-10.105-10.008" fill="#fff"></path><path d="M90.907 76.445c0 5.527-4.524 10.008-10.105 10.008-5.58 0-10.105-4.48-10.105-10.008" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M92.695 22.397H69.14a1.15 1.15 0 01-1.155-1.144v-.92c0-2.577 2.11-4.667 4.713-4.667h16.44c2.603 0 4.713 2.09 4.713 4.668v.919a1.15 1.15 0 01-1.155 1.144" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M92.695 22.397H69.14a1.15 1.15 0 01-1.155-1.144v-.92c0-2.577 2.11-4.667 4.713-4.667h16.44c2.603 0 4.713 2.09 4.713 4.668v.919a1.15 1.15 0 01-1.155 1.144v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M80.802 77.524c-11.939 0-21.617-9.585-21.617-21.41V41.499c0-11.825 9.678-21.411 21.617-21.411 11.94 0 21.618 9.586 21.618 21.41v14.616c0 11.825-9.678 21.41-21.618 21.41" fill="#fff"></path><path clip-rule="evenodd" d="M80.802 77.524v0c-11.939 0-21.617-9.585-21.617-21.41V41.499c0-11.825 9.678-21.411 21.617-21.411v0c11.94 0 21.618 9.586 21.618 21.41v14.616c0 11.825-9.678 21.41-21.618 21.41v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M80.716 45.217v11.025h-2.354c-1.348 0-2.441 1.083-2.441 2.418v0c0 1.335 1.093 2.417 2.441 2.417h3.933" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M76.3 69.513c0-2.168 1.775-3.925 3.963-3.925s3.962 1.757 3.962 3.925h-7.924z" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M76.3 69.513c0-2.168 1.775-3.925 3.963-3.925s3.962 1.757 3.962 3.925h-7.924v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M98.537 34.511h-35.47l-3.883-11.153s9.56-3.366 21.521-3.366c11.96 0 21.715 3.366 21.715 3.366L98.537 34.51z" fill="#fff"></path><path clip-rule="evenodd" d="M98.537 34.511h-35.47l-3.883-11.153s9.56-3.366 21.521-3.366c11.96 0 21.715 3.366 21.715 3.366L98.537 34.51v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M77.78 25.217h5.695M80.627 23.166v7.308M83.443 28.31c0 1.54-1.261 2.789-2.816 2.789s-2.816-1.248-2.816-2.788" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M91.522 37.66c-.07 0-.139.12-.208.12h-21.27c-.07 0-.139-.12-.209-.12-4.962 0-8.985 3.93-8.985 8.845 0 4.914 4.023 9.152 8.985 9.152 4.963 0 8.986-4.8 8.986-8.645h3.715c0 3.846 4.022 8.618 8.986 8.618 4.963 0 8.985-4.07 8.985-8.985 0-4.915-4.022-8.985-8.986-8.985" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M91.522 37.66c-.07 0-.139.12-.208.12h-21.27c-.07 0-.139-.12-.209-.12-4.962 0-8.985 3.93-8.985 8.845 0 4.914 4.023 9.152 8.985 9.152 4.963 0 8.986-4.8 8.986-8.645h3.715c0 3.846 4.022 8.618 8.986 8.618 4.963 0 8.985-4.07 8.985-8.985 0-4.915-4.022-8.985-8.986-8.985v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M117.21 47.416c0 8.32-6.81 15.065-15.211 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M117.21 47.416c0 8.32-6.81 15.065-15.211 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M101.999 56.943c-5.304 0-9.62-4.274-9.62-9.526 0-5.253 4.316-9.526 9.62-9.526 5.303 0 9.618 4.273 9.618 9.526 0 5.252-4.315 9.526-9.618 9.526" fill="#fff"></path><path clip-rule="evenodd" d="M101.999 56.943c-5.304 0-9.62-4.274-9.62-9.526 0-5.253 4.316-9.526 9.62-9.526 5.303 0 9.618 4.273 9.618 9.526 0 5.252-4.315 9.526-9.618 9.526v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M101.998 41.352c3.376 0 6.124 2.72 6.124 6.064z" fill="#fff"></path><path d="M101.998 41.352c3.376 0 6.124 2.72 6.124 6.064" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M74.57 47.416c0 8.32-6.81 15.065-15.212 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064" fill="#F2F2F2"></path><path clip-rule="evenodd" d="M74.57 47.416c0 8.32-6.81 15.065-15.212 15.065-8.4 0-15.21-6.745-15.21-15.065s6.81-15.064 15.21-15.064c8.401 0 15.211 6.744 15.211 15.064v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M59.358 56.943c-5.303 0-9.619-4.274-9.619-9.526 0-5.253 4.316-9.526 9.619-9.526s9.619 4.273 9.619 9.526c0 5.252-4.316 9.526-9.62 9.526" fill="#fff"></path><path clip-rule="evenodd" d="M59.358 56.943c-5.303 0-9.619-4.274-9.619-9.526 0-5.253 4.316-9.526 9.619-9.526s9.619 4.273 9.619 9.526c0 5.252-4.316 9.526-9.62 9.526v0z" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M59.357 41.352c3.377 0 6.124 2.72 6.124 6.064z" fill="#fff"></path><path d="M59.357 41.352c3.377 0 6.124 2.72 6.124 6.064M88.051 41.352H73.553M80.802 86.453v10.614" stroke="#CCC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></g></svg>
+            <div class="headline">
+              {{t 'no_results_unified_start_new_search'}}
+            </div>
+            <div class="action-prompt">
+              {{t 'no_results_unified_enter_keywords'}}
+            </div>
+            <div class="action-prompt">
+              {{#link 'help_center'}}
+                {{t 'go_to_help_center'}} <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" focusable="false" role="presentation"
+                  data-garden-id="buttons.external_icon" data-garden-version="8.38.0" theme="[object Object]" class="sc-ifAKCX lgxUVw">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round"
+                    d="M10.5 8.5V10c0 .3-.2.5-.5.5H2c-.3 0-.5-.2-.5-.5V2c0-.3.2-.5.5-.5h1.5M6 6l4-4m-3.5-.5H10c.3 0 .5.2.5.5v3.5">
+                  </path>
+                </svg>
+              {{/link}}
+            </div> 
+          </div>
       {{/if}}
     </section>
   </div>

@@ -45,7 +45,7 @@
 
     .comment-show-container {
       border-radius: 2px;
-      border: 1px solid $border-color;
+      border: 1px solid $low-contrast-border-color;
       color: $secondary-text-color;
       text-align: inherit;
       padding: 8px 25px;
@@ -89,7 +89,7 @@
 
   &-title {
     @include desktop {
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid $low-contrast-border-color;
       margin-bottom: 0;
       max-width: 66%; //Same as main container
       padding-bottom: 20px;
@@ -108,8 +108,8 @@
       width: 30%; //IE11 fix
     }
 
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
+    border-top: 1px solid $low-contrast-border-color;
     flex: 1 0 auto;
     order: 0; //Bring to top
 
@@ -125,7 +125,7 @@
   }
 
   &-details {
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
     font-size: 0; // To remove whitespace and do a 40%/60% split
     margin: 0;
     padding-bottom: 20px;

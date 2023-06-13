@@ -101,15 +101,15 @@
               {{/is}}
             </span>
 
-            <ul class="meta-group">
-              <li class="meta-data">{{author.name}}</li>
+            <div class="meta-group">
+              <span class="meta-data">{{author.name}}</span>
               {{#if editor}}
-                <li class="meta-data">{{date edited_at timeago=true}}</li>
-                <li class="meta-data">{{t 'edited'}}</li>
+                <span class="meta-data">{{date edited_at timeago=true}}</span>
+                <span class="meta-data">{{t 'edited'}}</span>
               {{else}}
-                <li class="meta-data">{{date created_at timeago=true}}</li>
+                <span class="meta-data">{{date created_at timeago=true}}</span>
               {{/if}}
-            </ul>
+            </div>
           </span>
 
           <div class="post-overview-count striped-list-count">

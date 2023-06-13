@@ -9,7 +9,6 @@
 ---
 title: "Help Center Copenhagen theme"
 packages:
-  - default
   - help_center_copenhagen_theme
 
 parts:
@@ -63,6 +62,16 @@ parts:
       title: "Description for the visited link color setting"
       screenshot: "https://drive.google.com/file/d/1ZOoBb6K_mpYtyd3ulkEKawmSj1dZPuFw/view?usp=sharing"
       value: "Text color for visited link elements"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.hover_link_color_label"
+      title: "Label for the hover link color setting"
+      screenshot: "https://drive.google.com/file/d/14Wh8h1I-ej3d2TRrPHFMvydDeEO_8sxr/view?usp=sharing"
+      value: "Hover link color"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.hover_link_color_description"
+      title: "Description for the hover link color setting"
+      screenshot: "https://drive.google.com/file/d/14Wh8h1I-ej3d2TRrPHFMvydDeEO_8sxr/view?usp=sharing"
+      value: "Text color for the hover state of link elements"
   - translation:
       key: "txt.help_center_copenhagen_theme.visited_link_color_label"
       title: "Label for the visited link color setting"
@@ -365,3 +374,18 @@ parts:
       title: "Description for the show brand name setting"
       screenshot: "https://drive.google.com/file/d/16zQao3zk3uRScIUpkyc6bXAWwqHh3Zh-/view?usp=sharing"
       value: "Display the Help Center name next to the logo"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.request_list_beta_label"
+      title: "Label for the request list beta setting"
+      screenshot: "https://drive.google.com/file/d/1muzNJHcGzM96cpgXheHb_0mhWkdKEg4E/view?usp=sharing"
+      value: "New request list experience"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.request_list_beta_description"
+      title: "Description of the request list beta setting"
+      screenshot: "https://drive.google.com/file/d/1muzNJHcGzM96cpgXheHb_0mhWkdKEg4E/view?usp=sharing"
+      value: "Users can sort and filter requests, add and remove columns"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.request_list_group_label"
+      title: "Label for the requests list settings group"
+      screenshot: "https://drive.google.com/file/d/18d736vhJIuaYHO_uPeg9E4IBaVnJCoVM/view?usp=sharing"
+      value: "Requests list"

@@ -19,6 +19,10 @@
   width: 100%;
   -webkit-touch-callout: none;
 
+  &:visited {
+    color: $button-color;
+  }
+
   &:hover,
   &:active,
   &:focus,
@@ -58,6 +62,10 @@
   padding: 0 1.9286em;
   width: 100%;
 
+  &:visited {
+    color: $brand_text_color;
+  }
+
   &:hover,
   &:active,
   &:focus {
@@ -72,14 +80,18 @@
 
 .button-secondary {
   color: $secondary-text-color;
-  border: 1px solid $border-color;
+  border: 1px solid $high-contrast-border-color;
   background-color: transparent;
+
+  &:visited {
+    color: $secondary-text-color;
+  }
 
   &:hover,
   &:focus,
   &:active {
     color: $text_color;
-    border: 1px solid $border-color;
+    border: 1px solid $high-contrast-border-color;
     background-color: $primary-shade;
   }
 }

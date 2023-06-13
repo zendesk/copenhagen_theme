@@ -5,24 +5,50 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: zendesk/checkout@v2
-      - run: "sudo apt-get install zip"
-      - run: "zip --exclude=*.git* -r theme.zip ."
-      - uses: zendesk/setup-ruby@v1
+      - name: Checkout
+        uses: zendesk/checkout@v3
+      - name: Setup Node.js
+        uses: zendesk/setup-node@v3
         with:
-          ruby-version: '2.6'
-      - run: gem install faraday -v 0.16.0
-      - run: gem install faraday_middleware -v 0.13.1
-      - run: npm install puppeteer@2.1.1
-      - run: ruby ./.github/workflows/theme_upload.rb
+          node-version-file: '.nvmrc'
+      - name: Install node_modules
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
+      - name: Setup Ruby
+        uses: zendesk/setup-ruby@v1
+        with:
+          ruby-version: .ruby-version
+      - name: Install gems
+        run: |
+          gem install faraday -v 0.16.0
+          gem install faraday_middleware -v 0.13.1
+      - name: Create theme zip
+        run: |
+          sudo apt-get install zip
+          zip \
+            -i=assets/\* -x=assets/.gitkeep \
+            -i=settings/\* \
+            -i=templates/\* \
+            -i=translations/\* \
+            -i=manifest.json \
+            -i=script.js \
+            -i=style.css \
+            -i=thumbnail.png \
+            -r theme.zip .
+      - name: Upload theme
+        run: ruby ./.github/workflows/theme_upload.rb
         env:
           zendesk_email: ${{ secrets.zendesk_email }}
           zendesk_token: ${{ secrets.zendesk_token }}
           brand_id: ${{ secrets.brand_id }}
           subdomain: ${{ secrets.subdomain }}
       - name: Audit URLs using Lighthouse
-        uses: zendesk/lighthouse-ci-action@v3
-        with:
+        run: yarn test-a11y
+        env:
+          end_user_email: ${{ secrets.end_user_email }}
+          end_user_password: ${{ secrets.end_user_password }}
+          subdomain: ${{ secrets.subdomain }}
           urls: |
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
@@ -40,8 +66,3 @@ jobs:
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/3
             https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/new
-          configPath: ./.github/workflows/lighthouserc.json
-        env:
-          end_user_email: ${{ secrets.end_user_email }}
-          end_user_password: ${{ secrets.end_user_password }}
-          subdomain: ${{ secrets.subdomain }}

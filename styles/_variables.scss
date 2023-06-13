@@ -1,12 +1,6 @@
 // Variables
 
 // Colors
-$brand_color: #17494d !default;
-$brand_text_color: #fff !default; //Color for text with an accent color background
-$text_color: #333 !default;
-$link_color: #17494d !default;
-$background_color: #fff !default;
-
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 
@@ -19,7 +13,8 @@ $font-size-navigation: 14px;
 $font-size-small: 13px;
 $font-size-smaller: 11px;
 
-$border-color: #ddd;
+$high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
+$low-contrast-border-color: #ddd; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
 
 $button-color: $brand_color;
 
@@ -32,7 +27,7 @@ $tablet-width: 768px;
 $desktop-width: 1024px;
 $max-width-container: 1160px;
 
-// Fonts
-$heading_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
-$text_font: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif !default;
 $font-weight-semibold: 600;
+
+// Transitions
+$input-transition: border .12s ease-in-out;

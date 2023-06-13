@@ -9,21 +9,26 @@
       {{/if}}
     {{/link}}
   </div>
-  <div class="nav-wrapper">
-    <button class="menu-button" aria-controls="user-nav" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
-        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
-      </svg>
-    </button>
+
+  <div class="nav-wrapper-desktop">
     <nav class="user-nav" id="user-nav">
-      {{link 'community'}}
-      {{link 'new_request' class='submit-a-request'}}
+      <ul class="user-nav-list">
+        <li>{{link 'community'}}</li>
+        <li>{{link 'new_request' class='submit-a-request'}}</li>
+        {{#unless signed_in}}
+          <li>
+            {{#link "sign_in" class="sign-in"}}
+              {{t 'sign_in'}}
+            {{/link}}
+          </li>
+        {{/unless}}
+      </ul>
     </nav>
     {{#if signed_in}}
       <div class="user-info dropdown">
         <button class="dropdown-toggle" aria-haspopup="true">
           {{user_avatar class="user-avatar"}}
-          <span class="hide-on-mobile">
+          <span>
             {{user_name}}
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
@@ -31,16 +36,63 @@
           </span>
         </button>
         <div class="dropdown-menu" role="menu">
-          {{link "my_activities" role="menuitem"}}
-          {{my_profile role="menuitem"}}
+          {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
+          {{link "requests" role="menuitem"}}
+          {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
+          {{contact_details role="menuitem"}}
           {{change_password role="menuitem"}}
+          <div class="separator" role="separator"></div>
           {{link "sign_out" role="menuitem"}}
         </div>
       </div>
-    {{else}}
-      {{#link "sign_in" class="sign-in"}}
-        {{t 'sign_in'}}
-      {{/link}}
     {{/if}}
   </div>
+
+  <div class="nav-wrapper-mobile">
+    <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
+      {{#if signed_in}}
+        {{user_avatar class="user-avatar"}}
+      {{/if}}
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
+        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
+      </svg>
+    </button>
+    <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
+      <ul class="menu-list-mobile-items">
+        {{#if signed_in}}
+          <li class="user-avatar-item item">
+            {{#my_profile role="menuitem" class="my-profile"}}
+              {{user_avatar class="menu-profile-avatar"}}
+              <div class="menu-profile-name">
+                <div>{{user_name}}</div>
+                <div class="my-profile-tooltip">{{t 'profile'}}</div>
+              </div>
+            {{/my_profile}}
+          </li>
+          <li class="item">{{link "requests" role="menuitem"}}</li>
+          <li class="item">{{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}</li>
+          <li class="item">{{contact_details role="menuitem"}}</li>
+          <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
+          <li class="nav-divider"></li>
+        {{else}}
+          <li class="item">
+            {{#link "sign_in" role="menuitem"}}
+              {{t 'sign_in'}}
+            {{/link}}
+          </li>
+          <li class="nav-divider"></li>
+        {{/if}}
+        <li class="item">{{link 'community' role="menuitem"}}</li>
+        <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
+        <li class="nav-divider"></li>
+        {{#if signed_in}}
+          <li class="item">
+            {{link "sign_out" role="menuitem"}}
+          </li>
+        {{/if}}
+        </li>
+      </ul>
+    </nav>
+  </div>
+
 </header>

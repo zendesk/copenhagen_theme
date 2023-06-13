@@ -1,8 +1,8 @@
 {
   "name": "Copenhagen",
   "author": "Zendesk",
-  "version": "2.11.2",
-  "api_version": 2,
+  "version": "3.0.2",
+  "api_version": 3,
   "default_locale": "en-us",
   "settings": [
     {
@@ -37,11 +37,18 @@
           "value": "#1F73B7"
         },
         {
+          "identifier": "hover_link_color",
+          "type": "color",
+          "description": "hover_link_color_description",
+          "label": "hover_link_color_label",
+          "value": "#0F3554"
+        },
+        {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "#4B61C3"
+          "value": "#9358B0"
         },
         {
           "identifier": "background_color",
@@ -79,7 +86,7 @@
             },
             {
               "label": "Century Gothic",
-              "value": "'Century Gothic', AppleGothic, sans-serif"
+              "value": "'Century Gothic', sans-serif"
             },
             {
               "label": "Copperplate Light",
@@ -91,7 +98,7 @@
             },
             {
               "label": "Futura",
-              "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"
+              "value": "Futura, 'Century Gothic', sans-serif"
             },
             {
               "label": "Garamond",
@@ -152,7 +159,7 @@
             },
             {
               "label": "Century Gothic",
-              "value": "'Century Gothic', AppleGothic, sans-serif"
+              "value": "'Century Gothic', sans-serif"
             },
             {
               "label": "Copperplate Light",
@@ -164,7 +171,7 @@
             },
             {
               "label": "Futura",
-              "value": "Futura, 'Century Gothic', AppleGothic, sans-serif"
+              "value": "Futura, 'Century Gothic', sans-serif"
             },
             {
               "label": "Garamond",
@@ -382,6 +389,18 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
+        }
+      ]
+    },
+    {
+      "label": "request_list_group_label",
+      "variables": [
+        {
+          "identifier": "request_list_beta",
+          "type": "checkbox",
+          "description": "request_list_beta_description",
+          "label": "request_list_beta_label",
+          "value": false
         }
       ]
     }

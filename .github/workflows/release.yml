@@ -9,15 +9,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: zendesk/checkout@v2
+        uses: zendesk/checkout@v3
         with:
           persist-credentials: false
       - name: Setup Node.js
-        uses: zendesk/setup-node@v1
+        uses: zendesk/setup-node@v3
         with:
-          node-version: 12
+          node-version-file: '.nvmrc'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build
       - name: Release
         run: yarn semantic-release
         env:

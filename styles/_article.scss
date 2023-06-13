@@ -59,7 +59,9 @@
   }
 
   [role="button"] {
-    @include tablet { width: auto; }
+    @include tablet {
+      width: auto;
+    }
     flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
     width: 100%;
   }
@@ -75,7 +77,9 @@
 
   &-body {
     @include content-body;
-    > p:last-child { margin-bottom: 0; }
+    > p:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &-content {
@@ -113,8 +117,8 @@
       height: auto;
     }
 
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
+    border-top: 1px solid $low-contrast-border-color;
     flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
     margin-bottom: 20px;
     padding: 0;
@@ -125,7 +129,7 @@
       flex-direction: row;
     }
 
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $low-contrast-border-color;
     display: flex;
     flex-direction: column;
     padding: 20px 0;
@@ -136,15 +140,18 @@
       overflow-wrap: break-word;
       margin-right: 0;
 
-      &:last-child { padding: 0; }
+      &:last-child {
+        padding: 0;
+      }
 
-      @include tablet { padding-right: 20px; }
+      @include tablet {
+        padding-right: 20px;
+      }
     }
   }
 
-
   &-votes {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $low-contrast-border-color;
     padding: 30px 0;
     text-align: center;
   }
@@ -158,12 +165,15 @@
   &-more-questions {
     margin: 10px 0 20px;
     text-align: center;
+    @include standalone-link;
   }
 
   &-return-to-top {
-    @include desktop { display: none; }
+    @include desktop {
+      display: none;
+    }
 
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $high-contrast-border-color;
 
     a {
       color: $text_color;
@@ -187,6 +197,16 @@
       @extend .button-primary;
     }
   }
+
+  td > p:first-child,
+  th > p:first-child {
+    margin-top: 0;
+  }
+
+  td > p:last-child,
+  th > p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .sidenav {
@@ -197,25 +217,16 @@
   }
 
   &-item {
-    border-radius: 4px;
-    color: $text_color;
     display: block;
-    margin-bottom: 10px;
-    padding: 10px;
-
-    &.current-article,
-    &:hover {
-      background-color: $brand_color;
-      color: $brand_text_color;
-      text-decoration: none;
-    }
+    margin-top: 10px;
+    margin-bottom: 16px;
   }
 }
 
 .recent-articles,
 .related-articles {
   &-title {
-    @extend .comment-heading
+    @extend .comment-heading;
   }
 
   li {

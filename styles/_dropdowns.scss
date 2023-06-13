@@ -23,7 +23,7 @@
 
 .dropdown-menu {
   background: #fff;
-  border: 1px solid rgb(216, 216, 216);
+  border: 1px solid $high-contrast-border-color;
   border-radius: 3px;
   box-shadow: 0 1px 5px rgba(0, 0, 0 , .1);
   display: none;
@@ -47,13 +47,8 @@
   }
 
   [role="separator"] {
-    border-bottom: 1px solid rgb(216, 216, 216);
-    color: rgb(150, 150, 150);
-    display: block;
-    font-weight: normal;
-    font-size: 11px;
-    padding: 5px 0;
-    margin: 5px 20px 10px 20px;
+    border-bottom: 1px solid #e9ebed;
+    margin: 4px 0;
   }
 
   [role="menuitem"] {

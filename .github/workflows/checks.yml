@@ -1,0 +1,61 @@
+name: Checks
+
+on:
+  pull_request:
+    branches:
+      - master
+  push:
+    branches:
+      - master
+
+jobs:
+  commitlint:
+    name: Lint commit messages
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: zendesk/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Setup Node.js
+        uses: zendesk/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Lint all commit messages
+        run: yarn commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
+  lint:
+    name: Lint JS files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: zendesk/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: zendesk/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: ESlint
+        run: yarn eslint
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: zendesk/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: zendesk/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build
+        run: yarn build

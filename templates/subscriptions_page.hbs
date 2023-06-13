@@ -10,9 +10,6 @@
         </svg>
       </button>
       <ul class="collapsible-nav-list">
-        {{#if help_center.request_management_enabled}}
-          <li>{{link 'requests'}}</li>
-        {{/if}}
         <li>{{link 'contributions'}}</li>
         <li class="current">
           <a href="{{page_path 'following'}}" aria-current="page">{{ t 'following' }}</a>

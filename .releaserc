@@ -10,7 +10,7 @@
             "prepareCmd": "./bin/update-manifest-version.sh ${nextRelease.version}"
         }],
         ["@semantic-release/git", {
-            "assets": ["manifest.json", "CHANGELOG.md"],
+            "assets": ["manifest.json", "script.js", "style.css", "CHANGELOG.md"],
             "message": "chore(release): ${nextRelease.version}\n\n${nextRelease.notes}"
         }],
         "@semantic-release/github"

@@ -1,10 +1,12 @@
 /***** Footer *****/
 .footer {
-  border-top: 1px solid $border-color;
+  border-top: 1px solid $low-contrast-border-color;
   margin-top: 60px;
   padding: 30px 0;
 
-  a { color: $secondary-text-color; }
+  a {
+    color: $secondary-text-color;
+  }
 
   &-inner {
     @include max-width-container;
@@ -15,5 +17,12 @@
   &-language-selector button {
     color: $secondary-text-color;
     display: inline-block;
+  }
+}
+
+.powered-by-zendesk {
+  a,
+  a:visited {
+    color: $secondary-text-color;
   }
 }

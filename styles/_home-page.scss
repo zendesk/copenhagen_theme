@@ -39,9 +39,8 @@
 
     a {
       display: block;
-      border-bottom: 1px solid $border-color;
+      border-bottom: 1px solid $low-contrast-border-color;
       padding: 15px 0;
-      color: $text_color;
     }
 
     .icon-lock {
@@ -50,7 +49,7 @@
 
     &:last-child a {
       @include desktop {
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid $low-contrast-border-color;
       }
 
       border: 0;
@@ -71,10 +70,12 @@
     background-repeat: no-repeat;
     max-width: 100%;
   }
+
+  @include standalone-link;
 }
 
 .community,
 .activity {
-  border-top: 1px solid $border-color;
+  border-top: 1px solid $low-contrast-border-color;
   padding: 30px 0;
 }

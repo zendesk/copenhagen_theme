@@ -1,7 +1,7 @@
 /***** Comments *****/
 /* Styles comments inside articles, posts and requests */
 .comment {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $low-contrast-border-color;
   padding: 20px 0;
 
   &-heading {
@@ -12,8 +12,8 @@
   }
 
   &-overview {
-    border-bottom: 1px solid $border-color;
-    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
+    border-top: 1px solid $low-contrast-border-color;
     padding: 20px 0;
 
     p { margin-top: 0; }
@@ -25,7 +25,7 @@
     font-size: $font-size-small;
     margin-bottom: 0;
 
-    a { color: $brand_color; }
+    @include standalone-link;
   }
 
 
@@ -85,7 +85,7 @@
   }
 
   &-meta {
-    flex: 1 0 auto;
+    flex: 1 1 auto;
   }
 
   &-labels {

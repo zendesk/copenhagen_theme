@@ -57,6 +57,8 @@
   .name {
     margin: 0;
     line-height: 25px;
+    vertical-align: middle;
+    display: inline;
   }
 }
 
@@ -324,7 +326,7 @@
   }
 
   &-item {
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $low-contrast-border-color;
     display: flex;
     flex: 1;
     flex-direction: row;
