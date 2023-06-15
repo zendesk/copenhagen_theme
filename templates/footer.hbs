@@ -19,27 +19,54 @@
       <a class="font-bw-4" href="http://support.snapmaker.com/hc/{{help_center.locale}}" >Support</a>
     </div>
     <div onclick="onFooterCollectionClick(event)"
-         class="snmk-col-5 snmk-col-l-5 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 font-2 footer-related-links-container">
-      <div class="footer-related-links-block" data-toggle="1">
-        {{dc 'footer-snapmaker2'}}
-      </div>
-      <div class="footer-related-links-block" data-toggle="2">
-        {{dc 'footer_addons'}}
-      </div>
-      <div class="footer-related-links-block" data-toggle="3">
-        {{dc 'footer_connect'}}
-      </div>
-      <div class="footer-related-links-block" data-toggle="4">
-        {{dc 'footer_snapmaker_original'}}
-      </div>
-      <div class="footer-related-links-block" data-toggle="5">
-        {{dc 'footer_software_support'}}
-      </div>
-      {{#is help_center.locale 'en-us'}}
-        <div class="footer-related-links-block" data-toggle="6">
-          {{dc 'footer_faq'}}
+        class="snmk-col-5 snmk-col-l-5 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 font-2 footer-related-links-container">
+        {{!-- tablet/mobile --}}
+        <div class="footer-related-links-block" data-toggle="1">
+          {{dc 'footer-snapmaker2'}}
         </div>
-      {{/is}}
+        <div class="footer-related-links-block" data-toggle="2">
+          {{dc 'footer_addons'}}
+        </div>
+        <div class="footer-related-links-block" data-toggle="3">
+          {{dc 'footer_connect'}}
+        </div>
+        {{!-- <div class="footer-related-links-block" data-toggle="4">
+          {{dc 'footer_snapmaker_original'}}
+        </div> --}}
+        <div class="footer-related-links-block" data-toggle="5">
+          {{dc 'footer_software_support'}}
+        </div>
+        {{#is help_center.locale 'en-us'}}
+          <div class="footer-related-links-block" data-toggle="6">
+            {{dc 'footer_faq'}}
+          </div>
+        {{/is}}
+
+        {{!-- pc --}}
+        <div class='footer-related-links-left-block' >
+          <div class="footer-related-links-block-new" data-toggle="1">
+            {{dc 'footer-snapmaker2'}}
+          </div>
+          <div class="footer-related-links-block-new" data-toggle="2">
+            {{dc 'footer_addons'}}
+          </div>
+          <div class="footer-related-links-block-new" data-toggle="3">
+            {{dc 'footer_connect'}}
+          </div>
+          {{!-- <div class="footer-related-links-block" data-toggle="4">
+            {{dc 'footer_snapmaker_original'}}
+          </div> --}}
+          <div class="footer-related-links-block-new" data-toggle="5">
+            {{dc 'footer_software_support'}}
+          </div>
+        </div>
+        <div class='footer-related-links-right-block'>
+        {{#is help_center.locale 'en-us'}}
+          <div class="footer-related-links-block-right-new" data-toggle="6">
+            {{dc 'footer_faq'}}
+          </div>
+        {{/is}}
+        </div>
     </div>
     <div class="snmk-col-3 snmk-col-l-3 snmk-col-m-4 snmk-col-s-4 snmk-col-xs-4 font-2">
       
@@ -115,7 +142,7 @@
     </div>
     <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8 snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1 font-2 footer-bottom pt-l pb-xl">
       <span class="font-bw-4">
-        ©2022 Snapmaker All Rights Reserved
+        ©2023 Snapmaker All Rights Reserved
       </span>
       <div>
         {{#if alternative_locales}}
