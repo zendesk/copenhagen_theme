@@ -52,28 +52,6 @@
   <div class="snmk-container" id="secitons-articles-container">
     <div class="snmk-col-10 snmk-col-l-10 snmk-col-m-8  snmk-col-s-4 snmk-col-xs-4 snmk-col-offset-1 snmk-col-l-offset-1">
       <div>
-        {{!-- wiki --}}
-        {{#is section.id 10129930251671}}
-          <a href="https://wiki.snapmaker.com/en/snapmaker_j1" class="software-category" id="j1-wiki">
-            <div class="software-text-container my-l">
-                <h3 class="title-2 margin-block-unset">J1 Wiki</h3>
-                <p class="font-1 mt-l mb-xl">Manuals, maintenance, troubleshooting, and FAQ.</p>
-                <button class="snmk-primary-btn text-center">Learn More</button >
-            </div>
-            <img src="https://s3.us-west-2.amazonaws.com/snapmaker.com/img/support/homepage/j1-wiki.png">
-          </a>
-        {{/is}}
-        {{#is section.id 10887579611799}}
-          <a href="https://wiki.snapmaker.com/en/snapmaker_artisan" class="software-category" id="artisan-wiki">
-            <div class="software-text-container my-l">
-                <h3 class="title-2 margin-block-unset">Artisan Wiki</h3>
-                <p class="font-1 mt-l mb-xl">Manuals, maintenance, troubleshooting, and FAQ.</p>
-                <button class="snmk-primary-btn text-center">Learn More</button >
-            </div>
-            <img src="https://s3.us-west-2.amazonaws.com/snapmaker.com/img/support/homepage/artisan-wiki.png">
-          </a>
-        {{/is}}
-
         {{!-- Video-Type --}}
         <div class="category-section" video-type aria-expanded="true"
             {{#each (slice (filter section.sections on="description" equals="Video-Type") 0 1)}} style="margin-bottom: 2px"{{/each}}>
@@ -112,6 +90,28 @@
             {{/is}}
           {{/each}}
         </div>
+
+        {{!-- wiki --}}
+        {{#is section.id 10129930251671}}
+          <a href="https://wiki.snapmaker.com/en/snapmaker_j1" class="software-category mb-2xl" id="j1-wiki">
+            <div class="software-text-container my-l">
+                <h3 class="title-2 margin-block-unset">J1 Wiki</h3>
+                <p class="font-1 mt-l mb-xl">Manuals, maintenance, troubleshooting, and FAQ.</p>
+                <button class="snmk-primary-btn text-center">Learn More</button >
+            </div>
+            <img src="https://s3.us-west-2.amazonaws.com/snapmaker.com/img/support/homepage/j1-wiki.png">
+          </a>
+        {{/is}}
+        {{#is section.id 10887579611799}}
+          <a href="https://wiki.snapmaker.com/en/snapmaker_artisan" class="software-category" id="artisan-wiki">
+            <div class="software-text-container my-l">
+                <h3 class="title-2 margin-block-unset">Artisan Wiki</h3>
+                <p class="font-1 mt-l mb-xl">Manuals, maintenance, troubleshooting, and FAQ.</p>
+                <button class="snmk-primary-btn text-center">Learn More</button >
+            </div>
+            <img src="https://s3.us-west-2.amazonaws.com/snapmaker.com/img/support/homepage/artisan-wiki.png">
+          </a>
+        {{/is}}
 
         {{!-- Manual-Type --}}
         <div class="category-section" manual-type aria-expanded="true"
