@@ -2,12 +2,10 @@ import { ESCAPE } from "./Keys";
 
 function toggleNavigation(toggle, menu) {
   const isExpanded = menu.getAttribute("aria-expanded") === "true";
-  menu.setAttribute("aria-expanded", !isExpanded);
   toggle.setAttribute("aria-expanded", !isExpanded);
 }
 
-function closeNavigation(toggle, menu) {
-  menu.setAttribute("aria-expanded", false);
+function closeNavigation(toggle) {
   toggle.setAttribute("aria-expanded", false);
   toggle.focus();
 }
@@ -26,7 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
   menuList.addEventListener("keyup", (event) => {
     if (event.keyCode === ESCAPE) {
       event.stopPropagation();
-      closeNavigation(menuButton, menuList);
+      closeNavigation(menuButton);
     }
   });
 
@@ -47,7 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
     element.addEventListener("keyup", (event) => {
       console.log("escape");
       if (event.keyCode === ESCAPE) {
-        closeNavigation(toggle, element);
+        closeNavigation(toggle);
       }
     });
   });
