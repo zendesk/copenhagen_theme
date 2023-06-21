@@ -964,6 +964,14 @@
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
   integrity sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
 
+"@types/inquirer@^8.0.0":
+  version "8.2.6"
+  resolved "https://registry.yarnpkg.com/@types/inquirer/-/inquirer-8.2.6.tgz#abd41a5fb689c7f1acb12933d787d4262a02a0ab"
+  integrity sha512-3uT88kxg8lNzY8ay2ZjP44DKcRaTGztqeIvN2zHvhzIBH/uAPaL75aBtdNRKbA7xXoMbBt5kX0M00VKAnfOYlA==
+  dependencies:
+    "@types/through" "*"
+    rxjs "^7.2.0"
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -989,6 +997,13 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
+"@types/through@*":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@types/through/-/through-0.0.30.tgz#e0e42ce77e897bd6aead6f6ea62aeb135b8a3895"
+  integrity sha512-FvnCJljyxhPM3gkRgWmxmDZyAQSiBQQWLI0A0VFL0K7W1oRUrPJSqNO0NvTnLkBcotdlp3lKvaT0JrnyRDkzOg==
+  dependencies:
+    "@types/node" "*"
+
 "@types/ws@^8.5.4":
   version "8.5.4"
   resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.4.tgz#bb10e36116d6e570dd943735f86c933c1587b8a5"
@@ -1003,10 +1018,10 @@
   dependencies:
     "@types/node" "*"
 
-"@zendesk/zcli-apps@^1.0.0-beta.33":
-  version "1.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli-apps/-/zcli-apps-1.0.0-beta.33.tgz#22145164472d7df7674ded1f2045e079aa018766"
-  integrity sha512-vne2IcczTS4QwIlU+vlDpwrOW8pebLFBH7MrTqDVDLDFAYvUiO31t+7z+ETnt+t8BPP3gPwwq43aDkPdsPYeHw==
+"@zendesk/zcli-apps@^1.0.0-beta.34":
+  version "1.0.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli-apps/-/zcli-apps-1.0.0-beta.34.tgz#a1039cbbe1879ae55aefdf4d0cc924df6ec72a70"
+  integrity sha512-pIUyFRr+BPLtXuzbr7BJQFXVManEaZZGGy5qYePPhECRW1cyY7Xt0la1ER69K4kyvyjgSq4dHrIWalG30vj8yQ==
   dependencies:
     adm-zip "^0.5.6"
     archiver "^5.3.1"
@@ -1022,10 +1037,10 @@
     tslib "^2.4.0"
     uuid "^8.3.2"
 
-"@zendesk/zcli-core@^1.0.0-beta.33":
-  version "1.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli-core/-/zcli-core-1.0.0-beta.33.tgz#adfdaa842c7282ba02764dd81902d5013e9e4d01"
-  integrity sha512-M8/B4baUlF/MLvrsDz+PqM/1Tg835QMYR1naeMhMMlj23GGODck2RQso/MZ55DLDS6yjHs4huvAFB1WSBFpKmg==
+"@zendesk/zcli-core@^1.0.0-beta.34":
+  version "1.0.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli-core/-/zcli-core-1.0.0-beta.34.tgz#4295758552ce4d660f67b1aad6957874db155728"
+  integrity sha512-+LUqrM6P8xyVO0FxV61nuzeO1DSt5NYFQYIO85xstUqK0a2j+NFqwrk7P3LgLCb1HhluGnDDKNeaIgHcLj3JNw==
   dependencies:
     "@oclif/plugin-plugins" "=2.1.12"
     axios "^0.27.2"
@@ -1034,11 +1049,12 @@
   optionalDependencies:
     keytar "^7.9.0"
 
-"@zendesk/zcli-themes@^1.0.0-beta.33":
-  version "1.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli-themes/-/zcli-themes-1.0.0-beta.33.tgz#272dc4d2067a984b315dd3d472195d52338829b2"
-  integrity sha512-b50idvLT1aKfAVqV1BLRECQG2TVoJ6Uy63wGLfXCUO/+YZ8HyXX8yJmENDYA/I7X9L8r9Sawhmr6YgDN4d/w2Q==
+"@zendesk/zcli-themes@^1.0.0-beta.34":
+  version "1.0.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli-themes/-/zcli-themes-1.0.0-beta.34.tgz#0b0d8ca89e5501f2093d26067e367f629035518c"
+  integrity sha512-lDHDp4WXrR9JrXT1sE+lG+pIopT1ze25UQDqy65QuLzAXS4hpk4W7gKJAGShAdj5diZxepqgUJZeGJgTsElzag==
   dependencies:
+    "@types/inquirer" "^8.0.0"
     "@types/ws" "^8.5.4"
     axios "^0.27.2"
     chalk "^4.1.2"
@@ -1046,22 +1062,23 @@
     cors "^2.8.5"
     express "^4.17.1"
     glob "^9.3.2"
+    inquirer "^8.0.0"
     sass "^1.60.0"
     ws "^8.13.0"
 
-"@zendesk/zcli@1.0.0-beta.33":
-  version "1.0.0-beta.33"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli/-/zcli-1.0.0-beta.33.tgz#e9d97312d8dc77e710114d36dfbf0d4ebdc3ca00"
-  integrity sha512-4K1/5hx3cFMt0pwxe7R3utVd7/Fd2GI+G/WCT3kEnwHNnPw8d2AFdq6VjNJ0yws80yCJCKnvI536HqHFIxDr1Q==
+"@zendesk/zcli@1.0.0-beta.34":
+  version "1.0.0-beta.34"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli/-/zcli-1.0.0-beta.34.tgz#249eca406b4c1915715f2327c0172c6d716f1bb6"
+  integrity sha512-ZA3sUOHdvOqEV1FxCHFyz+kgfq9FCDYX6ohVv/itXJFDRUTbdby9LY3zl/wxHb/gT0jAfpANGLqHCvdE6IrVFg==
   dependencies:
     "@oclif/plugin-autocomplete" "=1.3.10"
     "@oclif/plugin-help" "=5.1.23"
     "@oclif/plugin-not-found" "=2.3.16"
     "@oclif/plugin-update" "=3.0.13"
     "@oclif/plugin-warn-if-update-available" "=2.0.20"
-    "@zendesk/zcli-apps" "^1.0.0-beta.33"
-    "@zendesk/zcli-core" "^1.0.0-beta.33"
-    "@zendesk/zcli-themes" "^1.0.0-beta.33"
+    "@zendesk/zcli-apps" "^1.0.0-beta.34"
+    "@zendesk/zcli-core" "^1.0.0-beta.34"
+    "@zendesk/zcli-themes" "^1.0.0-beta.34"
     chalk "^4.1.2"
     tslib "^2.4.0"
 
@@ -3360,7 +3377,7 @@ init-package-json@^3.0.2:
     validate-npm-package-license "^3.0.4"
     validate-npm-package-name "^4.0.0"
 
-inquirer@^8.2.5:
+inquirer@^8.0.0, inquirer@^8.2.5:
   version "8.2.5"
   resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-8.2.5.tgz#d8654a7542c35a9b9e069d27e2df4858784d54f8"
   integrity sha512-QAgPDQMEgrDssk1XiwwHoOGYF9BAbUcc1+j+FhEvaOt8/cKRqyLn0U5qA6F74fGhTMGxf92pOvPBeh29jQJDTQ==
@@ -5638,7 +5655,7 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-rxjs@^7.5.5, rxjs@^7.8.0:
+rxjs@^7.2.0, rxjs@^7.5.5, rxjs@^7.8.0:
   version "7.8.1"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-7.8.1.tgz#6f6f3d99ea8044291efd92e7c7fcf562c4057543"
   integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
