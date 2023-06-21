@@ -1155,6 +1155,8 @@ ul {
   .page-header {
     align-items: baseline;
     flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 16px;
     margin: 0;
   }
 }
