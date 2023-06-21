@@ -861,7 +861,8 @@ ul {
   left: initial;
   right: auto;
 }
-.skip-navigation #zd-modal-container ~ .skip-navigation {
+
+#zd-modal-container ~ .skip-navigation {
   display: none;
 }
 
