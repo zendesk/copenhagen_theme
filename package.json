@@ -2,10 +2,14 @@
   "name": "copenhagen_theme",
   "version": "1.0.0",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
+  "private": true,
+  "workspaces": [
+    "server"
+  ],
   "scripts": {
     "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
     "build": "rollup -c",
-    "eslint": "eslint src",
+    "eslint": "eslint src server",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
     "test-a11y": "node bin/lighthouse/index.js",
