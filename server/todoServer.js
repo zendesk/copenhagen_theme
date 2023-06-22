@@ -8,7 +8,7 @@ const { JsonDB, Config } = require("node-json-db");
 const app = express();
 const port = 3000;
 
-const ZENDESK_SUBDOMAIN = "z3nluis";
+const ZENDESK_SUBDOMAIN = "YOUR_ZENDESK_SUBDOMAIN";
 const DATABASE_FILE_NAME = "todoDatabase";
 
 const authMiddleware = async (request, response, next) => {
