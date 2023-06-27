@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/zendesk/copenhagen_theme/compare/v3.0.2...v3.0.3) (2023-06-27)
+
+
+### Bug Fixes
+
+* remove aria-expanded attribute from section tag in search result page ([88daf87](https://github.com/zendesk/copenhagen_theme/commit/88daf87a9afa5b9eb686591d91b62e3e57f9101d))
+
 ## [3.0.2](https://github.com/zendesk/copenhagen_theme/compare/v3.0.1...v3.0.2) (2023-06-08)
 
 
