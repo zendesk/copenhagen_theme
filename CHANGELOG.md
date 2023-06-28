@@ -1,3 +1,10 @@
+## [3.0.5](https://github.com/zendesk/copenhagen_theme/compare/v3.0.4...v3.0.5) (2023-06-28)
+
+
+### Bug Fixes
+
+* prevent wrapping button for long header ([62c96c4](https://github.com/zendesk/copenhagen_theme/commit/62c96c45590fb606ecf3230510ec9e37ce5bf512))
+
 ## [3.0.4](https://github.com/zendesk/copenhagen_theme/compare/v3.0.3...v3.0.4) (2023-06-28)
 
 
