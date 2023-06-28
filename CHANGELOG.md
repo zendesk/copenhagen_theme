@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/zendesk/copenhagen_theme/compare/v3.0.3...v3.0.4) (2023-06-28)
+
+
+### Bug Fixes
+
+* disable skip navigation when modals are open ([39ab1a5](https://github.com/zendesk/copenhagen_theme/commit/39ab1a5c59f277b701239c812167dfae921c7bed))
+
 ## [3.0.3](https://github.com/zendesk/copenhagen_theme/compare/v3.0.2...v3.0.3) (2023-06-27)
 
 
