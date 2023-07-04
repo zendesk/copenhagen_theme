@@ -12,7 +12,13 @@
     "zcli": "zcli"
   },
   "dependencies": {
-    "node-fetch": "2.6.9"
+    "@zendeskgarden/react-dropdowns": "^8.69.1",
+    "@zendeskgarden/react-theming": "^8.69.1",
+    "node-fetch": "2.6.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
