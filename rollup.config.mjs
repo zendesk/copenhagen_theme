@@ -3,12 +3,19 @@ import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import replace from "@rollup/plugin-replace";
+import { defineConfig } from "rollup";
 
-export default {
-  input: "src/index.js",
+export default defineConfig({
+  input: { script: "src/index.js" },
   output: {
-    file: "script.js",
-    format: "iife",
+    dir: ".",
+    format: "es",
+    manualChunks: (id) => {
+      if (id.includes("node_modules")) {
+        return "vendor";
+      }
+    },
+    chunkFileNames: "assets/[name].js",
   },
   plugins: [
     zass(),
@@ -29,4 +36,4 @@ export default {
   watch: {
     clearScreen: false,
   },
-};
+});
