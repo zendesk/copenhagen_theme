@@ -12,7 +12,7 @@
     "zcli": "zcli"
   },
   "dependencies": {
-    "@zendeskgarden/react-dropdowns": "^8.69.1",
+    "@zendeskgarden/react-dropdowns.next": "^8.69.1",
     "@zendeskgarden/react-theming": "^8.69.1",
     "node-fetch": "2.6.9",
     "react": "^17.0.2",
