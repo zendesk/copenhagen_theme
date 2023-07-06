@@ -14,17 +14,7 @@
     {{t 'submit_a_request'}}
   </h1>
 
-  <div id="main-content" class="form" data-props='
-  {
-    "ticketForms": {
-     "options": [
-      {{ #each ticket_forms }}
-       { "id": {{id}}, "url": {{json_stringify url}}, "name": {{json_stringify display_name}}  } {{#unless @last}},{{/unless}}
-      {{ /each }}
-     ]
-    }
-  }
-'>
+  <div id="main-content" class="form">
     {{#with request_form}}
       <form data-form action="{{action}}" method="{{http_method}}" accept-charset="{{accept_charset}}">
         {{#if errors}}
@@ -54,3 +44,21 @@
     {{/with}}
   </div>
 </div>
+
+<script type="module">
+  import { NewRequestForm } from "{{asset 'NewRequestForm.js'}}";
+  import { renderComponent } from "{{asset 'shared.js'}}";
+
+  var ticketForms = {
+    options: []
+  };
+  
+  {{#each ticket_forms}}
+    ticketForms.options.push({ id:
+    {{id}}, url: "{{url}}", name: "{{display_name}}" });
+  {{/each}}
+
+  const container = document.getElementById("main-content");
+  const props = { ticketForms };
+  renderComponent(NewRequestForm, props, container);
+</script>

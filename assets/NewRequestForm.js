@@ -1,4 +1,4 @@
-import { a as React, F as Field, L as Label, C as Combobox, O as Option } from './vendor.js';
+import { R as React, F as Field, L as Label, C as Combobox, O as Option } from './vendor.js';
 
 function NewRequestForm({
   ticketForms
@@ -34,4 +34,4 @@ function TicketFormField({
   }, name))));
 }
 
-export { NewRequestForm as default };
+export { NewRequestForm };
