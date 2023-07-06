@@ -1,4 +1,4 @@
-import { R as React, F as Field, L as Label, C as Combobox, O as Option } from './vendor.js';
+import { R as React, F as Field, L as Label, C as Combobox, O as Option } from 'vendor';
 
 function NewRequestForm({
   ticketForms
