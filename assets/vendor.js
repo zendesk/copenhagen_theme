@@ -476,6 +476,11242 @@ var React$1 = /*#__PURE__*/_mergeNamespaces({
 	default: React
 }, [reactExports]);
 
+var propTypes = {exports: {}};
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var ReactPropTypesSecret_1;
+var hasRequiredReactPropTypesSecret;
+
+function requireReactPropTypesSecret () {
+	if (hasRequiredReactPropTypesSecret) return ReactPropTypesSecret_1;
+	hasRequiredReactPropTypesSecret = 1;
+
+	var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+	ReactPropTypesSecret_1 = ReactPropTypesSecret;
+	return ReactPropTypesSecret_1;
+}
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var factoryWithThrowingShims;
+var hasRequiredFactoryWithThrowingShims;
+
+function requireFactoryWithThrowingShims () {
+	if (hasRequiredFactoryWithThrowingShims) return factoryWithThrowingShims;
+	hasRequiredFactoryWithThrowingShims = 1;
+
+	var ReactPropTypesSecret = requireReactPropTypesSecret();
+	function emptyFunction() {}
+	function emptyFunctionWithReset() {}
+	emptyFunctionWithReset.resetWarningCache = emptyFunction;
+	factoryWithThrowingShims = function () {
+	  function shim(props, propName, componentName, location, propFullName, secret) {
+	    if (secret === ReactPropTypesSecret) {
+	      // It is still safe when called from React.
+	      return;
+	    }
+	    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+	    err.name = 'Invariant Violation';
+	    throw err;
+	  }
+	  shim.isRequired = shim;
+	  function getShim() {
+	    return shim;
+	  }
+	  // Important!
+	  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+	  var ReactPropTypes = {
+	    array: shim,
+	    bigint: shim,
+	    bool: shim,
+	    func: shim,
+	    number: shim,
+	    object: shim,
+	    string: shim,
+	    symbol: shim,
+	    any: shim,
+	    arrayOf: getShim,
+	    element: shim,
+	    elementType: shim,
+	    instanceOf: getShim,
+	    node: shim,
+	    objectOf: getShim,
+	    oneOf: getShim,
+	    oneOfType: getShim,
+	    shape: getShim,
+	    exact: getShim,
+	    checkPropTypes: emptyFunctionWithReset,
+	    resetWarningCache: emptyFunction
+	  };
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+	  return ReactPropTypes;
+	};
+	return factoryWithThrowingShims;
+}
+
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+{
+  // By explicitly using `prop-types` you are opting into new production behavior.
+  // http://fb.me/prop-types-in-prod
+  propTypes.exports = requireFactoryWithThrowingShims()();
+}
+
+var propTypesExports = propTypes.exports;
+var PropTypes = /*@__PURE__*/getDefaultExportFromCjs(propTypesExports);
+
+var reactIs$2 = {exports: {}};
+
+var reactIs_production_min$1 = {};
+
+/** @license React v17.0.2
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var hasRequiredReactIs_production_min$1;
+
+function requireReactIs_production_min$1 () {
+	if (hasRequiredReactIs_production_min$1) return reactIs_production_min$1;
+	hasRequiredReactIs_production_min$1 = 1;
+
+	var b = 60103,
+	  c = 60106,
+	  d = 60107,
+	  e = 60108,
+	  f = 60114,
+	  g = 60109,
+	  h = 60110,
+	  k = 60112,
+	  l = 60113,
+	  m = 60120,
+	  n = 60115,
+	  p = 60116,
+	  q = 60121,
+	  r = 60122,
+	  u = 60117,
+	  v = 60129,
+	  w = 60131;
+	if ("function" === typeof Symbol && Symbol.for) {
+	  var x = Symbol.for;
+	  b = x("react.element");
+	  c = x("react.portal");
+	  d = x("react.fragment");
+	  e = x("react.strict_mode");
+	  f = x("react.profiler");
+	  g = x("react.provider");
+	  h = x("react.context");
+	  k = x("react.forward_ref");
+	  l = x("react.suspense");
+	  m = x("react.suspense_list");
+	  n = x("react.memo");
+	  p = x("react.lazy");
+	  q = x("react.block");
+	  r = x("react.server.block");
+	  u = x("react.fundamental");
+	  v = x("react.debug_trace_mode");
+	  w = x("react.legacy_hidden");
+	}
+	function y(a) {
+	  if ("object" === typeof a && null !== a) {
+	    var t = a.$$typeof;
+	    switch (t) {
+	      case b:
+	        switch (a = a.type, a) {
+	          case d:
+	          case f:
+	          case e:
+	          case l:
+	          case m:
+	            return a;
+	          default:
+	            switch (a = a && a.$$typeof, a) {
+	              case h:
+	              case k:
+	              case p:
+	              case n:
+	              case g:
+	                return a;
+	              default:
+	                return t;
+	            }
+	        }
+	      case c:
+	        return t;
+	    }
+	  }
+	}
+	var z = g,
+	  A = b,
+	  B = k,
+	  C = d,
+	  D = p,
+	  E = n,
+	  F = c,
+	  G = f,
+	  H = e,
+	  I = l;
+	reactIs_production_min$1.ContextConsumer = h;
+	reactIs_production_min$1.ContextProvider = z;
+	reactIs_production_min$1.Element = A;
+	reactIs_production_min$1.ForwardRef = B;
+	reactIs_production_min$1.Fragment = C;
+	reactIs_production_min$1.Lazy = D;
+	reactIs_production_min$1.Memo = E;
+	reactIs_production_min$1.Portal = F;
+	reactIs_production_min$1.Profiler = G;
+	reactIs_production_min$1.StrictMode = H;
+	reactIs_production_min$1.Suspense = I;
+	reactIs_production_min$1.isAsyncMode = function () {
+	  return !1;
+	};
+	reactIs_production_min$1.isConcurrentMode = function () {
+	  return !1;
+	};
+	reactIs_production_min$1.isContextConsumer = function (a) {
+	  return y(a) === h;
+	};
+	reactIs_production_min$1.isContextProvider = function (a) {
+	  return y(a) === g;
+	};
+	reactIs_production_min$1.isElement = function (a) {
+	  return "object" === typeof a && null !== a && a.$$typeof === b;
+	};
+	reactIs_production_min$1.isForwardRef = function (a) {
+	  return y(a) === k;
+	};
+	reactIs_production_min$1.isFragment = function (a) {
+	  return y(a) === d;
+	};
+	reactIs_production_min$1.isLazy = function (a) {
+	  return y(a) === p;
+	};
+	reactIs_production_min$1.isMemo = function (a) {
+	  return y(a) === n;
+	};
+	reactIs_production_min$1.isPortal = function (a) {
+	  return y(a) === c;
+	};
+	reactIs_production_min$1.isProfiler = function (a) {
+	  return y(a) === f;
+	};
+	reactIs_production_min$1.isStrictMode = function (a) {
+	  return y(a) === e;
+	};
+	reactIs_production_min$1.isSuspense = function (a) {
+	  return y(a) === l;
+	};
+	reactIs_production_min$1.isValidElementType = function (a) {
+	  return "string" === typeof a || "function" === typeof a || a === d || a === f || a === v || a === e || a === l || a === m || a === w || "object" === typeof a && null !== a && (a.$$typeof === p || a.$$typeof === n || a.$$typeof === g || a.$$typeof === h || a.$$typeof === k || a.$$typeof === u || a.$$typeof === q || a[0] === r) ? !0 : !1;
+	};
+	reactIs_production_min$1.typeOf = y;
+	return reactIs_production_min$1;
+}
+
+{
+  reactIs$2.exports = requireReactIs_production_min$1();
+}
+
+var reactIsExports$1 = reactIs$2.exports;
+
+function stylis_min(W) {
+  function M(d, c, e, h, a) {
+    for (var m = 0, b = 0, v = 0, n = 0, q, g, x = 0, K = 0, k, u = k = q = 0, l = 0, r = 0, I = 0, t = 0, B = e.length, J = B - 1, y, f = '', p = '', F = '', G = '', C; l < B;) {
+      g = e.charCodeAt(l);
+      l === J && 0 !== b + n + v + m && (0 !== b && (g = 47 === b ? 10 : 47), n = v = m = 0, B++, J++);
+      if (0 === b + n + v + m) {
+        if (l === J && (0 < r && (f = f.replace(N, '')), 0 < f.trim().length)) {
+          switch (g) {
+            case 32:
+            case 9:
+            case 59:
+            case 13:
+            case 10:
+              break;
+            default:
+              f += e.charAt(l);
+          }
+          g = 59;
+        }
+        switch (g) {
+          case 123:
+            f = f.trim();
+            q = f.charCodeAt(0);
+            k = 1;
+            for (t = ++l; l < B;) {
+              switch (g = e.charCodeAt(l)) {
+                case 123:
+                  k++;
+                  break;
+                case 125:
+                  k--;
+                  break;
+                case 47:
+                  switch (g = e.charCodeAt(l + 1)) {
+                    case 42:
+                    case 47:
+                      a: {
+                        for (u = l + 1; u < J; ++u) {
+                          switch (e.charCodeAt(u)) {
+                            case 47:
+                              if (42 === g && 42 === e.charCodeAt(u - 1) && l + 2 !== u) {
+                                l = u + 1;
+                                break a;
+                              }
+                              break;
+                            case 10:
+                              if (47 === g) {
+                                l = u + 1;
+                                break a;
+                              }
+                          }
+                        }
+                        l = u;
+                      }
+                  }
+                  break;
+                case 91:
+                  g++;
+                case 40:
+                  g++;
+                case 34:
+                case 39:
+                  for (; l++ < J && e.charCodeAt(l) !== g;) {}
+              }
+              if (0 === k) break;
+              l++;
+            }
+            k = e.substring(t, l);
+            0 === q && (q = (f = f.replace(ca, '').trim()).charCodeAt(0));
+            switch (q) {
+              case 64:
+                0 < r && (f = f.replace(N, ''));
+                g = f.charCodeAt(1);
+                switch (g) {
+                  case 100:
+                  case 109:
+                  case 115:
+                  case 45:
+                    r = c;
+                    break;
+                  default:
+                    r = O;
+                }
+                k = M(c, r, k, g, a + 1);
+                t = k.length;
+                0 < A && (r = X(O, f, I), C = H(3, k, r, c, D, z, t, g, a, h), f = r.join(''), void 0 !== C && 0 === (t = (k = C.trim()).length) && (g = 0, k = ''));
+                if (0 < t) switch (g) {
+                  case 115:
+                    f = f.replace(da, ea);
+                  case 100:
+                  case 109:
+                  case 45:
+                    k = f + '{' + k + '}';
+                    break;
+                  case 107:
+                    f = f.replace(fa, '$1 $2');
+                    k = f + '{' + k + '}';
+                    k = 1 === w || 2 === w && L('@' + k, 3) ? '@-webkit-' + k + '@' + k : '@' + k;
+                    break;
+                  default:
+                    k = f + k, 112 === h && (k = (p += k, ''));
+                } else k = '';
+                break;
+              default:
+                k = M(c, X(c, f, I), k, h, a + 1);
+            }
+            F += k;
+            k = I = r = u = q = 0;
+            f = '';
+            g = e.charCodeAt(++l);
+            break;
+          case 125:
+          case 59:
+            f = (0 < r ? f.replace(N, '') : f).trim();
+            if (1 < (t = f.length)) switch (0 === u && (q = f.charCodeAt(0), 45 === q || 96 < q && 123 > q) && (t = (f = f.replace(' ', ':')).length), 0 < A && void 0 !== (C = H(1, f, c, d, D, z, p.length, h, a, h)) && 0 === (t = (f = C.trim()).length) && (f = '\x00\x00'), q = f.charCodeAt(0), g = f.charCodeAt(1), q) {
+              case 0:
+                break;
+              case 64:
+                if (105 === g || 99 === g) {
+                  G += f + e.charAt(l);
+                  break;
+                }
+              default:
+                58 !== f.charCodeAt(t - 1) && (p += P(f, q, g, f.charCodeAt(2)));
+            }
+            I = r = u = q = 0;
+            f = '';
+            g = e.charCodeAt(++l);
+        }
+      }
+      switch (g) {
+        case 13:
+        case 10:
+          47 === b ? b = 0 : 0 === 1 + q && 107 !== h && 0 < f.length && (r = 1, f += '\x00');
+          0 < A * Y && H(0, f, c, d, D, z, p.length, h, a, h);
+          z = 1;
+          D++;
+          break;
+        case 59:
+        case 125:
+          if (0 === b + n + v + m) {
+            z++;
+            break;
+          }
+        default:
+          z++;
+          y = e.charAt(l);
+          switch (g) {
+            case 9:
+            case 32:
+              if (0 === n + m + b) switch (x) {
+                case 44:
+                case 58:
+                case 9:
+                case 32:
+                  y = '';
+                  break;
+                default:
+                  32 !== g && (y = ' ');
+              }
+              break;
+            case 0:
+              y = '\\0';
+              break;
+            case 12:
+              y = '\\f';
+              break;
+            case 11:
+              y = '\\v';
+              break;
+            case 38:
+              0 === n + b + m && (r = I = 1, y = '\f' + y);
+              break;
+            case 108:
+              if (0 === n + b + m + E && 0 < u) switch (l - u) {
+                case 2:
+                  112 === x && 58 === e.charCodeAt(l - 3) && (E = x);
+                case 8:
+                  111 === K && (E = K);
+              }
+              break;
+            case 58:
+              0 === n + b + m && (u = l);
+              break;
+            case 44:
+              0 === b + v + n + m && (r = 1, y += '\r');
+              break;
+            case 34:
+            case 39:
+              0 === b && (n = n === g ? 0 : 0 === n ? g : n);
+              break;
+            case 91:
+              0 === n + b + v && m++;
+              break;
+            case 93:
+              0 === n + b + v && m--;
+              break;
+            case 41:
+              0 === n + b + m && v--;
+              break;
+            case 40:
+              if (0 === n + b + m) {
+                if (0 === q) switch (2 * x + 3 * K) {
+                  case 533:
+                    break;
+                  default:
+                    q = 1;
+                }
+                v++;
+              }
+              break;
+            case 64:
+              0 === b + v + n + m + u + k && (k = 1);
+              break;
+            case 42:
+            case 47:
+              if (!(0 < n + m + v)) switch (b) {
+                case 0:
+                  switch (2 * g + 3 * e.charCodeAt(l + 1)) {
+                    case 235:
+                      b = 47;
+                      break;
+                    case 220:
+                      t = l, b = 42;
+                  }
+                  break;
+                case 42:
+                  47 === g && 42 === x && t + 2 !== l && (33 === e.charCodeAt(t + 2) && (p += e.substring(t, l + 1)), y = '', b = 0);
+              }
+          }
+          0 === b && (f += y);
+      }
+      K = x;
+      x = g;
+      l++;
+    }
+    t = p.length;
+    if (0 < t) {
+      r = c;
+      if (0 < A && (C = H(2, p, r, d, D, z, t, h, a, h), void 0 !== C && 0 === (p = C).length)) return G + p + F;
+      p = r.join(',') + '{' + p + '}';
+      if (0 !== w * E) {
+        2 !== w || L(p, 2) || (E = 0);
+        switch (E) {
+          case 111:
+            p = p.replace(ha, ':-moz-$1') + p;
+            break;
+          case 112:
+            p = p.replace(Q, '::-webkit-input-$1') + p.replace(Q, '::-moz-$1') + p.replace(Q, ':-ms-input-$1') + p;
+        }
+        E = 0;
+      }
+    }
+    return G + p + F;
+  }
+  function X(d, c, e) {
+    var h = c.trim().split(ia);
+    c = h;
+    var a = h.length,
+      m = d.length;
+    switch (m) {
+      case 0:
+      case 1:
+        var b = 0;
+        for (d = 0 === m ? '' : d[0] + ' '; b < a; ++b) {
+          c[b] = Z(d, c[b], e).trim();
+        }
+        break;
+      default:
+        var v = b = 0;
+        for (c = []; b < a; ++b) {
+          for (var n = 0; n < m; ++n) {
+            c[v++] = Z(d[n] + ' ', h[b], e).trim();
+          }
+        }
+    }
+    return c;
+  }
+  function Z(d, c, e) {
+    var h = c.charCodeAt(0);
+    33 > h && (h = (c = c.trim()).charCodeAt(0));
+    switch (h) {
+      case 38:
+        return c.replace(F, '$1' + d.trim());
+      case 58:
+        return d.trim() + c.replace(F, '$1' + d.trim());
+      default:
+        if (0 < 1 * e && 0 < c.indexOf('\f')) return c.replace(F, (58 === d.charCodeAt(0) ? '' : '$1') + d.trim());
+    }
+    return d + c;
+  }
+  function P(d, c, e, h) {
+    var a = d + ';',
+      m = 2 * c + 3 * e + 4 * h;
+    if (944 === m) {
+      d = a.indexOf(':', 9) + 1;
+      var b = a.substring(d, a.length - 1).trim();
+      b = a.substring(0, d).trim() + b + ';';
+      return 1 === w || 2 === w && L(b, 1) ? '-webkit-' + b + b : b;
+    }
+    if (0 === w || 2 === w && !L(a, 1)) return a;
+    switch (m) {
+      case 1015:
+        return 97 === a.charCodeAt(10) ? '-webkit-' + a + a : a;
+      case 951:
+        return 116 === a.charCodeAt(3) ? '-webkit-' + a + a : a;
+      case 963:
+        return 110 === a.charCodeAt(5) ? '-webkit-' + a + a : a;
+      case 1009:
+        if (100 !== a.charCodeAt(4)) break;
+      case 969:
+      case 942:
+        return '-webkit-' + a + a;
+      case 978:
+        return '-webkit-' + a + '-moz-' + a + a;
+      case 1019:
+      case 983:
+        return '-webkit-' + a + '-moz-' + a + '-ms-' + a + a;
+      case 883:
+        if (45 === a.charCodeAt(8)) return '-webkit-' + a + a;
+        if (0 < a.indexOf('image-set(', 11)) return a.replace(ja, '$1-webkit-$2') + a;
+        break;
+      case 932:
+        if (45 === a.charCodeAt(4)) switch (a.charCodeAt(5)) {
+          case 103:
+            return '-webkit-box-' + a.replace('-grow', '') + '-webkit-' + a + '-ms-' + a.replace('grow', 'positive') + a;
+          case 115:
+            return '-webkit-' + a + '-ms-' + a.replace('shrink', 'negative') + a;
+          case 98:
+            return '-webkit-' + a + '-ms-' + a.replace('basis', 'preferred-size') + a;
+        }
+        return '-webkit-' + a + '-ms-' + a + a;
+      case 964:
+        return '-webkit-' + a + '-ms-flex-' + a + a;
+      case 1023:
+        if (99 !== a.charCodeAt(8)) break;
+        b = a.substring(a.indexOf(':', 15)).replace('flex-', '').replace('space-between', 'justify');
+        return '-webkit-box-pack' + b + '-webkit-' + a + '-ms-flex-pack' + b + a;
+      case 1005:
+        return ka.test(a) ? a.replace(aa, ':-webkit-') + a.replace(aa, ':-moz-') + a : a;
+      case 1e3:
+        b = a.substring(13).trim();
+        c = b.indexOf('-') + 1;
+        switch (b.charCodeAt(0) + b.charCodeAt(c)) {
+          case 226:
+            b = a.replace(G, 'tb');
+            break;
+          case 232:
+            b = a.replace(G, 'tb-rl');
+            break;
+          case 220:
+            b = a.replace(G, 'lr');
+            break;
+          default:
+            return a;
+        }
+        return '-webkit-' + a + '-ms-' + b + a;
+      case 1017:
+        if (-1 === a.indexOf('sticky', 9)) break;
+      case 975:
+        c = (a = d).length - 10;
+        b = (33 === a.charCodeAt(c) ? a.substring(0, c) : a).substring(d.indexOf(':', 7) + 1).trim();
+        switch (m = b.charCodeAt(0) + (b.charCodeAt(7) | 0)) {
+          case 203:
+            if (111 > b.charCodeAt(8)) break;
+          case 115:
+            a = a.replace(b, '-webkit-' + b) + ';' + a;
+            break;
+          case 207:
+          case 102:
+            a = a.replace(b, '-webkit-' + (102 < m ? 'inline-' : '') + 'box') + ';' + a.replace(b, '-webkit-' + b) + ';' + a.replace(b, '-ms-' + b + 'box') + ';' + a;
+        }
+        return a + ';';
+      case 938:
+        if (45 === a.charCodeAt(5)) switch (a.charCodeAt(6)) {
+          case 105:
+            return b = a.replace('-items', ''), '-webkit-' + a + '-webkit-box-' + b + '-ms-flex-' + b + a;
+          case 115:
+            return '-webkit-' + a + '-ms-flex-item-' + a.replace(ba, '') + a;
+          default:
+            return '-webkit-' + a + '-ms-flex-line-pack' + a.replace('align-content', '').replace(ba, '') + a;
+        }
+        break;
+      case 973:
+      case 989:
+        if (45 !== a.charCodeAt(3) || 122 === a.charCodeAt(4)) break;
+      case 931:
+      case 953:
+        if (!0 === la.test(d)) return 115 === (b = d.substring(d.indexOf(':') + 1)).charCodeAt(0) ? P(d.replace('stretch', 'fill-available'), c, e, h).replace(':fill-available', ':stretch') : a.replace(b, '-webkit-' + b) + a.replace(b, '-moz-' + b.replace('fill-', '')) + a;
+        break;
+      case 962:
+        if (a = '-webkit-' + a + (102 === a.charCodeAt(5) ? '-ms-' + a : '') + a, 211 === e + h && 105 === a.charCodeAt(13) && 0 < a.indexOf('transform', 10)) return a.substring(0, a.indexOf(';', 27) + 1).replace(ma, '$1-webkit-$2') + a;
+    }
+    return a;
+  }
+  function L(d, c) {
+    var e = d.indexOf(1 === c ? ':' : '{'),
+      h = d.substring(0, 3 !== c ? e : 10);
+    e = d.substring(e + 1, d.length - 1);
+    return R(2 !== c ? h : h.replace(na, '$1'), e, c);
+  }
+  function ea(d, c) {
+    var e = P(c, c.charCodeAt(0), c.charCodeAt(1), c.charCodeAt(2));
+    return e !== c + ';' ? e.replace(oa, ' or ($1)').substring(4) : '(' + c + ')';
+  }
+  function H(d, c, e, h, a, m, b, v, n, q) {
+    for (var g = 0, x = c, w; g < A; ++g) {
+      switch (w = S[g].call(B, d, x, e, h, a, m, b, v, n, q)) {
+        case void 0:
+        case !1:
+        case !0:
+        case null:
+          break;
+        default:
+          x = w;
+      }
+    }
+    if (x !== c) return x;
+  }
+  function T(d) {
+    switch (d) {
+      case void 0:
+      case null:
+        A = S.length = 0;
+        break;
+      default:
+        if ('function' === typeof d) S[A++] = d;else if ('object' === typeof d) for (var c = 0, e = d.length; c < e; ++c) {
+          T(d[c]);
+        } else Y = !!d | 0;
+    }
+    return T;
+  }
+  function U(d) {
+    d = d.prefix;
+    void 0 !== d && (R = null, d ? 'function' !== typeof d ? w = 1 : (w = 2, R = d) : w = 0);
+    return U;
+  }
+  function B(d, c) {
+    var e = d;
+    33 > e.charCodeAt(0) && (e = e.trim());
+    V = e;
+    e = [V];
+    if (0 < A) {
+      var h = H(-1, c, e, e, D, z, 0, 0, 0, 0);
+      void 0 !== h && 'string' === typeof h && (c = h);
+    }
+    var a = M(O, e, c, 0, 0);
+    0 < A && (h = H(-2, a, e, e, D, z, a.length, 0, 0, 0), void 0 !== h && (a = h));
+    V = '';
+    E = 0;
+    z = D = 1;
+    return a;
+  }
+  var ca = /^\0+/g,
+    N = /[\0\r\f]/g,
+    aa = /: */g,
+    ka = /zoo|gra/,
+    ma = /([,: ])(transform)/g,
+    ia = /,\r+?/g,
+    F = /([\t\r\n ])*\f?&/g,
+    fa = /@(k\w+)\s*(\S*)\s*/,
+    Q = /::(place)/g,
+    ha = /:(read-only)/g,
+    G = /[svh]\w+-[tblr]{2}/,
+    da = /\(\s*(.*)\s*\)/g,
+    oa = /([\s\S]*?);/g,
+    ba = /-self|flex-/g,
+    na = /[^]*?(:[rp][el]a[\w-]+)[^]*/,
+    la = /stretch|:\s*\w+\-(?:conte|avail)/,
+    ja = /([^-])(image-set\()/,
+    z = 1,
+    D = 1,
+    E = 0,
+    w = 1,
+    O = [],
+    S = [],
+    A = 0,
+    R = null,
+    Y = 0,
+    V = '';
+  B.use = T;
+  B.set = U;
+  void 0 !== W && U(W);
+  return B;
+}
+
+var unitlessKeys = {
+  animationIterationCount: 1,
+  borderImageOutset: 1,
+  borderImageSlice: 1,
+  borderImageWidth: 1,
+  boxFlex: 1,
+  boxFlexGroup: 1,
+  boxOrdinalGroup: 1,
+  columnCount: 1,
+  columns: 1,
+  flex: 1,
+  flexGrow: 1,
+  flexPositive: 1,
+  flexShrink: 1,
+  flexNegative: 1,
+  flexOrder: 1,
+  gridRow: 1,
+  gridRowEnd: 1,
+  gridRowSpan: 1,
+  gridRowStart: 1,
+  gridColumn: 1,
+  gridColumnEnd: 1,
+  gridColumnSpan: 1,
+  gridColumnStart: 1,
+  msGridRow: 1,
+  msGridRowSpan: 1,
+  msGridColumn: 1,
+  msGridColumnSpan: 1,
+  fontWeight: 1,
+  lineHeight: 1,
+  opacity: 1,
+  order: 1,
+  orphans: 1,
+  tabSize: 1,
+  widows: 1,
+  zIndex: 1,
+  zoom: 1,
+  WebkitLineClamp: 1,
+  // SVG-related properties
+  fillOpacity: 1,
+  floodOpacity: 1,
+  stopOpacity: 1,
+  strokeDasharray: 1,
+  strokeDashoffset: 1,
+  strokeMiterlimit: 1,
+  strokeOpacity: 1,
+  strokeWidth: 1
+};
+
+function memoize$2(fn) {
+  var cache = Object.create(null);
+  return function (arg) {
+    if (cache[arg] === undefined) cache[arg] = fn(arg);
+    return cache[arg];
+  };
+}
+
+var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|enterKeyHint|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
+
+var isPropValid = /* #__PURE__ */memoize$2(function (prop) {
+  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
+  /* o */ && prop.charCodeAt(1) === 110
+  /* n */ && prop.charCodeAt(2) < 91;
+}
+/* Z+1 */);
+
+var reactIs$1 = {exports: {}};
+
+var reactIs_production_min = {};
+
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+var hasRequiredReactIs_production_min;
+
+function requireReactIs_production_min () {
+	if (hasRequiredReactIs_production_min) return reactIs_production_min;
+	hasRequiredReactIs_production_min = 1;
+
+	var b = "function" === typeof Symbol && Symbol.for,
+	  c = b ? Symbol.for("react.element") : 60103,
+	  d = b ? Symbol.for("react.portal") : 60106,
+	  e = b ? Symbol.for("react.fragment") : 60107,
+	  f = b ? Symbol.for("react.strict_mode") : 60108,
+	  g = b ? Symbol.for("react.profiler") : 60114,
+	  h = b ? Symbol.for("react.provider") : 60109,
+	  k = b ? Symbol.for("react.context") : 60110,
+	  l = b ? Symbol.for("react.async_mode") : 60111,
+	  m = b ? Symbol.for("react.concurrent_mode") : 60111,
+	  n = b ? Symbol.for("react.forward_ref") : 60112,
+	  p = b ? Symbol.for("react.suspense") : 60113,
+	  q = b ? Symbol.for("react.suspense_list") : 60120,
+	  r = b ? Symbol.for("react.memo") : 60115,
+	  t = b ? Symbol.for("react.lazy") : 60116,
+	  v = b ? Symbol.for("react.block") : 60121,
+	  w = b ? Symbol.for("react.fundamental") : 60117,
+	  x = b ? Symbol.for("react.responder") : 60118,
+	  y = b ? Symbol.for("react.scope") : 60119;
+	function z(a) {
+	  if ("object" === typeof a && null !== a) {
+	    var u = a.$$typeof;
+	    switch (u) {
+	      case c:
+	        switch (a = a.type, a) {
+	          case l:
+	          case m:
+	          case e:
+	          case g:
+	          case f:
+	          case p:
+	            return a;
+	          default:
+	            switch (a = a && a.$$typeof, a) {
+	              case k:
+	              case n:
+	              case t:
+	              case r:
+	              case h:
+	                return a;
+	              default:
+	                return u;
+	            }
+	        }
+	      case d:
+	        return u;
+	    }
+	  }
+	}
+	function A(a) {
+	  return z(a) === m;
+	}
+	reactIs_production_min.AsyncMode = l;
+	reactIs_production_min.ConcurrentMode = m;
+	reactIs_production_min.ContextConsumer = k;
+	reactIs_production_min.ContextProvider = h;
+	reactIs_production_min.Element = c;
+	reactIs_production_min.ForwardRef = n;
+	reactIs_production_min.Fragment = e;
+	reactIs_production_min.Lazy = t;
+	reactIs_production_min.Memo = r;
+	reactIs_production_min.Portal = d;
+	reactIs_production_min.Profiler = g;
+	reactIs_production_min.StrictMode = f;
+	reactIs_production_min.Suspense = p;
+	reactIs_production_min.isAsyncMode = function (a) {
+	  return A(a) || z(a) === l;
+	};
+	reactIs_production_min.isConcurrentMode = A;
+	reactIs_production_min.isContextConsumer = function (a) {
+	  return z(a) === k;
+	};
+	reactIs_production_min.isContextProvider = function (a) {
+	  return z(a) === h;
+	};
+	reactIs_production_min.isElement = function (a) {
+	  return "object" === typeof a && null !== a && a.$$typeof === c;
+	};
+	reactIs_production_min.isForwardRef = function (a) {
+	  return z(a) === n;
+	};
+	reactIs_production_min.isFragment = function (a) {
+	  return z(a) === e;
+	};
+	reactIs_production_min.isLazy = function (a) {
+	  return z(a) === t;
+	};
+	reactIs_production_min.isMemo = function (a) {
+	  return z(a) === r;
+	};
+	reactIs_production_min.isPortal = function (a) {
+	  return z(a) === d;
+	};
+	reactIs_production_min.isProfiler = function (a) {
+	  return z(a) === g;
+	};
+	reactIs_production_min.isStrictMode = function (a) {
+	  return z(a) === f;
+	};
+	reactIs_production_min.isSuspense = function (a) {
+	  return z(a) === p;
+	};
+	reactIs_production_min.isValidElementType = function (a) {
+	  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || a === q || "object" === typeof a && null !== a && (a.$$typeof === t || a.$$typeof === r || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === w || a.$$typeof === x || a.$$typeof === y || a.$$typeof === v);
+	};
+	reactIs_production_min.typeOf = z;
+	return reactIs_production_min;
+}
+
+{
+  reactIs$1.exports = requireReactIs_production_min();
+}
+
+var reactIsExports = reactIs$1.exports;
+
+var reactIs = reactIsExports;
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+  childContextTypes: true,
+  contextType: true,
+  contextTypes: true,
+  defaultProps: true,
+  displayName: true,
+  getDefaultProps: true,
+  getDerivedStateFromError: true,
+  getDerivedStateFromProps: true,
+  mixins: true,
+  propTypes: true,
+  type: true
+};
+var KNOWN_STATICS = {
+  name: true,
+  length: true,
+  prototype: true,
+  caller: true,
+  callee: true,
+  arguments: true,
+  arity: true
+};
+var FORWARD_REF_STATICS = {
+  '$$typeof': true,
+  render: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true
+};
+var MEMO_STATICS = {
+  '$$typeof': true,
+  compare: true,
+  defaultProps: true,
+  displayName: true,
+  propTypes: true,
+  type: true
+};
+var TYPE_STATICS = {};
+TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
+TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
+function getStatics(component) {
+  // React v16.11 and below
+  if (reactIs.isMemo(component)) {
+    return MEMO_STATICS;
+  } // React v16.12 and above
+
+  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
+}
+var defineProperty$3 = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = Object.prototype;
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+  if (typeof sourceComponent !== 'string') {
+    // don't hoist over string (html) components
+    if (objectPrototype) {
+      var inheritedComponent = getPrototypeOf(sourceComponent);
+      if (inheritedComponent && inheritedComponent !== objectPrototype) {
+        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+      }
+    }
+    var keys = getOwnPropertyNames(sourceComponent);
+    if (getOwnPropertySymbols) {
+      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+    }
+    var targetStatics = getStatics(targetComponent);
+    var sourceStatics = getStatics(sourceComponent);
+    for (var i = 0; i < keys.length; ++i) {
+      var key = keys[i];
+      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
+        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+        try {
+          // Avoid failures from read-only properties
+          defineProperty$3(targetComponent, key, descriptor);
+        } catch (e) {}
+      }
+    }
+  }
+  return targetComponent;
+}
+var hoistNonReactStatics_cjs = hoistNonReactStatics;
+
+var f = /*@__PURE__*/getDefaultExportFromCjs(hoistNonReactStatics_cjs);
+
+function m() {
+  return (m = Object.assign || function (e) {
+    for (var t = 1; t < arguments.length; t++) {
+      var n = arguments[t];
+      for (var r in n) Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
+    }
+    return e;
+  }).apply(this, arguments);
+}
+var y = function (e, t) {
+    for (var n = [e[0]], r = 0, o = t.length; r < o; r += 1) n.push(t[r], e[r + 1]);
+    return n;
+  },
+  v = function (t) {
+    return null !== t && "object" == typeof t && "[object Object]" === (t.toString ? t.toString() : Object.prototype.toString.call(t)) && !reactIsExports$1.typeOf(t);
+  },
+  g = Object.freeze([]),
+  S = Object.freeze({});
+function w(e) {
+  return "function" == typeof e;
+}
+function E(e) {
+  return e.displayName || e.name || "Component";
+}
+function b(e) {
+  return e && "string" == typeof e.styledComponentId;
+}
+var _ = "undefined" != typeof process && void 0 !== process.env && (process.env.REACT_APP_SC_ATTR || process.env.SC_ATTR) || "data-styled",
+  A = "undefined" != typeof window && "HTMLElement" in window,
+  C = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== process.env && (void 0 !== process.env.REACT_APP_SC_DISABLE_SPEEDY && "" !== process.env.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== process.env.REACT_APP_SC_DISABLE_SPEEDY && process.env.REACT_APP_SC_DISABLE_SPEEDY : void 0 !== process.env.SC_DISABLE_SPEEDY && "" !== process.env.SC_DISABLE_SPEEDY ? "false" !== process.env.SC_DISABLE_SPEEDY && process.env.SC_DISABLE_SPEEDY : "production" !== "production"));
+function R(e) {
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
+  throw new Error("An error occurred. See https://git.io/JUIaE#" + e + " for more information." + (n.length > 0 ? " Args: " + n.join(", ") : "")) ;
+}
+var D = function () {
+    function e(e) {
+      this.groupSizes = new Uint32Array(512), this.length = 512, this.tag = e;
+    }
+    var t = e.prototype;
+    return t.indexOfGroup = function (e) {
+      for (var t = 0, n = 0; n < e; n++) t += this.groupSizes[n];
+      return t;
+    }, t.insertRules = function (e, t) {
+      if (e >= this.groupSizes.length) {
+        for (var n = this.groupSizes, r = n.length, o = r; e >= o;) (o <<= 1) < 0 && R(16, "" + e);
+        this.groupSizes = new Uint32Array(o), this.groupSizes.set(n), this.length = o;
+        for (var s = r; s < o; s++) this.groupSizes[s] = 0;
+      }
+      for (var i = this.indexOfGroup(e + 1), a = 0, c = t.length; a < c; a++) this.tag.insertRule(i, t[a]) && (this.groupSizes[e]++, i++);
+    }, t.clearGroup = function (e) {
+      if (e < this.length) {
+        var t = this.groupSizes[e],
+          n = this.indexOfGroup(e),
+          r = n + t;
+        this.groupSizes[e] = 0;
+        for (var o = n; o < r; o++) this.tag.deleteRule(n);
+      }
+    }, t.getGroup = function (e) {
+      var t = "";
+      if (e >= this.length || 0 === this.groupSizes[e]) return t;
+      for (var n = this.groupSizes[e], r = this.indexOfGroup(e), o = r + n, s = r; s < o; s++) t += this.tag.getRule(s) + "/*!sc*/\n";
+      return t;
+    }, e;
+  }(),
+  j = new Map(),
+  T = new Map(),
+  x = 1,
+  k = function (e) {
+    if (j.has(e)) return j.get(e);
+    for (; T.has(x);) x++;
+    var t = x++;
+    return j.set(e, t), T.set(t, e), t;
+  },
+  V = function (e) {
+    return T.get(e);
+  },
+  z = function (e, t) {
+    t >= x && (x = t + 1), j.set(e, t), T.set(t, e);
+  },
+  B = "style[" + _ + '][data-styled-version="5.3.11"]',
+  M = new RegExp("^" + _ + '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),
+  G = function (e, t, n) {
+    for (var r, o = n.split(","), s = 0, i = o.length; s < i; s++) (r = o[s]) && e.registerName(t, r);
+  },
+  L = function (e, t) {
+    for (var n = (t.textContent || "").split("/*!sc*/\n"), r = [], o = 0, s = n.length; o < s; o++) {
+      var i = n[o].trim();
+      if (i) {
+        var a = i.match(M);
+        if (a) {
+          var c = 0 | parseInt(a[1], 10),
+            u = a[2];
+          0 !== c && (z(u, c), G(e, u, a[3]), e.getTag().insertRules(c, r)), r.length = 0;
+        } else r.push(i);
+      }
+    }
+  },
+  F = function () {
+    return "undefined" != typeof __webpack_nonce__ ? __webpack_nonce__ : null;
+  },
+  Y = function (e) {
+    var t = document.head,
+      n = e || t,
+      r = document.createElement("style"),
+      o = function (e) {
+        for (var t = e.childNodes, n = t.length; n >= 0; n--) {
+          var r = t[n];
+          if (r && 1 === r.nodeType && r.hasAttribute(_)) return r;
+        }
+      }(n),
+      s = void 0 !== o ? o.nextSibling : null;
+    r.setAttribute(_, "active"), r.setAttribute("data-styled-version", "5.3.11");
+    var i = F();
+    return i && r.setAttribute("nonce", i), n.insertBefore(r, s), r;
+  },
+  q = function () {
+    function e(e) {
+      var t = this.element = Y(e);
+      t.appendChild(document.createTextNode("")), this.sheet = function (e) {
+        if (e.sheet) return e.sheet;
+        for (var t = document.styleSheets, n = 0, r = t.length; n < r; n++) {
+          var o = t[n];
+          if (o.ownerNode === e) return o;
+        }
+        R(17);
+      }(t), this.length = 0;
+    }
+    var t = e.prototype;
+    return t.insertRule = function (e, t) {
+      try {
+        return this.sheet.insertRule(t, e), this.length++, !0;
+      } catch (e) {
+        return !1;
+      }
+    }, t.deleteRule = function (e) {
+      this.sheet.deleteRule(e), this.length--;
+    }, t.getRule = function (e) {
+      var t = this.sheet.cssRules[e];
+      return void 0 !== t && "string" == typeof t.cssText ? t.cssText : "";
+    }, e;
+  }(),
+  H = function () {
+    function e(e) {
+      var t = this.element = Y(e);
+      this.nodes = t.childNodes, this.length = 0;
+    }
+    var t = e.prototype;
+    return t.insertRule = function (e, t) {
+      if (e <= this.length && e >= 0) {
+        var n = document.createTextNode(t),
+          r = this.nodes[e];
+        return this.element.insertBefore(n, r || null), this.length++, !0;
+      }
+      return !1;
+    }, t.deleteRule = function (e) {
+      this.element.removeChild(this.nodes[e]), this.length--;
+    }, t.getRule = function (e) {
+      return e < this.length ? this.nodes[e].textContent : "";
+    }, e;
+  }(),
+  $ = function () {
+    function e(e) {
+      this.rules = [], this.length = 0;
+    }
+    var t = e.prototype;
+    return t.insertRule = function (e, t) {
+      return e <= this.length && (this.rules.splice(e, 0, t), this.length++, !0);
+    }, t.deleteRule = function (e) {
+      this.rules.splice(e, 1), this.length--;
+    }, t.getRule = function (e) {
+      return e < this.length ? this.rules[e] : "";
+    }, e;
+  }(),
+  W = A,
+  U = {
+    isServer: !A,
+    useCSSOMInjection: !C
+  },
+  J = function () {
+    function e(e, t, n) {
+      void 0 === e && (e = S), void 0 === t && (t = {}), this.options = m({}, U, {}, e), this.gs = t, this.names = new Map(n), this.server = !!e.isServer, !this.server && A && W && (W = !1, function (e) {
+        for (var t = document.querySelectorAll(B), n = 0, r = t.length; n < r; n++) {
+          var o = t[n];
+          o && "active" !== o.getAttribute(_) && (L(e, o), o.parentNode && o.parentNode.removeChild(o));
+        }
+      }(this));
+    }
+    e.registerId = function (e) {
+      return k(e);
+    };
+    var t = e.prototype;
+    return t.reconstructWithOptions = function (t, n) {
+      return void 0 === n && (n = !0), new e(m({}, this.options, {}, t), this.gs, n && this.names || void 0);
+    }, t.allocateGSInstance = function (e) {
+      return this.gs[e] = (this.gs[e] || 0) + 1;
+    }, t.getTag = function () {
+      return this.tag || (this.tag = (n = (t = this.options).isServer, r = t.useCSSOMInjection, o = t.target, e = n ? new $(o) : r ? new q(o) : new H(o), new D(e)));
+      var e, t, n, r, o;
+    }, t.hasNameForId = function (e, t) {
+      return this.names.has(e) && this.names.get(e).has(t);
+    }, t.registerName = function (e, t) {
+      if (k(e), this.names.has(e)) this.names.get(e).add(t);else {
+        var n = new Set();
+        n.add(t), this.names.set(e, n);
+      }
+    }, t.insertRules = function (e, t, n) {
+      this.registerName(e, t), this.getTag().insertRules(k(e), n);
+    }, t.clearNames = function (e) {
+      this.names.has(e) && this.names.get(e).clear();
+    }, t.clearRules = function (e) {
+      this.getTag().clearGroup(k(e)), this.clearNames(e);
+    }, t.clearTag = function () {
+      this.tag = void 0;
+    }, t.toString = function () {
+      return function (e) {
+        for (var t = e.getTag(), n = t.length, r = "", o = 0; o < n; o++) {
+          var s = V(o);
+          if (void 0 !== s) {
+            var i = e.names.get(s),
+              a = t.getGroup(o);
+            if (i && a && i.size) {
+              var c = _ + ".g" + o + '[id="' + s + '"]',
+                u = "";
+              void 0 !== i && i.forEach(function (e) {
+                e.length > 0 && (u += e + ",");
+              }), r += "" + a + c + '{content:"' + u + '"}/*!sc*/\n';
+            }
+          }
+        }
+        return r;
+      }(this);
+    }, e;
+  }(),
+  X = /(a)(d)/gi,
+  Z = function (e) {
+    return String.fromCharCode(e + (e > 25 ? 39 : 97));
+  };
+function K(e) {
+  var t,
+    n = "";
+  for (t = Math.abs(e); t > 52; t = t / 52 | 0) n = Z(t % 52) + n;
+  return (Z(t % 52) + n).replace(X, "$1-$2");
+}
+var Q = function (e, t) {
+    for (var n = t.length; n;) e = 33 * e ^ t.charCodeAt(--n);
+    return e;
+  },
+  ee = function (e) {
+    return Q(5381, e);
+  };
+function te(e) {
+  for (var t = 0; t < e.length; t += 1) {
+    var n = e[t];
+    if (w(n) && !b(n)) return !1;
+  }
+  return !0;
+}
+var ne = ee("5.3.11"),
+  re = function () {
+    function e(e, t, n) {
+      this.rules = e, this.staticRulesId = "", this.isStatic = (void 0 === n || n.isStatic) && te(e), this.componentId = t, this.baseHash = Q(ne, t), this.baseStyle = n, J.registerId(t);
+    }
+    return e.prototype.generateAndInjectStyles = function (e, t, n) {
+      var r = this.componentId,
+        o = [];
+      if (this.baseStyle && o.push(this.baseStyle.generateAndInjectStyles(e, t, n)), this.isStatic && !n.hash) {
+        if (this.staticRulesId && t.hasNameForId(r, this.staticRulesId)) o.push(this.staticRulesId);else {
+          var s = be(this.rules, e, t, n).join(""),
+            i = K(Q(this.baseHash, s) >>> 0);
+          if (!t.hasNameForId(r, i)) {
+            var a = n(s, "." + i, void 0, r);
+            t.insertRules(r, i, a);
+          }
+          o.push(i), this.staticRulesId = i;
+        }
+      } else {
+        for (var c = this.rules.length, u = Q(this.baseHash, n.hash), l = "", d = 0; d < c; d++) {
+          var h = this.rules[d];
+          if ("string" == typeof h) l += h;else if (h) {
+            var p = be(h, e, t, n),
+              f = Array.isArray(p) ? p.join("") : p;
+            u = Q(u, f + d), l += f;
+          }
+        }
+        if (l) {
+          var m = K(u >>> 0);
+          if (!t.hasNameForId(r, m)) {
+            var y = n(l, "." + m, void 0, r);
+            t.insertRules(r, m, y);
+          }
+          o.push(m);
+        }
+      }
+      return o.join(" ");
+    }, e;
+  }(),
+  oe = /^\s*\/\/.*$/gm,
+  se = [":", "[", ".", "#"];
+function ie(e) {
+  var t,
+    n,
+    r,
+    o,
+    s = void 0 === e ? S : e,
+    i = s.options,
+    a = void 0 === i ? S : i,
+    c = s.plugins,
+    u = void 0 === c ? g : c,
+    l = new stylis_min(a),
+    h = [],
+    p = function (e) {
+      function t(t) {
+        if (t) try {
+          e(t + "}");
+        } catch (e) {}
+      }
+      return function (n, r, o, s, i, a, c, u, l, d) {
+        switch (n) {
+          case 1:
+            if (0 === l && 64 === r.charCodeAt(0)) return e(r + ";"), "";
+            break;
+          case 2:
+            if (0 === u) return r + "/*|*/";
+            break;
+          case 3:
+            switch (u) {
+              case 102:
+              case 112:
+                return e(o[0] + r), "";
+              default:
+                return r + (0 === d ? "/*|*/" : "");
+            }
+          case -2:
+            r.split("/*|*/}").forEach(t);
+        }
+      };
+    }(function (e) {
+      h.push(e);
+    }),
+    f = function (e, r, s) {
+      return 0 === r && -1 !== se.indexOf(s[n.length]) || s.match(o) ? e : "." + t;
+    };
+  function m(e, s, i, a) {
+    void 0 === a && (a = "&");
+    var c = e.replace(oe, ""),
+      u = s && i ? i + " " + s + " { " + c + " }" : c;
+    return t = a, n = s, r = new RegExp("\\" + n + "\\b", "g"), o = new RegExp("(\\" + n + "\\b){2,}"), l(i || !s ? "" : s, u);
+  }
+  return l.use([].concat(u, [function (e, t, o) {
+    2 === e && o.length && o[0].lastIndexOf(n) > 0 && (o[0] = o[0].replace(r, f));
+  }, p, function (e) {
+    if (-2 === e) {
+      var t = h;
+      return h = [], t;
+    }
+  }])), m.hash = u.length ? u.reduce(function (e, t) {
+    return t.name || R(15), Q(e, t.name);
+  }, 5381).toString() : "", m;
+}
+var ae = /*#__PURE__*/React.createContext();
+  ae.Consumer;
+  var ue = /*#__PURE__*/React.createContext(),
+  le = (ue.Consumer, new J()),
+  de = ie();
+function he() {
+  return reactExports.useContext(ae) || le;
+}
+function pe() {
+  return reactExports.useContext(ue) || de;
+}
+var me = function () {
+    function e(e, t) {
+      var n = this;
+      this.inject = function (e, t) {
+        void 0 === t && (t = de);
+        var r = n.name + t.hash;
+        e.hasNameForId(n.id, r) || e.insertRules(n.id, r, t(n.rules, r, "@keyframes"));
+      }, this.toString = function () {
+        return R(12, String(n.name));
+      }, this.name = e, this.id = "sc-keyframes-" + e, this.rules = t;
+    }
+    return e.prototype.getName = function (e) {
+      return void 0 === e && (e = de), this.name + e.hash;
+    }, e;
+  }(),
+  ye = /([A-Z])/,
+  ve = /([A-Z])/g,
+  ge = /^ms-/,
+  Se = function (e) {
+    return "-" + e.toLowerCase();
+  };
+function we(e) {
+  return ye.test(e) ? e.replace(ve, Se).replace(ge, "-ms-") : e;
+}
+var Ee = function (e) {
+  return null == e || !1 === e || "" === e;
+};
+function be(e, n, r, o) {
+  if (Array.isArray(e)) {
+    for (var s, i = [], a = 0, c = e.length; a < c; a += 1) "" !== (s = be(e[a], n, r, o)) && (Array.isArray(s) ? i.push.apply(i, s) : i.push(s));
+    return i;
+  }
+  if (Ee(e)) return "";
+  if (b(e)) return "." + e.styledComponentId;
+  if (w(e)) {
+    if ("function" != typeof (l = e) || l.prototype && l.prototype.isReactComponent || !n) return e;
+    var u = e(n);
+    return be(u, n, r, o);
+  }
+  var l;
+  return e instanceof me ? r ? (e.inject(r, o), e.getName(o)) : e : v(e) ? function e(t, n) {
+    var r,
+      o,
+      s = [];
+    for (var i in t) t.hasOwnProperty(i) && !Ee(t[i]) && (Array.isArray(t[i]) && t[i].isCss || w(t[i]) ? s.push(we(i) + ":", t[i], ";") : v(t[i]) ? s.push.apply(s, e(t[i], i)) : s.push(we(i) + ": " + (r = i, null == (o = t[i]) || "boolean" == typeof o || "" === o ? "" : "number" != typeof o || 0 === o || r in unitlessKeys || r.startsWith("--") ? String(o).trim() : o + "px") + ";"));
+    return n ? [n + " {"].concat(s, ["}"]) : s;
+  }(e) : e.toString();
+}
+var _e = function (e) {
+  return Array.isArray(e) && (e.isCss = !0), e;
+};
+function Ne(e) {
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
+  return w(e) || v(e) ? _e(be(y(g, [e].concat(n)))) : 0 === n.length && 1 === e.length && "string" == typeof e[0] ? e : _e(be(y(e, n)));
+}
+var Pe = function (e, t, n) {
+    return void 0 === n && (n = S), e.theme !== n.theme && e.theme || t || n.theme;
+  },
+  Oe = /[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,
+  Re = /(^-|-$)/g;
+function De(e) {
+  return e.replace(Oe, "-").replace(Re, "");
+}
+var je = function (e) {
+  return K(ee(e) >>> 0);
+};
+function Te(e) {
+  return "string" == typeof e && ("production" === "production" );
+}
+var xe = function (e) {
+    return "function" == typeof e || "object" == typeof e && null !== e && !Array.isArray(e);
+  },
+  ke = function (e) {
+    return "__proto__" !== e && "constructor" !== e && "prototype" !== e;
+  };
+function Ve(e, t, n) {
+  var r = e[n];
+  xe(t) && xe(r) ? ze(r, t) : e[n] = t;
+}
+function ze(e) {
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
+  for (var o = 0, s = n; o < s.length; o++) {
+    var i = s[o];
+    if (xe(i)) for (var a in i) ke(a) && Ve(e, i[a], a);
+  }
+  return e;
+}
+var Be = /*#__PURE__*/React.createContext();
+  Be.Consumer;
+function Ge(e) {
+  var t = reactExports.useContext(Be),
+    n = reactExports.useMemo(function () {
+      return function (e, t) {
+        if (!e) return R(14);
+        if (w(e)) {
+          var n = e(t);
+          return n ;
+        }
+        return Array.isArray(e) || "object" != typeof e ? R(8) : t ? m({}, t, {}, e) : e;
+      }(e.theme, t);
+    }, [e.theme, t]);
+  return e.children ? /*#__PURE__*/React.createElement(Be.Provider, {
+    value: n
+  }, e.children) : null;
+}
+var Le = {};
+function Fe(e, t, n) {
+  var o = b(e),
+    i = !Te(e),
+    a = t.attrs,
+    c = void 0 === a ? g : a,
+    l = t.componentId,
+    d = void 0 === l ? function (e, t) {
+      var n = "string" != typeof e ? "sc" : De(e);
+      Le[n] = (Le[n] || 0) + 1;
+      var r = n + "-" + je("5.3.11" + n + Le[n]);
+      return t ? t + "-" + r : r;
+    }(t.displayName, t.parentComponentId) : l,
+    h = t.displayName,
+    y = void 0 === h ? function (e) {
+      return Te(e) ? "styled." + e : "Styled(" + E(e) + ")";
+    }(e) : h,
+    v = t.displayName && t.componentId ? De(t.displayName) + "-" + t.componentId : t.componentId || d,
+    _ = o && e.attrs ? Array.prototype.concat(e.attrs, c).filter(Boolean) : c,
+    N = t.shouldForwardProp;
+  o && e.shouldForwardProp && (N = t.shouldForwardProp ? function (n, r, o) {
+    return e.shouldForwardProp(n, r, o) && t.shouldForwardProp(n, r, o);
+  } : e.shouldForwardProp);
+  var A,
+    C = new re(n, v, o ? e.componentStyle : void 0),
+    I = C.isStatic && 0 === c.length,
+    P = function (e, t) {
+      return function (e, t, n, r) {
+        var o = e.attrs,
+          i = e.componentStyle,
+          a = e.defaultProps,
+          c = e.foldedComponentIds,
+          l = e.shouldForwardProp,
+          d = e.styledComponentId,
+          h = e.target,
+          f = function (e, t, n) {
+            void 0 === e && (e = S);
+            var r = m({}, t, {
+                theme: e
+              }),
+              o = {};
+            return n.forEach(function (e) {
+              var t,
+                n,
+                s,
+                i = e;
+              for (t in w(i) && (i = i(r)), i) r[t] = o[t] = "className" === t ? (n = o[t], s = i[t], n && s ? n + " " + s : n || s) : i[t];
+            }), [r, o];
+          }(Pe(t, reactExports.useContext(Be), a) || S, t, o),
+          y = f[0],
+          v = f[1],
+          g = function (e, t, n, r) {
+            var o = he(),
+              s = pe(),
+              i = t ? e.generateAndInjectStyles(S, o, s) : e.generateAndInjectStyles(n, o, s);
+            return i;
+          }(i, r, y),
+          E = n,
+          b = v.$as || t.$as || v.as || t.as || h,
+          _ = Te(b),
+          N = v !== t ? m({}, t, {}, v) : t,
+          A = {};
+        for (var C in N) "$" !== C[0] && "as" !== C && ("forwardedAs" === C ? A.as = N[C] : (l ? l(C, isPropValid, b) : !_ || isPropValid(C)) && (A[C] = N[C]));
+        return t.style && v.style !== t.style && (A.style = m({}, t.style, {}, v.style)), A.className = Array.prototype.concat(c, d, g !== d ? g : null, t.className, v.className).filter(Boolean).join(" "), A.ref = E, /*#__PURE__*/reactExports.createElement(b, A);
+      }(A, e, t, I);
+    };
+  return P.displayName = y, (A = /*#__PURE__*/React.forwardRef(P)).attrs = _, A.componentStyle = C, A.displayName = y, A.shouldForwardProp = N, A.foldedComponentIds = o ? Array.prototype.concat(e.foldedComponentIds, e.styledComponentId) : g, A.styledComponentId = v, A.target = o ? e.target : e, A.withComponent = function (e) {
+    var r = t.componentId,
+      o = function (e, t) {
+        if (null == e) return {};
+        var n,
+          r,
+          o = {},
+          s = Object.keys(e);
+        for (r = 0; r < s.length; r++) n = s[r], t.indexOf(n) >= 0 || (o[n] = e[n]);
+        return o;
+      }(t, ["componentId"]),
+      s = r && r + "-" + (Te(e) ? e : De(E(e)));
+    return Fe(e, m({}, o, {
+      attrs: _,
+      componentId: s
+    }), n);
+  }, Object.defineProperty(A, "defaultProps", {
+    get: function () {
+      return this._foldedDefaultProps;
+    },
+    set: function (t) {
+      this._foldedDefaultProps = o ? ze({}, e.defaultProps, t) : t;
+    }
+  }), Object.defineProperty(A, "toString", {
+    value: function () {
+      return "." + A.styledComponentId;
+    }
+  }), i && f(A, e, {
+    attrs: !0,
+    componentStyle: !0,
+    displayName: !0,
+    foldedComponentIds: !0,
+    shouldForwardProp: !0,
+    styledComponentId: !0,
+    target: !0,
+    withComponent: !0
+  }), A;
+}
+var Ye = function (e) {
+  return function e(t, r, o) {
+    if (void 0 === o && (o = S), !reactIsExports$1.isValidElementType(r)) return R(1, String(r));
+    var s = function () {
+      return t(r, o, Ne.apply(void 0, arguments));
+    };
+    return s.withConfig = function (n) {
+      return e(t, r, m({}, o, {}, n));
+    }, s.attrs = function (n) {
+      return e(t, r, m({}, o, {
+        attrs: Array.prototype.concat(o.attrs, n).filter(Boolean)
+      }));
+    }, s;
+  }(Fe, e);
+};
+["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "menuitem", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr", "circle", "clipPath", "defs", "ellipse", "foreignObject", "g", "image", "line", "linearGradient", "marker", "mask", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "stop", "svg", "text", "textPath", "tspan"].forEach(function (e) {
+  Ye[e] = Ye(e);
+});
+function $e(e) {
+  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
+  var o = Ne.apply(void 0, [e].concat(n)).join(""),
+    s = je(o);
+  return new me(s, o);
+}
+var styled = Ye;
+
+/**
+  * @reach/utils v0.18.0
+  *
+  * Copyright (c) 2018-2022, React Training LLC
+  *
+  * This source code is licensed under the MIT license found in the
+  * LICENSE.md file in the root directory of this source tree.
+  *
+  * @license MIT
+  */
+
+
+// src/can-use-dom.ts
+function canUseDOM() {
+  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
+}
+var useIsomorphicLayoutEffect$1 = canUseDOM() ? reactExports.useLayoutEffect : reactExports.useEffect;
+
+var serverHandoffComplete = false;
+var id = 0;
+function genId() {
+  return ++id;
+}
+var maybeReactUseId = React$1["useId".toString()];
+function useId(providedId) {
+  if (maybeReactUseId !== void 0) {
+    let generatedId = maybeReactUseId();
+    return providedId ?? generatedId;
+  }
+  let initialId = providedId ?? (serverHandoffComplete ? genId() : null);
+  let [id2, setId] = reactExports.useState(initialId);
+  useIsomorphicLayoutEffect$1(() => {
+    if (id2 === null) {
+      setId(genId());
+    }
+  }, []);
+  reactExports.useEffect(() => {
+    if (serverHandoffComplete === false) {
+      serverHandoffComplete = true;
+    }
+  }, []);
+  return providedId ?? id2 ?? void 0;
+}
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+function composeEventHandlers$1() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+function getControlledValue() {
+  for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+  for (const value of values) {
+    if (value !== undefined) {
+      return value;
+    }
+  }
+  return undefined;
+}
+const KEY_CODES = {
+  ALT: 18,
+  ASTERISK: 170,
+  BACKSPACE: 8,
+  COMMA: 188,
+  DELETE: 46,
+  DOWN: 40,
+  END: 35,
+  ENTER: 13,
+  ESCAPE: 27,
+  HOME: 36,
+  LEFT: 37,
+  NUMPAD_ADD: 107,
+  NUMPAD_DECIMAL: 110,
+  NUMPAD_DIVIDE: 111,
+  NUMPAD_ENTER: 108,
+  NUMPAD_MULTIPLY: 106,
+  NUMPAD_SUBTRACT: 109,
+  PAGE_DOWN: 34,
+  PAGE_UP: 33,
+  PERIOD: 190,
+  RIGHT: 39,
+  SHIFT: 16,
+  SPACE: 32,
+  TAB: 9,
+  UP: 38
+};
+const KEYS$1 = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+var DocumentPosition$1;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+const useField$1 = _ref => {
+  let {
+    idPrefix,
+    hasHint,
+    hasMessage
+  } = _ref;
+  const prefix = useId(idPrefix);
+  const inputId = `${prefix}--input`;
+  const labelId = `${prefix}--label`;
+  const hintId = `${prefix}--hint`;
+  const messageId = `${prefix}--message`;
+  const getLabelProps = reactExports.useCallback(function (_temp) {
+    let {
+      id = labelId,
+      htmlFor = inputId,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    return {
+      'data-garden-container-id': 'containers.field.label',
+      'data-garden-container-version': '3.0.5',
+      id,
+      htmlFor,
+      ...other
+    };
+  }, [labelId, inputId]);
+  const getHintProps = reactExports.useCallback(function (_temp2) {
+    let {
+      id = hintId,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    return {
+      'data-garden-container-id': 'containers.field.hint',
+      'data-garden-container-version': '3.0.5',
+      id,
+      ...other
+    };
+  }, [hintId]);
+  const getInputProps = reactExports.useCallback(function (_temp3) {
+    let {
+      id = inputId,
+      ...other
+    } = _temp3 === void 0 ? {} : _temp3;
+    const describedBy = [];
+    if (hasHint) {
+      describedBy.push(hintId);
+    }
+    if (hasMessage) {
+      describedBy.push(messageId);
+    }
+    return {
+      'data-garden-container-id': 'containers.field.input',
+      'data-garden-container-version': '3.0.5',
+      id,
+      'aria-labelledby': labelId,
+      'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined,
+      ...other
+    };
+  }, [inputId, labelId, hintId, messageId, hasHint, hasMessage]);
+  const getMessageProps = reactExports.useCallback(function (_temp4) {
+    let {
+      id = messageId,
+      role = 'alert',
+      ...other
+    } = _temp4 === void 0 ? {} : _temp4;
+    return {
+      'data-garden-container-id': 'containers.field.message',
+      'data-garden-container-version': '3.0.5',
+      role: role === null ? undefined : role,
+      id,
+      ...other
+    };
+  }, [messageId]);
+  return reactExports.useMemo(() => ({
+    getLabelProps,
+    getHintProps,
+    getInputProps,
+    getMessageProps
+  }), [getLabelProps, getHintProps, getInputProps, getMessageProps]);
+};
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  idPrefix: PropTypes.string,
+  hasHint: PropTypes.bool,
+  hasMessage: PropTypes.bool
+});
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+
+function _extends$w() {
+  _extends$w = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$w.apply(this, arguments);
+}
+
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+  return self;
+}
+
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+  return _setPrototypeOf(o, p);
+}
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  _setPrototypeOf(subClass, superClass);
+}
+
+let e = e => "object" == typeof e && null != e && 1 === e.nodeType,
+  t = (e, t) => (!t || "hidden" !== e) && "visible" !== e && "clip" !== e,
+  n = (e, n) => {
+    if (e.clientHeight < e.scrollHeight || e.clientWidth < e.scrollWidth) {
+      let l = getComputedStyle(e, null);
+      return t(l.overflowY, n) || t(l.overflowX, n) || (e => {
+        let t = (e => {
+          if (!e.ownerDocument || !e.ownerDocument.defaultView) return null;
+          try {
+            return e.ownerDocument.defaultView.frameElement;
+          } catch (e) {
+            return null;
+          }
+        })(e);
+        return !!t && (t.clientHeight < e.scrollHeight || t.clientWidth < e.scrollWidth);
+      })(e);
+    }
+    return !1;
+  },
+  l = (e, t, n, l, i, o, r, d) => o < e && r > t || o > e && r < t ? 0 : o <= e && d <= n || r >= t && d >= n ? o - e - l : r > t && d < n || o < e && d > n ? r - t + i : 0,
+  i = e => {
+    let t = e.parentElement;
+    return null == t ? e.getRootNode().host || null : t;
+  };
+var o = (t, o) => {
+  var r, d, h, f, u, s;
+  if ("undefined" == typeof document) return [];
+  let {
+      scrollMode: a,
+      block: c,
+      inline: g,
+      boundary: m,
+      skipOverflowHiddenElements: p
+    } = o,
+    w = "function" == typeof m ? m : e => e !== m;
+  if (!e(t)) throw new TypeError("Invalid target");
+  let W = document.scrollingElement || document.documentElement,
+    H = [],
+    b = t;
+  for (; e(b) && w(b);) {
+    if (b = i(b), b === W) {
+      H.push(b);
+      break;
+    }
+    null != b && b === document.body && n(b) && !n(document.documentElement) || null != b && n(b, p) && H.push(b);
+  }
+  let v = null != (d = null == (r = window.visualViewport) ? void 0 : r.width) ? d : innerWidth,
+    y = null != (f = null == (h = window.visualViewport) ? void 0 : h.height) ? f : innerHeight,
+    E = null != (u = window.scrollX) ? u : pageXOffset,
+    M = null != (s = window.scrollY) ? s : pageYOffset,
+    {
+      height: x,
+      width: I,
+      top: C,
+      right: R,
+      bottom: T,
+      left: V
+    } = t.getBoundingClientRect(),
+    k = "start" === c || "nearest" === c ? C : "end" === c ? T : C + x / 2,
+    B = "center" === g ? V + I / 2 : "end" === g ? R : V,
+    D = [];
+  for (let e = 0; e < H.length; e++) {
+    let t = H[e],
+      {
+        height: n,
+        width: i,
+        top: o,
+        right: r,
+        bottom: d,
+        left: h
+      } = t.getBoundingClientRect();
+    if ("if-needed" === a && C >= 0 && V >= 0 && T <= y && R <= v && C >= o && T <= d && V >= h && R <= r) return D;
+    let f = getComputedStyle(t),
+      u = parseInt(f.borderLeftWidth, 10),
+      s = parseInt(f.borderTopWidth, 10),
+      m = parseInt(f.borderRightWidth, 10),
+      p = parseInt(f.borderBottomWidth, 10),
+      w = 0,
+      b = 0,
+      O = "offsetWidth" in t ? t.offsetWidth - t.clientWidth - u - m : 0,
+      X = "offsetHeight" in t ? t.offsetHeight - t.clientHeight - s - p : 0,
+      Y = "offsetWidth" in t ? 0 === t.offsetWidth ? 0 : i / t.offsetWidth : 0,
+      L = "offsetHeight" in t ? 0 === t.offsetHeight ? 0 : n / t.offsetHeight : 0;
+    if (W === t) w = "start" === c ? k : "end" === c ? k - y : "nearest" === c ? l(M, M + y, y, s, p, M + k, M + k + x, x) : k - y / 2, b = "start" === g ? B : "center" === g ? B - v / 2 : "end" === g ? B - v : l(E, E + v, v, u, m, E + B, E + B + I, I), w = Math.max(0, w + M), b = Math.max(0, b + E);else {
+      w = "start" === c ? k - o - s : "end" === c ? k - d + p + X : "nearest" === c ? l(o, d, n, s, p + X, k, k + x, x) : k - (o + n / 2) + X / 2, b = "start" === g ? B - h - u : "center" === g ? B - (h + i / 2) + O / 2 : "end" === g ? B - r + m + O : l(h, r, i, u, m + O, B, B + I, I);
+      let {
+        scrollLeft: e,
+        scrollTop: f
+      } = t;
+      w = Math.max(0, Math.min(f + w / L, t.scrollHeight - n / L + X)), b = Math.max(0, Math.min(e + b / Y, t.scrollWidth - i / Y + O)), k += f - w, B += e - b;
+    }
+    D.push({
+      el: t,
+      top: w,
+      left: b
+    });
+  }
+  return D;
+};
+
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+  __assign = Object.assign || function __assign(t) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+      }
+      return t;
+  };
+  return __assign.apply(this, arguments);
+};
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+  var e = new Error(message);
+  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+
+var idCounter = 0;
+function noop() {}
+
+/**
+ * Scroll node into view if necessary
+ * @param {HTMLElement} node the element that should scroll into view
+ * @param {HTMLElement} menuNode the menu element of the component
+ */
+function scrollIntoView(node, menuNode) {
+  if (!node) {
+    return;
+  }
+  var actions = o(node, {
+    boundary: menuNode,
+    block: 'nearest',
+    scrollMode: 'if-needed'
+  });
+  actions.forEach(function (_ref) {
+    var el = _ref.el,
+      top = _ref.top,
+      left = _ref.left;
+    el.scrollTop = top;
+    el.scrollLeft = left;
+  });
+}
+
+/**
+ * @param {HTMLElement} parent the parent node
+ * @param {HTMLElement} child the child node
+ * @param {Window} environment The window context where downshift renders.
+ * @return {Boolean} whether the parent is the child or the child is in the parent
+ */
+function isOrContainsNode(parent, child, environment) {
+  var result = parent === child || child instanceof environment.Node && parent.contains && parent.contains(child);
+  return result;
+}
+
+/**
+ * Simple debounce implementation. Will call the given
+ * function once after the time given has passed since
+ * it was last called.
+ * @param {Function} fn the function to call after the time
+ * @param {Number} time the time to wait
+ * @return {Function} the debounced function
+ */
+function debounce$3(fn, time) {
+  var timeoutId;
+  function cancel() {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
+  function wrapper() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    cancel();
+    timeoutId = setTimeout(function () {
+      timeoutId = null;
+      fn.apply(void 0, args);
+    }, time);
+  }
+  wrapper.cancel = cancel;
+  return wrapper;
+}
+
+/**
+ * This is intended to be used to compose event handlers.
+ * They are executed in order until one of them sets
+ * `event.preventDownshiftDefault = true`.
+ * @param {...Function} fns the event handler functions
+ * @return {Function} the event handler to add to an element
+ */
+function callAllEventHandlers() {
+  for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    fns[_key2] = arguments[_key2];
+  }
+  return function (event) {
+    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+      args[_key3 - 1] = arguments[_key3];
+    }
+    return fns.some(function (fn) {
+      if (fn) {
+        fn.apply(void 0, [event].concat(args));
+      }
+      return event.preventDownshiftDefault || event.hasOwnProperty('nativeEvent') && event.nativeEvent.preventDownshiftDefault;
+    });
+  };
+}
+function handleRefs() {
+  for (var _len4 = arguments.length, refs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+    refs[_key4] = arguments[_key4];
+  }
+  return function (node) {
+    refs.forEach(function (ref) {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    });
+  };
+}
+
+/**
+ * This generates a unique ID for an instance of Downshift
+ * @return {String} the unique ID
+ */
+function generateId() {
+  return String(idCounter++);
+}
+
+/**
+ * Default implementation for status message. Only added when menu is open.
+ * Will specify if there are results in the list, and if so, how many,
+ * and what keys are relevant.
+ *
+ * @param {Object} param the downshift state and other relevant properties
+ * @return {String} the a11y status message
+ */
+function getA11yStatusMessage$1(_ref2) {
+  var isOpen = _ref2.isOpen,
+    resultCount = _ref2.resultCount,
+    previousResultCount = _ref2.previousResultCount;
+  if (!isOpen) {
+    return '';
+  }
+  if (!resultCount) {
+    return 'No results are available.';
+  }
+  if (resultCount !== previousResultCount) {
+    return resultCount + " result" + (resultCount === 1 ? ' is' : 's are') + " available, use up and down arrow keys to navigate. Press Enter key to select.";
+  }
+  return '';
+}
+
+/**
+ * This will perform a shallow merge of the given state object
+ * with the state coming from props
+ * (for the controlled component scenario)
+ * This is used in state updater functions so they're referencing
+ * the right state regardless of where it comes from.
+ *
+ * @param {Object} state The state of the component/hook.
+ * @param {Object} props The props that may contain controlled values.
+ * @returns {Object} The merged controlled state.
+ */
+function getState(state, props) {
+  return Object.keys(state).reduce(function (prevState, key) {
+    prevState[key] = isControlledProp(props, key) ? props[key] : state[key];
+    return prevState;
+  }, {});
+}
+
+/**
+ * This determines whether a prop is a "controlled prop" meaning it is
+ * state which is controlled by the outside of this component rather
+ * than within this component.
+ *
+ * @param {Object} props The props that may contain controlled values.
+ * @param {String} key the key to check
+ * @return {Boolean} whether it is a controlled controlled prop
+ */
+function isControlledProp(props, key) {
+  return props[key] !== undefined;
+}
+
+/**
+ * Normalizes the 'key' property of a KeyboardEvent in IE/Edge
+ * @param {Object} event a keyboardEvent object
+ * @return {String} keyboard key
+ */
+function normalizeArrowKey(event) {
+  var key = event.key,
+    keyCode = event.keyCode;
+  /* istanbul ignore next (ie) */
+  if (keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0) {
+    return "Arrow" + key;
+  }
+  return key;
+}
+
+/**
+ * Returns the new index in the list, in a circular way. If next value is out of bonds from the total,
+ * it will wrap to either 0 or itemCount - 1.
+ *
+ * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
+ * @param {number} baseIndex The initial position to move from.
+ * @param {number} itemCount The total number of items.
+ * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
+ * @param {boolean} circular Specify if navigation is circular. Default is true.
+ * @returns {number} The new index after the move.
+ */
+function getNextWrappingIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
+  if (circular === void 0) {
+    circular = true;
+  }
+  if (itemCount === 0) {
+    return -1;
+  }
+  var itemsLastIndex = itemCount - 1;
+  if (typeof baseIndex !== 'number' || baseIndex < 0 || baseIndex >= itemCount) {
+    baseIndex = moveAmount > 0 ? -1 : itemsLastIndex + 1;
+  }
+  var newIndex = baseIndex + moveAmount;
+  if (newIndex < 0) {
+    newIndex = circular ? itemsLastIndex : 0;
+  } else if (newIndex > itemsLastIndex) {
+    newIndex = circular ? 0 : itemsLastIndex;
+  }
+  var nonDisabledNewIndex = getNextNonDisabledIndex(moveAmount, newIndex, itemCount, getItemNodeFromIndex, circular);
+  if (nonDisabledNewIndex === -1) {
+    return baseIndex >= itemCount ? -1 : baseIndex;
+  }
+  return nonDisabledNewIndex;
+}
+
+/**
+ * Returns the next index in the list of an item that is not disabled.
+ *
+ * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
+ * @param {number} baseIndex The initial position to move from.
+ * @param {number} itemCount The total number of items.
+ * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
+ * @param {boolean} circular Specify if navigation is circular. Default is true.
+ * @returns {number} The new index. Returns baseIndex if item is not disabled. Returns next non-disabled item otherwise. If no non-disabled found it will return -1.
+ */
+function getNextNonDisabledIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
+  var currentElementNode = getItemNodeFromIndex(baseIndex);
+  if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
+    return baseIndex;
+  }
+  if (moveAmount > 0) {
+    for (var index = baseIndex + 1; index < itemCount; index++) {
+      if (!getItemNodeFromIndex(index).hasAttribute('disabled')) {
+        return index;
+      }
+    }
+  } else {
+    for (var _index = baseIndex - 1; _index >= 0; _index--) {
+      if (!getItemNodeFromIndex(_index).hasAttribute('disabled')) {
+        return _index;
+      }
+    }
+  }
+  if (circular) {
+    return moveAmount > 0 ? getNextNonDisabledIndex(1, 0, itemCount, getItemNodeFromIndex, false) : getNextNonDisabledIndex(-1, itemCount - 1, itemCount, getItemNodeFromIndex, false);
+  }
+  return -1;
+}
+
+/**
+ * Checks if event target is within the downshift elements.
+ *
+ * @param {EventTarget} target Target to check.
+ * @param {HTMLElement[]} downshiftElements The elements that form downshift (list, toggle button etc).
+ * @param {Window} environment The window context where downshift renders.
+ * @param {boolean} checkActiveElement Whether to also check activeElement.
+ *
+ * @returns {boolean} Whether or not the target is within downshift elements.
+ */
+function targetWithinDownshift(target, downshiftElements, environment, checkActiveElement) {
+  if (checkActiveElement === void 0) {
+    checkActiveElement = true;
+  }
+  return downshiftElements.some(function (contextNode) {
+    return contextNode && (isOrContainsNode(contextNode, target, environment) || checkActiveElement && isOrContainsNode(contextNode, environment.document.activeElement, environment));
+  });
+}
+var cleanupStatus = debounce$3(function (documentProp) {
+  getStatusDiv(documentProp).textContent = '';
+}, 500);
+
+/**
+ * @param {String} status the status message
+ * @param {Object} documentProp document passed by the user.
+ */
+function setStatus(status, documentProp) {
+  var div = getStatusDiv(documentProp);
+  if (!status) {
+    return;
+  }
+  div.textContent = status;
+  cleanupStatus(documentProp);
+}
+
+/**
+ * Get the status node or create it if it does not already exist.
+ * @param {Object} documentProp document passed by the user.
+ * @return {HTMLElement} the status node.
+ */
+function getStatusDiv(documentProp) {
+  if (documentProp === void 0) {
+    documentProp = document;
+  }
+  var statusDiv = documentProp.getElementById('a11y-status-message');
+  if (statusDiv) {
+    return statusDiv;
+  }
+  statusDiv = documentProp.createElement('div');
+  statusDiv.setAttribute('id', 'a11y-status-message');
+  statusDiv.setAttribute('role', 'status');
+  statusDiv.setAttribute('aria-live', 'polite');
+  statusDiv.setAttribute('aria-relevant', 'additions text');
+  Object.assign(statusDiv.style, {
+    border: '0',
+    clip: 'rect(0 0 0 0)',
+    height: '1px',
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0',
+    position: 'absolute',
+    width: '1px'
+  });
+  documentProp.body.appendChild(statusDiv);
+  return statusDiv;
+}
+var _excluded$3 = ["isInitialMount", "highlightedIndex", "items", "environment"];
+var dropdownDefaultStateValues = {
+  highlightedIndex: -1,
+  isOpen: false,
+  selectedItem: null,
+  inputValue: ''
+};
+function callOnChangeProps(action, state, newState) {
+  var props = action.props,
+    type = action.type;
+  var changes = {};
+  Object.keys(state).forEach(function (key) {
+    invokeOnChangeHandler(key, action, state, newState);
+    if (newState[key] !== state[key]) {
+      changes[key] = newState[key];
+    }
+  });
+  if (props.onStateChange && Object.keys(changes).length) {
+    props.onStateChange(_extends$w({
+      type: type
+    }, changes));
+  }
+}
+function invokeOnChangeHandler(key, action, state, newState) {
+  var props = action.props,
+    type = action.type;
+  var handler = "on" + capitalizeString(key) + "Change";
+  if (props[handler] && newState[key] !== undefined && newState[key] !== state[key]) {
+    props[handler](_extends$w({
+      type: type
+    }, newState));
+  }
+}
+
+/**
+ * Default state reducer that returns the changes.
+ *
+ * @param {Object} s state.
+ * @param {Object} a action with changes.
+ * @returns {Object} changes.
+ */
+function stateReducer(s, a) {
+  return a.changes;
+}
+
+/**
+ * Returns a message to be added to aria-live region when item is selected.
+ *
+ * @param {Object} selectionParameters Parameters required to build the message.
+ * @returns {string} The a11y message.
+ */
+function getA11ySelectionMessage(selectionParameters) {
+  var selectedItem = selectionParameters.selectedItem,
+    itemToStringLocal = selectionParameters.itemToString;
+  return selectedItem ? itemToStringLocal(selectedItem) + " has been selected." : '';
+}
+
+/**
+ * Debounced call for updating the a11y message.
+ */
+var updateA11yStatus = debounce$3(function (getA11yMessage, document) {
+  setStatus(getA11yMessage(), document);
+}, 200);
+
+// istanbul ignore next
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? reactExports.useLayoutEffect : reactExports.useEffect;
+function useElementIds(_ref) {
+  var _ref$id = _ref.id,
+    id = _ref$id === void 0 ? "downshift-" + generateId() : _ref$id,
+    labelId = _ref.labelId,
+    menuId = _ref.menuId,
+    getItemId = _ref.getItemId,
+    toggleButtonId = _ref.toggleButtonId,
+    inputId = _ref.inputId;
+  var elementIdsRef = reactExports.useRef({
+    labelId: labelId || id + "-label",
+    menuId: menuId || id + "-menu",
+    getItemId: getItemId || function (index) {
+      return id + "-item-" + index;
+    },
+    toggleButtonId: toggleButtonId || id + "-toggle-button",
+    inputId: inputId || id + "-input"
+  });
+  return elementIdsRef.current;
+}
+function getItemAndIndex(itemProp, indexProp, items, errorMessage) {
+  var item, index;
+  if (itemProp === undefined) {
+    if (indexProp === undefined) {
+      throw new Error(errorMessage);
+    }
+    item = items[indexProp];
+    index = indexProp;
+  } else {
+    index = indexProp === undefined ? items.indexOf(itemProp) : indexProp;
+    item = itemProp;
+  }
+  return [item, index];
+}
+function itemToString(item) {
+  return item ? String(item) : '';
+}
+function capitalizeString(string) {
+  return "" + string.slice(0, 1).toUpperCase() + string.slice(1);
+}
+function useLatestRef$1(val) {
+  var ref = reactExports.useRef(val);
+  // technically this is not "concurrent mode safe" because we're manipulating
+  // the value during render (so it's not idempotent). However, the places this
+  // hook is used is to support memoizing callbacks which will be called
+  // *during* render, so we need the latest values *during* render.
+  // If not for this, then we'd probably want to use useLayoutEffect instead.
+  ref.current = val;
+  return ref;
+}
+
+/**
+ * Computes the controlled state using a the previous state, props,
+ * two reducers, one from downshift and an optional one from the user.
+ * Also calls the onChange handlers for state values that have changed.
+ *
+ * @param {Function} reducer Reducer function from downshift.
+ * @param {Object} initialState Initial state of the hook.
+ * @param {Object} props The hook props.
+ * @returns {Array} An array with the state and an action dispatcher.
+ */
+function useEnhancedReducer(reducer, initialState, props) {
+  var prevStateRef = reactExports.useRef();
+  var actionRef = reactExports.useRef();
+  var enhancedReducer = reactExports.useCallback(function (state, action) {
+    actionRef.current = action;
+    state = getState(state, action.props);
+    var changes = reducer(state, action);
+    var newState = action.props.stateReducer(state, _extends$w({}, action, {
+      changes: changes
+    }));
+    return newState;
+  }, [reducer]);
+  var _useReducer = reactExports.useReducer(enhancedReducer, initialState),
+    state = _useReducer[0],
+    dispatch = _useReducer[1];
+  var propsRef = useLatestRef$1(props);
+  var dispatchWithProps = reactExports.useCallback(function (action) {
+    return dispatch(_extends$w({
+      props: propsRef.current
+    }, action));
+  }, [propsRef]);
+  var action = actionRef.current;
+  reactExports.useEffect(function () {
+    if (action && prevStateRef.current && prevStateRef.current !== state) {
+      callOnChangeProps(action, getState(prevStateRef.current, action.props), state);
+    }
+    prevStateRef.current = state;
+  }, [state, props, action]);
+  return [state, dispatchWithProps];
+}
+var defaultProps$3 = {
+  itemToString: itemToString,
+  stateReducer: stateReducer,
+  getA11ySelectionMessage: getA11ySelectionMessage,
+  scrollIntoView: scrollIntoView,
+  environment: /* istanbul ignore next (ssr) */
+  typeof window === 'undefined' ? {} : window
+};
+function getDefaultValue$1(props, propKey, defaultStateValues) {
+  if (defaultStateValues === void 0) {
+    defaultStateValues = dropdownDefaultStateValues;
+  }
+  var defaultValue = props["default" + capitalizeString(propKey)];
+  if (defaultValue !== undefined) {
+    return defaultValue;
+  }
+  return defaultStateValues[propKey];
+}
+function getInitialValue$1(props, propKey, defaultStateValues) {
+  if (defaultStateValues === void 0) {
+    defaultStateValues = dropdownDefaultStateValues;
+  }
+  var value = props[propKey];
+  if (value !== undefined) {
+    return value;
+  }
+  var initialValue = props["initial" + capitalizeString(propKey)];
+  if (initialValue !== undefined) {
+    return initialValue;
+  }
+  return getDefaultValue$1(props, propKey, defaultStateValues);
+}
+function getInitialState$2(props) {
+  var selectedItem = getInitialValue$1(props, 'selectedItem');
+  var isOpen = getInitialValue$1(props, 'isOpen');
+  var highlightedIndex = getInitialValue$1(props, 'highlightedIndex');
+  var inputValue = getInitialValue$1(props, 'inputValue');
+  return {
+    highlightedIndex: highlightedIndex < 0 && selectedItem && isOpen ? props.items.indexOf(selectedItem) : highlightedIndex,
+    isOpen: isOpen,
+    selectedItem: selectedItem,
+    inputValue: inputValue
+  };
+}
+function getHighlightedIndexOnOpen(props, state, offset) {
+  var items = props.items,
+    initialHighlightedIndex = props.initialHighlightedIndex,
+    defaultHighlightedIndex = props.defaultHighlightedIndex;
+  var selectedItem = state.selectedItem,
+    highlightedIndex = state.highlightedIndex;
+  if (items.length === 0) {
+    return -1;
+  }
+
+  // initialHighlightedIndex will give value to highlightedIndex on initial state only.
+  if (initialHighlightedIndex !== undefined && highlightedIndex === initialHighlightedIndex) {
+    return initialHighlightedIndex;
+  }
+  if (defaultHighlightedIndex !== undefined) {
+    return defaultHighlightedIndex;
+  }
+  if (selectedItem) {
+    return items.indexOf(selectedItem);
+  }
+  if (offset === 0) {
+    return -1;
+  }
+  return offset < 0 ? items.length - 1 : 0;
+}
+
+/**
+ * Reuse the movement tracking of mouse and touch events.
+ *
+ * @param {boolean} isOpen Whether the dropdown is open or not.
+ * @param {Array<Object>} downshiftElementRefs Downshift element refs to track movement (toggleButton, menu etc.)
+ * @param {Object} environment Environment where component/hook exists.
+ * @param {Function} handleBlur Handler on blur from mouse or touch.
+ * @returns {Object} Ref containing whether mouseDown or touchMove event is happening
+ */
+function useMouseAndTouchTracker(isOpen, downshiftElementRefs, environment, handleBlur) {
+  var mouseAndTouchTrackersRef = reactExports.useRef({
+    isMouseDown: false,
+    isTouchMove: false
+  });
+  reactExports.useEffect(function () {
+    if ((environment == null ? void 0 : environment.addEventListener) == null) {
+      return;
+    }
+
+    // The same strategy for checking if a click occurred inside or outside downshift
+    // as in downshift.js.
+    var onMouseDown = function onMouseDown() {
+      mouseAndTouchTrackersRef.current.isMouseDown = true;
+    };
+    var onMouseUp = function onMouseUp(event) {
+      mouseAndTouchTrackersRef.current.isMouseDown = false;
+      if (isOpen && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
+        return ref.current;
+      }), environment)) {
+        handleBlur();
+      }
+    };
+    var onTouchStart = function onTouchStart() {
+      mouseAndTouchTrackersRef.current.isTouchMove = false;
+    };
+    var onTouchMove = function onTouchMove() {
+      mouseAndTouchTrackersRef.current.isTouchMove = true;
+    };
+    var onTouchEnd = function onTouchEnd(event) {
+      if (isOpen && !mouseAndTouchTrackersRef.current.isTouchMove && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
+        return ref.current;
+      }), environment, false)) {
+        handleBlur();
+      }
+    };
+    environment.addEventListener('mousedown', onMouseDown);
+    environment.addEventListener('mouseup', onMouseUp);
+    environment.addEventListener('touchstart', onTouchStart);
+    environment.addEventListener('touchmove', onTouchMove);
+    environment.addEventListener('touchend', onTouchEnd);
+
+    // eslint-disable-next-line consistent-return
+    return function cleanup() {
+      environment.removeEventListener('mousedown', onMouseDown);
+      environment.removeEventListener('mouseup', onMouseUp);
+      environment.removeEventListener('touchstart', onTouchStart);
+      environment.removeEventListener('touchmove', onTouchMove);
+      environment.removeEventListener('touchend', onTouchEnd);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, environment]);
+  return mouseAndTouchTrackersRef;
+}
+
+/* istanbul ignore next */
+// eslint-disable-next-line import/no-mutable-exports
+var useGetterPropsCalledChecker = function useGetterPropsCalledChecker() {
+  return noop;
+};
+function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref2) {
+  var isInitialMount = _ref2.isInitialMount,
+    highlightedIndex = _ref2.highlightedIndex,
+    items = _ref2.items,
+    environment = _ref2.environment,
+    rest = _objectWithoutPropertiesLoose(_ref2, _excluded$3);
+  // Sets a11y status message on changes in state.
+  reactExports.useEffect(function () {
+    if (isInitialMount || false) {
+      return;
+    }
+    updateA11yStatus(function () {
+      return getA11yMessage(_extends$w({
+        highlightedIndex: highlightedIndex,
+        highlightedItem: items[highlightedIndex],
+        resultCount: items.length
+      }, rest));
+    }, environment.document);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, dependencyArray);
+}
+function useScrollIntoView(_ref3) {
+  var highlightedIndex = _ref3.highlightedIndex,
+    isOpen = _ref3.isOpen,
+    itemRefs = _ref3.itemRefs,
+    getItemNodeFromIndex = _ref3.getItemNodeFromIndex,
+    menuElement = _ref3.menuElement,
+    scrollIntoViewProp = _ref3.scrollIntoView;
+  // used not to scroll on highlight by mouse.
+  var shouldScrollRef = reactExports.useRef(true);
+  // Scroll on highlighted item if change comes from keyboard.
+  useIsomorphicLayoutEffect(function () {
+    if (highlightedIndex < 0 || !isOpen || !Object.keys(itemRefs.current).length) {
+      return;
+    }
+    if (shouldScrollRef.current === false) {
+      shouldScrollRef.current = true;
+    } else {
+      scrollIntoViewProp(getItemNodeFromIndex(highlightedIndex), menuElement);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [highlightedIndex]);
+  return shouldScrollRef;
+}
+
+// eslint-disable-next-line import/no-mutable-exports
+var useControlPropsValidator = noop;
+
+/**
+ * Handles selection on Enter / Alt + ArrowUp. Closes the menu and resets the highlighted index, unless there is a highlighted.
+ * In that case, selects the item and resets to defaults for open state and highlighted idex.
+ * @param {Object} props The useCombobox props.
+ * @param {number} highlightedIndex The index from the state.
+ * @param {boolean} inputValue Also return the input value for state.
+ * @returns The changes for the state.
+ */
+function getChangesOnSelection(props, highlightedIndex, inputValue) {
+  var _props$items;
+  if (inputValue === void 0) {
+    inputValue = true;
+  }
+  var shouldSelect = ((_props$items = props.items) == null ? void 0 : _props$items.length) && highlightedIndex >= 0;
+  return _extends$w({
+    isOpen: false,
+    highlightedIndex: -1
+  }, shouldSelect && _extends$w({
+    selectedItem: props.items[highlightedIndex],
+    isOpen: getDefaultValue$1(props, 'isOpen'),
+    highlightedIndex: getDefaultValue$1(props, 'highlightedIndex')
+  }, inputValue && {
+    inputValue: props.itemToString(props.items[highlightedIndex])
+  }));
+}
+function downshiftCommonReducer(state, action, stateChangeTypes) {
+  var type = action.type,
+    props = action.props;
+  var changes;
+  switch (type) {
+    case stateChangeTypes.ItemMouseMove:
+      changes = {
+        highlightedIndex: action.disabled ? -1 : action.index
+      };
+      break;
+    case stateChangeTypes.MenuMouseLeave:
+      changes = {
+        highlightedIndex: -1
+      };
+      break;
+    case stateChangeTypes.ToggleButtonClick:
+    case stateChangeTypes.FunctionToggleMenu:
+      changes = {
+        isOpen: !state.isOpen,
+        highlightedIndex: state.isOpen ? -1 : getHighlightedIndexOnOpen(props, state, 0)
+      };
+      break;
+    case stateChangeTypes.FunctionOpenMenu:
+      changes = {
+        isOpen: true,
+        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
+      };
+      break;
+    case stateChangeTypes.FunctionCloseMenu:
+      changes = {
+        isOpen: false
+      };
+      break;
+    case stateChangeTypes.FunctionSetHighlightedIndex:
+      changes = {
+        highlightedIndex: action.highlightedIndex
+      };
+      break;
+    case stateChangeTypes.FunctionSetInputValue:
+      changes = {
+        inputValue: action.inputValue
+      };
+      break;
+    case stateChangeTypes.FunctionReset:
+      changes = {
+        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
+        isOpen: getDefaultValue$1(props, 'isOpen'),
+        selectedItem: getDefaultValue$1(props, 'selectedItem'),
+        inputValue: getDefaultValue$1(props, 'inputValue')
+      };
+      break;
+    default:
+      throw new Error('Reducer called without proper action type.');
+  }
+  return _extends$w({}, state, changes);
+}
+({
+  items: PropTypes.array.isRequired,
+  itemToString: PropTypes.func,
+  getA11yStatusMessage: PropTypes.func,
+  getA11ySelectionMessage: PropTypes.func,
+  highlightedIndex: PropTypes.number,
+  defaultHighlightedIndex: PropTypes.number,
+  initialHighlightedIndex: PropTypes.number,
+  isOpen: PropTypes.bool,
+  defaultIsOpen: PropTypes.bool,
+  initialIsOpen: PropTypes.bool,
+  selectedItem: PropTypes.any,
+  initialSelectedItem: PropTypes.any,
+  defaultSelectedItem: PropTypes.any,
+  id: PropTypes.string,
+  labelId: PropTypes.string,
+  menuId: PropTypes.string,
+  getItemId: PropTypes.func,
+  toggleButtonId: PropTypes.string,
+  stateReducer: PropTypes.func,
+  onSelectedItemChange: PropTypes.func,
+  onHighlightedIndexChange: PropTypes.func,
+  onStateChange: PropTypes.func,
+  onIsOpenChange: PropTypes.func,
+  environment: PropTypes.shape({
+    addEventListener: PropTypes.func,
+    removeEventListener: PropTypes.func,
+    document: PropTypes.shape({
+      getElementById: PropTypes.func,
+      activeElement: PropTypes.any,
+      body: PropTypes.any
+    })
+  })
+});
+/**
+ * Default implementation for status message. Only added when menu is open.
+ * Will specift if there are results in the list, and if so, how many,
+ * and what keys are relevant.
+ *
+ * @param {Object} param the downshift state and other relevant properties
+ * @return {String} the a11y status message
+ */
+function getA11yStatusMessage(_a) {
+  var isOpen = _a.isOpen,
+    resultCount = _a.resultCount,
+    previousResultCount = _a.previousResultCount;
+  if (!isOpen) {
+    return '';
+  }
+  if (!resultCount) {
+    return 'No results are available.';
+  }
+  if (resultCount !== previousResultCount) {
+    return "".concat(resultCount, " result").concat(resultCount === 1 ? ' is' : 's are', " available, use up and down arrow keys to navigate. Press Enter or Space Bar keys to select.");
+  }
+  return '';
+}
+__assign(__assign({}, defaultProps$3), {
+  getA11yStatusMessage: getA11yStatusMessage
+});
+var InputKeyDownArrowDown = 0;
+var InputKeyDownArrowUp = 1;
+var InputKeyDownEscape = 2;
+var InputKeyDownHome = 3;
+var InputKeyDownEnd = 4;
+var InputKeyDownPageUp = 5;
+var InputKeyDownPageDown = 6;
+var InputKeyDownEnter = 7;
+var InputChange = 8;
+var InputBlur = 9;
+var InputFocus = 10;
+var MenuMouseLeave = 11;
+var ItemMouseMove = 12;
+var ItemClick = 13;
+var ToggleButtonClick = 14;
+var FunctionToggleMenu = 15;
+var FunctionOpenMenu = 16;
+var FunctionCloseMenu = 17;
+var FunctionSetHighlightedIndex = 18;
+var FunctionSelectItem = 19;
+var FunctionSetInputValue = 20;
+var FunctionReset$1 = 21;
+var ControlledPropUpdatedSelectedItem = 22;
+var stateChangeTypes$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  InputKeyDownArrowDown: InputKeyDownArrowDown,
+  InputKeyDownArrowUp: InputKeyDownArrowUp,
+  InputKeyDownEscape: InputKeyDownEscape,
+  InputKeyDownHome: InputKeyDownHome,
+  InputKeyDownEnd: InputKeyDownEnd,
+  InputKeyDownPageUp: InputKeyDownPageUp,
+  InputKeyDownPageDown: InputKeyDownPageDown,
+  InputKeyDownEnter: InputKeyDownEnter,
+  InputChange: InputChange,
+  InputBlur: InputBlur,
+  InputFocus: InputFocus,
+  MenuMouseLeave: MenuMouseLeave,
+  ItemMouseMove: ItemMouseMove,
+  ItemClick: ItemClick,
+  ToggleButtonClick: ToggleButtonClick,
+  FunctionToggleMenu: FunctionToggleMenu,
+  FunctionOpenMenu: FunctionOpenMenu,
+  FunctionCloseMenu: FunctionCloseMenu,
+  FunctionSetHighlightedIndex: FunctionSetHighlightedIndex,
+  FunctionSelectItem: FunctionSelectItem,
+  FunctionSetInputValue: FunctionSetInputValue,
+  FunctionReset: FunctionReset$1,
+  ControlledPropUpdatedSelectedItem: ControlledPropUpdatedSelectedItem
+});
+function getInitialState$1(props) {
+  var initialState = getInitialState$2(props);
+  var selectedItem = initialState.selectedItem;
+  var inputValue = initialState.inputValue;
+  if (inputValue === '' && selectedItem && props.defaultInputValue === undefined && props.initialInputValue === undefined && props.inputValue === undefined) {
+    inputValue = props.itemToString(selectedItem);
+  }
+  return _extends$w({}, initialState, {
+    inputValue: inputValue
+  });
+}
+({
+  items: PropTypes.array.isRequired,
+  itemToString: PropTypes.func,
+  selectedItemChanged: PropTypes.func,
+  getA11yStatusMessage: PropTypes.func,
+  getA11ySelectionMessage: PropTypes.func,
+  highlightedIndex: PropTypes.number,
+  defaultHighlightedIndex: PropTypes.number,
+  initialHighlightedIndex: PropTypes.number,
+  isOpen: PropTypes.bool,
+  defaultIsOpen: PropTypes.bool,
+  initialIsOpen: PropTypes.bool,
+  selectedItem: PropTypes.any,
+  initialSelectedItem: PropTypes.any,
+  defaultSelectedItem: PropTypes.any,
+  inputValue: PropTypes.string,
+  defaultInputValue: PropTypes.string,
+  initialInputValue: PropTypes.string,
+  id: PropTypes.string,
+  labelId: PropTypes.string,
+  menuId: PropTypes.string,
+  getItemId: PropTypes.func,
+  inputId: PropTypes.string,
+  toggleButtonId: PropTypes.string,
+  stateReducer: PropTypes.func,
+  onSelectedItemChange: PropTypes.func,
+  onHighlightedIndexChange: PropTypes.func,
+  onStateChange: PropTypes.func,
+  onIsOpenChange: PropTypes.func,
+  onInputValueChange: PropTypes.func,
+  environment: PropTypes.shape({
+    addEventListener: PropTypes.func,
+    removeEventListener: PropTypes.func,
+    document: PropTypes.shape({
+      getElementById: PropTypes.func,
+      activeElement: PropTypes.any,
+      body: PropTypes.any
+    })
+  })
+});
+
+/**
+ * The useCombobox version of useControlledReducer, which also
+ * checks if the controlled prop selectedItem changed between
+ * renders. If so, it will also update inputValue with its
+ * string equivalent. It uses the common useEnhancedReducer to
+ * compute the rest of the state.
+ *
+ * @param {Function} reducer Reducer function from downshift.
+ * @param {Object} initialState Initial state of the hook.
+ * @param {Object} props The hook props.
+ * @returns {Array} An array with the state and an action dispatcher.
+ */
+function useControlledReducer(reducer, initialState, props) {
+  var previousSelectedItemRef = reactExports.useRef();
+  var _useEnhancedReducer = useEnhancedReducer(reducer, initialState, props),
+    state = _useEnhancedReducer[0],
+    dispatch = _useEnhancedReducer[1];
+
+  // ToDo: if needed, make same approach as selectedItemChanged from Downshift.
+  reactExports.useEffect(function () {
+    if (!isControlledProp(props, 'selectedItem')) {
+      return;
+    }
+    if (props.selectedItemChanged(previousSelectedItemRef.current, props.selectedItem)) {
+      dispatch({
+        type: ControlledPropUpdatedSelectedItem,
+        inputValue: props.itemToString(props.selectedItem)
+      });
+    }
+    previousSelectedItemRef.current = state.selectedItem === previousSelectedItemRef.current ? props.selectedItem : state.selectedItem;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.selectedItem, props.selectedItem]);
+  return [getState(state, props), dispatch];
+}
+
+// eslint-disable-next-line import/no-mutable-exports
+var validatePropTypes$1 = noop;
+var defaultProps$1 = _extends$w({}, defaultProps$3, {
+  selectedItemChanged: function selectedItemChanged(prevItem, item) {
+    return prevItem !== item;
+  },
+  getA11yStatusMessage: getA11yStatusMessage$1
+});
+
+/* eslint-disable complexity */
+function downshiftUseComboboxReducer(state, action) {
+  var _props$items;
+  var type = action.type,
+    props = action.props,
+    altKey = action.altKey;
+  var changes;
+  switch (type) {
+    case ItemClick:
+      changes = {
+        isOpen: getDefaultValue$1(props, 'isOpen'),
+        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
+        selectedItem: props.items[action.index],
+        inputValue: props.itemToString(props.items[action.index])
+      };
+      break;
+    case InputKeyDownArrowDown:
+      if (state.isOpen) {
+        changes = {
+          highlightedIndex: getNextWrappingIndex(1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
+        };
+      } else {
+        changes = {
+          highlightedIndex: altKey && state.selectedItem == null ? -1 : getHighlightedIndexOnOpen(props, state, 1, action.getItemNodeFromIndex),
+          isOpen: props.items.length >= 0
+        };
+      }
+      break;
+    case InputKeyDownArrowUp:
+      if (state.isOpen) {
+        if (altKey) {
+          changes = getChangesOnSelection(props, state.highlightedIndex);
+        } else {
+          changes = {
+            highlightedIndex: getNextWrappingIndex(-1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
+          };
+        }
+      } else {
+        changes = {
+          highlightedIndex: getHighlightedIndexOnOpen(props, state, -1, action.getItemNodeFromIndex),
+          isOpen: props.items.length >= 0
+        };
+      }
+      break;
+    case InputKeyDownEnter:
+      changes = getChangesOnSelection(props, state.highlightedIndex);
+      break;
+    case InputKeyDownEscape:
+      changes = _extends$w({
+        isOpen: false,
+        highlightedIndex: -1
+      }, !state.isOpen && {
+        selectedItem: null,
+        inputValue: ''
+      });
+      break;
+    case InputKeyDownPageUp:
+      changes = {
+        highlightedIndex: getNextWrappingIndex(-10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputKeyDownPageDown:
+      changes = {
+        highlightedIndex: getNextWrappingIndex(10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputKeyDownHome:
+      changes = {
+        highlightedIndex: getNextNonDisabledIndex(1, 0, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputKeyDownEnd:
+      changes = {
+        highlightedIndex: getNextNonDisabledIndex(-1, props.items.length - 1, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputBlur:
+      changes = _extends$w({
+        isOpen: false,
+        highlightedIndex: -1
+      }, state.highlightedIndex >= 0 && ((_props$items = props.items) == null ? void 0 : _props$items.length) && action.selectItem && {
+        selectedItem: props.items[state.highlightedIndex],
+        inputValue: props.itemToString(props.items[state.highlightedIndex])
+      });
+      break;
+    case InputChange:
+      changes = {
+        isOpen: true,
+        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
+        inputValue: action.inputValue
+      };
+      break;
+    case InputFocus:
+      changes = {
+        isOpen: true,
+        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
+      };
+      break;
+    case FunctionSelectItem:
+      changes = {
+        selectedItem: action.selectedItem,
+        inputValue: props.itemToString(action.selectedItem)
+      };
+      break;
+    case ControlledPropUpdatedSelectedItem:
+      changes = {
+        inputValue: action.inputValue
+      };
+      break;
+    default:
+      return downshiftCommonReducer(state, action, stateChangeTypes$1);
+  }
+  return _extends$w({}, state, changes);
+}
+/* eslint-enable complexity */
+
+var _excluded$1 = ["onMouseLeave", "refKey", "ref"],
+  _excluded2$1 = ["item", "index", "refKey", "ref", "onMouseMove", "onMouseDown", "onClick", "onPress", "disabled"],
+  _excluded3 = ["onClick", "onPress", "refKey", "ref"],
+  _excluded4 = ["onKeyDown", "onChange", "onInput", "onFocus", "onBlur", "onChangeText", "refKey", "ref"];
+useCombobox$1.stateChangeTypes = stateChangeTypes$1;
+function useCombobox$1(userProps) {
+  if (userProps === void 0) {
+    userProps = {};
+  }
+  validatePropTypes$1();
+  // Props defaults and destructuring.
+  var props = _extends$w({}, defaultProps$1, userProps);
+  var initialIsOpen = props.initialIsOpen,
+    defaultIsOpen = props.defaultIsOpen,
+    items = props.items,
+    scrollIntoView = props.scrollIntoView,
+    environment = props.environment,
+    getA11yStatusMessage = props.getA11yStatusMessage,
+    getA11ySelectionMessage = props.getA11ySelectionMessage,
+    itemToString = props.itemToString;
+  // Initial state depending on controlled props.
+  var initialState = getInitialState$1(props);
+  var _useControlledReducer = useControlledReducer(downshiftUseComboboxReducer, initialState, props),
+    state = _useControlledReducer[0],
+    dispatch = _useControlledReducer[1];
+  var isOpen = state.isOpen,
+    highlightedIndex = state.highlightedIndex,
+    selectedItem = state.selectedItem,
+    inputValue = state.inputValue;
+
+  // Element refs.
+  var menuRef = reactExports.useRef(null);
+  var itemRefs = reactExports.useRef({});
+  var inputRef = reactExports.useRef(null);
+  var toggleButtonRef = reactExports.useRef(null);
+  var isInitialMountRef = reactExports.useRef(true);
+  // prevent id re-generation between renders.
+  var elementIds = useElementIds(props);
+  // used to keep track of how many items we had on previous cycle.
+  var previousResultCountRef = reactExports.useRef();
+  // utility callback to get item element.
+  var latest = useLatestRef$1({
+    state: state,
+    props: props
+  });
+  var getItemNodeFromIndex = reactExports.useCallback(function (index) {
+    return itemRefs.current[elementIds.getItemId(index)];
+  }, [elementIds]);
+
+  // Effects.
+  // Sets a11y status message on changes in state.
+  useA11yMessageSetter(getA11yStatusMessage, [isOpen, highlightedIndex, inputValue, items], _extends$w({
+    isInitialMount: isInitialMountRef.current,
+    previousResultCount: previousResultCountRef.current,
+    items: items,
+    environment: environment,
+    itemToString: itemToString
+  }, state));
+  // Sets a11y status message on changes in selectedItem.
+  useA11yMessageSetter(getA11ySelectionMessage, [selectedItem], _extends$w({
+    isInitialMount: isInitialMountRef.current,
+    previousResultCount: previousResultCountRef.current,
+    items: items,
+    environment: environment,
+    itemToString: itemToString
+  }, state));
+  // Scroll on highlighted item if change comes from keyboard.
+  var shouldScrollRef = useScrollIntoView({
+    menuElement: menuRef.current,
+    highlightedIndex: highlightedIndex,
+    isOpen: isOpen,
+    itemRefs: itemRefs,
+    scrollIntoView: scrollIntoView,
+    getItemNodeFromIndex: getItemNodeFromIndex
+  });
+  useControlPropsValidator({
+    isInitialMount: isInitialMountRef.current,
+    props: props,
+    state: state
+  });
+  // Focus the input on first render if required.
+  reactExports.useEffect(function () {
+    var focusOnOpen = initialIsOpen || defaultIsOpen || isOpen;
+    if (focusOnOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  reactExports.useEffect(function () {
+    if (isInitialMountRef.current) {
+      return;
+    }
+    previousResultCountRef.current = items.length;
+  });
+  // Add mouse/touch events to document.
+  var mouseAndTouchTrackersRef = useMouseAndTouchTracker(isOpen, [inputRef, menuRef, toggleButtonRef], environment, function () {
+    dispatch({
+      type: InputBlur,
+      selectItem: false
+    });
+  });
+  var setGetterPropCallInfo = useGetterPropsCalledChecker();
+  // Make initial ref false.
+  reactExports.useEffect(function () {
+    isInitialMountRef.current = false;
+    return function () {
+      isInitialMountRef.current = true;
+    };
+  }, []);
+  // Reset itemRefs on close.
+  reactExports.useEffect(function () {
+    var _environment$document;
+    if (!isOpen) {
+      itemRefs.current = {};
+    } else if (((_environment$document = environment.document) == null ? void 0 : _environment$document.activeElement) !== inputRef.current) {
+      var _inputRef$current;
+      inputRef == null ? void 0 : (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.focus();
+    }
+  }, [isOpen, environment]);
+
+  /* Event handler functions */
+  var inputKeyDownHandlers = reactExports.useMemo(function () {
+    return {
+      ArrowDown: function ArrowDown(event) {
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownArrowDown,
+          altKey: event.altKey,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      ArrowUp: function ArrowUp(event) {
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownArrowUp,
+          altKey: event.altKey,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      Home: function Home(event) {
+        if (!latest.current.state.isOpen) {
+          return;
+        }
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownHome,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      End: function End(event) {
+        if (!latest.current.state.isOpen) {
+          return;
+        }
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownEnd,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      Escape: function Escape(event) {
+        var latestState = latest.current.state;
+        if (latestState.isOpen || latestState.inputValue || latestState.selectedItem || latestState.highlightedIndex > -1) {
+          event.preventDefault();
+          dispatch({
+            type: InputKeyDownEscape
+          });
+        }
+      },
+      Enter: function Enter(event) {
+        var latestState = latest.current.state;
+        // if closed or no highlighted index, do nothing.
+        if (!latestState.isOpen || event.which === 229 // if IME composing, wait for next Enter keydown event.
+        ) {
+          return;
+        }
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownEnter,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      PageUp: function PageUp(event) {
+        if (latest.current.state.isOpen) {
+          event.preventDefault();
+          dispatch({
+            type: InputKeyDownPageUp,
+            getItemNodeFromIndex: getItemNodeFromIndex
+          });
+        }
+      },
+      PageDown: function PageDown(event) {
+        if (latest.current.state.isOpen) {
+          event.preventDefault();
+          dispatch({
+            type: InputKeyDownPageDown,
+            getItemNodeFromIndex: getItemNodeFromIndex
+          });
+        }
+      }
+    };
+  }, [dispatch, latest, getItemNodeFromIndex]);
+
+  // Getter props.
+  var getLabelProps = reactExports.useCallback(function (labelProps) {
+    return _extends$w({
+      id: elementIds.labelId,
+      htmlFor: elementIds.inputId
+    }, labelProps);
+  }, [elementIds]);
+  var getMenuProps = reactExports.useCallback(function (_temp, _temp2) {
+    var _extends2;
+    var _ref = _temp === void 0 ? {} : _temp,
+      onMouseLeave = _ref.onMouseLeave,
+      _ref$refKey = _ref.refKey,
+      refKey = _ref$refKey === void 0 ? 'ref' : _ref$refKey,
+      ref = _ref.ref,
+      rest = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+    var _ref2 = _temp2 === void 0 ? {} : _temp2;
+      _ref2.suppressRefError;
+    return _extends$w((_extends2 = {}, _extends2[refKey] = handleRefs(ref, function (menuNode) {
+      menuRef.current = menuNode;
+    }), _extends2.id = elementIds.menuId, _extends2.role = 'listbox', _extends2['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends2.onMouseLeave = callAllEventHandlers(onMouseLeave, function () {
+      dispatch({
+        type: MenuMouseLeave
+      });
+    }), _extends2), rest);
+  }, [dispatch, setGetterPropCallInfo, elementIds]);
+  var getItemProps = reactExports.useCallback(function (_temp3) {
+    var _extends3, _ref4;
+    var _ref3 = _temp3 === void 0 ? {} : _temp3,
+      itemProp = _ref3.item,
+      indexProp = _ref3.index,
+      _ref3$refKey = _ref3.refKey,
+      refKey = _ref3$refKey === void 0 ? 'ref' : _ref3$refKey,
+      ref = _ref3.ref,
+      onMouseMove = _ref3.onMouseMove,
+      onMouseDown = _ref3.onMouseDown,
+      onClick = _ref3.onClick;
+    _ref3.onPress;
+    var disabled = _ref3.disabled,
+      rest = _objectWithoutPropertiesLoose(_ref3, _excluded2$1);
+    var _latest$current = latest.current,
+      latestProps = _latest$current.props,
+      latestState = _latest$current.state;
+    var _getItemAndIndex = getItemAndIndex(itemProp, indexProp, latestProps.items, 'Pass either item or index to getItemProps!'),
+      index = _getItemAndIndex[1];
+    var onSelectKey = 'onClick';
+    var customClickHandler = onClick;
+    var itemHandleMouseMove = function itemHandleMouseMove() {
+      if (index === latestState.highlightedIndex) {
+        return;
+      }
+      shouldScrollRef.current = false;
+      dispatch({
+        type: ItemMouseMove,
+        index: index,
+        disabled: disabled
+      });
+    };
+    var itemHandleClick = function itemHandleClick() {
+      dispatch({
+        type: ItemClick,
+        index: index
+      });
+    };
+    var itemHandleMouseDown = function itemHandleMouseDown(e) {
+      return e.preventDefault();
+    };
+    return _extends$w((_extends3 = {}, _extends3[refKey] = handleRefs(ref, function (itemNode) {
+      if (itemNode) {
+        itemRefs.current[elementIds.getItemId(index)] = itemNode;
+      }
+    }), _extends3.disabled = disabled, _extends3.role = 'option', _extends3['aria-selected'] = "" + (index === latestState.highlightedIndex), _extends3.id = elementIds.getItemId(index), _extends3), !disabled && (_ref4 = {}, _ref4[onSelectKey] = callAllEventHandlers(customClickHandler, itemHandleClick), _ref4), {
+      onMouseMove: callAllEventHandlers(onMouseMove, itemHandleMouseMove),
+      onMouseDown: callAllEventHandlers(onMouseDown, itemHandleMouseDown)
+    }, rest);
+  }, [dispatch, latest, shouldScrollRef, elementIds]);
+  var getToggleButtonProps = reactExports.useCallback(function (_temp4) {
+    var _extends4;
+    var _ref5 = _temp4 === void 0 ? {} : _temp4,
+      onClick = _ref5.onClick;
+    _ref5.onPress;
+    var _ref5$refKey = _ref5.refKey,
+      refKey = _ref5$refKey === void 0 ? 'ref' : _ref5$refKey,
+      ref = _ref5.ref,
+      rest = _objectWithoutPropertiesLoose(_ref5, _excluded3);
+    var latestState = latest.current.state;
+    var toggleButtonHandleClick = function toggleButtonHandleClick() {
+      dispatch({
+        type: ToggleButtonClick
+      });
+    };
+    return _extends$w((_extends4 = {}, _extends4[refKey] = handleRefs(ref, function (toggleButtonNode) {
+      toggleButtonRef.current = toggleButtonNode;
+    }), _extends4['aria-controls'] = elementIds.menuId, _extends4['aria-expanded'] = latestState.isOpen, _extends4.id = elementIds.toggleButtonId, _extends4.tabIndex = -1, _extends4), !rest.disabled && _extends$w({}, {
+      onClick: callAllEventHandlers(onClick, toggleButtonHandleClick)
+    }), rest);
+  }, [dispatch, latest, elementIds]);
+  var getInputProps = reactExports.useCallback(function (_temp5, _temp6) {
+    var _extends5;
+    var _ref6 = _temp5 === void 0 ? {} : _temp5,
+      onKeyDown = _ref6.onKeyDown,
+      onChange = _ref6.onChange,
+      onInput = _ref6.onInput,
+      onFocus = _ref6.onFocus,
+      onBlur = _ref6.onBlur;
+    _ref6.onChangeText;
+    var _ref6$refKey = _ref6.refKey,
+      refKey = _ref6$refKey === void 0 ? 'ref' : _ref6$refKey,
+      ref = _ref6.ref,
+      rest = _objectWithoutPropertiesLoose(_ref6, _excluded4);
+    var _ref7 = _temp6 === void 0 ? {} : _temp6;
+      _ref7.suppressRefError;
+    var latestState = latest.current.state;
+    var inputHandleKeyDown = function inputHandleKeyDown(event) {
+      var key = normalizeArrowKey(event);
+      if (key && inputKeyDownHandlers[key]) {
+        inputKeyDownHandlers[key](event);
+      }
+    };
+    var inputHandleChange = function inputHandleChange(event) {
+      dispatch({
+        type: InputChange,
+        inputValue: event.target.value
+      });
+    };
+    var inputHandleBlur = function inputHandleBlur(event) {
+      /* istanbul ignore else */
+      if (latestState.isOpen && !mouseAndTouchTrackersRef.current.isMouseDown) {
+        dispatch({
+          type: InputBlur,
+          selectItem: event.relatedTarget !== null
+        });
+      }
+    };
+    var inputHandleFocus = function inputHandleFocus() {
+      if (!latestState.isOpen) {
+        dispatch({
+          type: InputFocus
+        });
+      }
+    };
+
+    /* istanbul ignore next (preact) */
+    var onChangeKey = 'onChange';
+    var eventHandlers = {};
+    if (!rest.disabled) {
+      var _eventHandlers;
+      eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, inputHandleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, inputHandleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, inputHandleBlur), _eventHandlers.onFocus = callAllEventHandlers(onFocus, inputHandleFocus), _eventHandlers);
+    }
+    return _extends$w((_extends5 = {}, _extends5[refKey] = handleRefs(ref, function (inputNode) {
+      inputRef.current = inputNode;
+    }), _extends5['aria-activedescendant'] = latestState.isOpen && latestState.highlightedIndex > -1 ? elementIds.getItemId(latestState.highlightedIndex) : '', _extends5['aria-autocomplete'] = 'list', _extends5['aria-controls'] = elementIds.menuId, _extends5['aria-expanded'] = latestState.isOpen, _extends5['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends5.autoComplete = 'off', _extends5.id = elementIds.inputId, _extends5.role = 'combobox', _extends5.value = latestState.inputValue, _extends5), eventHandlers, rest);
+  }, [dispatch, inputKeyDownHandlers, latest, mouseAndTouchTrackersRef, setGetterPropCallInfo, elementIds]);
+
+  // returns
+  var toggleMenu = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionToggleMenu
+    });
+  }, [dispatch]);
+  var closeMenu = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionCloseMenu
+    });
+  }, [dispatch]);
+  var openMenu = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionOpenMenu
+    });
+  }, [dispatch]);
+  var setHighlightedIndex = reactExports.useCallback(function (newHighlightedIndex) {
+    dispatch({
+      type: FunctionSetHighlightedIndex,
+      highlightedIndex: newHighlightedIndex
+    });
+  }, [dispatch]);
+  var selectItem = reactExports.useCallback(function (newSelectedItem) {
+    dispatch({
+      type: FunctionSelectItem,
+      selectedItem: newSelectedItem
+    });
+  }, [dispatch]);
+  var setInputValue = reactExports.useCallback(function (newInputValue) {
+    dispatch({
+      type: FunctionSetInputValue,
+      inputValue: newInputValue
+    });
+  }, [dispatch]);
+  var reset = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionReset$1
+    });
+  }, [dispatch]);
+  return {
+    // prop getters.
+    getItemProps: getItemProps,
+    getLabelProps: getLabelProps,
+    getMenuProps: getMenuProps,
+    getInputProps: getInputProps,
+    getToggleButtonProps: getToggleButtonProps,
+    // actions.
+    toggleMenu: toggleMenu,
+    openMenu: openMenu,
+    closeMenu: closeMenu,
+    setHighlightedIndex: setHighlightedIndex,
+    setInputValue: setInputValue,
+    selectItem: selectItem,
+    reset: reset,
+    // state.
+    highlightedIndex: highlightedIndex,
+    isOpen: isOpen,
+    selectedItem: selectedItem,
+    inputValue: inputValue
+  };
+}
+
+/**
+ * Returns a message to be added to aria-live region when item is removed.
+ *
+ * @param {Object} selectionParameters Parameters required to build the message.
+ * @returns {string} The a11y message.
+ */
+function getA11yRemovalMessage(selectionParameters) {
+  var removedSelectedItem = selectionParameters.removedSelectedItem,
+    itemToStringLocal = selectionParameters.itemToString;
+  return itemToStringLocal(removedSelectedItem) + " has been removed.";
+}
+({
+  selectedItems: PropTypes.array,
+  initialSelectedItems: PropTypes.array,
+  defaultSelectedItems: PropTypes.array,
+  itemToString: PropTypes.func,
+  getA11yRemovalMessage: PropTypes.func,
+  stateReducer: PropTypes.func,
+  activeIndex: PropTypes.number,
+  initialActiveIndex: PropTypes.number,
+  defaultActiveIndex: PropTypes.number,
+  onActiveIndexChange: PropTypes.func,
+  onSelectedItemsChange: PropTypes.func,
+  keyNavigationNext: PropTypes.string,
+  keyNavigationPrevious: PropTypes.string,
+  environment: PropTypes.shape({
+    addEventListener: PropTypes.func,
+    removeEventListener: PropTypes.func,
+    document: PropTypes.shape({
+      getElementById: PropTypes.func,
+      activeElement: PropTypes.any,
+      body: PropTypes.any
+    })
+  })
+});
+({
+  itemToString: defaultProps$3.itemToString,
+  stateReducer: defaultProps$3.stateReducer,
+  environment: defaultProps$3.environment,
+  getA11yRemovalMessage: getA11yRemovalMessage,
+  keyNavigationNext: 'ArrowRight',
+  keyNavigationPrevious: 'ArrowLeft'
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+const typeMap = {
+  [useCombobox$1.stateChangeTypes.FunctionCloseMenu]: 'fn:setExpansion',
+  [useCombobox$1.stateChangeTypes.FunctionOpenMenu]: 'fn:setExpansion',
+  [useCombobox$1.stateChangeTypes.FunctionToggleMenu]: 'fn:setExpansion',
+  [useCombobox$1.stateChangeTypes.FunctionReset]: 'fn:reset',
+  [useCombobox$1.stateChangeTypes.FunctionSelectItem]: 'fn:setSelectionValue',
+  [useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex]: 'fn:setActiveIndex',
+  [useCombobox$1.stateChangeTypes.FunctionSetInputValue]: 'fn:setInputValue',
+  [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
+  [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
+  [useCombobox$1.stateChangeTypes.InputFocus]: 'input:focus',
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$1.DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$1.UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$1.END}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$1.ENTER}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$1.ESCAPE}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$1.HOME}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$1.PAGE_DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$1.PAGE_UP}`,
+  [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
+  [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
+  [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
+  [useCombobox$1.stateChangeTypes.ToggleButtonClick]: 'toggle:click'
+};
+const toType = downshiftType => {
+  return typeMap[downshiftType] || downshiftType;
+};
+const toLabel = (labels, value) => {
+  if (value === undefined) {
+    return '';
+  }
+  const key = typeof value === 'string' ? value : JSON.stringify(value);
+  return labels[key];
+};
+const useCombobox = _ref => {
+  let {
+    idPrefix,
+    triggerRef,
+    inputRef,
+    listboxRef,
+    isAutocomplete,
+    isMultiselectable,
+    isEditable = true,
+    disabled,
+    hasHint,
+    hasMessage,
+    options = [],
+    inputValue,
+    selectionValue,
+    isExpanded,
+    defaultExpanded,
+    initialExpanded,
+    activeIndex,
+    defaultActiveIndex,
+    initialActiveIndex,
+    onChange = () => undefined,
+    environment
+  } = _ref;
+  const win = environment || window;
+  const prefix = `${useId(idPrefix)}-`;
+  const [triggerContainsInput, setTriggerContainsInput] = reactExports.useState();
+  const [matchValue, setMatchValue] = reactExports.useState('');
+  const matchTimeoutRef = reactExports.useRef();
+  const previousStateRef = reactExports.useRef();
+  const labels = reactExports.useMemo(() => ({}), []);
+  const selectedValues = reactExports.useMemo(() => [], []);
+  const disabledValues = reactExports.useMemo(() => [], []);
+  const values = reactExports.useMemo(() => {
+    const retVal = [];
+    const setValues = option => {
+      if (option.disabled) {
+        if (!disabledValues.includes(option.value)) {
+          disabledValues.push(option.value);
+        }
+      } else {
+        retVal.push(option.value);
+        const index = disabledValues.indexOf(option.value);
+        if (index !== -1) {
+          disabledValues.splice(index, 1);
+        }
+      }
+      if (option.selected && !selectedValues.includes(option.value)) {
+        selectedValues.push(option.value);
+      }
+      const key = typeof option.value === 'string' ? option.value : JSON.stringify(option.value);
+      labels[key] = option.label || key;
+    };
+    options.forEach(option => {
+      if ('options' in option) {
+        option.options.forEach(setValues);
+      } else {
+        setValues(option);
+      }
+    });
+    return retVal;
+  }, [options, disabledValues, selectedValues, labels]);
+  const initialSelectionValue = isMultiselectable ? selectedValues : selectedValues[0];
+  const initialInputValue = isMultiselectable ? '' : toLabel(labels, initialSelectionValue);
+  const _defaultActiveIndex = reactExports.useMemo(() => {
+    if (defaultActiveIndex === undefined) {
+      return isAutocomplete && isEditable ? 0 : undefined;
+    }
+    return defaultActiveIndex;
+  }, [defaultActiveIndex, isAutocomplete, isEditable]);
+  if (selectionValue === undefined || selectionValue === null) {
+    if (!isMultiselectable && selectedValues.length > 1) {
+      throw new Error('Error: expected useCombobox `options` to have no more than one selected.');
+    }
+  }
+  if (selectionValue !== undefined && selectionValue !== null) {
+    if (isMultiselectable && !Array.isArray(selectionValue)) {
+      throw new Error('Error: expected multiselectable useCombobox `selectionValue` to be an array.');
+    } else if (!isMultiselectable && Array.isArray(selectionValue)) {
+      throw new Error('Error: expected useCombobox `selectionValue` not to be an array.');
+    }
+  }
+  const handleDownshiftStateChange = _ref2 => {
+    let {
+      type,
+      isOpen,
+      selectedItem,
+      inputValue: _inputValue,
+      highlightedIndex
+    } = _ref2;
+    return onChange({
+      type: toType(type),
+      ...(isOpen !== undefined && {
+        isExpanded: isOpen
+      }),
+      ...(selectedItem !== undefined && {
+        selectionValue: selectedItem
+      }),
+      ...(_inputValue !== undefined && {
+        inputValue: _inputValue
+      }),
+      ...(highlightedIndex !== undefined && {
+        activeIndex: highlightedIndex
+      })
+    });
+  };
+  const stateReducer = (state, _ref3) => {
+    let {
+      type,
+      changes,
+      altKey
+    } = _ref3;
+    switch (type) {
+      case useCombobox$1.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+        return state;
+      case useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex:
+        if (previousStateRef.current?.altKey) {
+          changes.highlightedIndex = -1;
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.FunctionCloseMenu:
+      case useCombobox$1.stateChangeTypes.InputBlur:
+        return {
+          ...state,
+          isOpen: type === useCombobox$1.stateChangeTypes.InputBlur && triggerContainsInput && isMultiselectable && state.isOpen || false
+        };
+      case useCombobox$1.stateChangeTypes.InputFocus:
+        return {
+          ...state,
+          isOpen: false
+        };
+      case useCombobox$1.stateChangeTypes.InputKeyDownArrowDown:
+      case useCombobox$1.stateChangeTypes.FunctionOpenMenu:
+        if (state.isOpen !== changes.isOpen && !altKey) {
+          changes.highlightedIndex = 0;
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.InputKeyDownArrowUp:
+        if (state.isOpen !== changes.isOpen) {
+          changes.highlightedIndex = values.length - 1;
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.InputKeyDownEnter:
+      case useCombobox$1.stateChangeTypes.FunctionSelectItem:
+      case useCombobox$1.stateChangeTypes.ItemClick:
+        changes.highlightedIndex = state.highlightedIndex;
+        if (isMultiselectable) {
+          changes.isOpen = state.isOpen;
+          changes.inputValue = '';
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.InputKeyDownEscape:
+        return {
+          ...state,
+          isOpen: false
+        };
+      case useCombobox$1.stateChangeTypes.InputKeyDownPageDown:
+      case useCombobox$1.stateChangeTypes.InputKeyDownPageUp:
+        return state;
+    }
+    if (isMultiselectable && state.selectedItem !== changes.selectedItem) {
+      if (state.selectedItem !== undefined && state.selectedItem !== null && changes.selectedItem !== undefined && changes.selectedItem !== null) {
+        if (state.selectedItem.includes(changes.selectedItem)) {
+          changes.selectedItem = state.selectedItem.filter(value => value !== changes.selectedItem);
+        } else {
+          changes.selectedItem = [...state.selectedItem, changes.selectedItem];
+        }
+      } else if (changes.selectedItem !== undefined && changes.selectedItem !== null) {
+        changes.selectedItem = [changes.selectedItem];
+      } else {
+        changes.selectedItem = [];
+      }
+    }
+    previousStateRef.current = {
+      type,
+      altKey,
+      ...state
+    };
+    return changes;
+  };
+  const transformValue = value => value ? toLabel(labels, value) : '';
+  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefix}-option${isDisabled ? '-disabled' : ''}-${index}`, [prefix]);
+  const {
+    selectedItem: _selectionValue,
+    isOpen: _isExpanded,
+    highlightedIndex: _activeIndex,
+    inputValue: _inputValue,
+    getToggleButtonProps: getDownshiftTriggerProps,
+    getInputProps: getDownshiftInputProps,
+    getMenuProps: getDownshiftListboxProps,
+    getItemProps: getDownshiftOptionProps,
+    closeMenu,
+    openMenu,
+    setHighlightedIndex,
+    selectItem
+  } = useCombobox$1({
+    id: prefix,
+    toggleButtonId: `${prefix}-trigger`,
+    menuId: `${prefix}-listbox`,
+    getItemId: getOptionId,
+    items: values,
+    inputValue,
+    initialInputValue,
+    itemToString: transformValue,
+    selectedItem: selectionValue,
+    initialSelectedItem: initialSelectionValue,
+    isOpen: isExpanded,
+    defaultIsOpen: defaultExpanded,
+    initialIsOpen: initialExpanded,
+    highlightedIndex: activeIndex,
+    defaultHighlightedIndex: _defaultActiveIndex,
+    initialHighlightedIndex: initialActiveIndex,
+    onStateChange: handleDownshiftStateChange,
+    stateReducer,
+    environment: win
+  });
+  const closeListbox = reactExports.useCallback(() => {
+    closeMenu();
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionCloseMenu),
+      isExpanded: false
+    });
+  }, [closeMenu, onChange]);
+  const openListbox = reactExports.useCallback(() => {
+    openMenu();
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionOpenMenu),
+      isExpanded: true
+    });
+  }, [openMenu, onChange]);
+  const setActiveIndex = reactExports.useCallback(index => {
+    setHighlightedIndex(index);
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex),
+      activeIndex: index
+    });
+  }, [onChange, setHighlightedIndex]);
+  const setDownshiftSelection = reactExports.useCallback(value => {
+    selectItem(value);
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionSelectItem),
+      selectionValue: value
+    });
+  }, [onChange, selectItem]);
+  const {
+    getLabelProps: getFieldLabelProps,
+    getHintProps,
+    getInputProps: getFieldInputProps,
+    getMessageProps
+  } = useField$1({
+    idPrefix,
+    hasHint,
+    hasMessage
+  });
+  reactExports.useLayoutEffect(() => {
+    if (isAutocomplete && _isExpanded && !previousStateRef.current?.isOpen && _selectionValue && !matchValue) {
+      const value = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1] : _selectionValue;
+      const index = values.findIndex(current => current === value);
+      if (index !== -1) {
+        setActiveIndex(index);
+      } else if (_defaultActiveIndex !== undefined) {
+        setActiveIndex(_defaultActiveIndex);
+      }
+    }
+  }, [isAutocomplete, _isExpanded, _selectionValue, _inputValue, values, _defaultActiveIndex, setActiveIndex]);
+  reactExports.useEffect(() => setTriggerContainsInput(triggerRef.current?.contains(inputRef.current)), [triggerRef, inputRef]);
+  reactExports.useEffect(() => {
+    clearTimeout(matchTimeoutRef.current);
+    matchTimeoutRef.current = window.setTimeout(() => setMatchValue(''), 500);
+    return () => clearTimeout(matchTimeoutRef.current);
+  }, [matchValue]);
+  reactExports.useEffect(() => {
+    if (previousStateRef.current?.type === useCombobox$1.stateChangeTypes.FunctionSelectItem) {
+      if (isEditable) {
+        inputRef.current?.focus();
+      } else {
+        triggerRef.current?.focus();
+      }
+    }
+  });
+  reactExports.useEffect(() => {
+    if (isEditable && inputRef.current === win.document.activeElement) {
+      inputRef.current?.scrollIntoView && inputRef.current?.scrollIntoView();
+    }
+  }, [inputRef, isEditable, win.document.activeElement]);
+  const getTriggerProps = reactExports.useCallback(function (_temp) {
+    let {
+      onBlur,
+      onClick,
+      onKeyDown,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    const triggerProps = getDownshiftTriggerProps({
+      'data-garden-container-id': 'containers.combobox',
+      'data-garden-container-version': '1.0.0',
+      onBlur,
+      onClick,
+      onKeyDown,
+      ref: triggerRef,
+      disabled,
+      ...other
+    });
+    const handleBlur = event => {
+      if (event.relatedTarget === null || !event.currentTarget?.contains(event.relatedTarget)) {
+        closeListbox();
+      }
+    };
+    if (isEditable && triggerContainsInput) {
+      const handleClick = event => {
+        if (disabled) {
+          event.preventDefault();
+        } else if (isAutocomplete) {
+          triggerProps.onClick(event);
+        } else {
+          inputRef.current?.focus();
+        }
+      };
+      return {
+        ...triggerProps,
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onClick: composeEventHandlers$1(onClick, handleClick),
+        'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
+        'aria-expanded': undefined,
+        'aria-disabled': disabled || undefined,
+        disabled: undefined
+      };
+    } else if (!isEditable) {
+      const {
+        'aria-activedescendant': ariaActiveDescendant,
+        onKeyDown: onDownshiftKeyDown
+      } = getDownshiftInputProps({}, {
+        suppressRefError: true
+      });
+      const {
+        'aria-labelledby': ariaLabeledBy
+      } = getFieldInputProps();
+      const handleKeyDown = event => {
+        event.stopPropagation();
+        if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+          openListbox();
+        } else if (/^(?:\S| ){1}$/u.test(event.key)) {
+          const _matchValue = `${matchValue}${event.key}`;
+          setMatchValue(_matchValue);
+          let offset = 0;
+          if (_isExpanded) {
+            if (_activeIndex !== -1) {
+              offset = _matchValue.length === 1 ? _activeIndex + 1 : _activeIndex;
+            }
+          } else {
+            openListbox();
+            const offsetValue = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1] : _selectionValue;
+            if (offsetValue !== null) {
+              offset = values.findIndex(current => current === offsetValue);
+            }
+          }
+          for (let index = 0; index < values.length; index++) {
+            const valueIndex = (index + offset) % values.length;
+            const value = values[valueIndex];
+            if (toLabel(labels, value).toLowerCase().startsWith(_matchValue.toLowerCase())) {
+              setActiveIndex(valueIndex);
+              break;
+            }
+          }
+        }
+      };
+      return {
+        ...triggerProps,
+        'aria-activedescendant': ariaActiveDescendant,
+        'aria-haspopup': 'listbox',
+        'aria-labelledby': ariaLabeledBy,
+        'aria-disabled': disabled || undefined,
+        disabled: undefined,
+        role: 'combobox',
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onKeyDown: composeEventHandlers$1(onKeyDown, onDownshiftKeyDown, handleKeyDown),
+        tabIndex: disabled ? -1 : 0
+      };
+    }
+    return triggerProps;
+  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, inputRef]);
+  const getLabelProps = reactExports.useCallback(function (_temp2) {
+    let {
+      onClick,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    const {
+      htmlFor,
+      ...labelProps
+    } = getFieldLabelProps(other);
+    const handleClick = () => !isEditable && triggerRef.current?.focus();
+    return {
+      ...labelProps,
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      htmlFor: isEditable ? htmlFor : undefined
+    };
+  }, [getFieldLabelProps, isEditable, triggerRef]);
+  const getInputProps = reactExports.useCallback(function (_temp3) {
+    let {
+      role = isEditable ? 'combobox' : null,
+      'aria-labelledby': ariaLabeledBy = null,
+      onClick,
+      onFocus,
+      ...other
+    } = _temp3 === void 0 ? {} : _temp3;
+    const inputProps = {
+      'data-garden-container-id': 'containers.combobox.input',
+      'data-garden-container-version': '1.0.0',
+      ref: inputRef,
+      role: role === null ? undefined : role,
+      onClick,
+      onFocus
+    };
+    if (isEditable) {
+      const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
+      return getDownshiftInputProps({
+        ...inputProps,
+        disabled,
+        role,
+        'aria-labelledby': ariaLabeledBy,
+        'aria-autocomplete': isAutocomplete ? 'list' : undefined,
+        onClick: composeEventHandlers$1(onClick, handleClick),
+        ...getFieldInputProps(),
+        ...other
+      });
+    }
+    const downshiftInputProps = getDownshiftInputProps({
+      ...inputProps,
+      disabled: true,
+      'aria-autocomplete': undefined,
+      'aria-activedescendant': undefined,
+      'aria-controls': undefined,
+      'aria-expanded': undefined,
+      'aria-hidden': true,
+      'aria-labelledby': undefined
+    });
+    const handleFocus = () => {
+      if (!isEditable) {
+        triggerRef.current?.focus();
+      }
+    };
+    return {
+      ...downshiftInputProps,
+      disabled,
+      readOnly: true,
+      tabIndex: -1,
+      onFocus: composeEventHandlers$1(onFocus, handleFocus),
+      ...other
+    };
+  }, [getDownshiftInputProps, getFieldInputProps, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
+  const getTagProps = reactExports.useCallback(_ref4 => {
+    let {
+      option,
+      onClick,
+      onFocus,
+      onKeyDown,
+      ...other
+    } = _ref4;
+    const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
+    const handleFocus = () => {
+      if (_isExpanded) {
+        setActiveIndex(values.findIndex(value => value === option.value));
+      }
+    };
+    const handleKeyDown = event => {
+      if (event.key === KEYS$1.BACKSPACE || event.key === KEYS$1.DELETE) {
+        setDownshiftSelection(option.value);
+      } else {
+        const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
+        if (triggerContainsTag && (event.key === KEYS$1.DOWN || event.key === KEYS$1.UP || event.key === KEYS$1.ESCAPE)) {
+          const inputProps = getDownshiftInputProps();
+          if (isEditable) {
+            inputRef.current?.focus();
+          } else {
+            triggerRef.current?.focus();
+          }
+          inputProps.onKeyDown(event);
+        } else if (triggerContainsTag && !isEditable) {
+          event.stopPropagation();
+        }
+      }
+    };
+    return {
+      'data-garden-container-id': 'containers.combobox.tag',
+      'data-garden-container-version': '1.0.0',
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      onFocus: composeEventHandlers$1(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
+      ...other
+    };
+  }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, _isExpanded, values, setActiveIndex, inputRef]);
+  const getListboxProps = reactExports.useCallback(_ref5 => {
+    let {
+      role = 'listbox',
+      'aria-labelledby': ariaLabeledBy = null,
+      ...other
+    } = _ref5;
+    return getDownshiftListboxProps({
+      'data-garden-container-id': 'containers.combobox.listbox',
+      'data-garden-container-version': '1.0.0',
+      ref: listboxRef,
+      role,
+      'aria-labelledby': ariaLabeledBy,
+      'aria-multiselectable': isMultiselectable ? true : undefined,
+      ...other
+    });
+  }, [getDownshiftListboxProps, listboxRef, isMultiselectable]);
+  const getOptGroupProps = reactExports.useCallback(_ref6 => {
+    let {
+      role = 'group',
+      ...other
+    } = _ref6;
+    return {
+      'data-garden-container-id': 'containers.combobox.optgroup',
+      'data-garden-container-version': '1.0.0',
+      role: role === null ? undefined : role,
+      ...other
+    };
+  }, []);
+  const getOptionProps = reactExports.useCallback(function (_temp4) {
+    let {
+      role = 'option',
+      option,
+      onMouseDown,
+      ...other
+    } = _temp4 === void 0 ? {} : _temp4;
+    const optionProps = {
+      'data-garden-container-id': 'containers.combobox.option',
+      'data-garden-container-version': '1.0.0',
+      role,
+      onMouseDown,
+      ...other
+    };
+    let ariaSelected = false;
+    if (option?.value !== undefined) {
+      ariaSelected = Array.isArray(_selectionValue) ? _selectionValue?.includes(option?.value) : _selectionValue === option?.value;
+    }
+    if (option === undefined || option.disabled) {
+      const handleMouseDown = event => event.preventDefault();
+      return {
+        'aria-disabled': true,
+        'aria-selected': ariaSelected,
+        id: option ? getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
+        ...optionProps,
+        onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown)
+      };
+    }
+    return getDownshiftOptionProps({
+      item: option.value,
+      index: values.indexOf(option.value),
+      'aria-selected': ariaSelected,
+      ...optionProps
+    });
+  }, [getDownshiftOptionProps, disabledValues, values, _selectionValue, getOptionId]);
+  const removeSelection = reactExports.useCallback(value => {
+    if (value === undefined) {
+      setDownshiftSelection(null);
+    } else {
+      const removeValue = typeof value === 'object' && 'value' in value ? value.value : value;
+      if (Array.isArray(_selectionValue) && _selectionValue.includes(removeValue)) {
+        setDownshiftSelection(removeValue);
+      } else if (_selectionValue === removeValue) {
+        setDownshiftSelection(null);
+      } else ;
+    }
+  }, [_selectionValue, setDownshiftSelection]);
+  const selection = reactExports.useMemo(() => {
+    if (Array.isArray(_selectionValue)) {
+      return _selectionValue.map(value => ({
+        value,
+        label: labels[value],
+        disabled: disabledValues.includes(value)
+      }));
+    } else if (_selectionValue) {
+      return {
+        value: _selectionValue,
+        label: toLabel(labels, _selectionValue),
+        disabled: disabledValues.includes(_selectionValue)
+      };
+    }
+    return null;
+  }, [_selectionValue, disabledValues, labels]);
+  return reactExports.useMemo(() => ({
+    getLabelProps,
+    getHintProps,
+    getTriggerProps,
+    getInputProps,
+    getTagProps,
+    getListboxProps,
+    getOptGroupProps,
+    getOptionProps,
+    getMessageProps,
+    selection,
+    isExpanded: _isExpanded,
+    activeValue: values[_activeIndex],
+    inputValue: _inputValue,
+    removeSelection
+  }), [values, selection, _isExpanded, _activeIndex, _inputValue, getLabelProps, getHintProps, getTriggerProps, getInputProps, getTagProps, getListboxProps, getOptGroupProps, getOptionProps, getMessageProps, removeSelection]);
+};
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  idPrefix: PropTypes.string,
+  triggerRef: PropTypes.any.isRequired,
+  inputRef: PropTypes.any.isRequired,
+  listboxRef: PropTypes.any.isRequired,
+  isAutocomplete: PropTypes.bool,
+  isMultiselectable: PropTypes.bool,
+  isEditable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  hasHint: PropTypes.bool,
+  hasMessage: PropTypes.bool,
+  options: PropTypes.arrayOf(PropTypes.any).isRequired,
+  inputValue: PropTypes.string,
+  selectionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  isExpanded: PropTypes.bool,
+  defaultExpanded: PropTypes.bool,
+  initialExpanded: PropTypes.bool,
+  activeIndex: PropTypes.number,
+  defaultActiveIndex: PropTypes.number,
+  initialActiveIndex: PropTypes.number,
+  onChange: PropTypes.func,
+  environment: PropTypes.any
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+const INPUT_TYPES_WHITE_LIST = {
+  text: true,
+  search: true,
+  url: true,
+  tel: true,
+  email: true,
+  password: true,
+  number: true,
+  date: true,
+  month: true,
+  week: true,
+  time: true,
+  datetime: true,
+  'datetime-local': true
+};
+function useFocusVisible(_temp) {
+  let {
+    scope,
+    relativeDocument,
+    className = 'garden-focus-visible',
+    dataAttribute = 'data-garden-focus-visible'
+  } = _temp === void 0 ? {} : _temp;
+  if (!scope) {
+    throw new Error('Error: the useFocusVisible() hook requires a "scope" property');
+  }
+  const hadKeyboardEvent = reactExports.useRef(false);
+  const hadFocusVisibleRecently = reactExports.useRef(false);
+  const hadFocusVisibleRecentlyTimeout = reactExports.useRef();
+  reactExports.useEffect(() => {
+    let environment = relativeDocument;
+    if (!environment) {
+      environment = document;
+    }
+    const isValidFocusTarget = el => {
+      if (el && el !== scope.current && el.nodeName !== 'HTML' && el.nodeName !== 'BODY' && 'classList' in el && 'contains' in el.classList) {
+        return true;
+      }
+      return false;
+    };
+    const focusTriggersKeyboardModality = el => {
+      const type = el.type;
+      const tagName = el.tagName;
+      if (tagName === 'INPUT' && INPUT_TYPES_WHITE_LIST[type] && !el.readOnly) {
+        return true;
+      }
+      if (tagName === 'TEXTAREA' && !el.readOnly) {
+        return true;
+      }
+      if (el.isContentEditable) {
+        return true;
+      }
+      return false;
+    };
+    const isFocused = el => {
+      if (el && (el.classList.contains(className) || el.hasAttribute(dataAttribute))) {
+        return true;
+      }
+      return false;
+    };
+    const addFocusVisibleClass = el => {
+      if (isFocused(el)) {
+        return;
+      }
+      el && el.classList.add(className);
+      el && el.setAttribute(dataAttribute, 'true');
+    };
+    const removeFocusVisibleClass = el => {
+      el.classList.remove(className);
+      el.removeAttribute(dataAttribute);
+    };
+    const onKeyDown = e => {
+      if (e.metaKey || e.altKey || e.ctrlKey) {
+        return;
+      }
+      if (isValidFocusTarget(environment.activeElement)) {
+        addFocusVisibleClass(environment.activeElement);
+      }
+      hadKeyboardEvent.current = true;
+    };
+    const onPointerDown = () => {
+      hadKeyboardEvent.current = false;
+    };
+    const onFocus = e => {
+      if (!isValidFocusTarget(e.target)) {
+        return;
+      }
+      if (hadKeyboardEvent.current || focusTriggersKeyboardModality(e.target)) {
+        addFocusVisibleClass(e.target);
+      }
+    };
+    const onBlur = e => {
+      if (!isValidFocusTarget(e.target)) {
+        return;
+      }
+      if (isFocused(e.target)) {
+        hadFocusVisibleRecently.current = true;
+        clearTimeout(hadFocusVisibleRecentlyTimeout.current);
+        const timeoutId = setTimeout(() => {
+          hadFocusVisibleRecently.current = false;
+          clearTimeout(hadFocusVisibleRecentlyTimeout.current);
+        }, 100);
+        hadFocusVisibleRecentlyTimeout.current = Number(timeoutId);
+        removeFocusVisibleClass(e.target);
+      }
+    };
+    const onInitialPointerMove = e => {
+      const nodeName = e.target.nodeName;
+      if (nodeName && nodeName.toLowerCase() === 'html') {
+        return;
+      }
+      hadKeyboardEvent.current = false;
+      removeInitialPointerMoveListeners();
+    };
+    const addInitialPointerMoveListeners = () => {
+      environment.addEventListener('mousemove', onInitialPointerMove);
+      environment.addEventListener('mousedown', onInitialPointerMove);
+      environment.addEventListener('mouseup', onInitialPointerMove);
+      environment.addEventListener('pointermove', onInitialPointerMove);
+      environment.addEventListener('pointerdown', onInitialPointerMove);
+      environment.addEventListener('pointerup', onInitialPointerMove);
+      environment.addEventListener('touchmove', onInitialPointerMove);
+      environment.addEventListener('touchstart', onInitialPointerMove);
+      environment.addEventListener('touchend', onInitialPointerMove);
+    };
+    const removeInitialPointerMoveListeners = () => {
+      environment.removeEventListener('mousemove', onInitialPointerMove);
+      environment.removeEventListener('mousedown', onInitialPointerMove);
+      environment.removeEventListener('mouseup', onInitialPointerMove);
+      environment.removeEventListener('pointermove', onInitialPointerMove);
+      environment.removeEventListener('pointerdown', onInitialPointerMove);
+      environment.removeEventListener('pointerup', onInitialPointerMove);
+      environment.removeEventListener('touchmove', onInitialPointerMove);
+      environment.removeEventListener('touchstart', onInitialPointerMove);
+      environment.removeEventListener('touchend', onInitialPointerMove);
+    };
+    const onVisibilityChange = () => {
+      if (environment.visibilityState === 'hidden') {
+        if (hadFocusVisibleRecently.current) {
+          hadKeyboardEvent.current = true;
+        }
+      }
+    };
+    const currentScope = scope.current;
+    if (!environment || !currentScope) {
+      return;
+    }
+    environment.addEventListener('keydown', onKeyDown, true);
+    environment.addEventListener('mousedown', onPointerDown, true);
+    environment.addEventListener('pointerdown', onPointerDown, true);
+    environment.addEventListener('touchstart', onPointerDown, true);
+    environment.addEventListener('visibilitychange', onVisibilityChange, true);
+    addInitialPointerMoveListeners();
+    currentScope && currentScope.addEventListener('focus', onFocus, true);
+    currentScope && currentScope.addEventListener('blur', onBlur, true);
+    return () => {
+      environment.removeEventListener('keydown', onKeyDown);
+      environment.removeEventListener('mousedown', onPointerDown);
+      environment.removeEventListener('pointerdown', onPointerDown);
+      environment.removeEventListener('touchstart', onPointerDown);
+      environment.removeEventListener('visibilityChange', onVisibilityChange);
+      removeInitialPointerMoveListeners();
+      currentScope && currentScope.removeEventListener('focus', onFocus);
+      currentScope && currentScope.removeEventListener('blur', onBlur);
+      clearTimeout(hadFocusVisibleRecentlyTimeout.current);
+    };
+  }, [relativeDocument, scope, className, dataAttribute]);
+}
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  relativeDocument: PropTypes.object,
+  className: PropTypes.string,
+  dataAttribute: PropTypes.string
+});
+
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+    return o.__proto__ || Object.getPrototypeOf(o);
+  };
+  return _getPrototypeOf(o);
+}
+
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+
+function _isNativeReflectConstruct() {
+  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
+  if (Reflect.construct.sham) return false;
+  if (typeof Proxy === "function") return true;
+  try {
+    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+function _construct(Parent, args, Class) {
+  if (_isNativeReflectConstruct()) {
+    _construct = Reflect.construct.bind();
+  } else {
+    _construct = function _construct(Parent, args, Class) {
+      var a = [null];
+      a.push.apply(a, args);
+      var Constructor = Function.bind.apply(Parent, a);
+      var instance = new Constructor();
+      if (Class) _setPrototypeOf(instance, Class.prototype);
+      return instance;
+    };
+  }
+  return _construct.apply(null, arguments);
+}
+
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map === "function" ? new Map() : undefined;
+  _wrapNativeSuper = function _wrapNativeSuper(Class) {
+    if (Class === null || !_isNativeFunction(Class)) return Class;
+    if (typeof Class !== "function") {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+    if (typeof _cache !== "undefined") {
+      if (_cache.has(Class)) return _cache.get(Class);
+      _cache.set(Class, Wrapper);
+    }
+    function Wrapper() {
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
+    }
+    Wrapper.prototype = Object.create(Class.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    });
+    return _setPrototypeOf(Wrapper, Class);
+  };
+  return _wrapNativeSuper(Class);
+}
+
+function last() {
+  var _ref;
+  return _ref = arguments.length - 1, _ref < 0 || arguments.length <= _ref ? undefined : arguments[_ref];
+}
+function negation(a) {
+  return -a;
+}
+function addition(a, b) {
+  return a + b;
+}
+function subtraction(a, b) {
+  return a - b;
+}
+function multiplication(a, b) {
+  return a * b;
+}
+function division(a, b) {
+  return a / b;
+}
+function max$2() {
+  return Math.max.apply(Math, arguments);
+}
+function min$2() {
+  return Math.min.apply(Math, arguments);
+}
+function comma() {
+  return Array.of.apply(Array, arguments);
+}
+var defaultSymbols = {
+  symbols: {
+    '*': {
+      infix: {
+        symbol: '*',
+        f: multiplication,
+        notation: 'infix',
+        precedence: 4,
+        rightToLeft: 0,
+        argCount: 2
+      },
+      symbol: '*',
+      regSymbol: '\\*'
+    },
+    '/': {
+      infix: {
+        symbol: '/',
+        f: division,
+        notation: 'infix',
+        precedence: 4,
+        rightToLeft: 0,
+        argCount: 2
+      },
+      symbol: '/',
+      regSymbol: '/'
+    },
+    '+': {
+      infix: {
+        symbol: '+',
+        f: addition,
+        notation: 'infix',
+        precedence: 2,
+        rightToLeft: 0,
+        argCount: 2
+      },
+      prefix: {
+        symbol: '+',
+        f: last,
+        notation: 'prefix',
+        precedence: 3,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: '+',
+      regSymbol: '\\+'
+    },
+    '-': {
+      infix: {
+        symbol: '-',
+        f: subtraction,
+        notation: 'infix',
+        precedence: 2,
+        rightToLeft: 0,
+        argCount: 2
+      },
+      prefix: {
+        symbol: '-',
+        f: negation,
+        notation: 'prefix',
+        precedence: 3,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: '-',
+      regSymbol: '-'
+    },
+    ',': {
+      infix: {
+        symbol: ',',
+        f: comma,
+        notation: 'infix',
+        precedence: 1,
+        rightToLeft: 0,
+        argCount: 2
+      },
+      symbol: ',',
+      regSymbol: ','
+    },
+    '(': {
+      prefix: {
+        symbol: '(',
+        f: last,
+        notation: 'prefix',
+        precedence: 0,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: '(',
+      regSymbol: '\\('
+    },
+    ')': {
+      postfix: {
+        symbol: ')',
+        f: undefined,
+        notation: 'postfix',
+        precedence: 0,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: ')',
+      regSymbol: '\\)'
+    },
+    min: {
+      func: {
+        symbol: 'min',
+        f: min$2,
+        notation: 'func',
+        precedence: 0,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: 'min',
+      regSymbol: 'min\\b'
+    },
+    max: {
+      func: {
+        symbol: 'max',
+        f: max$2,
+        notation: 'func',
+        precedence: 0,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: 'max',
+      regSymbol: 'max\\b'
+    }
+  }
+};
+var defaultSymbolMap = defaultSymbols;
+/**
+ * Create an error file out of errors.md for development and a simple web link to the full errors
+ * in production mode.
+ * @private
+ */
+
+var PolishedError = /*#__PURE__*/function (_Error) {
+  _inheritsLoose(PolishedError, _Error);
+  function PolishedError(code) {
+    var _this;
+    {
+      _this = _Error.call(this, "An error occurred. See https://github.com/styled-components/polished/blob/main/src/internalHelpers/errors.md#" + code + " for more information.") || this;
+    }
+    return _assertThisInitialized(_this);
+  }
+  return PolishedError;
+}( /*#__PURE__*/_wrapNativeSuper(Error));
+var unitRegExp = /((?!\w)a|na|hc|mc|dg|me[r]?|xe|ni(?![a-zA-Z])|mm|cp|tp|xp|q(?!s)|hv|xamv|nimv|wv|sm|s(?!\D|$)|ged|darg?|nrut)/g; // Merges additional math functionality into the defaults.
+
+function mergeSymbolMaps(additionalSymbols) {
+  var symbolMap = {};
+  symbolMap.symbols = additionalSymbols ? _extends$w({}, defaultSymbolMap.symbols, additionalSymbols.symbols) : _extends$w({}, defaultSymbolMap.symbols);
+  return symbolMap;
+}
+function exec(operators, values) {
+  var _ref;
+  var op = operators.pop();
+  values.push(op.f.apply(op, (_ref = []).concat.apply(_ref, values.splice(-op.argCount))));
+  return op.precedence;
+}
+function calculate(expression, additionalSymbols) {
+  var symbolMap = mergeSymbolMaps(additionalSymbols);
+  var match;
+  var operators = [symbolMap.symbols['('].prefix];
+  var values = [];
+  var pattern = new RegExp(
+  // Pattern for numbers
+  "\\d+(?:\\.\\d+)?|" +
+  // ...and patterns for individual operators/function names
+  Object.keys(symbolMap.symbols).map(function (key) {
+    return symbolMap.symbols[key];
+  }) // longer symbols should be listed first
+  // $FlowFixMe
+  .sort(function (a, b) {
+    return b.symbol.length - a.symbol.length;
+  }) // $FlowFixMe
+  .map(function (val) {
+    return val.regSymbol;
+  }).join('|') + "|(\\S)", 'g');
+  pattern.lastIndex = 0; // Reset regular expression object
+
+  var afterValue = false;
+  do {
+    match = pattern.exec(expression);
+    var _ref2 = match || [')', undefined],
+      token = _ref2[0],
+      bad = _ref2[1];
+    var notNumber = symbolMap.symbols[token];
+    var notNewValue = notNumber && !notNumber.prefix && !notNumber.func;
+    var notAfterValue = !notNumber || !notNumber.postfix && !notNumber.infix; // Check for syntax errors:
+
+    if (bad || (afterValue ? notAfterValue : notNewValue)) {
+      throw new PolishedError(37, match ? match.index : expression.length, expression);
+    }
+    if (afterValue) {
+      // We either have an infix or postfix operator (they should be mutually exclusive)
+      var curr = notNumber.postfix || notNumber.infix;
+      do {
+        var prev = operators[operators.length - 1];
+        if ((curr.precedence - prev.precedence || prev.rightToLeft) > 0) break; // Apply previous operator, since it has precedence over current one
+      } while (exec(operators, values)); // Exit loop after executing an opening parenthesis or function
+
+      afterValue = curr.notation === 'postfix';
+      if (curr.symbol !== ')') {
+        operators.push(curr); // Postfix always has precedence over any operator that follows after it
+
+        if (afterValue) exec(operators, values);
+      }
+    } else if (notNumber) {
+      // prefix operator or function
+      operators.push(notNumber.prefix || notNumber.func);
+      if (notNumber.func) {
+        // Require an opening parenthesis
+        match = pattern.exec(expression);
+        if (!match || match[0] !== '(') {
+          throw new PolishedError(38, match ? match.index : expression.length, expression);
+        }
+      }
+    } else {
+      // number
+      values.push(+token);
+      afterValue = true;
+    }
+  } while (match && operators.length);
+  if (operators.length) {
+    throw new PolishedError(39, match ? match.index : expression.length, expression);
+  } else if (match) {
+    throw new PolishedError(40, match ? match.index : expression.length, expression);
+  } else {
+    return values.pop();
+  }
+}
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+/**
+ * Helper for doing math with CSS Units. Accepts a formula as a string. All values in the formula must have the same unit (or be unitless). Supports complex formulas utliziing addition, subtraction, multiplication, division, square root, powers, factorial, min, max, as well as parentheses for order of operation.
+ *
+ *In cases where you need to do calculations with mixed units where one unit is a [relative length unit](https://developer.mozilla.org/en-US/docs/Web/CSS/length#Relative_length_units), you will want to use [CSS Calc](https://developer.mozilla.org/en-US/docs/Web/CSS/calc).
+ *
+ * *warning* While we've done everything possible to ensure math safely evalutes formulas expressed as strings, you should always use extreme caution when passing `math` user provided values.
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   fontSize: math('12rem + 8rem'),
+ *   fontSize: math('(12px + 2px) * 3'),
+ *   fontSize: math('3px^2 + sqrt(4)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   fontSize: ${math('12rem + 8rem')};
+ *   fontSize: ${math('(12px + 2px) * 3')};
+ *   fontSize: ${math('3px^2 + sqrt(4)')};
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * div: {
+ *   fontSize: '20rem',
+ *   fontSize: '42px',
+ *   fontSize: '11px',
+ * }
+ */
+
+function math(formula, additionalSymbols) {
+  var reversedFormula = reverseString(formula);
+  var formulaMatch = reversedFormula.match(unitRegExp); // Check that all units are the same
+
+  if (formulaMatch && !formulaMatch.every(function (unit) {
+    return unit === formulaMatch[0];
+  })) {
+    throw new PolishedError(41);
+  }
+  var cleanFormula = reverseString(reversedFormula.replace(unitRegExp, ''));
+  return "" + calculate(cleanFormula, additionalSymbols) + (formulaMatch ? reverseString(formulaMatch[0]) : '');
+}
+
+/**
+ * Check if a string ends with something
+ * @private
+ */
+function endsWith(string, suffix) {
+  return string.substr(-suffix.length) === suffix;
+}
+var cssRegex$1 = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/;
+/**
+ * Returns a given CSS value minus its unit of measure.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   '--dimension': stripUnit('100px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   --dimension: ${stripUnit('100px')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   '--dimension': 100
+ * }
+ */
+
+function stripUnit(value) {
+  if (typeof value !== 'string') return value;
+  var matchedValue = value.match(cssRegex$1);
+  return matchedValue ? parseFloat(value) : value;
+}
+
+/**
+ * Factory function that creates pixel-to-x converters
+ * @private
+ */
+
+var pxtoFactory = function pxtoFactory(to) {
+  return function (pxval, base) {
+    if (base === void 0) {
+      base = '16px';
+    }
+    var newPxval = pxval;
+    var newBase = base;
+    if (typeof pxval === 'string') {
+      if (!endsWith(pxval, 'px')) {
+        throw new PolishedError(69, to, pxval);
+      }
+      newPxval = stripUnit(pxval);
+    }
+    if (typeof base === 'string') {
+      if (!endsWith(base, 'px')) {
+        throw new PolishedError(70, to, base);
+      }
+      newBase = stripUnit(base);
+    }
+    if (typeof newPxval === 'string') {
+      throw new PolishedError(71, pxval, to);
+    }
+    if (typeof newBase === 'string') {
+      throw new PolishedError(72, base, to);
+    }
+    return "" + newPxval / newBase + to;
+  };
+};
+var pixelsto = pxtoFactory;
+
+/**
+ * Convert pixel value to ems. The default base value is 16px, but can be changed by passing a
+ * second argument to the function.
+ * @function
+ * @param {string|number} pxval
+ * @param {string|number} [base='16px']
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   'height': em('16px')
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   height: ${em('16px')}
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   'height': '1em'
+ * }
+ */
+
+var em = /*#__PURE__*/pixelsto('em');
+var em$1 = em;
+var cssRegex = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/;
+/**
+ * Returns a given CSS value and its unit as elements of an array.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   '--dimension': getValueAndUnit('100px')[0],
+ *   '--unit': getValueAndUnit('100px')[1],
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   --dimension: ${getValueAndUnit('100px')[0]};
+ *   --unit: ${getValueAndUnit('100px')[1]};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   '--dimension': 100,
+ *   '--unit': 'px',
+ * }
+ */
+
+function getValueAndUnit(value) {
+  if (typeof value !== 'string') return [value, ''];
+  var matchedValue = value.match(cssRegex);
+  if (matchedValue) return [parseFloat(value), matchedValue[2]];
+  return [value, undefined];
+}
+
+/**
+ * CSS to hide content visually but remain accessible to screen readers.
+ * from [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/9a176f57af1cfe8ec70300da4621fb9b07e5fa31/src/css/main.css#L121)
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   ...hideVisually(),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   ${hideVisually()};
+ * `
+ *
+ * // CSS as JS Output
+ *
+ * 'div': {
+ *   'border': '0',
+ *   'clip': 'rect(0 0 0 0)',
+ *   'height': '1px',
+ *   'margin': '-1px',
+ *   'overflow': 'hidden',
+ *   'padding': '0',
+ *   'position': 'absolute',
+ *   'whiteSpace': 'nowrap',
+ *   'width': '1px',
+ * }
+ */
+function hideVisually() {
+  return {
+    border: '0',
+    clip: 'rect(0 0 0 0)',
+    height: '1px',
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0',
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px'
+  };
+}
+function colorToInt(color) {
+  return Math.round(color * 255);
+}
+function convertToInt(red, green, blue) {
+  return colorToInt(red) + "," + colorToInt(green) + "," + colorToInt(blue);
+}
+function hslToRgb(hue, saturation, lightness, convert) {
+  if (convert === void 0) {
+    convert = convertToInt;
+  }
+  if (saturation === 0) {
+    // achromatic
+    return convert(lightness, lightness, lightness);
+  } // formulae from https://en.wikipedia.org/wiki/HSL_and_HSV
+
+  var huePrime = (hue % 360 + 360) % 360 / 60;
+  var chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
+  var secondComponent = chroma * (1 - Math.abs(huePrime % 2 - 1));
+  var red = 0;
+  var green = 0;
+  var blue = 0;
+  if (huePrime >= 0 && huePrime < 1) {
+    red = chroma;
+    green = secondComponent;
+  } else if (huePrime >= 1 && huePrime < 2) {
+    red = secondComponent;
+    green = chroma;
+  } else if (huePrime >= 2 && huePrime < 3) {
+    green = chroma;
+    blue = secondComponent;
+  } else if (huePrime >= 3 && huePrime < 4) {
+    green = secondComponent;
+    blue = chroma;
+  } else if (huePrime >= 4 && huePrime < 5) {
+    red = secondComponent;
+    blue = chroma;
+  } else if (huePrime >= 5 && huePrime < 6) {
+    red = chroma;
+    blue = secondComponent;
+  }
+  var lightnessModification = lightness - chroma / 2;
+  var finalRed = red + lightnessModification;
+  var finalGreen = green + lightnessModification;
+  var finalBlue = blue + lightnessModification;
+  return convert(finalRed, finalGreen, finalBlue);
+}
+var namedColorMap = {
+  aliceblue: 'f0f8ff',
+  antiquewhite: 'faebd7',
+  aqua: '00ffff',
+  aquamarine: '7fffd4',
+  azure: 'f0ffff',
+  beige: 'f5f5dc',
+  bisque: 'ffe4c4',
+  black: '000',
+  blanchedalmond: 'ffebcd',
+  blue: '0000ff',
+  blueviolet: '8a2be2',
+  brown: 'a52a2a',
+  burlywood: 'deb887',
+  cadetblue: '5f9ea0',
+  chartreuse: '7fff00',
+  chocolate: 'd2691e',
+  coral: 'ff7f50',
+  cornflowerblue: '6495ed',
+  cornsilk: 'fff8dc',
+  crimson: 'dc143c',
+  cyan: '00ffff',
+  darkblue: '00008b',
+  darkcyan: '008b8b',
+  darkgoldenrod: 'b8860b',
+  darkgray: 'a9a9a9',
+  darkgreen: '006400',
+  darkgrey: 'a9a9a9',
+  darkkhaki: 'bdb76b',
+  darkmagenta: '8b008b',
+  darkolivegreen: '556b2f',
+  darkorange: 'ff8c00',
+  darkorchid: '9932cc',
+  darkred: '8b0000',
+  darksalmon: 'e9967a',
+  darkseagreen: '8fbc8f',
+  darkslateblue: '483d8b',
+  darkslategray: '2f4f4f',
+  darkslategrey: '2f4f4f',
+  darkturquoise: '00ced1',
+  darkviolet: '9400d3',
+  deeppink: 'ff1493',
+  deepskyblue: '00bfff',
+  dimgray: '696969',
+  dimgrey: '696969',
+  dodgerblue: '1e90ff',
+  firebrick: 'b22222',
+  floralwhite: 'fffaf0',
+  forestgreen: '228b22',
+  fuchsia: 'ff00ff',
+  gainsboro: 'dcdcdc',
+  ghostwhite: 'f8f8ff',
+  gold: 'ffd700',
+  goldenrod: 'daa520',
+  gray: '808080',
+  green: '008000',
+  greenyellow: 'adff2f',
+  grey: '808080',
+  honeydew: 'f0fff0',
+  hotpink: 'ff69b4',
+  indianred: 'cd5c5c',
+  indigo: '4b0082',
+  ivory: 'fffff0',
+  khaki: 'f0e68c',
+  lavender: 'e6e6fa',
+  lavenderblush: 'fff0f5',
+  lawngreen: '7cfc00',
+  lemonchiffon: 'fffacd',
+  lightblue: 'add8e6',
+  lightcoral: 'f08080',
+  lightcyan: 'e0ffff',
+  lightgoldenrodyellow: 'fafad2',
+  lightgray: 'd3d3d3',
+  lightgreen: '90ee90',
+  lightgrey: 'd3d3d3',
+  lightpink: 'ffb6c1',
+  lightsalmon: 'ffa07a',
+  lightseagreen: '20b2aa',
+  lightskyblue: '87cefa',
+  lightslategray: '789',
+  lightslategrey: '789',
+  lightsteelblue: 'b0c4de',
+  lightyellow: 'ffffe0',
+  lime: '0f0',
+  limegreen: '32cd32',
+  linen: 'faf0e6',
+  magenta: 'f0f',
+  maroon: '800000',
+  mediumaquamarine: '66cdaa',
+  mediumblue: '0000cd',
+  mediumorchid: 'ba55d3',
+  mediumpurple: '9370db',
+  mediumseagreen: '3cb371',
+  mediumslateblue: '7b68ee',
+  mediumspringgreen: '00fa9a',
+  mediumturquoise: '48d1cc',
+  mediumvioletred: 'c71585',
+  midnightblue: '191970',
+  mintcream: 'f5fffa',
+  mistyrose: 'ffe4e1',
+  moccasin: 'ffe4b5',
+  navajowhite: 'ffdead',
+  navy: '000080',
+  oldlace: 'fdf5e6',
+  olive: '808000',
+  olivedrab: '6b8e23',
+  orange: 'ffa500',
+  orangered: 'ff4500',
+  orchid: 'da70d6',
+  palegoldenrod: 'eee8aa',
+  palegreen: '98fb98',
+  paleturquoise: 'afeeee',
+  palevioletred: 'db7093',
+  papayawhip: 'ffefd5',
+  peachpuff: 'ffdab9',
+  peru: 'cd853f',
+  pink: 'ffc0cb',
+  plum: 'dda0dd',
+  powderblue: 'b0e0e6',
+  purple: '800080',
+  rebeccapurple: '639',
+  red: 'f00',
+  rosybrown: 'bc8f8f',
+  royalblue: '4169e1',
+  saddlebrown: '8b4513',
+  salmon: 'fa8072',
+  sandybrown: 'f4a460',
+  seagreen: '2e8b57',
+  seashell: 'fff5ee',
+  sienna: 'a0522d',
+  silver: 'c0c0c0',
+  skyblue: '87ceeb',
+  slateblue: '6a5acd',
+  slategray: '708090',
+  slategrey: '708090',
+  snow: 'fffafa',
+  springgreen: '00ff7f',
+  steelblue: '4682b4',
+  tan: 'd2b48c',
+  teal: '008080',
+  thistle: 'd8bfd8',
+  tomato: 'ff6347',
+  turquoise: '40e0d0',
+  violet: 'ee82ee',
+  wheat: 'f5deb3',
+  white: 'fff',
+  whitesmoke: 'f5f5f5',
+  yellow: 'ff0',
+  yellowgreen: '9acd32'
+};
+/**
+ * Checks if a string is a CSS named color and returns its equivalent hex value, otherwise returns the original color.
+ * @private
+ */
+
+function nameToHex(color) {
+  if (typeof color !== 'string') return color;
+  var normalizedColorName = color.toLowerCase();
+  return namedColorMap[normalizedColorName] ? "#" + namedColorMap[normalizedColorName] : color;
+}
+var hexRegex = /^#[a-fA-F0-9]{6}$/;
+var hexRgbaRegex = /^#[a-fA-F0-9]{8}$/;
+var reducedHexRegex = /^#[a-fA-F0-9]{3}$/;
+var reducedRgbaHexRegex = /^#[a-fA-F0-9]{4}$/;
+var rgbRegex = /^rgb\(\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*\)$/i;
+var rgbaRegex = /^rgb(?:a)?\(\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,|\/)\s*([-+]?\d*[.]?\d+[%]?)\s*\)$/i;
+var hslRegex = /^hsl\(\s*(\d{0,3}[.]?[0-9]+(?:deg)?)\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*\)$/i;
+var hslaRegex = /^hsl(?:a)?\(\s*(\d{0,3}[.]?[0-9]+(?:deg)?)\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*(?:,|\/)\s*([-+]?\d*[.]?\d+[%]?)\s*\)$/i;
+/**
+ * Returns an RgbColor or RgbaColor object. This utility function is only useful
+ * if want to extract a color component. With the color util `toColorString` you
+ * can convert a RgbColor or RgbaColor object back to a string.
+ *
+ * @example
+ * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
+ * const color1 = parseToRgb('rgb(255, 0, 0)');
+ * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
+ * const color2 = parseToRgb('hsla(210, 10%, 40%, 0.75)');
+ */
+
+function parseToRgb(color) {
+  if (typeof color !== 'string') {
+    throw new PolishedError(3);
+  }
+  var normalizedColor = nameToHex(color);
+  if (normalizedColor.match(hexRegex)) {
+    return {
+      red: parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
+      green: parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
+      blue: parseInt("" + normalizedColor[5] + normalizedColor[6], 16)
+    };
+  }
+  if (normalizedColor.match(hexRgbaRegex)) {
+    var alpha = parseFloat((parseInt("" + normalizedColor[7] + normalizedColor[8], 16) / 255).toFixed(2));
+    return {
+      red: parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
+      green: parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
+      blue: parseInt("" + normalizedColor[5] + normalizedColor[6], 16),
+      alpha: alpha
+    };
+  }
+  if (normalizedColor.match(reducedHexRegex)) {
+    return {
+      red: parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
+      green: parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
+      blue: parseInt("" + normalizedColor[3] + normalizedColor[3], 16)
+    };
+  }
+  if (normalizedColor.match(reducedRgbaHexRegex)) {
+    var _alpha = parseFloat((parseInt("" + normalizedColor[4] + normalizedColor[4], 16) / 255).toFixed(2));
+    return {
+      red: parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
+      green: parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
+      blue: parseInt("" + normalizedColor[3] + normalizedColor[3], 16),
+      alpha: _alpha
+    };
+  }
+  var rgbMatched = rgbRegex.exec(normalizedColor);
+  if (rgbMatched) {
+    return {
+      red: parseInt("" + rgbMatched[1], 10),
+      green: parseInt("" + rgbMatched[2], 10),
+      blue: parseInt("" + rgbMatched[3], 10)
+    };
+  }
+  var rgbaMatched = rgbaRegex.exec(normalizedColor.substring(0, 50));
+  if (rgbaMatched) {
+    return {
+      red: parseInt("" + rgbaMatched[1], 10),
+      green: parseInt("" + rgbaMatched[2], 10),
+      blue: parseInt("" + rgbaMatched[3], 10),
+      alpha: parseFloat("" + rgbaMatched[4]) > 1 ? parseFloat("" + rgbaMatched[4]) / 100 : parseFloat("" + rgbaMatched[4])
+    };
+  }
+  var hslMatched = hslRegex.exec(normalizedColor);
+  if (hslMatched) {
+    var hue = parseInt("" + hslMatched[1], 10);
+    var saturation = parseInt("" + hslMatched[2], 10) / 100;
+    var lightness = parseInt("" + hslMatched[3], 10) / 100;
+    var rgbColorString = "rgb(" + hslToRgb(hue, saturation, lightness) + ")";
+    var hslRgbMatched = rgbRegex.exec(rgbColorString);
+    if (!hslRgbMatched) {
+      throw new PolishedError(4, normalizedColor, rgbColorString);
+    }
+    return {
+      red: parseInt("" + hslRgbMatched[1], 10),
+      green: parseInt("" + hslRgbMatched[2], 10),
+      blue: parseInt("" + hslRgbMatched[3], 10)
+    };
+  }
+  var hslaMatched = hslaRegex.exec(normalizedColor.substring(0, 50));
+  if (hslaMatched) {
+    var _hue = parseInt("" + hslaMatched[1], 10);
+    var _saturation = parseInt("" + hslaMatched[2], 10) / 100;
+    var _lightness = parseInt("" + hslaMatched[3], 10) / 100;
+    var _rgbColorString = "rgb(" + hslToRgb(_hue, _saturation, _lightness) + ")";
+    var _hslRgbMatched = rgbRegex.exec(_rgbColorString);
+    if (!_hslRgbMatched) {
+      throw new PolishedError(4, normalizedColor, _rgbColorString);
+    }
+    return {
+      red: parseInt("" + _hslRgbMatched[1], 10),
+      green: parseInt("" + _hslRgbMatched[2], 10),
+      blue: parseInt("" + _hslRgbMatched[3], 10),
+      alpha: parseFloat("" + hslaMatched[4]) > 1 ? parseFloat("" + hslaMatched[4]) / 100 : parseFloat("" + hslaMatched[4])
+    };
+  }
+  throw new PolishedError(5);
+}
+function rgbToHsl(color) {
+  // make sure rgb are contained in a set of [0, 255]
+  var red = color.red / 255;
+  var green = color.green / 255;
+  var blue = color.blue / 255;
+  var max = Math.max(red, green, blue);
+  var min = Math.min(red, green, blue);
+  var lightness = (max + min) / 2;
+  if (max === min) {
+    // achromatic
+    if (color.alpha !== undefined) {
+      return {
+        hue: 0,
+        saturation: 0,
+        lightness: lightness,
+        alpha: color.alpha
+      };
+    } else {
+      return {
+        hue: 0,
+        saturation: 0,
+        lightness: lightness
+      };
+    }
+  }
+  var hue;
+  var delta = max - min;
+  var saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
+  switch (max) {
+    case red:
+      hue = (green - blue) / delta + (green < blue ? 6 : 0);
+      break;
+    case green:
+      hue = (blue - red) / delta + 2;
+      break;
+    default:
+      // blue case
+      hue = (red - green) / delta + 4;
+      break;
+  }
+  hue *= 60;
+  if (color.alpha !== undefined) {
+    return {
+      hue: hue,
+      saturation: saturation,
+      lightness: lightness,
+      alpha: color.alpha
+    };
+  }
+  return {
+    hue: hue,
+    saturation: saturation,
+    lightness: lightness
+  };
+}
+
+/**
+ * Returns an HslColor or HslaColor object. This utility function is only useful
+ * if want to extract a color component. With the color util `toColorString` you
+ * can convert a HslColor or HslaColor object back to a string.
+ *
+ * @example
+ * // Assigns `{ hue: 0, saturation: 1, lightness: 0.5 }` to color1
+ * const color1 = parseToHsl('rgb(255, 0, 0)');
+ * // Assigns `{ hue: 128, saturation: 1, lightness: 0.5, alpha: 0.75 }` to color2
+ * const color2 = parseToHsl('hsla(128, 100%, 50%, 0.75)');
+ */
+function parseToHsl(color) {
+  // Note: At a later stage we can optimize this function as right now a hsl
+  // color would be parsed converted to rgb values and converted back to hsl.
+  return rgbToHsl(parseToRgb(color));
+}
+
+/**
+ * Reduces hex values if possible e.g. #ff8866 to #f86
+ * @private
+ */
+var reduceHexValue = function reduceHexValue(value) {
+  if (value.length === 7 && value[1] === value[2] && value[3] === value[4] && value[5] === value[6]) {
+    return "#" + value[1] + value[3] + value[5];
+  }
+  return value;
+};
+var reduceHexValue$1 = reduceHexValue;
+function numberToHex(value) {
+  var hex = value.toString(16);
+  return hex.length === 1 ? "0" + hex : hex;
+}
+function colorToHex(color) {
+  return numberToHex(Math.round(color * 255));
+}
+function convertToHex(red, green, blue) {
+  return reduceHexValue$1("#" + colorToHex(red) + colorToHex(green) + colorToHex(blue));
+}
+function hslToHex(hue, saturation, lightness) {
+  return hslToRgb(hue, saturation, lightness, convertToHex);
+}
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: hsl(359, 0.75, 0.4),
+ *   background: hsl({ hue: 360, saturation: 0.75, lightness: 0.4 }),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${hsl(359, 0.75, 0.4)};
+ *   background: ${hsl({ hue: 360, saturation: 0.75, lightness: 0.4 })};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#b3191c";
+ *   background: "#b3191c";
+ * }
+ */
+function hsl(value, saturation, lightness) {
+  if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number') {
+    return hslToHex(value, saturation, lightness);
+  } else if (typeof value === 'object' && saturation === undefined && lightness === undefined) {
+    return hslToHex(value.hue, value.saturation, value.lightness);
+  }
+  throw new PolishedError(1);
+}
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: hsla(359, 0.75, 0.4, 0.7),
+ *   background: hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 }),
+ *   background: hsla(359, 0.75, 0.4, 1),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${hsla(359, 0.75, 0.4, 0.7)};
+ *   background: ${hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 })};
+ *   background: ${hsla(359, 0.75, 0.4, 1)};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "rgba(179,25,28,0.7)";
+ *   background: "rgba(179,25,28,0.7)";
+ *   background: "#b3191c";
+ * }
+ */
+function hsla(value, saturation, lightness, alpha) {
+  if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number' && typeof alpha === 'number') {
+    return alpha >= 1 ? hslToHex(value, saturation, lightness) : "rgba(" + hslToRgb(value, saturation, lightness) + "," + alpha + ")";
+  } else if (typeof value === 'object' && saturation === undefined && lightness === undefined && alpha === undefined) {
+    return value.alpha >= 1 ? hslToHex(value.hue, value.saturation, value.lightness) : "rgba(" + hslToRgb(value.hue, value.saturation, value.lightness) + "," + value.alpha + ")";
+  }
+  throw new PolishedError(2);
+}
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible hex notation.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: rgb(255, 205, 100),
+ *   background: rgb({ red: 255, green: 205, blue: 100 }),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${rgb(255, 205, 100)};
+ *   background: ${rgb({ red: 255, green: 205, blue: 100 })};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#ffcd64";
+ *   background: "#ffcd64";
+ * }
+ */
+function rgb(value, green, blue) {
+  if (typeof value === 'number' && typeof green === 'number' && typeof blue === 'number') {
+    return reduceHexValue$1("#" + numberToHex(value) + numberToHex(green) + numberToHex(blue));
+  } else if (typeof value === 'object' && green === undefined && blue === undefined) {
+    return reduceHexValue$1("#" + numberToHex(value.red) + numberToHex(value.green) + numberToHex(value.blue));
+  }
+  throw new PolishedError(6);
+}
+
+/**
+ * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
+ *
+ * Can also be used to fade a color by passing a hex value or named CSS color along with an alpha value.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: rgba(255, 205, 100, 0.7),
+ *   background: rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 }),
+ *   background: rgba(255, 205, 100, 1),
+ *   background: rgba('#ffffff', 0.4),
+ *   background: rgba('black', 0.7),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${rgba(255, 205, 100, 0.7)};
+ *   background: ${rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 })};
+ *   background: ${rgba(255, 205, 100, 1)};
+ *   background: ${rgba('#ffffff', 0.4)};
+ *   background: ${rgba('black', 0.7)};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "rgba(255,205,100,0.7)";
+ *   background: "rgba(255,205,100,0.7)";
+ *   background: "#ffcd64";
+ *   background: "rgba(255,255,255,0.4)";
+ *   background: "rgba(0,0,0,0.7)";
+ * }
+ */
+function rgba(firstValue, secondValue, thirdValue, fourthValue) {
+  if (typeof firstValue === 'string' && typeof secondValue === 'number') {
+    var rgbValue = parseToRgb(firstValue);
+    return "rgba(" + rgbValue.red + "," + rgbValue.green + "," + rgbValue.blue + "," + secondValue + ")";
+  } else if (typeof firstValue === 'number' && typeof secondValue === 'number' && typeof thirdValue === 'number' && typeof fourthValue === 'number') {
+    return fourthValue >= 1 ? rgb(firstValue, secondValue, thirdValue) : "rgba(" + firstValue + "," + secondValue + "," + thirdValue + "," + fourthValue + ")";
+  } else if (typeof firstValue === 'object' && secondValue === undefined && thirdValue === undefined && fourthValue === undefined) {
+    return firstValue.alpha >= 1 ? rgb(firstValue.red, firstValue.green, firstValue.blue) : "rgba(" + firstValue.red + "," + firstValue.green + "," + firstValue.blue + "," + firstValue.alpha + ")";
+  }
+  throw new PolishedError(7);
+}
+var isRgb = function isRgb(color) {
+  return typeof color.red === 'number' && typeof color.green === 'number' && typeof color.blue === 'number' && (typeof color.alpha !== 'number' || typeof color.alpha === 'undefined');
+};
+var isRgba = function isRgba(color) {
+  return typeof color.red === 'number' && typeof color.green === 'number' && typeof color.blue === 'number' && typeof color.alpha === 'number';
+};
+var isHsl = function isHsl(color) {
+  return typeof color.hue === 'number' && typeof color.saturation === 'number' && typeof color.lightness === 'number' && (typeof color.alpha !== 'number' || typeof color.alpha === 'undefined');
+};
+var isHsla = function isHsla(color) {
+  return typeof color.hue === 'number' && typeof color.saturation === 'number' && typeof color.lightness === 'number' && typeof color.alpha === 'number';
+};
+/**
+ * Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
+ * This util is useful in case you only know on runtime which color object is
+ * used. Otherwise we recommend to rely on `rgb`, `rgba`, `hsl` or `hsla`.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: toColorString({ red: 255, green: 205, blue: 100 }),
+ *   background: toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 }),
+ *   background: toColorString({ hue: 240, saturation: 1, lightness: 0.5 }),
+ *   background: toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 }),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${toColorString({ red: 255, green: 205, blue: 100 })};
+ *   background: ${toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 })};
+ *   background: ${toColorString({ hue: 240, saturation: 1, lightness: 0.5 })};
+ *   background: ${toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 })};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   background: "#ffcd64";
+ *   background: "rgba(255,205,100,0.72)";
+ *   background: "#00f";
+ *   background: "rgba(179,25,25,0.72)";
+ * }
+ */
+
+function toColorString(color) {
+  if (typeof color !== 'object') throw new PolishedError(8);
+  if (isRgba(color)) return rgba(color);
+  if (isRgb(color)) return rgb(color);
+  if (isHsla(color)) return hsla(color);
+  if (isHsl(color)) return hsl(color);
+  throw new PolishedError(8);
+}
+
+// Type definitions taken from https://github.com/gcanti/flow-static-land/blob/master/src/Fun.js
+// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-redeclare
+function curried(f, length, acc) {
+  return function fn() {
+    // eslint-disable-next-line prefer-rest-params
+    var combined = acc.concat(Array.prototype.slice.call(arguments));
+    return combined.length >= length ? f.apply(this, combined) : curried(f, length, combined);
+  };
+} // eslint-disable-next-line no-redeclare
+
+function curry(f) {
+  // eslint-disable-line no-redeclare
+  return curried(f, f.length, []);
+}
+function guard(lowerBoundary, upperBoundary, value) {
+  return Math.max(lowerBoundary, Math.min(upperBoundary, value));
+}
+
+/**
+ * Returns a string value for the darkened color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: darken(0.2, '#FFCD64'),
+ *   background: darken('0.2', 'rgba(255,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${darken(0.2, '#FFCD64')};
+ *   background: ${darken('0.2', 'rgba(255,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#ffbd31";
+ *   background: "rgba(255,189,49,0.7)";
+ * }
+ */
+
+function darken(amount, color) {
+  if (color === 'transparent') return color;
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends$w({}, hslColor, {
+    lightness: guard(0, 1, hslColor.lightness - parseFloat(amount))
+  }));
+} // prettier-ignore
+
+var curriedDarken = /*#__PURE__*/curry
+/* ::<number | string, string, string> */(darken);
+var curriedDarken$1 = curriedDarken;
+
+/**
+ * Returns a number (float) representing the luminance of a color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff',
+ *   background: getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
+ *                             'rgba(58, 133, 255, 1)' :
+ *                             'rgba(255, 57, 149, 1)',
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff'};
+ *   background: ${getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
+ *                             'rgba(58, 133, 255, 1)' :
+ *                             'rgba(255, 57, 149, 1)'};
+ *
+ * // CSS in JS Output
+ *
+ * div {
+ *   background: "#CCCD64";
+ *   background: "rgba(58, 133, 255, 1)";
+ * }
+ */
+
+function getLuminance(color) {
+  if (color === 'transparent') return 0;
+  var rgbColor = parseToRgb(color);
+  var _Object$keys$map = Object.keys(rgbColor).map(function (key) {
+      var channel = rgbColor[key] / 255;
+      return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
+    }),
+    r = _Object$keys$map[0],
+    g = _Object$keys$map[1],
+    b = _Object$keys$map[2];
+  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3));
+}
+
+/**
+ * Returns the contrast ratio between two colors based on
+ * [W3's recommended equation for calculating contrast](http://www.w3.org/TR/WCAG20/#contrast-ratiodef).
+ *
+ * @example
+ * const contrastRatio = getContrast('#444', '#fff');
+ */
+
+function getContrast(color1, color2) {
+  var luminance1 = getLuminance(color1);
+  var luminance2 = getLuminance(color2);
+  return parseFloat((luminance1 > luminance2 ? (luminance1 + 0.05) / (luminance2 + 0.05) : (luminance2 + 0.05) / (luminance1 + 0.05)).toFixed(2));
+}
+
+/**
+ * Returns a string value for the lightened color.
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   background: lighten(0.2, '#CCCD64'),
+ *   background: lighten('0.2', 'rgba(204,205,100,0.7)'),
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   background: ${lighten(0.2, '#FFCD64')};
+ *   background: ${lighten('0.2', 'rgba(204,205,100,0.7)')};
+ * `
+ *
+ * // CSS in JS Output
+ *
+ * element {
+ *   background: "#e5e6b1";
+ *   background: "rgba(229,230,177,0.7)";
+ * }
+ */
+
+function lighten(amount, color) {
+  if (color === 'transparent') return color;
+  var hslColor = parseToHsl(color);
+  return toColorString(_extends$w({}, hslColor, {
+    lightness: guard(0, 1, hslColor.lightness + parseFloat(amount))
+  }));
+} // prettier-ignore
+
+var curriedLighten = /*#__PURE__*/curry
+/* ::<number | string, string, string> */(lighten);
+var curriedLighten$1 = curriedLighten;
+var defaultReturnIfLightColor = '#000';
+var defaultReturnIfDarkColor = '#fff';
+/**
+ * Returns black or white (or optional passed colors) for best
+ * contrast depending on the luminosity of the given color.
+ * When passing custom return colors, strict mode ensures that the
+ * return color always meets or exceeds WCAG level AA or greater. If this test
+ * fails, the default return color (black or white) is returned in place of the
+ * custom return color. You can optionally turn off strict mode.
+ *
+ * Follows [W3C specs for readability](https://www.w3.org/TR/WCAG20-TECHS/G18.html).
+ *
+ * @example
+ * // Styles as object usage
+ * const styles = {
+ *   color: readableColor('#000'),
+ *   color: readableColor('black', '#001', '#ff8'),
+ *   color: readableColor('white', '#001', '#ff8'),
+ *   color: readableColor('red', '#333', '#ddd', true)
+ * }
+ *
+ * // styled-components usage
+ * const div = styled.div`
+ *   color: ${readableColor('#000')};
+ *   color: ${readableColor('black', '#001', '#ff8')};
+ *   color: ${readableColor('white', '#001', '#ff8')};
+ *   color: ${readableColor('red', '#333', '#ddd', true)};
+ * `
+ *
+ * // CSS in JS Output
+ * element {
+ *   color: "#fff";
+ *   color: "#ff8";
+ *   color: "#001";
+ *   color: "#000";
+ * }
+ */
+
+function readableColor(color, returnIfLightColor, returnIfDarkColor, strict) {
+  if (returnIfLightColor === void 0) {
+    returnIfLightColor = defaultReturnIfLightColor;
+  }
+  if (returnIfDarkColor === void 0) {
+    returnIfDarkColor = defaultReturnIfDarkColor;
+  }
+  if (strict === void 0) {
+    strict = true;
+  }
+  var isColorLight = getLuminance(color) > 0.179;
+  var preferredReturnColor = isColorLight ? returnIfLightColor : returnIfDarkColor;
+  if (!strict || getContrast(color, preferredReturnColor) >= 4.5) {
+    return preferredReturnColor;
+  }
+  return isColorLight ? defaultReturnIfLightColor : defaultReturnIfDarkColor;
+}
+
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT$1 = 'Expected a function';
+
+/** Used to stand-in for `undefined` hash values. */
+var HASH_UNDEFINED = '__lodash_hash_undefined__';
+
+/** `Object#toString` result references. */
+var funcTag = '[object Function]',
+  genTag = '[object GeneratorFunction]';
+
+/**
+ * Used to match `RegExp`
+ * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
+ */
+var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
+
+/** Used to detect host constructors (Safari). */
+var reIsHostCtor = /^\[object .+?Constructor\]$/;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal$1 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf$1 = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root$1 = freeGlobal$1 || freeSelf$1 || Function('return this')();
+
+/**
+ * Gets the value at `key` of `object`.
+ *
+ * @private
+ * @param {Object} [object] The object to query.
+ * @param {string} key The key of the property to get.
+ * @returns {*} Returns the property value.
+ */
+function getValue(object, key) {
+  return object == null ? undefined : object[key];
+}
+
+/**
+ * Checks if `value` is a host object in IE < 9.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ */
+function isHostObject(value) {
+  // Many host objects are `Object` objects that can coerce to strings
+  // despite having improperly defined `toString` methods.
+  var result = false;
+  if (value != null && typeof value.toString != 'function') {
+    try {
+      result = !!(value + '');
+    } catch (e) {}
+  }
+  return result;
+}
+
+/** Used for built-in method references. */
+var arrayProto = Array.prototype,
+  funcProto = Function.prototype,
+  objectProto$1 = Object.prototype;
+
+/** Used to detect overreaching core-js shims. */
+var coreJsData = root$1['__core-js_shared__'];
+
+/** Used to detect methods masquerading as native. */
+var maskSrcKey = function () {
+  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
+  return uid ? 'Symbol(src)_1.' + uid : '';
+}();
+
+/** Used to resolve the decompiled source of functions. */
+var funcToString = funcProto.toString;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto$1.hasOwnProperty;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString$1 = objectProto$1.toString;
+
+/** Used to detect if a method is native. */
+var reIsNative = RegExp('^' + funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
+
+/** Built-in value references. */
+var splice = arrayProto.splice;
+
+/* Built-in method references that are verified to be native. */
+var Map$1 = getNative(root$1, 'Map'),
+  nativeCreate = getNative(Object, 'create');
+
+/**
+ * Creates a hash object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function Hash(entries) {
+  var index = -1,
+    length = entries ? entries.length : 0;
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the hash.
+ *
+ * @private
+ * @name clear
+ * @memberOf Hash
+ */
+function hashClear() {
+  this.__data__ = nativeCreate ? nativeCreate(null) : {};
+}
+
+/**
+ * Removes `key` and its value from the hash.
+ *
+ * @private
+ * @name delete
+ * @memberOf Hash
+ * @param {Object} hash The hash to modify.
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function hashDelete(key) {
+  return this.has(key) && delete this.__data__[key];
+}
+
+/**
+ * Gets the hash value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf Hash
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function hashGet(key) {
+  var data = this.__data__;
+  if (nativeCreate) {
+    var result = data[key];
+    return result === HASH_UNDEFINED ? undefined : result;
+  }
+  return hasOwnProperty.call(data, key) ? data[key] : undefined;
+}
+
+/**
+ * Checks if a hash value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf Hash
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function hashHas(key) {
+  var data = this.__data__;
+  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
+}
+
+/**
+ * Sets the hash `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf Hash
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the hash instance.
+ */
+function hashSet(key, value) {
+  var data = this.__data__;
+  data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
+  return this;
+}
+
+// Add methods to `Hash`.
+Hash.prototype.clear = hashClear;
+Hash.prototype['delete'] = hashDelete;
+Hash.prototype.get = hashGet;
+Hash.prototype.has = hashHas;
+Hash.prototype.set = hashSet;
+
+/**
+ * Creates an list cache object.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function ListCache(entries) {
+  var index = -1,
+    length = entries ? entries.length : 0;
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the list cache.
+ *
+ * @private
+ * @name clear
+ * @memberOf ListCache
+ */
+function listCacheClear() {
+  this.__data__ = [];
+}
+
+/**
+ * Removes `key` and its value from the list cache.
+ *
+ * @private
+ * @name delete
+ * @memberOf ListCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function listCacheDelete(key) {
+  var data = this.__data__,
+    index = assocIndexOf(data, key);
+  if (index < 0) {
+    return false;
+  }
+  var lastIndex = data.length - 1;
+  if (index == lastIndex) {
+    data.pop();
+  } else {
+    splice.call(data, index, 1);
+  }
+  return true;
+}
+
+/**
+ * Gets the list cache value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf ListCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function listCacheGet(key) {
+  var data = this.__data__,
+    index = assocIndexOf(data, key);
+  return index < 0 ? undefined : data[index][1];
+}
+
+/**
+ * Checks if a list cache value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf ListCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function listCacheHas(key) {
+  return assocIndexOf(this.__data__, key) > -1;
+}
+
+/**
+ * Sets the list cache `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf ListCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the list cache instance.
+ */
+function listCacheSet(key, value) {
+  var data = this.__data__,
+    index = assocIndexOf(data, key);
+  if (index < 0) {
+    data.push([key, value]);
+  } else {
+    data[index][1] = value;
+  }
+  return this;
+}
+
+// Add methods to `ListCache`.
+ListCache.prototype.clear = listCacheClear;
+ListCache.prototype['delete'] = listCacheDelete;
+ListCache.prototype.get = listCacheGet;
+ListCache.prototype.has = listCacheHas;
+ListCache.prototype.set = listCacheSet;
+
+/**
+ * Creates a map cache object to store key-value pairs.
+ *
+ * @private
+ * @constructor
+ * @param {Array} [entries] The key-value pairs to cache.
+ */
+function MapCache(entries) {
+  var index = -1,
+    length = entries ? entries.length : 0;
+  this.clear();
+  while (++index < length) {
+    var entry = entries[index];
+    this.set(entry[0], entry[1]);
+  }
+}
+
+/**
+ * Removes all key-value entries from the map.
+ *
+ * @private
+ * @name clear
+ * @memberOf MapCache
+ */
+function mapCacheClear() {
+  this.__data__ = {
+    'hash': new Hash(),
+    'map': new (Map$1 || ListCache)(),
+    'string': new Hash()
+  };
+}
+
+/**
+ * Removes `key` and its value from the map.
+ *
+ * @private
+ * @name delete
+ * @memberOf MapCache
+ * @param {string} key The key of the value to remove.
+ * @returns {boolean} Returns `true` if the entry was removed, else `false`.
+ */
+function mapCacheDelete(key) {
+  return getMapData(this, key)['delete'](key);
+}
+
+/**
+ * Gets the map value for `key`.
+ *
+ * @private
+ * @name get
+ * @memberOf MapCache
+ * @param {string} key The key of the value to get.
+ * @returns {*} Returns the entry value.
+ */
+function mapCacheGet(key) {
+  return getMapData(this, key).get(key);
+}
+
+/**
+ * Checks if a map value for `key` exists.
+ *
+ * @private
+ * @name has
+ * @memberOf MapCache
+ * @param {string} key The key of the entry to check.
+ * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
+ */
+function mapCacheHas(key) {
+  return getMapData(this, key).has(key);
+}
+
+/**
+ * Sets the map `key` to `value`.
+ *
+ * @private
+ * @name set
+ * @memberOf MapCache
+ * @param {string} key The key of the value to set.
+ * @param {*} value The value to set.
+ * @returns {Object} Returns the map cache instance.
+ */
+function mapCacheSet(key, value) {
+  getMapData(this, key).set(key, value);
+  return this;
+}
+
+// Add methods to `MapCache`.
+MapCache.prototype.clear = mapCacheClear;
+MapCache.prototype['delete'] = mapCacheDelete;
+MapCache.prototype.get = mapCacheGet;
+MapCache.prototype.has = mapCacheHas;
+MapCache.prototype.set = mapCacheSet;
+
+/**
+ * Gets the index at which the `key` is found in `array` of key-value pairs.
+ *
+ * @private
+ * @param {Array} array The array to inspect.
+ * @param {*} key The key to search for.
+ * @returns {number} Returns the index of the matched value, else `-1`.
+ */
+function assocIndexOf(array, key) {
+  var length = array.length;
+  while (length--) {
+    if (eq(array[length][0], key)) {
+      return length;
+    }
+  }
+  return -1;
+}
+
+/**
+ * The base implementation of `_.isNative` without bad shim checks.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a native function,
+ *  else `false`.
+ */
+function baseIsNative(value) {
+  if (!isObject$1(value) || isMasked(value)) {
+    return false;
+  }
+  var pattern = isFunction$2(value) || isHostObject(value) ? reIsNative : reIsHostCtor;
+  return pattern.test(toSource(value));
+}
+
+/**
+ * Gets the data for `map`.
+ *
+ * @private
+ * @param {Object} map The map to query.
+ * @param {string} key The reference key.
+ * @returns {*} Returns the map data.
+ */
+function getMapData(map, key) {
+  var data = map.__data__;
+  return isKeyable(key) ? data[typeof key == 'string' ? 'string' : 'hash'] : data.map;
+}
+
+/**
+ * Gets the native function at `key` of `object`.
+ *
+ * @private
+ * @param {Object} object The object to query.
+ * @param {string} key The key of the method to get.
+ * @returns {*} Returns the function if it's native, else `undefined`.
+ */
+function getNative(object, key) {
+  var value = getValue(object, key);
+  return baseIsNative(value) ? value : undefined;
+}
+
+/**
+ * Checks if `value` is suitable for use as unique object key.
+ *
+ * @private
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
+ */
+function isKeyable(value) {
+  var type = typeof value;
+  return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ? value !== '__proto__' : value === null;
+}
+
+/**
+ * Checks if `func` has its source masked.
+ *
+ * @private
+ * @param {Function} func The function to check.
+ * @returns {boolean} Returns `true` if `func` is masked, else `false`.
+ */
+function isMasked(func) {
+  return !!maskSrcKey && maskSrcKey in func;
+}
+
+/**
+ * Converts `func` to its source code.
+ *
+ * @private
+ * @param {Function} func The function to process.
+ * @returns {string} Returns the source code.
+ */
+function toSource(func) {
+  if (func != null) {
+    try {
+      return funcToString.call(func);
+    } catch (e) {}
+    try {
+      return func + '';
+    } catch (e) {}
+  }
+  return '';
+}
+
+/**
+ * Creates a function that memoizes the result of `func`. If `resolver` is
+ * provided, it determines the cache key for storing the result based on the
+ * arguments provided to the memoized function. By default, the first argument
+ * provided to the memoized function is used as the map cache key. The `func`
+ * is invoked with the `this` binding of the memoized function.
+ *
+ * **Note:** The cache is exposed as the `cache` property on the memoized
+ * function. Its creation may be customized by replacing the `_.memoize.Cache`
+ * constructor with one whose instances implement the
+ * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
+ * method interface of `delete`, `get`, `has`, and `set`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to have its output memoized.
+ * @param {Function} [resolver] The function to resolve the cache key.
+ * @returns {Function} Returns the new memoized function.
+ * @example
+ *
+ * var object = { 'a': 1, 'b': 2 };
+ * var other = { 'c': 3, 'd': 4 };
+ *
+ * var values = _.memoize(_.values);
+ * values(object);
+ * // => [1, 2]
+ *
+ * values(other);
+ * // => [3, 4]
+ *
+ * object.a = 2;
+ * values(object);
+ * // => [1, 2]
+ *
+ * // Modify the result cache.
+ * values.cache.set(object, ['a', 'b']);
+ * values(object);
+ * // => ['a', 'b']
+ *
+ * // Replace `_.memoize.Cache`.
+ * _.memoize.Cache = WeakMap;
+ */
+function memoize(func, resolver) {
+  if (typeof func != 'function' || resolver && typeof resolver != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT$1);
+  }
+  var memoized = function () {
+    var args = arguments,
+      key = resolver ? resolver.apply(this, args) : args[0],
+      cache = memoized.cache;
+    if (cache.has(key)) {
+      return cache.get(key);
+    }
+    var result = func.apply(this, args);
+    memoized.cache = cache.set(key, result);
+    return result;
+  };
+  memoized.cache = new (memoize.Cache || MapCache)();
+  return memoized;
+}
+
+// Assign cache to `_.memoize`.
+memoize.Cache = MapCache;
+
+/**
+ * Performs a
+ * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
+ * comparison between two values to determine if they are equivalent.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to compare.
+ * @param {*} other The other value to compare.
+ * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+ * @example
+ *
+ * var object = { 'a': 1 };
+ * var other = { 'a': 1 };
+ *
+ * _.eq(object, object);
+ * // => true
+ *
+ * _.eq(object, other);
+ * // => false
+ *
+ * _.eq('a', 'a');
+ * // => true
+ *
+ * _.eq('a', Object('a'));
+ * // => false
+ *
+ * _.eq(NaN, NaN);
+ * // => true
+ */
+function eq(value, other) {
+  return value === other || value !== value && other !== other;
+}
+
+/**
+ * Checks if `value` is classified as a `Function` object.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a function, else `false`.
+ * @example
+ *
+ * _.isFunction(_);
+ * // => true
+ *
+ * _.isFunction(/abc/);
+ * // => false
+ */
+function isFunction$2(value) {
+  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // in Safari 8-9 which returns 'object' for typed array and other constructors.
+  var tag = isObject$1(value) ? objectToString$1.call(value) : '';
+  return tag == funcTag || tag == genTag;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject$1(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+var lodash_memoize = memoize;
+
+var memoize$1 = /*@__PURE__*/getDefaultExportFromCjs(lodash_memoize);
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+function _extends$v() {
+  _extends$v = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$v.apply(this, arguments);
+}
+const PALETTE = {
+  black: '#000',
+  white: '#fff',
+  product: {
+    support: '#00a656',
+    message: '#37b8af',
+    explore: '#30aabc',
+    gather: '#f6c8be',
+    guide: '#ff6224',
+    connect: '#ff6224',
+    chat: '#f79a3e',
+    talk: '#efc93d',
+    sell: '#c38f00'
+  },
+  grey: {
+    100: '#f8f9f9',
+    200: '#e9ebed',
+    300: '#d8dcde',
+    400: '#c2c8cc',
+    500: '#87929d',
+    600: '#68737d',
+    700: '#49545c',
+    800: '#2f3941'
+  },
+  blue: {
+    100: '#edf7ff',
+    200: '#cee2f2',
+    300: '#adcce4',
+    400: '#5293c7',
+    500: '#337fbd',
+    600: '#1f73b7',
+    700: '#144a75',
+    800: '#0f3554'
+  },
+  red: {
+    100: '#fff0f1',
+    200: '#f5d5d8',
+    300: '#f5b5ba',
+    400: '#e35b66',
+    500: '#d93f4c',
+    600: '#cc3340',
+    700: '#8c232c',
+    800: '#681219'
+  },
+  yellow: {
+    100: '#fff7ed',
+    200: '#ffeedb',
+    300: '#fed6a8',
+    400: '#ffb057',
+    500: '#f79a3e',
+    600: '#ed8f1c',
+    700: '#ad5918',
+    800: '#703815'
+  },
+  green: {
+    100: '#edf8f4',
+    200: '#d1e8df',
+    300: '#aecfc2',
+    400: '#5eae91',
+    500: '#228f67',
+    600: '#038153',
+    700: '#186146',
+    800: '#0b3b29'
+  },
+  kale: {
+    100: '#f5fcfc',
+    200: '#daeded',
+    300: '#bdd9d7',
+    400: '#90bbbb',
+    500: '#467b7c',
+    600: '#17494d',
+    700: '#03363d',
+    800: '#012b30'
+  },
+  fuschia: {
+    400: '#d653c2',
+    600: '#a81897',
+    M400: '#cf62a8',
+    M600: '#a8458c'
+  },
+  pink: {
+    400: '#ec4d63',
+    600: '#d42054',
+    M400: '#d57287',
+    M600: '#b23a5d'
+  },
+  crimson: {
+    400: '#e34f32',
+    600: '#c72a1c',
+    M400: '#cc6c5b',
+    M600: '#b24a3c'
+  },
+  orange: {
+    400: '#de701d',
+    600: '#bf5000',
+    M400: '#d4772c',
+    M600: '#b35827'
+  },
+  lemon: {
+    400: '#ffd424',
+    600: '#ffbb10',
+    M400: '#e7a500',
+    M600: '#c38f00'
+  },
+  lime: {
+    400: '#43b324',
+    600: '#2e8200',
+    M400: '#519e2d',
+    M600: '#47782c'
+  },
+  mint: {
+    400: '#00a656',
+    600: '#058541',
+    M400: '#299c66',
+    M600: '#2e8057'
+  },
+  teal: {
+    400: '#02a191',
+    600: '#028079',
+    M400: '#2d9e8f',
+    M600: '#3c7873'
+  },
+  azure: {
+    400: '#3091ec',
+    600: '#1371d6',
+    M400: '#5f8dcf',
+    M600: '#3a70b2'
+  },
+  royal: {
+    400: '#5d7df5',
+    600: '#3353e2',
+    M400: '#7986d8',
+    M600: '#4b61c3'
+  },
+  purple: {
+    400: '#b552e2',
+    600: '#6a27b8',
+    M400: '#b072cc',
+    M600: '#9358b0'
+  }
+};
+const BASE = 4;
+const borderRadii = {
+  sm: `${BASE / 2}px`,
+  md: `${BASE}px`
+};
+const borderStyles = {
+  solid: 'solid'
+};
+const borderWidths = {
+  sm: '1px',
+  md: '3px'
+};
+const borders = {
+  sm: `${borderWidths.sm} ${borderStyles.solid}`,
+  md: `${borderWidths.md} ${borderStyles.solid}`
+};
+const breakpoints = {
+  xs: '0px',
+  sm: `${BASE * 144}px`,
+  md: `${BASE * 192}px`,
+  lg: `${BASE * 248}px`,
+  xl: `${BASE * 300}px`
+};
+const colors = {
+  background: PALETTE.white,
+  foreground: PALETTE.grey[800],
+  primaryHue: 'blue',
+  dangerHue: 'red',
+  warningHue: 'yellow',
+  successHue: 'green',
+  neutralHue: 'grey',
+  chromeHue: 'kale'
+};
+const fonts = {
+  mono: ['SFMono-Regular', 'Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace'].join(','),
+  system: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(',')
+};
+const fontSizes = {
+  xs: '10px',
+  sm: '12px',
+  md: '14px',
+  lg: '18px',
+  xl: '22px',
+  xxl: '26px',
+  xxxl: '36px'
+};
+const fontWeights = {
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900
+};
+const iconSizes = {
+  sm: '12px',
+  md: '16px',
+  lg: '26px'
+};
+const lineHeights = {
+  sm: `${BASE * 4}px`,
+  md: `${BASE * 5}px`,
+  lg: `${BASE * 6}px`,
+  xl: `${BASE * 7}px`,
+  xxl: `${BASE * 8}px`,
+  xxxl: `${BASE * 11}px`
+};
+const palette = {
+  ...PALETTE
+};
+delete palette.product;
+const shadowWidths = {
+  xs: '1px',
+  sm: '2px',
+  md: '3px'
+};
+const shadows = {
+  xs: color => `0 0 0 ${shadowWidths.xs} ${color}`,
+  sm: color => `0 0 0 ${shadowWidths.sm} ${color}`,
+  md: color => `0 0 0 ${shadowWidths.md} ${color}`,
+  lg: (offsetY, blurRadius, color) => `0 ${offsetY} ${blurRadius} 0 ${color}`
+};
+const space = {
+  base: BASE,
+  xxs: `${BASE}px`,
+  xs: `${BASE * 2}px`,
+  sm: `${BASE * 3}px`,
+  md: `${BASE * 5}px`,
+  lg: `${BASE * 8}px`,
+  xl: `${BASE * 10}px`,
+  xxl: `${BASE * 12}px`
+};
+const DEFAULT_THEME = {
+  borders,
+  borderRadii,
+  borderStyles,
+  borderWidths,
+  breakpoints,
+  colors: {
+    base: 'light',
+    ...colors
+  },
+  components: {},
+  fonts,
+  fontSizes,
+  fontWeights,
+  iconSizes,
+  lineHeights,
+  palette,
+  rtl: false,
+  shadowWidths,
+  shadows,
+  space
+};
+const useDocument = theme => {
+  const [controlledDocument, setControlledDocument] = reactExports.useState();
+  reactExports.useEffect(() => {
+    if (theme && theme.document) {
+      setControlledDocument(theme.document);
+    } else {
+      setControlledDocument(document);
+    }
+  }, [theme]);
+  return controlledDocument;
+};
+const ThemeProvider = _ref => {
+  let {
+    theme,
+    focusVisibleRef,
+    children,
+    ...other
+  } = _ref;
+  const scopeRef = reactExports.useRef(null);
+  const relativeDocument = useDocument(theme);
+  const controlledScopeRef = focusVisibleRef === null ? /*#__PURE__*/React.createRef() : getControlledValue(focusVisibleRef, scopeRef);
+  useFocusVisible({
+    scope: controlledScopeRef,
+    relativeDocument
+  });
+  return /*#__PURE__*/React.createElement(Ge, _extends$v({
+    theme: theme
+  }, other), focusVisibleRef === undefined ? /*#__PURE__*/React.createElement("div", {
+    ref: scopeRef
+  }, children) : children);
+};
+ThemeProvider.defaultProps = {
+  theme: DEFAULT_THEME
+};
+function retrieveComponentStyles(componentId, props) {
+  const components = props.theme && props.theme.components;
+  if (!components) {
+    return undefined;
+  }
+  const componentStyles = components[componentId];
+  if (typeof componentStyles === 'function') {
+    return componentStyles(props);
+  }
+  return componentStyles;
+}
+const DEFAULT_SHADE = 600;
+const adjust = (color, expected, actual) => {
+  if (expected !== actual) {
+    const amount = Math.abs(expected - actual) / 100 * 0.05;
+    return expected > actual ? curriedDarken$1(amount, color) : curriedLighten$1(amount, color);
+  }
+  return color;
+};
+const getColor = memoize$1(function (hue) {
+  let shade = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_SHADE;
+  let theme = arguments.length > 2 ? arguments[2] : undefined;
+  let transparency = arguments.length > 3 ? arguments[3] : undefined;
+  let retVal;
+  if (isNaN(shade)) {
+    return undefined;
+  }
+  const palette = theme && theme.palette ? theme.palette : DEFAULT_THEME.palette;
+  const colors = theme && theme.colors ? theme.colors : DEFAULT_THEME.colors;
+  let _hue;
+  if (typeof hue === 'string') {
+    _hue = colors[hue] || hue;
+  } else {
+    _hue = hue;
+  }
+  if (Object.prototype.hasOwnProperty.call(palette, _hue)) {
+    _hue = palette[_hue];
+  }
+  if (typeof _hue === 'object') {
+    retVal = _hue[shade];
+    if (!retVal) {
+      const _shade = Object.keys(_hue).map(hueKey => parseInt(hueKey, 10)).reduce((previous, current) => {
+        return Math.abs(current - shade) < Math.abs(previous - shade) ? current : previous;
+      });
+      retVal = adjust(_hue[_shade], shade, _shade);
+    }
+  } else {
+    retVal = adjust(_hue, shade, DEFAULT_SHADE);
+  }
+  if (transparency) {
+    retVal = rgba(retVal, transparency);
+  }
+  return retVal;
+}, (hue, shade, theme, transparency) => JSON.stringify({
+  hue,
+  shade,
+  palette: theme?.palette,
+  colors: theme?.colors,
+  transparency
+}));
+const getFocusBoxShadow = _ref => {
+  let {
+    boxShadow,
+    inset = false,
+    hue = 'primaryHue',
+    shade = DEFAULT_SHADE,
+    shadowWidth = 'md',
+    spacerHue = 'background',
+    spacerShade = DEFAULT_SHADE,
+    spacerWidth = 'xs',
+    theme = DEFAULT_THEME
+  } = _ref;
+  const color = getColor(hue, shade, theme);
+  const shadow = theme.shadows[shadowWidth](color);
+  if (spacerWidth === null) {
+    return `${inset ? 'inset' : ''} ${shadow}`;
+  }
+  const spacerColor = getColor(spacerHue, spacerShade, theme);
+  const retVal = `
+    ${inset ? 'inset' : ''} ${theme.shadows[spacerWidth](spacerColor)},
+    ${inset ? 'inset' : ''} ${shadow}`;
+  return boxShadow ? `${retVal}, ${boxShadow}` : retVal;
+};
+function getLineHeight(height, fontSize) {
+  const [heightValue, heightUnit] = getValueAndUnit(height.toString());
+  const [fontSizeValue, fontSizeUnit] = getValueAndUnit(fontSize.toString());
+  const PIXELS = 'px';
+  if (heightUnit && heightUnit !== PIXELS) {
+    throw new Error(`Unexpected \`height\` with '${heightUnit}' units.`);
+  }
+  if (fontSizeUnit && fontSizeUnit !== PIXELS) {
+    throw new Error(`Unexpected \`fontSize\` with '${fontSizeUnit}' units.`);
+  }
+  return heightValue / fontSizeValue;
+}
+const exponentialSymbols = {
+  symbols: {
+    sqrt: {
+      func: {
+        symbol: 'sqrt',
+        f: a => Math.sqrt(a),
+        notation: 'func',
+        precedence: 0,
+        rightToLeft: 0,
+        argCount: 1
+      },
+      symbol: 'sqrt',
+      regSymbol: 'sqrt\\b'
+    }
+  }
+};
+const animationStyles$1 = (position, modifier) => {
+  const property = position.split('-')[0];
+  const animationName = $e(["0%,66%{", ":2px;border:transparent;}"], property);
+  return Ne(["&", "::before,&", "::after{animation:0.3s ease-in-out ", ";}"], modifier, modifier, animationName);
+};
+const positionStyles$1 = (position, size, inset) => {
+  const margin = math(`${size} / -2`);
+  const placement = math(`${margin} + ${inset}`);
+  let clipPath;
+  let positionCss;
+  let propertyRadius;
+  if (position.startsWith('top')) {
+    propertyRadius = 'border-bottom-right-radius';
+    clipPath = 'polygon(100% 0, 100% 1px, 1px 100%, 0 100%, 0 0)';
+    positionCss = Ne(["top:", ";right:", ";left:", ";margin-left:", ";"], placement, position === 'top-right' && size, position === 'top' ? '50%' : position === 'top-left' && size, position === 'top' && margin);
+  } else if (position.startsWith('right')) {
+    propertyRadius = 'border-bottom-left-radius';
+    clipPath = 'polygon(100% 0, 100% 100%, calc(100% - 1px) 100%, 0 1px, 0 0)';
+    positionCss = Ne(["top:", ";right:", ";bottom:", ";margin-top:", ";"], position === 'right' ? '50%' : position === 'right-top' && size, placement, position === 'right-bottom' && size, position === 'right' && margin);
+  } else if (position.startsWith('bottom')) {
+    propertyRadius = 'border-top-left-radius';
+    clipPath = 'polygon(100% 0, calc(100% - 1px) 0, 0 calc(100% - 1px), 0 100%, 100% 100%)';
+    positionCss = Ne(["right:", ";bottom:", ";left:", ";margin-left:", ";"], position === 'bottom-right' && size, placement, position === 'bottom' ? '50%' : position === 'bottom-left' && size, position === 'bottom' && margin);
+  } else if (position.startsWith('left')) {
+    propertyRadius = 'border-top-right-radius';
+    clipPath = 'polygon(0 100%, 100% 100%, 100% calc(100% - 1px), 1px 0, 0 0)';
+    positionCss = Ne(["top:", ";bottom:", ";left:", ";margin-top:", ";"], position === 'left' ? '50%' : position === 'left-top' && size, size, placement, position === 'left' && margin);
+  }
+  return Ne(["&::before{", ":100%;clip-path:", ";}&::before,&::after{", "}"], propertyRadius, clipPath, positionCss);
+};
+function arrowStyles(position) {
+  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  const size = options.size || '6px';
+  const inset = options.inset || '0';
+  const squareSize = math(`${size} * 2 / sqrt(2)`, exponentialSymbols);
+  return Ne(["position:relative;&::before{border-width:inherit;border-style:inherit;border-color:transparent;background-clip:content-box;}&::after{z-index:-1;border:inherit;box-shadow:inherit;}&::before,&::after{position:absolute;transform:rotate(45deg);background-color:inherit;box-sizing:inherit;width:", ";height:", ";content:'';}", ";", ";"], squareSize, squareSize, positionStyles$1(position, squareSize, inset), options.animationModifier && animationStyles$1(position, options.animationModifier));
+}
+const useWindow = theme => {
+  const [controlledWindow, setControlledWindow] = reactExports.useState();
+  reactExports.useEffect(() => {
+    if (theme && theme.window) {
+      setControlledWindow(theme.window);
+    } else {
+      setControlledWindow(window);
+    }
+  }, [theme]);
+  return controlledWindow;
+};
+const useText = function (component, props, name, text) {
+  let condition = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
+  const value = condition ? props[name] : undefined;
+  return reactExports.useMemo(() => {
+    if (condition) {
+      if (name === 'children') {
+        throw new Error('Error: `children` is not a valid `useText` prop.');
+      } else if (value === null || value === '') {
+        throw new Error(component.displayName ? `Error: you must provide a valid \`${name}\` text value for <${component.displayName}>.` : `Error: you must provide a valid \`${name}\` text value.`);
+      } else if (value === undefined) {
+        return text;
+      }
+    }
+    return value;
+  }, [component.displayName, value, name, text, condition]);
+};
+const animationStyles = (position, options) => {
+  const theme = options.theme || DEFAULT_THEME;
+  let translateValue = `${theme.space.base * 5}px`;
+  let transformFunction;
+  if (position === 'top') {
+    transformFunction = 'translateY';
+  } else if (position === 'right') {
+    transformFunction = 'translateX';
+    translateValue = `-${translateValue}`;
+  } else if (position === 'bottom') {
+    transformFunction = 'translateY';
+    translateValue = `-${translateValue}`;
+  } else {
+    transformFunction = 'translateX';
+  }
+  const animationName = $e(["0%{transform:", "(", ");}"], transformFunction, translateValue);
+  return Ne(["&", " ", "{animation:0.2s cubic-bezier(0.15,0.85,0.35,1.2) ", ";}"], options.animationModifier, options.childSelector || '> *', animationName);
+};
+const hiddenStyles$1 = options => {
+  const transition = 'opacity 0.2s ease-in-out, 0.2s visibility 0s linear';
+  return Ne(["transition:", ";visibility:hidden;opacity:0;"], options.animationModifier && transition);
+};
+function menuStyles(position) {
+  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  const theme = options.theme || DEFAULT_THEME;
+  let marginProperty;
+  if (position === 'top') {
+    marginProperty = 'margin-bottom';
+  } else if (position === 'right') {
+    marginProperty = 'margin-left';
+  } else if (position === 'bottom') {
+    marginProperty = 'margin-top';
+  } else {
+    marginProperty = 'margin-right';
+  }
+  return Ne(["position:absolute;z-index:", ";", ":", ";line-height:0;font-size:0.01px;& ", "{display:inline-block;position:relative;margin:0;box-sizing:border-box;border:", " ", ";border-radius:", ";box-shadow:", ";background-color:", ";cursor:default;padding:0;text-align:", ";white-space:normal;font-size:", ";font-weight:", ";direction:", ";:focus{outline:none;}}", ";", ";"], options.zIndex || 0, marginProperty, options.margin, options.childSelector || '> *', theme.borders.sm, getColor('neutralHue', 300, theme), theme.borderRadii.md, theme.shadows.lg(`${theme.space.base * 5}px`, `${theme.space.base * 7.5}px`, getColor('chromeHue', 600, theme, 0.15)), theme.colors.background, theme.rtl ? 'right' : 'left', theme.fontSizes.md, theme.fontWeights.regular, theme.rtl && 'rtl', options.animationModifier && animationStyles(position, options), options.hidden && hiddenStyles$1(options));
+}
+const SELECTOR_FOCUS_VISIBLE = '&:focus-visible, &[data-garden-focus-visible="true"]';
+const focusStyles = _ref => {
+  let {
+    condition = true,
+    selector = SELECTOR_FOCUS_VISIBLE,
+    shadowWidth = 'md',
+    spacerWidth = 'xs',
+    styles: {
+      boxShadow,
+      ...styles
+    } = {},
+    theme,
+    ...options
+  } = _ref;
+  const _boxShadow = condition ? getFocusBoxShadow({
+    boxShadow,
+    shadowWidth,
+    spacerWidth,
+    theme,
+    ...options
+  }) : boxShadow;
+  let outline;
+  let outlineOffset;
+  if (spacerWidth === null) {
+    outline = theme.shadowWidths[shadowWidth];
+  } else {
+    outline = `${math(`${theme.shadowWidths[shadowWidth]} - ${theme.shadowWidths[spacerWidth]}`)} solid transparent`;
+    outlineOffset = theme.shadowWidths[spacerWidth];
+  }
+  return Ne(["&:focus{outline:none;}", "{outline:", ";outline-offset:", ";box-shadow:", ";", "}"], selector, outline, outlineOffset, _boxShadow, styles);
+};
+
+/**
+ * generates a UID factory
+ * @internal
+ * @example
+ * const uid = generateUID();
+ * uid(object) = 1;
+ * uid(object) = 1;
+ * uid(anotherObject) = 2;
+ */
+var generateUID$1 = function () {
+  var counter = 1;
+  var map = new WeakMap();
+  /**
+   * @borrows {uid}
+   */
+  var uid = function (item, index) {
+    if (typeof item === 'number' || typeof item === 'string') {
+      return index ? "idx-".concat(index) : "val-".concat(item);
+    }
+    if (!map.has(item)) {
+      map.set(item, counter++);
+      return uid(item);
+    }
+    return 'uid' + map.get(item);
+  };
+  return uid;
+};
+
+var createSource = function (prefix) {
+  if (prefix === void 0) {
+    prefix = '';
+  }
+  return {
+    value: 1,
+    prefix: prefix,
+    uid: generateUID$1()
+  };
+};
+var counter = createSource();
+var source = /*#__PURE__*/reactExports.createContext(createSource());
+var getId = function (source) {
+  return source.value++;
+};
+var getPrefix = function (source) {
+  return source ? source.prefix : '';
+};
+
+var generateUID = function (context) {
+  var quartz = context || counter;
+  var prefix = getPrefix(quartz);
+  var id = getId(quartz);
+  var uid = prefix + id;
+  var gen = function (item) {
+    return uid + quartz.uid(item);
+  };
+  return {
+    uid: uid,
+    gen: gen
+  };
+};
+var useUIDState = function () {
+  var context = reactExports.useContext(source);
+  var uid = reactExports.useState(function () {
+    return generateUID(context);
+  })[0];
+  return uid;
+};
+/**
+ * returns an uid generator
+ * @see {@link UIDConsumer}
+ * @see https://github.com/thearnica/react-uid#hooks-168
+ * @example
+ * const uid = useUIDSeed();
+ * return (
+ *  <>
+ *    <label for={seed('email')}>Email: </label>
+ *    <input id={seed('email')} name="email" />
+ *    {data.map(item => <div key={seed(item)}>...</div>
+ *  </>
+ * )
+ */
+var useUIDSeed = function () {
+  var gen = useUIDState().gen;
+  return gen;
+};
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+function useField(idPrefix) {
+  const seed = useUIDSeed();
+  const prefix = reactExports.useMemo(() => idPrefix || seed(`field_${'2.1.2'}`), [idPrefix, seed]);
+  const inputId = `${prefix}--input`;
+  const labelId = `${prefix}--label`;
+  const hintId = `${prefix}--hint`;
+  const messageId = `${prefix}--message`;
+  const getLabelProps = function (_temp) {
+    let {
+      id = labelId,
+      htmlFor = inputId,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    return {
+      id,
+      htmlFor,
+      'data-garden-container-id': 'containers.field',
+      'data-garden-container-version': '2.1.2',
+      ...other
+    };
+  };
+  const getInputProps = function (_temp2, _temp3) {
+    let {
+      id = inputId,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    let {
+      isDescribed = false,
+      hasMessage = false
+    } = _temp3 === void 0 ? {} : _temp3;
+    return {
+      id,
+      'aria-labelledby': labelId,
+      'aria-describedby': isDescribed || hasMessage ? [].concat(isDescribed ? hintId : [], hasMessage ? messageId : []).join(' ') : null,
+      ...other
+    };
+  };
+  const getHintProps = function (_temp4) {
+    let {
+      id = hintId,
+      ...other
+    } = _temp4 === void 0 ? {} : _temp4;
+    return {
+      id,
+      ...other
+    };
+  };
+  const getMessageProps = function (_temp5) {
+    let {
+      id = messageId,
+      ...other
+    } = _temp5 === void 0 ? {} : _temp5;
+    return {
+      id,
+      ...other
+    };
+  };
+  return {
+    getLabelProps,
+    getInputProps,
+    getHintProps,
+    getMessageProps
+  };
+}
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  id: PropTypes.string
+});
+
+function mergeRefs(refs) {
+  return function (value) {
+    refs.forEach(function (ref) {
+      if (typeof ref === "function") {
+        ref(value);
+      } else if (ref != null) {
+        ref.current = value;
+      }
+    });
+  };
+}
+
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+  nativeMin = Math.min;
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function () {
+  return root.Date.now();
+};
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce$1(func, wait, options) {
+  var lastArgs,
+    lastThis,
+    maxWait,
+    result,
+    timerId,
+    lastCallTime,
+    lastInvokeTime = 0,
+    leading = false,
+    maxing = false,
+    trailing = true;
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  function invokeFunc(time) {
+    var args = lastArgs,
+      thisArg = lastThis;
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+      timeSinceLastInvoke = time - lastInvokeTime,
+      result = wait - timeSinceLastCall;
+    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+  }
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+      timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+  }
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+  function debounced() {
+    var time = now(),
+      isInvoking = shouldInvoke(time);
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' || isObjectLike(value) && objectToString.call(value) == symbolTag;
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject(other) ? other + '' : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+var lodash_debounce = debounce$1;
+
+var debounce$2 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+function composeEventHandlers() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+const KEYS = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+var DocumentPosition;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition || (DocumentPosition = {}));
+const SLIDER_MIN = 0;
+const SLIDER_MAX = 100;
+const SLIDER_STEP = 1;
+function useSlider(_ref) {
+  let {
+    trackRef,
+    minThumbRef,
+    maxThumbRef,
+    min = SLIDER_MIN,
+    max = SLIDER_MAX,
+    defaultMinValue,
+    defaultMaxValue,
+    minValue,
+    maxValue,
+    onChange = () => undefined,
+    step = SLIDER_STEP,
+    jump = step,
+    disabled,
+    rtl,
+    environment
+  } = _ref;
+  const doc = environment || document;
+  const [trackRect, setTrackRect] = reactExports.useState({
+    width: 0
+  });
+  const init = function (initMinValue, initMaxValue) {
+    if (initMinValue === void 0) {
+      initMinValue = min;
+    }
+    if (initMaxValue === void 0) {
+      initMaxValue = max;
+    }
+    const retVal = {
+      minValue: initMinValue < min ? min : initMinValue,
+      maxValue: initMaxValue > max ? max : initMaxValue
+    };
+    if (retVal.maxValue < min) {
+      retVal.maxValue = min;
+    }
+    if (retVal.minValue > retVal.maxValue) {
+      retVal.minValue = retVal.maxValue;
+    }
+    return retVal;
+  };
+  const [state, setState] = reactExports.useState(init(defaultMinValue, defaultMaxValue));
+  const isControlled = minValue !== undefined && minValue !== null || maxValue !== undefined && maxValue !== null;
+  const position = isControlled ? init(minValue, maxValue) : state;
+  const setPosition = isControlled ? onChange : setState;
+  reactExports.useEffect(() => {
+    const handleResize = debounce$2(() => {
+      if (trackRef.current) {
+        setTrackRect(trackRef.current.getBoundingClientRect());
+      }
+    }, 100);
+    handleResize();
+    const win = doc.defaultView || window;
+    win.addEventListener('resize', handleResize);
+    return () => {
+      win.removeEventListener('resize', handleResize);
+      handleResize.cancel();
+    };
+  }, [doc, trackRef]);
+  const getTrackPosition = reactExports.useCallback(event => {
+    let retVal = undefined;
+    if (trackRect) {
+      const offset = rtl ? trackRect.left + trackRect.width : trackRect.left;
+      const mouseX = (event.pageX - offset) * (rtl ? -1 : 1);
+      const x = (max - min) * mouseX / trackRect.width;
+      const value = min + parseInt(x, 10);
+      retVal = Math.floor(value / step) * step;
+    }
+    return retVal;
+  }, [max, min, trackRect, rtl, step]);
+  const setThumbPosition = reactExports.useCallback(thumb => value => {
+    if (!disabled) {
+      let newMinValue = position.minValue;
+      let newMaxValue = position.maxValue;
+      if (thumb === 'min') {
+        if (value < min) {
+          newMinValue = min;
+        } else if (value > position.maxValue) {
+          newMinValue = position.maxValue;
+        } else {
+          newMinValue = value;
+        }
+      } else if (thumb === 'max') {
+        if (value > max) {
+          newMaxValue = max;
+        } else if (value < position.minValue) {
+          newMaxValue = position.minValue;
+        } else {
+          newMaxValue = value;
+        }
+      }
+      if (!isNaN(newMinValue) && !isNaN(newMaxValue)) {
+        setPosition({
+          minValue: newMinValue,
+          maxValue: newMaxValue
+        });
+      }
+    }
+  }, [disabled, max, min, position.maxValue, position.minValue, setPosition]);
+  const getTrackProps = reactExports.useCallback(function (_temp) {
+    let {
+      onMouseDown,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    const handleMouseDown = event => {
+      if (!disabled && event.button === 0) {
+        const value = getTrackPosition(event);
+        if (value !== undefined) {
+          const minOffset = Math.abs(position.minValue - value);
+          const maxOffset = Math.abs(position.maxValue - value);
+          if (minOffset <= maxOffset) {
+            minThumbRef.current && minThumbRef.current.focus();
+            setThumbPosition('min')(value);
+          } else {
+            maxThumbRef.current && maxThumbRef.current.focus();
+            setThumbPosition('max')(value);
+          }
+        }
+      }
+    };
+    return {
+      'data-garden-container-id': 'containers.slider.track',
+      'data-garden-container-version': '0.1.6',
+      'aria-disabled': disabled,
+      onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown),
+      ...other
+    };
+  }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
+  const getThumbProps = reactExports.useCallback(thumb => _ref2 => {
+    let {
+      onKeyDown,
+      onMouseDown,
+      onTouchStart,
+      ...other
+    } = _ref2;
+    const handleKeyDown = event => {
+      if (!disabled) {
+        let value;
+        switch (event.key) {
+          case KEYS.RIGHT:
+            value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
+            break;
+          case KEYS.UP:
+            value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
+            break;
+          case KEYS.LEFT:
+            value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
+            break;
+          case KEYS.DOWN:
+            value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
+            break;
+          case KEYS.PAGE_UP:
+            value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
+            break;
+          case KEYS.PAGE_DOWN:
+            value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
+            break;
+          case KEYS.HOME:
+            value = min;
+            break;
+          case KEYS.END:
+            value = max;
+            break;
+        }
+        if (value !== undefined) {
+          event.preventDefault();
+          event.stopPropagation();
+          setThumbPosition(thumb)(value);
+        }
+      }
+    };
+    const handleMouseMove = event => {
+      const value = getTrackPosition(event);
+      if (value !== undefined) {
+        setThumbPosition(thumb)(value);
+      }
+    };
+    const handleTouchMove = event => {
+      const value = getTrackPosition(event.targetTouches[0]);
+      if (value !== undefined) {
+        setThumbPosition(thumb)(value);
+      }
+    };
+    const handleMouseUp = () => {
+      doc.removeEventListener('mousemove', handleMouseMove);
+      doc.removeEventListener('mouseup', handleMouseUp);
+    };
+    const handleTouchEnd = () => {
+      doc.removeEventListener('touchend', handleTouchEnd);
+      doc.removeEventListener('touchmove', handleTouchMove);
+    };
+    const handleMouseDown = event => {
+      if (!disabled && event.button === 0) {
+        event.stopPropagation();
+        doc.addEventListener('mousemove', handleMouseMove);
+        doc.addEventListener('mouseup', handleMouseUp);
+        event.target && event.target.focus();
+      }
+    };
+    const handleTouchStart = event => {
+      if (!disabled) {
+        event.stopPropagation();
+        doc.addEventListener('touchmove', handleTouchMove);
+        doc.addEventListener('touchend', handleTouchEnd);
+        event.target && event.target.focus();
+      }
+    };
+    return {
+      'data-garden-container-id': 'containers.slider.thumb',
+      'data-garden-container-version': '0.1.6',
+      role: 'slider',
+      tabIndex: disabled ? -1 : 0,
+      'aria-valuemin': thumb === 'min' ? min : position.minValue,
+      'aria-valuemax': thumb === 'min' ? position.maxValue : max,
+      'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
+      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
+      onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown),
+      onTouchStart: composeEventHandlers(onTouchStart, handleTouchStart),
+      ...other
+    };
+  }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
+  return reactExports.useMemo(() => ({
+    getTrackProps,
+    getMinThumbProps: getThumbProps('min'),
+    getMaxThumbProps: getThumbProps('max'),
+    trackRect,
+    minValue: position.minValue,
+    maxValue: position.maxValue
+  }), [getTrackProps, getThumbProps, position.minValue, position.maxValue, trackRect]);
+}
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  trackRef: PropTypes.any.isRequired,
+  minThumbRef: PropTypes.any.isRequired,
+  maxThumbRef: PropTypes.any.isRequired,
+  environment: PropTypes.any,
+  defaultMinValue: PropTypes.number,
+  defaultMaxValue: PropTypes.number,
+  minValue: PropTypes.number,
+  maxValue: PropTypes.number,
+  onChange: PropTypes.func,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  jump: PropTypes.number,
+  disabled: PropTypes.bool,
+  rtl: PropTypes.bool
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+function _extends$t() {
+  _extends$t = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$t.apply(this, arguments);
+}
+const FieldContext$1 = /*#__PURE__*/reactExports.createContext(undefined);
+const useFieldContext$1 = () => {
+  const fieldContext = reactExports.useContext(FieldContext$1);
+  return fieldContext;
+};
+const COMPONENT_ID$K = 'forms.field';
+const StyledField$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$K,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledField",
+  componentId: "sc-12gzfsu-0"
+})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$K, props));
+StyledField$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$J = 'forms.fieldset';
+const StyledFieldset = styled(StyledField$1).attrs({
+  as: 'fieldset',
+  'data-garden-id': COMPONENT_ID$J,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFieldset",
+  componentId: "sc-1vr4mxv-0"
+})(["", "{margin-top:", "px;}", ";"], StyledField$1, props => props.theme.space.base * (props.isCompact ? 1 : 2), props => retrieveComponentStyles(COMPONENT_ID$J, props));
+StyledFieldset.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$I = 'forms.input_label';
+const StyledLabel$1 = styled.label.attrs({
+  'data-garden-id': COMPONENT_ID$I,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledLabel",
+  componentId: "sc-2utmsz-0"
+})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.colors.foreground, props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$I, props));
+StyledLabel$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$H = 'forms.fieldset_legend';
+const StyledLegend = styled(StyledLabel$1).attrs({
+  as: 'legend',
+  'data-garden-id': COMPONENT_ID$H,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledLegend",
+  componentId: "sc-6s0zwq-0"
+})(["padding:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$H, props));
+StyledLegend.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$G = 'forms.input_hint';
+const StyledHint$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$G,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledHint",
+  componentId: "sc-17c2wu8-0"
+})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColor('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$G, props));
+StyledHint$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+var _g$2, _circle$5;
+function _extends$s() {
+  _extends$s = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$s.apply(this, arguments);
+}
+var SvgAlertErrorStroke = function SvgAlertErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$s({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _g$2 || (_g$2 = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 8.5,
+    r: 7
+  }), /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    d: "M7.5 4.5V9"
+  }))), _circle$5 || (_circle$5 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 12,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+var _path$n, _circle$4;
+function _extends$r() {
+  _extends$r = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$r.apply(this, arguments);
+}
+var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$r({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$n || (_path$n = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"
+  })), _circle$4 || (_circle$4 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 12,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+var _g$1;
+function _extends$q() {
+  _extends$q = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$q.apply(this, arguments);
+}
+var SvgCheckCircleStroke$1 = function SvgCheckCircleStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$q({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _g$1 || (_g$1 = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M4 9l2.5 2.5 5-5"
+  }), /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 8.5,
+    r: 7
+  }))));
+};
+const MessageIcon = _ref => {
+  let {
+    children,
+    validation,
+    ...props
+  } = _ref;
+  let retVal;
+  if (validation === 'error') {
+    retVal = /*#__PURE__*/React.createElement(SvgAlertErrorStroke, props);
+  } else if (validation === 'success') {
+    retVal = /*#__PURE__*/React.createElement(SvgCheckCircleStroke$1, props);
+  } else if (validation === 'warning') {
+    retVal = /*#__PURE__*/React.createElement(SvgAlertWarningStroke, props);
+  } else {
+    retVal = /*#__PURE__*/React.cloneElement(reactExports.Children.only(children));
+  }
+  return retVal;
+};
+const COMPONENT_ID$F = 'forms.input_message_icon';
+const StyledMessageIcon = styled(MessageIcon).attrs({
+  'data-garden-id': COMPONENT_ID$F,
+  'data-garden-version': '8.69.1',
+  'aria-hidden': null
+}).withConfig({
+  displayName: "StyledMessageIcon",
+  componentId: "sc-1ph2gba-0"
+})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$F, props));
+StyledMessageIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const validationStyles = props => {
+  const rtl = props.theme.rtl;
+  const padding = math(`${props.theme.space.base} * 2px + ${props.theme.iconSizes.md}`);
+  let color;
+  if (props.validation === 'error') {
+    color = getColor('dangerHue', 600, props.theme);
+  } else if (props.validation === 'success') {
+    color = getColor('successHue', 600, props.theme);
+  } else if (props.validation === 'warning') {
+    color = getColor('warningHue', 700, props.theme);
+  } else {
+    color = getColor('neutralHue', 700, props.theme);
+  }
+  return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
+};
+const COMPONENT_ID$E = 'forms.input_message';
+const StyledMessage$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$E,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledMessage",
+  componentId: "sc-30hgg7-0"
+})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$E, props));
+StyledMessage$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$D = 'forms.input';
+const isInvalid = validation => {
+  return validation === 'warning' || validation === 'error';
+};
+const colorStyles$c = props => {
+  const HUE = 'primaryHue';
+  const SHADE = 600;
+  const placeholderColor = getColor('neutralHue', SHADE - 200, props.theme);
+  let borderColor;
+  let hoverBorderColor;
+  let focusBorderColor;
+  let focusRingHue = HUE;
+  let focusRingShade = SHADE;
+  if (props.validation) {
+    let hue = HUE;
+    if (props.validation === 'success') {
+      hue = 'successHue';
+    } else if (props.validation === 'warning') {
+      hue = 'warningHue';
+      focusRingShade = 700;
+    } else if (props.validation === 'error') {
+      hue = 'dangerHue';
+    }
+    borderColor = getColor(hue, SHADE, props.theme);
+    hoverBorderColor = borderColor;
+    focusBorderColor = borderColor;
+    focusRingHue = hue;
+  } else {
+    borderColor = getColor('neutralHue', SHADE - 300, props.theme);
+    hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
+    focusBorderColor = hoverBorderColor;
+  }
+  const readOnlyBackgroundColor = getColor('neutralHue', SHADE - 500, props.theme);
+  const readOnlyBorderColor = getColor('neutralHue', SHADE - 300, props.theme);
+  const disabledBackgroundColor = readOnlyBackgroundColor;
+  const disabledBorderColor = getColor('neutralHue', SHADE - 400, props.theme);
+  const disabledForegroundColor = getColor('neutralHue', SHADE - 200, props.theme);
+  let controlledBorderColor = borderColor;
+  if (props.isFocused) {
+    controlledBorderColor = focusBorderColor;
+  }
+  if (props.isHovered) {
+    controlledBorderColor = hoverBorderColor;
+  }
+  return Ne(["border-color:", ";background-color:", ";color:", ";&::placeholder{color:", ";}&[readonly],&[aria-readonly='true']{border-color:", ";background-color:", ";}&:hover{border-color:", ";}", " &:disabled,&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], controlledBorderColor, props.isBare ? 'transparent' : props.theme.colors.background, props.theme.colors.foreground, placeholderColor, readOnlyBorderColor, !props.isBare && readOnlyBackgroundColor, hoverBorderColor, focusStyles({
+    theme: props.theme,
+    inset: props.focusInset,
+    condition: !props.isBare,
+    hue: focusRingHue,
+    shade: focusRingShade,
+    styles: {
+      borderColor: focusBorderColor
+    }
+  }), disabledBorderColor, !props.isBare && disabledBackgroundColor, disabledForegroundColor);
+};
+const sizeStyles$f = props => {
+  const fontSize = props.theme.fontSizes.md;
+  const paddingHorizontal = `${props.theme.space.base * 3}px`;
+  let height;
+  let paddingVertical;
+  let browseFontSize;
+  let swatchHeight;
+  if (props.isCompact) {
+    height = `${props.theme.space.base * 8}px`;
+    paddingVertical = `${props.theme.space.base * 1.5}px`;
+    browseFontSize = math(`${props.theme.fontSizes.sm} - 1`);
+    swatchHeight = `${props.theme.space.base * 6}px`;
+  } else {
+    height = `${props.theme.space.base * 10}px`;
+    paddingVertical = `${props.theme.space.base * 2.5}px`;
+    browseFontSize = props.theme.fontSizes.sm;
+    swatchHeight = `${props.theme.space.base * 7}px`;
+  }
+  const lineHeight = math(`${height} - (${paddingVertical} * 2) - (${props.theme.borderWidths.sm} * 2)`);
+  const padding = props.isBare ? '0' : `${em$1(paddingVertical, fontSize)} ${em$1(paddingHorizontal, fontSize)}`;
+  const swatchMarginVertical = math(`(${lineHeight} - ${swatchHeight}) / 2`);
+  const swatchMarginHorizontal = math(`${paddingVertical} + ${swatchMarginVertical} - ${paddingHorizontal}`);
+  return Ne(["padding:", ";min-height:", ";line-height:", ";font-size:", ";&::-ms-browse{font-size:", ";}&[type='date'],&[type='datetime-local'],&[type='file'],&[type='month'],&[type='time'],&[type='week']{max-height:", ";}&[type='file']{line-height:1;}@supports (-ms-ime-align:auto){&[type='color']{padding:", ";}}&::-moz-color-swatch{margin-top:", ";margin-left:", ";width:calc(100% + ", ");height:", ";}&::-webkit-color-swatch{margin:", " ", ";}", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", "px;}"], padding, props.isBare ? '1em' : height, getLineHeight(lineHeight, fontSize), fontSize, browseFontSize, height, props.isCompact ? '0 2px' : '1px 3px', swatchMarginVertical, swatchMarginHorizontal, math(`${swatchMarginHorizontal} * -2`), swatchHeight, swatchMarginVertical, swatchMarginHorizontal, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props.theme.space.base * (props.isCompact ? 1 : 2));
+};
+const StyledTextInput = styled.input.attrs(props => ({
+  'data-garden-id': COMPONENT_ID$D,
+  'data-garden-version': '8.69.1',
+  'aria-invalid': isInvalid(props.validation)
+})).withConfig({
+  displayName: "StyledTextInput",
+  componentId: "sc-k12n8x-0"
+})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$f(props), props => colorStyles$c(props), props => retrieveComponentStyles(COMPONENT_ID$D, props));
+StyledTextInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$C = 'forms.textarea';
+const hiddenStyles = `
+  visibility: hidden;
+  position: absolute;
+  overflow: hidden;
+  height: 0;
+  top: 0;
+  left: 0;
+  transform: translateZ(0);
+`;
+const StyledTextarea = styled(StyledTextInput).attrs({
+  as: 'textarea',
+  'data-garden-id': COMPONENT_ID$C,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledTextarea",
+  componentId: "sc-wxschl-0"
+})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles, props => retrieveComponentStyles(COMPONENT_ID$C, props));
+StyledTextarea.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$B = 'forms.media_figure';
+const colorStyles$b = props => {
+  let shade = 600;
+  if (props.isDisabled) {
+    shade = 400;
+  } else if (props.isHovered || props.isFocused) {
+    shade = 700;
+  }
+  return Ne(["color:", ";"], getColor('neutralHue', shade, props.theme));
+};
+const sizeStyles$e = props => {
+  const size = props.theme.iconSizes.md;
+  const marginFirst = `1px ${props.theme.space.base * 2}px auto 0`;
+  const marginLast = `1px 0 auto ${props.theme.space.base * 2}px`;
+  let margin;
+  if (props.position === 'start') {
+    margin = props.theme.rtl ? marginLast : marginFirst;
+  } else {
+    margin = props.theme.rtl ? marginFirst : marginLast;
+  }
+  return Ne(["margin:", ";width:", ";height:", ";"], margin, size, size);
+};
+const StyledTextMediaFigure = styled(_ref => {
+  let {
+    children,
+    position,
+    isHovered,
+    isFocused,
+    isDisabled,
+    isRotated,
+    theme,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$B,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledTextMediaFigure",
+  componentId: "sc-1qepknj-0"
+})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$b(props), props => sizeStyles$e(props), props => retrieveComponentStyles(COMPONENT_ID$B, props));
+StyledTextMediaFigure.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$A = 'forms.faux_input';
+const VALIDATION_HUES = {
+  success: 'successHue',
+  warning: 'warningHue',
+  error: 'dangerHue'
+};
+function getValidationHue(validation) {
+  let defaultHue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primaryHue';
+  if (validation) {
+    return VALIDATION_HUES[validation];
+  }
+  return defaultHue;
+}
+const colorStyles$a$1 = props => {
+  const {
+    theme,
+    validation,
+    focusInset,
+    isBare,
+    isFocused
+  } = props;
+  return Ne(["", ""], focusStyles({
+    theme,
+    inset: focusInset,
+    condition: !isBare,
+    hue: getValidationHue(validation),
+    shade: validation === 'warning' ? 700 : 600,
+    selector: isFocused ? '&' : '&:focus-within',
+    styles: {
+      borderColor: getColor(getValidationHue(validation), 600, theme)
+    }
+  }));
+};
+const StyledTextFauxInput = styled(StyledTextInput).attrs(props => ({
+  as: 'div',
+  'aria-readonly': props.isReadOnly,
+  'aria-disabled': props.isDisabled,
+  'data-garden-id': COMPONENT_ID$A,
+  'data-garden-version': '8.69.1'
+})).withConfig({
+  displayName: "StyledTextFauxInput",
+  componentId: "sc-yqw7j9-0"
+})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$a$1, StyledTextInput, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$A, props));
+StyledTextFauxInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$z = 'forms.media_input';
+const StyledTextMediaInput = styled(StyledTextInput).attrs({
+  'data-garden-id': COMPONENT_ID$z,
+  'data-garden-version': '8.69.1',
+  isBare: true
+}).withConfig({
+  displayName: "StyledTextMediaInput",
+  componentId: "sc-12i9xfi-0"
+})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$z, props));
+StyledTextMediaInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$y = 'forms.input_group';
+const positionStyles = props => {
+  const topMargin = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
+  return Ne(["", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}& > ", "{position:relative;flex:1 1 auto;margin-top:0;margin-bottom:0;width:auto;min-width:0;}"], StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, topMargin, StyledTextInput);
+};
+const itemStyles = props => {
+  const startDirection = props.theme.rtl ? 'right' : 'left';
+  const endDirection = props.theme.rtl ? 'left' : 'right';
+  return Ne(["& > *{z-index:-1;}& > ", "{z-index:0;}& > ", ":disabled{z-index:-2;}& > ", ":hover,& > button:hover,& > ", ":focus-visible,& > button:focus-visible,& > ", "[data-garden-focus-visible],& > button[data-garden-focus-visible],& > ", ":active,& > button:active{z-index:1;}& > button:disabled{border-top-width:0;border-bottom-width:0;}& > *:not(:first-child){margin-", ":-", ";}& > *:first-child:not(:last-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:last-child:not(:first-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:not(:first-child):not(:last-child){border-radius:0;}"], StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, startDirection, props.theme.borderWidths.sm, endDirection, endDirection, startDirection, startDirection);
+};
+const StyledInputGroup$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$y,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledInputGroup",
+  componentId: "sc-kjh1f0-0"
+})(["display:inline-flex;position:relative;flex-wrap:nowrap;align-items:stretch;z-index:0;width:100%;", ";", ";", ";"], props => positionStyles(props), props => itemStyles(props), props => retrieveComponentStyles(COMPONENT_ID$y, props));
+StyledInputGroup$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$x = 'forms.radio_label';
+const sizeStyles$d = props => {
+  const size = props.theme.space.base * 4;
+  const padding = size + props.theme.space.base * 2;
+  const lineHeight = props.theme.space.base * 5;
+  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
+};
+const StyledRadioLabel = styled(StyledLabel$1).attrs({
+  'data-garden-id': COMPONENT_ID$x,
+  'data-garden-version': '8.69.1',
+  isRadio: true
+}).withConfig({
+  displayName: "StyledRadioLabel",
+  componentId: "sc-1aq2e5t-0"
+})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$x, props));
+StyledRadioLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$w = 'forms.checkbox_label';
+const StyledCheckLabel = styled(StyledRadioLabel).attrs({
+  'data-garden-id': COMPONENT_ID$w,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledCheckLabel",
+  componentId: "sc-x7nr1-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w, props));
+StyledCheckLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$v = 'forms.radio_hint';
+const StyledRadioHint = styled(StyledHint$1).attrs({
+  'data-garden-id': COMPONENT_ID$v,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledRadioHint",
+  componentId: "sc-eo8twg-0"
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v, props));
+StyledRadioHint.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$u = 'forms.checkbox_hint';
+const StyledCheckHint = styled(StyledRadioHint).attrs({
+  'data-garden-id': COMPONENT_ID$u,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledCheckHint",
+  componentId: "sc-1kl8e8c-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u, props));
+StyledCheckHint.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$t = 'forms.radio';
+const colorStyles$9$1 = props => {
+  const SHADE = 600;
+  const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
+  const backgroundColor = props.theme.colors.background;
+  const iconColor = backgroundColor;
+  const hoverBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.08);
+  const hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
+  const focusBorderColor = hoverBorderColor;
+  const activeBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.2);
+  const activeBorderColor = focusBorderColor;
+  const checkedBorderColor = focusBorderColor;
+  const checkedBackgroundColor = checkedBorderColor;
+  const checkedHoverBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
+  const checkedHoverBackgroundColor = checkedHoverBorderColor;
+  const checkedActiveBorderColor = getColor('primaryHue', SHADE + 200, props.theme);
+  const checkedActiveBackgroundColor = checkedActiveBorderColor;
+  const disabledBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
+  return Ne(["& ~ ", "::before{border-color:", ";background-color:", ";}& ~ ", " > svg{color:", ";}& ~ ", ":hover::before{border-color:", ";background-color:", ";}", " & ~ ", ":active::before{border-color:", ";background-color:", ";}&:checked ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":hover::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledRadioLabel, borderColor, backgroundColor, StyledRadioLabel, iconColor, StyledRadioLabel, hoverBorderColor, hoverBackgroundColor, focusStyles({
+    theme: props.theme,
+    styles: {
+      borderColor: focusBorderColor
+    },
+    selector: `&:focus-visible ~ ${StyledRadioLabel}::before, &[data-garden-focus-visible='true'] ~ ${StyledRadioLabel}::before`
+  }), StyledRadioLabel, activeBorderColor, activeBackgroundColor, StyledRadioLabel, checkedBorderColor, checkedBackgroundColor, StyledRadioLabel, checkedHoverBorderColor, checkedHoverBackgroundColor, StyledRadioLabel, checkedActiveBorderColor, checkedActiveBackgroundColor, StyledRadioLabel, disabledBackgroundColor);
+};
+const sizeStyles$c$1 = props => {
+  const lineHeight = `${props.theme.space.base * 5}px`;
+  const size = `${props.theme.space.base * 4}px`;
+  const top = math(`(${lineHeight} - ${size}) / 2`);
+  const iconSize = props.theme.iconSizes.sm;
+  const iconPosition = math(`(${size} - ${iconSize}) / 2`);
+  const iconTop = math(`${iconPosition} + ${top}`);
+  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
+  return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
+};
+const StyledRadioInput = styled.input.attrs({
+  'data-garden-id': COMPONENT_ID$t,
+  'data-garden-version': '8.69.1',
+  type: 'radio'
+}).withConfig({
+  displayName: "StyledRadioInput",
+  componentId: "sc-qsavpv-0"
+})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$c$1(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$9$1(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$t, props));
+StyledRadioInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$s = 'forms.checkbox';
+const colorStyles$8$1 = props => {
+  const SHADE = 600;
+  const indeterminateBorderColor = getColor('primaryHue', SHADE, props.theme);
+  const indeterminateBackgroundColor = indeterminateBorderColor;
+  const indeterminateActiveBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
+  const indeterminateActiveBackgroundColor = indeterminateActiveBorderColor;
+  const indeterminateDisabledBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
+  return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
+};
+const StyledCheckInput = styled(StyledRadioInput).attrs({
+  'data-garden-id': COMPONENT_ID$s,
+  'data-garden-version': '8.69.1',
+  type: 'checkbox'
+}).withConfig({
+  displayName: "StyledCheckInput",
+  componentId: "sc-176jxxe-0"
+})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$8$1(props), props => retrieveComponentStyles(COMPONENT_ID$s, props));
+StyledCheckInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$r = 'forms.radio_message';
+const StyledRadioMessage = styled(StyledMessage$1).attrs({
+  'data-garden-id': COMPONENT_ID$r,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledRadioMessage",
+  componentId: "sc-1pmi0q8-0"
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r, props));
+StyledRadioMessage.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$q = 'forms.checkbox_message';
+const StyledCheckMessage = styled(StyledRadioMessage).attrs({
+  'data-garden-id': COMPONENT_ID$q,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledCheckMessage",
+  componentId: "sc-s4p6kd-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q, props));
+StyledCheckMessage.defaultProps = {
+  theme: DEFAULT_THEME
+};
+var _path$m;
+function _extends$p() {
+  _extends$p = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$p.apply(this, arguments);
+}
+var SvgCheckSmFill = function SvgCheckSmFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$p({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$m || (_path$m = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 2,
+    d: "M3 6l2 2 4-4"
+  })));
+};
+const COMPONENT_ID$p = 'forms.check_svg';
+const StyledCheckSvg = styled(SvgCheckSmFill).attrs({
+  'data-garden-id': COMPONENT_ID$p,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledCheckSvg",
+  componentId: "sc-fvxetk-0"
+})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$p, props));
+StyledCheckSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+var _path$l;
+function _extends$o() {
+  _extends$o = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$o.apply(this, arguments);
+}
+var SvgDashFill = function SvgDashFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$o({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$l || (_path$l = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeWidth: 2,
+    d: "M3 6h6"
+  })));
+};
+const COMPONENT_ID$o = 'forms.dash_svg';
+const StyledDashSvg = styled(SvgDashFill).attrs({
+  'data-garden-id': COMPONENT_ID$o,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledDashSvg",
+  componentId: "sc-z3vq71-0"
+})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$o, props));
+StyledDashSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$n$1 = 'forms.file_upload';
+const colorStyles$7$1 = props => {
+  const baseColor = getColor('primaryHue', 600, props.theme);
+  const hoverColor = getColor('primaryHue', 700, props.theme);
+  const activeColor = getColor('primaryHue', 800, props.theme);
+  const disabledBackgroundColor = getColor('neutralHue', 200, props.theme);
+  const disabledForegroundColor = getColor('neutralHue', 400, props.theme);
+  return Ne(["border-color:", ";background-color:", ";color:", ";&:hover{border-color:", ";background-color:", ";color:", ";}", " &:active{border-color:", ";background-color:", ";color:", ";}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], props.isDragging ? activeColor : getColor('neutralHue', 600, props.theme), props.isDragging && rgba(baseColor, 0.2), props.isDragging ? activeColor : baseColor, hoverColor, rgba(baseColor, 0.08), hoverColor, focusStyles({
+    theme: props.theme,
+    hue: baseColor
+  }), activeColor, rgba(baseColor, 0.2), activeColor, disabledForegroundColor, disabledBackgroundColor, disabledForegroundColor);
+};
+const sizeStyles$b$1 = props => {
+  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
+  const paddingHorizontal = `${props.isCompact ? 2 : 4}em`;
+  const paddingVertical = math(`${props.theme.space.base * (props.isCompact ? 2.5 : 5)} - ${props.theme.borderWidths.sm}`);
+  const fontSize = props.theme.fontSizes.md;
+  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
+  return Ne(["padding:", " ", ";min-width:4em;line-height:", ";font-size:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], paddingVertical, paddingHorizontal, lineHeight, fontSize, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, marginTop);
+};
+const StyledFileUpload = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$n$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFileUpload",
+  componentId: "sc-1rodjgn-0"
+})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$b$1, colorStyles$7$1, props => retrieveComponentStyles(COMPONENT_ID$n$1, props));
+StyledFileUpload.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$m$1 = 'forms.file.close';
+const StyledFileClose = styled.button.attrs({
+  'data-garden-id': COMPONENT_ID$m$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFileClose",
+  componentId: "sc-1m31jbf-0"
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => props.theme.colors.foreground, props => retrieveComponentStyles(COMPONENT_ID$m$1, props));
+StyledFileClose.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$l$1 = 'forms.file';
+const colorStyles$6$1 = props => {
+  let borderColor;
+  let focusBorderColor;
+  let foregroundColor;
+  if (props.validation === 'success') {
+    borderColor = getColor('successHue', 600, props.theme);
+    focusBorderColor = borderColor;
+    foregroundColor = borderColor;
+  } else if (props.validation === 'error') {
+    borderColor = getColor('dangerHue', 600, props.theme);
+    focusBorderColor = borderColor;
+    foregroundColor = borderColor;
+  } else {
+    borderColor = getColor('neutralHue', 300, props.theme);
+    focusBorderColor = getColor('primaryHue', 600, props.theme);
+    foregroundColor = props.theme.colors.foreground;
+  }
+  return Ne(["border-color:", ";color:", ";", ""], borderColor, foregroundColor, focusStyles({
+    theme: props.theme,
+    inset: props.focusInset,
+    hue: focusBorderColor,
+    styles: {
+      borderColor: focusBorderColor
+    }
+  }));
+};
+const sizeStyles$a$1 = props => {
+  const size = `${props.theme.space.base * (props.isCompact ? 7 : 10)}px`;
+  const spacing = `${props.theme.space.base * (props.isCompact ? 2 : 3)}px`;
+  const fontSize = props.theme.fontSizes.md;
+  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
+  return `
+    box-sizing: border-box;
+    border: ${props.theme.borders.sm};
+    border-radius: ${props.theme.borderRadii.md};
+    padding: 0 ${spacing};
+    height: ${size};
+    line-height: ${lineHeight};
+    font-size: ${fontSize};
+
+    & > span {
+      width: 100%;
+    }
+
+    & > ${StyledFileClose} {
+      width: ${size};
+      height: ${size};
+      margin-${props.theme.rtl ? 'left' : 'right'}: -${spacing};
+    }
+  `;
+};
+const StyledFile = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$l$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFile",
+  componentId: "sc-195lzp1-0"
+})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$a$1, colorStyles$6$1, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$l$1, props));
+StyledFile.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$k$1 = 'forms.file.delete';
+const StyledFileDelete = styled(StyledFileClose).attrs({
+  'data-garden-id': COMPONENT_ID$k$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFileDelete",
+  componentId: "sc-a8nnhx-0"
+})(["color:", ";", ";"], props => getColor('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$k$1, props));
+StyledFileDelete.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$j$1 = 'forms.file.icon';
+const StyledFileIcon = styled(_ref => {
+  let {
+    children,
+    isCompact,
+    theme,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$j$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFileIcon",
+  componentId: "sc-7b3q0c-0"
+})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$j$1, props));
+StyledFileIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$i$1 = 'forms.file_list';
+const StyledFileList = styled.ul.attrs({
+  'data-garden-id': COMPONENT_ID$i$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFileList",
+  componentId: "sc-gbahjg-0"
+})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$i$1, props));
+StyledFileList.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$h$1 = 'forms.file_list.item';
+const StyledFileListItem = styled.li.attrs({
+  'data-garden-id': COMPONENT_ID$h$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledFileListItem",
+  componentId: "sc-1ova3lo-0"
+})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload, StyledFileList, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$h$1, props));
+StyledFileListItem.defaultProps = {
+  theme: DEFAULT_THEME
+};
+var _circle$3;
+function _extends$n() {
+  _extends$n = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$n.apply(this, arguments);
+}
+var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$n({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _circle$3 || (_circle$3 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 6,
+    cy: 6,
+    r: 2,
+    fill: "currentColor"
+  })));
+};
+const COMPONENT_ID$g$1 = 'forms.radio_svg';
+const StyledRadioSvg = styled(SvgCircleSmFill$1).attrs({
+  'data-garden-id': COMPONENT_ID$g$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledRadioSvg",
+  componentId: "sc-1r1qtr1-0"
+})(["transition:opacity 0.25 ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$g$1, props));
+StyledRadioSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$f$1 = 'forms.toggle_label';
+const sizeStyles$9$1 = props => {
+  const size = props.theme.space.base * 10;
+  const padding = size + props.theme.space.base * 2;
+  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size);
+};
+const StyledToggleLabel = styled(StyledCheckLabel).attrs({
+  'data-garden-id': COMPONENT_ID$f$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledToggleLabel",
+  componentId: "sc-e0asdk-0"
+})(["", ";", ";"], props => sizeStyles$9$1(props), props => retrieveComponentStyles(COMPONENT_ID$f$1, props));
+StyledToggleLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$e$1 = 'forms.toggle_hint';
+const StyledToggleHint = styled(StyledHint$1).attrs({
+  'data-garden-id': COMPONENT_ID$e$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledToggleHint",
+  componentId: "sc-nziggu-0"
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$e$1, props));
+StyledToggleHint.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$d$1 = 'forms.toggle';
+const colorStyles$5$1 = props => {
+  const SHADE = 600;
+  const backgroundColor = getColor('neutralHue', SHADE - 100, props.theme);
+  const hoverBackgroundColor = getColor('neutralHue', SHADE, props.theme);
+  const activeBackgroundColor = getColor('neutralHue', SHADE + 100, props.theme);
+  return Ne(["& ~ ", "::before{background-color:", ";}&:enabled ~ ", ":hover::before{background-color:", ";}&:enabled ~ ", ":active::before{background-color:", ";}"], StyledToggleLabel, backgroundColor, StyledToggleLabel, hoverBackgroundColor, StyledToggleLabel, activeBackgroundColor);
+};
+const sizeStyles$8$1 = props => {
+  const height = `${props.theme.space.base * 5}px`;
+  const width = `${props.theme.space.base * 10}px`;
+  const iconSize = props.theme.iconSizes.md;
+  const iconPosition = math(`(${height} - ${iconSize}) / 2`);
+  const checkedIconPosition = math(`${width} - ${iconSize} - ${iconPosition}`);
+  return Ne(["top:0;width:", ";height:", ";& ~ ", "::before{width:", ";height:", ";}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&:checked ~ ", " > svg{", ":", ";}"], width, height, StyledToggleLabel, width, height, StyledToggleLabel, iconPosition, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledToggleLabel, props.theme.rtl ? 'right' : 'left', checkedIconPosition);
+};
+const StyledToggleInput = styled(StyledCheckInput).attrs({
+  'data-garden-id': COMPONENT_ID$d$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledToggleInput",
+  componentId: "sc-sgp47s-0"
+})(["& ~ ", "::before{top:0;transition:box-shadow .1s ease-in-out,background-color .15s ease-in-out,color .25s ease-in-out;border:none;border-radius:100px;}", ";", ";", ";"], StyledToggleLabel, props => sizeStyles$8$1(props), props => colorStyles$5$1(props), props => retrieveComponentStyles(COMPONENT_ID$d$1, props));
+StyledToggleInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$c$1 = 'forms.toggle_message';
+const StyledToggleMessage = styled(StyledMessage$1).attrs({
+  'data-garden-id': COMPONENT_ID$c$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledToggleMessage",
+  componentId: "sc-13vuvl1-0"
+})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 12px`), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$c$1, props));
+StyledToggleMessage.defaultProps = {
+  theme: DEFAULT_THEME
+};
+var _circle$2;
+function _extends$m() {
+  _extends$m = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$m.apply(this, arguments);
+}
+var SvgCircleSmFill = function SvgCircleSmFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$m({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _circle$2 || (_circle$2 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 8,
+    cy: 8,
+    r: 6,
+    fill: "currentColor"
+  })));
+};
+const COMPONENT_ID$b$1 = 'forms.toggle_svg';
+const StyledToggleSvg = styled(SvgCircleSmFill).attrs({
+  'data-garden-id': COMPONENT_ID$b$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledToggleSvg",
+  componentId: "sc-162xbyx-0"
+})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$b$1, props));
+StyledToggleSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$a$1 = 'forms.select';
+const colorStyles$4$1 = props => {
+  const color = getColor('neutralHue', 700, props.theme);
+  return Ne(["&:hover + ", ",&:focus + ", ",&:focus-visible + ", ",&[data-garden-focus-visible='true'] + ", "{color:", ";}"], StyledTextMediaFigure, StyledTextMediaFigure, StyledTextMediaFigure, StyledTextMediaFigure, color);
+};
+const sizeStyles$7$1 = props => {
+  const padding = math(`${props.theme.iconSizes.md} + ${props.theme.space.base * 5}`);
+  const iconVerticalPosition = `${props.theme.space.base * (props.isCompact ? 1.5 : 2.5) + 1}px`;
+  const iconHorizontalPosition = `${props.theme.space.base * 3}px`;
+  return Ne(["padding-", ":", ";& + ", "{top:", ";", ":", ";}"], props.theme.rtl ? 'left' : 'right', !props.isBare && padding, StyledTextMediaFigure, iconVerticalPosition, props.theme.rtl ? 'left' : 'right', iconHorizontalPosition);
+};
+const StyledSelect = styled(StyledTextInput).attrs({
+  'data-garden-id': COMPONENT_ID$a$1,
+  'data-garden-version': '8.69.1',
+  as: 'select'
+}).withConfig({
+  displayName: "StyledSelect",
+  componentId: "sc-8xdxpt-0"
+})(["cursor:pointer;text-overflow:ellipsis;", ";", ";&::-ms-expand{display:none;}&::-ms-value{background-color:transparent;color:inherit;}&:-moz-focusring{transition:none;text-shadow:0 0 0 ", ";color:transparent;}& + ", "{position:absolute;pointer-events:none;}"], props => sizeStyles$7$1(props), props => colorStyles$4$1(props), props => props.theme.colors.foreground, StyledTextMediaFigure);
+StyledSelect.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$9$1 = 'forms.select_wrapper';
+const StyledSelectWrapper = styled(StyledTextFauxInput).attrs({
+  'data-garden-id': COMPONENT_ID$9$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledSelectWrapper",
+  componentId: "sc-i7b6hw-0"
+})(["position:relative;padding:0;overflow:visible;& > ", "{border-color:transparent;background-color:transparent;", "{box-shadow:unset;}}"], StyledSelect, SELECTOR_FOCUS_VISIBLE);
+StyledSelectWrapper.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$8$1 = 'forms.range';
+const thumbStyles = function (styles) {
+  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return `
+    &${modifier}::-moz-range-thumb {
+      ${styles}
+    }
+
+    &${modifier}::-ms-thumb {
+      ${styles}
+    }
+
+    &${modifier}::-webkit-slider-thumb {
+      ${styles}
+    }
+  `;
+};
+const trackStyles = function (styles) {
+  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return `
+    &${modifier}::-moz-range-track {
+      ${styles}
+    }
+
+    &${modifier}::-ms-track {
+      ${styles}
+    }
+
+    &${modifier}::-webkit-slider-runnable-track {
+      ${styles}
+    }
+  `;
+};
+const trackLowerStyles = function (styles) {
+  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  return `
+    &${modifier}::-moz-range-progress {
+      ${styles}
+    }
+
+    &${modifier}::-ms-fill-lower {
+      ${styles}
+    }
+  `;
+};
+const colorStyles$3$1 = props => {
+  const SHADE = 600;
+  const thumbBackgroundColor = getColor('primaryHue', SHADE, props.theme);
+  const thumbBorderColor = thumbBackgroundColor;
+  const thumbBoxShadow = props.theme.shadows.lg(math(`${props.theme.space.base} * 1px`), math(`${props.theme.space.base} * 2px`), getColor('neutralHue', SHADE + 200, props.theme, 0.24));
+  const thumbFocusBoxShadow = getFocusBoxShadow({
+    theme: props.theme
+  });
+  const thumbActiveBackgroundColor = getColor('primaryHue', SHADE + 100, props.theme);
+  const thumbActiveBorderColor = thumbBorderColor;
+  const thumbDisabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
+  const thumbDisabledBorderColor = thumbDisabledBackgroundColor;
+  const thumbHoverBackgroundColor = thumbActiveBackgroundColor;
+  const thumbHoverBorderColor = thumbHoverBackgroundColor;
+  const trackBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
+  const trackLowerBackgroundColor = props.hasLowerTrack ? thumbBackgroundColor : '';
+  const trackBackgroundImage = props.hasLowerTrack ? `linear-gradient(${trackLowerBackgroundColor}, ${trackLowerBackgroundColor})` : '';
+  const trackDisabledLowerBackgroundColor = props.hasLowerTrack ? thumbDisabledBackgroundColor : '';
+  const trackDisabledBackgroundImage = props.hasLowerTrack ? `linear-gradient(${trackDisabledLowerBackgroundColor}, ${trackDisabledLowerBackgroundColor})` : '';
+  return Ne(["", " ", " ", " ", " ", " ", " ", " ", " ", ""], trackStyles(`
+      background-color: ${trackBackgroundColor};
+      background-image: ${trackBackgroundImage}; /* provide means for styling lower range on WebKit */
+    `), thumbStyles(`
+      border-color: ${thumbBorderColor};
+      box-shadow: ${thumbBoxShadow};
+      background-color: ${thumbBackgroundColor};
+    `), trackLowerStyles(`
+      background-color: ${trackLowerBackgroundColor};
+    `), thumbStyles(`
+        transition:
+          border-color .25s ease-in-out,
+          background-color .25s ease-in-out;
+        border-color: ${thumbHoverBorderColor};
+        background-color: ${thumbHoverBackgroundColor};
+      `, ':hover'), thumbStyles(`
+        box-shadow: ${thumbFocusBoxShadow};
+      `, '[data-garden-focus-visible="true"]'), thumbStyles(`
+        border-color: ${thumbActiveBorderColor};
+        background-color: ${thumbActiveBackgroundColor};
+      `, ':active'), trackStyles(`
+        background-image: ${trackDisabledBackgroundImage};
+      `, ':disabled'), thumbStyles(`
+        border-color: ${thumbDisabledBorderColor};
+        box-shadow: none;
+        background-color: ${thumbDisabledBackgroundColor};
+      `, ':disabled'), trackLowerStyles(`
+        background-color: ${trackDisabledLowerBackgroundColor};
+      `, ':disabled'));
+};
+const sizeStyles$6$1 = props => {
+  const thumbSize = math(`${props.theme.space.base} * 5px`);
+  const trackHeight = math(`${props.theme.space.base} * 1.5px`);
+  const trackBorderRadius = trackHeight;
+  const trackMargin = math(`(${thumbSize} - ${trackHeight}) / 2 + ${props.theme.shadowWidths.md}`);
+  const thumbMargin = math(`(${trackHeight} - ${thumbSize}) / 2`);
+  return Ne(["", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";", " ", ""], StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, math(`${props.theme.space.base} * 2px`), trackStyles(`
+      margin: ${trackMargin} 0;
+      border-radius: ${trackBorderRadius};
+      height: ${trackHeight};
+    `), thumbStyles(`
+      margin: ${thumbMargin} 0; /* reset for IE */
+      width: ${thumbSize};
+      height: ${thumbSize};
+    `), trackLowerStyles(`
+      border-top-${props.theme.rtl ? 'right' : 'left'}-radius: ${trackBorderRadius};
+      border-bottom-${props.theme.rtl ? 'right' : 'left'}-radius: ${trackBorderRadius};
+      height: ${trackHeight};
+    `));
+};
+const StyledRangeInput = styled.input.attrs(props => ({
+  'data-garden-id': COMPONENT_ID$8$1,
+  'data-garden-version': '8.69.1',
+  type: 'range',
+  style: {
+    backgroundSize: props.hasLowerTrack && props.backgroundSize
+  }
+})).withConfig({
+  displayName: "StyledRangeInput",
+  componentId: "sc-1iv2yqp-0"
+})(["appearance:none;direction:", ";margin:0;background-color:inherit;cursor:pointer;padding:0;width:100%;vertical-align:middle;", " &::-webkit-slider-container,&::-webkit-slider-runnable-track{background-size:inherit;}", ";", " ", ";&::-moz-focus-outer{border:0;}&::-ms-tooltip{display:none;}&:focus{outline:none;}&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => trackStyles(`
+      appearance: none;
+      border-color: transparent; /* reset for IE */
+      background-repeat: repeat-y;
+      background-size: 0;
+      background-position: ${props.theme.rtl ? '100% 100%' : '0% 0%'};
+      width: 99.8%; /* fix for IE which cuts off the upper track's border radius */
+      color: transparent; /* reset for IE */
+      box-sizing: border-box; /* reset for IE */
+    `), props => sizeStyles$6$1(props), props => thumbStyles(`
+      appearance: none;
+      transition: box-shadow .1s ease-in-out;
+      border: ${props.theme.borders.md};
+      border-radius: 100%;
+      box-sizing: border-box;
+    `), props => colorStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$8$1, props));
+StyledRangeInput.defaultProps = {
+  backgroundSize: '0%',
+  hasLowerTrack: true,
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$7$1 = 'forms.slider';
+const StyledSlider = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$7$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledSlider",
+  componentId: "sc-1di437a-0"
+})(["display:block;position:relative;z-index:0;cursor:pointer;height:", ";&[aria-disabled='true']{cursor:default;}", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";"], props => math(`(${props.theme.space.base} * 5px) + (${props.theme.shadowWidths.md} * 2)`), StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props => math(`${props.theme.space.base} * 2px`), props => retrieveComponentStyles(COMPONENT_ID$7$1, props));
+StyledSlider.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$6$1 = 'forms.slider_thumb';
+const colorStyles$2$1 = props => {
+  const SHADE = 600;
+  const backgroundColor = getColor('primaryHue', SHADE, props.theme);
+  const borderColor = backgroundColor;
+  const boxShadow = props.theme.shadows.lg(math(`${props.theme.space.base} * 1px`), math(`${props.theme.space.base} * 2px`), getColor('neutralHue', SHADE + 200, props.theme, 0.24));
+  const activeBackgroundColor = getColor('primaryHue', SHADE + 100, props.theme);
+  const activeBorderColor = borderColor;
+  const hoverBackgroundColor = activeBackgroundColor;
+  const hoverBorderColor = hoverBackgroundColor;
+  const disabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
+  const disabledBorderColor = disabledBackgroundColor;
+  return Ne(["border-color:", ";box-shadow:", ";background-color:", ";&:hover,&[data-garden-hover='true']{border-color:", ";background-color:", ";}", " &:active,&[data-garden-active='true']{border-color:", ";background-color:", ";}&[aria-disabled='true']{border-color:", ";box-shadow:none;background-color:", ";}"], borderColor, boxShadow, backgroundColor, hoverBorderColor, hoverBackgroundColor, focusStyles({
+    theme: props.theme
+  }), activeBorderColor, activeBackgroundColor, disabledBorderColor, disabledBackgroundColor);
+};
+const sizeStyles$5$1 = props => {
+  const size = math(`${props.theme.space.base} * 5px`);
+  const marginTop = math(`${size} / -2`);
+  return Ne(["margin-top:", ";width:", ";height:", ";"], marginTop, size, size);
+};
+const StyledSliderThumb = styled.div.attrs(props => ({
+  'data-garden-id': COMPONENT_ID$6$1,
+  'data-garden-version': '8.69.1',
+  'aria-disabled': props.isDisabled
+})).withConfig({
+  displayName: "StyledSliderThumb",
+  componentId: "sc-yspbwa-0"
+})(["appearance:none;position:absolute;top:50%;", ":", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out;z-index:1;border:", ";border-radius:100%;cursor:inherit;box-sizing:border-box;font-size:0;", ";", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.position} * 1px`), props => props.theme.borders.md, props => sizeStyles$5$1(props), props => colorStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$6$1, props));
+StyledSliderThumb.defaultProps = {
+  position: 0,
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$5$1 = 'forms.slider_track';
+const colorStyles$1$1 = props => {
+  const SHADE = 600;
+  const backgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
+  const backgroundImageColor = getColor('primaryHue', SHADE, props.theme);
+  const disabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
+  return Ne(["background-color:", ";background-image:linear-gradient(", ",", ");&[aria-disabled='true']{background-image:linear-gradient(", ",", ");}"], backgroundColor, backgroundImageColor, backgroundImageColor, disabledBackgroundColor, disabledBackgroundColor);
+};
+const sizeStyles$4$1 = props => {
+  const height = math(`${props.theme.space.base} * 1.5px`);
+  const backgroundPosition = math(`${props.backgroundPosition} * 1px`);
+  const backgroundSize = math(`${props.backgroundSize} * 1px`);
+  const borderRadius = height;
+  const marginTop = math(`${height} / -2`);
+  const padding = math(`${props.theme.space.base} * 2.5px`);
+  return Ne(["margin-top:", ";border-radius:", ";background-position:", ";background-size:", ";padding:0 ", ";"], marginTop, borderRadius, backgroundPosition, backgroundSize, padding);
+};
+const StyledSliderTrack = styled.div.attrs(props => ({
+  'data-garden-id': COMPONENT_ID$5$1,
+  'data-garden-version': '8.69.1',
+  'aria-disabled': props.isDisabled
+})).withConfig({
+  displayName: "StyledSliderTrack",
+  componentId: "sc-aw5m6g-0"
+})(["position:absolute;top:50%;box-sizing:border-box;background-origin:content-box;background-repeat:repeat-y;width:100%;", ";", ";", ";"], props => sizeStyles$4$1(props), props => colorStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$5$1, props));
+StyledSliderTrack.defaultProps = {
+  backgroundSize: 0,
+  backgroundPosition: 0,
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$4$1 = 'forms.slider_track_rail';
+const sizeStyles$3$1 = props => {
+  const height = math(`${props.theme.space.base} * 1.5px`);
+  const margin = math(`${props.theme.space.base} * 2.5px`);
+  return Ne(["margin:0 ", " 0 ", ";height:", ";"], props.theme.rtl ? `-${margin}` : margin, props.theme.rtl ? margin : `-${margin}`, height);
+};
+const StyledSliderTrackRail = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$4$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledSliderTrackRail",
+  componentId: "sc-1o5owbd-0"
+})(["position:relative;", ";", ";"], props => sizeStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$4$1, props));
+StyledSliderTrackRail.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$3$1 = 'forms.tile_icon';
+const sizeStyles$2$1 = props => {
+  const iconSize = math(`${props.theme.iconSizes.md} * 2`);
+  let position;
+  let top;
+  let horizontalValue;
+  if (!props.isCentered) {
+    position = 'absolute';
+    top = `${props.theme.space.base * 6}px`;
+    horizontalValue = `left: ${props.theme.space.base * 5}px`;
+    if (props.theme.rtl) {
+      horizontalValue = `right: ${props.theme.space.base * 5}px`;
+    }
+  }
+  return Ne(["position:", ";top:", ";", ";& > *{width:", ";height:", ";}"], position, top, horizontalValue, iconSize, iconSize);
+};
+const StyledTileIcon = styled.span.attrs({
+  'data-garden-id': COMPONENT_ID$3$1,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledTileIcon",
+  componentId: "sc-1wazhg4-0"
+})(["display:block;transition:color 0.25s ease-in-out;text-align:center;line-height:0;", ";", ";"], props => sizeStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$3$1, props));
+StyledTileIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$2$3 = 'forms.tile';
+const colorStyles$d = props => {
+  const SHADE = 600;
+  const iconColor = getColor('neutralHue', SHADE, props.theme);
+  const color = getColor('neutralHue', SHADE + 200, props.theme);
+  const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
+  const hoverBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.08);
+  const hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
+  const focusBorderColor = hoverBorderColor;
+  const activeBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.2);
+  const activeBorderColor = focusBorderColor;
+  const disabledBackgroundColor = getColor('neutralHue', SHADE - 500, props.theme);
+  const disabledBorderColor = getColor('neutralHue', SHADE - 400, props.theme);
+  const disabledColor = getColor('neutralHue', SHADE - 200, props.theme);
+  const selectedBorderColor = focusBorderColor;
+  const selectedBackgroundColor = selectedBorderColor;
+  const selectedHoverBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
+  const selectedHoverBackgroundColor = selectedHoverBorderColor;
+  const selectedActiveBorderColor = getColor('primaryHue', SHADE + 200, props.theme);
+  const selectedActiveBackgroundColor = selectedActiveBorderColor;
+  const selectedDisabledBackgroundColor = disabledBorderColor;
+  return Ne(["border:", " ", ";border-color:", ";background-color:", ";color:", ";", "{color:", ";}&:hover:not([aria-disabled='true']){border-color:", ";background-color:", ";", "{color:", ";}}", " &:active:not([aria-disabled='true']){border-color:", ";background-color:", ";", "{color:", ";}}&[data-garden-selected='true']{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true']:not([aria-disabled='true']):hover{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true']:not([aria-disabled='true']):active{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true'][aria-disabled='true']{background-color:", ";color:", ";", "{color:", ";}}"], props.theme.borders.sm, getColor('neutralHue', SHADE - 300, props.theme), borderColor, props.theme.colors.background, color, StyledTileIcon, iconColor, hoverBorderColor, hoverBackgroundColor, StyledTileIcon, color, focusStyles({
+    theme: props.theme,
+    hue: focusBorderColor,
+    styles: {
+      borderColor: focusBorderColor
+    },
+    selector: `&:focus-within`
+  }), activeBorderColor, activeBackgroundColor, StyledTileIcon, color, selectedBorderColor, selectedBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, selectedHoverBorderColor, selectedHoverBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, selectedActiveBorderColor, selectedActiveBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, disabledBorderColor, disabledBackgroundColor, disabledColor, StyledTileIcon, disabledColor, selectedDisabledBackgroundColor, disabledColor, StyledTileIcon, disabledColor);
+};
+const StyledTile = styled.label.attrs(props => ({
+  'data-garden-id': COMPONENT_ID$2$3,
+  'data-garden-version': '8.69.1',
+  'data-garden-selected': props.isSelected
+})).withConfig({
+  displayName: "StyledTile",
+  componentId: "sc-1jjvmxs-0"
+})(["display:block;position:relative;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border-radius:", ";cursor:", ";padding:", "px;direction:", ";min-width:132px;word-break:break-word;", ";", ";"], props => props.theme.borderRadii.md, props => !props.isDisabled && 'pointer', props => props.theme.space.base * 5, props => props.theme.rtl && 'rtl', props => colorStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$2$3, props));
+StyledTile.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$1$3 = 'forms.tile_description';
+const sizeStyles$1$1 = props => {
+  let marginDirection = 'left';
+  let marginValue;
+  if (props.theme.rtl) {
+    marginDirection = 'right';
+  }
+  if (!props.isCentered) {
+    marginValue = math(`(${props.theme.iconSizes.md} * 2) + ${props.theme.space.base * 5}px`);
+  }
+  return Ne(["margin-top:", "px;margin-", ":", ";"], props.theme.space.base, marginDirection, marginValue);
+};
+const StyledTileDescription = styled.span.attrs({
+  'data-garden-id': COMPONENT_ID$1$3,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledTileDescription",
+  componentId: "sc-xfuu7u-0"
+})(["display:block;text-align:", ";line-height:", ";font-size:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 4, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => sizeStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$1$3, props));
+StyledTileDescription.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const StyledTileInput = styled.input.withConfig({
+  displayName: "StyledTileInput",
+  componentId: "sc-1nq2m6q-0"
+})(["position:absolute;border:0;clip:rect(1px,1px,1px,1px);padding:0;width:1px;height:1px;overflow:hidden;white-space:nowrap;"]);
+StyledTileInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$L = 'forms.tile_label';
+const sizeStyles$g = props => {
+  let marginDirection = 'left';
+  let marginTop = `${props.theme.space.base * 2}px`;
+  let marginValue;
+  if (props.theme.rtl) {
+    marginDirection = 'right';
+  }
+  if (!props.isCentered) {
+    marginValue = math(`(${props.theme.iconSizes.md} * 2) + ${props.theme.space.base * 5}px`);
+    marginTop = '0';
+  }
+  return Ne(["margin-top:", ";margin-", ":", ";"], marginTop, marginDirection, marginValue);
+};
+const StyledTileLabel = styled.span.attrs({
+  'data-garden-id': COMPONENT_ID$L,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledTileLabel",
+  componentId: "sc-1mypv27-0"
+})(["display:block;text-align:", ";line-height:", ";font-size:", ";font-weight:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => sizeStyles$g(props), props => retrieveComponentStyles(COMPONENT_ID$L, props));
+StyledTileLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const Field$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
+  const [hasHint, setHasHint] = reactExports.useState(false);
+  const [hasMessage, setHasMessage] = reactExports.useState(false);
+  const [isLabelActive, setIsLabelActive] = reactExports.useState(false);
+  const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
+  const multiThumbRangeRef = reactExports.useRef(null);
+  const {
+    getInputProps,
+    getMessageProps,
+    ...propGetters
+  } = useField(props.id);
+  const fieldProps = reactExports.useMemo(() => ({
+    ...propGetters,
+    getInputProps: function (options) {
+      let describeOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      return getInputProps(options, {
+        ...describeOptions,
+        isDescribed: hasHint,
+        hasMessage
+      });
+    },
+    getMessageProps: options => getMessageProps({
+      role: 'alert',
+      ...options
+    }),
+    isLabelActive,
+    setIsLabelActive,
+    isLabelHovered,
+    setIsLabelHovered,
+    hasHint,
+    setHasHint,
+    hasMessage,
+    setHasMessage,
+    multiThumbRangeRef
+  }), [propGetters, getInputProps, getMessageProps, isLabelActive, isLabelHovered, hasHint, hasMessage]);
+  return /*#__PURE__*/React.createElement(FieldContext$1.Provider, {
+    value: fieldProps
+  }, /*#__PURE__*/React.createElement(StyledField$1, _extends$t({}, props, {
+    ref: ref
+  })));
+});
+Field$1.displayName = 'Field';
+const FieldsetContext = /*#__PURE__*/reactExports.createContext(undefined);
+const useFieldsetContext = () => {
+  const fieldsetContext = reactExports.useContext(FieldsetContext);
+  return fieldsetContext;
+};
+const LegendComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
+  const fieldsetContext = useFieldsetContext();
+  return /*#__PURE__*/React.createElement(StyledLegend, _extends$t({}, props, fieldsetContext, {
+    ref: ref
+  }));
+});
+LegendComponent.displayName = 'Fieldset.Legend';
+const Legend = LegendComponent;
+const FieldsetComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
+  const fieldsetContext = reactExports.useMemo(() => ({
+    isCompact: props.isCompact
+  }), [props.isCompact]);
+  return /*#__PURE__*/React.createElement(FieldsetContext.Provider, {
+    value: fieldsetContext
+  }, /*#__PURE__*/React.createElement(StyledFieldset, _extends$t({}, props, {
+    ref: ref
+  })));
+});
+FieldsetComponent.displayName = 'Fieldset';
+FieldsetComponent.propTypes = {
+  isCompact: PropTypes.bool
+};
+const Fieldset = FieldsetComponent;
+Fieldset.Legend = Legend;
+const InputContext = /*#__PURE__*/reactExports.createContext(undefined);
+const useInputContext = () => {
+  return reactExports.useContext(InputContext);
+};
+const Hint$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
+  const {
+    hasHint,
+    setHasHint,
+    getHintProps
+  } = useFieldContext$1() || {};
+  const type = useInputContext();
+  reactExports.useEffect(() => {
+    if (!hasHint && setHasHint) {
+      setHasHint(true);
+    }
+    return () => {
+      if (hasHint && setHasHint) {
+        setHasHint(false);
+      }
+    };
+  }, [hasHint, setHasHint]);
+  let HintComponent;
+  if (type === 'checkbox') {
+    HintComponent = StyledCheckHint;
+  } else if (type === 'radio') {
+    HintComponent = StyledRadioHint;
+  } else if (type === 'toggle') {
+    HintComponent = StyledToggleHint;
+  } else {
+    HintComponent = StyledHint$1;
+  }
+  let combinedProps = props;
+  if (getHintProps) {
+    combinedProps = getHintProps(combinedProps);
+  }
+  return /*#__PURE__*/React.createElement(HintComponent, _extends$t({
+    ref: ref
+  }, combinedProps));
+});
+Hint$1.displayName = 'Hint';
+const Label$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
+  const fieldContext = useFieldContext$1();
+  const fieldsetContext = useFieldsetContext();
+  const type = useInputContext();
+  let combinedProps = props;
+  if (fieldContext) {
+    combinedProps = fieldContext.getLabelProps(combinedProps);
+    if (type === undefined) {
+      const {
+        setIsLabelActive,
+        setIsLabelHovered,
+        multiThumbRangeRef
+      } = fieldContext;
+      combinedProps = {
+        ...combinedProps,
+        onMouseUp: composeEventHandlers$1(props.onMouseUp, () => {
+          setIsLabelActive(false);
+        }),
+        onMouseDown: composeEventHandlers$1(props.onMouseDown, () => {
+          setIsLabelActive(true);
+        }),
+        onMouseEnter: composeEventHandlers$1(props.onMouseEnter, () => {
+          setIsLabelHovered(true);
+        }),
+        onMouseLeave: composeEventHandlers$1(props.onMouseLeave, () => {
+          setIsLabelHovered(false);
+        }),
+        onClick: composeEventHandlers$1(props.onClick, () => {
+          multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
+        })
+      };
+    }
+  }
+  if (fieldsetContext) {
+    combinedProps = {
+      ...combinedProps,
+      isRegular: combinedProps.isRegular === undefined ? true : combinedProps.isRegular
+    };
+  }
+  if (type === 'radio') {
+    return /*#__PURE__*/React.createElement(StyledRadioLabel, _extends$t({
+      ref: ref
+    }, combinedProps), /*#__PURE__*/React.createElement(StyledRadioSvg, null), props.children);
+  } else if (type === 'checkbox') {
+    const onLabelSelect = e => {
+      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+      if (fieldContext && isFirefox && e.target instanceof Element) {
+        const inputId = e.target.getAttribute('for');
+        if (!inputId) return;
+        const input = document.getElementById(inputId);
+        if (input && input.type === 'checkbox') {
+          if (e.shiftKey) {
+            input.click();
+            input.checked = true;
+          }
+          input.focus();
+        }
+      }
+    };
+    combinedProps = {
+      ...combinedProps,
+      onClick: composeEventHandlers$1(combinedProps.onClick, onLabelSelect)
+    };
+    return /*#__PURE__*/React.createElement(StyledCheckLabel, _extends$t({
+      ref: ref
+    }, combinedProps), /*#__PURE__*/React.createElement(StyledCheckSvg, null), /*#__PURE__*/React.createElement(StyledDashSvg, null), props.children);
+  } else if (type === 'toggle') {
+    return /*#__PURE__*/React.createElement(StyledToggleLabel, _extends$t({
+      ref: ref
+    }, combinedProps), /*#__PURE__*/React.createElement(StyledToggleSvg, null), props.children);
+  }
+  return /*#__PURE__*/React.createElement(StyledLabel$1, _extends$t({
+    ref: ref
+  }, combinedProps));
+});
+Label$1.displayName = 'Label';
+Label$1.propTypes = {
+  isRegular: PropTypes.bool
+};
+const VALIDATION = ['success', 'warning', 'error'];
+const FILE_VALIDATION = ['success', 'error'];
+const FILE_TYPE = ['pdf', 'zip', 'image', 'document', 'spreadsheet', 'presentation', 'generic'];
+const Message$1 = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    validation,
+    validationLabel,
+    children,
+    ...props
+  } = _ref;
+  const {
+    hasMessage,
+    setHasMessage,
+    getMessageProps
+  } = useFieldContext$1() || {};
+  const type = useInputContext();
+  reactExports.useEffect(() => {
+    if (!hasMessage && setHasMessage) {
+      setHasMessage(true);
+    }
+    return () => {
+      if (hasMessage && setHasMessage) {
+        setHasMessage(false);
+      }
+    };
+  }, [hasMessage, setHasMessage]);
+  let MessageComponent;
+  if (type === 'checkbox') {
+    MessageComponent = StyledCheckMessage;
+  } else if (type === 'radio') {
+    MessageComponent = StyledRadioMessage;
+  } else if (type === 'toggle') {
+    MessageComponent = StyledToggleMessage;
+  } else {
+    MessageComponent = StyledMessage$1;
+  }
+  let combinedProps = {
+    validation,
+    validationLabel,
+    ...props
+  };
+  if (getMessageProps) {
+    combinedProps = getMessageProps(combinedProps);
+  }
+  const ariaLabel = useText(Message$1, combinedProps, 'validationLabel', validation, validation !== undefined);
+  return /*#__PURE__*/React.createElement(MessageComponent, _extends$t({
+    ref: ref
+  }, combinedProps), validation && /*#__PURE__*/React.createElement(StyledMessageIcon, {
+    validation: validation,
+    "aria-label": ariaLabel
+  }), children);
+});
+Message$1.displayName = 'Message';
+Message$1.propTypes = {
+  validation: PropTypes.oneOf(VALIDATION),
+  validationLabel: PropTypes.string
+};
+const Checkbox = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    indeterminate,
+    children,
+    ...props
+  } = _ref;
+  const fieldsetContext = useFieldsetContext();
+  const fieldContext = useFieldContext$1();
+  const inputRef = inputElement => {
+    inputElement && (inputElement.indeterminate = indeterminate);
+  };
+  const combinedRef = inputElement => {
+    [inputRef, ref].forEach(targetRef => {
+      if (targetRef) {
+        if (typeof targetRef === 'function') {
+          targetRef(inputElement);
+        } else {
+          targetRef.current = inputElement;
+        }
+      }
+    });
+  };
+  let combinedProps = {
+    ref: combinedRef,
+    ...props,
+    ...fieldsetContext
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return /*#__PURE__*/React.createElement(InputContext.Provider, {
+    value: "checkbox"
+  }, /*#__PURE__*/React.createElement(StyledCheckInput, combinedProps), children);
+});
+Checkbox.displayName = 'Checkbox';
+Checkbox.propTypes = {
+  isCompact: PropTypes.bool,
+  indeterminate: PropTypes.bool
+};
+const InputGroupContext = /*#__PURE__*/reactExports.createContext(undefined);
+const useInputGroupContext = () => {
+  return reactExports.useContext(InputGroupContext);
+};
+const Input = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    onSelect,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  const inputGroupContext = useInputGroupContext();
+  const onSelectHandler = props.readOnly ? composeEventHandlers$1(onSelect, event => {
+    event.currentTarget.select();
+  }) : onSelect;
+  let combinedProps = {
+    ref,
+    onSelect: onSelectHandler,
+    ...props
+  };
+  if (inputGroupContext) {
+    combinedProps = {
+      ...combinedProps,
+      isCompact: inputGroupContext.isCompact || combinedProps.isCompact,
+      focusInset: props.focusInset === undefined ? true : props.focusInset
+    };
+  }
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return /*#__PURE__*/React.createElement(StyledTextInput, combinedProps);
+});
+Input.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION)
+};
+Input.displayName = 'Input';
+const Radio = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    children,
+    ...props
+  } = _ref;
+  const fieldsetContext = useFieldsetContext();
+  const fieldContext = useFieldContext$1();
+  let combinedProps = {
+    ref,
+    ...props,
+    ...fieldsetContext
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return /*#__PURE__*/React.createElement(InputContext.Provider, {
+    value: "radio"
+  }, /*#__PURE__*/React.createElement(StyledRadioInput, combinedProps), children);
+});
+Radio.displayName = 'Radio';
+Radio.propTypes = {
+  isCompact: PropTypes.bool
+};
+const Range = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    hasLowerTrack,
+    min,
+    max,
+    step,
+    ...props
+  } = _ref;
+  const [backgroundSize, setBackgroundSize] = reactExports.useState('0');
+  const rangeRef = reactExports.useRef();
+  const fieldContext = useFieldContext$1();
+  const updateBackgroundWidthFromInput = reactExports.useCallback(rangeTarget => {
+    let relativeMax = max;
+    const {
+      value
+    } = rangeTarget;
+    if (parseFloat(relativeMax) < parseFloat(min)) {
+      relativeMax = 100;
+    }
+    const percentage = 100 * (value - min) / (relativeMax - min);
+    setBackgroundSize(`${percentage}%`);
+  }, [max, min, step]);
+  reactExports.useEffect(() => {
+    updateBackgroundWidthFromInput(rangeRef.current);
+  }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
+  const onChange = hasLowerTrack ? composeEventHandlers$1(props.onChange, event => {
+    updateBackgroundWidthFromInput(event.target);
+  }) : props.onChange;
+  let combinedProps = {
+    ref: mergeRefs([rangeRef, ref]),
+    hasLowerTrack,
+    min,
+    max,
+    step,
+    backgroundSize,
+    ...props,
+    onChange
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps, {
+      isDescribed: true
+    });
+  }
+  return /*#__PURE__*/React.createElement(StyledRangeInput, combinedProps);
+});
+Range.defaultProps = {
+  hasLowerTrack: true,
+  min: 0,
+  max: 100,
+  step: 1
+};
+Range.displayName = 'Range';
+const parseStyleValue = value => {
+  return parseInt(value, 10) || 0;
+};
+const Textarea = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    minRows,
+    maxRows,
+    style,
+    onChange,
+    onSelect,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  const textAreaRef = reactExports.useRef();
+  const shadowTextAreaRef = reactExports.useRef(null);
+  const [state, setState] = reactExports.useState({
+    overflow: false,
+    height: 0
+  });
+  const isControlled = props.value !== null && props.value !== undefined;
+  const isAutoResizable = (minRows !== undefined || maxRows !== undefined) && !props.isResizable;
+  const calculateHeight = reactExports.useCallback(() => {
+    if (!isAutoResizable) {
+      return;
+    }
+    const textarea = textAreaRef.current;
+    const computedStyle = window.getComputedStyle(textarea);
+    const shadowTextArea = shadowTextAreaRef.current;
+    shadowTextArea.style.width = computedStyle.width;
+    shadowTextArea.value = textarea.value || textarea.placeholder || ' ';
+    const boxSizing = computedStyle.boxSizing;
+    const padding = parseStyleValue(computedStyle.paddingBottom) + parseStyleValue(computedStyle.paddingTop);
+    const border = parseStyleValue(computedStyle.borderTopWidth) + parseStyleValue(computedStyle.borderBottomWidth);
+    const innerHeight = shadowTextArea.scrollHeight - padding;
+    shadowTextArea.value = 'x';
+    const singleRowHeight = shadowTextArea.scrollHeight - padding;
+    let outerHeight = innerHeight;
+    if (minRows) {
+      outerHeight = Math.max(Number(minRows) * singleRowHeight, outerHeight);
+    }
+    if (maxRows) {
+      outerHeight = Math.min(Number(maxRows) * singleRowHeight, outerHeight);
+    }
+    outerHeight = Math.max(outerHeight, singleRowHeight);
+    const updatedHeight = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
+    const overflow = Math.abs(outerHeight - innerHeight) <= 1;
+    setState(prevState => {
+      if (updatedHeight > 0 && Math.abs((prevState.height || 0) - updatedHeight) > 1 || prevState.overflow !== overflow) {
+        return {
+          overflow,
+          height: updatedHeight
+        };
+      }
+      return prevState;
+    });
+  }, [maxRows, minRows, textAreaRef, isAutoResizable]);
+  const onChangeHandler = reactExports.useCallback(e => {
+    if (!isControlled) {
+      calculateHeight();
+    }
+    if (onChange) {
+      onChange(e);
+    }
+  }, [calculateHeight, isControlled, onChange]);
+  const theme = reactExports.useContext(Be);
+  const environment = useDocument(theme);
+  reactExports.useEffect(() => {
+    if (!isAutoResizable) {
+      return undefined;
+    }
+    if (environment) {
+      const win = environment.defaultView || window;
+      const resizeHandler = debounce$2(calculateHeight);
+      win.addEventListener('resize', resizeHandler);
+      return () => {
+        resizeHandler.cancel();
+        win.removeEventListener('resize', resizeHandler);
+      };
+    }
+    return undefined;
+  }, [calculateHeight, isAutoResizable, environment]);
+  reactExports.useLayoutEffect(() => {
+    calculateHeight();
+  });
+  const computedStyle = {};
+  if (isAutoResizable) {
+    computedStyle.height = state.height;
+    computedStyle.overflow = state.overflow ? 'hidden' : undefined;
+  }
+  const onSelectHandler = props.readOnly ? composeEventHandlers$1(onSelect, event => {
+    event.currentTarget.select();
+  }) : onSelect;
+  let combinedProps = {
+    ref: mergeRefs([textAreaRef, ref]),
+    rows: minRows,
+    onChange: onChangeHandler,
+    onSelect: onSelectHandler,
+    style: {
+      ...computedStyle,
+      ...style
+    },
+    ...props
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps, {
+      isDescribed: true
+    });
+  }
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledTextarea, combinedProps), isAutoResizable && /*#__PURE__*/React.createElement(StyledTextarea, {
+    "aria-hidden": true,
+    readOnly: true,
+    isHidden: true,
+    className: props.className,
+    ref: shadowTextAreaRef,
+    tabIndex: -1,
+    isBare: props.isBare,
+    isCompact: props.isCompact,
+    style: style
+  }));
+});
+Textarea.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  isResizable: PropTypes.bool,
+  minRows: PropTypes.number,
+  maxRows: PropTypes.number,
+  validation: PropTypes.oneOf(VALIDATION)
+};
+Textarea.displayName = 'Textarea';
+const Toggle = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    children,
+    ...props
+  } = _ref;
+  const fieldsetContext = useFieldsetContext();
+  const fieldContext = useFieldContext$1();
+  let combinedProps = {
+    ref,
+    ...props,
+    ...fieldsetContext
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return /*#__PURE__*/React.createElement(InputContext.Provider, {
+    value: "toggle"
+  }, /*#__PURE__*/React.createElement(StyledToggleInput, combinedProps), children);
+});
+Toggle.displayName = 'Toggle';
+Toggle.propTypes = {
+  isCompact: PropTypes.bool
+};
+var _path$k;
+function _extends$l() {
+  _extends$l = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$l.apply(this, arguments);
+}
+var SvgChevronDownStroke$1 = function SvgChevronDownStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$l({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$k || (_path$k = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "currentColor",
+    d: "M12.688 5.61a.5.5 0 01.69.718l-.066.062-5 4a.5.5 0 01-.542.054l-.082-.054-5-4a.5.5 0 01.55-.83l.074.05L8 9.359l4.688-3.75z"
+  })));
+};
+const StartIconComponent = props => /*#__PURE__*/React.createElement(StyledTextMediaFigure, _extends$t({
+  position: "start"
+}, props));
+StartIconComponent.displayName = 'FauxInput.StartIcon';
+const StartIcon = StartIconComponent;
+const EndIconComponent = props => /*#__PURE__*/React.createElement(StyledTextMediaFigure, _extends$t({
+  position: "end"
+}, props));
+EndIconComponent.displayName = 'FauxInput.EndIcon';
+const EndIcon = EndIconComponent;
+const FauxInputComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    onFocus,
+    onBlur,
+    disabled,
+    readOnly,
+    isFocused: controlledIsFocused,
+    ...props
+  } = _ref;
+  const [isFocused, setIsFocused] = reactExports.useState(false);
+  const onFocusHandler = composeEventHandlers$1(onFocus, () => {
+    setIsFocused(true);
+  });
+  const onBlurHandler = composeEventHandlers$1(onBlur, () => {
+    setIsFocused(false);
+  });
+  return /*#__PURE__*/React.createElement(StyledTextFauxInput, _extends$t({
+    onFocus: onFocusHandler,
+    onBlur: onBlurHandler,
+    isFocused: controlledIsFocused === undefined ? isFocused : controlledIsFocused,
+    isReadOnly: readOnly,
+    isDisabled: disabled,
+    tabIndex: disabled ? undefined : 0
+  }, props, {
+    ref: ref
+  }));
+});
+FauxInputComponent.displayName = 'FauxInput';
+FauxInputComponent.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION),
+  isFocused: PropTypes.bool,
+  isHovered: PropTypes.bool
+};
+const FauxInput = FauxInputComponent;
+FauxInput.EndIcon = EndIcon;
+FauxInput.StartIcon = StartIcon;
+const Select = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    disabled,
+    isCompact,
+    validation,
+    focusInset,
+    isBare,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  let combinedProps = {
+    disabled,
+    isBare,
+    isCompact,
+    validation,
+    focusInset,
+    ref,
+    ...props
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps, {
+      isDescribed: true
+    });
+  }
+  return /*#__PURE__*/React.createElement(StyledSelectWrapper, {
+    isCompact: isCompact,
+    isBare: isBare,
+    validation: validation,
+    focusInset: focusInset
+  }, /*#__PURE__*/React.createElement(StyledSelect, combinedProps), !isBare && /*#__PURE__*/React.createElement(FauxInput.EndIcon, {
+    isDisabled: disabled
+  }, /*#__PURE__*/React.createElement(SvgChevronDownStroke$1, null)));
+});
+Select.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION)
+};
+Select.displayName = 'Select';
+const MIN = 0;
+const MAX = 100;
+const MultiThumbRange = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    min = MIN,
+    max = MAX,
+    minValue,
+    maxValue,
+    disabled,
+    step,
+    jump,
+    onChange,
+    onMouseDown,
+    ...props
+  } = _ref;
+  const theme = reactExports.useContext(Be);
+  const environment = useDocument(theme);
+  const trackRailRef = reactExports.useRef(null);
+  const minThumbRef = reactExports.useRef(null);
+  const maxThumbRef = reactExports.useRef(null);
+  const {
+    getTrackProps,
+    getMinThumbProps,
+    getMaxThumbProps,
+    trackRect,
+    minValue: updatedMinValue,
+    maxValue: updatedMaxValue
+  } = useSlider({
+    trackRef: trackRailRef,
+    minThumbRef,
+    maxThumbRef,
+    min,
+    max,
+    minValue,
+    maxValue,
+    onChange,
+    step,
+    jump,
+    disabled,
+    rtl: theme.rtl,
+    environment
+  });
+  const {
+    onMouseDown: onSliderMouseDown,
+    ...trackProps
+  } = getTrackProps({
+    onMouseDown
+  });
+  const fieldContext = useFieldContext$1();
+  const {
+    isLabelHovered,
+    isLabelActive,
+    multiThumbRangeRef
+  } = fieldContext || {};
+  reactExports.useEffect(() => {
+    if (multiThumbRangeRef) {
+      multiThumbRangeRef.current = minThumbRef.current;
+    }
+  }, [multiThumbRangeRef]);
+  const minPosition = (updatedMinValue - min) / (max - min) * trackRect.width;
+  const maxPosition = (updatedMaxValue - min) / (max - min) * trackRect.width;
+  const sliderBackgroundSize = Math.abs(maxPosition) - Math.abs(minPosition);
+  return /*#__PURE__*/React.createElement(StyledSlider, _extends$t({
+    ref: ref,
+    onMouseDown: onSliderMouseDown
+  }, props), /*#__PURE__*/React.createElement(StyledSliderTrack, {
+    backgroundSize: sliderBackgroundSize,
+    backgroundPosition: theme.rtl ? trackRect.width - maxPosition : minPosition,
+    isDisabled: disabled
+  }, /*#__PURE__*/React.createElement(StyledSliderTrackRail, _extends$t({}, trackProps, {
+    ref: trackRailRef
+  }), /*#__PURE__*/React.createElement(StyledSliderThumb, _extends$t({}, getMinThumbProps({
+    'aria-label': updatedMinValue
+  }), {
+    isDisabled: disabled,
+    position: minPosition,
+    ref: minThumbRef,
+    "data-garden-active": isLabelActive,
+    "data-garden-hover": isLabelHovered
+  })), /*#__PURE__*/React.createElement(StyledSliderThumb, _extends$t({}, getMaxThumbProps({
+    'aria-label': updatedMaxValue
+  }), {
+    isDisabled: disabled,
+    position: maxPosition,
+    ref: maxThumbRef
+  })))));
+});
+MultiThumbRange.displayName = 'MultiThumbRange';
+MultiThumbRange.propTypes = {
+  min: PropTypes.number,
+  max: PropTypes.number,
+  minValue: PropTypes.number,
+  maxValue: PropTypes.number,
+  step: PropTypes.number,
+  jump: PropTypes.number,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func
+};
+MultiThumbRange.defaultProps = {
+  min: MIN,
+  max: MAX,
+  step: 1
+};
+const TilesContext = /*#__PURE__*/reactExports.createContext(undefined);
+const useTilesContext = () => {
+  return reactExports.useContext(TilesContext);
+};
+const TileComponent = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    children,
+    value,
+    disabled,
+    ...props
+  } = _ref;
+  const tilesContext = useTilesContext();
+  const inputRef = reactExports.useRef(null);
+  let inputProps;
+  if (tilesContext) {
+    inputProps = {
+      name: tilesContext.name,
+      checked: tilesContext.value === value,
+      onChange: tilesContext.onChange
+    };
+  }
+  return /*#__PURE__*/React.createElement(StyledTile, _extends$t({
+    ref: ref,
+    "aria-disabled": disabled,
+    isDisabled: disabled,
+    isSelected: tilesContext && tilesContext.value === value
+  }, props), children, /*#__PURE__*/React.createElement(StyledTileInput, _extends$t({}, inputProps, {
+    disabled: disabled,
+    value: value,
+    type: "radio",
+    ref: inputRef
+  })));
+});
+TileComponent.displayName = 'Tiles.Tile';
+TileComponent.propTypes = {
+  value: PropTypes.string,
+  disabled: PropTypes.bool
+};
+const Tile = TileComponent;
+const DescriptionComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
+  const tilesContext = useTilesContext();
+  return /*#__PURE__*/React.createElement(StyledTileDescription, _extends$t({
+    ref: ref,
+    isCentered: tilesContext && tilesContext.isCentered
+  }, props));
+});
+DescriptionComponent.displayName = 'Tiles.Description';
+const Description = DescriptionComponent;
+const IconComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
+  const tileContext = useTilesContext();
+  return /*#__PURE__*/React.createElement(StyledTileIcon, _extends$t({
+    ref: ref,
+    isCentered: tileContext && tileContext.isCentered
+  }, props));
+});
+IconComponent.displayName = 'Tiles.Icon';
+const Icon = IconComponent;
+const LabelComponent = /*#__PURE__*/reactExports.forwardRef((props, forwardedRef) => {
+  const [title, setTitle] = reactExports.useState('');
+  const ref = reactExports.useRef();
+  const tilesContext = useTilesContext();
+  reactExports.useEffect(() => {
+    if (ref.current) {
+      setTitle(ref.current.textContent || undefined);
+    }
+  }, [ref]);
+  return /*#__PURE__*/React.createElement(StyledTileLabel, _extends$t({
+    ref: mergeRefs([ref, forwardedRef]),
+    title: title,
+    isCentered: tilesContext && tilesContext.isCentered
+  }, props));
+});
+LabelComponent.displayName = 'Tiles.Label';
+const Label$2 = LabelComponent;
+const TilesComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    onChange,
+    value: controlledValue,
+    name,
+    isCentered,
+    ...props
+  } = _ref;
+  const [value, setValue] = reactExports.useState(controlledValue);
+  const handleOnChange = reactExports.useCallback(function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    setValue(args[0].target.value);
+    if (onChange) {
+      onChange(...args);
+    }
+  }, [onChange]);
+  const selectedValue = getControlledValue(controlledValue, value);
+  const tileContext = reactExports.useMemo(() => ({
+    onChange: handleOnChange,
+    value: selectedValue,
+    name,
+    isCentered
+  }), [handleOnChange, selectedValue, name, isCentered]);
+  return /*#__PURE__*/React.createElement(TilesContext.Provider, {
+    value: tileContext
+  }, /*#__PURE__*/React.createElement("div", _extends$t({
+    ref: ref,
+    role: "radiogroup"
+  }, props)));
+});
+TilesComponent.displayName = 'Tiles';
+TilesComponent.propTypes = {
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  name: PropTypes.string.isRequired,
+  isCentered: PropTypes.bool
+};
+TilesComponent.defaultProps = {
+  isCentered: true
+};
+const Tiles = TilesComponent;
+Tiles.Description = Description;
+Tiles.Icon = Icon;
+Tiles.Label = Label$2;
+Tiles.Tile = Tile;
+const InputGroup = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    isCompact,
+    ...props
+  } = _ref;
+  const contextValue = reactExports.useMemo(() => ({
+    isCompact
+  }), [isCompact]);
+  return /*#__PURE__*/React.createElement(InputGroupContext.Provider, {
+    value: contextValue
+  }, /*#__PURE__*/React.createElement(StyledInputGroup$1, _extends$t({
+    ref: ref,
+    isCompact: isCompact
+  }, props)));
+});
+InputGroup.displayName = 'InputGroup';
+InputGroup.propTypes = {
+  isCompact: PropTypes.bool
+};
+const FileUpload = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    disabled,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement(StyledFileUpload, _extends$t({
+    ref: ref,
+    "aria-disabled": disabled
+  }, props, {
+    role: "button"
+  }));
+});
+FileUpload.propTypes = {
+  isDragging: PropTypes.bool,
+  isCompact: PropTypes.bool,
+  disabled: PropTypes.bool
+};
+FileUpload.displayName = 'FileUpload';
+const ItemComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement(StyledFileListItem, _extends$t({}, props, {
+    ref: ref
+  }));
+});
+ItemComponent.displayName = 'FileList.Item';
+const Item = ItemComponent;
+const FileListComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.createElement(StyledFileList, _extends$t({}, props, {
+    ref: ref
+  }));
+});
+FileListComponent.displayName = 'FileList';
+const FileList = FileListComponent;
+FileList.Item = Item;
+var _path$j;
+function _extends$k() {
+  _extends$k = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$k.apply(this, arguments);
+}
+var SvgXStroke$1 = function SvgXStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$k({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$j || (_path$j = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3 9l6-6m0 6L3 3"
+  })));
+};
+var _path$i;
+function _extends$j() {
+  _extends$j = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$j.apply(this, arguments);
+}
+var SvgXStroke$2 = function SvgXStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$j({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$i || (_path$i = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3 13L13 3m0 10L3 3"
+  })));
+};
+const FileContext = /*#__PURE__*/reactExports.createContext(undefined);
+const useFileContext = () => {
+  return reactExports.useContext(FileContext);
+};
+const CloseComponent$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
+  const fileContext = useFileContext();
+  const onMouseDown = composeEventHandlers$1(props.onMouseDown, event => event.preventDefault());
+  const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
+  return /*#__PURE__*/React.createElement(StyledFileClose, _extends$t({
+    ref: ref,
+    "aria-label": ariaLabel
+  }, props, {
+    type: "button",
+    tabIndex: -1,
+    onMouseDown: onMouseDown
+  }), fileContext && fileContext.isCompact ? /*#__PURE__*/React.createElement(SvgXStroke$1, null) : /*#__PURE__*/React.createElement(SvgXStroke$2, null));
+});
+CloseComponent$1.displayName = 'File.Close';
+const Close$1 = CloseComponent$1;
+var _path$h;
+function _extends$i() {
+  _extends$i = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$i.apply(this, arguments);
+}
+var SvgTrashStroke$1 = function SvgTrashStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$i({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$h || (_path$h = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M2 2.5h8m-5.5 7V5m3 4.5V5m-5-.5V11c0 .3.2.5.5.5h6c.3 0 .5-.2.5-.5V4.5"
+  })));
+};
+var _path$g;
+function _extends$h() {
+  _extends$h = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$h.apply(this, arguments);
+}
+var SvgTrashStroke = function SvgTrashStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$h({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$g || (_path$g = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M6.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M3 2.5h10m-6.5 11v-8m3 8v-8m-6-1V15c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5V4.5"
+  })));
+};
+const DeleteComponent = /*#__PURE__*/React.forwardRef((props, ref) => {
+  const fileContext = useFileContext();
+  const onMouseDown = composeEventHandlers$1(props.onMouseDown, event => event.preventDefault());
+  const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
+  return /*#__PURE__*/React.createElement(StyledFileDelete, _extends$t({
+    ref: ref,
+    "aria-label": ariaLabel
+  }, props, {
+    type: "button",
+    tabIndex: -1,
+    onMouseDown: onMouseDown
+  }), fileContext && fileContext.isCompact ? /*#__PURE__*/React.createElement(SvgTrashStroke$1, null) : /*#__PURE__*/React.createElement(SvgTrashStroke, null));
+});
+DeleteComponent.displayName = 'File.Delete';
+const Delete = DeleteComponent;
+var _path$f, _rect$1;
+function _extends$g() {
+  _extends$g = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$g.apply(this, arguments);
+}
+var SvgFilePdfStroke$1 = function SvgFilePdfStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$g({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$f || (_path$f = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M10.5 3.21V11a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h5.79a.5.5 0 01.35.15l2.21 2.21a.5.5 0 01.15.35zM7.5.5V3a.5.5 0 00.5.5h2.5m-7 6h5"
+  })), _rect$1 || (_rect$1 = /*#__PURE__*/reactExports.createElement("rect", {
+    width: 6,
+    height: 3,
+    x: 3,
+    y: 5,
+    fill: "currentColor",
+    rx: 0.5,
+    ry: 0.5
+  })));
+};
+var _path$e;
+function _extends$f() {
+  _extends$f = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$f.apply(this, arguments);
+}
+var SvgFileZipStroke$1 = function SvgFileZipStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$f({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$e || (_path$e = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5.5v8m0-6h1m-2 1h1m0 1h1m-2 1h1m0 1h1m-2 1h1m6-4.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+var _path$d, _circle$1;
+function _extends$e() {
+  _extends$e = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$e.apply(this, arguments);
+}
+var SvgFileImageStroke$1 = function SvgFileImageStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$e({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$d || (_path$d = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5m-7 6L5 8l1.5 1.5 1-1 1 1"
+  })), _circle$1 || (_circle$1 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 8,
+    cy: 6,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+var _path$c;
+function _extends$d() {
+  _extends$d = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$d.apply(this, arguments);
+}
+var SvgFileDocumentStroke$1 = function SvgFileDocumentStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$d({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$c || (_path$c = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+var _path$b;
+function _extends$c() {
+  _extends$c = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$c.apply(this, arguments);
+}
+var SvgFileSpreadsheetStroke$1 = function SvgFileSpreadsheetStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$c({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$b || (_path$b = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3.5 5.5h1m-1 2h1m-1 2h1m2-4h2m-2 2h2m-2 2h2m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+var _path$a;
+function _extends$b() {
+  _extends$b = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$b.apply(this, arguments);
+}
+var SvgFilePresentationStroke$1 = function SvgFilePresentationStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$b({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$a || (_path$a = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM6 9.5h2c.28 0 .5-.22.5-.5V8c0-.28-.22-.5-.5-.5H6c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm-2-2h2c.28 0 .5-.22.5-.5V6c0-.28-.22-.5-.5-.5H4c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm3.5-7V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+var _path$9;
+function _extends$a() {
+  _extends$a = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$a.apply(this, arguments);
+}
+var SvgFileGenericStroke$1 = function SvgFileGenericStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$a({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$9 || (_path$9 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+var _g;
+function _extends$9() {
+  _extends$9 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$9.apply(this, arguments);
+}
+var SvgCheckCircleStroke = function SvgCheckCircleStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$9({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _g || (_g = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M3.5 6l2 2L9 4.5"
+  }), /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 6,
+    cy: 6,
+    r: 5.5
+  }))));
+};
+var _path$8;
+function _extends$8$1() {
+  _extends$8$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$8$1.apply(this, arguments);
+}
+var SvgFileErrorStroke$1 = function SvgFileErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$8$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$8 || (_path$8 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5M4 9.5l4-4m0 4l-4-4"
+  })));
+};
+var _path$7, _rect;
+function _extends$7$1() {
+  _extends$7$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$7$1.apply(this, arguments);
+}
+var SvgFilePdfStroke = function SvgFilePdfStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$7$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$7 || (_path$7 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M14.5 4.2V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.85a.5.5 0 01.36.15l3.15 3.2a.5.5 0 01.14.35zm-10 8.3h7m-7-2h7m-1-10V4a.5.5 0 00.5.5h3.5"
+  })), _rect || (_rect = /*#__PURE__*/reactExports.createElement("rect", {
+    width: 8,
+    height: 2,
+    x: 4,
+    y: 7,
+    fill: "currentColor",
+    rx: 0.5,
+    ry: 0.5
+  })));
+};
+var _path$6;
+function _extends$6$1() {
+  _extends$6$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$6$1.apply(this, arguments);
+}
+var SvgFileZipStroke = function SvgFileZipStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$6$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$6 || (_path$6 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M6.5.5v11M5 2.5h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m8-6.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+var _path$5$1, _circle;
+function _extends$5$1() {
+  _extends$5$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$5$1.apply(this, arguments);
+}
+var SvgFileImageStroke = function SvgFileImageStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$5$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$5$1 || (_path$5$1 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5m-11 9l2.65-2.65c.2-.2.51-.2.71 0l1.79 1.79c.2.2.51.2.71 0l.79-.79c.2-.2.51-.2.71 0l1.65 1.65"
+  })), _circle || (_circle = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 10.5,
+    cy: 8.5,
+    r: 1.5,
+    fill: "currentColor"
+  })));
+};
+var _path$4$1;
+function _extends$4$1() {
+  _extends$4$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$4$1.apply(this, arguments);
+}
+var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$4$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$4$1 || (_path$4$1 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5 7.5h7m-7 1.97h7m-7 2h7m3-7.27V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+var _path$3$1;
+function _extends$3$1() {
+  _extends$3$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$3$1.apply(this, arguments);
+}
+var SvgFileSpreadsheetStroke = function SvgFileSpreadsheetStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$3$1 || (_path$3$1 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5 7.5h2m-2 2h2m-2 2h2m2-4h3m-3 2h3m-3 2h3m3-7.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+var _path$2$1;
+function _extends$2$1() {
+  _extends$2$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$2$1.apply(this, arguments);
+}
+var SvgFilePresentationStroke = function SvgFilePresentationStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$2$1({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$2$1 || (_path$2$1 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5M7 9.5h4c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5H7c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5zm-.5 2H5c-.28 0-.5-.22-.5-.5V8c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5v1.5"
+  })));
+};
+var _path$1$1;
+function _extends$1$2() {
+  _extends$1$2 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$1$2.apply(this, arguments);
+}
+var SvgFileGenericStroke = function SvgFileGenericStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$1$2({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$1$1 || (_path$1$1 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+var _path$o;
+function _extends$u() {
+  _extends$u = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$u.apply(this, arguments);
+}
+var SvgFileErrorStroke = function SvgFileErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$u({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$o || (_path$o = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M14.5 4.205V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.853a.5.5 0 01.356.15l3.148 3.204a.5.5 0 01.143.35zM10.5.5V4a.5.5 0 00.5.5h3.5m-9 8l5-5m0 5l-5-5"
+  })));
+};
+const fileIconsDefault = {
+  pdf: /*#__PURE__*/React.createElement(SvgFilePdfStroke, null),
+  zip: /*#__PURE__*/React.createElement(SvgFileZipStroke, null),
+  image: /*#__PURE__*/React.createElement(SvgFileImageStroke, null),
+  document: /*#__PURE__*/React.createElement(SvgFileDocumentStroke, null),
+  spreadsheet: /*#__PURE__*/React.createElement(SvgFileSpreadsheetStroke, null),
+  presentation: /*#__PURE__*/React.createElement(SvgFilePresentationStroke, null),
+  generic: /*#__PURE__*/React.createElement(SvgFileGenericStroke, null),
+  success: /*#__PURE__*/React.createElement(SvgCheckCircleStroke$1, null),
+  error: /*#__PURE__*/React.createElement(SvgFileErrorStroke, null)
+};
+const fileIconsCompact = {
+  pdf: /*#__PURE__*/React.createElement(SvgFilePdfStroke$1, null),
+  zip: /*#__PURE__*/React.createElement(SvgFileZipStroke$1, null),
+  image: /*#__PURE__*/React.createElement(SvgFileImageStroke$1, null),
+  document: /*#__PURE__*/React.createElement(SvgFileDocumentStroke$1, null),
+  spreadsheet: /*#__PURE__*/React.createElement(SvgFileSpreadsheetStroke$1, null),
+  presentation: /*#__PURE__*/React.createElement(SvgFilePresentationStroke$1, null),
+  generic: /*#__PURE__*/React.createElement(SvgFileGenericStroke$1, null),
+  success: /*#__PURE__*/React.createElement(SvgCheckCircleStroke, null),
+  error: /*#__PURE__*/React.createElement(SvgFileErrorStroke$1, null)
+};
+const FileComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    children,
+    type,
+    isCompact,
+    focusInset,
+    validation,
+    ...props
+  } = _ref;
+  const fileContextValue = reactExports.useMemo(() => ({
+    isCompact
+  }), [isCompact]);
+  const validationType = validation || type;
+  return /*#__PURE__*/React.createElement(FileContext.Provider, {
+    value: fileContextValue
+  }, /*#__PURE__*/React.createElement(StyledFile, _extends$t({}, props, {
+    isCompact: isCompact,
+    focusInset: focusInset,
+    validation: validation,
+    ref: ref
+  }), validationType && /*#__PURE__*/React.createElement(StyledFileIcon, {
+    isCompact: isCompact
+  }, isCompact ? fileIconsCompact[validationType] : fileIconsDefault[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? /*#__PURE__*/React.createElement("span", null, child) : child)));
+});
+FileComponent.displayName = 'File';
+FileComponent.propTypes = {
+  focusInset: PropTypes.bool,
+  isCompact: PropTypes.bool,
+  type: PropTypes.oneOf(FILE_TYPE),
+  validation: PropTypes.oneOf(FILE_VALIDATION)
+};
+const File = FileComponent;
+File.Close = Close$1;
+File.Delete = Delete;
+const MediaInput = /*#__PURE__*/React.forwardRef((_ref, ref) => {
+  let {
+    start,
+    end,
+    disabled,
+    isCompact,
+    isBare,
+    focusInset,
+    readOnly,
+    validation,
+    wrapperProps = {},
+    wrapperRef,
+    onSelect,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  const inputRef = reactExports.useRef();
+  const [isFocused, setIsFocused] = reactExports.useState(false);
+  const [isHovered, setIsHovered] = reactExports.useState(false);
+  const {
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseOver,
+    onMouseOut,
+    ...otherWrapperProps
+  } = wrapperProps;
+  const onFauxInputClickHandler = composeEventHandlers$1(onClick, () => {
+    inputRef.current && inputRef.current.focus();
+  });
+  const onFauxInputFocusHandler = composeEventHandlers$1(onFocus, () => {
+    setIsFocused(true);
+  });
+  const onFauxInputBlurHandler = composeEventHandlers$1(onBlur, () => {
+    setIsFocused(false);
+  });
+  const onFauxInputMouseOverHandler = composeEventHandlers$1(onMouseOver, () => {
+    setIsHovered(true);
+  });
+  const onFauxInputMouseOutHandler = composeEventHandlers$1(onMouseOut, () => {
+    setIsHovered(false);
+  });
+  const onSelectHandler = readOnly ? composeEventHandlers$1(onSelect, event => {
+    event.currentTarget.select();
+  }) : onSelect;
+  let combinedProps = {
+    disabled,
+    readOnly,
+    ref: mergeRefs([inputRef, ref]),
+    onSelect: onSelectHandler,
+    ...props
+  };
+  let isLabelHovered;
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps, {
+      isDescribed: true
+    });
+    isLabelHovered = fieldContext.isLabelHovered;
+  }
+  return /*#__PURE__*/React.createElement(FauxInput, _extends$t({
+    tabIndex: null,
+    onClick: onFauxInputClickHandler,
+    onFocus: onFauxInputFocusHandler,
+    onBlur: onFauxInputBlurHandler,
+    onMouseOver: onFauxInputMouseOverHandler,
+    onMouseOut: onFauxInputMouseOutHandler,
+    disabled: disabled,
+    isFocused: isFocused,
+    isHovered: isHovered || isLabelHovered,
+    isCompact: isCompact,
+    isBare: isBare,
+    focusInset: focusInset,
+    readOnly: readOnly,
+    validation: validation,
+    mediaLayout: true
+  }, otherWrapperProps, {
+    ref: wrapperRef
+  }), start && /*#__PURE__*/React.createElement(FauxInput.StartIcon, {
+    isDisabled: disabled,
+    isFocused: isFocused,
+    isHovered: isHovered || isLabelHovered
+  }, start), /*#__PURE__*/React.createElement(StyledTextMediaInput, combinedProps), end && /*#__PURE__*/React.createElement(FauxInput.EndIcon, {
+    isDisabled: disabled,
+    isFocused: isFocused,
+    isHovered: isHovered || isLabelHovered
+  }, end));
+});
+MediaInput.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION),
+  start: PropTypes.node,
+  end: PropTypes.node,
+  wrapperProps: PropTypes.object,
+  wrapperRef: PropTypes.any
+};
+MediaInput.displayName = 'MediaInput';
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+function _extends$1$1() {
+  _extends$1$1 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$1$1.apply(this, arguments);
+}
+const SIZE$1 = ['small', 'medium', 'large'];
+const COMPONENT_ID$2$2 = 'tags.avatar';
+const StyledAvatar = styled(_ref => {
+  let {
+    children,
+    ...props
+  } = _ref;
+  return /*#__PURE__*/React.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$2$2,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledAvatar",
+  componentId: "sc-3kdmgt-0"
+})(["flex-shrink:0;font-size:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$2$2, props));
+StyledAvatar.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$1$2 = 'tags.close';
+const StyledClose = styled.button.attrs({
+  'data-garden-id': COMPONENT_ID$1$2,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledClose",
+  componentId: "sc-d6lrpn-0"
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:0;background:transparent;cursor:pointer;padding:0;color:inherit;font-size:0;appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => retrieveComponentStyles(COMPONENT_ID$1$2, props));
+StyledClose.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const COMPONENT_ID$n = 'tags.tag_view';
+const colorStyles$a = props => {
+  let backgroundColor;
+  let foregroundColor;
+  let closeColor;
+  if (props.hue) {
+    const shade = props.hue === 'yellow' ? 400 : 600;
+    backgroundColor = getColor(props.hue, shade, props.theme);
+    if (props.hue === 'yellow' || props.hue === 'lemon') {
+      foregroundColor = getColor('yellow', 800, props.theme);
+    } else {
+      foregroundColor = readableColor(backgroundColor, props.theme.palette.grey[800], props.theme.palette.white);
+    }
+  } else {
+    backgroundColor = getColor('neutralHue', 200, props.theme);
+    foregroundColor = getColor('neutralHue', 700, props.theme);
+    closeColor = getColor('neutralHue', 600, props.theme);
+  }
+  return Ne(["background-color:", ";color:", ";&:hover{color:", ";}", " & ", "{color:", ";}"], backgroundColor, foregroundColor, foregroundColor, focusStyles({
+    theme: props.theme,
+    shadowWidth: 'sm',
+    selector: '&:focus'
+  }), StyledClose, closeColor);
+};
+const sizeStyles$c = props => {
+  let borderRadius;
+  let padding;
+  let height;
+  let fontSize;
+  let minWidth;
+  let avatarSize;
+  if (props.size === 'small') {
+    borderRadius = props.theme.borderRadii.sm;
+    padding = props.theme.space.base;
+    height = props.theme.space.base * 4;
+    fontSize = props.theme.fontSizes.xs;
+    avatarSize = 0;
+  } else if (props.size === 'large') {
+    borderRadius = props.theme.borderRadii.md;
+    padding = props.theme.space.base * 3;
+    height = props.theme.space.base * 8;
+    fontSize = props.theme.fontSizes.sm;
+    avatarSize = props.theme.space.base * 6;
+  } else {
+    borderRadius = props.theme.borderRadii.sm;
+    padding = props.theme.space.base * 2;
+    height = props.theme.space.base * 5;
+    fontSize = props.theme.fontSizes.sm;
+    avatarSize = props.theme.space.base * 4;
+  }
+  let avatarBorderRadius = props.size === 'large' ? math(`${borderRadius} - 1`) : borderRadius;
+  const avatarMargin = (height - avatarSize) / 2;
+  const avatarTextMargin = props.isRound ? avatarMargin : avatarMargin * 2;
+  if (props.isRound) {
+    borderRadius = '50%';
+    padding = 0;
+    minWidth = height;
+    avatarBorderRadius = '50%';
+  } else if (props.isPill) {
+    borderRadius = '100px';
+    avatarBorderRadius = '50%';
+    if (props.size === 'small') {
+      padding = props.theme.space.base * 1.5;
+      minWidth = props.theme.space.base * 6;
+    } else if (props.size === 'large') {
+      minWidth = props.theme.space.base * 12;
+    } else {
+      minWidth = props.theme.space.base * 7.5;
+    }
+  }
+  return Ne(["border-radius:", ";padding:0 ", "px;min-width:", ";height:", "px;line-height:", ";font-size:", ";& > *{width:100%;min-width:", ";}& ", "{margin-", ":-", "px;margin-", ":", "px;border-radius:", ";width:", "px;min-width:", "px;height:", "px;}& ", "{margin-", ":-", "px;border-radius:", ";width:", "px;height:", "px;}"], borderRadius, padding, minWidth ? `${minWidth}px` : `calc(${padding * 2}px + 1ch)`, height, getLineHeight(height, fontSize), fontSize, minWidth ? `${minWidth - padding * 2}px` : '1ch', StyledAvatar, props.theme.rtl ? 'right' : 'left', padding - avatarMargin, props.theme.rtl ? 'left' : 'right', avatarTextMargin, avatarBorderRadius, avatarSize, avatarSize, avatarSize, StyledClose, props.theme.rtl ? 'left' : 'right', padding, borderRadius, height, height);
+};
+const StyledTag$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$n,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledTag",
+  componentId: "sc-1jvbe03-0"
+})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$c(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$a(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$n, props));
+StyledTag$1.defaultProps = {
+  size: 'medium',
+  theme: DEFAULT_THEME
+};
+var _path$5;
+function _extends$8() {
+  _extends$8 = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$8.apply(this, arguments);
+}
+var SvgXStroke = function SvgXStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$8({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$5 || (_path$5 = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3 9l6-6m0 6L3 3"
+  })));
+};
+const CloseComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
+  const ariaLabel = useText(CloseComponent, props, 'aria-label', 'Remove');
+  return /*#__PURE__*/React.createElement(StyledClose, _extends$1$1({
+    ref: ref,
+    "aria-label": ariaLabel
+  }, props, {
+    type: "button",
+    tabIndex: -1
+  }), /*#__PURE__*/React.createElement(SvgXStroke, null));
+});
+CloseComponent.displayName = 'Tag.Close';
+const Close = CloseComponent;
+const AvatarComponent = props => /*#__PURE__*/React.createElement(StyledAvatar, props);
+AvatarComponent.displayName = 'Tag.Avatar';
+const Avatar = AvatarComponent;
+const TagComponent$1 = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
+  let {
+    size,
+    hue,
+    ...otherProps
+  } = _ref;
+  return /*#__PURE__*/React.createElement(StyledTag$1, _extends$1$1({
+    ref: ref,
+    size: size,
+    hue: hue
+  }, otherProps));
+});
+TagComponent$1.displayName = 'Tag';
+TagComponent$1.propTypes = {
+  size: PropTypes.oneOf(SIZE$1),
+  hue: PropTypes.string,
+  isPill: PropTypes.bool,
+  isRound: PropTypes.bool,
+  isRegular: PropTypes.bool
+};
+TagComponent$1.defaultProps = {
+  size: 'medium'
+};
+const Tag$1 = TagComponent$1;
+Tag$1.Avatar = Avatar;
+Tag$1.Close = Close;
+
 var reactDom = {exports: {}};
 
 var reactDom_production_min = {};
@@ -7131,11241 +18367,6 @@ function checkDCE() {
 var reactDomExports = reactDom.exports;
 var ReactDOM = /*@__PURE__*/getDefaultExportFromCjs(reactDomExports);
 
-var reactIs$2 = {exports: {}};
-
-var reactIs_production_min$1 = {};
-
-/** @license React v17.0.2
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var hasRequiredReactIs_production_min$1;
-
-function requireReactIs_production_min$1 () {
-	if (hasRequiredReactIs_production_min$1) return reactIs_production_min$1;
-	hasRequiredReactIs_production_min$1 = 1;
-
-	var b = 60103,
-	  c = 60106,
-	  d = 60107,
-	  e = 60108,
-	  f = 60114,
-	  g = 60109,
-	  h = 60110,
-	  k = 60112,
-	  l = 60113,
-	  m = 60120,
-	  n = 60115,
-	  p = 60116,
-	  q = 60121,
-	  r = 60122,
-	  u = 60117,
-	  v = 60129,
-	  w = 60131;
-	if ("function" === typeof Symbol && Symbol.for) {
-	  var x = Symbol.for;
-	  b = x("react.element");
-	  c = x("react.portal");
-	  d = x("react.fragment");
-	  e = x("react.strict_mode");
-	  f = x("react.profiler");
-	  g = x("react.provider");
-	  h = x("react.context");
-	  k = x("react.forward_ref");
-	  l = x("react.suspense");
-	  m = x("react.suspense_list");
-	  n = x("react.memo");
-	  p = x("react.lazy");
-	  q = x("react.block");
-	  r = x("react.server.block");
-	  u = x("react.fundamental");
-	  v = x("react.debug_trace_mode");
-	  w = x("react.legacy_hidden");
-	}
-	function y(a) {
-	  if ("object" === typeof a && null !== a) {
-	    var t = a.$$typeof;
-	    switch (t) {
-	      case b:
-	        switch (a = a.type, a) {
-	          case d:
-	          case f:
-	          case e:
-	          case l:
-	          case m:
-	            return a;
-	          default:
-	            switch (a = a && a.$$typeof, a) {
-	              case h:
-	              case k:
-	              case p:
-	              case n:
-	              case g:
-	                return a;
-	              default:
-	                return t;
-	            }
-	        }
-	      case c:
-	        return t;
-	    }
-	  }
-	}
-	var z = g,
-	  A = b,
-	  B = k,
-	  C = d,
-	  D = p,
-	  E = n,
-	  F = c,
-	  G = f,
-	  H = e,
-	  I = l;
-	reactIs_production_min$1.ContextConsumer = h;
-	reactIs_production_min$1.ContextProvider = z;
-	reactIs_production_min$1.Element = A;
-	reactIs_production_min$1.ForwardRef = B;
-	reactIs_production_min$1.Fragment = C;
-	reactIs_production_min$1.Lazy = D;
-	reactIs_production_min$1.Memo = E;
-	reactIs_production_min$1.Portal = F;
-	reactIs_production_min$1.Profiler = G;
-	reactIs_production_min$1.StrictMode = H;
-	reactIs_production_min$1.Suspense = I;
-	reactIs_production_min$1.isAsyncMode = function () {
-	  return !1;
-	};
-	reactIs_production_min$1.isConcurrentMode = function () {
-	  return !1;
-	};
-	reactIs_production_min$1.isContextConsumer = function (a) {
-	  return y(a) === h;
-	};
-	reactIs_production_min$1.isContextProvider = function (a) {
-	  return y(a) === g;
-	};
-	reactIs_production_min$1.isElement = function (a) {
-	  return "object" === typeof a && null !== a && a.$$typeof === b;
-	};
-	reactIs_production_min$1.isForwardRef = function (a) {
-	  return y(a) === k;
-	};
-	reactIs_production_min$1.isFragment = function (a) {
-	  return y(a) === d;
-	};
-	reactIs_production_min$1.isLazy = function (a) {
-	  return y(a) === p;
-	};
-	reactIs_production_min$1.isMemo = function (a) {
-	  return y(a) === n;
-	};
-	reactIs_production_min$1.isPortal = function (a) {
-	  return y(a) === c;
-	};
-	reactIs_production_min$1.isProfiler = function (a) {
-	  return y(a) === f;
-	};
-	reactIs_production_min$1.isStrictMode = function (a) {
-	  return y(a) === e;
-	};
-	reactIs_production_min$1.isSuspense = function (a) {
-	  return y(a) === l;
-	};
-	reactIs_production_min$1.isValidElementType = function (a) {
-	  return "string" === typeof a || "function" === typeof a || a === d || a === f || a === v || a === e || a === l || a === m || a === w || "object" === typeof a && null !== a && (a.$$typeof === p || a.$$typeof === n || a.$$typeof === g || a.$$typeof === h || a.$$typeof === k || a.$$typeof === u || a.$$typeof === q || a[0] === r) ? !0 : !1;
-	};
-	reactIs_production_min$1.typeOf = y;
-	return reactIs_production_min$1;
-}
-
-{
-  reactIs$2.exports = requireReactIs_production_min$1();
-}
-
-var reactIsExports$1 = reactIs$2.exports;
-
-function stylis_min(W) {
-  function M(d, c, e, h, a) {
-    for (var m = 0, b = 0, v = 0, n = 0, q, g, x = 0, K = 0, k, u = k = q = 0, l = 0, r = 0, I = 0, t = 0, B = e.length, J = B - 1, y, f = '', p = '', F = '', G = '', C; l < B;) {
-      g = e.charCodeAt(l);
-      l === J && 0 !== b + n + v + m && (0 !== b && (g = 47 === b ? 10 : 47), n = v = m = 0, B++, J++);
-      if (0 === b + n + v + m) {
-        if (l === J && (0 < r && (f = f.replace(N, '')), 0 < f.trim().length)) {
-          switch (g) {
-            case 32:
-            case 9:
-            case 59:
-            case 13:
-            case 10:
-              break;
-            default:
-              f += e.charAt(l);
-          }
-          g = 59;
-        }
-        switch (g) {
-          case 123:
-            f = f.trim();
-            q = f.charCodeAt(0);
-            k = 1;
-            for (t = ++l; l < B;) {
-              switch (g = e.charCodeAt(l)) {
-                case 123:
-                  k++;
-                  break;
-                case 125:
-                  k--;
-                  break;
-                case 47:
-                  switch (g = e.charCodeAt(l + 1)) {
-                    case 42:
-                    case 47:
-                      a: {
-                        for (u = l + 1; u < J; ++u) {
-                          switch (e.charCodeAt(u)) {
-                            case 47:
-                              if (42 === g && 42 === e.charCodeAt(u - 1) && l + 2 !== u) {
-                                l = u + 1;
-                                break a;
-                              }
-                              break;
-                            case 10:
-                              if (47 === g) {
-                                l = u + 1;
-                                break a;
-                              }
-                          }
-                        }
-                        l = u;
-                      }
-                  }
-                  break;
-                case 91:
-                  g++;
-                case 40:
-                  g++;
-                case 34:
-                case 39:
-                  for (; l++ < J && e.charCodeAt(l) !== g;) {}
-              }
-              if (0 === k) break;
-              l++;
-            }
-            k = e.substring(t, l);
-            0 === q && (q = (f = f.replace(ca, '').trim()).charCodeAt(0));
-            switch (q) {
-              case 64:
-                0 < r && (f = f.replace(N, ''));
-                g = f.charCodeAt(1);
-                switch (g) {
-                  case 100:
-                  case 109:
-                  case 115:
-                  case 45:
-                    r = c;
-                    break;
-                  default:
-                    r = O;
-                }
-                k = M(c, r, k, g, a + 1);
-                t = k.length;
-                0 < A && (r = X(O, f, I), C = H(3, k, r, c, D, z, t, g, a, h), f = r.join(''), void 0 !== C && 0 === (t = (k = C.trim()).length) && (g = 0, k = ''));
-                if (0 < t) switch (g) {
-                  case 115:
-                    f = f.replace(da, ea);
-                  case 100:
-                  case 109:
-                  case 45:
-                    k = f + '{' + k + '}';
-                    break;
-                  case 107:
-                    f = f.replace(fa, '$1 $2');
-                    k = f + '{' + k + '}';
-                    k = 1 === w || 2 === w && L('@' + k, 3) ? '@-webkit-' + k + '@' + k : '@' + k;
-                    break;
-                  default:
-                    k = f + k, 112 === h && (k = (p += k, ''));
-                } else k = '';
-                break;
-              default:
-                k = M(c, X(c, f, I), k, h, a + 1);
-            }
-            F += k;
-            k = I = r = u = q = 0;
-            f = '';
-            g = e.charCodeAt(++l);
-            break;
-          case 125:
-          case 59:
-            f = (0 < r ? f.replace(N, '') : f).trim();
-            if (1 < (t = f.length)) switch (0 === u && (q = f.charCodeAt(0), 45 === q || 96 < q && 123 > q) && (t = (f = f.replace(' ', ':')).length), 0 < A && void 0 !== (C = H(1, f, c, d, D, z, p.length, h, a, h)) && 0 === (t = (f = C.trim()).length) && (f = '\x00\x00'), q = f.charCodeAt(0), g = f.charCodeAt(1), q) {
-              case 0:
-                break;
-              case 64:
-                if (105 === g || 99 === g) {
-                  G += f + e.charAt(l);
-                  break;
-                }
-              default:
-                58 !== f.charCodeAt(t - 1) && (p += P(f, q, g, f.charCodeAt(2)));
-            }
-            I = r = u = q = 0;
-            f = '';
-            g = e.charCodeAt(++l);
-        }
-      }
-      switch (g) {
-        case 13:
-        case 10:
-          47 === b ? b = 0 : 0 === 1 + q && 107 !== h && 0 < f.length && (r = 1, f += '\x00');
-          0 < A * Y && H(0, f, c, d, D, z, p.length, h, a, h);
-          z = 1;
-          D++;
-          break;
-        case 59:
-        case 125:
-          if (0 === b + n + v + m) {
-            z++;
-            break;
-          }
-        default:
-          z++;
-          y = e.charAt(l);
-          switch (g) {
-            case 9:
-            case 32:
-              if (0 === n + m + b) switch (x) {
-                case 44:
-                case 58:
-                case 9:
-                case 32:
-                  y = '';
-                  break;
-                default:
-                  32 !== g && (y = ' ');
-              }
-              break;
-            case 0:
-              y = '\\0';
-              break;
-            case 12:
-              y = '\\f';
-              break;
-            case 11:
-              y = '\\v';
-              break;
-            case 38:
-              0 === n + b + m && (r = I = 1, y = '\f' + y);
-              break;
-            case 108:
-              if (0 === n + b + m + E && 0 < u) switch (l - u) {
-                case 2:
-                  112 === x && 58 === e.charCodeAt(l - 3) && (E = x);
-                case 8:
-                  111 === K && (E = K);
-              }
-              break;
-            case 58:
-              0 === n + b + m && (u = l);
-              break;
-            case 44:
-              0 === b + v + n + m && (r = 1, y += '\r');
-              break;
-            case 34:
-            case 39:
-              0 === b && (n = n === g ? 0 : 0 === n ? g : n);
-              break;
-            case 91:
-              0 === n + b + v && m++;
-              break;
-            case 93:
-              0 === n + b + v && m--;
-              break;
-            case 41:
-              0 === n + b + m && v--;
-              break;
-            case 40:
-              if (0 === n + b + m) {
-                if (0 === q) switch (2 * x + 3 * K) {
-                  case 533:
-                    break;
-                  default:
-                    q = 1;
-                }
-                v++;
-              }
-              break;
-            case 64:
-              0 === b + v + n + m + u + k && (k = 1);
-              break;
-            case 42:
-            case 47:
-              if (!(0 < n + m + v)) switch (b) {
-                case 0:
-                  switch (2 * g + 3 * e.charCodeAt(l + 1)) {
-                    case 235:
-                      b = 47;
-                      break;
-                    case 220:
-                      t = l, b = 42;
-                  }
-                  break;
-                case 42:
-                  47 === g && 42 === x && t + 2 !== l && (33 === e.charCodeAt(t + 2) && (p += e.substring(t, l + 1)), y = '', b = 0);
-              }
-          }
-          0 === b && (f += y);
-      }
-      K = x;
-      x = g;
-      l++;
-    }
-    t = p.length;
-    if (0 < t) {
-      r = c;
-      if (0 < A && (C = H(2, p, r, d, D, z, t, h, a, h), void 0 !== C && 0 === (p = C).length)) return G + p + F;
-      p = r.join(',') + '{' + p + '}';
-      if (0 !== w * E) {
-        2 !== w || L(p, 2) || (E = 0);
-        switch (E) {
-          case 111:
-            p = p.replace(ha, ':-moz-$1') + p;
-            break;
-          case 112:
-            p = p.replace(Q, '::-webkit-input-$1') + p.replace(Q, '::-moz-$1') + p.replace(Q, ':-ms-input-$1') + p;
-        }
-        E = 0;
-      }
-    }
-    return G + p + F;
-  }
-  function X(d, c, e) {
-    var h = c.trim().split(ia);
-    c = h;
-    var a = h.length,
-      m = d.length;
-    switch (m) {
-      case 0:
-      case 1:
-        var b = 0;
-        for (d = 0 === m ? '' : d[0] + ' '; b < a; ++b) {
-          c[b] = Z(d, c[b], e).trim();
-        }
-        break;
-      default:
-        var v = b = 0;
-        for (c = []; b < a; ++b) {
-          for (var n = 0; n < m; ++n) {
-            c[v++] = Z(d[n] + ' ', h[b], e).trim();
-          }
-        }
-    }
-    return c;
-  }
-  function Z(d, c, e) {
-    var h = c.charCodeAt(0);
-    33 > h && (h = (c = c.trim()).charCodeAt(0));
-    switch (h) {
-      case 38:
-        return c.replace(F, '$1' + d.trim());
-      case 58:
-        return d.trim() + c.replace(F, '$1' + d.trim());
-      default:
-        if (0 < 1 * e && 0 < c.indexOf('\f')) return c.replace(F, (58 === d.charCodeAt(0) ? '' : '$1') + d.trim());
-    }
-    return d + c;
-  }
-  function P(d, c, e, h) {
-    var a = d + ';',
-      m = 2 * c + 3 * e + 4 * h;
-    if (944 === m) {
-      d = a.indexOf(':', 9) + 1;
-      var b = a.substring(d, a.length - 1).trim();
-      b = a.substring(0, d).trim() + b + ';';
-      return 1 === w || 2 === w && L(b, 1) ? '-webkit-' + b + b : b;
-    }
-    if (0 === w || 2 === w && !L(a, 1)) return a;
-    switch (m) {
-      case 1015:
-        return 97 === a.charCodeAt(10) ? '-webkit-' + a + a : a;
-      case 951:
-        return 116 === a.charCodeAt(3) ? '-webkit-' + a + a : a;
-      case 963:
-        return 110 === a.charCodeAt(5) ? '-webkit-' + a + a : a;
-      case 1009:
-        if (100 !== a.charCodeAt(4)) break;
-      case 969:
-      case 942:
-        return '-webkit-' + a + a;
-      case 978:
-        return '-webkit-' + a + '-moz-' + a + a;
-      case 1019:
-      case 983:
-        return '-webkit-' + a + '-moz-' + a + '-ms-' + a + a;
-      case 883:
-        if (45 === a.charCodeAt(8)) return '-webkit-' + a + a;
-        if (0 < a.indexOf('image-set(', 11)) return a.replace(ja, '$1-webkit-$2') + a;
-        break;
-      case 932:
-        if (45 === a.charCodeAt(4)) switch (a.charCodeAt(5)) {
-          case 103:
-            return '-webkit-box-' + a.replace('-grow', '') + '-webkit-' + a + '-ms-' + a.replace('grow', 'positive') + a;
-          case 115:
-            return '-webkit-' + a + '-ms-' + a.replace('shrink', 'negative') + a;
-          case 98:
-            return '-webkit-' + a + '-ms-' + a.replace('basis', 'preferred-size') + a;
-        }
-        return '-webkit-' + a + '-ms-' + a + a;
-      case 964:
-        return '-webkit-' + a + '-ms-flex-' + a + a;
-      case 1023:
-        if (99 !== a.charCodeAt(8)) break;
-        b = a.substring(a.indexOf(':', 15)).replace('flex-', '').replace('space-between', 'justify');
-        return '-webkit-box-pack' + b + '-webkit-' + a + '-ms-flex-pack' + b + a;
-      case 1005:
-        return ka.test(a) ? a.replace(aa, ':-webkit-') + a.replace(aa, ':-moz-') + a : a;
-      case 1e3:
-        b = a.substring(13).trim();
-        c = b.indexOf('-') + 1;
-        switch (b.charCodeAt(0) + b.charCodeAt(c)) {
-          case 226:
-            b = a.replace(G, 'tb');
-            break;
-          case 232:
-            b = a.replace(G, 'tb-rl');
-            break;
-          case 220:
-            b = a.replace(G, 'lr');
-            break;
-          default:
-            return a;
-        }
-        return '-webkit-' + a + '-ms-' + b + a;
-      case 1017:
-        if (-1 === a.indexOf('sticky', 9)) break;
-      case 975:
-        c = (a = d).length - 10;
-        b = (33 === a.charCodeAt(c) ? a.substring(0, c) : a).substring(d.indexOf(':', 7) + 1).trim();
-        switch (m = b.charCodeAt(0) + (b.charCodeAt(7) | 0)) {
-          case 203:
-            if (111 > b.charCodeAt(8)) break;
-          case 115:
-            a = a.replace(b, '-webkit-' + b) + ';' + a;
-            break;
-          case 207:
-          case 102:
-            a = a.replace(b, '-webkit-' + (102 < m ? 'inline-' : '') + 'box') + ';' + a.replace(b, '-webkit-' + b) + ';' + a.replace(b, '-ms-' + b + 'box') + ';' + a;
-        }
-        return a + ';';
-      case 938:
-        if (45 === a.charCodeAt(5)) switch (a.charCodeAt(6)) {
-          case 105:
-            return b = a.replace('-items', ''), '-webkit-' + a + '-webkit-box-' + b + '-ms-flex-' + b + a;
-          case 115:
-            return '-webkit-' + a + '-ms-flex-item-' + a.replace(ba, '') + a;
-          default:
-            return '-webkit-' + a + '-ms-flex-line-pack' + a.replace('align-content', '').replace(ba, '') + a;
-        }
-        break;
-      case 973:
-      case 989:
-        if (45 !== a.charCodeAt(3) || 122 === a.charCodeAt(4)) break;
-      case 931:
-      case 953:
-        if (!0 === la.test(d)) return 115 === (b = d.substring(d.indexOf(':') + 1)).charCodeAt(0) ? P(d.replace('stretch', 'fill-available'), c, e, h).replace(':fill-available', ':stretch') : a.replace(b, '-webkit-' + b) + a.replace(b, '-moz-' + b.replace('fill-', '')) + a;
-        break;
-      case 962:
-        if (a = '-webkit-' + a + (102 === a.charCodeAt(5) ? '-ms-' + a : '') + a, 211 === e + h && 105 === a.charCodeAt(13) && 0 < a.indexOf('transform', 10)) return a.substring(0, a.indexOf(';', 27) + 1).replace(ma, '$1-webkit-$2') + a;
-    }
-    return a;
-  }
-  function L(d, c) {
-    var e = d.indexOf(1 === c ? ':' : '{'),
-      h = d.substring(0, 3 !== c ? e : 10);
-    e = d.substring(e + 1, d.length - 1);
-    return R(2 !== c ? h : h.replace(na, '$1'), e, c);
-  }
-  function ea(d, c) {
-    var e = P(c, c.charCodeAt(0), c.charCodeAt(1), c.charCodeAt(2));
-    return e !== c + ';' ? e.replace(oa, ' or ($1)').substring(4) : '(' + c + ')';
-  }
-  function H(d, c, e, h, a, m, b, v, n, q) {
-    for (var g = 0, x = c, w; g < A; ++g) {
-      switch (w = S[g].call(B, d, x, e, h, a, m, b, v, n, q)) {
-        case void 0:
-        case !1:
-        case !0:
-        case null:
-          break;
-        default:
-          x = w;
-      }
-    }
-    if (x !== c) return x;
-  }
-  function T(d) {
-    switch (d) {
-      case void 0:
-      case null:
-        A = S.length = 0;
-        break;
-      default:
-        if ('function' === typeof d) S[A++] = d;else if ('object' === typeof d) for (var c = 0, e = d.length; c < e; ++c) {
-          T(d[c]);
-        } else Y = !!d | 0;
-    }
-    return T;
-  }
-  function U(d) {
-    d = d.prefix;
-    void 0 !== d && (R = null, d ? 'function' !== typeof d ? w = 1 : (w = 2, R = d) : w = 0);
-    return U;
-  }
-  function B(d, c) {
-    var e = d;
-    33 > e.charCodeAt(0) && (e = e.trim());
-    V = e;
-    e = [V];
-    if (0 < A) {
-      var h = H(-1, c, e, e, D, z, 0, 0, 0, 0);
-      void 0 !== h && 'string' === typeof h && (c = h);
-    }
-    var a = M(O, e, c, 0, 0);
-    0 < A && (h = H(-2, a, e, e, D, z, a.length, 0, 0, 0), void 0 !== h && (a = h));
-    V = '';
-    E = 0;
-    z = D = 1;
-    return a;
-  }
-  var ca = /^\0+/g,
-    N = /[\0\r\f]/g,
-    aa = /: */g,
-    ka = /zoo|gra/,
-    ma = /([,: ])(transform)/g,
-    ia = /,\r+?/g,
-    F = /([\t\r\n ])*\f?&/g,
-    fa = /@(k\w+)\s*(\S*)\s*/,
-    Q = /::(place)/g,
-    ha = /:(read-only)/g,
-    G = /[svh]\w+-[tblr]{2}/,
-    da = /\(\s*(.*)\s*\)/g,
-    oa = /([\s\S]*?);/g,
-    ba = /-self|flex-/g,
-    na = /[^]*?(:[rp][el]a[\w-]+)[^]*/,
-    la = /stretch|:\s*\w+\-(?:conte|avail)/,
-    ja = /([^-])(image-set\()/,
-    z = 1,
-    D = 1,
-    E = 0,
-    w = 1,
-    O = [],
-    S = [],
-    A = 0,
-    R = null,
-    Y = 0,
-    V = '';
-  B.use = T;
-  B.set = U;
-  void 0 !== W && U(W);
-  return B;
-}
-
-var unitlessKeys = {
-  animationIterationCount: 1,
-  borderImageOutset: 1,
-  borderImageSlice: 1,
-  borderImageWidth: 1,
-  boxFlex: 1,
-  boxFlexGroup: 1,
-  boxOrdinalGroup: 1,
-  columnCount: 1,
-  columns: 1,
-  flex: 1,
-  flexGrow: 1,
-  flexPositive: 1,
-  flexShrink: 1,
-  flexNegative: 1,
-  flexOrder: 1,
-  gridRow: 1,
-  gridRowEnd: 1,
-  gridRowSpan: 1,
-  gridRowStart: 1,
-  gridColumn: 1,
-  gridColumnEnd: 1,
-  gridColumnSpan: 1,
-  gridColumnStart: 1,
-  msGridRow: 1,
-  msGridRowSpan: 1,
-  msGridColumn: 1,
-  msGridColumnSpan: 1,
-  fontWeight: 1,
-  lineHeight: 1,
-  opacity: 1,
-  order: 1,
-  orphans: 1,
-  tabSize: 1,
-  widows: 1,
-  zIndex: 1,
-  zoom: 1,
-  WebkitLineClamp: 1,
-  // SVG-related properties
-  fillOpacity: 1,
-  floodOpacity: 1,
-  stopOpacity: 1,
-  strokeDasharray: 1,
-  strokeDashoffset: 1,
-  strokeMiterlimit: 1,
-  strokeOpacity: 1,
-  strokeWidth: 1
-};
-
-function memoize$2(fn) {
-  var cache = Object.create(null);
-  return function (arg) {
-    if (cache[arg] === undefined) cache[arg] = fn(arg);
-    return cache[arg];
-  };
-}
-
-var reactPropsRegex = /^((children|dangerouslySetInnerHTML|key|ref|autoFocus|defaultValue|defaultChecked|innerHTML|suppressContentEditableWarning|suppressHydrationWarning|valueLink|abbr|accept|acceptCharset|accessKey|action|allow|allowUserMedia|allowPaymentRequest|allowFullScreen|allowTransparency|alt|async|autoComplete|autoPlay|capture|cellPadding|cellSpacing|challenge|charSet|checked|cite|classID|className|cols|colSpan|content|contentEditable|contextMenu|controls|controlsList|coords|crossOrigin|data|dateTime|decoding|default|defer|dir|disabled|disablePictureInPicture|download|draggable|encType|enterKeyHint|form|formAction|formEncType|formMethod|formNoValidate|formTarget|frameBorder|headers|height|hidden|high|href|hrefLang|htmlFor|httpEquiv|id|inputMode|integrity|is|keyParams|keyType|kind|label|lang|list|loading|loop|low|marginHeight|marginWidth|max|maxLength|media|mediaGroup|method|min|minLength|multiple|muted|name|nonce|noValidate|open|optimum|pattern|placeholder|playsInline|poster|preload|profile|radioGroup|readOnly|referrerPolicy|rel|required|reversed|role|rows|rowSpan|sandbox|scope|scoped|scrolling|seamless|selected|shape|size|sizes|slot|span|spellCheck|src|srcDoc|srcLang|srcSet|start|step|style|summary|tabIndex|target|title|translate|type|useMap|value|width|wmode|wrap|about|datatype|inlist|prefix|property|resource|typeof|vocab|autoCapitalize|autoCorrect|autoSave|color|incremental|fallback|inert|itemProp|itemScope|itemType|itemID|itemRef|on|option|results|security|unselectable|accentHeight|accumulate|additive|alignmentBaseline|allowReorder|alphabetic|amplitude|arabicForm|ascent|attributeName|attributeType|autoReverse|azimuth|baseFrequency|baselineShift|baseProfile|bbox|begin|bias|by|calcMode|capHeight|clip|clipPathUnits|clipPath|clipRule|colorInterpolation|colorInterpolationFilters|colorProfile|colorRendering|contentScriptType|contentStyleType|cursor|cx|cy|d|decelerate|descent|diffuseConstant|direction|display|divisor|dominantBaseline|dur|dx|dy|edgeMode|elevation|enableBackground|end|exponent|externalResourcesRequired|fill|fillOpacity|fillRule|filter|filterRes|filterUnits|floodColor|floodOpacity|focusable|fontFamily|fontSize|fontSizeAdjust|fontStretch|fontStyle|fontVariant|fontWeight|format|from|fr|fx|fy|g1|g2|glyphName|glyphOrientationHorizontal|glyphOrientationVertical|glyphRef|gradientTransform|gradientUnits|hanging|horizAdvX|horizOriginX|ideographic|imageRendering|in|in2|intercept|k|k1|k2|k3|k4|kernelMatrix|kernelUnitLength|kerning|keyPoints|keySplines|keyTimes|lengthAdjust|letterSpacing|lightingColor|limitingConeAngle|local|markerEnd|markerMid|markerStart|markerHeight|markerUnits|markerWidth|mask|maskContentUnits|maskUnits|mathematical|mode|numOctaves|offset|opacity|operator|order|orient|orientation|origin|overflow|overlinePosition|overlineThickness|panose1|paintOrder|pathLength|patternContentUnits|patternTransform|patternUnits|pointerEvents|points|pointsAtX|pointsAtY|pointsAtZ|preserveAlpha|preserveAspectRatio|primitiveUnits|r|radius|refX|refY|renderingIntent|repeatCount|repeatDur|requiredExtensions|requiredFeatures|restart|result|rotate|rx|ry|scale|seed|shapeRendering|slope|spacing|specularConstant|specularExponent|speed|spreadMethod|startOffset|stdDeviation|stemh|stemv|stitchTiles|stopColor|stopOpacity|strikethroughPosition|strikethroughThickness|string|stroke|strokeDasharray|strokeDashoffset|strokeLinecap|strokeLinejoin|strokeMiterlimit|strokeOpacity|strokeWidth|surfaceScale|systemLanguage|tableValues|targetX|targetY|textAnchor|textDecoration|textRendering|textLength|to|transform|u1|u2|underlinePosition|underlineThickness|unicode|unicodeBidi|unicodeRange|unitsPerEm|vAlphabetic|vHanging|vIdeographic|vMathematical|values|vectorEffect|version|vertAdvY|vertOriginX|vertOriginY|viewBox|viewTarget|visibility|widths|wordSpacing|writingMode|x|xHeight|x1|x2|xChannelSelector|xlinkActuate|xlinkArcrole|xlinkHref|xlinkRole|xlinkShow|xlinkTitle|xlinkType|xmlBase|xmlns|xmlnsXlink|xmlLang|xmlSpace|y|y1|y2|yChannelSelector|z|zoomAndPan|for|class|autofocus)|(([Dd][Aa][Tt][Aa]|[Aa][Rr][Ii][Aa]|x)-.*))$/; // https://esbench.com/bench/5bfee68a4cd7e6009ef61d23
-
-var isPropValid = /* #__PURE__ */memoize$2(function (prop) {
-  return reactPropsRegex.test(prop) || prop.charCodeAt(0) === 111
-  /* o */ && prop.charCodeAt(1) === 110
-  /* n */ && prop.charCodeAt(2) < 91;
-}
-/* Z+1 */);
-
-var reactIs$1 = {exports: {}};
-
-var reactIs_production_min = {};
-
-/** @license React v16.13.1
- * react-is.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var hasRequiredReactIs_production_min;
-
-function requireReactIs_production_min () {
-	if (hasRequiredReactIs_production_min) return reactIs_production_min;
-	hasRequiredReactIs_production_min = 1;
-
-	var b = "function" === typeof Symbol && Symbol.for,
-	  c = b ? Symbol.for("react.element") : 60103,
-	  d = b ? Symbol.for("react.portal") : 60106,
-	  e = b ? Symbol.for("react.fragment") : 60107,
-	  f = b ? Symbol.for("react.strict_mode") : 60108,
-	  g = b ? Symbol.for("react.profiler") : 60114,
-	  h = b ? Symbol.for("react.provider") : 60109,
-	  k = b ? Symbol.for("react.context") : 60110,
-	  l = b ? Symbol.for("react.async_mode") : 60111,
-	  m = b ? Symbol.for("react.concurrent_mode") : 60111,
-	  n = b ? Symbol.for("react.forward_ref") : 60112,
-	  p = b ? Symbol.for("react.suspense") : 60113,
-	  q = b ? Symbol.for("react.suspense_list") : 60120,
-	  r = b ? Symbol.for("react.memo") : 60115,
-	  t = b ? Symbol.for("react.lazy") : 60116,
-	  v = b ? Symbol.for("react.block") : 60121,
-	  w = b ? Symbol.for("react.fundamental") : 60117,
-	  x = b ? Symbol.for("react.responder") : 60118,
-	  y = b ? Symbol.for("react.scope") : 60119;
-	function z(a) {
-	  if ("object" === typeof a && null !== a) {
-	    var u = a.$$typeof;
-	    switch (u) {
-	      case c:
-	        switch (a = a.type, a) {
-	          case l:
-	          case m:
-	          case e:
-	          case g:
-	          case f:
-	          case p:
-	            return a;
-	          default:
-	            switch (a = a && a.$$typeof, a) {
-	              case k:
-	              case n:
-	              case t:
-	              case r:
-	              case h:
-	                return a;
-	              default:
-	                return u;
-	            }
-	        }
-	      case d:
-	        return u;
-	    }
-	  }
-	}
-	function A(a) {
-	  return z(a) === m;
-	}
-	reactIs_production_min.AsyncMode = l;
-	reactIs_production_min.ConcurrentMode = m;
-	reactIs_production_min.ContextConsumer = k;
-	reactIs_production_min.ContextProvider = h;
-	reactIs_production_min.Element = c;
-	reactIs_production_min.ForwardRef = n;
-	reactIs_production_min.Fragment = e;
-	reactIs_production_min.Lazy = t;
-	reactIs_production_min.Memo = r;
-	reactIs_production_min.Portal = d;
-	reactIs_production_min.Profiler = g;
-	reactIs_production_min.StrictMode = f;
-	reactIs_production_min.Suspense = p;
-	reactIs_production_min.isAsyncMode = function (a) {
-	  return A(a) || z(a) === l;
-	};
-	reactIs_production_min.isConcurrentMode = A;
-	reactIs_production_min.isContextConsumer = function (a) {
-	  return z(a) === k;
-	};
-	reactIs_production_min.isContextProvider = function (a) {
-	  return z(a) === h;
-	};
-	reactIs_production_min.isElement = function (a) {
-	  return "object" === typeof a && null !== a && a.$$typeof === c;
-	};
-	reactIs_production_min.isForwardRef = function (a) {
-	  return z(a) === n;
-	};
-	reactIs_production_min.isFragment = function (a) {
-	  return z(a) === e;
-	};
-	reactIs_production_min.isLazy = function (a) {
-	  return z(a) === t;
-	};
-	reactIs_production_min.isMemo = function (a) {
-	  return z(a) === r;
-	};
-	reactIs_production_min.isPortal = function (a) {
-	  return z(a) === d;
-	};
-	reactIs_production_min.isProfiler = function (a) {
-	  return z(a) === g;
-	};
-	reactIs_production_min.isStrictMode = function (a) {
-	  return z(a) === f;
-	};
-	reactIs_production_min.isSuspense = function (a) {
-	  return z(a) === p;
-	};
-	reactIs_production_min.isValidElementType = function (a) {
-	  return "string" === typeof a || "function" === typeof a || a === e || a === m || a === g || a === f || a === p || a === q || "object" === typeof a && null !== a && (a.$$typeof === t || a.$$typeof === r || a.$$typeof === h || a.$$typeof === k || a.$$typeof === n || a.$$typeof === w || a.$$typeof === x || a.$$typeof === y || a.$$typeof === v);
-	};
-	reactIs_production_min.typeOf = z;
-	return reactIs_production_min;
-}
-
-{
-  reactIs$1.exports = requireReactIs_production_min();
-}
-
-var reactIsExports = reactIs$1.exports;
-
-var reactIs = reactIsExports;
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-  childContextTypes: true,
-  contextType: true,
-  contextTypes: true,
-  defaultProps: true,
-  displayName: true,
-  getDefaultProps: true,
-  getDerivedStateFromError: true,
-  getDerivedStateFromProps: true,
-  mixins: true,
-  propTypes: true,
-  type: true
-};
-var KNOWN_STATICS = {
-  name: true,
-  length: true,
-  prototype: true,
-  caller: true,
-  callee: true,
-  arguments: true,
-  arity: true
-};
-var FORWARD_REF_STATICS = {
-  '$$typeof': true,
-  render: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true
-};
-var MEMO_STATICS = {
-  '$$typeof': true,
-  compare: true,
-  defaultProps: true,
-  displayName: true,
-  propTypes: true,
-  type: true
-};
-var TYPE_STATICS = {};
-TYPE_STATICS[reactIs.ForwardRef] = FORWARD_REF_STATICS;
-TYPE_STATICS[reactIs.Memo] = MEMO_STATICS;
-function getStatics(component) {
-  // React v16.11 and below
-  if (reactIs.isMemo(component)) {
-    return MEMO_STATICS;
-  } // React v16.12 and above
-
-  return TYPE_STATICS[component['$$typeof']] || REACT_STATICS;
-}
-var defineProperty$3 = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = Object.prototype;
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-  if (typeof sourceComponent !== 'string') {
-    // don't hoist over string (html) components
-    if (objectPrototype) {
-      var inheritedComponent = getPrototypeOf(sourceComponent);
-      if (inheritedComponent && inheritedComponent !== objectPrototype) {
-        hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-      }
-    }
-    var keys = getOwnPropertyNames(sourceComponent);
-    if (getOwnPropertySymbols) {
-      keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-    }
-    var targetStatics = getStatics(targetComponent);
-    var sourceStatics = getStatics(sourceComponent);
-    for (var i = 0; i < keys.length; ++i) {
-      var key = keys[i];
-      if (!KNOWN_STATICS[key] && !(blacklist && blacklist[key]) && !(sourceStatics && sourceStatics[key]) && !(targetStatics && targetStatics[key])) {
-        var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-        try {
-          // Avoid failures from read-only properties
-          defineProperty$3(targetComponent, key, descriptor);
-        } catch (e) {}
-      }
-    }
-  }
-  return targetComponent;
-}
-var hoistNonReactStatics_cjs = hoistNonReactStatics;
-
-var f = /*@__PURE__*/getDefaultExportFromCjs(hoistNonReactStatics_cjs);
-
-function m() {
-  return (m = Object.assign || function (e) {
-    for (var t = 1; t < arguments.length; t++) {
-      var n = arguments[t];
-      for (var r in n) Object.prototype.hasOwnProperty.call(n, r) && (e[r] = n[r]);
-    }
-    return e;
-  }).apply(this, arguments);
-}
-var y = function (e, t) {
-    for (var n = [e[0]], r = 0, o = t.length; r < o; r += 1) n.push(t[r], e[r + 1]);
-    return n;
-  },
-  v = function (t) {
-    return null !== t && "object" == typeof t && "[object Object]" === (t.toString ? t.toString() : Object.prototype.toString.call(t)) && !reactIsExports$1.typeOf(t);
-  },
-  g = Object.freeze([]),
-  S = Object.freeze({});
-function w(e) {
-  return "function" == typeof e;
-}
-function E(e) {
-  return e.displayName || e.name || "Component";
-}
-function b(e) {
-  return e && "string" == typeof e.styledComponentId;
-}
-var _ = "undefined" != typeof process && void 0 !== process.env && (process.env.REACT_APP_SC_ATTR || process.env.SC_ATTR) || "data-styled",
-  A = "undefined" != typeof window && "HTMLElement" in window,
-  C = Boolean("boolean" == typeof SC_DISABLE_SPEEDY ? SC_DISABLE_SPEEDY : "undefined" != typeof process && void 0 !== process.env && (void 0 !== process.env.REACT_APP_SC_DISABLE_SPEEDY && "" !== process.env.REACT_APP_SC_DISABLE_SPEEDY ? "false" !== process.env.REACT_APP_SC_DISABLE_SPEEDY && process.env.REACT_APP_SC_DISABLE_SPEEDY : void 0 !== process.env.SC_DISABLE_SPEEDY && "" !== process.env.SC_DISABLE_SPEEDY ? "false" !== process.env.SC_DISABLE_SPEEDY && process.env.SC_DISABLE_SPEEDY : "production" !== "production"));
-function R(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
-  throw new Error("An error occurred. See https://git.io/JUIaE#" + e + " for more information." + (n.length > 0 ? " Args: " + n.join(", ") : "")) ;
-}
-var D = function () {
-    function e(e) {
-      this.groupSizes = new Uint32Array(512), this.length = 512, this.tag = e;
-    }
-    var t = e.prototype;
-    return t.indexOfGroup = function (e) {
-      for (var t = 0, n = 0; n < e; n++) t += this.groupSizes[n];
-      return t;
-    }, t.insertRules = function (e, t) {
-      if (e >= this.groupSizes.length) {
-        for (var n = this.groupSizes, r = n.length, o = r; e >= o;) (o <<= 1) < 0 && R(16, "" + e);
-        this.groupSizes = new Uint32Array(o), this.groupSizes.set(n), this.length = o;
-        for (var s = r; s < o; s++) this.groupSizes[s] = 0;
-      }
-      for (var i = this.indexOfGroup(e + 1), a = 0, c = t.length; a < c; a++) this.tag.insertRule(i, t[a]) && (this.groupSizes[e]++, i++);
-    }, t.clearGroup = function (e) {
-      if (e < this.length) {
-        var t = this.groupSizes[e],
-          n = this.indexOfGroup(e),
-          r = n + t;
-        this.groupSizes[e] = 0;
-        for (var o = n; o < r; o++) this.tag.deleteRule(n);
-      }
-    }, t.getGroup = function (e) {
-      var t = "";
-      if (e >= this.length || 0 === this.groupSizes[e]) return t;
-      for (var n = this.groupSizes[e], r = this.indexOfGroup(e), o = r + n, s = r; s < o; s++) t += this.tag.getRule(s) + "/*!sc*/\n";
-      return t;
-    }, e;
-  }(),
-  j = new Map(),
-  T = new Map(),
-  x = 1,
-  k = function (e) {
-    if (j.has(e)) return j.get(e);
-    for (; T.has(x);) x++;
-    var t = x++;
-    return j.set(e, t), T.set(t, e), t;
-  },
-  V = function (e) {
-    return T.get(e);
-  },
-  z = function (e, t) {
-    t >= x && (x = t + 1), j.set(e, t), T.set(t, e);
-  },
-  B = "style[" + _ + '][data-styled-version="5.3.11"]',
-  M = new RegExp("^" + _ + '\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),
-  G = function (e, t, n) {
-    for (var r, o = n.split(","), s = 0, i = o.length; s < i; s++) (r = o[s]) && e.registerName(t, r);
-  },
-  L = function (e, t) {
-    for (var n = (t.textContent || "").split("/*!sc*/\n"), r = [], o = 0, s = n.length; o < s; o++) {
-      var i = n[o].trim();
-      if (i) {
-        var a = i.match(M);
-        if (a) {
-          var c = 0 | parseInt(a[1], 10),
-            u = a[2];
-          0 !== c && (z(u, c), G(e, u, a[3]), e.getTag().insertRules(c, r)), r.length = 0;
-        } else r.push(i);
-      }
-    }
-  },
-  F = function () {
-    return "undefined" != typeof __webpack_nonce__ ? __webpack_nonce__ : null;
-  },
-  Y = function (e) {
-    var t = document.head,
-      n = e || t,
-      r = document.createElement("style"),
-      o = function (e) {
-        for (var t = e.childNodes, n = t.length; n >= 0; n--) {
-          var r = t[n];
-          if (r && 1 === r.nodeType && r.hasAttribute(_)) return r;
-        }
-      }(n),
-      s = void 0 !== o ? o.nextSibling : null;
-    r.setAttribute(_, "active"), r.setAttribute("data-styled-version", "5.3.11");
-    var i = F();
-    return i && r.setAttribute("nonce", i), n.insertBefore(r, s), r;
-  },
-  q = function () {
-    function e(e) {
-      var t = this.element = Y(e);
-      t.appendChild(document.createTextNode("")), this.sheet = function (e) {
-        if (e.sheet) return e.sheet;
-        for (var t = document.styleSheets, n = 0, r = t.length; n < r; n++) {
-          var o = t[n];
-          if (o.ownerNode === e) return o;
-        }
-        R(17);
-      }(t), this.length = 0;
-    }
-    var t = e.prototype;
-    return t.insertRule = function (e, t) {
-      try {
-        return this.sheet.insertRule(t, e), this.length++, !0;
-      } catch (e) {
-        return !1;
-      }
-    }, t.deleteRule = function (e) {
-      this.sheet.deleteRule(e), this.length--;
-    }, t.getRule = function (e) {
-      var t = this.sheet.cssRules[e];
-      return void 0 !== t && "string" == typeof t.cssText ? t.cssText : "";
-    }, e;
-  }(),
-  H = function () {
-    function e(e) {
-      var t = this.element = Y(e);
-      this.nodes = t.childNodes, this.length = 0;
-    }
-    var t = e.prototype;
-    return t.insertRule = function (e, t) {
-      if (e <= this.length && e >= 0) {
-        var n = document.createTextNode(t),
-          r = this.nodes[e];
-        return this.element.insertBefore(n, r || null), this.length++, !0;
-      }
-      return !1;
-    }, t.deleteRule = function (e) {
-      this.element.removeChild(this.nodes[e]), this.length--;
-    }, t.getRule = function (e) {
-      return e < this.length ? this.nodes[e].textContent : "";
-    }, e;
-  }(),
-  $ = function () {
-    function e(e) {
-      this.rules = [], this.length = 0;
-    }
-    var t = e.prototype;
-    return t.insertRule = function (e, t) {
-      return e <= this.length && (this.rules.splice(e, 0, t), this.length++, !0);
-    }, t.deleteRule = function (e) {
-      this.rules.splice(e, 1), this.length--;
-    }, t.getRule = function (e) {
-      return e < this.length ? this.rules[e] : "";
-    }, e;
-  }(),
-  W = A,
-  U = {
-    isServer: !A,
-    useCSSOMInjection: !C
-  },
-  J = function () {
-    function e(e, t, n) {
-      void 0 === e && (e = S), void 0 === t && (t = {}), this.options = m({}, U, {}, e), this.gs = t, this.names = new Map(n), this.server = !!e.isServer, !this.server && A && W && (W = !1, function (e) {
-        for (var t = document.querySelectorAll(B), n = 0, r = t.length; n < r; n++) {
-          var o = t[n];
-          o && "active" !== o.getAttribute(_) && (L(e, o), o.parentNode && o.parentNode.removeChild(o));
-        }
-      }(this));
-    }
-    e.registerId = function (e) {
-      return k(e);
-    };
-    var t = e.prototype;
-    return t.reconstructWithOptions = function (t, n) {
-      return void 0 === n && (n = !0), new e(m({}, this.options, {}, t), this.gs, n && this.names || void 0);
-    }, t.allocateGSInstance = function (e) {
-      return this.gs[e] = (this.gs[e] || 0) + 1;
-    }, t.getTag = function () {
-      return this.tag || (this.tag = (n = (t = this.options).isServer, r = t.useCSSOMInjection, o = t.target, e = n ? new $(o) : r ? new q(o) : new H(o), new D(e)));
-      var e, t, n, r, o;
-    }, t.hasNameForId = function (e, t) {
-      return this.names.has(e) && this.names.get(e).has(t);
-    }, t.registerName = function (e, t) {
-      if (k(e), this.names.has(e)) this.names.get(e).add(t);else {
-        var n = new Set();
-        n.add(t), this.names.set(e, n);
-      }
-    }, t.insertRules = function (e, t, n) {
-      this.registerName(e, t), this.getTag().insertRules(k(e), n);
-    }, t.clearNames = function (e) {
-      this.names.has(e) && this.names.get(e).clear();
-    }, t.clearRules = function (e) {
-      this.getTag().clearGroup(k(e)), this.clearNames(e);
-    }, t.clearTag = function () {
-      this.tag = void 0;
-    }, t.toString = function () {
-      return function (e) {
-        for (var t = e.getTag(), n = t.length, r = "", o = 0; o < n; o++) {
-          var s = V(o);
-          if (void 0 !== s) {
-            var i = e.names.get(s),
-              a = t.getGroup(o);
-            if (i && a && i.size) {
-              var c = _ + ".g" + o + '[id="' + s + '"]',
-                u = "";
-              void 0 !== i && i.forEach(function (e) {
-                e.length > 0 && (u += e + ",");
-              }), r += "" + a + c + '{content:"' + u + '"}/*!sc*/\n';
-            }
-          }
-        }
-        return r;
-      }(this);
-    }, e;
-  }(),
-  X = /(a)(d)/gi,
-  Z = function (e) {
-    return String.fromCharCode(e + (e > 25 ? 39 : 97));
-  };
-function K(e) {
-  var t,
-    n = "";
-  for (t = Math.abs(e); t > 52; t = t / 52 | 0) n = Z(t % 52) + n;
-  return (Z(t % 52) + n).replace(X, "$1-$2");
-}
-var Q = function (e, t) {
-    for (var n = t.length; n;) e = 33 * e ^ t.charCodeAt(--n);
-    return e;
-  },
-  ee = function (e) {
-    return Q(5381, e);
-  };
-function te(e) {
-  for (var t = 0; t < e.length; t += 1) {
-    var n = e[t];
-    if (w(n) && !b(n)) return !1;
-  }
-  return !0;
-}
-var ne = ee("5.3.11"),
-  re = function () {
-    function e(e, t, n) {
-      this.rules = e, this.staticRulesId = "", this.isStatic = (void 0 === n || n.isStatic) && te(e), this.componentId = t, this.baseHash = Q(ne, t), this.baseStyle = n, J.registerId(t);
-    }
-    return e.prototype.generateAndInjectStyles = function (e, t, n) {
-      var r = this.componentId,
-        o = [];
-      if (this.baseStyle && o.push(this.baseStyle.generateAndInjectStyles(e, t, n)), this.isStatic && !n.hash) {
-        if (this.staticRulesId && t.hasNameForId(r, this.staticRulesId)) o.push(this.staticRulesId);else {
-          var s = be(this.rules, e, t, n).join(""),
-            i = K(Q(this.baseHash, s) >>> 0);
-          if (!t.hasNameForId(r, i)) {
-            var a = n(s, "." + i, void 0, r);
-            t.insertRules(r, i, a);
-          }
-          o.push(i), this.staticRulesId = i;
-        }
-      } else {
-        for (var c = this.rules.length, u = Q(this.baseHash, n.hash), l = "", d = 0; d < c; d++) {
-          var h = this.rules[d];
-          if ("string" == typeof h) l += h;else if (h) {
-            var p = be(h, e, t, n),
-              f = Array.isArray(p) ? p.join("") : p;
-            u = Q(u, f + d), l += f;
-          }
-        }
-        if (l) {
-          var m = K(u >>> 0);
-          if (!t.hasNameForId(r, m)) {
-            var y = n(l, "." + m, void 0, r);
-            t.insertRules(r, m, y);
-          }
-          o.push(m);
-        }
-      }
-      return o.join(" ");
-    }, e;
-  }(),
-  oe = /^\s*\/\/.*$/gm,
-  se = [":", "[", ".", "#"];
-function ie(e) {
-  var t,
-    n,
-    r,
-    o,
-    s = void 0 === e ? S : e,
-    i = s.options,
-    a = void 0 === i ? S : i,
-    c = s.plugins,
-    u = void 0 === c ? g : c,
-    l = new stylis_min(a),
-    h = [],
-    p = function (e) {
-      function t(t) {
-        if (t) try {
-          e(t + "}");
-        } catch (e) {}
-      }
-      return function (n, r, o, s, i, a, c, u, l, d) {
-        switch (n) {
-          case 1:
-            if (0 === l && 64 === r.charCodeAt(0)) return e(r + ";"), "";
-            break;
-          case 2:
-            if (0 === u) return r + "/*|*/";
-            break;
-          case 3:
-            switch (u) {
-              case 102:
-              case 112:
-                return e(o[0] + r), "";
-              default:
-                return r + (0 === d ? "/*|*/" : "");
-            }
-          case -2:
-            r.split("/*|*/}").forEach(t);
-        }
-      };
-    }(function (e) {
-      h.push(e);
-    }),
-    f = function (e, r, s) {
-      return 0 === r && -1 !== se.indexOf(s[n.length]) || s.match(o) ? e : "." + t;
-    };
-  function m(e, s, i, a) {
-    void 0 === a && (a = "&");
-    var c = e.replace(oe, ""),
-      u = s && i ? i + " " + s + " { " + c + " }" : c;
-    return t = a, n = s, r = new RegExp("\\" + n + "\\b", "g"), o = new RegExp("(\\" + n + "\\b){2,}"), l(i || !s ? "" : s, u);
-  }
-  return l.use([].concat(u, [function (e, t, o) {
-    2 === e && o.length && o[0].lastIndexOf(n) > 0 && (o[0] = o[0].replace(r, f));
-  }, p, function (e) {
-    if (-2 === e) {
-      var t = h;
-      return h = [], t;
-    }
-  }])), m.hash = u.length ? u.reduce(function (e, t) {
-    return t.name || R(15), Q(e, t.name);
-  }, 5381).toString() : "", m;
-}
-var ae = /*#__PURE__*/React.createContext();
-  ae.Consumer;
-  var ue = /*#__PURE__*/React.createContext(),
-  le = (ue.Consumer, new J()),
-  de = ie();
-function he() {
-  return reactExports.useContext(ae) || le;
-}
-function pe() {
-  return reactExports.useContext(ue) || de;
-}
-var me = function () {
-    function e(e, t) {
-      var n = this;
-      this.inject = function (e, t) {
-        void 0 === t && (t = de);
-        var r = n.name + t.hash;
-        e.hasNameForId(n.id, r) || e.insertRules(n.id, r, t(n.rules, r, "@keyframes"));
-      }, this.toString = function () {
-        return R(12, String(n.name));
-      }, this.name = e, this.id = "sc-keyframes-" + e, this.rules = t;
-    }
-    return e.prototype.getName = function (e) {
-      return void 0 === e && (e = de), this.name + e.hash;
-    }, e;
-  }(),
-  ye = /([A-Z])/,
-  ve = /([A-Z])/g,
-  ge = /^ms-/,
-  Se = function (e) {
-    return "-" + e.toLowerCase();
-  };
-function we(e) {
-  return ye.test(e) ? e.replace(ve, Se).replace(ge, "-ms-") : e;
-}
-var Ee = function (e) {
-  return null == e || !1 === e || "" === e;
-};
-function be(e, n, r, o) {
-  if (Array.isArray(e)) {
-    for (var s, i = [], a = 0, c = e.length; a < c; a += 1) "" !== (s = be(e[a], n, r, o)) && (Array.isArray(s) ? i.push.apply(i, s) : i.push(s));
-    return i;
-  }
-  if (Ee(e)) return "";
-  if (b(e)) return "." + e.styledComponentId;
-  if (w(e)) {
-    if ("function" != typeof (l = e) || l.prototype && l.prototype.isReactComponent || !n) return e;
-    var u = e(n);
-    return be(u, n, r, o);
-  }
-  var l;
-  return e instanceof me ? r ? (e.inject(r, o), e.getName(o)) : e : v(e) ? function e(t, n) {
-    var r,
-      o,
-      s = [];
-    for (var i in t) t.hasOwnProperty(i) && !Ee(t[i]) && (Array.isArray(t[i]) && t[i].isCss || w(t[i]) ? s.push(we(i) + ":", t[i], ";") : v(t[i]) ? s.push.apply(s, e(t[i], i)) : s.push(we(i) + ": " + (r = i, null == (o = t[i]) || "boolean" == typeof o || "" === o ? "" : "number" != typeof o || 0 === o || r in unitlessKeys || r.startsWith("--") ? String(o).trim() : o + "px") + ";"));
-    return n ? [n + " {"].concat(s, ["}"]) : s;
-  }(e) : e.toString();
-}
-var _e = function (e) {
-  return Array.isArray(e) && (e.isCss = !0), e;
-};
-function Ne(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
-  return w(e) || v(e) ? _e(be(y(g, [e].concat(n)))) : 0 === n.length && 1 === e.length && "string" == typeof e[0] ? e : _e(be(y(e, n)));
-}
-var Pe = function (e, t, n) {
-    return void 0 === n && (n = S), e.theme !== n.theme && e.theme || t || n.theme;
-  },
-  Oe = /[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,
-  Re = /(^-|-$)/g;
-function De(e) {
-  return e.replace(Oe, "-").replace(Re, "");
-}
-var je = function (e) {
-  return K(ee(e) >>> 0);
-};
-function Te(e) {
-  return "string" == typeof e && ("production" === "production" );
-}
-var xe = function (e) {
-    return "function" == typeof e || "object" == typeof e && null !== e && !Array.isArray(e);
-  },
-  ke = function (e) {
-    return "__proto__" !== e && "constructor" !== e && "prototype" !== e;
-  };
-function Ve(e, t, n) {
-  var r = e[n];
-  xe(t) && xe(r) ? ze(r, t) : e[n] = t;
-}
-function ze(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
-  for (var o = 0, s = n; o < s.length; o++) {
-    var i = s[o];
-    if (xe(i)) for (var a in i) ke(a) && Ve(e, i[a], a);
-  }
-  return e;
-}
-var Be = /*#__PURE__*/React.createContext();
-  Be.Consumer;
-function Ge(e) {
-  var t = reactExports.useContext(Be),
-    n = reactExports.useMemo(function () {
-      return function (e, t) {
-        if (!e) return R(14);
-        if (w(e)) {
-          var n = e(t);
-          return n ;
-        }
-        return Array.isArray(e) || "object" != typeof e ? R(8) : t ? m({}, t, {}, e) : e;
-      }(e.theme, t);
-    }, [e.theme, t]);
-  return e.children ? /*#__PURE__*/React.createElement(Be.Provider, {
-    value: n
-  }, e.children) : null;
-}
-var Le = {};
-function Fe(e, t, n) {
-  var o = b(e),
-    i = !Te(e),
-    a = t.attrs,
-    c = void 0 === a ? g : a,
-    l = t.componentId,
-    d = void 0 === l ? function (e, t) {
-      var n = "string" != typeof e ? "sc" : De(e);
-      Le[n] = (Le[n] || 0) + 1;
-      var r = n + "-" + je("5.3.11" + n + Le[n]);
-      return t ? t + "-" + r : r;
-    }(t.displayName, t.parentComponentId) : l,
-    h = t.displayName,
-    y = void 0 === h ? function (e) {
-      return Te(e) ? "styled." + e : "Styled(" + E(e) + ")";
-    }(e) : h,
-    v = t.displayName && t.componentId ? De(t.displayName) + "-" + t.componentId : t.componentId || d,
-    _ = o && e.attrs ? Array.prototype.concat(e.attrs, c).filter(Boolean) : c,
-    N = t.shouldForwardProp;
-  o && e.shouldForwardProp && (N = t.shouldForwardProp ? function (n, r, o) {
-    return e.shouldForwardProp(n, r, o) && t.shouldForwardProp(n, r, o);
-  } : e.shouldForwardProp);
-  var A,
-    C = new re(n, v, o ? e.componentStyle : void 0),
-    I = C.isStatic && 0 === c.length,
-    P = function (e, t) {
-      return function (e, t, n, r) {
-        var o = e.attrs,
-          i = e.componentStyle,
-          a = e.defaultProps,
-          c = e.foldedComponentIds,
-          l = e.shouldForwardProp,
-          d = e.styledComponentId,
-          h = e.target,
-          f = function (e, t, n) {
-            void 0 === e && (e = S);
-            var r = m({}, t, {
-                theme: e
-              }),
-              o = {};
-            return n.forEach(function (e) {
-              var t,
-                n,
-                s,
-                i = e;
-              for (t in w(i) && (i = i(r)), i) r[t] = o[t] = "className" === t ? (n = o[t], s = i[t], n && s ? n + " " + s : n || s) : i[t];
-            }), [r, o];
-          }(Pe(t, reactExports.useContext(Be), a) || S, t, o),
-          y = f[0],
-          v = f[1],
-          g = function (e, t, n, r) {
-            var o = he(),
-              s = pe(),
-              i = t ? e.generateAndInjectStyles(S, o, s) : e.generateAndInjectStyles(n, o, s);
-            return i;
-          }(i, r, y),
-          E = n,
-          b = v.$as || t.$as || v.as || t.as || h,
-          _ = Te(b),
-          N = v !== t ? m({}, t, {}, v) : t,
-          A = {};
-        for (var C in N) "$" !== C[0] && "as" !== C && ("forwardedAs" === C ? A.as = N[C] : (l ? l(C, isPropValid, b) : !_ || isPropValid(C)) && (A[C] = N[C]));
-        return t.style && v.style !== t.style && (A.style = m({}, t.style, {}, v.style)), A.className = Array.prototype.concat(c, d, g !== d ? g : null, t.className, v.className).filter(Boolean).join(" "), A.ref = E, /*#__PURE__*/reactExports.createElement(b, A);
-      }(A, e, t, I);
-    };
-  return P.displayName = y, (A = /*#__PURE__*/React.forwardRef(P)).attrs = _, A.componentStyle = C, A.displayName = y, A.shouldForwardProp = N, A.foldedComponentIds = o ? Array.prototype.concat(e.foldedComponentIds, e.styledComponentId) : g, A.styledComponentId = v, A.target = o ? e.target : e, A.withComponent = function (e) {
-    var r = t.componentId,
-      o = function (e, t) {
-        if (null == e) return {};
-        var n,
-          r,
-          o = {},
-          s = Object.keys(e);
-        for (r = 0; r < s.length; r++) n = s[r], t.indexOf(n) >= 0 || (o[n] = e[n]);
-        return o;
-      }(t, ["componentId"]),
-      s = r && r + "-" + (Te(e) ? e : De(E(e)));
-    return Fe(e, m({}, o, {
-      attrs: _,
-      componentId: s
-    }), n);
-  }, Object.defineProperty(A, "defaultProps", {
-    get: function () {
-      return this._foldedDefaultProps;
-    },
-    set: function (t) {
-      this._foldedDefaultProps = o ? ze({}, e.defaultProps, t) : t;
-    }
-  }), Object.defineProperty(A, "toString", {
-    value: function () {
-      return "." + A.styledComponentId;
-    }
-  }), i && f(A, e, {
-    attrs: !0,
-    componentStyle: !0,
-    displayName: !0,
-    foldedComponentIds: !0,
-    shouldForwardProp: !0,
-    styledComponentId: !0,
-    target: !0,
-    withComponent: !0
-  }), A;
-}
-var Ye = function (e) {
-  return function e(t, r, o) {
-    if (void 0 === o && (o = S), !reactIsExports$1.isValidElementType(r)) return R(1, String(r));
-    var s = function () {
-      return t(r, o, Ne.apply(void 0, arguments));
-    };
-    return s.withConfig = function (n) {
-      return e(t, r, m({}, o, {}, n));
-    }, s.attrs = function (n) {
-      return e(t, r, m({}, o, {
-        attrs: Array.prototype.concat(o.attrs, n).filter(Boolean)
-      }));
-    }, s;
-  }(Fe, e);
-};
-["a", "abbr", "address", "area", "article", "aside", "audio", "b", "base", "bdi", "bdo", "big", "blockquote", "body", "br", "button", "canvas", "caption", "cite", "code", "col", "colgroup", "data", "datalist", "dd", "del", "details", "dfn", "dialog", "div", "dl", "dt", "em", "embed", "fieldset", "figcaption", "figure", "footer", "form", "h1", "h2", "h3", "h4", "h5", "h6", "head", "header", "hgroup", "hr", "html", "i", "iframe", "img", "input", "ins", "kbd", "keygen", "label", "legend", "li", "link", "main", "map", "mark", "marquee", "menu", "menuitem", "meta", "meter", "nav", "noscript", "object", "ol", "optgroup", "option", "output", "p", "param", "picture", "pre", "progress", "q", "rp", "rt", "ruby", "s", "samp", "script", "section", "select", "small", "source", "span", "strong", "style", "sub", "summary", "sup", "table", "tbody", "td", "textarea", "tfoot", "th", "thead", "time", "title", "tr", "track", "u", "ul", "var", "video", "wbr", "circle", "clipPath", "defs", "ellipse", "foreignObject", "g", "image", "line", "linearGradient", "marker", "mask", "path", "pattern", "polygon", "polyline", "radialGradient", "rect", "stop", "svg", "text", "textPath", "tspan"].forEach(function (e) {
-  Ye[e] = Ye(e);
-});
-function $e(e) {
-  for (var t = arguments.length, n = new Array(t > 1 ? t - 1 : 0), r = 1; r < t; r++) n[r - 1] = arguments[r];
-  var o = Ne.apply(void 0, [e].concat(n)).join(""),
-    s = je(o);
-  return new me(s, o);
-}
-
-var propTypes = {exports: {}};
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var ReactPropTypesSecret_1;
-var hasRequiredReactPropTypesSecret;
-
-function requireReactPropTypesSecret () {
-	if (hasRequiredReactPropTypesSecret) return ReactPropTypesSecret_1;
-	hasRequiredReactPropTypesSecret = 1;
-
-	var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
-	ReactPropTypesSecret_1 = ReactPropTypesSecret;
-	return ReactPropTypesSecret_1;
-}
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-var factoryWithThrowingShims;
-var hasRequiredFactoryWithThrowingShims;
-
-function requireFactoryWithThrowingShims () {
-	if (hasRequiredFactoryWithThrowingShims) return factoryWithThrowingShims;
-	hasRequiredFactoryWithThrowingShims = 1;
-
-	var ReactPropTypesSecret = requireReactPropTypesSecret();
-	function emptyFunction() {}
-	function emptyFunctionWithReset() {}
-	emptyFunctionWithReset.resetWarningCache = emptyFunction;
-	factoryWithThrowingShims = function () {
-	  function shim(props, propName, componentName, location, propFullName, secret) {
-	    if (secret === ReactPropTypesSecret) {
-	      // It is still safe when called from React.
-	      return;
-	    }
-	    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
-	    err.name = 'Invariant Violation';
-	    throw err;
-	  }
-	  shim.isRequired = shim;
-	  function getShim() {
-	    return shim;
-	  }
-	  // Important!
-	  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
-	  var ReactPropTypes = {
-	    array: shim,
-	    bigint: shim,
-	    bool: shim,
-	    func: shim,
-	    number: shim,
-	    object: shim,
-	    string: shim,
-	    symbol: shim,
-	    any: shim,
-	    arrayOf: getShim,
-	    element: shim,
-	    elementType: shim,
-	    instanceOf: getShim,
-	    node: shim,
-	    objectOf: getShim,
-	    oneOf: getShim,
-	    oneOfType: getShim,
-	    shape: getShim,
-	    exact: getShim,
-	    checkPropTypes: emptyFunctionWithReset,
-	    resetWarningCache: emptyFunction
-	  };
-	  ReactPropTypes.PropTypes = ReactPropTypes;
-	  return ReactPropTypes;
-	};
-	return factoryWithThrowingShims;
-}
-
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-{
-  // By explicitly using `prop-types` you are opting into new production behavior.
-  // http://fb.me/prop-types-in-prod
-  propTypes.exports = requireFactoryWithThrowingShims()();
-}
-
-var propTypesExports = propTypes.exports;
-var PropTypes = /*@__PURE__*/getDefaultExportFromCjs(propTypesExports);
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-const INPUT_TYPES_WHITE_LIST = {
-  text: true,
-  search: true,
-  url: true,
-  tel: true,
-  email: true,
-  password: true,
-  number: true,
-  date: true,
-  month: true,
-  week: true,
-  time: true,
-  datetime: true,
-  'datetime-local': true
-};
-function useFocusVisible(_temp) {
-  let {
-    scope,
-    relativeDocument,
-    className = 'garden-focus-visible',
-    dataAttribute = 'data-garden-focus-visible'
-  } = _temp === void 0 ? {} : _temp;
-  if (!scope) {
-    throw new Error('Error: the useFocusVisible() hook requires a "scope" property');
-  }
-  const hadKeyboardEvent = reactExports.useRef(false);
-  const hadFocusVisibleRecently = reactExports.useRef(false);
-  const hadFocusVisibleRecentlyTimeout = reactExports.useRef();
-  reactExports.useEffect(() => {
-    let environment = relativeDocument;
-    if (!environment) {
-      environment = document;
-    }
-    const isValidFocusTarget = el => {
-      if (el && el !== scope.current && el.nodeName !== 'HTML' && el.nodeName !== 'BODY' && 'classList' in el && 'contains' in el.classList) {
-        return true;
-      }
-      return false;
-    };
-    const focusTriggersKeyboardModality = el => {
-      const type = el.type;
-      const tagName = el.tagName;
-      if (tagName === 'INPUT' && INPUT_TYPES_WHITE_LIST[type] && !el.readOnly) {
-        return true;
-      }
-      if (tagName === 'TEXTAREA' && !el.readOnly) {
-        return true;
-      }
-      if (el.isContentEditable) {
-        return true;
-      }
-      return false;
-    };
-    const isFocused = el => {
-      if (el && (el.classList.contains(className) || el.hasAttribute(dataAttribute))) {
-        return true;
-      }
-      return false;
-    };
-    const addFocusVisibleClass = el => {
-      if (isFocused(el)) {
-        return;
-      }
-      el && el.classList.add(className);
-      el && el.setAttribute(dataAttribute, 'true');
-    };
-    const removeFocusVisibleClass = el => {
-      el.classList.remove(className);
-      el.removeAttribute(dataAttribute);
-    };
-    const onKeyDown = e => {
-      if (e.metaKey || e.altKey || e.ctrlKey) {
-        return;
-      }
-      if (isValidFocusTarget(environment.activeElement)) {
-        addFocusVisibleClass(environment.activeElement);
-      }
-      hadKeyboardEvent.current = true;
-    };
-    const onPointerDown = () => {
-      hadKeyboardEvent.current = false;
-    };
-    const onFocus = e => {
-      if (!isValidFocusTarget(e.target)) {
-        return;
-      }
-      if (hadKeyboardEvent.current || focusTriggersKeyboardModality(e.target)) {
-        addFocusVisibleClass(e.target);
-      }
-    };
-    const onBlur = e => {
-      if (!isValidFocusTarget(e.target)) {
-        return;
-      }
-      if (isFocused(e.target)) {
-        hadFocusVisibleRecently.current = true;
-        clearTimeout(hadFocusVisibleRecentlyTimeout.current);
-        const timeoutId = setTimeout(() => {
-          hadFocusVisibleRecently.current = false;
-          clearTimeout(hadFocusVisibleRecentlyTimeout.current);
-        }, 100);
-        hadFocusVisibleRecentlyTimeout.current = Number(timeoutId);
-        removeFocusVisibleClass(e.target);
-      }
-    };
-    const onInitialPointerMove = e => {
-      const nodeName = e.target.nodeName;
-      if (nodeName && nodeName.toLowerCase() === 'html') {
-        return;
-      }
-      hadKeyboardEvent.current = false;
-      removeInitialPointerMoveListeners();
-    };
-    const addInitialPointerMoveListeners = () => {
-      environment.addEventListener('mousemove', onInitialPointerMove);
-      environment.addEventListener('mousedown', onInitialPointerMove);
-      environment.addEventListener('mouseup', onInitialPointerMove);
-      environment.addEventListener('pointermove', onInitialPointerMove);
-      environment.addEventListener('pointerdown', onInitialPointerMove);
-      environment.addEventListener('pointerup', onInitialPointerMove);
-      environment.addEventListener('touchmove', onInitialPointerMove);
-      environment.addEventListener('touchstart', onInitialPointerMove);
-      environment.addEventListener('touchend', onInitialPointerMove);
-    };
-    const removeInitialPointerMoveListeners = () => {
-      environment.removeEventListener('mousemove', onInitialPointerMove);
-      environment.removeEventListener('mousedown', onInitialPointerMove);
-      environment.removeEventListener('mouseup', onInitialPointerMove);
-      environment.removeEventListener('pointermove', onInitialPointerMove);
-      environment.removeEventListener('pointerdown', onInitialPointerMove);
-      environment.removeEventListener('pointerup', onInitialPointerMove);
-      environment.removeEventListener('touchmove', onInitialPointerMove);
-      environment.removeEventListener('touchstart', onInitialPointerMove);
-      environment.removeEventListener('touchend', onInitialPointerMove);
-    };
-    const onVisibilityChange = () => {
-      if (environment.visibilityState === 'hidden') {
-        if (hadFocusVisibleRecently.current) {
-          hadKeyboardEvent.current = true;
-        }
-      }
-    };
-    const currentScope = scope.current;
-    if (!environment || !currentScope) {
-      return;
-    }
-    environment.addEventListener('keydown', onKeyDown, true);
-    environment.addEventListener('mousedown', onPointerDown, true);
-    environment.addEventListener('pointerdown', onPointerDown, true);
-    environment.addEventListener('touchstart', onPointerDown, true);
-    environment.addEventListener('visibilitychange', onVisibilityChange, true);
-    addInitialPointerMoveListeners();
-    currentScope && currentScope.addEventListener('focus', onFocus, true);
-    currentScope && currentScope.addEventListener('blur', onBlur, true);
-    return () => {
-      environment.removeEventListener('keydown', onKeyDown);
-      environment.removeEventListener('mousedown', onPointerDown);
-      environment.removeEventListener('pointerdown', onPointerDown);
-      environment.removeEventListener('touchstart', onPointerDown);
-      environment.removeEventListener('visibilityChange', onVisibilityChange);
-      removeInitialPointerMoveListeners();
-      currentScope && currentScope.removeEventListener('focus', onFocus);
-      currentScope && currentScope.removeEventListener('blur', onBlur);
-      clearTimeout(hadFocusVisibleRecentlyTimeout.current);
-    };
-  }, [relativeDocument, scope, className, dataAttribute]);
-}
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  relativeDocument: PropTypes.object,
-  className: PropTypes.string,
-  dataAttribute: PropTypes.string
-});
-
-/**
-  * @reach/utils v0.18.0
-  *
-  * Copyright (c) 2018-2022, React Training LLC
-  *
-  * This source code is licensed under the MIT license found in the
-  * LICENSE.md file in the root directory of this source tree.
-  *
-  * @license MIT
-  */
-
-
-// src/can-use-dom.ts
-function canUseDOM() {
-  return !!(typeof window !== "undefined" && window.document && window.document.createElement);
-}
-var useIsomorphicLayoutEffect$1 = canUseDOM() ? reactExports.useLayoutEffect : reactExports.useEffect;
-
-var serverHandoffComplete = false;
-var id = 0;
-function genId() {
-  return ++id;
-}
-var maybeReactUseId = React$1["useId".toString()];
-function useId(providedId) {
-  if (maybeReactUseId !== void 0) {
-    let generatedId = maybeReactUseId();
-    return providedId ?? generatedId;
-  }
-  let initialId = providedId ?? (serverHandoffComplete ? genId() : null);
-  let [id2, setId] = reactExports.useState(initialId);
-  useIsomorphicLayoutEffect$1(() => {
-    if (id2 === null) {
-      setId(genId());
-    }
-  }, []);
-  reactExports.useEffect(() => {
-    if (serverHandoffComplete === false) {
-      serverHandoffComplete = true;
-    }
-  }, []);
-  return providedId ?? id2 ?? void 0;
-}
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-function composeEventHandlers$1() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-function getControlledValue() {
-  for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
-    values[_key] = arguments[_key];
-  }
-  for (const value of values) {
-    if (value !== undefined) {
-      return value;
-    }
-  }
-  return undefined;
-}
-const KEY_CODES = {
-  ALT: 18,
-  ASTERISK: 170,
-  BACKSPACE: 8,
-  COMMA: 188,
-  DELETE: 46,
-  DOWN: 40,
-  END: 35,
-  ENTER: 13,
-  ESCAPE: 27,
-  HOME: 36,
-  LEFT: 37,
-  NUMPAD_ADD: 107,
-  NUMPAD_DECIMAL: 110,
-  NUMPAD_DIVIDE: 111,
-  NUMPAD_ENTER: 108,
-  NUMPAD_MULTIPLY: 106,
-  NUMPAD_SUBTRACT: 109,
-  PAGE_DOWN: 34,
-  PAGE_UP: 33,
-  PERIOD: 190,
-  RIGHT: 39,
-  SHIFT: 16,
-  SPACE: 32,
-  TAB: 9,
-  UP: 38
-};
-const KEYS$1 = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-var DocumentPosition$1;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
-
-function _extends$w() {
-  _extends$w = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$w.apply(this, arguments);
-}
-
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct()) {
-    _construct = Reflect.construct.bind();
-  } else {
-    _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) _setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-  return _construct.apply(null, arguments);
-}
-
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map === "function" ? new Map() : undefined;
-  _wrapNativeSuper = function _wrapNativeSuper(Class) {
-    if (Class === null || !_isNativeFunction(Class)) return Class;
-    if (typeof Class !== "function") {
-      throw new TypeError("Super expression must either be null or a function");
-    }
-    if (typeof _cache !== "undefined") {
-      if (_cache.has(Class)) return _cache.get(Class);
-      _cache.set(Class, Wrapper);
-    }
-    function Wrapper() {
-      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
-    }
-    Wrapper.prototype = Object.create(Class.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: false,
-        writable: true,
-        configurable: true
-      }
-    });
-    return _setPrototypeOf(Wrapper, Class);
-  };
-  return _wrapNativeSuper(Class);
-}
-
-function last() {
-  var _ref;
-  return _ref = arguments.length - 1, _ref < 0 || arguments.length <= _ref ? undefined : arguments[_ref];
-}
-function negation(a) {
-  return -a;
-}
-function addition(a, b) {
-  return a + b;
-}
-function subtraction(a, b) {
-  return a - b;
-}
-function multiplication(a, b) {
-  return a * b;
-}
-function division(a, b) {
-  return a / b;
-}
-function max$2() {
-  return Math.max.apply(Math, arguments);
-}
-function min$2() {
-  return Math.min.apply(Math, arguments);
-}
-function comma() {
-  return Array.of.apply(Array, arguments);
-}
-var defaultSymbols = {
-  symbols: {
-    '*': {
-      infix: {
-        symbol: '*',
-        f: multiplication,
-        notation: 'infix',
-        precedence: 4,
-        rightToLeft: 0,
-        argCount: 2
-      },
-      symbol: '*',
-      regSymbol: '\\*'
-    },
-    '/': {
-      infix: {
-        symbol: '/',
-        f: division,
-        notation: 'infix',
-        precedence: 4,
-        rightToLeft: 0,
-        argCount: 2
-      },
-      symbol: '/',
-      regSymbol: '/'
-    },
-    '+': {
-      infix: {
-        symbol: '+',
-        f: addition,
-        notation: 'infix',
-        precedence: 2,
-        rightToLeft: 0,
-        argCount: 2
-      },
-      prefix: {
-        symbol: '+',
-        f: last,
-        notation: 'prefix',
-        precedence: 3,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: '+',
-      regSymbol: '\\+'
-    },
-    '-': {
-      infix: {
-        symbol: '-',
-        f: subtraction,
-        notation: 'infix',
-        precedence: 2,
-        rightToLeft: 0,
-        argCount: 2
-      },
-      prefix: {
-        symbol: '-',
-        f: negation,
-        notation: 'prefix',
-        precedence: 3,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: '-',
-      regSymbol: '-'
-    },
-    ',': {
-      infix: {
-        symbol: ',',
-        f: comma,
-        notation: 'infix',
-        precedence: 1,
-        rightToLeft: 0,
-        argCount: 2
-      },
-      symbol: ',',
-      regSymbol: ','
-    },
-    '(': {
-      prefix: {
-        symbol: '(',
-        f: last,
-        notation: 'prefix',
-        precedence: 0,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: '(',
-      regSymbol: '\\('
-    },
-    ')': {
-      postfix: {
-        symbol: ')',
-        f: undefined,
-        notation: 'postfix',
-        precedence: 0,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: ')',
-      regSymbol: '\\)'
-    },
-    min: {
-      func: {
-        symbol: 'min',
-        f: min$2,
-        notation: 'func',
-        precedence: 0,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: 'min',
-      regSymbol: 'min\\b'
-    },
-    max: {
-      func: {
-        symbol: 'max',
-        f: max$2,
-        notation: 'func',
-        precedence: 0,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: 'max',
-      regSymbol: 'max\\b'
-    }
-  }
-};
-var defaultSymbolMap = defaultSymbols;
-/**
- * Create an error file out of errors.md for development and a simple web link to the full errors
- * in production mode.
- * @private
- */
-
-var PolishedError = /*#__PURE__*/function (_Error) {
-  _inheritsLoose(PolishedError, _Error);
-  function PolishedError(code) {
-    var _this;
-    {
-      _this = _Error.call(this, "An error occurred. See https://github.com/styled-components/polished/blob/main/src/internalHelpers/errors.md#" + code + " for more information.") || this;
-    }
-    return _assertThisInitialized(_this);
-  }
-  return PolishedError;
-}( /*#__PURE__*/_wrapNativeSuper(Error));
-var unitRegExp = /((?!\w)a|na|hc|mc|dg|me[r]?|xe|ni(?![a-zA-Z])|mm|cp|tp|xp|q(?!s)|hv|xamv|nimv|wv|sm|s(?!\D|$)|ged|darg?|nrut)/g; // Merges additional math functionality into the defaults.
-
-function mergeSymbolMaps(additionalSymbols) {
-  var symbolMap = {};
-  symbolMap.symbols = additionalSymbols ? _extends$w({}, defaultSymbolMap.symbols, additionalSymbols.symbols) : _extends$w({}, defaultSymbolMap.symbols);
-  return symbolMap;
-}
-function exec(operators, values) {
-  var _ref;
-  var op = operators.pop();
-  values.push(op.f.apply(op, (_ref = []).concat.apply(_ref, values.splice(-op.argCount))));
-  return op.precedence;
-}
-function calculate(expression, additionalSymbols) {
-  var symbolMap = mergeSymbolMaps(additionalSymbols);
-  var match;
-  var operators = [symbolMap.symbols['('].prefix];
-  var values = [];
-  var pattern = new RegExp(
-  // Pattern for numbers
-  "\\d+(?:\\.\\d+)?|" +
-  // ...and patterns for individual operators/function names
-  Object.keys(symbolMap.symbols).map(function (key) {
-    return symbolMap.symbols[key];
-  }) // longer symbols should be listed first
-  // $FlowFixMe
-  .sort(function (a, b) {
-    return b.symbol.length - a.symbol.length;
-  }) // $FlowFixMe
-  .map(function (val) {
-    return val.regSymbol;
-  }).join('|') + "|(\\S)", 'g');
-  pattern.lastIndex = 0; // Reset regular expression object
-
-  var afterValue = false;
-  do {
-    match = pattern.exec(expression);
-    var _ref2 = match || [')', undefined],
-      token = _ref2[0],
-      bad = _ref2[1];
-    var notNumber = symbolMap.symbols[token];
-    var notNewValue = notNumber && !notNumber.prefix && !notNumber.func;
-    var notAfterValue = !notNumber || !notNumber.postfix && !notNumber.infix; // Check for syntax errors:
-
-    if (bad || (afterValue ? notAfterValue : notNewValue)) {
-      throw new PolishedError(37, match ? match.index : expression.length, expression);
-    }
-    if (afterValue) {
-      // We either have an infix or postfix operator (they should be mutually exclusive)
-      var curr = notNumber.postfix || notNumber.infix;
-      do {
-        var prev = operators[operators.length - 1];
-        if ((curr.precedence - prev.precedence || prev.rightToLeft) > 0) break; // Apply previous operator, since it has precedence over current one
-      } while (exec(operators, values)); // Exit loop after executing an opening parenthesis or function
-
-      afterValue = curr.notation === 'postfix';
-      if (curr.symbol !== ')') {
-        operators.push(curr); // Postfix always has precedence over any operator that follows after it
-
-        if (afterValue) exec(operators, values);
-      }
-    } else if (notNumber) {
-      // prefix operator or function
-      operators.push(notNumber.prefix || notNumber.func);
-      if (notNumber.func) {
-        // Require an opening parenthesis
-        match = pattern.exec(expression);
-        if (!match || match[0] !== '(') {
-          throw new PolishedError(38, match ? match.index : expression.length, expression);
-        }
-      }
-    } else {
-      // number
-      values.push(+token);
-      afterValue = true;
-    }
-  } while (match && operators.length);
-  if (operators.length) {
-    throw new PolishedError(39, match ? match.index : expression.length, expression);
-  } else if (match) {
-    throw new PolishedError(40, match ? match.index : expression.length, expression);
-  } else {
-    return values.pop();
-  }
-}
-function reverseString(str) {
-  return str.split('').reverse().join('');
-}
-/**
- * Helper for doing math with CSS Units. Accepts a formula as a string. All values in the formula must have the same unit (or be unitless). Supports complex formulas utliziing addition, subtraction, multiplication, division, square root, powers, factorial, min, max, as well as parentheses for order of operation.
- *
- *In cases where you need to do calculations with mixed units where one unit is a [relative length unit](https://developer.mozilla.org/en-US/docs/Web/CSS/length#Relative_length_units), you will want to use [CSS Calc](https://developer.mozilla.org/en-US/docs/Web/CSS/calc).
- *
- * *warning* While we've done everything possible to ensure math safely evalutes formulas expressed as strings, you should always use extreme caution when passing `math` user provided values.
- * @example
- * // Styles as object usage
- * const styles = {
- *   fontSize: math('12rem + 8rem'),
- *   fontSize: math('(12px + 2px) * 3'),
- *   fontSize: math('3px^2 + sqrt(4)'),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   fontSize: ${math('12rem + 8rem')};
- *   fontSize: ${math('(12px + 2px) * 3')};
- *   fontSize: ${math('3px^2 + sqrt(4)')};
- * `
- *
- * // CSS as JS Output
- *
- * div: {
- *   fontSize: '20rem',
- *   fontSize: '42px',
- *   fontSize: '11px',
- * }
- */
-
-function math(formula, additionalSymbols) {
-  var reversedFormula = reverseString(formula);
-  var formulaMatch = reversedFormula.match(unitRegExp); // Check that all units are the same
-
-  if (formulaMatch && !formulaMatch.every(function (unit) {
-    return unit === formulaMatch[0];
-  })) {
-    throw new PolishedError(41);
-  }
-  var cleanFormula = reverseString(reversedFormula.replace(unitRegExp, ''));
-  return "" + calculate(cleanFormula, additionalSymbols) + (formulaMatch ? reverseString(formulaMatch[0]) : '');
-}
-
-/**
- * Check if a string ends with something
- * @private
- */
-function endsWith(string, suffix) {
-  return string.substr(-suffix.length) === suffix;
-}
-var cssRegex$1 = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/;
-/**
- * Returns a given CSS value minus its unit of measure.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   '--dimension': stripUnit('100px')
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   --dimension: ${stripUnit('100px')};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   '--dimension': 100
- * }
- */
-
-function stripUnit(value) {
-  if (typeof value !== 'string') return value;
-  var matchedValue = value.match(cssRegex$1);
-  return matchedValue ? parseFloat(value) : value;
-}
-
-/**
- * Factory function that creates pixel-to-x converters
- * @private
- */
-
-var pxtoFactory = function pxtoFactory(to) {
-  return function (pxval, base) {
-    if (base === void 0) {
-      base = '16px';
-    }
-    var newPxval = pxval;
-    var newBase = base;
-    if (typeof pxval === 'string') {
-      if (!endsWith(pxval, 'px')) {
-        throw new PolishedError(69, to, pxval);
-      }
-      newPxval = stripUnit(pxval);
-    }
-    if (typeof base === 'string') {
-      if (!endsWith(base, 'px')) {
-        throw new PolishedError(70, to, base);
-      }
-      newBase = stripUnit(base);
-    }
-    if (typeof newPxval === 'string') {
-      throw new PolishedError(71, pxval, to);
-    }
-    if (typeof newBase === 'string') {
-      throw new PolishedError(72, base, to);
-    }
-    return "" + newPxval / newBase + to;
-  };
-};
-var pixelsto = pxtoFactory;
-
-/**
- * Convert pixel value to ems. The default base value is 16px, but can be changed by passing a
- * second argument to the function.
- * @function
- * @param {string|number} pxval
- * @param {string|number} [base='16px']
- * @example
- * // Styles as object usage
- * const styles = {
- *   'height': em('16px')
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   height: ${em('16px')}
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   'height': '1em'
- * }
- */
-
-var em = /*#__PURE__*/pixelsto('em');
-var em$1 = em;
-var cssRegex = /^([+-]?(?:\d+|\d*\.\d+))([a-z]*|%)$/;
-/**
- * Returns a given CSS value and its unit as elements of an array.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   '--dimension': getValueAndUnit('100px')[0],
- *   '--unit': getValueAndUnit('100px')[1],
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   --dimension: ${getValueAndUnit('100px')[0]};
- *   --unit: ${getValueAndUnit('100px')[1]};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   '--dimension': 100,
- *   '--unit': 'px',
- * }
- */
-
-function getValueAndUnit(value) {
-  if (typeof value !== 'string') return [value, ''];
-  var matchedValue = value.match(cssRegex);
-  if (matchedValue) return [parseFloat(value), matchedValue[2]];
-  return [value, undefined];
-}
-
-/**
- * CSS to hide content visually but remain accessible to screen readers.
- * from [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate/blob/9a176f57af1cfe8ec70300da4621fb9b07e5fa31/src/css/main.css#L121)
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   ...hideVisually(),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   ${hideVisually()};
- * `
- *
- * // CSS as JS Output
- *
- * 'div': {
- *   'border': '0',
- *   'clip': 'rect(0 0 0 0)',
- *   'height': '1px',
- *   'margin': '-1px',
- *   'overflow': 'hidden',
- *   'padding': '0',
- *   'position': 'absolute',
- *   'whiteSpace': 'nowrap',
- *   'width': '1px',
- * }
- */
-function hideVisually() {
-  return {
-    border: '0',
-    clip: 'rect(0 0 0 0)',
-    height: '1px',
-    margin: '-1px',
-    overflow: 'hidden',
-    padding: '0',
-    position: 'absolute',
-    whiteSpace: 'nowrap',
-    width: '1px'
-  };
-}
-function colorToInt(color) {
-  return Math.round(color * 255);
-}
-function convertToInt(red, green, blue) {
-  return colorToInt(red) + "," + colorToInt(green) + "," + colorToInt(blue);
-}
-function hslToRgb(hue, saturation, lightness, convert) {
-  if (convert === void 0) {
-    convert = convertToInt;
-  }
-  if (saturation === 0) {
-    // achromatic
-    return convert(lightness, lightness, lightness);
-  } // formulae from https://en.wikipedia.org/wiki/HSL_and_HSV
-
-  var huePrime = (hue % 360 + 360) % 360 / 60;
-  var chroma = (1 - Math.abs(2 * lightness - 1)) * saturation;
-  var secondComponent = chroma * (1 - Math.abs(huePrime % 2 - 1));
-  var red = 0;
-  var green = 0;
-  var blue = 0;
-  if (huePrime >= 0 && huePrime < 1) {
-    red = chroma;
-    green = secondComponent;
-  } else if (huePrime >= 1 && huePrime < 2) {
-    red = secondComponent;
-    green = chroma;
-  } else if (huePrime >= 2 && huePrime < 3) {
-    green = chroma;
-    blue = secondComponent;
-  } else if (huePrime >= 3 && huePrime < 4) {
-    green = secondComponent;
-    blue = chroma;
-  } else if (huePrime >= 4 && huePrime < 5) {
-    red = secondComponent;
-    blue = chroma;
-  } else if (huePrime >= 5 && huePrime < 6) {
-    red = chroma;
-    blue = secondComponent;
-  }
-  var lightnessModification = lightness - chroma / 2;
-  var finalRed = red + lightnessModification;
-  var finalGreen = green + lightnessModification;
-  var finalBlue = blue + lightnessModification;
-  return convert(finalRed, finalGreen, finalBlue);
-}
-var namedColorMap = {
-  aliceblue: 'f0f8ff',
-  antiquewhite: 'faebd7',
-  aqua: '00ffff',
-  aquamarine: '7fffd4',
-  azure: 'f0ffff',
-  beige: 'f5f5dc',
-  bisque: 'ffe4c4',
-  black: '000',
-  blanchedalmond: 'ffebcd',
-  blue: '0000ff',
-  blueviolet: '8a2be2',
-  brown: 'a52a2a',
-  burlywood: 'deb887',
-  cadetblue: '5f9ea0',
-  chartreuse: '7fff00',
-  chocolate: 'd2691e',
-  coral: 'ff7f50',
-  cornflowerblue: '6495ed',
-  cornsilk: 'fff8dc',
-  crimson: 'dc143c',
-  cyan: '00ffff',
-  darkblue: '00008b',
-  darkcyan: '008b8b',
-  darkgoldenrod: 'b8860b',
-  darkgray: 'a9a9a9',
-  darkgreen: '006400',
-  darkgrey: 'a9a9a9',
-  darkkhaki: 'bdb76b',
-  darkmagenta: '8b008b',
-  darkolivegreen: '556b2f',
-  darkorange: 'ff8c00',
-  darkorchid: '9932cc',
-  darkred: '8b0000',
-  darksalmon: 'e9967a',
-  darkseagreen: '8fbc8f',
-  darkslateblue: '483d8b',
-  darkslategray: '2f4f4f',
-  darkslategrey: '2f4f4f',
-  darkturquoise: '00ced1',
-  darkviolet: '9400d3',
-  deeppink: 'ff1493',
-  deepskyblue: '00bfff',
-  dimgray: '696969',
-  dimgrey: '696969',
-  dodgerblue: '1e90ff',
-  firebrick: 'b22222',
-  floralwhite: 'fffaf0',
-  forestgreen: '228b22',
-  fuchsia: 'ff00ff',
-  gainsboro: 'dcdcdc',
-  ghostwhite: 'f8f8ff',
-  gold: 'ffd700',
-  goldenrod: 'daa520',
-  gray: '808080',
-  green: '008000',
-  greenyellow: 'adff2f',
-  grey: '808080',
-  honeydew: 'f0fff0',
-  hotpink: 'ff69b4',
-  indianred: 'cd5c5c',
-  indigo: '4b0082',
-  ivory: 'fffff0',
-  khaki: 'f0e68c',
-  lavender: 'e6e6fa',
-  lavenderblush: 'fff0f5',
-  lawngreen: '7cfc00',
-  lemonchiffon: 'fffacd',
-  lightblue: 'add8e6',
-  lightcoral: 'f08080',
-  lightcyan: 'e0ffff',
-  lightgoldenrodyellow: 'fafad2',
-  lightgray: 'd3d3d3',
-  lightgreen: '90ee90',
-  lightgrey: 'd3d3d3',
-  lightpink: 'ffb6c1',
-  lightsalmon: 'ffa07a',
-  lightseagreen: '20b2aa',
-  lightskyblue: '87cefa',
-  lightslategray: '789',
-  lightslategrey: '789',
-  lightsteelblue: 'b0c4de',
-  lightyellow: 'ffffe0',
-  lime: '0f0',
-  limegreen: '32cd32',
-  linen: 'faf0e6',
-  magenta: 'f0f',
-  maroon: '800000',
-  mediumaquamarine: '66cdaa',
-  mediumblue: '0000cd',
-  mediumorchid: 'ba55d3',
-  mediumpurple: '9370db',
-  mediumseagreen: '3cb371',
-  mediumslateblue: '7b68ee',
-  mediumspringgreen: '00fa9a',
-  mediumturquoise: '48d1cc',
-  mediumvioletred: 'c71585',
-  midnightblue: '191970',
-  mintcream: 'f5fffa',
-  mistyrose: 'ffe4e1',
-  moccasin: 'ffe4b5',
-  navajowhite: 'ffdead',
-  navy: '000080',
-  oldlace: 'fdf5e6',
-  olive: '808000',
-  olivedrab: '6b8e23',
-  orange: 'ffa500',
-  orangered: 'ff4500',
-  orchid: 'da70d6',
-  palegoldenrod: 'eee8aa',
-  palegreen: '98fb98',
-  paleturquoise: 'afeeee',
-  palevioletred: 'db7093',
-  papayawhip: 'ffefd5',
-  peachpuff: 'ffdab9',
-  peru: 'cd853f',
-  pink: 'ffc0cb',
-  plum: 'dda0dd',
-  powderblue: 'b0e0e6',
-  purple: '800080',
-  rebeccapurple: '639',
-  red: 'f00',
-  rosybrown: 'bc8f8f',
-  royalblue: '4169e1',
-  saddlebrown: '8b4513',
-  salmon: 'fa8072',
-  sandybrown: 'f4a460',
-  seagreen: '2e8b57',
-  seashell: 'fff5ee',
-  sienna: 'a0522d',
-  silver: 'c0c0c0',
-  skyblue: '87ceeb',
-  slateblue: '6a5acd',
-  slategray: '708090',
-  slategrey: '708090',
-  snow: 'fffafa',
-  springgreen: '00ff7f',
-  steelblue: '4682b4',
-  tan: 'd2b48c',
-  teal: '008080',
-  thistle: 'd8bfd8',
-  tomato: 'ff6347',
-  turquoise: '40e0d0',
-  violet: 'ee82ee',
-  wheat: 'f5deb3',
-  white: 'fff',
-  whitesmoke: 'f5f5f5',
-  yellow: 'ff0',
-  yellowgreen: '9acd32'
-};
-/**
- * Checks if a string is a CSS named color and returns its equivalent hex value, otherwise returns the original color.
- * @private
- */
-
-function nameToHex(color) {
-  if (typeof color !== 'string') return color;
-  var normalizedColorName = color.toLowerCase();
-  return namedColorMap[normalizedColorName] ? "#" + namedColorMap[normalizedColorName] : color;
-}
-var hexRegex = /^#[a-fA-F0-9]{6}$/;
-var hexRgbaRegex = /^#[a-fA-F0-9]{8}$/;
-var reducedHexRegex = /^#[a-fA-F0-9]{3}$/;
-var reducedRgbaHexRegex = /^#[a-fA-F0-9]{4}$/;
-var rgbRegex = /^rgb\(\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*\)$/i;
-var rgbaRegex = /^rgb(?:a)?\(\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,)?\s*(\d{1,3})\s*(?:,|\/)\s*([-+]?\d*[.]?\d+[%]?)\s*\)$/i;
-var hslRegex = /^hsl\(\s*(\d{0,3}[.]?[0-9]+(?:deg)?)\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*\)$/i;
-var hslaRegex = /^hsl(?:a)?\(\s*(\d{0,3}[.]?[0-9]+(?:deg)?)\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*(?:,)?\s*(\d{1,3}[.]?[0-9]?)%\s*(?:,|\/)\s*([-+]?\d*[.]?\d+[%]?)\s*\)$/i;
-/**
- * Returns an RgbColor or RgbaColor object. This utility function is only useful
- * if want to extract a color component. With the color util `toColorString` you
- * can convert a RgbColor or RgbaColor object back to a string.
- *
- * @example
- * // Assigns `{ red: 255, green: 0, blue: 0 }` to color1
- * const color1 = parseToRgb('rgb(255, 0, 0)');
- * // Assigns `{ red: 92, green: 102, blue: 112, alpha: 0.75 }` to color2
- * const color2 = parseToRgb('hsla(210, 10%, 40%, 0.75)');
- */
-
-function parseToRgb(color) {
-  if (typeof color !== 'string') {
-    throw new PolishedError(3);
-  }
-  var normalizedColor = nameToHex(color);
-  if (normalizedColor.match(hexRegex)) {
-    return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
-      green: parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
-      blue: parseInt("" + normalizedColor[5] + normalizedColor[6], 16)
-    };
-  }
-  if (normalizedColor.match(hexRgbaRegex)) {
-    var alpha = parseFloat((parseInt("" + normalizedColor[7] + normalizedColor[8], 16) / 255).toFixed(2));
-    return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[2], 16),
-      green: parseInt("" + normalizedColor[3] + normalizedColor[4], 16),
-      blue: parseInt("" + normalizedColor[5] + normalizedColor[6], 16),
-      alpha: alpha
-    };
-  }
-  if (normalizedColor.match(reducedHexRegex)) {
-    return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
-      green: parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
-      blue: parseInt("" + normalizedColor[3] + normalizedColor[3], 16)
-    };
-  }
-  if (normalizedColor.match(reducedRgbaHexRegex)) {
-    var _alpha = parseFloat((parseInt("" + normalizedColor[4] + normalizedColor[4], 16) / 255).toFixed(2));
-    return {
-      red: parseInt("" + normalizedColor[1] + normalizedColor[1], 16),
-      green: parseInt("" + normalizedColor[2] + normalizedColor[2], 16),
-      blue: parseInt("" + normalizedColor[3] + normalizedColor[3], 16),
-      alpha: _alpha
-    };
-  }
-  var rgbMatched = rgbRegex.exec(normalizedColor);
-  if (rgbMatched) {
-    return {
-      red: parseInt("" + rgbMatched[1], 10),
-      green: parseInt("" + rgbMatched[2], 10),
-      blue: parseInt("" + rgbMatched[3], 10)
-    };
-  }
-  var rgbaMatched = rgbaRegex.exec(normalizedColor.substring(0, 50));
-  if (rgbaMatched) {
-    return {
-      red: parseInt("" + rgbaMatched[1], 10),
-      green: parseInt("" + rgbaMatched[2], 10),
-      blue: parseInt("" + rgbaMatched[3], 10),
-      alpha: parseFloat("" + rgbaMatched[4]) > 1 ? parseFloat("" + rgbaMatched[4]) / 100 : parseFloat("" + rgbaMatched[4])
-    };
-  }
-  var hslMatched = hslRegex.exec(normalizedColor);
-  if (hslMatched) {
-    var hue = parseInt("" + hslMatched[1], 10);
-    var saturation = parseInt("" + hslMatched[2], 10) / 100;
-    var lightness = parseInt("" + hslMatched[3], 10) / 100;
-    var rgbColorString = "rgb(" + hslToRgb(hue, saturation, lightness) + ")";
-    var hslRgbMatched = rgbRegex.exec(rgbColorString);
-    if (!hslRgbMatched) {
-      throw new PolishedError(4, normalizedColor, rgbColorString);
-    }
-    return {
-      red: parseInt("" + hslRgbMatched[1], 10),
-      green: parseInt("" + hslRgbMatched[2], 10),
-      blue: parseInt("" + hslRgbMatched[3], 10)
-    };
-  }
-  var hslaMatched = hslaRegex.exec(normalizedColor.substring(0, 50));
-  if (hslaMatched) {
-    var _hue = parseInt("" + hslaMatched[1], 10);
-    var _saturation = parseInt("" + hslaMatched[2], 10) / 100;
-    var _lightness = parseInt("" + hslaMatched[3], 10) / 100;
-    var _rgbColorString = "rgb(" + hslToRgb(_hue, _saturation, _lightness) + ")";
-    var _hslRgbMatched = rgbRegex.exec(_rgbColorString);
-    if (!_hslRgbMatched) {
-      throw new PolishedError(4, normalizedColor, _rgbColorString);
-    }
-    return {
-      red: parseInt("" + _hslRgbMatched[1], 10),
-      green: parseInt("" + _hslRgbMatched[2], 10),
-      blue: parseInt("" + _hslRgbMatched[3], 10),
-      alpha: parseFloat("" + hslaMatched[4]) > 1 ? parseFloat("" + hslaMatched[4]) / 100 : parseFloat("" + hslaMatched[4])
-    };
-  }
-  throw new PolishedError(5);
-}
-function rgbToHsl(color) {
-  // make sure rgb are contained in a set of [0, 255]
-  var red = color.red / 255;
-  var green = color.green / 255;
-  var blue = color.blue / 255;
-  var max = Math.max(red, green, blue);
-  var min = Math.min(red, green, blue);
-  var lightness = (max + min) / 2;
-  if (max === min) {
-    // achromatic
-    if (color.alpha !== undefined) {
-      return {
-        hue: 0,
-        saturation: 0,
-        lightness: lightness,
-        alpha: color.alpha
-      };
-    } else {
-      return {
-        hue: 0,
-        saturation: 0,
-        lightness: lightness
-      };
-    }
-  }
-  var hue;
-  var delta = max - min;
-  var saturation = lightness > 0.5 ? delta / (2 - max - min) : delta / (max + min);
-  switch (max) {
-    case red:
-      hue = (green - blue) / delta + (green < blue ? 6 : 0);
-      break;
-    case green:
-      hue = (blue - red) / delta + 2;
-      break;
-    default:
-      // blue case
-      hue = (red - green) / delta + 4;
-      break;
-  }
-  hue *= 60;
-  if (color.alpha !== undefined) {
-    return {
-      hue: hue,
-      saturation: saturation,
-      lightness: lightness,
-      alpha: color.alpha
-    };
-  }
-  return {
-    hue: hue,
-    saturation: saturation,
-    lightness: lightness
-  };
-}
-
-/**
- * Returns an HslColor or HslaColor object. This utility function is only useful
- * if want to extract a color component. With the color util `toColorString` you
- * can convert a HslColor or HslaColor object back to a string.
- *
- * @example
- * // Assigns `{ hue: 0, saturation: 1, lightness: 0.5 }` to color1
- * const color1 = parseToHsl('rgb(255, 0, 0)');
- * // Assigns `{ hue: 128, saturation: 1, lightness: 0.5, alpha: 0.75 }` to color2
- * const color2 = parseToHsl('hsla(128, 100%, 50%, 0.75)');
- */
-function parseToHsl(color) {
-  // Note: At a later stage we can optimize this function as right now a hsl
-  // color would be parsed converted to rgb values and converted back to hsl.
-  return rgbToHsl(parseToRgb(color));
-}
-
-/**
- * Reduces hex values if possible e.g. #ff8866 to #f86
- * @private
- */
-var reduceHexValue = function reduceHexValue(value) {
-  if (value.length === 7 && value[1] === value[2] && value[3] === value[4] && value[5] === value[6]) {
-    return "#" + value[1] + value[3] + value[5];
-  }
-  return value;
-};
-var reduceHexValue$1 = reduceHexValue;
-function numberToHex(value) {
-  var hex = value.toString(16);
-  return hex.length === 1 ? "0" + hex : hex;
-}
-function colorToHex(color) {
-  return numberToHex(Math.round(color * 255));
-}
-function convertToHex(red, green, blue) {
-  return reduceHexValue$1("#" + colorToHex(red) + colorToHex(green) + colorToHex(blue));
-}
-function hslToHex(hue, saturation, lightness) {
-  return hslToRgb(hue, saturation, lightness, convertToHex);
-}
-
-/**
- * Returns a string value for the color. The returned result is the smallest possible hex notation.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: hsl(359, 0.75, 0.4),
- *   background: hsl({ hue: 360, saturation: 0.75, lightness: 0.4 }),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${hsl(359, 0.75, 0.4)};
- *   background: ${hsl({ hue: 360, saturation: 0.75, lightness: 0.4 })};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   background: "#b3191c";
- *   background: "#b3191c";
- * }
- */
-function hsl(value, saturation, lightness) {
-  if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number') {
-    return hslToHex(value, saturation, lightness);
-  } else if (typeof value === 'object' && saturation === undefined && lightness === undefined) {
-    return hslToHex(value.hue, value.saturation, value.lightness);
-  }
-  throw new PolishedError(1);
-}
-
-/**
- * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: hsla(359, 0.75, 0.4, 0.7),
- *   background: hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 }),
- *   background: hsla(359, 0.75, 0.4, 1),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${hsla(359, 0.75, 0.4, 0.7)};
- *   background: ${hsla({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0,7 })};
- *   background: ${hsla(359, 0.75, 0.4, 1)};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   background: "rgba(179,25,28,0.7)";
- *   background: "rgba(179,25,28,0.7)";
- *   background: "#b3191c";
- * }
- */
-function hsla(value, saturation, lightness, alpha) {
-  if (typeof value === 'number' && typeof saturation === 'number' && typeof lightness === 'number' && typeof alpha === 'number') {
-    return alpha >= 1 ? hslToHex(value, saturation, lightness) : "rgba(" + hslToRgb(value, saturation, lightness) + "," + alpha + ")";
-  } else if (typeof value === 'object' && saturation === undefined && lightness === undefined && alpha === undefined) {
-    return value.alpha >= 1 ? hslToHex(value.hue, value.saturation, value.lightness) : "rgba(" + hslToRgb(value.hue, value.saturation, value.lightness) + "," + value.alpha + ")";
-  }
-  throw new PolishedError(2);
-}
-
-/**
- * Returns a string value for the color. The returned result is the smallest possible hex notation.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: rgb(255, 205, 100),
- *   background: rgb({ red: 255, green: 205, blue: 100 }),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${rgb(255, 205, 100)};
- *   background: ${rgb({ red: 255, green: 205, blue: 100 })};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   background: "#ffcd64";
- *   background: "#ffcd64";
- * }
- */
-function rgb(value, green, blue) {
-  if (typeof value === 'number' && typeof green === 'number' && typeof blue === 'number') {
-    return reduceHexValue$1("#" + numberToHex(value) + numberToHex(green) + numberToHex(blue));
-  } else if (typeof value === 'object' && green === undefined && blue === undefined) {
-    return reduceHexValue$1("#" + numberToHex(value.red) + numberToHex(value.green) + numberToHex(value.blue));
-  }
-  throw new PolishedError(6);
-}
-
-/**
- * Returns a string value for the color. The returned result is the smallest possible rgba or hex notation.
- *
- * Can also be used to fade a color by passing a hex value or named CSS color along with an alpha value.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: rgba(255, 205, 100, 0.7),
- *   background: rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 }),
- *   background: rgba(255, 205, 100, 1),
- *   background: rgba('#ffffff', 0.4),
- *   background: rgba('black', 0.7),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${rgba(255, 205, 100, 0.7)};
- *   background: ${rgba({ red: 255, green: 205, blue: 100, alpha: 0.7 })};
- *   background: ${rgba(255, 205, 100, 1)};
- *   background: ${rgba('#ffffff', 0.4)};
- *   background: ${rgba('black', 0.7)};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   background: "rgba(255,205,100,0.7)";
- *   background: "rgba(255,205,100,0.7)";
- *   background: "#ffcd64";
- *   background: "rgba(255,255,255,0.4)";
- *   background: "rgba(0,0,0,0.7)";
- * }
- */
-function rgba(firstValue, secondValue, thirdValue, fourthValue) {
-  if (typeof firstValue === 'string' && typeof secondValue === 'number') {
-    var rgbValue = parseToRgb(firstValue);
-    return "rgba(" + rgbValue.red + "," + rgbValue.green + "," + rgbValue.blue + "," + secondValue + ")";
-  } else if (typeof firstValue === 'number' && typeof secondValue === 'number' && typeof thirdValue === 'number' && typeof fourthValue === 'number') {
-    return fourthValue >= 1 ? rgb(firstValue, secondValue, thirdValue) : "rgba(" + firstValue + "," + secondValue + "," + thirdValue + "," + fourthValue + ")";
-  } else if (typeof firstValue === 'object' && secondValue === undefined && thirdValue === undefined && fourthValue === undefined) {
-    return firstValue.alpha >= 1 ? rgb(firstValue.red, firstValue.green, firstValue.blue) : "rgba(" + firstValue.red + "," + firstValue.green + "," + firstValue.blue + "," + firstValue.alpha + ")";
-  }
-  throw new PolishedError(7);
-}
-var isRgb = function isRgb(color) {
-  return typeof color.red === 'number' && typeof color.green === 'number' && typeof color.blue === 'number' && (typeof color.alpha !== 'number' || typeof color.alpha === 'undefined');
-};
-var isRgba = function isRgba(color) {
-  return typeof color.red === 'number' && typeof color.green === 'number' && typeof color.blue === 'number' && typeof color.alpha === 'number';
-};
-var isHsl = function isHsl(color) {
-  return typeof color.hue === 'number' && typeof color.saturation === 'number' && typeof color.lightness === 'number' && (typeof color.alpha !== 'number' || typeof color.alpha === 'undefined');
-};
-var isHsla = function isHsla(color) {
-  return typeof color.hue === 'number' && typeof color.saturation === 'number' && typeof color.lightness === 'number' && typeof color.alpha === 'number';
-};
-/**
- * Converts a RgbColor, RgbaColor, HslColor or HslaColor object to a color string.
- * This util is useful in case you only know on runtime which color object is
- * used. Otherwise we recommend to rely on `rgb`, `rgba`, `hsl` or `hsla`.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: toColorString({ red: 255, green: 205, blue: 100 }),
- *   background: toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 }),
- *   background: toColorString({ hue: 240, saturation: 1, lightness: 0.5 }),
- *   background: toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 }),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${toColorString({ red: 255, green: 205, blue: 100 })};
- *   background: ${toColorString({ red: 255, green: 205, blue: 100, alpha: 0.72 })};
- *   background: ${toColorString({ hue: 240, saturation: 1, lightness: 0.5 })};
- *   background: ${toColorString({ hue: 360, saturation: 0.75, lightness: 0.4, alpha: 0.72 })};
- * `
- *
- * // CSS in JS Output
- * element {
- *   background: "#ffcd64";
- *   background: "rgba(255,205,100,0.72)";
- *   background: "#00f";
- *   background: "rgba(179,25,25,0.72)";
- * }
- */
-
-function toColorString(color) {
-  if (typeof color !== 'object') throw new PolishedError(8);
-  if (isRgba(color)) return rgba(color);
-  if (isRgb(color)) return rgb(color);
-  if (isHsla(color)) return hsla(color);
-  if (isHsl(color)) return hsl(color);
-  throw new PolishedError(8);
-}
-
-// Type definitions taken from https://github.com/gcanti/flow-static-land/blob/master/src/Fun.js
-// eslint-disable-next-line no-unused-vars
-// eslint-disable-next-line no-unused-vars
-// eslint-disable-next-line no-redeclare
-function curried(f, length, acc) {
-  return function fn() {
-    // eslint-disable-next-line prefer-rest-params
-    var combined = acc.concat(Array.prototype.slice.call(arguments));
-    return combined.length >= length ? f.apply(this, combined) : curried(f, length, combined);
-  };
-} // eslint-disable-next-line no-redeclare
-
-function curry(f) {
-  // eslint-disable-line no-redeclare
-  return curried(f, f.length, []);
-}
-function guard(lowerBoundary, upperBoundary, value) {
-  return Math.max(lowerBoundary, Math.min(upperBoundary, value));
-}
-
-/**
- * Returns a string value for the darkened color.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: darken(0.2, '#FFCD64'),
- *   background: darken('0.2', 'rgba(255,205,100,0.7)'),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${darken(0.2, '#FFCD64')};
- *   background: ${darken('0.2', 'rgba(255,205,100,0.7)')};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   background: "#ffbd31";
- *   background: "rgba(255,189,49,0.7)";
- * }
- */
-
-function darken(amount, color) {
-  if (color === 'transparent') return color;
-  var hslColor = parseToHsl(color);
-  return toColorString(_extends$w({}, hslColor, {
-    lightness: guard(0, 1, hslColor.lightness - parseFloat(amount))
-  }));
-} // prettier-ignore
-
-var curriedDarken = /*#__PURE__*/curry
-/* ::<number | string, string, string> */(darken);
-var curriedDarken$1 = curriedDarken;
-
-/**
- * Returns a number (float) representing the luminance of a color.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff',
- *   background: getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
- *                             'rgba(58, 133, 255, 1)' :
- *                             'rgba(255, 57, 149, 1)',
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${getLuminance('#CCCD64') >= getLuminance('#0000ff') ? '#CCCD64' : '#0000ff'};
- *   background: ${getLuminance('rgba(58, 133, 255, 1)') >= getLuminance('rgba(255, 57, 149, 1)') ?
- *                             'rgba(58, 133, 255, 1)' :
- *                             'rgba(255, 57, 149, 1)'};
- *
- * // CSS in JS Output
- *
- * div {
- *   background: "#CCCD64";
- *   background: "rgba(58, 133, 255, 1)";
- * }
- */
-
-function getLuminance(color) {
-  if (color === 'transparent') return 0;
-  var rgbColor = parseToRgb(color);
-  var _Object$keys$map = Object.keys(rgbColor).map(function (key) {
-      var channel = rgbColor[key] / 255;
-      return channel <= 0.03928 ? channel / 12.92 : Math.pow((channel + 0.055) / 1.055, 2.4);
-    }),
-    r = _Object$keys$map[0],
-    g = _Object$keys$map[1],
-    b = _Object$keys$map[2];
-  return parseFloat((0.2126 * r + 0.7152 * g + 0.0722 * b).toFixed(3));
-}
-
-/**
- * Returns the contrast ratio between two colors based on
- * [W3's recommended equation for calculating contrast](http://www.w3.org/TR/WCAG20/#contrast-ratiodef).
- *
- * @example
- * const contrastRatio = getContrast('#444', '#fff');
- */
-
-function getContrast(color1, color2) {
-  var luminance1 = getLuminance(color1);
-  var luminance2 = getLuminance(color2);
-  return parseFloat((luminance1 > luminance2 ? (luminance1 + 0.05) / (luminance2 + 0.05) : (luminance2 + 0.05) / (luminance1 + 0.05)).toFixed(2));
-}
-
-/**
- * Returns a string value for the lightened color.
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   background: lighten(0.2, '#CCCD64'),
- *   background: lighten('0.2', 'rgba(204,205,100,0.7)'),
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   background: ${lighten(0.2, '#FFCD64')};
- *   background: ${lighten('0.2', 'rgba(204,205,100,0.7)')};
- * `
- *
- * // CSS in JS Output
- *
- * element {
- *   background: "#e5e6b1";
- *   background: "rgba(229,230,177,0.7)";
- * }
- */
-
-function lighten(amount, color) {
-  if (color === 'transparent') return color;
-  var hslColor = parseToHsl(color);
-  return toColorString(_extends$w({}, hslColor, {
-    lightness: guard(0, 1, hslColor.lightness + parseFloat(amount))
-  }));
-} // prettier-ignore
-
-var curriedLighten = /*#__PURE__*/curry
-/* ::<number | string, string, string> */(lighten);
-var curriedLighten$1 = curriedLighten;
-var defaultReturnIfLightColor = '#000';
-var defaultReturnIfDarkColor = '#fff';
-/**
- * Returns black or white (or optional passed colors) for best
- * contrast depending on the luminosity of the given color.
- * When passing custom return colors, strict mode ensures that the
- * return color always meets or exceeds WCAG level AA or greater. If this test
- * fails, the default return color (black or white) is returned in place of the
- * custom return color. You can optionally turn off strict mode.
- *
- * Follows [W3C specs for readability](https://www.w3.org/TR/WCAG20-TECHS/G18.html).
- *
- * @example
- * // Styles as object usage
- * const styles = {
- *   color: readableColor('#000'),
- *   color: readableColor('black', '#001', '#ff8'),
- *   color: readableColor('white', '#001', '#ff8'),
- *   color: readableColor('red', '#333', '#ddd', true)
- * }
- *
- * // styled-components usage
- * const div = styled.div`
- *   color: ${readableColor('#000')};
- *   color: ${readableColor('black', '#001', '#ff8')};
- *   color: ${readableColor('white', '#001', '#ff8')};
- *   color: ${readableColor('red', '#333', '#ddd', true)};
- * `
- *
- * // CSS in JS Output
- * element {
- *   color: "#fff";
- *   color: "#ff8";
- *   color: "#001";
- *   color: "#000";
- * }
- */
-
-function readableColor(color, returnIfLightColor, returnIfDarkColor, strict) {
-  if (returnIfLightColor === void 0) {
-    returnIfLightColor = defaultReturnIfLightColor;
-  }
-  if (returnIfDarkColor === void 0) {
-    returnIfDarkColor = defaultReturnIfDarkColor;
-  }
-  if (strict === void 0) {
-    strict = true;
-  }
-  var isColorLight = getLuminance(color) > 0.179;
-  var preferredReturnColor = isColorLight ? returnIfLightColor : returnIfDarkColor;
-  if (!strict || getContrast(color, preferredReturnColor) >= 4.5) {
-    return preferredReturnColor;
-  }
-  return isColorLight ? defaultReturnIfLightColor : defaultReturnIfDarkColor;
-}
-
-/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT$1 = 'Expected a function';
-
-/** Used to stand-in for `undefined` hash values. */
-var HASH_UNDEFINED = '__lodash_hash_undefined__';
-
-/** `Object#toString` result references. */
-var funcTag = '[object Function]',
-  genTag = '[object GeneratorFunction]';
-
-/**
- * Used to match `RegExp`
- * [syntax characters](http://ecma-international.org/ecma-262/7.0/#sec-patterns).
- */
-var reRegExpChar = /[\\^$.*+?()[\]{}|]/g;
-
-/** Used to detect host constructors (Safari). */
-var reIsHostCtor = /^\[object .+?Constructor\]$/;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal$1 = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
-
-/** Detect free variable `self`. */
-var freeSelf$1 = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root$1 = freeGlobal$1 || freeSelf$1 || Function('return this')();
-
-/**
- * Gets the value at `key` of `object`.
- *
- * @private
- * @param {Object} [object] The object to query.
- * @param {string} key The key of the property to get.
- * @returns {*} Returns the property value.
- */
-function getValue(object, key) {
-  return object == null ? undefined : object[key];
-}
-
-/**
- * Checks if `value` is a host object in IE < 9.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
- */
-function isHostObject(value) {
-  // Many host objects are `Object` objects that can coerce to strings
-  // despite having improperly defined `toString` methods.
-  var result = false;
-  if (value != null && typeof value.toString != 'function') {
-    try {
-      result = !!(value + '');
-    } catch (e) {}
-  }
-  return result;
-}
-
-/** Used for built-in method references. */
-var arrayProto = Array.prototype,
-  funcProto = Function.prototype,
-  objectProto$1 = Object.prototype;
-
-/** Used to detect overreaching core-js shims. */
-var coreJsData = root$1['__core-js_shared__'];
-
-/** Used to detect methods masquerading as native. */
-var maskSrcKey = function () {
-  var uid = /[^.]+$/.exec(coreJsData && coreJsData.keys && coreJsData.keys.IE_PROTO || '');
-  return uid ? 'Symbol(src)_1.' + uid : '';
-}();
-
-/** Used to resolve the decompiled source of functions. */
-var funcToString = funcProto.toString;
-
-/** Used to check objects for own properties. */
-var hasOwnProperty = objectProto$1.hasOwnProperty;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString$1 = objectProto$1.toString;
-
-/** Used to detect if a method is native. */
-var reIsNative = RegExp('^' + funcToString.call(hasOwnProperty).replace(reRegExpChar, '\\$&').replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$');
-
-/** Built-in value references. */
-var splice = arrayProto.splice;
-
-/* Built-in method references that are verified to be native. */
-var Map$1 = getNative(root$1, 'Map'),
-  nativeCreate = getNative(Object, 'create');
-
-/**
- * Creates a hash object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function Hash(entries) {
-  var index = -1,
-    length = entries ? entries.length : 0;
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the hash.
- *
- * @private
- * @name clear
- * @memberOf Hash
- */
-function hashClear() {
-  this.__data__ = nativeCreate ? nativeCreate(null) : {};
-}
-
-/**
- * Removes `key` and its value from the hash.
- *
- * @private
- * @name delete
- * @memberOf Hash
- * @param {Object} hash The hash to modify.
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function hashDelete(key) {
-  return this.has(key) && delete this.__data__[key];
-}
-
-/**
- * Gets the hash value for `key`.
- *
- * @private
- * @name get
- * @memberOf Hash
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function hashGet(key) {
-  var data = this.__data__;
-  if (nativeCreate) {
-    var result = data[key];
-    return result === HASH_UNDEFINED ? undefined : result;
-  }
-  return hasOwnProperty.call(data, key) ? data[key] : undefined;
-}
-
-/**
- * Checks if a hash value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf Hash
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function hashHas(key) {
-  var data = this.__data__;
-  return nativeCreate ? data[key] !== undefined : hasOwnProperty.call(data, key);
-}
-
-/**
- * Sets the hash `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf Hash
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the hash instance.
- */
-function hashSet(key, value) {
-  var data = this.__data__;
-  data[key] = nativeCreate && value === undefined ? HASH_UNDEFINED : value;
-  return this;
-}
-
-// Add methods to `Hash`.
-Hash.prototype.clear = hashClear;
-Hash.prototype['delete'] = hashDelete;
-Hash.prototype.get = hashGet;
-Hash.prototype.has = hashHas;
-Hash.prototype.set = hashSet;
-
-/**
- * Creates an list cache object.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function ListCache(entries) {
-  var index = -1,
-    length = entries ? entries.length : 0;
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the list cache.
- *
- * @private
- * @name clear
- * @memberOf ListCache
- */
-function listCacheClear() {
-  this.__data__ = [];
-}
-
-/**
- * Removes `key` and its value from the list cache.
- *
- * @private
- * @name delete
- * @memberOf ListCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function listCacheDelete(key) {
-  var data = this.__data__,
-    index = assocIndexOf(data, key);
-  if (index < 0) {
-    return false;
-  }
-  var lastIndex = data.length - 1;
-  if (index == lastIndex) {
-    data.pop();
-  } else {
-    splice.call(data, index, 1);
-  }
-  return true;
-}
-
-/**
- * Gets the list cache value for `key`.
- *
- * @private
- * @name get
- * @memberOf ListCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function listCacheGet(key) {
-  var data = this.__data__,
-    index = assocIndexOf(data, key);
-  return index < 0 ? undefined : data[index][1];
-}
-
-/**
- * Checks if a list cache value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf ListCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function listCacheHas(key) {
-  return assocIndexOf(this.__data__, key) > -1;
-}
-
-/**
- * Sets the list cache `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf ListCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the list cache instance.
- */
-function listCacheSet(key, value) {
-  var data = this.__data__,
-    index = assocIndexOf(data, key);
-  if (index < 0) {
-    data.push([key, value]);
-  } else {
-    data[index][1] = value;
-  }
-  return this;
-}
-
-// Add methods to `ListCache`.
-ListCache.prototype.clear = listCacheClear;
-ListCache.prototype['delete'] = listCacheDelete;
-ListCache.prototype.get = listCacheGet;
-ListCache.prototype.has = listCacheHas;
-ListCache.prototype.set = listCacheSet;
-
-/**
- * Creates a map cache object to store key-value pairs.
- *
- * @private
- * @constructor
- * @param {Array} [entries] The key-value pairs to cache.
- */
-function MapCache(entries) {
-  var index = -1,
-    length = entries ? entries.length : 0;
-  this.clear();
-  while (++index < length) {
-    var entry = entries[index];
-    this.set(entry[0], entry[1]);
-  }
-}
-
-/**
- * Removes all key-value entries from the map.
- *
- * @private
- * @name clear
- * @memberOf MapCache
- */
-function mapCacheClear() {
-  this.__data__ = {
-    'hash': new Hash(),
-    'map': new (Map$1 || ListCache)(),
-    'string': new Hash()
-  };
-}
-
-/**
- * Removes `key` and its value from the map.
- *
- * @private
- * @name delete
- * @memberOf MapCache
- * @param {string} key The key of the value to remove.
- * @returns {boolean} Returns `true` if the entry was removed, else `false`.
- */
-function mapCacheDelete(key) {
-  return getMapData(this, key)['delete'](key);
-}
-
-/**
- * Gets the map value for `key`.
- *
- * @private
- * @name get
- * @memberOf MapCache
- * @param {string} key The key of the value to get.
- * @returns {*} Returns the entry value.
- */
-function mapCacheGet(key) {
-  return getMapData(this, key).get(key);
-}
-
-/**
- * Checks if a map value for `key` exists.
- *
- * @private
- * @name has
- * @memberOf MapCache
- * @param {string} key The key of the entry to check.
- * @returns {boolean} Returns `true` if an entry for `key` exists, else `false`.
- */
-function mapCacheHas(key) {
-  return getMapData(this, key).has(key);
-}
-
-/**
- * Sets the map `key` to `value`.
- *
- * @private
- * @name set
- * @memberOf MapCache
- * @param {string} key The key of the value to set.
- * @param {*} value The value to set.
- * @returns {Object} Returns the map cache instance.
- */
-function mapCacheSet(key, value) {
-  getMapData(this, key).set(key, value);
-  return this;
-}
-
-// Add methods to `MapCache`.
-MapCache.prototype.clear = mapCacheClear;
-MapCache.prototype['delete'] = mapCacheDelete;
-MapCache.prototype.get = mapCacheGet;
-MapCache.prototype.has = mapCacheHas;
-MapCache.prototype.set = mapCacheSet;
-
-/**
- * Gets the index at which the `key` is found in `array` of key-value pairs.
- *
- * @private
- * @param {Array} array The array to inspect.
- * @param {*} key The key to search for.
- * @returns {number} Returns the index of the matched value, else `-1`.
- */
-function assocIndexOf(array, key) {
-  var length = array.length;
-  while (length--) {
-    if (eq(array[length][0], key)) {
-      return length;
-    }
-  }
-  return -1;
-}
-
-/**
- * The base implementation of `_.isNative` without bad shim checks.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function,
- *  else `false`.
- */
-function baseIsNative(value) {
-  if (!isObject$1(value) || isMasked(value)) {
-    return false;
-  }
-  var pattern = isFunction$2(value) || isHostObject(value) ? reIsNative : reIsHostCtor;
-  return pattern.test(toSource(value));
-}
-
-/**
- * Gets the data for `map`.
- *
- * @private
- * @param {Object} map The map to query.
- * @param {string} key The reference key.
- * @returns {*} Returns the map data.
- */
-function getMapData(map, key) {
-  var data = map.__data__;
-  return isKeyable(key) ? data[typeof key == 'string' ? 'string' : 'hash'] : data.map;
-}
-
-/**
- * Gets the native function at `key` of `object`.
- *
- * @private
- * @param {Object} object The object to query.
- * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
- */
-function getNative(object, key) {
-  var value = getValue(object, key);
-  return baseIsNative(value) ? value : undefined;
-}
-
-/**
- * Checks if `value` is suitable for use as unique object key.
- *
- * @private
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is suitable, else `false`.
- */
-function isKeyable(value) {
-  var type = typeof value;
-  return type == 'string' || type == 'number' || type == 'symbol' || type == 'boolean' ? value !== '__proto__' : value === null;
-}
-
-/**
- * Checks if `func` has its source masked.
- *
- * @private
- * @param {Function} func The function to check.
- * @returns {boolean} Returns `true` if `func` is masked, else `false`.
- */
-function isMasked(func) {
-  return !!maskSrcKey && maskSrcKey in func;
-}
-
-/**
- * Converts `func` to its source code.
- *
- * @private
- * @param {Function} func The function to process.
- * @returns {string} Returns the source code.
- */
-function toSource(func) {
-  if (func != null) {
-    try {
-      return funcToString.call(func);
-    } catch (e) {}
-    try {
-      return func + '';
-    } catch (e) {}
-  }
-  return '';
-}
-
-/**
- * Creates a function that memoizes the result of `func`. If `resolver` is
- * provided, it determines the cache key for storing the result based on the
- * arguments provided to the memoized function. By default, the first argument
- * provided to the memoized function is used as the map cache key. The `func`
- * is invoked with the `this` binding of the memoized function.
- *
- * **Note:** The cache is exposed as the `cache` property on the memoized
- * function. Its creation may be customized by replacing the `_.memoize.Cache`
- * constructor with one whose instances implement the
- * [`Map`](http://ecma-international.org/ecma-262/7.0/#sec-properties-of-the-map-prototype-object)
- * method interface of `delete`, `get`, `has`, and `set`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to have its output memoized.
- * @param {Function} [resolver] The function to resolve the cache key.
- * @returns {Function} Returns the new memoized function.
- * @example
- *
- * var object = { 'a': 1, 'b': 2 };
- * var other = { 'c': 3, 'd': 4 };
- *
- * var values = _.memoize(_.values);
- * values(object);
- * // => [1, 2]
- *
- * values(other);
- * // => [3, 4]
- *
- * object.a = 2;
- * values(object);
- * // => [1, 2]
- *
- * // Modify the result cache.
- * values.cache.set(object, ['a', 'b']);
- * values(object);
- * // => ['a', 'b']
- *
- * // Replace `_.memoize.Cache`.
- * _.memoize.Cache = WeakMap;
- */
-function memoize(func, resolver) {
-  if (typeof func != 'function' || resolver && typeof resolver != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT$1);
-  }
-  var memoized = function () {
-    var args = arguments,
-      key = resolver ? resolver.apply(this, args) : args[0],
-      cache = memoized.cache;
-    if (cache.has(key)) {
-      return cache.get(key);
-    }
-    var result = func.apply(this, args);
-    memoized.cache = cache.set(key, result);
-    return result;
-  };
-  memoized.cache = new (memoize.Cache || MapCache)();
-  return memoized;
-}
-
-// Assign cache to `_.memoize`.
-memoize.Cache = MapCache;
-
-/**
- * Performs a
- * [`SameValueZero`](http://ecma-international.org/ecma-262/7.0/#sec-samevaluezero)
- * comparison between two values to determine if they are equivalent.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to compare.
- * @param {*} other The other value to compare.
- * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
- * @example
- *
- * var object = { 'a': 1 };
- * var other = { 'a': 1 };
- *
- * _.eq(object, object);
- * // => true
- *
- * _.eq(object, other);
- * // => false
- *
- * _.eq('a', 'a');
- * // => true
- *
- * _.eq('a', Object('a'));
- * // => false
- *
- * _.eq(NaN, NaN);
- * // => true
- */
-function eq(value, other) {
-  return value === other || value !== value && other !== other;
-}
-
-/**
- * Checks if `value` is classified as a `Function` object.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a function, else `false`.
- * @example
- *
- * _.isFunction(_);
- * // => true
- *
- * _.isFunction(/abc/);
- * // => false
- */
-function isFunction$2(value) {
-  // The use of `Object#toString` avoids issues with the `typeof` operator
-  // in Safari 8-9 which returns 'object' for typed array and other constructors.
-  var tag = isObject$1(value) ? objectToString$1.call(value) : '';
-  return tag == funcTag || tag == genTag;
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject$1(value) {
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-var lodash_memoize = memoize;
-
-var memoize$1 = /*@__PURE__*/getDefaultExportFromCjs(lodash_memoize);
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-function _extends$v() {
-  _extends$v = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$v.apply(this, arguments);
-}
-const PALETTE = {
-  black: '#000',
-  white: '#fff',
-  product: {
-    support: '#00a656',
-    message: '#37b8af',
-    explore: '#30aabc',
-    gather: '#f6c8be',
-    guide: '#ff6224',
-    connect: '#ff6224',
-    chat: '#f79a3e',
-    talk: '#efc93d',
-    sell: '#c38f00'
-  },
-  grey: {
-    100: '#f8f9f9',
-    200: '#e9ebed',
-    300: '#d8dcde',
-    400: '#c2c8cc',
-    500: '#87929d',
-    600: '#68737d',
-    700: '#49545c',
-    800: '#2f3941'
-  },
-  blue: {
-    100: '#edf7ff',
-    200: '#cee2f2',
-    300: '#adcce4',
-    400: '#5293c7',
-    500: '#337fbd',
-    600: '#1f73b7',
-    700: '#144a75',
-    800: '#0f3554'
-  },
-  red: {
-    100: '#fff0f1',
-    200: '#f5d5d8',
-    300: '#f5b5ba',
-    400: '#e35b66',
-    500: '#d93f4c',
-    600: '#cc3340',
-    700: '#8c232c',
-    800: '#681219'
-  },
-  yellow: {
-    100: '#fff7ed',
-    200: '#ffeedb',
-    300: '#fed6a8',
-    400: '#ffb057',
-    500: '#f79a3e',
-    600: '#ed8f1c',
-    700: '#ad5918',
-    800: '#703815'
-  },
-  green: {
-    100: '#edf8f4',
-    200: '#d1e8df',
-    300: '#aecfc2',
-    400: '#5eae91',
-    500: '#228f67',
-    600: '#038153',
-    700: '#186146',
-    800: '#0b3b29'
-  },
-  kale: {
-    100: '#f5fcfc',
-    200: '#daeded',
-    300: '#bdd9d7',
-    400: '#90bbbb',
-    500: '#467b7c',
-    600: '#17494d',
-    700: '#03363d',
-    800: '#012b30'
-  },
-  fuschia: {
-    400: '#d653c2',
-    600: '#a81897',
-    M400: '#cf62a8',
-    M600: '#a8458c'
-  },
-  pink: {
-    400: '#ec4d63',
-    600: '#d42054',
-    M400: '#d57287',
-    M600: '#b23a5d'
-  },
-  crimson: {
-    400: '#e34f32',
-    600: '#c72a1c',
-    M400: '#cc6c5b',
-    M600: '#b24a3c'
-  },
-  orange: {
-    400: '#de701d',
-    600: '#bf5000',
-    M400: '#d4772c',
-    M600: '#b35827'
-  },
-  lemon: {
-    400: '#ffd424',
-    600: '#ffbb10',
-    M400: '#e7a500',
-    M600: '#c38f00'
-  },
-  lime: {
-    400: '#43b324',
-    600: '#2e8200',
-    M400: '#519e2d',
-    M600: '#47782c'
-  },
-  mint: {
-    400: '#00a656',
-    600: '#058541',
-    M400: '#299c66',
-    M600: '#2e8057'
-  },
-  teal: {
-    400: '#02a191',
-    600: '#028079',
-    M400: '#2d9e8f',
-    M600: '#3c7873'
-  },
-  azure: {
-    400: '#3091ec',
-    600: '#1371d6',
-    M400: '#5f8dcf',
-    M600: '#3a70b2'
-  },
-  royal: {
-    400: '#5d7df5',
-    600: '#3353e2',
-    M400: '#7986d8',
-    M600: '#4b61c3'
-  },
-  purple: {
-    400: '#b552e2',
-    600: '#6a27b8',
-    M400: '#b072cc',
-    M600: '#9358b0'
-  }
-};
-const BASE = 4;
-const borderRadii = {
-  sm: `${BASE / 2}px`,
-  md: `${BASE}px`
-};
-const borderStyles = {
-  solid: 'solid'
-};
-const borderWidths = {
-  sm: '1px',
-  md: '3px'
-};
-const borders = {
-  sm: `${borderWidths.sm} ${borderStyles.solid}`,
-  md: `${borderWidths.md} ${borderStyles.solid}`
-};
-const breakpoints = {
-  xs: '0px',
-  sm: `${BASE * 144}px`,
-  md: `${BASE * 192}px`,
-  lg: `${BASE * 248}px`,
-  xl: `${BASE * 300}px`
-};
-const colors = {
-  background: PALETTE.white,
-  foreground: PALETTE.grey[800],
-  primaryHue: 'blue',
-  dangerHue: 'red',
-  warningHue: 'yellow',
-  successHue: 'green',
-  neutralHue: 'grey',
-  chromeHue: 'kale'
-};
-const fonts = {
-  mono: ['SFMono-Regular', 'Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace'].join(','),
-  system: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', '"Helvetica Neue"', 'Arial', 'sans-serif'].join(',')
-};
-const fontSizes = {
-  xs: '10px',
-  sm: '12px',
-  md: '14px',
-  lg: '18px',
-  xl: '22px',
-  xxl: '26px',
-  xxxl: '36px'
-};
-const fontWeights = {
-  thin: 100,
-  extralight: 200,
-  light: 300,
-  regular: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-  extrabold: 800,
-  black: 900
-};
-const iconSizes = {
-  sm: '12px',
-  md: '16px',
-  lg: '26px'
-};
-const lineHeights = {
-  sm: `${BASE * 4}px`,
-  md: `${BASE * 5}px`,
-  lg: `${BASE * 6}px`,
-  xl: `${BASE * 7}px`,
-  xxl: `${BASE * 8}px`,
-  xxxl: `${BASE * 11}px`
-};
-const palette = {
-  ...PALETTE
-};
-delete palette.product;
-const shadowWidths = {
-  xs: '1px',
-  sm: '2px',
-  md: '3px'
-};
-const shadows = {
-  xs: color => `0 0 0 ${shadowWidths.xs} ${color}`,
-  sm: color => `0 0 0 ${shadowWidths.sm} ${color}`,
-  md: color => `0 0 0 ${shadowWidths.md} ${color}`,
-  lg: (offsetY, blurRadius, color) => `0 ${offsetY} ${blurRadius} 0 ${color}`
-};
-const space = {
-  base: BASE,
-  xxs: `${BASE}px`,
-  xs: `${BASE * 2}px`,
-  sm: `${BASE * 3}px`,
-  md: `${BASE * 5}px`,
-  lg: `${BASE * 8}px`,
-  xl: `${BASE * 10}px`,
-  xxl: `${BASE * 12}px`
-};
-const DEFAULT_THEME = {
-  borders,
-  borderRadii,
-  borderStyles,
-  borderWidths,
-  breakpoints,
-  colors: {
-    base: 'light',
-    ...colors
-  },
-  components: {},
-  fonts,
-  fontSizes,
-  fontWeights,
-  iconSizes,
-  lineHeights,
-  palette,
-  rtl: false,
-  shadowWidths,
-  shadows,
-  space
-};
-const useDocument = theme => {
-  const [controlledDocument, setControlledDocument] = reactExports.useState();
-  reactExports.useEffect(() => {
-    if (theme && theme.document) {
-      setControlledDocument(theme.document);
-    } else {
-      setControlledDocument(document);
-    }
-  }, [theme]);
-  return controlledDocument;
-};
-const ThemeProvider = _ref => {
-  let {
-    theme,
-    focusVisibleRef,
-    children,
-    ...other
-  } = _ref;
-  const scopeRef = reactExports.useRef(null);
-  const relativeDocument = useDocument(theme);
-  const controlledScopeRef = focusVisibleRef === null ? /*#__PURE__*/React.createRef() : getControlledValue(focusVisibleRef, scopeRef);
-  useFocusVisible({
-    scope: controlledScopeRef,
-    relativeDocument
-  });
-  return /*#__PURE__*/React.createElement(Ge, _extends$v({
-    theme: theme
-  }, other), focusVisibleRef === undefined ? /*#__PURE__*/React.createElement("div", {
-    ref: scopeRef
-  }, children) : children);
-};
-ThemeProvider.defaultProps = {
-  theme: DEFAULT_THEME
-};
-function retrieveComponentStyles(componentId, props) {
-  const components = props.theme && props.theme.components;
-  if (!components) {
-    return undefined;
-  }
-  const componentStyles = components[componentId];
-  if (typeof componentStyles === 'function') {
-    return componentStyles(props);
-  }
-  return componentStyles;
-}
-const DEFAULT_SHADE = 600;
-const adjust = (color, expected, actual) => {
-  if (expected !== actual) {
-    const amount = Math.abs(expected - actual) / 100 * 0.05;
-    return expected > actual ? curriedDarken$1(amount, color) : curriedLighten$1(amount, color);
-  }
-  return color;
-};
-const getColor = memoize$1(function (hue) {
-  let shade = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : DEFAULT_SHADE;
-  let theme = arguments.length > 2 ? arguments[2] : undefined;
-  let transparency = arguments.length > 3 ? arguments[3] : undefined;
-  let retVal;
-  if (isNaN(shade)) {
-    return undefined;
-  }
-  const palette = theme && theme.palette ? theme.palette : DEFAULT_THEME.palette;
-  const colors = theme && theme.colors ? theme.colors : DEFAULT_THEME.colors;
-  let _hue;
-  if (typeof hue === 'string') {
-    _hue = colors[hue] || hue;
-  } else {
-    _hue = hue;
-  }
-  if (Object.prototype.hasOwnProperty.call(palette, _hue)) {
-    _hue = palette[_hue];
-  }
-  if (typeof _hue === 'object') {
-    retVal = _hue[shade];
-    if (!retVal) {
-      const _shade = Object.keys(_hue).map(hueKey => parseInt(hueKey, 10)).reduce((previous, current) => {
-        return Math.abs(current - shade) < Math.abs(previous - shade) ? current : previous;
-      });
-      retVal = adjust(_hue[_shade], shade, _shade);
-    }
-  } else {
-    retVal = adjust(_hue, shade, DEFAULT_SHADE);
-  }
-  if (transparency) {
-    retVal = rgba(retVal, transparency);
-  }
-  return retVal;
-}, (hue, shade, theme, transparency) => JSON.stringify({
-  hue,
-  shade,
-  palette: theme?.palette,
-  colors: theme?.colors,
-  transparency
-}));
-const getFocusBoxShadow = _ref => {
-  let {
-    boxShadow,
-    inset = false,
-    hue = 'primaryHue',
-    shade = DEFAULT_SHADE,
-    shadowWidth = 'md',
-    spacerHue = 'background',
-    spacerShade = DEFAULT_SHADE,
-    spacerWidth = 'xs',
-    theme = DEFAULT_THEME
-  } = _ref;
-  const color = getColor(hue, shade, theme);
-  const shadow = theme.shadows[shadowWidth](color);
-  if (spacerWidth === null) {
-    return `${inset ? 'inset' : ''} ${shadow}`;
-  }
-  const spacerColor = getColor(spacerHue, spacerShade, theme);
-  const retVal = `
-    ${inset ? 'inset' : ''} ${theme.shadows[spacerWidth](spacerColor)},
-    ${inset ? 'inset' : ''} ${shadow}`;
-  return boxShadow ? `${retVal}, ${boxShadow}` : retVal;
-};
-function getLineHeight(height, fontSize) {
-  const [heightValue, heightUnit] = getValueAndUnit(height.toString());
-  const [fontSizeValue, fontSizeUnit] = getValueAndUnit(fontSize.toString());
-  const PIXELS = 'px';
-  if (heightUnit && heightUnit !== PIXELS) {
-    throw new Error(`Unexpected \`height\` with '${heightUnit}' units.`);
-  }
-  if (fontSizeUnit && fontSizeUnit !== PIXELS) {
-    throw new Error(`Unexpected \`fontSize\` with '${fontSizeUnit}' units.`);
-  }
-  return heightValue / fontSizeValue;
-}
-const exponentialSymbols = {
-  symbols: {
-    sqrt: {
-      func: {
-        symbol: 'sqrt',
-        f: a => Math.sqrt(a),
-        notation: 'func',
-        precedence: 0,
-        rightToLeft: 0,
-        argCount: 1
-      },
-      symbol: 'sqrt',
-      regSymbol: 'sqrt\\b'
-    }
-  }
-};
-const animationStyles$1 = (position, modifier) => {
-  const property = position.split('-')[0];
-  const animationName = $e(["0%,66%{", ":2px;border:transparent;}"], property);
-  return Ne(["&", "::before,&", "::after{animation:0.3s ease-in-out ", ";}"], modifier, modifier, animationName);
-};
-const positionStyles$1 = (position, size, inset) => {
-  const margin = math(`${size} / -2`);
-  const placement = math(`${margin} + ${inset}`);
-  let clipPath;
-  let positionCss;
-  let propertyRadius;
-  if (position.startsWith('top')) {
-    propertyRadius = 'border-bottom-right-radius';
-    clipPath = 'polygon(100% 0, 100% 1px, 1px 100%, 0 100%, 0 0)';
-    positionCss = Ne(["top:", ";right:", ";left:", ";margin-left:", ";"], placement, position === 'top-right' && size, position === 'top' ? '50%' : position === 'top-left' && size, position === 'top' && margin);
-  } else if (position.startsWith('right')) {
-    propertyRadius = 'border-bottom-left-radius';
-    clipPath = 'polygon(100% 0, 100% 100%, calc(100% - 1px) 100%, 0 1px, 0 0)';
-    positionCss = Ne(["top:", ";right:", ";bottom:", ";margin-top:", ";"], position === 'right' ? '50%' : position === 'right-top' && size, placement, position === 'right-bottom' && size, position === 'right' && margin);
-  } else if (position.startsWith('bottom')) {
-    propertyRadius = 'border-top-left-radius';
-    clipPath = 'polygon(100% 0, calc(100% - 1px) 0, 0 calc(100% - 1px), 0 100%, 100% 100%)';
-    positionCss = Ne(["right:", ";bottom:", ";left:", ";margin-left:", ";"], position === 'bottom-right' && size, placement, position === 'bottom' ? '50%' : position === 'bottom-left' && size, position === 'bottom' && margin);
-  } else if (position.startsWith('left')) {
-    propertyRadius = 'border-top-right-radius';
-    clipPath = 'polygon(0 100%, 100% 100%, 100% calc(100% - 1px), 1px 0, 0 0)';
-    positionCss = Ne(["top:", ";bottom:", ";left:", ";margin-top:", ";"], position === 'left' ? '50%' : position === 'left-top' && size, size, placement, position === 'left' && margin);
-  }
-  return Ne(["&::before{", ":100%;clip-path:", ";}&::before,&::after{", "}"], propertyRadius, clipPath, positionCss);
-};
-function arrowStyles(position) {
-  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  const size = options.size || '6px';
-  const inset = options.inset || '0';
-  const squareSize = math(`${size} * 2 / sqrt(2)`, exponentialSymbols);
-  return Ne(["position:relative;&::before{border-width:inherit;border-style:inherit;border-color:transparent;background-clip:content-box;}&::after{z-index:-1;border:inherit;box-shadow:inherit;}&::before,&::after{position:absolute;transform:rotate(45deg);background-color:inherit;box-sizing:inherit;width:", ";height:", ";content:'';}", ";", ";"], squareSize, squareSize, positionStyles$1(position, squareSize, inset), options.animationModifier && animationStyles$1(position, options.animationModifier));
-}
-const useWindow = theme => {
-  const [controlledWindow, setControlledWindow] = reactExports.useState();
-  reactExports.useEffect(() => {
-    if (theme && theme.window) {
-      setControlledWindow(theme.window);
-    } else {
-      setControlledWindow(window);
-    }
-  }, [theme]);
-  return controlledWindow;
-};
-const useText = function (component, props, name, text) {
-  let condition = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : true;
-  const value = condition ? props[name] : undefined;
-  return reactExports.useMemo(() => {
-    if (condition) {
-      if (name === 'children') {
-        throw new Error('Error: `children` is not a valid `useText` prop.');
-      } else if (value === null || value === '') {
-        throw new Error(component.displayName ? `Error: you must provide a valid \`${name}\` text value for <${component.displayName}>.` : `Error: you must provide a valid \`${name}\` text value.`);
-      } else if (value === undefined) {
-        return text;
-      }
-    }
-    return value;
-  }, [component.displayName, value, name, text, condition]);
-};
-const animationStyles = (position, options) => {
-  const theme = options.theme || DEFAULT_THEME;
-  let translateValue = `${theme.space.base * 5}px`;
-  let transformFunction;
-  if (position === 'top') {
-    transformFunction = 'translateY';
-  } else if (position === 'right') {
-    transformFunction = 'translateX';
-    translateValue = `-${translateValue}`;
-  } else if (position === 'bottom') {
-    transformFunction = 'translateY';
-    translateValue = `-${translateValue}`;
-  } else {
-    transformFunction = 'translateX';
-  }
-  const animationName = $e(["0%{transform:", "(", ");}"], transformFunction, translateValue);
-  return Ne(["&", " ", "{animation:0.2s cubic-bezier(0.15,0.85,0.35,1.2) ", ";}"], options.animationModifier, options.childSelector || '> *', animationName);
-};
-const hiddenStyles$1 = options => {
-  const transition = 'opacity 0.2s ease-in-out, 0.2s visibility 0s linear';
-  return Ne(["transition:", ";visibility:hidden;opacity:0;"], options.animationModifier && transition);
-};
-function menuStyles(position) {
-  let options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  const theme = options.theme || DEFAULT_THEME;
-  let marginProperty;
-  if (position === 'top') {
-    marginProperty = 'margin-bottom';
-  } else if (position === 'right') {
-    marginProperty = 'margin-left';
-  } else if (position === 'bottom') {
-    marginProperty = 'margin-top';
-  } else {
-    marginProperty = 'margin-right';
-  }
-  return Ne(["position:absolute;z-index:", ";", ":", ";line-height:0;font-size:0.01px;& ", "{display:inline-block;position:relative;margin:0;box-sizing:border-box;border:", " ", ";border-radius:", ";box-shadow:", ";background-color:", ";cursor:default;padding:0;text-align:", ";white-space:normal;font-size:", ";font-weight:", ";direction:", ";:focus{outline:none;}}", ";", ";"], options.zIndex || 0, marginProperty, options.margin, options.childSelector || '> *', theme.borders.sm, getColor('neutralHue', 300, theme), theme.borderRadii.md, theme.shadows.lg(`${theme.space.base * 5}px`, `${theme.space.base * 7.5}px`, getColor('chromeHue', 600, theme, 0.15)), theme.colors.background, theme.rtl ? 'right' : 'left', theme.fontSizes.md, theme.fontWeights.regular, theme.rtl && 'rtl', options.animationModifier && animationStyles(position, options), options.hidden && hiddenStyles$1(options));
-}
-const SELECTOR_FOCUS_VISIBLE = '&:focus-visible, &[data-garden-focus-visible="true"]';
-const focusStyles = _ref => {
-  let {
-    condition = true,
-    selector = SELECTOR_FOCUS_VISIBLE,
-    shadowWidth = 'md',
-    spacerWidth = 'xs',
-    styles: {
-      boxShadow,
-      ...styles
-    } = {},
-    theme,
-    ...options
-  } = _ref;
-  const _boxShadow = condition ? getFocusBoxShadow({
-    boxShadow,
-    shadowWidth,
-    spacerWidth,
-    theme,
-    ...options
-  }) : boxShadow;
-  let outline;
-  let outlineOffset;
-  if (spacerWidth === null) {
-    outline = theme.shadowWidths[shadowWidth];
-  } else {
-    outline = `${math(`${theme.shadowWidths[shadowWidth]} - ${theme.shadowWidths[spacerWidth]}`)} solid transparent`;
-    outlineOffset = theme.shadowWidths[spacerWidth];
-  }
-  return Ne(["&:focus{outline:none;}", "{outline:", ";outline-offset:", ";box-shadow:", ";", "}"], selector, outline, outlineOffset, _boxShadow, styles);
-};
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-const useField$1 = _ref => {
-  let {
-    idPrefix,
-    hasHint,
-    hasMessage
-  } = _ref;
-  const prefix = useId(idPrefix);
-  const inputId = `${prefix}--input`;
-  const labelId = `${prefix}--label`;
-  const hintId = `${prefix}--hint`;
-  const messageId = `${prefix}--message`;
-  const getLabelProps = reactExports.useCallback(function (_temp) {
-    let {
-      id = labelId,
-      htmlFor = inputId,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    return {
-      'data-garden-container-id': 'containers.field.label',
-      'data-garden-container-version': '3.0.5',
-      id,
-      htmlFor,
-      ...other
-    };
-  }, [labelId, inputId]);
-  const getHintProps = reactExports.useCallback(function (_temp2) {
-    let {
-      id = hintId,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    return {
-      'data-garden-container-id': 'containers.field.hint',
-      'data-garden-container-version': '3.0.5',
-      id,
-      ...other
-    };
-  }, [hintId]);
-  const getInputProps = reactExports.useCallback(function (_temp3) {
-    let {
-      id = inputId,
-      ...other
-    } = _temp3 === void 0 ? {} : _temp3;
-    const describedBy = [];
-    if (hasHint) {
-      describedBy.push(hintId);
-    }
-    if (hasMessage) {
-      describedBy.push(messageId);
-    }
-    return {
-      'data-garden-container-id': 'containers.field.input',
-      'data-garden-container-version': '3.0.5',
-      id,
-      'aria-labelledby': labelId,
-      'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined,
-      ...other
-    };
-  }, [inputId, labelId, hintId, messageId, hasHint, hasMessage]);
-  const getMessageProps = reactExports.useCallback(function (_temp4) {
-    let {
-      id = messageId,
-      role = 'alert',
-      ...other
-    } = _temp4 === void 0 ? {} : _temp4;
-    return {
-      'data-garden-container-id': 'containers.field.message',
-      'data-garden-container-version': '3.0.5',
-      role: role === null ? undefined : role,
-      id,
-      ...other
-    };
-  }, [messageId]);
-  return reactExports.useMemo(() => ({
-    getLabelProps,
-    getHintProps,
-    getInputProps,
-    getMessageProps
-  }), [getLabelProps, getHintProps, getInputProps, getMessageProps]);
-};
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  idPrefix: PropTypes.string,
-  hasHint: PropTypes.bool,
-  hasMessage: PropTypes.bool
-});
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-
-let e = e => "object" == typeof e && null != e && 1 === e.nodeType,
-  t = (e, t) => (!t || "hidden" !== e) && "visible" !== e && "clip" !== e,
-  n = (e, n) => {
-    if (e.clientHeight < e.scrollHeight || e.clientWidth < e.scrollWidth) {
-      let l = getComputedStyle(e, null);
-      return t(l.overflowY, n) || t(l.overflowX, n) || (e => {
-        let t = (e => {
-          if (!e.ownerDocument || !e.ownerDocument.defaultView) return null;
-          try {
-            return e.ownerDocument.defaultView.frameElement;
-          } catch (e) {
-            return null;
-          }
-        })(e);
-        return !!t && (t.clientHeight < e.scrollHeight || t.clientWidth < e.scrollWidth);
-      })(e);
-    }
-    return !1;
-  },
-  l = (e, t, n, l, i, o, r, d) => o < e && r > t || o > e && r < t ? 0 : o <= e && d <= n || r >= t && d >= n ? o - e - l : r > t && d < n || o < e && d > n ? r - t + i : 0,
-  i = e => {
-    let t = e.parentElement;
-    return null == t ? e.getRootNode().host || null : t;
-  };
-var o = (t, o) => {
-  var r, d, h, f, u, s;
-  if ("undefined" == typeof document) return [];
-  let {
-      scrollMode: a,
-      block: c,
-      inline: g,
-      boundary: m,
-      skipOverflowHiddenElements: p
-    } = o,
-    w = "function" == typeof m ? m : e => e !== m;
-  if (!e(t)) throw new TypeError("Invalid target");
-  let W = document.scrollingElement || document.documentElement,
-    H = [],
-    b = t;
-  for (; e(b) && w(b);) {
-    if (b = i(b), b === W) {
-      H.push(b);
-      break;
-    }
-    null != b && b === document.body && n(b) && !n(document.documentElement) || null != b && n(b, p) && H.push(b);
-  }
-  let v = null != (d = null == (r = window.visualViewport) ? void 0 : r.width) ? d : innerWidth,
-    y = null != (f = null == (h = window.visualViewport) ? void 0 : h.height) ? f : innerHeight,
-    E = null != (u = window.scrollX) ? u : pageXOffset,
-    M = null != (s = window.scrollY) ? s : pageYOffset,
-    {
-      height: x,
-      width: I,
-      top: C,
-      right: R,
-      bottom: T,
-      left: V
-    } = t.getBoundingClientRect(),
-    k = "start" === c || "nearest" === c ? C : "end" === c ? T : C + x / 2,
-    B = "center" === g ? V + I / 2 : "end" === g ? R : V,
-    D = [];
-  for (let e = 0; e < H.length; e++) {
-    let t = H[e],
-      {
-        height: n,
-        width: i,
-        top: o,
-        right: r,
-        bottom: d,
-        left: h
-      } = t.getBoundingClientRect();
-    if ("if-needed" === a && C >= 0 && V >= 0 && T <= y && R <= v && C >= o && T <= d && V >= h && R <= r) return D;
-    let f = getComputedStyle(t),
-      u = parseInt(f.borderLeftWidth, 10),
-      s = parseInt(f.borderTopWidth, 10),
-      m = parseInt(f.borderRightWidth, 10),
-      p = parseInt(f.borderBottomWidth, 10),
-      w = 0,
-      b = 0,
-      O = "offsetWidth" in t ? t.offsetWidth - t.clientWidth - u - m : 0,
-      X = "offsetHeight" in t ? t.offsetHeight - t.clientHeight - s - p : 0,
-      Y = "offsetWidth" in t ? 0 === t.offsetWidth ? 0 : i / t.offsetWidth : 0,
-      L = "offsetHeight" in t ? 0 === t.offsetHeight ? 0 : n / t.offsetHeight : 0;
-    if (W === t) w = "start" === c ? k : "end" === c ? k - y : "nearest" === c ? l(M, M + y, y, s, p, M + k, M + k + x, x) : k - y / 2, b = "start" === g ? B : "center" === g ? B - v / 2 : "end" === g ? B - v : l(E, E + v, v, u, m, E + B, E + B + I, I), w = Math.max(0, w + M), b = Math.max(0, b + E);else {
-      w = "start" === c ? k - o - s : "end" === c ? k - d + p + X : "nearest" === c ? l(o, d, n, s, p + X, k, k + x, x) : k - (o + n / 2) + X / 2, b = "start" === g ? B - h - u : "center" === g ? B - (h + i / 2) + O / 2 : "end" === g ? B - r + m + O : l(h, r, i, u, m + O, B, B + I, I);
-      let {
-        scrollLeft: e,
-        scrollTop: f
-      } = t;
-      w = Math.max(0, Math.min(f + w / L, t.scrollHeight - n / L + X)), b = Math.max(0, Math.min(e + b / Y, t.scrollWidth - i / Y + O)), k += f - w, B += e - b;
-    }
-    D.push({
-      el: t,
-      top: w,
-      left: b
-    });
-  }
-  return D;
-};
-
-/******************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-  __assign = Object.assign || function __assign(t) {
-      for (var s, i = 1, n = arguments.length; i < n; i++) {
-          s = arguments[i];
-          for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-      }
-      return t;
-  };
-  return __assign.apply(this, arguments);
-};
-
-typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
-  var e = new Error(message);
-  return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
-};
-
-var idCounter = 0;
-function noop() {}
-
-/**
- * Scroll node into view if necessary
- * @param {HTMLElement} node the element that should scroll into view
- * @param {HTMLElement} menuNode the menu element of the component
- */
-function scrollIntoView(node, menuNode) {
-  if (!node) {
-    return;
-  }
-  var actions = o(node, {
-    boundary: menuNode,
-    block: 'nearest',
-    scrollMode: 'if-needed'
-  });
-  actions.forEach(function (_ref) {
-    var el = _ref.el,
-      top = _ref.top,
-      left = _ref.left;
-    el.scrollTop = top;
-    el.scrollLeft = left;
-  });
-}
-
-/**
- * @param {HTMLElement} parent the parent node
- * @param {HTMLElement} child the child node
- * @param {Window} environment The window context where downshift renders.
- * @return {Boolean} whether the parent is the child or the child is in the parent
- */
-function isOrContainsNode(parent, child, environment) {
-  var result = parent === child || child instanceof environment.Node && parent.contains && parent.contains(child);
-  return result;
-}
-
-/**
- * Simple debounce implementation. Will call the given
- * function once after the time given has passed since
- * it was last called.
- * @param {Function} fn the function to call after the time
- * @param {Number} time the time to wait
- * @return {Function} the debounced function
- */
-function debounce$3(fn, time) {
-  var timeoutId;
-  function cancel() {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-  }
-  function wrapper() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    cancel();
-    timeoutId = setTimeout(function () {
-      timeoutId = null;
-      fn.apply(void 0, args);
-    }, time);
-  }
-  wrapper.cancel = cancel;
-  return wrapper;
-}
-
-/**
- * This is intended to be used to compose event handlers.
- * They are executed in order until one of them sets
- * `event.preventDownshiftDefault = true`.
- * @param {...Function} fns the event handler functions
- * @return {Function} the event handler to add to an element
- */
-function callAllEventHandlers() {
-  for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    fns[_key2] = arguments[_key2];
-  }
-  return function (event) {
-    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-      args[_key3 - 1] = arguments[_key3];
-    }
-    return fns.some(function (fn) {
-      if (fn) {
-        fn.apply(void 0, [event].concat(args));
-      }
-      return event.preventDownshiftDefault || event.hasOwnProperty('nativeEvent') && event.nativeEvent.preventDownshiftDefault;
-    });
-  };
-}
-function handleRefs() {
-  for (var _len4 = arguments.length, refs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-    refs[_key4] = arguments[_key4];
-  }
-  return function (node) {
-    refs.forEach(function (ref) {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) {
-        ref.current = node;
-      }
-    });
-  };
-}
-
-/**
- * This generates a unique ID for an instance of Downshift
- * @return {String} the unique ID
- */
-function generateId() {
-  return String(idCounter++);
-}
-
-/**
- * Default implementation for status message. Only added when menu is open.
- * Will specify if there are results in the list, and if so, how many,
- * and what keys are relevant.
- *
- * @param {Object} param the downshift state and other relevant properties
- * @return {String} the a11y status message
- */
-function getA11yStatusMessage$1(_ref2) {
-  var isOpen = _ref2.isOpen,
-    resultCount = _ref2.resultCount,
-    previousResultCount = _ref2.previousResultCount;
-  if (!isOpen) {
-    return '';
-  }
-  if (!resultCount) {
-    return 'No results are available.';
-  }
-  if (resultCount !== previousResultCount) {
-    return resultCount + " result" + (resultCount === 1 ? ' is' : 's are') + " available, use up and down arrow keys to navigate. Press Enter key to select.";
-  }
-  return '';
-}
-
-/**
- * This will perform a shallow merge of the given state object
- * with the state coming from props
- * (for the controlled component scenario)
- * This is used in state updater functions so they're referencing
- * the right state regardless of where it comes from.
- *
- * @param {Object} state The state of the component/hook.
- * @param {Object} props The props that may contain controlled values.
- * @returns {Object} The merged controlled state.
- */
-function getState(state, props) {
-  return Object.keys(state).reduce(function (prevState, key) {
-    prevState[key] = isControlledProp(props, key) ? props[key] : state[key];
-    return prevState;
-  }, {});
-}
-
-/**
- * This determines whether a prop is a "controlled prop" meaning it is
- * state which is controlled by the outside of this component rather
- * than within this component.
- *
- * @param {Object} props The props that may contain controlled values.
- * @param {String} key the key to check
- * @return {Boolean} whether it is a controlled controlled prop
- */
-function isControlledProp(props, key) {
-  return props[key] !== undefined;
-}
-
-/**
- * Normalizes the 'key' property of a KeyboardEvent in IE/Edge
- * @param {Object} event a keyboardEvent object
- * @return {String} keyboard key
- */
-function normalizeArrowKey(event) {
-  var key = event.key,
-    keyCode = event.keyCode;
-  /* istanbul ignore next (ie) */
-  if (keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0) {
-    return "Arrow" + key;
-  }
-  return key;
-}
-
-/**
- * Returns the new index in the list, in a circular way. If next value is out of bonds from the total,
- * it will wrap to either 0 or itemCount - 1.
- *
- * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
- * @param {number} baseIndex The initial position to move from.
- * @param {number} itemCount The total number of items.
- * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
- * @param {boolean} circular Specify if navigation is circular. Default is true.
- * @returns {number} The new index after the move.
- */
-function getNextWrappingIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
-  if (circular === void 0) {
-    circular = true;
-  }
-  if (itemCount === 0) {
-    return -1;
-  }
-  var itemsLastIndex = itemCount - 1;
-  if (typeof baseIndex !== 'number' || baseIndex < 0 || baseIndex >= itemCount) {
-    baseIndex = moveAmount > 0 ? -1 : itemsLastIndex + 1;
-  }
-  var newIndex = baseIndex + moveAmount;
-  if (newIndex < 0) {
-    newIndex = circular ? itemsLastIndex : 0;
-  } else if (newIndex > itemsLastIndex) {
-    newIndex = circular ? 0 : itemsLastIndex;
-  }
-  var nonDisabledNewIndex = getNextNonDisabledIndex(moveAmount, newIndex, itemCount, getItemNodeFromIndex, circular);
-  if (nonDisabledNewIndex === -1) {
-    return baseIndex >= itemCount ? -1 : baseIndex;
-  }
-  return nonDisabledNewIndex;
-}
-
-/**
- * Returns the next index in the list of an item that is not disabled.
- *
- * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
- * @param {number} baseIndex The initial position to move from.
- * @param {number} itemCount The total number of items.
- * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
- * @param {boolean} circular Specify if navigation is circular. Default is true.
- * @returns {number} The new index. Returns baseIndex if item is not disabled. Returns next non-disabled item otherwise. If no non-disabled found it will return -1.
- */
-function getNextNonDisabledIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
-  var currentElementNode = getItemNodeFromIndex(baseIndex);
-  if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
-    return baseIndex;
-  }
-  if (moveAmount > 0) {
-    for (var index = baseIndex + 1; index < itemCount; index++) {
-      if (!getItemNodeFromIndex(index).hasAttribute('disabled')) {
-        return index;
-      }
-    }
-  } else {
-    for (var _index = baseIndex - 1; _index >= 0; _index--) {
-      if (!getItemNodeFromIndex(_index).hasAttribute('disabled')) {
-        return _index;
-      }
-    }
-  }
-  if (circular) {
-    return moveAmount > 0 ? getNextNonDisabledIndex(1, 0, itemCount, getItemNodeFromIndex, false) : getNextNonDisabledIndex(-1, itemCount - 1, itemCount, getItemNodeFromIndex, false);
-  }
-  return -1;
-}
-
-/**
- * Checks if event target is within the downshift elements.
- *
- * @param {EventTarget} target Target to check.
- * @param {HTMLElement[]} downshiftElements The elements that form downshift (list, toggle button etc).
- * @param {Window} environment The window context where downshift renders.
- * @param {boolean} checkActiveElement Whether to also check activeElement.
- *
- * @returns {boolean} Whether or not the target is within downshift elements.
- */
-function targetWithinDownshift(target, downshiftElements, environment, checkActiveElement) {
-  if (checkActiveElement === void 0) {
-    checkActiveElement = true;
-  }
-  return downshiftElements.some(function (contextNode) {
-    return contextNode && (isOrContainsNode(contextNode, target, environment) || checkActiveElement && isOrContainsNode(contextNode, environment.document.activeElement, environment));
-  });
-}
-var cleanupStatus = debounce$3(function (documentProp) {
-  getStatusDiv(documentProp).textContent = '';
-}, 500);
-
-/**
- * @param {String} status the status message
- * @param {Object} documentProp document passed by the user.
- */
-function setStatus(status, documentProp) {
-  var div = getStatusDiv(documentProp);
-  if (!status) {
-    return;
-  }
-  div.textContent = status;
-  cleanupStatus(documentProp);
-}
-
-/**
- * Get the status node or create it if it does not already exist.
- * @param {Object} documentProp document passed by the user.
- * @return {HTMLElement} the status node.
- */
-function getStatusDiv(documentProp) {
-  if (documentProp === void 0) {
-    documentProp = document;
-  }
-  var statusDiv = documentProp.getElementById('a11y-status-message');
-  if (statusDiv) {
-    return statusDiv;
-  }
-  statusDiv = documentProp.createElement('div');
-  statusDiv.setAttribute('id', 'a11y-status-message');
-  statusDiv.setAttribute('role', 'status');
-  statusDiv.setAttribute('aria-live', 'polite');
-  statusDiv.setAttribute('aria-relevant', 'additions text');
-  Object.assign(statusDiv.style, {
-    border: '0',
-    clip: 'rect(0 0 0 0)',
-    height: '1px',
-    margin: '-1px',
-    overflow: 'hidden',
-    padding: '0',
-    position: 'absolute',
-    width: '1px'
-  });
-  documentProp.body.appendChild(statusDiv);
-  return statusDiv;
-}
-var _excluded$3 = ["isInitialMount", "highlightedIndex", "items", "environment"];
-var dropdownDefaultStateValues = {
-  highlightedIndex: -1,
-  isOpen: false,
-  selectedItem: null,
-  inputValue: ''
-};
-function callOnChangeProps(action, state, newState) {
-  var props = action.props,
-    type = action.type;
-  var changes = {};
-  Object.keys(state).forEach(function (key) {
-    invokeOnChangeHandler(key, action, state, newState);
-    if (newState[key] !== state[key]) {
-      changes[key] = newState[key];
-    }
-  });
-  if (props.onStateChange && Object.keys(changes).length) {
-    props.onStateChange(_extends$w({
-      type: type
-    }, changes));
-  }
-}
-function invokeOnChangeHandler(key, action, state, newState) {
-  var props = action.props,
-    type = action.type;
-  var handler = "on" + capitalizeString(key) + "Change";
-  if (props[handler] && newState[key] !== undefined && newState[key] !== state[key]) {
-    props[handler](_extends$w({
-      type: type
-    }, newState));
-  }
-}
-
-/**
- * Default state reducer that returns the changes.
- *
- * @param {Object} s state.
- * @param {Object} a action with changes.
- * @returns {Object} changes.
- */
-function stateReducer(s, a) {
-  return a.changes;
-}
-
-/**
- * Returns a message to be added to aria-live region when item is selected.
- *
- * @param {Object} selectionParameters Parameters required to build the message.
- * @returns {string} The a11y message.
- */
-function getA11ySelectionMessage(selectionParameters) {
-  var selectedItem = selectionParameters.selectedItem,
-    itemToStringLocal = selectionParameters.itemToString;
-  return selectedItem ? itemToStringLocal(selectedItem) + " has been selected." : '';
-}
-
-/**
- * Debounced call for updating the a11y message.
- */
-var updateA11yStatus = debounce$3(function (getA11yMessage, document) {
-  setStatus(getA11yMessage(), document);
-}, 200);
-
-// istanbul ignore next
-var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? reactExports.useLayoutEffect : reactExports.useEffect;
-function useElementIds(_ref) {
-  var _ref$id = _ref.id,
-    id = _ref$id === void 0 ? "downshift-" + generateId() : _ref$id,
-    labelId = _ref.labelId,
-    menuId = _ref.menuId,
-    getItemId = _ref.getItemId,
-    toggleButtonId = _ref.toggleButtonId,
-    inputId = _ref.inputId;
-  var elementIdsRef = reactExports.useRef({
-    labelId: labelId || id + "-label",
-    menuId: menuId || id + "-menu",
-    getItemId: getItemId || function (index) {
-      return id + "-item-" + index;
-    },
-    toggleButtonId: toggleButtonId || id + "-toggle-button",
-    inputId: inputId || id + "-input"
-  });
-  return elementIdsRef.current;
-}
-function getItemAndIndex(itemProp, indexProp, items, errorMessage) {
-  var item, index;
-  if (itemProp === undefined) {
-    if (indexProp === undefined) {
-      throw new Error(errorMessage);
-    }
-    item = items[indexProp];
-    index = indexProp;
-  } else {
-    index = indexProp === undefined ? items.indexOf(itemProp) : indexProp;
-    item = itemProp;
-  }
-  return [item, index];
-}
-function itemToString(item) {
-  return item ? String(item) : '';
-}
-function capitalizeString(string) {
-  return "" + string.slice(0, 1).toUpperCase() + string.slice(1);
-}
-function useLatestRef$1(val) {
-  var ref = reactExports.useRef(val);
-  // technically this is not "concurrent mode safe" because we're manipulating
-  // the value during render (so it's not idempotent). However, the places this
-  // hook is used is to support memoizing callbacks which will be called
-  // *during* render, so we need the latest values *during* render.
-  // If not for this, then we'd probably want to use useLayoutEffect instead.
-  ref.current = val;
-  return ref;
-}
-
-/**
- * Computes the controlled state using a the previous state, props,
- * two reducers, one from downshift and an optional one from the user.
- * Also calls the onChange handlers for state values that have changed.
- *
- * @param {Function} reducer Reducer function from downshift.
- * @param {Object} initialState Initial state of the hook.
- * @param {Object} props The hook props.
- * @returns {Array} An array with the state and an action dispatcher.
- */
-function useEnhancedReducer(reducer, initialState, props) {
-  var prevStateRef = reactExports.useRef();
-  var actionRef = reactExports.useRef();
-  var enhancedReducer = reactExports.useCallback(function (state, action) {
-    actionRef.current = action;
-    state = getState(state, action.props);
-    var changes = reducer(state, action);
-    var newState = action.props.stateReducer(state, _extends$w({}, action, {
-      changes: changes
-    }));
-    return newState;
-  }, [reducer]);
-  var _useReducer = reactExports.useReducer(enhancedReducer, initialState),
-    state = _useReducer[0],
-    dispatch = _useReducer[1];
-  var propsRef = useLatestRef$1(props);
-  var dispatchWithProps = reactExports.useCallback(function (action) {
-    return dispatch(_extends$w({
-      props: propsRef.current
-    }, action));
-  }, [propsRef]);
-  var action = actionRef.current;
-  reactExports.useEffect(function () {
-    if (action && prevStateRef.current && prevStateRef.current !== state) {
-      callOnChangeProps(action, getState(prevStateRef.current, action.props), state);
-    }
-    prevStateRef.current = state;
-  }, [state, props, action]);
-  return [state, dispatchWithProps];
-}
-var defaultProps$3 = {
-  itemToString: itemToString,
-  stateReducer: stateReducer,
-  getA11ySelectionMessage: getA11ySelectionMessage,
-  scrollIntoView: scrollIntoView,
-  environment: /* istanbul ignore next (ssr) */
-  typeof window === 'undefined' ? {} : window
-};
-function getDefaultValue$1(props, propKey, defaultStateValues) {
-  if (defaultStateValues === void 0) {
-    defaultStateValues = dropdownDefaultStateValues;
-  }
-  var defaultValue = props["default" + capitalizeString(propKey)];
-  if (defaultValue !== undefined) {
-    return defaultValue;
-  }
-  return defaultStateValues[propKey];
-}
-function getInitialValue$1(props, propKey, defaultStateValues) {
-  if (defaultStateValues === void 0) {
-    defaultStateValues = dropdownDefaultStateValues;
-  }
-  var value = props[propKey];
-  if (value !== undefined) {
-    return value;
-  }
-  var initialValue = props["initial" + capitalizeString(propKey)];
-  if (initialValue !== undefined) {
-    return initialValue;
-  }
-  return getDefaultValue$1(props, propKey, defaultStateValues);
-}
-function getInitialState$2(props) {
-  var selectedItem = getInitialValue$1(props, 'selectedItem');
-  var isOpen = getInitialValue$1(props, 'isOpen');
-  var highlightedIndex = getInitialValue$1(props, 'highlightedIndex');
-  var inputValue = getInitialValue$1(props, 'inputValue');
-  return {
-    highlightedIndex: highlightedIndex < 0 && selectedItem && isOpen ? props.items.indexOf(selectedItem) : highlightedIndex,
-    isOpen: isOpen,
-    selectedItem: selectedItem,
-    inputValue: inputValue
-  };
-}
-function getHighlightedIndexOnOpen(props, state, offset) {
-  var items = props.items,
-    initialHighlightedIndex = props.initialHighlightedIndex,
-    defaultHighlightedIndex = props.defaultHighlightedIndex;
-  var selectedItem = state.selectedItem,
-    highlightedIndex = state.highlightedIndex;
-  if (items.length === 0) {
-    return -1;
-  }
-
-  // initialHighlightedIndex will give value to highlightedIndex on initial state only.
-  if (initialHighlightedIndex !== undefined && highlightedIndex === initialHighlightedIndex) {
-    return initialHighlightedIndex;
-  }
-  if (defaultHighlightedIndex !== undefined) {
-    return defaultHighlightedIndex;
-  }
-  if (selectedItem) {
-    return items.indexOf(selectedItem);
-  }
-  if (offset === 0) {
-    return -1;
-  }
-  return offset < 0 ? items.length - 1 : 0;
-}
-
-/**
- * Reuse the movement tracking of mouse and touch events.
- *
- * @param {boolean} isOpen Whether the dropdown is open or not.
- * @param {Array<Object>} downshiftElementRefs Downshift element refs to track movement (toggleButton, menu etc.)
- * @param {Object} environment Environment where component/hook exists.
- * @param {Function} handleBlur Handler on blur from mouse or touch.
- * @returns {Object} Ref containing whether mouseDown or touchMove event is happening
- */
-function useMouseAndTouchTracker(isOpen, downshiftElementRefs, environment, handleBlur) {
-  var mouseAndTouchTrackersRef = reactExports.useRef({
-    isMouseDown: false,
-    isTouchMove: false
-  });
-  reactExports.useEffect(function () {
-    if ((environment == null ? void 0 : environment.addEventListener) == null) {
-      return;
-    }
-
-    // The same strategy for checking if a click occurred inside or outside downshift
-    // as in downshift.js.
-    var onMouseDown = function onMouseDown() {
-      mouseAndTouchTrackersRef.current.isMouseDown = true;
-    };
-    var onMouseUp = function onMouseUp(event) {
-      mouseAndTouchTrackersRef.current.isMouseDown = false;
-      if (isOpen && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
-        return ref.current;
-      }), environment)) {
-        handleBlur();
-      }
-    };
-    var onTouchStart = function onTouchStart() {
-      mouseAndTouchTrackersRef.current.isTouchMove = false;
-    };
-    var onTouchMove = function onTouchMove() {
-      mouseAndTouchTrackersRef.current.isTouchMove = true;
-    };
-    var onTouchEnd = function onTouchEnd(event) {
-      if (isOpen && !mouseAndTouchTrackersRef.current.isTouchMove && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
-        return ref.current;
-      }), environment, false)) {
-        handleBlur();
-      }
-    };
-    environment.addEventListener('mousedown', onMouseDown);
-    environment.addEventListener('mouseup', onMouseUp);
-    environment.addEventListener('touchstart', onTouchStart);
-    environment.addEventListener('touchmove', onTouchMove);
-    environment.addEventListener('touchend', onTouchEnd);
-
-    // eslint-disable-next-line consistent-return
-    return function cleanup() {
-      environment.removeEventListener('mousedown', onMouseDown);
-      environment.removeEventListener('mouseup', onMouseUp);
-      environment.removeEventListener('touchstart', onTouchStart);
-      environment.removeEventListener('touchmove', onTouchMove);
-      environment.removeEventListener('touchend', onTouchEnd);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, environment]);
-  return mouseAndTouchTrackersRef;
-}
-
-/* istanbul ignore next */
-// eslint-disable-next-line import/no-mutable-exports
-var useGetterPropsCalledChecker = function useGetterPropsCalledChecker() {
-  return noop;
-};
-function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref2) {
-  var isInitialMount = _ref2.isInitialMount,
-    highlightedIndex = _ref2.highlightedIndex,
-    items = _ref2.items,
-    environment = _ref2.environment,
-    rest = _objectWithoutPropertiesLoose(_ref2, _excluded$3);
-  // Sets a11y status message on changes in state.
-  reactExports.useEffect(function () {
-    if (isInitialMount || false) {
-      return;
-    }
-    updateA11yStatus(function () {
-      return getA11yMessage(_extends$w({
-        highlightedIndex: highlightedIndex,
-        highlightedItem: items[highlightedIndex],
-        resultCount: items.length
-      }, rest));
-    }, environment.document);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, dependencyArray);
-}
-function useScrollIntoView(_ref3) {
-  var highlightedIndex = _ref3.highlightedIndex,
-    isOpen = _ref3.isOpen,
-    itemRefs = _ref3.itemRefs,
-    getItemNodeFromIndex = _ref3.getItemNodeFromIndex,
-    menuElement = _ref3.menuElement,
-    scrollIntoViewProp = _ref3.scrollIntoView;
-  // used not to scroll on highlight by mouse.
-  var shouldScrollRef = reactExports.useRef(true);
-  // Scroll on highlighted item if change comes from keyboard.
-  useIsomorphicLayoutEffect(function () {
-    if (highlightedIndex < 0 || !isOpen || !Object.keys(itemRefs.current).length) {
-      return;
-    }
-    if (shouldScrollRef.current === false) {
-      shouldScrollRef.current = true;
-    } else {
-      scrollIntoViewProp(getItemNodeFromIndex(highlightedIndex), menuElement);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [highlightedIndex]);
-  return shouldScrollRef;
-}
-
-// eslint-disable-next-line import/no-mutable-exports
-var useControlPropsValidator = noop;
-
-/**
- * Handles selection on Enter / Alt + ArrowUp. Closes the menu and resets the highlighted index, unless there is a highlighted.
- * In that case, selects the item and resets to defaults for open state and highlighted idex.
- * @param {Object} props The useCombobox props.
- * @param {number} highlightedIndex The index from the state.
- * @param {boolean} inputValue Also return the input value for state.
- * @returns The changes for the state.
- */
-function getChangesOnSelection(props, highlightedIndex, inputValue) {
-  var _props$items;
-  if (inputValue === void 0) {
-    inputValue = true;
-  }
-  var shouldSelect = ((_props$items = props.items) == null ? void 0 : _props$items.length) && highlightedIndex >= 0;
-  return _extends$w({
-    isOpen: false,
-    highlightedIndex: -1
-  }, shouldSelect && _extends$w({
-    selectedItem: props.items[highlightedIndex],
-    isOpen: getDefaultValue$1(props, 'isOpen'),
-    highlightedIndex: getDefaultValue$1(props, 'highlightedIndex')
-  }, inputValue && {
-    inputValue: props.itemToString(props.items[highlightedIndex])
-  }));
-}
-function downshiftCommonReducer(state, action, stateChangeTypes) {
-  var type = action.type,
-    props = action.props;
-  var changes;
-  switch (type) {
-    case stateChangeTypes.ItemMouseMove:
-      changes = {
-        highlightedIndex: action.disabled ? -1 : action.index
-      };
-      break;
-    case stateChangeTypes.MenuMouseLeave:
-      changes = {
-        highlightedIndex: -1
-      };
-      break;
-    case stateChangeTypes.ToggleButtonClick:
-    case stateChangeTypes.FunctionToggleMenu:
-      changes = {
-        isOpen: !state.isOpen,
-        highlightedIndex: state.isOpen ? -1 : getHighlightedIndexOnOpen(props, state, 0)
-      };
-      break;
-    case stateChangeTypes.FunctionOpenMenu:
-      changes = {
-        isOpen: true,
-        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
-      };
-      break;
-    case stateChangeTypes.FunctionCloseMenu:
-      changes = {
-        isOpen: false
-      };
-      break;
-    case stateChangeTypes.FunctionSetHighlightedIndex:
-      changes = {
-        highlightedIndex: action.highlightedIndex
-      };
-      break;
-    case stateChangeTypes.FunctionSetInputValue:
-      changes = {
-        inputValue: action.inputValue
-      };
-      break;
-    case stateChangeTypes.FunctionReset:
-      changes = {
-        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
-        isOpen: getDefaultValue$1(props, 'isOpen'),
-        selectedItem: getDefaultValue$1(props, 'selectedItem'),
-        inputValue: getDefaultValue$1(props, 'inputValue')
-      };
-      break;
-    default:
-      throw new Error('Reducer called without proper action type.');
-  }
-  return _extends$w({}, state, changes);
-}
-({
-  items: PropTypes.array.isRequired,
-  itemToString: PropTypes.func,
-  getA11yStatusMessage: PropTypes.func,
-  getA11ySelectionMessage: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  defaultHighlightedIndex: PropTypes.number,
-  initialHighlightedIndex: PropTypes.number,
-  isOpen: PropTypes.bool,
-  defaultIsOpen: PropTypes.bool,
-  initialIsOpen: PropTypes.bool,
-  selectedItem: PropTypes.any,
-  initialSelectedItem: PropTypes.any,
-  defaultSelectedItem: PropTypes.any,
-  id: PropTypes.string,
-  labelId: PropTypes.string,
-  menuId: PropTypes.string,
-  getItemId: PropTypes.func,
-  toggleButtonId: PropTypes.string,
-  stateReducer: PropTypes.func,
-  onSelectedItemChange: PropTypes.func,
-  onHighlightedIndexChange: PropTypes.func,
-  onStateChange: PropTypes.func,
-  onIsOpenChange: PropTypes.func,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
-});
-/**
- * Default implementation for status message. Only added when menu is open.
- * Will specift if there are results in the list, and if so, how many,
- * and what keys are relevant.
- *
- * @param {Object} param the downshift state and other relevant properties
- * @return {String} the a11y status message
- */
-function getA11yStatusMessage(_a) {
-  var isOpen = _a.isOpen,
-    resultCount = _a.resultCount,
-    previousResultCount = _a.previousResultCount;
-  if (!isOpen) {
-    return '';
-  }
-  if (!resultCount) {
-    return 'No results are available.';
-  }
-  if (resultCount !== previousResultCount) {
-    return "".concat(resultCount, " result").concat(resultCount === 1 ? ' is' : 's are', " available, use up and down arrow keys to navigate. Press Enter or Space Bar keys to select.");
-  }
-  return '';
-}
-__assign(__assign({}, defaultProps$3), {
-  getA11yStatusMessage: getA11yStatusMessage
-});
-var InputKeyDownArrowDown = 0;
-var InputKeyDownArrowUp = 1;
-var InputKeyDownEscape = 2;
-var InputKeyDownHome = 3;
-var InputKeyDownEnd = 4;
-var InputKeyDownPageUp = 5;
-var InputKeyDownPageDown = 6;
-var InputKeyDownEnter = 7;
-var InputChange = 8;
-var InputBlur = 9;
-var InputFocus = 10;
-var MenuMouseLeave = 11;
-var ItemMouseMove = 12;
-var ItemClick = 13;
-var ToggleButtonClick = 14;
-var FunctionToggleMenu = 15;
-var FunctionOpenMenu = 16;
-var FunctionCloseMenu = 17;
-var FunctionSetHighlightedIndex = 18;
-var FunctionSelectItem = 19;
-var FunctionSetInputValue = 20;
-var FunctionReset$1 = 21;
-var ControlledPropUpdatedSelectedItem = 22;
-var stateChangeTypes$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  InputKeyDownArrowDown: InputKeyDownArrowDown,
-  InputKeyDownArrowUp: InputKeyDownArrowUp,
-  InputKeyDownEscape: InputKeyDownEscape,
-  InputKeyDownHome: InputKeyDownHome,
-  InputKeyDownEnd: InputKeyDownEnd,
-  InputKeyDownPageUp: InputKeyDownPageUp,
-  InputKeyDownPageDown: InputKeyDownPageDown,
-  InputKeyDownEnter: InputKeyDownEnter,
-  InputChange: InputChange,
-  InputBlur: InputBlur,
-  InputFocus: InputFocus,
-  MenuMouseLeave: MenuMouseLeave,
-  ItemMouseMove: ItemMouseMove,
-  ItemClick: ItemClick,
-  ToggleButtonClick: ToggleButtonClick,
-  FunctionToggleMenu: FunctionToggleMenu,
-  FunctionOpenMenu: FunctionOpenMenu,
-  FunctionCloseMenu: FunctionCloseMenu,
-  FunctionSetHighlightedIndex: FunctionSetHighlightedIndex,
-  FunctionSelectItem: FunctionSelectItem,
-  FunctionSetInputValue: FunctionSetInputValue,
-  FunctionReset: FunctionReset$1,
-  ControlledPropUpdatedSelectedItem: ControlledPropUpdatedSelectedItem
-});
-function getInitialState$1(props) {
-  var initialState = getInitialState$2(props);
-  var selectedItem = initialState.selectedItem;
-  var inputValue = initialState.inputValue;
-  if (inputValue === '' && selectedItem && props.defaultInputValue === undefined && props.initialInputValue === undefined && props.inputValue === undefined) {
-    inputValue = props.itemToString(selectedItem);
-  }
-  return _extends$w({}, initialState, {
-    inputValue: inputValue
-  });
-}
-({
-  items: PropTypes.array.isRequired,
-  itemToString: PropTypes.func,
-  selectedItemChanged: PropTypes.func,
-  getA11yStatusMessage: PropTypes.func,
-  getA11ySelectionMessage: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  defaultHighlightedIndex: PropTypes.number,
-  initialHighlightedIndex: PropTypes.number,
-  isOpen: PropTypes.bool,
-  defaultIsOpen: PropTypes.bool,
-  initialIsOpen: PropTypes.bool,
-  selectedItem: PropTypes.any,
-  initialSelectedItem: PropTypes.any,
-  defaultSelectedItem: PropTypes.any,
-  inputValue: PropTypes.string,
-  defaultInputValue: PropTypes.string,
-  initialInputValue: PropTypes.string,
-  id: PropTypes.string,
-  labelId: PropTypes.string,
-  menuId: PropTypes.string,
-  getItemId: PropTypes.func,
-  inputId: PropTypes.string,
-  toggleButtonId: PropTypes.string,
-  stateReducer: PropTypes.func,
-  onSelectedItemChange: PropTypes.func,
-  onHighlightedIndexChange: PropTypes.func,
-  onStateChange: PropTypes.func,
-  onIsOpenChange: PropTypes.func,
-  onInputValueChange: PropTypes.func,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
-});
-
-/**
- * The useCombobox version of useControlledReducer, which also
- * checks if the controlled prop selectedItem changed between
- * renders. If so, it will also update inputValue with its
- * string equivalent. It uses the common useEnhancedReducer to
- * compute the rest of the state.
- *
- * @param {Function} reducer Reducer function from downshift.
- * @param {Object} initialState Initial state of the hook.
- * @param {Object} props The hook props.
- * @returns {Array} An array with the state and an action dispatcher.
- */
-function useControlledReducer(reducer, initialState, props) {
-  var previousSelectedItemRef = reactExports.useRef();
-  var _useEnhancedReducer = useEnhancedReducer(reducer, initialState, props),
-    state = _useEnhancedReducer[0],
-    dispatch = _useEnhancedReducer[1];
-
-  // ToDo: if needed, make same approach as selectedItemChanged from Downshift.
-  reactExports.useEffect(function () {
-    if (!isControlledProp(props, 'selectedItem')) {
-      return;
-    }
-    if (props.selectedItemChanged(previousSelectedItemRef.current, props.selectedItem)) {
-      dispatch({
-        type: ControlledPropUpdatedSelectedItem,
-        inputValue: props.itemToString(props.selectedItem)
-      });
-    }
-    previousSelectedItemRef.current = state.selectedItem === previousSelectedItemRef.current ? props.selectedItem : state.selectedItem;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.selectedItem, props.selectedItem]);
-  return [getState(state, props), dispatch];
-}
-
-// eslint-disable-next-line import/no-mutable-exports
-var validatePropTypes$1 = noop;
-var defaultProps$1 = _extends$w({}, defaultProps$3, {
-  selectedItemChanged: function selectedItemChanged(prevItem, item) {
-    return prevItem !== item;
-  },
-  getA11yStatusMessage: getA11yStatusMessage$1
-});
-
-/* eslint-disable complexity */
-function downshiftUseComboboxReducer(state, action) {
-  var _props$items;
-  var type = action.type,
-    props = action.props,
-    altKey = action.altKey;
-  var changes;
-  switch (type) {
-    case ItemClick:
-      changes = {
-        isOpen: getDefaultValue$1(props, 'isOpen'),
-        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
-        selectedItem: props.items[action.index],
-        inputValue: props.itemToString(props.items[action.index])
-      };
-      break;
-    case InputKeyDownArrowDown:
-      if (state.isOpen) {
-        changes = {
-          highlightedIndex: getNextWrappingIndex(1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
-        };
-      } else {
-        changes = {
-          highlightedIndex: altKey && state.selectedItem == null ? -1 : getHighlightedIndexOnOpen(props, state, 1, action.getItemNodeFromIndex),
-          isOpen: props.items.length >= 0
-        };
-      }
-      break;
-    case InputKeyDownArrowUp:
-      if (state.isOpen) {
-        if (altKey) {
-          changes = getChangesOnSelection(props, state.highlightedIndex);
-        } else {
-          changes = {
-            highlightedIndex: getNextWrappingIndex(-1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
-          };
-        }
-      } else {
-        changes = {
-          highlightedIndex: getHighlightedIndexOnOpen(props, state, -1, action.getItemNodeFromIndex),
-          isOpen: props.items.length >= 0
-        };
-      }
-      break;
-    case InputKeyDownEnter:
-      changes = getChangesOnSelection(props, state.highlightedIndex);
-      break;
-    case InputKeyDownEscape:
-      changes = _extends$w({
-        isOpen: false,
-        highlightedIndex: -1
-      }, !state.isOpen && {
-        selectedItem: null,
-        inputValue: ''
-      });
-      break;
-    case InputKeyDownPageUp:
-      changes = {
-        highlightedIndex: getNextWrappingIndex(-10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputKeyDownPageDown:
-      changes = {
-        highlightedIndex: getNextWrappingIndex(10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputKeyDownHome:
-      changes = {
-        highlightedIndex: getNextNonDisabledIndex(1, 0, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputKeyDownEnd:
-      changes = {
-        highlightedIndex: getNextNonDisabledIndex(-1, props.items.length - 1, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputBlur:
-      changes = _extends$w({
-        isOpen: false,
-        highlightedIndex: -1
-      }, state.highlightedIndex >= 0 && ((_props$items = props.items) == null ? void 0 : _props$items.length) && action.selectItem && {
-        selectedItem: props.items[state.highlightedIndex],
-        inputValue: props.itemToString(props.items[state.highlightedIndex])
-      });
-      break;
-    case InputChange:
-      changes = {
-        isOpen: true,
-        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
-        inputValue: action.inputValue
-      };
-      break;
-    case InputFocus:
-      changes = {
-        isOpen: true,
-        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
-      };
-      break;
-    case FunctionSelectItem:
-      changes = {
-        selectedItem: action.selectedItem,
-        inputValue: props.itemToString(action.selectedItem)
-      };
-      break;
-    case ControlledPropUpdatedSelectedItem:
-      changes = {
-        inputValue: action.inputValue
-      };
-      break;
-    default:
-      return downshiftCommonReducer(state, action, stateChangeTypes$1);
-  }
-  return _extends$w({}, state, changes);
-}
-/* eslint-enable complexity */
-
-var _excluded$1 = ["onMouseLeave", "refKey", "ref"],
-  _excluded2$1 = ["item", "index", "refKey", "ref", "onMouseMove", "onMouseDown", "onClick", "onPress", "disabled"],
-  _excluded3 = ["onClick", "onPress", "refKey", "ref"],
-  _excluded4 = ["onKeyDown", "onChange", "onInput", "onFocus", "onBlur", "onChangeText", "refKey", "ref"];
-useCombobox$1.stateChangeTypes = stateChangeTypes$1;
-function useCombobox$1(userProps) {
-  if (userProps === void 0) {
-    userProps = {};
-  }
-  validatePropTypes$1();
-  // Props defaults and destructuring.
-  var props = _extends$w({}, defaultProps$1, userProps);
-  var initialIsOpen = props.initialIsOpen,
-    defaultIsOpen = props.defaultIsOpen,
-    items = props.items,
-    scrollIntoView = props.scrollIntoView,
-    environment = props.environment,
-    getA11yStatusMessage = props.getA11yStatusMessage,
-    getA11ySelectionMessage = props.getA11ySelectionMessage,
-    itemToString = props.itemToString;
-  // Initial state depending on controlled props.
-  var initialState = getInitialState$1(props);
-  var _useControlledReducer = useControlledReducer(downshiftUseComboboxReducer, initialState, props),
-    state = _useControlledReducer[0],
-    dispatch = _useControlledReducer[1];
-  var isOpen = state.isOpen,
-    highlightedIndex = state.highlightedIndex,
-    selectedItem = state.selectedItem,
-    inputValue = state.inputValue;
-
-  // Element refs.
-  var menuRef = reactExports.useRef(null);
-  var itemRefs = reactExports.useRef({});
-  var inputRef = reactExports.useRef(null);
-  var toggleButtonRef = reactExports.useRef(null);
-  var isInitialMountRef = reactExports.useRef(true);
-  // prevent id re-generation between renders.
-  var elementIds = useElementIds(props);
-  // used to keep track of how many items we had on previous cycle.
-  var previousResultCountRef = reactExports.useRef();
-  // utility callback to get item element.
-  var latest = useLatestRef$1({
-    state: state,
-    props: props
-  });
-  var getItemNodeFromIndex = reactExports.useCallback(function (index) {
-    return itemRefs.current[elementIds.getItemId(index)];
-  }, [elementIds]);
-
-  // Effects.
-  // Sets a11y status message on changes in state.
-  useA11yMessageSetter(getA11yStatusMessage, [isOpen, highlightedIndex, inputValue, items], _extends$w({
-    isInitialMount: isInitialMountRef.current,
-    previousResultCount: previousResultCountRef.current,
-    items: items,
-    environment: environment,
-    itemToString: itemToString
-  }, state));
-  // Sets a11y status message on changes in selectedItem.
-  useA11yMessageSetter(getA11ySelectionMessage, [selectedItem], _extends$w({
-    isInitialMount: isInitialMountRef.current,
-    previousResultCount: previousResultCountRef.current,
-    items: items,
-    environment: environment,
-    itemToString: itemToString
-  }, state));
-  // Scroll on highlighted item if change comes from keyboard.
-  var shouldScrollRef = useScrollIntoView({
-    menuElement: menuRef.current,
-    highlightedIndex: highlightedIndex,
-    isOpen: isOpen,
-    itemRefs: itemRefs,
-    scrollIntoView: scrollIntoView,
-    getItemNodeFromIndex: getItemNodeFromIndex
-  });
-  useControlPropsValidator({
-    isInitialMount: isInitialMountRef.current,
-    props: props,
-    state: state
-  });
-  // Focus the input on first render if required.
-  reactExports.useEffect(function () {
-    var focusOnOpen = initialIsOpen || defaultIsOpen || isOpen;
-    if (focusOnOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  reactExports.useEffect(function () {
-    if (isInitialMountRef.current) {
-      return;
-    }
-    previousResultCountRef.current = items.length;
-  });
-  // Add mouse/touch events to document.
-  var mouseAndTouchTrackersRef = useMouseAndTouchTracker(isOpen, [inputRef, menuRef, toggleButtonRef], environment, function () {
-    dispatch({
-      type: InputBlur,
-      selectItem: false
-    });
-  });
-  var setGetterPropCallInfo = useGetterPropsCalledChecker();
-  // Make initial ref false.
-  reactExports.useEffect(function () {
-    isInitialMountRef.current = false;
-    return function () {
-      isInitialMountRef.current = true;
-    };
-  }, []);
-  // Reset itemRefs on close.
-  reactExports.useEffect(function () {
-    var _environment$document;
-    if (!isOpen) {
-      itemRefs.current = {};
-    } else if (((_environment$document = environment.document) == null ? void 0 : _environment$document.activeElement) !== inputRef.current) {
-      var _inputRef$current;
-      inputRef == null ? void 0 : (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.focus();
-    }
-  }, [isOpen, environment]);
-
-  /* Event handler functions */
-  var inputKeyDownHandlers = reactExports.useMemo(function () {
-    return {
-      ArrowDown: function ArrowDown(event) {
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownArrowDown,
-          altKey: event.altKey,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      ArrowUp: function ArrowUp(event) {
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownArrowUp,
-          altKey: event.altKey,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      Home: function Home(event) {
-        if (!latest.current.state.isOpen) {
-          return;
-        }
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownHome,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      End: function End(event) {
-        if (!latest.current.state.isOpen) {
-          return;
-        }
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownEnd,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      Escape: function Escape(event) {
-        var latestState = latest.current.state;
-        if (latestState.isOpen || latestState.inputValue || latestState.selectedItem || latestState.highlightedIndex > -1) {
-          event.preventDefault();
-          dispatch({
-            type: InputKeyDownEscape
-          });
-        }
-      },
-      Enter: function Enter(event) {
-        var latestState = latest.current.state;
-        // if closed or no highlighted index, do nothing.
-        if (!latestState.isOpen || event.which === 229 // if IME composing, wait for next Enter keydown event.
-        ) {
-          return;
-        }
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownEnter,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      PageUp: function PageUp(event) {
-        if (latest.current.state.isOpen) {
-          event.preventDefault();
-          dispatch({
-            type: InputKeyDownPageUp,
-            getItemNodeFromIndex: getItemNodeFromIndex
-          });
-        }
-      },
-      PageDown: function PageDown(event) {
-        if (latest.current.state.isOpen) {
-          event.preventDefault();
-          dispatch({
-            type: InputKeyDownPageDown,
-            getItemNodeFromIndex: getItemNodeFromIndex
-          });
-        }
-      }
-    };
-  }, [dispatch, latest, getItemNodeFromIndex]);
-
-  // Getter props.
-  var getLabelProps = reactExports.useCallback(function (labelProps) {
-    return _extends$w({
-      id: elementIds.labelId,
-      htmlFor: elementIds.inputId
-    }, labelProps);
-  }, [elementIds]);
-  var getMenuProps = reactExports.useCallback(function (_temp, _temp2) {
-    var _extends2;
-    var _ref = _temp === void 0 ? {} : _temp,
-      onMouseLeave = _ref.onMouseLeave,
-      _ref$refKey = _ref.refKey,
-      refKey = _ref$refKey === void 0 ? 'ref' : _ref$refKey,
-      ref = _ref.ref,
-      rest = _objectWithoutPropertiesLoose(_ref, _excluded$1);
-    var _ref2 = _temp2 === void 0 ? {} : _temp2;
-      _ref2.suppressRefError;
-    return _extends$w((_extends2 = {}, _extends2[refKey] = handleRefs(ref, function (menuNode) {
-      menuRef.current = menuNode;
-    }), _extends2.id = elementIds.menuId, _extends2.role = 'listbox', _extends2['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends2.onMouseLeave = callAllEventHandlers(onMouseLeave, function () {
-      dispatch({
-        type: MenuMouseLeave
-      });
-    }), _extends2), rest);
-  }, [dispatch, setGetterPropCallInfo, elementIds]);
-  var getItemProps = reactExports.useCallback(function (_temp3) {
-    var _extends3, _ref4;
-    var _ref3 = _temp3 === void 0 ? {} : _temp3,
-      itemProp = _ref3.item,
-      indexProp = _ref3.index,
-      _ref3$refKey = _ref3.refKey,
-      refKey = _ref3$refKey === void 0 ? 'ref' : _ref3$refKey,
-      ref = _ref3.ref,
-      onMouseMove = _ref3.onMouseMove,
-      onMouseDown = _ref3.onMouseDown,
-      onClick = _ref3.onClick;
-    _ref3.onPress;
-    var disabled = _ref3.disabled,
-      rest = _objectWithoutPropertiesLoose(_ref3, _excluded2$1);
-    var _latest$current = latest.current,
-      latestProps = _latest$current.props,
-      latestState = _latest$current.state;
-    var _getItemAndIndex = getItemAndIndex(itemProp, indexProp, latestProps.items, 'Pass either item or index to getItemProps!'),
-      index = _getItemAndIndex[1];
-    var onSelectKey = 'onClick';
-    var customClickHandler = onClick;
-    var itemHandleMouseMove = function itemHandleMouseMove() {
-      if (index === latestState.highlightedIndex) {
-        return;
-      }
-      shouldScrollRef.current = false;
-      dispatch({
-        type: ItemMouseMove,
-        index: index,
-        disabled: disabled
-      });
-    };
-    var itemHandleClick = function itemHandleClick() {
-      dispatch({
-        type: ItemClick,
-        index: index
-      });
-    };
-    var itemHandleMouseDown = function itemHandleMouseDown(e) {
-      return e.preventDefault();
-    };
-    return _extends$w((_extends3 = {}, _extends3[refKey] = handleRefs(ref, function (itemNode) {
-      if (itemNode) {
-        itemRefs.current[elementIds.getItemId(index)] = itemNode;
-      }
-    }), _extends3.disabled = disabled, _extends3.role = 'option', _extends3['aria-selected'] = "" + (index === latestState.highlightedIndex), _extends3.id = elementIds.getItemId(index), _extends3), !disabled && (_ref4 = {}, _ref4[onSelectKey] = callAllEventHandlers(customClickHandler, itemHandleClick), _ref4), {
-      onMouseMove: callAllEventHandlers(onMouseMove, itemHandleMouseMove),
-      onMouseDown: callAllEventHandlers(onMouseDown, itemHandleMouseDown)
-    }, rest);
-  }, [dispatch, latest, shouldScrollRef, elementIds]);
-  var getToggleButtonProps = reactExports.useCallback(function (_temp4) {
-    var _extends4;
-    var _ref5 = _temp4 === void 0 ? {} : _temp4,
-      onClick = _ref5.onClick;
-    _ref5.onPress;
-    var _ref5$refKey = _ref5.refKey,
-      refKey = _ref5$refKey === void 0 ? 'ref' : _ref5$refKey,
-      ref = _ref5.ref,
-      rest = _objectWithoutPropertiesLoose(_ref5, _excluded3);
-    var latestState = latest.current.state;
-    var toggleButtonHandleClick = function toggleButtonHandleClick() {
-      dispatch({
-        type: ToggleButtonClick
-      });
-    };
-    return _extends$w((_extends4 = {}, _extends4[refKey] = handleRefs(ref, function (toggleButtonNode) {
-      toggleButtonRef.current = toggleButtonNode;
-    }), _extends4['aria-controls'] = elementIds.menuId, _extends4['aria-expanded'] = latestState.isOpen, _extends4.id = elementIds.toggleButtonId, _extends4.tabIndex = -1, _extends4), !rest.disabled && _extends$w({}, {
-      onClick: callAllEventHandlers(onClick, toggleButtonHandleClick)
-    }), rest);
-  }, [dispatch, latest, elementIds]);
-  var getInputProps = reactExports.useCallback(function (_temp5, _temp6) {
-    var _extends5;
-    var _ref6 = _temp5 === void 0 ? {} : _temp5,
-      onKeyDown = _ref6.onKeyDown,
-      onChange = _ref6.onChange,
-      onInput = _ref6.onInput,
-      onFocus = _ref6.onFocus,
-      onBlur = _ref6.onBlur;
-    _ref6.onChangeText;
-    var _ref6$refKey = _ref6.refKey,
-      refKey = _ref6$refKey === void 0 ? 'ref' : _ref6$refKey,
-      ref = _ref6.ref,
-      rest = _objectWithoutPropertiesLoose(_ref6, _excluded4);
-    var _ref7 = _temp6 === void 0 ? {} : _temp6;
-      _ref7.suppressRefError;
-    var latestState = latest.current.state;
-    var inputHandleKeyDown = function inputHandleKeyDown(event) {
-      var key = normalizeArrowKey(event);
-      if (key && inputKeyDownHandlers[key]) {
-        inputKeyDownHandlers[key](event);
-      }
-    };
-    var inputHandleChange = function inputHandleChange(event) {
-      dispatch({
-        type: InputChange,
-        inputValue: event.target.value
-      });
-    };
-    var inputHandleBlur = function inputHandleBlur(event) {
-      /* istanbul ignore else */
-      if (latestState.isOpen && !mouseAndTouchTrackersRef.current.isMouseDown) {
-        dispatch({
-          type: InputBlur,
-          selectItem: event.relatedTarget !== null
-        });
-      }
-    };
-    var inputHandleFocus = function inputHandleFocus() {
-      if (!latestState.isOpen) {
-        dispatch({
-          type: InputFocus
-        });
-      }
-    };
-
-    /* istanbul ignore next (preact) */
-    var onChangeKey = 'onChange';
-    var eventHandlers = {};
-    if (!rest.disabled) {
-      var _eventHandlers;
-      eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, inputHandleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, inputHandleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, inputHandleBlur), _eventHandlers.onFocus = callAllEventHandlers(onFocus, inputHandleFocus), _eventHandlers);
-    }
-    return _extends$w((_extends5 = {}, _extends5[refKey] = handleRefs(ref, function (inputNode) {
-      inputRef.current = inputNode;
-    }), _extends5['aria-activedescendant'] = latestState.isOpen && latestState.highlightedIndex > -1 ? elementIds.getItemId(latestState.highlightedIndex) : '', _extends5['aria-autocomplete'] = 'list', _extends5['aria-controls'] = elementIds.menuId, _extends5['aria-expanded'] = latestState.isOpen, _extends5['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends5.autoComplete = 'off', _extends5.id = elementIds.inputId, _extends5.role = 'combobox', _extends5.value = latestState.inputValue, _extends5), eventHandlers, rest);
-  }, [dispatch, inputKeyDownHandlers, latest, mouseAndTouchTrackersRef, setGetterPropCallInfo, elementIds]);
-
-  // returns
-  var toggleMenu = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionToggleMenu
-    });
-  }, [dispatch]);
-  var closeMenu = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionCloseMenu
-    });
-  }, [dispatch]);
-  var openMenu = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionOpenMenu
-    });
-  }, [dispatch]);
-  var setHighlightedIndex = reactExports.useCallback(function (newHighlightedIndex) {
-    dispatch({
-      type: FunctionSetHighlightedIndex,
-      highlightedIndex: newHighlightedIndex
-    });
-  }, [dispatch]);
-  var selectItem = reactExports.useCallback(function (newSelectedItem) {
-    dispatch({
-      type: FunctionSelectItem,
-      selectedItem: newSelectedItem
-    });
-  }, [dispatch]);
-  var setInputValue = reactExports.useCallback(function (newInputValue) {
-    dispatch({
-      type: FunctionSetInputValue,
-      inputValue: newInputValue
-    });
-  }, [dispatch]);
-  var reset = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionReset$1
-    });
-  }, [dispatch]);
-  return {
-    // prop getters.
-    getItemProps: getItemProps,
-    getLabelProps: getLabelProps,
-    getMenuProps: getMenuProps,
-    getInputProps: getInputProps,
-    getToggleButtonProps: getToggleButtonProps,
-    // actions.
-    toggleMenu: toggleMenu,
-    openMenu: openMenu,
-    closeMenu: closeMenu,
-    setHighlightedIndex: setHighlightedIndex,
-    setInputValue: setInputValue,
-    selectItem: selectItem,
-    reset: reset,
-    // state.
-    highlightedIndex: highlightedIndex,
-    isOpen: isOpen,
-    selectedItem: selectedItem,
-    inputValue: inputValue
-  };
-}
-
-/**
- * Returns a message to be added to aria-live region when item is removed.
- *
- * @param {Object} selectionParameters Parameters required to build the message.
- * @returns {string} The a11y message.
- */
-function getA11yRemovalMessage(selectionParameters) {
-  var removedSelectedItem = selectionParameters.removedSelectedItem,
-    itemToStringLocal = selectionParameters.itemToString;
-  return itemToStringLocal(removedSelectedItem) + " has been removed.";
-}
-({
-  selectedItems: PropTypes.array,
-  initialSelectedItems: PropTypes.array,
-  defaultSelectedItems: PropTypes.array,
-  itemToString: PropTypes.func,
-  getA11yRemovalMessage: PropTypes.func,
-  stateReducer: PropTypes.func,
-  activeIndex: PropTypes.number,
-  initialActiveIndex: PropTypes.number,
-  defaultActiveIndex: PropTypes.number,
-  onActiveIndexChange: PropTypes.func,
-  onSelectedItemsChange: PropTypes.func,
-  keyNavigationNext: PropTypes.string,
-  keyNavigationPrevious: PropTypes.string,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
-});
-({
-  itemToString: defaultProps$3.itemToString,
-  stateReducer: defaultProps$3.stateReducer,
-  environment: defaultProps$3.environment,
-  getA11yRemovalMessage: getA11yRemovalMessage,
-  keyNavigationNext: 'ArrowRight',
-  keyNavigationPrevious: 'ArrowLeft'
-});
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-const typeMap = {
-  [useCombobox$1.stateChangeTypes.FunctionCloseMenu]: 'fn:setExpansion',
-  [useCombobox$1.stateChangeTypes.FunctionOpenMenu]: 'fn:setExpansion',
-  [useCombobox$1.stateChangeTypes.FunctionToggleMenu]: 'fn:setExpansion',
-  [useCombobox$1.stateChangeTypes.FunctionReset]: 'fn:reset',
-  [useCombobox$1.stateChangeTypes.FunctionSelectItem]: 'fn:setSelectionValue',
-  [useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex]: 'fn:setActiveIndex',
-  [useCombobox$1.stateChangeTypes.FunctionSetInputValue]: 'fn:setInputValue',
-  [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
-  [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
-  [useCombobox$1.stateChangeTypes.InputFocus]: 'input:focus',
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$1.DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$1.UP}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$1.END}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$1.ENTER}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$1.ESCAPE}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$1.HOME}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$1.PAGE_DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$1.PAGE_UP}`,
-  [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
-  [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
-  [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
-  [useCombobox$1.stateChangeTypes.ToggleButtonClick]: 'toggle:click'
-};
-const toType = downshiftType => {
-  return typeMap[downshiftType] || downshiftType;
-};
-const toLabel = (labels, value) => {
-  if (value === undefined) {
-    return '';
-  }
-  const key = typeof value === 'string' ? value : JSON.stringify(value);
-  return labels[key];
-};
-const useCombobox = _ref => {
-  let {
-    idPrefix,
-    triggerRef,
-    inputRef,
-    listboxRef,
-    isAutocomplete,
-    isMultiselectable,
-    isEditable = true,
-    disabled,
-    hasHint,
-    hasMessage,
-    options = [],
-    inputValue,
-    selectionValue,
-    isExpanded,
-    defaultExpanded,
-    initialExpanded,
-    activeIndex,
-    defaultActiveIndex,
-    initialActiveIndex,
-    onChange = () => undefined,
-    environment
-  } = _ref;
-  const win = environment || window;
-  const prefix = `${useId(idPrefix)}-`;
-  const [triggerContainsInput, setTriggerContainsInput] = reactExports.useState();
-  const [matchValue, setMatchValue] = reactExports.useState('');
-  const matchTimeoutRef = reactExports.useRef();
-  const previousStateRef = reactExports.useRef();
-  const labels = reactExports.useMemo(() => ({}), []);
-  const selectedValues = reactExports.useMemo(() => [], []);
-  const disabledValues = reactExports.useMemo(() => [], []);
-  const values = reactExports.useMemo(() => {
-    const retVal = [];
-    const setValues = option => {
-      if (option.disabled) {
-        if (!disabledValues.includes(option.value)) {
-          disabledValues.push(option.value);
-        }
-      } else {
-        retVal.push(option.value);
-        const index = disabledValues.indexOf(option.value);
-        if (index !== -1) {
-          disabledValues.splice(index, 1);
-        }
-      }
-      if (option.selected && !selectedValues.includes(option.value)) {
-        selectedValues.push(option.value);
-      }
-      const key = typeof option.value === 'string' ? option.value : JSON.stringify(option.value);
-      labels[key] = option.label || key;
-    };
-    options.forEach(option => {
-      if ('options' in option) {
-        option.options.forEach(setValues);
-      } else {
-        setValues(option);
-      }
-    });
-    return retVal;
-  }, [options, disabledValues, selectedValues, labels]);
-  const initialSelectionValue = isMultiselectable ? selectedValues : selectedValues[0];
-  const initialInputValue = isMultiselectable ? '' : toLabel(labels, initialSelectionValue);
-  const _defaultActiveIndex = reactExports.useMemo(() => {
-    if (defaultActiveIndex === undefined) {
-      return isAutocomplete && isEditable ? 0 : undefined;
-    }
-    return defaultActiveIndex;
-  }, [defaultActiveIndex, isAutocomplete, isEditable]);
-  if (selectionValue === undefined || selectionValue === null) {
-    if (!isMultiselectable && selectedValues.length > 1) {
-      throw new Error('Error: expected useCombobox `options` to have no more than one selected.');
-    }
-  }
-  if (selectionValue !== undefined && selectionValue !== null) {
-    if (isMultiselectable && !Array.isArray(selectionValue)) {
-      throw new Error('Error: expected multiselectable useCombobox `selectionValue` to be an array.');
-    } else if (!isMultiselectable && Array.isArray(selectionValue)) {
-      throw new Error('Error: expected useCombobox `selectionValue` not to be an array.');
-    }
-  }
-  const handleDownshiftStateChange = _ref2 => {
-    let {
-      type,
-      isOpen,
-      selectedItem,
-      inputValue: _inputValue,
-      highlightedIndex
-    } = _ref2;
-    return onChange({
-      type: toType(type),
-      ...(isOpen !== undefined && {
-        isExpanded: isOpen
-      }),
-      ...(selectedItem !== undefined && {
-        selectionValue: selectedItem
-      }),
-      ...(_inputValue !== undefined && {
-        inputValue: _inputValue
-      }),
-      ...(highlightedIndex !== undefined && {
-        activeIndex: highlightedIndex
-      })
-    });
-  };
-  const stateReducer = (state, _ref3) => {
-    let {
-      type,
-      changes,
-      altKey
-    } = _ref3;
-    switch (type) {
-      case useCombobox$1.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-        return state;
-      case useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex:
-        if (previousStateRef.current?.altKey) {
-          changes.highlightedIndex = -1;
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.FunctionCloseMenu:
-      case useCombobox$1.stateChangeTypes.InputBlur:
-        return {
-          ...state,
-          isOpen: type === useCombobox$1.stateChangeTypes.InputBlur && triggerContainsInput && isMultiselectable && state.isOpen || false
-        };
-      case useCombobox$1.stateChangeTypes.InputFocus:
-        return {
-          ...state,
-          isOpen: false
-        };
-      case useCombobox$1.stateChangeTypes.InputKeyDownArrowDown:
-      case useCombobox$1.stateChangeTypes.FunctionOpenMenu:
-        if (state.isOpen !== changes.isOpen && !altKey) {
-          changes.highlightedIndex = 0;
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.InputKeyDownArrowUp:
-        if (state.isOpen !== changes.isOpen) {
-          changes.highlightedIndex = values.length - 1;
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.InputKeyDownEnter:
-      case useCombobox$1.stateChangeTypes.FunctionSelectItem:
-      case useCombobox$1.stateChangeTypes.ItemClick:
-        changes.highlightedIndex = state.highlightedIndex;
-        if (isMultiselectable) {
-          changes.isOpen = state.isOpen;
-          changes.inputValue = '';
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.InputKeyDownEscape:
-        return {
-          ...state,
-          isOpen: false
-        };
-      case useCombobox$1.stateChangeTypes.InputKeyDownPageDown:
-      case useCombobox$1.stateChangeTypes.InputKeyDownPageUp:
-        return state;
-    }
-    if (isMultiselectable && state.selectedItem !== changes.selectedItem) {
-      if (state.selectedItem !== undefined && state.selectedItem !== null && changes.selectedItem !== undefined && changes.selectedItem !== null) {
-        if (state.selectedItem.includes(changes.selectedItem)) {
-          changes.selectedItem = state.selectedItem.filter(value => value !== changes.selectedItem);
-        } else {
-          changes.selectedItem = [...state.selectedItem, changes.selectedItem];
-        }
-      } else if (changes.selectedItem !== undefined && changes.selectedItem !== null) {
-        changes.selectedItem = [changes.selectedItem];
-      } else {
-        changes.selectedItem = [];
-      }
-    }
-    previousStateRef.current = {
-      type,
-      altKey,
-      ...state
-    };
-    return changes;
-  };
-  const transformValue = value => value ? toLabel(labels, value) : '';
-  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefix}-option${isDisabled ? '-disabled' : ''}-${index}`, [prefix]);
-  const {
-    selectedItem: _selectionValue,
-    isOpen: _isExpanded,
-    highlightedIndex: _activeIndex,
-    inputValue: _inputValue,
-    getToggleButtonProps: getDownshiftTriggerProps,
-    getInputProps: getDownshiftInputProps,
-    getMenuProps: getDownshiftListboxProps,
-    getItemProps: getDownshiftOptionProps,
-    closeMenu,
-    openMenu,
-    setHighlightedIndex,
-    selectItem
-  } = useCombobox$1({
-    id: prefix,
-    toggleButtonId: `${prefix}-trigger`,
-    menuId: `${prefix}-listbox`,
-    getItemId: getOptionId,
-    items: values,
-    inputValue,
-    initialInputValue,
-    itemToString: transformValue,
-    selectedItem: selectionValue,
-    initialSelectedItem: initialSelectionValue,
-    isOpen: isExpanded,
-    defaultIsOpen: defaultExpanded,
-    initialIsOpen: initialExpanded,
-    highlightedIndex: activeIndex,
-    defaultHighlightedIndex: _defaultActiveIndex,
-    initialHighlightedIndex: initialActiveIndex,
-    onStateChange: handleDownshiftStateChange,
-    stateReducer,
-    environment: win
-  });
-  const closeListbox = reactExports.useCallback(() => {
-    closeMenu();
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionCloseMenu),
-      isExpanded: false
-    });
-  }, [closeMenu, onChange]);
-  const openListbox = reactExports.useCallback(() => {
-    openMenu();
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionOpenMenu),
-      isExpanded: true
-    });
-  }, [openMenu, onChange]);
-  const setActiveIndex = reactExports.useCallback(index => {
-    setHighlightedIndex(index);
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex),
-      activeIndex: index
-    });
-  }, [onChange, setHighlightedIndex]);
-  const setDownshiftSelection = reactExports.useCallback(value => {
-    selectItem(value);
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionSelectItem),
-      selectionValue: value
-    });
-  }, [onChange, selectItem]);
-  const {
-    getLabelProps: getFieldLabelProps,
-    getHintProps,
-    getInputProps: getFieldInputProps,
-    getMessageProps
-  } = useField$1({
-    idPrefix,
-    hasHint,
-    hasMessage
-  });
-  reactExports.useLayoutEffect(() => {
-    if (isAutocomplete && _isExpanded && !previousStateRef.current?.isOpen && _selectionValue && !matchValue) {
-      const value = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1] : _selectionValue;
-      const index = values.findIndex(current => current === value);
-      if (index !== -1) {
-        setActiveIndex(index);
-      } else if (_defaultActiveIndex !== undefined) {
-        setActiveIndex(_defaultActiveIndex);
-      }
-    }
-  }, [isAutocomplete, _isExpanded, _selectionValue, _inputValue, values, _defaultActiveIndex, setActiveIndex]);
-  reactExports.useEffect(() => setTriggerContainsInput(triggerRef.current?.contains(inputRef.current)), [triggerRef, inputRef]);
-  reactExports.useEffect(() => {
-    clearTimeout(matchTimeoutRef.current);
-    matchTimeoutRef.current = window.setTimeout(() => setMatchValue(''), 500);
-    return () => clearTimeout(matchTimeoutRef.current);
-  }, [matchValue]);
-  reactExports.useEffect(() => {
-    if (previousStateRef.current?.type === useCombobox$1.stateChangeTypes.FunctionSelectItem) {
-      if (isEditable) {
-        inputRef.current?.focus();
-      } else {
-        triggerRef.current?.focus();
-      }
-    }
-  });
-  reactExports.useEffect(() => {
-    if (isEditable && inputRef.current === win.document.activeElement) {
-      inputRef.current?.scrollIntoView && inputRef.current?.scrollIntoView();
-    }
-  }, [inputRef, isEditable, win.document.activeElement]);
-  const getTriggerProps = reactExports.useCallback(function (_temp) {
-    let {
-      onBlur,
-      onClick,
-      onKeyDown,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    const triggerProps = getDownshiftTriggerProps({
-      'data-garden-container-id': 'containers.combobox',
-      'data-garden-container-version': '1.0.0',
-      onBlur,
-      onClick,
-      onKeyDown,
-      ref: triggerRef,
-      disabled,
-      ...other
-    });
-    const handleBlur = event => {
-      if (event.relatedTarget === null || !event.currentTarget?.contains(event.relatedTarget)) {
-        closeListbox();
-      }
-    };
-    if (isEditable && triggerContainsInput) {
-      const handleClick = event => {
-        if (disabled) {
-          event.preventDefault();
-        } else if (isAutocomplete) {
-          triggerProps.onClick(event);
-        } else {
-          inputRef.current?.focus();
-        }
-      };
-      return {
-        ...triggerProps,
-        onBlur: composeEventHandlers$1(onBlur, handleBlur),
-        onClick: composeEventHandlers$1(onClick, handleClick),
-        'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
-        'aria-expanded': undefined,
-        'aria-disabled': disabled || undefined,
-        disabled: undefined
-      };
-    } else if (!isEditable) {
-      const {
-        'aria-activedescendant': ariaActiveDescendant,
-        onKeyDown: onDownshiftKeyDown
-      } = getDownshiftInputProps({}, {
-        suppressRefError: true
-      });
-      const {
-        'aria-labelledby': ariaLabeledBy
-      } = getFieldInputProps();
-      const handleKeyDown = event => {
-        event.stopPropagation();
-        if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
-          openListbox();
-        } else if (/^(?:\S| ){1}$/u.test(event.key)) {
-          const _matchValue = `${matchValue}${event.key}`;
-          setMatchValue(_matchValue);
-          let offset = 0;
-          if (_isExpanded) {
-            if (_activeIndex !== -1) {
-              offset = _matchValue.length === 1 ? _activeIndex + 1 : _activeIndex;
-            }
-          } else {
-            openListbox();
-            const offsetValue = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1] : _selectionValue;
-            if (offsetValue !== null) {
-              offset = values.findIndex(current => current === offsetValue);
-            }
-          }
-          for (let index = 0; index < values.length; index++) {
-            const valueIndex = (index + offset) % values.length;
-            const value = values[valueIndex];
-            if (toLabel(labels, value).toLowerCase().startsWith(_matchValue.toLowerCase())) {
-              setActiveIndex(valueIndex);
-              break;
-            }
-          }
-        }
-      };
-      return {
-        ...triggerProps,
-        'aria-activedescendant': ariaActiveDescendant,
-        'aria-haspopup': 'listbox',
-        'aria-labelledby': ariaLabeledBy,
-        'aria-disabled': disabled || undefined,
-        disabled: undefined,
-        role: 'combobox',
-        onBlur: composeEventHandlers$1(onBlur, handleBlur),
-        onKeyDown: composeEventHandlers$1(onKeyDown, onDownshiftKeyDown, handleKeyDown),
-        tabIndex: disabled ? -1 : 0
-      };
-    }
-    return triggerProps;
-  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, inputRef]);
-  const getLabelProps = reactExports.useCallback(function (_temp2) {
-    let {
-      onClick,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    const {
-      htmlFor,
-      ...labelProps
-    } = getFieldLabelProps(other);
-    const handleClick = () => !isEditable && triggerRef.current?.focus();
-    return {
-      ...labelProps,
-      onClick: composeEventHandlers$1(onClick, handleClick),
-      htmlFor: isEditable ? htmlFor : undefined
-    };
-  }, [getFieldLabelProps, isEditable, triggerRef]);
-  const getInputProps = reactExports.useCallback(function (_temp3) {
-    let {
-      role = isEditable ? 'combobox' : null,
-      'aria-labelledby': ariaLabeledBy = null,
-      onClick,
-      onFocus,
-      ...other
-    } = _temp3 === void 0 ? {} : _temp3;
-    const inputProps = {
-      'data-garden-container-id': 'containers.combobox.input',
-      'data-garden-container-version': '1.0.0',
-      ref: inputRef,
-      role: role === null ? undefined : role,
-      onClick,
-      onFocus
-    };
-    if (isEditable) {
-      const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
-      return getDownshiftInputProps({
-        ...inputProps,
-        disabled,
-        role,
-        'aria-labelledby': ariaLabeledBy,
-        'aria-autocomplete': isAutocomplete ? 'list' : undefined,
-        onClick: composeEventHandlers$1(onClick, handleClick),
-        ...getFieldInputProps(),
-        ...other
-      });
-    }
-    const downshiftInputProps = getDownshiftInputProps({
-      ...inputProps,
-      disabled: true,
-      'aria-autocomplete': undefined,
-      'aria-activedescendant': undefined,
-      'aria-controls': undefined,
-      'aria-expanded': undefined,
-      'aria-hidden': true,
-      'aria-labelledby': undefined
-    });
-    const handleFocus = () => {
-      if (!isEditable) {
-        triggerRef.current?.focus();
-      }
-    };
-    return {
-      ...downshiftInputProps,
-      disabled,
-      readOnly: true,
-      tabIndex: -1,
-      onFocus: composeEventHandlers$1(onFocus, handleFocus),
-      ...other
-    };
-  }, [getDownshiftInputProps, getFieldInputProps, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
-  const getTagProps = reactExports.useCallback(_ref4 => {
-    let {
-      option,
-      onClick,
-      onFocus,
-      onKeyDown,
-      ...other
-    } = _ref4;
-    const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
-    const handleFocus = () => {
-      if (_isExpanded) {
-        setActiveIndex(values.findIndex(value => value === option.value));
-      }
-    };
-    const handleKeyDown = event => {
-      if (event.key === KEYS$1.BACKSPACE || event.key === KEYS$1.DELETE) {
-        setDownshiftSelection(option.value);
-      } else {
-        const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
-        if (triggerContainsTag && (event.key === KEYS$1.DOWN || event.key === KEYS$1.UP || event.key === KEYS$1.ESCAPE)) {
-          const inputProps = getDownshiftInputProps();
-          if (isEditable) {
-            inputRef.current?.focus();
-          } else {
-            triggerRef.current?.focus();
-          }
-          inputProps.onKeyDown(event);
-        } else if (triggerContainsTag && !isEditable) {
-          event.stopPropagation();
-        }
-      }
-    };
-    return {
-      'data-garden-container-id': 'containers.combobox.tag',
-      'data-garden-container-version': '1.0.0',
-      onClick: composeEventHandlers$1(onClick, handleClick),
-      onFocus: composeEventHandlers$1(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
-      ...other
-    };
-  }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, _isExpanded, values, setActiveIndex, inputRef]);
-  const getListboxProps = reactExports.useCallback(_ref5 => {
-    let {
-      role = 'listbox',
-      'aria-labelledby': ariaLabeledBy = null,
-      ...other
-    } = _ref5;
-    return getDownshiftListboxProps({
-      'data-garden-container-id': 'containers.combobox.listbox',
-      'data-garden-container-version': '1.0.0',
-      ref: listboxRef,
-      role,
-      'aria-labelledby': ariaLabeledBy,
-      'aria-multiselectable': isMultiselectable ? true : undefined,
-      ...other
-    });
-  }, [getDownshiftListboxProps, listboxRef, isMultiselectable]);
-  const getOptGroupProps = reactExports.useCallback(_ref6 => {
-    let {
-      role = 'group',
-      ...other
-    } = _ref6;
-    return {
-      'data-garden-container-id': 'containers.combobox.optgroup',
-      'data-garden-container-version': '1.0.0',
-      role: role === null ? undefined : role,
-      ...other
-    };
-  }, []);
-  const getOptionProps = reactExports.useCallback(function (_temp4) {
-    let {
-      role = 'option',
-      option,
-      onMouseDown,
-      ...other
-    } = _temp4 === void 0 ? {} : _temp4;
-    const optionProps = {
-      'data-garden-container-id': 'containers.combobox.option',
-      'data-garden-container-version': '1.0.0',
-      role,
-      onMouseDown,
-      ...other
-    };
-    let ariaSelected = false;
-    if (option?.value !== undefined) {
-      ariaSelected = Array.isArray(_selectionValue) ? _selectionValue?.includes(option?.value) : _selectionValue === option?.value;
-    }
-    if (option === undefined || option.disabled) {
-      const handleMouseDown = event => event.preventDefault();
-      return {
-        'aria-disabled': true,
-        'aria-selected': ariaSelected,
-        id: option ? getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
-        ...optionProps,
-        onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown)
-      };
-    }
-    return getDownshiftOptionProps({
-      item: option.value,
-      index: values.indexOf(option.value),
-      'aria-selected': ariaSelected,
-      ...optionProps
-    });
-  }, [getDownshiftOptionProps, disabledValues, values, _selectionValue, getOptionId]);
-  const removeSelection = reactExports.useCallback(value => {
-    if (value === undefined) {
-      setDownshiftSelection(null);
-    } else {
-      const removeValue = typeof value === 'object' && 'value' in value ? value.value : value;
-      if (Array.isArray(_selectionValue) && _selectionValue.includes(removeValue)) {
-        setDownshiftSelection(removeValue);
-      } else if (_selectionValue === removeValue) {
-        setDownshiftSelection(null);
-      } else ;
-    }
-  }, [_selectionValue, setDownshiftSelection]);
-  const selection = reactExports.useMemo(() => {
-    if (Array.isArray(_selectionValue)) {
-      return _selectionValue.map(value => ({
-        value,
-        label: labels[value],
-        disabled: disabledValues.includes(value)
-      }));
-    } else if (_selectionValue) {
-      return {
-        value: _selectionValue,
-        label: toLabel(labels, _selectionValue),
-        disabled: disabledValues.includes(_selectionValue)
-      };
-    }
-    return null;
-  }, [_selectionValue, disabledValues, labels]);
-  return reactExports.useMemo(() => ({
-    getLabelProps,
-    getHintProps,
-    getTriggerProps,
-    getInputProps,
-    getTagProps,
-    getListboxProps,
-    getOptGroupProps,
-    getOptionProps,
-    getMessageProps,
-    selection,
-    isExpanded: _isExpanded,
-    activeValue: values[_activeIndex],
-    inputValue: _inputValue,
-    removeSelection
-  }), [values, selection, _isExpanded, _activeIndex, _inputValue, getLabelProps, getHintProps, getTriggerProps, getInputProps, getTagProps, getListboxProps, getOptGroupProps, getOptionProps, getMessageProps, removeSelection]);
-};
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  idPrefix: PropTypes.string,
-  triggerRef: PropTypes.any.isRequired,
-  inputRef: PropTypes.any.isRequired,
-  listboxRef: PropTypes.any.isRequired,
-  isAutocomplete: PropTypes.bool,
-  isMultiselectable: PropTypes.bool,
-  isEditable: PropTypes.bool,
-  disabled: PropTypes.bool,
-  hasHint: PropTypes.bool,
-  hasMessage: PropTypes.bool,
-  options: PropTypes.arrayOf(PropTypes.any).isRequired,
-  inputValue: PropTypes.string,
-  selectionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-  isExpanded: PropTypes.bool,
-  defaultExpanded: PropTypes.bool,
-  initialExpanded: PropTypes.bool,
-  activeIndex: PropTypes.number,
-  defaultActiveIndex: PropTypes.number,
-  initialActiveIndex: PropTypes.number,
-  onChange: PropTypes.func,
-  environment: PropTypes.any
-});
-
-/**
- * generates a UID factory
- * @internal
- * @example
- * const uid = generateUID();
- * uid(object) = 1;
- * uid(object) = 1;
- * uid(anotherObject) = 2;
- */
-var generateUID$1 = function () {
-  var counter = 1;
-  var map = new WeakMap();
-  /**
-   * @borrows {uid}
-   */
-  var uid = function (item, index) {
-    if (typeof item === 'number' || typeof item === 'string') {
-      return index ? "idx-".concat(index) : "val-".concat(item);
-    }
-    if (!map.has(item)) {
-      map.set(item, counter++);
-      return uid(item);
-    }
-    return 'uid' + map.get(item);
-  };
-  return uid;
-};
-
-var createSource = function (prefix) {
-  if (prefix === void 0) {
-    prefix = '';
-  }
-  return {
-    value: 1,
-    prefix: prefix,
-    uid: generateUID$1()
-  };
-};
-var counter = createSource();
-var source = /*#__PURE__*/reactExports.createContext(createSource());
-var getId = function (source) {
-  return source.value++;
-};
-var getPrefix = function (source) {
-  return source ? source.prefix : '';
-};
-
-var generateUID = function (context) {
-  var quartz = context || counter;
-  var prefix = getPrefix(quartz);
-  var id = getId(quartz);
-  var uid = prefix + id;
-  var gen = function (item) {
-    return uid + quartz.uid(item);
-  };
-  return {
-    uid: uid,
-    gen: gen
-  };
-};
-var useUIDState = function () {
-  var context = reactExports.useContext(source);
-  var uid = reactExports.useState(function () {
-    return generateUID(context);
-  })[0];
-  return uid;
-};
-/**
- * returns an uid generator
- * @see {@link UIDConsumer}
- * @see https://github.com/thearnica/react-uid#hooks-168
- * @example
- * const uid = useUIDSeed();
- * return (
- *  <>
- *    <label for={seed('email')}>Email: </label>
- *    <input id={seed('email')} name="email" />
- *    {data.map(item => <div key={seed(item)}>...</div>
- *  </>
- * )
- */
-var useUIDSeed = function () {
-  var gen = useUIDState().gen;
-  return gen;
-};
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-function useField(idPrefix) {
-  const seed = useUIDSeed();
-  const prefix = reactExports.useMemo(() => idPrefix || seed(`field_${'2.1.2'}`), [idPrefix, seed]);
-  const inputId = `${prefix}--input`;
-  const labelId = `${prefix}--label`;
-  const hintId = `${prefix}--hint`;
-  const messageId = `${prefix}--message`;
-  const getLabelProps = function (_temp) {
-    let {
-      id = labelId,
-      htmlFor = inputId,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    return {
-      id,
-      htmlFor,
-      'data-garden-container-id': 'containers.field',
-      'data-garden-container-version': '2.1.2',
-      ...other
-    };
-  };
-  const getInputProps = function (_temp2, _temp3) {
-    let {
-      id = inputId,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    let {
-      isDescribed = false,
-      hasMessage = false
-    } = _temp3 === void 0 ? {} : _temp3;
-    return {
-      id,
-      'aria-labelledby': labelId,
-      'aria-describedby': isDescribed || hasMessage ? [].concat(isDescribed ? hintId : [], hasMessage ? messageId : []).join(' ') : null,
-      ...other
-    };
-  };
-  const getHintProps = function (_temp4) {
-    let {
-      id = hintId,
-      ...other
-    } = _temp4 === void 0 ? {} : _temp4;
-    return {
-      id,
-      ...other
-    };
-  };
-  const getMessageProps = function (_temp5) {
-    let {
-      id = messageId,
-      ...other
-    } = _temp5 === void 0 ? {} : _temp5;
-    return {
-      id,
-      ...other
-    };
-  };
-  return {
-    getLabelProps,
-    getInputProps,
-    getHintProps,
-    getMessageProps
-  };
-}
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  id: PropTypes.string
-});
-
-function mergeRefs(refs) {
-  return function (value) {
-    refs.forEach(function (ref) {
-      if (typeof ref === "function") {
-        ref(value);
-      } else if (ref != null) {
-        ref.current = value;
-      }
-    });
-  };
-}
-
-/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString = objectProto.toString;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-  nativeMin = Math.min;
-
-/**
- * Gets the timestamp of the number of milliseconds that have elapsed since
- * the Unix epoch (1 January 1970 00:00:00 UTC).
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Date
- * @returns {number} Returns the timestamp.
- * @example
- *
- * _.defer(function(stamp) {
- *   console.log(_.now() - stamp);
- * }, _.now());
- * // => Logs the number of milliseconds it took for the deferred invocation.
- */
-var now = function () {
-  return root.Date.now();
-};
-
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce$1(func, wait, options) {
-  var lastArgs,
-    lastThis,
-    maxWait,
-    result,
-    timerId,
-    lastCallTime,
-    lastInvokeTime = 0,
-    leading = false,
-    maxing = false,
-    trailing = true;
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-  function invokeFunc(time) {
-    var args = lastArgs,
-      thisArg = lastThis;
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-      timeSinceLastInvoke = time - lastInvokeTime,
-      result = wait - timeSinceLastCall;
-    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
-  }
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-      timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
-  }
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
-    }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
-  function trailingEdge(time) {
-    timerId = undefined;
-
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
-    }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
-    }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
-  function debounced() {
-    var time = now(),
-      isInvoking = shouldInvoke(time);
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject(value) {
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' || isObjectLike(value) && objectToString.call(value) == symbolTag;
-}
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject(other) ? other + '' : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
-}
-var lodash_debounce = debounce$1;
-
-var debounce$2 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-function composeEventHandlers() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-const KEYS = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-var DocumentPosition;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
-const SLIDER_MIN = 0;
-const SLIDER_MAX = 100;
-const SLIDER_STEP = 1;
-function useSlider(_ref) {
-  let {
-    trackRef,
-    minThumbRef,
-    maxThumbRef,
-    min = SLIDER_MIN,
-    max = SLIDER_MAX,
-    defaultMinValue,
-    defaultMaxValue,
-    minValue,
-    maxValue,
-    onChange = () => undefined,
-    step = SLIDER_STEP,
-    jump = step,
-    disabled,
-    rtl,
-    environment
-  } = _ref;
-  const doc = environment || document;
-  const [trackRect, setTrackRect] = reactExports.useState({
-    width: 0
-  });
-  const init = function (initMinValue, initMaxValue) {
-    if (initMinValue === void 0) {
-      initMinValue = min;
-    }
-    if (initMaxValue === void 0) {
-      initMaxValue = max;
-    }
-    const retVal = {
-      minValue: initMinValue < min ? min : initMinValue,
-      maxValue: initMaxValue > max ? max : initMaxValue
-    };
-    if (retVal.maxValue < min) {
-      retVal.maxValue = min;
-    }
-    if (retVal.minValue > retVal.maxValue) {
-      retVal.minValue = retVal.maxValue;
-    }
-    return retVal;
-  };
-  const [state, setState] = reactExports.useState(init(defaultMinValue, defaultMaxValue));
-  const isControlled = minValue !== undefined && minValue !== null || maxValue !== undefined && maxValue !== null;
-  const position = isControlled ? init(minValue, maxValue) : state;
-  const setPosition = isControlled ? onChange : setState;
-  reactExports.useEffect(() => {
-    const handleResize = debounce$2(() => {
-      if (trackRef.current) {
-        setTrackRect(trackRef.current.getBoundingClientRect());
-      }
-    }, 100);
-    handleResize();
-    const win = doc.defaultView || window;
-    win.addEventListener('resize', handleResize);
-    return () => {
-      win.removeEventListener('resize', handleResize);
-      handleResize.cancel();
-    };
-  }, [doc, trackRef]);
-  const getTrackPosition = reactExports.useCallback(event => {
-    let retVal = undefined;
-    if (trackRect) {
-      const offset = rtl ? trackRect.left + trackRect.width : trackRect.left;
-      const mouseX = (event.pageX - offset) * (rtl ? -1 : 1);
-      const x = (max - min) * mouseX / trackRect.width;
-      const value = min + parseInt(x, 10);
-      retVal = Math.floor(value / step) * step;
-    }
-    return retVal;
-  }, [max, min, trackRect, rtl, step]);
-  const setThumbPosition = reactExports.useCallback(thumb => value => {
-    if (!disabled) {
-      let newMinValue = position.minValue;
-      let newMaxValue = position.maxValue;
-      if (thumb === 'min') {
-        if (value < min) {
-          newMinValue = min;
-        } else if (value > position.maxValue) {
-          newMinValue = position.maxValue;
-        } else {
-          newMinValue = value;
-        }
-      } else if (thumb === 'max') {
-        if (value > max) {
-          newMaxValue = max;
-        } else if (value < position.minValue) {
-          newMaxValue = position.minValue;
-        } else {
-          newMaxValue = value;
-        }
-      }
-      if (!isNaN(newMinValue) && !isNaN(newMaxValue)) {
-        setPosition({
-          minValue: newMinValue,
-          maxValue: newMaxValue
-        });
-      }
-    }
-  }, [disabled, max, min, position.maxValue, position.minValue, setPosition]);
-  const getTrackProps = reactExports.useCallback(function (_temp) {
-    let {
-      onMouseDown,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    const handleMouseDown = event => {
-      if (!disabled && event.button === 0) {
-        const value = getTrackPosition(event);
-        if (value !== undefined) {
-          const minOffset = Math.abs(position.minValue - value);
-          const maxOffset = Math.abs(position.maxValue - value);
-          if (minOffset <= maxOffset) {
-            minThumbRef.current && minThumbRef.current.focus();
-            setThumbPosition('min')(value);
-          } else {
-            maxThumbRef.current && maxThumbRef.current.focus();
-            setThumbPosition('max')(value);
-          }
-        }
-      }
-    };
-    return {
-      'data-garden-container-id': 'containers.slider.track',
-      'data-garden-container-version': '0.1.6',
-      'aria-disabled': disabled,
-      onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown),
-      ...other
-    };
-  }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
-  const getThumbProps = reactExports.useCallback(thumb => _ref2 => {
-    let {
-      onKeyDown,
-      onMouseDown,
-      onTouchStart,
-      ...other
-    } = _ref2;
-    const handleKeyDown = event => {
-      if (!disabled) {
-        let value;
-        switch (event.key) {
-          case KEYS.RIGHT:
-            value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
-            break;
-          case KEYS.UP:
-            value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
-            break;
-          case KEYS.LEFT:
-            value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
-            break;
-          case KEYS.DOWN:
-            value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
-            break;
-          case KEYS.PAGE_UP:
-            value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
-            break;
-          case KEYS.PAGE_DOWN:
-            value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
-            break;
-          case KEYS.HOME:
-            value = min;
-            break;
-          case KEYS.END:
-            value = max;
-            break;
-        }
-        if (value !== undefined) {
-          event.preventDefault();
-          event.stopPropagation();
-          setThumbPosition(thumb)(value);
-        }
-      }
-    };
-    const handleMouseMove = event => {
-      const value = getTrackPosition(event);
-      if (value !== undefined) {
-        setThumbPosition(thumb)(value);
-      }
-    };
-    const handleTouchMove = event => {
-      const value = getTrackPosition(event.targetTouches[0]);
-      if (value !== undefined) {
-        setThumbPosition(thumb)(value);
-      }
-    };
-    const handleMouseUp = () => {
-      doc.removeEventListener('mousemove', handleMouseMove);
-      doc.removeEventListener('mouseup', handleMouseUp);
-    };
-    const handleTouchEnd = () => {
-      doc.removeEventListener('touchend', handleTouchEnd);
-      doc.removeEventListener('touchmove', handleTouchMove);
-    };
-    const handleMouseDown = event => {
-      if (!disabled && event.button === 0) {
-        event.stopPropagation();
-        doc.addEventListener('mousemove', handleMouseMove);
-        doc.addEventListener('mouseup', handleMouseUp);
-        event.target && event.target.focus();
-      }
-    };
-    const handleTouchStart = event => {
-      if (!disabled) {
-        event.stopPropagation();
-        doc.addEventListener('touchmove', handleTouchMove);
-        doc.addEventListener('touchend', handleTouchEnd);
-        event.target && event.target.focus();
-      }
-    };
-    return {
-      'data-garden-container-id': 'containers.slider.thumb',
-      'data-garden-container-version': '0.1.6',
-      role: 'slider',
-      tabIndex: disabled ? -1 : 0,
-      'aria-valuemin': thumb === 'min' ? min : position.minValue,
-      'aria-valuemax': thumb === 'min' ? position.maxValue : max,
-      'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
-      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
-      onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown),
-      onTouchStart: composeEventHandlers(onTouchStart, handleTouchStart),
-      ...other
-    };
-  }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
-  return reactExports.useMemo(() => ({
-    getTrackProps,
-    getMinThumbProps: getThumbProps('min'),
-    getMaxThumbProps: getThumbProps('max'),
-    trackRect,
-    minValue: position.minValue,
-    maxValue: position.maxValue
-  }), [getTrackProps, getThumbProps, position.minValue, position.maxValue, trackRect]);
-}
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  trackRef: PropTypes.any.isRequired,
-  minThumbRef: PropTypes.any.isRequired,
-  maxThumbRef: PropTypes.any.isRequired,
-  environment: PropTypes.any,
-  defaultMinValue: PropTypes.number,
-  defaultMaxValue: PropTypes.number,
-  minValue: PropTypes.number,
-  maxValue: PropTypes.number,
-  onChange: PropTypes.func,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  step: PropTypes.number,
-  jump: PropTypes.number,
-  disabled: PropTypes.bool,
-  rtl: PropTypes.bool
-});
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-function _extends$t() {
-  _extends$t = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$t.apply(this, arguments);
-}
-const FieldContext$1 = /*#__PURE__*/reactExports.createContext(undefined);
-const useFieldContext$1 = () => {
-  const fieldContext = reactExports.useContext(FieldContext$1);
-  return fieldContext;
-};
-const COMPONENT_ID$K = 'forms.field';
-const StyledField$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$K,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledField",
-  componentId: "sc-12gzfsu-0"
-})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$K, props));
-StyledField$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$J = 'forms.fieldset';
-const StyledFieldset = Ye(StyledField$1).attrs({
-  as: 'fieldset',
-  'data-garden-id': COMPONENT_ID$J,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFieldset",
-  componentId: "sc-1vr4mxv-0"
-})(["", "{margin-top:", "px;}", ";"], StyledField$1, props => props.theme.space.base * (props.isCompact ? 1 : 2), props => retrieveComponentStyles(COMPONENT_ID$J, props));
-StyledFieldset.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$I = 'forms.input_label';
-const StyledLabel$1 = Ye.label.attrs({
-  'data-garden-id': COMPONENT_ID$I,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledLabel",
-  componentId: "sc-2utmsz-0"
-})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.colors.foreground, props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$I, props));
-StyledLabel$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$H = 'forms.fieldset_legend';
-const StyledLegend = Ye(StyledLabel$1).attrs({
-  as: 'legend',
-  'data-garden-id': COMPONENT_ID$H,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledLegend",
-  componentId: "sc-6s0zwq-0"
-})(["padding:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$H, props));
-StyledLegend.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$G = 'forms.input_hint';
-const StyledHint$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$G,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledHint",
-  componentId: "sc-17c2wu8-0"
-})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColor('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$G, props));
-StyledHint$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-var _g$2, _circle$5;
-function _extends$s() {
-  _extends$s = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$s.apply(this, arguments);
-}
-var SvgAlertErrorStroke = function SvgAlertErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$s({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$2 || (_g$2 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }), /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    d: "M7.5 4.5V9"
-  }))), _circle$5 || (_circle$5 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-var _path$n, _circle$4;
-function _extends$r() {
-  _extends$r = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$r.apply(this, arguments);
-}
-var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$r({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$n || (_path$n = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"
-  })), _circle$4 || (_circle$4 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-var _g$1;
-function _extends$q() {
-  _extends$q = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$q.apply(this, arguments);
-}
-var SvgCheckCircleStroke$1 = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$q({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$1 || (_g$1 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M4 9l2.5 2.5 5-5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }))));
-};
-const MessageIcon = _ref => {
-  let {
-    children,
-    validation,
-    ...props
-  } = _ref;
-  let retVal;
-  if (validation === 'error') {
-    retVal = /*#__PURE__*/React.createElement(SvgAlertErrorStroke, props);
-  } else if (validation === 'success') {
-    retVal = /*#__PURE__*/React.createElement(SvgCheckCircleStroke$1, props);
-  } else if (validation === 'warning') {
-    retVal = /*#__PURE__*/React.createElement(SvgAlertWarningStroke, props);
-  } else {
-    retVal = /*#__PURE__*/React.cloneElement(reactExports.Children.only(children));
-  }
-  return retVal;
-};
-const COMPONENT_ID$F = 'forms.input_message_icon';
-const StyledMessageIcon = Ye(MessageIcon).attrs({
-  'data-garden-id': COMPONENT_ID$F,
-  'data-garden-version': '8.69.1',
-  'aria-hidden': null
-}).withConfig({
-  displayName: "StyledMessageIcon",
-  componentId: "sc-1ph2gba-0"
-})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$F, props));
-StyledMessageIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const validationStyles = props => {
-  const rtl = props.theme.rtl;
-  const padding = math(`${props.theme.space.base} * 2px + ${props.theme.iconSizes.md}`);
-  let color;
-  if (props.validation === 'error') {
-    color = getColor('dangerHue', 600, props.theme);
-  } else if (props.validation === 'success') {
-    color = getColor('successHue', 600, props.theme);
-  } else if (props.validation === 'warning') {
-    color = getColor('warningHue', 700, props.theme);
-  } else {
-    color = getColor('neutralHue', 700, props.theme);
-  }
-  return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
-};
-const COMPONENT_ID$E = 'forms.input_message';
-const StyledMessage$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$E,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledMessage",
-  componentId: "sc-30hgg7-0"
-})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$E, props));
-StyledMessage$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$D = 'forms.input';
-const isInvalid = validation => {
-  return validation === 'warning' || validation === 'error';
-};
-const colorStyles$c = props => {
-  const HUE = 'primaryHue';
-  const SHADE = 600;
-  const placeholderColor = getColor('neutralHue', SHADE - 200, props.theme);
-  let borderColor;
-  let hoverBorderColor;
-  let focusBorderColor;
-  let focusRingHue = HUE;
-  let focusRingShade = SHADE;
-  if (props.validation) {
-    let hue = HUE;
-    if (props.validation === 'success') {
-      hue = 'successHue';
-    } else if (props.validation === 'warning') {
-      hue = 'warningHue';
-      focusRingShade = 700;
-    } else if (props.validation === 'error') {
-      hue = 'dangerHue';
-    }
-    borderColor = getColor(hue, SHADE, props.theme);
-    hoverBorderColor = borderColor;
-    focusBorderColor = borderColor;
-    focusRingHue = hue;
-  } else {
-    borderColor = getColor('neutralHue', SHADE - 300, props.theme);
-    hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
-    focusBorderColor = hoverBorderColor;
-  }
-  const readOnlyBackgroundColor = getColor('neutralHue', SHADE - 500, props.theme);
-  const readOnlyBorderColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const disabledBackgroundColor = readOnlyBackgroundColor;
-  const disabledBorderColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const disabledForegroundColor = getColor('neutralHue', SHADE - 200, props.theme);
-  let controlledBorderColor = borderColor;
-  if (props.isFocused) {
-    controlledBorderColor = focusBorderColor;
-  }
-  if (props.isHovered) {
-    controlledBorderColor = hoverBorderColor;
-  }
-  return Ne(["border-color:", ";background-color:", ";color:", ";&::placeholder{color:", ";}&[readonly],&[aria-readonly='true']{border-color:", ";background-color:", ";}&:hover{border-color:", ";}", " &:disabled,&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], controlledBorderColor, props.isBare ? 'transparent' : props.theme.colors.background, props.theme.colors.foreground, placeholderColor, readOnlyBorderColor, !props.isBare && readOnlyBackgroundColor, hoverBorderColor, focusStyles({
-    theme: props.theme,
-    inset: props.focusInset,
-    condition: !props.isBare,
-    hue: focusRingHue,
-    shade: focusRingShade,
-    styles: {
-      borderColor: focusBorderColor
-    }
-  }), disabledBorderColor, !props.isBare && disabledBackgroundColor, disabledForegroundColor);
-};
-const sizeStyles$f = props => {
-  const fontSize = props.theme.fontSizes.md;
-  const paddingHorizontal = `${props.theme.space.base * 3}px`;
-  let height;
-  let paddingVertical;
-  let browseFontSize;
-  let swatchHeight;
-  if (props.isCompact) {
-    height = `${props.theme.space.base * 8}px`;
-    paddingVertical = `${props.theme.space.base * 1.5}px`;
-    browseFontSize = math(`${props.theme.fontSizes.sm} - 1`);
-    swatchHeight = `${props.theme.space.base * 6}px`;
-  } else {
-    height = `${props.theme.space.base * 10}px`;
-    paddingVertical = `${props.theme.space.base * 2.5}px`;
-    browseFontSize = props.theme.fontSizes.sm;
-    swatchHeight = `${props.theme.space.base * 7}px`;
-  }
-  const lineHeight = math(`${height} - (${paddingVertical} * 2) - (${props.theme.borderWidths.sm} * 2)`);
-  const padding = props.isBare ? '0' : `${em$1(paddingVertical, fontSize)} ${em$1(paddingHorizontal, fontSize)}`;
-  const swatchMarginVertical = math(`(${lineHeight} - ${swatchHeight}) / 2`);
-  const swatchMarginHorizontal = math(`${paddingVertical} + ${swatchMarginVertical} - ${paddingHorizontal}`);
-  return Ne(["padding:", ";min-height:", ";line-height:", ";font-size:", ";&::-ms-browse{font-size:", ";}&[type='date'],&[type='datetime-local'],&[type='file'],&[type='month'],&[type='time'],&[type='week']{max-height:", ";}&[type='file']{line-height:1;}@supports (-ms-ime-align:auto){&[type='color']{padding:", ";}}&::-moz-color-swatch{margin-top:", ";margin-left:", ";width:calc(100% + ", ");height:", ";}&::-webkit-color-swatch{margin:", " ", ";}", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", "px;}"], padding, props.isBare ? '1em' : height, getLineHeight(lineHeight, fontSize), fontSize, browseFontSize, height, props.isCompact ? '0 2px' : '1px 3px', swatchMarginVertical, swatchMarginHorizontal, math(`${swatchMarginHorizontal} * -2`), swatchHeight, swatchMarginVertical, swatchMarginHorizontal, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props.theme.space.base * (props.isCompact ? 1 : 2));
-};
-const StyledTextInput = Ye.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$D,
-  'data-garden-version': '8.69.1',
-  'aria-invalid': isInvalid(props.validation)
-})).withConfig({
-  displayName: "StyledTextInput",
-  componentId: "sc-k12n8x-0"
-})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$f(props), props => colorStyles$c(props), props => retrieveComponentStyles(COMPONENT_ID$D, props));
-StyledTextInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$C = 'forms.textarea';
-const hiddenStyles = `
-  visibility: hidden;
-  position: absolute;
-  overflow: hidden;
-  height: 0;
-  top: 0;
-  left: 0;
-  transform: translateZ(0);
-`;
-const StyledTextarea = Ye(StyledTextInput).attrs({
-  as: 'textarea',
-  'data-garden-id': COMPONENT_ID$C,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTextarea",
-  componentId: "sc-wxschl-0"
-})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles, props => retrieveComponentStyles(COMPONENT_ID$C, props));
-StyledTextarea.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$B = 'forms.media_figure';
-const colorStyles$b = props => {
-  let shade = 600;
-  if (props.isDisabled) {
-    shade = 400;
-  } else if (props.isHovered || props.isFocused) {
-    shade = 700;
-  }
-  return Ne(["color:", ";"], getColor('neutralHue', shade, props.theme));
-};
-const sizeStyles$e = props => {
-  const size = props.theme.iconSizes.md;
-  const marginFirst = `1px ${props.theme.space.base * 2}px auto 0`;
-  const marginLast = `1px 0 auto ${props.theme.space.base * 2}px`;
-  let margin;
-  if (props.position === 'start') {
-    margin = props.theme.rtl ? marginLast : marginFirst;
-  } else {
-    margin = props.theme.rtl ? marginFirst : marginLast;
-  }
-  return Ne(["margin:", ";width:", ";height:", ";"], margin, size, size);
-};
-const StyledTextMediaFigure = Ye(_ref => {
-  let {
-    children,
-    position,
-    isHovered,
-    isFocused,
-    isDisabled,
-    isRotated,
-    theme,
-    ...props
-  } = _ref;
-  return /*#__PURE__*/React.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$B,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTextMediaFigure",
-  componentId: "sc-1qepknj-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$b(props), props => sizeStyles$e(props), props => retrieveComponentStyles(COMPONENT_ID$B, props));
-StyledTextMediaFigure.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$A = 'forms.faux_input';
-const VALIDATION_HUES = {
-  success: 'successHue',
-  warning: 'warningHue',
-  error: 'dangerHue'
-};
-function getValidationHue(validation) {
-  let defaultHue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primaryHue';
-  if (validation) {
-    return VALIDATION_HUES[validation];
-  }
-  return defaultHue;
-}
-const colorStyles$a$1 = props => {
-  const {
-    theme,
-    validation,
-    focusInset,
-    isBare,
-    isFocused
-  } = props;
-  return Ne(["", ""], focusStyles({
-    theme,
-    inset: focusInset,
-    condition: !isBare,
-    hue: getValidationHue(validation),
-    shade: validation === 'warning' ? 700 : 600,
-    selector: isFocused ? '&' : '&:focus-within',
-    styles: {
-      borderColor: getColor(getValidationHue(validation), 600, theme)
-    }
-  }));
-};
-const StyledTextFauxInput = Ye(StyledTextInput).attrs(props => ({
-  as: 'div',
-  'aria-readonly': props.isReadOnly,
-  'aria-disabled': props.isDisabled,
-  'data-garden-id': COMPONENT_ID$A,
-  'data-garden-version': '8.69.1'
-})).withConfig({
-  displayName: "StyledTextFauxInput",
-  componentId: "sc-yqw7j9-0"
-})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$a$1, StyledTextInput, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$A, props));
-StyledTextFauxInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$z = 'forms.media_input';
-const StyledTextMediaInput = Ye(StyledTextInput).attrs({
-  'data-garden-id': COMPONENT_ID$z,
-  'data-garden-version': '8.69.1',
-  isBare: true
-}).withConfig({
-  displayName: "StyledTextMediaInput",
-  componentId: "sc-12i9xfi-0"
-})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$z, props));
-StyledTextMediaInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$y = 'forms.input_group';
-const positionStyles = props => {
-  const topMargin = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  return Ne(["", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}& > ", "{position:relative;flex:1 1 auto;margin-top:0;margin-bottom:0;width:auto;min-width:0;}"], StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, topMargin, StyledTextInput);
-};
-const itemStyles = props => {
-  const startDirection = props.theme.rtl ? 'right' : 'left';
-  const endDirection = props.theme.rtl ? 'left' : 'right';
-  return Ne(["& > *{z-index:-1;}& > ", "{z-index:0;}& > ", ":disabled{z-index:-2;}& > ", ":hover,& > button:hover,& > ", ":focus-visible,& > button:focus-visible,& > ", "[data-garden-focus-visible],& > button[data-garden-focus-visible],& > ", ":active,& > button:active{z-index:1;}& > button:disabled{border-top-width:0;border-bottom-width:0;}& > *:not(:first-child){margin-", ":-", ";}& > *:first-child:not(:last-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:last-child:not(:first-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:not(:first-child):not(:last-child){border-radius:0;}"], StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, startDirection, props.theme.borderWidths.sm, endDirection, endDirection, startDirection, startDirection);
-};
-const StyledInputGroup$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$y,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledInputGroup",
-  componentId: "sc-kjh1f0-0"
-})(["display:inline-flex;position:relative;flex-wrap:nowrap;align-items:stretch;z-index:0;width:100%;", ";", ";", ";"], props => positionStyles(props), props => itemStyles(props), props => retrieveComponentStyles(COMPONENT_ID$y, props));
-StyledInputGroup$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$x = 'forms.radio_label';
-const sizeStyles$d = props => {
-  const size = props.theme.space.base * 4;
-  const padding = size + props.theme.space.base * 2;
-  const lineHeight = props.theme.space.base * 5;
-  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
-};
-const StyledRadioLabel = Ye(StyledLabel$1).attrs({
-  'data-garden-id': COMPONENT_ID$x,
-  'data-garden-version': '8.69.1',
-  isRadio: true
-}).withConfig({
-  displayName: "StyledRadioLabel",
-  componentId: "sc-1aq2e5t-0"
-})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$x, props));
-StyledRadioLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$w = 'forms.checkbox_label';
-const StyledCheckLabel = Ye(StyledRadioLabel).attrs({
-  'data-garden-id': COMPONENT_ID$w,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckLabel",
-  componentId: "sc-x7nr1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w, props));
-StyledCheckLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$v = 'forms.radio_hint';
-const StyledRadioHint = Ye(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$v,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledRadioHint",
-  componentId: "sc-eo8twg-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v, props));
-StyledRadioHint.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$u = 'forms.checkbox_hint';
-const StyledCheckHint = Ye(StyledRadioHint).attrs({
-  'data-garden-id': COMPONENT_ID$u,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckHint",
-  componentId: "sc-1kl8e8c-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u, props));
-StyledCheckHint.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$t = 'forms.radio';
-const colorStyles$9$1 = props => {
-  const SHADE = 600;
-  const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const backgroundColor = props.theme.colors.background;
-  const iconColor = backgroundColor;
-  const hoverBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.08);
-  const hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
-  const focusBorderColor = hoverBorderColor;
-  const activeBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.2);
-  const activeBorderColor = focusBorderColor;
-  const checkedBorderColor = focusBorderColor;
-  const checkedBackgroundColor = checkedBorderColor;
-  const checkedHoverBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const checkedHoverBackgroundColor = checkedHoverBorderColor;
-  const checkedActiveBorderColor = getColor('primaryHue', SHADE + 200, props.theme);
-  const checkedActiveBackgroundColor = checkedActiveBorderColor;
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  return Ne(["& ~ ", "::before{border-color:", ";background-color:", ";}& ~ ", " > svg{color:", ";}& ~ ", ":hover::before{border-color:", ";background-color:", ";}", " & ~ ", ":active::before{border-color:", ";background-color:", ";}&:checked ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":hover::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledRadioLabel, borderColor, backgroundColor, StyledRadioLabel, iconColor, StyledRadioLabel, hoverBorderColor, hoverBackgroundColor, focusStyles({
-    theme: props.theme,
-    styles: {
-      borderColor: focusBorderColor
-    },
-    selector: `&:focus-visible ~ ${StyledRadioLabel}::before, &[data-garden-focus-visible='true'] ~ ${StyledRadioLabel}::before`
-  }), StyledRadioLabel, activeBorderColor, activeBackgroundColor, StyledRadioLabel, checkedBorderColor, checkedBackgroundColor, StyledRadioLabel, checkedHoverBorderColor, checkedHoverBackgroundColor, StyledRadioLabel, checkedActiveBorderColor, checkedActiveBackgroundColor, StyledRadioLabel, disabledBackgroundColor);
-};
-const sizeStyles$c$1 = props => {
-  const lineHeight = `${props.theme.space.base * 5}px`;
-  const size = `${props.theme.space.base * 4}px`;
-  const top = math(`(${lineHeight} - ${size}) / 2`);
-  const iconSize = props.theme.iconSizes.sm;
-  const iconPosition = math(`(${size} - ${iconSize}) / 2`);
-  const iconTop = math(`${iconPosition} + ${top}`);
-  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
-};
-const StyledRadioInput = Ye.input.attrs({
-  'data-garden-id': COMPONENT_ID$t,
-  'data-garden-version': '8.69.1',
-  type: 'radio'
-}).withConfig({
-  displayName: "StyledRadioInput",
-  componentId: "sc-qsavpv-0"
-})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$c$1(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$9$1(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$t, props));
-StyledRadioInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$s = 'forms.checkbox';
-const colorStyles$8$1 = props => {
-  const SHADE = 600;
-  const indeterminateBorderColor = getColor('primaryHue', SHADE, props.theme);
-  const indeterminateBackgroundColor = indeterminateBorderColor;
-  const indeterminateActiveBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const indeterminateActiveBackgroundColor = indeterminateActiveBorderColor;
-  const indeterminateDisabledBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
-};
-const StyledCheckInput = Ye(StyledRadioInput).attrs({
-  'data-garden-id': COMPONENT_ID$s,
-  'data-garden-version': '8.69.1',
-  type: 'checkbox'
-}).withConfig({
-  displayName: "StyledCheckInput",
-  componentId: "sc-176jxxe-0"
-})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$8$1(props), props => retrieveComponentStyles(COMPONENT_ID$s, props));
-StyledCheckInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$r = 'forms.radio_message';
-const StyledRadioMessage = Ye(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$r,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledRadioMessage",
-  componentId: "sc-1pmi0q8-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r, props));
-StyledRadioMessage.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$q = 'forms.checkbox_message';
-const StyledCheckMessage = Ye(StyledRadioMessage).attrs({
-  'data-garden-id': COMPONENT_ID$q,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckMessage",
-  componentId: "sc-s4p6kd-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q, props));
-StyledCheckMessage.defaultProps = {
-  theme: DEFAULT_THEME
-};
-var _path$m;
-function _extends$p() {
-  _extends$p = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$p.apply(this, arguments);
-}
-var SvgCheckSmFill = function SvgCheckSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$p({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$m || (_path$m = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: 2,
-    d: "M3 6l2 2 4-4"
-  })));
-};
-const COMPONENT_ID$p = 'forms.check_svg';
-const StyledCheckSvg = Ye(SvgCheckSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$p,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckSvg",
-  componentId: "sc-fvxetk-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$p, props));
-StyledCheckSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-var _path$l;
-function _extends$o() {
-  _extends$o = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$o.apply(this, arguments);
-}
-var SvgDashFill = function SvgDashFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$o({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$l || (_path$l = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeWidth: 2,
-    d: "M3 6h6"
-  })));
-};
-const COMPONENT_ID$o = 'forms.dash_svg';
-const StyledDashSvg = Ye(SvgDashFill).attrs({
-  'data-garden-id': COMPONENT_ID$o,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledDashSvg",
-  componentId: "sc-z3vq71-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$o, props));
-StyledDashSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$n$1 = 'forms.file_upload';
-const colorStyles$7$1 = props => {
-  const baseColor = getColor('primaryHue', 600, props.theme);
-  const hoverColor = getColor('primaryHue', 700, props.theme);
-  const activeColor = getColor('primaryHue', 800, props.theme);
-  const disabledBackgroundColor = getColor('neutralHue', 200, props.theme);
-  const disabledForegroundColor = getColor('neutralHue', 400, props.theme);
-  return Ne(["border-color:", ";background-color:", ";color:", ";&:hover{border-color:", ";background-color:", ";color:", ";}", " &:active{border-color:", ";background-color:", ";color:", ";}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], props.isDragging ? activeColor : getColor('neutralHue', 600, props.theme), props.isDragging && rgba(baseColor, 0.2), props.isDragging ? activeColor : baseColor, hoverColor, rgba(baseColor, 0.08), hoverColor, focusStyles({
-    theme: props.theme,
-    hue: baseColor
-  }), activeColor, rgba(baseColor, 0.2), activeColor, disabledForegroundColor, disabledBackgroundColor, disabledForegroundColor);
-};
-const sizeStyles$b$1 = props => {
-  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  const paddingHorizontal = `${props.isCompact ? 2 : 4}em`;
-  const paddingVertical = math(`${props.theme.space.base * (props.isCompact ? 2.5 : 5)} - ${props.theme.borderWidths.sm}`);
-  const fontSize = props.theme.fontSizes.md;
-  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
-  return Ne(["padding:", " ", ";min-width:4em;line-height:", ";font-size:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], paddingVertical, paddingHorizontal, lineHeight, fontSize, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, marginTop);
-};
-const StyledFileUpload = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$n$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileUpload",
-  componentId: "sc-1rodjgn-0"
-})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$b$1, colorStyles$7$1, props => retrieveComponentStyles(COMPONENT_ID$n$1, props));
-StyledFileUpload.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$m$1 = 'forms.file.close';
-const StyledFileClose = Ye.button.attrs({
-  'data-garden-id': COMPONENT_ID$m$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileClose",
-  componentId: "sc-1m31jbf-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => props.theme.colors.foreground, props => retrieveComponentStyles(COMPONENT_ID$m$1, props));
-StyledFileClose.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$l$1 = 'forms.file';
-const colorStyles$6$1 = props => {
-  let borderColor;
-  let focusBorderColor;
-  let foregroundColor;
-  if (props.validation === 'success') {
-    borderColor = getColor('successHue', 600, props.theme);
-    focusBorderColor = borderColor;
-    foregroundColor = borderColor;
-  } else if (props.validation === 'error') {
-    borderColor = getColor('dangerHue', 600, props.theme);
-    focusBorderColor = borderColor;
-    foregroundColor = borderColor;
-  } else {
-    borderColor = getColor('neutralHue', 300, props.theme);
-    focusBorderColor = getColor('primaryHue', 600, props.theme);
-    foregroundColor = props.theme.colors.foreground;
-  }
-  return Ne(["border-color:", ";color:", ";", ""], borderColor, foregroundColor, focusStyles({
-    theme: props.theme,
-    inset: props.focusInset,
-    hue: focusBorderColor,
-    styles: {
-      borderColor: focusBorderColor
-    }
-  }));
-};
-const sizeStyles$a$1 = props => {
-  const size = `${props.theme.space.base * (props.isCompact ? 7 : 10)}px`;
-  const spacing = `${props.theme.space.base * (props.isCompact ? 2 : 3)}px`;
-  const fontSize = props.theme.fontSizes.md;
-  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
-  return `
-    box-sizing: border-box;
-    border: ${props.theme.borders.sm};
-    border-radius: ${props.theme.borderRadii.md};
-    padding: 0 ${spacing};
-    height: ${size};
-    line-height: ${lineHeight};
-    font-size: ${fontSize};
-
-    & > span {
-      width: 100%;
-    }
-
-    & > ${StyledFileClose} {
-      width: ${size};
-      height: ${size};
-      margin-${props.theme.rtl ? 'left' : 'right'}: -${spacing};
-    }
-  `;
-};
-const StyledFile = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$l$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFile",
-  componentId: "sc-195lzp1-0"
-})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$a$1, colorStyles$6$1, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$l$1, props));
-StyledFile.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$k$1 = 'forms.file.delete';
-const StyledFileDelete = Ye(StyledFileClose).attrs({
-  'data-garden-id': COMPONENT_ID$k$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileDelete",
-  componentId: "sc-a8nnhx-0"
-})(["color:", ";", ";"], props => getColor('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$k$1, props));
-StyledFileDelete.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$j$1 = 'forms.file.icon';
-const StyledFileIcon = Ye(_ref => {
-  let {
-    children,
-    isCompact,
-    theme,
-    ...props
-  } = _ref;
-  return /*#__PURE__*/React.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$j$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileIcon",
-  componentId: "sc-7b3q0c-0"
-})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$j$1, props));
-StyledFileIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$i$1 = 'forms.file_list';
-const StyledFileList = Ye.ul.attrs({
-  'data-garden-id': COMPONENT_ID$i$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileList",
-  componentId: "sc-gbahjg-0"
-})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$i$1, props));
-StyledFileList.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$h$1 = 'forms.file_list.item';
-const StyledFileListItem = Ye.li.attrs({
-  'data-garden-id': COMPONENT_ID$h$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileListItem",
-  componentId: "sc-1ova3lo-0"
-})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload, StyledFileList, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$h$1, props));
-StyledFileListItem.defaultProps = {
-  theme: DEFAULT_THEME
-};
-var _circle$3;
-function _extends$n() {
-  _extends$n = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$n.apply(this, arguments);
-}
-var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$n({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _circle$3 || (_circle$3 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 6,
-    cy: 6,
-    r: 2,
-    fill: "currentColor"
-  })));
-};
-const COMPONENT_ID$g$1 = 'forms.radio_svg';
-const StyledRadioSvg = Ye(SvgCircleSmFill$1).attrs({
-  'data-garden-id': COMPONENT_ID$g$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledRadioSvg",
-  componentId: "sc-1r1qtr1-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$g$1, props));
-StyledRadioSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$f$1 = 'forms.toggle_label';
-const sizeStyles$9$1 = props => {
-  const size = props.theme.space.base * 10;
-  const padding = size + props.theme.space.base * 2;
-  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size);
-};
-const StyledToggleLabel = Ye(StyledCheckLabel).attrs({
-  'data-garden-id': COMPONENT_ID$f$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleLabel",
-  componentId: "sc-e0asdk-0"
-})(["", ";", ";"], props => sizeStyles$9$1(props), props => retrieveComponentStyles(COMPONENT_ID$f$1, props));
-StyledToggleLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$e$1 = 'forms.toggle_hint';
-const StyledToggleHint = Ye(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$e$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleHint",
-  componentId: "sc-nziggu-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$e$1, props));
-StyledToggleHint.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$d$1 = 'forms.toggle';
-const colorStyles$5$1 = props => {
-  const SHADE = 600;
-  const backgroundColor = getColor('neutralHue', SHADE - 100, props.theme);
-  const hoverBackgroundColor = getColor('neutralHue', SHADE, props.theme);
-  const activeBackgroundColor = getColor('neutralHue', SHADE + 100, props.theme);
-  return Ne(["& ~ ", "::before{background-color:", ";}&:enabled ~ ", ":hover::before{background-color:", ";}&:enabled ~ ", ":active::before{background-color:", ";}"], StyledToggleLabel, backgroundColor, StyledToggleLabel, hoverBackgroundColor, StyledToggleLabel, activeBackgroundColor);
-};
-const sizeStyles$8$1 = props => {
-  const height = `${props.theme.space.base * 5}px`;
-  const width = `${props.theme.space.base * 10}px`;
-  const iconSize = props.theme.iconSizes.md;
-  const iconPosition = math(`(${height} - ${iconSize}) / 2`);
-  const checkedIconPosition = math(`${width} - ${iconSize} - ${iconPosition}`);
-  return Ne(["top:0;width:", ";height:", ";& ~ ", "::before{width:", ";height:", ";}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&:checked ~ ", " > svg{", ":", ";}"], width, height, StyledToggleLabel, width, height, StyledToggleLabel, iconPosition, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledToggleLabel, props.theme.rtl ? 'right' : 'left', checkedIconPosition);
-};
-const StyledToggleInput = Ye(StyledCheckInput).attrs({
-  'data-garden-id': COMPONENT_ID$d$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleInput",
-  componentId: "sc-sgp47s-0"
-})(["& ~ ", "::before{top:0;transition:box-shadow .1s ease-in-out,background-color .15s ease-in-out,color .25s ease-in-out;border:none;border-radius:100px;}", ";", ";", ";"], StyledToggleLabel, props => sizeStyles$8$1(props), props => colorStyles$5$1(props), props => retrieveComponentStyles(COMPONENT_ID$d$1, props));
-StyledToggleInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$c$1 = 'forms.toggle_message';
-const StyledToggleMessage = Ye(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$c$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleMessage",
-  componentId: "sc-13vuvl1-0"
-})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 12px`), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$c$1, props));
-StyledToggleMessage.defaultProps = {
-  theme: DEFAULT_THEME
-};
-var _circle$2;
-function _extends$m() {
-  _extends$m = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$m.apply(this, arguments);
-}
-var SvgCircleSmFill = function SvgCircleSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$m({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _circle$2 || (_circle$2 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 8,
-    cy: 8,
-    r: 6,
-    fill: "currentColor"
-  })));
-};
-const COMPONENT_ID$b$1 = 'forms.toggle_svg';
-const StyledToggleSvg = Ye(SvgCircleSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$b$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleSvg",
-  componentId: "sc-162xbyx-0"
-})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$b$1, props));
-StyledToggleSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$a$1 = 'forms.select';
-const colorStyles$4$1 = props => {
-  const color = getColor('neutralHue', 700, props.theme);
-  return Ne(["&:hover + ", ",&:focus + ", ",&:focus-visible + ", ",&[data-garden-focus-visible='true'] + ", "{color:", ";}"], StyledTextMediaFigure, StyledTextMediaFigure, StyledTextMediaFigure, StyledTextMediaFigure, color);
-};
-const sizeStyles$7$1 = props => {
-  const padding = math(`${props.theme.iconSizes.md} + ${props.theme.space.base * 5}`);
-  const iconVerticalPosition = `${props.theme.space.base * (props.isCompact ? 1.5 : 2.5) + 1}px`;
-  const iconHorizontalPosition = `${props.theme.space.base * 3}px`;
-  return Ne(["padding-", ":", ";& + ", "{top:", ";", ":", ";}"], props.theme.rtl ? 'left' : 'right', !props.isBare && padding, StyledTextMediaFigure, iconVerticalPosition, props.theme.rtl ? 'left' : 'right', iconHorizontalPosition);
-};
-const StyledSelect = Ye(StyledTextInput).attrs({
-  'data-garden-id': COMPONENT_ID$a$1,
-  'data-garden-version': '8.69.1',
-  as: 'select'
-}).withConfig({
-  displayName: "StyledSelect",
-  componentId: "sc-8xdxpt-0"
-})(["cursor:pointer;text-overflow:ellipsis;", ";", ";&::-ms-expand{display:none;}&::-ms-value{background-color:transparent;color:inherit;}&:-moz-focusring{transition:none;text-shadow:0 0 0 ", ";color:transparent;}& + ", "{position:absolute;pointer-events:none;}"], props => sizeStyles$7$1(props), props => colorStyles$4$1(props), props => props.theme.colors.foreground, StyledTextMediaFigure);
-StyledSelect.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$9$1 = 'forms.select_wrapper';
-const StyledSelectWrapper = Ye(StyledTextFauxInput).attrs({
-  'data-garden-id': COMPONENT_ID$9$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSelectWrapper",
-  componentId: "sc-i7b6hw-0"
-})(["position:relative;padding:0;overflow:visible;& > ", "{border-color:transparent;background-color:transparent;", "{box-shadow:unset;}}"], StyledSelect, SELECTOR_FOCUS_VISIBLE);
-StyledSelectWrapper.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$8$1 = 'forms.range';
-const thumbStyles = function (styles) {
-  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return `
-    &${modifier}::-moz-range-thumb {
-      ${styles}
-    }
-
-    &${modifier}::-ms-thumb {
-      ${styles}
-    }
-
-    &${modifier}::-webkit-slider-thumb {
-      ${styles}
-    }
-  `;
-};
-const trackStyles = function (styles) {
-  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return `
-    &${modifier}::-moz-range-track {
-      ${styles}
-    }
-
-    &${modifier}::-ms-track {
-      ${styles}
-    }
-
-    &${modifier}::-webkit-slider-runnable-track {
-      ${styles}
-    }
-  `;
-};
-const trackLowerStyles = function (styles) {
-  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return `
-    &${modifier}::-moz-range-progress {
-      ${styles}
-    }
-
-    &${modifier}::-ms-fill-lower {
-      ${styles}
-    }
-  `;
-};
-const colorStyles$3$1 = props => {
-  const SHADE = 600;
-  const thumbBackgroundColor = getColor('primaryHue', SHADE, props.theme);
-  const thumbBorderColor = thumbBackgroundColor;
-  const thumbBoxShadow = props.theme.shadows.lg(math(`${props.theme.space.base} * 1px`), math(`${props.theme.space.base} * 2px`), getColor('neutralHue', SHADE + 200, props.theme, 0.24));
-  const thumbFocusBoxShadow = getFocusBoxShadow({
-    theme: props.theme
-  });
-  const thumbActiveBackgroundColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const thumbActiveBorderColor = thumbBorderColor;
-  const thumbDisabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const thumbDisabledBorderColor = thumbDisabledBackgroundColor;
-  const thumbHoverBackgroundColor = thumbActiveBackgroundColor;
-  const thumbHoverBorderColor = thumbHoverBackgroundColor;
-  const trackBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const trackLowerBackgroundColor = props.hasLowerTrack ? thumbBackgroundColor : '';
-  const trackBackgroundImage = props.hasLowerTrack ? `linear-gradient(${trackLowerBackgroundColor}, ${trackLowerBackgroundColor})` : '';
-  const trackDisabledLowerBackgroundColor = props.hasLowerTrack ? thumbDisabledBackgroundColor : '';
-  const trackDisabledBackgroundImage = props.hasLowerTrack ? `linear-gradient(${trackDisabledLowerBackgroundColor}, ${trackDisabledLowerBackgroundColor})` : '';
-  return Ne(["", " ", " ", " ", " ", " ", " ", " ", " ", ""], trackStyles(`
-      background-color: ${trackBackgroundColor};
-      background-image: ${trackBackgroundImage}; /* provide means for styling lower range on WebKit */
-    `), thumbStyles(`
-      border-color: ${thumbBorderColor};
-      box-shadow: ${thumbBoxShadow};
-      background-color: ${thumbBackgroundColor};
-    `), trackLowerStyles(`
-      background-color: ${trackLowerBackgroundColor};
-    `), thumbStyles(`
-        transition:
-          border-color .25s ease-in-out,
-          background-color .25s ease-in-out;
-        border-color: ${thumbHoverBorderColor};
-        background-color: ${thumbHoverBackgroundColor};
-      `, ':hover'), thumbStyles(`
-        box-shadow: ${thumbFocusBoxShadow};
-      `, '[data-garden-focus-visible="true"]'), thumbStyles(`
-        border-color: ${thumbActiveBorderColor};
-        background-color: ${thumbActiveBackgroundColor};
-      `, ':active'), trackStyles(`
-        background-image: ${trackDisabledBackgroundImage};
-      `, ':disabled'), thumbStyles(`
-        border-color: ${thumbDisabledBorderColor};
-        box-shadow: none;
-        background-color: ${thumbDisabledBackgroundColor};
-      `, ':disabled'), trackLowerStyles(`
-        background-color: ${trackDisabledLowerBackgroundColor};
-      `, ':disabled'));
-};
-const sizeStyles$6$1 = props => {
-  const thumbSize = math(`${props.theme.space.base} * 5px`);
-  const trackHeight = math(`${props.theme.space.base} * 1.5px`);
-  const trackBorderRadius = trackHeight;
-  const trackMargin = math(`(${thumbSize} - ${trackHeight}) / 2 + ${props.theme.shadowWidths.md}`);
-  const thumbMargin = math(`(${trackHeight} - ${thumbSize}) / 2`);
-  return Ne(["", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";", " ", ""], StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, math(`${props.theme.space.base} * 2px`), trackStyles(`
-      margin: ${trackMargin} 0;
-      border-radius: ${trackBorderRadius};
-      height: ${trackHeight};
-    `), thumbStyles(`
-      margin: ${thumbMargin} 0; /* reset for IE */
-      width: ${thumbSize};
-      height: ${thumbSize};
-    `), trackLowerStyles(`
-      border-top-${props.theme.rtl ? 'right' : 'left'}-radius: ${trackBorderRadius};
-      border-bottom-${props.theme.rtl ? 'right' : 'left'}-radius: ${trackBorderRadius};
-      height: ${trackHeight};
-    `));
-};
-const StyledRangeInput = Ye.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$8$1,
-  'data-garden-version': '8.69.1',
-  type: 'range',
-  style: {
-    backgroundSize: props.hasLowerTrack && props.backgroundSize
-  }
-})).withConfig({
-  displayName: "StyledRangeInput",
-  componentId: "sc-1iv2yqp-0"
-})(["appearance:none;direction:", ";margin:0;background-color:inherit;cursor:pointer;padding:0;width:100%;vertical-align:middle;", " &::-webkit-slider-container,&::-webkit-slider-runnable-track{background-size:inherit;}", ";", " ", ";&::-moz-focus-outer{border:0;}&::-ms-tooltip{display:none;}&:focus{outline:none;}&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => trackStyles(`
-      appearance: none;
-      border-color: transparent; /* reset for IE */
-      background-repeat: repeat-y;
-      background-size: 0;
-      background-position: ${props.theme.rtl ? '100% 100%' : '0% 0%'};
-      width: 99.8%; /* fix for IE which cuts off the upper track's border radius */
-      color: transparent; /* reset for IE */
-      box-sizing: border-box; /* reset for IE */
-    `), props => sizeStyles$6$1(props), props => thumbStyles(`
-      appearance: none;
-      transition: box-shadow .1s ease-in-out;
-      border: ${props.theme.borders.md};
-      border-radius: 100%;
-      box-sizing: border-box;
-    `), props => colorStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$8$1, props));
-StyledRangeInput.defaultProps = {
-  backgroundSize: '0%',
-  hasLowerTrack: true,
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$7$1 = 'forms.slider';
-const StyledSlider = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$7$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSlider",
-  componentId: "sc-1di437a-0"
-})(["display:block;position:relative;z-index:0;cursor:pointer;height:", ";&[aria-disabled='true']{cursor:default;}", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";"], props => math(`(${props.theme.space.base} * 5px) + (${props.theme.shadowWidths.md} * 2)`), StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props => math(`${props.theme.space.base} * 2px`), props => retrieveComponentStyles(COMPONENT_ID$7$1, props));
-StyledSlider.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$6$1 = 'forms.slider_thumb';
-const colorStyles$2$1 = props => {
-  const SHADE = 600;
-  const backgroundColor = getColor('primaryHue', SHADE, props.theme);
-  const borderColor = backgroundColor;
-  const boxShadow = props.theme.shadows.lg(math(`${props.theme.space.base} * 1px`), math(`${props.theme.space.base} * 2px`), getColor('neutralHue', SHADE + 200, props.theme, 0.24));
-  const activeBackgroundColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const activeBorderColor = borderColor;
-  const hoverBackgroundColor = activeBackgroundColor;
-  const hoverBorderColor = hoverBackgroundColor;
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const disabledBorderColor = disabledBackgroundColor;
-  return Ne(["border-color:", ";box-shadow:", ";background-color:", ";&:hover,&[data-garden-hover='true']{border-color:", ";background-color:", ";}", " &:active,&[data-garden-active='true']{border-color:", ";background-color:", ";}&[aria-disabled='true']{border-color:", ";box-shadow:none;background-color:", ";}"], borderColor, boxShadow, backgroundColor, hoverBorderColor, hoverBackgroundColor, focusStyles({
-    theme: props.theme
-  }), activeBorderColor, activeBackgroundColor, disabledBorderColor, disabledBackgroundColor);
-};
-const sizeStyles$5$1 = props => {
-  const size = math(`${props.theme.space.base} * 5px`);
-  const marginTop = math(`${size} / -2`);
-  return Ne(["margin-top:", ";width:", ";height:", ";"], marginTop, size, size);
-};
-const StyledSliderThumb = Ye.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$6$1,
-  'data-garden-version': '8.69.1',
-  'aria-disabled': props.isDisabled
-})).withConfig({
-  displayName: "StyledSliderThumb",
-  componentId: "sc-yspbwa-0"
-})(["appearance:none;position:absolute;top:50%;", ":", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out;z-index:1;border:", ";border-radius:100%;cursor:inherit;box-sizing:border-box;font-size:0;", ";", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.position} * 1px`), props => props.theme.borders.md, props => sizeStyles$5$1(props), props => colorStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$6$1, props));
-StyledSliderThumb.defaultProps = {
-  position: 0,
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$5$1 = 'forms.slider_track';
-const colorStyles$1$1 = props => {
-  const SHADE = 600;
-  const backgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const backgroundImageColor = getColor('primaryHue', SHADE, props.theme);
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
-  return Ne(["background-color:", ";background-image:linear-gradient(", ",", ");&[aria-disabled='true']{background-image:linear-gradient(", ",", ");}"], backgroundColor, backgroundImageColor, backgroundImageColor, disabledBackgroundColor, disabledBackgroundColor);
-};
-const sizeStyles$4$1 = props => {
-  const height = math(`${props.theme.space.base} * 1.5px`);
-  const backgroundPosition = math(`${props.backgroundPosition} * 1px`);
-  const backgroundSize = math(`${props.backgroundSize} * 1px`);
-  const borderRadius = height;
-  const marginTop = math(`${height} / -2`);
-  const padding = math(`${props.theme.space.base} * 2.5px`);
-  return Ne(["margin-top:", ";border-radius:", ";background-position:", ";background-size:", ";padding:0 ", ";"], marginTop, borderRadius, backgroundPosition, backgroundSize, padding);
-};
-const StyledSliderTrack = Ye.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$5$1,
-  'data-garden-version': '8.69.1',
-  'aria-disabled': props.isDisabled
-})).withConfig({
-  displayName: "StyledSliderTrack",
-  componentId: "sc-aw5m6g-0"
-})(["position:absolute;top:50%;box-sizing:border-box;background-origin:content-box;background-repeat:repeat-y;width:100%;", ";", ";", ";"], props => sizeStyles$4$1(props), props => colorStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$5$1, props));
-StyledSliderTrack.defaultProps = {
-  backgroundSize: 0,
-  backgroundPosition: 0,
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$4$1 = 'forms.slider_track_rail';
-const sizeStyles$3$1 = props => {
-  const height = math(`${props.theme.space.base} * 1.5px`);
-  const margin = math(`${props.theme.space.base} * 2.5px`);
-  return Ne(["margin:0 ", " 0 ", ";height:", ";"], props.theme.rtl ? `-${margin}` : margin, props.theme.rtl ? margin : `-${margin}`, height);
-};
-const StyledSliderTrackRail = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$4$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSliderTrackRail",
-  componentId: "sc-1o5owbd-0"
-})(["position:relative;", ";", ";"], props => sizeStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$4$1, props));
-StyledSliderTrackRail.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$3$1 = 'forms.tile_icon';
-const sizeStyles$2$1 = props => {
-  const iconSize = math(`${props.theme.iconSizes.md} * 2`);
-  let position;
-  let top;
-  let horizontalValue;
-  if (!props.isCentered) {
-    position = 'absolute';
-    top = `${props.theme.space.base * 6}px`;
-    horizontalValue = `left: ${props.theme.space.base * 5}px`;
-    if (props.theme.rtl) {
-      horizontalValue = `right: ${props.theme.space.base * 5}px`;
-    }
-  }
-  return Ne(["position:", ";top:", ";", ";& > *{width:", ";height:", ";}"], position, top, horizontalValue, iconSize, iconSize);
-};
-const StyledTileIcon = Ye.span.attrs({
-  'data-garden-id': COMPONENT_ID$3$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTileIcon",
-  componentId: "sc-1wazhg4-0"
-})(["display:block;transition:color 0.25s ease-in-out;text-align:center;line-height:0;", ";", ";"], props => sizeStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$3$1, props));
-StyledTileIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$2$3 = 'forms.tile';
-const colorStyles$d = props => {
-  const SHADE = 600;
-  const iconColor = getColor('neutralHue', SHADE, props.theme);
-  const color = getColor('neutralHue', SHADE + 200, props.theme);
-  const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const hoverBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.08);
-  const hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
-  const focusBorderColor = hoverBorderColor;
-  const activeBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.2);
-  const activeBorderColor = focusBorderColor;
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 500, props.theme);
-  const disabledBorderColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const disabledColor = getColor('neutralHue', SHADE - 200, props.theme);
-  const selectedBorderColor = focusBorderColor;
-  const selectedBackgroundColor = selectedBorderColor;
-  const selectedHoverBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const selectedHoverBackgroundColor = selectedHoverBorderColor;
-  const selectedActiveBorderColor = getColor('primaryHue', SHADE + 200, props.theme);
-  const selectedActiveBackgroundColor = selectedActiveBorderColor;
-  const selectedDisabledBackgroundColor = disabledBorderColor;
-  return Ne(["border:", " ", ";border-color:", ";background-color:", ";color:", ";", "{color:", ";}&:hover:not([aria-disabled='true']){border-color:", ";background-color:", ";", "{color:", ";}}", " &:active:not([aria-disabled='true']){border-color:", ";background-color:", ";", "{color:", ";}}&[data-garden-selected='true']{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true']:not([aria-disabled='true']):hover{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true']:not([aria-disabled='true']):active{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true'][aria-disabled='true']{background-color:", ";color:", ";", "{color:", ";}}"], props.theme.borders.sm, getColor('neutralHue', SHADE - 300, props.theme), borderColor, props.theme.colors.background, color, StyledTileIcon, iconColor, hoverBorderColor, hoverBackgroundColor, StyledTileIcon, color, focusStyles({
-    theme: props.theme,
-    hue: focusBorderColor,
-    styles: {
-      borderColor: focusBorderColor
-    },
-    selector: `&:focus-within`
-  }), activeBorderColor, activeBackgroundColor, StyledTileIcon, color, selectedBorderColor, selectedBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, selectedHoverBorderColor, selectedHoverBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, selectedActiveBorderColor, selectedActiveBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, disabledBorderColor, disabledBackgroundColor, disabledColor, StyledTileIcon, disabledColor, selectedDisabledBackgroundColor, disabledColor, StyledTileIcon, disabledColor);
-};
-const StyledTile = Ye.label.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$2$3,
-  'data-garden-version': '8.69.1',
-  'data-garden-selected': props.isSelected
-})).withConfig({
-  displayName: "StyledTile",
-  componentId: "sc-1jjvmxs-0"
-})(["display:block;position:relative;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border-radius:", ";cursor:", ";padding:", "px;direction:", ";min-width:132px;word-break:break-word;", ";", ";"], props => props.theme.borderRadii.md, props => !props.isDisabled && 'pointer', props => props.theme.space.base * 5, props => props.theme.rtl && 'rtl', props => colorStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$2$3, props));
-StyledTile.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$1$3 = 'forms.tile_description';
-const sizeStyles$1$1 = props => {
-  let marginDirection = 'left';
-  let marginValue;
-  if (props.theme.rtl) {
-    marginDirection = 'right';
-  }
-  if (!props.isCentered) {
-    marginValue = math(`(${props.theme.iconSizes.md} * 2) + ${props.theme.space.base * 5}px`);
-  }
-  return Ne(["margin-top:", "px;margin-", ":", ";"], props.theme.space.base, marginDirection, marginValue);
-};
-const StyledTileDescription = Ye.span.attrs({
-  'data-garden-id': COMPONENT_ID$1$3,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTileDescription",
-  componentId: "sc-xfuu7u-0"
-})(["display:block;text-align:", ";line-height:", ";font-size:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 4, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => sizeStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$1$3, props));
-StyledTileDescription.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const StyledTileInput = Ye.input.withConfig({
-  displayName: "StyledTileInput",
-  componentId: "sc-1nq2m6q-0"
-})(["position:absolute;border:0;clip:rect(1px,1px,1px,1px);padding:0;width:1px;height:1px;overflow:hidden;white-space:nowrap;"]);
-StyledTileInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$L = 'forms.tile_label';
-const sizeStyles$g = props => {
-  let marginDirection = 'left';
-  let marginTop = `${props.theme.space.base * 2}px`;
-  let marginValue;
-  if (props.theme.rtl) {
-    marginDirection = 'right';
-  }
-  if (!props.isCentered) {
-    marginValue = math(`(${props.theme.iconSizes.md} * 2) + ${props.theme.space.base * 5}px`);
-    marginTop = '0';
-  }
-  return Ne(["margin-top:", ";margin-", ":", ";"], marginTop, marginDirection, marginValue);
-};
-const StyledTileLabel = Ye.span.attrs({
-  'data-garden-id': COMPONENT_ID$L,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTileLabel",
-  componentId: "sc-1mypv27-0"
-})(["display:block;text-align:", ";line-height:", ";font-size:", ";font-weight:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => sizeStyles$g(props), props => retrieveComponentStyles(COMPONENT_ID$L, props));
-StyledTileLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const Field$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
-  const [hasHint, setHasHint] = reactExports.useState(false);
-  const [hasMessage, setHasMessage] = reactExports.useState(false);
-  const [isLabelActive, setIsLabelActive] = reactExports.useState(false);
-  const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
-  const multiThumbRangeRef = reactExports.useRef(null);
-  const {
-    getInputProps,
-    getMessageProps,
-    ...propGetters
-  } = useField(props.id);
-  const fieldProps = reactExports.useMemo(() => ({
-    ...propGetters,
-    getInputProps: function (options) {
-      let describeOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return getInputProps(options, {
-        ...describeOptions,
-        isDescribed: hasHint,
-        hasMessage
-      });
-    },
-    getMessageProps: options => getMessageProps({
-      role: 'alert',
-      ...options
-    }),
-    isLabelActive,
-    setIsLabelActive,
-    isLabelHovered,
-    setIsLabelHovered,
-    hasHint,
-    setHasHint,
-    hasMessage,
-    setHasMessage,
-    multiThumbRangeRef
-  }), [propGetters, getInputProps, getMessageProps, isLabelActive, isLabelHovered, hasHint, hasMessage]);
-  return /*#__PURE__*/React.createElement(FieldContext$1.Provider, {
-    value: fieldProps
-  }, /*#__PURE__*/React.createElement(StyledField$1, _extends$t({}, props, {
-    ref: ref
-  })));
-});
-Field$1.displayName = 'Field';
-const FieldsetContext = /*#__PURE__*/reactExports.createContext(undefined);
-const useFieldsetContext = () => {
-  const fieldsetContext = reactExports.useContext(FieldsetContext);
-  return fieldsetContext;
-};
-const LegendComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
-  const fieldsetContext = useFieldsetContext();
-  return /*#__PURE__*/React.createElement(StyledLegend, _extends$t({}, props, fieldsetContext, {
-    ref: ref
-  }));
-});
-LegendComponent.displayName = 'Fieldset.Legend';
-const Legend = LegendComponent;
-const FieldsetComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
-  const fieldsetContext = reactExports.useMemo(() => ({
-    isCompact: props.isCompact
-  }), [props.isCompact]);
-  return /*#__PURE__*/React.createElement(FieldsetContext.Provider, {
-    value: fieldsetContext
-  }, /*#__PURE__*/React.createElement(StyledFieldset, _extends$t({}, props, {
-    ref: ref
-  })));
-});
-FieldsetComponent.displayName = 'Fieldset';
-FieldsetComponent.propTypes = {
-  isCompact: PropTypes.bool
-};
-const Fieldset = FieldsetComponent;
-Fieldset.Legend = Legend;
-const InputContext = /*#__PURE__*/reactExports.createContext(undefined);
-const useInputContext = () => {
-  return reactExports.useContext(InputContext);
-};
-const Hint$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
-  const {
-    hasHint,
-    setHasHint,
-    getHintProps
-  } = useFieldContext$1() || {};
-  const type = useInputContext();
-  reactExports.useEffect(() => {
-    if (!hasHint && setHasHint) {
-      setHasHint(true);
-    }
-    return () => {
-      if (hasHint && setHasHint) {
-        setHasHint(false);
-      }
-    };
-  }, [hasHint, setHasHint]);
-  let HintComponent;
-  if (type === 'checkbox') {
-    HintComponent = StyledCheckHint;
-  } else if (type === 'radio') {
-    HintComponent = StyledRadioHint;
-  } else if (type === 'toggle') {
-    HintComponent = StyledToggleHint;
-  } else {
-    HintComponent = StyledHint$1;
-  }
-  let combinedProps = props;
-  if (getHintProps) {
-    combinedProps = getHintProps(combinedProps);
-  }
-  return /*#__PURE__*/React.createElement(HintComponent, _extends$t({
-    ref: ref
-  }, combinedProps));
-});
-Hint$1.displayName = 'Hint';
-const Label$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
-  const fieldContext = useFieldContext$1();
-  const fieldsetContext = useFieldsetContext();
-  const type = useInputContext();
-  let combinedProps = props;
-  if (fieldContext) {
-    combinedProps = fieldContext.getLabelProps(combinedProps);
-    if (type === undefined) {
-      const {
-        setIsLabelActive,
-        setIsLabelHovered,
-        multiThumbRangeRef
-      } = fieldContext;
-      combinedProps = {
-        ...combinedProps,
-        onMouseUp: composeEventHandlers$1(props.onMouseUp, () => {
-          setIsLabelActive(false);
-        }),
-        onMouseDown: composeEventHandlers$1(props.onMouseDown, () => {
-          setIsLabelActive(true);
-        }),
-        onMouseEnter: composeEventHandlers$1(props.onMouseEnter, () => {
-          setIsLabelHovered(true);
-        }),
-        onMouseLeave: composeEventHandlers$1(props.onMouseLeave, () => {
-          setIsLabelHovered(false);
-        }),
-        onClick: composeEventHandlers$1(props.onClick, () => {
-          multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
-        })
-      };
-    }
-  }
-  if (fieldsetContext) {
-    combinedProps = {
-      ...combinedProps,
-      isRegular: combinedProps.isRegular === undefined ? true : combinedProps.isRegular
-    };
-  }
-  if (type === 'radio') {
-    return /*#__PURE__*/React.createElement(StyledRadioLabel, _extends$t({
-      ref: ref
-    }, combinedProps), /*#__PURE__*/React.createElement(StyledRadioSvg, null), props.children);
-  } else if (type === 'checkbox') {
-    const onLabelSelect = e => {
-      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-      if (fieldContext && isFirefox && e.target instanceof Element) {
-        const inputId = e.target.getAttribute('for');
-        if (!inputId) return;
-        const input = document.getElementById(inputId);
-        if (input && input.type === 'checkbox') {
-          if (e.shiftKey) {
-            input.click();
-            input.checked = true;
-          }
-          input.focus();
-        }
-      }
-    };
-    combinedProps = {
-      ...combinedProps,
-      onClick: composeEventHandlers$1(combinedProps.onClick, onLabelSelect)
-    };
-    return /*#__PURE__*/React.createElement(StyledCheckLabel, _extends$t({
-      ref: ref
-    }, combinedProps), /*#__PURE__*/React.createElement(StyledCheckSvg, null), /*#__PURE__*/React.createElement(StyledDashSvg, null), props.children);
-  } else if (type === 'toggle') {
-    return /*#__PURE__*/React.createElement(StyledToggleLabel, _extends$t({
-      ref: ref
-    }, combinedProps), /*#__PURE__*/React.createElement(StyledToggleSvg, null), props.children);
-  }
-  return /*#__PURE__*/React.createElement(StyledLabel$1, _extends$t({
-    ref: ref
-  }, combinedProps));
-});
-Label$1.displayName = 'Label';
-Label$1.propTypes = {
-  isRegular: PropTypes.bool
-};
-const VALIDATION = ['success', 'warning', 'error'];
-const FILE_VALIDATION = ['success', 'error'];
-const FILE_TYPE = ['pdf', 'zip', 'image', 'document', 'spreadsheet', 'presentation', 'generic'];
-const Message$1 = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    validation,
-    validationLabel,
-    children,
-    ...props
-  } = _ref;
-  const {
-    hasMessage,
-    setHasMessage,
-    getMessageProps
-  } = useFieldContext$1() || {};
-  const type = useInputContext();
-  reactExports.useEffect(() => {
-    if (!hasMessage && setHasMessage) {
-      setHasMessage(true);
-    }
-    return () => {
-      if (hasMessage && setHasMessage) {
-        setHasMessage(false);
-      }
-    };
-  }, [hasMessage, setHasMessage]);
-  let MessageComponent;
-  if (type === 'checkbox') {
-    MessageComponent = StyledCheckMessage;
-  } else if (type === 'radio') {
-    MessageComponent = StyledRadioMessage;
-  } else if (type === 'toggle') {
-    MessageComponent = StyledToggleMessage;
-  } else {
-    MessageComponent = StyledMessage$1;
-  }
-  let combinedProps = {
-    validation,
-    validationLabel,
-    ...props
-  };
-  if (getMessageProps) {
-    combinedProps = getMessageProps(combinedProps);
-  }
-  const ariaLabel = useText(Message$1, combinedProps, 'validationLabel', validation, validation !== undefined);
-  return /*#__PURE__*/React.createElement(MessageComponent, _extends$t({
-    ref: ref
-  }, combinedProps), validation && /*#__PURE__*/React.createElement(StyledMessageIcon, {
-    validation: validation,
-    "aria-label": ariaLabel
-  }), children);
-});
-Message$1.displayName = 'Message';
-Message$1.propTypes = {
-  validation: PropTypes.oneOf(VALIDATION),
-  validationLabel: PropTypes.string
-};
-const Checkbox = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    indeterminate,
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext();
-  const fieldContext = useFieldContext$1();
-  const inputRef = inputElement => {
-    inputElement && (inputElement.indeterminate = indeterminate);
-  };
-  const combinedRef = inputElement => {
-    [inputRef, ref].forEach(targetRef => {
-      if (targetRef) {
-        if (typeof targetRef === 'function') {
-          targetRef(inputElement);
-        } else {
-          targetRef.current = inputElement;
-        }
-      }
-    });
-  };
-  let combinedProps = {
-    ref: combinedRef,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return /*#__PURE__*/React.createElement(InputContext.Provider, {
-    value: "checkbox"
-  }, /*#__PURE__*/React.createElement(StyledCheckInput, combinedProps), children);
-});
-Checkbox.displayName = 'Checkbox';
-Checkbox.propTypes = {
-  isCompact: PropTypes.bool,
-  indeterminate: PropTypes.bool
-};
-const InputGroupContext = /*#__PURE__*/reactExports.createContext(undefined);
-const useInputGroupContext = () => {
-  return reactExports.useContext(InputGroupContext);
-};
-const Input = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$1(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    ref,
-    onSelect: onSelectHandler,
-    ...props
-  };
-  if (inputGroupContext) {
-    combinedProps = {
-      ...combinedProps,
-      isCompact: inputGroupContext.isCompact || combinedProps.isCompact,
-      focusInset: props.focusInset === undefined ? true : props.focusInset
-    };
-  }
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return /*#__PURE__*/React.createElement(StyledTextInput, combinedProps);
-});
-Input.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION)
-};
-Input.displayName = 'Input';
-const Radio = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext();
-  const fieldContext = useFieldContext$1();
-  let combinedProps = {
-    ref,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return /*#__PURE__*/React.createElement(InputContext.Provider, {
-    value: "radio"
-  }, /*#__PURE__*/React.createElement(StyledRadioInput, combinedProps), children);
-});
-Radio.displayName = 'Radio';
-Radio.propTypes = {
-  isCompact: PropTypes.bool
-};
-const Range = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    hasLowerTrack,
-    min,
-    max,
-    step,
-    ...props
-  } = _ref;
-  const [backgroundSize, setBackgroundSize] = reactExports.useState('0');
-  const rangeRef = reactExports.useRef();
-  const fieldContext = useFieldContext$1();
-  const updateBackgroundWidthFromInput = reactExports.useCallback(rangeTarget => {
-    let relativeMax = max;
-    const {
-      value
-    } = rangeTarget;
-    if (parseFloat(relativeMax) < parseFloat(min)) {
-      relativeMax = 100;
-    }
-    const percentage = 100 * (value - min) / (relativeMax - min);
-    setBackgroundSize(`${percentage}%`);
-  }, [max, min, step]);
-  reactExports.useEffect(() => {
-    updateBackgroundWidthFromInput(rangeRef.current);
-  }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$1(props.onChange, event => {
-    updateBackgroundWidthFromInput(event.target);
-  }) : props.onChange;
-  let combinedProps = {
-    ref: mergeRefs([rangeRef, ref]),
-    hasLowerTrack,
-    min,
-    max,
-    step,
-    backgroundSize,
-    ...props,
-    onChange
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-  }
-  return /*#__PURE__*/React.createElement(StyledRangeInput, combinedProps);
-});
-Range.defaultProps = {
-  hasLowerTrack: true,
-  min: 0,
-  max: 100,
-  step: 1
-};
-Range.displayName = 'Range';
-const parseStyleValue = value => {
-  return parseInt(value, 10) || 0;
-};
-const Textarea = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    minRows,
-    maxRows,
-    style,
-    onChange,
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  const textAreaRef = reactExports.useRef();
-  const shadowTextAreaRef = reactExports.useRef(null);
-  const [state, setState] = reactExports.useState({
-    overflow: false,
-    height: 0
-  });
-  const isControlled = props.value !== null && props.value !== undefined;
-  const isAutoResizable = (minRows !== undefined || maxRows !== undefined) && !props.isResizable;
-  const calculateHeight = reactExports.useCallback(() => {
-    if (!isAutoResizable) {
-      return;
-    }
-    const textarea = textAreaRef.current;
-    const computedStyle = window.getComputedStyle(textarea);
-    const shadowTextArea = shadowTextAreaRef.current;
-    shadowTextArea.style.width = computedStyle.width;
-    shadowTextArea.value = textarea.value || textarea.placeholder || ' ';
-    const boxSizing = computedStyle.boxSizing;
-    const padding = parseStyleValue(computedStyle.paddingBottom) + parseStyleValue(computedStyle.paddingTop);
-    const border = parseStyleValue(computedStyle.borderTopWidth) + parseStyleValue(computedStyle.borderBottomWidth);
-    const innerHeight = shadowTextArea.scrollHeight - padding;
-    shadowTextArea.value = 'x';
-    const singleRowHeight = shadowTextArea.scrollHeight - padding;
-    let outerHeight = innerHeight;
-    if (minRows) {
-      outerHeight = Math.max(Number(minRows) * singleRowHeight, outerHeight);
-    }
-    if (maxRows) {
-      outerHeight = Math.min(Number(maxRows) * singleRowHeight, outerHeight);
-    }
-    outerHeight = Math.max(outerHeight, singleRowHeight);
-    const updatedHeight = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
-    const overflow = Math.abs(outerHeight - innerHeight) <= 1;
-    setState(prevState => {
-      if (updatedHeight > 0 && Math.abs((prevState.height || 0) - updatedHeight) > 1 || prevState.overflow !== overflow) {
-        return {
-          overflow,
-          height: updatedHeight
-        };
-      }
-      return prevState;
-    });
-  }, [maxRows, minRows, textAreaRef, isAutoResizable]);
-  const onChangeHandler = reactExports.useCallback(e => {
-    if (!isControlled) {
-      calculateHeight();
-    }
-    if (onChange) {
-      onChange(e);
-    }
-  }, [calculateHeight, isControlled, onChange]);
-  const theme = reactExports.useContext(Be);
-  const environment = useDocument(theme);
-  reactExports.useEffect(() => {
-    if (!isAutoResizable) {
-      return undefined;
-    }
-    if (environment) {
-      const win = environment.defaultView || window;
-      const resizeHandler = debounce$2(calculateHeight);
-      win.addEventListener('resize', resizeHandler);
-      return () => {
-        resizeHandler.cancel();
-        win.removeEventListener('resize', resizeHandler);
-      };
-    }
-    return undefined;
-  }, [calculateHeight, isAutoResizable, environment]);
-  reactExports.useLayoutEffect(() => {
-    calculateHeight();
-  });
-  const computedStyle = {};
-  if (isAutoResizable) {
-    computedStyle.height = state.height;
-    computedStyle.overflow = state.overflow ? 'hidden' : undefined;
-  }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$1(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    ref: mergeRefs([textAreaRef, ref]),
-    rows: minRows,
-    onChange: onChangeHandler,
-    onSelect: onSelectHandler,
-    style: {
-      ...computedStyle,
-      ...style
-    },
-    ...props
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-  }
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(StyledTextarea, combinedProps), isAutoResizable && /*#__PURE__*/React.createElement(StyledTextarea, {
-    "aria-hidden": true,
-    readOnly: true,
-    isHidden: true,
-    className: props.className,
-    ref: shadowTextAreaRef,
-    tabIndex: -1,
-    isBare: props.isBare,
-    isCompact: props.isCompact,
-    style: style
-  }));
-});
-Textarea.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  isResizable: PropTypes.bool,
-  minRows: PropTypes.number,
-  maxRows: PropTypes.number,
-  validation: PropTypes.oneOf(VALIDATION)
-};
-Textarea.displayName = 'Textarea';
-const Toggle = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext();
-  const fieldContext = useFieldContext$1();
-  let combinedProps = {
-    ref,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return /*#__PURE__*/React.createElement(InputContext.Provider, {
-    value: "toggle"
-  }, /*#__PURE__*/React.createElement(StyledToggleInput, combinedProps), children);
-});
-Toggle.displayName = 'Toggle';
-Toggle.propTypes = {
-  isCompact: PropTypes.bool
-};
-var _path$k;
-function _extends$l() {
-  _extends$l = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$l.apply(this, arguments);
-}
-var SvgChevronDownStroke$1 = function SvgChevronDownStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$l({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$k || (_path$k = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "currentColor",
-    d: "M12.688 5.61a.5.5 0 01.69.718l-.066.062-5 4a.5.5 0 01-.542.054l-.082-.054-5-4a.5.5 0 01.55-.83l.074.05L8 9.359l4.688-3.75z"
-  })));
-};
-const StartIconComponent = props => /*#__PURE__*/React.createElement(StyledTextMediaFigure, _extends$t({
-  position: "start"
-}, props));
-StartIconComponent.displayName = 'FauxInput.StartIcon';
-const StartIcon = StartIconComponent;
-const EndIconComponent = props => /*#__PURE__*/React.createElement(StyledTextMediaFigure, _extends$t({
-  position: "end"
-}, props));
-EndIconComponent.displayName = 'FauxInput.EndIcon';
-const EndIcon = EndIconComponent;
-const FauxInputComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    onFocus,
-    onBlur,
-    disabled,
-    readOnly,
-    isFocused: controlledIsFocused,
-    ...props
-  } = _ref;
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$1(onFocus, () => {
-    setIsFocused(true);
-  });
-  const onBlurHandler = composeEventHandlers$1(onBlur, () => {
-    setIsFocused(false);
-  });
-  return /*#__PURE__*/React.createElement(StyledTextFauxInput, _extends$t({
-    onFocus: onFocusHandler,
-    onBlur: onBlurHandler,
-    isFocused: controlledIsFocused === undefined ? isFocused : controlledIsFocused,
-    isReadOnly: readOnly,
-    isDisabled: disabled,
-    tabIndex: disabled ? undefined : 0
-  }, props, {
-    ref: ref
-  }));
-});
-FauxInputComponent.displayName = 'FauxInput';
-FauxInputComponent.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION),
-  isFocused: PropTypes.bool,
-  isHovered: PropTypes.bool
-};
-const FauxInput = FauxInputComponent;
-FauxInput.EndIcon = EndIcon;
-FauxInput.StartIcon = StartIcon;
-const Select = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    disabled,
-    isCompact,
-    validation,
-    focusInset,
-    isBare,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  let combinedProps = {
-    disabled,
-    isBare,
-    isCompact,
-    validation,
-    focusInset,
-    ref,
-    ...props
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-  }
-  return /*#__PURE__*/React.createElement(StyledSelectWrapper, {
-    isCompact: isCompact,
-    isBare: isBare,
-    validation: validation,
-    focusInset: focusInset
-  }, /*#__PURE__*/React.createElement(StyledSelect, combinedProps), !isBare && /*#__PURE__*/React.createElement(FauxInput.EndIcon, {
-    isDisabled: disabled
-  }, /*#__PURE__*/React.createElement(SvgChevronDownStroke$1, null)));
-});
-Select.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION)
-};
-Select.displayName = 'Select';
-const MIN = 0;
-const MAX = 100;
-const MultiThumbRange = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    min = MIN,
-    max = MAX,
-    minValue,
-    maxValue,
-    disabled,
-    step,
-    jump,
-    onChange,
-    onMouseDown,
-    ...props
-  } = _ref;
-  const theme = reactExports.useContext(Be);
-  const environment = useDocument(theme);
-  const trackRailRef = reactExports.useRef(null);
-  const minThumbRef = reactExports.useRef(null);
-  const maxThumbRef = reactExports.useRef(null);
-  const {
-    getTrackProps,
-    getMinThumbProps,
-    getMaxThumbProps,
-    trackRect,
-    minValue: updatedMinValue,
-    maxValue: updatedMaxValue
-  } = useSlider({
-    trackRef: trackRailRef,
-    minThumbRef,
-    maxThumbRef,
-    min,
-    max,
-    minValue,
-    maxValue,
-    onChange,
-    step,
-    jump,
-    disabled,
-    rtl: theme.rtl,
-    environment
-  });
-  const {
-    onMouseDown: onSliderMouseDown,
-    ...trackProps
-  } = getTrackProps({
-    onMouseDown
-  });
-  const fieldContext = useFieldContext$1();
-  const {
-    isLabelHovered,
-    isLabelActive,
-    multiThumbRangeRef
-  } = fieldContext || {};
-  reactExports.useEffect(() => {
-    if (multiThumbRangeRef) {
-      multiThumbRangeRef.current = minThumbRef.current;
-    }
-  }, [multiThumbRangeRef]);
-  const minPosition = (updatedMinValue - min) / (max - min) * trackRect.width;
-  const maxPosition = (updatedMaxValue - min) / (max - min) * trackRect.width;
-  const sliderBackgroundSize = Math.abs(maxPosition) - Math.abs(minPosition);
-  return /*#__PURE__*/React.createElement(StyledSlider, _extends$t({
-    ref: ref,
-    onMouseDown: onSliderMouseDown
-  }, props), /*#__PURE__*/React.createElement(StyledSliderTrack, {
-    backgroundSize: sliderBackgroundSize,
-    backgroundPosition: theme.rtl ? trackRect.width - maxPosition : minPosition,
-    isDisabled: disabled
-  }, /*#__PURE__*/React.createElement(StyledSliderTrackRail, _extends$t({}, trackProps, {
-    ref: trackRailRef
-  }), /*#__PURE__*/React.createElement(StyledSliderThumb, _extends$t({}, getMinThumbProps({
-    'aria-label': updatedMinValue
-  }), {
-    isDisabled: disabled,
-    position: minPosition,
-    ref: minThumbRef,
-    "data-garden-active": isLabelActive,
-    "data-garden-hover": isLabelHovered
-  })), /*#__PURE__*/React.createElement(StyledSliderThumb, _extends$t({}, getMaxThumbProps({
-    'aria-label': updatedMaxValue
-  }), {
-    isDisabled: disabled,
-    position: maxPosition,
-    ref: maxThumbRef
-  })))));
-});
-MultiThumbRange.displayName = 'MultiThumbRange';
-MultiThumbRange.propTypes = {
-  min: PropTypes.number,
-  max: PropTypes.number,
-  minValue: PropTypes.number,
-  maxValue: PropTypes.number,
-  step: PropTypes.number,
-  jump: PropTypes.number,
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func
-};
-MultiThumbRange.defaultProps = {
-  min: MIN,
-  max: MAX,
-  step: 1
-};
-const TilesContext = /*#__PURE__*/reactExports.createContext(undefined);
-const useTilesContext = () => {
-  return reactExports.useContext(TilesContext);
-};
-const TileComponent = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    children,
-    value,
-    disabled,
-    ...props
-  } = _ref;
-  const tilesContext = useTilesContext();
-  const inputRef = reactExports.useRef(null);
-  let inputProps;
-  if (tilesContext) {
-    inputProps = {
-      name: tilesContext.name,
-      checked: tilesContext.value === value,
-      onChange: tilesContext.onChange
-    };
-  }
-  return /*#__PURE__*/React.createElement(StyledTile, _extends$t({
-    ref: ref,
-    "aria-disabled": disabled,
-    isDisabled: disabled,
-    isSelected: tilesContext && tilesContext.value === value
-  }, props), children, /*#__PURE__*/React.createElement(StyledTileInput, _extends$t({}, inputProps, {
-    disabled: disabled,
-    value: value,
-    type: "radio",
-    ref: inputRef
-  })));
-});
-TileComponent.displayName = 'Tiles.Tile';
-TileComponent.propTypes = {
-  value: PropTypes.string,
-  disabled: PropTypes.bool
-};
-const Tile = TileComponent;
-const DescriptionComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
-  const tilesContext = useTilesContext();
-  return /*#__PURE__*/React.createElement(StyledTileDescription, _extends$t({
-    ref: ref,
-    isCentered: tilesContext && tilesContext.isCentered
-  }, props));
-});
-DescriptionComponent.displayName = 'Tiles.Description';
-const Description = DescriptionComponent;
-const IconComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
-  const tileContext = useTilesContext();
-  return /*#__PURE__*/React.createElement(StyledTileIcon, _extends$t({
-    ref: ref,
-    isCentered: tileContext && tileContext.isCentered
-  }, props));
-});
-IconComponent.displayName = 'Tiles.Icon';
-const Icon = IconComponent;
-const LabelComponent = /*#__PURE__*/reactExports.forwardRef((props, forwardedRef) => {
-  const [title, setTitle] = reactExports.useState('');
-  const ref = reactExports.useRef();
-  const tilesContext = useTilesContext();
-  reactExports.useEffect(() => {
-    if (ref.current) {
-      setTitle(ref.current.textContent || undefined);
-    }
-  }, [ref]);
-  return /*#__PURE__*/React.createElement(StyledTileLabel, _extends$t({
-    ref: mergeRefs([ref, forwardedRef]),
-    title: title,
-    isCentered: tilesContext && tilesContext.isCentered
-  }, props));
-});
-LabelComponent.displayName = 'Tiles.Label';
-const Label$2 = LabelComponent;
-const TilesComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    onChange,
-    value: controlledValue,
-    name,
-    isCentered,
-    ...props
-  } = _ref;
-  const [value, setValue] = reactExports.useState(controlledValue);
-  const handleOnChange = reactExports.useCallback(function () {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    setValue(args[0].target.value);
-    if (onChange) {
-      onChange(...args);
-    }
-  }, [onChange]);
-  const selectedValue = getControlledValue(controlledValue, value);
-  const tileContext = reactExports.useMemo(() => ({
-    onChange: handleOnChange,
-    value: selectedValue,
-    name,
-    isCentered
-  }), [handleOnChange, selectedValue, name, isCentered]);
-  return /*#__PURE__*/React.createElement(TilesContext.Provider, {
-    value: tileContext
-  }, /*#__PURE__*/React.createElement("div", _extends$t({
-    ref: ref,
-    role: "radiogroup"
-  }, props)));
-});
-TilesComponent.displayName = 'Tiles';
-TilesComponent.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  name: PropTypes.string.isRequired,
-  isCentered: PropTypes.bool
-};
-TilesComponent.defaultProps = {
-  isCentered: true
-};
-const Tiles = TilesComponent;
-Tiles.Description = Description;
-Tiles.Icon = Icon;
-Tiles.Label = Label$2;
-Tiles.Tile = Tile;
-const InputGroup = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    isCompact,
-    ...props
-  } = _ref;
-  const contextValue = reactExports.useMemo(() => ({
-    isCompact
-  }), [isCompact]);
-  return /*#__PURE__*/React.createElement(InputGroupContext.Provider, {
-    value: contextValue
-  }, /*#__PURE__*/React.createElement(StyledInputGroup$1, _extends$t({
-    ref: ref,
-    isCompact: isCompact
-  }, props)));
-});
-InputGroup.displayName = 'InputGroup';
-InputGroup.propTypes = {
-  isCompact: PropTypes.bool
-};
-const FileUpload = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    disabled,
-    ...props
-  } = _ref;
-  return /*#__PURE__*/React.createElement(StyledFileUpload, _extends$t({
-    ref: ref,
-    "aria-disabled": disabled
-  }, props, {
-    role: "button"
-  }));
-});
-FileUpload.propTypes = {
-  isDragging: PropTypes.bool,
-  isCompact: PropTypes.bool,
-  disabled: PropTypes.bool
-};
-FileUpload.displayName = 'FileUpload';
-const ItemComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    ...props
-  } = _ref;
-  return /*#__PURE__*/React.createElement(StyledFileListItem, _extends$t({}, props, {
-    ref: ref
-  }));
-});
-ItemComponent.displayName = 'FileList.Item';
-const Item = ItemComponent;
-const FileListComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    ...props
-  } = _ref;
-  return /*#__PURE__*/React.createElement(StyledFileList, _extends$t({}, props, {
-    ref: ref
-  }));
-});
-FileListComponent.displayName = 'FileList';
-const FileList = FileListComponent;
-FileList.Item = Item;
-var _path$j;
-function _extends$k() {
-  _extends$k = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$k.apply(this, arguments);
-}
-var SvgXStroke$1 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$k({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$j || (_path$j = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 9l6-6m0 6L3 3"
-  })));
-};
-var _path$i;
-function _extends$j() {
-  _extends$j = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$j.apply(this, arguments);
-}
-var SvgXStroke$2 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$j({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$i || (_path$i = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 13L13 3m0 10L3 3"
-  })));
-};
-const FileContext = /*#__PURE__*/reactExports.createContext(undefined);
-const useFileContext = () => {
-  return reactExports.useContext(FileContext);
-};
-const CloseComponent$1 = /*#__PURE__*/React.forwardRef((props, ref) => {
-  const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$1(props.onMouseDown, event => event.preventDefault());
-  const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
-  return /*#__PURE__*/React.createElement(StyledFileClose, _extends$t({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1,
-    onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? /*#__PURE__*/React.createElement(SvgXStroke$1, null) : /*#__PURE__*/React.createElement(SvgXStroke$2, null));
-});
-CloseComponent$1.displayName = 'File.Close';
-const Close$1 = CloseComponent$1;
-var _path$h;
-function _extends$i() {
-  _extends$i = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$i.apply(this, arguments);
-}
-var SvgTrashStroke$1 = function SvgTrashStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$i({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$h || (_path$h = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M2 2.5h8m-5.5 7V5m3 4.5V5m-5-.5V11c0 .3.2.5.5.5h6c.3 0 .5-.2.5-.5V4.5"
-  })));
-};
-var _path$g;
-function _extends$h() {
-  _extends$h = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$h.apply(this, arguments);
-}
-var SvgTrashStroke = function SvgTrashStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$h({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$g || (_path$g = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M6.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M3 2.5h10m-6.5 11v-8m3 8v-8m-6-1V15c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5V4.5"
-  })));
-};
-const DeleteComponent = /*#__PURE__*/React.forwardRef((props, ref) => {
-  const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$1(props.onMouseDown, event => event.preventDefault());
-  const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
-  return /*#__PURE__*/React.createElement(StyledFileDelete, _extends$t({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1,
-    onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? /*#__PURE__*/React.createElement(SvgTrashStroke$1, null) : /*#__PURE__*/React.createElement(SvgTrashStroke, null));
-});
-DeleteComponent.displayName = 'File.Delete';
-const Delete = DeleteComponent;
-var _path$f, _rect$1;
-function _extends$g() {
-  _extends$g = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$g.apply(this, arguments);
-}
-var SvgFilePdfStroke$1 = function SvgFilePdfStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$g({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$f || (_path$f = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M10.5 3.21V11a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h5.79a.5.5 0 01.35.15l2.21 2.21a.5.5 0 01.15.35zM7.5.5V3a.5.5 0 00.5.5h2.5m-7 6h5"
-  })), _rect$1 || (_rect$1 = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 6,
-    height: 3,
-    x: 3,
-    y: 5,
-    fill: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })));
-};
-var _path$e;
-function _extends$f() {
-  _extends$f = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$f.apply(this, arguments);
-}
-var SvgFileZipStroke$1 = function SvgFileZipStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$f({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$e || (_path$e = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5.5v8m0-6h1m-2 1h1m0 1h1m-2 1h1m0 1h1m-2 1h1m6-4.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-var _path$d, _circle$1;
-function _extends$e() {
-  _extends$e = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$e.apply(this, arguments);
-}
-var SvgFileImageStroke$1 = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$e({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$d || (_path$d = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5m-7 6L5 8l1.5 1.5 1-1 1 1"
-  })), _circle$1 || (_circle$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 8,
-    cy: 6,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-var _path$c;
-function _extends$d() {
-  _extends$d = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$d.apply(this, arguments);
-}
-var SvgFileDocumentStroke$1 = function SvgFileDocumentStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$d({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$c || (_path$c = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-var _path$b;
-function _extends$c() {
-  _extends$c = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$c.apply(this, arguments);
-}
-var SvgFileSpreadsheetStroke$1 = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$c({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$b || (_path$b = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3.5 5.5h1m-1 2h1m-1 2h1m2-4h2m-2 2h2m-2 2h2m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-var _path$a;
-function _extends$b() {
-  _extends$b = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$b.apply(this, arguments);
-}
-var SvgFilePresentationStroke$1 = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$b({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$a || (_path$a = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM6 9.5h2c.28 0 .5-.22.5-.5V8c0-.28-.22-.5-.5-.5H6c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm-2-2h2c.28 0 .5-.22.5-.5V6c0-.28-.22-.5-.5-.5H4c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm3.5-7V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-var _path$9;
-function _extends$a() {
-  _extends$a = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$a.apply(this, arguments);
-}
-var SvgFileGenericStroke$1 = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$a({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$9 || (_path$9 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-var _g;
-function _extends$9() {
-  _extends$9 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$9.apply(this, arguments);
-}
-var SvgCheckCircleStroke = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$9({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _g || (_g = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M3.5 6l2 2L9 4.5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 6,
-    cy: 6,
-    r: 5.5
-  }))));
-};
-var _path$8;
-function _extends$8$1() {
-  _extends$8$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$8$1.apply(this, arguments);
-}
-var SvgFileErrorStroke$1 = function SvgFileErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$8$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$8 || (_path$8 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5M4 9.5l4-4m0 4l-4-4"
-  })));
-};
-var _path$7, _rect;
-function _extends$7$1() {
-  _extends$7$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$7$1.apply(this, arguments);
-}
-var SvgFilePdfStroke = function SvgFilePdfStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$7$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$7 || (_path$7 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.2V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.85a.5.5 0 01.36.15l3.15 3.2a.5.5 0 01.14.35zm-10 8.3h7m-7-2h7m-1-10V4a.5.5 0 00.5.5h3.5"
-  })), _rect || (_rect = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 8,
-    height: 2,
-    x: 4,
-    y: 7,
-    fill: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })));
-};
-var _path$6;
-function _extends$6$1() {
-  _extends$6$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$6$1.apply(this, arguments);
-}
-var SvgFileZipStroke = function SvgFileZipStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$6$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$6 || (_path$6 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M6.5.5v11M5 2.5h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m8-6.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-var _path$5$1, _circle;
-function _extends$5$1() {
-  _extends$5$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$5$1.apply(this, arguments);
-}
-var SvgFileImageStroke = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$5$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$5$1 || (_path$5$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5m-11 9l2.65-2.65c.2-.2.51-.2.71 0l1.79 1.79c.2.2.51.2.71 0l.79-.79c.2-.2.51-.2.71 0l1.65 1.65"
-  })), _circle || (_circle = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 10.5,
-    cy: 8.5,
-    r: 1.5,
-    fill: "currentColor"
-  })));
-};
-var _path$4$1;
-function _extends$4$1() {
-  _extends$4$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$4$1.apply(this, arguments);
-}
-var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$4$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$4$1 || (_path$4$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 7.5h7m-7 1.97h7m-7 2h7m3-7.27V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-var _path$3$1;
-function _extends$3$1() {
-  _extends$3$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$3$1.apply(this, arguments);
-}
-var SvgFileSpreadsheetStroke = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$3$1 || (_path$3$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 7.5h2m-2 2h2m-2 2h2m2-4h3m-3 2h3m-3 2h3m3-7.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-var _path$2$1;
-function _extends$2$1() {
-  _extends$2$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$2$1.apply(this, arguments);
-}
-var SvgFilePresentationStroke = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$2$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$2$1 || (_path$2$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5M7 9.5h4c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5H7c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5zm-.5 2H5c-.28 0-.5-.22-.5-.5V8c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5v1.5"
-  })));
-};
-var _path$1$1;
-function _extends$1$2() {
-  _extends$1$2 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$1$2.apply(this, arguments);
-}
-var SvgFileGenericStroke = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$1$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$1$1 || (_path$1$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-var _path$o;
-function _extends$u() {
-  _extends$u = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$u.apply(this, arguments);
-}
-var SvgFileErrorStroke = function SvgFileErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$u({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$o || (_path$o = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.205V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.853a.5.5 0 01.356.15l3.148 3.204a.5.5 0 01.143.35zM10.5.5V4a.5.5 0 00.5.5h3.5m-9 8l5-5m0 5l-5-5"
-  })));
-};
-const fileIconsDefault = {
-  pdf: /*#__PURE__*/React.createElement(SvgFilePdfStroke, null),
-  zip: /*#__PURE__*/React.createElement(SvgFileZipStroke, null),
-  image: /*#__PURE__*/React.createElement(SvgFileImageStroke, null),
-  document: /*#__PURE__*/React.createElement(SvgFileDocumentStroke, null),
-  spreadsheet: /*#__PURE__*/React.createElement(SvgFileSpreadsheetStroke, null),
-  presentation: /*#__PURE__*/React.createElement(SvgFilePresentationStroke, null),
-  generic: /*#__PURE__*/React.createElement(SvgFileGenericStroke, null),
-  success: /*#__PURE__*/React.createElement(SvgCheckCircleStroke$1, null),
-  error: /*#__PURE__*/React.createElement(SvgFileErrorStroke, null)
-};
-const fileIconsCompact = {
-  pdf: /*#__PURE__*/React.createElement(SvgFilePdfStroke$1, null),
-  zip: /*#__PURE__*/React.createElement(SvgFileZipStroke$1, null),
-  image: /*#__PURE__*/React.createElement(SvgFileImageStroke$1, null),
-  document: /*#__PURE__*/React.createElement(SvgFileDocumentStroke$1, null),
-  spreadsheet: /*#__PURE__*/React.createElement(SvgFileSpreadsheetStroke$1, null),
-  presentation: /*#__PURE__*/React.createElement(SvgFilePresentationStroke$1, null),
-  generic: /*#__PURE__*/React.createElement(SvgFileGenericStroke$1, null),
-  success: /*#__PURE__*/React.createElement(SvgCheckCircleStroke, null),
-  error: /*#__PURE__*/React.createElement(SvgFileErrorStroke$1, null)
-};
-const FileComponent = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    children,
-    type,
-    isCompact,
-    focusInset,
-    validation,
-    ...props
-  } = _ref;
-  const fileContextValue = reactExports.useMemo(() => ({
-    isCompact
-  }), [isCompact]);
-  const validationType = validation || type;
-  return /*#__PURE__*/React.createElement(FileContext.Provider, {
-    value: fileContextValue
-  }, /*#__PURE__*/React.createElement(StyledFile, _extends$t({}, props, {
-    isCompact: isCompact,
-    focusInset: focusInset,
-    validation: validation,
-    ref: ref
-  }), validationType && /*#__PURE__*/React.createElement(StyledFileIcon, {
-    isCompact: isCompact
-  }, isCompact ? fileIconsCompact[validationType] : fileIconsDefault[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? /*#__PURE__*/React.createElement("span", null, child) : child)));
-});
-FileComponent.displayName = 'File';
-FileComponent.propTypes = {
-  focusInset: PropTypes.bool,
-  isCompact: PropTypes.bool,
-  type: PropTypes.oneOf(FILE_TYPE),
-  validation: PropTypes.oneOf(FILE_VALIDATION)
-};
-const File = FileComponent;
-File.Close = Close$1;
-File.Delete = Delete;
-const MediaInput = /*#__PURE__*/React.forwardRef((_ref, ref) => {
-  let {
-    start,
-    end,
-    disabled,
-    isCompact,
-    isBare,
-    focusInset,
-    readOnly,
-    validation,
-    wrapperProps = {},
-    wrapperRef,
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  const inputRef = reactExports.useRef();
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const [isHovered, setIsHovered] = reactExports.useState(false);
-  const {
-    onClick,
-    onFocus,
-    onBlur,
-    onMouseOver,
-    onMouseOut,
-    ...otherWrapperProps
-  } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$1(onClick, () => {
-    inputRef.current && inputRef.current.focus();
-  });
-  const onFauxInputFocusHandler = composeEventHandlers$1(onFocus, () => {
-    setIsFocused(true);
-  });
-  const onFauxInputBlurHandler = composeEventHandlers$1(onBlur, () => {
-    setIsFocused(false);
-  });
-  const onFauxInputMouseOverHandler = composeEventHandlers$1(onMouseOver, () => {
-    setIsHovered(true);
-  });
-  const onFauxInputMouseOutHandler = composeEventHandlers$1(onMouseOut, () => {
-    setIsHovered(false);
-  });
-  const onSelectHandler = readOnly ? composeEventHandlers$1(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    disabled,
-    readOnly,
-    ref: mergeRefs([inputRef, ref]),
-    onSelect: onSelectHandler,
-    ...props
-  };
-  let isLabelHovered;
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-    isLabelHovered = fieldContext.isLabelHovered;
-  }
-  return /*#__PURE__*/React.createElement(FauxInput, _extends$t({
-    tabIndex: null,
-    onClick: onFauxInputClickHandler,
-    onFocus: onFauxInputFocusHandler,
-    onBlur: onFauxInputBlurHandler,
-    onMouseOver: onFauxInputMouseOverHandler,
-    onMouseOut: onFauxInputMouseOutHandler,
-    disabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered,
-    isCompact: isCompact,
-    isBare: isBare,
-    focusInset: focusInset,
-    readOnly: readOnly,
-    validation: validation,
-    mediaLayout: true
-  }, otherWrapperProps, {
-    ref: wrapperRef
-  }), start && /*#__PURE__*/React.createElement(FauxInput.StartIcon, {
-    isDisabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered
-  }, start), /*#__PURE__*/React.createElement(StyledTextMediaInput, combinedProps), end && /*#__PURE__*/React.createElement(FauxInput.EndIcon, {
-    isDisabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered
-  }, end));
-});
-MediaInput.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION),
-  start: PropTypes.node,
-  end: PropTypes.node,
-  wrapperProps: PropTypes.object,
-  wrapperRef: PropTypes.any
-};
-MediaInput.displayName = 'MediaInput';
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-function _extends$1$1() {
-  _extends$1$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$1$1.apply(this, arguments);
-}
-const SIZE$1 = ['small', 'medium', 'large'];
-const COMPONENT_ID$2$2 = 'tags.avatar';
-const StyledAvatar = Ye(_ref => {
-  let {
-    children,
-    ...props
-  } = _ref;
-  return /*#__PURE__*/React.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$2$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledAvatar",
-  componentId: "sc-3kdmgt-0"
-})(["flex-shrink:0;font-size:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$2$2, props));
-StyledAvatar.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$1$2 = 'tags.close';
-const StyledClose = Ye.button.attrs({
-  'data-garden-id': COMPONENT_ID$1$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledClose",
-  componentId: "sc-d6lrpn-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:0;background:transparent;cursor:pointer;padding:0;color:inherit;font-size:0;appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => retrieveComponentStyles(COMPONENT_ID$1$2, props));
-StyledClose.defaultProps = {
-  theme: DEFAULT_THEME
-};
-const COMPONENT_ID$n = 'tags.tag_view';
-const colorStyles$a = props => {
-  let backgroundColor;
-  let foregroundColor;
-  let closeColor;
-  if (props.hue) {
-    const shade = props.hue === 'yellow' ? 400 : 600;
-    backgroundColor = getColor(props.hue, shade, props.theme);
-    if (props.hue === 'yellow' || props.hue === 'lemon') {
-      foregroundColor = getColor('yellow', 800, props.theme);
-    } else {
-      foregroundColor = readableColor(backgroundColor, props.theme.palette.grey[800], props.theme.palette.white);
-    }
-  } else {
-    backgroundColor = getColor('neutralHue', 200, props.theme);
-    foregroundColor = getColor('neutralHue', 700, props.theme);
-    closeColor = getColor('neutralHue', 600, props.theme);
-  }
-  return Ne(["background-color:", ";color:", ";&:hover{color:", ";}", " & ", "{color:", ";}"], backgroundColor, foregroundColor, foregroundColor, focusStyles({
-    theme: props.theme,
-    shadowWidth: 'sm',
-    selector: '&:focus'
-  }), StyledClose, closeColor);
-};
-const sizeStyles$c = props => {
-  let borderRadius;
-  let padding;
-  let height;
-  let fontSize;
-  let minWidth;
-  let avatarSize;
-  if (props.size === 'small') {
-    borderRadius = props.theme.borderRadii.sm;
-    padding = props.theme.space.base;
-    height = props.theme.space.base * 4;
-    fontSize = props.theme.fontSizes.xs;
-    avatarSize = 0;
-  } else if (props.size === 'large') {
-    borderRadius = props.theme.borderRadii.md;
-    padding = props.theme.space.base * 3;
-    height = props.theme.space.base * 8;
-    fontSize = props.theme.fontSizes.sm;
-    avatarSize = props.theme.space.base * 6;
-  } else {
-    borderRadius = props.theme.borderRadii.sm;
-    padding = props.theme.space.base * 2;
-    height = props.theme.space.base * 5;
-    fontSize = props.theme.fontSizes.sm;
-    avatarSize = props.theme.space.base * 4;
-  }
-  let avatarBorderRadius = props.size === 'large' ? math(`${borderRadius} - 1`) : borderRadius;
-  const avatarMargin = (height - avatarSize) / 2;
-  const avatarTextMargin = props.isRound ? avatarMargin : avatarMargin * 2;
-  if (props.isRound) {
-    borderRadius = '50%';
-    padding = 0;
-    minWidth = height;
-    avatarBorderRadius = '50%';
-  } else if (props.isPill) {
-    borderRadius = '100px';
-    avatarBorderRadius = '50%';
-    if (props.size === 'small') {
-      padding = props.theme.space.base * 1.5;
-      minWidth = props.theme.space.base * 6;
-    } else if (props.size === 'large') {
-      minWidth = props.theme.space.base * 12;
-    } else {
-      minWidth = props.theme.space.base * 7.5;
-    }
-  }
-  return Ne(["border-radius:", ";padding:0 ", "px;min-width:", ";height:", "px;line-height:", ";font-size:", ";& > *{width:100%;min-width:", ";}& ", "{margin-", ":-", "px;margin-", ":", "px;border-radius:", ";width:", "px;min-width:", "px;height:", "px;}& ", "{margin-", ":-", "px;border-radius:", ";width:", "px;height:", "px;}"], borderRadius, padding, minWidth ? `${minWidth}px` : `calc(${padding * 2}px + 1ch)`, height, getLineHeight(height, fontSize), fontSize, minWidth ? `${minWidth - padding * 2}px` : '1ch', StyledAvatar, props.theme.rtl ? 'right' : 'left', padding - avatarMargin, props.theme.rtl ? 'left' : 'right', avatarTextMargin, avatarBorderRadius, avatarSize, avatarSize, avatarSize, StyledClose, props.theme.rtl ? 'left' : 'right', padding, borderRadius, height, height);
-};
-const StyledTag$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$n,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTag",
-  componentId: "sc-1jvbe03-0"
-})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$c(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$a(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$n, props));
-StyledTag$1.defaultProps = {
-  size: 'medium',
-  theme: DEFAULT_THEME
-};
-var _path$5;
-function _extends$8() {
-  _extends$8 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$8.apply(this, arguments);
-}
-var SvgXStroke = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$8({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$5 || (_path$5 = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 9l6-6m0 6L3 3"
-  })));
-};
-const CloseComponent = /*#__PURE__*/reactExports.forwardRef((props, ref) => {
-  const ariaLabel = useText(CloseComponent, props, 'aria-label', 'Remove');
-  return /*#__PURE__*/React.createElement(StyledClose, _extends$1$1({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1
-  }), /*#__PURE__*/React.createElement(SvgXStroke, null));
-});
-CloseComponent.displayName = 'Tag.Close';
-const Close = CloseComponent;
-const AvatarComponent = props => /*#__PURE__*/React.createElement(StyledAvatar, props);
-AvatarComponent.displayName = 'Tag.Avatar';
-const Avatar = AvatarComponent;
-const TagComponent$1 = /*#__PURE__*/reactExports.forwardRef((_ref, ref) => {
-  let {
-    size,
-    hue,
-    ...otherProps
-  } = _ref;
-  return /*#__PURE__*/React.createElement(StyledTag$1, _extends$1$1({
-    ref: ref,
-    size: size,
-    hue: hue
-  }, otherProps));
-});
-TagComponent$1.displayName = 'Tag';
-TagComponent$1.propTypes = {
-  size: PropTypes.oneOf(SIZE$1),
-  hue: PropTypes.string,
-  isPill: PropTypes.bool,
-  isRound: PropTypes.bool,
-  isRegular: PropTypes.bool
-};
-TagComponent$1.defaultProps = {
-  size: 'medium'
-};
-const Tag$1 = TagComponent$1;
-Tag$1.Avatar = Avatar;
-Tag$1.Close = Close;
-
 function getAlignment(placement) {
   return placement.split('-')[1];
 }
@@ -24198,7 +24199,7 @@ function getArrowPosition(popperPlacement) {
   return arrowPositionMappings[popperPlacement] || 'top';
 }
 const COMPONENT_ID$2$1 = 'tooltip.paragraph';
-const StyledParagraph = Ye.p.attrs({
+const StyledParagraph = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$2$1,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24209,7 +24210,7 @@ StyledParagraph.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$1$1 = 'tooltip.title';
-const StyledTitle = Ye.strong.attrs({
+const StyledTitle = styled.strong.attrs({
   'data-garden-id': COMPONENT_ID$1$1,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24305,7 +24306,7 @@ const colorStyles$9 = _ref2 => {
   }
   return Ne(["border:", ";box-shadow:", ";background-color:", ";color:", ";", "{color:", ";}"], border, boxShadow, backgroundColor, color, StyledTitle, titleColor);
 };
-const StyledTooltip = Ye.div.attrs({
+const StyledTooltip = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$m,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24315,7 +24316,7 @@ const StyledTooltip = Ye.div.attrs({
 StyledTooltip.defaultProps = {
   theme: DEFAULT_THEME
 };
-const StyledTooltipWrapper = Ye.div.withConfig({
+const StyledTooltipWrapper = styled.div.withConfig({
   displayName: "StyledTooltipWrapper",
   componentId: "sc-1b7q9q6-0"
 })(["transition:opacity 10ms;opacity:1;z-index:", ";&[aria-hidden='true']{visibility:hidden;opacity:0;}"], props => props.zIndex);
@@ -24545,7 +24546,7 @@ const useFieldContext = () => {
   return context;
 };
 const COMPONENT_ID$l = 'dropdowns.combobox.label';
-const StyledLabel = Ye(Label$1).attrs({
+const StyledLabel = styled(Label$1).attrs({
   'data-garden-id': COMPONENT_ID$l,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24556,7 +24557,7 @@ StyledLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$k = 'dropdowns.combobox.hint';
-const StyledHint = Ye(Hint$1).attrs({
+const StyledHint = styled(Hint$1).attrs({
   'data-garden-id': COMPONENT_ID$k,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24567,7 +24568,7 @@ StyledHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$j = 'dropdowns.combobox.message';
-const StyledMessage = Ye(Message$1).attrs({
+const StyledMessage = styled(Message$1).attrs({
   'data-garden-id': COMPONENT_ID$j,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24583,7 +24584,7 @@ const sizeStyles$a = props => {
   const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   return Ne(["min-width:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], minWidth, StyledLabel, StyledHint, StyledMessage, StyledHint, StyledMessage, marginTop);
 };
-const StyledCombobox = Ye.div.attrs({
+const StyledCombobox = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$i,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24594,7 +24595,7 @@ StyledCombobox.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$h = 'dropdowns.combobox.container';
-const StyledContainer = Ye.div.attrs({
+const StyledContainer = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$h,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24605,7 +24606,7 @@ StyledContainer.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$g = 'dropdowns.combobox.field';
-const StyledField = Ye.div.attrs({
+const StyledField = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$g,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24636,7 +24637,7 @@ const sizeStyles$9 = props => {
   const paddingVertical = props.$type === 'group' ? 0 : math(`(${minHeight} - ${lineHeight}) / 2`);
   return Ne(["box-sizing:border-box;padding:", " ", ";min-height:", "px;line-height:", ";"], paddingVertical, paddingHorizontal, minHeight, lineHeight);
 };
-const StyledOption = Ye.li.attrs({
+const StyledOption = styled.li.attrs({
   'data-garden-id': COMPONENT_ID$f,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24652,7 +24653,7 @@ const sizeStyles$8 = props => {
   const minHeight = props.minHeight === undefined ? `${getMinHeight(props) + padding * 2}px` : props.minHeight;
   return Ne(["min-height:", ";max-height:", ";&&&{padding-top:", "px;padding-bottom:", "px;}"], minHeight, props.maxHeight, padding, padding);
 };
-const StyledListbox = Ye.ul.attrs({
+const StyledListbox = styled.ul.attrs({
   'data-garden-id': COMPONENT_ID$e,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24663,7 +24664,7 @@ StyledListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$d = 'dropdowns.combobox.floating';
-const StyledFloating = Ye.div.attrs({
+const StyledFloating = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$d,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24698,7 +24699,7 @@ const sizeStyles$7 = props => {
   const minWidth = `${props.theme.space.base * 8}px`;
   return Ne(["min-width:", ";height:", "px;line-height:", ";font-size:", ";&&{margin-top:", ";margin-bottom:", ";}"], minWidth, height, lineHeight, fontSize, margin, margin);
 };
-const StyledInput = Ye.input.attrs({
+const StyledInput = styled.input.attrs({
   'data-garden-id': COMPONENT_ID$c,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24713,7 +24714,7 @@ const sizeStyles$6 = props => {
   const margin = props.theme.shadowWidths.sm;
   return Ne(["margin:-", ";min-width:0;& > *{margin:", ";}"], margin, margin);
 };
-const StyledInputGroup = Ye.div.attrs({
+const StyledInputGroup = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$b,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24792,7 +24793,7 @@ const sizeStyles$5 = props => {
   const verticalPadding = math(`(${minHeight} - ${inputHeight} - (${props.isBare ? 0 : props.theme.borderWidths.sm} * 2)) / 2`);
   return Ne(["padding:", " ", ";min-height:", ";max-height:", ";font-size:", ";"], verticalPadding, horizontalPadding, minHeight, maxHeight, props.theme.fontSizes.md);
 };
-const StyledTrigger = Ye.div.attrs({
+const StyledTrigger = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$a,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24821,7 +24822,7 @@ const sizeStyles$4 = props => {
   }
   return Ne(["top:", ";margin-", ":", ";width:", ";height:", ";"], position, side, margin, size, size);
 };
-const StyledInputIcon = Ye(_ref => {
+const StyledInputIcon = styled(_ref => {
   let {
     children,
     isCompact,
@@ -24844,7 +24845,7 @@ StyledInputIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$8 = 'dropdowns.combobox.optgroup';
-const StyledOptGroup = Ye.ul.attrs({
+const StyledOptGroup = styled.ul.attrs({
   'data-garden-id': COMPONENT_ID$8,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24855,7 +24856,7 @@ StyledOptGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$7 = 'dropdowns.combobox.option.content';
-const StyledOptionContent = Ye.div.attrs({
+const StyledOptionContent = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$7,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24872,7 +24873,7 @@ const sizeStyles$3 = props => {
   const marginHorizontal = `${props.theme.space.base * 2}px`;
   return Ne(["margin-top:", ";margin-", ":", ";width:", ";height:", ";"], marginTop, props.theme.rtl ? 'left' : 'right', marginHorizontal, size, size);
 };
-const StyledOptionIcon = Ye(_ref => {
+const StyledOptionIcon = styled(_ref => {
   let {
     children,
     theme,
@@ -24899,7 +24900,7 @@ const sizeStyles$2 = props => {
   const fontSize = props.theme.fontSizes.sm;
   return Ne(["line-height:", ";font-size:", ";"], lineHeight, fontSize);
 };
-const StyledOptionMeta = Ye.div.attrs({
+const StyledOptionMeta = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24934,7 +24935,7 @@ const sizeStyles$1 = props => {
   }
   return Ne(["top:", ";", ":", ";width:", ";height:", ";"], top, side, position, size, size);
 };
-const StyledOptionTypeIcon = Ye(_ref => {
+const StyledOptionTypeIcon = styled(_ref => {
   let {
     children,
     isCompact,
@@ -24963,7 +24964,7 @@ const sizeStyles = props => {
   const height = props.theme.borderWidths.sm;
   return Ne(["margin:", " 0;height:", ";"], margin, height);
 };
-const StyledSeparator = Ye.li.attrs({
+const StyledSeparator = styled.li.attrs({
   'data-garden-id': COMPONENT_ID$3,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24974,7 +24975,7 @@ StyledSeparator.defaultProps = {
   theme: DEFAULT_THEME
 };
 const COMPONENT_ID$2 = 'dropdowns.combobox.tag';
-const StyledTag = Ye(Tag$1).attrs({
+const StyledTag = styled(Tag$1).attrs({
   'data-garden-id': COMPONENT_ID$2,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -24989,7 +24990,7 @@ const colorStyles$1 = props => {
   const foregroundColor = props.isPlaceholder && getColor('neutralHue', 400, props.theme);
   return Ne(["color:", ";"], foregroundColor);
 };
-const StyledValue = Ye.div.attrs({
+const StyledValue = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$1,
   'data-garden-version': '8.69.1'
 }).withConfig({
@@ -25009,7 +25010,7 @@ const colorStyles = props => {
   const color = getColor('primaryHue', 600, props.theme);
   return Ne(["color:", ";&:disabled{color:inherit;}"], color);
 };
-const StyledTagsButton = Ye(StyledValue).attrs({
+const StyledTagsButton = styled(StyledValue).attrs({
   as: 'button',
   'data-garden-id': COMPONENT_ID,
   'data-garden-version': '8.69.1'
@@ -25797,4 +25798,4 @@ OptGroup.propTypes = {
   label: PropTypes.string
 };
 
-export { Combobox as C, Field as F, Label as L, Option as O, ReactDOM as R, ThemeProvider as T, React as a, reactExports as r };
+export { Combobox as C, Field as F, Label as L, Option as O, React as R, ThemeProvider as T, ReactDOM as a };

@@ -6,7 +6,7 @@ import {
   Label,
 } from "@zendeskgarden/react-dropdowns.next";
 
-export default function NewRequestForm({ ticketForms }) {
+export function NewRequestForm({ ticketForms }) {
   return (
     <form>
       <TicketFormField ticketForms={ticketForms} />
