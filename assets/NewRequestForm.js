@@ -1,5 +1,9 @@
-import { R as React, F as Field, L as Label, C as Combobox, O as Option } from 'vendor';
+import { R as ReactDOM, a as React, F as Field, L as Label, C as Combobox, O as Option } from 'vendor';
+import { ComponentProviders } from 'shared';
 
+function renderNewRequestForm(props, container) {
+  ReactDOM.render( /*#__PURE__*/React.createElement(ComponentProviders, null, /*#__PURE__*/React.createElement(NewRequestForm, props)), container);
+}
 function NewRequestForm({
   ticketForms
 }) {
@@ -34,4 +38,4 @@ function TicketFormField({
   }, name))));
 }
 
-export { NewRequestForm };
+export { NewRequestForm, renderNewRequestForm };

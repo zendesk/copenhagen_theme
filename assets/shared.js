@@ -1,7 +1,15 @@
-import { a as ReactDOM, R as React, T as ThemeProvider } from 'vendor';
+import { D as DEFAULT_THEME, a as React, T as ThemeProvider } from 'vendor';
 
-function renderComponent(Component, props, container) {
-  ReactDOM.render( /*#__PURE__*/React.createElement(ThemeProvider, null, /*#__PURE__*/React.createElement(Component, props)), container);
+let theme = DEFAULT_THEME;
+function setupGardenTheme(callback) {
+  theme = callback(DEFAULT_THEME);
+}
+function ComponentProviders({
+  children
+}) {
+  return /*#__PURE__*/React.createElement(ThemeProvider, {
+    theme: theme
+  }, children);
 }
 
-export { renderComponent };
+export { ComponentProviders, setupGardenTheme };

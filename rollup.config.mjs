@@ -65,11 +65,20 @@ of following the import map.
 
 Instead if we change `./vendor.js` to `vendor` it works and the browser load the vendor.js asset.
  */
+const mappedAssets = {
+  "./vendor.js": "vendor",
+  "./shared.js": "shared",
+};
+
 function replaceVendorImport() {
   return {
     name: "rollup-plugin-replace-vendor-import",
     renderChunk(code) {
-      return code.replace(`from './vendor.js'`, `from 'vendor'`);
+      let res = code;
+      for (const [key, value] of Object.entries(mappedAssets)) {
+        res = res.replaceAll(`from '${key}'`, `from '${value}'`);
+      }
+      return res;
     },
   };
 }
