@@ -1,12 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { ThemeProvider } from "@zendeskgarden/react-theming";
+import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
 
-export function renderComponent(Component, props, container) {
-  ReactDOM.render(
-    <ThemeProvider>
-      <Component {...props} />
-    </ThemeProvider>,
-    container
-  );
+let theme = DEFAULT_THEME;
+
+export function setupGardenTheme(callback) {
+  theme = callback(DEFAULT_THEME);
+}
+
+export function ComponentProviders({ children }) {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 }
