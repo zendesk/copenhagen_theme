@@ -19,13 +19,13 @@
   </h1>
 
   <div id="main-content" class="form">
-    <form data-form action="{{request_form_data.action}}" method="{{request_form_data.http_method}}" accept-charset="{{request_form_data.accept_charset}}">
-      {{#if request_form_data.errors}}
-        <p>
-          {{request_form_data.errors}}
-        </p>
-      {{/if}}
-      <input type="submit" value="Submit">
-    </form>
+    {{#with request_form}}
+      <form data-form action="{{action}}" method="{{http_method}}" accept-charset="{{accept_charset}}">
+        {{#if errors}}
+          <p>{{errors}}</p>
+        {{/if}}
+        <input type="submit" value="Submit">
+      </form>
+    {{/with}}
   </div>
 </div>
