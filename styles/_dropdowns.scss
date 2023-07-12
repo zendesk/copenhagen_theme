@@ -19,6 +19,10 @@
   > * {
     display: inline-block;
   }
+
+  &[aria-expanded="true"] + .dropdown-menu {
+    display: block;
+  }
 }
 
 .dropdown-menu {
@@ -40,10 +44,6 @@
 
   [dir="rtl"] & {
     text-align: right;
-  }
-
-  &[aria-expanded="true"] {
-    display: block;
   }
 
   [role="separator"] {

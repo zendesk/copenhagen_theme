@@ -4545,6 +4545,9 @@ html[dir=rtl] .notification-left-aligned {
 .dropdown-toggle > * {
   display: inline-block;
 }
+.dropdown-toggle[aria-expanded=true] + .dropdown-menu {
+  display: block;
+}
 
 .dropdown-menu {
   background: #fff;
@@ -4565,9 +4568,6 @@ html[dir=rtl] .notification-left-aligned {
 }
 [dir=rtl] .dropdown-menu {
   text-align: right;
-}
-.dropdown-menu[aria-expanded=true] {
-  display: block;
 }
 .dropdown-menu [role=separator] {
   border-bottom: 1px solid #e9ebed;

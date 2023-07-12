@@ -95,7 +95,7 @@
 
   Dropdown.prototype = {
     get isExpanded() {
-      return this.menu.getAttribute("aria-expanded") === "true";
+      return this.toggle.getAttribute("aria-expanded") === "true";
     },
 
     get menuItems() {
@@ -107,14 +107,14 @@
     dismiss: function () {
       if (!this.isExpanded) return;
 
-      this.menu.setAttribute("aria-expanded", false);
+      this.toggle.setAttribute("aria-expanded", false);
       this.menu.classList.remove("dropdown-menu-end", "dropdown-menu-top");
     },
 
     open: function () {
       if (this.isExpanded) return;
 
-      this.menu.setAttribute("aria-expanded", true);
+      this.toggle.setAttribute("aria-expanded", true);
       this.handleOverflow();
     },
 
