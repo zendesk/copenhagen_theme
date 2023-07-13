@@ -1,4 +1,6 @@
-import { ENTER, ESCAPE, SPACE, UP, DOWN, TAB } from "./Keys";
+const isPrintableChar = (str) => {
+  return str.length === 1 && str.match(/^\S$/);
+};
 
 export default function Dropdown(toggle, menu) {
   this.toggle = toggle;
@@ -12,6 +14,17 @@ export default function Dropdown(toggle, menu) {
   this.toggle.addEventListener("click", this.clickHandler.bind(this));
   this.toggle.addEventListener("keydown", this.toggleKeyHandler.bind(this));
   this.menu.addEventListener("keydown", this.menuKeyHandler.bind(this));
+
+  const toggleId = this.toggle.getAttribute("id") || crypto.randomUUID();
+  const menuId = this.menu.getAttribute("id") || crypto.randomUUID();
+
+  this.toggle.setAttribute("id", toggleId);
+  this.menu.setAttribute("id", menuId);
+
+  this.toggle.setAttribute("aria-controls", menuId);
+  this.menu.setAttribute("aria-labelledby", toggleId);
+
+  this.menu.setAttribute("tabindex", -1);
 }
 
 Dropdown.prototype = {
@@ -28,7 +41,7 @@ Dropdown.prototype = {
   dismiss: function () {
     if (!this.isExpanded) return;
 
-    this.toggle.setAttribute("aria-expanded", false);
+    this.toggle.removeAttribute("aria-expanded");
     this.menu.classList.remove("dropdown-menu-end", "dropdown-menu-top");
   },
 
@@ -60,6 +73,18 @@ Dropdown.prototype = {
     }
   },
 
+  focusFirstMenuItem: function () {
+    if (!this.menuItems.length) return;
+
+    this.menuItems[0].focus();
+  },
+
+  focusLastMenuItem: function () {
+    if (!this.menuItems.length) return;
+
+    this.menuItems[this.menuItems.length - 1].focus();
+  },
+
   focusNextMenuItem: function (currentItem) {
     if (!this.menuItems.length) return;
 
@@ -82,73 +107,143 @@ Dropdown.prototype = {
     this.menuItems[previousIndex].focus();
   },
 
-  clickHandler: function () {
+  focusByChar: function (currentItem, char) {
+    char = char.toLowerCase();
+
+    const itemChars = this.menuItems.map((menuItem) =>
+      menuItem.textContent.trim()[0].toLowerCase()
+    );
+
+    const startIndex =
+      (this.menuItems.indexOf(currentItem) + 1) % this.menuItems.length;
+
+    // look up starting from current index
+    let index = itemChars.indexOf(char, startIndex);
+
+    // if not found, start from start
+    if (index === -1) {
+      index = itemChars.indexOf(char, 0);
+    }
+
+    if (index > -1) {
+      this.menuItems[index].focus();
+    }
+  },
+
+  clickHandler: function (event) {
+    event.stopPropagation();
+    event.preventDefault();
+
     if (this.isExpanded) {
       this.dismiss();
+      this.toggle.focus();
     } else {
       this.open();
+      this.focusFirstMenuItem();
     }
   },
 
   toggleKeyHandler: function (e) {
-    switch (e.keyCode) {
-      case ENTER:
-      case SPACE:
-      case DOWN:
+    const key = e.key;
+
+    switch (key) {
+      case "Enter":
+      case " ":
+      case "ArrowDown":
+      case "Down": {
+        e.stopPropagation();
         e.preventDefault();
+
         this.open();
-        this.focusNextMenuItem();
+        this.focusFirstMenuItem();
         break;
-      case UP:
+      }
+      case "ArrowUp":
+      case "Up": {
+        e.stopPropagation();
         e.preventDefault();
+
         this.open();
-        this.focusPreviousMenuItem();
+        this.focusLastMenuItem();
         break;
-      case ESCAPE:
+      }
+      case "Esc":
+      case "Escape": {
+        e.stopPropagation();
+        e.preventDefault();
+
         this.dismiss();
         this.toggle.focus();
         break;
+      }
     }
   },
 
   menuKeyHandler: function (e) {
-    var firstItem = this.menuItems[0];
-    var lastItem = this.menuItems[this.menuItems.length - 1];
-    var currentElement = e.target;
+    const key = e.key;
+    const currentElement = e.target;
 
-    switch (e.keyCode) {
-      case ESCAPE:
+    if (e.ctrlKey || e.altKey || e.metaKey) {
+      return;
+    }
+
+    switch (key) {
+      case "Esc":
+      case "Escape": {
+        e.stopPropagation();
+        e.preventDefault();
+
         this.dismiss();
         this.toggle.focus();
         break;
-      case DOWN:
+      }
+      case "ArrowDown":
+      case "Down": {
+        e.stopPropagation();
         e.preventDefault();
+
         this.focusNextMenuItem(currentElement);
         break;
-      case UP:
+      }
+      case "ArrowUp":
+      case "Up": {
+        e.stopPropagation();
         e.preventDefault();
         this.focusPreviousMenuItem(currentElement);
         break;
-      case TAB:
+      }
+      case "Home":
+      case "PageUp": {
+        e.stopPropagation();
+        e.preventDefault();
+        this.focusFirstMenuItem();
+        break;
+      }
+      case "End":
+      case "PageDown": {
+        e.stopPropagation();
+        e.preventDefault();
+        this.focusLastMenuItem();
+        break;
+      }
+      case "Tab": {
         if (e.shiftKey) {
-          if (currentElement === firstItem) {
-            this.dismiss();
-          } else {
-            e.preventDefault();
-            this.focusPreviousMenuItem(currentElement);
-          }
-        } else if (currentElement === lastItem) {
-          this.dismiss();
-        } else {
+          e.stopPropagation();
           e.preventDefault();
-          this.focusNextMenuItem(currentElement);
+          this.dismiss();
+          this.toggle.focus();
+        } else {
+          this.dismiss();
         }
         break;
-      case ENTER:
-      case SPACE:
-        e.preventDefault();
-        currentElement.click();
-        break;
+      }
+      default: {
+        if (isPrintableChar(key)) {
+          e.stopPropagation();
+          e.preventDefault();
+          this.focusByChar(currentElement, key);
+        }
+      }
     }
   },
 };
