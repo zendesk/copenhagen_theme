@@ -29,6 +29,8 @@ export default function Dropdown(toggle, menu) {
   this.menuItems.forEach((menuItem) => {
     menuItem.tabIndex = -1;
   });
+
+  this.focusedIndex = -1;
 }
 
 Dropdown.prototype = {
@@ -47,6 +49,7 @@ Dropdown.prototype = {
 
     this.toggle.removeAttribute("aria-expanded");
     this.menu.classList.remove("dropdown-menu-end", "dropdown-menu-top");
+    this.focusedIndex = -1;
   },
 
   open: function () {
@@ -88,6 +91,8 @@ Dropdown.prototype = {
         item.tabIndex = -1;
       }
     });
+
+    this.focusedIndex = index;
   },
 
   focusFirstMenuItem: function () {
@@ -202,7 +207,7 @@ Dropdown.prototype = {
 
   menuKeyHandler: function (e) {
     const key = e.key;
-    const currentElement = e.target;
+    const currentElement = this.menuItems[this.focusedIndex];
 
     if (e.ctrlKey || e.altKey || e.metaKey) {
       return;
