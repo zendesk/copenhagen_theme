@@ -14,6 +14,7 @@ export default function Dropdown(toggle, menu) {
   this.toggle.addEventListener("click", this.clickHandler.bind(this));
   this.toggle.addEventListener("keydown", this.toggleKeyHandler.bind(this));
   this.menu.addEventListener("keydown", this.menuKeyHandler.bind(this));
+  document.body.addEventListener("click", this.outsideClickHandler.bind(this));
 
   const toggleId = this.toggle.getAttribute("id") || crypto.randomUUID();
   const menuId = this.menu.getAttribute("id") || crypto.randomUUID();
@@ -136,6 +137,17 @@ Dropdown.prototype = {
 
     if (index > -1) {
       this.focusByIndex(index);
+    }
+  },
+
+  outsideClickHandler: function (e) {
+    if (
+      this.isExpanded &&
+      !this.toggle.contains(e.target) &&
+      !e.composedPath().includes(this.menu)
+    ) {
+      this.dismiss();
+      this.toggle.focus();
     }
   },
 
