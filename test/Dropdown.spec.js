@@ -1,14 +1,15 @@
 import crypto from "crypto";
-import { screen } from "@testing-library/dom";
+import { screen, fireEvent } from "@testing-library/dom";
 
 import Dropdown from "../src/Dropdown";
 
 const menuHtml = `
   <div class="dropdown">
     <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
-    <ul class="dropdown-menu" role="menu">
-      <li role="none"><a href="#">Test</a></li>
-    </ul>
+    <span class="dropdown-menu" role="menu">
+      <a role="menuitem" href="http://example.tld/first">First</a>
+      <a role="menuitem" href="http://example.tld/second">Second</a>
+    </span>
   </div>
 `;
 
@@ -81,6 +82,65 @@ describe("Dropdown", () => {
       expect(targetElement).toHaveAttribute("aria-expanded", "true");
 
       fireEvent.keyDown(targetElement, { key: "Escape" });
+      expect(targetElement).not.toHaveAttribute("aria-expanded");
+    });
+  });
+
+  describe("target", () => {
+    [" ", "Enter", "ArrowDown", "Down"].forEach((key) => {
+      it(`pressing "${key}" opens the menu and moves focus to first menuitem`, () => {
+        const { targetElement } = createMenu();
+
+        expect(targetElement).not.toHaveAttribute("aria-expanded");
+
+        fireEvent.keyDown(targetElement, { key });
+        fireEvent.keyUp(targetElement, { key });
+        expect(targetElement).toHaveAttribute("aria-expanded", "true");
+
+        expect(document.activeElement).toHaveTextContent("First");
+      });
+    });
+
+    ["ArrowUp", "Up"].forEach((key) => {
+      it(`pressing "${key}" opens the menu and moves focus to last menuitem`, () => {
+        const { targetElement } = createMenu();
+
+        expect(targetElement).not.toHaveAttribute("aria-expanded");
+
+        fireEvent.keyDown(targetElement, { key });
+        fireEvent.keyUp(targetElement, { key });
+        expect(targetElement).toHaveAttribute("aria-expanded", "true");
+
+        expect(document.activeElement).toHaveTextContent("Second");
+      });
+    });
+
+    ["Escape", "Esc"].forEach((key) => {
+      it(`pressing "${key}" closes the menu and moves focus to target`, () => {
+        const { targetElement } = createMenu();
+
+        expect(targetElement).not.toHaveAttribute("aria-expanded");
+
+        fireEvent.keyDown(targetElement, { key: "Enter" });
+        fireEvent.keyUp(targetElement, { key: "Enter" });
+        expect(targetElement).toHaveAttribute("aria-expanded", "true");
+
+        fireEvent.keyDown(targetElement, { key });
+        fireEvent.keyUp(targetElement, { key });
+        expect(targetElement).not.toHaveAttribute("aria-expanded");
+        expect(document.activeElement).toEqual(targetElement);
+      });
+    });
+
+    it(`clicking it opens and closes the menu`, () => {
+      const { targetElement } = createMenu();
+
+      expect(targetElement).not.toHaveAttribute("aria-expanded");
+
+      fireEvent.click(targetElement);
+      expect(targetElement).toHaveAttribute("aria-expanded", "true");
+
+      fireEvent.click(targetElement);
       expect(targetElement).not.toHaveAttribute("aria-expanded");
     });
   });
