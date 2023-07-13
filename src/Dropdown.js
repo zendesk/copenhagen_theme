@@ -25,6 +25,9 @@ export default function Dropdown(toggle, menu) {
   this.menu.setAttribute("aria-labelledby", toggleId);
 
   this.menu.setAttribute("tabindex", -1);
+  this.menuItems.forEach((menuItem) => {
+    menuItem.tabIndex = -1;
+  });
 }
 
 Dropdown.prototype = {
@@ -73,38 +76,44 @@ Dropdown.prototype = {
     }
   },
 
-  focusFirstMenuItem: function () {
+  focusByIndex: function (index) {
     if (!this.menuItems.length) return;
 
-    this.menuItems[0].focus();
+    this.menuItems.forEach((item, itemIndex) => {
+      if (itemIndex === index) {
+        item.tabIndex = 0;
+        item.focus();
+      } else {
+        item.tabIndex = -1;
+      }
+    });
+  },
+
+  focusFirstMenuItem: function () {
+    this.focusByIndex(0);
   },
 
   focusLastMenuItem: function () {
-    if (!this.menuItems.length) return;
-
-    this.menuItems[this.menuItems.length - 1].focus();
+    this.focusByIndex(this.menuItems.length - 1);
   },
 
   focusNextMenuItem: function (currentItem) {
     if (!this.menuItems.length) return;
 
-    var currentIndex = this.menuItems.indexOf(currentItem);
-    var nextIndex =
-      currentIndex === this.menuItems.length - 1 || currentIndex < 0
-        ? 0
-        : currentIndex + 1;
+    const currentIndex = this.menuItems.indexOf(currentItem);
+    const nextIndex = (currentIndex + 1) % this.menuItems.length;
 
-    this.menuItems[nextIndex].focus();
+    this.focusByIndex(nextIndex);
   },
 
   focusPreviousMenuItem: function (currentItem) {
     if (!this.menuItems.length) return;
 
-    var currentIndex = this.menuItems.indexOf(currentItem);
-    var previousIndex =
+    const currentIndex = this.menuItems.indexOf(currentItem);
+    const previousIndex =
       currentIndex <= 0 ? this.menuItems.length - 1 : currentIndex - 1;
 
-    this.menuItems[previousIndex].focus();
+    this.focusByIndex(previousIndex);
   },
 
   focusByChar: function (currentItem, char) {
@@ -126,7 +135,7 @@ Dropdown.prototype = {
     }
 
     if (index > -1) {
-      this.menuItems[index].focus();
+      this.focusByIndex(index);
     }
   },
 
