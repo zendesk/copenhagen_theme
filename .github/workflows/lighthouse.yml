@@ -21,8 +21,8 @@ jobs:
           ruby-version: .ruby-version
       - name: Install gems
         run: |
-          gem install faraday -v 0.16.0
-          gem install faraday_middleware -v 0.13.1
+          gem install faraday -v 1.10.3
+          gem install faraday_middleware -v 1.2.0
       - name: Create theme zip
         run: |
           sudo apt-get install zip
