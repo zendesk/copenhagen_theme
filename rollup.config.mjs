@@ -37,7 +37,7 @@ export default defineConfig([
         extensions: [".js"],
       }),
       commonjs(),
-      typescript(),
+      typescript({ noEmitOnError: true }),
       replace({
         preventAssignment: true,
         "process.env.NODE_ENV": '"production"',
