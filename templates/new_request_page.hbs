@@ -42,5 +42,24 @@
         </footer>
       </form>
     {{/with}}
+    <hr />
+    <div id="new-request-form"></div>
   </div>
 </div>
+
+<script type="module">
+  import { renderNewRequestForm } from "{{asset 'NewRequestForm.js'}}";
+
+  var ticketForms = {
+    options: []
+  };
+  
+  {{#each ticket_forms}}
+    ticketForms.options.push({ id:
+    {{id}}, url: "{{url}}", name: "{{display_name}}" });
+  {{/each}}
+
+  const container = document.getElementById("new-request-form");
+  const props = { ticketForms };
+  renderNewRequestForm(props, container);
+</script>

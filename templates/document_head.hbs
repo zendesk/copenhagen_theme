@@ -2,3 +2,25 @@
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
 <script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
+<script type="importmap">
+    {
+        "imports": {
+            "vendor": "{{asset "vendor.js"}}",
+            "shared": "{{asset "shared.js"}}"
+        }
+    }
+</script>
+<script type="module">
+    import { setupGardenTheme } from "{{asset "shared.js"}}";
+
+    setupGardenTheme(function (defaultTheme) {
+        return {
+            ...defaultTheme,
+            colors: {
+                ...defaultTheme.colors,
+                foreground: "{{settings.text_color}}",
+                primaryHue: "{{settings.brand_color}}",
+            },
+        }
+    })
+</script>
