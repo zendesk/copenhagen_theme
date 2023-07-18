@@ -51,7 +51,8 @@
     margin: 4px 0;
   }
 
-  [role="menuitem"] {
+  [role="menuitem"],
+  [role="menuitemradio"] {
     color: #2f3941;
     cursor: pointer;
     display: block;
@@ -74,7 +75,8 @@
       color: #2f3941;
     }
 
-    &[aria-selected="true"] {
+    &[aria-selected="true"],
+    &[aria-checked="true"] {
       cursor: default;
 
       &::after {

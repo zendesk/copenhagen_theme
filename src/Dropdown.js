@@ -38,7 +38,7 @@ Dropdown.prototype = {
 
   get menuItems() {
     return Array.prototype.slice.call(
-      this.menu.querySelectorAll("[role='menuitem']")
+      this.menu.querySelectorAll("[role='menuitem'], [role='menuitemradio']")
     );
   },
 
