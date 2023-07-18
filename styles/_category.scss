@@ -11,6 +11,7 @@
     }
 
     flex: 1;
+    max-width: 100%;
   }
 }
 
@@ -24,6 +25,7 @@
   .section {
     @include tablet { flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */ }
     flex: initial;
+    max-width: 100%;
   }
 
   &-title {
@@ -44,6 +46,8 @@
   &-item {
     font-size: $font-size-bigger;
     padding: 15px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
 
     a { color: $text_color; }
   }
