@@ -18,7 +18,10 @@ export default defineConfig([
     },
   },
   {
-    input: ["src/modules/NewRequestForm.tsx", "src/modules/shared.tsx"],
+    input: {
+      newRequestForm: "src/modules/newRequestForm/index.tsx",
+      shared: "src/modules/shared.tsx",
+    },
     output: {
       dir: "assets",
       format: "es",
