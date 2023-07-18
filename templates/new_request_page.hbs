@@ -24,11 +24,21 @@
         {{#each fields}}
           <div class="form-field {{#if required}} required {{else}} optional {{/if}} {{id}}" {{#is type 'due_at'}} data-due-date hidden {{/is}}>
             <label for="{{id}}">{{label}}</label>
-            {{#is type 'description'}}
-              {{text_area wysiwyg=true}}
+
+            {{#is type 'priority'}}
+              <select name="{{name}}" id="{{id}}">
+              {{#each options}}
+                <option value={{value}} {{#is value ../value}} selected {{/is}}>{{name}}</option>
+              {{/each}}
+              </select>
             {{else}}
-              <input type="text" name="{{name}}" id="{{id}}" maxlength="150" size="150">
+              {{#is type 'description'}}
+                {{text_area wysiwyg=true}}
+              {{else}}
+                <input type="text" name="{{name}}" id="{{id}}" maxlength="150" size="150">
+              {{/is}}
             {{/is}}
+
             {{#if error}}
               <div class="notification notification-error notification-inline">{{error}}</div>
             {{/if}}
@@ -53,7 +63,7 @@
   var ticketForms = {
     options: []
   };
-  
+
   {{#each ticket_forms}}
     ticketForms.options.push({ id:
     {{id}}, url: "{{url}}", name: "{{display_name}}" });
