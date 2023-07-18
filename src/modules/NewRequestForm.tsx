@@ -1,14 +1,27 @@
-import React from "react";
 import ReactDOM from "react-dom";
 import {
   Combobox,
   Option,
   Field,
   Label,
+  IComboboxProps,
 } from "@zendeskgarden/react-dropdowns.next";
-import { ComponentProviders } from "./shared.jsx";
+import { ComponentProviders } from "./shared";
 
-export function renderNewRequestForm(props, container) {
+interface TicketFormOption {
+  id: string;
+  url: string;
+  name: string;
+}
+
+interface NewRequestFormProps {
+  ticketForms: { options: TicketFormOption[] };
+}
+
+export function renderNewRequestForm(
+  props: NewRequestFormProps,
+  container: HTMLElement
+) {
   ReactDOM.render(
     <ComponentProviders>
       <NewRequestForm {...props} />
@@ -17,7 +30,7 @@ export function renderNewRequestForm(props, container) {
   );
 }
 
-export function NewRequestForm({ ticketForms }) {
+function NewRequestForm({ ticketForms }: NewRequestFormProps) {
   return (
     <form>
       <TicketFormField ticketForms={ticketForms} />
@@ -25,11 +38,11 @@ export function NewRequestForm({ ticketForms }) {
   );
 }
 
-function TicketFormField({ ticketForms }) {
+function TicketFormField({ ticketForms }: NewRequestFormProps) {
   const { options } = ticketForms;
 
-  function handleChange({ selectionValue }) {
-    if (selectionValue) {
+  const handleChange: IComboboxProps["onChange"] = ({ selectionValue }) => {
+    if (selectionValue && typeof selectionValue === "string") {
       window.location.href = selectionValue;
     }
   }

@@ -1,7 +1,7 @@
 import zass from "./zass.mjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import babel from "@rollup/plugin-babel";
+import typescript from "@rollup/plugin-typescript";
 import replace from "@rollup/plugin-replace";
 import { defineConfig } from "rollup";
 
@@ -18,7 +18,7 @@ export default defineConfig([
     },
   },
   {
-    input: ["src/modules/NewRequestForm.jsx", "src/modules/shared.jsx"],
+    input: ["src/modules/NewRequestForm.tsx", "src/modules/shared.tsx"],
     output: {
       dir: "assets",
       format: "es",
@@ -31,14 +31,10 @@ export default defineConfig([
     },
     plugins: [
       nodeResolve({
-        extensions: [".js", "jsx"],
-      }),
-      babel({
-        babelHelpers: "bundled",
-        presets: ["@babel/preset-react"],
-        extensions: [".js", ".jsx"],
+        extensions: [".js"],
       }),
       commonjs(),
+      typescript(),
       replace({
         preventAssignment: true,
         "process.env.NODE_ENV": '"production"',
