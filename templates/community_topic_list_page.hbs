@@ -27,10 +27,10 @@
             </svg>
           </button>
         <span class="dropdown-menu" role="menu">
-          {{#link 'topics' role='menuitem' selected='true'}}
+          {{#link 'topics' role='menuitemradio' aria-checked='true'}}
             {{t 'show_topics'}}
           {{/link}}
-          {{#link 'posts' role='menuitem'}}
+          {{#link 'posts' role='menuitemradio'}}
             {{t 'show_all_posts'}}
           {{/link}}
         </span>
