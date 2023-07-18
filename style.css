@@ -1649,11 +1649,11 @@ ul {
 .article-title {
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 100%;
 }
 @media (min-width: 768px) {
   .article-title {
     flex-basis: 100%; /* Take entire row */
-    max-width: 100%;
   }
 }
 .article-title .icon-lock {
