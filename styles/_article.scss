@@ -115,6 +115,7 @@
       border: 0;
       flex: 0 0 17%;
       height: auto;
+      max-width: 17%;
     }
 
     border-bottom: 1px solid $low-contrast-border-color;
@@ -220,6 +221,8 @@
     display: block;
     margin-top: 10px;
     margin-bottom: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
