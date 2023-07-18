@@ -12,6 +12,7 @@
     "zcli": "zcli"
   },
   "dependencies": {
+    "@zendesk/zcli": "^1.0.0-beta.35",
     "@zendeskgarden/react-dropdowns.next": "^8.69.1",
     "@zendeskgarden/react-theming": "^8.69.1",
     "node-fetch": "2.6.9",
@@ -32,7 +33,6 @@
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@zendesk/zcli": "1.0.0-beta.34",
     "concurrently": "8.0.1",
     "dotenv": "16.0.3",
     "eslint": "8.35.0",
