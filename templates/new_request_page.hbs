@@ -42,6 +42,8 @@
         </footer>
       </form>
     {{/with}}
+    <hr />
+    <div id="new-request-form"></div>
   </div>
 </div>
 
@@ -57,7 +59,7 @@
     {{id}}, url: "{{url}}", name: "{{display_name}}" });
   {{/each}}
 
-  const container = document.getElementById("main-content");
+  const container = document.getElementById("new-request-form");
   const props = { ticketForms };
   renderNewRequestForm(props, container);
 </script>
