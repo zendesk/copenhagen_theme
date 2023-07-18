@@ -1,11 +1,11 @@
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
 import {
   Combobox,
   Field,
-  IComboboxProps,
   Label,
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
-import { TicketForm } from "./types";
+import type { TicketForm } from "./types";
 
 interface TicketFormFieldProps {
   ticketForms: TicketForm[];
