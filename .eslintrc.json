@@ -3,6 +3,7 @@
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:import/recommended",
+    "plugin:react/recommended",
     "plugin:jest/recommended"
   ],
   "env": {
