@@ -256,6 +256,18 @@ describe("Dropdown", () => {
         });
       });
 
+      ["Control", "Meta", "Alt"].forEach((key) => {
+        it(`pressing '${key}' ignores any other key`, async () => {
+          const { targetElement } = createMenu();
+          fireEvent.keyDown(targetElement, { key: "Enter" });
+          expect(document.activeElement).toHaveTextContent("First");
+
+          await userEvent.keyboard(`{${key}>}{ArrowDown}{/${key}}`);
+
+          expect(document.activeElement).toHaveTextContent("First");
+        });
+      });
+
       it("pressing 'Tab' closes the menu and moves focus to the next focusable element", async () => {
         const { targetElement } = createMenu(`
           <div class="dropdown">
