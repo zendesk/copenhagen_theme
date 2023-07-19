@@ -14,7 +14,7 @@
   },
   "overrides": [
     {
-      "files": ["test/*"],
+      "files": ["*.spec.js"],
       "env": { "browser": true, "node": true },
       "parserOptions": { "ecmaVersion": 2021 }
     }

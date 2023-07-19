@@ -2,7 +2,7 @@ import crypto from "crypto";
 import { fireEvent, screen } from "@testing-library/dom";
 import userEvent from "@testing-library/user-event";
 
-import Dropdown from "../src/Dropdown";
+import Dropdown from "./Dropdown";
 
 expect.extend({
   toHaveMenuOpen(targetElement) {
