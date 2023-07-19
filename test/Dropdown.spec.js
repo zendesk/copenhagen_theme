@@ -276,6 +276,26 @@ describe("Dropdown", () => {
         expect(document.activeElement).toEqual(screen.getByRole("textbox"));
       });
 
+      it("pressing 'Shift+Tab' closes the menu and returns focus to the target element", async () => {
+        const { targetElement } = createMenu(`
+          <div class="dropdown">
+            <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+            <span class="dropdown-menu" role="menu">
+              <a role="menuitem" href="http://example.tld/first">First</a>
+              <a role="menuitem" href="http://example.tld/second">Second</a>
+              <a role="menuitem" href="http://example.tld/third">Third</a>
+            </span>
+          </div>
+          <input type="text" value="" />
+        `);
+
+        fireEvent.keyDown(targetElement, { key: "Enter" });
+        await userEvent.tab({ shift: true });
+
+        expect(targetElement).not.toHaveMenuOpen();
+        expect(document.activeElement).toEqual(screen.getByRole("button"));
+      });
+
       describe('pressing "[A-z]"', () => {
         it("moves focus to the next menu item with a label that starts with such char", async () => {
           const { targetElement } = createMenu(`
