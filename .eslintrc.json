@@ -5,6 +5,7 @@
     "plugin:import/recommended",
     "plugin:import/typescript",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:prettier/recommended"
   ],
   "env": {
@@ -17,6 +18,9 @@
     "import/resolver": {
       "typescript": true,
       "node": true
+    },
+    "react": {
+      "version": "detect"
     }
   },
   "ignorePatterns": ["assets/**"],
