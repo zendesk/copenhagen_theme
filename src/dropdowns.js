@@ -12,12 +12,4 @@ window.addEventListener("DOMContentLoaded", () => {
       dropdowns.push(new Dropdown(toggle, menu));
     }
   });
-
-  document.addEventListener("click", (event) => {
-    dropdowns.forEach((dropdown) => {
-      if (!dropdown.toggle.contains(event.target)) {
-        dropdown.dismiss();
-      }
-    });
-  });
 });

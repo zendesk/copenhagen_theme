@@ -2,7 +2,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:prettier/recommended",
-    "plugin:import/recommended"
+    "plugin:import/recommended",
+    "plugin:jest/recommended"
   ],
   "env": {
     "browser": true
@@ -10,5 +11,12 @@
   "parserOptions": {
     "ecmaVersion": 2015,
     "sourceType": "module"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.js"],
+      "env": { "browser": true, "node": true },
+      "parserOptions": { "ecmaVersion": 2021 }
+    }
+  ]
 }

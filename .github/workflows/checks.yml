@@ -43,6 +43,22 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: ESlint
         run: yarn eslint
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: zendesk/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Setup Node.js
+        uses: zendesk/setup-node@v3
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Test
+        run: yarn test
   build:
     name: Build
     runs-on: ubuntu-latest
