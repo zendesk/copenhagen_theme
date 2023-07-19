@@ -4,6 +4,24 @@ import userEvent from "@testing-library/user-event";
 
 import Dropdown from "../src/Dropdown";
 
+expect.extend({
+  toHaveMenuOpen(targetElement) {
+    const isOpen = targetElement.getAttribute("aria-expanded") === "true";
+
+    return isOpen
+      ? {
+          pass: true,
+          message: () =>
+            `Expected ${targetElement} to have aria-expanded=true attribute`,
+        }
+      : {
+          pass: false,
+          message: () =>
+            `Expected ${targetElement} not to have aria-expanded=true attribute`,
+        };
+  },
+});
+
 const menuHtml = `
   <div class="dropdown">
     <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
@@ -80,13 +98,13 @@ describe("Dropdown", () => {
     it("sets aria-expanded", () => {
       const { targetElement } = createMenu();
 
-      expect(targetElement).not.toHaveAttribute("aria-expanded");
+      expect(targetElement).not.toHaveMenuOpen();
 
       fireEvent.keyDown(targetElement, { key: "Enter" });
-      expect(targetElement).toHaveAttribute("aria-expanded", "true");
+      expect(targetElement).toHaveMenuOpen();
 
       fireEvent.keyDown(targetElement, { key: "Escape" });
-      expect(targetElement).not.toHaveAttribute("aria-expanded");
+      expect(targetElement).not.toHaveMenuOpen();
     });
   });
 
@@ -96,11 +114,11 @@ describe("Dropdown", () => {
         it(`pressing "${key}" opens the menu and moves focus to first menuitem`, () => {
           const { targetElement } = createMenu();
 
-          expect(targetElement).not.toHaveAttribute("aria-expanded");
+          expect(targetElement).not.toHaveMenuOpen();
 
           fireEvent.keyDown(targetElement, { key });
           fireEvent.keyUp(targetElement, { key });
-          expect(targetElement).toHaveAttribute("aria-expanded", "true");
+          expect(targetElement).toHaveMenuOpen();
 
           expect(document.activeElement).toHaveTextContent("First");
         });
@@ -110,11 +128,11 @@ describe("Dropdown", () => {
         it(`pressing "${key}" opens the menu and moves focus to last menuitem`, () => {
           const { targetElement } = createMenu();
 
-          expect(targetElement).not.toHaveAttribute("aria-expanded");
+          expect(targetElement).not.toHaveMenuOpen();
 
           fireEvent.keyDown(targetElement, { key });
           fireEvent.keyUp(targetElement, { key });
-          expect(targetElement).toHaveAttribute("aria-expanded", "true");
+          expect(targetElement).toHaveMenuOpen();
 
           expect(document.activeElement).toHaveTextContent("Third");
         });
@@ -124,15 +142,15 @@ describe("Dropdown", () => {
         it(`pressing "${key}" closes the menu and moves focus to target`, () => {
           const { targetElement } = createMenu();
 
-          expect(targetElement).not.toHaveAttribute("aria-expanded");
+          expect(targetElement).not.toHaveMenuOpen();
 
           fireEvent.keyDown(targetElement, { key: "Enter" });
           fireEvent.keyUp(targetElement, { key: "Enter" });
-          expect(targetElement).toHaveAttribute("aria-expanded", "true");
+          expect(targetElement).toHaveMenuOpen();
 
           fireEvent.keyDown(targetElement, { key });
           fireEvent.keyUp(targetElement, { key });
-          expect(targetElement).not.toHaveAttribute("aria-expanded");
+          expect(targetElement).not.toHaveMenuOpen();
           expect(document.activeElement).toEqual(targetElement);
         });
       });
@@ -140,13 +158,13 @@ describe("Dropdown", () => {
       it(`clicking it opens and closes the menu`, () => {
         const { targetElement } = createMenu();
 
-        expect(targetElement).not.toHaveAttribute("aria-expanded");
+        expect(targetElement).not.toHaveMenuOpen();
 
         fireEvent.click(targetElement);
-        expect(targetElement).toHaveAttribute("aria-expanded", "true");
+        expect(targetElement).toHaveMenuOpen();
 
         fireEvent.click(targetElement);
-        expect(targetElement).not.toHaveAttribute("aria-expanded");
+        expect(targetElement).not.toHaveMenuOpen();
       });
     });
 
@@ -158,7 +176,7 @@ describe("Dropdown", () => {
 
           fireEvent.keyDown(menuElement, { key });
           fireEvent.keyUp(menuElement, { key });
-          expect(targetElement).not.toHaveAttribute("aria-expanded");
+          expect(targetElement).not.toHaveMenuOpen();
           expect(document.activeElement).toEqual(targetElement);
         });
       });
@@ -254,7 +272,7 @@ describe("Dropdown", () => {
         fireEvent.keyDown(targetElement, { key: "Enter" });
         await userEvent.tab();
 
-        expect(targetElement).not.toHaveAttribute("aria-expanded");
+        expect(targetElement).not.toHaveMenuOpen();
         expect(document.activeElement).toEqual(screen.getByRole("textbox"));
       });
 
@@ -303,6 +321,80 @@ describe("Dropdown", () => {
           expect(document.activeElement).toHaveTextContent("Apricots");
         });
       });
+    });
+  });
+
+  describe("outside click", () => {
+    describe("when clicking on the target", () => {
+      it("toggles the menu", async () => {
+        const { targetElement } = createMenu();
+
+        await userEvent.click(targetElement);
+        expect(targetElement).toHaveMenuOpen();
+
+        await userEvent.click(targetElement);
+        expect(targetElement).not.toHaveMenuOpen();
+      });
+    });
+
+    describe("when clicking on the menu", () => {
+      it("does not close the menu", async () => {
+        const { targetElement } = createMenu();
+
+        await userEvent.click(targetElement);
+        expect(targetElement).toHaveMenuOpen();
+
+        const menuItem = screen.getAllByRole("menuitem")[0];
+        const menuItemSpy = jest.fn();
+
+        // add custom click handler to prevent navigation
+        menuItem.addEventListener(
+          "click",
+          (event) => {
+            event.preventDefault();
+            menuItemSpy();
+          },
+          false
+        );
+
+        await userEvent.click(menuItem);
+        expect(targetElement).toHaveMenuOpen();
+        expect(menuItemSpy).toHaveBeenCalled();
+      });
+    });
+
+    describe("when clicking outside", () => {
+      it("closes the menu", async () => {
+        const { targetElement } = createMenu();
+
+        await userEvent.click(targetElement);
+        expect(targetElement).toHaveMenuOpen();
+
+        await userEvent.click(document.body);
+        expect(targetElement).not.toHaveMenuOpen();
+      });
+    });
+  });
+
+  describe("with role=menuitemradio", () => {
+    it("attaches keyboard event handlers", async () => {
+      const { targetElement } = createMenu(`
+        <div class="dropdown">
+          <button class="dropdown-toggle" aria-haspopup="true">Sort by</button>
+          <ul class="dropdown-menu" role="menu">
+            <li role="none"><a role="menuitemradio" aria-checked="true" href="http://example.tld/apricots">Apricots</a></li>
+            <li role="none"><a role="menuitemradio" href="http://example.tld/asparagus">Asparagus</a></li>
+            <li role="none"><a role="menuitemradio" href="http://example.tld/tomato">Tomato</a></li>
+          </ul>
+        </div>
+        <input type="text" value="" />
+      `);
+
+      fireEvent.keyDown(targetElement, { key: "Enter" });
+      expect(document.activeElement).toHaveTextContent("Apricots");
+
+      await userEvent.keyboard("t");
+      expect(document.activeElement).toHaveTextContent("Tomato");
     });
   });
 });
