@@ -48,7 +48,7 @@ const createMenu = (html = menuHtml) => {
 
 describe("Dropdown", () => {
   beforeEach(() => {
-    Object.defineProperty(globalThis, "crypto", {
+    Object.defineProperty(window, "crypto", {
       value: {
         randomUUID: () => crypto.randomUUID(),
       },
