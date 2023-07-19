@@ -1,3 +1,13 @@
+## [3.0.6](https://github.com/zendesk/copenhagen_theme/compare/v3.0.5...v3.0.6) (2023-07-19)
+
+
+### Bug Fixes
+
+* move for mobile ([a11089c](https://github.com/zendesk/copenhagen_theme/commit/a11089cbfe797e0936eb3b10081001ef1a043585))
+* show ellipsis for section titles ([71efc13](https://github.com/zendesk/copenhagen_theme/commit/71efc1388d6e543264c61b93c524be9658f2e474))
+* show ellipsis for very long article titles ([916db29](https://github.com/zendesk/copenhagen_theme/commit/916db297fa7f1d2747d66db5aae5a6ccec9e189c))
+* show ellipsis in sidebar for very long titles ([a685729](https://github.com/zendesk/copenhagen_theme/commit/a685729e86536f7aa967ac3fe4e45e842fe3e547))
+
 ## [3.0.5](https://github.com/zendesk/copenhagen_theme/compare/v3.0.4...v3.0.5) (2023-06-28)
 
 
