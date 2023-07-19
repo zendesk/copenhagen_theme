@@ -1,3 +1,17 @@
+# [3.1.0](https://github.com/zendesk/copenhagen_theme/compare/v3.0.6...v3.1.0) (2023-07-19)
+
+
+### Bug Fixes
+
+* aria-expanded should be on the button ([8df6493](https://github.com/zendesk/copenhagen_theme/commit/8df6493fa0e54368fffeb56a52f6a96c7da538a7))
+
+
+### Features
+
+* align with garden styles ([610cf69](https://github.com/zendesk/copenhagen_theme/commit/610cf69abde144c7c52e4ee75271cbf42737cf37))
+* also support menuitemradio ([a1102d1](https://github.com/zendesk/copenhagen_theme/commit/a1102d1ae63066482be4775b8540f40b4987889a))
+* set tabindex to menuitems ([833b13c](https://github.com/zendesk/copenhagen_theme/commit/833b13c42e6227578a003297c16907e4b3413d28))
+
 ## [3.0.6](https://github.com/zendesk/copenhagen_theme/compare/v3.0.5...v3.0.6) (2023-07-19)
 
 
