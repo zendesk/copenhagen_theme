@@ -5,13 +5,14 @@
 <script type="importmap">
     {
         "imports": {
-            "vendor": "{{asset "vendor.js"}}",
-            "shared": "{{asset "shared.js"}}"
+            "vendor": "{{asset 'vendor.js'}}",
+            "shared": "{{asset 'shared.js'}}",
+            "new-request-form": "{{asset 'NewRequestForm.js'}}"
         }
     }
 </script>
 <script type="module">
-    import { setupGardenTheme } from "{{asset "shared.js"}}";
+    import { setupGardenTheme } from "shared";
 
     setupGardenTheme(function (defaultTheme) {
         return {
