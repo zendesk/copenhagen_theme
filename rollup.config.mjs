@@ -19,7 +19,7 @@ export default defineConfig([
   },
   {
     input: {
-      newRequestForm: "src/modules/newRequestForm/index.tsx",
+      "new-request-form": "src/modules/new-request-form/index.tsx",
       shared: "src/modules/shared.tsx",
     },
     output: {
