@@ -1,5 +1,5 @@
-import { TicketFormField } from "./TicketFormField";
-import type { TicketForm } from "./types";
+import type { TicketForm } from "./data-types/TicketForm";
+import { TicketFormField } from "./ticket-form-field/TicketFormField";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
