@@ -50,12 +50,10 @@
 <script type="module">
   import { renderNewRequestForm } from "new-request-form";
 
-  var ticketForms = {
-    options: []
-  };
+  var ticketForms = [];
   
   {{#each ticket_forms}}
-    ticketForms.options.push({ id:
+    ticketForms.push({ id:
     {{id}}, url: "{{url}}", name: "{{display_name}}" });
   {{/each}}
 

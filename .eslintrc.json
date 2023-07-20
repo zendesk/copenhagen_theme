@@ -1,15 +1,30 @@
 {
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:import/recommended",
-    "plugin:react/recommended"
+    "plugin:import/typescript",
+    "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
+    "plugin:prettier/recommended"
   ],
   "env": {
     "browser": true
   },
-  "parserOptions": {
-    "ecmaVersion": 2015,
-    "sourceType": "module"
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true,
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "ignorePatterns": ["assets/**"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "error"
   }
 }
