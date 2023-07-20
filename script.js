@@ -1507,7 +1507,7 @@ async function handleSectionResource(id, locale) {
             res.compatible.forEach(item => {
                 compatibleHtml += `<a class="products-label-btn" href="${item.link}">${item.text}</a>`;
             });
-            compatibleContainer.innerHTML = compatibleHtml;
+            // compatibleContainer.innerHTML = compatibleHtml;
         } else {
             compatibleLabelContainer.style.display = 'none';
         }
