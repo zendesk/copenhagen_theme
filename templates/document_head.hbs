@@ -3,13 +3,13 @@
 <!-- See buildClearSearchButton() in script.js -->
 <script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
 <script type="importmap">
-    {
-        "imports": {
-            "vendor": "{{asset 'vendor.js'}}",
-            "shared": "{{asset 'shared.js'}}",
-            "new-request-form": "{{asset 'new-request-form.js'}}"
-        }
-    }
+{
+  "imports": {
+    "new-request-form": "{{asset 'new-request-form.js'}}",
+    "shared": "{{asset 'shared.js'}}",
+    "vendor": "{{asset 'vendor.js'}}"
+  }
+}
 </script>
 <script type="module">
     import { setupGardenTheme } from "shared";
