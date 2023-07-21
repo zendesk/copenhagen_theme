@@ -23,12 +23,14 @@ export function generateImportMap() {
   return {
     name: "rollup-plugin-generate-import-map",
     writeBundle({ dir }, bundle) {
-      const outputChunksNames = Object.keys(bundle);
+      const parsedOutputChunks = Object.keys(bundle).map((chunk) =>
+        path.parse(chunk)
+      );
       const importMap = { imports: {} };
 
-      for (const chunkName of outputChunksNames) {
-        relativeToBareImports(chunkName, outputChunksNames, dir);
-        importMap.imports[getBareName(chunkName)] = `{{asset '${chunkName}'}}`;
+      for (const { base, name } of parsedOutputChunks) {
+        replaceImports(base, parsedOutputChunks, dir);
+        importMap.imports[name] = `{{asset '${base}'}}`;
       }
 
       injectImportMap(importMap);
@@ -39,17 +41,16 @@ export function generateImportMap() {
 /**
  * Replace relative imports with bare imports
  * @param {string} chunkName Name of the current chunk
- * @param {string[]} outputChunksNames Array of chunks generated during the build
+ * @param {import("path").ParsedPath[]} parsedOutputChunks Array of chunks generated during the build
  * @param {string} outputPath Path of the output directory
  */
-function relativeToBareImports(chunkName, outputChunksNames, outputPath) {
+function replaceImports(chunkName, parsedOutputChunks, outputPath) {
   const chunkPath = path.resolve(outputPath, chunkName);
 
   let content = fs.readFileSync(chunkPath, "utf-8");
 
-  for (const chunkName of outputChunksNames) {
-    const bare = getBareName(chunkName);
-    content = content.replaceAll(`'./${chunkName}'`, `'${bare}'`);
+  for (const { base, name } of parsedOutputChunks) {
+    content = content.replaceAll(`'./${base}'`, `'${name}'`);
   }
 
   fs.writeFileSync(chunkPath, content, "utf-8");
@@ -83,13 +84,4 @@ ${JSON.stringify(importMap, null, 2)}
   const newContent = content.replace(existingImportMap, newImportMap);
 
   fs.writeFileSync(headTemplatePath, newContent, "utf-8");
-}
-
-/**
- *
- * @param {string} chunkName
- * @returns {string}
- */
-function getBareName(chunkName) {
-  return chunkName.replace(".js", "");
 }
