@@ -51,6 +51,13 @@
   import { renderNewRequestForm } from "new-request-form";
 
   var ticketForms = [];
+  var fields = [];
+
+  {{#with request_form}}
+  {{#each fields}}
+    fields.push({ name: "{{name}}", value: "{{value}}", error: "{{error}}", label: {{ json_stringify label }}, required: {{required}}, description: "{{description}}", type: "{{type}}", id: "{{id}}" })
+  {{/each}}
+  {{/with}}
   
   {{#each ticket_forms}}
     ticketForms.push({ id:
@@ -58,6 +65,6 @@
   {{/each}}
 
   const container = document.getElementById("new-request-form");
-  const props = { ticketForms };
+  const props = { ticketForms, fields };
   renderNewRequestForm(props, container);
 </script>

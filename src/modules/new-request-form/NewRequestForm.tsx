@@ -1,14 +1,24 @@
-import type { TicketForm } from "./data-types/TicketForm";
+import type { Field, TicketForm } from "./data-types";
+import { TextInput } from "./fields/TextInput";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
+  fields: Field[];
 }
 
-export function NewRequestForm({ ticketForms }: NewRequestFormProps) {
+export function NewRequestForm({ ticketForms, fields }: NewRequestFormProps) {
   return (
     <form>
       <TicketFormField ticketForms={ticketForms} />
+      {fields.map((field) => {
+        switch (field.type) {
+          case "subject":
+            return <TextInput field={field} />;
+          default:
+            return <></>;
+        }
+      })}
     </form>
   );
 }
