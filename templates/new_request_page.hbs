@@ -15,7 +15,7 @@
   </h1>
 
   <div id="main-content" class="form">
-    {{#with request_form}}
+    {{#with new_request_form}}
       <form data-form action="{{action}}" method="{{http_method}}" accept-charset="{{accept_charset}}">
         {{#if errors}}
           <p>{{errors}}</p>
@@ -53,7 +53,7 @@
   var ticketForms = [];
   var fields = [];
 
-  {{#with request_form}}
+  {{#with new_request_form}}
   {{#each fields}}
     fields.push({ name: "{{name}}", value: "{{value}}", error: "{{error}}", label: {{ json_stringify label }}, required: {{required}}, description: "{{description}}", type: "{{type}}", id: "{{id}}" })
   {{/each}}
