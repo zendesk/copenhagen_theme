@@ -7,4 +7,10 @@ export interface Field {
   description: string;
   type: string;
   id: string;
+  options: Option[];
+}
+
+interface Option {
+  name: string;
+  value: string;
 }
