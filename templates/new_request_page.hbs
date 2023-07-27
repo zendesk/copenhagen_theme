@@ -53,9 +53,23 @@
   var ticketForms = [];
   var fields = [];
 
+  console.log(fields)
+
   {{#with new_request_form}}
   {{#each fields}}
-    fields.push({ name: "{{name}}", value: "{{value}}", error: "{{error}}", label: {{ json_stringify label }}, required: {{required}}, description: "{{description}}", type: "{{type}}", id: "{{id}}" })
+    fields.push({
+      name: "{{name}}",
+      value: "{{value}}",
+      error: "{{error}}",
+      label: {{ json_stringify label }},
+      required: {{required}},
+      description: "{{description}}",
+      type: "{{type}}",
+      id: "{{id}}",
+      options: [{{#each options}}
+        { name: "{{name}}", value: "{{value}}" },
+      {{/each}}],
+    })
   {{/each}}
   {{/with}}
   
