@@ -3,7 +3,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import replace from "@rollup/plugin-replace";
-import { generateImportMap } from "./generate-import-map.mjs"
+import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
 
 export default defineConfig([
@@ -19,6 +19,7 @@ export default defineConfig([
     },
   },
   {
+    context: "this",
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
       shared: "src/modules/shared.tsx",
