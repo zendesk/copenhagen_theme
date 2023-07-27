@@ -15,6 +15,7 @@ export function NewRequestForm({ ticketForms, fields }: NewRequestFormProps) {
       <TicketFormField ticketForms={ticketForms} />
       {fields.map((field) => {
         switch (field.type) {
+          case "anonymous_requester_email":
           case "subject":
             return <TextInput field={field} />;
           case "description":
