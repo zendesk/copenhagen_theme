@@ -18,7 +18,11 @@ export function DropDown({ field }: DropDownProps): JSX.Element {
     <GardenField>
       <Label>{label}</Label>
       {description && <Hint>{description}</Hint>}
-      <Combobox inputProps={{ name, required }} isEditable={false}>
+      <Combobox
+        inputProps={{ name, required }}
+        isEditable={false}
+        validation={error ? "error" : undefined}
+      >
         {options.map((option) => (
           <Option
             key={option.value}
