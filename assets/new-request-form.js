@@ -13,7 +13,7 @@ function TextArea({ field }) {
 
 function DropDown({ field }) {
     const { label, options, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value === value, children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value === value, children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function TicketFormField({ ticketForms }) {
@@ -22,11 +22,12 @@ function TicketFormField({ ticketForms }) {
             window.location.href = selectionValue;
         }
     };
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: "Please choose your issue below" }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, children: ticketForms.map(({ id, url, name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: name, children: name }, id))) })] }));
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: "Please choose your issue below" }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, children: ticketForms.map(({ id, url, display_name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: display_name, children: name }, id))) })] }));
 }
 
-function NewRequestForm({ ticketForms, fields }) {
-    return (jsxRuntimeExports.jsxs("form", { children: [jsxRuntimeExports.jsx(TicketFormField, { ticketForms: ticketForms }), fields.map((field) => {
+function NewRequestForm({ ticketForms, requestForm, }) {
+    const { fields, action, http_method, accept_charset } = requestForm;
+    return (jsxRuntimeExports.jsxs("form", { action: action, method: http_method, acceptCharset: accept_charset, children: [jsxRuntimeExports.jsx(TicketFormField, { ticketForms: ticketForms }), fields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
