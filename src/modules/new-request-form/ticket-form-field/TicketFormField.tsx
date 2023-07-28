@@ -22,8 +22,8 @@ export function TicketFormField({ ticketForms }: TicketFormFieldProps) {
     <Field>
       <Label>Please choose your issue below</Label>
       <Combobox isEditable={false} onChange={handleChange}>
-        {ticketForms.map(({ id, url, name }) => (
-          <Option key={id} value={url} label={name}>
+        {ticketForms.map(({ id, url, display_name }) => (
+          <Option key={id} value={url} label={display_name}>
             {name}
           </Option>
         ))}
