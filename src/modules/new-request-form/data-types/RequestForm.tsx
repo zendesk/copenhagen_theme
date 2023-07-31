@@ -6,5 +6,6 @@ export interface RequestForm {
   http_method: string;
   errors: string | null;
   ticket_forms_instructions: string;
+  ticket_form_field: Field;
   fields: Field[];
 }
