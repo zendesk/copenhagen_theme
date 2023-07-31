@@ -1772,7 +1772,7 @@ function useId(providedId) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$2() {
+function composeEventHandlers$1() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -1826,8 +1826,36 @@ const KEY_CODES = {
   TAB: 9,
   UP: 38
 };
+const KEYS$1 = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
 
-var DocumentPosition$2;
+var DocumentPosition$1;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -1835,10 +1863,10 @@ var DocumentPosition$2;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$2 || (DocumentPosition$2 = {}));
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
 
-function _extends$x() {
-  _extends$x = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$w() {
+  _extends$w = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -1849,7 +1877,7 @@ function _extends$x() {
     }
     return target;
   };
-  return _extends$x.apply(this, arguments);
+  return _extends$w.apply(this, arguments);
 }
 
 function _assertThisInitialized(self) {
@@ -2133,7 +2161,7 @@ var unitRegExp = /((?!\w)a|na|hc|mc|dg|me[r]?|xe|ni(?![a-zA-Z])|mm|cp|tp|xp|q(?!
 
 function mergeSymbolMaps(additionalSymbols) {
   var symbolMap = {};
-  symbolMap.symbols = additionalSymbols ? _extends$x({}, defaultSymbolMap.symbols, additionalSymbols.symbols) : _extends$x({}, defaultSymbolMap.symbols);
+  symbolMap.symbols = additionalSymbols ? _extends$w({}, defaultSymbolMap.symbols, additionalSymbols.symbols) : _extends$w({}, defaultSymbolMap.symbols);
   return symbolMap;
 }
 
@@ -3169,7 +3197,7 @@ function guard(lowerBoundary, upperBoundary, value) {
 function darken(amount, color) {
   if (color === 'transparent') return color;
   var hslColor = parseToHsl(color);
-  return toColorString(_extends$x({}, hslColor, {
+  return toColorString(_extends$w({}, hslColor, {
     lightness: guard(0, 1, hslColor.lightness - parseFloat(amount))
   }));
 } // prettier-ignore
@@ -3263,7 +3291,7 @@ function getContrast(color1, color2) {
 function lighten(amount, color) {
   if (color === 'transparent') return color;
   var hslColor = parseToHsl(color);
-  return toColorString(_extends$x({}, hslColor, {
+  return toColorString(_extends$w({}, hslColor, {
     lightness: guard(0, 1, hslColor.lightness + parseFloat(amount))
   }));
 } // prettier-ignore
@@ -4021,8 +4049,8 @@ var memoize$1 = /*@__PURE__*/getDefaultExportFromCjs(lodash_memoize);
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function _extends$w() {
-  _extends$w = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$v() {
+  _extends$v = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -4033,7 +4061,7 @@ function _extends$w() {
     }
     return target;
   };
-  return _extends$w.apply(this, arguments);
+  return _extends$v.apply(this, arguments);
 }
 
 const PALETTE = {
@@ -4322,7 +4350,7 @@ const ThemeProvider = _ref => {
     scope: controlledScopeRef,
     relativeDocument
   });
-  return React__default.createElement(Ge, _extends$w({
+  return React__default.createElement(Ge, _extends$v({
     theme: theme
   }, other), focusVisibleRef === undefined ? React__default.createElement("div", {
     ref: scopeRef
@@ -4452,7 +4480,7 @@ const animationStyles$1 = (position, modifier) => {
   const animationName = $e(["0%,66%{", ":2px;border:transparent;}"], property);
   return Ne(["&", "::before,&", "::after{animation:0.3s ease-in-out ", ";}"], modifier, modifier, animationName);
 };
-const positionStyles$2 = (position, size, inset) => {
+const positionStyles$1 = (position, size, inset) => {
   const margin = math(`${size} / -2`);
   const placement = math(`${margin} + ${inset}`);
   let clipPath;
@@ -4482,7 +4510,7 @@ function arrowStyles(position) {
   const size = options.size || '6px';
   const inset = options.inset || '0';
   const squareSize = math(`${size} * 2 / sqrt(2)`, exponentialSymbols);
-  return Ne(["position:relative;&::before{border-width:inherit;border-style:inherit;border-color:transparent;background-clip:content-box;}&::after{z-index:-1;border:inherit;box-shadow:inherit;}&::before,&::after{position:absolute;transform:rotate(45deg);background-color:inherit;box-sizing:inherit;width:", ";height:", ";content:'';}", ";", ";"], squareSize, squareSize, positionStyles$2(position, squareSize, inset), options.animationModifier && animationStyles$1(position, options.animationModifier));
+  return Ne(["position:relative;&::before{border-width:inherit;border-style:inherit;border-color:transparent;background-clip:content-box;}&::after{z-index:-1;border:inherit;box-shadow:inherit;}&::before,&::after{position:absolute;transform:rotate(45deg);background-color:inherit;box-sizing:inherit;width:", ";height:", ";content:'';}", ";", ";"], squareSize, squareSize, positionStyles$1(position, squareSize, inset), options.animationModifier && animationStyles$1(position, options.animationModifier));
 }
 
 const useWindow = theme => {
@@ -4532,7 +4560,7 @@ const animationStyles = (position, options) => {
   const animationName = $e(["0%{transform:", "(", ");}"], transformFunction, translateValue);
   return Ne(["&", " ", "{animation:0.2s cubic-bezier(0.15,0.85,0.35,1.2) ", ";}"], options.animationModifier, options.childSelector || '> *', animationName);
 };
-const hiddenStyles$2 = options => {
+const hiddenStyles$1 = options => {
   const transition = 'opacity 0.2s ease-in-out, 0.2s visibility 0s linear';
   return Ne(["transition:", ";visibility:hidden;opacity:0;"], options.animationModifier && transition);
 };
@@ -4549,7 +4577,7 @@ function menuStyles(position) {
   } else {
     marginProperty = 'margin-right';
   }
-  return Ne(["position:absolute;z-index:", ";", ":", ";line-height:0;font-size:0.01px;& ", "{display:inline-block;position:relative;margin:0;box-sizing:border-box;border:", " ", ";border-radius:", ";box-shadow:", ";background-color:", ";cursor:default;padding:0;text-align:", ";white-space:normal;font-size:", ";font-weight:", ";direction:", ";:focus{outline:none;}}", ";", ";"], options.zIndex || 0, marginProperty, options.margin, options.childSelector || '> *', theme.borders.sm, getColor('neutralHue', 300, theme), theme.borderRadii.md, theme.shadows.lg(`${theme.space.base * 5}px`, `${theme.space.base * 7.5}px`, getColor('chromeHue', 600, theme, 0.15)), theme.colors.background, theme.rtl ? 'right' : 'left', theme.fontSizes.md, theme.fontWeights.regular, theme.rtl && 'rtl', options.animationModifier && animationStyles(position, options), options.hidden && hiddenStyles$2(options));
+  return Ne(["position:absolute;z-index:", ";", ":", ";line-height:0;font-size:0.01px;& ", "{display:inline-block;position:relative;margin:0;box-sizing:border-box;border:", " ", ";border-radius:", ";box-shadow:", ";background-color:", ";cursor:default;padding:0;text-align:", ";white-space:normal;font-size:", ";font-weight:", ";direction:", ";:focus{outline:none;}}", ";", ";"], options.zIndex || 0, marginProperty, options.margin, options.childSelector || '> *', theme.borders.sm, getColor('neutralHue', 300, theme), theme.borderRadii.md, theme.shadows.lg(`${theme.space.base * 5}px`, `${theme.space.base * 7.5}px`, getColor('chromeHue', 600, theme, 0.15)), theme.colors.background, theme.rtl ? 'right' : 'left', theme.fontSizes.md, theme.fontWeights.regular, theme.rtl && 'rtl', options.animationModifier && animationStyles(position, options), options.hidden && hiddenStyles$1(options));
 }
 
 const SELECTOR_FOCUS_VISIBLE = '&:focus-visible, &[data-garden-focus-visible="true"]';
@@ -5133,7 +5161,7 @@ var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$1() {
+function composeEventHandlers() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -5147,7 +5175,7 @@ function composeEventHandlers$1() {
     });
   };
 }
-const KEYS$1 = {
+const KEYS = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -5175,7 +5203,7 @@ const KEYS$1 = {
   UNIDENTIFIED: 'Unidentified',
   UP: 'ArrowUp'
 };
-var DocumentPosition$1;
+var DocumentPosition;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -5183,7 +5211,7 @@ var DocumentPosition$1;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+})(DocumentPosition || (DocumentPosition = {}));
 
 const SLIDER_MIN = 0;
 const SLIDER_MAX = 100;
@@ -5312,7 +5340,7 @@ function useSlider(_ref) {
       'data-garden-container-id': 'containers.slider.track',
       'data-garden-container-version': '0.1.6',
       'aria-disabled': disabled,
-      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
+      onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown),
       ...other
     };
   }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
@@ -5327,28 +5355,28 @@ function useSlider(_ref) {
       if (!disabled) {
         let value;
         switch (event.key) {
-          case KEYS$1.RIGHT:
+          case KEYS.RIGHT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
             break;
-          case KEYS$1.UP:
+          case KEYS.UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
             break;
-          case KEYS$1.LEFT:
+          case KEYS.LEFT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
             break;
-          case KEYS$1.DOWN:
+          case KEYS.DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
             break;
-          case KEYS$1.PAGE_UP:
+          case KEYS.PAGE_UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
             break;
-          case KEYS$1.PAGE_DOWN:
+          case KEYS.PAGE_DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
             break;
-          case KEYS$1.HOME:
+          case KEYS.HOME:
             value = min;
             break;
-          case KEYS$1.END:
+          case KEYS.END:
             value = max;
             break;
         }
@@ -5403,9 +5431,9 @@ function useSlider(_ref) {
       'aria-valuemin': thumb === 'min' ? min : position.minValue,
       'aria-valuemax': thumb === 'min' ? position.maxValue : max,
       'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
-      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
-      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
-      onTouchStart: composeEventHandlers$1(onTouchStart, handleTouchStart),
+      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
+      onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown),
+      onTouchStart: composeEventHandlers(onTouchStart, handleTouchStart),
       ...other
     };
   }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
@@ -5445,5353 +5473,6 @@ function useSlider(_ref) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function _extends$t$1() {
-  _extends$t$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$t$1.apply(this, arguments);
-}
-
-const FieldContext$2 = reactExports.createContext(undefined);
-const useFieldContext$2 = () => {
-  const fieldContext = reactExports.useContext(FieldContext$2);
-  return fieldContext;
-};
-
-const COMPONENT_ID$K$1 = 'forms.field';
-const StyledField$2 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$K$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledField",
-  componentId: "sc-12gzfsu-0"
-})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$K$1, props));
-StyledField$2.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$J$1 = 'forms.fieldset';
-const StyledFieldset$1 = Ye(StyledField$2).attrs({
-  as: 'fieldset',
-  'data-garden-id': COMPONENT_ID$J$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFieldset",
-  componentId: "sc-1vr4mxv-0"
-})(["", "{margin-top:", "px;}", ";"], StyledField$2, props => props.theme.space.base * (props.isCompact ? 1 : 2), props => retrieveComponentStyles(COMPONENT_ID$J$1, props));
-StyledFieldset$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$I$1 = 'forms.input_label';
-const StyledLabel$2 = Ye.label.attrs({
-  'data-garden-id': COMPONENT_ID$I$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledLabel",
-  componentId: "sc-2utmsz-0"
-})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.colors.foreground, props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$I$1, props));
-StyledLabel$2.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$H$1 = 'forms.fieldset_legend';
-const StyledLegend$1 = Ye(StyledLabel$2).attrs({
-  as: 'legend',
-  'data-garden-id': COMPONENT_ID$H$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledLegend",
-  componentId: "sc-6s0zwq-0"
-})(["padding:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$H$1, props));
-StyledLegend$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$G$1 = 'forms.input_hint';
-const StyledHint$2 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$G$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledHint",
-  componentId: "sc-17c2wu8-0"
-})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColor('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$G$1, props));
-StyledHint$2.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-var _g$2$1, _circle$5$1;
-function _extends$s$1() { _extends$s$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$s$1.apply(this, arguments); }
-var SvgAlertErrorStroke$1 = function SvgAlertErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$s$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$2$1 || (_g$2$1 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }), /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    d: "M7.5 4.5V9"
-  }))), _circle$5$1 || (_circle$5$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-var _path$n$1, _circle$4$1;
-function _extends$r$1() { _extends$r$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r$1.apply(this, arguments); }
-var SvgAlertWarningStroke$1 = function SvgAlertWarningStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$r$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$n$1 || (_path$n$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"
-  })), _circle$4$1 || (_circle$4$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-var _g$1$1;
-function _extends$q$1() { _extends$q$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$q$1.apply(this, arguments); }
-var SvgCheckCircleStroke$1$1 = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$q$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$1$1 || (_g$1$1 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M4 9l2.5 2.5 5-5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }))));
-};
-
-const MessageIcon$1 = _ref => {
-  let {
-    children,
-    validation,
-    ...props
-  } = _ref;
-  let retVal;
-  if (validation === 'error') {
-    retVal = React__default.createElement(SvgAlertErrorStroke$1, props);
-  } else if (validation === 'success') {
-    retVal = React__default.createElement(SvgCheckCircleStroke$1$1, props);
-  } else if (validation === 'warning') {
-    retVal = React__default.createElement(SvgAlertWarningStroke$1, props);
-  } else {
-    retVal = React__default.cloneElement(reactExports.Children.only(children));
-  }
-  return retVal;
-};
-const COMPONENT_ID$F$1 = 'forms.input_message_icon';
-const StyledMessageIcon$1 = Ye(MessageIcon$1).attrs({
-  'data-garden-id': COMPONENT_ID$F$1,
-  'data-garden-version': '8.69.1',
-  'aria-hidden': null
-}).withConfig({
-  displayName: "StyledMessageIcon",
-  componentId: "sc-1ph2gba-0"
-})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$F$1, props));
-StyledMessageIcon$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const validationStyles$1 = props => {
-  const rtl = props.theme.rtl;
-  const padding = math(`${props.theme.space.base} * 2px + ${props.theme.iconSizes.md}`);
-  let color;
-  if (props.validation === 'error') {
-    color = getColor('dangerHue', 600, props.theme);
-  } else if (props.validation === 'success') {
-    color = getColor('successHue', 600, props.theme);
-  } else if (props.validation === 'warning') {
-    color = getColor('warningHue', 700, props.theme);
-  } else {
-    color = getColor('neutralHue', 700, props.theme);
-  }
-  return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
-};
-const COMPONENT_ID$E$1 = 'forms.input_message';
-const StyledMessage$2 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$E$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledMessage",
-  componentId: "sc-30hgg7-0"
-})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles$1(props), StyledMessageIcon$1, props => props.theme.rtl ? 'right' : 'left', StyledLabel$2, props => math(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$E$1, props));
-StyledMessage$2.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$D$1 = 'forms.input';
-const isInvalid$1 = validation => {
-  return validation === 'warning' || validation === 'error';
-};
-const colorStyles$c$1 = props => {
-  const HUE = 'primaryHue';
-  const SHADE = 600;
-  const placeholderColor = getColor('neutralHue', SHADE - 200, props.theme);
-  let borderColor;
-  let hoverBorderColor;
-  let focusBorderColor;
-  let focusRingHue = HUE;
-  let focusRingShade = SHADE;
-  if (props.validation) {
-    let hue = HUE;
-    if (props.validation === 'success') {
-      hue = 'successHue';
-    } else if (props.validation === 'warning') {
-      hue = 'warningHue';
-      focusRingShade = 700;
-    } else if (props.validation === 'error') {
-      hue = 'dangerHue';
-    }
-    borderColor = getColor(hue, SHADE, props.theme);
-    hoverBorderColor = borderColor;
-    focusBorderColor = borderColor;
-    focusRingHue = hue;
-  } else {
-    borderColor = getColor('neutralHue', SHADE - 300, props.theme);
-    hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
-    focusBorderColor = hoverBorderColor;
-  }
-  const readOnlyBackgroundColor = getColor('neutralHue', SHADE - 500, props.theme);
-  const readOnlyBorderColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const disabledBackgroundColor = readOnlyBackgroundColor;
-  const disabledBorderColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const disabledForegroundColor = getColor('neutralHue', SHADE - 200, props.theme);
-  let controlledBorderColor = borderColor;
-  if (props.isFocused) {
-    controlledBorderColor = focusBorderColor;
-  }
-  if (props.isHovered) {
-    controlledBorderColor = hoverBorderColor;
-  }
-  return Ne(["border-color:", ";background-color:", ";color:", ";&::placeholder{color:", ";}&[readonly],&[aria-readonly='true']{border-color:", ";background-color:", ";}&:hover{border-color:", ";}", " &:disabled,&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], controlledBorderColor, props.isBare ? 'transparent' : props.theme.colors.background, props.theme.colors.foreground, placeholderColor, readOnlyBorderColor, !props.isBare && readOnlyBackgroundColor, hoverBorderColor, focusStyles({
-    theme: props.theme,
-    inset: props.focusInset,
-    condition: !props.isBare,
-    hue: focusRingHue,
-    shade: focusRingShade,
-    styles: {
-      borderColor: focusBorderColor
-    }
-  }), disabledBorderColor, !props.isBare && disabledBackgroundColor, disabledForegroundColor);
-};
-const sizeStyles$f$1 = props => {
-  const fontSize = props.theme.fontSizes.md;
-  const paddingHorizontal = `${props.theme.space.base * 3}px`;
-  let height;
-  let paddingVertical;
-  let browseFontSize;
-  let swatchHeight;
-  if (props.isCompact) {
-    height = `${props.theme.space.base * 8}px`;
-    paddingVertical = `${props.theme.space.base * 1.5}px`;
-    browseFontSize = math(`${props.theme.fontSizes.sm} - 1`);
-    swatchHeight = `${props.theme.space.base * 6}px`;
-  } else {
-    height = `${props.theme.space.base * 10}px`;
-    paddingVertical = `${props.theme.space.base * 2.5}px`;
-    browseFontSize = props.theme.fontSizes.sm;
-    swatchHeight = `${props.theme.space.base * 7}px`;
-  }
-  const lineHeight = math(`${height} - (${paddingVertical} * 2) - (${props.theme.borderWidths.sm} * 2)`);
-  const padding = props.isBare ? '0' : `${em$1(paddingVertical, fontSize)} ${em$1(paddingHorizontal, fontSize)}`;
-  const swatchMarginVertical = math(`(${lineHeight} - ${swatchHeight}) / 2`);
-  const swatchMarginHorizontal = math(`${paddingVertical} + ${swatchMarginVertical} - ${paddingHorizontal}`);
-  return Ne(["padding:", ";min-height:", ";line-height:", ";font-size:", ";&::-ms-browse{font-size:", ";}&[type='date'],&[type='datetime-local'],&[type='file'],&[type='month'],&[type='time'],&[type='week']{max-height:", ";}&[type='file']{line-height:1;}@supports (-ms-ime-align:auto){&[type='color']{padding:", ";}}&::-moz-color-swatch{margin-top:", ";margin-left:", ";width:calc(100% + ", ");height:", ";}&::-webkit-color-swatch{margin:", " ", ";}", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", "px;}"], padding, props.isBare ? '1em' : height, getLineHeight(lineHeight, fontSize), fontSize, browseFontSize, height, props.isCompact ? '0 2px' : '1px 3px', swatchMarginVertical, swatchMarginHorizontal, math(`${swatchMarginHorizontal} * -2`), swatchHeight, swatchMarginVertical, swatchMarginHorizontal, StyledLabel$2, StyledHint$2, StyledMessage$2, StyledHint$2, StyledMessage$2, props.theme.space.base * (props.isCompact ? 1 : 2));
-};
-const StyledTextInput$1 = Ye.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$D$1,
-  'data-garden-version': '8.69.1',
-  'aria-invalid': isInvalid$1(props.validation)
-})).withConfig({
-  displayName: "StyledTextInput",
-  componentId: "sc-k12n8x-0"
-})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$f$1(props), props => colorStyles$c$1(props), props => retrieveComponentStyles(COMPONENT_ID$D$1, props));
-StyledTextInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$C$1 = 'forms.textarea';
-const hiddenStyles$1 = `
-  visibility: hidden;
-  position: absolute;
-  overflow: hidden;
-  height: 0;
-  top: 0;
-  left: 0;
-  transform: translateZ(0);
-`;
-const StyledTextarea$1 = Ye(StyledTextInput$1).attrs({
-  as: 'textarea',
-  'data-garden-id': COMPONENT_ID$C$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTextarea",
-  componentId: "sc-wxschl-0"
-})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles$1, props => retrieveComponentStyles(COMPONENT_ID$C$1, props));
-StyledTextarea$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$B$1 = 'forms.media_figure';
-const colorStyles$b$1 = props => {
-  let shade = 600;
-  if (props.isDisabled) {
-    shade = 400;
-  } else if (props.isHovered || props.isFocused) {
-    shade = 700;
-  }
-  return Ne(["color:", ";"], getColor('neutralHue', shade, props.theme));
-};
-const sizeStyles$e$1 = props => {
-  const size = props.theme.iconSizes.md;
-  const marginFirst = `1px ${props.theme.space.base * 2}px auto 0`;
-  const marginLast = `1px 0 auto ${props.theme.space.base * 2}px`;
-  let margin;
-  if (props.position === 'start') {
-    margin = props.theme.rtl ? marginLast : marginFirst;
-  } else {
-    margin = props.theme.rtl ? marginFirst : marginLast;
-  }
-  return Ne(["margin:", ";width:", ";height:", ";"], margin, size, size);
-};
-const StyledTextMediaFigure$1 = Ye(
-_ref => {
-  let {
-    children,
-    position,
-    isHovered,
-    isFocused,
-    isDisabled,
-    isRotated,
-    theme,
-    ...props
-  } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$B$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTextMediaFigure",
-  componentId: "sc-1qepknj-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$b$1(props), props => sizeStyles$e$1(props), props => retrieveComponentStyles(COMPONENT_ID$B$1, props));
-StyledTextMediaFigure$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$A$1 = 'forms.faux_input';
-const VALIDATION_HUES$1 = {
-  success: 'successHue',
-  warning: 'warningHue',
-  error: 'dangerHue'
-};
-function getValidationHue$1(validation) {
-  let defaultHue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primaryHue';
-  if (validation) {
-    return VALIDATION_HUES$1[validation];
-  }
-  return defaultHue;
-}
-const colorStyles$a$2 = props => {
-  const {
-    theme,
-    validation,
-    focusInset,
-    isBare,
-    isFocused
-  } = props;
-  return Ne(["", ""], focusStyles({
-    theme,
-    inset: focusInset,
-    condition: !isBare,
-    hue: getValidationHue$1(validation),
-    shade: validation === 'warning' ? 700 : 600,
-    selector: isFocused ? '&' : '&:focus-within',
-    styles: {
-      borderColor: getColor(getValidationHue$1(validation), 600, theme)
-    }
-  }));
-};
-const StyledTextFauxInput$1 = Ye(StyledTextInput$1).attrs(props => ({
-  as: 'div',
-  'aria-readonly': props.isReadOnly,
-  'aria-disabled': props.isDisabled,
-  'data-garden-id': COMPONENT_ID$A$1,
-  'data-garden-version': '8.69.1'
-})).withConfig({
-  displayName: "StyledTextFauxInput",
-  componentId: "sc-yqw7j9-0"
-})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$a$2, StyledTextInput$1, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure$1, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$A$1, props));
-StyledTextFauxInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$z$1 = 'forms.media_input';
-const StyledTextMediaInput$1 = Ye(StyledTextInput$1).attrs({
-  'data-garden-id': COMPONENT_ID$z$1,
-  'data-garden-version': '8.69.1',
-  isBare: true
-}).withConfig({
-  displayName: "StyledTextMediaInput",
-  componentId: "sc-12i9xfi-0"
-})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$z$1, props));
-StyledTextMediaInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$y$1 = 'forms.input_group';
-const positionStyles$1 = props => {
-  const topMargin = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  return Ne(["", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}& > ", "{position:relative;flex:1 1 auto;margin-top:0;margin-bottom:0;width:auto;min-width:0;}"], StyledLabel$2, StyledHint$2, StyledMessage$2, StyledHint$2, StyledMessage$2, topMargin, StyledTextInput$1);
-};
-const itemStyles$1 = props => {
-  const startDirection = props.theme.rtl ? 'right' : 'left';
-  const endDirection = props.theme.rtl ? 'left' : 'right';
-  return Ne(["& > *{z-index:-1;}& > ", "{z-index:0;}& > ", ":disabled{z-index:-2;}& > ", ":hover,& > button:hover,& > ", ":focus-visible,& > button:focus-visible,& > ", "[data-garden-focus-visible],& > button[data-garden-focus-visible],& > ", ":active,& > button:active{z-index:1;}& > button:disabled{border-top-width:0;border-bottom-width:0;}& > *:not(:first-child){margin-", ":-", ";}& > *:first-child:not(:last-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:last-child:not(:first-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:not(:first-child):not(:last-child){border-radius:0;}"], StyledTextInput$1, StyledTextInput$1, StyledTextInput$1, StyledTextInput$1, StyledTextInput$1, StyledTextInput$1, startDirection, props.theme.borderWidths.sm, endDirection, endDirection, startDirection, startDirection);
-};
-const StyledInputGroup$2 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$y$1,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledInputGroup",
-  componentId: "sc-kjh1f0-0"
-})(["display:inline-flex;position:relative;flex-wrap:nowrap;align-items:stretch;z-index:0;width:100%;", ";", ";", ";"], props => positionStyles$1(props), props => itemStyles$1(props), props => retrieveComponentStyles(COMPONENT_ID$y$1, props));
-StyledInputGroup$2.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$x$1 = 'forms.radio_label';
-const sizeStyles$d$1 = props => {
-  const size = props.theme.space.base * 4;
-  const padding = size + props.theme.space.base * 2;
-  const lineHeight = props.theme.space.base * 5;
-  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
-};
-const StyledRadioLabel$1 = Ye(StyledLabel$2).attrs({
-  'data-garden-id': COMPONENT_ID$x$1,
-  'data-garden-version': '8.69.1',
-  isRadio: true
-}).withConfig({
-  displayName: "StyledRadioLabel",
-  componentId: "sc-1aq2e5t-0"
-})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d$1(props), props => retrieveComponentStyles(COMPONENT_ID$x$1, props));
-StyledRadioLabel$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$w$2 = 'forms.checkbox_label';
-const StyledCheckLabel$1 = Ye(StyledRadioLabel$1).attrs({
-  'data-garden-id': COMPONENT_ID$w$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckLabel",
-  componentId: "sc-x7nr1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w$2, props));
-StyledCheckLabel$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$v$2 = 'forms.radio_hint';
-const StyledRadioHint$1 = Ye(StyledHint$2).attrs({
-  'data-garden-id': COMPONENT_ID$v$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledRadioHint",
-  componentId: "sc-eo8twg-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v$2, props));
-StyledRadioHint$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$u$2 = 'forms.checkbox_hint';
-const StyledCheckHint$1 = Ye(StyledRadioHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$u$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckHint",
-  componentId: "sc-1kl8e8c-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u$2, props));
-StyledCheckHint$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$t$2 = 'forms.radio';
-const colorStyles$9$2 = props => {
-  const SHADE = 600;
-  const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const backgroundColor = props.theme.colors.background;
-  const iconColor = backgroundColor;
-  const hoverBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.08);
-  const hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
-  const focusBorderColor = hoverBorderColor;
-  const activeBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.2);
-  const activeBorderColor = focusBorderColor;
-  const checkedBorderColor = focusBorderColor;
-  const checkedBackgroundColor = checkedBorderColor;
-  const checkedHoverBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const checkedHoverBackgroundColor = checkedHoverBorderColor;
-  const checkedActiveBorderColor = getColor('primaryHue', SHADE + 200, props.theme);
-  const checkedActiveBackgroundColor = checkedActiveBorderColor;
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  return Ne(["& ~ ", "::before{border-color:", ";background-color:", ";}& ~ ", " > svg{color:", ";}& ~ ", ":hover::before{border-color:", ";background-color:", ";}", " & ~ ", ":active::before{border-color:", ";background-color:", ";}&:checked ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":hover::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledRadioLabel$1, borderColor, backgroundColor, StyledRadioLabel$1, iconColor, StyledRadioLabel$1, hoverBorderColor, hoverBackgroundColor, focusStyles({
-    theme: props.theme,
-    styles: {
-      borderColor: focusBorderColor
-    },
-    selector: `&:focus-visible ~ ${StyledRadioLabel$1}::before, &[data-garden-focus-visible='true'] ~ ${StyledRadioLabel$1}::before`
-  }), StyledRadioLabel$1, activeBorderColor, activeBackgroundColor, StyledRadioLabel$1, checkedBorderColor, checkedBackgroundColor, StyledRadioLabel$1, checkedHoverBorderColor, checkedHoverBackgroundColor, StyledRadioLabel$1, checkedActiveBorderColor, checkedActiveBackgroundColor, StyledRadioLabel$1, disabledBackgroundColor);
-};
-const sizeStyles$c$2 = props => {
-  const lineHeight = `${props.theme.space.base * 5}px`;
-  const size = `${props.theme.space.base * 4}px`;
-  const top = math(`(${lineHeight} - ${size}) / 2`);
-  const iconSize = props.theme.iconSizes.sm;
-  const iconPosition = math(`(${size} - ${iconSize}) / 2`);
-  const iconTop = math(`${iconPosition} + ${top}`);
-  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel$1, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel$1, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel$1, StyledMessage$2, marginTop);
-};
-const StyledRadioInput$1 = Ye.input.attrs({
-  'data-garden-id': COMPONENT_ID$t$2,
-  'data-garden-version': '8.69.1',
-  type: 'radio'
-}).withConfig({
-  displayName: "StyledRadioInput",
-  componentId: "sc-qsavpv-0"
-})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel$1, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel$1, props => sizeStyles$c$2(props), StyledRadioLabel$1, StyledRadioLabel$1, props => colorStyles$9$2(props), StyledRadioLabel$1, props => retrieveComponentStyles(COMPONENT_ID$t$2, props));
-StyledRadioInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$s$2 = 'forms.checkbox';
-const colorStyles$8$2 = props => {
-  const SHADE = 600;
-  const indeterminateBorderColor = getColor('primaryHue', SHADE, props.theme);
-  const indeterminateBackgroundColor = indeterminateBorderColor;
-  const indeterminateActiveBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const indeterminateActiveBackgroundColor = indeterminateActiveBorderColor;
-  const indeterminateDisabledBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel$1, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel$1, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel$1, indeterminateDisabledBackgroundColor);
-};
-const StyledCheckInput$1 = Ye(StyledRadioInput$1).attrs({
-  'data-garden-id': COMPONENT_ID$s$2,
-  'data-garden-version': '8.69.1',
-  type: 'checkbox'
-}).withConfig({
-  displayName: "StyledCheckInput",
-  componentId: "sc-176jxxe-0"
-})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel$1, props => props.theme.borderRadii.md, props => colorStyles$8$2(props), props => retrieveComponentStyles(COMPONENT_ID$s$2, props));
-StyledCheckInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$r$2 = 'forms.radio_message';
-const StyledRadioMessage$1 = Ye(StyledMessage$2).attrs({
-  'data-garden-id': COMPONENT_ID$r$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledRadioMessage",
-  componentId: "sc-1pmi0q8-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r$2, props));
-StyledRadioMessage$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$q$2 = 'forms.checkbox_message';
-const StyledCheckMessage$1 = Ye(StyledRadioMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$q$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckMessage",
-  componentId: "sc-s4p6kd-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q$2, props));
-StyledCheckMessage$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-var _path$m$1;
-function _extends$p$1() { _extends$p$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$p$1.apply(this, arguments); }
-var SvgCheckSmFill$1 = function SvgCheckSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$p$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$m$1 || (_path$m$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: 2,
-    d: "M3 6l2 2 4-4"
-  })));
-};
-
-const COMPONENT_ID$p$2 = 'forms.check_svg';
-const StyledCheckSvg$1 = Ye(SvgCheckSmFill$1).attrs({
-  'data-garden-id': COMPONENT_ID$p$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledCheckSvg",
-  componentId: "sc-fvxetk-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput$1, StyledCheckLabel$1, StyledCheckInput$1, StyledCheckLabel$1, props => retrieveComponentStyles(COMPONENT_ID$p$2, props));
-StyledCheckSvg$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-var _path$l$1;
-function _extends$o$1() { _extends$o$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$o$1.apply(this, arguments); }
-var SvgDashFill$1 = function SvgDashFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$o$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$l$1 || (_path$l$1 = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeWidth: 2,
-    d: "M3 6h6"
-  })));
-};
-
-const COMPONENT_ID$o$2 = 'forms.dash_svg';
-const StyledDashSvg$1 = Ye(SvgDashFill$1).attrs({
-  'data-garden-id': COMPONENT_ID$o$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledDashSvg",
-  componentId: "sc-z3vq71-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput$1, StyledCheckLabel$1, props => retrieveComponentStyles(COMPONENT_ID$o$2, props));
-StyledDashSvg$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$n$2 = 'forms.file_upload';
-const colorStyles$7$2 = props => {
-  const baseColor = getColor('primaryHue', 600, props.theme);
-  const hoverColor = getColor('primaryHue', 700, props.theme);
-  const activeColor = getColor('primaryHue', 800, props.theme);
-  const disabledBackgroundColor = getColor('neutralHue', 200, props.theme);
-  const disabledForegroundColor = getColor('neutralHue', 400, props.theme);
-  return Ne(["border-color:", ";background-color:", ";color:", ";&:hover{border-color:", ";background-color:", ";color:", ";}", " &:active{border-color:", ";background-color:", ";color:", ";}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], props.isDragging ? activeColor : getColor('neutralHue', 600, props.theme), props.isDragging && rgba(baseColor, 0.2), props.isDragging ? activeColor : baseColor, hoverColor, rgba(baseColor, 0.08), hoverColor, focusStyles({
-    theme: props.theme,
-    hue: baseColor
-  }), activeColor, rgba(baseColor, 0.2), activeColor, disabledForegroundColor, disabledBackgroundColor, disabledForegroundColor);
-};
-const sizeStyles$b$2 = props => {
-  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  const paddingHorizontal = `${props.isCompact ? 2 : 4}em`;
-  const paddingVertical = math(`${props.theme.space.base * (props.isCompact ? 2.5 : 5)} - ${props.theme.borderWidths.sm}`);
-  const fontSize = props.theme.fontSizes.md;
-  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
-  return Ne(["padding:", " ", ";min-width:4em;line-height:", ";font-size:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], paddingVertical, paddingHorizontal, lineHeight, fontSize, StyledLabel$2, StyledHint$2, StyledMessage$2, StyledHint$2, StyledMessage$2, marginTop);
-};
-const StyledFileUpload$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$n$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileUpload",
-  componentId: "sc-1rodjgn-0"
-})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$b$2, colorStyles$7$2, props => retrieveComponentStyles(COMPONENT_ID$n$2, props));
-StyledFileUpload$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$m$2 = 'forms.file.close';
-const StyledFileClose$1 = Ye.button.attrs({
-  'data-garden-id': COMPONENT_ID$m$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileClose",
-  componentId: "sc-1m31jbf-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => props.theme.colors.foreground, props => retrieveComponentStyles(COMPONENT_ID$m$2, props));
-StyledFileClose$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$l$2 = 'forms.file';
-const colorStyles$6$2 = props => {
-  let borderColor;
-  let focusBorderColor;
-  let foregroundColor;
-  if (props.validation === 'success') {
-    borderColor = getColor('successHue', 600, props.theme);
-    focusBorderColor = borderColor;
-    foregroundColor = borderColor;
-  } else if (props.validation === 'error') {
-    borderColor = getColor('dangerHue', 600, props.theme);
-    focusBorderColor = borderColor;
-    foregroundColor = borderColor;
-  } else {
-    borderColor = getColor('neutralHue', 300, props.theme);
-    focusBorderColor = getColor('primaryHue', 600, props.theme);
-    foregroundColor = props.theme.colors.foreground;
-  }
-  return Ne(["border-color:", ";color:", ";", ""], borderColor, foregroundColor, focusStyles({
-    theme: props.theme,
-    inset: props.focusInset,
-    hue: focusBorderColor,
-    styles: {
-      borderColor: focusBorderColor
-    }
-  }));
-};
-const sizeStyles$a$2 = props => {
-  const size = `${props.theme.space.base * (props.isCompact ? 7 : 10)}px`;
-  const spacing = `${props.theme.space.base * (props.isCompact ? 2 : 3)}px`;
-  const fontSize = props.theme.fontSizes.md;
-  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
-  return `
-    box-sizing: border-box;
-    border: ${props.theme.borders.sm};
-    border-radius: ${props.theme.borderRadii.md};
-    padding: 0 ${spacing};
-    height: ${size};
-    line-height: ${lineHeight};
-    font-size: ${fontSize};
-
-    & > span {
-      width: 100%;
-    }
-
-    & > ${StyledFileClose$1} {
-      width: ${size};
-      height: ${size};
-      margin-${props.theme.rtl ? 'left' : 'right'}: -${spacing};
-    }
-  `;
-};
-const StyledFile$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$l$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFile",
-  componentId: "sc-195lzp1-0"
-})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$a$2, colorStyles$6$2, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$l$2, props));
-StyledFile$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$k$2 = 'forms.file.delete';
-const StyledFileDelete$1 = Ye(StyledFileClose$1).attrs({
-  'data-garden-id': COMPONENT_ID$k$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileDelete",
-  componentId: "sc-a8nnhx-0"
-})(["color:", ";", ";"], props => getColor('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$k$2, props));
-StyledFileDelete$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$j$2 = 'forms.file.icon';
-const StyledFileIcon$1 = Ye(_ref => {
-  let {
-    children,
-    isCompact,
-    theme,
-    ...props
-  } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$j$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileIcon",
-  componentId: "sc-7b3q0c-0"
-})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$j$2, props));
-StyledFileIcon$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$i$2 = 'forms.file_list';
-const StyledFileList$1 = Ye.ul.attrs({
-  'data-garden-id': COMPONENT_ID$i$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileList",
-  componentId: "sc-gbahjg-0"
-})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$i$2, props));
-StyledFileList$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$h$2 = 'forms.file_list.item';
-const StyledFileListItem$1 = Ye.li.attrs({
-  'data-garden-id': COMPONENT_ID$h$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledFileListItem",
-  componentId: "sc-1ova3lo-0"
-})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload$1, StyledFileList$1, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$h$2, props));
-StyledFileListItem$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-var _circle$3$1;
-function _extends$n$1() { _extends$n$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$n$1.apply(this, arguments); }
-var SvgCircleSmFill$1$1 = function SvgCircleSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$n$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _circle$3$1 || (_circle$3$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 6,
-    cy: 6,
-    r: 2,
-    fill: "currentColor"
-  })));
-};
-
-const COMPONENT_ID$g$2 = 'forms.radio_svg';
-const StyledRadioSvg$1 = Ye(SvgCircleSmFill$1$1).attrs({
-  'data-garden-id': COMPONENT_ID$g$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledRadioSvg",
-  componentId: "sc-1r1qtr1-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput$1, StyledRadioLabel$1, props => retrieveComponentStyles(COMPONENT_ID$g$2, props));
-StyledRadioSvg$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$f$2 = 'forms.toggle_label';
-const sizeStyles$9$2 = props => {
-  const size = props.theme.space.base * 10;
-  const padding = size + props.theme.space.base * 2;
-  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size);
-};
-const StyledToggleLabel$1 = Ye(StyledCheckLabel$1).attrs({
-  'data-garden-id': COMPONENT_ID$f$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleLabel",
-  componentId: "sc-e0asdk-0"
-})(["", ";", ";"], props => sizeStyles$9$2(props), props => retrieveComponentStyles(COMPONENT_ID$f$2, props));
-StyledToggleLabel$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$e$2 = 'forms.toggle_hint';
-const StyledToggleHint$1 = Ye(StyledHint$2).attrs({
-  'data-garden-id': COMPONENT_ID$e$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleHint",
-  componentId: "sc-nziggu-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$e$2, props));
-StyledToggleHint$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$d$2 = 'forms.toggle';
-const colorStyles$5$2 = props => {
-  const SHADE = 600;
-  const backgroundColor = getColor('neutralHue', SHADE - 100, props.theme);
-  const hoverBackgroundColor = getColor('neutralHue', SHADE, props.theme);
-  const activeBackgroundColor = getColor('neutralHue', SHADE + 100, props.theme);
-  return Ne(["& ~ ", "::before{background-color:", ";}&:enabled ~ ", ":hover::before{background-color:", ";}&:enabled ~ ", ":active::before{background-color:", ";}"], StyledToggleLabel$1, backgroundColor, StyledToggleLabel$1, hoverBackgroundColor, StyledToggleLabel$1, activeBackgroundColor);
-};
-const sizeStyles$8$2 = props => {
-  const height = `${props.theme.space.base * 5}px`;
-  const width = `${props.theme.space.base * 10}px`;
-  const iconSize = props.theme.iconSizes.md;
-  const iconPosition = math(`(${height} - ${iconSize}) / 2`);
-  const checkedIconPosition = math(`${width} - ${iconSize} - ${iconPosition}`);
-  return Ne(["top:0;width:", ";height:", ";& ~ ", "::before{width:", ";height:", ";}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&:checked ~ ", " > svg{", ":", ";}"], width, height, StyledToggleLabel$1, width, height, StyledToggleLabel$1, iconPosition, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledToggleLabel$1, props.theme.rtl ? 'right' : 'left', checkedIconPosition);
-};
-const StyledToggleInput$1 = Ye(StyledCheckInput$1).attrs({
-  'data-garden-id': COMPONENT_ID$d$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleInput",
-  componentId: "sc-sgp47s-0"
-})(["& ~ ", "::before{top:0;transition:box-shadow .1s ease-in-out,background-color .15s ease-in-out,color .25s ease-in-out;border:none;border-radius:100px;}", ";", ";", ";"], StyledToggleLabel$1, props => sizeStyles$8$2(props), props => colorStyles$5$2(props), props => retrieveComponentStyles(COMPONENT_ID$d$2, props));
-StyledToggleInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$c$2 = 'forms.toggle_message';
-const StyledToggleMessage$1 = Ye(StyledMessage$2).attrs({
-  'data-garden-id': COMPONENT_ID$c$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleMessage",
-  componentId: "sc-13vuvl1-0"
-})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 12px`), StyledMessageIcon$1, props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$c$2, props));
-StyledToggleMessage$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-var _circle$2$1;
-function _extends$m$1() { _extends$m$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$m$1.apply(this, arguments); }
-var SvgCircleSmFill$2 = function SvgCircleSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$m$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _circle$2$1 || (_circle$2$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 8,
-    cy: 8,
-    r: 6,
-    fill: "currentColor"
-  })));
-};
-
-const COMPONENT_ID$b$2 = 'forms.toggle_svg';
-const StyledToggleSvg$1 = Ye(SvgCircleSmFill$2).attrs({
-  'data-garden-id': COMPONENT_ID$b$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledToggleSvg",
-  componentId: "sc-162xbyx-0"
-})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$b$2, props));
-StyledToggleSvg$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$a$2 = 'forms.select';
-const colorStyles$4$2 = props => {
-  const color = getColor('neutralHue', 700, props.theme);
-  return Ne(["&:hover + ", ",&:focus + ", ",&:focus-visible + ", ",&[data-garden-focus-visible='true'] + ", "{color:", ";}"], StyledTextMediaFigure$1, StyledTextMediaFigure$1, StyledTextMediaFigure$1, StyledTextMediaFigure$1, color);
-};
-const sizeStyles$7$2 = props => {
-  const padding = math(`${props.theme.iconSizes.md} + ${props.theme.space.base * 5}`);
-  const iconVerticalPosition = `${props.theme.space.base * (props.isCompact ? 1.5 : 2.5) + 1}px`;
-  const iconHorizontalPosition = `${props.theme.space.base * 3}px`;
-  return Ne(["padding-", ":", ";& + ", "{top:", ";", ":", ";}"], props.theme.rtl ? 'left' : 'right', !props.isBare && padding, StyledTextMediaFigure$1, iconVerticalPosition, props.theme.rtl ? 'left' : 'right', iconHorizontalPosition);
-};
-const StyledSelect$1 = Ye(StyledTextInput$1).attrs({
-  'data-garden-id': COMPONENT_ID$a$2,
-  'data-garden-version': '8.69.1',
-  as: 'select'
-}).withConfig({
-  displayName: "StyledSelect",
-  componentId: "sc-8xdxpt-0"
-})(["cursor:pointer;text-overflow:ellipsis;", ";", ";&::-ms-expand{display:none;}&::-ms-value{background-color:transparent;color:inherit;}&:-moz-focusring{transition:none;text-shadow:0 0 0 ", ";color:transparent;}& + ", "{position:absolute;pointer-events:none;}"], props => sizeStyles$7$2(props), props => colorStyles$4$2(props), props => props.theme.colors.foreground, StyledTextMediaFigure$1);
-StyledSelect$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$9$2 = 'forms.select_wrapper';
-const StyledSelectWrapper$1 = Ye(StyledTextFauxInput$1).attrs({
-  'data-garden-id': COMPONENT_ID$9$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSelectWrapper",
-  componentId: "sc-i7b6hw-0"
-})(["position:relative;padding:0;overflow:visible;& > ", "{border-color:transparent;background-color:transparent;", "{box-shadow:unset;}}"], StyledSelect$1, SELECTOR_FOCUS_VISIBLE);
-StyledSelectWrapper$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$8$2 = 'forms.range';
-const thumbStyles$1 = function (styles) {
-  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return `
-    &${modifier}::-moz-range-thumb {
-      ${styles}
-    }
-
-    &${modifier}::-ms-thumb {
-      ${styles}
-    }
-
-    &${modifier}::-webkit-slider-thumb {
-      ${styles}
-    }
-  `;
-};
-const trackStyles$1 = function (styles) {
-  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return `
-    &${modifier}::-moz-range-track {
-      ${styles}
-    }
-
-    &${modifier}::-ms-track {
-      ${styles}
-    }
-
-    &${modifier}::-webkit-slider-runnable-track {
-      ${styles}
-    }
-  `;
-};
-const trackLowerStyles$1 = function (styles) {
-  let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-  return `
-    &${modifier}::-moz-range-progress {
-      ${styles}
-    }
-
-    &${modifier}::-ms-fill-lower {
-      ${styles}
-    }
-  `;
-};
-const colorStyles$3$2 = props => {
-  const SHADE = 600;
-  const thumbBackgroundColor = getColor('primaryHue', SHADE, props.theme);
-  const thumbBorderColor = thumbBackgroundColor;
-  const thumbBoxShadow = props.theme.shadows.lg(math(`${props.theme.space.base} * 1px`), math(`${props.theme.space.base} * 2px`), getColor('neutralHue', SHADE + 200, props.theme, 0.24));
-  const thumbFocusBoxShadow = getFocusBoxShadow({
-    theme: props.theme
-  });
-  const thumbActiveBackgroundColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const thumbActiveBorderColor = thumbBorderColor;
-  const thumbDisabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const thumbDisabledBorderColor = thumbDisabledBackgroundColor;
-  const thumbHoverBackgroundColor = thumbActiveBackgroundColor;
-  const thumbHoverBorderColor = thumbHoverBackgroundColor;
-  const trackBackgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const trackLowerBackgroundColor = props.hasLowerTrack ? thumbBackgroundColor : '';
-  const trackBackgroundImage = props.hasLowerTrack ? `linear-gradient(${trackLowerBackgroundColor}, ${trackLowerBackgroundColor})` : '';
-  const trackDisabledLowerBackgroundColor = props.hasLowerTrack ? thumbDisabledBackgroundColor : '';
-  const trackDisabledBackgroundImage = props.hasLowerTrack ? `linear-gradient(${trackDisabledLowerBackgroundColor}, ${trackDisabledLowerBackgroundColor})` : '';
-  return Ne(["", " ", " ", " ", " ", " ", " ", " ", " ", ""], trackStyles$1(`
-      background-color: ${trackBackgroundColor};
-      background-image: ${trackBackgroundImage}; /* provide means for styling lower range on WebKit */
-    `), thumbStyles$1(`
-      border-color: ${thumbBorderColor};
-      box-shadow: ${thumbBoxShadow};
-      background-color: ${thumbBackgroundColor};
-    `), trackLowerStyles$1(`
-      background-color: ${trackLowerBackgroundColor};
-    `), thumbStyles$1(`
-        transition:
-          border-color .25s ease-in-out,
-          background-color .25s ease-in-out;
-        border-color: ${thumbHoverBorderColor};
-        background-color: ${thumbHoverBackgroundColor};
-      `, ':hover'), thumbStyles$1(`
-        box-shadow: ${thumbFocusBoxShadow};
-      `, '[data-garden-focus-visible="true"]'), thumbStyles$1(`
-        border-color: ${thumbActiveBorderColor};
-        background-color: ${thumbActiveBackgroundColor};
-      `, ':active'), trackStyles$1(`
-        background-image: ${trackDisabledBackgroundImage};
-      `, ':disabled'), thumbStyles$1(`
-        border-color: ${thumbDisabledBorderColor};
-        box-shadow: none;
-        background-color: ${thumbDisabledBackgroundColor};
-      `, ':disabled'), trackLowerStyles$1(`
-        background-color: ${trackDisabledLowerBackgroundColor};
-      `, ':disabled'));
-};
-const sizeStyles$6$2 = props => {
-  const thumbSize = math(`${props.theme.space.base} * 5px`);
-  const trackHeight = math(`${props.theme.space.base} * 1.5px`);
-  const trackBorderRadius = trackHeight;
-  const trackMargin = math(`(${thumbSize} - ${trackHeight}) / 2 + ${props.theme.shadowWidths.md}`);
-  const thumbMargin = math(`(${trackHeight} - ${thumbSize}) / 2`);
-  return Ne(["", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";", " ", ""], StyledLabel$2, StyledHint$2, StyledMessage$2, StyledHint$2, StyledMessage$2, math(`${props.theme.space.base} * 2px`), trackStyles$1(`
-      margin: ${trackMargin} 0;
-      border-radius: ${trackBorderRadius};
-      height: ${trackHeight};
-    `), thumbStyles$1(`
-      margin: ${thumbMargin} 0; /* reset for IE */
-      width: ${thumbSize};
-      height: ${thumbSize};
-    `), trackLowerStyles$1(`
-      border-top-${props.theme.rtl ? 'right' : 'left'}-radius: ${trackBorderRadius};
-      border-bottom-${props.theme.rtl ? 'right' : 'left'}-radius: ${trackBorderRadius};
-      height: ${trackHeight};
-    `));
-};
-const StyledRangeInput$1 = Ye.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$8$2,
-  'data-garden-version': '8.69.1',
-  type: 'range',
-  style: {
-    backgroundSize: props.hasLowerTrack && props.backgroundSize
-  }
-})).withConfig({
-  displayName: "StyledRangeInput",
-  componentId: "sc-1iv2yqp-0"
-})(["appearance:none;direction:", ";margin:0;background-color:inherit;cursor:pointer;padding:0;width:100%;vertical-align:middle;", " &::-webkit-slider-container,&::-webkit-slider-runnable-track{background-size:inherit;}", ";", " ", ";&::-moz-focus-outer{border:0;}&::-ms-tooltip{display:none;}&:focus{outline:none;}&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => trackStyles$1(`
-      appearance: none;
-      border-color: transparent; /* reset for IE */
-      background-repeat: repeat-y;
-      background-size: 0;
-      background-position: ${props.theme.rtl ? '100% 100%' : '0% 0%'};
-      width: 99.8%; /* fix for IE which cuts off the upper track's border radius */
-      color: transparent; /* reset for IE */
-      box-sizing: border-box; /* reset for IE */
-    `), props => sizeStyles$6$2(props), props => thumbStyles$1(`
-      appearance: none;
-      transition: box-shadow .1s ease-in-out;
-      border: ${props.theme.borders.md};
-      border-radius: 100%;
-      box-sizing: border-box;
-    `), props => colorStyles$3$2(props), props => retrieveComponentStyles(COMPONENT_ID$8$2, props));
-StyledRangeInput$1.defaultProps = {
-  backgroundSize: '0%',
-  hasLowerTrack: true,
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$7$2 = 'forms.slider';
-const StyledSlider$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$7$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSlider",
-  componentId: "sc-1di437a-0"
-})(["display:block;position:relative;z-index:0;cursor:pointer;height:", ";&[aria-disabled='true']{cursor:default;}", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";"], props => math(`(${props.theme.space.base} * 5px) + (${props.theme.shadowWidths.md} * 2)`), StyledLabel$2, StyledHint$2, StyledMessage$2, StyledHint$2, StyledMessage$2, props => math(`${props.theme.space.base} * 2px`), props => retrieveComponentStyles(COMPONENT_ID$7$2, props));
-StyledSlider$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$6$2 = 'forms.slider_thumb';
-const colorStyles$2$2 = props => {
-  const SHADE = 600;
-  const backgroundColor = getColor('primaryHue', SHADE, props.theme);
-  const borderColor = backgroundColor;
-  const boxShadow = props.theme.shadows.lg(math(`${props.theme.space.base} * 1px`), math(`${props.theme.space.base} * 2px`), getColor('neutralHue', SHADE + 200, props.theme, 0.24));
-  const activeBackgroundColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const activeBorderColor = borderColor;
-  const hoverBackgroundColor = activeBackgroundColor;
-  const hoverBorderColor = hoverBackgroundColor;
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const disabledBorderColor = disabledBackgroundColor;
-  return Ne(["border-color:", ";box-shadow:", ";background-color:", ";&:hover,&[data-garden-hover='true']{border-color:", ";background-color:", ";}", " &:active,&[data-garden-active='true']{border-color:", ";background-color:", ";}&[aria-disabled='true']{border-color:", ";box-shadow:none;background-color:", ";}"], borderColor, boxShadow, backgroundColor, hoverBorderColor, hoverBackgroundColor, focusStyles({
-    theme: props.theme
-  }), activeBorderColor, activeBackgroundColor, disabledBorderColor, disabledBackgroundColor);
-};
-const sizeStyles$5$2 = props => {
-  const size = math(`${props.theme.space.base} * 5px`);
-  const marginTop = math(`${size} / -2`);
-  return Ne(["margin-top:", ";width:", ";height:", ";"], marginTop, size, size);
-};
-const StyledSliderThumb$1 = Ye.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$6$2,
-  'data-garden-version': '8.69.1',
-  'aria-disabled': props.isDisabled
-})).withConfig({
-  displayName: "StyledSliderThumb",
-  componentId: "sc-yspbwa-0"
-})(["appearance:none;position:absolute;top:50%;", ":", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out;z-index:1;border:", ";border-radius:100%;cursor:inherit;box-sizing:border-box;font-size:0;", ";", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.position} * 1px`), props => props.theme.borders.md, props => sizeStyles$5$2(props), props => colorStyles$2$2(props), props => retrieveComponentStyles(COMPONENT_ID$6$2, props));
-StyledSliderThumb$1.defaultProps = {
-  position: 0,
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$5$2 = 'forms.slider_track';
-const colorStyles$1$2 = props => {
-  const SHADE = 600;
-  const backgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const backgroundImageColor = getColor('primaryHue', SHADE, props.theme);
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 300, props.theme);
-  return Ne(["background-color:", ";background-image:linear-gradient(", ",", ");&[aria-disabled='true']{background-image:linear-gradient(", ",", ");}"], backgroundColor, backgroundImageColor, backgroundImageColor, disabledBackgroundColor, disabledBackgroundColor);
-};
-const sizeStyles$4$2 = props => {
-  const height = math(`${props.theme.space.base} * 1.5px`);
-  const backgroundPosition = math(`${props.backgroundPosition} * 1px`);
-  const backgroundSize = math(`${props.backgroundSize} * 1px`);
-  const borderRadius = height;
-  const marginTop = math(`${height} / -2`);
-  const padding = math(`${props.theme.space.base} * 2.5px`);
-  return Ne(["margin-top:", ";border-radius:", ";background-position:", ";background-size:", ";padding:0 ", ";"], marginTop, borderRadius, backgroundPosition, backgroundSize, padding);
-};
-const StyledSliderTrack$1 = Ye.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$5$2,
-  'data-garden-version': '8.69.1',
-  'aria-disabled': props.isDisabled
-})).withConfig({
-  displayName: "StyledSliderTrack",
-  componentId: "sc-aw5m6g-0"
-})(["position:absolute;top:50%;box-sizing:border-box;background-origin:content-box;background-repeat:repeat-y;width:100%;", ";", ";", ";"], props => sizeStyles$4$2(props), props => colorStyles$1$2(props), props => retrieveComponentStyles(COMPONENT_ID$5$2, props));
-StyledSliderTrack$1.defaultProps = {
-  backgroundSize: 0,
-  backgroundPosition: 0,
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$4$2 = 'forms.slider_track_rail';
-const sizeStyles$3$2 = props => {
-  const height = math(`${props.theme.space.base} * 1.5px`);
-  const margin = math(`${props.theme.space.base} * 2.5px`);
-  return Ne(["margin:0 ", " 0 ", ";height:", ";"], props.theme.rtl ? `-${margin}` : margin, props.theme.rtl ? margin : `-${margin}`, height);
-};
-const StyledSliderTrackRail$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$4$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSliderTrackRail",
-  componentId: "sc-1o5owbd-0"
-})(["position:relative;", ";", ";"], props => sizeStyles$3$2(props), props => retrieveComponentStyles(COMPONENT_ID$4$2, props));
-StyledSliderTrackRail$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$3$2 = 'forms.tile_icon';
-const sizeStyles$2$2 = props => {
-  const iconSize = math(`${props.theme.iconSizes.md} * 2`);
-  let position;
-  let top;
-  let horizontalValue;
-  if (!props.isCentered) {
-    position = 'absolute';
-    top = `${props.theme.space.base * 6}px`;
-    horizontalValue = `left: ${props.theme.space.base * 5}px`;
-    if (props.theme.rtl) {
-      horizontalValue = `right: ${props.theme.space.base * 5}px`;
-    }
-  }
-  return Ne(["position:", ";top:", ";", ";& > *{width:", ";height:", ";}"], position, top, horizontalValue, iconSize, iconSize);
-};
-const StyledTileIcon$1 = Ye.span.attrs({
-  'data-garden-id': COMPONENT_ID$3$2,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTileIcon",
-  componentId: "sc-1wazhg4-0"
-})(["display:block;transition:color 0.25s ease-in-out;text-align:center;line-height:0;", ";", ";"], props => sizeStyles$2$2(props), props => retrieveComponentStyles(COMPONENT_ID$3$2, props));
-StyledTileIcon$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$2$4 = 'forms.tile';
-const colorStyles$e = props => {
-  const SHADE = 600;
-  const iconColor = getColor('neutralHue', SHADE, props.theme);
-  const color = getColor('neutralHue', SHADE + 200, props.theme);
-  const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
-  const hoverBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.08);
-  const hoverBorderColor = getColor('primaryHue', SHADE, props.theme);
-  const focusBorderColor = hoverBorderColor;
-  const activeBackgroundColor = getColor('primaryHue', SHADE, props.theme, 0.2);
-  const activeBorderColor = focusBorderColor;
-  const disabledBackgroundColor = getColor('neutralHue', SHADE - 500, props.theme);
-  const disabledBorderColor = getColor('neutralHue', SHADE - 400, props.theme);
-  const disabledColor = getColor('neutralHue', SHADE - 200, props.theme);
-  const selectedBorderColor = focusBorderColor;
-  const selectedBackgroundColor = selectedBorderColor;
-  const selectedHoverBorderColor = getColor('primaryHue', SHADE + 100, props.theme);
-  const selectedHoverBackgroundColor = selectedHoverBorderColor;
-  const selectedActiveBorderColor = getColor('primaryHue', SHADE + 200, props.theme);
-  const selectedActiveBackgroundColor = selectedActiveBorderColor;
-  const selectedDisabledBackgroundColor = disabledBorderColor;
-  return Ne(["border:", " ", ";border-color:", ";background-color:", ";color:", ";", "{color:", ";}&:hover:not([aria-disabled='true']){border-color:", ";background-color:", ";", "{color:", ";}}", " &:active:not([aria-disabled='true']){border-color:", ";background-color:", ";", "{color:", ";}}&[data-garden-selected='true']{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true']:not([aria-disabled='true']):hover{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true']:not([aria-disabled='true']):active{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";", "{color:", ";}}&[data-garden-selected='true'][aria-disabled='true']{background-color:", ";color:", ";", "{color:", ";}}"], props.theme.borders.sm, getColor('neutralHue', SHADE - 300, props.theme), borderColor, props.theme.colors.background, color, StyledTileIcon$1, iconColor, hoverBorderColor, hoverBackgroundColor, StyledTileIcon$1, color, focusStyles({
-    theme: props.theme,
-    hue: focusBorderColor,
-    styles: {
-      borderColor: focusBorderColor
-    },
-    selector: `&:focus-within`
-  }), activeBorderColor, activeBackgroundColor, StyledTileIcon$1, color, selectedBorderColor, selectedBackgroundColor, props.theme.colors.background, StyledTileIcon$1, props.theme.colors.background, selectedHoverBorderColor, selectedHoverBackgroundColor, props.theme.colors.background, StyledTileIcon$1, props.theme.colors.background, selectedActiveBorderColor, selectedActiveBackgroundColor, props.theme.colors.background, StyledTileIcon$1, props.theme.colors.background, disabledBorderColor, disabledBackgroundColor, disabledColor, StyledTileIcon$1, disabledColor, selectedDisabledBackgroundColor, disabledColor, StyledTileIcon$1, disabledColor);
-};
-const StyledTile$1 = Ye.label.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$2$4,
-  'data-garden-version': '8.69.1',
-  'data-garden-selected': props.isSelected
-})).withConfig({
-  displayName: "StyledTile",
-  componentId: "sc-1jjvmxs-0"
-})(["display:block;position:relative;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border-radius:", ";cursor:", ";padding:", "px;direction:", ";min-width:132px;word-break:break-word;", ";", ";"], props => props.theme.borderRadii.md, props => !props.isDisabled && 'pointer', props => props.theme.space.base * 5, props => props.theme.rtl && 'rtl', props => colorStyles$e(props), props => retrieveComponentStyles(COMPONENT_ID$2$4, props));
-StyledTile$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$1$4 = 'forms.tile_description';
-const sizeStyles$1$2 = props => {
-  let marginDirection = 'left';
-  let marginValue;
-  if (props.theme.rtl) {
-    marginDirection = 'right';
-  }
-  if (!props.isCentered) {
-    marginValue = math(`(${props.theme.iconSizes.md} * 2) + ${props.theme.space.base * 5}px`);
-  }
-  return Ne(["margin-top:", "px;margin-", ":", ";"], props.theme.space.base, marginDirection, marginValue);
-};
-const StyledTileDescription$1 = Ye.span.attrs({
-  'data-garden-id': COMPONENT_ID$1$4,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTileDescription",
-  componentId: "sc-xfuu7u-0"
-})(["display:block;text-align:", ";line-height:", ";font-size:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 4, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => sizeStyles$1$2(props), props => retrieveComponentStyles(COMPONENT_ID$1$4, props));
-StyledTileDescription$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const StyledTileInput$1 = Ye.input.withConfig({
-  displayName: "StyledTileInput",
-  componentId: "sc-1nq2m6q-0"
-})(["position:absolute;border:0;clip:rect(1px,1px,1px,1px);padding:0;width:1px;height:1px;overflow:hidden;white-space:nowrap;"]);
-StyledTileInput$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$M = 'forms.tile_label';
-const sizeStyles$h = props => {
-  let marginDirection = 'left';
-  let marginTop = `${props.theme.space.base * 2}px`;
-  let marginValue;
-  if (props.theme.rtl) {
-    marginDirection = 'right';
-  }
-  if (!props.isCentered) {
-    marginValue = math(`(${props.theme.iconSizes.md} * 2) + ${props.theme.space.base * 5}px`);
-    marginTop = '0';
-  }
-  return Ne(["margin-top:", ";margin-", ":", ";"], marginTop, marginDirection, marginValue);
-};
-const StyledTileLabel$1 = Ye.span.attrs({
-  'data-garden-id': COMPONENT_ID$M,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledTileLabel",
-  componentId: "sc-1mypv27-0"
-})(["display:block;text-align:", ";line-height:", ";font-size:", ";font-weight:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => sizeStyles$h(props), props => retrieveComponentStyles(COMPONENT_ID$M, props));
-StyledTileLabel$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const Field$2 = React__default.forwardRef((props, ref) => {
-  const [hasHint, setHasHint] = reactExports.useState(false);
-  const [hasMessage, setHasMessage] = reactExports.useState(false);
-  const [isLabelActive, setIsLabelActive] = reactExports.useState(false);
-  const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
-  const multiThumbRangeRef = reactExports.useRef(null);
-  const {
-    getInputProps,
-    getMessageProps,
-    ...propGetters
-  } = useField$1(props.id);
-  const fieldProps = reactExports.useMemo(() => ({
-    ...propGetters,
-    getInputProps: function (options) {
-      let describeOptions = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-      return getInputProps(options, {
-        ...describeOptions,
-        isDescribed: hasHint,
-        hasMessage
-      });
-    },
-    getMessageProps: options => getMessageProps({
-      role: 'alert',
-      ...options
-    }),
-    isLabelActive,
-    setIsLabelActive,
-    isLabelHovered,
-    setIsLabelHovered,
-    hasHint,
-    setHasHint,
-    hasMessage,
-    setHasMessage,
-    multiThumbRangeRef
-  }), [propGetters, getInputProps, getMessageProps, isLabelActive, isLabelHovered, hasHint, hasMessage]);
-  return React__default.createElement(FieldContext$2.Provider, {
-    value: fieldProps
-  }, React__default.createElement(StyledField$2, _extends$t$1({}, props, {
-    ref: ref
-  })));
-});
-Field$2.displayName = 'Field';
-
-const FieldsetContext$1 = reactExports.createContext(undefined);
-const useFieldsetContext$1 = () => {
-  const fieldsetContext = reactExports.useContext(FieldsetContext$1);
-  return fieldsetContext;
-};
-
-const LegendComponent$1 = reactExports.forwardRef((props, ref) => {
-  const fieldsetContext = useFieldsetContext$1();
-  return React__default.createElement(StyledLegend$1, _extends$t$1({}, props, fieldsetContext, {
-    ref: ref
-  }));
-});
-LegendComponent$1.displayName = 'Fieldset.Legend';
-const Legend$1 = LegendComponent$1;
-
-const FieldsetComponent$1 = reactExports.forwardRef((props, ref) => {
-  const fieldsetContext = reactExports.useMemo(() => ({
-    isCompact: props.isCompact
-  }), [props.isCompact]);
-  return React__default.createElement(FieldsetContext$1.Provider, {
-    value: fieldsetContext
-  }, React__default.createElement(StyledFieldset$1, _extends$t$1({}, props, {
-    ref: ref
-  })));
-});
-FieldsetComponent$1.displayName = 'Fieldset';
-FieldsetComponent$1.propTypes = {
-  isCompact: PropTypes.bool
-};
-const Fieldset$1 = FieldsetComponent$1;
-Fieldset$1.Legend = Legend$1;
-
-const InputContext$1 = reactExports.createContext(undefined);
-const useInputContext$1 = () => {
-  return reactExports.useContext(InputContext$1);
-};
-
-const Hint$2 = React__default.forwardRef((props, ref) => {
-  const {
-    hasHint,
-    setHasHint,
-    getHintProps
-  } = useFieldContext$2() || {};
-  const type = useInputContext$1();
-  reactExports.useEffect(() => {
-    if (!hasHint && setHasHint) {
-      setHasHint(true);
-    }
-    return () => {
-      if (hasHint && setHasHint) {
-        setHasHint(false);
-      }
-    };
-  }, [hasHint, setHasHint]);
-  let HintComponent;
-  if (type === 'checkbox') {
-    HintComponent = StyledCheckHint$1;
-  } else if (type === 'radio') {
-    HintComponent = StyledRadioHint$1;
-  } else if (type === 'toggle') {
-    HintComponent = StyledToggleHint$1;
-  } else {
-    HintComponent = StyledHint$2;
-  }
-  let combinedProps = props;
-  if (getHintProps) {
-    combinedProps = getHintProps(combinedProps);
-  }
-  return React__default.createElement(HintComponent, _extends$t$1({
-    ref: ref
-  }, combinedProps));
-});
-Hint$2.displayName = 'Hint';
-
-const Label$1$1 = React__default.forwardRef((props, ref) => {
-  const fieldContext = useFieldContext$2();
-  const fieldsetContext = useFieldsetContext$1();
-  const type = useInputContext$1();
-  let combinedProps = props;
-  if (fieldContext) {
-    combinedProps = fieldContext.getLabelProps(combinedProps);
-    if (type === undefined) {
-      const {
-        setIsLabelActive,
-        setIsLabelHovered,
-        multiThumbRangeRef
-      } = fieldContext;
-      combinedProps = {
-        ...combinedProps,
-        onMouseUp: composeEventHandlers$2(props.onMouseUp, () => {
-          setIsLabelActive(false);
-        }),
-        onMouseDown: composeEventHandlers$2(props.onMouseDown, () => {
-          setIsLabelActive(true);
-        }),
-        onMouseEnter: composeEventHandlers$2(props.onMouseEnter, () => {
-          setIsLabelHovered(true);
-        }),
-        onMouseLeave: composeEventHandlers$2(props.onMouseLeave, () => {
-          setIsLabelHovered(false);
-        }),
-        onClick: composeEventHandlers$2(props.onClick, () => {
-          multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
-        })
-      };
-    }
-  }
-  if (fieldsetContext) {
-    combinedProps = {
-      ...combinedProps,
-      isRegular: combinedProps.isRegular === undefined ? true : combinedProps.isRegular
-    };
-  }
-  if (type === 'radio') {
-    return React__default.createElement(StyledRadioLabel$1, _extends$t$1({
-      ref: ref
-    }, combinedProps), React__default.createElement(StyledRadioSvg$1, null), props.children);
-  } else if (type === 'checkbox') {
-    const onLabelSelect = e => {
-      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-      if (fieldContext && isFirefox && e.target instanceof Element) {
-        const inputId = e.target.getAttribute('for');
-        if (!inputId) return;
-        const input = document.getElementById(inputId);
-        if (input && input.type === 'checkbox') {
-          if (e.shiftKey) {
-            input.click();
-            input.checked = true;
-          }
-          input.focus();
-        }
-      }
-    };
-    combinedProps = {
-      ...combinedProps,
-      onClick: composeEventHandlers$2(combinedProps.onClick, onLabelSelect)
-    };
-    return React__default.createElement(StyledCheckLabel$1, _extends$t$1({
-      ref: ref
-    }, combinedProps), React__default.createElement(StyledCheckSvg$1, null), React__default.createElement(StyledDashSvg$1, null), props.children);
-  } else if (type === 'toggle') {
-    return React__default.createElement(StyledToggleLabel$1, _extends$t$1({
-      ref: ref
-    }, combinedProps), React__default.createElement(StyledToggleSvg$1, null), props.children);
-  }
-  return React__default.createElement(StyledLabel$2, _extends$t$1({
-    ref: ref
-  }, combinedProps));
-});
-Label$1$1.displayName = 'Label';
-Label$1$1.propTypes = {
-  isRegular: PropTypes.bool
-};
-
-const VALIDATION$1 = ['success', 'warning', 'error'];
-const FILE_VALIDATION$1 = ['success', 'error'];
-const FILE_TYPE$1 = ['pdf', 'zip', 'image', 'document', 'spreadsheet', 'presentation', 'generic'];
-
-const Message$2 = React__default.forwardRef((_ref, ref) => {
-  let {
-    validation,
-    validationLabel,
-    children,
-    ...props
-  } = _ref;
-  const {
-    hasMessage,
-    setHasMessage,
-    getMessageProps
-  } = useFieldContext$2() || {};
-  const type = useInputContext$1();
-  reactExports.useEffect(() => {
-    if (!hasMessage && setHasMessage) {
-      setHasMessage(true);
-    }
-    return () => {
-      if (hasMessage && setHasMessage) {
-        setHasMessage(false);
-      }
-    };
-  }, [hasMessage, setHasMessage]);
-  let MessageComponent;
-  if (type === 'checkbox') {
-    MessageComponent = StyledCheckMessage$1;
-  } else if (type === 'radio') {
-    MessageComponent = StyledRadioMessage$1;
-  } else if (type === 'toggle') {
-    MessageComponent = StyledToggleMessage$1;
-  } else {
-    MessageComponent = StyledMessage$2;
-  }
-  let combinedProps = {
-    validation,
-    validationLabel,
-    ...props
-  };
-  if (getMessageProps) {
-    combinedProps = getMessageProps(combinedProps);
-  }
-  const ariaLabel = useText(Message$2, combinedProps, 'validationLabel', validation, validation !== undefined);
-  return React__default.createElement(MessageComponent, _extends$t$1({
-    ref: ref
-  }, combinedProps), validation && React__default.createElement(StyledMessageIcon$1, {
-    validation: validation,
-    "aria-label": ariaLabel
-  }), children);
-});
-Message$2.displayName = 'Message';
-Message$2.propTypes = {
-  validation: PropTypes.oneOf(VALIDATION$1),
-  validationLabel: PropTypes.string
-};
-
-const Checkbox$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    indeterminate,
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext$1();
-  const fieldContext = useFieldContext$2();
-  const inputRef = inputElement => {
-    inputElement && (inputElement.indeterminate = indeterminate);
-  };
-  const combinedRef = inputElement => {
-    [inputRef, ref].forEach(targetRef => {
-      if (targetRef) {
-        if (typeof targetRef === 'function') {
-          targetRef(inputElement);
-        } else {
-          targetRef.current = inputElement;
-        }
-      }
-    });
-  };
-  let combinedProps = {
-    ref: combinedRef,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(InputContext$1.Provider, {
-    value: "checkbox"
-  }, React__default.createElement(StyledCheckInput$1, combinedProps), children);
-});
-Checkbox$1.displayName = 'Checkbox';
-Checkbox$1.propTypes = {
-  isCompact: PropTypes.bool,
-  indeterminate: PropTypes.bool
-};
-
-const InputGroupContext$1 = reactExports.createContext(undefined);
-const useInputGroupContext$1 = () => {
-  return reactExports.useContext(InputGroupContext$1);
-};
-
-const Input$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$2();
-  const inputGroupContext = useInputGroupContext$1();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    ref,
-    onSelect: onSelectHandler,
-    ...props
-  };
-  if (inputGroupContext) {
-    combinedProps = {
-      ...combinedProps,
-      isCompact: inputGroupContext.isCompact || combinedProps.isCompact,
-      focusInset: props.focusInset === undefined ? true : props.focusInset
-    };
-  }
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(StyledTextInput$1, combinedProps);
-});
-Input$1.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION$1)
-};
-Input$1.displayName = 'Input';
-
-const Radio$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext$1();
-  const fieldContext = useFieldContext$2();
-  let combinedProps = {
-    ref,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(InputContext$1.Provider, {
-    value: "radio"
-  }, React__default.createElement(StyledRadioInput$1, combinedProps), children);
-});
-Radio$1.displayName = 'Radio';
-Radio$1.propTypes = {
-  isCompact: PropTypes.bool
-};
-
-const Range$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    hasLowerTrack,
-    min,
-    max,
-    step,
-    ...props
-  } = _ref;
-  const [backgroundSize, setBackgroundSize] = reactExports.useState('0');
-  const rangeRef = reactExports.useRef();
-  const fieldContext = useFieldContext$2();
-  const updateBackgroundWidthFromInput = reactExports.useCallback(rangeTarget => {
-    let relativeMax = max;
-    const {
-      value
-    } = rangeTarget;
-    if (parseFloat(relativeMax) < parseFloat(min)) {
-      relativeMax = 100;
-    }
-    const percentage = 100 * (value - min) / (relativeMax - min);
-    setBackgroundSize(`${percentage}%`);
-  },
-  [max, min, step]);
-  reactExports.useEffect(() => {
-    updateBackgroundWidthFromInput(rangeRef.current);
-  }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$2(props.onChange, event => {
-    updateBackgroundWidthFromInput(event.target);
-  }) : props.onChange;
-  let combinedProps = {
-    ref: mergeRefs([rangeRef, ref]),
-    hasLowerTrack,
-    min,
-    max,
-    step,
-    backgroundSize,
-    ...props,
-    onChange
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-  }
-  return React__default.createElement(StyledRangeInput$1, combinedProps);
-});
-Range$1.defaultProps = {
-  hasLowerTrack: true,
-  min: 0,
-  max: 100,
-  step: 1
-};
-Range$1.displayName = 'Range';
-
-const parseStyleValue$1 = value => {
-  return parseInt(value, 10) || 0;
-};
-const Textarea$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    minRows,
-    maxRows,
-    style,
-    onChange,
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$2();
-  const textAreaRef = reactExports.useRef();
-  const shadowTextAreaRef = reactExports.useRef(null);
-  const [state, setState] = reactExports.useState({
-    overflow: false,
-    height: 0
-  });
-  const isControlled = props.value !== null && props.value !== undefined;
-  const isAutoResizable = (minRows !== undefined || maxRows !== undefined) && !props.isResizable;
-  const calculateHeight = reactExports.useCallback(() => {
-    if (!isAutoResizable) {
-      return;
-    }
-    const textarea = textAreaRef.current;
-    const computedStyle = window.getComputedStyle(textarea);
-    const shadowTextArea = shadowTextAreaRef.current;
-    shadowTextArea.style.width = computedStyle.width;
-    shadowTextArea.value = textarea.value || textarea.placeholder || ' ';
-    const boxSizing = computedStyle.boxSizing;
-    const padding = parseStyleValue$1(computedStyle.paddingBottom) + parseStyleValue$1(computedStyle.paddingTop);
-    const border = parseStyleValue$1(computedStyle.borderTopWidth) + parseStyleValue$1(computedStyle.borderBottomWidth);
-    const innerHeight = shadowTextArea.scrollHeight - padding;
-    shadowTextArea.value = 'x';
-    const singleRowHeight = shadowTextArea.scrollHeight - padding;
-    let outerHeight = innerHeight;
-    if (minRows) {
-      outerHeight = Math.max(Number(minRows) * singleRowHeight, outerHeight);
-    }
-    if (maxRows) {
-      outerHeight = Math.min(Number(maxRows) * singleRowHeight, outerHeight);
-    }
-    outerHeight = Math.max(outerHeight, singleRowHeight);
-    const updatedHeight = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
-    const overflow = Math.abs(outerHeight - innerHeight) <= 1;
-    setState(prevState => {
-      if (updatedHeight > 0 && Math.abs((prevState.height || 0) - updatedHeight) > 1 || prevState.overflow !== overflow) {
-        return {
-          overflow,
-          height: updatedHeight
-        };
-      }
-      return prevState;
-    });
-  }, [maxRows, minRows, textAreaRef, isAutoResizable]);
-  const onChangeHandler = reactExports.useCallback(e => {
-    if (!isControlled) {
-      calculateHeight();
-    }
-    if (onChange) {
-      onChange(e);
-    }
-  }, [calculateHeight, isControlled, onChange]);
-  const theme = reactExports.useContext(Be);
-  const environment = useDocument(theme);
-  reactExports.useEffect(() => {
-    if (!isAutoResizable) {
-      return undefined;
-    }
-    if (environment) {
-      const win = environment.defaultView || window;
-      const resizeHandler = debounce$3(calculateHeight);
-      win.addEventListener('resize', resizeHandler);
-      return () => {
-        resizeHandler.cancel();
-        win.removeEventListener('resize', resizeHandler);
-      };
-    }
-    return undefined;
-  }, [calculateHeight, isAutoResizable, environment]);
-  reactExports.useLayoutEffect(() => {
-    calculateHeight();
-  });
-  const computedStyle = {};
-  if (isAutoResizable) {
-    computedStyle.height = state.height;
-    computedStyle.overflow = state.overflow ? 'hidden' : undefined;
-  }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    ref: mergeRefs([textAreaRef, ref]),
-    rows: minRows,
-    onChange: onChangeHandler,
-    onSelect: onSelectHandler,
-    style: {
-      ...computedStyle,
-      ...style
-    },
-    ...props
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-  }
-  return React__default.createElement(React__default.Fragment, null, React__default.createElement(StyledTextarea$1, combinedProps), isAutoResizable && React__default.createElement(StyledTextarea$1, {
-    "aria-hidden": true,
-    readOnly: true,
-    isHidden: true,
-    className: props.className,
-    ref: shadowTextAreaRef,
-    tabIndex: -1,
-    isBare: props.isBare,
-    isCompact: props.isCompact,
-    style: style
-  }));
-});
-Textarea$1.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  isResizable: PropTypes.bool,
-  minRows: PropTypes.number,
-  maxRows: PropTypes.number,
-  validation: PropTypes.oneOf(VALIDATION$1)
-};
-Textarea$1.displayName = 'Textarea';
-
-const Toggle$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext$1();
-  const fieldContext = useFieldContext$2();
-  let combinedProps = {
-    ref,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(InputContext$1.Provider, {
-    value: "toggle"
-  }, React__default.createElement(StyledToggleInput$1, combinedProps), children);
-});
-Toggle$1.displayName = 'Toggle';
-Toggle$1.propTypes = {
-  isCompact: PropTypes.bool
-};
-
-var _path$k$1;
-function _extends$l$1() { _extends$l$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$l$1.apply(this, arguments); }
-var SvgChevronDownStroke$2 = function SvgChevronDownStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$l$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$k$1 || (_path$k$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "currentColor",
-    d: "M12.688 5.61a.5.5 0 01.69.718l-.066.062-5 4a.5.5 0 01-.542.054l-.082-.054-5-4a.5.5 0 01.55-.83l.074.05L8 9.359l4.688-3.75z"
-  })));
-};
-
-const StartIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure$1, _extends$t$1({
-  position: "start"
-}, props));
-StartIconComponent$1.displayName = 'FauxInput.StartIcon';
-const StartIcon$1 = StartIconComponent$1;
-
-const EndIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure$1, _extends$t$1({
-  position: "end"
-}, props));
-EndIconComponent$1.displayName = 'FauxInput.EndIcon';
-const EndIcon$1 = EndIconComponent$1;
-
-const FauxInputComponent$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    onFocus,
-    onBlur,
-    disabled,
-    readOnly,
-    isFocused: controlledIsFocused,
-    ...props
-  } = _ref;
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$2(onFocus, () => {
-    setIsFocused(true);
-  });
-  const onBlurHandler = composeEventHandlers$2(onBlur, () => {
-    setIsFocused(false);
-  });
-  return React__default.createElement(StyledTextFauxInput$1, _extends$t$1({
-    onFocus: onFocusHandler,
-    onBlur: onBlurHandler,
-    isFocused: controlledIsFocused === undefined ? isFocused : controlledIsFocused,
-    isReadOnly: readOnly,
-    isDisabled: disabled,
-    tabIndex: disabled ? undefined : 0
-  }, props, {
-    ref: ref
-  }));
-});
-FauxInputComponent$1.displayName = 'FauxInput';
-FauxInputComponent$1.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION$1),
-  isFocused: PropTypes.bool,
-  isHovered: PropTypes.bool
-};
-const FauxInput$1 = FauxInputComponent$1;
-FauxInput$1.EndIcon = EndIcon$1;
-FauxInput$1.StartIcon = StartIcon$1;
-
-const Select$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    disabled,
-    isCompact,
-    validation,
-    focusInset,
-    isBare,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$2();
-  let combinedProps = {
-    disabled,
-    isBare,
-    isCompact,
-    validation,
-    focusInset,
-    ref,
-    ...props
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-  }
-  return React__default.createElement(StyledSelectWrapper$1, {
-    isCompact: isCompact,
-    isBare: isBare,
-    validation: validation,
-    focusInset: focusInset
-  }, React__default.createElement(StyledSelect$1, combinedProps), !isBare && React__default.createElement(FauxInput$1.EndIcon, {
-    isDisabled: disabled
-  }, React__default.createElement(SvgChevronDownStroke$2, null)));
-});
-Select$1.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION$1)
-};
-Select$1.displayName = 'Select';
-
-const MIN$1 = 0;
-const MAX$1 = 100;
-const MultiThumbRange$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    min = MIN$1,
-    max = MAX$1,
-    minValue,
-    maxValue,
-    disabled,
-    step,
-    jump,
-    onChange,
-    onMouseDown,
-    ...props
-  } = _ref;
-  const theme = reactExports.useContext(Be);
-  const environment = useDocument(theme);
-  const trackRailRef = reactExports.useRef(null);
-  const minThumbRef = reactExports.useRef(null);
-  const maxThumbRef = reactExports.useRef(null);
-  const {
-    getTrackProps,
-    getMinThumbProps,
-    getMaxThumbProps,
-    trackRect,
-    minValue: updatedMinValue,
-    maxValue: updatedMaxValue
-  } = useSlider({
-    trackRef: trackRailRef,
-    minThumbRef,
-    maxThumbRef,
-    min,
-    max,
-    minValue,
-    maxValue,
-    onChange,
-    step,
-    jump,
-    disabled,
-    rtl: theme.rtl,
-    environment
-  });
-  const {
-    onMouseDown: onSliderMouseDown,
-    ...trackProps
-  } = getTrackProps({
-    onMouseDown
-  });
-  const fieldContext = useFieldContext$2();
-  const {
-    isLabelHovered,
-    isLabelActive,
-    multiThumbRangeRef
-  } = fieldContext || {};
-  reactExports.useEffect(() => {
-    if (multiThumbRangeRef) {
-      multiThumbRangeRef.current = minThumbRef.current;
-    }
-  }, [multiThumbRangeRef]);
-  const minPosition = (updatedMinValue - min) / (max - min) * trackRect.width;
-  const maxPosition = (updatedMaxValue - min) / (max - min) * trackRect.width;
-  const sliderBackgroundSize = Math.abs(maxPosition) - Math.abs(minPosition);
-  return React__default.createElement(StyledSlider$1, _extends$t$1({
-    ref: ref,
-    onMouseDown: onSliderMouseDown
-  }, props), React__default.createElement(StyledSliderTrack$1, {
-    backgroundSize: sliderBackgroundSize,
-    backgroundPosition: theme.rtl ? trackRect.width - maxPosition : minPosition,
-    isDisabled: disabled
-  }, React__default.createElement(StyledSliderTrackRail$1, _extends$t$1({}, trackProps, {
-    ref: trackRailRef
-  }), React__default.createElement(StyledSliderThumb$1, _extends$t$1({}, getMinThumbProps({
-    'aria-label': updatedMinValue
-  }), {
-    isDisabled: disabled,
-    position: minPosition,
-    ref: minThumbRef,
-    "data-garden-active": isLabelActive,
-    "data-garden-hover": isLabelHovered
-  })), React__default.createElement(StyledSliderThumb$1, _extends$t$1({}, getMaxThumbProps({
-    'aria-label': updatedMaxValue
-  }), {
-    isDisabled: disabled,
-    position: maxPosition,
-    ref: maxThumbRef
-  })))));
-});
-MultiThumbRange$1.displayName = 'MultiThumbRange';
-MultiThumbRange$1.propTypes = {
-  min: PropTypes.number,
-  max: PropTypes.number,
-  minValue: PropTypes.number,
-  maxValue: PropTypes.number,
-  step: PropTypes.number,
-  jump: PropTypes.number,
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func
-};
-MultiThumbRange$1.defaultProps = {
-  min: MIN$1,
-  max: MAX$1,
-  step: 1
-};
-
-const TilesContext$1 = reactExports.createContext(undefined);
-const useTilesContext$1 = () => {
-  return reactExports.useContext(TilesContext$1);
-};
-
-const TileComponent$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    children,
-    value,
-    disabled,
-    ...props
-  } = _ref;
-  const tilesContext = useTilesContext$1();
-  const inputRef = reactExports.useRef(null);
-  let inputProps;
-  if (tilesContext) {
-    inputProps = {
-      name: tilesContext.name,
-      checked: tilesContext.value === value,
-      onChange: tilesContext.onChange
-    };
-  }
-  return React__default.createElement(StyledTile$1, _extends$t$1({
-    ref: ref,
-    "aria-disabled": disabled,
-    isDisabled: disabled,
-    isSelected: tilesContext && tilesContext.value === value
-  }, props), children, React__default.createElement(StyledTileInput$1, _extends$t$1({}, inputProps, {
-    disabled: disabled,
-    value: value,
-    type: "radio",
-    ref: inputRef
-  })));
-});
-TileComponent$1.displayName = 'Tiles.Tile';
-TileComponent$1.propTypes = {
-  value: PropTypes.string,
-  disabled: PropTypes.bool
-};
-const Tile$1 = TileComponent$1;
-
-const DescriptionComponent$1 = reactExports.forwardRef((props, ref) => {
-  const tilesContext = useTilesContext$1();
-  return React__default.createElement(StyledTileDescription$1, _extends$t$1({
-    ref: ref,
-    isCentered: tilesContext && tilesContext.isCentered
-  }, props));
-});
-DescriptionComponent$1.displayName = 'Tiles.Description';
-const Description$1 = DescriptionComponent$1;
-
-const IconComponent$1 = reactExports.forwardRef((props, ref) => {
-  const tileContext = useTilesContext$1();
-  return React__default.createElement(StyledTileIcon$1, _extends$t$1({
-    ref: ref,
-    isCentered: tileContext && tileContext.isCentered
-  }, props));
-});
-IconComponent$1.displayName = 'Tiles.Icon';
-const Icon$1 = IconComponent$1;
-
-const LabelComponent$1 = reactExports.forwardRef((props, forwardedRef) => {
-  const [title, setTitle] = reactExports.useState('');
-  const ref = reactExports.useRef();
-  const tilesContext = useTilesContext$1();
-  reactExports.useEffect(() => {
-    if (ref.current) {
-      setTitle(ref.current.textContent || undefined);
-    }
-  }, [ref]);
-  return React__default.createElement(StyledTileLabel$1, _extends$t$1({
-    ref: mergeRefs([ref, forwardedRef]),
-    title: title,
-    isCentered: tilesContext && tilesContext.isCentered
-  }, props));
-});
-LabelComponent$1.displayName = 'Tiles.Label';
-const Label$3 = LabelComponent$1;
-
-const TilesComponent$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    onChange,
-    value: controlledValue,
-    name,
-    isCentered,
-    ...props
-  } = _ref;
-  const [value, setValue] = reactExports.useState(controlledValue);
-  const handleOnChange = reactExports.useCallback(function () {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    setValue(args[0].target.value);
-    if (onChange) {
-      onChange(...args);
-    }
-  }, [onChange]);
-  const selectedValue = getControlledValue(controlledValue, value);
-  const tileContext = reactExports.useMemo(() => ({
-    onChange: handleOnChange,
-    value: selectedValue,
-    name,
-    isCentered
-  }), [handleOnChange, selectedValue, name, isCentered]);
-  return React__default.createElement(TilesContext$1.Provider, {
-    value: tileContext
-  }, React__default.createElement("div", _extends$t$1({
-    ref: ref,
-    role: "radiogroup"
-  }, props)));
-});
-TilesComponent$1.displayName = 'Tiles';
-TilesComponent$1.propTypes = {
-  value: PropTypes.string,
-  onChange: PropTypes.func,
-  name: PropTypes.string.isRequired,
-  isCentered: PropTypes.bool
-};
-TilesComponent$1.defaultProps = {
-  isCentered: true
-};
-const Tiles$1 = TilesComponent$1;
-Tiles$1.Description = Description$1;
-Tiles$1.Icon = Icon$1;
-Tiles$1.Label = Label$3;
-Tiles$1.Tile = Tile$1;
-
-const InputGroup$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    isCompact,
-    ...props
-  } = _ref;
-  const contextValue = reactExports.useMemo(() => ({
-    isCompact
-  }), [isCompact]);
-  return React__default.createElement(InputGroupContext$1.Provider, {
-    value: contextValue
-  }, React__default.createElement(StyledInputGroup$2, _extends$t$1({
-    ref: ref,
-    isCompact: isCompact
-  }, props)));
-});
-InputGroup$1.displayName = 'InputGroup';
-InputGroup$1.propTypes = {
-  isCompact: PropTypes.bool
-};
-
-const FileUpload$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    disabled,
-    ...props
-  } = _ref;
-  return (
-    React__default.createElement(StyledFileUpload$1, _extends$t$1({
-      ref: ref,
-      "aria-disabled": disabled
-    }, props, {
-      role: "button"
-    }))
-  );
-});
-FileUpload$1.propTypes = {
-  isDragging: PropTypes.bool,
-  isCompact: PropTypes.bool,
-  disabled: PropTypes.bool
-};
-FileUpload$1.displayName = 'FileUpload';
-
-const ItemComponent$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    ...props
-  } = _ref;
-  return React__default.createElement(StyledFileListItem$1, _extends$t$1({}, props, {
-    ref: ref
-  }));
-});
-ItemComponent$1.displayName = 'FileList.Item';
-const Item$1 = ItemComponent$1;
-
-const FileListComponent$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    ...props
-  } = _ref;
-  return React__default.createElement(StyledFileList$1, _extends$t$1({}, props, {
-    ref: ref
-  }));
-});
-FileListComponent$1.displayName = 'FileList';
-const FileList$1 = FileListComponent$1;
-FileList$1.Item = Item$1;
-
-var _path$j$1;
-function _extends$k$1() { _extends$k$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$k$1.apply(this, arguments); }
-var SvgXStroke$1$1 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$k$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$j$1 || (_path$j$1 = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 9l6-6m0 6L3 3"
-  })));
-};
-
-var _path$i$1;
-function _extends$j$1() { _extends$j$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$j$1.apply(this, arguments); }
-var SvgXStroke$3 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$j$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$i$1 || (_path$i$1 = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 13L13 3m0 10L3 3"
-  })));
-};
-
-const FileContext$1 = reactExports.createContext(undefined);
-const useFileContext$1 = () => {
-  return reactExports.useContext(FileContext$1);
-};
-
-const CloseComponent$2 = React__default.forwardRef((props, ref) => {
-  const fileContext = useFileContext$1();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
-  );
-  const ariaLabel = useText(CloseComponent$2, props, 'aria-label', 'Close');
-  return React__default.createElement(StyledFileClose$1, _extends$t$1({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1,
-    onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgXStroke$1$1, null) : React__default.createElement(SvgXStroke$3, null));
-});
-CloseComponent$2.displayName = 'File.Close';
-const Close$2 = CloseComponent$2;
-
-var _path$h$1;
-function _extends$i$1() { _extends$i$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$i$1.apply(this, arguments); }
-var SvgTrashStroke$1$1 = function SvgTrashStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$i$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$h$1 || (_path$h$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M2 2.5h8m-5.5 7V5m3 4.5V5m-5-.5V11c0 .3.2.5.5.5h6c.3 0 .5-.2.5-.5V4.5"
-  })));
-};
-
-var _path$g$1;
-function _extends$h$1() { _extends$h$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$h$1.apply(this, arguments); }
-var SvgTrashStroke$2 = function SvgTrashStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$h$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$g$1 || (_path$g$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M6.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M3 2.5h10m-6.5 11v-8m3 8v-8m-6-1V15c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5V4.5"
-  })));
-};
-
-const DeleteComponent$1 = React__default.forwardRef((props, ref) => {
-  const fileContext = useFileContext$1();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
-  );
-  const ariaLabel = useText(DeleteComponent$1, props, 'aria-label', 'Delete');
-  return React__default.createElement(StyledFileDelete$1, _extends$t$1({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1,
-    onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgTrashStroke$1$1, null) : React__default.createElement(SvgTrashStroke$2, null));
-});
-DeleteComponent$1.displayName = 'File.Delete';
-const Delete$1 = DeleteComponent$1;
-
-var _path$f$1, _rect$1$1;
-function _extends$g$1() { _extends$g$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$g$1.apply(this, arguments); }
-var SvgFilePdfStroke$1$1 = function SvgFilePdfStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$g$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$f$1 || (_path$f$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M10.5 3.21V11a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h5.79a.5.5 0 01.35.15l2.21 2.21a.5.5 0 01.15.35zM7.5.5V3a.5.5 0 00.5.5h2.5m-7 6h5"
-  })), _rect$1$1 || (_rect$1$1 = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 6,
-    height: 3,
-    x: 3,
-    y: 5,
-    fill: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })));
-};
-
-var _path$e$1;
-function _extends$f$1() { _extends$f$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$f$1.apply(this, arguments); }
-var SvgFileZipStroke$1$1 = function SvgFileZipStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$f$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$e$1 || (_path$e$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5.5v8m0-6h1m-2 1h1m0 1h1m-2 1h1m0 1h1m-2 1h1m6-4.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-var _path$d$1, _circle$1$1;
-function _extends$e$1() { _extends$e$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e$1.apply(this, arguments); }
-var SvgFileImageStroke$1$1 = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$e$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$d$1 || (_path$d$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5m-7 6L5 8l1.5 1.5 1-1 1 1"
-  })), _circle$1$1 || (_circle$1$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 8,
-    cy: 6,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-var _path$c$1;
-function _extends$d$1() { _extends$d$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d$1.apply(this, arguments); }
-var SvgFileDocumentStroke$1$1 = function SvgFileDocumentStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$d$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$c$1 || (_path$c$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-var _path$b$1;
-function _extends$c$1() { _extends$c$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c$1.apply(this, arguments); }
-var SvgFileSpreadsheetStroke$1$1 = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$c$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$b$1 || (_path$b$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3.5 5.5h1m-1 2h1m-1 2h1m2-4h2m-2 2h2m-2 2h2m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-var _path$a$1;
-function _extends$b$1() { _extends$b$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b$1.apply(this, arguments); }
-var SvgFilePresentationStroke$1$1 = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$b$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$a$1 || (_path$a$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM6 9.5h2c.28 0 .5-.22.5-.5V8c0-.28-.22-.5-.5-.5H6c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm-2-2h2c.28 0 .5-.22.5-.5V6c0-.28-.22-.5-.5-.5H4c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm3.5-7V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-var _path$9$1;
-function _extends$a$1() { _extends$a$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a$1.apply(this, arguments); }
-var SvgFileGenericStroke$1$1 = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$a$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$9$1 || (_path$9$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-var _g$3;
-function _extends$9$1() { _extends$9$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9$1.apply(this, arguments); }
-var SvgCheckCircleStroke$2 = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$9$1({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _g$3 || (_g$3 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M3.5 6l2 2L9 4.5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 6,
-    cy: 6,
-    r: 5.5
-  }))));
-};
-
-var _path$8$1;
-function _extends$8$2() { _extends$8$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8$2.apply(this, arguments); }
-var SvgFileErrorStroke$1$1 = function SvgFileErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$8$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$8$1 || (_path$8$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5M4 9.5l4-4m0 4l-4-4"
-  })));
-};
-
-var _path$7$1, _rect$2;
-function _extends$7$2() { _extends$7$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7$2.apply(this, arguments); }
-var SvgFilePdfStroke$2 = function SvgFilePdfStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$7$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$7$1 || (_path$7$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.2V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.85a.5.5 0 01.36.15l3.15 3.2a.5.5 0 01.14.35zm-10 8.3h7m-7-2h7m-1-10V4a.5.5 0 00.5.5h3.5"
-  })), _rect$2 || (_rect$2 = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 8,
-    height: 2,
-    x: 4,
-    y: 7,
-    fill: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })));
-};
-
-var _path$6$1;
-function _extends$6$2() { _extends$6$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6$2.apply(this, arguments); }
-var SvgFileZipStroke$2 = function SvgFileZipStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$6$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$6$1 || (_path$6$1 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M6.5.5v11M5 2.5h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m8-6.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-var _path$5$2, _circle$6;
-function _extends$5$2() { _extends$5$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5$2.apply(this, arguments); }
-var SvgFileImageStroke$2 = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$5$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$5$2 || (_path$5$2 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5m-11 9l2.65-2.65c.2-.2.51-.2.71 0l1.79 1.79c.2.2.51.2.71 0l.79-.79c.2-.2.51-.2.71 0l1.65 1.65"
-  })), _circle$6 || (_circle$6 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 10.5,
-    cy: 8.5,
-    r: 1.5,
-    fill: "currentColor"
-  })));
-};
-
-var _path$4$2;
-function _extends$4$2() { _extends$4$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4$2.apply(this, arguments); }
-var SvgFileDocumentStroke$2 = function SvgFileDocumentStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$4$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$4$2 || (_path$4$2 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 7.5h7m-7 1.97h7m-7 2h7m3-7.27V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-var _path$3$2;
-function _extends$3$2() { _extends$3$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$2.apply(this, arguments); }
-var SvgFileSpreadsheetStroke$2 = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$3$2 || (_path$3$2 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 7.5h2m-2 2h2m-2 2h2m2-4h3m-3 2h3m-3 2h3m3-7.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-var _path$2$2;
-function _extends$2$2() { _extends$2$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$2$2.apply(this, arguments); }
-var SvgFilePresentationStroke$2 = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$2$2({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$2$2 || (_path$2$2 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5M7 9.5h4c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5H7c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5zm-.5 2H5c-.28 0-.5-.22-.5-.5V8c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5v1.5"
-  })));
-};
-
-var _path$1$2;
-function _extends$1$3() { _extends$1$3 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1$3.apply(this, arguments); }
-var SvgFileGenericStroke$2 = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$1$3({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$1$2 || (_path$1$2 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-var _path$p;
-function _extends$v() { _extends$v = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$v.apply(this, arguments); }
-var SvgFileErrorStroke$2 = function SvgFileErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$v({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$p || (_path$p = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.205V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.853a.5.5 0 01.356.15l3.148 3.204a.5.5 0 01.143.35zM10.5.5V4a.5.5 0 00.5.5h3.5m-9 8l5-5m0 5l-5-5"
-  })));
-};
-
-const fileIconsDefault$1 = {
-  pdf: React__default.createElement(SvgFilePdfStroke$2, null),
-  zip: React__default.createElement(SvgFileZipStroke$2, null),
-  image: React__default.createElement(SvgFileImageStroke$2, null),
-  document: React__default.createElement(SvgFileDocumentStroke$2, null),
-  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke$2, null),
-  presentation: React__default.createElement(SvgFilePresentationStroke$2, null),
-  generic: React__default.createElement(SvgFileGenericStroke$2, null),
-  success: React__default.createElement(SvgCheckCircleStroke$1$1, null),
-  error: React__default.createElement(SvgFileErrorStroke$2, null)
-};
-const fileIconsCompact$1 = {
-  pdf: React__default.createElement(SvgFilePdfStroke$1$1, null),
-  zip: React__default.createElement(SvgFileZipStroke$1$1, null),
-  image: React__default.createElement(SvgFileImageStroke$1$1, null),
-  document: React__default.createElement(SvgFileDocumentStroke$1$1, null),
-  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke$1$1, null),
-  presentation: React__default.createElement(SvgFilePresentationStroke$1$1, null),
-  generic: React__default.createElement(SvgFileGenericStroke$1$1, null),
-  success: React__default.createElement(SvgCheckCircleStroke$2, null),
-  error: React__default.createElement(SvgFileErrorStroke$1$1, null)
-};
-
-const FileComponent$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    children,
-    type,
-    isCompact,
-    focusInset,
-    validation,
-    ...props
-  } = _ref;
-  const fileContextValue = reactExports.useMemo(() => ({
-    isCompact
-  }), [isCompact]);
-  const validationType = validation || type;
-  return React__default.createElement(FileContext$1.Provider, {
-    value: fileContextValue
-  }, React__default.createElement(StyledFile$1, _extends$t$1({}, props, {
-    isCompact: isCompact,
-    focusInset: focusInset,
-    validation: validation,
-    ref: ref
-  }), validationType && React__default.createElement(StyledFileIcon$1, {
-    isCompact: isCompact
-  }, isCompact ? fileIconsCompact$1[validationType] : fileIconsDefault$1[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? React__default.createElement("span", null, child) : child)));
-});
-FileComponent$1.displayName = 'File';
-FileComponent$1.propTypes = {
-  focusInset: PropTypes.bool,
-  isCompact: PropTypes.bool,
-  type: PropTypes.oneOf(FILE_TYPE$1),
-  validation: PropTypes.oneOf(FILE_VALIDATION$1)
-};
-const File$1 = FileComponent$1;
-File$1.Close = Close$2;
-File$1.Delete = Delete$1;
-
-const MediaInput$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    start,
-    end,
-    disabled,
-    isCompact,
-    isBare,
-    focusInset,
-    readOnly,
-    validation,
-    wrapperProps = {},
-    wrapperRef,
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$2();
-  const inputRef = reactExports.useRef();
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const [isHovered, setIsHovered] = reactExports.useState(false);
-  const {
-    onClick,
-    onFocus,
-    onBlur,
-    onMouseOver,
-    onMouseOut,
-    ...otherWrapperProps
-  } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$2(onClick, () => {
-    inputRef.current && inputRef.current.focus();
-  });
-  const onFauxInputFocusHandler = composeEventHandlers$2(onFocus, () => {
-    setIsFocused(true);
-  });
-  const onFauxInputBlurHandler = composeEventHandlers$2(onBlur, () => {
-    setIsFocused(false);
-  });
-  const onFauxInputMouseOverHandler = composeEventHandlers$2(onMouseOver, () => {
-    setIsHovered(true);
-  });
-  const onFauxInputMouseOutHandler = composeEventHandlers$2(onMouseOut, () => {
-    setIsHovered(false);
-  });
-  const onSelectHandler = readOnly ? composeEventHandlers$2(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    disabled,
-    readOnly,
-    ref: mergeRefs([inputRef, ref]),
-    onSelect: onSelectHandler,
-    ...props
-  };
-  let isLabelHovered;
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps, {
-      isDescribed: true
-    });
-    isLabelHovered = fieldContext.isLabelHovered;
-  }
-  return React__default.createElement(FauxInput$1, _extends$t$1({
-    tabIndex: null,
-    onClick: onFauxInputClickHandler,
-    onFocus: onFauxInputFocusHandler,
-    onBlur: onFauxInputBlurHandler,
-    onMouseOver: onFauxInputMouseOverHandler,
-    onMouseOut: onFauxInputMouseOutHandler,
-    disabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered,
-    isCompact: isCompact,
-    isBare: isBare,
-    focusInset: focusInset,
-    readOnly: readOnly,
-    validation: validation,
-    mediaLayout: true
-  }, otherWrapperProps, {
-    ref: wrapperRef
-  }), start && React__default.createElement(FauxInput$1.StartIcon, {
-    isDisabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered
-  }, start), React__default.createElement(StyledTextMediaInput$1, combinedProps), end && React__default.createElement(FauxInput$1.EndIcon, {
-    isDisabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered
-  }, end));
-});
-MediaInput$1.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION$1),
-  start: PropTypes.node,
-  end: PropTypes.node,
-  wrapperProps: PropTypes.object,
-  wrapperRef: PropTypes.any
-};
-MediaInput$1.displayName = 'MediaInput';
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-function composeEventHandlers() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-const KEYS = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-
-var DocumentPosition;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-const useField = _ref => {
-  let {
-    idPrefix,
-    hasHint,
-    hasMessage
-  } = _ref;
-  const prefix = useId(idPrefix);
-  const inputId = `${prefix}--input`;
-  const labelId = `${prefix}--label`;
-  const hintId = `${prefix}--hint`;
-  const messageId = `${prefix}--message`;
-  const getLabelProps = reactExports.useCallback(function (_temp) {
-    let {
-      id = labelId,
-      htmlFor = inputId,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    return {
-      'data-garden-container-id': 'containers.field.label',
-      'data-garden-container-version': '3.0.6',
-      id,
-      htmlFor,
-      ...other
-    };
-  }, [labelId, inputId]);
-  const getHintProps = reactExports.useCallback(function (_temp2) {
-    let {
-      id = hintId,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    return {
-      'data-garden-container-id': 'containers.field.hint',
-      'data-garden-container-version': '3.0.6',
-      id,
-      ...other
-    };
-  }, [hintId]);
-  const getInputProps = reactExports.useCallback(function (_temp3) {
-    let {
-      id = inputId,
-      ...other
-    } = _temp3 === void 0 ? {} : _temp3;
-    const describedBy = [];
-    if (hasHint) {
-      describedBy.push(hintId);
-    }
-    if (hasMessage) {
-      describedBy.push(messageId);
-    }
-    return {
-      'data-garden-container-id': 'containers.field.input',
-      'data-garden-container-version': '3.0.6',
-      id,
-      'aria-labelledby': labelId,
-      'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined,
-      ...other
-    };
-  }, [inputId, labelId, hintId, messageId, hasHint, hasMessage]);
-  const getMessageProps = reactExports.useCallback(function (_temp4) {
-    let {
-      id = messageId,
-      role = 'alert',
-      ...other
-    } = _temp4 === void 0 ? {} : _temp4;
-    return {
-      'data-garden-container-id': 'containers.field.message',
-      'data-garden-container-version': '3.0.6',
-      role: role === null ? undefined : role,
-      id,
-      ...other
-    };
-  }, [messageId]);
-  return reactExports.useMemo(() => ({
-    getLabelProps,
-    getHintProps,
-    getInputProps,
-    getMessageProps
-  }), [getLabelProps, getHintProps, getInputProps, getMessageProps]);
-};
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  idPrefix: PropTypes.string,
-  hasHint: PropTypes.bool,
-  hasMessage: PropTypes.bool
-});
-
-function _objectWithoutPropertiesLoose(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-  return target;
-}
-
-let e=e=>"object"==typeof e&&null!=e&&1===e.nodeType,t=(e,t)=>(!t||"hidden"!==e)&&("visible"!==e&&"clip"!==e),n=(e,n)=>{if(e.clientHeight<e.scrollHeight||e.clientWidth<e.scrollWidth){let l=getComputedStyle(e,null);return t(l.overflowY,n)||t(l.overflowX,n)||(e=>{let t=(e=>{if(!e.ownerDocument||!e.ownerDocument.defaultView)return null;try{return e.ownerDocument.defaultView.frameElement}catch(e){return null}})(e);return !!t&&(t.clientHeight<e.scrollHeight||t.clientWidth<e.scrollWidth)})(e)}return !1},l=(e,t,n,l,i,o,r,d)=>o<e&&r>t||o>e&&r<t?0:o<=e&&d<=n||r>=t&&d>=n?o-e-l:r>t&&d<n||o<e&&d>n?r-t+i:0,i=e=>{let t=e.parentElement;return null==t?e.getRootNode().host||null:t};var o=(t,o)=>{var r,d,h,f,u,s;if("undefined"==typeof document)return [];let{scrollMode:a,block:c,inline:g,boundary:m,skipOverflowHiddenElements:p}=o,w="function"==typeof m?m:e=>e!==m;if(!e(t))throw new TypeError("Invalid target");let W=document.scrollingElement||document.documentElement,H=[],b=t;for(;e(b)&&w(b);){if(b=i(b),b===W){H.push(b);break}null!=b&&b===document.body&&n(b)&&!n(document.documentElement)||null!=b&&n(b,p)&&H.push(b);}let v=null!=(d=null==(r=window.visualViewport)?void 0:r.width)?d:innerWidth,y=null!=(f=null==(h=window.visualViewport)?void 0:h.height)?f:innerHeight,E=null!=(u=window.scrollX)?u:pageXOffset,M=null!=(s=window.scrollY)?s:pageYOffset,{height:x,width:I,top:C,right:R,bottom:T,left:V}=t.getBoundingClientRect(),k="start"===c||"nearest"===c?C:"end"===c?T:C+x/2,B="center"===g?V+I/2:"end"===g?R:V,D=[];for(let e=0;e<H.length;e++){let t=H[e],{height:n,width:i,top:o,right:r,bottom:d,left:h}=t.getBoundingClientRect();if("if-needed"===a&&C>=0&&V>=0&&T<=y&&R<=v&&C>=o&&T<=d&&V>=h&&R<=r)return D;let f=getComputedStyle(t),u=parseInt(f.borderLeftWidth,10),s=parseInt(f.borderTopWidth,10),m=parseInt(f.borderRightWidth,10),p=parseInt(f.borderBottomWidth,10),w=0,b=0,O="offsetWidth"in t?t.offsetWidth-t.clientWidth-u-m:0,X="offsetHeight"in t?t.offsetHeight-t.clientHeight-s-p:0,Y="offsetWidth"in t?0===t.offsetWidth?0:i/t.offsetWidth:0,L="offsetHeight"in t?0===t.offsetHeight?0:n/t.offsetHeight:0;if(W===t)w="start"===c?k:"end"===c?k-y:"nearest"===c?l(M,M+y,y,s,p,M+k,M+k+x,x):k-y/2,b="start"===g?B:"center"===g?B-v/2:"end"===g?B-v:l(E,E+v,v,u,m,E+B,E+B+I,I),w=Math.max(0,w+M),b=Math.max(0,b+E);else {w="start"===c?k-o-s:"end"===c?k-d+p+X:"nearest"===c?l(o,d,n,s,p+X,k,k+x,x):k-(o+n/2)+X/2,b="start"===g?B-h-u:"center"===g?B-(h+i/2)+O/2:"end"===g?B-r+m+O:l(h,r,i,u,m+O,B,B+I,I);let{scrollLeft:e,scrollTop:f}=t;w=Math.max(0,Math.min(f+w/L,t.scrollHeight-n/L+X)),b=Math.max(0,Math.min(e+b/Y,t.scrollWidth-i/Y+O)),k+=f-w,B+=e-b;}D.push({el:t,top:w,left:b});}return D};
-
-/******************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
-var idCounter = 0;
-function noop() {}
-
-/**
- * Scroll node into view if necessary
- * @param {HTMLElement} node the element that should scroll into view
- * @param {HTMLElement} menuNode the menu element of the component
- */
-function scrollIntoView(node, menuNode) {
-  if (!node) {
-    return;
-  }
-  var actions = o(node, {
-    boundary: menuNode,
-    block: 'nearest',
-    scrollMode: 'if-needed'
-  });
-  actions.forEach(function (_ref) {
-    var el = _ref.el,
-      top = _ref.top,
-      left = _ref.left;
-    el.scrollTop = top;
-    el.scrollLeft = left;
-  });
-}
-
-/**
- * @param {HTMLElement} parent the parent node
- * @param {HTMLElement} child the child node
- * @param {Window} environment The window context where downshift renders.
- * @return {Boolean} whether the parent is the child or the child is in the parent
- */
-function isOrContainsNode(parent, child, environment) {
-  var result = parent === child || child instanceof environment.Node && parent.contains && parent.contains(child);
-  return result;
-}
-
-/**
- * Simple debounce implementation. Will call the given
- * function once after the time given has passed since
- * it was last called.
- * @param {Function} fn the function to call after the time
- * @param {Number} time the time to wait
- * @return {Function} the debounced function
- */
-function debounce$1(fn, time) {
-  var timeoutId;
-  function cancel() {
-    if (timeoutId) {
-      clearTimeout(timeoutId);
-    }
-  }
-  function wrapper() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    cancel();
-    timeoutId = setTimeout(function () {
-      timeoutId = null;
-      fn.apply(void 0, args);
-    }, time);
-  }
-  wrapper.cancel = cancel;
-  return wrapper;
-}
-
-/**
- * This is intended to be used to compose event handlers.
- * They are executed in order until one of them sets
- * `event.preventDownshiftDefault = true`.
- * @param {...Function} fns the event handler functions
- * @return {Function} the event handler to add to an element
- */
-function callAllEventHandlers() {
-  for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-    fns[_key2] = arguments[_key2];
-  }
-  return function (event) {
-    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-      args[_key3 - 1] = arguments[_key3];
-    }
-    return fns.some(function (fn) {
-      if (fn) {
-        fn.apply(void 0, [event].concat(args));
-      }
-      return event.preventDownshiftDefault || event.hasOwnProperty('nativeEvent') && event.nativeEvent.preventDownshiftDefault;
-    });
-  };
-}
-function handleRefs() {
-  for (var _len4 = arguments.length, refs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-    refs[_key4] = arguments[_key4];
-  }
-  return function (node) {
-    refs.forEach(function (ref) {
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) {
-        ref.current = node;
-      }
-    });
-  };
-}
-
-/**
- * This generates a unique ID for an instance of Downshift
- * @return {String} the unique ID
- */
-function generateId() {
-  return String(idCounter++);
-}
-
-/**
- * Default implementation for status message. Only added when menu is open.
- * Will specify if there are results in the list, and if so, how many,
- * and what keys are relevant.
- *
- * @param {Object} param the downshift state and other relevant properties
- * @return {String} the a11y status message
- */
-function getA11yStatusMessage$1(_ref2) {
-  var isOpen = _ref2.isOpen,
-    resultCount = _ref2.resultCount,
-    previousResultCount = _ref2.previousResultCount;
-  if (!isOpen) {
-    return '';
-  }
-  if (!resultCount) {
-    return 'No results are available.';
-  }
-  if (resultCount !== previousResultCount) {
-    return resultCount + " result" + (resultCount === 1 ? ' is' : 's are') + " available, use up and down arrow keys to navigate. Press Enter key to select.";
-  }
-  return '';
-}
-
-/**
- * This will perform a shallow merge of the given state object
- * with the state coming from props
- * (for the controlled component scenario)
- * This is used in state updater functions so they're referencing
- * the right state regardless of where it comes from.
- *
- * @param {Object} state The state of the component/hook.
- * @param {Object} props The props that may contain controlled values.
- * @returns {Object} The merged controlled state.
- */
-function getState(state, props) {
-  return Object.keys(state).reduce(function (prevState, key) {
-    prevState[key] = isControlledProp(props, key) ? props[key] : state[key];
-    return prevState;
-  }, {});
-}
-
-/**
- * This determines whether a prop is a "controlled prop" meaning it is
- * state which is controlled by the outside of this component rather
- * than within this component.
- *
- * @param {Object} props The props that may contain controlled values.
- * @param {String} key the key to check
- * @return {Boolean} whether it is a controlled controlled prop
- */
-function isControlledProp(props, key) {
-  return props[key] !== undefined;
-}
-
-/**
- * Normalizes the 'key' property of a KeyboardEvent in IE/Edge
- * @param {Object} event a keyboardEvent object
- * @return {String} keyboard key
- */
-function normalizeArrowKey(event) {
-  var key = event.key,
-    keyCode = event.keyCode;
-  /* istanbul ignore next (ie) */
-  if (keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0) {
-    return "Arrow" + key;
-  }
-  return key;
-}
-
-/**
- * Returns the new index in the list, in a circular way. If next value is out of bonds from the total,
- * it will wrap to either 0 or itemCount - 1.
- *
- * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
- * @param {number} baseIndex The initial position to move from.
- * @param {number} itemCount The total number of items.
- * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
- * @param {boolean} circular Specify if navigation is circular. Default is true.
- * @returns {number} The new index after the move.
- */
-function getNextWrappingIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
-  if (circular === void 0) {
-    circular = true;
-  }
-  if (itemCount === 0) {
-    return -1;
-  }
-  var itemsLastIndex = itemCount - 1;
-  if (typeof baseIndex !== 'number' || baseIndex < 0 || baseIndex >= itemCount) {
-    baseIndex = moveAmount > 0 ? -1 : itemsLastIndex + 1;
-  }
-  var newIndex = baseIndex + moveAmount;
-  if (newIndex < 0) {
-    newIndex = circular ? itemsLastIndex : 0;
-  } else if (newIndex > itemsLastIndex) {
-    newIndex = circular ? 0 : itemsLastIndex;
-  }
-  var nonDisabledNewIndex = getNextNonDisabledIndex(moveAmount, newIndex, itemCount, getItemNodeFromIndex, circular);
-  if (nonDisabledNewIndex === -1) {
-    return baseIndex >= itemCount ? -1 : baseIndex;
-  }
-  return nonDisabledNewIndex;
-}
-
-/**
- * Returns the next index in the list of an item that is not disabled.
- *
- * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
- * @param {number} baseIndex The initial position to move from.
- * @param {number} itemCount The total number of items.
- * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
- * @param {boolean} circular Specify if navigation is circular. Default is true.
- * @returns {number} The new index. Returns baseIndex if item is not disabled. Returns next non-disabled item otherwise. If no non-disabled found it will return -1.
- */
-function getNextNonDisabledIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
-  var currentElementNode = getItemNodeFromIndex(baseIndex);
-  if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
-    return baseIndex;
-  }
-  if (moveAmount > 0) {
-    for (var index = baseIndex + 1; index < itemCount; index++) {
-      if (!getItemNodeFromIndex(index).hasAttribute('disabled')) {
-        return index;
-      }
-    }
-  } else {
-    for (var _index = baseIndex - 1; _index >= 0; _index--) {
-      if (!getItemNodeFromIndex(_index).hasAttribute('disabled')) {
-        return _index;
-      }
-    }
-  }
-  if (circular) {
-    return moveAmount > 0 ? getNextNonDisabledIndex(1, 0, itemCount, getItemNodeFromIndex, false) : getNextNonDisabledIndex(-1, itemCount - 1, itemCount, getItemNodeFromIndex, false);
-  }
-  return -1;
-}
-
-/**
- * Checks if event target is within the downshift elements.
- *
- * @param {EventTarget} target Target to check.
- * @param {HTMLElement[]} downshiftElements The elements that form downshift (list, toggle button etc).
- * @param {Window} environment The window context where downshift renders.
- * @param {boolean} checkActiveElement Whether to also check activeElement.
- *
- * @returns {boolean} Whether or not the target is within downshift elements.
- */
-function targetWithinDownshift(target, downshiftElements, environment, checkActiveElement) {
-  if (checkActiveElement === void 0) {
-    checkActiveElement = true;
-  }
-  return downshiftElements.some(function (contextNode) {
-    return contextNode && (isOrContainsNode(contextNode, target, environment) || checkActiveElement && isOrContainsNode(contextNode, environment.document.activeElement, environment));
-  });
-}
-
-var cleanupStatus = debounce$1(function (documentProp) {
-  getStatusDiv(documentProp).textContent = '';
-}, 500);
-
-/**
- * @param {String} status the status message
- * @param {Object} documentProp document passed by the user.
- */
-function setStatus(status, documentProp) {
-  var div = getStatusDiv(documentProp);
-  if (!status) {
-    return;
-  }
-  div.textContent = status;
-  cleanupStatus(documentProp);
-}
-
-/**
- * Get the status node or create it if it does not already exist.
- * @param {Object} documentProp document passed by the user.
- * @return {HTMLElement} the status node.
- */
-function getStatusDiv(documentProp) {
-  if (documentProp === void 0) {
-    documentProp = document;
-  }
-  var statusDiv = documentProp.getElementById('a11y-status-message');
-  if (statusDiv) {
-    return statusDiv;
-  }
-  statusDiv = documentProp.createElement('div');
-  statusDiv.setAttribute('id', 'a11y-status-message');
-  statusDiv.setAttribute('role', 'status');
-  statusDiv.setAttribute('aria-live', 'polite');
-  statusDiv.setAttribute('aria-relevant', 'additions text');
-  Object.assign(statusDiv.style, {
-    border: '0',
-    clip: 'rect(0 0 0 0)',
-    height: '1px',
-    margin: '-1px',
-    overflow: 'hidden',
-    padding: '0',
-    position: 'absolute',
-    width: '1px'
-  });
-  documentProp.body.appendChild(statusDiv);
-  return statusDiv;
-}
-
-var _excluded$3 = ["isInitialMount", "highlightedIndex", "items", "environment"];
-var dropdownDefaultStateValues = {
-  highlightedIndex: -1,
-  isOpen: false,
-  selectedItem: null,
-  inputValue: ''
-};
-function callOnChangeProps(action, state, newState) {
-  var props = action.props,
-    type = action.type;
-  var changes = {};
-  Object.keys(state).forEach(function (key) {
-    invokeOnChangeHandler(key, action, state, newState);
-    if (newState[key] !== state[key]) {
-      changes[key] = newState[key];
-    }
-  });
-  if (props.onStateChange && Object.keys(changes).length) {
-    props.onStateChange(_extends$x({
-      type: type
-    }, changes));
-  }
-}
-function invokeOnChangeHandler(key, action, state, newState) {
-  var props = action.props,
-    type = action.type;
-  var handler = "on" + capitalizeString(key) + "Change";
-  if (props[handler] && newState[key] !== undefined && newState[key] !== state[key]) {
-    props[handler](_extends$x({
-      type: type
-    }, newState));
-  }
-}
-
-/**
- * Default state reducer that returns the changes.
- *
- * @param {Object} s state.
- * @param {Object} a action with changes.
- * @returns {Object} changes.
- */
-function stateReducer(s, a) {
-  return a.changes;
-}
-
-/**
- * Returns a message to be added to aria-live region when item is selected.
- *
- * @param {Object} selectionParameters Parameters required to build the message.
- * @returns {string} The a11y message.
- */
-function getA11ySelectionMessage(selectionParameters) {
-  var selectedItem = selectionParameters.selectedItem,
-    itemToStringLocal = selectionParameters.itemToString;
-  return selectedItem ? itemToStringLocal(selectedItem) + " has been selected." : '';
-}
-
-/**
- * Debounced call for updating the a11y message.
- */
-var updateA11yStatus = debounce$1(function (getA11yMessage, document) {
-  setStatus(getA11yMessage(), document);
-}, 200);
-
-// istanbul ignore next
-var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? reactExports.useLayoutEffect : reactExports.useEffect;
-function useElementIds(_ref) {
-  var _ref$id = _ref.id,
-    id = _ref$id === void 0 ? "downshift-" + generateId() : _ref$id,
-    labelId = _ref.labelId,
-    menuId = _ref.menuId,
-    getItemId = _ref.getItemId,
-    toggleButtonId = _ref.toggleButtonId,
-    inputId = _ref.inputId;
-  var elementIdsRef = reactExports.useRef({
-    labelId: labelId || id + "-label",
-    menuId: menuId || id + "-menu",
-    getItemId: getItemId || function (index) {
-      return id + "-item-" + index;
-    },
-    toggleButtonId: toggleButtonId || id + "-toggle-button",
-    inputId: inputId || id + "-input"
-  });
-  return elementIdsRef.current;
-}
-function getItemAndIndex(itemProp, indexProp, items, errorMessage) {
-  var item, index;
-  if (itemProp === undefined) {
-    if (indexProp === undefined) {
-      throw new Error(errorMessage);
-    }
-    item = items[indexProp];
-    index = indexProp;
-  } else {
-    index = indexProp === undefined ? items.indexOf(itemProp) : indexProp;
-    item = itemProp;
-  }
-  return [item, index];
-}
-function itemToString(item) {
-  return item ? String(item) : '';
-}
-function capitalizeString(string) {
-  return "" + string.slice(0, 1).toUpperCase() + string.slice(1);
-}
-function useLatestRef$1(val) {
-  var ref = reactExports.useRef(val);
-  // technically this is not "concurrent mode safe" because we're manipulating
-  // the value during render (so it's not idempotent). However, the places this
-  // hook is used is to support memoizing callbacks which will be called
-  // *during* render, so we need the latest values *during* render.
-  // If not for this, then we'd probably want to use useLayoutEffect instead.
-  ref.current = val;
-  return ref;
-}
-
-/**
- * Computes the controlled state using a the previous state, props,
- * two reducers, one from downshift and an optional one from the user.
- * Also calls the onChange handlers for state values that have changed.
- *
- * @param {Function} reducer Reducer function from downshift.
- * @param {Object} initialState Initial state of the hook.
- * @param {Object} props The hook props.
- * @returns {Array} An array with the state and an action dispatcher.
- */
-function useEnhancedReducer(reducer, initialState, props) {
-  var prevStateRef = reactExports.useRef();
-  var actionRef = reactExports.useRef();
-  var enhancedReducer = reactExports.useCallback(function (state, action) {
-    actionRef.current = action;
-    state = getState(state, action.props);
-    var changes = reducer(state, action);
-    var newState = action.props.stateReducer(state, _extends$x({}, action, {
-      changes: changes
-    }));
-    return newState;
-  }, [reducer]);
-  var _useReducer = reactExports.useReducer(enhancedReducer, initialState),
-    state = _useReducer[0],
-    dispatch = _useReducer[1];
-  var propsRef = useLatestRef$1(props);
-  var dispatchWithProps = reactExports.useCallback(function (action) {
-    return dispatch(_extends$x({
-      props: propsRef.current
-    }, action));
-  }, [propsRef]);
-  var action = actionRef.current;
-  reactExports.useEffect(function () {
-    if (action && prevStateRef.current && prevStateRef.current !== state) {
-      callOnChangeProps(action, getState(prevStateRef.current, action.props), state);
-    }
-    prevStateRef.current = state;
-  }, [state, props, action]);
-  return [state, dispatchWithProps];
-}
-var defaultProps$3 = {
-  itemToString: itemToString,
-  stateReducer: stateReducer,
-  getA11ySelectionMessage: getA11ySelectionMessage,
-  scrollIntoView: scrollIntoView,
-  environment: /* istanbul ignore next (ssr) */
-  typeof window === 'undefined' ? {} : window
-};
-function getDefaultValue$1(props, propKey, defaultStateValues) {
-  if (defaultStateValues === void 0) {
-    defaultStateValues = dropdownDefaultStateValues;
-  }
-  var defaultValue = props["default" + capitalizeString(propKey)];
-  if (defaultValue !== undefined) {
-    return defaultValue;
-  }
-  return defaultStateValues[propKey];
-}
-function getInitialValue$1(props, propKey, defaultStateValues) {
-  if (defaultStateValues === void 0) {
-    defaultStateValues = dropdownDefaultStateValues;
-  }
-  var value = props[propKey];
-  if (value !== undefined) {
-    return value;
-  }
-  var initialValue = props["initial" + capitalizeString(propKey)];
-  if (initialValue !== undefined) {
-    return initialValue;
-  }
-  return getDefaultValue$1(props, propKey, defaultStateValues);
-}
-function getInitialState$2(props) {
-  var selectedItem = getInitialValue$1(props, 'selectedItem');
-  var isOpen = getInitialValue$1(props, 'isOpen');
-  var highlightedIndex = getInitialValue$1(props, 'highlightedIndex');
-  var inputValue = getInitialValue$1(props, 'inputValue');
-  return {
-    highlightedIndex: highlightedIndex < 0 && selectedItem && isOpen ? props.items.indexOf(selectedItem) : highlightedIndex,
-    isOpen: isOpen,
-    selectedItem: selectedItem,
-    inputValue: inputValue
-  };
-}
-function getHighlightedIndexOnOpen(props, state, offset) {
-  var items = props.items,
-    initialHighlightedIndex = props.initialHighlightedIndex,
-    defaultHighlightedIndex = props.defaultHighlightedIndex;
-  var selectedItem = state.selectedItem,
-    highlightedIndex = state.highlightedIndex;
-  if (items.length === 0) {
-    return -1;
-  }
-
-  // initialHighlightedIndex will give value to highlightedIndex on initial state only.
-  if (initialHighlightedIndex !== undefined && highlightedIndex === initialHighlightedIndex) {
-    return initialHighlightedIndex;
-  }
-  if (defaultHighlightedIndex !== undefined) {
-    return defaultHighlightedIndex;
-  }
-  if (selectedItem) {
-    return items.indexOf(selectedItem);
-  }
-  if (offset === 0) {
-    return -1;
-  }
-  return offset < 0 ? items.length - 1 : 0;
-}
-
-/**
- * Reuse the movement tracking of mouse and touch events.
- *
- * @param {boolean} isOpen Whether the dropdown is open or not.
- * @param {Array<Object>} downshiftElementRefs Downshift element refs to track movement (toggleButton, menu etc.)
- * @param {Object} environment Environment where component/hook exists.
- * @param {Function} handleBlur Handler on blur from mouse or touch.
- * @returns {Object} Ref containing whether mouseDown or touchMove event is happening
- */
-function useMouseAndTouchTracker(isOpen, downshiftElementRefs, environment, handleBlur) {
-  var mouseAndTouchTrackersRef = reactExports.useRef({
-    isMouseDown: false,
-    isTouchMove: false
-  });
-  reactExports.useEffect(function () {
-    if ((environment == null ? void 0 : environment.addEventListener) == null) {
-      return;
-    }
-
-    // The same strategy for checking if a click occurred inside or outside downshift
-    // as in downshift.js.
-    var onMouseDown = function onMouseDown() {
-      mouseAndTouchTrackersRef.current.isMouseDown = true;
-    };
-    var onMouseUp = function onMouseUp(event) {
-      mouseAndTouchTrackersRef.current.isMouseDown = false;
-      if (isOpen && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
-        return ref.current;
-      }), environment)) {
-        handleBlur();
-      }
-    };
-    var onTouchStart = function onTouchStart() {
-      mouseAndTouchTrackersRef.current.isTouchMove = false;
-    };
-    var onTouchMove = function onTouchMove() {
-      mouseAndTouchTrackersRef.current.isTouchMove = true;
-    };
-    var onTouchEnd = function onTouchEnd(event) {
-      if (isOpen && !mouseAndTouchTrackersRef.current.isTouchMove && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
-        return ref.current;
-      }), environment, false)) {
-        handleBlur();
-      }
-    };
-    environment.addEventListener('mousedown', onMouseDown);
-    environment.addEventListener('mouseup', onMouseUp);
-    environment.addEventListener('touchstart', onTouchStart);
-    environment.addEventListener('touchmove', onTouchMove);
-    environment.addEventListener('touchend', onTouchEnd);
-
-    // eslint-disable-next-line consistent-return
-    return function cleanup() {
-      environment.removeEventListener('mousedown', onMouseDown);
-      environment.removeEventListener('mouseup', onMouseUp);
-      environment.removeEventListener('touchstart', onTouchStart);
-      environment.removeEventListener('touchmove', onTouchMove);
-      environment.removeEventListener('touchend', onTouchEnd);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen, environment]);
-  return mouseAndTouchTrackersRef;
-}
-
-/* istanbul ignore next */
-// eslint-disable-next-line import/no-mutable-exports
-var useGetterPropsCalledChecker = function useGetterPropsCalledChecker() {
-  return noop;
-};
-function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref2) {
-  var isInitialMount = _ref2.isInitialMount,
-    highlightedIndex = _ref2.highlightedIndex,
-    items = _ref2.items,
-    environment = _ref2.environment,
-    rest = _objectWithoutPropertiesLoose(_ref2, _excluded$3);
-  // Sets a11y status message on changes in state.
-  reactExports.useEffect(function () {
-    if (isInitialMount || false) {
-      return;
-    }
-    updateA11yStatus(function () {
-      return getA11yMessage(_extends$x({
-        highlightedIndex: highlightedIndex,
-        highlightedItem: items[highlightedIndex],
-        resultCount: items.length
-      }, rest));
-    }, environment.document);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, dependencyArray);
-}
-function useScrollIntoView(_ref3) {
-  var highlightedIndex = _ref3.highlightedIndex,
-    isOpen = _ref3.isOpen,
-    itemRefs = _ref3.itemRefs,
-    getItemNodeFromIndex = _ref3.getItemNodeFromIndex,
-    menuElement = _ref3.menuElement,
-    scrollIntoViewProp = _ref3.scrollIntoView;
-  // used not to scroll on highlight by mouse.
-  var shouldScrollRef = reactExports.useRef(true);
-  // Scroll on highlighted item if change comes from keyboard.
-  useIsomorphicLayoutEffect(function () {
-    if (highlightedIndex < 0 || !isOpen || !Object.keys(itemRefs.current).length) {
-      return;
-    }
-    if (shouldScrollRef.current === false) {
-      shouldScrollRef.current = true;
-    } else {
-      scrollIntoViewProp(getItemNodeFromIndex(highlightedIndex), menuElement);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [highlightedIndex]);
-  return shouldScrollRef;
-}
-
-// eslint-disable-next-line import/no-mutable-exports
-var useControlPropsValidator = noop;
-
-/**
- * Handles selection on Enter / Alt + ArrowUp. Closes the menu and resets the highlighted index, unless there is a highlighted.
- * In that case, selects the item and resets to defaults for open state and highlighted idex.
- * @param {Object} props The useCombobox props.
- * @param {number} highlightedIndex The index from the state.
- * @param {boolean} inputValue Also return the input value for state.
- * @returns The changes for the state.
- */
-function getChangesOnSelection(props, highlightedIndex, inputValue) {
-  var _props$items;
-  if (inputValue === void 0) {
-    inputValue = true;
-  }
-  var shouldSelect = ((_props$items = props.items) == null ? void 0 : _props$items.length) && highlightedIndex >= 0;
-  return _extends$x({
-    isOpen: false,
-    highlightedIndex: -1
-  }, shouldSelect && _extends$x({
-    selectedItem: props.items[highlightedIndex],
-    isOpen: getDefaultValue$1(props, 'isOpen'),
-    highlightedIndex: getDefaultValue$1(props, 'highlightedIndex')
-  }, inputValue && {
-    inputValue: props.itemToString(props.items[highlightedIndex])
-  }));
-}
-
-function downshiftCommonReducer(state, action, stateChangeTypes) {
-  var type = action.type,
-    props = action.props;
-  var changes;
-  switch (type) {
-    case stateChangeTypes.ItemMouseMove:
-      changes = {
-        highlightedIndex: action.disabled ? -1 : action.index
-      };
-      break;
-    case stateChangeTypes.MenuMouseLeave:
-      changes = {
-        highlightedIndex: -1
-      };
-      break;
-    case stateChangeTypes.ToggleButtonClick:
-    case stateChangeTypes.FunctionToggleMenu:
-      changes = {
-        isOpen: !state.isOpen,
-        highlightedIndex: state.isOpen ? -1 : getHighlightedIndexOnOpen(props, state, 0)
-      };
-      break;
-    case stateChangeTypes.FunctionOpenMenu:
-      changes = {
-        isOpen: true,
-        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
-      };
-      break;
-    case stateChangeTypes.FunctionCloseMenu:
-      changes = {
-        isOpen: false
-      };
-      break;
-    case stateChangeTypes.FunctionSetHighlightedIndex:
-      changes = {
-        highlightedIndex: action.highlightedIndex
-      };
-      break;
-    case stateChangeTypes.FunctionSetInputValue:
-      changes = {
-        inputValue: action.inputValue
-      };
-      break;
-    case stateChangeTypes.FunctionReset:
-      changes = {
-        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
-        isOpen: getDefaultValue$1(props, 'isOpen'),
-        selectedItem: getDefaultValue$1(props, 'selectedItem'),
-        inputValue: getDefaultValue$1(props, 'inputValue')
-      };
-      break;
-    default:
-      throw new Error('Reducer called without proper action type.');
-  }
-  return _extends$x({}, state, changes);
-}
-({
-    items: PropTypes.array.isRequired,
-    itemToString: PropTypes.func,
-    getA11yStatusMessage: PropTypes.func,
-    getA11ySelectionMessage: PropTypes.func,
-    highlightedIndex: PropTypes.number,
-    defaultHighlightedIndex: PropTypes.number,
-    initialHighlightedIndex: PropTypes.number,
-    isOpen: PropTypes.bool,
-    defaultIsOpen: PropTypes.bool,
-    initialIsOpen: PropTypes.bool,
-    selectedItem: PropTypes.any,
-    initialSelectedItem: PropTypes.any,
-    defaultSelectedItem: PropTypes.any,
-    id: PropTypes.string,
-    labelId: PropTypes.string,
-    menuId: PropTypes.string,
-    getItemId: PropTypes.func,
-    toggleButtonId: PropTypes.string,
-    stateReducer: PropTypes.func,
-    onSelectedItemChange: PropTypes.func,
-    onHighlightedIndexChange: PropTypes.func,
-    onStateChange: PropTypes.func,
-    onIsOpenChange: PropTypes.func,
-    environment: PropTypes.shape({
-        addEventListener: PropTypes.func,
-        removeEventListener: PropTypes.func,
-        document: PropTypes.shape({
-            getElementById: PropTypes.func,
-            activeElement: PropTypes.any,
-            body: PropTypes.any
-        })
-    })
-});
-/**
- * Default implementation for status message. Only added when menu is open.
- * Will specift if there are results in the list, and if so, how many,
- * and what keys are relevant.
- *
- * @param {Object} param the downshift state and other relevant properties
- * @return {String} the a11y status message
- */
-function getA11yStatusMessage(_a) {
-    var isOpen = _a.isOpen, resultCount = _a.resultCount, previousResultCount = _a.previousResultCount;
-    if (!isOpen) {
-        return '';
-    }
-    if (!resultCount) {
-        return 'No results are available.';
-    }
-    if (resultCount !== previousResultCount) {
-        return "".concat(resultCount, " result").concat(resultCount === 1 ? ' is' : 's are', " available, use up and down arrow keys to navigate. Press Enter or Space Bar keys to select.");
-    }
-    return '';
-}
-__assign(__assign({}, defaultProps$3), { getA11yStatusMessage: getA11yStatusMessage });
-
-var InputKeyDownArrowDown = 0;
-var InputKeyDownArrowUp = 1;
-var InputKeyDownEscape = 2;
-var InputKeyDownHome = 3;
-var InputKeyDownEnd = 4;
-var InputKeyDownPageUp = 5;
-var InputKeyDownPageDown = 6;
-var InputKeyDownEnter = 7;
-var InputChange = 8;
-var InputBlur = 9;
-var InputFocus = 10;
-var MenuMouseLeave = 11;
-var ItemMouseMove = 12;
-var ItemClick = 13;
-var ToggleButtonClick = 14;
-var FunctionToggleMenu = 15;
-var FunctionOpenMenu = 16;
-var FunctionCloseMenu = 17;
-var FunctionSetHighlightedIndex = 18;
-var FunctionSelectItem = 19;
-var FunctionSetInputValue = 20;
-var FunctionReset$1 = 21;
-var ControlledPropUpdatedSelectedItem = 22;
-
-var stateChangeTypes$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  InputKeyDownArrowDown: InputKeyDownArrowDown,
-  InputKeyDownArrowUp: InputKeyDownArrowUp,
-  InputKeyDownEscape: InputKeyDownEscape,
-  InputKeyDownHome: InputKeyDownHome,
-  InputKeyDownEnd: InputKeyDownEnd,
-  InputKeyDownPageUp: InputKeyDownPageUp,
-  InputKeyDownPageDown: InputKeyDownPageDown,
-  InputKeyDownEnter: InputKeyDownEnter,
-  InputChange: InputChange,
-  InputBlur: InputBlur,
-  InputFocus: InputFocus,
-  MenuMouseLeave: MenuMouseLeave,
-  ItemMouseMove: ItemMouseMove,
-  ItemClick: ItemClick,
-  ToggleButtonClick: ToggleButtonClick,
-  FunctionToggleMenu: FunctionToggleMenu,
-  FunctionOpenMenu: FunctionOpenMenu,
-  FunctionCloseMenu: FunctionCloseMenu,
-  FunctionSetHighlightedIndex: FunctionSetHighlightedIndex,
-  FunctionSelectItem: FunctionSelectItem,
-  FunctionSetInputValue: FunctionSetInputValue,
-  FunctionReset: FunctionReset$1,
-  ControlledPropUpdatedSelectedItem: ControlledPropUpdatedSelectedItem
-});
-
-function getInitialState$1(props) {
-  var initialState = getInitialState$2(props);
-  var selectedItem = initialState.selectedItem;
-  var inputValue = initialState.inputValue;
-  if (inputValue === '' && selectedItem && props.defaultInputValue === undefined && props.initialInputValue === undefined && props.inputValue === undefined) {
-    inputValue = props.itemToString(selectedItem);
-  }
-  return _extends$x({}, initialState, {
-    inputValue: inputValue
-  });
-}
-({
-  items: PropTypes.array.isRequired,
-  itemToString: PropTypes.func,
-  selectedItemChanged: PropTypes.func,
-  getA11yStatusMessage: PropTypes.func,
-  getA11ySelectionMessage: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  defaultHighlightedIndex: PropTypes.number,
-  initialHighlightedIndex: PropTypes.number,
-  isOpen: PropTypes.bool,
-  defaultIsOpen: PropTypes.bool,
-  initialIsOpen: PropTypes.bool,
-  selectedItem: PropTypes.any,
-  initialSelectedItem: PropTypes.any,
-  defaultSelectedItem: PropTypes.any,
-  inputValue: PropTypes.string,
-  defaultInputValue: PropTypes.string,
-  initialInputValue: PropTypes.string,
-  id: PropTypes.string,
-  labelId: PropTypes.string,
-  menuId: PropTypes.string,
-  getItemId: PropTypes.func,
-  inputId: PropTypes.string,
-  toggleButtonId: PropTypes.string,
-  stateReducer: PropTypes.func,
-  onSelectedItemChange: PropTypes.func,
-  onHighlightedIndexChange: PropTypes.func,
-  onStateChange: PropTypes.func,
-  onIsOpenChange: PropTypes.func,
-  onInputValueChange: PropTypes.func,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
-});
-
-/**
- * The useCombobox version of useControlledReducer, which also
- * checks if the controlled prop selectedItem changed between
- * renders. If so, it will also update inputValue with its
- * string equivalent. It uses the common useEnhancedReducer to
- * compute the rest of the state.
- *
- * @param {Function} reducer Reducer function from downshift.
- * @param {Object} initialState Initial state of the hook.
- * @param {Object} props The hook props.
- * @returns {Array} An array with the state and an action dispatcher.
- */
-function useControlledReducer(reducer, initialState, props) {
-  var previousSelectedItemRef = reactExports.useRef();
-  var _useEnhancedReducer = useEnhancedReducer(reducer, initialState, props),
-    state = _useEnhancedReducer[0],
-    dispatch = _useEnhancedReducer[1];
-
-  // ToDo: if needed, make same approach as selectedItemChanged from Downshift.
-  reactExports.useEffect(function () {
-    if (!isControlledProp(props, 'selectedItem')) {
-      return;
-    }
-    if (props.selectedItemChanged(previousSelectedItemRef.current, props.selectedItem)) {
-      dispatch({
-        type: ControlledPropUpdatedSelectedItem,
-        inputValue: props.itemToString(props.selectedItem)
-      });
-    }
-    previousSelectedItemRef.current = state.selectedItem === previousSelectedItemRef.current ? props.selectedItem : state.selectedItem;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.selectedItem, props.selectedItem]);
-  return [getState(state, props), dispatch];
-}
-
-// eslint-disable-next-line import/no-mutable-exports
-var validatePropTypes$1 = noop;
-var defaultProps$1 = _extends$x({}, defaultProps$3, {
-  selectedItemChanged: function selectedItemChanged(prevItem, item) {
-    return prevItem !== item;
-  },
-  getA11yStatusMessage: getA11yStatusMessage$1
-});
-
-/* eslint-disable complexity */
-function downshiftUseComboboxReducer(state, action) {
-  var _props$items;
-  var type = action.type,
-    props = action.props,
-    altKey = action.altKey;
-  var changes;
-  switch (type) {
-    case ItemClick:
-      changes = {
-        isOpen: getDefaultValue$1(props, 'isOpen'),
-        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
-        selectedItem: props.items[action.index],
-        inputValue: props.itemToString(props.items[action.index])
-      };
-      break;
-    case InputKeyDownArrowDown:
-      if (state.isOpen) {
-        changes = {
-          highlightedIndex: getNextWrappingIndex(1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
-        };
-      } else {
-        changes = {
-          highlightedIndex: altKey && state.selectedItem == null ? -1 : getHighlightedIndexOnOpen(props, state, 1, action.getItemNodeFromIndex),
-          isOpen: props.items.length >= 0
-        };
-      }
-      break;
-    case InputKeyDownArrowUp:
-      if (state.isOpen) {
-        if (altKey) {
-          changes = getChangesOnSelection(props, state.highlightedIndex);
-        } else {
-          changes = {
-            highlightedIndex: getNextWrappingIndex(-1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
-          };
-        }
-      } else {
-        changes = {
-          highlightedIndex: getHighlightedIndexOnOpen(props, state, -1, action.getItemNodeFromIndex),
-          isOpen: props.items.length >= 0
-        };
-      }
-      break;
-    case InputKeyDownEnter:
-      changes = getChangesOnSelection(props, state.highlightedIndex);
-      break;
-    case InputKeyDownEscape:
-      changes = _extends$x({
-        isOpen: false,
-        highlightedIndex: -1
-      }, !state.isOpen && {
-        selectedItem: null,
-        inputValue: ''
-      });
-      break;
-    case InputKeyDownPageUp:
-      changes = {
-        highlightedIndex: getNextWrappingIndex(-10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputKeyDownPageDown:
-      changes = {
-        highlightedIndex: getNextWrappingIndex(10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputKeyDownHome:
-      changes = {
-        highlightedIndex: getNextNonDisabledIndex(1, 0, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputKeyDownEnd:
-      changes = {
-        highlightedIndex: getNextNonDisabledIndex(-1, props.items.length - 1, props.items.length, action.getItemNodeFromIndex, false)
-      };
-      break;
-    case InputBlur:
-      changes = _extends$x({
-        isOpen: false,
-        highlightedIndex: -1
-      }, state.highlightedIndex >= 0 && ((_props$items = props.items) == null ? void 0 : _props$items.length) && action.selectItem && {
-        selectedItem: props.items[state.highlightedIndex],
-        inputValue: props.itemToString(props.items[state.highlightedIndex])
-      });
-      break;
-    case InputChange:
-      changes = {
-        isOpen: true,
-        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
-        inputValue: action.inputValue
-      };
-      break;
-    case InputFocus:
-      changes = {
-        isOpen: true,
-        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
-      };
-      break;
-    case FunctionSelectItem:
-      changes = {
-        selectedItem: action.selectedItem,
-        inputValue: props.itemToString(action.selectedItem)
-      };
-      break;
-    case ControlledPropUpdatedSelectedItem:
-      changes = {
-        inputValue: action.inputValue
-      };
-      break;
-    default:
-      return downshiftCommonReducer(state, action, stateChangeTypes$1);
-  }
-  return _extends$x({}, state, changes);
-}
-/* eslint-enable complexity */
-
-var _excluded$1 = ["onMouseLeave", "refKey", "ref"],
-  _excluded2$1 = ["item", "index", "refKey", "ref", "onMouseMove", "onMouseDown", "onClick", "onPress", "disabled"],
-  _excluded3 = ["onClick", "onPress", "refKey", "ref"],
-  _excluded4 = ["onKeyDown", "onChange", "onInput", "onFocus", "onBlur", "onChangeText", "refKey", "ref"];
-useCombobox$1.stateChangeTypes = stateChangeTypes$1;
-function useCombobox$1(userProps) {
-  if (userProps === void 0) {
-    userProps = {};
-  }
-  validatePropTypes$1();
-  // Props defaults and destructuring.
-  var props = _extends$x({}, defaultProps$1, userProps);
-  var initialIsOpen = props.initialIsOpen,
-    defaultIsOpen = props.defaultIsOpen,
-    items = props.items,
-    scrollIntoView = props.scrollIntoView,
-    environment = props.environment,
-    getA11yStatusMessage = props.getA11yStatusMessage,
-    getA11ySelectionMessage = props.getA11ySelectionMessage,
-    itemToString = props.itemToString;
-  // Initial state depending on controlled props.
-  var initialState = getInitialState$1(props);
-  var _useControlledReducer = useControlledReducer(downshiftUseComboboxReducer, initialState, props),
-    state = _useControlledReducer[0],
-    dispatch = _useControlledReducer[1];
-  var isOpen = state.isOpen,
-    highlightedIndex = state.highlightedIndex,
-    selectedItem = state.selectedItem,
-    inputValue = state.inputValue;
-
-  // Element refs.
-  var menuRef = reactExports.useRef(null);
-  var itemRefs = reactExports.useRef({});
-  var inputRef = reactExports.useRef(null);
-  var toggleButtonRef = reactExports.useRef(null);
-  var isInitialMountRef = reactExports.useRef(true);
-  // prevent id re-generation between renders.
-  var elementIds = useElementIds(props);
-  // used to keep track of how many items we had on previous cycle.
-  var previousResultCountRef = reactExports.useRef();
-  // utility callback to get item element.
-  var latest = useLatestRef$1({
-    state: state,
-    props: props
-  });
-  var getItemNodeFromIndex = reactExports.useCallback(function (index) {
-    return itemRefs.current[elementIds.getItemId(index)];
-  }, [elementIds]);
-
-  // Effects.
-  // Sets a11y status message on changes in state.
-  useA11yMessageSetter(getA11yStatusMessage, [isOpen, highlightedIndex, inputValue, items], _extends$x({
-    isInitialMount: isInitialMountRef.current,
-    previousResultCount: previousResultCountRef.current,
-    items: items,
-    environment: environment,
-    itemToString: itemToString
-  }, state));
-  // Sets a11y status message on changes in selectedItem.
-  useA11yMessageSetter(getA11ySelectionMessage, [selectedItem], _extends$x({
-    isInitialMount: isInitialMountRef.current,
-    previousResultCount: previousResultCountRef.current,
-    items: items,
-    environment: environment,
-    itemToString: itemToString
-  }, state));
-  // Scroll on highlighted item if change comes from keyboard.
-  var shouldScrollRef = useScrollIntoView({
-    menuElement: menuRef.current,
-    highlightedIndex: highlightedIndex,
-    isOpen: isOpen,
-    itemRefs: itemRefs,
-    scrollIntoView: scrollIntoView,
-    getItemNodeFromIndex: getItemNodeFromIndex
-  });
-  useControlPropsValidator({
-    isInitialMount: isInitialMountRef.current,
-    props: props,
-    state: state
-  });
-  // Focus the input on first render if required.
-  reactExports.useEffect(function () {
-    var focusOnOpen = initialIsOpen || defaultIsOpen || isOpen;
-    if (focusOnOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  reactExports.useEffect(function () {
-    if (isInitialMountRef.current) {
-      return;
-    }
-    previousResultCountRef.current = items.length;
-  });
-  // Add mouse/touch events to document.
-  var mouseAndTouchTrackersRef = useMouseAndTouchTracker(isOpen, [inputRef, menuRef, toggleButtonRef], environment, function () {
-    dispatch({
-      type: InputBlur,
-      selectItem: false
-    });
-  });
-  var setGetterPropCallInfo = useGetterPropsCalledChecker();
-  // Make initial ref false.
-  reactExports.useEffect(function () {
-    isInitialMountRef.current = false;
-    return function () {
-      isInitialMountRef.current = true;
-    };
-  }, []);
-  // Reset itemRefs on close.
-  reactExports.useEffect(function () {
-    var _environment$document;
-    if (!isOpen) {
-      itemRefs.current = {};
-    } else if (((_environment$document = environment.document) == null ? void 0 : _environment$document.activeElement) !== inputRef.current) {
-      var _inputRef$current;
-      inputRef == null ? void 0 : (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.focus();
-    }
-  }, [isOpen, environment]);
-
-  /* Event handler functions */
-  var inputKeyDownHandlers = reactExports.useMemo(function () {
-    return {
-      ArrowDown: function ArrowDown(event) {
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownArrowDown,
-          altKey: event.altKey,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      ArrowUp: function ArrowUp(event) {
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownArrowUp,
-          altKey: event.altKey,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      Home: function Home(event) {
-        if (!latest.current.state.isOpen) {
-          return;
-        }
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownHome,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      End: function End(event) {
-        if (!latest.current.state.isOpen) {
-          return;
-        }
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownEnd,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      Escape: function Escape(event) {
-        var latestState = latest.current.state;
-        if (latestState.isOpen || latestState.inputValue || latestState.selectedItem || latestState.highlightedIndex > -1) {
-          event.preventDefault();
-          dispatch({
-            type: InputKeyDownEscape
-          });
-        }
-      },
-      Enter: function Enter(event) {
-        var latestState = latest.current.state;
-        // if closed or no highlighted index, do nothing.
-        if (!latestState.isOpen || event.which === 229 // if IME composing, wait for next Enter keydown event.
-        ) {
-          return;
-        }
-        event.preventDefault();
-        dispatch({
-          type: InputKeyDownEnter,
-          getItemNodeFromIndex: getItemNodeFromIndex
-        });
-      },
-      PageUp: function PageUp(event) {
-        if (latest.current.state.isOpen) {
-          event.preventDefault();
-          dispatch({
-            type: InputKeyDownPageUp,
-            getItemNodeFromIndex: getItemNodeFromIndex
-          });
-        }
-      },
-      PageDown: function PageDown(event) {
-        if (latest.current.state.isOpen) {
-          event.preventDefault();
-          dispatch({
-            type: InputKeyDownPageDown,
-            getItemNodeFromIndex: getItemNodeFromIndex
-          });
-        }
-      }
-    };
-  }, [dispatch, latest, getItemNodeFromIndex]);
-
-  // Getter props.
-  var getLabelProps = reactExports.useCallback(function (labelProps) {
-    return _extends$x({
-      id: elementIds.labelId,
-      htmlFor: elementIds.inputId
-    }, labelProps);
-  }, [elementIds]);
-  var getMenuProps = reactExports.useCallback(function (_temp, _temp2) {
-    var _extends2;
-    var _ref = _temp === void 0 ? {} : _temp,
-      onMouseLeave = _ref.onMouseLeave,
-      _ref$refKey = _ref.refKey,
-      refKey = _ref$refKey === void 0 ? 'ref' : _ref$refKey,
-      ref = _ref.ref,
-      rest = _objectWithoutPropertiesLoose(_ref, _excluded$1);
-    var _ref2 = _temp2 === void 0 ? {} : _temp2;
-      _ref2.suppressRefError;
-    return _extends$x((_extends2 = {}, _extends2[refKey] = handleRefs(ref, function (menuNode) {
-      menuRef.current = menuNode;
-    }), _extends2.id = elementIds.menuId, _extends2.role = 'listbox', _extends2['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends2.onMouseLeave = callAllEventHandlers(onMouseLeave, function () {
-      dispatch({
-        type: MenuMouseLeave
-      });
-    }), _extends2), rest);
-  }, [dispatch, setGetterPropCallInfo, elementIds]);
-  var getItemProps = reactExports.useCallback(function (_temp3) {
-    var _extends3, _ref4;
-    var _ref3 = _temp3 === void 0 ? {} : _temp3,
-      itemProp = _ref3.item,
-      indexProp = _ref3.index,
-      _ref3$refKey = _ref3.refKey,
-      refKey = _ref3$refKey === void 0 ? 'ref' : _ref3$refKey,
-      ref = _ref3.ref,
-      onMouseMove = _ref3.onMouseMove,
-      onMouseDown = _ref3.onMouseDown,
-      onClick = _ref3.onClick;
-      _ref3.onPress;
-      var disabled = _ref3.disabled,
-      rest = _objectWithoutPropertiesLoose(_ref3, _excluded2$1);
-    var _latest$current = latest.current,
-      latestProps = _latest$current.props,
-      latestState = _latest$current.state;
-    var _getItemAndIndex = getItemAndIndex(itemProp, indexProp, latestProps.items, 'Pass either item or index to getItemProps!'),
-      index = _getItemAndIndex[1];
-    var onSelectKey = 'onClick';
-    var customClickHandler = onClick;
-    var itemHandleMouseMove = function itemHandleMouseMove() {
-      if (index === latestState.highlightedIndex) {
-        return;
-      }
-      shouldScrollRef.current = false;
-      dispatch({
-        type: ItemMouseMove,
-        index: index,
-        disabled: disabled
-      });
-    };
-    var itemHandleClick = function itemHandleClick() {
-      dispatch({
-        type: ItemClick,
-        index: index
-      });
-    };
-    var itemHandleMouseDown = function itemHandleMouseDown(e) {
-      return e.preventDefault();
-    };
-    return _extends$x((_extends3 = {}, _extends3[refKey] = handleRefs(ref, function (itemNode) {
-      if (itemNode) {
-        itemRefs.current[elementIds.getItemId(index)] = itemNode;
-      }
-    }), _extends3.disabled = disabled, _extends3.role = 'option', _extends3['aria-selected'] = "" + (index === latestState.highlightedIndex), _extends3.id = elementIds.getItemId(index), _extends3), !disabled && (_ref4 = {}, _ref4[onSelectKey] = callAllEventHandlers(customClickHandler, itemHandleClick), _ref4), {
-      onMouseMove: callAllEventHandlers(onMouseMove, itemHandleMouseMove),
-      onMouseDown: callAllEventHandlers(onMouseDown, itemHandleMouseDown)
-    }, rest);
-  }, [dispatch, latest, shouldScrollRef, elementIds]);
-  var getToggleButtonProps = reactExports.useCallback(function (_temp4) {
-    var _extends4;
-    var _ref5 = _temp4 === void 0 ? {} : _temp4,
-      onClick = _ref5.onClick;
-      _ref5.onPress;
-      var _ref5$refKey = _ref5.refKey,
-      refKey = _ref5$refKey === void 0 ? 'ref' : _ref5$refKey,
-      ref = _ref5.ref,
-      rest = _objectWithoutPropertiesLoose(_ref5, _excluded3);
-    var latestState = latest.current.state;
-    var toggleButtonHandleClick = function toggleButtonHandleClick() {
-      dispatch({
-        type: ToggleButtonClick
-      });
-    };
-    return _extends$x((_extends4 = {}, _extends4[refKey] = handleRefs(ref, function (toggleButtonNode) {
-      toggleButtonRef.current = toggleButtonNode;
-    }), _extends4['aria-controls'] = elementIds.menuId, _extends4['aria-expanded'] = latestState.isOpen, _extends4.id = elementIds.toggleButtonId, _extends4.tabIndex = -1, _extends4), !rest.disabled && _extends$x({}, {
-      onClick: callAllEventHandlers(onClick, toggleButtonHandleClick)
-    }), rest);
-  }, [dispatch, latest, elementIds]);
-  var getInputProps = reactExports.useCallback(function (_temp5, _temp6) {
-    var _extends5;
-    var _ref6 = _temp5 === void 0 ? {} : _temp5,
-      onKeyDown = _ref6.onKeyDown,
-      onChange = _ref6.onChange,
-      onInput = _ref6.onInput,
-      onFocus = _ref6.onFocus,
-      onBlur = _ref6.onBlur;
-      _ref6.onChangeText;
-      var _ref6$refKey = _ref6.refKey,
-      refKey = _ref6$refKey === void 0 ? 'ref' : _ref6$refKey,
-      ref = _ref6.ref,
-      rest = _objectWithoutPropertiesLoose(_ref6, _excluded4);
-    var _ref7 = _temp6 === void 0 ? {} : _temp6;
-      _ref7.suppressRefError;
-    var latestState = latest.current.state;
-    var inputHandleKeyDown = function inputHandleKeyDown(event) {
-      var key = normalizeArrowKey(event);
-      if (key && inputKeyDownHandlers[key]) {
-        inputKeyDownHandlers[key](event);
-      }
-    };
-    var inputHandleChange = function inputHandleChange(event) {
-      dispatch({
-        type: InputChange,
-        inputValue: event.target.value
-      });
-    };
-    var inputHandleBlur = function inputHandleBlur(event) {
-      /* istanbul ignore else */
-      if (latestState.isOpen && !mouseAndTouchTrackersRef.current.isMouseDown) {
-        dispatch({
-          type: InputBlur,
-          selectItem: event.relatedTarget !== null
-        });
-      }
-    };
-    var inputHandleFocus = function inputHandleFocus() {
-      if (!latestState.isOpen) {
-        dispatch({
-          type: InputFocus
-        });
-      }
-    };
-
-    /* istanbul ignore next (preact) */
-    var onChangeKey = 'onChange';
-    var eventHandlers = {};
-    if (!rest.disabled) {
-      var _eventHandlers;
-      eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, inputHandleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, inputHandleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, inputHandleBlur), _eventHandlers.onFocus = callAllEventHandlers(onFocus, inputHandleFocus), _eventHandlers);
-    }
-    return _extends$x((_extends5 = {}, _extends5[refKey] = handleRefs(ref, function (inputNode) {
-      inputRef.current = inputNode;
-    }), _extends5['aria-activedescendant'] = latestState.isOpen && latestState.highlightedIndex > -1 ? elementIds.getItemId(latestState.highlightedIndex) : '', _extends5['aria-autocomplete'] = 'list', _extends5['aria-controls'] = elementIds.menuId, _extends5['aria-expanded'] = latestState.isOpen, _extends5['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends5.autoComplete = 'off', _extends5.id = elementIds.inputId, _extends5.role = 'combobox', _extends5.value = latestState.inputValue, _extends5), eventHandlers, rest);
-  }, [dispatch, inputKeyDownHandlers, latest, mouseAndTouchTrackersRef, setGetterPropCallInfo, elementIds]);
-
-  // returns
-  var toggleMenu = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionToggleMenu
-    });
-  }, [dispatch]);
-  var closeMenu = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionCloseMenu
-    });
-  }, [dispatch]);
-  var openMenu = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionOpenMenu
-    });
-  }, [dispatch]);
-  var setHighlightedIndex = reactExports.useCallback(function (newHighlightedIndex) {
-    dispatch({
-      type: FunctionSetHighlightedIndex,
-      highlightedIndex: newHighlightedIndex
-    });
-  }, [dispatch]);
-  var selectItem = reactExports.useCallback(function (newSelectedItem) {
-    dispatch({
-      type: FunctionSelectItem,
-      selectedItem: newSelectedItem
-    });
-  }, [dispatch]);
-  var setInputValue = reactExports.useCallback(function (newInputValue) {
-    dispatch({
-      type: FunctionSetInputValue,
-      inputValue: newInputValue
-    });
-  }, [dispatch]);
-  var reset = reactExports.useCallback(function () {
-    dispatch({
-      type: FunctionReset$1
-    });
-  }, [dispatch]);
-  return {
-    // prop getters.
-    getItemProps: getItemProps,
-    getLabelProps: getLabelProps,
-    getMenuProps: getMenuProps,
-    getInputProps: getInputProps,
-    getToggleButtonProps: getToggleButtonProps,
-    // actions.
-    toggleMenu: toggleMenu,
-    openMenu: openMenu,
-    closeMenu: closeMenu,
-    setHighlightedIndex: setHighlightedIndex,
-    setInputValue: setInputValue,
-    selectItem: selectItem,
-    reset: reset,
-    // state.
-    highlightedIndex: highlightedIndex,
-    isOpen: isOpen,
-    selectedItem: selectedItem,
-    inputValue: inputValue
-  };
-}
-
-/**
- * Returns a message to be added to aria-live region when item is removed.
- *
- * @param {Object} selectionParameters Parameters required to build the message.
- * @returns {string} The a11y message.
- */
-function getA11yRemovalMessage(selectionParameters) {
-  var removedSelectedItem = selectionParameters.removedSelectedItem,
-    itemToStringLocal = selectionParameters.itemToString;
-  return itemToStringLocal(removedSelectedItem) + " has been removed.";
-}
-({
-  selectedItems: PropTypes.array,
-  initialSelectedItems: PropTypes.array,
-  defaultSelectedItems: PropTypes.array,
-  itemToString: PropTypes.func,
-  getA11yRemovalMessage: PropTypes.func,
-  stateReducer: PropTypes.func,
-  activeIndex: PropTypes.number,
-  initialActiveIndex: PropTypes.number,
-  defaultActiveIndex: PropTypes.number,
-  onActiveIndexChange: PropTypes.func,
-  onSelectedItemsChange: PropTypes.func,
-  keyNavigationNext: PropTypes.string,
-  keyNavigationPrevious: PropTypes.string,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
-});
-({
-  itemToString: defaultProps$3.itemToString,
-  stateReducer: defaultProps$3.stateReducer,
-  environment: defaultProps$3.environment,
-  getA11yRemovalMessage: getA11yRemovalMessage,
-  keyNavigationNext: 'ArrowRight',
-  keyNavigationPrevious: 'ArrowLeft'
-});
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-const typeMap = {
-  [useCombobox$1.stateChangeTypes.FunctionCloseMenu]: 'fn:setExpansion',
-  [useCombobox$1.stateChangeTypes.FunctionOpenMenu]: 'fn:setExpansion',
-  [useCombobox$1.stateChangeTypes.FunctionToggleMenu]: 'fn:setExpansion',
-  [useCombobox$1.stateChangeTypes.FunctionReset]: 'fn:reset',
-  [useCombobox$1.stateChangeTypes.FunctionSelectItem]: 'fn:setSelectionValue',
-  [useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex]: 'fn:setActiveIndex',
-  [useCombobox$1.stateChangeTypes.FunctionSetInputValue]: 'fn:setInputValue',
-  [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
-  [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
-  [useCombobox$1.stateChangeTypes.InputFocus]: 'input:focus',
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS.DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS.UP}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS.END}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS.ENTER}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS.ESCAPE}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS.HOME}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS.PAGE_DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS.PAGE_UP}`,
-  [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
-  [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
-  [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
-  [useCombobox$1.stateChangeTypes.ToggleButtonClick]: 'toggle:click'
-};
-const toType = downshiftType => {
-  return typeMap[downshiftType] || downshiftType;
-};
-const toLabel = (labels, value) => {
-  if (value === undefined) {
-    return '';
-  }
-  const key = typeof value === 'string' ? value : JSON.stringify(value);
-  return labels[key];
-};
-
-const useCombobox = _ref => {
-  let {
-    idPrefix,
-    triggerRef,
-    inputRef,
-    listboxRef,
-    isAutocomplete,
-    isMultiselectable,
-    isEditable = true,
-    disabled,
-    hasHint,
-    hasMessage,
-    options = [],
-    inputValue,
-    selectionValue,
-    isExpanded,
-    defaultExpanded,
-    initialExpanded,
-    activeIndex,
-    defaultActiveIndex,
-    initialActiveIndex,
-    onChange = () => undefined,
-    environment
-  } = _ref;
-  const win = environment || window;
-  const prefix = `${useId(idPrefix)}-`;
-  const [triggerContainsInput, setTriggerContainsInput] = reactExports.useState();
-  const [matchValue, setMatchValue] = reactExports.useState('');
-  const matchTimeoutRef = reactExports.useRef();
-  const previousStateRef = reactExports.useRef();
-  const labels = reactExports.useMemo(() => ({}), []);
-  const selectedValues = reactExports.useMemo(() => [], []);
-  const disabledValues = reactExports.useMemo(() => [], []);
-  const values = reactExports.useMemo(() => {
-    const retVal = [];
-    const setValues = option => {
-      if (option.disabled) {
-        if (!disabledValues.includes(option.value)) {
-          disabledValues.push(option.value);
-        }
-      } else {
-        retVal.push(option.value);
-        const index = disabledValues.indexOf(option.value);
-        if (index !== -1) {
-          disabledValues.splice(index, 1);
-        }
-      }
-      if (option.selected && !selectedValues.includes(option.value)) {
-        selectedValues.push(option.value);
-      }
-      const key = typeof option.value === 'string' ? option.value : JSON.stringify(option.value);
-      labels[key] = option.label || key;
-    };
-    options.forEach(option => {
-      if ('options' in option) {
-        option.options.forEach(setValues);
-      } else {
-        setValues(option);
-      }
-    });
-    return retVal;
-  }, [options, disabledValues, selectedValues, labels]);
-  const initialSelectionValue = isMultiselectable ? selectedValues : selectedValues[0];
-  const initialInputValue = isMultiselectable ? '' : toLabel(labels, initialSelectionValue);
-  const _defaultActiveIndex = reactExports.useMemo(() => {
-    if (defaultActiveIndex === undefined) {
-      return isAutocomplete && isEditable ? 0 : undefined;
-    }
-    return defaultActiveIndex;
-  }, [defaultActiveIndex, isAutocomplete, isEditable]);
-  if (selectionValue === undefined || selectionValue === null) {
-    if (!isMultiselectable && selectedValues.length > 1) {
-      throw new Error('Error: expected useCombobox `options` to have no more than one selected.');
-    }
-  }
-  if (selectionValue !== undefined && selectionValue !== null) {
-    if (isMultiselectable && !Array.isArray(selectionValue)) {
-      throw new Error('Error: expected multiselectable useCombobox `selectionValue` to be an array.');
-    } else if (!isMultiselectable && Array.isArray(selectionValue)) {
-      throw new Error('Error: expected useCombobox `selectionValue` not to be an array.');
-    }
-  }
-  const handleDownshiftStateChange = _ref2 => {
-    let {
-      type,
-      isOpen,
-      selectedItem,
-      inputValue: _inputValue,
-      highlightedIndex
-    } = _ref2;
-    return onChange({
-      type: toType(type),
-      ...(isOpen !== undefined && {
-        isExpanded: isOpen
-      }),
-      ...(selectedItem !== undefined && {
-        selectionValue: selectedItem
-      }),
-      ...(_inputValue !== undefined && {
-        inputValue: _inputValue
-      }),
-      ...(highlightedIndex !== undefined && {
-        activeIndex: highlightedIndex
-      })
-    });
-  };
-  const stateReducer = (state, _ref3) => {
-    let {
-      type,
-      changes,
-      altKey
-    } = _ref3;
-    switch (type) {
-      case useCombobox$1.stateChangeTypes.ControlledPropUpdatedSelectedItem:
-        return state;
-      case useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex:
-        if (previousStateRef.current?.altKey) {
-          changes.highlightedIndex = -1;
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.FunctionCloseMenu:
-      case useCombobox$1.stateChangeTypes.InputBlur:
-        return {
-          ...state,
-          isOpen: type === useCombobox$1.stateChangeTypes.InputBlur && triggerContainsInput && isMultiselectable && state.isOpen || false
-        };
-      case useCombobox$1.stateChangeTypes.InputFocus:
-        return {
-          ...state,
-          isOpen: false
-        };
-      case useCombobox$1.stateChangeTypes.InputKeyDownArrowDown:
-      case useCombobox$1.stateChangeTypes.FunctionOpenMenu:
-        if (state.isOpen !== changes.isOpen && !altKey) {
-          changes.highlightedIndex = 0;
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.InputKeyDownArrowUp:
-        if (state.isOpen !== changes.isOpen) {
-          changes.highlightedIndex = values.length - 1;
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.InputKeyDownEnter:
-      case useCombobox$1.stateChangeTypes.FunctionSelectItem:
-      case useCombobox$1.stateChangeTypes.ItemClick:
-        changes.highlightedIndex = state.highlightedIndex;
-        if (isMultiselectable) {
-          changes.isOpen = state.isOpen;
-          changes.inputValue = '';
-        }
-        break;
-      case useCombobox$1.stateChangeTypes.InputKeyDownEscape:
-        return {
-          ...state,
-          isOpen: false
-        };
-      case useCombobox$1.stateChangeTypes.InputKeyDownPageDown:
-      case useCombobox$1.stateChangeTypes.InputKeyDownPageUp:
-        return state;
-    }
-    if (isMultiselectable && state.selectedItem !== changes.selectedItem) {
-      if (state.selectedItem !== undefined && state.selectedItem !== null && changes.selectedItem !== undefined && changes.selectedItem !== null) {
-        if (state.selectedItem.includes(changes.selectedItem)) {
-          changes.selectedItem = state.selectedItem.filter(value => value !== changes.selectedItem);
-        } else {
-          changes.selectedItem = [...state.selectedItem, changes.selectedItem];
-        }
-      } else if (changes.selectedItem !== undefined && changes.selectedItem !== null) {
-        changes.selectedItem = [changes.selectedItem];
-      } else {
-        changes.selectedItem = [];
-      }
-    }
-    previousStateRef.current = {
-      type,
-      altKey,
-      ...state
-    };
-    return changes;
-  };
-  const transformValue = value => value ? toLabel(labels, value) : '';
-  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefix}-option${isDisabled ? '-disabled' : ''}-${index}`, [prefix]);
-  const {
-    selectedItem: _selectionValue,
-    isOpen: _isExpanded,
-    highlightedIndex: _activeIndex,
-    inputValue: _inputValue,
-    getToggleButtonProps: getDownshiftTriggerProps,
-    getInputProps: getDownshiftInputProps,
-    getMenuProps: getDownshiftListboxProps,
-    getItemProps: getDownshiftOptionProps,
-    closeMenu,
-    openMenu,
-    setHighlightedIndex,
-    selectItem
-  } = useCombobox$1({
-    id: prefix,
-    toggleButtonId: `${prefix}-trigger`,
-    menuId: `${prefix}-listbox`,
-    getItemId: getOptionId,
-    items: values,
-    inputValue,
-    initialInputValue,
-    itemToString: transformValue ,
-    selectedItem: selectionValue,
-    initialSelectedItem: initialSelectionValue,
-    isOpen: isExpanded,
-    defaultIsOpen: defaultExpanded,
-    initialIsOpen: initialExpanded,
-    highlightedIndex: activeIndex,
-    defaultHighlightedIndex: _defaultActiveIndex,
-    initialHighlightedIndex: initialActiveIndex,
-    onStateChange: handleDownshiftStateChange,
-    stateReducer,
-    environment: win
-  });
-  const closeListbox = reactExports.useCallback(() => {
-    closeMenu();
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionCloseMenu),
-      isExpanded: false
-    });
-  }, [closeMenu, onChange]);
-  const openListbox = reactExports.useCallback(() => {
-    openMenu();
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionOpenMenu),
-      isExpanded: true
-    });
-  }, [openMenu, onChange]);
-  const setActiveIndex = reactExports.useCallback(index => {
-    setHighlightedIndex(index);
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex),
-      activeIndex: index
-    });
-  }, [onChange, setHighlightedIndex]);
-  const setDownshiftSelection = reactExports.useCallback(value => {
-    selectItem(value);
-    onChange({
-      type: toType(useCombobox$1.stateChangeTypes.FunctionSelectItem),
-      selectionValue: value
-    });
-  }, [onChange, selectItem]);
-  const {
-    getLabelProps: getFieldLabelProps,
-    getHintProps,
-    getInputProps: getFieldInputProps,
-    getMessageProps
-  } = useField({
-    idPrefix,
-    hasHint,
-    hasMessage
-  });
-  reactExports.useLayoutEffect(() => {
-    if ((isAutocomplete || !isEditable) && _isExpanded && !previousStateRef.current?.isOpen && _selectionValue && !matchValue) {
-      const value = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1
-      ] : _selectionValue;
-      const index = values.findIndex(current => current === value);
-      if (index !== -1) {
-        setActiveIndex(index);
-      } else if (_defaultActiveIndex !== undefined) {
-        setActiveIndex(_defaultActiveIndex);
-      }
-    }
-  }, [
-  isAutocomplete, isEditable, _isExpanded, _selectionValue, _inputValue, values, _defaultActiveIndex, setActiveIndex]);
-  reactExports.useEffect(
-  () => setTriggerContainsInput(triggerRef.current?.contains(inputRef.current)), [triggerRef, inputRef]);
-  reactExports.useEffect(() => {
-    clearTimeout(matchTimeoutRef.current);
-    matchTimeoutRef.current = window.setTimeout(() => setMatchValue(''), 500);
-    return () => clearTimeout(matchTimeoutRef.current);
-  }, [matchValue]);
-  reactExports.useEffect(() => {
-    if (previousStateRef.current?.type === useCombobox$1.stateChangeTypes.FunctionSelectItem) {
-      if (isEditable) {
-        inputRef.current?.focus();
-      } else {
-        triggerRef.current?.focus();
-      }
-      previousStateRef.current = {
-        ...previousStateRef.current,
-        type: useCombobox$1.stateChangeTypes.InputFocus
-      };
-    }
-  });
-  reactExports.useEffect(() => {
-    if (isEditable && inputRef.current === win.document.activeElement) {
-      inputRef.current?.scrollIntoView && inputRef.current?.scrollIntoView({
-        block: 'nearest'
-      });
-    }
-  }, [inputRef, isEditable, win.document.activeElement]);
-  const getTriggerProps = reactExports.useCallback(function (_temp) {
-    let {
-      onBlur,
-      onClick,
-      onKeyDown,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    const triggerProps = getDownshiftTriggerProps({
-      'data-garden-container-id': 'containers.combobox',
-      'data-garden-container-version': '1.0.4',
-      onBlur,
-      onClick,
-      onKeyDown,
-      ref: triggerRef,
-      disabled,
-      ...other
-    });
-    const handleBlur = event => {
-      if (event.relatedTarget === null || !event.currentTarget?.contains(event.relatedTarget)) {
-        closeListbox();
-      }
-    };
-    if (isEditable && triggerContainsInput) {
-      const handleClick = event => {
-        if (disabled) {
-          event.preventDefault();
-        } else if (isAutocomplete) {
-          triggerProps.onClick(event);
-        } else {
-          inputRef.current?.focus();
-        }
-      };
-      return {
-        ...triggerProps,
-        onBlur: composeEventHandlers(onBlur, handleBlur),
-        onClick: composeEventHandlers(onClick, handleClick),
-        'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
-        'aria-expanded': undefined,
-        'aria-disabled': disabled || undefined,
-        disabled: undefined
-      };
-    } else if (!isEditable) {
-      const {
-        'aria-activedescendant': ariaActiveDescendant,
-        onKeyDown: onDownshiftKeyDown
-      } = getDownshiftInputProps({}, {
-        suppressRefError: true
-      });
-      const {
-        'aria-labelledby': ariaLabeledBy
-      } = getFieldInputProps();
-      const handleKeyDown = event => {
-        event.stopPropagation();
-        if (!_isExpanded && (event.key === KEYS.SPACE || event.key === KEYS.ENTER)) {
-          event.preventDefault();
-          openListbox();
-        } else if (_isExpanded && !matchValue && (event.key === KEYS.SPACE || event.key === KEYS.ENTER)) {
-          event.preventDefault();
-          if (_activeIndex !== -1) {
-            setDownshiftSelection(values[_activeIndex]);
-          }
-          if (!isMultiselectable) {
-            closeListbox();
-          }
-        } else if (/^(?:\S| ){1}$/u.test(event.key)) {
-          const _matchValue = `${matchValue}${event.key}`;
-          setMatchValue(_matchValue);
-          let offset = 0;
-          if (_isExpanded) {
-            if (_activeIndex !== -1) {
-              offset = _matchValue.length === 1 ? _activeIndex + 1 : _activeIndex;
-            }
-          } else {
-            openListbox();
-            const offsetValue = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1
-            ] : _selectionValue;
-            if (offsetValue !== null) {
-              offset = values.findIndex(current => current === offsetValue);
-            }
-          }
-          for (let index = 0; index < values.length; index++) {
-            const valueIndex = (index + offset) % values.length;
-            const value = values[valueIndex];
-            if (toLabel(labels, value).toLowerCase().startsWith(_matchValue.toLowerCase())) {
-              setActiveIndex(valueIndex);
-              break;
-            }
-          }
-        }
-      };
-      return {
-        ...triggerProps,
-        'aria-activedescendant': ariaActiveDescendant,
-        'aria-haspopup': 'listbox',
-        'aria-labelledby': ariaLabeledBy,
-        'aria-disabled': disabled || undefined,
-        disabled: undefined,
-        role: 'combobox',
-        onBlur: composeEventHandlers(onBlur, handleBlur),
-        onKeyDown: composeEventHandlers(onKeyDown, onDownshiftKeyDown, handleKeyDown),
-        tabIndex: disabled ? -1 : 0
-      };
-    }
-    return triggerProps;
-  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, setDownshiftSelection, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, isMultiselectable, inputRef]);
-  const getLabelProps = reactExports.useCallback(function (_temp2) {
-    let {
-      onClick,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    const {
-      htmlFor,
-      ...labelProps
-    } = getFieldLabelProps(other);
-    const handleClick = () => !isEditable && triggerRef.current?.focus();
-    return {
-      ...labelProps,
-      onClick: composeEventHandlers(onClick, handleClick),
-      htmlFor: isEditable ? htmlFor : undefined
-    };
-  }, [getFieldLabelProps, isEditable, triggerRef]);
-  const getInputProps = reactExports.useCallback(function (_temp3) {
-    let {
-      role = isEditable ? 'combobox' : null,
-      'aria-labelledby': ariaLabeledBy = null,
-      onClick,
-      onFocus,
-      ...other
-    } = _temp3 === void 0 ? {} : _temp3;
-    const inputProps = {
-      'data-garden-container-id': 'containers.combobox.input',
-      'data-garden-container-version': '1.0.4',
-      ref: inputRef,
-      role: role === null ? undefined : role,
-      onClick,
-      onFocus
-    };
-    if (isEditable) {
-      const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
-      return getDownshiftInputProps({
-        ...inputProps,
-        disabled,
-        role,
-        'aria-labelledby': ariaLabeledBy,
-        'aria-autocomplete': isAutocomplete ? 'list' : undefined,
-        onClick: composeEventHandlers(onClick, handleClick),
-        ...getFieldInputProps(),
-        ...other
-      });
-    }
-    const downshiftInputProps = getDownshiftInputProps({
-      ...inputProps,
-      disabled: true,
-      'aria-autocomplete': undefined,
-      'aria-activedescendant': undefined,
-      'aria-controls': undefined,
-      'aria-expanded': undefined,
-      'aria-hidden': true,
-      'aria-labelledby': undefined
-    });
-    const handleFocus = () => {
-      if (!isEditable) {
-        triggerRef.current?.focus();
-      }
-    };
-    return {
-      ...downshiftInputProps,
-      disabled,
-      readOnly: true,
-      tabIndex: -1,
-      onFocus: composeEventHandlers(onFocus, handleFocus),
-      ...other
-    };
-  }, [getDownshiftInputProps, getFieldInputProps, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
-  const getTagProps = reactExports.useCallback(_ref4 => {
-    let {
-      option,
-      onClick,
-      onFocus,
-      onKeyDown,
-      ...other
-    } = _ref4;
-    const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
-    const handleFocus = () => {
-      if (_isExpanded) {
-        setActiveIndex(values.findIndex(value => value === option.value));
-      }
-    };
-    const handleKeyDown = event => {
-      if (event.key === KEYS.BACKSPACE || event.key === KEYS.DELETE) {
-        setDownshiftSelection(option.value);
-      } else {
-        const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
-        if (triggerContainsTag && !isEditable) {
-          event.stopPropagation();
-        }
-        if (triggerContainsTag && (event.key === KEYS.DOWN || event.key === KEYS.UP || event.key === KEYS.ESCAPE || !isEditable && (event.key === KEYS.ENTER || event.key === KEYS.SPACE))) {
-          const inputProps = getDownshiftInputProps();
-          if (isEditable) {
-            inputRef.current?.focus();
-          } else {
-            event.preventDefault();
-            triggerRef.current?.focus();
-          }
-          inputProps.onKeyDown(event);
-        }
-      }
-    };
-    return {
-      'data-garden-container-id': 'containers.combobox.tag',
-      'data-garden-container-version': '1.0.4',
-      onClick: composeEventHandlers(onClick, handleClick),
-      onFocus: composeEventHandlers(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
-      ...other
-    };
-  }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, _isExpanded, values, setActiveIndex, inputRef]);
-  const getListboxProps = reactExports.useCallback(_ref5 => {
-    let {
-      role = 'listbox',
-      'aria-labelledby': ariaLabeledBy = null,
-      ...other
-    } = _ref5;
-    return getDownshiftListboxProps({
-      'data-garden-container-id': 'containers.combobox.listbox',
-      'data-garden-container-version': '1.0.4',
-      ref: listboxRef,
-      role,
-      'aria-labelledby': ariaLabeledBy,
-      'aria-multiselectable': isMultiselectable ? true : undefined,
-      ...other
-    });
-  }, [getDownshiftListboxProps, listboxRef, isMultiselectable]);
-  const getOptGroupProps = reactExports.useCallback(_ref6 => {
-    let {
-      role = 'group',
-      ...other
-    } = _ref6;
-    return {
-      'data-garden-container-id': 'containers.combobox.optgroup',
-      'data-garden-container-version': '1.0.4',
-      role: role === null ? undefined : role,
-      ...other
-    };
-  }, []);
-  const getOptionProps = reactExports.useCallback(function (_temp4) {
-    let {
-      role = 'option',
-      option,
-      onMouseDown,
-      ...other
-    } = _temp4 === void 0 ? {} : _temp4;
-    const optionProps = {
-      'data-garden-container-id': 'containers.combobox.option',
-      'data-garden-container-version': '1.0.4',
-      role,
-      onMouseDown,
-      ...other
-    };
-    let ariaSelected = false;
-    if (option?.value !== undefined) {
-      ariaSelected = Array.isArray(_selectionValue) ? _selectionValue?.includes(option?.value) : _selectionValue === option?.value;
-    }
-    if (option === undefined || option.disabled) {
-      const handleMouseDown = event => event.preventDefault();
-      return {
-        'aria-disabled': true,
-        'aria-selected': ariaSelected,
-        id: option ? getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
-        ...optionProps,
-        onMouseDown: composeEventHandlers(onMouseDown, handleMouseDown)
-      };
-    }
-    return getDownshiftOptionProps({
-      item: option.value,
-      index: values.indexOf(option.value),
-      'aria-selected': ariaSelected,
-      ...optionProps
-    });
-  }, [getDownshiftOptionProps, disabledValues, values, _selectionValue, getOptionId]);
-  const removeSelection = reactExports.useCallback(value => {
-    if (value === undefined) {
-      setDownshiftSelection(null);
-    } else {
-      const removeValue = typeof value === 'object' && 'value' in value ? value.value : value;
-      if (Array.isArray(_selectionValue) && _selectionValue.includes(removeValue)) {
-        setDownshiftSelection(removeValue);
-      } else if (_selectionValue === removeValue) {
-        setDownshiftSelection(null);
-      } else ;
-    }
-  }, [_selectionValue, setDownshiftSelection]);
-  const selection = reactExports.useMemo(() => {
-    if (Array.isArray(_selectionValue)) {
-      return _selectionValue.map(value => ({
-        value,
-        label: labels[value],
-        disabled: disabledValues.includes(value)
-      }));
-    } else if (_selectionValue) {
-      return {
-        value: _selectionValue,
-        label: toLabel(labels, _selectionValue),
-        disabled: disabledValues.includes(_selectionValue)
-      };
-    }
-    return null;
-  }, [_selectionValue, disabledValues, labels]);
-  return reactExports.useMemo(() => ({
-    getLabelProps,
-    getHintProps,
-    getTriggerProps,
-    getInputProps,
-    getTagProps,
-    getListboxProps,
-    getOptGroupProps,
-    getOptionProps,
-    getMessageProps,
-    selection,
-    isExpanded: _isExpanded,
-    activeValue: values[_activeIndex],
-    inputValue: _inputValue,
-    removeSelection
-  }), [values, selection, _isExpanded, _activeIndex, _inputValue, getLabelProps, getHintProps, getTriggerProps, getInputProps, getTagProps, getListboxProps, getOptGroupProps, getOptionProps, getMessageProps, removeSelection]);
-};
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  idPrefix: PropTypes.string,
-  triggerRef: PropTypes.any.isRequired,
-  inputRef: PropTypes.any.isRequired,
-  listboxRef: PropTypes.any.isRequired,
-  isAutocomplete: PropTypes.bool,
-  isMultiselectable: PropTypes.bool,
-  isEditable: PropTypes.bool,
-  disabled: PropTypes.bool,
-  hasHint: PropTypes.bool,
-  hasMessage: PropTypes.bool,
-  options: PropTypes.arrayOf(PropTypes.any).isRequired,
-  inputValue: PropTypes.string,
-  selectionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-  isExpanded: PropTypes.bool,
-  defaultExpanded: PropTypes.bool,
-  initialExpanded: PropTypes.bool,
-  activeIndex: PropTypes.number,
-  defaultActiveIndex: PropTypes.number,
-  initialActiveIndex: PropTypes.number,
-  onChange: PropTypes.func,
-  environment: PropTypes.any
-});
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
 function _extends$t() {
   _extends$t = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -10816,7 +5497,7 @@ const useFieldContext$1 = () => {
 const COMPONENT_ID$K = 'forms.field';
 const StyledField$1 = Ye.div.attrs({
   'data-garden-id': COMPONENT_ID$K,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-12gzfsu-0"
@@ -10829,7 +5510,7 @@ const COMPONENT_ID$J = 'forms.fieldset';
 const StyledFieldset = Ye(StyledField$1).attrs({
   as: 'fieldset',
   'data-garden-id': COMPONENT_ID$J,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFieldset",
   componentId: "sc-1vr4mxv-0"
@@ -10839,10 +5520,10 @@ StyledFieldset.defaultProps = {
 };
 
 const COMPONENT_ID$I = 'forms.input_label';
-const StyledLabel$1 = Ye.label.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$I,
-  'data-garden-version': props['data-garden-version'] || '8.69.4'
-})).withConfig({
+const StyledLabel$1 = Ye.label.attrs({
+  'data-garden-id': COMPONENT_ID$I,
+  'data-garden-version': '8.69.1'
+}).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-2utmsz-0"
 })(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.colors.foreground, props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$I, props));
@@ -10854,7 +5535,7 @@ const COMPONENT_ID$H = 'forms.fieldset_legend';
 const StyledLegend = Ye(StyledLabel$1).attrs({
   as: 'legend',
   'data-garden-id': COMPONENT_ID$H,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledLegend",
   componentId: "sc-6s0zwq-0"
@@ -10864,10 +5545,10 @@ StyledLegend.defaultProps = {
 };
 
 const COMPONENT_ID$G = 'forms.input_hint';
-const StyledHint$1 = Ye.div.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$G,
-  'data-garden-version': props['data-garden-version'] || '8.69.4'
-})).withConfig({
+const StyledHint$1 = Ye.div.attrs({
+  'data-garden-id': COMPONENT_ID$G,
+  'data-garden-version': '8.69.1'
+}).withConfig({
   displayName: "StyledHint",
   componentId: "sc-17c2wu8-0"
 })(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColor('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$G, props));
@@ -10971,7 +5652,7 @@ const MessageIcon = _ref => {
 const COMPONENT_ID$F = 'forms.input_message_icon';
 const StyledMessageIcon = Ye(MessageIcon).attrs({
   'data-garden-id': COMPONENT_ID$F,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   'aria-hidden': null
 }).withConfig({
   displayName: "StyledMessageIcon",
@@ -10997,10 +5678,10 @@ const validationStyles = props => {
   return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
 };
 const COMPONENT_ID$E = 'forms.input_message';
-const StyledMessage$1 = Ye.div.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$E,
-  'data-garden-version': props['data-garden-version'] || '8.69.4'
-})).withConfig({
+const StyledMessage$1 = Ye.div.attrs({
+  'data-garden-id': COMPONENT_ID$E,
+  'data-garden-version': '8.69.1'
+}).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-30hgg7-0"
 })(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$E, props));
@@ -11089,7 +5770,7 @@ const sizeStyles$f = props => {
 };
 const StyledTextInput = Ye.input.attrs(props => ({
   'data-garden-id': COMPONENT_ID$D,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   'aria-invalid': isInvalid(props.validation)
 })).withConfig({
   displayName: "StyledTextInput",
@@ -11112,7 +5793,7 @@ const hiddenStyles = `
 const StyledTextarea = Ye(StyledTextInput).attrs({
   as: 'textarea',
   'data-garden-id': COMPONENT_ID$C,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTextarea",
   componentId: "sc-wxschl-0"
@@ -11158,7 +5839,7 @@ _ref => {
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$B,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTextMediaFigure",
   componentId: "sc-1qepknj-0"
@@ -11205,7 +5886,7 @@ const StyledTextFauxInput = Ye(StyledTextInput).attrs(props => ({
   'aria-readonly': props.isReadOnly,
   'aria-disabled': props.isDisabled,
   'data-garden-id': COMPONENT_ID$A,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 })).withConfig({
   displayName: "StyledTextFauxInput",
   componentId: "sc-yqw7j9-0"
@@ -11217,7 +5898,7 @@ StyledTextFauxInput.defaultProps = {
 const COMPONENT_ID$z = 'forms.media_input';
 const StyledTextMediaInput = Ye(StyledTextInput).attrs({
   'data-garden-id': COMPONENT_ID$z,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   isBare: true
 }).withConfig({
   displayName: "StyledTextMediaInput",
@@ -11239,7 +5920,7 @@ const itemStyles = props => {
 };
 const StyledInputGroup$1 = Ye.div.attrs({
   'data-garden-id': COMPONENT_ID$y,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-kjh1f0-0"
@@ -11257,7 +5938,7 @@ const sizeStyles$d = props => {
 };
 const StyledRadioLabel = Ye(StyledLabel$1).attrs({
   'data-garden-id': COMPONENT_ID$x,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   isRadio: true
 }).withConfig({
   displayName: "StyledRadioLabel",
@@ -11267,43 +5948,43 @@ StyledRadioLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$w$1 = 'forms.checkbox_label';
+const COMPONENT_ID$w = 'forms.checkbox_label';
 const StyledCheckLabel = Ye(StyledRadioLabel).attrs({
-  'data-garden-id': COMPONENT_ID$w$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$w,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledCheckLabel",
   componentId: "sc-x7nr1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w$1, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w, props));
 StyledCheckLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$v$1 = 'forms.radio_hint';
+const COMPONENT_ID$v = 'forms.radio_hint';
 const StyledRadioHint = Ye(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$v$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$v,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledRadioHint",
   componentId: "sc-eo8twg-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v$1, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v, props));
 StyledRadioHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$u$1 = 'forms.checkbox_hint';
+const COMPONENT_ID$u = 'forms.checkbox_hint';
 const StyledCheckHint = Ye(StyledRadioHint).attrs({
-  'data-garden-id': COMPONENT_ID$u$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$u,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledCheckHint",
   componentId: "sc-1kl8e8c-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u$1, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u, props));
 StyledCheckHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$t$1 = 'forms.radio';
+const COMPONENT_ID$t = 'forms.radio';
 const colorStyles$9$1 = props => {
   const SHADE = 600;
   const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
@@ -11340,18 +6021,18 @@ const sizeStyles$c$1 = props => {
   return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
 };
 const StyledRadioInput = Ye.input.attrs({
-  'data-garden-id': COMPONENT_ID$t$1,
-  'data-garden-version': '8.69.4',
+  'data-garden-id': COMPONENT_ID$t,
+  'data-garden-version': '8.69.1',
   type: 'radio'
 }).withConfig({
   displayName: "StyledRadioInput",
   componentId: "sc-qsavpv-0"
-})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$c$1(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$9$1(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$t$1, props));
+})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$c$1(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$9$1(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$t, props));
 StyledRadioInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$s$1 = 'forms.checkbox';
+const COMPONENT_ID$s = 'forms.checkbox';
 const colorStyles$8$1 = props => {
   const SHADE = 600;
   const indeterminateBorderColor = getColor('primaryHue', SHADE, props.theme);
@@ -11362,37 +6043,37 @@ const colorStyles$8$1 = props => {
   return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
 };
 const StyledCheckInput = Ye(StyledRadioInput).attrs({
-  'data-garden-id': COMPONENT_ID$s$1,
-  'data-garden-version': '8.69.4',
+  'data-garden-id': COMPONENT_ID$s,
+  'data-garden-version': '8.69.1',
   type: 'checkbox'
 }).withConfig({
   displayName: "StyledCheckInput",
   componentId: "sc-176jxxe-0"
-})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$8$1(props), props => retrieveComponentStyles(COMPONENT_ID$s$1, props));
+})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$8$1(props), props => retrieveComponentStyles(COMPONENT_ID$s, props));
 StyledCheckInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$r$1 = 'forms.radio_message';
+const COMPONENT_ID$r = 'forms.radio_message';
 const StyledRadioMessage = Ye(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$r$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$r,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledRadioMessage",
   componentId: "sc-1pmi0q8-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r$1, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r, props));
 StyledRadioMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$q$1 = 'forms.checkbox_message';
+const COMPONENT_ID$q = 'forms.checkbox_message';
 const StyledCheckMessage = Ye(StyledRadioMessage).attrs({
-  'data-garden-id': COMPONENT_ID$q$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$q,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledCheckMessage",
   componentId: "sc-s4p6kd-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q$1, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q, props));
 StyledCheckMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -11417,14 +6098,14 @@ var SvgCheckSmFill = function SvgCheckSmFill(props) {
   })));
 };
 
-const COMPONENT_ID$p$1 = 'forms.check_svg';
+const COMPONENT_ID$p = 'forms.check_svg';
 const StyledCheckSvg = Ye(SvgCheckSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$p$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$p,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledCheckSvg",
   componentId: "sc-fvxetk-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$p$1, props));
+})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$p, props));
 StyledCheckSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -11447,14 +6128,14 @@ var SvgDashFill = function SvgDashFill(props) {
   })));
 };
 
-const COMPONENT_ID$o$1 = 'forms.dash_svg';
+const COMPONENT_ID$o = 'forms.dash_svg';
 const StyledDashSvg = Ye(SvgDashFill).attrs({
-  'data-garden-id': COMPONENT_ID$o$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$o,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledDashSvg",
   componentId: "sc-z3vq71-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$o$1, props));
+})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$o, props));
 StyledDashSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -11481,7 +6162,7 @@ const sizeStyles$b$1 = props => {
 };
 const StyledFileUpload = Ye.div.attrs({
   'data-garden-id': COMPONENT_ID$n$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFileUpload",
   componentId: "sc-1rodjgn-0"
@@ -11493,7 +6174,7 @@ StyledFileUpload.defaultProps = {
 const COMPONENT_ID$m$1 = 'forms.file.close';
 const StyledFileClose = Ye.button.attrs({
   'data-garden-id': COMPONENT_ID$m$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFileClose",
   componentId: "sc-1m31jbf-0"
@@ -11556,7 +6237,7 @@ const sizeStyles$a$1 = props => {
 };
 const StyledFile = Ye.div.attrs({
   'data-garden-id': COMPONENT_ID$l$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFile",
   componentId: "sc-195lzp1-0"
@@ -11568,7 +6249,7 @@ StyledFile.defaultProps = {
 const COMPONENT_ID$k$1 = 'forms.file.delete';
 const StyledFileDelete = Ye(StyledFileClose).attrs({
   'data-garden-id': COMPONENT_ID$k$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFileDelete",
   componentId: "sc-a8nnhx-0"
@@ -11588,7 +6269,7 @@ const StyledFileIcon = Ye(_ref => {
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$j$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFileIcon",
   componentId: "sc-7b3q0c-0"
@@ -11600,7 +6281,7 @@ StyledFileIcon.defaultProps = {
 const COMPONENT_ID$i$1 = 'forms.file_list';
 const StyledFileList = Ye.ul.attrs({
   'data-garden-id': COMPONENT_ID$i$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFileList",
   componentId: "sc-gbahjg-0"
@@ -11612,7 +6293,7 @@ StyledFileList.defaultProps = {
 const COMPONENT_ID$h$1 = 'forms.file_list.item';
 const StyledFileListItem = Ye.li.attrs({
   'data-garden-id': COMPONENT_ID$h$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledFileListItem",
   componentId: "sc-1ova3lo-0"
@@ -11642,11 +6323,11 @@ var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
 const COMPONENT_ID$g$1 = 'forms.radio_svg';
 const StyledRadioSvg = Ye(SvgCircleSmFill$1).attrs({
   'data-garden-id': COMPONENT_ID$g$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledRadioSvg",
   componentId: "sc-1r1qtr1-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$g$1, props));
+})(["transition:opacity 0.25 ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$g$1, props));
 StyledRadioSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -11659,7 +6340,7 @@ const sizeStyles$9$1 = props => {
 };
 const StyledToggleLabel = Ye(StyledCheckLabel).attrs({
   'data-garden-id': COMPONENT_ID$f$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledToggleLabel",
   componentId: "sc-e0asdk-0"
@@ -11671,7 +6352,7 @@ StyledToggleLabel.defaultProps = {
 const COMPONENT_ID$e$1 = 'forms.toggle_hint';
 const StyledToggleHint = Ye(StyledHint$1).attrs({
   'data-garden-id': COMPONENT_ID$e$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledToggleHint",
   componentId: "sc-nziggu-0"
@@ -11698,7 +6379,7 @@ const sizeStyles$8$1 = props => {
 };
 const StyledToggleInput = Ye(StyledCheckInput).attrs({
   'data-garden-id': COMPONENT_ID$d$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledToggleInput",
   componentId: "sc-sgp47s-0"
@@ -11710,7 +6391,7 @@ StyledToggleInput.defaultProps = {
 const COMPONENT_ID$c$1 = 'forms.toggle_message';
 const StyledToggleMessage = Ye(StyledMessage$1).attrs({
   'data-garden-id': COMPONENT_ID$c$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledToggleMessage",
   componentId: "sc-13vuvl1-0"
@@ -11740,7 +6421,7 @@ var SvgCircleSmFill = function SvgCircleSmFill(props) {
 const COMPONENT_ID$b$1 = 'forms.toggle_svg';
 const StyledToggleSvg = Ye(SvgCircleSmFill).attrs({
   'data-garden-id': COMPONENT_ID$b$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledToggleSvg",
   componentId: "sc-162xbyx-0"
@@ -11762,7 +6443,7 @@ const sizeStyles$7$1 = props => {
 };
 const StyledSelect = Ye(StyledTextInput).attrs({
   'data-garden-id': COMPONENT_ID$a$1,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   as: 'select'
 }).withConfig({
   displayName: "StyledSelect",
@@ -11775,7 +6456,7 @@ StyledSelect.defaultProps = {
 const COMPONENT_ID$9$1 = 'forms.select_wrapper';
 const StyledSelectWrapper = Ye(StyledTextFauxInput).attrs({
   'data-garden-id': COMPONENT_ID$9$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledSelectWrapper",
   componentId: "sc-i7b6hw-0"
@@ -11900,7 +6581,7 @@ const sizeStyles$6$1 = props => {
 };
 const StyledRangeInput = Ye.input.attrs(props => ({
   'data-garden-id': COMPONENT_ID$8$1,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   type: 'range',
   style: {
     backgroundSize: props.hasLowerTrack && props.backgroundSize
@@ -11933,7 +6614,7 @@ StyledRangeInput.defaultProps = {
 const COMPONENT_ID$7$1 = 'forms.slider';
 const StyledSlider = Ye.div.attrs({
   'data-garden-id': COMPONENT_ID$7$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledSlider",
   componentId: "sc-1di437a-0"
@@ -11965,7 +6646,7 @@ const sizeStyles$5$1 = props => {
 };
 const StyledSliderThumb = Ye.div.attrs(props => ({
   'data-garden-id': COMPONENT_ID$6$1,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderThumb",
@@ -11995,7 +6676,7 @@ const sizeStyles$4$1 = props => {
 };
 const StyledSliderTrack = Ye.div.attrs(props => ({
   'data-garden-id': COMPONENT_ID$5$1,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderTrack",
@@ -12015,7 +6696,7 @@ const sizeStyles$3$1 = props => {
 };
 const StyledSliderTrackRail = Ye.div.attrs({
   'data-garden-id': COMPONENT_ID$4$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledSliderTrackRail",
   componentId: "sc-1o5owbd-0"
@@ -12042,7 +6723,7 @@ const sizeStyles$2$1 = props => {
 };
 const StyledTileIcon = Ye.span.attrs({
   'data-garden-id': COMPONENT_ID$3$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTileIcon",
   componentId: "sc-1wazhg4-0"
@@ -12083,7 +6764,7 @@ const colorStyles$d = props => {
 };
 const StyledTile = Ye.label.attrs(props => ({
   'data-garden-id': COMPONENT_ID$2$3,
-  'data-garden-version': '8.69.4',
+  'data-garden-version': '8.69.1',
   'data-garden-selected': props.isSelected
 })).withConfig({
   displayName: "StyledTile",
@@ -12107,7 +6788,7 @@ const sizeStyles$1$1 = props => {
 };
 const StyledTileDescription = Ye.span.attrs({
   'data-garden-id': COMPONENT_ID$1$3,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTileDescription",
   componentId: "sc-xfuu7u-0"
@@ -12140,7 +6821,7 @@ const sizeStyles$g = props => {
 };
 const StyledTileLabel = Ye.span.attrs({
   'data-garden-id': COMPONENT_ID$L,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTileLabel",
   componentId: "sc-1mypv27-0"
@@ -12281,19 +6962,19 @@ const Label$1 = React__default.forwardRef((props, ref) => {
       } = fieldContext;
       combinedProps = {
         ...combinedProps,
-        onMouseUp: composeEventHandlers$2(props.onMouseUp, () => {
+        onMouseUp: composeEventHandlers$1(props.onMouseUp, () => {
           setIsLabelActive(false);
         }),
-        onMouseDown: composeEventHandlers$2(props.onMouseDown, () => {
+        onMouseDown: composeEventHandlers$1(props.onMouseDown, () => {
           setIsLabelActive(true);
         }),
-        onMouseEnter: composeEventHandlers$2(props.onMouseEnter, () => {
+        onMouseEnter: composeEventHandlers$1(props.onMouseEnter, () => {
           setIsLabelHovered(true);
         }),
-        onMouseLeave: composeEventHandlers$2(props.onMouseLeave, () => {
+        onMouseLeave: composeEventHandlers$1(props.onMouseLeave, () => {
           setIsLabelHovered(false);
         }),
-        onClick: composeEventHandlers$2(props.onClick, () => {
+        onClick: composeEventHandlers$1(props.onClick, () => {
           multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
         })
       };
@@ -12327,7 +7008,7 @@ const Label$1 = React__default.forwardRef((props, ref) => {
     };
     combinedProps = {
       ...combinedProps,
-      onClick: composeEventHandlers$2(combinedProps.onClick, onLabelSelect)
+      onClick: composeEventHandlers$1(combinedProps.onClick, onLabelSelect)
     };
     return React__default.createElement(StyledCheckLabel, _extends$t({
       ref: ref
@@ -12457,7 +7138,7 @@ const Input = React__default.forwardRef((_ref, ref) => {
   } = _ref;
   const fieldContext = useFieldContext$1();
   const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$1(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -12535,7 +7216,7 @@ const Range = React__default.forwardRef((_ref, ref) => {
   reactExports.useEffect(() => {
     updateBackgroundWidthFromInput(rangeRef.current);
   }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$2(props.onChange, event => {
+  const onChange = hasLowerTrack ? composeEventHandlers$1(props.onChange, event => {
     updateBackgroundWidthFromInput(event.target);
   }) : props.onChange;
   let combinedProps = {
@@ -12652,7 +7333,7 @@ const Textarea = React__default.forwardRef((_ref, ref) => {
     computedStyle.height = state.height;
     computedStyle.overflow = state.overflow ? 'hidden' : undefined;
   }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$1(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -12756,10 +7437,10 @@ const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
     ...props
   } = _ref;
   const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$2(onFocus, () => {
+  const onFocusHandler = composeEventHandlers$1(onFocus, () => {
     setIsFocused(true);
   });
-  const onBlurHandler = composeEventHandlers$2(onBlur, () => {
+  const onBlurHandler = composeEventHandlers$1(onBlur, () => {
     setIsFocused(false);
   });
   return React__default.createElement(StyledTextFauxInput, _extends$t({
@@ -13165,7 +7846,7 @@ const useFileContext = () => {
 
 const CloseComponent$1 = React__default.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$1(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
   return React__default.createElement(StyledFileClose, _extends$t({
@@ -13218,7 +7899,7 @@ var SvgTrashStroke = function SvgTrashStroke(props) {
 
 const DeleteComponent = React__default.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$1(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
   return React__default.createElement(StyledFileDelete, _extends$t({
@@ -13653,22 +8334,22 @@ const MediaInput = React__default.forwardRef((_ref, ref) => {
     onMouseOut,
     ...otherWrapperProps
   } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$2(onClick, () => {
+  const onFauxInputClickHandler = composeEventHandlers$1(onClick, () => {
     inputRef.current && inputRef.current.focus();
   });
-  const onFauxInputFocusHandler = composeEventHandlers$2(onFocus, () => {
+  const onFauxInputFocusHandler = composeEventHandlers$1(onFocus, () => {
     setIsFocused(true);
   });
-  const onFauxInputBlurHandler = composeEventHandlers$2(onBlur, () => {
+  const onFauxInputBlurHandler = composeEventHandlers$1(onBlur, () => {
     setIsFocused(false);
   });
-  const onFauxInputMouseOverHandler = composeEventHandlers$2(onMouseOver, () => {
+  const onFauxInputMouseOverHandler = composeEventHandlers$1(onMouseOver, () => {
     setIsHovered(true);
   });
-  const onFauxInputMouseOutHandler = composeEventHandlers$2(onMouseOut, () => {
+  const onFauxInputMouseOutHandler = composeEventHandlers$1(onMouseOut, () => {
     setIsHovered(false);
   });
-  const onSelectHandler = readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = readOnly ? composeEventHandlers$1(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -13732,6 +8413,2336 @@ MediaInput.displayName = 'MediaInput';
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+const useField = _ref => {
+  let {
+    idPrefix,
+    hasHint,
+    hasMessage
+  } = _ref;
+  const prefix = useId(idPrefix);
+  const inputId = `${prefix}--input`;
+  const labelId = `${prefix}--label`;
+  const hintId = `${prefix}--hint`;
+  const messageId = `${prefix}--message`;
+  const getLabelProps = reactExports.useCallback(function (_temp) {
+    let {
+      id = labelId,
+      htmlFor = inputId,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    return {
+      'data-garden-container-id': 'containers.field.label',
+      'data-garden-container-version': '3.0.5',
+      id,
+      htmlFor,
+      ...other
+    };
+  }, [labelId, inputId]);
+  const getHintProps = reactExports.useCallback(function (_temp2) {
+    let {
+      id = hintId,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    return {
+      'data-garden-container-id': 'containers.field.hint',
+      'data-garden-container-version': '3.0.5',
+      id,
+      ...other
+    };
+  }, [hintId]);
+  const getInputProps = reactExports.useCallback(function (_temp3) {
+    let {
+      id = inputId,
+      ...other
+    } = _temp3 === void 0 ? {} : _temp3;
+    const describedBy = [];
+    if (hasHint) {
+      describedBy.push(hintId);
+    }
+    if (hasMessage) {
+      describedBy.push(messageId);
+    }
+    return {
+      'data-garden-container-id': 'containers.field.input',
+      'data-garden-container-version': '3.0.5',
+      id,
+      'aria-labelledby': labelId,
+      'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined,
+      ...other
+    };
+  }, [inputId, labelId, hintId, messageId, hasHint, hasMessage]);
+  const getMessageProps = reactExports.useCallback(function (_temp4) {
+    let {
+      id = messageId,
+      role = 'alert',
+      ...other
+    } = _temp4 === void 0 ? {} : _temp4;
+    return {
+      'data-garden-container-id': 'containers.field.message',
+      'data-garden-container-version': '3.0.5',
+      role: role === null ? undefined : role,
+      id,
+      ...other
+    };
+  }, [messageId]);
+  return reactExports.useMemo(() => ({
+    getLabelProps,
+    getHintProps,
+    getInputProps,
+    getMessageProps
+  }), [getLabelProps, getHintProps, getInputProps, getMessageProps]);
+};
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  idPrefix: PropTypes.string,
+  hasHint: PropTypes.bool,
+  hasMessage: PropTypes.bool
+});
+
+function _objectWithoutPropertiesLoose(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+
+let e=e=>"object"==typeof e&&null!=e&&1===e.nodeType,t=(e,t)=>(!t||"hidden"!==e)&&("visible"!==e&&"clip"!==e),n=(e,n)=>{if(e.clientHeight<e.scrollHeight||e.clientWidth<e.scrollWidth){let l=getComputedStyle(e,null);return t(l.overflowY,n)||t(l.overflowX,n)||(e=>{let t=(e=>{if(!e.ownerDocument||!e.ownerDocument.defaultView)return null;try{return e.ownerDocument.defaultView.frameElement}catch(e){return null}})(e);return !!t&&(t.clientHeight<e.scrollHeight||t.clientWidth<e.scrollWidth)})(e)}return !1},l=(e,t,n,l,i,o,r,d)=>o<e&&r>t||o>e&&r<t?0:o<=e&&d<=n||r>=t&&d>=n?o-e-l:r>t&&d<n||o<e&&d>n?r-t+i:0,i=e=>{let t=e.parentElement;return null==t?e.getRootNode().host||null:t};var o=(t,o)=>{var r,d,h,f,u,s;if("undefined"==typeof document)return [];let{scrollMode:a,block:c,inline:g,boundary:m,skipOverflowHiddenElements:p}=o,w="function"==typeof m?m:e=>e!==m;if(!e(t))throw new TypeError("Invalid target");let W=document.scrollingElement||document.documentElement,H=[],b=t;for(;e(b)&&w(b);){if(b=i(b),b===W){H.push(b);break}null!=b&&b===document.body&&n(b)&&!n(document.documentElement)||null!=b&&n(b,p)&&H.push(b);}let v=null!=(d=null==(r=window.visualViewport)?void 0:r.width)?d:innerWidth,y=null!=(f=null==(h=window.visualViewport)?void 0:h.height)?f:innerHeight,E=null!=(u=window.scrollX)?u:pageXOffset,M=null!=(s=window.scrollY)?s:pageYOffset,{height:x,width:I,top:C,right:R,bottom:T,left:V}=t.getBoundingClientRect(),k="start"===c||"nearest"===c?C:"end"===c?T:C+x/2,B="center"===g?V+I/2:"end"===g?R:V,D=[];for(let e=0;e<H.length;e++){let t=H[e],{height:n,width:i,top:o,right:r,bottom:d,left:h}=t.getBoundingClientRect();if("if-needed"===a&&C>=0&&V>=0&&T<=y&&R<=v&&C>=o&&T<=d&&V>=h&&R<=r)return D;let f=getComputedStyle(t),u=parseInt(f.borderLeftWidth,10),s=parseInt(f.borderTopWidth,10),m=parseInt(f.borderRightWidth,10),p=parseInt(f.borderBottomWidth,10),w=0,b=0,O="offsetWidth"in t?t.offsetWidth-t.clientWidth-u-m:0,X="offsetHeight"in t?t.offsetHeight-t.clientHeight-s-p:0,Y="offsetWidth"in t?0===t.offsetWidth?0:i/t.offsetWidth:0,L="offsetHeight"in t?0===t.offsetHeight?0:n/t.offsetHeight:0;if(W===t)w="start"===c?k:"end"===c?k-y:"nearest"===c?l(M,M+y,y,s,p,M+k,M+k+x,x):k-y/2,b="start"===g?B:"center"===g?B-v/2:"end"===g?B-v:l(E,E+v,v,u,m,E+B,E+B+I,I),w=Math.max(0,w+M),b=Math.max(0,b+E);else {w="start"===c?k-o-s:"end"===c?k-d+p+X:"nearest"===c?l(o,d,n,s,p+X,k,k+x,x):k-(o+n/2)+X/2,b="start"===g?B-h-u:"center"===g?B-(h+i/2)+O/2:"end"===g?B-r+m+O:l(h,r,i,u,m+O,B,B+I,I);let{scrollLeft:e,scrollTop:f}=t;w=Math.max(0,Math.min(f+w/L,t.scrollHeight-n/L+X)),b=Math.max(0,Math.min(e+b/Y,t.scrollWidth-i/Y+O)),k+=f-w,B+=e-b;}D.push({el:t,top:w,left:b});}return D};
+
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+var __assign = function() {
+    __assign = Object.assign || function __assign(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+
+var idCounter = 0;
+function noop() {}
+
+/**
+ * Scroll node into view if necessary
+ * @param {HTMLElement} node the element that should scroll into view
+ * @param {HTMLElement} menuNode the menu element of the component
+ */
+function scrollIntoView(node, menuNode) {
+  if (!node) {
+    return;
+  }
+  var actions = o(node, {
+    boundary: menuNode,
+    block: 'nearest',
+    scrollMode: 'if-needed'
+  });
+  actions.forEach(function (_ref) {
+    var el = _ref.el,
+      top = _ref.top,
+      left = _ref.left;
+    el.scrollTop = top;
+    el.scrollLeft = left;
+  });
+}
+
+/**
+ * @param {HTMLElement} parent the parent node
+ * @param {HTMLElement} child the child node
+ * @param {Window} environment The window context where downshift renders.
+ * @return {Boolean} whether the parent is the child or the child is in the parent
+ */
+function isOrContainsNode(parent, child, environment) {
+  var result = parent === child || child instanceof environment.Node && parent.contains && parent.contains(child);
+  return result;
+}
+
+/**
+ * Simple debounce implementation. Will call the given
+ * function once after the time given has passed since
+ * it was last called.
+ * @param {Function} fn the function to call after the time
+ * @param {Number} time the time to wait
+ * @return {Function} the debounced function
+ */
+function debounce$1(fn, time) {
+  var timeoutId;
+  function cancel() {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+  }
+  function wrapper() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    cancel();
+    timeoutId = setTimeout(function () {
+      timeoutId = null;
+      fn.apply(void 0, args);
+    }, time);
+  }
+  wrapper.cancel = cancel;
+  return wrapper;
+}
+
+/**
+ * This is intended to be used to compose event handlers.
+ * They are executed in order until one of them sets
+ * `event.preventDownshiftDefault = true`.
+ * @param {...Function} fns the event handler functions
+ * @return {Function} the event handler to add to an element
+ */
+function callAllEventHandlers() {
+  for (var _len2 = arguments.length, fns = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+    fns[_key2] = arguments[_key2];
+  }
+  return function (event) {
+    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+      args[_key3 - 1] = arguments[_key3];
+    }
+    return fns.some(function (fn) {
+      if (fn) {
+        fn.apply(void 0, [event].concat(args));
+      }
+      return event.preventDownshiftDefault || event.hasOwnProperty('nativeEvent') && event.nativeEvent.preventDownshiftDefault;
+    });
+  };
+}
+function handleRefs() {
+  for (var _len4 = arguments.length, refs = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+    refs[_key4] = arguments[_key4];
+  }
+  return function (node) {
+    refs.forEach(function (ref) {
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    });
+  };
+}
+
+/**
+ * This generates a unique ID for an instance of Downshift
+ * @return {String} the unique ID
+ */
+function generateId() {
+  return String(idCounter++);
+}
+
+/**
+ * Default implementation for status message. Only added when menu is open.
+ * Will specify if there are results in the list, and if so, how many,
+ * and what keys are relevant.
+ *
+ * @param {Object} param the downshift state and other relevant properties
+ * @return {String} the a11y status message
+ */
+function getA11yStatusMessage$1(_ref2) {
+  var isOpen = _ref2.isOpen,
+    resultCount = _ref2.resultCount,
+    previousResultCount = _ref2.previousResultCount;
+  if (!isOpen) {
+    return '';
+  }
+  if (!resultCount) {
+    return 'No results are available.';
+  }
+  if (resultCount !== previousResultCount) {
+    return resultCount + " result" + (resultCount === 1 ? ' is' : 's are') + " available, use up and down arrow keys to navigate. Press Enter key to select.";
+  }
+  return '';
+}
+
+/**
+ * This will perform a shallow merge of the given state object
+ * with the state coming from props
+ * (for the controlled component scenario)
+ * This is used in state updater functions so they're referencing
+ * the right state regardless of where it comes from.
+ *
+ * @param {Object} state The state of the component/hook.
+ * @param {Object} props The props that may contain controlled values.
+ * @returns {Object} The merged controlled state.
+ */
+function getState(state, props) {
+  return Object.keys(state).reduce(function (prevState, key) {
+    prevState[key] = isControlledProp(props, key) ? props[key] : state[key];
+    return prevState;
+  }, {});
+}
+
+/**
+ * This determines whether a prop is a "controlled prop" meaning it is
+ * state which is controlled by the outside of this component rather
+ * than within this component.
+ *
+ * @param {Object} props The props that may contain controlled values.
+ * @param {String} key the key to check
+ * @return {Boolean} whether it is a controlled controlled prop
+ */
+function isControlledProp(props, key) {
+  return props[key] !== undefined;
+}
+
+/**
+ * Normalizes the 'key' property of a KeyboardEvent in IE/Edge
+ * @param {Object} event a keyboardEvent object
+ * @return {String} keyboard key
+ */
+function normalizeArrowKey(event) {
+  var key = event.key,
+    keyCode = event.keyCode;
+  /* istanbul ignore next (ie) */
+  if (keyCode >= 37 && keyCode <= 40 && key.indexOf('Arrow') !== 0) {
+    return "Arrow" + key;
+  }
+  return key;
+}
+
+/**
+ * Returns the new index in the list, in a circular way. If next value is out of bonds from the total,
+ * it will wrap to either 0 or itemCount - 1.
+ *
+ * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
+ * @param {number} baseIndex The initial position to move from.
+ * @param {number} itemCount The total number of items.
+ * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
+ * @param {boolean} circular Specify if navigation is circular. Default is true.
+ * @returns {number} The new index after the move.
+ */
+function getNextWrappingIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
+  if (circular === void 0) {
+    circular = true;
+  }
+  if (itemCount === 0) {
+    return -1;
+  }
+  var itemsLastIndex = itemCount - 1;
+  if (typeof baseIndex !== 'number' || baseIndex < 0 || baseIndex >= itemCount) {
+    baseIndex = moveAmount > 0 ? -1 : itemsLastIndex + 1;
+  }
+  var newIndex = baseIndex + moveAmount;
+  if (newIndex < 0) {
+    newIndex = circular ? itemsLastIndex : 0;
+  } else if (newIndex > itemsLastIndex) {
+    newIndex = circular ? 0 : itemsLastIndex;
+  }
+  var nonDisabledNewIndex = getNextNonDisabledIndex(moveAmount, newIndex, itemCount, getItemNodeFromIndex, circular);
+  if (nonDisabledNewIndex === -1) {
+    return baseIndex >= itemCount ? -1 : baseIndex;
+  }
+  return nonDisabledNewIndex;
+}
+
+/**
+ * Returns the next index in the list of an item that is not disabled.
+ *
+ * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
+ * @param {number} baseIndex The initial position to move from.
+ * @param {number} itemCount The total number of items.
+ * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
+ * @param {boolean} circular Specify if navigation is circular. Default is true.
+ * @returns {number} The new index. Returns baseIndex if item is not disabled. Returns next non-disabled item otherwise. If no non-disabled found it will return -1.
+ */
+function getNextNonDisabledIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
+  var currentElementNode = getItemNodeFromIndex(baseIndex);
+  if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
+    return baseIndex;
+  }
+  if (moveAmount > 0) {
+    for (var index = baseIndex + 1; index < itemCount; index++) {
+      if (!getItemNodeFromIndex(index).hasAttribute('disabled')) {
+        return index;
+      }
+    }
+  } else {
+    for (var _index = baseIndex - 1; _index >= 0; _index--) {
+      if (!getItemNodeFromIndex(_index).hasAttribute('disabled')) {
+        return _index;
+      }
+    }
+  }
+  if (circular) {
+    return moveAmount > 0 ? getNextNonDisabledIndex(1, 0, itemCount, getItemNodeFromIndex, false) : getNextNonDisabledIndex(-1, itemCount - 1, itemCount, getItemNodeFromIndex, false);
+  }
+  return -1;
+}
+
+/**
+ * Checks if event target is within the downshift elements.
+ *
+ * @param {EventTarget} target Target to check.
+ * @param {HTMLElement[]} downshiftElements The elements that form downshift (list, toggle button etc).
+ * @param {Window} environment The window context where downshift renders.
+ * @param {boolean} checkActiveElement Whether to also check activeElement.
+ *
+ * @returns {boolean} Whether or not the target is within downshift elements.
+ */
+function targetWithinDownshift(target, downshiftElements, environment, checkActiveElement) {
+  if (checkActiveElement === void 0) {
+    checkActiveElement = true;
+  }
+  return downshiftElements.some(function (contextNode) {
+    return contextNode && (isOrContainsNode(contextNode, target, environment) || checkActiveElement && isOrContainsNode(contextNode, environment.document.activeElement, environment));
+  });
+}
+
+var cleanupStatus = debounce$1(function (documentProp) {
+  getStatusDiv(documentProp).textContent = '';
+}, 500);
+
+/**
+ * @param {String} status the status message
+ * @param {Object} documentProp document passed by the user.
+ */
+function setStatus(status, documentProp) {
+  var div = getStatusDiv(documentProp);
+  if (!status) {
+    return;
+  }
+  div.textContent = status;
+  cleanupStatus(documentProp);
+}
+
+/**
+ * Get the status node or create it if it does not already exist.
+ * @param {Object} documentProp document passed by the user.
+ * @return {HTMLElement} the status node.
+ */
+function getStatusDiv(documentProp) {
+  if (documentProp === void 0) {
+    documentProp = document;
+  }
+  var statusDiv = documentProp.getElementById('a11y-status-message');
+  if (statusDiv) {
+    return statusDiv;
+  }
+  statusDiv = documentProp.createElement('div');
+  statusDiv.setAttribute('id', 'a11y-status-message');
+  statusDiv.setAttribute('role', 'status');
+  statusDiv.setAttribute('aria-live', 'polite');
+  statusDiv.setAttribute('aria-relevant', 'additions text');
+  Object.assign(statusDiv.style, {
+    border: '0',
+    clip: 'rect(0 0 0 0)',
+    height: '1px',
+    margin: '-1px',
+    overflow: 'hidden',
+    padding: '0',
+    position: 'absolute',
+    width: '1px'
+  });
+  documentProp.body.appendChild(statusDiv);
+  return statusDiv;
+}
+
+var _excluded$3 = ["isInitialMount", "highlightedIndex", "items", "environment"];
+var dropdownDefaultStateValues = {
+  highlightedIndex: -1,
+  isOpen: false,
+  selectedItem: null,
+  inputValue: ''
+};
+function callOnChangeProps(action, state, newState) {
+  var props = action.props,
+    type = action.type;
+  var changes = {};
+  Object.keys(state).forEach(function (key) {
+    invokeOnChangeHandler(key, action, state, newState);
+    if (newState[key] !== state[key]) {
+      changes[key] = newState[key];
+    }
+  });
+  if (props.onStateChange && Object.keys(changes).length) {
+    props.onStateChange(_extends$w({
+      type: type
+    }, changes));
+  }
+}
+function invokeOnChangeHandler(key, action, state, newState) {
+  var props = action.props,
+    type = action.type;
+  var handler = "on" + capitalizeString(key) + "Change";
+  if (props[handler] && newState[key] !== undefined && newState[key] !== state[key]) {
+    props[handler](_extends$w({
+      type: type
+    }, newState));
+  }
+}
+
+/**
+ * Default state reducer that returns the changes.
+ *
+ * @param {Object} s state.
+ * @param {Object} a action with changes.
+ * @returns {Object} changes.
+ */
+function stateReducer(s, a) {
+  return a.changes;
+}
+
+/**
+ * Returns a message to be added to aria-live region when item is selected.
+ *
+ * @param {Object} selectionParameters Parameters required to build the message.
+ * @returns {string} The a11y message.
+ */
+function getA11ySelectionMessage(selectionParameters) {
+  var selectedItem = selectionParameters.selectedItem,
+    itemToStringLocal = selectionParameters.itemToString;
+  return selectedItem ? itemToStringLocal(selectedItem) + " has been selected." : '';
+}
+
+/**
+ * Debounced call for updating the a11y message.
+ */
+var updateA11yStatus = debounce$1(function (getA11yMessage, document) {
+  setStatus(getA11yMessage(), document);
+}, 200);
+
+// istanbul ignore next
+var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? reactExports.useLayoutEffect : reactExports.useEffect;
+function useElementIds(_ref) {
+  var _ref$id = _ref.id,
+    id = _ref$id === void 0 ? "downshift-" + generateId() : _ref$id,
+    labelId = _ref.labelId,
+    menuId = _ref.menuId,
+    getItemId = _ref.getItemId,
+    toggleButtonId = _ref.toggleButtonId,
+    inputId = _ref.inputId;
+  var elementIdsRef = reactExports.useRef({
+    labelId: labelId || id + "-label",
+    menuId: menuId || id + "-menu",
+    getItemId: getItemId || function (index) {
+      return id + "-item-" + index;
+    },
+    toggleButtonId: toggleButtonId || id + "-toggle-button",
+    inputId: inputId || id + "-input"
+  });
+  return elementIdsRef.current;
+}
+function getItemAndIndex(itemProp, indexProp, items, errorMessage) {
+  var item, index;
+  if (itemProp === undefined) {
+    if (indexProp === undefined) {
+      throw new Error(errorMessage);
+    }
+    item = items[indexProp];
+    index = indexProp;
+  } else {
+    index = indexProp === undefined ? items.indexOf(itemProp) : indexProp;
+    item = itemProp;
+  }
+  return [item, index];
+}
+function itemToString(item) {
+  return item ? String(item) : '';
+}
+function capitalizeString(string) {
+  return "" + string.slice(0, 1).toUpperCase() + string.slice(1);
+}
+function useLatestRef$1(val) {
+  var ref = reactExports.useRef(val);
+  // technically this is not "concurrent mode safe" because we're manipulating
+  // the value during render (so it's not idempotent). However, the places this
+  // hook is used is to support memoizing callbacks which will be called
+  // *during* render, so we need the latest values *during* render.
+  // If not for this, then we'd probably want to use useLayoutEffect instead.
+  ref.current = val;
+  return ref;
+}
+
+/**
+ * Computes the controlled state using a the previous state, props,
+ * two reducers, one from downshift and an optional one from the user.
+ * Also calls the onChange handlers for state values that have changed.
+ *
+ * @param {Function} reducer Reducer function from downshift.
+ * @param {Object} initialState Initial state of the hook.
+ * @param {Object} props The hook props.
+ * @returns {Array} An array with the state and an action dispatcher.
+ */
+function useEnhancedReducer(reducer, initialState, props) {
+  var prevStateRef = reactExports.useRef();
+  var actionRef = reactExports.useRef();
+  var enhancedReducer = reactExports.useCallback(function (state, action) {
+    actionRef.current = action;
+    state = getState(state, action.props);
+    var changes = reducer(state, action);
+    var newState = action.props.stateReducer(state, _extends$w({}, action, {
+      changes: changes
+    }));
+    return newState;
+  }, [reducer]);
+  var _useReducer = reactExports.useReducer(enhancedReducer, initialState),
+    state = _useReducer[0],
+    dispatch = _useReducer[1];
+  var propsRef = useLatestRef$1(props);
+  var dispatchWithProps = reactExports.useCallback(function (action) {
+    return dispatch(_extends$w({
+      props: propsRef.current
+    }, action));
+  }, [propsRef]);
+  var action = actionRef.current;
+  reactExports.useEffect(function () {
+    if (action && prevStateRef.current && prevStateRef.current !== state) {
+      callOnChangeProps(action, getState(prevStateRef.current, action.props), state);
+    }
+    prevStateRef.current = state;
+  }, [state, props, action]);
+  return [state, dispatchWithProps];
+}
+var defaultProps$3 = {
+  itemToString: itemToString,
+  stateReducer: stateReducer,
+  getA11ySelectionMessage: getA11ySelectionMessage,
+  scrollIntoView: scrollIntoView,
+  environment: /* istanbul ignore next (ssr) */
+  typeof window === 'undefined' ? {} : window
+};
+function getDefaultValue$1(props, propKey, defaultStateValues) {
+  if (defaultStateValues === void 0) {
+    defaultStateValues = dropdownDefaultStateValues;
+  }
+  var defaultValue = props["default" + capitalizeString(propKey)];
+  if (defaultValue !== undefined) {
+    return defaultValue;
+  }
+  return defaultStateValues[propKey];
+}
+function getInitialValue$1(props, propKey, defaultStateValues) {
+  if (defaultStateValues === void 0) {
+    defaultStateValues = dropdownDefaultStateValues;
+  }
+  var value = props[propKey];
+  if (value !== undefined) {
+    return value;
+  }
+  var initialValue = props["initial" + capitalizeString(propKey)];
+  if (initialValue !== undefined) {
+    return initialValue;
+  }
+  return getDefaultValue$1(props, propKey, defaultStateValues);
+}
+function getInitialState$2(props) {
+  var selectedItem = getInitialValue$1(props, 'selectedItem');
+  var isOpen = getInitialValue$1(props, 'isOpen');
+  var highlightedIndex = getInitialValue$1(props, 'highlightedIndex');
+  var inputValue = getInitialValue$1(props, 'inputValue');
+  return {
+    highlightedIndex: highlightedIndex < 0 && selectedItem && isOpen ? props.items.indexOf(selectedItem) : highlightedIndex,
+    isOpen: isOpen,
+    selectedItem: selectedItem,
+    inputValue: inputValue
+  };
+}
+function getHighlightedIndexOnOpen(props, state, offset) {
+  var items = props.items,
+    initialHighlightedIndex = props.initialHighlightedIndex,
+    defaultHighlightedIndex = props.defaultHighlightedIndex;
+  var selectedItem = state.selectedItem,
+    highlightedIndex = state.highlightedIndex;
+  if (items.length === 0) {
+    return -1;
+  }
+
+  // initialHighlightedIndex will give value to highlightedIndex on initial state only.
+  if (initialHighlightedIndex !== undefined && highlightedIndex === initialHighlightedIndex) {
+    return initialHighlightedIndex;
+  }
+  if (defaultHighlightedIndex !== undefined) {
+    return defaultHighlightedIndex;
+  }
+  if (selectedItem) {
+    return items.indexOf(selectedItem);
+  }
+  if (offset === 0) {
+    return -1;
+  }
+  return offset < 0 ? items.length - 1 : 0;
+}
+
+/**
+ * Reuse the movement tracking of mouse and touch events.
+ *
+ * @param {boolean} isOpen Whether the dropdown is open or not.
+ * @param {Array<Object>} downshiftElementRefs Downshift element refs to track movement (toggleButton, menu etc.)
+ * @param {Object} environment Environment where component/hook exists.
+ * @param {Function} handleBlur Handler on blur from mouse or touch.
+ * @returns {Object} Ref containing whether mouseDown or touchMove event is happening
+ */
+function useMouseAndTouchTracker(isOpen, downshiftElementRefs, environment, handleBlur) {
+  var mouseAndTouchTrackersRef = reactExports.useRef({
+    isMouseDown: false,
+    isTouchMove: false
+  });
+  reactExports.useEffect(function () {
+    if ((environment == null ? void 0 : environment.addEventListener) == null) {
+      return;
+    }
+
+    // The same strategy for checking if a click occurred inside or outside downshift
+    // as in downshift.js.
+    var onMouseDown = function onMouseDown() {
+      mouseAndTouchTrackersRef.current.isMouseDown = true;
+    };
+    var onMouseUp = function onMouseUp(event) {
+      mouseAndTouchTrackersRef.current.isMouseDown = false;
+      if (isOpen && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
+        return ref.current;
+      }), environment)) {
+        handleBlur();
+      }
+    };
+    var onTouchStart = function onTouchStart() {
+      mouseAndTouchTrackersRef.current.isTouchMove = false;
+    };
+    var onTouchMove = function onTouchMove() {
+      mouseAndTouchTrackersRef.current.isTouchMove = true;
+    };
+    var onTouchEnd = function onTouchEnd(event) {
+      if (isOpen && !mouseAndTouchTrackersRef.current.isTouchMove && !targetWithinDownshift(event.target, downshiftElementRefs.map(function (ref) {
+        return ref.current;
+      }), environment, false)) {
+        handleBlur();
+      }
+    };
+    environment.addEventListener('mousedown', onMouseDown);
+    environment.addEventListener('mouseup', onMouseUp);
+    environment.addEventListener('touchstart', onTouchStart);
+    environment.addEventListener('touchmove', onTouchMove);
+    environment.addEventListener('touchend', onTouchEnd);
+
+    // eslint-disable-next-line consistent-return
+    return function cleanup() {
+      environment.removeEventListener('mousedown', onMouseDown);
+      environment.removeEventListener('mouseup', onMouseUp);
+      environment.removeEventListener('touchstart', onTouchStart);
+      environment.removeEventListener('touchmove', onTouchMove);
+      environment.removeEventListener('touchend', onTouchEnd);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, environment]);
+  return mouseAndTouchTrackersRef;
+}
+
+/* istanbul ignore next */
+// eslint-disable-next-line import/no-mutable-exports
+var useGetterPropsCalledChecker = function useGetterPropsCalledChecker() {
+  return noop;
+};
+function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref2) {
+  var isInitialMount = _ref2.isInitialMount,
+    highlightedIndex = _ref2.highlightedIndex,
+    items = _ref2.items,
+    environment = _ref2.environment,
+    rest = _objectWithoutPropertiesLoose(_ref2, _excluded$3);
+  // Sets a11y status message on changes in state.
+  reactExports.useEffect(function () {
+    if (isInitialMount || false) {
+      return;
+    }
+    updateA11yStatus(function () {
+      return getA11yMessage(_extends$w({
+        highlightedIndex: highlightedIndex,
+        highlightedItem: items[highlightedIndex],
+        resultCount: items.length
+      }, rest));
+    }, environment.document);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, dependencyArray);
+}
+function useScrollIntoView(_ref3) {
+  var highlightedIndex = _ref3.highlightedIndex,
+    isOpen = _ref3.isOpen,
+    itemRefs = _ref3.itemRefs,
+    getItemNodeFromIndex = _ref3.getItemNodeFromIndex,
+    menuElement = _ref3.menuElement,
+    scrollIntoViewProp = _ref3.scrollIntoView;
+  // used not to scroll on highlight by mouse.
+  var shouldScrollRef = reactExports.useRef(true);
+  // Scroll on highlighted item if change comes from keyboard.
+  useIsomorphicLayoutEffect(function () {
+    if (highlightedIndex < 0 || !isOpen || !Object.keys(itemRefs.current).length) {
+      return;
+    }
+    if (shouldScrollRef.current === false) {
+      shouldScrollRef.current = true;
+    } else {
+      scrollIntoViewProp(getItemNodeFromIndex(highlightedIndex), menuElement);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [highlightedIndex]);
+  return shouldScrollRef;
+}
+
+// eslint-disable-next-line import/no-mutable-exports
+var useControlPropsValidator = noop;
+
+/**
+ * Handles selection on Enter / Alt + ArrowUp. Closes the menu and resets the highlighted index, unless there is a highlighted.
+ * In that case, selects the item and resets to defaults for open state and highlighted idex.
+ * @param {Object} props The useCombobox props.
+ * @param {number} highlightedIndex The index from the state.
+ * @param {boolean} inputValue Also return the input value for state.
+ * @returns The changes for the state.
+ */
+function getChangesOnSelection(props, highlightedIndex, inputValue) {
+  var _props$items;
+  if (inputValue === void 0) {
+    inputValue = true;
+  }
+  var shouldSelect = ((_props$items = props.items) == null ? void 0 : _props$items.length) && highlightedIndex >= 0;
+  return _extends$w({
+    isOpen: false,
+    highlightedIndex: -1
+  }, shouldSelect && _extends$w({
+    selectedItem: props.items[highlightedIndex],
+    isOpen: getDefaultValue$1(props, 'isOpen'),
+    highlightedIndex: getDefaultValue$1(props, 'highlightedIndex')
+  }, inputValue && {
+    inputValue: props.itemToString(props.items[highlightedIndex])
+  }));
+}
+
+function downshiftCommonReducer(state, action, stateChangeTypes) {
+  var type = action.type,
+    props = action.props;
+  var changes;
+  switch (type) {
+    case stateChangeTypes.ItemMouseMove:
+      changes = {
+        highlightedIndex: action.disabled ? -1 : action.index
+      };
+      break;
+    case stateChangeTypes.MenuMouseLeave:
+      changes = {
+        highlightedIndex: -1
+      };
+      break;
+    case stateChangeTypes.ToggleButtonClick:
+    case stateChangeTypes.FunctionToggleMenu:
+      changes = {
+        isOpen: !state.isOpen,
+        highlightedIndex: state.isOpen ? -1 : getHighlightedIndexOnOpen(props, state, 0)
+      };
+      break;
+    case stateChangeTypes.FunctionOpenMenu:
+      changes = {
+        isOpen: true,
+        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
+      };
+      break;
+    case stateChangeTypes.FunctionCloseMenu:
+      changes = {
+        isOpen: false
+      };
+      break;
+    case stateChangeTypes.FunctionSetHighlightedIndex:
+      changes = {
+        highlightedIndex: action.highlightedIndex
+      };
+      break;
+    case stateChangeTypes.FunctionSetInputValue:
+      changes = {
+        inputValue: action.inputValue
+      };
+      break;
+    case stateChangeTypes.FunctionReset:
+      changes = {
+        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
+        isOpen: getDefaultValue$1(props, 'isOpen'),
+        selectedItem: getDefaultValue$1(props, 'selectedItem'),
+        inputValue: getDefaultValue$1(props, 'inputValue')
+      };
+      break;
+    default:
+      throw new Error('Reducer called without proper action type.');
+  }
+  return _extends$w({}, state, changes);
+}
+({
+    items: PropTypes.array.isRequired,
+    itemToString: PropTypes.func,
+    getA11yStatusMessage: PropTypes.func,
+    getA11ySelectionMessage: PropTypes.func,
+    highlightedIndex: PropTypes.number,
+    defaultHighlightedIndex: PropTypes.number,
+    initialHighlightedIndex: PropTypes.number,
+    isOpen: PropTypes.bool,
+    defaultIsOpen: PropTypes.bool,
+    initialIsOpen: PropTypes.bool,
+    selectedItem: PropTypes.any,
+    initialSelectedItem: PropTypes.any,
+    defaultSelectedItem: PropTypes.any,
+    id: PropTypes.string,
+    labelId: PropTypes.string,
+    menuId: PropTypes.string,
+    getItemId: PropTypes.func,
+    toggleButtonId: PropTypes.string,
+    stateReducer: PropTypes.func,
+    onSelectedItemChange: PropTypes.func,
+    onHighlightedIndexChange: PropTypes.func,
+    onStateChange: PropTypes.func,
+    onIsOpenChange: PropTypes.func,
+    environment: PropTypes.shape({
+        addEventListener: PropTypes.func,
+        removeEventListener: PropTypes.func,
+        document: PropTypes.shape({
+            getElementById: PropTypes.func,
+            activeElement: PropTypes.any,
+            body: PropTypes.any
+        })
+    })
+});
+/**
+ * Default implementation for status message. Only added when menu is open.
+ * Will specift if there are results in the list, and if so, how many,
+ * and what keys are relevant.
+ *
+ * @param {Object} param the downshift state and other relevant properties
+ * @return {String} the a11y status message
+ */
+function getA11yStatusMessage(_a) {
+    var isOpen = _a.isOpen, resultCount = _a.resultCount, previousResultCount = _a.previousResultCount;
+    if (!isOpen) {
+        return '';
+    }
+    if (!resultCount) {
+        return 'No results are available.';
+    }
+    if (resultCount !== previousResultCount) {
+        return "".concat(resultCount, " result").concat(resultCount === 1 ? ' is' : 's are', " available, use up and down arrow keys to navigate. Press Enter or Space Bar keys to select.");
+    }
+    return '';
+}
+__assign(__assign({}, defaultProps$3), { getA11yStatusMessage: getA11yStatusMessage });
+
+var InputKeyDownArrowDown = 0;
+var InputKeyDownArrowUp = 1;
+var InputKeyDownEscape = 2;
+var InputKeyDownHome = 3;
+var InputKeyDownEnd = 4;
+var InputKeyDownPageUp = 5;
+var InputKeyDownPageDown = 6;
+var InputKeyDownEnter = 7;
+var InputChange = 8;
+var InputBlur = 9;
+var InputFocus = 10;
+var MenuMouseLeave = 11;
+var ItemMouseMove = 12;
+var ItemClick = 13;
+var ToggleButtonClick = 14;
+var FunctionToggleMenu = 15;
+var FunctionOpenMenu = 16;
+var FunctionCloseMenu = 17;
+var FunctionSetHighlightedIndex = 18;
+var FunctionSelectItem = 19;
+var FunctionSetInputValue = 20;
+var FunctionReset$1 = 21;
+var ControlledPropUpdatedSelectedItem = 22;
+
+var stateChangeTypes$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  InputKeyDownArrowDown: InputKeyDownArrowDown,
+  InputKeyDownArrowUp: InputKeyDownArrowUp,
+  InputKeyDownEscape: InputKeyDownEscape,
+  InputKeyDownHome: InputKeyDownHome,
+  InputKeyDownEnd: InputKeyDownEnd,
+  InputKeyDownPageUp: InputKeyDownPageUp,
+  InputKeyDownPageDown: InputKeyDownPageDown,
+  InputKeyDownEnter: InputKeyDownEnter,
+  InputChange: InputChange,
+  InputBlur: InputBlur,
+  InputFocus: InputFocus,
+  MenuMouseLeave: MenuMouseLeave,
+  ItemMouseMove: ItemMouseMove,
+  ItemClick: ItemClick,
+  ToggleButtonClick: ToggleButtonClick,
+  FunctionToggleMenu: FunctionToggleMenu,
+  FunctionOpenMenu: FunctionOpenMenu,
+  FunctionCloseMenu: FunctionCloseMenu,
+  FunctionSetHighlightedIndex: FunctionSetHighlightedIndex,
+  FunctionSelectItem: FunctionSelectItem,
+  FunctionSetInputValue: FunctionSetInputValue,
+  FunctionReset: FunctionReset$1,
+  ControlledPropUpdatedSelectedItem: ControlledPropUpdatedSelectedItem
+});
+
+function getInitialState$1(props) {
+  var initialState = getInitialState$2(props);
+  var selectedItem = initialState.selectedItem;
+  var inputValue = initialState.inputValue;
+  if (inputValue === '' && selectedItem && props.defaultInputValue === undefined && props.initialInputValue === undefined && props.inputValue === undefined) {
+    inputValue = props.itemToString(selectedItem);
+  }
+  return _extends$w({}, initialState, {
+    inputValue: inputValue
+  });
+}
+({
+  items: PropTypes.array.isRequired,
+  itemToString: PropTypes.func,
+  selectedItemChanged: PropTypes.func,
+  getA11yStatusMessage: PropTypes.func,
+  getA11ySelectionMessage: PropTypes.func,
+  highlightedIndex: PropTypes.number,
+  defaultHighlightedIndex: PropTypes.number,
+  initialHighlightedIndex: PropTypes.number,
+  isOpen: PropTypes.bool,
+  defaultIsOpen: PropTypes.bool,
+  initialIsOpen: PropTypes.bool,
+  selectedItem: PropTypes.any,
+  initialSelectedItem: PropTypes.any,
+  defaultSelectedItem: PropTypes.any,
+  inputValue: PropTypes.string,
+  defaultInputValue: PropTypes.string,
+  initialInputValue: PropTypes.string,
+  id: PropTypes.string,
+  labelId: PropTypes.string,
+  menuId: PropTypes.string,
+  getItemId: PropTypes.func,
+  inputId: PropTypes.string,
+  toggleButtonId: PropTypes.string,
+  stateReducer: PropTypes.func,
+  onSelectedItemChange: PropTypes.func,
+  onHighlightedIndexChange: PropTypes.func,
+  onStateChange: PropTypes.func,
+  onIsOpenChange: PropTypes.func,
+  onInputValueChange: PropTypes.func,
+  environment: PropTypes.shape({
+    addEventListener: PropTypes.func,
+    removeEventListener: PropTypes.func,
+    document: PropTypes.shape({
+      getElementById: PropTypes.func,
+      activeElement: PropTypes.any,
+      body: PropTypes.any
+    })
+  })
+});
+
+/**
+ * The useCombobox version of useControlledReducer, which also
+ * checks if the controlled prop selectedItem changed between
+ * renders. If so, it will also update inputValue with its
+ * string equivalent. It uses the common useEnhancedReducer to
+ * compute the rest of the state.
+ *
+ * @param {Function} reducer Reducer function from downshift.
+ * @param {Object} initialState Initial state of the hook.
+ * @param {Object} props The hook props.
+ * @returns {Array} An array with the state and an action dispatcher.
+ */
+function useControlledReducer(reducer, initialState, props) {
+  var previousSelectedItemRef = reactExports.useRef();
+  var _useEnhancedReducer = useEnhancedReducer(reducer, initialState, props),
+    state = _useEnhancedReducer[0],
+    dispatch = _useEnhancedReducer[1];
+
+  // ToDo: if needed, make same approach as selectedItemChanged from Downshift.
+  reactExports.useEffect(function () {
+    if (!isControlledProp(props, 'selectedItem')) {
+      return;
+    }
+    if (props.selectedItemChanged(previousSelectedItemRef.current, props.selectedItem)) {
+      dispatch({
+        type: ControlledPropUpdatedSelectedItem,
+        inputValue: props.itemToString(props.selectedItem)
+      });
+    }
+    previousSelectedItemRef.current = state.selectedItem === previousSelectedItemRef.current ? props.selectedItem : state.selectedItem;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.selectedItem, props.selectedItem]);
+  return [getState(state, props), dispatch];
+}
+
+// eslint-disable-next-line import/no-mutable-exports
+var validatePropTypes$1 = noop;
+var defaultProps$1 = _extends$w({}, defaultProps$3, {
+  selectedItemChanged: function selectedItemChanged(prevItem, item) {
+    return prevItem !== item;
+  },
+  getA11yStatusMessage: getA11yStatusMessage$1
+});
+
+/* eslint-disable complexity */
+function downshiftUseComboboxReducer(state, action) {
+  var _props$items;
+  var type = action.type,
+    props = action.props,
+    altKey = action.altKey;
+  var changes;
+  switch (type) {
+    case ItemClick:
+      changes = {
+        isOpen: getDefaultValue$1(props, 'isOpen'),
+        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
+        selectedItem: props.items[action.index],
+        inputValue: props.itemToString(props.items[action.index])
+      };
+      break;
+    case InputKeyDownArrowDown:
+      if (state.isOpen) {
+        changes = {
+          highlightedIndex: getNextWrappingIndex(1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
+        };
+      } else {
+        changes = {
+          highlightedIndex: altKey && state.selectedItem == null ? -1 : getHighlightedIndexOnOpen(props, state, 1, action.getItemNodeFromIndex),
+          isOpen: props.items.length >= 0
+        };
+      }
+      break;
+    case InputKeyDownArrowUp:
+      if (state.isOpen) {
+        if (altKey) {
+          changes = getChangesOnSelection(props, state.highlightedIndex);
+        } else {
+          changes = {
+            highlightedIndex: getNextWrappingIndex(-1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
+          };
+        }
+      } else {
+        changes = {
+          highlightedIndex: getHighlightedIndexOnOpen(props, state, -1, action.getItemNodeFromIndex),
+          isOpen: props.items.length >= 0
+        };
+      }
+      break;
+    case InputKeyDownEnter:
+      changes = getChangesOnSelection(props, state.highlightedIndex);
+      break;
+    case InputKeyDownEscape:
+      changes = _extends$w({
+        isOpen: false,
+        highlightedIndex: -1
+      }, !state.isOpen && {
+        selectedItem: null,
+        inputValue: ''
+      });
+      break;
+    case InputKeyDownPageUp:
+      changes = {
+        highlightedIndex: getNextWrappingIndex(-10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputKeyDownPageDown:
+      changes = {
+        highlightedIndex: getNextWrappingIndex(10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputKeyDownHome:
+      changes = {
+        highlightedIndex: getNextNonDisabledIndex(1, 0, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputKeyDownEnd:
+      changes = {
+        highlightedIndex: getNextNonDisabledIndex(-1, props.items.length - 1, props.items.length, action.getItemNodeFromIndex, false)
+      };
+      break;
+    case InputBlur:
+      changes = _extends$w({
+        isOpen: false,
+        highlightedIndex: -1
+      }, state.highlightedIndex >= 0 && ((_props$items = props.items) == null ? void 0 : _props$items.length) && action.selectItem && {
+        selectedItem: props.items[state.highlightedIndex],
+        inputValue: props.itemToString(props.items[state.highlightedIndex])
+      });
+      break;
+    case InputChange:
+      changes = {
+        isOpen: true,
+        highlightedIndex: getDefaultValue$1(props, 'highlightedIndex'),
+        inputValue: action.inputValue
+      };
+      break;
+    case InputFocus:
+      changes = {
+        isOpen: true,
+        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
+      };
+      break;
+    case FunctionSelectItem:
+      changes = {
+        selectedItem: action.selectedItem,
+        inputValue: props.itemToString(action.selectedItem)
+      };
+      break;
+    case ControlledPropUpdatedSelectedItem:
+      changes = {
+        inputValue: action.inputValue
+      };
+      break;
+    default:
+      return downshiftCommonReducer(state, action, stateChangeTypes$1);
+  }
+  return _extends$w({}, state, changes);
+}
+/* eslint-enable complexity */
+
+var _excluded$1 = ["onMouseLeave", "refKey", "ref"],
+  _excluded2$1 = ["item", "index", "refKey", "ref", "onMouseMove", "onMouseDown", "onClick", "onPress", "disabled"],
+  _excluded3 = ["onClick", "onPress", "refKey", "ref"],
+  _excluded4 = ["onKeyDown", "onChange", "onInput", "onFocus", "onBlur", "onChangeText", "refKey", "ref"];
+useCombobox$1.stateChangeTypes = stateChangeTypes$1;
+function useCombobox$1(userProps) {
+  if (userProps === void 0) {
+    userProps = {};
+  }
+  validatePropTypes$1();
+  // Props defaults and destructuring.
+  var props = _extends$w({}, defaultProps$1, userProps);
+  var initialIsOpen = props.initialIsOpen,
+    defaultIsOpen = props.defaultIsOpen,
+    items = props.items,
+    scrollIntoView = props.scrollIntoView,
+    environment = props.environment,
+    getA11yStatusMessage = props.getA11yStatusMessage,
+    getA11ySelectionMessage = props.getA11ySelectionMessage,
+    itemToString = props.itemToString;
+  // Initial state depending on controlled props.
+  var initialState = getInitialState$1(props);
+  var _useControlledReducer = useControlledReducer(downshiftUseComboboxReducer, initialState, props),
+    state = _useControlledReducer[0],
+    dispatch = _useControlledReducer[1];
+  var isOpen = state.isOpen,
+    highlightedIndex = state.highlightedIndex,
+    selectedItem = state.selectedItem,
+    inputValue = state.inputValue;
+
+  // Element refs.
+  var menuRef = reactExports.useRef(null);
+  var itemRefs = reactExports.useRef({});
+  var inputRef = reactExports.useRef(null);
+  var toggleButtonRef = reactExports.useRef(null);
+  var isInitialMountRef = reactExports.useRef(true);
+  // prevent id re-generation between renders.
+  var elementIds = useElementIds(props);
+  // used to keep track of how many items we had on previous cycle.
+  var previousResultCountRef = reactExports.useRef();
+  // utility callback to get item element.
+  var latest = useLatestRef$1({
+    state: state,
+    props: props
+  });
+  var getItemNodeFromIndex = reactExports.useCallback(function (index) {
+    return itemRefs.current[elementIds.getItemId(index)];
+  }, [elementIds]);
+
+  // Effects.
+  // Sets a11y status message on changes in state.
+  useA11yMessageSetter(getA11yStatusMessage, [isOpen, highlightedIndex, inputValue, items], _extends$w({
+    isInitialMount: isInitialMountRef.current,
+    previousResultCount: previousResultCountRef.current,
+    items: items,
+    environment: environment,
+    itemToString: itemToString
+  }, state));
+  // Sets a11y status message on changes in selectedItem.
+  useA11yMessageSetter(getA11ySelectionMessage, [selectedItem], _extends$w({
+    isInitialMount: isInitialMountRef.current,
+    previousResultCount: previousResultCountRef.current,
+    items: items,
+    environment: environment,
+    itemToString: itemToString
+  }, state));
+  // Scroll on highlighted item if change comes from keyboard.
+  var shouldScrollRef = useScrollIntoView({
+    menuElement: menuRef.current,
+    highlightedIndex: highlightedIndex,
+    isOpen: isOpen,
+    itemRefs: itemRefs,
+    scrollIntoView: scrollIntoView,
+    getItemNodeFromIndex: getItemNodeFromIndex
+  });
+  useControlPropsValidator({
+    isInitialMount: isInitialMountRef.current,
+    props: props,
+    state: state
+  });
+  // Focus the input on first render if required.
+  reactExports.useEffect(function () {
+    var focusOnOpen = initialIsOpen || defaultIsOpen || isOpen;
+    if (focusOnOpen && inputRef.current) {
+      inputRef.current.focus();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  reactExports.useEffect(function () {
+    if (isInitialMountRef.current) {
+      return;
+    }
+    previousResultCountRef.current = items.length;
+  });
+  // Add mouse/touch events to document.
+  var mouseAndTouchTrackersRef = useMouseAndTouchTracker(isOpen, [inputRef, menuRef, toggleButtonRef], environment, function () {
+    dispatch({
+      type: InputBlur,
+      selectItem: false
+    });
+  });
+  var setGetterPropCallInfo = useGetterPropsCalledChecker();
+  // Make initial ref false.
+  reactExports.useEffect(function () {
+    isInitialMountRef.current = false;
+    return function () {
+      isInitialMountRef.current = true;
+    };
+  }, []);
+  // Reset itemRefs on close.
+  reactExports.useEffect(function () {
+    var _environment$document;
+    if (!isOpen) {
+      itemRefs.current = {};
+    } else if (((_environment$document = environment.document) == null ? void 0 : _environment$document.activeElement) !== inputRef.current) {
+      var _inputRef$current;
+      inputRef == null ? void 0 : (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.focus();
+    }
+  }, [isOpen, environment]);
+
+  /* Event handler functions */
+  var inputKeyDownHandlers = reactExports.useMemo(function () {
+    return {
+      ArrowDown: function ArrowDown(event) {
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownArrowDown,
+          altKey: event.altKey,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      ArrowUp: function ArrowUp(event) {
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownArrowUp,
+          altKey: event.altKey,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      Home: function Home(event) {
+        if (!latest.current.state.isOpen) {
+          return;
+        }
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownHome,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      End: function End(event) {
+        if (!latest.current.state.isOpen) {
+          return;
+        }
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownEnd,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      Escape: function Escape(event) {
+        var latestState = latest.current.state;
+        if (latestState.isOpen || latestState.inputValue || latestState.selectedItem || latestState.highlightedIndex > -1) {
+          event.preventDefault();
+          dispatch({
+            type: InputKeyDownEscape
+          });
+        }
+      },
+      Enter: function Enter(event) {
+        var latestState = latest.current.state;
+        // if closed or no highlighted index, do nothing.
+        if (!latestState.isOpen || event.which === 229 // if IME composing, wait for next Enter keydown event.
+        ) {
+          return;
+        }
+        event.preventDefault();
+        dispatch({
+          type: InputKeyDownEnter,
+          getItemNodeFromIndex: getItemNodeFromIndex
+        });
+      },
+      PageUp: function PageUp(event) {
+        if (latest.current.state.isOpen) {
+          event.preventDefault();
+          dispatch({
+            type: InputKeyDownPageUp,
+            getItemNodeFromIndex: getItemNodeFromIndex
+          });
+        }
+      },
+      PageDown: function PageDown(event) {
+        if (latest.current.state.isOpen) {
+          event.preventDefault();
+          dispatch({
+            type: InputKeyDownPageDown,
+            getItemNodeFromIndex: getItemNodeFromIndex
+          });
+        }
+      }
+    };
+  }, [dispatch, latest, getItemNodeFromIndex]);
+
+  // Getter props.
+  var getLabelProps = reactExports.useCallback(function (labelProps) {
+    return _extends$w({
+      id: elementIds.labelId,
+      htmlFor: elementIds.inputId
+    }, labelProps);
+  }, [elementIds]);
+  var getMenuProps = reactExports.useCallback(function (_temp, _temp2) {
+    var _extends2;
+    var _ref = _temp === void 0 ? {} : _temp,
+      onMouseLeave = _ref.onMouseLeave,
+      _ref$refKey = _ref.refKey,
+      refKey = _ref$refKey === void 0 ? 'ref' : _ref$refKey,
+      ref = _ref.ref,
+      rest = _objectWithoutPropertiesLoose(_ref, _excluded$1);
+    var _ref2 = _temp2 === void 0 ? {} : _temp2;
+      _ref2.suppressRefError;
+    return _extends$w((_extends2 = {}, _extends2[refKey] = handleRefs(ref, function (menuNode) {
+      menuRef.current = menuNode;
+    }), _extends2.id = elementIds.menuId, _extends2.role = 'listbox', _extends2['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends2.onMouseLeave = callAllEventHandlers(onMouseLeave, function () {
+      dispatch({
+        type: MenuMouseLeave
+      });
+    }), _extends2), rest);
+  }, [dispatch, setGetterPropCallInfo, elementIds]);
+  var getItemProps = reactExports.useCallback(function (_temp3) {
+    var _extends3, _ref4;
+    var _ref3 = _temp3 === void 0 ? {} : _temp3,
+      itemProp = _ref3.item,
+      indexProp = _ref3.index,
+      _ref3$refKey = _ref3.refKey,
+      refKey = _ref3$refKey === void 0 ? 'ref' : _ref3$refKey,
+      ref = _ref3.ref,
+      onMouseMove = _ref3.onMouseMove,
+      onMouseDown = _ref3.onMouseDown,
+      onClick = _ref3.onClick;
+      _ref3.onPress;
+      var disabled = _ref3.disabled,
+      rest = _objectWithoutPropertiesLoose(_ref3, _excluded2$1);
+    var _latest$current = latest.current,
+      latestProps = _latest$current.props,
+      latestState = _latest$current.state;
+    var _getItemAndIndex = getItemAndIndex(itemProp, indexProp, latestProps.items, 'Pass either item or index to getItemProps!'),
+      index = _getItemAndIndex[1];
+    var onSelectKey = 'onClick';
+    var customClickHandler = onClick;
+    var itemHandleMouseMove = function itemHandleMouseMove() {
+      if (index === latestState.highlightedIndex) {
+        return;
+      }
+      shouldScrollRef.current = false;
+      dispatch({
+        type: ItemMouseMove,
+        index: index,
+        disabled: disabled
+      });
+    };
+    var itemHandleClick = function itemHandleClick() {
+      dispatch({
+        type: ItemClick,
+        index: index
+      });
+    };
+    var itemHandleMouseDown = function itemHandleMouseDown(e) {
+      return e.preventDefault();
+    };
+    return _extends$w((_extends3 = {}, _extends3[refKey] = handleRefs(ref, function (itemNode) {
+      if (itemNode) {
+        itemRefs.current[elementIds.getItemId(index)] = itemNode;
+      }
+    }), _extends3.disabled = disabled, _extends3.role = 'option', _extends3['aria-selected'] = "" + (index === latestState.highlightedIndex), _extends3.id = elementIds.getItemId(index), _extends3), !disabled && (_ref4 = {}, _ref4[onSelectKey] = callAllEventHandlers(customClickHandler, itemHandleClick), _ref4), {
+      onMouseMove: callAllEventHandlers(onMouseMove, itemHandleMouseMove),
+      onMouseDown: callAllEventHandlers(onMouseDown, itemHandleMouseDown)
+    }, rest);
+  }, [dispatch, latest, shouldScrollRef, elementIds]);
+  var getToggleButtonProps = reactExports.useCallback(function (_temp4) {
+    var _extends4;
+    var _ref5 = _temp4 === void 0 ? {} : _temp4,
+      onClick = _ref5.onClick;
+      _ref5.onPress;
+      var _ref5$refKey = _ref5.refKey,
+      refKey = _ref5$refKey === void 0 ? 'ref' : _ref5$refKey,
+      ref = _ref5.ref,
+      rest = _objectWithoutPropertiesLoose(_ref5, _excluded3);
+    var latestState = latest.current.state;
+    var toggleButtonHandleClick = function toggleButtonHandleClick() {
+      dispatch({
+        type: ToggleButtonClick
+      });
+    };
+    return _extends$w((_extends4 = {}, _extends4[refKey] = handleRefs(ref, function (toggleButtonNode) {
+      toggleButtonRef.current = toggleButtonNode;
+    }), _extends4['aria-controls'] = elementIds.menuId, _extends4['aria-expanded'] = latestState.isOpen, _extends4.id = elementIds.toggleButtonId, _extends4.tabIndex = -1, _extends4), !rest.disabled && _extends$w({}, {
+      onClick: callAllEventHandlers(onClick, toggleButtonHandleClick)
+    }), rest);
+  }, [dispatch, latest, elementIds]);
+  var getInputProps = reactExports.useCallback(function (_temp5, _temp6) {
+    var _extends5;
+    var _ref6 = _temp5 === void 0 ? {} : _temp5,
+      onKeyDown = _ref6.onKeyDown,
+      onChange = _ref6.onChange,
+      onInput = _ref6.onInput,
+      onFocus = _ref6.onFocus,
+      onBlur = _ref6.onBlur;
+      _ref6.onChangeText;
+      var _ref6$refKey = _ref6.refKey,
+      refKey = _ref6$refKey === void 0 ? 'ref' : _ref6$refKey,
+      ref = _ref6.ref,
+      rest = _objectWithoutPropertiesLoose(_ref6, _excluded4);
+    var _ref7 = _temp6 === void 0 ? {} : _temp6;
+      _ref7.suppressRefError;
+    var latestState = latest.current.state;
+    var inputHandleKeyDown = function inputHandleKeyDown(event) {
+      var key = normalizeArrowKey(event);
+      if (key && inputKeyDownHandlers[key]) {
+        inputKeyDownHandlers[key](event);
+      }
+    };
+    var inputHandleChange = function inputHandleChange(event) {
+      dispatch({
+        type: InputChange,
+        inputValue: event.target.value
+      });
+    };
+    var inputHandleBlur = function inputHandleBlur(event) {
+      /* istanbul ignore else */
+      if (latestState.isOpen && !mouseAndTouchTrackersRef.current.isMouseDown) {
+        dispatch({
+          type: InputBlur,
+          selectItem: event.relatedTarget !== null
+        });
+      }
+    };
+    var inputHandleFocus = function inputHandleFocus() {
+      if (!latestState.isOpen) {
+        dispatch({
+          type: InputFocus
+        });
+      }
+    };
+
+    /* istanbul ignore next (preact) */
+    var onChangeKey = 'onChange';
+    var eventHandlers = {};
+    if (!rest.disabled) {
+      var _eventHandlers;
+      eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, inputHandleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, inputHandleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, inputHandleBlur), _eventHandlers.onFocus = callAllEventHandlers(onFocus, inputHandleFocus), _eventHandlers);
+    }
+    return _extends$w((_extends5 = {}, _extends5[refKey] = handleRefs(ref, function (inputNode) {
+      inputRef.current = inputNode;
+    }), _extends5['aria-activedescendant'] = latestState.isOpen && latestState.highlightedIndex > -1 ? elementIds.getItemId(latestState.highlightedIndex) : '', _extends5['aria-autocomplete'] = 'list', _extends5['aria-controls'] = elementIds.menuId, _extends5['aria-expanded'] = latestState.isOpen, _extends5['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends5.autoComplete = 'off', _extends5.id = elementIds.inputId, _extends5.role = 'combobox', _extends5.value = latestState.inputValue, _extends5), eventHandlers, rest);
+  }, [dispatch, inputKeyDownHandlers, latest, mouseAndTouchTrackersRef, setGetterPropCallInfo, elementIds]);
+
+  // returns
+  var toggleMenu = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionToggleMenu
+    });
+  }, [dispatch]);
+  var closeMenu = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionCloseMenu
+    });
+  }, [dispatch]);
+  var openMenu = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionOpenMenu
+    });
+  }, [dispatch]);
+  var setHighlightedIndex = reactExports.useCallback(function (newHighlightedIndex) {
+    dispatch({
+      type: FunctionSetHighlightedIndex,
+      highlightedIndex: newHighlightedIndex
+    });
+  }, [dispatch]);
+  var selectItem = reactExports.useCallback(function (newSelectedItem) {
+    dispatch({
+      type: FunctionSelectItem,
+      selectedItem: newSelectedItem
+    });
+  }, [dispatch]);
+  var setInputValue = reactExports.useCallback(function (newInputValue) {
+    dispatch({
+      type: FunctionSetInputValue,
+      inputValue: newInputValue
+    });
+  }, [dispatch]);
+  var reset = reactExports.useCallback(function () {
+    dispatch({
+      type: FunctionReset$1
+    });
+  }, [dispatch]);
+  return {
+    // prop getters.
+    getItemProps: getItemProps,
+    getLabelProps: getLabelProps,
+    getMenuProps: getMenuProps,
+    getInputProps: getInputProps,
+    getToggleButtonProps: getToggleButtonProps,
+    // actions.
+    toggleMenu: toggleMenu,
+    openMenu: openMenu,
+    closeMenu: closeMenu,
+    setHighlightedIndex: setHighlightedIndex,
+    setInputValue: setInputValue,
+    selectItem: selectItem,
+    reset: reset,
+    // state.
+    highlightedIndex: highlightedIndex,
+    isOpen: isOpen,
+    selectedItem: selectedItem,
+    inputValue: inputValue
+  };
+}
+
+/**
+ * Returns a message to be added to aria-live region when item is removed.
+ *
+ * @param {Object} selectionParameters Parameters required to build the message.
+ * @returns {string} The a11y message.
+ */
+function getA11yRemovalMessage(selectionParameters) {
+  var removedSelectedItem = selectionParameters.removedSelectedItem,
+    itemToStringLocal = selectionParameters.itemToString;
+  return itemToStringLocal(removedSelectedItem) + " has been removed.";
+}
+({
+  selectedItems: PropTypes.array,
+  initialSelectedItems: PropTypes.array,
+  defaultSelectedItems: PropTypes.array,
+  itemToString: PropTypes.func,
+  getA11yRemovalMessage: PropTypes.func,
+  stateReducer: PropTypes.func,
+  activeIndex: PropTypes.number,
+  initialActiveIndex: PropTypes.number,
+  defaultActiveIndex: PropTypes.number,
+  onActiveIndexChange: PropTypes.func,
+  onSelectedItemsChange: PropTypes.func,
+  keyNavigationNext: PropTypes.string,
+  keyNavigationPrevious: PropTypes.string,
+  environment: PropTypes.shape({
+    addEventListener: PropTypes.func,
+    removeEventListener: PropTypes.func,
+    document: PropTypes.shape({
+      getElementById: PropTypes.func,
+      activeElement: PropTypes.any,
+      body: PropTypes.any
+    })
+  })
+});
+({
+  itemToString: defaultProps$3.itemToString,
+  stateReducer: defaultProps$3.stateReducer,
+  environment: defaultProps$3.environment,
+  getA11yRemovalMessage: getA11yRemovalMessage,
+  keyNavigationNext: 'ArrowRight',
+  keyNavigationPrevious: 'ArrowLeft'
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+const typeMap = {
+  [useCombobox$1.stateChangeTypes.FunctionCloseMenu]: 'fn:setExpansion',
+  [useCombobox$1.stateChangeTypes.FunctionOpenMenu]: 'fn:setExpansion',
+  [useCombobox$1.stateChangeTypes.FunctionToggleMenu]: 'fn:setExpansion',
+  [useCombobox$1.stateChangeTypes.FunctionReset]: 'fn:reset',
+  [useCombobox$1.stateChangeTypes.FunctionSelectItem]: 'fn:setSelectionValue',
+  [useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex]: 'fn:setActiveIndex',
+  [useCombobox$1.stateChangeTypes.FunctionSetInputValue]: 'fn:setInputValue',
+  [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
+  [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
+  [useCombobox$1.stateChangeTypes.InputFocus]: 'input:focus',
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$1.DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$1.UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$1.END}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$1.ENTER}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$1.ESCAPE}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$1.HOME}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$1.PAGE_DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$1.PAGE_UP}`,
+  [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
+  [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
+  [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
+  [useCombobox$1.stateChangeTypes.ToggleButtonClick]: 'toggle:click'
+};
+const toType = downshiftType => {
+  return typeMap[downshiftType] || downshiftType;
+};
+const toLabel = (labels, value) => {
+  if (value === undefined) {
+    return '';
+  }
+  const key = typeof value === 'string' ? value : JSON.stringify(value);
+  return labels[key];
+};
+
+const useCombobox = _ref => {
+  let {
+    idPrefix,
+    triggerRef,
+    inputRef,
+    listboxRef,
+    isAutocomplete,
+    isMultiselectable,
+    isEditable = true,
+    disabled,
+    hasHint,
+    hasMessage,
+    options = [],
+    inputValue,
+    selectionValue,
+    isExpanded,
+    defaultExpanded,
+    initialExpanded,
+    activeIndex,
+    defaultActiveIndex,
+    initialActiveIndex,
+    onChange = () => undefined,
+    environment
+  } = _ref;
+  const win = environment || window;
+  const prefix = `${useId(idPrefix)}-`;
+  const [triggerContainsInput, setTriggerContainsInput] = reactExports.useState();
+  const [matchValue, setMatchValue] = reactExports.useState('');
+  const matchTimeoutRef = reactExports.useRef();
+  const previousStateRef = reactExports.useRef();
+  const labels = reactExports.useMemo(() => ({}), []);
+  const selectedValues = reactExports.useMemo(() => [], []);
+  const disabledValues = reactExports.useMemo(() => [], []);
+  const values = reactExports.useMemo(() => {
+    const retVal = [];
+    const setValues = option => {
+      if (option.disabled) {
+        if (!disabledValues.includes(option.value)) {
+          disabledValues.push(option.value);
+        }
+      } else {
+        retVal.push(option.value);
+        const index = disabledValues.indexOf(option.value);
+        if (index !== -1) {
+          disabledValues.splice(index, 1);
+        }
+      }
+      if (option.selected && !selectedValues.includes(option.value)) {
+        selectedValues.push(option.value);
+      }
+      const key = typeof option.value === 'string' ? option.value : JSON.stringify(option.value);
+      labels[key] = option.label || key;
+    };
+    options.forEach(option => {
+      if ('options' in option) {
+        option.options.forEach(setValues);
+      } else {
+        setValues(option);
+      }
+    });
+    return retVal;
+  }, [options, disabledValues, selectedValues, labels]);
+  const initialSelectionValue = isMultiselectable ? selectedValues : selectedValues[0];
+  const initialInputValue = isMultiselectable ? '' : toLabel(labels, initialSelectionValue);
+  const _defaultActiveIndex = reactExports.useMemo(() => {
+    if (defaultActiveIndex === undefined) {
+      return isAutocomplete && isEditable ? 0 : undefined;
+    }
+    return defaultActiveIndex;
+  }, [defaultActiveIndex, isAutocomplete, isEditable]);
+  if (selectionValue === undefined || selectionValue === null) {
+    if (!isMultiselectable && selectedValues.length > 1) {
+      throw new Error('Error: expected useCombobox `options` to have no more than one selected.');
+    }
+  }
+  if (selectionValue !== undefined && selectionValue !== null) {
+    if (isMultiselectable && !Array.isArray(selectionValue)) {
+      throw new Error('Error: expected multiselectable useCombobox `selectionValue` to be an array.');
+    } else if (!isMultiselectable && Array.isArray(selectionValue)) {
+      throw new Error('Error: expected useCombobox `selectionValue` not to be an array.');
+    }
+  }
+  const handleDownshiftStateChange = _ref2 => {
+    let {
+      type,
+      isOpen,
+      selectedItem,
+      inputValue: _inputValue,
+      highlightedIndex
+    } = _ref2;
+    return onChange({
+      type: toType(type),
+      ...(isOpen !== undefined && {
+        isExpanded: isOpen
+      }),
+      ...(selectedItem !== undefined && {
+        selectionValue: selectedItem
+      }),
+      ...(_inputValue !== undefined && {
+        inputValue: _inputValue
+      }),
+      ...(highlightedIndex !== undefined && {
+        activeIndex: highlightedIndex
+      })
+    });
+  };
+  const stateReducer = (state, _ref3) => {
+    let {
+      type,
+      changes,
+      altKey
+    } = _ref3;
+    switch (type) {
+      case useCombobox$1.stateChangeTypes.ControlledPropUpdatedSelectedItem:
+        return state;
+      case useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex:
+        if (previousStateRef.current?.altKey) {
+          changes.highlightedIndex = -1;
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.FunctionCloseMenu:
+      case useCombobox$1.stateChangeTypes.InputBlur:
+        return {
+          ...state,
+          isOpen: type === useCombobox$1.stateChangeTypes.InputBlur && triggerContainsInput && isMultiselectable && state.isOpen || false
+        };
+      case useCombobox$1.stateChangeTypes.InputFocus:
+        return {
+          ...state,
+          isOpen: false
+        };
+      case useCombobox$1.stateChangeTypes.InputKeyDownArrowDown:
+      case useCombobox$1.stateChangeTypes.FunctionOpenMenu:
+        if (state.isOpen !== changes.isOpen && !altKey) {
+          changes.highlightedIndex = 0;
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.InputKeyDownArrowUp:
+        if (state.isOpen !== changes.isOpen) {
+          changes.highlightedIndex = values.length - 1;
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.InputKeyDownEnter:
+      case useCombobox$1.stateChangeTypes.FunctionSelectItem:
+      case useCombobox$1.stateChangeTypes.ItemClick:
+        changes.highlightedIndex = state.highlightedIndex;
+        if (isMultiselectable) {
+          changes.isOpen = state.isOpen;
+          changes.inputValue = '';
+        }
+        break;
+      case useCombobox$1.stateChangeTypes.InputKeyDownEscape:
+        return {
+          ...state,
+          isOpen: false
+        };
+      case useCombobox$1.stateChangeTypes.InputKeyDownPageDown:
+      case useCombobox$1.stateChangeTypes.InputKeyDownPageUp:
+        return state;
+    }
+    if (isMultiselectable && state.selectedItem !== changes.selectedItem) {
+      if (state.selectedItem !== undefined && state.selectedItem !== null && changes.selectedItem !== undefined && changes.selectedItem !== null) {
+        if (state.selectedItem.includes(changes.selectedItem)) {
+          changes.selectedItem = state.selectedItem.filter(value => value !== changes.selectedItem);
+        } else {
+          changes.selectedItem = [...state.selectedItem, changes.selectedItem];
+        }
+      } else if (changes.selectedItem !== undefined && changes.selectedItem !== null) {
+        changes.selectedItem = [changes.selectedItem];
+      } else {
+        changes.selectedItem = [];
+      }
+    }
+    previousStateRef.current = {
+      type,
+      altKey,
+      ...state
+    };
+    return changes;
+  };
+  const transformValue = value => value ? toLabel(labels, value) : '';
+  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefix}-option${isDisabled ? '-disabled' : ''}-${index}`, [prefix]);
+  const {
+    selectedItem: _selectionValue,
+    isOpen: _isExpanded,
+    highlightedIndex: _activeIndex,
+    inputValue: _inputValue,
+    getToggleButtonProps: getDownshiftTriggerProps,
+    getInputProps: getDownshiftInputProps,
+    getMenuProps: getDownshiftListboxProps,
+    getItemProps: getDownshiftOptionProps,
+    closeMenu,
+    openMenu,
+    setHighlightedIndex,
+    selectItem
+  } = useCombobox$1({
+    id: prefix,
+    toggleButtonId: `${prefix}-trigger`,
+    menuId: `${prefix}-listbox`,
+    getItemId: getOptionId,
+    items: values,
+    inputValue,
+    initialInputValue,
+    itemToString: transformValue ,
+    selectedItem: selectionValue,
+    initialSelectedItem: initialSelectionValue,
+    isOpen: isExpanded,
+    defaultIsOpen: defaultExpanded,
+    initialIsOpen: initialExpanded,
+    highlightedIndex: activeIndex,
+    defaultHighlightedIndex: _defaultActiveIndex,
+    initialHighlightedIndex: initialActiveIndex,
+    onStateChange: handleDownshiftStateChange,
+    stateReducer,
+    environment: win
+  });
+  const closeListbox = reactExports.useCallback(() => {
+    closeMenu();
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionCloseMenu),
+      isExpanded: false
+    });
+  }, [closeMenu, onChange]);
+  const openListbox = reactExports.useCallback(() => {
+    openMenu();
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionOpenMenu),
+      isExpanded: true
+    });
+  }, [openMenu, onChange]);
+  const setActiveIndex = reactExports.useCallback(index => {
+    setHighlightedIndex(index);
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionSetHighlightedIndex),
+      activeIndex: index
+    });
+  }, [onChange, setHighlightedIndex]);
+  const setDownshiftSelection = reactExports.useCallback(value => {
+    selectItem(value);
+    onChange({
+      type: toType(useCombobox$1.stateChangeTypes.FunctionSelectItem),
+      selectionValue: value
+    });
+  }, [onChange, selectItem]);
+  const {
+    getLabelProps: getFieldLabelProps,
+    getHintProps,
+    getInputProps: getFieldInputProps,
+    getMessageProps
+  } = useField({
+    idPrefix,
+    hasHint,
+    hasMessage
+  });
+  reactExports.useLayoutEffect(() => {
+    if (isAutocomplete && _isExpanded && !previousStateRef.current?.isOpen && _selectionValue && !matchValue) {
+      const value = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1
+      ] : _selectionValue;
+      const index = values.findIndex(current => current === value);
+      if (index !== -1) {
+        setActiveIndex(index);
+      } else if (_defaultActiveIndex !== undefined) {
+        setActiveIndex(_defaultActiveIndex);
+      }
+    }
+  }, [
+  isAutocomplete, _isExpanded, _selectionValue, _inputValue, values, _defaultActiveIndex, setActiveIndex]);
+  reactExports.useEffect(
+  () => setTriggerContainsInput(triggerRef.current?.contains(inputRef.current)), [triggerRef, inputRef]);
+  reactExports.useEffect(() => {
+    clearTimeout(matchTimeoutRef.current);
+    matchTimeoutRef.current = window.setTimeout(() => setMatchValue(''), 500);
+    return () => clearTimeout(matchTimeoutRef.current);
+  }, [matchValue]);
+  reactExports.useEffect(() => {
+    if (previousStateRef.current?.type === useCombobox$1.stateChangeTypes.FunctionSelectItem) {
+      if (isEditable) {
+        inputRef.current?.focus();
+      } else {
+        triggerRef.current?.focus();
+      }
+    }
+  });
+  reactExports.useEffect(() => {
+    if (isEditable && inputRef.current === win.document.activeElement) {
+      inputRef.current?.scrollIntoView && inputRef.current?.scrollIntoView();
+    }
+  }, [inputRef, isEditable, win.document.activeElement]);
+  const getTriggerProps = reactExports.useCallback(function (_temp) {
+    let {
+      onBlur,
+      onClick,
+      onKeyDown,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    const triggerProps = getDownshiftTriggerProps({
+      'data-garden-container-id': 'containers.combobox',
+      'data-garden-container-version': '1.0.0',
+      onBlur,
+      onClick,
+      onKeyDown,
+      ref: triggerRef,
+      disabled,
+      ...other
+    });
+    const handleBlur = event => {
+      if (event.relatedTarget === null || !event.currentTarget?.contains(event.relatedTarget)) {
+        closeListbox();
+      }
+    };
+    if (isEditable && triggerContainsInput) {
+      const handleClick = event => {
+        if (disabled) {
+          event.preventDefault();
+        } else if (isAutocomplete) {
+          triggerProps.onClick(event);
+        } else {
+          inputRef.current?.focus();
+        }
+      };
+      return {
+        ...triggerProps,
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onClick: composeEventHandlers$1(onClick, handleClick),
+        'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
+        'aria-expanded': undefined,
+        'aria-disabled': disabled || undefined,
+        disabled: undefined
+      };
+    } else if (!isEditable) {
+      const {
+        'aria-activedescendant': ariaActiveDescendant,
+        onKeyDown: onDownshiftKeyDown
+      } = getDownshiftInputProps({}, {
+        suppressRefError: true
+      });
+      const {
+        'aria-labelledby': ariaLabeledBy
+      } = getFieldInputProps();
+      const handleKeyDown = event => {
+        event.stopPropagation();
+        if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+          openListbox();
+        } else if (/^(?:\S| ){1}$/u.test(event.key)) {
+          const _matchValue = `${matchValue}${event.key}`;
+          setMatchValue(_matchValue);
+          let offset = 0;
+          if (_isExpanded) {
+            if (_activeIndex !== -1) {
+              offset = _matchValue.length === 1 ? _activeIndex + 1 : _activeIndex;
+            }
+          } else {
+            openListbox();
+            const offsetValue = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1
+            ] : _selectionValue;
+            if (offsetValue !== null) {
+              offset = values.findIndex(current => current === offsetValue);
+            }
+          }
+          for (let index = 0; index < values.length; index++) {
+            const valueIndex = (index + offset) % values.length;
+            const value = values[valueIndex];
+            if (toLabel(labels, value).toLowerCase().startsWith(_matchValue.toLowerCase())) {
+              setActiveIndex(valueIndex);
+              break;
+            }
+          }
+        }
+      };
+      return {
+        ...triggerProps,
+        'aria-activedescendant': ariaActiveDescendant,
+        'aria-haspopup': 'listbox',
+        'aria-labelledby': ariaLabeledBy,
+        'aria-disabled': disabled || undefined,
+        disabled: undefined,
+        role: 'combobox',
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onKeyDown: composeEventHandlers$1(onKeyDown, onDownshiftKeyDown, handleKeyDown),
+        tabIndex: disabled ? -1 : 0
+      };
+    }
+    return triggerProps;
+  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, inputRef]);
+  const getLabelProps = reactExports.useCallback(function (_temp2) {
+    let {
+      onClick,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    const {
+      htmlFor,
+      ...labelProps
+    } = getFieldLabelProps(other);
+    const handleClick = () => !isEditable && triggerRef.current?.focus();
+    return {
+      ...labelProps,
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      htmlFor: isEditable ? htmlFor : undefined
+    };
+  }, [getFieldLabelProps, isEditable, triggerRef]);
+  const getInputProps = reactExports.useCallback(function (_temp3) {
+    let {
+      role = isEditable ? 'combobox' : null,
+      'aria-labelledby': ariaLabeledBy = null,
+      onClick,
+      onFocus,
+      ...other
+    } = _temp3 === void 0 ? {} : _temp3;
+    const inputProps = {
+      'data-garden-container-id': 'containers.combobox.input',
+      'data-garden-container-version': '1.0.0',
+      ref: inputRef,
+      role: role === null ? undefined : role,
+      onClick,
+      onFocus
+    };
+    if (isEditable) {
+      const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
+      return getDownshiftInputProps({
+        ...inputProps,
+        disabled,
+        role,
+        'aria-labelledby': ariaLabeledBy,
+        'aria-autocomplete': isAutocomplete ? 'list' : undefined,
+        onClick: composeEventHandlers$1(onClick, handleClick),
+        ...getFieldInputProps(),
+        ...other
+      });
+    }
+    const downshiftInputProps = getDownshiftInputProps({
+      ...inputProps,
+      disabled: true,
+      'aria-autocomplete': undefined,
+      'aria-activedescendant': undefined,
+      'aria-controls': undefined,
+      'aria-expanded': undefined,
+      'aria-hidden': true,
+      'aria-labelledby': undefined
+    });
+    const handleFocus = () => {
+      if (!isEditable) {
+        triggerRef.current?.focus();
+      }
+    };
+    return {
+      ...downshiftInputProps,
+      disabled,
+      readOnly: true,
+      tabIndex: -1,
+      onFocus: composeEventHandlers$1(onFocus, handleFocus),
+      ...other
+    };
+  }, [getDownshiftInputProps, getFieldInputProps, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
+  const getTagProps = reactExports.useCallback(_ref4 => {
+    let {
+      option,
+      onClick,
+      onFocus,
+      onKeyDown,
+      ...other
+    } = _ref4;
+    const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
+    const handleFocus = () => {
+      if (_isExpanded) {
+        setActiveIndex(values.findIndex(value => value === option.value));
+      }
+    };
+    const handleKeyDown = event => {
+      if (event.key === KEYS$1.BACKSPACE || event.key === KEYS$1.DELETE) {
+        setDownshiftSelection(option.value);
+      } else {
+        const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
+        if (triggerContainsTag && (event.key === KEYS$1.DOWN || event.key === KEYS$1.UP || event.key === KEYS$1.ESCAPE)) {
+          const inputProps = getDownshiftInputProps();
+          if (isEditable) {
+            inputRef.current?.focus();
+          } else {
+            triggerRef.current?.focus();
+          }
+          inputProps.onKeyDown(event);
+        } else if (triggerContainsTag && !isEditable) {
+          event.stopPropagation();
+        }
+      }
+    };
+    return {
+      'data-garden-container-id': 'containers.combobox.tag',
+      'data-garden-container-version': '1.0.0',
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      onFocus: composeEventHandlers$1(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
+      ...other
+    };
+  }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, _isExpanded, values, setActiveIndex, inputRef]);
+  const getListboxProps = reactExports.useCallback(_ref5 => {
+    let {
+      role = 'listbox',
+      'aria-labelledby': ariaLabeledBy = null,
+      ...other
+    } = _ref5;
+    return getDownshiftListboxProps({
+      'data-garden-container-id': 'containers.combobox.listbox',
+      'data-garden-container-version': '1.0.0',
+      ref: listboxRef,
+      role,
+      'aria-labelledby': ariaLabeledBy,
+      'aria-multiselectable': isMultiselectable ? true : undefined,
+      ...other
+    });
+  }, [getDownshiftListboxProps, listboxRef, isMultiselectable]);
+  const getOptGroupProps = reactExports.useCallback(_ref6 => {
+    let {
+      role = 'group',
+      ...other
+    } = _ref6;
+    return {
+      'data-garden-container-id': 'containers.combobox.optgroup',
+      'data-garden-container-version': '1.0.0',
+      role: role === null ? undefined : role,
+      ...other
+    };
+  }, []);
+  const getOptionProps = reactExports.useCallback(function (_temp4) {
+    let {
+      role = 'option',
+      option,
+      onMouseDown,
+      ...other
+    } = _temp4 === void 0 ? {} : _temp4;
+    const optionProps = {
+      'data-garden-container-id': 'containers.combobox.option',
+      'data-garden-container-version': '1.0.0',
+      role,
+      onMouseDown,
+      ...other
+    };
+    let ariaSelected = false;
+    if (option?.value !== undefined) {
+      ariaSelected = Array.isArray(_selectionValue) ? _selectionValue?.includes(option?.value) : _selectionValue === option?.value;
+    }
+    if (option === undefined || option.disabled) {
+      const handleMouseDown = event => event.preventDefault();
+      return {
+        'aria-disabled': true,
+        'aria-selected': ariaSelected,
+        id: option ? getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
+        ...optionProps,
+        onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown)
+      };
+    }
+    return getDownshiftOptionProps({
+      item: option.value,
+      index: values.indexOf(option.value),
+      'aria-selected': ariaSelected,
+      ...optionProps
+    });
+  }, [getDownshiftOptionProps, disabledValues, values, _selectionValue, getOptionId]);
+  const removeSelection = reactExports.useCallback(value => {
+    if (value === undefined) {
+      setDownshiftSelection(null);
+    } else {
+      const removeValue = typeof value === 'object' && 'value' in value ? value.value : value;
+      if (Array.isArray(_selectionValue) && _selectionValue.includes(removeValue)) {
+        setDownshiftSelection(removeValue);
+      } else if (_selectionValue === removeValue) {
+        setDownshiftSelection(null);
+      } else ;
+    }
+  }, [_selectionValue, setDownshiftSelection]);
+  const selection = reactExports.useMemo(() => {
+    if (Array.isArray(_selectionValue)) {
+      return _selectionValue.map(value => ({
+        value,
+        label: labels[value],
+        disabled: disabledValues.includes(value)
+      }));
+    } else if (_selectionValue) {
+      return {
+        value: _selectionValue,
+        label: toLabel(labels, _selectionValue),
+        disabled: disabledValues.includes(_selectionValue)
+      };
+    }
+    return null;
+  }, [_selectionValue, disabledValues, labels]);
+  return reactExports.useMemo(() => ({
+    getLabelProps,
+    getHintProps,
+    getTriggerProps,
+    getInputProps,
+    getTagProps,
+    getListboxProps,
+    getOptGroupProps,
+    getOptionProps,
+    getMessageProps,
+    selection,
+    isExpanded: _isExpanded,
+    activeValue: values[_activeIndex],
+    inputValue: _inputValue,
+    removeSelection
+  }), [values, selection, _isExpanded, _activeIndex, _inputValue, getLabelProps, getHintProps, getTriggerProps, getInputProps, getTagProps, getListboxProps, getOptGroupProps, getOptionProps, getMessageProps, removeSelection]);
+};
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  idPrefix: PropTypes.string,
+  triggerRef: PropTypes.any.isRequired,
+  inputRef: PropTypes.any.isRequired,
+  listboxRef: PropTypes.any.isRequired,
+  isAutocomplete: PropTypes.bool,
+  isMultiselectable: PropTypes.bool,
+  isEditable: PropTypes.bool,
+  disabled: PropTypes.bool,
+  hasHint: PropTypes.bool,
+  hasMessage: PropTypes.bool,
+  options: PropTypes.arrayOf(PropTypes.any).isRequired,
+  inputValue: PropTypes.string,
+  selectionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  isExpanded: PropTypes.bool,
+  defaultExpanded: PropTypes.bool,
+  initialExpanded: PropTypes.bool,
+  activeIndex: PropTypes.number,
+  defaultActiveIndex: PropTypes.number,
+  initialActiveIndex: PropTypes.number,
+  onChange: PropTypes.func,
+  environment: PropTypes.any
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
 function _extends$1$1() {
   _extends$1$1 = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
@@ -13758,7 +10769,7 @@ const StyledAvatar = Ye(_ref => {
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$2$2,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledAvatar",
   componentId: "sc-3kdmgt-0"
@@ -13770,7 +10781,7 @@ StyledAvatar.defaultProps = {
 const COMPONENT_ID$1$2 = 'tags.close';
 const StyledClose = Ye.button.attrs({
   'data-garden-id': COMPONENT_ID$1$2,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-d6lrpn-0"
@@ -13779,7 +10790,7 @@ StyledClose.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$w = 'tags.tag_view';
+const COMPONENT_ID$n = 'tags.tag_view';
 const colorStyles$a = props => {
   let backgroundColor;
   let foregroundColor;
@@ -13852,12 +10863,12 @@ const sizeStyles$c = props => {
   return Ne(["border-radius:", ";padding:0 ", "px;min-width:", ";height:", "px;line-height:", ";font-size:", ";& > *{width:100%;min-width:", ";}& ", "{margin-", ":-", "px;margin-", ":", "px;border-radius:", ";width:", "px;min-width:", "px;height:", "px;}& ", "{margin-", ":-", "px;border-radius:", ";width:", "px;height:", "px;}"], borderRadius, padding, minWidth ? `${minWidth}px` : `calc(${padding * 2}px + 1ch)`, height, getLineHeight(height, fontSize), fontSize, minWidth ? `${minWidth - padding * 2}px` : '1ch', StyledAvatar, props.theme.rtl ? 'right' : 'left', padding - avatarMargin, props.theme.rtl ? 'left' : 'right', avatarTextMargin, avatarBorderRadius, avatarSize, avatarSize, avatarSize, StyledClose, props.theme.rtl ? 'left' : 'right', padding, borderRadius, height, height);
 };
 const StyledTag$1 = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$w,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$n,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1jvbe03-0"
-})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$c(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$a(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$w, props));
+})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$c(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$a(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$n, props));
 StyledTag$1.defaultProps = {
   size: 'medium',
   theme: DEFAULT_THEME
@@ -15528,11 +12539,11 @@ const useTooltip = function (_temp) {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       tabIndex,
-      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
-      onFocus: composeEventHandlers$2(onFocus, () => openTooltip()),
-      onBlur: composeEventHandlers$2(onBlur, () => closeTooltip(0)),
-      onKeyDown: composeEventHandlers$2(onKeyDown, event => {
+      onMouseEnter: composeEventHandlers$1(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$1(onMouseLeave, () => closeTooltip()),
+      onFocus: composeEventHandlers$1(onFocus, () => openTooltip()),
+      onBlur: composeEventHandlers$1(onBlur, () => closeTooltip(0)),
+      onKeyDown: composeEventHandlers$1(onKeyDown, event => {
         if (event.keyCode === KEY_CODES.ESCAPE && visibility) {
           closeTooltip(0);
         }
@@ -15552,8 +12563,8 @@ const useTooltip = function (_temp) {
     } = _temp3 === void 0 ? {} : _temp3;
     return {
       role,
-      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
+      onMouseEnter: composeEventHandlers$1(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$1(onMouseLeave, () => closeTooltip()),
       'aria-hidden': !visibility,
       id: _id,
       ...other
@@ -19866,8 +16877,8 @@ function (_React$Component) {
         placement: _this.props.placement,
         eventsEnabled: _this.props.eventsEnabled,
         positionFixed: _this.props.positionFixed,
-        modifiers: _extends$x({}, _this.props.modifiers, {
-          arrow: _extends$x({}, _this.props.modifiers && _this.props.modifiers.arrow, {
+        modifiers: _extends$w({}, _this.props.modifiers, {
+          arrow: _extends$w({}, _this.props.modifiers && _this.props.modifiers.arrow, {
             enabled: !!_this.arrowNode,
             element: _this.arrowNode
           }),
@@ -19880,7 +16891,7 @@ function (_React$Component) {
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "getPopperStyle", function () {
-      return !_this.popperNode || !_this.state.data ? initialStyle : _extends$x({
+      return !_this.popperNode || !_this.state.data ? initialStyle : _extends$w({
         position: _this.state.data.offsets.popper.position
       }, _this.state.data.styles);
     });
@@ -19982,7 +16993,7 @@ function Popper(_ref) {
       props = _objectWithoutPropertiesLoose(_ref, ["referenceElement"]);
 
   return reactExports.createElement(ManagerReferenceNodeContext.Consumer, null, function (referenceNode) {
-    return reactExports.createElement(InnerPopper, _extends$x({
+    return reactExports.createElement(InnerPopper, _extends$w({
       referenceElement: referenceElement !== undefined ? referenceElement : referenceNode
     }, props));
   });
@@ -20028,7 +17039,7 @@ function (_React$Component) {
 
 function Reference(props) {
   return reactExports.createElement(ManagerReferenceNodeSetterContext.Consumer, null, function (setReferenceNode) {
-    return reactExports.createElement(InnerReference, _extends$x({
+    return reactExports.createElement(InnerReference, _extends$w({
       setReferenceNode: setReferenceNode
     }, props));
   });
@@ -20096,7 +17107,7 @@ function getArrowPosition(popperPlacement) {
 const COMPONENT_ID$2$1 = 'tooltip.paragraph';
 const StyledParagraph = Ye.p.attrs({
   'data-garden-id': COMPONENT_ID$2$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-wuqkfc-0"
@@ -20108,7 +17119,7 @@ StyledParagraph.defaultProps = {
 const COMPONENT_ID$1$1 = 'tooltip.title';
 const StyledTitle = Ye.strong.attrs({
   'data-garden-id': COMPONENT_ID$1$1,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-vnjcvz-0"
@@ -20117,7 +17128,7 @@ StyledTitle.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$v = 'tooltip.tooltip';
+const COMPONENT_ID$m = 'tooltip.tooltip';
 const sizeStyles$b = _ref => {
   let {
     theme,
@@ -20204,12 +17215,12 @@ const colorStyles$9 = _ref2 => {
   return Ne(["border:", ";box-shadow:", ";background-color:", ";color:", ";", "{color:", ";}"], border, boxShadow, backgroundColor, color, StyledTitle, titleColor);
 };
 const StyledTooltip = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$v,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$m,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTooltip",
   componentId: "sc-gzzjq4-0"
-})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$b(props), colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$v, props));
+})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$b(props), colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$m, props));
 StyledTooltip.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -20312,10 +17323,10 @@ const Tooltip = _ref => {
       hasArrow,
       placement: currentPlacement,
       size: computedSize,
-      onFocus: composeEventHandlers$2(onFocus, () => {
+      onFocus: composeEventHandlers$1(onFocus, () => {
         openTooltip();
       }),
-      onBlur: composeEventHandlers$2(onBlur, () => {
+      onBlur: composeEventHandlers$1(onBlur, () => {
         closeTooltip(0);
       }),
       'aria-hidden': !controlledIsVisible,
@@ -20440,84 +17451,84 @@ const useFieldContext = () => {
   return context;
 };
 
-const COMPONENT_ID$u = 'dropdowns.combobox.label';
+const COMPONENT_ID$l = 'dropdowns.combobox.label';
 const StyledLabel = Ye(Label$1).attrs({
-  'data-garden-id': COMPONENT_ID$u,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$l,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-1889zee-0"
-})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$u, props));
+})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$l, props));
 StyledLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$t = 'dropdowns.combobox.hint';
+const COMPONENT_ID$k = 'dropdowns.combobox.hint';
 const StyledHint = Ye(Hint$1).attrs({
-  'data-garden-id': COMPONENT_ID$t,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$k,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledHint",
   componentId: "sc-9kt30-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$t, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$k, props));
 StyledHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$s = 'dropdowns.combobox.message';
+const COMPONENT_ID$j = 'dropdowns.combobox.message';
 const StyledMessage = Ye(Message$1).attrs({
-  'data-garden-id': COMPONENT_ID$s,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$j,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-15eqzu4-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$s, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$j, props));
 StyledMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$r = 'dropdowns.combobox';
+const COMPONENT_ID$i = 'dropdowns.combobox';
 const sizeStyles$a = props => {
   const minWidth = `${props.isCompact ? 100 : 144}px`;
   const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   return Ne(["min-width:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], minWidth, StyledLabel, StyledHint, StyledMessage, StyledHint, StyledMessage, marginTop);
 };
 const StyledCombobox = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$r,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$i,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledCombobox",
   componentId: "sc-1hs98ew-0"
-})(["", ";", ";"], sizeStyles$a, props => retrieveComponentStyles(COMPONENT_ID$r, props));
+})(["", ";", ";"], sizeStyles$a, props => retrieveComponentStyles(COMPONENT_ID$i, props));
 StyledCombobox.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$q = 'dropdowns.combobox.container';
+const COMPONENT_ID$h = 'dropdowns.combobox.container';
 const StyledContainer = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$q,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$h,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledContainer",
   componentId: "sc-18gcb1g-0"
-})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$q, props));
+})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$h, props));
 StyledContainer.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$p = 'dropdowns.combobox.field';
+const COMPONENT_ID$g = 'dropdowns.combobox.field';
 const StyledField = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$p,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$g,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-k7y10k-0"
-})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$p, props));
+})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$g, props));
 StyledField.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$o = 'dropdowns.combobox.option';
+const COMPONENT_ID$f = 'dropdowns.combobox.option';
 const colorStyles$8 = props => {
   const activeBackgroundColor = getColor(props.$type === 'danger' ? 'dangerHue' : 'primaryHue', 600, props.theme, 0.08);
   const backgroundColor = props.isActive && props.$type !== 'group' && props.$type !== 'header' ? activeBackgroundColor : undefined;
@@ -20528,7 +17539,7 @@ const colorStyles$8 = props => {
   } else if (props.$type === 'danger') {
     foregroundColor = getColor('dangerHue', 600, props.theme);
   }
-  return Ne(["background-color:", ";color:", ";&[aria-disabled='true']{background-color:transparent;color:", ";}"], backgroundColor, foregroundColor, disabledForegroundColor);
+  return Ne(["background-color:", ";color:", ";&[aria-disabled='true']{background-color:", ";color:", ";}"], backgroundColor, foregroundColor, backgroundColor, disabledForegroundColor);
 };
 const getMinHeight = props => props.theme.space.base * (props.isCompact ? 7 : 9);
 const sizeStyles$9 = props => {
@@ -20539,52 +17550,52 @@ const sizeStyles$9 = props => {
   return Ne(["box-sizing:border-box;padding:", " ", ";min-height:", "px;line-height:", ";"], paddingVertical, paddingHorizontal, minHeight, lineHeight);
 };
 const StyledOption = Ye.li.attrs({
-  'data-garden-id': COMPONENT_ID$o,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$f,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledOption",
   componentId: "sc-1b5e09t-0"
-})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";word-wrap:break-word;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$9, colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$o, props));
+})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";word-wrap:break-word;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$9, colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$f, props));
 StyledOption.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$n = 'dropdowns.combobox.listbox';
+const COMPONENT_ID$e = 'dropdowns.combobox.listbox';
 const sizeStyles$8 = props => {
   const padding = props.theme.space.base;
   const minHeight = props.minHeight === undefined ? `${getMinHeight(props) + padding * 2}px` : props.minHeight;
   return Ne(["min-height:", ";max-height:", ";&&&{padding-top:", "px;padding-bottom:", "px;}"], minHeight, props.maxHeight, padding, padding);
 };
 const StyledListbox = Ye.ul.attrs({
-  'data-garden-id': COMPONENT_ID$n,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$e,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledListbox",
   componentId: "sc-4uxeym-0"
-})(["overflow-y:auto;list-style-type:none;", ";&&&{display:block;}"], sizeStyles$8);
+})(["overflow-y:scroll;list-style-type:none;", ";&&&{display:block;}"], sizeStyles$8);
 StyledListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$m = 'dropdowns.combobox.floating';
-const StyledFloatingListbox = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$m,
-  'data-garden-version': '8.69.4'
+const COMPONENT_ID$d = 'dropdowns.combobox.floating';
+const StyledFloating = Ye.div.attrs({
+  'data-garden-id': COMPONENT_ID$d,
+  'data-garden-version': '8.69.1'
 }).withConfig({
-  displayName: "StyledFloatingListbox",
-  componentId: "sc-xsp548-0"
+  displayName: "StyledFloating",
+  componentId: "sc-17rn49r-0"
 })(["top:0;left:0;", ";", ";"], props => menuStyles(props.position, {
   theme: props.theme,
   hidden: props.isHidden,
   childSelector: `> ${StyledListbox}`,
   animationModifier: '[data-garden-animate="true"]',
   zIndex: props.zIndex
-}), props => retrieveComponentStyles(COMPONENT_ID$m, props));
-StyledFloatingListbox.defaultProps = {
+}), props => retrieveComponentStyles(COMPONENT_ID$d, props));
+StyledFloating.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$l = 'dropdowns.combobox.input';
+const COMPONENT_ID$c = 'dropdowns.combobox.input';
 const colorStyles$7 = props => {
   const placeholderColor = getColor('neutralHue', 400, props.theme);
   return Ne(["background-color:inherit;color:inherit;&::placeholder{opacity:1;color:", ";}"], placeholderColor);
@@ -20604,33 +17615,33 @@ const sizeStyles$7 = props => {
   return Ne(["min-width:", ";height:", "px;line-height:", ";font-size:", ";&&{margin-top:", ";margin-bottom:", ";}"], minWidth, height, lineHeight, fontSize, margin, margin);
 };
 const StyledInput = Ye.input.attrs({
-  'data-garden-id': COMPONENT_ID$l,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$c,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledInput",
   componentId: "sc-m2m56e-0"
-})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}", ";"], sizeStyles$7, colorStyles$7, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$l, props));
+})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}", ";"], sizeStyles$7, colorStyles$7, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$c, props));
 StyledInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$k = 'dropdowns.combobox.input_group';
+const COMPONENT_ID$b = 'dropdowns.combobox.input_group';
 const sizeStyles$6 = props => {
   const margin = props.theme.shadowWidths.sm;
   return Ne(["margin:-", ";min-width:0;& > *{margin:", ";}"], margin, margin);
 };
 const StyledInputGroup = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$k,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$b,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-2agt8f-0"
-})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$6, props => retrieveComponentStyles(COMPONENT_ID$k, props));
+})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$6, props => retrieveComponentStyles(COMPONENT_ID$b, props));
 StyledInputGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$j = 'dropdowns.combobox.trigger';
+const COMPONENT_ID$a = 'dropdowns.combobox.trigger';
 const colorStyles$6 = props => {
   const SHADE = 600;
   let hue = 'neutralHue';
@@ -20700,17 +17711,17 @@ const sizeStyles$5 = props => {
   return Ne(["padding:", " ", ";min-height:", ";max-height:", ";font-size:", ";"], verticalPadding, horizontalPadding, minHeight, maxHeight, props.theme.fontSizes.md);
 };
 const StyledTrigger = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$j,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$a,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTrigger",
   componentId: "sc-14t9k4c-0"
-})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$5, colorStyles$6, props => retrieveComponentStyles(COMPONENT_ID$j, props));
+})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$5, colorStyles$6, props => retrieveComponentStyles(COMPONENT_ID$a, props));
 StyledTrigger.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$i = 'dropdowns.combobox.input_icon';
+const COMPONENT_ID$9 = 'dropdowns.combobox.input_icon';
 const colorStyles$5 = props => {
   const color = getColor('neutralHue', 600, props.theme);
   const focusColor = getColor('neutralHue', 700, props.theme);
@@ -20742,63 +17753,42 @@ const StyledInputIcon = Ye(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$i,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$9,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledInputIcon",
   componentId: "sc-15ewmjl-0"
-})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$4, colorStyles$5, props => retrieveComponentStyles(COMPONENT_ID$i, props));
+})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$4, colorStyles$5, props => retrieveComponentStyles(COMPONENT_ID$9, props));
 StyledInputIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$h = 'dropdowns.combobox.separator';
-const colorStyles$4 = props => {
-  const backgroundColor = getColor('neutralHue', 200, props.theme);
-  return Ne(["background-color:", ";"], backgroundColor);
-};
-const sizeStyles$3 = props => {
-  const margin = `${props.theme.space.base}px`;
-  const height = props.theme.borderWidths.sm;
-  return Ne(["margin:", " 0;height:", ";"], margin, height);
-};
-const StyledListboxSeparator = Ye.li.attrs({
-  'data-garden-id': COMPONENT_ID$h,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledListboxSeparator",
-  componentId: "sc-19umtmg-0"
-})(["cursor:default;", ";", ";", ";"], sizeStyles$3, colorStyles$4, props => retrieveComponentStyles(COMPONENT_ID$h, props));
-StyledListboxSeparator.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$g = 'dropdowns.combobox.optgroup';
+const COMPONENT_ID$8 = 'dropdowns.combobox.optgroup';
 const StyledOptGroup = Ye.ul.attrs({
-  'data-garden-id': COMPONENT_ID$g,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$8,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledOptGroup",
   componentId: "sc-12dbq5s-0"
-})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$g, props));
+})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$8, props));
 StyledOptGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$f = 'dropdowns.combobox.option.content';
+const COMPONENT_ID$7 = 'dropdowns.combobox.option.content';
 const StyledOptionContent = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$f,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$7,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledOptionContent",
   componentId: "sc-536085-0"
-})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$f, props));
+})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$7, props));
 StyledOptionContent.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$e = 'dropdowns.combobox.option.icon';
-const sizeStyles$2 = props => {
+const COMPONENT_ID$6 = 'dropdowns.combobox.option.icon';
+const sizeStyles$3 = props => {
   const size = props.theme.iconSizes.md;
   const marginTop = math(`(${props.theme.lineHeights.md} - ${size}) / 2`);
   const marginHorizontal = `${props.theme.space.base * 2}px`;
@@ -20812,39 +17802,39 @@ const StyledOptionIcon = Ye(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$e,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$6,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledOptionIcon",
   componentId: "sc-3vecfi-0"
-})(["flex-shrink:0;", ";", ";"], sizeStyles$2, props => retrieveComponentStyles(COMPONENT_ID$e, props));
+})(["flex-shrink:0;", ";", ";"], sizeStyles$3, props => retrieveComponentStyles(COMPONENT_ID$6, props));
 StyledOptionIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$d = 'dropdowns.combobox.option.meta';
-const colorStyles$3 = props => {
+const COMPONENT_ID$5 = 'dropdowns.combobox.option.meta';
+const colorStyles$4 = props => {
   const color = getColor('neutralHue', props.isDisabled ? 400 : 600, props.theme);
   return Ne(["color:", ";"], color);
 };
-const sizeStyles$1 = props => {
+const sizeStyles$2 = props => {
   const lineHeight = props.theme.lineHeights.sm;
   const fontSize = props.theme.fontSizes.sm;
   return Ne(["line-height:", ";font-size:", ";"], lineHeight, fontSize);
 };
 const StyledOptionMeta = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$d,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$5,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledOptionMeta",
   componentId: "sc-1nizjb3-0"
-})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$1, colorStyles$3, props => retrieveComponentStyles(COMPONENT_ID$d, props));
+})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$2, colorStyles$4, props => retrieveComponentStyles(COMPONENT_ID$5, props));
 StyledOptionMeta.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$c = 'dropdowns.combobox.option.type_icon';
-const colorStyles$2 = props => {
+const COMPONENT_ID$4 = 'dropdowns.combobox.option.type_icon';
+const colorStyles$3 = props => {
   const opacity = props.type && props.type !== 'danger' ? 1 : 0;
   let color;
   if (props.type === 'add' || props.type === 'danger') {
@@ -20856,7 +17846,7 @@ const colorStyles$2 = props => {
   }
   return Ne(["opacity:", ";color:", ";", "[aria-selected='true'] > &{opacity:1;}", "[aria-disabled='true'] > &{color:inherit;}"], opacity, color, StyledOption, StyledOption);
 };
-const sizeStyles = props => {
+const sizeStyles$1 = props => {
   const size = props.theme.iconSizes.md;
   const position = `${props.theme.space.base * 3}px`;
   const top = math(`(${getMinHeight(props)} - ${size}) / 2`);
@@ -20878,158 +17868,67 @@ const StyledOptionTypeIcon = Ye(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$c,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$4,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledOptionTypeIcon",
   componentId: "sc-vlhimu-0"
-})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles, colorStyles$2, props => retrieveComponentStyles(COMPONENT_ID$c, props));
+})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$1, colorStyles$3, props => retrieveComponentStyles(COMPONENT_ID$4, props));
 StyledOptionTypeIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$b = 'dropdowns.combobox.tag';
+const COMPONENT_ID$3 = 'dropdowns.combobox.separator';
+const colorStyles$2 = props => {
+  const backgroundColor = getColor('neutralHue', 200, props.theme);
+  return Ne(["background-color:", ";"], backgroundColor);
+};
+const sizeStyles = props => {
+  const margin = `${props.theme.space.base}px`;
+  const height = props.theme.borderWidths.sm;
+  return Ne(["margin:", " 0;height:", ";"], margin, height);
+};
+const StyledSeparator = Ye.li.attrs({
+  'data-garden-id': COMPONENT_ID$3,
+  'data-garden-version': '8.69.1'
+}).withConfig({
+  displayName: "StyledSeparator",
+  componentId: "sc-1uj1t6p-0"
+})(["cursor:default;", ";", ";", ";"], sizeStyles, colorStyles$2, props => retrieveComponentStyles(COMPONENT_ID$3, props));
+StyledSeparator.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$2 = 'dropdowns.combobox.tag';
 const StyledTag = Ye(Tag$1).attrs({
-  'data-garden-id': COMPONENT_ID$b,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$2,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1mrab0f-0"
-})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColor('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$b, props));
+})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColor('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$2, props));
 StyledTag.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$a = 'dropdowns.combobox.value';
+const COMPONENT_ID$1 = 'dropdowns.combobox.value';
 const colorStyles$1 = props => {
   const foregroundColor = props.isPlaceholder && getColor('neutralHue', 400, props.theme);
   return Ne(["color:", ";"], foregroundColor);
 };
 const StyledValue = Ye.div.attrs({
-  'data-garden-id': COMPONENT_ID$a,
-  'data-garden-version': '8.69.4'
+  'data-garden-id': COMPONENT_ID$1,
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledValue",
   componentId: "sc-16gp0f-0"
-})(["flex-basis:0;flex-grow:1;cursor:", ";overflow:hidden;text-overflow:ellipsis;white-space:pre;user-select:none;", ";", ";", ";"], props => {
+})(["flex-basis:0;flex-grow:1;cursor:", ";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:none;", ";", ";", ";"], props => {
   if (props.isDisabled) {
     return 'default';
   }
   return props.isEditable ? 'text' : 'pointer';
-}, sizeStyles$7, colorStyles$1, props => retrieveComponentStyles(COMPONENT_ID$a, props));
+}, sizeStyles$7, colorStyles$1, props => retrieveComponentStyles(COMPONENT_ID$1, props));
 StyledValue.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$9 = 'dropdowns.menu.floating';
-const StyledFloatingMenu = Ye(StyledFloatingListbox).attrs({
-  'data-garden-id': COMPONENT_ID$9,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledFloatingMenu",
-  componentId: "sc-1kawjbc-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$9, props));
-StyledFloatingMenu.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$8 = 'dropdowns.menu.item';
-const StyledItem = Ye(StyledOption).attrs({
-  'data-garden-id': COMPONENT_ID$8,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledItem",
-  componentId: "sc-1rlz2s1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$8, props));
-StyledItem.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$7 = 'dropdowns.menu.item.content';
-const StyledItemContent = Ye(StyledOptionContent).attrs({
-  'data-garden-id': COMPONENT_ID$7,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledItemContent",
-  componentId: "sc-lycr0m-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$7, props));
-StyledItemContent.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$6 = 'dropdowns.menu.item_group';
-const StyledItemGroup = Ye(StyledOptGroup).attrs({
-  'data-garden-id': COMPONENT_ID$6,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledItemGroup",
-  componentId: "sc-1p1oxg2-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$6, props));
-StyledItemGroup.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$5 = 'dropdowns.menu.item.icon';
-const StyledItemIcon = Ye(StyledOptionIcon).attrs({
-  'data-garden-id': COMPONENT_ID$5,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledItemIcon",
-  componentId: "sc-1htsio6-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$5, props));
-StyledItemIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$4 = 'dropdowns.menu.item.meta';
-const StyledItemMeta = Ye(StyledOptionMeta).attrs({
-  'data-garden-id': COMPONENT_ID$4,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledItemMeta",
-  componentId: "sc-1w4thi3-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$4, props));
-StyledItemMeta.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$3 = 'dropdowns.menu.item.type_icon';
-const StyledItemTypeIcon = Ye(StyledOptionTypeIcon).attrs({
-  'data-garden-id': COMPONENT_ID$3,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledItemTypeIcon",
-  componentId: "sc-15p2dtm-0"
-})(["", "[aria-checked='true'] > &{opacity:1;}", ";"], StyledItem, props => retrieveComponentStyles(COMPONENT_ID$3, props));
-StyledItemTypeIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$2 = 'dropdowns.menu';
-const StyledMenu = Ye(StyledListbox).attrs({
-  'data-garden-id': COMPONENT_ID$2,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledMenu",
-  componentId: "sc-1ht6lc5-0"
-})(["position:static !important;", ";", ";"], props => props.arrowPosition && arrowStyles(props.arrowPosition, {
-  size: `${props.theme.space.base * 2}px`,
-  inset: '2px',
-  animationModifier: '[data-garden-animate="true"]'
-}), props => retrieveComponentStyles(COMPONENT_ID$2, props));
-StyledMenu.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$1 = 'dropdowns.menu.separator';
-const StyledMenuSeparator = Ye(StyledListboxSeparator).attrs({
-  'data-garden-id': COMPONENT_ID$1,
-  'data-garden-version': '8.69.4'
-}).withConfig({
-  displayName: "StyledMenuSeparator",
-  componentId: "sc-vjn46k-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1, props));
-StyledMenuSeparator.defaultProps = {
   theme: DEFAULT_THEME
 };
 
@@ -21041,11 +17940,11 @@ const colorStyles = props => {
 const StyledTagsButton = Ye(StyledValue).attrs({
   as: 'button',
   'data-garden-id': COMPONENT_ID,
-  'data-garden-version': '8.69.4'
+  'data-garden-version': '8.69.1'
 }).withConfig({
   displayName: "StyledTagsButton",
   componentId: "sc-ewyffo-0"
-})(["flex:0 1 auto;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles, props => retrieveComponentStyles(COMPONENT_ID, props));
+})(["flex:0 1 auto;transition:color 0.25s ease-in-out 0;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles, props => retrieveComponentStyles(COMPONENT_ID, props));
 StyledTagsButton.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -21123,7 +18022,7 @@ const Listbox = reactExports.forwardRef((_ref, ref) => {
     }
   }, [
   children, update]);
-  const Node = React__default.createElement(StyledFloatingListbox, {
+  const Node = React__default.createElement(StyledFloating, {
     "data-garden-animate": isVisible ? 'true' : 'false',
     isHidden: !isExpanded,
     position: placement === 'bottom-start' ? 'bottom' : 'top',
@@ -21544,9 +18443,9 @@ const Label = reactExports.forwardRef((_ref, ref) => {
     labelProps
   } = useFieldContext();
   return React__default.createElement(StyledLabel, _extends$5({}, labelProps, {
-    onClick: composeEventHandlers$2(onClick, labelProps?.onClick),
-    onMouseEnter: composeEventHandlers$2(onMouseEnter, labelProps?.onMouseEnter),
-    onMouseLeave: composeEventHandlers$2(onMouseLeave, labelProps?.onMouseLeave)
+    onClick: composeEventHandlers$1(onClick, labelProps?.onClick),
+    onMouseEnter: composeEventHandlers$1(onMouseEnter, labelProps?.onMouseEnter),
+    onMouseLeave: composeEventHandlers$1(onMouseLeave, labelProps?.onMouseLeave)
   }, props, {
     ref: ref
   }));
@@ -21771,7 +18670,7 @@ const OptGroup = reactExports.forwardRef((_ref, ref) => {
   return React__default.createElement(StyledOption, _extends$5({
     isCompact: isCompact,
     $type: "group",
-    onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
+    onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
     role: "none"
   }, props, {
     ref: ref
@@ -21784,7 +18683,7 @@ const OptGroup = reactExports.forwardRef((_ref, ref) => {
     type: "header"
   }, icon), content || label), React__default.createElement(StyledOptGroup, _extends$5({
     isCompact: isCompact
-  }, optGroupProps), React__default.createElement(StyledListboxSeparator, {
+  }, optGroupProps), React__default.createElement(StyledSeparator, {
     role: "none"
   }), children)));
 });
@@ -21795,4 +18694,4 @@ OptGroup.propTypes = {
   label: PropTypes.string
 };
 
-export { Combobox as C, DEFAULT_THEME as D, Field$2 as F, Hint$2 as H, Input$1 as I, Label$1$1 as L, Message$2 as M, Option as O, Textarea$1 as T, Field as a, Label as b, Hint as c, Message as d, ThemeProvider as e, jsxRuntimeExports as j, reactDomExports as r };
+export { Combobox as C, DEFAULT_THEME as D, Field$1 as F, Hint$1 as H, Input as I, Label$1 as L, Message$1 as M, Option as O, Textarea as T, Field as a, Label as b, Hint as c, Message as d, ThemeProvider as e, jsxRuntimeExports as j, reactDomExports as r };

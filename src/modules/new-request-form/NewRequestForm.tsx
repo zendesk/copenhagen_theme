@@ -1,4 +1,4 @@
-import type { Field, TicketForm } from "./data-types";
+import type { RequestForm, TicketForm } from "./data-types";
 import { TextInput } from "./fields/TextInput";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -6,12 +6,17 @@ import { TicketFormField } from "./ticket-form-field/TicketFormField";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
-  fields: Field[];
+  requestForm: RequestForm;
 }
 
-export function NewRequestForm({ ticketForms, fields }: NewRequestFormProps) {
+export function NewRequestForm({
+  ticketForms,
+  requestForm,
+}: NewRequestFormProps) {
+  const { fields, action, http_method, accept_charset } = requestForm;
+
   return (
-    <form>
+    <form action={action} method={http_method} acceptCharset={accept_charset}>
       <TicketFormField ticketForms={ticketForms} />
       {fields.map((field) => {
         switch (field.type) {
