@@ -13,11 +13,22 @@ export function NewRequestForm({
   ticketForms,
   requestForm,
 }: NewRequestFormProps) {
-  const { fields, action, http_method, accept_charset } = requestForm;
+  const {
+    fields,
+    action,
+    http_method,
+    accept_charset,
+    ticket_form_field,
+    ticket_forms_instructions,
+  } = requestForm;
 
   return (
     <form action={action} method={http_method} acceptCharset={accept_charset}>
-      <TicketFormField ticketForms={ticketForms} />
+      <TicketFormField
+        label={ticket_forms_instructions}
+        ticketFormField={ticket_form_field}
+        ticketForms={ticketForms}
+      />
       {fields.map((field) => {
         switch (field.type) {
           case "anonymous_requester_email":
