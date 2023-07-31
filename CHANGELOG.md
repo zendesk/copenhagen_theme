@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/zendesk/copenhagen_theme/compare/v3.1.0...v3.1.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* fixed menue dropdown on mobile ([d91d98b](https://github.com/zendesk/copenhagen_theme/commit/d91d98b1654bf568f9dab6178bd6e68211b94786))
+
 # [3.1.0](https://github.com/zendesk/copenhagen_theme/compare/v3.0.6...v3.1.0) (2023-07-19)
 
 
