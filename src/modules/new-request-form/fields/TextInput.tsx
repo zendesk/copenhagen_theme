@@ -19,7 +19,7 @@ export function TextInput({ field }: TextInputProps): JSX.Element {
       {description && <Hint>{description}</Hint>}
       <Input
         name={name}
-        value={value}
+        defaultValue={value}
         validation={error ? "error" : undefined}
         required={required}
       />
