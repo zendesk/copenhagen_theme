@@ -3,10 +3,10 @@ import { TextInput } from "./fields/TextInput";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
-import type { FormEventHandler } from "react";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
+import { useSubmitHandler } from "./useSubmitHandler";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -36,29 +36,7 @@ export function NewRequestForm({
     ticket_form_field,
     ticket_forms_instructions,
   } = requestForm;
-
-  // NOTE: This is a temporary handling of the CSRF token
-  const fetchCsrfToken = async () => {
-    const response = await fetch("/hc/api/internal/csrf_token.json");
-    const { current_session } = await response.json();
-    return current_session.csrf_token as string;
-  };
-
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-
-    const form = e.target as HTMLFormElement;
-
-    fetchCsrfToken().then((token) => {
-      const hiddenInput = document.createElement("input");
-      hiddenInput.type = "hidden";
-      hiddenInput.name = "authenticity_token";
-      hiddenInput.value = token;
-      form.appendChild(hiddenInput);
-      form.submit();
-      form.removeChild(hiddenInput);
-    });
-  };
+  const handleSubmit = useSubmitHandler();
 
   return (
     <Form
