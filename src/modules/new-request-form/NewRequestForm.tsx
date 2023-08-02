@@ -13,7 +13,7 @@ export interface NewRequestFormProps {
   requestForm: RequestForm;
 }
 
-const StyledForm = styled.form`
+const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.md};
@@ -61,7 +61,7 @@ export function NewRequestForm({
   };
 
   return (
-    <StyledForm
+    <Form
       action={action}
       method={http_method}
       acceptCharset={accept_charset}
@@ -95,6 +95,6 @@ export function NewRequestForm({
           </Button>
         )}
       </Footer>
-    </StyledForm>
+    </Form>
   );
 }
