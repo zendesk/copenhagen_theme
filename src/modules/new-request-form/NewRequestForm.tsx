@@ -63,6 +63,7 @@ export function NewRequestForm({
           case "textarea":
             return <TextArea field={field} />;
           case "priority":
+          case "organization_id":
             return <DropDown field={field} />;
           default:
             return <></>;
