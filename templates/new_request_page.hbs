@@ -15,34 +15,6 @@
   </h1>
 
   <div id="main-content" class="form">
-    {{#with new_request_form}}
-      <form data-form action="{{action}}" method="{{http_method}}" accept-charset="{{accept_charset}}">
-        {{#if errors}}
-          <p>{{errors}}</p>
-        {{/if}}
-        <input type="hidden" name="{{ticket_form_field.name}}" value="{{ticket_form_field.value}}">
-        {{#each fields}}
-          <div class="form-field {{#if required}} required {{else}} optional {{/if}} {{id}}" {{#is type 'due_at'}} data-due-date hidden {{/is}}>
-            <label for="{{id}}">{{label}}</label>
-            {{#is type 'description'}}
-              {{text_area wysiwyg=true}}
-            {{else}}
-              <input type="text" name="{{name}}" id="{{id}}" maxlength="150" size="150">
-            {{/is}}
-            {{#if error}}
-              <div class="notification notification-error notification-inline">{{error}}</div>
-            {{/if}}
-            {{#if description}}
-              <p>{{description}}<p>
-            {{/if}}
-          </div>
-        {{/each}}
-        <footer>
-          <input type="submit" value="Submit">
-        </footer>
-      </form>
-    {{/with}}
-    <hr />
     <div id="new-request-form"></div>
   </div>
 </div>
