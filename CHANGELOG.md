@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/zendesk/copenhagen_theme/compare/v3.1.1...v3.1.2) (2023-08-03)
+
+
+### Bug Fixes
+
+* fixed request page organization dropdown on mobile ([92e67ca](https://github.com/zendesk/copenhagen_theme/commit/92e67ca9d0642b8db7ad2ac752ea8bc74b0ca696))
+
 ## [3.1.1](https://github.com/zendesk/copenhagen_theme/compare/v3.1.0...v3.1.1) (2023-07-31)
 
 
