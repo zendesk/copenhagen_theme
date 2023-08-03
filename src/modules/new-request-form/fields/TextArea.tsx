@@ -19,7 +19,7 @@ export function TextArea({ field }: TextAreaProps): JSX.Element {
       {description && <Hint>{description}</Hint>}
       <Textarea
         name={name}
-        value={value}
+        defaultValue={value}
         validation={error ? "error" : undefined}
         required={required}
       />
