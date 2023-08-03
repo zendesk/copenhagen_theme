@@ -640,6 +640,11 @@
       requestOrganisationSelect.addEventListener("change", () => {
         requestOrganisationSelect.form.submit();
       });
+
+      requestOrganisationSelect.addEventListener("click", (e) => {
+        // Prevents Ticket details collapsible-sidebar to close on mobile
+        e.stopPropagation();
+      });
     }
 
     // If there are any error notifications below an input field, focus that field
