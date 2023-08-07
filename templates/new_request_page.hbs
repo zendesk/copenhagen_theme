@@ -12,6 +12,11 @@
 
   <h1>
     {{t 'submit_a_request'}}
+    {{#if parent_id}}
+      <span class="follow-up-hint">
+        Follow-up to <a href="{{page_path 'request' id=parent_id}}">request #{{parent_id}}</a>
+      </span>
+    {{/if}}
   </h1>
 
   <div id="main-content" class="form">
