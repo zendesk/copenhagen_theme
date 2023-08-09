@@ -13,7 +13,9 @@ function TextArea({ field }) {
 
 function DropDown({ field }) {
     const { label, options, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value === value, children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, renderValue: ({ selection }) => selection && "value" in selection
+                    ? options.find((option) => option.value === selection.value)?.name
+                    : "-", children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value?.toString() === value?.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
@@ -75,7 +77,7 @@ const Footer = styled.div `
 function NewRequestForm({ ticketForms, requestForm, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, } = requestForm;
     const handleSubmit = useSubmitHandler();
-    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms }), fields.map((field) => {
+    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
@@ -84,11 +86,12 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                     case "textarea":
                         return jsxRuntimeExports.jsx(TextArea, { field: field });
                     case "priority":
+                    case "organization_id":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }
-            }), jsxRuntimeExports.jsx(Footer, { children: ticket_form_field.value && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }));
+            }), jsxRuntimeExports.jsx(Footer, { children: (ticketForms.length === 0 || ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }));
 }
 
 function renderNewRequestForm(props, container) {

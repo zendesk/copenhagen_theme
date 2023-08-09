@@ -47,11 +47,13 @@ export function NewRequestForm({
       onSubmit={handleSubmit}
     >
       {errors && <Alert type="error">{errors}</Alert>}
-      <TicketFormField
-        label={ticket_forms_instructions}
-        ticketFormField={ticket_form_field}
-        ticketForms={ticketForms}
-      />
+      {ticketForms.length > 0 && (
+        <TicketFormField
+          label={ticket_forms_instructions}
+          ticketFormField={ticket_form_field}
+          ticketForms={ticketForms}
+        />
+      )}
       {fields.map((field) => {
         switch (field.type) {
           case "anonymous_requester_email":
@@ -61,13 +63,14 @@ export function NewRequestForm({
           case "textarea":
             return <TextArea field={field} />;
           case "priority":
+          case "organization_id":
             return <DropDown field={field} />;
           default:
             return <></>;
         }
       })}
       <Footer>
-        {ticket_form_field.value && (
+        {(ticketForms.length === 0 || ticket_form_field.value) && (
           <Button isPrimary type="submit">
             Submit
           </Button>
