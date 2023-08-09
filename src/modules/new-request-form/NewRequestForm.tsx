@@ -58,6 +58,7 @@ export function NewRequestForm({
         switch (field.type) {
           case "anonymous_requester_email":
           case "subject":
+          case "regexp":
             return <TextInput field={field} />;
           case "description":
           case "textarea":
