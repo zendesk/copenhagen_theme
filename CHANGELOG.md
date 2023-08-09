@@ -1,3 +1,41 @@
+## [3.1.2](https://github.com/zendesk/copenhagen_theme/compare/v3.1.1...v3.1.2) (2023-08-03)
+
+
+### Bug Fixes
+
+* fixed request page organization dropdown on mobile ([92e67ca](https://github.com/zendesk/copenhagen_theme/commit/92e67ca9d0642b8db7ad2ac752ea8bc74b0ca696))
+
+## [3.1.1](https://github.com/zendesk/copenhagen_theme/compare/v3.1.0...v3.1.1) (2023-07-31)
+
+
+### Bug Fixes
+
+* fixed menue dropdown on mobile ([d91d98b](https://github.com/zendesk/copenhagen_theme/commit/d91d98b1654bf568f9dab6178bd6e68211b94786))
+
+# [3.1.0](https://github.com/zendesk/copenhagen_theme/compare/v3.0.6...v3.1.0) (2023-07-19)
+
+
+### Bug Fixes
+
+* aria-expanded should be on the button ([8df6493](https://github.com/zendesk/copenhagen_theme/commit/8df6493fa0e54368fffeb56a52f6a96c7da538a7))
+
+
+### Features
+
+* align with garden styles ([610cf69](https://github.com/zendesk/copenhagen_theme/commit/610cf69abde144c7c52e4ee75271cbf42737cf37))
+* also support menuitemradio ([a1102d1](https://github.com/zendesk/copenhagen_theme/commit/a1102d1ae63066482be4775b8540f40b4987889a))
+* set tabindex to menuitems ([833b13c](https://github.com/zendesk/copenhagen_theme/commit/833b13c42e6227578a003297c16907e4b3413d28))
+
+## [3.0.6](https://github.com/zendesk/copenhagen_theme/compare/v3.0.5...v3.0.6) (2023-07-19)
+
+
+### Bug Fixes
+
+* move for mobile ([a11089c](https://github.com/zendesk/copenhagen_theme/commit/a11089cbfe797e0936eb3b10081001ef1a043585))
+* show ellipsis for section titles ([71efc13](https://github.com/zendesk/copenhagen_theme/commit/71efc1388d6e543264c61b93c524be9658f2e474))
+* show ellipsis for very long article titles ([916db29](https://github.com/zendesk/copenhagen_theme/commit/916db297fa7f1d2747d66db5aae5a6ccec9e189c))
+* show ellipsis in sidebar for very long titles ([a685729](https://github.com/zendesk/copenhagen_theme/commit/a685729e86536f7aa967ac3fe4e45e842fe3e547))
+
 ## [3.0.5](https://github.com/zendesk/copenhagen_theme/compare/v3.0.4...v3.0.5) (2023-06-28)
 
 

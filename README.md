@@ -222,7 +222,7 @@ We use [conventional commits](https://conventionalcommits.org/) to improve reada
 - body: (optional) additional contextual information about the change
 - footer: (optional) adds external links, issue references and other meta-information
 
-i.e.: 
+i.e.:
 
 ```
 chore: automate release
