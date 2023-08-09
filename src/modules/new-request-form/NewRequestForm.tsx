@@ -7,6 +7,7 @@ import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useSubmitHandler } from "./useSubmitHandler";
+import { CcField } from "./fields/CcField";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -67,6 +68,8 @@ export function NewRequestForm({
           case "organization_id":
           case "tickettype":
             return <DropDown field={field} />;
+          case "cc_email":
+            return <CcField field={field} />;
           default:
             return <></>;
         }

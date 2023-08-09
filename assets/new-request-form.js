@@ -66,6 +66,41 @@ function useSubmitHandler() {
     };
 }
 
+const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+function CcField({ field }) {
+    const { label, error, value, name, description } = field;
+    const initialOptions = value ? value.split(",").map((v) => v.trim()) : [];
+    const [options, setOptions] = reactExports.useState(initialOptions);
+    const [selectionValue, setSelectionValue] = reactExports.useState(initialOptions);
+    const [inputValue, setInputValue] = reactExports.useState("");
+    const handleChange = (changes) => {
+        console.log(changes);
+        const newSelectionValue = changes.selectionValue !== undefined &&
+            Array.isArray(changes.selectionValue)
+            ? changes.selectionValue
+            : selectionValue;
+        if (changes.selectionValue !== undefined) {
+            setSelectionValue(newSelectionValue);
+        }
+        if (changes.inputValue === undefined) {
+            setOptions(newSelectionValue);
+        }
+        else {
+            setInputValue(changes.inputValue);
+            if (changes.inputValue === "") {
+                setOptions(newSelectionValue);
+            }
+            else {
+                const regex = new RegExp(changes.inputValue.replace(/[.*+?^${}()|[\]\\]/giu, "\\$&"), "giu");
+                setOptions(newSelectionValue.filter((option) => option.match(regex)));
+            }
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { isAutocomplete: true, isMultiselectable: true, maxHeight: "auto", onChange: handleChange, inputValue: inputValue, selectionValue: selectionValue, children: [options.length === 0 ? (jsxRuntimeExports.jsx(Option, { isDisabled: true, label: "", value: "Enter a valid e-mail address to add it" })) : (options.map((value) => jsxRuntimeExports.jsx(Option, { value: value }, value))), inputValue.trim() &&
+                        !selectionValue.includes(inputValue) &&
+                        EMAIL_REGEX.test(inputValue) && (jsxRuntimeExports.jsxs(Option, { value: inputValue, type: "add", children: ["Add ", inputValue] }))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), selectionValue.map((value) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value }, "value")))] }));
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -90,6 +125,8 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                     case "organization_id":
                     case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
+                    case "cc_email":
+                        return jsxRuntimeExports.jsx(CcField, { field: field });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }
