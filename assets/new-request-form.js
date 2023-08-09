@@ -87,6 +87,7 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                         return jsxRuntimeExports.jsx(TextArea, { field: field });
                     case "priority":
                     case "organization_id":
+                    case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
