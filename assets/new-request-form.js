@@ -74,6 +74,7 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
+const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ ticketForms, requestForm, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, } = requestForm;
     const handleSubmit = useSubmitHandler();
@@ -90,6 +91,8 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                     case "organization_id":
                     case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
+                    case "cc_email":
+                        return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: field }) }));
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }

@@ -13,15 +13,18 @@
     "zcli": "zcli"
   },
   "dependencies": {
+    "@zag-js/react": "^0.15.0",
+    "@zag-js/tags-input": "^0.15.0",
     "@zendeskgarden/react-buttons": "^8.69.1",
     "@zendeskgarden/react-dropdowns.next": "^8.69.1",
     "@zendeskgarden/react-forms": "^8.69.1",
     "@zendeskgarden/react-notifications": "^8.69.1",
+    "@zendeskgarden/react-tags": "^8.69.1",
     "@zendeskgarden/react-theming": "^8.69.1",
     "node-fetch": "2.6.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-is": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-is": "^18.2.0",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
@@ -34,14 +37,14 @@
     "@semantic-release/changelog": "6.0.2",
     "@semantic-release/exec": "6.0.3",
     "@semantic-release/git": "10.0.1",
-    "@typescript-eslint/eslint-plugin": "^6.1.0",
-    "@typescript-eslint/parser": "^6.1.0",
     "@testing-library/dom": "^9.3.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
-    "@types/react": "^17.0.62",
-    "@types/react-dom": "^17.0.20",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
     "@zendesk/zcli": "1.0.0-beta.38",
     "concurrently": "8.0.1",
     "dotenv": "16.0.3",
@@ -69,9 +72,9 @@
     "wait-on": "7.0.1"
   },
   "resolutions": {
-    "@types/react": "^17.0.62"
+    "@types/react": "^18.x"
   },
-  "commitlint": {
+    "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]

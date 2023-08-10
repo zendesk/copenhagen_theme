@@ -28,7 +28,7 @@ export default defineConfig([
       dir: "assets",
       format: "es",
       manualChunks: (id) => {
-        if (id.includes("node_modules")) {
+        if (id.includes("node_modules") && !id.includes("@zag-js")) {
           return "vendor";
         }
       },
