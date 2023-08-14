@@ -7,12 +7,10 @@ interface ParentTicketFieldProps {
 export function ParentTicketField({ field }: ParentTicketFieldProps): JSX.Element {
   const { value, name } = field;
   return (
-    <>
-      <input
-          type="hidden"
-          name={name}
-          value={value}
-      />
-    </>
+    <input
+      type="hidden"
+      name={name}
+      value={value}
+    />
   );
 }
