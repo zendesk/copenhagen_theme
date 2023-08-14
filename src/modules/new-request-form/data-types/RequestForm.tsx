@@ -7,5 +7,6 @@ export interface RequestForm {
   errors: string | null;
   ticket_forms_instructions: string;
   ticket_form_field: Field;
+  parent_id_field: Field;
   fields: Field[];
 }

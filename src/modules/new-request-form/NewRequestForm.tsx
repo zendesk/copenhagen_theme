@@ -3,6 +3,7 @@ import { TextInput } from "./fields/TextInput";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
+import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
@@ -11,6 +12,7 @@ import { useSubmitHandler } from "./useSubmitHandler";
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
   requestForm: RequestForm;
+  parentId: string;
 }
 
 const Form = styled.form`
@@ -26,6 +28,7 @@ const Footer = styled.div`
 export function NewRequestForm({
   ticketForms,
   requestForm,
+  parentId
 }: NewRequestFormProps) {
   const {
     fields,
@@ -35,6 +38,7 @@ export function NewRequestForm({
     errors,
     ticket_form_field,
     ticket_forms_instructions,
+    parent_id_field,
   } = requestForm;
   const handleSubmit = useSubmitHandler();
 
@@ -47,6 +51,9 @@ export function NewRequestForm({
       onSubmit={handleSubmit}
     >
       {errors && <Alert type="error">{errors}</Alert>}
+      {parentId && (
+        <ParentTicketField field={parent_id_field} />
+      )}
       {ticketForms.length > 0 && (
         <TicketFormField
           label={ticket_forms_instructions}

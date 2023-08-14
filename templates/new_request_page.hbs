@@ -30,7 +30,9 @@
     {{id}}, url: "{{url}}", display_name: "{{display_name}}" });
   {{/each}}
 
+  const parentId = "{{ parent_id }}";
+
   const container = document.getElementById("new-request-form");
-  const props = { ticketForms, requestForm };
+  const props = { ticketForms, requestForm, parentId };
   renderNewRequestForm(props, container);
 </script>

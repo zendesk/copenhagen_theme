@@ -33,6 +33,11 @@ function TicketFormField({ label, ticketFormField, ticketForms, }) {
     return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: ticketFormField.name, value: ticketFormField.value }), ticketForms.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, children: ticketForms.map(({ id, url, display_name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: display_name, isSelected: ticketFormField.value === id, children: display_name }, id))) })] }))] }));
 }
 
+function ParentTicketField({ field }) {
+    const { value, name } = field;
+    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value }) }));
+}
+
 // NOTE: This is a temporary handling of the CSRF token
 const fetchCsrfToken = async () => {
     const response = await fetch("/hc/api/internal/csrf_token.json");
@@ -74,10 +79,10 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ ticketForms, requestForm, }) {
-    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, } = requestForm;
+function NewRequestForm({ ticketForms, requestForm, parentId }) {
+    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, } = requestForm;
     const handleSubmit = useSubmitHandler();
-    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
+    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && (jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field })), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
