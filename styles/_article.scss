@@ -159,6 +159,12 @@
     border-top: 1px solid $low-contrast-border-color;
     padding: 30px 0;
     text-align: center;
+
+    &-question { // Explicit values for rendering h2 like a span for accessibility.
+      font-size: $font-size-base;
+      font-weight: normal;
+      margin-bottom: 0;
+    }
   }
 
   &-vote {
