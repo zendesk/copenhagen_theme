@@ -7,6 +7,7 @@ import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useSubmitHandler } from "./useSubmitHandler";
+import { Suspense, lazy } from "react";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -22,6 +23,8 @@ const Form = styled.form`
 const Footer = styled.div`
   margin-top: ${(props) => props.theme.space.md};
 `;
+
+const CcField = lazy(() => import("./fields/CcField/CcField"));
 
 export function NewRequestForm({
   ticketForms,
@@ -67,6 +70,12 @@ export function NewRequestForm({
           case "organization_id":
           case "tickettype":
             return <DropDown field={field} />;
+          case "cc_email":
+            return (
+              <Suspense fallback={<></>}>
+                <CcField field={field} />
+              </Suspense>
+            );
           default:
             return <></>;
         }
