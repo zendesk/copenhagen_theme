@@ -58,7 +58,11 @@ export function NewRequestForm({
         switch (field.type) {
           case "anonymous_requester_email":
           case "subject":
+          case "text":
+          case "integer":
+          case "decimal":
           case "regexp":
+          case "partialcreditcard":
             return <TextInput field={field} />;
           case "description":
           case "textarea":
@@ -67,6 +71,14 @@ export function NewRequestForm({
           case "organization_id":
           case "tickettype":
             return <DropDown field={field} />;
+          case "checkbox":
+            return <div>checkbox</div>;
+          case "date":
+            return <div>date</div>;
+          case "multiselect":
+            return <div>multiselect</div>;
+          case "tagger":
+            return <div>tagger</div>;
           default:
             return <></>;
         }

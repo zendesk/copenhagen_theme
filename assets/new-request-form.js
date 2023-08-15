@@ -81,7 +81,11 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
+                    case "text":
+                    case "integer":
+                    case "decimal":
                     case "regexp":
+                    case "partialcreditcard":
                         return jsxRuntimeExports.jsx(TextInput, { field: field });
                     case "description":
                     case "textarea":
@@ -90,6 +94,14 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                     case "organization_id":
                     case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
+                    case "checkbox":
+                        return jsxRuntimeExports.jsx("div", { children: "checkbox" });
+                    case "date":
+                        return jsxRuntimeExports.jsx("div", { children: "date" });
+                    case "multiselect":
+                        return jsxRuntimeExports.jsx("div", { children: "multiselect" });
+                    case "tagger":
+                        return jsxRuntimeExports.jsx("div", { children: "tagger" });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }
