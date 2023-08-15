@@ -2,6 +2,7 @@ import type {
   ComponentPropsWithRef,
   ComponentPropsWithoutRef,
   FocusEventHandler,
+  HTMLAttributes,
   KeyboardEventHandler,
   MouseEventHandler,
 } from "react";
@@ -16,12 +17,13 @@ export function useTagsInputContainer({
 }: UseTagsInputContainerProps) {
   const [tags, setTags] = useState(initialValue);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLElement>(null);
+  const listRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
     const tagElements = listRef.current?.querySelectorAll(
-      "[role=option]"
+      "[data-tag]"
     ) as NodeListOf<HTMLSpanElement> | null;
 
     if (selectedIndex !== null && tagElements !== null) {
@@ -87,14 +89,17 @@ export function useTagsInputContainer({
     switch (e.code) {
       case prevCode:
         selectPrevious();
+        e.preventDefault();
         return;
       case nextCode:
         selectNext();
+        e.preventDefault();
         return;
       case "Backspace": {
         if (selectedIndex) {
           removeTagAt(selectedIndex);
         }
+        e.preventDefault();
         return;
       }
     }
@@ -139,22 +144,23 @@ export function useTagsInputContainer({
       removeTagAt(index);
     };
 
-  const getContainerProps = (): ComponentPropsWithoutRef<"div"> => ({
+  const getContainerProps = (): ComponentPropsWithRef<"div"> => ({
     onKeyDown: handleContainerKeyDown,
     onFocus: handleContainerFocus,
     tabIndex: -1,
+    ref: containerRef,
   });
 
-  const getListProps = (): ComponentPropsWithRef<"span"> => ({
-    role: "listbox",
-    "aria-orientation": "horizontal",
+  const getListProps = (): ComponentPropsWithRef<"ol"> => ({
     ref: listRef,
   });
 
-  const getTagProps = (index: number): ComponentPropsWithoutRef<"div"> => ({
-    role: "option",
+  const getTagProps = (
+    index: number
+  ): HTMLAttributes<HTMLElement> & { ["data-tag"]: "" } => ({
     onKeyDown: handleTagKeyDown(index),
     tabIndex: -1,
+    "data-tag": "",
   });
 
   const getTagCloseProps = (

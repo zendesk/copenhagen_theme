@@ -8,7 +8,6 @@ import {
   Message,
 } from "@zendeskgarden/react-forms";
 import styled from "styled-components";
-import { Fragment } from "react";
 import { Tag } from "@zendeskgarden/react-tags";
 import { focusStyles } from "@zendeskgarden/react-theming";
 import { useTagsInputContainer } from "./useTagsInputContainer";
@@ -39,41 +38,69 @@ export default function CcField({ field }: CcFieldProps): JSX.Element {
     <GardenField>
       <Label>{label}</Label>
       {description && <Hint>{description}</Hint>}
-      <FauxInput {...getContainerProps()}>
-        <span aria-label="Selected e-mails" {...getListProps()}>
-          {tags.map((email, index) => (
-            <Fragment key={email}>
-              <StyledTag
-                size="large"
-                aria-invalid={!EMAIL_REGEX.test(email)}
-                aria-label={`${email} - Press Backspace to remove`}
-                {...getTagProps(index)}
-              >
-                <span>{email}</span>
-                <Tag.Close {...getTagCloseProps(index)} />
-              </StyledTag>
-              <input type="hidden" name={name} value={email} />
-            </Fragment>
-          ))}
-        </span>
+      <Container {...getContainerProps()}>
+        <List aria-label="Selected e-mails" {...getListProps()}>
+          {tags.map((email, index) => {
+            const isValid = EMAIL_REGEX.test(email);
+
+            return (
+              <ListItem key={email}>
+                <StyledTag
+                  size="large"
+                  aria-invalid={!isValid}
+                  aria-label={`${email} - Press Backspace to remove`}
+                  hue={isValid ? undefined : "red"}
+                  {...getTagProps(index)}
+                >
+                  <span>{email}</span>
+                  <Tag.Close {...getTagCloseProps(index)} />
+                </StyledTag>
+              </ListItem>
+            );
+          })}
+        </List>
         <StyledInput isBare {...getInputProps()} />
-      </FauxInput>
+      </Container>
       {error && <Message validation="error">{error}</Message>}
+      {tags.map((email) => (
+        <input key={email} type="hidden" name={name} value={email} />
+      ))}
     </GardenField>
   );
 }
 
-const StyledInput = styled(Input)`
-  width: revert;
+const Container = styled(FauxInput)`
+  padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
+`;
+
+const List = styled.ul`
+  display: inline;
+  list-style-type: none;
+  margin: 0;
+`;
+
+const ListItem = styled.li`
+  display: inline;
+  margin: 0;
+  margin-right: ${(props) => props.theme.space.sm};
 `;
 
 const StyledTag = styled(Tag)`
-  margin-right: ${(props) => props.theme.space.sm};
-
   ${(props) =>
     focusStyles({
       theme: props.theme,
       shadowWidth: "sm",
       selector: "&:focus",
     })}
+`;
+
+const StyledInput = styled(Input)`
+  width: revert;
+  margin-top: ${(props) => props.theme.space.xs};
+  margin-bottom: ${(props) => props.theme.space.xs};
+
+  // override CPH default style. Can be removed once global styles are removed
+  &:focus {
+    border: none !important;
+  }
 `;
