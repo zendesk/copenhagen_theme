@@ -1,5 +1,5 @@
 import type { RequestForm, TicketForm } from "./data-types";
-import { TextInput } from "./fields/TextInput";
+import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
@@ -63,7 +63,7 @@ export function NewRequestForm({
           case "decimal":
           case "regexp":
           case "partialcreditcard":
-            return <TextInput field={field} />;
+            return <Input field={field} />;
           case "description":
           case "textarea":
             return <TextArea field={field} />;
