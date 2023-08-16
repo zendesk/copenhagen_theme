@@ -3,18 +3,18 @@ import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, H 
 function useTagsInputContainer({ initialValue, }) {
     const [tags, setTags] = reactExports.useState(initialValue);
     const [selectedIndex, setSelectedIndex] = reactExports.useState(null);
-    const containerRef = reactExports.useRef(null);
     const inputRef = reactExports.useRef(null);
     const listRef = reactExports.useRef(null);
-    reactExports.useEffect(() => {
+    const setSelectedIndexAndFocus = (index) => {
+        setSelectedIndex(index);
         const tagElements = listRef.current?.querySelectorAll("[data-tag]");
-        if (selectedIndex !== null && tagElements !== null) {
-            tagElements.item(selectedIndex).focus();
+        if (index !== null && tagElements !== null) {
+            tagElements.item(index).focus();
         }
         else {
             inputRef.current?.focus();
         }
-    }, [selectedIndex, inputRef, listRef]);
+    };
     const hasTag = (tag) => {
         return tags.includes(tag);
     };
@@ -23,18 +23,18 @@ function useTagsInputContainer({ initialValue, }) {
     };
     const removeTagAt = (at) => {
         setTags(tags.filter((_, index) => index !== at));
-        setSelectedIndex(null);
+        setSelectedIndexAndFocus(null);
     };
     const selectPrevious = () => {
         if (tags.length === 0) {
             return;
         }
         if (selectedIndex === null) {
-            setSelectedIndex(tags.length - 1);
+            setSelectedIndexAndFocus(tags.length - 1);
         }
         else {
             const newIndex = selectedIndex - 1;
-            setSelectedIndex(newIndex >= 0 ? newIndex : 0);
+            setSelectedIndexAndFocus(newIndex >= 0 ? newIndex : 0);
         }
     };
     const selectNext = () => {
@@ -42,7 +42,7 @@ function useTagsInputContainer({ initialValue, }) {
             return;
         }
         const newIndex = selectedIndex + 1;
-        setSelectedIndex(newIndex <= tags.length - 1 ? newIndex : null);
+        setSelectedIndexAndFocus(newIndex <= tags.length - 1 ? newIndex : null);
     };
     const getPrevNextCodes = () => {
         const isRTL = window.document.documentElement.dir.toLowerCase() === "rtl";
@@ -65,13 +65,6 @@ function useTagsInputContainer({ initialValue, }) {
                 selectNext();
                 e.preventDefault();
                 return;
-            case "Backspace": {
-                if (selectedIndex) {
-                    removeTagAt(selectedIndex);
-                }
-                e.preventDefault();
-                return;
-            }
         }
     };
     const handleContainerFocus = (e) => {
@@ -83,15 +76,22 @@ function useTagsInputContainer({ initialValue, }) {
         const target = e.target;
         const tag = target.value;
         if (tag &&
-            !hasTag(tag) &&
             (e.code === "Space" ||
                 e.code === "Enter" ||
                 e.code === "Comma" ||
                 e.code === "Tab")) {
             e.preventDefault();
-            addTag(tag);
+            if (!hasTag(tag)) {
+                addTag(tag);
+            }
             target.value = "";
         }
+    };
+    const handleInputPaste = (e) => {
+        e.preventDefault();
+        const data = e.clipboardData.getData("text");
+        const values = new Set(data.split(/[\s,;]+/).filter((value) => !tags.includes(value)));
+        setTags([...tags, ...values]);
     };
     const handleTagKeyDown = (index) => (e) => {
         if (e.code === "Backspace") {
@@ -106,7 +106,6 @@ function useTagsInputContainer({ initialValue, }) {
         onKeyDown: handleContainerKeyDown,
         onFocus: handleContainerFocus,
         tabIndex: -1,
-        ref: containerRef,
     });
     const getListProps = () => ({
         ref: listRef,
@@ -121,6 +120,7 @@ function useTagsInputContainer({ initialValue, }) {
     });
     const getInputProps = () => ({
         onKeyDown: handleInputKeyDown,
+        onPaste: handleInputPaste,
         ref: inputRef,
     });
     return {
@@ -142,7 +142,7 @@ function CcField({ field }) {
     const { tags, getContainerProps, getListProps, getTagProps, getTagCloseProps, getInputProps, } = useTagsInputContainer({ initialValue });
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container, { ...getContainerProps(), children: [jsxRuntimeExports.jsx(List, { "aria-label": "Selected e-mails", ...getListProps(), children: tags.map((email, index) => {
                             const isValid = EMAIL_REGEX.test(email);
-                            return (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-invalid": !isValid, "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", ...getTagProps(index), children: [jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }) }, email));
+                            return (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-invalid": !isValid, "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", ...getTagProps(index), children: [jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }) }, index));
                         }) }), jsxRuntimeExports.jsx(StyledInput, { isBare: true, ...getInputProps() })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email)))] }));
 }
 const Container = styled(FauxInput) `

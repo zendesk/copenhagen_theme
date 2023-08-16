@@ -1,4 +1,5 @@
 import type {
+  ClipboardEventHandler,
   ComponentPropsWithRef,
   ComponentPropsWithoutRef,
   FocusEventHandler,
@@ -6,7 +7,7 @@ import type {
   KeyboardEventHandler,
   MouseEventHandler,
 } from "react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 interface UseTagsInputContainerProps {
   initialValue: string[];
@@ -17,21 +18,22 @@ export function useTagsInputContainer({
 }: UseTagsInputContainerProps) {
   const [tags, setTags] = useState(initialValue);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const listRef = useRef<HTMLOListElement>(null);
+  const listRef = useRef<HTMLUListElement>(null);
 
-  useEffect(() => {
+  const setSelectedIndexAndFocus = (index: number | null) => {
+    setSelectedIndex(index);
+
     const tagElements = listRef.current?.querySelectorAll(
       "[data-tag]"
-    ) as NodeListOf<HTMLSpanElement> | null;
+    ) as NodeListOf<HTMLElement> | null;
 
-    if (selectedIndex !== null && tagElements !== null) {
-      tagElements.item(selectedIndex).focus();
+    if (index !== null && tagElements !== null) {
+      tagElements.item(index).focus();
     } else {
       inputRef.current?.focus();
     }
-  }, [selectedIndex, inputRef, listRef]);
+  };
 
   const hasTag = (tag: string) => {
     return tags.includes(tag);
@@ -43,7 +45,7 @@ export function useTagsInputContainer({
 
   const removeTagAt = (at: number) => {
     setTags(tags.filter((_, index) => index !== at));
-    setSelectedIndex(null);
+    setSelectedIndexAndFocus(null);
   };
 
   const selectPrevious = () => {
@@ -52,10 +54,10 @@ export function useTagsInputContainer({
     }
 
     if (selectedIndex === null) {
-      setSelectedIndex(tags.length - 1);
+      setSelectedIndexAndFocus(tags.length - 1);
     } else {
       const newIndex = selectedIndex - 1;
-      setSelectedIndex(newIndex >= 0 ? newIndex : 0);
+      setSelectedIndexAndFocus(newIndex >= 0 ? newIndex : 0);
     }
   };
 
@@ -65,7 +67,7 @@ export function useTagsInputContainer({
     }
 
     const newIndex = selectedIndex + 1;
-    setSelectedIndex(newIndex <= tags.length - 1 ? newIndex : null);
+    setSelectedIndexAndFocus(newIndex <= tags.length - 1 ? newIndex : null);
   };
 
   const getPrevNextCodes = (): { prevCode: string; nextCode: string } => {
@@ -95,13 +97,6 @@ export function useTagsInputContainer({
         selectNext();
         e.preventDefault();
         return;
-      case "Backspace": {
-        if (selectedIndex) {
-          removeTagAt(selectedIndex);
-        }
-        e.preventDefault();
-        return;
-      }
     }
   };
 
@@ -117,16 +112,27 @@ export function useTagsInputContainer({
 
     if (
       tag &&
-      !hasTag(tag) &&
       (e.code === "Space" ||
         e.code === "Enter" ||
         e.code === "Comma" ||
         e.code === "Tab")
     ) {
       e.preventDefault();
-      addTag(tag);
+      if (!hasTag(tag)) {
+        addTag(tag);
+      }
       target.value = "";
     }
+  };
+
+  const handleInputPaste: ClipboardEventHandler<HTMLInputElement> = (e) => {
+    e.preventDefault();
+
+    const data = e.clipboardData.getData("text");
+    const values = new Set(
+      data.split(/[\s,;]+/).filter((value) => !tags.includes(value))
+    );
+    setTags([...tags, ...values]);
   };
 
   const handleTagKeyDown =
@@ -144,14 +150,13 @@ export function useTagsInputContainer({
       removeTagAt(index);
     };
 
-  const getContainerProps = (): ComponentPropsWithRef<"div"> => ({
+  const getContainerProps = (): ComponentPropsWithoutRef<"div"> => ({
     onKeyDown: handleContainerKeyDown,
     onFocus: handleContainerFocus,
     tabIndex: -1,
-    ref: containerRef,
   });
 
-  const getListProps = (): ComponentPropsWithRef<"ol"> => ({
+  const getListProps = (): ComponentPropsWithRef<"ul"> => ({
     ref: listRef,
   });
 
@@ -171,6 +176,7 @@ export function useTagsInputContainer({
 
   const getInputProps = (): ComponentPropsWithRef<"input"> => ({
     onKeyDown: handleInputKeyDown,
+    onPaste: handleInputPaste,
     ref: inputRef,
   });
 

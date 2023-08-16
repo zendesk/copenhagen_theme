@@ -44,7 +44,7 @@ export default function CcField({ field }: CcFieldProps): JSX.Element {
             const isValid = EMAIL_REGEX.test(email);
 
             return (
-              <ListItem key={email}>
+              <ListItem key={index}>
                 <StyledTag
                   size="large"
                   aria-invalid={!isValid}
