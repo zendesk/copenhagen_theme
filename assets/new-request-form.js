@@ -1,9 +1,14 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, s as styled, A as Alert, B as Button, e as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, s as styled, A as Alert, B as Button, e as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
-function TextInput({ field }) {
-    const { label, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+function Input({ field }) {
+    const { label, error, value, name, required, description, type } = field;
+    const stepProp = {};
+    if (type === "integer")
+        stepProp.step = "1";
+    if (type === "decimal")
+        stepProp.step = "any";
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: type === "text" ? "text" : "number", defaultValue: value, validation: error ? "error" : undefined, required: required, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function TextArea({ field }) {
@@ -86,8 +91,12 @@ function NewRequestForm({ ticketForms, requestForm, parentId }) {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
+                    case "text":
+                    case "integer":
+                    case "decimal":
                     case "regexp":
-                        return jsxRuntimeExports.jsx(TextInput, { field: field });
+                    case "partialcreditcard":
+                        return jsxRuntimeExports.jsx(Input, { field: field });
                     case "description":
                     case "textarea":
                         return jsxRuntimeExports.jsx(TextArea, { field: field });
@@ -95,6 +104,14 @@ function NewRequestForm({ ticketForms, requestForm, parentId }) {
                     case "organization_id":
                     case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
+                    case "checkbox":
+                        return jsxRuntimeExports.jsx("div", { children: "checkbox" });
+                    case "date":
+                        return jsxRuntimeExports.jsx("div", { children: "date" });
+                    case "multiselect":
+                        return jsxRuntimeExports.jsx("div", { children: "multiselect" });
+                    case "tagger":
+                        return jsxRuntimeExports.jsx("div", { children: "tagger" });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }
