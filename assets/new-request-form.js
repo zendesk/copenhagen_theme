@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, s as styled, A as Alert, B as Button, e as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, s as styled, A as Alert, B as Button, f as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field }) {
@@ -21,6 +21,15 @@ function DropDown({ field }) {
     return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, renderValue: ({ selection }) => selection && "value" in selection
                     ? options.find((option) => option.value === selection.value)?.name
                     : "-", children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value?.toString() === value?.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+}
+
+function Checkbox({ field }) {
+    const { label, error, value, name, required, description } = field;
+    const [checkboxValue, setCheckboxValue] = reactExports.useState(value);
+    const handleChange = (e) => {
+        setCheckboxValue(e.target.checked ? "on" : "off");
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value === "on", value: checkboxValue, onChange: handleChange, children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
@@ -100,7 +109,7 @@ function NewRequestForm({ ticketForms, requestForm, }) {
                     case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
                     case "checkbox":
-                        return jsxRuntimeExports.jsx("div", { children: "checkbox" });
+                        return jsxRuntimeExports.jsx(Checkbox, { field: field });
                     case "date":
                         return jsxRuntimeExports.jsx("div", { children: "date" });
                     case "multiselect":
