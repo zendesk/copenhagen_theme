@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, s as styled, A as Alert, B as Button, f as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, s as styled, A as Alert, B as Button, g as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field }) {
@@ -35,6 +35,116 @@ function Checkbox({ field }) {
         setCheckboxValue(e.target.checked ? "on" : "off");
     };
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value === "on", value: checkboxValue, onChange: handleChange, children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+}
+
+// Maps a flat option data structure into a nested option structure.
+// Original option data structure:
+// [
+//   {name: 'Color::Special::Radioactive Green', value: 'color__special__radioactive_green'}
+//   {name: 'Color::Red', value: 'color__red'}
+//   {name: 'Color::Green', value: 'color__green'}
+//   {name: 'Simple Value', value: 'simple_value'}
+// ]
+// Mapped nested option data strucutre:
+// {
+//   "root": [
+//     {value: 'Color', name: 'Color', type: 'next'},
+//     {value: 'simple_value', label: 'Simple Value', name: 'Simple Value'}
+//   ],
+//   "Color": [
+//       {value: 'Special', name: 'Special', type: 'next'},
+//       {value: 'color__red', label: 'Color::Red', name: 'Red'},
+//       {value: 'color__green', label: 'Color::Green', name: 'Green'},
+//   ],
+//   "Special": [
+//      {value: 'color__special__atomic_green', label: 'Color::Special::Atomic Green', name: 'Atomic Green'}
+//   ]
+function buildNestedOptions(options) {
+    const result = { root: [] };
+    options.forEach((option) => {
+        // for flat values
+        if (!option.name.includes("::")) {
+            result["root"]?.push({
+                value: option.value,
+                label: option.name,
+                name: option.name,
+            });
+        }
+        // for nested values ex: (Color::Special::Radioactive Green)
+        else {
+            const optionNameList = option.name.split("::");
+            for (let i = 0; i < optionNameList.length - 1; i++) {
+                const subGroupName = optionNameList[i];
+                if (subGroupName && result[subGroupName] == null) {
+                    // creates an entry in `result` to store the options associated to `subGroupName`
+                    result[subGroupName] = [];
+                    // links the new option subgroup to the parent option group
+                    const list = i == 0 ? result.root : result[optionNameList[i - 1]];
+                    list?.push({
+                        value: subGroupName,
+                        label: subGroupName,
+                        name: subGroupName,
+                        type: "next",
+                    });
+                }
+            }
+            // adds a option to the last subgroup of the chain, ex:
+            // ex: adding `Radioactive Green` to `result[Special]`
+            const lastSubGroupName = optionNameList[optionNameList.length - 2];
+            result[lastSubGroupName]?.push({
+                value: option.value,
+                label: option.name,
+                name: optionNameList.slice(-1)[0],
+            });
+        }
+    });
+    return result;
+}
+
+function MultiSelect({ field }) {
+    const { label, options, error, value, name, required, description } = field;
+    const nestedOptions = reactExports.useMemo(() => buildNestedOptions(options), [options]);
+    const [selectedValues, setSelectValues] = reactExports.useState(value || []);
+    // represents the subgroup chain, for example: ['Color','Special']
+    const [subGroupStack, setSubGroupStack] = reactExports.useState([]);
+    // indicates the "selected" subgroup, for example: 'Special'
+    const [activeSubGroup, setActiveSubOption] = reactExports.useState(null);
+    // holds the available options related to the activeSubGroup or the root(default) group.
+    const [activeOptions, setActiveOptions] = reactExports.useState(nestedOptions.root);
+    const handleChange = (changes) => {
+        if (Array.isArray(changes.selectionValue)) {
+            // for an option like `Color::Special::Radioactive Green` the return will be `Radioactive Green`
+            const lastSelectedItem = changes.selectionValue
+                .slice(-1)
+                .toString();
+            if (lastSelectedItem == "back") {
+                // walks back the subgroup option chain. Example: from: `Color::Special` to ``Color`
+                subGroupStack.pop();
+                const previousSubGroup = subGroupStack.length > 0 ? subGroupStack.slice(-1)[0] : "root";
+                setSubGroupStack(subGroupStack);
+                previousSubGroup == "root"
+                    ? setActiveSubOption(null)
+                    : setActiveSubOption(previousSubGroup);
+                setActiveOptions(nestedOptions[previousSubGroup]);
+            }
+            else if (nestedOptions[lastSelectedItem] !== undefined) {
+                // the selected Item represents/matches an option subgroup then move up the group chain
+                // Example: if lastSelectedItem = `Color`, the component move up the group chain from root to color
+                // and it will update the activeOptions property to display the elements inside `nestedOptions['Color']
+                if (!subGroupStack.includes(lastSelectedItem)) {
+                    subGroupStack.push(lastSelectedItem);
+                    setSubGroupStack(subGroupStack);
+                    setActiveSubOption(lastSelectedItem);
+                    setActiveOptions(nestedOptions[lastSelectedItem]);
+                }
+            }
+            else {
+                // if the lastSelectedItem represents a option Value then we update the component state
+                setSelectValues(changes.selectionValue);
+            }
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, children: [activeSubGroup && (jsxRuntimeExports.jsx(Option, { value: "back", type: "previous", children: "Back" })), activeSubGroup ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": activeSubGroup, children: activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, type: option.type, label: option.label, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))) })) : (activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.label, type: option.type, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
@@ -132,7 +242,7 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "date":
                         return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
                     case "multiselect":
-                        return jsxRuntimeExports.jsx("div", { children: "multiselect" });
+                        return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                     case "tagger":
                         return jsxRuntimeExports.jsx("div", { children: "tagger" });
                     case "due_at":
