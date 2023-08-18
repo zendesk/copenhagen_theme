@@ -378,7 +378,11 @@
                     <div class="meta-group">
                       {{#is object_type 'comment'}}
                         <span class="meta-data">
-                          <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
+                          {{#is comment_type 'post' }}
+                            <a class="comment-link" href={{url}}>{{t 'view_comment_in_context' context=(t 'object_type_post') }}</a>
+                          {{else}}
+                            <a class="comment-link" href={{url}}>{{t 'view_comment_in_context' context=(t 'object_type_article') }}</a>
+                          {{/is}}
                         </span>
                       {{/is}}
                       <span class="meta-data">{{author.name}}</span>
