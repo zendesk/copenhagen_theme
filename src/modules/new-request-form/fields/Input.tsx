@@ -14,6 +14,8 @@ interface InputProps {
 export function Input({ field }: InputProps): JSX.Element {
   const { label, error, value, name, required, description, type } = field;
   const stepProp: { step?: string } = {};
+  const inputType =
+    type === "integer" || type === "decimal" ? "number" : "text";
 
   if (type === "integer") stepProp.step = "1";
   if (type === "decimal") stepProp.step = "any";
@@ -24,7 +26,7 @@ export function Input({ field }: InputProps): JSX.Element {
       {description && <Hint>{description}</Hint>}
       <GardenInput
         name={name}
-        type={type === "text" ? "text" : "number"}
+        type={inputType}
         defaultValue={value}
         validation={error ? "error" : undefined}
         required={required}

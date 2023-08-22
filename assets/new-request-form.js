@@ -4,11 +4,12 @@ import { ComponentProviders } from 'shared';
 function Input({ field }) {
     const { label, error, value, name, required, description, type } = field;
     const stepProp = {};
+    const inputType = type === "integer" || type === "decimal" ? "number" : "text";
     if (type === "integer")
         stepProp.step = "1";
     if (type === "decimal")
         stepProp.step = "any";
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: type === "text" ? "text" : "number", defaultValue: value, validation: error ? "error" : undefined, required: required, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function TextArea({ field }) {
@@ -40,7 +41,7 @@ function TicketFormField({ label, ticketFormField, ticketForms, }) {
 
 function ParentTicketField({ field }) {
     const { value, name } = field;
-    return (jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, { children: jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value }) }));
+    return (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value }));
 }
 
 // NOTE: This is a temporary handling of the CSRF token
@@ -84,10 +85,10 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ ticketForms, requestForm, parentId }) {
+function NewRequestForm({ ticketForms, requestForm, parentId, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, } = requestForm;
     const handleSubmit = useSubmitHandler();
-    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && (jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field })), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
+    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
