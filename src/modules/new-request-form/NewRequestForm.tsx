@@ -28,7 +28,7 @@ const Footer = styled.div`
 export function NewRequestForm({
   ticketForms,
   requestForm,
-  parentId
+  parentId,
 }: NewRequestFormProps) {
   const {
     fields,
@@ -51,9 +51,7 @@ export function NewRequestForm({
       onSubmit={handleSubmit}
     >
       {errors && <Alert type="error">{errors}</Alert>}
-      {parentId && (
-        <ParentTicketField field={parent_id_field} />
-      )}
+      {parentId && <ParentTicketField field={parent_id_field} />}
       {ticketForms.length > 0 && (
         <TicketFormField
           label={ticket_forms_instructions}
