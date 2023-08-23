@@ -37,8 +37,9 @@
   {{/each}}
 
   const parentId = "{{ parent_id }}";
+  const locale = "{{ help_center.locale }}";
 
   const container = document.getElementById("new-request-form");
-  const props = { ticketForms, requestForm, parentId };
+  const props = { ticketForms, requestForm, parentId, locale };
   renderNewRequestForm(props, container);
 </script>

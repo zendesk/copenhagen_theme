@@ -17,11 +17,15 @@ function TextArea({ field }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-function DropDown({ field }) {
+function DropDown({ field, onChange }) {
     const { label, options, error, value, name, required, description } = field;
     return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, renderValue: ({ selection }) => selection && "value" in selection
                     ? options.find((option) => option.value === selection.value)?.name
-                    : "-", children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value?.toString() === value?.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+                    : "-", onChange: ({ selectionValue }) => {
+                    if (selectionValue !== undefined && onChange !== undefined) {
+                        onChange(selectionValue);
+                    }
+                }, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value?.toString() === value?.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function Checkbox({ field }) {
@@ -94,9 +98,12 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ ticketForms, requestForm, parentId, }) {
+const DatePicker = reactExports.lazy(() => import('DatePicker'));
+function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, } = requestForm;
     const handleSubmit = useSubmitHandler();
+    const ticketTypeField = fields.find((field) => field.type === "tickettype");
+    const [showDueDate, setShowDueDate] = reactExports.useState(ticketTypeField && ticketTypeField.value === "task");
     return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
@@ -112,8 +119,11 @@ function NewRequestForm({ ticketForms, requestForm, parentId, }) {
                         return jsxRuntimeExports.jsx(TextArea, { field: field });
                     case "priority":
                     case "organization_id":
-                    case "tickettype":
                         return jsxRuntimeExports.jsx(DropDown, { field: field });
+                    case "tickettype":
+                        return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => {
+                                setShowDueDate(value === "task");
+                            } }));
                     case "checkbox":
                         return jsxRuntimeExports.jsx(Checkbox, { field: field });
                     case "date":
@@ -122,6 +132,8 @@ function NewRequestForm({ ticketForms, requestForm, parentId, }) {
                         return jsxRuntimeExports.jsx("div", { children: "multiselect" });
                     case "tagger":
                         return jsxRuntimeExports.jsx("div", { children: "tagger" });
+                    case "due_at":
+                        return (showDueDate && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale }) })));
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }
