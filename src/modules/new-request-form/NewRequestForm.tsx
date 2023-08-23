@@ -9,11 +9,13 @@ import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useSubmitHandler } from "./useSubmitHandler";
+import { Suspense, lazy, useState } from "react";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
   requestForm: RequestForm;
   parentId: string;
+  locale: string;
 }
 
 const Form = styled.form`
@@ -26,10 +28,13 @@ const Footer = styled.div`
   margin-top: ${(props) => props.theme.space.md};
 `;
 
+const DatePicker = lazy(() => import("./fields/DatePicker"));
+
 export function NewRequestForm({
   ticketForms,
   requestForm,
   parentId,
+  locale,
 }: NewRequestFormProps) {
   const {
     fields,
@@ -42,6 +47,10 @@ export function NewRequestForm({
     parent_id_field,
   } = requestForm;
   const handleSubmit = useSubmitHandler();
+  const ticketTypeField = fields.find((field) => field.type === "tickettype");
+  const [showDueDate, setShowDueDate] = useState(
+    ticketTypeField && ticketTypeField.value === "task"
+  );
 
   return (
     <Form
@@ -75,8 +84,16 @@ export function NewRequestForm({
             return <TextArea field={field} />;
           case "priority":
           case "organization_id":
-          case "tickettype":
             return <DropDown field={field} />;
+          case "tickettype":
+            return (
+              <DropDown
+                field={field}
+                onChange={(value) => {
+                  setShowDueDate(value === "task");
+                }}
+              />
+            );
           case "checkbox":
             return <Checkbox field={field} />;
           case "date":
@@ -85,6 +102,14 @@ export function NewRequestForm({
             return <div>multiselect</div>;
           case "tagger":
             return <div>tagger</div>;
+          case "due_at":
+            return (
+              showDueDate && (
+                <Suspense fallback={<></>}>
+                  <DatePicker field={field} locale={locale} />
+                </Suspense>
+              )
+            );
           default:
             return <></>;
         }

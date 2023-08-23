@@ -10,9 +10,10 @@ import type { Field } from "../data-types";
 
 interface DropDownProps {
   field: Field;
+  onChange?: (value: string) => void;
 }
 
-export function DropDown({ field }: DropDownProps): JSX.Element {
+export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
   return (
     <GardenField>
@@ -27,6 +28,11 @@ export function DropDown({ field }: DropDownProps): JSX.Element {
             ? options.find((option) => option.value === selection.value)?.name
             : "-"
         }
+        onChange={({ selectionValue }) => {
+          if (selectionValue !== undefined && onChange !== undefined) {
+            onChange(selectionValue as string);
+          }
+        }}
       >
         {options.map((option) => (
           <Option

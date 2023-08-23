@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@zendeskgarden/react-buttons": "^8.69.1",
+    "@zendeskgarden/react-datepickers":"^8.69.1",
     "@zendeskgarden/react-dropdowns.next": "^8.69.1",
     "@zendeskgarden/react-forms": "^8.69.1",
     "@zendeskgarden/react-notifications": "^8.69.1",
