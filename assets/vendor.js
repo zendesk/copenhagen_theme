@@ -20578,4 +20578,4 @@ GlobalAlert.propTypes = {
   type: PropTypes.oneOf(TYPE).isRequired
 };
 
-export { Alert as A, Button as B, Combobox as C, DEFAULT_THEME as D, Field$1 as F, Hint$1 as H, Input as I, Label$1 as L, Message$1 as M, Option as O, Textarea as T, Field as a, Label as b, Hint as c, Message as d, reactDomExports as e, ThemeProvider as f, jsxRuntimeExports as j, reactExports as r, styled as s };
+export { Alert as A, Button as B, Combobox as C, DEFAULT_THEME as D, Field$1 as F, Hint$1 as H, Input as I, Label$1 as L, Message$1 as M, Option as O, Textarea as T, Field as a, Label as b, Hint as c, Message as d, Checkbox as e, reactDomExports as f, ThemeProvider as g, jsxRuntimeExports as j, reactExports as r, styled as s };

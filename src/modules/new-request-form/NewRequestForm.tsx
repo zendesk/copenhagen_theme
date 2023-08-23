@@ -2,6 +2,7 @@ import type { RequestForm, TicketForm } from "./data-types";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
+import { Checkbox } from "./fields/Checkbox";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Button } from "@zendeskgarden/react-buttons";
@@ -77,7 +78,7 @@ export function NewRequestForm({
           case "tickettype":
             return <DropDown field={field} />;
           case "checkbox":
-            return <div>checkbox</div>;
+            return <Checkbox field={field} />;
           case "date":
             return <div>date</div>;
           case "multiselect":
