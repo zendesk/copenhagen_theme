@@ -97,7 +97,11 @@ export function NewRequestForm({
           case "checkbox":
             return <Checkbox field={field} />;
           case "date":
-            return <div>date</div>;
+            return (
+              <Suspense fallback={<></>}>
+                <DatePicker field={field} locale={locale} valueFormat="date" />
+              </Suspense>
+            );
           case "multiselect":
             return <div>multiselect</div>;
           case "tagger":
@@ -106,7 +110,11 @@ export function NewRequestForm({
             return (
               showDueDate && (
                 <Suspense fallback={<></>}>
-                  <DatePicker field={field} locale={locale} />
+                  <DatePicker
+                    field={field}
+                    locale={locale}
+                    valueFormat="dateTime"
+                  />
                 </Suspense>
               )
             );
