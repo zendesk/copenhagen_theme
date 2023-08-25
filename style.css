@@ -1856,6 +1856,11 @@ ul {
   padding: 30px 0;
   text-align: center;
 }
+.article-votes-question {
+  font-size: 15px;
+  font-weight: normal;
+  margin-bottom: 0;
+}
 .article-vote {
   margin: 10px 5px;
   min-width: 90px;
