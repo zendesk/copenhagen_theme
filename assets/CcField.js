@@ -1,4 +1,4 @@
-import { r as reactExports, u as useGrid, j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, i as Tag, M as Message, s as styled, k as focusStyles, l as hideVisually, m as FauxInput, I as Input } from 'vendor';
+import { r as reactExports, u as useGrid, j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, i as Tag, M as Message, s as styled, k as focusStyles, l as hideVisually, m as FauxInput, N as Ne, n as getLineHeight, I as Input } from 'vendor';
 
 function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueChange, inputRef, gridRowRef, i18n, }) {
     const [selectedIndex, setSelectedIndex] = reactExports.useState(0);
@@ -108,6 +108,53 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
 }
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const Container = styled(FauxInput) `
+  padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
+`;
+const StyledTag = styled(Tag) `
+  margin-right: ${(props) => props.theme.space.sm};
+
+  ${(props) => focusStyles({
+    theme: props.theme,
+    shadowWidth: "sm",
+    selector: "&:focus",
+})}
+`;
+const InputWrapper = styled.div `
+  display: inline-block;
+  position: relative;
+`;
+const getInputHeightStyle = (props) => {
+    // Same as Tag size="large"
+    const height = props.theme.space.base * 8;
+    const fontSize = props.theme.fontSizes.md;
+    return Ne `
+    height: ${height}px;
+    font-size: ${fontSize};
+    line-height: ${getLineHeight(height, fontSize)};
+  `;
+};
+const InputMirror = styled(FauxInput) `
+  display: inline-block;
+  min-width: 200px;
+  opacity: 0;
+  user-select: none;
+  ${(props) => getInputHeightStyle(props)}
+`;
+const StyledInput = styled(Input) `
+  position: absolute;
+  top: 0;
+  left: 0;
+  ${(props) => getInputHeightStyle(props)}
+
+  // override CPH default style. Can be removed once global styles are removed
+  &:focus {
+    border: none !important;
+  }
+`;
+const AnnouncementMessage = styled.span `
+  ${hideVisually()}
+`;
 function CcField({ field }) {
     const { label, value, name, error, description } = field;
     const initialValue = value
@@ -133,44 +180,7 @@ function CcField({ field }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container, { ...getContainerProps(), children: [jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
                                 const isValid = EMAIL_REGEX.test(email);
                                 return (jsxRuntimeExports.jsx("span", { "aria-invalid": !isValid, ...getGridCellProps(index), children: jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }) }, index));
-                            }) }) }), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue || " " }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
+                            }) }) }), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
 }
-const Container = styled(FauxInput) `
-  padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
-`;
-const StyledTag = styled(Tag) `
-  margin-right: ${(props) => props.theme.space.sm};
-
-  ${(props) => focusStyles({
-    theme: props.theme,
-    shadowWidth: "sm",
-    selector: "&:focus",
-})}
-`;
-const InputWrapper = styled.div `
-  display: inline-block;
-  margin-top: ${(props) => props.theme.space.xs};
-  margin-bottom: ${(props) => props.theme.space.xs};
-  position: relative;
-`;
-const InputMirror = styled(FauxInput) `
-  display: inline-block;
-  min-width: 200px;
-  opacity: 0;
-  user-select: none;
-`;
-const StyledInput = styled(Input) `
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  // override CPH default style. Can be removed once global styles are removed
-  &:focus {
-    border: none !important;
-  }
-`;
-const AnnouncementMessage = styled.span `
-  ${hideVisually()}
-`;
 
 export { CcField as default };
