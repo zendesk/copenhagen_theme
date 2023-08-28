@@ -15,34 +15,13 @@ jobs:
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
-      - name: Setup Ruby
-        uses: zendesk/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-      - name: Install gems
-        run: |
-          gem install faraday -v 0.16.0
-          gem install faraday_middleware -v 0.13.1
-      - name: Create theme zip
-        run: |
-          sudo apt-get install zip
-          zip \
-            -i=assets/\* -x=assets/.gitkeep \
-            -i=settings/\* \
-            -i=templates/\* \
-            -i=translations/\* \
-            -i=manifest.json \
-            -i=script.js \
-            -i=style.css \
-            -i=thumbnail.png \
-            -r theme.zip .
       - name: Upload theme
-        run: ruby ./.github/workflows/theme_upload.rb
+        run: node ./bin/theme-upload.js
         env:
-          zendesk_email: ${{ secrets.zendesk_email }}
-          zendesk_token: ${{ secrets.zendesk_token }}
-          brand_id: ${{ secrets.brand_id }}
-          subdomain: ${{ secrets.subdomain }}
+          ZENDESK_EMAIL: ${{ secrets.zendesk_email }}
+          ZENDESK_API_TOKEN: ${{ secrets.zendesk_token }}
+          ZENDESK_SUBDOMAIN: ${{ secrets.subdomain }}
+          BRAND_ID: ${{ secrets.brand_id }}
       - name: Audit URLs using Lighthouse
         run: yarn test-a11y
         env:
