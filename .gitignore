@@ -1,7 +1,7 @@
 .sass-cache/
 style.css.map
 node_modules/
-.zat
+.a11yrc.json
 script.js
 style.css
 *.DS_Store
