@@ -99,6 +99,7 @@ const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
+const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, } = requestForm;
     const handleSubmit = useSubmitHandler();
@@ -124,6 +125,8 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                         return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => {
                                 setShowDueDate(value === "task");
                             } }));
+                    case "cc_email":
+                        return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: field }) }));
                     case "checkbox":
                         return jsxRuntimeExports.jsx(Checkbox, { field: field });
                     case "date":

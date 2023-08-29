@@ -162,11 +162,11 @@ var l=requireObjectAssign(),n=60103,p=60106;react_production_min.Fragment=60107;
 }
 
 var reactExports = react.exports;
-var React__default = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
+var React = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
 
-var React = /*#__PURE__*/_mergeNamespaces({
+var React$1 = /*#__PURE__*/_mergeNamespaces({
 	__proto__: null,
-	default: React__default
+	default: React
 }, [reactExports]);
 
 /** @license React v17.0.2
@@ -1428,7 +1428,7 @@ var hoistNonReactStatics_cjs = hoistNonReactStatics;
 
 var f = /*@__PURE__*/getDefaultExportFromCjs(hoistNonReactStatics_cjs);
 
-function m(){return (m=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r]);}return e}).apply(this,arguments)}var y=function(e,t){for(var n=[e[0]],r=0,o=t.length;r<o;r+=1)n.push(t[r],e[r+1]);return n},v=function(t){return null!==t&&"object"==typeof t&&"[object Object]"===(t.toString?t.toString():Object.prototype.toString.call(t))&&!reactIsExports$1.typeOf(t)},g=Object.freeze([]),S=Object.freeze({});function w(e){return "function"==typeof e}function E(e){return e.displayName||e.name||"Component"}function b(e){return e&&"string"==typeof e.styledComponentId}var _="undefined"!=typeof process&&void 0!==process.env&&(process.env.REACT_APP_SC_ATTR||process.env.SC_ATTR)||"data-styled",A="undefined"!=typeof window&&"HTMLElement"in window,C=Boolean("boolean"==typeof SC_DISABLE_SPEEDY?SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==process.env&&(void 0!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&""!==process.env.REACT_APP_SC_DISABLE_SPEEDY?"false"!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&process.env.REACT_APP_SC_DISABLE_SPEEDY:void 0!==process.env.SC_DISABLE_SPEEDY&&""!==process.env.SC_DISABLE_SPEEDY?"false"!==process.env.SC_DISABLE_SPEEDY&&process.env.SC_DISABLE_SPEEDY:"production"!=="production"));function R(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];throw new Error("An error occurred. See https://git.io/JUIaE#"+e+" for more information."+(n.length>0?" Args: "+n.join(", "):""))}var D=function(){function e(e){this.groupSizes=new Uint32Array(512),this.length=512,this.tag=e;}var t=e.prototype;return t.indexOfGroup=function(e){for(var t=0,n=0;n<e;n++)t+=this.groupSizes[n];return t},t.insertRules=function(e,t){if(e>=this.groupSizes.length){for(var n=this.groupSizes,r=n.length,o=r;e>=o;)(o<<=1)<0&&R(16,""+e);this.groupSizes=new Uint32Array(o),this.groupSizes.set(n),this.length=o;for(var s=r;s<o;s++)this.groupSizes[s]=0;}for(var i=this.indexOfGroup(e+1),a=0,c=t.length;a<c;a++)this.tag.insertRule(i,t[a])&&(this.groupSizes[e]++,i++);},t.clearGroup=function(e){if(e<this.length){var t=this.groupSizes[e],n=this.indexOfGroup(e),r=n+t;this.groupSizes[e]=0;for(var o=n;o<r;o++)this.tag.deleteRule(n);}},t.getGroup=function(e){var t="";if(e>=this.length||0===this.groupSizes[e])return t;for(var n=this.groupSizes[e],r=this.indexOfGroup(e),o=r+n,s=r;s<o;s++)t+=this.tag.getRule(s)+"/*!sc*/\n";return t},e}(),j=new Map,T=new Map,x=1,k=function(e){if(j.has(e))return j.get(e);for(;T.has(x);)x++;var t=x++;return j.set(e,t),T.set(t,e),t},V=function(e){return T.get(e)},z=function(e,t){t>=x&&(x=t+1),j.set(e,t),T.set(t,e);},B="style["+_+'][data-styled-version="5.3.11"]',M=new RegExp("^"+_+'\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),G=function(e,t,n){for(var r,o=n.split(","),s=0,i=o.length;s<i;s++)(r=o[s])&&e.registerName(t,r);},L=function(e,t){for(var n=(t.textContent||"").split("/*!sc*/\n"),r=[],o=0,s=n.length;o<s;o++){var i=n[o].trim();if(i){var a=i.match(M);if(a){var c=0|parseInt(a[1],10),u=a[2];0!==c&&(z(u,c),G(e,u,a[3]),e.getTag().insertRules(c,r)),r.length=0;}else r.push(i);}}},F=function(){return "undefined"!=typeof __webpack_nonce__?__webpack_nonce__:null},Y=function(e){var t=document.head,n=e||t,r=document.createElement("style"),o=function(e){for(var t=e.childNodes,n=t.length;n>=0;n--){var r=t[n];if(r&&1===r.nodeType&&r.hasAttribute(_))return r}}(n),s=void 0!==o?o.nextSibling:null;r.setAttribute(_,"active"),r.setAttribute("data-styled-version","5.3.11");var i=F();return i&&r.setAttribute("nonce",i),n.insertBefore(r,s),r},q=function(){function e(e){var t=this.element=Y(e);t.appendChild(document.createTextNode("")),this.sheet=function(e){if(e.sheet)return e.sheet;for(var t=document.styleSheets,n=0,r=t.length;n<r;n++){var o=t[n];if(o.ownerNode===e)return o}R(17);}(t),this.length=0;}var t=e.prototype;return t.insertRule=function(e,t){try{return this.sheet.insertRule(t,e),this.length++,!0}catch(e){return !1}},t.deleteRule=function(e){this.sheet.deleteRule(e),this.length--;},t.getRule=function(e){var t=this.sheet.cssRules[e];return void 0!==t&&"string"==typeof t.cssText?t.cssText:""},e}(),H=function(){function e(e){var t=this.element=Y(e);this.nodes=t.childNodes,this.length=0;}var t=e.prototype;return t.insertRule=function(e,t){if(e<=this.length&&e>=0){var n=document.createTextNode(t),r=this.nodes[e];return this.element.insertBefore(n,r||null),this.length++,!0}return !1},t.deleteRule=function(e){this.element.removeChild(this.nodes[e]),this.length--;},t.getRule=function(e){return e<this.length?this.nodes[e].textContent:""},e}(),$=function(){function e(e){this.rules=[],this.length=0;}var t=e.prototype;return t.insertRule=function(e,t){return e<=this.length&&(this.rules.splice(e,0,t),this.length++,!0)},t.deleteRule=function(e){this.rules.splice(e,1),this.length--;},t.getRule=function(e){return e<this.length?this.rules[e]:""},e}(),W=A,U={isServer:!A,useCSSOMInjection:!C},J=function(){function e(e,t,n){void 0===e&&(e=S),void 0===t&&(t={}),this.options=m({},U,{},e),this.gs=t,this.names=new Map(n),this.server=!!e.isServer,!this.server&&A&&W&&(W=!1,function(e){for(var t=document.querySelectorAll(B),n=0,r=t.length;n<r;n++){var o=t[n];o&&"active"!==o.getAttribute(_)&&(L(e,o),o.parentNode&&o.parentNode.removeChild(o));}}(this));}e.registerId=function(e){return k(e)};var t=e.prototype;return t.reconstructWithOptions=function(t,n){return void 0===n&&(n=!0),new e(m({},this.options,{},t),this.gs,n&&this.names||void 0)},t.allocateGSInstance=function(e){return this.gs[e]=(this.gs[e]||0)+1},t.getTag=function(){return this.tag||(this.tag=(n=(t=this.options).isServer,r=t.useCSSOMInjection,o=t.target,e=n?new $(o):r?new q(o):new H(o),new D(e)));var e,t,n,r,o;},t.hasNameForId=function(e,t){return this.names.has(e)&&this.names.get(e).has(t)},t.registerName=function(e,t){if(k(e),this.names.has(e))this.names.get(e).add(t);else {var n=new Set;n.add(t),this.names.set(e,n);}},t.insertRules=function(e,t,n){this.registerName(e,t),this.getTag().insertRules(k(e),n);},t.clearNames=function(e){this.names.has(e)&&this.names.get(e).clear();},t.clearRules=function(e){this.getTag().clearGroup(k(e)),this.clearNames(e);},t.clearTag=function(){this.tag=void 0;},t.toString=function(){return function(e){for(var t=e.getTag(),n=t.length,r="",o=0;o<n;o++){var s=V(o);if(void 0!==s){var i=e.names.get(s),a=t.getGroup(o);if(i&&a&&i.size){var c=_+".g"+o+'[id="'+s+'"]',u="";void 0!==i&&i.forEach((function(e){e.length>0&&(u+=e+",");})),r+=""+a+c+'{content:"'+u+'"}/*!sc*/\n';}}}return r}(this)},e}(),X=/(a)(d)/gi,Z=function(e){return String.fromCharCode(e+(e>25?39:97))};function K(e){var t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=Z(t%52)+n;return (Z(t%52)+n).replace(X,"$1-$2")}var Q=function(e,t){for(var n=t.length;n;)e=33*e^t.charCodeAt(--n);return e},ee=function(e){return Q(5381,e)};function te(e){for(var t=0;t<e.length;t+=1){var n=e[t];if(w(n)&&!b(n))return !1}return !0}var ne=ee("5.3.11"),re=function(){function e(e,t,n){this.rules=e,this.staticRulesId="",this.isStatic=(void 0===n||n.isStatic)&&te(e),this.componentId=t,this.baseHash=Q(ne,t),this.baseStyle=n,J.registerId(t);}return e.prototype.generateAndInjectStyles=function(e,t,n){var r=this.componentId,o=[];if(this.baseStyle&&o.push(this.baseStyle.generateAndInjectStyles(e,t,n)),this.isStatic&&!n.hash)if(this.staticRulesId&&t.hasNameForId(r,this.staticRulesId))o.push(this.staticRulesId);else {var s=be(this.rules,e,t,n).join(""),i=K(Q(this.baseHash,s)>>>0);if(!t.hasNameForId(r,i)){var a=n(s,"."+i,void 0,r);t.insertRules(r,i,a);}o.push(i),this.staticRulesId=i;}else {for(var c=this.rules.length,u=Q(this.baseHash,n.hash),l="",d=0;d<c;d++){var h=this.rules[d];if("string"==typeof h)l+=h;else if(h){var p=be(h,e,t,n),f=Array.isArray(p)?p.join(""):p;u=Q(u,f+d),l+=f;}}if(l){var m=K(u>>>0);if(!t.hasNameForId(r,m)){var y=n(l,"."+m,void 0,r);t.insertRules(r,m,y);}o.push(m);}}return o.join(" ")},e}(),oe=/^\s*\/\/.*$/gm,se=[":","[",".","#"];function ie(e){var t,n,r,o,s=void 0===e?S:e,i=s.options,a=void 0===i?S:i,c=s.plugins,u=void 0===c?g:c,l=new stylis_min(a),h=[],p=function(e){function t(t){if(t)try{e(t+"}");}catch(e){}}return function(n,r,o,s,i,a,c,u,l,d){switch(n){case 1:if(0===l&&64===r.charCodeAt(0))return e(r+";"),"";break;case 2:if(0===u)return r+"/*|*/";break;case 3:switch(u){case 102:case 112:return e(o[0]+r),"";default:return r+(0===d?"/*|*/":"")}case-2:r.split("/*|*/}").forEach(t);}}}((function(e){h.push(e);})),f=function(e,r,s){return 0===r&&-1!==se.indexOf(s[n.length])||s.match(o)?e:"."+t};function m(e,s,i,a){void 0===a&&(a="&");var c=e.replace(oe,""),u=s&&i?i+" "+s+" { "+c+" }":c;return t=a,n=s,r=new RegExp("\\"+n+"\\b","g"),o=new RegExp("(\\"+n+"\\b){2,}"),l(i||!s?"":s,u)}return l.use([].concat(u,[function(e,t,o){2===e&&o.length&&o[0].lastIndexOf(n)>0&&(o[0]=o[0].replace(r,f));},p,function(e){if(-2===e){var t=h;return h=[],t}}])),m.hash=u.length?u.reduce((function(e,t){return t.name||R(15),Q(e,t.name)}),5381).toString():"",m}var ae=React__default.createContext();ae.Consumer;var ue=React__default.createContext(),le=(ue.Consumer,new J),de=ie();function he(){return reactExports.useContext(ae)||le}function pe(){return reactExports.useContext(ue)||de}var me=function(){function e(e,t){var n=this;this.inject=function(e,t){void 0===t&&(t=de);var r=n.name+t.hash;e.hasNameForId(n.id,r)||e.insertRules(n.id,r,t(n.rules,r,"@keyframes"));},this.toString=function(){return R(12,String(n.name))},this.name=e,this.id="sc-keyframes-"+e,this.rules=t;}return e.prototype.getName=function(e){return void 0===e&&(e=de),this.name+e.hash},e}(),ye=/([A-Z])/,ve=/([A-Z])/g,ge=/^ms-/,Se=function(e){return "-"+e.toLowerCase()};function we(e){return ye.test(e)?e.replace(ve,Se).replace(ge,"-ms-"):e}var Ee=function(e){return null==e||!1===e||""===e};function be(e,n,r,o){if(Array.isArray(e)){for(var s,i=[],a=0,c=e.length;a<c;a+=1)""!==(s=be(e[a],n,r,o))&&(Array.isArray(s)?i.push.apply(i,s):i.push(s));return i}if(Ee(e))return "";if(b(e))return "."+e.styledComponentId;if(w(e)){if("function"!=typeof(l=e)||l.prototype&&l.prototype.isReactComponent||!n)return e;var u=e(n);return be(u,n,r,o)}var l;return e instanceof me?r?(e.inject(r,o),e.getName(o)):e:v(e)?function e(t,n){var r,o,s=[];for(var i in t)t.hasOwnProperty(i)&&!Ee(t[i])&&(Array.isArray(t[i])&&t[i].isCss||w(t[i])?s.push(we(i)+":",t[i],";"):v(t[i])?s.push.apply(s,e(t[i],i)):s.push(we(i)+": "+(r=i,null==(o=t[i])||"boolean"==typeof o||""===o?"":"number"!=typeof o||0===o||r in unitlessKeys||r.startsWith("--")?String(o).trim():o+"px")+";"));return n?[n+" {"].concat(s,["}"]):s}(e):e.toString()}var _e=function(e){return Array.isArray(e)&&(e.isCss=!0),e};function Ne(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return w(e)||v(e)?_e(be(y(g,[e].concat(n)))):0===n.length&&1===e.length&&"string"==typeof e[0]?e:_e(be(y(e,n)))}var Pe=function(e,t,n){return void 0===n&&(n=S),e.theme!==n.theme&&e.theme||t||n.theme},Oe=/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,Re=/(^-|-$)/g;function De(e){return e.replace(Oe,"-").replace(Re,"")}var je=function(e){return K(ee(e)>>>0)};function Te(e){return "string"==typeof e&&("production"==="production")}var xe=function(e){return "function"==typeof e||"object"==typeof e&&null!==e&&!Array.isArray(e)},ke=function(e){return "__proto__"!==e&&"constructor"!==e&&"prototype"!==e};function Ve(e,t,n){var r=e[n];xe(t)&&xe(r)?ze(r,t):e[n]=t;}function ze(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var o=0,s=n;o<s.length;o++){var i=s[o];if(xe(i))for(var a in i)ke(a)&&Ve(e,i[a],a);}return e}var Be=React__default.createContext();Be.Consumer;function Ge(e){var t=reactExports.useContext(Be),n=reactExports.useMemo((function(){return function(e,t){if(!e)return R(14);if(w(e)){var n=e(t);return n}return Array.isArray(e)||"object"!=typeof e?R(8):t?m({},t,{},e):e}(e.theme,t)}),[e.theme,t]);return e.children?React__default.createElement(Be.Provider,{value:n},e.children):null}var Le={};function Fe(e,t,n){var o=b(e),i=!Te(e),a=t.attrs,c=void 0===a?g:a,l=t.componentId,d=void 0===l?function(e,t){var n="string"!=typeof e?"sc":De(e);Le[n]=(Le[n]||0)+1;var r=n+"-"+je("5.3.11"+n+Le[n]);return t?t+"-"+r:r}(t.displayName,t.parentComponentId):l,h=t.displayName,y=void 0===h?function(e){return Te(e)?"styled."+e:"Styled("+E(e)+")"}(e):h,v=t.displayName&&t.componentId?De(t.displayName)+"-"+t.componentId:t.componentId||d,_=o&&e.attrs?Array.prototype.concat(e.attrs,c).filter(Boolean):c,N=t.shouldForwardProp;o&&e.shouldForwardProp&&(N=t.shouldForwardProp?function(n,r,o){return e.shouldForwardProp(n,r,o)&&t.shouldForwardProp(n,r,o)}:e.shouldForwardProp);var A,C=new re(n,v,o?e.componentStyle:void 0),I=C.isStatic&&0===c.length,P=function(e,t){return function(e,t,n,r){var o=e.attrs,i=e.componentStyle,a=e.defaultProps,c=e.foldedComponentIds,l=e.shouldForwardProp,d=e.styledComponentId,h=e.target,f=function(e,t,n){void 0===e&&(e=S);var r=m({},t,{theme:e}),o={};return n.forEach((function(e){var t,n,s,i=e;for(t in w(i)&&(i=i(r)),i)r[t]=o[t]="className"===t?(n=o[t],s=i[t],n&&s?n+" "+s:n||s):i[t];})),[r,o]}(Pe(t,reactExports.useContext(Be),a)||S,t,o),y=f[0],v=f[1],g=function(e,t,n,r){var o=he(),s=pe(),i=t?e.generateAndInjectStyles(S,o,s):e.generateAndInjectStyles(n,o,s);return i}(i,r,y),E=n,b=v.$as||t.$as||v.as||t.as||h,_=Te(b),N=v!==t?m({},t,{},v):t,A={};for(var C in N)"$"!==C[0]&&"as"!==C&&("forwardedAs"===C?A.as=N[C]:(l?l(C,isPropValid,b):!_||isPropValid(C))&&(A[C]=N[C]));return t.style&&v.style!==t.style&&(A.style=m({},t.style,{},v.style)),A.className=Array.prototype.concat(c,d,g!==d?g:null,t.className,v.className).filter(Boolean).join(" "),A.ref=E,reactExports.createElement(b,A)}(A,e,t,I)};return P.displayName=y,(A=React__default.forwardRef(P)).attrs=_,A.componentStyle=C,A.displayName=y,A.shouldForwardProp=N,A.foldedComponentIds=o?Array.prototype.concat(e.foldedComponentIds,e.styledComponentId):g,A.styledComponentId=v,A.target=o?e.target:e,A.withComponent=function(e){var r=t.componentId,o=function(e,t){if(null==e)return {};var n,r,o={},s=Object.keys(e);for(r=0;r<s.length;r++)n=s[r],t.indexOf(n)>=0||(o[n]=e[n]);return o}(t,["componentId"]),s=r&&r+"-"+(Te(e)?e:De(E(e)));return Fe(e,m({},o,{attrs:_,componentId:s}),n)},Object.defineProperty(A,"defaultProps",{get:function(){return this._foldedDefaultProps},set:function(t){this._foldedDefaultProps=o?ze({},e.defaultProps,t):t;}}),Object.defineProperty(A,"toString",{value:function(){return "."+A.styledComponentId}}),i&&f(A,e,{attrs:!0,componentStyle:!0,displayName:!0,foldedComponentIds:!0,shouldForwardProp:!0,styledComponentId:!0,target:!0,withComponent:!0}),A}var Ye=function(e){return function e(t,r,o){if(void 0===o&&(o=S),!reactIsExports$1.isValidElementType(r))return R(1,String(r));var s=function(){return t(r,o,Ne.apply(void 0,arguments))};return s.withConfig=function(n){return e(t,r,m({},o,{},n))},s.attrs=function(n){return e(t,r,m({},o,{attrs:Array.prototype.concat(o.attrs,n).filter(Boolean)}))},s}(Fe,e)};["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","big","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","data","datalist","dd","del","details","dfn","dialog","div","dl","dt","em","embed","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","main","map","mark","marquee","menu","menuitem","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","picture","pre","progress","q","rp","rt","ruby","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr","circle","clipPath","defs","ellipse","foreignObject","g","image","line","linearGradient","marker","mask","path","pattern","polygon","polyline","radialGradient","rect","stop","svg","text","textPath","tspan"].forEach((function(e){Ye[e]=Ye(e);}));function $e(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];var o=Ne.apply(void 0,[e].concat(n)).join(""),s=je(o);return new me(s,o)}var styled = Ye;
+function m(){return (m=Object.assign||function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r]);}return e}).apply(this,arguments)}var y=function(e,t){for(var n=[e[0]],r=0,o=t.length;r<o;r+=1)n.push(t[r],e[r+1]);return n},v=function(t){return null!==t&&"object"==typeof t&&"[object Object]"===(t.toString?t.toString():Object.prototype.toString.call(t))&&!reactIsExports$1.typeOf(t)},g=Object.freeze([]),S=Object.freeze({});function w(e){return "function"==typeof e}function E(e){return e.displayName||e.name||"Component"}function b(e){return e&&"string"==typeof e.styledComponentId}var _="undefined"!=typeof process&&void 0!==process.env&&(process.env.REACT_APP_SC_ATTR||process.env.SC_ATTR)||"data-styled",A="undefined"!=typeof window&&"HTMLElement"in window,C=Boolean("boolean"==typeof SC_DISABLE_SPEEDY?SC_DISABLE_SPEEDY:"undefined"!=typeof process&&void 0!==process.env&&(void 0!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&""!==process.env.REACT_APP_SC_DISABLE_SPEEDY?"false"!==process.env.REACT_APP_SC_DISABLE_SPEEDY&&process.env.REACT_APP_SC_DISABLE_SPEEDY:void 0!==process.env.SC_DISABLE_SPEEDY&&""!==process.env.SC_DISABLE_SPEEDY?"false"!==process.env.SC_DISABLE_SPEEDY&&process.env.SC_DISABLE_SPEEDY:"production"!=="production"));function R(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];throw new Error("An error occurred. See https://git.io/JUIaE#"+e+" for more information."+(n.length>0?" Args: "+n.join(", "):""))}var D=function(){function e(e){this.groupSizes=new Uint32Array(512),this.length=512,this.tag=e;}var t=e.prototype;return t.indexOfGroup=function(e){for(var t=0,n=0;n<e;n++)t+=this.groupSizes[n];return t},t.insertRules=function(e,t){if(e>=this.groupSizes.length){for(var n=this.groupSizes,r=n.length,o=r;e>=o;)(o<<=1)<0&&R(16,""+e);this.groupSizes=new Uint32Array(o),this.groupSizes.set(n),this.length=o;for(var s=r;s<o;s++)this.groupSizes[s]=0;}for(var i=this.indexOfGroup(e+1),a=0,c=t.length;a<c;a++)this.tag.insertRule(i,t[a])&&(this.groupSizes[e]++,i++);},t.clearGroup=function(e){if(e<this.length){var t=this.groupSizes[e],n=this.indexOfGroup(e),r=n+t;this.groupSizes[e]=0;for(var o=n;o<r;o++)this.tag.deleteRule(n);}},t.getGroup=function(e){var t="";if(e>=this.length||0===this.groupSizes[e])return t;for(var n=this.groupSizes[e],r=this.indexOfGroup(e),o=r+n,s=r;s<o;s++)t+=this.tag.getRule(s)+"/*!sc*/\n";return t},e}(),j=new Map,T=new Map,x=1,k=function(e){if(j.has(e))return j.get(e);for(;T.has(x);)x++;var t=x++;return j.set(e,t),T.set(t,e),t},V=function(e){return T.get(e)},z=function(e,t){t>=x&&(x=t+1),j.set(e,t),T.set(t,e);},B="style["+_+'][data-styled-version="5.3.11"]',M=new RegExp("^"+_+'\\.g(\\d+)\\[id="([\\w\\d-]+)"\\].*?"([^"]*)'),G=function(e,t,n){for(var r,o=n.split(","),s=0,i=o.length;s<i;s++)(r=o[s])&&e.registerName(t,r);},L=function(e,t){for(var n=(t.textContent||"").split("/*!sc*/\n"),r=[],o=0,s=n.length;o<s;o++){var i=n[o].trim();if(i){var a=i.match(M);if(a){var c=0|parseInt(a[1],10),u=a[2];0!==c&&(z(u,c),G(e,u,a[3]),e.getTag().insertRules(c,r)),r.length=0;}else r.push(i);}}},F=function(){return "undefined"!=typeof __webpack_nonce__?__webpack_nonce__:null},Y=function(e){var t=document.head,n=e||t,r=document.createElement("style"),o=function(e){for(var t=e.childNodes,n=t.length;n>=0;n--){var r=t[n];if(r&&1===r.nodeType&&r.hasAttribute(_))return r}}(n),s=void 0!==o?o.nextSibling:null;r.setAttribute(_,"active"),r.setAttribute("data-styled-version","5.3.11");var i=F();return i&&r.setAttribute("nonce",i),n.insertBefore(r,s),r},q=function(){function e(e){var t=this.element=Y(e);t.appendChild(document.createTextNode("")),this.sheet=function(e){if(e.sheet)return e.sheet;for(var t=document.styleSheets,n=0,r=t.length;n<r;n++){var o=t[n];if(o.ownerNode===e)return o}R(17);}(t),this.length=0;}var t=e.prototype;return t.insertRule=function(e,t){try{return this.sheet.insertRule(t,e),this.length++,!0}catch(e){return !1}},t.deleteRule=function(e){this.sheet.deleteRule(e),this.length--;},t.getRule=function(e){var t=this.sheet.cssRules[e];return void 0!==t&&"string"==typeof t.cssText?t.cssText:""},e}(),H=function(){function e(e){var t=this.element=Y(e);this.nodes=t.childNodes,this.length=0;}var t=e.prototype;return t.insertRule=function(e,t){if(e<=this.length&&e>=0){var n=document.createTextNode(t),r=this.nodes[e];return this.element.insertBefore(n,r||null),this.length++,!0}return !1},t.deleteRule=function(e){this.element.removeChild(this.nodes[e]),this.length--;},t.getRule=function(e){return e<this.length?this.nodes[e].textContent:""},e}(),$=function(){function e(e){this.rules=[],this.length=0;}var t=e.prototype;return t.insertRule=function(e,t){return e<=this.length&&(this.rules.splice(e,0,t),this.length++,!0)},t.deleteRule=function(e){this.rules.splice(e,1),this.length--;},t.getRule=function(e){return e<this.length?this.rules[e]:""},e}(),W=A,U={isServer:!A,useCSSOMInjection:!C},J=function(){function e(e,t,n){void 0===e&&(e=S),void 0===t&&(t={}),this.options=m({},U,{},e),this.gs=t,this.names=new Map(n),this.server=!!e.isServer,!this.server&&A&&W&&(W=!1,function(e){for(var t=document.querySelectorAll(B),n=0,r=t.length;n<r;n++){var o=t[n];o&&"active"!==o.getAttribute(_)&&(L(e,o),o.parentNode&&o.parentNode.removeChild(o));}}(this));}e.registerId=function(e){return k(e)};var t=e.prototype;return t.reconstructWithOptions=function(t,n){return void 0===n&&(n=!0),new e(m({},this.options,{},t),this.gs,n&&this.names||void 0)},t.allocateGSInstance=function(e){return this.gs[e]=(this.gs[e]||0)+1},t.getTag=function(){return this.tag||(this.tag=(n=(t=this.options).isServer,r=t.useCSSOMInjection,o=t.target,e=n?new $(o):r?new q(o):new H(o),new D(e)));var e,t,n,r,o;},t.hasNameForId=function(e,t){return this.names.has(e)&&this.names.get(e).has(t)},t.registerName=function(e,t){if(k(e),this.names.has(e))this.names.get(e).add(t);else {var n=new Set;n.add(t),this.names.set(e,n);}},t.insertRules=function(e,t,n){this.registerName(e,t),this.getTag().insertRules(k(e),n);},t.clearNames=function(e){this.names.has(e)&&this.names.get(e).clear();},t.clearRules=function(e){this.getTag().clearGroup(k(e)),this.clearNames(e);},t.clearTag=function(){this.tag=void 0;},t.toString=function(){return function(e){for(var t=e.getTag(),n=t.length,r="",o=0;o<n;o++){var s=V(o);if(void 0!==s){var i=e.names.get(s),a=t.getGroup(o);if(i&&a&&i.size){var c=_+".g"+o+'[id="'+s+'"]',u="";void 0!==i&&i.forEach((function(e){e.length>0&&(u+=e+",");})),r+=""+a+c+'{content:"'+u+'"}/*!sc*/\n';}}}return r}(this)},e}(),X=/(a)(d)/gi,Z=function(e){return String.fromCharCode(e+(e>25?39:97))};function K(e){var t,n="";for(t=Math.abs(e);t>52;t=t/52|0)n=Z(t%52)+n;return (Z(t%52)+n).replace(X,"$1-$2")}var Q=function(e,t){for(var n=t.length;n;)e=33*e^t.charCodeAt(--n);return e},ee=function(e){return Q(5381,e)};function te(e){for(var t=0;t<e.length;t+=1){var n=e[t];if(w(n)&&!b(n))return !1}return !0}var ne=ee("5.3.11"),re=function(){function e(e,t,n){this.rules=e,this.staticRulesId="",this.isStatic=(void 0===n||n.isStatic)&&te(e),this.componentId=t,this.baseHash=Q(ne,t),this.baseStyle=n,J.registerId(t);}return e.prototype.generateAndInjectStyles=function(e,t,n){var r=this.componentId,o=[];if(this.baseStyle&&o.push(this.baseStyle.generateAndInjectStyles(e,t,n)),this.isStatic&&!n.hash)if(this.staticRulesId&&t.hasNameForId(r,this.staticRulesId))o.push(this.staticRulesId);else {var s=be(this.rules,e,t,n).join(""),i=K(Q(this.baseHash,s)>>>0);if(!t.hasNameForId(r,i)){var a=n(s,"."+i,void 0,r);t.insertRules(r,i,a);}o.push(i),this.staticRulesId=i;}else {for(var c=this.rules.length,u=Q(this.baseHash,n.hash),l="",d=0;d<c;d++){var h=this.rules[d];if("string"==typeof h)l+=h;else if(h){var p=be(h,e,t,n),f=Array.isArray(p)?p.join(""):p;u=Q(u,f+d),l+=f;}}if(l){var m=K(u>>>0);if(!t.hasNameForId(r,m)){var y=n(l,"."+m,void 0,r);t.insertRules(r,m,y);}o.push(m);}}return o.join(" ")},e}(),oe=/^\s*\/\/.*$/gm,se=[":","[",".","#"];function ie(e){var t,n,r,o,s=void 0===e?S:e,i=s.options,a=void 0===i?S:i,c=s.plugins,u=void 0===c?g:c,l=new stylis_min(a),h=[],p=function(e){function t(t){if(t)try{e(t+"}");}catch(e){}}return function(n,r,o,s,i,a,c,u,l,d){switch(n){case 1:if(0===l&&64===r.charCodeAt(0))return e(r+";"),"";break;case 2:if(0===u)return r+"/*|*/";break;case 3:switch(u){case 102:case 112:return e(o[0]+r),"";default:return r+(0===d?"/*|*/":"")}case-2:r.split("/*|*/}").forEach(t);}}}((function(e){h.push(e);})),f=function(e,r,s){return 0===r&&-1!==se.indexOf(s[n.length])||s.match(o)?e:"."+t};function m(e,s,i,a){void 0===a&&(a="&");var c=e.replace(oe,""),u=s&&i?i+" "+s+" { "+c+" }":c;return t=a,n=s,r=new RegExp("\\"+n+"\\b","g"),o=new RegExp("(\\"+n+"\\b){2,}"),l(i||!s?"":s,u)}return l.use([].concat(u,[function(e,t,o){2===e&&o.length&&o[0].lastIndexOf(n)>0&&(o[0]=o[0].replace(r,f));},p,function(e){if(-2===e){var t=h;return h=[],t}}])),m.hash=u.length?u.reduce((function(e,t){return t.name||R(15),Q(e,t.name)}),5381).toString():"",m}var ae=React.createContext();ae.Consumer;var ue=React.createContext(),le=(ue.Consumer,new J),de=ie();function he(){return reactExports.useContext(ae)||le}function pe(){return reactExports.useContext(ue)||de}var me=function(){function e(e,t){var n=this;this.inject=function(e,t){void 0===t&&(t=de);var r=n.name+t.hash;e.hasNameForId(n.id,r)||e.insertRules(n.id,r,t(n.rules,r,"@keyframes"));},this.toString=function(){return R(12,String(n.name))},this.name=e,this.id="sc-keyframes-"+e,this.rules=t;}return e.prototype.getName=function(e){return void 0===e&&(e=de),this.name+e.hash},e}(),ye=/([A-Z])/,ve=/([A-Z])/g,ge=/^ms-/,Se=function(e){return "-"+e.toLowerCase()};function we(e){return ye.test(e)?e.replace(ve,Se).replace(ge,"-ms-"):e}var Ee=function(e){return null==e||!1===e||""===e};function be(e,n,r,o){if(Array.isArray(e)){for(var s,i=[],a=0,c=e.length;a<c;a+=1)""!==(s=be(e[a],n,r,o))&&(Array.isArray(s)?i.push.apply(i,s):i.push(s));return i}if(Ee(e))return "";if(b(e))return "."+e.styledComponentId;if(w(e)){if("function"!=typeof(l=e)||l.prototype&&l.prototype.isReactComponent||!n)return e;var u=e(n);return be(u,n,r,o)}var l;return e instanceof me?r?(e.inject(r,o),e.getName(o)):e:v(e)?function e(t,n){var r,o,s=[];for(var i in t)t.hasOwnProperty(i)&&!Ee(t[i])&&(Array.isArray(t[i])&&t[i].isCss||w(t[i])?s.push(we(i)+":",t[i],";"):v(t[i])?s.push.apply(s,e(t[i],i)):s.push(we(i)+": "+(r=i,null==(o=t[i])||"boolean"==typeof o||""===o?"":"number"!=typeof o||0===o||r in unitlessKeys||r.startsWith("--")?String(o).trim():o+"px")+";"));return n?[n+" {"].concat(s,["}"]):s}(e):e.toString()}var _e=function(e){return Array.isArray(e)&&(e.isCss=!0),e};function Ne(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];return w(e)||v(e)?_e(be(y(g,[e].concat(n)))):0===n.length&&1===e.length&&"string"==typeof e[0]?e:_e(be(y(e,n)))}var Pe=function(e,t,n){return void 0===n&&(n=S),e.theme!==n.theme&&e.theme||t||n.theme},Oe=/[!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~-]+/g,Re=/(^-|-$)/g;function De(e){return e.replace(Oe,"-").replace(Re,"")}var je=function(e){return K(ee(e)>>>0)};function Te(e){return "string"==typeof e&&("production"==="production")}var xe=function(e){return "function"==typeof e||"object"==typeof e&&null!==e&&!Array.isArray(e)},ke=function(e){return "__proto__"!==e&&"constructor"!==e&&"prototype"!==e};function Ve(e,t,n){var r=e[n];xe(t)&&xe(r)?ze(r,t):e[n]=t;}function ze(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var o=0,s=n;o<s.length;o++){var i=s[o];if(xe(i))for(var a in i)ke(a)&&Ve(e,i[a],a);}return e}var Be=React.createContext();Be.Consumer;function Ge(e){var t=reactExports.useContext(Be),n=reactExports.useMemo((function(){return function(e,t){if(!e)return R(14);if(w(e)){var n=e(t);return n}return Array.isArray(e)||"object"!=typeof e?R(8):t?m({},t,{},e):e}(e.theme,t)}),[e.theme,t]);return e.children?React.createElement(Be.Provider,{value:n},e.children):null}var Le={};function Fe(e,t,n){var o=b(e),i=!Te(e),a=t.attrs,c=void 0===a?g:a,l=t.componentId,d=void 0===l?function(e,t){var n="string"!=typeof e?"sc":De(e);Le[n]=(Le[n]||0)+1;var r=n+"-"+je("5.3.11"+n+Le[n]);return t?t+"-"+r:r}(t.displayName,t.parentComponentId):l,h=t.displayName,y=void 0===h?function(e){return Te(e)?"styled."+e:"Styled("+E(e)+")"}(e):h,v=t.displayName&&t.componentId?De(t.displayName)+"-"+t.componentId:t.componentId||d,_=o&&e.attrs?Array.prototype.concat(e.attrs,c).filter(Boolean):c,N=t.shouldForwardProp;o&&e.shouldForwardProp&&(N=t.shouldForwardProp?function(n,r,o){return e.shouldForwardProp(n,r,o)&&t.shouldForwardProp(n,r,o)}:e.shouldForwardProp);var A,C=new re(n,v,o?e.componentStyle:void 0),I=C.isStatic&&0===c.length,P=function(e,t){return function(e,t,n,r){var o=e.attrs,i=e.componentStyle,a=e.defaultProps,c=e.foldedComponentIds,l=e.shouldForwardProp,d=e.styledComponentId,h=e.target,f=function(e,t,n){void 0===e&&(e=S);var r=m({},t,{theme:e}),o={};return n.forEach((function(e){var t,n,s,i=e;for(t in w(i)&&(i=i(r)),i)r[t]=o[t]="className"===t?(n=o[t],s=i[t],n&&s?n+" "+s:n||s):i[t];})),[r,o]}(Pe(t,reactExports.useContext(Be),a)||S,t,o),y=f[0],v=f[1],g=function(e,t,n,r){var o=he(),s=pe(),i=t?e.generateAndInjectStyles(S,o,s):e.generateAndInjectStyles(n,o,s);return i}(i,r,y),E=n,b=v.$as||t.$as||v.as||t.as||h,_=Te(b),N=v!==t?m({},t,{},v):t,A={};for(var C in N)"$"!==C[0]&&"as"!==C&&("forwardedAs"===C?A.as=N[C]:(l?l(C,isPropValid,b):!_||isPropValid(C))&&(A[C]=N[C]));return t.style&&v.style!==t.style&&(A.style=m({},t.style,{},v.style)),A.className=Array.prototype.concat(c,d,g!==d?g:null,t.className,v.className).filter(Boolean).join(" "),A.ref=E,reactExports.createElement(b,A)}(A,e,t,I)};return P.displayName=y,(A=React.forwardRef(P)).attrs=_,A.componentStyle=C,A.displayName=y,A.shouldForwardProp=N,A.foldedComponentIds=o?Array.prototype.concat(e.foldedComponentIds,e.styledComponentId):g,A.styledComponentId=v,A.target=o?e.target:e,A.withComponent=function(e){var r=t.componentId,o=function(e,t){if(null==e)return {};var n,r,o={},s=Object.keys(e);for(r=0;r<s.length;r++)n=s[r],t.indexOf(n)>=0||(o[n]=e[n]);return o}(t,["componentId"]),s=r&&r+"-"+(Te(e)?e:De(E(e)));return Fe(e,m({},o,{attrs:_,componentId:s}),n)},Object.defineProperty(A,"defaultProps",{get:function(){return this._foldedDefaultProps},set:function(t){this._foldedDefaultProps=o?ze({},e.defaultProps,t):t;}}),Object.defineProperty(A,"toString",{value:function(){return "."+A.styledComponentId}}),i&&f(A,e,{attrs:!0,componentStyle:!0,displayName:!0,foldedComponentIds:!0,shouldForwardProp:!0,styledComponentId:!0,target:!0,withComponent:!0}),A}var Ye=function(e){return function e(t,r,o){if(void 0===o&&(o=S),!reactIsExports$1.isValidElementType(r))return R(1,String(r));var s=function(){return t(r,o,Ne.apply(void 0,arguments))};return s.withConfig=function(n){return e(t,r,m({},o,{},n))},s.attrs=function(n){return e(t,r,m({},o,{attrs:Array.prototype.concat(o.attrs,n).filter(Boolean)}))},s}(Fe,e)};["a","abbr","address","area","article","aside","audio","b","base","bdi","bdo","big","blockquote","body","br","button","canvas","caption","cite","code","col","colgroup","data","datalist","dd","del","details","dfn","dialog","div","dl","dt","em","embed","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","head","header","hgroup","hr","html","i","iframe","img","input","ins","kbd","keygen","label","legend","li","link","main","map","mark","marquee","menu","menuitem","meta","meter","nav","noscript","object","ol","optgroup","option","output","p","param","picture","pre","progress","q","rp","rt","ruby","s","samp","script","section","select","small","source","span","strong","style","sub","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","title","tr","track","u","ul","var","video","wbr","circle","clipPath","defs","ellipse","foreignObject","g","image","line","linearGradient","marker","mask","path","pattern","polygon","polyline","radialGradient","rect","stop","svg","text","textPath","tspan"].forEach((function(e){Ye[e]=Ye(e);}));function $e(e){for(var t=arguments.length,n=new Array(t>1?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];var o=Ne.apply(void 0,[e].concat(n)).join(""),s=je(o);return new me(s,o)}var styled = Ye;
 
 var propTypes = {exports: {}};
 
@@ -1744,8 +1744,8 @@ var id = 0;
 function genId() {
   return ++id;
 }
-var maybeReactUseId = React["useId".toString()];
-function useId(providedId) {
+var maybeReactUseId = React$1["useId".toString()];
+function useId$1(providedId) {
   if (maybeReactUseId !== void 0) {
     let generatedId = maybeReactUseId();
     return providedId ?? generatedId;
@@ -1772,7 +1772,7 @@ function useId(providedId) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$3() {
+function composeEventHandlers$4() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -1827,7 +1827,7 @@ const KEY_CODES = {
   UP: 38
 };
 
-var DocumentPosition$3;
+var DocumentPosition$4;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -1835,7 +1835,7 @@ var DocumentPosition$3;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$3 || (DocumentPosition$3 = {}));
+})(DocumentPosition$4 || (DocumentPosition$4 = {}));
 
 function _extends$w() {
   _extends$w = Object.assign ? Object.assign.bind() : function (target) {
@@ -4044,7 +4044,7 @@ const PALETTE = {
     message: '#37b8af',
     explore: '#30aabc',
     gather: '#f6c8be',
-    guide: '#ff6224',
+    guide: '#eb4962',
     connect: '#ff6224',
     chat: '#f79a3e',
     talk: '#efc93d',
@@ -4317,14 +4317,14 @@ const ThemeProvider = _ref => {
   } = _ref;
   const scopeRef = reactExports.useRef(null);
   const relativeDocument = useDocument(theme);
-  const controlledScopeRef = focusVisibleRef === null ? React__default.createRef() : getControlledValue$1(focusVisibleRef, scopeRef);
+  const controlledScopeRef = focusVisibleRef === null ? React.createRef() : getControlledValue$1(focusVisibleRef, scopeRef);
   useFocusVisible({
     scope: controlledScopeRef,
     relativeDocument
   });
-  return React__default.createElement(Ge, _extends$v({
+  return React.createElement(Ge, _extends$v({
     theme: theme
-  }, other), focusVisibleRef === undefined ? React__default.createElement("div", {
+  }, other), focusVisibleRef === undefined ? React.createElement("div", {
     ref: scopeRef
   }, children) : children);
 };
@@ -4622,13 +4622,13 @@ var createSource = function (prefix) {
 };
 var counter = createSource();
 var source = reactExports.createContext(createSource());
-var getId = function (source) { return source.value++; };
+var getId$1 = function (source) { return source.value++; };
 var getPrefix = function (source) { return (source ? source.prefix : ''); };
 
 var generateUID = function (context) {
     var quartz = context || counter;
     var prefix = getPrefix(quartz);
-    var id = getId(quartz);
+    var id = getId$1(quartz);
     var uid = prefix + id;
     var gen = function (item) { return uid + quartz.uid(item); };
     return { uid: uid, gen: gen };
@@ -5133,7 +5133,7 @@ var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$2() {
+function composeEventHandlers$3() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -5147,7 +5147,7 @@ function composeEventHandlers$2() {
     });
   };
 }
-const KEYS$2 = {
+const KEYS$3 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -5175,7 +5175,7 @@ const KEYS$2 = {
   UNIDENTIFIED: 'Unidentified',
   UP: 'ArrowUp'
 };
-var DocumentPosition$2;
+var DocumentPosition$3;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -5183,7 +5183,7 @@ var DocumentPosition$2;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$2 || (DocumentPosition$2 = {}));
+})(DocumentPosition$3 || (DocumentPosition$3 = {}));
 
 const SLIDER_MIN = 0;
 const SLIDER_MAX = 100;
@@ -5312,7 +5312,7 @@ function useSlider(_ref) {
       'data-garden-container-id': 'containers.slider.track',
       'data-garden-container-version': '0.1.6',
       'aria-disabled': disabled,
-      onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
+      onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
       ...other
     };
   }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
@@ -5327,28 +5327,28 @@ function useSlider(_ref) {
       if (!disabled) {
         let value;
         switch (event.key) {
-          case KEYS$2.RIGHT:
+          case KEYS$3.RIGHT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
             break;
-          case KEYS$2.UP:
+          case KEYS$3.UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
             break;
-          case KEYS$2.LEFT:
+          case KEYS$3.LEFT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
             break;
-          case KEYS$2.DOWN:
+          case KEYS$3.DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
             break;
-          case KEYS$2.PAGE_UP:
+          case KEYS$3.PAGE_UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
             break;
-          case KEYS$2.PAGE_DOWN:
+          case KEYS$3.PAGE_DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
             break;
-          case KEYS$2.HOME:
+          case KEYS$3.HOME:
             value = min;
             break;
-          case KEYS$2.END:
+          case KEYS$3.END:
             value = max;
             break;
         }
@@ -5403,9 +5403,9 @@ function useSlider(_ref) {
       'aria-valuemin': thumb === 'min' ? min : position.minValue,
       'aria-valuemax': thumb === 'min' ? position.maxValue : max,
       'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
-      onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
-      onTouchStart: composeEventHandlers$2(onTouchStart, handleTouchStart),
+      onKeyDown: composeEventHandlers$3(onKeyDown, handleKeyDown),
+      onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
+      onTouchStart: composeEventHandlers$3(onTouchStart, handleTouchStart),
       ...other
     };
   }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
@@ -5469,7 +5469,7 @@ const useFieldContext$1 = () => {
 const COMPONENT_ID$K = 'forms.field';
 const StyledField$1 = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$K,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-12gzfsu-0"
@@ -5482,7 +5482,7 @@ const COMPONENT_ID$J = 'forms.fieldset';
 const StyledFieldset = styled(StyledField$1).attrs({
   as: 'fieldset',
   'data-garden-id': COMPONENT_ID$J,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFieldset",
   componentId: "sc-1vr4mxv-0"
@@ -5492,10 +5492,10 @@ StyledFieldset.defaultProps = {
 };
 
 const COMPONENT_ID$I = 'forms.input_label';
-const StyledLabel$1 = styled.label.attrs({
-  'data-garden-id': COMPONENT_ID$I,
-  'data-garden-version': '8.69.1'
-}).withConfig({
+const StyledLabel$1 = styled.label.attrs(props => ({
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$I,
+  'data-garden-version': props['data-garden-version'] || '8.69.9'
+})).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-2utmsz-0"
 })(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.colors.foreground, props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$I, props));
@@ -5507,7 +5507,7 @@ const COMPONENT_ID$H = 'forms.fieldset_legend';
 const StyledLegend = styled(StyledLabel$1).attrs({
   as: 'legend',
   'data-garden-id': COMPONENT_ID$H,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledLegend",
   componentId: "sc-6s0zwq-0"
@@ -5517,10 +5517,10 @@ StyledLegend.defaultProps = {
 };
 
 const COMPONENT_ID$G = 'forms.input_hint';
-const StyledHint$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$G,
-  'data-garden-version': '8.69.1'
-}).withConfig({
+const StyledHint$1 = styled.div.attrs(props => ({
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$G,
+  'data-garden-version': props['data-garden-version'] || '8.69.9'
+})).withConfig({
   displayName: "StyledHint",
   componentId: "sc-17c2wu8-0"
 })(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColor('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$G, props));
@@ -5611,20 +5611,20 @@ const MessageIcon = _ref => {
   } = _ref;
   let retVal;
   if (validation === 'error') {
-    retVal = React__default.createElement(SvgAlertErrorStroke$1, props);
+    retVal = React.createElement(SvgAlertErrorStroke$1, props);
   } else if (validation === 'success') {
-    retVal = React__default.createElement(SvgCheckCircleStroke$1, props);
+    retVal = React.createElement(SvgCheckCircleStroke$1, props);
   } else if (validation === 'warning') {
-    retVal = React__default.createElement(SvgAlertWarningStroke$1, props);
+    retVal = React.createElement(SvgAlertWarningStroke$1, props);
   } else {
-    retVal = React__default.cloneElement(reactExports.Children.only(children));
+    retVal = React.cloneElement(reactExports.Children.only(children));
   }
   return retVal;
 };
 const COMPONENT_ID$F = 'forms.input_message_icon';
 const StyledMessageIcon = styled(MessageIcon).attrs({
   'data-garden-id': COMPONENT_ID$F,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   'aria-hidden': null
 }).withConfig({
   displayName: "StyledMessageIcon",
@@ -5650,10 +5650,10 @@ const validationStyles = props => {
   return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
 };
 const COMPONENT_ID$E = 'forms.input_message';
-const StyledMessage$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$E,
-  'data-garden-version': '8.69.1'
-}).withConfig({
+const StyledMessage$1 = styled.div.attrs(props => ({
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$E,
+  'data-garden-version': props['data-garden-version'] || '8.69.9'
+})).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-30hgg7-0"
 })(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$E, props));
@@ -5742,7 +5742,7 @@ const sizeStyles$f = props => {
 };
 const StyledTextInput = styled.input.attrs(props => ({
   'data-garden-id': COMPONENT_ID$D,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   'aria-invalid': isInvalid(props.validation)
 })).withConfig({
   displayName: "StyledTextInput",
@@ -5765,7 +5765,7 @@ const hiddenStyles = `
 const StyledTextarea = styled(StyledTextInput).attrs({
   as: 'textarea',
   'data-garden-id': COMPONENT_ID$C,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTextarea",
   componentId: "sc-wxschl-0"
@@ -5808,10 +5808,10 @@ _ref => {
     theme,
     ...props
   } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
+  return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$B,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTextMediaFigure",
   componentId: "sc-1qepknj-0"
@@ -5858,7 +5858,7 @@ const StyledTextFauxInput = styled(StyledTextInput).attrs(props => ({
   'aria-readonly': props.isReadOnly,
   'aria-disabled': props.isDisabled,
   'data-garden-id': COMPONENT_ID$A,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 })).withConfig({
   displayName: "StyledTextFauxInput",
   componentId: "sc-yqw7j9-0"
@@ -5870,7 +5870,7 @@ StyledTextFauxInput.defaultProps = {
 const COMPONENT_ID$z = 'forms.media_input';
 const StyledTextMediaInput = styled(StyledTextInput).attrs({
   'data-garden-id': COMPONENT_ID$z,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   isBare: true
 }).withConfig({
   displayName: "StyledTextMediaInput",
@@ -5892,7 +5892,7 @@ const itemStyles = props => {
 };
 const StyledInputGroup$1 = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$y,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-kjh1f0-0"
@@ -5901,7 +5901,7 @@ StyledInputGroup$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$x = 'forms.radio_label';
+const COMPONENT_ID$x$1 = 'forms.radio_label';
 const sizeStyles$d$1 = props => {
   const size = props.theme.space.base * 4;
   const padding = size + props.theme.space.base * 2;
@@ -5909,54 +5909,54 @@ const sizeStyles$d$1 = props => {
   return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
 };
 const StyledRadioLabel = styled(StyledLabel$1).attrs({
-  'data-garden-id': COMPONENT_ID$x,
-  'data-garden-version': '8.69.1',
+  'data-garden-id': COMPONENT_ID$x$1,
+  'data-garden-version': '8.69.9',
   isRadio: true
 }).withConfig({
   displayName: "StyledRadioLabel",
   componentId: "sc-1aq2e5t-0"
-})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d$1(props), props => retrieveComponentStyles(COMPONENT_ID$x, props));
+})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d$1(props), props => retrieveComponentStyles(COMPONENT_ID$x$1, props));
 StyledRadioLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$w = 'forms.checkbox_label';
+const COMPONENT_ID$w$1 = 'forms.checkbox_label';
 const StyledCheckLabel = styled(StyledRadioLabel).attrs({
-  'data-garden-id': COMPONENT_ID$w,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$w$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledCheckLabel",
   componentId: "sc-x7nr1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$w$1, props));
 StyledCheckLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$v = 'forms.radio_hint';
+const COMPONENT_ID$v$1 = 'forms.radio_hint';
 const StyledRadioHint = styled(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$v,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$v$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledRadioHint",
   componentId: "sc-eo8twg-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$v$1, props));
 StyledRadioHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$u = 'forms.checkbox_hint';
+const COMPONENT_ID$u$1 = 'forms.checkbox_hint';
 const StyledCheckHint = styled(StyledRadioHint).attrs({
-  'data-garden-id': COMPONENT_ID$u,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$u$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledCheckHint",
   componentId: "sc-1kl8e8c-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$u$1, props));
 StyledCheckHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$t = 'forms.radio';
+const COMPONENT_ID$t$1 = 'forms.radio';
 const colorStyles$9$1 = props => {
   const SHADE = 600;
   const borderColor = getColor('neutralHue', SHADE - 300, props.theme);
@@ -5993,18 +5993,18 @@ const sizeStyles$c$1 = props => {
   return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
 };
 const StyledRadioInput = styled.input.attrs({
-  'data-garden-id': COMPONENT_ID$t,
-  'data-garden-version': '8.69.1',
+  'data-garden-id': COMPONENT_ID$t$1,
+  'data-garden-version': '8.69.9',
   type: 'radio'
 }).withConfig({
   displayName: "StyledRadioInput",
   componentId: "sc-qsavpv-0"
-})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$c$1(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$9$1(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$t, props));
+})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$c$1(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$9$1(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$t$1, props));
 StyledRadioInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$s = 'forms.checkbox';
+const COMPONENT_ID$s$1 = 'forms.checkbox';
 const colorStyles$8$1 = props => {
   const SHADE = 600;
   const indeterminateBorderColor = getColor('primaryHue', SHADE, props.theme);
@@ -6015,37 +6015,37 @@ const colorStyles$8$1 = props => {
   return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
 };
 const StyledCheckInput = styled(StyledRadioInput).attrs({
-  'data-garden-id': COMPONENT_ID$s,
-  'data-garden-version': '8.69.1',
+  'data-garden-id': COMPONENT_ID$s$1,
+  'data-garden-version': '8.69.9',
   type: 'checkbox'
 }).withConfig({
   displayName: "StyledCheckInput",
   componentId: "sc-176jxxe-0"
-})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$8$1(props), props => retrieveComponentStyles(COMPONENT_ID$s, props));
+})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$8$1(props), props => retrieveComponentStyles(COMPONENT_ID$s$1, props));
 StyledCheckInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$r = 'forms.radio_message';
+const COMPONENT_ID$r$1 = 'forms.radio_message';
 const StyledRadioMessage = styled(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$r,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$r$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledRadioMessage",
   componentId: "sc-1pmi0q8-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$r$1, props));
 StyledRadioMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$q = 'forms.checkbox_message';
+const COMPONENT_ID$q$1 = 'forms.checkbox_message';
 const StyledCheckMessage = styled(StyledRadioMessage).attrs({
-  'data-garden-id': COMPONENT_ID$q,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$q$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledCheckMessage",
   componentId: "sc-s4p6kd-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$q$1, props));
 StyledCheckMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -6070,14 +6070,14 @@ var SvgCheckSmFill = function SvgCheckSmFill(props) {
   })));
 };
 
-const COMPONENT_ID$p = 'forms.check_svg';
+const COMPONENT_ID$p$1 = 'forms.check_svg';
 const StyledCheckSvg = styled(SvgCheckSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$p,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$p$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledCheckSvg",
   componentId: "sc-fvxetk-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$p, props));
+})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$p$1, props));
 StyledCheckSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -6103,11 +6103,11 @@ var SvgDashFill = function SvgDashFill(props) {
 const COMPONENT_ID$o$1 = 'forms.dash_svg';
 const StyledDashSvg = styled(SvgDashFill).attrs({
   'data-garden-id': COMPONENT_ID$o$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledDashSvg",
   componentId: "sc-z3vq71-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$o$1, props));
+})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$o$1, props));
 StyledDashSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -6134,7 +6134,7 @@ const sizeStyles$b$1 = props => {
 };
 const StyledFileUpload = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$n$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFileUpload",
   componentId: "sc-1rodjgn-0"
@@ -6146,7 +6146,7 @@ StyledFileUpload.defaultProps = {
 const COMPONENT_ID$m$1 = 'forms.file.close';
 const StyledFileClose = styled.button.attrs({
   'data-garden-id': COMPONENT_ID$m$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFileClose",
   componentId: "sc-1m31jbf-0"
@@ -6209,7 +6209,7 @@ const sizeStyles$a$1 = props => {
 };
 const StyledFile = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$l$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFile",
   componentId: "sc-195lzp1-0"
@@ -6221,7 +6221,7 @@ StyledFile.defaultProps = {
 const COMPONENT_ID$k$1 = 'forms.file.delete';
 const StyledFileDelete = styled(StyledFileClose).attrs({
   'data-garden-id': COMPONENT_ID$k$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFileDelete",
   componentId: "sc-a8nnhx-0"
@@ -6238,10 +6238,10 @@ const StyledFileIcon = styled(_ref => {
     theme,
     ...props
   } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
+  return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$j$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFileIcon",
   componentId: "sc-7b3q0c-0"
@@ -6253,7 +6253,7 @@ StyledFileIcon.defaultProps = {
 const COMPONENT_ID$i$1 = 'forms.file_list';
 const StyledFileList = styled.ul.attrs({
   'data-garden-id': COMPONENT_ID$i$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFileList",
   componentId: "sc-gbahjg-0"
@@ -6265,7 +6265,7 @@ StyledFileList.defaultProps = {
 const COMPONENT_ID$h$1 = 'forms.file_list.item';
 const StyledFileListItem = styled.li.attrs({
   'data-garden-id': COMPONENT_ID$h$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledFileListItem",
   componentId: "sc-1ova3lo-0"
@@ -6295,11 +6295,11 @@ var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
 const COMPONENT_ID$g$1 = 'forms.radio_svg';
 const StyledRadioSvg = styled(SvgCircleSmFill$1).attrs({
   'data-garden-id': COMPONENT_ID$g$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledRadioSvg",
   componentId: "sc-1r1qtr1-0"
-})(["transition:opacity 0.25 ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$g$1, props));
+})(["transition:opacity 0.25s ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$g$1, props));
 StyledRadioSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -6312,7 +6312,7 @@ const sizeStyles$9$1 = props => {
 };
 const StyledToggleLabel = styled(StyledCheckLabel).attrs({
   'data-garden-id': COMPONENT_ID$f$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledToggleLabel",
   componentId: "sc-e0asdk-0"
@@ -6324,7 +6324,7 @@ StyledToggleLabel.defaultProps = {
 const COMPONENT_ID$e$1 = 'forms.toggle_hint';
 const StyledToggleHint = styled(StyledHint$1).attrs({
   'data-garden-id': COMPONENT_ID$e$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledToggleHint",
   componentId: "sc-nziggu-0"
@@ -6351,7 +6351,7 @@ const sizeStyles$8$1 = props => {
 };
 const StyledToggleInput = styled(StyledCheckInput).attrs({
   'data-garden-id': COMPONENT_ID$d$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledToggleInput",
   componentId: "sc-sgp47s-0"
@@ -6363,7 +6363,7 @@ StyledToggleInput.defaultProps = {
 const COMPONENT_ID$c$2 = 'forms.toggle_message';
 const StyledToggleMessage = styled(StyledMessage$1).attrs({
   'data-garden-id': COMPONENT_ID$c$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledToggleMessage",
   componentId: "sc-13vuvl1-0"
@@ -6393,7 +6393,7 @@ var SvgCircleSmFill = function SvgCircleSmFill(props) {
 const COMPONENT_ID$b$3 = 'forms.toggle_svg';
 const StyledToggleSvg = styled(SvgCircleSmFill).attrs({
   'data-garden-id': COMPONENT_ID$b$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledToggleSvg",
   componentId: "sc-162xbyx-0"
@@ -6415,7 +6415,7 @@ const sizeStyles$7$1 = props => {
 };
 const StyledSelect = styled(StyledTextInput).attrs({
   'data-garden-id': COMPONENT_ID$a$3,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   as: 'select'
 }).withConfig({
   displayName: "StyledSelect",
@@ -6428,7 +6428,7 @@ StyledSelect.defaultProps = {
 const COMPONENT_ID$9$3 = 'forms.select_wrapper';
 const StyledSelectWrapper = styled(StyledTextFauxInput).attrs({
   'data-garden-id': COMPONENT_ID$9$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledSelectWrapper",
   componentId: "sc-i7b6hw-0"
@@ -6553,7 +6553,7 @@ const sizeStyles$6$1 = props => {
 };
 const StyledRangeInput = styled.input.attrs(props => ({
   'data-garden-id': COMPONENT_ID$8$3,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   type: 'range',
   style: {
     backgroundSize: props.hasLowerTrack && props.backgroundSize
@@ -6586,7 +6586,7 @@ StyledRangeInput.defaultProps = {
 const COMPONENT_ID$7$3 = 'forms.slider';
 const StyledSlider = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$7$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledSlider",
   componentId: "sc-1di437a-0"
@@ -6618,7 +6618,7 @@ const sizeStyles$5$1 = props => {
 };
 const StyledSliderThumb = styled.div.attrs(props => ({
   'data-garden-id': COMPONENT_ID$6$3,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderThumb",
@@ -6648,7 +6648,7 @@ const sizeStyles$4$2 = props => {
 };
 const StyledSliderTrack = styled.div.attrs(props => ({
   'data-garden-id': COMPONENT_ID$5$4,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderTrack",
@@ -6668,7 +6668,7 @@ const sizeStyles$3$2 = props => {
 };
 const StyledSliderTrackRail = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$4$4,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledSliderTrackRail",
   componentId: "sc-1o5owbd-0"
@@ -6695,7 +6695,7 @@ const sizeStyles$2$2 = props => {
 };
 const StyledTileIcon = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$3$4,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTileIcon",
   componentId: "sc-1wazhg4-0"
@@ -6736,7 +6736,7 @@ const colorStyles$d = props => {
 };
 const StyledTile = styled.label.attrs(props => ({
   'data-garden-id': COMPONENT_ID$2$6,
-  'data-garden-version': '8.69.1',
+  'data-garden-version': '8.69.9',
   'data-garden-selected': props.isSelected
 })).withConfig({
   displayName: "StyledTile",
@@ -6760,7 +6760,7 @@ const sizeStyles$1$3 = props => {
 };
 const StyledTileDescription = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$1$6,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTileDescription",
   componentId: "sc-xfuu7u-0"
@@ -6793,7 +6793,7 @@ const sizeStyles$g = props => {
 };
 const StyledTileLabel = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$L,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTileLabel",
   componentId: "sc-1mypv27-0"
@@ -6802,7 +6802,7 @@ StyledTileLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const Field$1 = React__default.forwardRef((props, ref) => {
+const Field$1 = React.forwardRef((props, ref) => {
   const [hasHint, setHasHint] = reactExports.useState(false);
   const [hasMessage, setHasMessage] = reactExports.useState(false);
   const [isLabelActive, setIsLabelActive] = reactExports.useState(false);
@@ -6837,9 +6837,9 @@ const Field$1 = React__default.forwardRef((props, ref) => {
     setHasMessage,
     multiThumbRangeRef
   }), [propGetters, getInputProps, getMessageProps, isLabelActive, isLabelHovered, hasHint, hasMessage]);
-  return React__default.createElement(FieldContext$1.Provider, {
+  return React.createElement(FieldContext$1.Provider, {
     value: fieldProps
-  }, React__default.createElement(StyledField$1, _extends$t({}, props, {
+  }, React.createElement(StyledField$1, _extends$t({}, props, {
     ref: ref
   })));
 });
@@ -6853,7 +6853,7 @@ const useFieldsetContext = () => {
 
 const LegendComponent = reactExports.forwardRef((props, ref) => {
   const fieldsetContext = useFieldsetContext();
-  return React__default.createElement(StyledLegend, _extends$t({}, props, fieldsetContext, {
+  return React.createElement(StyledLegend, _extends$t({}, props, fieldsetContext, {
     ref: ref
   }));
 });
@@ -6864,9 +6864,9 @@ const FieldsetComponent = reactExports.forwardRef((props, ref) => {
   const fieldsetContext = reactExports.useMemo(() => ({
     isCompact: props.isCompact
   }), [props.isCompact]);
-  return React__default.createElement(FieldsetContext.Provider, {
+  return React.createElement(FieldsetContext.Provider, {
     value: fieldsetContext
-  }, React__default.createElement(StyledFieldset, _extends$t({}, props, {
+  }, React.createElement(StyledFieldset, _extends$t({}, props, {
     ref: ref
   })));
 });
@@ -6882,7 +6882,7 @@ const useInputContext = () => {
   return reactExports.useContext(InputContext);
 };
 
-const Hint$1 = React__default.forwardRef((props, ref) => {
+const Hint$1 = React.forwardRef((props, ref) => {
   const {
     hasHint,
     setHasHint,
@@ -6913,13 +6913,13 @@ const Hint$1 = React__default.forwardRef((props, ref) => {
   if (getHintProps) {
     combinedProps = getHintProps(combinedProps);
   }
-  return React__default.createElement(HintComponent, _extends$t({
+  return React.createElement(HintComponent, _extends$t({
     ref: ref
   }, combinedProps));
 });
 Hint$1.displayName = 'Hint';
 
-const Label$1 = React__default.forwardRef((props, ref) => {
+const Label$1 = React.forwardRef((props, ref) => {
   const fieldContext = useFieldContext$1();
   const fieldsetContext = useFieldsetContext();
   const type = useInputContext();
@@ -6934,19 +6934,19 @@ const Label$1 = React__default.forwardRef((props, ref) => {
       } = fieldContext;
       combinedProps = {
         ...combinedProps,
-        onMouseUp: composeEventHandlers$3(props.onMouseUp, () => {
+        onMouseUp: composeEventHandlers$4(props.onMouseUp, () => {
           setIsLabelActive(false);
         }),
-        onMouseDown: composeEventHandlers$3(props.onMouseDown, () => {
+        onMouseDown: composeEventHandlers$4(props.onMouseDown, () => {
           setIsLabelActive(true);
         }),
-        onMouseEnter: composeEventHandlers$3(props.onMouseEnter, () => {
+        onMouseEnter: composeEventHandlers$4(props.onMouseEnter, () => {
           setIsLabelHovered(true);
         }),
-        onMouseLeave: composeEventHandlers$3(props.onMouseLeave, () => {
+        onMouseLeave: composeEventHandlers$4(props.onMouseLeave, () => {
           setIsLabelHovered(false);
         }),
-        onClick: composeEventHandlers$3(props.onClick, () => {
+        onClick: composeEventHandlers$4(props.onClick, () => {
           multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
         })
       };
@@ -6959,9 +6959,9 @@ const Label$1 = React__default.forwardRef((props, ref) => {
     };
   }
   if (type === 'radio') {
-    return React__default.createElement(StyledRadioLabel, _extends$t({
+    return React.createElement(StyledRadioLabel, _extends$t({
       ref: ref
-    }, combinedProps), React__default.createElement(StyledRadioSvg, null), props.children);
+    }, combinedProps), React.createElement(StyledRadioSvg, null), props.children);
   } else if (type === 'checkbox') {
     const onLabelSelect = e => {
       const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
@@ -6980,17 +6980,17 @@ const Label$1 = React__default.forwardRef((props, ref) => {
     };
     combinedProps = {
       ...combinedProps,
-      onClick: composeEventHandlers$3(combinedProps.onClick, onLabelSelect)
+      onClick: composeEventHandlers$4(combinedProps.onClick, onLabelSelect)
     };
-    return React__default.createElement(StyledCheckLabel, _extends$t({
+    return React.createElement(StyledCheckLabel, _extends$t({
       ref: ref
-    }, combinedProps), React__default.createElement(StyledCheckSvg, null), React__default.createElement(StyledDashSvg, null), props.children);
+    }, combinedProps), React.createElement(StyledCheckSvg, null), React.createElement(StyledDashSvg, null), props.children);
   } else if (type === 'toggle') {
-    return React__default.createElement(StyledToggleLabel, _extends$t({
+    return React.createElement(StyledToggleLabel, _extends$t({
       ref: ref
-    }, combinedProps), React__default.createElement(StyledToggleSvg, null), props.children);
+    }, combinedProps), React.createElement(StyledToggleSvg, null), props.children);
   }
-  return React__default.createElement(StyledLabel$1, _extends$t({
+  return React.createElement(StyledLabel$1, _extends$t({
     ref: ref
   }, combinedProps));
 });
@@ -7003,7 +7003,7 @@ const VALIDATION = ['success', 'warning', 'error'];
 const FILE_VALIDATION = ['success', 'error'];
 const FILE_TYPE = ['pdf', 'zip', 'image', 'document', 'spreadsheet', 'presentation', 'generic'];
 
-const Message$1 = React__default.forwardRef((_ref, ref) => {
+const Message$1 = React.forwardRef((_ref, ref) => {
   let {
     validation,
     validationLabel,
@@ -7045,9 +7045,9 @@ const Message$1 = React__default.forwardRef((_ref, ref) => {
     combinedProps = getMessageProps(combinedProps);
   }
   const ariaLabel = useText(Message$1, combinedProps, 'validationLabel', validation, validation !== undefined);
-  return React__default.createElement(MessageComponent, _extends$t({
+  return React.createElement(MessageComponent, _extends$t({
     ref: ref
-  }, combinedProps), validation && React__default.createElement(StyledMessageIcon, {
+  }, combinedProps), validation && React.createElement(StyledMessageIcon, {
     validation: validation,
     "aria-label": ariaLabel
   }), children);
@@ -7058,7 +7058,7 @@ Message$1.propTypes = {
   validationLabel: PropTypes.string
 };
 
-const Checkbox = React__default.forwardRef((_ref, ref) => {
+const Checkbox = React.forwardRef((_ref, ref) => {
   let {
     indeterminate,
     children,
@@ -7088,9 +7088,9 @@ const Checkbox = React__default.forwardRef((_ref, ref) => {
   if (fieldContext) {
     combinedProps = fieldContext.getInputProps(combinedProps);
   }
-  return React__default.createElement(InputContext.Provider, {
+  return React.createElement(InputContext.Provider, {
     value: "checkbox"
-  }, React__default.createElement(StyledCheckInput, combinedProps), children);
+  }, React.createElement(StyledCheckInput, combinedProps), children);
 });
 Checkbox.displayName = 'Checkbox';
 Checkbox.propTypes = {
@@ -7103,14 +7103,14 @@ const useInputGroupContext = () => {
   return reactExports.useContext(InputGroupContext);
 };
 
-const Input = React__default.forwardRef((_ref, ref) => {
+const Input = React.forwardRef((_ref, ref) => {
   let {
     onSelect,
     ...props
   } = _ref;
   const fieldContext = useFieldContext$1();
   const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$3(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$4(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -7128,7 +7128,7 @@ const Input = React__default.forwardRef((_ref, ref) => {
   if (fieldContext) {
     combinedProps = fieldContext.getInputProps(combinedProps);
   }
-  return React__default.createElement(StyledTextInput, combinedProps);
+  return React.createElement(StyledTextInput, combinedProps);
 });
 Input.propTypes = {
   isCompact: PropTypes.bool,
@@ -7138,7 +7138,7 @@ Input.propTypes = {
 };
 Input.displayName = 'Input';
 
-const Radio = React__default.forwardRef((_ref, ref) => {
+const Radio = React.forwardRef((_ref, ref) => {
   let {
     children,
     ...props
@@ -7153,16 +7153,16 @@ const Radio = React__default.forwardRef((_ref, ref) => {
   if (fieldContext) {
     combinedProps = fieldContext.getInputProps(combinedProps);
   }
-  return React__default.createElement(InputContext.Provider, {
+  return React.createElement(InputContext.Provider, {
     value: "radio"
-  }, React__default.createElement(StyledRadioInput, combinedProps), children);
+  }, React.createElement(StyledRadioInput, combinedProps), children);
 });
 Radio.displayName = 'Radio';
 Radio.propTypes = {
   isCompact: PropTypes.bool
 };
 
-const Range = React__default.forwardRef((_ref, ref) => {
+const Range = React.forwardRef((_ref, ref) => {
   let {
     hasLowerTrack,
     min,
@@ -7188,7 +7188,7 @@ const Range = React__default.forwardRef((_ref, ref) => {
   reactExports.useEffect(() => {
     updateBackgroundWidthFromInput(rangeRef.current);
   }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$3(props.onChange, event => {
+  const onChange = hasLowerTrack ? composeEventHandlers$4(props.onChange, event => {
     updateBackgroundWidthFromInput(event.target);
   }) : props.onChange;
   let combinedProps = {
@@ -7206,7 +7206,7 @@ const Range = React__default.forwardRef((_ref, ref) => {
       isDescribed: true
     });
   }
-  return React__default.createElement(StyledRangeInput, combinedProps);
+  return React.createElement(StyledRangeInput, combinedProps);
 });
 Range.defaultProps = {
   hasLowerTrack: true,
@@ -7219,7 +7219,7 @@ Range.displayName = 'Range';
 const parseStyleValue = value => {
   return parseInt(value, 10) || 0;
 };
-const Textarea = React__default.forwardRef((_ref, ref) => {
+const Textarea = React.forwardRef((_ref, ref) => {
   let {
     minRows,
     maxRows,
@@ -7305,7 +7305,7 @@ const Textarea = React__default.forwardRef((_ref, ref) => {
     computedStyle.height = state.height;
     computedStyle.overflow = state.overflow ? 'hidden' : undefined;
   }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$3(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$4(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -7324,7 +7324,7 @@ const Textarea = React__default.forwardRef((_ref, ref) => {
       isDescribed: true
     });
   }
-  return React__default.createElement(React__default.Fragment, null, React__default.createElement(StyledTextarea, combinedProps), isAutoResizable && React__default.createElement(StyledTextarea, {
+  return React.createElement(React.Fragment, null, React.createElement(StyledTextarea, combinedProps), isAutoResizable && React.createElement(StyledTextarea, {
     "aria-hidden": true,
     readOnly: true,
     isHidden: true,
@@ -7347,7 +7347,7 @@ Textarea.propTypes = {
 };
 Textarea.displayName = 'Textarea';
 
-const Toggle = React__default.forwardRef((_ref, ref) => {
+const Toggle = React.forwardRef((_ref, ref) => {
   let {
     children,
     ...props
@@ -7362,9 +7362,9 @@ const Toggle = React__default.forwardRef((_ref, ref) => {
   if (fieldContext) {
     combinedProps = fieldContext.getInputProps(combinedProps);
   }
-  return React__default.createElement(InputContext.Provider, {
+  return React.createElement(InputContext.Provider, {
     value: "toggle"
-  }, React__default.createElement(StyledToggleInput, combinedProps), children);
+  }, React.createElement(StyledToggleInput, combinedProps), children);
 });
 Toggle.displayName = 'Toggle';
 Toggle.propTypes = {
@@ -7387,13 +7387,13 @@ var SvgChevronDownStroke$2 = function SvgChevronDownStroke(props) {
   })));
 };
 
-const StartIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure, _extends$t({
+const StartIconComponent$1 = props => React.createElement(StyledTextMediaFigure, _extends$t({
   position: "start"
 }, props));
 StartIconComponent$1.displayName = 'FauxInput.StartIcon';
 const StartIcon$1 = StartIconComponent$1;
 
-const EndIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure, _extends$t({
+const EndIconComponent$1 = props => React.createElement(StyledTextMediaFigure, _extends$t({
   position: "end"
 }, props));
 EndIconComponent$1.displayName = 'FauxInput.EndIcon';
@@ -7409,13 +7409,13 @@ const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
     ...props
   } = _ref;
   const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$3(onFocus, () => {
+  const onFocusHandler = composeEventHandlers$4(onFocus, () => {
     setIsFocused(true);
   });
-  const onBlurHandler = composeEventHandlers$3(onBlur, () => {
+  const onBlurHandler = composeEventHandlers$4(onBlur, () => {
     setIsFocused(false);
   });
-  return React__default.createElement(StyledTextFauxInput, _extends$t({
+  return React.createElement(StyledTextFauxInput, _extends$t({
     onFocus: onFocusHandler,
     onBlur: onBlurHandler,
     isFocused: controlledIsFocused === undefined ? isFocused : controlledIsFocused,
@@ -7441,7 +7441,7 @@ const FauxInput = FauxInputComponent;
 FauxInput.EndIcon = EndIcon$1;
 FauxInput.StartIcon = StartIcon$1;
 
-const Select = React__default.forwardRef((_ref, ref) => {
+const Select = React.forwardRef((_ref, ref) => {
   let {
     disabled,
     isCompact,
@@ -7465,14 +7465,14 @@ const Select = React__default.forwardRef((_ref, ref) => {
       isDescribed: true
     });
   }
-  return React__default.createElement(StyledSelectWrapper, {
+  return React.createElement(StyledSelectWrapper, {
     isCompact: isCompact,
     isBare: isBare,
     validation: validation,
     focusInset: focusInset
-  }, React__default.createElement(StyledSelect, combinedProps), !isBare && React__default.createElement(FauxInput.EndIcon, {
+  }, React.createElement(StyledSelect, combinedProps), !isBare && React.createElement(FauxInput.EndIcon, {
     isDisabled: disabled
-  }, React__default.createElement(SvgChevronDownStroke$2, null)));
+  }, React.createElement(SvgChevronDownStroke$2, null)));
 });
 Select.propTypes = {
   isCompact: PropTypes.bool,
@@ -7544,16 +7544,16 @@ const MultiThumbRange = reactExports.forwardRef((_ref, ref) => {
   const minPosition = (updatedMinValue - min) / (max - min) * trackRect.width;
   const maxPosition = (updatedMaxValue - min) / (max - min) * trackRect.width;
   const sliderBackgroundSize = Math.abs(maxPosition) - Math.abs(minPosition);
-  return React__default.createElement(StyledSlider, _extends$t({
+  return React.createElement(StyledSlider, _extends$t({
     ref: ref,
     onMouseDown: onSliderMouseDown
-  }, props), React__default.createElement(StyledSliderTrack, {
+  }, props), React.createElement(StyledSliderTrack, {
     backgroundSize: sliderBackgroundSize,
     backgroundPosition: theme.rtl ? trackRect.width - maxPosition : minPosition,
     isDisabled: disabled
-  }, React__default.createElement(StyledSliderTrackRail, _extends$t({}, trackProps, {
+  }, React.createElement(StyledSliderTrackRail, _extends$t({}, trackProps, {
     ref: trackRailRef
-  }), React__default.createElement(StyledSliderThumb, _extends$t({}, getMinThumbProps({
+  }), React.createElement(StyledSliderThumb, _extends$t({}, getMinThumbProps({
     'aria-label': updatedMinValue
   }), {
     isDisabled: disabled,
@@ -7561,7 +7561,7 @@ const MultiThumbRange = reactExports.forwardRef((_ref, ref) => {
     ref: minThumbRef,
     "data-garden-active": isLabelActive,
     "data-garden-hover": isLabelHovered
-  })), React__default.createElement(StyledSliderThumb, _extends$t({}, getMaxThumbProps({
+  })), React.createElement(StyledSliderThumb, _extends$t({}, getMaxThumbProps({
     'aria-label': updatedMaxValue
   }), {
     isDisabled: disabled,
@@ -7591,7 +7591,7 @@ const useTilesContext = () => {
   return reactExports.useContext(TilesContext);
 };
 
-const TileComponent = React__default.forwardRef((_ref, ref) => {
+const TileComponent = React.forwardRef((_ref, ref) => {
   let {
     children,
     value,
@@ -7608,12 +7608,12 @@ const TileComponent = React__default.forwardRef((_ref, ref) => {
       onChange: tilesContext.onChange
     };
   }
-  return React__default.createElement(StyledTile, _extends$t({
+  return React.createElement(StyledTile, _extends$t({
     ref: ref,
     "aria-disabled": disabled,
     isDisabled: disabled,
     isSelected: tilesContext && tilesContext.value === value
-  }, props), children, React__default.createElement(StyledTileInput, _extends$t({}, inputProps, {
+  }, props), children, React.createElement(StyledTileInput, _extends$t({}, inputProps, {
     disabled: disabled,
     value: value,
     type: "radio",
@@ -7629,7 +7629,7 @@ const Tile = TileComponent;
 
 const DescriptionComponent = reactExports.forwardRef((props, ref) => {
   const tilesContext = useTilesContext();
-  return React__default.createElement(StyledTileDescription, _extends$t({
+  return React.createElement(StyledTileDescription, _extends$t({
     ref: ref,
     isCentered: tilesContext && tilesContext.isCentered
   }, props));
@@ -7639,7 +7639,7 @@ const Description = DescriptionComponent;
 
 const IconComponent = reactExports.forwardRef((props, ref) => {
   const tileContext = useTilesContext();
-  return React__default.createElement(StyledTileIcon, _extends$t({
+  return React.createElement(StyledTileIcon, _extends$t({
     ref: ref,
     isCentered: tileContext && tileContext.isCentered
   }, props));
@@ -7656,7 +7656,7 @@ const LabelComponent = reactExports.forwardRef((props, forwardedRef) => {
       setTitle(ref.current.textContent || undefined);
     }
   }, [ref]);
-  return React__default.createElement(StyledTileLabel, _extends$t({
+  return React.createElement(StyledTileLabel, _extends$t({
     ref: mergeRefs([ref, forwardedRef]),
     title: title,
     isCentered: tilesContext && tilesContext.isCentered
@@ -7690,9 +7690,9 @@ const TilesComponent = reactExports.forwardRef((_ref, ref) => {
     name,
     isCentered
   }), [handleOnChange, selectedValue, name, isCentered]);
-  return React__default.createElement(TilesContext.Provider, {
+  return React.createElement(TilesContext.Provider, {
     value: tileContext
-  }, React__default.createElement("div", _extends$t({
+  }, React.createElement("div", _extends$t({
     ref: ref,
     role: "radiogroup"
   }, props)));
@@ -7713,7 +7713,7 @@ Tiles.Icon = Icon;
 Tiles.Label = Label$2;
 Tiles.Tile = Tile;
 
-const InputGroup = React__default.forwardRef((_ref, ref) => {
+const InputGroup = React.forwardRef((_ref, ref) => {
   let {
     isCompact,
     ...props
@@ -7721,9 +7721,9 @@ const InputGroup = React__default.forwardRef((_ref, ref) => {
   const contextValue = reactExports.useMemo(() => ({
     isCompact
   }), [isCompact]);
-  return React__default.createElement(InputGroupContext.Provider, {
+  return React.createElement(InputGroupContext.Provider, {
     value: contextValue
-  }, React__default.createElement(StyledInputGroup$1, _extends$t({
+  }, React.createElement(StyledInputGroup$1, _extends$t({
     ref: ref,
     isCompact: isCompact
   }, props)));
@@ -7733,13 +7733,13 @@ InputGroup.propTypes = {
   isCompact: PropTypes.bool
 };
 
-const FileUpload = React__default.forwardRef((_ref, ref) => {
+const FileUpload = React.forwardRef((_ref, ref) => {
   let {
     disabled,
     ...props
   } = _ref;
   return (
-    React__default.createElement(StyledFileUpload, _extends$t({
+    React.createElement(StyledFileUpload, _extends$t({
       ref: ref,
       "aria-disabled": disabled
     }, props, {
@@ -7758,7 +7758,7 @@ const ItemComponent = reactExports.forwardRef((_ref, ref) => {
   let {
     ...props
   } = _ref;
-  return React__default.createElement(StyledFileListItem, _extends$t({}, props, {
+  return React.createElement(StyledFileListItem, _extends$t({}, props, {
     ref: ref
   }));
 });
@@ -7769,7 +7769,7 @@ const FileListComponent = reactExports.forwardRef((_ref, ref) => {
   let {
     ...props
   } = _ref;
-  return React__default.createElement(StyledFileList, _extends$t({}, props, {
+  return React.createElement(StyledFileList, _extends$t({}, props, {
     ref: ref
   }));
 });
@@ -7816,19 +7816,19 @@ const useFileContext = () => {
   return reactExports.useContext(FileContext);
 };
 
-const CloseComponent$1 = React__default.forwardRef((props, ref) => {
+const CloseComponent$1 = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$3(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$4(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
-  return React__default.createElement(StyledFileClose, _extends$t({
+  return React.createElement(StyledFileClose, _extends$t({
     ref: ref,
     "aria-label": ariaLabel
   }, props, {
     type: "button",
     tabIndex: -1,
     onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgXStroke$1$1, null) : React__default.createElement(SvgXStroke$3, null));
+  }), fileContext && fileContext.isCompact ? React.createElement(SvgXStroke$1$1, null) : React.createElement(SvgXStroke$3, null));
 });
 CloseComponent$1.displayName = 'File.Close';
 const Close$2 = CloseComponent$1;
@@ -7869,19 +7869,19 @@ var SvgTrashStroke = function SvgTrashStroke(props) {
   })));
 };
 
-const DeleteComponent = React__default.forwardRef((props, ref) => {
+const DeleteComponent = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$3(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$4(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
-  return React__default.createElement(StyledFileDelete, _extends$t({
+  return React.createElement(StyledFileDelete, _extends$t({
     ref: ref,
     "aria-label": ariaLabel
   }, props, {
     type: "button",
     tabIndex: -1,
     onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgTrashStroke$1, null) : React__default.createElement(SvgTrashStroke, null));
+  }), fileContext && fileContext.isCompact ? React.createElement(SvgTrashStroke$1, null) : React.createElement(SvgTrashStroke, null));
 });
 DeleteComponent.displayName = 'File.Delete';
 const Delete = DeleteComponent;
@@ -8222,26 +8222,26 @@ var SvgFileErrorStroke = function SvgFileErrorStroke(props) {
 };
 
 const fileIconsDefault = {
-  pdf: React__default.createElement(SvgFilePdfStroke, null),
-  zip: React__default.createElement(SvgFileZipStroke, null),
-  image: React__default.createElement(SvgFileImageStroke, null),
-  document: React__default.createElement(SvgFileDocumentStroke, null),
-  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke, null),
-  presentation: React__default.createElement(SvgFilePresentationStroke, null),
-  generic: React__default.createElement(SvgFileGenericStroke, null),
-  success: React__default.createElement(SvgCheckCircleStroke$1, null),
-  error: React__default.createElement(SvgFileErrorStroke, null)
+  pdf: React.createElement(SvgFilePdfStroke, null),
+  zip: React.createElement(SvgFileZipStroke, null),
+  image: React.createElement(SvgFileImageStroke, null),
+  document: React.createElement(SvgFileDocumentStroke, null),
+  spreadsheet: React.createElement(SvgFileSpreadsheetStroke, null),
+  presentation: React.createElement(SvgFilePresentationStroke, null),
+  generic: React.createElement(SvgFileGenericStroke, null),
+  success: React.createElement(SvgCheckCircleStroke$1, null),
+  error: React.createElement(SvgFileErrorStroke, null)
 };
 const fileIconsCompact = {
-  pdf: React__default.createElement(SvgFilePdfStroke$1, null),
-  zip: React__default.createElement(SvgFileZipStroke$1, null),
-  image: React__default.createElement(SvgFileImageStroke$1, null),
-  document: React__default.createElement(SvgFileDocumentStroke$1, null),
-  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke$1, null),
-  presentation: React__default.createElement(SvgFilePresentationStroke$1, null),
-  generic: React__default.createElement(SvgFileGenericStroke$1, null),
-  success: React__default.createElement(SvgCheckCircleStroke$2, null),
-  error: React__default.createElement(SvgFileErrorStroke$1, null)
+  pdf: React.createElement(SvgFilePdfStroke$1, null),
+  zip: React.createElement(SvgFileZipStroke$1, null),
+  image: React.createElement(SvgFileImageStroke$1, null),
+  document: React.createElement(SvgFileDocumentStroke$1, null),
+  spreadsheet: React.createElement(SvgFileSpreadsheetStroke$1, null),
+  presentation: React.createElement(SvgFilePresentationStroke$1, null),
+  generic: React.createElement(SvgFileGenericStroke$1, null),
+  success: React.createElement(SvgCheckCircleStroke$2, null),
+  error: React.createElement(SvgFileErrorStroke$1, null)
 };
 
 const FileComponent = reactExports.forwardRef((_ref, ref) => {
@@ -8257,16 +8257,16 @@ const FileComponent = reactExports.forwardRef((_ref, ref) => {
     isCompact
   }), [isCompact]);
   const validationType = validation || type;
-  return React__default.createElement(FileContext.Provider, {
+  return React.createElement(FileContext.Provider, {
     value: fileContextValue
-  }, React__default.createElement(StyledFile, _extends$t({}, props, {
+  }, React.createElement(StyledFile, _extends$t({}, props, {
     isCompact: isCompact,
     focusInset: focusInset,
     validation: validation,
     ref: ref
-  }), validationType && React__default.createElement(StyledFileIcon, {
+  }), validationType && React.createElement(StyledFileIcon, {
     isCompact: isCompact
-  }, isCompact ? fileIconsCompact[validationType] : fileIconsDefault[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? React__default.createElement("span", null, child) : child)));
+  }, isCompact ? fileIconsCompact[validationType] : fileIconsDefault[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? React.createElement("span", null, child) : child)));
 });
 FileComponent.displayName = 'File';
 FileComponent.propTypes = {
@@ -8279,7 +8279,7 @@ const File = FileComponent;
 File.Close = Close$2;
 File.Delete = Delete;
 
-const MediaInput = React__default.forwardRef((_ref, ref) => {
+const MediaInput = React.forwardRef((_ref, ref) => {
   let {
     start,
     end,
@@ -8306,22 +8306,22 @@ const MediaInput = React__default.forwardRef((_ref, ref) => {
     onMouseOut,
     ...otherWrapperProps
   } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$3(onClick, () => {
+  const onFauxInputClickHandler = composeEventHandlers$4(onClick, () => {
     inputRef.current && inputRef.current.focus();
   });
-  const onFauxInputFocusHandler = composeEventHandlers$3(onFocus, () => {
+  const onFauxInputFocusHandler = composeEventHandlers$4(onFocus, () => {
     setIsFocused(true);
   });
-  const onFauxInputBlurHandler = composeEventHandlers$3(onBlur, () => {
+  const onFauxInputBlurHandler = composeEventHandlers$4(onBlur, () => {
     setIsFocused(false);
   });
-  const onFauxInputMouseOverHandler = composeEventHandlers$3(onMouseOver, () => {
+  const onFauxInputMouseOverHandler = composeEventHandlers$4(onMouseOver, () => {
     setIsHovered(true);
   });
-  const onFauxInputMouseOutHandler = composeEventHandlers$3(onMouseOut, () => {
+  const onFauxInputMouseOutHandler = composeEventHandlers$4(onMouseOut, () => {
     setIsHovered(false);
   });
-  const onSelectHandler = readOnly ? composeEventHandlers$3(onSelect, event => {
+  const onSelectHandler = readOnly ? composeEventHandlers$4(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -8338,7 +8338,7 @@ const MediaInput = React__default.forwardRef((_ref, ref) => {
     });
     isLabelHovered = fieldContext.isLabelHovered;
   }
-  return React__default.createElement(FauxInput, _extends$t({
+  return React.createElement(FauxInput, _extends$t({
     tabIndex: null,
     onClick: onFauxInputClickHandler,
     onFocus: onFauxInputFocusHandler,
@@ -8356,11 +8356,11 @@ const MediaInput = React__default.forwardRef((_ref, ref) => {
     mediaLayout: true
   }, otherWrapperProps, {
     ref: wrapperRef
-  }), start && React__default.createElement(FauxInput.StartIcon, {
+  }), start && React.createElement(FauxInput.StartIcon, {
     isDisabled: disabled,
     isFocused: isFocused,
     isHovered: isHovered || isLabelHovered
-  }, start), React__default.createElement(StyledTextMediaInput, combinedProps), end && React__default.createElement(FauxInput.EndIcon, {
+  }, start), React.createElement(StyledTextMediaInput, combinedProps), end && React.createElement(FauxInput.EndIcon, {
     isDisabled: disabled,
     isFocused: isFocused,
     isHovered: isHovered || isLabelHovered
@@ -8385,7 +8385,7 @@ MediaInput.displayName = 'MediaInput';
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$1() {
+function composeEventHandlers$2() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -8399,7 +8399,7 @@ function composeEventHandlers$1() {
     });
   };
 }
-const KEYS$1 = {
+const KEYS$2 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -8428,7 +8428,7 @@ const KEYS$1 = {
   UP: 'ArrowUp'
 };
 
-var DocumentPosition$1;
+var DocumentPosition$2;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -8436,7 +8436,10 @@ var DocumentPosition$1;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+})(DocumentPosition$2 || (DocumentPosition$2 = {}));
+
+let idCounter$1 = 0;
+const useId = id => useId$1(id) || `id:${idCounter$1++}`;
 
 /**
  * Copyright Zendesk, Inc.
@@ -8464,7 +8467,7 @@ const useField = _ref => {
     } = _temp === void 0 ? {} : _temp;
     return {
       'data-garden-container-id': 'containers.field.label',
-      'data-garden-container-version': '3.0.5',
+      'data-garden-container-version': '3.0.9',
       id,
       htmlFor,
       ...other
@@ -8477,7 +8480,7 @@ const useField = _ref => {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       'data-garden-container-id': 'containers.field.hint',
-      'data-garden-container-version': '3.0.5',
+      'data-garden-container-version': '3.0.9',
       id,
       ...other
     };
@@ -8496,7 +8499,7 @@ const useField = _ref => {
     }
     return {
       'data-garden-container-id': 'containers.field.input',
-      'data-garden-container-version': '3.0.5',
+      'data-garden-container-version': '3.0.9',
       id,
       'aria-labelledby': labelId,
       'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined,
@@ -8511,7 +8514,7 @@ const useField = _ref => {
     } = _temp4 === void 0 ? {} : _temp4;
     return {
       'data-garden-container-id': 'containers.field.message',
-      'data-garden-container-version': '3.0.5',
+      'data-garden-container-version': '3.0.9',
       role: role === null ? undefined : role,
       id,
       ...other
@@ -8756,70 +8759,70 @@ function normalizeArrowKey(event) {
 }
 
 /**
- * Returns the new index in the list, in a circular way. If next value is out of bonds from the total,
- * it will wrap to either 0 or itemCount - 1.
+ * Returns the next non-disabled highlightedIndex value.
  *
- * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
- * @param {number} baseIndex The initial position to move from.
- * @param {number} itemCount The total number of items.
- * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
- * @param {boolean} circular Specify if navigation is circular. Default is true.
- * @returns {number} The new index after the move.
+ * @param {number} start The current highlightedIndex.
+ * @param {number} offset The offset from the current highlightedIndex to start searching.
+ * @param {unknown[]} items The items array.
+ * @param {(item: unknown, index: number) => boolean} isItemDisabled Function that tells if an item is disabled or not.
+ * @param {boolean?} circular If the search reaches the end, if it can search again starting from the other end.
+ * @returns {number} The next highlightedIndex.
  */
-function getNextWrappingIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
+function getHighlightedIndex(start, offset, items, isItemDisabled, circular) {
   if (circular === void 0) {
-    circular = true;
+    circular = false;
   }
-  if (itemCount === 0) {
+  var count = items.length;
+  if (count === 0) {
     return -1;
   }
-  var itemsLastIndex = itemCount - 1;
-  if (typeof baseIndex !== 'number' || baseIndex < 0 || baseIndex >= itemCount) {
-    baseIndex = moveAmount > 0 ? -1 : itemsLastIndex + 1;
+  var itemsLastIndex = count - 1;
+  if (typeof start !== 'number' || start < 0 || start > itemsLastIndex) {
+    start = offset > 0 ? -1 : itemsLastIndex + 1;
   }
-  var newIndex = baseIndex + moveAmount;
-  if (newIndex < 0) {
-    newIndex = circular ? itemsLastIndex : 0;
-  } else if (newIndex > itemsLastIndex) {
-    newIndex = circular ? 0 : itemsLastIndex;
+  var current = start + offset;
+  if (current < 0) {
+    current = circular ? itemsLastIndex : 0;
+  } else if (current > itemsLastIndex) {
+    current = circular ? 0 : itemsLastIndex;
   }
-  var nonDisabledNewIndex = getNextNonDisabledIndex(moveAmount, newIndex, itemCount, getItemNodeFromIndex, circular);
-  if (nonDisabledNewIndex === -1) {
-    return baseIndex >= itemCount ? -1 : baseIndex;
+  var highlightedIndex = getNonDisabledIndex(current, offset < 0, items, isItemDisabled, circular);
+  if (highlightedIndex === -1) {
+    return start >= count ? -1 : start;
   }
-  return nonDisabledNewIndex;
+  return highlightedIndex;
 }
 
 /**
- * Returns the next index in the list of an item that is not disabled.
+ * Returns the next non-disabled highlightedIndex value.
  *
- * @param {number} moveAmount Number of positions to move. Negative to move backwards, positive forwards.
- * @param {number} baseIndex The initial position to move from.
- * @param {number} itemCount The total number of items.
- * @param {Function} getItemNodeFromIndex Used to check if item is disabled.
- * @param {boolean} circular Specify if navigation is circular. Default is true.
- * @returns {number} The new index. Returns baseIndex if item is not disabled. Returns next non-disabled item otherwise. If no non-disabled found it will return -1.
+ * @param {number} start The current highlightedIndex.
+ * @param {boolean} backwards If true, it will search backwards from the start.
+ * @param {unknown[]} items The items array.
+ * @param {(item: unknown, index: number) => boolean} isItemDisabled Function that tells if an item is disabled or not.
+ * @param {boolean} circular If the search reaches the end, if it can search again starting from the other end.
+ * @returns {number} The next non-disabled index.
  */
-function getNextNonDisabledIndex(moveAmount, baseIndex, itemCount, getItemNodeFromIndex, circular) {
-  var currentElementNode = getItemNodeFromIndex(baseIndex);
-  if (!currentElementNode || !currentElementNode.hasAttribute('disabled')) {
-    return baseIndex;
+function getNonDisabledIndex(start, backwards, items, isItemDisabled, circular) {
+  if (circular === void 0) {
+    circular = false;
   }
-  if (moveAmount > 0) {
-    for (var index = baseIndex + 1; index < itemCount; index++) {
-      if (!getItemNodeFromIndex(index).hasAttribute('disabled')) {
+  var count = items.length;
+  if (backwards) {
+    for (var index = start; index >= 0; index--) {
+      if (!isItemDisabled(items[index], index)) {
         return index;
       }
     }
   } else {
-    for (var _index = baseIndex - 1; _index >= 0; _index--) {
-      if (!getItemNodeFromIndex(_index).hasAttribute('disabled')) {
+    for (var _index = start; _index < count; _index++) {
+      if (!isItemDisabled(items[_index], _index)) {
         return _index;
       }
     }
   }
   if (circular) {
-    return moveAmount > 0 ? getNextNonDisabledIndex(1, 0, itemCount, getItemNodeFromIndex, false) : getNextNonDisabledIndex(-1, itemCount - 1, itemCount, getItemNodeFromIndex, false);
+    return getNonDisabledIndex(backwards ? count - 1 : 0, backwards, items, isItemDisabled);
   }
   return -1;
 }
@@ -8958,14 +8961,21 @@ var updateA11yStatus = debounce$1(function (getA11yMessage, document) {
 
 // istanbul ignore next
 var useIsomorphicLayoutEffect = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined' ? reactExports.useLayoutEffect : reactExports.useEffect;
-function useElementIds(_ref) {
-  var _ref$id = _ref.id,
-    id = _ref$id === void 0 ? "downshift-" + generateId() : _ref$id,
+
+// istanbul ignore next
+var useElementIds = 'useId' in React // Avoid conditional useId call
+? function useElementIds(_ref) {
+  var id = _ref.id,
     labelId = _ref.labelId,
     menuId = _ref.menuId,
     getItemId = _ref.getItemId,
     toggleButtonId = _ref.toggleButtonId,
     inputId = _ref.inputId;
+  // Avoid conditional useId call
+  var reactId = "downshift-" + React.useId();
+  if (!id) {
+    id = reactId;
+  }
   var elementIdsRef = reactExports.useRef({
     labelId: labelId || id + "-label",
     menuId: menuId || id + "-menu",
@@ -8976,7 +8986,25 @@ function useElementIds(_ref) {
     inputId: inputId || id + "-input"
   });
   return elementIdsRef.current;
-}
+} : function useElementIds(_ref2) {
+  var _ref2$id = _ref2.id,
+    id = _ref2$id === void 0 ? "downshift-" + generateId() : _ref2$id,
+    labelId = _ref2.labelId,
+    menuId = _ref2.menuId,
+    getItemId = _ref2.getItemId,
+    toggleButtonId = _ref2.toggleButtonId,
+    inputId = _ref2.inputId;
+  var elementIdsRef = reactExports.useRef({
+    labelId: labelId || id + "-label",
+    menuId: menuId || id + "-menu",
+    getItemId: getItemId || function (index) {
+      return id + "-item-" + index;
+    },
+    toggleButtonId: toggleButtonId || id + "-toggle-button",
+    inputId: inputId || id + "-input"
+  });
+  return elementIdsRef.current;
+};
 function getItemAndIndex(itemProp, indexProp, items, errorMessage) {
   var item, index;
   if (itemProp === undefined) {
@@ -9187,12 +9215,12 @@ function useMouseAndTouchTracker(isOpen, downshiftElementRefs, environment, hand
 var useGetterPropsCalledChecker = function useGetterPropsCalledChecker() {
   return noop;
 };
-function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref2) {
-  var isInitialMount = _ref2.isInitialMount,
-    highlightedIndex = _ref2.highlightedIndex,
-    items = _ref2.items,
-    environment = _ref2.environment,
-    rest = _objectWithoutPropertiesLoose(_ref2, _excluded$3);
+function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref3) {
+  var isInitialMount = _ref3.isInitialMount,
+    highlightedIndex = _ref3.highlightedIndex,
+    items = _ref3.items,
+    environment = _ref3.environment,
+    rest = _objectWithoutPropertiesLoose(_ref3, _excluded$3);
   // Sets a11y status message on changes in state.
   reactExports.useEffect(function () {
     if (isInitialMount || false) {
@@ -9208,13 +9236,13 @@ function useA11yMessageSetter(getA11yMessage, dependencyArray, _ref2) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencyArray);
 }
-function useScrollIntoView(_ref3) {
-  var highlightedIndex = _ref3.highlightedIndex,
-    isOpen = _ref3.isOpen,
-    itemRefs = _ref3.itemRefs,
-    getItemNodeFromIndex = _ref3.getItemNodeFromIndex,
-    menuElement = _ref3.menuElement,
-    scrollIntoViewProp = _ref3.scrollIntoView;
+function useScrollIntoView(_ref4) {
+  var highlightedIndex = _ref4.highlightedIndex,
+    isOpen = _ref4.isOpen,
+    itemRefs = _ref4.itemRefs,
+    getItemNodeFromIndex = _ref4.getItemNodeFromIndex,
+    menuElement = _ref4.menuElement,
+    scrollIntoViewProp = _ref4.scrollIntoView;
   // used not to scroll on highlight by mouse.
   var shouldScrollRef = reactExports.useRef(true);
   // Scroll on highlighted item if change comes from keyboard.
@@ -9260,6 +9288,47 @@ function getChangesOnSelection(props, highlightedIndex, inputValue) {
     inputValue: props.itemToString(props.items[highlightedIndex])
   }));
 }
+
+// Shared between all exports.
+var commonPropTypes = {
+  environment: PropTypes.shape({
+    addEventListener: PropTypes.func.isRequired,
+    removeEventListener: PropTypes.func.isRequired,
+    document: PropTypes.shape({
+      createElement: PropTypes.func.isRequired,
+      getElementById: PropTypes.func.isRequired,
+      activeElement: PropTypes.any.isRequired,
+      body: PropTypes.any.isRequired
+    }).isRequired,
+    Node: PropTypes.func.isRequired
+  }),
+  itemToString: PropTypes.func,
+  stateReducer: PropTypes.func
+};
+
+// Shared between useSelect, useCombobox, Downshift.
+var commonDropdownPropTypes = _extends$w({}, commonPropTypes, {
+  getA11yStatusMessage: PropTypes.func,
+  highlightedIndex: PropTypes.number,
+  defaultHighlightedIndex: PropTypes.number,
+  initialHighlightedIndex: PropTypes.number,
+  isOpen: PropTypes.bool,
+  defaultIsOpen: PropTypes.bool,
+  initialIsOpen: PropTypes.bool,
+  selectedItem: PropTypes.any,
+  initialSelectedItem: PropTypes.any,
+  defaultSelectedItem: PropTypes.any,
+  id: PropTypes.string,
+  labelId: PropTypes.string,
+  menuId: PropTypes.string,
+  getItemId: PropTypes.func,
+  toggleButtonId: PropTypes.string,
+  onSelectedItemChange: PropTypes.func,
+  onHighlightedIndexChange: PropTypes.func,
+  onStateChange: PropTypes.func,
+  onIsOpenChange: PropTypes.func,
+  scrollIntoView: PropTypes.func
+});
 
 function downshiftCommonReducer(state, action, stateChangeTypes) {
   var type = action.type,
@@ -9317,40 +9386,8 @@ function downshiftCommonReducer(state, action, stateChangeTypes) {
   }
   return _extends$w({}, state, changes);
 }
-({
-    items: PropTypes.array.isRequired,
-    itemToString: PropTypes.func,
-    getA11yStatusMessage: PropTypes.func,
-    getA11ySelectionMessage: PropTypes.func,
-    highlightedIndex: PropTypes.number,
-    defaultHighlightedIndex: PropTypes.number,
-    initialHighlightedIndex: PropTypes.number,
-    isOpen: PropTypes.bool,
-    defaultIsOpen: PropTypes.bool,
-    initialIsOpen: PropTypes.bool,
-    selectedItem: PropTypes.any,
-    initialSelectedItem: PropTypes.any,
-    defaultSelectedItem: PropTypes.any,
-    id: PropTypes.string,
-    labelId: PropTypes.string,
-    menuId: PropTypes.string,
-    getItemId: PropTypes.func,
-    toggleButtonId: PropTypes.string,
-    stateReducer: PropTypes.func,
-    onSelectedItemChange: PropTypes.func,
-    onHighlightedIndexChange: PropTypes.func,
-    onStateChange: PropTypes.func,
-    onIsOpenChange: PropTypes.func,
-    environment: PropTypes.shape({
-        addEventListener: PropTypes.func,
-        removeEventListener: PropTypes.func,
-        document: PropTypes.shape({
-            getElementById: PropTypes.func,
-            activeElement: PropTypes.any,
-            body: PropTypes.any
-        })
-    })
-});
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+__assign(__assign({}, commonDropdownPropTypes), { items: PropTypes.array.isRequired, isItemDisabled: PropTypes.func, getA11ySelectionMessage: PropTypes.func });
 /**
  * Default implementation for status message. Only added when menu is open.
  * Will specift if there are results in the list, and if so, how many,
@@ -9372,7 +9409,9 @@ function getA11yStatusMessage(_a) {
     }
     return '';
 }
-__assign(__assign({}, defaultProps$3), { getA11yStatusMessage: getA11yStatusMessage });
+__assign(__assign({}, defaultProps$3), { getA11yStatusMessage: getA11yStatusMessage, isItemDisabled: function () {
+        return false;
+    } });
 
 var InputKeyDownArrowDown = 0;
 var InputKeyDownArrowUp = 1;
@@ -9384,7 +9423,7 @@ var InputKeyDownPageDown = 6;
 var InputKeyDownEnter = 7;
 var InputChange = 8;
 var InputBlur = 9;
-var InputFocus = 10;
+var InputClick = 10;
 var MenuMouseLeave = 11;
 var ItemMouseMove = 12;
 var ItemClick = 13;
@@ -9410,7 +9449,7 @@ var stateChangeTypes$1 = /*#__PURE__*/Object.freeze({
   InputKeyDownEnter: InputKeyDownEnter,
   InputChange: InputChange,
   InputBlur: InputBlur,
-  InputFocus: InputFocus,
+  InputClick: InputClick,
   MenuMouseLeave: MenuMouseLeave,
   ItemMouseMove: ItemMouseMove,
   ItemClick: ItemClick,
@@ -9436,45 +9475,16 @@ function getInitialState$1(props) {
     inputValue: inputValue
   });
 }
-({
+_extends$w({}, commonDropdownPropTypes, {
   items: PropTypes.array.isRequired,
-  itemToString: PropTypes.func,
+  isItemDisabled: PropTypes.func,
   selectedItemChanged: PropTypes.func,
-  getA11yStatusMessage: PropTypes.func,
   getA11ySelectionMessage: PropTypes.func,
-  highlightedIndex: PropTypes.number,
-  defaultHighlightedIndex: PropTypes.number,
-  initialHighlightedIndex: PropTypes.number,
-  isOpen: PropTypes.bool,
-  defaultIsOpen: PropTypes.bool,
-  initialIsOpen: PropTypes.bool,
-  selectedItem: PropTypes.any,
-  initialSelectedItem: PropTypes.any,
-  defaultSelectedItem: PropTypes.any,
   inputValue: PropTypes.string,
   defaultInputValue: PropTypes.string,
   initialInputValue: PropTypes.string,
-  id: PropTypes.string,
-  labelId: PropTypes.string,
-  menuId: PropTypes.string,
-  getItemId: PropTypes.func,
   inputId: PropTypes.string,
-  toggleButtonId: PropTypes.string,
-  stateReducer: PropTypes.func,
-  onSelectedItemChange: PropTypes.func,
-  onHighlightedIndexChange: PropTypes.func,
-  onStateChange: PropTypes.func,
-  onIsOpenChange: PropTypes.func,
-  onInputValueChange: PropTypes.func,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
+  onInputValueChange: PropTypes.func
 });
 
 /**
@@ -9511,14 +9521,14 @@ function useControlledReducer(reducer, initialState, props) {
   }, [state.selectedItem, props.selectedItem]);
   return [getState(state, props), dispatch];
 }
-
-// eslint-disable-next-line import/no-mutable-exports
-var validatePropTypes$1 = noop;
 var defaultProps$1 = _extends$w({}, defaultProps$3, {
   selectedItemChanged: function selectedItemChanged(prevItem, item) {
     return prevItem !== item;
   },
-  getA11yStatusMessage: getA11yStatusMessage$1
+  getA11yStatusMessage: getA11yStatusMessage$1,
+  isItemDisabled: function isItemDisabled() {
+    return false;
+  }
 });
 
 /* eslint-disable complexity */
@@ -9540,11 +9550,11 @@ function downshiftUseComboboxReducer(state, action) {
     case InputKeyDownArrowDown:
       if (state.isOpen) {
         changes = {
-          highlightedIndex: getNextWrappingIndex(1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
+          highlightedIndex: getHighlightedIndex(state.highlightedIndex, 1, props.items, props.isItemDisabled, true)
         };
       } else {
         changes = {
-          highlightedIndex: altKey && state.selectedItem == null ? -1 : getHighlightedIndexOnOpen(props, state, 1, action.getItemNodeFromIndex),
+          highlightedIndex: altKey && state.selectedItem == null ? -1 : getHighlightedIndexOnOpen(props, state, 1),
           isOpen: props.items.length >= 0
         };
       }
@@ -9555,12 +9565,12 @@ function downshiftUseComboboxReducer(state, action) {
           changes = getChangesOnSelection(props, state.highlightedIndex);
         } else {
           changes = {
-            highlightedIndex: getNextWrappingIndex(-1, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, true)
+            highlightedIndex: getHighlightedIndex(state.highlightedIndex, -1, props.items, props.isItemDisabled, true)
           };
         }
       } else {
         changes = {
-          highlightedIndex: getHighlightedIndexOnOpen(props, state, -1, action.getItemNodeFromIndex),
+          highlightedIndex: getHighlightedIndexOnOpen(props, state, -1),
           isOpen: props.items.length >= 0
         };
       }
@@ -9579,22 +9589,22 @@ function downshiftUseComboboxReducer(state, action) {
       break;
     case InputKeyDownPageUp:
       changes = {
-        highlightedIndex: getNextWrappingIndex(-10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
+        highlightedIndex: getHighlightedIndex(state.highlightedIndex, -10, props.items, props.isItemDisabled, true)
       };
       break;
     case InputKeyDownPageDown:
       changes = {
-        highlightedIndex: getNextWrappingIndex(10, state.highlightedIndex, props.items.length, action.getItemNodeFromIndex, false)
+        highlightedIndex: getHighlightedIndex(state.highlightedIndex, 10, props.items, props.isItemDisabled, true)
       };
       break;
     case InputKeyDownHome:
       changes = {
-        highlightedIndex: getNextNonDisabledIndex(1, 0, props.items.length, action.getItemNodeFromIndex, false)
+        highlightedIndex: getNonDisabledIndex(0, false, props.items, props.isItemDisabled)
       };
       break;
     case InputKeyDownEnd:
       changes = {
-        highlightedIndex: getNextNonDisabledIndex(-1, props.items.length - 1, props.items.length, action.getItemNodeFromIndex, false)
+        highlightedIndex: getNonDisabledIndex(props.items.length - 1, true, props.items, props.isItemDisabled)
       };
       break;
     case InputBlur:
@@ -9613,10 +9623,10 @@ function downshiftUseComboboxReducer(state, action) {
         inputValue: action.inputValue
       };
       break;
-    case InputFocus:
+    case InputClick:
       changes = {
-        isOpen: true,
-        highlightedIndex: getHighlightedIndexOnOpen(props, state, 0)
+        isOpen: !state.isOpen,
+        highlightedIndex: state.isOpen ? -1 : getHighlightedIndexOnOpen(props, state, 0)
       };
       break;
     case FunctionSelectItem:
@@ -9640,18 +9650,15 @@ function downshiftUseComboboxReducer(state, action) {
 var _excluded$1 = ["onMouseLeave", "refKey", "ref"],
   _excluded2$1 = ["item", "index", "refKey", "ref", "onMouseMove", "onMouseDown", "onClick", "onPress", "disabled"],
   _excluded3 = ["onClick", "onPress", "refKey", "ref"],
-  _excluded4 = ["onKeyDown", "onChange", "onInput", "onFocus", "onBlur", "onChangeText", "refKey", "ref"];
+  _excluded4 = ["onKeyDown", "onChange", "onInput", "onBlur", "onChangeText", "onClick", "refKey", "ref"];
 useCombobox$1.stateChangeTypes = stateChangeTypes$1;
 function useCombobox$1(userProps) {
   if (userProps === void 0) {
     userProps = {};
   }
-  validatePropTypes$1();
   // Props defaults and destructuring.
   var props = _extends$w({}, defaultProps$1, userProps);
-  var initialIsOpen = props.initialIsOpen,
-    defaultIsOpen = props.defaultIsOpen,
-    items = props.items,
+  var items = props.items,
     scrollIntoView = props.scrollIntoView,
     environment = props.environment,
     getA11yStatusMessage = props.getA11yStatusMessage,
@@ -9719,7 +9726,7 @@ function useCombobox$1(userProps) {
   });
   // Focus the input on first render if required.
   reactExports.useEffect(function () {
-    var focusOnOpen = initialIsOpen || defaultIsOpen || isOpen;
+    var focusOnOpen = getInitialValue$1(props, 'isOpen');
     if (focusOnOpen && inputRef.current) {
       inputRef.current.focus();
     }
@@ -9753,7 +9760,7 @@ function useCombobox$1(userProps) {
       itemRefs.current = {};
     } else if (((_environment$document = environment.document) == null ? void 0 : _environment$document.activeElement) !== inputRef.current) {
       var _inputRef$current;
-      inputRef == null ? void 0 : (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.focus();
+      inputRef == null || (_inputRef$current = inputRef.current) == null ? void 0 : _inputRef$current.focus();
     }
   }, [isOpen, environment]);
 
@@ -9764,16 +9771,14 @@ function useCombobox$1(userProps) {
         event.preventDefault();
         dispatch({
           type: InputKeyDownArrowDown,
-          altKey: event.altKey,
-          getItemNodeFromIndex: getItemNodeFromIndex
+          altKey: event.altKey
         });
       },
       ArrowUp: function ArrowUp(event) {
         event.preventDefault();
         dispatch({
           type: InputKeyDownArrowUp,
-          altKey: event.altKey,
-          getItemNodeFromIndex: getItemNodeFromIndex
+          altKey: event.altKey
         });
       },
       Home: function Home(event) {
@@ -9782,8 +9787,7 @@ function useCombobox$1(userProps) {
         }
         event.preventDefault();
         dispatch({
-          type: InputKeyDownHome,
-          getItemNodeFromIndex: getItemNodeFromIndex
+          type: InputKeyDownHome
         });
       },
       End: function End(event) {
@@ -9792,8 +9796,7 @@ function useCombobox$1(userProps) {
         }
         event.preventDefault();
         dispatch({
-          type: InputKeyDownEnd,
-          getItemNodeFromIndex: getItemNodeFromIndex
+          type: InputKeyDownEnd
         });
       },
       Escape: function Escape(event) {
@@ -9814,16 +9817,14 @@ function useCombobox$1(userProps) {
         }
         event.preventDefault();
         dispatch({
-          type: InputKeyDownEnter,
-          getItemNodeFromIndex: getItemNodeFromIndex
+          type: InputKeyDownEnter
         });
       },
       PageUp: function PageUp(event) {
         if (latest.current.state.isOpen) {
           event.preventDefault();
           dispatch({
-            type: InputKeyDownPageUp,
-            getItemNodeFromIndex: getItemNodeFromIndex
+            type: InputKeyDownPageUp
           });
         }
       },
@@ -9831,13 +9832,12 @@ function useCombobox$1(userProps) {
         if (latest.current.state.isOpen) {
           event.preventDefault();
           dispatch({
-            type: InputKeyDownPageDown,
-            getItemNodeFromIndex: getItemNodeFromIndex
+            type: InputKeyDownPageDown
           });
         }
       }
     };
-  }, [dispatch, latest, getItemNodeFromIndex]);
+  }, [dispatch, latest]);
 
   // Getter props.
   var getLabelProps = reactExports.useCallback(function (labelProps) {
@@ -9876,13 +9876,18 @@ function useCombobox$1(userProps) {
       onMouseDown = _ref3.onMouseDown,
       onClick = _ref3.onClick;
       _ref3.onPress;
-      var disabled = _ref3.disabled,
+      var disabledProp = _ref3.disabled,
       rest = _objectWithoutPropertiesLoose(_ref3, _excluded2$1);
+    if (disabledProp !== undefined) {
+      console.warn('Passing "disabled" as an argument to getItemProps is not supported anymore. Please use the isItemDisabled prop from useCombobox.');
+    }
     var _latest$current = latest.current,
       latestProps = _latest$current.props,
       latestState = _latest$current.state;
     var _getItemAndIndex = getItemAndIndex(itemProp, indexProp, latestProps.items, 'Pass either item or index to getItemProps!'),
+      item = _getItemAndIndex[0],
       index = _getItemAndIndex[1];
+    var disabled = latestProps.isItemDisabled(item, index);
     var onSelectKey = 'onClick';
     var customClickHandler = onClick;
     var itemHandleMouseMove = function itemHandleMouseMove() {
@@ -9909,7 +9914,7 @@ function useCombobox$1(userProps) {
       if (itemNode) {
         itemRefs.current[elementIds.getItemId(index)] = itemNode;
       }
-    }), _extends3.disabled = disabled, _extends3.role = 'option', _extends3['aria-selected'] = "" + (index === latestState.highlightedIndex), _extends3.id = elementIds.getItemId(index), _extends3), !disabled && (_ref4 = {}, _ref4[onSelectKey] = callAllEventHandlers(customClickHandler, itemHandleClick), _ref4), {
+    }), _extends3['aria-disabled'] = disabled, _extends3['aria-selected'] = "" + (index === latestState.highlightedIndex), _extends3.id = elementIds.getItemId(index), _extends3.role = 'option', _extends3), !disabled && (_ref4 = {}, _ref4[onSelectKey] = callAllEventHandlers(customClickHandler, itemHandleClick), _ref4), {
       onMouseMove: callAllEventHandlers(onMouseMove, itemHandleMouseMove),
       onMouseDown: callAllEventHandlers(onMouseDown, itemHandleMouseDown)
     }, rest);
@@ -9941,10 +9946,10 @@ function useCombobox$1(userProps) {
       onKeyDown = _ref6.onKeyDown,
       onChange = _ref6.onChange,
       onInput = _ref6.onInput,
-      onFocus = _ref6.onFocus,
       onBlur = _ref6.onBlur;
       _ref6.onChangeText;
-      var _ref6$refKey = _ref6.refKey,
+      var onClick = _ref6.onClick,
+      _ref6$refKey = _ref6.refKey,
       refKey = _ref6$refKey === void 0 ? 'ref' : _ref6$refKey,
       ref = _ref6.ref,
       rest = _objectWithoutPropertiesLoose(_ref6, _excluded4);
@@ -9966,18 +9971,17 @@ function useCombobox$1(userProps) {
     var inputHandleBlur = function inputHandleBlur(event) {
       /* istanbul ignore else */
       if (latestState.isOpen && !mouseAndTouchTrackersRef.current.isMouseDown) {
+        var isBlurByTabChange = event.relatedTarget === null && environment.document.activeElement !== environment.document.body;
         dispatch({
           type: InputBlur,
-          selectItem: event.relatedTarget !== null
+          selectItem: !isBlurByTabChange
         });
       }
     };
-    var inputHandleFocus = function inputHandleFocus() {
-      if (!latestState.isOpen) {
-        dispatch({
-          type: InputFocus
-        });
-      }
+    var inputHandleClick = function inputHandleClick() {
+      dispatch({
+        type: InputClick
+      });
     };
 
     /* istanbul ignore next (preact) */
@@ -9985,12 +9989,12 @@ function useCombobox$1(userProps) {
     var eventHandlers = {};
     if (!rest.disabled) {
       var _eventHandlers;
-      eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, inputHandleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, inputHandleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, inputHandleBlur), _eventHandlers.onFocus = callAllEventHandlers(onFocus, inputHandleFocus), _eventHandlers);
+      eventHandlers = (_eventHandlers = {}, _eventHandlers[onChangeKey] = callAllEventHandlers(onChange, onInput, inputHandleChange), _eventHandlers.onKeyDown = callAllEventHandlers(onKeyDown, inputHandleKeyDown), _eventHandlers.onBlur = callAllEventHandlers(onBlur, inputHandleBlur), _eventHandlers.onClick = callAllEventHandlers(onClick, inputHandleClick), _eventHandlers);
     }
     return _extends$w((_extends5 = {}, _extends5[refKey] = handleRefs(ref, function (inputNode) {
       inputRef.current = inputNode;
-    }), _extends5['aria-activedescendant'] = latestState.isOpen && latestState.highlightedIndex > -1 ? elementIds.getItemId(latestState.highlightedIndex) : '', _extends5['aria-autocomplete'] = 'list', _extends5['aria-controls'] = elementIds.menuId, _extends5['aria-expanded'] = latestState.isOpen, _extends5['aria-labelledby'] = rest && rest['aria-label'] ? undefined : "" + elementIds.labelId, _extends5.autoComplete = 'off', _extends5.id = elementIds.inputId, _extends5.role = 'combobox', _extends5.value = latestState.inputValue, _extends5), eventHandlers, rest);
-  }, [dispatch, inputKeyDownHandlers, latest, mouseAndTouchTrackersRef, setGetterPropCallInfo, elementIds]);
+    }), _extends5['aria-activedescendant'] = latestState.isOpen && latestState.highlightedIndex > -1 ? elementIds.getItemId(latestState.highlightedIndex) : '', _extends5['aria-autocomplete'] = 'list', _extends5['aria-controls'] = elementIds.menuId, _extends5['aria-expanded'] = latestState.isOpen, _extends5['aria-labelledby'] = rest && rest['aria-label'] ? undefined : elementIds.labelId, _extends5.autoComplete = 'off', _extends5.id = elementIds.inputId, _extends5.role = 'combobox', _extends5.value = latestState.inputValue, _extends5), eventHandlers, rest);
+  }, [setGetterPropCallInfo, latest, elementIds, inputKeyDownHandlers, dispatch, mouseAndTouchTrackersRef, environment]);
 
   // returns
   var toggleMenu = reactExports.useCallback(function () {
@@ -10065,29 +10069,18 @@ function getA11yRemovalMessage(selectionParameters) {
     itemToStringLocal = selectionParameters.itemToString;
   return itemToStringLocal(removedSelectedItem) + " has been removed.";
 }
-({
+_extends$w({}, commonPropTypes, {
   selectedItems: PropTypes.array,
   initialSelectedItems: PropTypes.array,
   defaultSelectedItems: PropTypes.array,
-  itemToString: PropTypes.func,
   getA11yRemovalMessage: PropTypes.func,
-  stateReducer: PropTypes.func,
   activeIndex: PropTypes.number,
   initialActiveIndex: PropTypes.number,
   defaultActiveIndex: PropTypes.number,
   onActiveIndexChange: PropTypes.func,
   onSelectedItemsChange: PropTypes.func,
   keyNavigationNext: PropTypes.string,
-  keyNavigationPrevious: PropTypes.string,
-  environment: PropTypes.shape({
-    addEventListener: PropTypes.func,
-    removeEventListener: PropTypes.func,
-    document: PropTypes.shape({
-      getElementById: PropTypes.func,
-      activeElement: PropTypes.any,
-      body: PropTypes.any
-    })
-  })
+  keyNavigationPrevious: PropTypes.string
 });
 ({
   itemToString: defaultProps$3.itemToString,
@@ -10115,15 +10108,15 @@ const typeMap = {
   [useCombobox$1.stateChangeTypes.FunctionSetInputValue]: 'fn:setInputValue',
   [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
   [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
-  [useCombobox$1.stateChangeTypes.InputFocus]: 'input:focus',
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$1.DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$1.UP}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$1.END}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$1.ENTER}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$1.ESCAPE}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$1.HOME}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$1.PAGE_DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$1.PAGE_UP}`,
+  [useCombobox$1.stateChangeTypes.InputClick]: 'input:click',
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$2.DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$2.UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$2.END}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$2.ENTER}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$2.ESCAPE}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$2.HOME}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$2.PAGE_DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$2.PAGE_UP}`,
   [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
   [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
   [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
@@ -10165,10 +10158,10 @@ const useCombobox = _ref => {
     environment
   } = _ref;
   const win = environment || window;
-  const prefix = `${useId(idPrefix)}-`;
   const [triggerContainsInput, setTriggerContainsInput] = reactExports.useState();
   const [matchValue, setMatchValue] = reactExports.useState('');
   const matchTimeoutRef = reactExports.useRef();
+  const prefixRef = reactExports.useRef(`${useId(idPrefix)}-`);
   const previousStateRef = reactExports.useRef();
   const labels = reactExports.useMemo(() => ({}), []);
   const selectedValues = reactExports.useMemo(() => [], []);
@@ -10266,11 +10259,11 @@ const useCombobox = _ref => {
           ...state,
           isOpen: type === useCombobox$1.stateChangeTypes.InputBlur && triggerContainsInput && isMultiselectable && state.isOpen || false
         };
-      case useCombobox$1.stateChangeTypes.InputFocus:
-        return {
-          ...state,
-          isOpen: false
-        };
+      case useCombobox$1.stateChangeTypes.InputClick:
+        if (!isAutocomplete) {
+          changes.isOpen = state.isOpen;
+        }
+        break;
       case useCombobox$1.stateChangeTypes.InputKeyDownArrowDown:
       case useCombobox$1.stateChangeTypes.FunctionOpenMenu:
         if (state.isOpen !== changes.isOpen && !altKey) {
@@ -10321,7 +10314,7 @@ const useCombobox = _ref => {
     return changes;
   };
   const transformValue = value => value ? toLabel(labels, value) : '';
-  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefix}-option${isDisabled ? '-disabled' : ''}-${index}`, [prefix]);
+  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefixRef.current}-option${isDisabled ? '-disabled' : ''}-${index}`, []);
   const {
     selectedItem: _selectionValue,
     isOpen: _isExpanded,
@@ -10336,9 +10329,9 @@ const useCombobox = _ref => {
     setHighlightedIndex,
     selectItem
   } = useCombobox$1({
-    id: prefix,
-    toggleButtonId: `${prefix}-trigger`,
-    menuId: `${prefix}-listbox`,
+    id: prefixRef.current,
+    toggleButtonId: `${prefixRef.current}-trigger`,
+    menuId: `${prefixRef.current}-listbox`,
     getItemId: getOptionId,
     items: values,
     inputValue,
@@ -10395,7 +10388,7 @@ const useCombobox = _ref => {
     hasMessage
   });
   reactExports.useLayoutEffect(() => {
-    if (isAutocomplete && _isExpanded && !previousStateRef.current?.isOpen && _selectionValue && !matchValue) {
+    if ((isAutocomplete || !isEditable) && _isExpanded && !previousStateRef.current?.isOpen && _selectionValue && !matchValue) {
       const value = Array.isArray(_selectionValue) ? _selectionValue[_selectionValue.length - 1
       ] : _selectionValue;
       const index = values.findIndex(current => current === value);
@@ -10406,7 +10399,7 @@ const useCombobox = _ref => {
       }
     }
   }, [
-  isAutocomplete, _isExpanded, _selectionValue, _inputValue, values, _defaultActiveIndex, setActiveIndex]);
+  isAutocomplete, isEditable, _isExpanded, _selectionValue, _inputValue, values, _defaultActiveIndex, setActiveIndex]);
   reactExports.useEffect(
   () => setTriggerContainsInput(triggerRef.current?.contains(inputRef.current)), [triggerRef, inputRef]);
   reactExports.useEffect(() => {
@@ -10421,11 +10414,17 @@ const useCombobox = _ref => {
       } else {
         triggerRef.current?.focus();
       }
+      previousStateRef.current = {
+        ...previousStateRef.current,
+        type: useCombobox$1.stateChangeTypes.InputClick
+      };
     }
   });
   reactExports.useEffect(() => {
     if (isEditable && inputRef.current === win.document.activeElement) {
-      inputRef.current?.scrollIntoView && inputRef.current?.scrollIntoView();
+      inputRef.current?.scrollIntoView && inputRef.current?.scrollIntoView({
+        block: 'nearest'
+      });
     }
   }, [inputRef, isEditable, win.document.activeElement]);
   const getTriggerProps = reactExports.useCallback(function (_temp) {
@@ -10437,7 +10436,7 @@ const useCombobox = _ref => {
     } = _temp === void 0 ? {} : _temp;
     const triggerProps = getDownshiftTriggerProps({
       'data-garden-container-id': 'containers.combobox',
-      'data-garden-container-version': '1.0.0',
+      'data-garden-container-version': '1.0.8',
       onBlur,
       onClick,
       onKeyDown,
@@ -10455,15 +10454,15 @@ const useCombobox = _ref => {
         if (disabled) {
           event.preventDefault();
         } else if (isAutocomplete) {
-          triggerProps.onClick(event);
+          triggerProps.onClick && triggerProps.onClick(event);
         } else {
           inputRef.current?.focus();
         }
       };
       return {
         ...triggerProps,
-        onBlur: composeEventHandlers$1(onBlur, handleBlur),
-        onClick: composeEventHandlers$1(onClick, handleClick),
+        onBlur: composeEventHandlers$2(onBlur, handleBlur),
+        onClick: composeEventHandlers$2(onClick, handleClick),
         'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
         'aria-expanded': undefined,
         'aria-disabled': disabled || undefined,
@@ -10481,8 +10480,17 @@ const useCombobox = _ref => {
       } = getFieldInputProps();
       const handleKeyDown = event => {
         event.stopPropagation();
-        if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+        if (!_isExpanded && (event.key === KEYS$2.SPACE || event.key === KEYS$2.ENTER)) {
+          event.preventDefault();
           openListbox();
+        } else if (_isExpanded && !matchValue && (event.key === KEYS$2.SPACE || event.key === KEYS$2.ENTER)) {
+          event.preventDefault();
+          if (_activeIndex !== -1) {
+            setDownshiftSelection(values[_activeIndex]);
+          }
+          if (!isMultiselectable) {
+            closeListbox();
+          }
         } else if (/^(?:\S| ){1}$/u.test(event.key)) {
           const _matchValue = `${matchValue}${event.key}`;
           setMatchValue(_matchValue);
@@ -10517,13 +10525,13 @@ const useCombobox = _ref => {
         'aria-disabled': disabled || undefined,
         disabled: undefined,
         role: 'combobox',
-        onBlur: composeEventHandlers$1(onBlur, handleBlur),
-        onKeyDown: composeEventHandlers$1(onKeyDown, onDownshiftKeyDown, handleKeyDown),
+        onBlur: composeEventHandlers$2(onBlur, handleBlur),
+        onKeyDown: composeEventHandlers$2(onKeyDown, onDownshiftKeyDown, handleKeyDown),
         tabIndex: disabled ? -1 : 0
       };
     }
     return triggerProps;
-  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, inputRef]);
+  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, setDownshiftSelection, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, isMultiselectable, inputRef]);
   const getLabelProps = reactExports.useCallback(function (_temp2) {
     let {
       onClick,
@@ -10536,21 +10544,20 @@ const useCombobox = _ref => {
     const handleClick = () => !isEditable && triggerRef.current?.focus();
     return {
       ...labelProps,
-      onClick: composeEventHandlers$1(onClick, handleClick),
+      onClick: composeEventHandlers$2(onClick, handleClick),
       htmlFor: isEditable ? htmlFor : undefined
     };
   }, [getFieldLabelProps, isEditable, triggerRef]);
   const getInputProps = reactExports.useCallback(function (_temp3) {
     let {
       role = isEditable ? 'combobox' : null,
-      'aria-labelledby': ariaLabeledBy = null,
       onClick,
       onFocus,
       ...other
     } = _temp3 === void 0 ? {} : _temp3;
     const inputProps = {
       'data-garden-container-id': 'containers.combobox.input',
-      'data-garden-container-version': '1.0.0',
+      'data-garden-container-version': '1.0.8',
       ref: inputRef,
       role: role === null ? undefined : role,
       onClick,
@@ -10562,9 +10569,8 @@ const useCombobox = _ref => {
         ...inputProps,
         disabled,
         role,
-        'aria-labelledby': ariaLabeledBy,
         'aria-autocomplete': isAutocomplete ? 'list' : undefined,
-        onClick: composeEventHandlers$1(onClick, handleClick),
+        onClick: composeEventHandlers$2(onClick, handleClick),
         ...getFieldInputProps(),
         ...other
       });
@@ -10589,7 +10595,7 @@ const useCombobox = _ref => {
       disabled,
       readOnly: true,
       tabIndex: -1,
-      onFocus: composeEventHandlers$1(onFocus, handleFocus),
+      onFocus: composeEventHandlers$2(onFocus, handleFocus),
       ...other
     };
   }, [getDownshiftInputProps, getFieldInputProps, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
@@ -10597,55 +10603,48 @@ const useCombobox = _ref => {
     let {
       option,
       onClick,
-      onFocus,
       onKeyDown,
       ...other
     } = _ref4;
     const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
-    const handleFocus = () => {
-      if (_isExpanded) {
-        setActiveIndex(values.findIndex(value => value === option.value));
-      }
-    };
     const handleKeyDown = event => {
-      if (event.key === KEYS$1.BACKSPACE || event.key === KEYS$1.DELETE) {
+      if (event.key === KEYS$2.BACKSPACE || event.key === KEYS$2.DELETE) {
         setDownshiftSelection(option.value);
       } else {
         const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
-        if (triggerContainsTag && (event.key === KEYS$1.DOWN || event.key === KEYS$1.UP || event.key === KEYS$1.ESCAPE)) {
+        if (triggerContainsTag && !isEditable) {
+          event.stopPropagation();
+        }
+        if (triggerContainsTag && (event.key === KEYS$2.DOWN || event.key === KEYS$2.UP || event.key === KEYS$2.ESCAPE || !isEditable && (event.key === KEYS$2.ENTER || event.key === KEYS$2.SPACE))) {
           const inputProps = getDownshiftInputProps();
           if (isEditable) {
             inputRef.current?.focus();
           } else {
+            event.preventDefault();
             triggerRef.current?.focus();
           }
-          inputProps.onKeyDown(event);
-        } else if (triggerContainsTag && !isEditable) {
-          event.stopPropagation();
+          inputProps.onKeyDown && inputProps.onKeyDown(event);
         }
       }
     };
     return {
       'data-garden-container-id': 'containers.combobox.tag',
-      'data-garden-container-version': '1.0.0',
-      onClick: composeEventHandlers$1(onClick, handleClick),
-      onFocus: composeEventHandlers$1(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
+      'data-garden-container-version': '1.0.8',
+      onClick: composeEventHandlers$2(onClick, handleClick),
+      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
       ...other
     };
-  }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, _isExpanded, values, setActiveIndex, inputRef]);
+  }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, inputRef]);
   const getListboxProps = reactExports.useCallback(_ref5 => {
     let {
       role = 'listbox',
-      'aria-labelledby': ariaLabeledBy = null,
       ...other
     } = _ref5;
     return getDownshiftListboxProps({
       'data-garden-container-id': 'containers.combobox.listbox',
-      'data-garden-container-version': '1.0.0',
+      'data-garden-container-version': '1.0.8',
       ref: listboxRef,
       role,
-      'aria-labelledby': ariaLabeledBy,
       'aria-multiselectable': isMultiselectable ? true : undefined,
       ...other
     });
@@ -10657,7 +10656,7 @@ const useCombobox = _ref => {
     } = _ref6;
     return {
       'data-garden-container-id': 'containers.combobox.optgroup',
-      'data-garden-container-version': '1.0.0',
+      'data-garden-container-version': '1.0.8',
       role: role === null ? undefined : role,
       ...other
     };
@@ -10671,7 +10670,7 @@ const useCombobox = _ref => {
     } = _temp4 === void 0 ? {} : _temp4;
     const optionProps = {
       'data-garden-container-id': 'containers.combobox.option',
-      'data-garden-container-version': '1.0.0',
+      'data-garden-container-version': '1.0.8',
       role,
       onMouseDown,
       ...other
@@ -10687,12 +10686,13 @@ const useCombobox = _ref => {
         'aria-selected': ariaSelected,
         id: option ? getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
         ...optionProps,
-        onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown)
+        onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown)
       };
     }
     return getDownshiftOptionProps({
       item: option.value,
       index: values.indexOf(option.value),
+      'aria-disabled': undefined,
       'aria-selected': ariaSelected,
       ...optionProps
     });
@@ -10798,10 +10798,10 @@ const StyledAvatar = styled(_ref => {
     children,
     ...props
   } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
+  return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$2$5,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledAvatar",
   componentId: "sc-3kdmgt-0"
@@ -10813,7 +10813,7 @@ StyledAvatar.defaultProps = {
 const COMPONENT_ID$1$5 = 'tags.close';
 const StyledClose$1 = styled.button.attrs({
   'data-garden-id': COMPONENT_ID$1$5,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-d6lrpn-0"
@@ -10822,7 +10822,7 @@ StyledClose$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$o = 'tags.tag_view';
+const COMPONENT_ID$x = 'tags.tag_view';
 const colorStyles$b = props => {
   let backgroundColor;
   let foregroundColor;
@@ -10895,12 +10895,12 @@ const sizeStyles$d = props => {
   return Ne(["border-radius:", ";padding:0 ", "px;min-width:", ";height:", "px;line-height:", ";font-size:", ";& > *{width:100%;min-width:", ";}& ", "{margin-", ":-", "px;margin-", ":", "px;border-radius:", ";width:", "px;min-width:", "px;height:", "px;}& ", "{margin-", ":-", "px;border-radius:", ";width:", "px;height:", "px;}"], borderRadius, padding, minWidth ? `${minWidth}px` : `calc(${padding * 2}px + 1ch)`, height, getLineHeight(height, fontSize), fontSize, minWidth ? `${minWidth - padding * 2}px` : '1ch', StyledAvatar, props.theme.rtl ? 'right' : 'left', padding - avatarMargin, props.theme.rtl ? 'left' : 'right', avatarTextMargin, avatarBorderRadius, avatarSize, avatarSize, avatarSize, StyledClose$1, props.theme.rtl ? 'left' : 'right', padding, borderRadius, height, height);
 };
 const StyledTag$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$o,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$x,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1jvbe03-0"
-})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$d(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$b(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose$1, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$o, props));
+})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$d(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$b(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose$1, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$x, props));
 StyledTag$1.defaultProps = {
   size: 'medium',
   theme: DEFAULT_THEME
@@ -10925,18 +10925,18 @@ var SvgXStroke$2 = function SvgXStroke(props) {
 
 const CloseComponent = reactExports.forwardRef((props, ref) => {
   const ariaLabel = useText(CloseComponent, props, 'aria-label', 'Remove');
-  return React__default.createElement(StyledClose$1, _extends$1$4({
+  return React.createElement(StyledClose$1, _extends$1$4({
     ref: ref,
     "aria-label": ariaLabel
   }, props, {
     type: "button",
     tabIndex: -1
-  }), React__default.createElement(SvgXStroke$2, null));
+  }), React.createElement(SvgXStroke$2, null));
 });
 CloseComponent.displayName = 'Tag.Close';
 const Close$1 = CloseComponent;
 
-const AvatarComponent = props => React__default.createElement(StyledAvatar, props);
+const AvatarComponent = props => React.createElement(StyledAvatar, props);
 AvatarComponent.displayName = 'Tag.Avatar';
 const Avatar = AvatarComponent;
 
@@ -10946,7 +10946,7 @@ const TagComponent$1 = reactExports.forwardRef((_ref, ref) => {
     hue,
     ...otherProps
   } = _ref;
-  return React__default.createElement(StyledTag$1, _extends$1$4({
+  return React.createElement(StyledTag$1, _extends$1$4({
     ref: ref,
     size: size,
     hue: hue
@@ -12571,11 +12571,11 @@ const useTooltip = function (_temp) {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       tabIndex,
-      onMouseEnter: composeEventHandlers$3(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$3(onMouseLeave, () => closeTooltip()),
-      onFocus: composeEventHandlers$3(onFocus, () => openTooltip()),
-      onBlur: composeEventHandlers$3(onBlur, () => closeTooltip(0)),
-      onKeyDown: composeEventHandlers$3(onKeyDown, event => {
+      onMouseEnter: composeEventHandlers$4(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$4(onMouseLeave, () => closeTooltip()),
+      onFocus: composeEventHandlers$4(onFocus, () => openTooltip()),
+      onBlur: composeEventHandlers$4(onBlur, () => closeTooltip(0)),
+      onKeyDown: composeEventHandlers$4(onKeyDown, event => {
         if (event.keyCode === KEY_CODES.ESCAPE && visibility) {
           closeTooltip(0);
         }
@@ -12595,8 +12595,8 @@ const useTooltip = function (_temp) {
     } = _temp3 === void 0 ? {} : _temp3;
     return {
       role,
-      onMouseEnter: composeEventHandlers$3(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$3(onMouseLeave, () => closeTooltip()),
+      onMouseEnter: composeEventHandlers$4(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$4(onMouseLeave, () => closeTooltip()),
       'aria-hidden': !visibility,
       id: _id,
       ...other
@@ -17139,7 +17139,7 @@ function getArrowPosition(popperPlacement) {
 const COMPONENT_ID$2$4 = 'tooltip.paragraph';
 const StyledParagraph$1 = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$2$4,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-wuqkfc-0"
@@ -17151,7 +17151,7 @@ StyledParagraph$1.defaultProps = {
 const COMPONENT_ID$1$4 = 'tooltip.title';
 const StyledTitle$1 = styled.strong.attrs({
   'data-garden-id': COMPONENT_ID$1$4,
-  'data-garden-version': '8.69.1'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-vnjcvz-0"
@@ -17160,7 +17160,7 @@ StyledTitle$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$n = 'tooltip.tooltip';
+const COMPONENT_ID$w = 'tooltip.tooltip';
 const sizeStyles$c = _ref => {
   let {
     theme,
@@ -17247,12 +17247,12 @@ const colorStyles$a = _ref2 => {
   return Ne(["border:", ";box-shadow:", ";background-color:", ";color:", ";", "{color:", ";}"], border, boxShadow, backgroundColor, color, StyledTitle$1, titleColor);
 };
 const StyledTooltip = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$n,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$w,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTooltip",
   componentId: "sc-gzzjq4-0"
-})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$c(props), colorStyles$a, props => retrieveComponentStyles(COMPONENT_ID$n, props));
+})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$c(props), colorStyles$a, props => retrieveComponentStyles(COMPONENT_ID$w, props));
 StyledTooltip.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -17311,14 +17311,14 @@ const Tooltip = _ref => {
     }
   }, [controlledIsVisible, content]);
   const popperPlacement = rtl ? getRtlPopperPlacement$1(placement) : getPopperPlacement$1(placement);
-  const singleChild = React__default.Children.only(children);
+  const singleChild = React.Children.only(children);
   const modifiers = {
     preventOverflow: {
       boundariesElement: 'window'
     },
     ...popperModifiers
   };
-  return React__default.createElement(Manager, null, React__default.createElement(Reference, null, _ref2 => {
+  return React.createElement(Manager, null, React.createElement(Reference, null, _ref2 => {
     let {
       ref
     } = _ref2;
@@ -17326,7 +17326,7 @@ const Tooltip = _ref => {
       ...singleChild.props,
       [refKey]: mergeRefs([ref, singleChild.ref ? singleChild.ref : null])
     }));
-  }), React__default.createElement(Popper, {
+  }), React.createElement(Popper, {
     placement: popperPlacement,
     eventsEnabled: controlledIsVisible && eventsEnabled,
     modifiers: modifiers
@@ -17355,22 +17355,22 @@ const Tooltip = _ref => {
       hasArrow,
       placement: currentPlacement,
       size: computedSize,
-      onFocus: composeEventHandlers$3(onFocus, () => {
+      onFocus: composeEventHandlers$4(onFocus, () => {
         openTooltip();
       }),
-      onBlur: composeEventHandlers$3(onBlur, () => {
+      onBlur: composeEventHandlers$4(onBlur, () => {
         closeTooltip(0);
       }),
       'aria-hidden': !controlledIsVisible,
       type,
       ...otherTooltipProps
     };
-    const tooltip = React__default.createElement(StyledTooltipWrapper, {
+    const tooltip = React.createElement(StyledTooltipWrapper, {
       ref: controlledIsVisible ? ref : null,
       style: style,
       zIndex: zIndex,
       "aria-hidden": !controlledIsVisible
-    }, React__default.createElement(StyledTooltip, getTooltipProps(tooltipProps), content));
+    }, React.createElement(StyledTooltip, getTooltipProps(tooltipProps), content));
     if (appendToNode) {
       return reactDomExports.createPortal(tooltip, appendToNode);
     }
@@ -17417,12 +17417,12 @@ function _extends$a() {
   return _extends$a.apply(this, arguments);
 }
 
-const Paragraph$1 = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph$1, _extends$a({
+const Paragraph$1 = reactExports.forwardRef((props, ref) => React.createElement(StyledParagraph$1, _extends$a({
   ref: ref
 }, props)));
 Paragraph$1.displayName = 'Paragraph';
 
-const Title$1 = reactExports.forwardRef((props, ref) => React__default.createElement(StyledTitle$1, _extends$a({
+const Title$1 = reactExports.forwardRef((props, ref) => React.createElement(StyledTitle$1, _extends$a({
   ref: ref
 }, props)));
 Title$1.displayName = 'Title';
@@ -17483,84 +17483,84 @@ const useFieldContext = () => {
   return context;
 };
 
-const COMPONENT_ID$l = 'dropdowns.combobox.label';
+const COMPONENT_ID$u = 'dropdowns.combobox.label';
 const StyledLabel = styled(Label$1).attrs({
-  'data-garden-id': COMPONENT_ID$l,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$u,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-1889zee-0"
-})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$l, props));
+})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$u, props));
 StyledLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$k = 'dropdowns.combobox.hint';
+const COMPONENT_ID$t = 'dropdowns.combobox.hint';
 const StyledHint = styled(Hint$1).attrs({
-  'data-garden-id': COMPONENT_ID$k,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$t,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledHint",
   componentId: "sc-9kt30-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$k, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$t, props));
 StyledHint.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$j = 'dropdowns.combobox.message';
+const COMPONENT_ID$s = 'dropdowns.combobox.message';
 const StyledMessage = styled(Message$1).attrs({
-  'data-garden-id': COMPONENT_ID$j,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$s,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-15eqzu4-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$j, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$s, props));
 StyledMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$i = 'dropdowns.combobox';
+const COMPONENT_ID$r = 'dropdowns.combobox';
 const sizeStyles$a = props => {
   const minWidth = `${props.isCompact ? 100 : 144}px`;
   const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   return Ne(["min-width:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], minWidth, StyledLabel, StyledHint, StyledMessage, StyledHint, StyledMessage, marginTop);
 };
 const StyledCombobox = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$i,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$r,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledCombobox",
   componentId: "sc-1hs98ew-0"
-})(["", ";", ";"], sizeStyles$a, props => retrieveComponentStyles(COMPONENT_ID$i, props));
+})(["", ";", ";"], sizeStyles$a, props => retrieveComponentStyles(COMPONENT_ID$r, props));
 StyledCombobox.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$h = 'dropdowns.combobox.container';
+const COMPONENT_ID$q = 'dropdowns.combobox.container';
 const StyledContainer = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$h,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$q,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledContainer",
   componentId: "sc-18gcb1g-0"
-})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$h, props));
+})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$q, props));
 StyledContainer.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$g = 'dropdowns.combobox.field';
+const COMPONENT_ID$p = 'dropdowns.combobox.field';
 const StyledField = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$g,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$p,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-k7y10k-0"
-})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$g, props));
+})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$p, props));
 StyledField.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$f = 'dropdowns.combobox.option';
+const COMPONENT_ID$o = 'dropdowns.combobox.option';
 const colorStyles$8 = props => {
   const activeBackgroundColor = getColor(props.$type === 'danger' ? 'dangerHue' : 'primaryHue', 600, props.theme, 0.08);
   const backgroundColor = props.isActive && props.$type !== 'group' && props.$type !== 'header' ? activeBackgroundColor : undefined;
@@ -17571,7 +17571,7 @@ const colorStyles$8 = props => {
   } else if (props.$type === 'danger') {
     foregroundColor = getColor('dangerHue', 600, props.theme);
   }
-  return Ne(["background-color:", ";color:", ";&[aria-disabled='true']{background-color:", ";color:", ";}"], backgroundColor, foregroundColor, backgroundColor, disabledForegroundColor);
+  return Ne(["background-color:", ";color:", ";&[aria-disabled='true']{background-color:transparent;color:", ";}"], backgroundColor, foregroundColor, disabledForegroundColor);
 };
 const getMinHeight = props => props.theme.space.base * (props.isCompact ? 7 : 9);
 const sizeStyles$9 = props => {
@@ -17582,52 +17582,52 @@ const sizeStyles$9 = props => {
   return Ne(["box-sizing:border-box;padding:", " ", ";min-height:", "px;line-height:", ";"], paddingVertical, paddingHorizontal, minHeight, lineHeight);
 };
 const StyledOption = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$f,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$o,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledOption",
   componentId: "sc-1b5e09t-0"
-})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";word-wrap:break-word;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$9, colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$f, props));
+})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";word-wrap:break-word;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$9, colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$o, props));
 StyledOption.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$e = 'dropdowns.combobox.listbox';
+const COMPONENT_ID$n = 'dropdowns.combobox.listbox';
 const sizeStyles$8 = props => {
   const padding = props.theme.space.base;
   const minHeight = props.minHeight === undefined ? `${getMinHeight(props) + padding * 2}px` : props.minHeight;
   return Ne(["min-height:", ";max-height:", ";&&&{padding-top:", "px;padding-bottom:", "px;}"], minHeight, props.maxHeight, padding, padding);
 };
 const StyledListbox = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$e,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$n,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledListbox",
   componentId: "sc-4uxeym-0"
-})(["overflow-y:scroll;list-style-type:none;", ";&&&{display:block;}"], sizeStyles$8);
+})(["overflow-y:auto;list-style-type:none;", ";&&&{display:block;}"], sizeStyles$8);
 StyledListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$d$1 = 'dropdowns.combobox.floating';
-const StyledFloating = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$d$1,
-  'data-garden-version': '8.69.1'
+const COMPONENT_ID$m = 'dropdowns.combobox.floating';
+const StyledFloatingListbox = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$m,
+  'data-garden-version': '8.69.9'
 }).withConfig({
-  displayName: "StyledFloating",
-  componentId: "sc-17rn49r-0"
+  displayName: "StyledFloatingListbox",
+  componentId: "sc-xsp548-0"
 })(["top:0;left:0;", ";", ";"], props => menuStyles(props.position, {
   theme: props.theme,
   hidden: props.isHidden,
   childSelector: `> ${StyledListbox}`,
   animationModifier: '[data-garden-animate="true"]',
   zIndex: props.zIndex
-}), props => retrieveComponentStyles(COMPONENT_ID$d$1, props));
-StyledFloating.defaultProps = {
+}), props => retrieveComponentStyles(COMPONENT_ID$m, props));
+StyledFloatingListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$c$1 = 'dropdowns.combobox.input';
+const COMPONENT_ID$l = 'dropdowns.combobox.input';
 const colorStyles$7$1 = props => {
   const placeholderColor = getColor('neutralHue', 400, props.theme);
   return Ne(["background-color:inherit;color:inherit;&::placeholder{opacity:1;color:", ";}"], placeholderColor);
@@ -17647,33 +17647,33 @@ const sizeStyles$7 = props => {
   return Ne(["min-width:", ";height:", "px;line-height:", ";font-size:", ";&&{margin-top:", ";margin-bottom:", ";}"], minWidth, height, lineHeight, fontSize, margin, margin);
 };
 const StyledInput = styled.input.attrs({
-  'data-garden-id': COMPONENT_ID$c$1,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$l,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledInput",
   componentId: "sc-m2m56e-0"
-})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}", ";"], sizeStyles$7, colorStyles$7$1, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$c$1, props));
+})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;&:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}&[aria-hidden='true']{display:none;}", ";"], sizeStyles$7, colorStyles$7$1, props => props.isEditable && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$l, props));
 StyledInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$b$2 = 'dropdowns.combobox.input_group';
+const COMPONENT_ID$k = 'dropdowns.combobox.input_group';
 const sizeStyles$6 = props => {
   const margin = props.theme.shadowWidths.sm;
   return Ne(["margin:-", ";min-width:0;& > *{margin:", ";}"], margin, margin);
 };
 const StyledInputGroup = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$b$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$k,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-2agt8f-0"
-})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$6, props => retrieveComponentStyles(COMPONENT_ID$b$2, props));
+})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$6, props => retrieveComponentStyles(COMPONENT_ID$k, props));
 StyledInputGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$a$2 = 'dropdowns.combobox.trigger';
+const COMPONENT_ID$j = 'dropdowns.combobox.trigger';
 const colorStyles$6$1 = props => {
   const SHADE = 600;
   let hue = 'neutralHue';
@@ -17743,17 +17743,17 @@ const sizeStyles$5 = props => {
   return Ne(["padding:", " ", ";min-height:", ";max-height:", ";font-size:", ";"], verticalPadding, horizontalPadding, minHeight, maxHeight, props.theme.fontSizes.md);
 };
 const StyledTrigger = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$a$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$j,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTrigger",
   componentId: "sc-14t9k4c-0"
-})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$5, colorStyles$6$1, props => retrieveComponentStyles(COMPONENT_ID$a$2, props));
+})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$5, colorStyles$6$1, props => retrieveComponentStyles(COMPONENT_ID$j, props));
 StyledTrigger.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$9$2 = 'dropdowns.combobox.input_icon';
+const COMPONENT_ID$i = 'dropdowns.combobox.input_icon';
 const colorStyles$5$1 = props => {
   const color = getColor('neutralHue', 600, props.theme);
   const focusColor = getColor('neutralHue', 700, props.theme);
@@ -17785,42 +17785,63 @@ const StyledInputIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$9$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$i,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledInputIcon",
   componentId: "sc-15ewmjl-0"
-})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$4$1, colorStyles$5$1, props => retrieveComponentStyles(COMPONENT_ID$9$2, props));
+})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$4$1, colorStyles$5$1, props => retrieveComponentStyles(COMPONENT_ID$i, props));
 StyledInputIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$8$2 = 'dropdowns.combobox.optgroup';
+const COMPONENT_ID$h = 'dropdowns.combobox.separator';
+const colorStyles$4$1 = props => {
+  const backgroundColor = getColor('neutralHue', 200, props.theme);
+  return Ne(["background-color:", ";"], backgroundColor);
+};
+const sizeStyles$3$1 = props => {
+  const margin = `${props.theme.space.base}px`;
+  const height = props.theme.borderWidths.sm;
+  return Ne(["margin:", " 0;height:", ";"], margin, height);
+};
+const StyledListboxSeparator = styled.li.attrs({
+  'data-garden-id': COMPONENT_ID$h,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledListboxSeparator",
+  componentId: "sc-19umtmg-0"
+})(["cursor:default;", ";", ";", ";"], sizeStyles$3$1, colorStyles$4$1, props => retrieveComponentStyles(COMPONENT_ID$h, props));
+StyledListboxSeparator.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$g = 'dropdowns.combobox.optgroup';
 const StyledOptGroup = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$8$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$g,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledOptGroup",
   componentId: "sc-12dbq5s-0"
-})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$8$2, props));
+})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$g, props));
 StyledOptGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$7$2 = 'dropdowns.combobox.option.content';
+const COMPONENT_ID$f = 'dropdowns.combobox.option.content';
 const StyledOptionContent = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$7$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$f,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledOptionContent",
   componentId: "sc-536085-0"
-})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$7$2, props));
+})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$f, props));
 StyledOptionContent.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$6$2 = 'dropdowns.combobox.option.icon';
-const sizeStyles$3$1 = props => {
+const COMPONENT_ID$e = 'dropdowns.combobox.option.icon';
+const sizeStyles$2$1 = props => {
   const size = props.theme.iconSizes.md;
   const marginTop = math(`(${props.theme.lineHeights.md} - ${size}) / 2`);
   const marginHorizontal = `${props.theme.space.base * 2}px`;
@@ -17834,39 +17855,39 @@ const StyledOptionIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$6$2,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$e,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledOptionIcon",
   componentId: "sc-3vecfi-0"
-})(["flex-shrink:0;", ";", ";"], sizeStyles$3$1, props => retrieveComponentStyles(COMPONENT_ID$6$2, props));
+})(["flex-shrink:0;", ";", ";"], sizeStyles$2$1, props => retrieveComponentStyles(COMPONENT_ID$e, props));
 StyledOptionIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$5$3 = 'dropdowns.combobox.option.meta';
-const colorStyles$4$1 = props => {
+const COMPONENT_ID$d$1 = 'dropdowns.combobox.option.meta';
+const colorStyles$3$1 = props => {
   const color = getColor('neutralHue', props.isDisabled ? 400 : 600, props.theme);
   return Ne(["color:", ";"], color);
 };
-const sizeStyles$2$1 = props => {
+const sizeStyles$1$2 = props => {
   const lineHeight = props.theme.lineHeights.sm;
   const fontSize = props.theme.fontSizes.sm;
   return Ne(["line-height:", ";font-size:", ";"], lineHeight, fontSize);
 };
 const StyledOptionMeta = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$5$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$d$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledOptionMeta",
   componentId: "sc-1nizjb3-0"
-})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$2$1, colorStyles$4$1, props => retrieveComponentStyles(COMPONENT_ID$5$3, props));
+})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$1$2, colorStyles$3$1, props => retrieveComponentStyles(COMPONENT_ID$d$1, props));
 StyledOptionMeta.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$4$3 = 'dropdowns.combobox.option.type_icon';
-const colorStyles$3$1 = props => {
+const COMPONENT_ID$c$1 = 'dropdowns.combobox.option.type_icon';
+const colorStyles$2$1 = props => {
   const opacity = props.type && props.type !== 'danger' ? 1 : 0;
   let color;
   if (props.type === 'add' || props.type === 'danger') {
@@ -17878,7 +17899,7 @@ const colorStyles$3$1 = props => {
   }
   return Ne(["opacity:", ";color:", ";", "[aria-selected='true'] > &{opacity:1;}", "[aria-disabled='true'] > &{color:inherit;}"], opacity, color, StyledOption, StyledOption);
 };
-const sizeStyles$1$2 = props => {
+const sizeStyles$b = props => {
   const size = props.theme.iconSizes.md;
   const position = `${props.theme.space.base * 3}px`;
   const top = math(`(${getMinHeight(props)} - ${size}) / 2`);
@@ -17900,84 +17921,175 @@ const StyledOptionTypeIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$4$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$c$1,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledOptionTypeIcon",
   componentId: "sc-vlhimu-0"
-})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$1$2, colorStyles$3$1, props => retrieveComponentStyles(COMPONENT_ID$4$3, props));
+})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$b, colorStyles$2$1, props => retrieveComponentStyles(COMPONENT_ID$c$1, props));
 StyledOptionTypeIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$3$3 = 'dropdowns.combobox.separator';
-const colorStyles$2$1 = props => {
-  const backgroundColor = getColor('neutralHue', 200, props.theme);
-  return Ne(["background-color:", ";"], backgroundColor);
-};
-const sizeStyles$b = props => {
-  const margin = `${props.theme.space.base}px`;
-  const height = props.theme.borderWidths.sm;
-  return Ne(["margin:", " 0;height:", ";"], margin, height);
-};
-const StyledSeparator = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$3$3,
-  'data-garden-version': '8.69.1'
-}).withConfig({
-  displayName: "StyledSeparator",
-  componentId: "sc-1uj1t6p-0"
-})(["cursor:default;", ";", ";", ";"], sizeStyles$b, colorStyles$2$1, props => retrieveComponentStyles(COMPONENT_ID$3$3, props));
-StyledSeparator.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-const COMPONENT_ID$2$3 = 'dropdowns.combobox.tag';
+const COMPONENT_ID$b$2 = 'dropdowns.combobox.tag';
 const StyledTag = styled(Tag$1).attrs({
-  'data-garden-id': COMPONENT_ID$2$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$b$2,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1mrab0f-0"
-})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColor('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$2$3, props));
+})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColor('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$b$2, props));
 StyledTag.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$1$3 = 'dropdowns.combobox.value';
+const COMPONENT_ID$a$2 = 'dropdowns.combobox.value';
 const colorStyles$1$1 = props => {
   const foregroundColor = props.isPlaceholder && getColor('neutralHue', 400, props.theme);
   return Ne(["color:", ";"], foregroundColor);
 };
 const StyledValue = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$1$3,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$a$2,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledValue",
   componentId: "sc-16gp0f-0"
-})(["flex-basis:0;flex-grow:1;cursor:", ";overflow:hidden;text-overflow:ellipsis;white-space:nowrap;user-select:none;", ";", ";", ";"], props => {
+})(["flex-basis:0;flex-grow:1;cursor:", ";overflow:hidden;text-overflow:ellipsis;white-space:pre;user-select:none;", ";", ";&[hidden]{display:none;}", ";"], props => {
   if (props.isDisabled) {
     return 'default';
   }
-  return props.isEditable ? 'text' : 'pointer';
-}, sizeStyles$7, colorStyles$1$1, props => retrieveComponentStyles(COMPONENT_ID$1$3, props));
+  return props.isEditable && !props.isAutocomplete ? 'text' : 'pointer';
+}, sizeStyles$7, colorStyles$1$1, props => retrieveComponentStyles(COMPONENT_ID$a$2, props));
 StyledValue.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$m = 'dropdowns.combobox.tags_button';
+const COMPONENT_ID$9$2 = 'dropdowns.combobox.tags_button';
 const colorStyles$9 = props => {
   const color = getColor('primaryHue', 600, props.theme);
   return Ne(["color:", ";&:disabled{color:inherit;}"], color);
 };
 const StyledTagsButton = styled(StyledValue).attrs({
   as: 'button',
-  'data-garden-id': COMPONENT_ID$m,
-  'data-garden-version': '8.69.1'
+  'data-garden-id': COMPONENT_ID$9$2,
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTagsButton",
   componentId: "sc-ewyffo-0"
-})(["flex:0 1 auto;transition:color 0.25s ease-in-out 0;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$m, props));
+})(["display:inline-flex;flex:0 1 auto;align-items:center;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$9$2, props));
 StyledTagsButton.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$8$2 = 'dropdowns.menu.floating';
+const StyledFloatingMenu = styled(StyledFloatingListbox).attrs({
+  'data-garden-id': COMPONENT_ID$8$2,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledFloatingMenu",
+  componentId: "sc-1kawjbc-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$8$2, props));
+StyledFloatingMenu.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$7$2 = 'dropdowns.menu.item';
+const StyledItem = styled(StyledOption).attrs({
+  'data-garden-id': COMPONENT_ID$7$2,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledItem",
+  componentId: "sc-1rlz2s1-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$7$2, props));
+StyledItem.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$6$2 = 'dropdowns.menu.item.content';
+const StyledItemContent = styled(StyledOptionContent).attrs({
+  'data-garden-id': COMPONENT_ID$6$2,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledItemContent",
+  componentId: "sc-lycr0m-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$6$2, props));
+StyledItemContent.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$5$3 = 'dropdowns.menu.item_group';
+const StyledItemGroup = styled(StyledOptGroup).attrs({
+  'data-garden-id': COMPONENT_ID$5$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledItemGroup",
+  componentId: "sc-1p1oxg2-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$5$3, props));
+StyledItemGroup.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$4$3 = 'dropdowns.menu.item.icon';
+const StyledItemIcon = styled(StyledOptionIcon).attrs({
+  'data-garden-id': COMPONENT_ID$4$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledItemIcon",
+  componentId: "sc-1htsio6-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$4$3, props));
+StyledItemIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$3$3 = 'dropdowns.menu.item.meta';
+const StyledItemMeta = styled(StyledOptionMeta).attrs({
+  'data-garden-id': COMPONENT_ID$3$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledItemMeta",
+  componentId: "sc-1w4thi3-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$3$3, props));
+StyledItemMeta.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$2$3 = 'dropdowns.menu.item.type_icon';
+const StyledItemTypeIcon = styled(StyledOptionTypeIcon).attrs({
+  'data-garden-id': COMPONENT_ID$2$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledItemTypeIcon",
+  componentId: "sc-15p2dtm-0"
+})(["", "[aria-checked='true'] > &{opacity:1;}", ";"], StyledItem, props => retrieveComponentStyles(COMPONENT_ID$2$3, props));
+StyledItemTypeIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$1$3 = 'dropdowns.menu';
+const StyledMenu$1 = styled(StyledListbox).attrs({
+  'data-garden-id': COMPONENT_ID$1$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledMenu",
+  componentId: "sc-1ht6lc5-0"
+})(["position:static !important;", ";", ";"], props => props.arrowPosition && arrowStyles(props.arrowPosition, {
+  size: `${props.theme.space.base * 2}px`,
+  inset: '2px',
+  animationModifier: '[data-garden-animate="true"]'
+}), props => retrieveComponentStyles(COMPONENT_ID$1$3, props));
+StyledMenu$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$v = 'dropdowns.menu.separator';
+const StyledMenuSeparator = styled(StyledListboxSeparator).attrs({
+  'data-garden-id': COMPONENT_ID$v,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledMenuSeparator",
+  componentId: "sc-vjn46k-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$v, props));
+StyledMenuSeparator.defaultProps = {
   theme: DEFAULT_THEME
 };
 
@@ -18054,7 +18166,7 @@ const Listbox = reactExports.forwardRef((_ref, ref) => {
     }
   }, [
   children, update]);
-  const Node = React__default.createElement(StyledFloating, {
+  const Node = React.createElement(StyledFloatingListbox, {
     "data-garden-animate": isVisible ? 'true' : 'false',
     isHidden: !isExpanded,
     position: placement === 'bottom-start' ? 'bottom' : 'top',
@@ -18064,7 +18176,7 @@ const Listbox = reactExports.forwardRef((_ref, ref) => {
     },
     zIndex: zIndex,
     ref: floatingRef
-  }, React__default.createElement(StyledListbox, _extends$5$1({
+  }, React.createElement(StyledListbox, _extends$5$1({
     isCompact: isCompact,
     maxHeight: maxHeight,
     minHeight: minHeight,
@@ -18140,21 +18252,21 @@ const TagComponent = reactExports.forwardRef((_ref, ref) => {
   const theme = reactExports.useContext(Be) || DEFAULT_THEME;
   const doc = useDocument(theme);
   const handleClick = () => removeSelection(option.value);
-  return React__default.createElement(StyledTag, _extends$5$1({
+  return React.createElement(StyledTag, _extends$5$1({
     "aria-disabled": option.disabled,
     tabIndex: option.disabled ? undefined : 0
   }, tagProps, props, {
     size: isCompact ? 'medium' : 'large',
     ref: ref
-  }), children || React__default.createElement("span", null, text), !option.disabled && (removeLabel ?
-  React__default.createElement(Tooltip, {
+  }), children || React.createElement("span", null, text), !option.disabled && (removeLabel ?
+  React.createElement(Tooltip, {
     appendToNode: doc?.body,
     content: removeLabel,
     zIndex: tooltipZIndex
-  }, React__default.createElement(StyledTag.Close, {
+  }, React.createElement(StyledTag.Close, {
     "aria-label": removeLabel,
     onClick: handleClick
-  })) : React__default.createElement(StyledTag.Close, {
+  })) : React.createElement(StyledTag.Close, {
     onClick: handleClick
   })));
 });
@@ -18167,6 +18279,32 @@ TagComponent.propTypes = {
 };
 const Tag = TagComponent;
 Tag.Avatar = TagAvatar;
+
+const TagGroup = _ref => {
+  let {
+    children,
+    isDisabled,
+    isExpanded,
+    listboxZIndex,
+    maxTags,
+    optionTagProps,
+    selection
+  } = _ref;
+  return React.createElement(React.Fragment, null, selection.map((option, index) => {
+    const key = toString(option);
+    const disabled = isDisabled || option.disabled;
+    return React.createElement(Tag, _extends$5$1({
+      key: key,
+      hidden: !isExpanded && index >= maxTags,
+      option: {
+        ...option,
+        disabled
+      },
+      tooltipZIndex: listboxZIndex ? listboxZIndex + 1 : undefined
+    }, optionTagProps[key]));
+  }), children);
+};
+TagGroup.displayName = 'TagGroup';
 
 const MAX_TAGS = 4;
 const Combobox = reactExports.forwardRef((_ref, ref) => {
@@ -18208,22 +18346,24 @@ const Combobox = reactExports.forwardRef((_ref, ref) => {
     labelProps,
     setLabelProps
   } = useFieldContext();
+  const [isInputHidden, setIsInputHidden] = reactExports.useState(true);
   const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
+  const [isTagGroupExpanded, setIsTagGroupExpanded] = reactExports.useState(false);
   const [optionTagProps, setOptionTagProps] = reactExports.useState({});
   const options = reactExports.useMemo(() => {
     const tagProps = {};
     const retVal = toOptions(children, tagProps);
-    setOptionTagProps(value => ({
-      ...value,
-      ...tagProps
-    }));
+    if (isMultiselectable) {
+      setOptionTagProps(value => ({
+        ...value,
+        ...tagProps
+      }));
+    }
     return retVal;
-  }, [children]);
-  const hasFocus = reactExports.useRef(false);
+  }, [children, isMultiselectable]);
   const triggerRef = reactExports.useRef(null);
   const inputRef = reactExports.useRef(null);
   const listboxRef = reactExports.useRef(null);
-  const tagsButtonRef = reactExports.useRef(null);
   const theme = reactExports.useContext(Be) || DEFAULT_THEME;
   const environment = useWindow(theme);
   const {
@@ -18287,20 +18427,31 @@ const Combobox = reactExports.forwardRef((_ref, ref) => {
     validation,
     ...getTriggerProps({
       onFocus: () => {
-        hasFocus.current = true;
+        if (isEditable) {
+          setIsInputHidden(false);
+        }
+        if (isMultiselectable) {
+          setIsTagGroupExpanded(true);
+        }
       },
       onBlur: event => {
         if (event.relatedTarget === null || !triggerRef.current?.contains(event.relatedTarget)) {
-          hasFocus.current = false;
+          if (isEditable) {
+            setIsInputHidden(true);
+          }
+          if (isMultiselectable) {
+            setIsTagGroupExpanded(false);
+          }
         }
       }
     })
   };
   const inputProps = {
     'aria-invalid': validation === 'error' || validation === 'warning',
-    hidden: !(isEditable && hasFocus.current),
+    hidden: isInputHidden,
     isBare,
     isCompact,
+    isEditable,
     isMultiselectable,
     placeholder,
     ...getInputProps({
@@ -18320,68 +18471,49 @@ const Combobox = reactExports.forwardRef((_ref, ref) => {
     }
     return () => labelProps && setLabelProps(undefined);
   }, [getLabelProps, labelProps, setLabelProps]);
-  const Tags = _ref2 => {
-    let {
-      selectedOptions
-    } = _ref2;
-    const [isFocused, setIsFocused] = reactExports.useState(hasFocus.current);
-    const value = selectedOptions.length - maxTags;
-    return React__default.createElement(React__default.Fragment, null, selectedOptions.map((option, index) => {
-      const key = toString(option);
-      const disabled = isDisabled || option.disabled;
-      const hidden = !isFocused && index >= maxTags;
-      return React__default.createElement(Tag, _extends$5$1({
-        key: key,
-        hidden: hidden,
-        onFocus: () => setIsFocused(true),
-        option: {
-          ...option,
-          disabled
-        },
-        tooltipZIndex: listboxZIndex ? listboxZIndex + 1 : undefined
-      }, optionTagProps[key]));
-    }), !isFocused && selectedOptions.length > maxTags && React__default.createElement(StyledTagsButton, {
-      disabled: isDisabled,
-      isCompact: isCompact,
-      onClick: () => isEditable && inputRef.current?.focus(),
-      tabIndex: -1,
-      type: "button",
-      ref: tagsButtonRef
-    }, renderExpandTags ? renderExpandTags(value) : expandTags?.replace('{{value}}', value.toString())));
-  };
-  return React__default.createElement(ComboboxContext.Provider, {
+  return React.createElement(ComboboxContext.Provider, {
     value: contextValue
-  }, React__default.createElement(StyledCombobox, _extends$5$1({
-    isCompact: isCompact
+  }, React.createElement(StyledCombobox, _extends$5$1({
+    isCompact: isCompact,
+    tabIndex: -1
   }, props, {
     ref: ref
-  }), React__default.createElement(StyledTrigger, triggerProps, React__default.createElement(StyledContainer, null, startIcon && React__default.createElement(StyledInputIcon, {
+  }), React.createElement(StyledTrigger, triggerProps, React.createElement(StyledContainer, null, startIcon && React.createElement(StyledInputIcon, {
     isLabelHovered: isLabelHovered,
     isCompact: isCompact
-  }, startIcon), React__default.createElement(StyledInputGroup, null, isMultiselectable && Array.isArray(selection) && React__default.createElement(Tags, {
-    selectedOptions: selection
-  }), !(isEditable && hasFocus.current) && React__default.createElement(StyledValue, {
+  }, startIcon), React.createElement(StyledInputGroup, null, isMultiselectable && Array.isArray(selection) && React.createElement(TagGroup, {
+    isDisabled: isDisabled,
+    isExpanded: isTagGroupExpanded,
+    maxTags: maxTags,
+    optionTagProps: optionTagProps,
+    selection: selection
+  }, selection.length > maxTags && React.createElement(StyledTagsButton, {
+    disabled: isDisabled,
+    hidden: isTagGroupExpanded,
+    isCompact: isCompact,
+    tabIndex: -1,
+    type: "button"
+  }, (() => {
+    const value = selection.length - maxTags;
+    return renderExpandTags ? renderExpandTags(value) : expandTags?.replace('{{value}}', value.toString());
+  })())), React.createElement(StyledValue, {
+    hidden: !isInputHidden,
+    isAutocomplete: isAutocomplete,
     isBare: isBare,
     isCompact: isCompact,
     isDisabled: isDisabled,
     isEditable: isEditable,
     isMultiselectable: isMultiselectable,
-    isPlaceholder: !(inputValue || renderValue),
-    onClick: event => {
-      if (isEditable) {
-        event.stopPropagation();
-        inputRef.current?.focus();
-      }
-    }
+    isPlaceholder: !(inputValue || renderValue)
   }, renderValue ? renderValue({
     selection,
     inputValue
-  }) : inputValue || placeholder), React__default.createElement(StyledInput, inputProps)), (hasChevron || endIcon) && React__default.createElement(StyledInputIcon, {
+  }) : inputValue || placeholder), React.createElement(StyledInput, inputProps)), (hasChevron || endIcon) && React.createElement(StyledInputIcon, {
     isCompact: isCompact,
     isEnd: true,
     isLabelHovered: isLabelHovered,
     isRotated: hasChevron && isExpanded
-  }, hasChevron ? React__default.createElement(SvgChevronDownStroke$1, null) : endIcon))), React__default.createElement(Listbox, _extends$5$1({
+  }, hasChevron ? React.createElement(SvgChevronDownStroke$1, null) : endIcon))), React.createElement(Listbox, _extends$5$1({
     appendToNode: listboxAppendToNode,
     isCompact: isCompact,
     isExpanded: isExpanded,
@@ -18419,7 +18551,7 @@ Combobox.propTypes = {
   placeholder: PropTypes.string,
   renderExpandTags: PropTypes.func,
   renderValue: PropTypes.func,
-  selectionValue: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
+  selectionValue: PropTypes.any,
   startIcon: PropTypes.any,
   validation: PropTypes.oneOf(VALIDATION)
 };
@@ -18442,9 +18574,9 @@ const Field = reactExports.forwardRef((props, ref) => {
     hasMessage,
     setHasMessage
   }), [labelProps, setLabelProps, hasHint, setHasHint, hasMessage, setHasMessage]);
-  return React__default.createElement(FieldContext.Provider, {
+  return React.createElement(FieldContext.Provider, {
     value: contextValue
-  }, React__default.createElement(StyledField, _extends$5$1({}, props, {
+  }, React.createElement(StyledField, _extends$5$1({}, props, {
     ref: ref
   })));
 });
@@ -18458,7 +18590,7 @@ const Hint = reactExports.forwardRef((props, ref) => {
     setHasHint(true);
     return () => setHasHint(false);
   }, [setHasHint]);
-  return React__default.createElement(StyledHint, _extends$5$1({}, props, {
+  return React.createElement(StyledHint, _extends$5$1({}, props, {
     ref: ref
   }));
 });
@@ -18474,10 +18606,10 @@ const Label = reactExports.forwardRef((_ref, ref) => {
   const {
     labelProps
   } = useFieldContext();
-  return React__default.createElement(StyledLabel, _extends$5$1({}, labelProps, {
-    onClick: composeEventHandlers$3(onClick, labelProps?.onClick),
-    onMouseEnter: composeEventHandlers$3(onMouseEnter, labelProps?.onMouseEnter),
-    onMouseLeave: composeEventHandlers$3(onMouseLeave, labelProps?.onMouseLeave)
+  return React.createElement(StyledLabel, _extends$5$1({}, labelProps, {
+    onClick: composeEventHandlers$4(onClick, labelProps?.onClick),
+    onMouseEnter: composeEventHandlers$4(onMouseEnter, labelProps?.onMouseEnter),
+    onMouseLeave: composeEventHandlers$4(onMouseLeave, labelProps?.onMouseLeave)
   }, props, {
     ref: ref
   }));
@@ -18496,7 +18628,7 @@ const Message = reactExports.forwardRef((props, ref) => {
     setHasMessage(true);
     return () => setHasMessage(false);
   }, [setHasMessage]);
-  return React__default.createElement(StyledMessage, _extends$5$1({}, props, {
+  return React.createElement(StyledMessage, _extends$5$1({}, props, {
     ref: ref
   }));
 });
@@ -18589,7 +18721,7 @@ const OptionMetaComponent = reactExports.forwardRef((props, ref) => {
   const {
     isDisabled
   } = useOptionContext();
-  return React__default.createElement(StyledOptionMeta, _extends$5$1({
+  return React.createElement(StyledOptionMeta, _extends$5$1({
     isDisabled: isDisabled
   }, props, {
     ref: ref
@@ -18633,13 +18765,13 @@ const OptionComponent = reactExports.forwardRef((_ref, ref) => {
   const renderActionIcon = iconType => {
     switch (iconType) {
       case 'add':
-        return React__default.createElement(SvgPlusStroke, null);
+        return React.createElement(SvgPlusStroke, null);
       case 'next':
-        return React__default.createElement(SvgChevronRightStroke$1, null);
+        return React.createElement(SvgChevronRightStroke$1, null);
       case 'previous':
-        return React__default.createElement(SvgChevronLeftStroke$1, null);
+        return React.createElement(SvgChevronLeftStroke$1, null);
       default:
-        return React__default.createElement(SvgCheckLgStroke, null);
+        return React.createElement(SvgCheckLgStroke, null);
     }
   };
   const option = toOption({
@@ -18652,16 +18784,16 @@ const OptionComponent = reactExports.forwardRef((_ref, ref) => {
     option,
     ref: mergeRefs([optionRef, ref])
   });
-  return React__default.createElement(OptionContext.Provider, {
+  return React.createElement(OptionContext.Provider, {
     value: contextValue
-  }, React__default.createElement(StyledOption, _extends$5$1({
+  }, React.createElement(StyledOption, _extends$5$1({
     isActive: isActive,
     isCompact: isCompact,
     $type: type
-  }, props, optionProps), React__default.createElement(StyledOptionTypeIcon, {
+  }, props, optionProps), React.createElement(StyledOptionTypeIcon, {
     isCompact: isCompact,
     type: type
-  }, renderActionIcon(type)), icon && React__default.createElement(StyledOptionIcon, null, icon), React__default.createElement(StyledOptionContent, null, children || label || toString({
+  }, renderActionIcon(type)), icon && React.createElement(StyledOptionIcon, null, icon), React.createElement(StyledOptionContent, null, children || label || toString({
     value
   }))));
 });
@@ -18699,23 +18831,23 @@ const OptGroup = reactExports.forwardRef((_ref, ref) => {
   const optGroupProps = getOptGroupProps({
     'aria-label': groupAriaLabel || label
   });
-  return React__default.createElement(StyledOption, _extends$5$1({
+  return React.createElement(StyledOption, _extends$5$1({
     isCompact: isCompact,
     $type: "group",
-    onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
+    onMouseDown: composeEventHandlers$4(onMouseDown, handleMouseDown),
     role: "none"
   }, props, {
     ref: ref
-  }), React__default.createElement(StyledOptionContent, null, (content || label) && React__default.createElement(StyledOption, {
+  }), React.createElement(StyledOptionContent, null, (content || label) && React.createElement(StyledOption, {
     as: "div",
     isCompact: isCompact,
     $type: "header"
-  }, icon && React__default.createElement(StyledOptionTypeIcon, {
+  }, icon && React.createElement(StyledOptionTypeIcon, {
     isCompact: isCompact,
     type: "header"
-  }, icon), content || label), React__default.createElement(StyledOptGroup, _extends$5$1({
+  }, icon), content || label), React.createElement(StyledOptGroup, _extends$5$1({
     isCompact: isCompact
-  }, optGroupProps), React__default.createElement(StyledSeparator, {
+  }, optGroupProps), React.createElement(StyledListboxSeparator, {
     role: "none"
   }), children)));
 });
@@ -18733,7 +18865,7 @@ OptGroup.propTypes = {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers() {
+function composeEventHandlers$1() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -18759,7 +18891,7 @@ function getControlledValue() {
   }
   return undefined;
 }
-const KEYS = {
+const KEYS$1 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -18788,7 +18920,7 @@ const KEYS = {
   UP: 'ArrowUp'
 };
 
-var DocumentPosition;
+var DocumentPosition$1;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -18796,7 +18928,7 @@ var DocumentPosition;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
 
 /**
  * Copyright Zendesk, Inc.
@@ -18961,21 +19093,21 @@ const useSelection = _ref => {
       };
       const hasModifierKeyPressed = event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
       if (!hasModifierKeyPressed) {
-        if (event.key === KEYS.UP && verticalDirection || event.key === KEYS.LEFT && horizontalDirection) {
+        if (event.key === KEYS$1.UP && verticalDirection || event.key === KEYS$1.LEFT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onIncrement();
           } else {
             onDecrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS.DOWN && verticalDirection || event.key === KEYS.RIGHT && horizontalDirection) {
+        } else if (event.key === KEYS$1.DOWN && verticalDirection || event.key === KEYS$1.RIGHT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onDecrement();
           } else {
             onIncrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS.HOME) {
+        } else if (event.key === KEYS$1.HOME) {
           const firstItem = values[0];
           !isFocusedValueControlled && dispatch({
             type: 'HOME',
@@ -18983,7 +19115,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(firstItem);
           event.preventDefault();
-        } else if (event.key === KEYS.END) {
+        } else if (event.key === KEYS$1.END) {
           const lastItem = values[values.length - 1];
           !isFocusedValueControlled && dispatch({
             type: 'END',
@@ -18991,7 +19123,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(lastItem);
           event.preventDefault();
-        } else if (event.key === KEYS.SPACE || event.key === KEYS.ENTER) {
+        } else if (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER) {
           onSelect && onSelect(value);
           !isSelectedValueControlled && dispatch({
             type: 'KEYBOARD_SELECT',
@@ -19013,9 +19145,9 @@ const useSelection = _ref => {
       tabIndex,
       [selectedAriaKey]: selectedAriaKey ? isSelected : undefined,
       ref: refs[value],
-      onFocus: composeEventHandlers(onFocusCallback, handleFocus),
-      onClick: composeEventHandlers(onClick, handleClick),
-      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$1(onFocusCallback, handleFocus),
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
       onBlur,
       ...other
     };
@@ -19068,7 +19200,7 @@ const SIZE = ['small', 'medium', 'large'];
 const COMPONENT_ID$5$2 = 'buttons.button_group_view';
 const StyledButtonGroup = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5$2,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledButtonGroup",
   componentId: "sc-1fbpzef-0"
@@ -19094,10 +19226,10 @@ const StyledIcon$1 = styled(_ref => {
     theme,
     ...props
   } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
+  return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$4$2,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledIcon",
   componentId: "sc-19meqgg-0"
@@ -19235,7 +19367,7 @@ const sizeStyles$4 = props => {
 };
 const StyledButton = styled.button.attrs(props => ({
   'data-garden-id': COMPONENT_ID$3$2,
-  'data-garden-version': '8.69.5',
+  'data-garden-version': '8.69.9',
   type: props.type || 'button'
 })).withConfig({
   displayName: "StyledButton",
@@ -19248,7 +19380,7 @@ StyledButton.defaultProps = {
 const COMPONENT_ID$2$2 = 'buttons.anchor';
 const StyledAnchor = styled(StyledButton).attrs(props => ({
   'data-garden-id': COMPONENT_ID$2$2,
-  'data-garden-version': '8.69.5',
+  'data-garden-version': '8.69.9',
   as: 'a',
   dir: props.theme.rtl ? 'rtl' : undefined,
   isLink: true,
@@ -19282,7 +19414,7 @@ var SvgNewWindowStroke = function SvgNewWindowStroke(props) {
 const COMPONENT_ID$1$2 = 'buttons.external_icon';
 const StyledExternalIcon = styled(SvgNewWindowStroke).attrs({
   'data-garden-id': COMPONENT_ID$1$2,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledExternalIcon",
   componentId: "sc-16oz07e-0"
@@ -19309,7 +19441,7 @@ const iconStyles = props => {
 };
 const StyledIconButton = styled(StyledButton).attrs({
   'data-garden-id': COMPONENT_ID$d,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledIconButton",
   componentId: "sc-1t0ughp-0"
@@ -19328,13 +19460,13 @@ const useSplitButtonContext = () => {
   return reactExports.useContext(SplitButtonContext);
 };
 
-const StartIconComponent = props => React__default.createElement(StyledIcon$1, _extends$2$2({
+const StartIconComponent = props => React.createElement(StyledIcon$1, _extends$2$2({
   position: "start"
 }, props));
 StartIconComponent.displayName = 'Button.StartIcon';
 const StartIcon = StartIconComponent;
 
-const EndIconComponent = props => React__default.createElement(StyledIcon$1, _extends$2$2({
+const EndIconComponent = props => React.createElement(StyledIcon$1, _extends$2$2({
   position: "end"
 }, props));
 EndIconComponent.displayName = 'Button.EndIcon';
@@ -19359,7 +19491,7 @@ const ButtonComponent = reactExports.forwardRef((props, ref) => {
     computedRef = mergeRefs([
     computedProps.ref, ref]);
   }
-  return React__default.createElement(StyledButton, _extends$2$2({}, computedProps, {
+  return React.createElement(StyledButton, _extends$2$2({}, computedProps, {
     ref: computedRef
   }));
 });
@@ -19404,10 +19536,10 @@ const Anchor = reactExports.forwardRef((_ref, ref) => {
     noIconLabel: 'true'
   };
   const iconAriaLabel = useText(Anchor, checkProps, isExternal ? 'externalIconLabel' : 'noIconLabel', '(opens in a new tab)');
-  return React__default.createElement(StyledAnchor, _extends$2$2({
+  return React.createElement(StyledAnchor, _extends$2$2({
     ref: ref
   }, anchorProps), children, isExternal &&
-  React__default.createElement(StyledExternalIcon, {
+  React.createElement(StyledExternalIcon, {
     role: "img",
     "aria-label": iconAriaLabel,
     "aria-hidden": undefined
@@ -19460,9 +19592,9 @@ const ButtonGroup = reactExports.forwardRef((_ref, ref) => {
       ...props
     })
   }), [selectedItem, getElementProps]);
-  return React__default.createElement(ButtonGroupContext.Provider, {
+  return React.createElement(ButtonGroupContext.Provider, {
     value: contextValue
-  }, React__default.createElement(StyledButtonGroup, _extends$2$2({
+  }, React.createElement(StyledButtonGroup, _extends$2$2({
     ref: ref
   }, getGroupProps(otherProps)), children));
 });
@@ -19479,11 +19611,11 @@ const IconButton = reactExports.forwardRef((_ref, ref) => {
     ...otherProps
   } = _ref;
   const focusInset = useSplitButtonContext();
-  return React__default.createElement(StyledIconButton, _extends$2$2({
+  return React.createElement(StyledIconButton, _extends$2$2({
     ref: ref
   }, otherProps, {
     focusInset: otherProps.focusInset || focusInset
-  }), React__default.createElement(StyledIcon$1, {
+  }), React.createElement(StyledIcon$1, {
     isRotated: isRotated
   }, children));
 });
@@ -19524,9 +19656,9 @@ const ChevronButton = reactExports.forwardRef((_ref, ref) => {
   let {
     ...buttonProps
   } = _ref;
-  return React__default.createElement(IconButton, _extends$2$2({
+  return React.createElement(IconButton, _extends$2$2({
     ref: ref
-  }, buttonProps), React__default.createElement(SvgChevronDownStroke, null));
+  }, buttonProps), React.createElement(SvgChevronDownStroke, null));
 });
 ChevronButton.displayName = 'ChevronButton';
 ChevronButton.propTypes = IconButton.propTypes;
@@ -19541,9 +19673,9 @@ const SplitButton = reactExports.forwardRef((_ref, ref) => {
     children,
     ...other
   } = _ref;
-  return React__default.createElement(SplitButtonContext.Provider, {
+  return React.createElement(SplitButtonContext.Provider, {
     value: true
-  }, React__default.createElement(StyledButtonGroup, _extends$2$2({
+  }, React.createElement(StyledButtonGroup, _extends$2$2({
     ref: ref
   }, other), children));
 });
@@ -19554,7 +19686,7 @@ const ToggleButton = reactExports.forwardRef((_ref, ref) => {
     isPressed,
     ...otherProps
   } = _ref;
-  return React__default.createElement(Button, _extends$2$2({
+  return React.createElement(Button, _extends$2$2({
     "aria-pressed": isPressed,
     ref: ref
   }, otherProps));
@@ -19573,7 +19705,7 @@ const ToggleIconButton = reactExports.forwardRef((_ref, ref) => {
     isPressed,
     ...otherProps
   } = _ref;
-  return React__default.createElement(IconButton, _extends$2$2({
+  return React.createElement(IconButton, _extends$2$2({
     "aria-pressed": isPressed,
     ref: ref
   }, otherProps));
@@ -19616,7 +19748,7 @@ const TYPE = ['success', 'warning', 'error', 'info'];
 const COMPONENT_ID$b$1 = 'notifications.close';
 const StyledClose = styled.button.attrs({
   'data-garden-id': COMPONENT_ID$b$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-1mr9nx1-0"
@@ -19631,7 +19763,7 @@ StyledClose.defaultProps = {
 const COMPONENT_ID$a$1 = 'notifications.paragraph';
 const StyledParagraph = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$a$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-12tmd6p-0"
@@ -19643,7 +19775,7 @@ StyledParagraph.defaultProps = {
 const COMPONENT_ID$9$1 = 'notifications.title';
 const StyledTitle = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$9$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-xx4jsv-0"
@@ -19698,11 +19830,10 @@ StyledBase.defaultProps = {
 
 const COMPONENT_ID$8$1 = 'notifications.alert';
 const colorStyles$5 = props => Ne(["", "{color:", ";}"], StyledTitle, props.hue && getColor(props.hue, 800, props.theme));
-const StyledAlert = styled(StyledBase).attrs(props => ({
+const StyledAlert = styled(StyledBase).attrs({
   'data-garden-id': COMPONENT_ID$8$1,
-  'data-garden-version': '8.69.5',
-  role: props.role === undefined ? 'alert' : props.role
-})).withConfig({
+  'data-garden-version': '8.69.9'
+}).withConfig({
   displayName: "StyledAlert",
   componentId: "sc-fyn8jp-0"
 })(["", " ", ";"], colorStyles$5, props => retrieveComponentStyles(COMPONENT_ID$8$1, props));
@@ -19747,7 +19878,7 @@ const colorStyles$4 = props => {
 };
 const StyledNotification = styled(StyledBase).attrs({
   'data-garden-id': COMPONENT_ID$7$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledNotification",
   componentId: "sc-uf6jh-0"
@@ -19762,7 +19893,7 @@ StyledNotification.defaultProps = {
 const COMPONENT_ID$6$1 = 'notifications.well';
 const StyledWell = styled(StyledBase).attrs({
   'data-garden-id': COMPONENT_ID$6$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledWell",
   componentId: "sc-a5831c-0"
@@ -19776,7 +19907,7 @@ const StyledIcon = styled(_ref => {
     children,
     ...props
   } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
+  return React.cloneElement(reactExports.Children.only(children), props);
 }).withConfig({
   displayName: "StyledIcon",
   componentId: "sc-msklws-0"
@@ -19849,7 +19980,7 @@ const sizeStyles$3 = props => {
 };
 const StyledGlobalAlert = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlert",
   componentId: "sc-k6rimt-0"
@@ -19909,7 +20040,7 @@ const sizeStyles$2 = props => {
 };
 const StyledGlobalAlertClose = styled(IconButton).attrs({
   'data-garden-id': COMPONENT_ID$4$1,
-  'data-garden-version': '8.69.5',
+  'data-garden-version': '8.69.9',
   size: 'small'
 }).withConfig({
   displayName: "StyledGlobalAlertClose",
@@ -19964,7 +20095,7 @@ function sizeStyles$1(props) {
 }
 const StyledGlobalAlertButton = styled(Button).attrs({
   'data-garden-id': COMPONENT_ID$3$1,
-  'data-garden-version': '8.69.5',
+  'data-garden-version': '8.69.9',
   focusInset: false,
   isDanger: false,
   isLink: false,
@@ -19983,7 +20114,7 @@ StyledGlobalAlertButton.defaultProps = {
 const COMPONENT_ID$2$1 = 'notifications.global-alert.content';
 const StyledGlobalAlertContent = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$2$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlertContent",
   componentId: "sc-rept0u-0"
@@ -20004,10 +20135,10 @@ const StyledGlobalAlertIcon = styled(_ref => {
     children,
     ...props
   } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
+  return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$1$1,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlertIcon",
   componentId: "sc-84ne9k-0"
@@ -20035,7 +20166,7 @@ const colorStyles = props => {
 };
 const StyledGlobalAlertTitle = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$c,
-  'data-garden-version': '8.69.5'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlertTitle",
   componentId: "sc-10clqbo-0"
@@ -20165,17 +20296,22 @@ const useNotificationsContext = () => {
   return reactExports.useContext(NotificationsContext);
 };
 
-const Alert = React__default.forwardRef((props, ref) => {
+const Alert = React.forwardRef((_ref, ref) => {
+  let {
+    role,
+    ...props
+  } = _ref;
   const hue = validationHues[props.type];
   const Icon = validationIcons[props.type];
-  return React__default.createElement(NotificationsContext.Provider, {
+  return React.createElement(NotificationsContext.Provider, {
     value: hue
-  }, React__default.createElement(StyledAlert, _extends$6({
+  }, React.createElement(StyledAlert, _extends$6({
     ref: ref,
+    hue: hue,
+    role: role === undefined ? 'alert' : role
+  }, props), React.createElement(StyledIcon, {
     hue: hue
-  }, props), React__default.createElement(StyledIcon, {
-    hue: hue
-  }, React__default.createElement(Icon, null)), props.children));
+  }, React.createElement(Icon, null)), props.children));
 });
 Alert.displayName = 'Alert';
 Alert.propTypes = {
@@ -20189,22 +20325,22 @@ const Notification = reactExports.forwardRef((_ref, ref) => {
   } = _ref;
   const Icon = props.type ? validationIcons[props.type] : SvgInfoStroke;
   const hue = props.type && validationHues[props.type];
-  return React__default.createElement(StyledNotification, _extends$6({
+  return React.createElement(StyledNotification, _extends$6({
     ref: ref,
     type: props.type,
     isFloating: true
   }, props, {
     role: role === undefined ? 'status' : role
-  }), props.type && React__default.createElement(StyledIcon, {
+  }), props.type && React.createElement(StyledIcon, {
     hue: hue
-  }, React__default.createElement(Icon, null)), props.children);
+  }, React.createElement(Icon, null)), props.children);
 });
 Notification.displayName = 'Notification';
 Notification.propTypes = {
   type: PropTypes.oneOf(TYPE)
 };
 
-const Well = React__default.forwardRef((props, ref) => React__default.createElement(StyledWell, _extends$6({
+const Well = React.forwardRef((props, ref) => React.createElement(StyledWell, _extends$6({
   ref: ref
 }, props)));
 Well.displayName = 'Well';
@@ -20230,23 +20366,23 @@ var SvgXStroke$1 = function SvgXStroke(props) {
   })));
 };
 
-const Close = React__default.forwardRef((props, ref) => {
+const Close = React.forwardRef((props, ref) => {
   const ariaLabel = useText(Close, props, 'aria-label', 'Close');
   const hue = useNotificationsContext();
-  return React__default.createElement(StyledClose, _extends$6({
+  return React.createElement(StyledClose, _extends$6({
     ref: ref,
     hue: hue,
     "aria-label": ariaLabel
-  }, props), React__default.createElement(SvgXStroke$1, null));
+  }, props), React.createElement(SvgXStroke$1, null));
 });
 Close.displayName = 'Close';
 
-const Paragraph = React__default.forwardRef((props, ref) => React__default.createElement(StyledParagraph, _extends$6({
+const Paragraph = React.forwardRef((props, ref) => React.createElement(StyledParagraph, _extends$6({
   ref: ref
 }, props)));
 Paragraph.displayName = 'Paragraph';
 
-const Title = React__default.forwardRef((props, ref) => React__default.createElement(StyledTitle, _extends$6({
+const Title = React.forwardRef((props, ref) => React.createElement(StyledTitle, _extends$6({
   ref: ref
 }, props)));
 Title.displayName = 'Title';
@@ -20331,7 +20467,7 @@ const GlobalAlertButton = reactExports.forwardRef((_ref, ref) => {
   const {
     type
   } = useGlobalAlertContext();
-  return React__default.createElement(StyledGlobalAlertButton, _extends$6({
+  return React.createElement(StyledGlobalAlertButton, _extends$6({
     ref: ref,
     alertType: type
   }, props, {
@@ -20366,10 +20502,10 @@ const GlobalAlertClose = reactExports.forwardRef((props, ref) => {
     type
   } = useGlobalAlertContext();
   const label = useText(GlobalAlertClose, props, 'aria-label', 'Close');
-  return React__default.createElement(StyledGlobalAlertClose, _extends$6({
+  return React.createElement(StyledGlobalAlertClose, _extends$6({
     ref: ref,
     alertType: type
-  }, props), React__default.createElement(SvgXStroke, {
+  }, props), React.createElement(SvgXStroke, {
     role: "img",
     "aria-label": label
   }));
@@ -20377,7 +20513,7 @@ const GlobalAlertClose = reactExports.forwardRef((props, ref) => {
 GlobalAlertClose.displayName = 'GlobalAlert.Close';
 
 const GlobalAlertContent = reactExports.forwardRef((props, ref) => {
-  return React__default.createElement(StyledGlobalAlertContent, _extends$6({
+  return React.createElement(StyledGlobalAlertContent, _extends$6({
     ref: ref
   }, props));
 });
@@ -20387,7 +20523,7 @@ const GlobalAlertTitle = reactExports.forwardRef((props, ref) => {
   const {
     type
   } = useGlobalAlertContext();
-  return React__default.createElement(StyledGlobalAlertTitle, _extends$6({
+  return React.createElement(StyledGlobalAlertTitle, _extends$6({
     alertType: type,
     ref: ref
   }, props));
@@ -20402,19 +20538,19 @@ const GlobalAlertComponent = reactExports.forwardRef((_ref, ref) => {
     type,
     ...props
   } = _ref;
-  return React__default.createElement(GlobalAlertContext.Provider, {
+  return React.createElement(GlobalAlertContext.Provider, {
     value: reactExports.useMemo(() => ({
       type
     }), [type])
-  }, React__default.createElement(StyledGlobalAlert, _extends$6({
+  }, React.createElement(StyledGlobalAlert, _extends$6({
     ref: ref,
     role: "status",
     alertType: type
   }, props), {
-    success: React__default.createElement(StyledGlobalAlertIcon, null, React__default.createElement(SvgCheckCircleStroke, null)),
-    error: React__default.createElement(StyledGlobalAlertIcon, null, React__default.createElement(SvgAlertErrorStroke, null)),
-    warning: React__default.createElement(StyledGlobalAlertIcon, null, React__default.createElement(SvgAlertWarningStroke, null)),
-    info: React__default.createElement(StyledGlobalAlertIcon, null, React__default.createElement(SvgInfoStroke, null))
+    success: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgCheckCircleStroke, null)),
+    error: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgAlertErrorStroke, null)),
+    warning: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgAlertWarningStroke, null)),
+    info: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgInfoStroke, null))
   }[type], props.children));
 });
 GlobalAlertComponent.displayName = 'GlobalAlert';
@@ -24861,7 +24997,7 @@ function getMenuPosition(popperPlacement) {
 const COMPONENT_ID$b = 'datepickers.menu';
 const StyledMenu = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$b,
-  'data-garden-version': '8.69.8'
+  'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledMenu",
   componentId: "sc-1npbkk0-0"
@@ -25234,25 +25370,25 @@ const MonthSelector = _ref => {
     });
     return formatter.format(date);
   }, [locale]);
-  return React__default.createElement(StyledHeader, {
+  return React.createElement(StyledHeader, {
     isCompact: isCompact
-  }, React__default.createElement(StyledHeaderPaddle, {
+  }, React.createElement(StyledHeaderPaddle, {
     isCompact: isCompact,
     onClick: () => {
       dispatch({
         type: 'PREVIEW_PREVIOUS_MONTH'
       });
     }
-  }, React__default.createElement(SvgChevronLeftStroke, null)), React__default.createElement(StyledHeaderLabel, {
+  }, React.createElement(SvgChevronLeftStroke, null)), React.createElement(StyledHeaderLabel, {
     isCompact: isCompact
-  }, headerLabelFormatter(state.previewDate)), React__default.createElement(StyledHeaderPaddle, {
+  }, headerLabelFormatter(state.previewDate)), React.createElement(StyledHeaderPaddle, {
     isCompact: isCompact,
     onClick: () => {
       dispatch({
         type: 'PREVIEW_NEXT_MONTH'
       });
     }
-  }, React__default.createElement(SvgChevronRightStroke, null)));
+  }, React.createElement(SvgChevronRightStroke, null)));
 };
 
 const Calendar$1 = reactExports.forwardRef((_ref, ref) => {
@@ -25288,10 +25424,10 @@ const Calendar$1 = reactExports.forwardRef((_ref, ref) => {
     end: addDays(startDate, 6)
   }).map(date => {
     const formattedDayLabel = dayLabelFormatter(date);
-    return React__default.createElement(StyledCalendarItem, {
+    return React.createElement(StyledCalendarItem, {
       key: `day-label-${formattedDayLabel}`,
       isCompact: isCompact
-    }, React__default.createElement(StyledDayLabel, {
+    }, React.createElement(StyledDayLabel, {
       isCompact: isCompact
     }, formattedDayLabel));
   });
@@ -25310,10 +25446,10 @@ const Calendar$1 = reactExports.forwardRef((_ref, ref) => {
     if (maxValue !== undefined) {
       isDisabled = isDisabled || isAfter(date, maxValue) && !isSameDay(date, maxValue);
     }
-    return React__default.createElement(StyledCalendarItem, {
+    return React.createElement(StyledCalendarItem, {
       key: `day-${itemsIndex}`,
       isCompact: isCompact
-    }, React__default.createElement(StyledDay, {
+    }, React.createElement(StyledDay, {
       isToday: isCurrentDate,
       isPreviousMonth: isPreviousMonth,
       isSelected: isSelected,
@@ -25329,16 +25465,16 @@ const Calendar$1 = reactExports.forwardRef((_ref, ref) => {
       }
     }, formattedDayLabel));
   });
-  return React__default.createElement(StyledDatepicker, {
+  return React.createElement(StyledDatepicker, {
     ref: ref,
     isCompact: isCompact,
     onMouseDown: e => {
       e.preventDefault();
     }
-  }, React__default.createElement(MonthSelector, {
+  }, React.createElement(MonthSelector, {
     locale: locale,
     isCompact: isCompact
-  }), React__default.createElement(StyledCalendar, {
+  }), React.createElement(StyledCalendar, {
     isCompact: isCompact
   }, dayLabels, items));
 });
@@ -25582,45 +25718,45 @@ const Datepicker = reactExports.forwardRef((props, calendarRef) => {
     state,
     dispatch
   }), [state, dispatch]);
-  return React__default.createElement(DatepickerContext.Provider, {
+  return React.createElement(DatepickerContext.Provider, {
     value: contextValue
-  }, React__default.createElement(Manager, null, React__default.createElement(Reference, null, _ref => {
+  }, React.createElement(Manager, null, React.createElement(Reference, null, _ref => {
     let {
       ref
     } = _ref;
-    const childElement = React__default.Children.only(children);
-    return React__default.cloneElement(childElement, {
+    const childElement = React.Children.only(children);
+    return React.cloneElement(childElement, {
       [refKey]: refValue => {
         ref(refValue);
         inputRef.current = refValue;
       },
-      onMouseDown: composeEventHandlers$3(childElement.props.onMouseDown, () => {
+      onMouseDown: composeEventHandlers$4(childElement.props.onMouseDown, () => {
         isInputMouseDownRef.current = true;
       }),
-      onMouseUp: composeEventHandlers$3(childElement.props.onMouseUp, () => {
+      onMouseUp: composeEventHandlers$4(childElement.props.onMouseUp, () => {
         setTimeout(() => {
           isInputMouseDownRef.current = false;
         }, 0);
       }),
-      onClick: composeEventHandlers$3(childElement.props.onClick, () => {
+      onClick: composeEventHandlers$4(childElement.props.onClick, () => {
         if (isInputMouseDownRef.current && !state.isOpen) {
           dispatch({
             type: 'OPEN'
           });
         }
       }),
-      onBlur: composeEventHandlers$3(childElement.props.onBlur, () => {
+      onBlur: composeEventHandlers$4(childElement.props.onBlur, () => {
         dispatch({
           type: 'CLOSE'
         });
       }),
-      onChange: composeEventHandlers$3(childElement.props.onChange, e => {
+      onChange: composeEventHandlers$4(childElement.props.onChange, e => {
         dispatch({
           type: 'MANUALLY_UPDATE_INPUT',
           value: e.target.value
         });
       }),
-      onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, e => {
+      onKeyDown: composeEventHandlers$4(childElement.props.onKeyDown, e => {
         switch (e.keyCode) {
           case KEY_CODES.ESCAPE:
           case KEY_CODES.ENTER:
@@ -25640,7 +25776,7 @@ const Datepicker = reactExports.forwardRef((props, calendarRef) => {
       autoComplete: 'off',
       value: state.inputValue
     });
-  }), React__default.createElement(Popper, {
+  }), React.createElement(Popper, {
     placement: popperPlacement,
     modifiers: popperModifiers
     ,
@@ -25653,14 +25789,14 @@ const Datepicker = reactExports.forwardRef((props, calendarRef) => {
       placement: currentPlacement
     } = _ref2;
     scheduleUpdateRef.current = scheduleUpdate;
-    return React__default.createElement(StyledMenuWrapper, {
+    return React.createElement(StyledMenuWrapper, {
       ref: ref,
       style: style,
       isHidden: !state.isOpen,
       isAnimated: isAnimated && (state.isOpen || isVisible),
       placement: currentPlacement,
       zIndex: zIndex
-    }, (state.isOpen || isVisible) && React__default.createElement(StyledMenu, menuProps, React__default.createElement(Calendar$1, {
+    }, (state.isOpen || isVisible) && React.createElement(StyledMenu, menuProps, React.createElement(Calendar$1, {
       ref: calendarRef,
       isCompact: isCompact,
       value: value,
@@ -25775,14 +25911,14 @@ const Start = props => {
     handleBlur();
     props.children.props.onBlur && props.children.props.onBlur(e);
   }, [handleBlur, props.children]);
-  const childElement = React__default.Children.only(props.children);
-  return React__default.cloneElement(childElement, {
+  const childElement = React.Children.only(props.children);
+  return React.cloneElement(childElement, {
     value: state.startInputValue || '',
     ref: startInputRef,
-    onChange: composeEventHandlers$3(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$3(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, onKeyDownCallback),
-    onBlur: composeEventHandlers$3(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$4(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$4(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$4(childElement.props.onKeyDown, onKeyDownCallback),
+    onBlur: composeEventHandlers$4(childElement.props.onBlur, onBlurCallback)
   });
 };
 Start.displayName = 'DatepickerRange.Start';
@@ -25840,14 +25976,14 @@ const End = props => {
     handleBlur();
     props.children.props.onBlur && props.children.props.onBlur(e);
   }, [handleBlur, props.children]);
-  const childElement = React__default.Children.only(props.children);
-  return React__default.cloneElement(childElement, {
+  const childElement = React.Children.only(props.children);
+  return React.cloneElement(childElement, {
     value: state.endInputValue || '',
     ref: endInputRef,
-    onChange: composeEventHandlers$3(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$3(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, onKeydownCallback),
-    onBlur: composeEventHandlers$3(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$4(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$4(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$4(childElement.props.onKeyDown, onKeydownCallback),
+    onBlur: composeEventHandlers$4(childElement.props.onBlur, onBlurCallback)
   });
 };
 End.displayName = 'DatepickerRange.End';
@@ -25918,10 +26054,10 @@ const Month = reactExports.forwardRef((_ref, ref) => {
     end: addDays(startDate, 6)
   }).map(date => {
     const formattedDayLabel = dayLabelFormatter(date);
-    return React__default.createElement(StyledCalendarItem, {
+    return React.createElement(StyledCalendarItem, {
       key: `day-label-${formattedDayLabel}`,
       isCompact: isCompact
-    }, React__default.createElement(StyledDayLabel, {
+    }, React.createElement(StyledDayLabel, {
       isCompact: isCompact
     }, formattedDayLabel));
   });
@@ -25933,10 +26069,10 @@ const Month = reactExports.forwardRef((_ref, ref) => {
     const isCurrentDate = isToday(date);
     const isPreviousMonth = !isSameMonth(date, displayDate);
     if (isPreviousMonth) {
-      return React__default.createElement(StyledCalendarItem, {
+      return React.createElement(StyledCalendarItem, {
         key: `day-${itemsIndex}`,
         isCompact: isCompact
-      }, React__default.createElement(StyledDay, {
+      }, React.createElement(StyledDay, {
         isCompact: isCompact,
         isPreviousMonth: true,
         isDisabled: true
@@ -25981,14 +26117,14 @@ const Month = reactExports.forwardRef((_ref, ref) => {
         isInvalidDateRange = isInvalidDateRange || compareAsc(endValue, maxValue) === 1;
       }
     }
-    return React__default.createElement(StyledCalendarItem, {
+    return React.createElement(StyledCalendarItem, {
       key: `day-${itemsIndex}`,
       isCompact: isCompact
-    }, React__default.createElement(StyledHighlight, {
+    }, React.createElement(StyledHighlight, {
       isHighlighted: !isInvalidDateRange && isHighlighted && !isDisabled,
       isStart: !isInvalidDateRange && isHighlightStart,
       isEnd: !isInvalidDateRange && isHighlightEnd
-    }), React__default.createElement(StyledDay, {
+    }), React.createElement(StyledDay, {
       isToday: isCurrentDate,
       isPreviousMonth: isPreviousMonth,
       isSelected: !isInvalidDateRange && isSelected,
@@ -26061,15 +26197,15 @@ const Month = reactExports.forwardRef((_ref, ref) => {
       }
     }, formattedDayLabel));
   });
-  return React__default.createElement(StyledDatepicker, {
+  return React.createElement(StyledDatepicker, {
     ref: ref,
     isCompact: isCompact,
     onMouseDown: e => {
       e.preventDefault();
     }
-  }, React__default.createElement(StyledHeader, {
+  }, React.createElement(StyledHeader, {
     isCompact: isCompact
-  }, React__default.createElement(StyledHeaderPaddle, {
+  }, React.createElement(StyledHeaderPaddle, {
     isCompact: isCompact,
     onClick: () => {
       dispatch({
@@ -26077,9 +26213,9 @@ const Month = reactExports.forwardRef((_ref, ref) => {
       });
     },
     isHidden: isPreviousHidden
-  }, React__default.createElement(SvgChevronLeftStroke, null)), React__default.createElement(StyledHeaderLabel, {
+  }, React.createElement(SvgChevronLeftStroke, null)), React.createElement(StyledHeaderLabel, {
     isCompact: isCompact
-  }, headerLabelFormatter(displayDate)), React__default.createElement(StyledHeaderPaddle, {
+  }, headerLabelFormatter(displayDate)), React.createElement(StyledHeaderPaddle, {
     isCompact: isCompact,
     isHidden: isNextHidden,
     onClick: () => {
@@ -26087,7 +26223,7 @@ const Month = reactExports.forwardRef((_ref, ref) => {
         type: 'PREVIEW_NEXT_MONTH'
       });
     }
-  }, React__default.createElement(SvgChevronRightStroke, null))), React__default.createElement(StyledCalendar, {
+  }, React.createElement(SvgChevronRightStroke, null))), React.createElement(StyledCalendar, {
     isCompact: isCompact,
     onMouseLeave: () => {
       dispatch({
@@ -26103,14 +26239,14 @@ const Calendar = reactExports.forwardRef((props, ref) => {
   const {
     state
   } = useDatepickerContext();
-  return React__default.createElement(StyledRangeCalendar, _extends({
+  return React.createElement(StyledRangeCalendar, _extends({
     ref: ref,
     "data-garden-id": "datepickers.range",
-    "data-garden-version": '8.69.8'
-  }, props), React__default.createElement(Month, {
+    "data-garden-version": '8.69.9'
+  }, props), React.createElement(Month, {
     displayDate: state.previewDate,
     isNextHidden: true
-  }), React__default.createElement(Month, {
+  }), React.createElement(Month, {
     displayDate: addMonths(state.previewDate, 1),
     isPreviousHidden: true
   }));
@@ -26129,4 +26265,284 @@ Calendar.displayName = 'DatepickerRange.Calendar';
   isCompact: PropTypes.bool
 });
 
-export { Alert as A, Button as B, Combobox as C, DEFAULT_THEME as D, Field$1 as F, Hint$1 as H, Input as I, Label$1 as L, Message$1 as M, Option as O, Textarea as T, Field as a, Label as b, Hint as c, Message as d, Checkbox as e, reactDomExports as f, ThemeProvider as g, Datepicker as h, jsxRuntimeExports as j, reactExports as r, styled as s };
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function composeEventHandlers() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+const KEYS = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+
+var DocumentPosition;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition || (DocumentPosition = {}));
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+const getCellDown = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const rowCount = matrix.length;
+  const colCount = matrix[0].length;
+  const lastRowLength = matrix[rowCount - 1].length;
+  const isLastCellFocused = rowIndex === rowCount - (colCount > lastRowLength ? 2 : 1) && colIndex === colCount - 1;
+  if (!isLastCellFocused) {
+    if (rowIndex === rowCount - (colIndex >= lastRowLength ? 2 : 1) ) {
+      if (wrap) {
+        retVal = [0, colIndex + 1];
+      }
+    } else {
+      retVal = [rowIndex + 1, colIndex];
+    }
+  }
+  return retVal;
+};
+const getCellLeft = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const colCount = matrix[0].length;
+  const isFirstCellFocused = rowIndex === 0 && colIndex === 0;
+  if (!isFirstCellFocused) {
+    if (colIndex === 0 ) {
+      if (wrap) {
+        retVal = [rowIndex - 1, colCount - 1];
+      }
+    } else {
+      retVal = [rowIndex, colIndex - 1];
+    }
+  }
+  return retVal;
+};
+const getCellRight = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const rowCount = matrix.length;
+  const colCount = matrix[0].length;
+  const lastRowIndex = rowCount - 1;
+  const lastColIndex = matrix[lastRowIndex].length - 1;
+  const isLastCellFocused = rowIndex === lastRowIndex && colIndex === lastColIndex;
+  if (!isLastCellFocused) {
+    if (colIndex === colCount - 1 ) {
+      if (wrap) {
+        retVal = [rowIndex + 1, 0];
+      }
+    } else {
+      retVal = [rowIndex, colIndex + 1];
+    }
+  }
+  return retVal;
+};
+const getCellUp = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const rowCount = matrix.length;
+  const isFirstCellFocused = rowIndex === 0 && colIndex === 0;
+  if (!isFirstCellFocused) {
+    if (rowIndex === 0 ) {
+      if (wrap) {
+        const lastRowLength = matrix[rowCount - 1].length;
+        const col = colIndex - 1;
+        const row = rowCount - (col >= lastRowLength ? 2 : 1);
+        retVal = [row, col];
+      }
+    } else {
+      retVal = [rowIndex - 1, colIndex];
+    }
+  }
+  return retVal;
+};
+const getId = (idPrefix, rowIndex, colIndex) => `${idPrefix}--R${rowIndex + 1}C${colIndex + 1}`;
+
+const GRID_KEYS = [KEYS.LEFT, KEYS.RIGHT, KEYS.UP, KEYS.DOWN, KEYS.HOME, KEYS.END];
+function useGrid(_ref) {
+  let {
+    rtl,
+    wrap,
+    matrix,
+    idPrefix,
+    onChange = () => undefined,
+    environment,
+    rowIndex: controlledRowIndex,
+    colIndex: controlledColIndex,
+    defaultRowIndex,
+    defaultColIndex
+  } = _ref;
+  const doc = environment || document;
+  const prefix = useId$1(idPrefix);
+  const [uncontrolledRowIndex, setUncontrolledRowIndex] = reactExports.useState(defaultRowIndex !== null && defaultRowIndex !== undefined ? defaultRowIndex : 0);
+  const [uncontrolledColIndex, setUncontrolledColIndex] = reactExports.useState(defaultColIndex !== null && defaultColIndex !== undefined ? defaultColIndex : 0);
+  const isControlled = controlledRowIndex !== null && controlledColIndex !== null && controlledRowIndex !== undefined && controlledColIndex !== undefined;
+  const rowIndex = isControlled ? controlledRowIndex : uncontrolledRowIndex;
+  const colIndex = isControlled ? controlledColIndex : uncontrolledColIndex;
+  reactExports.useEffect(() => {
+    const rowCount = matrix.length;
+    const colCount = matrix[0].length;
+    const isRowIndexInvalid = rowIndex >= rowCount;
+    const isColIndexInvalid = colIndex >= colCount;
+    if (isRowIndexInvalid || isColIndexInvalid) {
+      let _rowIndex = rowIndex;
+      let _colIndex = colIndex;
+      if (isRowIndexInvalid) {
+        _rowIndex = rowCount > 0 ? rowCount - 1 : 0;
+      }
+      if (isColIndexInvalid) {
+        _colIndex = colCount > 0 ? colCount - 1 : 0;
+      }
+      if (!isControlled) {
+        setUncontrolledRowIndex(_rowIndex);
+        setUncontrolledColIndex(_colIndex);
+      }
+      onChange(_rowIndex, _colIndex);
+    }
+  }, [matrix, rowIndex, colIndex, isControlled, setUncontrolledColIndex, onChange]);
+  const getGridProps = reactExports.useCallback(_ref2 => {
+    let {
+      role = 'grid',
+      ...other
+    } = _ref2;
+    return {
+      'data-garden-container-id': 'containers.grid',
+      'data-garden-container-version': '3.0.6',
+      role: role === null ? undefined : role,
+      ...other
+    };
+  }, []);
+  const getGridCellProps = reactExports.useCallback(function (_temp) {
+    let {
+      role = 'gridcell',
+      rowIndex: _rowIndex,
+      colIndex: _colIndex,
+      onFocus,
+      onKeyDown,
+      ...other
+    } = _temp === void 0 ? {
+      rowIndex: 0,
+      colIndex: 0
+    } : _temp;
+    const handleFocus = () => {
+      if (!isControlled) {
+        setUncontrolledRowIndex(_rowIndex);
+        setUncontrolledColIndex(_colIndex);
+      }
+      onChange(_rowIndex, _colIndex);
+    };
+    const handleKeyDown = event => {
+      if (GRID_KEYS.includes(event.key)) {
+        event.preventDefault();
+        let row = rowIndex;
+        let col = colIndex;
+        switch (event.key) {
+          case KEYS.RIGHT:
+            [row, col] = rtl ? getCellLeft(matrix, rowIndex, colIndex, wrap) : getCellRight(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS.LEFT:
+            [row, col] = rtl ? getCellRight(matrix, rowIndex, colIndex, wrap) : getCellLeft(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS.DOWN:
+            [row, col] = getCellDown(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS.UP:
+            [row, col] = getCellUp(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS.HOME:
+            row = event.ctrlKey ? 0 : rowIndex;
+            col = 0;
+            break;
+          case KEYS.END:
+            {
+              const rowCount = matrix.length;
+              const lastRowIndex = rowCount - 1;
+              const lastColIndex = matrix[lastRowIndex].length - 1;
+              row = event.ctrlKey ? lastRowIndex : rowIndex;
+              col = event.ctrlKey ? lastColIndex : matrix[rowIndex].length - 1;
+              break;
+            }
+        }
+        if (row !== rowIndex || col !== colIndex) {
+          const id = getId(prefix, row, col);
+          const element = doc.getElementById(id);
+          element?.focus();
+        }
+      }
+    };
+    return {
+      'data-garden-container-id': 'containers.grid.cell',
+      'data-garden-container-version': '3.0.6',
+      id: getId(prefix, _rowIndex, _colIndex),
+      role: role === null ? undefined : role,
+      tabIndex: rowIndex === _rowIndex && colIndex === _colIndex ? 0 : -1,
+      onFocus: composeEventHandlers(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
+      ...other
+    };
+  }, [matrix, rowIndex, colIndex, doc, prefix, isControlled, onChange, rtl, wrap]);
+  return reactExports.useMemo(() => ({
+    getGridProps,
+    getGridCellProps
+  }), [getGridProps, getGridCellProps]);
+}
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  rtl: PropTypes.bool,
+  wrap: PropTypes.bool,
+  matrix: PropTypes.any,
+  idPrefix: PropTypes.string,
+  rowIndex: PropTypes.number,
+  colIndex: PropTypes.number,
+  defaultRowIndex: PropTypes.number,
+  defaultColIndex: PropTypes.number,
+  onChange: PropTypes.func,
+  environment: PropTypes.any
+});
+
+export { Alert as A, Button as B, Combobox as C, DEFAULT_THEME as D, Field$1 as F, Hint$1 as H, Input as I, Label$1 as L, Message$1 as M, Ne as N, Option as O, Textarea as T, Field as a, Label as b, Hint as c, Message as d, Checkbox as e, reactDomExports as f, ThemeProvider as g, Datepicker as h, Tag$1 as i, jsxRuntimeExports as j, focusStyles as k, hideVisually as l, FauxInput as m, getLineHeight as n, reactExports as r, styled as s, useGrid as u };

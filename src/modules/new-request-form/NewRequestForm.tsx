@@ -29,6 +29,7 @@ const Footer = styled.div`
 `;
 
 const DatePicker = lazy(() => import("./fields/DatePicker"));
+const CcField = lazy(() => import("./fields/CcField/CcField"));
 
 export function NewRequestForm({
   ticketForms,
@@ -93,6 +94,12 @@ export function NewRequestForm({
                   setShowDueDate(value === "task");
                 }}
               />
+            );
+          case "cc_email":
+            return (
+              <Suspense fallback={<></>}>
+                <CcField field={field} />
+              </Suspense>
             );
           case "checkbox":
             return <Checkbox field={field} />;
