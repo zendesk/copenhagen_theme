@@ -13,14 +13,16 @@
     "zcli": "zcli"
   },
   "dependencies": {
+    "@types/dompurify": "3.0.2",
     "@zendeskgarden/container-grid": "^3.0.6",
     "@zendeskgarden/react-buttons": "8.69.9",
-    "@zendeskgarden/react-datepickers":"8.69.9",
+    "@zendeskgarden/react-datepickers": "8.69.9",
     "@zendeskgarden/react-dropdowns.next": "8.69.9",
     "@zendeskgarden/react-forms": "8.69.9",
     "@zendeskgarden/react-notifications": "8.69.9",
     "@zendeskgarden/react-tags": "8.69.9",
     "@zendeskgarden/react-theming": "8.69.9",
+    "dompurify": "3.0.5",
     "node-fetch": "2.6.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
