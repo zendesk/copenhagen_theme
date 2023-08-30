@@ -130,13 +130,13 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "checkbox":
                         return jsxRuntimeExports.jsx(Checkbox, { field: field });
                     case "date":
-                        return jsxRuntimeExports.jsx("div", { children: "date" });
+                        return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
                     case "multiselect":
                         return jsxRuntimeExports.jsx("div", { children: "multiselect" });
                     case "tagger":
                         return jsxRuntimeExports.jsx("div", { children: "tagger" });
                     case "due_at":
-                        return (showDueDate && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale }) })));
+                        return (showDueDate && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }

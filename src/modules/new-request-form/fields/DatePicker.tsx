@@ -12,11 +12,13 @@ import { useState } from "react";
 interface DatePickerProps {
   field: Field;
   locale: string;
+  valueFormat: "date" | "dateTime";
 }
 
 export default function DatePicker({
   field,
   locale,
+  valueFormat,
 }: DatePickerProps): JSX.Element {
   const { label, error, value, name, required, description } = field;
   const [date, setDate] = useState(value ? new Date(value) : undefined);
@@ -30,6 +32,14 @@ export default function DatePicker({
     );
   };
 
+  const formatDate = (value: Date | undefined) => {
+    if (value === undefined) {
+      return "";
+    }
+    const isoString = value.toISOString();
+    return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
+  };
+
   return (
     <GardenField>
       <Label>{label}</Label>
@@ -38,7 +48,7 @@ export default function DatePicker({
         <Input required={required} lang={locale} />
       </GardenDatepicker>
       {error && <Message validation="error">{error}</Message>}
-      <input type="hidden" name={name} value={date ? date.toISOString() : ""} />
+      <input type="hidden" name={name} value={formatDate(date)} />
     </GardenField>
   );
 }
