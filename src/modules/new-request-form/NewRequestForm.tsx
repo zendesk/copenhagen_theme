@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useSubmitHandler } from "./useSubmitHandler";
 import { Suspense, lazy, useState } from "react";
+import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -49,7 +50,10 @@ export function NewRequestForm({
     parent_id_field,
   } = requestForm;
   const handleSubmit = useSubmitHandler();
-  const ticketTypeField = fields.find((field) => field.type === "tickettype");
+  const ticketFields = usePrefilledTicketFields(fields);
+  const ticketTypeField = ticketFields.find(
+    (field) => field.type === "tickettype"
+  );
   const [showDueDate, setShowDueDate] = useState(
     ticketTypeField && ticketTypeField.value === "task"
   );
@@ -71,7 +75,7 @@ export function NewRequestForm({
           ticketForms={ticketForms}
         />
       )}
-      {fields.map((field) => {
+      {ticketFields.map((field) => {
         switch (field.type) {
           case "anonymous_requester_email":
           case "subject":
