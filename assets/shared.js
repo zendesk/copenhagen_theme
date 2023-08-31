@@ -1,4 +1,4 @@
-import { D as DEFAULT_THEME, j as jsxRuntimeExports, g as ThemeProvider } from 'vendor';
+import { D as DEFAULT_THEME, j as jsxRuntimeExports, h as ThemeProvider } from 'vendor';
 
 let theme = DEFAULT_THEME;
 function setupGardenTheme(callback) {

@@ -30,7 +30,7 @@
 
   const requestForm = {{new_request_form.to_json}};
 
-  const ticketForms = [];  
+  const ticketForms = [];
   {{#each ticket_forms}}
     ticketForms.push({ id:
     {{id}}, url: "{{url}}", display_name: "{{display_name}}" });

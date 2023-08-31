@@ -3,6 +3,7 @@ import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
 import { Checkbox } from "./fields/Checkbox";
+import { MultiSelect } from "./fields/MultiSelect";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Button } from "@zendeskgarden/react-buttons";
@@ -110,7 +111,7 @@ export function NewRequestForm({
               </Suspense>
             );
           case "multiselect":
-            return <div>multiselect</div>;
+            return <MultiSelect field={field}/>;
           case "tagger":
             return <div>tagger</div>;
           case "due_at":
