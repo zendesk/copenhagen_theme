@@ -884,6 +884,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@ls-lint/ls-lint@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ls-lint/ls-lint/-/ls-lint-2.0.1.tgz#27a0513fde8e06704ff174b0a696d473190b8874"
+  integrity sha512-z+sGTPWHQ2nWRj2UsDFSEQDOCw2iIjP2bPU/K1wgLNkWUv7J8WjzoBsZLgUqIgD1Sqi7zpksFTtTymgnUwramA==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

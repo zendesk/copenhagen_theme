@@ -31,7 +31,7 @@ const Footer = styled.div`
 `;
 
 const DatePicker = lazy(() => import("./fields/DatePicker"));
-const CcField = lazy(() => import("./fields/CcField/CcField"));
+const CcField = lazy(() => import("./fields/cc-field/CcField"));
 
 export function NewRequestForm({
   ticketForms,
@@ -115,7 +115,7 @@ export function NewRequestForm({
               </Suspense>
             );
           case "multiselect":
-            return <MultiSelect field={field}/>;
+            return <MultiSelect field={field} />;
           case "tagger":
             return <div>tagger</div>;
           case "due_at":

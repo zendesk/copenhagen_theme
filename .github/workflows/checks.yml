@@ -28,7 +28,7 @@ jobs:
       - name: Lint all commit messages
         run: yarn commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }}
   lint:
-    name: Lint JS files
+    name: Lint files and folders
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -41,6 +41,8 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
+      - name: LS-lint
+        run: yarn ls-lint
       - name: ESlint
         run: yarn eslint
   test:

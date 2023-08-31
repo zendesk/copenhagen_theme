@@ -1,0 +1,13 @@
+ls:
+  templates:
+    .hbs: snake_case
+  translations:
+    .json: kebab-case
+  src:
+    .dir: kebab-case
+    .js: camelCase | PascalCase
+    .spec.js: camelCase | PascalCase
+    .ts: camelCase | PascalCase
+
+ignore:
+  - node_modules
