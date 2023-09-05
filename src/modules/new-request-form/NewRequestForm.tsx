@@ -12,6 +12,7 @@ import { Alert } from "@zendeskgarden/react-notifications";
 import { useSubmitHandler } from "./useSubmitHandler";
 import { Suspense, lazy, useState } from "react";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
+import { Attachments } from "./fields/attachments/Attachments";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -130,6 +131,8 @@ export function NewRequestForm({
                 </Suspense>
               )
             );
+          case "attachments":
+            return <Attachments field={field} />;
           default:
             return <></>;
         }

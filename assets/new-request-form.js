@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, A as Alert, B as Button, g as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, g as FileList, h as File, i as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, k as Title, l as Close, m as useDropzone, n as FileUpload, o as Alert, B as Button, q as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field }) {
@@ -168,7 +168,7 @@ function ParentTicketField({ field }) {
 }
 
 // NOTE: This is a temporary handling of the CSRF token
-const fetchCsrfToken = async () => {
+const fetchCsrfToken$1 = async () => {
     const response = await fetch("/hc/api/internal/csrf_token.json");
     const { current_session } = await response.json();
     return current_session.csrf_token;
@@ -189,7 +189,7 @@ function useSubmitHandler() {
         if (isSubmitting.current === false) {
             isSubmitting.current = true;
             const form = e.target;
-            const token = await fetchCsrfToken();
+            const token = await fetchCsrfToken$1();
             const hiddenInput = document.createElement("input");
             hiddenInput.type = "hidden";
             hiddenInput.name = "authenticity_token";
@@ -279,6 +279,150 @@ function usePrefilledTicketFields(fields) {
     return fields;
 }
 
+const FileNameWrapper = styled.div `
+  flex: 1;
+`;
+function FileListItem({ file, onRemove, }) {
+    const handleFileKeyDown = (e) => {
+        if (e.code === "Delete" || e.code === "Backspace") {
+            e.preventDefault();
+            onRemove();
+        }
+    };
+    const handleCloseKeyDown = (e) => {
+        if (e.code === "Enter" ||
+            e.code === "Space" ||
+            e.code === "Delete" ||
+            e.code === "Backspace") {
+            e.preventDefault();
+            onRemove();
+        }
+    };
+    const fileName = file.status === "pending" ? file.file_name : file.value.file_name;
+    return (jsxRuntimeExports.jsx(FileList.Item, { children: jsxRuntimeExports.jsx(File, { type: "generic", title: fileName, onKeyDown: handleFileKeyDown, children: file.status === "pending" ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FileNameWrapper, { children: fileName }), jsxRuntimeExports.jsx(Tooltip, { content: "Stop upload", children: jsxRuntimeExports.jsx(File.Close, { "aria-label": "Stop upload", onClick: () => {
+                                onRemove();
+                            }, onKeyDown: handleCloseKeyDown }) }), jsxRuntimeExports.jsx(Progress, { value: file.progress, "aria-label": `Uploading ${fileName}` })] })) : (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FileNameWrapper, { children: jsxRuntimeExports.jsx(Anchor, { isExternal: true, href: file.value.url, target: "_blank", children: fileName }) }), jsxRuntimeExports.jsx(Tooltip, { content: "Remove file", children: jsxRuntimeExports.jsx(File.Delete, { "aria-label": "Remove file", onClick: () => {
+                                onRemove();
+                            }, onKeyDown: handleCloseKeyDown }) }), jsxRuntimeExports.jsx(Progress, { value: 100, "aria-hidden": "true" })] })) }) }));
+}
+
+function useAttachedFiles(initialValue) {
+    const [files, setFiles] = reactExports.useState(initialValue);
+    const addPendingFile = reactExports.useCallback((id, file_name, xhr) => {
+        setFiles((current) => [
+            ...current,
+            { status: "pending", id, file_name, progress: 0, xhr },
+        ]);
+    }, []);
+    const setPendingFileProgress = reactExports.useCallback((id, progress) => {
+        setFiles((current) => current.map((file) => file.status === "pending" && file.id === id
+            ? { ...file, progress }
+            : file));
+    }, []);
+    const removePendingFile = reactExports.useCallback((id) => {
+        setFiles((current) => current.filter((file) => file.status !== "pending" || file.id !== id));
+    }, []);
+    const removeUploadedFile = reactExports.useCallback((id) => {
+        setFiles((current) => current.filter((file) => file.status !== "uploaded" || file.value.id !== id));
+    }, []);
+    const setUploaded = reactExports.useCallback((pendingId, value) => {
+        setFiles((current) => current.map((file) => file.status === "pending" && file.id === pendingId
+            ? { status: "uploaded", value }
+            : file));
+    }, []);
+    return {
+        files,
+        addPendingFile,
+        setPendingFileProgress,
+        removePendingFile,
+        removeUploadedFile,
+        setUploaded,
+    };
+}
+
+async function fetchCsrfToken() {
+    const response = await fetch("/api/v2/users/me.json");
+    const { user: { authenticity_token }, } = await response.json();
+    return authenticity_token;
+}
+function Attachments({ field }) {
+    const { label, error, name, attachments, description } = field;
+    const { files, addPendingFile, setPendingFileProgress, setUploaded, removePendingFile, removeUploadedFile, } = useAttachedFiles(attachments?.map((value) => ({
+        status: "uploaded",
+        value,
+    })) ?? []);
+    const { addToast } = useToast();
+    const notifyError = reactExports.useCallback((fileName) => {
+        addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: "error", children: [jsxRuntimeExports.jsx(Title, { children: "Upload error" }), "There was an error uploading ", fileName, ". Please try again or upload another file.", jsxRuntimeExports.jsx(Close, { "aria-label": "Close", onClick: close })] })));
+    }, [addToast]);
+    const onDrop = reactExports.useCallback(async (acceptedFiles) => {
+        const csrfToken = await fetchCsrfToken();
+        for (const file of acceptedFiles) {
+            // fetch doesn't support upload progress, so we use XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+            const url = new URL(`${window.location.origin}/api/v2/uploads.json`);
+            url.searchParams.append("filename", file.name);
+            xhr.open("POST", url);
+            xhr.setRequestHeader("Content-Type", file.type);
+            xhr.setRequestHeader("X-CSRF-Token", csrfToken);
+            xhr.responseType = "json";
+            const pendingId = crypto.randomUUID();
+            addPendingFile(pendingId, file.name, xhr);
+            xhr.upload.addEventListener("progress", ({ loaded, total }) => {
+                const progress = Math.round((loaded / total) * 100);
+                // There is a bit of delay between the upload ending and the
+                // load event firing, so we don't want to set the progress to 100
+                // otherwise it is not clear that the upload is still in progress.
+                if (progress <= 90) {
+                    setPendingFileProgress(pendingId, progress);
+                }
+            });
+            xhr.addEventListener("load", () => {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    const { upload: { attachment: { file_name, content_url }, token, }, } = xhr.response;
+                    setUploaded(pendingId, { id: token, file_name, url: content_url });
+                }
+                else {
+                    notifyError(file.name);
+                    removePendingFile(pendingId);
+                }
+            });
+            xhr.addEventListener("error", () => {
+                notifyError(file.name);
+                removePendingFile(pendingId);
+            });
+            xhr.send(file);
+        }
+    }, [
+        addPendingFile,
+        removePendingFile,
+        setPendingFileProgress,
+        setUploaded,
+        notifyError,
+    ]);
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        onDrop,
+    });
+    const handleRemove = async (file) => {
+        if (file.status === "pending") {
+            file.xhr.abort();
+            removePendingFile(file.id);
+        }
+        else {
+            const csrfToken = await fetchCsrfToken();
+            const token = file.value.id;
+            removeUploadedFile(file.value.id);
+            await fetch(`/api/v2/uploads/${token}.json`, {
+                method: "DELETE",
+                headers: { "X-CSRF-Token": csrfToken },
+            });
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsxs(FileUpload, { ...getRootProps(), isDragging: isDragActive, children: [isDragActive ? (jsxRuntimeExports.jsx("span", { children: "Drop files here" })) : (jsxRuntimeExports.jsx("span", { children: "Choose a file or drag and drop here" })), jsxRuntimeExports.jsx(Input$1, { ...getInputProps() })] }), files.map((file) => (jsxRuntimeExports.jsx(FileListItem, { file: file, onRemove: () => {
+                    handleRemove(file);
+                } }, file.status === "pending" ? file.id : file.value.id))), files.map((file) => file.status === "uploaded" && (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: JSON.stringify(file.value) }, file.value.id)))] }));
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -327,6 +471,8 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                         return jsxRuntimeExports.jsx("div", { children: "tagger" });
                     case "due_at":
                         return (showDueDate && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
+                    case "attachments":
+                        return jsxRuntimeExports.jsx(Attachments, { field: field });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }

@@ -8,9 +8,16 @@ export interface Field {
   type: string;
   id: string;
   options: FieldOption[];
+  attachments?: Attachment[];
 }
 
 export interface FieldOption {
   name: string;
   value: string;
+}
+
+export interface Attachment {
+  id: string;
+  file_name: string;
+  url: string;
 }
