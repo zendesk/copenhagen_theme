@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, s as styled, A as Alert, B as Button, g as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, A as Alert, B as Button, g as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field }) {
@@ -200,6 +200,85 @@ function useSubmitHandler() {
     };
 }
 
+const MAX_URL_LENGTH = 2048;
+const TICKET_FIELD_PREFIX = "tf_";
+const ALLOWED_SYSTEM_FIELDS = [
+    "anonymous_requester_email",
+    "priority",
+    "type",
+    "description",
+    "subject",
+    "due_at",
+    "collaborators",
+    "organization_id",
+];
+const ALLOWED_BOOLEAN_VALUES = ["true", "false"];
+const ALLOWED_HTML_TAGS = [
+    "pre",
+    "strong",
+    "b",
+    "p",
+    "blockquote",
+    "ul",
+    "ol",
+    "li",
+    "h2",
+    "h3",
+    "h4",
+    "i",
+    "em",
+    "br",
+];
+function usePrefilledTicketFields(fields) {
+    const { href } = location;
+    const params = new URL(href).searchParams;
+    if (href.length > MAX_URL_LENGTH)
+        return fields;
+    if (params.get("parent_id"))
+        return fields;
+    for (const [key, value] of params) {
+        if (!key.startsWith(TICKET_FIELD_PREFIX))
+            continue;
+        const ticketFieldId = key.substring(TICKET_FIELD_PREFIX.length);
+        const isSystemField = ALLOWED_SYSTEM_FIELDS.includes(ticketFieldId);
+        const isCustomField = !Number.isNaN(Number(ticketFieldId));
+        if (!isSystemField && !isCustomField)
+            continue;
+        const isCollaborators = ticketFieldId === "collaborators";
+        const name = isSystemField
+            ? isCollaborators
+                ? "request[collaborators][]"
+                : `request[${ticketFieldId}]`
+            : `request[custom_fields][${ticketFieldId}]`;
+        const field = fields.find((field) => field.name === name);
+        if (!field)
+            continue;
+        const sanitizedValue = purify.sanitize(value, {
+            ALLOWED_TAGS: ALLOWED_HTML_TAGS,
+        });
+        switch (field.type) {
+            case "partialcreditcard":
+                continue;
+            case "multiselect":
+                field.value = JSON.stringify(sanitizedValue.split(","));
+                break;
+            case "checkbox":
+                if (ALLOWED_BOOLEAN_VALUES.includes(sanitizedValue)) {
+                    field.value =
+                        sanitizedValue === "true"
+                            ? "on"
+                            : sanitizedValue === "false"
+                                ? "off"
+                                : "";
+                }
+                break;
+            default:
+                field.value = sanitizedValue;
+        }
+    }
+    return fields;
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -213,9 +292,10 @@ const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, } = requestForm;
     const handleSubmit = useSubmitHandler();
-    const ticketTypeField = fields.find((field) => field.type === "tickettype");
+    const ticketFields = usePrefilledTicketFields(fields);
+    const ticketTypeField = ticketFields.find((field) => field.type === "tickettype");
     const [showDueDate, setShowDueDate] = reactExports.useState(ticketTypeField && ticketTypeField.value === "task");
-    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), fields.map((field) => {
+    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), ticketFields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
