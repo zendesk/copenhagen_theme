@@ -1,3 +1,4 @@
+import { ToastProvider } from "@zendeskgarden/react-notifications";
 import type { IGardenTheme } from "@zendeskgarden/react-theming";
 import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import type { ReactNode } from "react";
@@ -11,5 +12,10 @@ export function setupGardenTheme(
 }
 
 export function ComponentProviders({ children }: { children: ReactNode }) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      {/* ToastProvider z-index needs to be higher than the z-index of the admin navbar */}
+      <ToastProvider zIndex={2147483647}>{children}</ToastProvider>
+    </ThemeProvider>
+  );
 }

@@ -2172,6 +2172,13 @@
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^1.0.10"
 
+"@zendeskgarden/container-schedule@^2.0.0":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-schedule/-/container-schedule-2.0.7.tgz#09b2a3194c8955ea0d9d86b7b278ac33ab475179"
+  integrity sha512-WSydwk6dS0ETNR+60oDI6nyqh2e00w3rF61ryQDgG4JAesZhFVPgjlqrUYQjkAPRWJXi8rh5uevooDT5SAfDCA==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+
 "@zendeskgarden/container-selection@^3.0.0":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-3.0.4.tgz#e969222af8c27c67ae7244ff585e8f4e3e907cee"
@@ -2254,6 +2261,15 @@
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
 
+"@zendeskgarden/react-loaders@8.69.9":
+  version "8.69.9"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-loaders/-/react-loaders-8.69.9.tgz#4bf9c3c4abeec6f8742dc2ab84c1314fa8636290"
+  integrity sha512-MyB2zqYOaXBY8itjD0YLfahsaNzktkvneUaA1wjdxA96RcRdmklN3XdYZEKQ+nS7/KTP1GMufjkGTDX+IV07mA==
+  dependencies:
+    "@zendeskgarden/container-schedule" "^2.0.0"
+    polished "^4.0.0"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-notifications@8.69.9":
   version "8.69.9"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-notifications/-/react-notifications-8.69.9.tgz#fce88dbd22cbf11636c5cb47d0128ef3281d74c2"
@@ -2285,7 +2301,7 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
 
-"@zendeskgarden/react-tooltips@^8.69.9":
+"@zendeskgarden/react-tooltips@8.69.9", "@zendeskgarden/react-tooltips@^8.69.9":
   version "8.69.9"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tooltips/-/react-tooltips-8.69.9.tgz#44edbc9bea4090ad95c0e80323218356603e14fa"
   integrity sha512-+lLaidUGKfhnaqAA+iJGi4wEN5f9x8XN3AYjhxNtdoA1CP1MMz03xSnBa1o1PS8Htc6cVei8lCIQkAKPC1AnHA==
@@ -2657,6 +2673,11 @@ at-least-node@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
+
+attr-accept@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/attr-accept/-/attr-accept-2.2.2.tgz#646613809660110749e92f2c10833b70968d929b"
+  integrity sha512-7prDjvt9HmqiZ0cl5CRjtS84sEyhsHP2coDkaZKRKVfCDo9s7iw7ChVmar78Gu9pC4SoR/28wFu/G5JJhTnqEg==
 
 available-typed-arrays@^1.0.5:
   version "1.0.5"
@@ -4190,6 +4211,11 @@ eslint-plugin-prettier@4.2.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
+eslint-plugin-react-hooks@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.0.tgz#4c3e697ad95b77e93f8646aaa1630c1ba607edd3"
+  integrity sha512-oFc7Itz9Qxh2x4gNHStv3BqJq54ExXmfC+a1NjAta66IAN87Wu0R/QArgIS9qKzX3dXKPI9H5crl9QchNMY9+g==
+
 eslint-plugin-react@^7.32.2:
   version "7.33.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react/-/eslint-plugin-react-7.33.2.tgz#69ee09443ffc583927eafe86ffebb470ee737608"
@@ -4531,6 +4557,13 @@ file-entry-cache@^6.0.1:
   integrity sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==
   dependencies:
     flat-cache "^3.0.4"
+
+file-selector@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/file-selector/-/file-selector-0.6.0.tgz#fa0a8d9007b829504db4d07dd4de0310b65287dc"
+  integrity sha512-QlZ5yJC0VxHxQQsQhXvBaC7VRJ2uaxTf+Tfpu4Z/OcVQJVpZO+DGU0rkoVW5ce2SccxugvpBJoMvUs59iILYdw==
+  dependencies:
+    tslib "^2.4.0"
 
 filelist@^1.0.4:
   version "1.0.4"
@@ -8148,6 +8181,15 @@ react-dom@^17.0.2:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     scheduler "^0.20.2"
+
+react-dropzone@^14.2.3:
+  version "14.2.3"
+  resolved "https://registry.yarnpkg.com/react-dropzone/-/react-dropzone-14.2.3.tgz#0acab68308fda2d54d1273a1e626264e13d4e84b"
+  integrity sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug==
+  dependencies:
+    attr-accept "^2.2.2"
+    file-selector "^0.6.0"
+    prop-types "^15.8.1"
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
