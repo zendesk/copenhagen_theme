@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/zendesk/copenhagen_theme/compare/v3.1.3...v3.1.4) (2023-09-19)
+
+
+### Bug Fixes
+
+* **article:** add aria-label to user navigation ([07f4b15](https://github.com/zendesk/copenhagen_theme/commit/07f4b15d98a22eb0deb7510208c0dac1792a02b9))
+
 ## [3.1.3](https://github.com/zendesk/copenhagen_theme/compare/v3.1.2...v3.1.3) (2023-08-25)
 
 
