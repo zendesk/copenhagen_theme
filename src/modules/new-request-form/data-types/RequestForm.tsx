@@ -1,4 +1,5 @@
 import type { Field } from "./Field";
+import type { EndUserCondition } from "./EndUserCondition";
 
 export interface RequestForm {
   accept_charset: string;
@@ -9,4 +10,5 @@ export interface RequestForm {
   ticket_form_field: Field;
   parent_id_field: Field;
   fields: Field[];
+  end_user_conditions: EndUserCondition[];
 }

@@ -1,4 +1,4 @@
-import type { RequestForm, TicketForm } from "./data-types";
+import type { Field, RequestForm, TicketForm } from "./data-types";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -13,6 +13,7 @@ import { useSubmitHandler } from "./useSubmitHandler";
 import { Suspense, lazy, useState } from "react";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
+import { useEndUserConditions } from "./useEndUserConditions";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -49,15 +50,20 @@ export function NewRequestForm({
     ticket_form_field,
     ticket_forms_instructions,
     parent_id_field,
+    end_user_conditions,
   } = requestForm;
+  const prefilledTicketFields = usePrefilledTicketFields(fields);
+  const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
+  const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const handleSubmit = useSubmitHandler();
-  const ticketFields = usePrefilledTicketFields(fields);
-  const ticketTypeField = ticketFields.find(
-    (field) => field.type === "tickettype"
-  );
-  const [showDueDate, setShowDueDate] = useState(
-    ticketTypeField && ticketTypeField.value === "task"
-  );
+
+  function handleChange(field: Field, value: Field["value"]) {
+    setTicketFields(
+      ticketFields.map((ticketField) =>
+        ticketField.id === field.id ? { ...ticketField, value } : ticketField
+      )
+    );
+  }
 
   return (
     <Form
@@ -76,7 +82,7 @@ export function NewRequestForm({
           ticketForms={ticketForms}
         />
       )}
-      {ticketFields.map((field) => {
+      {visibleFields.map((field) => {
         switch (field.type) {
           case "anonymous_requester_email":
           case "subject":
@@ -85,22 +91,56 @@ export function NewRequestForm({
           case "decimal":
           case "regexp":
           case "partialcreditcard":
-            return <Input field={field} />;
+            return (
+              <Input
+                key={field.id}
+                field={field}
+                onChange={(value) => handleChange(field, value)}
+              />
+            );
           case "description":
           case "textarea":
-            return <TextArea field={field} />;
+            return (
+              <TextArea
+                key={field.id}
+                field={field}
+                onChange={(value) => handleChange(field, value)}
+              />
+            );
           case "priority":
           case "organization_id":
-            return <DropDown field={field} />;
+            return (
+              <DropDown
+                key={field.id}
+                field={field}
+                onChange={(value) => handleChange(field, value)}
+              />
+            );
           case "tickettype":
             return (
               <DropDown
+                key={field.id}
                 field={field}
-                onChange={(value) => {
-                  setShowDueDate(value === "task");
-                }}
+                onChange={(value) => handleChange(field, value)}
               />
             );
+          case "due_at": {
+            const isTask =
+              ticketFields.find((field) => field.type === "tickettype")
+                ?.value === "task";
+
+            return (
+              isTask && (
+                <Suspense fallback={<></>}>
+                  <DatePicker
+                    field={field}
+                    locale={locale}
+                    valueFormat="dateTime"
+                  />
+                </Suspense>
+              )
+            );
+          }
           case "cc_email":
             return (
               <Suspense fallback={<></>}>
@@ -108,7 +148,12 @@ export function NewRequestForm({
               </Suspense>
             );
           case "checkbox":
-            return <Checkbox field={field} />;
+            return (
+              <Checkbox
+                field={field}
+                onChange={(value: boolean) => handleChange(field, value)}
+              />
+            );
           case "date":
             return (
               <Suspense fallback={<></>}>
@@ -119,18 +164,6 @@ export function NewRequestForm({
             return <MultiSelect field={field} />;
           case "tagger":
             return <div>tagger</div>;
-          case "due_at":
-            return (
-              showDueDate && (
-                <Suspense fallback={<></>}>
-                  <DatePicker
-                    field={field}
-                    locale={locale}
-                    valueFormat="dateTime"
-                  />
-                </Suspense>
-              )
-            );
           case "attachments":
             return <Attachments field={field} />;
           default:

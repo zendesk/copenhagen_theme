@@ -39,7 +39,7 @@ export function TicketFormField({
       <input
         type="hidden"
         name={ticketFormField.name}
-        value={ticketFormField.value}
+        value={ticketFormField.value as string}
       />
       {ticketForms.length > 1 && (
         <GardenField>

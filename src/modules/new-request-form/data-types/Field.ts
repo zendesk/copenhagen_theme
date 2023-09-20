@@ -1,12 +1,12 @@
 export interface Field {
+  id: number;
   name: string;
-  value: string;
+  value?: string | boolean;
   error: string;
   label: string;
   required: boolean;
   description: string;
   type: string;
-  id: string;
   options: FieldOption[];
   attachments?: Attachment[];
 }
