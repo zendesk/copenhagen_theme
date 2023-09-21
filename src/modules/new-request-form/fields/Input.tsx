@@ -9,9 +9,10 @@ import type { Field } from "../data-types";
 
 interface InputProps {
   field: Field;
+  onChange: (value: string) => void;
 }
 
-export function Input({ field }: InputProps): JSX.Element {
+export function Input({ field, onChange }: InputProps): JSX.Element {
   const { label, error, value, name, required, description, type } = field;
   const stepProp: { step?: string } = {};
   const inputType =
@@ -27,9 +28,10 @@ export function Input({ field }: InputProps): JSX.Element {
       <GardenInput
         name={name}
         type={inputType}
-        defaultValue={value}
+        defaultValue={value as string}
         validation={error ? "error" : undefined}
         required={required}
+        onChange={(e) => onChange(e.target.value)}
         {...stepProp}
       />
       {error && <Message validation="error">{error}</Message>}

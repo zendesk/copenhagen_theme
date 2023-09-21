@@ -11,14 +11,17 @@ import {
 
 interface CheckboxProps {
   field: Field;
+  onChange: (value: boolean) => void;
 }
 
-export function Checkbox({ field }: CheckboxProps): JSX.Element {
+export function Checkbox({ field, onChange }: CheckboxProps): JSX.Element {
   const { label, error, value, name, required, description } = field;
-  const [checkboxValue, setCheckboxValue] = useState(value);
+  const [checkboxValue, setCheckboxValue] = useState(value as boolean);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setCheckboxValue(e.target.checked ? "on" : "off");
+    const { checked } = e.target;
+    setCheckboxValue(checked);
+    onChange(checked);
   };
 
   return (
@@ -27,8 +30,8 @@ export function Checkbox({ field }: CheckboxProps): JSX.Element {
       <GardenCheckbox
         name={name}
         required={required}
-        defaultChecked={value === "on"}
-        value={checkboxValue}
+        defaultChecked={value as boolean}
+        value={checkboxValue ? "on" : "off"}
         onChange={handleChange}
       >
         <Label>{label}</Label>

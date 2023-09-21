@@ -81,7 +81,7 @@ const AnnouncementMessage = styled.span`
 export default function CcField({ field }: CcFieldProps): JSX.Element {
   const { label, value, name, error, description } = field;
   const initialValue = value
-    ? value.split(",").map((email) => email.trim())
+    ? (value as string).split(",").map((email) => email.trim())
     : [];
   const [tags, setTags] = useState(initialValue);
   const [inputValue, setInputValue] = useState("");

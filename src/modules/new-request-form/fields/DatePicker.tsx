@@ -21,7 +21,9 @@ export default function DatePicker({
   valueFormat,
 }: DatePickerProps): JSX.Element {
   const { label, error, value, name, required, description } = field;
-  const [date, setDate] = useState(value ? new Date(value) : undefined);
+  const [date, setDate] = useState(
+    value ? new Date(value as string) : undefined
+  );
 
   const handleChange = (date: Date) => {
     // Set the time to 12:00:00 as this is also the expected behavior across Support and the API
