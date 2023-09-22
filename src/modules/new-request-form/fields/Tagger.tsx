@@ -1,4 +1,7 @@
-import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import type {
+  IComboboxProps,
+  ISelectedOption,
+} from "@zendeskgarden/react-dropdowns.next";
 import {
   Field as GardenField,
   Label,
@@ -8,61 +11,59 @@ import {
   Option,
   OptGroup,
 } from "@zendeskgarden/react-dropdowns.next";
-import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import { useState } from "react";
 import { useNestedOptions } from "./useNestedOptions";
 
-interface MultiSelectProps {
+interface TaggerProps {
   field: Field;
+  onChange: (value: string) => void;
 }
 
-export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
+export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
   const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } =
     useNestedOptions({
       options,
-      hasEmptyOption: false,
+      hasEmptyOption: true,
     });
 
-  const [selectedValues, setSelectValues] = useState<string[]>(
-    (value as string[]) || []
-  );
+  const selectionValue = (value as string | undefined) ?? "";
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleChange: IComboboxProps["onChange"] = (changes) => {
-    if (Array.isArray(changes.selectionValue)) {
-      const lastSelectedItem = changes.selectionValue.slice(-1).toString();
+    if (
+      typeof changes.selectionValue === "string" &&
+      isGroupIdentifier(changes.selectionValue)
+    ) {
+      setCurrentGroupByIdentifier(changes.selectionValue);
+      return;
+    }
 
-      if (isGroupIdentifier(lastSelectedItem)) {
-        setCurrentGroupByIdentifier(lastSelectedItem);
-      } else {
-        setSelectValues(changes.selectionValue as string[]);
-      }
+    if (typeof changes.selectionValue === "string") {
+      onChange(changes.selectionValue);
+    }
+
+    if (changes.isExpanded !== undefined) {
+      setIsExpanded(changes.isExpanded);
     }
   };
 
   return (
     <GardenField>
-      {selectedValues.map((selectedValue) => (
-        <input
-          type="hidden"
-          key={selectedValue}
-          name={`${name}[]`}
-          value={selectedValue}
-        />
-      ))}
-      <Label>
-        {label}
-        {required && <Span aria-hidden="true">*</Span>}
-      </Label>
+      <Label>{label}</Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
-        isMultiselectable
-        inputProps={{ required }}
+        inputProps={{ required, name }}
         isEditable={false}
         validation={error ? "error" : undefined}
         onChange={handleChange}
-        selectionValue={selectedValues}
+        selectionValue={selectionValue}
+        inputValue={selectionValue}
+        renderValue={({ selection }) =>
+          (selection as ISelectedOption | null)?.label ?? "-"
+        }
+        isExpanded={isExpanded}
       >
         {currentGroup.type === "SubGroup" && (
           <Option {...currentGroup.backOption} />

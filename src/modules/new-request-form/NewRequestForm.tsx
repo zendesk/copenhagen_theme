@@ -15,6 +15,7 @@ import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
 import { useEndUserConditions } from "./useEndUserConditions";
 import { CreditCard } from "./fields/CreditCard";
+import { Tagger } from "./fields/Tagger";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -172,7 +173,13 @@ export function NewRequestForm({
           case "multiselect":
             return <MultiSelect field={field} />;
           case "tagger":
-            return <div>tagger</div>;
+            return (
+              <Tagger
+                key={field.name}
+                field={field}
+                onChange={(value) => handleChange(field, value)}
+              />
+            );
           case "attachments":
             return <Attachments field={field} />;
           default:
