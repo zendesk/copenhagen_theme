@@ -18,7 +18,7 @@ export function TextArea({ field }: TextAreaProps): JSX.Element {
     <GardenField>
       <Label>
         {label}
-        {required && <Span>*</Span>}
+        {required && <Span aria-hidden="true">*</Span>}
       </Label>
       {description && <Hint>{description}</Hint>}
       <Textarea
