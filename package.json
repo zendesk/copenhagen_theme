@@ -24,6 +24,7 @@
     "@zendeskgarden/react-tags": "8.69.9",
     "@zendeskgarden/react-theming": "8.69.9",
     "@zendeskgarden/react-tooltips": "8.69.9",
+    "@zendeskgarden/react-typography": "8.69.9",
     "dompurify": "3.0.5",
     "eslint-plugin-check-file": "^2.6.2",
     "node-fetch": "2.6.9",

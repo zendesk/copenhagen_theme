@@ -1773,7 +1773,7 @@ function useId$1(providedId) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$5() {
+function composeEventHandlers$2() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -1788,7 +1788,7 @@ function composeEventHandlers$5() {
   };
 }
 
-function getControlledValue$1() {
+function getControlledValue() {
   for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
     values[_key] = arguments[_key];
   }
@@ -1827,8 +1827,36 @@ const KEY_CODES = {
   TAB: 9,
   UP: 38
 };
+const KEYS$1 = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
 
-var DocumentPosition$4;
+var DocumentPosition$1;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -1836,7 +1864,10 @@ var DocumentPosition$4;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$4 || (DocumentPosition$4 = {}));
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+
+let idCounter$1 = 0;
+const useId = id => useId$1(id) || `id:${idCounter$1++}`;
 
 function _extends$y() {
   _extends$y = Object.assign ? Object.assign.bind() : function (target) {
@@ -1853,39 +1884,39 @@ function _extends$y() {
   return _extends$y.apply(this, arguments);
 }
 
-function _assertThisInitialized$1(self) {
+function _assertThisInitialized(self) {
   if (self === void 0) {
     throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
   }
   return self;
 }
 
-function _setPrototypeOf$1(o, p) {
-  _setPrototypeOf$1 = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
     o.__proto__ = p;
     return o;
   };
-  return _setPrototypeOf$1(o, p);
+  return _setPrototypeOf(o, p);
 }
 
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
-  _setPrototypeOf$1(subClass, superClass);
+  _setPrototypeOf(subClass, superClass);
 }
 
-function _getPrototypeOf$1(o) {
-  _getPrototypeOf$1 = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
+function _getPrototypeOf(o) {
+  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
     return o.__proto__ || Object.getPrototypeOf(o);
   };
-  return _getPrototypeOf$1(o);
+  return _getPrototypeOf(o);
 }
 
 function _isNativeFunction(fn) {
   return Function.toString.call(fn).indexOf("[native code]") !== -1;
 }
 
-function _isNativeReflectConstruct$1() {
+function _isNativeReflectConstruct() {
   if (typeof Reflect === "undefined" || !Reflect.construct) return false;
   if (Reflect.construct.sham) return false;
   if (typeof Proxy === "function") return true;
@@ -1898,7 +1929,7 @@ function _isNativeReflectConstruct$1() {
 }
 
 function _construct(Parent, args, Class) {
-  if (_isNativeReflectConstruct$1()) {
+  if (_isNativeReflectConstruct()) {
     _construct = Reflect.construct.bind();
   } else {
     _construct = function _construct(Parent, args, Class) {
@@ -1906,7 +1937,7 @@ function _construct(Parent, args, Class) {
       a.push.apply(a, args);
       var Constructor = Function.bind.apply(Parent, a);
       var instance = new Constructor();
-      if (Class) _setPrototypeOf$1(instance, Class.prototype);
+      if (Class) _setPrototypeOf(instance, Class.prototype);
       return instance;
     };
   }
@@ -1925,7 +1956,7 @@ function _wrapNativeSuper(Class) {
       _cache.set(Class, Wrapper);
     }
     function Wrapper() {
-      return _construct(Class, arguments, _getPrototypeOf$1(this).constructor);
+      return _construct(Class, arguments, _getPrototypeOf(this).constructor);
     }
     Wrapper.prototype = Object.create(Class.prototype, {
       constructor: {
@@ -1935,7 +1966,7 @@ function _wrapNativeSuper(Class) {
         configurable: true
       }
     });
-    return _setPrototypeOf$1(Wrapper, Class);
+    return _setPrototypeOf(Wrapper, Class);
   };
   return _wrapNativeSuper(Class);
 }
@@ -1966,11 +1997,11 @@ function division(a, b) {
   return a / b;
 }
 
-function max$2() {
+function max$1() {
   return Math.max.apply(Math, arguments);
 }
 
-function min$2() {
+function min$1() {
   return Math.min.apply(Math, arguments);
 }
 
@@ -2083,7 +2114,7 @@ var defaultSymbols = {
     min: {
       func: {
         symbol: 'min',
-        f: min$2,
+        f: min$1,
         notation: 'func',
         precedence: 0,
         rightToLeft: 0,
@@ -2095,7 +2126,7 @@ var defaultSymbols = {
     max: {
       func: {
         symbol: 'max',
-        f: max$2,
+        f: max$1,
         notation: 'func',
         precedence: 0,
         rightToLeft: 0,
@@ -2124,7 +2155,7 @@ var PolishedError = /*#__PURE__*/function (_Error) {
       _this = _Error.call(this, "An error occurred. See https://github.com/styled-components/polished/blob/main/src/internalHelpers/errors.md#" + code + " for more information.") || this;
     }
 
-    return _assertThisInitialized$1(_this);
+    return _assertThisInitialized(_this);
   }
 
   return PolishedError;
@@ -4318,7 +4349,7 @@ const ThemeProvider = _ref => {
   } = _ref;
   const scopeRef = reactExports.useRef(null);
   const relativeDocument = useDocument(theme);
-  const controlledScopeRef = focusVisibleRef === null ? React.createRef() : getControlledValue$1(focusVisibleRef, scopeRef);
+  const controlledScopeRef = focusVisibleRef === null ? React.createRef() : getControlledValue(focusVisibleRef, scopeRef);
   useFocusVisible({
     scope: controlledScopeRef,
     relativeDocument
@@ -4604,78 +4635,6 @@ function mergeRefs(refs) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$4() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-
-function getControlledValue() {
-  for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
-    values[_key] = arguments[_key];
-  }
-  for (const value of values) {
-    if (value !== undefined) {
-      return value;
-    }
-  }
-  return undefined;
-}
-const KEYS$3 = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-
-var DocumentPosition$3;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$3 || (DocumentPosition$3 = {}));
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
 const stateReducer$1 = (state, action) => {
   switch (action.type) {
     case 'END':
@@ -4765,7 +4724,7 @@ const useSelection = _ref => {
     return {
       role: role === null ? undefined : role,
       'data-garden-container-id': 'containers.selection',
-      'data-garden-container-version': '3.0.2',
+      'data-garden-container-version': '3.0.4',
       ...other
     };
   }, []);
@@ -4832,21 +4791,21 @@ const useSelection = _ref => {
       };
       const hasModifierKeyPressed = event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
       if (!hasModifierKeyPressed) {
-        if (event.key === KEYS$3.UP && verticalDirection || event.key === KEYS$3.LEFT && horizontalDirection) {
+        if (event.key === KEYS$1.UP && verticalDirection || event.key === KEYS$1.LEFT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onIncrement();
           } else {
             onDecrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS$3.DOWN && verticalDirection || event.key === KEYS$3.RIGHT && horizontalDirection) {
+        } else if (event.key === KEYS$1.DOWN && verticalDirection || event.key === KEYS$1.RIGHT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onDecrement();
           } else {
             onIncrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS$3.HOME) {
+        } else if (event.key === KEYS$1.HOME) {
           const firstItem = values[0];
           !isFocusedValueControlled && dispatch({
             type: 'HOME',
@@ -4854,7 +4813,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(firstItem);
           event.preventDefault();
-        } else if (event.key === KEYS$3.END) {
+        } else if (event.key === KEYS$1.END) {
           const lastItem = values[values.length - 1];
           !isFocusedValueControlled && dispatch({
             type: 'END',
@@ -4862,7 +4821,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(lastItem);
           event.preventDefault();
-        } else if (event.key === KEYS$3.SPACE || event.key === KEYS$3.ENTER) {
+        } else if (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER) {
           onSelect && onSelect(value);
           !isSelectedValueControlled && dispatch({
             type: 'KEYBOARD_SELECT',
@@ -4884,9 +4843,9 @@ const useSelection = _ref => {
       tabIndex,
       [selectedAriaKey]: selectedAriaKey ? isSelected : undefined,
       ref: refs[value],
-      onFocus: composeEventHandlers$4(onFocusCallback, handleFocus),
-      onClick: composeEventHandlers$4(onClick, handleClick),
-      onKeyDown: composeEventHandlers$4(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$2(onFocusCallback, handleFocus),
+      onClick: composeEventHandlers$2(onClick, handleClick),
+      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
       onBlur,
       ...other
     };
@@ -4934,21 +4893,21 @@ function _extends$2$4() {
   return _extends$2$4.apply(this, arguments);
 }
 
-const SIZE$3 = ['small', 'medium', 'large'];
+const SIZE$4 = ['small', 'medium', 'large'];
 
-const COMPONENT_ID$5$5 = 'buttons.button_group_view';
+const COMPONENT_ID$5$6 = 'buttons.button_group_view';
 const StyledButtonGroup = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$5$5,
+  'data-garden-id': COMPONENT_ID$5$6,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledButtonGroup",
   componentId: "sc-1fbpzef-0"
-})(["display:inline-flex;position:relative;z-index:0;direction:", ";white-space:nowrap;", ";"], props => props.theme.rtl && 'rtl', props => retrieveComponentStyles(COMPONENT_ID$5$5, props));
+})(["display:inline-flex;position:relative;z-index:0;direction:", ";white-space:nowrap;", ";"], props => props.theme.rtl && 'rtl', props => retrieveComponentStyles(COMPONENT_ID$5$6, props));
 StyledButtonGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$4$5 = 'buttons.icon';
+const COMPONENT_ID$4$6 = 'buttons.icon';
 const sizeStyles$1$3 = props => {
   let marginProperty;
   if (props.position === 'start') {
@@ -4958,7 +4917,7 @@ const sizeStyles$1$3 = props => {
   }
   return marginProperty && Ne(["", ":", "px;"], marginProperty, props.theme.space.base * 2);
 };
-const StyledIcon$1 = styled(_ref => {
+const StyledIcon$2 = styled(_ref => {
   let {
     children,
     isRotated,
@@ -4967,17 +4926,17 @@ const StyledIcon$1 = styled(_ref => {
   } = _ref;
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$4$5,
+  'data-garden-id': COMPONENT_ID$4$6,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledIcon",
   componentId: "sc-19meqgg-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => sizeStyles$1$3(props), props => retrieveComponentStyles(COMPONENT_ID$4$5, props));
-StyledIcon$1.defaultProps = {
+})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => sizeStyles$1$3(props), props => retrieveComponentStyles(COMPONENT_ID$4$6, props));
+StyledIcon$2.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$3$5 = 'buttons.button';
+const COMPONENT_ID$3$6 = 'buttons.button';
 const getBorderRadius = props => {
   if (props.isPill) {
     return '100px';
@@ -5042,7 +5001,7 @@ const colorStyles$f = props => {
       styles: props.isNeutral ? {
         borderColor: baseColor
       } : undefined
-    }), !props.isBasic && activeColor, rgba(baseColor, 0.2), !props.isNeutral && activeColor, disabledBackgroundColor, disabledForegroundColor, StyledIcon$1, props.isNeutral && getColor('neutralHue', shade, props.theme), StyledIcon$1, StyledIcon$1, StyledIcon$1, props.isNeutral && getColor('neutralHue', shade + 100, props.theme), StyledIcon$1, props.isNeutral && foregroundColor, StyledIcon$1, disabledForegroundColor);
+    }), !props.isBasic && activeColor, rgba(baseColor, 0.2), !props.isNeutral && activeColor, disabledBackgroundColor, disabledForegroundColor, StyledIcon$2, props.isNeutral && getColor('neutralHue', shade, props.theme), StyledIcon$2, StyledIcon$2, StyledIcon$2, props.isNeutral && getColor('neutralHue', shade + 100, props.theme), StyledIcon$2, props.isNeutral && foregroundColor, StyledIcon$2, disabledForegroundColor);
   }
   return retVal;
 };
@@ -5074,7 +5033,7 @@ const groupStyles = props => {
     spacerHue: focusColor,
     hue: 'transparent'
   });
-  return Ne(["position:relative;transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,box-shadow 0.1s ease-in-out,color 0.1s ease-in-out,margin-", " 0.1s ease-in-out,outline-color 0.1s ease-in-out,z-index 0.25s ease-in-out;border:", " ", ";", "{border-color:", ";box-shadow:", ";}&:hover,&:active,", "{z-index:1;}&:disabled{z-index:-1;background-color:", ";}&:not(:first-of-type){margin-", ":", ";}&:not(:first-of-type):disabled{margin-", ":", ";}&:not(:first-of-type):not(:last-of-type){border-radius:0;}&:first-of-type:not(:last-of-type){border-top-", "-radius:0;border-bottom-", "-radius:0;}&:last-of-type:not(:first-of-type){border-top-", "-radius:0;border-bottom-", "-radius:0;}&:first-of-type:not(:last-of-type) ", "{margin-", ":", ";}&:last-of-type:not(:first-of-type) ", "{margin-", ":", ";}"], startPosition, borders.sm, borderColor, SELECTOR_FOCUS_VISIBLE, focusColor, focusBoxShadow, SELECTOR_FOCUS_VISIBLE, disabledBackgroundColor, startPosition, marginDisplacement, startPosition, marginOffset, endPosition, endPosition, startPosition, startPosition, StyledIcon$1, endPosition, iconMarginDisplacement, StyledIcon$1, startPosition, iconMarginDisplacement);
+  return Ne(["position:relative;transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,box-shadow 0.1s ease-in-out,color 0.1s ease-in-out,margin-", " 0.1s ease-in-out,outline-color 0.1s ease-in-out,z-index 0.25s ease-in-out;border:", " ", ";", "{border-color:", ";box-shadow:", ";}&:hover,&:active,", "{z-index:1;}&:disabled{z-index:-1;background-color:", ";}&:not(:first-of-type){margin-", ":", ";}&:not(:first-of-type):disabled{margin-", ":", ";}&:not(:first-of-type):not(:last-of-type){border-radius:0;}&:first-of-type:not(:last-of-type){border-top-", "-radius:0;border-bottom-", "-radius:0;}&:last-of-type:not(:first-of-type){border-top-", "-radius:0;border-bottom-", "-radius:0;}&:first-of-type:not(:last-of-type) ", "{margin-", ":", ";}&:last-of-type:not(:first-of-type) ", "{margin-", ":", ";}"], startPosition, borders.sm, borderColor, SELECTOR_FOCUS_VISIBLE, focusColor, focusBoxShadow, SELECTOR_FOCUS_VISIBLE, disabledBackgroundColor, startPosition, marginDisplacement, startPosition, marginOffset, endPosition, endPosition, startPosition, startPosition, StyledIcon$2, endPosition, iconMarginDisplacement, StyledIcon$2, startPosition, iconMarginDisplacement);
 };
 const iconStyles$1 = props => {
   const size = props.size === 'small' ? props.theme.iconSizes.sm : props.theme.iconSizes.md;
@@ -5105,20 +5064,20 @@ const sizeStyles$i = props => {
   return retVal;
 };
 const StyledButton = styled.button.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$3$5,
+  'data-garden-id': COMPONENT_ID$3$6,
   'data-garden-version': '8.69.9',
   type: props.type || 'button'
 })).withConfig({
   displayName: "StyledButton",
   componentId: "sc-qe3ace-0"
-})(["display:", ";align-items:", ";justify-content:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,outline-color 0.1s ease-in-out,z-index 0.25s ease-in-out;margin:0;border:", ";border-radius:", ";cursor:pointer;width:", ";overflow:hidden;text-decoration:none;text-overflow:ellipsis;white-space:", ";font-family:inherit;font-weight:", ";-webkit-font-smoothing:subpixel-antialiased;box-sizing:border-box;user-select:", ";-webkit-touch-callout:none;", ";&::-moz-focus-inner{border:0;padding:0;}", "{text-decoration:none;}&:hover{text-decoration:", ";}&:active,&[aria-pressed='true'],&[aria-pressed='mixed']{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,box-shadow 0.1s ease-in-out,color 0.1s ease-in-out,outline-color 0.1s ease-in-out,z-index 0.25s ease-in-out;text-decoration:", ";}", ";&:disabled{cursor:default;text-decoration:", ";}& ", "{", "}", " &&{", "}", ""], props => props.isLink ? 'inline' : 'inline-flex', props => !props.isLink && 'center', props => !props.isLink && 'center', props => `${props.isLink ? `0px solid` : props.theme.borders.sm} transparent`, props => getBorderRadius(props), props => props.isStretched ? '100%' : '', props => !props.isLink && 'nowrap', props => props.isLink ? 'inherit' : props.theme.fontWeights.regular, props => !props.isLink && 'none', props => sizeStyles$i(props), SELECTOR_FOCUS_VISIBLE, props => props.isLink ? 'underline' : 'none', props => props.isLink ? 'underline' : 'none', props => colorStyles$f(props), props => props.isLink && 'none', StyledIcon$1, props => iconStyles$1(props), StyledButtonGroup, props => groupStyles(props), props => retrieveComponentStyles(COMPONENT_ID$3$5, props));
+})(["display:", ";align-items:", ";justify-content:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,outline-color 0.1s ease-in-out,z-index 0.25s ease-in-out;margin:0;border:", ";border-radius:", ";cursor:pointer;width:", ";overflow:hidden;text-decoration:none;text-overflow:ellipsis;white-space:", ";font-family:inherit;font-weight:", ";-webkit-font-smoothing:subpixel-antialiased;box-sizing:border-box;user-select:", ";-webkit-touch-callout:none;", ";&::-moz-focus-inner{border:0;padding:0;}", "{text-decoration:none;}&:hover{text-decoration:", ";}&:active,&[aria-pressed='true'],&[aria-pressed='mixed']{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,box-shadow 0.1s ease-in-out,color 0.1s ease-in-out,outline-color 0.1s ease-in-out,z-index 0.25s ease-in-out;text-decoration:", ";}", ";&:disabled{cursor:default;text-decoration:", ";}& ", "{", "}", " &&{", "}", ""], props => props.isLink ? 'inline' : 'inline-flex', props => !props.isLink && 'center', props => !props.isLink && 'center', props => `${props.isLink ? `0px solid` : props.theme.borders.sm} transparent`, props => getBorderRadius(props), props => props.isStretched ? '100%' : '', props => !props.isLink && 'nowrap', props => props.isLink ? 'inherit' : props.theme.fontWeights.regular, props => !props.isLink && 'none', props => sizeStyles$i(props), SELECTOR_FOCUS_VISIBLE, props => props.isLink ? 'underline' : 'none', props => props.isLink ? 'underline' : 'none', props => colorStyles$f(props), props => props.isLink && 'none', StyledIcon$2, props => iconStyles$1(props), StyledButtonGroup, props => groupStyles(props), props => retrieveComponentStyles(COMPONENT_ID$3$6, props));
 StyledButton.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$2$7 = 'buttons.anchor';
+const COMPONENT_ID$2$8 = 'buttons.anchor';
 const StyledAnchor = styled(StyledButton).attrs(props => ({
-  'data-garden-id': COMPONENT_ID$2$7,
+  'data-garden-id': COMPONENT_ID$2$8,
   'data-garden-version': '8.69.9',
   as: 'a',
   dir: props.theme.rtl ? 'rtl' : undefined,
@@ -5127,7 +5086,7 @@ const StyledAnchor = styled(StyledButton).attrs(props => ({
 })).withConfig({
   displayName: "StyledAnchor",
   componentId: "sc-xshgmo-0"
-})(["direction:", ";", ";"], props => props.theme.rtl && 'rtl', props => retrieveComponentStyles(COMPONENT_ID$2$7, props));
+})(["direction:", ";", ";"], props => props.theme.rtl && 'rtl', props => retrieveComponentStyles(COMPONENT_ID$2$8, props));
 StyledAnchor.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -5150,14 +5109,14 @@ var SvgNewWindowStroke = function SvgNewWindowStroke(props) {
   })));
 };
 
-const COMPONENT_ID$1$7 = 'buttons.external_icon';
+const COMPONENT_ID$1$8 = 'buttons.external_icon';
 const StyledExternalIcon = styled(SvgNewWindowStroke).attrs({
-  'data-garden-id': COMPONENT_ID$1$7,
+  'data-garden-id': COMPONENT_ID$1$8,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledExternalIcon",
   componentId: "sc-16oz07e-0"
-})(["transform:", ";margin-bottom:-0.085em;padding-left:0.25em;box-sizing:content-box;width:0.85em;height:0.85em;", ";"], props => props.theme.rtl && 'scaleX(-1)', props => retrieveComponentStyles(COMPONENT_ID$1$7, props));
+})(["transform:", ";margin-bottom:-0.085em;padding-left:0.25em;box-sizing:content-box;width:0.85em;height:0.85em;", ";"], props => props.theme.rtl && 'scaleX(-1)', props => retrieveComponentStyles(COMPONENT_ID$1$8, props));
 StyledExternalIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -5184,7 +5143,7 @@ const StyledIconButton = styled(StyledButton).attrs({
 }).withConfig({
   displayName: "StyledIconButton",
   componentId: "sc-1t0ughp-0"
-})(["", ";& ", "{", "}", ";"], props => iconButtonStyles(props), StyledIcon$1, props => iconStyles(props), props => retrieveComponentStyles(COMPONENT_ID$N, props));
+})(["", ";& ", "{", "}", ";"], props => iconButtonStyles(props), StyledIcon$2, props => iconStyles(props), props => retrieveComponentStyles(COMPONENT_ID$N, props));
 StyledIconButton.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -5199,13 +5158,13 @@ const useSplitButtonContext = () => {
   return reactExports.useContext(SplitButtonContext);
 };
 
-const StartIconComponent$1 = props => React.createElement(StyledIcon$1, _extends$2$4({
+const StartIconComponent$2 = props => React.createElement(StyledIcon$2, _extends$2$4({
   position: "start"
 }, props));
-StartIconComponent$1.displayName = 'Button.StartIcon';
-const StartIcon$1 = StartIconComponent$1;
+StartIconComponent$2.displayName = 'Button.StartIcon';
+const StartIcon$2 = StartIconComponent$2;
 
-const EndIconComponent$1 = props => React.createElement(StyledIcon$1, _extends$2$4({
+const EndIconComponent$1 = props => React.createElement(StyledIcon$2, _extends$2$4({
   position: "end"
 }, props));
 EndIconComponent$1.displayName = 'Button.EndIcon';
@@ -5245,14 +5204,14 @@ ButtonComponent.propTypes = {
   isLink: PropTypes.bool,
   isStretched: PropTypes.bool,
   isSelected: PropTypes.bool,
-  size: PropTypes.oneOf(SIZE$3)
+  size: PropTypes.oneOf(SIZE$4)
 };
 ButtonComponent.defaultProps = {
   size: 'medium'
 };
 const Button = ButtonComponent;
 Button.EndIcon = EndIcon$1;
-Button.StartIcon = StartIcon$1;
+Button.StartIcon = StartIcon$2;
 
 const Anchor = reactExports.forwardRef((_ref, ref) => {
   let {
@@ -5302,7 +5261,7 @@ const ButtonGroup = reactExports.forwardRef((_ref, ref) => {
     rtl
   } = reactExports.useContext(Be) || DEFAULT_THEME;
   const [internalSelectedValue, setInternalSelectedValue] = reactExports.useState();
-  const selectedValue = getControlledValue$1(controlledSelectedValue, internalSelectedValue);
+  const selectedValue = getControlledValue(controlledSelectedValue, internalSelectedValue);
   const values = reactExports.useMemo(() => reactExports.Children.toArray(children).reduce((buttons, child) => {
     if ( reactExports.isValidElement(child) && child.type !== 'string' && !child.props.disabled) {
       buttons.push(child.props.value);
@@ -5354,14 +5313,14 @@ const IconButton = reactExports.forwardRef((_ref, ref) => {
     ref: ref
   }, otherProps, {
     focusInset: otherProps.focusInset || focusInset
-  }), React.createElement(StyledIcon$1, {
+  }), React.createElement(StyledIcon$2, {
     isRotated: isRotated
   }, children));
 });
 IconButton.displayName = 'IconButton';
 IconButton.propTypes = {
   isDanger: PropTypes.bool,
-  size: PropTypes.oneOf(SIZE$3),
+  size: PropTypes.oneOf(SIZE$4),
   isNeutral: PropTypes.bool,
   isPrimary: PropTypes.bool,
   isBasic: PropTypes.bool,
@@ -6405,7 +6364,7 @@ var TransitionGroup = /*#__PURE__*/function (_React$Component) {
 
     _this = _React$Component.call(this, props, context) || this;
 
-    var handleExited = _this.handleExited.bind(_assertThisInitialized$1(_this)); // Initial children should all be entering, dependent on appear
+    var handleExited = _this.handleExited.bind(_assertThisInitialized(_this)); // Initial children should all be entering, dependent on appear
 
 
     _this.state = {
@@ -6621,25 +6580,25 @@ StyledClose$1.defaultProps = {
 };
 
 const COMPONENT_ID$a$3 = 'notifications.paragraph';
-const StyledParagraph$1 = styled.p.attrs({
+const StyledParagraph$2 = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$a$3,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-12tmd6p-0"
 })(["margin:", "px 0 0;", ";"], props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$a$3, props));
-StyledParagraph$1.defaultProps = {
+StyledParagraph$2.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$9$3 = 'notifications.title';
+const COMPONENT_ID$9$4 = 'notifications.title';
 const StyledTitle$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$9$3,
+  'data-garden-id': COMPONENT_ID$9$4,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-xx4jsv-0"
-})(["margin:0;color:", ";font-weight:", ";", ";"], props => props.theme.colors.foreground, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$9$3, props));
+})(["margin:0;color:", ";font-weight:", ";", ";"], props => props.theme.colors.foreground, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$9$4, props));
 StyledTitle$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -6688,20 +6647,20 @@ StyledBase.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$8$3 = 'notifications.alert';
+const COMPONENT_ID$8$4 = 'notifications.alert';
 const colorStyles$5$2 = props => Ne(["", "{color:", ";}"], StyledTitle$1, props.hue && getColor(props.hue, 800, props.theme));
 const StyledAlert = styled(StyledBase).attrs({
-  'data-garden-id': COMPONENT_ID$8$3,
+  'data-garden-id': COMPONENT_ID$8$4,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledAlert",
   componentId: "sc-fyn8jp-0"
-})(["", " ", ";"], colorStyles$5$2, props => retrieveComponentStyles(COMPONENT_ID$8$3, props));
+})(["", " ", ";"], colorStyles$5$2, props => retrieveComponentStyles(COMPONENT_ID$8$4, props));
 StyledAlert.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$7$3 = 'notifications.notification';
+const COMPONENT_ID$7$4 = 'notifications.notification';
 const colorStyles$4$2 = props => {
   const {
     type,
@@ -6737,12 +6696,12 @@ const colorStyles$4$2 = props => {
   return Ne(["", "{color:", ";}"], StyledTitle$1, color);
 };
 const StyledNotification = styled(StyledBase).attrs({
-  'data-garden-id': COMPONENT_ID$7$3,
+  'data-garden-id': COMPONENT_ID$7$4,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledNotification",
   componentId: "sc-uf6jh-0"
-})(["", " ", ";"], colorStyles$4$2, props => retrieveComponentStyles(COMPONENT_ID$7$3, props));
+})(["", " ", ";"], colorStyles$4$2, props => retrieveComponentStyles(COMPONENT_ID$7$4, props));
 StyledNotification.propTypes = {
   type: PropTypes.oneOf(TYPE$1)
 };
@@ -6750,19 +6709,19 @@ StyledNotification.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$6$3 = 'notifications.well';
+const COMPONENT_ID$6$4 = 'notifications.well';
 const StyledWell = styled(StyledBase).attrs({
-  'data-garden-id': COMPONENT_ID$6$3,
+  'data-garden-id': COMPONENT_ID$6$4,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledWell",
   componentId: "sc-a5831c-0"
-})(["background-color:", ";color:", " ", ";"], props => props.isRecessed && getColor('neutralHue', 100, props.theme), props => getColor('neutralHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$6$3, props));
+})(["background-color:", ";color:", " ", ";"], props => props.isRecessed && getColor('neutralHue', 100, props.theme), props => getColor('neutralHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$6$4, props));
 StyledWell.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const StyledIcon = styled(_ref => {
+const StyledIcon$1 = styled(_ref => {
   let {
     children,
     ...props
@@ -6772,12 +6731,12 @@ const StyledIcon = styled(_ref => {
   displayName: "StyledIcon",
   componentId: "sc-msklws-0"
 })(["position:absolute;right:", ";left:", ";margin-top:", "px;color:", ";"], props => props.theme.rtl && `${props.theme.space.base * 4}px`, props => !props.theme.rtl && `${props.theme.space.base * 4}px`, props => props.theme.space.base / 2, props => props.hue && getColor(props.hue, props.hue === 'warningHue' ? 700 : 600, props.theme));
-StyledIcon.defaultProps = {
+StyledIcon$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$5$4 = 'notifications.global-alert';
-const colorStyles$3$2 = props => {
+const COMPONENT_ID$5$5 = 'notifications.global-alert';
+const colorStyles$3$3 = props => {
   let borderColor;
   let backgroundColor;
   let foregroundColor;
@@ -6839,18 +6798,18 @@ const sizeStyles$3$2 = props => {
   return Ne(["padding:", "px;min-height:", "px;line-height:", ";font-size:", ";"], padding, minHeight, lineHeight, fontSizes.md);
 };
 const StyledGlobalAlert = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$5$4,
+  'data-garden-id': COMPONENT_ID$5$5,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlert",
   componentId: "sc-k6rimt-0"
-})(["display:flex;flex-wrap:nowrap;overflow:auto;overflow-x:hidden;box-sizing:border-box;direction:", ";", " ", " && a{border-radius:", ";text-decoration:underline;}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', sizeStyles$3$2, colorStyles$3$2, props => props.theme.borderRadii.sm, props => retrieveComponentStyles(COMPONENT_ID$5$4, props));
+})(["display:flex;flex-wrap:nowrap;overflow:auto;overflow-x:hidden;box-sizing:border-box;direction:", ";", " ", " && a{border-radius:", ";text-decoration:underline;}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', sizeStyles$3$2, colorStyles$3$3, props => props.theme.borderRadii.sm, props => retrieveComponentStyles(COMPONENT_ID$5$5, props));
 StyledGlobalAlert.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$4$4 = 'notifications.global-alert.close';
-const colorStyles$2$2 = props => {
+const COMPONENT_ID$4$5 = 'notifications.global-alert.close';
+const colorStyles$2$3 = props => {
   let hoverBackgroundColor;
   let hoverForegroundColor;
   let activeBackgroundColor;
@@ -6899,21 +6858,21 @@ const sizeStyles$2$2 = props => {
   return Ne(["margin:", " ", " ", " ", ";"], marginVertical, props.theme.rtl ? marginStart : marginEnd, marginVertical, props.theme.rtl ? marginEnd : marginStart);
 };
 const StyledGlobalAlertClose = styled(IconButton).attrs({
-  'data-garden-id': COMPONENT_ID$4$4,
+  'data-garden-id': COMPONENT_ID$4$5,
   'data-garden-version': '8.69.9',
   size: 'small'
 }).withConfig({
   displayName: "StyledGlobalAlertClose",
   componentId: "sc-1g5s93s-0"
-})(["", ";", ";", ";"], sizeStyles$2$2, colorStyles$2$2, props => retrieveComponentStyles(COMPONENT_ID$4$4, props));
+})(["", ";", ";", ";"], sizeStyles$2$2, colorStyles$2$3, props => retrieveComponentStyles(COMPONENT_ID$4$5, props));
 StyledGlobalAlertClose.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$3$4 = 'notifications.global-alert.button';
-function colorStyles$1$2(props) {
+const COMPONENT_ID$3$5 = 'notifications.global-alert.button';
+function colorStyles$1$3(props) {
   if (props.isBasic) {
-    return colorStyles$2$2(props);
+    return colorStyles$2$3(props);
   }
   let backgroundColor;
   let hoverBackgroundColor;
@@ -6954,7 +6913,7 @@ function sizeStyles$1$2(props) {
   return Ne(["margin:", " ", " ", " ", ";"], marginVertical, props.theme.rtl ? marginStart : 0, marginVertical, props.theme.rtl ? 0 : marginStart);
 }
 const StyledGlobalAlertButton = styled(Button).attrs({
-  'data-garden-id': COMPONENT_ID$3$4,
+  'data-garden-id': COMPONENT_ID$3$5,
   'data-garden-version': '8.69.9',
   focusInset: false,
   isDanger: false,
@@ -6966,24 +6925,24 @@ const StyledGlobalAlertButton = styled(Button).attrs({
 }).withConfig({
   displayName: "StyledGlobalAlertButton",
   componentId: "sc-1txe91a-0"
-})(["flex-shrink:0;", ";", ";", ";"], sizeStyles$1$2, colorStyles$1$2, props => retrieveComponentStyles(COMPONENT_ID$3$4, props));
+})(["flex-shrink:0;", ";", ";", ";"], sizeStyles$1$2, colorStyles$1$3, props => retrieveComponentStyles(COMPONENT_ID$3$5, props));
 StyledGlobalAlertButton.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$2$6 = 'notifications.global-alert.content';
+const COMPONENT_ID$2$7 = 'notifications.global-alert.content';
 const StyledGlobalAlertContent = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$2$6,
+  'data-garden-id': COMPONENT_ID$2$7,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlertContent",
   componentId: "sc-rept0u-0"
-})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$2$6, props));
+})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$2$7, props));
 StyledGlobalAlertContent.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$1$6 = 'notifications.global-alert.icon';
+const COMPONENT_ID$1$7 = 'notifications.global-alert.icon';
 const sizeStyles$h = props => {
   const size = props.theme.iconSizes.md;
   const marginTop = math(`(${props.theme.space.base * 5} - ${size}) / 2`);
@@ -6997,12 +6956,12 @@ const StyledGlobalAlertIcon = styled(_ref => {
   } = _ref;
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$1$6,
+  'data-garden-id': COMPONENT_ID$1$7,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledGlobalAlertIcon",
   componentId: "sc-84ne9k-0"
-})(["flex-shrink:0;", ";", ";"], sizeStyles$h, props => retrieveComponentStyles(COMPONENT_ID$1$6, props));
+})(["flex-shrink:0;", ";", ";"], sizeStyles$h, props => retrieveComponentStyles(COMPONENT_ID$1$7, props));
 StyledGlobalAlertIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -7169,7 +7128,7 @@ const Alert = React.forwardRef((_ref, ref) => {
     ref: ref,
     hue: hue,
     role: role === undefined ? 'alert' : role
-  }, props), React.createElement(StyledIcon, {
+  }, props), React.createElement(StyledIcon$1, {
     hue: hue
   }, React.createElement(Icon, null)), props.children));
 });
@@ -7191,7 +7150,7 @@ const Notification = reactExports.forwardRef((_ref, ref) => {
     isFloating: true
   }, props, {
     role: role === undefined ? 'status' : role
-  }), props.type && React.createElement(StyledIcon, {
+  }), props.type && React.createElement(StyledIcon$1, {
     hue: hue
   }, React.createElement(Icon, null)), props.children);
 });
@@ -7237,10 +7196,10 @@ const Close$2 = React.forwardRef((props, ref) => {
 });
 Close$2.displayName = 'Close';
 
-const Paragraph$1 = React.forwardRef((props, ref) => React.createElement(StyledParagraph$1, _extends$6$2({
+const Paragraph$2 = React.forwardRef((props, ref) => React.createElement(StyledParagraph$2, _extends$6$2({
   ref: ref
 }, props)));
-Paragraph$1.displayName = 'Paragraph';
+Paragraph$2.displayName = 'Paragraph';
 
 const Title$1 = React.forwardRef((props, ref) => React.createElement(StyledTitle$1, _extends$6$2({
   ref: ref
@@ -8158,7 +8117,7 @@ var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$3() {
+function composeEventHandlers$1() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -8172,7 +8131,7 @@ function composeEventHandlers$3() {
     });
   };
 }
-const KEYS$2 = {
+const KEYS = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -8200,7 +8159,7 @@ const KEYS$2 = {
   UNIDENTIFIED: 'Unidentified',
   UP: 'ArrowUp'
 };
-var DocumentPosition$2;
+var DocumentPosition;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -8208,7 +8167,7 @@ var DocumentPosition$2;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$2 || (DocumentPosition$2 = {}));
+})(DocumentPosition || (DocumentPosition = {}));
 
 const SLIDER_MIN = 0;
 const SLIDER_MAX = 100;
@@ -8335,9 +8294,9 @@ function useSlider(_ref) {
     };
     return {
       'data-garden-container-id': 'containers.slider.track',
-      'data-garden-container-version': '0.1.6',
+      'data-garden-container-version': '0.1.7',
       'aria-disabled': disabled,
-      onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
+      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
       ...other
     };
   }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
@@ -8352,28 +8311,28 @@ function useSlider(_ref) {
       if (!disabled) {
         let value;
         switch (event.key) {
-          case KEYS$2.RIGHT:
+          case KEYS.RIGHT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
             break;
-          case KEYS$2.UP:
+          case KEYS.UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
             break;
-          case KEYS$2.LEFT:
+          case KEYS.LEFT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
             break;
-          case KEYS$2.DOWN:
+          case KEYS.DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
             break;
-          case KEYS$2.PAGE_UP:
+          case KEYS.PAGE_UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
             break;
-          case KEYS$2.PAGE_DOWN:
+          case KEYS.PAGE_DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
             break;
-          case KEYS$2.HOME:
+          case KEYS.HOME:
             value = min;
             break;
-          case KEYS$2.END:
+          case KEYS.END:
             value = max;
             break;
         }
@@ -8422,15 +8381,15 @@ function useSlider(_ref) {
     };
     return {
       'data-garden-container-id': 'containers.slider.thumb',
-      'data-garden-container-version': '0.1.6',
+      'data-garden-container-version': '0.1.7',
       role: 'slider',
       tabIndex: disabled ? -1 : 0,
       'aria-valuemin': thumb === 'min' ? min : position.minValue,
       'aria-valuemax': thumb === 'min' ? position.maxValue : max,
       'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
-      onKeyDown: composeEventHandlers$3(onKeyDown, handleKeyDown),
-      onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
-      onTouchStart: composeEventHandlers$3(onTouchStart, handleTouchStart),
+      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
+      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
+      onTouchStart: composeEventHandlers$1(onTouchStart, handleTouchStart),
       ...other
     };
   }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
@@ -8800,7 +8759,7 @@ StyledTextarea.defaultProps = {
 };
 
 const COMPONENT_ID$B = 'forms.media_figure';
-const colorStyles$b = props => {
+const colorStyles$b$1 = props => {
   let shade = 600;
   if (props.isDisabled) {
     shade = 400;
@@ -8840,7 +8799,7 @@ _ref => {
 }).withConfig({
   displayName: "StyledTextMediaFigure",
   componentId: "sc-1qepknj-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$b(props), props => sizeStyles$e(props), props => retrieveComponentStyles(COMPONENT_ID$B, props));
+})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$b$1(props), props => sizeStyles$e(props), props => retrieveComponentStyles(COMPONENT_ID$B, props));
 StyledTextMediaFigure.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -8905,7 +8864,7 @@ StyledTextMediaInput.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$y = 'forms.input_group';
+const COMPONENT_ID$y$1 = 'forms.input_group';
 const positionStyles = props => {
   const topMargin = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   return Ne(["", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}& > ", "{position:relative;flex:1 1 auto;margin-top:0;margin-bottom:0;width:auto;min-width:0;}"], StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, topMargin, StyledTextInput);
@@ -8916,18 +8875,18 @@ const itemStyles = props => {
   return Ne(["& > *{z-index:-1;}& > ", "{z-index:0;}& > ", ":disabled{z-index:-2;}& > ", ":hover,& > button:hover,& > ", ":focus-visible,& > button:focus-visible,& > ", "[data-garden-focus-visible],& > button[data-garden-focus-visible],& > ", ":active,& > button:active{z-index:1;}& > button:disabled{border-top-width:0;border-bottom-width:0;}& > *:not(:first-child){margin-", ":-", ";}& > *:first-child:not(:last-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:last-child:not(:first-child){border-top-", "-radius:0;border-bottom-", "-radius:0;}& > *:not(:first-child):not(:last-child){border-radius:0;}"], StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, StyledTextInput, startDirection, props.theme.borderWidths.sm, endDirection, endDirection, startDirection, startDirection);
 };
 const StyledInputGroup$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$y,
+  'data-garden-id': COMPONENT_ID$y$1,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-kjh1f0-0"
-})(["display:inline-flex;position:relative;flex-wrap:nowrap;align-items:stretch;z-index:0;width:100%;", ";", ";", ";"], props => positionStyles(props), props => itemStyles(props), props => retrieveComponentStyles(COMPONENT_ID$y, props));
+})(["display:inline-flex;position:relative;flex-wrap:nowrap;align-items:stretch;z-index:0;width:100%;", ";", ";", ";"], props => positionStyles(props), props => itemStyles(props), props => retrieveComponentStyles(COMPONENT_ID$y$1, props));
 StyledInputGroup$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
 const COMPONENT_ID$x$1 = 'forms.radio_label';
-const sizeStyles$d = props => {
+const sizeStyles$d$1 = props => {
   const size = props.theme.space.base * 4;
   const padding = size + props.theme.space.base * 2;
   const lineHeight = props.theme.space.base * 5;
@@ -8940,7 +8899,7 @@ const StyledRadioLabel = styled(StyledLabel$1).attrs({
 }).withConfig({
   displayName: "StyledRadioLabel",
   componentId: "sc-1aq2e5t-0"
-})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$x$1, props));
+})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$d$1(props), props => retrieveComponentStyles(COMPONENT_ID$x$1, props));
 StyledRadioLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -9450,9 +9409,9 @@ StyledSelect.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$9$2 = 'forms.select_wrapper';
+const COMPONENT_ID$9$3 = 'forms.select_wrapper';
 const StyledSelectWrapper = styled(StyledTextFauxInput).attrs({
-  'data-garden-id': COMPONENT_ID$9$2,
+  'data-garden-id': COMPONENT_ID$9$3,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledSelectWrapper",
@@ -9462,7 +9421,7 @@ StyledSelectWrapper.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$8$2 = 'forms.range';
+const COMPONENT_ID$8$3 = 'forms.range';
 const thumbStyles = function (styles) {
   let modifier = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
   return `
@@ -9507,7 +9466,7 @@ const trackLowerStyles = function (styles) {
     }
   `;
 };
-const colorStyles$3$1 = props => {
+const colorStyles$3$2 = props => {
   const SHADE = 600;
   const thumbBackgroundColor = getColor('primaryHue', SHADE, props.theme);
   const thumbBorderColor = thumbBackgroundColor;
@@ -9577,7 +9536,7 @@ const sizeStyles$6$1 = props => {
     `));
 };
 const StyledRangeInput = styled.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$8$2,
+  'data-garden-id': COMPONENT_ID$8$3,
   'data-garden-version': '8.69.9',
   type: 'range',
   style: {
@@ -9601,27 +9560,27 @@ const StyledRangeInput = styled.input.attrs(props => ({
       border: ${props.theme.borders.md};
       border-radius: 100%;
       box-sizing: border-box;
-    `), props => colorStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$8$2, props));
+    `), props => colorStyles$3$2(props), props => retrieveComponentStyles(COMPONENT_ID$8$3, props));
 StyledRangeInput.defaultProps = {
   backgroundSize: '0%',
   hasLowerTrack: true,
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$7$2 = 'forms.slider';
+const COMPONENT_ID$7$3 = 'forms.slider';
 const StyledSlider = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$7$2,
+  'data-garden-id': COMPONENT_ID$7$3,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledSlider",
   componentId: "sc-1di437a-0"
-})(["display:block;position:relative;z-index:0;cursor:pointer;height:", ";&[aria-disabled='true']{cursor:default;}", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";"], props => math(`(${props.theme.space.base} * 5px) + (${props.theme.shadowWidths.md} * 2)`), StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props => math(`${props.theme.space.base} * 2px`), props => retrieveComponentStyles(COMPONENT_ID$7$2, props));
+})(["display:block;position:relative;z-index:0;cursor:pointer;height:", ";&[aria-disabled='true']{cursor:default;}", ":not([hidden]) + &,", " + &,", " + &,& + ", ",& + ", "{margin-top:", ";}", ";"], props => math(`(${props.theme.space.base} * 5px) + (${props.theme.shadowWidths.md} * 2)`), StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props => math(`${props.theme.space.base} * 2px`), props => retrieveComponentStyles(COMPONENT_ID$7$3, props));
 StyledSlider.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$6$2 = 'forms.slider_thumb';
-const colorStyles$2$1 = props => {
+const COMPONENT_ID$6$3 = 'forms.slider_thumb';
+const colorStyles$2$2 = props => {
   const SHADE = 600;
   const backgroundColor = getColor('primaryHue', SHADE, props.theme);
   const borderColor = backgroundColor;
@@ -9642,20 +9601,20 @@ const sizeStyles$5$1 = props => {
   return Ne(["margin-top:", ";width:", ";height:", ";"], marginTop, size, size);
 };
 const StyledSliderThumb = styled.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$6$2,
+  'data-garden-id': COMPONENT_ID$6$3,
   'data-garden-version': '8.69.9',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderThumb",
   componentId: "sc-yspbwa-0"
-})(["appearance:none;position:absolute;top:50%;", ":", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out;z-index:1;border:", ";border-radius:100%;cursor:inherit;box-sizing:border-box;font-size:0;", ";", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.position} * 1px`), props => props.theme.borders.md, props => sizeStyles$5$1(props), props => colorStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$6$2, props));
+})(["appearance:none;position:absolute;top:50%;", ":", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out;z-index:1;border:", ";border-radius:100%;cursor:inherit;box-sizing:border-box;font-size:0;", ";", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.position} * 1px`), props => props.theme.borders.md, props => sizeStyles$5$1(props), props => colorStyles$2$2(props), props => retrieveComponentStyles(COMPONENT_ID$6$3, props));
 StyledSliderThumb.defaultProps = {
   position: 0,
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$5$3 = 'forms.slider_track';
-const colorStyles$1$1 = props => {
+const COMPONENT_ID$5$4 = 'forms.slider_track';
+const colorStyles$1$2 = props => {
   const SHADE = 600;
   const backgroundColor = getColor('neutralHue', SHADE - 400, props.theme);
   const backgroundImageColor = getColor('primaryHue', SHADE, props.theme);
@@ -9672,37 +9631,37 @@ const sizeStyles$4$1 = props => {
   return Ne(["margin-top:", ";border-radius:", ";background-position:", ";background-size:", ";padding:0 ", ";"], marginTop, borderRadius, backgroundPosition, backgroundSize, padding);
 };
 const StyledSliderTrack = styled.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$5$3,
+  'data-garden-id': COMPONENT_ID$5$4,
   'data-garden-version': '8.69.9',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderTrack",
   componentId: "sc-aw5m6g-0"
-})(["position:absolute;top:50%;box-sizing:border-box;background-origin:content-box;background-repeat:repeat-y;width:100%;", ";", ";", ";"], props => sizeStyles$4$1(props), props => colorStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$5$3, props));
+})(["position:absolute;top:50%;box-sizing:border-box;background-origin:content-box;background-repeat:repeat-y;width:100%;", ";", ";", ";"], props => sizeStyles$4$1(props), props => colorStyles$1$2(props), props => retrieveComponentStyles(COMPONENT_ID$5$4, props));
 StyledSliderTrack.defaultProps = {
   backgroundSize: 0,
   backgroundPosition: 0,
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$4$3 = 'forms.slider_track_rail';
+const COMPONENT_ID$4$4 = 'forms.slider_track_rail';
 const sizeStyles$3$1 = props => {
   const height = math(`${props.theme.space.base} * 1.5px`);
   const margin = math(`${props.theme.space.base} * 2.5px`);
   return Ne(["margin:0 ", " 0 ", ";height:", ";"], props.theme.rtl ? `-${margin}` : margin, props.theme.rtl ? margin : `-${margin}`, height);
 };
 const StyledSliderTrackRail = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$4$3,
+  'data-garden-id': COMPONENT_ID$4$4,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledSliderTrackRail",
   componentId: "sc-1o5owbd-0"
-})(["position:relative;", ";", ";"], props => sizeStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$4$3, props));
+})(["position:relative;", ";", ";"], props => sizeStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$4$4, props));
 StyledSliderTrackRail.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$3$3 = 'forms.tile_icon';
+const COMPONENT_ID$3$4 = 'forms.tile_icon';
 const sizeStyles$2$1 = props => {
   const iconSize = math(`${props.theme.iconSizes.md} * 2`);
   let position;
@@ -9719,17 +9678,17 @@ const sizeStyles$2$1 = props => {
   return Ne(["position:", ";top:", ";", ";& > *{width:", ";height:", ";}"], position, top, horizontalValue, iconSize, iconSize);
 };
 const StyledTileIcon = styled.span.attrs({
-  'data-garden-id': COMPONENT_ID$3$3,
+  'data-garden-id': COMPONENT_ID$3$4,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTileIcon",
   componentId: "sc-1wazhg4-0"
-})(["display:block;transition:color 0.25s ease-in-out;text-align:center;line-height:0;", ";", ";"], props => sizeStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$3$3, props));
+})(["display:block;transition:color 0.25s ease-in-out;text-align:center;line-height:0;", ";", ";"], props => sizeStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$3$4, props));
 StyledTileIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$2$5 = 'forms.tile';
+const COMPONENT_ID$2$6 = 'forms.tile';
 const colorStyles$d = props => {
   const SHADE = 600;
   const iconColor = getColor('neutralHue', SHADE, props.theme);
@@ -9760,18 +9719,18 @@ const colorStyles$d = props => {
   }), activeBorderColor, activeBackgroundColor, StyledTileIcon, color, selectedBorderColor, selectedBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, selectedHoverBorderColor, selectedHoverBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, selectedActiveBorderColor, selectedActiveBackgroundColor, props.theme.colors.background, StyledTileIcon, props.theme.colors.background, disabledBorderColor, disabledBackgroundColor, disabledColor, StyledTileIcon, disabledColor, selectedDisabledBackgroundColor, disabledColor, StyledTileIcon, disabledColor);
 };
 const StyledTile = styled.label.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$2$5,
+  'data-garden-id': COMPONENT_ID$2$6,
   'data-garden-version': '8.69.9',
   'data-garden-selected': props.isSelected
 })).withConfig({
   displayName: "StyledTile",
   componentId: "sc-1jjvmxs-0"
-})(["display:block;position:relative;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border-radius:", ";cursor:", ";padding:", "px;direction:", ";min-width:132px;word-break:break-word;", ";", ";"], props => props.theme.borderRadii.md, props => !props.isDisabled && 'pointer', props => props.theme.space.base * 5, props => props.theme.rtl && 'rtl', props => colorStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$2$5, props));
+})(["display:block;position:relative;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border-radius:", ";cursor:", ";padding:", "px;direction:", ";min-width:132px;word-break:break-word;", ";", ";"], props => props.theme.borderRadii.md, props => !props.isDisabled && 'pointer', props => props.theme.space.base * 5, props => props.theme.rtl && 'rtl', props => colorStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$2$6, props));
 StyledTile.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-const COMPONENT_ID$1$5 = 'forms.tile_description';
+const COMPONENT_ID$1$6 = 'forms.tile_description';
 const sizeStyles$1$1 = props => {
   let marginDirection = 'left';
   let marginValue;
@@ -9784,12 +9743,12 @@ const sizeStyles$1$1 = props => {
   return Ne(["margin-top:", "px;margin-", ":", ";"], props.theme.space.base, marginDirection, marginValue);
 };
 const StyledTileDescription = styled.span.attrs({
-  'data-garden-id': COMPONENT_ID$1$5,
+  'data-garden-id': COMPONENT_ID$1$6,
   'data-garden-version': '8.69.9'
 }).withConfig({
   displayName: "StyledTileDescription",
   componentId: "sc-xfuu7u-0"
-})(["display:block;text-align:", ";line-height:", ";font-size:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 4, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => sizeStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$1$5, props));
+})(["display:block;text-align:", ";line-height:", ";font-size:", ";", ";", ";"], props => props.isCentered && 'center', props => getLineHeight(props.theme.space.base * 4, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => sizeStyles$1$1(props), props => retrieveComponentStyles(COMPONENT_ID$1$6, props));
 StyledTileDescription.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -9959,19 +9918,19 @@ const Label$1 = React.forwardRef((props, ref) => {
       } = fieldContext;
       combinedProps = {
         ...combinedProps,
-        onMouseUp: composeEventHandlers$5(props.onMouseUp, () => {
+        onMouseUp: composeEventHandlers$2(props.onMouseUp, () => {
           setIsLabelActive(false);
         }),
-        onMouseDown: composeEventHandlers$5(props.onMouseDown, () => {
+        onMouseDown: composeEventHandlers$2(props.onMouseDown, () => {
           setIsLabelActive(true);
         }),
-        onMouseEnter: composeEventHandlers$5(props.onMouseEnter, () => {
+        onMouseEnter: composeEventHandlers$2(props.onMouseEnter, () => {
           setIsLabelHovered(true);
         }),
-        onMouseLeave: composeEventHandlers$5(props.onMouseLeave, () => {
+        onMouseLeave: composeEventHandlers$2(props.onMouseLeave, () => {
           setIsLabelHovered(false);
         }),
-        onClick: composeEventHandlers$5(props.onClick, () => {
+        onClick: composeEventHandlers$2(props.onClick, () => {
           multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
         })
       };
@@ -10005,7 +9964,7 @@ const Label$1 = React.forwardRef((props, ref) => {
     };
     combinedProps = {
       ...combinedProps,
-      onClick: composeEventHandlers$5(combinedProps.onClick, onLabelSelect)
+      onClick: composeEventHandlers$2(combinedProps.onClick, onLabelSelect)
     };
     return React.createElement(StyledCheckLabel, _extends$t({
       ref: ref
@@ -10135,7 +10094,7 @@ const Input = React.forwardRef((_ref, ref) => {
   } = _ref;
   const fieldContext = useFieldContext$1();
   const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$5(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -10213,7 +10172,7 @@ const Range = React.forwardRef((_ref, ref) => {
   reactExports.useEffect(() => {
     updateBackgroundWidthFromInput(rangeRef.current);
   }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$5(props.onChange, event => {
+  const onChange = hasLowerTrack ? composeEventHandlers$2(props.onChange, event => {
     updateBackgroundWidthFromInput(event.target);
   }) : props.onChange;
   let combinedProps = {
@@ -10330,7 +10289,7 @@ const Textarea = React.forwardRef((_ref, ref) => {
     computedStyle.height = state.height;
     computedStyle.overflow = state.overflow ? 'hidden' : undefined;
   }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$5(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -10412,11 +10371,11 @@ var SvgChevronDownStroke$1 = function SvgChevronDownStroke(props) {
   })));
 };
 
-const StartIconComponent = props => React.createElement(StyledTextMediaFigure, _extends$t({
+const StartIconComponent$1 = props => React.createElement(StyledTextMediaFigure, _extends$t({
   position: "start"
 }, props));
-StartIconComponent.displayName = 'FauxInput.StartIcon';
-const StartIcon = StartIconComponent;
+StartIconComponent$1.displayName = 'FauxInput.StartIcon';
+const StartIcon$1 = StartIconComponent$1;
 
 const EndIconComponent = props => React.createElement(StyledTextMediaFigure, _extends$t({
   position: "end"
@@ -10434,10 +10393,10 @@ const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
     ...props
   } = _ref;
   const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$5(onFocus, () => {
+  const onFocusHandler = composeEventHandlers$2(onFocus, () => {
     setIsFocused(true);
   });
-  const onBlurHandler = composeEventHandlers$5(onBlur, () => {
+  const onBlurHandler = composeEventHandlers$2(onBlur, () => {
     setIsFocused(false);
   });
   return React.createElement(StyledTextFauxInput, _extends$t({
@@ -10464,7 +10423,7 @@ FauxInputComponent.propTypes = {
 };
 const FauxInput = FauxInputComponent;
 FauxInput.EndIcon = EndIcon;
-FauxInput.StartIcon = StartIcon;
+FauxInput.StartIcon = StartIcon$1;
 
 const Select = React.forwardRef((_ref, ref) => {
   let {
@@ -10662,15 +10621,15 @@ const DescriptionComponent = reactExports.forwardRef((props, ref) => {
 DescriptionComponent.displayName = 'Tiles.Description';
 const Description = DescriptionComponent;
 
-const IconComponent = reactExports.forwardRef((props, ref) => {
+const IconComponent$1 = reactExports.forwardRef((props, ref) => {
   const tileContext = useTilesContext();
   return React.createElement(StyledTileIcon, _extends$t({
     ref: ref,
     isCentered: tileContext && tileContext.isCentered
   }, props));
 });
-IconComponent.displayName = 'Tiles.Icon';
-const Icon = IconComponent;
+IconComponent$1.displayName = 'Tiles.Icon';
+const Icon$1 = IconComponent$1;
 
 const LabelComponent = reactExports.forwardRef((props, forwardedRef) => {
   const [title, setTitle] = reactExports.useState('');
@@ -10708,7 +10667,7 @@ const TilesComponent = reactExports.forwardRef((_ref, ref) => {
       onChange(...args);
     }
   }, [onChange]);
-  const selectedValue = getControlledValue$1(controlledValue, value);
+  const selectedValue = getControlledValue(controlledValue, value);
   const tileContext = reactExports.useMemo(() => ({
     onChange: handleOnChange,
     value: selectedValue,
@@ -10734,7 +10693,7 @@ TilesComponent.defaultProps = {
 };
 const Tiles = TilesComponent;
 Tiles.Description = Description;
-Tiles.Icon = Icon;
+Tiles.Icon = Icon$1;
 Tiles.Label = Label$2;
 Tiles.Tile = Tile;
 
@@ -10788,7 +10747,7 @@ const ItemComponent = reactExports.forwardRef((_ref, ref) => {
   }));
 });
 ItemComponent.displayName = 'FileList.Item';
-const Item = ItemComponent;
+const Item$2 = ItemComponent;
 
 const FileListComponent = reactExports.forwardRef((_ref, ref) => {
   let {
@@ -10800,7 +10759,7 @@ const FileListComponent = reactExports.forwardRef((_ref, ref) => {
 });
 FileListComponent.displayName = 'FileList';
 const FileList = FileListComponent;
-FileList.Item = Item;
+FileList.Item = Item$2;
 
 var _path$j;
 function _extends$k() { _extends$k = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$k.apply(this, arguments); }
@@ -10843,7 +10802,7 @@ const useFileContext = () => {
 
 const CloseComponent$1 = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$5(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
   return React.createElement(StyledFileClose, _extends$t({
@@ -10896,7 +10855,7 @@ var SvgTrashStroke = function SvgTrashStroke(props) {
 
 const DeleteComponent = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$5(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
   return React.createElement(StyledFileDelete, _extends$t({
@@ -11016,9 +10975,9 @@ var SvgFileSpreadsheetStroke$1 = function SvgFileSpreadsheetStroke(props) {
 };
 
 var _path$a;
-function _extends$b() { _extends$b = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+function _extends$b$1() { _extends$b$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b$1.apply(this, arguments); }
 var SvgFilePresentationStroke$1 = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$b({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$b$1({
     xmlns: "http://www.w3.org/2000/svg",
     width: 12,
     height: 12,
@@ -11033,9 +10992,9 @@ var SvgFilePresentationStroke$1 = function SvgFilePresentationStroke(props) {
 };
 
 var _path$9;
-function _extends$a() { _extends$a = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
+function _extends$a$1() { _extends$a$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a$1.apply(this, arguments); }
 var SvgFileGenericStroke$1 = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$a({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$a$1({
     xmlns: "http://www.w3.org/2000/svg",
     width: 12,
     height: 12,
@@ -11331,22 +11290,22 @@ const MediaInput = React.forwardRef((_ref, ref) => {
     onMouseOut,
     ...otherWrapperProps
   } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$5(onClick, () => {
+  const onFauxInputClickHandler = composeEventHandlers$2(onClick, () => {
     inputRef.current && inputRef.current.focus();
   });
-  const onFauxInputFocusHandler = composeEventHandlers$5(onFocus, () => {
+  const onFauxInputFocusHandler = composeEventHandlers$2(onFocus, () => {
     setIsFocused(true);
   });
-  const onFauxInputBlurHandler = composeEventHandlers$5(onBlur, () => {
+  const onFauxInputBlurHandler = composeEventHandlers$2(onBlur, () => {
     setIsFocused(false);
   });
-  const onFauxInputMouseOverHandler = composeEventHandlers$5(onMouseOver, () => {
+  const onFauxInputMouseOverHandler = composeEventHandlers$2(onMouseOver, () => {
     setIsHovered(true);
   });
-  const onFauxInputMouseOutHandler = composeEventHandlers$5(onMouseOut, () => {
+  const onFauxInputMouseOutHandler = composeEventHandlers$2(onMouseOut, () => {
     setIsHovered(false);
   });
-  const onSelectHandler = readOnly ? composeEventHandlers$5(onSelect, event => {
+  const onSelectHandler = readOnly ? composeEventHandlers$2(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -11404,67 +11363,5263 @@ MediaInput.propTypes = {
 MediaInput.displayName = 'MediaInput';
 
 /**
+ * Prism: Lightweight, robust, elegant syntax highlighting
+ *
+ * @license MIT <https://opensource.org/licenses/MIT>
+ * @author Lea Verou <https://lea.verou.me>
+ * @namespace
+ * @public
+ */
+/**
+ * prism-react-renderer:
+ * This file has been modified to remove:
+ * - globals and window dependency
+ * - worker support
+ * - highlightAll and other element dependent methods
+ * - _.hooks helpers
+ * - UMD/node-specific hacks
+ * It has also been run through prettier
+ */
+
+ var Prism = (function () {
+
+	// Private helper vars
+	var lang = /(?:^|\s)lang(?:uage)?-([\w-]+)(?=\s|$)/i;
+	var uniqueId = 0;
+
+	// The grammar object for plaintext
+	var plainTextGrammar = {};
+
+
+	var _ = {
+		/**
+		 * A namespace for utility methods.
+		 *
+		 * All function in this namespace that are not explicitly marked as _public_ are for __internal use only__ and may
+		 * change or disappear at any time.
+		 *
+		 * @namespace
+		 * @memberof Prism
+		 */
+		util: {
+			encode: function encode(tokens) {
+				if (tokens instanceof Token) {
+					return new Token(tokens.type, encode(tokens.content), tokens.alias);
+				} else if (Array.isArray(tokens)) {
+					return tokens.map(encode);
+				} else {
+					return tokens.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\u00a0/g, ' ');
+				}
+			},
+
+			/**
+			 * Returns the name of the type of the given value.
+			 *
+			 * @param {any} o
+			 * @returns {string}
+			 * @example
+			 * type(null)      === 'Null'
+			 * type(undefined) === 'Undefined'
+			 * type(123)       === 'Number'
+			 * type('foo')     === 'String'
+			 * type(true)      === 'Boolean'
+			 * type([1, 2])    === 'Array'
+			 * type({})        === 'Object'
+			 * type(String)    === 'Function'
+			 * type(/abc+/)    === 'RegExp'
+			 */
+			type: function (o) {
+				return Object.prototype.toString.call(o).slice(8, -1);
+			},
+
+			/**
+			 * Returns a unique number for the given object. Later calls will still return the same number.
+			 *
+			 * @param {Object} obj
+			 * @returns {number}
+			 */
+			objId: function (obj) {
+				if (!obj['__id']) {
+					Object.defineProperty(obj, '__id', { value: ++uniqueId });
+				}
+				return obj['__id'];
+			},
+
+			/**
+			 * Creates a deep clone of the given object.
+			 *
+			 * The main intended use of this function is to clone language definitions.
+			 *
+			 * @param {T} o
+			 * @param {Record<number, any>} [visited]
+			 * @returns {T}
+			 * @template T
+			 */
+			clone: function deepClone(o, visited) {
+				visited = visited || {};
+
+				var clone; var id;
+				switch (_.util.type(o)) {
+					case 'Object':
+						id = _.util.objId(o);
+						if (visited[id]) {
+							return visited[id];
+						}
+						clone = /** @type {Record<string, any>} */ ({});
+						visited[id] = clone;
+
+						for (var key in o) {
+							if (o.hasOwnProperty(key)) {
+								clone[key] = deepClone(o[key], visited);
+							}
+						}
+
+						return /** @type {any} */ (clone);
+
+					case 'Array':
+						id = _.util.objId(o);
+						if (visited[id]) {
+							return visited[id];
+						}
+						clone = [];
+						visited[id] = clone;
+
+						(/** @type {Array} */(/** @type {any} */(o))).forEach(function (v, i) {
+							clone[i] = deepClone(v, visited);
+						});
+
+						return /** @type {any} */ (clone);
+
+					default:
+						return o;
+				}
+			},
+
+			/**
+			 * Returns the Prism language of the given element set by a `language-xxxx` or `lang-xxxx` class.
+			 *
+			 * If no language is set for the element or the element is `null` or `undefined`, `none` will be returned.
+			 *
+			 * @param {Element} element
+			 * @returns {string}
+			 */
+			getLanguage: function (element) {
+				while (element) {
+					var m = lang.exec(element.className);
+					if (m) {
+						return m[1].toLowerCase();
+					}
+					element = element.parentElement;
+				}
+				return 'none';
+			},
+
+			/**
+			 * Sets the Prism `language-xxxx` class of the given element.
+			 *
+			 * @param {Element} element
+			 * @param {string} language
+			 * @returns {void}
+			 */
+			setLanguage: function (element, language) {
+				// remove all `language-xxxx` classes
+				// (this might leave behind a leading space)
+				element.className = element.className.replace(RegExp(lang, 'gi'), '');
+
+				// add the new `language-xxxx` class
+				// (using `classList` will automatically clean up spaces for us)
+				element.classList.add('language-' + language);
+			},
+
+			/**
+			 * Returns whether a given class is active for `element`.
+			 *
+			 * The class can be activated if `element` or one of its ancestors has the given class and it can be deactivated
+			 * if `element` or one of its ancestors has the negated version of the given class. The _negated version_ of the
+			 * given class is just the given class with a `no-` prefix.
+			 *
+			 * Whether the class is active is determined by the closest ancestor of `element` (where `element` itself is
+			 * closest ancestor) that has the given class or the negated version of it. If neither `element` nor any of its
+			 * ancestors have the given class or the negated version of it, then the default activation will be returned.
+			 *
+			 * In the paradoxical situation where the closest ancestor contains __both__ the given class and the negated
+			 * version of it, the class is considered active.
+			 *
+			 * @param {Element} element
+			 * @param {string} className
+			 * @param {boolean} [defaultActivation=false]
+			 * @returns {boolean}
+			 */
+			isActive: function (element, className, defaultActivation) {
+				var no = 'no-' + className;
+
+				while (element) {
+					var classList = element.classList;
+					if (classList.contains(className)) {
+						return true;
+					}
+					if (classList.contains(no)) {
+						return false;
+					}
+					element = element.parentElement;
+				}
+				return !!defaultActivation;
+			}
+		},
+
+		/**
+		 * This namespace contains all currently loaded languages and the some helper functions to create and modify languages.
+		 *
+		 * @namespace
+		 * @memberof Prism
+		 * @public
+		 */
+		languages: {
+			/**
+			 * The grammar for plain, unformatted text.
+			 */
+			plain: plainTextGrammar,
+			plaintext: plainTextGrammar,
+			text: plainTextGrammar,
+			txt: plainTextGrammar,
+
+			/**
+			 * Creates a deep copy of the language with the given id and appends the given tokens.
+			 *
+			 * If a token in `redef` also appears in the copied language, then the existing token in the copied language
+			 * will be overwritten at its original position.
+			 *
+			 * ## Best practices
+			 *
+			 * Since the position of overwriting tokens (token in `redef` that overwrite tokens in the copied language)
+			 * doesn't matter, they can technically be in any order. However, this can be confusing to others that trying to
+			 * understand the language definition because, normally, the order of tokens matters in Prism grammars.
+			 *
+			 * Therefore, it is encouraged to order overwriting tokens according to the positions of the overwritten tokens.
+			 * Furthermore, all non-overwriting tokens should be placed after the overwriting ones.
+			 *
+			 * @param {string} id The id of the language to extend. This has to be a key in `Prism.languages`.
+			 * @param {Grammar} redef The new tokens to append.
+			 * @returns {Grammar} The new language created.
+			 * @public
+			 * @example
+			 * Prism.languages['css-with-colors'] = Prism.languages.extend('css', {
+			 *     // Prism.languages.css already has a 'comment' token, so this token will overwrite CSS' 'comment' token
+			 *     // at its original position
+			 *     'comment': { ... },
+			 *     // CSS doesn't have a 'color' token, so this token will be appended
+			 *     'color': /\b(?:red|green|blue)\b/
+			 * });
+			 */
+			extend: function (id, redef) {
+				var lang = _.util.clone(_.languages[id]);
+
+				for (var key in redef) {
+					lang[key] = redef[key];
+				}
+
+				return lang;
+			},
+
+			/**
+			 * Inserts tokens _before_ another token in a language definition or any other grammar.
+			 *
+			 * ## Usage
+			 *
+			 * This helper method makes it easy to modify existing languages. For example, the CSS language definition
+			 * not only defines CSS highlighting for CSS documents, but also needs to define highlighting for CSS embedded
+			 * in HTML through `<style>` elements. To do this, it needs to modify `Prism.languages.markup` and add the
+			 * appropriate tokens. However, `Prism.languages.markup` is a regular JavaScript object literal, so if you do
+			 * this:
+			 *
+			 * ```js
+			 * Prism.languages.markup.style = {
+			 *     // token
+			 * };
+			 * ```
+			 *
+			 * then the `style` token will be added (and processed) at the end. `insertBefore` allows you to insert tokens
+			 * before existing tokens. For the CSS example above, you would use it like this:
+			 *
+			 * ```js
+			 * Prism.languages.insertBefore('markup', 'cdata', {
+			 *     'style': {
+			 *         // token
+			 *     }
+			 * });
+			 * ```
+			 *
+			 * ## Special cases
+			 *
+			 * If the grammars of `inside` and `insert` have tokens with the same name, the tokens in `inside`'s grammar
+			 * will be ignored.
+			 *
+			 * This behavior can be used to insert tokens after `before`:
+			 *
+			 * ```js
+			 * Prism.languages.insertBefore('markup', 'comment', {
+			 *     'comment': Prism.languages.markup.comment,
+			 *     // tokens after 'comment'
+			 * });
+			 * ```
+			 *
+			 * ## Limitations
+			 *
+			 * The main problem `insertBefore` has to solve is iteration order. Since ES2015, the iteration order for object
+			 * properties is guaranteed to be the insertion order (except for integer keys) but some browsers behave
+			 * differently when keys are deleted and re-inserted. So `insertBefore` can't be implemented by temporarily
+			 * deleting properties which is necessary to insert at arbitrary positions.
+			 *
+			 * To solve this problem, `insertBefore` doesn't actually insert the given tokens into the target object.
+			 * Instead, it will create a new object and replace all references to the target object with the new one. This
+			 * can be done without temporarily deleting properties, so the iteration order is well-defined.
+			 *
+			 * However, only references that can be reached from `Prism.languages` or `insert` will be replaced. I.e. if
+			 * you hold the target object in a variable, then the value of the variable will not change.
+			 *
+			 * ```js
+			 * var oldMarkup = Prism.languages.markup;
+			 * var newMarkup = Prism.languages.insertBefore('markup', 'comment', { ... });
+			 *
+			 * assert(oldMarkup !== Prism.languages.markup);
+			 * assert(newMarkup === Prism.languages.markup);
+			 * ```
+			 *
+			 * @param {string} inside The property of `root` (e.g. a language id in `Prism.languages`) that contains the
+			 * object to be modified.
+			 * @param {string} before The key to insert before.
+			 * @param {Grammar} insert An object containing the key-value pairs to be inserted.
+			 * @param {Object<string, any>} [root] The object containing `inside`, i.e. the object that contains the
+			 * object to be modified.
+			 *
+			 * Defaults to `Prism.languages`.
+			 * @returns {Grammar} The new grammar object.
+			 * @public
+			 */
+			insertBefore: function (inside, before, insert, root) {
+				root = root || /** @type {any} */ (_.languages);
+				var grammar = root[inside];
+				/** @type {Grammar} */
+				var ret = {};
+
+				for (var token in grammar) {
+					if (grammar.hasOwnProperty(token)) {
+
+						if (token == before) {
+							for (var newToken in insert) {
+								if (insert.hasOwnProperty(newToken)) {
+									ret[newToken] = insert[newToken];
+								}
+							}
+						}
+
+						// Do not insert token which also occur in insert. See #1525
+						if (!insert.hasOwnProperty(token)) {
+							ret[token] = grammar[token];
+						}
+					}
+				}
+
+				var old = root[inside];
+				root[inside] = ret;
+
+				// Update references in other language definitions
+				_.languages.DFS(_.languages, function (key, value) {
+					if (value === old && key != inside) {
+						this[key] = ret;
+					}
+				});
+
+				return ret;
+			},
+
+			// Traverse a language definition with Depth First Search
+			DFS: function DFS(o, callback, type, visited) {
+				visited = visited || {};
+
+				var objId = _.util.objId;
+
+				for (var i in o) {
+					if (o.hasOwnProperty(i)) {
+						callback.call(o, i, o[i], type || i);
+
+						var property = o[i];
+						var propertyType = _.util.type(property);
+
+						if (propertyType === 'Object' && !visited[objId(property)]) {
+							visited[objId(property)] = true;
+							DFS(property, callback, null, visited);
+						} else if (propertyType === 'Array' && !visited[objId(property)]) {
+							visited[objId(property)] = true;
+							DFS(property, callback, i, visited);
+						}
+					}
+				}
+			}
+		},
+
+		plugins: {},
+
+
+		/**
+		 * Low-level function, only use if you know what you’re doing. It accepts a string of text as input
+		 * and the language definitions to use, and returns a string with the HTML produced.
+		 *
+		 * The following hooks will be run:
+		 * 1. `before-tokenize`
+		 * 2. `after-tokenize`
+		 * 3. `wrap`: On each {@link Token}.
+		 *
+		 * @param {string} text A string with the code to be highlighted.
+		 * @param {Grammar} grammar An object containing the tokens to use.
+		 *
+		 * Usually a language definition like `Prism.languages.markup`.
+		 * @param {string} language The name of the language definition passed to `grammar`.
+		 * @returns {string} The highlighted HTML.
+		 * @memberof Prism
+		 * @public
+		 * @example
+		 * Prism.highlight('var foo = true;', Prism.languages.javascript, 'javascript');
+		 */
+		highlight: function (text, grammar, language) {
+			var env = {
+				code: text,
+				grammar: grammar,
+				language: language
+			};
+			_.hooks.run('before-tokenize', env);
+			env.tokens = _.tokenize(env.code, env.grammar);
+			_.hooks.run('after-tokenize', env);
+			return Token.stringify(_.util.encode(env.tokens), env.language);
+		},
+
+		/**
+		 * This is the heart of Prism, and the most low-level function you can use. It accepts a string of text as input
+		 * and the language definitions to use, and returns an array with the tokenized code.
+		 *
+		 * When the language definition includes nested tokens, the function is called recursively on each of these tokens.
+		 *
+		 * This method could be useful in other contexts as well, as a very crude parser.
+		 *
+		 * @param {string} text A string with the code to be highlighted.
+		 * @param {Grammar} grammar An object containing the tokens to use.
+		 *
+		 * Usually a language definition like `Prism.languages.markup`.
+		 * @returns {TokenStream} An array of strings and tokens, a token stream.
+		 * @memberof Prism
+		 * @public
+		 * @example
+		 * let code = `var foo = 0;`;
+		 * let tokens = Prism.tokenize(code, Prism.languages.javascript);
+		 * tokens.forEach(token => {
+		 *     if (token instanceof Prism.Token && token.type === 'number') {
+		 *         console.log(`Found numeric literal: ${token.content}`);
+		 *     }
+		 * });
+		 */
+		tokenize: function (text, grammar) {
+			var rest = grammar.rest;
+			if (rest) {
+				for (var token in rest) {
+					grammar[token] = rest[token];
+				}
+
+				delete grammar.rest;
+			}
+
+			var tokenList = new LinkedList();
+			addAfter(tokenList, tokenList.head, text);
+
+			matchGrammar(text, tokenList, grammar, tokenList.head, 0);
+
+			return toArray(tokenList);
+		},
+
+		/**
+		 * @namespace
+		 * @memberof Prism
+		 * @public
+		 */
+		hooks: {
+			all: {},
+
+			/**
+			 * Adds the given callback to the list of callbacks for the given hook.
+			 *
+			 * The callback will be invoked when the hook it is registered for is run.
+			 * Hooks are usually directly run by a highlight function but you can also run hooks yourself.
+			 *
+			 * One callback function can be registered to multiple hooks and the same hook multiple times.
+			 *
+			 * @param {string} name The name of the hook.
+			 * @param {HookCallback} callback The callback function which is given environment variables.
+			 * @public
+			 */
+			add: function (name, callback) {
+				var hooks = _.hooks.all;
+
+				hooks[name] = hooks[name] || [];
+
+				hooks[name].push(callback);
+			},
+
+			/**
+			 * Runs a hook invoking all registered callbacks with the given environment variables.
+			 *
+			 * Callbacks will be invoked synchronously and in the order in which they were registered.
+			 *
+			 * @param {string} name The name of the hook.
+			 * @param {Object<string, any>} env The environment variables of the hook passed to all callbacks registered.
+			 * @public
+			 */
+			run: function (name, env) {
+				var callbacks = _.hooks.all[name];
+
+				if (!callbacks || !callbacks.length) {
+					return;
+				}
+
+				for (var i = 0, callback; (callback = callbacks[i++]);) {
+					callback(env);
+				}
+			}
+		},
+
+		Token: Token
+	};
+
+
+	// Typescript note:
+	// The following can be used to import the Token type in JSDoc:
+	//
+	//   @typedef {InstanceType<import("./prism-core")["Token"]>} Token
+
+	/**
+	 * Creates a new token.
+	 *
+	 * @param {string} type See {@link Token#type type}
+	 * @param {string | TokenStream} content See {@link Token#content content}
+	 * @param {string|string[]} [alias] The alias(es) of the token.
+	 * @param {string} [matchedStr=""] A copy of the full string this token was created from.
+	 * @class
+	 * @global
+	 * @public
+	 */
+	function Token(type, content, alias, matchedStr) {
+		/**
+		 * The type of the token.
+		 *
+		 * This is usually the key of a pattern in a {@link Grammar}.
+		 *
+		 * @type {string}
+		 * @see GrammarToken
+		 * @public
+		 */
+		this.type = type;
+		/**
+		 * The strings or tokens contained by this token.
+		 *
+		 * This will be a token stream if the pattern matched also defined an `inside` grammar.
+		 *
+		 * @type {string | TokenStream}
+		 * @public
+		 */
+		this.content = content;
+		/**
+		 * The alias(es) of the token.
+		 *
+		 * @type {string|string[]}
+		 * @see GrammarToken
+		 * @public
+		 */
+		this.alias = alias;
+		// Copy of the full string this token was created from
+		this.length = (matchedStr || '').length | 0;
+	}
+
+	/**
+	 * A token stream is an array of strings and {@link Token Token} objects.
+	 *
+	 * Token streams have to fulfill a few properties that are assumed by most functions (mostly internal ones) that process
+	 * them.
+	 *
+	 * 1. No adjacent strings.
+	 * 2. No empty strings.
+	 *
+	 *    The only exception here is the token stream that only contains the empty string and nothing else.
+	 *
+	 * @typedef {Array<string | Token>} TokenStream
+	 * @global
+	 * @public
+	 */
+
+	/**
+	 * Converts the given token or token stream to an HTML representation.
+	 *
+	 * The following hooks will be run:
+	 * 1. `wrap`: On each {@link Token}.
+	 *
+	 * @param {string | Token | TokenStream} o The token or token stream to be converted.
+	 * @param {string} language The name of current language.
+	 * @returns {string} The HTML representation of the token or token stream.
+	 * @memberof Token
+	 * @static
+	 */
+	Token.stringify = function stringify(o, language) {
+		if (typeof o == 'string') {
+			return o;
+		}
+		if (Array.isArray(o)) {
+			var s = '';
+			o.forEach(function (e) {
+				s += stringify(e, language);
+			});
+			return s;
+		}
+
+		var env = {
+			type: o.type,
+			content: stringify(o.content, language),
+			tag: 'span',
+			classes: ['token', o.type],
+			attributes: {},
+			language: language
+		};
+
+		var aliases = o.alias;
+		if (aliases) {
+			if (Array.isArray(aliases)) {
+				Array.prototype.push.apply(env.classes, aliases);
+			} else {
+				env.classes.push(aliases);
+			}
+		}
+
+		_.hooks.run('wrap', env);
+
+		var attributes = '';
+		for (var name in env.attributes) {
+			attributes += ' ' + name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"';
+		}
+
+		return '<' + env.tag + ' class="' + env.classes.join(' ') + '"' + attributes + '>' + env.content + '</' + env.tag + '>';
+	};
+
+	/**
+	 * @param {RegExp} pattern
+	 * @param {number} pos
+	 * @param {string} text
+	 * @param {boolean} lookbehind
+	 * @returns {RegExpExecArray | null}
+	 */
+	function matchPattern(pattern, pos, text, lookbehind) {
+		pattern.lastIndex = pos;
+		var match = pattern.exec(text);
+		if (match && lookbehind && match[1]) {
+			// change the match to remove the text matched by the Prism lookbehind group
+			var lookbehindLength = match[1].length;
+			match.index += lookbehindLength;
+			match[0] = match[0].slice(lookbehindLength);
+		}
+		return match;
+	}
+
+	/**
+	 * @param {string} text
+	 * @param {LinkedList<string | Token>} tokenList
+	 * @param {any} grammar
+	 * @param {LinkedListNode<string | Token>} startNode
+	 * @param {number} startPos
+	 * @param {RematchOptions} [rematch]
+	 * @returns {void}
+	 * @private
+	 *
+	 * @typedef RematchOptions
+	 * @property {string} cause
+	 * @property {number} reach
+	 */
+	function matchGrammar(text, tokenList, grammar, startNode, startPos, rematch) {
+		for (var token in grammar) {
+			if (!grammar.hasOwnProperty(token) || !grammar[token]) {
+				continue;
+			}
+
+			var patterns = grammar[token];
+			patterns = Array.isArray(patterns) ? patterns : [patterns];
+
+			for (var j = 0; j < patterns.length; ++j) {
+				if (rematch && rematch.cause == token + ',' + j) {
+					return;
+				}
+
+				var patternObj = patterns[j];
+				var inside = patternObj.inside;
+				var lookbehind = !!patternObj.lookbehind;
+				var greedy = !!patternObj.greedy;
+				var alias = patternObj.alias;
+
+				if (greedy && !patternObj.pattern.global) {
+					// Without the global flag, lastIndex won't work
+					var flags = patternObj.pattern.toString().match(/[imsuy]*$/)[0];
+					patternObj.pattern = RegExp(patternObj.pattern.source, flags + 'g');
+				}
+
+				/** @type {RegExp} */
+				var pattern = patternObj.pattern || patternObj;
+
+				for ( // iterate the token list and keep track of the current token/string position
+					var currentNode = startNode.next, pos = startPos;
+					currentNode !== tokenList.tail;
+					pos += currentNode.value.length, currentNode = currentNode.next
+				) {
+
+					if (rematch && pos >= rematch.reach) {
+						break;
+					}
+
+					var str = currentNode.value;
+
+					if (tokenList.length > text.length) {
+						// Something went terribly wrong, ABORT, ABORT!
+						return;
+					}
+
+					if (str instanceof Token) {
+						continue;
+					}
+
+					var removeCount = 1; // this is the to parameter of removeBetween
+					var match;
+
+					if (greedy) {
+						match = matchPattern(pattern, pos, text, lookbehind);
+						if (!match || match.index >= text.length) {
+							break;
+						}
+
+						var from = match.index;
+						var to = match.index + match[0].length;
+						var p = pos;
+
+						// find the node that contains the match
+						p += currentNode.value.length;
+						while (from >= p) {
+							currentNode = currentNode.next;
+							p += currentNode.value.length;
+						}
+						// adjust pos (and p)
+						p -= currentNode.value.length;
+						pos = p;
+
+						// the current node is a Token, then the match starts inside another Token, which is invalid
+						if (currentNode.value instanceof Token) {
+							continue;
+						}
+
+						// find the last node which is affected by this match
+						for (
+							var k = currentNode;
+							k !== tokenList.tail && (p < to || typeof k.value === 'string');
+							k = k.next
+						) {
+							removeCount++;
+							p += k.value.length;
+						}
+						removeCount--;
+
+						// replace with the new match
+						str = text.slice(pos, p);
+						match.index -= pos;
+					} else {
+						match = matchPattern(pattern, 0, str, lookbehind);
+						if (!match) {
+							continue;
+						}
+					}
+
+					// eslint-disable-next-line no-redeclare
+					var from = match.index;
+					var matchStr = match[0];
+					var before = str.slice(0, from);
+					var after = str.slice(from + matchStr.length);
+
+					var reach = pos + str.length;
+					if (rematch && reach > rematch.reach) {
+						rematch.reach = reach;
+					}
+
+					var removeFrom = currentNode.prev;
+
+					if (before) {
+						removeFrom = addAfter(tokenList, removeFrom, before);
+						pos += before.length;
+					}
+
+					removeRange(tokenList, removeFrom, removeCount);
+
+					var wrapped = new Token(token, inside ? _.tokenize(matchStr, inside) : matchStr, alias, matchStr);
+					currentNode = addAfter(tokenList, removeFrom, wrapped);
+
+					if (after) {
+						addAfter(tokenList, currentNode, after);
+					}
+
+					if (removeCount > 1) {
+						// at least one Token object was removed, so we have to do some rematching
+						// this can only happen if the current pattern is greedy
+
+						/** @type {RematchOptions} */
+						var nestedRematch = {
+							cause: token + ',' + j,
+							reach: reach
+						};
+						matchGrammar(text, tokenList, grammar, currentNode.prev, pos, nestedRematch);
+
+						// the reach might have been extended because of the rematching
+						if (rematch && nestedRematch.reach > rematch.reach) {
+							rematch.reach = nestedRematch.reach;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * @typedef LinkedListNode
+	 * @property {T} value
+	 * @property {LinkedListNode<T> | null} prev The previous node.
+	 * @property {LinkedListNode<T> | null} next The next node.
+	 * @template T
+	 * @private
+	 */
+
+	/**
+	 * @template T
+	 * @private
+	 */
+	function LinkedList() {
+		/** @type {LinkedListNode<T>} */
+		var head = { value: null, prev: null, next: null };
+		/** @type {LinkedListNode<T>} */
+		var tail = { value: null, prev: head, next: null };
+		head.next = tail;
+
+		/** @type {LinkedListNode<T>} */
+		this.head = head;
+		/** @type {LinkedListNode<T>} */
+		this.tail = tail;
+		this.length = 0;
+	}
+
+	/**
+	 * Adds a new node with the given value to the list.
+	 *
+	 * @param {LinkedList<T>} list
+	 * @param {LinkedListNode<T>} node
+	 * @param {T} value
+	 * @returns {LinkedListNode<T>} The added node.
+	 * @template T
+	 */
+	function addAfter(list, node, value) {
+		// assumes that node != list.tail && values.length >= 0
+		var next = node.next;
+
+		var newNode = { value: value, prev: node, next: next };
+		node.next = newNode;
+		next.prev = newNode;
+		list.length++;
+
+		return newNode;
+	}
+	/**
+	 * Removes `count` nodes after the given node. The given node will not be removed.
+	 *
+	 * @param {LinkedList<T>} list
+	 * @param {LinkedListNode<T>} node
+	 * @param {number} count
+	 * @template T
+	 */
+	function removeRange(list, node, count) {
+		var next = node.next;
+		for (var i = 0; i < count && next !== list.tail; i++) {
+			next = next.next;
+		}
+		node.next = next;
+		next.prev = node;
+		list.length -= i;
+	}
+	/**
+	 * @param {LinkedList<T>} list
+	 * @returns {T[]}
+	 * @template T
+	 */
+	function toArray(list) {
+		var array = [];
+		var node = list.head.next;
+		while (node !== list.tail) {
+			array.push(node.value);
+			node = node.next;
+		}
+		return array;
+	}
+
+	return _;
+
+}());
+
+var prism = Prism;
+Prism.default = Prism;
+
+/* This content is auto-generated to include some prismjs language components: */
+
+/* "prismjs/components/prism-markup" */
+
+prism.languages.markup = {
+  'comment': {
+    pattern: /<!--(?:(?!<!--)[\s\S])*?-->/,
+    greedy: true
+  },
+  'prolog': {
+    pattern: /<\?[\s\S]+?\?>/,
+    greedy: true
+  },
+  'doctype': {
+    // https://www.w3.org/TR/xml/#NT-doctypedecl
+    pattern: /<!DOCTYPE(?:[^>"'[\]]|"[^"]*"|'[^']*')+(?:\[(?:[^<"'\]]|"[^"]*"|'[^']*'|<(?!!--)|<!--(?:[^-]|-(?!->))*-->)*\]\s*)?>/i,
+    greedy: true,
+    inside: {
+      'internal-subset': {
+        pattern: /(^[^\[]*\[)[\s\S]+(?=\]>$)/,
+        lookbehind: true,
+        greedy: true,
+        inside: null // see below
+
+      },
+      'string': {
+        pattern: /"[^"]*"|'[^']*'/,
+        greedy: true
+      },
+      'punctuation': /^<!|>$|[[\]]/,
+      'doctype-tag': /^DOCTYPE/i,
+      'name': /[^\s<>'"]+/
+    }
+  },
+  'cdata': {
+    pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+    greedy: true
+  },
+  'tag': {
+    pattern: /<\/?(?!\d)[^\s>\/=$<%]+(?:\s(?:\s*[^\s>\/=]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))|(?=[\s/>])))+)?\s*\/?>/,
+    greedy: true,
+    inside: {
+      'tag': {
+        pattern: /^<\/?[^\s>\/]+/,
+        inside: {
+          'punctuation': /^<\/?/,
+          'namespace': /^[^\s>\/:]+:/
+        }
+      },
+      'special-attr': [],
+      'attr-value': {
+        pattern: /=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+)/,
+        inside: {
+          'punctuation': [{
+            pattern: /^=/,
+            alias: 'attr-equals'
+          }, /"|'/]
+        }
+      },
+      'punctuation': /\/?>/,
+      'attr-name': {
+        pattern: /[^\s>\/]+/,
+        inside: {
+          'namespace': /^[^\s>\/:]+:/
+        }
+      }
+    }
+  },
+  'entity': [{
+    pattern: /&[\da-z]{1,8};/i,
+    alias: 'named-entity'
+  }, /&#x?[\da-f]{1,8};/i]
+};
+prism.languages.markup['tag'].inside['attr-value'].inside['entity'] = prism.languages.markup['entity'];
+prism.languages.markup['doctype'].inside['internal-subset'].inside = prism.languages.markup; // Plugin to make entity title show the real entity, idea by Roman Komarov
+
+prism.hooks.add('wrap', function (env) {
+  if (env.type === 'entity') {
+    env.attributes['title'] = env.content.replace(/&amp;/, '&');
+  }
+});
+Object.defineProperty(prism.languages.markup.tag, 'addInlined', {
+  /**
+   * Adds an inlined language to markup.
+   *
+   * An example of an inlined language is CSS with `<style>` tags.
+   *
+   * @param {string} tagName The name of the tag that contains the inlined language. This name will be treated as
+   * case insensitive.
+   * @param {string} lang The language key.
+   * @example
+   * addInlined('style', 'css');
+   */
+  value: function addInlined(tagName, lang) {
+    var includedCdataInside = {};
+    includedCdataInside['language-' + lang] = {
+      pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
+      lookbehind: true,
+      inside: prism.languages[lang]
+    };
+    includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
+    var inside = {
+      'included-cdata': {
+        pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
+        inside: includedCdataInside
+      }
+    };
+    inside['language-' + lang] = {
+      pattern: /[\s\S]+/,
+      inside: prism.languages[lang]
+    };
+    var def = {};
+    def[tagName] = {
+      pattern: RegExp(/(<__[^>]*>)(?:<!\[CDATA\[(?:[^\]]|\](?!\]>))*\]\]>|(?!<!\[CDATA\[)[\s\S])*?(?=<\/__>)/.source.replace(/__/g, function () {
+        return tagName;
+      }), 'i'),
+      lookbehind: true,
+      greedy: true,
+      inside: inside
+    };
+    prism.languages.insertBefore('markup', 'cdata', def);
+  }
+});
+Object.defineProperty(prism.languages.markup.tag, 'addAttribute', {
+  /**
+   * Adds an pattern to highlight languages embedded in HTML attributes.
+   *
+   * An example of an inlined language is CSS with `style` attributes.
+   *
+   * @param {string} attrName The name of the tag that contains the inlined language. This name will be treated as
+   * case insensitive.
+   * @param {string} lang The language key.
+   * @example
+   * addAttribute('style', 'css');
+   */
+  value: function (attrName, lang) {
+    prism.languages.markup.tag.inside['special-attr'].push({
+      pattern: RegExp(/(^|["'\s])/.source + '(?:' + attrName + ')' + /\s*=\s*(?:"[^"]*"|'[^']*'|[^\s'">=]+(?=[\s>]))/.source, 'i'),
+      lookbehind: true,
+      inside: {
+        'attr-name': /^[^\s=]+/,
+        'attr-value': {
+          pattern: /=[\s\S]+/,
+          inside: {
+            'value': {
+              pattern: /(^=\s*(["']|(?!["'])))\S[\s\S]*(?=\2$)/,
+              lookbehind: true,
+              alias: [lang, 'language-' + lang],
+              inside: prism.languages[lang]
+            },
+            'punctuation': [{
+              pattern: /^=/,
+              alias: 'attr-equals'
+            }, /"|'/]
+          }
+        }
+      }
+    });
+  }
+});
+prism.languages.html = prism.languages.markup;
+prism.languages.mathml = prism.languages.markup;
+prism.languages.svg = prism.languages.markup;
+prism.languages.xml = prism.languages.extend('markup', {});
+prism.languages.ssml = prism.languages.xml;
+prism.languages.atom = prism.languages.xml;
+prism.languages.rss = prism.languages.xml;
+/* "prismjs/components/prism-bash" */
+
+(function (Prism) {
+  // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'
+  // + LC_ALL, RANDOM, REPLY, SECONDS.
+  // + make sure PS1..4 are here as they are not always set,
+  // - some useless things.
+  var envVars = '\\b(?:BASH|BASHOPTS|BASH_ALIASES|BASH_ARGC|BASH_ARGV|BASH_CMDS|BASH_COMPLETION_COMPAT_DIR|BASH_LINENO|BASH_REMATCH|BASH_SOURCE|BASH_VERSINFO|BASH_VERSION|COLORTERM|COLUMNS|COMP_WORDBREAKS|DBUS_SESSION_BUS_ADDRESS|DEFAULTS_PATH|DESKTOP_SESSION|DIRSTACK|DISPLAY|EUID|GDMSESSION|GDM_LANG|GNOME_KEYRING_CONTROL|GNOME_KEYRING_PID|GPG_AGENT_INFO|GROUPS|HISTCONTROL|HISTFILE|HISTFILESIZE|HISTSIZE|HOME|HOSTNAME|HOSTTYPE|IFS|INSTANCE|JOB|LANG|LANGUAGE|LC_ADDRESS|LC_ALL|LC_IDENTIFICATION|LC_MEASUREMENT|LC_MONETARY|LC_NAME|LC_NUMERIC|LC_PAPER|LC_TELEPHONE|LC_TIME|LESSCLOSE|LESSOPEN|LINES|LOGNAME|LS_COLORS|MACHTYPE|MAILCHECK|MANDATORY_PATH|NO_AT_BRIDGE|OLDPWD|OPTERR|OPTIND|ORBIT_SOCKETDIR|OSTYPE|PAPERSIZE|PATH|PIPESTATUS|PPID|PS1|PS2|PS3|PS4|PWD|RANDOM|REPLY|SECONDS|SELINUX_INIT|SESSION|SESSIONTYPE|SESSION_MANAGER|SHELL|SHELLOPTS|SHLVL|SSH_AUTH_SOCK|TERM|UID|UPSTART_EVENTS|UPSTART_INSTANCE|UPSTART_JOB|UPSTART_SESSION|USER|WINDOWID|XAUTHORITY|XDG_CONFIG_DIRS|XDG_CURRENT_DESKTOP|XDG_DATA_DIRS|XDG_GREETER_DATA_DIR|XDG_MENU_PREFIX|XDG_RUNTIME_DIR|XDG_SEAT|XDG_SEAT_PATH|XDG_SESSION_DESKTOP|XDG_SESSION_ID|XDG_SESSION_PATH|XDG_SESSION_TYPE|XDG_VTNR|XMODIFIERS)\\b';
+  var commandAfterHeredoc = {
+    pattern: /(^(["']?)\w+\2)[ \t]+\S.*/,
+    lookbehind: true,
+    alias: 'punctuation',
+    // this looks reasonably well in all themes
+    inside: null // see below
+
+  };
+  var insideString = {
+    'bash': commandAfterHeredoc,
+    'environment': {
+      pattern: RegExp('\\$' + envVars),
+      alias: 'constant'
+    },
+    'variable': [// [0]: Arithmetic Environment
+    {
+      pattern: /\$?\(\([\s\S]+?\)\)/,
+      greedy: true,
+      inside: {
+        // If there is a $ sign at the beginning highlight $(( and )) as variable
+        'variable': [{
+          pattern: /(^\$\(\([\s\S]+)\)\)/,
+          lookbehind: true
+        }, /^\$\(\(/],
+        'number': /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
+        // Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
+        'operator': /--|\+\+|\*\*=?|<<=?|>>=?|&&|\|\||[=!+\-*/%<>^&|]=?|[?~:]/,
+        // If there is no $ sign at the beginning highlight (( and )) as punctuation
+        'punctuation': /\(\(?|\)\)?|,|;/
+      }
+    }, // [1]: Command Substitution
+    {
+      pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
+      greedy: true,
+      inside: {
+        'variable': /^\$\(|^`|\)$|`$/
+      }
+    }, // [2]: Brace expansion
+    {
+      pattern: /\$\{[^}]+\}/,
+      greedy: true,
+      inside: {
+        'operator': /:[-=?+]?|[!\/]|##?|%%?|\^\^?|,,?/,
+        'punctuation': /[\[\]]/,
+        'environment': {
+          pattern: RegExp('(\\{)' + envVars),
+          lookbehind: true,
+          alias: 'constant'
+        }
+      }
+    }, /\$(?:\w+|[#?*!@$])/],
+    // Escape sequences from echo and printf's manuals, and escaped quotes.
+    'entity': /\\(?:[abceEfnrtv\\"]|O?[0-7]{1,3}|U[0-9a-fA-F]{8}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{1,2})/
+  };
+  Prism.languages.bash = {
+    'shebang': {
+      pattern: /^#!\s*\/.*/,
+      alias: 'important'
+    },
+    'comment': {
+      pattern: /(^|[^"{\\$])#.*/,
+      lookbehind: true
+    },
+    'function-name': [// a) function foo {
+    // b) foo() {
+    // c) function foo() {
+    // but not “foo {”
+    {
+      // a) and c)
+      pattern: /(\bfunction\s+)[\w-]+(?=(?:\s*\(?:\s*\))?\s*\{)/,
+      lookbehind: true,
+      alias: 'function'
+    }, {
+      // b)
+      pattern: /\b[\w-]+(?=\s*\(\s*\)\s*\{)/,
+      alias: 'function'
+    }],
+    // Highlight variable names as variables in for and select beginnings.
+    'for-or-select': {
+      pattern: /(\b(?:for|select)\s+)\w+(?=\s+in\s)/,
+      alias: 'variable',
+      lookbehind: true
+    },
+    // Highlight variable names as variables in the left-hand part
+    // of assignments (“=” and “+=”).
+    'assign-left': {
+      pattern: /(^|[\s;|&]|[<>]\()\w+(?=\+?=)/,
+      inside: {
+        'environment': {
+          pattern: RegExp('(^|[\\s;|&]|[<>]\\()' + envVars),
+          lookbehind: true,
+          alias: 'constant'
+        }
+      },
+      alias: 'variable',
+      lookbehind: true
+    },
+    'string': [// Support for Here-documents https://en.wikipedia.org/wiki/Here_document
+    {
+      pattern: /((?:^|[^<])<<-?\s*)(\w+)\s[\s\S]*?(?:\r?\n|\r)\2/,
+      lookbehind: true,
+      greedy: true,
+      inside: insideString
+    }, // Here-document with quotes around the tag
+    // → No expansion (so no “inside”).
+    {
+      pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s[\s\S]*?(?:\r?\n|\r)\3/,
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'bash': commandAfterHeredoc
+      }
+    }, // “Normal” string
+    {
+      // https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html
+      pattern: /(^|[^\\](?:\\\\)*)"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/,
+      lookbehind: true,
+      greedy: true,
+      inside: insideString
+    }, {
+      // https://www.gnu.org/software/bash/manual/html_node/Single-Quotes.html
+      pattern: /(^|[^$\\])'[^']*'/,
+      lookbehind: true,
+      greedy: true
+    }, {
+      // https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html
+      pattern: /\$'(?:[^'\\]|\\[\s\S])*'/,
+      greedy: true,
+      inside: {
+        'entity': insideString.entity
+      }
+    }],
+    'environment': {
+      pattern: RegExp('\\$?' + envVars),
+      alias: 'constant'
+    },
+    'variable': insideString.variable,
+    'function': {
+      pattern: /(^|[\s;|&]|[<>]\()(?:add|apropos|apt|apt-cache|apt-get|aptitude|aspell|automysqlbackup|awk|basename|bash|bc|bconsole|bg|bzip2|cal|cat|cfdisk|chgrp|chkconfig|chmod|chown|chroot|cksum|clear|cmp|column|comm|composer|cp|cron|crontab|csplit|curl|cut|date|dc|dd|ddrescue|debootstrap|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|docker|docker-compose|du|egrep|eject|env|ethtool|expand|expect|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|git|gparted|grep|groupadd|groupdel|groupmod|groups|grub-mkconfig|gzip|halt|head|hg|history|host|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|ip|jobs|join|kill|killall|less|link|ln|locate|logname|logrotate|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|lynx|make|man|mc|mdadm|mkconfig|mkdir|mke2fs|mkfifo|mkfs|mkisofs|mknod|mkswap|mmv|more|most|mount|mtools|mtr|mutt|mv|nano|nc|netstat|nice|nl|node|nohup|notify-send|npm|nslookup|op|open|parted|passwd|paste|pathchk|ping|pkill|pnpm|podman|podman-compose|popd|pr|printcap|printenv|ps|pushd|pv|quota|quotacheck|quotactl|ram|rar|rcp|reboot|remsync|rename|renice|rev|rm|rmdir|rpm|rsync|scp|screen|sdiff|sed|sendmail|seq|service|sftp|sh|shellcheck|shuf|shutdown|sleep|slocate|sort|split|ssh|stat|strace|su|sudo|sum|suspend|swapon|sync|tac|tail|tar|tee|time|timeout|top|touch|tr|traceroute|tsort|tty|umount|uname|unexpand|uniq|units|unrar|unshar|unzip|update-grub|uptime|useradd|userdel|usermod|users|uudecode|uuencode|v|vcpkg|vdir|vi|vim|virsh|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yarn|yes|zenity|zip|zsh|zypper)(?=$|[)\s;|&])/,
+      lookbehind: true
+    },
+    'keyword': {
+      pattern: /(^|[\s;|&]|[<>]\()(?:case|do|done|elif|else|esac|fi|for|function|if|in|select|then|until|while)(?=$|[)\s;|&])/,
+      lookbehind: true
+    },
+    // https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html
+    'builtin': {
+      pattern: /(^|[\s;|&]|[<>]\()(?:\.|:|alias|bind|break|builtin|caller|cd|command|continue|declare|echo|enable|eval|exec|exit|export|getopts|hash|help|let|local|logout|mapfile|printf|pwd|read|readarray|readonly|return|set|shift|shopt|source|test|times|trap|type|typeset|ulimit|umask|unalias|unset)(?=$|[)\s;|&])/,
+      lookbehind: true,
+      // Alias added to make those easier to distinguish from strings.
+      alias: 'class-name'
+    },
+    'boolean': {
+      pattern: /(^|[\s;|&]|[<>]\()(?:false|true)(?=$|[)\s;|&])/,
+      lookbehind: true
+    },
+    'file-descriptor': {
+      pattern: /\B&\d\b/,
+      alias: 'important'
+    },
+    'operator': {
+      // Lots of redirections here, but not just that.
+      pattern: /\d?<>|>\||\+=|=[=~]?|!=?|<<[<-]?|[&\d]?>>|\d[<>]&?|[<>][&=]?|&[>&]?|\|[&|]?/,
+      inside: {
+        'file-descriptor': {
+          pattern: /^\d/,
+          alias: 'important'
+        }
+      }
+    },
+    'punctuation': /\$?\(\(?|\)\)?|\.\.|[{}[\];\\]/,
+    'number': {
+      pattern: /(^|\s)(?:[1-9]\d*|0)(?:[.,]\d+)?\b/,
+      lookbehind: true
+    }
+  };
+  commandAfterHeredoc.inside = Prism.languages.bash;
+  /* Patterns in command substitution. */
+
+  var toBeCopied = ['comment', 'function-name', 'for-or-select', 'assign-left', 'string', 'environment', 'function', 'keyword', 'builtin', 'boolean', 'file-descriptor', 'operator', 'punctuation', 'number'];
+  var inside = insideString.variable[1].inside;
+
+  for (var i = 0; i < toBeCopied.length; i++) {
+    inside[toBeCopied[i]] = Prism.languages.bash[toBeCopied[i]];
+  }
+
+  Prism.languages.shell = Prism.languages.bash;
+})(prism);
+/* "prismjs/components/prism-clike" */
+
+
+prism.languages.clike = {
+  'comment': [{
+    pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+    lookbehind: true,
+    greedy: true
+  }, {
+    pattern: /(^|[^\\:])\/\/.*/,
+    lookbehind: true,
+    greedy: true
+  }],
+  'string': {
+    pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+    greedy: true
+  },
+  'class-name': {
+    pattern: /(\b(?:class|extends|implements|instanceof|interface|new|trait)\s+|\bcatch\s+\()[\w.\\]+/i,
+    lookbehind: true,
+    inside: {
+      'punctuation': /[.\\]/
+    }
+  },
+  'keyword': /\b(?:break|catch|continue|do|else|finally|for|function|if|in|instanceof|new|null|return|throw|try|while)\b/,
+  'boolean': /\b(?:false|true)\b/,
+  'function': /\b\w+(?=\()/,
+  'number': /\b0x[\da-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?/i,
+  'operator': /[<>]=?|[!=]=?=?|--?|\+\+?|&&?|\|\|?|[?*/~^%]/,
+  'punctuation': /[{}[\];(),.:]/
+};
+/* "prismjs/components/prism-c" */
+
+prism.languages.c = prism.languages.extend('clike', {
+  'comment': {
+    pattern: /\/\/(?:[^\r\n\\]|\\(?:\r\n?|\n|(?![\r\n])))*|\/\*[\s\S]*?(?:\*\/|$)/,
+    greedy: true
+  },
+  'string': {
+    // https://en.cppreference.com/w/c/language/string_literal
+    pattern: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,
+    greedy: true
+  },
+  'class-name': {
+    pattern: /(\b(?:enum|struct)\s+(?:__attribute__\s*\(\([\s\S]*?\)\)\s*)?)\w+|\b[a-z]\w*_t\b/,
+    lookbehind: true
+  },
+  'keyword': /\b(?:_Alignas|_Alignof|_Atomic|_Bool|_Complex|_Generic|_Imaginary|_Noreturn|_Static_assert|_Thread_local|__attribute__|asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|return|short|signed|sizeof|static|struct|switch|typedef|typeof|union|unsigned|void|volatile|while)\b/,
+  'function': /\b[a-z_]\w*(?=\s*\()/i,
+  'number': /(?:\b0x(?:[\da-f]+(?:\.[\da-f]*)?|\.[\da-f]+)(?:p[+-]?\d+)?|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:e[+-]?\d+)?)[ful]{0,4}/i,
+  'operator': />>=?|<<=?|->|([-+&|:])\1|[?:~]|[-+*/%&|^!=<>]=?/
+});
+prism.languages.insertBefore('c', 'string', {
+  'char': {
+    // https://en.cppreference.com/w/c/language/character_constant
+    pattern: /'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n]){0,32}'/,
+    greedy: true
+  }
+});
+prism.languages.insertBefore('c', 'string', {
+  'macro': {
+    // allow for multiline macro definitions
+    // spaces after the # character compile fine with gcc
+    pattern: /(^[\t ]*)#\s*[a-z](?:[^\r\n\\/]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|\\(?:\r\n|[\s\S]))*/im,
+    lookbehind: true,
+    greedy: true,
+    alias: 'property',
+    inside: {
+      'string': [{
+        // highlight the path of the include statement as a string
+        pattern: /^(#\s*include\s*)<[^>]+>/,
+        lookbehind: true
+      }, prism.languages.c['string']],
+      'char': prism.languages.c['char'],
+      'comment': prism.languages.c['comment'],
+      'macro-name': [{
+        pattern: /(^#\s*define\s+)\w+\b(?!\()/i,
+        lookbehind: true
+      }, {
+        pattern: /(^#\s*define\s+)\w+\b(?=\()/i,
+        lookbehind: true,
+        alias: 'function'
+      }],
+      // highlight macro directives as keywords
+      'directive': {
+        pattern: /^(#\s*)[a-z]+/,
+        lookbehind: true,
+        alias: 'keyword'
+      },
+      'directive-hash': /^#/,
+      'punctuation': /##|\\(?=[\r\n])/,
+      'expression': {
+        pattern: /\S[\s\S]*/,
+        inside: prism.languages.c
+      }
+    }
+  }
+});
+prism.languages.insertBefore('c', 'function', {
+  // highlight predefined macros as constants
+  'constant': /\b(?:EOF|NULL|SEEK_CUR|SEEK_END|SEEK_SET|__DATE__|__FILE__|__LINE__|__TIMESTAMP__|__TIME__|__func__|stderr|stdin|stdout)\b/
+});
+delete prism.languages.c['boolean'];
+/* "prismjs/components/prism-cpp" */
+
+(function (Prism) {
+  var keyword = /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+  var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(/<keyword>/g, function () {
+    return keyword.source;
+  });
+  Prism.languages.cpp = Prism.languages.extend('c', {
+    'class-name': [{
+      pattern: RegExp(/(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(/<keyword>/g, function () {
+        return keyword.source;
+      })),
+      lookbehind: true
+    }, // This is intended to capture the class name of method implementations like:
+    //   void foo::bar() const {}
+    // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+    // it starts with an uppercase letter. This approximation should give decent results.
+    /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+    //   Foo::~Foo() {}
+    /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+    // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+    /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/],
+    'keyword': keyword,
+    'number': {
+      pattern: /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+      greedy: true
+    },
+    'operator': />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+    'boolean': /\b(?:false|true)\b/
+  });
+  Prism.languages.insertBefore('cpp', 'string', {
+    'module': {
+      // https://en.cppreference.com/w/cpp/language/modules
+      pattern: RegExp(/(\b(?:import|module)\s+)/.source + '(?:' + // header-name
+      /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source + '|' + // module name or partition or both
+      /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(/<mod-name>/g, function () {
+        return modName;
+      }) + ')'),
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'string': /^[<"][\s\S]+/,
+        'operator': /:/,
+        'punctuation': /\./
+      }
+    },
+    'raw-string': {
+      pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+      alias: 'string',
+      greedy: true
+    }
+  });
+  Prism.languages.insertBefore('cpp', 'keyword', {
+    'generic-function': {
+      pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+      inside: {
+        'function': /^\w+/,
+        'generic': {
+          pattern: /<[\s\S]+/,
+          alias: 'class-name',
+          inside: Prism.languages.cpp
+        }
+      }
+    }
+  });
+  Prism.languages.insertBefore('cpp', 'operator', {
+    'double-colon': {
+      pattern: /::/,
+      alias: 'punctuation'
+    }
+  });
+  Prism.languages.insertBefore('cpp', 'class-name', {
+    // the base clause is an optional list of parent classes
+    // https://en.cppreference.com/w/cpp/language/class
+    'base-clause': {
+      pattern: /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+      lookbehind: true,
+      greedy: true,
+      inside: Prism.languages.extend('cpp', {})
+    }
+  });
+  Prism.languages.insertBefore('inside', 'double-colon', {
+    // All untokenized words that are not namespaces should be class names
+    'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+  }, Prism.languages.cpp['base-clause']);
+})(prism);
+/* "prismjs/components/prism-css" */
+
+
+(function (Prism) {
+  var string = /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
+  Prism.languages.css = {
+    'comment': /\/\*[\s\S]*?\*\//,
+    'atrule': {
+      pattern: /@[\w-](?:[^;{\s]|\s+(?![\s{]))*(?:;|(?=\s*\{))/,
+      inside: {
+        'rule': /^@[\w-]+/,
+        'selector-function-argument': {
+          pattern: /(\bselector\s*\(\s*(?![\s)]))(?:[^()\s]|\s+(?![\s)])|\((?:[^()]|\([^()]*\))*\))+(?=\s*\))/,
+          lookbehind: true,
+          alias: 'selector'
+        },
+        'keyword': {
+          pattern: /(^|[^\w-])(?:and|not|only|or)(?![\w-])/,
+          lookbehind: true
+        } // See rest below
+
+      }
+    },
+    'url': {
+      // https://drafts.csswg.org/css-values-3/#urls
+      pattern: RegExp('\\burl\\((?:' + string.source + '|' + /(?:[^\\\r\n()"']|\\[\s\S])*/.source + ')\\)', 'i'),
+      greedy: true,
+      inside: {
+        'function': /^url/i,
+        'punctuation': /^\(|\)$/,
+        'string': {
+          pattern: RegExp('^' + string.source + '$'),
+          alias: 'url'
+        }
+      }
+    },
+    'selector': {
+      pattern: RegExp('(^|[{}\\s])[^{}\\s](?:[^{};"\'\\s]|\\s+(?![\\s{])|' + string.source + ')*(?=\\s*\\{)'),
+      lookbehind: true
+    },
+    'string': {
+      pattern: string,
+      greedy: true
+    },
+    'property': {
+      pattern: /(^|[^-\w\xA0-\uFFFF])(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*(?=\s*:)/i,
+      lookbehind: true
+    },
+    'important': /!important\b/i,
+    'function': {
+      pattern: /(^|[^-a-z0-9])[-a-z0-9]+(?=\()/i,
+      lookbehind: true
+    },
+    'punctuation': /[(){};:,]/
+  };
+  Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
+  var markup = Prism.languages.markup;
+
+  if (markup) {
+    markup.tag.addInlined('style', 'css');
+    markup.tag.addAttribute('style', 'css');
+  }
+})(prism);
+/* "prismjs/components/prism-css-extras" */
+
+
+(function (Prism) {
+  var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
+  var selectorInside;
+  Prism.languages.css.selector = {
+    pattern: Prism.languages.css.selector.pattern,
+    lookbehind: true,
+    inside: selectorInside = {
+      'pseudo-element': /:(?:after|before|first-letter|first-line|selection)|::[-\w]+/,
+      'pseudo-class': /:[-\w]+/,
+      'class': /\.[-\w]+/,
+      'id': /#[-\w]+/,
+      'attribute': {
+        pattern: RegExp('\\[(?:[^[\\]"\']|' + string.source + ')*\\]'),
+        greedy: true,
+        inside: {
+          'punctuation': /^\[|\]$/,
+          'case-sensitivity': {
+            pattern: /(\s)[si]$/i,
+            lookbehind: true,
+            alias: 'keyword'
+          },
+          'namespace': {
+            pattern: /^(\s*)(?:(?!\s)[-*\w\xA0-\uFFFF])*\|(?!=)/,
+            lookbehind: true,
+            inside: {
+              'punctuation': /\|$/
+            }
+          },
+          'attr-name': {
+            pattern: /^(\s*)(?:(?!\s)[-\w\xA0-\uFFFF])+/,
+            lookbehind: true
+          },
+          'attr-value': [string, {
+            pattern: /(=\s*)(?:(?!\s)[-\w\xA0-\uFFFF])+(?=\s*$)/,
+            lookbehind: true
+          }],
+          'operator': /[|~*^$]?=/
+        }
+      },
+      'n-th': [{
+        pattern: /(\(\s*)[+-]?\d*[\dn](?:\s*[+-]\s*\d+)?(?=\s*\))/,
+        lookbehind: true,
+        inside: {
+          'number': /[\dn]+/,
+          'operator': /[+-]/
+        }
+      }, {
+        pattern: /(\(\s*)(?:even|odd)(?=\s*\))/i,
+        lookbehind: true
+      }],
+      'combinator': />|\+|~|\|\|/,
+      // the `tag` token has been existed and removed.
+      // because we can't find a perfect tokenize to match it.
+      // if you want to add it, please read https://github.com/PrismJS/prism/pull/2373 first.
+      'punctuation': /[(),]/
+    }
+  };
+  Prism.languages.css['atrule'].inside['selector-function-argument'].inside = selectorInside;
+  Prism.languages.insertBefore('css', 'property', {
+    'variable': {
+      pattern: /(^|[^-\w\xA0-\uFFFF])--(?!\s)[-_a-z\xA0-\uFFFF](?:(?!\s)[-\w\xA0-\uFFFF])*/i,
+      lookbehind: true
+    }
+  });
+  var unit = {
+    pattern: /(\b\d+)(?:%|[a-z]+(?![\w-]))/,
+    lookbehind: true
+  }; // 123 -123 .123 -.123 12.3 -12.3
+
+  var number = {
+    pattern: /(^|[^\w.-])-?(?:\d+(?:\.\d+)?|\.\d+)/,
+    lookbehind: true
+  };
+  Prism.languages.insertBefore('css', 'function', {
+    'operator': {
+      pattern: /(\s)[+\-*\/](?=\s)/,
+      lookbehind: true
+    },
+    // CAREFUL!
+    // Previewers and Inline color use hexcode and color.
+    'hexcode': {
+      pattern: /\B#[\da-f]{3,8}\b/i,
+      alias: 'color'
+    },
+    'color': [{
+      pattern: /(^|[^\w-])(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)(?![\w-])/i,
+      lookbehind: true
+    }, {
+      pattern: /\b(?:hsl|rgb)\(\s*\d{1,3}\s*,\s*\d{1,3}%?\s*,\s*\d{1,3}%?\s*\)\B|\b(?:hsl|rgb)a\(\s*\d{1,3}\s*,\s*\d{1,3}%?\s*,\s*\d{1,3}%?\s*,\s*(?:0|0?\.\d+|1)\s*\)\B/i,
+      inside: {
+        'unit': unit,
+        'number': number,
+        'function': /[\w-]+(?=\()/,
+        'punctuation': /[(),]/
+      }
+    }],
+    // it's important that there is no boundary assertion after the hex digits
+    'entity': /\\[\da-f]{1,8}/i,
+    'unit': unit,
+    'number': number
+  });
+})(prism);
+/* "prismjs/components/prism-javascript" */
+
+
+prism.languages.javascript = prism.languages.extend('clike', {
+  'class-name': [prism.languages.clike['class-name'], {
+    pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$A-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\.(?:constructor|prototype))/,
+    lookbehind: true
+  }],
+  'keyword': [{
+    pattern: /((?:^|\})\s*)catch\b/,
+    lookbehind: true
+  }, {
+    pattern: /(^|[^.]|\.\.\.\s*)\b(?:as|assert(?=\s*\{)|async(?=\s*(?:function\b|\(|[$\w\xA0-\uFFFF]|$))|await|break|case|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally(?=\s*(?:\{|$))|for|from(?=\s*(?:['"]|$))|function|(?:get|set)(?=\s*(?:[#\[$\w\xA0-\uFFFF]|$))|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)\b/,
+    lookbehind: true
+  }],
+  // Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
+  'function': /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*(?:\.\s*(?:apply|bind|call)\s*)?\()/,
+  'number': {
+    pattern: RegExp(/(^|[^\w$])/.source + '(?:' + ( // constant
+    /NaN|Infinity/.source + '|' + // binary integer
+    /0[bB][01]+(?:_[01]+)*n?/.source + '|' + // octal integer
+    /0[oO][0-7]+(?:_[0-7]+)*n?/.source + '|' + // hexadecimal integer
+    /0[xX][\dA-Fa-f]+(?:_[\dA-Fa-f]+)*n?/.source + '|' + // decimal bigint
+    /\d+(?:_\d+)*n/.source + '|' + // decimal number (integer or float) but no bigint
+    /(?:\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\.\d+(?:_\d+)*)(?:[Ee][+-]?\d+(?:_\d+)*)?/.source) + ')' + /(?![\w$])/.source),
+    lookbehind: true
+  },
+  'operator': /--|\+\+|\*\*=?|=>|&&=?|\|\|=?|[!=]==|<<=?|>>>?=?|[-+*/%&|^!=<>]=?|\.{3}|\?\?=?|\?\.?|[~:]/
+});
+prism.languages.javascript['class-name'][0].pattern = /(\b(?:class|extends|implements|instanceof|interface|new)\s+)[\w.\\]+/;
+prism.languages.insertBefore('javascript', 'keyword', {
+  'regex': {
+    // eslint-disable-next-line regexp/no-dupe-characters-character-class
+    pattern: /((?:^|[^$\w\xA0-\uFFFF."'\])\s]|\b(?:return|yield))\s*)\/(?:\[(?:[^\]\\\r\n]|\\.)*\]|\\.|[^/\\\[\r\n])+\/[dgimyus]{0,7}(?=(?:\s|\/\*(?:[^*]|\*(?!\/))*\*\/)*(?:$|[\r\n,.;:})\]]|\/\/))/,
+    lookbehind: true,
+    greedy: true,
+    inside: {
+      'regex-source': {
+        pattern: /^(\/)[\s\S]+(?=\/[a-z]*$)/,
+        lookbehind: true,
+        alias: 'language-regex',
+        inside: prism.languages.regex
+      },
+      'regex-delimiter': /^\/|\/$/,
+      'regex-flags': /^[a-z]+$/
+    }
+  },
+  // This must be declared before keyword because we use "function" inside the look-forward
+  'function-variable': {
+    pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*[=:]\s*(?:async\s*)?(?:\bfunction\b|(?:\((?:[^()]|\([^()]*\))*\)|(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)\s*=>))/,
+    alias: 'function'
+  },
+  'parameter': [{
+    pattern: /(function(?:\s+(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*)?\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\))/,
+    lookbehind: true,
+    inside: prism.languages.javascript
+  }, {
+    pattern: /(^|[^$\w\xA0-\uFFFF])(?!\s)[_$a-z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*=>)/i,
+    lookbehind: true,
+    inside: prism.languages.javascript
+  }, {
+    pattern: /(\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*=>)/,
+    lookbehind: true,
+    inside: prism.languages.javascript
+  }, {
+    pattern: /((?:\b|\s|^)(?!(?:as|async|await|break|case|catch|class|const|continue|debugger|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|let|new|null|of|package|private|protected|public|return|set|static|super|switch|this|throw|try|typeof|undefined|var|void|while|with|yield)(?![$\w\xA0-\uFFFF]))(?:(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*)\(\s*|\]\s*\(\s*)(?!\s)(?:[^()\s]|\s+(?![\s)])|\([^()]*\))+(?=\s*\)\s*\{)/,
+    lookbehind: true,
+    inside: prism.languages.javascript
+  }],
+  'constant': /\b[A-Z](?:[A-Z_]|\dx?)*\b/
+});
+prism.languages.insertBefore('javascript', 'string', {
+  'hashbang': {
+    pattern: /^#!.*/,
+    greedy: true,
+    alias: 'comment'
+  },
+  'template-string': {
+    pattern: /`(?:\\[\s\S]|\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}|(?!\$\{)[^\\`])*`/,
+    greedy: true,
+    inside: {
+      'template-punctuation': {
+        pattern: /^`|`$/,
+        alias: 'string'
+      },
+      'interpolation': {
+        pattern: /((?:^|[^\\])(?:\\{2})*)\$\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+        lookbehind: true,
+        inside: {
+          'interpolation-punctuation': {
+            pattern: /^\$\{|\}$/,
+            alias: 'punctuation'
+          },
+          rest: prism.languages.javascript
+        }
+      },
+      'string': /[\s\S]+/
+    }
+  },
+  'string-property': {
+    pattern: /((?:^|[,{])[ \t]*)(["'])(?:\\(?:\r\n|[\s\S])|(?!\2)[^\\\r\n])*\2(?=\s*:)/m,
+    lookbehind: true,
+    greedy: true,
+    alias: 'property'
+  }
+});
+prism.languages.insertBefore('javascript', 'operator', {
+  'literal-property': {
+    pattern: /((?:^|[,{])[ \t]*)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?=\s*:)/m,
+    lookbehind: true,
+    alias: 'property'
+  }
+});
+
+if (prism.languages.markup) {
+  prism.languages.markup.tag.addInlined('script', 'javascript'); // add attribute support for all DOM events.
+  // https://developer.mozilla.org/en-US/docs/Web/Events#Standard_events
+
+  prism.languages.markup.tag.addAttribute(/on(?:abort|blur|change|click|composition(?:end|start|update)|dblclick|error|focus(?:in|out)?|key(?:down|up)|load|mouse(?:down|enter|leave|move|out|over|up)|reset|resize|scroll|select|slotchange|submit|unload|wheel)/.source, 'javascript');
+}
+
+prism.languages.js = prism.languages.javascript;
+/* "prismjs/components/prism-coffeescript" */
+
+(function (Prism) {
+  // Ignore comments starting with { to privilege string interpolation highlighting
+  var comment = /#(?!\{).+/;
+  var interpolation = {
+    pattern: /#\{[^}]+\}/,
+    alias: 'variable'
+  };
+  Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+    'comment': comment,
+    'string': [// Strings are multiline
+    {
+      pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+      greedy: true
+    }, {
+      // Strings are multiline
+      pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+      greedy: true,
+      inside: {
+        'interpolation': interpolation
+      }
+    }],
+    'keyword': /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+    'class-member': {
+      pattern: /@(?!\d)\w+/,
+      alias: 'variable'
+    }
+  });
+  Prism.languages.insertBefore('coffeescript', 'comment', {
+    'multiline-comment': {
+      pattern: /###[\s\S]+?###/,
+      alias: 'comment'
+    },
+    // Block regexp can contain comments and interpolation
+    'block-regex': {
+      pattern: /\/{3}[\s\S]*?\/{3}/,
+      alias: 'regex',
+      inside: {
+        'comment': comment,
+        'interpolation': interpolation
+      }
+    }
+  });
+  Prism.languages.insertBefore('coffeescript', 'string', {
+    'inline-javascript': {
+      pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+      inside: {
+        'delimiter': {
+          pattern: /^`|`$/,
+          alias: 'punctuation'
+        },
+        'script': {
+          pattern: /[\s\S]+/,
+          alias: 'language-javascript',
+          inside: Prism.languages.javascript
+        }
+      }
+    },
+    // Block strings
+    'multiline-string': [{
+      pattern: /'''[\s\S]*?'''/,
+      greedy: true,
+      alias: 'string'
+    }, {
+      pattern: /"""[\s\S]*?"""/,
+      greedy: true,
+      alias: 'string',
+      inside: {
+        interpolation: interpolation
+      }
+    }]
+  });
+  Prism.languages.insertBefore('coffeescript', 'keyword', {
+    // Object property
+    'property': /(?!\d)\w+(?=\s*:(?!:))/
+  });
+  delete Prism.languages.coffeescript['template-string'];
+  Prism.languages.coffee = Prism.languages.coffeescript;
+})(prism);
+/* "prismjs/components/prism-yaml" */
+
+
+(function (Prism) {
+  // https://yaml.org/spec/1.2/spec.html#c-ns-anchor-property
+  // https://yaml.org/spec/1.2/spec.html#c-ns-alias-node
+  var anchorOrAlias = /[*&][^\s[\]{},]+/; // https://yaml.org/spec/1.2/spec.html#c-ns-tag-property
+
+  var tag = /!(?:<[\w\-%#;/?:@&=+$,.!~*'()[\]]+>|(?:[a-zA-Z\d-]*!)?[\w\-%#;/?:@&=+$.~*'()]+)?/; // https://yaml.org/spec/1.2/spec.html#c-ns-properties(n,c)
+
+  var properties = '(?:' + tag.source + '(?:[ \t]+' + anchorOrAlias.source + ')?|' + anchorOrAlias.source + '(?:[ \t]+' + tag.source + ')?)'; // https://yaml.org/spec/1.2/spec.html#ns-plain(n,c)
+  // This is a simplified version that doesn't support "#" and multiline keys
+  // All these long scarry character classes are simplified versions of YAML's characters
+
+  var plainKey = /(?:[^\s\x00-\x08\x0e-\x1f!"#%&'*,\-:>?@[\]`{|}\x7f-\x84\x86-\x9f\ud800-\udfff\ufffe\uffff]|[?:-]<PLAIN>)(?:[ \t]*(?:(?![#:])<PLAIN>|:<PLAIN>))*/.source.replace(/<PLAIN>/g, function () {
+    return /[^\s\x00-\x08\x0e-\x1f,[\]{}\x7f-\x84\x86-\x9f\ud800-\udfff\ufffe\uffff]/.source;
+  });
+  var string = /"(?:[^"\\\r\n]|\\.)*"|'(?:[^'\\\r\n]|\\.)*'/.source;
+  /**
+   *
+   * @param {string} value
+   * @param {string} [flags]
+   * @returns {RegExp}
+   */
+
+  function createValuePattern(value, flags) {
+    flags = (flags || '').replace(/m/g, '') + 'm'; // add m flag
+
+    var pattern = /([:\-,[{]\s*(?:\s<<prop>>[ \t]+)?)(?:<<value>>)(?=[ \t]*(?:$|,|\]|\}|(?:[\r\n]\s*)?#))/.source.replace(/<<prop>>/g, function () {
+      return properties;
+    }).replace(/<<value>>/g, function () {
+      return value;
+    });
+    return RegExp(pattern, flags);
+  }
+
+  Prism.languages.yaml = {
+    'scalar': {
+      pattern: RegExp(/([\-:]\s*(?:\s<<prop>>[ \t]+)?[|>])[ \t]*(?:((?:\r?\n|\r)[ \t]+)\S[^\r\n]*(?:\2[^\r\n]+)*)/.source.replace(/<<prop>>/g, function () {
+        return properties;
+      })),
+      lookbehind: true,
+      alias: 'string'
+    },
+    'comment': /#.*/,
+    'key': {
+      pattern: RegExp(/((?:^|[:\-,[{\r\n?])[ \t]*(?:<<prop>>[ \t]+)?)<<key>>(?=\s*:\s)/.source.replace(/<<prop>>/g, function () {
+        return properties;
+      }).replace(/<<key>>/g, function () {
+        return '(?:' + plainKey + '|' + string + ')';
+      })),
+      lookbehind: true,
+      greedy: true,
+      alias: 'atrule'
+    },
+    'directive': {
+      pattern: /(^[ \t]*)%.+/m,
+      lookbehind: true,
+      alias: 'important'
+    },
+    'datetime': {
+      pattern: createValuePattern(/\d{4}-\d\d?-\d\d?(?:[tT]|[ \t]+)\d\d?:\d{2}:\d{2}(?:\.\d*)?(?:[ \t]*(?:Z|[-+]\d\d?(?::\d{2})?))?|\d{4}-\d{2}-\d{2}|\d\d?:\d{2}(?::\d{2}(?:\.\d*)?)?/.source),
+      lookbehind: true,
+      alias: 'number'
+    },
+    'boolean': {
+      pattern: createValuePattern(/false|true/.source, 'i'),
+      lookbehind: true,
+      alias: 'important'
+    },
+    'null': {
+      pattern: createValuePattern(/null|~/.source, 'i'),
+      lookbehind: true,
+      alias: 'important'
+    },
+    'string': {
+      pattern: createValuePattern(string),
+      lookbehind: true,
+      greedy: true
+    },
+    'number': {
+      pattern: createValuePattern(/[+-]?(?:0x[\da-f]+|0o[0-7]+|(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|\.inf|\.nan)/.source, 'i'),
+      lookbehind: true
+    },
+    'tag': tag,
+    'important': anchorOrAlias,
+    'punctuation': /---|[:[\]{}\-,|>?]|\.\.\./
+  };
+  Prism.languages.yml = Prism.languages.yaml;
+})(prism);
+/* "prismjs/components/prism-markdown" */
+
+
+(function (Prism) {
+  // Allow only one line break
+  var inner = /(?:\\.|[^\\\n\r]|(?:\n|\r\n?)(?![\r\n]))/.source;
+  /**
+   * This function is intended for the creation of the bold or italic pattern.
+   *
+   * This also adds a lookbehind group to the given pattern to ensure that the pattern is not backslash-escaped.
+   *
+   * _Note:_ Keep in mind that this adds a capturing group.
+   *
+   * @param {string} pattern
+   * @returns {RegExp}
+   */
+
+  function createInline(pattern) {
+    pattern = pattern.replace(/<inner>/g, function () {
+      return inner;
+    });
+    return RegExp(/((?:^|[^\\])(?:\\{2})*)/.source + '(?:' + pattern + ')');
+  }
+
+  var tableCell = /(?:\\.|``(?:[^`\r\n]|`(?!`))+``|`[^`\r\n]+`|[^\\|\r\n`])+/.source;
+  var tableRow = /\|?__(?:\|__)+\|?(?:(?:\n|\r\n?)|(?![\s\S]))/.source.replace(/__/g, function () {
+    return tableCell;
+  });
+  var tableLine = /\|?[ \t]*:?-{3,}:?[ \t]*(?:\|[ \t]*:?-{3,}:?[ \t]*)+\|?(?:\n|\r\n?)/.source;
+  Prism.languages.markdown = Prism.languages.extend('markup', {});
+  Prism.languages.insertBefore('markdown', 'prolog', {
+    'front-matter-block': {
+      pattern: /(^(?:\s*[\r\n])?)---(?!.)[\s\S]*?[\r\n]---(?!.)/,
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'punctuation': /^---|---$/,
+        'front-matter': {
+          pattern: /\S+(?:\s+\S+)*/,
+          alias: ['yaml', 'language-yaml'],
+          inside: Prism.languages.yaml
+        }
+      }
+    },
+    'blockquote': {
+      // > ...
+      pattern: /^>(?:[\t ]*>)*/m,
+      alias: 'punctuation'
+    },
+    'table': {
+      pattern: RegExp('^' + tableRow + tableLine + '(?:' + tableRow + ')*', 'm'),
+      inside: {
+        'table-data-rows': {
+          pattern: RegExp('^(' + tableRow + tableLine + ')(?:' + tableRow + ')*$'),
+          lookbehind: true,
+          inside: {
+            'table-data': {
+              pattern: RegExp(tableCell),
+              inside: Prism.languages.markdown
+            },
+            'punctuation': /\|/
+          }
+        },
+        'table-line': {
+          pattern: RegExp('^(' + tableRow + ')' + tableLine + '$'),
+          lookbehind: true,
+          inside: {
+            'punctuation': /\||:?-{3,}:?/
+          }
+        },
+        'table-header-row': {
+          pattern: RegExp('^' + tableRow + '$'),
+          inside: {
+            'table-header': {
+              pattern: RegExp(tableCell),
+              alias: 'important',
+              inside: Prism.languages.markdown
+            },
+            'punctuation': /\|/
+          }
+        }
+      }
+    },
+    'code': [{
+      // Prefixed by 4 spaces or 1 tab and preceded by an empty line
+      pattern: /((?:^|\n)[ \t]*\n|(?:^|\r\n?)[ \t]*\r\n?)(?: {4}|\t).+(?:(?:\n|\r\n?)(?: {4}|\t).+)*/,
+      lookbehind: true,
+      alias: 'keyword'
+    }, {
+      // ```optional language
+      // code block
+      // ```
+      pattern: /^```[\s\S]*?^```$/m,
+      greedy: true,
+      inside: {
+        'code-block': {
+          pattern: /^(```.*(?:\n|\r\n?))[\s\S]+?(?=(?:\n|\r\n?)^```$)/m,
+          lookbehind: true
+        },
+        'code-language': {
+          pattern: /^(```).+/,
+          lookbehind: true
+        },
+        'punctuation': /```/
+      }
+    }],
+    'title': [{
+      // title 1
+      // =======
+      // title 2
+      // -------
+      pattern: /\S.*(?:\n|\r\n?)(?:==+|--+)(?=[ \t]*$)/m,
+      alias: 'important',
+      inside: {
+        punctuation: /==+$|--+$/
+      }
+    }, {
+      // # title 1
+      // ###### title 6
+      pattern: /(^\s*)#.+/m,
+      lookbehind: true,
+      alias: 'important',
+      inside: {
+        punctuation: /^#+|#+$/
+      }
+    }],
+    'hr': {
+      // ***
+      // ---
+      // * * *
+      // -----------
+      pattern: /(^\s*)([*-])(?:[\t ]*\2){2,}(?=\s*$)/m,
+      lookbehind: true,
+      alias: 'punctuation'
+    },
+    'list': {
+      // * item
+      // + item
+      // - item
+      // 1. item
+      pattern: /(^\s*)(?:[*+-]|\d+\.)(?=[\t ].)/m,
+      lookbehind: true,
+      alias: 'punctuation'
+    },
+    'url-reference': {
+      // [id]: http://example.com "Optional title"
+      // [id]: http://example.com 'Optional title'
+      // [id]: http://example.com (Optional title)
+      // [id]: <http://example.com> "Optional title"
+      pattern: /!?\[[^\]]+\]:[\t ]+(?:\S+|<(?:\\.|[^>\\])+>)(?:[\t ]+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?/,
+      inside: {
+        'variable': {
+          pattern: /^(!?\[)[^\]]+/,
+          lookbehind: true
+        },
+        'string': /(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\))$/,
+        'punctuation': /^[\[\]!:]|[<>]/
+      },
+      alias: 'url'
+    },
+    'bold': {
+      // **strong**
+      // __strong__
+      // allow one nested instance of italic text using the same delimiter
+      pattern: createInline(/\b__(?:(?!_)<inner>|_(?:(?!_)<inner>)+_)+__\b|\*\*(?:(?!\*)<inner>|\*(?:(?!\*)<inner>)+\*)+\*\*/.source),
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'content': {
+          pattern: /(^..)[\s\S]+(?=..$)/,
+          lookbehind: true,
+          inside: {} // see below
+
+        },
+        'punctuation': /\*\*|__/
+      }
+    },
+    'italic': {
+      // *em*
+      // _em_
+      // allow one nested instance of bold text using the same delimiter
+      pattern: createInline(/\b_(?:(?!_)<inner>|__(?:(?!_)<inner>)+__)+_\b|\*(?:(?!\*)<inner>|\*\*(?:(?!\*)<inner>)+\*\*)+\*/.source),
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'content': {
+          pattern: /(^.)[\s\S]+(?=.$)/,
+          lookbehind: true,
+          inside: {} // see below
+
+        },
+        'punctuation': /[*_]/
+      }
+    },
+    'strike': {
+      // ~~strike through~~
+      // ~strike~
+      // eslint-disable-next-line regexp/strict
+      pattern: createInline(/(~~?)(?:(?!~)<inner>)+\2/.source),
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'content': {
+          pattern: /(^~~?)[\s\S]+(?=\1$)/,
+          lookbehind: true,
+          inside: {} // see below
+
+        },
+        'punctuation': /~~?/
+      }
+    },
+    'code-snippet': {
+      // `code`
+      // ``code``
+      pattern: /(^|[^\\`])(?:``[^`\r\n]+(?:`[^`\r\n]+)*``(?!`)|`[^`\r\n]+`(?!`))/,
+      lookbehind: true,
+      greedy: true,
+      alias: ['code', 'keyword']
+    },
+    'url': {
+      // [example](http://example.com "Optional title")
+      // [example][id]
+      // [example] [id]
+      pattern: createInline(/!?\[(?:(?!\])<inner>)+\](?:\([^\s)]+(?:[\t ]+"(?:\\.|[^"\\])*")?\)|[ \t]?\[(?:(?!\])<inner>)+\])/.source),
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'operator': /^!/,
+        'content': {
+          pattern: /(^\[)[^\]]+(?=\])/,
+          lookbehind: true,
+          inside: {} // see below
+
+        },
+        'variable': {
+          pattern: /(^\][ \t]?\[)[^\]]+(?=\]$)/,
+          lookbehind: true
+        },
+        'url': {
+          pattern: /(^\]\()[^\s)]+/,
+          lookbehind: true
+        },
+        'string': {
+          pattern: /(^[ \t]+)"(?:\\.|[^"\\])*"(?=\)$)/,
+          lookbehind: true
+        }
+      }
+    }
+  });
+  ['url', 'bold', 'italic', 'strike'].forEach(function (token) {
+    ['url', 'bold', 'italic', 'strike', 'code-snippet'].forEach(function (inside) {
+      if (token !== inside) {
+        Prism.languages.markdown[token].inside.content.inside[inside] = Prism.languages.markdown[inside];
+      }
+    });
+  });
+  Prism.hooks.add('after-tokenize', function (env) {
+    if (env.language !== 'markdown' && env.language !== 'md') {
+      return;
+    }
+
+    function walkTokens(tokens) {
+      if (!tokens || typeof tokens === 'string') {
+        return;
+      }
+
+      for (var i = 0, l = tokens.length; i < l; i++) {
+        var token = tokens[i];
+
+        if (token.type !== 'code') {
+          walkTokens(token.content);
+          continue;
+        }
+        /*
+         * Add the correct `language-xxxx` class to this code block. Keep in mind that the `code-language` token
+         * is optional. But the grammar is defined so that there is only one case we have to handle:
+         *
+         * token.content = [
+         *     <span class="punctuation">```</span>,
+         *     <span class="code-language">xxxx</span>,
+         *     '\n', // exactly one new lines (\r or \n or \r\n)
+         *     <span class="code-block">...</span>,
+         *     '\n', // exactly one new lines again
+         *     <span class="punctuation">```</span>
+         * ];
+         */
+
+
+        var codeLang = token.content[1];
+        var codeBlock = token.content[3];
+
+        if (codeLang && codeBlock && codeLang.type === 'code-language' && codeBlock.type === 'code-block' && typeof codeLang.content === 'string') {
+          // this might be a language that Prism does not support
+          // do some replacements to support C++, C#, and F#
+          var lang = codeLang.content.replace(/\b#/g, 'sharp').replace(/\b\+\+/g, 'pp'); // only use the first word
+
+          lang = (/[a-z][\w-]*/i.exec(lang) || [''])[0].toLowerCase();
+          var alias = 'language-' + lang; // add alias
+
+          if (!codeBlock.alias) {
+            codeBlock.alias = [alias];
+          } else if (typeof codeBlock.alias === 'string') {
+            codeBlock.alias = [codeBlock.alias, alias];
+          } else {
+            codeBlock.alias.push(alias);
+          }
+        }
+      }
+    }
+
+    walkTokens(env.tokens);
+  });
+  Prism.hooks.add('wrap', function (env) {
+    if (env.type !== 'code-block') {
+      return;
+    }
+
+    var codeLang = '';
+
+    for (var i = 0, l = env.classes.length; i < l; i++) {
+      var cls = env.classes[i];
+      var match = /language-(.+)/.exec(cls);
+
+      if (match) {
+        codeLang = match[1];
+        break;
+      }
+    }
+
+    var grammar = Prism.languages[codeLang];
+
+    if (!grammar) {
+      if (codeLang && codeLang !== 'none' && Prism.plugins.autoloader) {
+        var id = 'md-' + new Date().valueOf() + '-' + Math.floor(Math.random() * 1e16);
+        env.attributes['id'] = id;
+        Prism.plugins.autoloader.loadLanguages(codeLang, function () {
+          var ele = document.getElementById(id);
+
+          if (ele) {
+            ele.innerHTML = Prism.highlight(ele.textContent, Prism.languages[codeLang], codeLang);
+          }
+        });
+      }
+    } else {
+      env.content = Prism.highlight(textContent(env.content), grammar, codeLang);
+    }
+  });
+  var tagPattern = RegExp(Prism.languages.markup.tag.pattern.source, 'gi');
+  /**
+   * A list of known entity names.
+   *
+   * This will always be incomplete to save space. The current list is the one used by lowdash's unescape function.
+   *
+   * @see {@link https://github.com/lodash/lodash/blob/2da024c3b4f9947a48517639de7560457cd4ec6c/unescape.js#L2}
+   */
+
+  var KNOWN_ENTITY_NAMES = {
+    'amp': '&',
+    'lt': '<',
+    'gt': '>',
+    'quot': '"'
+  }; // IE 11 doesn't support `String.fromCodePoint`
+
+  var fromCodePoint = String.fromCodePoint || String.fromCharCode;
+  /**
+   * Returns the text content of a given HTML source code string.
+   *
+   * @param {string} html
+   * @returns {string}
+   */
+
+  function textContent(html) {
+    // remove all tags
+    var text = html.replace(tagPattern, ''); // decode known entities
+
+    text = text.replace(/&(\w{1,8}|#x?[\da-f]{1,8});/gi, function (m, code) {
+      code = code.toLowerCase();
+
+      if (code[0] === '#') {
+        var value;
+
+        if (code[1] === 'x') {
+          value = parseInt(code.slice(2), 16);
+        } else {
+          value = Number(code.slice(1));
+        }
+
+        return fromCodePoint(value);
+      } else {
+        var known = KNOWN_ENTITY_NAMES[code];
+
+        if (known) {
+          return known;
+        } // unable to decode
+
+
+        return m;
+      }
+    });
+    return text;
+  }
+
+  Prism.languages.md = Prism.languages.markdown;
+})(prism);
+/* "prismjs/components/prism-graphql" */
+
+
+prism.languages.graphql = {
+  'comment': /#.*/,
+  'description': {
+    pattern: /(?:"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*")(?=\s*[a-z_])/i,
+    greedy: true,
+    alias: 'string',
+    inside: {
+      'language-markdown': {
+        pattern: /(^"(?:"")?)(?!\1)[\s\S]+(?=\1$)/,
+        lookbehind: true,
+        inside: prism.languages.markdown
+      }
+    }
+  },
+  'string': {
+    pattern: /"""(?:[^"]|(?!""")")*"""|"(?:\\.|[^\\"\r\n])*"/,
+    greedy: true
+  },
+  'number': /(?:\B-|\b)\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
+  'boolean': /\b(?:false|true)\b/,
+  'variable': /\$[a-z_]\w*/i,
+  'directive': {
+    pattern: /@[a-z_]\w*/i,
+    alias: 'function'
+  },
+  'attr-name': {
+    pattern: /\b[a-z_]\w*(?=\s*(?:\((?:[^()"]|"(?:\\.|[^\\"\r\n])*")*\))?:)/i,
+    greedy: true
+  },
+  'atom-input': {
+    pattern: /\b[A-Z]\w*Input\b/,
+    alias: 'class-name'
+  },
+  'scalar': /\b(?:Boolean|Float|ID|Int|String)\b/,
+  'constant': /\b[A-Z][A-Z_\d]*\b/,
+  'class-name': {
+    pattern: /(\b(?:enum|implements|interface|on|scalar|type|union)\s+|&\s*|:\s*|\[)[A-Z_]\w*/,
+    lookbehind: true
+  },
+  'fragment': {
+    pattern: /(\bfragment\s+|\.{3}\s*(?!on\b))[a-zA-Z_]\w*/,
+    lookbehind: true,
+    alias: 'function'
+  },
+  'definition-mutation': {
+    pattern: /(\bmutation\s+)[a-zA-Z_]\w*/,
+    lookbehind: true,
+    alias: 'function'
+  },
+  'definition-query': {
+    pattern: /(\bquery\s+)[a-zA-Z_]\w*/,
+    lookbehind: true,
+    alias: 'function'
+  },
+  'keyword': /\b(?:directive|enum|extend|fragment|implements|input|interface|mutation|on|query|repeatable|scalar|schema|subscription|type|union)\b/,
+  'operator': /[!=|&]|\.{3}/,
+  'property-query': /\w+(?=\s*\()/,
+  'object': /\w+(?=\s*\{)/,
+  'punctuation': /[!(){}\[\]:=,]/,
+  'property': /\w+/
+};
+prism.hooks.add('after-tokenize', function afterTokenizeGraphql(env) {
+  if (env.language !== 'graphql') {
+    return;
+  }
+  /**
+   * get the graphql token stream that we want to customize
+   *
+   * @typedef {InstanceType<import("./prism-core")["Token"]>} Token
+   * @type {Token[]}
+   */
+
+
+  var validTokens = env.tokens.filter(function (token) {
+    return typeof token !== 'string' && token.type !== 'comment' && token.type !== 'scalar';
+  });
+  var currentIndex = 0;
+  /**
+   * Returns whether the token relative to the current index has the given type.
+   *
+   * @param {number} offset
+   * @returns {Token | undefined}
+   */
+
+  function getToken(offset) {
+    return validTokens[currentIndex + offset];
+  }
+  /**
+   * Returns whether the token relative to the current index has the given type.
+   *
+   * @param {readonly string[]} types
+   * @param {number} [offset=0]
+   * @returns {boolean}
+   */
+
+
+  function isTokenType(types, offset) {
+    offset = offset || 0;
+
+    for (var i = 0; i < types.length; i++) {
+      var token = getToken(i + offset);
+
+      if (!token || token.type !== types[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+  /**
+   * Returns the index of the closing bracket to an opening bracket.
+   *
+   * It is assumed that `token[currentIndex - 1]` is an opening bracket.
+   *
+   * If no closing bracket could be found, `-1` will be returned.
+   *
+   * @param {RegExp} open
+   * @param {RegExp} close
+   * @returns {number}
+   */
+
+
+  function findClosingBracket(open, close) {
+    var stackHeight = 1;
+
+    for (var i = currentIndex; i < validTokens.length; i++) {
+      var token = validTokens[i];
+      var content = token.content;
+
+      if (token.type === 'punctuation' && typeof content === 'string') {
+        if (open.test(content)) {
+          stackHeight++;
+        } else if (close.test(content)) {
+          stackHeight--;
+
+          if (stackHeight === 0) {
+            return i;
+          }
+        }
+      }
+    }
+
+    return -1;
+  }
+  /**
+   * Adds an alias to the given token.
+   *
+   * @param {Token} token
+   * @param {string} alias
+   * @returns {void}
+   */
+
+
+  function addAlias(token, alias) {
+    var aliases = token.alias;
+
+    if (!aliases) {
+      token.alias = aliases = [];
+    } else if (!Array.isArray(aliases)) {
+      token.alias = aliases = [aliases];
+    }
+
+    aliases.push(alias);
+  }
+
+  for (; currentIndex < validTokens.length;) {
+    var startToken = validTokens[currentIndex++]; // add special aliases for mutation tokens
+
+    if (startToken.type === 'keyword' && startToken.content === 'mutation') {
+      // any array of the names of all input variables (if any)
+      var inputVariables = [];
+
+      if (isTokenType(['definition-mutation', 'punctuation']) && getToken(1).content === '(') {
+        // definition
+        currentIndex += 2; // skip 'definition-mutation' and 'punctuation'
+
+        var definitionEnd = findClosingBracket(/^\($/, /^\)$/);
+
+        if (definitionEnd === -1) {
+          continue;
+        } // find all input variables
+
+
+        for (; currentIndex < definitionEnd; currentIndex++) {
+          var t = getToken(0);
+
+          if (t.type === 'variable') {
+            addAlias(t, 'variable-input');
+            inputVariables.push(t.content);
+          }
+        }
+
+        currentIndex = definitionEnd + 1;
+      }
+
+      if (isTokenType(['punctuation', 'property-query']) && getToken(0).content === '{') {
+        currentIndex++; // skip opening bracket
+
+        addAlias(getToken(0), 'property-mutation');
+
+        if (inputVariables.length > 0) {
+          var mutationEnd = findClosingBracket(/^\{$/, /^\}$/);
+
+          if (mutationEnd === -1) {
+            continue;
+          } // give references to input variables a special alias
+
+
+          for (var i = currentIndex; i < mutationEnd; i++) {
+            var varToken = validTokens[i];
+
+            if (varToken.type === 'variable' && inputVariables.indexOf(varToken.content) >= 0) {
+              addAlias(varToken, 'variable-input');
+            }
+          }
+        }
+      }
+    }
+  }
+});
+/* "prismjs/components/prism-sql" */
+
+prism.languages.sql = {
+  'comment': {
+    pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|(?:--|\/\/|#).*)/,
+    lookbehind: true
+  },
+  'variable': [{
+    pattern: /@(["'`])(?:\\[\s\S]|(?!\1)[^\\])+\1/,
+    greedy: true
+  }, /@[\w.$]+/],
+  'string': {
+    pattern: /(^|[^@\\])("|')(?:\\[\s\S]|(?!\2)[^\\]|\2\2)*\2/,
+    greedy: true,
+    lookbehind: true
+  },
+  'identifier': {
+    pattern: /(^|[^@\\])`(?:\\[\s\S]|[^`\\]|``)*`/,
+    greedy: true,
+    lookbehind: true,
+    inside: {
+      'punctuation': /^`|`$/
+    }
+  },
+  'function': /\b(?:AVG|COUNT|FIRST|FORMAT|LAST|LCASE|LEN|MAX|MID|MIN|MOD|NOW|ROUND|SUM|UCASE)(?=\s*\()/i,
+  // Should we highlight user defined functions too?
+  'keyword': /\b(?:ACTION|ADD|AFTER|ALGORITHM|ALL|ALTER|ANALYZE|ANY|APPLY|AS|ASC|AUTHORIZATION|AUTO_INCREMENT|BACKUP|BDB|BEGIN|BERKELEYDB|BIGINT|BINARY|BIT|BLOB|BOOL|BOOLEAN|BREAK|BROWSE|BTREE|BULK|BY|CALL|CASCADED?|CASE|CHAIN|CHAR(?:ACTER|SET)?|CHECK(?:POINT)?|CLOSE|CLUSTERED|COALESCE|COLLATE|COLUMNS?|COMMENT|COMMIT(?:TED)?|COMPUTE|CONNECT|CONSISTENT|CONSTRAINT|CONTAINS(?:TABLE)?|CONTINUE|CONVERT|CREATE|CROSS|CURRENT(?:_DATE|_TIME|_TIMESTAMP|_USER)?|CURSOR|CYCLE|DATA(?:BASES?)?|DATE(?:TIME)?|DAY|DBCC|DEALLOCATE|DEC|DECIMAL|DECLARE|DEFAULT|DEFINER|DELAYED|DELETE|DELIMITERS?|DENY|DESC|DESCRIBE|DETERMINISTIC|DISABLE|DISCARD|DISK|DISTINCT|DISTINCTROW|DISTRIBUTED|DO|DOUBLE|DROP|DUMMY|DUMP(?:FILE)?|DUPLICATE|ELSE(?:IF)?|ENABLE|ENCLOSED|END|ENGINE|ENUM|ERRLVL|ERRORS|ESCAPED?|EXCEPT|EXEC(?:UTE)?|EXISTS|EXIT|EXPLAIN|EXTENDED|FETCH|FIELDS|FILE|FILLFACTOR|FIRST|FIXED|FLOAT|FOLLOWING|FOR(?: EACH ROW)?|FORCE|FOREIGN|FREETEXT(?:TABLE)?|FROM|FULL|FUNCTION|GEOMETRY(?:COLLECTION)?|GLOBAL|GOTO|GRANT|GROUP|HANDLER|HASH|HAVING|HOLDLOCK|HOUR|IDENTITY(?:COL|_INSERT)?|IF|IGNORE|IMPORT|INDEX|INFILE|INNER|INNODB|INOUT|INSERT|INT|INTEGER|INTERSECT|INTERVAL|INTO|INVOKER|ISOLATION|ITERATE|JOIN|KEYS?|KILL|LANGUAGE|LAST|LEAVE|LEFT|LEVEL|LIMIT|LINENO|LINES|LINESTRING|LOAD|LOCAL|LOCK|LONG(?:BLOB|TEXT)|LOOP|MATCH(?:ED)?|MEDIUM(?:BLOB|INT|TEXT)|MERGE|MIDDLEINT|MINUTE|MODE|MODIFIES|MODIFY|MONTH|MULTI(?:LINESTRING|POINT|POLYGON)|NATIONAL|NATURAL|NCHAR|NEXT|NO|NONCLUSTERED|NULLIF|NUMERIC|OFF?|OFFSETS?|ON|OPEN(?:DATASOURCE|QUERY|ROWSET)?|OPTIMIZE|OPTION(?:ALLY)?|ORDER|OUT(?:ER|FILE)?|OVER|PARTIAL|PARTITION|PERCENT|PIVOT|PLAN|POINT|POLYGON|PRECEDING|PRECISION|PREPARE|PREV|PRIMARY|PRINT|PRIVILEGES|PROC(?:EDURE)?|PUBLIC|PURGE|QUICK|RAISERROR|READS?|REAL|RECONFIGURE|REFERENCES|RELEASE|RENAME|REPEAT(?:ABLE)?|REPLACE|REPLICATION|REQUIRE|RESIGNAL|RESTORE|RESTRICT|RETURN(?:ING|S)?|REVOKE|RIGHT|ROLLBACK|ROUTINE|ROW(?:COUNT|GUIDCOL|S)?|RTREE|RULE|SAVE(?:POINT)?|SCHEMA|SECOND|SELECT|SERIAL(?:IZABLE)?|SESSION(?:_USER)?|SET(?:USER)?|SHARE|SHOW|SHUTDOWN|SIMPLE|SMALLINT|SNAPSHOT|SOME|SONAME|SQL|START(?:ING)?|STATISTICS|STATUS|STRIPED|SYSTEM_USER|TABLES?|TABLESPACE|TEMP(?:ORARY|TABLE)?|TERMINATED|TEXT(?:SIZE)?|THEN|TIME(?:STAMP)?|TINY(?:BLOB|INT|TEXT)|TOP?|TRAN(?:SACTIONS?)?|TRIGGER|TRUNCATE|TSEQUAL|TYPES?|UNBOUNDED|UNCOMMITTED|UNDEFINED|UNION|UNIQUE|UNLOCK|UNPIVOT|UNSIGNED|UPDATE(?:TEXT)?|USAGE|USE|USER|USING|VALUES?|VAR(?:BINARY|CHAR|CHARACTER|YING)|VIEW|WAITFOR|WARNINGS|WHEN|WHERE|WHILE|WITH(?: ROLLUP|IN)?|WORK|WRITE(?:TEXT)?|YEAR)\b/i,
+  'boolean': /\b(?:FALSE|NULL|TRUE)\b/i,
+  'number': /\b0x[\da-f]+\b|\b\d+(?:\.\d*)?|\B\.\d+\b/i,
+  'operator': /[-+*\/=%^~]|&&?|\|\|?|!=?|<(?:=>?|<|>)?|>[>=]?|\b(?:AND|BETWEEN|DIV|ILIKE|IN|IS|LIKE|NOT|OR|REGEXP|RLIKE|SOUNDS LIKE|XOR)\b/i,
+  'punctuation': /[;[\]()`,.]/
+};
+/* "prismjs/components/prism-js-templates" */
+
+(function (Prism) {
+  var templateString = Prism.languages.javascript['template-string']; // see the pattern in prism-javascript.js
+
+  var templateLiteralPattern = templateString.pattern.source;
+  var interpolationObject = templateString.inside['interpolation'];
+  var interpolationPunctuationObject = interpolationObject.inside['interpolation-punctuation'];
+  var interpolationPattern = interpolationObject.pattern.source;
+  /**
+   * Creates a new pattern to match a template string with a special tag.
+   *
+   * This will return `undefined` if there is no grammar with the given language id.
+   *
+   * @param {string} language The language id of the embedded language. E.g. `markdown`.
+   * @param {string} tag The regex pattern to match the tag.
+   * @returns {object | undefined}
+   * @example
+   * createTemplate('css', /\bcss/.source);
+   */
+
+  function createTemplate(language, tag) {
+    if (!Prism.languages[language]) {
+      return undefined;
+    }
+
+    return {
+      pattern: RegExp('((?:' + tag + ')\\s*)' + templateLiteralPattern),
+      lookbehind: true,
+      greedy: true,
+      inside: {
+        'template-punctuation': {
+          pattern: /^`|`$/,
+          alias: 'string'
+        },
+        'embedded-code': {
+          pattern: /[\s\S]+/,
+          alias: language
+        }
+      }
+    };
+  }
+
+  Prism.languages.javascript['template-string'] = [// styled-jsx:
+  //   css`a { color: #25F; }`
+  // styled-components:
+  //   styled.h1`color: red;`
+  createTemplate('css', /\b(?:styled(?:\([^)]*\))?(?:\s*\.\s*\w+(?:\([^)]*\))*)*|css(?:\s*\.\s*(?:global|resolve))?|createGlobalStyle|keyframes)/.source), // html`<p></p>`
+  // div.innerHTML = `<p></p>`
+  createTemplate('html', /\bhtml|\.\s*(?:inner|outer)HTML\s*\+?=/.source), // svg`<path fill="#fff" d="M55.37 ..."/>`
+  createTemplate('svg', /\bsvg/.source), // md`# h1`, markdown`## h2`
+  createTemplate('markdown', /\b(?:markdown|md)/.source), // gql`...`, graphql`...`, graphql.experimental`...`
+  createTemplate('graphql', /\b(?:gql|graphql(?:\s*\.\s*experimental)?)/.source), // sql`...`
+  createTemplate('sql', /\bsql/.source), // vanilla template string
+  templateString].filter(Boolean);
+  /**
+   * Returns a specific placeholder literal for the given language.
+   *
+   * @param {number} counter
+   * @param {string} language
+   * @returns {string}
+   */
+
+  function getPlaceholder(counter, language) {
+    return '___' + language.toUpperCase() + '_' + counter + '___';
+  }
+  /**
+   * Returns the tokens of `Prism.tokenize` but also runs the `before-tokenize` and `after-tokenize` hooks.
+   *
+   * @param {string} code
+   * @param {any} grammar
+   * @param {string} language
+   * @returns {(string|Token)[]}
+   */
+
+
+  function tokenizeWithHooks(code, grammar, language) {
+    var env = {
+      code: code,
+      grammar: grammar,
+      language: language
+    };
+    Prism.hooks.run('before-tokenize', env);
+    env.tokens = Prism.tokenize(env.code, env.grammar);
+    Prism.hooks.run('after-tokenize', env);
+    return env.tokens;
+  }
+  /**
+   * Returns the token of the given JavaScript interpolation expression.
+   *
+   * @param {string} expression The code of the expression. E.g. `"${42}"`
+   * @returns {Token}
+   */
+
+
+  function tokenizeInterpolationExpression(expression) {
+    var tempGrammar = {};
+    tempGrammar['interpolation-punctuation'] = interpolationPunctuationObject;
+    /** @type {Array} */
+
+    var tokens = Prism.tokenize(expression, tempGrammar);
+
+    if (tokens.length === 3) {
+      /**
+       * The token array will look like this
+       * [
+       *     ["interpolation-punctuation", "${"]
+       *     "..." // JavaScript expression of the interpolation
+       *     ["interpolation-punctuation", "}"]
+       * ]
+       */
+      var args = [1, 1];
+      args.push.apply(args, tokenizeWithHooks(tokens[1], Prism.languages.javascript, 'javascript'));
+      tokens.splice.apply(tokens, args);
+    }
+
+    return new Prism.Token('interpolation', tokens, interpolationObject.alias, expression);
+  }
+  /**
+   * Tokenizes the given code with support for JavaScript interpolation expressions mixed in.
+   *
+   * This function has 3 phases:
+   *
+   * 1. Replace all JavaScript interpolation expression with a placeholder.
+   *    The placeholder will have the syntax of a identify of the target language.
+   * 2. Tokenize the code with placeholders.
+   * 3. Tokenize the interpolation expressions and re-insert them into the tokenize code.
+   *    The insertion only works if a placeholder hasn't been "ripped apart" meaning that the placeholder has been
+   *    tokenized as two tokens by the grammar of the embedded language.
+   *
+   * @param {string} code
+   * @param {object} grammar
+   * @param {string} language
+   * @returns {Token}
+   */
+
+
+  function tokenizeEmbedded(code, grammar, language) {
+    // 1. First filter out all interpolations
+    // because they might be escaped, we need a lookbehind, so we use Prism
+
+    /** @type {(Token|string)[]} */
+    var _tokens = Prism.tokenize(code, {
+      'interpolation': {
+        pattern: RegExp(interpolationPattern),
+        lookbehind: true
+      }
+    }); // replace all interpolations with a placeholder which is not in the code already
+
+
+    var placeholderCounter = 0;
+    /** @type {Object<string, string>} */
+
+    var placeholderMap = {};
+
+    var embeddedCode = _tokens.map(function (token) {
+      if (typeof token === 'string') {
+        return token;
+      } else {
+        var interpolationExpression = token.content;
+        var placeholder;
+
+        while (code.indexOf(placeholder = getPlaceholder(placeholderCounter++, language)) !== -1) {
+          /* noop */
+        }
+
+        placeholderMap[placeholder] = interpolationExpression;
+        return placeholder;
+      }
+    }).join(''); // 2. Tokenize the embedded code
+
+
+    var embeddedTokens = tokenizeWithHooks(embeddedCode, grammar, language); // 3. Re-insert the interpolation
+
+    var placeholders = Object.keys(placeholderMap);
+    placeholderCounter = 0;
+    /**
+     *
+     * @param {(Token|string)[]} tokens
+     * @returns {void}
+     */
+
+    function walkTokens(tokens) {
+      for (var i = 0; i < tokens.length; i++) {
+        if (placeholderCounter >= placeholders.length) {
+          return;
+        }
+
+        var token = tokens[i];
+
+        if (typeof token === 'string' || typeof token.content === 'string') {
+          var placeholder = placeholders[placeholderCounter];
+          var s = typeof token === 'string' ? token :
+          /** @type {string} */
+          token.content;
+          var index = s.indexOf(placeholder);
+
+          if (index !== -1) {
+            ++placeholderCounter;
+            var before = s.substring(0, index);
+            var middle = tokenizeInterpolationExpression(placeholderMap[placeholder]);
+            var after = s.substring(index + placeholder.length);
+            var replacement = [];
+
+            if (before) {
+              replacement.push(before);
+            }
+
+            replacement.push(middle);
+
+            if (after) {
+              var afterTokens = [after];
+              walkTokens(afterTokens);
+              replacement.push.apply(replacement, afterTokens);
+            }
+
+            if (typeof token === 'string') {
+              tokens.splice.apply(tokens, [i, 1].concat(replacement));
+              i += replacement.length - 1;
+            } else {
+              token.content = replacement;
+            }
+          }
+        } else {
+          var content = token.content;
+
+          if (Array.isArray(content)) {
+            walkTokens(content);
+          } else {
+            walkTokens([content]);
+          }
+        }
+      }
+    }
+
+    walkTokens(embeddedTokens);
+    return new Prism.Token(language, embeddedTokens, 'language-' + language, code);
+  }
+  /**
+   * The languages for which JS templating will handle tagged template literals.
+   *
+   * JS templating isn't active for only JavaScript but also related languages like TypeScript, JSX, and TSX.
+   */
+
+
+  var supportedLanguages = {
+    'javascript': true,
+    'js': true,
+    'typescript': true,
+    'ts': true,
+    'jsx': true,
+    'tsx': true
+  };
+  Prism.hooks.add('after-tokenize', function (env) {
+    if (!(env.language in supportedLanguages)) {
+      return;
+    }
+    /**
+     * Finds and tokenizes all template strings with an embedded languages.
+     *
+     * @param {(Token | string)[]} tokens
+     * @returns {void}
+     */
+
+
+    function findTemplateStrings(tokens) {
+      for (var i = 0, l = tokens.length; i < l; i++) {
+        var token = tokens[i];
+
+        if (typeof token === 'string') {
+          continue;
+        }
+
+        var content = token.content;
+
+        if (!Array.isArray(content)) {
+          if (typeof content !== 'string') {
+            findTemplateStrings([content]);
+          }
+
+          continue;
+        }
+
+        if (token.type === 'template-string') {
+          /**
+           * A JavaScript template-string token will look like this:
+           *
+           * ["template-string", [
+           *     ["template-punctuation", "`"],
+           *     (
+           *         An array of "string" and "interpolation" tokens. This is the simple string case.
+           *         or
+           *         ["embedded-code", "..."] This is the token containing the embedded code.
+           *                                  It also has an alias which is the language of the embedded code.
+           *     ),
+           *     ["template-punctuation", "`"]
+           * ]]
+           */
+          var embedded = content[1];
+
+          if (content.length === 3 && typeof embedded !== 'string' && embedded.type === 'embedded-code') {
+            // get string content
+            var code = stringContent(embedded);
+            var alias = embedded.alias;
+            var language = Array.isArray(alias) ? alias[0] : alias;
+            var grammar = Prism.languages[language];
+
+            if (!grammar) {
+              // the embedded language isn't registered.
+              continue;
+            }
+
+            content[1] = tokenizeEmbedded(code, grammar, language);
+          }
+        } else {
+          findTemplateStrings(content);
+        }
+      }
+    }
+
+    findTemplateStrings(env.tokens);
+  });
+  /**
+   * Returns the string content of a token or token stream.
+   *
+   * @param {string | Token | (string | Token)[]} value
+   * @returns {string}
+   */
+
+  function stringContent(value) {
+    if (typeof value === 'string') {
+      return value;
+    } else if (Array.isArray(value)) {
+      return value.map(stringContent).join('');
+    } else {
+      return stringContent(value.content);
+    }
+  }
+})(prism);
+/* "prismjs/components/prism-typescript" */
+
+
+(function (Prism) {
+  Prism.languages.typescript = Prism.languages.extend('javascript', {
+    'class-name': {
+      pattern: /(\b(?:class|extends|implements|instanceof|interface|new|type)\s+)(?!keyof\b)(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*(?:\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>)?/,
+      lookbehind: true,
+      greedy: true,
+      inside: null // see below
+
+    },
+    'builtin': /\b(?:Array|Function|Promise|any|boolean|console|never|number|string|symbol|unknown)\b/
+  }); // The keywords TypeScript adds to JavaScript
+
+  Prism.languages.typescript.keyword.push(/\b(?:abstract|declare|is|keyof|readonly|require)\b/, // keywords that have to be followed by an identifier
+  /\b(?:asserts|infer|interface|module|namespace|type)\b(?=\s*(?:[{_$a-zA-Z\xA0-\uFFFF]|$))/, // This is for `import type *, {}`
+  /\btype\b(?=\s*(?:[\{*]|$))/); // doesn't work with TS because TS is too complex
+
+  delete Prism.languages.typescript['parameter'];
+  delete Prism.languages.typescript['literal-property']; // a version of typescript specifically for highlighting types
+
+  var typeInside = Prism.languages.extend('typescript', {});
+  delete typeInside['class-name'];
+  Prism.languages.typescript['class-name'].inside = typeInside;
+  Prism.languages.insertBefore('typescript', 'function', {
+    'decorator': {
+      pattern: /@[$\w\xA0-\uFFFF]+/,
+      inside: {
+        'at': {
+          pattern: /^@/,
+          alias: 'operator'
+        },
+        'function': /^[\s\S]+/
+      }
+    },
+    'generic-function': {
+      // e.g. foo<T extends "bar" | "baz">( ...
+      pattern: /#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>(?=\s*\()/,
+      greedy: true,
+      inside: {
+        'function': /^#?(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*/,
+        'generic': {
+          pattern: /<[\s\S]+/,
+          // everything after the first <
+          alias: 'class-name',
+          inside: typeInside
+        }
+      }
+    }
+  });
+  Prism.languages.ts = Prism.languages.typescript;
+})(prism);
+/* "prismjs/components/prism-js-extras" */
+
+
+(function (Prism) {
+  Prism.languages.insertBefore('javascript', 'function-variable', {
+    'method-variable': {
+      pattern: RegExp('(\\.\\s*)' + Prism.languages.javascript['function-variable'].pattern.source),
+      lookbehind: true,
+      alias: ['function-variable', 'method', 'function', 'property-access']
+    }
+  });
+  Prism.languages.insertBefore('javascript', 'function', {
+    'method': {
+      pattern: RegExp('(\\.\\s*)' + Prism.languages.javascript['function'].source),
+      lookbehind: true,
+      alias: ['function', 'property-access']
+    }
+  });
+  Prism.languages.insertBefore('javascript', 'constant', {
+    'known-class-name': [{
+      // standard built-ins
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+      pattern: /\b(?:(?:Float(?:32|64)|(?:Int|Uint)(?:8|16|32)|Uint8Clamped)?Array|ArrayBuffer|BigInt|Boolean|DataView|Date|Error|Function|Intl|JSON|(?:Weak)?(?:Map|Set)|Math|Number|Object|Promise|Proxy|Reflect|RegExp|String|Symbol|WebAssembly)\b/,
+      alias: 'class-name'
+    }, {
+      // errors
+      pattern: /\b(?:[A-Z]\w*)Error\b/,
+      alias: 'class-name'
+    }]
+  });
+  /**
+   * Replaces the `<ID>` placeholder in the given pattern with a pattern for general JS identifiers.
+   *
+   * @param {string} source
+   * @param {string} [flags]
+   * @returns {RegExp}
+   */
+
+  function withId(source, flags) {
+    return RegExp(source.replace(/<ID>/g, function () {
+      return /(?!\s)[_$a-zA-Z\xA0-\uFFFF](?:(?!\s)[$\w\xA0-\uFFFF])*/.source;
+    }), flags);
+  }
+
+  Prism.languages.insertBefore('javascript', 'keyword', {
+    'imports': {
+      // https://tc39.es/ecma262/#sec-imports
+      pattern: withId(/(\bimport\b\s*)(?:<ID>(?:\s*,\s*(?:\*\s*as\s+<ID>|\{[^{}]*\}))?|\*\s*as\s+<ID>|\{[^{}]*\})(?=\s*\bfrom\b)/.source),
+      lookbehind: true,
+      inside: Prism.languages.javascript
+    },
+    'exports': {
+      // https://tc39.es/ecma262/#sec-exports
+      pattern: withId(/(\bexport\b\s*)(?:\*(?:\s*as\s+<ID>)?(?=\s*\bfrom\b)|\{[^{}]*\})/.source),
+      lookbehind: true,
+      inside: Prism.languages.javascript
+    }
+  });
+  Prism.languages.javascript['keyword'].unshift({
+    pattern: /\b(?:as|default|export|from|import)\b/,
+    alias: 'module'
+  }, {
+    pattern: /\b(?:await|break|catch|continue|do|else|finally|for|if|return|switch|throw|try|while|yield)\b/,
+    alias: 'control-flow'
+  }, {
+    pattern: /\bnull\b/,
+    alias: ['null', 'nil']
+  }, {
+    pattern: /\bundefined\b/,
+    alias: 'nil'
+  });
+  Prism.languages.insertBefore('javascript', 'operator', {
+    'spread': {
+      pattern: /\.{3}/,
+      alias: 'operator'
+    },
+    'arrow': {
+      pattern: /=>/,
+      alias: 'operator'
+    }
+  });
+  Prism.languages.insertBefore('javascript', 'punctuation', {
+    'property-access': {
+      pattern: withId(/(\.\s*)#?<ID>/.source),
+      lookbehind: true
+    },
+    'maybe-class-name': {
+      pattern: /(^|[^$\w\xA0-\uFFFF])[A-Z][$\w\xA0-\uFFFF]+/,
+      lookbehind: true
+    },
+    'dom': {
+      // this contains only a few commonly used DOM variables
+      pattern: /\b(?:document|(?:local|session)Storage|location|navigator|performance|window)\b/,
+      alias: 'variable'
+    },
+    'console': {
+      pattern: /\bconsole(?=\s*\.)/,
+      alias: 'class-name'
+    }
+  }); // add 'maybe-class-name' to tokens which might be a class name
+
+  var maybeClassNameTokens = ['function', 'function-variable', 'method', 'method-variable', 'property-access'];
+
+  for (var i = 0; i < maybeClassNameTokens.length; i++) {
+    var token = maybeClassNameTokens[i];
+    var value = Prism.languages.javascript[token]; // convert regex to object
+
+    if (Prism.util.type(value) === 'RegExp') {
+      value = Prism.languages.javascript[token] = {
+        pattern: value
+      };
+    } // keep in mind that we don't support arrays
+
+
+    var inside = value.inside || {};
+    value.inside = inside;
+    inside['maybe-class-name'] = /^[A-Z][\s\S]*/;
+  }
+})(prism);
+/* "prismjs/components/prism-jsx" */
+
+
+(function (Prism) {
+  var javascript = Prism.util.clone(Prism.languages.javascript);
+  var space = /(?:\s|\/\/.*(?!.)|\/\*(?:[^*]|\*(?!\/))\*\/)/.source;
+  var braces = /(?:\{(?:\{(?:\{[^{}]*\}|[^{}])*\}|[^{}])*\})/.source;
+  var spread = /(?:\{<S>*\.{3}(?:[^{}]|<BRACES>)*\})/.source;
+  /**
+   * @param {string} source
+   * @param {string} [flags]
+   */
+
+  function re(source, flags) {
+    source = source.replace(/<S>/g, function () {
+      return space;
+    }).replace(/<BRACES>/g, function () {
+      return braces;
+    }).replace(/<SPREAD>/g, function () {
+      return spread;
+    });
+    return RegExp(source, flags);
+  }
+
+  spread = re(spread).source;
+  Prism.languages.jsx = Prism.languages.extend('markup', javascript);
+  Prism.languages.jsx.tag.pattern = re(/<\/?(?:[\w.:-]+(?:<S>+(?:[\w.:$-]+(?:=(?:"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*'|[^\s{'"/>=]+|<BRACES>))?|<SPREAD>))*<S>*\/?)?>/.source);
+  Prism.languages.jsx.tag.inside['tag'].pattern = /^<\/?[^\s>\/]*/;
+  Prism.languages.jsx.tag.inside['attr-value'].pattern = /=(?!\{)(?:"(?:\\[\s\S]|[^\\"])*"|'(?:\\[\s\S]|[^\\'])*'|[^\s'">]+)/;
+  Prism.languages.jsx.tag.inside['tag'].inside['class-name'] = /^[A-Z]\w*(?:\.[A-Z]\w*)*$/;
+  Prism.languages.jsx.tag.inside['comment'] = javascript['comment'];
+  Prism.languages.insertBefore('inside', 'attr-name', {
+    'spread': {
+      pattern: re(/<SPREAD>/.source),
+      inside: Prism.languages.jsx
+    }
+  }, Prism.languages.jsx.tag);
+  Prism.languages.insertBefore('inside', 'special-attr', {
+    'script': {
+      // Allow for two levels of nesting
+      pattern: re(/=<BRACES>/.source),
+      alias: 'language-javascript',
+      inside: {
+        'script-punctuation': {
+          pattern: /^=(?=\{)/,
+          alias: 'punctuation'
+        },
+        rest: Prism.languages.jsx
+      }
+    }
+  }, Prism.languages.jsx.tag); // The following will handle plain text inside tags
+
+  var stringifyToken = function (token) {
+    if (!token) {
+      return '';
+    }
+
+    if (typeof token === 'string') {
+      return token;
+    }
+
+    if (typeof token.content === 'string') {
+      return token.content;
+    }
+
+    return token.content.map(stringifyToken).join('');
+  };
+
+  var walkTokens = function (tokens) {
+    var openedTags = [];
+
+    for (var i = 0; i < tokens.length; i++) {
+      var token = tokens[i];
+      var notTagNorBrace = false;
+
+      if (typeof token !== 'string') {
+        if (token.type === 'tag' && token.content[0] && token.content[0].type === 'tag') {
+          // We found a tag, now find its kind
+          if (token.content[0].content[0].content === '</') {
+            // Closing tag
+            if (openedTags.length > 0 && openedTags[openedTags.length - 1].tagName === stringifyToken(token.content[0].content[1])) {
+              // Pop matching opening tag
+              openedTags.pop();
+            }
+          } else {
+            if (token.content[token.content.length - 1].content === '/>') ; else {
+              // Opening tag
+              openedTags.push({
+                tagName: stringifyToken(token.content[0].content[1]),
+                openedBraces: 0
+              });
+            }
+          }
+        } else if (openedTags.length > 0 && token.type === 'punctuation' && token.content === '{') {
+          // Here we might have entered a JSX context inside a tag
+          openedTags[openedTags.length - 1].openedBraces++;
+        } else if (openedTags.length > 0 && openedTags[openedTags.length - 1].openedBraces > 0 && token.type === 'punctuation' && token.content === '}') {
+          // Here we might have left a JSX context inside a tag
+          openedTags[openedTags.length - 1].openedBraces--;
+        } else {
+          notTagNorBrace = true;
+        }
+      }
+
+      if (notTagNorBrace || typeof token === 'string') {
+        if (openedTags.length > 0 && openedTags[openedTags.length - 1].openedBraces === 0) {
+          // Here we are inside a tag, and not inside a JSX context.
+          // That's plain text: drop any tokens matched.
+          var plainText = stringifyToken(token); // And merge text with adjacent text
+
+          if (i < tokens.length - 1 && (typeof tokens[i + 1] === 'string' || tokens[i + 1].type === 'plain-text')) {
+            plainText += stringifyToken(tokens[i + 1]);
+            tokens.splice(i + 1, 1);
+          }
+
+          if (i > 0 && (typeof tokens[i - 1] === 'string' || tokens[i - 1].type === 'plain-text')) {
+            plainText = stringifyToken(tokens[i - 1]) + plainText;
+            tokens.splice(i - 1, 1);
+            i--;
+          }
+
+          tokens[i] = new Prism.Token('plain-text', plainText, null, plainText);
+        }
+      }
+
+      if (token.content && typeof token.content !== 'string') {
+        walkTokens(token.content);
+      }
+    }
+  };
+
+  Prism.hooks.add('after-tokenize', function (env) {
+    if (env.language !== 'jsx' && env.language !== 'tsx') {
+      return;
+    }
+
+    walkTokens(env.tokens);
+  });
+})(prism);
+/* "prismjs/components/prism-diff" */
+
+
+(function (Prism) {
+  Prism.languages.diff = {
+    'coord': [// Match all kinds of coord lines (prefixed by "+++", "---" or "***").
+    /^(?:\*{3}|-{3}|\+{3}).*$/m, // Match "@@ ... @@" coord lines in unified diff.
+    /^@@.*@@$/m, // Match coord lines in normal diff (starts with a number).
+    /^\d.*$/m] // deleted, inserted, unchanged, diff
+
+  };
+  /**
+   * A map from the name of a block to its line prefix.
+   *
+   * @type {Object<string, string>}
+   */
+
+  var PREFIXES = {
+    'deleted-sign': '-',
+    'deleted-arrow': '<',
+    'inserted-sign': '+',
+    'inserted-arrow': '>',
+    'unchanged': ' ',
+    'diff': '!'
+  }; // add a token for each prefix
+
+  Object.keys(PREFIXES).forEach(function (name) {
+    var prefix = PREFIXES[name];
+    var alias = [];
+
+    if (!/^\w+$/.test(name)) {
+      // "deleted-sign" -> "deleted"
+      alias.push(/\w+/.exec(name)[0]);
+    }
+
+    if (name === 'diff') {
+      alias.push('bold');
+    }
+
+    Prism.languages.diff[name] = {
+      pattern: RegExp('^(?:[' + prefix + '].*(?:\r\n?|\n|(?![\\s\\S])))+', 'm'),
+      alias: alias,
+      inside: {
+        'line': {
+          pattern: /(.)(?=[\s\S]).*(?:\r\n?|\n)?/,
+          lookbehind: true
+        },
+        'prefix': {
+          pattern: /[\s\S]/,
+          alias: /\w+/.exec(name)[0]
+        }
+      }
+    };
+  }); // make prefixes available to Diff plugin
+
+  Object.defineProperty(Prism.languages.diff, 'PREFIXES', {
+    value: PREFIXES
+  });
+})(prism);
+/* "prismjs/components/prism-git" */
+
+
+prism.languages.git = {
+  /*
+   * A simple one line comment like in a git status command
+   * For instance:
+   * $ git status
+   * # On branch infinite-scroll
+   * # Your branch and 'origin/sharedBranches/frontendTeam/infinite-scroll' have diverged,
+   * # and have 1 and 2 different commits each, respectively.
+   * nothing to commit (working directory clean)
+   */
+  'comment': /^#.*/m,
+
+  /*
+   * Regexp to match the changed lines in a git diff output. Check the example below.
+   */
+  'deleted': /^[-–].*/m,
+  'inserted': /^\+.*/m,
+
+  /*
+   * a string (double and simple quote)
+   */
+  'string': /("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+
+  /*
+   * a git command. It starts with a random prompt finishing by a $, then "git" then some other parameters
+   * For instance:
+   * $ git add file.txt
+   */
+  'command': {
+    pattern: /^.*\$ git .*$/m,
+    inside: {
+      /*
+       * A git command can contain a parameter starting by a single or a double dash followed by a string
+       * For instance:
+       * $ git diff --cached
+       * $ git log -p
+       */
+      'parameter': /\s--?\w+/
+    }
+  },
+
+  /*
+   * Coordinates displayed in a git diff command
+   * For instance:
+   * $ git diff
+   * diff --git file.txt file.txt
+   * index 6214953..1d54a52 100644
+   * --- file.txt
+   * +++ file.txt
+   * @@ -1 +1,2 @@
+   * -Here's my tetx file
+   * +Here's my text file
+   * +And this is the second line
+   */
+  'coord': /^@@.*@@$/m,
+
+  /*
+   * Match a "commit [SHA1]" line in a git log output.
+   * For instance:
+   * $ git log
+   * commit a11a14ef7e26f2ca62d4b35eac455ce636d0dc09
+   * Author: lgiraudel
+   * Date:   Mon Feb 17 11:18:34 2014 +0100
+   *
+   *     Add of a new line
+   */
+  'commit-sha1': /^commit \w{40}$/m
+};
+/* "prismjs/components/prism-go" */
+
+prism.languages.go = prism.languages.extend('clike', {
+  'string': {
+    pattern: /(^|[^\\])"(?:\\.|[^"\\\r\n])*"|`[^`]*`/,
+    lookbehind: true,
+    greedy: true
+  },
+  'keyword': /\b(?:break|case|chan|const|continue|default|defer|else|fallthrough|for|func|go(?:to)?|if|import|interface|map|package|range|return|select|struct|switch|type|var)\b/,
+  'boolean': /\b(?:_|false|iota|nil|true)\b/,
+  'number': [// binary and octal integers
+  /\b0(?:b[01_]+|o[0-7_]+)i?\b/i, // hexadecimal integers and floats
+  /\b0x(?:[a-f\d_]+(?:\.[a-f\d_]*)?|\.[a-f\d_]+)(?:p[+-]?\d+(?:_\d+)*)?i?(?!\w)/i, // decimal integers and floats
+  /(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?[\d_]+)?i?(?!\w)/i],
+  'operator': /[*\/%^!=]=?|\+[=+]?|-[=-]?|\|[=|]?|&(?:=|&|\^=?)?|>(?:>=?|=)?|<(?:<=?|=|-)?|:=|\.\.\./,
+  'builtin': /\b(?:append|bool|byte|cap|close|complex|complex(?:64|128)|copy|delete|error|float(?:32|64)|u?int(?:8|16|32|64)?|imag|len|make|new|panic|print(?:ln)?|real|recover|rune|string|uintptr)\b/
+});
+prism.languages.insertBefore('go', 'string', {
+  'char': {
+    pattern: /'(?:\\.|[^'\\\r\n]){0,10}'/,
+    greedy: true
+  }
+});
+delete prism.languages.go['class-name'];
+/* "prismjs/components/prism-markup-templating" */
+
+(function (Prism) {
+  /**
+   * Returns the placeholder for the given language id and index.
+   *
+   * @param {string} language
+   * @param {string|number} index
+   * @returns {string}
+   */
+  function getPlaceholder(language, index) {
+    return '___' + language.toUpperCase() + index + '___';
+  }
+
+  Object.defineProperties(Prism.languages['markup-templating'] = {}, {
+    buildPlaceholders: {
+      /**
+       * Tokenize all inline templating expressions matching `placeholderPattern`.
+       *
+       * If `replaceFilter` is provided, only matches of `placeholderPattern` for which `replaceFilter` returns
+       * `true` will be replaced.
+       *
+       * @param {object} env The environment of the `before-tokenize` hook.
+       * @param {string} language The language id.
+       * @param {RegExp} placeholderPattern The matches of this pattern will be replaced by placeholders.
+       * @param {(match: string) => boolean} [replaceFilter]
+       */
+      value: function (env, language, placeholderPattern, replaceFilter) {
+        if (env.language !== language) {
+          return;
+        }
+
+        var tokenStack = env.tokenStack = [];
+        env.code = env.code.replace(placeholderPattern, function (match) {
+          if (typeof replaceFilter === 'function' && !replaceFilter(match)) {
+            return match;
+          }
+
+          var i = tokenStack.length;
+          var placeholder; // Check for existing strings
+
+          while (env.code.indexOf(placeholder = getPlaceholder(language, i)) !== -1) {
+            ++i;
+          } // Create a sparse array
+
+
+          tokenStack[i] = match;
+          return placeholder;
+        }); // Switch the grammar to markup
+
+        env.grammar = Prism.languages.markup;
+      }
+    },
+    tokenizePlaceholders: {
+      /**
+       * Replace placeholders with proper tokens after tokenizing.
+       *
+       * @param {object} env The environment of the `after-tokenize` hook.
+       * @param {string} language The language id.
+       */
+      value: function (env, language) {
+        if (env.language !== language || !env.tokenStack) {
+          return;
+        } // Switch the grammar back
+
+
+        env.grammar = Prism.languages[language];
+        var j = 0;
+        var keys = Object.keys(env.tokenStack);
+
+        function walkTokens(tokens) {
+          for (var i = 0; i < tokens.length; i++) {
+            // all placeholders are replaced already
+            if (j >= keys.length) {
+              break;
+            }
+
+            var token = tokens[i];
+
+            if (typeof token === 'string' || token.content && typeof token.content === 'string') {
+              var k = keys[j];
+              var t = env.tokenStack[k];
+              var s = typeof token === 'string' ? token : token.content;
+              var placeholder = getPlaceholder(language, k);
+              var index = s.indexOf(placeholder);
+
+              if (index > -1) {
+                ++j;
+                var before = s.substring(0, index);
+                var middle = new Prism.Token(language, Prism.tokenize(t, env.grammar), 'language-' + language, t);
+                var after = s.substring(index + placeholder.length);
+                var replacement = [];
+
+                if (before) {
+                  replacement.push.apply(replacement, walkTokens([before]));
+                }
+
+                replacement.push(middle);
+
+                if (after) {
+                  replacement.push.apply(replacement, walkTokens([after]));
+                }
+
+                if (typeof token === 'string') {
+                  tokens.splice.apply(tokens, [i, 1].concat(replacement));
+                } else {
+                  token.content = replacement;
+                }
+              }
+            } else if (token.content
+            /* && typeof token.content !== 'string' */
+            ) {
+                walkTokens(token.content);
+              }
+          }
+
+          return tokens;
+        }
+
+        walkTokens(env.tokens);
+      }
+    }
+  });
+})(prism);
+/* "prismjs/components/prism-handlebars" */
+
+
+(function (Prism) {
+  Prism.languages.handlebars = {
+    'comment': /\{\{![\s\S]*?\}\}/,
+    'delimiter': {
+      pattern: /^\{\{\{?|\}\}\}?$/,
+      alias: 'punctuation'
+    },
+    'string': /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
+    'number': /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee][+-]?\d+)?/,
+    'boolean': /\b(?:false|true)\b/,
+    'block': {
+      pattern: /^(\s*(?:~\s*)?)[#\/]\S+?(?=\s*(?:~\s*)?$|\s)/,
+      lookbehind: true,
+      alias: 'keyword'
+    },
+    'brackets': {
+      pattern: /\[[^\]]+\]/,
+      inside: {
+        punctuation: /\[|\]/,
+        variable: /[\s\S]+/
+      }
+    },
+    'punctuation': /[!"#%&':()*+,.\/;<=>@\[\\\]^`{|}~]/,
+    'variable': /[^!"#%&'()*+,\/;<=>@\[\\\]^`{|}~\s]+/
+  };
+  Prism.hooks.add('before-tokenize', function (env) {
+    var handlebarsPattern = /\{\{\{[\s\S]+?\}\}\}|\{\{[\s\S]+?\}\}/g;
+    Prism.languages['markup-templating'].buildPlaceholders(env, 'handlebars', handlebarsPattern);
+  });
+  Prism.hooks.add('after-tokenize', function (env) {
+    Prism.languages['markup-templating'].tokenizePlaceholders(env, 'handlebars');
+  });
+  Prism.languages.hbs = Prism.languages.handlebars;
+})(prism);
+/* "prismjs/components/prism-json" */
+// https://www.json.org/json-en.html
+
+
+prism.languages.json = {
+  'property': {
+    pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?=\s*:)/,
+    lookbehind: true,
+    greedy: true
+  },
+  'string': {
+    pattern: /(^|[^\\])"(?:\\.|[^\\"\r\n])*"(?!\s*:)/,
+    lookbehind: true,
+    greedy: true
+  },
+  'comment': {
+    pattern: /\/\/.*|\/\*[\s\S]*?(?:\*\/|$)/,
+    greedy: true
+  },
+  'number': /-?\b\d+(?:\.\d+)?(?:e[+-]?\d+)?\b/i,
+  'punctuation': /[{}[\],]/,
+  'operator': /:/,
+  'boolean': /\b(?:false|true)\b/,
+  'null': {
+    pattern: /\bnull\b/,
+    alias: 'keyword'
+  }
+};
+prism.languages.webmanifest = prism.languages.json;
+/* "prismjs/components/prism-less" */
+
+/* FIXME :
+ :extend() is not handled specifically : its highlighting is buggy.
+ Mixin usage must be inside a ruleset to be highlighted.
+ At-rules (e.g. import) containing interpolations are buggy.
+ Detached rulesets are highlighted as at-rules.
+ A comment before a mixin usage prevents the latter to be properly highlighted.
+ */
+
+prism.languages.less = prism.languages.extend('css', {
+  'comment': [/\/\*[\s\S]*?\*\//, {
+    pattern: /(^|[^\\])\/\/.*/,
+    lookbehind: true
+  }],
+  'atrule': {
+    pattern: /@[\w-](?:\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};\s]|\s+(?!\s))*?(?=\s*\{)/,
+    inside: {
+      'punctuation': /[:()]/
+    }
+  },
+  // selectors and mixins are considered the same
+  'selector': {
+    pattern: /(?:@\{[\w-]+\}|[^{};\s@])(?:@\{[\w-]+\}|\((?:[^(){}]|\([^(){}]*\))*\)|[^(){};@\s]|\s+(?!\s))*?(?=\s*\{)/,
+    inside: {
+      // mixin parameters
+      'variable': /@+[\w-]+/
+    }
+  },
+  'property': /(?:@\{[\w-]+\}|[\w-])+(?:\+_?)?(?=\s*:)/,
+  'operator': /[+\-*\/]/
+});
+prism.languages.insertBefore('less', 'property', {
+  'variable': [// Variable declaration (the colon must be consumed!)
+  {
+    pattern: /@[\w-]+\s*:/,
+    inside: {
+      'punctuation': /:/
+    }
+  }, // Variable usage
+  /@@?[\w-]+/],
+  'mixin-usage': {
+    pattern: /([{;]\s*)[.#](?!\d)[\w-].*?(?=[(;])/,
+    lookbehind: true,
+    alias: 'function'
+  }
+});
+/* "prismjs/components/prism-makefile" */
+
+prism.languages.makefile = {
+  'comment': {
+    pattern: /(^|[^\\])#(?:\\(?:\r\n|[\s\S])|[^\\\r\n])*/,
+    lookbehind: true
+  },
+  'string': {
+    pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+    greedy: true
+  },
+  'builtin-target': {
+    pattern: /\.[A-Z][^:#=\s]+(?=\s*:(?!=))/,
+    alias: 'builtin'
+  },
+  'target': {
+    pattern: /^(?:[^:=\s]|[ \t]+(?![\s:]))+(?=\s*:(?!=))/m,
+    alias: 'symbol',
+    inside: {
+      'variable': /\$+(?:(?!\$)[^(){}:#=\s]+|(?=[({]))/
+    }
+  },
+  'variable': /\$+(?:(?!\$)[^(){}:#=\s]+|\([@*%<^+?][DF]\)|(?=[({]))/,
+  // Directives
+  'keyword': /-include\b|\b(?:define|else|endef|endif|export|ifn?def|ifn?eq|include|override|private|sinclude|undefine|unexport|vpath)\b/,
+  'function': {
+    pattern: /(\()(?:abspath|addsuffix|and|basename|call|dir|error|eval|file|filter(?:-out)?|findstring|firstword|flavor|foreach|guile|if|info|join|lastword|load|notdir|or|origin|patsubst|realpath|shell|sort|strip|subst|suffix|value|warning|wildcard|word(?:list|s)?)(?=[ \t])/,
+    lookbehind: true
+  },
+  'operator': /(?:::|[?:+!])?=|[|@]/,
+  'punctuation': /[:;(){}]/
+};
+/* "prismjs/components/prism-objectivec" */
+
+prism.languages.objectivec = prism.languages.extend('c', {
+  'string': {
+    pattern: /@?"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,
+    greedy: true
+  },
+  'keyword': /\b(?:asm|auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|in|inline|int|long|register|return|self|short|signed|sizeof|static|struct|super|switch|typedef|typeof|union|unsigned|void|volatile|while)\b|(?:@interface|@end|@implementation|@protocol|@class|@public|@protected|@private|@property|@try|@catch|@finally|@throw|@synthesize|@dynamic|@selector)\b/,
+  'operator': /-[->]?|\+\+?|!=?|<<?=?|>>?=?|==?|&&?|\|\|?|[~^%?*\/@]/
+});
+delete prism.languages.objectivec['class-name'];
+prism.languages.objc = prism.languages.objectivec;
+/* "prismjs/components/prism-ocaml" */
+// https://ocaml.org/manual/lex.html
+
+prism.languages.ocaml = {
+  'comment': {
+    pattern: /\(\*[\s\S]*?\*\)/,
+    greedy: true
+  },
+  'char': {
+    pattern: /'(?:[^\\\r\n']|\\(?:.|[ox]?[0-9a-f]{1,3}))'/i,
+    greedy: true
+  },
+  'string': [{
+    pattern: /"(?:\\(?:[\s\S]|\r\n)|[^\\\r\n"])*"/,
+    greedy: true
+  }, {
+    pattern: /\{([a-z_]*)\|[\s\S]*?\|\1\}/,
+    greedy: true
+  }],
+  'number': [// binary and octal
+  /\b(?:0b[01][01_]*|0o[0-7][0-7_]*)\b/i, // hexadecimal
+  /\b0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]*)?(?:p[+-]?\d[\d_]*)?(?!\w)/i, // decimal
+  /\b\d[\d_]*(?:\.[\d_]*)?(?:e[+-]?\d[\d_]*)?(?!\w)/i],
+  'directive': {
+    pattern: /\B#\w+/,
+    alias: 'property'
+  },
+  'label': {
+    pattern: /\B~\w+/,
+    alias: 'property'
+  },
+  'type-variable': {
+    pattern: /\B'\w+/,
+    alias: 'function'
+  },
+  'variant': {
+    pattern: /`\w+/,
+    alias: 'symbol'
+  },
+  // For the list of keywords and operators,
+  // see: http://caml.inria.fr/pub/docs/manual-ocaml/lex.html#sec84
+  'keyword': /\b(?:as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|match|method|module|mutable|new|nonrec|object|of|open|private|rec|sig|struct|then|to|try|type|val|value|virtual|when|where|while|with)\b/,
+  'boolean': /\b(?:false|true)\b/,
+  'operator-like-punctuation': {
+    pattern: /\[[<>|]|[>|]\]|\{<|>\}/,
+    alias: 'punctuation'
+  },
+  // Custom operators are allowed
+  'operator': /\.[.~]|:[=>]|[=<>@^|&+\-*\/$%!?~][!$%&*+\-.\/:<=>?@^|~]*|\b(?:and|asr|land|lor|lsl|lsr|lxor|mod|or)\b/,
+  'punctuation': /;;|::|[(){}\[\].,:;#]|\b_\b/
+};
+/* "prismjs/components/prism-python" */
+
+prism.languages.python = {
+  'comment': {
+    pattern: /(^|[^\\])#.*/,
+    lookbehind: true,
+    greedy: true
+  },
+  'string-interpolation': {
+    pattern: /(?:f|fr|rf)(?:("""|''')[\s\S]*?\1|("|')(?:\\.|(?!\2)[^\\\r\n])*\2)/i,
+    greedy: true,
+    inside: {
+      'interpolation': {
+        // "{" <expression> <optional "!s", "!r", or "!a"> <optional ":" format specifier> "}"
+        pattern: /((?:^|[^{])(?:\{\{)*)\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}]|\{(?!\{)(?:[^{}])+\})+\})+\}/,
+        lookbehind: true,
+        inside: {
+          'format-spec': {
+            pattern: /(:)[^:(){}]+(?=\}$)/,
+            lookbehind: true
+          },
+          'conversion-option': {
+            pattern: /![sra](?=[:}]$)/,
+            alias: 'punctuation'
+          },
+          rest: null
+        }
+      },
+      'string': /[\s\S]+/
+    }
+  },
+  'triple-quoted-string': {
+    pattern: /(?:[rub]|br|rb)?("""|''')[\s\S]*?\1/i,
+    greedy: true,
+    alias: 'string'
+  },
+  'string': {
+    pattern: /(?:[rub]|br|rb)?("|')(?:\\.|(?!\1)[^\\\r\n])*\1/i,
+    greedy: true
+  },
+  'function': {
+    pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/g,
+    lookbehind: true
+  },
+  'class-name': {
+    pattern: /(\bclass\s+)\w+/i,
+    lookbehind: true
+  },
+  'decorator': {
+    pattern: /(^[\t ]*)@\w+(?:\.\w+)*/m,
+    lookbehind: true,
+    alias: ['annotation', 'punctuation'],
+    inside: {
+      'punctuation': /\./
+    }
+  },
+  'keyword': /\b(?:_(?=\s*:)|and|as|assert|async|await|break|case|class|continue|def|del|elif|else|except|exec|finally|for|from|global|if|import|in|is|lambda|match|nonlocal|not|or|pass|print|raise|return|try|while|with|yield)\b/,
+  'builtin': /\b(?:__import__|abs|all|any|apply|ascii|basestring|bin|bool|buffer|bytearray|bytes|callable|chr|classmethod|cmp|coerce|compile|complex|delattr|dict|dir|divmod|enumerate|eval|execfile|file|filter|float|format|frozenset|getattr|globals|hasattr|hash|help|hex|id|input|int|intern|isinstance|issubclass|iter|len|list|locals|long|map|max|memoryview|min|next|object|oct|open|ord|pow|property|range|raw_input|reduce|reload|repr|reversed|round|set|setattr|slice|sorted|staticmethod|str|sum|super|tuple|type|unichr|unicode|vars|xrange|zip)\b/,
+  'boolean': /\b(?:False|None|True)\b/,
+  'number': /\b0(?:b(?:_?[01])+|o(?:_?[0-7])+|x(?:_?[a-f0-9])+)\b|(?:\b\d+(?:_\d+)*(?:\.(?:\d+(?:_\d+)*)?)?|\B\.\d+(?:_\d+)*)(?:e[+-]?\d+(?:_\d+)*)?j?(?!\w)/i,
+  'operator': /[-+%=]=?|!=|:=|\*\*?=?|\/\/?=?|<[<=>]?|>[=>]?|[&|^~]/,
+  'punctuation': /[{}[\];(),.:]/
+};
+prism.languages.python['string-interpolation'].inside['interpolation'].inside.rest = prism.languages.python;
+prism.languages.py = prism.languages.python;
+/* "prismjs/components/prism-reason" */
+
+prism.languages.reason = prism.languages.extend('clike', {
+  'string': {
+    pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
+    greedy: true
+  },
+  // 'class-name' must be matched *after* 'constructor' defined below
+  'class-name': /\b[A-Z]\w*/,
+  'keyword': /\b(?:and|as|assert|begin|class|constraint|do|done|downto|else|end|exception|external|for|fun|function|functor|if|in|include|inherit|initializer|lazy|let|method|module|mutable|new|nonrec|object|of|open|or|private|rec|sig|struct|switch|then|to|try|type|val|virtual|when|while|with)\b/,
+  'operator': /\.{3}|:[:=]|\|>|->|=(?:==?|>)?|<=?|>=?|[|^?'#!~`]|[+\-*\/]\.?|\b(?:asr|land|lor|lsl|lsr|lxor|mod)\b/
+});
+prism.languages.insertBefore('reason', 'class-name', {
+  'char': {
+    pattern: /'(?:\\x[\da-f]{2}|\\o[0-3][0-7][0-7]|\\\d{3}|\\.|[^'\\\r\n])'/,
+    greedy: true
+  },
+  // Negative look-ahead prevents from matching things like String.capitalize
+  'constructor': /\b[A-Z]\w*\b(?!\s*\.)/,
+  'label': {
+    pattern: /\b[a-z]\w*(?=::)/,
+    alias: 'symbol'
+  }
+}); // We can't match functions property, so let's not even try.
+
+delete prism.languages.reason.function;
+/* "prismjs/components/prism-sass" */
+
+(function (Prism) {
+  Prism.languages.sass = Prism.languages.extend('css', {
+    // Sass comments don't need to be closed, only indented
+    'comment': {
+      pattern: /^([ \t]*)\/[\/*].*(?:(?:\r?\n|\r)\1[ \t].+)*/m,
+      lookbehind: true,
+      greedy: true
+    }
+  });
+  Prism.languages.insertBefore('sass', 'atrule', {
+    // We want to consume the whole line
+    'atrule-line': {
+      // Includes support for = and + shortcuts
+      pattern: /^(?:[ \t]*)[@+=].+/m,
+      greedy: true,
+      inside: {
+        'atrule': /(?:@[\w-]+|[+=])/
+      }
+    }
+  });
+  delete Prism.languages.sass.atrule;
+  var variable = /\$[-\w]+|#\{\$[-\w]+\}/;
+  var operator = [/[+*\/%]|[=!]=|<=?|>=?|\b(?:and|not|or)\b/, {
+    pattern: /(\s)-(?=\s)/,
+    lookbehind: true
+  }];
+  Prism.languages.insertBefore('sass', 'property', {
+    // We want to consume the whole line
+    'variable-line': {
+      pattern: /^[ \t]*\$.+/m,
+      greedy: true,
+      inside: {
+        'punctuation': /:/,
+        'variable': variable,
+        'operator': operator
+      }
+    },
+    // We want to consume the whole line
+    'property-line': {
+      pattern: /^[ \t]*(?:[^:\s]+ *:.*|:[^:\s].*)/m,
+      greedy: true,
+      inside: {
+        'property': [/[^:\s]+(?=\s*:)/, {
+          pattern: /(:)[^:\s]+/,
+          lookbehind: true
+        }],
+        'punctuation': /:/,
+        'variable': variable,
+        'operator': operator,
+        'important': Prism.languages.sass.important
+      }
+    }
+  });
+  delete Prism.languages.sass.property;
+  delete Prism.languages.sass.important; // Now that whole lines for other patterns are consumed,
+  // what's left should be selectors
+
+  Prism.languages.insertBefore('sass', 'punctuation', {
+    'selector': {
+      pattern: /^([ \t]*)\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,[^,\r\n]+|[^,\r\n]*)(?:,[^,\r\n]+)*)*/m,
+      lookbehind: true,
+      greedy: true
+    }
+  });
+})(prism);
+/* "prismjs/components/prism-scss" */
+
+
+prism.languages.scss = prism.languages.extend('css', {
+  'comment': {
+    pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,
+    lookbehind: true
+  },
+  'atrule': {
+    pattern: /@[\w-](?:\([^()]+\)|[^()\s]|\s+(?!\s))*?(?=\s+[{;])/,
+    inside: {
+      'rule': /@[\w-]+/ // See rest below
+
+    }
+  },
+  // url, compassified
+  'url': /(?:[-a-z]+-)?url(?=\()/i,
+  // CSS selector regex is not appropriate for Sass
+  // since there can be lot more things (var, @ directive, nesting..)
+  // a selector must start at the end of a property or after a brace (end of other rules or nesting)
+  // it can contain some characters that aren't used for defining rules or end of selector, & (parent selector), or interpolated variable
+  // the end of a selector is found when there is no rules in it ( {} or {\s}) or if there is a property (because an interpolated var
+  // can "pass" as a selector- e.g: proper#{$erty})
+  // this one was hard to do, so please be careful if you edit this one :)
+  'selector': {
+    // Initial look-ahead is used to prevent matching of blank selectors
+    pattern: /(?=\S)[^@;{}()]?(?:[^@;{}()\s]|\s+(?!\s)|#\{\$[-\w]+\})+(?=\s*\{(?:\}|\s|[^}][^:{}]*[:{][^}]))/,
+    inside: {
+      'parent': {
+        pattern: /&/,
+        alias: 'important'
+      },
+      'placeholder': /%[-\w]+/,
+      'variable': /\$[-\w]+|#\{\$[-\w]+\}/
+    }
+  },
+  'property': {
+    pattern: /(?:[-\w]|\$[-\w]|#\{\$[-\w]+\})+(?=\s*:)/,
+    inside: {
+      'variable': /\$[-\w]+|#\{\$[-\w]+\}/
+    }
+  }
+});
+prism.languages.insertBefore('scss', 'atrule', {
+  'keyword': [/@(?:content|debug|each|else(?: if)?|extend|for|forward|function|if|import|include|mixin|return|use|warn|while)\b/i, {
+    pattern: /( )(?:from|through)(?= )/,
+    lookbehind: true
+  }]
+});
+prism.languages.insertBefore('scss', 'important', {
+  // var and interpolated vars
+  'variable': /\$[-\w]+|#\{\$[-\w]+\}/
+});
+prism.languages.insertBefore('scss', 'function', {
+  'module-modifier': {
+    pattern: /\b(?:as|hide|show|with)\b/i,
+    alias: 'keyword'
+  },
+  'placeholder': {
+    pattern: /%[-\w]+/,
+    alias: 'selector'
+  },
+  'statement': {
+    pattern: /\B!(?:default|optional)\b/i,
+    alias: 'keyword'
+  },
+  'boolean': /\b(?:false|true)\b/,
+  'null': {
+    pattern: /\bnull\b/,
+    alias: 'keyword'
+  },
+  'operator': {
+    pattern: /(\s)(?:[-+*\/%]|[=!]=|<=?|>=?|and|not|or)(?=\s)/,
+    lookbehind: true
+  }
+});
+prism.languages.scss['atrule'].inside.rest = prism.languages.scss;
+/* "prismjs/components/prism-stylus" */
+
+(function (Prism) {
+  var unit = {
+    pattern: /(\b\d+)(?:%|[a-z]+)/,
+    lookbehind: true
+  }; // 123 -123 .123 -.123 12.3 -12.3
+
+  var number = {
+    pattern: /(^|[^\w.-])-?(?:\d+(?:\.\d+)?|\.\d+)/,
+    lookbehind: true
+  };
+  var inside = {
+    'comment': {
+      pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,
+      lookbehind: true
+    },
+    'url': {
+      pattern: /\burl\((["']?).*?\1\)/i,
+      greedy: true
+    },
+    'string': {
+      pattern: /("|')(?:(?!\1)[^\\\r\n]|\\(?:\r\n|[\s\S]))*\1/,
+      greedy: true
+    },
+    'interpolation': null,
+    // See below
+    'func': null,
+    // See below
+    'important': /\B!(?:important|optional)\b/i,
+    'keyword': {
+      pattern: /(^|\s+)(?:(?:else|for|if|return|unless)(?=\s|$)|@[\w-]+)/,
+      lookbehind: true
+    },
+    'hexcode': /#[\da-f]{3,6}/i,
+    'color': [/\b(?:AliceBlue|AntiqueWhite|Aqua|Aquamarine|Azure|Beige|Bisque|Black|BlanchedAlmond|Blue|BlueViolet|Brown|BurlyWood|CadetBlue|Chartreuse|Chocolate|Coral|CornflowerBlue|Cornsilk|Crimson|Cyan|DarkBlue|DarkCyan|DarkGoldenRod|DarkGr[ae]y|DarkGreen|DarkKhaki|DarkMagenta|DarkOliveGreen|DarkOrange|DarkOrchid|DarkRed|DarkSalmon|DarkSeaGreen|DarkSlateBlue|DarkSlateGr[ae]y|DarkTurquoise|DarkViolet|DeepPink|DeepSkyBlue|DimGr[ae]y|DodgerBlue|FireBrick|FloralWhite|ForestGreen|Fuchsia|Gainsboro|GhostWhite|Gold|GoldenRod|Gr[ae]y|Green|GreenYellow|HoneyDew|HotPink|IndianRed|Indigo|Ivory|Khaki|Lavender|LavenderBlush|LawnGreen|LemonChiffon|LightBlue|LightCoral|LightCyan|LightGoldenRodYellow|LightGr[ae]y|LightGreen|LightPink|LightSalmon|LightSeaGreen|LightSkyBlue|LightSlateGr[ae]y|LightSteelBlue|LightYellow|Lime|LimeGreen|Linen|Magenta|Maroon|MediumAquaMarine|MediumBlue|MediumOrchid|MediumPurple|MediumSeaGreen|MediumSlateBlue|MediumSpringGreen|MediumTurquoise|MediumVioletRed|MidnightBlue|MintCream|MistyRose|Moccasin|NavajoWhite|Navy|OldLace|Olive|OliveDrab|Orange|OrangeRed|Orchid|PaleGoldenRod|PaleGreen|PaleTurquoise|PaleVioletRed|PapayaWhip|PeachPuff|Peru|Pink|Plum|PowderBlue|Purple|Red|RosyBrown|RoyalBlue|SaddleBrown|Salmon|SandyBrown|SeaGreen|SeaShell|Sienna|Silver|SkyBlue|SlateBlue|SlateGr[ae]y|Snow|SpringGreen|SteelBlue|Tan|Teal|Thistle|Tomato|Transparent|Turquoise|Violet|Wheat|White|WhiteSmoke|Yellow|YellowGreen)\b/i, {
+      pattern: /\b(?:hsl|rgb)\(\s*\d{1,3}\s*,\s*\d{1,3}%?\s*,\s*\d{1,3}%?\s*\)\B|\b(?:hsl|rgb)a\(\s*\d{1,3}\s*,\s*\d{1,3}%?\s*,\s*\d{1,3}%?\s*,\s*(?:0|0?\.\d+|1)\s*\)\B/i,
+      inside: {
+        'unit': unit,
+        'number': number,
+        'function': /[\w-]+(?=\()/,
+        'punctuation': /[(),]/
+      }
+    }],
+    'entity': /\\[\da-f]{1,8}/i,
+    'unit': unit,
+    'boolean': /\b(?:false|true)\b/,
+    'operator': [// We want non-word chars around "-" because it is
+    // accepted in property names.
+    /~|[+!\/%<>?=]=?|[-:]=|\*[*=]?|\.{2,3}|&&|\|\||\B-\B|\b(?:and|in|is(?: a| defined| not|nt)?|not|or)\b/],
+    'number': number,
+    'punctuation': /[{}()\[\];:,]/
+  };
+  inside['interpolation'] = {
+    pattern: /\{[^\r\n}:]+\}/,
+    alias: 'variable',
+    inside: {
+      'delimiter': {
+        pattern: /^\{|\}$/,
+        alias: 'punctuation'
+      },
+      rest: inside
+    }
+  };
+  inside['func'] = {
+    pattern: /[\w-]+\([^)]*\).*/,
+    inside: {
+      'function': /^[^(]+/,
+      rest: inside
+    }
+  };
+  Prism.languages.stylus = {
+    'atrule-declaration': {
+      pattern: /(^[ \t]*)@.+/m,
+      lookbehind: true,
+      inside: {
+        'atrule': /^@[\w-]+/,
+        rest: inside
+      }
+    },
+    'variable-declaration': {
+      pattern: /(^[ \t]*)[\w$-]+\s*.?=[ \t]*(?:\{[^{}]*\}|\S.*|$)/m,
+      lookbehind: true,
+      inside: {
+        'variable': /^\S+/,
+        rest: inside
+      }
+    },
+    'statement': {
+      pattern: /(^[ \t]*)(?:else|for|if|return|unless)[ \t].+/m,
+      lookbehind: true,
+      inside: {
+        'keyword': /^\S+/,
+        rest: inside
+      }
+    },
+    // A property/value pair cannot end with a comma or a brace
+    // It cannot have indented content unless it ended with a semicolon
+    'property-declaration': {
+      pattern: /((?:^|\{)([ \t]*))(?:[\w-]|\{[^}\r\n]+\})+(?:\s*:\s*|[ \t]+)(?!\s)[^{\r\n]*(?:;|[^{\r\n,]$(?!(?:\r?\n|\r)(?:\{|\2[ \t])))/m,
+      lookbehind: true,
+      inside: {
+        'property': {
+          pattern: /^[^\s:]+/,
+          inside: {
+            'interpolation': inside.interpolation
+          }
+        },
+        rest: inside
+      }
+    },
+    // A selector can contain parentheses only as part of a pseudo-element
+    // It can span multiple lines.
+    // It must end with a comma or an accolade or have indented content.
+    'selector': {
+      pattern: /(^[ \t]*)(?:(?=\S)(?:[^{}\r\n:()]|::?[\w-]+(?:\([^)\r\n]*\)|(?![\w-]))|\{[^}\r\n]+\})+)(?:(?:\r?\n|\r)(?:\1(?:(?=\S)(?:[^{}\r\n:()]|::?[\w-]+(?:\([^)\r\n]*\)|(?![\w-]))|\{[^}\r\n]+\})+)))*(?:,$|\{|(?=(?:\r?\n|\r)(?:\{|\1[ \t])))/m,
+      lookbehind: true,
+      inside: {
+        'interpolation': inside.interpolation,
+        'comment': inside.comment,
+        'punctuation': /[{},]/
+      }
+    },
+    'func': inside.func,
+    'string': inside.string,
+    'comment': {
+      pattern: /(^|[^\\])(?:\/\*[\s\S]*?\*\/|\/\/.*)/,
+      lookbehind: true,
+      greedy: true
+    },
+    'interpolation': inside.interpolation,
+    'punctuation': /[{}()\[\];:.]/
+  };
+})(prism);
+/* "prismjs/components/prism-tsx" */
+
+
+(function (Prism) {
+  var typescript = Prism.util.clone(Prism.languages.typescript);
+  Prism.languages.tsx = Prism.languages.extend('jsx', typescript); // doesn't work with TS because TS is too complex
+
+  delete Prism.languages.tsx['parameter'];
+  delete Prism.languages.tsx['literal-property']; // This will prevent collisions between TSX tags and TS generic types.
+  // Idea by https://github.com/karlhorky
+  // Discussion: https://github.com/PrismJS/prism/issues/2594#issuecomment-710666928
+
+  var tag = Prism.languages.tsx.tag;
+  tag.pattern = RegExp(/(^|[^\w$]|(?=<\/))/.source + '(?:' + tag.pattern.source + ')', tag.pattern.flags);
+  tag.lookbehind = true;
+})(prism);
+/* "prismjs/components/prism-wasm" */
+
+
+prism.languages.wasm = {
+  'comment': [/\(;[\s\S]*?;\)/, {
+    pattern: /;;.*/,
+    greedy: true
+  }],
+  'string': {
+    pattern: /"(?:\\[\s\S]|[^"\\])*"/,
+    greedy: true
+  },
+  'keyword': [{
+    pattern: /\b(?:align|offset)=/,
+    inside: {
+      'operator': /=/
+    }
+  }, {
+    pattern: /\b(?:(?:f32|f64|i32|i64)(?:\.(?:abs|add|and|ceil|clz|const|convert_[su]\/i(?:32|64)|copysign|ctz|demote\/f64|div(?:_[su])?|eqz?|extend_[su]\/i32|floor|ge(?:_[su])?|gt(?:_[su])?|le(?:_[su])?|load(?:(?:8|16|32)_[su])?|lt(?:_[su])?|max|min|mul|neg?|nearest|or|popcnt|promote\/f32|reinterpret\/[fi](?:32|64)|rem_[su]|rot[lr]|shl|shr_[su]|sqrt|store(?:8|16|32)?|sub|trunc(?:_[su]\/f(?:32|64))?|wrap\/i64|xor))?|memory\.(?:grow|size))\b/,
+    inside: {
+      'punctuation': /\./
+    }
+  }, /\b(?:anyfunc|block|br(?:_if|_table)?|call(?:_indirect)?|data|drop|elem|else|end|export|func|get_(?:global|local)|global|if|import|local|loop|memory|module|mut|nop|offset|param|result|return|select|set_(?:global|local)|start|table|tee_local|then|type|unreachable)\b/],
+  'variable': /\$[\w!#$%&'*+\-./:<=>?@\\^`|~]+/,
+  'number': /[+-]?\b(?:\d(?:_?\d)*(?:\.\d(?:_?\d)*)?(?:[eE][+-]?\d(?:_?\d)*)?|0x[\da-fA-F](?:_?[\da-fA-F])*(?:\.[\da-fA-F](?:_?[\da-fA-D])*)?(?:[pP][+-]?\d(?:_?\d)*)?)\b|\binf\b|\bnan(?::0x[\da-fA-F](?:_?[\da-fA-D])*)?\b/,
+  'punctuation': /[()]/
+};
+
+var Prism$1 = prism;
+
+function _defineProperty$3(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function _extends$b() {
+  _extends$b = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends$b.apply(this, arguments);
+}
+
+var newlineRe = /\r\n|\r|\n/; // Empty lines need to contain a single empty token, denoted with { empty: true }
+
+var normalizeEmptyLines = function (line) {
+  if (line.length === 0) {
+    line.push({
+      types: ["plain"],
+      content: "\n",
+      empty: true
+    });
+  } else if (line.length === 1 && line[0].content === "") {
+    line[0].content = "\n";
+    line[0].empty = true;
+  }
+};
+
+var appendTypes = function (types, add) {
+  var typesSize = types.length;
+
+  if (typesSize > 0 && types[typesSize - 1] === add) {
+    return types;
+  }
+
+  return types.concat(add);
+}; // Takes an array of Prism's tokens and groups them by line, turning plain
+// strings into tokens as well. Tokens can become recursive in some cases,
+// which means that their types are concatenated. Plain-string tokens however
+// are always of type "plain".
+// This is not recursive to avoid exceeding the call-stack limit, since it's unclear
+// how nested Prism's tokens can become
+
+
+var normalizeTokens = function (tokens) {
+  var typeArrStack = [[]];
+  var tokenArrStack = [tokens];
+  var tokenArrIndexStack = [0];
+  var tokenArrSizeStack = [tokens.length];
+  var i = 0;
+  var stackIndex = 0;
+  var currentLine = [];
+  var acc = [currentLine];
+
+  while (stackIndex > -1) {
+    while ((i = tokenArrIndexStack[stackIndex]++) < tokenArrSizeStack[stackIndex]) {
+      var content = void 0;
+      var types = typeArrStack[stackIndex];
+      var tokenArr = tokenArrStack[stackIndex];
+      var token = tokenArr[i]; // Determine content and append type to types if necessary
+
+      if (typeof token === "string") {
+        types = stackIndex > 0 ? types : ["plain"];
+        content = token;
+      } else {
+        types = appendTypes(types, token.type);
+
+        if (token.alias) {
+          types = appendTypes(types, token.alias);
+        }
+
+        content = token.content;
+      } // If token.content is an array, increase the stack depth and repeat this while-loop
+
+
+      if (typeof content !== "string") {
+        stackIndex++;
+        typeArrStack.push(types);
+        tokenArrStack.push(content);
+        tokenArrIndexStack.push(0);
+        tokenArrSizeStack.push(content.length);
+        continue;
+      } // Split by newlines
+
+
+      var splitByNewlines = content.split(newlineRe);
+      var newlineCount = splitByNewlines.length;
+      currentLine.push({
+        types: types,
+        content: splitByNewlines[0]
+      }); // Create a new line for each string on a new line
+
+      for (var i$1 = 1; i$1 < newlineCount; i$1++) {
+        normalizeEmptyLines(currentLine);
+        acc.push(currentLine = []);
+        currentLine.push({
+          types: types,
+          content: splitByNewlines[i$1]
+        });
+      }
+    } // Decreate the stack depth
+
+
+    stackIndex--;
+    typeArrStack.pop();
+    tokenArrStack.pop();
+    tokenArrIndexStack.pop();
+    tokenArrSizeStack.pop();
+  }
+
+  normalizeEmptyLines(currentLine);
+  return acc;
+};
+
+var themeToDict = function (theme, language) {
+  var plain = theme.plain; // $FlowFixMe
+
+  var base = Object.create(null);
+  var themeDict = theme.styles.reduce(function (acc, themeEntry) {
+    var languages = themeEntry.languages;
+    var style = themeEntry.style;
+
+    if (languages && !languages.includes(language)) {
+      return acc;
+    }
+
+    themeEntry.types.forEach(function (type) {
+      // $FlowFixMe
+      var accStyle = _extends$b({}, acc[type], style);
+
+      acc[type] = accStyle;
+    });
+    return acc;
+  }, base); // $FlowFixMe
+
+  themeDict.root = plain; // $FlowFixMe
+
+  themeDict.plain = _extends$b({}, plain, {
+    backgroundColor: null
+  });
+  return themeDict;
+};
+
+function objectWithoutProperties(obj, exclude) {
+  var target = {};
+
+  for (var k in obj) if (Object.prototype.hasOwnProperty.call(obj, k) && exclude.indexOf(k) === -1) target[k] = obj[k];
+
+  return target;
+}
+
+var Highlight = /*@__PURE__*/function (Component) {
+  function Highlight() {
+    var this$1$1 = this;
+    var args = [],
+        len = arguments.length;
+
+    while (len--) args[len] = arguments[len];
+
+    Component.apply(this, args);
+
+    _defineProperty$3(this, "getThemeDict", function (props) {
+      if (this$1$1.themeDict !== undefined && props.theme === this$1$1.prevTheme && props.language === this$1$1.prevLanguage) {
+        return this$1$1.themeDict;
+      }
+
+      this$1$1.prevTheme = props.theme;
+      this$1$1.prevLanguage = props.language;
+      var themeDict = props.theme ? themeToDict(props.theme, props.language) : undefined;
+      return this$1$1.themeDict = themeDict;
+    });
+
+    _defineProperty$3(this, "getLineProps", function (ref) {
+      var key = ref.key;
+      var className = ref.className;
+      var style = ref.style;
+      var rest$1 = objectWithoutProperties(ref, ["key", "className", "style", "line"]);
+      var rest = rest$1;
+
+      var output = _extends$b({}, rest, {
+        className: "token-line",
+        style: undefined,
+        key: undefined
+      });
+
+      var themeDict = this$1$1.getThemeDict(this$1$1.props);
+
+      if (themeDict !== undefined) {
+        output.style = themeDict.plain;
+      }
+
+      if (style !== undefined) {
+        output.style = output.style !== undefined ? _extends$b({}, output.style, style) : style;
+      }
+
+      if (key !== undefined) {
+        output.key = key;
+      }
+
+      if (className) {
+        output.className += " " + className;
+      }
+
+      return output;
+    });
+
+    _defineProperty$3(this, "getStyleForToken", function (ref) {
+      var types = ref.types;
+      var empty = ref.empty;
+      var typesSize = types.length;
+      var themeDict = this$1$1.getThemeDict(this$1$1.props);
+
+      if (themeDict === undefined) {
+        return undefined;
+      } else if (typesSize === 1 && types[0] === "plain") {
+        return empty ? {
+          display: "inline-block"
+        } : undefined;
+      } else if (typesSize === 1 && !empty) {
+        return themeDict[types[0]];
+      }
+
+      var baseStyle = empty ? {
+        display: "inline-block"
+      } : {}; // $FlowFixMe
+
+      var typeStyles = types.map(function (type) {
+        return themeDict[type];
+      });
+      return Object.assign.apply(Object, [baseStyle].concat(typeStyles));
+    });
+
+    _defineProperty$3(this, "getTokenProps", function (ref) {
+      var key = ref.key;
+      var className = ref.className;
+      var style = ref.style;
+      var token = ref.token;
+      var rest$1 = objectWithoutProperties(ref, ["key", "className", "style", "token"]);
+      var rest = rest$1;
+
+      var output = _extends$b({}, rest, {
+        className: "token " + token.types.join(" "),
+        children: token.content,
+        style: this$1$1.getStyleForToken(token),
+        key: undefined
+      });
+
+      if (style !== undefined) {
+        output.style = output.style !== undefined ? _extends$b({}, output.style, style) : style;
+      }
+
+      if (key !== undefined) {
+        output.key = key;
+      }
+
+      if (className) {
+        output.className += " " + className;
+      }
+
+      return output;
+    });
+
+    _defineProperty$3(this, "tokenize", function (Prism, code, grammar, language) {
+      var env = {
+        code: code,
+        grammar: grammar,
+        language: language,
+        tokens: []
+      };
+      Prism.hooks.run("before-tokenize", env);
+      var tokens = env.tokens = Prism.tokenize(env.code, env.grammar, env.language);
+      Prism.hooks.run("after-tokenize", env);
+      return tokens;
+    });
+  }
+
+  if (Component) Highlight.__proto__ = Component;
+  Highlight.prototype = Object.create(Component && Component.prototype);
+  Highlight.prototype.constructor = Highlight;
+
+  Highlight.prototype.render = function render() {
+    var ref = this.props;
+    var Prism = ref.Prism;
+    var language = ref.language;
+    var code = ref.code;
+    var children = ref.children;
+    var themeDict = this.getThemeDict(this.props);
+    var grammar = Prism.languages[language];
+    var mixedTokens = grammar !== undefined ? this.tokenize(Prism, code, grammar, language) : [code];
+    var tokens = normalizeTokens(mixedTokens);
+    return children({
+      tokens: tokens,
+      className: "prism-code language-" + language,
+      style: themeDict !== undefined ? themeDict.root : {},
+      getLineProps: this.getLineProps,
+      getTokenProps: this.getTokenProps
+    });
+  };
+
+  return Highlight;
+}(reactExports.Component);
+
+var Highlight$1 = Highlight;
+
+/**
  * Copyright Zendesk, Inc.
  *
  * Use of this source code is governed under the Apache License, Version 2.0
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$2() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
+function useScrollRegion(_ref) {
+  let {
+    containerRef,
+    dependency
+  } = _ref;
+  const [containerTabIndex, setContainerTabIndex] = reactExports.useState();
+  const updateContainerTabIndex = reactExports.useMemo(() => debounce$3(() => {
+    if (containerRef.current) {
+      const regionContent = containerRef.current.children[0];
+      const regionContentHeight = regionContent.scrollHeight;
+      const regionContentWidth = regionContent.scrollWidth;
+      const containerHeight = containerRef.current.offsetHeight;
+      const containerWidth = containerRef.current.offsetWidth;
+      if (regionContentWidth > containerWidth || regionContentHeight > containerHeight) {
+        setContainerTabIndex(0);
+      } else {
+        setContainerTabIndex(undefined);
+      }
     }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
+  }, 100), [containerRef, setContainerTabIndex]);
+  reactExports.useEffect(() => {
+    addEventListener('resize', updateContainerTabIndex);
+    updateContainerTabIndex();
+    return () => {
+      removeEventListener('resize', updateContainerTabIndex);
+      updateContainerTabIndex.cancel();
+    };
+  }, [updateContainerTabIndex, dependency]);
+  return containerTabIndex;
 }
-const KEYS$1 = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  containerRef: PropTypes.any.isRequired,
+  dependency: PropTypes.any
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function _extends$a() {
+  _extends$a = Object.assign ? Object.assign.bind() : function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+    return target;
+  };
+  return _extends$a.apply(this, arguments);
+}
+
+const HUE = ['grey', 'red', 'green', 'yellow'];
+const SIZE$3 = ['small', 'medium', 'large'];
+const INHERIT_SIZE = ['inherit', ...SIZE$3];
+const TYPE_ORDERED_LIST = ['decimal', 'decimal-leading-zero', 'lower-alpha', 'lower-roman', 'upper-alpha', 'upper-roman'];
+const TYPE_UNORDERED_LIST = ['circle', 'disc', 'square'];
+const LANGUAGES = ['markup', 'bash', 'clike', 'c', 'cpp', 'css', 'javascript', 'jsx', 'coffeescript', 'actionscript', 'css-extr', 'diff', 'git', 'go', 'graphql', 'handlebars', 'json', 'less', 'makefile', 'markdown', 'objectivec', 'ocaml', 'python', 'reason', 'sass', 'scss', 'sql', 'stylus', 'tsx', 'typescript', 'wasm', 'yaml'];
+
+const COMPONENT_ID$9$2 = 'typography.font';
+[...SIZE$3, 'extralarge', '2xlarge', '3xlarge'];
+const THEME_SIZES = {
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  extralarge: 'xl',
+  '2xlarge': 'xxl',
+  '3xlarge': 'xxxl'
+};
+const fontStyles = props => {
+  const monospace = props.isMonospace && ['inherit', 'small', 'medium', 'large'].indexOf(props.size) !== -1;
+  const fontFamily = monospace && props.theme.fonts.mono;
+  const direction = props.theme.rtl ? 'rtl' : 'ltr';
+  let fontSize;
+  let fontWeight;
+  let lineHeight;
+  let color;
+  if (monospace) {
+    if (props.size === 'inherit') {
+      fontSize = 'calc(1em - 1px)';
+      lineHeight = 'normal';
+    } else {
+      const themeSize = THEME_SIZES[props.size];
+      fontSize = math(`${props.theme.fontSizes[themeSize]} - 1px`);
+      lineHeight = math(`${props.theme.lineHeights[themeSize]} - 1px`);
+    }
+  } else if (props.size !== 'inherit') {
+    const themeSize = THEME_SIZES[props.size];
+    fontSize = props.theme.fontSizes[themeSize];
+    lineHeight = props.theme.lineHeights[themeSize];
+  }
+  if (props.isBold === true) {
+    fontWeight = props.theme.fontWeights.semibold;
+  } else if (props.isBold === false || props.size !== 'inherit') {
+    fontWeight = props.theme.fontWeights.regular;
+  }
+  if (props.hue) {
+    const shade = props.hue === 'yellow' ? 700 : 600;
+    color = getColor(props.hue, shade, props.theme);
+  }
+  return Ne(["line-height:", ";color:", ";font-family:", ";font-size:", ";font-weight:", ";direction:", ";"], lineHeight, color, fontFamily, fontSize, fontWeight, direction);
+};
+const StyledFont = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$9$2,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledFont",
+  componentId: "sc-1iildbo-0"
+})(["", ";", ";"], props => fontStyles(props), props => retrieveComponentStyles(COMPONENT_ID$9$2, props));
+StyledFont.defaultProps = {
+  theme: DEFAULT_THEME,
+  size: 'inherit'
 };
 
-var DocumentPosition$1;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+const COMPONENT_ID$8$2 = 'typography.blockquote';
+const StyledBlockquote = styled.blockquote.attrs({
+  'data-garden-id': COMPONENT_ID$8$2,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledBlockquote",
+  componentId: "sc-1tt3ye0-0"
+})(["margin:0;border-", ":", " solid;border-color:", ";padding:0;padding-", ":", "px;direction:", ";& + &,p + &{margin-top:", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => props.theme.shadowWidths.sm, props => getColor('neutralHue', 400, props.theme), props => props.theme.rtl ? 'right' : 'left', props => props.theme.space.base * 4, props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.lineHeights[THEME_SIZES[props.size]], props => retrieveComponentStyles(COMPONENT_ID$8$2, props));
+StyledBlockquote.defaultProps = {
+  theme: DEFAULT_THEME
+};
 
-let idCounter$1 = 0;
-const useId = id => useId$1(id) || `id:${idCounter$1++}`;
+const COMPONENT_ID$7$2 = 'typography.code';
+const colorStyles$3$1 = props => {
+  const hue = props.hue || 'neutralHue';
+  const backgroundColor = getColor(hue, 200, props.theme);
+  const shade = hue === 'yellow' ? 800 : 700;
+  const foregroundColor = getColor(hue, shade, props.theme);
+  return Ne(["background-color:", ";color:", ";a &{color:inherit;}"], backgroundColor, foregroundColor);
+};
+const StyledCode = styled(StyledFont).attrs({
+  'data-garden-id': COMPONENT_ID$7$2,
+  'data-garden-version': '8.69.9',
+  as: 'code'
+}).withConfig({
+  displayName: "StyledCode",
+  componentId: "sc-l8yvmf-0"
+})(["border-radius:", ";padding:1.5px;", ";", ";"], props => props.theme.borderRadii.sm, props => colorStyles$3$1(props), props => retrieveComponentStyles(COMPONENT_ID$7$2, props));
+StyledCode.defaultProps = {
+  theme: DEFAULT_THEME,
+  isMonospace: true,
+  hue: 'neutralHue',
+  size: 'inherit'
+};
+
+const COMPONENT_ID$6$2 = 'typography.codeblock';
+const colorStyles$2$1 = props => {
+  const backgroundColor = getColor('neutralHue', props.isLight ? 100 : 1000, props.theme);
+  const foregroundColor = props.isLight ? props.theme.colors.foreground : getColor('neutralHue', 300, props.theme);
+  return Ne(["background-color:", ";color:", ";"], backgroundColor, foregroundColor);
+};
+const StyledCodeBlock = styled.pre.attrs({
+  'data-garden-id': COMPONENT_ID$6$2,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledCodeBlock",
+  componentId: "sc-5wky57-0"
+})(["display:table;margin:0;padding:", "px;box-sizing:border-box;width:100%;direction:ltr;white-space:pre;counter-reset:linenumber;", ";", ";"], props => props.theme.space.base * 3, props => colorStyles$2$1(props), props => retrieveComponentStyles(COMPONENT_ID$6$2, props));
+StyledCodeBlock.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$5$3 = 'typography.codeblock_container';
+const StyledCodeBlockContainer = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$5$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledCodeBlockContainer",
+  componentId: "sc-14zgbfw-0"
+})(["transition:box-shadow 0.1s ease-in-out;overflow:auto;", " ", ";"], props => focusStyles({
+  theme: props.theme
+}), props => retrieveComponentStyles(COMPONENT_ID$5$3, props));
+StyledCodeBlockContainer.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$4$3 = 'typography.codeblock_code';
+const colorStyles$1$1 = props => {
+  let backgroundColor;
+  if (props.diff) {
+    let hue;
+    switch (props.diff) {
+      case 'hunk':
+        hue = 'royal';
+        break;
+      case 'add':
+        hue = 'lime';
+        break;
+      case 'delete':
+        hue = 'crimson';
+        break;
+      case 'change':
+        hue = 'lemon';
+        break;
+    }
+    backgroundColor = getColor(hue, 400, props.theme, 0.2);
+  } else if (props.isHighlighted) {
+    const hue = props.isLight ? props.theme.palette.black : props.theme.palette.white;
+    backgroundColor = getColor(hue, 600, props.theme, 0.1);
+  }
+  return Ne(["background-color:", ";"], backgroundColor);
+};
+const lineNumberStyles = props => {
+  const color = getColor('neutralHue', props.isLight ? 600 : 500, props.theme);
+  let padding;
+  if (props.language && props.language === 'diff') {
+    padding = 0;
+  } else if (props.size === 'small') {
+    padding = props.theme.space.base * 4;
+  } else if (props.size === 'large') {
+    padding = props.theme.space.base * 7;
+  } else {
+    padding = props.theme.space.base * 6;
+  }
+  return `
+    &::before {
+      display: table-cell;
+      padding-right: ${padding}px;
+      width: 1px;
+      text-align: right;
+      color: ${color};
+      content: counter(linenumber);
+      counter-increment: linenumber;
+    }
+  `;
+};
+const StyledCodeBlockLine = styled(StyledFont).attrs({
+  'data-garden-id': COMPONENT_ID$4$3,
+  'data-garden-version': '8.69.9',
+  as: 'code',
+  isMonospace: true
+}).withConfig({
+  displayName: "StyledCodeBlockLine",
+  componentId: "sc-1goay17-0"
+})(["display:table-row;height:", ";direction:ltr;", ";", ";&::after{display:inline-block;width:", "px;content:'';}", ";"], props => props.theme.lineHeights[THEME_SIZES[props.size]], props => colorStyles$1$1(props), props => props.isNumbered && lineNumberStyles(props), props => props.theme.space.base * 3, props => retrieveComponentStyles(COMPONENT_ID$4$3, props));
+StyledCodeBlockLine.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$3$3 = 'typography.codeblock_token';
+const colorStyles$b = props => {
+  const palette = props.theme.palette;
+  const colors = {
+    boolean: props.isLight ? palette.royal[600] : palette.azure[400],
+    builtin: palette.teal[400],
+    comment: props.isLight ? palette.lime[600] : palette.mint[400],
+    constant: props.isLight ? palette.azure[400] : palette.blue[500],
+    coord: props.isLight ? palette.purple[600] : palette.blue[200],
+    deleted: props.isLight ? palette.red[700] : palette.red[200],
+    diff: props.isLight ? palette.yellow[800] : palette.yellow[200],
+    function: props.isLight ? palette.orange['M600'] : palette.yellow[300],
+    inserted: props.isLight ? palette.green[700] : palette.green[200],
+    keyword: palette.fuschia['M400'],
+    name: props.isLight ? palette.crimson[400] : palette.blue[300],
+    number: props.isLight ? palette.green[600] : palette.green[300],
+    punctuation: props.isLight ? palette.red[800] : palette.grey[600],
+    regex: palette.red[400],
+    value: props.isLight ? palette.red[700] : palette.crimson['M400']
+  };
+  return Ne(["&.builtin,&.class-name,&.tag:not(.punctuation):not(.attr-name):not(.attr-value):not(.script){color:", ";}&.doctype,&.prolog,&.tag.punctuation:not(.attr-value):not(.script):not(.spread){color:", ";}&.attribute.value,&.attr-value,&.atrule,&.cdata,&.string,&.url.content{color:", ";}&.constant,&.interpolation-punctuation{color:", ";}&.attr-name,&.attr-value.spread,&.environment,&.interpolation,&.parameter,&.property,&.property-access,&.variable{color:", ";}&.parameter.punctuation,&.attr-name + .attr-value.punctuation{color:inherit;}&.regex{color:", ";}&.boolean,&.bold:not(.diff),&.entity,&.important,&.tag:not(.punctuation):not(.attr-name):not(.attr-value):not(.script):not(.class-name){color:", ";}&.number,&.unit{color:", ";}&.assign-left,&.function,&.selector:not(.attribute){color:", ";}&.atrule.rule,&.keyword{color:", ";}&.blockquote,&.comment,&.shebang{color:", ";}", ".language-css &&.plain{color:", ";}", ".language-diff &&.coord{color:", ";}", ".language-diff &&.deleted{color:", ";}", ".language-diff &&.diff{color:", ";}", ".language-diff &&.inserted{color:", ";}"], colors.builtin, colors.punctuation, colors.value, colors.constant, colors.name, colors.regex, colors.boolean, colors.number, colors.function, colors.keyword, colors.comment, StyledCodeBlock, colors.value, StyledCodeBlock, colors.coord, StyledCodeBlock, colors.deleted, StyledCodeBlock, colors.diff, StyledCodeBlock, colors.inserted);
+};
+const StyledCodeBlockToken = styled.span.attrs({
+  'data-garden-id': COMPONENT_ID$3$3,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledCodeBlockToken",
+  componentId: "sc-1hkshdq-0"
+})(["display:inline-block;&.bold:not(.diff){font-weight:", ";}&.coord{padding-left:0.75em;}&.italic{font-style:italic;}&.prefix{width:2em;text-align:center;}", ";", ";"], props => props.theme.fontWeights.semibold, props => colorStyles$b(props), props => retrieveComponentStyles(COMPONENT_ID$3$3, props));
+StyledCodeBlockToken.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$2$5 = 'typography.ellipsis';
+const StyledEllipsis = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$2$5,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledEllipsis",
+  componentId: "sc-1u4uqmy-0"
+})(["overflow:hidden;text-overflow:ellipsis;white-space:nowrap;direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$2$5, props));
+StyledEllipsis.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$1$5 = 'typography.icon';
+const sizeStyles$d = props => {
+  const margin = props.isStart && `${props.theme.space.base * 2}px`;
+  const size = props.theme.iconSizes.md;
+  return Ne(["margin-", ":", ";width:", ";height:", ";"], props.theme.rtl ? 'left' : 'right', margin, size, size);
+};
+const StyledIcon = styled(_ref => {
+  let {
+    children,
+    isStart,
+    ...props
+  } = _ref;
+  return React.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$1$5,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledIcon",
+  componentId: "sc-10rfb5b-0"
+})(["position:relative;top:-1px;vertical-align:middle;", ";", ";"], props => sizeStyles$d(props), props => retrieveComponentStyles(COMPONENT_ID$1$5, props));
+StyledIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const listStyles = props => {
+  const rtl = props.theme.rtl;
+  return Ne(["direction:", ";margin:0;margin-", ":24px;padding:0;list-style-position:outside;list-style-type:", ";"], rtl ? 'rtl' : 'ltr', rtl ? 'right' : 'left', props.listType);
+};
+const ORDERED_ID$1 = 'typography.ordered_list';
+const StyledOrderedList = styled.ol.attrs({
+  'data-garden-id': ORDERED_ID$1,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledList__StyledOrderedList",
+  componentId: "sc-jdbsfi-0"
+})(["", ";", ";"], props => listStyles(props), props => retrieveComponentStyles(ORDERED_ID$1, props));
+StyledOrderedList.defaultProps = {
+  theme: DEFAULT_THEME
+};
+const UNORDERED_ID$1 = 'typography.unordered_list';
+const StyledUnorderedList = styled.ul.attrs({
+  'data-garden-id': UNORDERED_ID$1,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledList__StyledUnorderedList",
+  componentId: "sc-jdbsfi-1"
+})(["", ";", ";"], props => listStyles(props), props => retrieveComponentStyles(UNORDERED_ID$1, props));
+StyledUnorderedList.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const listItemPaddingStyles = props => {
+  const base = props.theme.space.base;
+  const paddingTop = props.space === 'large' ? `${base * 2}px` : `${base}px`;
+  return Ne(["padding-top:", ";", " > &:first-child,", " > &:first-child{padding-top:0;}", " ", " > &:first-child,", " ", " > &:first-child,", " ", " > &:first-child,", " ", " > &:first-child{padding-top:", ";}"], paddingTop, StyledOrderedList, StyledUnorderedList, StyledOrderedList, StyledOrderedList, StyledOrderedList, StyledUnorderedList, StyledUnorderedList, StyledUnorderedList, StyledUnorderedList, StyledUnorderedList, paddingTop);
+};
+const listItemStyles = props => {
+  return Ne(["line-height:", ";", ";"], getLineHeight(props.theme.lineHeights.md, props.theme.fontSizes.md), props.space !== 'small' && listItemPaddingStyles(props));
+};
+const ORDERED_ID = 'typography.ordered_list_item';
+const StyledOrderedListItem = styled(StyledFont).attrs({
+  'data-garden-id': ORDERED_ID,
+  'data-garden-version': '8.69.9',
+  as: 'li'
+}).withConfig({
+  displayName: "StyledListItem__StyledOrderedListItem",
+  componentId: "sc-9rsipg-0"
+})(["margin-", ":", ";padding-", ":", ";", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * -1px`), props => props.theme.rtl ? 'right' : 'left', props => math(`${props.theme.space.base} * 1px`), props => listItemStyles(props), props => retrieveComponentStyles(ORDERED_ID, props));
+StyledOrderedListItem.defaultProps = {
+  space: 'medium',
+  theme: DEFAULT_THEME
+};
+const UNORDERED_ID = 'typography.unordered_list_item';
+const StyledUnorderedListItem = styled(StyledFont).attrs({
+  'data-garden-id': UNORDERED_ID,
+  'data-garden-version': '8.69.9',
+  as: 'li'
+}).withConfig({
+  displayName: "StyledListItem__StyledUnorderedListItem",
+  componentId: "sc-9rsipg-1"
+})(["", ";", ";"], props => listItemStyles(props), props => retrieveComponentStyles(UNORDERED_ID, props));
+StyledUnorderedListItem.defaultProps = {
+  space: 'medium',
+  theme: DEFAULT_THEME
+};
+
+const COMPONENT_ID$y = 'typography.paragraph';
+const StyledParagraph$1 = styled.p.attrs({
+  'data-garden-id': COMPONENT_ID$y,
+  'data-garden-version': '8.69.9'
+}).withConfig({
+  displayName: "StyledParagraph",
+  componentId: "sc-zkuftz-0"
+})(["margin:0;padding:0;direction:", ";& + &,blockquote + &{margin-top:", ";}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.lineHeights[THEME_SIZES[props.size]], props => retrieveComponentStyles(COMPONENT_ID$y, props));
+StyledParagraph$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+const SM = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "small"
+  }, other));
+});
+SM.displayName = 'SM';
+SM.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+SM.defaultProps = {
+  tag: 'div'
+};
+
+const MD = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "medium"
+  }, other));
+});
+MD.displayName = 'MD';
+MD.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+MD.defaultProps = {
+  tag: 'div'
+};
+
+const LG = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "large"
+  }, other));
+});
+LG.displayName = 'LG';
+LG.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+LG.defaultProps = {
+  tag: 'div'
+};
+
+const XL = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "extralarge"
+  }, other));
+});
+XL.displayName = 'XL';
+XL.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool
+};
+XL.defaultProps = {
+  tag: 'div'
+};
+
+const XXL = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "2xlarge"
+  }, other));
+});
+XXL.displayName = 'XXL';
+XXL.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool
+};
+XXL.defaultProps = {
+  tag: 'div'
+};
+
+const XXXL = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "3xlarge"
+  }, other));
+});
+XXXL.displayName = 'XXXL';
+XXXL.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool
+};
+XXXL.defaultProps = {
+  tag: 'div'
+};
+
+const Blockquote = reactExports.forwardRef((props, ref) => React.createElement(StyledBlockquote, _extends$a({
+  ref: ref
+}, props)));
+Blockquote.displayName = 'Blockquote';
+Blockquote.propTypes = {
+  size: PropTypes.oneOf(SIZE$3)
+};
+Blockquote.defaultProps = {
+  size: 'medium'
+};
+
+const Code = reactExports.forwardRef((_ref, ref) => {
+  let {
+    hue,
+    ...other
+  } = _ref;
+  return React.createElement(StyledCode, _extends$a({
+    ref: ref,
+    hue: hue
+  }, other));
+});
+Code.displayName = 'Code';
+Code.propTypes = {
+  hue: PropTypes.oneOf(HUE),
+  size: PropTypes.oneOf(INHERIT_SIZE)
+};
+Code.defaultProps = {
+  hue: 'grey',
+  size: 'inherit'
+};
+
+const CodeBlock = React.forwardRef((_ref, ref) => {
+  let {
+    children,
+    containerProps,
+    highlightLines,
+    isLight,
+    isNumbered,
+    language,
+    size,
+    ...other
+  } = _ref;
+  const containerRef = reactExports.useRef(null);
+  const code = Array.isArray(children) ? children[0] : children;
+  const dependency = reactExports.useMemo(() => [size, children], [size, children]);
+  const containerTabIndex = useScrollRegion({
+    containerRef,
+    dependency
+  });
+  const getDiff = line => {
+    let retVal;
+    if (language === 'diff') {
+      const token = line.find(value => !(value.empty || value.content === ''));
+      if (token) {
+        if (token.types.includes('deleted')) {
+          retVal = 'delete';
+        } else if (token.types.includes('inserted')) {
+          retVal = 'add';
+        } else if (token.types.includes('coord')) {
+          retVal = 'hunk';
+        } else if (token.types.includes('diff')) {
+          retVal = 'change';
+        }
+      }
+    }
+    return retVal;
+  };
+  return React.createElement(StyledCodeBlockContainer, _extends$a({}, containerProps, {
+    ref: containerRef,
+    tabIndex: containerTabIndex
+  }), React.createElement(Highlight$1, {
+    Prism: Prism$1,
+    code: code ? code.trim() : '',
+    language: LANGUAGES.includes(language) ? language : 'tsx'
+  }, _ref2 => {
+    let {
+      className,
+      tokens,
+      getLineProps,
+      getTokenProps
+    } = _ref2;
+    return React.createElement(StyledCodeBlock, _extends$a({
+      className: className,
+      ref: ref,
+      isLight: isLight
+    }, other), tokens.map((line, index) => React.createElement(StyledCodeBlockLine, _extends$a({}, getLineProps({
+      line
+    }), {
+      key: index,
+      language: language,
+      isHighlighted: highlightLines && highlightLines.includes(index + 1),
+      isLight: isLight,
+      isNumbered: isNumbered,
+      diff: getDiff(line),
+      size: size
+    }), line.map((token, tokenKey) => React.createElement(StyledCodeBlockToken, _extends$a({}, getTokenProps({
+      token
+    }), {
+      key: tokenKey,
+      isLight: isLight
+    }), token.empty ? '\n' : token.content)))));
+  }));
+});
+CodeBlock.displayName = 'CodeBlock';
+CodeBlock.defaultProps = {
+  language: 'tsx',
+  size: 'medium'
+};
+
+const Ellipsis = reactExports.forwardRef((_ref, ref) => {
+  let {
+    children,
+    title,
+    tag,
+    ...other
+  } = _ref;
+  let textContent = undefined;
+  if (title !== undefined) {
+    textContent = title;
+  } else if (typeof children === 'string') {
+    textContent = children;
+  }
+  return React.createElement(StyledEllipsis, _extends$a({
+    as: tag,
+    ref: ref,
+    title: textContent
+  }, other), children);
+});
+Ellipsis.displayName = 'Ellipsis';
+Ellipsis.propTypes = {
+  title: PropTypes.string,
+  tag: PropTypes.any
+};
+Ellipsis.defaultProps = {
+  tag: 'div'
+};
+
+const Paragraph$1 = reactExports.forwardRef((props, ref) => React.createElement(StyledParagraph$1, _extends$a({
+  ref: ref
+}, props)));
+Paragraph$1.displayName = 'Paragraph';
+Paragraph$1.propTypes = {
+  size: PropTypes.oneOf(SIZE$3)
+};
+Paragraph$1.defaultProps = {
+  size: 'medium'
+};
+
+const OrderedListContext = reactExports.createContext(undefined);
+const useOrderedListContext = () => {
+  const listContext = reactExports.useContext(OrderedListContext);
+  if (!listContext) {
+    throw new Error('This component must be rendered within an `OrderedList` component.');
+  }
+  return listContext;
+};
+
+const OrderedListItem = reactExports.forwardRef((props, ref) => {
+  const {
+    size
+  } = useOrderedListContext();
+  return React.createElement(StyledOrderedListItem, _extends$a({
+    ref: ref,
+    space: size
+  }, props));
+});
+OrderedListItem.displayName = 'OrderedList.Item';
+const Item$1 = OrderedListItem;
+
+const OrderedListComponent = React.forwardRef((_ref, ref) => {
+  let {
+    size,
+    type,
+    ...other
+  } = _ref;
+  const value = reactExports.useMemo(() => ({
+    size: size
+  }), [size]);
+  return React.createElement(OrderedListContext.Provider, {
+    value: value
+  }, React.createElement(StyledOrderedList, _extends$a({
+    ref: ref,
+    listType: type
+  }, other)));
+});
+OrderedListComponent.displayName = 'OrderedList';
+OrderedListComponent.propTypes = {
+  size: PropTypes.oneOf(SIZE$3),
+  type: PropTypes.oneOf(TYPE_ORDERED_LIST)
+};
+OrderedListComponent.defaultProps = {
+  size: 'medium',
+  type: 'decimal'
+};
+const OrderedList = OrderedListComponent;
+OrderedList.Item = Item$1;
+
+const UnorderedListContext = reactExports.createContext(undefined);
+const useUnorderedListContext = () => {
+  const listContext = reactExports.useContext(UnorderedListContext);
+  if (!listContext) {
+    throw new Error('This component must be rendered within an `UnorderedList` component.');
+  }
+  return listContext;
+};
+
+const UnorderedListItem = reactExports.forwardRef((props, ref) => {
+  const {
+    size
+  } = useUnorderedListContext();
+  return React.createElement(StyledUnorderedListItem, _extends$a({
+    ref: ref,
+    space: size
+  }, props));
+});
+UnorderedListItem.displayName = 'UnorderedList.Item';
+const Item = UnorderedListItem;
+
+const UnorderedListComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    size,
+    type,
+    ...other
+  } = _ref;
+  const value = reactExports.useMemo(() => ({
+    size: size
+  }), [size]);
+  return React.createElement(UnorderedListContext.Provider, {
+    value: value
+  }, React.createElement(StyledUnorderedList, _extends$a({
+    ref: ref,
+    listType: type
+  }, other)));
+});
+UnorderedListComponent.displayName = 'UnorderedList';
+UnorderedListComponent.propTypes = {
+  size: PropTypes.oneOf(SIZE$3),
+  type: PropTypes.oneOf(TYPE_UNORDERED_LIST)
+};
+UnorderedListComponent.defaultProps = {
+  size: 'medium',
+  type: 'disc'
+};
+const UnorderedList = UnorderedListComponent;
+UnorderedList.Item = Item;
+
+const StartIconComponent = props => React.createElement(StyledIcon, _extends$a({
+  isStart: true
+}, props));
+StartIconComponent.displayName = 'Span.StartIcon';
+const StartIcon = StartIconComponent;
+
+const IconComponent = props => React.createElement(StyledIcon, props);
+IconComponent.displayName = 'Span.Icon';
+const Icon = IconComponent;
+
+const SpanComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React.createElement(StyledFont, _extends$a({
+    as: tag,
+    ref: ref,
+    size: "inherit"
+  }, other));
+});
+SpanComponent.displayName = 'Span';
+SpanComponent.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool,
+  hue: PropTypes.string
+};
+SpanComponent.defaultProps = {
+  tag: 'span'
+};
+const Span = SpanComponent;
+Span.Icon = Icon;
+Span.StartIcon = StartIcon;
 
 /**
  * Copyright Zendesk, Inc.
@@ -11492,7 +16647,7 @@ const useField = _ref => {
     } = _temp === void 0 ? {} : _temp;
     return {
       'data-garden-container-id': 'containers.field.label',
-      'data-garden-container-version': '3.0.9',
+      'data-garden-container-version': '3.0.10',
       id,
       htmlFor,
       ...other
@@ -11505,7 +16660,7 @@ const useField = _ref => {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       'data-garden-container-id': 'containers.field.hint',
-      'data-garden-container-version': '3.0.9',
+      'data-garden-container-version': '3.0.10',
       id,
       ...other
     };
@@ -11513,21 +16668,28 @@ const useField = _ref => {
   const getInputProps = reactExports.useCallback(function (_temp3) {
     let {
       id = inputId,
+      'aria-describedby': ariaDescribedBy,
       ...other
     } = _temp3 === void 0 ? {} : _temp3;
-    const describedBy = [];
-    if (hasHint) {
-      describedBy.push(hintId);
-    }
-    if (hasMessage) {
-      describedBy.push(messageId);
-    }
+    const getDescribedBy = () => {
+      if (ariaDescribedBy) {
+        return ariaDescribedBy;
+      }
+      const describedBy = [];
+      if (hasHint) {
+        describedBy.push(hintId);
+      }
+      if (hasMessage) {
+        describedBy.push(messageId);
+      }
+      return describedBy.length > 0 ? describedBy.join(' ') : undefined;
+    };
     return {
       'data-garden-container-id': 'containers.field.input',
-      'data-garden-container-version': '3.0.9',
+      'data-garden-container-version': '3.0.10',
       id,
       'aria-labelledby': labelId,
-      'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined,
+      'aria-describedby': getDescribedBy(),
       ...other
     };
   }, [inputId, labelId, hintId, messageId, hasHint, hasMessage]);
@@ -11539,7 +16701,7 @@ const useField = _ref => {
     } = _temp4 === void 0 ? {} : _temp4;
     return {
       'data-garden-container-id': 'containers.field.message',
-      'data-garden-container-version': '3.0.9',
+      'data-garden-container-version': '3.0.10',
       role: role === null ? undefined : role,
       id,
       ...other
@@ -11652,6 +16814,11 @@ function __spreadArray(to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 }
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
 
 var idCounter = 0;
 function noop$1() {}
@@ -13238,8 +18405,17 @@ const useCombobox = _ref => {
   const [triggerContainsInput, setTriggerContainsInput] = reactExports.useState();
   const [matchValue, setMatchValue] = reactExports.useState('');
   const matchTimeoutRef = reactExports.useRef();
-  const prefixRef = reactExports.useRef(`${useId(idPrefix)}-`);
   const previousStateRef = reactExports.useRef();
+  const prefix = useId(idPrefix);
+  const ids = reactExports.useMemo(() => ({
+    label: `${prefix}--label`,
+    hint: `${prefix}--hint`,
+    trigger: `${prefix}--trigger`,
+    input: `${prefix}--input`,
+    listbox: `${prefix}--listbox`,
+    message: `${prefix}--message`,
+    getOptionId: (index, isDisabled) => `${prefix}--option${isDisabled ? '-disabled' : ''}-${index}`
+  }), [prefix]);
   const labels = reactExports.useMemo(() => ({}), []);
   const selectedValues = reactExports.useMemo(() => [], []);
   const disabledValues = reactExports.useMemo(() => [], []);
@@ -13391,7 +18567,6 @@ const useCombobox = _ref => {
     return changes;
   };
   const transformValue = value => value ? toLabel(labels, value) : '';
-  const getOptionId = reactExports.useCallback((index, isDisabled) => `${prefixRef.current}-option${isDisabled ? '-disabled' : ''}-${index}`, []);
   const {
     selectedItem: _selectionValue,
     isOpen: _isExpanded,
@@ -13406,10 +18581,9 @@ const useCombobox = _ref => {
     setHighlightedIndex,
     selectItem
   } = useCombobox$1({
-    id: prefixRef.current,
-    toggleButtonId: `${prefixRef.current}-trigger`,
-    menuId: `${prefixRef.current}-listbox`,
-    getItemId: getOptionId,
+    toggleButtonId: ids.trigger,
+    menuId: ids.listbox,
+    getItemId: ids.getOptionId,
     items: values,
     inputValue,
     initialInputValue,
@@ -13456,11 +18630,10 @@ const useCombobox = _ref => {
   }, [onChange, selectItem]);
   const {
     getLabelProps: getFieldLabelProps,
-    getHintProps,
+    getHintProps: getFieldHintProps,
     getInputProps: getFieldInputProps,
-    getMessageProps
+    getMessageProps: getFieldMessageProps
   } = useField({
-    idPrefix,
     hasHint,
     hasMessage
   });
@@ -13513,7 +18686,7 @@ const useCombobox = _ref => {
     } = _temp === void 0 ? {} : _temp;
     const triggerProps = getDownshiftTriggerProps({
       'data-garden-container-id': 'containers.combobox',
-      'data-garden-container-version': '1.0.8',
+      'data-garden-container-version': '1.0.9',
       onBlur,
       onClick,
       onKeyDown,
@@ -13552,9 +18725,6 @@ const useCombobox = _ref => {
       } = getDownshiftInputProps({}, {
         suppressRefError: true
       });
-      const {
-        'aria-labelledby': ariaLabeledBy
-      } = getFieldInputProps();
       const handleKeyDown = event => {
         event.stopPropagation();
         if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
@@ -13598,7 +18768,7 @@ const useCombobox = _ref => {
         ...triggerProps,
         'aria-activedescendant': ariaActiveDescendant,
         'aria-haspopup': 'listbox',
-        'aria-labelledby': ariaLabeledBy,
+        'aria-labelledby': ids.label,
         'aria-disabled': disabled || undefined,
         disabled: undefined,
         role: 'combobox',
@@ -13608,7 +18778,7 @@ const useCombobox = _ref => {
       };
     }
     return triggerProps;
-  }, [getDownshiftTriggerProps, getDownshiftInputProps, getFieldInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, setDownshiftSelection, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, isMultiselectable, inputRef]);
+  }, [getDownshiftTriggerProps, getDownshiftInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, setDownshiftSelection, matchValue, values, labels, triggerContainsInput, ids.label, isAutocomplete, isEditable, isMultiselectable, inputRef]);
   const getLabelProps = reactExports.useCallback(function (_temp2) {
     let {
       onClick,
@@ -13617,14 +18787,22 @@ const useCombobox = _ref => {
     const {
       htmlFor,
       ...labelProps
-    } = getFieldLabelProps(other);
+    } = getFieldLabelProps({
+      id: ids.label,
+      htmlFor: ids.input,
+      ...other
+    });
     const handleClick = () => !isEditable && triggerRef.current?.focus();
     return {
       ...labelProps,
       onClick: composeEventHandlers$2(onClick, handleClick),
       htmlFor: isEditable ? htmlFor : undefined
     };
-  }, [getFieldLabelProps, isEditable, triggerRef]);
+  }, [getFieldLabelProps, ids.input, ids.label, isEditable, triggerRef]);
+  const getHintProps = reactExports.useCallback(props => getFieldHintProps({
+    id: ids.hint,
+    ...props
+  }), [getFieldHintProps, ids.hint]);
   const getInputProps = reactExports.useCallback(function (_temp3) {
     let {
       role = isEditable ? 'combobox' : null,
@@ -13634,7 +18812,7 @@ const useCombobox = _ref => {
     } = _temp3 === void 0 ? {} : _temp3;
     const inputProps = {
       'data-garden-container-id': 'containers.combobox.input',
-      'data-garden-container-version': '1.0.8',
+      'data-garden-container-version': '1.0.9',
       ref: inputRef,
       role: role === null ? undefined : role,
       onClick,
@@ -13642,13 +18820,24 @@ const useCombobox = _ref => {
     };
     if (isEditable) {
       const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
+      const describedBy = [];
+      if (hasHint) {
+        describedBy.push(ids.hint);
+      }
+      if (hasMessage) {
+        describedBy.push(ids.message);
+      }
       return getDownshiftInputProps({
         ...inputProps,
         disabled,
         role,
         'aria-autocomplete': isAutocomplete ? 'list' : undefined,
         onClick: composeEventHandlers$2(onClick, handleClick),
-        ...getFieldInputProps(),
+        ...getFieldInputProps({
+          id: ids.input,
+          'aria-labelledby': ids.label,
+          'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined
+        }),
         ...other
       });
     }
@@ -13675,7 +18864,7 @@ const useCombobox = _ref => {
       onFocus: composeEventHandlers$2(onFocus, handleFocus),
       ...other
     };
-  }, [getDownshiftInputProps, getFieldInputProps, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
+  }, [getDownshiftInputProps, getFieldInputProps, hasHint, hasMessage, ids.hint, ids.input, ids.label, ids.message, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
   const getTagProps = reactExports.useCallback(_ref4 => {
     let {
       option,
@@ -13706,7 +18895,7 @@ const useCombobox = _ref => {
     };
     return {
       'data-garden-container-id': 'containers.combobox.tag',
-      'data-garden-container-version': '1.0.8',
+      'data-garden-container-version': '1.0.9',
       onClick: composeEventHandlers$2(onClick, handleClick),
       onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
       ...other
@@ -13719,7 +18908,7 @@ const useCombobox = _ref => {
     } = _ref5;
     return getDownshiftListboxProps({
       'data-garden-container-id': 'containers.combobox.listbox',
-      'data-garden-container-version': '1.0.8',
+      'data-garden-container-version': '1.0.9',
       ref: listboxRef,
       role,
       'aria-multiselectable': isMultiselectable ? true : undefined,
@@ -13733,7 +18922,7 @@ const useCombobox = _ref => {
     } = _ref6;
     return {
       'data-garden-container-id': 'containers.combobox.optgroup',
-      'data-garden-container-version': '1.0.8',
+      'data-garden-container-version': '1.0.9',
       role: role === null ? undefined : role,
       ...other
     };
@@ -13747,7 +18936,7 @@ const useCombobox = _ref => {
     } = _temp4 === void 0 ? {} : _temp4;
     const optionProps = {
       'data-garden-container-id': 'containers.combobox.option',
-      'data-garden-container-version': '1.0.8',
+      'data-garden-container-version': '1.0.9',
       role,
       onMouseDown,
       ...other
@@ -13761,7 +18950,7 @@ const useCombobox = _ref => {
       return {
         'aria-disabled': true,
         'aria-selected': ariaSelected,
-        id: option ? getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
+        id: option ? ids.getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
         ...optionProps,
         onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown)
       };
@@ -13773,7 +18962,11 @@ const useCombobox = _ref => {
       'aria-selected': ariaSelected,
       ...optionProps
     });
-  }, [getDownshiftOptionProps, disabledValues, values, _selectionValue, getOptionId]);
+  }, [getDownshiftOptionProps, disabledValues, ids, values, _selectionValue]);
+  const getMessageProps = reactExports.useCallback(props => getFieldMessageProps({
+    id: ids.message,
+    ...props
+  }), [getFieldMessageProps, ids.message]);
   const removeSelection = reactExports.useCallback(value => {
     if (value === undefined) {
       setDownshiftSelection(null);
@@ -14044,20 +19237,121 @@ const Tag$1 = TagComponent$1;
 Tag$1.Avatar = Avatar;
 Tag$1.Close = Close;
 
-function getAlignment(placement) {
-  return placement.split('-')[1];
+const min = Math.min;
+const max = Math.max;
+const round = Math.round;
+const floor = Math.floor;
+const createCoords = v => ({
+  x: v,
+  y: v
+});
+const oppositeSideMap = {
+  left: 'right',
+  right: 'left',
+  bottom: 'top',
+  top: 'bottom'
+};
+const oppositeAlignmentMap = {
+  start: 'end',
+  end: 'start'
+};
+function evaluate(value, param) {
+  return typeof value === 'function' ? value(param) : value;
 }
-
-function getLengthFromAxis(axis) {
-  return axis === 'y' ? 'height' : 'width';
-}
-
 function getSide(placement) {
   return placement.split('-')[0];
 }
-
-function getMainAxisFromPlacement(placement) {
-  return ['top', 'bottom'].includes(getSide(placement)) ? 'x' : 'y';
+function getAlignment(placement) {
+  return placement.split('-')[1];
+}
+function getOppositeAxis(axis) {
+  return axis === 'x' ? 'y' : 'x';
+}
+function getAxisLength(axis) {
+  return axis === 'y' ? 'height' : 'width';
+}
+function getSideAxis(placement) {
+  return ['top', 'bottom'].includes(getSide(placement)) ? 'y' : 'x';
+}
+function getAlignmentAxis(placement) {
+  return getOppositeAxis(getSideAxis(placement));
+}
+function getAlignmentSides(placement, rects, rtl) {
+  if (rtl === void 0) {
+    rtl = false;
+  }
+  const alignment = getAlignment(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const length = getAxisLength(alignmentAxis);
+  let mainAlignmentSide = alignmentAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
+  if (rects.reference[length] > rects.floating[length]) {
+    mainAlignmentSide = getOppositePlacement$1(mainAlignmentSide);
+  }
+  return [mainAlignmentSide, getOppositePlacement$1(mainAlignmentSide)];
+}
+function getExpandedPlacements(placement) {
+  const oppositePlacement = getOppositePlacement$1(placement);
+  return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
+}
+function getOppositeAlignmentPlacement(placement) {
+  return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
+}
+function getSideList(side, isStart, rtl) {
+  const lr = ['left', 'right'];
+  const rl = ['right', 'left'];
+  const tb = ['top', 'bottom'];
+  const bt = ['bottom', 'top'];
+  switch (side) {
+    case 'top':
+    case 'bottom':
+      if (rtl) return isStart ? rl : lr;
+      return isStart ? lr : rl;
+    case 'left':
+    case 'right':
+      return isStart ? tb : bt;
+    default:
+      return [];
+  }
+}
+function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+  const alignment = getAlignment(placement);
+  let list = getSideList(getSide(placement), direction === 'start', rtl);
+  if (alignment) {
+    list = list.map(side => side + "-" + alignment);
+    if (flipAlignment) {
+      list = list.concat(list.map(getOppositeAlignmentPlacement));
+    }
+  }
+  return list;
+}
+function getOppositePlacement$1(placement) {
+  return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
+}
+function expandPaddingObject(padding) {
+  return {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...padding
+  };
+}
+function getPaddingObject(padding) {
+  return typeof padding !== 'number' ? expandPaddingObject(padding) : {
+    top: padding,
+    right: padding,
+    bottom: padding,
+    left: padding
+  };
+}
+function rectToClientRect(rect) {
+  return {
+    ...rect,
+    top: rect.y,
+    left: rect.x,
+    right: rect.x + rect.width,
+    bottom: rect.y + rect.height
+  };
 }
 
 function computeCoordsFromPlacement(_ref, placement, rtl) {
@@ -14065,13 +19359,14 @@ function computeCoordsFromPlacement(_ref, placement, rtl) {
     reference,
     floating
   } = _ref;
+  const sideAxis = getSideAxis(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const alignLength = getAxisLength(alignmentAxis);
+  const side = getSide(placement);
+  const isVertical = sideAxis === 'y';
   const commonX = reference.x + reference.width / 2 - floating.width / 2;
   const commonY = reference.y + reference.height / 2 - floating.height / 2;
-  const mainAxis = getMainAxisFromPlacement(placement);
-  const length = getLengthFromAxis(mainAxis);
-  const commonAlign = reference[length] / 2 - floating[length] / 2;
-  const side = getSide(placement);
-  const isVertical = mainAxis === 'x';
+  const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
   let coords;
   switch (side) {
     case 'top':
@@ -14106,10 +19401,10 @@ function computeCoordsFromPlacement(_ref, placement, rtl) {
   }
   switch (getAlignment(placement)) {
     case 'start':
-      coords[mainAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+      coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
       break;
     case 'end':
-      coords[mainAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+      coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
       break;
   }
   return coords;
@@ -14207,39 +19502,6 @@ const computePosition$1 = async (reference, floating, config) => {
   };
 };
 
-function evaluate(value, param) {
-  return typeof value === 'function' ? value(param) : value;
-}
-
-function expandPaddingObject(padding) {
-  return {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    ...padding
-  };
-}
-
-function getSideObjectFromPadding(padding) {
-  return typeof padding !== 'number' ? expandPaddingObject(padding) : {
-    top: padding,
-    right: padding,
-    bottom: padding,
-    left: padding
-  };
-}
-
-function rectToClientRect(rect) {
-  return {
-    ...rect,
-    top: rect.y,
-    left: rect.x,
-    right: rect.x + rect.width,
-    bottom: rect.y + rect.height
-  };
-}
-
 /**
  * Resolves with an object of overflow side offsets that determine how much the
  * element is overflowing a given clipping boundary on each side.
@@ -14268,7 +19530,7 @@ async function detectOverflow(state, options) {
     altBoundary = false,
     padding = 0
   } = evaluate(options, state);
-  const paddingObject = getSideObjectFromPadding(padding);
+  const paddingObject = getPaddingObject(padding);
   const altContext = elementContext === 'floating' ? 'reference' : 'floating';
   const element = elements[altBoundary ? altContext : elementContext];
   const clippingClientRect = rectToClientRect(await platform.getClippingRect({
@@ -14301,78 +19563,6 @@ async function detectOverflow(state, options) {
     left: (clippingClientRect.left - elementClientRect.left + paddingObject.left) / offsetScale.x,
     right: (elementClientRect.right - clippingClientRect.right + paddingObject.right) / offsetScale.x
   };
-}
-
-const min$1 = Math.min;
-const max$1 = Math.max;
-
-const oppositeSideMap = {
-  left: 'right',
-  right: 'left',
-  bottom: 'top',
-  top: 'bottom'
-};
-function getOppositePlacement$1(placement) {
-  return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
-}
-
-function getAlignmentSides(placement, rects, rtl) {
-  if (rtl === void 0) {
-    rtl = false;
-  }
-  const alignment = getAlignment(placement);
-  const mainAxis = getMainAxisFromPlacement(placement);
-  const length = getLengthFromAxis(mainAxis);
-  let mainAlignmentSide = mainAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
-  if (rects.reference[length] > rects.floating[length]) {
-    mainAlignmentSide = getOppositePlacement$1(mainAlignmentSide);
-  }
-  return {
-    main: mainAlignmentSide,
-    cross: getOppositePlacement$1(mainAlignmentSide)
-  };
-}
-
-const oppositeAlignmentMap = {
-  start: 'end',
-  end: 'start'
-};
-function getOppositeAlignmentPlacement(placement) {
-  return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
-}
-
-function getExpandedPlacements(placement) {
-  const oppositePlacement = getOppositePlacement$1(placement);
-  return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
-}
-
-function getSideList(side, isStart, rtl) {
-  const lr = ['left', 'right'];
-  const rl = ['right', 'left'];
-  const tb = ['top', 'bottom'];
-  const bt = ['bottom', 'top'];
-  switch (side) {
-    case 'top':
-    case 'bottom':
-      if (rtl) return isStart ? rl : lr;
-      return isStart ? lr : rl;
-    case 'left':
-    case 'right':
-      return isStart ? tb : bt;
-    default:
-      return [];
-  }
-}
-function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
-  const alignment = getAlignment(placement);
-  let list = getSideList(getSide(placement), direction === 'start', rtl);
-  if (alignment) {
-    list = list.map(side => side + "-" + alignment);
-    if (flipAlignment) {
-      list = list.concat(list.map(getOppositeAlignmentPlacement));
-    }
-  }
-  return list;
 }
 
 /**
@@ -14422,11 +19612,8 @@ const flip$1 = function (options) {
         overflows.push(overflow[side]);
       }
       if (checkCrossAxis) {
-        const {
-          main,
-          cross
-        } = getAlignmentSides(placement, rects, rtl);
-        overflows.push(overflow[main], overflow[cross]);
+        const sides = getAlignmentSides(placement, rects, rtl);
+        overflows.push(overflow[sides[0]], overflow[sides[1]]);
       }
       overflowsData = [...overflowsData, {
         placement,
@@ -14485,6 +19672,8 @@ const flip$1 = function (options) {
   };
 };
 
+// For type backwards-compatibility, the `OffsetOptions` type was also
+// Derivable.
 async function convertValueToCoords(state, options) {
   const {
     placement,
@@ -14494,7 +19683,7 @@ async function convertValueToCoords(state, options) {
   const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
   const side = getSide(placement);
   const alignment = getAlignment(placement);
-  const isVertical = getMainAxisFromPlacement(placement) === 'x';
+  const isVertical = getSideAxis(placement) === 'y';
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
   const crossAxisMulti = rtl && isVertical ? -1 : 1;
   const rawValue = evaluate(options, state);
@@ -14582,8 +19771,7 @@ const size = function (options) {
       const overflow = await detectOverflow(state, detectOverflowOptions);
       const side = getSide(placement);
       const alignment = getAlignment(placement);
-      const axis = getMainAxisFromPlacement(placement);
-      const isXAxis = axis === 'x';
+      const isYAxis = getSideAxis(placement) === 'y';
       const {
         width,
         height
@@ -14602,22 +19790,22 @@ const size = function (options) {
       const noShift = !state.middlewareData.shift;
       let availableHeight = overflowAvailableHeight;
       let availableWidth = overflowAvailableWidth;
-      if (isXAxis) {
+      if (isYAxis) {
         const maximumClippingWidth = width - overflow.left - overflow.right;
-        availableWidth = alignment || noShift ? min$1(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
+        availableWidth = alignment || noShift ? min(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
       } else {
         const maximumClippingHeight = height - overflow.top - overflow.bottom;
-        availableHeight = alignment || noShift ? min$1(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
+        availableHeight = alignment || noShift ? min(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
       }
       if (noShift && !alignment) {
-        const xMin = max$1(overflow.left, 0);
-        const xMax = max$1(overflow.right, 0);
-        const yMin = max$1(overflow.top, 0);
-        const yMax = max$1(overflow.bottom, 0);
-        if (isXAxis) {
-          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max$1(overflow.left, overflow.right));
+        const xMin = max(overflow.left, 0);
+        const xMax = max(overflow.right, 0);
+        const yMin = max(overflow.top, 0);
+        const yMax = max(overflow.bottom, 0);
+        if (isYAxis) {
+          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max(overflow.left, overflow.right));
         } else {
-          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max$1(overflow.top, overflow.bottom));
+          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max(overflow.top, overflow.bottom));
         }
       }
       await apply({
@@ -14638,18 +19826,6 @@ const size = function (options) {
   };
 };
 
-function getWindow$1(node) {
-  var _node$ownerDocument;
-  return ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
-}
-
-function getComputedStyle$1(element) {
-  return getWindow$1(element).getComputedStyle(element);
-}
-
-function isNode(value) {
-  return value instanceof getWindow$1(value).Node;
-}
 function getNodeName(node) {
   if (isNode(node)) {
     return (node.nodeName || '').toLowerCase();
@@ -14659,19 +19835,29 @@ function getNodeName(node) {
   // https://github.com/floating-ui/floating-ui/issues/2317
   return '#document';
 }
-
-function isHTMLElement(value) {
-  return value instanceof getWindow$1(value).HTMLElement;
+function getWindow$1(node) {
+  var _node$ownerDocument;
+  return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+}
+function getDocumentElement(node) {
+  var _ref;
+  return (_ref = (isNode(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+}
+function isNode(value) {
+  return value instanceof Node || value instanceof getWindow$1(value).Node;
 }
 function isElement(value) {
-  return value instanceof getWindow$1(value).Element;
+  return value instanceof Element || value instanceof getWindow$1(value).Element;
 }
-function isShadowRoot(node) {
+function isHTMLElement(value) {
+  return value instanceof HTMLElement || value instanceof getWindow$1(value).HTMLElement;
+}
+function isShadowRoot(value) {
   // Browsers without `ShadowRoot` support.
   if (typeof ShadowRoot === 'undefined') {
     return false;
   }
-  return node instanceof getWindow$1(node).ShadowRoot || node instanceof ShadowRoot;
+  return value instanceof ShadowRoot || value instanceof getWindow$1(value).ShadowRoot;
 }
 function isOverflowElement(element) {
   const {
@@ -14686,28 +19872,83 @@ function isTableElement(element) {
   return ['table', 'td', 'th'].includes(getNodeName(element));
 }
 function isContainingBlock(element) {
-  const safari = isSafari();
+  const webkit = isWebKit();
   const css = getComputedStyle$1(element);
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-  return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
+  return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
 }
-function isSafari() {
+function getContainingBlock(element) {
+  let currentNode = getParentNode$1(element);
+  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
+    if (isContainingBlock(currentNode)) {
+      return currentNode;
+    } else {
+      currentNode = getParentNode$1(currentNode);
+    }
+  }
+  return null;
+}
+function isWebKit() {
   if (typeof CSS === 'undefined' || !CSS.supports) return false;
   return CSS.supports('-webkit-backdrop-filter', 'none');
 }
 function isLastTraversableNode(node) {
   return ['html', 'body', '#document'].includes(getNodeName(node));
 }
-
-const min = Math.min;
-const max = Math.max;
-const round = Math.round;
-const floor = Math.floor;
-const createEmptyCoords = v => ({
-  x: v,
-  y: v
-});
+function getComputedStyle$1(element) {
+  return getWindow$1(element).getComputedStyle(element);
+}
+function getNodeScroll(element) {
+  if (isElement(element)) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+  return {
+    scrollLeft: element.pageXOffset,
+    scrollTop: element.pageYOffset
+  };
+}
+function getParentNode$1(node) {
+  if (getNodeName(node) === 'html') {
+    return node;
+  }
+  const result =
+  // Step into the shadow DOM of the parent of a slotted node.
+  node.assignedSlot ||
+  // DOM Element detected.
+  node.parentNode ||
+  // ShadowRoot detected.
+  isShadowRoot(node) && node.host ||
+  // Fallback.
+  getDocumentElement(node);
+  return isShadowRoot(result) ? result.host : result;
+}
+function getNearestOverflowAncestor(node) {
+  const parentNode = getParentNode$1(node);
+  if (isLastTraversableNode(parentNode)) {
+    return node.ownerDocument ? node.ownerDocument.body : node.body;
+  }
+  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
+    return parentNode;
+  }
+  return getNearestOverflowAncestor(parentNode);
+}
+function getOverflowAncestors(node, list) {
+  var _node$ownerDocument2;
+  if (list === void 0) {
+    list = [];
+  }
+  const scrollableAncestor = getNearestOverflowAncestor(node);
+  const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
+  const win = getWindow$1(scrollableAncestor);
+  if (isBody) {
+    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []);
+  }
+  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
+}
 
 function getCssDimensions(element) {
   const css = getComputedStyle$1(element);
@@ -14737,7 +19978,7 @@ function unwrapElement(element) {
 function getScale(element) {
   const domElement = unwrapElement(element);
   if (!isHTMLElement(domElement)) {
-    return createEmptyCoords(1);
+    return createCoords(1);
   }
   const rect = domElement.getBoundingClientRect();
   const {
@@ -14762,23 +20003,25 @@ function getScale(element) {
   };
 }
 
-const noOffsets = /*#__PURE__*/createEmptyCoords(0);
-function getVisualOffsets(element, isFixed, floatingOffsetParent) {
-  var _win$visualViewport, _win$visualViewport2;
-  if (isFixed === void 0) {
-    isFixed = true;
-  }
-  if (!isSafari()) {
-    return noOffsets;
-  }
-  const win = element ? getWindow$1(element) : window;
-  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== win) {
+const noOffsets = /*#__PURE__*/createCoords(0);
+function getVisualOffsets(element) {
+  const win = getWindow$1(element);
+  if (!isWebKit() || !win.visualViewport) {
     return noOffsets;
   }
   return {
-    x: ((_win$visualViewport = win.visualViewport) == null ? void 0 : _win$visualViewport.offsetLeft) || 0,
-    y: ((_win$visualViewport2 = win.visualViewport) == null ? void 0 : _win$visualViewport2.offsetTop) || 0
+    x: win.visualViewport.offsetLeft,
+    y: win.visualViewport.offsetTop
   };
+}
+function shouldAddVisualOffsets(element, isFixed, floatingOffsetParent) {
+  if (isFixed === void 0) {
+    isFixed = false;
+  }
+  if (!floatingOffsetParent || isFixed && floatingOffsetParent !== getWindow$1(element)) {
+    return false;
+  }
+  return isFixed;
 }
 
 function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetParent) {
@@ -14790,7 +20033,7 @@ function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetP
   }
   const clientRect = element.getBoundingClientRect();
   const domElement = unwrapElement(element);
-  let scale = createEmptyCoords(1);
+  let scale = createCoords(1);
   if (includeScale) {
     if (offsetParent) {
       if (isElement(offsetParent)) {
@@ -14800,7 +20043,7 @@ function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetP
       scale = getScale(element);
     }
   }
-  const visualOffsets = getVisualOffsets(domElement, isFixedStrategy, offsetParent);
+  const visualOffsets = shouldAddVisualOffsets(domElement, isFixedStrategy, offsetParent) ? getVisualOffsets(domElement) : createCoords(0);
   let x = (clientRect.left + visualOffsets.x) / scale.x;
   let y = (clientRect.top + visualOffsets.y) / scale.y;
   let width = clientRect.width / scale.x;
@@ -14812,7 +20055,7 @@ function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetP
     while (currentIFrame && offsetParent && offsetWin !== win) {
       const iframeScale = getScale(currentIFrame);
       const iframeRect = currentIFrame.getBoundingClientRect();
-      const css = getComputedStyle(currentIFrame);
+      const css = getComputedStyle$1(currentIFrame);
       const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
       const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
       x *= iframeScale.x;
@@ -14832,23 +20075,6 @@ function getBoundingClientRect$1(element, includeScale, isFixedStrategy, offsetP
   });
 }
 
-function getDocumentElement(node) {
-  return ((isNode(node) ? node.ownerDocument : node.document) || window.document).documentElement;
-}
-
-function getNodeScroll(element) {
-  if (isElement(element)) {
-    return {
-      scrollLeft: element.scrollLeft,
-      scrollTop: element.scrollTop
-    };
-  }
-  return {
-    scrollLeft: element.pageXOffset,
-    scrollTop: element.pageYOffset
-  };
-}
-
 function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
   let {
     rect,
@@ -14864,8 +20090,8 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
     scrollLeft: 0,
     scrollTop: 0
   };
-  let scale = createEmptyCoords(1);
-  const offsets = createEmptyCoords(0);
+  let scale = createCoords(1);
+  const offsets = createCoords(0);
   if (isOffsetParentAnElement || !isOffsetParentAnElement && strategy !== 'fixed') {
     if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
@@ -14883,6 +20109,10 @@ function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
     x: rect.x * scale.x - scroll.scrollLeft * scale.x + offsets.x,
     y: rect.y * scale.y - scroll.scrollTop * scale.y + offsets.y
   };
+}
+
+function getClientRects(element) {
+  return Array.from(element.getClientRects());
 }
 
 function getWindowScrollBarX(element) {
@@ -14912,47 +20142,6 @@ function getDocumentRect(element) {
   };
 }
 
-function getParentNode$1(node) {
-  if (getNodeName(node) === 'html') {
-    return node;
-  }
-  const result =
-  // Step into the shadow DOM of the parent of a slotted node.
-  node.assignedSlot ||
-  // DOM Element detected.
-  node.parentNode ||
-  // ShadowRoot detected.
-  isShadowRoot(node) && node.host ||
-  // Fallback.
-  getDocumentElement(node);
-  return isShadowRoot(result) ? result.host : result;
-}
-
-function getNearestOverflowAncestor(node) {
-  const parentNode = getParentNode$1(node);
-  if (isLastTraversableNode(parentNode)) {
-    return node.ownerDocument ? node.ownerDocument.body : node.body;
-  }
-  if (isHTMLElement(parentNode) && isOverflowElement(parentNode)) {
-    return parentNode;
-  }
-  return getNearestOverflowAncestor(parentNode);
-}
-
-function getOverflowAncestors(node, list) {
-  var _node$ownerDocument;
-  if (list === void 0) {
-    list = [];
-  }
-  const scrollableAncestor = getNearestOverflowAncestor(node);
-  const isBody = scrollableAncestor === ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.body);
-  const win = getWindow$1(scrollableAncestor);
-  if (isBody) {
-    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []);
-  }
-  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
-}
-
 function getViewportRect(element, strategy) {
   const win = getWindow$1(element);
   const html = getDocumentElement(element);
@@ -14964,7 +20153,7 @@ function getViewportRect(element, strategy) {
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
-    const visualViewportBased = isSafari();
+    const visualViewportBased = isWebKit();
     if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
       x = visualViewport.offsetLeft;
       y = visualViewport.offsetTop;
@@ -14983,7 +20172,7 @@ function getInnerBoundingClientRect(element, strategy) {
   const clientRect = getBoundingClientRect$1(element, true, strategy === 'fixed');
   const top = clientRect.top + element.clientTop;
   const left = clientRect.left + element.clientLeft;
-  const scale = isHTMLElement(element) ? getScale(element) : createEmptyCoords(1);
+  const scale = isHTMLElement(element) ? getScale(element) : createCoords(1);
   const width = element.clientWidth * scale.x;
   const height = element.clientHeight * scale.y;
   const x = left * scale.x;
@@ -15087,6 +20276,36 @@ function getDimensions(element) {
   return getCssDimensions(element);
 }
 
+function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
+  const isOffsetParentAnElement = isHTMLElement(offsetParent);
+  const documentElement = getDocumentElement(offsetParent);
+  const isFixed = strategy === 'fixed';
+  const rect = getBoundingClientRect$1(element, true, isFixed, offsetParent);
+  let scroll = {
+    scrollLeft: 0,
+    scrollTop: 0
+  };
+  const offsets = createCoords(0);
+  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+    if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
+      scroll = getNodeScroll(offsetParent);
+    }
+    if (isOffsetParentAnElement) {
+      const offsetRect = getBoundingClientRect$1(offsetParent, true, isFixed, offsetParent);
+      offsets.x = offsetRect.x + offsetParent.clientLeft;
+      offsets.y = offsetRect.y + offsetParent.clientTop;
+    } else if (documentElement) {
+      offsets.x = getWindowScrollBarX(documentElement);
+    }
+  }
+  return {
+    x: rect.left + scroll.scrollLeft - offsets.x,
+    y: rect.top + scroll.scrollTop - offsets.y,
+    width: rect.width,
+    height: rect.height
+  };
+}
+
 function getTrueOffsetParent(element, polyfill) {
   if (!isHTMLElement(element) || getComputedStyle$1(element).position === 'fixed') {
     return null;
@@ -15095,17 +20314,6 @@ function getTrueOffsetParent(element, polyfill) {
     return polyfill(element);
   }
   return element.offsetParent;
-}
-function getContainingBlock(element) {
-  let currentNode = getParentNode$1(element);
-  while (isHTMLElement(currentNode) && !isLastTraversableNode(currentNode)) {
-    if (isContainingBlock(currentNode)) {
-      return currentNode;
-    } else {
-      currentNode = getParentNode$1(currentNode);
-    }
-  }
-  return null;
 }
 
 // Gets the closest ancestor positioned element. Handles some edge cases,
@@ -15125,63 +20333,39 @@ function getOffsetParent$1(element, polyfill) {
   return offsetParent || getContainingBlock(element) || window;
 }
 
-function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
-  const isOffsetParentAnElement = isHTMLElement(offsetParent);
-  const documentElement = getDocumentElement(offsetParent);
-  const isFixed = strategy === 'fixed';
-  const rect = getBoundingClientRect$1(element, true, isFixed, offsetParent);
-  let scroll = {
-    scrollLeft: 0,
-    scrollTop: 0
-  };
-  const offsets = createEmptyCoords(0);
-  if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
-    if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
-      scroll = getNodeScroll(offsetParent);
-    }
-    if (isHTMLElement(offsetParent)) {
-      const offsetRect = getBoundingClientRect$1(offsetParent, true, isFixed, offsetParent);
-      offsets.x = offsetRect.x + offsetParent.clientLeft;
-      offsets.y = offsetRect.y + offsetParent.clientTop;
-    } else if (documentElement) {
-      offsets.x = getWindowScrollBarX(documentElement);
-    }
-  }
+const getElementRects = async function (_ref) {
+  let {
+    reference,
+    floating,
+    strategy
+  } = _ref;
+  const getOffsetParentFn = this.getOffsetParent || getOffsetParent$1;
+  const getDimensionsFn = this.getDimensions;
   return {
-    x: rect.left + scroll.scrollLeft - offsets.x,
-    y: rect.top + scroll.scrollTop - offsets.y,
-    width: rect.width,
-    height: rect.height
+    reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
+    floating: {
+      x: 0,
+      y: 0,
+      ...(await getDimensionsFn(floating))
+    }
   };
+};
+
+function isRTL(element) {
+  return getComputedStyle$1(element).direction === 'rtl';
 }
 
 const platform = {
-  getClippingRect,
   convertOffsetParentRelativeRectToViewportRelativeRect,
-  isElement,
-  getDimensions,
-  getOffsetParent: getOffsetParent$1,
   getDocumentElement,
+  getClippingRect,
+  getOffsetParent: getOffsetParent$1,
+  getElementRects,
+  getClientRects,
+  getDimensions,
   getScale,
-  async getElementRects(_ref) {
-    let {
-      reference,
-      floating,
-      strategy
-    } = _ref;
-    const getOffsetParentFn = this.getOffsetParent || getOffsetParent$1;
-    const getDimensionsFn = this.getDimensions;
-    return {
-      reference: getRectRelativeToOffsetParent(reference, await getOffsetParentFn(floating), strategy),
-      floating: {
-        x: 0,
-        y: 0,
-        ...(await getDimensionsFn(floating))
-      }
-    };
-  },
-  getClientRects: element => Array.from(element.getClientRects()),
-  isRTL: element => getComputedStyle$1(element).direction === 'rtl'
+  isElement,
+  isRTL
 };
 
 // https://samthor.au/2021/observing-dom/
@@ -15596,7 +20780,7 @@ const useTooltip = function (_temp) {
   } = _temp === void 0 ? {} : _temp;
   const [visibility, setVisibility] = reactExports.useState(isVisible);
   const seed = useUIDSeed();
-  const _id = reactExports.useMemo(() => id || seed(`tooltip_${'1.0.6'}`), [id, seed]);
+  const _id = reactExports.useMemo(() => id || seed(`tooltip_${'1.0.10'}`), [id, seed]);
   const isMounted = reactExports.useRef(false);
   const openTooltipTimeoutId = reactExports.useRef();
   const closeTooltipTimeoutId = reactExports.useRef();
@@ -15648,18 +20832,18 @@ const useTooltip = function (_temp) {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       tabIndex,
-      onMouseEnter: composeEventHandlers$5(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$5(onMouseLeave, () => closeTooltip()),
-      onFocus: composeEventHandlers$5(onFocus, () => openTooltip()),
-      onBlur: composeEventHandlers$5(onBlur, () => closeTooltip(0)),
-      onKeyDown: composeEventHandlers$5(onKeyDown, event => {
+      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
+      onFocus: composeEventHandlers$2(onFocus, () => openTooltip()),
+      onBlur: composeEventHandlers$2(onBlur, () => closeTooltip(0)),
+      onKeyDown: composeEventHandlers$2(onKeyDown, event => {
         if (event.keyCode === KEY_CODES.ESCAPE && visibility) {
           closeTooltip(0);
         }
       }),
       'aria-describedby': _id,
       'data-garden-container-id': 'containers.tooltip',
-      'data-garden-container-version': '1.0.6',
+      'data-garden-container-version': '1.0.10',
       ...other
     };
   };
@@ -15672,8 +20856,8 @@ const useTooltip = function (_temp) {
     } = _temp3 === void 0 ? {} : _temp3;
     return {
       role,
-      onMouseEnter: composeEventHandlers$5(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$5(onMouseLeave, () => closeTooltip()),
+      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
       'aria-hidden': !visibility,
       id: _id,
       ...other
@@ -15694,34 +20878,34 @@ const useTooltip = function (_temp) {
   isVisible: PropTypes.bool
 });
 
-function _typeof$1(obj) {
+function _typeof(o) {
   "@babel/helpers - typeof";
 
-  return _typeof$1 = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof$1(obj);
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) {
+    return typeof o;
+  } : function (o) {
+    return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o;
+  }, _typeof(o);
 }
 
-function _toPrimitive$1(input, hint) {
-  if (_typeof$1(input) !== "object" || input === null) return input;
+function _toPrimitive(input, hint) {
+  if (_typeof(input) !== "object" || input === null) return input;
   var prim = input[Symbol.toPrimitive];
   if (prim !== undefined) {
     var res = prim.call(input, hint || "default");
-    if (_typeof$1(res) !== "object") return res;
+    if (_typeof(res) !== "object") return res;
     throw new TypeError("@@toPrimitive must return a primitive value.");
   }
   return (hint === "string" ? String : Number)(input);
 }
 
-function _toPropertyKey$1(arg) {
-  var key = _toPrimitive$1(arg, "string");
-  return _typeof$1(key) === "symbol" ? key : String(key);
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return _typeof(key) === "symbol" ? key : String(key);
 }
 
-function _defineProperty$3(obj, key, value) {
-  key = _toPropertyKey$1(key);
+function _defineProperty$2(obj, key, value) {
+  key = _toPropertyKey(key);
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -19856,9 +25040,9 @@ function (_React$Component) {
 
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "referenceNode", void 0);
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "referenceNode", void 0);
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "setReferenceNode", function (newReferenceNode) {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "setReferenceNode", function (newReferenceNode) {
       if (newReferenceNode && _this.referenceNode !== newReferenceNode) {
         _this.referenceNode = newReferenceNode;
 
@@ -19943,18 +25127,18 @@ function (_React$Component) {
 
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "state", {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       data: undefined,
       placement: undefined
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "popperInstance", void 0);
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "popperInstance", void 0);
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "popperNode", null);
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "popperNode", null);
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "arrowNode", null);
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "arrowNode", null);
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "setPopperNode", function (popperNode) {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "setPopperNode", function (popperNode) {
       if (!popperNode || _this.popperNode === popperNode) return;
       setRef(_this.props.innerRef, popperNode);
       _this.popperNode = popperNode;
@@ -19962,11 +25146,11 @@ function (_React$Component) {
       _this.updatePopperInstance();
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "setArrowNode", function (arrowNode) {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "setArrowNode", function (arrowNode) {
       _this.arrowNode = arrowNode;
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "updateStateModifier", {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "updateStateModifier", {
       enabled: true,
       order: 900,
       fn: function fn(data) {
@@ -19981,7 +25165,7 @@ function (_React$Component) {
       }
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getOptions", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "getOptions", function () {
       return {
         placement: _this.props.placement,
         eventsEnabled: _this.props.eventsEnabled,
@@ -19999,25 +25183,25 @@ function (_React$Component) {
       };
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getPopperStyle", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "getPopperStyle", function () {
       return !_this.popperNode || !_this.state.data ? initialStyle : _extends$y({
         position: _this.state.data.offsets.popper.position
       }, _this.state.data.styles);
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getPopperPlacement", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "getPopperPlacement", function () {
       return !_this.state.data ? undefined : _this.state.placement;
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getArrowStyle", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "getArrowStyle", function () {
       return !_this.arrowNode || !_this.state.data ? initialArrowStyle : _this.state.data.arrowStyles;
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getOutOfBoundariesState", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "getOutOfBoundariesState", function () {
       return _this.state.data ? _this.state.data.hide : undefined;
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "destroyPopperInstance", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "destroyPopperInstance", function () {
       if (!_this.popperInstance) return;
 
       _this.popperInstance.destroy();
@@ -20025,10 +25209,10 @@ function (_React$Component) {
       _this.popperInstance = null;
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "updatePopperInstance", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "updatePopperInstance", function () {
       _this.destroyPopperInstance();
 
-      var _assertThisInitialize = _assertThisInitialized$1(_assertThisInitialized$1(_this)),
+      var _assertThisInitialize = _assertThisInitialized(_assertThisInitialized(_this)),
           popperNode = _assertThisInitialize.popperNode;
 
       var referenceElement = _this.props.referenceElement;
@@ -20036,7 +25220,7 @@ function (_React$Component) {
       _this.popperInstance = new PopperJS(referenceElement, popperNode, _this.getOptions());
     });
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "scheduleUpdate", function () {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "scheduleUpdate", function () {
       if (_this.popperInstance) {
         _this.popperInstance.scheduleUpdate();
       }
@@ -20089,7 +25273,7 @@ function (_React$Component) {
   return InnerPopper;
 }(reactExports.Component);
 
-_defineProperty$3(InnerPopper, "defaultProps", {
+_defineProperty$2(InnerPopper, "defaultProps", {
   placement: 'bottom',
   eventsEnabled: true,
   referenceElement: undefined,
@@ -20122,7 +25306,7 @@ function (_React$Component) {
 
     _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
 
-    _defineProperty$3(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "refHandler", function (node) {
+    _defineProperty$2(_assertThisInitialized(_assertThisInitialized(_this)), "refHandler", function (node) {
       setRef(_this.props.innerRef, node);
       safeInvoke(_this.props.setReferenceNode, node);
     });
@@ -20381,7 +25565,7 @@ const Tooltip = _ref => {
     delayMilliseconds: delayMS,
     isVisible: isInitialVisible
   });
-  const controlledIsVisible = getControlledValue$1(externalIsVisible, isVisible);
+  const controlledIsVisible = getControlledValue(externalIsVisible, isVisible);
   reactExports.useEffect(() => {
     if (controlledIsVisible && scheduleUpdateRef.current) {
       scheduleUpdateRef.current();
@@ -20432,10 +25616,10 @@ const Tooltip = _ref => {
       hasArrow,
       placement: currentPlacement,
       size: computedSize,
-      onFocus: composeEventHandlers$5(onFocus, () => {
+      onFocus: composeEventHandlers$2(onFocus, () => {
         openTooltip();
       }),
-      onBlur: composeEventHandlers$5(onBlur, () => {
+      onBlur: composeEventHandlers$2(onBlur, () => {
         closeTooltip(0);
       }),
       'aria-hidden': !controlledIsVisible,
@@ -21684,9 +26868,9 @@ const Label = reactExports.forwardRef((_ref, ref) => {
     labelProps
   } = useFieldContext();
   return React.createElement(StyledLabel, _extends$5({}, labelProps, {
-    onClick: composeEventHandlers$5(onClick, labelProps?.onClick),
-    onMouseEnter: composeEventHandlers$5(onMouseEnter, labelProps?.onMouseEnter),
-    onMouseLeave: composeEventHandlers$5(onMouseLeave, labelProps?.onMouseLeave)
+    onClick: composeEventHandlers$2(onClick, labelProps?.onClick),
+    onMouseEnter: composeEventHandlers$2(onMouseEnter, labelProps?.onMouseEnter),
+    onMouseLeave: composeEventHandlers$2(onMouseLeave, labelProps?.onMouseLeave)
   }, props, {
     ref: ref
   }));
@@ -21911,7 +27095,7 @@ const OptGroup = reactExports.forwardRef((_ref, ref) => {
   return React.createElement(StyledOption, _extends$5({
     isCompact: isCompact,
     $type: "group",
-    onMouseDown: composeEventHandlers$5(onMouseDown, handleMouseDown),
+    onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
     role: "none"
   }, props, {
     ref: ref
@@ -23907,9 +29091,9 @@ function _arrayWithoutHoles$1(arr) { if (Array.isArray(arr)) return _arrayLikeTo
 
 function ownKeys$1(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty$2(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread$1(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys$1(Object(source), !0).forEach(function (key) { _defineProperty$1(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys$1(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$2(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _slicedToArray$1(arr, i) { return _arrayWithHoles$1(arr) || _iterableToArrayLimit$1(arr, i) || _unsupportedIterableToArray$2(arr, i) || _nonIterableRest$1(); }
 
@@ -24063,7 +29247,7 @@ function isIeOrEdge() {
  * @return {Function} the event handler to add to an element
  */
 
-function composeEventHandlers$1() {
+function composeEventHandlers() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -24124,7 +29308,7 @@ function pickerOptionsFromAccept(accept) {
           mimeType = _ref5[0],
           ext = _ref5[1];
 
-      return _objectSpread$1(_objectSpread$1({}, agg), {}, _defineProperty$2({}, mimeType, ext));
+      return _objectSpread$1(_objectSpread$1({}, agg), {}, _defineProperty$1({}, mimeType, ext));
     }, {});
     return [{
       // description is required due to https://crbug.com/1264708
@@ -24239,9 +29423,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty$1(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
-function _defineProperty$1(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
@@ -25073,15 +30257,15 @@ function useDropzone() {
           onDrop = _ref2.onDrop,
           rest = _objectWithoutProperties(_ref2, _excluded3);
 
-      return _objectSpread(_objectSpread(_defineProperty$1({
-        onKeyDown: composeKeyboardHandler(composeEventHandlers$1(onKeyDown, onKeyDownCb)),
-        onFocus: composeKeyboardHandler(composeEventHandlers$1(onFocus, onFocusCb)),
-        onBlur: composeKeyboardHandler(composeEventHandlers$1(onBlur, onBlurCb)),
-        onClick: composeHandler(composeEventHandlers$1(onClick, onClickCb)),
-        onDragEnter: composeDragHandler(composeEventHandlers$1(onDragEnter, onDragEnterCb)),
-        onDragOver: composeDragHandler(composeEventHandlers$1(onDragOver, onDragOverCb)),
-        onDragLeave: composeDragHandler(composeEventHandlers$1(onDragLeave, onDragLeaveCb)),
-        onDrop: composeDragHandler(composeEventHandlers$1(onDrop, onDropCb)),
+      return _objectSpread(_objectSpread(_defineProperty({
+        onKeyDown: composeKeyboardHandler(composeEventHandlers(onKeyDown, onKeyDownCb)),
+        onFocus: composeKeyboardHandler(composeEventHandlers(onFocus, onFocusCb)),
+        onBlur: composeKeyboardHandler(composeEventHandlers(onBlur, onBlurCb)),
+        onClick: composeHandler(composeEventHandlers(onClick, onClickCb)),
+        onDragEnter: composeDragHandler(composeEventHandlers(onDragEnter, onDragEnterCb)),
+        onDragOver: composeDragHandler(composeEventHandlers(onDragOver, onDragOverCb)),
+        onDragLeave: composeDragHandler(composeEventHandlers(onDragLeave, onDragLeaveCb)),
+        onDrop: composeDragHandler(composeEventHandlers(onDrop, onDropCb)),
         role: typeof role === "string" && role !== "" ? role : "presentation"
       }, refKey, rootRef), !disabled && !noKeyboard ? {
         tabIndex: 0
@@ -25100,15 +30284,15 @@ function useDropzone() {
           onClick = _ref3.onClick,
           rest = _objectWithoutProperties(_ref3, _excluded4);
 
-      var inputProps = _defineProperty$1({
+      var inputProps = _defineProperty({
         accept: acceptAttr,
         multiple: multiple,
         type: "file",
         style: {
           display: "none"
         },
-        onChange: composeHandler(composeEventHandlers$1(onChange, onDropCb)),
-        onClick: composeHandler(composeEventHandlers$1(onClick, onInputElementClick)),
+        onChange: composeHandler(composeEventHandlers(onChange, onDropCb)),
+        onClick: composeHandler(composeEventHandlers(onClick, onInputElementClick)),
         tabIndex: -1
       }, refKey, inputRef);
 
@@ -25776,16 +30960,6 @@ Inline.defaultProps = {
   size: 16,
   color: 'inherit'
 };
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
 
 function requiredArgs(required, args) {
   if (args.length < required) {
@@ -27172,21 +32346,6 @@ function throwProtectedError(token, format, input) {
   }
 }
 
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-  return self;
-}
-
-function _setPrototypeOf(o, p) {
-  _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-  return _setPrototypeOf(o, p);
-}
-
 function _inherits(subClass, superClass) {
   if (typeof superClass !== "function" && superClass !== null) {
     throw new TypeError("Super expression must either be null or a function");
@@ -27202,25 +32361,6 @@ function _inherits(subClass, superClass) {
     writable: false
   });
   if (superClass) _setPrototypeOf(subClass, superClass);
-}
-
-function _getPrototypeOf(o) {
-  _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) {
-    return o.__proto__ || Object.getPrototypeOf(o);
-  };
-  return _getPrototypeOf(o);
-}
-
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
-  try {
-    Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
 }
 
 function _possibleConstructorReturn(self, call) {
@@ -27253,22 +32393,6 @@ function _classCallCheck(instance, Constructor) {
   }
 }
 
-function _toPrimitive(input, hint) {
-  if (_typeof(input) !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (_typeof(res) !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return _typeof(key) === "symbol" ? key : String(key);
-}
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -27287,27 +32411,12 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 
-function _defineProperty(obj, key, value) {
-  key = _toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-
 var TIMEZONE_UNIT_PRIORITY = 10;
 var Setter = /*#__PURE__*/function () {
   function Setter() {
     _classCallCheck(this, Setter);
-    _defineProperty(this, "priority", void 0);
-    _defineProperty(this, "subPriority", 0);
+    _defineProperty$2(this, "priority", void 0);
+    _defineProperty$2(this, "subPriority", 0);
   }
   _createClass(Setter, [{
     key: "validate",
@@ -27356,8 +32465,8 @@ var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
       args[_key] = arguments[_key];
     }
     _this2 = _super2.call.apply(_super2, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
-    _defineProperty(_assertThisInitialized(_this2), "subPriority", -1);
+    _defineProperty$2(_assertThisInitialized(_this2), "priority", TIMEZONE_UNIT_PRIORITY);
+    _defineProperty$2(_assertThisInitialized(_this2), "subPriority", -1);
     return _this2;
   }
   _createClass(DateToSystemTimezoneSetter, [{
@@ -27378,9 +32487,9 @@ var DateToSystemTimezoneSetter = /*#__PURE__*/function (_Setter2) {
 var Parser = /*#__PURE__*/function () {
   function Parser() {
     _classCallCheck(this, Parser);
-    _defineProperty(this, "incompatibleTokens", void 0);
-    _defineProperty(this, "priority", void 0);
-    _defineProperty(this, "subPriority", void 0);
+    _defineProperty$2(this, "incompatibleTokens", void 0);
+    _defineProperty$2(this, "priority", void 0);
+    _defineProperty$2(this, "subPriority", void 0);
   }
   _createClass(Parser, [{
     key: "run",
@@ -27413,8 +32522,8 @@ var EraParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 140);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 140);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['R', 'u', 't', 'T']);
     return _this;
   }
   _createClass(EraParser, [{
@@ -27676,8 +32785,8 @@ var YearParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 130);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'u', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(YearParser, [{
@@ -27782,8 +32891,8 @@ var LocalWeekYearParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 130);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'Q', 'q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
     return _this;
   }
   _createClass(LocalWeekYearParser, [{
@@ -27851,8 +32960,8 @@ var ISOWeekYearParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 130);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['G', 'y', 'Y', 'u', 'Q', 'q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(ISOWeekYearParser, [{
@@ -27885,8 +32994,8 @@ var ExtendedYearParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 130);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 130);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['G', 'y', 'Y', 'R', 'w', 'I', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(ExtendedYearParser, [{
@@ -27918,8 +33027,8 @@ var QuarterParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 120);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 120);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(QuarterParser, [{
@@ -27992,8 +33101,8 @@ var StandAloneQuarterParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 120);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 120);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'Q', 'M', 'L', 'w', 'I', 'd', 'D', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(StandAloneQuarterParser, [{
@@ -28066,8 +33175,8 @@ var MonthParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
-    _defineProperty(_assertThisInitialized(_this), "priority", 110);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'L', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 110);
     return _this;
   }
   _createClass(MonthParser, [{
@@ -28144,8 +33253,8 @@ var StandAloneMonthParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 110);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 110);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(StandAloneMonthParser, [{
@@ -28256,8 +33365,8 @@ var LocalWeekParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 100);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 100);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'i', 't', 'T']);
     return _this;
   }
   _createClass(LocalWeekParser, [{
@@ -28350,8 +33459,8 @@ var ISOWeekParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 100);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 100);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(ISOWeekParser, [{
@@ -28396,9 +33505,9 @@ var DateParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized(_this), "subPriority", 1);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 90);
+    _defineProperty$2(_assertThisInitialized(_this), "subPriority", 1);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'w', 'I', 'D', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(DateParser, [{
@@ -28448,9 +33557,9 @@ var DayOfYearParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized(_this), "subpriority", 1);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 90);
+    _defineProperty$2(_assertThisInitialized(_this), "subpriority", 1);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['Y', 'R', 'q', 'Q', 'M', 'L', 'w', 'I', 'd', 'E', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(DayOfYearParser, [{
@@ -28520,8 +33629,8 @@ var DayParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 90);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['D', 'i', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(DayParser, [{
@@ -28601,8 +33710,8 @@ var LocalDayParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 90);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'c', 't', 'T']);
     return _this;
   }
   _createClass(LocalDayParser, [{
@@ -28694,8 +33803,8 @@ var StandAloneLocalDayParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 90);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'R', 'u', 'q', 'Q', 'M', 'L', 'I', 'd', 'D', 'E', 'i', 'e', 't', 'T']);
     return _this;
   }
   _createClass(StandAloneLocalDayParser, [{
@@ -28803,8 +33912,8 @@ var ISODayParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 90);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 90);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['y', 'Y', 'u', 'q', 'Q', 'M', 'L', 'w', 'd', 'D', 'E', 'e', 'c', 't', 'T']);
     return _this;
   }
   _createClass(ISODayParser, [{
@@ -28898,8 +34007,8 @@ var AMPMParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 80);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 80);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['b', 'B', 'H', 'k', 't', 'T']);
     return _this;
   }
   _createClass(AMPMParser, [{
@@ -28955,8 +34064,8 @@ var AMPMMidnightParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 80);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 80);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'B', 'H', 'k', 't', 'T']);
     return _this;
   }
   _createClass(AMPMMidnightParser, [{
@@ -29012,8 +34121,8 @@ var DayPeriodParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 80);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 80);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'b', 't', 'T']);
     return _this;
   }
   _createClass(DayPeriodParser, [{
@@ -29069,8 +34178,8 @@ var Hour1to12Parser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 70);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['H', 'K', 'k', 't', 'T']);
     return _this;
   }
   _createClass(Hour1to12Parser, [{
@@ -29119,8 +34228,8 @@ var Hour0to23Parser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 70);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'b', 'h', 'K', 'k', 't', 'T']);
     return _this;
   }
   _createClass(Hour0to23Parser, [{
@@ -29162,8 +34271,8 @@ var Hour0To11Parser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 70);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['h', 'H', 'k', 't', 'T']);
     return _this;
   }
   _createClass(Hour0To11Parser, [{
@@ -29210,8 +34319,8 @@ var Hour1To24Parser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 70);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 70);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['a', 'b', 'h', 'H', 'K', 't', 'T']);
     return _this;
   }
   _createClass(Hour1To24Parser, [{
@@ -29254,8 +34363,8 @@ var MinuteParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 60);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 60);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T']);
     return _this;
   }
   _createClass(MinuteParser, [{
@@ -29297,8 +34406,8 @@ var SecondParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 50);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 50);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T']);
     return _this;
   }
   _createClass(SecondParser, [{
@@ -29340,8 +34449,8 @@ var FractionOfSecondParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 30);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 30);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T']);
     return _this;
   }
   _createClass(FractionOfSecondParser, [{
@@ -29372,8 +34481,8 @@ var ISOTimezoneWithZParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 10);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T', 'x']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 10);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T', 'x']);
     return _this;
   }
   _createClass(ISOTimezoneWithZParser, [{
@@ -29415,8 +34524,8 @@ var ISOTimezoneParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 10);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T', 'X']);
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 10);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", ['t', 'T', 'X']);
     return _this;
   }
   _createClass(ISOTimezoneParser, [{
@@ -29458,8 +34567,8 @@ var TimestampSecondsParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 40);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", '*');
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 40);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", '*');
     return _this;
   }
   _createClass(TimestampSecondsParser, [{
@@ -29488,8 +34597,8 @@ var TimestampMillisecondsParser = /*#__PURE__*/function (_Parser) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    _defineProperty(_assertThisInitialized(_this), "priority", 20);
-    _defineProperty(_assertThisInitialized(_this), "incompatibleTokens", '*');
+    _defineProperty$2(_assertThisInitialized(_this), "priority", 20);
+    _defineProperty$2(_assertThisInitialized(_this), "incompatibleTokens", '*');
     return _this;
   }
   _createClass(TimestampMillisecondsParser, [{
@@ -30944,33 +36053,33 @@ const Datepicker = reactExports.forwardRef((props, calendarRef) => {
         ref(refValue);
         inputRef.current = refValue;
       },
-      onMouseDown: composeEventHandlers$5(childElement.props.onMouseDown, () => {
+      onMouseDown: composeEventHandlers$2(childElement.props.onMouseDown, () => {
         isInputMouseDownRef.current = true;
       }),
-      onMouseUp: composeEventHandlers$5(childElement.props.onMouseUp, () => {
+      onMouseUp: composeEventHandlers$2(childElement.props.onMouseUp, () => {
         setTimeout(() => {
           isInputMouseDownRef.current = false;
         }, 0);
       }),
-      onClick: composeEventHandlers$5(childElement.props.onClick, () => {
+      onClick: composeEventHandlers$2(childElement.props.onClick, () => {
         if (isInputMouseDownRef.current && !state.isOpen) {
           dispatch({
             type: 'OPEN'
           });
         }
       }),
-      onBlur: composeEventHandlers$5(childElement.props.onBlur, () => {
+      onBlur: composeEventHandlers$2(childElement.props.onBlur, () => {
         dispatch({
           type: 'CLOSE'
         });
       }),
-      onChange: composeEventHandlers$5(childElement.props.onChange, e => {
+      onChange: composeEventHandlers$2(childElement.props.onChange, e => {
         dispatch({
           type: 'MANUALLY_UPDATE_INPUT',
           value: e.target.value
         });
       }),
-      onKeyDown: composeEventHandlers$5(childElement.props.onKeyDown, e => {
+      onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, e => {
         switch (e.keyCode) {
           case KEY_CODES.ESCAPE:
           case KEY_CODES.ENTER:
@@ -31129,10 +36238,10 @@ const Start = props => {
   return React.cloneElement(childElement, {
     value: state.startInputValue || '',
     ref: startInputRef,
-    onChange: composeEventHandlers$5(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$5(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$5(childElement.props.onKeyDown, onKeyDownCallback),
-    onBlur: composeEventHandlers$5(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$2(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$2(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, onKeyDownCallback),
+    onBlur: composeEventHandlers$2(childElement.props.onBlur, onBlurCallback)
   });
 };
 Start.displayName = 'DatepickerRange.Start';
@@ -31194,10 +36303,10 @@ const End = props => {
   return React.cloneElement(childElement, {
     value: state.endInputValue || '',
     ref: endInputRef,
-    onChange: composeEventHandlers$5(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$5(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$5(childElement.props.onKeyDown, onKeydownCallback),
-    onBlur: composeEventHandlers$5(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$2(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$2(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, onKeydownCallback),
+    onBlur: composeEventHandlers$2(childElement.props.onBlur, onBlurCallback)
   });
 };
 End.displayName = 'DatepickerRange.End';
@@ -31486,66 +36595,6 @@ Calendar.displayName = 'DatepickerRange.Calendar';
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-const KEYS = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-
-var DocumentPosition;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
 const getCellDown = (matrix, rowIndex, colIndex, wrap) => {
   let retVal = [];
   const rowCount = matrix.length;
@@ -31616,7 +36665,7 @@ const getCellUp = (matrix, rowIndex, colIndex, wrap) => {
 };
 const getId = (idPrefix, rowIndex, colIndex) => `${idPrefix}--R${rowIndex + 1}C${colIndex + 1}`;
 
-const GRID_KEYS = [KEYS.LEFT, KEYS.RIGHT, KEYS.UP, KEYS.DOWN, KEYS.HOME, KEYS.END];
+const GRID_KEYS = [KEYS$1.LEFT, KEYS$1.RIGHT, KEYS$1.UP, KEYS$1.DOWN, KEYS$1.HOME, KEYS$1.END];
 function useGrid(_ref) {
   let {
     rtl,
@@ -31631,7 +36680,7 @@ function useGrid(_ref) {
     defaultColIndex
   } = _ref;
   const doc = environment || document;
-  const prefix = useId$1(idPrefix);
+  const prefix = useId(idPrefix);
   const [uncontrolledRowIndex, setUncontrolledRowIndex] = reactExports.useState(defaultRowIndex !== null && defaultRowIndex !== undefined ? defaultRowIndex : 0);
   const [uncontrolledColIndex, setUncontrolledColIndex] = reactExports.useState(defaultColIndex !== null && defaultColIndex !== undefined ? defaultColIndex : 0);
   const isControlled = controlledRowIndex !== null && controlledColIndex !== null && controlledRowIndex !== undefined && controlledColIndex !== undefined;
@@ -31665,7 +36714,7 @@ function useGrid(_ref) {
     } = _ref2;
     return {
       'data-garden-container-id': 'containers.grid',
-      'data-garden-container-version': '3.0.6',
+      'data-garden-container-version': '3.0.9',
       role: role === null ? undefined : role,
       ...other
     };
@@ -31695,23 +36744,23 @@ function useGrid(_ref) {
         let row = rowIndex;
         let col = colIndex;
         switch (event.key) {
-          case KEYS.RIGHT:
+          case KEYS$1.RIGHT:
             [row, col] = rtl ? getCellLeft(matrix, rowIndex, colIndex, wrap) : getCellRight(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS.LEFT:
+          case KEYS$1.LEFT:
             [row, col] = rtl ? getCellRight(matrix, rowIndex, colIndex, wrap) : getCellLeft(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS.DOWN:
+          case KEYS$1.DOWN:
             [row, col] = getCellDown(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS.UP:
+          case KEYS$1.UP:
             [row, col] = getCellUp(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS.HOME:
+          case KEYS$1.HOME:
             row = event.ctrlKey ? 0 : rowIndex;
             col = 0;
             break;
-          case KEYS.END:
+          case KEYS$1.END:
             {
               const rowCount = matrix.length;
               const lastRowIndex = rowCount - 1;
@@ -31730,12 +36779,12 @@ function useGrid(_ref) {
     };
     return {
       'data-garden-container-id': 'containers.grid.cell',
-      'data-garden-container-version': '3.0.6',
+      'data-garden-container-version': '3.0.9',
       id: getId(prefix, _rowIndex, _colIndex),
       role: role === null ? undefined : role,
       tabIndex: rowIndex === _rowIndex && colIndex === _colIndex ? 0 : -1,
-      onFocus: composeEventHandlers(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$2(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
       ...other
     };
   }, [matrix, rowIndex, colIndex, doc, prefix, isControlled, onChange, rtl, wrap]);
@@ -31759,4 +36808,4 @@ function useGrid(_ref) {
   environment: PropTypes.any
 });
 
-export { Anchor as A, Button as B, Combobox as C, DEFAULT_THEME as D, hideVisually as E, Field$1 as F, FauxInput as G, Hint$1 as H, Input as I, Ne as J, getLineHeight as K, Label$1 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Textarea as T, Field as a, Label as b, Hint as c, Message as d, Checkbox as e, OptGroup as f, FileList as g, File as h, Tooltip as i, jsxRuntimeExports as j, Title$1 as k, Close$2 as l, useDropzone as m, FileUpload as n, Alert as o, purify as p, reactDomExports as q, reactExports as r, styled as s, ThemeProvider as t, useToast as u, ToastProvider as v, Datepicker as w, useGrid as x, Tag$1 as y, focusStyles as z };
+export { Anchor as A, Button as B, Combobox as C, DEFAULT_THEME as D, hideVisually as E, Field$1 as F, FauxInput as G, Hint$1 as H, Input as I, Ne as J, getLineHeight as K, Label$1 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Span as S, Textarea as T, Field as a, Label as b, Hint as c, Message as d, Checkbox as e, OptGroup as f, FileList as g, File as h, Tooltip as i, jsxRuntimeExports as j, Title$1 as k, Close$2 as l, useDropzone as m, FileUpload as n, Alert as o, purify as p, reactDomExports as q, reactExports as r, styled as s, ThemeProvider as t, useToast as u, ToastProvider as v, Datepicker as w, useGrid as x, Tag$1 as y, focusStyles as z };

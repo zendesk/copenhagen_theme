@@ -2179,6 +2179,15 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
 
+"@zendeskgarden/container-scrollregion@^1.0.0":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-scrollregion/-/container-scrollregion-1.0.7.tgz#56b2f7411c7307e7bd471f6bf978bbaa12edf603"
+  integrity sha512-j9nDdy5XV7QgjO1rNr11Jqjf3tHY3flm/ovfTEfYIwxqvC8UVzzoGV3uLIGWy4HjRsqQj++oxZeFtN9kQtAMUw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    lodash.debounce "^4.0.8"
+    prop-types "^15.7.2"
+
 "@zendeskgarden/container-selection@^3.0.0":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-selection/-/container-selection-3.0.4.tgz#e969222af8c27c67ae7244ff585e8f4e3e907cee"
@@ -2312,6 +2321,16 @@
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
     react-popper "^1.3.4"
+
+"@zendeskgarden/react-typography@8.69.9":
+  version "8.69.9"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-typography/-/react-typography-8.69.9.tgz#d7b836174405471bb9189c4534fcb77477952a62"
+  integrity sha512-75yrJ/fba7OlTWTKX8kSM1BhZeGnSM9Irz7BXJDDId+sXArh2kzyejTfOBAXJlntXY4lXxfJVW7z69unQ59IPw==
+  dependencies:
+    "@zendeskgarden/container-scrollregion" "^1.0.0"
+    polished "^4.0.0"
+    prism-react-renderer "^1.1.1"
+    prop-types "^15.5.7"
 
 JSONStream@^1.0.4, JSONStream@^1.3.5:
   version "1.3.5"
@@ -7963,6 +7982,11 @@ pretty-format@^29.0.0, pretty-format@^29.6.3:
     "@jest/schemas" "^29.6.3"
     ansi-styles "^5.0.0"
     react-is "^18.0.0"
+
+prism-react-renderer@^1.1.1:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.3.5.tgz#786bb69aa6f73c32ba1ee813fbe17a0115435085"
+  integrity sha512-IJ+MSwBWKG+SM3b2SUfdrhC+gu01QkV2KmRQgREThBfSQRoufqRfxfHUxpG1WcaFjP+kojcFyO9Qqtpgt3qLCg==
 
 proc-log@^2.0.0, proc-log@^2.0.1:
   version "2.0.1"

@@ -8,6 +8,7 @@ import {
   Checkbox as GardenCheckbox,
   Message,
 } from "@zendeskgarden/react-forms";
+import { Span } from "@zendeskgarden/react-typography";
 
 interface CheckboxProps {
   field: Field;
@@ -31,7 +32,10 @@ export function Checkbox({ field }: CheckboxProps): JSX.Element {
         value={checkboxValue}
         onChange={handleChange}
       >
-        <Label>{label}</Label>
+        <Label>
+          {label}
+          {required && <Span aria-hidden="true">*</Span>}
+        </Label>
         {description && <Hint>{description}</Hint>}
       </GardenCheckbox>
       {error && <Message validation="error">{error}</Message>}

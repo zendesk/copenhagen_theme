@@ -6,6 +6,7 @@ import {
   Label,
   Message,
 } from "@zendeskgarden/react-forms";
+import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import { useState } from "react";
 
@@ -42,7 +43,10 @@ export default function DatePicker({
 
   return (
     <GardenField>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {required && <Span aria-hidden="true">*</Span>}
+      </Label>
       {description && <Hint>{description}</Hint>}
       <GardenDatepicker value={date} onChange={handleChange} locale={locale}>
         <Input required={required} lang={locale} />
