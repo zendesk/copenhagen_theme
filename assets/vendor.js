@@ -1746,7 +1746,7 @@ function genId() {
   return ++id;
 }
 var maybeReactUseId = React$1["useId".toString()];
-function useId$1(providedId) {
+function useId$2(providedId) {
   if (maybeReactUseId !== void 0) {
     let generatedId = maybeReactUseId();
     return providedId ?? generatedId;
@@ -1773,7 +1773,7 @@ function useId$1(providedId) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$2() {
+function composeEventHandlers$3() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -1827,7 +1827,7 @@ const KEY_CODES = {
   TAB: 9,
   UP: 38
 };
-const KEYS$1 = {
+const KEYS$2 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -1856,7 +1856,7 @@ const KEYS$1 = {
   UP: 'ArrowUp'
 };
 
-var DocumentPosition$1;
+var DocumentPosition$2;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -1864,10 +1864,10 @@ var DocumentPosition$1;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+})(DocumentPosition$2 || (DocumentPosition$2 = {}));
 
-let idCounter$1 = 0;
-const useId = id => useId$1(id) || `id:${idCounter$1++}`;
+let idCounter$2 = 0;
+const useId$1 = id => useId$2(id) || `id:${idCounter$2++}`;
 
 function _extends$y() {
   _extends$y = Object.assign ? Object.assign.bind() : function (target) {
@@ -4137,7 +4137,7 @@ const PALETTE = {
     200: '#daeded',
     300: '#bdd9d7',
     400: '#90bbbb',
-    500: '#467b7c',
+    500: '#498283',
     600: '#17494d',
     700: '#03363d',
     800: '#012b30'
@@ -4791,21 +4791,21 @@ const useSelection = _ref => {
       };
       const hasModifierKeyPressed = event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
       if (!hasModifierKeyPressed) {
-        if (event.key === KEYS$1.UP && verticalDirection || event.key === KEYS$1.LEFT && horizontalDirection) {
+        if (event.key === KEYS$2.UP && verticalDirection || event.key === KEYS$2.LEFT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onIncrement();
           } else {
             onDecrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS$1.DOWN && verticalDirection || event.key === KEYS$1.RIGHT && horizontalDirection) {
+        } else if (event.key === KEYS$2.DOWN && verticalDirection || event.key === KEYS$2.RIGHT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onDecrement();
           } else {
             onIncrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS$1.HOME) {
+        } else if (event.key === KEYS$2.HOME) {
           const firstItem = values[0];
           !isFocusedValueControlled && dispatch({
             type: 'HOME',
@@ -4813,7 +4813,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(firstItem);
           event.preventDefault();
-        } else if (event.key === KEYS$1.END) {
+        } else if (event.key === KEYS$2.END) {
           const lastItem = values[values.length - 1];
           !isFocusedValueControlled && dispatch({
             type: 'END',
@@ -4821,7 +4821,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(lastItem);
           event.preventDefault();
-        } else if (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER) {
+        } else if (event.key === KEYS$2.SPACE || event.key === KEYS$2.ENTER) {
           onSelect && onSelect(value);
           !isSelectedValueControlled && dispatch({
             type: 'KEYBOARD_SELECT',
@@ -4843,9 +4843,9 @@ const useSelection = _ref => {
       tabIndex,
       [selectedAriaKey]: selectedAriaKey ? isSelected : undefined,
       ref: refs[value],
-      onFocus: composeEventHandlers$2(onFocusCallback, handleFocus),
-      onClick: composeEventHandlers$2(onClick, handleClick),
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$3(onFocusCallback, handleFocus),
+      onClick: composeEventHandlers$3(onClick, handleClick),
+      onKeyDown: composeEventHandlers$3(onKeyDown, handleKeyDown),
       onBlur,
       ...other
     };
@@ -4898,7 +4898,7 @@ const SIZE$4 = ['small', 'medium', 'large'];
 const COMPONENT_ID$5$6 = 'buttons.button_group_view';
 const StyledButtonGroup = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5$6,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledButtonGroup",
   componentId: "sc-1fbpzef-0"
@@ -4927,7 +4927,7 @@ const StyledIcon$2 = styled(_ref => {
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$4$6,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledIcon",
   componentId: "sc-19meqgg-0"
@@ -5065,7 +5065,7 @@ const sizeStyles$i = props => {
 };
 const StyledButton = styled.button.attrs(props => ({
   'data-garden-id': COMPONENT_ID$3$6,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   type: props.type || 'button'
 })).withConfig({
   displayName: "StyledButton",
@@ -5078,7 +5078,7 @@ StyledButton.defaultProps = {
 const COMPONENT_ID$2$8 = 'buttons.anchor';
 const StyledAnchor = styled(StyledButton).attrs(props => ({
   'data-garden-id': COMPONENT_ID$2$8,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   as: 'a',
   dir: props.theme.rtl ? 'rtl' : undefined,
   isLink: true,
@@ -5112,7 +5112,7 @@ var SvgNewWindowStroke = function SvgNewWindowStroke(props) {
 const COMPONENT_ID$1$8 = 'buttons.external_icon';
 const StyledExternalIcon = styled(SvgNewWindowStroke).attrs({
   'data-garden-id': COMPONENT_ID$1$8,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledExternalIcon",
   componentId: "sc-16oz07e-0"
@@ -5139,7 +5139,7 @@ const iconStyles = props => {
 };
 const StyledIconButton = styled(StyledButton).attrs({
   'data-garden-id': COMPONENT_ID$N,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledIconButton",
   componentId: "sc-1t0ughp-0"
@@ -6567,7 +6567,7 @@ const TYPE$1 = ['success', 'warning', 'error', 'info'];
 const COMPONENT_ID$b$3 = 'notifications.close';
 const StyledClose$1 = styled.button.attrs({
   'data-garden-id': COMPONENT_ID$b$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-1mr9nx1-0"
@@ -6582,7 +6582,7 @@ StyledClose$1.defaultProps = {
 const COMPONENT_ID$a$3 = 'notifications.paragraph';
 const StyledParagraph$2 = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$a$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-12tmd6p-0"
@@ -6594,7 +6594,7 @@ StyledParagraph$2.defaultProps = {
 const COMPONENT_ID$9$4 = 'notifications.title';
 const StyledTitle$1 = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$9$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-xx4jsv-0"
@@ -6651,7 +6651,7 @@ const COMPONENT_ID$8$4 = 'notifications.alert';
 const colorStyles$5$2 = props => Ne(["", "{color:", ";}"], StyledTitle$1, props.hue && getColor(props.hue, 800, props.theme));
 const StyledAlert = styled(StyledBase).attrs({
   'data-garden-id': COMPONENT_ID$8$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledAlert",
   componentId: "sc-fyn8jp-0"
@@ -6697,7 +6697,7 @@ const colorStyles$4$2 = props => {
 };
 const StyledNotification = styled(StyledBase).attrs({
   'data-garden-id': COMPONENT_ID$7$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledNotification",
   componentId: "sc-uf6jh-0"
@@ -6712,7 +6712,7 @@ StyledNotification.defaultProps = {
 const COMPONENT_ID$6$4 = 'notifications.well';
 const StyledWell = styled(StyledBase).attrs({
   'data-garden-id': COMPONENT_ID$6$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledWell",
   componentId: "sc-a5831c-0"
@@ -6799,7 +6799,7 @@ const sizeStyles$3$2 = props => {
 };
 const StyledGlobalAlert = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5$5,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledGlobalAlert",
   componentId: "sc-k6rimt-0"
@@ -6859,7 +6859,7 @@ const sizeStyles$2$2 = props => {
 };
 const StyledGlobalAlertClose = styled(IconButton).attrs({
   'data-garden-id': COMPONENT_ID$4$5,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   size: 'small'
 }).withConfig({
   displayName: "StyledGlobalAlertClose",
@@ -6914,7 +6914,7 @@ function sizeStyles$1$2(props) {
 }
 const StyledGlobalAlertButton = styled(Button).attrs({
   'data-garden-id': COMPONENT_ID$3$5,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   focusInset: false,
   isDanger: false,
   isLink: false,
@@ -6933,7 +6933,7 @@ StyledGlobalAlertButton.defaultProps = {
 const COMPONENT_ID$2$7 = 'notifications.global-alert.content';
 const StyledGlobalAlertContent = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$2$7,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledGlobalAlertContent",
   componentId: "sc-rept0u-0"
@@ -6957,7 +6957,7 @@ const StyledGlobalAlertIcon = styled(_ref => {
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$1$7,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledGlobalAlertIcon",
   componentId: "sc-84ne9k-0"
@@ -6985,7 +6985,7 @@ const colorStyles$e = props => {
 };
 const StyledGlobalAlertTitle = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$M,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledGlobalAlertTitle",
   componentId: "sc-10clqbo-0"
@@ -8117,7 +8117,7 @@ var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$1() {
+function composeEventHandlers$2() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -8131,7 +8131,7 @@ function composeEventHandlers$1() {
     });
   };
 }
-const KEYS = {
+const KEYS$1 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -8159,7 +8159,7 @@ const KEYS = {
   UNIDENTIFIED: 'Unidentified',
   UP: 'ArrowUp'
 };
-var DocumentPosition;
+var DocumentPosition$1;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -8167,7 +8167,7 @@ var DocumentPosition;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
 
 const SLIDER_MIN = 0;
 const SLIDER_MAX = 100;
@@ -8296,7 +8296,7 @@ function useSlider(_ref) {
       'data-garden-container-id': 'containers.slider.track',
       'data-garden-container-version': '0.1.7',
       'aria-disabled': disabled,
-      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
+      onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
       ...other
     };
   }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
@@ -8311,28 +8311,28 @@ function useSlider(_ref) {
       if (!disabled) {
         let value;
         switch (event.key) {
-          case KEYS.RIGHT:
+          case KEYS$1.RIGHT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
             break;
-          case KEYS.UP:
+          case KEYS$1.UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
             break;
-          case KEYS.LEFT:
+          case KEYS$1.LEFT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
             break;
-          case KEYS.DOWN:
+          case KEYS$1.DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
             break;
-          case KEYS.PAGE_UP:
+          case KEYS$1.PAGE_UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
             break;
-          case KEYS.PAGE_DOWN:
+          case KEYS$1.PAGE_DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
             break;
-          case KEYS.HOME:
+          case KEYS$1.HOME:
             value = min;
             break;
-          case KEYS.END:
+          case KEYS$1.END:
             value = max;
             break;
         }
@@ -8387,9 +8387,9 @@ function useSlider(_ref) {
       'aria-valuemin': thumb === 'min' ? min : position.minValue,
       'aria-valuemax': thumb === 'min' ? position.maxValue : max,
       'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
-      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
-      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
-      onTouchStart: composeEventHandlers$1(onTouchStart, handleTouchStart),
+      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
+      onTouchStart: composeEventHandlers$2(onTouchStart, handleTouchStart),
       ...other
     };
   }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
@@ -8453,7 +8453,7 @@ const useFieldContext$1 = () => {
 const COMPONENT_ID$K = 'forms.field';
 const StyledField$1 = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$K,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-12gzfsu-0"
@@ -8466,7 +8466,7 @@ const COMPONENT_ID$J = 'forms.fieldset';
 const StyledFieldset = styled(StyledField$1).attrs({
   as: 'fieldset',
   'data-garden-id': COMPONENT_ID$J,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFieldset",
   componentId: "sc-1vr4mxv-0"
@@ -8478,7 +8478,7 @@ StyledFieldset.defaultProps = {
 const COMPONENT_ID$I = 'forms.input_label';
 const StyledLabel$1 = styled.label.attrs(props => ({
   'data-garden-id': props['data-garden-id'] || COMPONENT_ID$I,
-  'data-garden-version': props['data-garden-version'] || '8.69.9'
+  'data-garden-version': props['data-garden-version'] || '8.70.1'
 })).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-2utmsz-0"
@@ -8491,7 +8491,7 @@ const COMPONENT_ID$H = 'forms.fieldset_legend';
 const StyledLegend = styled(StyledLabel$1).attrs({
   as: 'legend',
   'data-garden-id': COMPONENT_ID$H,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledLegend",
   componentId: "sc-6s0zwq-0"
@@ -8503,7 +8503,7 @@ StyledLegend.defaultProps = {
 const COMPONENT_ID$G = 'forms.input_hint';
 const StyledHint$1 = styled.div.attrs(props => ({
   'data-garden-id': props['data-garden-id'] || COMPONENT_ID$G,
-  'data-garden-version': props['data-garden-version'] || '8.69.9'
+  'data-garden-version': props['data-garden-version'] || '8.70.1'
 })).withConfig({
   displayName: "StyledHint",
   componentId: "sc-17c2wu8-0"
@@ -8608,7 +8608,7 @@ const MessageIcon = _ref => {
 const COMPONENT_ID$F = 'forms.input_message_icon';
 const StyledMessageIcon = styled(MessageIcon).attrs({
   'data-garden-id': COMPONENT_ID$F,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   'aria-hidden': null
 }).withConfig({
   displayName: "StyledMessageIcon",
@@ -8636,7 +8636,7 @@ const validationStyles = props => {
 const COMPONENT_ID$E = 'forms.input_message';
 const StyledMessage$1 = styled.div.attrs(props => ({
   'data-garden-id': props['data-garden-id'] || COMPONENT_ID$E,
-  'data-garden-version': props['data-garden-version'] || '8.69.9'
+  'data-garden-version': props['data-garden-version'] || '8.70.1'
 })).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-30hgg7-0"
@@ -8726,7 +8726,7 @@ const sizeStyles$f = props => {
 };
 const StyledTextInput = styled.input.attrs(props => ({
   'data-garden-id': COMPONENT_ID$D,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   'aria-invalid': isInvalid(props.validation)
 })).withConfig({
   displayName: "StyledTextInput",
@@ -8749,7 +8749,7 @@ const hiddenStyles = `
 const StyledTextarea = styled(StyledTextInput).attrs({
   as: 'textarea',
   'data-garden-id': COMPONENT_ID$C,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTextarea",
   componentId: "sc-wxschl-0"
@@ -8795,7 +8795,7 @@ _ref => {
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$B,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTextMediaFigure",
   componentId: "sc-1qepknj-0"
@@ -8842,7 +8842,7 @@ const StyledTextFauxInput = styled(StyledTextInput).attrs(props => ({
   'aria-readonly': props.isReadOnly,
   'aria-disabled': props.isDisabled,
   'data-garden-id': COMPONENT_ID$A,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 })).withConfig({
   displayName: "StyledTextFauxInput",
   componentId: "sc-yqw7j9-0"
@@ -8854,7 +8854,7 @@ StyledTextFauxInput.defaultProps = {
 const COMPONENT_ID$z = 'forms.media_input';
 const StyledTextMediaInput = styled(StyledTextInput).attrs({
   'data-garden-id': COMPONENT_ID$z,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   isBare: true
 }).withConfig({
   displayName: "StyledTextMediaInput",
@@ -8876,7 +8876,7 @@ const itemStyles = props => {
 };
 const StyledInputGroup$1 = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$y$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-kjh1f0-0"
@@ -8894,7 +8894,7 @@ const sizeStyles$d$1 = props => {
 };
 const StyledRadioLabel = styled(StyledLabel$1).attrs({
   'data-garden-id': COMPONENT_ID$x$1,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   isRadio: true
 }).withConfig({
   displayName: "StyledRadioLabel",
@@ -8907,7 +8907,7 @@ StyledRadioLabel.defaultProps = {
 const COMPONENT_ID$w$1 = 'forms.checkbox_label';
 const StyledCheckLabel = styled(StyledRadioLabel).attrs({
   'data-garden-id': COMPONENT_ID$w$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCheckLabel",
   componentId: "sc-x7nr1-0"
@@ -8919,7 +8919,7 @@ StyledCheckLabel.defaultProps = {
 const COMPONENT_ID$v$1 = 'forms.radio_hint';
 const StyledRadioHint = styled(StyledHint$1).attrs({
   'data-garden-id': COMPONENT_ID$v$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledRadioHint",
   componentId: "sc-eo8twg-0"
@@ -8931,7 +8931,7 @@ StyledRadioHint.defaultProps = {
 const COMPONENT_ID$u$1 = 'forms.checkbox_hint';
 const StyledCheckHint = styled(StyledRadioHint).attrs({
   'data-garden-id': COMPONENT_ID$u$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCheckHint",
   componentId: "sc-1kl8e8c-0"
@@ -8978,7 +8978,7 @@ const sizeStyles$c$1 = props => {
 };
 const StyledRadioInput = styled.input.attrs({
   'data-garden-id': COMPONENT_ID$t$1,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   type: 'radio'
 }).withConfig({
   displayName: "StyledRadioInput",
@@ -9000,7 +9000,7 @@ const colorStyles$8$1 = props => {
 };
 const StyledCheckInput = styled(StyledRadioInput).attrs({
   'data-garden-id': COMPONENT_ID$s$1,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   type: 'checkbox'
 }).withConfig({
   displayName: "StyledCheckInput",
@@ -9013,7 +9013,7 @@ StyledCheckInput.defaultProps = {
 const COMPONENT_ID$r$1 = 'forms.radio_message';
 const StyledRadioMessage = styled(StyledMessage$1).attrs({
   'data-garden-id': COMPONENT_ID$r$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledRadioMessage",
   componentId: "sc-1pmi0q8-0"
@@ -9025,7 +9025,7 @@ StyledRadioMessage.defaultProps = {
 const COMPONENT_ID$q$1 = 'forms.checkbox_message';
 const StyledCheckMessage = styled(StyledRadioMessage).attrs({
   'data-garden-id': COMPONENT_ID$q$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCheckMessage",
   componentId: "sc-s4p6kd-0"
@@ -9057,7 +9057,7 @@ var SvgCheckSmFill = function SvgCheckSmFill(props) {
 const COMPONENT_ID$p$1 = 'forms.check_svg';
 const StyledCheckSvg = styled(SvgCheckSmFill).attrs({
   'data-garden-id': COMPONENT_ID$p$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCheckSvg",
   componentId: "sc-fvxetk-0"
@@ -9087,7 +9087,7 @@ var SvgDashFill = function SvgDashFill(props) {
 const COMPONENT_ID$o$1 = 'forms.dash_svg';
 const StyledDashSvg = styled(SvgDashFill).attrs({
   'data-garden-id': COMPONENT_ID$o$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledDashSvg",
   componentId: "sc-z3vq71-0"
@@ -9118,7 +9118,7 @@ const sizeStyles$b$1 = props => {
 };
 const StyledFileUpload = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$n$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFileUpload",
   componentId: "sc-1rodjgn-0"
@@ -9130,7 +9130,7 @@ StyledFileUpload.defaultProps = {
 const COMPONENT_ID$m$1 = 'forms.file.close';
 const StyledFileClose = styled.button.attrs({
   'data-garden-id': COMPONENT_ID$m$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFileClose",
   componentId: "sc-1m31jbf-0"
@@ -9193,7 +9193,7 @@ const sizeStyles$a$1 = props => {
 };
 const StyledFile = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$l$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFile",
   componentId: "sc-195lzp1-0"
@@ -9205,7 +9205,7 @@ StyledFile.defaultProps = {
 const COMPONENT_ID$k$1 = 'forms.file.delete';
 const StyledFileDelete = styled(StyledFileClose).attrs({
   'data-garden-id': COMPONENT_ID$k$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFileDelete",
   componentId: "sc-a8nnhx-0"
@@ -9225,7 +9225,7 @@ const StyledFileIcon = styled(_ref => {
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$j$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFileIcon",
   componentId: "sc-7b3q0c-0"
@@ -9237,7 +9237,7 @@ StyledFileIcon.defaultProps = {
 const COMPONENT_ID$i$1 = 'forms.file_list';
 const StyledFileList = styled.ul.attrs({
   'data-garden-id': COMPONENT_ID$i$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFileList",
   componentId: "sc-gbahjg-0"
@@ -9249,7 +9249,7 @@ StyledFileList.defaultProps = {
 const COMPONENT_ID$h$1 = 'forms.file_list.item';
 const StyledFileListItem = styled.li.attrs({
   'data-garden-id': COMPONENT_ID$h$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFileListItem",
   componentId: "sc-1ova3lo-0"
@@ -9279,7 +9279,7 @@ var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
 const COMPONENT_ID$g$1 = 'forms.radio_svg';
 const StyledRadioSvg = styled(SvgCircleSmFill$1).attrs({
   'data-garden-id': COMPONENT_ID$g$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledRadioSvg",
   componentId: "sc-1r1qtr1-0"
@@ -9296,7 +9296,7 @@ const sizeStyles$9$1 = props => {
 };
 const StyledToggleLabel = styled(StyledCheckLabel).attrs({
   'data-garden-id': COMPONENT_ID$f$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledToggleLabel",
   componentId: "sc-e0asdk-0"
@@ -9308,7 +9308,7 @@ StyledToggleLabel.defaultProps = {
 const COMPONENT_ID$e$1 = 'forms.toggle_hint';
 const StyledToggleHint = styled(StyledHint$1).attrs({
   'data-garden-id': COMPONENT_ID$e$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledToggleHint",
   componentId: "sc-nziggu-0"
@@ -9335,7 +9335,7 @@ const sizeStyles$8$1 = props => {
 };
 const StyledToggleInput = styled(StyledCheckInput).attrs({
   'data-garden-id': COMPONENT_ID$d$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledToggleInput",
   componentId: "sc-sgp47s-0"
@@ -9347,7 +9347,7 @@ StyledToggleInput.defaultProps = {
 const COMPONENT_ID$c$2 = 'forms.toggle_message';
 const StyledToggleMessage = styled(StyledMessage$1).attrs({
   'data-garden-id': COMPONENT_ID$c$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledToggleMessage",
   componentId: "sc-13vuvl1-0"
@@ -9377,7 +9377,7 @@ var SvgCircleSmFill = function SvgCircleSmFill(props) {
 const COMPONENT_ID$b$2 = 'forms.toggle_svg';
 const StyledToggleSvg = styled(SvgCircleSmFill).attrs({
   'data-garden-id': COMPONENT_ID$b$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledToggleSvg",
   componentId: "sc-162xbyx-0"
@@ -9399,7 +9399,7 @@ const sizeStyles$7$1 = props => {
 };
 const StyledSelect = styled(StyledTextInput).attrs({
   'data-garden-id': COMPONENT_ID$a$2,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   as: 'select'
 }).withConfig({
   displayName: "StyledSelect",
@@ -9412,7 +9412,7 @@ StyledSelect.defaultProps = {
 const COMPONENT_ID$9$3 = 'forms.select_wrapper';
 const StyledSelectWrapper = styled(StyledTextFauxInput).attrs({
   'data-garden-id': COMPONENT_ID$9$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledSelectWrapper",
   componentId: "sc-i7b6hw-0"
@@ -9537,7 +9537,7 @@ const sizeStyles$6$1 = props => {
 };
 const StyledRangeInput = styled.input.attrs(props => ({
   'data-garden-id': COMPONENT_ID$8$3,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   type: 'range',
   style: {
     backgroundSize: props.hasLowerTrack && props.backgroundSize
@@ -9570,7 +9570,7 @@ StyledRangeInput.defaultProps = {
 const COMPONENT_ID$7$3 = 'forms.slider';
 const StyledSlider = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$7$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledSlider",
   componentId: "sc-1di437a-0"
@@ -9602,7 +9602,7 @@ const sizeStyles$5$1 = props => {
 };
 const StyledSliderThumb = styled.div.attrs(props => ({
   'data-garden-id': COMPONENT_ID$6$3,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderThumb",
@@ -9632,7 +9632,7 @@ const sizeStyles$4$1 = props => {
 };
 const StyledSliderTrack = styled.div.attrs(props => ({
   'data-garden-id': COMPONENT_ID$5$4,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   'aria-disabled': props.isDisabled
 })).withConfig({
   displayName: "StyledSliderTrack",
@@ -9652,7 +9652,7 @@ const sizeStyles$3$1 = props => {
 };
 const StyledSliderTrackRail = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$4$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledSliderTrackRail",
   componentId: "sc-1o5owbd-0"
@@ -9679,7 +9679,7 @@ const sizeStyles$2$1 = props => {
 };
 const StyledTileIcon = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$3$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTileIcon",
   componentId: "sc-1wazhg4-0"
@@ -9720,7 +9720,7 @@ const colorStyles$d = props => {
 };
 const StyledTile = styled.label.attrs(props => ({
   'data-garden-id': COMPONENT_ID$2$6,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   'data-garden-selected': props.isSelected
 })).withConfig({
   displayName: "StyledTile",
@@ -9744,7 +9744,7 @@ const sizeStyles$1$1 = props => {
 };
 const StyledTileDescription = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$1$6,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTileDescription",
   componentId: "sc-xfuu7u-0"
@@ -9777,7 +9777,7 @@ const sizeStyles$g = props => {
 };
 const StyledTileLabel = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$L,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTileLabel",
   componentId: "sc-1mypv27-0"
@@ -9918,19 +9918,19 @@ const Label$1 = React.forwardRef((props, ref) => {
       } = fieldContext;
       combinedProps = {
         ...combinedProps,
-        onMouseUp: composeEventHandlers$2(props.onMouseUp, () => {
+        onMouseUp: composeEventHandlers$3(props.onMouseUp, () => {
           setIsLabelActive(false);
         }),
-        onMouseDown: composeEventHandlers$2(props.onMouseDown, () => {
+        onMouseDown: composeEventHandlers$3(props.onMouseDown, () => {
           setIsLabelActive(true);
         }),
-        onMouseEnter: composeEventHandlers$2(props.onMouseEnter, () => {
+        onMouseEnter: composeEventHandlers$3(props.onMouseEnter, () => {
           setIsLabelHovered(true);
         }),
-        onMouseLeave: composeEventHandlers$2(props.onMouseLeave, () => {
+        onMouseLeave: composeEventHandlers$3(props.onMouseLeave, () => {
           setIsLabelHovered(false);
         }),
-        onClick: composeEventHandlers$2(props.onClick, () => {
+        onClick: composeEventHandlers$3(props.onClick, () => {
           multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
         })
       };
@@ -9964,7 +9964,7 @@ const Label$1 = React.forwardRef((props, ref) => {
     };
     combinedProps = {
       ...combinedProps,
-      onClick: composeEventHandlers$2(combinedProps.onClick, onLabelSelect)
+      onClick: composeEventHandlers$3(combinedProps.onClick, onLabelSelect)
     };
     return React.createElement(StyledCheckLabel, _extends$t({
       ref: ref
@@ -10094,7 +10094,7 @@ const Input = React.forwardRef((_ref, ref) => {
   } = _ref;
   const fieldContext = useFieldContext$1();
   const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$3(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -10172,7 +10172,7 @@ const Range = React.forwardRef((_ref, ref) => {
   reactExports.useEffect(() => {
     updateBackgroundWidthFromInput(rangeRef.current);
   }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$2(props.onChange, event => {
+  const onChange = hasLowerTrack ? composeEventHandlers$3(props.onChange, event => {
     updateBackgroundWidthFromInput(event.target);
   }) : props.onChange;
   let combinedProps = {
@@ -10289,7 +10289,7 @@ const Textarea = React.forwardRef((_ref, ref) => {
     computedStyle.height = state.height;
     computedStyle.overflow = state.overflow ? 'hidden' : undefined;
   }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$3(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -10393,10 +10393,10 @@ const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
     ...props
   } = _ref;
   const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$2(onFocus, () => {
+  const onFocusHandler = composeEventHandlers$3(onFocus, () => {
     setIsFocused(true);
   });
-  const onBlurHandler = composeEventHandlers$2(onBlur, () => {
+  const onBlurHandler = composeEventHandlers$3(onBlur, () => {
     setIsFocused(false);
   });
   return React.createElement(StyledTextFauxInput, _extends$t({
@@ -10802,7 +10802,7 @@ const useFileContext = () => {
 
 const CloseComponent$1 = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$3(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
   return React.createElement(StyledFileClose, _extends$t({
@@ -10855,7 +10855,7 @@ var SvgTrashStroke = function SvgTrashStroke(props) {
 
 const DeleteComponent = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$3(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
   return React.createElement(StyledFileDelete, _extends$t({
@@ -11290,22 +11290,22 @@ const MediaInput = React.forwardRef((_ref, ref) => {
     onMouseOut,
     ...otherWrapperProps
   } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$2(onClick, () => {
+  const onFauxInputClickHandler = composeEventHandlers$3(onClick, () => {
     inputRef.current && inputRef.current.focus();
   });
-  const onFauxInputFocusHandler = composeEventHandlers$2(onFocus, () => {
+  const onFauxInputFocusHandler = composeEventHandlers$3(onFocus, () => {
     setIsFocused(true);
   });
-  const onFauxInputBlurHandler = composeEventHandlers$2(onBlur, () => {
+  const onFauxInputBlurHandler = composeEventHandlers$3(onBlur, () => {
     setIsFocused(false);
   });
-  const onFauxInputMouseOverHandler = composeEventHandlers$2(onMouseOver, () => {
+  const onFauxInputMouseOverHandler = composeEventHandlers$3(onMouseOver, () => {
     setIsHovered(true);
   });
-  const onFauxInputMouseOutHandler = composeEventHandlers$2(onMouseOut, () => {
+  const onFauxInputMouseOutHandler = composeEventHandlers$3(onMouseOut, () => {
     setIsHovered(false);
   });
-  const onSelectHandler = readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = readOnly ? composeEventHandlers$3(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -15935,7 +15935,7 @@ const fontStyles = props => {
 };
 const StyledFont = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$9$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFont",
   componentId: "sc-1iildbo-0"
@@ -15948,7 +15948,7 @@ StyledFont.defaultProps = {
 const COMPONENT_ID$8$2 = 'typography.blockquote';
 const StyledBlockquote = styled.blockquote.attrs({
   'data-garden-id': COMPONENT_ID$8$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledBlockquote",
   componentId: "sc-1tt3ye0-0"
@@ -15967,7 +15967,7 @@ const colorStyles$3$1 = props => {
 };
 const StyledCode = styled(StyledFont).attrs({
   'data-garden-id': COMPONENT_ID$7$2,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   as: 'code'
 }).withConfig({
   displayName: "StyledCode",
@@ -15988,7 +15988,7 @@ const colorStyles$2$1 = props => {
 };
 const StyledCodeBlock = styled.pre.attrs({
   'data-garden-id': COMPONENT_ID$6$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCodeBlock",
   componentId: "sc-5wky57-0"
@@ -16000,7 +16000,7 @@ StyledCodeBlock.defaultProps = {
 const COMPONENT_ID$5$3 = 'typography.codeblock_container';
 const StyledCodeBlockContainer = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCodeBlockContainer",
   componentId: "sc-14zgbfw-0"
@@ -16063,7 +16063,7 @@ const lineNumberStyles = props => {
 };
 const StyledCodeBlockLine = styled(StyledFont).attrs({
   'data-garden-id': COMPONENT_ID$4$3,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   as: 'code',
   isMonospace: true
 }).withConfig({
@@ -16098,7 +16098,7 @@ const colorStyles$b = props => {
 };
 const StyledCodeBlockToken = styled.span.attrs({
   'data-garden-id': COMPONENT_ID$3$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCodeBlockToken",
   componentId: "sc-1hkshdq-0"
@@ -16110,7 +16110,7 @@ StyledCodeBlockToken.defaultProps = {
 const COMPONENT_ID$2$5 = 'typography.ellipsis';
 const StyledEllipsis = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$2$5,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledEllipsis",
   componentId: "sc-1u4uqmy-0"
@@ -16134,7 +16134,7 @@ const StyledIcon = styled(_ref => {
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$1$5,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledIcon",
   componentId: "sc-10rfb5b-0"
@@ -16150,7 +16150,7 @@ const listStyles = props => {
 const ORDERED_ID$1 = 'typography.ordered_list';
 const StyledOrderedList = styled.ol.attrs({
   'data-garden-id': ORDERED_ID$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledList__StyledOrderedList",
   componentId: "sc-jdbsfi-0"
@@ -16161,7 +16161,7 @@ StyledOrderedList.defaultProps = {
 const UNORDERED_ID$1 = 'typography.unordered_list';
 const StyledUnorderedList = styled.ul.attrs({
   'data-garden-id': UNORDERED_ID$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledList__StyledUnorderedList",
   componentId: "sc-jdbsfi-1"
@@ -16181,7 +16181,7 @@ const listItemStyles = props => {
 const ORDERED_ID = 'typography.ordered_list_item';
 const StyledOrderedListItem = styled(StyledFont).attrs({
   'data-garden-id': ORDERED_ID,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   as: 'li'
 }).withConfig({
   displayName: "StyledListItem__StyledOrderedListItem",
@@ -16194,7 +16194,7 @@ StyledOrderedListItem.defaultProps = {
 const UNORDERED_ID = 'typography.unordered_list_item';
 const StyledUnorderedListItem = styled(StyledFont).attrs({
   'data-garden-id': UNORDERED_ID,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   as: 'li'
 }).withConfig({
   displayName: "StyledListItem__StyledUnorderedListItem",
@@ -16208,7 +16208,7 @@ StyledUnorderedListItem.defaultProps = {
 const COMPONENT_ID$y = 'typography.paragraph';
 const StyledParagraph$1 = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$y,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-zkuftz-0"
@@ -16620,6 +16620,69 @@ SpanComponent.defaultProps = {
 const Span = SpanComponent;
 Span.Icon = Icon;
 Span.StartIcon = StartIcon;
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function composeEventHandlers$1() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+const KEYS = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+
+var DocumentPosition;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition || (DocumentPosition = {}));
+
+let idCounter$1 = 0;
+const useId = id => useId$2(id) || `id:${idCounter$1++}`;
 
 /**
  * Copyright Zendesk, Inc.
@@ -18353,14 +18416,14 @@ const typeMap = {
   [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
   [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
   [useCombobox$1.stateChangeTypes.InputClick]: 'input:click',
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$1.DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$1.UP}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$1.END}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$1.ENTER}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$1.ESCAPE}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$1.HOME}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$1.PAGE_DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$1.PAGE_UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS.DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS.UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS.END}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS.ENTER}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS.ESCAPE}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS.HOME}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS.PAGE_DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS.PAGE_UP}`,
   [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
   [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
   [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
@@ -18407,7 +18470,7 @@ const useCombobox = _ref => {
   const matchTimeoutRef = reactExports.useRef();
   const previousStateRef = reactExports.useRef();
   const prefix = useId(idPrefix);
-  const ids = reactExports.useMemo(() => ({
+  const idRef = reactExports.useRef({
     label: `${prefix}--label`,
     hint: `${prefix}--hint`,
     trigger: `${prefix}--trigger`,
@@ -18415,7 +18478,7 @@ const useCombobox = _ref => {
     listbox: `${prefix}--listbox`,
     message: `${prefix}--message`,
     getOptionId: (index, isDisabled) => `${prefix}--option${isDisabled ? '-disabled' : ''}-${index}`
-  }), [prefix]);
+  });
   const labels = reactExports.useMemo(() => ({}), []);
   const selectedValues = reactExports.useMemo(() => [], []);
   const disabledValues = reactExports.useMemo(() => [], []);
@@ -18468,7 +18531,7 @@ const useCombobox = _ref => {
       throw new Error('Error: expected useCombobox `selectionValue` not to be an array.');
     }
   }
-  const handleDownshiftStateChange = _ref2 => {
+  const handleDownshiftStateChange = reactExports.useCallback(_ref2 => {
     let {
       type,
       isOpen,
@@ -18491,7 +18554,7 @@ const useCombobox = _ref => {
         activeIndex: highlightedIndex
       })
     });
-  };
+  }, [onChange]);
   const stateReducer = (state, _ref3) => {
     let {
       type,
@@ -18581,9 +18644,9 @@ const useCombobox = _ref => {
     setHighlightedIndex,
     selectItem
   } = useCombobox$1({
-    toggleButtonId: ids.trigger,
-    menuId: ids.listbox,
-    getItemId: ids.getOptionId,
+    toggleButtonId: idRef.current.trigger,
+    menuId: idRef.current.listbox,
+    getItemId: idRef.current.getOptionId,
     items: values,
     inputValue,
     initialInputValue,
@@ -18686,7 +18749,7 @@ const useCombobox = _ref => {
     } = _temp === void 0 ? {} : _temp;
     const triggerProps = getDownshiftTriggerProps({
       'data-garden-container-id': 'containers.combobox',
-      'data-garden-container-version': '1.0.9',
+      'data-garden-container-version': '1.0.11',
       onBlur,
       onClick,
       onKeyDown,
@@ -18711,8 +18774,8 @@ const useCombobox = _ref => {
       };
       return {
         ...triggerProps,
-        onBlur: composeEventHandlers$2(onBlur, handleBlur),
-        onClick: composeEventHandlers$2(onClick, handleClick),
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onClick: composeEventHandlers$1(onClick, handleClick),
         'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
         'aria-expanded': undefined,
         'aria-disabled': disabled || undefined,
@@ -18727,10 +18790,10 @@ const useCombobox = _ref => {
       });
       const handleKeyDown = event => {
         event.stopPropagation();
-        if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+        if (!_isExpanded && (event.key === KEYS.SPACE || event.key === KEYS.ENTER)) {
           event.preventDefault();
           openListbox();
-        } else if (_isExpanded && !matchValue && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+        } else if (_isExpanded && !matchValue && (event.key === KEYS.SPACE || event.key === KEYS.ENTER)) {
           event.preventDefault();
           if (_activeIndex !== -1) {
             setDownshiftSelection(values[_activeIndex]);
@@ -18768,17 +18831,17 @@ const useCombobox = _ref => {
         ...triggerProps,
         'aria-activedescendant': ariaActiveDescendant,
         'aria-haspopup': 'listbox',
-        'aria-labelledby': ids.label,
+        'aria-labelledby': idRef.current.label,
         'aria-disabled': disabled || undefined,
         disabled: undefined,
         role: 'combobox',
-        onBlur: composeEventHandlers$2(onBlur, handleBlur),
-        onKeyDown: composeEventHandlers$2(onKeyDown, onDownshiftKeyDown, handleKeyDown),
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onKeyDown: composeEventHandlers$1(onKeyDown, onDownshiftKeyDown, handleKeyDown),
         tabIndex: disabled ? -1 : 0
       };
     }
     return triggerProps;
-  }, [getDownshiftTriggerProps, getDownshiftInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, setDownshiftSelection, matchValue, values, labels, triggerContainsInput, ids.label, isAutocomplete, isEditable, isMultiselectable, inputRef]);
+  }, [getDownshiftTriggerProps, getDownshiftInputProps, triggerRef, disabled, _selectionValue, _isExpanded, _activeIndex, closeListbox, openListbox, setActiveIndex, setDownshiftSelection, matchValue, values, labels, triggerContainsInput, isAutocomplete, isEditable, isMultiselectable, inputRef]);
   const getLabelProps = reactExports.useCallback(function (_temp2) {
     let {
       onClick,
@@ -18788,54 +18851,65 @@ const useCombobox = _ref => {
       htmlFor,
       ...labelProps
     } = getFieldLabelProps({
-      id: ids.label,
-      htmlFor: ids.input,
+      id: idRef.current.label,
+      htmlFor: idRef.current.input,
       ...other
     });
     const handleClick = () => !isEditable && triggerRef.current?.focus();
     return {
       ...labelProps,
-      onClick: composeEventHandlers$2(onClick, handleClick),
+      onClick: composeEventHandlers$1(onClick, handleClick),
       htmlFor: isEditable ? htmlFor : undefined
     };
-  }, [getFieldLabelProps, ids.input, ids.label, isEditable, triggerRef]);
+  }, [getFieldLabelProps, isEditable, triggerRef]);
   const getHintProps = reactExports.useCallback(props => getFieldHintProps({
-    id: ids.hint,
+    id: idRef.current.hint,
     ...props
-  }), [getFieldHintProps, ids.hint]);
+  }), [getFieldHintProps]);
   const getInputProps = reactExports.useCallback(function (_temp3) {
     let {
       role = isEditable ? 'combobox' : null,
+      onChange: _onChange,
       onClick,
       onFocus,
       ...other
     } = _temp3 === void 0 ? {} : _temp3;
     const inputProps = {
       'data-garden-container-id': 'containers.combobox.input',
-      'data-garden-container-version': '1.0.9',
+      'data-garden-container-version': '1.0.11',
       ref: inputRef,
       role: role === null ? undefined : role,
+      onChange: _onChange,
       onClick,
       onFocus
     };
     if (isEditable) {
+      const handleChange = event => {
+        if (inputValue !== undefined && event.nativeEvent.isComposing) {
+          handleDownshiftStateChange({
+            type: useCombobox$1.stateChangeTypes.InputChange,
+            inputValue: event.target.value
+          });
+        }
+      };
       const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
       const describedBy = [];
       if (hasHint) {
-        describedBy.push(ids.hint);
+        describedBy.push(idRef.current.hint);
       }
       if (hasMessage) {
-        describedBy.push(ids.message);
+        describedBy.push(idRef.current.message);
       }
       return getDownshiftInputProps({
         ...inputProps,
         disabled,
         role,
         'aria-autocomplete': isAutocomplete ? 'list' : undefined,
-        onClick: composeEventHandlers$2(onClick, handleClick),
+        onChange: composeEventHandlers$1(_onChange, handleChange),
+        onClick: composeEventHandlers$1(onClick, handleClick),
         ...getFieldInputProps({
-          id: ids.input,
-          'aria-labelledby': ids.label,
+          id: idRef.current.input,
+          'aria-labelledby': idRef.current.label,
           'aria-describedby': describedBy.length > 0 ? describedBy.join(' ') : undefined
         }),
         ...other
@@ -18861,10 +18935,10 @@ const useCombobox = _ref => {
       disabled,
       readOnly: true,
       tabIndex: -1,
-      onFocus: composeEventHandlers$2(onFocus, handleFocus),
+      onFocus: composeEventHandlers$1(onFocus, handleFocus),
       ...other
     };
-  }, [getDownshiftInputProps, getFieldInputProps, hasHint, hasMessage, ids.hint, ids.input, ids.label, ids.message, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
+  }, [getDownshiftInputProps, getFieldInputProps, handleDownshiftStateChange, hasHint, hasMessage, inputValue, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
   const getTagProps = reactExports.useCallback(_ref4 => {
     let {
       option,
@@ -18874,14 +18948,14 @@ const useCombobox = _ref => {
     } = _ref4;
     const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
     const handleKeyDown = event => {
-      if (event.key === KEYS$1.BACKSPACE || event.key === KEYS$1.DELETE) {
+      if (event.key === KEYS.BACKSPACE || event.key === KEYS.DELETE) {
         setDownshiftSelection(option.value);
       } else {
         const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
         if (triggerContainsTag && !isEditable) {
           event.stopPropagation();
         }
-        if (triggerContainsTag && (event.key === KEYS$1.DOWN || event.key === KEYS$1.UP || event.key === KEYS$1.ESCAPE || !isEditable && (event.key === KEYS$1.ENTER || event.key === KEYS$1.SPACE))) {
+        if (triggerContainsTag && (event.key === KEYS.DOWN || event.key === KEYS.UP || event.key === KEYS.ESCAPE || !isEditable && (event.key === KEYS.ENTER || event.key === KEYS.SPACE))) {
           const inputProps = getDownshiftInputProps();
           if (isEditable) {
             inputRef.current?.focus();
@@ -18895,9 +18969,9 @@ const useCombobox = _ref => {
     };
     return {
       'data-garden-container-id': 'containers.combobox.tag',
-      'data-garden-container-version': '1.0.9',
-      onClick: composeEventHandlers$2(onClick, handleClick),
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      'data-garden-container-version': '1.0.11',
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
       ...other
     };
   }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, inputRef]);
@@ -18908,7 +18982,7 @@ const useCombobox = _ref => {
     } = _ref5;
     return getDownshiftListboxProps({
       'data-garden-container-id': 'containers.combobox.listbox',
-      'data-garden-container-version': '1.0.9',
+      'data-garden-container-version': '1.0.11',
       ref: listboxRef,
       role,
       'aria-multiselectable': isMultiselectable ? true : undefined,
@@ -18922,7 +18996,7 @@ const useCombobox = _ref => {
     } = _ref6;
     return {
       'data-garden-container-id': 'containers.combobox.optgroup',
-      'data-garden-container-version': '1.0.9',
+      'data-garden-container-version': '1.0.11',
       role: role === null ? undefined : role,
       ...other
     };
@@ -18936,7 +19010,7 @@ const useCombobox = _ref => {
     } = _temp4 === void 0 ? {} : _temp4;
     const optionProps = {
       'data-garden-container-id': 'containers.combobox.option',
-      'data-garden-container-version': '1.0.9',
+      'data-garden-container-version': '1.0.11',
       role,
       onMouseDown,
       ...other
@@ -18950,9 +19024,9 @@ const useCombobox = _ref => {
       return {
         'aria-disabled': true,
         'aria-selected': ariaSelected,
-        id: option ? ids.getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
+        id: option ? idRef.current.getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
         ...optionProps,
-        onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown)
+        onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown)
       };
     }
     return getDownshiftOptionProps({
@@ -18962,11 +19036,11 @@ const useCombobox = _ref => {
       'aria-selected': ariaSelected,
       ...optionProps
     });
-  }, [getDownshiftOptionProps, disabledValues, ids, values, _selectionValue]);
+  }, [getDownshiftOptionProps, disabledValues, values, _selectionValue]);
   const getMessageProps = reactExports.useCallback(props => getFieldMessageProps({
-    id: ids.message,
+    id: idRef.current.message,
     ...props
-  }), [getFieldMessageProps, ids.message]);
+  }), [getFieldMessageProps]);
   const removeSelection = reactExports.useCallback(value => {
     if (value === undefined) {
       setDownshiftSelection(null);
@@ -19071,7 +19145,7 @@ const StyledAvatar = styled(_ref => {
   return React.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$2$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledAvatar",
   componentId: "sc-3kdmgt-0"
@@ -19083,7 +19157,7 @@ StyledAvatar.defaultProps = {
 const COMPONENT_ID$1$4 = 'tags.close';
 const StyledClose = styled.button.attrs({
   'data-garden-id': COMPONENT_ID$1$4,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-d6lrpn-0"
@@ -19166,7 +19240,7 @@ const sizeStyles$c = props => {
 };
 const StyledTag$1 = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$x,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1jvbe03-0"
@@ -20832,11 +20906,11 @@ const useTooltip = function (_temp) {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       tabIndex,
-      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
-      onFocus: composeEventHandlers$2(onFocus, () => openTooltip()),
-      onBlur: composeEventHandlers$2(onBlur, () => closeTooltip(0)),
-      onKeyDown: composeEventHandlers$2(onKeyDown, event => {
+      onMouseEnter: composeEventHandlers$3(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$3(onMouseLeave, () => closeTooltip()),
+      onFocus: composeEventHandlers$3(onFocus, () => openTooltip()),
+      onBlur: composeEventHandlers$3(onBlur, () => closeTooltip(0)),
+      onKeyDown: composeEventHandlers$3(onKeyDown, event => {
         if (event.keyCode === KEY_CODES.ESCAPE && visibility) {
           closeTooltip(0);
         }
@@ -20856,8 +20930,8 @@ const useTooltip = function (_temp) {
     } = _temp3 === void 0 ? {} : _temp3;
     return {
       role,
-      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
+      onMouseEnter: composeEventHandlers$3(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$3(onMouseLeave, () => closeTooltip()),
       'aria-hidden': !visibility,
       id: _id,
       ...other
@@ -25400,7 +25474,7 @@ function getArrowPosition(popperPlacement) {
 const COMPONENT_ID$2$3 = 'tooltip.paragraph';
 const StyledParagraph = styled.p.attrs({
   'data-garden-id': COMPONENT_ID$2$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-wuqkfc-0"
@@ -25412,7 +25486,7 @@ StyledParagraph.defaultProps = {
 const COMPONENT_ID$1$3 = 'tooltip.title';
 const StyledTitle = styled.strong.attrs({
   'data-garden-id': COMPONENT_ID$1$3,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-vnjcvz-0"
@@ -25509,7 +25583,7 @@ const colorStyles$9 = _ref2 => {
 };
 const StyledTooltip = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$w,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTooltip",
   componentId: "sc-gzzjq4-0"
@@ -25616,10 +25690,10 @@ const Tooltip = _ref => {
       hasArrow,
       placement: currentPlacement,
       size: computedSize,
-      onFocus: composeEventHandlers$2(onFocus, () => {
+      onFocus: composeEventHandlers$3(onFocus, () => {
         openTooltip();
       }),
-      onBlur: composeEventHandlers$2(onBlur, () => {
+      onBlur: composeEventHandlers$3(onBlur, () => {
         closeTooltip(0);
       }),
       'aria-hidden': !controlledIsVisible,
@@ -25747,7 +25821,7 @@ const useFieldContext = () => {
 const COMPONENT_ID$u = 'dropdowns.combobox.label';
 const StyledLabel = styled(Label$1).attrs({
   'data-garden-id': COMPONENT_ID$u,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-1889zee-0"
@@ -25759,7 +25833,7 @@ StyledLabel.defaultProps = {
 const COMPONENT_ID$t = 'dropdowns.combobox.hint';
 const StyledHint = styled(Hint$1).attrs({
   'data-garden-id': COMPONENT_ID$t,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledHint",
   componentId: "sc-9kt30-0"
@@ -25771,7 +25845,7 @@ StyledHint.defaultProps = {
 const COMPONENT_ID$s = 'dropdowns.combobox.message';
 const StyledMessage = styled(Message$1).attrs({
   'data-garden-id': COMPONENT_ID$s,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-15eqzu4-0"
@@ -25788,7 +25862,7 @@ const sizeStyles$a = props => {
 };
 const StyledCombobox = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$r,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledCombobox",
   componentId: "sc-1hs98ew-0"
@@ -25800,7 +25874,7 @@ StyledCombobox.defaultProps = {
 const COMPONENT_ID$q = 'dropdowns.combobox.container';
 const StyledContainer = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$q,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledContainer",
   componentId: "sc-18gcb1g-0"
@@ -25812,7 +25886,7 @@ StyledContainer.defaultProps = {
 const COMPONENT_ID$p = 'dropdowns.combobox.field';
 const StyledField = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$p,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-k7y10k-0"
@@ -25844,7 +25918,7 @@ const sizeStyles$9 = props => {
 };
 const StyledOption = styled.li.attrs({
   'data-garden-id': COMPONENT_ID$o,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledOption",
   componentId: "sc-1b5e09t-0"
@@ -25861,7 +25935,7 @@ const sizeStyles$8 = props => {
 };
 const StyledListbox = styled.ul.attrs({
   'data-garden-id': COMPONENT_ID$n,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledListbox",
   componentId: "sc-4uxeym-0"
@@ -25873,7 +25947,7 @@ StyledListbox.defaultProps = {
 const COMPONENT_ID$m = 'dropdowns.combobox.floating';
 const StyledFloatingListbox = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$m,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFloatingListbox",
   componentId: "sc-xsp548-0"
@@ -25909,7 +25983,7 @@ const sizeStyles$7 = props => {
 };
 const StyledInput = styled.input.attrs({
   'data-garden-id': COMPONENT_ID$l,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledInput",
   componentId: "sc-m2m56e-0"
@@ -25925,7 +25999,7 @@ const sizeStyles$6 = props => {
 };
 const StyledInputGroup = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$k,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-2agt8f-0"
@@ -26005,7 +26079,7 @@ const sizeStyles$5 = props => {
 };
 const StyledTrigger = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$j,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTrigger",
   componentId: "sc-14t9k4c-0"
@@ -26047,7 +26121,7 @@ const StyledInputIcon = styled(_ref => {
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$i,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledInputIcon",
   componentId: "sc-15ewmjl-0"
@@ -26068,7 +26142,7 @@ const sizeStyles$3 = props => {
 };
 const StyledListboxSeparator = styled.li.attrs({
   'data-garden-id': COMPONENT_ID$h,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledListboxSeparator",
   componentId: "sc-19umtmg-0"
@@ -26080,7 +26154,7 @@ StyledListboxSeparator.defaultProps = {
 const COMPONENT_ID$g = 'dropdowns.combobox.optgroup';
 const StyledOptGroup = styled.ul.attrs({
   'data-garden-id': COMPONENT_ID$g,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledOptGroup",
   componentId: "sc-12dbq5s-0"
@@ -26092,7 +26166,7 @@ StyledOptGroup.defaultProps = {
 const COMPONENT_ID$f = 'dropdowns.combobox.option.content';
 const StyledOptionContent = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$f,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledOptionContent",
   componentId: "sc-536085-0"
@@ -26117,7 +26191,7 @@ const StyledOptionIcon = styled(_ref => {
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$e,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledOptionIcon",
   componentId: "sc-3vecfi-0"
@@ -26138,7 +26212,7 @@ const sizeStyles$1 = props => {
 };
 const StyledOptionMeta = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$d,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledOptionMeta",
   componentId: "sc-1nizjb3-0"
@@ -26183,7 +26257,7 @@ const StyledOptionTypeIcon = styled(_ref => {
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
   'data-garden-id': COMPONENT_ID$c$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledOptionTypeIcon",
   componentId: "sc-vlhimu-0"
@@ -26195,7 +26269,7 @@ StyledOptionTypeIcon.defaultProps = {
 const COMPONENT_ID$b$1 = 'dropdowns.combobox.tag';
 const StyledTag = styled(Tag$1).attrs({
   'data-garden-id': COMPONENT_ID$b$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1mrab0f-0"
@@ -26211,7 +26285,7 @@ const colorStyles$1 = props => {
 };
 const StyledValue = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$a$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledValue",
   componentId: "sc-16gp0f-0"
@@ -26233,7 +26307,7 @@ const colorStyles = props => {
 const StyledTagsButton = styled(StyledValue).attrs({
   as: 'button',
   'data-garden-id': COMPONENT_ID$9$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledTagsButton",
   componentId: "sc-ewyffo-0"
@@ -26245,7 +26319,7 @@ StyledTagsButton.defaultProps = {
 const COMPONENT_ID$8$1 = 'dropdowns.menu.floating';
 const StyledFloatingMenu = styled(StyledFloatingListbox).attrs({
   'data-garden-id': COMPONENT_ID$8$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledFloatingMenu",
   componentId: "sc-1kawjbc-0"
@@ -26257,7 +26331,7 @@ StyledFloatingMenu.defaultProps = {
 const COMPONENT_ID$7$1 = 'dropdowns.menu.item';
 const StyledItem = styled(StyledOption).attrs({
   'data-garden-id': COMPONENT_ID$7$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledItem",
   componentId: "sc-1rlz2s1-0"
@@ -26269,7 +26343,7 @@ StyledItem.defaultProps = {
 const COMPONENT_ID$6$1 = 'dropdowns.menu.item.content';
 const StyledItemContent = styled(StyledOptionContent).attrs({
   'data-garden-id': COMPONENT_ID$6$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledItemContent",
   componentId: "sc-lycr0m-0"
@@ -26281,7 +26355,7 @@ StyledItemContent.defaultProps = {
 const COMPONENT_ID$5$2 = 'dropdowns.menu.item_group';
 const StyledItemGroup = styled(StyledOptGroup).attrs({
   'data-garden-id': COMPONENT_ID$5$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledItemGroup",
   componentId: "sc-1p1oxg2-0"
@@ -26293,7 +26367,7 @@ StyledItemGroup.defaultProps = {
 const COMPONENT_ID$4$2 = 'dropdowns.menu.item.icon';
 const StyledItemIcon = styled(StyledOptionIcon).attrs({
   'data-garden-id': COMPONENT_ID$4$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledItemIcon",
   componentId: "sc-1htsio6-0"
@@ -26305,7 +26379,7 @@ StyledItemIcon.defaultProps = {
 const COMPONENT_ID$3$2 = 'dropdowns.menu.item.meta';
 const StyledItemMeta = styled(StyledOptionMeta).attrs({
   'data-garden-id': COMPONENT_ID$3$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledItemMeta",
   componentId: "sc-1w4thi3-0"
@@ -26317,7 +26391,7 @@ StyledItemMeta.defaultProps = {
 const COMPONENT_ID$2$2 = 'dropdowns.menu.item.type_icon';
 const StyledItemTypeIcon = styled(StyledOptionTypeIcon).attrs({
   'data-garden-id': COMPONENT_ID$2$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledItemTypeIcon",
   componentId: "sc-15p2dtm-0"
@@ -26329,7 +26403,7 @@ StyledItemTypeIcon.defaultProps = {
 const COMPONENT_ID$1$2 = 'dropdowns.menu';
 const StyledMenu$1 = styled(StyledListbox).attrs({
   'data-garden-id': COMPONENT_ID$1$2,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledMenu",
   componentId: "sc-1ht6lc5-0"
@@ -26345,7 +26419,7 @@ StyledMenu$1.defaultProps = {
 const COMPONENT_ID$v = 'dropdowns.menu.separator';
 const StyledMenuSeparator = styled(StyledListboxSeparator).attrs({
   'data-garden-id': COMPONENT_ID$v,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledMenuSeparator",
   componentId: "sc-vjn46k-0"
@@ -26605,7 +26679,11 @@ const Combobox = reactExports.forwardRef((_ref, ref) => {
     hasHint,
     hasMessage,
     labelProps,
-    setLabelProps
+    setLabelProps,
+    hintProps,
+    setHintProps,
+    messageProps,
+    setMessageProps
   } = useFieldContext();
   const [isInputHidden, setIsInputHidden] = reactExports.useState(true);
   const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
@@ -26632,9 +26710,11 @@ const Combobox = reactExports.forwardRef((_ref, ref) => {
     inputValue,
     isExpanded,
     getTriggerProps,
+    getHintProps,
     getInputProps,
     getLabelProps,
     getListboxProps,
+    getMessageProps,
     getOptionProps,
     getOptGroupProps,
     getTagProps,
@@ -26732,6 +26812,20 @@ const Combobox = reactExports.forwardRef((_ref, ref) => {
     }
     return () => labelProps && setLabelProps(undefined);
   }, [getLabelProps, labelProps, setLabelProps]);
+  reactExports.useEffect(() => {
+    if (!hintProps) {
+      const _hintProps = getHintProps();
+      setHintProps(_hintProps);
+    }
+    return () => hintProps && setHintProps(undefined);
+  }, [getHintProps, hintProps, setHintProps]);
+  reactExports.useEffect(() => {
+    if (!messageProps) {
+      const _messageProps = getMessageProps();
+      setMessageProps(_messageProps);
+    }
+    return () => messageProps && setMessageProps(undefined);
+  }, [getMessageProps, messageProps, setMessageProps]);
   return React.createElement(ComboboxContext.Provider, {
     value: contextValue
   }, React.createElement(StyledCombobox, _extends$5({
@@ -26825,6 +26919,8 @@ Combobox.defaultProps = {
 
 const Field = reactExports.forwardRef((props, ref) => {
   const [labelProps, setLabelProps] = reactExports.useState(undefined);
+  const [hintProps, setHintProps] = reactExports.useState(undefined);
+  const [messageProps, setMessageProps] = reactExports.useState(undefined);
   const [hasHint, setHasHint] = reactExports.useState(false);
   const [hasMessage, setHasMessage] = reactExports.useState(false);
   const contextValue = reactExports.useMemo(() => ({
@@ -26832,9 +26928,13 @@ const Field = reactExports.forwardRef((props, ref) => {
     setLabelProps,
     hasHint,
     setHasHint,
+    hintProps,
+    setHintProps,
     hasMessage,
-    setHasMessage
-  }), [labelProps, setLabelProps, hasHint, setHasHint, hasMessage, setHasMessage]);
+    setHasMessage,
+    messageProps,
+    setMessageProps
+  }), [labelProps, setLabelProps, hasHint, setHasHint, hintProps, setHintProps, hasMessage, setHasMessage, messageProps, setMessageProps]);
   return React.createElement(FieldContext.Provider, {
     value: contextValue
   }, React.createElement(StyledField, _extends$5({}, props, {
@@ -26845,13 +26945,14 @@ Field.displayName = 'Field';
 
 const Hint = reactExports.forwardRef((props, ref) => {
   const {
+    hintProps,
     setHasHint
   } = useFieldContext();
   reactExports.useEffect(() => {
     setHasHint(true);
     return () => setHasHint(false);
   }, [setHasHint]);
-  return React.createElement(StyledHint, _extends$5({}, props, {
+  return React.createElement(StyledHint, _extends$5({}, hintProps, props, {
     ref: ref
   }));
 });
@@ -26868,9 +26969,9 @@ const Label = reactExports.forwardRef((_ref, ref) => {
     labelProps
   } = useFieldContext();
   return React.createElement(StyledLabel, _extends$5({}, labelProps, {
-    onClick: composeEventHandlers$2(onClick, labelProps?.onClick),
-    onMouseEnter: composeEventHandlers$2(onMouseEnter, labelProps?.onMouseEnter),
-    onMouseLeave: composeEventHandlers$2(onMouseLeave, labelProps?.onMouseLeave)
+    onClick: composeEventHandlers$3(onClick, labelProps?.onClick),
+    onMouseEnter: composeEventHandlers$3(onMouseEnter, labelProps?.onMouseEnter),
+    onMouseLeave: composeEventHandlers$3(onMouseLeave, labelProps?.onMouseLeave)
   }, props, {
     ref: ref
   }));
@@ -26883,13 +26984,14 @@ Label.propTypes = {
 
 const Message = reactExports.forwardRef((props, ref) => {
   const {
+    messageProps,
     setHasMessage
   } = useFieldContext();
   reactExports.useEffect(() => {
     setHasMessage(true);
     return () => setHasMessage(false);
   }, [setHasMessage]);
-  return React.createElement(StyledMessage, _extends$5({}, props, {
+  return React.createElement(StyledMessage, _extends$5({}, messageProps, props, {
     ref: ref
   }));
 });
@@ -27095,7 +27197,7 @@ const OptGroup = reactExports.forwardRef((_ref, ref) => {
   return React.createElement(StyledOption, _extends$5({
     isCompact: isCompact,
     $type: "group",
-    onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
+    onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
     role: "none"
   }, props, {
     ref: ref
@@ -30495,7 +30597,7 @@ StyledDotsCircleThree.defaultProps = {
 const COMPONENT_ID$5$1 = 'loaders.loading_placeholder';
 const StyledLoadingPlaceholder = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$5$1,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   role: 'progressbar'
 }).withConfig({
   displayName: "StyledLoadingPlaceholder",
@@ -30519,7 +30621,7 @@ const sizeToBorderRadius = (size, theme) => sizeToHeight(size, theme) / 2;
 const PROGRESS_BACKGROUND_COMPONENT_ID = 'loaders.progress_background';
 const StyledProgressBackground = styled.div.attrs(props => ({
   'data-garden-id': PROGRESS_BACKGROUND_COMPONENT_ID,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   borderRadius: props.borderRadius || sizeToBorderRadius(props.size, props.theme)
 })).withConfig({
   displayName: "StyledProgress__StyledProgressBackground",
@@ -30531,7 +30633,7 @@ StyledProgressBackground.defaultProps = {
 const PROGESS_INDICATOR_COMPONENT_ID = 'loaders.progress_indicator';
 const StyledProgressIndicator = styled.div.attrs(props => ({
   'data-garden-id': PROGESS_INDICATOR_COMPONENT_ID,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   height: props.height || sizeToHeight(props.size, props.theme),
   borderRadius: props.borderRadius || sizeToBorderRadius(props.size, props.theme)
 })).withConfig({
@@ -30574,7 +30676,7 @@ const retrieveSkeletonGradient = _ref3 => {
 };
 const StyledSkeleton = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$4$1,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledSkeleton",
   componentId: "sc-1raozze-0"
@@ -30602,7 +30704,7 @@ StyledSpinnerCircle.defaultProps = {
 };
 
 const StyledSVG = styled.svg.attrs(props => ({
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   xmlns: 'http://www.w3.org/2000/svg',
   width: props.width,
   height: props.height,
@@ -30632,7 +30734,7 @@ StyledCircle.defaultProps = {
 };
 const StyledInline = styled.svg.attrs(props => ({
   'data-garden-id': COMPONENT_ID$3$1,
-  'data-garden-version': '8.69.9',
+  'data-garden-version': '8.70.1',
   viewBox: '0 0 16 4',
   width: props.size,
   height: props.size * 0.25
@@ -30734,7 +30836,7 @@ const Progress = React.forwardRef((_ref, ref) => {
   return (
     React.createElement(StyledProgressBackground, _extends$3({
       "data-garden-id": COMPONENT_ID$1$1,
-      "data-garden-version": '8.69.9',
+      "data-garden-version": '8.70.1',
       "aria-valuemax": 100,
       "aria-valuemin": 0,
       "aria-valuenow": percentage,
@@ -35320,7 +35422,7 @@ function getMenuPosition(popperPlacement) {
 const COMPONENT_ID$b = 'datepickers.menu';
 const StyledMenu = styled.div.attrs({
   'data-garden-id': COMPONENT_ID$b,
-  'data-garden-version': '8.69.9'
+  'data-garden-version': '8.70.1'
 }).withConfig({
   displayName: "StyledMenu",
   componentId: "sc-1npbkk0-0"
@@ -36053,33 +36155,33 @@ const Datepicker = reactExports.forwardRef((props, calendarRef) => {
         ref(refValue);
         inputRef.current = refValue;
       },
-      onMouseDown: composeEventHandlers$2(childElement.props.onMouseDown, () => {
+      onMouseDown: composeEventHandlers$3(childElement.props.onMouseDown, () => {
         isInputMouseDownRef.current = true;
       }),
-      onMouseUp: composeEventHandlers$2(childElement.props.onMouseUp, () => {
+      onMouseUp: composeEventHandlers$3(childElement.props.onMouseUp, () => {
         setTimeout(() => {
           isInputMouseDownRef.current = false;
         }, 0);
       }),
-      onClick: composeEventHandlers$2(childElement.props.onClick, () => {
+      onClick: composeEventHandlers$3(childElement.props.onClick, () => {
         if (isInputMouseDownRef.current && !state.isOpen) {
           dispatch({
             type: 'OPEN'
           });
         }
       }),
-      onBlur: composeEventHandlers$2(childElement.props.onBlur, () => {
+      onBlur: composeEventHandlers$3(childElement.props.onBlur, () => {
         dispatch({
           type: 'CLOSE'
         });
       }),
-      onChange: composeEventHandlers$2(childElement.props.onChange, e => {
+      onChange: composeEventHandlers$3(childElement.props.onChange, e => {
         dispatch({
           type: 'MANUALLY_UPDATE_INPUT',
           value: e.target.value
         });
       }),
-      onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, e => {
+      onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, e => {
         switch (e.keyCode) {
           case KEY_CODES.ESCAPE:
           case KEY_CODES.ENTER:
@@ -36238,10 +36340,10 @@ const Start = props => {
   return React.cloneElement(childElement, {
     value: state.startInputValue || '',
     ref: startInputRef,
-    onChange: composeEventHandlers$2(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$2(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, onKeyDownCallback),
-    onBlur: composeEventHandlers$2(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$3(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$3(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, onKeyDownCallback),
+    onBlur: composeEventHandlers$3(childElement.props.onBlur, onBlurCallback)
   });
 };
 Start.displayName = 'DatepickerRange.Start';
@@ -36303,10 +36405,10 @@ const End = props => {
   return React.cloneElement(childElement, {
     value: state.endInputValue || '',
     ref: endInputRef,
-    onChange: composeEventHandlers$2(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$2(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, onKeydownCallback),
-    onBlur: composeEventHandlers$2(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$3(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$3(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, onKeydownCallback),
+    onBlur: composeEventHandlers$3(childElement.props.onBlur, onBlurCallback)
   });
 };
 End.displayName = 'DatepickerRange.End';
@@ -36565,7 +36667,7 @@ const Calendar = reactExports.forwardRef((props, ref) => {
   return React.createElement(StyledRangeCalendar, _extends({
     ref: ref,
     "data-garden-id": "datepickers.range",
-    "data-garden-version": '8.69.9'
+    "data-garden-version": '8.70.1'
   }, props), React.createElement(Month, {
     displayDate: state.previewDate,
     isNextHidden: true
@@ -36665,7 +36767,7 @@ const getCellUp = (matrix, rowIndex, colIndex, wrap) => {
 };
 const getId = (idPrefix, rowIndex, colIndex) => `${idPrefix}--R${rowIndex + 1}C${colIndex + 1}`;
 
-const GRID_KEYS = [KEYS$1.LEFT, KEYS$1.RIGHT, KEYS$1.UP, KEYS$1.DOWN, KEYS$1.HOME, KEYS$1.END];
+const GRID_KEYS = [KEYS$2.LEFT, KEYS$2.RIGHT, KEYS$2.UP, KEYS$2.DOWN, KEYS$2.HOME, KEYS$2.END];
 function useGrid(_ref) {
   let {
     rtl,
@@ -36680,7 +36782,7 @@ function useGrid(_ref) {
     defaultColIndex
   } = _ref;
   const doc = environment || document;
-  const prefix = useId(idPrefix);
+  const prefix = useId$1(idPrefix);
   const [uncontrolledRowIndex, setUncontrolledRowIndex] = reactExports.useState(defaultRowIndex !== null && defaultRowIndex !== undefined ? defaultRowIndex : 0);
   const [uncontrolledColIndex, setUncontrolledColIndex] = reactExports.useState(defaultColIndex !== null && defaultColIndex !== undefined ? defaultColIndex : 0);
   const isControlled = controlledRowIndex !== null && controlledColIndex !== null && controlledRowIndex !== undefined && controlledColIndex !== undefined;
@@ -36744,23 +36846,23 @@ function useGrid(_ref) {
         let row = rowIndex;
         let col = colIndex;
         switch (event.key) {
-          case KEYS$1.RIGHT:
+          case KEYS$2.RIGHT:
             [row, col] = rtl ? getCellLeft(matrix, rowIndex, colIndex, wrap) : getCellRight(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.LEFT:
+          case KEYS$2.LEFT:
             [row, col] = rtl ? getCellRight(matrix, rowIndex, colIndex, wrap) : getCellLeft(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.DOWN:
+          case KEYS$2.DOWN:
             [row, col] = getCellDown(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.UP:
+          case KEYS$2.UP:
             [row, col] = getCellUp(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.HOME:
+          case KEYS$2.HOME:
             row = event.ctrlKey ? 0 : rowIndex;
             col = 0;
             break;
-          case KEYS$1.END:
+          case KEYS$2.END:
             {
               const rowCount = matrix.length;
               const lastRowIndex = rowCount - 1;
@@ -36783,8 +36885,8 @@ function useGrid(_ref) {
       id: getId(prefix, _rowIndex, _colIndex),
       role: role === null ? undefined : role,
       tabIndex: rowIndex === _rowIndex && colIndex === _colIndex ? 0 : -1,
-      onFocus: composeEventHandlers$2(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$3(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers$3(onKeyDown, handleKeyDown),
       ...other
     };
   }, [matrix, rowIndex, colIndex, doc, prefix, isControlled, onChange, rtl, wrap]);

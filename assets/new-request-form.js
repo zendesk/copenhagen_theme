@@ -1,7 +1,7 @@
 import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, g as FileList, h as File, i as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, k as Title, l as Close, m as useDropzone, n as FileUpload, o as Alert, B as Button, q as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
-function Input({ field }) {
+function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
     const stepProp = {};
     const inputType = type === "integer" || type === "decimal" ? "number" : "text";
@@ -9,32 +9,33 @@ function Input({ field }) {
         stepProp.step = "1";
     if (type === "decimal")
         stepProp.step = "any";
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value), ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-function TextArea({ field }) {
+function TextArea({ field, onChange }) {
     const { label, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function DropDown({ field, onChange }) {
     const { label, options, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, renderValue: ({ selection }) => selection && "value" in selection
-                    ? options.find((option) => option.value === selection.value)?.name
-                    : "-", onChange: ({ selectionValue }) => {
-                    if (selectionValue !== undefined && onChange !== undefined) {
+    const selectedOption = options.find((option) => option.value.toString() === value?.toString());
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, inputValue: selectedOption?.value.toString(), selectionValue: selectedOption?.value.toString(), renderValue: () => selectedOption?.name || "-", onChange: ({ selectionValue }) => {
+                    if (selectionValue !== undefined) {
                         onChange(selectionValue);
                     }
-                }, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, isSelected: option.value?.toString() === value?.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+                }, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
-function Checkbox({ field }) {
+function Checkbox({ field, onChange }) {
     const { label, error, value, name, required, description } = field;
     const [checkboxValue, setCheckboxValue] = reactExports.useState(value);
     const handleChange = (e) => {
-        setCheckboxValue(e.target.checked ? "on" : "off");
+        const { checked } = e.target;
+        setCheckboxValue(checked);
+        onChange(checked);
     };
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value === "on", value: checkboxValue, onChange: handleChange, children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value, value: checkboxValue ? "on" : "off", onChange: handleChange, children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 // Maps a flat option data structure into a nested option structure.
@@ -423,6 +424,16 @@ function Attachments({ field }) {
                 } }, file.status === "pending" ? file.id : file.value.id))), files.map((file) => file.status === "uploaded" && (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: JSON.stringify(file.value) }, file.value.id)))] }));
 }
 
+function useEndUserConditions(fields, endUserConditions) {
+    return fields.filter((field) => {
+        const conditions = endUserConditions.filter((condition) => condition.child_fields.some((childField) => childField.id === field.id));
+        const hasNoConditions = conditions.length === 0;
+        const meetsAnyCondition = conditions.some((condition) => fields.find((field) => field.id === condition.parent_field_id)
+            ?.value === condition.value);
+        return hasNoConditions || meetsAnyCondition;
+    });
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -434,12 +445,17 @@ const Footer = styled.div `
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
 const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
-    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, } = requestForm;
+    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, } = requestForm;
+    const prefilledTicketFields = usePrefilledTicketFields(fields);
+    const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
+    const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
     const handleSubmit = useSubmitHandler();
-    const ticketFields = usePrefilledTicketFields(fields);
-    const ticketTypeField = ticketFields.find((field) => field.type === "tickettype");
-    const [showDueDate, setShowDueDate] = reactExports.useState(ticketTypeField && ticketTypeField.value === "task");
-    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), ticketFields.map((field) => {
+    function handleChange(field, value) {
+        setTicketFields(ticketFields.map((ticketField) => ticketField.name === field.name
+            ? { ...ticketField, value }
+            : ticketField));
+    }
+    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
                 switch (field.type) {
                     case "anonymous_requester_email":
                     case "subject":
@@ -448,29 +464,30 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "decimal":
                     case "regexp":
                     case "partialcreditcard":
-                        return jsxRuntimeExports.jsx(Input, { field: field });
+                        return (jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                     case "description":
                     case "textarea":
-                        return jsxRuntimeExports.jsx(TextArea, { field: field });
+                        return (jsxRuntimeExports.jsx(TextArea, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                     case "priority":
                     case "organization_id":
-                        return jsxRuntimeExports.jsx(DropDown, { field: field });
+                        return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                     case "tickettype":
-                        return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => {
-                                setShowDueDate(value === "task");
-                            } }));
+                        return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                    case "due_at": {
+                        const isTask = ticketFields.find((field) => field.type === "tickettype")
+                            ?.value === "task";
+                        return (isTask && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
+                    }
                     case "cc_email":
                         return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: field }) }));
                     case "checkbox":
-                        return jsxRuntimeExports.jsx(Checkbox, { field: field });
+                        return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
                     case "date":
                         return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
                     case "multiselect":
                         return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                     case "tagger":
                         return jsxRuntimeExports.jsx("div", { children: "tagger" });
-                    case "due_at":
-                        return (showDueDate && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
                     case "attachments":
                         return jsxRuntimeExports.jsx(Attachments, { field: field });
                     default:

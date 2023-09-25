@@ -16,7 +16,9 @@ interface DropDownProps {
 
 export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
-  const selectionValue = options.find((option) => option.value === value);
+  const selectedOption = options.find(
+    (option) => option.value.toString() === value?.toString()
+  );
 
   return (
     <GardenField>
@@ -29,8 +31,9 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
         inputProps={{ name, required }}
         isEditable={false}
         validation={error ? "error" : undefined}
-        selectionValue={selectionValue}
-        renderValue={() => selectionValue?.name || "-"}
+        inputValue={selectedOption?.value.toString()}
+        selectionValue={selectedOption?.value.toString()}
+        renderValue={() => selectedOption?.name || "-"}
         onChange={({ selectionValue }) => {
           if (selectionValue !== undefined) {
             onChange(selectionValue as string);
@@ -38,11 +41,7 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
         }}
       >
         {options.map((option) => (
-          <Option
-            key={option.value}
-            value={option.value}
-            isSelected={option.value === value}
-          >
+          <Option key={option.value} value={option.value.toString()}>
             {option.name}
           </Option>
         ))}

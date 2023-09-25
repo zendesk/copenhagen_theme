@@ -60,7 +60,9 @@ export function NewRequestForm({
   function handleChange(field: Field, value: Field["value"]) {
     setTicketFields(
       ticketFields.map((ticketField) =>
-        ticketField.id === field.id ? { ...ticketField, value } : ticketField
+        ticketField.name === field.name
+          ? { ...ticketField, value }
+          : ticketField
       )
     );
   }
@@ -93,7 +95,7 @@ export function NewRequestForm({
           case "partialcreditcard":
             return (
               <Input
-                key={field.id}
+                key={field.name}
                 field={field}
                 onChange={(value) => handleChange(field, value)}
               />
@@ -102,7 +104,7 @@ export function NewRequestForm({
           case "textarea":
             return (
               <TextArea
-                key={field.id}
+                key={field.name}
                 field={field}
                 onChange={(value) => handleChange(field, value)}
               />
@@ -111,7 +113,7 @@ export function NewRequestForm({
           case "organization_id":
             return (
               <DropDown
-                key={field.id}
+                key={field.name}
                 field={field}
                 onChange={(value) => handleChange(field, value)}
               />
@@ -119,7 +121,7 @@ export function NewRequestForm({
           case "tickettype":
             return (
               <DropDown
-                key={field.id}
+                key={field.name}
                 field={field}
                 onChange={(value) => handleChange(field, value)}
               />
