@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, g as FileList, h as File, i as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, k as Title, l as Close, m as useDropzone, n as FileUpload, o as Alert, B as Button, q as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, g as FileList, h as File, i as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, k as Title, l as Close, m as useDropzone, n as FileUpload, o as Alert, B as Button, q as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field }) {
@@ -9,17 +9,17 @@ function Input({ field }) {
         stepProp.step = "1";
     if (type === "decimal")
         stepProp.step = "any";
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function TextArea({ field }) {
     const { label, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function DropDown({ field, onChange }) {
     const { label, options, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, renderValue: ({ selection }) => selection && "value" in selection
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, renderValue: ({ selection }) => selection && "value" in selection
                     ? options.find((option) => option.value === selection.value)?.name
                     : "-", onChange: ({ selectionValue }) => {
                     if (selectionValue !== undefined && onChange !== undefined) {
@@ -34,7 +34,7 @@ function Checkbox({ field }) {
     const handleChange = (e) => {
         setCheckboxValue(e.target.checked ? "on" : "off");
     };
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value === "on", value: checkboxValue, onChange: handleChange, children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value === "on", value: checkboxValue, onChange: handleChange, children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 // Maps a flat option data structure into a nested option structure.
@@ -144,7 +144,7 @@ function MultiSelect({ field }) {
             }
         }
     };
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, children: [activeSubGroup && (jsxRuntimeExports.jsx(Option, { value: "back", type: "previous", children: "Back" })), activeSubGroup ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": activeSubGroup, children: activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, type: option.type, label: option.label, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))) })) : (activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.label, type: option.type, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, children: [activeSubGroup && (jsxRuntimeExports.jsx(Option, { value: "back", type: "previous", children: "Back" })), activeSubGroup ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": activeSubGroup, children: activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, type: option.type, label: option.label, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))) })) : (activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.label, type: option.type, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
@@ -162,9 +162,9 @@ function TicketFormField({ label, ticketFormField, ticketForms, }) {
     return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: ticketFormField.name, value: ticketFormField.value }), ticketForms.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, children: ticketForms.map(({ id, url, display_name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: display_name, isSelected: ticketFormField.value === id, children: display_name }, id))) })] }))] }));
 }
 
-function ParentTicketField({ field }) {
+function ParentTicketField({ field, }) {
     const { value, name } = field;
-    return (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value }));
+    return jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value });
 }
 
 // NOTE: This is a temporary handling of the CSRF token

@@ -6,6 +6,7 @@ import {
   Option,
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
+import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 
 interface DropDownProps {
@@ -19,7 +20,10 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {required && <Span aria-hidden="true">*</Span>}
+      </Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
         inputProps={{ name, required }}

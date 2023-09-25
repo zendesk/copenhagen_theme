@@ -5,6 +5,7 @@ import {
   Label,
   Message,
 } from "@zendeskgarden/react-forms";
+import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 
 interface TextAreaProps {
@@ -16,7 +17,10 @@ export function TextArea({ field, onChange }: TextAreaProps): JSX.Element {
   const { label, error, value, name, required, description } = field;
   return (
     <GardenField>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {required && <Span aria-hidden="true">*</Span>}
+      </Label>
       {description && <Hint>{description}</Hint>}
       <Textarea
         name={name}

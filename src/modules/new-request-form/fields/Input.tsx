@@ -5,6 +5,7 @@ import {
   Label,
   Message,
 } from "@zendeskgarden/react-forms";
+import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 
 interface InputProps {
@@ -23,7 +24,10 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {required && <Span aria-hidden="true">*</Span>}
+      </Label>
       {description && <Hint>{description}</Hint>}
       <GardenInput
         name={name}

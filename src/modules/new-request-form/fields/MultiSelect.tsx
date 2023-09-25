@@ -12,6 +12,7 @@ import {
   Message,
   OptGroup,
 } from "@zendeskgarden/react-dropdowns.next";
+import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import { useMemo, useState } from "react";
 import type { NestedOption, NestedOptions } from "../buildNestedOptions";
@@ -85,7 +86,10 @@ export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
           value={selectedValue}
         />
       ))}
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {required && <Span aria-hidden="true">*</Span>}
+      </Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
         isMultiselectable
