@@ -1,4 +1,6 @@
 import { useRef, type FormEventHandler } from "react";
+import type { Field } from "./data-types";
+import { redactCreditCard } from "./redactCreditCard";
 
 // NOTE: This is a temporary handling of the CSRF token
 const fetchCsrfToken = async () => {
@@ -10,9 +12,12 @@ const fetchCsrfToken = async () => {
 /**
  * This hook creates an event handler for form submits, fetching the CSRF token
  * from the backend and appending it to the form
+ * @param ticketFields array of ticket fields for the form
  * @returns a Submit Event Handler function
  */
-export function useSubmitHandler(): FormEventHandler<HTMLFormElement> {
+export function useSubmitHandler(
+  ticketFields: Field[]
+): FormEventHandler<HTMLFormElement> {
   const isSubmitting = useRef(false);
 
   return async (e) => {
@@ -33,6 +38,20 @@ export function useSubmitHandler(): FormEventHandler<HTMLFormElement> {
       hiddenInput.name = "authenticity_token";
       hiddenInput.value = token;
       form.appendChild(hiddenInput);
+
+      // Ensure that the credit card field is redacted before submitting
+      const creditCardField = ticketFields.find(
+        (field) => field.type === "partialcreditcard"
+      );
+
+      if (creditCardField) {
+        const creditCardInput = form.querySelector(
+          `input[name="${creditCardField.name}"]`
+        );
+        if (creditCardInput && creditCardInput instanceof HTMLInputElement) {
+          creditCardInput.value = redactCreditCard(creditCardInput.value);
+        }
+      }
 
       form.submit();
     }
