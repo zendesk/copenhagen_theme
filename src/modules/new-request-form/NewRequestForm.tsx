@@ -14,6 +14,7 @@ import { Suspense, lazy, useState } from "react";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
 import { useEndUserConditions } from "./useEndUserConditions";
+import { CreditCard } from "./fields/CreditCard";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -55,7 +56,7 @@ export function NewRequestForm({
   const prefilledTicketFields = usePrefilledTicketFields(fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
-  const handleSubmit = useSubmitHandler();
+  const handleSubmit = useSubmitHandler(ticketFields);
 
   function handleChange(field: Field, value: Field["value"]) {
     setTicketFields(
@@ -92,10 +93,16 @@ export function NewRequestForm({
           case "integer":
           case "decimal":
           case "regexp":
-          case "partialcreditcard":
             return (
               <Input
                 key={field.name}
+                field={field}
+                onChange={(value) => handleChange(field, value)}
+              />
+            );
+          case "partialcreditcard":
+            return (
+              <CreditCard
                 field={field}
                 onChange={(value) => handleChange(field, value)}
               />

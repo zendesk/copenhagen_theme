@@ -168,6 +168,63 @@ function ParentTicketField({ field, }) {
     return jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value });
 }
 
+const NON_DIGITS_REGEX = /[^\d]/g;
+const CC_NUMBERS_REGEX = /[0-9]{13,19}/;
+const REDACTED_CC_NUMBER_REGEX = /^[X]{9,15}/;
+const MIN_LENGTH = 13;
+const MAX_LENGTH = 19;
+function redactCreditCard(input) {
+    // if number is already redacted, just send it back
+    if (alreadyRedactedCCNumber(input)) {
+        return input;
+    }
+    const cleaned = removeNonDigits(input);
+    if (!hasValidLength(cleaned)) {
+        // if input string is not inside valid length for credit card number,
+        // such as in the case when extra text is entered beside cc number,
+        // we will remove spaces and dashes from original input,
+        // and redact credit card number if we can find it
+        // or redact everything if we can't find anything resembling cc number.
+        const ccTextWithoutSpacesAndDashes = removeSpacesAndDashes(input);
+        const ccNumber = CC_NUMBERS_REGEX.exec(ccTextWithoutSpacesAndDashes.toString());
+        if (ccNumber !== null) {
+            return redactCCNumber(ccNumber.toString());
+        }
+        else {
+            // redact everything since that is an error and not valid cc number
+            return charRepeater("X", cleaned.length);
+        }
+    }
+    else {
+        return redactCCNumber(cleaned.toString());
+    }
+}
+function hasValidLength(input) {
+    return input.length >= MIN_LENGTH && input.length <= MAX_LENGTH;
+}
+function removeNonDigits(input) {
+    return input.replace(NON_DIGITS_REGEX, "");
+}
+function removeSpacesAndDashes(input) {
+    return input.replace(/-|\s/g, "");
+}
+function redactCCNumber(input) {
+    const length = input.length;
+    const redactEnd = length - 4;
+    const lastDigits = input.toString().substring(redactEnd, length);
+    return charRepeater("X", redactEnd) + lastDigits;
+}
+function alreadyRedactedCCNumber(input) {
+    return REDACTED_CC_NUMBER_REGEX.test(input);
+}
+function charRepeater(character, length) {
+    const repeatedString = [];
+    for (let i = 0; i < length; i++) {
+        repeatedString.push(character);
+    }
+    return repeatedString.join("");
+}
+
 // NOTE: This is a temporary handling of the CSRF token
 const fetchCsrfToken$1 = async () => {
     const response = await fetch("/hc/api/internal/csrf_token.json");
@@ -177,9 +234,10 @@ const fetchCsrfToken$1 = async () => {
 /**
  * This hook creates an event handler for form submits, fetching the CSRF token
  * from the backend and appending it to the form
+ * @param ticketFields array of ticket fields for the form
  * @returns a Submit Event Handler function
  */
-function useSubmitHandler() {
+function useSubmitHandler(ticketFields) {
     const isSubmitting = reactExports.useRef(false);
     return async (e) => {
         e.preventDefault();
@@ -196,6 +254,14 @@ function useSubmitHandler() {
             hiddenInput.name = "authenticity_token";
             hiddenInput.value = token;
             form.appendChild(hiddenInput);
+            // Ensure that the credit card field is redacted before submitting
+            const creditCardField = ticketFields.find((field) => field.type === "partialcreditcard");
+            if (creditCardField) {
+                const creditCardInput = form.querySelector(`input[name="${creditCardField.name}"]`);
+                if (creditCardInput && creditCardInput instanceof HTMLInputElement) {
+                    creditCardInput.value = redactCreditCard(creditCardInput.value);
+                }
+            }
             form.submit();
         }
     };
@@ -434,6 +500,14 @@ function useEndUserConditions(fields, endUserConditions) {
     });
 }
 
+function CreditCard({ field, onChange }) {
+    const { label, error, value, name, required, description } = field;
+    const handleBlur = (e) => {
+        onChange(redactCreditCard(e.target.value));
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: "text", value: value, onChange: (e) => onChange(e.target.value), onBlur: handleBlur, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -449,7 +523,7 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
     const prefilledTicketFields = usePrefilledTicketFields(fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
-    const handleSubmit = useSubmitHandler();
+    const handleSubmit = useSubmitHandler(ticketFields);
     function handleChange(field, value) {
         setTicketFields(ticketFields.map((ticketField) => ticketField.name === field.name
             ? { ...ticketField, value }
@@ -463,8 +537,9 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "integer":
                     case "decimal":
                     case "regexp":
-                    case "partialcreditcard":
                         return (jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                    case "partialcreditcard":
+                        return (jsxRuntimeExports.jsx(CreditCard, { field: field, onChange: (value) => handleChange(field, value) }));
                     case "description":
                     case "textarea":
                         return (jsxRuntimeExports.jsx(TextArea, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
