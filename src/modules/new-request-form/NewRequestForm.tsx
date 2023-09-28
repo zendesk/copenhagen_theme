@@ -16,6 +16,7 @@ import { Attachments } from "./fields/attachments/Attachments";
 import { useEndUserConditions } from "./useEndUserConditions";
 import { CreditCard } from "./fields/CreditCard";
 import { Tagger } from "./fields/Tagger";
+import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
@@ -88,8 +89,21 @@ export function NewRequestForm({
       )}
       {visibleFields.map((field) => {
         switch (field.type) {
-          case "anonymous_requester_email":
           case "subject":
+            return (
+              <>
+                <Input
+                  key={field.name}
+                  field={field}
+                  onChange={(value) => handleChange(field, value)}
+                />
+                <SuggestedArticles
+                  query={field.value as string | undefined}
+                  locale={locale}
+                />
+              </>
+            );
+          case "anonymous_requester_email":
           case "text":
           case "integer":
           case "decimal":
