@@ -1,7 +1,7 @@
 export interface Field {
   id: number;
   name: string;
-  value?: string | boolean;
+  value?: string | string[] | boolean;
   error: string;
   label: string;
   required: boolean;

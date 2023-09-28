@@ -38,114 +38,187 @@ function Checkbox({ field, onChange }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value, value: checkboxValue ? "on" : "off", onChange: handleChange, children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-// Maps a flat option data structure into a nested option structure.
-// Original option data structure:
-// [
-//   {name: 'Color::Special::Radioactive Green', value: 'color__special__radioactive_green'}
-//   {name: 'Color::Red', value: 'color__red'}
-//   {name: 'Color::Green', value: 'color__green'}
-//   {name: 'Simple Value', value: 'simple_value'}
-// ]
-// Mapped nested option data strucutre:
-// {
-//   "root": [
-//     {value: 'Color', name: 'Color', type: 'next'},
-//     {value: 'simple_value', label: 'Simple Value', name: 'Simple Value'}
-//   ],
-//   "Color": [
-//       {value: 'Special', name: 'Special', type: 'next'},
-//       {value: 'color__red', label: 'Color::Red', name: 'Red'},
-//       {value: 'color__green', label: 'Color::Green', name: 'Green'},
-//   ],
-//   "Special": [
-//      {value: 'color__special__atomic_green', label: 'Color::Special::Atomic Green', name: 'Atomic Green'}
-//   ]
-function buildNestedOptions(options) {
-    const result = { root: [] };
+/**
+ * The root group is identified by an empty string, to avoid possible clashes with a level with
+ * a "Root" name.
+ */
+const ROOT_GROUP_IDENTIFIER = "[]";
+function getGroupIdentifier(names) {
+    return `[${names.join("::")}]`;
+}
+function isGroupIdentifier(name) {
+    return name.startsWith("[") && name.endsWith("]");
+}
+function getGroupAndOptionNames(input) {
+    const namesList = input.split("::");
+    return [namesList.slice(0, -1), namesList.slice(-1)[0]];
+}
+function buildSubGroupOptions(groupNames) {
+    const parentGroupNames = groupNames.slice(0, -1);
+    const parentGroupIdentifier = getGroupIdentifier(parentGroupNames);
+    const name = groupNames[groupNames.length - 1];
+    return {
+        type: "SubGroup",
+        name,
+        backOption: {
+            type: "previous",
+            label: "Back",
+            value: parentGroupIdentifier,
+        },
+        options: [],
+    };
+}
+/**
+ * Maps a flat list of options to a nested structure
+ *
+ * For example, given the following options:
+ * [
+ *  { "name": "Bass::Fender::Precision", "value": "bass__fender__precision" },
+ *  { "name": "Bass::Fender::Jazz", "value": "bass__fender__jazz" }
+ *  { "name": "Drums", "value": "drums" },
+ * ]
+ *
+ * The following nested structure will be returned:
+ * {
+ *  "[]": {
+ *   "type": "RootGroup",
+ *   "options": [
+ *    { "label": "Bass", "value": "[Bass]", type: "next" },
+ *    { "label": "Drums", "value": "drums" },
+ *   ]
+ *  },
+ *  "[Bass]": {
+ *   "type": "SubGroup",
+ *   "name": "Bass",
+ *   "backOption": { "type": "previous", "label": "Back", "value": "[]" },
+ *   "options": [
+ *    { "label": "Fender", "value": "[Bass::Fender]", type: "next" },
+ *   ]
+ *  },
+ *  "[Bass::Fender]": {
+ *   "type": "SubGroup",
+ *   "name": "Fender",
+ *   "backOption": { "type": "previous", "label": "Back", "value": "[Bass]" },
+ *   "options": [
+ *    { "menuLabel": "Precision", "label": "Bass > Fender > Precision", "value": "bass__fender__precision" },
+ *    { "menuLabel": "Jazz", "label": "Bass > Fender > Jazz", "value": "bass__fender__jazz" },
+ *   ]
+ *  }
+ * }
+ *
+ * @param options original field options
+ * @param hasEmptyOption if true, adds an empty option to the root group
+ * @returns nested options
+ */
+function buildNestedOptions(options, hasEmptyOption) {
+    const result = {
+        [ROOT_GROUP_IDENTIFIER]: {
+            type: "RootGroup",
+            options: hasEmptyOption ? [{ label: "-", value: "" }] : [],
+        },
+    };
     options.forEach((option) => {
-        // for flat values
-        if (!option.name.includes("::")) {
-            result["root"]?.push({
-                value: option.value,
-                label: option.name,
-                name: option.name,
+        const { name, value } = option;
+        if (!name.includes("::")) {
+            result[ROOT_GROUP_IDENTIFIER].options.push({
+                value,
+                label: name,
             });
         }
-        // for nested values ex: (Color::Special::Radioactive Green)
         else {
-            const optionNameList = option.name.split("::");
-            for (let i = 0; i < optionNameList.length - 1; i++) {
-                const subGroupName = optionNameList[i];
-                if (subGroupName && result[subGroupName] == null) {
-                    // creates an entry in `result` to store the options associated to `subGroupName`
-                    result[subGroupName] = [];
-                    // links the new option subgroup to the parent option group
-                    const list = i == 0 ? result.root : result[optionNameList[i - 1]];
-                    list?.push({
-                        value: subGroupName,
-                        label: subGroupName,
-                        name: subGroupName,
+            const [groupNames, optionName] = getGroupAndOptionNames(name);
+            const groupIdentifier = getGroupIdentifier(groupNames);
+            if (!result[groupIdentifier]) {
+                result[groupIdentifier] = buildSubGroupOptions(groupNames);
+            }
+            result[groupIdentifier]?.options.push({
+                value,
+                label: name.split("::").join(" > "),
+                menuLabel: optionName,
+            });
+            // creates next options for each parent group, if they don't already exists
+            for (let i = 0; i < groupNames.length; i++) {
+                const parentGroupNames = groupNames.slice(0, i);
+                const nextGroupNames = groupNames.slice(0, i + 1);
+                const parentGroupIdentifier = getGroupIdentifier(parentGroupNames);
+                const nextGroupIdentifier = getGroupIdentifier(nextGroupNames);
+                if (!result[parentGroupIdentifier]) {
+                    result[parentGroupIdentifier] =
+                        buildSubGroupOptions(parentGroupNames);
+                }
+                if (result[parentGroupIdentifier]?.options.find((o) => o.value === nextGroupIdentifier) === undefined) {
+                    result[parentGroupIdentifier]?.options.push({
                         type: "next",
+                        label: nextGroupNames[nextGroupNames.length - 1],
+                        value: nextGroupIdentifier,
                     });
                 }
             }
-            // adds a option to the last subgroup of the chain, ex:
-            // ex: adding `Radioactive Green` to `result[Special]`
-            const lastSubGroupName = optionNameList[optionNameList.length - 2];
-            result[lastSubGroupName]?.push({
-                value: option.value,
-                label: option.name,
-                name: optionNameList.slice(-1)[0],
-            });
         }
     });
     return result;
 }
+/**
+ * When one or more options are selected, the Combobox component renders the label
+ * for an option in the input, searching for an option passed as a child with the
+ * same value as the selected option.
+ *
+ * In the first render we are passing only the root group options as children,
+ * and if we already have some selected values from a SubGroup, the component is not
+ * able to find the label for the selected option.
+ *
+ * We therefore need to pass all the non-navigation options as children in the first render.
+ * The passed options are cached by the Combobox component, so we can safely remove them
+ * after the first render and pass only the root group options.
+ */
+function getInitialGroup(nestedOptions) {
+    const result = {
+        type: "RootGroup",
+        options: [],
+    };
+    Object.values(nestedOptions).forEach(({ options }) => {
+        result.options.push(...options.filter(({ type }) => type === undefined));
+    });
+    return result;
+}
+function useNestedOptions({ options, hasEmptyOption, }) {
+    const nestedOptions = reactExports.useMemo(() => buildNestedOptions(options, hasEmptyOption), [options, hasEmptyOption]);
+    const [currentGroup, setCurrentGroup] = reactExports.useState(getInitialGroup(nestedOptions));
+    reactExports.useEffect(() => {
+        setCurrentGroup(nestedOptions[ROOT_GROUP_IDENTIFIER]);
+    }, [nestedOptions]);
+    const setCurrentGroupByIdentifier = (identifier) => {
+        const group = nestedOptions[identifier];
+        if (group) {
+            setCurrentGroup(group);
+        }
+    };
+    return {
+        currentGroup,
+        isGroupIdentifier,
+        setCurrentGroupByIdentifier,
+    };
+}
 
 function MultiSelect({ field }) {
     const { label, options, error, value, name, required, description } = field;
-    const nestedOptions = reactExports.useMemo(() => buildNestedOptions(options), [options]);
+    const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } = useNestedOptions({
+        options,
+        hasEmptyOption: false,
+    });
     const [selectedValues, setSelectValues] = reactExports.useState(value || []);
-    // represents the subgroup chain, for example: ['Color','Special']
-    const [subGroupStack, setSubGroupStack] = reactExports.useState([]);
-    // indicates the "selected" subgroup, for example: 'Special'
-    const [activeSubGroup, setActiveSubOption] = reactExports.useState(null);
-    // holds the available options related to the activeSubGroup or the root(default) group.
-    const [activeOptions, setActiveOptions] = reactExports.useState(nestedOptions.root);
     const handleChange = (changes) => {
         if (Array.isArray(changes.selectionValue)) {
-            // for an option like `Color::Special::Radioactive Green` the return will be `Radioactive Green`
-            const lastSelectedItem = changes.selectionValue
-                .slice(-1)
-                .toString();
-            if (lastSelectedItem == "back") {
-                // walks back the subgroup option chain. Example: from: `Color::Special` to ``Color`
-                subGroupStack.pop();
-                const previousSubGroup = subGroupStack.length > 0 ? subGroupStack.slice(-1)[0] : "root";
-                setSubGroupStack(subGroupStack);
-                previousSubGroup == "root"
-                    ? setActiveSubOption(null)
-                    : setActiveSubOption(previousSubGroup);
-                setActiveOptions(nestedOptions[previousSubGroup]);
-            }
-            else if (nestedOptions[lastSelectedItem] !== undefined) {
-                // the selected Item represents/matches an option subgroup then move up the group chain
-                // Example: if lastSelectedItem = `Color`, the component move up the group chain from root to color
-                // and it will update the activeOptions property to display the elements inside `nestedOptions['Color']
-                if (!subGroupStack.includes(lastSelectedItem)) {
-                    subGroupStack.push(lastSelectedItem);
-                    setSubGroupStack(subGroupStack);
-                    setActiveSubOption(lastSelectedItem);
-                    setActiveOptions(nestedOptions[lastSelectedItem]);
-                }
+            const lastSelectedItem = changes.selectionValue.slice(-1).toString();
+            if (isGroupIdentifier(lastSelectedItem)) {
+                setCurrentGroupByIdentifier(lastSelectedItem);
             }
             else {
-                // if the lastSelectedItem represents a option Value then we update the component state
                 setSelectValues(changes.selectionValue);
             }
         }
     };
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, children: [activeSubGroup && (jsxRuntimeExports.jsx(Option, { value: "back", type: "previous", children: "Back" })), activeSubGroup ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": activeSubGroup, children: activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, type: option.type, label: option.label, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))) })) : (activeOptions?.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.label, type: option.type, isSelected: selectedValues.includes(option.value.toString()), children: option.name }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
@@ -508,6 +581,30 @@ function CreditCard({ field, onChange }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: "text", value: value, onChange: (e) => onChange(e.target.value), onBlur: handleBlur, validation: error ? "error" : undefined, required: required }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
+function Tagger({ field, onChange }) {
+    const { label, options, error, value, name, required, description } = field;
+    const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } = useNestedOptions({
+        options,
+        hasEmptyOption: true,
+    });
+    const selectionValue = value ?? "";
+    const [isExpanded, setIsExpanded] = reactExports.useState(false);
+    const handleChange = (changes) => {
+        if (typeof changes.selectionValue === "string" &&
+            isGroupIdentifier(changes.selectionValue)) {
+            setCurrentGroupByIdentifier(changes.selectionValue);
+            return;
+        }
+        if (typeof changes.selectionValue === "string") {
+            onChange(changes.selectionValue);
+        }
+        if (changes.isExpanded !== undefined) {
+            setIsExpanded(changes.isExpanded);
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required, name }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectionValue, inputValue: selectionValue, renderValue: ({ selection }) => selection?.label ?? "-", isExpanded: isExpanded, children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -562,7 +659,7 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "multiselect":
                         return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                     case "tagger":
-                        return jsxRuntimeExports.jsx("div", { children: "tagger" });
+                        return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                     case "attachments":
                         return jsxRuntimeExports.jsx(Attachments, { field: field });
                     default:
