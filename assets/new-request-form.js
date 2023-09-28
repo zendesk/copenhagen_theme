@@ -19,12 +19,12 @@ function TextArea({ field, onChange }) {
 
 function DropDown({ field, onChange }) {
     const { label, options, error, value, name, required, description } = field;
-    const selectedOption = options.find((option) => option.value.toString() === value?.toString());
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsx(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, inputValue: selectedOption?.value.toString(), selectionValue: selectedOption?.value.toString(), renderValue: () => selectedOption?.name || "-", onChange: ({ selectionValue }) => {
+    const selectionValue = value == null ? "" : value.toString();
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, inputValue: selectionValue, selectionValue: selectionValue, renderValue: ({ selection }) => selection?.label || "-", onChange: ({ selectionValue }) => {
                     if (selectionValue !== undefined) {
                         onChange(selectionValue);
                     }
-                }, children: options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value.toString(), children: option.name }, option.value))) }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+                }, children: [!required && jsxRuntimeExports.jsx(Option, { value: "", label: "-" }), options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value.toString(), label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function Checkbox({ field, onChange }) {
@@ -640,9 +640,8 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "description":
                     case "textarea":
                         return (jsxRuntimeExports.jsx(TextArea, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
-                    case "priority":
                     case "organization_id":
-                        return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                    case "priority":
                     case "tickettype":
                         return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                     case "due_at": {

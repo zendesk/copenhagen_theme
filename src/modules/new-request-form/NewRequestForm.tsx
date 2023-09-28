@@ -117,15 +117,8 @@ export function NewRequestForm({
                 onChange={(value) => handleChange(field, value)}
               />
             );
-          case "priority":
           case "organization_id":
-            return (
-              <DropDown
-                key={field.name}
-                field={field}
-                onChange={(value) => handleChange(field, value)}
-              />
-            );
+          case "priority":
           case "tickettype":
             return (
               <DropDown
