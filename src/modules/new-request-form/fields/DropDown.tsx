@@ -1,3 +1,4 @@
+import type { ISelectedOption } from "@zendeskgarden/react-dropdowns.next";
 import {
   Field as GardenField,
   Label,
@@ -16,9 +17,7 @@ interface DropDownProps {
 
 export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
-  const selectedOption = options.find(
-    (option) => option.value.toString() === value?.toString()
-  );
+  const selectionValue = value == null ? "" : value.toString();
 
   return (
     <GardenField>
@@ -31,19 +30,24 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
         inputProps={{ name, required }}
         isEditable={false}
         validation={error ? "error" : undefined}
-        inputValue={selectedOption?.value.toString()}
-        selectionValue={selectedOption?.value.toString()}
-        renderValue={() => selectedOption?.name || "-"}
+        inputValue={selectionValue}
+        selectionValue={selectionValue}
+        renderValue={({ selection }) =>
+          (selection as ISelectedOption | null)?.label || "-"
+        }
         onChange={({ selectionValue }) => {
           if (selectionValue !== undefined) {
             onChange(selectionValue as string);
           }
         }}
       >
+        {!required && <Option value="" label="-" />}
         {options.map((option) => (
-          <Option key={option.value} value={option.value.toString()}>
-            {option.name}
-          </Option>
+          <Option
+            key={option.value}
+            value={option.value.toString()}
+            label={option.name}
+          />
         ))}
       </Combobox>
       {error && <Message validation="error">{error}</Message>}
