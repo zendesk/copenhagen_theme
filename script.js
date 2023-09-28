@@ -1464,11 +1464,16 @@ async function handleSectionResource(id, locale) {
     const placeholderCuraPlugins = getEl('#placeholder-cura-plugins') || {};
 
     const fold = locale === 'zh-cn' ? 'cn' : 'en';
-    const configuration = ajax({
-        method: 'GET',
-        url: `https://s3.us-west-2.amazonaws.com/snapmaker.com/download/support-resource/products-configuration/${fold}/${id}.json`,
-    });
+    let configuration
     let res;
+    try {
+        configuration = ajax({
+            method: 'GET',
+            url: `https://s3.us-west-2.amazonaws.com/snapmaker.com/download/support-resource/products-configuration/${fold}/${id}.json`,
+        });
+    } catch (e) {
+        console.warn(`Unable to fetch page resource file for section: ${id}, err =`, e);
+    }
 
     // TODO: add separate configuration for luban support
     try {
@@ -1532,7 +1537,7 @@ async function handleSectionResource(id, locale) {
             firmwareConfiguration = res.resource.find(item => item.title === "Firmware")
         }
         if(firmwareConfiguration) {
-            const elFirmware = handleDownloadFile(Object.assign(firmwareConfiguration, firmware)) 
+            const elFirmware = handleResourceDownload(Object.assign(firmwareConfiguration, firmware)) 
             fileResourceContainer.replaceChild(elFirmware, placeholderFirmware);
         }else {
             fileResourceContainer.removeChild(placeholderFirmware)
@@ -1932,13 +1937,17 @@ const firmwareType = {
     snapmaker2: Symbol('snapmaker2'),
     j1: Symbol('j1'),
     artisan: Symbol('artisan'),
-    original: Symbol('original')
+    original: Symbol('original'),
+    ray: Symbol('Ray'),
+    laserModules: Symbol('laserModules')
 }
 const firmwareMap = new Map()
 firmwareMap.set(firmwareType.snapmaker2, '/v1/fabscreen/version')
 firmwareMap.set(firmwareType.j1, '/v1/j1/version')
 firmwareMap.set(firmwareType.artisan, '/v1/a400/version')
 firmwareMap.set(firmwareType.original, '/v1/original/version')
+firmwareMap.set(firmwareType.ray, '/v1/ray/version')
+firmwareMap.set(firmwareType.laserModules, '/v1/laser-modules/version')
   
 /**
  * @description
@@ -1954,6 +1963,9 @@ async function getFirewareResources(type) {
 async function handleFirmWare(id) {
     let key = ''
     switch (id) {
+      case '17843268157463':
+        key = firmwareType.ray
+        break
       case '12963989552151':
         key = firmwareType.j1
         break
@@ -1966,13 +1978,16 @@ async function handleFirmWare(id) {
       case '12964134655639':
         key = firmwareType.original
         break
+      case '17843295597975':
+        return multiFirmwareSelected(id, firmwareType.laserModules)
       default:
         key = firmwareType.snapmaker2
     }
     const firmwareData = (await getFirewareResources(firmwareMap.get(key))).data
     if (!firmwareData) return ''
     const versionData = firmwareData.new_version
-    const [machineType, version, date] = versionData.version.split('_')
+    const [version, date] = versionData.version.split('_').slice(-2)
+    // const [machineType, version, date] = versionData.version.split('_')
     const formatedDate = formatDate(date)
     return {
         title: 'Firmware',
@@ -1982,6 +1997,33 @@ async function handleFirmWare(id) {
         download_link: versionData.url
     }
 }
+async function multiFirmwareSelected(id, key) {
+    const firmwareData = (await getFirewareResources(firmwareMap.get(key)))
+    const keys = Object.keys(firmwareData)
+    const list = keys.map(key => {
+        const versionData = firmwareData[key] && firmwareData[key].data && firmwareData[key].data.new_version
+        const [version, date] = versionData.version.split('_').slice(-2)
+        return {
+            text: versionData.version,
+            link: versionData.url,
+            date
+        }
+    })
+    const date = lastDate(...list.map(v=> v.date))
+    const dateArr = date.toDateString().split(' ').filter((_,index)=>index!==0)
+    const formatedDate =  `${dateArr[0]} ${dateArr[1]}, ${dateArr[2]}`
+        
+    // lastDate(firmwareData.)
+    return {
+        title: 'Firmware',
+        time:  formatedDate,
+        type: 'select',
+        text: 'Download Machine Firmware',
+        // download_link: versionData.url
+        dropdown: list
+    }
+}
+
 /**
  * @description
  * @param date value like: 20230213, 20251104 
@@ -1990,6 +2032,13 @@ function formatDate(date) {
     const [year, month, day] = [date.substring(0, 4), date.substring(4, 6), date.substring(6, 8)]
     const dateArr = new Date(year, month - 1, day).toDateString().split(' ').filter((_,index)=>index!==0)
     return `${dateArr[0]} ${dateArr[1]}, ${dateArr[2]}`
+}
+function lastDate(...date) {
+    return new Date(date.map(v => {
+        const [year, month, day] = [v.substring(0, 4), v.substring(4, 6), v.substring(6, 8)]
+        const d = new Date(year, month - 1, day)
+        return d.getTime()
+    }).reduce((pre, curr) => Math.max(pre, curr) ))
 }
 
 //============================================== utils ==============================================
