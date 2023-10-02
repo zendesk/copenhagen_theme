@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, g as FileList, h as File, i as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, k as Title, l as Close, m as useDropzone, n as FileUpload, o as Alert, B as Button, q as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, s as styled, g as FileList, h as File, i as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, k as Title, l as Close, m as useDropzone, n as FileUpload, $ as $e, o as Alert, B as Button, q as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field, onChange }) {
@@ -605,6 +605,84 @@ function Tagger({ field, onChange }) {
     return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required, name }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectionValue, inputValue: selectionValue, renderValue: ({ selection }) => selection?.label ?? "-", isExpanded: isExpanded, children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
+function useDebounce(value, delayMs) {
+    const [debouncedValue, setDebouncedValue] = reactExports.useState(value);
+    reactExports.useEffect(() => {
+        const timer = setTimeout(() => setDebouncedValue(value), delayMs);
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [value, delayMs]);
+    return debouncedValue;
+}
+
+const slideIn = $e `
+  from {
+    grid-template-rows: 0fr;
+  }
+  to {
+    grid-template-rows: 1fr;
+  }
+`;
+const Container = styled.div `
+  display: grid;
+  animation: ${slideIn} 200ms forwards;
+`;
+const InnerContainer = styled.div `
+  overflow: hidden;
+`;
+const UnstyledList = styled.ul `
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`;
+const ListItem = styled.li `
+  margin: ${(props) => props.theme.space.sm} 0;
+`;
+function hasMinLength(value) {
+    const firstLetter = value.charCodeAt(0);
+    /*
+     * Special case considering CJK characters. Since ideographs represent
+     * whole words, we want to start searching when just two has been typed.
+     *
+     * Unicode range reference:
+     * http://www.unicode.org/versions/Unicode5.0.0/ch12.pdf#G16616
+     */
+    if (firstLetter >= 0x4e00 && firstLetter <= 0x2fa1f) {
+        return value.length >= 2;
+    }
+    else {
+        return value.length >= 3;
+    }
+}
+function SuggestedArticles({ query: inputQuery, locale, }) {
+    const debouncedQuery = useDebounce(inputQuery, 500);
+    const [articles, setArticles] = reactExports.useState([]);
+    const requestsCache = reactExports.useRef({});
+    reactExports.useEffect(() => {
+        const query = debouncedQuery?.trim().toLocaleLowerCase();
+        if (!query || !hasMinLength(query)) {
+            setArticles([]);
+            return;
+        }
+        const requestUrl = new URL(`${window.location.origin}/hc/api/internal/deflection/suggestions.json`);
+        requestUrl.searchParams.append("locale", locale);
+        requestUrl.searchParams.append("query", query);
+        const cachedResponse = requestsCache.current[requestUrl.toString()];
+        if (cachedResponse) {
+            setArticles(cachedResponse);
+            return;
+        }
+        fetch(requestUrl)
+            .then((response) => response.json())
+            .then(({ results }) => {
+            requestsCache.current[requestUrl.toString()] = results;
+            setArticles(results);
+        });
+    }, [debouncedQuery, locale]);
+    return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: "Suggested Articles" }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -628,8 +706,9 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
     }
     return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
                 switch (field.type) {
-                    case "anonymous_requester_email":
                     case "subject":
+                        return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
+                    case "anonymous_requester_email":
                     case "text":
                     case "integer":
                     case "decimal":

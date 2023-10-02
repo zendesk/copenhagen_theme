@@ -16,14 +16,11 @@
 <script type="module">
     import { setupGardenTheme } from "shared";
 
-    setupGardenTheme(function (defaultTheme) {
-        return {
-            ...defaultTheme,
-            colors: {
-                ...defaultTheme.colors,
-                foreground: "{{settings.text_color}}",
-                primaryHue: "{{settings.brand_color}}",
-            },
-        }
+    setupGardenTheme({
+      textColor: "{{settings.text_color}}",
+      brandColor: "{{settings.brand_color}}",
+      linkColor: "{{settings.link_color}}",
+      hoverLinkColor: "{{settings.hover_link_color}}",
+      visitedLinkColor: "{{settings.visited_link_color}}",
     })
 </script>
