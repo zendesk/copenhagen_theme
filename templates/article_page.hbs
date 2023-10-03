@@ -30,7 +30,11 @@
             <ul>
               {{#each section.articles}}
                 <li>
-                  <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+                  <a href="{{url}}" 
+                     class="sidenav-item {{#is id ../article.id}}current-article{{/is}}"
+                     {{#is id ../article.id}}aria-current="page"{{/is}}>
+                       {{title}}
+                  </a>
                 </li>
               {{/each}}
             </ul>
