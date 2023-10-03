@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, r as reactExports, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, $ as $e, q as Alert, B as Button, t as reactDomExports } from 'vendor';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, $ as $e, q as Alert, B as Button, t as reactDomExports } from 'vendor';
 import { ComponentProviders } from 'shared';
 
 function Input({ field, onChange }) {
@@ -13,9 +13,18 @@ function Input({ field, onChange }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value), autoComplete: autocomplete, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-function TextArea({ field, onChange }) {
+function TextArea({ field, hasWysiwyg, onChange, }) {
     const { label, error, value, name, required, description } = field;
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    const wysiwygInitialized = reactExports.useRef(false);
+    const textAreaRefCallback = reactExports.useCallback((ref) => {
+        if (hasWysiwyg && ref && !wysiwygInitialized.current) {
+            if (window.NewRequestForm) {
+                wysiwygInitialized.current = true;
+                window.NewRequestForm.initializeWysiwyg(ref);
+            }
+        }
+    }, [hasWysiwyg]);
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { ref: textAreaRefCallback, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 const HideVisually$1 = styled.span `
@@ -310,39 +319,54 @@ const fetchCsrfToken$1 = async () => {
     return current_session.csrf_token;
 };
 /**
- * This hook creates an event handler for form submits, fetching the CSRF token
- * from the backend and appending it to the form
+ * This hook creates a ref callback used to override the submit method of the form
+ * that uses the callback.
+ * Before submitting the form, it fetches the CSRF token from the backend and appends it to the form,
+ * and redacts the value of the eventual credit card field
  * @param ticketFields array of ticket fields for the form
- * @returns a Submit Event Handler function
+ * @returns a Ref callback and a submit handler
  */
-function useSubmitHandler(ticketFields) {
+function useFormSubmit(ticketFields) {
+    const initialized = reactExports.useRef(false);
     const isSubmitting = reactExports.useRef(false);
-    return async (e) => {
-        e.preventDefault();
-        /* We are performing an async call to fetch the CSRF token and for this reason
-           the submit is not immediate, and the user can click the submit button multiple times.
-           We don't want to disable the submit button for A11Y, so we use the isSubmitting ref
-           to stop subsequent submits after the first one. */
-        if (isSubmitting.current === false) {
-            isSubmitting.current = true;
-            const form = e.target;
-            const token = await fetchCsrfToken$1();
-            const hiddenInput = document.createElement("input");
-            hiddenInput.type = "hidden";
-            hiddenInput.name = "authenticity_token";
-            hiddenInput.value = token;
-            form.appendChild(hiddenInput);
-            // Ensure that the credit card field is redacted before submitting
-            const creditCardField = ticketFields.find((field) => field.type === "partialcreditcard");
-            if (creditCardField) {
-                const creditCardInput = form.querySelector(`input[name="${creditCardField.name}"]`);
-                if (creditCardInput && creditCardInput instanceof HTMLInputElement) {
-                    creditCardInput.value = redactCreditCard(creditCardInput.value);
+    const formRefCallback = reactExports.useCallback((ref) => {
+        if (ref && !initialized.current) {
+            initialized.current = true;
+            /* We are monkey patching the submit method of the form, since this behavior is what
+               other scripts in Help Center are intercepting the submit event, stopping the event propagation and
+               calling the submit method directly */
+            ref.submit = async () => {
+                /* We are performing an async call to fetch the CSRF token and for this reason
+                 the submit is not immediate, and the user can click the submit button multiple times.
+                 We don't want to disable the submit button for A11Y, so we use the isSubmitting ref
+                 to stop subsequent submits after the first one. */
+                if (isSubmitting.current === false) {
+                    isSubmitting.current = true;
+                    const token = await fetchCsrfToken$1();
+                    const hiddenInput = document.createElement("input");
+                    hiddenInput.type = "hidden";
+                    hiddenInput.name = "authenticity_token";
+                    hiddenInput.value = token;
+                    ref.appendChild(hiddenInput);
+                    // Ensure that the credit card field is redacted before submitting
+                    const creditCardField = ticketFields.find((field) => field.type === "partialcreditcard");
+                    if (creditCardField) {
+                        const creditCardInput = ref.querySelector(`input[name="${creditCardField.name}"]`);
+                        if (creditCardInput &&
+                            creditCardInput instanceof HTMLInputElement) {
+                            creditCardInput.value = redactCreditCard(creditCardInput.value);
+                        }
+                    }
+                    HTMLFormElement.prototype.submit.call(ref);
                 }
-            }
-            form.submit();
+            };
         }
+    }, [ticketFields]);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        e.target.submit();
     };
+    return { formRefCallback, handleSubmit };
 }
 
 const MAX_URL_LENGTH = 2048;
@@ -491,8 +515,8 @@ async function fetchCsrfToken() {
     return authenticity_token;
 }
 function Attachments({ field }) {
-    const { label, error, name, attachments, description } = field;
-    const { files, addPendingFile, setPendingFileProgress, setUploaded, removePendingFile, removeUploadedFile, } = useAttachedFiles(attachments?.map((value) => ({
+    const { label, error, name, attachments } = field;
+    const { files, addPendingFile, setPendingFileProgress, setUploaded, removePendingFile, removeUploadedFile, } = useAttachedFiles(attachments.map((value) => ({
         status: "uploaded",
         value,
     })) ?? []);
@@ -563,7 +587,7 @@ function Attachments({ field }) {
             });
         }
     };
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsxs(FileUpload, { ...getRootProps(), isDragging: isDragActive, children: [isDragActive ? (jsxRuntimeExports.jsx("span", { children: "Drop files here" })) : (jsxRuntimeExports.jsx("span", { children: "Choose a file or drag and drop here" })), jsxRuntimeExports.jsx(Input$1, { ...getInputProps() })] }), files.map((file) => (jsxRuntimeExports.jsx(FileListItem, { file: file, onRemove: () => {
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsxs(FileUpload, { ...getRootProps(), isDragging: isDragActive, children: [isDragActive ? (jsxRuntimeExports.jsx("span", { children: "Drop files here" })) : (jsxRuntimeExports.jsx("span", { children: "Choose a file or drag and drop here" })), jsxRuntimeExports.jsx(Input$1, { ...getInputProps() })] }), files.map((file) => (jsxRuntimeExports.jsx(FileListItem, { file: file, onRemove: () => {
                     handleRemove(file);
                 } }, file.status === "pending" ? file.id : file.value.id))), files.map((file) => file.status === "uploaded" && (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: JSON.stringify(file.value) }, file.value.id)))] }));
 }
@@ -702,18 +726,18 @@ const Footer = styled.div `
 `;
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
 const CcField = reactExports.lazy(() => import('CcField'));
-function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
-    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, } = requestForm;
+function NewRequestForm({ ticketForms, requestForm, wysiwyg, parentId, locale, }) {
+    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const prefilledTicketFields = usePrefilledTicketFields(fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
-    const handleSubmit = useSubmitHandler(ticketFields);
+    const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
     function handleChange(field, value) {
         setTicketFields(ticketFields.map((ticketField) => ticketField.name === field.name
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(Form, { action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
+    return (jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
                 switch (field.type) {
                     case "subject":
                         return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
@@ -726,8 +750,9 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                     case "partialcreditcard":
                         return (jsxRuntimeExports.jsx(CreditCard, { field: field, onChange: (value) => handleChange(field, value) }));
                     case "description":
+                        return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: wysiwyg, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx("input", { type: "hidden", name: description_mimetype_field.name, value: wysiwyg ? "text/html" : "text/plain" })] }));
                     case "textarea":
-                        return (jsxRuntimeExports.jsx(TextArea, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                        return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
                     case "organization_id":
                     case "priority":
                     case "tickettype":
@@ -747,12 +772,10 @@ function NewRequestForm({ ticketForms, requestForm, parentId, locale, }) {
                         return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                     case "tagger":
                         return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
-                    case "attachments":
-                        return jsxRuntimeExports.jsx(Attachments, { field: field });
                     default:
                         return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                 }
-            }), jsxRuntimeExports.jsx(Footer, { children: (ticketForms.length === 0 || ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }));
+            }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticketForms.length === 0 || ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }));
 }
 
 function renderNewRequestForm(props, container) {

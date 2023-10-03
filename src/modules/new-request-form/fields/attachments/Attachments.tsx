@@ -1,7 +1,6 @@
 import {
   FileUpload,
   Field as GardenField,
-  Hint,
   Input,
   Label,
   Message,
@@ -14,13 +13,13 @@ import {
 } from "@zendeskgarden/react-notifications";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import type { Field } from "../../data-types";
+import type { AttachmentField } from "../../data-types";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
 
 interface AttachmentProps {
-  field: Field;
+  field: AttachmentField;
 }
 
 async function fetchCsrfToken() {
@@ -42,7 +41,7 @@ export interface UploadFileResponse {
 }
 
 export function Attachments({ field }: AttachmentProps): JSX.Element {
-  const { label, error, name, attachments, description } = field;
+  const { label, error, name, attachments } = field;
   const {
     files,
     addPendingFile,
@@ -51,7 +50,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
     removePendingFile,
     removeUploadedFile,
   } = useAttachedFiles(
-    attachments?.map((value) => ({
+    attachments.map((value) => ({
       status: "uploaded",
       value,
     })) ?? []
@@ -157,7 +156,6 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
   return (
     <GardenField>
       <Label>{label}</Label>
-      {description && <Hint>{description}</Hint>}
       {error && <Message validation="error">{error}</Message>}
       <FileUpload {...getRootProps()} isDragging={isDragActive}>
         {isDragActive ? (

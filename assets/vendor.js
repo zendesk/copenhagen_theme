@@ -1746,7 +1746,7 @@ function genId() {
   return ++id;
 }
 var maybeReactUseId = React$1["useId".toString()];
-function useId$1(providedId) {
+function useId$2(providedId) {
   if (maybeReactUseId !== void 0) {
     let generatedId = maybeReactUseId();
     return providedId ?? generatedId;
@@ -1773,7 +1773,7 @@ function useId$1(providedId) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$2() {
+function composeEventHandlers$3() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -1827,7 +1827,7 @@ const KEY_CODES = {
   TAB: 9,
   UP: 38
 };
-const KEYS$1 = {
+const KEYS$2 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -1856,7 +1856,7 @@ const KEYS$1 = {
   UP: 'ArrowUp'
 };
 
-var DocumentPosition$1;
+var DocumentPosition$2;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -1864,10 +1864,10 @@ var DocumentPosition$1;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+})(DocumentPosition$2 || (DocumentPosition$2 = {}));
 
-let idCounter$1 = 0;
-const useId = id => useId$1(id) || `id:${idCounter$1++}`;
+let idCounter$2 = 0;
+const useId$1 = id => useId$2(id) || `id:${idCounter$2++}`;
 
 function _extends$y() {
   _extends$y = Object.assign ? Object.assign.bind() : function (target) {
@@ -4791,21 +4791,21 @@ const useSelection = _ref => {
       };
       const hasModifierKeyPressed = event.ctrlKey || event.metaKey || event.shiftKey || event.altKey;
       if (!hasModifierKeyPressed) {
-        if (event.key === KEYS$1.UP && verticalDirection || event.key === KEYS$1.LEFT && horizontalDirection) {
+        if (event.key === KEYS$2.UP && verticalDirection || event.key === KEYS$2.LEFT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onIncrement();
           } else {
             onDecrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS$1.DOWN && verticalDirection || event.key === KEYS$1.RIGHT && horizontalDirection) {
+        } else if (event.key === KEYS$2.DOWN && verticalDirection || event.key === KEYS$2.RIGHT && horizontalDirection) {
           if (rtl && horizontalDirection) {
             onDecrement();
           } else {
             onIncrement();
           }
           event.preventDefault();
-        } else if (event.key === KEYS$1.HOME) {
+        } else if (event.key === KEYS$2.HOME) {
           const firstItem = values[0];
           !isFocusedValueControlled && dispatch({
             type: 'HOME',
@@ -4813,7 +4813,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(firstItem);
           event.preventDefault();
-        } else if (event.key === KEYS$1.END) {
+        } else if (event.key === KEYS$2.END) {
           const lastItem = values[values.length - 1];
           !isFocusedValueControlled && dispatch({
             type: 'END',
@@ -4821,7 +4821,7 @@ const useSelection = _ref => {
           });
           onFocus && onFocus(lastItem);
           event.preventDefault();
-        } else if (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER) {
+        } else if (event.key === KEYS$2.SPACE || event.key === KEYS$2.ENTER) {
           onSelect && onSelect(value);
           !isSelectedValueControlled && dispatch({
             type: 'KEYBOARD_SELECT',
@@ -4843,9 +4843,9 @@ const useSelection = _ref => {
       tabIndex,
       [selectedAriaKey]: selectedAriaKey ? isSelected : undefined,
       ref: refs[value],
-      onFocus: composeEventHandlers$2(onFocusCallback, handleFocus),
-      onClick: composeEventHandlers$2(onClick, handleClick),
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$3(onFocusCallback, handleFocus),
+      onClick: composeEventHandlers$3(onClick, handleClick),
+      onKeyDown: composeEventHandlers$3(onKeyDown, handleKeyDown),
       onBlur,
       ...other
     };
@@ -8117,7 +8117,7 @@ var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function composeEventHandlers$1() {
+function composeEventHandlers$2() {
   for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
     fns[_key] = arguments[_key];
   }
@@ -8131,7 +8131,7 @@ function composeEventHandlers$1() {
     });
   };
 }
-const KEYS = {
+const KEYS$1 = {
   ALT: 'Alt',
   ASTERISK: '*',
   BACKSPACE: 'Backspace',
@@ -8159,7 +8159,7 @@ const KEYS = {
   UNIDENTIFIED: 'Unidentified',
   UP: 'ArrowUp'
 };
-var DocumentPosition;
+var DocumentPosition$1;
 (function (DocumentPosition) {
   DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
   DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
@@ -8167,7 +8167,7 @@ var DocumentPosition;
   DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
   DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
   DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
 
 const SLIDER_MIN = 0;
 const SLIDER_MAX = 100;
@@ -8296,7 +8296,7 @@ function useSlider(_ref) {
       'data-garden-container-id': 'containers.slider.track',
       'data-garden-container-version': '0.1.7',
       'aria-disabled': disabled,
-      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
+      onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
       ...other
     };
   }, [disabled, getTrackPosition, maxThumbRef, minThumbRef, position.maxValue, position.minValue, setThumbPosition]);
@@ -8311,28 +8311,28 @@ function useSlider(_ref) {
       if (!disabled) {
         let value;
         switch (event.key) {
-          case KEYS.RIGHT:
+          case KEYS$1.RIGHT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + (rtl ? -step : step);
             break;
-          case KEYS.UP:
+          case KEYS$1.UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + step;
             break;
-          case KEYS.LEFT:
+          case KEYS$1.LEFT:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - (rtl ? -step : step);
             break;
-          case KEYS.DOWN:
+          case KEYS$1.DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - step;
             break;
-          case KEYS.PAGE_UP:
+          case KEYS$1.PAGE_UP:
             value = (thumb === 'min' ? position.minValue : position.maxValue) + jump;
             break;
-          case KEYS.PAGE_DOWN:
+          case KEYS$1.PAGE_DOWN:
             value = (thumb === 'min' ? position.minValue : position.maxValue) - jump;
             break;
-          case KEYS.HOME:
+          case KEYS$1.HOME:
             value = min;
             break;
-          case KEYS.END:
+          case KEYS$1.END:
             value = max;
             break;
         }
@@ -8387,9 +8387,9 @@ function useSlider(_ref) {
       'aria-valuemin': thumb === 'min' ? min : position.minValue,
       'aria-valuemax': thumb === 'min' ? position.maxValue : max,
       'aria-valuenow': thumb === 'min' ? position.minValue : position.maxValue,
-      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
-      onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown),
-      onTouchStart: composeEventHandlers$1(onTouchStart, handleTouchStart),
+      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
+      onTouchStart: composeEventHandlers$2(onTouchStart, handleTouchStart),
       ...other
     };
   }, [doc, disabled, getTrackPosition, jump, max, min, position.maxValue, position.minValue, rtl, step, setThumbPosition]);
@@ -9918,19 +9918,19 @@ const Label$1 = React.forwardRef((props, ref) => {
       } = fieldContext;
       combinedProps = {
         ...combinedProps,
-        onMouseUp: composeEventHandlers$2(props.onMouseUp, () => {
+        onMouseUp: composeEventHandlers$3(props.onMouseUp, () => {
           setIsLabelActive(false);
         }),
-        onMouseDown: composeEventHandlers$2(props.onMouseDown, () => {
+        onMouseDown: composeEventHandlers$3(props.onMouseDown, () => {
           setIsLabelActive(true);
         }),
-        onMouseEnter: composeEventHandlers$2(props.onMouseEnter, () => {
+        onMouseEnter: composeEventHandlers$3(props.onMouseEnter, () => {
           setIsLabelHovered(true);
         }),
-        onMouseLeave: composeEventHandlers$2(props.onMouseLeave, () => {
+        onMouseLeave: composeEventHandlers$3(props.onMouseLeave, () => {
           setIsLabelHovered(false);
         }),
-        onClick: composeEventHandlers$2(props.onClick, () => {
+        onClick: composeEventHandlers$3(props.onClick, () => {
           multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
         })
       };
@@ -9964,7 +9964,7 @@ const Label$1 = React.forwardRef((props, ref) => {
     };
     combinedProps = {
       ...combinedProps,
-      onClick: composeEventHandlers$2(combinedProps.onClick, onLabelSelect)
+      onClick: composeEventHandlers$3(combinedProps.onClick, onLabelSelect)
     };
     return React.createElement(StyledCheckLabel, _extends$t({
       ref: ref
@@ -10094,7 +10094,7 @@ const Input = React.forwardRef((_ref, ref) => {
   } = _ref;
   const fieldContext = useFieldContext$1();
   const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$3(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -10172,7 +10172,7 @@ const Range = React.forwardRef((_ref, ref) => {
   reactExports.useEffect(() => {
     updateBackgroundWidthFromInput(rangeRef.current);
   }, [rangeRef, updateBackgroundWidthFromInput, props.value]);
-  const onChange = hasLowerTrack ? composeEventHandlers$2(props.onChange, event => {
+  const onChange = hasLowerTrack ? composeEventHandlers$3(props.onChange, event => {
     updateBackgroundWidthFromInput(event.target);
   }) : props.onChange;
   let combinedProps = {
@@ -10289,7 +10289,7 @@ const Textarea = React.forwardRef((_ref, ref) => {
     computedStyle.height = state.height;
     computedStyle.overflow = state.overflow ? 'hidden' : undefined;
   }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = props.readOnly ? composeEventHandlers$3(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -10393,10 +10393,10 @@ const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
     ...props
   } = _ref;
   const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$2(onFocus, () => {
+  const onFocusHandler = composeEventHandlers$3(onFocus, () => {
     setIsFocused(true);
   });
-  const onBlurHandler = composeEventHandlers$2(onBlur, () => {
+  const onBlurHandler = composeEventHandlers$3(onBlur, () => {
     setIsFocused(false);
   });
   return React.createElement(StyledTextFauxInput, _extends$t({
@@ -10802,7 +10802,7 @@ const useFileContext = () => {
 
 const CloseComponent$1 = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$3(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
   return React.createElement(StyledFileClose, _extends$t({
@@ -10855,7 +10855,7 @@ var SvgTrashStroke = function SvgTrashStroke(props) {
 
 const DeleteComponent = React.forwardRef((props, ref) => {
   const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$2(props.onMouseDown, event => event.preventDefault()
+  const onMouseDown = composeEventHandlers$3(props.onMouseDown, event => event.preventDefault()
   );
   const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
   return React.createElement(StyledFileDelete, _extends$t({
@@ -11290,22 +11290,22 @@ const MediaInput = React.forwardRef((_ref, ref) => {
     onMouseOut,
     ...otherWrapperProps
   } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$2(onClick, () => {
+  const onFauxInputClickHandler = composeEventHandlers$3(onClick, () => {
     inputRef.current && inputRef.current.focus();
   });
-  const onFauxInputFocusHandler = composeEventHandlers$2(onFocus, () => {
+  const onFauxInputFocusHandler = composeEventHandlers$3(onFocus, () => {
     setIsFocused(true);
   });
-  const onFauxInputBlurHandler = composeEventHandlers$2(onBlur, () => {
+  const onFauxInputBlurHandler = composeEventHandlers$3(onBlur, () => {
     setIsFocused(false);
   });
-  const onFauxInputMouseOverHandler = composeEventHandlers$2(onMouseOver, () => {
+  const onFauxInputMouseOverHandler = composeEventHandlers$3(onMouseOver, () => {
     setIsHovered(true);
   });
-  const onFauxInputMouseOutHandler = composeEventHandlers$2(onMouseOut, () => {
+  const onFauxInputMouseOutHandler = composeEventHandlers$3(onMouseOut, () => {
     setIsHovered(false);
   });
-  const onSelectHandler = readOnly ? composeEventHandlers$2(onSelect, event => {
+  const onSelectHandler = readOnly ? composeEventHandlers$3(onSelect, event => {
     event.currentTarget.select();
   }) : onSelect;
   let combinedProps = {
@@ -16628,6 +16628,69 @@ Span.StartIcon = StartIcon;
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
+function composeEventHandlers$1() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+const KEYS = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+
+var DocumentPosition;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition || (DocumentPosition = {}));
+
+let idCounter$1 = 0;
+const useId = id => useId$2(id) || `id:${idCounter$1++}`;
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
 const useField = _ref => {
   let {
     idPrefix,
@@ -18353,14 +18416,14 @@ const typeMap = {
   [useCombobox$1.stateChangeTypes.InputBlur]: 'input:blur',
   [useCombobox$1.stateChangeTypes.InputChange]: 'input:change',
   [useCombobox$1.stateChangeTypes.InputClick]: 'input:click',
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS$1.DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS$1.UP}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS$1.END}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS$1.ENTER}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS$1.ESCAPE}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS$1.HOME}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS$1.PAGE_DOWN}`,
-  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS$1.PAGE_UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowDown]: `input:keyDown:${KEYS.DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownArrowUp]: `input:keyDown:${KEYS.UP}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnd]: `input:keyDown:${KEYS.END}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEnter]: `input:keyDown:${KEYS.ENTER}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownEscape]: `input:keyDown:${KEYS.ESCAPE}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownHome]: `input:keyDown:${KEYS.HOME}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageDown]: `input:keyDown:${KEYS.PAGE_DOWN}`,
+  [useCombobox$1.stateChangeTypes.InputKeyDownPageUp]: `input:keyDown:${KEYS.PAGE_UP}`,
   [useCombobox$1.stateChangeTypes.ItemClick]: 'option:click',
   [useCombobox$1.stateChangeTypes.ItemMouseMove]: 'option:mouseMove',
   [useCombobox$1.stateChangeTypes.MenuMouseLeave]: 'listbox:mouseLeave',
@@ -18711,8 +18774,8 @@ const useCombobox = _ref => {
       };
       return {
         ...triggerProps,
-        onBlur: composeEventHandlers$2(onBlur, handleBlur),
-        onClick: composeEventHandlers$2(onClick, handleClick),
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onClick: composeEventHandlers$1(onClick, handleClick),
         'aria-controls': isAutocomplete ? triggerProps['aria-controls'] : undefined,
         'aria-expanded': undefined,
         'aria-disabled': disabled || undefined,
@@ -18727,10 +18790,10 @@ const useCombobox = _ref => {
       });
       const handleKeyDown = event => {
         event.stopPropagation();
-        if (!_isExpanded && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+        if (!_isExpanded && (event.key === KEYS.SPACE || event.key === KEYS.ENTER)) {
           event.preventDefault();
           openListbox();
-        } else if (_isExpanded && !matchValue && (event.key === KEYS$1.SPACE || event.key === KEYS$1.ENTER)) {
+        } else if (_isExpanded && !matchValue && (event.key === KEYS.SPACE || event.key === KEYS.ENTER)) {
           event.preventDefault();
           if (_activeIndex !== -1) {
             setDownshiftSelection(values[_activeIndex]);
@@ -18772,8 +18835,8 @@ const useCombobox = _ref => {
         'aria-disabled': disabled || undefined,
         disabled: undefined,
         role: 'combobox',
-        onBlur: composeEventHandlers$2(onBlur, handleBlur),
-        onKeyDown: composeEventHandlers$2(onKeyDown, onDownshiftKeyDown, handleKeyDown),
+        onBlur: composeEventHandlers$1(onBlur, handleBlur),
+        onKeyDown: composeEventHandlers$1(onKeyDown, onDownshiftKeyDown, handleKeyDown),
         tabIndex: disabled ? -1 : 0
       };
     }
@@ -18795,7 +18858,7 @@ const useCombobox = _ref => {
     const handleClick = () => !isEditable && triggerRef.current?.focus();
     return {
       ...labelProps,
-      onClick: composeEventHandlers$2(onClick, handleClick),
+      onClick: composeEventHandlers$1(onClick, handleClick),
       htmlFor: isEditable ? htmlFor : undefined
     };
   }, [getFieldLabelProps, isEditable, triggerRef]);
@@ -18842,8 +18905,8 @@ const useCombobox = _ref => {
         disabled,
         role,
         'aria-autocomplete': isAutocomplete ? 'list' : undefined,
-        onChange: composeEventHandlers$2(_onChange, handleChange),
-        onClick: composeEventHandlers$2(onClick, handleClick),
+        onChange: composeEventHandlers$1(_onChange, handleChange),
+        onClick: composeEventHandlers$1(onClick, handleClick),
         ...getFieldInputProps({
           id: idRef.current.input,
           'aria-labelledby': idRef.current.label,
@@ -18872,7 +18935,7 @@ const useCombobox = _ref => {
       disabled,
       readOnly: true,
       tabIndex: -1,
-      onFocus: composeEventHandlers$2(onFocus, handleFocus),
+      onFocus: composeEventHandlers$1(onFocus, handleFocus),
       ...other
     };
   }, [getDownshiftInputProps, getFieldInputProps, handleDownshiftStateChange, hasHint, hasMessage, inputValue, inputRef, triggerRef, disabled, isAutocomplete, isEditable]);
@@ -18885,14 +18948,14 @@ const useCombobox = _ref => {
     } = _ref4;
     const handleClick = event => event.target instanceof Element && triggerRef.current?.contains(event.target) && event.stopPropagation();
     const handleKeyDown = event => {
-      if (event.key === KEYS$1.BACKSPACE || event.key === KEYS$1.DELETE) {
+      if (event.key === KEYS.BACKSPACE || event.key === KEYS.DELETE) {
         setDownshiftSelection(option.value);
       } else {
         const triggerContainsTag = event.target instanceof Element && triggerRef.current?.contains(event.target);
         if (triggerContainsTag && !isEditable) {
           event.stopPropagation();
         }
-        if (triggerContainsTag && (event.key === KEYS$1.DOWN || event.key === KEYS$1.UP || event.key === KEYS$1.ESCAPE || !isEditable && (event.key === KEYS$1.ENTER || event.key === KEYS$1.SPACE))) {
+        if (triggerContainsTag && (event.key === KEYS.DOWN || event.key === KEYS.UP || event.key === KEYS.ESCAPE || !isEditable && (event.key === KEYS.ENTER || event.key === KEYS.SPACE))) {
           const inputProps = getDownshiftInputProps();
           if (isEditable) {
             inputRef.current?.focus();
@@ -18907,8 +18970,8 @@ const useCombobox = _ref => {
     return {
       'data-garden-container-id': 'containers.combobox.tag',
       'data-garden-container-version': '1.0.11',
-      onClick: composeEventHandlers$2(onClick, handleClick),
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onClick: composeEventHandlers$1(onClick, handleClick),
+      onKeyDown: composeEventHandlers$1(onKeyDown, handleKeyDown),
       ...other
     };
   }, [triggerRef, setDownshiftSelection, getDownshiftInputProps, isEditable, inputRef]);
@@ -18963,7 +19026,7 @@ const useCombobox = _ref => {
         'aria-selected': ariaSelected,
         id: option ? idRef.current.getOptionId(disabledValues.indexOf(option.value), option.disabled) : undefined,
         ...optionProps,
-        onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown)
+        onMouseDown: composeEventHandlers$1(onMouseDown, handleMouseDown)
       };
     }
     return getDownshiftOptionProps({
@@ -20843,11 +20906,11 @@ const useTooltip = function (_temp) {
     } = _temp2 === void 0 ? {} : _temp2;
     return {
       tabIndex,
-      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
-      onFocus: composeEventHandlers$2(onFocus, () => openTooltip()),
-      onBlur: composeEventHandlers$2(onBlur, () => closeTooltip(0)),
-      onKeyDown: composeEventHandlers$2(onKeyDown, event => {
+      onMouseEnter: composeEventHandlers$3(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$3(onMouseLeave, () => closeTooltip()),
+      onFocus: composeEventHandlers$3(onFocus, () => openTooltip()),
+      onBlur: composeEventHandlers$3(onBlur, () => closeTooltip(0)),
+      onKeyDown: composeEventHandlers$3(onKeyDown, event => {
         if (event.keyCode === KEY_CODES.ESCAPE && visibility) {
           closeTooltip(0);
         }
@@ -20867,8 +20930,8 @@ const useTooltip = function (_temp) {
     } = _temp3 === void 0 ? {} : _temp3;
     return {
       role,
-      onMouseEnter: composeEventHandlers$2(onMouseEnter, () => openTooltip()),
-      onMouseLeave: composeEventHandlers$2(onMouseLeave, () => closeTooltip()),
+      onMouseEnter: composeEventHandlers$3(onMouseEnter, () => openTooltip()),
+      onMouseLeave: composeEventHandlers$3(onMouseLeave, () => closeTooltip()),
       'aria-hidden': !visibility,
       id: _id,
       ...other
@@ -25627,10 +25690,10 @@ const Tooltip = _ref => {
       hasArrow,
       placement: currentPlacement,
       size: computedSize,
-      onFocus: composeEventHandlers$2(onFocus, () => {
+      onFocus: composeEventHandlers$3(onFocus, () => {
         openTooltip();
       }),
-      onBlur: composeEventHandlers$2(onBlur, () => {
+      onBlur: composeEventHandlers$3(onBlur, () => {
         closeTooltip(0);
       }),
       'aria-hidden': !controlledIsVisible,
@@ -26906,9 +26969,9 @@ const Label = reactExports.forwardRef((_ref, ref) => {
     labelProps
   } = useFieldContext();
   return React.createElement(StyledLabel, _extends$5({}, labelProps, {
-    onClick: composeEventHandlers$2(onClick, labelProps?.onClick),
-    onMouseEnter: composeEventHandlers$2(onMouseEnter, labelProps?.onMouseEnter),
-    onMouseLeave: composeEventHandlers$2(onMouseLeave, labelProps?.onMouseLeave)
+    onClick: composeEventHandlers$3(onClick, labelProps?.onClick),
+    onMouseEnter: composeEventHandlers$3(onMouseEnter, labelProps?.onMouseEnter),
+    onMouseLeave: composeEventHandlers$3(onMouseLeave, labelProps?.onMouseLeave)
   }, props, {
     ref: ref
   }));
@@ -27134,7 +27197,7 @@ const OptGroup = reactExports.forwardRef((_ref, ref) => {
   return React.createElement(StyledOption, _extends$5({
     isCompact: isCompact,
     $type: "group",
-    onMouseDown: composeEventHandlers$2(onMouseDown, handleMouseDown),
+    onMouseDown: composeEventHandlers$3(onMouseDown, handleMouseDown),
     role: "none"
   }, props, {
     ref: ref
@@ -36092,33 +36155,33 @@ const Datepicker = reactExports.forwardRef((props, calendarRef) => {
         ref(refValue);
         inputRef.current = refValue;
       },
-      onMouseDown: composeEventHandlers$2(childElement.props.onMouseDown, () => {
+      onMouseDown: composeEventHandlers$3(childElement.props.onMouseDown, () => {
         isInputMouseDownRef.current = true;
       }),
-      onMouseUp: composeEventHandlers$2(childElement.props.onMouseUp, () => {
+      onMouseUp: composeEventHandlers$3(childElement.props.onMouseUp, () => {
         setTimeout(() => {
           isInputMouseDownRef.current = false;
         }, 0);
       }),
-      onClick: composeEventHandlers$2(childElement.props.onClick, () => {
+      onClick: composeEventHandlers$3(childElement.props.onClick, () => {
         if (isInputMouseDownRef.current && !state.isOpen) {
           dispatch({
             type: 'OPEN'
           });
         }
       }),
-      onBlur: composeEventHandlers$2(childElement.props.onBlur, () => {
+      onBlur: composeEventHandlers$3(childElement.props.onBlur, () => {
         dispatch({
           type: 'CLOSE'
         });
       }),
-      onChange: composeEventHandlers$2(childElement.props.onChange, e => {
+      onChange: composeEventHandlers$3(childElement.props.onChange, e => {
         dispatch({
           type: 'MANUALLY_UPDATE_INPUT',
           value: e.target.value
         });
       }),
-      onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, e => {
+      onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, e => {
         switch (e.keyCode) {
           case KEY_CODES.ESCAPE:
           case KEY_CODES.ENTER:
@@ -36277,10 +36340,10 @@ const Start = props => {
   return React.cloneElement(childElement, {
     value: state.startInputValue || '',
     ref: startInputRef,
-    onChange: composeEventHandlers$2(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$2(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, onKeyDownCallback),
-    onBlur: composeEventHandlers$2(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$3(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$3(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, onKeyDownCallback),
+    onBlur: composeEventHandlers$3(childElement.props.onBlur, onBlurCallback)
   });
 };
 Start.displayName = 'DatepickerRange.Start';
@@ -36342,10 +36405,10 @@ const End = props => {
   return React.cloneElement(childElement, {
     value: state.endInputValue || '',
     ref: endInputRef,
-    onChange: composeEventHandlers$2(childElement.props.onChange, onChangeCallback),
-    onFocus: composeEventHandlers$2(childElement.props.onFocus, onFocusCallback),
-    onKeyDown: composeEventHandlers$2(childElement.props.onKeyDown, onKeydownCallback),
-    onBlur: composeEventHandlers$2(childElement.props.onBlur, onBlurCallback)
+    onChange: composeEventHandlers$3(childElement.props.onChange, onChangeCallback),
+    onFocus: composeEventHandlers$3(childElement.props.onFocus, onFocusCallback),
+    onKeyDown: composeEventHandlers$3(childElement.props.onKeyDown, onKeydownCallback),
+    onBlur: composeEventHandlers$3(childElement.props.onBlur, onBlurCallback)
   });
 };
 End.displayName = 'DatepickerRange.End';
@@ -36704,7 +36767,7 @@ const getCellUp = (matrix, rowIndex, colIndex, wrap) => {
 };
 const getId = (idPrefix, rowIndex, colIndex) => `${idPrefix}--R${rowIndex + 1}C${colIndex + 1}`;
 
-const GRID_KEYS = [KEYS$1.LEFT, KEYS$1.RIGHT, KEYS$1.UP, KEYS$1.DOWN, KEYS$1.HOME, KEYS$1.END];
+const GRID_KEYS = [KEYS$2.LEFT, KEYS$2.RIGHT, KEYS$2.UP, KEYS$2.DOWN, KEYS$2.HOME, KEYS$2.END];
 function useGrid(_ref) {
   let {
     rtl,
@@ -36719,7 +36782,7 @@ function useGrid(_ref) {
     defaultColIndex
   } = _ref;
   const doc = environment || document;
-  const prefix = useId(idPrefix);
+  const prefix = useId$1(idPrefix);
   const [uncontrolledRowIndex, setUncontrolledRowIndex] = reactExports.useState(defaultRowIndex !== null && defaultRowIndex !== undefined ? defaultRowIndex : 0);
   const [uncontrolledColIndex, setUncontrolledColIndex] = reactExports.useState(defaultColIndex !== null && defaultColIndex !== undefined ? defaultColIndex : 0);
   const isControlled = controlledRowIndex !== null && controlledColIndex !== null && controlledRowIndex !== undefined && controlledColIndex !== undefined;
@@ -36783,23 +36846,23 @@ function useGrid(_ref) {
         let row = rowIndex;
         let col = colIndex;
         switch (event.key) {
-          case KEYS$1.RIGHT:
+          case KEYS$2.RIGHT:
             [row, col] = rtl ? getCellLeft(matrix, rowIndex, colIndex, wrap) : getCellRight(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.LEFT:
+          case KEYS$2.LEFT:
             [row, col] = rtl ? getCellRight(matrix, rowIndex, colIndex, wrap) : getCellLeft(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.DOWN:
+          case KEYS$2.DOWN:
             [row, col] = getCellDown(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.UP:
+          case KEYS$2.UP:
             [row, col] = getCellUp(matrix, rowIndex, colIndex, wrap);
             break;
-          case KEYS$1.HOME:
+          case KEYS$2.HOME:
             row = event.ctrlKey ? 0 : rowIndex;
             col = 0;
             break;
-          case KEYS$1.END:
+          case KEYS$2.END:
             {
               const rowCount = matrix.length;
               const lastRowIndex = rowCount - 1;
@@ -36822,8 +36885,8 @@ function useGrid(_ref) {
       id: getId(prefix, _rowIndex, _colIndex),
       role: role === null ? undefined : role,
       tabIndex: rowIndex === _rowIndex && colIndex === _colIndex ? 0 : -1,
-      onFocus: composeEventHandlers$2(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers$2(onKeyDown, handleKeyDown),
+      onFocus: composeEventHandlers$3(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers$3(onKeyDown, handleKeyDown),
       ...other
     };
   }, [matrix, rowIndex, colIndex, doc, prefix, isControlled, onChange, rtl, wrap]);

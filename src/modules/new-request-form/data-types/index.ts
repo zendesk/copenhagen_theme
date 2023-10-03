@@ -2,3 +2,5 @@ export * from "./Field";
 export * from "./TicketForm";
 export * from "./RequestForm";
 export * from "./EndUserCondition";
+export * from "./AttachmentsField";
+export * from "./HiddenField";
