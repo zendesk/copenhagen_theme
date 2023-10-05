@@ -37,6 +37,7 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
         onBlur={handleBlur}
         validation={error ? "error" : undefined}
         required={required}
+        autoComplete="cc-number"
       />
       {error && <Message validation="error">{error}</Message>}
     </GardenField>
