@@ -30,6 +30,36 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Hide Skip to Web Widget button if Web Widget is not present
+  const skipToWidgetButton = document.body.querySelector(".skip-to-web-widget");
+
+  let webWidgetLoadingCounter = 20;
+  let handleSkipToWidgetButtonIntervalId;
+  const handleSkipToWidgetButtonIntervalDuration = 500;
+
+  skipToWidgetButton.style.display = "none";
+
+  const handleSkipToWidgetButton = () => {
+    if ("zE" in window && window.zE("webWidget:get", "display") !== "hidden") {
+      skipToWidgetButton.addEventListener("click", () =>
+        window.zE(
+          window.zE.widget === "classic" ? "webWidget" : "messenger",
+          "open"
+        )
+      );
+      skipToWidgetButton.style.display = "inline-block";
+      clearInterval(handleSkipToWidgetButtonIntervalId);
+    }
+    if (webWidgetLoadingCounter-- <= 0) {
+      clearInterval(handleSkipToWidgetButtonIntervalId);
+    }
+  };
+
+  handleSkipToWidgetButtonIntervalId = setInterval(
+    handleSkipToWidgetButton,
+    handleSkipToWidgetButtonIntervalDuration
+  );
+
   // Toggles expanded aria to collapsible elements
   const collapsible = document.querySelectorAll(
     ".collapsible-nav, .collapsible-sidebar"
