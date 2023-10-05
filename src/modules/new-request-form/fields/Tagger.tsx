@@ -11,6 +11,7 @@ import {
   Option,
   OptGroup,
 } from "@zendeskgarden/react-dropdowns.next";
+import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import { useState } from "react";
 import { useNestedOptions } from "./useNestedOptions";
@@ -51,7 +52,10 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
 
   return (
     <GardenField>
-      <Label>{label}</Label>
+      <Label>
+        {label}
+        {required && <Span aria-hidden="true">*</Span>}
+      </Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
         inputProps={{ required, name }}
