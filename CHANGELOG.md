@@ -1,3 +1,10 @@
+## [3.1.5](https://github.com/zendesk/copenhagen_theme/compare/v3.1.4...v3.1.5) (2023-10-05)
+
+
+### Bug Fixes
+
+* added aria-current attribute to articles list ([3e98445](https://github.com/zendesk/copenhagen_theme/commit/3e9844593295bcffdaeba5a32a8ea6e82fa835fe))
+
 ## [3.1.4](https://github.com/zendesk/copenhagen_theme/compare/v3.1.3...v3.1.4) (2023-09-19)
 
 
