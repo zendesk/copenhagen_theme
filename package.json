@@ -15,11 +15,13 @@
   "dependencies": {
     "@types/dompurify": "3.0.2",
     "@zendeskgarden/container-grid": "^3.0.6",
+    "@zendeskgarden/react-accordions": "8.70.1",
     "@zendeskgarden/react-buttons": "8.70.1",
     "@zendeskgarden/react-datepickers": "8.70.1",
     "@zendeskgarden/react-dropdowns.next": "8.70.1",
     "@zendeskgarden/react-forms": "8.70.1",
     "@zendeskgarden/react-loaders": "8.70.1",
+    "@zendeskgarden/react-modals": "8.70.1",
     "@zendeskgarden/react-notifications": "8.70.1",
     "@zendeskgarden/react-tags": "8.70.1",
     "@zendeskgarden/react-theming": "8.70.1",

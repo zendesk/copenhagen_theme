@@ -42,8 +42,9 @@
 
   const parentId = "{{ parent_id }}";
   const locale = "{{ help_center.locale }}";
+  const answerBot = {{answer_bot.to_json}}
 
   const container = document.getElementById("new-request-form");
-  const props = { ticketForms, requestForm, parentId, locale, wysiwyg: true };
+  const props = { ticketForms, requestForm, answerBot, parentId, locale, wysiwyg: true };
   renderNewRequestForm(props, container);
 </script>

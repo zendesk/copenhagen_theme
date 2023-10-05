@@ -1,9 +1,7 @@
-import { ToastProvider } from "@zendeskgarden/react-notifications";
-import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
-import type { ReactNode } from "react";
+import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import { css } from "styled-components";
 
-let theme = DEFAULT_THEME;
+export let theme = DEFAULT_THEME;
 
 interface SetupGardenThemeProps {
   textColor: string;
@@ -43,13 +41,4 @@ export function setupGardenTheme({
       `,
     },
   };
-}
-
-export function ComponentProviders({ children }: { children: ReactNode }) {
-  return (
-    <ThemeProvider theme={theme}>
-      {/* ToastProvider z-index needs to be higher than the z-index of the admin navbar */}
-      <ToastProvider zIndex={2147483647}>{children}</ToastProvider>
-    </ThemeProvider>
-  );
 }

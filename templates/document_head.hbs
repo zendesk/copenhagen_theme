@@ -6,15 +6,16 @@
 {
   "imports": {
     "new-request-form": "{{asset 'new-request-form.js'}}",
-    "shared": "{{asset 'shared.js'}}",
+    "theming": "{{asset 'theming.js'}}",
     "vendor": "{{asset 'vendor.js'}}",
     "DatePicker": "{{asset 'DatePicker.js'}}",
-    "CcField": "{{asset 'CcField.js'}}"
+    "CcField": "{{asset 'CcField.js'}}",
+    "useModalContainer": "{{asset 'useModalContainer.js'}}"
   }
 }
 </script>
 <script type="module">
-    import { setupGardenTheme } from "shared";
+    import { setupGardenTheme } from "theming";
 
     setupGardenTheme({
       textColor: "{{settings.text_color}}",
