@@ -1,3 +1,11 @@
+## [3.1.6](https://github.com/zendesk/copenhagen_theme/compare/v3.1.5...v3.1.6) (2023-10-05)
+
+
+### Bug Fixes
+
+* **community-post-list-page:** use <ul> element to render the list of posts (a11y fix) ([ea1bd55](https://github.com/zendesk/copenhagen_theme/commit/ea1bd55519e632a0db01796079943a3864253a81))
+* **community-topic-page:** use <ul> element to render the list of posts (a11y fix) ([6ccd42d](https://github.com/zendesk/copenhagen_theme/commit/6ccd42dc2f449aafb2ebf0b8418988de88735f36))
+
 ## [3.1.5](https://github.com/zendesk/copenhagen_theme/compare/v3.1.4...v3.1.5) (2023-10-05)
 
 
