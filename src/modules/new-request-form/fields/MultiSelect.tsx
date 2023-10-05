@@ -63,6 +63,7 @@ export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
         validation={error ? "error" : undefined}
         onChange={handleChange}
         selectionValue={selectedValues}
+        maxHeight="auto"
       >
         {currentGroup.type === "SubGroup" && (
           <Option {...currentGroup.backOption} />
