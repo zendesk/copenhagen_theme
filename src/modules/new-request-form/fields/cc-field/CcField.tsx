@@ -13,6 +13,8 @@ import { focusStyles } from "@zendeskgarden/react-theming";
 import { useTagsInputContainer } from "./useTagsInputContainer";
 import { hideVisually } from "polished";
 import { useRef, useState } from "react";
+import { Tooltip } from "@zendeskgarden/react-tooltips";
+import AlertWarningStroke from "@zendeskgarden/svg-icons/src/12/alert-warning-stroke.svg";
 
 interface CcFieldProps {
   field: Field;
@@ -34,9 +36,12 @@ const Container = styled(FauxInput)`
   line-height: var(--line-height);
 `;
 
-const StyledTag = styled(Tag)`
+const GridCell = styled.span`
+  display: inline-block;
   margin-right: ${(props) => props.theme.space.sm};
+`;
 
+const StyledTag = styled(Tag)`
   ${(props) =>
     focusStyles({
       theme: props.theme,
@@ -108,6 +113,22 @@ export default function CcField({ field }: CcFieldProps): JSX.Element {
     },
   });
 
+  const renderTag = (index: number, isValid: boolean, email: string) => (
+    <StyledTag
+      size="large"
+      aria-label={`${email} - Press Backspace to remove`}
+      hue={isValid ? undefined : "red"}
+    >
+      {!isValid && (
+        <Tag.Avatar>
+          <AlertWarningStroke />
+        </Tag.Avatar>
+      )}
+      <span>{email}</span>
+      <Tag.Close {...getTagCloseProps(index)} />
+    </StyledTag>
+  );
+
   return (
     <GardenField>
       <Label>{label}</Label>
@@ -119,21 +140,16 @@ export default function CcField({ field }: CcFieldProps): JSX.Element {
               {tags.map((email, index) => {
                 const isValid = EMAIL_REGEX.test(email);
 
-                return (
-                  <span
-                    key={index}
-                    aria-invalid={!isValid}
-                    {...getGridCellProps(index)}
-                  >
-                    <StyledTag
-                      size="large"
-                      aria-label={`${email} - Press Backspace to remove`}
-                      hue={isValid ? undefined : "red"}
-                    >
-                      <span>{email}</span>
-                      <Tag.Close {...getTagCloseProps(index)} />
-                    </StyledTag>
-                  </span>
+                return isValid ? (
+                  <GridCell key={index} {...getGridCellProps(index)}>
+                    {renderTag(index, isValid, email)}
+                  </GridCell>
+                ) : (
+                  <Tooltip key={index} content="Invalid e-mail address">
+                    <GridCell {...getGridCellProps(index)}>
+                      {renderTag(index, isValid, email)}
+                    </GridCell>
+                  </Tooltip>
                 );
               })}
             </span>

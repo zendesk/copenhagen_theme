@@ -1,4 +1,4 @@
-import { r as reactExports, U as useGrid, j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, V as Tag, M as Message, s as styled, W as focusStyles, h as hideVisually, X as FauxInput, I as Input } from 'vendor';
+import { r as reactExports, U as useGrid, j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, k as Tooltip, M as Message, s as styled, V as focusStyles, h as hideVisually, W as Tag, X as SvgAlertWarningStroke, Y as FauxInput, I as Input } from 'vendor';
 
 function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueChange, inputRef, gridRowRef, i18n, }) {
     const [selectedIndex, setSelectedIndex] = reactExports.useState(0);
@@ -119,9 +119,11 @@ const Container = styled(FauxInput) `
   --line-height: ${(props) => props.theme.space.base * 8 + props.theme.space.base}px;
   line-height: var(--line-height);
 `;
-const StyledTag = styled(Tag) `
+const GridCell = styled.span `
+  display: inline-block;
   margin-right: ${(props) => props.theme.space.sm};
-
+`;
+const StyledTag = styled(Tag) `
   ${(props) => focusStyles({
     theme: props.theme,
     shadowWidth: "sm",
@@ -177,9 +179,10 @@ function CcField({ field }) {
             addedTags: (values) => `${values.join(", ")} have been added`,
         },
     });
+    const renderTag = (index, isValid, email) => (jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [!isValid && (jsxRuntimeExports.jsx(Tag.Avatar, { children: jsxRuntimeExports.jsx(SvgAlertWarningStroke, {}) })), jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }));
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container, { ...getContainerProps(), children: [tags.length > 0 && (jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
                                 const isValid = EMAIL_REGEX.test(email);
-                                return (jsxRuntimeExports.jsx("span", { "aria-invalid": !isValid, ...getGridCellProps(index), children: jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }) }, index));
+                                return isValid ? (jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }, index)) : (jsxRuntimeExports.jsx(Tooltip, { content: "Invalid e-mail address", children: jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }) }, index));
                             }) }) })), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
 }
 

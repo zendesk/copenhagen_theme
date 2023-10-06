@@ -162,7 +162,9 @@ export function useTagsInputContainer({
     getContainerProps,
     getGridProps,
     getGridRowProps,
-    getGridCellProps: <T extends HTMLElement>(index: number) =>
+    getGridCellProps: <T extends HTMLElement>(
+      index: number
+    ): HTMLAttributes<T> =>
       getGridCellProps<T>({
         rowIndex: 0,
         colIndex: index,
