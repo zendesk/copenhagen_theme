@@ -1,4 +1,4 @@
-import { r as reactExports, U as useGrid, j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, V as Tag, M as Message, s as styled, W as focusStyles, h as hideVisually, X as FauxInput, J as Ne, Y as getLineHeight, I as Input } from 'vendor';
+import { r as reactExports, U as useGrid, j as jsxRuntimeExports, F as Field, L as Label$1, H as Hint, V as Tag, M as Message, s as styled, W as focusStyles, h as hideVisually, X as FauxInput, I as Input } from 'vendor';
 
 function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueChange, inputRef, gridRowRef, i18n, }) {
     const [selectedIndex, setSelectedIndex] = reactExports.useState(0);
@@ -110,6 +110,14 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const Container = styled(FauxInput) `
   padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
+
+  // Removes white spaces for inline elements
+  font-size: 0;
+
+  // Same as height of Tag size="large" + base space (4px)
+  // to give some vertical space between tags
+  --line-height: ${(props) => props.theme.space.base * 8 + props.theme.space.base}px;
+  line-height: var(--line-height);
 `;
 const StyledTag = styled(Tag) `
   margin-right: ${(props) => props.theme.space.sm};
@@ -124,28 +132,20 @@ const InputWrapper = styled.div `
   display: inline-block;
   position: relative;
 `;
-const getInputHeightStyle = (props) => {
-    // Same as Tag size="large"
-    const height = props.theme.space.base * 8;
-    const fontSize = props.theme.fontSizes.md;
-    return Ne `
-    height: ${height}px;
-    font-size: ${fontSize};
-    line-height: ${getLineHeight(height, fontSize)};
-  `;
-};
 const InputMirror = styled(FauxInput) `
   display: inline-block;
   min-width: 200px;
   opacity: 0;
   user-select: none;
-  ${(props) => getInputHeightStyle(props)}
+  height: var(--line-height);
+  line-height: var(--line-height);
 `;
 const StyledInput = styled(Input) `
   position: absolute;
   top: 0;
   left: 0;
-  ${(props) => getInputHeightStyle(props)}
+  height: var(--line-height);
+  line-height: var(--line-height);
 
   // override CPH default style. Can be removed once global styles are removed
   &:focus {
@@ -177,10 +177,10 @@ function CcField({ field }) {
             addedTags: (values) => `${values.join(", ")} have been added`,
         },
     });
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container, { ...getContainerProps(), children: [jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container, { ...getContainerProps(), children: [tags.length > 0 && (jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
                                 const isValid = EMAIL_REGEX.test(email);
                                 return (jsxRuntimeExports.jsx("span", { "aria-invalid": !isValid, ...getGridCellProps(index), children: jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }) }, index));
-                            }) }) }), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
+                            }) }) })), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
 }
 
 export { CcField as default };
