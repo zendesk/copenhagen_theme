@@ -3,6 +3,7 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import replace from "@rollup/plugin-replace";
+import svgr from "@svgr/rollup";
 import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
 
@@ -43,6 +44,23 @@ export default defineConfig([
       replace({
         preventAssignment: true,
         "process.env.NODE_ENV": '"production"',
+      }),
+      svgr({
+        svgo: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: "preset-default",
+              params: {
+                overrides: {
+                  removeTitle: false,
+                  convertPathData: false,
+                  removeViewBox: false,
+                },
+              },
+            },
+          ],
+        },
       }),
       generateImportMap(),
     ],
