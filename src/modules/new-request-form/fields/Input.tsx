@@ -22,6 +22,9 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
   if (type === "integer") stepProp.step = "1";
   if (type === "decimal") stepProp.step = "any";
 
+  const autocomplete =
+    type === "anonymous_requester_email" ? "email" : undefined;
+
   return (
     <GardenField>
       <Label>
@@ -36,6 +39,7 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
         validation={error ? "error" : undefined}
         required={required}
         onChange={(e) => onChange(e.target.value)}
+        autoComplete={autocomplete}
         {...stepProp}
       />
       {error && <Message validation="error">{error}</Message>}
