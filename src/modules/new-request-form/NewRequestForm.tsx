@@ -9,7 +9,7 @@ import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
-import { useSubmitHandler } from "./useSubmitHandler";
+import { useFormSubmit } from "./useFormSubmit";
 import { Suspense, lazy, useState } from "react";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
@@ -21,6 +21,7 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
   requestForm: RequestForm;
+  wysiwyg: boolean;
   parentId: string;
   locale: string;
 }
@@ -41,6 +42,7 @@ const CcField = lazy(() => import("./fields/cc-field/CcField"));
 export function NewRequestForm({
   ticketForms,
   requestForm,
+  wysiwyg,
   parentId,
   locale,
 }: NewRequestFormProps) {
@@ -54,11 +56,14 @@ export function NewRequestForm({
     ticket_forms_instructions,
     parent_id_field,
     end_user_conditions,
+    attachments_field,
+    inline_attachments_fields,
+    description_mimetype_field,
   } = requestForm;
   const prefilledTicketFields = usePrefilledTicketFields(fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
-  const handleSubmit = useSubmitHandler(ticketFields);
+  const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
 
   function handleChange(field: Field, value: Field["value"]) {
     setTicketFields(
@@ -72,6 +77,7 @@ export function NewRequestForm({
 
   return (
     <Form
+      ref={formRefCallback}
       action={action}
       method={http_method}
       acceptCharset={accept_charset}
@@ -123,11 +129,27 @@ export function NewRequestForm({
               />
             );
           case "description":
+            return (
+              <>
+                <TextArea
+                  key={field.name}
+                  field={field}
+                  hasWysiwyg={wysiwyg}
+                  onChange={(value) => handleChange(field, value)}
+                />
+                <input
+                  type="hidden"
+                  name={description_mimetype_field.name}
+                  value={wysiwyg ? "text/html" : "text/plain"}
+                />
+              </>
+            );
           case "textarea":
             return (
               <TextArea
                 key={field.name}
                 field={field}
+                hasWysiwyg={false}
                 onChange={(value) => handleChange(field, value)}
               />
             );
@@ -187,12 +209,14 @@ export function NewRequestForm({
                 onChange={(value) => handleChange(field, value)}
               />
             );
-          case "attachments":
-            return <Attachments field={field} />;
           default:
             return <></>;
         }
       })}
+      {attachments_field && <Attachments field={attachments_field} />}
+      {inline_attachments_fields.map(({ type, name, value }, index) => (
+        <input key={index} type={type} name={name} value={value} />
+      ))}
       <Footer>
         {(ticketForms.length === 0 || ticket_form_field.value) && (
           <Button isPrimary type="submit">
