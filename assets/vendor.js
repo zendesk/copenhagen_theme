@@ -7040,7 +7040,7 @@ StyledGlobalAlertTitle.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-var _g$2$1, _circle$2$1;
+var _g$2$1, _circle$2$2;
 function _extends$5$3() { _extends$5$3 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5$3.apply(this, arguments); }
 var SvgAlertErrorStroke$2 = function SvgAlertErrorStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$5$3({
@@ -7060,7 +7060,7 @@ var SvgAlertErrorStroke$2 = function SvgAlertErrorStroke(props) {
   }), /*#__PURE__*/reactExports.createElement("path", {
     strokeLinecap: "round",
     d: "M7.5 4.5V9"
-  }))), _circle$2$1 || (_circle$2$1 = /*#__PURE__*/reactExports.createElement("circle", {
+  }))), _circle$2$2 || (_circle$2$2 = /*#__PURE__*/reactExports.createElement("circle", {
     cx: 7.5,
     cy: 12,
     r: 1,
@@ -7093,9 +7093,9 @@ var SvgCheckCircleStroke$2 = function SvgCheckCircleStroke(props) {
 };
 
 var _path$2$3, _circle$1$2;
-function _extends$3$3() { _extends$3$3 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$3.apply(this, arguments); }
-var SvgAlertWarningStroke$1 = function SvgAlertWarningStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$3({
+function _extends$3$4() { _extends$3$4 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$4.apply(this, arguments); }
+var SvgAlertWarningStroke$2 = function SvgAlertWarningStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$4({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
@@ -7146,7 +7146,7 @@ var SvgInfoStroke = function SvgInfoStroke(props) {
 const validationIcons = {
   success: SvgCheckCircleStroke$2,
   error: SvgAlertErrorStroke$2,
-  warning: SvgAlertWarningStroke$1,
+  warning: SvgAlertWarningStroke$2,
   info: SvgInfoStroke
 };
 const validationHues = {
@@ -7685,7 +7685,7 @@ const GlobalAlertComponent = reactExports.forwardRef((_ref, ref) => {
   }, props), {
     success: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgCheckCircleStroke$2, null)),
     error: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgAlertErrorStroke$2, null)),
-    warning: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgAlertWarningStroke$1, null)),
+    warning: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgAlertWarningStroke$2, null)),
     info: React.createElement(StyledGlobalAlertIcon, null, React.createElement(SvgInfoStroke, null))
   }[type], props.children));
 });
@@ -8588,7 +8588,7 @@ var SvgAlertErrorStroke$1 = function SvgAlertErrorStroke(props) {
 
 var _path$n, _circle$4;
 function _extends$r() { _extends$r = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r.apply(this, arguments); }
-var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
+var SvgAlertWarningStroke$1 = function SvgAlertWarningStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$r({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
@@ -8645,7 +8645,7 @@ const MessageIcon = _ref => {
   } else if (validation === 'success') {
     retVal = React.createElement(SvgCheckCircleStroke$1, props);
   } else if (validation === 'warning') {
-    retVal = React.createElement(SvgAlertWarningStroke, props);
+    retVal = React.createElement(SvgAlertWarningStroke$1, props);
   } else {
     retVal = React.cloneElement(reactExports.Children.only(children));
   }
@@ -9402,7 +9402,7 @@ StyledToggleMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-var _circle$2;
+var _circle$2$1;
 function _extends$m() { _extends$m = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$m.apply(this, arguments); }
 var SvgCircleSmFill = function SvgCircleSmFill(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$m({
@@ -9412,7 +9412,7 @@ var SvgCircleSmFill = function SvgCircleSmFill(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _circle$2 || (_circle$2 = /*#__PURE__*/reactExports.createElement("circle", {
+  }, props), _circle$2$1 || (_circle$2$1 = /*#__PURE__*/reactExports.createElement("circle", {
     cx: 8,
     cy: 8,
     r: 6,
@@ -11163,7 +11163,7 @@ var SvgFileImageStroke = function SvgFileImageStroke(props) {
   })));
 };
 
-var _path$4$1;
+var _path$4$2;
 function _extends$4$2() { _extends$4$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4$2.apply(this, arguments); }
 var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$4$2({
@@ -11173,7 +11173,7 @@ var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$4$1 || (_path$4$1 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$4$2 || (_path$4$2 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
@@ -11182,9 +11182,9 @@ var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
 };
 
 var _path$3$2;
-function _extends$3$2() { _extends$3$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$2.apply(this, arguments); }
+function _extends$3$3() { _extends$3$3 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$3.apply(this, arguments); }
 var SvgFileSpreadsheetStroke = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$2({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$3({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
@@ -25830,7 +25830,7 @@ function _extends$5$1() {
   return _extends$5$1.apply(this, arguments);
 }
 
-var _path$4;
+var _path$4$1;
 function _extends$4$1() { _extends$4$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4$1.apply(this, arguments); }
 var SvgChevronDownStroke$1 = function SvgChevronDownStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$4$1({
@@ -25840,7 +25840,7 @@ var SvgChevronDownStroke$1 = function SvgChevronDownStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$4 || (_path$4 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$4$1 || (_path$4$1 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "currentColor",
     d: "M12.688 5.61a.5.5 0 01.69.718l-.066.062-5 4a.5.5 0 01-.542.054l-.082-.054-5-4a.5.5 0 01.55-.83l.074.05L8 9.359l4.688-3.75z"
   })));
@@ -27048,9 +27048,9 @@ Message.propTypes = {
 };
 
 var _path$3$1;
-function _extends$3$1() { _extends$3$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$1.apply(this, arguments); }
+function _extends$3$2() { _extends$3$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$3$2.apply(this, arguments); }
 var SvgPlusStroke = function SvgPlusStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$1({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$3$2({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
@@ -34317,7 +34317,7 @@ StyledHeader$2.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-var _g, _circle$1;
+var _g, _circle$2;
 function _extends$1$2() { _extends$1$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1$2.apply(this, arguments); }
 var SvgAlertErrorStroke = function SvgAlertErrorStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$1$2({
@@ -34337,7 +34337,7 @@ var SvgAlertErrorStroke = function SvgAlertErrorStroke(props) {
   }), /*#__PURE__*/reactExports.createElement("path", {
     strokeLinecap: "round",
     d: "M7.5 4.5V9"
-  }))), _circle$1 || (_circle$1 = /*#__PURE__*/reactExports.createElement("circle", {
+  }))), _circle$2 || (_circle$2 = /*#__PURE__*/reactExports.createElement("circle", {
     cx: 7.5,
     cy: 12,
     r: 1,
@@ -34815,7 +34815,7 @@ const Body$2 = reactExports.forwardRef((props, ref) => {
 });
 Body$2.displayName = 'Body';
 
-var _path$3;
+var _path$4;
 function _extends$5() { _extends$5 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
 var SvgXStroke = function SvgXStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$5({
@@ -34825,7 +34825,7 @@ var SvgXStroke = function SvgXStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$3 || (_path$3 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$4 || (_path$4 = /*#__PURE__*/reactExports.createElement("path", {
     stroke: "currentColor",
     strokeLinecap: "round",
     d: "M3 13L13 3m0 10L3 3"
@@ -35538,8 +35538,8 @@ function useAccordion(_ref) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function _extends$3() {
-  _extends$3 = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$3$1() {
+  _extends$3$1 = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -35550,7 +35550,7 @@ function _extends$3() {
     }
     return target;
   };
-  return _extends$3.apply(this, arguments);
+  return _extends$3$1.apply(this, arguments);
 }
 
 const COMPONENT_ID$k = 'accordions.step_content';
@@ -35966,7 +35966,7 @@ const useTimelineItemContext = () => {
   return context;
 };
 
-const SectionComponent = reactExports.forwardRef((props, ref) => React.createElement(StyledSection, _extends$3({
+const SectionComponent = reactExports.forwardRef((props, ref) => React.createElement(StyledSection, _extends$3$1({
   ref: ref
 }, props)));
 SectionComponent.displayName = 'Accordion.Section';
@@ -36035,7 +36035,7 @@ const HeaderComponent = reactExports.forwardRef((props, ref) => {
   }), [isHovered, otherTriggerProps]);
   return React.createElement(HeaderContext.Provider, {
     value: value
-  }, React.createElement(StyledHeader$1, _extends$3({
+  }, React.createElement(StyledHeader$1, _extends$3$1({
     isCollapsible: isCollapsible,
     isExpanded: isExpanded,
     isFocused: isFocused
@@ -36073,7 +36073,7 @@ const LabelComponent$1 = reactExports.forwardRef((props, ref) => {
     isHovered,
     otherTriggerProps
   } = useHeaderContext();
-  return React.createElement(StyledButton, _extends$3({
+  return React.createElement(StyledButton, _extends$3$1({
     ref: ref,
     isCompact: isCompact,
     isHovered: isHovered,
@@ -36099,7 +36099,7 @@ const PanelComponent = reactExports.forwardRef((_ref, ref) => {
   } = useAccordionContext();
   const sectionValue = useSectionContext();
   const isExpanded = expandedSections.includes(sectionValue);
-  return React.createElement(StyledPanel, _extends$3({
+  return React.createElement(StyledPanel, _extends$3$1({
     isAnimated: isAnimated,
     isBare: isBare,
     isCompact: isCompact,
@@ -36168,7 +36168,7 @@ const AccordionComponent = reactExports.forwardRef((_ref, ref) => {
   }), [level, isBare, isCompact, isAnimated, isCollapsible, getPanelProps, getHeaderProps, getTriggerProps, expandedSections]);
   return React.createElement(AccordionContext.Provider, {
     value: accordionContextValue
-  }, React.createElement(StyledAccordion, _extends$3({
+  }, React.createElement(StyledAccordion, _extends$3$1({
     ref: ref
   }, props), sectionChildren));
 });
@@ -36191,7 +36191,7 @@ const StepComponent = reactExports.forwardRef((_ref, ref) => {
   const {
     isHorizontal
   } = useStepperContext();
-  return React.createElement(StyledStep, _extends$3({
+  return React.createElement(StyledStep, _extends$3$1({
     ref: ref,
     isHorizontal: isHorizontal
   }, props), isHorizontal && React.createElement(StyledLine, null), children);
@@ -36199,7 +36199,7 @@ const StepComponent = reactExports.forwardRef((_ref, ref) => {
 StepComponent.displayName = 'Stepper.Step';
 const Step = StepComponent;
 
-var _path$2;
+var _path$3;
 function _extends$1$1() { _extends$1$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1$1.apply(this, arguments); }
 var SvgCheckSmStroke = function SvgCheckSmStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$1$1({
@@ -36209,7 +36209,7 @@ var SvgCheckSmStroke = function SvgCheckSmStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$2 || (_path$2 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$3 || (_path$3 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
@@ -36239,7 +36239,7 @@ const LabelComponent = reactExports.forwardRef((_ref, ref) => {
     isActive: isActive,
     isHorizontal: isHorizontal
   }, isCompleted ? React.createElement(SvgCheckSmStroke, iconProps) : stepIcon);
-  return React.createElement(StyledLabel, _extends$3({
+  return React.createElement(StyledLabel, _extends$3$1({
     ref: ref,
     isActive: isActive,
     isHorizontal: isHorizontal
@@ -36261,7 +36261,7 @@ const ContentComponent$1 = reactExports.forwardRef((props, ref) => {
     isActive,
     isHorizontal
   } = useStepContext();
-  return isHorizontal === false ? React.createElement(StyledContent, _extends$3({
+  return isHorizontal === false ? React.createElement(StyledContent, _extends$3$1({
     ref: ref,
     isActive: isActive
   }, props), React.createElement(StyledInnerContent, {
@@ -36285,7 +36285,7 @@ const StepperComponent = reactExports.forwardRef((_ref, ref) => {
   }), [activeIndex, isHorizontal]);
   return React.createElement(StepperContext.Provider, {
     value: stepperContext
-  }, React.createElement(StyledStepper, _extends$3({
+  }, React.createElement(StyledStepper, _extends$3$1({
     ref: ref,
     isHorizontal: isHorizontal
   }, props), reactExports.useMemo(() => reactExports.Children.toArray(children).filter(reactExports.isValidElement).map((child, index) => React.createElement(StepContext.Provider, {
@@ -36308,7 +36308,7 @@ Stepper.Content = Content$1;
 Stepper.Label = Label;
 Stepper.Step = Step;
 
-const OppositeContentComponent = reactExports.forwardRef((props, ref) => React.createElement(StyledOppositeContent, _extends$3({
+const OppositeContentComponent = reactExports.forwardRef((props, ref) => React.createElement(StyledOppositeContent, _extends$3$1({
   ref: ref
 }, props)));
 OppositeContentComponent.displayName = 'Timeline.OppositeContent';
@@ -36337,7 +36337,7 @@ const ItemComponent = reactExports.forwardRef((_ref, ref) => {
   });
   return React.createElement(TimelineItemContext.Provider, {
     value: value
-  }, React.createElement(StyledTimelineItem, _extends$3({
+  }, React.createElement(StyledTimelineItem, _extends$3$1({
     ref: ref,
     isAlternate: isAlternate,
     hasOppositeContent: hasOppositeContent
@@ -36346,7 +36346,7 @@ const ItemComponent = reactExports.forwardRef((_ref, ref) => {
 ItemComponent.displayName = 'Timeline.Item';
 const Item = ItemComponent;
 
-var _circle;
+var _circle$1;
 function _extends$4() { _extends$4 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$4.apply(this, arguments); }
 var SvgCircleFullStroke = function SvgCircleFullStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$4({
@@ -36356,7 +36356,7 @@ var SvgCircleFullStroke = function SvgCircleFullStroke(props) {
     focusable: "false",
     viewBox: "0 0 12 12",
     "aria-hidden": "true"
-  }, props), _circle || (_circle = /*#__PURE__*/reactExports.createElement("circle", {
+  }, props), _circle$1 || (_circle$1 = /*#__PURE__*/reactExports.createElement("circle", {
     cx: 6,
     cy: 6,
     r: 4.5,
@@ -36372,7 +36372,7 @@ const ContentComponent = reactExports.forwardRef((props, ref) => {
   } = useTimelineItemContext();
   return React.createElement(React.Fragment, null, React.createElement(StyledSeparator, null, React.createElement(StyledItemIcon, {
     surfaceColor: surfaceColor
-  }, icon || React.createElement(SvgCircleFullStroke, null))), React.createElement(StyledTimelineContent, _extends$3({
+  }, icon || React.createElement(SvgCircleFullStroke, null))), React.createElement(StyledTimelineContent, _extends$3$1({
     ref: ref
   }, props)));
 });
@@ -36389,7 +36389,7 @@ const TimelineComponent = reactExports.forwardRef((_ref, ref) => {
   }), [isAlternate]);
   return React.createElement(TimelineContext.Provider, {
     value: value
-  }, React.createElement(StyledTimeline, _extends$3({
+  }, React.createElement(StyledTimeline, _extends$3$1({
     ref: ref
   }, props)));
 });
@@ -41099,7 +41099,7 @@ var SvgChevronLeftStroke = function SvgChevronLeftStroke(props) {
   })));
 };
 
-var _path;
+var _path$2;
 function _extends$1() { _extends$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 var SvgChevronRightStroke = function SvgChevronRightStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$1({
@@ -41109,7 +41109,7 @@ var SvgChevronRightStroke = function SvgChevronRightStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path || (_path = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$2 || (_path$2 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "currentColor",
     d: "M5.61 3.312a.5.5 0 01.718-.69l.062.066 4 5a.5.5 0 01.054.542l-.054.082-4 5a.5.5 0 01-.83-.55l.05-.074L9.359 8l-3.75-4.688z"
   })));
@@ -41749,8 +41749,8 @@ const End = props => {
 };
 End.displayName = 'DatepickerRange.End';
 
-function _extends() {
-  _extends = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$3() {
+  _extends$3 = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -41761,7 +41761,7 @@ function _extends() {
     }
     return target;
   };
-  return _extends.apply(this, arguments);
+  return _extends$3.apply(this, arguments);
 }
 
 const Month = reactExports.forwardRef((_ref, ref) => {
@@ -42000,7 +42000,7 @@ const Calendar = reactExports.forwardRef((props, ref) => {
   const {
     state
   } = useDatepickerContext();
-  return React.createElement(StyledRangeCalendar, _extends({
+  return React.createElement(StyledRangeCalendar, _extends$3({
     ref: ref,
     "data-garden-id": "datepickers.range",
     "data-garden-version": '8.70.1'
@@ -42246,4 +42246,25 @@ function useGrid(_ref) {
   environment: PropTypes.any
 });
 
-export { $e as $, Anchor as A, Body$2 as B, Combobox as C, Close$2 as D, reactDomExports as E, Field$1 as F, DEFAULT_THEME as G, Hint$1 as H, Input as I, Ne as J, ThemeProvider as K, Label$1$1 as L, Message$1 as M, Notification as N, Option as O, Progress as P, ToastProvider as Q, Datepicker as R, Span as S, Textarea as T, useGrid as U, Tag$1 as V, focusStyles as W, FauxInput as X, getLineHeight as Y, Field as a, Label$2 as b, Hint as c, Message as d, Checkbox as e, OptGroup as f, FileList as g, hideVisually as h, File as i, jsxRuntimeExports as j, Tooltip as k, Title$2 as l, Close$5 as m, useDropzone as n, FileUpload as o, purify as p, Header$1 as q, reactExports as r, styled as s, Footer$2 as t, useToast as u, Modal as v, Alert as w, Accordion as x, Paragraph$1 as y, Button as z };
+var _path, _circle;
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    viewBox: "0 0 12 12"
+  }, props), _path || (_path = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M5.06 1.27l-4.5 8.5c-.18.33.06.73.44.73h9c.38 0 .62-.4.44-.73l-4.5-8.5a.494.494 0 00-.88 0zM5.5 4v2"
+  })), _circle || (_circle = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 5.5,
+    cy: 8,
+    r: 0.8,
+    fill: "currentColor"
+  })));
+};
+
+export { $e as $, Anchor as A, Body$2 as B, Combobox as C, Close$2 as D, reactDomExports as E, Field$1 as F, DEFAULT_THEME as G, Hint$1 as H, Input as I, Ne as J, ThemeProvider as K, Label$1$1 as L, Message$1 as M, Notification as N, Option as O, Progress as P, ToastProvider as Q, Datepicker as R, Span as S, Textarea as T, useGrid as U, focusStyles as V, Tag$1 as W, SvgAlertWarningStroke as X, FauxInput as Y, Field as a, Label$2 as b, Hint as c, Message as d, Checkbox as e, OptGroup as f, FileList as g, hideVisually as h, File as i, jsxRuntimeExports as j, Tooltip as k, Title$2 as l, Close$5 as m, useDropzone as n, FileUpload as o, purify as p, Header$1 as q, reactExports as r, styled as s, Footer$2 as t, useToast as u, Modal as v, Alert as w, Accordion as x, Paragraph$1 as y, Button as z };

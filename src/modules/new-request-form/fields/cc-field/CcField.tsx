@@ -7,14 +7,14 @@ import {
   Label,
   Message,
 } from "@zendeskgarden/react-forms";
-import type { ThemeProps } from "styled-components";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Tag } from "@zendeskgarden/react-tags";
-import type { IGardenTheme } from "@zendeskgarden/react-theming";
-import { focusStyles, getLineHeight } from "@zendeskgarden/react-theming";
+import { focusStyles } from "@zendeskgarden/react-theming";
 import { useTagsInputContainer } from "./useTagsInputContainer";
 import { hideVisually } from "polished";
 import { useRef, useState } from "react";
+import { Tooltip } from "@zendeskgarden/react-tooltips";
+import AlertWarningStroke from "@zendeskgarden/svg-icons/src/12/alert-warning-stroke.svg";
 
 interface CcFieldProps {
   field: Field;
@@ -25,11 +25,23 @@ const EMAIL_REGEX =
 
 const Container = styled(FauxInput)`
   padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
+
+  // Removes white spaces for inline elements
+  font-size: 0;
+
+  // Same as height of Tag size="large" + base space (4px)
+  // to give some vertical space between tags
+  --line-height: ${(props) =>
+    props.theme.space.base * 8 + props.theme.space.base}px;
+  line-height: var(--line-height);
+`;
+
+const GridCell = styled.span`
+  display: inline-block;
+  margin-right: ${(props) => props.theme.space.sm};
 `;
 
 const StyledTag = styled(Tag)`
-  margin-right: ${(props) => props.theme.space.sm};
-
   ${(props) =>
     focusStyles({
       theme: props.theme,
@@ -43,30 +55,21 @@ const InputWrapper = styled.div`
   position: relative;
 `;
 
-const getInputHeightStyle = (props: ThemeProps<IGardenTheme>) => {
-  // Same as Tag size="large"
-  const height = props.theme.space.base * 8;
-  const fontSize = props.theme.fontSizes.md;
-  return css`
-    height: ${height}px;
-    font-size: ${fontSize};
-    line-height: ${getLineHeight(height, fontSize)};
-  `;
-};
-
 const InputMirror = styled(FauxInput)`
   display: inline-block;
   min-width: 200px;
   opacity: 0;
   user-select: none;
-  ${(props) => getInputHeightStyle(props)}
+  height: var(--line-height);
+  line-height: var(--line-height);
 `;
 
 const StyledInput = styled(Input)`
   position: absolute;
   top: 0;
   left: 0;
-  ${(props) => getInputHeightStyle(props)}
+  height: var(--line-height);
+  line-height: var(--line-height);
 
   // override CPH default style. Can be removed once global styles are removed
   &:focus {
@@ -110,35 +113,48 @@ export default function CcField({ field }: CcFieldProps): JSX.Element {
     },
   });
 
+  const renderTag = (index: number, isValid: boolean, email: string) => (
+    <StyledTag
+      size="large"
+      aria-label={`${email} - Press Backspace to remove`}
+      hue={isValid ? undefined : "red"}
+    >
+      {!isValid && (
+        <Tag.Avatar>
+          <AlertWarningStroke />
+        </Tag.Avatar>
+      )}
+      <span>{email}</span>
+      <Tag.Close {...getTagCloseProps(index)} />
+    </StyledTag>
+  );
+
   return (
     <GardenField>
       <Label>{label}</Label>
       {description && <Hint>{description}</Hint>}
       <Container {...getContainerProps()}>
-        <span {...getGridProps({ "aria-label": "Selected CC e-mails" })}>
-          <span ref={gridRowRef} {...getGridRowProps()}>
-            {tags.map((email, index) => {
-              const isValid = EMAIL_REGEX.test(email);
+        {tags.length > 0 && (
+          <span {...getGridProps({ "aria-label": "Selected CC e-mails" })}>
+            <span ref={gridRowRef} {...getGridRowProps()}>
+              {tags.map((email, index) => {
+                const isValid = EMAIL_REGEX.test(email);
 
-              return (
-                <span
-                  key={index}
-                  aria-invalid={!isValid}
-                  {...getGridCellProps(index)}
-                >
-                  <StyledTag
-                    size="large"
-                    aria-label={`${email} - Press Backspace to remove`}
-                    hue={isValid ? undefined : "red"}
-                  >
-                    <span>{email}</span>
-                    <Tag.Close {...getTagCloseProps(index)} />
-                  </StyledTag>
-                </span>
-              );
-            })}
+                return isValid ? (
+                  <GridCell key={index} {...getGridCellProps(index)}>
+                    {renderTag(index, isValid, email)}
+                  </GridCell>
+                ) : (
+                  <Tooltip key={index} content="Invalid e-mail address">
+                    <GridCell {...getGridCellProps(index)}>
+                      {renderTag(index, isValid, email)}
+                    </GridCell>
+                  </Tooltip>
+                );
+              })}
+            </span>
           </span>
-        </span>
+        )}
         <InputWrapper>
           {/* Used to automatically resize the input based on the content */}
           <InputMirror isBare aria-hidden="true" tabIndex={-1}>
