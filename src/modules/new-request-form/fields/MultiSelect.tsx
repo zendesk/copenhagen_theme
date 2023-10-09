@@ -10,7 +10,7 @@ import {
 } from "@zendeskgarden/react-dropdowns.next";
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNestedOptions } from "./useNestedOptions";
 
 interface MultiSelectProps {
@@ -28,6 +28,14 @@ export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
   const [selectedValues, setSelectValues] = useState<string[]>(
     (value as string[]) || []
   );
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (wrapperRef.current && required) {
+      const combobox = wrapperRef.current.querySelector("[role=combobox]");
+      combobox?.setAttribute("aria-required", "true");
+    }
+  }, [wrapperRef, required]);
 
   const handleChange: IComboboxProps["onChange"] = (changes) => {
     if (Array.isArray(changes.selectionValue)) {
@@ -57,6 +65,7 @@ export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
       </Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
+        ref={wrapperRef}
         isMultiselectable
         inputProps={{ required }}
         isEditable={false}

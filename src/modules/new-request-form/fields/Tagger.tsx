@@ -14,7 +14,7 @@ import {
 import styled from "styled-components";
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { hideVisually } from "polished";
 import { useNestedOptions } from "./useNestedOptions";
 
@@ -44,6 +44,14 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
 
   const selectionValue = (value as string | undefined) ?? "";
   const [isExpanded, setIsExpanded] = useState(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (wrapperRef.current && required) {
+      const combobox = wrapperRef.current.querySelector("[role=combobox]");
+      combobox?.setAttribute("aria-required", "true");
+    }
+  }, [wrapperRef, required]);
 
   const handleChange: IComboboxProps["onChange"] = (changes) => {
     if (
@@ -71,6 +79,7 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
       </Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
+        ref={wrapperRef}
         inputProps={{ required, name }}
         isEditable={false}
         validation={error ? "error" : undefined}
