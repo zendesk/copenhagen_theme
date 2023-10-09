@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { Span } from "@zendeskgarden/react-typography";
 import { hideVisually } from "polished";
 import type { Field } from "../data-types";
+import { useRef, useEffect } from "react";
 
 interface DropDownProps {
   field: Field;
@@ -31,6 +32,14 @@ const EmptyValue = () => (
 export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
   const selectionValue = value == null ? "" : value.toString();
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (wrapperRef.current && required) {
+      const combobox = wrapperRef.current.querySelector("[role=combobox]");
+      combobox?.setAttribute("aria-required", "true");
+    }
+  }, [wrapperRef, required]);
 
   return (
     <GardenField>
@@ -40,6 +49,7 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
       </Label>
       {description && <Hint>{description}</Hint>}
       <Combobox
+        ref={wrapperRef}
         inputProps={{ name, required }}
         isEditable={false}
         validation={error ? "error" : undefined}
