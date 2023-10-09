@@ -8,6 +8,7 @@ import {
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
+import type { ChangeEventHandler } from "react";
 import { useState } from "react";
 
 interface DatePickerProps {
@@ -43,6 +44,13 @@ export default function DatePicker({
     return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
   };
 
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    // Allow field to be cleared
+    if (e.target.value === "") {
+      setDate(undefined);
+    }
+  };
+
   return (
     <GardenField>
       <Label>
@@ -51,7 +59,7 @@ export default function DatePicker({
       </Label>
       {description && <Hint>{description}</Hint>}
       <GardenDatepicker value={date} onChange={handleChange} locale={locale}>
-        <Input required={required} lang={locale} />
+        <Input required={required} lang={locale} onChange={handleInputChange} />
       </GardenDatepicker>
       {error && <Message validation="error">{error}</Message>}
       <input type="hidden" name={name} value={formatDate(date)} />
