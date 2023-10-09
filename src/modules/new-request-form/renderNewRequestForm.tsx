@@ -1,5 +1,5 @@
 import { render } from "react-dom";
-import { ComponentProviders } from "../shared";
+import { ThemeProviders } from "../theming";
 import type { NewRequestFormProps } from "./NewRequestForm";
 import { NewRequestForm } from "./NewRequestForm";
 
@@ -8,9 +8,9 @@ export function renderNewRequestForm(
   container: HTMLElement
 ) {
   render(
-    <ComponentProviders>
+    <ThemeProviders>
       <NewRequestForm {...props} />
-    </ComponentProviders>,
+    </ThemeProviders>,
     container
   );
 }

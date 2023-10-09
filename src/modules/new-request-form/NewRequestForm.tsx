@@ -1,4 +1,4 @@
-import type { Field, RequestForm, TicketForm } from "./data-types";
+import type { AnswerBot, Field, RequestForm, TicketForm } from "./data-types";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -17,11 +17,13 @@ import { useEndUserConditions } from "./useEndUserConditions";
 import { CreditCard } from "./fields/CreditCard";
 import { Tagger } from "./fields/Tagger";
 import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
+import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 
 export interface NewRequestFormProps {
   ticketForms: TicketForm[];
   requestForm: RequestForm;
   wysiwyg: boolean;
+  answerBot: AnswerBot;
   parentId: string;
   locale: string;
 }
@@ -43,6 +45,7 @@ export function NewRequestForm({
   ticketForms,
   requestForm,
   wysiwyg,
+  answerBot,
   parentId,
   locale,
 }: NewRequestFormProps) {
@@ -76,154 +79,169 @@ export function NewRequestForm({
   }
 
   return (
-    <Form
-      ref={formRefCallback}
-      action={action}
-      method={http_method}
-      acceptCharset={accept_charset}
-      noValidate
-      onSubmit={handleSubmit}
-    >
-      {errors && <Alert type="error">{errors}</Alert>}
-      {parentId && <ParentTicketField field={parent_id_field} />}
-      {ticketForms.length > 0 && (
-        <TicketFormField
-          label={ticket_forms_instructions}
-          ticketFormField={ticket_form_field}
-          ticketForms={ticketForms}
-        />
-      )}
-      {visibleFields.map((field) => {
-        switch (field.type) {
-          case "subject":
-            return (
-              <>
+    <>
+      <Form
+        ref={formRefCallback}
+        action={action}
+        method={http_method}
+        acceptCharset={accept_charset}
+        noValidate
+        onSubmit={handleSubmit}
+      >
+        {errors && <Alert type="error">{errors}</Alert>}
+        {parentId && <ParentTicketField field={parent_id_field} />}
+        {ticketForms.length > 0 && (
+          <TicketFormField
+            label={ticket_forms_instructions}
+            ticketFormField={ticket_form_field}
+            ticketForms={ticketForms}
+          />
+        )}
+        {visibleFields.map((field) => {
+          switch (field.type) {
+            case "subject":
+              return (
+                <>
+                  <Input
+                    key={field.name}
+                    field={field}
+                    onChange={(value) => handleChange(field, value)}
+                  />
+                  <SuggestedArticles
+                    query={field.value as string | undefined}
+                    locale={locale}
+                  />
+                </>
+              );
+            case "anonymous_requester_email":
+            case "text":
+            case "integer":
+            case "decimal":
+            case "regexp":
+              return (
                 <Input
                   key={field.name}
                   field={field}
                   onChange={(value) => handleChange(field, value)}
                 />
-                <SuggestedArticles
-                  query={field.value as string | undefined}
-                  locale={locale}
+              );
+            case "partialcreditcard":
+              return (
+                <CreditCard
+                  field={field}
+                  onChange={(value) => handleChange(field, value)}
                 />
-              </>
-            );
-          case "anonymous_requester_email":
-          case "text":
-          case "integer":
-          case "decimal":
-          case "regexp":
-            return (
-              <Input
-                key={field.name}
-                field={field}
-                onChange={(value) => handleChange(field, value)}
-              />
-            );
-          case "partialcreditcard":
-            return (
-              <CreditCard
-                field={field}
-                onChange={(value) => handleChange(field, value)}
-              />
-            );
-          case "description":
-            return (
-              <>
+              );
+            case "description":
+              return (
+                <>
+                  <TextArea
+                    key={field.name}
+                    field={field}
+                    hasWysiwyg={wysiwyg}
+                    onChange={(value) => handleChange(field, value)}
+                  />
+                  <input
+                    type="hidden"
+                    name={description_mimetype_field.name}
+                    value={wysiwyg ? "text/html" : "text/plain"}
+                  />
+                </>
+              );
+            case "textarea":
+              return (
                 <TextArea
                   key={field.name}
                   field={field}
-                  hasWysiwyg={wysiwyg}
+                  hasWysiwyg={false}
                   onChange={(value) => handleChange(field, value)}
                 />
-                <input
-                  type="hidden"
-                  name={description_mimetype_field.name}
-                  value={wysiwyg ? "text/html" : "text/plain"}
+              );
+            case "organization_id":
+            case "priority":
+            case "tickettype":
+              return (
+                <DropDown
+                  key={field.name}
+                  field={field}
+                  onChange={(value) => handleChange(field, value)}
                 />
-              </>
-            );
-          case "textarea":
-            return (
-              <TextArea
-                key={field.name}
-                field={field}
-                hasWysiwyg={false}
-                onChange={(value) => handleChange(field, value)}
-              />
-            );
-          case "organization_id":
-          case "priority":
-          case "tickettype":
-            return (
-              <DropDown
-                key={field.name}
-                field={field}
-                onChange={(value) => handleChange(field, value)}
-              />
-            );
-          case "due_at": {
-            const isTask =
-              ticketFields.find((field) => field.type === "tickettype")
-                ?.value === "task";
+              );
+            case "due_at": {
+              const isTask =
+                ticketFields.find((field) => field.type === "tickettype")
+                  ?.value === "task";
 
-            return (
-              isTask && (
+              return (
+                isTask && (
+                  <Suspense fallback={<></>}>
+                    <DatePicker
+                      field={field}
+                      locale={locale}
+                      valueFormat="dateTime"
+                    />
+                  </Suspense>
+                )
+              );
+            }
+            case "cc_email":
+              return (
+                <Suspense fallback={<></>}>
+                  <CcField field={field} />
+                </Suspense>
+              );
+            case "checkbox":
+              return (
+                <Checkbox
+                  field={field}
+                  onChange={(value: boolean) => handleChange(field, value)}
+                />
+              );
+            case "date":
+              return (
                 <Suspense fallback={<></>}>
                   <DatePicker
                     field={field}
                     locale={locale}
-                    valueFormat="dateTime"
+                    valueFormat="date"
                   />
                 </Suspense>
-              )
-            );
+              );
+            case "multiselect":
+              return <MultiSelect field={field} />;
+            case "tagger":
+              return (
+                <Tagger
+                  key={field.name}
+                  field={field}
+                  onChange={(value) => handleChange(field, value)}
+                />
+              );
+            default:
+              return <></>;
           }
-          case "cc_email":
-            return (
-              <Suspense fallback={<></>}>
-                <CcField field={field} />
-              </Suspense>
-            );
-          case "checkbox":
-            return (
-              <Checkbox
-                field={field}
-                onChange={(value: boolean) => handleChange(field, value)}
-              />
-            );
-          case "date":
-            return (
-              <Suspense fallback={<></>}>
-                <DatePicker field={field} locale={locale} valueFormat="date" />
-              </Suspense>
-            );
-          case "multiselect":
-            return <MultiSelect field={field} />;
-          case "tagger":
-            return (
-              <Tagger
-                key={field.name}
-                field={field}
-                onChange={(value) => handleChange(field, value)}
-              />
-            );
-          default:
-            return <></>;
-        }
-      })}
-      {attachments_field && <Attachments field={attachments_field} />}
-      {inline_attachments_fields.map(({ type, name, value }, index) => (
-        <input key={index} type={type} name={name} value={value} />
-      ))}
-      <Footer>
-        {(ticketForms.length === 0 || ticket_form_field.value) && (
-          <Button isPrimary type="submit">
-            Submit
-          </Button>
+        })}
+        {attachments_field && <Attachments field={attachments_field} />}
+        {inline_attachments_fields.map(({ type, name, value }, index) => (
+          <input key={index} type={type} name={name} value={value} />
+        ))}
+        <Footer>
+          {(ticketForms.length === 0 || ticket_form_field.value) && (
+            <Button isPrimary type="submit">
+              Submit
+            </Button>
+          )}
+        </Footer>
+      </Form>
+      {answerBot.token &&
+        answerBot.articles.length > 0 &&
+        answerBot.request_id && (
+          <AnswerBotModal
+            token={answerBot.token}
+            articles={answerBot.articles}
+            requestId={answerBot.request_id}
+          />
         )}
-      </Footer>
-    </Form>
+    </>
   );
 }

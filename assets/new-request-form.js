@@ -1,5 +1,5 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, $ as $e, q as Alert, B as Button, t as reactDomExports } from 'vendor';
-import { ComponentProviders } from 'shared';
+import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, $ as $e, q as Header$1, t as Footer$2, v as Modal, w as Alert, B as Body$2, x as Accordion, y as Paragraph, z as Button, D as Close$2, E as reactDomExports } from 'vendor';
+import { u as useModalContainer, T as ThemeProviders } from 'useModalContainer';
 
 function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
@@ -313,11 +313,12 @@ function charRepeater(character, length) {
 }
 
 // NOTE: This is a temporary handling of the CSRF token
-const fetchCsrfToken$1 = async () => {
+async function fetchCsrfToken$1() {
     const response = await fetch("/hc/api/internal/csrf_token.json");
     const { current_session } = await response.json();
     return current_session.csrf_token;
-};
+}
+
 /**
  * This hook creates a ref callback used to override the submit method of the form
  * that uses the callback.
@@ -716,6 +717,99 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
     return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: "Suggested Articles" }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
 }
 
+const H2 = styled.h2 `
+  font-size: ${(props) => props.theme.fontSizes.lg};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  margin-bottom: 0;
+`;
+const H3 = styled.h3 `
+  font-size: ${(props) => props.theme.fontSizes.md};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+`;
+const StyledHeader = styled(Header$1) `
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.sm};
+`;
+const ArticleLink = styled(Anchor) `
+  display: inline-block;
+  margin-top: ${(props) => props.theme.space.sm};
+`;
+const StyledFooter = styled(Footer$2) `
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: ${(props) => props.theme.space.xl};
+`;
+const ButtonsContainer = styled.div `
+  display: flex;
+  gap: ${(props) => props.theme.space.sm};
+`;
+/**
+ * We are doing an old-school form submission here,
+ * so the server can redirect the user to the proper page and
+ * show a notification
+ */
+async function submitForm(action, data) {
+    const token = await fetchCsrfToken$1();
+    const allData = { ...data, authenticity_token: token };
+    const form = document.createElement("form");
+    form.method = "post";
+    form.action = action;
+    for (const [name, value] of Object.entries(allData)) {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+    }
+    document.body.appendChild(form);
+    form.submit();
+}
+function AnswerBotModal({ token, articles, requestId, }) {
+    const [expandedIndex, setExpandedIndex] = reactExports.useState(0);
+    const [alertMessage, setAlertMessage] = reactExports.useState("");
+    const modalContainer = useModalContainer();
+    /* To let screen readers read the notification on page load,
+       we need to add the Alert message after the page has been
+       loaded */
+    reactExports.useEffect(() => {
+        setTimeout(() => {
+            setAlertMessage("Your request was successfully submitted.");
+        }, 100);
+    }, []);
+    const getExpandedArticleId = () => {
+        return String(articles[expandedIndex]?.article_id);
+    };
+    const solveRequest = () => {
+        submitForm("/hc/answer_bot/solve", {
+            article_id: getExpandedArticleId(),
+            token,
+        });
+    };
+    const markArticleAsIrrelevant = () => {
+        submitForm("/hc/answer_bot/irrelevant", {
+            article_id: getExpandedArticleId(),
+            token,
+        });
+    };
+    const ignoreAnswerBot = () => {
+        submitForm("/hc/answer_bot/ignore", {
+            token,
+        });
+    };
+    return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: () => {
+            ignoreAnswerBot();
+        }, children: [jsxRuntimeExports.jsxs(StyledHeader, { children: [jsxRuntimeExports.jsx(Alert, { type: "success", children: alertMessage }), jsxRuntimeExports.jsx(H2, { children: "While you wait, do any of these articles answer your question?" })] }), jsxRuntimeExports.jsx(Body$2, { children: jsxRuntimeExports.jsx(Accordion, { level: 3, expandedSections: [expandedIndex], onChange: (index) => {
+                        setExpandedIndex(index);
+                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${token}`, target: "_blank", children: "View article" })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: "Does this article answer your question?" }), jsxRuntimeExports.jsxs("div", { children: ["If it does, we can close your recent request #", requestId] })] }), jsxRuntimeExports.jsxs(ButtonsContainer, { children: [jsxRuntimeExports.jsx(Button, { onClick: () => {
+                                    markArticleAsIrrelevant();
+                                }, children: "No, I need help" }), jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: () => {
+                                    solveRequest();
+                                }, children: "Yes, close my request" })] })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": "Close modal" })] }));
+}
+
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -726,7 +820,7 @@ const Footer = styled.div `
 `;
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
 const CcField = reactExports.lazy(() => import('CcField'));
-function NewRequestForm({ ticketForms, requestForm, wysiwyg, parentId, locale, }) {
+function NewRequestForm({ ticketForms, requestForm, wysiwyg, answerBot, parentId, locale, }) {
     const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const prefilledTicketFields = usePrefilledTicketFields(fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
@@ -737,49 +831,51 @@ function NewRequestForm({ ticketForms, requestForm, wysiwyg, parentId, locale, }
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
-                switch (field.type) {
-                    case "subject":
-                        return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
-                    case "anonymous_requester_email":
-                    case "text":
-                    case "integer":
-                    case "decimal":
-                    case "regexp":
-                        return (jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
-                    case "partialcreditcard":
-                        return (jsxRuntimeExports.jsx(CreditCard, { field: field, onChange: (value) => handleChange(field, value) }));
-                    case "description":
-                        return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: wysiwyg, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx("input", { type: "hidden", name: description_mimetype_field.name, value: wysiwyg ? "text/html" : "text/plain" })] }));
-                    case "textarea":
-                        return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
-                    case "organization_id":
-                    case "priority":
-                    case "tickettype":
-                        return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
-                    case "due_at": {
-                        const isTask = ticketFields.find((field) => field.type === "tickettype")
-                            ?.value === "task";
-                        return (isTask && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
-                    }
-                    case "cc_email":
-                        return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: field }) }));
-                    case "checkbox":
-                        return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
-                    case "date":
-                        return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
-                    case "multiselect":
-                        return jsxRuntimeExports.jsx(MultiSelect, { field: field });
-                    case "tagger":
-                        return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
-                    default:
-                        return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
-                }
-            }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticketForms.length === 0 || ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
+                        switch (field.type) {
+                            case "subject":
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
+                            case "anonymous_requester_email":
+                            case "text":
+                            case "integer":
+                            case "decimal":
+                            case "regexp":
+                                return (jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                            case "partialcreditcard":
+                                return (jsxRuntimeExports.jsx(CreditCard, { field: field, onChange: (value) => handleChange(field, value) }));
+                            case "description":
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: wysiwyg, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx("input", { type: "hidden", name: description_mimetype_field.name, value: wysiwyg ? "text/html" : "text/plain" })] }));
+                            case "textarea":
+                                return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
+                            case "organization_id":
+                            case "priority":
+                            case "tickettype":
+                                return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                            case "due_at": {
+                                const isTask = ticketFields.find((field) => field.type === "tickettype")
+                                    ?.value === "task";
+                                return (isTask && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
+                            }
+                            case "cc_email":
+                                return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: field }) }));
+                            case "checkbox":
+                                return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
+                            case "date":
+                                return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
+                            case "multiselect":
+                                return jsxRuntimeExports.jsx(MultiSelect, { field: field });
+                            case "tagger":
+                                return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                            default:
+                                return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+                        }
+                    }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticketForms.length === 0 || ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }), answerBot.token &&
+                answerBot.articles.length > 0 &&
+                answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }
 
 function renderNewRequestForm(props, container) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ComponentProviders, { children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 
 export { renderNewRequestForm };

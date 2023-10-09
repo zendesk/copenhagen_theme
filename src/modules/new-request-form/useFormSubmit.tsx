@@ -2,13 +2,7 @@ import type { FormEventHandler } from "react";
 import { useRef, useCallback } from "react";
 import type { Field } from "./data-types";
 import { redactCreditCard } from "./redactCreditCard";
-
-// NOTE: This is a temporary handling of the CSRF token
-const fetchCsrfToken = async () => {
-  const response = await fetch("/hc/api/internal/csrf_token.json");
-  const { current_session } = await response.json();
-  return current_session.csrf_token as string;
-};
+import { fetchCsrfToken } from "./fetchCsrfToken";
 
 interface UseFormSubmit {
   formRefCallback: (ref: HTMLFormElement) => void;
