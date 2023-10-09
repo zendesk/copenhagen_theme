@@ -20,7 +20,7 @@ const outputAudit = (
 }
 
 (async () => {
-  // TODO: If dev, check if ZAT is running
+  // TODO: If dev, check if zcli is running
   const isDev = process.argv[2] === "-d";
   const results = {
     stats: {},
@@ -34,7 +34,7 @@ const outputAudit = (
   // Build list of urls to audit
   if (!account.urls || account.urls.length === 0) {
     console.log(
-      "No urls were found in .zat or as env variable. Building urls from the API...",
+      "No urls were found in .a11yrc.json or as env variable. Building urls from the API...",
       "\n"
     );
     account.urls = await buildUrlsFromAPI(account);

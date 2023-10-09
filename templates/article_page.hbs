@@ -1,6 +1,6 @@
 <div class="container-divider"></div>
 <div class="container">
-  <nav class="sub-nav">
+  <div class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
@@ -9,7 +9,7 @@
       </svg>
       {{search scoped=settings.scoped_kb_search submit=false}}
     </div>
-  </nav>
+  </div>
 
   <div class="article-container" id="article-container">
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
@@ -30,7 +30,11 @@
             <ul>
               {{#each section.articles}}
                 <li>
-                  <a href="{{url}}" class="sidenav-item {{#is id ../article.id}}current-article{{/is}}">{{title}}</a>
+                  <a href="{{url}}" 
+                     class="sidenav-item {{#is id ../article.id}}current-article{{/is}}"
+                     {{#is id ../article.id}}aria-current="page"{{/is}}>
+                       {{title}}
+                  </a>
                 </li>
               {{/each}}
             </ul>
@@ -148,7 +152,7 @@
         </div>
         {{#with article}}
           <div class="article-votes">
-            <span class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</span>
+            <h2 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h2>
             <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
               {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
               {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}

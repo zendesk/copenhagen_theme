@@ -1,6 +1,6 @@
 <div class="container-divider"></div>
 <div class="container">
-   <nav class="sub-nav">
+   <div class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
@@ -9,7 +9,7 @@
       </svg>
       {{search scoped=settings.scoped_community_search submit=false}}
     </div>
-  </nav>
+  </div>
 
   <header class="page-header">
     <h1>
@@ -70,52 +70,60 @@
   </div>
 
   <div id="main-content" class="posts-list striped-list">
-    {{#each posts}}
-      <section role="region" aria-labelledby="title-{{id}}">
-        <div class="striped-list-item {{#if featured}}post-featured{{/if}}">
-          <span class="striped-list-info">
-            <a href="{{url}}" id="title-{{id}}" class="striped-list-title">{{title}}</a>
-            <span class="post-overview-item">
-              {{#if pinned}}
-                <span class="status-label status-label-pinned">{{t 'pinned'}}</span>
-              {{/if}}
+    {{#if posts}}
+      <ul>
+        {{#each posts}}
+          <li>
+            <section role="region" aria-labelledby="title-{{id}}" class="striped-list-item {{#if featured}}post-featured{{/if}}">
+              <span class="striped-list-info">
+                <a href="{{url}}" id="title-{{id}}" class="striped-list-title">{{title}}</a>
+                <span class="post-overview-item">
+                  {{#if pinned}}
+                    <span class="status-label status-label-pinned">{{t 'pinned'}}</span>
+                  {{/if}}
 
-              {{#if featured}}
-                <span class="status-label status-label-featured">{{t 'featured'}}</span>
-              {{/if}}
+                  {{#if featured}}
+                    <span class="status-label status-label-featured">{{t 'featured'}}</span>
+                  {{/if}}
 
-              {{#is status 'none'}}
-              {{else}}
-                <span class="status-label-{{status_dasherized}} status-label striped-list-status">{{status_name}}</span>
-              {{/is}}
-            </span>
+                  {{#is status 'none'}}
+                  {{else}}
+                    <span class="status-label-{{status_dasherized}} status-label striped-list-status">{{status_name}}</span>
+                  {{/is}}
+                </span>
 
-            <div class="meta-group">
-              <span class="meta-data">{{author.name}}</span>
-              {{#if editor}}
-                <span class="meta-data">{{date edited_at timeago=true}}</span>
-                <span class="meta-data">{{t 'edited'}}</span>
-              {{else}}
-                <span class="meta-data">{{date created_at timeago=true}}</span>
-              {{/if}}
-            </div>
-          </span>
+                <div class="meta-group">
+                  <span class="meta-data">{{author.name}}</span>
+                  {{#if editor}}
+                    <span class="meta-data">{{date edited_at timeago=true}}</span>
+                    <span class="meta-data">{{t 'edited'}}</span>
+                  {{else}}
+                    <span class="meta-data">{{date created_at timeago=true}}</span>
+                  {{/if}}
+                </div>
+              </span>
 
-          <div class="post-overview-count striped-list-count">
-            <span class="striped-list-count-item">
-              <span class="striped-list-number">{{vote_sum}}</span>
-              {{t 'vote' count=vote_sum}}
-            </span>
-            <span class="striped-list-count-item">
-              <span class="striped-list-number">{{comment_count}}</span>
-              {{t 'comment' count=comment_count}}
-            </span>
-          </div>
-        </div>
-      </section>
-    {{/each}}
+              <div class="post-overview-count striped-list-count">
+                <span class="striped-list-count-item">
+                  <span class="striped-list-number">{{vote_sum}}</span>
+                  {{t 'vote' count=vote_sum}}
+                </span>
+                <span class="striped-list-count-item">
+                  <span class="striped-list-number">{{comment_count}}</span>
+                  {{t 'comment' count=comment_count}}
+                </span>
+              </div>
+            </section>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <div class="no-posts-with-filter">{{t 'no_posts_with_filter'}}</div>
+    {{/if}}
   </div>
+
   {{pagination}}
+
 </div>
 
 <section class="container community-footer">

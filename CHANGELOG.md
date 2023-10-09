@@ -1,3 +1,32 @@
+## [3.1.6](https://github.com/zendesk/copenhagen_theme/compare/v3.1.5...v3.1.6) (2023-10-05)
+
+
+### Bug Fixes
+
+* **community-post-list-page:** use <ul> element to render the list of posts (a11y fix) ([ea1bd55](https://github.com/zendesk/copenhagen_theme/commit/ea1bd55519e632a0db01796079943a3864253a81))
+* **community-topic-page:** use <ul> element to render the list of posts (a11y fix) ([6ccd42d](https://github.com/zendesk/copenhagen_theme/commit/6ccd42dc2f449aafb2ebf0b8418988de88735f36))
+
+## [3.1.5](https://github.com/zendesk/copenhagen_theme/compare/v3.1.4...v3.1.5) (2023-10-05)
+
+
+### Bug Fixes
+
+* added aria-current attribute to articles list ([3e98445](https://github.com/zendesk/copenhagen_theme/commit/3e9844593295bcffdaeba5a32a8ea6e82fa835fe))
+
+## [3.1.4](https://github.com/zendesk/copenhagen_theme/compare/v3.1.3...v3.1.4) (2023-09-19)
+
+
+### Bug Fixes
+
+* **article:** add aria-label to user navigation ([07f4b15](https://github.com/zendesk/copenhagen_theme/commit/07f4b15d98a22eb0deb7510208c0dac1792a02b9))
+
+## [3.1.3](https://github.com/zendesk/copenhagen_theme/compare/v3.1.2...v3.1.3) (2023-08-25)
+
+
+### Bug Fixes
+
+* **article:** make "Was this article helpful?" h2 ([bb5db8f](https://github.com/zendesk/copenhagen_theme/commit/bb5db8f222da1d0db1ae20b3a5ea331335698b53))
+
 ## [3.1.2](https://github.com/zendesk/copenhagen_theme/compare/v3.1.1...v3.1.2) (2023-08-03)
 
 

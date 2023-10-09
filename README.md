@@ -100,9 +100,8 @@ This will compile all the source code in `src` and `styles` and watch for change
 
 Notes:
 
-- We intentionally do not use babel so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
-- Both `style.css` and `script.js` (along with `assets`) are ignored as they'll be regenerated during release. Do not edit these directly.
-  - If you do want to test your changes by importing the branch in Theming Center, you'll need to manually add and commit these files, e.g. `git add -f script.js style.css`
+- We intentionally do not use babel when compiling `script.js` so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
+- Do not edit `style.css`, `script.js` and the files inside the `assets` folder directly. They are regenerated during release.
 - Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
 
 ## Assets
@@ -113,7 +112,7 @@ The Copenhagen theme doesn't have any assets, but you can add assets to your the
 We use a custom node script that runs [lighthouse](https://github.com/GoogleChrome/lighthouse) for automated accessibility testing.
 
 There are two ways of running the script:
-- **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `zat theme preview` to be running;
+- **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `zcli themes:preview` to be running;
 - **CI mode** - it runs the accessibility audits on the live theme of a specific account.
 
 Depending on the scope of testing, some manual testing might be needed in addition to the above.
@@ -121,29 +120,27 @@ Tools like [axe DevTools](https://www.deque.com/axe/devtools/), screen readers e
 
 ## Development mode
 
-To run the accessibility audits while changing the theme, one must first preview the changes on a specific account and then run the audits on that preview. To do so:
+To run the accessibility audits while changing the theme:
 
-1. Create a `.zat` file in the root folder (see [example](.zat.example));
-   1. Specify the account/subdomain to preview the theme;
+1. Start compiling and previewing changes like you normally would:
+
+```console
+$ yarn install
+$ yarn start
+```
+
+2. Create a `.a11yrc.json` file in the root folder (see [example](.a11yrc.json.example));
+   1. Specify the account/subdomain to preview the theme making sure it matches the active `zcli` profile
    2. Fill `username` and `password` with the credentials of an admin user;
    3. Specify which `urls` to test (if left empty, the script will test all urls);
-2. Preview the local changes by running the [theme preview command](https://support.zendesk.com/hc/en-us/articles/4408822095642):
 
-```console
-zat theme preview
-```
-
-3. In a separate console install node modules:
-
-```console
-yarn install
-```
-
-4. Then run the accessibility audits in development mode:
+3. In a separate console, run the accessibility audits in development mode:
 
 ```console
 yarn test-a11y -d
 ```
+
+A11y audits will then run on the preview started in step `1`.
 
 ## CI mode
 
