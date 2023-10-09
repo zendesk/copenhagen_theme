@@ -54,6 +54,26 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
             onInputValueChange("");
         }
     };
+    const handleInputChange = (e) => {
+        const currentValue = e.target.value;
+        /* On mobile browsers, the keyDown event doesn't provide the code
+          of the pressed key: https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode,
+          so we need to check for spaces or commas on the change event to let the user
+          adds a tag  */
+        const [tag, separator] = [
+            currentValue.slice(0, -1),
+            currentValue.slice(-1),
+        ];
+        if (separator === " " || separator === ",") {
+            if (tag.length > 0 && !hasTag(tag)) {
+                addTag(tag);
+            }
+            onInputValueChange("");
+        }
+        else {
+            onInputValueChange(currentValue);
+        }
+    };
     const handleInputPaste = (e) => {
         e.preventDefault();
         const data = e.clipboardData.getData("text");
@@ -83,7 +103,7 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
     });
     const getInputProps = () => ({
         value: inputValue,
-        onChange: (e) => onInputValueChange(e.target.value),
+        onChange: handleInputChange,
         onKeyDown: handleInputKeyDown,
         onPaste: handleInputPaste,
     });

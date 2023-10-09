@@ -6,6 +6,7 @@ import type {
   RefObject,
   HTMLAttributes,
   InputHTMLAttributes,
+  ChangeEventHandler,
 } from "react";
 import { useCallback, useState } from "react";
 import { useGrid } from "@zendeskgarden/container-grid";
@@ -104,6 +105,28 @@ export function useTagsInputContainer({
     }
   };
 
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const currentValue = e.target.value;
+
+    /* On mobile browsers, the keyDown event doesn't provide the code 
+      of the pressed key: https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode,
+      so we need to check for spaces or commas on the change event to let the user
+      adds a tag  */
+    const [tag, separator] = [
+      currentValue.slice(0, -1),
+      currentValue.slice(-1),
+    ];
+
+    if (separator === " " || separator === ",") {
+      if (tag.length > 0 && !hasTag(tag)) {
+        addTag(tag);
+      }
+      onInputValueChange("");
+    } else {
+      onInputValueChange(currentValue);
+    }
+  };
+
   const handleInputPaste: ClipboardEventHandler<HTMLInputElement> = (e) => {
     e.preventDefault();
 
@@ -148,7 +171,7 @@ export function useTagsInputContainer({
 
   const getInputProps = (): InputHTMLAttributes<HTMLInputElement> => ({
     value: inputValue,
-    onChange: (e) => onInputValueChange(e.target.value),
+    onChange: handleInputChange,
     onKeyDown: handleInputKeyDown,
     onPaste: handleInputPaste,
   });
