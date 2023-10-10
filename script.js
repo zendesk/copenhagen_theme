@@ -57,6 +57,12 @@
       });
     });
 
+    // remove aria-controls if it exists to fix an accessibility issue
+    const followButton = document.querySelector("#follow-menu-button");
+    if (followButton) {
+      followButton.removeAttribute("aria-controls");
+    }
+
     // If multibrand search has more than 5 help centers or categories collapse the list
     const multibrandFilterLists = document.querySelectorAll(
       ".multibrand-filter-list"
