@@ -1,6 +1,6 @@
 .sass-cache/
 style.css.map
 node_modules/
-.zat
+.a11yrc.json
 *.DS_Store
 coverage/
