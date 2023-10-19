@@ -189,8 +189,9 @@ template {
 body {
   background-color: $background_color;
   color: $text_color;
-  font-family: $text_font;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 15px;
+  font-weight: 400;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -647,6 +648,7 @@ ul {
 .logo span {
   margin: 0 10px;
   color: $brand_color;
+  font-weight: 600;
 }
 
 .logo a {
@@ -1252,10 +1254,10 @@ ul {
   }
 }
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+  background-color: $link_color;
 }
 .blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
-  color: $brand_text_color;
+  color: $text_color_dark;
   text-decoration: none;
 }
 .blocks-item-internal {
@@ -1291,7 +1293,9 @@ ul {
 }
 .blocks-item-title {
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 .blocks-item-description {
   margin: 0;
@@ -4551,6 +4555,7 @@ html[dir=rtl] .notification-left-aligned {
 }
 
 .dropdown-toggle {
+  color: aliceblue;
   cursor: pointer;
   background: none;
   border: 0;
