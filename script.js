@@ -1989,7 +1989,7 @@ async function handleFirmWare(id) {
     const [version, date] = versionData.version.split('_').slice(-2)
     // const [machineType, version, date] = versionData.version.split('_')
     if(!date) {
-        const packgeName =  firmwareData.url.split('/').pop().split('.').unshift()
+        const packgeName =  firmwareData.new_version.url.split('/').pop().split('.').unshift()
         date = packgeName.replace(/\.[^.]+$/, '').split('_').pop()
     }
     const formatedDate = formatDate(date)
