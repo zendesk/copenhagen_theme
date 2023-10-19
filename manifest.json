@@ -20,7 +20,7 @@
           "type": "color",
           "description": "brand_text_color_description",
           "label": "brand_text_color_label",
-          "value": "#aliceblue"
+          "value": "aliceblue"
         },
         {
           "identifier": "text_color",
