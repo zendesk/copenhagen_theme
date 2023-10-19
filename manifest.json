@@ -13,21 +13,21 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "aliceblue"
+          "value": "#F0F9F9"
         },
         {
           "identifier": "brand_text_color",
           "type": "color",
           "description": "brand_text_color_description",
           "label": "brand_text_color_label",
-          "value": "aliceblue"
+          "value": "#F0F9F9"
         },
         {
           "identifier": "text_color",
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "aliceblue"
+          "value": "#F0F9F9"
         },
         {
           "identifier": "text_color_dark",
