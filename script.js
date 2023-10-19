@@ -1986,7 +1986,7 @@ async function handleFirmWare(id) {
     const firmwareData = (await getFirewareResources(firmwareMap.get(key))).data
     if (!firmwareData) return ''
     const versionData = firmwareData.new_version
-    const [version, date] = versionData.version.split('_').slice(-2)
+    let [version, date] = versionData.version.split('_').slice(-2)
     // const [machineType, version, date] = versionData.version.split('_')
     if(!date) {
         const packageName =  firmwareData.new_version.url.split('/').pop()
