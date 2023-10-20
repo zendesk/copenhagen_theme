@@ -43,9 +43,10 @@
   outline: none;
   vertical-align: middle;
 
-  &:focus {
+  &:focus, &:hover {
     border: 1px solid $brand_color;
     text-decoration: none;
+    color: $text_color_dark;
   }
 }
 
