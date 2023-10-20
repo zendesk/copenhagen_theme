@@ -236,6 +236,7 @@ a:visited {
 }
 a:hover, a:active, a:focus {
   text-decoration: underline;
+  color: $hover_link_color;
 }
 
 input,
@@ -343,9 +344,9 @@ ul {
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .article-subscribe button, .section-subscribe button, .split-button button {
   background-color: transparent;
-  border: 1px solid $brand_color;
+  border: 1px solid $hover_link_color;
   border-radius: 4px;
-  color: $brand_color;
+  color: $hover_link_color;
   cursor: pointer;
   display: inline-block;
   font-size: 12px;
@@ -365,16 +366,16 @@ ul {
   }
 }
 .button:visited, .pagination-next-link:visited, .pagination-prev-link:visited, .pagination-first-link:visited, .pagination-last-link:visited, .subscriptions-subscribe button:visited, .requests-table-toolbar .organization-subscribe button:visited, .community-follow button:visited, .article-subscribe button:visited, .section-subscribe button:visited, .split-button button:visited {
-  color: $brand_color;
+  color: $hover_link_color;
 }
 .button:hover, .pagination-next-link:hover, .pagination-prev-link:hover, .pagination-first-link:hover, .pagination-last-link:hover, .subscriptions-subscribe button:hover, .requests-table-toolbar .organization-subscribe button:hover, .community-follow button:hover, .article-subscribe button:hover, .section-subscribe button:hover, .split-button button:hover, .button:active, .pagination-next-link:active, .pagination-prev-link:active, .pagination-first-link:active, .pagination-last-link:active, .subscriptions-subscribe button:active, .requests-table-toolbar .organization-subscribe button:active, .community-follow button:active, .article-subscribe button:active, .section-subscribe button:active, .split-button button:active, .button:focus, .pagination-next-link:focus, .pagination-prev-link:focus, .pagination-first-link:focus, .pagination-last-link:focus, .subscriptions-subscribe button:focus, .requests-table-toolbar .organization-subscribe button:focus, .community-follow button:focus, .article-subscribe button:focus, .section-subscribe button:focus, .split-button button:focus, .button.button-primary, .button-primary.pagination-next-link, .button-primary.pagination-prev-link, .button-primary.pagination-first-link, .button-primary.pagination-last-link, .subscriptions-subscribe button.button-primary, .subscriptions-subscribe button[data-selected=true], .requests-table-toolbar .organization-subscribe button.button-primary, .requests-table-toolbar .organization-subscribe button[data-selected=true], .community-follow button.button-primary, .article-subscribe button.button-primary, .article-subscribe button[data-selected=true], .section-subscribe button.button-primary, .section-subscribe button[data-selected=true], .split-button button.button-primary {
-  background-color: $brand_color;
-  color: $brand_text_color;
+  background-color: $hover_link_color;
+  color: $text_color_dark;
   text-decoration: none;
 }
 .button.button-primary:hover, .button-primary.pagination-next-link:hover, .button-primary.pagination-prev-link:hover, .button-primary.pagination-first-link:hover, .button-primary.pagination-last-link:hover, .subscriptions-subscribe button.button-primary:hover, .subscriptions-subscribe button[data-selected=true]:hover, .requests-table-toolbar .organization-subscribe button.button-primary:hover, .requests-table-toolbar .organization-subscribe button[data-selected=true]:hover, .community-follow button.button-primary:hover, .article-subscribe button.button-primary:hover, .article-subscribe button[data-selected=true]:hover, .section-subscribe button.button-primary:hover, .section-subscribe button[data-selected=true]:hover, .split-button button:hover, .button.button-primary:focus, .button-primary.pagination-next-link:focus, .button-primary.pagination-prev-link:focus, .button-primary.pagination-first-link:focus, .button-primary.pagination-last-link:focus, .subscriptions-subscribe button.button-primary:focus, .subscriptions-subscribe button[data-selected=true]:focus, .requests-table-toolbar .organization-subscribe button.button-primary:focus, .requests-table-toolbar .organization-subscribe button[data-selected=true]:focus, .community-follow button.button-primary:focus, .article-subscribe button.button-primary:focus, .article-subscribe button[data-selected=true]:focus, .section-subscribe button.button-primary:focus, .section-subscribe button[data-selected=true]:focus, .split-button button.button-primary:focus, .button.button-primary:active, .button-primary.pagination-next-link:active, .button-primary.pagination-prev-link:active, .button-primary.pagination-first-link:active, .button-primary.pagination-last-link:active, .subscriptions-subscribe button.button-primary:active, .subscriptions-subscribe button[data-selected=true]:active, .requests-table-toolbar .organization-subscribe button.button-primary:active, .requests-table-toolbar .organization-subscribe button[data-selected=true]:active, .community-follow button.button-primary:active, .article-subscribe button.button-primary:active, .article-subscribe button[data-selected=true]:active, .section-subscribe button.button-primary:active, .section-subscribe button[data-selected=true]:active, .split-button button.button-primary:active {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
+  background-color: $hover_link_color;
+  border-color: $text_color_dark;
 }
 .button[data-disabled], [data-disabled].pagination-next-link, [data-disabled].pagination-prev-link, [data-disabled].pagination-first-link, [data-disabled].pagination-last-link, .subscriptions-subscribe button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .community-follow button[data-disabled], .article-subscribe button[data-disabled], .section-subscribe button[data-disabled], .split-button button[data-disabled] {
   cursor: default;
@@ -382,7 +383,7 @@ ul {
 
 .button-large, input[type=submit] {
   cursor: pointer;
-  background-color: $brand_color;
+  background-color: $hover_link_color;
   border: 0;
   border-radius: 4px;
   color: $brand_text_color;
@@ -401,7 +402,7 @@ ul {
   color: $brand_text_color;
 }
 .button-large:hover, .button-large:active, .button-large:focus, input[type=submit]:hover, input[type=submit]:active, input[type=submit]:focus {
-  background-color: darken($brand_color, 20%);
+  background-color: darken($hover_link_color, 20%);
 }
 .button-large[disabled], input[type=submit][disabled] {
   background-color: #ddd;
@@ -647,7 +648,8 @@ ul {
 .logo span {
   margin: 0 10px;
   color: $brand_color;
-  font-weight: 600;
+  font-weight: 800;
+  font-size: 1.5em;
 }
 
 .logo a {
@@ -1237,7 +1239,7 @@ ul {
   }
 }
 .blocks-item {
-  border: 1px solid $brand_color;
+  border: 2px solid $hover_link_color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
@@ -1253,10 +1255,10 @@ ul {
   }
 }
 .blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
+  background-color: $text_color_dark;
 }
 .blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
-  color: $text_color_dark;
+  color: $brand_text_color;
   text-decoration: none;
 }
 .blocks-item-internal {
@@ -1273,7 +1275,7 @@ ul {
   color: $text_color;
 }
 .blocks-item-link {
-  color: $brand_color;
+  color: $hover_link_color;
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
@@ -1284,6 +1286,7 @@ ul {
 .blocks-item-link:visited, .blocks-item-link:hover, .blocks-item-link:active {
   color: inherit;
   text-decoration: none;
+  background-color: $text_color_dark;
 }
 .blocks-item-link:focus {
   outline: 0;
@@ -1293,8 +1296,8 @@ ul {
 .blocks-item-title {
   margin-bottom: 0;
   font-size: 20px;
-  font-weight: 800;
   text-transform: uppercase;
+  font-weight: 800;
 }
 .blocks-item-description {
   margin: 0;
@@ -2311,7 +2314,7 @@ ul {
 }
 
 .vote-voted:hover {
-  color: darken($brand_color, 20%);
+  color: darken($hover_link_color, 20%);
 }
 
 /***** Actions *****/
@@ -2449,13 +2452,13 @@ ul {
   color: $brand_text_color;
 }
 .community-follow button[data-selected=true]:hover {
-  background-color: darken($brand_color, 20%);
-  border-color: darken($brand_color, 20%);
+  background-color: darken($hover_link_color, 20%);
+  border-color: darken($hover_link_color, 20%);
 }
 .community-follow button::after {
-  border-left: 1px solid $brand_color;
+  border-left: 1px solid $hover_link_color;
   content: attr(data-follower-count);
-  color: $brand_color;
+  color: $hover_link_color;
   display: inline-block;
   font-family: $heading_font;
   margin-left: 15px;
@@ -2470,7 +2473,7 @@ ul {
 }
 [dir=rtl] .community-follow button::after {
   border-left: 0;
-  border-right: 1px solid $brand_color;
+  border-right: 1px solid $hover_link_color;
   margin: 0 10px 0 0;
   padding: 0 10px 0 0;
 }
@@ -4228,7 +4231,7 @@ ul {
   color: $text_color;
 }
 .search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
-  background-color: #e9ebed;
+  background-color: $text_color_dark;
   text-decoration: none;
 }
 .search-results-sidebar .sidenav-subitem {
@@ -4555,7 +4558,6 @@ html[dir=rtl] .notification-left-aligned {
 
 .dropdown-toggle {
   cursor: pointer;
-  color: $brand_color;
   background: none;
   border: 0;
   display: inline-block;

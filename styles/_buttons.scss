@@ -27,8 +27,8 @@
   &:active,
   &:focus,
   &.button-primary {
-    background-color: $brand_color;
-    color: $brand_text_color;
+    background-color: $hover_link_color;
+    color: $text_color_dark;
     text-decoration: none;
   }
 
@@ -36,8 +36,8 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: $hover-button-color;
-      border-color: $hover-button-color;
+      background-color: $hover_link_color;
+      border-color: $text_color_dark;
     }
   }
 

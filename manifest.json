@@ -1,5 +1,5 @@
 {
-  "name": "Copenhagen",
+  "name": "Kopenhagen",
   "author": "Zendesk",
   "version": "3.1.6",
   "api_version": 3,
@@ -13,21 +13,21 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#F0F9F9"
+          "value": "#E8EDEE"
         },
         {
           "identifier": "brand_text_color",
           "type": "color",
           "description": "brand_text_color_description",
           "label": "brand_text_color_label",
-          "value": "#F0F9F9"
+          "value": "#E8EDEE"
         },
         {
           "identifier": "text_color",
           "type": "color",
           "description": "text_color_description",
           "label": "text_color_label",
-          "value": "#F0F9F9"
+          "value": "#E8EDEE"
         },
         {
           "identifier": "text_color_dark",
@@ -41,21 +41,21 @@
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "#F5A623"
+          "value": "#FEB710"
         },
         {
           "identifier": "hover_link_color",
           "type": "color",
           "description": "hover_link_color_description",
           "label": "hover_link_color_label",
-          "value": "#F5A623"
+          "value": "#FCD888"
         },
         {
           "identifier": "visited_link_color",
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "#F5A623"
+          "value": "#FEB710"
         },
         {
           "identifier": "background_color",
