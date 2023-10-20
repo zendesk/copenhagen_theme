@@ -37,7 +37,7 @@
 
       &:hover,
       &.current {
-        background-color: #e9ebed;
+        background-color: $text_color_dark;
         text-decoration: none;
       }
     }
