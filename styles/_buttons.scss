@@ -55,7 +55,7 @@
   background-color: $button-color;
   border: 0;
   border-radius: 4px;
-  color: $brand_text_color;
+  color: $text_color_dark;
   font-size: 14px;
   line-height: 2.72;
   min-width: 190px;
@@ -63,7 +63,7 @@
   width: 100%;
 
   &:visited {
-    color: $brand_text_color;
+    color: $text_color_dark;
   }
 
   &:hover,

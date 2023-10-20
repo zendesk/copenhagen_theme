@@ -386,7 +386,7 @@ ul {
   background-color: $hover_link_color;
   border: 0;
   border-radius: 4px;
-  color: $brand_text_color;
+  color: $text_color_dark;
   font-size: 14px;
   line-height: 2.72;
   min-width: 190px;
@@ -399,7 +399,7 @@ ul {
   }
 }
 .button-large:visited, input[type=submit]:visited {
-  color: $brand_text_color;
+  color: $text_color_dark;
 }
 .button-large:hover, .button-large:active, .button-large:focus, input[type=submit]:hover, input[type=submit]:active, input[type=submit]:focus {
   background-color: darken($hover_link_color, 20%);
@@ -561,9 +561,10 @@ ul {
   outline: none;
   vertical-align: middle;
 }
-.form-field .nesty-input:focus {
+.form-field .nesty-input:focus, .form-field .nesty-input:hover {
   border: 1px solid $brand_color;
   text-decoration: none;
+  color: $text_color_dark;
 }
 
 .form-field .hc-multiselect-toggle {
