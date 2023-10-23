@@ -46,9 +46,15 @@
   }
 
   &-not-planned,
+  &-planned,
   &-closed {
-    background-color: #e9ebed;
-    color: $secondary-text-color;
+    background-color: #b8ddea;
+    color: $text_color_dark;
+  }
+
+  &-answered {
+    background-color: #48ff4e;
+    color: $text_color_dark;
   }
 
   &-pending,

@@ -5,6 +5,7 @@
   flex-shrink: 0; /*Avoid collapsing elements in Safari*/
 
   & button {
+    color: $brand_text_color;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;

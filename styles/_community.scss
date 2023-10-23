@@ -100,25 +100,25 @@
     position: relative;
     width: 100%;
 
-    &:hover { background-color: $brand_color; }
+    &:hover { background-color: $hover_link_color; }
 
     &:hover::after, &:focus::after {
-      border-color: $brand_text_color;
-      color: $brand_text_color;
+      border-color: $hover_link_color;
+      color: $text_color_dark;
     }
 
     &[data-selected="true"] {
-      background-color: $brand_color;
-      color: $brand_text_color;
+      background-color: $hover_link_color;
+      color: $text_color_dark;
 
       &::after {
-        border-left: 1px solid $brand_text_color;
-        color: $brand_text_color;
+        border-left: 1px solid $hover_link_color;
+        color: $text_color_dark;
       }
 
       &:hover {
-        background-color: $hover-button-color;
-        border-color: $hover-button-color;
+        background-color: $hover_link_color;
+        border-color: $text_color_dark;
       }
     }
 
