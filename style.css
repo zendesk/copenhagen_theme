@@ -2301,7 +2301,7 @@ ul {
   appearance: none;
   background-color: transparent;
   border: none;
-  color: lighten($text_color, 20%);
+  color: $brand_text_color;
   cursor: pointer;
   min-height: 35px;
   min-width: 35px;
@@ -2325,6 +2325,7 @@ ul {
   flex-shrink: 0; /*Avoid collapsing elements in Safari*/
 }
 .actions button {
+  color: $brand_text_color;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -2439,23 +2440,23 @@ ul {
   }
 }
 .community-follow button:hover {
-  background-color: $brand_color;
+  background-color: $hover_link_color;
 }
 .community-follow button:hover::after, .community-follow button:focus::after {
-  border-color: $brand_text_color;
-  color: $brand_text_color;
+  border-color: $hover_link_color;
+  color: $text_color_dark;
 }
 .community-follow button[data-selected=true] {
-  background-color: $brand_color;
-  color: $brand_text_color;
+  background-color: $hover_link_color;
+  color: $text_color_dark;
 }
 .community-follow button[data-selected=true]::after {
-  border-left: 1px solid $brand_text_color;
-  color: $brand_text_color;
+  border-left: 1px solid $hover_link_color;
+  color: $text_color_dark;
 }
 .community-follow button[data-selected=true]:hover {
-  background-color: darken($hover_link_color, 20%);
-  border-color: darken($hover_link_color, 20%);
+  background-color: $hover_link_color;
+  border-color: $text_color_dark;
 }
 .community-follow button::after {
   border-left: 1px solid $hover_link_color;
@@ -2589,9 +2590,13 @@ ul {
   left: 30px;
   right: auto;
 }
-.status-label-not-planned, .status-label-closed {
-  background-color: #e9ebed;
-  color: lighten($text_color, 20%);
+.status-label-not-planned, .status-label-planned, .status-label-closed {
+  background-color: #b8ddea;
+  color: $text_color_dark;
+}
+.status-label-answered {
+  background-color: #48ff4e;
+  color: $text_color_dark;
 }
 .status-label-pending, .status-label-pending-moderation {
   background-color: #1f73b7;
