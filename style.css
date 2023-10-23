@@ -1243,7 +1243,7 @@ ul {
   border: 2px solid $hover_link_color;
   border-radius: 4px;
   box-sizing: border-box;
-  color: $brand_color;
+  color: $hover_link_color;
   display: flex;
   flex: 1 0 340px;
   margin: 0 0 30px;
@@ -2365,6 +2365,7 @@ ul {
 .community-header .title {
   margin-bottom: 0;
   font-size: 16px;
+  color: $brand_text_color;
 }
 
 .post-to-community {
@@ -2567,9 +2568,6 @@ ul {
 }
 .status-label:hover, .status-label:active, .status-label:focus {
   text-decoration: none;
-}
-.status-label-pinned, .status-label-featured, .status-label-official {
-  background-color: $brand_color;
 }
 .status-label-official {
   border-radius: 0;
@@ -4558,6 +4556,7 @@ html[dir=rtl] .notification-left-aligned {
 }
 
 .dropdown-toggle {
+  color: $brand_text_color;
   cursor: pointer;
   background: none;
   border: 0;
