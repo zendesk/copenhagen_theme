@@ -428,12 +428,12 @@ ul {
 }
 
 .split-button button {
-  background-color: $brand_color;
+  background-color: $hover_link_color;
   border: 0;
-  color: $brand_text_color;
+  color: $text_color_dark;
   height: 32px;
   line-height: 16px;
-  outline-color: $brand_color;
+  outline-color: $hover_link_color;
 }
 
 [dir=rtl] .split-button button:not(:only-child):first-child {
@@ -1288,6 +1288,7 @@ ul {
   color: inherit;
   text-decoration: none;
   background-color: $text_color_dark;
+  box-shadow: 0 0 20px 3px $link_color;
 }
 .blocks-item-link:focus {
   outline: 0;

@@ -9,12 +9,12 @@
 
 .split-button button {
   @extend .button;
-  background-color: $brand_color;
+  background-color: $hover_link_color;
   border: 0;
-  color: $brand_text_color;
+  color: $text_color_dark;
   height: 32px;
   line-height: 16px;
-  outline-color: $brand_color;
+  outline-color: $hover_link_color;
 }
 
 .split-button button:not(:only-child) {
