@@ -1,4 +1,5 @@
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import { createRef, useEffect } from "react";
 import {
   Combobox,
   Field as GardenField,
@@ -14,11 +15,15 @@ interface TicketFormFieldProps {
   ticketForms: TicketForm[];
 }
 
+const key = "return-focus-to-ticket-form-field";
+
 export function TicketFormField({
   label,
   ticketFormField,
   ticketForms,
 }: TicketFormFieldProps) {
+  const ref = createRef<HTMLDivElement>();
+
   const handleChange: IComboboxProps["onChange"] = ({ selectionValue }) => {
     if (selectionValue && typeof selectionValue === "string") {
       const newUrl = new URL(window.location.origin + selectionValue);
@@ -30,9 +35,20 @@ export function TicketFormField({
         newUrl.searchParams.append(key, value);
       }
 
+      sessionStorage.setItem(key, "true");
+
       window.location.href = newUrl.toString();
     }
   };
+
+  useEffect(() => {
+    if (sessionStorage.getItem(key)) {
+      sessionStorage.removeItem(key);
+      // return focus to the ticket form field dropdown
+      // after the page reloads for better a11y
+      (ref.current?.firstChild as HTMLElement)?.focus();
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <>
@@ -44,7 +60,7 @@ export function TicketFormField({
       {ticketForms.length > 1 && (
         <GardenField>
           <Label>{label}</Label>
-          <Combobox isEditable={false} onChange={handleChange}>
+          <Combobox isEditable={false} onChange={handleChange} ref={ref}>
             {ticketForms.map(({ id, url, display_name }) => (
               <Option
                 key={id}

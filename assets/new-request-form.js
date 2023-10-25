@@ -250,6 +250,8 @@ function MultiSelect({ field }) {
 }
 
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
+    const key = ticketFormField.name;
+    const ref = reactExports.createRef();
     const handleChange = ({ selectionValue }) => {
         if (selectionValue && typeof selectionValue === "string") {
             const newUrl = new URL(window.location.origin + selectionValue);
@@ -258,10 +260,19 @@ function TicketFormField({ label, ticketFormField, ticketForms, }) {
             for (const [key, value] of currentSearchParams) {
                 newUrl.searchParams.append(key, value);
             }
+            sessionStorage.setItem(key, crypto.randomUUID());
             window.location.href = newUrl.toString();
         }
     };
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: ticketFormField.name, value: ticketFormField.value }), ticketForms.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, children: ticketForms.map(({ id, url, display_name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: display_name, isSelected: ticketFormField.value === id, children: display_name }, id))) })] }))] }));
+    reactExports.useEffect(() => {
+        if (sessionStorage.getItem(key)) {
+            sessionStorage.removeItem(key);
+            // return focus to the ticket form field dropdown
+            // after the page reloads for better a11y
+            ref.current?.firstChild?.focus();
+        }
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: ticketFormField.name, value: ticketFormField.value }), ticketForms.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, ref: ref, children: ticketForms.map(({ id, url, display_name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: display_name, isSelected: ticketFormField.value === id, children: display_name }, id))) })] }))] }));
 }
 
 function ParentTicketField({ field, }) {
