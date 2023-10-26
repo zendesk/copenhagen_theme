@@ -1979,7 +1979,7 @@ ul {
 }
 
 .share a {
-  color: lighten($text_color, 20%);
+  color: $link_color;
 }
 .share a:hover {
   text-decoration: none;
