@@ -67,7 +67,12 @@ export function usePrefilledTicketFields(fields: Field[]): Field[] {
       case "partialcreditcard":
         continue;
       case "multiselect":
-        field.value = JSON.stringify(sanitizedValue.split(","));
+        field.value = sanitizedValue
+          .split(",")
+          // filter out prefilled options that don't exist
+          .filter((value) =>
+            field.options.some((option) => option.value === value)
+          );
         break;
       case "checkbox":
         if (ALLOWED_BOOLEAN_VALUES.includes(sanitizedValue)) {

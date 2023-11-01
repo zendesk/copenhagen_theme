@@ -249,8 +249,8 @@ function MultiSelect({ field }) {
     return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, maxHeight: "auto", children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
+const key = "return-focus-to-ticket-form-field";
 function TicketFormField({ label, ticketFormField, ticketForms, }) {
-    const key = ticketFormField.name;
     const ref = reactExports.createRef();
     const handleChange = ({ selectionValue }) => {
         if (selectionValue && typeof selectionValue === "string") {
@@ -260,7 +260,7 @@ function TicketFormField({ label, ticketFormField, ticketForms, }) {
             for (const [key, value] of currentSearchParams) {
                 newUrl.searchParams.append(key, value);
             }
-            sessionStorage.setItem(key, crypto.randomUUID());
+            sessionStorage.setItem(key, "true");
             window.location.href = newUrl.toString();
         }
     };
@@ -455,7 +455,10 @@ function usePrefilledTicketFields(fields) {
             case "partialcreditcard":
                 continue;
             case "multiselect":
-                field.value = JSON.stringify(sanitizedValue.split(","));
+                field.value = sanitizedValue
+                    .split(",")
+                    // filter out prefilled options that don't exist
+                    .filter((value) => field.options.some((option) => option.value === value));
                 break;
             case "checkbox":
                 if (ALLOWED_BOOLEAN_VALUES.includes(sanitizedValue)) {
@@ -627,7 +630,8 @@ function useEndUserConditions(fields, endUserConditions) {
         if (conditions.length === 0 || !!metCondition) {
             accumulator.push({
                 ...field,
-                required: !!childField?.is_required,
+                // required: !!childField?.is_required,
+                required: childField ? childField.is_required : field.required,
             });
         }
         return accumulator;
