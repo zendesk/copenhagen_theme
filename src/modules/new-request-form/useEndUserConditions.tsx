@@ -22,7 +22,7 @@ export function useEndUserConditions(
     if (conditions.length === 0 || !!metCondition) {
       accumulator.push({
         ...field,
-        required: !!childField?.is_required,
+        required: childField ? childField.is_required : field.required,
       });
     }
 
