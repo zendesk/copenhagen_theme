@@ -1963,6 +1963,10 @@ ul {
   color: lighten($text_color, 20%);
 }
 
+.upload-item {
+  background-color: aliceblue;
+}
+
 /***** Social share links *****/
 .share {
   padding: 0;
