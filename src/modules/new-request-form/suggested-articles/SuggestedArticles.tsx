@@ -80,7 +80,7 @@ export function SuggestedArticles({
     }
 
     const requestUrl = new URL(
-      `${window.location.origin}/hc/api/internal/deflection/suggestions.json`
+      `${window.location.origin}/api/v2/help_center/deflection/suggestions.json`
     );
     requestUrl.searchParams.append("locale", locale);
     requestUrl.searchParams.append("query", query);
