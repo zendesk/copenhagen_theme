@@ -630,7 +630,6 @@ function useEndUserConditions(fields, endUserConditions) {
         if (conditions.length === 0 || !!metCondition) {
             accumulator.push({
                 ...field,
-                // required: !!childField?.is_required,
                 required: childField ? childField.is_required : field.required,
             });
         }
@@ -741,7 +740,7 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
             setArticles([]);
             return;
         }
-        const requestUrl = new URL(`${window.location.origin}/hc/api/internal/deflection/suggestions.json`);
+        const requestUrl = new URL(`${window.location.origin}/api/v2/help_center/deflection/suggestions.json`);
         requestUrl.searchParams.append("locale", locale);
         requestUrl.searchParams.append("query", query);
         const cachedResponse = requestsCache.current[requestUrl.toString()];
