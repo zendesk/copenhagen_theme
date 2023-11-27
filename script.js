@@ -1893,7 +1893,6 @@ function handleScrollText(targetsWrapper) {
     const btnWrapperWidth = getWidth(btnWrapper);
 
     const animationStyle = document.createElement('style');
-  console.log(titleWrapperWidth)
     animationStyle.innerHTML = `
         @keyframes scroll-word-title {
             0% { transform: translateX(0); }
@@ -1983,7 +1982,7 @@ async function handleFirmWare(id) {
       default:
         key = firmwareType.snapmaker2
     }
-    const firmwareData = (await getFirewareResources(firmwareMap.get(key))).data
+    const firmwareData = (await getFirewareResources(firmwareMap.get(key)))
     if (!firmwareData) return ''
     const versionData = firmwareData.new_version
     let [version, date] = versionData.version.split('_').slice(-2)
@@ -2005,8 +2004,12 @@ async function multiFirmwareSelected(id, key) {
     const firmwareData = (await getFirewareResources(firmwareMap.get(key)))
     const keys = Object.keys(firmwareData)
     const list = keys.map(key => {
-        const versionData = firmwareData[key] && firmwareData[key].data && firmwareData[key].data.new_version
-        const [version, date] = versionData.version.split('_').slice(-2)
+        const versionData = firmwareData[key] && firmwareData[key].new_version
+        let [version, date] = versionData.version.split('_').slice(-2)
+        if(!date) {
+            const packageName =  versionData.url.split('/').pop()
+            date = packageName.replace(/\.[^.]+$/, '').split('_').pop()
+        }
         return {
             text: versionData.version,
             link: versionData.url,
