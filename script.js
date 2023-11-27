@@ -1982,7 +1982,7 @@ async function handleFirmWare(id) {
       default:
         key = firmwareType.snapmaker2
     }
-    const firmwareData = (await getFirewareResources(firmwareMap.get(key)))
+    const firmwareData = (await getFirewareResources(firmwareMap.get(key))).data
     if (!firmwareData) return ''
     const versionData = firmwareData.new_version
     let [version, date] = versionData.version.split('_').slice(-2)
