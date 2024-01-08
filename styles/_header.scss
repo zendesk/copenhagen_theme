@@ -275,6 +275,9 @@ $header-height: 71px;
   top: auto;
   z-index: -999;
 }
+.skip-to-web-widget:visited {
+  color: white;
+}
 
 .skip-to-web-widget:focus, .skip-to-web-widget:active {
   left: auto;

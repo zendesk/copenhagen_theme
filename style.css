@@ -845,6 +845,9 @@ ul {
   top: auto;
   z-index: -999;
 }
+.skip-navigation:visited {
+  color: white;
+}
 [dir=rtl] .skip-navigation {
   left: initial;
   right: -999px;
