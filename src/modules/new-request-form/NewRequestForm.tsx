@@ -50,7 +50,7 @@ export function NewRequestForm({
   locale,
 }: NewRequestFormProps) {
   const {
-    fields,
+    ticket_fields,
     action,
     http_method,
     accept_charset,
@@ -63,7 +63,7 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
-  const prefilledTicketFields = usePrefilledTicketFields(fields);
+  const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);

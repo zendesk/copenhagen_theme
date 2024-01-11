@@ -862,8 +862,8 @@ const Footer = styled.div `
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
 const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ ticketForms, requestForm, wysiwyg, answerBot, parentId, locale, }) {
-    const { fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
-    const prefilledTicketFields = usePrefilledTicketFields(fields);
+    const { ticket_fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
+    const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
     const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
