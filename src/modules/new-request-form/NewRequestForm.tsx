@@ -56,6 +56,7 @@ export function NewRequestForm({
     parent_id_field,
     ticket_form_field,
     email_field,
+    cc_field,
     end_user_conditions,
     attachments_field,
     inline_attachments_fields,
@@ -94,6 +95,11 @@ export function NewRequestForm({
             field={email_field}
             onChange={(value) => handleChange(email_field, value)}
           />
+        )}
+        {cc_field && (
+          <Suspense fallback={<></>}>
+            <CcField field={cc_field} />
+          </Suspense>
         )}
         {ticket_form_field.options.length > 0 && (
           <TicketFormField field={ticket_form_field} />
@@ -184,12 +190,6 @@ export function NewRequestForm({
                 )
               );
             }
-            case "cc_email":
-              return (
-                <Suspense fallback={<></>}>
-                  <CcField field={field} />
-                </Suspense>
-              );
             case "checkbox":
               return (
                 <Checkbox

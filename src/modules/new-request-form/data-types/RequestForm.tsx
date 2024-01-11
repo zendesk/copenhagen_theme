@@ -11,6 +11,7 @@ export interface RequestForm {
   ticket_form_field: Field;
   parent_id_field: Field;
   email_field: Field;
+  cc_field: Field;
   ticket_fields: Field[];
   end_user_conditions: EndUserCondition[];
   attachments_field: AttachmentField | null;
