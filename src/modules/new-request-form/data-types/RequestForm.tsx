@@ -8,7 +8,6 @@ export interface RequestForm {
   action: string;
   http_method: string;
   errors: string | null;
-  ticket_forms_instructions: string;
   ticket_form_field: Field;
   parent_id_field: Field;
   ticket_fields: Field[];

@@ -250,18 +250,15 @@ function MultiSelect({ field }) {
 }
 
 const key = "return-focus-to-ticket-form-field";
-function TicketFormField({ label, ticketFormField, ticketForms, }) {
+function TicketFormField({ field }) {
     const ref = reactExports.createRef();
     const handleChange = ({ selectionValue }) => {
         if (selectionValue && typeof selectionValue === "string") {
-            const newUrl = new URL(window.location.origin + selectionValue);
-            const currentSearchParams = new URLSearchParams(window.location.search);
-            currentSearchParams.delete("ticket_form_id");
-            for (const [key, value] of currentSearchParams) {
-                newUrl.searchParams.append(key, value);
-            }
+            const url = new URL(window.location.href);
+            const searchParams = url.searchParams;
+            searchParams.set("ticket_form_id", selectionValue);
             sessionStorage.setItem(key, "true");
-            window.location.href = newUrl.toString();
+            window.location.href = url.toString();
         }
     };
     reactExports.useEffect(() => {
@@ -272,7 +269,7 @@ function TicketFormField({ label, ticketFormField, ticketForms, }) {
             ref.current?.firstChild?.focus();
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: ticketFormField.name, value: ticketFormField.value }), ticketForms.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, ref: ref, children: ticketForms.map(({ id, url, display_name }) => (jsxRuntimeExports.jsx(Option, { value: url, label: display_name, isSelected: ticketFormField.value === id, children: display_name }, id))) })] }))] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: field.name, value: field.value }), field.options.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: field.label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, ref: ref, children: field.options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name, isSelected: field.value === option.value, children: option.name }, option.name))) })] }))] }));
 }
 
 function ParentTicketField({ field, }) {
@@ -861,8 +858,8 @@ const Footer = styled.div `
 `;
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
 const CcField = reactExports.lazy(() => import('CcField'));
-function NewRequestForm({ ticketForms, requestForm, wysiwyg, answerBot, parentId, locale, }) {
-    const { ticket_fields, action, http_method, accept_charset, errors, ticket_form_field, ticket_forms_instructions, parent_id_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
+function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) {
+    const { ticket_fields, action, http_method, accept_charset, errors, ticket_form_field, parent_id_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -872,7 +869,7 @@ function NewRequestForm({ ticketForms, requestForm, wysiwyg, answerBot, parentId
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticketForms.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { label: ticket_forms_instructions, ticketFormField: ticket_form_field, ticketForms: ticketForms })), visibleFields.map((field) => {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
@@ -910,7 +907,8 @@ function NewRequestForm({ ticketForms, requestForm, wysiwyg, answerBot, parentId
                             default:
                                 return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                         }
-                    }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticketForms.length === 0 || ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }), answerBot.token &&
+                    }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticket_form_field.options.length === 0 ||
+                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }), answerBot.token &&
                 answerBot.articles.length > 0 &&
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }

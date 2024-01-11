@@ -33,18 +33,11 @@
   import { renderNewRequestForm } from "new-request-form";
 
   const requestForm = {{new_request_form.to_json}};
-
-  const ticketForms = [];
-  {{#each ticket_forms}}
-    ticketForms.push({ id:
-    {{id}}, url: "{{url}}", display_name: "{{display_name}}" });
-  {{/each}}
-
   const parentId = "{{ parent_id }}";
   const locale = "{{ help_center.locale }}";
   const answerBot = {{answer_bot.to_json}}
 
   const container = document.getElementById("new-request-form");
-  const props = { ticketForms, requestForm, answerBot, parentId, locale, wysiwyg: true };
+  const props = { requestForm, answerBot, parentId, locale, wysiwyg: true };
   renderNewRequestForm(props, container);
 </script>

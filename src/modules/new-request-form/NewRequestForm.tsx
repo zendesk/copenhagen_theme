@@ -1,4 +1,4 @@
-import type { AnswerBot, Field, RequestForm, TicketForm } from "./data-types";
+import type { AnswerBot, Field, RequestForm } from "./data-types";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -20,7 +20,6 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 
 export interface NewRequestFormProps {
-  ticketForms: TicketForm[];
   requestForm: RequestForm;
   wysiwyg: boolean;
   answerBot: AnswerBot;
@@ -42,7 +41,6 @@ const DatePicker = lazy(() => import("./fields/DatePicker"));
 const CcField = lazy(() => import("./fields/cc-field/CcField"));
 
 export function NewRequestForm({
-  ticketForms,
   requestForm,
   wysiwyg,
   answerBot,
@@ -56,7 +54,6 @@ export function NewRequestForm({
     accept_charset,
     errors,
     ticket_form_field,
-    ticket_forms_instructions,
     parent_id_field,
     end_user_conditions,
     attachments_field,
@@ -90,12 +87,8 @@ export function NewRequestForm({
       >
         {errors && <Alert type="error">{errors}</Alert>}
         {parentId && <ParentTicketField field={parent_id_field} />}
-        {ticketForms.length > 0 && (
-          <TicketFormField
-            label={ticket_forms_instructions}
-            ticketFormField={ticket_form_field}
-            ticketForms={ticketForms}
-          />
+        {ticket_form_field.options.length > 0 && (
+          <TicketFormField field={ticket_form_field} />
         )}
         {visibleFields.map((field) => {
           switch (field.type) {
@@ -226,7 +219,8 @@ export function NewRequestForm({
           <input key={index} type={type} name={name} value={value} />
         ))}
         <Footer>
-          {(ticketForms.length === 0 || ticket_form_field.value) && (
+          {(ticket_form_field.options.length === 0 ||
+            ticket_form_field.value) && (
             <Button isPrimary type="submit">
               Submit
             </Button>
