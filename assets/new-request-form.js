@@ -859,7 +859,7 @@ const Footer = styled.div `
 const DatePicker = reactExports.lazy(() => import('DatePicker'));
 const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) {
-    const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
+    const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -886,12 +886,7 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                                 return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
                             case "priority":
                             case "tickettype":
-                                return (jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
-                            case "due_at": {
-                                const isTask = ticketFields.find((field) => field.type === "tickettype")
-                                    ?.value === "task";
-                                return (isTask && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "dateTime" }) })));
-                            }
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: locale, valueFormat: "dateTime" }) }))] }));
                             case "checkbox":
                                 return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
                             case "date":

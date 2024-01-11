@@ -13,6 +13,7 @@ export interface RequestForm {
   email_field: Field;
   cc_field: Field;
   organization_field: Field;
+  due_date_field: Field;
   ticket_fields: Field[];
   end_user_conditions: EndUserCondition[];
   attachments_field: AttachmentField | null;

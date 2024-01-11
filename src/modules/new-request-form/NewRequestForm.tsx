@@ -58,6 +58,7 @@ export function NewRequestForm({
     email_field,
     cc_field,
     organization_field,
+    due_date_field,
     end_user_conditions,
     attachments_field,
     inline_attachments_fields,
@@ -174,29 +175,23 @@ export function NewRequestForm({
             case "priority":
             case "tickettype":
               return (
-                <DropDown
-                  key={field.name}
-                  field={field}
-                  onChange={(value) => handleChange(field, value)}
-                />
+                <>
+                  <DropDown
+                    key={field.name}
+                    field={field}
+                    onChange={(value) => handleChange(field, value)}
+                  />
+                  {field.value === "task" && (
+                    <Suspense fallback={<></>}>
+                      <DatePicker
+                        field={due_date_field}
+                        locale={locale}
+                        valueFormat="dateTime"
+                      />
+                    </Suspense>
+                  )}
+                </>
               );
-            case "due_at": {
-              const isTask =
-                ticketFields.find((field) => field.type === "tickettype")
-                  ?.value === "task";
-
-              return (
-                isTask && (
-                  <Suspense fallback={<></>}>
-                    <DatePicker
-                      field={field}
-                      locale={locale}
-                      valueFormat="dateTime"
-                    />
-                  </Suspense>
-                )
-              );
-            }
             case "checkbox":
               return (
                 <Checkbox
