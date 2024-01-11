@@ -57,6 +57,7 @@ export function NewRequestForm({
     ticket_form_field,
     email_field,
     cc_field,
+    organization_field,
     end_user_conditions,
     attachments_field,
     inline_attachments_fields,
@@ -100,6 +101,13 @@ export function NewRequestForm({
           <Suspense fallback={<></>}>
             <CcField field={cc_field} />
           </Suspense>
+        )}
+        {organization_field && (
+          <DropDown
+            key={organization_field.name}
+            field={organization_field}
+            onChange={(value) => handleChange(organization_field, value)}
+          />
         )}
         {ticket_form_field.options.length > 0 && (
           <TicketFormField field={ticket_form_field} />
@@ -163,7 +171,6 @@ export function NewRequestForm({
                   onChange={(value) => handleChange(field, value)}
                 />
               );
-            case "organization_id":
             case "priority":
             case "tickettype":
               return (
