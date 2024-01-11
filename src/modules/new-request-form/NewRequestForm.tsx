@@ -53,8 +53,9 @@ export function NewRequestForm({
     http_method,
     accept_charset,
     errors,
-    ticket_form_field,
     parent_id_field,
+    ticket_form_field,
+    email_field,
     end_user_conditions,
     attachments_field,
     inline_attachments_fields,
@@ -87,6 +88,13 @@ export function NewRequestForm({
       >
         {errors && <Alert type="error">{errors}</Alert>}
         {parentId && <ParentTicketField field={parent_id_field} />}
+        {email_field && (
+          <Input
+            key={email_field.name}
+            field={email_field}
+            onChange={(value) => handleChange(email_field, value)}
+          />
+        )}
         {ticket_form_field.options.length > 0 && (
           <TicketFormField field={ticket_form_field} />
         )}
@@ -106,7 +114,6 @@ export function NewRequestForm({
                   />
                 </>
               );
-            case "anonymous_requester_email":
             case "text":
             case "integer":
             case "decimal":
