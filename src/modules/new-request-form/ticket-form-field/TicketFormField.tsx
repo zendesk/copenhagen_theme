@@ -18,7 +18,7 @@ export function TicketFormField({ field }: TicketFormFieldProps) {
   const ref = createRef<HTMLDivElement>();
 
   const handleChange: IComboboxProps["onChange"] = ({ selectionValue }) => {
-    if (selectionValue && typeof selectionValue === "string") {
+    if (selectionValue && typeof selectionValue === "number") {
       const url = new URL(window.location.href);
       const searchParams = url.searchParams;
 
@@ -48,7 +48,7 @@ export function TicketFormField({ field }: TicketFormFieldProps) {
           <Combobox isEditable={false} onChange={handleChange} ref={ref}>
             {field.options.map((option) => (
               <Option
-                key={option.name}
+                key={option.value}
                 value={option.value}
                 label={option.name}
                 isSelected={field.value === option.value}

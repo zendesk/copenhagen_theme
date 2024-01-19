@@ -253,7 +253,7 @@ const key = "return-focus-to-ticket-form-field";
 function TicketFormField({ field }) {
     const ref = reactExports.createRef();
     const handleChange = ({ selectionValue }) => {
-        if (selectionValue && typeof selectionValue === "string") {
+        if (selectionValue && typeof selectionValue === "number") {
             const url = new URL(window.location.href);
             const searchParams = url.searchParams;
             searchParams.set("ticket_form_id", selectionValue);
@@ -269,7 +269,7 @@ function TicketFormField({ field }) {
             ref.current?.firstChild?.focus();
         }
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: field.name, value: field.value }), field.options.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: field.label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, ref: ref, children: field.options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name, isSelected: field.value === option.value, children: option.name }, option.name))) })] }))] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: field.name, value: field.value }), field.options.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label, { children: field.label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, ref: ref, children: field.options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name, isSelected: field.value === option.value, children: option.name }, option.value))) })] }))] }));
 }
 
 function ParentTicketField({ field, }) {
@@ -869,7 +869,7 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: cc_field }) })), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), visibleFields.map((field) => {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: cc_field }) })), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));

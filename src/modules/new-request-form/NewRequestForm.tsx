@@ -91,6 +91,9 @@ export function NewRequestForm({
       >
         {errors && <Alert type="error">{errors}</Alert>}
         {parentId && <ParentTicketField field={parent_id_field} />}
+        {ticket_form_field.options.length > 0 && (
+          <TicketFormField field={ticket_form_field} />
+        )}
         {email_field && (
           <Input
             key={email_field.name}
@@ -109,9 +112,6 @@ export function NewRequestForm({
             field={organization_field}
             onChange={(value) => handleChange(organization_field, value)}
           />
-        )}
-        {ticket_form_field.options.length > 0 && (
-          <TicketFormField field={ticket_form_field} />
         )}
         {visibleFields.map((field) => {
           switch (field.type) {
