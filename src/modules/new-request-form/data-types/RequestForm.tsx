@@ -8,10 +8,13 @@ export interface RequestForm {
   action: string;
   http_method: string;
   errors: string | null;
-  ticket_forms_instructions: string;
   ticket_form_field: Field;
   parent_id_field: Field;
-  fields: Field[];
+  email_field: Field;
+  cc_field: Field;
+  organization_field: Field;
+  due_date_field: Field;
+  ticket_fields: Field[];
   end_user_conditions: EndUserCondition[];
   attachments_field: AttachmentField | null;
   inline_attachments_fields: HiddenField[];

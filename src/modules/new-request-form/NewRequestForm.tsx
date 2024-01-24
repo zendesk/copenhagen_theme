@@ -1,4 +1,4 @@
-import type { AnswerBot, Field, RequestForm, TicketForm } from "./data-types";
+import type { AnswerBot, Field, RequestForm } from "./data-types";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -20,7 +20,6 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 
 export interface NewRequestFormProps {
-  ticketForms: TicketForm[];
   requestForm: RequestForm;
   wysiwyg: boolean;
   answerBot: AnswerBot;
@@ -42,7 +41,6 @@ const DatePicker = lazy(() => import("./fields/DatePicker"));
 const CcField = lazy(() => import("./fields/cc-field/CcField"));
 
 export function NewRequestForm({
-  ticketForms,
   requestForm,
   wysiwyg,
   answerBot,
@@ -50,20 +48,23 @@ export function NewRequestForm({
   locale,
 }: NewRequestFormProps) {
   const {
-    fields,
+    ticket_fields,
     action,
     http_method,
     accept_charset,
     errors,
-    ticket_form_field,
-    ticket_forms_instructions,
     parent_id_field,
+    ticket_form_field,
+    email_field,
+    cc_field,
+    organization_field,
+    due_date_field,
     end_user_conditions,
     attachments_field,
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
-  const prefilledTicketFields = usePrefilledTicketFields(fields);
+  const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
@@ -90,11 +91,26 @@ export function NewRequestForm({
       >
         {errors && <Alert type="error">{errors}</Alert>}
         {parentId && <ParentTicketField field={parent_id_field} />}
-        {ticketForms.length > 0 && (
-          <TicketFormField
-            label={ticket_forms_instructions}
-            ticketFormField={ticket_form_field}
-            ticketForms={ticketForms}
+        {ticket_form_field.options.length > 0 && (
+          <TicketFormField field={ticket_form_field} />
+        )}
+        {email_field && (
+          <Input
+            key={email_field.name}
+            field={email_field}
+            onChange={(value) => handleChange(email_field, value)}
+          />
+        )}
+        {cc_field && (
+          <Suspense fallback={<></>}>
+            <CcField field={cc_field} />
+          </Suspense>
+        )}
+        {organization_field && (
+          <DropDown
+            key={organization_field.name}
+            field={organization_field}
+            onChange={(value) => handleChange(organization_field, value)}
           />
         )}
         {visibleFields.map((field) => {
@@ -113,7 +129,6 @@ export function NewRequestForm({
                   />
                 </>
               );
-            case "anonymous_requester_email":
             case "text":
             case "integer":
             case "decimal":
@@ -157,38 +172,25 @@ export function NewRequestForm({
                   onChange={(value) => handleChange(field, value)}
                 />
               );
-            case "organization_id":
             case "priority":
             case "tickettype":
               return (
-                <DropDown
-                  key={field.name}
-                  field={field}
-                  onChange={(value) => handleChange(field, value)}
-                />
-              );
-            case "due_at": {
-              const isTask =
-                ticketFields.find((field) => field.type === "tickettype")
-                  ?.value === "task";
-
-              return (
-                isTask && (
-                  <Suspense fallback={<></>}>
-                    <DatePicker
-                      field={field}
-                      locale={locale}
-                      valueFormat="dateTime"
-                    />
-                  </Suspense>
-                )
-              );
-            }
-            case "cc_email":
-              return (
-                <Suspense fallback={<></>}>
-                  <CcField field={field} />
-                </Suspense>
+                <>
+                  <DropDown
+                    key={field.name}
+                    field={field}
+                    onChange={(value) => handleChange(field, value)}
+                  />
+                  {field.value === "task" && (
+                    <Suspense fallback={<></>}>
+                      <DatePicker
+                        field={due_date_field}
+                        locale={locale}
+                        valueFormat="dateTime"
+                      />
+                    </Suspense>
+                  )}
+                </>
               );
             case "checkbox":
               return (
@@ -226,7 +228,8 @@ export function NewRequestForm({
           <input key={index} type={type} name={name} value={value} />
         ))}
         <Footer>
-          {(ticketForms.length === 0 || ticket_form_field.value) && (
+          {(ticket_form_field.options.length === 0 ||
+            ticket_form_field.value) && (
             <Button isPrimary type="submit">
               Submit
             </Button>

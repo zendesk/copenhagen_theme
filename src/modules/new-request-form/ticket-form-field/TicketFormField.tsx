@@ -6,38 +6,27 @@ import {
   Label,
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
-import type { TicketForm } from "../data-types/TicketForm";
 import type { Field } from "../data-types";
 
 interface TicketFormFieldProps {
-  label: string;
-  ticketFormField: Field;
-  ticketForms: TicketForm[];
+  field: Field;
 }
 
 const key = "return-focus-to-ticket-form-field";
 
-export function TicketFormField({
-  label,
-  ticketFormField,
-  ticketForms,
-}: TicketFormFieldProps) {
+export function TicketFormField({ field }: TicketFormFieldProps) {
   const ref = createRef<HTMLDivElement>();
 
   const handleChange: IComboboxProps["onChange"] = ({ selectionValue }) => {
-    if (selectionValue && typeof selectionValue === "string") {
-      const newUrl = new URL(window.location.origin + selectionValue);
+    if (selectionValue && typeof selectionValue === "number") {
+      const url = new URL(window.location.href);
+      const searchParams = url.searchParams;
 
-      const currentSearchParams = new URLSearchParams(window.location.search);
-      currentSearchParams.delete("ticket_form_id");
-
-      for (const [key, value] of currentSearchParams) {
-        newUrl.searchParams.append(key, value);
-      }
+      searchParams.set("ticket_form_id", selectionValue);
 
       sessionStorage.setItem(key, "true");
 
-      window.location.href = newUrl.toString();
+      window.location.href = url.toString();
     }
   };
 
@@ -52,23 +41,19 @@ export function TicketFormField({
 
   return (
     <>
-      <input
-        type="hidden"
-        name={ticketFormField.name}
-        value={ticketFormField.value as string}
-      />
-      {ticketForms.length > 1 && (
+      <input type="hidden" name={field.name} value={field.value as string} />
+      {field.options.length > 1 && (
         <GardenField>
-          <Label>{label}</Label>
+          <Label>{field.label}</Label>
           <Combobox isEditable={false} onChange={handleChange} ref={ref}>
-            {ticketForms.map(({ id, url, display_name }) => (
+            {field.options.map((option) => (
               <Option
-                key={id}
-                value={url}
-                label={display_name}
-                isSelected={ticketFormField.value === id}
+                key={option.value}
+                value={option.value}
+                label={option.name}
+                isSelected={field.value === option.value}
               >
-                {display_name}
+                {option.name}
               </Option>
             ))}
           </Combobox>
