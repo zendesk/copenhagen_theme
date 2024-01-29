@@ -127,6 +127,42 @@
           </dl>
         {{/if}}
 
+        {{#with satisfaction_response}}
+          {{#with rating}}
+            <dl class="request-details">
+              <dt>{{t 'rating'}}</dt>
+              <dd>
+                <div>
+                  {{#is scale_type 'numeric'}}
+                    {{t 'numerical_rating' value=value max_value=max_value}}
+                  {{else}}
+                    {{scale_value}}
+                  {{/is}}
+                </div>
+
+                {{#link 'survey_response' id=../id}}
+                  {{#if ../editable}}
+                    {{t 'edit_feedback'}}
+                  {{else}}
+                    {{t 'view_feedback'}}
+                  {{/if}}
+                {{/link}}
+              </dd>
+            </dl>
+          {{else}}
+            {{#if editable}}
+              <dl class="request-details">
+                <dt>{{t 'rating'}}</dt>
+                <dd>
+                  {{#link 'survey_response' id=id}}
+                    {{t 'add_feedback'}}
+                  {{/link}}
+                </dd>
+              </dl>
+            {{/if}}
+          {{/with}}
+        {{/with}}
+
         <dl class="request-details">
           <dt>{{t 'requester'}}</dt>
           <dd>{{request.requester.name}}</dd>
