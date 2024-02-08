@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/zendesk/copenhagen_theme/compare/v3.1.6...v3.2.0) (2024-02-08)
+
+
+### Features
+
+* add satisfaction response to request details ([48a2aa0](https://github.com/zendesk/copenhagen_theme/commit/48a2aa0eef4d16a6699bb8027c640a5334482117))
+
 ## [3.1.6](https://github.com/zendesk/copenhagen_theme/compare/v3.1.5...v3.1.6) (2023-10-05)
 
 
