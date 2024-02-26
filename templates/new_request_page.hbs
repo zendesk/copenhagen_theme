@@ -32,10 +32,10 @@
 <script type="module">
   import { renderNewRequestForm } from "new-request-form";
 
-  const requestForm = {{new_request_form.to_json}};
-  const parentId = "{{ parent_id }}";
-  const locale = "{{ help_center.locale }}";
-  const answerBot = {{answer_bot.to_json}}
+  const requestForm = {{json new_request_form}};
+  const parentId = {{json parent_id}};
+  const locale = {{json help_center.locale}};
+  const answerBot = {{json answer_bot}}
 
   const container = document.getElementById("new-request-form");
   const props = { requestForm, answerBot, parentId, locale, wysiwyg: true };
