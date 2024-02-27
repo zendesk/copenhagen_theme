@@ -20,6 +20,7 @@ export function setupGardenTheme({
 }: SetupGardenThemeProps) {
   theme = {
     ...DEFAULT_THEME,
+    rtl: document.dir === "rtl",
     colors: {
       ...DEFAULT_THEME.colors,
       foreground: textColor,

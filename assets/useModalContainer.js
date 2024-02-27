@@ -4,6 +4,7 @@ let theme = DEFAULT_THEME;
 function setupGardenTheme({ textColor, brandColor, linkColor, hoverLinkColor, visitedLinkColor, }) {
     theme = {
         ...DEFAULT_THEME,
+        rtl: document.dir === "rtl",
         colors: {
             ...DEFAULT_THEME.colors,
             foreground: textColor,
