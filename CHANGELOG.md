@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/zendesk/copenhagen_theme/compare/v3.2.1...v3.2.2) (2024-02-28)
+
+
+### Bug Fixes
+
+* remove stray </li> from header ([4cb4005](https://github.com/zendesk/copenhagen_theme/commit/4cb4005801a2097ec6d8a08ec7407fa14cc47269))
+
 ## [3.2.1](https://github.com/zendesk/copenhagen_theme/compare/v3.2.0...v3.2.1) (2024-02-28)
 
 
