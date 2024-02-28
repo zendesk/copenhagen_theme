@@ -13,7 +13,7 @@
     "zcli": "zcli"
   },
   "dependencies": {
-    "node-fetch": "2.6.9"
+    "node-fetch": "2.6.11"
   },
   "devDependencies": {
     "@commitlint/cli": "17.3.0",
