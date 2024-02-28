@@ -140,7 +140,7 @@
                   {{/is}}
                 </div>
 
-                {{#link 'survey_response' id=../id target="_blank"}}
+                {{#link 'survey_response' id=../id}}
                   {{#if ../editable}}
                     {{t 'edit_feedback'}}
                   {{else}}
@@ -154,7 +154,7 @@
               <dl class="request-details">
                 <dt>{{t 'rating'}}</dt>
                 <dd>
-                  {{#link 'survey_response' id=id target="_blank"}}
+                  {{#link 'survey_response' id=id}}
                     {{t 'add_feedback'}}
                   {{/link}}
                 </dd>
