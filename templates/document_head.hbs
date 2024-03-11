@@ -6,20 +6,7 @@
 {
   "imports": {
     "new-request-form": "{{asset 'new-request-form.js'}}",
-    "theming": "{{asset 'theming.js'}}",
-    "vendor": "{{asset 'vendor.js'}}",
-    "useModalContainer": "{{asset 'useModalContainer.js'}}"
+    "vendor": "{{asset 'vendor.js'}}"
   }
 }
-</script>
-<script type="module">
-    import { setupGardenTheme } from "theming";
-
-    setupGardenTheme({
-      textColor: "{{settings.text_color}}",
-      brandColor: "{{settings.brand_color}}",
-      linkColor: "{{settings.link_color}}",
-      hoverLinkColor: "{{settings.hover_link_color}}",
-      visitedLinkColor: "{{settings.visited_link_color}}",
-    })
 </script>

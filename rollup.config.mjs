@@ -23,7 +23,6 @@ export default defineConfig([
     context: "this",
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
-      theming: "src/modules/theming/index.ts",
     },
     output: {
       dir: "assets",

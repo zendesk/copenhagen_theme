@@ -13,7 +13,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Paragraph } from "@zendeskgarden/react-typography";
 import { fetchCsrfToken } from "../fetchCsrfToken";
-import { useModalContainer } from "../../theming";
+import { useModalContainer } from "../../garden-theme";
 
 interface AnswerBotModalProps {
   token: string;
