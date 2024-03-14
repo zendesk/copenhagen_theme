@@ -7,6 +7,8 @@ import svgr from "@svgr/rollup";
 import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
 
+const fileNames = "[name]-bundle.js";
+
 export default defineConfig([
   {
     input: "src/index.js",
@@ -32,7 +34,8 @@ export default defineConfig([
           return "vendor";
         }
       },
-      chunkFileNames: "[name].js",
+      entryFileNames: fileNames,
+      chunkFileNames: fileNames,
     },
     plugins: [
       nodeResolve({

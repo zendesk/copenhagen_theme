@@ -5,7 +5,7 @@
   "scripts": {
     "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
     "build": "rollup -c",
-    "prebuild": "rm assets/*",
+    "prebuild": "rm assets/*-bundle.js",
     "eslint": "eslint src",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
