@@ -81,7 +81,7 @@ const AnnouncementMessage = styled.span`
   ${hideVisually()}
 `;
 
-export default function CcField({ field }: CcFieldProps): JSX.Element {
+export function CcField({ field }: CcFieldProps): JSX.Element {
   const { label, value, name, error, description } = field;
   const initialValue = value
     ? (value as string).split(",").map((email) => email.trim())

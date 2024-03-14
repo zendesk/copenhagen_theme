@@ -17,7 +17,7 @@ interface DatePickerProps {
   valueFormat: "date" | "dateTime";
 }
 
-export default function DatePicker({
+export function DatePicker({
   field,
   locale,
   valueFormat,

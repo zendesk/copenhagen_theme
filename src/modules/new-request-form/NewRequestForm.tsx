@@ -1,4 +1,5 @@
 import type { AnswerBot, Field, RequestForm } from "./data-types";
+import { useState } from "react";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -10,10 +11,11 @@ import { Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
-import { Suspense, lazy, useState } from "react";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
 import { useEndUserConditions } from "./useEndUserConditions";
+import { DatePicker } from "./fields/DatePicker";
+import { CcField } from "./fields/cc-field/CcField";
 import { CreditCard } from "./fields/CreditCard";
 import { Tagger } from "./fields/Tagger";
 import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
@@ -36,9 +38,6 @@ const Form = styled.form`
 const Footer = styled.div`
   margin-top: ${(props) => props.theme.space.md};
 `;
-
-const DatePicker = lazy(() => import("./fields/DatePicker"));
-const CcField = lazy(() => import("./fields/cc-field/CcField"));
 
 export function NewRequestForm({
   requestForm,
@@ -101,11 +100,7 @@ export function NewRequestForm({
             onChange={(value) => handleChange(email_field, value)}
           />
         )}
-        {cc_field && (
-          <Suspense fallback={<></>}>
-            <CcField field={cc_field} />
-          </Suspense>
-        )}
+        {cc_field && <CcField field={cc_field} />}
         {organization_field && (
           <DropDown
             key={organization_field.name}
@@ -182,13 +177,11 @@ export function NewRequestForm({
                     onChange={(value) => handleChange(field, value)}
                   />
                   {field.value === "task" && (
-                    <Suspense fallback={<></>}>
-                      <DatePicker
-                        field={due_date_field}
-                        locale={locale}
-                        valueFormat="dateTime"
-                      />
-                    </Suspense>
+                    <DatePicker
+                      field={due_date_field}
+                      locale={locale}
+                      valueFormat="dateTime"
+                    />
                   )}
                 </>
               );
@@ -201,13 +194,7 @@ export function NewRequestForm({
               );
             case "date":
               return (
-                <Suspense fallback={<></>}>
-                  <DatePicker
-                    field={field}
-                    locale={locale}
-                    valueFormat="date"
-                  />
-                </Suspense>
+                <DatePicker field={field} locale={locale} valueFormat="date" />
               );
             case "multiselect":
               return <MultiSelect field={field} />;
