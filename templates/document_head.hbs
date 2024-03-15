@@ -6,7 +6,16 @@
 {
   "imports": {
     "new-request-form-bundle": "{{asset 'new-request-form-bundle.js'}}",
-    "vendor-bundle": "{{asset 'vendor-bundle.js'}}"
+    "notifications-bundle": "{{asset 'notifications-bundle.js'}}",
+    "vendor-bundle": "{{asset 'vendor-bundle.js'}}",
+    "addFlashNotification-bundle": "{{asset 'addFlashNotification-bundle.js'}}"
   }
 }
+</script>
+<script type="module">
+  import {renderFlashNotifications} from "notifications-bundle";
+
+  const settings = {{json settings}};
+
+  renderFlashNotifications(settings);
 </script>

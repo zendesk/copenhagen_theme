@@ -1,5 +1,6 @@
 export interface AnswerBot {
-  token: string | null;
+  auth_token: string | null;
+  interaction_access_token: string | null;
   articles: AnswerBotArticle[];
   request_id: number | null;
 }

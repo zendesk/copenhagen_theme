@@ -1,27 +1,26 @@
-import { G as DEFAULT_THEME, J as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, K as ThemeProvider, Q as ToastProvider } from 'vendor';
+import { V as DEFAULT_THEME, W as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, X as ThemeProvider, Y as ToastProvider } from 'vendor-bundle';
 
-let theme = DEFAULT_THEME;
-function setupGardenTheme({ textColor, brandColor, linkColor, hoverLinkColor, visitedLinkColor, }) {
-    theme = {
+function createTheme(settings) {
+    return {
         ...DEFAULT_THEME,
         rtl: document.dir === "rtl",
         colors: {
             ...DEFAULT_THEME.colors,
-            foreground: textColor,
-            primaryHue: brandColor,
+            foreground: settings.text_color,
+            primaryHue: settings.brand_color,
         },
         components: {
             "buttons.anchor": Ne `
-        color: ${linkColor};
+        color: ${settings.link_color};
 
         :hover,
         :active,
         :focus {
-          color: ${hoverLinkColor};
+          color: ${settings.hover_link_color};
         }
 
         &:visited {
-          color: ${visitedLinkColor};
+          color: ${settings.visited_link_color};
         }
       `,
         },
@@ -43,16 +42,24 @@ function ModalContainerProvider({ children, }) {
     return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ModalContainer, { ref: containerRefCallback }), container && (jsxRuntimeExports.jsx(ModalContainerContext.Provider, { value: container, children: children }))] }));
 }
 
-function ThemeProviders({ children }) {
+function ThemeProviders({ theme, children, }) {
     return (jsxRuntimeExports.jsx(ThemeProvider, { theme: theme, children: jsxRuntimeExports.jsx(ToastProvider, { zIndex: 2147483647, children: jsxRuntimeExports.jsx(ModalContainerProvider, { children: children }) }) }));
 }
 
-function useModalContainer() {
-    const modalContainer = reactExports.useContext(ModalContainerContext);
-    if (modalContainer === null) {
-        throw new Error("useModalContainer should be used inside a ModalContainerProvider");
+const FLASH_NOTIFICATIONS_KEY = "HC_FLASH_NOTIFICATIONS";
+
+function addFlashNotification(notification) {
+    try {
+        const currentValue = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
+        const notifications = currentValue
+            ? JSON.parse(currentValue)
+            : [];
+        notifications.push(notification);
+        window.sessionStorage.setItem(FLASH_NOTIFICATIONS_KEY, JSON.stringify(notifications));
     }
-    return modalContainer;
+    catch (e) {
+        console.error("Cannot add flash notification", e);
+    }
 }
 
-export { ThemeProviders as T, setupGardenTheme as s, useModalContainer as u };
+export { FLASH_NOTIFICATIONS_KEY as F, ModalContainerContext as M, ThemeProviders as T, addFlashNotification as a, createTheme as c };

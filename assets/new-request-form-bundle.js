@@ -1,5 +1,13 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, $ as $e, q as Header$1, t as Footer$2, v as Modal, w as Alert, B as Body$2, x as Accordion, y as Paragraph, z as Button, D as Close$2, E as reactDomExports } from 'vendor';
-import { u as useModalContainer, T as ThemeProviders } from 'useModalContainer';
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, D as Datepicker, q as useGrid, t as focusStyles, v as FauxInput, w as Tag, x as SvgAlertWarningStroke, $ as $e, y as Header$1, z as Footer$2, B as Modal, E as Alert, G as Body$2, J as Accordion, K as Paragraph, Q as Button, R as Close$2, U as reactDomExports } from 'vendor-bundle';
+import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
+
+function useModalContainer() {
+    const modalContainer = reactExports.useContext(ModalContainerContext);
+    if (modalContainer === null) {
+        throw new Error("useModalContainer should be used inside a ModalContainerProvider");
+    }
+    return modalContainer;
+}
 
 function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
@@ -634,6 +642,235 @@ function useEndUserConditions(fields, endUserConditions) {
     }, []);
 }
 
+function DatePicker({ field, locale, valueFormat, }) {
+    const { label, error, value, name, required, description } = field;
+    const [date, setDate] = reactExports.useState(value ? new Date(value) : undefined);
+    const handleChange = (date) => {
+        // Set the time to 12:00:00 as this is also the expected behavior across Support and the API
+        setDate(new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0)));
+    };
+    const formatDate = (value) => {
+        if (value === undefined) {
+            return "";
+        }
+        const isoString = value.toISOString();
+        return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
+    };
+    const handleInputChange = (e) => {
+        // Allow field to be cleared
+        if (e.target.value === "") {
+            setDate(undefined);
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Datepicker, { value: date, onChange: handleChange, locale: locale, children: jsxRuntimeExports.jsx(Input$1, { required: required, lang: locale, onChange: handleInputChange }) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: formatDate(date) })] }));
+}
+
+function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueChange, inputRef, gridRowRef, i18n, }) {
+    const [selectedIndex, setSelectedIndex] = reactExports.useState(0);
+    const [announcement, setAnnouncement] = reactExports.useState("");
+    const gridOnChange = reactExports.useCallback((_, colIndex) => {
+        setSelectedIndex(colIndex);
+    }, [setSelectedIndex]);
+    const { getGridProps, getGridCellProps } = useGrid({
+        matrix: [tags],
+        rowIndex: 0,
+        colIndex: selectedIndex,
+        onChange: gridOnChange,
+    });
+    const hasTag = (tag) => {
+        return tags.includes(tag);
+    };
+    const addTag = (tag) => {
+        onTagsChange([...tags, tag]);
+        setAnnouncement(i18n.addedTag(tag));
+    };
+    const removeTagAt = (at) => {
+        const tag = tags[at];
+        onTagsChange(tags.filter((_, index) => index !== at));
+        setAnnouncement(i18n.removedTag(tag));
+        setSelectedIndex(0);
+        /* Move focus to the first tag once a tag has been removed, after 100ms to let screen reader read the
+           announcement first */
+        setTimeout(() => {
+            const selectedTag = gridRowRef.current?.querySelector(`[tabindex="0"]`);
+            selectedTag?.focus();
+        }, 100);
+    };
+    const handleContainerClick = (e) => {
+        if (e.target === e.currentTarget) {
+            inputRef.current?.focus();
+        }
+    };
+    const handleContainerBlur = () => {
+        setSelectedIndex(0);
+    };
+    const handleInputKeyDown = (e) => {
+        const target = e.target;
+        const tag = target.value;
+        if (tag &&
+            (e.code === "Space" ||
+                e.code === "Enter" ||
+                e.code === "Comma" ||
+                e.code === "Tab")) {
+            e.preventDefault();
+            if (!hasTag(tag)) {
+                addTag(tag);
+            }
+            onInputValueChange("");
+        }
+    };
+    const handleInputChange = (e) => {
+        const currentValue = e.target.value;
+        /* On mobile browsers, the keyDown event doesn't provide the code
+          of the pressed key: https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode,
+          so we need to check for spaces or commas on the change event to let the user
+          adds a tag  */
+        const [tag, separator] = [
+            currentValue.slice(0, -1),
+            currentValue.slice(-1),
+        ];
+        if (separator === " " || separator === ",") {
+            if (tag.length > 0 && !hasTag(tag)) {
+                addTag(tag);
+            }
+            onInputValueChange("");
+        }
+        else {
+            onInputValueChange(currentValue);
+        }
+    };
+    const handleInputPaste = (e) => {
+        e.preventDefault();
+        const data = e.clipboardData.getData("text");
+        const values = new Set(data.split(/[\s,;]+/).filter((value) => !tags.includes(value)));
+        onTagsChange([...tags, ...values]);
+        setAnnouncement(i18n.addedTags([...values]));
+    };
+    const handleTagKeyDown = (index) => (e) => {
+        if (e.code === "Backspace") {
+            e.preventDefault();
+            removeTagAt(index);
+        }
+    };
+    const handleTagCloseClick = (index) => () => {
+        removeTagAt(index);
+    };
+    const getContainerProps = () => ({
+        onClick: handleContainerClick,
+        onBlur: handleContainerBlur,
+        tabIndex: -1,
+    });
+    const getGridRowProps = () => ({
+        role: "row",
+    });
+    const getTagCloseProps = (index) => ({
+        onClick: handleTagCloseClick(index),
+    });
+    const getInputProps = () => ({
+        value: inputValue,
+        onChange: handleInputChange,
+        onKeyDown: handleInputKeyDown,
+        onPaste: handleInputPaste,
+    });
+    const getAnnouncementProps = () => ({
+        "aria-live": "polite",
+        "aria-relevant": "text",
+    });
+    return {
+        getContainerProps,
+        getGridProps,
+        getGridRowProps,
+        getGridCellProps: (index) => getGridCellProps({
+            rowIndex: 0,
+            colIndex: index,
+            onKeyDown: handleTagKeyDown(index),
+        }),
+        getTagCloseProps,
+        getInputProps,
+        announcement,
+        getAnnouncementProps,
+    };
+}
+
+const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const Container$1 = styled(FauxInput) `
+  padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
+
+  // Removes white spaces for inline elements
+  font-size: 0;
+
+  // Same as height of Tag size="large" + base space (4px)
+  // to give some vertical space between tags
+  --line-height: ${(props) => props.theme.space.base * 8 + props.theme.space.base}px;
+  line-height: var(--line-height);
+`;
+const GridCell = styled.span `
+  display: inline-block;
+  margin-right: ${(props) => props.theme.space.sm};
+`;
+const StyledTag = styled(Tag) `
+  ${(props) => focusStyles({
+    theme: props.theme,
+    shadowWidth: "sm",
+    selector: "&:focus",
+})}
+`;
+const InputWrapper = styled.div `
+  display: inline-block;
+  position: relative;
+`;
+const InputMirror = styled(FauxInput) `
+  display: inline-block;
+  min-width: 200px;
+  opacity: 0;
+  user-select: none;
+  height: var(--line-height);
+  line-height: var(--line-height);
+`;
+const StyledInput = styled(Input$1) `
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--line-height);
+  line-height: var(--line-height);
+
+  // override CPH default style. Can be removed once global styles are removed
+  &:focus {
+    border: none !important;
+  }
+`;
+const AnnouncementMessage = styled.span `
+  ${hideVisually()}
+`;
+function CcField({ field }) {
+    const { label, value, name, error, description } = field;
+    const initialValue = value
+        ? value.split(",").map((email) => email.trim())
+        : [];
+    const [tags, setTags] = reactExports.useState(initialValue);
+    const [inputValue, setInputValue] = reactExports.useState("");
+    const inputRef = reactExports.useRef(null);
+    const gridRowRef = reactExports.useRef(null);
+    const { getContainerProps, getGridProps, getGridRowProps, getGridCellProps, getTagCloseProps, getInputProps, getAnnouncementProps, announcement, } = useTagsInputContainer({
+        tags,
+        onTagsChange: setTags,
+        inputValue,
+        onInputValueChange: setInputValue,
+        inputRef,
+        gridRowRef,
+        i18n: {
+            addedTag: (value) => `${value} has been added`,
+            removedTag: (value) => `${value} has been removed`,
+            addedTags: (values) => `${values.join(", ")} have been added`,
+        },
+    });
+    const renderTag = (index, isValid, email) => (jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [!isValid && (jsxRuntimeExports.jsx(Tag.Avatar, { children: jsxRuntimeExports.jsx(SvgAlertWarningStroke, {}) })), jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container$1, { ...getContainerProps(), children: [tags.length > 0 && (jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
+                                const isValid = EMAIL_REGEX.test(email);
+                                return isValid ? (jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }, index)) : (jsxRuntimeExports.jsx(Tooltip, { content: "Invalid e-mail address", children: jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }) }, index));
+                            }) }) })), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
+}
+
 function CreditCard({ field, onChange }) {
     const { label, error, value, name, required, description } = field;
     const handleBlur = (e) => {
@@ -784,28 +1021,7 @@ const ButtonsContainer = styled.div `
   display: flex;
   gap: ${(props) => props.theme.space.sm};
 `;
-/**
- * We are doing an old-school form submission here,
- * so the server can redirect the user to the proper page and
- * show a notification
- */
-async function submitForm(action, data) {
-    const token = await fetchCsrfToken$1();
-    const allData = { ...data, authenticity_token: token };
-    const form = document.createElement("form");
-    form.method = "post";
-    form.action = action;
-    for (const [name, value] of Object.entries(allData)) {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
-    }
-    document.body.appendChild(form);
-    form.submit();
-}
-function AnswerBotModal({ token, articles, requestId, }) {
+function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId, locale, hasRequestManagement, isSignedIn, }) {
     const [expandedIndex, setExpandedIndex] = reactExports.useState(0);
     const [alertMessage, setAlertMessage] = reactExports.useState("");
     const modalContainer = useModalContainer();
@@ -820,28 +1036,70 @@ function AnswerBotModal({ token, articles, requestId, }) {
     const getExpandedArticleId = () => {
         return String(articles[expandedIndex]?.article_id);
     };
-    const solveRequest = () => {
-        submitForm("/hc/answer_bot/solve", {
-            article_id: getExpandedArticleId(),
-            token,
-        });
+    const getUnsolvedRedirectUrl = () => {
+        if (!isSignedIn) {
+            const searchParams = new URLSearchParams();
+            searchParams.set("return_to", `/hc/${locale}/requests`);
+            return `/hc/${locale}?${searchParams.toString()}`;
+        }
+        else if (hasRequestManagement) {
+            return `/hc/${locale}/requests/${requestId}`;
+        }
+        else {
+            return `/hc/${locale}`;
+        }
     };
-    const markArticleAsIrrelevant = () => {
-        submitForm("/hc/answer_bot/irrelevant", {
-            article_id: getExpandedArticleId(),
-            token,
+    const unsolvedNotificationAndRedirect = () => {
+        addFlashNotification({
+            type: "success",
+            message: "Your request was successfully submitted.",
         });
+        window.location.href = getUnsolvedRedirectUrl();
     };
-    const ignoreAnswerBot = () => {
-        submitForm("/hc/answer_bot/ignore", {
-            token,
+    const solveRequest = async () => {
+        const response = await fetch("/api/v2/answer_bot/resolution", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: getExpandedArticleId(),
+                interaction_access_token: interactionAccessToken,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
         });
+        if (response.ok) {
+            addFlashNotification({
+                type: "success",
+                message: "Nice! Your request has been closed.",
+            });
+        }
+        else {
+            addFlashNotification({
+                type: "error",
+                message: "Oops! There was an error closing your request.",
+            });
+        }
+        window.location.href = `/hc/${locale}`;
+    };
+    const markArticleAsIrrelevant = async () => {
+        await fetch("/api/v2/answer_bot/rejection", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: getExpandedArticleId(),
+                interaction_access_token: interactionAccessToken,
+                reason_id: 0,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        unsolvedNotificationAndRedirect();
     };
     return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: () => {
-            ignoreAnswerBot();
+            unsolvedNotificationAndRedirect();
         }, children: [jsxRuntimeExports.jsxs(StyledHeader, { children: [jsxRuntimeExports.jsx(Alert, { type: "success", children: alertMessage }), jsxRuntimeExports.jsx(H2, { children: "While you wait, do any of these articles answer your question?" })] }), jsxRuntimeExports.jsx(Body$2, { children: jsxRuntimeExports.jsx(Accordion, { level: 3, expandedSections: [expandedIndex], onChange: (index) => {
                         setExpandedIndex(index);
-                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${token}`, target: "_blank", children: "View article" })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: "Does this article answer your question?" }), jsxRuntimeExports.jsxs("div", { children: ["If it does, we can close your recent request #", requestId] })] }), jsxRuntimeExports.jsxs(ButtonsContainer, { children: [jsxRuntimeExports.jsx(Button, { onClick: () => {
+                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${authToken}`, target: "_blank", children: "View article" })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: "Does this article answer your question?" }), jsxRuntimeExports.jsxs("div", { children: ["If it does, we can close your recent request #", requestId] })] }), jsxRuntimeExports.jsxs(ButtonsContainer, { children: [jsxRuntimeExports.jsx(Button, { onClick: () => {
                                     markArticleAsIrrelevant();
                                 }, children: "No, I need help" }), jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: () => {
                                     solveRequest();
@@ -856,9 +1114,7 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-const DatePicker = reactExports.lazy(() => import('DatePicker'));
-const CcField = reactExports.lazy(() => import('CcField'));
-function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) {
+function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, hasRequestManagement, isSignedIn, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
@@ -869,7 +1125,7 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: cc_field }) })), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
@@ -886,11 +1142,11 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                                 return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
                             case "priority":
                             case "tickettype":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: locale, valueFormat: "dateTime" }) }))] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: locale, valueFormat: "dateTime" }))] }));
                             case "checkbox":
                                 return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
                             case "date":
-                                return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
+                                return (jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }));
                             case "multiselect":
                                 return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                             case "tagger":
@@ -899,13 +1155,14 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                                 return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                         }
                     }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticket_form_field.options.length === 0 ||
-                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }), answerBot.token &&
+                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }), answerBot.auth_token &&
+                answerBot.interaction_access_token &&
                 answerBot.articles.length > 0 &&
-                answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
+                answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { authToken: answerBot.auth_token, interactionAccessToken: answerBot.interaction_access_token, articles: answerBot.articles, requestId: answerBot.request_id, locale: locale, hasRequestManagement: hasRequestManagement, isSignedIn: isSignedIn }))] }));
 }
 
-function renderNewRequestForm(props, container) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
+function renderNewRequestForm(settings, props, container) {
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 
 export { renderNewRequestForm };
