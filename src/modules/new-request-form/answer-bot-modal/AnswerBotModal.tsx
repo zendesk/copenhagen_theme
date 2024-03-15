@@ -12,13 +12,17 @@ import { Alert } from "@zendeskgarden/react-notifications";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Paragraph } from "@zendeskgarden/react-typography";
-import { fetchCsrfToken } from "../fetchCsrfToken";
 import { useModalContainer } from "../../garden-theme";
+import { addFlashNotification } from "../../notifications";
 
 interface AnswerBotModalProps {
-  token: string;
+  authToken: string;
+  interactionAccessToken: string;
   articles: AnswerBotArticle[];
   requestId: number;
+  locale: string;
+  hasRequestManagement: boolean;
+  isSignedIn: boolean;
 }
 
 const H2 = styled.h2`
@@ -56,35 +60,14 @@ const ButtonsContainer = styled.div`
   gap: ${(props) => props.theme.space.sm};
 `;
 
-/**
- * We are doing an old-school form submission here,
- * so the server can redirect the user to the proper page and
- * show a notification
- */
-async function submitForm(action: string, data: Record<string, string>) {
-  const token = await fetchCsrfToken();
-  const allData = { ...data, authenticity_token: token };
-
-  const form = document.createElement("form");
-  form.method = "post";
-  form.action = action;
-
-  for (const [name, value] of Object.entries(allData)) {
-    const input = document.createElement("input");
-    input.type = "hidden";
-    input.name = name;
-    input.value = value;
-    form.appendChild(input);
-  }
-
-  document.body.appendChild(form);
-  form.submit();
-}
-
 export function AnswerBotModal({
-  token,
+  authToken,
+  interactionAccessToken,
   articles,
   requestId,
+  locale,
+  hasRequestManagement,
+  isSignedIn,
 }: AnswerBotModalProps): JSX.Element {
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [alertMessage, setAlertMessage] = useState("");
@@ -103,31 +86,73 @@ export function AnswerBotModal({
     return String(articles[expandedIndex]?.article_id);
   };
 
-  const solveRequest = () => {
-    submitForm("/hc/answer_bot/solve", {
-      article_id: getExpandedArticleId(),
-      token,
-    });
+  const getUnsolvedRedirectUrl = () => {
+    if (!isSignedIn) {
+      const searchParams = new URLSearchParams();
+      searchParams.set("return_to", `/hc/${locale}/requests`);
+      return `/hc/${locale}?${searchParams.toString()}`;
+    } else if (hasRequestManagement) {
+      return `/hc/${locale}/requests/${requestId}`;
+    } else {
+      return `/hc/${locale}`;
+    }
   };
 
-  const markArticleAsIrrelevant = () => {
-    submitForm("/hc/answer_bot/irrelevant", {
-      article_id: getExpandedArticleId(),
-      token,
+  const unsolvedNotificationAndRedirect = () => {
+    addFlashNotification({
+      type: "success",
+      message: "Your request was successfully submitted.",
     });
+    window.location.href = getUnsolvedRedirectUrl();
   };
 
-  const ignoreAnswerBot = () => {
-    submitForm("/hc/answer_bot/ignore", {
-      token,
+  const solveRequest = async () => {
+    const response = await fetch("/api/v2/answer_bot/resolution", {
+      method: "POST",
+      body: JSON.stringify({
+        article_id: getExpandedArticleId(),
+        interaction_access_token: interactionAccessToken,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
+
+    if (response.ok) {
+      addFlashNotification({
+        type: "success",
+        message: "Nice! Your request has been closed.",
+      });
+    } else {
+      addFlashNotification({
+        type: "error",
+        message: "Oops! There was an error closing your request.",
+      });
+    }
+    window.location.href = `/hc/${locale}`;
+  };
+
+  const markArticleAsIrrelevant = async () => {
+    await fetch("/api/v2/answer_bot/rejection", {
+      method: "POST",
+      body: JSON.stringify({
+        article_id: getExpandedArticleId(),
+        interaction_access_token: interactionAccessToken,
+        reason_id: 0,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    unsolvedNotificationAndRedirect();
   };
 
   return (
     <Modal
       appendToNode={modalContainer}
       onClose={() => {
-        ignoreAnswerBot();
+        unsolvedNotificationAndRedirect();
       }}
     >
       <StyledHeader>
@@ -153,7 +178,7 @@ export function AnswerBotModal({
                 <ArticleLink
                   tabIndex={expandedIndex === index ? 0 : -1}
                   isExternal
-                  href={`${html_url}?auth_token=${token}`}
+                  href={`${html_url}?auth_token=${authToken}`}
                   target="_blank"
                 >
                   View article

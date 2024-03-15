@@ -27,6 +27,8 @@ export interface NewRequestFormProps {
   answerBot: AnswerBot;
   parentId: string;
   locale: string;
+  hasRequestManagement: boolean;
+  isSignedIn: boolean;
 }
 
 const Form = styled.form`
@@ -45,6 +47,8 @@ export function NewRequestForm({
   answerBot,
   parentId,
   locale,
+  hasRequestManagement,
+  isSignedIn,
 }: NewRequestFormProps) {
   const {
     ticket_fields,
@@ -223,13 +227,18 @@ export function NewRequestForm({
           )}
         </Footer>
       </Form>
-      {answerBot.token &&
+      {answerBot.auth_token &&
+        answerBot.interaction_access_token &&
         answerBot.articles.length > 0 &&
         answerBot.request_id && (
           <AnswerBotModal
-            token={answerBot.token}
+            authToken={answerBot.auth_token}
+            interactionAccessToken={answerBot.interaction_access_token}
             articles={answerBot.articles}
             requestId={answerBot.request_id}
+            locale={locale}
+            hasRequestManagement={hasRequestManagement}
+            isSignedIn={isSignedIn}
           />
         )}
     </>
