@@ -1,5 +1,58 @@
-import { j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, T as Textarea, s as styled, h as hideVisually, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, u as useToast, N as Notification, l as Title, m as Close, n as useDropzone, o as FileUpload, $ as $e, q as Header$1, t as Footer$2, v as Modal, w as Alert, B as Body$2, x as Accordion, y as Paragraph, z as Button, D as Close$2, E as reactDomExports } from 'vendor';
-import { u as useModalContainer, T as ThemeProviders } from 'useModalContainer';
+import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, u as useToast, n as Notification, o as Title, q as Close, t as useDropzone, v as FileUpload, w as Datepicker, x as useGrid, y as focusStyles, z as FauxInput, B as Tag, E as SvgAlertWarningStroke, $ as $e, G as Header$1, J as Footer$2, K as Modal, Q as Alert, R as Body$2, U as Accordion, V as Paragraph, W as Button, X as Close$2, Y as reactDomExports } from 'vendor-bundle';
+
+function createTheme(settings) {
+    return {
+        ...DEFAULT_THEME,
+        rtl: document.dir === "rtl",
+        colors: {
+            ...DEFAULT_THEME.colors,
+            foreground: settings.text_color,
+            primaryHue: settings.brand_color,
+        },
+        components: {
+            "buttons.anchor": Ne `
+        color: ${settings.link_color};
+
+        :hover,
+        :active,
+        :focus {
+          color: ${settings.hover_link_color};
+        }
+
+        &:visited {
+          color: ${settings.visited_link_color};
+        }
+      `,
+        },
+    };
+}
+
+const ModalContainerContext = reactExports.createContext(null);
+
+// z-index needs to be higher than the z-index of the navbar,
+const ModalContainer = styled.div `
+  z-index: 2147483647;
+  position: fixed;
+`;
+function ModalContainerProvider({ children, }) {
+    const [container, setContainer] = reactExports.useState();
+    const containerRefCallback = (element) => {
+        setContainer(element);
+    };
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ModalContainer, { ref: containerRefCallback }), container && (jsxRuntimeExports.jsx(ModalContainerContext.Provider, { value: container, children: children }))] }));
+}
+
+function ThemeProviders({ theme, children, }) {
+    return (jsxRuntimeExports.jsx(ThemeProvider, { theme: theme, children: jsxRuntimeExports.jsx(ToastProvider, { zIndex: 2147483647, children: jsxRuntimeExports.jsx(ModalContainerProvider, { children: children }) }) }));
+}
+
+function useModalContainer() {
+    const modalContainer = reactExports.useContext(ModalContainerContext);
+    if (modalContainer === null) {
+        throw new Error("useModalContainer should be used inside a ModalContainerProvider");
+    }
+    return modalContainer;
+}
 
 function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
@@ -634,6 +687,235 @@ function useEndUserConditions(fields, endUserConditions) {
     }, []);
 }
 
+function DatePicker({ field, locale, valueFormat, }) {
+    const { label, error, value, name, required, description } = field;
+    const [date, setDate] = reactExports.useState(value ? new Date(value) : undefined);
+    const handleChange = (date) => {
+        // Set the time to 12:00:00 as this is also the expected behavior across Support and the API
+        setDate(new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0)));
+    };
+    const formatDate = (value) => {
+        if (value === undefined) {
+            return "";
+        }
+        const isoString = value.toISOString();
+        return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
+    };
+    const handleInputChange = (e) => {
+        // Allow field to be cleared
+        if (e.target.value === "") {
+            setDate(undefined);
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Datepicker, { value: date, onChange: handleChange, locale: locale, children: jsxRuntimeExports.jsx(Input$1, { required: required, lang: locale, onChange: handleInputChange }) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: formatDate(date) })] }));
+}
+
+function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueChange, inputRef, gridRowRef, i18n, }) {
+    const [selectedIndex, setSelectedIndex] = reactExports.useState(0);
+    const [announcement, setAnnouncement] = reactExports.useState("");
+    const gridOnChange = reactExports.useCallback((_, colIndex) => {
+        setSelectedIndex(colIndex);
+    }, [setSelectedIndex]);
+    const { getGridProps, getGridCellProps } = useGrid({
+        matrix: [tags],
+        rowIndex: 0,
+        colIndex: selectedIndex,
+        onChange: gridOnChange,
+    });
+    const hasTag = (tag) => {
+        return tags.includes(tag);
+    };
+    const addTag = (tag) => {
+        onTagsChange([...tags, tag]);
+        setAnnouncement(i18n.addedTag(tag));
+    };
+    const removeTagAt = (at) => {
+        const tag = tags[at];
+        onTagsChange(tags.filter((_, index) => index !== at));
+        setAnnouncement(i18n.removedTag(tag));
+        setSelectedIndex(0);
+        /* Move focus to the first tag once a tag has been removed, after 100ms to let screen reader read the
+           announcement first */
+        setTimeout(() => {
+            const selectedTag = gridRowRef.current?.querySelector(`[tabindex="0"]`);
+            selectedTag?.focus();
+        }, 100);
+    };
+    const handleContainerClick = (e) => {
+        if (e.target === e.currentTarget) {
+            inputRef.current?.focus();
+        }
+    };
+    const handleContainerBlur = () => {
+        setSelectedIndex(0);
+    };
+    const handleInputKeyDown = (e) => {
+        const target = e.target;
+        const tag = target.value;
+        if (tag &&
+            (e.code === "Space" ||
+                e.code === "Enter" ||
+                e.code === "Comma" ||
+                e.code === "Tab")) {
+            e.preventDefault();
+            if (!hasTag(tag)) {
+                addTag(tag);
+            }
+            onInputValueChange("");
+        }
+    };
+    const handleInputChange = (e) => {
+        const currentValue = e.target.value;
+        /* On mobile browsers, the keyDown event doesn't provide the code
+          of the pressed key: https://www.w3.org/TR/uievents/#determine-keydown-keyup-keyCode,
+          so we need to check for spaces or commas on the change event to let the user
+          adds a tag  */
+        const [tag, separator] = [
+            currentValue.slice(0, -1),
+            currentValue.slice(-1),
+        ];
+        if (separator === " " || separator === ",") {
+            if (tag.length > 0 && !hasTag(tag)) {
+                addTag(tag);
+            }
+            onInputValueChange("");
+        }
+        else {
+            onInputValueChange(currentValue);
+        }
+    };
+    const handleInputPaste = (e) => {
+        e.preventDefault();
+        const data = e.clipboardData.getData("text");
+        const values = new Set(data.split(/[\s,;]+/).filter((value) => !tags.includes(value)));
+        onTagsChange([...tags, ...values]);
+        setAnnouncement(i18n.addedTags([...values]));
+    };
+    const handleTagKeyDown = (index) => (e) => {
+        if (e.code === "Backspace") {
+            e.preventDefault();
+            removeTagAt(index);
+        }
+    };
+    const handleTagCloseClick = (index) => () => {
+        removeTagAt(index);
+    };
+    const getContainerProps = () => ({
+        onClick: handleContainerClick,
+        onBlur: handleContainerBlur,
+        tabIndex: -1,
+    });
+    const getGridRowProps = () => ({
+        role: "row",
+    });
+    const getTagCloseProps = (index) => ({
+        onClick: handleTagCloseClick(index),
+    });
+    const getInputProps = () => ({
+        value: inputValue,
+        onChange: handleInputChange,
+        onKeyDown: handleInputKeyDown,
+        onPaste: handleInputPaste,
+    });
+    const getAnnouncementProps = () => ({
+        "aria-live": "polite",
+        "aria-relevant": "text",
+    });
+    return {
+        getContainerProps,
+        getGridProps,
+        getGridRowProps,
+        getGridCellProps: (index) => getGridCellProps({
+            rowIndex: 0,
+            colIndex: index,
+            onKeyDown: handleTagKeyDown(index),
+        }),
+        getTagCloseProps,
+        getInputProps,
+        announcement,
+        getAnnouncementProps,
+    };
+}
+
+const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const Container$1 = styled(FauxInput) `
+  padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
+
+  // Removes white spaces for inline elements
+  font-size: 0;
+
+  // Same as height of Tag size="large" + base space (4px)
+  // to give some vertical space between tags
+  --line-height: ${(props) => props.theme.space.base * 8 + props.theme.space.base}px;
+  line-height: var(--line-height);
+`;
+const GridCell = styled.span `
+  display: inline-block;
+  margin-right: ${(props) => props.theme.space.sm};
+`;
+const StyledTag = styled(Tag) `
+  ${(props) => focusStyles({
+    theme: props.theme,
+    shadowWidth: "sm",
+    selector: "&:focus",
+})}
+`;
+const InputWrapper = styled.div `
+  display: inline-block;
+  position: relative;
+`;
+const InputMirror = styled(FauxInput) `
+  display: inline-block;
+  min-width: 200px;
+  opacity: 0;
+  user-select: none;
+  height: var(--line-height);
+  line-height: var(--line-height);
+`;
+const StyledInput = styled(Input$1) `
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: var(--line-height);
+  line-height: var(--line-height);
+
+  // override CPH default style. Can be removed once global styles are removed
+  &:focus {
+    border: none !important;
+  }
+`;
+const AnnouncementMessage = styled.span `
+  ${hideVisually()}
+`;
+function CcField({ field }) {
+    const { label, value, name, error, description } = field;
+    const initialValue = value
+        ? value.split(",").map((email) => email.trim())
+        : [];
+    const [tags, setTags] = reactExports.useState(initialValue);
+    const [inputValue, setInputValue] = reactExports.useState("");
+    const inputRef = reactExports.useRef(null);
+    const gridRowRef = reactExports.useRef(null);
+    const { getContainerProps, getGridProps, getGridRowProps, getGridCellProps, getTagCloseProps, getInputProps, getAnnouncementProps, announcement, } = useTagsInputContainer({
+        tags,
+        onTagsChange: setTags,
+        inputValue,
+        onInputValueChange: setInputValue,
+        inputRef,
+        gridRowRef,
+        i18n: {
+            addedTag: (value) => `${value} has been added`,
+            removedTag: (value) => `${value} has been removed`,
+            addedTags: (values) => `${values.join(", ")} have been added`,
+        },
+    });
+    const renderTag = (index, isValid, email) => (jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [!isValid && (jsxRuntimeExports.jsx(Tag.Avatar, { children: jsxRuntimeExports.jsx(SvgAlertWarningStroke, {}) })), jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container$1, { ...getContainerProps(), children: [tags.length > 0 && (jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
+                                const isValid = EMAIL_REGEX.test(email);
+                                return isValid ? (jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }, index)) : (jsxRuntimeExports.jsx(Tooltip, { content: "Invalid e-mail address", children: jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }) }, index));
+                            }) }) })), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
+}
+
 function CreditCard({ field, onChange }) {
     const { label, error, value, name, required, description } = field;
     const handleBlur = (e) => {
@@ -856,8 +1138,6 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-const DatePicker = reactExports.lazy(() => import('DatePicker'));
-const CcField = reactExports.lazy(() => import('CcField'));
 function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
@@ -869,7 +1149,7 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(CcField, { field: cc_field }) })), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
@@ -886,11 +1166,11 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                                 return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
                             case "priority":
                             case "tickettype":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: locale, valueFormat: "dateTime" }) }))] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: locale, valueFormat: "dateTime" }))] }));
                             case "checkbox":
                                 return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
                             case "date":
-                                return (jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {}), children: jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }) }));
+                                return (jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }));
                             case "multiselect":
                                 return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                             case "tagger":
@@ -904,8 +1184,8 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }
 
-function renderNewRequestForm(props, container) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
+function renderNewRequestForm(settings, props, container) {
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 
 export { renderNewRequestForm };
