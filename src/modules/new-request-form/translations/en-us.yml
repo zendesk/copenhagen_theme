@@ -1,0 +1,144 @@
+title: "Copenhagen Theme New Request Form"
+packages:
+  - "new-request-form"
+parts:
+  - translation:
+      key: "new-request-form.answer-bot-modal.title"
+      title: "Title for the Answer Bot modal"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "While you wait, do any of these articles answer your question?"
+  - translation:
+      key: "new-request-form.answer-bot-modal.view-article"
+      title: "Label for the link to view a suggested article in the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "View article"
+  - translation:
+      key: "new-request-form.answer-bot-modal.footer-title"
+      title: "Title of the footer of the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "Does this article answer your question?"
+  - translation:
+      key: "new-request-form.answer-bot-modal.footer-content"
+      title: "Title of the footer of the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "If it does, we can close your recent request {{requestId}}"
+  - translation:
+      key: "new-request-form.answer-bot-modal.mark-irrelevant"
+      title: "Label of the button used to mark a suggested article as irrelevant in the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "No, I need help"
+  - translation:
+      key: "new-request-form.answer-bot-modal.solve-request"
+      title: "Label of the button used to close the request in the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "Yes, close my request"
+  - translation:
+      key: "new-request-form.answer-bot-modal.request-submitted"
+      title: "Notification used in the Answer Bot Modal to inform the user that their request was submitted"
+      screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
+      value: "Your request was successfully submitted"
+  - translation:
+      key: "new-request-form.answer-bot-modal.request-closed"
+      title: "Notification shown after a request has been closed from the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/1ypC8cFgu198OkiUkr9I0cqtzIjqZl9PQ/view?usp=drive_link"
+      value: "Nice. Your request has been closed."
+  - translation:
+      key: "new-request-form.answer-bot-modal.solve-error"
+      title: "Notification shown when there is an error closing a request from the Answer Bot Modal"
+      screenshot: "https://drive.google.com/file/d/1AJxNZ6HNoFbANJiRSfzOxUTGfJ2XYqyH/view?usp=sharing"
+      value: "There was an error closing your request"
+  - translation:
+      key: "new-request-form.dropdown.empty-option"
+      title: "[A11Y] Hidden label for screen readers, describing an empty option in a dropdown"
+      screenshot: "https://drive.google.com/file/d/1enaOJceIEIVn_uYqvaF4AHlE1_RIpjqe/view?usp=drive_link"
+      value: "Select an option"
+  - translation:
+      key: "new-request-form.suggested-articles"
+      title: "Title for the suggested articles section"
+      screenshot: "https://drive.google.com/file/d/1enaOJceIEIVn_uYqvaF4AHlE1_RIpjqe/view?usp=drive_link"
+      value: "Suggested articles"
+  - translation:
+      key: "new-request-form.attachments.upload-error-title"
+      title: "Title of the notification shown when the upload of an attachment failed"
+      screenshot: "https://drive.google.com/file/d/19pYyTsdX_PzxZpMmN3-1sQn7gG_3bxl6/view?usp=drive_link"
+      value: "Upload error"
+  - translation:
+      key: "new-request-form.attachments.upload-error-description"
+      title: "Description of the notification shown when the upload of an attachment failed. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [There was an error uploading the file {{fileName}}. Try again or upload another file.] "
+      screenshot: "https://drive.google.com/file/d/19pYyTsdX_PzxZpMmN3-1sQn7gG_3bxl6/view?usp=drive_link"
+      value: "There was an error uploading {{fileName}}. Try again or upload another file."
+  - translation:
+      key: "new-request-form.attachments.drop-files-label"
+      title: "Label shown when a file is dragged over the attachment field"
+      screenshot: "https://drive.google.com/file/d/1T_2Eahrfs8iITZWvgAR6wxrxEdsy2D2G/view?usp=drive_link"
+      value: "Drop files here"
+  - translation:
+      key: "new-request-form.attachments.choose-file-label"
+      title: "Label for the attachments field"
+      screenshot: "https://drive.google.com/file/d/1T_2Eahrfs8iITZWvgAR6wxrxEdsy2D2G/view?usp=drive_link"
+      value: "Choose a file or drag and drop here"
+  - translation:
+      key: "new-request-form.attachments.stop-upload"
+      title: "Tooltip for the button for stopping the upload of an attachment"
+      screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
+      value: "Stop upload"
+  - translation:
+      key: "new-request-form.attachments.remove-file"
+      title: "Tooltip for the button for removing an attachment"
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "Remove file"
+  - translation:
+      key: "new-request-form.attachments.uploading"
+      title: "[A11Y] Hidden label for screen readers for the upload attachment progress bar. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Uploading the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
+      value: "Uploading {{fileName}}"
+  - translation:
+      key: "new-request-form.submit"
+      title: "Submit button for the New Request Form"
+      screenshot: "https://drive.google.com/file/d/1VuVYpxGA-uAGbvscl2WXTJ24yK5QydhZ/view?usp=drive_link"
+      value: "Submit"
+  - translation:
+      key: "new-request-form.cc-field.email-removed"
+      title: "[A11Y] Announcement read by screen readers when an e-mail is removed from the CC field. {{email}} will be replaced by an email address, e.g., [test@example.com]. Alternative English if you encounter declension issues: [The email address {{email}} has been removed]"
+      screenshot: "https://drive.google.com/file/d/19iWawEvm6PJw1D2M7I1b32ntMDb7GqNw/view?usp=drive_link"
+      value: "{{email}} has been removed"
+  - translation:
+      key: "new-request-form.cc-field.email-added"
+      title: "[A11Y] Announcement read by screen readers when an e-mail is added to the CC field. {{email}} will be replaced by an email address, e.g., [test@example.com]. Alternative English if you encounter declension issues: [The email address {{email}} has been added]"
+      screenshot: "https://drive.google.com/file/d/19iWawEvm6PJw1D2M7I1b32ntMDb7GqNw/view?usp=drive_link"
+      value: "{{email}} has been added"
+  - translation:
+      key: "new-request-form.cc-field.emails-added"
+      title: "[A11Y] Announcement read by screen readers when multiple e-mails are added to the CC field. The emails variable contains a comma-separated list of e-mails. Alternative English if you encounter declension issues: [The email addresses {{emails}} have been added]"
+      screenshot: "https://drive.google.com/file/d/19iWawEvm6PJw1D2M7I1b32ntMDb7GqNw/view?usp=drive_link"
+      value: "{{emails}} have been added"
+  - translation:
+      key: "new-request-form.cc-field.email-label"
+      title: "[A11Y] Hidden label for screen readers for an e-mail tag present in the CC field. {{email}} will be replaced by an email address, e.g., [test@example.com]"
+      screenshot: "https://drive.google.com/file/d/19iWawEvm6PJw1D2M7I1b32ntMDb7GqNw/view?usp=drive_link"
+      value: "{{email}} - Press Backspace to remove"
+  - translation:
+      key: "new-request-form.cc-field.container-label"
+      title: "[A11Y] Hidden label for screen readers for the e-mails container in the CC field."
+      screenshot: "https://drive.google.com/file/d/19iWawEvm6PJw1D2M7I1b32ntMDb7GqNw/view?usp=drive_link"
+      value: "Selected CC emails"
+  - translation:
+      key: "new-request-form.cc-field.invalid-email"
+      title: "Tooltip for invalid e-mails in the CC field"
+      screenshot: "https://drive.google.com/file/d/1X59VCfjeriBXFdC3e4PJsLUJEPKqYuek/view?usp=drive_link"
+      value: "Invalid email address"
+  - translation:
+      key: "new-request-form.close-label"
+      title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
+      screenshot: ""
+      value: "Close"
+  - translation:
+      key: "new-request-form.parent-request-link"
+      title: "Message shown on top of the New Request Form when the new request is created as a follow up of another request"
+      screenshot: "https://drive.google.com/file/d/16VML2kAoIW1WuzlkT5GiGxF2Wd2BWUPb/view?usp=drive_link"
+      value: "Follow-up to request {{parentId}}"
+  - translation:
+      key: "new-request-form.required-fields-info"
+      title: "Message shown on top of the New Request Form, informing the user that required fields are marked with an asterisk"
+      screenshot: "https://drive.google.com/file/d/1EXEh7S9_GZrz4WBVcHWM8DmXetcXoHDu/view?usp=drive_link"
+      value: "Fields marked with an asterisk (*) are required."
