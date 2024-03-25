@@ -26,11 +26,11 @@
   const settings = {{json settings}};
   const requestForm = {{json new_request_form}};
   const parentId = {{json parent_id}};
-  const locale = {{json help_center.locale}};
+  const hcLocale = {{json help_center.locale}};
   const answerBot = {{json answer_bot}}
 
   const container = document.getElementById("new-request-form");
-  const props = { settings, requestForm, answerBot, parentId, locale, wysiwyg: true };
+  const props = { settings, requestForm, answerBot, parentId, hcLocale, wysiwyg: true };
 
   renderNewRequestForm(settings, props, container);
 </script>

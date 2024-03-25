@@ -1,4 +1,4 @@
-import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, u as useTranslation, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, n as useToast, o as Notification, q as Title, t as Close, v as useDropzone, w as FileUpload, x as Datepicker, y as useGrid, z as focusStyles, B as FauxInput, E as Tag, G as SvgAlertWarningStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as reactDomExports } from 'vendor-bundle';
+import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, u as useTranslation, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, n as useToast, o as Notification, q as Title, t as Close, v as useDropzone, w as FileUpload, x as Datepicker, y as useGrid, z as focusStyles, B as FauxInput, E as Tag, G as SvgAlertWarningStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
 
 function createTheme(settings) {
     return {
@@ -1018,7 +1018,7 @@ function hasMinLength(value) {
         return value.length >= 3;
     }
 }
-function SuggestedArticles({ query: inputQuery, locale, }) {
+function SuggestedArticles({ query: inputQuery, hcLocale, }) {
     const debouncedQuery = useDebounce(inputQuery, 500);
     const [articles, setArticles] = reactExports.useState([]);
     const requestsCache = reactExports.useRef({});
@@ -1030,7 +1030,7 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
             return;
         }
         const requestUrl = new URL(`${window.location.origin}/api/v2/help_center/deflection/suggestions.json`);
-        requestUrl.searchParams.append("locale", locale);
+        requestUrl.searchParams.append("locale", hcLocale);
         requestUrl.searchParams.append("query", query);
         const cachedResponse = requestsCache.current[requestUrl.toString()];
         if (cachedResponse) {
@@ -1043,7 +1043,7 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
             requestsCache.current[requestUrl.toString()] = results;
             setArticles(results);
         });
-    }, [debouncedQuery, locale]);
+    }, [debouncedQuery, hcLocale]);
     return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: t("new-request-form.suggested-articles", "Suggested articles") }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
 }
 
@@ -1143,6 +1143,383 @@ function AnswerBotModal({ token, articles, requestId, }) {
                                 }, children: t("new-request-form.answer-bot-modal.solve-request", "Yes, close my request") })] })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": t("new-request-form.close-label", "Close") })] }));
 }
 
+var am = "en-us";
+var gl = "es-es";
+var gu = "en-us";
+var ikt = "en-us";
+var iu = "en-us";
+var km = "en-us";
+var kn = "en-us";
+var ky = "en-us";
+var ml = "en-us";
+var mn = "en-us";
+var mr = "en-us";
+var nb = "no";
+var ne = "en-us";
+var nn = "no";
+var pa = "en-us";
+var ps = "en-us";
+var si = "en-us";
+var so = "en-us";
+var sw = "en-us";
+var ta = "en-us";
+var te = "en-us";
+var tg = "en-us";
+var ti = "en-us";
+var tk = "en-us";
+var tl = "fil";
+var uz = "en-us";
+var xh = "en-us";
+var lo = "en-us";
+var ast = "es";
+var rw = "en-us";
+var ln = "en-us";
+var localeMapping = {
+	"af-za": "af",
+	"ajp-ps": "ar",
+	am: am,
+	"apc-ps": "ar",
+	"ar-ae": "ar",
+	"ar-bh": "ar",
+	"ar-br": "ar",
+	"ar-eg": "ar",
+	"ar-il": "ar",
+	"ar-kw": "ar",
+	"ar-lb": "ar",
+	"ar-ma": "ar",
+	"ar-om": "ar",
+	"ar-ps": "ar",
+	"ar-qa": "ar",
+	"ar-sa": "ar",
+	"as-in": "en-us",
+	"ay-bo": "en-us",
+	"bg-bg": "bg",
+	"bn-in": "bn",
+	"ca-es": "ca",
+	"cs-cz": "cs",
+	"da-dk": "da",
+	"de-at": "de",
+	"de-be": "de",
+	"de-ch": "de",
+	"de-de": "de",
+	"de-dk": "de",
+	"de-it": "de",
+	"de-li": "de",
+	"de-lu": "de",
+	"de-ro": "de",
+	"el-cy": "el",
+	"el-gr": "el",
+	"en-142": "en-001",
+	"en-ae": "en-001",
+	"en-am": "en-001",
+	"en-at": "en-150",
+	"en-az": "en-001",
+	"en-ba": "en-150",
+	"en-be": "en-001",
+	"en-bg": "en-150",
+	"en-bh": "en-001",
+	"en-bo": "en-us",
+	"en-br": "en-001",
+	"en-bz": "en-001",
+	"en-ch": "en-150",
+	"en-co": "en-us",
+	"en-cr": "en-us",
+	"en-cy": "en-001",
+	"en-cz": "en-150",
+	"en-de": "en-150",
+	"en-dk": "en-150",
+	"en-ec": "en-us",
+	"en-ee": "en-150",
+	"en-eg": "en-001",
+	"en-es": "en-150",
+	"en-fi": "en-150",
+	"en-fr": "en-150",
+	"en-ge": "en-001",
+	"en-gf": "en-001",
+	"en-gh": "en-001",
+	"en-gi": "en-001",
+	"en-gp": "en-001",
+	"en-gr": "en-150",
+	"en-gu": "en-us",
+	"en-hk": "en-001",
+	"en-hn": "en-us",
+	"en-hr": "en-150",
+	"en-hu": "en-150",
+	"en-id": "en-001",
+	"en-ie": "en-001",
+	"en-il": "en-001",
+	"en-in": "en-001",
+	"en-is": "en-001",
+	"en-it": "en-150",
+	"en-jp": "en-001",
+	"en-ke": "en-001",
+	"en-kr": "en-001",
+	"en-kw": "en-001",
+	"en-kz": "en-001",
+	"en-lb": "en-001",
+	"en-li": "en-001",
+	"en-lr": "en-001",
+	"en-lt": "en-150",
+	"en-lu": "en-150",
+	"en-lv": "en-150",
+	"en-ma": "en-001",
+	"en-me": "en-150",
+	"en-mf": "en-001",
+	"en-mq": "en-001",
+	"en-mt": "en-001",
+	"en-mx": "en-us",
+	"en-ng": "en-us",
+	"en-nl": "en-150",
+	"en-no": "en-150",
+	"en-nz": "en-001",
+	"en-om": "en-001",
+	"en-pe": "en-us",
+	"en-pk": "en-001",
+	"en-pl": "en-150",
+	"en-pr": "en-us",
+	"en-ps": "en-001",
+	"en-pt": "en-150",
+	"en-qa": "en-001",
+	"en-re": "en-001",
+	"en-ro": "en-150",
+	"en-rs": "en-150",
+	"en-ru": "en-001",
+	"en-rw": "en-001",
+	"en-sa": "en-001",
+	"en-sg": "en-001",
+	"en-si": "en-150",
+	"en-sk": "en-150",
+	"en-th": "en-001",
+	"en-tn": "en-001",
+	"en-tr": "en-001",
+	"en-tw": "en-001",
+	"en-ua": "en-150",
+	"en-ug": "en-001",
+	"en-vn": "en-001",
+	"en-yt": "en-001",
+	"en-za": "en-001",
+	"es-001": "es",
+	"es-ar": "es-419",
+	"es-bo": "es-419",
+	"es-cl": "es-419",
+	"es-co": "es-419",
+	"es-cr": "es-419",
+	"es-do": "es-419",
+	"es-ec": "es-419",
+	"es-gt": "es-419",
+	"es-hn": "es-419",
+	"es-mx": "es-419",
+	"es-ni": "es-419",
+	"es-pa": "es-419",
+	"es-pe": "es-419",
+	"es-pr": "es-419",
+	"es-py": "es-419",
+	"es-sv": "es-419",
+	"es-us": "es-419",
+	"es-uy": "es-419",
+	"es-ve": "es-419",
+	"et-ee": "et",
+	"eu-es": "eu",
+	"fi-fi": "fi",
+	"fo-dk": "fo",
+	"fr-002": "fr",
+	"fr-be": "fr",
+	"fr-ch": "fr",
+	"fr-ci": "fr",
+	"fr-fr": "fr",
+	"fr-gf": "fr",
+	"fr-gl": "fr",
+	"fr-gp": "fr",
+	"fr-it": "fr",
+	"fr-lu": "fr",
+	"fr-ma": "fr",
+	"fr-mf": "fr",
+	"fr-mq": "fr",
+	"fr-re": "fr",
+	"fr-yt": "fr",
+	"ga-ie": "ga",
+	gl: gl,
+	"gl-es": "gl",
+	gu: gu,
+	"gu-in": "gu",
+	"he-il": "he",
+	"hi-in": "hi",
+	"hr-hr": "hr",
+	"hu-hu": "hu",
+	"hu-ro": "hu",
+	"hu-sk": "hu",
+	"hu-ua": "hu",
+	"id-id": "id",
+	ikt: ikt,
+	"is-is": "is",
+	"it-it": "it",
+	iu: iu,
+	"ja-jp": "ja",
+	"jv-id": "en-us",
+	"kl-dk": "en-us",
+	km: km,
+	kn: kn,
+	"kn-in": "kn",
+	"ko-kr": "ko",
+	"ks-in": "en-us",
+	ky: ky,
+	"lt-lt": "lt",
+	"lt-lv": "lt",
+	"lv-lv": "lv",
+	"mi-nz": "en-us",
+	ml: ml,
+	"ml-in": "ml",
+	mn: mn,
+	mr: mr,
+	"mr-in": "mr",
+	"ms-my": "ms",
+	nb: nb,
+	"nb-no": "no",
+	ne: ne,
+	"nl-id": "nl",
+	"nl-nl": "nl",
+	nn: nn,
+	"nn-no": "nn",
+	"nso-za": "en-us",
+	"or-in": "en-us",
+	pa: pa,
+	"pa-in": "pa",
+	"pl-cz": "pl",
+	"pl-lt": "pl",
+	"pl-pl": "pl",
+	"pl-ua": "pl",
+	ps: ps,
+	"ps-af": "ps",
+	"pt-pt": "pt",
+	"qu-bo": "en-us",
+	"qu-ec": "en-us",
+	"qu-pe": "en-us",
+	"rn-bi": "en-US",
+	"ro-bg": "ro",
+	"ro-ro": "ro",
+	"ro-sk": "ro",
+	"ro-ua": "ro",
+	"ru-ee": "ru",
+	"ru-kz": "ru",
+	"ru-lt": "ru",
+	"ru-lv": "ru",
+	"ru-ua": "ru",
+	"sa-in": "en-us",
+	"sd-in": "en-us",
+	si: si,
+	"sk-cz": "sk",
+	"sk-sk": "sk",
+	"sl-si": "sl",
+	so: so,
+	"st-za": "en-us",
+	"sv-fi": "sv",
+	"sv-se": "sv",
+	sw: sw,
+	"sw-rw": "sw",
+	"sw-tz": "sw",
+	ta: ta,
+	"ta-in": "ta",
+	te: te,
+	"te-in": "te",
+	tg: tg,
+	ti: ti,
+	tk: tk,
+	tl: tl,
+	"tn-za": "en-us",
+	"tr-bg": "tr",
+	"ts-za": "en-us",
+	"uk-sk": "uk",
+	"uk-ua": "uk",
+	"ur-in": "ur",
+	"ur-pk": "ur",
+	uz: uz,
+	"vi-vn": "vi",
+	xh: xh,
+	"xh-za": "xh",
+	"zh-hk": "zh-tw",
+	"zh-mo": "zh-tw",
+	"zh-sg": "zh-cn",
+	"zu-za": "en-us",
+	lo: lo,
+	"en-do": "en-001",
+	ast: ast,
+	"fr-ht": "fr",
+	rw: rw,
+	ln: ln,
+	"en-ar": "en-001",
+	"en-cl": "en-001",
+	"fr-de": "fr",
+	"nl-de": "nl",
+	"tr-tr": "tr",
+	"en-tz": "en-001",
+	"fr-at": "fr",
+	"fr-li": "fr",
+	"fr-001": "fr",
+	"ar-001": "ar",
+	"he-001": "he"
+};
+
+/**
+ * Help Center supports some non standard locale variants, as documented here:
+ * https://support.zendesk.com/hc/en-us/articles/4408821324826-Zendesk-language-support-by-product#h_01EYXD488X3XK23TG9VPG0W6KS
+ *
+ * This function returns a standard Unicode CLDR locale for an Help Center locale. The returned
+ * locale can be used for loading translations and using the Intl API in the browser.
+ *
+ * The mapping between the locales is performed using a JSON file generated from a script
+ *
+ * @param hcLocale Help Center locale
+ * @returns CLDR Locale
+ */
+function getCldrLocale(hcLocale) {
+    return localeMapping[hcLocale] ?? hcLocale;
+}
+
+async function loadTranslations(locale, manifest) {
+    try {
+        const BASE_URL = manifest.baseUrl;
+        const fileUrl = manifest.files[locale];
+        if (fileUrl === undefined) {
+            return {};
+        }
+        const content = await (await fetch(`${BASE_URL}${fileUrl}`)).json();
+        return content.translations;
+    }
+    catch (e) {
+        console.error("Error fetching translations", e);
+        return {};
+    }
+}
+/**
+ * This function adds the translations published on the Zendesk CDN to i18next,
+ * taking the CLDR locale and a manifest as input.
+ *
+ * If you want to load your own translations you can use a different setup following the i18next
+ * documentation.
+ *
+ * @param locale The CLDR locale
+ * @param manifest A manifest object containing the translations file URL for each CLDR locale.
+ */
+async function addZendeskTranslations(locale, manifest) {
+    const translations = await loadTranslations(locale, manifest);
+    instance.addResourceBundle(locale, "translation", translations);
+}
+
+function initI18next(locale) {
+    instance.use(initReactI18next).init({
+        resources: {
+            [`${locale}`]: {},
+        },
+        lng: locale,
+        lowerCaseLng: true,
+        interpolation: {
+            escapeValue: false,
+        },
+        keySeparator: false,
+        pluralSeparator: ".",
+    });
+}
+
 const StyledParagraph = styled(Paragraph) `
   margin: ${(props) => props.theme.space.md} 0;
 `;
@@ -1154,8 +1531,9 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) {
+function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, hcLocale, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
+    const locale = getCldrLocale(hcLocale);
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -1166,12 +1544,12 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [parentId && (jsxRuntimeExports.jsx(StyledParagraph, { children: jsxRuntimeExports.jsx(Anchor, { href: `/hc/${locale}/requests/${parentId}`, children: t("new-request-form.parent-request-link", "Follow-up to request {{parentId}}", {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [parentId && (jsxRuntimeExports.jsx(StyledParagraph, { children: jsxRuntimeExports.jsx(Anchor, { href: `/hc/${hcLocale}/requests/${parentId}`, children: t("new-request-form.parent-request-link", "Follow-up to request {{parentId}}", {
                         parentId: `\u202D#${parentId}\u202C`,
                     }) }) })), jsxRuntimeExports.jsx(StyledParagraph, { "aria-hidden": "true", children: t("new-request-form.required-fields-info", "Fields marked with an asterisk (*) are required.") }), jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, hcLocale: hcLocale })] }));
                             case "text":
                             case "integer":
                             case "decimal":
@@ -1203,7 +1581,105 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }
 
-function renderNewRequestForm(settings, props, container) {
+var baseUrl = "https://static.zdassets.com/translations";
+var files = {
+	af: "/new-request-form/af.3148abfe385c6550fbc5e4e8c626d30d.json",
+	ar: "/new-request-form/ar.23e8e2a08d0be895566eec401ab2f379.json",
+	"ar-x-pseudo": "/new-request-form/ar-x-pseudo.5d492e20a22d4fd276b15d312d351c3e.json",
+	az: "/new-request-form/az.6ba2181919b89aa505aa52936bf2daca.json",
+	be: "/new-request-form/be.f52d8dee1fcfe6c8fde3c6be8ef81c7d.json",
+	bg: "/new-request-form/bg.e4b6473086af3e20fae1a2881cdda384.json",
+	bn: "/new-request-form/bn.cf5044201104d8c424975163f9ab0e19.json",
+	bs: "/new-request-form/bs.52b894414d7efd15af36b9e3f3ae9273.json",
+	ca: "/new-request-form/ca.f2b6f9e25d8a0bca4981b73eabb87208.json",
+	cs: "/new-request-form/cs.c4cc570786eef8492d0be4bc807dced3.json",
+	cy: "/new-request-form/cy.23914f726d70fddcff7ba18afa2b6bf4.json",
+	da: "/new-request-form/da.8d3a1fa5b85b8655124b1ba25058e25c.json",
+	de: "/new-request-form/de.6b0e747003255159eeac6d7cada0138f.json",
+	"de-x-informal": "/new-request-form/de-x-informal.cc96db0b08bd0f8c8f45ceae220cb188.json",
+	el: "/new-request-form/el.3d44e3c2d4bbbe10fcfdb5c2bdc85c48.json",
+	"en-001": "/new-request-form/en-001.f2252b68d9c4579a765ba85a5eb03a36.json",
+	"en-150": "/new-request-form/en-150.4c6c23c83be6d30223a5eed2c9e6c81f.json",
+	"en-us": "/new-request-form/en-US.415457a48563b8c11fdb71f5063f7a6e.json",
+	"en-au": "/new-request-form/en-au.d2cfe8891b8a90a8085e98c279de7c5b.json",
+	"en-ca": "/new-request-form/en-ca.eafe0918915e55c87347f46dae3ec640.json",
+	"en-gb": "/new-request-form/en-gb.b176884668b4df0ea20bd78fa1d24bd4.json",
+	"en-my": "/new-request-form/en-my.0905b7e041f7f2acf1d518fe3bf030f8.json",
+	"en-ph": "/new-request-form/en-ph.06d5bd15f14ad07232a5f663cb5ee9e2.json",
+	"en-se": "/new-request-form/en-se.ab88f1a29a6b041b9fe727834da2065f.json",
+	"en-x-dev": "/new-request-form/en-x-dev.705cae101b8bcb462565fd85e3d393c4.json",
+	"en-x-keys": "/new-request-form/en-x-keys.e95b7337e34a81473954b23932befeb7.json",
+	"en-x-obsolete": "/new-request-form/en-x-obsolete.bfb9807604f26ac8d3cf5f2bacc6418f.json",
+	"en-x-pseudo": "/new-request-form/en-x-pseudo.f9a7973f8d0ab7ad4625f88393a8047d.json",
+	"en-x-test": "/new-request-form/en-x-test.43bdc5858da518be62617889d96cc0f0.json",
+	es: "/new-request-form/es.31558a09732344ea76cfb83585798499.json",
+	"es-419": "/new-request-form/es-419.d6491e7e2af25500c0fcbf0b29f8bf3b.json",
+	"es-es": "/new-request-form/es-es.8c84ca2f8a4729903c92d86f86524ef9.json",
+	et: "/new-request-form/et.590e1e1a6cf333a323e34e06eb8dbae0.json",
+	eu: "/new-request-form/eu.abf7fadaff02f1230f548476e71686e3.json",
+	fa: "/new-request-form/fa.a425b3bac48112efea3e6a7c77186d08.json",
+	"fa-af": "/new-request-form/fa-AF.06fef8d6a27a91ddda2aebfdc696b781.json",
+	fi: "/new-request-form/fi.5631a0f712dfbb515a37e93a429acc51.json",
+	fil: "/new-request-form/fil.3241831dd85e50a2e0c95d782aee01cd.json",
+	fo: "/new-request-form/fo.e739a1936af13785e46f5bf84073a9f8.json",
+	fr: "/new-request-form/fr.c9d60dbedf317a770c8b25b36c77421b.json",
+	"fr-ca": "/new-request-form/fr-ca.fecef3d75423eb04f4c40fc89eaae97d.json",
+	ga: "/new-request-form/ga.fbd7004c9779b1c33855d1c61d4ad864.json",
+	he: "/new-request-form/he.8532664f57eeea74bddd6eb5dd076332.json",
+	hi: "/new-request-form/hi.97c5dce0a9dbefcb6e0187eb74b27620.json",
+	hr: "/new-request-form/hr.545b2e9f593208bffd5467dff9b276fe.json",
+	hu: "/new-request-form/hu.f61192a81aa3c679537e4cfbf9bd1645.json",
+	hy: "/new-request-form/hy.9a1848a3a5b622e786923181bfd188c7.json",
+	id: "/new-request-form/id.5b82e67a78628073578933a44edee9a6.json",
+	is: "/new-request-form/is.80917afd44d0997538e4d0fdf62ee440.json",
+	it: "/new-request-form/it.c72343f4aaf22aaf2786a9329235adce.json",
+	"it-ch": "/new-request-form/it-ch.7fbe9eac9a79b9320a3110560cc7fe2c.json",
+	ja: "/new-request-form/ja.d7db3d910ad1e5f6d3284e955afa98aa.json",
+	ka: "/new-request-form/ka.8315995a7fa99a83f4de8b49f4879a1f.json",
+	kk: "/new-request-form/kk.66ad98a0a1700997a69d341e62043c87.json",
+	"kl-dk": "/new-request-form/kl-dk.50bc978e62a681721793753310125f18.json",
+	ko: "/new-request-form/ko.1fed79fc73a7052da775f25b49ac2d8d.json",
+	ku: "/new-request-form/ku.0d36901056e1f0b24339b1d7803a0557.json",
+	lt: "/new-request-form/lt.185d27f6e0c0bbf21812f12f7e074d42.json",
+	lv: "/new-request-form/lv.e969ec351590b7440010a82f8834c557.json",
+	mk: "/new-request-form/mk.0ac754ab59fa3f2649c44d7911bf7bf4.json",
+	mn: "/new-request-form/mn.f8b7fb07773488b5102276496412bd9d.json",
+	ms: "/new-request-form/ms.571a77abd36828e2b6cc4d43b0eb28db.json",
+	mt: "/new-request-form/mt.abb7ae7b6cec313832849693ed82d3db.json",
+	my: "/new-request-form/my.aed66814bd2383b44a437d59cc19153c.json",
+	nl: "/new-request-form/nl.cc0bbc80aabadc852675bea0f82aa62b.json",
+	"nl-be": "/new-request-form/nl-be.0d2354bb7c3964fdb4b9f5bfd3ceface.json",
+	no: "/new-request-form/no.91afa7c5d2e7bae972b21dcdabc9ca45.json",
+	pl: "/new-request-form/pl.3bd338ed31b8d28e1b4101821ad4dbdf.json",
+	pt: "/new-request-form/pt.a926fecceb1e41e90b2bafb2ad80eb72.json",
+	"pt-br": "/new-request-form/pt-br.6ebbe498973a81139416b9210db3e742.json",
+	ro: "/new-request-form/ro.79c228da5fd5bac9d6cb08b0b00560d2.json",
+	ru: "/new-request-form/ru.227061eb7967ba628bb5bfa2118a56b0.json",
+	sk: "/new-request-form/sk.83eee50bee7b450069507aac5d977834.json",
+	sl: "/new-request-form/sl.d669d7b3968d8ad0d62c2325cb067818.json",
+	sq: "/new-request-form/sq.cbfa31ae14760624dee3e6d2beb0fed3.json",
+	sr: "/new-request-form/sr.0f09772dcb20343e59e1d617d1bd1a9a.json",
+	"sr-me": "/new-request-form/sr-me.f32d3c397a253b544721251b28c276ad.json",
+	sv: "/new-request-form/sv.4a472010565d0ce5de8e38932f7163fb.json",
+	th: "/new-request-form/th.9c6738b82bc1acaf396091c7d3a94df2.json",
+	tr: "/new-request-form/tr.37cba3919b296a975722bdc44d9269d7.json",
+	uk: "/new-request-form/uk.d0d5a0bee8c18990791f3510c02cd6fe.json",
+	ur: "/new-request-form/ur.76a3dca2953c592e0991fe84d1b73727.json",
+	uz: "/new-request-form/uz.491203ac69077976ae3526402137efa7.json",
+	vi: "/new-request-form/vi.1c6700912b722e40f649e8b628f15035.json",
+	"zh-cn": "/new-request-form/zh-cn.6d026145eb39ddab4eab08be5ad1ffd1.json",
+	"zh-tw": "/new-request-form/zh-tw.b39cc46bd8cac89de18cc183f7e9c5a1.json"
+};
+var translationsManifest = {
+	baseUrl: baseUrl,
+	files: files
+};
+
+async function renderNewRequestForm(settings, props, container) {
+    const { hcLocale } = props;
+    const locale = getCldrLocale(hcLocale);
+    initI18next(locale);
+    await addZendeskTranslations(locale, translationsManifest);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 

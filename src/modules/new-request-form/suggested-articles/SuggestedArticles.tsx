@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 interface SuggestedArticlesProps {
   query?: string;
-  locale: string;
+  hcLocale: string;
 }
 
 interface SuggestedArticle {
@@ -66,7 +66,7 @@ type RequestsCache = Record<string, SuggestedArticle[]>;
 
 export function SuggestedArticles({
   query: inputQuery,
-  locale,
+  hcLocale,
 }: SuggestedArticlesProps): JSX.Element | null {
   const debouncedQuery = useDebounce(inputQuery, 500);
   const [articles, setArticles] = useState<SuggestedArticle[]>([]);
@@ -84,7 +84,7 @@ export function SuggestedArticles({
     const requestUrl = new URL(
       `${window.location.origin}/api/v2/help_center/deflection/suggestions.json`
     );
-    requestUrl.searchParams.append("locale", locale);
+    requestUrl.searchParams.append("locale", hcLocale);
     requestUrl.searchParams.append("query", query);
 
     const cachedResponse = requestsCache.current[requestUrl.toString()];
@@ -100,7 +100,7 @@ export function SuggestedArticles({
         requestsCache.current[requestUrl.toString()] = results;
         setArticles(results);
       });
-  }, [debouncedQuery, locale]);
+  }, [debouncedQuery, hcLocale]);
 
   return articles.length > 0 ? (
     <Container>

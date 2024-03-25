@@ -22,14 +22,16 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
+import { getCldrLocale } from "../i18n";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
   wysiwyg: boolean;
   answerBot: AnswerBot;
   parentId: string;
-  locale: string;
+  hcLocale: string;
 }
+
 const StyledParagraph = styled(Paragraph)`
   margin: ${(props) => props.theme.space.md} 0;
 `;
@@ -49,7 +51,7 @@ export function NewRequestForm({
   wysiwyg,
   answerBot,
   parentId,
-  locale,
+  hcLocale,
 }: NewRequestFormProps) {
   const {
     ticket_fields,
@@ -68,6 +70,7 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
+  const locale = getCldrLocale(hcLocale);
   const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -88,7 +91,7 @@ export function NewRequestForm({
     <>
       {parentId && (
         <StyledParagraph>
-          <Anchor href={`/hc/${locale}/requests/${parentId}`}>
+          <Anchor href={`/hc/${hcLocale}/requests/${parentId}`}>
             {t(
               "new-request-form.parent-request-link",
               "Follow-up to request {{parentId}}",
@@ -145,7 +148,7 @@ export function NewRequestForm({
                   />
                   <SuggestedArticles
                     query={field.value as string | undefined}
-                    locale={locale}
+                    hcLocale={hcLocale}
                   />
                 </>
               );
