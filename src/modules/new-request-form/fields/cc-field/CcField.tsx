@@ -15,6 +15,7 @@ import { hideVisually } from "polished";
 import { useRef, useState } from "react";
 import { Tooltip } from "@zendeskgarden/react-tooltips";
 import AlertWarningStroke from "@zendeskgarden/svg-icons/src/12/alert-warning-stroke.svg";
+import { useTranslation } from "react-i18next";
 
 interface CcFieldProps {
   field: Field;
@@ -83,6 +84,7 @@ const AnnouncementMessage = styled.span`
 
 export function CcField({ field }: CcFieldProps): JSX.Element {
   const { label, value, name, error, description } = field;
+  const { t } = useTranslation();
   const initialValue = value
     ? (value as string).split(",").map((email) => email.trim())
     : [];
@@ -107,16 +109,33 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
     inputRef,
     gridRowRef,
     i18n: {
-      addedTag: (value) => `${value} has been added`,
-      removedTag: (value) => `${value} has been removed`,
-      addedTags: (values) => `${values.join(", ")} have been added`,
+      addedTag: (email) =>
+        t("new-request-form.cc-field.email-added", "{{email}} has been added", {
+          email,
+        }),
+      removedTag: (email) =>
+        t(
+          "new-request-form.cc-field.email-removed",
+          "{{email}} has been removed",
+          { email }
+        ),
+      addedTags: (emails) =>
+        t(
+          "new-request-form.cc-field.emails-added",
+          "{{emails}} have been added",
+          { emails }
+        ),
     },
   });
 
   const renderTag = (index: number, isValid: boolean, email: string) => (
     <StyledTag
       size="large"
-      aria-label={`${email} - Press Backspace to remove`}
+      aria-label={t(
+        "new-request-form.cc-field.email-label",
+        "{{email}} - Press Backspace to remove",
+        { email }
+      )}
       hue={isValid ? undefined : "red"}
     >
       {!isValid && (
@@ -135,7 +154,14 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
       {description && <Hint>{description}</Hint>}
       <Container {...getContainerProps()}>
         {tags.length > 0 && (
-          <span {...getGridProps({ "aria-label": "Selected CC e-mails" })}>
+          <span
+            {...getGridProps({
+              "aria-label": t(
+                "new-request-form.cc-field.container-label",
+                "Selected CC emails"
+              ),
+            })}
+          >
             <span ref={gridRowRef} {...getGridRowProps()}>
               {tags.map((email, index) => {
                 const isValid = EMAIL_REGEX.test(email);
@@ -145,7 +171,13 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
                     {renderTag(index, isValid, email)}
                   </GridCell>
                 ) : (
-                  <Tooltip key={index} content="Invalid e-mail address">
+                  <Tooltip
+                    key={index}
+                    content={t(
+                      "new-request-form.cc-field.invalid-email",
+                      "Invalid email address"
+                    )}
+                  >
                     <GridCell {...getGridCellProps(index)}>
                       {renderTag(index, isValid, email)}
                     </GridCell>

@@ -5,6 +5,7 @@ import { Tooltip } from "@zendeskgarden/react-tooltips";
 import type { KeyboardEvent } from "react";
 import styled from "styled-components";
 import type { AttachedFile } from "./useAttachedFiles";
+import { useTranslation } from "react-i18next";
 
 interface FileListItemProps {
   file: AttachedFile;
@@ -19,6 +20,8 @@ export function FileListItem({
   file,
   onRemove,
 }: FileListItemProps): JSX.Element {
+  const { t } = useTranslation();
+
   const handleFileKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     if (e.code === "Delete" || e.code === "Backspace") {
       e.preventDefault();
@@ -41,15 +44,24 @@ export function FileListItem({
   const fileName =
     file.status === "pending" ? file.file_name : file.value.file_name;
 
+  const stopUploadLabel = t(
+    "new-request-form.attachments.stop-upload",
+    "Stop upload"
+  );
+  const removeFileLabel = t(
+    "new-request-form.attachments.remove-file",
+    "Remove file"
+  );
+
   return (
     <FileList.Item>
       <File type="generic" title={fileName} onKeyDown={handleFileKeyDown}>
         {file.status === "pending" ? (
           <>
             <FileNameWrapper>{fileName}</FileNameWrapper>
-            <Tooltip content="Stop upload">
+            <Tooltip content={stopUploadLabel}>
               <File.Close
-                aria-label="Stop upload"
+                aria-label={stopUploadLabel}
                 onClick={() => {
                   onRemove();
                 }}
@@ -58,7 +70,11 @@ export function FileListItem({
             </Tooltip>
             <Progress
               value={file.progress}
-              aria-label={`Uploading ${fileName}`}
+              aria-label={t(
+                "new-request-form.attachments.uploading",
+                "Uploading {{fileName}}",
+                { fileName }
+              )}
             />
           </>
         ) : (
@@ -68,9 +84,9 @@ export function FileListItem({
                 {fileName}
               </Anchor>
             </FileNameWrapper>
-            <Tooltip content="Remove file">
+            <Tooltip content={removeFileLabel}>
               <File.Delete
-                aria-label="Remove file"
+                aria-label={removeFileLabel}
                 onClick={() => {
                   onRemove();
                 }}

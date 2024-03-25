@@ -1,4 +1,4 @@
-import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, u as useToast, n as Notification, o as Title, q as Close, t as useDropzone, v as FileUpload, w as Datepicker, x as useGrid, y as focusStyles, z as FauxInput, B as Tag, E as SvgAlertWarningStroke, $ as $e, G as Header$1, J as Footer$2, K as Modal, Q as Alert, R as Body$2, U as Accordion, V as Paragraph, W as Button, X as Close$2, Y as reactDomExports } from 'vendor-bundle';
+import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, u as useTranslation, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, n as useToast, o as Notification, q as Title, t as Close, v as useDropzone, w as FileUpload, x as Datepicker, y as useGrid, z as focusStyles, B as FauxInput, E as Tag, G as SvgAlertWarningStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as reactDomExports } from 'vendor-bundle';
 
 function createTheme(settings) {
     return {
@@ -80,10 +80,14 @@ function TextArea({ field, hasWysiwyg, onChange, }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Textarea, { ref: textAreaRefCallback, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-const HideVisually$1 = styled.span `
+const HideVisually = styled.span `
   ${hideVisually()}
 `;
-const EmptyValue$1 = () => (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "-" }), jsxRuntimeExports.jsx(HideVisually$1, { children: "Choose an option" })] }));
+function EmptyValueOption() {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "-" }), jsxRuntimeExports.jsx(HideVisually, { children: t("new-request-form.dropdown.empty-option", "Select an option") })] }));
+}
+
 function DropDown({ field, onChange }) {
     const { label, options, error, value, name, required, description } = field;
     const selectionValue = value == null ? "" : value.toString();
@@ -94,11 +98,11 @@ function DropDown({ field, onChange }) {
             combobox?.setAttribute("aria-required", "true");
         }
     }, [wrapperRef, required]);
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, inputValue: selectionValue, selectionValue: selectionValue, renderValue: ({ selection }) => selection?.label || jsxRuntimeExports.jsx(EmptyValue$1, {}), onChange: ({ selectionValue }) => {
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, inputValue: selectionValue, selectionValue: selectionValue, renderValue: ({ selection }) => selection?.label || jsxRuntimeExports.jsx(EmptyValueOption, {}), onChange: ({ selectionValue }) => {
                     if (selectionValue !== undefined) {
                         onChange(selectionValue);
                     }
-                }, children: [!required && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValue$1, {}) })), options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value.toString(), label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+                }, children: [!required && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value.toString(), label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function Checkbox({ field, onChange }) {
@@ -531,6 +535,7 @@ const FileNameWrapper = styled.div `
   flex: 1;
 `;
 function FileListItem({ file, onRemove, }) {
+    const { t } = useTranslation();
     const handleFileKeyDown = (e) => {
         if (e.code === "Delete" || e.code === "Backspace") {
             e.preventDefault();
@@ -547,9 +552,11 @@ function FileListItem({ file, onRemove, }) {
         }
     };
     const fileName = file.status === "pending" ? file.file_name : file.value.file_name;
-    return (jsxRuntimeExports.jsx(FileList.Item, { children: jsxRuntimeExports.jsx(File, { type: "generic", title: fileName, onKeyDown: handleFileKeyDown, children: file.status === "pending" ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FileNameWrapper, { children: fileName }), jsxRuntimeExports.jsx(Tooltip, { content: "Stop upload", children: jsxRuntimeExports.jsx(File.Close, { "aria-label": "Stop upload", onClick: () => {
+    const stopUploadLabel = t("new-request-form.attachments.stop-upload", "Stop upload");
+    const removeFileLabel = t("new-request-form.attachments.remove-file", "Remove file");
+    return (jsxRuntimeExports.jsx(FileList.Item, { children: jsxRuntimeExports.jsx(File, { type: "generic", title: fileName, onKeyDown: handleFileKeyDown, children: file.status === "pending" ? (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FileNameWrapper, { children: fileName }), jsxRuntimeExports.jsx(Tooltip, { content: stopUploadLabel, children: jsxRuntimeExports.jsx(File.Close, { "aria-label": stopUploadLabel, onClick: () => {
                                 onRemove();
-                            }, onKeyDown: handleCloseKeyDown }) }), jsxRuntimeExports.jsx(Progress, { value: file.progress, "aria-label": `Uploading ${fileName}` })] })) : (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FileNameWrapper, { children: jsxRuntimeExports.jsx(Anchor, { isExternal: true, href: file.value.url, target: "_blank", children: fileName }) }), jsxRuntimeExports.jsx(Tooltip, { content: "Remove file", children: jsxRuntimeExports.jsx(File.Delete, { "aria-label": "Remove file", onClick: () => {
+                            }, onKeyDown: handleCloseKeyDown }) }), jsxRuntimeExports.jsx(Progress, { value: file.progress, "aria-label": t("new-request-form.attachments.uploading", "Uploading {{fileName}}", { fileName }) })] })) : (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(FileNameWrapper, { children: jsxRuntimeExports.jsx(Anchor, { isExternal: true, href: file.value.url, target: "_blank", children: fileName }) }), jsxRuntimeExports.jsx(Tooltip, { content: removeFileLabel, children: jsxRuntimeExports.jsx(File.Delete, { "aria-label": removeFileLabel, onClick: () => {
                                 onRemove();
                             }, onKeyDown: handleCloseKeyDown }) }), jsxRuntimeExports.jsx(Progress, { value: 100, "aria-hidden": "true" })] })) }) }));
 }
@@ -600,9 +607,10 @@ function Attachments({ field }) {
         value,
     })) ?? []);
     const { addToast } = useToast();
+    const { t } = useTranslation();
     const notifyError = reactExports.useCallback((fileName) => {
-        addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: "error", children: [jsxRuntimeExports.jsx(Title, { children: "Upload error" }), "There was an error uploading ", fileName, ". Please try again or upload another file.", jsxRuntimeExports.jsx(Close, { "aria-label": "Close", onClick: close })] })));
-    }, [addToast]);
+        addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: "error", children: [jsxRuntimeExports.jsx(Title, { children: t("new-request-form.attachments.upload-error-title", "Upload error") }), t("new-request-form.attachments.upload-error-description", "There was an error uploading {{fileName}}. Try again or upload another file.", { fileName }), jsxRuntimeExports.jsx(Close, { "aria-label": t("new-request-form.close-label", "Close"), onClick: close })] })));
+    }, [addToast, t]);
     const onDrop = reactExports.useCallback(async (acceptedFiles) => {
         const csrfToken = await fetchCsrfToken();
         for (const file of acceptedFiles) {
@@ -666,7 +674,7 @@ function Attachments({ field }) {
             });
         }
     };
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsxs(FileUpload, { ...getRootProps(), isDragging: isDragActive, children: [isDragActive ? (jsxRuntimeExports.jsx("span", { children: "Drop files here" })) : (jsxRuntimeExports.jsx("span", { children: "Choose a file or drag and drop here" })), jsxRuntimeExports.jsx(Input$1, { ...getInputProps() })] }), files.map((file) => (jsxRuntimeExports.jsx(FileListItem, { file: file, onRemove: () => {
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsxs(FileUpload, { ...getRootProps(), isDragging: isDragActive, children: [isDragActive ? (jsxRuntimeExports.jsx("span", { children: t("new-request-form.attachments.drop-files-label", "Drop files here") })) : (jsxRuntimeExports.jsx("span", { children: t("new-request-form.attachments.choose-file-label", "Choose a file or drag and drop here") })), jsxRuntimeExports.jsx(Input$1, { ...getInputProps() })] }), files.map((file) => (jsxRuntimeExports.jsx(FileListItem, { file: file, onRemove: () => {
                     handleRemove(file);
                 } }, file.status === "pending" ? file.id : file.value.id))), files.map((file) => file.status === "uploaded" && (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: JSON.stringify(file.value) }, file.value.id)))] }));
 }
@@ -889,6 +897,7 @@ const AnnouncementMessage = styled.span `
 `;
 function CcField({ field }) {
     const { label, value, name, error, description } = field;
+    const { t } = useTranslation();
     const initialValue = value
         ? value.split(",").map((email) => email.trim())
         : [];
@@ -904,15 +913,19 @@ function CcField({ field }) {
         inputRef,
         gridRowRef,
         i18n: {
-            addedTag: (value) => `${value} has been added`,
-            removedTag: (value) => `${value} has been removed`,
-            addedTags: (values) => `${values.join(", ")} have been added`,
+            addedTag: (email) => t("new-request-form.cc-field.email-added", "{{email}} has been added", {
+                email,
+            }),
+            removedTag: (email) => t("new-request-form.cc-field.email-removed", "{{email}} has been removed", { email }),
+            addedTags: (emails) => t("new-request-form.cc-field.emails-added", "{{emails}} have been added", { emails }),
         },
     });
-    const renderTag = (index, isValid, email) => (jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": `${email} - Press Backspace to remove`, hue: isValid ? undefined : "red", children: [!isValid && (jsxRuntimeExports.jsx(Tag.Avatar, { children: jsxRuntimeExports.jsx(SvgAlertWarningStroke, {}) })), jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }));
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container$1, { ...getContainerProps(), children: [tags.length > 0 && (jsxRuntimeExports.jsx("span", { ...getGridProps({ "aria-label": "Selected CC e-mails" }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
+    const renderTag = (index, isValid, email) => (jsxRuntimeExports.jsxs(StyledTag, { size: "large", "aria-label": t("new-request-form.cc-field.email-label", "{{email}} - Press Backspace to remove", { email }), hue: isValid ? undefined : "red", children: [!isValid && (jsxRuntimeExports.jsx(Tag.Avatar, { children: jsxRuntimeExports.jsx(SvgAlertWarningStroke, {}) })), jsxRuntimeExports.jsx("span", { children: email }), jsxRuntimeExports.jsx(Tag.Close, { ...getTagCloseProps(index) })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx(Label$1, { children: label }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsxs(Container$1, { ...getContainerProps(), children: [tags.length > 0 && (jsxRuntimeExports.jsx("span", { ...getGridProps({
+                            "aria-label": t("new-request-form.cc-field.container-label", "Selected CC emails"),
+                        }), children: jsxRuntimeExports.jsx("span", { ref: gridRowRef, ...getGridRowProps(), children: tags.map((email, index) => {
                                 const isValid = EMAIL_REGEX.test(email);
-                                return isValid ? (jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }, index)) : (jsxRuntimeExports.jsx(Tooltip, { content: "Invalid e-mail address", children: jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }) }, index));
+                                return isValid ? (jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }, index)) : (jsxRuntimeExports.jsx(Tooltip, { content: t("new-request-form.cc-field.invalid-email", "Invalid email address"), children: jsxRuntimeExports.jsx(GridCell, { ...getGridCellProps(index), children: renderTag(index, isValid, email) }) }, index));
                             }) }) })), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
 }
 
@@ -924,10 +937,6 @@ function CreditCard({ field, onChange }) {
     return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint, { children: description }), jsxRuntimeExports.jsx(Input$1, { name: name, type: "text", value: value, onChange: (e) => onChange(e.target.value), onBlur: handleBlur, validation: error ? "error" : undefined, required: required, autoComplete: "cc-number" }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-const HideVisually = styled.span `
-  ${hideVisually()}
-`;
-const EmptyValue = () => (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "-" }), jsxRuntimeExports.jsx(HideVisually, { children: "Choose an option" })] }));
 function Tagger({ field, onChange }) {
     const { label, options, error, value, name, required, description } = field;
     const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } = useNestedOptions({
@@ -956,7 +965,7 @@ function Tagger({ field, onChange }) {
             setIsExpanded(changes.isExpanded);
         }
     };
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, inputProps: { required, name }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectionValue, inputValue: selectionValue, renderValue: ({ selection }) => selection?.label ?? jsxRuntimeExports.jsx(EmptyValue, {}), isExpanded: isExpanded, children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => option.value === "" ? (jsxRuntimeExports.jsx(Option, { ...option, children: jsxRuntimeExports.jsx(EmptyValue, {}) }, option.value)) : (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && jsxRuntimeExports.jsx(Hint$1, { children: description }), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, inputProps: { required, name }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectionValue, inputValue: selectionValue, renderValue: ({ selection }) => selection?.label ?? jsxRuntimeExports.jsx(EmptyValueOption, {}), isExpanded: isExpanded, children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => option.value === "" ? (jsxRuntimeExports.jsx(Option, { ...option, children: jsxRuntimeExports.jsx(EmptyValueOption, {}) }, option.value)) : (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
 
 function useDebounce(value, delayMs) {
@@ -1013,6 +1022,7 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
     const debouncedQuery = useDebounce(inputQuery, 500);
     const [articles, setArticles] = reactExports.useState([]);
     const requestsCache = reactExports.useRef({});
+    const { t } = useTranslation();
     reactExports.useEffect(() => {
         const query = debouncedQuery?.trim().toLocaleLowerCase();
         if (!query || !hasMinLength(query)) {
@@ -1034,7 +1044,7 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
             setArticles(results);
         });
     }, [debouncedQuery, locale]);
-    return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: "Suggested Articles" }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
+    return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: t("new-request-form.suggested-articles", "Suggested articles") }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
 }
 
 const H2 = styled.h2 `
@@ -1091,14 +1101,15 @@ function AnswerBotModal({ token, articles, requestId, }) {
     const [expandedIndex, setExpandedIndex] = reactExports.useState(0);
     const [alertMessage, setAlertMessage] = reactExports.useState("");
     const modalContainer = useModalContainer();
+    const { t } = useTranslation();
     /* To let screen readers read the notification on page load,
        we need to add the Alert message after the page has been
        loaded */
     reactExports.useEffect(() => {
         setTimeout(() => {
-            setAlertMessage("Your request was successfully submitted.");
+            setAlertMessage(t("new-request-form.answer-bot-modal.request-submitted", "Your request was successfully submitted"));
         }, 100);
-    }, []);
+    }, [t]);
     const getExpandedArticleId = () => {
         return String(articles[expandedIndex]?.article_id);
     };
@@ -1121,15 +1132,20 @@ function AnswerBotModal({ token, articles, requestId, }) {
     };
     return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: () => {
             ignoreAnswerBot();
-        }, children: [jsxRuntimeExports.jsxs(StyledHeader, { children: [jsxRuntimeExports.jsx(Alert, { type: "success", children: alertMessage }), jsxRuntimeExports.jsx(H2, { children: "While you wait, do any of these articles answer your question?" })] }), jsxRuntimeExports.jsx(Body$2, { children: jsxRuntimeExports.jsx(Accordion, { level: 3, expandedSections: [expandedIndex], onChange: (index) => {
+        }, children: [jsxRuntimeExports.jsxs(StyledHeader, { children: [jsxRuntimeExports.jsx(Alert, { type: "success", children: alertMessage }), jsxRuntimeExports.jsx(H2, { children: t("new-request-form.answer-bot-modal.title", "While you wait, do any of these articles answer your question?") })] }), jsxRuntimeExports.jsx(Body$2, { children: jsxRuntimeExports.jsx(Accordion, { level: 3, expandedSections: [expandedIndex], onChange: (index) => {
                         setExpandedIndex(index);
-                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${token}`, target: "_blank", children: "View article" })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: "Does this article answer your question?" }), jsxRuntimeExports.jsxs("div", { children: ["If it does, we can close your recent request #", requestId] })] }), jsxRuntimeExports.jsxs(ButtonsContainer, { children: [jsxRuntimeExports.jsx(Button, { onClick: () => {
+                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${token}`, target: "_blank", children: t("new-request-form.answer-bot-modal.view-article", "View article") })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: t("new-request-form.answer-bot-modal.footer-title", "Does this article answer your question?") }), jsxRuntimeExports.jsx("div", { children: t("new-request-form.answer-bot-modal.footer-content", "If it does, we can close your recent request {{requestId}}", {
+                                    requestId: `\u202D#${requestId}\u202C`,
+                                }) })] }), jsxRuntimeExports.jsxs(ButtonsContainer, { children: [jsxRuntimeExports.jsx(Button, { onClick: () => {
                                     markArticleAsIrrelevant();
-                                }, children: "No, I need help" }), jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: () => {
+                                }, children: t("new-request-form.answer-bot-modal.mark-irrelevant", "No, I need help") }), jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: () => {
                                     solveRequest();
-                                }, children: "Yes, close my request" })] })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": "Close modal" })] }));
+                                }, children: t("new-request-form.answer-bot-modal.solve-request", "Yes, close my request") })] })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": t("new-request-form.close-label", "Close") })] }));
 }
 
+const StyledParagraph = styled(Paragraph) `
+  margin: ${(props) => props.theme.space.md} 0;
+`;
 const Form = styled.form `
   display: flex;
   flex-direction: column;
@@ -1144,12 +1160,15 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
     const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
+    const { t } = useTranslation();
     function handleChange(field, value) {
         setTicketFields(ticketFields.map((ticketField) => ticketField.name === field.name
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [parentId && (jsxRuntimeExports.jsx(StyledParagraph, { children: jsxRuntimeExports.jsx(Anchor, { href: `/hc/${locale}/requests/${parentId}`, children: t("new-request-form.parent-request-link", "Follow-up to request {{parentId}}", {
+                        parentId: `\u202D#${parentId}\u202C`,
+                    }) }) })), jsxRuntimeExports.jsx(StyledParagraph, { "aria-hidden": "true", children: t("new-request-form.required-fields-info", "Fields marked with an asterisk (*) are required.") }), jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
@@ -1179,7 +1198,7 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, locale, }) 
                                 return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                         }
                     }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticket_form_field.options.length === 0 ||
-                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: "Submit" })) })] }), answerBot.token &&
+                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: t("new-request-form.submit", "Submit") })) })] }), answerBot.token &&
                 answerBot.articles.length > 0 &&
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }

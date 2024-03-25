@@ -31,10 +31,12 @@
     "@zendeskgarden/svg-icons": "^6.34.0",
     "dompurify": "3.0.5",
     "eslint-plugin-check-file": "^2.6.2",
+    "i18next": "^23.10.1",
     "node-fetch": "2.6.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-dropzone": "^14.2.3",
+    "react-i18next": "^14.1.0",
     "react-is": "^17.0.2",
     "styled-components": "^5.3.11"
   },
