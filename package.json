@@ -11,6 +11,7 @@
     "download-locales": "node ./bin/update-translations",
     "test": "jest",
     "test-a11y": "node bin/lighthouse/index.js",
+    "i18n:extract": "node bin/extract-strings.mjs new-request-form 'src/modules/new-request-form/**/*.{ts,tsx}' src/modules/new-request-form/translations",
     "i18n:update-manifest": "node bin/update-translations-manifest.mjs new-request-form src/modules/new-request-form/translations",
     "i18n:locale-mapping": "node bin/create-locale-mapping.mjs",
     "zcli": "zcli"
@@ -75,9 +76,10 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "8.0.2",
+    "i18next-parser": "^8.13.0",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
-    "js-yaml": "4.1.0",
+    "js-yaml": "^4.1.0",
     "lighthouse": "10.0.1",
     "prettier": "2.8.4",
     "puppeteer": "19.4.1",
@@ -88,6 +90,8 @@
     "semantic-release": "19.0.5",
     "typescript": "^5.1.6",
     "url-pattern": "1.0.3",
+    "vinyl": "^3.0.0",
+    "vinyl-fs": "^4.0.0",
     "wait-on": "7.0.1"
   },
   "resolutions": {
