@@ -2,10 +2,11 @@ import { Anchor } from "@zendeskgarden/react-buttons";
 import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { useDebounce } from "../useDebounce";
+import { useTranslation } from "react-i18next";
 
 interface SuggestedArticlesProps {
   query?: string;
-  locale: string;
+  hcLocale: string;
 }
 
 interface SuggestedArticle {
@@ -65,11 +66,12 @@ type RequestsCache = Record<string, SuggestedArticle[]>;
 
 export function SuggestedArticles({
   query: inputQuery,
-  locale,
+  hcLocale,
 }: SuggestedArticlesProps): JSX.Element | null {
   const debouncedQuery = useDebounce(inputQuery, 500);
   const [articles, setArticles] = useState<SuggestedArticle[]>([]);
   const requestsCache = useRef<RequestsCache>({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     const query = debouncedQuery?.trim().toLocaleLowerCase();
@@ -82,7 +84,7 @@ export function SuggestedArticles({
     const requestUrl = new URL(
       `${window.location.origin}/api/v2/help_center/deflection/suggestions.json`
     );
-    requestUrl.searchParams.append("locale", locale);
+    requestUrl.searchParams.append("locale", hcLocale);
     requestUrl.searchParams.append("query", query);
 
     const cachedResponse = requestsCache.current[requestUrl.toString()];
@@ -98,12 +100,14 @@ export function SuggestedArticles({
         requestsCache.current[requestUrl.toString()] = results;
         setArticles(results);
       });
-  }, [debouncedQuery, locale]);
+  }, [debouncedQuery, hcLocale]);
 
   return articles.length > 0 ? (
     <Container>
       <InnerContainer>
-        <h2>Suggested Articles</h2>
+        <h2>
+          {t("new-request-form.suggested-articles", "Suggested articles")}
+        </h2>
         <UnstyledList>
           {articles.map((article) => (
             <ListItem key={article.html_url}>

@@ -14,6 +14,7 @@ import styled from "styled-components";
 import { Paragraph } from "@zendeskgarden/react-typography";
 import { fetchCsrfToken } from "../fetchCsrfToken";
 import { useModalContainer } from "../../garden-theme";
+import { useTranslation } from "react-i18next";
 
 interface AnswerBotModalProps {
   token: string;
@@ -89,15 +90,21 @@ export function AnswerBotModal({
   const [expandedIndex, setExpandedIndex] = useState(0);
   const [alertMessage, setAlertMessage] = useState("");
   const modalContainer = useModalContainer();
+  const { t } = useTranslation();
 
   /* To let screen readers read the notification on page load,
      we need to add the Alert message after the page has been
      loaded */
   useEffect(() => {
     setTimeout(() => {
-      setAlertMessage("Your request was successfully submitted.");
+      setAlertMessage(
+        t(
+          "new-request-form.answer-bot-modal.request-submitted",
+          "Your request was successfully submitted"
+        )
+      );
     }, 100);
-  }, []);
+  }, [t]);
 
   const getExpandedArticleId = () => {
     return String(articles[expandedIndex]?.article_id);
@@ -132,7 +139,12 @@ export function AnswerBotModal({
     >
       <StyledHeader>
         <Alert type="success">{alertMessage}</Alert>
-        <H2>While you wait, do any of these articles answer your question?</H2>
+        <H2>
+          {t(
+            "new-request-form.answer-bot-modal.title",
+            "While you wait, do any of these articles answer your question?"
+          )}
+        </H2>
       </StyledHeader>
       <Body>
         <Accordion
@@ -156,7 +168,10 @@ export function AnswerBotModal({
                   href={`${html_url}?auth_token=${token}`}
                   target="_blank"
                 >
-                  View article
+                  {t(
+                    "new-request-form.answer-bot-modal.view-article",
+                    "View article"
+                  )}
                 </ArticleLink>
               </Accordion.Panel>
             </Accordion.Section>
@@ -165,8 +180,21 @@ export function AnswerBotModal({
       </Body>
       <StyledFooter>
         <div>
-          <H3>Does this article answer your question?</H3>
-          <div>If it does, we can close your recent request #{requestId}</div>
+          <H3>
+            {t(
+              "new-request-form.answer-bot-modal.footer-title",
+              "Does this article answer your question?"
+            )}
+          </H3>
+          <div>
+            {t(
+              "new-request-form.answer-bot-modal.footer-content",
+              "If it does, we can close your recent request {{requestId}}",
+              {
+                requestId: `\u202D#${requestId}\u202C`,
+              }
+            )}
+          </div>
         </div>
         <ButtonsContainer>
           <Button
@@ -174,7 +202,10 @@ export function AnswerBotModal({
               markArticleAsIrrelevant();
             }}
           >
-            No, I need help
+            {t(
+              "new-request-form.answer-bot-modal.mark-irrelevant",
+              "No, I need help"
+            )}
           </Button>
           <Button
             isPrimary
@@ -182,11 +213,14 @@ export function AnswerBotModal({
               solveRequest();
             }}
           >
-            Yes, close my request
+            {t(
+              "new-request-form.answer-bot-modal.solve-request",
+              "Yes, close my request"
+            )}
           </Button>
         </ButtonsContainer>
       </StyledFooter>
-      <Close aria-label="Close modal" />
+      <Close aria-label={t("new-request-form.close-label", "Close")} />
     </Modal>
   );
 }

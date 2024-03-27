@@ -13,6 +13,7 @@ import {
 } from "@zendeskgarden/react-notifications";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import { useTranslation } from "react-i18next";
 import type { AttachmentField } from "../../data-types";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
@@ -57,19 +58,32 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
   );
 
   const { addToast } = useToast();
+  const { t } = useTranslation();
 
   const notifyError = useCallback(
     (fileName: string) => {
       addToast(({ close }) => (
         <Notification type="error">
-          <Title>Upload error</Title>
-          There was an error uploading {fileName}. Please try again or upload
-          another file.
-          <Close aria-label="Close" onClick={close} />
+          <Title>
+            {t(
+              "new-request-form.attachments.upload-error-title",
+              "Upload error"
+            )}
+          </Title>
+          {t(
+            "new-request-form.attachments.upload-error-description",
+            "There was an error uploading {{fileName}}. Try again or upload another file.",
+            { fileName }
+          )}
+
+          <Close
+            aria-label={t("new-request-form.close-label", "Close")}
+            onClick={close}
+          />
         </Notification>
       ));
     },
-    [addToast]
+    [addToast, t]
   );
 
   const onDrop = useCallback(
@@ -159,9 +173,19 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
       {error && <Message validation="error">{error}</Message>}
       <FileUpload {...getRootProps()} isDragging={isDragActive}>
         {isDragActive ? (
-          <span>Drop files here</span>
+          <span>
+            {t(
+              "new-request-form.attachments.drop-files-label",
+              "Drop files here"
+            )}
+          </span>
         ) : (
-          <span>Choose a file or drag and drop here</span>
+          <span>
+            {t(
+              "new-request-form.attachments.choose-file-label",
+              "Choose a file or drag and drop here"
+            )}
+          </span>
         )}
         <Input {...getInputProps()} />
       </FileUpload>

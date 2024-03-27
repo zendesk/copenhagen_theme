@@ -1,6 +1,7 @@
 import zass from "./zass.mjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import json from "@rollup/plugin-json";
 import typescript from "@rollup/plugin-typescript";
 import replace from "@rollup/plugin-replace";
 import svgr from "@svgr/rollup";
@@ -64,6 +65,7 @@ export default defineConfig([
           ],
         },
       }),
+      json(),
       generateImportMap(),
     ],
     watch: {

@@ -7,27 +7,15 @@ import {
   Option,
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
-import styled from "styled-components";
 import { Span } from "@zendeskgarden/react-typography";
-import { hideVisually } from "polished";
 import type { Field } from "../data-types";
 import { useRef, useEffect } from "react";
+import { EmptyValueOption } from "./EmptyValueOption";
 
 interface DropDownProps {
   field: Field;
   onChange: (value: string) => void;
 }
-
-const HideVisually = styled.span`
-  ${hideVisually()}
-`;
-
-const EmptyValue = () => (
-  <>
-    <Span aria-hidden="true">-</Span>
-    <HideVisually>Choose an option</HideVisually>
-  </>
-);
 
 export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
@@ -56,7 +44,7 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
         inputValue={selectionValue}
         selectionValue={selectionValue}
         renderValue={({ selection }) =>
-          (selection as ISelectedOption | null)?.label || <EmptyValue />
+          (selection as ISelectedOption | null)?.label || <EmptyValueOption />
         }
         onChange={({ selectionValue }) => {
           if (selectionValue !== undefined) {
@@ -66,7 +54,7 @@ export function DropDown({ field, onChange }: DropDownProps): JSX.Element {
       >
         {!required && (
           <Option value="" label="-">
-            <EmptyValue />
+            <EmptyValueOption />
           </Option>
         )}
         {options.map((option) => (

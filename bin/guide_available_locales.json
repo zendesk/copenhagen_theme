@@ -1,0 +1,3592 @@
+[
+  {
+    "locale": {
+      "identifier": "af",
+      "name": "Afrikaans",
+      "native_name": "Afrikaans",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "af-za",
+      "name": "Afrikaans (South Africa)",
+      "native_name": "Afrikaans (Suid-Afrika)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "af"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ajp-ps",
+      "name": "South Levantine Arabic (Palestine)",
+      "native_name": "اللهجة الشامي الجنوبية‎ (الأراضي الفلسطينية)",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "am",
+      "name": "Amharic",
+      "native_name": "አማርኛ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "apc-ps",
+      "name": "North Levantine Arabic (Palestine)",
+      "native_name": "اللهجة الشامي الشمال‎ (الأراضي الفلسطينية)",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar",
+      "name": "Arabic",
+      "native_name": "العربية",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-ae",
+      "name": "Arabic (United Arab Emirates)",
+      "native_name": "العربية (الإمارات العربية المتحدة)",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-bh",
+      "name": "Arabic (Bahrain)",
+      "native_name": "العربية (البحرين)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-br",
+      "name": "Arabic (Brazil)",
+      "native_name": "العربية (البرازيل)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-eg",
+      "name": "Arabic (Egypt)",
+      "native_name": "العربية (مصر)",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-il",
+      "name": "Arabic (Israel)",
+      "native_name": "العربية (إسرائيل)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-kw",
+      "name": "Arabic (Kuwait)",
+      "native_name": "العربية (الكويت)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-lb",
+      "name": "Arabic (Lebanon)",
+      "native_name": "العربية (لبنان)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-ma",
+      "name": "Arabic (Morocco)",
+      "native_name": "العربية (المغرب)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-om",
+      "name": "Arabic (Oman)",
+      "native_name": "العربية (عُمان)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-ps",
+      "name": "Arabic (Palestine)",
+      "native_name": "العربية (فلسطين)",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-qa",
+      "name": "Arabic (Qatar)",
+      "native_name": "العربية (قطر)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-sa",
+      "name": "Arabic (Saudi Arabia)",
+      "native_name": "العربية (المملكة العربية السعودية)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "as-in",
+      "name": "Assamese (India)",
+      "native_name": "অসমীয়া (ভাৰত)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ay-bo",
+      "name": "Aymara (Bolivia)",
+      "native_name": "Aymar aru (Wuliwya)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "az",
+      "name": "Azerbaijani",
+      "native_name": "Azərbaycan",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "be",
+      "name": "Belarusian",
+      "native_name": "Беларуская",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "bg",
+      "name": "Bulgarian",
+      "native_name": "Български",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "bg-bg",
+      "name": "Bulgarian (Bulgaria)",
+      "native_name": "Български (България)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "bg"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "bn",
+      "name": "Bengali",
+      "native_name": "বাংলা",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "bn-in",
+      "name": "Bengali (India)",
+      "native_name": "বাংলা (ভারত)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "bn"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "bs",
+      "name": "Bosnian",
+      "native_name": "Bosanski",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ca",
+      "name": "Català (Catalan)",
+      "native_name": "Català",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ca-es",
+      "name": "Catalan (Spain)",
+      "native_name": "Català (Espanya)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "ca"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "cs",
+      "name": "Czech",
+      "native_name": "Čeština",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "cs-cz",
+      "name": "Czech (Czechia)",
+      "native_name": "Čeština (Česko)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "cs"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "cy",
+      "name": "Welsh",
+      "native_name": "Cymraeg",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "da",
+      "name": "Danish",
+      "native_name": "Dansk",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "da-dk",
+      "name": "Danish (Denmark)",
+      "native_name": "Dansk (Danmark)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "da"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de",
+      "name": "German",
+      "native_name": "Deutsch",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-at",
+      "name": "German (Austria)",
+      "native_name": "Deutsch (Österreich)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-be",
+      "name": "German (Belgium)",
+      "native_name": "Deutsch (Belgien)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-ch",
+      "name": "German (Switzerland)",
+      "native_name": "Deutsch (Schweiz)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-de",
+      "name": "German (Germany)",
+      "native_name": "Deutsch (Deutschland)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-dk",
+      "name": "German (Denmark)",
+      "native_name": "Deutsch (Dänemark)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-it",
+      "name": "German (Italy)",
+      "native_name": "Deutsch (Italien)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-li",
+      "name": "German (Liechtenstein)",
+      "native_name": "Deutsch (Liechtenstein)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-lu",
+      "name": "German (Luxemburg)",
+      "native_name": "Deutsch (Luxemburg)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "de-ro",
+      "name": "German (Romania)",
+      "native_name": "Deutsch (Rumänien)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "de"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "el",
+      "name": "Greek",
+      "native_name": "Ελληνικά",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "el-cy",
+      "name": "Greek (Cyprus)",
+      "native_name": "Ελληνικά (Κύπρος)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "el"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "el-gr",
+      "name": "Greek (Greece)",
+      "native_name": "Ελληνικά (Ελλάδα)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "el"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-001",
+      "name": "English (World)",
+      "native_name": "English (World)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-142",
+      "name": "English (Asia)",
+      "native_name": "English (Asia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-150",
+      "name": "English (Europe)",
+      "native_name": "English (Europe)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ae",
+      "name": "English (United Arab Emirates)",
+      "native_name": "English (United Arab Emirates)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-am",
+      "name": "English (Armenia)",
+      "native_name": "English (Armenia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-at",
+      "name": "English (Austria)",
+      "native_name": "English (AT)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-au",
+      "name": "English (AU)",
+      "native_name": "English (AU)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-az",
+      "name": "English (Azerbaijan)",
+      "native_name": "English (Azerbaijan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ba",
+      "name": "English (Bosnia & Herzegovina)",
+      "native_name": "English (Bosnia & Herzegovina)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-be",
+      "native": "English (Belgium)",
+      "native_name": "English (BE)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-bg",
+      "name": "English (Bulgaria)",
+      "native_name": "English (BG)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-bh",
+      "name": "English (Bahrain)",
+      "native_name": "English (Bahrain)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-bo",
+      "name": "English (Bolivia)",
+      "native_name": "English (BO)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-br",
+      "name": "English (Brazil)",
+      "native_name": "English (Brazil)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-bz",
+      "name": "English (Belize)",
+      "native_name": "English (Belize)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ca",
+      "name": "English (Canada)",
+      "native_name": "English (CA)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ch",
+      "name": "English (Switzerland)",
+      "native_name": "English (CH)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-co",
+      "name": "English (Colombia)",
+      "native_name": "English (CO)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-cr",
+      "name": "English (Costa Rica)",
+      "native_name": "English (CR)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-cy",
+      "name": "English (Cyprus)",
+      "native_name": "English (CY)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-cz",
+      "name": "English (Czechia)",
+      "native_name": "English (CZ)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-de",
+      "name": "English (Germany)",
+      "native_name": "English (Germany)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-dk",
+      "name": "English (Denmark)",
+      "native_name": "English (DK)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ec",
+      "name": "English (Ecuador)",
+      "native_name": "English (EC)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ee",
+      "name": "English (Estonia)",
+      "native_name": "English (EE)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-eg",
+      "name": "English (Egypt)",
+      "native_name": "English (Egypt)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-es",
+      "name": "English (Spain)",
+      "native_name": "English (ES)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-fi",
+      "name": "English (Finland)",
+      "native_name": "English (Finland)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-fr",
+      "name": "English (France)",
+      "native_name": "English (France)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gb",
+      "name": "English (GB)",
+      "native_name": "English (GB)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ge",
+      "name": "English (Georgia)",
+      "native_name": "English (Georgia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gf",
+      "name": "English (French Guiana)",
+      "native_name": "English (French Guiana)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gh",
+      "name": "English (Ghana)",
+      "native_name": "English (Ghana)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gi",
+      "name": "English (Gibraltar)",
+      "native_name": "English (Gibraltar)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gp",
+      "name": "English (Guadeloupe)",
+      "native_name": "English (Guadeloupe)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gr",
+      "name": "English (Greece)",
+      "native_name": "English (GR)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-gu",
+      "name": "English (Guam)",
+      "native_name": "English (GU)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-hk",
+      "name": "English (Hong Kong)",
+      "native_name": "English (HK)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-hn",
+      "name": "English (Honduras)",
+      "native_name": "English (HN)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-hr",
+      "name": "English (Croatia)",
+      "native_name": "English (Croatia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-hu",
+      "name": "English (Hungary)",
+      "native_name": "English (HU)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-id",
+      "name": "English (Indonesia)",
+      "native_name": "English (ID)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ie",
+      "name": "English (Ireland)",
+      "native_name": "English (IE)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-il",
+      "name": "English (Israel)",
+      "native_name": "English (IL)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-in",
+      "name": "English (India)",
+      "native_name": "English (IN)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-is",
+      "name": "English (Iceland)",
+      "native_name": "English (Iceland)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-it",
+      "name": "English (Italy)",
+      "native_name": "English (IT)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-jp",
+      "name": "English (Japan)",
+      "native_name": "English (Japan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ke",
+      "name": "English (Kenya)",
+      "native_name": "English (Kenya)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-kr",
+      "name": "English (Korea)",
+      "native_name": "English (KR)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-kw",
+      "name": "English (Kuwait)",
+      "native_name": "English (Kuwait)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-kz",
+      "name": "English (Khazakhstan)",
+      "native_name": "English (Khazakhstan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-lb",
+      "name": "English (Lebanon)",
+      "native_name": "English (Lebanon)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-li",
+      "name": "English (Liechtenstein)",
+      "native_name": "English (Liechtenstein)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-lr",
+      "name": "English (Liberia)",
+      "native_name": "English (LR)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-lt",
+      "name": "English (Lithuania)",
+      "native_name": "English (LT)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-lu",
+      "name": "English (Luxembourg)",
+      "native_name": "English (LU)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-lv",
+      "name": "English (Latvia)",
+      "native_name": "English (LV)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ma",
+      "name": "English (Morocco)",
+      "native_name": "English (Morocco)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-me",
+      "name": "English (Montenegro)",
+      "native_name": "English (Montenegro)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-mf",
+      "name": "English (St. Martin)",
+      "native_name": "English (Saint-Martin)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-mq",
+      "name": "English (Martinique)",
+      "native_name": "English (Martinique)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-mt",
+      "name": "English (Malta)",
+      "native_name": "English (MT)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-mx",
+      "name": "English (Mexico)",
+      "native_name": "English (MX)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-my",
+      "name": "English (Malaysia)",
+      "native_name": "English (MY)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ng",
+      "name": "English (Nigeria)",
+      "native_name": "English (Nigeria)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-nl",
+      "name": "English (Netherlands)",
+      "native_name": "English (NL)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-no",
+      "name": "English (Norway)",
+      "native_name": "English (NO)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-nz",
+      "name": "English (New Zealand)",
+      "native_name": "English (NZ)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-om",
+      "name": "English (Oman)",
+      "native_name": "English (Oman)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-pe",
+      "name": "English (Peru)",
+      "native_name": "English (PE)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ph",
+      "name": "English (Philippines)",
+      "native_name": "English (PH)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-pk",
+      "name": "English (Pakistan)",
+      "native_name": "English (Pakistan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-pl",
+      "name": "English (Poland)",
+      "native_name": "English (PL)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-pr",
+      "name": "English (Puerto Rico)",
+      "native_name": "English (Puerto Rico)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ps",
+      "name": "English (Palestine)",
+      "native_name": "English (PS)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-pt",
+      "name": "English (Portugal)",
+      "native_name": "English (PT)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-qa",
+      "name": "English (Qatar)",
+      "native_name": "English (Qatar)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-re",
+      "name": "English (Réunion)",
+      "native_name": "English (La Réunion)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ro",
+      "name": "English (Romania)",
+      "native_name": "English (RO)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-rs",
+      "name": "English (Serbia)",
+      "native_name": "English (Serbia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ru",
+      "name": "English (Russia)",
+      "native_name": "English (Russia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-rw",
+      "name": "English (Rwanda)",
+      "native_name": "English (Rwanda)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-sa",
+      "name": "English (Saudi Arabia)",
+      "native_name": "English (Saudi Arabia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-se",
+      "name": "English (Sweden)",
+      "native_name": "English (SE)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-sg",
+      "name": "English (Singapore)",
+      "native_name": "English (SG)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-si",
+      "name": "English (Slovenia)",
+      "native_name": "English (Slovenia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-sk",
+      "name": "English (Slovakia)",
+      "native_name": "English (SK)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-th",
+      "name": "English (Thailand)",
+      "native_name": "English (TH)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-tn",
+      "name": "English (Tunisia)",
+      "native_name": "English (Tunisia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-tr",
+      "name": "English (Turkey)",
+      "native_name": "English (Turkey)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-tw",
+      "name": "English (Taiwan)",
+      "native_name": "English (Taiwan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ua",
+      "name": "English (Ukraine)",
+      "native_name": "English (UA)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-150"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ug",
+      "name": "English (Uganda)",
+      "native_name": "English (Uganda)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-us",
+      "name": "English",
+      "native_name": "English (US)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-vn",
+      "name": "English (Viet Nam)",
+      "native_name": "English (Viet Nam)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-yt",
+      "name": "English (Mayotte)",
+      "native_name": "English (Mayotte)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-za",
+      "name": "English (South Africa)",
+      "native_name": "English (ZA)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es",
+      "name": "Spanish",
+      "native_name": "Español",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-001",
+      "name": "Spanish (World)",
+      "native_name": "Español (Mundo)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "es"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-419",
+      "name": "Spanish (Latin American)",
+      "native_name": "Español (Latinoamérica)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-ar",
+      "name": "Spanish (Argentina)",
+      "native_name": "Español (Argentina)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-bo",
+      "name": "Spanish (Bolivia)",
+      "native_name": "Español (Bolivia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-cl",
+      "name": "Spanish (Chile)",
+      "native_name": "Español (Chile)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-co",
+      "name": "Spanish (Colombia)",
+      "native_name": "Español (Colombia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-cr",
+      "name": "Spanish (Costa Rica)",
+      "native_name": "Español (Costa Rica)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-do",
+      "name": "Spanish (Dominican Republic)",
+      "native_name": "Español (República Dominicana)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-ec",
+      "name": "Spanish (Ecuador)",
+      "native_name": "Español (Ecuador)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-es",
+      "name": "Spanish (Spain)",
+      "native_name": "Español (España)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-gt",
+      "name": "Spanish (Guatemala)",
+      "native_name": "Español (Guatemala)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-hn",
+      "name": "Spanish (Honduras)",
+      "native_name": "Español (Honduras)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-mx",
+      "name": "Spanish (Mexico)",
+      "native_name": "Español (México)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-ni",
+      "name": "Spanish (Nicaragua)",
+      "native_name": "Español (Nicaragua)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-pa",
+      "name": "Spanish (Panama)",
+      "native_name": "Español (Panamá)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-pe",
+      "name": "Spanish (Peru)",
+      "native_name": "Español (Perú)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-pr",
+      "name": "Spanish (Puerto Rico)",
+      "native_name": "Español (Puerto Rico)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-py",
+      "name": "Spanish (Paraguay)",
+      "native_name": "Español (Paraguay)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-sv",
+      "name": "Spanish (El Salvador)",
+      "native_name": "Español (El Salvador)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-us",
+      "name": "Spanish (US)",
+      "native_name": "Español (US)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-uy",
+      "name": "Spanish (Uruguay)",
+      "native_name": "Español (Uruguay)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "es-ve",
+      "name": "Spanish (Venezuela)",
+      "native_name": "Español (Venezuela)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "es-419"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "et",
+      "name": "Estonian",
+      "native_name": "Eesti",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "et-ee",
+      "name": "Estonian (Estonia)",
+      "native_name": "eesti (Eesti)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "et"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "eu",
+      "name": "Basque",
+      "native_name": "Euskara",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "eu-es",
+      "name": "Basque (Spain)",
+      "native_name": "Euskara (Espainia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "eu"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fa",
+      "name": "Persian (فارسی)",
+      "native_name": "فارسی",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fa-af",
+      "name": "Dari (Afghanistan)",
+      "native_name": "Dari (Afghanistan)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fi",
+      "name": "Suomi (Finnish)",
+      "native_name": "Suomi",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fi-fi",
+      "name": "Finnish (Finland)",
+      "native_name": "suomi (Suomi)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fi"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fil",
+      "name": "Filipino",
+      "native_name": "Filipino",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fo",
+      "name": "Faroese",
+      "native_name": "Føroyskt",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fo-dk",
+      "name": "Faroese (Denmark)",
+      "native_name": "Føroyskt (Danmark)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fo"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr",
+      "name": "French",
+      "native_name": "Français",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-002",
+      "name": "French (Africa)",
+      "native_name": "Français (Afrique)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-be",
+      "name": "French (Belgium)",
+      "native_name": "Français (Belgique)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-ca",
+      "name": "French (Canada)",
+      "native_name": "Français (Canada)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-ch",
+      "name": "French (Switzerland)",
+      "native_name": "Français (Suisse)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-ci",
+      "name": "French (Côte d’Ivoire)",
+      "native_name": "Français (Côte d’Ivoire)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-fr",
+      "name": "French (France)",
+      "native_name": "Français (France)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-gf",
+      "name": "French (French Guiana)",
+      "native_name": "Français (Guyane française)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-gl",
+      "name": "French (Gibraltar)",
+      "native_name": "Français (Gibraltar)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-gp",
+      "name": "French (Guadeloupe)",
+      "native_name": "Français (Guadeloupe)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-it",
+      "name": "French (Italy)",
+      "native_name": "Français (Italie)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-lu",
+      "name": "French (Luxembourg)",
+      "native_name": "Français (Luxembourg)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-ma",
+      "name": "French (Morocco)",
+      "native_name": "Français (Maroc)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-mf",
+      "name": "French (St. Martin)",
+      "native_name": "Français (Saint-Martin)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-mq",
+      "name": "French (Martinique)",
+      "native_name": "Français (Martinique)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-re",
+      "name": "French (Réunion)",
+      "native_name": "Français (La Réunion)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-yt",
+      "name": "French (Mayotte)",
+      "native_name": "Français (Mayotte)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ga",
+      "name": "Irish",
+      "native_name": "Gaeilge",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ga-ie",
+      "name": "Irish (Ireland)",
+      "native_name": "Gaeilge (Éire)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "ga"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "gl",
+      "name": "Galician",
+      "native_name": "Galego",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "es-es"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "gl-es",
+      "name": "Galician (Spain)",
+      "native_name": "Galego (España)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "gl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "gu",
+      "name": "Gujarati",
+      "native_name": "ગુજરાતી",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "gu-in",
+      "name": "Gujarati (India)",
+      "native_name": "ગુજરાતી (ભારત)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "gu"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "he",
+      "name": "Hebrew",
+      "native_name": "עברית",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "he-il",
+      "name": "Hebrew (Israel)",
+      "native_name": "Hebrew (Israel)",
+      "rtl": true,
+      "official": true,
+      "parent_identifier": "he"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hi",
+      "name": "Hindi",
+      "native_name": "हिंदी",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hi-in",
+      "name": "Hindi (India)",
+      "native_name": "हिन्दी (भारत)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "hi"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hr",
+      "name": "Croatian",
+      "native_name": "Hrvatski",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hr-hr",
+      "name": "Croatian (Croatia)",
+      "native_name": "hrvatski (Hrvatska)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "hr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hu",
+      "name": "Hungarian",
+      "native_name": "Magyar",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hu-hu",
+      "name": "Hungarian (Hungary)",
+      "native_name": "Magyar (Magyarország)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "hu"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hu-ro",
+      "name": "Hungarian (Romania)",
+      "native_name": "Magyar (Románia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "hu"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hu-sk",
+      "name": "Hungarian (Slovakia)",
+      "native_name": "Magyar (Szlovákia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "hu"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hu-ua",
+      "name": "Hungarian (Ukraine)",
+      "native_name": "Magyar (Ukrajna)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "hu"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "hy",
+      "name": "Armenian",
+      "native_name": "հայերեն",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "id",
+      "name": "Indonesian",
+      "native_name": "Bahasa Indonesia",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "id-id",
+      "name": "Indonesian (Indonesia)",
+      "native_name": "Bahasa Indonesia (Indonesia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "id"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ikt",
+      "name": "Western Canadian Inuktitut",
+      "native_name": "Inuinnaqtun",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "is",
+      "name": "Icelandic",
+      "native_name": "Íslenska",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "is-is",
+      "name": "Icelandic (Iceland)",
+      "native_name": "Íslenska (Ísland)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "is"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "it",
+      "name": "Italian",
+      "native_name": "Italiano",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "it-ch",
+      "name": "Italian (Switzerland)",
+      "native_name": "Italiano (Svizzera)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "it-it",
+      "name": "Italian (Italy)",
+      "native_name": "Italiano (Italia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "it"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "iu",
+      "name": "Inuktitut",
+      "native_name": "Inuktitut",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ja",
+      "name": "Japanese",
+      "native_name": "日本語",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ja-jp",
+      "name": "Japanese (Japan)",
+      "native_name": "Japanese (Japan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ja"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "jv-id",
+      "name": "Javanese (Indonesia)",
+      "native_name": "Jawa (Indonésia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ka",
+      "name": "Georgian",
+      "native_name": "ქართული",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "kk",
+      "name": "Kazakh",
+      "native_name": "Қазақ тілі",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "kl-dk",
+      "name": "Kalaallisut (Denmark)",
+      "native_name": "Kalaallisut (Danmarki)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "km",
+      "name": "Khmer",
+      "native_name": "ខ្មែរ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "kn",
+      "name": "Kannada",
+      "native_name": "ಕನ್ನಡ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "kn-in",
+      "name": "Kannada (India)",
+      "native_name": "ಕನ್ನಡ (ಭಾರತ)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "kn"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ko",
+      "name": "Korean",
+      "native_name": "한국어",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ko-kr",
+      "name": "Korean (South Korea)",
+      "native_name": "한국어(대한민국)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ko"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ks-in",
+      "name": "Kashmiri (India)",
+      "native_name": "کٲشُر (ہِندوستان)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ku",
+      "name": "Kurdish",
+      "native_name": "Kurdî",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ky",
+      "name": "Kyrgyz",
+      "native_name": "Кыргызча",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "lt",
+      "name": "Lithuanian",
+      "native_name": "Lietuvių",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "lt-lt",
+      "name": "Lithuanian (Lithuania)",
+      "native_name": "Lietuvių (Lietuva)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "lt"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "lt-lv",
+      "name": "Lithuanian (Latvia)",
+      "native_name": "Lietuvių (Latvija)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "lt"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "lv",
+      "name": "Latvian",
+      "native_name": "Latviešu",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "lv-lv",
+      "name": "Latvian (Latvia)",
+      "native_name": "Latviešu (Latvija)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "lv"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "mi-nz",
+      "name": "Maori (New Zealand)",
+      "native_name": "Māori (Aotearoa)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "mk",
+      "name": "Macedonian",
+      "native_name": "македонски",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ml",
+      "name": "Malayalam",
+      "native_name": "മലയാളം",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ml-in",
+      "name": "Malayalam (India)",
+      "native_name": "മലയാളം (ഇന്ത്യ)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "ml"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "mn",
+      "name": "Mongolian",
+      "native_name": "монгол",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "mr",
+      "name": "Marathi",
+      "native_name": "मराठी",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "mr-in",
+      "name": "Marathi (India)",
+      "native_name": "मराठी (भारत)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "mr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ms",
+      "name": "Malay",
+      "native_name": "Bahasa Melayu",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ms-my",
+      "name": "Malay (Malaysia)",
+      "native_name": "Melayu (Malaysia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ms"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "mt",
+      "name": "Maltese",
+      "native_name": "Malti",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "my",
+      "name": "Burmese",
+      "native_name": "ဗမာ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nb",
+      "name": "Norwegian Bokmål",
+      "native_name": "Bokmål",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "no"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nb-no",
+      "name": "Norwegian Bokmål (Norway)",
+      "native_name": "norsk bokmål (Norge)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "no"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ne",
+      "name": "Nepali",
+      "native_name": "नेपाली",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nl",
+      "name": "Nederlands (Dutch)",
+      "native_name": "Nederlands",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nl-be",
+      "name": "Nederlands (Belgium)",
+      "native_name": "Nederlands (België)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nl-id",
+      "name": "Dutch (Indonesia)",
+      "native_name": "Nederlands (Indonesië)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "nl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nl-nl",
+      "name": "Dutch (Netherlands)",
+      "native_name": "Nederlands (Nederland)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "nl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nn",
+      "name": "Norwegian (Nynorsk)",
+      "native_name": "Nynorsk",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "no"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nn-no",
+      "name": "Norwegian Nynorsk (Norway)",
+      "native_name": "Nynorsk (Noreg)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "nn"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "no",
+      "name": "Norwegian",
+      "native_name": "Norsk",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nso-za",
+      "name": "Northern Sotho (South Africa)",
+      "native_name": "Pedi (Afrika Borwa)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "or-in",
+      "name": "Oriya (India)",
+      "native_name": "ଓଡ଼ିଆ (ଭାରତ)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pa",
+      "name": "Punjabi",
+      "native_name": "ਪੰਜਾਬੀ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pa-in",
+      "name": "Panjabi (India)",
+      "native_name": "ਪੰਜਾਬੀ (ਭਾਰਤ)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "pa"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pl",
+      "name": "Polish",
+      "native_name": "Polski",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pl-cz",
+      "name": "Polish (Czechia)",
+      "native_name": "Polski (Czechy)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "pl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pl-lt",
+      "name": "Polish (Lithuania)",
+      "native_name": "Polski (Litwa)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "pl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pl-pl",
+      "name": "Polish (Poland)",
+      "native_name": "Polski (Polska)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "pl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pl-ua",
+      "name": "Polish (Ukraine)",
+      "native_name": "Polski (Ukraina)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "pl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ps",
+      "name": "Pashto",
+      "native_name": "پښتو",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ps-af",
+      "name": "Pashto (Afghanistan)",
+      "native_name": "Pashto (Afghanistan)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ps"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pt",
+      "name": "Portuguese (Portugal)",
+      "native_name": "Português",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pt-br",
+      "name": "Portuguese (Brasil)",
+      "native_name": "Português do Brasil",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "pt-pt",
+      "name": "Portuguese (Portugal)",
+      "native_name": "Português (Portugal)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "pt"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "qu-bo",
+      "name": "Quechua (Bolivia)",
+      "native_name": "Runasimi (Bolivia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "qu-ec",
+      "name": "Quechua (Ecuador)",
+      "native_name": "Runasimi (Ecuador)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "qu-pe",
+      "name": "Quechua (Peru)",
+      "native_name": "Runasimi (Perú)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "rn-bi",
+      "name": "Rundi (Burundi)",
+      "native_name": "Ikirundi (Uburundi)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-US"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ro",
+      "name": "Romanian",
+      "native_name": "Română",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ro-bg",
+      "name": "Romanian (Bulgaria)",
+      "native_name": "română (Bulgaria)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ro"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ro-ro",
+      "name": "Romanian (Romania)",
+      "native_name": "Română (România)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ro"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ro-sk",
+      "name": "Romanian (Slovakia)",
+      "native_name": "română (Slovacia)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ro"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ro-ua",
+      "name": "Romanian (Ukraine)",
+      "native_name": "Română (Ucraina)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ro"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ru",
+      "name": "Russian",
+      "native_name": "Русский",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ru-ee",
+      "name": "Russian (Estonia)",
+      "native_name": "Русский (Эстония)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ru"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ru-kz",
+      "name": "Russian (Kazakhstan)",
+      "native_name": "Русский (Қазақстан)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ru"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ru-lt",
+      "name": "Russian (Lithuania)",
+      "native_name": "Русский (Литва)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ru"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ru-lv",
+      "name": "Russian (Latvia)",
+      "native_name": "Русский (Латвия)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ru"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ru-ua",
+      "name": "Russian (Ukraine)",
+      "native_name": "Русский (Украина)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "ru"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sa-in",
+      "name": "Sanskrit (India)",
+      "native_name": "संस्कृतम् (भारत)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sd-in",
+      "name": "Sindhi (India)",
+      "native_name": "سنڌي (انڊيا)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "si",
+      "name": "Sinhala",
+      "native_name": "සිංහල",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sk",
+      "name": "Slovak",
+      "native_name": "Slovenčina",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sk-cz",
+      "name": "Slovak (Czechia)",
+      "native_name": "Slovenčina (Česko)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "sk"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sk-sk",
+      "name": "Slovak (Slovakia)",
+      "native_name": "Slovenčina (Slovensko)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "sk"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sl",
+      "name": "Slovenian",
+      "native_name": "Slovenščina",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sl-si",
+      "name": "Slovenian (Slovenia)",
+      "native_name": "Slovenian (Slovenia)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "sl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "so",
+      "name": "Somali",
+      "native_name": "Soomaali",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sq",
+      "name": "Albanian",
+      "native_name": "Shqip",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sr",
+      "name": "Serbian",
+      "native_name": "Srpski",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sr-me",
+      "name": "Montenegrin",
+      "native_name": "Crnogorski",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "st-za",
+      "name": "Southern Sotho (South Africa)",
+      "native_name": "Sesotho (Afrika Borwa)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sv",
+      "name": "Swedish",
+      "native_name": "svenska",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sv-fi",
+      "name": "Swedish (Finland)",
+      "native_name": "Svenska (Finland)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "sv"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sv-se",
+      "name": "Swedish (Sweden)",
+      "native_name": "svenska (Sverige)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "sv"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sw",
+      "name": "Swahili",
+      "native_name": "Kiswahili",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sw-rw",
+      "name": "Swahili (Rwanda)",
+      "native_name": "Swahili (Rwanda)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "sw"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "sw-tz",
+      "name": "Swahili (Tanzania)",
+      "native_name": "Kiswahili (Tanzania)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "sw"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ta",
+      "name": "Tamil",
+      "native_name": "தமிழ்",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ta-in",
+      "name": "Tamil (India)",
+      "native_name": "தமிழ் (இந்தியா)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "ta"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "te",
+      "name": "Telugu",
+      "native_name": "తెలుగు",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "te-in",
+      "name": "Telugu (India)",
+      "native_name": "తెలుగు (భారతదేశం)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "te"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tg",
+      "name": "Tajik",
+      "native_name": "Тоҷикӣ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "th",
+      "name": "Thai",
+      "native_name": "ไทย",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ti",
+      "name": "Tigrinya",
+      "native_name": "ትግርኛ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tk",
+      "name": "Turkmen",
+      "native_name": "Türkmen dili",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tl",
+      "name": "Tagalog",
+      "native_name": "Tagalog",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fil"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tl-ph",
+      "name": "Tagalog (Philippines)",
+      "native_name": "Tagalog (Pilipinas)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tn-za",
+      "name": "Tswana (South Africa)",
+      "native_name": "Setswana (Aforika Borwa)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tr",
+      "name": "Turkish",
+      "native_name": "Türkçe",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tr-bg",
+      "name": "Turkish (Bulgaria)",
+      "native_name": "Türkçe (Bulgaristan)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "tr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ts-za",
+      "name": "Tsonga (South Africa)",
+      "native_name": "Xitsonga (Afrika-Dzonga)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "uk",
+      "name": "Ukrainian",
+      "native_name": "Українська",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "uk-sk",
+      "name": "Ukrainian (Slovakia)",
+      "native_name": "Українська (Словаччина)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "uk"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "uk-ua",
+      "name": "Ukrainian (Ukraine)",
+      "native_name": "Українська (Україна)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "uk"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ur",
+      "name": "Urdu",
+      "native_name": "اردو",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ur-in",
+      "name": "Urdu (India)",
+      "native_name": "اردو (بھارت)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ur"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ur-pk",
+      "name": "Urdu (Pakistan)",
+      "native_name": "اردو (پاکستان)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ur"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "uz",
+      "name": "Uzbek",
+      "native_name": "o‘zbek",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "vi",
+      "name": "Vietnamese",
+      "native_name": "Tiếng Việt",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "vi-vn",
+      "name": "Vietnamese (Viet Nam)",
+      "native_name": "Tiếng Việt (Việt Nam)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "vi"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "xh",
+      "name": "Xhosa",
+      "native_name": "IsiXhosa",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "xh-za",
+      "name": "Xhosa (South Africa)",
+      "native_name": "IsiXhosa (eMzantsi Afrika)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "xh"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "zh-cn",
+      "name": "Simplified Chinese",
+      "native_name": "简体中文",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "zh-hk",
+      "name": "Chinese (Hong Kong)",
+      "native_name": "中文 (香港)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "zh-tw"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "zh-mo",
+      "name": "Chinese (Macao)",
+      "native_name": "中文 (澳門)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "zh-tw"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "zh-sg",
+      "name": "Chinese (Singapore)",
+      "native_name": "中文 (新加坡)",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": "zh-cn"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "zh-tw",
+      "name": "Traditional Chinese",
+      "native_name": "繁體中文",
+      "rtl": false,
+      "official": true,
+      "parent_identifier": null
+    }
+  },
+  {
+    "locale": {
+      "identifier": "zu-za",
+      "name": "Zulu (South Africa)",
+      "native_name": "IsiZulu (iNingizimu Afrika)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "lo",
+      "name": "Lao",
+      "native_name": "ລາວ",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-do",
+      "name": "English (Dominican Republic)",
+      "native_name": "English (Dominican Republic)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ast",
+      "name": "Asturian",
+      "native_name": "Asturianu",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "es"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-ht",
+      "name": "French (Haiti)",
+      "native_name": "Français (Haïti)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "rw",
+      "name": "Kinyarwanda",
+      "native_name": "Kinyarwanda",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ln",
+      "name": "Lingala",
+      "native_name": "Lingála",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-us"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-ar",
+      "name": "English (Argentina)",
+      "native_name": "English (Argentina)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-cl",
+      "name": "English (Chile)",
+      "native_name": "English (Chile)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-de",
+      "name": "French (Germany)",
+      "native_name": "Français (Allemagne)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "nl-de",
+      "name": "Dutch (Germany)",
+      "native_name": "Nederlands (Duitsland)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "nl"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "tr-tr",
+      "name": "Turkish (Türkiye)",
+      "native_name": "Türkçe (Türkiye)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "tr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "en-tz",
+      "name": "English (Tanzania)",
+      "native_name": "English (Tanzania)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "en-001"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-at",
+      "name": "French (Austria)",
+      "native_name": "Français (Autriche)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-li",
+      "name": "French (Liechtenstein)",
+      "native_name": "Français (Liechtenstein)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "fr-001",
+      "name": "French (world)",
+      "native_name": "Français (Monde)",
+      "rtl": false,
+      "official": false,
+      "parent_identifier": "fr"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "ar-001",
+      "name": "Arabic (world)",
+      "native_name": "العربية (العالم)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "ar"
+    }
+  },
+  {
+    "locale": {
+      "identifier": "he-001",
+      "name": "Hebrew (world)",
+      "native_name": "עברית (העולם)",
+      "rtl": true,
+      "official": false,
+      "parent_identifier": "he"
+    }
+  }
+]
