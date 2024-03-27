@@ -1,5 +1,5 @@
 /**
- * This script is used for the internal Zendesk translation system, and it creates the source YAML file for translations,
+ * This script is used for the internal Zendesk translation system, and it creates or updates the source YAML file for translations,
  * extracting the strings from the source code.
  *
  * It searches for i18next calls (`{t("my-key", "My value")}`) and it adds the strings to the specified YAML file
