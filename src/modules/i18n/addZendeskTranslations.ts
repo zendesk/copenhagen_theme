@@ -27,13 +27,13 @@ async function loadTranslations(
 
 /**
  * This function adds the translations published on the Zendesk CDN to i18next,
- * taking the CLDR locale and a manifest as input.
+ * taking the base locale and a manifest as input.
  *
  * If you want to load your own translations you can use a different setup following the i18next
  * documentation.
  *
- * @param locale The CLDR locale
- * @param manifest A manifest object containing the translations file URL for each CLDR locale.
+ * @param locale The base locale
+ * @param manifest A manifest object containing the translations file URL for each base locale.
  */
 export async function addZendeskTranslations(
   locale: string,

@@ -1018,7 +1018,7 @@ function hasMinLength(value) {
         return value.length >= 3;
     }
 }
-function SuggestedArticles({ query: inputQuery, hcLocale, }) {
+function SuggestedArticles({ query: inputQuery, locale, }) {
     const debouncedQuery = useDebounce(inputQuery, 500);
     const [articles, setArticles] = reactExports.useState([]);
     const requestsCache = reactExports.useRef({});
@@ -1030,7 +1030,7 @@ function SuggestedArticles({ query: inputQuery, hcLocale, }) {
             return;
         }
         const requestUrl = new URL(`${window.location.origin}/api/v2/help_center/deflection/suggestions.json`);
-        requestUrl.searchParams.append("locale", hcLocale);
+        requestUrl.searchParams.append("locale", locale);
         requestUrl.searchParams.append("query", query);
         const cachedResponse = requestsCache.current[requestUrl.toString()];
         if (cachedResponse) {
@@ -1043,7 +1043,7 @@ function SuggestedArticles({ query: inputQuery, hcLocale, }) {
             requestsCache.current[requestUrl.toString()] = results;
             setArticles(results);
         });
-    }, [debouncedQuery, hcLocale]);
+    }, [debouncedQuery, locale]);
     return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: t("new-request-form.suggested-articles", "Suggested articles") }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
 }
 
@@ -1143,383 +1143,6 @@ function AnswerBotModal({ token, articles, requestId, }) {
                                 }, children: t("new-request-form.answer-bot-modal.solve-request", "Yes, close my request") })] })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": t("new-request-form.close-label", "Close") })] }));
 }
 
-var am = "en-us";
-var gl = "es-es";
-var gu = "en-us";
-var ikt = "en-us";
-var iu = "en-us";
-var km = "en-us";
-var kn = "en-us";
-var ky = "en-us";
-var ml = "en-us";
-var mn = "en-us";
-var mr = "en-us";
-var nb = "no";
-var ne = "en-us";
-var nn = "no";
-var pa = "en-us";
-var ps = "en-us";
-var si = "en-us";
-var so = "en-us";
-var sw = "en-us";
-var ta = "en-us";
-var te = "en-us";
-var tg = "en-us";
-var ti = "en-us";
-var tk = "en-us";
-var tl = "fil";
-var uz = "en-us";
-var xh = "en-us";
-var lo = "en-us";
-var ast = "es";
-var rw = "en-us";
-var ln = "en-us";
-var localeMapping = {
-	"af-za": "af",
-	"ajp-ps": "ar",
-	am: am,
-	"apc-ps": "ar",
-	"ar-ae": "ar",
-	"ar-bh": "ar",
-	"ar-br": "ar",
-	"ar-eg": "ar",
-	"ar-il": "ar",
-	"ar-kw": "ar",
-	"ar-lb": "ar",
-	"ar-ma": "ar",
-	"ar-om": "ar",
-	"ar-ps": "ar",
-	"ar-qa": "ar",
-	"ar-sa": "ar",
-	"as-in": "en-us",
-	"ay-bo": "en-us",
-	"bg-bg": "bg",
-	"bn-in": "bn",
-	"ca-es": "ca",
-	"cs-cz": "cs",
-	"da-dk": "da",
-	"de-at": "de",
-	"de-be": "de",
-	"de-ch": "de",
-	"de-de": "de",
-	"de-dk": "de",
-	"de-it": "de",
-	"de-li": "de",
-	"de-lu": "de",
-	"de-ro": "de",
-	"el-cy": "el",
-	"el-gr": "el",
-	"en-142": "en-001",
-	"en-ae": "en-001",
-	"en-am": "en-001",
-	"en-at": "en-150",
-	"en-az": "en-001",
-	"en-ba": "en-150",
-	"en-be": "en-001",
-	"en-bg": "en-150",
-	"en-bh": "en-001",
-	"en-bo": "en-us",
-	"en-br": "en-001",
-	"en-bz": "en-001",
-	"en-ch": "en-150",
-	"en-co": "en-us",
-	"en-cr": "en-us",
-	"en-cy": "en-001",
-	"en-cz": "en-150",
-	"en-de": "en-150",
-	"en-dk": "en-150",
-	"en-ec": "en-us",
-	"en-ee": "en-150",
-	"en-eg": "en-001",
-	"en-es": "en-150",
-	"en-fi": "en-150",
-	"en-fr": "en-150",
-	"en-ge": "en-001",
-	"en-gf": "en-001",
-	"en-gh": "en-001",
-	"en-gi": "en-001",
-	"en-gp": "en-001",
-	"en-gr": "en-150",
-	"en-gu": "en-us",
-	"en-hk": "en-001",
-	"en-hn": "en-us",
-	"en-hr": "en-150",
-	"en-hu": "en-150",
-	"en-id": "en-001",
-	"en-ie": "en-001",
-	"en-il": "en-001",
-	"en-in": "en-001",
-	"en-is": "en-001",
-	"en-it": "en-150",
-	"en-jp": "en-001",
-	"en-ke": "en-001",
-	"en-kr": "en-001",
-	"en-kw": "en-001",
-	"en-kz": "en-001",
-	"en-lb": "en-001",
-	"en-li": "en-001",
-	"en-lr": "en-001",
-	"en-lt": "en-150",
-	"en-lu": "en-150",
-	"en-lv": "en-150",
-	"en-ma": "en-001",
-	"en-me": "en-150",
-	"en-mf": "en-001",
-	"en-mq": "en-001",
-	"en-mt": "en-001",
-	"en-mx": "en-us",
-	"en-ng": "en-us",
-	"en-nl": "en-150",
-	"en-no": "en-150",
-	"en-nz": "en-001",
-	"en-om": "en-001",
-	"en-pe": "en-us",
-	"en-pk": "en-001",
-	"en-pl": "en-150",
-	"en-pr": "en-us",
-	"en-ps": "en-001",
-	"en-pt": "en-150",
-	"en-qa": "en-001",
-	"en-re": "en-001",
-	"en-ro": "en-150",
-	"en-rs": "en-150",
-	"en-ru": "en-001",
-	"en-rw": "en-001",
-	"en-sa": "en-001",
-	"en-sg": "en-001",
-	"en-si": "en-150",
-	"en-sk": "en-150",
-	"en-th": "en-001",
-	"en-tn": "en-001",
-	"en-tr": "en-001",
-	"en-tw": "en-001",
-	"en-ua": "en-150",
-	"en-ug": "en-001",
-	"en-vn": "en-001",
-	"en-yt": "en-001",
-	"en-za": "en-001",
-	"es-001": "es",
-	"es-ar": "es-419",
-	"es-bo": "es-419",
-	"es-cl": "es-419",
-	"es-co": "es-419",
-	"es-cr": "es-419",
-	"es-do": "es-419",
-	"es-ec": "es-419",
-	"es-gt": "es-419",
-	"es-hn": "es-419",
-	"es-mx": "es-419",
-	"es-ni": "es-419",
-	"es-pa": "es-419",
-	"es-pe": "es-419",
-	"es-pr": "es-419",
-	"es-py": "es-419",
-	"es-sv": "es-419",
-	"es-us": "es-419",
-	"es-uy": "es-419",
-	"es-ve": "es-419",
-	"et-ee": "et",
-	"eu-es": "eu",
-	"fi-fi": "fi",
-	"fo-dk": "fo",
-	"fr-002": "fr",
-	"fr-be": "fr",
-	"fr-ch": "fr",
-	"fr-ci": "fr",
-	"fr-fr": "fr",
-	"fr-gf": "fr",
-	"fr-gl": "fr",
-	"fr-gp": "fr",
-	"fr-it": "fr",
-	"fr-lu": "fr",
-	"fr-ma": "fr",
-	"fr-mf": "fr",
-	"fr-mq": "fr",
-	"fr-re": "fr",
-	"fr-yt": "fr",
-	"ga-ie": "ga",
-	gl: gl,
-	"gl-es": "gl",
-	gu: gu,
-	"gu-in": "gu",
-	"he-il": "he",
-	"hi-in": "hi",
-	"hr-hr": "hr",
-	"hu-hu": "hu",
-	"hu-ro": "hu",
-	"hu-sk": "hu",
-	"hu-ua": "hu",
-	"id-id": "id",
-	ikt: ikt,
-	"is-is": "is",
-	"it-it": "it",
-	iu: iu,
-	"ja-jp": "ja",
-	"jv-id": "en-us",
-	"kl-dk": "en-us",
-	km: km,
-	kn: kn,
-	"kn-in": "kn",
-	"ko-kr": "ko",
-	"ks-in": "en-us",
-	ky: ky,
-	"lt-lt": "lt",
-	"lt-lv": "lt",
-	"lv-lv": "lv",
-	"mi-nz": "en-us",
-	ml: ml,
-	"ml-in": "ml",
-	mn: mn,
-	mr: mr,
-	"mr-in": "mr",
-	"ms-my": "ms",
-	nb: nb,
-	"nb-no": "no",
-	ne: ne,
-	"nl-id": "nl",
-	"nl-nl": "nl",
-	nn: nn,
-	"nn-no": "nn",
-	"nso-za": "en-us",
-	"or-in": "en-us",
-	pa: pa,
-	"pa-in": "pa",
-	"pl-cz": "pl",
-	"pl-lt": "pl",
-	"pl-pl": "pl",
-	"pl-ua": "pl",
-	ps: ps,
-	"ps-af": "ps",
-	"pt-pt": "pt",
-	"qu-bo": "en-us",
-	"qu-ec": "en-us",
-	"qu-pe": "en-us",
-	"rn-bi": "en-US",
-	"ro-bg": "ro",
-	"ro-ro": "ro",
-	"ro-sk": "ro",
-	"ro-ua": "ro",
-	"ru-ee": "ru",
-	"ru-kz": "ru",
-	"ru-lt": "ru",
-	"ru-lv": "ru",
-	"ru-ua": "ru",
-	"sa-in": "en-us",
-	"sd-in": "en-us",
-	si: si,
-	"sk-cz": "sk",
-	"sk-sk": "sk",
-	"sl-si": "sl",
-	so: so,
-	"st-za": "en-us",
-	"sv-fi": "sv",
-	"sv-se": "sv",
-	sw: sw,
-	"sw-rw": "sw",
-	"sw-tz": "sw",
-	ta: ta,
-	"ta-in": "ta",
-	te: te,
-	"te-in": "te",
-	tg: tg,
-	ti: ti,
-	tk: tk,
-	tl: tl,
-	"tn-za": "en-us",
-	"tr-bg": "tr",
-	"ts-za": "en-us",
-	"uk-sk": "uk",
-	"uk-ua": "uk",
-	"ur-in": "ur",
-	"ur-pk": "ur",
-	uz: uz,
-	"vi-vn": "vi",
-	xh: xh,
-	"xh-za": "xh",
-	"zh-hk": "zh-tw",
-	"zh-mo": "zh-tw",
-	"zh-sg": "zh-cn",
-	"zu-za": "en-us",
-	lo: lo,
-	"en-do": "en-001",
-	ast: ast,
-	"fr-ht": "fr",
-	rw: rw,
-	ln: ln,
-	"en-ar": "en-001",
-	"en-cl": "en-001",
-	"fr-de": "fr",
-	"nl-de": "nl",
-	"tr-tr": "tr",
-	"en-tz": "en-001",
-	"fr-at": "fr",
-	"fr-li": "fr",
-	"fr-001": "fr",
-	"ar-001": "ar",
-	"he-001": "he"
-};
-
-/**
- * Help Center supports some non standard locale variants, as documented here:
- * https://support.zendesk.com/hc/en-us/articles/4408821324826-Zendesk-language-support-by-product#h_01EYXD488X3XK23TG9VPG0W6KS
- *
- * This function returns a standard Unicode CLDR locale for an Help Center locale. The returned
- * locale can be used for loading translations and using the Intl API in the browser.
- *
- * The mapping between the locales is performed using a JSON file generated from a script
- *
- * @param hcLocale Help Center locale
- * @returns CLDR Locale
- */
-function getCldrLocale(hcLocale) {
-    return localeMapping[hcLocale] ?? hcLocale;
-}
-
-async function loadTranslations(locale, manifest) {
-    try {
-        const BASE_URL = manifest.baseUrl;
-        const fileUrl = manifest.files[locale];
-        if (fileUrl === undefined) {
-            return {};
-        }
-        const content = await (await fetch(`${BASE_URL}${fileUrl}`)).json();
-        return content.translations;
-    }
-    catch (e) {
-        console.error("Error fetching translations", e);
-        return {};
-    }
-}
-/**
- * This function adds the translations published on the Zendesk CDN to i18next,
- * taking the CLDR locale and a manifest as input.
- *
- * If you want to load your own translations you can use a different setup following the i18next
- * documentation.
- *
- * @param locale The CLDR locale
- * @param manifest A manifest object containing the translations file URL for each CLDR locale.
- */
-async function addZendeskTranslations(locale, manifest) {
-    const translations = await loadTranslations(locale, manifest);
-    instance.addResourceBundle(locale, "translation", translations);
-}
-
-function initI18next(locale) {
-    instance.use(initReactI18next).init({
-        resources: {
-            [`${locale}`]: {},
-        },
-        lng: locale,
-        lowerCaseLng: true,
-        interpolation: {
-            escapeValue: false,
-        },
-        keySeparator: false,
-        pluralSeparator: ".",
-    });
-}
-
 const StyledParagraph = styled(Paragraph) `
   margin: ${(props) => props.theme.space.md} 0;
 `;
@@ -1531,9 +1154,8 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, hcLocale, }) {
+function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, parentIdPath, locale, baseLocale, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
-    const locale = getCldrLocale(hcLocale);
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -1544,12 +1166,12 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, hcLocale, }
             ? { ...ticketField, value }
             : ticketField));
     }
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [parentId && (jsxRuntimeExports.jsx(StyledParagraph, { children: jsxRuntimeExports.jsx(Anchor, { href: `/hc/${hcLocale}/requests/${parentId}`, children: t("new-request-form.parent-request-link", "Follow-up to request {{parentId}}", {
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [parentId && (jsxRuntimeExports.jsx(StyledParagraph, { children: jsxRuntimeExports.jsx(Anchor, { href: parentIdPath, children: t("new-request-form.parent-request-link", "Follow-up to request {{parentId}}", {
                         parentId: `\u202D#${parentId}\u202C`,
                     }) }) })), jsxRuntimeExports.jsx(StyledParagraph, { "aria-hidden": "true", children: t("new-request-form.required-fields-info", "Fields marked with an asterisk (*) are required.") }), jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, hcLocale: hcLocale })] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
                             case "text":
                             case "integer":
                             case "decimal":
@@ -1563,11 +1185,11 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, hcLocale, }
                                 return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
                             case "priority":
                             case "tickettype":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: locale, valueFormat: "dateTime" }))] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: baseLocale, valueFormat: "dateTime" }))] }));
                             case "checkbox":
                                 return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
                             case "date":
-                                return (jsxRuntimeExports.jsx(DatePicker, { field: field, locale: locale, valueFormat: "date" }));
+                                return (jsxRuntimeExports.jsx(DatePicker, { field: field, locale: baseLocale, valueFormat: "date" }));
                             case "multiselect":
                                 return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                             case "tagger":
@@ -1675,11 +1297,55 @@ var translationsManifest = {
 	files: files
 };
 
+async function loadTranslations(locale, manifest) {
+    try {
+        const BASE_URL = manifest.baseUrl;
+        const fileUrl = manifest.files[locale];
+        if (fileUrl === undefined) {
+            return {};
+        }
+        const content = await (await fetch(`${BASE_URL}${fileUrl}`)).json();
+        return content.translations;
+    }
+    catch (e) {
+        console.error("Error fetching translations", e);
+        return {};
+    }
+}
+/**
+ * This function adds the translations published on the Zendesk CDN to i18next,
+ * taking the base locale and a manifest as input.
+ *
+ * If you want to load your own translations you can use a different setup following the i18next
+ * documentation.
+ *
+ * @param locale The base locale
+ * @param manifest A manifest object containing the translations file URL for each base locale.
+ */
+async function addZendeskTranslations(locale, manifest) {
+    const translations = await loadTranslations(locale, manifest);
+    instance.addResourceBundle(locale, "translation", translations);
+}
+
+function initI18next(locale) {
+    instance.use(initReactI18next).init({
+        resources: {
+            [`${locale}`]: {},
+        },
+        lng: locale,
+        lowerCaseLng: true,
+        interpolation: {
+            escapeValue: false,
+        },
+        keySeparator: false,
+        pluralSeparator: ".",
+    });
+}
+
 async function renderNewRequestForm(settings, props, container) {
-    const { hcLocale } = props;
-    const locale = getCldrLocale(hcLocale);
-    initI18next(locale);
-    await addZendeskTranslations(locale, translationsManifest);
+    const { baseLocale } = props;
+    initI18next(baseLocale);
+    await addZendeskTranslations(baseLocale, translationsManifest);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 

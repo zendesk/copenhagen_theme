@@ -22,14 +22,15 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
-import { getCldrLocale } from "../i18n";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
   wysiwyg: boolean;
   answerBot: AnswerBot;
   parentId: string;
-  hcLocale: string;
+  parentIdPath: string;
+  locale: string;
+  baseLocale: string;
 }
 
 const StyledParagraph = styled(Paragraph)`
@@ -51,7 +52,9 @@ export function NewRequestForm({
   wysiwyg,
   answerBot,
   parentId,
-  hcLocale,
+  parentIdPath,
+  locale,
+  baseLocale,
 }: NewRequestFormProps) {
   const {
     ticket_fields,
@@ -70,7 +73,6 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
-  const locale = getCldrLocale(hcLocale);
   const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -91,7 +93,7 @@ export function NewRequestForm({
     <>
       {parentId && (
         <StyledParagraph>
-          <Anchor href={`/hc/${hcLocale}/requests/${parentId}`}>
+          <Anchor href={parentIdPath}>
             {t(
               "new-request-form.parent-request-link",
               "Follow-up to request {{parentId}}",
@@ -148,7 +150,7 @@ export function NewRequestForm({
                   />
                   <SuggestedArticles
                     query={field.value as string | undefined}
-                    hcLocale={hcLocale}
+                    locale={locale}
                   />
                 </>
               );
@@ -207,7 +209,7 @@ export function NewRequestForm({
                   {field.value === "task" && (
                     <DatePicker
                       field={due_date_field}
-                      locale={locale}
+                      locale={baseLocale}
                       valueFormat="dateTime"
                     />
                   )}
@@ -222,7 +224,11 @@ export function NewRequestForm({
               );
             case "date":
               return (
-                <DatePicker field={field} locale={locale} valueFormat="date" />
+                <DatePicker
+                  field={field}
+                  locale={baseLocale}
+                  valueFormat="date"
+                />
               );
             case "multiselect":
               return <MultiSelect field={field} />;
