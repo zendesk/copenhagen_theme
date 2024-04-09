@@ -1,0 +1,4215 @@
+var locale$1l = "af";
+var rtl$1l = false;
+var translations$1l = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$1l = "2023-10-12T17:25:30Z";
+var af = {
+	locale: locale$1l,
+	rtl: rtl$1l,
+	translations: translations$1l,
+	updated_at: updated_at$1l
+};
+
+var af$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: af,
+  locale: locale$1l,
+  rtl: rtl$1l,
+  translations: translations$1l,
+  updated_at: updated_at$1l
+});
+
+var locale$1k = "ar-x-pseudo";
+var rtl$1k = true;
+var translations$1k = {
+	"new-request-form.answer-bot-modal.footer-content": "[ผู้龍ḬḬϝ ḭḭṭ ḍṓṓḛḛṡ, ẁḛḛ ͼααṇ ͼḽṓṓṡḛḛ ẏẏṓṓṵṵṛ ṛḛḛͼḛḛṇṭ ṛḛḛʠṵṵḛḛṡṭ {{requestId}}龍ผู้]",
+	"new-request-form.answer-bot-modal.footer-title": "[ผู้龍Ḍṓṓḛḛṡ ṭḥḭḭṡ ααṛṭḭḭͼḽḛḛ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "[ผู้龍Ṅṓṓ, ḬḬ ṇḛḛḛḛḍ ḥḛḛḽṗ龍ผู้]",
+	"new-request-form.answer-bot-modal.request-closed": "[ผู้龍Ṅḭḭͼḛḛ. ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ḥααṡ ḅḛḛḛḛṇ ͼḽṓṓṡḛḛḍ.龍ผู้]",
+	"new-request-form.answer-bot-modal.request-submitted": "[ผู้龍ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ẁααṡ ṡṵṵͼͼḛḛṡṡϝṵṵḽḽẏẏ ṡṵṵḅṃḭḭṭṭḛḛḍ龍ผู้]",
+	"new-request-form.answer-bot-modal.solve-error": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ͼḽṓṓṡḭḭṇḡ ẏẏṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
+	"new-request-form.answer-bot-modal.solve-request": "[ผู้龍ŶŶḛḛṡ, ͼḽṓṓṡḛḛ ṃẏẏ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
+	"new-request-form.answer-bot-modal.title": "[ผู้龍Ŵḥḭḭḽḛḛ ẏẏṓṓṵṵ ẁααḭḭṭ, ḍṓṓ ααṇẏẏ ṓṓϝ ṭḥḛḛṡḛḛ ααṛṭḭḭͼḽḛḛṡ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
+	"new-request-form.answer-bot-modal.view-article": "[ผู้龍Ṿḭḭḛḛẁ ααṛṭḭḭͼḽḛḛ龍ผู้]",
+	"new-request-form.attachments.choose-file-label": "[ผู้龍Ḉḥṓṓṓṓṡḛḛ αα ϝḭḭḽḛḛ ṓṓṛ ḍṛααḡ ααṇḍ ḍṛṓṓṗ ḥḛḛṛḛḛ龍ผู้]",
+	"new-request-form.attachments.drop-files-label": "[ผู้龍Ḍṛṓṓṗ ϝḭḭḽḛḛṡ ḥḛḛṛḛḛ龍ผู้]",
+	"new-request-form.attachments.remove-file": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ龍ผู้]",
+	"new-request-form.attachments.stop-upload": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍ龍ผู้]",
+	"new-request-form.attachments.upload-error-description": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}. Ṫṛẏẏ ααḡααḭḭṇ ṓṓṛ ṵṵṗḽṓṓααḍ ααṇṓṓṭḥḛḛṛ ϝḭḭḽḛḛ.龍ผู้]",
+	"new-request-form.attachments.upload-error-title": "[ผู้龍ṲṲṗḽṓṓααḍ ḛḛṛṛṓṓṛ龍ผู้]",
+	"new-request-form.attachments.uploading": "[ผู้龍ṲṲṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
+	"new-request-form.cc-field.container-label": "[ผู้龍Ṣḛḛḽḛḛͼṭḛḛḍ ḈḈ ḛḛṃααḭḭḽṡ龍ผู้]",
+	"new-request-form.cc-field.email-added": "[ผู้龍{{email}} ḥααṡ ḅḛḛḛḛṇ ααḍḍḛḛḍ龍ผู้]",
+	"new-request-form.cc-field.email-label": "[ผู้龍{{email}} - Ṕṛḛḛṡṡ Ḃααͼḳṡṗααͼḛḛ ṭṓṓ ṛḛḛṃṓṓṽḛḛ龍ผู้]",
+	"new-request-form.cc-field.email-removed": "[ผู้龍{{email}} ḥααṡ ḅḛḛḛḛṇ ṛḛḛṃṓṓṽḛḛḍ龍ผู้]",
+	"new-request-form.cc-field.emails-added": "[ผู้龍{{emails}} ḥααṽḛḛ ḅḛḛḛḛṇ ααḍḍḛḛḍ龍ผู้]",
+	"new-request-form.cc-field.invalid-email": "[ผู้龍ḬḬṇṽααḽḭḭḍ ḛḛṃααḭḭḽ ααḍḍṛḛḛṡṡ龍ผู้]",
+	"new-request-form.close-label": "[ผู้龍Ḉḽṓṓṡḛḛ龍ผู้]",
+	"new-request-form.dropdown.empty-option": "[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]",
+	"new-request-form.parent-request-link": "[ผู้龍Ḟṓṓḽḽṓṓẁ-ṵṵṗ ṭṓṓ ṛḛḛʠṵṵḛḛṡṭ {{parentId}}龍ผู้]",
+	"new-request-form.required-fields-info": "[ผู้龍Ḟḭḭḛḛḽḍṡ ṃααṛḳḛḛḍ ẁḭḭṭḥ ααṇ ααṡṭḛḛṛḭḭṡḳ (*) ααṛḛḛ ṛḛḛʠṵṵḭḭṛḛḛḍ.龍ผู้]",
+	"new-request-form.submit": "[ผู้龍Ṣṵṵḅṃḭḭṭ龍ผู้]",
+	"new-request-form.suggested-articles": "[ผู้龍Ṣṵṵḡḡḛḛṡṭḛḛḍ ααṛṭḭḭͼḽḛḛṡ龍ผู้]"
+};
+var updated_at$1k = "2022-03-30T23:43:36Z";
+var arXPseudo = {
+	locale: locale$1k,
+	rtl: rtl$1k,
+	translations: translations$1k,
+	updated_at: updated_at$1k
+};
+
+var arXPseudo$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: arXPseudo,
+  locale: locale$1k,
+  rtl: rtl$1k,
+  translations: translations$1k,
+  updated_at: updated_at$1k
+});
+
+var locale$1j = "ar";
+var rtl$1j = true;
+var translations$1j = {
+	"new-request-form.answer-bot-modal.footer-content": "في هذه الحالة يمكننا إغلاق الطلب الأخير {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "هل يجيب هذا المقال عن سؤالك؟",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "كلا، أحتاج إلى مساعدة",
+	"new-request-form.answer-bot-modal.request-closed": "رائع. تم إغلاق طلبك.",
+	"new-request-form.answer-bot-modal.request-submitted": "تم إرسال طلبك بنجاح",
+	"new-request-form.answer-bot-modal.solve-error": "حدث خطأ أثناء إغلاق طلبك",
+	"new-request-form.answer-bot-modal.solve-request": "نعم، أغلق هذا الطلب",
+	"new-request-form.answer-bot-modal.title": "بينما تنتظر الرد، هل يجيب أي من المقالات التالية عن سؤالك؟",
+	"new-request-form.answer-bot-modal.view-article": "عرض المقال",
+	"new-request-form.attachments.choose-file-label": "اختر ملفًا أو قم بالسحب والإسقاط هنا",
+	"new-request-form.attachments.drop-files-label": "أسقِط الملفات هنا",
+	"new-request-form.attachments.remove-file": "إزالة الملف",
+	"new-request-form.attachments.stop-upload": "إيقاف التحميل",
+	"new-request-form.attachments.upload-error-description": "حدث خطأ أثناء تحميل {{fileName}}. حاول مرة أخرى أو قم بتحميل ملف آخر.",
+	"new-request-form.attachments.upload-error-title": "خطأ في التحميل",
+	"new-request-form.attachments.uploading": "جارٍ تحميل {{fileName}}",
+	"new-request-form.cc-field.container-label": "عناوين البريد الإلكتروني المحددة في خانة النسخة",
+	"new-request-form.cc-field.email-added": "تمت إضافة {{email}}",
+	"new-request-form.cc-field.email-label": "{{email}} - اضغط على Backspace للإزالة",
+	"new-request-form.cc-field.email-removed": "تمت إزالة {{email}}",
+	"new-request-form.cc-field.emails-added": "تمت إضافة {{emails}}",
+	"new-request-form.cc-field.invalid-email": "عنوان بريد إلكتروني غير صالح",
+	"new-request-form.close-label": "إغلاق",
+	"new-request-form.dropdown.empty-option": "حدّد خيارًا",
+	"new-request-form.parent-request-link": "متابعة طلب {{parentId}}",
+	"new-request-form.required-fields-info": "الحقول التي عليها علامة النجمة (*) مطلوبة.",
+	"new-request-form.submit": "إرسال",
+	"new-request-form.suggested-articles": "مقالات مقترحة"
+};
+var updated_at$1j = "2024-03-26T15:40:23Z";
+var ar = {
+	locale: locale$1j,
+	rtl: rtl$1j,
+	translations: translations$1j,
+	updated_at: updated_at$1j
+};
+
+var ar$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ar,
+  locale: locale$1j,
+  rtl: rtl$1j,
+  translations: translations$1j,
+  updated_at: updated_at$1j
+});
+
+var locale$1i = "az";
+var rtl$1i = false;
+var translations$1i = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$1i = "2023-10-25T20:34:27Z";
+var az = {
+	locale: locale$1i,
+	rtl: rtl$1i,
+	translations: translations$1i,
+	updated_at: updated_at$1i
+};
+
+var az$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: az,
+  locale: locale$1i,
+  rtl: rtl$1i,
+  translations: translations$1i,
+  updated_at: updated_at$1i
+});
+
+var locale$1h = "be";
+var rtl$1h = false;
+var translations$1h = {
+	"new-request-form.answer-bot-modal.footer-content": "Если да, мы можем закрыть запрос {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Есть ли в этой статье ответ на вопрос?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Нет, мне нужна помощь",
+	"new-request-form.answer-bot-modal.request-closed": "Превосходно. Запрос закрыт.",
+	"new-request-form.answer-bot-modal.request-submitted": "Ваш запрос отправлен",
+	"new-request-form.answer-bot-modal.solve-error": "Ошибка при закрытии запроса",
+	"new-request-form.answer-bot-modal.solve-request": "Да, закрыть мой запрос",
+	"new-request-form.answer-bot-modal.title": "Пока вы ожидаете, есть ли в какой-то из этих статей ответ на ваш вопрос?",
+	"new-request-form.answer-bot-modal.view-article": "Просмотреть статью",
+	"new-request-form.attachments.choose-file-label": "Выберите файл или перетащите его сюда",
+	"new-request-form.attachments.drop-files-label": "Перетащите файлы сюда",
+	"new-request-form.attachments.remove-file": "Удалить файл",
+	"new-request-form.attachments.stop-upload": "Остановить выкладывание",
+	"new-request-form.attachments.upload-error-description": "Ошибка при выкладывании {{fileName}}. Повторите попытку или выложите другой файл.",
+	"new-request-form.attachments.upload-error-title": "Ошибка выкладывания",
+	"new-request-form.attachments.uploading": "Выкладывание {{fileName}}",
+	"new-request-form.cc-field.container-label": "Выбранные письма для копии",
+	"new-request-form.cc-field.email-added": "Адрес {{email}} добавлен",
+	"new-request-form.cc-field.email-label": "{{email}} — нажмите клавишу Backspace для удаления",
+	"new-request-form.cc-field.email-removed": "Адрес {{email}} удален",
+	"new-request-form.cc-field.emails-added": "Добавлены адреса {{emails}}",
+	"new-request-form.cc-field.invalid-email": "Недействительный адрес электронной почты",
+	"new-request-form.close-label": "Закрыть",
+	"new-request-form.dropdown.empty-option": "Выберите вариант",
+	"new-request-form.parent-request-link": "Дополнение к запросу {{parentId}}",
+	"new-request-form.required-fields-info": "Помеченные звездочкой (*) поля обязательны для заполнения.",
+	"new-request-form.submit": "Отправить",
+	"new-request-form.suggested-articles": "Предложенные статьи"
+};
+var updated_at$1h = "2024-03-19T17:13:38Z";
+var be = {
+	locale: locale$1h,
+	rtl: rtl$1h,
+	translations: translations$1h,
+	updated_at: updated_at$1h
+};
+
+var be$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: be,
+  locale: locale$1h,
+  rtl: rtl$1h,
+  translations: translations$1h,
+  updated_at: updated_at$1h
+});
+
+var locale$1g = "bg";
+var rtl$1g = false;
+var translations$1g = {
+	"new-request-form.answer-bot-modal.footer-content": "Ако отговаря, можем да затворим заявката {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Отговори ли тази статия на въпроса ви?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Не, трябва ми помощ",
+	"new-request-form.answer-bot-modal.request-closed": "Чудесно. Заявката е затворена.",
+	"new-request-form.answer-bot-modal.request-submitted": "Заявката ви беше подадена успешно",
+	"new-request-form.answer-bot-modal.solve-error": "Възникна грешка при затваряне на вашата заявка",
+	"new-request-form.answer-bot-modal.solve-request": "Да, затворете заявката ми",
+	"new-request-form.answer-bot-modal.title": "Докато чакате, вижте дали някоя от тези статии отговаря на въпроса ви.",
+	"new-request-form.answer-bot-modal.view-article": "Преглед на статията",
+	"new-request-form.attachments.choose-file-label": "Изберете файл или го плъзнете и пуснете тук",
+	"new-request-form.attachments.drop-files-label": "Пуснете файловете тук",
+	"new-request-form.attachments.remove-file": "Премахване на файл",
+	"new-request-form.attachments.stop-upload": "Спиране на качването",
+	"new-request-form.attachments.upload-error-description": "Възникна грешка при качването на {{fileName}}. Опитайте отново или качете друг файл.",
+	"new-request-form.attachments.upload-error-title": "Грешка при качването",
+	"new-request-form.attachments.uploading": "Качва се {{fileName}}",
+	"new-request-form.cc-field.container-label": "Избрани имейли за копие",
+	"new-request-form.cc-field.email-added": "Имейл адресът {{email}} е добавен",
+	"new-request-form.cc-field.email-label": "{{email}} – натиснете „Backspace“ за премахване",
+	"new-request-form.cc-field.email-removed": "Имейл адресът {{email}} е премахнат",
+	"new-request-form.cc-field.emails-added": "Имейл адресите {{emails}} са добавени",
+	"new-request-form.cc-field.invalid-email": "Невалиден имейл адрес",
+	"new-request-form.close-label": "Затваряне",
+	"new-request-form.dropdown.empty-option": "Изберете опция",
+	"new-request-form.parent-request-link": "Последващи действия във връзка със заявката {{parentId}}",
+	"new-request-form.required-fields-info": "Полетата, отбелязани със звездичка (*), са задължителни.",
+	"new-request-form.submit": "Подаване",
+	"new-request-form.suggested-articles": "Предложени статии"
+};
+var updated_at$1g = "2024-03-26T15:25:59Z";
+var bg = {
+	locale: locale$1g,
+	rtl: rtl$1g,
+	translations: translations$1g,
+	updated_at: updated_at$1g
+};
+
+var bg$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: bg,
+  locale: locale$1g,
+  rtl: rtl$1g,
+  translations: translations$1g,
+  updated_at: updated_at$1g
+});
+
+var locale$1f = "bn";
+var rtl$1f = false;
+var translations$1f = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$1f = "2023-10-12T17:25:31Z";
+var bn = {
+	locale: locale$1f,
+	rtl: rtl$1f,
+	translations: translations$1f,
+	updated_at: updated_at$1f
+};
+
+var bn$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: bn,
+  locale: locale$1f,
+  rtl: rtl$1f,
+  translations: translations$1f,
+  updated_at: updated_at$1f
+});
+
+var locale$1e = "bs";
+var rtl$1e = false;
+var translations$1e = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$1e = "2024-03-19T17:00:07Z";
+var bs = {
+	locale: locale$1e,
+	rtl: rtl$1e,
+	translations: translations$1e,
+	updated_at: updated_at$1e
+};
+
+var bs$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: bs,
+  locale: locale$1e,
+  rtl: rtl$1e,
+  translations: translations$1e,
+  updated_at: updated_at$1e
+});
+
+var locale$1d = "ca";
+var rtl$1d = false;
+var translations$1d = {
+	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
+	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
+	"new-request-form.answer-bot-modal.solve-error": "Hubo un error al cerrar la solicitud",
+	"new-request-form.answer-bot-modal.solve-request": "Sí, cerrar mi solicitud",
+	"new-request-form.answer-bot-modal.title": "Mientras espera, ¿alguno de estos artículos responde su pregunta?",
+	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
+	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
+	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
+	"new-request-form.attachments.upload-error-title": "Error de carga",
+	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
+	"new-request-form.cc-field.container-label": "Correos electrónicos de CC seleccionados",
+	"new-request-form.cc-field.email-added": "{{email}} se ha agregado",
+	"new-request-form.cc-field.email-label": "{{email}}: presione la tecla de retroceso para eliminar",
+	"new-request-form.cc-field.email-removed": "{{email}} se ha eliminado",
+	"new-request-form.cc-field.emails-added": "{{emails}} se han agregado",
+	"new-request-form.cc-field.invalid-email": "Dirección de correo electrónico no válida",
+	"new-request-form.close-label": "Cerrar",
+	"new-request-form.dropdown.empty-option": "Seleccione una opción",
+	"new-request-form.parent-request-link": "Seguimiento de la solicitud {{parentId}}",
+	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artículos recomendados"
+};
+var updated_at$1d = "2024-03-19T17:15:49Z";
+var ca = {
+	locale: locale$1d,
+	rtl: rtl$1d,
+	translations: translations$1d,
+	updated_at: updated_at$1d
+};
+
+var ca$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ca,
+  locale: locale$1d,
+  rtl: rtl$1d,
+  translations: translations$1d,
+  updated_at: updated_at$1d
+});
+
+var locale$1c = "cs";
+var rtl$1c = false;
+var translations$1c = {
+	"new-request-form.answer-bot-modal.footer-content": "Pokud ano, můžeme uzavřít nedávný požadavek {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Odpověděl tento článek na vaši otázku?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Ne, potřebuji pomoc",
+	"new-request-form.answer-bot-modal.request-closed": "Prima. Požadavek byl uzavřen.",
+	"new-request-form.answer-bot-modal.request-submitted": "Váš požadavek byl úspěšně odeslán.",
+	"new-request-form.answer-bot-modal.solve-error": "Při zavírání požadavku došlo k chybě.",
+	"new-request-form.answer-bot-modal.solve-request": "Ano, zavřít můj požadavek",
+	"new-request-form.answer-bot-modal.title": "Odpověděl některý z těchto článků na vaši otázku, zatímco čekáte?",
+	"new-request-form.answer-bot-modal.view-article": "Zobrazit článek",
+	"new-request-form.attachments.choose-file-label": "Vyberte soubor nebo ho sem přetáhněte",
+	"new-request-form.attachments.drop-files-label": "Sem přetáhněte soubory.",
+	"new-request-form.attachments.remove-file": "Odstranit soubor",
+	"new-request-form.attachments.stop-upload": "Zastavit upload",
+	"new-request-form.attachments.upload-error-description": "Při uploadování souboru {{fileName}}došlo k chybě. Zkuste to znovu nebo uploadujte jiný soubor.",
+	"new-request-form.attachments.upload-error-title": "Chyba při uploadu",
+	"new-request-form.attachments.uploading": "Uploaduje se soubor {{fileName}}",
+	"new-request-form.cc-field.container-label": "Vybrané e-maily v kopii",
+	"new-request-form.cc-field.email-added": "E-mail {{email}} byl přidán",
+	"new-request-form.cc-field.email-label": "{{email}} – Stisknutím klávesy Backspace proveďte odstranění.",
+	"new-request-form.cc-field.email-removed": "E-mail {{email}} byl odstraněn",
+	"new-request-form.cc-field.emails-added": "E-maily {{emails}} byly přidány",
+	"new-request-form.cc-field.invalid-email": "Neplatná e-mailová adresa",
+	"new-request-form.close-label": "Zavřít",
+	"new-request-form.dropdown.empty-option": "Vybrat volbu",
+	"new-request-form.parent-request-link": "Navazující tiket pro požadavek {{parentId}}",
+	"new-request-form.required-fields-info": "Pole označená hvězdičkou (*) jsou povinná.",
+	"new-request-form.submit": "Odeslat",
+	"new-request-form.suggested-articles": "Doporučené články"
+};
+var updated_at$1c = "2024-03-26T15:26:45Z";
+var cs = {
+	locale: locale$1c,
+	rtl: rtl$1c,
+	translations: translations$1c,
+	updated_at: updated_at$1c
+};
+
+var cs$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: cs,
+  locale: locale$1c,
+  rtl: rtl$1c,
+  translations: translations$1c,
+  updated_at: updated_at$1c
+});
+
+var locale$1b = "cy";
+var rtl$1b = false;
+var translations$1b = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$1b = "2024-03-19T17:17:26Z";
+var cy = {
+	locale: locale$1b,
+	rtl: rtl$1b,
+	translations: translations$1b,
+	updated_at: updated_at$1b
+};
+
+var cy$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: cy,
+  locale: locale$1b,
+  rtl: rtl$1b,
+  translations: translations$1b,
+  updated_at: updated_at$1b
+});
+
+var locale$1a = "da";
+var rtl$1a = false;
+var translations$1a = {
+	"new-request-form.answer-bot-modal.footer-content": "Hvis den gør, kan vi lukke den seneste anmodning {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Besvarede denne artikel dit spørgsmål?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nej, jeg har brug for hjælp",
+	"new-request-form.answer-bot-modal.request-closed": "Fint. Anmodningen er blevet lukket.",
+	"new-request-form.answer-bot-modal.request-submitted": "Din anmodning er blevet sendt",
+	"new-request-form.answer-bot-modal.solve-error": "Der opstod en fejl under lukning af din anmodning",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, luk min anmodning",
+	"new-request-form.answer-bot-modal.title": "Mens du venter, er der da nogen af disse artikler, som besvarer dit spørgsmål?",
+	"new-request-form.answer-bot-modal.view-article": "Se artikel",
+	"new-request-form.attachments.choose-file-label": "Vælg en fil eller træk og slip her",
+	"new-request-form.attachments.drop-files-label": "Slip filerne her",
+	"new-request-form.attachments.remove-file": "Fjern fil",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "Der opstod en fejl under upload {{fileName}}. Prøv igen eller upload en anden fil.",
+	"new-request-form.attachments.upload-error-title": "Fejl under upload",
+	"new-request-form.attachments.uploading": "Uploader {{fileName}}",
+	"new-request-form.cc-field.container-label": "Valgte CC-mails",
+	"new-request-form.cc-field.email-added": "{{email}} er blevet tilføjet",
+	"new-request-form.cc-field.email-label": "{{email}} - Tryk på Backspace for at fjerne",
+	"new-request-form.cc-field.email-removed": "{{email}} er blevet fjernet",
+	"new-request-form.cc-field.emails-added": "{{emails}} er blevet tilføjet",
+	"new-request-form.cc-field.invalid-email": "Ugyldig e-mailadresse",
+	"new-request-form.close-label": "Luk",
+	"new-request-form.dropdown.empty-option": "Foretag et valg",
+	"new-request-form.parent-request-link": "Følg op på anmodning {{parentId}}",
+	"new-request-form.required-fields-info": "Felter markeret med en stjerne (*) er obligatoriske.",
+	"new-request-form.submit": "Indsend",
+	"new-request-form.suggested-articles": "Foreslåede artikler"
+};
+var updated_at$1a = "2024-03-26T15:27:31Z";
+var da = {
+	locale: locale$1a,
+	rtl: rtl$1a,
+	translations: translations$1a,
+	updated_at: updated_at$1a
+};
+
+var da$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: da,
+  locale: locale$1a,
+  rtl: rtl$1a,
+  translations: translations$1a,
+  updated_at: updated_at$1a
+});
+
+var locale$19 = "de-x-informal";
+var rtl$19 = false;
+var translations$19 = {
+	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
+	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
+	"new-request-form.answer-bot-modal.request-closed": "Sehr gut. Ihre Anfrage wurde geschlossen.",
+	"new-request-form.answer-bot-modal.request-submitted": "Ihre Anfrage wurde erfolgreich eingereicht",
+	"new-request-form.answer-bot-modal.solve-error": "Fehler beim Schließen Ihrer Anfrage",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, Anfrage schließen",
+	"new-request-form.answer-bot-modal.title": "Während Sie warten, wird Ihre Frage durch einen dieser Beiträge beantwortet?",
+	"new-request-form.answer-bot-modal.view-article": "Beitrag anzeigen",
+	"new-request-form.attachments.choose-file-label": "Datei auswählen oder hierher ziehen",
+	"new-request-form.attachments.drop-files-label": "Dateien hier ablegen",
+	"new-request-form.attachments.remove-file": "Datei entfernen",
+	"new-request-form.attachments.stop-upload": "Upload anhalten",
+	"new-request-form.attachments.upload-error-description": "Fehler beim Hochladen von {{fileName}}. Versuchen Sie es erneut oder laden Sie eine andere Datei hoch.",
+	"new-request-form.attachments.upload-error-title": "Fehler beim Hochladen",
+	"new-request-form.attachments.uploading": "{{fileName}} wird hochgeladen",
+	"new-request-form.cc-field.container-label": "Ausgewählte CC-E-Mails",
+	"new-request-form.cc-field.email-added": "{{email}} wurde hinzugefügt",
+	"new-request-form.cc-field.email-label": "{{email}} – Zum Entfernen die Rücktaste drücken",
+	"new-request-form.cc-field.email-removed": "{{email}} wurde entfernt",
+	"new-request-form.cc-field.emails-added": "{{emails}} wurden hinzugefügt",
+	"new-request-form.cc-field.invalid-email": "E-Mail-Adresse ungültig",
+	"new-request-form.close-label": "Schließen",
+	"new-request-form.dropdown.empty-option": "Wählen Sie eine Option aus",
+	"new-request-form.parent-request-link": "Folgeanfrage zu {{parentId}}",
+	"new-request-form.required-fields-info": "Mit einem Sternchen (*) markierte Felder sind Pflichtfelder.",
+	"new-request-form.submit": "Senden",
+	"new-request-form.suggested-articles": "Vorgeschlagene Beiträge"
+};
+var updated_at$19 = "2024-03-19T17:00:18Z";
+var deXInformal = {
+	locale: locale$19,
+	rtl: rtl$19,
+	translations: translations$19,
+	updated_at: updated_at$19
+};
+
+var deXInformal$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: deXInformal,
+  locale: locale$19,
+  rtl: rtl$19,
+  translations: translations$19,
+  updated_at: updated_at$19
+});
+
+var locale$18 = "de";
+var rtl$18 = false;
+var translations$18 = {
+	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
+	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
+	"new-request-form.answer-bot-modal.request-closed": "Sehr gut. Ihre Anfrage wurde geschlossen.",
+	"new-request-form.answer-bot-modal.request-submitted": "Ihre Anfrage wurde erfolgreich eingereicht",
+	"new-request-form.answer-bot-modal.solve-error": "Fehler beim Schließen Ihrer Anfrage",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, Anfrage schließen",
+	"new-request-form.answer-bot-modal.title": "Während Sie warten, wird Ihre Frage durch einen dieser Beiträge beantwortet?",
+	"new-request-form.answer-bot-modal.view-article": "Beitrag anzeigen",
+	"new-request-form.attachments.choose-file-label": "Datei auswählen oder hierher ziehen",
+	"new-request-form.attachments.drop-files-label": "Dateien hier ablegen",
+	"new-request-form.attachments.remove-file": "Datei entfernen",
+	"new-request-form.attachments.stop-upload": "Upload anhalten",
+	"new-request-form.attachments.upload-error-description": "Fehler beim Hochladen von {{fileName}}. Versuchen Sie es erneut oder laden Sie eine andere Datei hoch.",
+	"new-request-form.attachments.upload-error-title": "Fehler beim Hochladen",
+	"new-request-form.attachments.uploading": "{{fileName}} wird hochgeladen",
+	"new-request-form.cc-field.container-label": "Ausgewählte CC-E-Mails",
+	"new-request-form.cc-field.email-added": "{{email}} wurde hinzugefügt",
+	"new-request-form.cc-field.email-label": "{{email}} – Zum Entfernen die Rücktaste drücken",
+	"new-request-form.cc-field.email-removed": "{{email}} wurde entfernt",
+	"new-request-form.cc-field.emails-added": "{{emails}} wurden hinzugefügt",
+	"new-request-form.cc-field.invalid-email": "E-Mail-Adresse ungültig",
+	"new-request-form.close-label": "Schließen",
+	"new-request-form.dropdown.empty-option": "Wählen Sie eine Option aus",
+	"new-request-form.parent-request-link": "Folgeanfrage zu {{parentId}}",
+	"new-request-form.required-fields-info": "Mit einem Sternchen (*) markierte Felder sind Pflichtfelder.",
+	"new-request-form.submit": "Senden",
+	"new-request-form.suggested-articles": "Vorgeschlagene Beiträge"
+};
+var updated_at$18 = "2024-03-26T15:28:17Z";
+var de = {
+	locale: locale$18,
+	rtl: rtl$18,
+	translations: translations$18,
+	updated_at: updated_at$18
+};
+
+var de$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: de,
+  locale: locale$18,
+  rtl: rtl$18,
+  translations: translations$18,
+  updated_at: updated_at$18
+});
+
+var locale$17 = "el";
+var rtl$17 = false;
+var translations$17 = {
+	"new-request-form.answer-bot-modal.footer-content": "Αν ναι, μπορούμε να κλείσουμε το πρόσφατο αίτημα {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Απαντά στην ερώτηση το άρθρο;",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Όχι, χρειάζομαι βοήθεια",
+	"new-request-form.answer-bot-modal.request-closed": "Ωραία. Το αίτημα έχει κλείσει.",
+	"new-request-form.answer-bot-modal.request-submitted": "Το αίτημά σας υπεβλήθη με επιτυχία",
+	"new-request-form.answer-bot-modal.solve-error": "Παρουσιάστηκε σφάλμα στο κλείσιμο του αιτήματός σας",
+	"new-request-form.answer-bot-modal.solve-request": "Ναι, να κλείσει το αίτημά μου",
+	"new-request-form.answer-bot-modal.title": "Ενώ περιμένετε, απαντά στην ερώτηση κάποιο από αυτά τα άρθρα;",
+	"new-request-form.answer-bot-modal.view-article": "Προβολή άρθρου",
+	"new-request-form.attachments.choose-file-label": "Επιλέξτε ένα αρχείο ή σύρετε και αποθέστε εδώ",
+	"new-request-form.attachments.drop-files-label": "Αποθέστε τα αρχεία εδώ",
+	"new-request-form.attachments.remove-file": "Κατάργηση αρχείου",
+	"new-request-form.attachments.stop-upload": "Διακοπή αποστολής",
+	"new-request-form.attachments.upload-error-description": "Υπήρξε σφάλμα κατά την αποστολή του {{fileName}}. Δοκιμάστε ξανά ή ανεβάστε άλλο αρχείο.",
+	"new-request-form.attachments.upload-error-title": "Σφάλμα αποστολής",
+	"new-request-form.attachments.uploading": "Γίνεται αποστολή {{fileName}}",
+	"new-request-form.cc-field.container-label": "Επιλεγμένα email για κοινοποίηση",
+	"new-request-form.cc-field.email-added": "Προστέθηκε το {{email}}",
+	"new-request-form.cc-field.email-label": "{{email}} - Πατήστε Backspace για αφαίρεση",
+	"new-request-form.cc-field.email-removed": "Καταργήθηκε το {{email}}",
+	"new-request-form.cc-field.emails-added": "Οι διευθύνσεις {{emails}} έχουν προστεθεί",
+	"new-request-form.cc-field.invalid-email": "Μη έγκυρη διεύθυνση email",
+	"new-request-form.close-label": "Κλείσιμο",
+	"new-request-form.dropdown.empty-option": "Ενεργοποιήστε μια επιλογή",
+	"new-request-form.parent-request-link": "Συμπληρωματικό στο αίτημα {{parentId}}",
+	"new-request-form.required-fields-info": "Τα πεδία με αστερίσκο (*) είναι υποχρεωτικά.",
+	"new-request-form.submit": "Υποβολή",
+	"new-request-form.suggested-articles": "Προτεινόμενα άρθρα"
+};
+var updated_at$17 = "2024-03-26T15:29:04Z";
+var el = {
+	locale: locale$17,
+	rtl: rtl$17,
+	translations: translations$17,
+	updated_at: updated_at$17
+};
+
+var el$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: el,
+  locale: locale$17,
+  rtl: rtl$17,
+  translations: translations$17,
+  updated_at: updated_at$17
+});
+
+var locale$16 = "en-001";
+var rtl$16 = false;
+var translations$16 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$16 = "2024-03-26T15:29:47Z";
+var en001 = {
+	locale: locale$16,
+	rtl: rtl$16,
+	translations: translations$16,
+	updated_at: updated_at$16
+};
+
+var en001$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: en001,
+  locale: locale$16,
+  rtl: rtl$16,
+  translations: translations$16,
+  updated_at: updated_at$16
+});
+
+var locale$15 = "en-150";
+var rtl$15 = false;
+var translations$15 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$15 = "2023-10-12T22:15:53Z";
+var en150 = {
+	locale: locale$15,
+	rtl: rtl$15,
+	translations: translations$15,
+	updated_at: updated_at$15
+};
+
+var en150$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: en150,
+  locale: locale$15,
+  rtl: rtl$15,
+  translations: translations$15,
+  updated_at: updated_at$15
+});
+
+var locale$14 = "en-au";
+var rtl$14 = false;
+var translations$14 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$14 = "2024-03-19T17:26:26Z";
+var enAu = {
+	locale: locale$14,
+	rtl: rtl$14,
+	translations: translations$14,
+	updated_at: updated_at$14
+};
+
+var enAu$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enAu,
+  locale: locale$14,
+  rtl: rtl$14,
+  translations: translations$14,
+  updated_at: updated_at$14
+});
+
+var locale$13 = "en-ca";
+var rtl$13 = false;
+var translations$13 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$13 = "2023-10-12T22:15:53Z";
+var enCa = {
+	locale: locale$13,
+	rtl: rtl$13,
+	translations: translations$13,
+	updated_at: updated_at$13
+};
+
+var enCa$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enCa,
+  locale: locale$13,
+  rtl: rtl$13,
+  translations: translations$13,
+  updated_at: updated_at$13
+});
+
+var locale$12 = "en-gb";
+var rtl$12 = false;
+var translations$12 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$12 = "2024-03-19T17:26:26Z";
+var enGb = {
+	locale: locale$12,
+	rtl: rtl$12,
+	translations: translations$12,
+	updated_at: updated_at$12
+};
+
+var enGb$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enGb,
+  locale: locale$12,
+  rtl: rtl$12,
+  translations: translations$12,
+  updated_at: updated_at$12
+});
+
+var locale$11 = "en-my";
+var rtl$11 = false;
+var translations$11 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$11 = "2023-10-12T22:15:56Z";
+var enMy = {
+	locale: locale$11,
+	rtl: rtl$11,
+	translations: translations$11,
+	updated_at: updated_at$11
+};
+
+var enMy$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enMy,
+  locale: locale$11,
+  rtl: rtl$11,
+  translations: translations$11,
+  updated_at: updated_at$11
+});
+
+var locale$10 = "en-ph";
+var rtl$10 = false;
+var translations$10 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$10 = "2022-11-03T22:45:18Z";
+var enPh = {
+	locale: locale$10,
+	rtl: rtl$10,
+	translations: translations$10,
+	updated_at: updated_at$10
+};
+
+var enPh$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enPh,
+  locale: locale$10,
+  rtl: rtl$10,
+  translations: translations$10,
+  updated_at: updated_at$10
+});
+
+var locale$$ = "en-se";
+var rtl$$ = false;
+var translations$$ = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$$ = "2023-10-12T22:15:53Z";
+var enSe = {
+	locale: locale$$,
+	rtl: rtl$$,
+	translations: translations$$,
+	updated_at: updated_at$$
+};
+
+var enSe$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enSe,
+  locale: locale$$,
+  rtl: rtl$$,
+  translations: translations$$,
+  updated_at: updated_at$$
+});
+
+var locale$_ = "en-US";
+var rtl$_ = false;
+var translations$_ = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$_ = "2024-03-21T20:43:37Z";
+var enUs = {
+	locale: locale$_,
+	rtl: rtl$_,
+	translations: translations$_,
+	updated_at: updated_at$_
+};
+
+var enUs$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enUs,
+  locale: locale$_,
+  rtl: rtl$_,
+  translations: translations$_,
+  updated_at: updated_at$_
+});
+
+var locale$Z = "en-x-dev";
+var rtl$Z = false;
+var translations$Z = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$Z = "2022-04-27T22:17:23Z";
+var enXDev = {
+	locale: locale$Z,
+	rtl: rtl$Z,
+	translations: translations$Z,
+	updated_at: updated_at$Z
+};
+
+var enXDev$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enXDev,
+  locale: locale$Z,
+  rtl: rtl$Z,
+  translations: translations$Z,
+  updated_at: updated_at$Z
+});
+
+var locale$Y = "en-x-keys";
+var rtl$Y = false;
+var translations$Y = {
+	"new-request-form.answer-bot-modal.footer-content": "new-request-form.answer-bot-modal.footer-content",
+	"new-request-form.answer-bot-modal.footer-title": "new-request-form.answer-bot-modal.footer-title",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "new-request-form.answer-bot-modal.mark-irrelevant",
+	"new-request-form.answer-bot-modal.request-closed": "new-request-form.answer-bot-modal.request-closed",
+	"new-request-form.answer-bot-modal.request-submitted": "new-request-form.answer-bot-modal.request-submitted",
+	"new-request-form.answer-bot-modal.solve-error": "new-request-form.answer-bot-modal.solve-error",
+	"new-request-form.answer-bot-modal.solve-request": "new-request-form.answer-bot-modal.solve-request",
+	"new-request-form.answer-bot-modal.title": "new-request-form.answer-bot-modal.title",
+	"new-request-form.answer-bot-modal.view-article": "new-request-form.answer-bot-modal.view-article",
+	"new-request-form.attachments.choose-file-label": "new-request-form.attachments.choose-file-label",
+	"new-request-form.attachments.drop-files-label": "new-request-form.attachments.drop-files-label",
+	"new-request-form.attachments.remove-file": "new-request-form.attachments.remove-file",
+	"new-request-form.attachments.stop-upload": "new-request-form.attachments.stop-upload",
+	"new-request-form.attachments.upload-error-description": "new-request-form.attachments.upload-error-description",
+	"new-request-form.attachments.upload-error-title": "new-request-form.attachments.upload-error-title",
+	"new-request-form.attachments.uploading": "new-request-form.attachments.uploading",
+	"new-request-form.cc-field.container-label": "new-request-form.cc-field.container-label",
+	"new-request-form.cc-field.email-added": "new-request-form.cc-field.email-added",
+	"new-request-form.cc-field.email-label": "new-request-form.cc-field.email-label",
+	"new-request-form.cc-field.email-removed": "new-request-form.cc-field.email-removed",
+	"new-request-form.cc-field.emails-added": "new-request-form.cc-field.emails-added",
+	"new-request-form.cc-field.invalid-email": "new-request-form.cc-field.invalid-email",
+	"new-request-form.close-label": "new-request-form.close-label",
+	"new-request-form.dropdown.empty-option": "new-request-form.dropdown.empty-option",
+	"new-request-form.parent-request-link": "new-request-form.parent-request-link",
+	"new-request-form.required-fields-info": "new-request-form.required-fields-info",
+	"new-request-form.submit": "new-request-form.submit",
+	"new-request-form.suggested-articles": "new-request-form.suggested-articles"
+};
+var updated_at$Y = "2021-06-14T20:32:39Z";
+var enXKeys = {
+	locale: locale$Y,
+	rtl: rtl$Y,
+	translations: translations$Y,
+	updated_at: updated_at$Y
+};
+
+var enXKeys$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enXKeys,
+  locale: locale$Y,
+  rtl: rtl$Y,
+  translations: translations$Y,
+  updated_at: updated_at$Y
+});
+
+var locale$X = "en-x-obsolete";
+var rtl$X = false;
+var translations$X = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$X = "2023-01-17T21:50:05Z";
+var enXObsolete = {
+	locale: locale$X,
+	rtl: rtl$X,
+	translations: translations$X,
+	updated_at: updated_at$X
+};
+
+var enXObsolete$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enXObsolete,
+  locale: locale$X,
+  rtl: rtl$X,
+  translations: translations$X,
+  updated_at: updated_at$X
+});
+
+var locale$W = "en-x-pseudo";
+var rtl$W = false;
+var translations$W = {
+	"new-request-form.answer-bot-modal.footer-content": "[ผู้龍ḬḬϝ ḭḭṭ ḍṓṓḛḛṡ, ẁḛḛ ͼααṇ ͼḽṓṓṡḛḛ ẏẏṓṓṵṵṛ ṛḛḛͼḛḛṇṭ ṛḛḛʠṵṵḛḛṡṭ {{requestId}}龍ผู้]",
+	"new-request-form.answer-bot-modal.footer-title": "[ผู้龍Ḍṓṓḛḛṡ ṭḥḭḭṡ ααṛṭḭḭͼḽḛḛ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "[ผู้龍Ṅṓṓ, ḬḬ ṇḛḛḛḛḍ ḥḛḛḽṗ龍ผู้]",
+	"new-request-form.answer-bot-modal.request-closed": "[ผู้龍Ṅḭḭͼḛḛ. ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ḥααṡ ḅḛḛḛḛṇ ͼḽṓṓṡḛḛḍ.龍ผู้]",
+	"new-request-form.answer-bot-modal.request-submitted": "[ผู้龍ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ẁααṡ ṡṵṵͼͼḛḛṡṡϝṵṵḽḽẏẏ ṡṵṵḅṃḭḭṭṭḛḛḍ龍ผู้]",
+	"new-request-form.answer-bot-modal.solve-error": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ͼḽṓṓṡḭḭṇḡ ẏẏṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
+	"new-request-form.answer-bot-modal.solve-request": "[ผู้龍ŶŶḛḛṡ, ͼḽṓṓṡḛḛ ṃẏẏ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
+	"new-request-form.answer-bot-modal.title": "[ผู้龍Ŵḥḭḭḽḛḛ ẏẏṓṓṵṵ ẁααḭḭṭ, ḍṓṓ ααṇẏẏ ṓṓϝ ṭḥḛḛṡḛḛ ααṛṭḭḭͼḽḛḛṡ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
+	"new-request-form.answer-bot-modal.view-article": "[ผู้龍Ṿḭḭḛḛẁ ααṛṭḭḭͼḽḛḛ龍ผู้]",
+	"new-request-form.attachments.choose-file-label": "[ผู้龍Ḉḥṓṓṓṓṡḛḛ αα ϝḭḭḽḛḛ ṓṓṛ ḍṛααḡ ααṇḍ ḍṛṓṓṗ ḥḛḛṛḛḛ龍ผู้]",
+	"new-request-form.attachments.drop-files-label": "[ผู้龍Ḍṛṓṓṗ ϝḭḭḽḛḛṡ ḥḛḛṛḛḛ龍ผู้]",
+	"new-request-form.attachments.remove-file": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ龍ผู้]",
+	"new-request-form.attachments.stop-upload": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍ龍ผู้]",
+	"new-request-form.attachments.upload-error-description": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}. Ṫṛẏẏ ααḡααḭḭṇ ṓṓṛ ṵṵṗḽṓṓααḍ ααṇṓṓṭḥḛḛṛ ϝḭḭḽḛḛ.龍ผู้]",
+	"new-request-form.attachments.upload-error-title": "[ผู้龍ṲṲṗḽṓṓααḍ ḛḛṛṛṓṓṛ龍ผู้]",
+	"new-request-form.attachments.uploading": "[ผู้龍ṲṲṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
+	"new-request-form.cc-field.container-label": "[ผู้龍Ṣḛḛḽḛḛͼṭḛḛḍ ḈḈ ḛḛṃααḭḭḽṡ龍ผู้]",
+	"new-request-form.cc-field.email-added": "[ผู้龍{{email}} ḥααṡ ḅḛḛḛḛṇ ααḍḍḛḛḍ龍ผู้]",
+	"new-request-form.cc-field.email-label": "[ผู้龍{{email}} - Ṕṛḛḛṡṡ Ḃααͼḳṡṗααͼḛḛ ṭṓṓ ṛḛḛṃṓṓṽḛḛ龍ผู้]",
+	"new-request-form.cc-field.email-removed": "[ผู้龍{{email}} ḥααṡ ḅḛḛḛḛṇ ṛḛḛṃṓṓṽḛḛḍ龍ผู้]",
+	"new-request-form.cc-field.emails-added": "[ผู้龍{{emails}} ḥααṽḛḛ ḅḛḛḛḛṇ ααḍḍḛḛḍ龍ผู้]",
+	"new-request-form.cc-field.invalid-email": "[ผู้龍ḬḬṇṽααḽḭḭḍ ḛḛṃααḭḭḽ ααḍḍṛḛḛṡṡ龍ผู้]",
+	"new-request-form.close-label": "[ผู้龍Ḉḽṓṓṡḛḛ龍ผู้]",
+	"new-request-form.dropdown.empty-option": "[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]",
+	"new-request-form.parent-request-link": "[ผู้龍Ḟṓṓḽḽṓṓẁ-ṵṵṗ ṭṓṓ ṛḛḛʠṵṵḛḛṡṭ {{parentId}}龍ผู้]",
+	"new-request-form.required-fields-info": "[ผู้龍Ḟḭḭḛḛḽḍṡ ṃααṛḳḛḛḍ ẁḭḭṭḥ ααṇ ααṡṭḛḛṛḭḭṡḳ (*) ααṛḛḛ ṛḛḛʠṵṵḭḭṛḛḛḍ.龍ผู้]",
+	"new-request-form.submit": "[ผู้龍Ṣṵṵḅṃḭḭṭ龍ผู้]",
+	"new-request-form.suggested-articles": "[ผู้龍Ṣṵṵḡḡḛḛṡṭḛḛḍ ααṛṭḭḭͼḽḛḛṡ龍ผู้]"
+};
+var updated_at$W = "2022-03-30T23:43:24Z";
+var enXPseudo = {
+	locale: locale$W,
+	rtl: rtl$W,
+	translations: translations$W,
+	updated_at: updated_at$W
+};
+
+var enXPseudo$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enXPseudo,
+  locale: locale$W,
+  rtl: rtl$W,
+  translations: translations$W,
+  updated_at: updated_at$W
+});
+
+var locale$V = "en-x-test";
+var rtl$V = false;
+var translations$V = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$V = "2022-04-27T22:10:52Z";
+var enXTest = {
+	locale: locale$V,
+	rtl: rtl$V,
+	translations: translations$V,
+	updated_at: updated_at$V
+};
+
+var enXTest$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: enXTest,
+  locale: locale$V,
+  rtl: rtl$V,
+  translations: translations$V,
+  updated_at: updated_at$V
+});
+
+var locale$U = "es-419";
+var rtl$U = false;
+var translations$U = {
+	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
+	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
+	"new-request-form.answer-bot-modal.solve-error": "Hubo un error al cerrar la solicitud",
+	"new-request-form.answer-bot-modal.solve-request": "Sí, cerrar mi solicitud",
+	"new-request-form.answer-bot-modal.title": "Mientras espera, ¿alguno de estos artículos responde su pregunta?",
+	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
+	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
+	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
+	"new-request-form.attachments.upload-error-title": "Error de carga",
+	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
+	"new-request-form.cc-field.container-label": "Correos electrónicos de CC seleccionados",
+	"new-request-form.cc-field.email-added": "{{email}} se ha agregado",
+	"new-request-form.cc-field.email-label": "{{email}}: presione la tecla de retroceso para eliminar",
+	"new-request-form.cc-field.email-removed": "{{email}} se ha eliminado",
+	"new-request-form.cc-field.emails-added": "{{emails}} se han agregado",
+	"new-request-form.cc-field.invalid-email": "Dirección de correo electrónico no válida",
+	"new-request-form.close-label": "Cerrar",
+	"new-request-form.dropdown.empty-option": "Seleccione una opción",
+	"new-request-form.parent-request-link": "Seguimiento de la solicitud {{parentId}}",
+	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artículos recomendados"
+};
+var updated_at$U = "2024-03-19T17:26:27Z";
+var es419 = {
+	locale: locale$U,
+	rtl: rtl$U,
+	translations: translations$U,
+	updated_at: updated_at$U
+};
+
+var es419$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: es419,
+  locale: locale$U,
+  rtl: rtl$U,
+  translations: translations$U,
+  updated_at: updated_at$U
+});
+
+var locale$T = "es-es";
+var rtl$T = false;
+var translations$T = {
+	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
+	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
+	"new-request-form.answer-bot-modal.solve-error": "Hubo un error al cerrar la solicitud",
+	"new-request-form.answer-bot-modal.solve-request": "Sí, cerrar mi solicitud",
+	"new-request-form.answer-bot-modal.title": "Mientras espera, ¿alguno de estos artículos responde su pregunta?",
+	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
+	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
+	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
+	"new-request-form.attachments.upload-error-title": "Error de carga",
+	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
+	"new-request-form.cc-field.container-label": "Correos electrónicos de CC seleccionados",
+	"new-request-form.cc-field.email-added": "{{email}} se ha agregado",
+	"new-request-form.cc-field.email-label": "{{email}}: presione la tecla de retroceso para eliminar",
+	"new-request-form.cc-field.email-removed": "{{email}} se ha eliminado",
+	"new-request-form.cc-field.emails-added": "{{emails}} se han agregado",
+	"new-request-form.cc-field.invalid-email": "Dirección de correo electrónico no válida",
+	"new-request-form.close-label": "Cerrar",
+	"new-request-form.dropdown.empty-option": "Seleccione una opción",
+	"new-request-form.parent-request-link": "Seguimiento de la solicitud {{parentId}}",
+	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artículos recomendados"
+};
+var updated_at$T = "2024-03-19T17:09:36Z";
+var esEs = {
+	locale: locale$T,
+	rtl: rtl$T,
+	translations: translations$T,
+	updated_at: updated_at$T
+};
+
+var esEs$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: esEs,
+  locale: locale$T,
+  rtl: rtl$T,
+  translations: translations$T,
+  updated_at: updated_at$T
+});
+
+var locale$S = "es";
+var rtl$S = false;
+var translations$S = {
+	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
+	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
+	"new-request-form.answer-bot-modal.solve-error": "Hubo un error al cerrar la solicitud",
+	"new-request-form.answer-bot-modal.solve-request": "Sí, cerrar mi solicitud",
+	"new-request-form.answer-bot-modal.title": "Mientras espera, ¿alguno de estos artículos responde su pregunta?",
+	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
+	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
+	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
+	"new-request-form.attachments.upload-error-title": "Error de carga",
+	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
+	"new-request-form.cc-field.container-label": "Correos electrónicos de CC seleccionados",
+	"new-request-form.cc-field.email-added": "{{email}} se ha agregado",
+	"new-request-form.cc-field.email-label": "{{email}}: presione la tecla de retroceso para eliminar",
+	"new-request-form.cc-field.email-removed": "{{email}} se ha eliminado",
+	"new-request-form.cc-field.emails-added": "{{emails}} se han agregado",
+	"new-request-form.cc-field.invalid-email": "Dirección de correo electrónico no válida",
+	"new-request-form.close-label": "Cerrar",
+	"new-request-form.dropdown.empty-option": "Seleccione una opción",
+	"new-request-form.parent-request-link": "Seguimiento de la solicitud {{parentId}}",
+	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artículos recomendados"
+};
+var updated_at$S = "2024-03-26T15:30:32Z";
+var es = {
+	locale: locale$S,
+	rtl: rtl$S,
+	translations: translations$S,
+	updated_at: updated_at$S
+};
+
+var es$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: es,
+  locale: locale$S,
+  rtl: rtl$S,
+  translations: translations$S,
+  updated_at: updated_at$S
+});
+
+var locale$R = "et";
+var rtl$R = false;
+var translations$R = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$R = "2024-03-19T17:07:48Z";
+var et = {
+	locale: locale$R,
+	rtl: rtl$R,
+	translations: translations$R,
+	updated_at: updated_at$R
+};
+
+var et$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: et,
+  locale: locale$R,
+  rtl: rtl$R,
+  translations: translations$R,
+  updated_at: updated_at$R
+});
+
+var locale$Q = "eu";
+var rtl$Q = false;
+var translations$Q = {
+	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
+	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
+	"new-request-form.answer-bot-modal.solve-error": "Hubo un error al cerrar la solicitud",
+	"new-request-form.answer-bot-modal.solve-request": "Sí, cerrar mi solicitud",
+	"new-request-form.answer-bot-modal.title": "Mientras espera, ¿alguno de estos artículos responde su pregunta?",
+	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
+	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
+	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
+	"new-request-form.attachments.upload-error-title": "Error de carga",
+	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
+	"new-request-form.cc-field.container-label": "Correos electrónicos de CC seleccionados",
+	"new-request-form.cc-field.email-added": "{{email}} se ha agregado",
+	"new-request-form.cc-field.email-label": "{{email}}: presione la tecla de retroceso para eliminar",
+	"new-request-form.cc-field.email-removed": "{{email}} se ha eliminado",
+	"new-request-form.cc-field.emails-added": "{{emails}} se han agregado",
+	"new-request-form.cc-field.invalid-email": "Dirección de correo electrónico no válida",
+	"new-request-form.close-label": "Cerrar",
+	"new-request-form.dropdown.empty-option": "Seleccione una opción",
+	"new-request-form.parent-request-link": "Seguimiento de la solicitud {{parentId}}",
+	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artículos recomendados"
+};
+var updated_at$Q = "2023-10-12T17:25:31Z";
+var eu = {
+	locale: locale$Q,
+	rtl: rtl$Q,
+	translations: translations$Q,
+	updated_at: updated_at$Q
+};
+
+var eu$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: eu,
+  locale: locale$Q,
+  rtl: rtl$Q,
+  translations: translations$Q,
+  updated_at: updated_at$Q
+});
+
+var locale$P = "fa-AF";
+var rtl$P = true;
+var translations$P = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$P = "2024-03-19T17:26:54Z";
+var faAf = {
+	locale: locale$P,
+	rtl: rtl$P,
+	translations: translations$P,
+	updated_at: updated_at$P
+};
+
+var faAf$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: faAf,
+  locale: locale$P,
+  rtl: rtl$P,
+  translations: translations$P,
+  updated_at: updated_at$P
+});
+
+var locale$O = "fa";
+var rtl$O = true;
+var translations$O = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$O = "2024-03-19T17:12:56Z";
+var fa = {
+	locale: locale$O,
+	rtl: rtl$O,
+	translations: translations$O,
+	updated_at: updated_at$O
+};
+
+var fa$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: fa,
+  locale: locale$O,
+  rtl: rtl$O,
+  translations: translations$O,
+  updated_at: updated_at$O
+});
+
+var locale$N = "fi";
+var rtl$N = false;
+var translations$N = {
+	"new-request-form.answer-bot-modal.footer-content": "Jos se vastaa, voimme sulkea äskettäisen pyyntösi {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Vastaako tämä artikkeli kysymykseesi?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Ei, tarvitsen apua",
+	"new-request-form.answer-bot-modal.request-closed": "Hienoa. Pyyntösi on suljettu.",
+	"new-request-form.answer-bot-modal.request-submitted": "Pyyntösi lähettäminen onnistui",
+	"new-request-form.answer-bot-modal.solve-error": "Tapahtui virhe suljettaessa pyyntöäsi",
+	"new-request-form.answer-bot-modal.solve-request": "Kyllä, sulje pyyntöni",
+	"new-request-form.answer-bot-modal.title": "Sillä aikaa kun odotat, vastaako mikään näistä artikkeleista kysymykseesi?",
+	"new-request-form.answer-bot-modal.view-article": "Näytä artikkeli",
+	"new-request-form.attachments.choose-file-label": "Valitse tiedosto tai vedä ja pudota se tähän",
+	"new-request-form.attachments.drop-files-label": "Pudota tiedostot tähän",
+	"new-request-form.attachments.remove-file": "Poista tiedosto",
+	"new-request-form.attachments.stop-upload": "Lopeta lataaminen",
+	"new-request-form.attachments.upload-error-description": "Virhe ladattaessa tiedostoa {{fileName}}. Yritä uudelleen tai lataa toinen tiedosto.",
+	"new-request-form.attachments.upload-error-title": "Latausvirhe",
+	"new-request-form.attachments.uploading": "Ladataan tiedostoa {{fileName}}",
+	"new-request-form.cc-field.container-label": "Valitut kopiosähköpostit",
+	"new-request-form.cc-field.email-added": "{{email}} on lisätty",
+	"new-request-form.cc-field.email-label": "{{email}} - poista painamalla askelpalautinta",
+	"new-request-form.cc-field.email-removed": "{{email}} on poistettu",
+	"new-request-form.cc-field.emails-added": "{{emails}} on lisätty",
+	"new-request-form.cc-field.invalid-email": "Virheellinen sähköpostiosoite",
+	"new-request-form.close-label": "Sulje",
+	"new-request-form.dropdown.empty-option": "Valitse vaihtoehto",
+	"new-request-form.parent-request-link": "Jatkoa pyynnölle {{parentId}}",
+	"new-request-form.required-fields-info": "Tähdellä (*) merkityt kentät ovat pakollisia.",
+	"new-request-form.submit": "Lähetä",
+	"new-request-form.suggested-articles": "Ehdotetut artikkelit"
+};
+var updated_at$N = "2024-03-26T15:31:15Z";
+var fi = {
+	locale: locale$N,
+	rtl: rtl$N,
+	translations: translations$N,
+	updated_at: updated_at$N
+};
+
+var fi$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: fi,
+  locale: locale$N,
+  rtl: rtl$N,
+  translations: translations$N,
+  updated_at: updated_at$N
+});
+
+var locale$M = "fil";
+var rtl$M = false;
+var translations$M = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$M = "2024-03-19T17:23:17Z";
+var fil = {
+	locale: locale$M,
+	rtl: rtl$M,
+	translations: translations$M,
+	updated_at: updated_at$M
+};
+
+var fil$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: fil,
+  locale: locale$M,
+  rtl: rtl$M,
+  translations: translations$M,
+  updated_at: updated_at$M
+});
+
+var locale$L = "fo";
+var rtl$L = false;
+var translations$L = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$L = "2024-03-19T17:15:55Z";
+var fo = {
+	locale: locale$L,
+	rtl: rtl$L,
+	translations: translations$L,
+	updated_at: updated_at$L
+};
+
+var fo$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: fo,
+  locale: locale$L,
+  rtl: rtl$L,
+  translations: translations$L,
+  updated_at: updated_at$L
+});
+
+var locale$K = "fr-ca";
+var rtl$K = false;
+var translations$K = {
+	"new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore votre demande récente {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question ?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
+	"new-request-form.answer-bot-modal.request-closed": "Super. Votre demande a été fermée.",
+	"new-request-form.answer-bot-modal.request-submitted": "Votre demande a été envoyée",
+	"new-request-form.answer-bot-modal.solve-error": "Une erreur est survenue lors de la clôture de votre demande",
+	"new-request-form.answer-bot-modal.solve-request": "Oui, fermer ma demande",
+	"new-request-form.answer-bot-modal.title": "En attendant, l’un de ces articles répond-il à votre question ?",
+	"new-request-form.answer-bot-modal.view-article": "Afficher l’article",
+	"new-request-form.attachments.choose-file-label": "Choisissez un fichier ou faites un glisser-déposer ici",
+	"new-request-form.attachments.drop-files-label": "Déposez les fichiers ici",
+	"new-request-form.attachments.remove-file": "Supprimer le fichier",
+	"new-request-form.attachments.stop-upload": "Arrêter le chargement",
+	"new-request-form.attachments.upload-error-description": "Une erreur est survenue lors du chargement de {{fileName}}. Réessayez ou chargez un autre fichier.",
+	"new-request-form.attachments.upload-error-title": "Erreur de chargement",
+	"new-request-form.attachments.uploading": "Chargement du fichier {{fileName}} en cours",
+	"new-request-form.cc-field.container-label": "E-mails en CC sélectionnés",
+	"new-request-form.cc-field.email-added": "{{email}} a été ajouté",
+	"new-request-form.cc-field.email-label": "{{email}} - Appuyez sur Retour arrière pour supprimer",
+	"new-request-form.cc-field.email-removed": "{{email}} a été supprimé",
+	"new-request-form.cc-field.emails-added": "{{emails}} ont été ajoutés",
+	"new-request-form.cc-field.invalid-email": "Adresse e-mail non valide",
+	"new-request-form.close-label": "Fermer",
+	"new-request-form.dropdown.empty-option": "Sélectionnez une option",
+	"new-request-form.parent-request-link": "Suivi de la demande {{parentId}}",
+	"new-request-form.required-fields-info": "Les champs marqués d'un astérisque (*) sont obligatoires.",
+	"new-request-form.submit": "Envoyer",
+	"new-request-form.suggested-articles": "Articles suggérés"
+};
+var updated_at$K = "2024-03-22T14:06:00Z";
+var frCa = {
+	locale: locale$K,
+	rtl: rtl$K,
+	translations: translations$K,
+	updated_at: updated_at$K
+};
+
+var frCa$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: frCa,
+  locale: locale$K,
+  rtl: rtl$K,
+  translations: translations$K,
+  updated_at: updated_at$K
+});
+
+var locale$J = "fr";
+var rtl$J = false;
+var translations$J = {
+	"new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore votre demande récente {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question ?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
+	"new-request-form.answer-bot-modal.request-closed": "Super. Votre demande a été fermée.",
+	"new-request-form.answer-bot-modal.request-submitted": "Votre demande a été envoyée",
+	"new-request-form.answer-bot-modal.solve-error": "Une erreur est survenue lors de la clôture de votre demande",
+	"new-request-form.answer-bot-modal.solve-request": "Oui, fermer ma demande",
+	"new-request-form.answer-bot-modal.title": "En attendant, l’un de ces articles répond-il à votre question ?",
+	"new-request-form.answer-bot-modal.view-article": "Afficher l’article",
+	"new-request-form.attachments.choose-file-label": "Choisissez un fichier ou faites un glisser-déposer ici",
+	"new-request-form.attachments.drop-files-label": "Déposez les fichiers ici",
+	"new-request-form.attachments.remove-file": "Supprimer le fichier",
+	"new-request-form.attachments.stop-upload": "Arrêter le chargement",
+	"new-request-form.attachments.upload-error-description": "Une erreur est survenue lors du chargement de {{fileName}}. Réessayez ou chargez un autre fichier.",
+	"new-request-form.attachments.upload-error-title": "Erreur de chargement",
+	"new-request-form.attachments.uploading": "Chargement du fichier {{fileName}} en cours",
+	"new-request-form.cc-field.container-label": "E-mails en CC sélectionnés",
+	"new-request-form.cc-field.email-added": "{{email}} a été ajouté",
+	"new-request-form.cc-field.email-label": "{{email}} - Appuyez sur Retour arrière pour supprimer",
+	"new-request-form.cc-field.email-removed": "{{email}} a été supprimé",
+	"new-request-form.cc-field.emails-added": "{{emails}} ont été ajoutés",
+	"new-request-form.cc-field.invalid-email": "Adresse e-mail non valide",
+	"new-request-form.close-label": "Fermer",
+	"new-request-form.dropdown.empty-option": "Sélectionnez une option",
+	"new-request-form.parent-request-link": "Suivi de la demande {{parentId}}",
+	"new-request-form.required-fields-info": "Les champs marqués d'un astérisque (*) sont obligatoires.",
+	"new-request-form.submit": "Envoyer",
+	"new-request-form.suggested-articles": "Articles suggérés"
+};
+var updated_at$J = "2024-03-26T15:32:00Z";
+var fr = {
+	locale: locale$J,
+	rtl: rtl$J,
+	translations: translations$J,
+	updated_at: updated_at$J
+};
+
+var fr$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: fr,
+  locale: locale$J,
+  rtl: rtl$J,
+  translations: translations$J,
+  updated_at: updated_at$J
+});
+
+var locale$I = "ga";
+var rtl$I = false;
+var translations$I = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$I = "2023-10-12T17:42:45Z";
+var ga = {
+	locale: locale$I,
+	rtl: rtl$I,
+	translations: translations$I,
+	updated_at: updated_at$I
+};
+
+var ga$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ga,
+  locale: locale$I,
+  rtl: rtl$I,
+  translations: translations$I,
+  updated_at: updated_at$I
+});
+
+var locale$H = "he";
+var rtl$H = true;
+var translations$H = {
+	"new-request-form.answer-bot-modal.footer-content": "אם כן, נוכל לסגור את בקשה {{requestId}} ששלחת לאחרונה",
+	"new-request-form.answer-bot-modal.footer-title": "האם המאמר הזה עונה על השאלה?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "לא, אני צריך עזרה",
+	"new-request-form.answer-bot-modal.request-closed": "נחמד. הבקשה נסגרה.",
+	"new-request-form.answer-bot-modal.request-submitted": "בקשתך נשלחה",
+	"new-request-form.answer-bot-modal.solve-error": "אירעה שגיאה בסגירת בקשתך",
+	"new-request-form.answer-bot-modal.solve-request": "כן, סגור את הבקשה שלי",
+	"new-request-form.answer-bot-modal.title": "בינתיים, האם אחד מהמאמרים האלה עונה על השאלה שלך?",
+	"new-request-form.answer-bot-modal.view-article": "הצג מאמר",
+	"new-request-form.attachments.choose-file-label": "בחר קובץ או גרור ושחרר כאן",
+	"new-request-form.attachments.drop-files-label": "שחרר את הקבצים כאן",
+	"new-request-form.attachments.remove-file": "הסר קובץ",
+	"new-request-form.attachments.stop-upload": "עצור העלאה",
+	"new-request-form.attachments.upload-error-description": "אירעה שגיאה בהעלאת הקובץ {{fileName}}. נסה שוב או העלה קובץ אחר.",
+	"new-request-form.attachments.upload-error-title": "שגיאת העלאה",
+	"new-request-form.attachments.uploading": "מעלה את {{fileName}}",
+	"new-request-form.cc-field.container-label": "הודעות דוא\"ל נבחרות עם עותק",
+	"new-request-form.cc-field.email-added": "כתובת הדוא\"ל {{email}} נוספה",
+	"new-request-form.cc-field.email-label": "{{email}} - לחץ על Backspace כדי להסיר",
+	"new-request-form.cc-field.email-removed": "כתובת הדוא\"ל {{email}} הוסרה",
+	"new-request-form.cc-field.emails-added": "כתובת הדוא\"ל {{emails}} נוספו",
+	"new-request-form.cc-field.invalid-email": "כתובת דואר אלקטרוני לא חוקית",
+	"new-request-form.close-label": "סגור",
+	"new-request-form.dropdown.empty-option": "בחר אפשרות",
+	"new-request-form.parent-request-link": "מעקב לבקשה {{parentId}}",
+	"new-request-form.required-fields-info": "השדות המסומנים בכוכבית (*) הם שדות חובה.",
+	"new-request-form.submit": "שלח",
+	"new-request-form.suggested-articles": "מאמרים מוצעים"
+};
+var updated_at$H = "2024-03-26T15:32:43Z";
+var he = {
+	locale: locale$H,
+	rtl: rtl$H,
+	translations: translations$H,
+	updated_at: updated_at$H
+};
+
+var he$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: he,
+  locale: locale$H,
+  rtl: rtl$H,
+  translations: translations$H,
+  updated_at: updated_at$H
+});
+
+var locale$G = "hi";
+var rtl$G = false;
+var translations$G = {
+	"new-request-form.answer-bot-modal.footer-content": "यदि ऐसा है, तो हम आपका हाल ही का अनुरोध बंद कर सकते है {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "क्या इस आलेख में आपके प्रश्न का उत्तर मिला?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "नहीं, मुझे सहायता चाहिए",
+	"new-request-form.answer-bot-modal.request-closed": "बढ़िया! आपका अनुरोध बंद कर दिया गया है।",
+	"new-request-form.answer-bot-modal.request-submitted": "आपका अनुरोध सफलतापूर्वक भेजा गया था",
+	"new-request-form.answer-bot-modal.solve-error": "आपका अनुरोध समाप्त करने में कोई त्रुटि थी",
+	"new-request-form.answer-bot-modal.solve-request": "हाँ, कृपया मेरा अनुरोध समाप्त करें",
+	"new-request-form.answer-bot-modal.title": "प्रतीक्षा करते समय, क्या इन आलेखों से आपके प्रश्न का उत्तर मिलता है?",
+	"new-request-form.answer-bot-modal.view-article": "आलेख देखें",
+	"new-request-form.attachments.choose-file-label": "कोई फ़ाइल चुनें या यहां खींचें और छोड़ें",
+	"new-request-form.attachments.drop-files-label": "फाइलों को यहां छोड़ें",
+	"new-request-form.attachments.remove-file": "फ़ाइल हटाएं",
+	"new-request-form.attachments.stop-upload": "अपलोड बंद करें",
+	"new-request-form.attachments.upload-error-description": "{{fileName}}अपलोड करने में कोई त्रुटि थी। पुनः प्रयास करें या कोई अन्य फ़ाइल अपलोड करें।",
+	"new-request-form.attachments.upload-error-title": "त्रुटि अपलोड करें",
+	"new-request-form.attachments.uploading": "{{fileName}} अपलोड हो रहा है",
+	"new-request-form.cc-field.container-label": "चयनित CC ईमेल",
+	"new-request-form.cc-field.email-added": "{{email}} जोड़ा गया है",
+	"new-request-form.cc-field.email-label": "{{email}} - हटाने के लिए बैकस्पेस दबाएं",
+	"new-request-form.cc-field.email-removed": "{{email}} हटा दिया गया है",
+	"new-request-form.cc-field.emails-added": "{{emails}} जोड़ा गया है",
+	"new-request-form.cc-field.invalid-email": "अमान्य ईमेल पता",
+	"new-request-form.close-label": "बंद करें",
+	"new-request-form.dropdown.empty-option": "कोई विकल्प चुनें",
+	"new-request-form.parent-request-link": "{{parentId}} का अनुरोध करने के लिए फ़ॉलो-अप",
+	"new-request-form.required-fields-info": "तारांकन चिह्न (*) से चिह्नित फ़ील्ड आवश्यक हैं।",
+	"new-request-form.submit": "भेजें",
+	"new-request-form.suggested-articles": "सुझाए गए आलेख"
+};
+var updated_at$G = "2024-03-26T15:33:27Z";
+var hi = {
+	locale: locale$G,
+	rtl: rtl$G,
+	translations: translations$G,
+	updated_at: updated_at$G
+};
+
+var hi$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hi,
+  locale: locale$G,
+  rtl: rtl$G,
+  translations: translations$G,
+  updated_at: updated_at$G
+});
+
+var locale$F = "hr";
+var rtl$F = false;
+var translations$F = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$F = "2024-03-19T17:00:19Z";
+var hr = {
+	locale: locale$F,
+	rtl: rtl$F,
+	translations: translations$F,
+	updated_at: updated_at$F
+};
+
+var hr$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hr,
+  locale: locale$F,
+  rtl: rtl$F,
+  translations: translations$F,
+  updated_at: updated_at$F
+});
+
+var locale$E = "hu";
+var rtl$E = false;
+var translations$E = {
+	"new-request-form.answer-bot-modal.footer-content": "Ha igen, lezárhatjuk a legutóbbi kérelmét ({{requestId}})",
+	"new-request-form.answer-bot-modal.footer-title": "Megválaszolta a cikk a kérdését?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nem, segítségre van szükségem",
+	"new-request-form.answer-bot-modal.request-closed": "Remek! A kérelme ezzel le lett zárva.",
+	"new-request-form.answer-bot-modal.request-submitted": "A kérelme sikeresen be lett küldve",
+	"new-request-form.answer-bot-modal.solve-error": "Hiba történt a kérelme lezárásakor",
+	"new-request-form.answer-bot-modal.solve-request": "Igen, zárják le a kérelmemet",
+	"new-request-form.answer-bot-modal.title": "Várakozás közben megtekintheti, hogy e cikkek közül választ ad-e valamelyik a kérdésére.",
+	"new-request-form.answer-bot-modal.view-article": "Cikk megtekintése",
+	"new-request-form.attachments.choose-file-label": "Válassza ki vagy húzza ide a kívánt fájlt",
+	"new-request-form.attachments.drop-files-label": "Húzza ide a fájlokat",
+	"new-request-form.attachments.remove-file": "Fájl eltávolítása",
+	"new-request-form.attachments.stop-upload": "Feltöltés leállítása",
+	"new-request-form.attachments.upload-error-description": "Hiba történt a(z) {{fileName}} fájl feltöltése során. Próbálja meg újra, vagy töltsön fel egy másik fájlt.",
+	"new-request-form.attachments.upload-error-title": "Feltöltési hiba",
+	"new-request-form.attachments.uploading": "A(z) {{fileName}} fájl feltöltése folyamatban van",
+	"new-request-form.cc-field.container-label": "Másolatot kapó kiválasztott e-mail-címek",
+	"new-request-form.cc-field.email-added": "{{email}} hozzáadva",
+	"new-request-form.cc-field.email-label": "{{email}} – Nyomja meg a Backspace billentyűt az eltávolításhoz",
+	"new-request-form.cc-field.email-removed": "{{email}} eltávolítva",
+	"new-request-form.cc-field.emails-added": "{{emails}} hozzáadva",
+	"new-request-form.cc-field.invalid-email": "Érvénytelen e-mail-cím",
+	"new-request-form.close-label": "Bezárás",
+	"new-request-form.dropdown.empty-option": "Válasszon egy lehetőséget",
+	"new-request-form.parent-request-link": "Nyomon követés a(z) {{parentId}} kérelemhez",
+	"new-request-form.required-fields-info": "A csillaggal (*) jelzett mezők kitöltése kötelező.",
+	"new-request-form.submit": "Küldés",
+	"new-request-form.suggested-articles": "Javasolt cikkek"
+};
+var updated_at$E = "2024-03-26T15:34:10Z";
+var hu = {
+	locale: locale$E,
+	rtl: rtl$E,
+	translations: translations$E,
+	updated_at: updated_at$E
+};
+
+var hu$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hu,
+  locale: locale$E,
+  rtl: rtl$E,
+  translations: translations$E,
+  updated_at: updated_at$E
+});
+
+var locale$D = "hy";
+var rtl$D = false;
+var translations$D = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$D = "2023-10-12T17:25:31Z";
+var hy = {
+	locale: locale$D,
+	rtl: rtl$D,
+	translations: translations$D,
+	updated_at: updated_at$D
+};
+
+var hy$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: hy,
+  locale: locale$D,
+  rtl: rtl$D,
+  translations: translations$D,
+  updated_at: updated_at$D
+});
+
+var locale$C = "id";
+var rtl$C = false;
+var translations$C = {
+	"new-request-form.answer-bot-modal.footer-content": "Jika demikian, kami dapat menutup permintaan Anda baru-baru ini {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Apakah artikel ini menjawab pertanyaan Anda?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Tidak, saya perlu bantuan",
+	"new-request-form.answer-bot-modal.request-closed": "Bagus. Permintaan Anda telah ditutup.",
+	"new-request-form.answer-bot-modal.request-submitted": "Permintaan Anda berhasil dikirimkan",
+	"new-request-form.answer-bot-modal.solve-error": "Ada kesalahan dalam menutup permintaan Anda",
+	"new-request-form.answer-bot-modal.solve-request": "Ya, tutup permintaan saya",
+	"new-request-form.answer-bot-modal.title": "Sementara Anda menunggu, apakah ada di antara artikel-artikel ini yang menjawab pertanyaan Anda?",
+	"new-request-form.answer-bot-modal.view-article": "Lihat artikel",
+	"new-request-form.attachments.choose-file-label": "Pilih file atau tarik dan letakkan di sini",
+	"new-request-form.attachments.drop-files-label": "Letakkan file di sini",
+	"new-request-form.attachments.remove-file": "Hapus file",
+	"new-request-form.attachments.stop-upload": "Berhenti mengunggah",
+	"new-request-form.attachments.upload-error-description": "Terjadi kesalahan saat mengunggah {{fileName}}. Cobalah lagi atau unggah file lain.",
+	"new-request-form.attachments.upload-error-title": "Kesalahan Mengunggah",
+	"new-request-form.attachments.uploading": "Mengunggah {{fileName}}",
+	"new-request-form.cc-field.container-label": "Email CC yang dipilih",
+	"new-request-form.cc-field.email-added": "{{email}} telah ditambahkan",
+	"new-request-form.cc-field.email-label": "{{email}} - Tekan Backspace untuk menghapus",
+	"new-request-form.cc-field.email-removed": "{{email}} telah dihapus",
+	"new-request-form.cc-field.emails-added": "{{emails}} telah ditambahkan",
+	"new-request-form.cc-field.invalid-email": "Alamat email tidak valid",
+	"new-request-form.close-label": "Tutup",
+	"new-request-form.dropdown.empty-option": "Pilih opsi",
+	"new-request-form.parent-request-link": "Tindak lanjut atas permintaan {{parentId}}",
+	"new-request-form.required-fields-info": "Bidang yang ditandai dengan tanda bintang (*) wajib diisi.",
+	"new-request-form.submit": "Kirim",
+	"new-request-form.suggested-articles": "Artikel yang disarankan"
+};
+var updated_at$C = "2024-03-26T15:34:53Z";
+var id = {
+	locale: locale$C,
+	rtl: rtl$C,
+	translations: translations$C,
+	updated_at: updated_at$C
+};
+
+var id$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: id,
+  locale: locale$C,
+  rtl: rtl$C,
+  translations: translations$C,
+  updated_at: updated_at$C
+});
+
+var locale$B = "is";
+var rtl$B = false;
+var translations$B = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$B = "2024-03-19T17:05:17Z";
+var is = {
+	locale: locale$B,
+	rtl: rtl$B,
+	translations: translations$B,
+	updated_at: updated_at$B
+};
+
+var is$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: is,
+  locale: locale$B,
+  rtl: rtl$B,
+  translations: translations$B,
+  updated_at: updated_at$B
+});
+
+var locale$A = "it-ch";
+var rtl$A = false;
+var translations$A = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$A = "2023-10-12T17:42:45Z";
+var itCh = {
+	locale: locale$A,
+	rtl: rtl$A,
+	translations: translations$A,
+	updated_at: updated_at$A
+};
+
+var itCh$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: itCh,
+  locale: locale$A,
+  rtl: rtl$A,
+  translations: translations$A,
+  updated_at: updated_at$A
+});
+
+var locale$z = "it";
+var rtl$z = false;
+var translations$z = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$z = "2024-03-26T15:35:38Z";
+var it = {
+	locale: locale$z,
+	rtl: rtl$z,
+	translations: translations$z,
+	updated_at: updated_at$z
+};
+
+var it$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: it,
+  locale: locale$z,
+  rtl: rtl$z,
+  translations: translations$z,
+  updated_at: updated_at$z
+});
+
+var locale$y = "ja";
+var rtl$y = false;
+var translations$y = {
+	"new-request-form.answer-bot-modal.footer-content": "質問が解決していれば、最新のリクエスト{{requestId}}を終了します",
+	"new-request-form.answer-bot-modal.footer-title": "この記事で疑問が解消されましたか？",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "いいえ、ヘルプが必要です",
+	"new-request-form.answer-bot-modal.request-closed": "お役に立てて嬉しいです。リクエストは終了しました。",
+	"new-request-form.answer-bot-modal.request-submitted": "リクエストは正しく送信されました",
+	"new-request-form.answer-bot-modal.solve-error": "リクエストを終了する際にエラーが発生しました",
+	"new-request-form.answer-bot-modal.solve-request": "はい、リクエストを終了",
+	"new-request-form.answer-bot-modal.title": "これらの記事のいずれかで疑問が解消されますか？",
+	"new-request-form.answer-bot-modal.view-article": "記事を表示",
+	"new-request-form.attachments.choose-file-label": "ファイルを選択するか、ここにドラッグアンドドロップします",
+	"new-request-form.attachments.drop-files-label": "ファイルをここにドロップ",
+	"new-request-form.attachments.remove-file": "ファイル削除",
+	"new-request-form.attachments.stop-upload": "アップロードを停止",
+	"new-request-form.attachments.upload-error-description": "{{fileName}}のアップロード中にエラーが発生しました。もう一度やり直すか、別のファイルをアップロードしてください。",
+	"new-request-form.attachments.upload-error-title": "アップロードエラー",
+	"new-request-form.attachments.uploading": "{{fileName}}をアップロード中",
+	"new-request-form.cc-field.container-label": "選択したCCメールアドレス",
+	"new-request-form.cc-field.email-added": "{{email}}を追加しました",
+	"new-request-form.cc-field.email-label": "{{email}} - 削除するにはBackspaceキーを押します",
+	"new-request-form.cc-field.email-removed": "{{email}}を削除しました",
+	"new-request-form.cc-field.emails-added": "{{emails}}を追加しました",
+	"new-request-form.cc-field.invalid-email": "メールアドレスが正しくありません",
+	"new-request-form.close-label": "閉じる",
+	"new-request-form.dropdown.empty-option": "オプションを選択します",
+	"new-request-form.parent-request-link": "リクエスト{{parentId}}の補足",
+	"new-request-form.required-fields-info": "アスタリスク（*）が付いているフィールドは必須です。",
+	"new-request-form.submit": "送信",
+	"new-request-form.suggested-articles": "おすすめの記事"
+};
+var updated_at$y = "2024-03-26T15:46:41Z";
+var ja = {
+	locale: locale$y,
+	rtl: rtl$y,
+	translations: translations$y,
+	updated_at: updated_at$y
+};
+
+var ja$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ja,
+  locale: locale$y,
+  rtl: rtl$y,
+  translations: translations$y,
+  updated_at: updated_at$y
+});
+
+var locale$x = "ka";
+var rtl$x = false;
+var translations$x = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$x = "2024-03-19T17:05:18Z";
+var ka = {
+	locale: locale$x,
+	rtl: rtl$x,
+	translations: translations$x,
+	updated_at: updated_at$x
+};
+
+var ka$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ka,
+  locale: locale$x,
+  rtl: rtl$x,
+  translations: translations$x,
+  updated_at: updated_at$x
+});
+
+var locale$w = "kk";
+var rtl$w = false;
+var translations$w = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$w = "2024-03-19T17:11:22Z";
+var kk = {
+	locale: locale$w,
+	rtl: rtl$w,
+	translations: translations$w,
+	updated_at: updated_at$w
+};
+
+var kk$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: kk,
+  locale: locale$w,
+  rtl: rtl$w,
+  translations: translations$w,
+  updated_at: updated_at$w
+});
+
+var locale$v = "kl-dk";
+var rtl$v = false;
+var translations$v = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$v = "2024-02-20T18:00:30Z";
+var klDk = {
+	locale: locale$v,
+	rtl: rtl$v,
+	translations: translations$v,
+	updated_at: updated_at$v
+};
+
+var klDk$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: klDk,
+  locale: locale$v,
+  rtl: rtl$v,
+  translations: translations$v,
+  updated_at: updated_at$v
+});
+
+var locale$u = "ko";
+var rtl$u = false;
+var translations$u = {
+	"new-request-form.answer-bot-modal.footer-content": "그렇다면 최근 요청 {{requestId}}을(를) 종료할 수 있습니다.",
+	"new-request-form.answer-bot-modal.footer-title": "이 문서가 질문에 대한 답이 되었나요?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "아니요, 도움이 필요합니다.",
+	"new-request-form.answer-bot-modal.request-closed": "도움이 되었다니 기쁩니다. 요청이 종료되었습니다.",
+	"new-request-form.answer-bot-modal.request-submitted": "요청을 제출했습니다.",
+	"new-request-form.answer-bot-modal.solve-error": "요청을 종료하는 중 오류가 발생했습니다.",
+	"new-request-form.answer-bot-modal.solve-request": "예, 요청을 종료합니다",
+	"new-request-form.answer-bot-modal.title": "기다리는 동안 다음 문서 중에서 질문에 대한 답변을 찾으셨나요?",
+	"new-request-form.answer-bot-modal.view-article": "문서 보기",
+	"new-request-form.attachments.choose-file-label": "파일을 선택하거나 여기에 드래그 앤 드롭하세요.",
+	"new-request-form.attachments.drop-files-label": "파일을 여기에 드롭하세요",
+	"new-request-form.attachments.remove-file": "파일 제거",
+	"new-request-form.attachments.stop-upload": "업로드 중지",
+	"new-request-form.attachments.upload-error-description": "{{fileName}}을(를) 업로드하는 중 오류가 발생했습니다. 다시 시도하거나 다른 파일을 업로드하세요.",
+	"new-request-form.attachments.upload-error-title": "업로드 오류",
+	"new-request-form.attachments.uploading": "{{fileName}} 업로드 중",
+	"new-request-form.cc-field.container-label": "선택한 참조 이메일",
+	"new-request-form.cc-field.email-added": "{{email}}이(가) 추가되었습니다.",
+	"new-request-form.cc-field.email-label": "{{email}} - 제거하려면 백스페이스 키를 누르세요.",
+	"new-request-form.cc-field.email-removed": "{{email}}이(가) 제거되었습니다.",
+	"new-request-form.cc-field.emails-added": "{{emails}}이(가) 추가되었습니다.",
+	"new-request-form.cc-field.invalid-email": "올바르지 않은 이메일 주소",
+	"new-request-form.close-label": "닫기",
+	"new-request-form.dropdown.empty-option": "옵션을 선택하세요.",
+	"new-request-form.parent-request-link": "요청 {{parentId}}에 대한 후속 작업",
+	"new-request-form.required-fields-info": "별표(*)가 표시된 필드는 필수입니다.",
+	"new-request-form.submit": "제출",
+	"new-request-form.suggested-articles": "추천 문서"
+};
+var updated_at$u = "2024-03-26T15:37:05Z";
+var ko = {
+	locale: locale$u,
+	rtl: rtl$u,
+	translations: translations$u,
+	updated_at: updated_at$u
+};
+
+var ko$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ko,
+  locale: locale$u,
+  rtl: rtl$u,
+  translations: translations$u,
+  updated_at: updated_at$u
+});
+
+var locale$t = "ku";
+var rtl$t = false;
+var translations$t = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$t = "2023-10-25T20:34:47Z";
+var ku = {
+	locale: locale$t,
+	rtl: rtl$t,
+	translations: translations$t,
+	updated_at: updated_at$t
+};
+
+var ku$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ku,
+  locale: locale$t,
+  rtl: rtl$t,
+  translations: translations$t,
+  updated_at: updated_at$t
+});
+
+var locale$s = "lt";
+var rtl$s = false;
+var translations$s = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$s = "2024-03-19T17:11:46Z";
+var lt = {
+	locale: locale$s,
+	rtl: rtl$s,
+	translations: translations$s,
+	updated_at: updated_at$s
+};
+
+var lt$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: lt,
+  locale: locale$s,
+  rtl: rtl$s,
+  translations: translations$s,
+  updated_at: updated_at$s
+});
+
+var locale$r = "lv";
+var rtl$r = false;
+var translations$r = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$r = "2024-03-19T17:06:18Z";
+var lv = {
+	locale: locale$r,
+	rtl: rtl$r,
+	translations: translations$r,
+	updated_at: updated_at$r
+};
+
+var lv$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: lv,
+  locale: locale$r,
+  rtl: rtl$r,
+  translations: translations$r,
+  updated_at: updated_at$r
+});
+
+var locale$q = "mk";
+var rtl$q = false;
+var translations$q = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$q = "2023-10-25T20:34:50Z";
+var mk = {
+	locale: locale$q,
+	rtl: rtl$q,
+	translations: translations$q,
+	updated_at: updated_at$q
+};
+
+var mk$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: mk,
+  locale: locale$q,
+  rtl: rtl$q,
+  translations: translations$q,
+  updated_at: updated_at$q
+});
+
+var locale$p = "mn";
+var rtl$p = false;
+var translations$p = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$p = "2023-10-12T22:15:56Z";
+var mn = {
+	locale: locale$p,
+	rtl: rtl$p,
+	translations: translations$p,
+	updated_at: updated_at$p
+};
+
+var mn$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: mn,
+  locale: locale$p,
+  rtl: rtl$p,
+  translations: translations$p,
+  updated_at: updated_at$p
+});
+
+var locale$o = "ms";
+var rtl$o = false;
+var translations$o = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$o = "2024-03-19T17:23:17Z";
+var ms = {
+	locale: locale$o,
+	rtl: rtl$o,
+	translations: translations$o,
+	updated_at: updated_at$o
+};
+
+var ms$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ms,
+  locale: locale$o,
+  rtl: rtl$o,
+  translations: translations$o,
+  updated_at: updated_at$o
+});
+
+var locale$n = "mt";
+var rtl$n = false;
+var translations$n = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$n = "2023-10-12T17:42:48Z";
+var mt = {
+	locale: locale$n,
+	rtl: rtl$n,
+	translations: translations$n,
+	updated_at: updated_at$n
+};
+
+var mt$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: mt,
+  locale: locale$n,
+  rtl: rtl$n,
+  translations: translations$n,
+  updated_at: updated_at$n
+});
+
+var locale$m = "my";
+var rtl$m = false;
+var translations$m = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$m = "2023-10-12T17:25:32Z";
+var my = {
+	locale: locale$m,
+	rtl: rtl$m,
+	translations: translations$m,
+	updated_at: updated_at$m
+};
+
+var my$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: my,
+  locale: locale$m,
+  rtl: rtl$m,
+  translations: translations$m,
+  updated_at: updated_at$m
+});
+
+var locale$l = "nl-be";
+var rtl$l = false;
+var translations$l = {
+	"new-request-form.answer-bot-modal.footer-content": "Als dat het geval is, kunnen wij uw recente aanvraag {{requestId}} sluiten",
+	"new-request-form.answer-bot-modal.footer-title": "Beantwoordt dit artikel uw vraag?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nee, ik heb hulp nodig",
+	"new-request-form.answer-bot-modal.request-closed": "Fijn. Uw aanvraag is gesloten.",
+	"new-request-form.answer-bot-modal.request-submitted": "Uw aanvraag is verzonden",
+	"new-request-form.answer-bot-modal.solve-error": "Fout tijdens het sluiten van uw aanvraag",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, mijn aanvraag sluiten",
+	"new-request-form.answer-bot-modal.title": "Terwijl u wacht: beantwoordt een van deze artikelen uw vraag?",
+	"new-request-form.answer-bot-modal.view-article": "Artikel weergeven",
+	"new-request-form.attachments.choose-file-label": "Kies een bestand of versleep het hierheen",
+	"new-request-form.attachments.drop-files-label": "Zet bestanden hier neer",
+	"new-request-form.attachments.remove-file": "Bestand verwijderen",
+	"new-request-form.attachments.stop-upload": "Upload stoppen",
+	"new-request-form.attachments.upload-error-description": "Fout tijdens uploaden van {{fileName}}. Probeer het opnieuw of upload een ander bestand.",
+	"new-request-form.attachments.upload-error-title": "Fout bij uploaden",
+	"new-request-form.attachments.uploading": "{{fileName}} wordt geüpload",
+	"new-request-form.cc-field.container-label": "Geselecteerde e-mails in cc",
+	"new-request-form.cc-field.email-added": "{{email}} is toegevoegd",
+	"new-request-form.cc-field.email-label": "{{email}} - Druk op Backspace om te verwijderen",
+	"new-request-form.cc-field.email-removed": "{{email}} is verwijderd",
+	"new-request-form.cc-field.emails-added": "{{emails}} zijn toegevoegd",
+	"new-request-form.cc-field.invalid-email": "Ongeldig e-mailadres",
+	"new-request-form.close-label": "Sluiten",
+	"new-request-form.dropdown.empty-option": "Selecteer een optie",
+	"new-request-form.parent-request-link": "Follow-up van aanvraag {{parentId}}",
+	"new-request-form.required-fields-info": "Velden met een sterretje (*) zijn vereist.",
+	"new-request-form.submit": "Verzenden",
+	"new-request-form.suggested-articles": "Voorgestelde artikelen"
+};
+var updated_at$l = "2021-06-28T23:57:55Z";
+var nlBe = {
+	locale: locale$l,
+	rtl: rtl$l,
+	translations: translations$l,
+	updated_at: updated_at$l
+};
+
+var nlBe$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: nlBe,
+  locale: locale$l,
+  rtl: rtl$l,
+  translations: translations$l,
+  updated_at: updated_at$l
+});
+
+var locale$k = "nl";
+var rtl$k = false;
+var translations$k = {
+	"new-request-form.answer-bot-modal.footer-content": "Als dat het geval is, kunnen wij uw recente aanvraag {{requestId}} sluiten",
+	"new-request-form.answer-bot-modal.footer-title": "Beantwoordt dit artikel uw vraag?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nee, ik heb hulp nodig",
+	"new-request-form.answer-bot-modal.request-closed": "Fijn. Uw aanvraag is gesloten.",
+	"new-request-form.answer-bot-modal.request-submitted": "Uw aanvraag is verzonden",
+	"new-request-form.answer-bot-modal.solve-error": "Fout tijdens het sluiten van uw aanvraag",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, mijn aanvraag sluiten",
+	"new-request-form.answer-bot-modal.title": "Terwijl u wacht: beantwoordt een van deze artikelen uw vraag?",
+	"new-request-form.answer-bot-modal.view-article": "Artikel weergeven",
+	"new-request-form.attachments.choose-file-label": "Kies een bestand of versleep het hierheen",
+	"new-request-form.attachments.drop-files-label": "Zet bestanden hier neer",
+	"new-request-form.attachments.remove-file": "Bestand verwijderen",
+	"new-request-form.attachments.stop-upload": "Upload stoppen",
+	"new-request-form.attachments.upload-error-description": "Fout tijdens uploaden van {{fileName}}. Probeer het opnieuw of upload een ander bestand.",
+	"new-request-form.attachments.upload-error-title": "Fout bij uploaden",
+	"new-request-form.attachments.uploading": "{{fileName}} wordt geüpload",
+	"new-request-form.cc-field.container-label": "Geselecteerde e-mails in cc",
+	"new-request-form.cc-field.email-added": "{{email}} is toegevoegd",
+	"new-request-form.cc-field.email-label": "{{email}} - Druk op Backspace om te verwijderen",
+	"new-request-form.cc-field.email-removed": "{{email}} is verwijderd",
+	"new-request-form.cc-field.emails-added": "{{emails}} zijn toegevoegd",
+	"new-request-form.cc-field.invalid-email": "Ongeldig e-mailadres",
+	"new-request-form.close-label": "Sluiten",
+	"new-request-form.dropdown.empty-option": "Selecteer een optie",
+	"new-request-form.parent-request-link": "Follow-up van aanvraag {{parentId}}",
+	"new-request-form.required-fields-info": "Velden met een sterretje (*) zijn vereist.",
+	"new-request-form.submit": "Verzenden",
+	"new-request-form.suggested-articles": "Voorgestelde artikelen"
+};
+var updated_at$k = "2024-03-26T15:37:49Z";
+var nl = {
+	locale: locale$k,
+	rtl: rtl$k,
+	translations: translations$k,
+	updated_at: updated_at$k
+};
+
+var nl$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: nl,
+  locale: locale$k,
+  rtl: rtl$k,
+  translations: translations$k,
+  updated_at: updated_at$k
+});
+
+var locale$j = "no";
+var rtl$j = false;
+var translations$j = {
+	"new-request-form.answer-bot-modal.footer-content": "Hvis den gjør det, kan vi avslutte den nylige forespørselen {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Fant du svar på spørsmålet i denne artikkelen?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nei, jeg trenger hjelp",
+	"new-request-form.answer-bot-modal.request-closed": "Flott! Forespørselen er avsluttet.",
+	"new-request-form.answer-bot-modal.request-submitted": "Forespørselen ble sendt inn",
+	"new-request-form.answer-bot-modal.solve-error": "Det oppstod en feil under lukking av forespørselen",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, avslutt forespørselen",
+	"new-request-form.answer-bot-modal.title": "Mens du venter: Kanskje en av disse artiklene har svar på spørsmålet ditt?",
+	"new-request-form.answer-bot-modal.view-article": "Vis artikkel",
+	"new-request-form.attachments.choose-file-label": "Velg en fil eller dra og slipp her",
+	"new-request-form.attachments.drop-files-label": "Slipp filene her",
+	"new-request-form.attachments.remove-file": "Fjern fil",
+	"new-request-form.attachments.stop-upload": "Stopp opplastingen",
+	"new-request-form.attachments.upload-error-description": "Det oppstod en feil under opplastingen {{fileName}}. Prøv på nytt eller last opp en annen fil.",
+	"new-request-form.attachments.upload-error-title": "Feil under opplasting",
+	"new-request-form.attachments.uploading": "Laster opp {{fileName}}",
+	"new-request-form.cc-field.container-label": "Valgte e-poster kopi til",
+	"new-request-form.cc-field.email-added": "{{email}} har blitt lagt til",
+	"new-request-form.cc-field.email-label": "{{email}} - Trykk på Tilbaketasten for å fjerne",
+	"new-request-form.cc-field.email-removed": "{{email}} er fjernet",
+	"new-request-form.cc-field.emails-added": "{{emails}} er lagt til",
+	"new-request-form.cc-field.invalid-email": "Ugyldig e-postadresse",
+	"new-request-form.close-label": "Lukke",
+	"new-request-form.dropdown.empty-option": "Velg et alternativ",
+	"new-request-form.parent-request-link": "Oppfølging av forespørsel {{parentId}}",
+	"new-request-form.required-fields-info": "Felter merket med en stjerne (*) er obligatoriske.",
+	"new-request-form.submit": "Send inn",
+	"new-request-form.suggested-articles": "Foreslåtte artikler"
+};
+var updated_at$j = "2024-03-26T15:38:32Z";
+var no = {
+	locale: locale$j,
+	rtl: rtl$j,
+	translations: translations$j,
+	updated_at: updated_at$j
+};
+
+var no$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: no,
+  locale: locale$j,
+  rtl: rtl$j,
+  translations: translations$j,
+  updated_at: updated_at$j
+});
+
+var locale$i = "pl";
+var rtl$i = false;
+var translations$i = {
+	"new-request-form.answer-bot-modal.footer-content": "Jeśli tak, możemy zamknąć zlecenie {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Czy artykuł dostarczył odpowiedzi na pytanie?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nie, potrzebuję pomocy",
+	"new-request-form.answer-bot-modal.request-closed": "Świetnie. Zlecenie zostało zamknięte.",
+	"new-request-form.answer-bot-modal.request-submitted": "Zlecenie zostało wysłane",
+	"new-request-form.answer-bot-modal.solve-error": "Podczas zamykania zlecenia wystąpił błąd",
+	"new-request-form.answer-bot-modal.solve-request": "Tak, zamknij zlecenie",
+	"new-request-form.answer-bot-modal.title": "W czasie gdy oczekujesz na odpowiedź, może zechcesz nam powiedzieć, czy którykolwiek z tych artykułów zawiera odpowiedź na pytanie?",
+	"new-request-form.answer-bot-modal.view-article": "Wyświetl artykuł",
+	"new-request-form.attachments.choose-file-label": "Wybierz plik lub przeciągnij i upuść go tutaj",
+	"new-request-form.attachments.drop-files-label": "Upuść pliki tutaj",
+	"new-request-form.attachments.remove-file": "Usuń plik",
+	"new-request-form.attachments.stop-upload": "Zatrzymaj przesyłanie",
+	"new-request-form.attachments.upload-error-description": "Podczas przesyłania wystąpił błąd {{fileName}}. Spróbuj ponownie lub prześlij inny plik.",
+	"new-request-form.attachments.upload-error-title": "Błąd przesyłania",
+	"new-request-form.attachments.uploading": "Przesyłanie {{fileName}}",
+	"new-request-form.cc-field.container-label": "Wybrane e-maile z pola DW",
+	"new-request-form.cc-field.email-added": "Dodano {{email}}",
+	"new-request-form.cc-field.email-label": "{{email}} – naciśnij Backspace, aby usunąć",
+	"new-request-form.cc-field.email-removed": "Usunięto {{email}}",
+	"new-request-form.cc-field.emails-added": "Dodano {{emails}}",
+	"new-request-form.cc-field.invalid-email": "Nieprawidłowy adres e-mail",
+	"new-request-form.close-label": "Zamknij",
+	"new-request-form.dropdown.empty-option": "Wybierz opcję",
+	"new-request-form.parent-request-link": "Kontynuacja zlecenia {{parentId}}",
+	"new-request-form.required-fields-info": "Pola oznaczone gwiazdką (*) są wymagane.",
+	"new-request-form.submit": "Wyślij",
+	"new-request-form.suggested-articles": "Propozycje artykułów"
+};
+var updated_at$i = "2024-03-26T15:39:17Z";
+var pl = {
+	locale: locale$i,
+	rtl: rtl$i,
+	translations: translations$i,
+	updated_at: updated_at$i
+};
+
+var pl$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: pl,
+  locale: locale$i,
+  rtl: rtl$i,
+  translations: translations$i,
+  updated_at: updated_at$i
+});
+
+var locale$h = "pt-br";
+var rtl$h = false;
+var translations$h = {
+	"new-request-form.answer-bot-modal.footer-content": "Se sim, podemos fechar a solicitação recente {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Esse artigo responde à pergunta?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Não, preciso de ajuda",
+	"new-request-form.answer-bot-modal.request-closed": "Legal! A solicitação foi fechada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Sua solicitação foi enviada com êxito",
+	"new-request-form.answer-bot-modal.solve-error": "Erro ao fechar a solicitação",
+	"new-request-form.answer-bot-modal.solve-request": "Sim, feche a solicitação",
+	"new-request-form.answer-bot-modal.title": "Enquanto você aguarda, algum desses artigos responde à pergunta?",
+	"new-request-form.answer-bot-modal.view-article": "Exibir artigo",
+	"new-request-form.attachments.choose-file-label": "Escolha um arquivo ou arraste e solte aqui",
+	"new-request-form.attachments.drop-files-label": "Solte os arquivos aqui",
+	"new-request-form.attachments.remove-file": "Remover arquivo",
+	"new-request-form.attachments.stop-upload": "Interromper carregamento",
+	"new-request-form.attachments.upload-error-description": "Erro ao carregar {{fileName}}. Tente novamente ou carregue outro arquivo.",
+	"new-request-form.attachments.upload-error-title": "Erro de carregamento",
+	"new-request-form.attachments.uploading": "Carregando {{fileName}}",
+	"new-request-form.cc-field.container-label": "E-mails de cópia selecionados",
+	"new-request-form.cc-field.email-added": "{{email}} foi adicionado",
+	"new-request-form.cc-field.email-label": "{{email}} – Pressione Backspace para remover",
+	"new-request-form.cc-field.email-removed": "{{email}} foi removido",
+	"new-request-form.cc-field.emails-added": "{{emails}} foram adicionados",
+	"new-request-form.cc-field.invalid-email": "Endereço de e-mail inválido",
+	"new-request-form.close-label": "Fechar",
+	"new-request-form.dropdown.empty-option": "Selecionar uma opção",
+	"new-request-form.parent-request-link": "Acompanhamento da solicitação {{parentId}}",
+	"new-request-form.required-fields-info": "Os campos marcados com um asterisco (*) são obrigatórios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artigos sugeridos"
+};
+var updated_at$h = "2024-03-26T15:40:00Z";
+var ptBr = {
+	locale: locale$h,
+	rtl: rtl$h,
+	translations: translations$h,
+	updated_at: updated_at$h
+};
+
+var ptBr$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ptBr,
+  locale: locale$h,
+  rtl: rtl$h,
+  translations: translations$h,
+  updated_at: updated_at$h
+});
+
+var locale$g = "pt";
+var rtl$g = false;
+var translations$g = {
+	"new-request-form.answer-bot-modal.footer-content": "Se sim, podemos fechar a solicitação recente {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Esse artigo responde à pergunta?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Não, preciso de ajuda",
+	"new-request-form.answer-bot-modal.request-closed": "Legal! A solicitação foi fechada.",
+	"new-request-form.answer-bot-modal.request-submitted": "Sua solicitação foi enviada com êxito",
+	"new-request-form.answer-bot-modal.solve-error": "Erro ao fechar a solicitação",
+	"new-request-form.answer-bot-modal.solve-request": "Sim, feche a solicitação",
+	"new-request-form.answer-bot-modal.title": "Enquanto você aguarda, algum desses artigos responde à pergunta?",
+	"new-request-form.answer-bot-modal.view-article": "Exibir artigo",
+	"new-request-form.attachments.choose-file-label": "Escolha um arquivo ou arraste e solte aqui",
+	"new-request-form.attachments.drop-files-label": "Solte os arquivos aqui",
+	"new-request-form.attachments.remove-file": "Remover arquivo",
+	"new-request-form.attachments.stop-upload": "Interromper carregamento",
+	"new-request-form.attachments.upload-error-description": "Erro ao carregar {{fileName}}. Tente novamente ou carregue outro arquivo.",
+	"new-request-form.attachments.upload-error-title": "Erro de carregamento",
+	"new-request-form.attachments.uploading": "Carregando {{fileName}}",
+	"new-request-form.cc-field.container-label": "E-mails de cópia selecionados",
+	"new-request-form.cc-field.email-added": "{{email}} foi adicionado",
+	"new-request-form.cc-field.email-label": "{{email}} – Pressione Backspace para remover",
+	"new-request-form.cc-field.email-removed": "{{email}} foi removido",
+	"new-request-form.cc-field.emails-added": "{{emails}} foram adicionados",
+	"new-request-form.cc-field.invalid-email": "Endereço de e-mail inválido",
+	"new-request-form.close-label": "Fechar",
+	"new-request-form.dropdown.empty-option": "Selecionar uma opção",
+	"new-request-form.parent-request-link": "Acompanhamento da solicitação {{parentId}}",
+	"new-request-form.required-fields-info": "Os campos marcados com um asterisco (*) são obrigatórios.",
+	"new-request-form.submit": "Enviar",
+	"new-request-form.suggested-articles": "Artigos sugeridos"
+};
+var updated_at$g = "2024-03-19T17:08:42Z";
+var pt = {
+	locale: locale$g,
+	rtl: rtl$g,
+	translations: translations$g,
+	updated_at: updated_at$g
+};
+
+var pt$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: pt,
+  locale: locale$g,
+  rtl: rtl$g,
+  translations: translations$g,
+  updated_at: updated_at$g
+});
+
+var locale$f = "ro";
+var rtl$f = false;
+var translations$f = {
+	"new-request-form.answer-bot-modal.footer-content": "Dacă reușește, putem închide solicitarea recentă {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Acest articol răspunde la întrebare?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nu, am nevoie de ajutor",
+	"new-request-form.answer-bot-modal.request-closed": "Grozav. Solicitarea a fost închisă.",
+	"new-request-form.answer-bot-modal.request-submitted": "Solicitarea a fost transmisă cu succes",
+	"new-request-form.answer-bot-modal.solve-error": "A apărut o eroare la închiderea solicitării",
+	"new-request-form.answer-bot-modal.solve-request": "Da, închideți solicitarea",
+	"new-request-form.answer-bot-modal.title": "Cât așteptați, vreunul dintre aceste articole răspunde la întrebarea dumneavoastră?",
+	"new-request-form.answer-bot-modal.view-article": "Vizualizare articol",
+	"new-request-form.attachments.choose-file-label": "Alegeți un fișier sau glisați și fixați aici",
+	"new-request-form.attachments.drop-files-label": "Glisați fișierele aici",
+	"new-request-form.attachments.remove-file": "Eliminare fișier",
+	"new-request-form.attachments.stop-upload": "Oprire încărcare",
+	"new-request-form.attachments.upload-error-description": "A apărut o eroare la încărcarea {{fileName}}. Încercați din nou sau încărcați un alt fișier.",
+	"new-request-form.attachments.upload-error-title": "Eroare de încărcare",
+	"new-request-form.attachments.uploading": "Se încarcă {{fileName}}",
+	"new-request-form.cc-field.container-label": "E-mailuri CC selectate",
+	"new-request-form.cc-field.email-added": "{{email}} a fost adăugată",
+	"new-request-form.cc-field.email-label": "{{email}} - Apăsați Backspace pentru a elimina",
+	"new-request-form.cc-field.email-removed": "{{email}} a fost eliminată",
+	"new-request-form.cc-field.emails-added": "{{emails}} au fost adăugate",
+	"new-request-form.cc-field.invalid-email": "Adresă de e-mail nevalidă",
+	"new-request-form.close-label": "Închidere",
+	"new-request-form.dropdown.empty-option": "Selectați o opțiune",
+	"new-request-form.parent-request-link": "Continuarea comunicării pentru solicitarea {{parentId}}",
+	"new-request-form.required-fields-info": "Câmpurile marcate cu un asterisc (*) sunt obligatorii.",
+	"new-request-form.submit": "Trimitere",
+	"new-request-form.suggested-articles": "Articole sugerate"
+};
+var updated_at$f = "2024-03-26T15:40:45Z";
+var ro = {
+	locale: locale$f,
+	rtl: rtl$f,
+	translations: translations$f,
+	updated_at: updated_at$f
+};
+
+var ro$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ro,
+  locale: locale$f,
+  rtl: rtl$f,
+  translations: translations$f,
+  updated_at: updated_at$f
+});
+
+var locale$e = "ru";
+var rtl$e = false;
+var translations$e = {
+	"new-request-form.answer-bot-modal.footer-content": "Если да, мы можем закрыть запрос {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Есть ли в этой статье ответ на вопрос?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Нет, мне нужна помощь",
+	"new-request-form.answer-bot-modal.request-closed": "Превосходно. Запрос закрыт.",
+	"new-request-form.answer-bot-modal.request-submitted": "Ваш запрос отправлен",
+	"new-request-form.answer-bot-modal.solve-error": "Ошибка при закрытии запроса",
+	"new-request-form.answer-bot-modal.solve-request": "Да, закрыть мой запрос",
+	"new-request-form.answer-bot-modal.title": "Пока вы ожидаете, есть ли в какой-то из этих статей ответ на ваш вопрос?",
+	"new-request-form.answer-bot-modal.view-article": "Просмотреть статью",
+	"new-request-form.attachments.choose-file-label": "Выберите файл или перетащите его сюда",
+	"new-request-form.attachments.drop-files-label": "Перетащите файлы сюда",
+	"new-request-form.attachments.remove-file": "Удалить файл",
+	"new-request-form.attachments.stop-upload": "Остановить выкладывание",
+	"new-request-form.attachments.upload-error-description": "Ошибка при выкладывании {{fileName}}. Повторите попытку или выложите другой файл.",
+	"new-request-form.attachments.upload-error-title": "Ошибка выкладывания",
+	"new-request-form.attachments.uploading": "Выкладывание {{fileName}}",
+	"new-request-form.cc-field.container-label": "Выбранные письма для копии",
+	"new-request-form.cc-field.email-added": "Адрес {{email}} добавлен",
+	"new-request-form.cc-field.email-label": "{{email}} — нажмите клавишу Backspace для удаления",
+	"new-request-form.cc-field.email-removed": "Адрес {{email}} удален",
+	"new-request-form.cc-field.emails-added": "Добавлены адреса {{emails}}",
+	"new-request-form.cc-field.invalid-email": "Недействительный адрес электронной почты",
+	"new-request-form.close-label": "Закрыть",
+	"new-request-form.dropdown.empty-option": "Выберите вариант",
+	"new-request-form.parent-request-link": "Дополнение к запросу {{parentId}}",
+	"new-request-form.required-fields-info": "Помеченные звездочкой (*) поля обязательны для заполнения.",
+	"new-request-form.submit": "Отправить",
+	"new-request-form.suggested-articles": "Предложенные статьи"
+};
+var updated_at$e = "2024-03-26T16:10:57Z";
+var ru = {
+	locale: locale$e,
+	rtl: rtl$e,
+	translations: translations$e,
+	updated_at: updated_at$e
+};
+
+var ru$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ru,
+  locale: locale$e,
+  rtl: rtl$e,
+  translations: translations$e,
+  updated_at: updated_at$e
+});
+
+var locale$d = "sk";
+var rtl$d = false;
+var translations$d = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$d = "2024-03-19T17:07:01Z";
+var sk = {
+	locale: locale$d,
+	rtl: rtl$d,
+	translations: translations$d,
+	updated_at: updated_at$d
+};
+
+var sk$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: sk,
+  locale: locale$d,
+  rtl: rtl$d,
+  translations: translations$d,
+  updated_at: updated_at$d
+});
+
+var locale$c = "sl";
+var rtl$c = false;
+var translations$c = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$c = "2024-03-19T17:00:11Z";
+var sl = {
+	locale: locale$c,
+	rtl: rtl$c,
+	translations: translations$c,
+	updated_at: updated_at$c
+};
+
+var sl$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: sl,
+  locale: locale$c,
+  rtl: rtl$c,
+  translations: translations$c,
+  updated_at: updated_at$c
+});
+
+var locale$b = "sq";
+var rtl$b = false;
+var translations$b = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$b = "2023-10-25T20:34:57Z";
+var sq = {
+	locale: locale$b,
+	rtl: rtl$b,
+	translations: translations$b,
+	updated_at: updated_at$b
+};
+
+var sq$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: sq,
+  locale: locale$b,
+  rtl: rtl$b,
+  translations: translations$b,
+  updated_at: updated_at$b
+});
+
+var locale$a = "sr-me";
+var rtl$a = false;
+var translations$a = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$a = "2024-03-19T17:07:49Z";
+var srMe = {
+	locale: locale$a,
+	rtl: rtl$a,
+	translations: translations$a,
+	updated_at: updated_at$a
+};
+
+var srMe$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: srMe,
+  locale: locale$a,
+  rtl: rtl$a,
+  translations: translations$a,
+  updated_at: updated_at$a
+});
+
+var locale$9 = "sr";
+var rtl$9 = false;
+var translations$9 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$9 = "2024-03-19T17:07:01Z";
+var sr = {
+	locale: locale$9,
+	rtl: rtl$9,
+	translations: translations$9,
+	updated_at: updated_at$9
+};
+
+var sr$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: sr,
+  locale: locale$9,
+  rtl: rtl$9,
+  translations: translations$9,
+  updated_at: updated_at$9
+});
+
+var locale$8 = "sv";
+var rtl$8 = false;
+var translations$8 = {
+	"new-request-form.answer-bot-modal.footer-content": "Om den gör det kan vi stänga din förfrågan {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Besvarar denna artikel din fråga?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Nej, jag behöver hjälp",
+	"new-request-form.answer-bot-modal.request-closed": "Utmärkt. Din förfrågan har stängts.",
+	"new-request-form.answer-bot-modal.request-submitted": "Din förfrågan har skickats in",
+	"new-request-form.answer-bot-modal.solve-error": "Ett fel inträffade när din förfrågan stängdes",
+	"new-request-form.answer-bot-modal.solve-request": "Ja, stäng min förfrågan",
+	"new-request-form.answer-bot-modal.title": "Medan du väntar, besvarar någon av dessa artiklar din fråga?",
+	"new-request-form.answer-bot-modal.view-article": "Visa artikel",
+	"new-request-form.attachments.choose-file-label": "Välj en fil eller dra och släpp den här",
+	"new-request-form.attachments.drop-files-label": "Släpp filer här",
+	"new-request-form.attachments.remove-file": "Ta bort fil",
+	"new-request-form.attachments.stop-upload": "Stoppa uppladdning",
+	"new-request-form.attachments.upload-error-description": "Ett fel inträffade vid uppladdning av {{fileName}}. Försök igen eller ladda upp en annan fil.",
+	"new-request-form.attachments.upload-error-title": "Uppladdningsfel",
+	"new-request-form.attachments.uploading": "Laddar upp {{fileName}}",
+	"new-request-form.cc-field.container-label": "Valda kopierade e-postmeddelanden",
+	"new-request-form.cc-field.email-added": "{{email}} har lagts till",
+	"new-request-form.cc-field.email-label": "{{email}} – Tryck på backstegtangenten för att ta bort",
+	"new-request-form.cc-field.email-removed": "{{email}} har tagits bort",
+	"new-request-form.cc-field.emails-added": "{{emails}} har lagts till",
+	"new-request-form.cc-field.invalid-email": "Ogiltig e-postadress",
+	"new-request-form.close-label": "Stäng",
+	"new-request-form.dropdown.empty-option": "Välj ett alternativ",
+	"new-request-form.parent-request-link": "Uppföljning av förfrågan {{parentId}}",
+	"new-request-form.required-fields-info": "Fält markerade med en asterisk (*) är obligatoriska.",
+	"new-request-form.submit": "Skicka in",
+	"new-request-form.suggested-articles": "Föreslagna artiklar"
+};
+var updated_at$8 = "2024-03-26T15:42:16Z";
+var sv = {
+	locale: locale$8,
+	rtl: rtl$8,
+	translations: translations$8,
+	updated_at: updated_at$8
+};
+
+var sv$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: sv,
+  locale: locale$8,
+  rtl: rtl$8,
+  translations: translations$8,
+  updated_at: updated_at$8
+});
+
+var locale$7 = "th";
+var rtl$7 = false;
+var translations$7 = {
+	"new-request-form.answer-bot-modal.footer-content": "หากใช่ เราจะสามารถปิดคำร้องขอ {{requestId}} ของคุณได้",
+	"new-request-form.answer-bot-modal.footer-title": "บทความนี้ได้ตอบข้อสงสัยของคุณหรือไม่",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "ไม่ ฉันต้องการความช่วยเหลือ",
+	"new-request-form.answer-bot-modal.request-closed": "ยอดเลย คำร้องขอของคุณปิดลงแล้ว",
+	"new-request-form.answer-bot-modal.request-submitted": "ส่งคำร้องขอของคุณเรียบร้อยแล้ว",
+	"new-request-form.answer-bot-modal.solve-error": "เกิดข้อผิดพลาดในการปิดคําร้องขอของคุณ",
+	"new-request-form.answer-bot-modal.solve-request": "ใช่ ปิดคำร้องขอของฉัน",
+	"new-request-form.answer-bot-modal.title": "ขณะที่กำลังรอ บทความเหล่านี้ตอบข้อสงสัยของคุณหรือไม่",
+	"new-request-form.answer-bot-modal.view-article": "ดูบทความ",
+	"new-request-form.attachments.choose-file-label": "เลือกไฟล์หรือลากแล้ววางที่นี่",
+	"new-request-form.attachments.drop-files-label": "วางไฟล์ที่นี่",
+	"new-request-form.attachments.remove-file": "ลบไฟล์ออก",
+	"new-request-form.attachments.stop-upload": "หยุดการอัปโหลด",
+	"new-request-form.attachments.upload-error-description": "เกิดข้อผิดพลาดในการอัปโหลด {{fileName}} ลองอีกครั้งหรืออัปโหลดไฟล์อื่น",
+	"new-request-form.attachments.upload-error-title": "เกิดข้อผิดพลาดในการอัปโหลด",
+	"new-request-form.attachments.uploading": "กำลังอัปโหลด {{fileName}}",
+	"new-request-form.cc-field.container-label": "อีเมล สำเนาถึง ที่เลือก",
+	"new-request-form.cc-field.email-added": "{{email}} ถูกเพิ่มแล้ว",
+	"new-request-form.cc-field.email-label": "{{email}} - กด Backspace เพื่อลบ",
+	"new-request-form.cc-field.email-removed": "{{email}} ถูกลบออกแล้ว",
+	"new-request-form.cc-field.emails-added": "{{emails}} ถูกเพิ่มแล้ว",
+	"new-request-form.cc-field.invalid-email": "ที่อยู่อีเมลไม่ถูกต้อง",
+	"new-request-form.close-label": "ปิด",
+	"new-request-form.dropdown.empty-option": "เลือกตัวเลือก",
+	"new-request-form.parent-request-link": "ติดตามคําร้องขอ {{parentId}}",
+	"new-request-form.required-fields-info": "ต้องกรองช่องที่มีเครื่องหมายดอกจัน (*)",
+	"new-request-form.submit": "ส่ง",
+	"new-request-form.suggested-articles": "บทความที่แนะนำ"
+};
+var updated_at$7 = "2024-03-26T15:42:59Z";
+var th = {
+	locale: locale$7,
+	rtl: rtl$7,
+	translations: translations$7,
+	updated_at: updated_at$7
+};
+
+var th$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: th,
+  locale: locale$7,
+  rtl: rtl$7,
+  translations: translations$7,
+  updated_at: updated_at$7
+});
+
+var locale$6 = "tr";
+var rtl$6 = false;
+var translations$6 = {
+	"new-request-form.answer-bot-modal.footer-content": "Yanıtlıyorsa, bu son talebinizi kapatabiliriz {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Bu makale sorunuzu yanıtlıyor mu?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Hayır, yardıma ihtiyacım var",
+	"new-request-form.answer-bot-modal.request-closed": "Güzel! Talebiniz kapatıldı.",
+	"new-request-form.answer-bot-modal.request-submitted": "Talebiniz başarıyla gönderildi",
+	"new-request-form.answer-bot-modal.solve-error": "Talebiniz kapatılırken bir hata oluştu",
+	"new-request-form.answer-bot-modal.solve-request": "Evet, talebimi kapat",
+	"new-request-form.answer-bot-modal.title": "Siz beklerken soralım: Bu makalelerden herhangi biri sorunuza yanıtladı mı?",
+	"new-request-form.answer-bot-modal.view-article": "Makaleyi görüntüle",
+	"new-request-form.attachments.choose-file-label": "Bir dosya seçin veya buraya sürükleyip bırakın",
+	"new-request-form.attachments.drop-files-label": "Dosyaları buraya bırakın",
+	"new-request-form.attachments.remove-file": "Dosyayı kaldır",
+	"new-request-form.attachments.stop-upload": "Karşıya yüklemeyi durdur",
+	"new-request-form.attachments.upload-error-description": "{{fileName}} karşıya yüklenirken bir hata oluştu. Yeniden deneyin veya başka bir dosya yükleyin.",
+	"new-request-form.attachments.upload-error-title": "Karşıya yükleme hatası",
+	"new-request-form.attachments.uploading": "{{fileName}} karşıya yükleniyor",
+	"new-request-form.cc-field.container-label": "Seçilen bilgi e-postası",
+	"new-request-form.cc-field.email-added": "{{email}} eklendi",
+	"new-request-form.cc-field.email-label": "{{email}} - Kaldırmak için Geri tuşuna basın",
+	"new-request-form.cc-field.email-removed": "{{email}} kaldırıldı",
+	"new-request-form.cc-field.emails-added": "{{emails}} eklendi",
+	"new-request-form.cc-field.invalid-email": "Geçersiz e-posta adresi",
+	"new-request-form.close-label": "Kapat",
+	"new-request-form.dropdown.empty-option": "Bir seçim yapın",
+	"new-request-form.parent-request-link": "{{parentId}} talep etmek için ekleyin",
+	"new-request-form.required-fields-info": "Yıldız işareti (*) ile işaretlenen alanların doldurulması zorunludur.",
+	"new-request-form.submit": "Gönder",
+	"new-request-form.suggested-articles": "Önerilen makaleler"
+};
+var updated_at$6 = "2024-03-26T15:43:44Z";
+var tr = {
+	locale: locale$6,
+	rtl: rtl$6,
+	translations: translations$6,
+	updated_at: updated_at$6
+};
+
+var tr$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: tr,
+  locale: locale$6,
+  rtl: rtl$6,
+  translations: translations$6,
+  updated_at: updated_at$6
+});
+
+var locale$5 = "uk";
+var rtl$5 = false;
+var translations$5 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$5 = "2024-03-19T17:23:18Z";
+var uk = {
+	locale: locale$5,
+	rtl: rtl$5,
+	translations: translations$5,
+	updated_at: updated_at$5
+};
+
+var uk$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: uk,
+  locale: locale$5,
+  rtl: rtl$5,
+  translations: translations$5,
+  updated_at: updated_at$5
+});
+
+var locale$4 = "ur";
+var rtl$4 = true;
+var translations$4 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$4 = "2023-10-12T22:15:56Z";
+var ur = {
+	locale: locale$4,
+	rtl: rtl$4,
+	translations: translations$4,
+	updated_at: updated_at$4
+};
+
+var ur$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: ur,
+  locale: locale$4,
+  rtl: rtl$4,
+  translations: translations$4,
+  updated_at: updated_at$4
+});
+
+var locale$3 = "uz";
+var rtl$3 = false;
+var translations$3 = {
+	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
+	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
+	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
+	"new-request-form.answer-bot-modal.solve-error": "There was an error closing your request",
+	"new-request-form.answer-bot-modal.solve-request": "Yes, close my request",
+	"new-request-form.answer-bot-modal.title": "While you wait, do any of these articles answer your question?",
+	"new-request-form.answer-bot-modal.view-article": "View article",
+	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
+	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
+	"new-request-form.attachments.upload-error-title": "Upload error",
+	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
+	"new-request-form.cc-field.container-label": "Selected CC emails",
+	"new-request-form.cc-field.email-added": "{{email}} has been added",
+	"new-request-form.cc-field.email-label": "{{email}} - Press Backspace to remove",
+	"new-request-form.cc-field.email-removed": "{{email}} has been removed",
+	"new-request-form.cc-field.emails-added": "{{emails}} have been added",
+	"new-request-form.cc-field.invalid-email": "Invalid email address",
+	"new-request-form.close-label": "Close",
+	"new-request-form.dropdown.empty-option": "Select an option",
+	"new-request-form.parent-request-link": "Follow-up to request {{parentId}}",
+	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
+	"new-request-form.submit": "Submit",
+	"new-request-form.suggested-articles": "Suggested articles"
+};
+var updated_at$3 = "2024-03-19T17:24:03Z";
+var uz = {
+	locale: locale$3,
+	rtl: rtl$3,
+	translations: translations$3,
+	updated_at: updated_at$3
+};
+
+var uz$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: uz,
+  locale: locale$3,
+  rtl: rtl$3,
+  translations: translations$3,
+  updated_at: updated_at$3
+});
+
+var locale$2 = "vi";
+var rtl$2 = false;
+var translations$2 = {
+	"new-request-form.answer-bot-modal.footer-content": "Nếu có, chúng tôi có thể đóng yêu cầu hiện tại {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "Bài viết này có giải đáp được câu hỏi của bạn không?",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "Không, tôi cần trợ giúp",
+	"new-request-form.answer-bot-modal.request-closed": "Tuyệt. Yêu cầu đã được đóng lại.",
+	"new-request-form.answer-bot-modal.request-submitted": "Yêu cầu của bạn đã được gửi thành công",
+	"new-request-form.answer-bot-modal.solve-error": "Đã xảy ra lỗi khi đóng yêu cầu của bạn",
+	"new-request-form.answer-bot-modal.solve-request": "Có, đóng yêu cầu của tôi",
+	"new-request-form.answer-bot-modal.title": "Trong thời gian chờ đợi, có bài viết nào trong số các bài viết này giải đáp được thắc mắc của bạn không?",
+	"new-request-form.answer-bot-modal.view-article": "Xem bài viết",
+	"new-request-form.attachments.choose-file-label": "Chọn một tập tin hoặc kéo và thả ở đây",
+	"new-request-form.attachments.drop-files-label": "Thả tập tin vào đây",
+	"new-request-form.attachments.remove-file": "Xóa tập tin",
+	"new-request-form.attachments.stop-upload": "Dừng tải lên",
+	"new-request-form.attachments.upload-error-description": "Đã xảy ra lỗi khi tải lên {{fileName}}. Hãy thử lại hoặc tải lên một tệp khác.",
+	"new-request-form.attachments.upload-error-title": "Lỗi tải lên",
+	"new-request-form.attachments.uploading": "Đang tải lên {{fileName}}",
+	"new-request-form.cc-field.container-label": "Email CC đã chọn",
+	"new-request-form.cc-field.email-added": "{{email}} đã được thêm",
+	"new-request-form.cc-field.email-label": "{{email}} - Nhấn Backspace để loại bỏ",
+	"new-request-form.cc-field.email-removed": "{{email}} đã bị loại bỏ",
+	"new-request-form.cc-field.emails-added": "{{emails}} đã được thêm",
+	"new-request-form.cc-field.invalid-email": "Địa chỉ email không hợp lệ",
+	"new-request-form.close-label": "Đóng",
+	"new-request-form.dropdown.empty-option": "Chọn một tùy chọn",
+	"new-request-form.parent-request-link": "Theo dõi để yêu cầu {{parentId}}",
+	"new-request-form.required-fields-info": "Các trường đánh dấu sao (*) là bắt buộc.",
+	"new-request-form.submit": "Gửi",
+	"new-request-form.suggested-articles": "Bài viết được đề xuất"
+};
+var updated_at$2 = "2024-03-26T15:44:27Z";
+var vi = {
+	locale: locale$2,
+	rtl: rtl$2,
+	translations: translations$2,
+	updated_at: updated_at$2
+};
+
+var vi$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: vi,
+  locale: locale$2,
+  rtl: rtl$2,
+  translations: translations$2,
+  updated_at: updated_at$2
+});
+
+var locale$1 = "zh-cn";
+var rtl$1 = false;
+var translations$1 = {
+	"new-request-form.answer-bot-modal.footer-content": "如果是的话，我们将关闭最近的请求 {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "此文章解答该问题了吗？",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "没有，我需要帮助",
+	"new-request-form.answer-bot-modal.request-closed": "很好。此请求已关闭。",
+	"new-request-form.answer-bot-modal.request-submitted": "您的请求已成功提交",
+	"new-request-form.answer-bot-modal.solve-error": "关闭您的请求时出错",
+	"new-request-form.answer-bot-modal.solve-request": "解答了，关闭我的请求",
+	"new-request-form.answer-bot-modal.title": "在等待的同时，看看这些文章中有没有可以解答该疑问的？",
+	"new-request-form.answer-bot-modal.view-article": "查看文章",
+	"new-request-form.attachments.choose-file-label": "选择文件或拖放到此处",
+	"new-request-form.attachments.drop-files-label": "将文件放在此处",
+	"new-request-form.attachments.remove-file": "移除文件",
+	"new-request-form.attachments.stop-upload": "停止上传",
+	"new-request-form.attachments.upload-error-description": "上传 {{fileName}} 时出错。请重试或上传另一个文件。",
+	"new-request-form.attachments.upload-error-title": "上传错误",
+	"new-request-form.attachments.uploading": "上传 {{fileName}}",
+	"new-request-form.cc-field.container-label": "选定的抄送电邮",
+	"new-request-form.cc-field.email-added": "已添加 {{email}}",
+	"new-request-form.cc-field.email-label": "{{email}} - 按 Backspace 键移除",
+	"new-request-form.cc-field.email-removed": "已移除 {{email}}",
+	"new-request-form.cc-field.emails-added": "已添加 {{emails}}",
+	"new-request-form.cc-field.invalid-email": "无效电邮地址",
+	"new-request-form.close-label": "关闭",
+	"new-request-form.dropdown.empty-option": "选择一个选项",
+	"new-request-form.parent-request-link": "跟进请求 {{parentId}}",
+	"new-request-form.required-fields-info": "标有星号 (*) 的字段是必填字段。",
+	"new-request-form.submit": "提交",
+	"new-request-form.suggested-articles": "推荐文章"
+};
+var updated_at$1 = "2024-03-26T15:45:10Z";
+var zhCn = {
+	locale: locale$1,
+	rtl: rtl$1,
+	translations: translations$1,
+	updated_at: updated_at$1
+};
+
+var zhCn$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: zhCn,
+  locale: locale$1,
+  rtl: rtl$1,
+  translations: translations$1,
+  updated_at: updated_at$1
+});
+
+var locale = "zh-tw";
+var rtl = false;
+var translations = {
+	"new-request-form.answer-bot-modal.footer-content": "若是，我們可關閉近期的請求 {{requestId}}",
+	"new-request-form.answer-bot-modal.footer-title": "此文章是否已回答該問題？",
+	"new-request-form.answer-bot-modal.mark-irrelevant": "不，我仍需要幫助",
+	"new-request-form.answer-bot-modal.request-closed": "太好了。此請求已關閉。",
+	"new-request-form.answer-bot-modal.request-submitted": "已成功提交請求",
+	"new-request-form.answer-bot-modal.solve-error": "關閉您的請求時發生錯誤",
+	"new-request-form.answer-bot-modal.solve-request": "是，關閉我的請求",
+	"new-request-form.answer-bot-modal.title": "在等待時，這些文章是否已回答該疑問？",
+	"new-request-form.answer-bot-modal.view-article": "檢視文章",
+	"new-request-form.attachments.choose-file-label": "選擇檔案，或將檔案拖放到這裡",
+	"new-request-form.attachments.drop-files-label": "將檔案放置在此處",
+	"new-request-form.attachments.remove-file": "移除檔案",
+	"new-request-form.attachments.stop-upload": "停止上傳",
+	"new-request-form.attachments.upload-error-description": "上傳 {{fileName}} 時發生錯誤。請再試一次，或上傳另一個檔案。",
+	"new-request-form.attachments.upload-error-title": "上傳錯誤",
+	"new-request-form.attachments.uploading": "正在上傳 {{fileName}}",
+	"new-request-form.cc-field.container-label": "已選取副本電子郵件地址",
+	"new-request-form.cc-field.email-added": "已新增 {{email}}",
+	"new-request-form.cc-field.email-label": "{{email}}：按 Backspace 鍵移除",
+	"new-request-form.cc-field.email-removed": "已移除 {{email}}",
+	"new-request-form.cc-field.emails-added": "已新增 {{emails}}",
+	"new-request-form.cc-field.invalid-email": "無效電子郵件地址",
+	"new-request-form.close-label": "關閉",
+	"new-request-form.dropdown.empty-option": "選取一個選項",
+	"new-request-form.parent-request-link": "請求 {{parentId}} 的後續跟進",
+	"new-request-form.required-fields-info": "標有星號 (*) 的欄位為必填欄位。",
+	"new-request-form.submit": "提交",
+	"new-request-form.suggested-articles": "推薦文章"
+};
+var updated_at = "2024-03-26T15:45:54Z";
+var zhTw = {
+	locale: locale,
+	rtl: rtl,
+	translations: translations,
+	updated_at: updated_at
+};
+
+var zhTw$1 = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  default: zhTw,
+  locale: locale,
+  rtl: rtl,
+  translations: translations,
+  updated_at: updated_at
+});
+
+export { kk$1 as $, enXObsolete$1 as A, enXPseudo$1 as B, enXTest$1 as C, es419$1 as D, esEs$1 as E, es$1 as F, et$1 as G, eu$1 as H, faAf$1 as I, fa$1 as J, fi$1 as K, fil$1 as L, fo$1 as M, frCa$1 as N, fr$1 as O, ga$1 as P, he$1 as Q, hi$1 as R, hr$1 as S, hu$1 as T, hy$1 as U, id$1 as V, is$1 as W, itCh$1 as X, it$1 as Y, ja$1 as Z, ka$1 as _, af$1 as a, klDk$1 as a0, ko$1 as a1, ku$1 as a2, lt$1 as a3, lv$1 as a4, mk$1 as a5, mn$1 as a6, ms$1 as a7, mt$1 as a8, my$1 as a9, nlBe$1 as aa, nl$1 as ab, no$1 as ac, pl$1 as ad, ptBr$1 as ae, pt$1 as af, ro$1 as ag, ru$1 as ah, sk$1 as ai, sl$1 as aj, sq$1 as ak, srMe$1 as al, sr$1 as am, sv$1 as an, th$1 as ao, tr$1 as ap, uk$1 as aq, ur$1 as ar, uz$1 as as, vi$1 as at, zhCn$1 as au, zhTw$1 as av, arXPseudo$1 as b, ar$1 as c, az$1 as d, be$1 as e, bg$1 as f, bn$1 as g, bs$1 as h, ca$1 as i, cs$1 as j, cy$1 as k, da$1 as l, deXInformal$1 as m, de$1 as n, el$1 as o, en001$1 as p, en150$1 as q, enAu$1 as r, enCa$1 as s, enGb$1 as t, enMy$1 as u, enPh$1 as v, enSe$1 as w, enUs$1 as x, enXDev$1 as y, enXKeys$1 as z };

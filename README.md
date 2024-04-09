@@ -115,12 +115,6 @@ I18n is implemented in the React components using the [react-i18next](https://re
 
 We also added some tools to be able to integrate the library with the internal translation system used at Zendesk. If you are building a custom theme and you want to provide your own translations you can refer to the library documentation to setup the loading of your translations.
 
-### Locale mapping
-
-Help Center [supports](https://support.zendesk.com/hc/en-us/articles/4408821324826-Zendesk-language-support-by-product#h_01EYXD488X3XK23TG9VPG0W6KS) some non-standard locales, which are variants of a parent standard (CLDR) locale. When using a non-standard locale, we need to get the parent locale for loading the translation file and using the standard Intl API. We provide a `getCldrLocale` function that returns the parent locale for a mapped locale, which uses a JSON generated from the `bin/create-locale-mapping.mjs` script.
-
-If you are building a custom marketplace theme or your Help Center is using some non-standard locale, you'll need to use this function as well to ensure that the correct locale is set for all available languages.
-
 ### Integration with the Zendesk translation system
 
 #### Adding translations strings
@@ -157,13 +151,9 @@ The `bin/extract-strings.mjs` script can be used to extract translation strings 
 
 The script wraps the `i18next-parser` tool and converts its output to the YAML format used internally. It is possible to use a similar approach in a custom theme, either using the standard `i18next-parser` output as the source for translations or implementing a custom transformer.
 
-#### Loading of Zendesk translations
+#### Updating translation files
 
-Our default translations are published on the Zendesk Static Assets CDN. Each translation package has a manifest (e.g. `https://static.zdassets.com/translations/new-request-form/manifest.json`) that contains a link to a JSON file for each locale.
-
-The `bin/update-translations-manifest.mjs` fetches the translations manifest, and it creates a simplified JSON manifest with the URL mapping for each locale. This mapping is then bundled with the source code. In this way:
-- We can fetch the right translation file at runtime with one HTTP call instead of two
-- We have more control over when we want to update the translation files, instead of always fetching the latest available on the CDN
+Use the `bin/update-module-translations.mjs` to download the latest translations for a module. All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
 
 # Accessibility testing
 

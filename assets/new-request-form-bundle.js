@@ -1203,128 +1203,14 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, parentIdPat
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }
 
-var baseUrl = "https://static.zdassets.com/translations";
-var files = {
-	af: "/new-request-form/af.3148abfe385c6550fbc5e4e8c626d30d.json",
-	ar: "/new-request-form/ar.23e8e2a08d0be895566eec401ab2f379.json",
-	"ar-x-pseudo": "/new-request-form/ar-x-pseudo.5d492e20a22d4fd276b15d312d351c3e.json",
-	az: "/new-request-form/az.6ba2181919b89aa505aa52936bf2daca.json",
-	be: "/new-request-form/be.f52d8dee1fcfe6c8fde3c6be8ef81c7d.json",
-	bg: "/new-request-form/bg.e4b6473086af3e20fae1a2881cdda384.json",
-	bn: "/new-request-form/bn.cf5044201104d8c424975163f9ab0e19.json",
-	bs: "/new-request-form/bs.52b894414d7efd15af36b9e3f3ae9273.json",
-	ca: "/new-request-form/ca.f2b6f9e25d8a0bca4981b73eabb87208.json",
-	cs: "/new-request-form/cs.c4cc570786eef8492d0be4bc807dced3.json",
-	cy: "/new-request-form/cy.23914f726d70fddcff7ba18afa2b6bf4.json",
-	da: "/new-request-form/da.8d3a1fa5b85b8655124b1ba25058e25c.json",
-	de: "/new-request-form/de.6b0e747003255159eeac6d7cada0138f.json",
-	"de-x-informal": "/new-request-form/de-x-informal.cc96db0b08bd0f8c8f45ceae220cb188.json",
-	el: "/new-request-form/el.3d44e3c2d4bbbe10fcfdb5c2bdc85c48.json",
-	"en-001": "/new-request-form/en-001.f2252b68d9c4579a765ba85a5eb03a36.json",
-	"en-150": "/new-request-form/en-150.4c6c23c83be6d30223a5eed2c9e6c81f.json",
-	"en-us": "/new-request-form/en-US.415457a48563b8c11fdb71f5063f7a6e.json",
-	"en-au": "/new-request-form/en-au.d2cfe8891b8a90a8085e98c279de7c5b.json",
-	"en-ca": "/new-request-form/en-ca.eafe0918915e55c87347f46dae3ec640.json",
-	"en-gb": "/new-request-form/en-gb.b176884668b4df0ea20bd78fa1d24bd4.json",
-	"en-my": "/new-request-form/en-my.0905b7e041f7f2acf1d518fe3bf030f8.json",
-	"en-ph": "/new-request-form/en-ph.06d5bd15f14ad07232a5f663cb5ee9e2.json",
-	"en-se": "/new-request-form/en-se.ab88f1a29a6b041b9fe727834da2065f.json",
-	"en-x-dev": "/new-request-form/en-x-dev.705cae101b8bcb462565fd85e3d393c4.json",
-	"en-x-keys": "/new-request-form/en-x-keys.e95b7337e34a81473954b23932befeb7.json",
-	"en-x-obsolete": "/new-request-form/en-x-obsolete.bfb9807604f26ac8d3cf5f2bacc6418f.json",
-	"en-x-pseudo": "/new-request-form/en-x-pseudo.f9a7973f8d0ab7ad4625f88393a8047d.json",
-	"en-x-test": "/new-request-form/en-x-test.43bdc5858da518be62617889d96cc0f0.json",
-	es: "/new-request-form/es.31558a09732344ea76cfb83585798499.json",
-	"es-419": "/new-request-form/es-419.d6491e7e2af25500c0fcbf0b29f8bf3b.json",
-	"es-es": "/new-request-form/es-es.8c84ca2f8a4729903c92d86f86524ef9.json",
-	et: "/new-request-form/et.590e1e1a6cf333a323e34e06eb8dbae0.json",
-	eu: "/new-request-form/eu.abf7fadaff02f1230f548476e71686e3.json",
-	fa: "/new-request-form/fa.a425b3bac48112efea3e6a7c77186d08.json",
-	"fa-af": "/new-request-form/fa-AF.06fef8d6a27a91ddda2aebfdc696b781.json",
-	fi: "/new-request-form/fi.5631a0f712dfbb515a37e93a429acc51.json",
-	fil: "/new-request-form/fil.3241831dd85e50a2e0c95d782aee01cd.json",
-	fo: "/new-request-form/fo.e739a1936af13785e46f5bf84073a9f8.json",
-	fr: "/new-request-form/fr.c9d60dbedf317a770c8b25b36c77421b.json",
-	"fr-ca": "/new-request-form/fr-ca.fecef3d75423eb04f4c40fc89eaae97d.json",
-	ga: "/new-request-form/ga.fbd7004c9779b1c33855d1c61d4ad864.json",
-	he: "/new-request-form/he.8532664f57eeea74bddd6eb5dd076332.json",
-	hi: "/new-request-form/hi.97c5dce0a9dbefcb6e0187eb74b27620.json",
-	hr: "/new-request-form/hr.545b2e9f593208bffd5467dff9b276fe.json",
-	hu: "/new-request-form/hu.f61192a81aa3c679537e4cfbf9bd1645.json",
-	hy: "/new-request-form/hy.9a1848a3a5b622e786923181bfd188c7.json",
-	id: "/new-request-form/id.5b82e67a78628073578933a44edee9a6.json",
-	is: "/new-request-form/is.80917afd44d0997538e4d0fdf62ee440.json",
-	it: "/new-request-form/it.c72343f4aaf22aaf2786a9329235adce.json",
-	"it-ch": "/new-request-form/it-ch.7fbe9eac9a79b9320a3110560cc7fe2c.json",
-	ja: "/new-request-form/ja.d7db3d910ad1e5f6d3284e955afa98aa.json",
-	ka: "/new-request-form/ka.8315995a7fa99a83f4de8b49f4879a1f.json",
-	kk: "/new-request-form/kk.66ad98a0a1700997a69d341e62043c87.json",
-	"kl-dk": "/new-request-form/kl-dk.50bc978e62a681721793753310125f18.json",
-	ko: "/new-request-form/ko.1fed79fc73a7052da775f25b49ac2d8d.json",
-	ku: "/new-request-form/ku.0d36901056e1f0b24339b1d7803a0557.json",
-	lt: "/new-request-form/lt.185d27f6e0c0bbf21812f12f7e074d42.json",
-	lv: "/new-request-form/lv.e969ec351590b7440010a82f8834c557.json",
-	mk: "/new-request-form/mk.0ac754ab59fa3f2649c44d7911bf7bf4.json",
-	mn: "/new-request-form/mn.f8b7fb07773488b5102276496412bd9d.json",
-	ms: "/new-request-form/ms.571a77abd36828e2b6cc4d43b0eb28db.json",
-	mt: "/new-request-form/mt.abb7ae7b6cec313832849693ed82d3db.json",
-	my: "/new-request-form/my.aed66814bd2383b44a437d59cc19153c.json",
-	nl: "/new-request-form/nl.cc0bbc80aabadc852675bea0f82aa62b.json",
-	"nl-be": "/new-request-form/nl-be.0d2354bb7c3964fdb4b9f5bfd3ceface.json",
-	no: "/new-request-form/no.91afa7c5d2e7bae972b21dcdabc9ca45.json",
-	pl: "/new-request-form/pl.3bd338ed31b8d28e1b4101821ad4dbdf.json",
-	pt: "/new-request-form/pt.a926fecceb1e41e90b2bafb2ad80eb72.json",
-	"pt-br": "/new-request-form/pt-br.6ebbe498973a81139416b9210db3e742.json",
-	ro: "/new-request-form/ro.79c228da5fd5bac9d6cb08b0b00560d2.json",
-	ru: "/new-request-form/ru.227061eb7967ba628bb5bfa2118a56b0.json",
-	sk: "/new-request-form/sk.83eee50bee7b450069507aac5d977834.json",
-	sl: "/new-request-form/sl.d669d7b3968d8ad0d62c2325cb067818.json",
-	sq: "/new-request-form/sq.cbfa31ae14760624dee3e6d2beb0fed3.json",
-	sr: "/new-request-form/sr.0f09772dcb20343e59e1d617d1bd1a9a.json",
-	"sr-me": "/new-request-form/sr-me.f32d3c397a253b544721251b28c276ad.json",
-	sv: "/new-request-form/sv.4a472010565d0ce5de8e38932f7163fb.json",
-	th: "/new-request-form/th.9c6738b82bc1acaf396091c7d3a94df2.json",
-	tr: "/new-request-form/tr.37cba3919b296a975722bdc44d9269d7.json",
-	uk: "/new-request-form/uk.d0d5a0bee8c18990791f3510c02cd6fe.json",
-	ur: "/new-request-form/ur.76a3dca2953c592e0991fe84d1b73727.json",
-	uz: "/new-request-form/uz.491203ac69077976ae3526402137efa7.json",
-	vi: "/new-request-form/vi.1c6700912b722e40f649e8b628f15035.json",
-	"zh-cn": "/new-request-form/zh-cn.6d026145eb39ddab4eab08be5ad1ffd1.json",
-	"zh-tw": "/new-request-form/zh-tw.b39cc46bd8cac89de18cc183f7e9c5a1.json"
-};
-var translationsManifest = {
-	baseUrl: baseUrl,
-	files: files
-};
-
-async function loadTranslations(locale, manifest) {
+async function addZendeskTranslations(locale, dynamicImport) {
     try {
-        const BASE_URL = manifest.baseUrl;
-        const fileUrl = manifest.files[locale];
-        if (fileUrl === undefined) {
-            return {};
-        }
-        const content = await (await fetch(`${BASE_URL}${fileUrl}`)).json();
-        return content.translations;
+        const file = await dynamicImport();
+        instance.addResourceBundle(locale, "translation", file.translations);
     }
     catch (e) {
-        console.error("Error fetching translations", e);
-        return {};
+        console.error(`Cannot load translations for ${locale}`);
     }
-}
-/**
- * This function adds the translations published on the Zendesk CDN to i18next,
- * taking the base locale and a manifest as input.
- *
- * If you want to load your own translations you can use a different setup following the i18next
- * documentation.
- *
- * @param locale The base locale
- * @param manifest A manifest object containing the translations file URL for each base locale.
- */
-async function addZendeskTranslations(locale, manifest) {
-    const translations = await loadTranslations(locale, manifest);
-    instance.addResourceBundle(locale, "translation", translations);
 }
 
 function initI18next(locale) {
@@ -1342,10 +1228,105 @@ function initI18next(locale) {
     });
 }
 
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('new-request-form-translations-bundle').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('new-request-form-translations-bundle').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('new-request-form-translations-bundle').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('new-request-form-translations-bundle').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('new-request-form-translations-bundle').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('new-request-form-translations-bundle').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('new-request-form-translations-bundle').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('new-request-form-translations-bundle').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('new-request-form-translations-bundle').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('new-request-form-translations-bundle').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('new-request-form-translations-bundle').then(function (n) { return n.l; });
+    case './translations/locales/de-x-informal.json': return import('new-request-form-translations-bundle').then(function (n) { return n.m; });
+    case './translations/locales/de.json': return import('new-request-form-translations-bundle').then(function (n) { return n.n; });
+    case './translations/locales/el.json': return import('new-request-form-translations-bundle').then(function (n) { return n.o; });
+    case './translations/locales/en-001.json': return import('new-request-form-translations-bundle').then(function (n) { return n.p; });
+    case './translations/locales/en-150.json': return import('new-request-form-translations-bundle').then(function (n) { return n.q; });
+    case './translations/locales/en-au.json': return import('new-request-form-translations-bundle').then(function (n) { return n.r; });
+    case './translations/locales/en-ca.json': return import('new-request-form-translations-bundle').then(function (n) { return n.s; });
+    case './translations/locales/en-gb.json': return import('new-request-form-translations-bundle').then(function (n) { return n.t; });
+    case './translations/locales/en-my.json': return import('new-request-form-translations-bundle').then(function (n) { return n.u; });
+    case './translations/locales/en-ph.json': return import('new-request-form-translations-bundle').then(function (n) { return n.v; });
+    case './translations/locales/en-se.json': return import('new-request-form-translations-bundle').then(function (n) { return n.w; });
+    case './translations/locales/en-us.json': return import('new-request-form-translations-bundle').then(function (n) { return n.x; });
+    case './translations/locales/en-x-dev.json': return import('new-request-form-translations-bundle').then(function (n) { return n.y; });
+    case './translations/locales/en-x-keys.json': return import('new-request-form-translations-bundle').then(function (n) { return n.z; });
+    case './translations/locales/en-x-obsolete.json': return import('new-request-form-translations-bundle').then(function (n) { return n.A; });
+    case './translations/locales/en-x-pseudo.json': return import('new-request-form-translations-bundle').then(function (n) { return n.B; });
+    case './translations/locales/en-x-test.json': return import('new-request-form-translations-bundle').then(function (n) { return n.C; });
+    case './translations/locales/es-419.json': return import('new-request-form-translations-bundle').then(function (n) { return n.D; });
+    case './translations/locales/es-es.json': return import('new-request-form-translations-bundle').then(function (n) { return n.E; });
+    case './translations/locales/es.json': return import('new-request-form-translations-bundle').then(function (n) { return n.F; });
+    case './translations/locales/et.json': return import('new-request-form-translations-bundle').then(function (n) { return n.G; });
+    case './translations/locales/eu.json': return import('new-request-form-translations-bundle').then(function (n) { return n.H; });
+    case './translations/locales/fa-af.json': return import('new-request-form-translations-bundle').then(function (n) { return n.I; });
+    case './translations/locales/fa.json': return import('new-request-form-translations-bundle').then(function (n) { return n.J; });
+    case './translations/locales/fi.json': return import('new-request-form-translations-bundle').then(function (n) { return n.K; });
+    case './translations/locales/fil.json': return import('new-request-form-translations-bundle').then(function (n) { return n.L; });
+    case './translations/locales/fo.json': return import('new-request-form-translations-bundle').then(function (n) { return n.M; });
+    case './translations/locales/fr-ca.json': return import('new-request-form-translations-bundle').then(function (n) { return n.N; });
+    case './translations/locales/fr.json': return import('new-request-form-translations-bundle').then(function (n) { return n.O; });
+    case './translations/locales/ga.json': return import('new-request-form-translations-bundle').then(function (n) { return n.P; });
+    case './translations/locales/he.json': return import('new-request-form-translations-bundle').then(function (n) { return n.Q; });
+    case './translations/locales/hi.json': return import('new-request-form-translations-bundle').then(function (n) { return n.R; });
+    case './translations/locales/hr.json': return import('new-request-form-translations-bundle').then(function (n) { return n.S; });
+    case './translations/locales/hu.json': return import('new-request-form-translations-bundle').then(function (n) { return n.T; });
+    case './translations/locales/hy.json': return import('new-request-form-translations-bundle').then(function (n) { return n.U; });
+    case './translations/locales/id.json': return import('new-request-form-translations-bundle').then(function (n) { return n.V; });
+    case './translations/locales/is.json': return import('new-request-form-translations-bundle').then(function (n) { return n.W; });
+    case './translations/locales/it-ch.json': return import('new-request-form-translations-bundle').then(function (n) { return n.X; });
+    case './translations/locales/it.json': return import('new-request-form-translations-bundle').then(function (n) { return n.Y; });
+    case './translations/locales/ja.json': return import('new-request-form-translations-bundle').then(function (n) { return n.Z; });
+    case './translations/locales/ka.json': return import('new-request-form-translations-bundle').then(function (n) { return n._; });
+    case './translations/locales/kk.json': return import('new-request-form-translations-bundle').then(function (n) { return n.$; });
+    case './translations/locales/kl-dk.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a0; });
+    case './translations/locales/ko.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a1; });
+    case './translations/locales/ku.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a2; });
+    case './translations/locales/lt.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a3; });
+    case './translations/locales/lv.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a4; });
+    case './translations/locales/mk.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a5; });
+    case './translations/locales/mn.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a6; });
+    case './translations/locales/ms.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a7; });
+    case './translations/locales/mt.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a8; });
+    case './translations/locales/my.json': return import('new-request-form-translations-bundle').then(function (n) { return n.a9; });
+    case './translations/locales/nl-be.json': return import('new-request-form-translations-bundle').then(function (n) { return n.aa; });
+    case './translations/locales/nl.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ab; });
+    case './translations/locales/no.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ac; });
+    case './translations/locales/pl.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ad; });
+    case './translations/locales/pt-br.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ae; });
+    case './translations/locales/pt.json': return import('new-request-form-translations-bundle').then(function (n) { return n.af; });
+    case './translations/locales/ro.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ag; });
+    case './translations/locales/ru.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ah; });
+    case './translations/locales/sk.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ai; });
+    case './translations/locales/sl.json': return import('new-request-form-translations-bundle').then(function (n) { return n.aj; });
+    case './translations/locales/sq.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ak; });
+    case './translations/locales/sr-me.json': return import('new-request-form-translations-bundle').then(function (n) { return n.al; });
+    case './translations/locales/sr.json': return import('new-request-form-translations-bundle').then(function (n) { return n.am; });
+    case './translations/locales/sv.json': return import('new-request-form-translations-bundle').then(function (n) { return n.an; });
+    case './translations/locales/th.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ao; });
+    case './translations/locales/tr.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ap; });
+    case './translations/locales/uk.json': return import('new-request-form-translations-bundle').then(function (n) { return n.aq; });
+    case './translations/locales/ur.json': return import('new-request-form-translations-bundle').then(function (n) { return n.ar; });
+    case './translations/locales/uz.json': return import('new-request-form-translations-bundle').then(function (n) { return n.as; });
+    case './translations/locales/vi.json': return import('new-request-form-translations-bundle').then(function (n) { return n.at; });
+    case './translations/locales/zh-cn.json': return import('new-request-form-translations-bundle').then(function (n) { return n.au; });
+    case './translations/locales/zh-tw.json': return import('new-request-form-translations-bundle').then(function (n) { return n.av; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
 async function renderNewRequestForm(settings, props, container) {
     const { baseLocale } = props;
     initI18next(baseLocale);
-    await addZendeskTranslations(baseLocale, translationsManifest);
+    await addZendeskTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 
