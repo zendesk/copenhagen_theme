@@ -3,7 +3,7 @@ import type { Settings } from "../garden-theme/createTheme";
 import { createTheme, ThemeProviders } from "../garden-theme";
 import type { NewRequestFormProps } from "./NewRequestForm";
 import { NewRequestForm } from "./NewRequestForm";
-import { addZendeskTranslations, initI18next } from "../i18n";
+import { loadTranslations, initI18next } from "../i18n";
 
 export async function renderNewRequestForm(
   settings: Settings,
@@ -13,7 +13,7 @@ export async function renderNewRequestForm(
   const { baseLocale } = props;
 
   initI18next(baseLocale);
-  await addZendeskTranslations(
+  await loadTranslations(
     baseLocale,
     () => import(`./translations/locales/${baseLocale}.json`)
   );

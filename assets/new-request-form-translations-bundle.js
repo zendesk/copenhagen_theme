@@ -1,6 +1,4 @@
-var locale$1l = "af";
-var rtl$1l = false;
-var translations$1l = {
+var af = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -30,26 +28,13 @@ var translations$1l = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$1l = "2023-10-12T17:25:30Z";
-var af = {
-	locale: locale$1l,
-	rtl: rtl$1l,
-	translations: translations$1l,
-	updated_at: updated_at$1l
-};
 
 var af$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: af,
-  locale: locale$1l,
-  rtl: rtl$1l,
-  translations: translations$1l,
-  updated_at: updated_at$1l
+  default: af
 });
 
-var locale$1k = "ar-x-pseudo";
-var rtl$1k = true;
-var translations$1k = {
+var arXPseudo = {
 	"new-request-form.answer-bot-modal.footer-content": "[ผู้龍ḬḬϝ ḭḭṭ ḍṓṓḛḛṡ, ẁḛḛ ͼααṇ ͼḽṓṓṡḛḛ ẏẏṓṓṵṵṛ ṛḛḛͼḛḛṇṭ ṛḛḛʠṵṵḛḛṡṭ {{requestId}}龍ผู้]",
 	"new-request-form.answer-bot-modal.footer-title": "[ผู้龍Ḍṓṓḛḛṡ ṭḥḭḭṡ ααṛṭḭḭͼḽḛḛ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "[ผู้龍Ṅṓṓ, ḬḬ ṇḛḛḛḛḍ ḥḛḛḽṗ龍ผู้]",
@@ -79,26 +64,13 @@ var translations$1k = {
 	"new-request-form.submit": "[ผู้龍Ṣṵṵḅṃḭḭṭ龍ผู้]",
 	"new-request-form.suggested-articles": "[ผู้龍Ṣṵṵḡḡḛḛṡṭḛḛḍ ααṛṭḭḭͼḽḛḛṡ龍ผู้]"
 };
-var updated_at$1k = "2022-03-30T23:43:36Z";
-var arXPseudo = {
-	locale: locale$1k,
-	rtl: rtl$1k,
-	translations: translations$1k,
-	updated_at: updated_at$1k
-};
 
 var arXPseudo$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: arXPseudo,
-  locale: locale$1k,
-  rtl: rtl$1k,
-  translations: translations$1k,
-  updated_at: updated_at$1k
+  default: arXPseudo
 });
 
-var locale$1j = "ar";
-var rtl$1j = true;
-var translations$1j = {
+var ar = {
 	"new-request-form.answer-bot-modal.footer-content": "في هذه الحالة يمكننا إغلاق الطلب الأخير {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "هل يجيب هذا المقال عن سؤالك؟",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "كلا، أحتاج إلى مساعدة",
@@ -128,26 +100,13 @@ var translations$1j = {
 	"new-request-form.submit": "إرسال",
 	"new-request-form.suggested-articles": "مقالات مقترحة"
 };
-var updated_at$1j = "2024-03-26T15:40:23Z";
-var ar = {
-	locale: locale$1j,
-	rtl: rtl$1j,
-	translations: translations$1j,
-	updated_at: updated_at$1j
-};
 
 var ar$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ar,
-  locale: locale$1j,
-  rtl: rtl$1j,
-  translations: translations$1j,
-  updated_at: updated_at$1j
+  default: ar
 });
 
-var locale$1i = "az";
-var rtl$1i = false;
-var translations$1i = {
+var az = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -177,26 +136,13 @@ var translations$1i = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$1i = "2023-10-25T20:34:27Z";
-var az = {
-	locale: locale$1i,
-	rtl: rtl$1i,
-	translations: translations$1i,
-	updated_at: updated_at$1i
-};
 
 var az$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: az,
-  locale: locale$1i,
-  rtl: rtl$1i,
-  translations: translations$1i,
-  updated_at: updated_at$1i
+  default: az
 });
 
-var locale$1h = "be";
-var rtl$1h = false;
-var translations$1h = {
+var be = {
 	"new-request-form.answer-bot-modal.footer-content": "Если да, мы можем закрыть запрос {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Есть ли в этой статье ответ на вопрос?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Нет, мне нужна помощь",
@@ -226,26 +172,13 @@ var translations$1h = {
 	"new-request-form.submit": "Отправить",
 	"new-request-form.suggested-articles": "Предложенные статьи"
 };
-var updated_at$1h = "2024-03-19T17:13:38Z";
-var be = {
-	locale: locale$1h,
-	rtl: rtl$1h,
-	translations: translations$1h,
-	updated_at: updated_at$1h
-};
 
 var be$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: be,
-  locale: locale$1h,
-  rtl: rtl$1h,
-  translations: translations$1h,
-  updated_at: updated_at$1h
+  default: be
 });
 
-var locale$1g = "bg";
-var rtl$1g = false;
-var translations$1g = {
+var bg = {
 	"new-request-form.answer-bot-modal.footer-content": "Ако отговаря, можем да затворим заявката {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Отговори ли тази статия на въпроса ви?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Не, трябва ми помощ",
@@ -275,26 +208,13 @@ var translations$1g = {
 	"new-request-form.submit": "Подаване",
 	"new-request-form.suggested-articles": "Предложени статии"
 };
-var updated_at$1g = "2024-03-26T15:25:59Z";
-var bg = {
-	locale: locale$1g,
-	rtl: rtl$1g,
-	translations: translations$1g,
-	updated_at: updated_at$1g
-};
 
 var bg$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: bg,
-  locale: locale$1g,
-  rtl: rtl$1g,
-  translations: translations$1g,
-  updated_at: updated_at$1g
+  default: bg
 });
 
-var locale$1f = "bn";
-var rtl$1f = false;
-var translations$1f = {
+var bn = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -323,27 +243,14 @@ var translations$1f = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$1f = "2023-10-12T17:25:31Z";
-var bn = {
-	locale: locale$1f,
-	rtl: rtl$1f,
-	translations: translations$1f,
-	updated_at: updated_at$1f
 };
 
 var bn$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: bn,
-  locale: locale$1f,
-  rtl: rtl$1f,
-  translations: translations$1f,
-  updated_at: updated_at$1f
+  default: bn
 });
 
-var locale$1e = "bs";
-var rtl$1e = false;
-var translations$1e = {
+var bs = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -373,26 +280,13 @@ var translations$1e = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$1e = "2024-03-19T17:00:07Z";
-var bs = {
-	locale: locale$1e,
-	rtl: rtl$1e,
-	translations: translations$1e,
-	updated_at: updated_at$1e
-};
 
 var bs$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: bs,
-  locale: locale$1e,
-  rtl: rtl$1e,
-  translations: translations$1e,
-  updated_at: updated_at$1e
+  default: bs
 });
 
-var locale$1d = "ca";
-var rtl$1d = false;
-var translations$1d = {
+var ca = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
@@ -422,26 +316,13 @@ var translations$1d = {
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artículos recomendados"
 };
-var updated_at$1d = "2024-03-19T17:15:49Z";
-var ca = {
-	locale: locale$1d,
-	rtl: rtl$1d,
-	translations: translations$1d,
-	updated_at: updated_at$1d
-};
 
 var ca$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ca,
-  locale: locale$1d,
-  rtl: rtl$1d,
-  translations: translations$1d,
-  updated_at: updated_at$1d
+  default: ca
 });
 
-var locale$1c = "cs";
-var rtl$1c = false;
-var translations$1c = {
+var cs = {
 	"new-request-form.answer-bot-modal.footer-content": "Pokud ano, můžeme uzavřít nedávný požadavek {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Odpověděl tento článek na vaši otázku?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Ne, potřebuji pomoc",
@@ -471,26 +352,13 @@ var translations$1c = {
 	"new-request-form.submit": "Odeslat",
 	"new-request-form.suggested-articles": "Doporučené články"
 };
-var updated_at$1c = "2024-03-26T15:26:45Z";
-var cs = {
-	locale: locale$1c,
-	rtl: rtl$1c,
-	translations: translations$1c,
-	updated_at: updated_at$1c
-};
 
 var cs$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: cs,
-  locale: locale$1c,
-  rtl: rtl$1c,
-  translations: translations$1c,
-  updated_at: updated_at$1c
+  default: cs
 });
 
-var locale$1b = "cy";
-var rtl$1b = false;
-var translations$1b = {
+var cy = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -520,26 +388,13 @@ var translations$1b = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$1b = "2024-03-19T17:17:26Z";
-var cy = {
-	locale: locale$1b,
-	rtl: rtl$1b,
-	translations: translations$1b,
-	updated_at: updated_at$1b
-};
 
 var cy$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: cy,
-  locale: locale$1b,
-  rtl: rtl$1b,
-  translations: translations$1b,
-  updated_at: updated_at$1b
+  default: cy
 });
 
-var locale$1a = "da";
-var rtl$1a = false;
-var translations$1a = {
+var da = {
 	"new-request-form.answer-bot-modal.footer-content": "Hvis den gør, kan vi lukke den seneste anmodning {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Besvarede denne artikel dit spørgsmål?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nej, jeg har brug for hjælp",
@@ -569,26 +424,13 @@ var translations$1a = {
 	"new-request-form.submit": "Indsend",
 	"new-request-form.suggested-articles": "Foreslåede artikler"
 };
-var updated_at$1a = "2024-03-26T15:27:31Z";
-var da = {
-	locale: locale$1a,
-	rtl: rtl$1a,
-	translations: translations$1a,
-	updated_at: updated_at$1a
-};
 
 var da$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: da,
-  locale: locale$1a,
-  rtl: rtl$1a,
-  translations: translations$1a,
-  updated_at: updated_at$1a
+  default: da
 });
 
-var locale$19 = "de-x-informal";
-var rtl$19 = false;
-var translations$19 = {
+var deXInformal = {
 	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
 	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
@@ -617,27 +459,14 @@ var translations$19 = {
 	"new-request-form.required-fields-info": "Mit einem Sternchen (*) markierte Felder sind Pflichtfelder.",
 	"new-request-form.submit": "Senden",
 	"new-request-form.suggested-articles": "Vorgeschlagene Beiträge"
-};
-var updated_at$19 = "2024-03-19T17:00:18Z";
-var deXInformal = {
-	locale: locale$19,
-	rtl: rtl$19,
-	translations: translations$19,
-	updated_at: updated_at$19
 };
 
 var deXInformal$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: deXInformal,
-  locale: locale$19,
-  rtl: rtl$19,
-  translations: translations$19,
-  updated_at: updated_at$19
+  default: deXInformal
 });
 
-var locale$18 = "de";
-var rtl$18 = false;
-var translations$18 = {
+var de = {
 	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
 	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
@@ -667,26 +496,13 @@ var translations$18 = {
 	"new-request-form.submit": "Senden",
 	"new-request-form.suggested-articles": "Vorgeschlagene Beiträge"
 };
-var updated_at$18 = "2024-03-26T15:28:17Z";
-var de = {
-	locale: locale$18,
-	rtl: rtl$18,
-	translations: translations$18,
-	updated_at: updated_at$18
-};
 
 var de$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: de,
-  locale: locale$18,
-  rtl: rtl$18,
-  translations: translations$18,
-  updated_at: updated_at$18
+  default: de
 });
 
-var locale$17 = "el";
-var rtl$17 = false;
-var translations$17 = {
+var el = {
 	"new-request-form.answer-bot-modal.footer-content": "Αν ναι, μπορούμε να κλείσουμε το πρόσφατο αίτημα {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Απαντά στην ερώτηση το άρθρο;",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Όχι, χρειάζομαι βοήθεια",
@@ -716,26 +532,13 @@ var translations$17 = {
 	"new-request-form.submit": "Υποβολή",
 	"new-request-form.suggested-articles": "Προτεινόμενα άρθρα"
 };
-var updated_at$17 = "2024-03-26T15:29:04Z";
-var el = {
-	locale: locale$17,
-	rtl: rtl$17,
-	translations: translations$17,
-	updated_at: updated_at$17
-};
 
 var el$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: el,
-  locale: locale$17,
-  rtl: rtl$17,
-  translations: translations$17,
-  updated_at: updated_at$17
+  default: el
 });
 
-var locale$16 = "en-001";
-var rtl$16 = false;
-var translations$16 = {
+var en001 = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -764,27 +567,14 @@ var translations$16 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$16 = "2024-03-26T15:29:47Z";
-var en001 = {
-	locale: locale$16,
-	rtl: rtl$16,
-	translations: translations$16,
-	updated_at: updated_at$16
 };
 
 var en001$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: en001,
-  locale: locale$16,
-  rtl: rtl$16,
-  translations: translations$16,
-  updated_at: updated_at$16
+  default: en001
 });
 
-var locale$15 = "en-150";
-var rtl$15 = false;
-var translations$15 = {
+var en150 = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -813,27 +603,14 @@ var translations$15 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$15 = "2023-10-12T22:15:53Z";
-var en150 = {
-	locale: locale$15,
-	rtl: rtl$15,
-	translations: translations$15,
-	updated_at: updated_at$15
 };
 
 var en150$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: en150,
-  locale: locale$15,
-  rtl: rtl$15,
-  translations: translations$15,
-  updated_at: updated_at$15
+  default: en150
 });
 
-var locale$14 = "en-au";
-var rtl$14 = false;
-var translations$14 = {
+var enAu = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -862,27 +639,14 @@ var translations$14 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$14 = "2024-03-19T17:26:26Z";
-var enAu = {
-	locale: locale$14,
-	rtl: rtl$14,
-	translations: translations$14,
-	updated_at: updated_at$14
 };
 
 var enAu$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enAu,
-  locale: locale$14,
-  rtl: rtl$14,
-  translations: translations$14,
-  updated_at: updated_at$14
+  default: enAu
 });
 
-var locale$13 = "en-ca";
-var rtl$13 = false;
-var translations$13 = {
+var enCa = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -911,27 +675,14 @@ var translations$13 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$13 = "2023-10-12T22:15:53Z";
-var enCa = {
-	locale: locale$13,
-	rtl: rtl$13,
-	translations: translations$13,
-	updated_at: updated_at$13
 };
 
 var enCa$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enCa,
-  locale: locale$13,
-  rtl: rtl$13,
-  translations: translations$13,
-  updated_at: updated_at$13
+  default: enCa
 });
 
-var locale$12 = "en-gb";
-var rtl$12 = false;
-var translations$12 = {
+var enGb = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -960,27 +711,14 @@ var translations$12 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$12 = "2024-03-19T17:26:26Z";
-var enGb = {
-	locale: locale$12,
-	rtl: rtl$12,
-	translations: translations$12,
-	updated_at: updated_at$12
 };
 
 var enGb$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enGb,
-  locale: locale$12,
-  rtl: rtl$12,
-  translations: translations$12,
-  updated_at: updated_at$12
+  default: enGb
 });
 
-var locale$11 = "en-my";
-var rtl$11 = false;
-var translations$11 = {
+var enMy = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1009,27 +747,14 @@ var translations$11 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$11 = "2023-10-12T22:15:56Z";
-var enMy = {
-	locale: locale$11,
-	rtl: rtl$11,
-	translations: translations$11,
-	updated_at: updated_at$11
 };
 
 var enMy$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enMy,
-  locale: locale$11,
-  rtl: rtl$11,
-  translations: translations$11,
-  updated_at: updated_at$11
+  default: enMy
 });
 
-var locale$10 = "en-ph";
-var rtl$10 = false;
-var translations$10 = {
+var enPh = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1058,27 +783,14 @@ var translations$10 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$10 = "2022-11-03T22:45:18Z";
-var enPh = {
-	locale: locale$10,
-	rtl: rtl$10,
-	translations: translations$10,
-	updated_at: updated_at$10
 };
 
 var enPh$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enPh,
-  locale: locale$10,
-  rtl: rtl$10,
-  translations: translations$10,
-  updated_at: updated_at$10
+  default: enPh
 });
 
-var locale$$ = "en-se";
-var rtl$$ = false;
-var translations$$ = {
+var enSe = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1107,27 +819,14 @@ var translations$$ = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$$ = "2023-10-12T22:15:53Z";
-var enSe = {
-	locale: locale$$,
-	rtl: rtl$$,
-	translations: translations$$,
-	updated_at: updated_at$$
 };
 
 var enSe$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enSe,
-  locale: locale$$,
-  rtl: rtl$$,
-  translations: translations$$,
-  updated_at: updated_at$$
+  default: enSe
 });
 
-var locale$_ = "en-US";
-var rtl$_ = false;
-var translations$_ = {
+var enUs = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1156,27 +855,14 @@ var translations$_ = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$_ = "2024-03-21T20:43:37Z";
-var enUs = {
-	locale: locale$_,
-	rtl: rtl$_,
-	translations: translations$_,
-	updated_at: updated_at$_
 };
 
 var enUs$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enUs,
-  locale: locale$_,
-  rtl: rtl$_,
-  translations: translations$_,
-  updated_at: updated_at$_
+  default: enUs
 });
 
-var locale$Z = "en-x-dev";
-var rtl$Z = false;
-var translations$Z = {
+var enXDev = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1206,26 +892,13 @@ var translations$Z = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$Z = "2022-04-27T22:17:23Z";
-var enXDev = {
-	locale: locale$Z,
-	rtl: rtl$Z,
-	translations: translations$Z,
-	updated_at: updated_at$Z
-};
 
 var enXDev$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enXDev,
-  locale: locale$Z,
-  rtl: rtl$Z,
-  translations: translations$Z,
-  updated_at: updated_at$Z
+  default: enXDev
 });
 
-var locale$Y = "en-x-keys";
-var rtl$Y = false;
-var translations$Y = {
+var enXKeys = {
 	"new-request-form.answer-bot-modal.footer-content": "new-request-form.answer-bot-modal.footer-content",
 	"new-request-form.answer-bot-modal.footer-title": "new-request-form.answer-bot-modal.footer-title",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "new-request-form.answer-bot-modal.mark-irrelevant",
@@ -1255,26 +928,13 @@ var translations$Y = {
 	"new-request-form.submit": "new-request-form.submit",
 	"new-request-form.suggested-articles": "new-request-form.suggested-articles"
 };
-var updated_at$Y = "2021-06-14T20:32:39Z";
-var enXKeys = {
-	locale: locale$Y,
-	rtl: rtl$Y,
-	translations: translations$Y,
-	updated_at: updated_at$Y
-};
 
 var enXKeys$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enXKeys,
-  locale: locale$Y,
-  rtl: rtl$Y,
-  translations: translations$Y,
-  updated_at: updated_at$Y
+  default: enXKeys
 });
 
-var locale$X = "en-x-obsolete";
-var rtl$X = false;
-var translations$X = {
+var enXObsolete = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1304,26 +964,13 @@ var translations$X = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$X = "2023-01-17T21:50:05Z";
-var enXObsolete = {
-	locale: locale$X,
-	rtl: rtl$X,
-	translations: translations$X,
-	updated_at: updated_at$X
-};
 
 var enXObsolete$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enXObsolete,
-  locale: locale$X,
-  rtl: rtl$X,
-  translations: translations$X,
-  updated_at: updated_at$X
+  default: enXObsolete
 });
 
-var locale$W = "en-x-pseudo";
-var rtl$W = false;
-var translations$W = {
+var enXPseudo = {
 	"new-request-form.answer-bot-modal.footer-content": "[ผู้龍ḬḬϝ ḭḭṭ ḍṓṓḛḛṡ, ẁḛḛ ͼααṇ ͼḽṓṓṡḛḛ ẏẏṓṓṵṵṛ ṛḛḛͼḛḛṇṭ ṛḛḛʠṵṵḛḛṡṭ {{requestId}}龍ผู้]",
 	"new-request-form.answer-bot-modal.footer-title": "[ผู้龍Ḍṓṓḛḛṡ ṭḥḭḭṡ ααṛṭḭḭͼḽḛḛ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "[ผู้龍Ṅṓṓ, ḬḬ ṇḛḛḛḛḍ ḥḛḛḽṗ龍ผู้]",
@@ -1353,26 +1000,13 @@ var translations$W = {
 	"new-request-form.submit": "[ผู้龍Ṣṵṵḅṃḭḭṭ龍ผู้]",
 	"new-request-form.suggested-articles": "[ผู้龍Ṣṵṵḡḡḛḛṡṭḛḛḍ ααṛṭḭḭͼḽḛḛṡ龍ผู้]"
 };
-var updated_at$W = "2022-03-30T23:43:24Z";
-var enXPseudo = {
-	locale: locale$W,
-	rtl: rtl$W,
-	translations: translations$W,
-	updated_at: updated_at$W
-};
 
 var enXPseudo$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enXPseudo,
-  locale: locale$W,
-  rtl: rtl$W,
-  translations: translations$W,
-  updated_at: updated_at$W
+  default: enXPseudo
 });
 
-var locale$V = "en-x-test";
-var rtl$V = false;
-var translations$V = {
+var enXTest = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1401,27 +1035,14 @@ var translations$V = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$V = "2022-04-27T22:10:52Z";
-var enXTest = {
-	locale: locale$V,
-	rtl: rtl$V,
-	translations: translations$V,
-	updated_at: updated_at$V
 };
 
 var enXTest$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: enXTest,
-  locale: locale$V,
-  rtl: rtl$V,
-  translations: translations$V,
-  updated_at: updated_at$V
+  default: enXTest
 });
 
-var locale$U = "es-419";
-var rtl$U = false;
-var translations$U = {
+var es419 = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
@@ -1450,27 +1071,14 @@ var translations$U = {
 	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artículos recomendados"
-};
-var updated_at$U = "2024-03-19T17:26:27Z";
-var es419 = {
-	locale: locale$U,
-	rtl: rtl$U,
-	translations: translations$U,
-	updated_at: updated_at$U
 };
 
 var es419$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: es419,
-  locale: locale$U,
-  rtl: rtl$U,
-  translations: translations$U,
-  updated_at: updated_at$U
+  default: es419
 });
 
-var locale$T = "es-es";
-var rtl$T = false;
-var translations$T = {
+var esEs = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
@@ -1499,27 +1107,14 @@ var translations$T = {
 	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artículos recomendados"
-};
-var updated_at$T = "2024-03-19T17:09:36Z";
-var esEs = {
-	locale: locale$T,
-	rtl: rtl$T,
-	translations: translations$T,
-	updated_at: updated_at$T
 };
 
 var esEs$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: esEs,
-  locale: locale$T,
-  rtl: rtl$T,
-  translations: translations$T,
-  updated_at: updated_at$T
+  default: esEs
 });
 
-var locale$S = "es";
-var rtl$S = false;
-var translations$S = {
+var es = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
@@ -1548,27 +1143,14 @@ var translations$S = {
 	"new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artículos recomendados"
-};
-var updated_at$S = "2024-03-26T15:30:32Z";
-var es = {
-	locale: locale$S,
-	rtl: rtl$S,
-	translations: translations$S,
-	updated_at: updated_at$S
 };
 
 var es$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: es,
-  locale: locale$S,
-  rtl: rtl$S,
-  translations: translations$S,
-  updated_at: updated_at$S
+  default: es
 });
 
-var locale$R = "et";
-var rtl$R = false;
-var translations$R = {
+var et = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1598,26 +1180,13 @@ var translations$R = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$R = "2024-03-19T17:07:48Z";
-var et = {
-	locale: locale$R,
-	rtl: rtl$R,
-	translations: translations$R,
-	updated_at: updated_at$R
-};
 
 var et$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: et,
-  locale: locale$R,
-  rtl: rtl$R,
-  translations: translations$R,
-  updated_at: updated_at$R
+  default: et
 });
 
-var locale$Q = "eu";
-var rtl$Q = false;
-var translations$Q = {
+var eu = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
@@ -1647,26 +1216,13 @@ var translations$Q = {
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artículos recomendados"
 };
-var updated_at$Q = "2023-10-12T17:25:31Z";
-var eu = {
-	locale: locale$Q,
-	rtl: rtl$Q,
-	translations: translations$Q,
-	updated_at: updated_at$Q
-};
 
 var eu$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: eu,
-  locale: locale$Q,
-  rtl: rtl$Q,
-  translations: translations$Q,
-  updated_at: updated_at$Q
+  default: eu
 });
 
-var locale$P = "fa-AF";
-var rtl$P = true;
-var translations$P = {
+var faAf = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1695,27 +1251,14 @@ var translations$P = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$P = "2024-03-19T17:26:54Z";
-var faAf = {
-	locale: locale$P,
-	rtl: rtl$P,
-	translations: translations$P,
-	updated_at: updated_at$P
 };
 
 var faAf$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: faAf,
-  locale: locale$P,
-  rtl: rtl$P,
-  translations: translations$P,
-  updated_at: updated_at$P
+  default: faAf
 });
 
-var locale$O = "fa";
-var rtl$O = true;
-var translations$O = {
+var fa = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1745,26 +1288,13 @@ var translations$O = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$O = "2024-03-19T17:12:56Z";
-var fa = {
-	locale: locale$O,
-	rtl: rtl$O,
-	translations: translations$O,
-	updated_at: updated_at$O
-};
 
 var fa$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: fa,
-  locale: locale$O,
-  rtl: rtl$O,
-  translations: translations$O,
-  updated_at: updated_at$O
+  default: fa
 });
 
-var locale$N = "fi";
-var rtl$N = false;
-var translations$N = {
+var fi = {
 	"new-request-form.answer-bot-modal.footer-content": "Jos se vastaa, voimme sulkea äskettäisen pyyntösi {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Vastaako tämä artikkeli kysymykseesi?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Ei, tarvitsen apua",
@@ -1794,26 +1324,13 @@ var translations$N = {
 	"new-request-form.submit": "Lähetä",
 	"new-request-form.suggested-articles": "Ehdotetut artikkelit"
 };
-var updated_at$N = "2024-03-26T15:31:15Z";
-var fi = {
-	locale: locale$N,
-	rtl: rtl$N,
-	translations: translations$N,
-	updated_at: updated_at$N
-};
 
 var fi$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: fi,
-  locale: locale$N,
-  rtl: rtl$N,
-  translations: translations$N,
-  updated_at: updated_at$N
+  default: fi
 });
 
-var locale$M = "fil";
-var rtl$M = false;
-var translations$M = {
+var fil = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1842,27 +1359,14 @@ var translations$M = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$M = "2024-03-19T17:23:17Z";
-var fil = {
-	locale: locale$M,
-	rtl: rtl$M,
-	translations: translations$M,
-	updated_at: updated_at$M
 };
 
 var fil$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: fil,
-  locale: locale$M,
-  rtl: rtl$M,
-  translations: translations$M,
-  updated_at: updated_at$M
+  default: fil
 });
 
-var locale$L = "fo";
-var rtl$L = false;
-var translations$L = {
+var fo = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -1891,27 +1395,14 @@ var translations$L = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$L = "2024-03-19T17:15:55Z";
-var fo = {
-	locale: locale$L,
-	rtl: rtl$L,
-	translations: translations$L,
-	updated_at: updated_at$L
 };
 
 var fo$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: fo,
-  locale: locale$L,
-  rtl: rtl$L,
-  translations: translations$L,
-  updated_at: updated_at$L
+  default: fo
 });
 
-var locale$K = "fr-ca";
-var rtl$K = false;
-var translations$K = {
+var frCa = {
 	"new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore votre demande récente {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question ?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
@@ -1940,27 +1431,14 @@ var translations$K = {
 	"new-request-form.required-fields-info": "Les champs marqués d'un astérisque (*) sont obligatoires.",
 	"new-request-form.submit": "Envoyer",
 	"new-request-form.suggested-articles": "Articles suggérés"
-};
-var updated_at$K = "2024-03-22T14:06:00Z";
-var frCa = {
-	locale: locale$K,
-	rtl: rtl$K,
-	translations: translations$K,
-	updated_at: updated_at$K
 };
 
 var frCa$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: frCa,
-  locale: locale$K,
-  rtl: rtl$K,
-  translations: translations$K,
-  updated_at: updated_at$K
+  default: frCa
 });
 
-var locale$J = "fr";
-var rtl$J = false;
-var translations$J = {
+var fr = {
 	"new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore votre demande récente {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question ?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
@@ -1990,26 +1468,13 @@ var translations$J = {
 	"new-request-form.submit": "Envoyer",
 	"new-request-form.suggested-articles": "Articles suggérés"
 };
-var updated_at$J = "2024-03-26T15:32:00Z";
-var fr = {
-	locale: locale$J,
-	rtl: rtl$J,
-	translations: translations$J,
-	updated_at: updated_at$J
-};
 
 var fr$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: fr,
-  locale: locale$J,
-  rtl: rtl$J,
-  translations: translations$J,
-  updated_at: updated_at$J
+  default: fr
 });
 
-var locale$I = "ga";
-var rtl$I = false;
-var translations$I = {
+var ga = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2039,26 +1504,13 @@ var translations$I = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$I = "2023-10-12T17:42:45Z";
-var ga = {
-	locale: locale$I,
-	rtl: rtl$I,
-	translations: translations$I,
-	updated_at: updated_at$I
-};
 
 var ga$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ga,
-  locale: locale$I,
-  rtl: rtl$I,
-  translations: translations$I,
-  updated_at: updated_at$I
+  default: ga
 });
 
-var locale$H = "he";
-var rtl$H = true;
-var translations$H = {
+var he = {
 	"new-request-form.answer-bot-modal.footer-content": "אם כן, נוכל לסגור את בקשה {{requestId}} ששלחת לאחרונה",
 	"new-request-form.answer-bot-modal.footer-title": "האם המאמר הזה עונה על השאלה?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "לא, אני צריך עזרה",
@@ -2088,26 +1540,13 @@ var translations$H = {
 	"new-request-form.submit": "שלח",
 	"new-request-form.suggested-articles": "מאמרים מוצעים"
 };
-var updated_at$H = "2024-03-26T15:32:43Z";
-var he = {
-	locale: locale$H,
-	rtl: rtl$H,
-	translations: translations$H,
-	updated_at: updated_at$H
-};
 
 var he$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: he,
-  locale: locale$H,
-  rtl: rtl$H,
-  translations: translations$H,
-  updated_at: updated_at$H
+  default: he
 });
 
-var locale$G = "hi";
-var rtl$G = false;
-var translations$G = {
+var hi = {
 	"new-request-form.answer-bot-modal.footer-content": "यदि ऐसा है, तो हम आपका हाल ही का अनुरोध बंद कर सकते है {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "क्या इस आलेख में आपके प्रश्न का उत्तर मिला?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "नहीं, मुझे सहायता चाहिए",
@@ -2137,26 +1576,13 @@ var translations$G = {
 	"new-request-form.submit": "भेजें",
 	"new-request-form.suggested-articles": "सुझाए गए आलेख"
 };
-var updated_at$G = "2024-03-26T15:33:27Z";
-var hi = {
-	locale: locale$G,
-	rtl: rtl$G,
-	translations: translations$G,
-	updated_at: updated_at$G
-};
 
 var hi$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: hi,
-  locale: locale$G,
-  rtl: rtl$G,
-  translations: translations$G,
-  updated_at: updated_at$G
+  default: hi
 });
 
-var locale$F = "hr";
-var rtl$F = false;
-var translations$F = {
+var hr = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2186,26 +1612,13 @@ var translations$F = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$F = "2024-03-19T17:00:19Z";
-var hr = {
-	locale: locale$F,
-	rtl: rtl$F,
-	translations: translations$F,
-	updated_at: updated_at$F
-};
 
 var hr$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: hr,
-  locale: locale$F,
-  rtl: rtl$F,
-  translations: translations$F,
-  updated_at: updated_at$F
+  default: hr
 });
 
-var locale$E = "hu";
-var rtl$E = false;
-var translations$E = {
+var hu = {
 	"new-request-form.answer-bot-modal.footer-content": "Ha igen, lezárhatjuk a legutóbbi kérelmét ({{requestId}})",
 	"new-request-form.answer-bot-modal.footer-title": "Megválaszolta a cikk a kérdését?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nem, segítségre van szükségem",
@@ -2235,26 +1648,13 @@ var translations$E = {
 	"new-request-form.submit": "Küldés",
 	"new-request-form.suggested-articles": "Javasolt cikkek"
 };
-var updated_at$E = "2024-03-26T15:34:10Z";
-var hu = {
-	locale: locale$E,
-	rtl: rtl$E,
-	translations: translations$E,
-	updated_at: updated_at$E
-};
 
 var hu$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: hu,
-  locale: locale$E,
-  rtl: rtl$E,
-  translations: translations$E,
-  updated_at: updated_at$E
+  default: hu
 });
 
-var locale$D = "hy";
-var rtl$D = false;
-var translations$D = {
+var hy = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2284,26 +1684,13 @@ var translations$D = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$D = "2023-10-12T17:25:31Z";
-var hy = {
-	locale: locale$D,
-	rtl: rtl$D,
-	translations: translations$D,
-	updated_at: updated_at$D
-};
 
 var hy$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: hy,
-  locale: locale$D,
-  rtl: rtl$D,
-  translations: translations$D,
-  updated_at: updated_at$D
+  default: hy
 });
 
-var locale$C = "id";
-var rtl$C = false;
-var translations$C = {
+var id = {
 	"new-request-form.answer-bot-modal.footer-content": "Jika demikian, kami dapat menutup permintaan Anda baru-baru ini {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Apakah artikel ini menjawab pertanyaan Anda?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Tidak, saya perlu bantuan",
@@ -2333,26 +1720,13 @@ var translations$C = {
 	"new-request-form.submit": "Kirim",
 	"new-request-form.suggested-articles": "Artikel yang disarankan"
 };
-var updated_at$C = "2024-03-26T15:34:53Z";
-var id = {
-	locale: locale$C,
-	rtl: rtl$C,
-	translations: translations$C,
-	updated_at: updated_at$C
-};
 
 var id$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: id,
-  locale: locale$C,
-  rtl: rtl$C,
-  translations: translations$C,
-  updated_at: updated_at$C
+  default: id
 });
 
-var locale$B = "is";
-var rtl$B = false;
-var translations$B = {
+var is = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2381,27 +1755,14 @@ var translations$B = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$B = "2024-03-19T17:05:17Z";
-var is = {
-	locale: locale$B,
-	rtl: rtl$B,
-	translations: translations$B,
-	updated_at: updated_at$B
 };
 
 var is$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: is,
-  locale: locale$B,
-  rtl: rtl$B,
-  translations: translations$B,
-  updated_at: updated_at$B
+  default: is
 });
 
-var locale$A = "it-ch";
-var rtl$A = false;
-var translations$A = {
+var itCh = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2430,27 +1791,14 @@ var translations$A = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$A = "2023-10-12T17:42:45Z";
-var itCh = {
-	locale: locale$A,
-	rtl: rtl$A,
-	translations: translations$A,
-	updated_at: updated_at$A
 };
 
 var itCh$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: itCh,
-  locale: locale$A,
-  rtl: rtl$A,
-  translations: translations$A,
-  updated_at: updated_at$A
+  default: itCh
 });
 
-var locale$z = "it";
-var rtl$z = false;
-var translations$z = {
+var it = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2480,26 +1828,13 @@ var translations$z = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$z = "2024-03-26T15:35:38Z";
-var it = {
-	locale: locale$z,
-	rtl: rtl$z,
-	translations: translations$z,
-	updated_at: updated_at$z
-};
 
 var it$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: it,
-  locale: locale$z,
-  rtl: rtl$z,
-  translations: translations$z,
-  updated_at: updated_at$z
+  default: it
 });
 
-var locale$y = "ja";
-var rtl$y = false;
-var translations$y = {
+var ja = {
 	"new-request-form.answer-bot-modal.footer-content": "質問が解決していれば、最新のリクエスト{{requestId}}を終了します",
 	"new-request-form.answer-bot-modal.footer-title": "この記事で疑問が解消されましたか？",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "いいえ、ヘルプが必要です",
@@ -2529,26 +1864,13 @@ var translations$y = {
 	"new-request-form.submit": "送信",
 	"new-request-form.suggested-articles": "おすすめの記事"
 };
-var updated_at$y = "2024-03-26T15:46:41Z";
-var ja = {
-	locale: locale$y,
-	rtl: rtl$y,
-	translations: translations$y,
-	updated_at: updated_at$y
-};
 
 var ja$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ja,
-  locale: locale$y,
-  rtl: rtl$y,
-  translations: translations$y,
-  updated_at: updated_at$y
+  default: ja
 });
 
-var locale$x = "ka";
-var rtl$x = false;
-var translations$x = {
+var ka = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2577,27 +1899,14 @@ var translations$x = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$x = "2024-03-19T17:05:18Z";
-var ka = {
-	locale: locale$x,
-	rtl: rtl$x,
-	translations: translations$x,
-	updated_at: updated_at$x
 };
 
 var ka$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ka,
-  locale: locale$x,
-  rtl: rtl$x,
-  translations: translations$x,
-  updated_at: updated_at$x
+  default: ka
 });
 
-var locale$w = "kk";
-var rtl$w = false;
-var translations$w = {
+var kk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2626,27 +1935,14 @@ var translations$w = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$w = "2024-03-19T17:11:22Z";
-var kk = {
-	locale: locale$w,
-	rtl: rtl$w,
-	translations: translations$w,
-	updated_at: updated_at$w
 };
 
 var kk$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: kk,
-  locale: locale$w,
-  rtl: rtl$w,
-  translations: translations$w,
-  updated_at: updated_at$w
+  default: kk
 });
 
-var locale$v = "kl-dk";
-var rtl$v = false;
-var translations$v = {
+var klDk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2676,26 +1972,13 @@ var translations$v = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$v = "2024-02-20T18:00:30Z";
-var klDk = {
-	locale: locale$v,
-	rtl: rtl$v,
-	translations: translations$v,
-	updated_at: updated_at$v
-};
 
 var klDk$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: klDk,
-  locale: locale$v,
-  rtl: rtl$v,
-  translations: translations$v,
-  updated_at: updated_at$v
+  default: klDk
 });
 
-var locale$u = "ko";
-var rtl$u = false;
-var translations$u = {
+var ko = {
 	"new-request-form.answer-bot-modal.footer-content": "그렇다면 최근 요청 {{requestId}}을(를) 종료할 수 있습니다.",
 	"new-request-form.answer-bot-modal.footer-title": "이 문서가 질문에 대한 답이 되었나요?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "아니요, 도움이 필요합니다.",
@@ -2725,26 +2008,13 @@ var translations$u = {
 	"new-request-form.submit": "제출",
 	"new-request-form.suggested-articles": "추천 문서"
 };
-var updated_at$u = "2024-03-26T15:37:05Z";
-var ko = {
-	locale: locale$u,
-	rtl: rtl$u,
-	translations: translations$u,
-	updated_at: updated_at$u
-};
 
 var ko$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ko,
-  locale: locale$u,
-  rtl: rtl$u,
-  translations: translations$u,
-  updated_at: updated_at$u
+  default: ko
 });
 
-var locale$t = "ku";
-var rtl$t = false;
-var translations$t = {
+var ku = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2773,27 +2043,14 @@ var translations$t = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$t = "2023-10-25T20:34:47Z";
-var ku = {
-	locale: locale$t,
-	rtl: rtl$t,
-	translations: translations$t,
-	updated_at: updated_at$t
 };
 
 var ku$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ku,
-  locale: locale$t,
-  rtl: rtl$t,
-  translations: translations$t,
-  updated_at: updated_at$t
+  default: ku
 });
 
-var locale$s = "lt";
-var rtl$s = false;
-var translations$s = {
+var lt = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2822,27 +2079,14 @@ var translations$s = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$s = "2024-03-19T17:11:46Z";
-var lt = {
-	locale: locale$s,
-	rtl: rtl$s,
-	translations: translations$s,
-	updated_at: updated_at$s
 };
 
 var lt$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: lt,
-  locale: locale$s,
-  rtl: rtl$s,
-  translations: translations$s,
-  updated_at: updated_at$s
+  default: lt
 });
 
-var locale$r = "lv";
-var rtl$r = false;
-var translations$r = {
+var lv = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2871,27 +2115,14 @@ var translations$r = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$r = "2024-03-19T17:06:18Z";
-var lv = {
-	locale: locale$r,
-	rtl: rtl$r,
-	translations: translations$r,
-	updated_at: updated_at$r
 };
 
 var lv$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: lv,
-  locale: locale$r,
-  rtl: rtl$r,
-  translations: translations$r,
-  updated_at: updated_at$r
+  default: lv
 });
 
-var locale$q = "mk";
-var rtl$q = false;
-var translations$q = {
+var mk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2920,27 +2151,14 @@ var translations$q = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$q = "2023-10-25T20:34:50Z";
-var mk = {
-	locale: locale$q,
-	rtl: rtl$q,
-	translations: translations$q,
-	updated_at: updated_at$q
 };
 
 var mk$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: mk,
-  locale: locale$q,
-  rtl: rtl$q,
-  translations: translations$q,
-  updated_at: updated_at$q
+  default: mk
 });
 
-var locale$p = "mn";
-var rtl$p = false;
-var translations$p = {
+var mn = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -2969,27 +2187,14 @@ var translations$p = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$p = "2023-10-12T22:15:56Z";
-var mn = {
-	locale: locale$p,
-	rtl: rtl$p,
-	translations: translations$p,
-	updated_at: updated_at$p
 };
 
 var mn$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: mn,
-  locale: locale$p,
-  rtl: rtl$p,
-  translations: translations$p,
-  updated_at: updated_at$p
+  default: mn
 });
 
-var locale$o = "ms";
-var rtl$o = false;
-var translations$o = {
+var ms = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3018,27 +2223,14 @@ var translations$o = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$o = "2024-03-19T17:23:17Z";
-var ms = {
-	locale: locale$o,
-	rtl: rtl$o,
-	translations: translations$o,
-	updated_at: updated_at$o
 };
 
 var ms$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ms,
-  locale: locale$o,
-  rtl: rtl$o,
-  translations: translations$o,
-  updated_at: updated_at$o
+  default: ms
 });
 
-var locale$n = "mt";
-var rtl$n = false;
-var translations$n = {
+var mt = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3067,27 +2259,14 @@ var translations$n = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$n = "2023-10-12T17:42:48Z";
-var mt = {
-	locale: locale$n,
-	rtl: rtl$n,
-	translations: translations$n,
-	updated_at: updated_at$n
 };
 
 var mt$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: mt,
-  locale: locale$n,
-  rtl: rtl$n,
-  translations: translations$n,
-  updated_at: updated_at$n
+  default: mt
 });
 
-var locale$m = "my";
-var rtl$m = false;
-var translations$m = {
+var my = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3117,26 +2296,13 @@ var translations$m = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$m = "2023-10-12T17:25:32Z";
-var my = {
-	locale: locale$m,
-	rtl: rtl$m,
-	translations: translations$m,
-	updated_at: updated_at$m
-};
 
 var my$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: my,
-  locale: locale$m,
-  rtl: rtl$m,
-  translations: translations$m,
-  updated_at: updated_at$m
+  default: my
 });
 
-var locale$l = "nl-be";
-var rtl$l = false;
-var translations$l = {
+var nlBe = {
 	"new-request-form.answer-bot-modal.footer-content": "Als dat het geval is, kunnen wij uw recente aanvraag {{requestId}} sluiten",
 	"new-request-form.answer-bot-modal.footer-title": "Beantwoordt dit artikel uw vraag?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nee, ik heb hulp nodig",
@@ -3165,27 +2331,14 @@ var translations$l = {
 	"new-request-form.required-fields-info": "Velden met een sterretje (*) zijn vereist.",
 	"new-request-form.submit": "Verzenden",
 	"new-request-form.suggested-articles": "Voorgestelde artikelen"
-};
-var updated_at$l = "2021-06-28T23:57:55Z";
-var nlBe = {
-	locale: locale$l,
-	rtl: rtl$l,
-	translations: translations$l,
-	updated_at: updated_at$l
 };
 
 var nlBe$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: nlBe,
-  locale: locale$l,
-  rtl: rtl$l,
-  translations: translations$l,
-  updated_at: updated_at$l
+  default: nlBe
 });
 
-var locale$k = "nl";
-var rtl$k = false;
-var translations$k = {
+var nl = {
 	"new-request-form.answer-bot-modal.footer-content": "Als dat het geval is, kunnen wij uw recente aanvraag {{requestId}} sluiten",
 	"new-request-form.answer-bot-modal.footer-title": "Beantwoordt dit artikel uw vraag?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nee, ik heb hulp nodig",
@@ -3215,26 +2368,13 @@ var translations$k = {
 	"new-request-form.submit": "Verzenden",
 	"new-request-form.suggested-articles": "Voorgestelde artikelen"
 };
-var updated_at$k = "2024-03-26T15:37:49Z";
-var nl = {
-	locale: locale$k,
-	rtl: rtl$k,
-	translations: translations$k,
-	updated_at: updated_at$k
-};
 
 var nl$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: nl,
-  locale: locale$k,
-  rtl: rtl$k,
-  translations: translations$k,
-  updated_at: updated_at$k
+  default: nl
 });
 
-var locale$j = "no";
-var rtl$j = false;
-var translations$j = {
+var no = {
 	"new-request-form.answer-bot-modal.footer-content": "Hvis den gjør det, kan vi avslutte den nylige forespørselen {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Fant du svar på spørsmålet i denne artikkelen?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nei, jeg trenger hjelp",
@@ -3264,26 +2404,13 @@ var translations$j = {
 	"new-request-form.submit": "Send inn",
 	"new-request-form.suggested-articles": "Foreslåtte artikler"
 };
-var updated_at$j = "2024-03-26T15:38:32Z";
-var no = {
-	locale: locale$j,
-	rtl: rtl$j,
-	translations: translations$j,
-	updated_at: updated_at$j
-};
 
 var no$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: no,
-  locale: locale$j,
-  rtl: rtl$j,
-  translations: translations$j,
-  updated_at: updated_at$j
+  default: no
 });
 
-var locale$i = "pl";
-var rtl$i = false;
-var translations$i = {
+var pl = {
 	"new-request-form.answer-bot-modal.footer-content": "Jeśli tak, możemy zamknąć zlecenie {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Czy artykuł dostarczył odpowiedzi na pytanie?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nie, potrzebuję pomocy",
@@ -3313,26 +2440,13 @@ var translations$i = {
 	"new-request-form.submit": "Wyślij",
 	"new-request-form.suggested-articles": "Propozycje artykułów"
 };
-var updated_at$i = "2024-03-26T15:39:17Z";
-var pl = {
-	locale: locale$i,
-	rtl: rtl$i,
-	translations: translations$i,
-	updated_at: updated_at$i
-};
 
 var pl$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: pl,
-  locale: locale$i,
-  rtl: rtl$i,
-  translations: translations$i,
-  updated_at: updated_at$i
+  default: pl
 });
 
-var locale$h = "pt-br";
-var rtl$h = false;
-var translations$h = {
+var ptBr = {
 	"new-request-form.answer-bot-modal.footer-content": "Se sim, podemos fechar a solicitação recente {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Esse artigo responde à pergunta?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Não, preciso de ajuda",
@@ -3361,27 +2475,14 @@ var translations$h = {
 	"new-request-form.required-fields-info": "Os campos marcados com um asterisco (*) são obrigatórios.",
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artigos sugeridos"
-};
-var updated_at$h = "2024-03-26T15:40:00Z";
-var ptBr = {
-	locale: locale$h,
-	rtl: rtl$h,
-	translations: translations$h,
-	updated_at: updated_at$h
 };
 
 var ptBr$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ptBr,
-  locale: locale$h,
-  rtl: rtl$h,
-  translations: translations$h,
-  updated_at: updated_at$h
+  default: ptBr
 });
 
-var locale$g = "pt";
-var rtl$g = false;
-var translations$g = {
+var pt = {
 	"new-request-form.answer-bot-modal.footer-content": "Se sim, podemos fechar a solicitação recente {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Esse artigo responde à pergunta?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Não, preciso de ajuda",
@@ -3411,26 +2512,13 @@ var translations$g = {
 	"new-request-form.submit": "Enviar",
 	"new-request-form.suggested-articles": "Artigos sugeridos"
 };
-var updated_at$g = "2024-03-19T17:08:42Z";
-var pt = {
-	locale: locale$g,
-	rtl: rtl$g,
-	translations: translations$g,
-	updated_at: updated_at$g
-};
 
 var pt$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: pt,
-  locale: locale$g,
-  rtl: rtl$g,
-  translations: translations$g,
-  updated_at: updated_at$g
+  default: pt
 });
 
-var locale$f = "ro";
-var rtl$f = false;
-var translations$f = {
+var ro = {
 	"new-request-form.answer-bot-modal.footer-content": "Dacă reușește, putem închide solicitarea recentă {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Acest articol răspunde la întrebare?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nu, am nevoie de ajutor",
@@ -3460,26 +2548,13 @@ var translations$f = {
 	"new-request-form.submit": "Trimitere",
 	"new-request-form.suggested-articles": "Articole sugerate"
 };
-var updated_at$f = "2024-03-26T15:40:45Z";
-var ro = {
-	locale: locale$f,
-	rtl: rtl$f,
-	translations: translations$f,
-	updated_at: updated_at$f
-};
 
 var ro$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ro,
-  locale: locale$f,
-  rtl: rtl$f,
-  translations: translations$f,
-  updated_at: updated_at$f
+  default: ro
 });
 
-var locale$e = "ru";
-var rtl$e = false;
-var translations$e = {
+var ru = {
 	"new-request-form.answer-bot-modal.footer-content": "Если да, мы можем закрыть запрос {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Есть ли в этой статье ответ на вопрос?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Нет, мне нужна помощь",
@@ -3509,26 +2584,13 @@ var translations$e = {
 	"new-request-form.submit": "Отправить",
 	"new-request-form.suggested-articles": "Предложенные статьи"
 };
-var updated_at$e = "2024-03-26T16:10:57Z";
-var ru = {
-	locale: locale$e,
-	rtl: rtl$e,
-	translations: translations$e,
-	updated_at: updated_at$e
-};
 
 var ru$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ru,
-  locale: locale$e,
-  rtl: rtl$e,
-  translations: translations$e,
-  updated_at: updated_at$e
+  default: ru
 });
 
-var locale$d = "sk";
-var rtl$d = false;
-var translations$d = {
+var sk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3557,27 +2619,14 @@ var translations$d = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$d = "2024-03-19T17:07:01Z";
-var sk = {
-	locale: locale$d,
-	rtl: rtl$d,
-	translations: translations$d,
-	updated_at: updated_at$d
 };
 
 var sk$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: sk,
-  locale: locale$d,
-  rtl: rtl$d,
-  translations: translations$d,
-  updated_at: updated_at$d
+  default: sk
 });
 
-var locale$c = "sl";
-var rtl$c = false;
-var translations$c = {
+var sl = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3606,27 +2655,14 @@ var translations$c = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$c = "2024-03-19T17:00:11Z";
-var sl = {
-	locale: locale$c,
-	rtl: rtl$c,
-	translations: translations$c,
-	updated_at: updated_at$c
 };
 
 var sl$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: sl,
-  locale: locale$c,
-  rtl: rtl$c,
-  translations: translations$c,
-  updated_at: updated_at$c
+  default: sl
 });
 
-var locale$b = "sq";
-var rtl$b = false;
-var translations$b = {
+var sq = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3655,27 +2691,14 @@ var translations$b = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$b = "2023-10-25T20:34:57Z";
-var sq = {
-	locale: locale$b,
-	rtl: rtl$b,
-	translations: translations$b,
-	updated_at: updated_at$b
 };
 
 var sq$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: sq,
-  locale: locale$b,
-  rtl: rtl$b,
-  translations: translations$b,
-  updated_at: updated_at$b
+  default: sq
 });
 
-var locale$a = "sr-me";
-var rtl$a = false;
-var translations$a = {
+var srMe = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3704,27 +2727,14 @@ var translations$a = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$a = "2024-03-19T17:07:49Z";
-var srMe = {
-	locale: locale$a,
-	rtl: rtl$a,
-	translations: translations$a,
-	updated_at: updated_at$a
 };
 
 var srMe$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: srMe,
-  locale: locale$a,
-  rtl: rtl$a,
-  translations: translations$a,
-  updated_at: updated_at$a
+  default: srMe
 });
 
-var locale$9 = "sr";
-var rtl$9 = false;
-var translations$9 = {
+var sr = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3754,26 +2764,13 @@ var translations$9 = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$9 = "2024-03-19T17:07:01Z";
-var sr = {
-	locale: locale$9,
-	rtl: rtl$9,
-	translations: translations$9,
-	updated_at: updated_at$9
-};
 
 var sr$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: sr,
-  locale: locale$9,
-  rtl: rtl$9,
-  translations: translations$9,
-  updated_at: updated_at$9
+  default: sr
 });
 
-var locale$8 = "sv";
-var rtl$8 = false;
-var translations$8 = {
+var sv = {
 	"new-request-form.answer-bot-modal.footer-content": "Om den gör det kan vi stänga din förfrågan {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Besvarar denna artikel din fråga?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nej, jag behöver hjälp",
@@ -3803,26 +2800,13 @@ var translations$8 = {
 	"new-request-form.submit": "Skicka in",
 	"new-request-form.suggested-articles": "Föreslagna artiklar"
 };
-var updated_at$8 = "2024-03-26T15:42:16Z";
-var sv = {
-	locale: locale$8,
-	rtl: rtl$8,
-	translations: translations$8,
-	updated_at: updated_at$8
-};
 
 var sv$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: sv,
-  locale: locale$8,
-  rtl: rtl$8,
-  translations: translations$8,
-  updated_at: updated_at$8
+  default: sv
 });
 
-var locale$7 = "th";
-var rtl$7 = false;
-var translations$7 = {
+var th = {
 	"new-request-form.answer-bot-modal.footer-content": "หากใช่ เราจะสามารถปิดคำร้องขอ {{requestId}} ของคุณได้",
 	"new-request-form.answer-bot-modal.footer-title": "บทความนี้ได้ตอบข้อสงสัยของคุณหรือไม่",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "ไม่ ฉันต้องการความช่วยเหลือ",
@@ -3852,26 +2836,13 @@ var translations$7 = {
 	"new-request-form.submit": "ส่ง",
 	"new-request-form.suggested-articles": "บทความที่แนะนำ"
 };
-var updated_at$7 = "2024-03-26T15:42:59Z";
-var th = {
-	locale: locale$7,
-	rtl: rtl$7,
-	translations: translations$7,
-	updated_at: updated_at$7
-};
 
 var th$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: th,
-  locale: locale$7,
-  rtl: rtl$7,
-  translations: translations$7,
-  updated_at: updated_at$7
+  default: th
 });
 
-var locale$6 = "tr";
-var rtl$6 = false;
-var translations$6 = {
+var tr = {
 	"new-request-form.answer-bot-modal.footer-content": "Yanıtlıyorsa, bu son talebinizi kapatabiliriz {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Bu makale sorunuzu yanıtlıyor mu?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Hayır, yardıma ihtiyacım var",
@@ -3901,26 +2872,13 @@ var translations$6 = {
 	"new-request-form.submit": "Gönder",
 	"new-request-form.suggested-articles": "Önerilen makaleler"
 };
-var updated_at$6 = "2024-03-26T15:43:44Z";
-var tr = {
-	locale: locale$6,
-	rtl: rtl$6,
-	translations: translations$6,
-	updated_at: updated_at$6
-};
 
 var tr$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: tr,
-  locale: locale$6,
-  rtl: rtl$6,
-  translations: translations$6,
-  updated_at: updated_at$6
+  default: tr
 });
 
-var locale$5 = "uk";
-var rtl$5 = false;
-var translations$5 = {
+var uk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3949,27 +2907,14 @@ var translations$5 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$5 = "2024-03-19T17:23:18Z";
-var uk = {
-	locale: locale$5,
-	rtl: rtl$5,
-	translations: translations$5,
-	updated_at: updated_at$5
 };
 
 var uk$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: uk,
-  locale: locale$5,
-  rtl: rtl$5,
-  translations: translations$5,
-  updated_at: updated_at$5
+  default: uk
 });
 
-var locale$4 = "ur";
-var rtl$4 = true;
-var translations$4 = {
+var ur = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -3998,27 +2943,14 @@ var translations$4 = {
 	"new-request-form.required-fields-info": "Fields marked with an asterisk (*) are required.",
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
-};
-var updated_at$4 = "2023-10-12T22:15:56Z";
-var ur = {
-	locale: locale$4,
-	rtl: rtl$4,
-	translations: translations$4,
-	updated_at: updated_at$4
 };
 
 var ur$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: ur,
-  locale: locale$4,
-  rtl: rtl$4,
-  translations: translations$4,
-  updated_at: updated_at$4
+  default: ur
 });
 
-var locale$3 = "uz";
-var rtl$3 = false;
-var translations$3 = {
+var uz = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
@@ -4048,26 +2980,13 @@ var translations$3 = {
 	"new-request-form.submit": "Submit",
 	"new-request-form.suggested-articles": "Suggested articles"
 };
-var updated_at$3 = "2024-03-19T17:24:03Z";
-var uz = {
-	locale: locale$3,
-	rtl: rtl$3,
-	translations: translations$3,
-	updated_at: updated_at$3
-};
 
 var uz$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: uz,
-  locale: locale$3,
-  rtl: rtl$3,
-  translations: translations$3,
-  updated_at: updated_at$3
+  default: uz
 });
 
-var locale$2 = "vi";
-var rtl$2 = false;
-var translations$2 = {
+var vi = {
 	"new-request-form.answer-bot-modal.footer-content": "Nếu có, chúng tôi có thể đóng yêu cầu hiện tại {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "Bài viết này có giải đáp được câu hỏi của bạn không?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Không, tôi cần trợ giúp",
@@ -4097,26 +3016,13 @@ var translations$2 = {
 	"new-request-form.submit": "Gửi",
 	"new-request-form.suggested-articles": "Bài viết được đề xuất"
 };
-var updated_at$2 = "2024-03-26T15:44:27Z";
-var vi = {
-	locale: locale$2,
-	rtl: rtl$2,
-	translations: translations$2,
-	updated_at: updated_at$2
-};
 
 var vi$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: vi,
-  locale: locale$2,
-  rtl: rtl$2,
-  translations: translations$2,
-  updated_at: updated_at$2
+  default: vi
 });
 
-var locale$1 = "zh-cn";
-var rtl$1 = false;
-var translations$1 = {
+var zhCn = {
 	"new-request-form.answer-bot-modal.footer-content": "如果是的话，我们将关闭最近的请求 {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "此文章解答该问题了吗？",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "没有，我需要帮助",
@@ -4146,26 +3052,13 @@ var translations$1 = {
 	"new-request-form.submit": "提交",
 	"new-request-form.suggested-articles": "推荐文章"
 };
-var updated_at$1 = "2024-03-26T15:45:10Z";
-var zhCn = {
-	locale: locale$1,
-	rtl: rtl$1,
-	translations: translations$1,
-	updated_at: updated_at$1
-};
 
 var zhCn$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: zhCn,
-  locale: locale$1,
-  rtl: rtl$1,
-  translations: translations$1,
-  updated_at: updated_at$1
+  default: zhCn
 });
 
-var locale = "zh-tw";
-var rtl = false;
-var translations = {
+var zhTw = {
 	"new-request-form.answer-bot-modal.footer-content": "若是，我們可關閉近期的請求 {{requestId}}",
 	"new-request-form.answer-bot-modal.footer-title": "此文章是否已回答該問題？",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "不，我仍需要幫助",
@@ -4195,21 +3088,10 @@ var translations = {
 	"new-request-form.submit": "提交",
 	"new-request-form.suggested-articles": "推薦文章"
 };
-var updated_at = "2024-03-26T15:45:54Z";
-var zhTw = {
-	locale: locale,
-	rtl: rtl,
-	translations: translations,
-	updated_at: updated_at
-};
 
 var zhTw$1 = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  default: zhTw,
-  locale: locale,
-  rtl: rtl,
-  translations: translations,
-  updated_at: updated_at
+  default: zhTw
 });
 
 export { kk$1 as $, enXObsolete$1 as A, enXPseudo$1 as B, enXTest$1 as C, es419$1 as D, esEs$1 as E, es$1 as F, et$1 as G, eu$1 as H, faAf$1 as I, fa$1 as J, fi$1 as K, fil$1 as L, fo$1 as M, frCa$1 as N, fr$1 as O, ga$1 as P, he$1 as Q, hi$1 as R, hr$1 as S, hu$1 as T, hy$1 as U, id$1 as V, is$1 as W, itCh$1 as X, it$1 as Y, ja$1 as Z, ka$1 as _, af$1 as a, klDk$1 as a0, ko$1 as a1, ku$1 as a2, lt$1 as a3, lv$1 as a4, mk$1 as a5, mn$1 as a6, ms$1 as a7, mt$1 as a8, my$1 as a9, nlBe$1 as aa, nl$1 as ab, no$1 as ac, pl$1 as ad, ptBr$1 as ae, pt$1 as af, ro$1 as ag, ru$1 as ah, sk$1 as ai, sl$1 as aj, sq$1 as ak, srMe$1 as al, sr$1 as am, sv$1 as an, th$1 as ao, tr$1 as ap, uk$1 as aq, ur$1 as ar, uz$1 as as, vi$1 as at, zhCn$1 as au, zhTw$1 as av, arXPseudo$1 as b, ar$1 as c, az$1 as d, be$1 as e, bg$1 as f, bn$1 as g, bs$1 as h, ca$1 as i, cs$1 as j, cy$1 as k, da$1 as l, deXInformal$1 as m, de$1 as n, el$1 as o, en001$1 as p, en150$1 as q, enAu$1 as r, enCa$1 as s, enGb$1 as t, enMy$1 as u, enPh$1 as v, enSe$1 as w, enUs$1 as x, enXDev$1 as y, enXKeys$1 as z };

@@ -1203,10 +1203,10 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, parentIdPat
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
 }
 
-async function addZendeskTranslations(locale, dynamicImport) {
+async function loadTranslations(locale, dynamicImport) {
     try {
-        const file = await dynamicImport();
-        instance.addResourceBundle(locale, "translation", file.translations);
+        const { default: translations } = await dynamicImport();
+        instance.addResourceBundle(locale, "translation", translations);
     }
     catch (e) {
         console.error(`Cannot load translations for ${locale}`);
@@ -1326,7 +1326,7 @@ function __variableDynamicImportRuntime0__(path) {
 async function renderNewRequestForm(settings, props, container) {
     const { baseLocale } = props;
     initI18next(baseLocale);
-    await addZendeskTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
+    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 

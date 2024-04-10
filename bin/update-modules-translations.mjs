@@ -17,9 +17,13 @@ const BASE_URL = `https://static.zdassets.com/translations`;
 
 async function writeLocaleFile(name, filePath, outputDir) {
   const response = await fetch(`${BASE_URL}${filePath}`);
-  const data = await response.json();
+  const { translations } = await response.json();
   const outputPath = resolve(outputDir, `${name.toLocaleLowerCase()}.json`);
-  await writeFile(outputPath, JSON.stringify(data, null, 2) + "\n", "utf-8");
+  await writeFile(
+    outputPath,
+    JSON.stringify(translations, null, 2) + "\n",
+    "utf-8"
+  );
 }
 
 async function fetchModuleTranslations(moduleName, packageName) {
