@@ -1,3 +1,4 @@
+/* eslint-env node */
 /**
  * This script is used for the internal Zendesk translation system, and it creates or updates the source YAML file for translations,
  * extracting the strings from the source code.

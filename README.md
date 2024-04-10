@@ -153,7 +153,16 @@ The script wraps the `i18next-parser` tool and converts its output to the YAML f
 
 #### Updating translation files
 
-Use the `bin/update-module-translations.mjs` to download the latest translations for a module. All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
+Use the `bin/update-modules-translations.mjs` to download the latest translations for all the modules. All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
+
+The first time that translations are added to a module, you need to add a mapping between the module folder and the package name on the translations systems to the `MODULE` variable in the script. For example, if a module is located in `src/modules/my-module` and the package name is `cph-theme-my-module`, you need to add:
+
+```js
+const MODULES = {
+  ...,
+  "my-module": "cph-theme-my-module"
+}
+```
 
 # Accessibility testing
 

@@ -29,7 +29,7 @@ module.exports = {
       version: "detect",
     },
   },
-  ignorePatterns: ["assets/**", "bin/**"],
+  ignorePatterns: ["assets/**"],
   rules: {
     "@typescript-eslint/consistent-type-imports": "error",
     "check-file/folder-naming-convention": [

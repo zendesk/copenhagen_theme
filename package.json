@@ -12,7 +12,7 @@
     "test": "jest",
     "test-a11y": "node bin/lighthouse/index.js",
     "i18n:extract": "node bin/extract-strings.mjs new-request-form 'src/modules/new-request-form/**/*.{ts,tsx}' src/modules/new-request-form/translations",
-    "i18n:update-translations": "node bin/update-module-translations.mjs new-request-form src/modules/new-request-form/translations/locales",
+    "i18n:update-translations": "node bin/update-modules-translations.mjs",
     "zcli": "zcli"
   },
   "dependencies": {
