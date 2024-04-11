@@ -7,7 +7,7 @@ import { Checkbox } from "./fields/Checkbox";
 import { MultiSelect } from "./fields/MultiSelect";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
-import { Button } from "@zendeskgarden/react-buttons";
+import { Anchor, Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
 import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
@@ -20,14 +20,22 @@ import { CreditCard } from "./fields/CreditCard";
 import { Tagger } from "./fields/Tagger";
 import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
+import { useTranslation } from "react-i18next";
+import { Paragraph } from "@zendeskgarden/react-typography";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
   wysiwyg: boolean;
   answerBot: AnswerBot;
   parentId: string;
+  parentIdPath: string;
   locale: string;
+  baseLocale: string;
 }
+
+const StyledParagraph = styled(Paragraph)`
+  margin: ${(props) => props.theme.space.md} 0;
+`;
 
 const Form = styled.form`
   display: flex;
@@ -44,7 +52,9 @@ export function NewRequestForm({
   wysiwyg,
   answerBot,
   parentId,
+  parentIdPath,
   locale,
+  baseLocale,
 }: NewRequestFormProps) {
   const {
     ticket_fields,
@@ -67,6 +77,7 @@ export function NewRequestForm({
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
+  const { t } = useTranslation();
 
   function handleChange(field: Field, value: Field["value"]) {
     setTicketFields(
@@ -80,6 +91,25 @@ export function NewRequestForm({
 
   return (
     <>
+      {parentId && (
+        <StyledParagraph>
+          <Anchor href={parentIdPath}>
+            {t(
+              "new-request-form.parent-request-link",
+              "Follow-up to request {{parentId}}",
+              {
+                parentId: `\u202D#${parentId}\u202C`,
+              }
+            )}
+          </Anchor>
+        </StyledParagraph>
+      )}
+      <StyledParagraph aria-hidden="true">
+        {t(
+          "new-request-form.required-fields-info",
+          "Fields marked with an asterisk (*) are required."
+        )}
+      </StyledParagraph>
       <Form
         ref={formRefCallback}
         action={action}
@@ -179,7 +209,7 @@ export function NewRequestForm({
                   {field.value === "task" && (
                     <DatePicker
                       field={due_date_field}
-                      locale={locale}
+                      locale={baseLocale}
                       valueFormat="dateTime"
                     />
                   )}
@@ -194,7 +224,11 @@ export function NewRequestForm({
               );
             case "date":
               return (
-                <DatePicker field={field} locale={locale} valueFormat="date" />
+                <DatePicker
+                  field={field}
+                  locale={baseLocale}
+                  valueFormat="date"
+                />
               );
             case "multiselect":
               return <MultiSelect field={field} />;
@@ -218,7 +252,7 @@ export function NewRequestForm({
           {(ticket_form_field.options.length === 0 ||
             ticket_form_field.value) && (
             <Button isPrimary type="submit">
-              Submit
+              {t("new-request-form.submit", "Submit")}
             </Button>
           )}
         </Footer>

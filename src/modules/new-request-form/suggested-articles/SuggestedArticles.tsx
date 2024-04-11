@@ -2,6 +2,7 @@ import { Anchor } from "@zendeskgarden/react-buttons";
 import { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { useDebounce } from "../useDebounce";
+import { useTranslation } from "react-i18next";
 
 interface SuggestedArticlesProps {
   query?: string;
@@ -70,6 +71,7 @@ export function SuggestedArticles({
   const debouncedQuery = useDebounce(inputQuery, 500);
   const [articles, setArticles] = useState<SuggestedArticle[]>([]);
   const requestsCache = useRef<RequestsCache>({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     const query = debouncedQuery?.trim().toLocaleLowerCase();
@@ -103,7 +105,9 @@ export function SuggestedArticles({
   return articles.length > 0 ? (
     <Container>
       <InnerContainer>
-        <h2>Suggested Articles</h2>
+        <h2>
+          {t("new-request-form.suggested-articles", "Suggested articles")}
+        </h2>
         <UnstyledList>
           {articles.map((article) => (
             <ListItem key={article.html_url}>

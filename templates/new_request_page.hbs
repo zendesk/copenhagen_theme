@@ -15,16 +15,6 @@
     {{t 'submit_a_request'}}
   </h1>
 
-  {{#if parent_id}}
-    <p>
-      <a href="{{page_path 'request' id=parent_id}}">Follow-up to request #{{parent_id}}</a>
-    </p>
-  {{/if}}
-
-  <p aria-hidden="true">
-    Fields marked with an asterisk (*) are required.
-  </p>
-
   <div id="main-content" class="form">
     <div id="new-request-form"></div>
   </div>
@@ -36,11 +26,13 @@
   const settings = {{json settings}};
   const requestForm = {{json new_request_form}};
   const parentId = {{json parent_id}};
+  const parentIdPath = {{json (page_path 'request' id=parent_id)}};
   const locale = {{json help_center.locale}};
+  const baseLocale = {{json help_center.base_locale}};
   const answerBot = {{json answer_bot}}
 
   const container = document.getElementById("new-request-form");
-  const props = { settings, requestForm, answerBot, parentId, locale, wysiwyg: true };
+  const props = { settings, requestForm, answerBot, parentId, parentIdPath, locale, baseLocale, wysiwyg: true };
 
   renderNewRequestForm(settings, props, container);
 </script>

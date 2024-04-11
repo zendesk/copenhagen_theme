@@ -18,7 +18,7 @@ module.exports = {
     browser: true,
   },
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint", "check-file"],
+  plugins: ["@typescript-eslint", "check-file", "@shopify"],
   root: true,
   settings: {
     "import/resolver": {
@@ -43,6 +43,20 @@ module.exports = {
       },
       {
         ignoreMiddleExtensions: true,
+      },
+    ],
+    "@shopify/jsx-no-hardcoded-content": [
+      "warn",
+      {
+        checkProps: ["title", "aria-label"],
+        modules: {
+          "@zendeskgarden/react-tooltips": {
+            Tooltip: { checkProps: ["content"] },
+          },
+          "react-i18next": {
+            Trans: { allowStrings: true },
+          },
+        },
       },
     ],
   },

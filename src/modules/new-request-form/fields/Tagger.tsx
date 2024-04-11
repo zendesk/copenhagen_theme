@@ -11,28 +11,16 @@ import {
   Option,
   OptGroup,
 } from "@zendeskgarden/react-dropdowns.next";
-import styled from "styled-components";
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import { useState, useRef, useEffect } from "react";
-import { hideVisually } from "polished";
 import { useNestedOptions } from "./useNestedOptions";
+import { EmptyValueOption } from "./EmptyValueOption";
 
 interface TaggerProps {
   field: Field;
   onChange: (value: string) => void;
 }
-
-const HideVisually = styled.span`
-  ${hideVisually()}
-`;
-
-const EmptyValue = () => (
-  <>
-    <Span aria-hidden="true">-</Span>
-    <HideVisually>Choose an option</HideVisually>
-  </>
-);
 
 export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
@@ -87,7 +75,7 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
         selectionValue={selectionValue}
         inputValue={selectionValue}
         renderValue={({ selection }) =>
-          (selection as ISelectedOption | null)?.label ?? <EmptyValue />
+          (selection as ISelectedOption | null)?.label ?? <EmptyValueOption />
         }
         isExpanded={isExpanded}
       >
@@ -106,7 +94,7 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
           currentGroup.options.map((option) =>
             option.value === "" ? (
               <Option key={option.value} {...option}>
-                <EmptyValue />
+                <EmptyValueOption />
               </Option>
             ) : (
               <Option key={option.value} {...option} />
