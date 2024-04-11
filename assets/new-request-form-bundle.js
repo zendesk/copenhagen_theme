@@ -1,50 +1,5 @@
-import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, u as useTranslation, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, n as useToast, o as Notification, q as Title, t as Close, v as useDropzone, w as FileUpload, x as Datepicker, y as useGrid, z as focusStyles, B as FauxInput, E as Tag, G as SvgAlertWarningStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
-
-function createTheme(settings) {
-    return {
-        ...DEFAULT_THEME,
-        rtl: document.dir === "rtl",
-        colors: {
-            ...DEFAULT_THEME.colors,
-            foreground: settings.text_color,
-            primaryHue: settings.brand_color,
-        },
-        components: {
-            "buttons.anchor": Ne `
-        color: ${settings.link_color};
-
-        :hover,
-        :active,
-        :focus {
-          color: ${settings.hover_link_color};
-        }
-
-        &:visited {
-          color: ${settings.visited_link_color};
-        }
-      `,
-        },
-    };
-}
-
-const ModalContainerContext = reactExports.createContext(null);
-
-// z-index needs to be higher than the z-index of the navbar,
-const ModalContainer = styled.div `
-  z-index: 2147483647;
-  position: fixed;
-`;
-function ModalContainerProvider({ children, }) {
-    const [container, setContainer] = reactExports.useState();
-    const containerRefCallback = (element) => {
-        setContainer(element);
-    };
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ModalContainer, { ref: containerRefCallback }), container && (jsxRuntimeExports.jsx(ModalContainerContext.Provider, { value: container, children: children }))] }));
-}
-
-function ThemeProviders({ theme, children, }) {
-    return (jsxRuntimeExports.jsx(ThemeProvider, { theme: theme, children: jsxRuntimeExports.jsx(ToastProvider, { zIndex: 2147483647, children: jsxRuntimeExports.jsx(ModalContainerProvider, { children: children }) }) }));
-}
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, s as styled, h as hideVisually, u as useTranslation, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, l as useToast, N as Notification, m as Title, n as Close, o as useDropzone, q as FileUpload, D as Datepicker, t as useGrid, v as focusStyles, w as FauxInput, x as Tag, y as SvgAlertWarningStroke, $ as $e, z as Header$1, B as Footer$2, E as Modal, G as Alert, J as Body$2, K as Accordion, Q as Paragraph, R as Button, U as Close$2, V as instance, W as initReactI18next, X as reactDomExports } from 'vendor-bundle';
+import { M as ModalContainerContext, T as ThemeProviders, c as createTheme } from 'ThemeProviders-bundle';
 
 function useModalContainer() {
     const modalContainer = reactExports.useContext(ModalContainerContext);
