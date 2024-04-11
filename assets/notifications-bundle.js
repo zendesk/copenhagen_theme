@@ -1,5 +1,6 @@
 import { l as useToast, r as reactExports, j as jsxRuntimeExports, N as Notification, m as Title, n as Close, X as reactDomExports } from 'vendor-bundle';
-import { T as ThemeProviders, c as createTheme } from 'ThemeProviders-bundle';
+import { F as FLASH_NOTIFICATIONS_KEY, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
+export { a as addFlashNotification } from 'addFlashNotification-bundle';
 
 function FlashNotifications({ notifications, closeLabel, }) {
     const { addToast } = useToast();
@@ -11,8 +12,6 @@ function FlashNotifications({ notifications, closeLabel, }) {
     }, [addToast, notifications, closeLabel]);
     return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
 }
-
-const FLASH_NOTIFICATIONS_KEY = "HC_FLASH_NOTIFICATIONS";
 
 function renderFlashNotifications(settings, closeLabel) {
     const flashNotifications = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
@@ -31,18 +30,4 @@ function renderFlashNotifications(settings, closeLabel) {
     }
 }
 
-function addFlashNotification(notification) {
-    try {
-        const currentValue = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
-        const notifications = currentValue
-            ? JSON.parse(currentValue)
-            : [];
-        notifications.push(notification);
-        window.sessionStorage.setItem(FLASH_NOTIFICATIONS_KEY, JSON.stringify(notifications));
-    }
-    catch (e) {
-        console.error("Cannot add flash notification", e);
-    }
-}
-
-export { addFlashNotification, renderFlashNotifications };
+export { renderFlashNotifications };

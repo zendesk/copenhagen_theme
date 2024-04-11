@@ -46,4 +46,20 @@ function ThemeProviders({ theme, children, }) {
     return (jsxRuntimeExports.jsx(ThemeProvider, { theme: theme, children: jsxRuntimeExports.jsx(ToastProvider, { zIndex: 2147483647, children: jsxRuntimeExports.jsx(ModalContainerProvider, { children: children }) }) }));
 }
 
-export { ModalContainerContext as M, ThemeProviders as T, createTheme as c };
+const FLASH_NOTIFICATIONS_KEY = "HC_FLASH_NOTIFICATIONS";
+
+function addFlashNotification(notification) {
+    try {
+        const currentValue = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
+        const notifications = currentValue
+            ? JSON.parse(currentValue)
+            : [];
+        notifications.push(notification);
+        window.sessionStorage.setItem(FLASH_NOTIFICATIONS_KEY, JSON.stringify(notifications));
+    }
+    catch (e) {
+        console.error("Cannot add flash notification", e);
+    }
+}
+
+export { FLASH_NOTIFICATIONS_KEY as F, ModalContainerContext as M, ThemeProviders as T, addFlashNotification as a, createTheme as c };
