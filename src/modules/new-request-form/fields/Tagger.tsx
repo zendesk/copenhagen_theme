@@ -65,7 +65,9 @@ export function Tagger({ field, onChange }: TaggerProps): JSX.Element {
         {label}
         {required && <Span aria-hidden="true">*</Span>}
       </Label>
-      {description && <Hint>{description}</Hint>}
+      {description && (
+        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+      )}
       <Combobox
         ref={wrapperRef}
         inputProps={{ required, name }}

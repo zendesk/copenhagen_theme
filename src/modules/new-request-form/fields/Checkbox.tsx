@@ -39,7 +39,9 @@ export function Checkbox({ field, onChange }: CheckboxProps): JSX.Element {
           {label}
           {required && <Span aria-hidden="true">*</Span>}
         </Label>
-        {description && <Hint>{description}</Hint>}
+        {description && (
+          <Hint dangerouslySetInnerHTML={{ __html: description }} />
+        )}
       </GardenCheckbox>
       {error && <Message validation="error">{error}</Message>}
     </GardenField>

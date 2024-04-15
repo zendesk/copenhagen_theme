@@ -28,7 +28,9 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
         {label}
         {required && <Span aria-hidden="true">*</Span>}
       </Label>
-      {description && <Hint>{description}</Hint>}
+      {description && (
+        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+      )}
       <Input
         name={name}
         type="text"

@@ -57,7 +57,9 @@ export function DatePicker({
         {label}
         {required && <Span aria-hidden="true">*</Span>}
       </Label>
-      {description && <Hint>{description}</Hint>}
+      {description && (
+        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+      )}
       <GardenDatepicker value={date} onChange={handleChange} locale={locale}>
         <Input required={required} lang={locale} onChange={handleInputChange} />
       </GardenDatepicker>
