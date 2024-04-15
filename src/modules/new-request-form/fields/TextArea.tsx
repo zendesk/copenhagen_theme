@@ -41,7 +41,9 @@ export function TextArea({
         {label}
         {required && <Span aria-hidden="true">*</Span>}
       </Label>
-      {description && <Hint>{description}</Hint>}
+      {description && (
+        <Hint dangerouslySetInnerHTML={{ __html: description }} />
+      )}
       <Textarea
         ref={textAreaRefCallback}
         name={name}
