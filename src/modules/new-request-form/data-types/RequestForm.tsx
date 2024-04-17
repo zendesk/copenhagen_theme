@@ -10,9 +10,9 @@ export interface RequestForm {
   errors: string | null;
   ticket_form_field: Field;
   parent_id_field: Field;
-  email_field: Field;
-  cc_field: Field;
-  organization_field: Field;
+  email_field: Field | null;
+  cc_field: Field | null;
+  organization_field: Field | null;
   due_date_field: Field;
   ticket_fields: Field[];
   end_user_conditions: EndUserCondition[];

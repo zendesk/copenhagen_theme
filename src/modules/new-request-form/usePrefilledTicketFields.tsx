@@ -1,18 +1,10 @@
+import { useMemo } from "react";
 import type { Field } from "./data-types";
 import DOMPurify from "dompurify";
 
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";
-const ALLOWED_SYSTEM_FIELDS = [
-  "anonymous_requester_email",
-  "priority",
-  "type",
-  "description",
-  "subject",
-  "due_at",
-  "collaborators",
-  "organization_id",
-];
+
 const ALLOWED_BOOLEAN_VALUES = ["true", "false"];
 const ALLOWED_HTML_TAGS = [
   "pre",
@@ -31,9 +23,47 @@ const ALLOWED_HTML_TAGS = [
   "br",
 ];
 
-export function usePrefilledTicketFields(fields: Field[]): Field[] {
+interface Fields {
+  ticketFields: Field[];
+  emailField: Field | null;
+  ccField: Field | null;
+  organizationField: Field | null;
+  dueDateField: Field;
+}
+
+function getFieldFromId(id: string, prefilledTicketFields: Fields) {
+  const isCustomField = !Number.isNaN(Number(id));
+
+  if (isCustomField) {
+    const name = `request[custom_fields][${id}]`;
+    return prefilledTicketFields.ticketFields.find(
+      (field) => field.name === name
+    );
+  }
+
+  switch (id) {
+    case "anonymous_requester_email":
+      return prefilledTicketFields.emailField;
+    case "due_at":
+      return prefilledTicketFields.dueDateField;
+    case "collaborators":
+      return prefilledTicketFields.ccField;
+    case "organization_id":
+      return prefilledTicketFields.organizationField;
+    default:
+      return prefilledTicketFields.ticketFields.find(
+        (field) => field.name === `request[${id}]`
+      );
+  }
+}
+
+function getPrefilledTicketFields(fields: Fields): Fields {
   const { href } = location;
   const params = new URL(href).searchParams;
+  const prefilledFields: Fields = {
+    ...fields,
+    ticketFields: [...fields.ticketFields],
+  };
 
   if (href.length > MAX_URL_LENGTH) return fields;
   if (params.get("parent_id")) return fields;
@@ -42,20 +72,8 @@ export function usePrefilledTicketFields(fields: Field[]): Field[] {
     if (!key.startsWith(TICKET_FIELD_PREFIX)) continue;
 
     const ticketFieldId = key.substring(TICKET_FIELD_PREFIX.length);
-    const isSystemField = ALLOWED_SYSTEM_FIELDS.includes(ticketFieldId);
-    const isCustomField = !Number.isNaN(Number(ticketFieldId));
 
-    if (!isSystemField && !isCustomField) continue;
-
-    const isCollaborators = ticketFieldId === "collaborators";
-
-    const name = isSystemField
-      ? isCollaborators
-        ? "request[collaborators][]"
-        : `request[${ticketFieldId}]`
-      : `request[custom_fields][${ticketFieldId}]`;
-
-    const field = fields.find((field) => field.name === name);
+    const field = getFieldFromId(ticketFieldId, prefilledFields);
 
     if (!field) continue;
 
@@ -89,5 +107,25 @@ export function usePrefilledTicketFields(fields: Field[]): Field[] {
     }
   }
 
-  return fields;
+  return prefilledFields;
+}
+
+export function usePrefilledTicketFields({
+  ticketFields,
+  ccField,
+  dueDateField,
+  emailField,
+  organizationField,
+}: Fields): Fields {
+  return useMemo(
+    () =>
+      getPrefilledTicketFields({
+        ticketFields,
+        ccField,
+        dueDateField,
+        emailField,
+        organizationField,
+      }),
+    [ticketFields, ccField, dueDateField, emailField, organizationField]
+  );
 }
