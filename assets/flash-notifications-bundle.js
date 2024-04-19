@@ -1,6 +1,4 @@
-import { u as useToast, r as reactExports, j as jsxRuntimeExports, N as Notification, T as Title, C as Close, a0 as reactDomExports } from 'vendor';
-import { F as FLASH_NOTIFICATIONS_KEY, T as ThemeProviders, c as createTheme } from 'addFlashNotification';
-export { a as addFlashNotification } from 'addFlashNotification';
+import { u as useToast, r as reactExports, j as jsxRuntimeExports, N as Notification, T as Title, C as Close, a5 as FLASH_NOTIFICATIONS_KEY, a2 as reactDomExports, a3 as ThemeProviders, a4 as createTheme } from 'shared';
 
 function FlashNotifications({ notifications, closeLabel, }) {
     const { addToast } = useToast();

@@ -12,9 +12,8 @@ import { Alert } from "@zendeskgarden/react-notifications";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Paragraph } from "@zendeskgarden/react-typography";
-import { useModalContainer } from "../../garden-theme";
+import { useModalContainer, addFlashNotification } from "../../shared";
 import { useTranslation } from "react-i18next";
-import { addFlashNotification } from "../../notifications";
 
 interface AnswerBotModalProps {
   authToken: string;

@@ -1,4 +1,4 @@
-import { g as getDefaultExportFromCjs, c as commonjsGlobal } from 'vendor';
+import { g as getDefaultExportFromCjs, c as commonjsGlobal } from 'shared';
 
 function _mergeNamespaces(n, m) {
 	m.forEach(function (e) {

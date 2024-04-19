@@ -29,7 +29,7 @@ export default defineConfig([
     context: "this",
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
-      notifications: "src/modules/notifications/index.ts",
+      "flash-notifications": "src/modules/flash-notifications/index.ts",
     },
     output: {
       dir: "assets",
@@ -42,8 +42,8 @@ export default defineConfig([
           return "wysiwyg";
         }
 
-        if (id.includes("node_modules")) {
-          return "vendor";
+        if (id.includes("node_modules") || id.includes("src/modules/shared")) {
+          return "shared";
         }
 
         // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`

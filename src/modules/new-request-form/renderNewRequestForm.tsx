@@ -1,9 +1,13 @@
 import { render } from "react-dom";
-import type { Settings } from "../garden-theme/createTheme";
-import { createTheme, ThemeProviders } from "../garden-theme";
+import type { Settings } from "../shared";
+import {
+  createTheme,
+  ThemeProviders,
+  loadTranslations,
+  initI18next,
+} from "../shared";
 import type { NewRequestFormProps } from "./NewRequestForm";
 import { NewRequestForm } from "./NewRequestForm";
-import { loadTranslations, initI18next } from "../i18n";
 
 export async function renderNewRequestForm(
   settings: Settings,
