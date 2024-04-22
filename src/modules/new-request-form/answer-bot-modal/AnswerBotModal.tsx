@@ -109,7 +109,7 @@ export function AnswerBotModal({
     }
   };
 
-  const unsolvedNotificationAndRedirect = () => {
+  const addUnsolvedNotificationAndRedirect = () => {
     addFlashNotification({
       type: "success",
       message: t(
@@ -117,7 +117,7 @@ export function AnswerBotModal({
         "Your request was successfully submitted"
       ),
     });
-    window.location.href = getUnsolvedRedirectUrl();
+    window.location.assign(getUnsolvedRedirectUrl());
   };
 
   const solveRequest = async () => {
@@ -165,14 +165,14 @@ export function AnswerBotModal({
       },
     });
 
-    unsolvedNotificationAndRedirect();
+    addUnsolvedNotificationAndRedirect();
   };
 
   return (
     <Modal
       appendToNode={modalContainer}
       onClose={() => {
-        unsolvedNotificationAndRedirect();
+        addUnsolvedNotificationAndRedirect();
       }}
     >
       <StyledHeader>

@@ -1060,12 +1060,12 @@ function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId
             return helpCenterPath;
         }
     };
-    const unsolvedNotificationAndRedirect = () => {
+    const addUnsolvedNotificationAndRedirect = () => {
         addFlashNotification({
             type: "success",
             message: t("new-request-form.answer-bot-modal.request-submitted", "Your request was successfully submitted"),
         });
-        window.location.href = getUnsolvedRedirectUrl();
+        window.location.assign(getUnsolvedRedirectUrl());
     };
     const solveRequest = async () => {
         const response = await fetch("/api/v2/answer_bot/resolution", {
@@ -1104,10 +1104,10 @@ function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId
                 "Content-Type": "application/json",
             },
         });
-        unsolvedNotificationAndRedirect();
+        addUnsolvedNotificationAndRedirect();
     };
     return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: () => {
-            unsolvedNotificationAndRedirect();
+            addUnsolvedNotificationAndRedirect();
         }, children: [jsxRuntimeExports.jsxs(StyledHeader, { children: [jsxRuntimeExports.jsx(Alert, { type: "success", children: alertMessage }), jsxRuntimeExports.jsx(H2, { children: t("new-request-form.answer-bot-modal.title", "While you wait, do any of these articles answer your question?") })] }), jsxRuntimeExports.jsx(Body$2, { children: jsxRuntimeExports.jsx(Accordion, { level: 3, expandedSections: [expandedIndex], onChange: (index) => {
                         setExpandedIndex(index);
                     }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${authToken}`, target: "_blank", children: t("new-request-form.answer-bot-modal.view-article", "View article") })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: t("new-request-form.answer-bot-modal.footer-title", "Does this article answer your question?") }), jsxRuntimeExports.jsx("div", { children: t("new-request-form.answer-bot-modal.footer-content", "If it does, we can close your recent request {{requestId}}", {
