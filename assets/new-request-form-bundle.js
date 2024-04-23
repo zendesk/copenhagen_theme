@@ -1,4 +1,4 @@
-import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, s as styled, h as hideVisually, u as useTranslation, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, l as useToast, N as Notification, m as Title, n as Close, o as useDropzone, q as FileUpload, D as Datepicker, t as useGrid, v as focusStyles, w as FauxInput, x as Tag, y as SvgAlertWarningStroke, $ as $e, z as Header$1, B as Footer$2, E as Modal, G as Alert, J as Body$2, K as Accordion, Q as Paragraph, R as Button, U as Close$2, V as instance, W as initReactI18next, X as reactDomExports } from 'vendor-bundle';
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, m as mainExports, N as Notification, T as Title, C as Close, b as Textarea, s as styled, h as hideVisually, c as Field$1, d as Label, e as Hint$1, f as Combobox, O as Option, g as Message$1, i as Checkbox$1, k as OptGroup, p as purify, l as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as useDropzone, t as FileUpload, D as Datepicker, v as useGrid, w as focusStyles, x as FauxInput, y as Tag, z as SvgAlertWarningStroke, $ as $e, B as Header$1, E as Footer$2, G as Modal, J as Alert, K as Body$2, Q as Accordion, R as Paragraph, U as Button, V as Close$2, W as instance, X as initReactI18next, Y as reactDomExports } from 'vendor-bundle';
 import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
 
 function useModalContainer() {
@@ -23,18 +23,44 @@ function Input({ field, onChange }) {
                 }, autoComplete: autocomplete, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
-function TextArea({ field, hasWysiwyg, onChange, }) {
-    const { label, error, value, name, required, description } = field;
-    const wysiwygInitialized = reactExports.useRef(false);
-    const textAreaRefCallback = reactExports.useCallback((ref) => {
-        if (hasWysiwyg && ref && !wysiwygInitialized.current) {
-            if (window.NewRequestForm) {
-                wysiwygInitialized.current = true;
-                window.NewRequestForm.initializeWysiwyg(ref);
-            }
+function useWysiwyg({ hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, }) {
+    const isInitializedRef = reactExports.useRef(false);
+    const { addToast } = useToast();
+    const { t } = useTranslation();
+    return reactExports.useCallback(async (ref) => {
+        if (hasWysiwyg && ref && !isInitializedRef.current) {
+            isInitializedRef.current = true;
+            const editor = await mainExports.createEditor(ref, {
+                editorType: "supportRequests",
+                hasAtMentions,
+                userRole,
+                brandId,
+                baseLocale,
+            });
+            const notifications = editor.plugins.get("Notification");
+            // Handle generic notifications and errors with "toast" notifications
+            notifications.on("show", (event, data) => {
+                event.stop(); // Prevent the default notification from being shown via window.alert
+                const message = data.message instanceof Error
+                    ? data.message.message
+                    : data.message;
+                const { type, title } = data;
+                addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: type, children: [jsxRuntimeExports.jsx(Title, { children: title }), message, jsxRuntimeExports.jsx(Close, { "aria-label": t("new-request-form.close-label", "Close"), onClick: close })] })));
+            });
         }
-    }, [hasWysiwyg]);
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Textarea, { ref: textAreaRefCallback, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    }, [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, addToast, t]);
+}
+
+function TextArea({ field, hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, onChange, }) {
+    const { label, error, value, name, required, description } = field;
+    const ref = useWysiwyg({
+        hasWysiwyg,
+        baseLocale,
+        hasAtMentions,
+        userRole,
+        brandId,
+    });
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Textarea, { ref: ref, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 const HideVisually = styled.span `
@@ -1144,7 +1170,7 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, baseLocale, answerBotModal, }) {
+function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, baseLocale, hasAtMentions, userRole, brandId, answerBotModal, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const { answerBot } = answerBotModal;
     const { ticketFields: prefilledTicketFields, emailField, ccField, organizationField: prefilledOrganizationField, dueDateField, } = usePrefilledTicketFields({
@@ -1186,9 +1212,9 @@ function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, 
                             case "partialcreditcard":
                                 return (jsxRuntimeExports.jsx(CreditCard, { field: field, onChange: (value) => handleChange(field, value) }));
                             case "description":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: wysiwyg, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx("input", { type: "hidden", name: description_mimetype_field.name, value: wysiwyg ? "text/html" : "text/plain" })] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: wysiwyg, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, brandId: brandId, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx("input", { type: "hidden", name: description_mimetype_field.name, value: wysiwyg ? "text/html" : "text/plain" })] }));
                             case "textarea":
-                                return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
+                                return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, brandId: brandId, onChange: (value) => handleChange(field, value) }, field.name));
                             case "priority":
                             case "tickettype":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: dueDateField, locale: baseLocale, valueFormat: "dateTime" }))] }));
