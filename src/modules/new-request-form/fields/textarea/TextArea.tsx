@@ -6,34 +6,36 @@ import {
   Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types";
-import { useCallback, useRef } from "react";
+import type { Field } from "../../data-types";
+import { useWysiwyg } from "./useWysiwyg";
 
 interface TextAreaProps {
   field: Field;
   hasWysiwyg: boolean;
+  baseLocale: string;
+  hasAtMentions: boolean;
+  userRole: string;
+  brandId: number;
   onChange: (value: string) => void;
 }
 
 export function TextArea({
   field,
   hasWysiwyg,
+  baseLocale,
+  hasAtMentions,
+  userRole,
+  brandId,
   onChange,
 }: TextAreaProps): JSX.Element {
   const { label, error, value, name, required, description } = field;
-  const wysiwygInitialized = useRef(false);
-
-  const textAreaRefCallback = useCallback(
-    (ref: HTMLTextAreaElement) => {
-      if (hasWysiwyg && ref && !wysiwygInitialized.current) {
-        if (window.NewRequestForm) {
-          wysiwygInitialized.current = true;
-          window.NewRequestForm.initializeWysiwyg(ref);
-        }
-      }
-    },
-    [hasWysiwyg]
-  );
+  const ref = useWysiwyg({
+    hasWysiwyg,
+    baseLocale,
+    hasAtMentions,
+    userRole,
+    brandId,
+  });
 
   return (
     <GardenField>
@@ -45,7 +47,7 @@ export function TextArea({
         <Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Textarea
-        ref={textAreaRefCallback}
+        ref={ref}
         name={name}
         defaultValue={value as string}
         validation={error ? "error" : undefined}

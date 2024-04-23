@@ -33,6 +33,9 @@
     parentIdPath: {{json (page_path 'request' id=parent_id)}},
     locale: {{json help_center.locale}},
     baseLocale: {{json help_center.base_locale}},
+    hasAtMentions: {{json help_center.at_mentions_enabled}},
+    userRole: {{json user.role}},
+    brandId: {{json brand.id}},
     wysiwyg: true,
     answerBotModal: {
       answerBot: {{json answer_bot}},

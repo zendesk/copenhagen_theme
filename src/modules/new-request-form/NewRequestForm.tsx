@@ -1,7 +1,7 @@
 import type { AnswerBot, Field, RequestForm } from "./data-types";
 import { useState } from "react";
 import { Input } from "./fields/Input";
-import { TextArea } from "./fields/TextArea";
+import { TextArea } from "./fields/textarea/TextArea";
 import { DropDown } from "./fields/DropDown";
 import { Checkbox } from "./fields/Checkbox";
 import { MultiSelect } from "./fields/MultiSelect";
@@ -30,6 +30,9 @@ export interface NewRequestFormProps {
   parentIdPath: string;
   locale: string;
   baseLocale: string;
+  hasAtMentions: boolean;
+  userRole: string;
+  brandId: number;
   answerBotModal: {
     answerBot: AnswerBot;
     hasRequestManagement: boolean;
@@ -61,6 +64,9 @@ export function NewRequestForm({
   parentIdPath,
   locale,
   baseLocale,
+  hasAtMentions,
+  userRole,
+  brandId,
   answerBotModal,
 }: NewRequestFormProps) {
   const {
@@ -207,6 +213,10 @@ export function NewRequestForm({
                     key={field.name}
                     field={field}
                     hasWysiwyg={wysiwyg}
+                    baseLocale={baseLocale}
+                    hasAtMentions={hasAtMentions}
+                    userRole={userRole}
+                    brandId={brandId}
                     onChange={(value) => handleChange(field, value)}
                   />
                   <input
@@ -222,6 +232,10 @@ export function NewRequestForm({
                   key={field.name}
                   field={field}
                   hasWysiwyg={false}
+                  baseLocale={baseLocale}
+                  hasAtMentions={hasAtMentions}
+                  userRole={userRole}
+                  brandId={brandId}
                   onChange={(value) => handleChange(field, value)}
                 />
               );
