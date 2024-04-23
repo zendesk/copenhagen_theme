@@ -6,8 +6,18 @@
 {
   "imports": {
     "new-request-form-bundle": "{{asset 'new-request-form-bundle.js'}}",
+    "notifications-bundle": "{{asset 'notifications-bundle.js'}}",
     "new-request-form-translations-bundle": "{{asset 'new-request-form-translations-bundle.js'}}",
-    "vendor-bundle": "{{asset 'vendor-bundle.js'}}"
+    "vendor-bundle": "{{asset 'vendor-bundle.js'}}",
+    "addFlashNotification-bundle": "{{asset 'addFlashNotification-bundle.js'}}"
   }
 }
+</script>
+<script type="module">
+  import {renderFlashNotifications} from "notifications-bundle";
+
+  const settings = {{json settings}};
+  const closeLabel = {{json (t 'close')}}
+
+  renderFlashNotifications(settings, closeLabel);
 </script>

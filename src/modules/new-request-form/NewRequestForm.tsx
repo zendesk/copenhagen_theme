@@ -26,11 +26,18 @@ import { Paragraph } from "@zendeskgarden/react-typography";
 export interface NewRequestFormProps {
   requestForm: RequestForm;
   wysiwyg: boolean;
-  answerBot: AnswerBot;
   parentId: string;
   parentIdPath: string;
   locale: string;
   baseLocale: string;
+  answerBotModal: {
+    answerBot: AnswerBot;
+    hasRequestManagement: boolean;
+    isSignedIn: boolean;
+    helpCenterPath: string;
+    requestsPath: string;
+    requestPath: string;
+  };
 }
 
 const StyledParagraph = styled(Paragraph)`
@@ -50,11 +57,11 @@ const Footer = styled.div`
 export function NewRequestForm({
   requestForm,
   wysiwyg,
-  answerBot,
   parentId,
   parentIdPath,
   locale,
   baseLocale,
+  answerBotModal,
 }: NewRequestFormProps) {
   const {
     ticket_fields,
@@ -73,6 +80,7 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
+  const { answerBot } = answerBotModal;
   const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -257,13 +265,16 @@ export function NewRequestForm({
           )}
         </Footer>
       </Form>
-      {answerBot.token &&
+      {answerBot.auth_token &&
+        answerBot.interaction_access_token &&
         answerBot.articles.length > 0 &&
         answerBot.request_id && (
           <AnswerBotModal
-            token={answerBot.token}
+            authToken={answerBot.auth_token}
+            interactionAccessToken={answerBot.interaction_access_token}
             articles={answerBot.articles}
             requestId={answerBot.request_id}
+            {...answerBotModal}
           />
         )}
     </>

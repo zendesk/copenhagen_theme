@@ -29,6 +29,7 @@ export default defineConfig([
     context: "this",
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
+      notifications: "src/modules/notifications/index.ts",
     },
     output: {
       dir: "assets",

@@ -1,50 +1,5 @@
-import { D as DEFAULT_THEME, N as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, T as ThemeProvider, a as ToastProvider, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, b as Textarea, h as hideVisually, u as useTranslation, c as Field$1, d as Label, e as Hint$1, C as Combobox, O as Option, f as Message$1, g as Checkbox$1, i as OptGroup, p as purify, k as FileList, l as File, m as Tooltip, P as Progress, A as Anchor, n as useToast, o as Notification, q as Title, t as Close, v as useDropzone, w as FileUpload, x as Datepicker, y as useGrid, z as focusStyles, B as FauxInput, E as Tag, G as SvgAlertWarningStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
-
-function createTheme(settings) {
-    return {
-        ...DEFAULT_THEME,
-        rtl: document.dir === "rtl",
-        colors: {
-            ...DEFAULT_THEME.colors,
-            foreground: settings.text_color,
-            primaryHue: settings.brand_color,
-        },
-        components: {
-            "buttons.anchor": Ne `
-        color: ${settings.link_color};
-
-        :hover,
-        :active,
-        :focus {
-          color: ${settings.hover_link_color};
-        }
-
-        &:visited {
-          color: ${settings.visited_link_color};
-        }
-      `,
-        },
-    };
-}
-
-const ModalContainerContext = reactExports.createContext(null);
-
-// z-index needs to be higher than the z-index of the navbar,
-const ModalContainer = styled.div `
-  z-index: 2147483647;
-  position: fixed;
-`;
-function ModalContainerProvider({ children, }) {
-    const [container, setContainer] = reactExports.useState();
-    const containerRefCallback = (element) => {
-        setContainer(element);
-    };
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ModalContainer, { ref: containerRefCallback }), container && (jsxRuntimeExports.jsx(ModalContainerContext.Provider, { value: container, children: children }))] }));
-}
-
-function ThemeProviders({ theme, children, }) {
-    return (jsxRuntimeExports.jsx(ThemeProvider, { theme: theme, children: jsxRuntimeExports.jsx(ToastProvider, { zIndex: 2147483647, children: jsxRuntimeExports.jsx(ModalContainerProvider, { children: children }) }) }));
-}
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, T as Textarea, s as styled, h as hideVisually, u as useTranslation, a as Field$1, b as Label, c as Hint$1, C as Combobox, O as Option, d as Message$1, e as Checkbox$1, f as OptGroup, p as purify, g as FileList, i as File, k as Tooltip, P as Progress, A as Anchor, l as useToast, N as Notification, m as Title, n as Close, o as useDropzone, q as FileUpload, D as Datepicker, t as useGrid, v as focusStyles, w as FauxInput, x as Tag, y as SvgAlertWarningStroke, $ as $e, z as Header$1, B as Footer$2, E as Modal, G as Alert, J as Body$2, K as Accordion, Q as Paragraph, R as Button, U as Close$2, V as instance, W as initReactI18next, X as reactDomExports } from 'vendor-bundle';
+import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
 
 function useModalContainer() {
     const modalContainer = reactExports.useContext(ModalContainerContext);
@@ -1076,28 +1031,7 @@ const ButtonsContainer = styled.div `
   display: flex;
   gap: ${(props) => props.theme.space.sm};
 `;
-/**
- * We are doing an old-school form submission here,
- * so the server can redirect the user to the proper page and
- * show a notification
- */
-async function submitForm(action, data) {
-    const token = await fetchCsrfToken$1();
-    const allData = { ...data, authenticity_token: token };
-    const form = document.createElement("form");
-    form.method = "post";
-    form.action = action;
-    for (const [name, value] of Object.entries(allData)) {
-        const input = document.createElement("input");
-        input.type = "hidden";
-        input.name = name;
-        input.value = value;
-        form.appendChild(input);
-    }
-    document.body.appendChild(form);
-    form.submit();
-}
-function AnswerBotModal({ token, articles, requestId, }) {
+function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId, hasRequestManagement, isSignedIn, helpCenterPath, requestsPath, requestPath, }) {
     const [expandedIndex, setExpandedIndex] = reactExports.useState(0);
     const [alertMessage, setAlertMessage] = reactExports.useState("");
     const modalContainer = useModalContainer();
@@ -1113,28 +1047,70 @@ function AnswerBotModal({ token, articles, requestId, }) {
     const getExpandedArticleId = () => {
         return String(articles[expandedIndex]?.article_id);
     };
-    const solveRequest = () => {
-        submitForm("/hc/answer_bot/solve", {
-            article_id: getExpandedArticleId(),
-            token,
-        });
+    const getUnsolvedRedirectUrl = () => {
+        if (!isSignedIn) {
+            const searchParams = new URLSearchParams();
+            searchParams.set("return_to", requestsPath);
+            return `${helpCenterPath}?${searchParams.toString()}`;
+        }
+        else if (hasRequestManagement) {
+            return requestPath;
+        }
+        else {
+            return helpCenterPath;
+        }
     };
-    const markArticleAsIrrelevant = () => {
-        submitForm("/hc/answer_bot/irrelevant", {
-            article_id: getExpandedArticleId(),
-            token,
+    const addUnsolvedNotificationAndRedirect = () => {
+        addFlashNotification({
+            type: "success",
+            message: t("new-request-form.answer-bot-modal.request-submitted", "Your request was successfully submitted"),
         });
+        window.location.assign(getUnsolvedRedirectUrl());
     };
-    const ignoreAnswerBot = () => {
-        submitForm("/hc/answer_bot/ignore", {
-            token,
+    const solveRequest = async () => {
+        const response = await fetch("/api/v2/answer_bot/resolution", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: getExpandedArticleId(),
+                interaction_access_token: interactionAccessToken,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
         });
+        if (response.ok) {
+            addFlashNotification({
+                type: "success",
+                message: t("new-request-form.answer-bot-modal.request-closed", "Nice. Your request has been closed."),
+            });
+        }
+        else {
+            addFlashNotification({
+                type: "error",
+                message: t("new-request-form.answer-bot-modal.solve-error", "There was an error closing your request"),
+            });
+        }
+        window.location.href = helpCenterPath;
+    };
+    const markArticleAsIrrelevant = async () => {
+        await fetch("/api/v2/answer_bot/rejection", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: getExpandedArticleId(),
+                interaction_access_token: interactionAccessToken,
+                reason_id: 0,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        addUnsolvedNotificationAndRedirect();
     };
     return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: () => {
-            ignoreAnswerBot();
+            addUnsolvedNotificationAndRedirect();
         }, children: [jsxRuntimeExports.jsxs(StyledHeader, { children: [jsxRuntimeExports.jsx(Alert, { type: "success", children: alertMessage }), jsxRuntimeExports.jsx(H2, { children: t("new-request-form.answer-bot-modal.title", "While you wait, do any of these articles answer your question?") })] }), jsxRuntimeExports.jsx(Body$2, { children: jsxRuntimeExports.jsx(Accordion, { level: 3, expandedSections: [expandedIndex], onChange: (index) => {
                         setExpandedIndex(index);
-                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${token}`, target: "_blank", children: t("new-request-form.answer-bot-modal.view-article", "View article") })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: t("new-request-form.answer-bot-modal.footer-title", "Does this article answer your question?") }), jsxRuntimeExports.jsx("div", { children: t("new-request-form.answer-bot-modal.footer-content", "If it does, we can close your recent request {{requestId}}", {
+                    }, children: articles.map(({ article_id, html_url, snippet, title }, index) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { tabIndex: expandedIndex === index ? 0 : -1, isExternal: true, href: `${html_url}?auth_token=${authToken}`, target: "_blank", children: t("new-request-form.answer-bot-modal.view-article", "View article") })] })] }, article_id))) }) }), jsxRuntimeExports.jsxs(StyledFooter, { children: [jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(H3, { children: t("new-request-form.answer-bot-modal.footer-title", "Does this article answer your question?") }), jsxRuntimeExports.jsx("div", { children: t("new-request-form.answer-bot-modal.footer-content", "If it does, we can close your recent request {{requestId}}", {
                                     requestId: `\u202D#${requestId}\u202C`,
                                 }) })] }), jsxRuntimeExports.jsxs(ButtonsContainer, { children: [jsxRuntimeExports.jsx(Button, { onClick: () => {
                                     markArticleAsIrrelevant();
@@ -1154,8 +1130,9 @@ const Form = styled.form `
 const Footer = styled.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
-function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, parentIdPath, locale, baseLocale, }) {
+function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, baseLocale, answerBotModal, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
+    const { answerBot } = answerBotModal;
     const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
@@ -1198,9 +1175,10 @@ function NewRequestForm({ requestForm, wysiwyg, answerBot, parentId, parentIdPat
                                 return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                         }
                     }), attachments_field && jsxRuntimeExports.jsx(Attachments, { field: attachments_field }), inline_attachments_fields.map(({ type, name, value }, index) => (jsxRuntimeExports.jsx("input", { type: type, name: name, value: value }, index))), jsxRuntimeExports.jsx(Footer, { children: (ticket_form_field.options.length === 0 ||
-                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: t("new-request-form.submit", "Submit") })) })] }), answerBot.token &&
+                            ticket_form_field.value) && (jsxRuntimeExports.jsx(Button, { isPrimary: true, type: "submit", children: t("new-request-form.submit", "Submit") })) })] }), answerBot.auth_token &&
+                answerBot.interaction_access_token &&
                 answerBot.articles.length > 0 &&
-                answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { token: answerBot.token, articles: answerBot.articles, requestId: answerBot.request_id }))] }));
+                answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { authToken: answerBot.auth_token, interactionAccessToken: answerBot.interaction_access_token, articles: answerBot.articles, requestId: answerBot.request_id, ...answerBotModal }))] }));
 }
 
 async function loadTranslations(locale, dynamicImport) {
