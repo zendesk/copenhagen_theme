@@ -23,24 +23,29 @@
 <script type="module">
   import { renderNewRequestForm } from "new-request-form-bundle";
 
-  const settings = {{json settings}};
-  const requestForm = {{json new_request_form}};
-  const parentId = {{json parent_id}};
-  const parentIdPath = {{json (page_path 'request' id=parent_id)}};
-  const locale = {{json help_center.locale}};
-  const baseLocale = {{json help_center.base_locale}};
-
-  const answerBotModal = {
-    answerBot: {{json answer_bot}},
-    hasRequestManagement: {{json help_center.request_management_enabled}},
-    isSignedIn: {{json signed_in}},
-    helpCenterPath: {{json (page_path 'help_center')}},
-    requestsPath: {{json (page_path 'requests')}},
-    requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
-  }
-
   const container = document.getElementById("new-request-form");
-  const props = { requestForm, parentId, parentIdPath, locale, baseLocale, wysiwyg: true, answerBotModal };
+
+  const settings = {{json settings}};
+
+  const props = {
+    requestForm: {{json new_request_form}},
+    parentId: {{json parent_id}},
+    parentIdPath: {{json (page_path 'request' id=parent_id)}},
+    locale: {{json help_center.locale}},
+    baseLocale: {{json help_center.base_locale}},
+    hasAtMentions: {{json help_center.at_mentions_enabled}},
+    userRole: {{json user.role}},
+    brandId: {{json brand.id}},
+    wysiwyg: true,
+    answerBotModal: {
+      answerBot: {{json answer_bot}},
+      hasRequestManagement: {{json help_center.request_management_enabled}},
+      isSignedIn: {{json signed_in}},
+      helpCenterPath: {{json (page_path 'help_center')}},
+      requestsPath: {{json (page_path 'requests')}},
+      requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
+    },
+  };
 
   renderNewRequestForm(settings, props, container);
 </script>
