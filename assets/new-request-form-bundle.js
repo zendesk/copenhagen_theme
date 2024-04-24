@@ -18,7 +18,9 @@ function Input({ field, onChange }) {
     if (type === "decimal")
         stepProp.step = "any";
     const autocomplete = type === "anonymous_requester_email" ? "email" : undefined;
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value), autoComplete: autocomplete, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => {
+                    onChange && onChange(e.target.value);
+                }, autoComplete: autocomplete, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function TextArea({ field, hasWysiwyg, onChange, }) {
@@ -406,16 +408,6 @@ function useFormSubmit(ticketFields) {
 
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";
-const ALLOWED_SYSTEM_FIELDS = [
-    "anonymous_requester_email",
-    "priority",
-    "type",
-    "description",
-    "subject",
-    "due_at",
-    "collaborators",
-    "organization_id",
-];
 const ALLOWED_BOOLEAN_VALUES = ["true", "false"];
 const ALLOWED_HTML_TAGS = [
     "pre",
@@ -433,9 +425,32 @@ const ALLOWED_HTML_TAGS = [
     "em",
     "br",
 ];
-function usePrefilledTicketFields(fields) {
+function getFieldFromId(id, prefilledTicketFields) {
+    const isCustomField = !Number.isNaN(Number(id));
+    if (isCustomField) {
+        const name = `request[custom_fields][${id}]`;
+        return prefilledTicketFields.ticketFields.find((field) => field.name === name);
+    }
+    switch (id) {
+        case "anonymous_requester_email":
+            return prefilledTicketFields.emailField;
+        case "due_at":
+            return prefilledTicketFields.dueDateField;
+        case "collaborators":
+            return prefilledTicketFields.ccField;
+        case "organization_id":
+            return prefilledTicketFields.organizationField;
+        default:
+            return prefilledTicketFields.ticketFields.find((field) => field.name === `request[${id}]`);
+    }
+}
+function getPrefilledTicketFields(fields) {
     const { href } = location;
     const params = new URL(href).searchParams;
+    const prefilledFields = {
+        ...fields,
+        ticketFields: [...fields.ticketFields],
+    };
     if (href.length > MAX_URL_LENGTH)
         return fields;
     if (params.get("parent_id"))
@@ -444,17 +459,7 @@ function usePrefilledTicketFields(fields) {
         if (!key.startsWith(TICKET_FIELD_PREFIX))
             continue;
         const ticketFieldId = key.substring(TICKET_FIELD_PREFIX.length);
-        const isSystemField = ALLOWED_SYSTEM_FIELDS.includes(ticketFieldId);
-        const isCustomField = !Number.isNaN(Number(ticketFieldId));
-        if (!isSystemField && !isCustomField)
-            continue;
-        const isCollaborators = ticketFieldId === "collaborators";
-        const name = isSystemField
-            ? isCollaborators
-                ? "request[collaborators][]"
-                : `request[${ticketFieldId}]`
-            : `request[custom_fields][${ticketFieldId}]`;
-        const field = fields.find((field) => field.name === name);
+        const field = getFieldFromId(ticketFieldId, prefilledFields);
         if (!field)
             continue;
         const sanitizedValue = purify.sanitize(value, {
@@ -483,7 +488,16 @@ function usePrefilledTicketFields(fields) {
                 field.value = sanitizedValue;
         }
     }
-    return fields;
+    return prefilledFields;
+}
+function usePrefilledTicketFields({ ticketFields, ccField, dueDateField, emailField, organizationField, }) {
+    return reactExports.useMemo(() => getPrefilledTicketFields({
+        ticketFields,
+        ccField,
+        dueDateField,
+        emailField,
+        organizationField,
+    }), [ticketFields, ccField, dueDateField, emailField, organizationField]);
 }
 
 const FileNameWrapper = styled.div `
@@ -1133,8 +1147,15 @@ const Footer = styled.div `
 function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, baseLocale, answerBotModal, }) {
     const { ticket_fields, action, http_method, accept_charset, errors, parent_id_field, ticket_form_field, email_field, cc_field, organization_field, due_date_field, end_user_conditions, attachments_field, inline_attachments_fields, description_mimetype_field, } = requestForm;
     const { answerBot } = answerBotModal;
-    const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
+    const { ticketFields: prefilledTicketFields, emailField, ccField, organizationField: prefilledOrganizationField, dueDateField, } = usePrefilledTicketFields({
+        ticketFields: ticket_fields,
+        emailField: email_field,
+        ccField: cc_field,
+        organizationField: organization_field,
+        dueDateField: due_date_field,
+    });
     const [ticketFields, setTicketFields] = reactExports.useState(prefilledTicketFields);
+    const [organizationField, setOrganizationField] = reactExports.useState(prefilledOrganizationField);
     const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
     const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
     const { t } = useTranslation();
@@ -1143,9 +1164,17 @@ function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, 
             ? { ...ticketField, value }
             : ticketField));
     }
+    function handleOrganizationChange(value) {
+        if (organizationField === null) {
+            return;
+        }
+        setOrganizationField({ ...organizationField, value });
+    }
     return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [parentId && (jsxRuntimeExports.jsx(StyledParagraph, { children: jsxRuntimeExports.jsx(Anchor, { href: parentIdPath, children: t("new-request-form.parent-request-link", "Follow-up to request {{parentId}}", {
                         parentId: `\u202D#${parentId}\u202C`,
-                    }) }) })), jsxRuntimeExports.jsx(StyledParagraph, { "aria-hidden": "true", children: t("new-request-form.required-fields-info", "Fields marked with an asterisk (*) are required.") }), jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), email_field && (jsxRuntimeExports.jsx(Input, { field: email_field, onChange: (value) => handleChange(email_field, value) }, email_field.name)), cc_field && jsxRuntimeExports.jsx(CcField, { field: cc_field }), organization_field && (jsxRuntimeExports.jsx(DropDown, { field: organization_field, onChange: (value) => handleChange(organization_field, value) }, organization_field.name)), visibleFields.map((field) => {
+                    }) }) })), jsxRuntimeExports.jsx(StyledParagraph, { "aria-hidden": "true", children: t("new-request-form.required-fields-info", "Fields marked with an asterisk (*) are required.") }), jsxRuntimeExports.jsxs(Form, { ref: formRefCallback, action: action, method: http_method, acceptCharset: accept_charset, noValidate: true, onSubmit: handleSubmit, children: [errors && jsxRuntimeExports.jsx(Alert, { type: "error", children: errors }), parentId && jsxRuntimeExports.jsx(ParentTicketField, { field: parent_id_field }), ticket_form_field.options.length > 0 && (jsxRuntimeExports.jsx(TicketFormField, { field: ticket_form_field })), emailField && jsxRuntimeExports.jsx(Input, { field: emailField }, emailField.name), ccField && jsxRuntimeExports.jsx(CcField, { field: ccField }), organizationField && (jsxRuntimeExports.jsx(DropDown, { field: organizationField, onChange: (value) => {
+                            handleOrganizationChange(value);
+                        } }, organizationField.name)), visibleFields.map((field) => {
                         switch (field.type) {
                             case "subject":
                                 return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name), jsxRuntimeExports.jsx(SuggestedArticles, { query: field.value, locale: locale })] }));
@@ -1162,7 +1191,7 @@ function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, 
                                 return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, onChange: (value) => handleChange(field, value) }, field.name));
                             case "priority":
                             case "tickettype":
-                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: due_date_field, locale: baseLocale, valueFormat: "dateTime" }))] }));
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && (jsxRuntimeExports.jsx(DatePicker, { field: dueDateField, locale: baseLocale, valueFormat: "dateTime" }))] }));
                             case "checkbox":
                                 return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
                             case "date":

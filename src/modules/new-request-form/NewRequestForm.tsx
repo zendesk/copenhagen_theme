@@ -81,8 +81,24 @@ export function NewRequestForm({
     description_mimetype_field,
   } = requestForm;
   const { answerBot } = answerBotModal;
-  const prefilledTicketFields = usePrefilledTicketFields(ticket_fields);
+  const {
+    ticketFields: prefilledTicketFields,
+    emailField,
+    ccField,
+    organizationField: prefilledOrganizationField,
+    dueDateField,
+  } = usePrefilledTicketFields({
+    ticketFields: ticket_fields,
+    emailField: email_field,
+    ccField: cc_field,
+    organizationField: organization_field,
+    dueDateField: due_date_field,
+  });
+
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
+  const [organizationField, setOrganizationField] = useState(
+    prefilledOrganizationField
+  );
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
@@ -95,6 +111,14 @@ export function NewRequestForm({
           : ticketField
       )
     );
+  }
+
+  function handleOrganizationChange(value: string) {
+    if (organizationField === null) {
+      return;
+    }
+
+    setOrganizationField({ ...organizationField, value });
   }
 
   return (
@@ -131,19 +155,15 @@ export function NewRequestForm({
         {ticket_form_field.options.length > 0 && (
           <TicketFormField field={ticket_form_field} />
         )}
-        {email_field && (
-          <Input
-            key={email_field.name}
-            field={email_field}
-            onChange={(value) => handleChange(email_field, value)}
-          />
-        )}
-        {cc_field && <CcField field={cc_field} />}
-        {organization_field && (
+        {emailField && <Input key={emailField.name} field={emailField} />}
+        {ccField && <CcField field={ccField} />}
+        {organizationField && (
           <DropDown
-            key={organization_field.name}
-            field={organization_field}
-            onChange={(value) => handleChange(organization_field, value)}
+            key={organizationField.name}
+            field={organizationField}
+            onChange={(value) => {
+              handleOrganizationChange(value);
+            }}
           />
         )}
         {visibleFields.map((field) => {
@@ -216,7 +236,7 @@ export function NewRequestForm({
                   />
                   {field.value === "task" && (
                     <DatePicker
-                      field={due_date_field}
+                      field={dueDateField}
                       locale={baseLocale}
                       valueFormat="dateTime"
                     />
