@@ -1,7 +1,6 @@
 import type { FormEventHandler } from "react";
 import { useRef, useCallback } from "react";
 import type { Field } from "./data-types";
-import { redactCreditCard } from "./redactCreditCard";
 import { fetchCsrfToken } from "./fetchCsrfToken";
 
 interface UseFormSubmit {
@@ -43,12 +42,13 @@ export function useFormSubmit(ticketFields: Field[]): UseFormSubmit {
             hiddenInput.value = token;
             ref.appendChild(hiddenInput);
 
-            // Ensure that the credit card field is redacted before submitting
-            const creditCardField = ticketFields.find(
+            // The backend expects the credit card field to have a length at least of 13 characters.
+            // We are prefixing the 4 digits with 9 Xs to make sure the value has the expected length
+            const creditCardFields = ticketFields.filter(
               (field) => field.type === "partialcreditcard"
             );
 
-            if (creditCardField) {
+            for (const creditCardField of creditCardFields) {
               const creditCardInput = ref.querySelector(
                 `input[name="${creditCardField.name}"]`
               );
@@ -56,7 +56,7 @@ export function useFormSubmit(ticketFields: Field[]): UseFormSubmit {
                 creditCardInput &&
                 creditCardInput instanceof HTMLInputElement
               ) {
-                creditCardInput.value = redactCreditCard(creditCardInput.value);
+                creditCardInput.value = `XXXXXXXXX${creditCardInput.value}`;
               }
             }
 
