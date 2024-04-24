@@ -10961,9 +10961,9 @@ var SvgFileZipStroke$1 = function SvgFileZipStroke(props) {
 };
 
 var _path$d, _circle$1$1;
-function _extends$e() { _extends$e = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e.apply(this, arguments); }
+function _extends$e$1() { _extends$e$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e$1.apply(this, arguments); }
 var SvgFileImageStroke$1 = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$e({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$e$1({
     xmlns: "http://www.w3.org/2000/svg",
     width: 12,
     height: 12,
@@ -11096,7 +11096,7 @@ var SvgFileErrorStroke$1 = function SvgFileErrorStroke(props) {
   })));
 };
 
-var _path$7, _rect;
+var _path$7$1, _rect$2;
 function _extends$7$1() { _extends$7$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7$1.apply(this, arguments); }
 var SvgFilePdfStroke = function SvgFilePdfStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$7$1({
@@ -11106,12 +11106,12 @@ var SvgFilePdfStroke = function SvgFilePdfStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$7 || (_path$7 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$7$1 || (_path$7$1 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
     d: "M14.5 4.2V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.85a.5.5 0 01.36.15l3.15 3.2a.5.5 0 01.14.35zm-10 8.3h7m-7-2h7m-1-10V4a.5.5 0 00.5.5h3.5"
-  })), _rect || (_rect = /*#__PURE__*/reactExports.createElement("rect", {
+  })), _rect$2 || (_rect$2 = /*#__PURE__*/reactExports.createElement("rect", {
     width: 8,
     height: 2,
     x: 4,
@@ -15554,8 +15554,8 @@ function _defineProperty$3(obj, key, value) {
   return obj;
 }
 
-function _extends$d() {
-  _extends$d = Object.assign || function (target) {
+function _extends$e() {
+  _extends$e = Object.assign || function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
 
@@ -15569,7 +15569,7 @@ function _extends$d() {
     return target;
   };
 
-  return _extends$d.apply(this, arguments);
+  return _extends$e.apply(this, arguments);
 }
 
 var newlineRe = /\r\n|\r|\n/; // Empty lines need to contain a single empty token, denoted with { empty: true }
@@ -15687,7 +15687,7 @@ var themeToDict = function (theme, language) {
 
     themeEntry.types.forEach(function (type) {
       // $FlowFixMe
-      var accStyle = _extends$d({}, acc[type], style);
+      var accStyle = _extends$e({}, acc[type], style);
 
       acc[type] = accStyle;
     });
@@ -15696,7 +15696,7 @@ var themeToDict = function (theme, language) {
 
   themeDict.root = plain; // $FlowFixMe
 
-  themeDict.plain = _extends$d({}, plain, {
+  themeDict.plain = _extends$e({}, plain, {
     backgroundColor: null
   });
   return themeDict;
@@ -15738,7 +15738,7 @@ var Highlight = /*@__PURE__*/function (Component) {
       var rest$1 = objectWithoutProperties(ref, ["key", "className", "style", "line"]);
       var rest = rest$1;
 
-      var output = _extends$d({}, rest, {
+      var output = _extends$e({}, rest, {
         className: "token-line",
         style: undefined,
         key: undefined
@@ -15751,7 +15751,7 @@ var Highlight = /*@__PURE__*/function (Component) {
       }
 
       if (style !== undefined) {
-        output.style = output.style !== undefined ? _extends$d({}, output.style, style) : style;
+        output.style = output.style !== undefined ? _extends$e({}, output.style, style) : style;
       }
 
       if (key !== undefined) {
@@ -15799,7 +15799,7 @@ var Highlight = /*@__PURE__*/function (Component) {
       var rest$1 = objectWithoutProperties(ref, ["key", "className", "style", "token"]);
       var rest = rest$1;
 
-      var output = _extends$d({}, rest, {
+      var output = _extends$e({}, rest, {
         className: "token " + token.types.join(" "),
         children: token.content,
         style: this$1$1.getStyleForToken(token),
@@ -15807,7 +15807,7 @@ var Highlight = /*@__PURE__*/function (Component) {
       });
 
       if (style !== undefined) {
-        output.style = output.style !== undefined ? _extends$d({}, output.style, style) : style;
+        output.style = output.style !== undefined ? _extends$e({}, output.style, style) : style;
       }
 
       if (key !== undefined) {
@@ -15914,8 +15914,8 @@ function useScrollRegion(_ref) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function _extends$c() {
-  _extends$c = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$d() {
+  _extends$d = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -15926,7 +15926,7 @@ function _extends$c() {
     }
     return target;
   };
-  return _extends$c.apply(this, arguments);
+  return _extends$d.apply(this, arguments);
 }
 
 const HUE = ['grey', 'red', 'green', 'yellow'];
@@ -16268,7 +16268,7 @@ const SM = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "small"
@@ -16289,7 +16289,7 @@ const MD = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "medium"
@@ -16310,7 +16310,7 @@ const LG = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "large"
@@ -16331,7 +16331,7 @@ const XL = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "extralarge"
@@ -16351,7 +16351,7 @@ const XXL = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "2xlarge"
@@ -16371,7 +16371,7 @@ const XXXL = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "3xlarge"
@@ -16386,7 +16386,7 @@ XXXL.defaultProps = {
   tag: 'div'
 };
 
-const Blockquote = reactExports.forwardRef((props, ref) => React__default.createElement(StyledBlockquote, _extends$c({
+const Blockquote = reactExports.forwardRef((props, ref) => React__default.createElement(StyledBlockquote, _extends$d({
   ref: ref
 }, props)));
 Blockquote.displayName = 'Blockquote';
@@ -16402,7 +16402,7 @@ const Code = reactExports.forwardRef((_ref, ref) => {
     hue,
     ...other
   } = _ref;
-  return React__default.createElement(StyledCode, _extends$c({
+  return React__default.createElement(StyledCode, _extends$d({
     ref: ref,
     hue: hue
   }, other));
@@ -16453,7 +16453,7 @@ const CodeBlock = React__default.forwardRef((_ref, ref) => {
     }
     return retVal;
   };
-  return React__default.createElement(StyledCodeBlockContainer, _extends$c({}, containerProps, {
+  return React__default.createElement(StyledCodeBlockContainer, _extends$d({}, containerProps, {
     ref: containerRef,
     tabIndex: containerTabIndex
   }), React__default.createElement(Highlight$1, {
@@ -16467,11 +16467,11 @@ const CodeBlock = React__default.forwardRef((_ref, ref) => {
       getLineProps,
       getTokenProps
     } = _ref2;
-    return React__default.createElement(StyledCodeBlock, _extends$c({
+    return React__default.createElement(StyledCodeBlock, _extends$d({
       className: className,
       ref: ref,
       isLight: isLight
-    }, other), tokens.map((line, index) => React__default.createElement(StyledCodeBlockLine, _extends$c({}, getLineProps({
+    }, other), tokens.map((line, index) => React__default.createElement(StyledCodeBlockLine, _extends$d({}, getLineProps({
       line
     }), {
       key: index,
@@ -16481,7 +16481,7 @@ const CodeBlock = React__default.forwardRef((_ref, ref) => {
       isNumbered: isNumbered,
       diff: getDiff(line),
       size: size
-    }), line.map((token, tokenKey) => React__default.createElement(StyledCodeBlockToken, _extends$c({}, getTokenProps({
+    }), line.map((token, tokenKey) => React__default.createElement(StyledCodeBlockToken, _extends$d({}, getTokenProps({
       token
     }), {
       key: tokenKey,
@@ -16508,7 +16508,7 @@ const Ellipsis = reactExports.forwardRef((_ref, ref) => {
   } else if (typeof children === 'string') {
     textContent = children;
   }
-  return React__default.createElement(StyledEllipsis, _extends$c({
+  return React__default.createElement(StyledEllipsis, _extends$d({
     as: tag,
     ref: ref,
     title: textContent
@@ -16523,7 +16523,7 @@ Ellipsis.defaultProps = {
   tag: 'div'
 };
 
-const Paragraph$1 = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph$1, _extends$c({
+const Paragraph$1 = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph$1, _extends$d({
   ref: ref
 }, props)));
 Paragraph$1.displayName = 'Paragraph';
@@ -16547,7 +16547,7 @@ const OrderedListItem = reactExports.forwardRef((props, ref) => {
   const {
     size
   } = useOrderedListContext();
-  return React__default.createElement(StyledOrderedListItem, _extends$c({
+  return React__default.createElement(StyledOrderedListItem, _extends$d({
     ref: ref,
     space: size
   }, props));
@@ -16566,7 +16566,7 @@ const OrderedListComponent = React__default.forwardRef((_ref, ref) => {
   }), [size]);
   return React__default.createElement(OrderedListContext.Provider, {
     value: value
-  }, React__default.createElement(StyledOrderedList, _extends$c({
+  }, React__default.createElement(StyledOrderedList, _extends$d({
     ref: ref,
     listType: type
   }, other)));
@@ -16596,7 +16596,7 @@ const UnorderedListItem = reactExports.forwardRef((props, ref) => {
   const {
     size
   } = useUnorderedListContext();
-  return React__default.createElement(StyledUnorderedListItem, _extends$c({
+  return React__default.createElement(StyledUnorderedListItem, _extends$d({
     ref: ref,
     space: size
   }, props));
@@ -16615,7 +16615,7 @@ const UnorderedListComponent = reactExports.forwardRef((_ref, ref) => {
   }), [size]);
   return React__default.createElement(UnorderedListContext.Provider, {
     value: value
-  }, React__default.createElement(StyledUnorderedList, _extends$c({
+  }, React__default.createElement(StyledUnorderedList, _extends$d({
     ref: ref,
     listType: type
   }, other)));
@@ -16632,7 +16632,7 @@ UnorderedListComponent.defaultProps = {
 const UnorderedList = UnorderedListComponent;
 UnorderedList.Item = Item$2;
 
-const StartIconComponent = props => React__default.createElement(StyledIcon$1, _extends$c({
+const StartIconComponent = props => React__default.createElement(StyledIcon$1, _extends$d({
   isStart: true
 }, props));
 StartIconComponent.displayName = 'Span.StartIcon';
@@ -16647,7 +16647,7 @@ const SpanComponent = reactExports.forwardRef((_ref, ref) => {
     tag,
     ...other
   } = _ref;
-  return React__default.createElement(StyledFont, _extends$c({
+  return React__default.createElement(StyledFont, _extends$d({
     as: tag,
     ref: ref,
     size: "inherit"
@@ -19507,17 +19507,17 @@ StyledTag$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
-var _path$6;
-function _extends$b() { _extends$b = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+var _path$7;
+function _extends$c() { _extends$c = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
 var SvgXStroke$1 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$b({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$c({
     xmlns: "http://www.w3.org/2000/svg",
     width: 12,
     height: 12,
     focusable: "false",
     viewBox: "0 0 12 12",
     "aria-hidden": "true"
-  }, props), _path$6 || (_path$6 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$7 || (_path$7 = /*#__PURE__*/reactExports.createElement("path", {
     stroke: "currentColor",
     strokeLinecap: "round",
     d: "M3 9l6-6m0 6L3 3"
@@ -23012,7 +23012,7 @@ var defineProperty = function (obj, key, value) {
   return obj;
 };
 
-var _extends$a = Object.assign || function (target) {
+var _extends$b = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -23034,7 +23034,7 @@ var _extends$a = Object.assign || function (target) {
  * @returns {Object} ClientRect like output
  */
 function getClientRect(offsets) {
-  return _extends$a({}, offsets, {
+  return _extends$b({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
   });
@@ -23322,7 +23322,7 @@ function computeAutoPlacement$1(placement, refRect, popper, reference, boundarie
   };
 
   var sortedAreas = Object.keys(rects).map(function (key) {
-    return _extends$a({
+    return _extends$b({
       key: key
     }, rects[key], {
       area: getArea(rects[key])
@@ -23964,9 +23964,9 @@ function computeStyle(data, options) {
   };
 
   // Update `data` attributes, styles and arrowStyles
-  data.attributes = _extends$a({}, attributes, data.attributes);
-  data.styles = _extends$a({}, styles, data.styles);
-  data.arrowStyles = _extends$a({}, data.offsets.arrow, data.arrowStyles);
+  data.attributes = _extends$b({}, attributes, data.attributes);
+  data.styles = _extends$b({}, styles, data.styles);
+  data.arrowStyles = _extends$b({}, data.offsets.arrow, data.arrowStyles);
 
   return data;
 }
@@ -24246,7 +24246,7 @@ function flip$2(data, options) {
 
       // this object contains `position`, we want to preserve it along with
       // any additional property we may add in the future
-      data.offsets.popper = _extends$a({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+      data.offsets.popper = _extends$b({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
 
       data = runModifiers(data.instance.modifiers, data, 'flip');
     }
@@ -24520,7 +24520,7 @@ function preventOverflow$2(data, options) {
 
   order.forEach(function (placement) {
     var side = ['left', 'top'].indexOf(placement) !== -1 ? 'primary' : 'secondary';
-    popper = _extends$a({}, popper, check[side](placement));
+    popper = _extends$b({}, popper, check[side](placement));
   });
 
   data.offsets.popper = popper;
@@ -24555,7 +24555,7 @@ function shift(data) {
       end: defineProperty({}, side, reference[side] + reference[measurement] - popper[measurement])
     };
 
-    data.offsets.popper = _extends$a({}, popper, shiftOffsets[shiftvariation]);
+    data.offsets.popper = _extends$b({}, popper, shiftOffsets[shiftvariation]);
   }
 
   return data;
@@ -25087,7 +25087,7 @@ var Popper$1 = function () {
     this.update = debounce$1(this.update.bind(this));
 
     // with {} we create a new object with the options inside it
-    this.options = _extends$a({}, Popper.Defaults, options);
+    this.options = _extends$b({}, Popper.Defaults, options);
 
     // init state
     this.state = {
@@ -25102,13 +25102,13 @@ var Popper$1 = function () {
 
     // Deep merge modifiers options
     this.options.modifiers = {};
-    Object.keys(_extends$a({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-      _this.options.modifiers[name] = _extends$a({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+    Object.keys(_extends$b({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+      _this.options.modifiers[name] = _extends$b({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
     });
 
     // Refactoring modifiers' list (Object => Array)
     this.modifiers = Object.keys(this.options.modifiers).map(function (name) {
-      return _extends$a({
+      return _extends$b({
         name: name
       }, _this.options.modifiers[name]);
     })
@@ -26104,8 +26104,8 @@ Tooltip.defaultProps = {
   refKey: 'ref'
 };
 
-function _extends$9() {
-  _extends$9 = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$a() {
+  _extends$a = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -26116,15 +26116,15 @@ function _extends$9() {
     }
     return target;
   };
-  return _extends$9.apply(this, arguments);
+  return _extends$a.apply(this, arguments);
 }
 
-const Paragraph = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph, _extends$9({
+const Paragraph = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph, _extends$a({
   ref: ref
 }, props)));
 Paragraph.displayName = 'Paragraph';
 
-const Title$1 = reactExports.forwardRef((props, ref) => React__default.createElement(StyledTitle, _extends$9({
+const Title$1 = reactExports.forwardRef((props, ref) => React__default.createElement(StyledTitle, _extends$a({
   ref: ref
 }, props)));
 Title$1.displayName = 'Title';
@@ -27417,17 +27417,17 @@ var SvgChevronLeftStroke$1 = function SvgChevronLeftStroke(props) {
   })));
 };
 
-var _path$5;
-function _extends$8() { _extends$8 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
+var _path$6;
+function _extends$9() { _extends$9 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
 var SvgCheckLgStroke = function SvgCheckLgStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$8({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$9({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$5 || (_path$5 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$6 || (_path$6 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
@@ -30901,8 +30901,8 @@ const useSchedule = function (_temp) {
  * found at http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-function _extends$7() {
-  _extends$7 = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$8() {
+  _extends$8 = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -30913,7 +30913,7 @@ function _extends$7() {
     }
     return target;
   };
-  return _extends$7.apply(this, arguments);
+  return _extends$8.apply(this, arguments);
 }
 
 const dotOneKeyframes = $e(["0%{transform:translate(0,5px);}3%{transform:translate(1px,-5px);}6%{transform:translate(3px,-15px);}8%{transform:translate(5px,-18px);}9%{transform:translate(7px,-21px);}11%{transform:translate(8px,-22px);}13%{transform:translate(9px,-23px);}16%{transform:translate(12px,-25px);}18%{transform:translate(13px,-26px);}23%{transform:translate(18px,-26px);}24%{transform:translate(19px,-25px);}28%{transform:translate(22px,-23px);}31%{transform:translate(24px,-21px);}33%{transform:translate(26px,-18px);}34%{transform:translate(28px,-14px);}36%{transform:translate(29px,-12px);}38%{transform:translate(30px,-5px);}39%{transform:translate(31px,5px);}54%{transform:translate(31px,3px);}59%{transform:translate(33px);}61%{transform:translate(43px);}63%{transform:translate(48px);}64%{transform:translate(51px);}66%{transform:translate(53px);}68%{transform:translate(55px);}69%{transform:translate(57px);}76%{transform:translate(60px);}81%{transform:translate(61px);}83%,100%{transform:translate(62px);}"]);
@@ -31152,7 +31152,7 @@ const Dots = reactExports.forwardRef((_ref, ref) => {
       fontSize: size
     }, "\xA0");
   }
-  return React__default.createElement(StyledSVG, _extends$7({
+  return React__default.createElement(StyledSVG, _extends$8({
     ref: ref,
     fontSize: size,
     color: color,
@@ -31201,7 +31201,7 @@ const Progress = React__default.forwardRef((_ref, ref) => {
     'aria-label': label
   }, 'aria-label', 'Progress');
   return (
-    React__default.createElement(StyledProgressBackground, _extends$7({
+    React__default.createElement(StyledProgressBackground, _extends$8({
       "data-garden-id": COMPONENT_ID$1$3,
       "data-garden-version": '8.70.1',
       "aria-valuemax": 100,
@@ -31235,7 +31235,7 @@ const Skeleton = reactExports.forwardRef((_ref, ref) => {
     isLight,
     ...other
   } = _ref;
-  return React__default.createElement(StyledSkeleton, _extends$7({
+  return React__default.createElement(StyledSkeleton, _extends$8({
     ref: ref,
     isLight: isLight,
     customWidth: width,
@@ -31368,7 +31368,7 @@ const Spinner = reactExports.forwardRef((_ref, ref) => {
       fontSize: size
     }, "\xA0");
   }
-  return React__default.createElement(StyledSVG, _extends$7({
+  return React__default.createElement(StyledSVG, _extends$8({
     ref: ref,
     fontSize: size,
     color: color,
@@ -31405,7 +31405,7 @@ const Inline = reactExports.forwardRef((_ref, ref) => {
   } = _ref;
   const ariaLabel = useText(Inline, other, 'aria-label', 'loading');
   return (
-    React__default.createElement(StyledInline, _extends$7({
+    React__default.createElement(StyledInline, _extends$8({
       ref: ref,
       size: size,
       color: color,
@@ -36130,7 +36130,7 @@ var SvgChevronLeftStroke = function SvgChevronLeftStroke(props) {
   })));
 };
 
-var _path$4;
+var _path$5;
 function _extends$1$2() { _extends$1$2 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1$2.apply(this, arguments); }
 var SvgChevronRightStroke = function SvgChevronRightStroke(props) {
   return /*#__PURE__*/reactExports.createElement("svg", _extends$1$2({
@@ -36140,7 +36140,7 @@ var SvgChevronRightStroke = function SvgChevronRightStroke(props) {
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$4 || (_path$4 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$5 || (_path$5 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "currentColor",
     d: "M5.61 3.312a.5.5 0 01.718-.69l.062.066 4 5a.5.5 0 01.054.542l-.054.082-4 5a.5.5 0 01-.83-.55l.05-.074L9.359 8l-3.75-4.688z"
   })));
@@ -36780,8 +36780,8 @@ const End = props => {
 };
 End.displayName = 'DatepickerRange.End';
 
-function _extends$6() {
-  _extends$6 = Object.assign ? Object.assign.bind() : function (target) {
+function _extends$7() {
+  _extends$7 = Object.assign ? Object.assign.bind() : function (target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i];
       for (var key in source) {
@@ -36792,7 +36792,7 @@ function _extends$6() {
     }
     return target;
   };
-  return _extends$6.apply(this, arguments);
+  return _extends$7.apply(this, arguments);
 }
 
 const Month = reactExports.forwardRef((_ref, ref) => {
@@ -37031,7 +37031,7 @@ const Calendar = reactExports.forwardRef((props, ref) => {
   const {
     state
   } = useDatepickerContext();
-  return React__default.createElement(StyledRangeCalendar, _extends$6({
+  return React__default.createElement(StyledRangeCalendar, _extends$7({
     ref: ref,
     "data-garden-id": "datepickers.range",
     "data-garden-version": '8.70.1'
@@ -37277,15 +37277,15 @@ function useGrid(_ref) {
   environment: PropTypes.any
 });
 
-var _path$3, _circle$2;
-function _extends$5() { _extends$5 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+var _path$4, _circle$2;
+function _extends$6() { _extends$6 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$5({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$6({
     xmlns: "http://www.w3.org/2000/svg",
     width: 12,
     height: 12,
     viewBox: "0 0 12 12"
-  }, props), _path$3 || (_path$3 = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$4 || (_path$4 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "none",
     stroke: "currentColor",
     strokeLinecap: "round",
@@ -37295,6 +37295,29 @@ var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
     cy: 8,
     r: 0.8,
     fill: "currentColor"
+  })));
+};
+
+var _rect, _path$3;
+function _extends$5() { _extends$5 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$5.apply(this, arguments); }
+var SvgCreditCardStroke = function SvgCreditCardStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$5({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    viewBox: "0 0 16 16"
+  }, props), _rect || (_rect = /*#__PURE__*/reactExports.createElement("rect", {
+    width: 15,
+    height: 11,
+    x: 0.5,
+    y: 2.5,
+    fill: "none",
+    stroke: "currentColor",
+    rx: 0.5,
+    ry: 0.5
+  })), _path$3 || (_path$3 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "currentColor",
+    d: "M.5 5h15v2H.5z"
   })));
 };
 
@@ -44963,4 +44986,4 @@ instance.hasLoadedNamespace;
 instance.loadNamespaces;
 instance.loadLanguages;
 
-export { $e as $, Anchor as A, Header$1 as B, Close$5 as C, Datepicker as D, Footer$2 as E, Field$1 as F, Modal as G, Hint$1 as H, Input as I, Alert as J, Body$2 as K, Label$1$1 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Accordion as Q, Paragraph$1 as R, Span as S, Title$2 as T, Button as U, Close$2 as V, instance as W, initReactI18next as X, reactDomExports as Y, DEFAULT_THEME as Z, Ne as _, useTranslation as a, ThemeProvider as a0, ToastProvider as a1, Textarea as b, Field as c, Label$2 as d, Hint as e, Combobox as f, Message as g, hideVisually as h, Checkbox as i, jsxRuntimeExports as j, OptGroup as k, FileList as l, mainExports as m, File$1 as n, Tooltip as o, purify as p, useDropzone as q, reactExports as r, styled as s, FileUpload as t, useToast as u, useGrid as v, focusStyles as w, FauxInput as x, Tag$1 as y, SvgAlertWarningStroke as z };
+export { $e as $, Anchor as A, MediaInput as B, Close$5 as C, Datepicker as D, SvgCreditCardStroke as E, Field$1 as F, Header$1 as G, Hint$1 as H, Input as I, Footer$2 as J, Modal as K, Label$1$1 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Alert as Q, Body$2 as R, Span as S, Title$2 as T, Accordion as U, Paragraph$1 as V, Button as W, Close$2 as X, instance as Y, initReactI18next as Z, reactDomExports as _, useTranslation as a, DEFAULT_THEME as a0, Ne as a1, ThemeProvider as a2, ToastProvider as a3, Textarea as b, Field as c, Label$2 as d, Hint as e, Combobox as f, Message as g, hideVisually as h, Checkbox as i, jsxRuntimeExports as j, OptGroup as k, FileList as l, mainExports as m, File$1 as n, Tooltip as o, purify as p, useDropzone as q, reactExports as r, styled as s, FileUpload as t, useToast as u, useGrid as v, focusStyles as w, FauxInput as x, Tag$1 as y, SvgAlertWarningStroke as z };

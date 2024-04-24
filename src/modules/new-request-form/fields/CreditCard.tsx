@@ -1,45 +1,69 @@
 import {
   Field as GardenField,
   Hint,
-  Input,
   Label,
+  MediaInput,
   Message,
 } from "@zendeskgarden/react-forms";
 import type { Field } from "../data-types";
 import { Span } from "@zendeskgarden/react-typography";
-import type { FocusEventHandler } from "react";
-import { redactCreditCard } from "../redactCreditCard";
+import { useTranslation } from "react-i18next";
+import CreditCardIcon from "@zendeskgarden/svg-icons/src/16/credit-card-stroke.svg";
+import styled from "styled-components";
 
 interface CreditCardProps {
   field: Field;
   onChange: (value: string) => void;
 }
 
-export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
-  const { label, error, value, name, required, description } = field;
+/**
+ * When there is an error in the credit card field, the backend returns a redacted value with the last 4 digits prefixed with some Xs.
+ * This function removes the Xs from the value and returns the last 4 digits of the credit card
+ *
+ * @param value The value returned by the backend with last 4 digits prefixed with some Xs
+ * @returns The last 4 digits of the credit card
+ */
+function getLastDigits(value: string): string {
+  return value ? value.replaceAll("X", "") : "";
+}
 
-  const handleBlur: FocusEventHandler<HTMLInputElement> = (e) => {
-    onChange(redactCreditCard(e.target.value));
-  };
+// override CPH default style. Can be removed once global styles are removed
+const StyledMediaInput = styled(MediaInput)`
+  &:focus {
+    border: none !important;
+  }
+`;
+
+const DigitsHintSpan = styled(Span)`
+  margin-left: ${(props) => props.theme.space.xxs};
+`;
+
+export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
+  const { t } = useTranslation();
+  const { label, error, value, name, required, description } = field;
+  const digits = getLastDigits(value as string);
 
   return (
     <GardenField>
       <Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
+        <DigitsHintSpan>
+          {t("new-request-form.credit-card-digits-hint", "(Last 4 digits)")}
+        </DigitsHintSpan>
       </Label>
       {description && (
         <Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <Input
+      <StyledMediaInput
+        start={<CreditCardIcon />}
         name={name}
         type="text"
-        value={value as string}
+        value={digits}
         onChange={(e) => onChange(e.target.value)}
-        onBlur={handleBlur}
         validation={error ? "error" : undefined}
         required={required}
-        autoComplete="cc-number"
+        maxLength={4}
       />
       {error && <Message validation="error">{error}</Message>}
     </GardenField>

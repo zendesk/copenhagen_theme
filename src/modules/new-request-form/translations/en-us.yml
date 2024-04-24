@@ -151,3 +151,8 @@ parts:
       title: "Message shown on top of the New Request Form, informing the user that required fields are marked with an asterisk"
       screenshot: "https://drive.google.com/file/d/1EXEh7S9_GZrz4WBVcHWM8DmXetcXoHDu/view?usp=drive_link"
       value: "Fields marked with an asterisk (*) are required."
+  - translation:
+      key: "new-request-form.credit-card-digits-hint"
+      title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
+      screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
+      value: "(Last 4 digits)"

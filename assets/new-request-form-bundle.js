@@ -1,4 +1,4 @@
-import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, m as mainExports, N as Notification, T as Title, C as Close, b as Textarea, s as styled, h as hideVisually, c as Field$1, d as Label, e as Hint$1, f as Combobox, O as Option, g as Message$1, i as Checkbox$1, k as OptGroup, p as purify, l as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as useDropzone, t as FileUpload, D as Datepicker, v as useGrid, w as focusStyles, x as FauxInput, y as Tag, z as SvgAlertWarningStroke, $ as $e, B as Header$1, E as Footer$2, G as Modal, J as Alert, K as Body$2, Q as Accordion, R as Paragraph, U as Button, V as Close$2, W as instance, X as initReactI18next, Y as reactDomExports } from 'vendor-bundle';
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, m as mainExports, N as Notification, T as Title, C as Close, b as Textarea, s as styled, h as hideVisually, c as Field$1, d as Label, e as Hint$1, f as Combobox, O as Option, g as Message$1, i as Checkbox$1, k as OptGroup, p as purify, l as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as useDropzone, t as FileUpload, D as Datepicker, v as useGrid, w as focusStyles, x as FauxInput, y as Tag, z as SvgAlertWarningStroke, B as MediaInput, E as SvgCreditCardStroke, $ as $e, G as Header$1, J as Footer$2, K as Modal, Q as Alert, R as Body$2, U as Accordion, V as Paragraph, W as Button, X as Close$2, Y as instance, Z as initReactI18next, _ as reactDomExports } from 'vendor-bundle';
 import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
 
 function useModalContainer() {
@@ -317,63 +317,6 @@ function ParentTicketField({ field, }) {
     return jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value });
 }
 
-const NON_DIGITS_REGEX = /[^\d]/g;
-const CC_NUMBERS_REGEX = /[0-9]{13,19}/;
-const REDACTED_CC_NUMBER_REGEX = /^[X]{9,15}/;
-const MIN_LENGTH = 13;
-const MAX_LENGTH = 19;
-function redactCreditCard(input) {
-    // if number is already redacted, just send it back
-    if (alreadyRedactedCCNumber(input)) {
-        return input;
-    }
-    const cleaned = removeNonDigits(input);
-    if (!hasValidLength(cleaned)) {
-        // if input string is not inside valid length for credit card number,
-        // such as in the case when extra text is entered beside cc number,
-        // we will remove spaces and dashes from original input,
-        // and redact credit card number if we can find it
-        // or redact everything if we can't find anything resembling cc number.
-        const ccTextWithoutSpacesAndDashes = removeSpacesAndDashes(input);
-        const ccNumber = CC_NUMBERS_REGEX.exec(ccTextWithoutSpacesAndDashes.toString());
-        if (ccNumber !== null) {
-            return redactCCNumber(ccNumber.toString());
-        }
-        else {
-            // redact everything since that is an error and not valid cc number
-            return charRepeater("X", cleaned.length);
-        }
-    }
-    else {
-        return redactCCNumber(cleaned.toString());
-    }
-}
-function hasValidLength(input) {
-    return input.length >= MIN_LENGTH && input.length <= MAX_LENGTH;
-}
-function removeNonDigits(input) {
-    return input.replace(NON_DIGITS_REGEX, "");
-}
-function removeSpacesAndDashes(input) {
-    return input.replace(/-|\s/g, "");
-}
-function redactCCNumber(input) {
-    const length = input.length;
-    const redactEnd = length - 4;
-    const lastDigits = input.toString().substring(redactEnd, length);
-    return charRepeater("X", redactEnd) + lastDigits;
-}
-function alreadyRedactedCCNumber(input) {
-    return REDACTED_CC_NUMBER_REGEX.test(input);
-}
-function charRepeater(character, length) {
-    const repeatedString = [];
-    for (let i = 0; i < length; i++) {
-        repeatedString.push(character);
-    }
-    return repeatedString.join("");
-}
-
 // NOTE: This is a temporary handling of the CSRF token
 async function fetchCsrfToken$1() {
     const response = await fetch("/api/v2/help_center/sessions.json");
@@ -411,13 +354,14 @@ function useFormSubmit(ticketFields) {
                     hiddenInput.name = "authenticity_token";
                     hiddenInput.value = token;
                     ref.appendChild(hiddenInput);
-                    // Ensure that the credit card field is redacted before submitting
-                    const creditCardField = ticketFields.find((field) => field.type === "partialcreditcard");
-                    if (creditCardField) {
+                    // The backend expects the credit card field to have a length at least of 13 characters.
+                    // We are prefixing the 4 digits with 9 Xs to make sure the value has the expected length
+                    const creditCardFields = ticketFields.filter((field) => field.type === "partialcreditcard");
+                    for (const creditCardField of creditCardFields) {
                         const creditCardInput = ref.querySelector(`input[name="${creditCardField.name}"]`);
                         if (creditCardInput &&
                             creditCardInput instanceof HTMLInputElement) {
-                            creditCardInput.value = redactCreditCard(creditCardInput.value);
+                            creditCardInput.value = `XXXXXXXXX${creditCardInput.value}`;
                         }
                     }
                     HTMLFormElement.prototype.submit.call(ref);
@@ -924,12 +868,30 @@ function CcField({ field }) {
                             }) }) })), jsxRuntimeExports.jsxs(InputWrapper, { children: [jsxRuntimeExports.jsx(InputMirror, { isBare: true, "aria-hidden": "true", tabIndex: -1, children: inputValue }), jsxRuntimeExports.jsx(StyledInput, { ref: inputRef, isBare: true, ...getInputProps() })] })] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), tags.map((email) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: email }, email))), jsxRuntimeExports.jsx(AnnouncementMessage, { ...getAnnouncementProps(), children: announcement })] }));
 }
 
+/**
+ * When there is an error in the credit card field, the backend returns a redacted value with the last 4 digits prefixed with some Xs.
+ * This function removes the Xs from the value and returns the last 4 digits of the credit card
+ *
+ * @param value The value returned by the backend with last 4 digits prefixed with some Xs
+ * @returns The last 4 digits of the credit card
+ */
+function getLastDigits(value) {
+    return value ? value.replaceAll("X", "") : "";
+}
+// override CPH default style. Can be removed once global styles are removed
+const StyledMediaInput = styled(MediaInput) `
+  &:focus {
+    border: none !important;
+  }
+`;
+const DigitsHintSpan = styled(Span) `
+  margin-left: ${(props) => props.theme.space.xxs};
+`;
 function CreditCard({ field, onChange }) {
+    const { t } = useTranslation();
     const { label, error, value, name, required, description } = field;
-    const handleBlur = (e) => {
-        onChange(redactCreditCard(e.target.value));
-    };
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Input$1, { name: name, type: "text", value: value, onChange: (e) => onChange(e.target.value), onBlur: handleBlur, validation: error ? "error" : undefined, required: required, autoComplete: "cc-number" }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    const digits = getLastDigits(value);
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" }), jsxRuntimeExports.jsx(DigitsHintSpan, { children: t("new-request-form.credit-card-digits-hint", "(Last 4 digits)") })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(StyledMediaInput, { start: jsxRuntimeExports.jsx(SvgCreditCardStroke, {}), name: name, type: "text", value: digits, onChange: (e) => onChange(e.target.value), validation: error ? "error" : undefined, required: required, maxLength: 4 }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function Tagger({ field, onChange }) {
