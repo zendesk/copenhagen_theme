@@ -360,7 +360,8 @@ function useFormSubmit(ticketFields) {
                     for (const creditCardField of creditCardFields) {
                         const creditCardInput = ref.querySelector(`input[name="${creditCardField.name}"]`);
                         if (creditCardInput &&
-                            creditCardInput instanceof HTMLInputElement) {
+                            creditCardInput instanceof HTMLInputElement &&
+                            creditCardInput.value.length === 4) {
                             creditCardInput.value = `XXXXXXXXX${creditCardInput.value}`;
                         }
                     }
