@@ -1,5 +1,4 @@
 import { useCallback, useRef } from "react";
-import { createEditor } from "@zendesk/help-center-wysiwyg";
 import {
   Close,
   Notification,
@@ -31,6 +30,8 @@ export function useWysiwyg({
     async (ref: HTMLTextAreaElement) => {
       if (hasWysiwyg && ref && !isInitializedRef.current) {
         isInitializedRef.current = true;
+
+        const { createEditor } = await import("@zendesk/help-center-wysiwyg");
 
         const editor = await createEditor(ref, {
           editorType: "supportRequests",
