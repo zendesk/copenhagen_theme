@@ -54,7 +54,8 @@ export function useFormSubmit(ticketFields: Field[]): UseFormSubmit {
               );
               if (
                 creditCardInput &&
-                creditCardInput instanceof HTMLInputElement
+                creditCardInput instanceof HTMLInputElement &&
+                creditCardInput.value.length === 4
               ) {
                 creditCardInput.value = `XXXXXXXXX${creditCardInput.value}`;
               }
