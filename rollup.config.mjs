@@ -35,6 +35,13 @@ export default defineConfig([
       dir: "assets",
       format: "es",
       manualChunks: (id) => {
+        if (
+          id.includes("node_modules/@zendesk/help-center-wysiwyg") ||
+          id.includes("node_modules/@ckeditor5")
+        ) {
+          return "wysiwyg";
+        }
+
         if (id.includes("node_modules")) {
           return "vendor";
         }

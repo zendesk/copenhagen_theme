@@ -1,4 +1,4 @@
-import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, m as mainExports, N as Notification, T as Title, C as Close, b as Textarea, s as styled, h as hideVisually, c as Field$1, d as Label, e as Hint$1, f as Combobox, O as Option, g as Message$1, i as Checkbox$1, k as OptGroup, p as purify, l as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as useDropzone, t as FileUpload, D as Datepicker, v as useGrid, w as focusStyles, x as FauxInput, y as Tag, z as SvgAlertWarningStroke, B as MediaInput, E as SvgCreditCardStroke, $ as $e, G as Header$1, J as Footer$2, K as Modal, Q as Alert, R as Body$2, U as Accordion, V as Paragraph, W as Button, X as Close$2, Y as instance, Z as initReactI18next, _ as reactDomExports } from 'vendor-bundle';
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, b as Textarea, s as styled, h as hideVisually, d as Field$1, e as Label, f as Hint$1, i as Combobox, O as Option, k as Message$1, l as Checkbox$1, m as OptGroup, p as purify, n as FileList, o as File, q as Tooltip, P as Progress, A as Anchor, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
 import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
 
 function useModalContainer() {
@@ -30,7 +30,8 @@ function useWysiwyg({ hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, 
     return reactExports.useCallback(async (ref) => {
         if (hasWysiwyg && ref && !isInitializedRef.current) {
             isInitializedRef.current = true;
-            const editor = await mainExports.createEditor(ref, {
+            const { createEditor } = await import('wysiwyg-bundle').then(function (n) { return n.m; });
+            const editor = await createEditor(ref, {
                 editorType: "supportRequests",
                 hasAtMentions,
                 userRole,
