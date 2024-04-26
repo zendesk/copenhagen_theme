@@ -8,6 +8,7 @@ import {
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../../data-types";
 import { useWysiwyg } from "./useWysiwyg";
+import styled from "styled-components";
 
 interface TextAreaProps {
   field: Field;
@@ -18,6 +19,18 @@ interface TextAreaProps {
   brandId: number;
   onChange: (value: string) => void;
 }
+
+const StyledField = styled(GardenField)`
+  .ck.ck-editor {
+    margin-top: ${(props) => props.theme.space.xs};
+  }
+`;
+
+const StyledMessage = styled(Message)`
+  .ck.ck-editor + & {
+    margin-top: ${(props) => props.theme.space.xs};
+  }
+`;
 
 export function TextArea({
   field,
@@ -38,7 +51,7 @@ export function TextArea({
   });
 
   return (
-    <GardenField>
+    <StyledField>
       <Label>
         {label}
         {required && <Span aria-hidden="true">*</Span>}
@@ -56,7 +69,7 @@ export function TextArea({
         rows={6}
         isResizable
       />
-      {error && <Message validation="error">{error}</Message>}
-    </GardenField>
+      {error && <StyledMessage validation="error">{error}</StyledMessage>}
+    </StyledField>
   );
 }
