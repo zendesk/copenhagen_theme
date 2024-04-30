@@ -1,4 +1,4 @@
-import { a1 as DEFAULT_THEME, a2 as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, a3 as ThemeProvider, a4 as ToastProvider } from 'vendor-bundle';
+import { a1 as DEFAULT_THEME, a2 as Ne, r as reactExports, s as styled, j as jsxRuntimeExports, a3 as ThemeProvider, a4 as ToastProvider } from 'vendor';
 
 function createTheme(settings) {
     return {
