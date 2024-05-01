@@ -53,6 +53,8 @@ export function TextArea({
         validation={error ? "error" : undefined}
         required={required}
         onChange={(e) => onChange(e.target.value)}
+        rows={6}
+        isResizable
       />
       {error && <Message validation="error">{error}</Message>}
     </GardenField>
