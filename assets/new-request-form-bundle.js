@@ -1,4 +1,4 @@
-import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, b as Textarea, s as styled, h as hideVisually, d as Field$1, e as Label, f as Hint$1, i as Combobox, O as Option, k as Message$1, l as Checkbox$1, m as OptGroup, p as purify, n as FileList, o as File, q as Tooltip, P as Progress, A as Anchor, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, h as hideVisually, d as Field$1, e as Label, f as Hint$1, i as Combobox, O as Option, k as Message$1, l as Checkbox$1, m as OptGroup, p as purify, n as FileList, o as File, q as Tooltip, P as Progress, A as Anchor, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
 import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
 
 function useModalContainer() {
@@ -52,6 +52,16 @@ function useWysiwyg({ hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, 
     }, [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, addToast, t]);
 }
 
+const StyledField = styled(Field) `
+  .ck.ck-editor {
+    margin-top: ${(props) => props.theme.space.xs};
+  }
+`;
+const StyledMessage$1 = styled(Message) `
+  .ck.ck-editor + & {
+    margin-top: ${(props) => props.theme.space.xs};
+  }
+`;
 function TextArea({ field, hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, onChange, }) {
     const { label, error, value, name, required, description } = field;
     const ref = useWysiwyg({
@@ -61,7 +71,7 @@ function TextArea({ field, hasWysiwyg, baseLocale, hasAtMentions, userRole, bran
         userRole,
         brandId,
     });
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Textarea, { ref: ref, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value), rows: 6, isResizable: true }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(StyledField, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Textarea, { ref: ref, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value), rows: 6, isResizable: true }), error && jsxRuntimeExports.jsx(StyledMessage$1, { validation: "error", children: error })] }));
 }
 
 const HideVisually = styled.span `
@@ -636,6 +646,10 @@ function useEndUserConditions(fields, endUserConditions) {
     }, []);
 }
 
+// Workaround for Message component not adding margin-top after the Datepicker
+const StyledMessage = styled(Message) `
+  margin-top: ${(props) => props.theme.space.xs};
+`;
 function DatePicker({ field, locale, valueFormat, }) {
     const { label, error, value, name, required, description } = field;
     const [date, setDate] = reactExports.useState(value ? new Date(value) : undefined);
@@ -656,7 +670,7 @@ function DatePicker({ field, locale, valueFormat, }) {
             setDate(undefined);
         }
     };
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Datepicker, { value: date, onChange: handleChange, locale: locale, children: jsxRuntimeExports.jsx(Input$1, { required: required, lang: locale, onChange: handleInputChange }) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: formatDate(date) })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Datepicker, { value: date, onChange: handleChange, locale: locale, children: jsxRuntimeExports.jsx(Input$1, { required: required, lang: locale, onChange: handleInputChange, validation: error ? "error" : undefined }) }), error && jsxRuntimeExports.jsx(StyledMessage, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: formatDate(date) })] }));
 }
 
 function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueChange, inputRef, gridRowRef, i18n, }) {
