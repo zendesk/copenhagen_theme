@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@types/dompurify": "3.0.2",
-    "@zendesk/help-center-wysiwyg": "file:zendesk-help-center-wysiwyg-v0.0.2.tgz",
+    "@zendesk/help-center-wysiwyg": "^0.0.2",
     "@zendeskgarden/container-grid": "^3.0.6",
     "@zendeskgarden/react-accordions": "8.70.1",
     "@zendeskgarden/react-buttons": "8.70.1",
