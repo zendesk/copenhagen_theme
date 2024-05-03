@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "已添加 {{emails}}",
   "new-request-form.cc-field.invalid-email": "无效电邮地址",
   "new-request-form.close-label": "关闭",
+  "new-request-form.credit-card-digits-hint": "（最后 4 位数）",
   "new-request-form.dropdown.empty-option": "选择一个选项",
   "new-request-form.parent-request-link": "跟进请求 {{parentId}}",
   "new-request-form.required-fields-info": "标有星号 (*) 的字段是必填字段。",

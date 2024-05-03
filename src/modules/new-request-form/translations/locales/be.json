@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "Добавлены адреса {{emails}}",
   "new-request-form.cc-field.invalid-email": "Недействительный адрес электронной почты",
   "new-request-form.close-label": "Закрыть",
+  "new-request-form.credit-card-digits-hint": "(последние 4 цифры)",
   "new-request-form.dropdown.empty-option": "Выберите вариант",
   "new-request-form.parent-request-link": "Дополнение к запросу {{parentId}}",
   "new-request-form.required-fields-info": "Помеченные звездочкой (*) поля обязательны для заполнения.",

@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} wurden hinzugefügt",
   "new-request-form.cc-field.invalid-email": "E-Mail-Adresse ungültig",
   "new-request-form.close-label": "Schließen",
+  "new-request-form.credit-card-digits-hint": "(Letzte vier Ziffern)",
   "new-request-form.dropdown.empty-option": "Wählen Sie eine Option aus",
   "new-request-form.parent-request-link": "Folgeanfrage zu {{parentId}}",
   "new-request-form.required-fields-info": "Mit einem Sternchen (*) markierte Felder sind Pflichtfelder.",

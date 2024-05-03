@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "已新增 {{emails}}",
   "new-request-form.cc-field.invalid-email": "無效電子郵件地址",
   "new-request-form.close-label": "關閉",
+  "new-request-form.credit-card-digits-hint": "（最後 4 位數）",
   "new-request-form.dropdown.empty-option": "選取一個選項",
   "new-request-form.parent-request-link": "請求 {{parentId}} 的後續跟進",
   "new-request-form.required-fields-info": "標有星號 (*) 的欄位為必填欄位。",

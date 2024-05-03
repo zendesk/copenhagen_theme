@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} eklendi",
   "new-request-form.cc-field.invalid-email": "Geçersiz e-posta adresi",
   "new-request-form.close-label": "Kapat",
+  "new-request-form.credit-card-digits-hint": "(Son 4 hane)",
   "new-request-form.dropdown.empty-option": "Bir seçim yapın",
   "new-request-form.parent-request-link": "{{parentId}} talep etmek için ekleyin",
   "new-request-form.required-fields-info": "Yıldız işareti (*) ile işaretlenen alanların doldurulması zorunludur.",

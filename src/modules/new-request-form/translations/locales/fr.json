@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} ont été ajoutés",
   "new-request-form.cc-field.invalid-email": "Adresse e-mail non valide",
   "new-request-form.close-label": "Fermer",
+  "new-request-form.credit-card-digits-hint": "(4 derniers chiffres)",
   "new-request-form.dropdown.empty-option": "Sélectionnez une option",
   "new-request-form.parent-request-link": "Suivi de la demande {{parentId}}",
   "new-request-form.required-fields-info": "Les champs marqués d'un astérisque (*) sont obligatoires.",

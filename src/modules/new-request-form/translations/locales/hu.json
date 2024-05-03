@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} hozzáadva",
   "new-request-form.cc-field.invalid-email": "Érvénytelen e-mail-cím",
   "new-request-form.close-label": "Bezárás",
+  "new-request-form.credit-card-digits-hint": "(Utolsó 4 számjegy)",
   "new-request-form.dropdown.empty-option": "Válasszon egy lehetőséget",
   "new-request-form.parent-request-link": "Nyomon követés a(z) {{parentId}} kérelemhez",
   "new-request-form.required-fields-info": "A csillaggal (*) jelzett mezők kitöltése kötelező.",

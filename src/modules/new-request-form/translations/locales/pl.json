@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "Dodano {{emails}}",
   "new-request-form.cc-field.invalid-email": "Nieprawidłowy adres e-mail",
   "new-request-form.close-label": "Zamknij",
+  "new-request-form.credit-card-digits-hint": "(ostatnie 4 cyfry)",
   "new-request-form.dropdown.empty-option": "Wybierz opcję",
   "new-request-form.parent-request-link": "Kontynuacja zlecenia {{parentId}}",
   "new-request-form.required-fields-info": "Pola oznaczone gwiazdką (*) są wymagane.",

@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "E-maily {{emails}} byly přidány",
   "new-request-form.cc-field.invalid-email": "Neplatná e-mailová adresa",
   "new-request-form.close-label": "Zavřít",
+  "new-request-form.credit-card-digits-hint": "(Poslední 4 číslice)",
   "new-request-form.dropdown.empty-option": "Vybrat volbu",
   "new-request-form.parent-request-link": "Navazující tiket pro požadavek {{parentId}}",
   "new-request-form.required-fields-info": "Pole označená hvězdičkou (*) jsou povinná.",

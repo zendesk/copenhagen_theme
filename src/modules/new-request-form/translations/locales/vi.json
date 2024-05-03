@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} đã được thêm",
   "new-request-form.cc-field.invalid-email": "Địa chỉ email không hợp lệ",
   "new-request-form.close-label": "Đóng",
+  "new-request-form.credit-card-digits-hint": "(4 chữ số cuối)",
   "new-request-form.dropdown.empty-option": "Chọn một tùy chọn",
   "new-request-form.parent-request-link": "Theo dõi để yêu cầu {{parentId}}",
   "new-request-form.required-fields-info": "Các trường đánh dấu sao (*) là bắt buộc.",
