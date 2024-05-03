@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "new-request-form.cc-field.emails-added",
   "new-request-form.cc-field.invalid-email": "new-request-form.cc-field.invalid-email",
   "new-request-form.close-label": "new-request-form.close-label",
+  "new-request-form.credit-card-digits-hint": "new-request-form.credit-card-digits-hint",
   "new-request-form.dropdown.empty-option": "new-request-form.dropdown.empty-option",
   "new-request-form.parent-request-link": "new-request-form.parent-request-link",
   "new-request-form.required-fields-info": "new-request-form.required-fields-info",

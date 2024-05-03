@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} ถูกเพิ่มแล้ว",
   "new-request-form.cc-field.invalid-email": "ที่อยู่อีเมลไม่ถูกต้อง",
   "new-request-form.close-label": "ปิด",
+  "new-request-form.credit-card-digits-hint": "(เลข 4 หลักสุดท้าย)",
   "new-request-form.dropdown.empty-option": "เลือกตัวเลือก",
   "new-request-form.parent-request-link": "ติดตามคําร้องขอ {{parentId}}",
   "new-request-form.required-fields-info": "ต้องกรองช่องที่มีเครื่องหมายดอกจัน (*)",

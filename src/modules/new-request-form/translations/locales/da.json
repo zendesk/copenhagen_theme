@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} er blevet tilføjet",
   "new-request-form.cc-field.invalid-email": "Ugyldig e-mailadresse",
   "new-request-form.close-label": "Luk",
+  "new-request-form.credit-card-digits-hint": "(sidste 4 cifre)",
   "new-request-form.dropdown.empty-option": "Foretag et valg",
   "new-request-form.parent-request-link": "Følg op på anmodning {{parentId}}",
   "new-request-form.required-fields-info": "Felter markeret med en stjerne (*) er obligatoriske.",

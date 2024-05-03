@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}}이(가) 추가되었습니다.",
   "new-request-form.cc-field.invalid-email": "올바르지 않은 이메일 주소",
   "new-request-form.close-label": "닫기",
+  "new-request-form.credit-card-digits-hint": "(마지막 4자리)",
   "new-request-form.dropdown.empty-option": "옵션을 선택하세요.",
   "new-request-form.parent-request-link": "요청 {{parentId}}에 대한 후속 작업",
   "new-request-form.required-fields-info": "별표(*)가 표시된 필드는 필수입니다.",

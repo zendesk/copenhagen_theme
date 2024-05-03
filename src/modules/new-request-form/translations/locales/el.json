@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "Οι διευθύνσεις {{emails}} έχουν προστεθεί",
   "new-request-form.cc-field.invalid-email": "Μη έγκυρη διεύθυνση email",
   "new-request-form.close-label": "Κλείσιμο",
+  "new-request-form.credit-card-digits-hint": "(4 τελευταία ψηφία)",
   "new-request-form.dropdown.empty-option": "Ενεργοποιήστε μια επιλογή",
   "new-request-form.parent-request-link": "Συμπληρωματικό στο αίτημα {{parentId}}",
   "new-request-form.required-fields-info": "Τα πεδία με αστερίσκο (*) είναι υποχρεωτικά.",

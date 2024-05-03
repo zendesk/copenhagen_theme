@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} zijn toegevoegd",
   "new-request-form.cc-field.invalid-email": "Ongeldig e-mailadres",
   "new-request-form.close-label": "Sluiten",
+  "new-request-form.credit-card-digits-hint": "(Laatste 4 cijfers)",
   "new-request-form.dropdown.empty-option": "Selecteer een optie",
   "new-request-form.parent-request-link": "Follow-up van aanvraag {{parentId}}",
   "new-request-form.required-fields-info": "Velden met een sterretje (*) zijn vereist.",

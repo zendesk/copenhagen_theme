@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}}を追加しました",
   "new-request-form.cc-field.invalid-email": "メールアドレスが正しくありません",
   "new-request-form.close-label": "閉じる",
+  "new-request-form.credit-card-digits-hint": "（下4桁）",
   "new-request-form.dropdown.empty-option": "オプションを選択します",
   "new-request-form.parent-request-link": "リクエスト{{parentId}}の補足",
   "new-request-form.required-fields-info": "アスタリスク（*）が付いているフィールドは必須です。",

@@ -22,6 +22,7 @@
   "new-request-form.cc-field.emails-added": "{{emails}} har lagts till",
   "new-request-form.cc-field.invalid-email": "Ogiltig e-postadress",
   "new-request-form.close-label": "Stäng",
+  "new-request-form.credit-card-digits-hint": "(4 sista siffror)",
   "new-request-form.dropdown.empty-option": "Välj ett alternativ",
   "new-request-form.parent-request-link": "Uppföljning av förfrågan {{parentId}}",
   "new-request-form.required-fields-info": "Fält markerade med en asterisk (*) är obligatoriska.",
