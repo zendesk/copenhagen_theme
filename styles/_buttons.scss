@@ -46,7 +46,7 @@
   }
 }
 
-.button-large, input[type="submit"] {
+.button-large, .hbs-form input[type="submit"] {
   @include tablet {
     width: auto;
   }

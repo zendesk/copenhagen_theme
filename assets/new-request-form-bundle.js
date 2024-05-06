@@ -841,11 +841,6 @@ const StyledInput = styled(Input$1) `
   left: 0;
   height: var(--line-height);
   line-height: var(--line-height);
-
-  // override CPH default style. Can be removed once global styles are removed
-  &:focus {
-    border: none !important;
-  }
 `;
 const AnnouncementMessage = styled.span `
   ${hideVisually()}
@@ -894,12 +889,6 @@ function CcField({ field }) {
 function getLastDigits(value) {
     return value ? value.replaceAll("X", "") : "";
 }
-// override CPH default style. Can be removed once global styles are removed
-const StyledMediaInput = styled(MediaInput) `
-  &:focus {
-    border: none !important;
-  }
-`;
 const DigitsHintSpan = styled(Span) `
   margin-left: ${(props) => props.theme.space.xxs};
 `;
@@ -907,7 +896,7 @@ function CreditCard({ field, onChange }) {
     const { t } = useTranslation();
     const { label, error, value, name, required, description } = field;
     const digits = getLastDigits(value);
-    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" }), jsxRuntimeExports.jsx(DigitsHintSpan, { children: t("new-request-form.credit-card-digits-hint", "(Last 4 digits)") })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(StyledMediaInput, { start: jsxRuntimeExports.jsx(SvgCreditCardStroke, {}), name: name, type: "text", value: digits, onChange: (e) => onChange(e.target.value), validation: error ? "error" : undefined, required: required, maxLength: 4 }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" }), jsxRuntimeExports.jsx(DigitsHintSpan, { children: t("new-request-form.credit-card-digits-hint", "(Last 4 digits)") })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgCreditCardStroke, {}), name: name, type: "text", value: digits, onChange: (e) => onChange(e.target.value), validation: error ? "error" : undefined, required: required, maxLength: 4 }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
 }
 
 function Tagger({ field, onChange }) {
