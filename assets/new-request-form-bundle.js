@@ -1,4 +1,4 @@
-import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, h as hideVisually, d as Field$1, e as Label, f as Hint$1, i as Combobox, O as Option, k as Message$1, l as Checkbox$1, m as OptGroup, p as purify, n as FileList, o as File, q as Tooltip, P as Progress, A as Anchor, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as instance, _ as initReactI18next, a0 as reactDomExports } from 'vendor-bundle';
+import { r as reactExports, j as jsxRuntimeExports, F as Field, L as Label$1, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, h as hideVisually, d as Field$1, e as Label, f as Hint$1, i as Combobox, O as Option, k as Message$1, l as Checkbox$1, m as OptGroup, p as purify, n as FileList, o as File, q as Tooltip, P as Progress, A as Anchor, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as Header$1, K as Footer$2, Q as Modal, R as Alert, U as Body$2, V as Accordion, W as Paragraph, X as Button, Y as Close$2, Z as debounce, _ as instance, a0 as initReactI18next, a1 as reactDomExports } from 'vendor-bundle';
 import { M as ModalContainerContext, a as addFlashNotification, T as ThemeProviders, c as createTheme } from 'addFlashNotification-bundle';
 
 function useModalContainer() {
@@ -1137,6 +1137,54 @@ function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId
                                 }, children: t("new-request-form.answer-bot-modal.solve-request", "Yes, close my request") })] })] }), jsxRuntimeExports.jsx(Close$2, { "aria-label": t("new-request-form.close-label", "Close") })] }));
 }
 
+function getCustomObjectKey(targetType) {
+    return targetType.replace("zen:custom_object:", "");
+}
+function LookupField({ field, onChange }) {
+    const { id: fieldId, label, error, value, name, required, description, relationship_target_type, } = field;
+    const [options, setOptions] = reactExports.useState([]);
+    const customObjectKey = getCustomObjectKey(relationship_target_type);
+    const handleChange = reactExports.useCallback(async ({ inputValue, selectionValue }) => {
+        if (selectionValue !== undefined) {
+            onChange(selectionValue);
+            return;
+        }
+        if (inputValue !== undefined) {
+            if (inputValue === "") {
+                setOptions([]);
+            }
+            else {
+                const searchParams = new URLSearchParams();
+                searchParams.set("name", inputValue.toLocaleLowerCase());
+                searchParams.set("source", "zen:ticket");
+                searchParams.set("field_id", fieldId.toString());
+                const response = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`);
+                const data = await response.json();
+                setOptions(data.custom_object_records.map(({ name, id }) => ({
+                    name,
+                    value: id,
+                })));
+            }
+        }
+    }, [customObjectKey]);
+    const debounceHandleChange = reactExports.useMemo(() => debounce(handleChange, 300), [handleChange]);
+    reactExports.useEffect(() => {
+        return () => debounceHandleChange.cancel();
+    }, [debounceHandleChange]);
+    reactExports.useEffect(() => {
+        if (value && !options.find((option) => option.value === value)) {
+            fetch(`/api/v2/custom_objects/${customObjectKey}/records/${value}`)
+                .then((res) => res.json())
+                .then(({ custom_object_record }) => {
+                setOptions([
+                    { name: custom_object_record.name, value: value },
+                ]);
+            });
+        }
+    }, [value, customObjectKey, options]);
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { isAutocomplete: true, inputProps: { name, required }, validation: error ? "error" : undefined, inputValue: value, selectionValue: value, renderValue: ({ selection }) => selection?.label || jsxRuntimeExports.jsx(EmptyValueOption, {}), onChange: debounceHandleChange, children: [!required && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), JSON.stringify(options)] }));
+}
+
 const StyledParagraph = styled(Paragraph) `
   margin: ${(props) => props.theme.space.md} 0;
 `;
@@ -1204,6 +1252,8 @@ function NewRequestForm({ requestForm, wysiwyg, parentId, parentIdPath, locale, 
                                 return jsxRuntimeExports.jsx(MultiSelect, { field: field });
                             case "tagger":
                                 return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+                            case "lookup":
+                                return (jsxRuntimeExports.jsx(LookupField, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                             default:
                                 return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                         }

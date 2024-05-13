@@ -8,6 +8,7 @@ export interface Field {
   description: string;
   type: string;
   options: FieldOption[];
+  relationship_target_type?: string;
 }
 
 export interface FieldOption {

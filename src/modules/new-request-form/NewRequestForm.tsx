@@ -22,6 +22,7 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
+import { LookupField } from "./fields/LookupField";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -277,6 +278,14 @@ export function NewRequestForm({
             case "tagger":
               return (
                 <Tagger
+                  key={field.name}
+                  field={field}
+                  onChange={(value) => handleChange(field, value)}
+                />
+              );
+            case "lookup":
+              return (
+                <LookupField
                   key={field.name}
                   field={field}
                   onChange={(value) => handleChange(field, value)}
