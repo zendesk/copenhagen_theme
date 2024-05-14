@@ -71,11 +71,6 @@ const StyledInput = styled(Input)`
   left: 0;
   height: var(--line-height);
   line-height: var(--line-height);
-
-  // override CPH default style. Can be removed once global styles are removed
-  &:focus {
-    border: none !important;
-  }
 `;
 
 const AnnouncementMessage = styled.span`

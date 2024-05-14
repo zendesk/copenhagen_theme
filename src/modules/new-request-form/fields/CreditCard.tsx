@@ -27,13 +27,6 @@ function getLastDigits(value: string): string {
   return value ? value.replaceAll("X", "") : "";
 }
 
-// override CPH default style. Can be removed once global styles are removed
-const StyledMediaInput = styled(MediaInput)`
-  &:focus {
-    border: none !important;
-  }
-`;
-
 const DigitsHintSpan = styled(Span)`
   margin-left: ${(props) => props.theme.space.xxs};
 `;
@@ -55,7 +48,7 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
       {description && (
         <Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <StyledMediaInput
+      <MediaInput
         start={<CreditCardIcon />}
         name={name}
         type="text"
