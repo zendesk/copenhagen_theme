@@ -5,17 +5,17 @@
 <script type="importmap">
 {
   "imports": {
-    "new-request-form-bundle": "{{asset 'new-request-form-bundle.js'}}",
-    "notifications-bundle": "{{asset 'notifications-bundle.js'}}",
-    "new-request-form-translations-bundle": "{{asset 'new-request-form-translations-bundle.js'}}",
-    "vendor-bundle": "{{asset 'vendor-bundle.js'}}",
-    "wysiwyg-bundle": "{{asset 'wysiwyg-bundle.js'}}",
-    "addFlashNotification-bundle": "{{asset 'addFlashNotification-bundle.js'}}"
+    "new-request-form": "{{asset 'new-request-form-bundle.js'}}",
+    "notifications": "{{asset 'notifications-bundle.js'}}",
+    "new-request-form-translations": "{{asset 'new-request-form-translations-bundle.js'}}",
+    "vendor": "{{asset 'vendor-bundle.js'}}",
+    "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}",
+    "addFlashNotification": "{{asset 'addFlashNotification-bundle.js'}}"
   }
 }
 </script>
 <script type="module">
-  import {renderFlashNotifications} from "notifications-bundle";
+  import { renderFlashNotifications } from "notifications";
 
   const settings = {{json settings}};
   const closeLabel = {{json (t 'close')}}

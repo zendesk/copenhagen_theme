@@ -23,14 +23,12 @@ export function generateImportMap() {
   return {
     name: "rollup-plugin-generate-import-map",
     writeBundle({ dir }, bundle) {
-      const parsedOutputChunks = Object.keys(bundle).map((chunk) =>
-        path.parse(chunk)
-      );
+      const outputAssets = Object.values(bundle);
       const importMap = { imports: {} };
 
-      for (const { base, name } of parsedOutputChunks) {
-        replaceImports(base, parsedOutputChunks, dir);
-        importMap.imports[name] = `{{asset '${base}'}}`;
+      for (const { name, fileName } of outputAssets) {
+        replaceImports(fileName, outputAssets, dir);
+        importMap.imports[name] = `{{asset '${fileName}'}}`;
       }
 
       injectImportMap(importMap);
@@ -40,20 +38,19 @@ export function generateImportMap() {
 
 /**
  * Replace relative imports with bare imports
- * @param {string} chunkName Name of the current chunk
- * @param {import("path").ParsedPath[]} parsedOutputChunks Array of chunks generated during the build
+ * @param {string} fileName Name of the current output asset
+ * @param {import("rollup").OutputAsset} outputAssets Array of all output assets generated during the build
  * @param {string} outputPath Path of the output directory
  */
-function replaceImports(chunkName, parsedOutputChunks, outputPath) {
-  const chunkPath = path.resolve(outputPath, chunkName);
+function replaceImports(fileName, outputAssets, outputPath) {
+  const filePath = path.resolve(outputPath, fileName);
+  let content = fs.readFileSync(filePath, "utf-8");
 
-  let content = fs.readFileSync(chunkPath, "utf-8");
-
-  for (const { base, name } of parsedOutputChunks) {
-    content = content.replaceAll(`'./${base}'`, `'${name}'`);
+  for (const { name, fileName } of outputAssets) {
+    content = content.replaceAll(`'./${fileName}'`, `'${name}'`);
   }
 
-  fs.writeFileSync(chunkPath, content, "utf-8");
+  fs.writeFileSync(filePath, content, "utf-8");
 }
 
 /**
