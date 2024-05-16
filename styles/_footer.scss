@@ -1,28 +1,323 @@
 /***** Footer *****/
+.footer_container {
+  display: flex;
+  padding: 35px 50px 30px 50px;
+  flex-direction: column;
+  border-top: 1px solid #d2d2d2;
+  width: 100%;
+
+  @media (max-width: $desktop-width){
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+}
+
+.my-0 {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
 .footer {
-  border-top: 1px solid $low-contrast-border-color;
-  margin-top: 60px;
-  padding: 30px 0;
+  background: $footer_background_color;
+  color: black;
+  padding: 0 0 12px;
+
+  .submit-a-request {
+    text-transform: uppercase;
+  }
+
+  .footer-inner {
+    margin: 0;
+  }
+  &-language-selector {
+    display: none;
+    color: $secondary-text-color;
+  }
+
+  .contact-block {
+    text-align: center;
+    padding: 30px 0 80px;
+    position: relative;
+    background: white;
+    color: black;
+    
+    @include mobile {
+      padding: 30px 5% 100px;
+    }
+
+    &:after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      content: '';
+      height: 15px;
+      background: $brand-color;
+    }
+
+    &:before {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: '';
+      height: 30px;
+    }
+
+    h1 {
+      font-size: 35px;
+      line-height: 44px;
+      font-weight: $font-weight-semibold;
+      margin: 50px 0 40px;
+    }
+
+    .link-not-found {
+      font-size: 18px;
+      font-weight: $font-weight-semibold;
+    }
+
+    .btn {
+      display: inline-block;
+      color: white;
+      min-width: 180px;
+      padding: 10px 30px;
+      text-align: center;
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: $font-weight-normal;
+      background: $brand-color;
+      border-radius: 5px;
+    }
+  }
+  
+  .footer-top {
+    @include footer-row;
+    flex-flow: row wrap;
+
+    #open-learning-logo {
+      img {
+        width: 128.65px;
+      }
+    }
+
+    .support-link-container {
+      display: flex;
+      align-items: center;
+
+      a {
+        font-size: 16px;
+        text-decoration: underline;
+        font-weight: bold;
+        padding-left: 10px;
+      }
+
+      @include mobile {
+        display: none !important;
+      }
+    }
+  }
+
+  .footer-mid {
+    @include footer-row;
+    @include row-gap-20;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    .about-courseware {
+      width: 50%;
+      font-size: 16px;
+
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    .oeg-section {
+      display: flex;
+      flex-flow: row wrap;
+      margin-left: 0;
+      margin-right: 0;
+      align-items: center;
+      
+      p {
+        font-weight: bold;
+        font-size: 16px;
+        a {
+          img {
+            vertical-align: middle !important;
+          }
+        }
+      }
+
+    }
+
+    .support-links-sm {
+      @include row-gap-20;
+      display:  none;
+
+      a {
+        font-size: 16px;
+        text-decoration: underline;
+      }
+
+      @include mobile {
+        display: flex;
+        flex-direction: column;
+        width: 55%;
+        font-weight: bold;
+      }
+    }
+
+  }
+
+
+  .footer-bottom {
+    @include footer-row;
+    @include row-gap-20;
+    flex-flow: row wrap-reverse;
+
+    .copyright-section {
+      display: flex;
+      align-items: end;
+      margin-right: 1rem !important;
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .footer-social-icon {
+      height: 24px;
+    }
+    
+    .horizontal-list {
+      display: flex;
+      margin-top: auto;
+      ul {
+        list-style: none;
+        margin: 0;
+  
+        li {
+          display: inline-block;
+          padding-right: 28px;
+          margin-bottom: 5px;
+  
+          &:last-child {
+            padding-right: 0px;
+          }
+        }
+      }
+    }
+
+  }
 
   a {
-    color: $secondary-text-color;
+    color: black;
   }
 
-  &-inner {
-    @include max-width-container;
-    display: flex;
-    justify-content: space-between;
+  .right-info {
+    text-align: center;
+    padding: 0 0 20px;
+    display: none;
+
+    @include desktop {
+      float: right;
+      text-align: left;
+      padding: 0;
+    }
   }
 
-  &-language-selector button {
-    color: $secondary-text-color;
-    display: inline-block;
+  .footer-nav {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    @include desktop {
+      float: left;
+    }
+
+    li {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 0 0 10px;
+      font-size: 18px;
+      line-height: 28px;
+
+      @include desktop {
+        margin-left: 15px;
+      }
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .footer-sub-nav {
+    margin: 0 0 5px;
+    list-style: none;
+    text-align: left;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0 0 20px;
+
+    @include tablet {
+      text-align: right;
+      margin: 0;
+      float: right;
+    }
+
+    li {
+      display: block;
+      margin: 0;
+      vertical-align: top;
+      padding: 0 0 12px;
+
+      @include tablet {
+        display: inline-block;
+        margin: 0 5px;
+      }
+
+      &:first-child {
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    display: block;
+    text-align: left;
+    font-size: 15px;
+    line-height: 18px;
+    margin: 5px 0;
+
+    @include tablet {
+      padding-bottom: 10px;
+    }
+
+    @include desktop {
+      margin: 0;
+    }
+  }
+
+  .container {
+    max-width: $max-width-container;
+
+    @include desktop {
+      padding: 0 32px;
+    }
+  }
+
+  #open-learning-logo {
+    img {
+      width: 128.65px;
+    }
   }
 }
 
 .powered-by-zendesk {
-  a,
-  a:visited {
-    color: $secondary-text-color;
-  }
+  display: none;
 }

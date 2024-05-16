@@ -57,6 +57,10 @@
   &-body {
     @include desktop { display: block; }
     display: none;
+
+    .sidenav-item {
+        color: $text_color;
+    }
   }
 
   &[aria-expanded="true"] {

@@ -13,6 +13,7 @@ function debounce(callback, wait) {
 // Define variables for search field
 let searchFormFilledClassName = "search-has-value";
 let searchFormSelector = "form[role='search']";
+let searchSelector = "input[type='search']";
 
 // Clear the search input, and then return focus to it
 function clearSearchInput(event) {
@@ -63,7 +64,8 @@ function buildClearSearchButton(inputId) {
 // Append the clear button to the search form
 function appendClearSearchButton(input, form) {
   const searchClearButton = buildClearSearchButton(input.id);
-  form.append(searchClearButton);
+  const searchElement = form.querySelector(searchSelector);
+  searchElement.insertAdjacentElement("afterend", searchClearButton);
   if (input.value.length > 0) {
     form.classList.add(searchFormFilledClassName);
   }

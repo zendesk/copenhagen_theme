@@ -1,6 +1,9 @@
 // Variables
 
 // Colors
+$brand_color: #006b9c !default;
+$background_color: #fff;
+$footer_background_color: #F5F5F5;
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
 
@@ -8,9 +11,9 @@ $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default ba
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 $font-size-bigger: 16px;
-$font-size-base: 15px;
+$font-size-base: 18px;
 $font-size-navigation: 14px;
-$font-size-small: 13px;
+$font-size-small: 18px;
 $font-size-smaller: 11px;
 
 $high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
@@ -27,7 +30,12 @@ $field-text-focus-color: #555;
 $tablet-width: 768px;
 $desktop-width: 1024px;
 $max-width-container: 1160px;
+$extra-small-screen-width: 400px;
 
+// Fonts
+$font-weight-base: 400;
+$font-weight-light: 300;
+$font-weight-normal: 500;
 $font-weight-semibold: 600;
 
 // Transitions

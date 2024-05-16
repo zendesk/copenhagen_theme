@@ -245,4 +245,13 @@
   li {
     margin-bottom: 15px;
   }
+
+  a {
+    text-decoration: underline;
+    color: $article_link_color;
+  
+    &:visited {
+      color: $visited_article_link_color;
+    }
+  }
 }

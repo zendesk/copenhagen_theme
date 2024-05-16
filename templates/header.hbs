@@ -1,27 +1,34 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 
 <header class="header">
-  <div class="logo">
-    {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
-      {{#if settings.show_brand_name}}
-        <span aria-hidden="true">{{help_center.name}}</span>
-      {{/if}}
-    {{/link}}
-  </div>
+  <div class="header-left">
+    <div class="logo">
+      <a href={{settings.ocw_link}}>
+        <img src="{{settings.logo}}" class="site-logo" />
+      </a>
+    </div>
+   </div>
 
   <div class="nav-wrapper-desktop">
     <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
       <ul class="user-nav-list">
-        <li>{{link 'community'}}</li>
-        <li>{{link 'new_request' class='submit-a-request'}}</li>
-        {{#unless signed_in}}
-          <li>
-            {{#link "sign_in" class="sign-in"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
-        {{/unless}}
+        {{#link 'help_center' class="support-center"}}
+          HELP & FAQS
+        {{/link}}
+        {{#if settings.contact_us}}
+          <li><a href={{settings.contact_us}} class="submit-a-request">CONTACT US</a></li>
+        {{else}}
+          <li>{{#link 'new_request' class='submit-a-request'}}CONTACT US{{/link}}</li>
+        {{/if}}
+        {{#if settings.show_user_info}}
+          {{#unless signed_in}}
+            <li>
+              {{#link "sign_in" class="sign-in"}}
+                {{t 'sign_in'}}
+              {{/link}}
+            </li>
+          {{/unless}}
+        {{/if}}
       </ul>
     </nav>
     {{#if signed_in}}
@@ -75,15 +82,25 @@
           <li class="item">{{change_password role="menuitem" class='change-password'}}</li>
           <li class="nav-divider"></li>
         {{else}}
-          <li class="item">
-            {{#link "sign_in" role="menuitem"}}
-              {{t 'sign_in'}}
-            {{/link}}
-          </li>
+          {{#if settings.show_user_info}}
+            <li class="item">
+              {{#link "sign_in" role="menuitem"}}
+                {{t 'sign_in'}}
+              {{/link}}
+            </li>
+          {{/if}}
           <li class="nav-divider"></li>
         {{/if}}
-        <li class="item">{{link 'community' role="menuitem"}}</li>
-        <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
+        <li class="item">
+          {{#link 'help_center' class="support-center"}}
+            HELP & FAQS
+          {{/link}}
+        </li>
+        {{#if settings.contact_us}}
+          <li class="item"><a href={{settings.contact_us}} class="submit-a-request">CONTACT US</a></li>
+        {{else}}
+          <li class="item">{{#link 'new_request' class='submit-a-request'}}CONTACT US{{/link}}</li>
+        {{/if}}
         <li class="nav-divider"></li>
         {{#if signed_in}}
           <li class="item">
@@ -95,3 +112,15 @@
   </div>
 
 </header>
+<script>(function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({
+      'gtm.start':
+        new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', 'GTM-MT2XTXB');</script>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MT2XTXB" height="0" width="0"
+    style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->

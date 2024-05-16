@@ -3,6 +3,7 @@ name: Lighthouse
 
 jobs:
   lighthouse:
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

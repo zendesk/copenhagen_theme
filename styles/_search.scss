@@ -1,7 +1,7 @@
 /***** Search field *****/
 
 $icon-color: #777;
-$padding-left: 40px;
+$padding-left: 60px;
 $padding-right: 20px;
 
 .search-container {
@@ -10,7 +10,7 @@ $padding-right: 20px;
 
 .search {
   border-color: $high-contrast-border-color;
-  border-radius: 30px;
+  border-radius: 8px;
   border-style: solid;
   border-width: 1px;
   display: flex;
@@ -21,14 +21,14 @@ $padding-right: 20px;
     border-color: $brand_color;
   }
 
-  input[type="search"], 
+  input[type="search"],
   .clear-button {
     background-color: #fff;
-    border-radius: 30px;
+    border-radius: 8px;
     border: none;
   }
 
-  &-full input[type="search"], 
+  &-full input[type="search"],
   &-full .clear-button {
     border-color: #fff;
   }
@@ -39,7 +39,8 @@ $padding-right: 20px;
     box-sizing: border-box;
     color: $field-text-color;
     flex: 1 1 auto;
-    height: 40px;
+    height: 65px;
+    font-size: 24px;
     width: 100%;
 
     &:focus {
@@ -54,7 +55,7 @@ $padding-right: 20px;
     }
 
     &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
       -webkit-box-shadow: 0 0 0 1000px #fff inset;
     }
@@ -113,7 +114,7 @@ $padding-right: 20px;
     &:focus {
       border-left-color: $brand_color;
     }
-    
+
   }
 }
 

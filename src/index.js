@@ -5,3 +5,4 @@ import "./dropdowns";
 import "./share";
 import "./search";
 import "./forms";
+import "./custom";

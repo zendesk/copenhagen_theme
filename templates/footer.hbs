@@ -1,6 +1,121 @@
 <footer class="footer">
-  <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+  {{#if settings.show_contact_us_section}}
+  <div class="contact-block">
+    <div class="footer-inner">
+      <h1>{{settings.contact_us_header}}</h1>
+      {{#if settings.contact_us}}
+        <a href={{settings.contact_us}} class="submit-a-request btn" role="button">Contact Us</a>
+      {{else}}
+        {{#link 'new_request' class='submit-a-request btn' role='button'}}
+          Contact Us
+        {{else}}
+        <span class='link-not-found'>
+          Contact Us link is not available for you.
+        </span>
+        {{/link}}
+      {{/if}}
+    </div>
+  </div>
+  {{/if}}
+
+  <div class="footer_container">
+    <div class="footer-top">
+      <div id="open-learning-logo">
+        <a href="https://openlearning.mit.edu/">
+        <img src="{{settings.mit_footer_logo}}" alt="MIT" loading="lazy" />
+        </a>
+      </div>
+      <div class="support-link-container">
+        <a href="{{settings.ocw_accessibility}}">Accessibility</a>
+        <a href="{{settings.ocw_creative_common}}">Creative Commons License</a>
+        <a href="{{settings.ocw_privacy_policy}}">Terms and Conditions</a>
+      </div>
+    </div>
+    <div class="footer-mid">
+      <div class="about-courseware">
+        <p class="my-0">
+          MIT OpenCourseWare is an online publication of materials from over 2,500
+          MIT courses, freely sharing knowledge with learners and educators around
+          the world. <a href="{{settings.ocw_learn_more}}">Learn more</a>
+        </p>
+      </div>
+      <div class="support-links-sm">
+        <a href="https://accessibility.mit.edu">Accessibility</a>
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons License</a>
+        <a href="/pages/privacy-and-terms-of-use/">Terms and Conditions</a>
+      </div>
+      <div class="oeg-section">
+        <p class="my-0">
+          PROUD MEMBER OF :
+          <a href="https://www.oeglobal.org/" target="_blank"><img src="{{settings.oeg_logo}}"
+              alt="Open Education Global" /></a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright-section">
+        <p class="my-0">
+          © 2001–<span id="date"></span> Massachusetts Institute of Technology
+        </p>
+      </div>
+      <div class="horizontal-list">
+      <ul class="p-0">
+        <li>
+          <a
+            class="img-link"
+            href="https://www.facebook.com/MITOCW"
+            target="_blank"
+          >
+            <img
+              class="footer-social-icon"
+              src="{{settings.facebook_logo}}"
+              alt="facebook"
+            />
+          </a>
+        </li>
+        <li>
+          <a
+            class="img-link"
+            href="https://www.instagram.com/mitocw"
+            target="_blank"
+          >
+            <img
+              class="footer-social-icon"
+              src="{{settings.instagram_logo}}"
+              alt="instagram"
+            />
+          </a>
+        </li>
+        <li>
+          <a class="img-link" href="https://twitter.com/MITOCW" target="_blank">
+            <img class="footer-social-icon" src="{{settings.twitter_logo}}" alt="twitter" />
+          </a>
+        </li>
+        <li>
+          <a
+            class="img-link"
+            href="https://www.youtube.com/mitocw"
+            target="_blank"
+          >
+            <img class="footer-social-icon" src="{{settings.youtube_logo}}" alt="youtube" />
+          </a>
+        </li>
+        <li>
+          <a
+            class="img-link"
+            href="https://www.linkedin.com/company/mit-opencourseware/"
+            target="_blank"
+          >
+            <img
+              class="footer-social-icon"
+              src="{{settings.linked_in}}"
+              alt="LinkedIn"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
+    </div>
 
     <div class="footer-language-selector">
       {{#if alternative_locales}}
@@ -22,4 +137,8 @@
       {{/if}}
     </div>
   </div>
+ </div>
 </footer>
+<script>
+  document.getElementById("date").append(new Date().getFullYear());
+</script>

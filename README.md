@@ -199,6 +199,25 @@ In this example, errors for the audit `tabindex` with the selector `body > a.ski
 
 Please keep in mind that this should only be used when strictly necessarity. Accessibility should be a focus and a priority when making changes to the theme.
 
+
+# Quick Setup Recall (Running and testing theme locally)
+
+NOTE: This guide is to quickly setup and run the theme locally. To know more about how to customize the theme, See all the details above.
+
+1. Create a trial account on https://www.zendesk.com/. This will let you create a subdomain Zendesk account that you can manage.
+2. Make sure to opt-in for Guide integration once your trial account setup is done.
+3. Create API keys for running the server locally and previewing them on your subdomain. `<YOUR_ZENDESK_DOMAIN>/admin/apps-integrations/apis/zendesk-api/settings`.
+4. Enable Help Center for your account through `<YOUR_ZENDESK_DOMAIN>/hc/admin/general_settings`
+5. Install [ZAT CLI](https://support.zendesk.com/hc/en-us/articles/4408822095642-Previewing-theme-changes-locally)
+6. Run `yarn install` to install all the node packages
+7. To start local theme previewing:
+   - Make sure to first run `yarn zcli login -i` if you haven't done that before. You will be prompted to enter your subdomain, email, and password. Example: 
+     - Subdomain: "<YOUR_SUB_DOMAIN>"
+     - Email: "<Email>/token"
+     - Password: "<TOKEN_GENERATED_IN_STEP_3>"
+10. Run the preview `yarn start`. This command will compile all the source code located in `src` and `styles`, and it will also watch for any changes. Additionally, it will start the `preview`.
+11. (Optional) to build a zip of local theme and upload on your trial instance run `zip -vr <ZIP_FILE_NAME>.zip <YOUR_THEME_DIRECTORY> -x "*/node_modules/*"` and then upload the generated zip file on `<YOUR_ZENDESK_DOMAIN>/theming/workbench`
+
 # Contributing
 Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme. Please mention @zendesk/vikings when creating a pull request.
 

@@ -2,17 +2,80 @@
 $header-height: 71px;
 
 .header {
-  @include max-width-container;
+
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-nav a {
+    color: white;
+    font-size: 16px;
+    font-weight: $font-weight-semibold;
+    padding: 0;
+
+    &:hover {
+      color: white !important;
+    }
+    @include tablet {
+      padding-left: 16px;
+    }
+  }
+
+  background-color: $header_background_color;
+  width: 100%;
   position: relative;
   align-items: center;
   display: flex;
-  height: $header-height;
   justify-content: space-between;
+  padding: 20px 2% !important;
+
+  @include mobile {
+    padding: 5px 32px;
+
+    .logo img{
+      width: 250px; 
+    }
+
+  }
+
 }
 
-.logo img {
-  max-height: 37px;
-  vertical-align: middle;
+.logo {
+  position: relative;
+  float: left;
+  margin: 0 10px 0 0;
+
+  .mit-link, .mitxonline-link {
+    position: absolute;
+    z-index: 2;
+    opacity: .5;
+  }
+
+  .mit-link {
+    left: 0;
+    top: 7px;
+    width: 72px;
+    height: 39px;
+  }
+
+  .mitxonline-link {
+    left: 100px;
+    top: 15px;
+    width: 190px;
+    height: 25px;
+  }
+
+  @include tablet {
+    width: 300px;
+    margin: 0 20px 0 0;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+    height: auto;
+  }
 }
 
 .logo span {
@@ -21,7 +84,7 @@ $header-height: 71px;
 }
 
 .logo a {
-  display: inline-block;
+  display: block;
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {
@@ -46,6 +109,7 @@ $header-height: 71px;
     > a {
       display: block;
       margin: 20px;
+      color: black !important;
     }
 
     > .user-nav-list {
@@ -83,8 +147,9 @@ $header-height: 71px;
     border: 0;
     color: $link_color;
     display: none;
-    font-size: 14px;
+    font-size: 18px;
     padding: 0 20px 0 0;
+    font-weight: 500;
     width: auto;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
@@ -110,6 +175,7 @@ $header-height: 71px;
     cursor: pointer;
 
     .icon-menu {
+      color: white;
       padding: 7px;
       vertical-align: middle;
       width: 30px;
@@ -119,7 +185,7 @@ $header-height: 71px;
 
     &[aria-expanded="true"] {
       .icon-menu {
-        background: #f3f3f3;
+        background: $header_background_color;
       }
     }
   }
@@ -185,6 +251,7 @@ $header-height: 71px;
       width: 100%;
       height: 100%;
       color: $text_color;
+      font-weight: $font-weight-semibold;
 
       &:active, &:focus, &:hover {
         background-color: #f3f3f3;

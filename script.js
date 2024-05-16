@@ -394,6 +394,7 @@
   // Define variables for search field
   let searchFormFilledClassName = "search-has-value";
   let searchFormSelector = "form[role='search']";
+  let searchSelector = "input[type='search']";
 
   // Clear the search input, and then return focus to it
   function clearSearchInput(event) {
@@ -444,7 +445,8 @@
   // Append the clear button to the search form
   function appendClearSearchButton(input, form) {
     const searchClearButton = buildClearSearchButton(input.id);
-    form.append(searchClearButton);
+    const searchElement = form.querySelector(searchSelector);
+    searchElement.insertAdjacentElement("afterend", searchClearButton);
     if (input.value.length > 0) {
       form.classList.add(searchFormFilledClassName);
     }
@@ -656,6 +658,22 @@
     ) {
       notificationElm.previousElementSibling.focus();
     }
+  });
+
+  // Custom
+
+  window.addEventListener("DOMContentLoaded", () => {
+    // This hides the 'Submit a request' link and the contact block
+    // on the Zendesk support page for new requests ('/requests/new').
+    var submitLinks = document.querySelectorAll("a.submit-a-request");
+    var path = window.location.pathname;
+
+    submitLinks.forEach(function (link) {
+      if (path.indexOf("/requests/new") > -1) {
+        link.style.display = "none";
+        document.querySelector(".contact-block").style.display = "none";
+      }
+    });
   });
 
 })();

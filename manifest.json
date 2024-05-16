@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "#17494D"
+          "value": "#A31F34"
         },
         {
           "identifier": "brand_text_color",
@@ -34,7 +34,21 @@
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
+          "value": "#355b6b"
+        },
+        {
+          "identifier": "article_link_color",
+          "type": "color",
+          "description": "article_link_color_description",
+          "label": "article_link_color_label",
           "value": "#1F73B7"
+        },
+        {
+          "identifier": "visited_article_link_color",
+          "type": "color",
+          "description": "visited_article_link_color_description",
+          "label": "visited_article_link_color_label",
+          "value": "#A31F34"
         },
         {
           "identifier": "hover_link_color",
@@ -56,6 +70,13 @@
           "description": "background_color_description",
           "label": "background_color_label",
           "value": "#FFFFFF"
+        },
+        {
+          "identifier": "header_background_color",
+          "type": "color",
+          "description": "header_background_color_description",
+          "label": "header_background_color_label",
+          "value": "#000000"
         }
       ]
     },
@@ -74,7 +95,7 @@
             },
             {
               "label": "Arial",
-              "value": "Arial, 'Helvetica Neue', Helvetica, sans-serif"
+              "value": "'Arial', 'Helvetica Neue', 'Helvetica', sans-serif"
             },
             {
               "label": "Arial Black",
@@ -129,11 +150,15 @@
               "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
             },
             {
+              "label": "Montserrat",
+              "value": "'Montserrat', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
+            },
+            {
               "label": "Trebuchet MS",
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "Helvetica, Arial, sans-serif"
         },
         {
           "identifier": "text_font",
@@ -202,11 +227,15 @@
               "value": "'Lucida Grande', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
             },
             {
+              "label": "Montserrat",
+              "value": "'Montserrat', 'Lucida Sans', 'Lucida Sans Unicode', sans-serif"
+            },
+            {
               "label": "Trebuchet MS",
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "Helvetica, Arial, sans-serif"
         }
       ]
     },
@@ -250,10 +279,91 @@
           "label": "community_background_image_label"
         },
         {
+          "identifier": "ocw_background",
+          "type": "file",
+          "description": "background_image_description",
+          "label": "Background image"
+        },
+        {
+          "identifier": "mit_footer_logo",
+          "type": "file",
+          "description": "mit_footer_logo_description",
+          "label": "Footer logo"
+        },
+        {
+          "identifier": "oeg_logo",
+          "type": "file",
+          "description": "oeg_description",
+          "label": "Open Learning Group Logo"
+        },
+        {
+          "identifier": "facebook_logo",
+          "type": "file",
+          "description": "facebook_description",
+          "label": "Facebook Logo"
+        },
+        {
+          "identifier": "instagram_logo",
+          "type": "file",
+          "description": "instagram_description",
+          "label": "Instagram Logo"
+        },
+        {
+          "identifier": "linked_in",
+          "type": "file",
+          "description": "linkedIn_description",
+          "label": "LinkedIn Logo"
+        },
+        {
+          "identifier": "twitter_logo",
+          "type": "file",
+          "description": "twitter_description",
+          "label": "Twitter Logo"
+        },
+        {
+          "identifier": "youtube_logo",
+          "type": "file",
+          "description": "youtube_description",
+          "label": "Youtube Logo"
+        },
+        {
           "identifier": "community_image",
           "type": "file",
           "description": "community_image_description",
           "label": "community_image_label"
+        }
+      ]
+    },
+    {
+      "label": "header_page_group_label",
+      "variables": [
+        {
+          "identifier": "show_user_info",
+          "type": "checkbox",
+          "description": "user_info_description",
+          "label": "user_info_label",
+          "value": false
+        },
+        {
+          "identifier": "mit_link",
+          "type": "text",
+          "description": "mit_link_description",
+          "label": "mit_link_label",
+          "value": "https://mit.edu/"
+        },
+        {
+          "identifier": "ocw_link",
+          "type": "text",
+          "description": "ocw_description",
+          "label": "ocw_label",
+          "value": "https://ocw.mit.edu"
+        },
+        {
+          "identifier": "contact_us",
+          "type": "text",
+          "description": "contact_us_description",
+          "label": "contact_us_label",
+          "value": "https://ocw.mit.edu/contact/"
         }
       ]
     },
@@ -291,7 +401,7 @@
           "type": "checkbox",
           "description": "recent_activity_description",
           "label": "recent_activity_label",
-          "value": true
+          "value": false
         }
       ]
     },
@@ -310,21 +420,21 @@
           "type": "checkbox",
           "description": "article_author_description",
           "label": "article_author_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_article_comments",
           "type": "checkbox",
           "description": "article_comments_description",
           "label": "article_comments_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_follow_article",
           "type": "checkbox",
           "description": "follow_article_description",
           "label": "follow_article_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_recently_viewed_articles",
@@ -345,7 +455,7 @@
           "type": "checkbox",
           "description": "article_sharing_description",
           "label": "article_sharing_label",
-          "value": true
+          "value": false
         }
       ]
     },
@@ -389,6 +499,67 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
+        }
+      ]
+    },
+    {
+      "label": "footer_section_contents",
+      "variables": [
+        {
+          "identifier": "show_contact_us_section",
+          "type": "checkbox",
+          "description": "show_contact_us_section_description",
+          "label": "show_contact_us_section_label",
+          "value": true
+        },
+        {
+          "identifier": "contact_us_header",
+          "type": "text",
+          "description": "contact_us_header_description",
+          "label": "contact_us_header_label",
+          "value": "Can't find what you're looking for?"
+        },
+        {
+          "identifier": "mit_address",
+          "type": "text",
+          "description": "mit_address_description",
+          "label": "mit_address_label",
+          "value": "Massachusetts Institute of Technology\n77 Massachusetts Avenue Cambridge, MA 02139"
+        },
+        {
+          "identifier": "mit_home",
+          "type": "text",
+          "description": "mit_home_description",
+          "label": "mit_home_label",
+          "value": "https://mit.edu/"
+        },
+        {
+          "identifier": "ocw_privacy_policy",
+          "type": "text",
+          "description": "ocw_privacy_policy_description",
+          "label": "ocw_privacy_policy_label",
+          "value": "https://ocw.mit.edu/pages/privacy-and-terms-of-use/"
+        },
+        {
+          "identifier": "ocw_creative_common",
+          "type": "text",
+          "description": "ocw_creative_common_description",
+          "label": "ocw_creative_common_label",
+          "value": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+        },
+        {
+          "identifier": "ocw_accessibility",
+          "type": "text",
+          "description": "ocw_accessibility_description",
+          "label": "ocw_accessibility_label",
+          "value": "https://accessibility.mit.edu/"
+        },
+        {
+          "identifier": "ocw_learn_more",
+          "type": "text",
+          "description": "ocw_learn_more_description",
+          "label": "ocw_learn_more_label",
+          "value": "https://ocw.mit.edu/about/"
         }
       ]
     },
