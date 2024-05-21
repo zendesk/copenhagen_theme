@@ -191,16 +191,14 @@ export function AnswerBotModal({
             setExpandedIndex(index);
           }}
         >
-          {articles.map(({ article_id, html_url, snippet, title }, index) => (
+          {articles.map(({ article_id, html_url, snippet, title }) => (
             <Accordion.Section key={article_id}>
               <Accordion.Header>
                 <Accordion.Label>{title}</Accordion.Label>
               </Accordion.Header>
               <Accordion.Panel>
                 <Paragraph dangerouslySetInnerHTML={{ __html: snippet }} />
-                {/* tabIndex set to fix this issue: https://github.com/zendeskgarden/react-components/issues/1383 */}
                 <ArticleLink
-                  tabIndex={expandedIndex === index ? 0 : -1}
                   isExternal
                   href={`${html_url}?auth_token=${authToken}`}
                   target="_blank"

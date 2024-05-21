@@ -10,18 +10,12 @@ import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import type { ChangeEventHandler } from "react";
 import { useState } from "react";
-import styled from "styled-components";
 
 interface DatePickerProps {
   field: Field;
   locale: string;
   valueFormat: "date" | "dateTime";
 }
-
-// Workaround for Message component not adding margin-top after the Datepicker
-const StyledMessage = styled(Message)`
-  margin-top: ${(props) => props.theme.space.xs};
-`;
 
 export function DatePicker({
   field,
@@ -74,7 +68,7 @@ export function DatePicker({
           validation={error ? "error" : undefined}
         />
       </GardenDatepicker>
-      {error && <StyledMessage validation="error">{error}</StyledMessage>}
+      {error && <Message validation="error">{error}</Message>}
       <input type="hidden" name={name} value={formatDate(date)} />
     </GardenField>
   );
