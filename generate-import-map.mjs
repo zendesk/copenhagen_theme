@@ -47,7 +47,9 @@ function replaceImports(fileName, outputAssets, outputPath) {
   let content = fs.readFileSync(filePath, "utf-8");
 
   for (const { name, fileName } of outputAssets) {
-    content = content.replaceAll(`'./${fileName}'`, `'${name}'`);
+    // Takes into account both single and double quotes
+    const regex = new RegExp(`(['"])./${fileName}\\1`, "g");
+    content = content.replaceAll(regex, `$1${name}$1`);
   }
 
   fs.writeFileSync(filePath, content, "utf-8");

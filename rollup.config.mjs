@@ -1,3 +1,4 @@
+/* eslint-env node */
 import zass from "./zass.mjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -5,11 +6,13 @@ import json from "@rollup/plugin-json";
 import dynamicImportVars from "@rollup/plugin-dynamic-import-vars";
 import typescript from "@rollup/plugin-typescript";
 import replace from "@rollup/plugin-replace";
+import terser from "@rollup/plugin-terser";
 import svgr from "@svgr/rollup";
 import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
 
 const fileNames = "[name]-bundle.js";
+const isProduction = process.env.NODE_ENV === "production";
 const TRANSLATION_FILE_REGEX =
   /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
 
@@ -84,6 +87,7 @@ export default defineConfig([
       }),
       json(),
       dynamicImportVars(),
+      isProduction && terser(),
       generateImportMap(),
     ],
     watch: {
