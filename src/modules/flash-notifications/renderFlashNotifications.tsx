@@ -1,9 +1,11 @@
 import { render } from "react-dom";
-import { ThemeProviders, createTheme } from "../garden-theme";
-import type { Settings } from "../garden-theme/createTheme";
+import {
+  ThemeProviders,
+  createTheme,
+  FLASH_NOTIFICATIONS_KEY,
+} from "../shared";
+import type { Settings, ToastNotification } from "../shared";
 import { FlashNotifications } from "./FlashNotifications";
-import type { ToastNotification } from "./ToastNotification";
-import { FLASH_NOTIFICATIONS_KEY } from "./constants";
 
 export function renderFlashNotifications(
   settings: Settings,

@@ -6,7 +6,7 @@ import {
 } from "@zendeskgarden/react-notifications";
 import type { ReactElement } from "react";
 import { useEffect } from "react";
-import type { ToastNotification } from "./ToastNotification";
+import type { ToastNotification } from "../shared/notifications/ToastNotification";
 
 interface FlashNotificationsProps {
   notifications: ToastNotification[];

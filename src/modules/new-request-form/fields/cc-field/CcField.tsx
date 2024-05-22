@@ -11,11 +11,11 @@ import styled from "styled-components";
 import { Tag } from "@zendeskgarden/react-tags";
 import { focusStyles } from "@zendeskgarden/react-theming";
 import { useTagsInputContainer } from "./useTagsInputContainer";
-import { hideVisually } from "polished";
 import { useRef, useState } from "react";
 import { Tooltip } from "@zendeskgarden/react-tooltips";
 import AlertWarningStroke from "@zendeskgarden/svg-icons/src/12/alert-warning-stroke.svg";
 import { useTranslation } from "react-i18next";
+import { Span } from "@zendeskgarden/react-typography";
 
 interface CcFieldProps {
   field: Field;
@@ -71,10 +71,6 @@ const StyledInput = styled(Input)`
   left: 0;
   height: var(--line-height);
   line-height: var(--line-height);
-`;
-
-const AnnouncementMessage = styled.span`
-  ${hideVisually()}
 `;
 
 export function CcField({ field }: CcFieldProps): JSX.Element {
@@ -194,9 +190,9 @@ export function CcField({ field }: CcFieldProps): JSX.Element {
       {tags.map((email) => (
         <input key={email} type="hidden" name={name} value={email} />
       ))}
-      <AnnouncementMessage {...getAnnouncementProps()}>
+      <Span hidden {...getAnnouncementProps()}>
         {announcement}
-      </AnnouncementMessage>
+      </Span>
     </GardenField>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-env node */
 import zass from "./zass.mjs";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
@@ -5,11 +6,13 @@ import json from "@rollup/plugin-json";
 import dynamicImportVars from "@rollup/plugin-dynamic-import-vars";
 import typescript from "@rollup/plugin-typescript";
 import replace from "@rollup/plugin-replace";
+import terser from "@rollup/plugin-terser";
 import svgr from "@svgr/rollup";
 import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
 
 const fileNames = "[name]-bundle.js";
+const isProduction = process.env.NODE_ENV === "production";
 const TRANSLATION_FILE_REGEX =
   /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
 
@@ -29,7 +32,7 @@ export default defineConfig([
     context: "this",
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
-      notifications: "src/modules/notifications/index.ts",
+      "flash-notifications": "src/modules/flash-notifications/index.ts",
     },
     output: {
       dir: "assets",
@@ -42,8 +45,8 @@ export default defineConfig([
           return "wysiwyg";
         }
 
-        if (id.includes("node_modules")) {
-          return "vendor";
+        if (id.includes("node_modules") || id.includes("src/modules/shared")) {
+          return "shared";
         }
 
         // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`
@@ -84,6 +87,7 @@ export default defineConfig([
       }),
       json(),
       dynamicImportVars(),
+      isProduction && terser(),
       generateImportMap(),
     ],
     watch: {

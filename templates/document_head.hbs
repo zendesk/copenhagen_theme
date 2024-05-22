@@ -6,16 +6,15 @@
 {
   "imports": {
     "new-request-form": "{{asset 'new-request-form-bundle.js'}}",
-    "notifications": "{{asset 'notifications-bundle.js'}}",
+    "flash-notifications": "{{asset 'flash-notifications-bundle.js'}}",
     "new-request-form-translations": "{{asset 'new-request-form-translations-bundle.js'}}",
-    "vendor": "{{asset 'vendor-bundle.js'}}",
-    "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}",
-    "addFlashNotification": "{{asset 'addFlashNotification-bundle.js'}}"
+    "shared": "{{asset 'shared-bundle.js'}}",
+    "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}"
   }
 }
 </script>
 <script type="module">
-  import { renderFlashNotifications } from "notifications";
+  import { renderFlashNotifications } from "flash-notifications";
 
   const settings = {{json settings}};
   const closeLabel = {{json (t 'close')}}
