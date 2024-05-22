@@ -26,6 +26,7 @@ import { Paragraph } from "@zendeskgarden/react-typography";
 export interface NewRequestFormProps {
   requestForm: RequestForm;
   wysiwyg: boolean;
+  newRequestPath: string;
   parentId: string;
   parentIdPath: string;
   locale: string;
@@ -60,6 +61,7 @@ const Footer = styled.div`
 export function NewRequestForm({
   requestForm,
   wysiwyg,
+  newRequestPath,
   parentId,
   parentIdPath,
   locale,
@@ -159,7 +161,10 @@ export function NewRequestForm({
         {errors && <Alert type="error">{errors}</Alert>}
         {parentId && <ParentTicketField field={parent_id_field} />}
         {ticket_form_field.options.length > 0 && (
-          <TicketFormField field={ticket_form_field} />
+          <TicketFormField
+            field={ticket_form_field}
+            newRequestPath={newRequestPath}
+          />
         )}
         {emailField && <Input key={emailField.name} field={emailField} />}
         {ccField && <CcField field={ccField} />}
