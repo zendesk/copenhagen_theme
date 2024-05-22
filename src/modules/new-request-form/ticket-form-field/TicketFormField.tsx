@@ -10,11 +10,15 @@ import type { Field } from "../data-types";
 
 interface TicketFormFieldProps {
   field: Field;
+  newRequestPath: string;
 }
 
 const key = "return-focus-to-ticket-form-field";
 
-export function TicketFormField({ field }: TicketFormFieldProps) {
+export function TicketFormField({
+  field,
+  newRequestPath,
+}: TicketFormFieldProps) {
   const ref = createRef<HTMLDivElement>();
 
   const handleChange: IComboboxProps["onChange"] = ({ selectionValue }) => {
@@ -26,7 +30,7 @@ export function TicketFormField({ field }: TicketFormFieldProps) {
 
       sessionStorage.setItem(key, "true");
 
-      window.location.href = url.toString();
+      window.location.assign(`${newRequestPath}${url.search}`);
     }
   };
 
