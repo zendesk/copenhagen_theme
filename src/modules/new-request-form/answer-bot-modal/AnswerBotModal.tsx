@@ -5,15 +5,17 @@ import {
   Body,
   Footer,
   Close,
+  FooterItem,
 } from "@zendeskgarden/react-modals";
 import { Accordion } from "@zendeskgarden/react-accordions";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
-import { Alert } from "@zendeskgarden/react-notifications";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { Paragraph } from "@zendeskgarden/react-typography";
 import { useModalContainer, addFlashNotification } from "../../shared";
 import { useTranslation } from "react-i18next";
+import CheckCircleStrokeIcon from "@zendeskgarden/svg-icons/src/16/check-circle-stroke.svg";
+import { getColorV8 } from "@zendeskgarden/react-theming";
 
 interface AnswerBotModalProps {
   authToken: string;
@@ -27,39 +29,24 @@ interface AnswerBotModalProps {
   requestPath: string;
 }
 
-const H2 = styled.h2`
-  font-size: ${(props) => props.theme.fontSizes.lg};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
-  margin-bottom: 0;
-`;
-
 const H3 = styled.h3`
   font-size: ${(props) => props.theme.fontSizes.md};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 const StyledHeader = styled(Header)`
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.theme.space.sm};
+  color: ${(props) => getColorV8("successHue", 700, props.theme)};
+`;
+
+const StyledSuccessIcon = styled(CheckCircleStrokeIcon)`
+  position: absolute;
+  top: ${(props) => props.theme.space.base * 5.5}px;
+  inset-inline-start: ${(props) => `${props.theme.space.base * 4}px`};
 `;
 
 const ArticleLink = styled(Anchor)`
   display: inline-block;
   margin-top: ${(props) => props.theme.space.sm};
-`;
-
-const StyledFooter = styled(Footer)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: ${(props) => props.theme.space.xl};
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  gap: ${(props) => props.theme.space.sm};
 `;
 
 export function AnswerBotModal({
@@ -74,23 +61,8 @@ export function AnswerBotModal({
   requestPath,
 }: AnswerBotModalProps): JSX.Element {
   const [expandedIndex, setExpandedIndex] = useState(0);
-  const [alertMessage, setAlertMessage] = useState("");
   const modalContainer = useModalContainer();
   const { t } = useTranslation();
-
-  /* To let screen readers read the notification on page load,
-     we need to add the Alert message after the page has been
-     loaded */
-  useEffect(() => {
-    setTimeout(() => {
-      setAlertMessage(
-        t(
-          "new-request-form.answer-bot-modal.request-submitted",
-          "Your request was successfully submitted"
-        )
-      );
-    }, 100);
-  }, [t]);
 
   const getExpandedArticleId = () => {
     return String(articles[expandedIndex]?.article_id);
@@ -174,18 +146,32 @@ export function AnswerBotModal({
         addUnsolvedNotificationAndRedirect();
       }}
     >
-      <StyledHeader>
-        <Alert type="success">{alertMessage}</Alert>
-        <H2>
+      <StyledHeader tag="h2">
+        <StyledSuccessIcon />
+        {t(
+          "new-request-form.answer-bot-modal.request-submitted",
+          "Your request was successfully submitted"
+        )}
+      </StyledHeader>
+      <Body>
+        <H3>
           {t(
             "new-request-form.answer-bot-modal.title",
             "While you wait, do any of these articles answer your question?"
           )}
-        </H2>
-      </StyledHeader>
-      <Body>
+        </H3>
+        <p>
+          {t(
+            "new-request-form.answer-bot-modal.footer-content",
+            "If it does, we can close your recent request {{requestId}}",
+            {
+              requestId: `\u202D#${requestId}\u202C`,
+            }
+          )}
+        </p>
+
         <Accordion
-          level={3}
+          level={4}
           expandedSections={[expandedIndex]}
           onChange={(index) => {
             setExpandedIndex(index);
@@ -213,25 +199,8 @@ export function AnswerBotModal({
           ))}
         </Accordion>
       </Body>
-      <StyledFooter>
-        <div>
-          <H3>
-            {t(
-              "new-request-form.answer-bot-modal.footer-title",
-              "Does this article answer your question?"
-            )}
-          </H3>
-          <div>
-            {t(
-              "new-request-form.answer-bot-modal.footer-content",
-              "If it does, we can close your recent request {{requestId}}",
-              {
-                requestId: `\u202D#${requestId}\u202C`,
-              }
-            )}
-          </div>
-        </div>
-        <ButtonsContainer>
+      <Footer>
+        <FooterItem>
           <Button
             onClick={() => {
               markArticleAsIrrelevant();
@@ -242,6 +211,8 @@ export function AnswerBotModal({
               "No, I need help"
             )}
           </Button>
+        </FooterItem>
+        <FooterItem>
           <Button
             isPrimary
             onClick={() => {
@@ -253,8 +224,8 @@ export function AnswerBotModal({
               "Yes, close my request"
             )}
           </Button>
-        </ButtonsContainer>
-      </StyledFooter>
+        </FooterItem>
+      </Footer>
       <Close aria-label={t("new-request-form.close-label", "Close")} />
     </Modal>
   );
