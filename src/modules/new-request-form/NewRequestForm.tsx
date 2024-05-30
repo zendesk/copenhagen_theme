@@ -159,7 +159,7 @@ export function NewRequestForm({
         onSubmit={handleSubmit}
       >
         {errors && <Alert type="error">{errors}</Alert>}
-        {parentId && <ParentTicketField field={parent_id_field} />}
+        {parent_id_field && <ParentTicketField field={parent_id_field} />}
         {ticket_form_field.options.length > 0 && (
           <TicketFormField
             field={ticket_form_field}

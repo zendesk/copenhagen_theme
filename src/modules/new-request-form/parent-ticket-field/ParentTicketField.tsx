@@ -1,7 +1,7 @@
-import type { Field } from "../data-types";
+import type { HiddenField } from "../data-types";
 
 interface ParentTicketFieldProps {
-  field: Field;
+  field: HiddenField;
 }
 
 export function ParentTicketField({
