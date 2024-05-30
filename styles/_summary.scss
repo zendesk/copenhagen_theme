@@ -1,0 +1,14 @@
+/***** Summary component *****/
+zd-summary-block {
+    // As the Help Center already provides the base styling in a theme agnostic
+    // way, we will only override the colors here.
+    background: #f3f6f6;
+
+    [dir="ltr"] & {
+        border-left-color: #859fa1;
+    }
+
+    [dir="rtl"] & {
+        border-right-color: #859fa1;
+    }
+}
