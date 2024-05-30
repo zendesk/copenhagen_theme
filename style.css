@@ -4710,3 +4710,14 @@ html[dir=rtl] .notification-left-aligned {
 .upload-dropzone {
   border: 1px solid #87929D;
 }
+
+/***** Summary component *****/
+zd-summary-block {
+  background: #f3f6f6;
+}
+[dir=ltr] zd-summary-block {
+  border-left-color: #859fa1;
+}
+[dir=rtl] zd-summary-block {
+  border-right-color: #859fa1;
+}
