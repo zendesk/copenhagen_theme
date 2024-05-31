@@ -30,8 +30,8 @@
   const props = {
     requestForm: {{json new_request_form}},
     newRequestPath: {{json (page_path 'new_request')}},
-    parentId: {{json parent_id}},
-    parentIdPath: {{json (page_path 'request' id=parent_id)}},
+    parentId: {{json parent.id}},
+    parentIdPath: {{json parent.url}},
     locale: {{json help_center.locale}},
     baseLocale: {{json help_center.base_locale}},
     hasAtMentions: {{json help_center.at_mentions_enabled}},

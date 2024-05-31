@@ -9,7 +9,7 @@ export interface RequestForm {
   http_method: string;
   errors: string | null;
   ticket_form_field: Field;
-  parent_id_field: Field;
+  parent_id_field: HiddenField | null;
   email_field: Field | null;
   cc_field: Field | null;
   organization_field: Field | null;
