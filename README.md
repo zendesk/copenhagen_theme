@@ -105,9 +105,53 @@ Notes:
 - Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
 
 ## Assets
-The Copenhagen theme doesn't have any assets, but you can add assets to your theme by placing them in the `assets` folder.
+The Copenhagen theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
 
 # React components
+
+From version 4.0.0, the Copenhagen theme uses some React components to render parts of the UI. These components are located in the `src/modules` folder and are built using the [Zendesk Garden](https://garden.zendesk.com/) component library.
+
+These components are bundled as native [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) as part of the Rollup build process, and they are emitted as JS files in the `assets` folder. Since assets are renamed when a theme is installed, the modules needs to be imported using the [asset helper](https://developer.zendesk.com/api-reference/help_center/help-center-templates/helpers/#asset-helper). 
+
+To make the process of importing the modules easier, we added a Rollup plugin that generates an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) that maps the module name to the asset URL. This import map is then injected into the `document_head.hbs` template during the build.
+
+For example, if you defined a module named `my-module` in the `src/modules/my-module` folder, you can add it to the `rollup.config.mjs` file like this:
+
+```js
+export default defineConfig([
+  // ...
+  // Configuration for bundling modules in the src/modules directory
+  {
+    // ...
+    input: {
+      "my-module": "src/modules/my-module/index.js",
+    },
+    // ...
+  }
+]);
+```
+
+Rollup will generate a file named `my-module-bundle.js` in the `assets` folder and this import map will be added to the `document_head.hbs` template:
+
+```html
+<script type="importmap">
+{
+  "imports": {
+    "my-module": "{{asset 'my-module-bundle.js'}}",
+  }
+}
+</script>
+```
+
+You can then import the module in your templates like this:
+
+```hbs
+<script type="module">
+  import { something } from "my-module";
+
+  // ...
+</script>
+```
 
 ## Internationalization
 
