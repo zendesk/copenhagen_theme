@@ -6,7 +6,6 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
-
 title: "Copenhagen Theme New Request Form"
 packages:
   - "new-request-form"

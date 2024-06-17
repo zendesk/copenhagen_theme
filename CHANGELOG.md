@@ -1,3 +1,31 @@
+# [3.3.0](https://github.com/zendesk/copenhagen_theme/compare/v3.2.2...v3.3.0) (2024-05-30)
+
+
+### Features
+
+* override colors for zd-summary-block elements ([5abed62](https://github.com/zendesk/copenhagen_theme/commit/5abed628bfa68a71bbcc459263ad5421e5a0c566))
+
+## [3.2.2](https://github.com/zendesk/copenhagen_theme/compare/v3.2.1...v3.2.2) (2024-02-28)
+
+
+### Bug Fixes
+
+* remove stray </li> from header ([4cb4005](https://github.com/zendesk/copenhagen_theme/commit/4cb4005801a2097ec6d8a08ec7407fa14cc47269))
+
+## [3.2.1](https://github.com/zendesk/copenhagen_theme/compare/v3.2.0...v3.2.1) (2024-02-28)
+
+
+### Bug Fixes
+
+* open survey response links in a new tab ([26ac337](https://github.com/zendesk/copenhagen_theme/commit/26ac337f14ca2295dd03a94b672911e0787eb643))
+
+# [3.2.0](https://github.com/zendesk/copenhagen_theme/compare/v3.1.6...v3.2.0) (2024-02-08)
+
+
+### Features
+
+* add satisfaction response to request details ([48a2aa0](https://github.com/zendesk/copenhagen_theme/commit/48a2aa0eef4d16a6699bb8027c640a5334482117))
+
 ## [3.1.6](https://github.com/zendesk/copenhagen_theme/compare/v3.1.5...v3.1.6) (2023-10-05)
 
 
