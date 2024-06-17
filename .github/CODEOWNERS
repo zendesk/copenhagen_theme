@@ -1,1 +1,5 @@
 * @zendesk/vikings
+
+# LOCALIZATION
+**/translations/en-us.yml   @zendesk/localization
+translations.yml            @zendesk/localization
