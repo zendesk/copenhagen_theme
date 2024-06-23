@@ -1367,6 +1367,7 @@ ul {
   color: $text_color;
   margin-bottom: 1rem;
   font-size: 20px;
+  font-weight: 700;
 }
 .blocks-item-description {
   font-size: 16px;
