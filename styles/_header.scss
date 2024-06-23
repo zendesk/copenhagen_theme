@@ -1,5 +1,5 @@
 /***** Header *****/
-$header-height: 71px;
+$header-height: 80px;
 
 .header {
   @include max-width-container;
@@ -24,19 +24,23 @@ $header-height: 71px;
   display: inline-block;
 }
 
-.logo a:hover, .logo a:focus, .logo a:active {
+.logo a:hover,
+.logo a:focus,
+.logo a:active {
   text-decoration: none;
 }
 
 .user-nav {
-  @include tablet { position: relative; }
+  @include tablet {
+    position: relative;
+  }
   display: inline-block;
   position: absolute;
   white-space: nowrap;
 
   &[aria-expanded="true"] {
     background-color: #fff;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15), 0 4px 10px 0 rgba(0, 0, 0, .1);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
     border: solid 1px #ddd;
     right: 0;
     left: 0;
@@ -71,9 +75,15 @@ $header-height: 71px;
 }
 
 .nav-wrapper-desktop {
-  @include mobile { display: none; }
-  @include tablet { display: none; }
-  @include desktop { display: inline-block; }
+  @include mobile {
+    display: none;
+  }
+  @include tablet {
+    display: none;
+  }
+  @include desktop {
+    display: inline-block;
+  }
 
   a {
     @include tablet {
@@ -87,7 +97,9 @@ $header-height: 71px;
     padding: 0 20px 0 0;
     width: auto;
 
-    [dir="rtl"] & { padding: 0 0 0 20px;}
+    [dir="rtl"] & {
+      padding: 0 0 0 20px;
+    }
 
     &:hover,
     &:focus,
@@ -100,7 +112,9 @@ $header-height: 71px;
 }
 
 .nav-wrapper-mobile {
-  @include desktop { display: none; }
+  @include desktop {
+    display: none;
+  }
 
   .menu-button-mobile {
     background: none;
@@ -127,7 +141,7 @@ $header-height: 71px;
   .menu-list-mobile {
     position: absolute;
     background-color: #fff;
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, .15);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
     border-top: solid 1px #ddd;
     border-bottom: solid 1px #ddd;
     right: 0;
@@ -149,7 +163,7 @@ $header-height: 71px;
       margin: 4px 0;
     }
 
-    li:empty:not(.nav-divider){
+    li:empty:not(.nav-divider) {
       display: none;
     }
 
@@ -173,7 +187,9 @@ $header-height: 71px;
       cursor: pointer;
       text-align: start;
 
-      &:active, &:focus, &:hover {
+      &:active,
+      &:focus,
+      &:hover {
         background-color: #f3f3f3;
         text-decoration: underline;
       }
@@ -186,7 +202,9 @@ $header-height: 71px;
       height: 100%;
       color: $text_color;
 
-      &:active, &:focus, &:hover {
+      &:active,
+      &:focus,
+      &:hover {
         background-color: #f3f3f3;
       }
     }
@@ -197,7 +215,7 @@ $header-height: 71px;
 
       .my-profile-tooltip {
         font-size: 12px;
-        color: #68737D;
+        color: #68737d;
       }
     }
 
@@ -232,7 +250,6 @@ $header-height: 71px;
   top: auto;
   z-index: -999;
 
-
   [dir="rtl"] & {
     left: initial;
     right: -999px;
@@ -247,11 +264,10 @@ $header-height: 71px;
     top: auto;
     z-index: 999;
 
-
-  [dir="rtl"] & {
-    left: initial;
-    right: auto;
-  }
+    [dir="rtl"] & {
+      left: initial;
+      right: auto;
+    }
   }
 }
 

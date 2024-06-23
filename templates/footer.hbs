@@ -1,8 +1,20 @@
 <footer class="footer">
+  <div class="footer-image-container">
+    <img src="{{settings.footer_left_image}}" alt="" class="footer-image" />
+  </div>
   <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
-
-    <div class="footer-language-selector">
+    <div class="logo">
+      {{#link "help_center"}}
+        <img
+          src="{{settings.logo}}"
+          alt="{{t 'home_page' name=help_center.name}}"
+        />
+        {{#if settings.show_brand_name}}
+          <span aria-hidden="true">{{help_center.name}}</span>
+        {{/if}}
+      {{/link}}
+    </div>
+    {{!-- <div class="footer-language-selector">
       {{#if alternative_locales}}
         <div class="dropdown language-selector">
           <button class="dropdown-toggle" aria-haspopup="true">
@@ -20,6 +32,9 @@
           </span>
         </div>
       {{/if}}
-    </div>
+    </div> --}}
+  </div>
+  <div class="footer-image-container">
+    <img src="{{settings.footer_right_image}}" alt="" class="footer-image" />
   </div>
 </footer>

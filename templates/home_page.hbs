@@ -1,13 +1,17 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
-  <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+  <div class="hero-content">
+    <h1 class="welcome-text">How can we help you?</h1>
+    <p class="help-center-details">Search for answers to your questions by entering keywords below, or look through our knowledge base</p>
+    <div class="hero-search-container">
+      <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+      {{search submit=false instant=settings.instant_search class='search search-full'}}
+    </div>
   </div>
 </section>
 
@@ -20,7 +24,18 @@
           {{#if ../has_multiple_categories}}
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title">{{name}}</span>
+                <div style="width: 45px; height: 45px; margin-bottom: 1rem;">
+                  {{#is name 'Getting Started'}}
+                  <img src="{{asset 'icon-rocket.png'}}" class="category-image" />
+                  {{/is}}
+                  {{#is name 'Product Updates'}}
+                  <img src="{{asset 'icon-stars.png'}}" class="category-image" />
+                  {{/is}}
+                  {{#is name 'General'}}
+                  <img src="{{asset 'icon-book.png'}}" class="category-image" />
+                  {{/is}}
+                </div>
+                <h3 class="blocks-item-title">{{name}}</h3>
                 <span class="blocks-item-description">{{excerpt description}}</span>
               </a>
             </li>

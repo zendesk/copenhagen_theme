@@ -1,7 +1,7 @@
 /***** Normalize.css *****/
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
@@ -9,6 +9,7 @@ html {
 
 body {
   margin: 0;
+  font-family: Inter, sans-serif;
 }
 
 main {
@@ -17,7 +18,15 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  /* margin: 0.67em 0; */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
 }
 
 hr {
