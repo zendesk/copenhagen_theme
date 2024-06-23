@@ -1,11 +1,10 @@
 // Component made for elements that are separated with space between
 .page-header {
-
   @include tablet {
     align-items: baseline;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: nowrap;
-    gap: 16px;
+    gap: 8px;
     margin: 0;
   }
 

@@ -24,19 +24,25 @@
           {{#if ../has_multiple_categories}}
             <li class="blocks-item">
               <a href='{{url}}' class="blocks-item-link">
-                <div style="width: 45px; height: 45px; margin-bottom: 1rem;">
-                  {{#is name 'Getting Started'}}
-                  <img src="{{asset 'icon-rocket.png'}}" class="category-image" />
-                  {{/is}}
-                  {{#is name 'Product Updates'}}
-                  <img src="{{asset 'icon-stars.png'}}" class="category-image" />
-                  {{/is}}
-                  {{#is name 'General'}}
-                  <img src="{{asset 'icon-book.png'}}" class="category-image" />
-                  {{/is}}
+                <div>
+                  <div style="width: 45px; height: 45px; margin-bottom: 1rem;">
+                    {{#is name 'Getting Started'}}
+                    <img src="{{asset 'icon-rocket.png'}}" class="category-image" />
+                    {{/is}}
+                    {{#is name 'Product Updates'}}
+                    <img src="{{asset 'icon-stars.png'}}" class="category-image" />
+                    {{/is}}
+                    {{#is name 'General'}}
+                    <img src="{{asset 'icon-book.png'}}" class="category-image" />
+                    {{/is}}
+                  </div>
+                  <h3 class="blocks-item-title">{{name}}</h3>
+                  <span class="blocks-item-description">{{excerpt description}}</span>
                 </div>
-                <h3 class="blocks-item-title">{{name}}</h3>
-                <span class="blocks-item-description">{{excerpt description}}</span>
+                <div class="blocks-item-link-btn">
+                  <p>See all articles</p>
+                  <div><img src="{{asset 'arrow-right.svg'}}" class="category-image" /></div>
+                </div>
               </a>
             </li>
           {{else}}

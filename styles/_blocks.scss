@@ -3,7 +3,7 @@
 .blocks {
   &-list {
     @include tablet {
-      margin: 0 -15px;
+      gap: 24px;
     }
 
     display: flex;
@@ -14,8 +14,17 @@
   }
 
   &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 24px;
+    min-height: 280px;
     @include tablet {
-      margin: 0 15px 30px;
+      // margin: 0 15px 30px;
+    }
+
+    @include mobile {
+      flex: 1 1 calc(100% - 24px);
     }
 
     background-color: white;
@@ -24,9 +33,8 @@
     box-sizing: border-box;
     display: flex;
     flex: 1 0 340px;
-    margin: 0 0 30px;
-    max-width: 100%;
-    text-align: center;
+    margin: 0 0 24px;
+    flex: 1 1 calc(33.333% - 24px);
     align-items: flex-start;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
       rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -34,13 +42,15 @@
     &:hover,
     &:focus,
     &:active {
-      background-color: #fbe7f8;
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+      background-color: #fff8fe;
       border: 1px solid $brand_color;
+      animation: float-card 100ms ease-out;
 
       * {
         color: $text_color;
         text-decoration: none;
-        fill: red;
       }
     }
 
@@ -63,13 +73,12 @@
 
   &-item-link {
     color: $brand_color;
-    padding: 24px;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     border-radius: inherit;
+    height: 100%;
 
     &:visited,
     &:hover,
@@ -79,19 +88,35 @@
     }
 
     &:focus {
-      @include focus-ring;
+      // @include focus-ring;
       text-decoration: none;
+    }
+
+    &-btn {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      height: fit-content;
+      gap: 0.4rem;
+      p {
+        margin: 0;
+        color: $brand_color;
+        font-weight: 500;
+      }
+      div {
+        width: 1rem;
+      }
     }
   }
 
   &-item-title {
     color: $text_color;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     font-size: 20px;
   }
 
   &-item-description {
-    font-size: 14px;
+    font-size: 16px;
     color: #8891a7;
     margin: 0;
   }
@@ -104,4 +129,15 @@
 .category-image {
   width: 100%;
   height: 100%;
+}
+
+@keyframes float-card {
+  0% {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+      rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  }
+  100% {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+      rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+  }
 }
