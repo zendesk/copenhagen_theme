@@ -94,7 +94,7 @@ export function NewRequestForm({
     emailField,
     ccField,
     organizationField: prefilledOrganizationField,
-    dueDateField,
+    dueDateField: prefilledDueDateField,
   } = usePrefilledTicketFields({
     ticketFields: ticket_fields,
     emailField: email_field,
@@ -107,6 +107,7 @@ export function NewRequestForm({
   const [organizationField, setOrganizationField] = useState(
     prefilledOrganizationField
   );
+  const [dueDateField, setDueDateField] = useState(prefilledDueDateField);
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
@@ -127,6 +128,14 @@ export function NewRequestForm({
     }
 
     setOrganizationField({ ...organizationField, value });
+  }
+
+  function handleDueDateChange(value: string) {
+    if (dueDateField === null) {
+      return;
+    }
+
+    setDueDateField({ ...dueDateField, value });
   }
 
   return (
@@ -258,6 +267,9 @@ export function NewRequestForm({
                       field={dueDateField}
                       locale={baseLocale}
                       valueFormat="dateTime"
+                      onChange={(value) => {
+                        handleDueDateChange(value);
+                      }}
                     />
                   )}
                 </>
@@ -275,6 +287,7 @@ export function NewRequestForm({
                   field={field}
                   locale={baseLocale}
                   valueFormat="date"
+                  onChange={(value) => handleChange(field, value)}
                 />
               );
             case "multiselect":
