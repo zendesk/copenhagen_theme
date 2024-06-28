@@ -17,6 +17,7 @@ const TRANSLATION_FILE_REGEX =
   /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
 
 export default defineConfig([
+  // Configuration for bundling the script.js file
   {
     input: "src/index.js",
     output: {
@@ -28,6 +29,7 @@ export default defineConfig([
       clearScreen: false,
     },
   },
+  // Configuration for bundling modules in the src/modules directory
   {
     context: "this",
     input: {
