@@ -103,7 +103,7 @@ export function SuggestedArticles({
   }, [debouncedQuery, locale]);
 
   return articles.length > 0 ? (
-    <Container>
+    <Container data-test-id="suggested-articles">
       <InnerContainer>
         <h2>
           {t("new-request-form.suggested-articles", "Suggested articles")}
