@@ -2,7 +2,5 @@
 style.css.map
 node_modules/
 .a11yrc.json
-script.js
-style.css
 *.DS_Store
 coverage/

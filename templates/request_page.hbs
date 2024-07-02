@@ -64,7 +64,7 @@
         {{comment_callout}}
       </div>
 
-      {{#form 'comment' class='comment-form'}}
+      {{#form 'comment' class='comment-form hbs-form'}}
         <div class="avatar comment-avatar">
           {{user_avatar class='user-avatar'}}
         </div>
@@ -196,7 +196,7 @@
           <dt>{{t 'id'}}</dt>
           <dd>#{{request.id}}</dd>
 
-          {{#form 'organization' id='request-organization'}}
+          {{#form 'organization' id='request-organization' class='hbs-form'}}
             <dt>{{t 'organization'}}</dt>
             <dd>{{select 'organization'}}</dd>
           {{/form}}
