@@ -101,11 +101,112 @@ This will compile all the source code in `src` and `styles` and watch for change
 Notes:
 
 - We intentionally do not use babel when compiling `script.js` so we can get a clean bundle output. Make sure to only use widely supported ecmascript features (ES2015).
-- Do not edit `style.css` and `script.js` directly. They are regenerated during release.
+- Do not edit `style.css`, `script.js` and the files inside the `assets` folder directly. They are regenerated during release.
 - Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
 
 ## Assets
-The Copenhagen theme doesn't have any assets, but you can add assets to your theme by placing them in the `assets` folder.
+The Copenhagen theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
+
+# React components
+
+From version 4.0.0, the Copenhagen theme uses some React components to render parts of the UI. These components are located in the `src/modules` folder and are built using the [Zendesk Garden](https://garden.zendesk.com/) component library.
+
+These components are bundled as native [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) as part of the Rollup build process, and they are emitted as JS files in the `assets` folder. Since assets are renamed when a theme is installed, the modules needs to be imported using the [asset helper](https://developer.zendesk.com/api-reference/help_center/help-center-templates/helpers/#asset-helper). 
+
+To make the process of importing the modules easier, we added a Rollup plugin that generates an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) that maps the module name to the asset URL. This import map is then injected into the `document_head.hbs` template during the build.
+
+For example, if you defined a module named `my-module` in the `src/modules/my-module` folder, you can add it to the `rollup.config.mjs` file like this:
+
+```js
+export default defineConfig([
+  // ...
+  // Configuration for bundling modules in the src/modules directory
+  {
+    // ...
+    input: {
+      "my-module": "src/modules/my-module/index.js",
+    },
+    // ...
+  }
+]);
+```
+
+Rollup will generate a file named `my-module-bundle.js` in the `assets` folder and this import map will be added to the `document_head.hbs` template:
+
+```html
+<script type="importmap">
+{
+  "imports": {
+    "my-module": "{{asset 'my-module-bundle.js'}}",
+  }
+}
+</script>
+```
+
+You can then import the module in your templates like this:
+
+```hbs
+<script type="module">
+  import { something } from "my-module";
+
+  // ...
+</script>
+```
+
+## Internationalization
+
+I18n is implemented in the React components using the [react-i18next](https://react.i18next.com/) library. We use a flat JSON file and we use `.` as a separator for plurals, which is different from the default `_` and it is configured during initialization.
+
+We also added some tools to be able to integrate the library with the internal translation system used at Zendesk. If you are building a custom theme and you want to provide your own translations you can refer to the library documentation to setup the loading of your translations.
+
+### Integration with the Zendesk translation system
+
+#### Adding translations strings
+
+Translation strings are added directly in the source code, usually using the `useTranslation` hook, passing the key and the default English value:
+
+```ts
+import { useTranslation } from 'react-i18next';
+
+function MyComponent() {
+  const { t } = useTranslation();
+
+  return <div>{t("my-key", "My default value")}</div>
+}
+```
+
+Providing the default English value in the code makes it possible to use it as a fallback value when strings are not yet translated and to extract the strings from the source code to the translations YAML file.
+
+#### Plurals 
+When using [plurals](https://www.i18next.com/translation-function/plurals), we need to provide default values for the `zero`, `one`, and `other` values, as requested by our translation system. This can be done by passing the default values in the [options](https://www.i18next.com/translation-function/essentials#overview-options) of the `t` function.
+
+```ts
+t("my-key", {
+  "defaultValue.zero": "{{count}} items",
+  "defaultValue.one": "{{count}} item",
+  "defaultValue.other": "{{count}} items",
+  count: ...
+})
+```
+
+#### String extraction
+
+The `bin/extract-strings.mjs` script can be used to extract translation strings from the source code and put them in the YAML file that is picked up by our internal translation system. The usage of the script is documented in the script itself.
+
+The script wraps the `i18next-parser` tool and converts its output to the YAML format used internally. It is possible to use a similar approach in a custom theme, either using the standard `i18next-parser` output as the source for translations or implementing a custom transformer.
+
+#### Updating translation files
+
+Use the `bin/update-modules-translations.mjs` to download the latest translations for all the modules. All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
+
+The first time that translations are added to a module, you need to add a mapping between the module folder and the package name on the translations systems to the `MODULE` variable in the script. For example, if a module is located in `src/modules/my-module` and the package name is `cph-theme-my-module`, you need to add:
+
+```js
+const MODULES = {
+  ...,
+  "my-module": "cph-theme-my-module"
+}
+```
 
 # Accessibility testing
 

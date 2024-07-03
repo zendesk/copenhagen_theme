@@ -1,3 +1,11 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
 title: "Copenhagen Theme New Request Form"
 packages:
   - "new-request-form"
@@ -17,6 +25,7 @@ parts:
       title: "Title of the footer of the Answer Bot Modal"
       screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
       value: "Does this article answer your question?"
+      obsolete: "2024-09-22"
   - translation:
       key: "new-request-form.answer-bot-modal.footer-content"
       title: "Title of the footer of the Answer Bot Modal"

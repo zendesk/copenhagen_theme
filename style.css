@@ -238,29 +238,28 @@ a:hover, a:active, a:focus {
   text-decoration: underline;
 }
 
-input,
-textarea {
+.hbs-form input,
+.hbs-form textarea, .search input,
+.search textarea {
   color: #000;
   font-size: 14px;
 }
-
-input {
+.hbs-form input, .search input {
   max-width: 100%;
   box-sizing: border-box;
   transition: border 0.12s ease-in-out;
+  /* We use the :where selector to not increase the specificity of the selector */
 }
-input:not([type=checkbox]) {
+.hbs-form input:where(:not([type=checkbox])), .search input:where(:not([type=checkbox])) {
   outline: none;
 }
-input:not([type=checkbox]):focus {
+.hbs-form input:where(:not([type=checkbox])):focus, .search input:where(:not([type=checkbox])):focus {
   border: 1px solid $brand_color;
 }
-
-input[disabled] {
+.hbs-form input[disabled], .search input[disabled] {
   background-color: #ddd;
 }
-
-select {
+.hbs-form select, .search select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
@@ -272,14 +271,13 @@ select {
   color: #555;
   width: 100%;
 }
-select:focus {
+.hbs-form select:focus, .search select:focus {
   border: 1px solid $brand_color;
 }
-select::-ms-expand {
+.hbs-form select::-ms-expand, .search select::-ms-expand {
   display: none;
 }
-
-textarea {
+.hbs-form textarea, .search textarea {
   border: 1px solid #87929D;
   border-radius: 2px;
   resize: vertical;
@@ -287,7 +285,7 @@ textarea {
   outline: none;
   padding: 10px;
 }
-textarea:focus {
+.hbs-form textarea:focus, .search textarea:focus {
   border: 1px solid $brand_color;
 }
 
@@ -380,7 +378,7 @@ ul {
   cursor: default;
 }
 
-.button-large, input[type=submit] {
+.button-large, .hbs-form input[type=submit] {
   cursor: pointer;
   background-color: $brand_color;
   border: 0;
@@ -393,17 +391,17 @@ ul {
   width: 100%;
 }
 @media (min-width: 768px) {
-  .button-large, input[type=submit] {
+  .button-large, .hbs-form input[type=submit] {
     width: auto;
   }
 }
-.button-large:visited, input[type=submit]:visited {
+.button-large:visited, .hbs-form input[type=submit]:visited {
   color: $brand_text_color;
 }
-.button-large:hover, .button-large:active, .button-large:focus, input[type=submit]:hover, input[type=submit]:active, input[type=submit]:focus {
+.button-large:hover, .button-large:active, .button-large:focus, .hbs-form input[type=submit]:hover, .hbs-form input[type=submit]:active, .hbs-form input[type=submit]:focus {
   background-color: darken($brand_color, 20%);
 }
-.button-large[disabled], input[type=submit][disabled] {
+.button-large[disabled], .hbs-form input[type=submit][disabled] {
   background-color: #ddd;
 }
 
