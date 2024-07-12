@@ -1,3 +1,10 @@
+## [4.0.1](https://github.com/zendesk/copenhagen_theme/compare/v4.0.0...v4.0.1) (2024-07-12)
+
+
+### Bug Fixes
+
+* priority field by handling basic_priority ([7c3785a](https://github.com/zendesk/copenhagen_theme/commit/7c3785ae5e1cd10ce40617b6a5b762fffe6db256))
+
 # [4.0.0](https://github.com/zendesk/copenhagen_theme/compare/v3.3.0...v4.0.0) (2024-07-03)
 
 
