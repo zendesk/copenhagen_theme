@@ -254,6 +254,7 @@ export function NewRequestForm({
                 />
               );
             case "priority":
+            case "basic_priority":
             case "tickettype":
               return (
                 <>
