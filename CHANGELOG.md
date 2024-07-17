@@ -1,3 +1,10 @@
+## [4.0.2](https://github.com/zendesk/copenhagen_theme/compare/v4.0.1...v4.0.2) (2024-07-17)
+
+
+### Bug Fixes
+
+* add aria-hidden to decorative image ([c6b5e20](https://github.com/zendesk/copenhagen_theme/commit/c6b5e202fa8d45816802b87a71eff41277cce7a7))
+
 ## [4.0.1](https://github.com/zendesk/copenhagen_theme/compare/v4.0.0...v4.0.1) (2024-07-12)
 
 
