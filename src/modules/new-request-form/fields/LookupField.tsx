@@ -22,10 +22,11 @@ function getCustomObjectKey(targetType: string) {
 
 interface LookupFieldProps {
   field: Field;
+  userId: number;
   onChange: (value: string) => void;
 }
 
-export function LookupField({ field, onChange }: LookupFieldProps) {
+export function LookupField({ field, userId, onChange }: LookupFieldProps) {
   const {
     id: fieldId,
     label,
@@ -37,6 +38,9 @@ export function LookupField({ field, onChange }: LookupFieldProps) {
     relationship_target_type,
   } = field;
   const [options, setOptions] = useState<FieldOption[]>([]);
+  const [selectedOption, setSelectedOption] = useState<FieldOption | null>(
+    null
+  );
 
   const customObjectKey = getCustomObjectKey(
     relationship_target_type as string
@@ -44,11 +48,6 @@ export function LookupField({ field, onChange }: LookupFieldProps) {
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     async ({ inputValue, selectionValue }) => {
-      if (selectionValue !== undefined) {
-        onChange(selectionValue as string);
-        return;
-      }
-
       if (inputValue !== undefined) {
         if (inputValue === "") {
           setOptions([]);
@@ -57,11 +56,13 @@ export function LookupField({ field, onChange }: LookupFieldProps) {
           searchParams.set("name", inputValue.toLocaleLowerCase());
           searchParams.set("source", "zen:ticket");
           searchParams.set("field_id", fieldId.toString());
+          searchParams.set("user_id", userId.toString());
 
           const response = await fetch(
             `/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`
           );
           const data = await response.json();
+          console.log(data);
           setOptions(
             data.custom_object_records.map(
               ({ name, id }: { name: string; id: string }) => ({
@@ -70,10 +71,17 @@ export function LookupField({ field, onChange }: LookupFieldProps) {
               })
             )
           );
+          const selected = data.custom_object_records.find(
+            (elem: any) => elem.id === selectionValue
+          );
+          if (selected !== undefined) {
+            onChange(selected?.id || "");
+            setSelectedOption(selected.name);
+          }
         }
       }
     },
-    [customObjectKey]
+    [customObjectKey, fieldId, onChange, userId]
   );
 
   const debounceHandleChange = useMemo(
@@ -110,11 +118,7 @@ export function LookupField({ field, onChange }: LookupFieldProps) {
         isAutocomplete
         inputProps={{ name, required }}
         validation={error ? "error" : undefined}
-        inputValue={value as string}
-        selectionValue={value as string}
-        renderValue={({ selection }) =>
-          (selection as ISelectedOption | null)?.label || <EmptyValueOption />
-        }
+        selectionValue={selectedOption}
         onChange={debounceHandleChange}
       >
         {!required && (

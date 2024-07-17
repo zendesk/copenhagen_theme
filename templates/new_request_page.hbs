@@ -26,16 +26,31 @@
   const container = document.getElementById("new-request-form");
 
   const settings = {{json settings}};
+  const requestForm = {{json new_request_form}};
 
   const props = {
-    requestForm: {{json new_request_form}},
-    newRequestPath: {{json (page_path 'new_request')}},
+     newRequestPath: {{json (page_path 'new_request')}},
+     //requestForm: {{json new_request_form}},
+     requestForm: { 
+      ...requestForm, 
+      ticket_fields: [...requestForm.ticket_fields, {
+        "name": "request[custom_fields][8121105772797]",
+        "value": null,
+        "error": null,
+        "label": "Asset",
+        "required": false,
+        "description": null,
+        "type": "lookup",
+        "id": 8121105772797,
+        "relationship_target_type": "zen:custom_object:asset"
+      }]}, 
     parentId: {{json parent.id}},
     parentIdPath: {{json parent.url}},
     locale: {{json help_center.locale}},
     baseLocale: {{json help_center.base_locale}},
     hasAtMentions: {{json help_center.at_mentions_enabled}},
     userRole: {{json user.role}},
+    userId: {{json user.id}},
     brandId: {{json brand.id}},
     wysiwyg: true,
     answerBotModal: {

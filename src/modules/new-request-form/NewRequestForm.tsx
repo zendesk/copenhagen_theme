@@ -34,6 +34,7 @@ export interface NewRequestFormProps {
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
+  userId: number;
   brandId: number;
   answerBotModal: {
     answerBot: AnswerBot;
@@ -69,6 +70,7 @@ export function NewRequestForm({
   baseLocale,
   hasAtMentions,
   userRole,
+  userId,
   brandId,
   answerBotModal,
 }: NewRequestFormProps) {
@@ -112,7 +114,7 @@ export function NewRequestForm({
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
-
+console.log(">>>>>>ticketFields", ticketFields)
   function handleChange(field: Field, value: Field["value"]) {
     setTicketFields(
       ticketFields.map((ticketField) =>
@@ -306,6 +308,7 @@ export function NewRequestForm({
                 <LookupField
                   key={field.name}
                   field={field}
+                  userId={userId}
                   onChange={(value) => handleChange(field, value)}
                 />
               );
