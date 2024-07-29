@@ -29,6 +29,7 @@ function getLastDigits(value: string): string {
 
 const DigitsHintSpan = styled(Span)`
   margin-left: ${(props) => props.theme.space.xxs};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
 `;
 
 export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
@@ -57,6 +58,7 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
         validation={error ? "error" : undefined}
         required={required}
         maxLength={4}
+        placeholder="XXXX"
       />
       {error && <Message validation="error">{error}</Message>}
     </GardenField>

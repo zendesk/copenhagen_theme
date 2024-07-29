@@ -1,1 +1,31 @@
-import{u as e,r as s,j as o,N as n,T as t,C as a,a7 as r,a4 as i,a5 as c,a6 as l}from"shared";function d({notifications:r,closeLabel:i}){const{addToast:c}=e();return s.useEffect((()=>{for(const e of r){const{type:s,title:r,message:l}=e;c((({close:e})=>o.jsxs(n,{type:s,children:[r&&o.jsx(t,{children:r}),l,o.jsx(a,{"aria-label":i,onClick:e})]})))}}),[c,r,i]),o.jsx(o.Fragment,{})}function f(e,s){const n=window.sessionStorage.getItem(r);if(null!==n){window.sessionStorage.removeItem(r);try{const t=JSON.parse(n),a=document.createElement("div");document.body.appendChild(a),i.render(o.jsx(c,{theme:l(e),children:o.jsx(d,{notifications:t,closeLabel:s})}),a)}catch(e){console.error("Cannot render flash notifications",e)}}}export{f as renderFlashNotifications};
+import { u as useToast, r as reactExports, j as jsxRuntimeExports, N as Notification, T as Title, C as Close, a7 as FLASH_NOTIFICATIONS_KEY, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme } from 'shared';
+
+function FlashNotifications({ notifications, closeLabel, }) {
+    const { addToast } = useToast();
+    reactExports.useEffect(() => {
+        for (const notification of notifications) {
+            const { type, title, message } = notification;
+            addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: type, children: [title && jsxRuntimeExports.jsx(Title, { children: title }), message, jsxRuntimeExports.jsx(Close, { "aria-label": closeLabel, onClick: close })] })));
+        }
+    }, [addToast, notifications, closeLabel]);
+    return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+}
+
+function renderFlashNotifications(settings, closeLabel) {
+    const flashNotifications = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
+    if (flashNotifications === null) {
+        return;
+    }
+    window.sessionStorage.removeItem(FLASH_NOTIFICATIONS_KEY);
+    try {
+        const parsedNotifications = JSON.parse(flashNotifications);
+        const container = document.createElement("div");
+        document.body.appendChild(container);
+        reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(FlashNotifications, { notifications: parsedNotifications, closeLabel: closeLabel }) }), container);
+    }
+    catch (e) {
+        console.error("Cannot render flash notifications", e);
+    }
+}
+
+export { renderFlashNotifications };
