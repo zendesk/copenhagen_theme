@@ -1,3 +1,10 @@
+## [4.0.3](https://github.com/zendesk/copenhagen_theme/compare/v4.0.2...v4.0.3) (2024-07-29)
+
+
+### Bug Fixes
+
+* **styles:** update credit card field ([08674d4](https://github.com/zendesk/copenhagen_theme/commit/08674d4e8d310cf6476c35bfc2d5f9098e7e16f3))
+
 ## [4.0.2](https://github.com/zendesk/copenhagen_theme/compare/v4.0.1...v4.0.2) (2024-07-17)
 
 
