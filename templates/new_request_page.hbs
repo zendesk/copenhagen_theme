@@ -3,16 +3,24 @@
   <div class="sub-nav">
     {{breadcrumbs}}
     <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="12"
+        height="12"
+        focusable="false"
+        viewBox="0 0 12 12"
+        class="search-icon"
+        aria-hidden="true"
+      >
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor" />
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5" />
       </svg>
       {{search submit=false}}
     </div>
   </div>
 
   <h1>
-    {{t 'submit_a_request'}}
+    {{t "submit_a_request"}}
   </h1>
 
   <div id="main-content" class="form">
@@ -21,47 +29,24 @@
 </div>
 
 <script type="module">
-  import { renderNewRequestForm } from "new-request-form";
-
-  const container = document.getElementById("new-request-form");
-
-  const settings = {{json settings}};
-  const requestForm = {{json new_request_form}};
-
-  const props = {
-     newRequestPath: {{json (page_path 'new_request')}},
-     //requestForm: {{json new_request_form}},
-     requestForm: { 
-      ...requestForm, 
-      ticket_fields: [...requestForm.ticket_fields, {
-        "name": "request[custom_fields][8121105772797]",
-        "value": null,
-        "error": null,
-        "label": "Asset",
-        "required": false,
-        "description": null,
-        "type": "lookup",
-        "id": 8121105772797,
-        "relationship_target_type": "zen:custom_object:asset"
-      }]}, 
-    parentId: {{json parent.id}},
-    parentIdPath: {{json parent.url}},
-    locale: {{json help_center.locale}},
-    baseLocale: {{json help_center.base_locale}},
-    hasAtMentions: {{json help_center.at_mentions_enabled}},
-    userRole: {{json user.role}},
-    userId: {{json user.id}},
-    brandId: {{json brand.id}},
-    wysiwyg: true,
-    answerBotModal: {
-      answerBot: {{json answer_bot}},
-      hasRequestManagement: {{json help_center.request_management_enabled}},
-      isSignedIn: {{json signed_in}},
-      helpCenterPath: {{json (page_path 'help_center')}},
-      requestsPath: {{json (page_path 'requests')}},
-      requestPath: {{json (page_path 'request' id=answer_bot.request_id)}}
-    },
-  };
-
-  renderNewRequestForm(settings, props, container);
+  import { renderNewRequestForm } from "new-request-form"; const container =
+  document.getElementById("new-request-form"); const settings =
+  {{json settings}}; const props = { requestForm:
+  {{json new_request_form}}, newRequestPath:
+  {{json (page_path "new_request")}}, parentId:
+  {{json parent.id}}, parentIdPath:
+  {{json parent.url}}, locale:
+  {{json help_center.locale}}, baseLocale:
+  {{json help_center.base_locale}}, hasAtMentions:
+  {{json help_center.at_mentions_enabled}}, userRole:
+  {{json user.role}}, userId:
+  {{json user.id}}, brandId:
+  {{json brand.id}}, wysiwyg: true, answerBotModal: { answerBot:
+  {{json answer_bot}}, hasRequestManagement:
+  {{json help_center.request_management_enabled}}, isSignedIn:
+  {{json signed_in}}, helpCenterPath:
+  {{json (page_path "help_center")}}, requestsPath:
+  {{json (page_path "requests")}}, requestPath:
+  {{json (page_path "request" id=answer_bot.request_id)}}
+  }, }; renderNewRequestForm(settings, props, container);
 </script>

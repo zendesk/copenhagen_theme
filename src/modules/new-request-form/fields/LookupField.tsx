@@ -23,7 +23,7 @@ function getCustomObjectKey(targetType: string) {
 interface LookupFieldProps {
   field: Field;
   userId: number;
-  onChange: (value: string) => void;
+  onChange: (value: string, option: FieldOption) => void;
 }
 
 export function LookupField({ field, userId, onChange }: LookupFieldProps) {
@@ -38,19 +38,47 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
     relationship_target_type,
   } = field;
   const [options, setOptions] = useState<FieldOption[]>([]);
+
+  console.log("value", field, value);
   const [selectedOption, setSelectedOption] = useState<FieldOption | null>(
     null
   );
+  const [inputValue, setInputValue] = useState<string>("");
 
   const customObjectKey = getCustomObjectKey(
     relationship_target_type as string
   );
 
+  const fetchSelectedOption = useCallback(
+    async (selectionValue: string) => {
+      const res = await fetch(
+        `/api/v2/custom_objects/${customObjectKey}/records/${selectionValue}`
+      );
+      const { custom_object_record } = await res.json();
+      const newSelectedOption = {
+        name: custom_object_record.name,
+        value: custom_object_record.id,
+      };
+      setSelectedOption(newSelectedOption);
+      setInputValue(custom_object_record.name); // Update input value to show the name
+      onChange(custom_object_record.id, newSelectedOption); // Set the hidden input value
+    },
+    [customObjectKey, onChange]
+  );
+
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     async ({ inputValue, selectionValue }) => {
+      if (selectionValue !== undefined) {
+        fetchSelectedOption(selectionValue as string);
+        return;
+      }
+
       if (inputValue !== undefined) {
+        setInputValue(inputValue);
         if (inputValue === "") {
           setOptions([]);
+          setSelectedOption(null);
+          onChange("", null);
         } else {
           const searchParams = new URLSearchParams();
           searchParams.set("name", inputValue.toLocaleLowerCase());
@@ -62,7 +90,6 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
             `/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`
           );
           const data = await response.json();
-          console.log(data);
           setOptions(
             data.custom_object_records.map(
               ({ name, id }: { name: string; id: string }) => ({
@@ -71,17 +98,10 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
               })
             )
           );
-          const selected = data.custom_object_records.find(
-            (elem: any) => elem.id === selectionValue
-          );
-          if (selected !== undefined) {
-            onChange(selected?.id || "");
-            setSelectedOption(selected.name);
-          }
         }
       }
     },
-    [customObjectKey, fieldId, onChange, userId]
+    [customObjectKey, fetchSelectedOption]
   );
 
   const debounceHandleChange = useMemo(
@@ -95,15 +115,9 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
 
   useEffect(() => {
     if (value && !options.find((option) => option.value === value)) {
-      fetch(`/api/v2/custom_objects/${customObjectKey}/records/${value}`)
-        .then((res) => res.json())
-        .then(({ custom_object_record }) => {
-          setOptions([
-            { name: custom_object_record.name, value: value as string },
-          ]);
-        });
+      fetchSelectedOption(value as string);
     }
-  }, [value, customObjectKey, options]);
+  }, [value, options, fetchSelectedOption]);
 
   return (
     <GardenField>
@@ -115,10 +129,10 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
         <Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Combobox
-        isAutocomplete
         inputProps={{ name, required }}
         validation={error ? "error" : undefined}
-        selectionValue={selectedOption}
+        inputValue={inputValue}
+        selectionValue={selectedOption?.value}
         onChange={debounceHandleChange}
       >
         {!required && (
@@ -126,9 +140,17 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
             <EmptyValueOption />
           </Option>
         )}
-        {options.map((option) => (
-          <Option key={option.value} value={option.value} label={option.name} />
-        ))}
+        {options.length === 0 ? (
+          <Option isDisabled label="" value="No matches found" />
+        ) : (
+          options.map((option) => (
+            <Option
+              key={option.value}
+              value={option.value}
+              label={option.name}
+            />
+          ))
+        )}
       </Combobox>
       {error && <Message validation="error">{error}</Message>}
       {JSON.stringify(options)}

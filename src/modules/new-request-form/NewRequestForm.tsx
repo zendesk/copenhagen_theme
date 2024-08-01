@@ -1,4 +1,4 @@
-import type { AnswerBot, Field, RequestForm } from "./data-types";
+import type { AnswerBot, Field, FieldOption, RequestForm } from "./data-types";
 import { useState } from "react";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/textarea/TextArea";
@@ -114,7 +114,7 @@ export function NewRequestForm({
   const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
-console.log(">>>>>>ticketFields", ticketFields)
+
   function handleChange(field: Field, value: Field["value"]) {
     setTicketFields(
       ticketFields.map((ticketField) =>
@@ -122,6 +122,22 @@ console.log(">>>>>>ticketFields", ticketFields)
           ? { ...ticketField, value }
           : ticketField
       )
+    );
+  }
+
+  function handleLookupField(
+    field: Field,
+    value: Field["value"],
+    option: FieldOption
+  ) {
+    setTicketFields(
+      ticketFields.map((ticketField) => {
+        if (ticketField.name === field.name && ticketField.type === "Lookup") {
+          return { ...ticketField, value, options: [option] };
+        } else {
+          return ticketField;
+        }
+      })
     );
   }
 
@@ -309,7 +325,11 @@ console.log(">>>>>>ticketFields", ticketFields)
                   key={field.name}
                   field={field}
                   userId={userId}
-                  onChange={(value) => handleChange(field, value)}
+                  //lookupField={lookupField}
+                  onChange={(value, option) => {
+                    console.log(">>>>>>>>>>>>", field, value);
+                    return handleLookupField(field, value, option);
+                  }}
                 />
               );
             default:

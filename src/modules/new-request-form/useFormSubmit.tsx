@@ -24,7 +24,6 @@ export function useFormSubmit(ticketFields: Field[]): UseFormSubmit {
     (ref: HTMLFormElement) => {
       if (ref && !initialized.current) {
         initialized.current = true;
-
         /* We are monkey patching the submit method of the form, since this behavior is what
            other scripts in Help Center are intercepting the submit event, stopping the event propagation and 
            calling the submit method directly */
