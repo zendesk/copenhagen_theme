@@ -2,6 +2,12 @@
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
 <script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
+<script type="text/javascript">
+  // Load ES module polyfill only for browsers that don't support ES modules
+  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
+    document.write('<script async src="{{asset 'es-module-shims.js'}}"><\/script>');
+  }
+</script>
 <script type="importmap">
 {
   "imports": {
