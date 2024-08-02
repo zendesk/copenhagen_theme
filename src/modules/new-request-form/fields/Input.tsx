@@ -10,10 +10,11 @@ import type { Field } from "../data-types";
 
 interface InputProps {
   field: Field;
+  disabled: boolean;
   onChange?: (value: string) => void;
 }
 
-export function Input({ field, onChange }: InputProps): JSX.Element {
+export function Input({ field, onChange, disabled }: InputProps): JSX.Element {
   const { label, error, value, name, required, description, type } = field;
   const stepProp: { step?: string } = {};
   const inputType =
@@ -40,6 +41,7 @@ export function Input({ field, onChange }: InputProps): JSX.Element {
         defaultValue={value as string}
         validation={error ? "error" : undefined}
         required={required}
+        disabled={disabled}
         onChange={(e) => {
           onChange && onChange(e.target.value);
         }}

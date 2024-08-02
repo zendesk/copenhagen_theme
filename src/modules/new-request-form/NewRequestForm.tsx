@@ -195,6 +195,7 @@ export function NewRequestForm({
                     key={field.name}
                     field={field}
                     onChange={(value) => handleChange(field, value)}
+                    disabled
                   />
                   <SuggestedArticles
                     query={field.value as string | undefined}
