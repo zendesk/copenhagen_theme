@@ -1,3 +1,10 @@
+## [4.0.5](https://github.com/zendesk/copenhagen_theme/compare/v4.0.4...v4.0.5) (2024-08-02)
+
+
+### Bug Fixes
+
+* update dompurify to 3.0.11 ([da38c38](https://github.com/zendesk/copenhagen_theme/commit/da38c38f6d9565ec3107ebe326929c27544cec20))
+
 ## [4.0.4](https://github.com/zendesk/copenhagen_theme/compare/v4.0.3...v4.0.4) (2024-08-02)
 
 
