@@ -1,3 +1,10 @@
+## [4.0.4](https://github.com/zendesk/copenhagen_theme/compare/v4.0.3...v4.0.4) (2024-08-02)
+
+
+### Bug Fixes
+
+* added polyfill for ES Modules and import map ([951bc0e](https://github.com/zendesk/copenhagen_theme/commit/951bc0e14f776a52f7a3ddd58dd74c2b3232094c))
+
 ## [4.0.3](https://github.com/zendesk/copenhagen_theme/compare/v4.0.2...v4.0.3) (2024-07-29)
 
 
