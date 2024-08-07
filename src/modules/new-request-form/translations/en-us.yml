@@ -159,11 +159,11 @@ parts:
       value: "(Last 4 digits)"
   - translation:
       key: "new-request-form.lookupfield.loading-options"
-      title: ""
-      screenshot: ""
+      title: "Message shown in combobox when searched options are loading"
+      screenshot: "https://drive.google.com/file/d/1_TeqU5hihEJb03q6adVI0-nuklYask1d/view?usp=drive_link"
       value: "Loading items..."
   - translation:
       key: "new-request-form.lookupfield.no-matches.found"
-      title: ""
-      screenshot: ""
+      title: "Message shown in combobox when searched option is not found"
+      screenshot: "https://drive.google.com/file/d/1zwRLhFj0I0N0JV07O7wpoEZO5tBBK8JF/view?usp=drive_link"
       value: "No matches found"
