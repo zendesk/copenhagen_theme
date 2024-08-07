@@ -1,4 +1,4 @@
-import type { AnswerBot, Field, FieldOption, RequestForm } from "./data-types";
+import type { AnswerBot, Field, RequestForm } from "./data-types";
 import { useState } from "react";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/textarea/TextArea";
@@ -122,22 +122,6 @@ export function NewRequestForm({
           ? { ...ticketField, value }
           : ticketField
       )
-    );
-  }
-
-  function handleLookupField(
-    field: Field,
-    value: Field["value"],
-    option: FieldOption
-  ) {
-    setTicketFields(
-      ticketFields.map((ticketField) => {
-        if (ticketField.name === field.name && ticketField.type === "Lookup") {
-          return { ...ticketField, value, options: [option] };
-        } else {
-          return ticketField;
-        }
-      })
     );
   }
 
@@ -325,11 +309,7 @@ export function NewRequestForm({
                   key={field.name}
                   field={field}
                   userId={userId}
-                  //lookupField={lookupField}
-                  onChange={(value, option) => {
-                    console.log(">>>>>>>>>>>>", field, value);
-                    return handleLookupField(field, value, option);
-                  }}
+                  onChange={(value) => handleChange(field, value)}
                 />
               );
             default:

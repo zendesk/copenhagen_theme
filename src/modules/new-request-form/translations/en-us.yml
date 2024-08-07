@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme New Request Form"
 packages:
   - "new-request-form"
@@ -25,7 +26,7 @@ parts:
       title: "Title of the footer of the Answer Bot Modal"
       screenshot: "https://drive.google.com/file/d/14qsEyUiVTy9MRYBGkgVWLmlduhoscYBw/view?usp=drive_link"
       value: "Does this article answer your question?"
-      obsolete: "2024-09-22"
+      obsolete: "2024-11-07"
   - translation:
       key: "new-request-form.answer-bot-modal.footer-content"
       title: "Title of the footer of the Answer Bot Modal"
@@ -156,3 +157,13 @@ parts:
       title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
       screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
       value: "(Last 4 digits)"
+  - translation:
+      key: "new-request-form.lookupfield.loading-options"
+      title: ""
+      screenshot: ""
+      value: "Loading items..."
+  - translation:
+      key: "new-request-form.lookupfield.no-matches.found"
+      title: ""
+      screenshot: ""
+      value: "No matches found"

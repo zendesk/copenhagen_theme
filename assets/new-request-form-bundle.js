@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, d as Field$1, e as Label$1, f as Hint$1, h as Combobox, O as Option, i as Message$1, k as Checkbox$1, l as OptGroup, p as purify, m as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as useDropzone, t as FileUpload, D as Datepicker, v as useGrid, w as focusStyles, x as FauxInput, y as Tag, z as SvgAlertWarningStroke, B as MediaInput, E as SvgCreditCardStroke, $ as $e, G as getColorV8, J as Header, K as SvgCheckCircleStroke, Q as useModalContainer, R as Modal, U as Body, V as Accordion, W as Paragraph, X as Footer$1, Y as FooterItem, Z as Button, _ as Close$1, a0 as addFlashNotification, a1 as debounce, a2 as Alert, a3 as initI18next, a4 as loadTranslations, a5 as reactDomExports, a6 as ThemeProviders, a7 as createTheme } from 'shared';
+import { j as jsxRuntimeExports, F as Field, L as Label, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, d as Field$1, e as Label$1, f as Hint$1, h as Combobox, O as Option, i as Message$1, k as Checkbox$1, l as OptGroup, p as purify, m as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as useDropzone, t as FileUpload, D as Datepicker, v as useGrid, w as focusStyles, x as FauxInput, y as Tag, z as SvgAlertWarningStroke, B as MediaInput, E as SvgCreditCardStroke, $ as $e, G as getColorV8, J as Header, K as SvgCheckCircleStroke, Q as useModalContainer, R as Modal, U as Body, V as Accordion, W as Paragraph, X as Footer$1, Y as FooterItem, Z as Button, _ as Close$1, a0 as addFlashNotification, a1 as debounce, a2 as SvgSearchStroke, a3 as Alert, a4 as initI18next, a5 as loadTranslations, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme } from 'shared';
 
 function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
@@ -1094,13 +1094,26 @@ function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId
 function getCustomObjectKey(targetType) {
     return targetType.replace("zen:custom_object:", "");
 }
+const EMPTY_OPTION = {
+    value: "",
+    name: "-",
+};
 function LookupField({ field, userId, onChange }) {
     const { id: fieldId, label, error, value, name, required, description, relationship_target_type, } = field;
     const [options, setOptions] = reactExports.useState([]);
-    console.log("value", field, value);
     const [selectedOption, setSelectedOption] = reactExports.useState(null);
-    const [inputValue, setInputValue] = reactExports.useState("");
+    const [inputValue, setInputValue] = reactExports.useState(value);
+    const [isLoadingOptions, setIsLoadingOptions] = reactExports.useState(false);
+    const { t } = useTranslation();
     const customObjectKey = getCustomObjectKey(relationship_target_type);
+    const loadingOption = {
+        name: t("new-request-form.lookupfield.loading-options", "Loading items..."),
+        id: "loading",
+    };
+    const noResultsOption = {
+        name: t("new-request-form.lookupfield.no-matches.found", "No matches found"),
+        id: "no-results",
+    };
     const fetchSelectedOption = reactExports.useCallback(async (selectionValue) => {
         const res = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/${selectionValue}`);
         const { custom_object_record } = await res.json();
@@ -1109,12 +1122,18 @@ function LookupField({ field, userId, onChange }) {
             value: custom_object_record.id,
         };
         setSelectedOption(newSelectedOption);
-        setInputValue(custom_object_record.name); // Update input value to show the name
-        onChange(custom_object_record.id, newSelectedOption); // Set the hidden input value
+        setInputValue(custom_object_record.name);
+        onChange(custom_object_record.id);
     }, [customObjectKey, onChange]);
     const handleChange = reactExports.useCallback(async ({ inputValue, selectionValue }) => {
         if (selectionValue !== undefined) {
-            fetchSelectedOption(selectionValue);
+            if (selectionValue == "") {
+                setSelectedOption(EMPTY_OPTION);
+                setInputValue(EMPTY_OPTION.name);
+                onChange(EMPTY_OPTION.value);
+            }
+            else
+                fetchSelectedOption(selectionValue);
             return;
         }
         if (inputValue !== undefined) {
@@ -1122,7 +1141,7 @@ function LookupField({ field, userId, onChange }) {
             if (inputValue === "") {
                 setOptions([]);
                 setSelectedOption(null);
-                onChange("", null);
+                onChange("");
             }
             else {
                 const searchParams = new URLSearchParams();
@@ -1131,11 +1150,15 @@ function LookupField({ field, userId, onChange }) {
                 searchParams.set("field_id", fieldId.toString());
                 searchParams.set("user_id", userId.toString());
                 const response = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`);
+                setIsLoadingOptions(true);
                 const data = await response.json();
-                setOptions(data.custom_object_records.map(({ name, id }) => ({
-                    name,
-                    value: id,
-                })));
+                if (data !== undefined) {
+                    setIsLoadingOptions(false);
+                    setOptions(data.custom_object_records.map(({ name, id }) => ({
+                        name,
+                        value: id,
+                    })));
+                }
             }
         }
     }, [customObjectKey, fetchSelectedOption]);
@@ -1146,9 +1169,15 @@ function LookupField({ field, userId, onChange }) {
     reactExports.useEffect(() => {
         if (value && !options.find((option) => option.value === value)) {
             fetchSelectedOption(value);
+            return;
         }
-    }, [value, options, fetchSelectedOption]);
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { inputProps: { name, required }, validation: error ? "error" : undefined, inputValue: inputValue, selectionValue: selectedOption?.value, onChange: debounceHandleChange, children: [!required && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), options.length === 0 ? (jsxRuntimeExports.jsx(Option, { isDisabled: true, label: "", value: "No matches found" })) : (options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), JSON.stringify(options)] }));
+    }, [value]);
+    const handleRenderValue = reactExports.useCallback(() => {
+        return selectedOption?.name ?? EMPTY_OPTION.name;
+    }, [selectedOption]);
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: selectedOption?.value }), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required }, startIcon: jsxRuntimeExports.jsx(SvgSearchStroke, {}), validation: error ? "error" : undefined, inputValue: inputValue, selectionValue: selectedOption?.value, onChange: debounceHandleChange, renderValue: handleRenderValue, children: [!required && !isLoadingOptions && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), isLoadingOptions && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: loadingOption.name }, loadingOption.id)), !isLoadingOptions && options.length === 0 && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: noResultsOption.name }, noResultsOption.id)), !isLoadingOptions &&
+                        options.length !== 0 &&
+                        options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), JSON.stringify(options)] }));
 }
 
 const StyledParagraph = styled(Paragraph) `
@@ -1182,16 +1211,6 @@ function NewRequestForm({ requestForm, wysiwyg, newRequestPath, parentId, parent
         setTicketFields(ticketFields.map((ticketField) => ticketField.name === field.name
             ? { ...ticketField, value }
             : ticketField));
-    }
-    function handleLookupField(field, value, option) {
-        setTicketFields(ticketFields.map((ticketField) => {
-            if (ticketField.name === field.name && ticketField.type === "Lookup") {
-                return { ...ticketField, value, options: [option] };
-            }
-            else {
-                return ticketField;
-            }
-        }));
     }
     function handleOrganizationChange(value) {
         if (organizationField === null) {
@@ -1238,12 +1257,7 @@ function NewRequestForm({ requestForm, wysiwyg, newRequestPath, parentId, parent
                             case "tagger":
                                 return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
                             case "lookup":
-                                return (jsxRuntimeExports.jsx(LookupField, { field: field, userId: userId, 
-                                    //lookupField={lookupField}
-                                    onChange: (value, option) => {
-                                        console.log(">>>>>>>>>>>>", field, value);
-                                        return handleLookupField(field, value, option);
-                                    } }, field.name));
+                                return (jsxRuntimeExports.jsx(LookupField, { field: field, userId: userId, onChange: (value) => handleChange(field, value) }, field.name));
                             default:
                                 return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
                         }
