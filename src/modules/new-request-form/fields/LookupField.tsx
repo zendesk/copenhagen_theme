@@ -198,7 +198,6 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
           ))}
       </Combobox>
       {error && <Message validation="error">{error}</Message>}
-      {JSON.stringify(options)}
     </GardenField>
   );
 }
