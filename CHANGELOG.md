@@ -1,3 +1,12 @@
+## [4.0.6](https://github.com/zendesk/copenhagen_theme/compare/v4.0.5...v4.0.6) (2024-08-08)
+
+
+### Reverts
+
+* Revert "chore(release): 4.1.0" ([e9cfd87](https://github.com/zendesk/copenhagen_theme/commit/e9cfd878a042b08790684c456bf3f9515752a1fb))
+* Revert "feat: added strings for translations for lookup field" ([930c5c1](https://github.com/zendesk/copenhagen_theme/commit/930c5c1cde94f37b12cd428b632378349e0fe84c))
+* Revert "chore(release): 4.1.0" ([dba2153](https://github.com/zendesk/copenhagen_theme/commit/dba21535c2260c914fd3e60826f016123fed06fb))
+
 ## [4.0.5](https://github.com/zendesk/copenhagen_theme/compare/v4.0.4...v4.0.5) (2024-08-02)
 
 
