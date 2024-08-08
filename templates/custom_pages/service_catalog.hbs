@@ -1,0 +1,13 @@
+<div class="container">
+  <div id="service-catalog"></div>
+</div>
+
+<script type="module">
+  import { renderServiceCatalog } from "service-catalog";
+
+  const container = document.getElementById("service-catalog");
+
+  const settings = {{json settings}};
+
+  renderServiceCatalog(settings, container);
+</script>
