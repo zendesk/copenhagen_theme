@@ -47,6 +47,7 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
   );
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
+  const [isFirstLoad, setIsFirstLoad] = useState<boolean>(true);
   const { t } = useTranslation();
 
   const customObjectKey = getCustomObjectKey(
@@ -85,12 +86,15 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     async ({ inputValue, selectionValue }) => {
+      setIsFirstLoad(false);
       if (selectionValue !== undefined) {
         if (selectionValue == "") {
           setSelectedOption(EMPTY_OPTION);
           setInputValue(EMPTY_OPTION.name);
           onChange(EMPTY_OPTION.value);
-        } else fetchSelectedOption(selectionValue as string);
+        } else {
+          await fetchSelectedOption(selectionValue as string);
+        }
         return;
       }
 
@@ -107,24 +111,33 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
           searchParams.set("field_id", fieldId.toString());
           searchParams.set("user_id", userId.toString());
 
-          const response = await fetch(
-            `/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`
-          );
           setIsLoadingOptions(true);
-          const data = await response.json();
-          if (data !== undefined) {
-            setIsLoadingOptions(false);
-            setOptions(
-              data.custom_object_records.map(
-                ({ name, id }: { name: string; id: string }) => ({
-                  name,
-                  value: id,
-                })
-              )
+          try {
+            const response = await fetch(
+              `/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`
             );
+
+            const data = await response.json();
+            if (data !== undefined) {
+              setOptions(
+                data.custom_object_records.map(
+                  ({ name, id }: { name: string; id: string }) => ({
+                    name,
+                    value: id,
+                  })
+                )
+              );
+            } else {
+              setOptions([]);
+            }
+          } catch (error) {
+            return error;
+          } finally {
+            setIsLoadingOptions(false);
           }
         }
       }
+      return;
     },
     [customObjectKey, fetchSelectedOption]
   );
@@ -180,7 +193,7 @@ export function LookupField({ field, userId, onChange }: LookupFieldProps) {
             value={loadingOption.name}
           />
         )}
-        {!isLoadingOptions && options.length === 0 && (
+        {!isLoadingOptions && !isFirstLoad && options.length === 0 && (
           <Option
             isDisabled
             key={noResultsOption.id}

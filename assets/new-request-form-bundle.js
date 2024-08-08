@@ -1104,6 +1104,7 @@ function LookupField({ field, userId, onChange }) {
     const [selectedOption, setSelectedOption] = reactExports.useState(null);
     const [inputValue, setInputValue] = reactExports.useState(value);
     const [isLoadingOptions, setIsLoadingOptions] = reactExports.useState(false);
+    const [isFirstLoad, setIsFirstLoad] = reactExports.useState(true);
     const { t } = useTranslation();
     const customObjectKey = getCustomObjectKey(relationship_target_type);
     const loadingOption = {
@@ -1126,14 +1127,16 @@ function LookupField({ field, userId, onChange }) {
         onChange(custom_object_record.id);
     }, [customObjectKey, onChange]);
     const handleChange = reactExports.useCallback(async ({ inputValue, selectionValue }) => {
+        setIsFirstLoad(false);
         if (selectionValue !== undefined) {
             if (selectionValue == "") {
                 setSelectedOption(EMPTY_OPTION);
                 setInputValue(EMPTY_OPTION.name);
                 onChange(EMPTY_OPTION.value);
             }
-            else
-                fetchSelectedOption(selectionValue);
+            else {
+                await fetchSelectedOption(selectionValue);
+            }
             return;
         }
         if (inputValue !== undefined) {
@@ -1149,18 +1152,29 @@ function LookupField({ field, userId, onChange }) {
                 searchParams.set("source", "zen:ticket");
                 searchParams.set("field_id", fieldId.toString());
                 searchParams.set("user_id", userId.toString());
-                const response = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`);
                 setIsLoadingOptions(true);
-                const data = await response.json();
-                if (data !== undefined) {
+                try {
+                    const response = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`);
+                    const data = await response.json();
+                    if (data !== undefined) {
+                        setOptions(data.custom_object_records.map(({ name, id }) => ({
+                            name,
+                            value: id,
+                        })));
+                    }
+                    else {
+                        setOptions([]);
+                    }
+                }
+                catch (error) {
+                    return error;
+                }
+                finally {
                     setIsLoadingOptions(false);
-                    setOptions(data.custom_object_records.map(({ name, id }) => ({
-                        name,
-                        value: id,
-                    })));
                 }
             }
         }
+        return;
     }, [customObjectKey, fetchSelectedOption]);
     const debounceHandleChange = reactExports.useMemo(() => debounce(handleChange, 300), [handleChange]);
     reactExports.useEffect(() => {
@@ -1175,7 +1189,7 @@ function LookupField({ field, userId, onChange }) {
     const handleRenderValue = reactExports.useCallback(() => {
         return selectedOption?.name ?? EMPTY_OPTION.name;
     }, [selectedOption]);
-    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: selectedOption?.value }), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required }, startIcon: jsxRuntimeExports.jsx(SvgSearchStroke, {}), validation: error ? "error" : undefined, inputValue: inputValue, selectionValue: selectedOption?.value, onChange: debounceHandleChange, renderValue: handleRenderValue, children: [!required && !isLoadingOptions && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), isLoadingOptions && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: loadingOption.name }, loadingOption.id)), !isLoadingOptions && options.length === 0 && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: noResultsOption.name }, noResultsOption.id)), !isLoadingOptions &&
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: selectedOption?.value }), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required }, startIcon: jsxRuntimeExports.jsx(SvgSearchStroke, {}), validation: error ? "error" : undefined, inputValue: inputValue, selectionValue: selectedOption?.value, onChange: debounceHandleChange, renderValue: handleRenderValue, children: [!required && !isLoadingOptions && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), isLoadingOptions && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: loadingOption.name }, loadingOption.id)), !isLoadingOptions && !isFirstLoad && options.length === 0 && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: noResultsOption.name }, noResultsOption.id)), !isLoadingOptions &&
                         options.length !== 0 &&
                         options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
 }
