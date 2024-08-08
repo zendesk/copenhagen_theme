@@ -35,6 +35,7 @@ export default defineConfig([
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
       "flash-notifications": "src/modules/flash-notifications/index.ts",
+      "service-catalog": "src/modules/service-catalog/index.tsx",
     },
     output: {
       dir: "assets",
