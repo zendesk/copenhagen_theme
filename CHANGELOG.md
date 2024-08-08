@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/zendesk/copenhagen_theme/compare/v4.0.5...v4.1.0) (2024-08-08)
+
+
+### Features
+
+* added strings for translations for lookup field ([bc5c41f](https://github.com/zendesk/copenhagen_theme/commit/bc5c41ffc168102f93f8decaf20f9afe636d77bd))
+
 ## [4.0.5](https://github.com/zendesk/copenhagen_theme/compare/v4.0.4...v4.0.5) (2024-08-02)
 
 
