@@ -85,7 +85,7 @@ class SourceYmlTransform extends Transform {
 
       // Mark removed keys as obsolete
       for (const { translation } of outputContent.parts) {
-        if (!(translation.key in strings)) {
+        if (!(translation.key in strings) && !translation.obsolete) {
           translation.obsolete = this.#getObsoleteDate();
           this.#counters.obsolete++;
         }
