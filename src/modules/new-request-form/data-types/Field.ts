@@ -2,7 +2,7 @@ export interface Field {
   id: number;
   name: string;
   value?: string | string[] | boolean;
-  error: string;
+  error: string | null;
   label: string;
   required: boolean;
   description: string;
