@@ -1,3 +1,10 @@
+## [4.0.8](https://github.com/zendesk/copenhagen_theme/compare/v4.0.7...v4.0.8) (2024-08-16)
+
+
+### Bug Fixes
+
+* fixed styles with dark background and light brand color ([d173e64](https://github.com/zendesk/copenhagen_theme/commit/d173e640abcdc3945ded2a822bb3a206cd34b2ce))
+
 ## [4.0.7](https://github.com/zendesk/copenhagen_theme/compare/v4.0.6...v4.0.7) (2024-08-16)
 
 
