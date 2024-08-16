@@ -97,7 +97,13 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
         url.searchParams.append("filename", file.name);
         xhr.open("POST", url);
 
-        xhr.setRequestHeader("Content-Type", file.type);
+        // Browsers are returning an empty type for some files
+        // (ref: https://developer.mozilla.org/en-US/docs/Web/API/Blob/type)
+        // if we don't get a type, we'll skip setting the Content-Type header
+        // and let the server determine the type.
+        if (file.type) {
+          xhr.setRequestHeader("Content-Type", file.type);
+        }
         xhr.setRequestHeader("X-CSRF-Token", csrfToken);
         xhr.responseType = "json";
 
