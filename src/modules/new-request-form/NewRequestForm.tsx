@@ -13,7 +13,7 @@ import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
-import { useEndUserConditions } from "./useEndUserConditions";
+import { getVisibleFields } from "./getVisibleFields";
 import { DatePicker } from "./fields/DatePicker";
 import { CcField } from "./fields/cc-field/CcField";
 import { CreditCard } from "./fields/CreditCard";
@@ -108,7 +108,7 @@ export function NewRequestForm({
     prefilledOrganizationField
   );
   const [dueDateField, setDueDateField] = useState(prefilledDueDateField);
-  const visibleFields = useEndUserConditions(ticketFields, end_user_conditions);
+  const visibleFields = getVisibleFields(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
 
