@@ -1,0 +1,25 @@
+name: i18n validator
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  main:
+    name: English Strings Static Validations
+    runs-on: [self-hosted, zendesk-stable]
+    env:
+      BUNDLE_ZDREPO__JFROG__IO: "${{ secrets.BUNDLE_ZDREPO__JFROG__IO }}"
+    steps:
+    - uses: zendesk/checkout@v4
+    - name: Set up Ruby
+      uses: zendesk/setup-ruby@v1
+      with:
+        ruby-version: 3.2.2
+    - run: bundle init
+    - run: gem install zendesk_i18n_dev_tools --source https://$BUNDLE_ZDREPO__JFROG__IO@zdrepo.jfrog.io/zdrepo/api/gems/gems-local/
+    - run: validate_string_sweep_files 'translations.yml' 'src/modules/new-request-form/translations'
