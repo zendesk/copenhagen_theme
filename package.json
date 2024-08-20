@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@types/dompurify": "3.0.2",
-    "@zendesk/help-center-wysiwyg": "^0.0.2",
+    "@zendesk/help-center-wysiwyg": "0.0.5",
     "@zendeskgarden/container-grid": "^3.0.14",
     "@zendeskgarden/react-accordions": "8.76.2",
     "@zendeskgarden/react-buttons": "8.76.2",
@@ -105,5 +105,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  }
+  },
+  "packageManager": "yarn@1.22.22"
 }
