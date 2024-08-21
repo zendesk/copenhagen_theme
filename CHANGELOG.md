@@ -1,3 +1,10 @@
+## [4.0.10](https://github.com/zendesk/copenhagen_theme/compare/v4.0.9...v4.0.10) (2024-08-21)
+
+
+### Bug Fixes
+
+* update wysiwyg package to 0.0.5 ([90c8762](https://github.com/zendesk/copenhagen_theme/commit/90c87628a6d8b18f1f84578cdc735c9e70618190))
+
 ## [4.0.9](https://github.com/zendesk/copenhagen_theme/compare/v4.0.8...v4.0.9) (2024-08-16)
 
 
