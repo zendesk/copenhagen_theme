@@ -1,3 +1,10 @@
+## [4.0.11](https://github.com/zendesk/copenhagen_theme/compare/v4.0.10...v4.0.11) (2024-08-21)
+
+
+### Bug Fixes
+
+* support more uncommon file types for attachments ([97d1fa3](https://github.com/zendesk/copenhagen_theme/commit/97d1fa3aa9faa27e16b897bf19b5ba96d25092f7))
+
 ## [4.0.10](https://github.com/zendesk/copenhagen_theme/compare/v4.0.9...v4.0.10) (2024-08-21)
 
 
