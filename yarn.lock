@@ -3616,10 +3616,10 @@
     "@typescript-eslint/types" "6.5.0"
     eslint-visitor-keys "^3.4.1"
 
-"@zendesk/help-center-wysiwyg@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@zendesk/help-center-wysiwyg/-/help-center-wysiwyg-0.0.2.tgz#cea11b014dcfb9f1bb25e6c39d0791e629ca625f"
-  integrity sha512-KCpdjsepDeH8CHQHv7UIwaZleayzF3LEL9+v36IxKeSXJGNebvRUacVrbdrpeseDym8o0TlC4GBN9QvXrMKPmQ==
+"@zendesk/help-center-wysiwyg@0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@zendesk/help-center-wysiwyg/-/help-center-wysiwyg-0.0.5.tgz#ad8ad48150e1af63ae8663ba900ba23821325972"
+  integrity sha512-5Ku6+XBerQ0QScc4l/iiPEHx/GHe14eGljVQskjeibcpc/DEiNhIrjzo5j7SraveVn03glGM4qUCJ7+Qh/F/CQ==
   dependencies:
     "@ckeditor/ckeditor5-basic-styles" "41.3.0"
     "@ckeditor/ckeditor5-block-quote" "41.3.0"
