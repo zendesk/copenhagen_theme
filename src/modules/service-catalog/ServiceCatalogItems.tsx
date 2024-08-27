@@ -10,11 +10,6 @@ export function ServiceCatalogItems({ items }: { items: any }) {
     hardware___devices: "Hardware & Devices",
   };
 
-  const getCurrentUserField = async () => {
-    const currentUserRequest = await fetch("/api/v2/users/me.json");
-    return await currentUserRequest.json();
-  };
-
   const getLookupField = async (title: any) => {
     const ticketFields = await fetch(
       "/api/v2/ticket_fields.json?page[size]=100"
@@ -51,38 +46,19 @@ export function ServiceCatalogItems({ items }: { items: any }) {
   };
 
   const handleRequest = async (item:any) => {
-    const catalogName = catalogToName[item.custom_object_fields.catalog];
+    const itemId = item.id;
+    const itemName = item.name;
+    const description = item.custom_object_fields.description;
+    const iconImage = item.custom_object_fields.icon_image;
+    const catalog = item.custom_object_fields.catalog;
+    const additionalOptions = item.custom_object_fields.additional_options;
 
-    const currentUser = await getCurrentUserField();
+    let redirectUrl = `/hc/p/service_catalog_item_form?id=${itemId}&item_name=${itemName}&description=${description}&icon=${iconImage}&catalog=${catalog}`;
 
-    const lookupField = await getLookupField(catalogName);
+    if (additionalOptions !== null) {
+      redirectUrl += `&additional_options=${additionalOptions}`;
+    }
 
-    const serviceCatalogForm = await getServiceTicketForm(catalogName);
-
-    const response = await fetch("/api/v2/requests", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": currentUser.user.authenticity_token,
-      },
-      body: JSON.stringify({
-        request: {
-          subject: "Request for: " + item.name,
-          comment: {
-            body: "New Item Request",
-          },
-          ticket_form_id: serviceCatalogForm.id,
-          custom_fields: [
-            {
-              id: lookupField.id,
-              value: item.id,
-            },
-          ],
-        },
-      }),
-    });
-    const data = await response.json();
-    const redirectUrl = "/hc/requests/" + data.request.id;
     window.location.href = redirectUrl;
   };
 

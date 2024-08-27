@@ -1,0 +1,27 @@
+<div class="container">
+  <div id="service-catalog-item-form"></div>
+</div>
+
+<script type="module">
+  import { renderServiceCatalogItem } from "service-catalog";
+
+  const container = document.getElementById("service-catalog-item-form");
+  const settings = {{json settings}};
+
+  const url = window.location.search;
+
+  const urlParams = new URLSearchParams(url);
+
+  const props = {
+    serviceCatalogItem: {
+      id: urlParams.get("id"),
+      name: urlParams.get("item_name"),
+      description: urlParams.get("description"),
+      iconImage: urlParams.get("icon"),
+      catalog: urlParams.get("catalog"),
+      additionalOptions: urlParams.get("additional_options"),
+    },
+  }
+
+  renderServiceCatalogItem(settings, container, props);
+</script>

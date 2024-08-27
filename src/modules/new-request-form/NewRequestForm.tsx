@@ -108,6 +108,7 @@ export function NewRequestForm({
     prefilledOrganizationField
   );
   const [dueDateField, setDueDateField] = useState(prefilledDueDateField);
+
   const visibleFields = getVisibleFields(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
