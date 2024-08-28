@@ -14,11 +14,310 @@
   <h1>
     {{t 'submit_a_request'}}
     <span class="follow-up-hint">
-      {{follow_up}}
+      {{#with parent}}
+        {{!-- TODO: add and use translated string --}}
+        Follow-up to <a href="{{url}}">request #{{id}}</a>
+      {{/with}}
     </span>
   </h1>
 
   <div id="main-content" class="form">
-    {{request_form wysiwyg=true}}
+    {{#with new_request_form}}
+      <form id="new_request" class="request-form" action="{{action}}" accept-charset="{{accept_charset}}" method="{{http_method}}" data-form="" data-form-type="request">
+        <input name="utf8" type="hidden" value="✓" autocomplete="off">
+
+          {{#if errors}}
+            <div class="notification notification-error notification-inline notification-large">
+              {{errors}}
+            </div>
+          {{/if}}
+
+          {{#with ticket_form_field}}
+            {{#if (compare options.length "==" 1)}}
+              <input type="hidden" name="{{name}}" id="request_ticket_form_id" value="{{value}}" autocomplete="off">
+            {{/if}}
+            {{#if (compare options.length ">" 1)}}
+              <div class="form-field select optional request_ticket_form_id">
+                <label for="request_issue_type_select">{{label}}</label>
+                <select name="{{name}}" id="request_issue_type_select" aria-label="{{label}}" autofocus="autofocus" style="display: none;">
+                  <option data-url="https://z3nluis999.zendesk-staging.com/hc/en-us/requests/new" value="-">-</option>
+                  {{#each options}}
+                    <option data-url="https://z3nluis999.zendesk-staging.com/hc/en-us/requests/new?ticket_form_id={{value}}" value="{{value}}" {{#is value ../value}} selected="selected" {{/is}}>
+                      {{name}}
+                    </option>
+                  {{/each}}
+                </select>
+              </div>
+            {{/if}}
+          {{/with}}
+
+          {{#with email_field}}
+            <div class="form-field string required request_anonymous_requester_email">
+              <label for="request_anonymous_requester_email">{{label}}</label>
+              <input type="text" name="{{name}}" id="request_anonymous_requester_email" value="{{value}}" aria-required="true" aria-describedby="request_anonymous_requester_email_error">
+              {{#if error}}
+                <div id="request_anonymous_requester_email_error" class="notification notification-error notification-inline">
+                  {{error}}
+                </div>
+              {{/if}}
+            </div>
+          {{/with}}
+
+          {{#with cc_field}}
+            <div class="form-field string optional request_cc_emails">
+              <label for="request_collaborators_">{{label}}<span class="optional">({{t 'optional'}})</span></label>
+              <input type="text" name="{{name}}" id="request_collaborators_" value="{{value}}" autocomplete="off" aria-required="false" aria-describedby="request_collaborators_error" />
+              {{#if error}}
+                <div class="notification notification-error notification-inline" id="request_collaborators_error">{{error}}</div>
+              {{else}}
+                <div class="notification notification-error notification-inline" aria-hidden="true"></div>
+              {{/if}}
+            </div>
+          {{/with}}
+
+          {{#with organization_field}}
+            <div class="form-field select optional request_organization_id">
+              <label id="request_organization_id_label" for="request_organization_id">{{label}}</label>
+              <select name="{{name}}" id="request_organization_id" aria-required="{{required}}" aria-describedby="request_organization_id_hint" aria-labelledby="request_organization_id_label">
+                {{#each options}}
+                  <!-- TODO: selected not working because value (number) !== ../value (string) -->
+                  <option value="{{value}}" {{#is value ../value}} selected="selected" {{/is}}>{{name}}</option> 
+                {{/each}}
+              </select>
+            </div>
+          {{/with}}
+
+          {{#each ticket_fields}}
+
+            {{#is type "subject"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_subject">
+                <label id="request_subject_label" for="request_subject">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input type="text" name="{{name}}" id="request_subject" value="{{value}}" maxlength="150" size="150" aria-required="{{required}}" aria-labelledby="request_subject_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_subject_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_subject_hint">{{description}}</p>
+                {{/if}}
+              </div>
+              <div class="suggestion-list" data-hc-class="searchbox" data-hc-suggestion-list="true"></div>  <!-- TODO: suggestion to use open apis -->
+            {{/is}}
+            
+            {{#is type "description"}}
+              <div class="form-field text {{#if required}} required {{else}} optional {{/if}} request_description">
+                <label id="request_description_label" for="request_description">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <!-- TODO: aria-labelledby -->
+                <!-- TODO: data-helper="wysiwig" read from helper option -->
+                <textarea name="{{name}}" id="request_description" aria-required="{{required}}" aria-describedby="request_description_hint" aria-labelledby="request_description_label" {{#if false}} data-helper="wysiwyg" {{/if}}>{{value}}</textarea>
+                <!-- TODO: value="text/html" : "text/plain" read from helper option -->
+                <input type="hidden" name="{{../description_mimetype_field.name}}" id="request_description_mimetype" value="text/plain" style="display: none;" autocomplete="off">
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_description_error">{{error}}</div>
+                {{/if}}
+                <p id="request_description_hint">{{description}}</p>
+              </div>
+            {{/is}}
+
+            {{#is type "tickettype"}}
+              <div class="form-field select {{#if required}} required {{else}} optional {{/if}} request_type">
+                <label id="request_type_label" for="request_type">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <!-- TODO: aria-labelledby -->
+                <select name="{{name}}" id="request_type" aria-required="{{required}}" aria-describedby="request_type_hint" aria-labelledby="request_type_label">
+                  <option value="-">-</option>
+                  {{#each options}}
+                    <option value="{{value}}" {{#is value ../value}} selected="selected" {{/is}}>{{name}}</option>
+                  {{/each}}
+                </select>
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_type_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_type_hint">{{description}}</p>
+                {{/if}}
+              </div>
+              {{!-- "due date" is a special request field that should appear right after the "tickettype" field. --}}
+              {{#with ../due_date_field}}
+                <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_due_at" data-due-date hidden>
+                  <label id="request_due_at_label" for="request_due_at">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                  <input type="text" name="{{name}}" value="{{value}}" id="request_due_at" data-datepicker="" class="datepicker" aria-required="{{required}}" aria-labelledby="request_due_at_label" /> <!-- TODO: aria-labelledby -->
+                  {{#if error}}
+                    <div class="notification notification-error notification-inline" id="request_due_at_error">{{error}}</div>
+                  {{/if}}
+                  {{#if description}}
+                    <p id="request_due_at_hint">{{description}}</p>
+                  {{/if}}
+                </div>
+              {{/with}}
+            {{/is}}
+
+            {{#is type "priority"}}  <!-- TODO: repeat with  -->
+              <div class="form-field select {{#if required}} required {{else}} optional {{/if}} request_priority">
+                <label id="request_priority_label" for="request_priority">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <!-- TODO: aria-labelledby -->
+                <select name="{{name}}" id="request_priority" aria-required="{{required}}" aria-describedby="request_priority_hint" aria-labelledby="request_priority_label">
+                  <option value="-">-</option>
+                  {{#each options}}
+                    <option value="{{value}}" {{#is value ../value}} selected="selected" {{/is}}>{{name}}</option>
+                  {{/each}}
+                </select>
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_priority_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_priority_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{!-- TODO: fix --}}
+            {{#is type "tagger"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                 <!-- TODO: data-tagger -->
+                 <!-- TODO: aria-labelledby -->
+                <input type="hidden" name="{{name}}" id="request_custom_fields_{{id}}" value="{{value}}" autocomplete="off" data-tagger="" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label">
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{!-- TODO: fix --}}
+            {{#is type "multiselect"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                 <!-- TODO: data-multiselect -->
+                 <!-- TODO: aria-labelledby -->
+                <input type="hidden" name="{{name}}" id="request_custom_fields_{{id}}" value="{{value}}" autocomplete="off" data-multiselect="" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label">
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "text"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input type="text" name="{{name}}" id="request_custom_fields_{{id}}" value="{{value}}" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "textarea"}}
+              <div class="form-field text {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <textarea name="{{name}}" id="request_custom_fields_{{id}}" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label">{{value}}</textarea> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "integer"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input type="number" name="{{name}}" id="request_custom_fields_{{id}}" step="1" value="{{value}}" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "decimal"}}
+              <div class="form-field decimal {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input type="number" name="{{name}}" id="request_custom_fields_{{id}}" step="any" value="{{value}}" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "checkbox"}}
+              <div class="form-field boolean {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input name="{{name}}" type="hidden" value="off" autocomplete="off">
+                <input type="checkbox" name="{{name}}" id="request_custom_fields_{{id}}" value="on" {{#if value}}checked="checked"{{/if}} aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "date"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input type="text" name="{{name}}" id="request_custom_fields_{{id}}" value="{{value}}" data-datepicker="" data-format="YYYY-MM-DD" class="datepicker" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+            {{#is type "regexp"}}
+              <div class="form-field string {{#if required}} required {{else}} optional {{/if}} request_custom_fields_{{id}}">
+                <label id="request_custom_fields_{{id}}_label" for="request_custom_fields_{{id}}">{{label}}{{#unless required}}<span class="optional">({{t 'optional'}})</span>{{/unless}}</label>
+                <input type="text" name="{{name}}" id="request_custom_fields_{{id}}" value="{{value}}" aria-required="{{required}}" aria-labelledby="request_custom_fields_{{id}}_label"> <!-- TODO: aria-labelledby -->
+                {{#if error}}
+                  <div class="notification notification-error notification-inline" id="request_custom_fields_{{id}}_error">{{error}}</div>
+                {{/if}}
+                {{#if description}}
+                  <p id="request_custom_fields_{{id}}_hint">{{description}}</p>
+                {{/if}}
+              </div>
+            {{/is}}
+
+          {{/each}}
+
+          {{!--
+            {{conditional_fields}}
+
+            {{attachments_field}}
+
+            {{captcha_field}}
+            {{#if captcha_error_message}}
+              <div class="notification notification-error notification-inline">
+                {{captcha_error_message}}
+              </div>
+            {{/if}}
+
+            {{#if upload_error_message}}
+              <div class="notification notification-error notification-inline">
+                {{upload_error_message}}
+              </div>
+            {{/if}}          
+          --}}
+
+          <footer>
+            <input type="submit" name="commit" value="{{t 'submit'}}">
+          </footer>
+      </form>
+    {{/with}}
   </div>
 </div>
