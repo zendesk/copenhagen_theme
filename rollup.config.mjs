@@ -96,4 +96,24 @@ export default defineConfig([
       clearScreen: false,
     },
   },
+  {
+    input: ["src/modules/server/index.tsx"],
+    output: {
+      dir: "assets",
+      format: "es",
+      entryFileNames: "server-bundle.js",
+    },
+    plugins: [
+      nodeResolve({
+        extensions: [".js"],
+      }),
+      commonjs(),
+      typescript(),
+      replace({
+        preventAssignment: true,
+        "process.env.NODE_ENV": '"production"',
+      }),
+      isProduction && terser(),
+    ],
+  },
 ]);
