@@ -22,7 +22,7 @@ export function useFormSubmit(ticketFields: Field[]): UseFormSubmit {
 
   const formRefCallback = useCallback(
     (ref: HTMLFormElement) => {
-      if (ref && !initialized.current) {
+      if (ref && !initialized.current && document) {
         initialized.current = true;
 
         /* We are monkey patching the submit method of the form, since this behavior is what

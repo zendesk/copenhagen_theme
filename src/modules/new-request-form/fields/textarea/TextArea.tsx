@@ -7,7 +7,6 @@ import {
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../../data-types";
-import { useWysiwyg } from "./useWysiwyg";
 import styled from "styled-components";
 
 interface TextAreaProps {
@@ -32,23 +31,8 @@ const StyledMessage = styled(Message)`
   }
 `;
 
-export function TextArea({
-  field,
-  hasWysiwyg,
-  baseLocale,
-  hasAtMentions,
-  userRole,
-  brandId,
-  onChange,
-}: TextAreaProps): JSX.Element {
+export function TextArea({ field, onChange }: TextAreaProps): JSX.Element {
   const { label, error, value, name, required, description } = field;
-  const ref = useWysiwyg({
-    hasWysiwyg,
-    baseLocale,
-    hasAtMentions,
-    userRole,
-    brandId,
-  });
 
   return (
     <StyledField>
@@ -60,7 +44,6 @@ export function TextArea({
         <Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
       <Textarea
-        ref={ref}
         name={name}
         defaultValue={value as string}
         validation={error ? "error" : undefined}

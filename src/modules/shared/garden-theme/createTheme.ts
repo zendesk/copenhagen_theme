@@ -16,7 +16,7 @@ export interface Settings {
 export function createTheme(settings: Settings): IGardenTheme {
   return {
     ...DEFAULT_THEME,
-    rtl: document.dir === "rtl",
+    rtl: false,
     colors: {
       ...DEFAULT_THEME.colors,
       background: settings.background_color,

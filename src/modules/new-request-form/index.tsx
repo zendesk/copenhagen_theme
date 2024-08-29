@@ -1,1 +1,2 @@
-export { renderNewRequestForm } from "./renderNewRequestForm";
+export * from "./NewRequestForm";
+export { hydrateComponent } from "./hydrateComponent";
