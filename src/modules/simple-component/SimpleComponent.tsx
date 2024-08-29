@@ -1,3 +1,3 @@
-export function SimpleComponent(): JSX.Element {
-  return <h1>Hello World!</h1>;
+export function SimpleComponent({ name }: { name: string }): JSX.Element {
+  return <h1>Hello {name}!</h1>;
 }
