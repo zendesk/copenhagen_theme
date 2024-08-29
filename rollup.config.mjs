@@ -103,6 +103,7 @@ export default defineConfig([
       dir: "assets",
       format: "es",
       entryFileNames: "server-bundle.js",
+      manualChunks: () => "server",
     },
     plugins: [
       nodeResolve({
@@ -113,6 +114,23 @@ export default defineConfig([
       replace({
         preventAssignment: true,
         "process.env.NODE_ENV": '"production"',
+      }),
+      svgr({
+        svgo: true,
+        svgoConfig: {
+          plugins: [
+            {
+              name: "preset-default",
+              params: {
+                overrides: {
+                  removeTitle: false,
+                  convertPathData: false,
+                  removeViewBox: false,
+                },
+              },
+            },
+          ],
+        },
       }),
       isProduction && terser(),
     ],

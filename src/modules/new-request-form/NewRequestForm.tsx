@@ -9,7 +9,7 @@ import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
 import styled from "styled-components";
-import { Alert } from "@zendeskgarden/react-notifications";
+import { Alert, ToastProvider } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
@@ -22,6 +22,9 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
+import type { Settings } from "../shared";
+import { createTheme, initI18next, ThemeProviders } from "../shared";
+import { ThemeProvider } from "@zendeskgarden/react-theming";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -42,6 +45,7 @@ export interface NewRequestFormProps {
     requestsPath: string;
     requestPath: string;
   };
+  settings: Settings;
 }
 
 const StyledParagraph = styled(Paragraph)`
@@ -69,8 +73,10 @@ export function NewRequestForm({
   hasAtMentions,
   userRole,
   brandId,
-  answerBotModal,
+  settings,
 }: NewRequestFormProps) {
+  initI18next(baseLocale);
+
   const {
     ticket_fields,
     action,
@@ -88,7 +94,6 @@ export function NewRequestForm({
     inline_attachments_fields,
     description_mimetype_field,
   } = requestForm;
-  const { answerBot } = answerBotModal;
   const {
     ticketFields: prefilledTicketFields,
     emailField,
@@ -139,17 +144,18 @@ export function NewRequestForm({
   }
 
   return (
-    <>
+    <ThemeProvider theme={createTheme(settings)}>
       {parentId && (
         <StyledParagraph>
           <Anchor href={parentIdPath}>
-            {t(
+            Follow up to request {parentId}
+            {/* {t(
               "new-request-form.parent-request-link",
               "Follow-up to request {{parentId}}",
               {
                 parentId: `\u202D#${parentId}\u202C`,
               }
-            )}
+            )} */}
           </Anchor>
         </StyledParagraph>
       )}
@@ -305,7 +311,11 @@ export function NewRequestForm({
               return <></>;
           }
         })}
-        {attachments_field && <Attachments field={attachments_field} />}
+        {attachments_field && (
+          <ToastProvider zIndex={2147483647}>
+            <Attachments field={attachments_field} />
+          </ToastProvider>
+        )}
         {inline_attachments_fields.map(({ type, name, value }, index) => (
           <input key={index} type={type} name={name} value={value} />
         ))}
@@ -318,18 +328,6 @@ export function NewRequestForm({
           )}
         </Footer>
       </Form>
-      {answerBot.auth_token &&
-        answerBot.interaction_access_token &&
-        answerBot.articles.length > 0 &&
-        answerBot.request_id && (
-          <AnswerBotModal
-            authToken={answerBot.auth_token}
-            interactionAccessToken={answerBot.interaction_access_token}
-            articles={answerBot.articles}
-            requestId={answerBot.request_id}
-            {...answerBotModal}
-          />
-        )}
-    </>
+    </ThemeProvider>
   );
 }

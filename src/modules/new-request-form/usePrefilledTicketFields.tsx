@@ -58,6 +58,8 @@ function getFieldFromId(id: string, prefilledTicketFields: Fields) {
 }
 
 function getPrefilledTicketFields(fields: Fields): Fields {
+  if (typeof window === "undefined") return fields;
+
   const { href } = location;
   const params = new URL(href).searchParams;
   const prefilledFields: Fields = {
