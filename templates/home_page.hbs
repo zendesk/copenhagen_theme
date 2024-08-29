@@ -1,5 +1,10 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
+<div>
+  {{react_component 'simple-component' 'SimpleComponent' name=user.name}}
+  {{react_component 'simple-component' 'CounterComponent' initialCounter=3}}
+</div>
+
 <section id="main-content" class="section hero">
   <div class="hero-inner">
     <h2 class="visibility-hidden">{{ t 'search' }}</h2>

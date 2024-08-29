@@ -1,20 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SimpleComponent } from "./SimpleComponent";
 import { CounterComponent } from "./CounterComponent";
 import { hydrate } from "react-dom";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function hydrateComponent(
   componentName: string,
   props: any,
   reactNode: HTMLElement
-): string {
+) {
   if (componentName === "SimpleComponent") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     hydrate((<SimpleComponent {...props} />) as any, reactNode);
-  }
-  if (componentName === "CounterComponent") {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } else if (componentName === "CounterComponent") {
     hydrate((<CounterComponent {...props} />) as any, reactNode);
+  } else {
+    throw new Error(`Unknown component: ${componentName}`);
   }
-  throw new Error(`Unknown component: ${componentName}`);
 }
