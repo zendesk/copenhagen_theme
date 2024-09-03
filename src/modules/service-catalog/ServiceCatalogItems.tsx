@@ -52,11 +52,16 @@ export function ServiceCatalogItems({ items }: { items: any }) {
     const iconImage = item.custom_object_fields.icon_image;
     const catalog = item.custom_object_fields.catalog;
     const additionalOptions = item.custom_object_fields.additional_options;
+    const additionalObjects = item.custom_object_fields.additional_objects;
 
     let redirectUrl = `/hc/p/service_catalog_item_form?id=${itemId}&item_name=${itemName}&description=${description}&icon=${iconImage}&catalog=${catalog}`;
 
     if (additionalOptions !== null) {
       redirectUrl += `&additional_options=${additionalOptions}`;
+    }
+
+    if (additionalObjects !== null) {
+      redirectUrl += `&additional_objects=${additionalObjects}`;
     }
 
     window.location.href = redirectUrl;

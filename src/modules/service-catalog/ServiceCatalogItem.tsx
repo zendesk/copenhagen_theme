@@ -2,10 +2,25 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Paragraph } from "@zendeskgarden/react-typography";
 import { Button } from "@zendeskgarden/react-buttons";
-import { Tagger } from "../new-request-form/fields/Tagger";
+import {
+  Combobox,
+  Label,
+  Field,
+  Option,
+} from "@zendeskgarden/react-dropdowns.next";
+
+export interface DetailedCustomObject {
+  id: string;
+  name: string;
+  description: string;
+  iconImage: string;
+  catalog: string;
+  options: string;
+}
 
 export interface ServiceCatalogItemProps {
   ticketFields: any,
+  detailedCustomObjects: DetailedCustomObject[] | null,
   serviceCatalogItem: {
     id: string;
     name: string;
@@ -13,50 +28,40 @@ export interface ServiceCatalogItemProps {
     iconImage: string;
     catalog: string;
     additionalOptions: string | null;
+    additionalObjects: string | null;
   };
 }
 
 export function ServiceCatalogItem({
   ticketFields,
+  detailedCustomObjects,
   serviceCatalogItem,
 }: ServiceCatalogItemProps) { 
   const [selectedValue, setSelectedValue] = useState<any>(null);
+  const objectToName: { [key: string]: string } = {
+    macbook_pro___16_inch_option: "MacBook Pro - 16-inch Option",
+  };
 
-  const handleOptionsChange = (value: any) => {
-    setSelectedValue(value);
+  const handleOptionsChange = (selection: any) => {
+    if (selection.type === "option:click") {
+      setSelectedValue(selection.selectionValue);
+    }
   };
 
   const StyledParagraph = styled(Paragraph)`
     margin: ${(props) => props.theme.space.md} 0;
   `;
 
-  const formatOptionsField = (optionsField: any) => {
-    const formattedOptionValues = optionsField.custom_field_options.map(
-      (option: any) => ({
-        name: option.name,
-        value: option.value,
-      })
-    );
+  const formatObjectsField = (objectsFields: any) => {
+    const values = objectsFields.map((object: any) => object.options);
 
-    const defaultValue = optionsField.custom_field_options.find(
-      (option: any) => option.default
-    );
+    const defaultValue = values[0];
 
     if (selectedValue === null) {
-      setSelectedValue(defaultValue.value);
+      setSelectedValue(defaultValue);
     }
 
-    return {
-      description: optionsField.agent_description,
-      id: optionsField.id,
-      label: optionsField.raw_title_in_portal,
-      name: `request[custom_fields][${optionsField.id}]`,
-      options: formattedOptionValues,
-      type: optionsField.type,
-      error: null,
-      value: selectedValue,
-      required: optionsField.required,
-    };
+    return values;
   };
 
   const getCurrentUserField = async () => {
@@ -125,16 +130,19 @@ export function ServiceCatalogItem({
     window.location.href = redirectUrl;
   };
 
-  const handleAdditionalRequest = async (
-    item: any,
-    catalogLookup: any,
-    optionsLookup: any
+  const handleObjectRequest = async (
+    items: any,
+    catalogItem: any,
+    formField: any
   ) => {
     const currentUser = await getCurrentUserField();
 
-    const serviceCatalogForm = await getServiceTicketForm(
-      item.additionalOptions
-    );
+    const selectedObject = items.find((object: any) => {
+      return object.options === selectedValue;
+    });
+
+    const mappedObjectName = objectToName[catalogItem.additionalObjects];
+    const serviceCatalogForm = await getServiceTicketForm(mappedObjectName);
 
     const response = await fetch("/api/v2/requests", {
       method: "POST",
@@ -144,19 +152,15 @@ export function ServiceCatalogItem({
       },
       body: JSON.stringify({
         request: {
-          subject: "Request for: " + item.name,
+          subject: "Request for: " + selectedObject.name,
           comment: {
             body: "New Item Request",
           },
           ticket_form_id: serviceCatalogForm.id,
           custom_fields: [
             {
-              id: catalogLookup.id,
-              value: item.id,
-            },
-            {
-              id: optionsLookup.id,
-              value: selectedValue,
+              id: formField.id,
+              value: selectedObject.id,
             },
           ],
         },
@@ -180,27 +184,37 @@ export function ServiceCatalogItem({
     );
   };
 
-  const renderRequestWithOptions = (serviceCatalogItem: any, itemAdditionalOptions: any) => {
-    const [catalogLookup, optionsLookup] = ticketFields.filter(
-      (field: any) =>
-        field.title === catalogName || field.title === itemAdditionalOptions
-    );
+  const renderRequestWithObjects = (
+    serviceCatalogObjects: any,
+    serviceCatalogItem: any
+  ) => {
+    const values = formatObjectsField(serviceCatalogObjects);
+    const mappedObjectName = objectToName[serviceCatalogItem.additionalObjects];
 
-    const formattedOptionsField = formatOptionsField(optionsLookup);
+    const formField = ticketFields.find(
+      (field: any) => field.title === mappedObjectName
+    );
 
     return (
       <div>
-        <Tagger
-          key={formattedOptionsField.name}
-          field={formattedOptionsField}
-          onChange={(value: any) => handleOptionsChange(value)}
-        />
+        <Field>
+          <Label>Select an option</Label>
+          <Combobox
+            isAutocomplete
+            onChange={handleOptionsChange}
+            selectionValue={selectedValue}
+          >
+            {values.map((value: any) => (
+              <Option key={value} value={value} label={value} />
+            ))}
+          </Combobox>
+        </Field>
         <Button
           onClick={() =>
-            handleAdditionalRequest(
+            handleObjectRequest(
+              serviceCatalogObjects,
               serviceCatalogItem,
-              catalogLookup,
-              optionsLookup
+              formField
             )
           }
           isPrimary
@@ -208,20 +222,19 @@ export function ServiceCatalogItem({
           Request
         </Button>
       </div>
-    )
+    );
   };
 
   const catalogName = catalogToName[serviceCatalogItem.catalog];
-  const itemAdditionalOptions = serviceCatalogItem.additionalOptions;
 
   return (
     <div>
       <h1>{serviceCatalogItem.name}</h1>
       <StyledParagraph>{serviceCatalogItem.description}</StyledParagraph>
       <img src={serviceCatalogItem.iconImage} alt={serviceCatalogItem.name} height={"auto"} width={"300px"} />
-      {serviceCatalogItem.additionalOptions 
-        ? renderRequestWithOptions(serviceCatalogItem, itemAdditionalOptions)
+      {serviceCatalogItem.additionalObjects
+        ? renderRequestWithObjects(detailedCustomObjects, serviceCatalogItem)
         : renderRequest(serviceCatalogItem, catalogName)}
     </div>
-  )
+  );
 }
