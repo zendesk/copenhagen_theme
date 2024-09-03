@@ -1,5 +1,5 @@
 import type { AnswerBot, Field, RequestForm } from "./data-types";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/textarea/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -22,6 +22,8 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
+import { LookupField } from "./fields/LookupField";
+import type { Organization } from "./data-types/Organization";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -33,7 +35,9 @@ export interface NewRequestFormProps {
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
+  userId: number;
   brandId: number;
+  organizations: Array<Organization>;
   answerBotModal: {
     answerBot: AnswerBot;
     hasRequestManagement: boolean;
@@ -68,7 +72,9 @@ export function NewRequestForm({
   baseLocale,
   hasAtMentions,
   userRole,
+  userId,
   brandId,
+  organizations,
   answerBotModal,
 }: NewRequestFormProps) {
   const {
@@ -102,7 +108,6 @@ export function NewRequestForm({
     organizationField: organization_field,
     dueDateField: due_date_field,
   });
-
   const [ticketFields, setTicketFields] = useState(prefilledTicketFields);
   const [organizationField, setOrganizationField] = useState(
     prefilledOrganizationField
@@ -111,16 +116,22 @@ export function NewRequestForm({
   const visibleFields = getVisibleFields(ticketFields, end_user_conditions);
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
-
-  function handleChange(field: Field, value: Field["value"]) {
-    setTicketFields(
-      ticketFields.map((ticketField) =>
-        ticketField.name === field.name
-          ? { ...ticketField, value }
-          : ticketField
-      )
-    );
-  }
+  const defaultOrganizationId =
+    organizations.length > 0 && organizations[0]?.id
+      ? organizations[0]?.id?.toString()
+      : null;
+  const handleChange = useCallback(
+    (field: Field, value: Field["value"]) => {
+      setTicketFields(
+        ticketFields.map((ticketField) =>
+          ticketField.name === field.name
+            ? { ...ticketField, value }
+            : ticketField
+        )
+      );
+    },
+    [ticketFields]
+  );
 
   function handleOrganizationChange(value: string) {
     if (organizationField === null) {
@@ -298,6 +309,20 @@ export function NewRequestForm({
                 <Tagger
                   key={field.name}
                   field={field}
+                  onChange={(value) => handleChange(field, value)}
+                />
+              );
+            case "lookup":
+              return (
+                <LookupField
+                  key={field.name}
+                  field={field}
+                  userId={userId}
+                  organizationId={
+                    organizationField !== null
+                      ? (organizationField.value as string)
+                      : defaultOrganizationId
+                  }
                   onChange={(value) => handleChange(field, value)}
                 />
               );
