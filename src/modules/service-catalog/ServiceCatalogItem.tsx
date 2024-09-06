@@ -5,7 +5,8 @@ import { Button } from "@zendeskgarden/react-buttons";
 import { Tagger } from "../new-request-form/fields/Tagger";
 
 export interface ServiceCatalogItemProps {
-  ticketFields: any,
+  ticketFields: any;
+  ticketForm: any;
   serviceCatalogItem: {
     id: string;
     name: string;
@@ -18,68 +19,16 @@ export interface ServiceCatalogItemProps {
 
 export function ServiceCatalogItem({
   ticketFields,
+  ticketForm,
   serviceCatalogItem,
-}: ServiceCatalogItemProps) { 
-  const [selectedValue, setSelectedValue] = useState<any>(null);
+}: ServiceCatalogItemProps) {
+  const [selectedValue, setSelectedValue] = useState<any>({});
 
-  const handleOptionsChange = (value: any) => {
-    setSelectedValue(value);
-  };
-
-  const StyledParagraph = styled(Paragraph)`
-    margin: ${(props) => props.theme.space.md} 0;
-  `;
-
-  const formatOptionsField = (optionsField: any) => {
-    const formattedOptionValues = optionsField.custom_field_options.map(
-      (option: any) => ({
-        name: option.name,
-        value: option.value,
-      })
-    );
-
-    const defaultValue = optionsField.custom_field_options.find(
-      (option: any) => option.default
-    );
-
-    if (selectedValue === null) {
-      setSelectedValue(defaultValue.value);
-    }
-
-    return {
-      description: optionsField.agent_description,
-      id: optionsField.id,
-      label: optionsField.raw_title_in_portal,
-      name: `request[custom_fields][${optionsField.id}]`,
-      options: formattedOptionValues,
-      type: optionsField.type,
-      error: null,
-      value: selectedValue,
-      required: optionsField.required,
-    };
-  };
-
-  const getCurrentUserField = async () => {
-    const currentUserRequest = await fetch("/api/v2/users/me.json");
-    return await currentUserRequest.json();
-  };
-
-  const getLookupField = async (title: any) => {
-    const ticketFields = await fetch("/api/v2/ticket_fields.json?page[size]=100");
-    const ticketFieldsResponse = await ticketFields.json();
-
-    return ticketFieldsResponse.ticket_fields.find(
-      (field: any) => field.title === title
-    );
-  };
-
-  const getServiceTicketForm = async (name: any) => {
-    const ticketForm = await fetch("/api/v2/ticket_forms.json");
-    const ticketFormResponse = await ticketForm.json();
-
-    return ticketFormResponse.ticket_forms.find(
-      (form: any) => form.name === name
-    );
+  const handleOptionsChange = (fieldId: any, value: any) => {
+    setSelectedValue((previousSelectedValue: any) => ({
+      ...previousSelectedValue,
+      [fieldId]: value,
+    }));
   };
 
   const catalogToName: { [key: string]: string } = {
@@ -91,12 +40,55 @@ export function ServiceCatalogItem({
     hardware___devices: "Hardware & Devices",
   };
 
-  const handleRequest = async (item:any, catalogName: any) => {
+  const StyledParagraph = styled(Paragraph)`
+    margin: ${(props) => props.theme.space.md} 0;
+  `;
+
+  const formatOptionsFields = (optionsFields: any) => {
+    return optionsFields.map((field: any) => {
+      const formattedOptionValues = field.custom_field_options.map(
+        (option: any) => ({
+          name: option.name,
+          value: option.value,
+        })
+      );
+
+      const defaultValue = field.custom_field_options.find(
+        (option: any) => option.default
+      );
+
+      if (!selectedValue[field.id]) {
+        setSelectedValue((previousSelectedValue: any) => ({
+          ...previousSelectedValue,
+          [field.id]: defaultValue.value,
+        }));
+      }
+
+      return {
+        description: field.agent_description,
+        id: field.id,
+        label: field.raw_title_in_portal,
+        name: `request[custom_fields][${field.id}]`,
+        options: formattedOptionValues,
+        type: field.type,
+        error: null,
+        value: selectedValue[field.id],
+        required: field.required,
+      };
+    });
+  };
+
+  const getCurrentUserField = async () => {
+    const currentUserRequest = await fetch("/api/v2/users/me.json");
+    return await currentUserRequest.json();
+  };
+
+  const handleRequest = async (
+    item: any,
+    requestForm: any,
+    ticketField: any
+  ) => {
     const currentUser = await getCurrentUserField();
-
-    const lookupField = await getLookupField(catalogName);
-
-    const serviceCatalogForm = await getServiceTicketForm(catalogName);
 
     const response = await fetch("/api/v2/requests", {
       method: "POST",
@@ -110,10 +102,10 @@ export function ServiceCatalogItem({
           comment: {
             body: "New Item Request",
           },
-          ticket_form_id: serviceCatalogForm.id,
+          ticket_form_id: requestForm.id,
           custom_fields: [
             {
-              id: lookupField.id,
+              id: ticketField.id,
               value: item.id,
             },
           ],
@@ -127,14 +119,25 @@ export function ServiceCatalogItem({
 
   const handleAdditionalRequest = async (
     item: any,
-    catalogLookup: any,
-    optionsLookup: any
+    requestForm: any,
+    lookupField: any,
+    formattedOptionsFields: any
   ) => {
     const currentUser = await getCurrentUserField();
 
-    const serviceCatalogForm = await getServiceTicketForm(
-      item.additionalOptions
-    );
+    const customFields = [
+      {
+        id: lookupField.id,
+        value: item.id,
+      },
+    ];
+
+    formattedOptionsFields.forEach((field: any) => {
+      customFields.push({
+        id: field.id,
+        value: selectedValue[field.id],
+      });
+    });
 
     const response = await fetch("/api/v2/requests", {
       method: "POST",
@@ -148,17 +151,8 @@ export function ServiceCatalogItem({
           comment: {
             body: "New Item Request",
           },
-          ticket_form_id: serviceCatalogForm.id,
-          custom_fields: [
-            {
-              id: catalogLookup.id,
-              value: item.id,
-            },
-            {
-              id: optionsLookup.id,
-              value: selectedValue,
-            },
-          ],
+          ticket_form_id: requestForm.id,
+          custom_fields: customFields,
         },
       }),
     });
@@ -167,11 +161,22 @@ export function ServiceCatalogItem({
     window.location.href = redirectUrl;
   };
 
-  const renderRequest = (serviceCatalogItem: any, catalogName: any) => {
+  const renderRequest = (
+    serviceCatalogItem: any,
+    catalogName: any,
+    ticketFields: any,
+    ticketForm: any
+  ) => {
+    const lookupField = ticketFields.find(
+      (field: any) => field.title === catalogName
+    );
+
     return (
       <div>
         <Button
-          onClick={() => handleRequest(serviceCatalogItem, catalogName)}
+          onClick={() =>
+            handleRequest(serviceCatalogItem, ticketForm, lookupField)
+          }
           isPrimary
         >
           Request
@@ -180,27 +185,40 @@ export function ServiceCatalogItem({
     );
   };
 
-  const renderRequestWithOptions = (serviceCatalogItem: any, itemAdditionalOptions: any) => {
-    const [catalogLookup, optionsLookup] = ticketFields.filter(
-      (field: any) =>
-        field.title === catalogName || field.title === itemAdditionalOptions
+  const renderRequestWithOptions = (
+    serviceCatalogItem: any,
+    catalogName: any,
+    ticketFields: any,
+    ticketForm: any
+  ) => {
+    const lookupField = ticketFields.find(
+      (field: any) => field.title === catalogName
     );
 
-    const formattedOptionsField = formatOptionsField(optionsLookup);
+    const formAdditionalOptions = ticketFields.filter((field: any) =>
+      field.title.startsWith("SC:")
+    );
+
+    const formattedOptionsFields = formatOptionsFields(formAdditionalOptions);
 
     return (
       <div>
-        <Tagger
-          key={formattedOptionsField.name}
-          field={formattedOptionsField}
-          onChange={(value: any) => handleOptionsChange(value)}
-        />
+        {formattedOptionsFields.map((formattedOptionsField: any) => (
+          <Tagger
+            key={formattedOptionsField.name}
+            field={formattedOptionsField}
+            onChange={(value: any) =>
+              handleOptionsChange(formattedOptionsField.id, value)
+            }
+          />
+        ))}
         <Button
           onClick={() =>
             handleAdditionalRequest(
               serviceCatalogItem,
-              catalogLookup,
-              optionsLookup
+              ticketForm,
+              lookupField,
+              formattedOptionsFields
             )
           }
           isPrimary
@@ -208,20 +226,34 @@ export function ServiceCatalogItem({
           Request
         </Button>
       </div>
-    )
+    );
   };
 
   const catalogName = catalogToName[serviceCatalogItem.catalog];
-  const itemAdditionalOptions = serviceCatalogItem.additionalOptions;
 
   return (
     <div>
       <h1>{serviceCatalogItem.name}</h1>
       <StyledParagraph>{serviceCatalogItem.description}</StyledParagraph>
-      <img src={serviceCatalogItem.iconImage} alt={serviceCatalogItem.name} height={"auto"} width={"300px"} />
-      {serviceCatalogItem.additionalOptions 
-        ? renderRequestWithOptions(serviceCatalogItem, itemAdditionalOptions)
-        : renderRequest(serviceCatalogItem, catalogName)}
+      <img
+        src={serviceCatalogItem.iconImage}
+        alt={serviceCatalogItem.name}
+        height={"auto"}
+        width={"300px"}
+      />
+      {serviceCatalogItem.additionalOptions
+        ? renderRequestWithOptions(
+            serviceCatalogItem,
+            catalogName,
+            ticketFields,
+            ticketForm
+          )
+        : renderRequest(
+            serviceCatalogItem,
+            catalogName,
+            ticketFields,
+            ticketForm
+          )}
     </div>
-  )
+  );
 }

@@ -97,48 +97,13 @@ function ServiceCatalogTwo() {
     return (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx("h1", { children: "Service Catalog" }), jsxRuntimeExports.jsx("div", { children: jsxRuntimeExports.jsx(ServiceCatalogItems, { items: items }) })] }));
 }
 
-function ServiceCatalogItem({ ticketFields, serviceCatalogItem, }) {
-    const [selectedValue, setSelectedValue] = reactExports.useState(null);
-    const handleOptionsChange = (value) => {
-        setSelectedValue(value);
-    };
-    const StyledParagraph = styled(Paragraph) `
-    margin: ${(props) => props.theme.space.md} 0;
-  `;
-    const formatOptionsField = (optionsField) => {
-        const formattedOptionValues = optionsField.custom_field_options.map((option) => ({
-            name: option.name,
-            value: option.value,
+function ServiceCatalogItem({ ticketFields, ticketForm, serviceCatalogItem, }) {
+    const [selectedValue, setSelectedValue] = reactExports.useState({});
+    const handleOptionsChange = (fieldId, value) => {
+        setSelectedValue((previousSelectedValue) => ({
+            ...previousSelectedValue,
+            [fieldId]: value,
         }));
-        const defaultValue = optionsField.custom_field_options.find((option) => option.default);
-        if (selectedValue === null) {
-            setSelectedValue(defaultValue.value);
-        }
-        return {
-            description: optionsField.agent_description,
-            id: optionsField.id,
-            label: optionsField.raw_title_in_portal,
-            name: `request[custom_fields][${optionsField.id}]`,
-            options: formattedOptionValues,
-            type: optionsField.type,
-            error: null,
-            value: selectedValue,
-            required: optionsField.required,
-        };
-    };
-    const getCurrentUserField = async () => {
-        const currentUserRequest = await fetch("/api/v2/users/me.json");
-        return await currentUserRequest.json();
-    };
-    const getLookupField = async (title) => {
-        const ticketFields = await fetch("/api/v2/ticket_fields.json?page[size]=100");
-        const ticketFieldsResponse = await ticketFields.json();
-        return ticketFieldsResponse.ticket_fields.find((field) => field.title === title);
-    };
-    const getServiceTicketForm = async (name) => {
-        const ticketForm = await fetch("/api/v2/ticket_forms.json");
-        const ticketFormResponse = await ticketForm.json();
-        return ticketFormResponse.ticket_forms.find((form) => form.name === name);
     };
     const catalogToName = {
         administrative___business: "Administrative & Business",
@@ -148,10 +113,41 @@ function ServiceCatalogItem({ ticketFields, serviceCatalogItem, }) {
         it_professional_services: "IT Professional Services",
         hardware___devices: "Hardware & Devices",
     };
-    const handleRequest = async (item, catalogName) => {
+    const StyledParagraph = styled(Paragraph) `
+    margin: ${(props) => props.theme.space.md} 0;
+  `;
+    const formatOptionsFields = (optionsFields) => {
+        return optionsFields.map((field) => {
+            const formattedOptionValues = field.custom_field_options.map((option) => ({
+                name: option.name,
+                value: option.value,
+            }));
+            const defaultValue = field.custom_field_options.find((option) => option.default);
+            if (!selectedValue[field.id]) {
+                setSelectedValue((previousSelectedValue) => ({
+                    ...previousSelectedValue,
+                    [field.id]: defaultValue.value,
+                }));
+            }
+            return {
+                description: field.agent_description,
+                id: field.id,
+                label: field.raw_title_in_portal,
+                name: `request[custom_fields][${field.id}]`,
+                options: formattedOptionValues,
+                type: field.type,
+                error: null,
+                value: selectedValue[field.id],
+                required: field.required,
+            };
+        });
+    };
+    const getCurrentUserField = async () => {
+        const currentUserRequest = await fetch("/api/v2/users/me.json");
+        return await currentUserRequest.json();
+    };
+    const handleRequest = async (item, requestForm, ticketField) => {
         const currentUser = await getCurrentUserField();
-        const lookupField = await getLookupField(catalogName);
-        const serviceCatalogForm = await getServiceTicketForm(catalogName);
         const response = await fetch("/api/v2/requests", {
             method: "POST",
             headers: {
@@ -164,10 +160,10 @@ function ServiceCatalogItem({ ticketFields, serviceCatalogItem, }) {
                     comment: {
                         body: "New Item Request",
                     },
-                    ticket_form_id: serviceCatalogForm.id,
+                    ticket_form_id: requestForm.id,
                     custom_fields: [
                         {
-                            id: lookupField.id,
+                            id: ticketField.id,
                             value: item.id,
                         },
                     ],
@@ -178,9 +174,20 @@ function ServiceCatalogItem({ ticketFields, serviceCatalogItem, }) {
         const redirectUrl = "/hc/requests/" + data.request.id;
         window.location.href = redirectUrl;
     };
-    const handleAdditionalRequest = async (item, catalogLookup, optionsLookup) => {
+    const handleAdditionalRequest = async (item, requestForm, lookupField, formattedOptionsFields) => {
         const currentUser = await getCurrentUserField();
-        const serviceCatalogForm = await getServiceTicketForm(item.additionalOptions);
+        const customFields = [
+            {
+                id: lookupField.id,
+                value: item.id,
+            },
+        ];
+        formattedOptionsFields.forEach((field) => {
+            customFields.push({
+                id: field.id,
+                value: selectedValue[field.id],
+            });
+        });
         const response = await fetch("/api/v2/requests", {
             method: "POST",
             headers: {
@@ -193,17 +200,8 @@ function ServiceCatalogItem({ ticketFields, serviceCatalogItem, }) {
                     comment: {
                         body: "New Item Request",
                     },
-                    ticket_form_id: serviceCatalogForm.id,
-                    custom_fields: [
-                        {
-                            id: catalogLookup.id,
-                            value: item.id,
-                        },
-                        {
-                            id: optionsLookup.id,
-                            value: selectedValue,
-                        },
-                    ],
+                    ticket_form_id: requestForm.id,
+                    custom_fields: customFields,
                 },
             }),
         });
@@ -211,21 +209,44 @@ function ServiceCatalogItem({ ticketFields, serviceCatalogItem, }) {
         const redirectUrl = "/hc/requests/" + data.request.id;
         window.location.href = redirectUrl;
     };
-    const renderRequest = (serviceCatalogItem, catalogName) => {
-        return (jsxRuntimeExports.jsx("div", { children: jsxRuntimeExports.jsx(Button, { onClick: () => handleRequest(serviceCatalogItem, catalogName), isPrimary: true, children: "Request" }) }));
+    const renderRequest = (serviceCatalogItem, catalogName, ticketFields, ticketForm) => {
+        const lookupField = ticketFields.find((field) => field.title === catalogName);
+        return (jsxRuntimeExports.jsx("div", { children: jsxRuntimeExports.jsx(Button, { onClick: () => handleRequest(serviceCatalogItem, ticketForm, lookupField), isPrimary: true, children: "Request" }) }));
     };
-    const renderRequestWithOptions = (serviceCatalogItem, itemAdditionalOptions) => {
-        const [catalogLookup, optionsLookup] = ticketFields.filter((field) => field.title === catalogName || field.title === itemAdditionalOptions);
-        const formattedOptionsField = formatOptionsField(optionsLookup);
-        return (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(Tagger, { field: formattedOptionsField, onChange: (value) => handleOptionsChange(value) }, formattedOptionsField.name), jsxRuntimeExports.jsx(Button, { onClick: () => handleAdditionalRequest(serviceCatalogItem, catalogLookup, optionsLookup), isPrimary: true, children: "Request" })] }));
+    const renderRequestWithOptions = (serviceCatalogItem, catalogName, ticketFields, ticketForm) => {
+        const lookupField = ticketFields.find((field) => field.title === catalogName);
+        const formAdditionalOptions = ticketFields.filter((field) => field.title.startsWith("SC:"));
+        const formattedOptionsFields = formatOptionsFields(formAdditionalOptions);
+        return (jsxRuntimeExports.jsxs("div", { children: [formattedOptionsFields.map((formattedOptionsField) => (jsxRuntimeExports.jsx(Tagger, { field: formattedOptionsField, onChange: (value) => handleOptionsChange(formattedOptionsField.id, value) }, formattedOptionsField.name))), jsxRuntimeExports.jsx(Button, { onClick: () => handleAdditionalRequest(serviceCatalogItem, ticketForm, lookupField, formattedOptionsFields), isPrimary: true, children: "Request" })] }));
     };
     const catalogName = catalogToName[serviceCatalogItem.catalog];
-    const itemAdditionalOptions = serviceCatalogItem.additionalOptions;
     return (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx("h1", { children: serviceCatalogItem.name }), jsxRuntimeExports.jsx(StyledParagraph, { children: serviceCatalogItem.description }), jsxRuntimeExports.jsx("img", { src: serviceCatalogItem.iconImage, alt: serviceCatalogItem.name, height: "auto", width: "300px" }), serviceCatalogItem.additionalOptions
-                ? renderRequestWithOptions(serviceCatalogItem, itemAdditionalOptions)
-                : renderRequest(serviceCatalogItem, catalogName)] }));
+                ? renderRequestWithOptions(serviceCatalogItem, catalogName, ticketFields, ticketForm)
+                : renderRequest(serviceCatalogItem, catalogName, ticketFields, ticketForm)] }));
 }
 
+const catalogToName = {
+    administrative___business: "Administrative & Business",
+    communication___collaboration: "Communication & Collaboration",
+    desktop___mobile_computing: "Desktop & Mobile Computing",
+    information_security: "Information Security",
+    it_professional_services: "IT Professional Services",
+    hardware___devices: "Hardware & Devices",
+};
+const getServiceTicketForm = async (name) => {
+    const ticketForm = await fetch("/api/v2/ticket_forms.json");
+    const ticketFormResponse = await ticketForm.json();
+    return ticketFormResponse.ticket_forms.find((form) => form.name === name);
+};
+const getTicketsFromTicketForm = async (ticketForm) => {
+    const fieldIds = ticketForm.ticket_field_ids;
+    const fields = await Promise.all(fieldIds.map(async (fieldId) => {
+        const ticketField = await fetch(`/api/v2/ticket_fields/${fieldId}.json`);
+        const ticketFieldResponse = await ticketField.json();
+        return ticketFieldResponse.ticket_field;
+    }));
+    return fields;
+};
 async function renderServiceCatalog(settings, container) {
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalog, {}) }), container);
 }
@@ -233,9 +254,13 @@ async function renderServiceCatalogTwo(settings, container) {
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogTwo, {}) }), container);
 }
 async function renderServiceCatalogItem(settings, container, props) {
-    const ticketFields = await fetch("/api/v2/ticket_fields.json?page[size]=100");
-    const ticketFieldsResponse = await ticketFields.json();
-    props.ticketFields = ticketFieldsResponse.ticket_fields;
+    const formName = props.serviceCatalogItem.additionalOptions
+        ? props.serviceCatalogItem.additionalOptions
+        : catalogToName[props.serviceCatalogItem.catalog];
+    const ticketForm = await getServiceTicketForm(formName);
+    const ticketFields = await getTicketsFromTicketForm(ticketForm);
+    props.ticketForm = ticketForm;
+    props.ticketFields = ticketFields;
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogItem, { ...props }) }), container);
 }
 
