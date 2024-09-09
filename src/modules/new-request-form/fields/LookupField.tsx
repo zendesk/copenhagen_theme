@@ -69,7 +69,7 @@ export function LookupField({
 
   const noResultsOption = {
     name: t(
-      "new-request-form.lookup-field.no-matches.found",
+      "new-request-form.lookup-field.no-matches-found",
       "No matches found"
     ),
     id: "no-results",
