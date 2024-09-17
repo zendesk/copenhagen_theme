@@ -10,7 +10,6 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Field, FieldOption } from "../data-types";
 import { Span } from "@zendeskgarden/react-typography";
-import SearchIcon from "@zendeskgarden/svg-icons/src/16/search-stroke.svg";
 import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
@@ -114,14 +113,20 @@ export function LookupField({
 
         const data = await response.json();
         if (response.ok) {
-          setOptions(
-            data.custom_object_records.map(
-              ({ name, id }: { name: string; id: string }) => ({
-                name,
-                value: id,
-              })
-            )
+          let fetchedOptions = data.custom_object_records.map(
+            ({ name, id }: { name: string; id: string }) => ({
+              name,
+              value: id,
+            })
           );
+          if (selectedOption) {
+            fetchedOptions = fetchedOptions.filter(
+              (option: FieldOption) => option.value !== selectedOption.value
+            );
+            fetchedOptions = [selectedOption, ...fetchedOptions];
+          }
+
+          setOptions(fetchedOptions);
         } else {
           setOptions([]);
         }
@@ -131,7 +136,7 @@ export function LookupField({
         setIsLoadingOptions(false);
       }
     },
-    [customObjectKey, fieldId, organizationId, userId]
+    [customObjectKey, fieldId, organizationId, selectedOption, userId]
   );
 
   const debouncedFetchOptions = useMemo(
@@ -180,7 +185,7 @@ export function LookupField({
 
   const onFocus = () => {
     setInputValue("");
-    selectedOption && setOptions([selectedOption]);
+    fetchOptions("*");
   };
 
   return (
@@ -194,7 +199,6 @@ export function LookupField({
       )}
       <Combobox
         inputProps={{ required }}
-        startIcon={<SearchIcon />}
         validation={error ? "error" : undefined}
         inputValue={inputValue}
         selectionValue={selectedOption?.value}
