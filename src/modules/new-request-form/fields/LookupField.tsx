@@ -90,7 +90,7 @@ export function LookupField({
           setInputValue(custom_object_record.name);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
     [customObjectKey]
@@ -131,7 +131,7 @@ export function LookupField({
           setOptions([]);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setIsLoadingOptions(false);
       }

@@ -1166,7 +1166,7 @@ function LookupField({ field, userId, organizationId, onChange, }) {
             }
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
         }
     }, [customObjectKey]);
     const fetchOptions = reactExports.useCallback(async (inputValue) => {
@@ -1197,7 +1197,7 @@ function LookupField({ field, userId, organizationId, onChange, }) {
             }
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
         }
         finally {
             setIsLoadingOptions(false);
