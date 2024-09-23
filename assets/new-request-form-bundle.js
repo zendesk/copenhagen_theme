@@ -71,10 +71,208 @@ import{j as e,F as n,L as t,S as s,H as r,I as a,M as o,r as i,u as l,a as u,N a
   inset-inline-start: ${e=>4*e.theme.space.base+"px"};
 `,rn=f(I)`
   display: inline-block;
-  margin-top: ${e=>e.theme.space.sm};
-`;function an({authToken:n,interactionAccessToken:t,articles:s,requestId:r,hasRequestManagement:a,isSignedIn:o,helpCenterPath:l,requestsPath:c,requestPath:d}){const[m,f]=i.useState(0),h=N(),{t:p}=u(),j=()=>String(s[m]?.article_id),g=()=>{Q({type:"success",message:p("new-request-form.answer-bot-modal.request-submitted","Your request was successfully submitted")}),window.location.assign((()=>{if(o)return a?d:l;{const e=new URLSearchParams;return e.set("return_to",c),`${l}?${e.toString()}`}})())};return e.jsxs(U,{appendToNode:h,onClose:()=>{g()},children:[e.jsxs(tn,{tag:"h2",children:[e.jsx(sn,{}),p("new-request-form.answer-bot-modal.request-submitted","Your request was successfully submitted")]}),e.jsxs(O,{children:[e.jsx(nn,{children:p("new-request-form.answer-bot-modal.title","While you wait, do any of these articles answer your question?")}),e.jsx("p",{children:p("new-request-form.answer-bot-modal.footer-content","If it does, we can close your recent request {{requestId}}",{requestId:`‭#${r}‬`})}),e.jsx(B,{level:4,expandedSections:[m],onChange:e=>{f(e)},children:s.map((({article_id:t,html_url:s,snippet:r,title:a})=>e.jsxs(B.Section,{children:[e.jsx(B.Header,{children:e.jsx(B.Label,{children:a})}),e.jsxs(B.Panel,{children:[e.jsx(W,{dangerouslySetInnerHTML:{__html:r}}),e.jsx(rn,{isExternal:!0,href:`${s}?auth_token=${n}`,target:"_blank",children:p("new-request-form.answer-bot-modal.view-article","View article")})]})]},t)))})]}),e.jsxs(K,{children:[e.jsx(Y,{children:e.jsx(J,{onClick:()=>{(async()=>{await fetch("/api/v2/answer_bot/rejection",{method:"POST",body:JSON.stringify({article_id:j(),interaction_access_token:t,reason_id:0}),headers:{"Content-Type":"application/json"}}),g()})()},children:p("new-request-form.answer-bot-modal.mark-irrelevant","No, I need help")})}),e.jsx(Y,{children:e.jsx(J,{isPrimary:!0,onClick:()=>{(async()=>{(await fetch("/api/v2/answer_bot/resolution",{method:"POST",body:JSON.stringify({article_id:j(),interaction_access_token:t}),headers:{"Content-Type":"application/json"}})).ok?Q({type:"success",message:p("new-request-form.answer-bot-modal.request-closed","Nice. Your request has been closed.")}):Q({type:"error",message:p("new-request-form.answer-bot-modal.solve-error","There was an error closing your request")}),window.location.href=l})()},children:p("new-request-form.answer-bot-modal.solve-request","Yes, close my request")})})]}),e.jsx(Z,{"aria-label":p("new-request-form.close-label","Close")})]})}const on={value:"",name:"-"};function ln({field:n,userId:t,organizationId:r,onChange:a}){const{id:o,label:l,error:c,value:d,name:m,required:f,description:h,relationship_target_type:v}=n,[q,y]=i.useState([]),[k,_]=i.useState(null),[C,S]=i.useState(d),[I,T]=i.useState(!1),{t:F}=u(),P=v.replace("zen:custom_object:","");const R={name:F("new-request-form.lookup-field.loading-options","Loading items..."),id:"loading"},L={name:F("new-request-form.lookup-field.no-matches-found","No matches found"),id:"no-results"},$=i.useCallback((async e=>{try{const n=await fetch(`/api/v2/custom_objects/${P}/records/${e}`);if(n.ok){const{custom_object_record:e}=await n.json(),t={name:e.name,value:e.id};_(t),S(e.name)}}catch(e){console.error(e)}}),[P]),E=i.useCallback((async e=>{const n=new URLSearchParams;n.set("name",e.toLocaleLowerCase()),n.set("source","zen:ticket"),n.set("field_id",o.toString()),n.set("requester_id",t.toString()),null!==r&&n.set("organization_id",r),T(!0);try{const e=await fetch(`/api/v2/custom_objects/${P}/records/autocomplete?${n.toString()}`),t=await e.json();if(e.ok){let e=t.custom_object_records.map((({name:e,id:n})=>({name:e,value:n})));k&&(e=e.filter((e=>e.value!==k.value)),e=[k,...e]),y(e)}else y([])}catch(e){console.error(e)}finally{T(!1)}}),[P,o,r,k,t]),D=i.useMemo((()=>ee(E,300)),[E]);i.useEffect((()=>()=>D.cancel()),[D]);const M=i.useCallback((({inputValue:e,selectionValue:n})=>{if(void 0!==n)if(""==n)_(on),S(on.name),y([]),a(on.value);else{const e=q.find((e=>e.value===n));e&&(S(e.name),_(e),y([e]),a(e.value))}void 0!==e&&(S(e),D(e))}),[D,a,q]);i.useEffect((()=>{d&&$(d)}),[]);return e.jsxs(p,{children:[e.jsxs(j,{children:[l,f&&e.jsx(s,{"aria-hidden":"true",children:"*"})]}),h&&e.jsx(g,{dangerouslySetInnerHTML:{__html:h}}),e.jsxs(b,{inputProps:{required:f},validation:c?"error":void 0,inputValue:C,selectionValue:k?.value,isAutocomplete:!0,placeholder:F("new-request-form.lookup-field.placeholder","Search {{label}}",{label:l.toLowerCase()}),onFocus:()=>{S(""),E("*")},onChange:M,renderValue:()=>k?k?.name:on.name,children:[k?.name!==on.name&&e.jsx(x,{value:"",label:"-",children:e.jsx(de,{})}),I&&e.jsx(x,{isDisabled:!0,value:R.name},R.id),!I&&C?.length>0&&0===q.length&&e.jsx(x,{isDisabled:!0,value:L.name},L.id),!I&&0!==q.length&&q.map((n=>e.jsx(x,{value:n.value,label:n.name},n.value)))]}),c&&e.jsx(w,{validation:"error",children:c}),e.jsx("input",{type:"hidden",name:m,value:k?.value})]})}const un=f(W)`
-  margin: ${e=>e.theme.space.md} 0;
-`,cn=f.form`
+  margin-top: ${(props) => props.theme.space.sm};
+`;
+function AnswerBotModal({ authToken, interactionAccessToken, articles, requestId, hasRequestManagement, isSignedIn, helpCenterPath, requestsPath, requestPath, }) {
+    const [expandedIndex, setExpandedIndex] = reactExports.useState(0);
+    const modalContainer = useModalContainer();
+    const { t } = useTranslation();
+    const getExpandedArticleId = () => {
+        return String(articles[expandedIndex]?.article_id);
+    };
+    const getUnsolvedRedirectUrl = () => {
+        if (!isSignedIn) {
+            const searchParams = new URLSearchParams();
+            searchParams.set("return_to", requestsPath);
+            return `${helpCenterPath}?${searchParams.toString()}`;
+        }
+        else if (hasRequestManagement) {
+            return requestPath;
+        }
+        else {
+            return helpCenterPath;
+        }
+    };
+    const addUnsolvedNotificationAndRedirect = () => {
+        addFlashNotification({
+            type: "success",
+            message: t("new-request-form.answer-bot-modal.request-submitted", "Your request was successfully submitted"),
+        });
+        window.location.assign(getUnsolvedRedirectUrl());
+    };
+    const solveRequest = async () => {
+        const response = await fetch("/api/v2/answer_bot/resolution", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: getExpandedArticleId(),
+                interaction_access_token: interactionAccessToken,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (response.ok) {
+            addFlashNotification({
+                type: "success",
+                message: t("new-request-form.answer-bot-modal.request-closed", "Nice. Your request has been closed."),
+            });
+        }
+        else {
+            addFlashNotification({
+                type: "error",
+                message: t("new-request-form.answer-bot-modal.solve-error", "There was an error closing your request"),
+            });
+        }
+        window.location.href = helpCenterPath;
+    };
+    const markArticleAsIrrelevant = async () => {
+        await fetch("/api/v2/answer_bot/rejection", {
+            method: "POST",
+            body: JSON.stringify({
+                article_id: getExpandedArticleId(),
+                interaction_access_token: interactionAccessToken,
+                reason_id: 0,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        addUnsolvedNotificationAndRedirect();
+    };
+    return (jsxRuntimeExports.jsxs(Modal, { appendToNode: modalContainer, onClose: () => {
+            addUnsolvedNotificationAndRedirect();
+        }, children: [jsxRuntimeExports.jsxs(StyledHeader, { tag: "h2", children: [jsxRuntimeExports.jsx(StyledSuccessIcon, {}), t("new-request-form.answer-bot-modal.request-submitted", "Your request was successfully submitted")] }), jsxRuntimeExports.jsxs(Body, { children: [jsxRuntimeExports.jsx(H3, { children: t("new-request-form.answer-bot-modal.title", "While you wait, do any of these articles answer your question?") }), jsxRuntimeExports.jsx("p", { children: t("new-request-form.answer-bot-modal.footer-content", "If it does, we can close your recent request {{requestId}}", {
+                            requestId: `\u202D#${requestId}\u202C`,
+                        }) }), jsxRuntimeExports.jsx(Accordion, { level: 4, expandedSections: [expandedIndex], onChange: (index) => {
+                            setExpandedIndex(index);
+                        }, children: articles.map(({ article_id, html_url, snippet, title }) => (jsxRuntimeExports.jsxs(Accordion.Section, { children: [jsxRuntimeExports.jsx(Accordion.Header, { children: jsxRuntimeExports.jsx(Accordion.Label, { children: title }) }), jsxRuntimeExports.jsxs(Accordion.Panel, { children: [jsxRuntimeExports.jsx(Paragraph, { dangerouslySetInnerHTML: { __html: snippet } }), jsxRuntimeExports.jsx(ArticleLink, { isExternal: true, href: `${html_url}?auth_token=${authToken}`, target: "_blank", children: t("new-request-form.answer-bot-modal.view-article", "View article") })] })] }, article_id))) })] }), jsxRuntimeExports.jsxs(Footer$1, { children: [jsxRuntimeExports.jsx(FooterItem, { children: jsxRuntimeExports.jsx(Button, { onClick: () => {
+                                markArticleAsIrrelevant();
+                            }, children: t("new-request-form.answer-bot-modal.mark-irrelevant", "No, I need help") }) }), jsxRuntimeExports.jsx(FooterItem, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: () => {
+                                solveRequest();
+                            }, children: t("new-request-form.answer-bot-modal.solve-request", "Yes, close my request") }) })] }), jsxRuntimeExports.jsx(Close$1, { "aria-label": t("new-request-form.close-label", "Close") })] }));
+}
+
+function getCustomObjectKey(targetType) {
+    return targetType.replace("zen:custom_object:", "");
+}
+const EMPTY_OPTION = {
+    value: "",
+    name: "-",
+};
+function LookupField({ field, userId, organizationId, onChange, }) {
+    const { id: fieldId, label, error, value, name, required, description, relationship_target_type, } = field;
+    const [options, setOptions] = reactExports.useState([]);
+    const [selectedOption, setSelectedOption] = reactExports.useState(null);
+    const [inputValue, setInputValue] = reactExports.useState(value);
+    const [isLoadingOptions, setIsLoadingOptions] = reactExports.useState(false);
+    const { t } = useTranslation();
+    const customObjectKey = getCustomObjectKey(relationship_target_type);
+    const loadingOption = {
+        name: t("new-request-form.lookup-field.loading-options", "Loading items..."),
+        id: "loading",
+    };
+    const noResultsOption = {
+        name: t("new-request-form.lookup-field.no-matches-found", "No matches found"),
+        id: "no-results",
+    };
+    const fetchSelectedOption = reactExports.useCallback(async (selectionValue) => {
+        try {
+            const res = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/${selectionValue}`);
+            if (res.ok) {
+                const { custom_object_record } = await res.json();
+                const newSelectedOption = {
+                    name: custom_object_record.name,
+                    value: custom_object_record.id,
+                };
+                setSelectedOption(newSelectedOption);
+                setInputValue(custom_object_record.name);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }, [customObjectKey]);
+    const fetchOptions = reactExports.useCallback(async (inputValue) => {
+        const searchParams = new URLSearchParams();
+        searchParams.set("name", inputValue.toLocaleLowerCase());
+        searchParams.set("source", "zen:ticket");
+        searchParams.set("field_id", fieldId.toString());
+        searchParams.set("requester_id", userId.toString());
+        if (organizationId !== null)
+            searchParams.set("organization_id", organizationId);
+        setIsLoadingOptions(true);
+        try {
+            const response = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`);
+            const data = await response.json();
+            if (response.ok) {
+                let fetchedOptions = data.custom_object_records.map(({ name, id }) => ({
+                    name,
+                    value: id,
+                }));
+                if (selectedOption) {
+                    fetchedOptions = fetchedOptions.filter((option) => option.value !== selectedOption.value);
+                    fetchedOptions = [selectedOption, ...fetchedOptions];
+                }
+                setOptions(fetchedOptions);
+            }
+            else {
+                setOptions([]);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+        finally {
+            setIsLoadingOptions(false);
+        }
+    }, [customObjectKey, fieldId, organizationId, selectedOption, userId]);
+    const debouncedFetchOptions = reactExports.useMemo(() => debounce(fetchOptions, 300), [fetchOptions]);
+    reactExports.useEffect(() => {
+        return () => debouncedFetchOptions.cancel();
+    }, [debouncedFetchOptions]);
+    const handleChange = reactExports.useCallback(({ inputValue, selectionValue }) => {
+        if (selectionValue !== undefined) {
+            if (selectionValue == "") {
+                setSelectedOption(EMPTY_OPTION);
+                setInputValue(EMPTY_OPTION.name);
+                setOptions([]);
+                onChange(EMPTY_OPTION.value);
+            }
+            else {
+                const selectedOption = options.find((option) => option.value === selectionValue);
+                if (selectedOption) {
+                    setInputValue(selectedOption.name);
+                    setSelectedOption(selectedOption);
+                    setOptions([selectedOption]);
+                    onChange(selectedOption.value);
+                }
+            }
+        }
+        if (inputValue !== undefined) {
+            setInputValue(inputValue);
+            debouncedFetchOptions(inputValue);
+        }
+    }, [debouncedFetchOptions, onChange, options]);
+    reactExports.useEffect(() => {
+        if (value) {
+            fetchSelectedOption(value);
+        }
+    }, []); //we don't set dependency array as we want this hook to be called only once
+    const onFocus = () => {
+        setInputValue("");
+        fetchOptions("*");
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required }, "data-test-id": "lookup-field-combobox", validation: error ? "error" : undefined, inputValue: inputValue, selectionValue: selectedOption?.value, isAutocomplete: true, placeholder: t("new-request-form.lookup-field.placeholder", "Search {{label}}", { label: label.toLowerCase() }), onFocus: onFocus, onChange: handleChange, renderValue: () => selectedOption ? selectedOption?.name : EMPTY_OPTION.name, children: [selectedOption?.name !== EMPTY_OPTION.name && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), isLoadingOptions && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: loadingOption.name }, loadingOption.id)), !isLoadingOptions &&
+                        inputValue?.length > 0 &&
+                        options.length === 0 && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: noResultsOption.name }, noResultsOption.id)), !isLoadingOptions &&
+                        options.length !== 0 &&
+                        options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: selectedOption?.value })] }));
+}
+
+const StyledParagraph = styled(Paragraph) `
+  margin: ${(props) => props.theme.space.md} 0;
+`;
+const Form = styled.form `
   display: flex;
   flex-direction: column;
   gap: ${e=>e.theme.space.md};

@@ -199,6 +199,7 @@ export function LookupField({
       )}
       <Combobox
         inputProps={{ required }}
+        data-test-id="lookup-field-combobox"
         validation={error ? "error" : undefined}
         inputValue={inputValue}
         selectionValue={selectedOption?.value}
