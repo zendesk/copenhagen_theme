@@ -1,3 +1,15 @@
+# [4.1.0](https://github.com/zendesk/copenhagen_theme/compare/v4.0.11...v4.1.0) (2024-09-23)
+
+
+### Bug Fixes
+
+* preload options to lookup field ([90ecd26](https://github.com/zendesk/copenhagen_theme/commit/90ecd26707993cfbdc4f4c52d256533dd318ff84))
+
+
+### Features
+
+* added lookup fields ([7e3dcbd](https://github.com/zendesk/copenhagen_theme/commit/7e3dcbd80713dacceafce5a3b3256bca48a4b71c))
+
 ## [4.0.11](https://github.com/zendesk/copenhagen_theme/compare/v4.0.10...v4.0.11) (2024-08-21)
 
 
