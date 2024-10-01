@@ -3,7 +3,7 @@
   <div class="sub-nav">
   </div>
 
-  <h1>Service Catalog</h1>
+  <h1>Services</h1>
 
   <div id="main-content">
      <div id="service-catalog"></div>
@@ -11,9 +11,11 @@
 </div>
 
 <script type="module">
-  import { renderServiceCatalog } from "service-catalog";
+  import { renderServiceCatalogList } from "service-catalog";
 
+  const settings = {{json settings}};
+  const helpCenterPath = {{json (page_path 'help_center')}};
   const container = document.getElementById("service-catalog");
 
-  renderServiceCatalog(container);
+  renderServiceCatalogList(container, settings, helpCenterPath);
 </script>

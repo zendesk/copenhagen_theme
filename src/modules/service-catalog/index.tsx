@@ -1,1 +1,1 @@
-export { renderServiceCatalog } from "./renderServiceCatalog";
+export { renderServiceCatalogList } from "./renderServiceCatalogList";
