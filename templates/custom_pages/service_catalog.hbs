@@ -1,0 +1,20 @@
+<div class="container-divider"></div>
+<div class="container">
+  <div class="sub-nav">
+  </div>
+
+  <h1>Service Catalog</h1>
+
+  <div id="main-content">
+     <div id="service-catalog"></div>
+    <div>Hello from template</div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderServiceCatalog } from "service-catalog";
+
+  const container = document.getElementById("service-catalog");
+
+  renderServiceCatalog(container);
+</script>

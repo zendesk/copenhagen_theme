@@ -1,0 +1,1 @@
+export { renderServiceCatalog } from "./renderServiceCatalog";
