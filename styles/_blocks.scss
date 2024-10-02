@@ -2,25 +2,27 @@
 /* Used in Homepage#categories and Community#topics */
 .blocks {
   &-list {
-    @include tablet {
-      margin: 0 -15px;
-    }
-
-    @include mobile {
-      flex-direction: column;
-    }
-
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     list-style: none;
     padding: 0;
     width: 100%;
+
+    @include mobile {
+      flex-direction: column;
+    }
+
+    gap: 10px;
   }
 
   &-item {
     @include tablet {
-      margin: 0 15px 30px;
+      margin: 0 0 30px;
+    }
+
+    @include mobile {
+      margin: 0;
     }
 
     background-color: rgba(black, 0.6);
@@ -98,6 +100,10 @@
   &-item-title {
     margin-bottom: 0;
     font-size: 28px;
+
+    @include mobile {
+      font-size: 16px;
+    }
   }
 
   &-item-description {
@@ -111,4 +117,10 @@
 
 .knowledge-base {
   margin-top: -132px;
+}
+
+@include mobile {
+  .knowledge-base {
+    margin-top: 10px;
+  }
 }

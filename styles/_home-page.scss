@@ -8,11 +8,13 @@
   margin-bottom: 40px;
 }
 
-.home-section h2 {
+.knowledge-base h2,
+.recent-activity h2 {
   margin-bottom: 10px;
   text-align: left;
   font-size: 40px;
-  margin-bottom: 64px;
+  margin-bottom: 20px;
+  color: black;
 }
 
 /***** Promoted articles *****/
@@ -45,7 +47,6 @@
 
     a {
       display: block;
-      border-bottom: 1px solid $low-contrast-border-color;
       padding: 15px 0;
     }
 

@@ -4,6 +4,7 @@
   <div class="hero-inner-wrapper">
     <div class="hero-inner">
         <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+        {{!-- TODO: translate --}}
         <h1>How can we help?</h1>
         <div class="search-container">
 
@@ -18,7 +19,7 @@
   </div>
 </section>
 
-<div class="container">
+<div class="container main-container">
   <section class="section knowledge-base">
     <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
     <section class="categories blocks">
@@ -70,18 +71,6 @@
       </section>
     {{/if}}
   </section>
-
-  {{!-- {{#if help_center.community_enabled}}
-    <section class="section home-section community">
-      <h2>{{t 'community'}}</h2>
-      {{#link 'community' class='community-link'}}
-        {{t 'join_conversation'}}
-      {{/link}}
-
-      <div class="community-image"></div>
-    </section>
-  {{/if}} --}}
-
   <section class="section home-section activity">
     {{#if settings.show_recent_activity}}
       {{recent_activity}}

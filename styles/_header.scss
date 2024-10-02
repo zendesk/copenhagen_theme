@@ -21,6 +21,12 @@ $header-height: 68px;
   box-sizing: border-box;
 }
 
+@include mobile {
+  .header {
+    padding: 0 20px;
+  }
+}
+
 .support_categories {
   display: flex;
   flex-direction: row;

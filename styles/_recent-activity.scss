@@ -1,11 +1,6 @@
 /***** Recent activity *****/
 
 .recent-activity {
-  &-header {
-    margin-bottom: 10px;
-    text-align: left;
-  }
-
   &-list {
     padding: 0;
   }
@@ -35,6 +30,7 @@
     margin: 6px 0;
     display: inline-block;
     width: 100%;
+    color: black;
   }
 
   &-item-link {
@@ -101,6 +97,25 @@
         margin-left: 0;
         margin-right: 3px;
       }
+    }
+  }
+
+  &-item-parent,
+  &-item-link {
+    @include tablet {
+      width: 70%;
+      margin: 0;
+    }
+
+    margin: 6px 0;
+    display: inline-block;
+    width: 100%;
+    color: black;
+
+    &:hover,
+    &:visited,
+    &:active {
+      color: black;
     }
   }
 }
