@@ -1,3 +1,3 @@
-export * from "./notifications";
-export * from "./i18n";
-export * from "./garden-theme";
+export * from './garden-theme';
+export * from './i18n';
+export * from './notifications';

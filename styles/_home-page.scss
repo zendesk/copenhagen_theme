@@ -10,13 +10,17 @@
 
 .home-section h2 {
   margin-bottom: 10px;
-  text-align: center;
+  text-align: left;
+  font-size: 40px;
+  margin-bottom: 64px;
 }
 
 /***** Promoted articles *****/
 
 .promoted-articles {
-  @include desktop { flex-direction: row; }
+  @include desktop {
+    flex-direction: row;
+  }
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -28,7 +32,9 @@
       padding-right: 30px;
       width: 33%; /* Three columns on desktop */
 
-      [dir="rtl"] & { padding: 0 0 0 30px; }
+      [dir='rtl'] & {
+        padding: 0 0 0 30px;
+      }
     }
 
     flex: 1 0 auto;
@@ -55,7 +61,6 @@
       border: 0;
     }
   }
-
 }
 
 /***** Community section in homepage *****/
@@ -72,10 +77,4 @@
   }
 
   @include standalone-link;
-}
-
-.community,
-.activity {
-  border-top: 1px solid $low-contrast-border-color;
-  padding: 30px 0;
 }

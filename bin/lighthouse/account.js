@@ -1,10 +1,10 @@
 /**
  * Reads account information from env variables or .a11yrc.json file
  */
-const fs = require("fs");
+const fs = require('fs');
 
 let a11yAccount = {};
-const a11yrcFilePath = ".a11yrc.json";
+const a11yrcFilePath = '.a11yrc.json';
 
 if (fs.existsSync(a11yrcFilePath)) {
   a11yAccount = JSON.parse(fs.readFileSync(a11yrcFilePath));
@@ -20,13 +20,11 @@ function getAccount() {
     subdomain: process.env.subdomain || a11yAccount.subdomain,
     email: process.env.end_user_email || a11yAccount.username,
     password: process.env.end_user_password || a11yAccount.password,
-    urls: process.env?.urls?.trim()?.split(/\s+/) || a11yAccount.urls
+    urls: process.env?.urls?.trim()?.split(/\s+/) || a11yAccount.urls,
   };
 
   if (!isValid(account)) {
-    console.error(
-      "No account specified. Please create a .a11yrc.json file or set subdomain, end_user_email and end_user_password as environment variables"
-    );
+    console.error('No account specified. Please create a .a11yrc.json file or set subdomain, end_user_email and end_user_password as environment variables');
     process.exit(1);
   }
 

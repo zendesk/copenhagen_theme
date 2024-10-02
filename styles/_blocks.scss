@@ -6,11 +6,16 @@
       margin: 0 -15px;
     }
 
+    @include mobile {
+      flex-direction: column;
+    }
+
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     list-style: none;
     padding: 0;
+    width: 100%;
   }
 
   &-item {
@@ -18,31 +23,42 @@
       margin: 0 15px 30px;
     }
 
-    border: 1px solid $brand_color;
-    border-radius: 4px;
+    background-color: rgba(black, 0.6);
+    backdrop-filter: blur(15px);
+    transition: backdrop-filter 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+    color: white;
+
+    height: 240px;
+    border: 1px solid rgba(gray, 0.3);
+
+    border-radius: 16px;
     box-sizing: border-box;
-    color: $brand_color;
     display: flex;
-    flex: 1 0 340px;
+    flex: 1 1 calc(33.333% - 30px);
+    align-items: start;
     margin: 0 0 30px;
-    max-width: 100%;
-    text-align: center;
+    text-align: left;
+
+    font-family: Universal Sans Medium;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
+      backdrop-filter: blur(80px);
+      background-color: rgba(black, 0.9);
+      color: white;
+      text-decoration: none;
+    }
 
-      * {
-        color: $brand_text_color;
-        text-decoration: none;
-      }
+    a {
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     &-internal {
-      background-color: transparent;
-      border: 1px solid $low-contrast-border-color;
-
       .icon-lock {
         height: 15px;
         width: 15px;
@@ -50,7 +66,10 @@
         position: relative;
       }
 
-      a { color: $text_color; }
+      a {
+        color: $text_color;
+        height: 100%;
+      }
     }
   }
 
@@ -69,7 +88,7 @@
       color: inherit;
       text-decoration: none;
     }
-    
+
     &:focus {
       @include focus-ring;
       text-decoration: none;
@@ -78,7 +97,7 @@
 
   &-item-title {
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 28px;
   }
 
   &-item-description {
@@ -88,4 +107,8 @@
   &-item-description:not(:empty) {
     margin-top: 10px;
   }
+}
+
+.knowledge-base {
+  margin-top: -132px;
 }

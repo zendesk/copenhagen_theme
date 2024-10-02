@@ -21,7 +21,7 @@
 <div class="container">
   <section class="section knowledge-base">
     <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
-    <section class="categories blocks"
+    <section class="categories blocks">
       <ul class="blocks-list">
         {{#each categories}}
           {{#if ../has_multiple_categories}}
@@ -71,7 +71,7 @@
     {{/if}}
   </section>
 
-  {{#if help_center.community_enabled}}
+  {{!-- {{#if help_center.community_enabled}}
     <section class="section home-section community">
       <h2>{{t 'community'}}</h2>
       {{#link 'community' class='community-link'}}
@@ -80,7 +80,7 @@
 
       <div class="community-image"></div>
     </section>
-  {{/if}}
+  {{/if}} --}}
 
   <section class="section home-section activity">
     {{#if settings.show_recent_activity}}
