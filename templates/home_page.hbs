@@ -1,21 +1,27 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
-  <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-   <p> hello world</p>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+  <div class="hero-inner-wrapper">
+    <div class="hero-inner">
+        <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+        <h1>How can we help?</h1>
+        <div class="search-container">
+
+<svg class="search-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.09375 13.1462C10.9932 13.1462 13.3438 10.7957 13.3438 7.89624C13.3438 4.99675 10.9932 2.64624 8.09375 2.64624C5.19426 2.64624 2.84375 4.99675 2.84375 7.89624C2.84375 10.7957 5.19426 13.1462 8.09375 13.1462Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M11.8066 11.6088L14.8442 14.6463" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        {{search submit=false instant=settings.instant_search class='search search-full'}}
+        </div>
+    </div>
   </div>
 </section>
 
 <div class="container">
   <section class="section knowledge-base">
     <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
-    <section class="categories blocks">
+    <section class="categories blocks"
       <ul class="blocks-list">
         {{#each categories}}
           {{#if ../has_multiple_categories}}

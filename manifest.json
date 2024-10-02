@@ -246,6 +246,12 @@
           "label": "homepage_background_image_label"
         },
         {
+          "identifier": "logo_render",
+          "type": "file",
+          "description": "logo_render_description",
+          "label": "logo_render_label"
+        },
+        {
           "identifier": "community_background_image",
           "type": "file",
           "description": "community_background_image_description",

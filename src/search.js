@@ -11,24 +11,22 @@ function debounce(callback, wait) {
 }
 
 // Define variables for search field
-let searchFormFilledClassName = "search-has-value";
+let searchFormFilledClassName = 'search-has-value';
 let searchFormSelector = "form[role='search']";
 
 // Clear the search input, and then return focus to it
 function clearSearchInput(event) {
-  event.target
-    .closest(searchFormSelector)
-    .classList.remove(searchFormFilledClassName);
+  event.target.closest(searchFormSelector).classList.remove(searchFormFilledClassName);
 
   let input;
-  if (event.target.tagName === "INPUT") {
+  if (event.target.tagName === 'INPUT') {
     input = event.target;
-  } else if (event.target.tagName === "BUTTON") {
+  } else if (event.target.tagName === 'BUTTON') {
     input = event.target.previousElementSibling;
   } else {
-    input = event.target.closest("button").previousElementSibling;
+    input = event.target.closest('button').previousElementSibling;
   }
-  input.value = "";
+  input.value = '';
   input.focus();
 }
 
@@ -36,7 +34,7 @@ function clearSearchInput(event) {
 // when someone presses the escape key, per:
 // https://twitter.com/adambsilver/status/1152452833234554880
 function clearSearchInputOnKeypress(event) {
-  const searchInputDeleteKeys = ["Delete", "Escape"];
+  const searchInputDeleteKeys = ['Delete', 'Escape'];
   if (searchInputDeleteKeys.includes(event.key)) {
     clearSearchInput(event);
   }
@@ -48,15 +46,18 @@ function clearSearchInputOnKeypress(event) {
 // https://adrianroselli.com/2019/07/ignore-typesearch.html#Delete
 // https://www.scottohara.me/blog/2022/02/19/custom-clear-buttons.html
 function buildClearSearchButton(inputId) {
-  const button = document.createElement("button");
-  button.setAttribute("type", "button");
-  button.setAttribute("aria-controls", inputId);
-  button.classList.add("clear-button");
+  const button = document.createElement('button');
+  button.setAttribute('type', 'button');
+  button.setAttribute('aria-controls', inputId);
+  button.classList.add('clear-button');
   const buttonLabel = window.searchClearButtonLabelLocalized;
-  const icon = `<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' focusable='false' role='img' viewBox='0 0 12 12' aria-label='${buttonLabel}'><path stroke='currentColor' stroke-linecap='round' stroke-width='2' d='M3 9l6-6m0 6L3 3'/></svg>`;
+  const icon = `<svg aria-label='${buttonLabel}' width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.25 6.75L6.75 17.25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.25 17.25L6.75 6.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`;
   button.innerHTML = icon;
-  button.addEventListener("click", clearSearchInput);
-  button.addEventListener("keyup", clearSearchInputOnKeypress);
+  button.addEventListener('click', clearSearchInput);
+  button.addEventListener('keyup', clearSearchInputOnKeypress);
   return button;
 }
 
@@ -74,23 +75,18 @@ function appendClearSearchButton(input, form) {
 // Do this on a delay, rather than on every keystroke.
 const toggleClearSearchButtonAvailability = debounce((event) => {
   const form = event.target.closest(searchFormSelector);
-  form.classList.toggle(
-    searchFormFilledClassName,
-    event.target.value.length > 0
-  );
+  form.classList.toggle(searchFormFilledClassName, event.target.value.length > 0);
 }, 200);
 
 // Search
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
   // Set up clear functionality for the search field
   const searchForms = [...document.querySelectorAll(searchFormSelector)];
-  const searchInputs = searchForms.map((form) =>
-    form.querySelector("input[type='search']")
-  );
+  const searchInputs = searchForms.map((form) => form.querySelector("input[type='search']"));
   searchInputs.forEach((input) => {
     appendClearSearchButton(input, input.closest(searchFormSelector));
-    input.addEventListener("keyup", clearSearchInputOnKeypress);
-    input.addEventListener("keyup", toggleClearSearchButtonAvailability);
+    input.addEventListener('keyup', clearSearchInputOnKeypress);
+    input.addEventListener('keyup', toggleClearSearchButtonAvailability);
   });
 });

@@ -1,8 +1,6 @@
-/***** Search field *****/
-
-$icon-color: #777;
-$padding-left: 40px;
-$padding-right: 20px;
+$padding-left: 47px; // Ensure enough space for the icon
+$padding-right: 20px; // Adjust right padding if needed
+$input-transition-duration: 100ms;
 
 .search-container {
   position: relative;
@@ -10,40 +8,39 @@ $padding-right: 20px;
 
 .search {
   border-color: $high-contrast-border-color;
-  border-radius: 30px;
-  border-style: solid;
-  border-width: 1px;
   display: flex;
   position: relative;
   transition: $input-transition;
 
-  &:focus-within {
-    border-color: $brand_color;
-  }
-
-  input[type="search"], 
+  input[type='search'],
   .clear-button {
-    background-color: #fff;
-    border-radius: 30px;
+    background-color: transparent;
     border: none;
   }
 
-  &-full input[type="search"], 
-  &-full .clear-button {
-    border-color: #fff;
+  input[type='search']::placeholder {
+    color: white;
   }
 
-  input[type="search"] {
+  input[type='search'] {
     appearance: none;
     -webkit-appearance: none;
     box-sizing: border-box;
-    color: $field-text-color;
+    color: #ffffff;
     flex: 1 1 auto;
-    height: 40px;
     width: 100%;
+    font-size: 16px;
+    line-height: 1.15;
+    border: 1px solid white;
+    border-radius: 4px;
+    height: 54px;
+    padding-left: 47px; // Add padding for the icon
+    padding-right: 20px; // Adjust right padding if needed
+    transition: background-color $input-transition-duration;
 
     &:focus {
-      color: $field-text-focus-color;
+      background-color: white;
+      color: black;
     }
 
     &::-webkit-search-decoration,
@@ -54,110 +51,65 @@ $padding-right: 20px;
     }
 
     &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
       -webkit-box-shadow: 0 0 0 1000px #fff inset;
     }
-
-  }
-
-  .clear-button {
-    align-items: center;
-    box-sizing: border-box;
-    color: $icon-color;
-    cursor: pointer;
-    display: none;
-    flex: none;
-    justify-content: center;
-    padding: 0 15px;
-
-    &:hover {
-      background-color: $brand_color;
-      color: #fff;
-    }
-
-    &:focus {
-      @include focus-ring;
-    }
-
   }
 
   &-has-value .clear-button {
     display: flex;
   }
-
 }
 
-[dir="ltr"] .search {
-  input[type="search"] {
+[dir='ltr'] .search {
+  input[type='search'] {
     padding-left: $padding-left;
     padding-right: $padding-right;
-  }
-
-  &-has-value input[type="search"] {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-right-color: transparent;
-
-    &:focus {
-      border-right-color: $brand_color;
-    }
-
-  }
-
-  .clear-button {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-left-color: transparent;
-
-    &:focus {
-      border-left-color: $brand_color;
-    }
-    
-  }
-}
-
-[dir="rtl"] .search {
-  input[type="search"] {
-    padding-left: $padding-right;
-    padding-right: $padding-left;
-  }
-
-  &-has-value input[type="search"] {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-left-color: transparent;
-
-    &:focus {
-      border-left-color: $brand_color;
-    }
-
-  }
-
-  .clear-button {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-right-color: transparent;
-
-    &:focus {
-      border-right-color: $brand_color;
-    }
-
   }
 }
 
 .search-icon {
-  @include vertical-align;
   position: absolute;
   left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
   z-index: 1;
   width: 18px;
   height: 18px;
-  color: $icon-color;
   pointer-events: none;
+  stroke: white; /* Default white color */
+  transition: stroke $input-transition-duration;
+}
 
-  [dir="rtl"] & {
-    left: auto;
-    right: 15px;
+.clear-button {
+  position: absolute; // Position the clear button absolutely
+  right: 4px; // Align it on the right side of the input field
+  top: 50%; // Align vertically in the middle of the input field
+  transform: translateY(-50%);
+  align-items: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: none;
+  flex: none;
+  justify-content: center;
+  padding: 6px 6px;
+  stroke: #fff;
+  border-radius: 2px;
+  transition: stroke $input-transition-duration, background-color $input-transition-duration;
+
+  &:hover {
+    stroke: black;
+    background-color: #eee;
   }
+
+  &:focus {
+    @include focus-ring;
+  }
+}
+
+// applies to search icon and clear button
+.search-container:focus-within .search-icon,
+.search-container:focus-within .clear-button {
+  stroke: #777; /* Change to black on focus */
 }
