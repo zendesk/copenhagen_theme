@@ -186,6 +186,24 @@ template {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: "Universal Sans Medium";
+  src: url("./assets/UniversalSans-v1-Medium-670.woff") format("woff");
+  font-weight: 670;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Universal Sans Regular";
+  src: url("./assets/UniversalSans-v1-Regular-500.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Universal Sans Bold";
+  src: url("./assets/UniversalSans-v1-Bold-825.woff") format("woff");
+  font-weight: 825;
+  font-style: normal;
+}
 body {
   background-color: $background_color;
   color: $text_color;
@@ -239,27 +257,33 @@ a:hover, a:active, a:focus {
 }
 
 .hbs-form input,
-.hbs-form textarea, .search input,
+.hbs-form textarea,
+.search input,
 .search textarea {
   color: #000;
   font-size: 14px;
 }
-.hbs-form input, .search input {
+.hbs-form input,
+.search input {
   max-width: 100%;
   box-sizing: border-box;
   transition: border 0.12s ease-in-out;
   /* We use the :where selector to not increase the specificity of the selector */
 }
-.hbs-form input:where(:not([type=checkbox])), .search input:where(:not([type=checkbox])) {
+.hbs-form input:where(:not([type=checkbox])),
+.search input:where(:not([type=checkbox])) {
   outline: none;
 }
-.hbs-form input:where(:not([type=checkbox])):focus, .search input:where(:not([type=checkbox])):focus {
+.hbs-form input:where(:not([type=checkbox])):focus,
+.search input:where(:not([type=checkbox])):focus {
   border: 1px solid $brand_color;
 }
-.hbs-form input[disabled], .search input[disabled] {
+.hbs-form input[disabled],
+.search input[disabled] {
   background-color: #ddd;
 }
-.hbs-form select, .search select {
+.hbs-form select,
+.search select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
@@ -271,13 +295,16 @@ a:hover, a:active, a:focus {
   color: #555;
   width: 100%;
 }
-.hbs-form select:focus, .search select:focus {
+.hbs-form select:focus,
+.search select:focus {
   border: 1px solid $brand_color;
 }
-.hbs-form select::-ms-expand, .search select::-ms-expand {
+.hbs-form select::-ms-expand,
+.search select::-ms-expand {
   display: none;
 }
-.hbs-form textarea, .search textarea {
+.hbs-form textarea,
+.search textarea {
   border: 1px solid #87929D;
   border-radius: 2px;
   resize: vertical;
@@ -285,7 +312,8 @@ a:hover, a:active, a:focus {
   outline: none;
   padding: 10px;
 }
-.hbs-form textarea:focus, .search textarea:focus {
+.hbs-form textarea:focus,
+.search textarea:focus {
   border: 1px solid $brand_color;
 }
 

@@ -137,7 +137,7 @@
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "'Universal Sans Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif"
         },
         {
           "identifier": "text_font",
@@ -214,19 +214,13 @@
               "value": "'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"
             }
           ],
-          "value": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+          "value": "'Universal Sans Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif"
         }
       ]
     },
     {
       "label": "brand_group_label",
       "variables": [
-        {
-          "identifier": "logo",
-          "type": "file",
-          "description": "logo_description",
-          "label": "logo_label"
-        },
         {
           "identifier": "show_brand_name",
           "type": "checkbox",

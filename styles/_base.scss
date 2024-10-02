@@ -3,6 +3,27 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Universal Sans Medium';
+  src: url('./assets/UniversalSans-v1-Medium-670.woff') format('woff');
+  font-weight: 670;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Universal Sans Regular';
+  src: url('./assets/UniversalSans-v1-Regular-500.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Universal Sans Bold';
+  src: url('./assets/UniversalSans-v1-Bold-825.woff') format('woff');
+  font-weight: 825;
+  font-style: normal;
+}
+
 body {
   background-color: $background_color;
   color: $text_color;
@@ -60,32 +81,33 @@ a {
   }
 }
 
-.hbs-form, .search {
+.hbs-form,
+.search {
   input,
   textarea {
     color: #000;
     font-size: $input-font-size;
   }
-  
+
   input {
     max-width: 100%;
     box-sizing: border-box;
     transition: $input-transition;
-  
+
     /* We use the :where selector to not increase the specificity of the selector */
-    &:where(:not([type="checkbox"])) {
+    &:where(:not([type='checkbox'])) {
       outline: none;
-  
+
       &:focus {
         border: 1px solid $brand_color;
       }
     }
   }
-  
+
   input[disabled] {
     background-color: #ddd;
   }
-  
+
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -98,16 +120,16 @@ a {
     outline: none;
     color: $field-text-focus-color;
     width: 100%;
-  
+
     &:focus {
       border: 1px solid $brand_color;
     }
-  
+
     &::-ms-expand {
       display: none;
     }
   }
-  
+
   textarea {
     border: 1px solid $high-contrast-border-color;
     border-radius: 2px;
@@ -115,13 +137,12 @@ a {
     width: 100%;
     outline: none;
     padding: 10px;
-  
+
     &:focus {
       border: 1px solid $brand_color;
     }
   }
 }
-
 
 .container {
   @include max-width-container;
