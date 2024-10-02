@@ -3,15 +3,7 @@
 <header class='header'>
   <div class='logo'>
     {{#link 'help_center'}}
-      <img src='{{settings.logo}}' alt='{{t "home_page" name=help_center.name}}' />
-      <div class='logo'>
-        {{#link 'help_center'}}
-          <img src='{{settings.logo}}' alt='{{t "logo"}}' />
-        {{/link}}
-      </div>
-      {{#if settings.show_brand_name}}
-        <span aria-hidden='true'>{{help_center.name}}</span>
-      {{/if}}
+      <img src='{{asset "logo_light.png"}}' alt='{{t "home_page" name=help_center.name}}' />
     {{/link}}
   </div>
 
