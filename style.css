@@ -8,21 +8,21 @@ html {
 
 @font-face {
   font-family: 'Universal Sans Medium';
-  src: url('./fonts/UniversalSans-v1-Medium-670.woff') format('woff');
+  src: url('./assets/UniversalSans-v1-Medium-670.woff') format('woff');
   font-weight: 670;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Universal Sans Regular';
-  src: url('./fonts/UniversalSans-Regular-500.woff') format('woff');
+  src: url('./assets/fonts/UniversalSans-Regular-500.woff') format('woff');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Universal Sans Bold';
-  src: url('./fonts/UniversalSans-v1-Bold-825.woff') format('woff');
+  src: url('./assets/fonts/UniversalSans-v1-Bold-825.woff') format('woff');
   font-weight: 825;
   font-style: normal;
 }
