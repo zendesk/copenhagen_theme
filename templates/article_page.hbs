@@ -131,10 +131,10 @@
 
       <footer>
         <div class="article-footer">
-          {{#if settings.show_article_sharing}}
+          {{!-- {{#if settings.show_article_sharing}}
             <div class="article-share">{{share}}</div>
-          {{/if}}
-          {{#if settings.show_article_comments}}
+          {{/if}} --}}
+          {{!-- {{#if settings.show_article_comments}}
             {{#if comments}}
               <a href="#article-comments" class="article-comment-count">
                 <svg role="img" aria-labelledby="article-comments-title article-comments-desc" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="article-comment-count-icon">
@@ -145,7 +145,7 @@
                 <span aria-hidden="true">{{article.comment_count}}</span>
               </a>
             {{/if}}
-          {{/if}}
+          {{/if}} --}}
         </div>
         {{#with article}}
           <div class="article-votes">
@@ -154,9 +154,9 @@
               {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
               {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
             </div>
-            <small class="article-votes-count">
+            {{!-- <small class="article-votes-count">
               {{vote 'label' class='article-vote-label'}}
-            </small>
+            </small> --}}
           </div>
         {{/with}}
 

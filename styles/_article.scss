@@ -34,7 +34,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 40px;
     margin-top: 20px;
   }
 
@@ -90,7 +89,7 @@
 
   &-content {
     line-height: 1.6;
-    margin: 40px 0;
+    margin: 20px 0;
     word-wrap: break-word;
   }
 
@@ -122,6 +121,8 @@
       flex: 0 0 17%;
       height: auto;
       max-width: 17%;
+      margin-right: 48px;
+      margin-left: 48px;
     }
 
     border-bottom: 1px solid $low-contrast-border-color;
@@ -228,15 +229,22 @@
     font-size: $font-size-base;
     position: relative;
     font-weight: 600;
+    font-size: 18px;
+    display: block;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
   }
 
   &-item {
     display: block;
-    margin-top: 10px;
-    margin-bottom: 16px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+.current-article {
+  background: #ddd;
 }
 
 .recent-articles,

@@ -9,13 +9,21 @@
   overflow: hidden;
   padding: 10px 0;
   position: relative;
+  gap: 10px;
+
+  a {
+    color: black;
+    padding: 16px;
+  }
 
   &-title {
     margin-top: 0;
   }
 
   &-toggle {
-    @include desktop { display: none; }
+    @include desktop {
+      display: none;
+    }
     position: absolute;
     top: calc(45px / 2);
     transform: translateY(-50%);
@@ -27,7 +35,7 @@
     height: 25px;
     border-radius: 50%;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       left: 0;
       right: auto;
     }
@@ -35,14 +43,14 @@
     &-icon {
       display: none;
     }
-  
-    &[aria-expanded="false"] {
+
+    &[aria-expanded='false'] {
       .chevron-icon {
         display: inline-block;
       }
     }
-    
-    &[aria-expanded="true"] {
+
+    &[aria-expanded='true'] {
       .x-icon {
         display: inline-block;
       }
@@ -55,11 +63,13 @@
   }
 
   &-body {
-    @include desktop { display: block; }
+    @include desktop {
+      display: block;
+    }
     display: none;
   }
 
-  &[aria-expanded="true"] {
+  &[aria-expanded='true'] {
     max-height: none;
 
     .collapsible-sidebar-body {

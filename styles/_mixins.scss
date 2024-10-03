@@ -113,7 +113,6 @@
     @include image-alignment;
   }
 
-
   figcaption {
     padding: 10px 0;
     font-size: 12px;
@@ -127,7 +126,7 @@
     list-style-position: outside;
     margin: 20px 0 20px 20px;
 
-    [dir="rtl"] & {
+    [dir='rtl'] & {
       padding-right: 20px;
       padding-left: 0;
       margin-left: 0;

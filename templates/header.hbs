@@ -9,7 +9,7 @@
         {{/link}}
       </div>
 
-      <ul id='support_categories' class='support_categories'></ul>
+      {{!-- <ul id='support_categories' class='support_categories'></ul>
 
       {{! log the help_center value }}
 
@@ -22,7 +22,7 @@
         document.addEventListener('DOMContentLoaded', function() { var menu = ''; fetch('https://imprintpayments.zendesk.com/api/v2/help_center/en-us/categories.json') .then(response =>
         response.json()) .then(data => { if (data.categories && data.categories.length) { data.categories.forEach(function(category) { menu += '<li><a href="' + category.html_url + '">' +
         category.name + '</a></li>'; }); document.getElementById('support_categories').innerHTML = menu; } }) .catch(error => console.error('Error fetching categories:', error)); });
-      </script>
+      </script> --}}
     </div>
 
     <div class='nav-wrapper-desktop'>
