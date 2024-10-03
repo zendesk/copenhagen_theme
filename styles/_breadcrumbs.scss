@@ -10,15 +10,22 @@
 
   li {
     color: #fff;
-    display: inline;
+
+    display: flex;
+    align-items: center;
     font-size: 16px;
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
 
     + li::before {
-      content: '<';
+      content: '';
+      display: inline-block;
       margin: 0 8px;
+      width: 16px;
+      height: 16px;
+      background: url('./assets/chevron_left.svg') no-repeat center;
+      background-size: contain;
     }
   }
 
