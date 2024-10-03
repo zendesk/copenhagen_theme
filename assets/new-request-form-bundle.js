@@ -781,6 +781,16 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
         onTagsChange([...tags, ...values]);
         setAnnouncement(i18n.addedTags([...values]));
     };
+    const handleInputOnBlur = (e) => {
+        const target = e.target;
+        const tag = target.value;
+        if (tag) {
+            if (!hasTag(tag)) {
+                addTag(tag);
+            }
+            onInputValueChange("");
+        }
+    };
     const handleTagKeyDown = (index) => (e) => {
         if (e.code === "Backspace") {
             e.preventDefault();
@@ -806,6 +816,7 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
         onChange: handleInputChange,
         onKeyDown: handleInputKeyDown,
         onPaste: handleInputPaste,
+        onBlur: handleInputOnBlur,
     });
     const getAnnouncementProps = () => ({
         "aria-live": "polite",

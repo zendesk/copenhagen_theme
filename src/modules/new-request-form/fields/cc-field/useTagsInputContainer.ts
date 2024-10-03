@@ -7,6 +7,7 @@ import type {
   HTMLAttributes,
   InputHTMLAttributes,
   ChangeEventHandler,
+  FocusEventHandler,
 } from "react";
 import { useCallback, useState } from "react";
 import { useGrid } from "@zendeskgarden/container-grid";
@@ -138,6 +139,18 @@ export function useTagsInputContainer({
     setAnnouncement(i18n.addedTags([...values]));
   };
 
+  const handleInputOnBlur: FocusEventHandler<HTMLInputElement> = (e) => {
+    const target = e.target as HTMLInputElement;
+    const tag = target.value;
+
+    if (tag) {
+      if (!hasTag(tag)) {
+        addTag(tag);
+      }
+      onInputValueChange("");
+    }
+  };
+
   const handleTagKeyDown =
     (index: number): KeyboardEventHandler =>
     (e) => {
@@ -174,6 +187,7 @@ export function useTagsInputContainer({
     onChange: handleInputChange,
     onKeyDown: handleInputKeyDown,
     onPaste: handleInputPaste,
+    onBlur: handleInputOnBlur,
   });
 
   const getAnnouncementProps = <T extends Element>(): HTMLAttributes<T> => ({
