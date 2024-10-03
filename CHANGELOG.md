@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/zendesk/copenhagen_theme/compare/v4.1.0...v4.2.0) (2024-10-03)
+
+
+### Features
+
+* validate CC tag when leaving the field ([2729a35](https://github.com/zendesk/copenhagen_theme/commit/2729a3553cc1b3a24a1f39c16b1f782c271b5cde))
+
 # [4.1.0](https://github.com/zendesk/copenhagen_theme/compare/v4.0.11...v4.1.0) (2024-09-23)
 
 
