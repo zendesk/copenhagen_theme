@@ -2134,6 +2134,11 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
+"@juggle/resize-observer@^3.3.1":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@juggle/resize-observer/-/resize-observer-3.4.0.tgz#08d6c5e20cf7e4cc02fd181c4b0c225cd31dbb60"
+  integrity sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==
+
 "@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1":
   version "5.1.1-v1"
   resolved "https://registry.yarnpkg.com/@nicolo-ribaudo/eslint-scope-5-internals/-/eslint-scope-5-internals-5.1.1-v1.tgz#dbf733a965ca47b1973177dc0bb6c889edcfb129"
@@ -3825,6 +3830,14 @@
     "@babel/runtime" "^7.8.4"
     lodash.debounce "^4.0.8"
 
+"@zendeskgarden/container-splitter@^2.0.17":
+  version "2.0.20"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-splitter/-/container-splitter-2.0.20.tgz#ef08e275c18ed578d0f2d83ef8f42e0f4c1716e3"
+  integrity sha512-jdOormDeZid8tMvjbAIsgSpCArkU3k7XVhHzMzNrKZ7xNL2wh3IpJU5dLgs4Zu4u+PZBQxxMdgUOMlDU2yOUCg==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-utilities" "^2.0.2"
+
 "@zendeskgarden/container-tooltip@^1.0.0":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-tooltip/-/container-tooltip-1.0.10.tgz#a4a60d31504169dd9b394ebe1d6d5842a0a308c3"
@@ -3832,6 +3845,15 @@
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@zendeskgarden/container-utilities" "^1.0.10"
+    react-uid "^2.2.0"
+
+"@zendeskgarden/container-tooltip@^1.0.16":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-tooltip/-/container-tooltip-1.0.20.tgz#6d24eb52a6d0f92c5f3459c72662bff6790ad65f"
+  integrity sha512-D1cC531nglG7e2wrU5q1c4eO7JGb/9FciOsEsZZOdU+84u7E2aGBTWTD1F+6lFZ2Ns9kj78FBCEU4Pxg3vIwiw==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@zendeskgarden/container-utilities" "^2.0.2"
     react-uid "^2.2.0"
 
 "@zendeskgarden/container-utilities@^1.0.10":
@@ -3854,6 +3876,14 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-2.0.0.tgz#f4a5c361ead1412cb3ef6241f4dfe398e3116998"
   integrity sha512-pTVv25XafhwfpquxLlOsa7dd+BIra9dSIFrbFlILjgAFUYJsNvfqNNCq5/dKlnzuwj7djjzfZ55jZKzQewwAjQ==
+  dependencies:
+    "@babel/runtime" "^7.8.4"
+    "@reach/auto-id" "^0.18.0"
+
+"@zendeskgarden/container-utilities@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/container-utilities/-/container-utilities-2.0.2.tgz#3a73355021fe48b70c8f4afdbf80e3557cf1b58a"
+  integrity sha512-IvPxhHwR8AaaZuS7yZM4Ea0GLgrfTblbNd+4fWbg8a4zioExdMU8uy036cjL97A0Ega7v++PAqFLR3Y9dWCNRQ==
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@reach/auto-id" "^0.18.0"
@@ -3881,6 +3911,17 @@
     "@zendeskgarden/container-selection" "^3.0.0"
     "@zendeskgarden/container-utilities" "^2.0.0"
     polished "^4.0.0"
+    prop-types "^15.5.7"
+    react-merge-refs "^1.1.0"
+
+"@zendeskgarden/react-buttons@^8.76.7":
+  version "8.76.7"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-buttons/-/react-buttons-8.76.7.tgz#71e9be7f50992a629cba93fb87eb9c7519b86df5"
+  integrity sha512-8w/qLFqpIEwGu4v/LUyQakFqnT6hGQ53+ISP4N9w3XsyazneTALUWXjcGBPobWqhH5PX7KVtsKZVLCL7lunhqw==
+  dependencies:
+    "@zendeskgarden/container-selection" "^3.0.9"
+    "@zendeskgarden/container-utilities" "^2.0.0"
+    polished "^4.3.1"
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
 
@@ -3923,6 +3964,20 @@
     polished "^4.0.0"
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
+
+"@zendeskgarden/react-grid@^8.76.7":
+  version "8.76.7"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-grid/-/react-grid-8.76.7.tgz#633f5f2cf57f6e729c97651550f4fb1d7c043e4f"
+  integrity sha512-Bx+RxEexLHtx6o+R2jHgN24woEoH/AlzmA8pB01F+Muuqtb595H2lcv4CVjUnvEs7YEhbkHy2FxFGHHIzrvFuQ==
+  dependencies:
+    "@zendeskgarden/container-splitter" "^2.0.17"
+    "@zendeskgarden/container-utilities" "^2.0.0"
+    "@zendeskgarden/react-buttons" "^8.76.7"
+    "@zendeskgarden/react-tooltips" "^8.76.7"
+    polished "^4.3.1"
+    prop-types "^15.5.7"
+    react-merge-refs "^1.1.0"
+    use-resize-observer "^9.1.0"
 
 "@zendeskgarden/react-loaders@8.76.2":
   version "8.76.2"
@@ -3987,6 +4042,18 @@
     "@zendeskgarden/container-tooltip" "^1.0.0"
     "@zendeskgarden/container-utilities" "^2.0.0"
     polished "^4.0.0"
+    prop-types "^15.5.7"
+    react-merge-refs "^1.1.0"
+    react-popper "^1.3.4"
+
+"@zendeskgarden/react-tooltips@^8.76.7":
+  version "8.76.7"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tooltips/-/react-tooltips-8.76.7.tgz#08433562b4fe9e5726a72dc9014b927a49b77fc8"
+  integrity sha512-XnwdAFri4fo0IMmfnBGQ0+IyRWmmIXj7OP1tUb/JQbucG7kop+X+TMPNFQLMV5b4uPKdkH3oHpg6HZu5dJ2Wkg==
+  dependencies:
+    "@zendeskgarden/container-tooltip" "^1.0.16"
+    "@zendeskgarden/container-utilities" "^2.0.0"
+    polished "^4.3.1"
     prop-types "^15.5.7"
     react-merge-refs "^1.1.0"
     react-popper "^1.3.4"
@@ -10967,6 +11034,13 @@ polished@^4.0.0, polished@^4.1.1:
   dependencies:
     "@babel/runtime" "^7.17.8"
 
+polished@^4.3.1:
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/polished/-/polished-4.3.1.tgz#5a00ae32715609f83d89f6f31d0f0261c6170548"
+  integrity sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==
+  dependencies:
+    "@babel/runtime" "^7.17.8"
+
 popper.js@^1.14.4:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
@@ -13194,6 +13268,13 @@ url-pattern@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/url-pattern/-/url-pattern-1.0.3.tgz#0409292471b24f23c50d65a47931793d2b5acfc1"
   integrity sha512-uQcEj/2puA4aq1R3A2+VNVBgaWYR24FdWjl7VNW83rnWftlhyzOZ/tBjezRiC2UkIzuxC8Top3IekN3vUf1WxA==
+
+use-resize-observer@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/use-resize-observer/-/use-resize-observer-9.1.0.tgz#14735235cf3268569c1ea468f8a90c5789fc5c6c"
+  integrity sha512-R25VqO9Wb3asSD4eqtcxk8sJalvIOYBqS8MNZlpDSQ4l4xMQxC/J7Id9HoTqPq8FwULIn0PVW+OAqF2dyYbjow==
+  dependencies:
+    "@juggle/resize-observer" "^3.3.1"
 
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
