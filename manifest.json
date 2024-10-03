@@ -1,7 +1,7 @@
 {
   "name": "Imprint Theme",
   "author": "Imprint Payments (@alexbckr-imprint)",
-  "version": "4.1.2",
+  "version": "4.1.3",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -318,21 +318,21 @@
           "type": "checkbox",
           "description": "article_author_description",
           "label": "article_author_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_article_comments",
           "type": "checkbox",
           "description": "article_comments_description",
           "label": "article_comments_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_follow_article",
           "type": "checkbox",
           "description": "follow_article_description",
           "label": "follow_article_label",
-          "value": true
+          "value": false
         },
         {
           "identifier": "show_recently_viewed_articles",
