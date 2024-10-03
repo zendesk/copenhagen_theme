@@ -1,4 +1,5 @@
 .sub-nav {
+  background-color: black;
   align-items: baseline;
   display: flex;
   flex-direction: column;
@@ -26,9 +27,9 @@
     }
   }
 
-  input[type="search"] {
-    &::after { 
-      font-size: $font-size-base; 
+  input[type='search'] {
+    &::after {
+      font-size: $font-size-base;
     }
   }
 }

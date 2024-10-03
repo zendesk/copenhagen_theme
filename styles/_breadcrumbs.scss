@@ -9,19 +9,20 @@
   display: flex;
 
   li {
-    color: $secondary-text-color;
-    font-size: $font-size-small;
+    color: #fff;
+    display: inline;
+    font-size: 16px;
     max-width: 450px;
     overflow: hidden;
     text-overflow: ellipsis;
 
     + li::before {
-      content: ">";
-      margin: 0 4px;
+      content: '<';
+      margin: 0 8px;
     }
+  }
 
-    a:visited {
-      color: $link_color;
-    }
+  a {
+    color: #fff;
   }
 }

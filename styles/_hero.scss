@@ -61,3 +61,15 @@
     padding: 0 20px;
   }
 }
+
+.page-container {
+  width: 100%;
+  max-width: 1392px;
+  padding: 0 48px;
+
+  // padding: 0 48px;
+
+  @include mobile {
+    padding: 0 20px;
+  }
+}
