@@ -246,8 +246,6 @@
     // ellipses
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; // Prevents the text from wrapping to the next line
-    width: 100%; // Ensure a constrained width (or set a specific width if necessary)
   }
 }
 

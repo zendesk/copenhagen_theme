@@ -4592,8 +4592,6 @@ ul {
   margin-bottom: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
 }
 
 /* By default use bold instead of italic to highlight */

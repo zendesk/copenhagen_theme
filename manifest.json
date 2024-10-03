@@ -1,7 +1,7 @@
 {
   "name": "Imprint Theme",
   "author": "Imprint Payments (@alexbckr-imprint)",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -13,7 +13,7 @@
           "type": "color",
           "description": "brand_color_description",
           "label": "brand_color_label",
-          "value": "black"
+          "value": "#000000"
         },
         {
           "identifier": "brand_text_color",
@@ -34,7 +34,7 @@
           "type": "color",
           "description": "link_color_description",
           "label": "link_color_label",
-          "value": "black"
+          "value": "#000000"
         },
         {
           "identifier": "hover_link_color",
@@ -48,7 +48,7 @@
           "type": "color",
           "description": "visited_link_color_description",
           "label": "visited_link_color_label",
-          "value": "black"
+          "value": "#000000"
         },
         {
           "identifier": "background_color",
