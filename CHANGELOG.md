@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/zendesk/copenhagen_theme/compare/v4.2.0...v4.2.1) (2024-10-03)
+
+
+### Bug Fixes
+
+* change section page header flex wrap ([6d77506](https://github.com/zendesk/copenhagen_theme/commit/6d77506b3af53eee80f8d918d1f362f90ca20848))
+
 # [4.2.0](https://github.com/zendesk/copenhagen_theme/compare/v4.1.0...v4.2.0) (2024-10-03)
 
 
