@@ -11,6 +11,7 @@ import type {
 } from "react";
 import { useCallback, useState } from "react";
 import { useGrid } from "@zendeskgarden/container-grid";
+import { KEYS } from "@zendeskgarden/container-utilities";
 
 interface UseTagsInputContainerProps {
   tags: string[];
@@ -93,10 +94,10 @@ export function useTagsInputContainer({
 
     if (
       tag &&
-      (e.code === "Space" ||
-        e.code === "Enter" ||
-        e.code === "Comma" ||
-        e.code === "Tab")
+      (e.key === KEYS.SPACE ||
+        e.key === KEYS.ENTER ||
+        e.key === KEYS.TAB ||
+        e.key === KEYS.COMMA)
     ) {
       e.preventDefault();
       if (!hasTag(tag)) {
