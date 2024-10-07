@@ -1,3 +1,10 @@
+## [4.2.2](https://github.com/zendesk/copenhagen_theme/compare/v4.2.1...v4.2.2) (2024-10-07)
+
+
+### Bug Fixes
+
+* paragraph gets treated as comma ([0c01d76](https://github.com/zendesk/copenhagen_theme/commit/0c01d76f7646a3c706a6c755aa6e671aa27a2a53))
+
 ## [4.2.1](https://github.com/zendesk/copenhagen_theme/compare/v4.2.0...v4.2.1) (2024-10-03)
 
 
