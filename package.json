@@ -19,6 +19,7 @@
     "@types/dompurify": "3.0.2",
     "@zendesk/help-center-wysiwyg": "0.0.5",
     "@zendeskgarden/container-grid": "^3.0.14",
+    "@zendeskgarden/container-utilities": "^2.0.2",
     "@zendeskgarden/react-accordions": "8.76.2",
     "@zendeskgarden/react-buttons": "8.76.2",
     "@zendeskgarden/react-datepickers": "8.76.2",
