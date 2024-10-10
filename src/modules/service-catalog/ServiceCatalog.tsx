@@ -23,8 +23,8 @@ type Meta = {
 export function ServiceCatalog() {
   const [serviceCatalogItems, setServiceCatalogItems] = useState([]);
   const [meta, setMeta] = useState<Meta | null>(null);
-  const [cursor, setCursor] = useState<string | null>(null);
-  const [isFirstPage, setIsFirstPage] = useState(true);
+  const [currentCursor, setCurrentCursor] = useState<string | null>(null);
+  const [previousCursors, setPreviousCursors] = useState<string[]>([]);
   const { t } = useTranslation();
   const fetchServiceCatalogItems = useCallback(async (cursorParam) => {
     try {
@@ -48,7 +48,6 @@ export function ServiceCatalog() {
         );
         setMeta(data.meta);
         setServiceCatalogItems(records);
-        setIsFirstPage(!data.meta.before_cursor);
       }
     } catch (error) {
       console.error("Error fetching service catalog items:", error);
@@ -56,33 +55,36 @@ export function ServiceCatalog() {
   }, []);
 
   const onFirst = () => {
-    setCursor(null);
-    setIsFirstPage(true);
+    setCurrentCursor(null);
+    setPreviousCursors([]);
   };
 
   const onLast = () => {
-    if (meta && meta.before_cursor) {
-      setCursor(meta.before_cursor);
+    if (meta && meta.after_cursor) {
+      setPreviousCursors((prev) => [...prev, currentCursor || ""]);
+      setCurrentCursor(meta.after_cursor);
     }
   };
 
   const onNext = () => {
     if (meta && meta.after_cursor) {
-      setCursor(meta.after_cursor);
-      setIsFirstPage(false);
+      setPreviousCursors((prev) => [...prev, currentCursor || ""]);
+      setCurrentCursor(meta.after_cursor);
     }
   };
 
   const onPrevious = () => {
-    if (meta && meta.before_cursor) {
-      setCursor(meta.before_cursor);
-      setIsFirstPage(false);
+    if (previousCursors.length > 0) {
+      const newPreviousCursors = [...previousCursors];
+      const previousCursor = newPreviousCursors.pop();
+      setPreviousCursors(newPreviousCursors);
+      setCurrentCursor(previousCursor || null);
     }
   };
 
   useEffect(() => {
-    fetchServiceCatalogItems(cursor);
-  }, [cursor, fetchServiceCatalogItems]);
+    fetchServiceCatalogItems(currentCursor);
+  }, [currentCursor, fetchServiceCatalogItems]);
 
   return (
     <div>
@@ -97,11 +99,14 @@ export function ServiceCatalog() {
       <CursorPagination>
         <CursorPagination.First
           onClick={onFirst}
-          disabled={!meta || !meta.before_cursor}
+          disabled={previousCursors.length === 0}
         >
           {t("service-catalog.pagination.first", "First")}
         </CursorPagination.First>
-        <CursorPagination.Previous onClick={onPrevious} disabled={isFirstPage}>
+        <CursorPagination.Previous
+          onClick={onPrevious}
+          disabled={previousCursors.length === 0}
+        >
           {t("service-catalog.pagination.previous", "Previous")}
         </CursorPagination.Previous>
         <CursorPagination.Next
