@@ -13,7 +13,8 @@
 <script type="module">
   import { renderServiceCatalog } from "service-catalog";
 
+  const settings = {{json settings}};
   const container = document.getElementById("service-catalog");
 
-  renderServiceCatalog(container);
+  renderServiceCatalog(container, settings);
 </script>
