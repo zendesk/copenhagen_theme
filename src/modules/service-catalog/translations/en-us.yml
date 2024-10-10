@@ -1,0 +1,33 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
+title: "Copenhagen Theme Service catalog"
+packages:
+  - "service-catalog"
+parts:
+  - translation:
+      key: "service-catalog.pagination.first"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "First"
+  - translation:
+      key: "service-catalog.pagination.previous"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Previous"
+  - translation:
+      key: "service-catalog.pagination.next"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Next"
+  - translation:
+      key: "service-catalog.pagination.last"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Last"
+      
