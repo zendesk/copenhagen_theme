@@ -1,38 +1,64 @@
-import { s as styled, aa as Tiles, J as getColorV8, j as jsxRuntimeExports, ab as SvgShapesFill, ac as Col, r as reactExports, a as useTranslation, ad as Row, ae as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme } from 'shared';
+import { s as styled, J as getColorV8, aa as SvgShapesFill, j as jsxRuntimeExports, ab as Col, r as reactExports, a as useTranslation, ac as Row, ad as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme } from 'shared';
 
-const StyledTiles = styled(Tiles.Tile) `
+const StyledItem = styled.div `
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
-  max-height: 164px;
-  height: 164px;
+  position: relative;
+  gap: ${(props) => props.theme.space.sm};
+  width: 100%;
+  height: 100%;
   overflow: hidden;
-
+  border-radius: ${(props) => props.theme.borderRadii.md};
+  cursor: pointer;
+  padding: ${(props) => props.theme.space.md};
+  word-break: break-word;
+  border: ${(props) => props.theme.borders.sm}
+    ${(props) => getColorV8("grey", 300, props.theme)};
   &:hover {
-    border: 1px solid;
+    border: ${(props) => props.theme.borders.sm};
     border-color: ${(props) => getColorV8("blue", 600, props.theme)} !important;
     background-color: ${(props) => getColorV8("white", 100, props.theme)} !important;
   }
 `;
-const StyledTilesDescription = styled(Tiles.Description) `
+const ItemTitle = styled.div `
   text-align: left;
-  display: -webkit-box; /* Enable flexbox layout */
-  -webkit-box-orient: vertical; /* Set orientation to vertical */
+  font-size: ${(props) => props.theme.fontSizes.md};
+  font-weight: ${(props) => props.theme.fontWeights.semibold};
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* Limit to 2 lines */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
-  width: 100%; /* Use full width of the parent */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+`;
+const ItemDescription = styled.p `
+  font-size: ${(props) => props.theme.fontSizes.sm};
+  text-align: left;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
 `;
 const StyledDiv = styled.div `
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: ${(props) => props.theme.space.base}
 }
 `;
+const StyledSpan = styled.span `
+  display: block;
+  color: ${(props) => getColorV8("grey", 600, props.theme)};
+`;
+const StyledShapesIcon = styled(SvgShapesFill) `
+  height: ${(props) => props.theme.iconSizes.md};
+  width: ${(props) => props.theme.iconSizes.md};
+`;
 const ServiceCatalogListItem = ({ serviceItem, }) => {
-    return (jsxRuntimeExports.jsx(Tiles, { name: "service-catalog", children: jsxRuntimeExports.jsxs(StyledTiles, { value: serviceItem.id, onClick: (e) => e.preventDefault(), children: [jsxRuntimeExports.jsx(Tiles.Icon, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(StyledDiv, { children: [jsxRuntimeExports.jsx(Tiles.Label, { children: serviceItem.name }), jsxRuntimeExports.jsx(StyledTilesDescription, { children: serviceItem.description })] })] }) }));
+    return (jsxRuntimeExports.jsxs(StyledItem, { children: [jsxRuntimeExports.jsx(StyledSpan, { children: jsxRuntimeExports.jsx(StyledShapesIcon, {}) }), jsxRuntimeExports.jsxs(StyledDiv, { children: [jsxRuntimeExports.jsx(ItemTitle, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
 };
 
 const StyledCol = styled(Col) `
