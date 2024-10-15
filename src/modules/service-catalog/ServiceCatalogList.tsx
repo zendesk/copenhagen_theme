@@ -20,7 +20,7 @@ type Meta = {
   has_more: boolean;
 };
 
-export function ServiceCatalog() {
+export function ServiceCatalogList() {
   const [serviceCatalogItems, setServiceCatalogItems] = useState([]);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [currentCursor, setCurrentCursor] = useState<string | null>(null);

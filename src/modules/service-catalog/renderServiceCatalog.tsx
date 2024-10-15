@@ -1,6 +1,6 @@
 import { render } from "react-dom";
 
-import { ServiceCatalog } from "./ServiceCatalog";
+import { ServiceCatalogList } from "./ServiceCatalogList";
 import { createTheme, ThemeProviders } from "../shared";
 import type { Settings } from "../shared";
 
@@ -10,7 +10,7 @@ export async function renderServiceCatalog(
 ) {
   render(
     <ThemeProviders theme={createTheme(settings)}>
-      <ServiceCatalog />
+      <ServiceCatalogList />
     </ThemeProviders>,
     container
   );

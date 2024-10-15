@@ -67,7 +67,7 @@ const StyledCol = styled(Col) `
   max-width: 25%; /* Set max-width to 25% for 4 columns */
   padding: 0 24px 24px 0;
 `;
-function ServiceCatalog() {
+function ServiceCatalogList() {
     const [serviceCatalogItems, setServiceCatalogItems] = reactExports.useState([]);
     const [meta, setMeta] = reactExports.useState(null);
     const [currentCursor, setCurrentCursor] = reactExports.useState(null);
@@ -108,7 +108,7 @@ function ServiceCatalog() {
 }
 
 async function renderServiceCatalog(container, settings) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalog, {}) }), container);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogList, {}) }), container);
 }
 
 export { renderServiceCatalog };
