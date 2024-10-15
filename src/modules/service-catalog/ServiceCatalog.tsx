@@ -24,13 +24,13 @@ export function ServiceCatalog() {
   const [serviceCatalogItems, setServiceCatalogItems] = useState([]);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [currentCursor, setCurrentCursor] = useState<string | null>(null);
-  const [previousCursors, setPreviousCursors] = useState<string[]>([]);
   const { t } = useTranslation();
   const fetchServiceCatalogItems = useCallback(async (cursorParam) => {
     try {
+      console.log("cursorParam", cursorParam);
       const response = await fetch(
         cursorParam
-          ? `/api/v2/custom_objects/service_catalog_item/records?page[size]=16&page[after]=${cursorParam}`
+          ? `/api/v2/custom_objects/service_catalog_item/records?page[size]=16&${cursorParam}`
           : `/api/v2/custom_objects/service_catalog_item/records?page[size]=16`
       );
       const data = await response.json();
@@ -54,31 +54,15 @@ export function ServiceCatalog() {
     }
   }, []);
 
-  const onFirst = () => {
-    setCurrentCursor(null);
-    setPreviousCursors([]);
-  };
-
-  const onLast = () => {
-    if (meta && meta.after_cursor) {
-      setPreviousCursors((prev) => [...prev, currentCursor || ""]);
-      setCurrentCursor(meta.after_cursor);
-    }
-  };
-
   const onNext = () => {
     if (meta && meta.after_cursor) {
-      setPreviousCursors((prev) => [...prev, currentCursor || ""]);
-      setCurrentCursor(meta.after_cursor);
+      setCurrentCursor(`page[after]=${meta.after_cursor}`);
     }
   };
 
   const onPrevious = () => {
-    if (previousCursors.length > 0) {
-      const newPreviousCursors = [...previousCursors];
-      const previousCursor = newPreviousCursors.pop();
-      setPreviousCursors(newPreviousCursors);
-      setCurrentCursor(previousCursor || null);
+    if (meta && meta.before_cursor) {
+      setCurrentCursor(`page[before]=${meta?.before_cursor}`);
     }
   };
 
@@ -97,30 +81,21 @@ export function ServiceCatalog() {
           ))}
       </Row>
       <CursorPagination>
-        <CursorPagination.First
-          onClick={onFirst}
-          disabled={previousCursors.length === 0}
-        >
-          {t("service-catalog.pagination.first", "First")}
-        </CursorPagination.First>
         <CursorPagination.Previous
           onClick={onPrevious}
-          disabled={previousCursors.length === 0}
+          disabled={
+            !currentCursor ||
+            (currentCursor?.startsWith("page[before]") && !meta?.has_more)
+          }
         >
           {t("service-catalog.pagination.previous", "Previous")}
         </CursorPagination.Previous>
         <CursorPagination.Next
           onClick={onNext}
-          disabled={!meta || !meta.after_cursor || !meta.has_more}
+          disabled={currentCursor?.startsWith("page[after]") && !meta?.has_more}
         >
           {t("service-catalog.pagination.next", "Next")}
         </CursorPagination.Next>
-        <CursorPagination.Last
-          onClick={onLast}
-          disabled={!meta || !meta.has_more}
-        >
-          {t("service-catalog.pagination.last", "Last")}
-        </CursorPagination.Last>
       </CursorPagination>
     </div>
   );

@@ -71,12 +71,12 @@ function ServiceCatalog() {
     const [serviceCatalogItems, setServiceCatalogItems] = reactExports.useState([]);
     const [meta, setMeta] = reactExports.useState(null);
     const [currentCursor, setCurrentCursor] = reactExports.useState(null);
-    const [previousCursors, setPreviousCursors] = reactExports.useState([]);
     const { t } = useTranslation();
     const fetchServiceCatalogItems = reactExports.useCallback(async (cursorParam) => {
         try {
+            console.log("cursorParam", cursorParam);
             const response = await fetch(cursorParam
-                ? `/api/v2/custom_objects/service_catalog_item/records?page[size]=16&page[after]=${cursorParam}`
+                ? `/api/v2/custom_objects/service_catalog_item/records?page[size]=16&${cursorParam}`
                 : `/api/v2/custom_objects/service_catalog_item/records?page[size]=16`);
             const data = await response.json();
             if (response.ok) {
@@ -89,35 +89,22 @@ function ServiceCatalog() {
             console.error("Error fetching service catalog items:", error);
         }
     }, []);
-    const onFirst = () => {
-        setCurrentCursor(null);
-        setPreviousCursors([]);
-    };
-    const onLast = () => {
-        if (meta && meta.after_cursor) {
-            setPreviousCursors((prev) => [...prev, currentCursor || ""]);
-            setCurrentCursor(meta.after_cursor);
-        }
-    };
     const onNext = () => {
         if (meta && meta.after_cursor) {
-            setPreviousCursors((prev) => [...prev, currentCursor || ""]);
-            setCurrentCursor(meta.after_cursor);
+            setCurrentCursor(`page[after]=${meta.after_cursor}`);
         }
     };
     const onPrevious = () => {
-        if (previousCursors.length > 0) {
-            const newPreviousCursors = [...previousCursors];
-            const previousCursor = newPreviousCursors.pop();
-            setPreviousCursors(newPreviousCursors);
-            setCurrentCursor(previousCursor || null);
+        if (meta && meta.before_cursor) {
+            setCurrentCursor(`page[before]=${meta?.before_cursor}`);
         }
     };
     reactExports.useEffect(() => {
         fetchServiceCatalogItems(currentCursor);
     }, [currentCursor, fetchServiceCatalogItems]);
     return (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(Row, { children: serviceCatalogItems.length !== 0 &&
-                    serviceCatalogItems.map((record) => (jsxRuntimeExports.jsx(StyledCol, { xs: 6, sm: 4, md: 3, children: jsxRuntimeExports.jsx(ServiceCatalogListItem, { serviceItem: record }, record.id) }, record.id))) }), jsxRuntimeExports.jsxs(CursorPagination, { children: [jsxRuntimeExports.jsx(CursorPagination.First, { onClick: onFirst, disabled: previousCursors.length === 0, children: t("service-catalog.pagination.first", "First") }), jsxRuntimeExports.jsx(CursorPagination.Previous, { onClick: onPrevious, disabled: previousCursors.length === 0, children: t("service-catalog.pagination.previous", "Previous") }), jsxRuntimeExports.jsx(CursorPagination.Next, { onClick: onNext, disabled: !meta || !meta.after_cursor || !meta.has_more, children: t("service-catalog.pagination.next", "Next") }), jsxRuntimeExports.jsx(CursorPagination.Last, { onClick: onLast, disabled: !meta || !meta.has_more, children: t("service-catalog.pagination.last", "Last") })] })] }));
+                    serviceCatalogItems.map((record) => (jsxRuntimeExports.jsx(StyledCol, { xs: 6, sm: 4, md: 3, children: jsxRuntimeExports.jsx(ServiceCatalogListItem, { serviceItem: record }, record.id) }, record.id))) }), jsxRuntimeExports.jsxs(CursorPagination, { children: [jsxRuntimeExports.jsx(CursorPagination.Previous, { onClick: onPrevious, disabled: !currentCursor ||
+                            (currentCursor?.startsWith("page[before]") && !meta?.has_more), children: t("service-catalog.pagination.previous", "Previous") }), jsxRuntimeExports.jsx(CursorPagination.Next, { onClick: onNext, disabled: currentCursor?.startsWith("page[after]") && !meta?.has_more, children: t("service-catalog.pagination.next", "Next") })] })] }));
 }
 
 async function renderServiceCatalog(container, settings) {
