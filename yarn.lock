@@ -4038,14 +4038,14 @@
     react-transition-group "^4.4.2"
     react-uid "^2.3.1"
 
-"@zendeskgarden/react-pagination@^8.76.8":
-  version "8.76.8"
-  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-pagination/-/react-pagination-8.76.8.tgz#0ff46d4de8a65303eb2c5aa64307083c3fc68efb"
-  integrity sha512-1TmMaFp67MJFFY+2ZC1EZ7qx/2jaTfZgrrbYgdVH7z7ov4Qp9Y6n/EqNGVUzJuueeslmqhXUrlitTLRv3NTwiw==
+"@zendeskgarden/react-pagination@8.76.2":
+  version "8.76.2"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-pagination/-/react-pagination-8.76.2.tgz#6ed77f7429da8ccec199d431e4d83d8dd1b27bf5"
+  integrity sha512-dHtHB1+DYvAz30lLyr60wgmHz5+pCAu+7kl2I6Xs6fMfGxh+CJXdLdLLxB9JEYnsl+zmmPIJpyDKPEl6aBQc2w==
   dependencies:
     "@zendeskgarden/container-pagination" "^1.0.0"
     "@zendeskgarden/container-utilities" "^2.0.0"
-    polished "^4.3.1"
+    polished "^4.0.0"
     prop-types "^15.5.7"
 
 "@zendeskgarden/react-tags@8.76.2", "@zendeskgarden/react-tags@^8.76.2":

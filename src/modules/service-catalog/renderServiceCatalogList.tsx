@@ -4,7 +4,7 @@ import { ServiceCatalogList } from "./ServiceCatalogList";
 import { createTheme, ThemeProviders } from "../shared";
 import type { Settings } from "../shared";
 
-export async function renderServiceCatalog(
+export async function renderServiceCatalogList(
   container: HTMLElement,
   settings: Settings
 ) {

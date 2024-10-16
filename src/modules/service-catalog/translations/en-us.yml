@@ -11,11 +11,6 @@ packages:
   - "service-catalog"
 parts:
   - translation:
-      key: "service-catalog.pagination.first"
-      title: "Pagination button"
-      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
-      value: "First"
-  - translation:
       key: "service-catalog.pagination.previous"
       title: "Pagination button"
       screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
@@ -25,9 +20,3 @@ parts:
       title: "Pagination button"
       screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
       value: "Next"
-  - translation:
-      key: "service-catalog.pagination.last"
-      title: "Pagination button"
-      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
-      value: "Last"
-      
