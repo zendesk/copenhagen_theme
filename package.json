@@ -28,6 +28,7 @@
     "@zendeskgarden/react-loaders": "8.76.2",
     "@zendeskgarden/react-modals": "8.76.2",
     "@zendeskgarden/react-notifications": "8.76.2",
+    "@zendeskgarden/react-pagination": "8.76.2",
     "@zendeskgarden/react-tags": "8.76.2",
     "@zendeskgarden/react-theming": "8.76.2",
     "@zendeskgarden/react-tooltips": "8.76.2",
