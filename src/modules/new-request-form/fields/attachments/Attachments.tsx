@@ -11,7 +11,7 @@ import {
   Title,
   useToast,
 } from "@zendeskgarden/react-notifications";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
 import type { AttachmentField } from "../../data-types";
@@ -22,6 +22,7 @@ import mime from "mime";
 
 interface AttachmentProps {
   field: AttachmentField;
+  onChange: (attachments: number) => void;
 }
 
 async function fetchCsrfToken() {
@@ -42,8 +43,8 @@ export interface UploadFileResponse {
   };
 }
 
-export function Attachments({ field }: AttachmentProps): JSX.Element {
-  const { label, error, name, attachments } = field;
+export function Attachments({ field, onChange }: AttachmentProps): JSX.Element {
+  const { error, name, attachments } = field;
   const {
     files,
     addPendingFile,
@@ -180,9 +181,13 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
     }
   };
 
+  useEffect(() => {
+    onChange(files.length);
+  }, [onChange, files]);
+
   return (
     <GardenField>
-      <Label>{label}</Label>
+      <Label>Attachment (required!!)</Label>
       {error && <Message validation="error">{error}</Message>}
       <FileUpload {...getRootProps()} isDragging={isDragActive}>
         {isDragActive ? (

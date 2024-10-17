@@ -114,6 +114,9 @@ export function NewRequestForm({
   );
   const [dueDateField, setDueDateField] = useState(prefilledDueDateField);
   const visibleFields = getVisibleFields(ticketFields, end_user_conditions);
+  const [attachments, setAttachments] = useState(
+    attachments_field?.attachments.length ?? 0
+  );
   const { formRefCallback, handleSubmit } = useFormSubmit(ticketFields);
   const { t } = useTranslation();
   const defaultOrganizationId =
@@ -330,14 +333,30 @@ export function NewRequestForm({
               return <></>;
           }
         })}
-        {attachments_field && <Attachments field={attachments_field} />}
+        {attachments_field && (
+          <Attachments
+            field={attachments_field}
+            onChange={(attachments) => {
+              setAttachments(attachments);
+            }}
+          />
+        )}
         {inline_attachments_fields.map(({ type, name, value }, index) => (
           <input key={index} type={type} name={name} value={value} />
         ))}
         <Footer>
           {(ticket_form_field.options.length === 0 ||
             ticket_form_field.value) && (
-            <Button isPrimary type="submit">
+            <Button
+              isPrimary
+              type="submit"
+              onClick={(e) => {
+                if (attachments === 0) {
+                  alert("Attachements required: please add attachments!");
+                  e.preventDefault();
+                }
+              }}
+            >
               {t("new-request-form.submit", "Submit")}
             </Button>
           )}
