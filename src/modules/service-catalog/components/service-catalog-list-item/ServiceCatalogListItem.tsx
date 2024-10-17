@@ -3,7 +3,7 @@ import ShapesIcon from "@zendeskgarden/svg-icons/src/16/shapes-fill.svg";
 import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 
-const StyledItem = styled.a`
+const Container = styled.a`
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -18,6 +18,11 @@ const StyledItem = styled.a`
     border: ${(props) => props.theme.borders.sm};
     border-color: ${(props) => getColorV8("blue", 600, props.theme)};
   }
+
+  &:visited {
+    text-decoration: none;
+    color: ${(props) => getColorV8("grey", 800, props.theme)};
+  }
 `;
 
 const ItemTitle = styled.div`
@@ -28,10 +33,9 @@ const ItemTitle = styled.div`
   -webkit-line-clamp: 2;
   overflow: hidden;
   word-break: break-word;
-  margin-bottom: ${(props) => props.theme.space.sm};
 `;
 
-const ItemDescription = styled.p`
+const ItemDescription = styled.div`
   font-size: ${(props) => props.theme.fontSizes.sm};
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -63,7 +67,7 @@ const ServiceCatalogListItem = ({
   serviceItem: ServiceCatalogItem;
 }) => {
   return (
-    <StyledItem href="#">
+    <Container href="#">
       <IconContainer>
         <ShapesIcon />
       </IconContainer>
@@ -71,7 +75,7 @@ const ServiceCatalogListItem = ({
         <ItemTitle>{serviceItem.name}</ItemTitle>
         <ItemDescription>{serviceItem.description}</ItemDescription>
       </TextContainer>
-    </StyledItem>
+    </Container>
   );
 };
 

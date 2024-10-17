@@ -27,7 +27,7 @@ type Meta = {
 
 export function ServiceCatalogList() {
   const [serviceCatalogItems, setServiceCatalogItems] = useState<
-    Array<ServiceCatalogItem>
+    ServiceCatalogItem[]
   >([]);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [currentCursor, setCurrentCursor] = useState<string | null>(null);

@@ -1,6 +1,6 @@
 import { s as styled, J as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Col, ac as Grid, r as reactExports, a as useTranslation, ad as Row, ae as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme } from 'shared';
 
-const StyledItem = styled.a `
+const Container = styled.a `
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -15,6 +15,11 @@ const StyledItem = styled.a `
     border: ${(props) => props.theme.borders.sm};
     border-color: ${(props) => getColorV8("blue", 600, props.theme)};
   }
+
+  &:visited {
+    text-decoration: none;
+    color: ${(props) => getColorV8("grey", 800, props.theme)};
+  }
 `;
 const ItemTitle = styled.div `
   font-size: ${(props) => props.theme.fontSizes.md};
@@ -24,9 +29,8 @@ const ItemTitle = styled.div `
   -webkit-line-clamp: 2;
   overflow: hidden;
   word-break: break-word;
-  margin-bottom: ${(props) => props.theme.space.sm};
 `;
-const ItemDescription = styled.p `
+const ItemDescription = styled.div `
   font-size: ${(props) => props.theme.fontSizes.sm};
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -50,7 +54,7 @@ const IconContainer = styled.div `
   align-content: center;
 `;
 const ServiceCatalogListItem = ({ serviceItem, }) => {
-    return (jsxRuntimeExports.jsxs(StyledItem, { href: "#", children: [jsxRuntimeExports.jsx(IconContainer, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(TextContainer, { children: [jsxRuntimeExports.jsx(ItemTitle, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
+    return (jsxRuntimeExports.jsxs(Container, { href: "#", children: [jsxRuntimeExports.jsx(IconContainer, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(TextContainer, { children: [jsxRuntimeExports.jsx(ItemTitle, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
 };
 
 const StyledCol = styled(Col) `
