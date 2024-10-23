@@ -1,0 +1,42 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
+title: "Copenhagen Theme Service catalog"
+packages:
+  - "service-catalog"
+parts:
+  - translation:
+      key: "service-catalog.pagination.previous"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Previous"
+  - translation:
+      key: "service-catalog.pagination.next"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Next"
+  - translation:
+      key: "service-catalog.empty-state.no-services"
+      title: "Empty state no services"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "No services in sight"    
+  - translation:
+      key: "service-catalog.empty-state.description"
+      title: "Empty state description"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "Once services are added to catalog, you'll find them here."    
+  - translation:
+      key: "service-catalog.empty-state.support-article-link"
+      title: "Empty state support article link"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "Learn about the service catalog"    
+  - translation:
+      key: "service-catalog.empty-state.go-to-homepage"
+      title: "Empty state go to homepage link"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "Go to the homepage"    
