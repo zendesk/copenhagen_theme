@@ -40,3 +40,13 @@ parts:
       title: "Empty state go to homepage link"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
       value: "Go to the homepage"    
+  - translation:
+      key: "service-catalog.item.read-more"
+      title: "Button to show whole description of the service catalog item"
+      screenshot: "https://drive.google.com/file/d/1pXglNRRqa23LoA7CuZOiAKQAuwkRKFqN/view?usp=drive_link"
+      value: "Read more"
+  - translation:
+      key: "service-catalog.item.read-less"
+      title: "Button to hide part of the description of the service catalog item"
+      screenshot: "https://drive.google.com/file/d/1f47RWr0_cSa6dSWMT-SvW8hU3TeWTq2T/view?usp=drive_link"
+      value: "Read less"          
