@@ -25,7 +25,7 @@ export const SCREEN_SIZE = {
 
 const config: Config = {
   content: ['./**/**/*.{ts,tsx,hbs}'],
-  darkMode: 'class',
+  darkMode: 'selector',
   theme: {
     screens: {
       /* Tablet */

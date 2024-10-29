@@ -2,7 +2,7 @@
 $header-height: 71px;
 
 .header {
-  @include max-width-container;
+  width: 100%;
   position: relative;
   align-items: center;
   display: flex;

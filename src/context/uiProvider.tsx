@@ -45,6 +45,7 @@ export const UIProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
     setTheme((prev) => {
       const newTheme = prev === "dark" ? "light" : "dark";
       ThemeManager.set(newTheme);
+      document.documentElement.classList.toggle('dark', newTheme === 'dark'); // Toggles the dark class
       return newTheme;
     });
   };

@@ -52,12 +52,6 @@ a {
   &:visited {
     color: $visited_link_color;
   }
-
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: underline;
-  }
 }
 
 .hbs-form,

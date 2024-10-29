@@ -234,9 +234,6 @@ a {
 a:visited {
   color: $visited_link_color;
 }
-a:hover, a:active, a:focus {
-  text-decoration: underline;
-}
 
 .hbs-form input,
 .hbs-form textarea,
@@ -640,20 +637,12 @@ ul {
 
 /***** Header *****/
 .header {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 5%;
+  width: 100%;
   position: relative;
   align-items: center;
   display: flex;
   height: 71px;
   justify-content: space-between;
-}
-@media (min-width: 1160px) {
-  .header {
-    padding: 0;
-    width: 90%;
-  }
 }
 
 .logo img {

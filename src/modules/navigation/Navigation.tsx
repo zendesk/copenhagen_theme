@@ -35,7 +35,7 @@ const Navigation: FC = () => {
     <UIProvider>
       <nav
         className={cn(
-          'Navigation fixed left-0 right-0 z-nav flex w-screen justify-center bg-light-surface-1 dark:border-dark-surface-3 dark:bg-dark-surface-1',
+          'Navigation fixed top-0 left-0 right-0 z-nav flex w-screen justify-center bg-light-surface-1 dark:border-dark-surface-3 dark:bg-dark-surface-1',
           {
             'border-b': !scrollIsOnTop,
           },
@@ -46,7 +46,7 @@ const Navigation: FC = () => {
             <LinkBase href="/" className="flex flex-row items-center">
               <MiniUnicon className="mb-[0.1875rem] h-8 w-8" />
               <p className="body-3 md:button-label-2 ml-2 text-light-accent-1 dark:text-dark-accent-1">
-                Uniswap Labs Blog
+                Uniswap Support
               </p>
             </LinkBase>
           </div>
@@ -62,10 +62,9 @@ const Navigation: FC = () => {
           <div className="hidden sm:flex">
             <ThemeSwitch />
             <PrimaryButton
-              className="ml-padding-small-dense"
-              // TODO: change the hardcoded label and href
-              label="Uniswap"
-              href="/"
+              className="ml-padding-small-dense !my-auto !py-0 !h-8"
+              label="Submit Request"
+              href="https://support.uniswap.org/hc/en-us/requests/new"
               color="accent-2"
             />
           </div>

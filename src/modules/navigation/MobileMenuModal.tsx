@@ -106,9 +106,8 @@ const MobileMenuModal: FC<Props> = ({ isOpen, close }) => {
             <PrimaryButton
               onClick={handleClose}
               className="ml-padding-small-dense"
-              // TODO: change the hardcoded label and href
-              label="Uniswap"
-              href="/"
+              label="Submit Request"
+              href="https://support.uniswap.org/hc/en-us/requests/new"
               size="large"
               theme={theme}
               color="accent-2"
