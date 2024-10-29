@@ -10,6 +10,7 @@ import terser from "@rollup/plugin-terser";
 import svgr from "@svgr/rollup";
 import { generateImportMap } from "./generate-import-map.mjs";
 import { defineConfig } from "rollup";
+import sass from "rollup-plugin-sass";
 
 const fileNames = "[name]-bundle.js";
 const isProduction = process.env.NODE_ENV === "production";
@@ -35,6 +36,7 @@ export default defineConfig([
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
       "flash-notifications": "src/modules/flash-notifications/index.ts",
+      "navigation": "src/modules/navigation/index.tsx",
     },
     output: {
       dir: "assets",

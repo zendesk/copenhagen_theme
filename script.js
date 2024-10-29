@@ -1,5 +1,5 @@
 (function () {
-  "use strict";
+  'use strict';
 
   // Key map
   const ENTER = 13;
@@ -93,10 +93,7 @@
     this.toggle.addEventListener("click", this.clickHandler.bind(this));
     this.toggle.addEventListener("keydown", this.toggleKeyHandler.bind(this));
     this.menu.addEventListener("keydown", this.menuKeyHandler.bind(this));
-    document.body.addEventListener(
-      "click",
-      this.outsideClickHandler.bind(this)
-    );
+    document.body.addEventListener("click", this.outsideClickHandler.bind(this));
 
     const toggleId = this.toggle.getAttribute("id") || crypto.randomUUID();
     const menuId = this.menu.getAttribute("id") || crypto.randomUUID();
@@ -660,4 +657,5 @@
       notificationElm.previousElementSibling.focus();
     }
   });
+
 })();

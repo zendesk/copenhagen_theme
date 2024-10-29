@@ -9,14 +9,13 @@ import {
 import Navigation from "./Navigation";
 import type { Navigation as NavigationProps } from "./data-types";
 
-export async function renderNewRequestForm(
+export async function renderNavigation(
   settings: Settings,
-  props: NavigationProps,
   container: HTMLElement
 ) {
   render(
     <ThemeProviders theme={createTheme(settings)}>
-      <Navigation {...props} />
+      <Navigation />
     </ThemeProviders>,
     container
   );

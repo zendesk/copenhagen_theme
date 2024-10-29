@@ -11,15 +11,13 @@ import { Close } from '../../svgs/Icons';
 import cn from 'classnames';
 
 type Props = {
-  globalSettings?: Types.GlobalSettings;
   isOpen: boolean;
   close: () => void;
 };
 
-const MobileMenuModal: FC<Props> = ({ globalSettings, isOpen, close }) => {
+const MobileMenuModal: FC<Props> = ({ isOpen, close }) => {
   const { theme } = useUIProvider();
   const [modalTransition, setModalTransition] = useState(false);
-  const topNavigationApp = globalSettings?.topNavigationApp;
 
   const handleClose = () => {
     setModalTransition(false);
@@ -61,7 +59,8 @@ const MobileMenuModal: FC<Props> = ({ globalSettings, isOpen, close }) => {
               <Close className="h-3.5 w-3.5" />
             </button>
             <nav>
-              <h3
+              {/* TODO: repurpose this to render side nav on mobile */}
+              {/* <h3
                 className={cn('body-1', {
                   'text-light-neutral-1': theme === 'light',
                   'text-dark-neutral-1': theme === 'dark',
@@ -83,7 +82,7 @@ const MobileMenuModal: FC<Props> = ({ globalSettings, isOpen, close }) => {
                     />
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </nav>
             <div
               className={cn('my-3 border-t', {
@@ -103,20 +102,19 @@ const MobileMenuModal: FC<Props> = ({ globalSettings, isOpen, close }) => {
               <ThemeSwitch />
             </div>
           </div>
-          {topNavigationApp?.key && topNavigationApp?.value ? (
-            <div className="py-padding-large">
-              <PrimaryButton
-                onClick={handleClose}
-                className="ml-padding-small-dense"
-                label={topNavigationApp.key}
-                href={topNavigationApp.value}
-                size="large"
-                theme={theme}
-                color="accent-2"
-                fullWidth
-              />
-            </div>
-          ) : null}
+          <div className="py-padding-large">
+            <PrimaryButton
+              onClick={handleClose}
+              className="ml-padding-small-dense"
+              // TODO: change the hardcoded label and href
+              label="Uniswap"
+              href="/"
+              size="large"
+              theme={theme}
+              color="accent-2"
+              fullWidth
+            />
+          </div>
         </DialogPanel>
       </div>
     </Dialog>

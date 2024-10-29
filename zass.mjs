@@ -35,7 +35,7 @@ for (const file of filenames) {
 //
 //   $foo: \$foo;
 //
-// This makes Sass replace occurences of the variable with the escaped name.
+// This makes Sass replace occurrences of the variable with the escaped name.
 //
 // Afterwards, the escaped names can be unescaped, yielding a CSS file with
 // the ignored variables intact.
@@ -47,18 +47,18 @@ const preamble = variables
 const unescapeVariables = (css) => css.replace(/\\\$/g, "$");
 
 // Converts darken and lighten filter so that zass will process
-// them and user can see them as normal sass css function in the editor.
+// them and users can see them as normal sass css function in the editor.
 //
 // Note: we are prefixing them with `zass-` because we don't want
-// the Sass-c compiler to execute them since we want the end-users
-// to see those function in the editor when customizing their template.
+// the Sass compiler to execute them since we want the end-users
+// to see those functions in the editor when customizing their template.
 function convertZassFunctions(css) {
   return css
     .replace(/zass-lighten/g, "lighten")
     .replace(/zass-darken/g, "darken");
 }
 
-export default () =>
+export default () => [
   sass({
     output: "style.css",
     options: { data: preamble },
@@ -66,4 +66,5 @@ export default () =>
       const unescaped = unescapeVariables(css);
       return convertZassFunctions(unescaped);
     },
-  });
+  }),
+];

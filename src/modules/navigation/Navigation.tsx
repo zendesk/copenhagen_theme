@@ -1,6 +1,5 @@
 import { FC, useState, useEffect } from 'react';
 import type { Navigation } from "./data-types";
-import * as Types from '../../lib/types'
 
 import cn from 'classnames';
 
@@ -8,17 +7,12 @@ import { MiniUnicon } from '../../svgs/Logos';
 import { Menu } from '../../svgs/Icons';
 import { PrimaryButton, ButtonBase, LinkBase } from '../../base/Button';
 import ThemeSwitch from './ThemeSwitch';
-import TopicsDropdownButton from './TopicsDropdownButton';
 import MobileMenuModal from './MobileMenuModal';
+import { UIProvider } from '../../context/uiProvider';
 
-type Props = {
-  globalSettings?: Types.GlobalSettings;
-};
-
-const Navigation: FC<Props> = ({ globalSettings }) => {
+const Navigation: FC = () => {
   const [scrollIsOnTop, setScrollIsOnTop] = useState(false);
   const [menuIsOpen, setMenuIsOpen] = useState(false);
-  const topNavigationApp = globalSettings?.topNavigationApp;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +32,7 @@ const Navigation: FC<Props> = ({ globalSettings }) => {
   }, [setScrollIsOnTop]);
 
   return (
-    <>
+    <UIProvider>
       <nav
         className={cn(
           'Navigation fixed left-0 right-0 z-nav flex w-screen justify-center bg-light-surface-1 dark:border-dark-surface-3 dark:bg-dark-surface-1',
@@ -55,9 +49,6 @@ const Navigation: FC<Props> = ({ globalSettings }) => {
                 Uniswap Labs Blog
               </p>
             </LinkBase>
-            <div className="hidden sm:block">
-              <TopicsDropdownButton globalSettings={globalSettings} />
-            </div>
           </div>
           <div className="sm:hidden">
             <ButtonBase
@@ -70,14 +61,13 @@ const Navigation: FC<Props> = ({ globalSettings }) => {
           </div>
           <div className="hidden sm:flex">
             <ThemeSwitch />
-            {topNavigationApp?.key && topNavigationApp?.value ? (
-              <PrimaryButton
-                className="ml-padding-small-dense"
-                label={topNavigationApp.key}
-                href={topNavigationApp.value}
-                color="accent-2"
-              />
-            ) : null}
+            <PrimaryButton
+              className="ml-padding-small-dense"
+              // TODO: change the hardcoded label and href
+              label="Uniswap"
+              href="/"
+              color="accent-2"
+            />
           </div>
         </div>
       </nav>
@@ -88,13 +78,12 @@ const Navigation: FC<Props> = ({ globalSettings }) => {
         })}
       />
       <MobileMenuModal
-        globalSettings={globalSettings}
         isOpen={menuIsOpen}
         close={() => {
           setMenuIsOpen(false);
         }}
       />
-    </>
+    </UIProvider>
   );
 };
 
