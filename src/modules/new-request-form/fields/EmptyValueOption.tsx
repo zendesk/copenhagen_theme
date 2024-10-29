@@ -7,7 +7,6 @@ export function EmptyValueOption(): ReactElement {
 
   return (
     <>
-      {/* eslint-disable-next-line @shopify/jsx-no-hardcoded-content */}
       <Span aria-hidden="true">-</Span>
       <Span hidden>
         {t("new-request-form.dropdown.empty-option", "Select an option")}

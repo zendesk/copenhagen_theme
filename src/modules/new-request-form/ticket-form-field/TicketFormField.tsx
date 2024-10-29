@@ -41,7 +41,7 @@ export function TicketFormField({
       // after the page reloads for better a11y
       (ref.current?.firstChild as HTMLElement)?.focus();
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

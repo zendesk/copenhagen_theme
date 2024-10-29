@@ -1,7 +1,6 @@
 {
   "parser": "@typescript-eslint/parser",
   "extends": [
-    "next/core-web-vitals",
     "plugin:security/recommended-legacy",
     "plugin:@typescript-eslint/recommended"
   ],

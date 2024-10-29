@@ -19,7 +19,7 @@ export const useUIProvider = () => {
   return context;
 };
 
-export const UIProvider: FC<PropsWithChildren<{}>> = ({ children }) => {
+export const UIProvider: FC<PropsWithChildren<Record<string, never>>> = ({ children }) => {
   const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
