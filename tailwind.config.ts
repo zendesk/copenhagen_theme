@@ -24,7 +24,7 @@ export const SCREEN_SIZE = {
 };
 
 const config: Config = {
-  content: ['./**/**/*.{ts,tsx}'],
+  content: ['./**/**/*.{ts,tsx, hbs}'],
   darkMode: 'class',
   theme: {
     screens: {
@@ -164,7 +164,6 @@ const config: Config = {
     },
   },
   plugins: [
-    require('@zendeskgarden/tailwindcss'),
     plugin(function ({
       matchUtilities,
       theme,

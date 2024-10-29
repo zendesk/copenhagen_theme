@@ -307,7 +307,7 @@ function TicketFormField({ field, newRequestPath, }) {
             // after the page reloads for better a11y
             ref.current?.firstChild?.focus();
         }
-    }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    }, []);
     return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: field.name, value: field.value }), field.options.length > 1 && (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: field.label }), jsxRuntimeExports.jsx(Combobox, { isEditable: false, onChange: handleChange, ref: ref, children: field.options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name, isSelected: field.value === option.value, children: option.name }, option.value))) })] }))] }));
 }
 

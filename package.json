@@ -2,7 +2,7 @@
   "name": "copenhagen_theme",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
-    "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
+    "start": "concurrently -k -r 'rollup -c -w' 'npx tailwindcss -i ./styles/main.css -o ./assets/tailwind-output.css --watch' 'wait-on ./assets/tailwind-output.css script.js style.css && zcli themes:preview'",
     "build": "NODE_ENV=production rollup -c",
     "prebuild": "rm -f assets/*-bundle.js",
     "eslint": "eslint src",
@@ -32,7 +32,6 @@
     "@zendeskgarden/react-tooltips": "8.76.2",
     "@zendeskgarden/react-typography": "8.76.2",
     "@zendeskgarden/svg-icons": "^6.34.0",
-    "@zendeskgarden/tailwindcss": "^4.0.1",
     "classnames": "^2.5.1",
     "dompurify": "3.0.11",
     "eslint-plugin-check-file": "^2.6.2",
@@ -41,13 +40,14 @@
     "lodash.debounce": "^4.0.8",
     "mime": "^4.0.4",
     "node-fetch": "2.6.9",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-i18next": "^14.1.0",
-    "react-is": "^17.0.2",
+    "react-is": "^18.2.0",
     "styled-components": "^5.3.11",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "postcss": "8.4.47"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.2",
@@ -64,8 +64,8 @@
     "@svgr/rollup": "^8.1.0",
     "@types/js-cookie": "^3.0.6",
     "@types/lodash.debounce": "^4.0.9",
-    "@types/react": "^17.0.62",
-    "@types/react-dom": "^17.0.20",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^6.1.0",
     "@typescript-eslint/parser": "^6.1.0",
@@ -94,10 +94,11 @@
     "url-pattern": "1.0.3",
     "vinyl": "^3.0.0",
     "vinyl-fs": "^4.0.0",
-    "wait-on": "7.0.1"
+    "wait-on": "7.0.1",
+    "postcss-import": "^16.1.0"
   },
   "resolutions": {
-    "@types/react": "^17.x"
+    "@types/react": "^18.x"
   },
   "commitlint": {
     "extends": [
@@ -106,3 +107,4 @@
   },
   "packageManager": "yarn@1.22.22"
 }
+
