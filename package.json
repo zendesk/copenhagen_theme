@@ -1,6 +1,5 @@
 {
   "name": "copenhagen_theme",
-  "version": "1.22.18",
   "repository": "git@github.com:zendesk/copenhagen_theme.git",
   "scripts": {
     "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",

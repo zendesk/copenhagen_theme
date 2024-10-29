@@ -1,18 +1,27 @@
-## Description
+### Description
 
-<!-- a summary of the changes introduced by this PR and the motivation behind them -->
+<!--- Summarize the changes that can be found in this PR and how your reviewers should test these changes. -->
 
-## Screenshots
+### Type(s) of changes
 
-<!-- (optional) when applicable, please include some screenshots or gifs that illustrate the changes -->
+<!--- Put an `x` in all the boxes that apply. -->
 
-## Checklist
+- [ ] Bug fix
+- [ ] New feature
+- [ ] Update to an existing feature
 
-- [ ] :green_book: all commit messages follow the [conventional commits](https://conventionalcommits.org/) standard
-- [ ] :arrow_left: changes are compatible with RTL direction
-- [ ] :wheelchair: Changes to the UI are [tested for accessibility](./../README.md#accessibility-testing) and compliant with [WCAG 2.1](https://www.w3.org/TR/WCAG21/).
-- [ ] :memo: changes are tested in Chrome, Firefox, Safari and Edge
-- [ ] :iphone: changes are responsive and tested in mobile
-- [ ] :+1: PR is approved by @zendesk/vikings
+### Motivation for PR
 
-<!-- More info about the contribution process can be found at https://github.com/zendesk/copenhagen_theme#contributing -->
+<!--- If it addresses an open issue, please link to the issue here, otherwise, briefly describe the issue. -->
+
+### How Has This Been Tested?
+
+<!--- Please note how you have tested your changes. Browsers, accessibility, devices, unit tests, etc. -->
+
+### Applicable screenshots
+
+<!--- When appropriate, upload screenshots. -->
+
+### Follow-up PR
+
+<!--- When appropriate, please note what your reviewers can expect in a follow up PR. -->

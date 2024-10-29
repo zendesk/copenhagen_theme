@@ -1,0 +1,20 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:security/recommended-legacy",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["jsx-a11y", "tailwindcss"],
+  "rules": {
+    "tailwindcss/no-custom-classname": "off",
+    "tailwindcss/classnames-order": "off",
+    "@typescript-eslint/no-unused-vars": 1,
+    "@typescript-eslint/ban-ts-ignore": 0,
+    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-unused-vars": 0,
+    "security/detect-object-injection": "off",
+    "jsx-a11y/alt-text": "off"
+  }
+}
