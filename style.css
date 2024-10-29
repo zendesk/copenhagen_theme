@@ -4719,3 +4719,7 @@ zd-summary-block {
 [dir=rtl] zd-summary-block {
   border-right-color: #859fa1;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
