@@ -4,20 +4,24 @@
   margin: 20px 0;
   text-align: center;
 
-  &-next, &-prev, &-first, &-last {
+  &-next,
+  &-prev,
+  &-first,
+  &-last {
     display: inline-block;
     &-link {
       @extend .button;
     }
   }
 
-  &-first, &-last {
+  &-first,
+  &-last {
     &-link {
       padding: 0 10px;
     }
 
     &-text {
-     @include visually-hidden;
+      @include visually-hidden;
     }
   }
 

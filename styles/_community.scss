@@ -37,7 +37,9 @@
 }
 
 .post-to-community {
-  @include tablet { margin: 0; }
+  @include tablet {
+    margin: 0;
+  }
   margin-top: 10px;
 }
 
@@ -57,7 +59,9 @@
 /* Community topic page */
 
 .topic-header {
-  @include tablet { padding-bottom: 10px; }
+  @include tablet {
+    padding-bottom: 10px;
+  }
   border-bottom: 1px solid $low-contrast-border-color;
   font-size: $font-size-small;
 
@@ -92,16 +96,21 @@
 
   button {
     @extend .button;
-    @include tablet { width: auto;}
+    @include tablet {
+      width: auto;
+    }
 
     line-height: 30px;
     padding: 0 10px 0 15px;
     position: relative;
     width: 100%;
 
-    &:hover { background-color: $brand_color; }
+    &:hover {
+      background-color: $brand_color;
+    }
 
-    &:hover::after, &:focus::after {
+    &:hover::after,
+    &:focus::after {
       border-color: $brand_text_color;
       color: $brand_text_color;
     }

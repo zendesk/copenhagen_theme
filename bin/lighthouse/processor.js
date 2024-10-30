@@ -76,7 +76,7 @@ function processResults(lhr) {
       skipped: audits.filter((audit) => audit.result === SKIPPED).length,
       warning: audits.filter((audit) => audit.result === WARNING).length,
       unknown: audits.filter((audit) => audit.result === UNKNOWN).length,
-      score: pageScore
+      score: pageScore,
     },
   };
 }

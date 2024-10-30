@@ -1,6 +1,8 @@
 /***** Tables *****/
 .table {
-  @include tablet { table-layout: auto; }
+  @include tablet {
+    table-layout: auto;
+  }
 
   width: 100%;
   table-layout: fixed;
@@ -13,11 +15,15 @@
     font-size: $font-size-small;
     text-align: left;
 
-    [dir="rtl"] & { text-align: right; }
+    [dir="rtl"] & {
+      text-align: right;
+    }
   }
 
   tr {
-    @include tablet { display: table-row; }
+    @include tablet {
+      display: table-row;
+    }
 
     border-bottom: 1px solid $low-contrast-border-color;
     display: block;
@@ -32,7 +38,8 @@
     display: block;
   }
 
-  td, th {
+  td,
+  th {
     @include desktop {
       padding: 20px 30px;
     }

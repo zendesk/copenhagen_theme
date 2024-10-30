@@ -34,7 +34,9 @@
     justify-content: space-between;
     margin-bottom: 10px;
 
-    .status-label { vertical-align: super; }
+    .status-label {
+      vertical-align: super;
+    }
   }
 
   &-title {
@@ -46,7 +48,9 @@
     width: 100%;
 
     h1 {
-      @include tablet { margin-right: 5px; }
+      @include tablet {
+        margin-right: 5px;
+      }
       display: inline;
       vertical-align: middle;
     }
@@ -131,7 +135,9 @@
       padding: 0 0 0 50px;
       text-align: initial;
 
-      [dir="rtl"] & { padding: 0 50px 0 0; }
+      [dir="rtl"] & {
+        padding: 0 50px 0 0;
+      }
     }
 
     border-top: 1px solid $low-contrast-border-color;
@@ -146,7 +152,9 @@
   }
 
   &-comments {
-    @include desktop { margin-bottom: 0; }
+    @include desktop {
+      margin-bottom: 0;
+    }
     margin-bottom: 20px;
   }
 }

@@ -10,13 +10,13 @@ jobs:
       - name: Setup Node.js
         uses: zendesk/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - name: Install node_modules
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
       # deactivate this step since it will make the current theme live on production
-      # TODO: activate this with configuration once the theme is ready for production 
+      # TODO: activate this with configuration once the theme is ready for production
       # - name: Upload theme
       #   run: node ./bin/theme-upload.js
       #   env:

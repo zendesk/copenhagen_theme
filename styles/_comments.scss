@@ -16,7 +16,9 @@
     border-top: 1px solid $low-contrast-border-color;
     padding: 20px 0;
 
-    p { margin-top: 0; }
+    p {
+      margin-top: 0;
+    }
   }
 
   &-callout {
@@ -27,7 +29,6 @@
 
     @include standalone-link;
   }
-
 
   &-sorter {
     display: inline-block;
@@ -48,7 +49,9 @@
     position: relative;
 
     &.comment-official {
-      @include tablet { padding-top: 20px; }
+      @include tablet {
+        padding-top: 20px;
+      }
 
       border: 1px solid $brand_color;
       padding: 40px 20px 20px; // 20 + 20 of official commment badge
@@ -72,7 +75,9 @@
     flex-wrap: wrap;
     margin-bottom: 20px;
 
-    @include tablet { justify-content: space-between; }
+    @include tablet {
+      justify-content: space-between;
+    }
   }
 
   &-avatar {
@@ -99,7 +104,9 @@
   .status-label:not(.status-label-official) {
     margin-top: 10px;
 
-    @include tablet { margin-top: 0; }
+    @include tablet {
+      margin-top: 0;
+    }
   }
 
   &-form {
@@ -108,7 +115,9 @@
     word-wrap: break-word;
   }
 
-  &-container { width: 100%; }
+  &-container {
+    width: 100%;
+  }
 
   &-form-controls {
     @include tablet {
@@ -134,17 +143,25 @@
     input[type="checkbox"] {
       margin-right: 5px;
 
-      [dir="rtl"] { margin-left: 5px; }
+      [dir="rtl"] {
+        margin-left: 5px;
+      }
     }
   }
 
-  &-ccs { display: none; }
-  &-ccs + textarea { margin-top: 10px; }
+  &-ccs {
+    display: none;
+  }
+  &-ccs + textarea {
+    margin-top: 10px;
+  }
 
   &-attachments {
     margin-top: 10px;
 
-    a { color: $brand_color; }
+    a {
+      color: $brand_color;
+    }
   }
 
   &-body {

@@ -4,23 +4,28 @@ The Copenhagen theme is the default Zendesk Guide theme. It is designed to be re
 Learn more about customizing Zendesk Guide [here](https://support.zendesk.com/hc/en-us/sections/206670747).
 
 The Copenhagen theme for Help Center consists of:
+
 - [Manifest file](#manifest-file)
 - [Set of templates](#templates)
 - [Stylesheet and JavaScript files](#stylesheet-and-javascript)
 - [Assets folder](#assets).
 
 ## How to use
+
 This is the latest version of the Copenhagen theme available for Guide. It is possible to use this repository as a starting point to build your own custom theme. You can fork this repository as you see fit.
 You can use your favorite IDE to develop themes and preview your changes locally in a web browser using [ZCLI](https://github.com/zendesk/zcli/). For details, read the [zcli themes](https://github.com/zendesk/zcli/blob/master/docs/themes.md) documentation.
 
 ## Customizing your theme
+
 Once you have forked this repository you can feel free to edit templates, CSS, JavaScript and manage assets.
 
 ### Manifest file
+
 The manifest allows you to define a group of settings for your theme that can then be changed via the UI in Theming Center.
 You can read more about the manifest file [here](https://support.zendesk.com/hc/en-us/articles/115012547687).
 
 ### Settings folder
+
 If you have a variable of type `file`, you need to provide a default file for that variable in the `/settings` folder. This file will be used on the settings panel by default and users can upload a different file if they like.
 Ex.
 If you would like to have a variable for the background image of a section, the variable in your manifest file would look something like this:
@@ -44,10 +49,12 @@ If you would like to have a variable for the background image of a section, the 
 And this would look for a file inside the settings folder named: `background_image`
 
 ### Adding assets
+
 You can add assets to the asset folder and use them in your CSS, JavaScript and templates.
 You can read more about assets [here](https://support.zendesk.com/hc/en-us/articles/115012399428)
 
 ## Publishing your theme
+
 After you have customized your theme you can download the repository as a `zip` file and import it into Theming Center.
 
 You can follow the documentation for importing [here](https://support.zendesk.com/hc/en-us/articles/115012794168).
@@ -55,32 +62,35 @@ You can follow the documentation for importing [here](https://support.zendesk.co
 You can also import directly from GitHub - learn more [here](https://support.zendesk.com/hc/en-us/articles/4408832476698-Setting-up-the-GitHub-integration-with-your-Guide-theme).
 
 ## Templates
-The theme includes all the templates that are used for a Help Center that has *all* the features available.
+
+The theme includes all the templates that are used for a Help Center that has _all_ the features available.
 List of templates in the theme:
-* Article page
-* Category page
-* Community post list page
-* Community post page
-* Community topic list page
-* Community topic page
-* Contributions page
-* Document head
-* Error page
-* Footer
-* Header
-* Home page
-* New community post page
-* New request page
-* Requests page
-* Search results page
-* Section page
-* Subscriptions page
-* User profile page
+
+- Article page
+- Category page
+- Community post list page
+- Community post page
+- Community topic list page
+- Community topic page
+- Contributions page
+- Document head
+- Error page
+- Footer
+- Header
+- Home page
+- New community post page
+- New request page
+- Requests page
+- Search results page
+- Section page
+- Subscriptions page
+- User profile page
 
 You can add up to 10 optional templates for:
- * Article page
- * Category page
- * Section page
+
+- Article page
+- Category page
+- Section page
 
 You do this by creating files under the folders `templates/article_pages`, `templates/category_pages` or `templates/section_pages`.
 Learn more [here](https://support.zendesk.com/hc/en-us/articles/360001948367).
@@ -105,13 +115,14 @@ Notes:
 - Preview requires login so make sure to first run `yarn zcli login -i` if you haven't done that before.
 
 ## Assets
+
 The Copenhagen theme comes with a few JavaScript assets, but you can add other assets to your theme by placing them in the `assets` folder.
 
 # React components
 
 From version 4.0.0, the Copenhagen theme uses some React components to render parts of the UI. These components are located in the `src/modules` folder and are built using the [Zendesk Garden](https://garden.zendesk.com/) component library.
 
-These components are bundled as native [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) as part of the Rollup build process, and they are emitted as JS files in the `assets` folder. Since assets are renamed when a theme is installed, the modules needs to be imported using the [asset helper](https://developer.zendesk.com/api-reference/help_center/help-center-templates/helpers/#asset-helper). 
+These components are bundled as native [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) as part of the Rollup build process, and they are emitted as JS files in the `assets` folder. Since assets are renamed when a theme is installed, the modules needs to be imported using the [asset helper](https://developer.zendesk.com/api-reference/help_center/help-center-templates/helpers/#asset-helper).
 
 To make the process of importing the modules easier, we added a Rollup plugin that generates an [import map](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) that maps the module name to the asset URL. This import map is then injected into the `document_head.hbs` template during the build.
 
@@ -127,7 +138,7 @@ export default defineConfig([
       "my-module": "src/modules/my-module/index.js",
     },
     // ...
-  }
+  },
 ]);
 ```
 
@@ -135,11 +146,11 @@ Rollup will generate a file named `my-module-bundle.js` in the `assets` folder a
 
 ```html
 <script type="importmap">
-{
-  "imports": {
-    "my-module": "{{asset 'my-module-bundle.js'}}",
+  {
+    "imports": {
+      "my-module": "{{asset 'my-module-bundle.js'}}"
+    }
   }
-}
 </script>
 ```
 
@@ -147,9 +158,7 @@ You can then import the module in your templates like this:
 
 ```hbs
 <script type="module">
-  import { something } from "my-module";
-
-  // ...
+  import { something } from "my-module"; // ...
 </script>
 ```
 
@@ -166,18 +175,19 @@ We also added some tools to be able to integrate the library with the internal t
 Translation strings are added directly in the source code, usually using the `useTranslation` hook, passing the key and the default English value:
 
 ```ts
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 function MyComponent() {
   const { t } = useTranslation();
 
-  return <div>{t("my-key", "My default value")}</div>
+  return <div>{t("my-key", "My default value")}</div>;
 }
 ```
 
 Providing the default English value in the code makes it possible to use it as a fallback value when strings are not yet translated and to extract the strings from the source code to the translations YAML file.
 
-#### Plurals 
+#### Plurals
+
 When using [plurals](https://www.i18next.com/translation-function/plurals), we need to provide default values for the `zero`, `one`, and `other` values, as requested by our translation system. This can be done by passing the default values in the [options](https://www.i18next.com/translation-function/essentials#overview-options) of the `t` function.
 
 ```ts
@@ -213,6 +223,7 @@ const MODULES = {
 We use a custom node script that runs [lighthouse](https://github.com/GoogleChrome/lighthouse) for automated accessibility testing.
 
 There are two ways of running the script:
+
 - **Development mode** - it runs the accessibility audits on the local theme preview, on a specific account. It requires `zcli themes:preview` to be running;
 - **CI mode** - it runs the accessibility audits on the live theme of a specific account.
 
@@ -231,6 +242,7 @@ $ yarn start
 ```
 
 2. Create a `.a11yrc.json` file in the root folder (see [example](.a11yrc.json.example));
+
    1. Specify the account/subdomain to preview the theme making sure it matches the active `zcli` profile
    2. Fill `username` and `password` with the credentials of an admin user;
    3. Specify which `urls` to test (if left empty, the script will test all urls);
@@ -271,6 +283,7 @@ yarn test-a11y
 If there is a known accessibility issue that should be ignored or can't be fixed right away, one may add a new entry to the ignore list in the [script's configuration object](bin/lighthouse/config.js). This will turn the accessibility issue into a warning instead of erroring.
 
 The entry should include:
+
 - the audit id;
 - a `path` as a url pattern string;
 - a `selector` as a string.
@@ -301,6 +314,7 @@ In this example, errors for the audit `tabindex` with the selector `body > a.ski
 Please keep in mind that this should only be used when strictly necessarity. Accessibility should be a focus and a priority when making changes to the theme.
 
 # Contributing
+
 Pull requests are welcome on GitHub at https://github.com/zendesk/copenhagen_theme. Please mention @zendesk/vikings when creating a pull request.
 
 We use [conventional commits](https://conventionalcommits.org/) to improve readability of the project history and to automate the release process. The commit message should therefore respect the following format:
@@ -337,7 +351,7 @@ We use [Github actions](https://github.com/features/actions) together with [`sem
 The list bellow describes the supported commit types and their effect in the release and changelog.
 
 | Type     | Description                                                                                            | Release | Changelog                |
-|----------|--------------------------------------------------------------------------------------------------------|---------|--------------------------|
+| -------- | ------------------------------------------------------------------------------------------------------ | ------- | ------------------------ |
 | build    | Changes that affect the build system or external dependencies                                          | -       | -                        |
 | chore    | Other changes that don't modify the source code                                                        | -       | -                        |
 | ci       | Changes to our CI configuration files and scripts                                                      | -       | -                        |
@@ -365,4 +379,5 @@ BREAKING CHANGE: theme is now relying on functionality that is exclusive to the 
 This will then generate a major release and add a `BREAKING CHANGES` section in the [changelog](CHANGELOG.md).
 
 # Bug reports
+
 Bug reports must be submitted through Zendesk's standard support channels: https://www.zendesk.com/contact/

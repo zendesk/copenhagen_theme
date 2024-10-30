@@ -5,7 +5,7 @@
   font-family: sans-serif;
   font-size: 12px;
   padding: 13px 15px;
-  transition: height .2s;
+  transition: height 0.2s;
   width: 100%;
   color: #555;
 }
@@ -20,7 +20,9 @@
   max-width: 980px;
 }
 
-.notification-icon, .notification-text, .notification-dismiss {
+.notification-icon,
+.notification-text,
+.notification-dismiss {
   display: table-cell;
   vertical-align: middle;
 }
@@ -81,10 +83,11 @@
 
 /* Dismiss button */
 
-.notification-dismiss, a.notification-dismiss {
+.notification-dismiss,
+a.notification-dismiss {
   color: #555;
   cursor: pointer;
-  opacity: .6;
+  opacity: 0.6;
   transition: opacity 100ms ease;
   text-decoration: none !important;
 }

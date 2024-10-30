@@ -1,12 +1,12 @@
 .content-tags {
   > p {
-    color: #68737D;
+    color: #68737d;
     margin-top: 32px;
     margin-bottom: 4px;
   }
 
   &-add-hint {
-    color: #68737D;
+    color: #68737d;
     font-size: 14px;
   }
 }
@@ -17,7 +17,7 @@
   word-break: break-word;
 
   li {
-    border-right: 1px solid #C2C8CC;
+    border-right: 1px solid #c2c8cc;
     margin-bottom: 4px;
 
     [dir="ltr"] & {

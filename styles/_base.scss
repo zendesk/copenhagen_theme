@@ -60,32 +60,33 @@ a {
   }
 }
 
-.hbs-form, .search {
+.hbs-form,
+.search {
   input,
   textarea {
     color: #000;
     font-size: $input-font-size;
   }
-  
+
   input {
     max-width: 100%;
     box-sizing: border-box;
     transition: $input-transition;
-  
+
     /* We use the :where selector to not increase the specificity of the selector */
     &:where(:not([type="checkbox"])) {
       outline: none;
-  
+
       &:focus {
         border: 1px solid $brand_color;
       }
     }
   }
-  
+
   input[disabled] {
     background-color: #ddd;
   }
-  
+
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -98,16 +99,16 @@ a {
     outline: none;
     color: $field-text-focus-color;
     width: 100%;
-  
+
     &:focus {
       border: 1px solid $brand_color;
     }
-  
+
     &::-ms-expand {
       display: none;
     }
   }
-  
+
   textarea {
     border: 1px solid $high-contrast-border-color;
     border-radius: 2px;
@@ -115,13 +116,12 @@ a {
     width: 100%;
     outline: none;
     padding: 10px;
-  
+
     &:focus {
       border: 1px solid $brand_color;
     }
   }
 }
-
 
 .container {
   @include max-width-container;

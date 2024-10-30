@@ -6,7 +6,9 @@
     position: relative;
     margin-bottom: 10px;
 
-    &:last-child { margin-bottom: 0; }
+    &:last-child {
+      margin-bottom: 0;
+    }
 
     .attachment-icon {
       color: $text_color;

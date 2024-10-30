@@ -17,7 +17,9 @@
   }
 
   &-breadcrumbs {
-    @include desktop { margin-bottom: 60px; }
+    @include desktop {
+      margin-bottom: 60px;
+    }
     margin-bottom: 40px;
   }
 
@@ -25,12 +27,17 @@
     flex: 1 0 auto;
     order: 1;
 
-    .comment-fields, .request-submit-comment {
+    .comment-fields,
+    .request-submit-comment {
       display: none;
     }
 
-    .comment-fields.shown { display: block; }
-    .request-submit-comment.shown { display: inline; }
+    .comment-fields.shown {
+      display: block;
+    }
+    .request-submit-comment.shown {
+      display: inline;
+    }
 
     @include desktop {
       flex: 0 0 66%; // 4% spacing
@@ -41,7 +48,9 @@
     .comment-form-controls {
       display: block;
     }
-    .comment-ccs { display: block; }
+    .comment-ccs {
+      display: block;
+    }
 
     .comment-show-container {
       border-radius: 2px;
@@ -84,7 +93,9 @@
       }
     }
 
-    input#mark_as_solved { display: none; }
+    input#mark_as_solved {
+      display: none;
+    }
   }
 
   &-title {
@@ -130,9 +141,12 @@
     margin: 0;
     padding-bottom: 20px;
 
-    &:last-child { border: 0; }
+    &:last-child {
+      border: 0;
+    }
 
-    dt, dd {
+    dt,
+    dd {
       display: inline-block;
       vertical-align: top;
       font-size: $font-size-small;
@@ -160,7 +174,8 @@
   }
 
   &-attachments {
-    dt, dd {
+    dt,
+    dd {
       width: 100%;
     }
 

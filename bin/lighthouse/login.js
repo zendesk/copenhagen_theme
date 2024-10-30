@@ -1,6 +1,6 @@
 async function login(browser, account) {
   const { email, password, loginUrl } = account;
-  
+
   const page = await browser.newPage();
   await page.goto(loginUrl);
   await page.waitForSelector("input#user_email", { visible: true });

@@ -20,14 +20,18 @@
   padding: 10px;
   width: 100%;
 
-  &:focus { border: 1px solid $brand_color; }
+  &:focus {
+    border: 1px solid $brand_color;
+  }
 }
 
 .form-field input[type="text"] {
   border: 1px solid $high-contrast-border-color;
   border-radius: 4px;
 
-  &:focus { border: 1px solid $brand_color; }
+  &:focus {
+    border: 1px solid $brand_color;
+  }
 }
 
 .form-field input[type="checkbox"] {
@@ -104,6 +108,8 @@
   li {
     padding: 10px 0;
 
-    a:visited { color: $visited_link_color; }
+    a:visited {
+      color: $visited_link_color;
+    }
   }
 }

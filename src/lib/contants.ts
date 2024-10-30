@@ -1,1 +1,1 @@
-export const DOMAIN = 'zendesk.com';
+export const DOMAIN = "zendesk.com";

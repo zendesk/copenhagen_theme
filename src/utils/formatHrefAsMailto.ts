@@ -8,7 +8,7 @@ export default function formatHrefAsMailto(href: string): string {
   // Check if the href is a valid email address
   if (isValidEmail(href)) {
     // If it doesn't already start with "mailto:", add it
-    if (!href.startsWith('mailto:')) {
+    if (!href.startsWith("mailto:")) {
       return `mailto:${href}`;
     }
   }

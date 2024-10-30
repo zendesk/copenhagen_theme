@@ -1,4 +1,4 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 
 export class StorageManager<T> {
   key: string;
@@ -9,7 +9,7 @@ export class StorageManager<T> {
 
   set(value: T): void {
     const valueToSet = JSON.stringify(value);
-    Cookies.set(this.key, valueToSet, { expires: 365, domain: 'zendesk.com' });
+    Cookies.set(this.key, valueToSet, { expires: 365, domain: "zendesk.com" });
   }
 
   get(): T | undefined {
@@ -23,11 +23,11 @@ export class StorageManager<T> {
   }
 
   remove(): void {
-    Cookies.remove(this.key, { domain: 'zendesk.com' });
+    Cookies.remove(this.key, { domain: "zendesk.com" });
   }
 }
 
-export type Theme = 'dark' | 'light';
+export type Theme = "dark" | "light";
 
-const THEME_STORAGE_NAME = 'uniswap-ui-theme';
+const THEME_STORAGE_NAME = "uniswap-ui-theme";
 export const ThemeManager = new StorageManager<Theme>(THEME_STORAGE_NAME);

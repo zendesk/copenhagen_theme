@@ -20,7 +20,7 @@ function getAccount() {
     subdomain: process.env.subdomain || a11yAccount.subdomain,
     email: process.env.end_user_email || a11yAccount.username,
     password: process.env.end_user_password || a11yAccount.password,
-    urls: process.env?.urls?.trim()?.split(/\s+/) || a11yAccount.urls
+    urls: process.env?.urls?.trim()?.split(/\s+/) || a11yAccount.urls,
   };
 
   if (!isValid(account)) {

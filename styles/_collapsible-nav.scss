@@ -19,7 +19,9 @@
 }
 
 .collapsible-nav-toggle {
-  @include tablet { display: none; }
+  @include tablet {
+    display: none;
+  }
   top: calc(45px / 2);
   transform: translateY(-50%);
   position: absolute;
@@ -45,7 +47,7 @@
       display: inline-block;
     }
   }
-  
+
   &[aria-expanded="true"] {
     .x-icon {
       display: inline-block;
@@ -105,7 +107,9 @@
 
   li:not([aria-selected="true"]),
   li:not(.current) {
-    @include tablet { display: block; }
+    @include tablet {
+      display: block;
+    }
     display: none;
   }
 
@@ -125,7 +129,9 @@
     order: 0; //Move to top of menu
     position: relative;
 
-    a { color: $text_color; }
+    a {
+      color: $text_color;
+    }
   }
 }
 
