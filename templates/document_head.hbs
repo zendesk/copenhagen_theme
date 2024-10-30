@@ -21,7 +21,12 @@
 }
 </script>
 <style>
-/* Define Riegraf font */
+:root {
+  --font-riegraf: 'Riegraf', serif;
+  --font-basel-grotesk: 'Basel Grotesk', sans-serif;
+  --font-fragment-mono: 'Fragment Mono', monospace;
+}
+
 @font-face {
   font-family: 'Riegraf';
   src: url("{{asset 'Riegraf-Regular.woff2'}}") format('woff2'),
@@ -111,11 +116,9 @@
   font-style: normal;
 }
 
-/* Define Fragment Mono font */
 @font-face {
   font-family: 'Fragment Mono';
-  src: url('{{asset "fragment-mono-regular.woff2"}}') format('woff2'),
-       url('{{asset "fragment-mono-regular.woff"}}') format('woff');
+  src: url('https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap');
   font-weight: 400;
   font-style: normal;
 }
