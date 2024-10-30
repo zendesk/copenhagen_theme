@@ -1,0 +1,18 @@
+<div class="container-divider"></div>
+<div class="container">
+  <div class="sub-nav">
+  </div>
+
+  <div id="main-content">
+     <div id="service-catalog-item"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderServiceCatalogItem } from "service-catalog";
+
+  const settings = {{json settings}};
+  const container = document.getElementById("service-catalog-item");
+
+  renderServiceCatalogItem(container, settings);
+</script>
