@@ -1,3 +1,11 @@
+## [4.2.3](https://github.com/zendesk/copenhagen_theme/compare/v4.2.2...v4.2.3) (2024-10-30)
+
+
+### Bug Fixes
+
+* added validation of date format for ticket field prefilling ([4f01052](https://github.com/zendesk/copenhagen_theme/commit/4f01052cc6b3d12131a6dcaeab2d9b2a9ef76951))
+* fixed date fields prefilling with wrong dates in some timezones ([67fd377](https://github.com/zendesk/copenhagen_theme/commit/67fd3772684fcdb1055ecf2fd91c9cd64c38cf25))
+
 ## [4.2.2](https://github.com/zendesk/copenhagen_theme/compare/v4.2.1...v4.2.2) (2024-10-07)
 
 
