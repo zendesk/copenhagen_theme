@@ -120,6 +120,7 @@ export function NewRequestForm({
     organizations.length > 0 && organizations[0]?.id
       ? organizations[0]?.id?.toString()
       : null;
+
   const handleChange = useCallback(
     (field: Field, value: Field["value"]) => {
       setTicketFields(
@@ -141,13 +142,16 @@ export function NewRequestForm({
     setOrganizationField({ ...organizationField, value });
   }
 
-  function handleDueDateChange(value: string) {
-    if (dueDateField === null) {
-      return;
-    }
+  const handleDueDateChange = useCallback(
+    (value: string) => {
+      if (dueDateField === null) {
+        return;
+      }
 
-    setDueDateField({ ...dueDateField, value });
-  }
+      setDueDateField({ ...dueDateField, value });
+    },
+    [dueDateField]
+  );
 
   return (
     <>

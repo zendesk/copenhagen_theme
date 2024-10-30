@@ -9,7 +9,7 @@ import {
 import { Span } from "@zendeskgarden/react-typography";
 import type { Field } from "../data-types";
 import type { ChangeEventHandler } from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 interface DatePickerProps {
   field: Field;
@@ -29,25 +29,48 @@ export function DatePicker({
     value ? new Date(value as string) : undefined
   );
 
-  const formatDate = (value: Date | undefined) => {
-    if (value === undefined) {
-      return "";
-    }
-    const isoString = value.toISOString();
-    return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
-  };
+  /* Formats the date using the UTC time zone to prevent timezone-related issues.
+   * By creating a new Date object with only the date, the time defaults to 00:00:00 UTC.
+   * This avoids date shifts that can occur if formatted with the local time zone, as Garden does by default.
+   */
+  const formatDateInput = useCallback(
+    (date: Date) => {
+      const dateTimeFormat = new Intl.DateTimeFormat(locale, {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        timeZone: "UTC",
+      });
+      return dateTimeFormat.format(date);
+    },
+    [locale]
+  );
 
-  const handleChange = (date: Date) => {
-    // Set the time to 12:00:00 as this is also the expected behavior across Support and the API
-    const newDate = new Date(
-      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0)
-    ) as Date;
-    setDate(newDate);
-    const dateString = formatDate(newDate);
-    if (dateString !== undefined) {
-      onChange(dateString);
-    }
-  };
+  const formatDateValue = useCallback(
+    (value: Date | undefined) => {
+      if (value === undefined) {
+        return "";
+      }
+      const isoString = value.toISOString();
+      return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
+    },
+    [valueFormat]
+  );
+
+  const handleChange = useCallback(
+    (date: Date) => {
+      // Set the time to 12:00:00 as this is also the expected behavior across Support and the API
+      const newDate = new Date(
+        Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0)
+      ) as Date;
+      setDate(newDate);
+      const dateString = formatDateValue(newDate);
+      if (dateString !== undefined) {
+        onChange(dateString);
+      }
+    },
+    [onChange, formatDateValue]
+  );
 
   const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     // Allow field to be cleared
@@ -66,7 +89,12 @@ export function DatePicker({
       {description && (
         <Hint dangerouslySetInnerHTML={{ __html: description }} />
       )}
-      <GardenDatepicker value={date} onChange={handleChange} locale={locale}>
+      <GardenDatepicker
+        value={date}
+        onChange={handleChange}
+        formatDate={formatDateInput}
+        locale={locale}
+      >
         <Input
           required={required}
           lang={locale}
@@ -75,7 +103,7 @@ export function DatePicker({
         />
       </GardenDatepicker>
       {error && <Message validation="error">{error}</Message>}
-      <input type="hidden" name={name} value={formatDate(date)} />
+      <input type="hidden" name={name} value={formatDateValue(date)} />
     </GardenField>
   );
 }

@@ -4,6 +4,7 @@ import DOMPurify from "dompurify";
 
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";
+const DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 
 const ALLOWED_BOOLEAN_VALUES = ["true", "false"];
 const ALLOWED_HTML_TAGS = [
@@ -57,6 +58,20 @@ function getFieldFromId(id: string, prefilledTicketFields: Fields) {
   }
 }
 
+function isValidDate(dateString: string) {
+  if (!DATE_REGEX.test(dateString)) {
+    return false;
+  }
+
+  const date = new Date(dateString);
+  const [year, month, day] = dateString.split("-").map(Number);
+  return (
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() + 1 === month &&
+    date.getUTCDate() === day
+  );
+}
+
 function getPrefilledTicketFields(fields: Fields): Fields {
   const { href } = location;
   const params = new URL(href).searchParams;
@@ -100,6 +115,12 @@ function getPrefilledTicketFields(fields: Fields): Fields {
               : sanitizedValue === "false"
               ? "off"
               : "";
+        }
+        break;
+      case "due_at":
+      case "date":
+        if (isValidDate(sanitizedValue)) {
+          field.value = sanitizedValue;
         }
         break;
       default:
