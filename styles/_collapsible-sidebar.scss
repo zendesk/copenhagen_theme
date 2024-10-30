@@ -15,7 +15,9 @@
   }
 
   &-toggle {
-    @include desktop { display: none; }
+    @include desktop {
+      display: none;
+    }
     position: absolute;
     top: calc(45px / 2);
     transform: translateY(-50%);
@@ -35,13 +37,13 @@
     &-icon {
       display: none;
     }
-  
+
     &[aria-expanded="false"] {
       .chevron-icon {
         display: inline-block;
       }
     }
-    
+
     &[aria-expanded="true"] {
       .x-icon {
         display: inline-block;
@@ -55,7 +57,9 @@
   }
 
   &-body {
-    @include desktop { display: block; }
+    @include desktop {
+      display: block;
+    }
     display: none;
   }
 

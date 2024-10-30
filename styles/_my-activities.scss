@@ -10,7 +10,8 @@
   }
 
   &-table {
-    .striped-list-title { /* My activities tables */
+    .striped-list-title {
+      /* My activities tables */
       @include desktop {
         margin-bottom: 0;
         max-width: 500px;
@@ -27,13 +28,17 @@
     }
 
     thead {
-      @include tablet { display: table-header-group; }
+      @include tablet {
+        display: table-header-group;
+      }
       display: none;
     }
 
     th:first-child,
     td:first-child {
-      @include desktop { width: 500px; }
+      @include desktop {
+        width: 500px;
+      }
       padding-left: 0;
     }
 
@@ -44,7 +49,9 @@
 
     // On mobile, only show the first column
     td:not(:first-child) {
-      @include tablet { display: table-cell; }
+      @include tablet {
+        display: table-cell;
+      }
 
       display: none;
     }
@@ -82,7 +89,9 @@
     .request-filter {
       @include tablet {
         margin: 0 0 0 30px;
-        [dir="rtl"] & { margin: 0 30px 0 0; }
+        [dir="rtl"] & {
+          margin: 0 30px 0 0;
+        }
       }
 
       display: block;
@@ -112,14 +121,16 @@
     .organization-subscribe {
       @include tablet {
         margin-left: 10px;
-        [dir="rtl"] & { margin: 0 10px 0 0; }
+        [dir="rtl"] & {
+          margin: 0 10px 0 0;
+        }
       }
 
       button {
         @extend .button;
         line-height: 40px;
-      max-height: 40px;
-      padding: 0 20px;
+        max-height: 40px;
+        padding: 0 20px;
         &[data-selected="true"] {
           @extend .button-primary;
         }
@@ -154,7 +165,9 @@
     }
 
     thead {
-      @include tablet { display: table-header-group; }
+      @include tablet {
+        display: table-header-group;
+      }
       display: none;
     }
 
@@ -184,7 +197,9 @@
 /* Following table */
 .subscriptions {
   &-subscribe button {
-    @include tablet { width: auto; }
+    @include tablet {
+      width: auto;
+    }
     @extend .button;
     &[data-selected="true"] {
       @extend .button-primary;
@@ -193,7 +208,9 @@
 
   &-table {
     td:last-child {
-      @include tablet { display: table-cell; }
+      @include tablet {
+        display: table-cell;
+      }
       display: block;
     }
 
@@ -227,4 +244,6 @@
   }
 }
 
-.no-activities { color: $secondary-text-color; }
+.no-activities {
+  color: $secondary-text-color;
+}

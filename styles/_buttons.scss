@@ -1,6 +1,8 @@
 /***** Buttons *****/
 .button {
-  @include tablet { width: auto; }
+  @include tablet {
+    width: auto;
+  }
 
   background-color: transparent;
   border: 1px solid $button-color;
@@ -13,7 +15,8 @@
   margin: 0;
   padding: 0 20px;
   text-align: center;
-  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+  transition: background-color 0.12s ease-in-out, border-color 0.12s ease-in-out,
+    color 0.15s ease-in-out;
   user-select: none;
   white-space: nowrap;
   width: 100%;
@@ -46,7 +49,8 @@
   }
 }
 
-.button-large, .hbs-form input[type="submit"] {
+.button-large,
+.hbs-form input[type="submit"] {
   @include tablet {
     width: auto;
   }
@@ -71,7 +75,6 @@
   &:focus {
     background-color: $hover-button-color;
   }
-
 
   &[disabled] {
     background-color: #ddd;

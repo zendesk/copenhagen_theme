@@ -5,7 +5,8 @@
   white-space: nowrap;
 }
 
-.share li, .share a {
+.share li,
+.share a {
   display: inline-block;
 }
 
@@ -20,10 +21,10 @@
     text-decoration: none;
     color: $brand_color;
   }
-  
+
   & svg {
     height: 18px;
     width: 18px;
-    display: block;  
+    display: block;
   }
 }

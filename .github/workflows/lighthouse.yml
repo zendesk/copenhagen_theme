@@ -10,38 +10,40 @@ jobs:
       - name: Setup Node.js
         uses: zendesk/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - name: Install node_modules
         run: yarn install --frozen-lockfile
       - name: Build
         run: yarn build
-      - name: Upload theme
-        run: node ./bin/theme-upload.js
-        env:
-          ZENDESK_EMAIL: ${{ secrets.zendesk_email }}
-          ZENDESK_API_TOKEN: ${{ secrets.zendesk_token }}
-          ZENDESK_SUBDOMAIN: ${{ secrets.subdomain }}
-          BRAND_ID: ${{ secrets.brand_id }}
-      - name: Audit URLs using Lighthouse
-        run: yarn test-a11y
-        env:
-          end_user_email: ${{ secrets.end_user_email }}
-          end_user_password: ${{ secrets.end_user_password }}
-          subdomain: ${{ secrets.subdomain }}
-          urls: |
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/sections/360003307259
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/articles/360010829359
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/new
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Help+Center
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics/360000644279
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/360006766799
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/profiles/364655812519
-            https://${{ secrets.subdomain }}.zendesk.com/hc/contributions/posts?locale=en-us
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/subscriptions
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/3
-            https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/new
+      # deactivate this step since it will make the current theme live on production
+      # TODO: activate this with configuration once the theme is ready for production
+      # - name: Upload theme
+      #   run: node ./bin/theme-upload.js
+      #   env:
+      #     ZENDESK_EMAIL: ${{ secrets.zendesk_email }}
+      #     ZENDESK_API_TOKEN: ${{ secrets.zendesk_token }}
+      #     ZENDESK_SUBDOMAIN: ${{ secrets.subdomain }}
+      #     BRAND_ID: ${{ secrets.brand_id }}
+      # - name: Audit URLs using Lighthouse
+      #   run: yarn test-a11y
+      #   env:
+      #     end_user_email: ${{ secrets.end_user_email }}
+      #     end_user_password: ${{ secrets.end_user_password }}
+      #     subdomain: ${{ secrets.subdomain }}
+      #     urls: |
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/categories/360002267479
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/sections/360003307259
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/articles/360010829359
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/new
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/search?utf8=%E2%9C%93&query=Help+Center
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/topics/360000644279
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/360006766799
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/profiles/364655812519
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/contributions/posts?locale=en-us
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/subscriptions
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/requests/3
+      #       https://${{ secrets.subdomain }}.zendesk.com/hc/en-us/community/posts/new
