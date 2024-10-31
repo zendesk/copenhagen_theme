@@ -1812,13 +1812,21 @@ async function handleLubanSoftware(locale) {
                     'link': ''
                 },
                 {
-                    'text': ' Jump start your making journey with our software ',
+                    'text': ' Read ',
                     'link': ''
                 },
                 {
-                    'text': 'user manual',
+                    'text': 'Snapmaker Luban Manual Wiki',
                     'link': 'https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual'
                 },
+                // {
+                //     'text': ' Jump start your making journey with our software ',
+                //     'link': ''
+                // },
+                // {
+                //     'text': 'user manual',
+                //     'link': 'https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual'
+                // },
                 {
                     'text': '.',
                     'link': ''
