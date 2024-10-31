@@ -1632,9 +1632,15 @@ function handleSectionResourceDescription(description, title) {
                 'link': ''
             }
         ],
-        'Third-party Configs': [
+        // 'Third-party Configs': [
+        //     {
+        //         'text': 'Download and set up the configuration files to generate G-code on third-party CAD or CAM software, including Fusion 360, FreeCAD, ArtCAM, Aspire, and more to be added.',
+        //         'link': ''
+        //     }
+        // ],
+        'Configs for CNC': [
             {
-                'text': 'Download and set up the configuration files to generate G-code on third-party CAD or CAM software, including Fusion 360, FreeCAD, ArtCAM, Aspire, and more to be added.',
+                'text': 'Stable configuration files for Fusion 360. Beta configuration files for FreeCAD, ArtCAM, Aspire, and Vcarve.',
                 'link': ''
             }
         ],
@@ -1697,13 +1703,37 @@ function handleSectionResourceDescription(description, title) {
             },
             {
                 'text': '论坛',
-                'link': 'https://forum.snapmaker.com/'
+                'link': 'https://forum.snapmaker.com/t/snapmaker-luban-downloads-and-updates/4949'
+                // 'link': 'https://forum.snapmaker.com/'
             },
             {
-                'text': '下载历史版本。',
+                'text': '下载历史版本。查看',
+                'link': ''
+            },
+            {
+                'text': ' Snapmaker Luban GitHub 项目',
+                'link': 'https://github.com/Snapmaker/Luban/releases'
+                // 'link': 'https://forum.snapmaker.com/'
+            },
+            {
+                'text': '。',
                 'link': ''
             }
         ],
+        // '固件': [
+        //     {
+        //         'text': '在',
+        //         'link': ''
+        //     },
+        //     {
+        //         'text': '论坛',
+        //         'link': 'https://forum.snapmaker.com/'
+        //     },
+        //     {
+        //         'text': '下载历史版本。',
+        //         'link': ''
+        //     }
+        // ],
         '快速入门指南（A 型号）': [
             {
                 'text': '阅读本指南，开启创客之旅。',
@@ -1762,7 +1792,7 @@ async function handleLubanSoftware(locale) {
     if (locale === 'zh-cn') {
         templateData = {
             'title': '软件',
-            'time': '2023年1月12日',
+            'time': '2024年6月18日',
             'type': 'download',
             'text': '下载 Luban ',
             'description': [
@@ -1795,7 +1825,7 @@ async function handleLubanSoftware(locale) {
     } else {
         templateData = {
             'title': 'Software',
-            'time': 'Jan 12, 2023',
+            'time': 'Jun 18, 2024',
             'type': 'download',
             'text': 'Download Luban ',
             'description': [
@@ -1817,7 +1847,7 @@ async function handleLubanSoftware(locale) {
                 },
                 {
                     'text': 'Snapmaker Luban Manual Wiki',
-                    'link': 'https://support.snapmaker.com/hc/en-us/articles/4406229926935-Snapmaker-Luban-4-0-User-Manual'
+                    'link': 'https://wiki.snapmaker.com/en/Snapmaker_Luban/manual'
                 },
                 // {
                 //     'text': ' Jump start your making journey with our software ',
