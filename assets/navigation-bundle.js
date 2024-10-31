@@ -1,4 +1,6 @@
 import { j as jsxRuntimeExports, ab as cn, ac as api, r as reactExports, ad as Ye, ae as yt, af as je, a7 as reactDomExports, a8 as ThemeProviders, a9 as createTheme } from 'shared';
+import { T as ThemeIconMap, S as Sun, M as Moon, C as Close, a as Menu } from 'index';
+import { P as PrimaryButton, L as LinkBase, B as ButtonBase } from 'index';
 
 const MiniUnicon = ({ className, color = "accent-1" }) => {
     return (jsxRuntimeExports.jsxs("svg", { className: cn("MiniUnicon", className), viewBox: "0 0 96 96", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: [jsxRuntimeExports.jsx("path", { d: "M32.1304 9.55767C30.947 9.37684 30.8971 9.35561 31.454 9.27131C32.5212 9.10963 35.0413 9.32997 36.7779 9.73674C40.8321 10.686 44.5213 13.1178 48.4591 17.4366L49.5053 18.5839L51.0019 18.3469C57.3068 17.3489 63.7208 18.1421 69.0855 20.5832C70.5613 21.2548 72.8883 22.5917 73.179 22.9353C73.2716 23.0448 73.4417 23.7495 73.5569 24.5016C73.9554 27.1034 73.7559 29.0978 72.9481 30.5873C72.5084 31.3979 72.4839 31.6548 72.7794 32.3485C73.0154 32.9021 73.6732 33.3118 74.3245 33.3109C75.6577 33.3091 77.0927 31.1863 77.7575 28.2325L78.0216 27.0592L78.5448 27.643C81.4146 30.8457 83.6686 35.2134 84.0558 38.3224L84.1566 39.133L83.6743 38.3961C82.8441 37.128 82.01 36.2648 80.9418 35.5686C79.0164 34.3137 76.9805 33.8866 71.5888 33.6067C66.7192 33.3539 63.9632 32.9442 61.2304 32.0664C56.5808 30.5732 54.2369 28.5845 48.7138 21.4466C46.2606 18.2762 44.7443 16.5221 43.236 15.1094C39.8088 11.8997 36.4412 10.2163 32.1304 9.55767Z", className: cn({
@@ -31,99 +33,6 @@ const MiniUnicon = ({ className, color = "accent-1" }) => {
                 }) })] }));
 };
 
-const Menu = ({ className, color = "neutral-2" }) => {
-    return (jsxRuntimeExports.jsx("svg", { className: className, viewBox: "0 0 24 24", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsxRuntimeExports.jsx("path", { d: "M2 6C2 5.448 2.448 5 3 5H21C21.552 5 22 5.448 22 6C22 6.552 21.552 7 21 7H3C2.448 7 2 6.552 2 6ZM21 11H3C2.448 11 2 11.448 2 12C2 12.552 2.448 13 3 13H21C21.552 13 22 12.552 22 12C22 11.448 21.552 11 21 11ZM21 17H3C2.448 17 2 17.448 2 18C2 18.552 2.448 19 3 19H21C21.552 19 22 18.552 22 18C22 17.448 21.552 17 21 17Z", className: cn({
-                "fill-light-neutral-2 dark:fill-dark-neutral-2": color === "neutral-2",
-            }) }) }));
-};
-const Close = ({ className, color = "neutral-2" }) => {
-    return (jsxRuntimeExports.jsx("svg", { className: className, viewBox: "0 0 14 14", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsxRuntimeExports.jsx("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L8.41421 7L13.7071 12.2929C14.0976 12.6834 14.0976 13.3166 13.7071 13.7071C13.3166 14.0976 12.6834 14.0976 12.2929 13.7071L7 8.41421L1.70711 13.7071C1.31658 14.0976 0.683417 14.0976 0.292893 13.7071C-0.0976311 13.3166 -0.0976311 12.6834 0.292893 12.2929L5.58579 7L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z", className: cn("transition-all", {
-                "fill-light-neutral-2 group-hover:fill-light-neutral-1 dark:fill-dark-neutral-2 group-hover:dark:fill-dark-neutral-1": color === "neutral-2",
-            }) }) }));
-};
-const Sun = ({ className, color = "neutral-2" }) => {
-    return (jsxRuntimeExports.jsx("svg", { className: className, viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsxRuntimeExports.jsx("path", { className: cn({
-                "fill-light-neutral-2 dark:fill-dark-neutral-2": color === "neutral-2",
-            }), d: "M11 8C11 9.654 9.654 11 8 11C6.346 11 5 9.654 5 8C5 6.346 6.346 5 8 5C9.654 5 11 6.346 11 8ZM8.5 3.33333V2C8.5 1.724 8.276 1.5 8 1.5C7.724 1.5 7.5 1.724 7.5 2V3.33333C7.5 3.60933 7.724 3.83333 8 3.83333C8.276 3.83333 8.5 3.60933 8.5 3.33333ZM8.5 14V12.6667C8.5 12.3907 8.276 12.1667 8 12.1667C7.724 12.1667 7.5 12.3907 7.5 12.6667V14C7.5 14.276 7.724 14.5 8 14.5C8.276 14.5 8.5 14.276 8.5 14ZM3.83333 8C3.83333 7.724 3.60933 7.5 3.33333 7.5H2C1.724 7.5 1.5 7.724 1.5 8C1.5 8.276 1.724 8.5 2 8.5H3.33333C3.60933 8.5 3.83333 8.276 3.83333 8ZM14.5 8C14.5 7.724 14.276 7.5 14 7.5H12.6667C12.3907 7.5 12.1667 7.724 12.1667 8C12.1667 8.276 12.3907 8.5 12.6667 8.5H14C14.276 8.5 14.5 8.276 14.5 8ZM5.054 5.054C5.24933 4.85866 5.24933 4.54199 5.054 4.34666L4.11133 3.40399C3.91599 3.20866 3.59933 3.20866 3.40399 3.40399C3.20866 3.59933 3.20866 3.91599 3.40399 4.11133L4.34666 5.054C4.44399 5.15133 4.57199 5.20066 4.69999 5.20066C4.82799 5.20066 4.956 5.15133 5.054 5.054ZM12.596 12.596C12.7913 12.4007 12.7913 12.084 12.596 11.8887L11.6533 10.946C11.458 10.7507 11.1413 10.7507 10.946 10.946C10.7507 11.1413 10.7507 11.458 10.946 11.6533L11.8887 12.596C11.986 12.6933 12.114 12.7427 12.242 12.7427C12.37 12.7427 12.4987 12.694 12.596 12.596ZM4.11133 12.596L5.054 11.6533C5.24933 11.458 5.24933 11.1413 5.054 10.946C4.85866 10.7507 4.54199 10.7507 4.34666 10.946L3.40399 11.8887C3.20866 12.084 3.20866 12.4007 3.40399 12.596C3.50133 12.6933 3.62932 12.7427 3.75732 12.7427C3.88532 12.7427 4.01333 12.694 4.11133 12.596ZM11.6533 5.054L12.596 4.11133C12.7913 3.91599 12.7913 3.59933 12.596 3.40399C12.4007 3.20866 12.084 3.20866 11.8887 3.40399L10.946 4.34666C10.7507 4.54199 10.7507 4.85866 10.946 5.054C11.0433 5.15133 11.1713 5.20066 11.2993 5.20066C11.4273 5.20066 11.5553 5.15133 11.6533 5.054Z" }) }));
-};
-const Moon = ({ className, color = "neutral-2" }) => {
-    return (jsxRuntimeExports.jsx("svg", { className: className, viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg", children: jsxRuntimeExports.jsx("path", { className: cn({
-                "fill-light-neutral-2 dark:fill-dark-neutral-2": color === "neutral-2",
-            }), d: "M8.75534 1.33337C8.75734 1.33337 8.76001 1.33337 8.76201 1.33337C8.97468 1.33337 9.06667 1.59538 8.90667 1.73338C7.786 2.69804 7.17002 4.2147 7.48402 5.84937C7.83268 7.66337 9.32535 9.04403 11.182 9.29203C12.3547 9.4487 13.4407 9.15203 14.304 8.55937C14.4793 8.4387 14.712 8.59804 14.6594 8.80204C13.9234 11.6794 11.084 13.73 7.84467 13.268C5.15401 12.884 3.02935 10.7247 2.71068 8.06337C2.54402 6.67537 2.85933 5.36738 3.51333 4.28005C4.57333 2.51605 6.52401 1.33337 8.75534 1.33337Z" }) }));
-};
-const IconMap = ({ icon, color, className }) => {
-    switch (icon) {
-        case "sun":
-            return jsxRuntimeExports.jsx(Sun, { color: color, className: className });
-        case "moon":
-            return jsxRuntimeExports.jsx(Moon, { color: color, className: className });
-        default:
-            console.warn(`Icon ${icon} not found`);
-            return null;
-    }
-};
-
-function isValidEmail(href) {
-    // Regular expression to validate email address
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(href);
-}
-function formatHrefAsMailto(href) {
-    // Check if the href is a valid email address
-    if (isValidEmail(href)) {
-        // If it doesn't already start with "mailto:", add it
-        if (!href.startsWith("mailto:")) {
-            return `mailto:${href}`;
-        }
-    }
-    // Return the original href if it's not an email or already formatted correctly
-    return href;
-}
-
-const PrimaryButton = (props) => {
-    const { color = "accent-1", size = "medium", fullWidth = false, theme, } = props;
-    const containerStyle = cn("transition-colors flex flex-row items-center justify-center", {
-        "bg-light-accent-1 dark:bg-dark-accent-1 hover:bg-light-accent-1-hovered dark:hover:bg-dark-accent-1-hovered": !theme && color === "accent-1",
-        "bg-light-accent-2 dark:bg-dark-accent-2 hover:bg-light-accent-2-hovered dark:hover:bg-dark-accent-2-hovered": !theme && color === "accent-2",
-        "bg-light-surface-3 dark:bg-dark-surface-3 hover:bg-light-surface-3-hovered dark:hover:bg-dark-surface-3-hovered": !theme && color === "surface-3",
-        "bg-dark-accent-1 hover:bg-dark-accent-1-hovered": theme === "dark" && color === "accent-1",
-        "bg-light-accent-1 hover:bg-light-accent-1-hovered": theme === "light" && color === "accent-1",
-        "bg-dark-accent-2 hover:bg-dark-accent-2-hovered": theme === "dark" && color === "accent-2",
-        "bg-light-accent-2 hover:bg-light-accent-2-hovered": theme === "light" && color === "accent-2",
-        "rounded-small px-padding-small py-padding-small-dense": size === "medium",
-        "rounded-medium px-padding-large p-padding-medium": size === "large",
-    });
-    const textStyle = cn({
-        "text-white": color === "accent-1",
-        "text-light-accent-1 dark:text-dark-accent-1": color === "accent-2",
-        "text-light-neutral-1 dark:text-dark-neutral-1": color === "surface-3",
-        "button-label-4": size === "medium",
-        "button-label-2": size === "large",
-    });
-    if ("href" in props) {
-        const { label, href, ariaLabel, className, onClick } = props;
-        return (jsxRuntimeExports.jsx("div", { className: cn("PrimaryButton flex", {
-                "w-full": fullWidth,
-            }), children: jsxRuntimeExports.jsx(LinkBase, { href: href, className: cn(containerStyle, className, {
-                    "w-full": fullWidth,
-                }), ariaLabel: ariaLabel, onClick: onClick, children: jsxRuntimeExports.jsx("span", { className: textStyle, children: label }) }) }));
-    }
-    const { label, onClick, ariaLabel, role, className } = props;
-    return (jsxRuntimeExports.jsx("div", { className: "PrimaryButton flex", children: jsxRuntimeExports.jsx(ButtonBase, { onClick: onClick, className: cn(containerStyle, className), ariaLabel: ariaLabel, role: role, children: jsxRuntimeExports.jsx("span", { className: textStyle, children: label }) }) }));
-};
-const ButtonBase = ({ className, onClick, children, ariaLabel, role, }) => {
-    return (jsxRuntimeExports.jsx("button", { onClick: onClick, className: className, "aria-label": ariaLabel, role: role, children: children }));
-};
-const OPEN_IN_NEW_TAB_PROPS = { target: "_blank", rel: "noreferrer noopener" };
-const OPEN_IN_CURRENT_TAB_PROPS = { target: "_self" };
-const LinkBase = ({ className, href, children, ariaLabel, onClick, }) => {
-    const isInternalLink = href.startsWith("/") || href.startsWith("#");
-    const targetProps = isInternalLink
-        ? OPEN_IN_CURRENT_TAB_PROPS
-        : OPEN_IN_NEW_TAB_PROPS;
-    return (jsxRuntimeExports.jsx("a", { className: className, href: formatHrefAsMailto(href), "aria-label": ariaLabel, onClick: onClick, ...targetProps, children: children }));
-};
-
 class StorageManager {
     key;
     constructor(key) {
@@ -151,17 +60,17 @@ const UIContext = reactExports.createContext(undefined);
 const useUIProvider = () => {
     const context = reactExports.useContext(UIContext);
     if (context === undefined) {
-        throw new Error("useUIProvider must be used within a UIProvider");
+        throw new Error('useUIProvider must be used within a UIProvider');
     }
     return context;
 };
 const UIProvider = ({ children }) => {
     const [theme, setTheme] = reactExports.useState('light');
     reactExports.useEffect(() => {
-        if (typeof window !== "undefined") {
+        if (typeof window !== 'undefined') {
             const currentTheme = ThemeManager.get();
             if (!currentTheme) {
-                ThemeManager.set("light");
+                ThemeManager.set('light');
             }
             else {
                 setTheme(currentTheme);
@@ -170,7 +79,7 @@ const UIProvider = ({ children }) => {
     }, []);
     const toggleTheme = () => {
         setTheme((prev) => {
-            const newTheme = prev === "dark" ? "light" : "dark";
+            const newTheme = prev === 'dark' ? 'light' : 'dark';
             ThemeManager.set(newTheme);
             document.documentElement.classList.toggle('dark', newTheme === 'dark'); // Toggles the dark class
             return newTheme;
@@ -187,7 +96,7 @@ const ThemeSwitch = () => {
     return (jsxRuntimeExports.jsxs(Ye, { checked: theme === 'dark', onChange: toggleTheme, className: cn('group relative inline-flex h-8 w-[3.75rem] items-center rounded-full', {
             'bg-light-surface-3': theme === 'light',
             'bg-dark-surface-3': theme === 'dark',
-        }), "aria-label": "Toggle theme", children: [jsxRuntimeExports.jsx("span", { className: "flex h-6 w-6 translate-x-1 items-center justify-center rounded-full bg-white transition group-data-[checked]:translate-x-8", children: jsxRuntimeExports.jsx(IconMap, { className: "h-4 w-4", icon: theme === 'dark' ? 'moon' : 'sun' }) }), jsxRuntimeExports.jsx(Sun, { className: "absolute left-2 h-4 w-4" }), jsxRuntimeExports.jsx(Moon, { className: "absolute right-2 h-4 w-4" })] }));
+        }), "aria-label": "Toggle theme", children: [jsxRuntimeExports.jsx("span", { className: "flex h-6 w-6 translate-x-1 items-center justify-center rounded-full bg-white transition group-data-[checked]:translate-x-8", children: jsxRuntimeExports.jsx(ThemeIconMap, { className: "h-4 w-4", icon: theme === 'dark' ? 'moon' : 'sun' }) }), jsxRuntimeExports.jsx(Sun, { className: "absolute left-2 h-4 w-4" }), jsxRuntimeExports.jsx(Moon, { className: "absolute right-2 h-4 w-4" })] }));
 };
 
 const MobileMenuModal = ({ isOpen, close }) => {
@@ -238,7 +147,7 @@ const Navigation = () => {
     }, [setScrollIsOnTop]);
     return (jsxRuntimeExports.jsxs(UIProvider, { children: [jsxRuntimeExports.jsx("nav", { className: cn('Navigation fixed top-0 left-0 right-0 z-nav flex w-screen justify-center bg-light-surface-1 dark:border-dark-surface-3 dark:bg-dark-surface-1', {
                     'border-b': !scrollIsOnTop,
-                }), children: jsxRuntimeExports.jsxs("div", { className: "flex w-full flex-row items-center justify-between border-light-surface-3 px-4 py-[1.15625rem] sm:px-[0.9375rem] sm:py-3 md:h-[4.5rem]", children: [jsxRuntimeExports.jsx("div", { className: "flex flex-row items-center", children: jsxRuntimeExports.jsxs(LinkBase, { href: "/", className: "flex flex-row items-center", children: [jsxRuntimeExports.jsx(MiniUnicon, { className: "mb-[0.1875rem] h-8 w-8" }), jsxRuntimeExports.jsx("p", { className: "body-3 md:button-label-2 ml-2 text-light-accent-1 dark:text-dark-accent-1", children: "Uniswap Support" })] }) }), jsxRuntimeExports.jsx("div", { className: "sm:hidden", children: jsxRuntimeExports.jsx(ButtonBase, { onClick: () => {
+                }), children: jsxRuntimeExports.jsxs("div", { className: "flex w-full flex-row items-center justify-between border-light-surface-3 px-4 py-[1.15625rem] sm:px-[0.9375rem] sm:py-3 h-[4.5rem]", children: [jsxRuntimeExports.jsx("div", { className: "flex flex-row items-center", children: jsxRuntimeExports.jsxs(LinkBase, { href: "/", className: "flex flex-row items-center", children: [jsxRuntimeExports.jsx(MiniUnicon, { className: "mb-[0.1875rem] h-8 w-8" }), jsxRuntimeExports.jsx("p", { className: "body-3 md:button-label-2 ml-2 text-light-accent-1 dark:text-dark-accent-1", children: "Uniswap Support" })] }) }), jsxRuntimeExports.jsx("div", { className: "sm:hidden", children: jsxRuntimeExports.jsx(ButtonBase, { onClick: () => {
                                     setMenuIsOpen((prev) => !prev);
                                 }, children: jsxRuntimeExports.jsx(Menu, { className: "h-padding-large w-padding-large" }) }) }), jsxRuntimeExports.jsxs("div", { className: "hidden sm:flex", children: [jsxRuntimeExports.jsx(ThemeSwitch, {}), jsxRuntimeExports.jsx(PrimaryButton, { className: "ml-padding-small-dense !my-auto !py-0 !h-8", label: "Submit Request", href: "https://support.uniswap.org/hc/en-us/requests/new", color: "accent-2" })] })] }) }), jsxRuntimeExports.jsx("div", { className: cn('fixed inset-0 z-scrim bg-scrim transition duration-500', {
                     'pointer-events-none opacity-0': !menuIsOpen,

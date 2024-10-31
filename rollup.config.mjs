@@ -1,29 +1,28 @@
 /* eslint-env node */
-import zass from "./zass.mjs";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import commonjs from "@rollup/plugin-commonjs";
-import json from "@rollup/plugin-json";
-import dynamicImportVars from "@rollup/plugin-dynamic-import-vars";
-import typescript from "@rollup/plugin-typescript";
-import replace from "@rollup/plugin-replace";
-import terser from "@rollup/plugin-terser";
-import svgr from "@svgr/rollup";
-import { generateImportMap } from "./generate-import-map.mjs";
-import { defineConfig } from "rollup";
-import sass from "rollup-plugin-sass";
+import zass from './zass.mjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars';
+import typescript from '@rollup/plugin-typescript';
+import replace from '@rollup/plugin-replace';
+import terser from '@rollup/plugin-terser';
+import svgr from '@svgr/rollup';
+import { generateImportMap } from './generate-import-map.mjs';
+import { defineConfig } from 'rollup';
+import sass from 'rollup-plugin-sass';
 
-const fileNames = "[name]-bundle.js";
-const isProduction = process.env.NODE_ENV === "production";
-const TRANSLATION_FILE_REGEX =
-  /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
+const fileNames = '[name]-bundle.js';
+const isProduction = process.env.NODE_ENV === 'production';
+const TRANSLATION_FILE_REGEX = /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
 
 export default defineConfig([
   // Configuration for bundling the script.js file
   {
-    input: "src/index.js",
+    input: 'src/index.js',
     output: {
-      file: "script.js",
-      format: "iife",
+      file: 'script.js',
+      format: 'iife',
     },
     plugins: [zass()],
     watch: {
@@ -32,25 +31,27 @@ export default defineConfig([
   },
   // Configuration for bundling modules in the src/modules directory
   {
-    context: "this",
+    context: 'this',
     input: {
-      "new-request-form": "src/modules/new-request-form/index.tsx",
-      "flash-notifications": "src/modules/flash-notifications/index.ts",
-      "navigation": "src/modules/navigation/index.tsx",
+      'new-request-form': 'src/modules/new-request-form/index.tsx',
+      'flash-notifications': 'src/modules/flash-notifications/index.ts',
+      navigation: 'src/modules/navigation/index.tsx',
+      footer: 'src/modules/footer/index.tsx',
+      homepage: 'src/modules/homepage/index.tsx',
     },
     output: {
-      dir: "assets",
-      format: "es",
+      dir: 'assets',
+      format: 'es',
       manualChunks: (id) => {
         if (
-          id.includes("node_modules/@zendesk/help-center-wysiwyg") ||
-          id.includes("node_modules/@ckeditor5")
+          id.includes('node_modules/@zendesk/help-center-wysiwyg') ||
+          id.includes('node_modules/@ckeditor5')
         ) {
-          return "wysiwyg";
+          return 'wysiwyg';
         }
 
-        if (id.includes("node_modules") || id.includes("src/modules/shared")) {
-          return "shared";
+        if (id.includes('node_modules') || id.includes('src/modules/shared')) {
+          return 'shared';
         }
 
         // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`
@@ -64,20 +65,20 @@ export default defineConfig([
     },
     plugins: [
       nodeResolve({
-        extensions: [".js"],
+        extensions: ['.js'],
       }),
       commonjs(),
       typescript(),
       replace({
         preventAssignment: true,
-        "process.env.NODE_ENV": '"production"',
+        'process.env.NODE_ENV': '"production"',
       }),
       svgr({
         svgo: true,
         svgoConfig: {
           plugins: [
             {
-              name: "preset-default",
+              name: 'preset-default',
               params: {
                 overrides: {
                   removeTitle: false,

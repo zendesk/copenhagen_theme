@@ -16,7 +16,7 @@ const Footer: FC<Props> = ({ footerPageData }) => {
       <div className="default-grid sm:mb-20">
         <div className="mb-12 hidden items-start sm:col-span-8 sm:flex md:col-span-4 md:mb-0">
           <LinkBase href="/" className="flex flex-row items-center">
-            <MiniUnicon color="neutral-1" className="mb-[0.1875rem] h-8 w-8" />
+            {/* <MiniUnicon color="neutral-1" className="mb-[0.1875rem] h-8 w-8" /> */}
             <p className="body-1 ml-2 text-light-neutral-1 dark:text-dark-neutral-1">
               Uniswap Labs
             </p>

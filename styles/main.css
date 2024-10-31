@@ -2,10 +2,16 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+/* @import '../assets/types.css'; */
+
 .site-max-width {
   max-width: 1440px;
 }
 
 .default-grid {
   @apply grid grid-cols-4 gap-gap-large sm:grid-cols-8;
+}
+
+.page-wrapper {
+  @apply p-margin-mobile pb-margin-web sm:px-margin-web sm:pb-[7.5rem] mt-nav-h;
 }

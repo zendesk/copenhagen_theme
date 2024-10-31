@@ -1,0 +1,1 @@
+export { renderHomepage } from './renderHomepage';
