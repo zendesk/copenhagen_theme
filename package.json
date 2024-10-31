@@ -1,7 +1,7 @@
 {
   "name": "qoria_theme",
-  "version": "1.0.0",
-  "repository": "git@github.com:katiesfz/qoria_zendesk_theme",
+  "version": "1.0.1",
+  "repository": "katiesfz/qoria_zendesk_theme",
   "scripts": {
     "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
     "build": "NODE_ENV=production rollup -c",

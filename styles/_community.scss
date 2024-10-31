@@ -1,7 +1,7 @@
 /***** Community *****/
 .community {
   &-hero {
-    background-image: url($community_background_image);
+    background-image: url(\$community_background_image);
     margin-bottom: 10px;
   }
 
@@ -130,7 +130,7 @@
       content: attr(data-follower-count);
       color: $button-color;
       display: inline-block;
-      font-family: $heading_font;
+      font-family: Quicksand, Arial, Helvetica, sans-serif;
       margin-left: 15px;
       padding-left: 10px;
       position: absolute;

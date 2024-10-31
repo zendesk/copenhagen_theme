@@ -1,0 +1,24 @@
+{
+
+    "liveSassCompile.settings.formats": [
+    
+        {
+            "format": "compressed",
+            "extensionName": ".min.css",
+            "savePath": "\\",
+            "savePathReplacementPairs": null
+        },
+        {
+            "format": "expanded",
+            "extensionName": ".css",
+            "savePath": "\\",
+            "savePathReplacementPairs": null
+        }
+    ],
+    "liveSassCompile.settings.compileOnWatch": true,
+    "liveSassCompile.settings.includeItems": [
+"/styles/style.scss"
+    ],
+    "liveSassCompile.settings.rootIsWorkspace": true,
+    "liveSassCompile.settings.generateMap": false
+}
