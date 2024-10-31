@@ -4,3 +4,6 @@ node_modules/
 .a11yrc.json
 *.DS_Store
 coverage/
+assets/*.js
+script.js
+style.css

@@ -1,25 +1,64 @@
-<footer class="footer">
-  <div class="footer-inner">
-    {{#link 'help_center'}}{{help_center.name}}{{/link}}
+<div class="footer" id="new-footer">
+</div>
 
-    <div class="footer-language-selector">
-      {{#if alternative_locales}}
-        <div class="dropdown language-selector">
-          <button class="dropdown-toggle" aria-haspopup="true">
-            {{current_locale.name}}
-            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </button>
-          <span class="dropdown-menu dropdown-menu-end" role="menu">
-            {{#each alternative_locales}}
-              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                {{name}}
-              </a>
-            {{/each}}
-          </span>
-        </div>
-      {{/if}}
-    </div>
-  </div>
-</footer>
+<script type="module">
+  import { renderFooter } from "footer";
+
+  const container = document.getElementById("new-footer");
+
+  const settings = {{json settings}};
+
+  const footerPageData = {
+    footerGithubLink: 'https://github.com',
+    footerXLink: 'https://github.com',
+    footerDiscordLink: 'https://github.com',
+    globalData: window.uniswapGlobalDataObj,
+    footerLinksHelp: [
+      {
+        label: 'Help Center',
+        url: 'https://github.com',
+      },
+      {
+        label: 'Contact Us',
+        url: 'https://github.com',
+      },
+    ],
+    footerLinksCompany: [
+      {
+        label: 'Careers',
+        url: 'https://github.com',
+      },
+      {
+        label: 'Brand Assets',
+        url: 'https://github.com',
+      },
+      {
+        label: 'Terms & Privacy',
+        url: 'https://github.com',
+      },
+      {
+        label: 'Trademark Policy',
+        url: 'https://github.com',
+      },
+    ],
+    footerLinksEcosystem: [
+      {
+        label: 'Uniswap App',
+        url: 'https://github.com',
+      },
+      {
+        label: 'Governance',
+        url: 'https://github.com',
+      },
+      {
+        label: 'Blog',
+        url: 'https://github.com',
+      },
+    ]
+  }
+console.log('!!!!!!', window.uniswapGlobalDataObj)
+  // Make sure arguments are correctly typed. 
+  renderFooter(settings, footerPageData, container);
+
+
+</script>

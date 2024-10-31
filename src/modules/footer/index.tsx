@@ -1,0 +1,1 @@
+export { renderFooter } from './renderFooter';
