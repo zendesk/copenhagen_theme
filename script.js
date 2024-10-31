@@ -1632,6 +1632,12 @@ function handleSectionResourceDescription(description, title) {
                 'link': ''
             }
         ],
+        'Third-party Configs': [
+            {
+                'text': 'Stable configuration files for Fusion 360. Beta configuration files for FreeCAD, ArtCAM, Aspire, and Vcarve.',
+                'link': ''
+            }
+        ],
         // 'Third-party Configs': [
         //     {
         //         'text': 'Download and set up the configuration files to generate G-code on third-party CAD or CAM software, including Fusion 360, FreeCAD, ArtCAM, Aspire, and more to be added.',
