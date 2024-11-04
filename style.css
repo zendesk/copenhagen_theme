@@ -14,6 +14,11 @@ main {
   display: block;
 }
 
+:root {
+  --grey: #fff;
+  --default_border_radius: 4px;
+}
+
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -1006,12 +1011,13 @@ ul {
 
 .search {
   border-color: #87929D;
-  border-radius: 30px;
+  border-radius: var(--default_border_radius);
   border-style: solid;
   border-width: 1px;
   display: flex;
   position: relative;
   transition: border 0.12s ease-in-out;
+  overflow: hidden;
 }
 .search:focus-within {
   border-color: $brand_color;
@@ -1019,7 +1025,6 @@ ul {
 .search input[type=search],
 .search .clear-button {
   background-color: #fff;
-  border-radius: 30px;
   border: none;
 }
 .search-full input[type=search], .search-full .clear-button {
@@ -1029,7 +1034,7 @@ ul {
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
-  color: #666;
+  color: var(--grey);
   flex: 1 1 auto;
   height: 40px;
   width: 100%;
@@ -1109,7 +1114,7 @@ ul {
 
 .search-icon {
   position: relative;
-  top: 50%;
+  top: 75%;
   transform: translateY(-50%);
   position: absolute;
   left: 15px;
@@ -1140,6 +1145,12 @@ ul {
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
+}
+
+.hero-title {
+  color: $brand_text_color;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .page-header {
