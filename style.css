@@ -1019,6 +1019,23 @@ ul {
   transition: border 0.12s ease-in-out;
   overflow: hidden;
 }
+
+.search::before {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  color: #777;
+  content: "";
+  position: absolute;
+  left: 15px;
+  background-image: url('assets/search_icon.svg');
+  background-position: center;
+  background-size: cover;
+  height: 18px;
+  width: 18px;
+}
+
 .search:focus-within {
   border-color: $brand_color;
 }
@@ -1112,23 +1129,6 @@ ul {
   border-right-color: $brand_color;
 }
 
-.search-icon {
-  position: relative;
-  top: 75%;
-  transform: translateY(-50%);
-  position: absolute;
-  left: 15px;
-  z-index: 1;
-  width: 18px;
-  height: 18px;
-  color: #777;
-  pointer-events: none;
-}
-[dir=rtl] .search-icon {
-  left: auto;
-  right: 15px;
-}
-
 /***** Hero component *****/
 .hero {
   background-image: url($homepage_background_image);
@@ -1149,8 +1149,9 @@ ul {
 
 .hero-title {
   color: $brand_text_color;
-  font-size: 20px;
+  font-size: 40px;
   font-weight: 700;
+  line-height: 48px;
 }
 
 .page-header {
