@@ -14,11 +14,6 @@ main {
   display: block;
 }
 
-:root {
-  --grey: #fff;
-  --default_border_radius: 4px;
-}
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
@@ -1011,7 +1006,7 @@ ul {
 
 .search {
   border-color: #87929D;
-  border-radius: var(--default_border_radius);
+  border-radius: 4px;
   border-style: solid;
   border-width: 1px;
   display: flex;
@@ -1019,9 +1014,7 @@ ul {
   transition: border 0.12s ease-in-out;
   overflow: hidden;
 }
-
 .search::before {
-  position: relative;
   top: 50%;
   transform: translateY(-50%);
   background-color: #fff;
@@ -1029,13 +1022,12 @@ ul {
   content: "";
   position: absolute;
   left: 15px;
-  background-image: url('assets/search_icon.svg');
+  background-image: url("assets/search_icon.svg");
   background-position: center;
   background-size: cover;
   height: 18px;
   width: 18px;
 }
-
 .search:focus-within {
   border-color: $brand_color;
 }
@@ -1051,7 +1043,7 @@ ul {
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
-  color: var(--grey);
+  color: #fff;
   flex: 1 1 auto;
   height: 40px;
   width: 100%;
@@ -1153,6 +1145,15 @@ ul {
   font-size: 40px;
   font-weight: 700;
   line-height: 48px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .page-header {
@@ -4731,13 +4732,4 @@ zd-summary-block {
 }
 [dir=rtl] zd-summary-block {
   border-right-color: #859fa1;
-}
-
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }

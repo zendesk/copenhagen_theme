@@ -3,6 +3,8 @@
 $icon-color: #777;
 $padding-left: 40px;
 $padding-right: 20px;
+$border-radius: 4px;
+$grey: #fff;
 
 .search-container {
   position: relative;
@@ -10,12 +12,28 @@ $padding-right: 20px;
 
 .search {
   border-color: $high-contrast-border-color;
-  border-radius: 30px;
+  border-radius: $border-radius;
   border-style: solid;
   border-width: 1px;
   display: flex;
   position: relative;
   transition: $input-transition;
+  overflow: hidden;
+
+  &::before {
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #fff;
+    color: #777;
+    content: '';
+    position: absolute;
+    left: 15px;
+    background-image: url('assets/search_icon.svg');
+    background-position: center;
+    background-size: cover;
+    height: 18px;
+    width: 18px;
+  }
 
   &:focus-within {
     border-color: $brand_color;
@@ -24,7 +42,6 @@ $padding-right: 20px;
   input[type="search"], 
   .clear-button {
     background-color: #fff;
-    border-radius: 30px;
     border: none;
   }
 
@@ -37,7 +54,7 @@ $padding-right: 20px;
     appearance: none;
     -webkit-appearance: none;
     box-sizing: border-box;
-    color: $field-text-color;
+    color: $grey;
     flex: 1 1 auto;
     height: 40px;
     width: 100%;
@@ -143,21 +160,5 @@ $padding-right: 20px;
       border-right-color: $brand_color;
     }
 
-  }
-}
-
-.search-icon {
-  @include vertical-align;
-  position: absolute;
-  left: 15px;
-  z-index: 1;
-  width: 18px;
-  height: 18px;
-  color: $icon-color;
-  pointer-events: none;
-
-  [dir="rtl"] & {
-    left: auto;
-    right: 15px;
   }
 }
