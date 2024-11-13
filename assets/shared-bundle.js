@@ -9950,3260 +9950,6 @@ const useField = _ref => {
   hasMessage: PropTypes.bool
 });
 
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FieldContext$1 = reactExports.createContext(undefined);
-const useFieldContext$1 = () => {
-  const fieldContext = reactExports.useContext(FieldContext$1);
-  return fieldContext;
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1u = 'forms.field';
-const StyledField$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$1u,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledField",
-  componentId: "sc-12gzfsu-0"
-})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$1u, props));
-StyledField$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1t = 'forms.input_label';
-const StyledLabel$1 = styled.label.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1t,
-  'data-garden-version': props['data-garden-version'] || '8.76.2'
-})).withConfig({
-  displayName: "StyledLabel",
-  componentId: "sc-2utmsz-0"
-})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$1t, props));
-StyledLabel$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1s = 'forms.input_hint';
-const StyledHint$1 = styled.div.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1s,
-  'data-garden-version': props['data-garden-version'] || '8.76.2'
-})).withConfig({
-  displayName: "StyledHint",
-  componentId: "sc-17c2wu8-0"
-})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1s, props));
-StyledHint$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _g$4, _circle$7;
-function _extends$N() { _extends$N = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$N.apply(this, arguments); }
-var SvgAlertErrorStroke$1 = function SvgAlertErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$N({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$4 || (_g$4 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }), /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    d: "M7.5 4.5V9"
-  }))), _circle$7 || (_circle$7 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$F, _circle$6;
-function _extends$M() { _extends$M = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$M.apply(this, arguments); }
-var SvgAlertWarningStroke$1 = function SvgAlertWarningStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$M({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$F || (_path$F = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"
-  })), _circle$6 || (_circle$6 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _g$3;
-function _extends$L() { _extends$L = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$L.apply(this, arguments); }
-var SvgCheckCircleStroke$2 = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$L({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$3 || (_g$3 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M4 9l2.5 2.5 5-5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }))));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const MessageIcon = _ref => {
-  let {
-    children,
-    validation,
-    ...props
-  } = _ref;
-  let retVal;
-  if (validation === 'error') {
-    retVal = React__default.createElement(SvgAlertErrorStroke$1, props);
-  } else if (validation === 'success') {
-    retVal = React__default.createElement(SvgCheckCircleStroke$2, props);
-  } else if (validation === 'warning') {
-    retVal = React__default.createElement(SvgAlertWarningStroke$1, props);
-  } else {
-    retVal = React__default.cloneElement(reactExports.Children.only(children));
-  }
-  return retVal;
-};
-const COMPONENT_ID$1r = 'forms.input_message_icon';
-const StyledMessageIcon = styled(MessageIcon).attrs({
-  'data-garden-id': COMPONENT_ID$1r,
-  'data-garden-version': '8.76.2',
-  'aria-hidden': null
-}).withConfig({
-  displayName: "StyledMessageIcon",
-  componentId: "sc-1ph2gba-0"
-})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1r, props));
-StyledMessageIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const validationStyles = props => {
-  const rtl = props.theme.rtl;
-  const padding = math$1(`${props.theme.space.base} * 2px + ${props.theme.iconSizes.md}`);
-  let color;
-  if (props.validation === 'error') {
-    color = getColorV8('dangerHue', 600, props.theme);
-  } else if (props.validation === 'success') {
-    color = getColorV8('successHue', 600, props.theme);
-  } else if (props.validation === 'warning') {
-    color = getColorV8('warningHue', 700, props.theme);
-  } else {
-    color = getColorV8('neutralHue', 700, props.theme);
-  }
-  return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
-};
-const COMPONENT_ID$1q = 'forms.input_message';
-const StyledMessage$1 = styled.div.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1q,
-  'data-garden-version': props['data-garden-version'] || '8.76.2'
-})).withConfig({
-  displayName: "StyledMessage",
-  componentId: "sc-30hgg7-0"
-})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math$1(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$1q, props));
-StyledMessage$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1p = 'forms.input';
-const isInvalid = validation => {
-  return validation === 'warning' || validation === 'error';
-};
-const colorStyles$p = props => {
-  const HUE = 'primaryHue';
-  const SHADE = 600;
-  const placeholderColor = getColorV8('neutralHue', SHADE - 200, props.theme);
-  let borderColor;
-  let hoverBorderColor;
-  let focusBorderColor;
-  let focusRingHue = HUE;
-  let focusRingShade = SHADE;
-  if (props.validation) {
-    let hue = HUE;
-    if (props.validation === 'success') {
-      hue = 'successHue';
-    } else if (props.validation === 'warning') {
-      hue = 'warningHue';
-      focusRingShade = 700;
-    } else if (props.validation === 'error') {
-      hue = 'dangerHue';
-    }
-    borderColor = getColorV8(hue, SHADE, props.theme);
-    hoverBorderColor = borderColor;
-    focusBorderColor = borderColor;
-    focusRingHue = hue;
-  } else {
-    borderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
-    hoverBorderColor = getColorV8('primaryHue', SHADE, props.theme);
-    focusBorderColor = hoverBorderColor;
-  }
-  const readOnlyBackgroundColor = getColorV8('neutralHue', SHADE - 500, props.theme);
-  const readOnlyBorderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
-  const disabledBackgroundColor = readOnlyBackgroundColor;
-  const disabledBorderColor = getColorV8('neutralHue', SHADE - 400, props.theme);
-  const disabledForegroundColor = getColorV8('neutralHue', SHADE - 200, props.theme);
-  let controlledBorderColor = borderColor;
-  if (props.isFocused) {
-    controlledBorderColor = focusBorderColor;
-  }
-  if (props.isHovered) {
-    controlledBorderColor = hoverBorderColor;
-  }
-  return Ne(["border-color:", ";background-color:", ";color:", ";&::placeholder{color:", ";}&[readonly],&[aria-readonly='true']{border-color:", ";background-color:", ";}&:hover{border-color:", ";}", " &:disabled,&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], controlledBorderColor, props.isBare ? 'transparent' : getColorV8('background', 600 , props.theme), getColorV8('foreground', 600 , props.theme), placeholderColor, readOnlyBorderColor, !props.isBare && readOnlyBackgroundColor, hoverBorderColor, focusStyles({
-    theme: props.theme,
-    inset: props.focusInset,
-    condition: !props.isBare,
-    hue: focusRingHue,
-    shade: focusRingShade,
-    styles: {
-      borderColor: focusBorderColor
-    }
-  }), disabledBorderColor, !props.isBare && disabledBackgroundColor, disabledForegroundColor);
-};
-const sizeStyles$q = props => {
-  const fontSize = props.theme.fontSizes.md;
-  const paddingHorizontal = `${props.theme.space.base * 3}px`;
-  let height;
-  let paddingVertical;
-  let browseFontSize;
-  let swatchHeight;
-  if (props.isCompact) {
-    height = `${props.theme.space.base * 8}px`;
-    paddingVertical = `${props.theme.space.base * 1.5}px`;
-    browseFontSize = math$1(`${props.theme.fontSizes.sm} - 1`);
-    swatchHeight = `${props.theme.space.base * 6}px`;
-  } else {
-    height = `${props.theme.space.base * 10}px`;
-    paddingVertical = `${props.theme.space.base * 2.5}px`;
-    browseFontSize = props.theme.fontSizes.sm;
-    swatchHeight = `${props.theme.space.base * 7}px`;
-  }
-  const lineHeight = math$1(`${height} - (${paddingVertical} * 2) - (${props.theme.borderWidths.sm} * 2)`);
-  const padding = props.isBare ? '0' : `${em$1(paddingVertical, fontSize)} ${em$1(paddingHorizontal, fontSize)}`;
-  const swatchMarginVertical = math$1(`(${lineHeight} - ${swatchHeight}) / 2`);
-  const swatchMarginHorizontal = math$1(`${paddingVertical} + ${swatchMarginVertical} - ${paddingHorizontal}`);
-  return Ne(["padding:", ";min-height:", ";line-height:", ";font-size:", ";&::-ms-browse{font-size:", ";}&[type='date'],&[type='datetime-local'],&[type='file'],&[type='month'],&[type='time'],&[type='week']{max-height:", ";}&[type='file']{line-height:1;}@supports (-ms-ime-align:auto){&[type='color']{padding:", ";}}&::-moz-color-swatch{margin-top:", ";margin-left:", ";width:calc(100% + ", ");height:", ";}&::-webkit-color-swatch{margin:", " ", ";}", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& ~ ", "{margin-top:", "px;}"], padding, props.isBare ? '1em' : height, getLineHeight(lineHeight, fontSize), fontSize, browseFontSize, height, props.isCompact ? '0 2px' : '1px 3px', swatchMarginVertical, swatchMarginHorizontal, math$1(`${swatchMarginHorizontal} * -2`), swatchHeight, swatchMarginVertical, swatchMarginHorizontal, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props.theme.space.base * (props.isCompact ? 1 : 2));
-};
-const StyledTextInput = styled.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$1p,
-  'data-garden-version': '8.76.2',
-  'aria-invalid': isInvalid(props.validation)
-})).withConfig({
-  displayName: "StyledTextInput",
-  componentId: "sc-k12n8x-0"
-})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$q(props), props => colorStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1p, props));
-StyledTextInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1o = 'forms.textarea';
-const hiddenStyles = `
-  visibility: hidden;
-  position: absolute;
-  overflow: hidden;
-  height: 0;
-  top: 0;
-  left: 0;
-  transform: translateZ(0);
-`;
-const StyledTextarea = styled(StyledTextInput).attrs({
-  as: 'textarea',
-  'data-garden-id': COMPONENT_ID$1o,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledTextarea",
-  componentId: "sc-wxschl-0"
-})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles, props => retrieveComponentStyles(COMPONENT_ID$1o, props));
-StyledTextarea.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1n = 'forms.media_figure';
-const colorStyles$o = props => {
-  let shade = 600;
-  if (props.isDisabled) {
-    shade = 400;
-  } else if (props.isHovered || props.isFocused) {
-    shade = 700;
-  }
-  return Ne(["color:", ";"], getColorV8('neutralHue', shade, props.theme));
-};
-const sizeStyles$p = props => {
-  const size = props.theme.iconSizes.md;
-  const marginFirst = `1px ${props.theme.space.base * 2}px auto 0`;
-  const marginLast = `1px 0 auto ${props.theme.space.base * 2}px`;
-  let margin;
-  if (props.position === 'start') {
-    margin = props.theme.rtl ? marginLast : marginFirst;
-  } else {
-    margin = props.theme.rtl ? marginFirst : marginLast;
-  }
-  return Ne(["margin:", ";width:", ";height:", ";"], margin, size, size);
-};
-const StyledTextMediaFigure = styled(
-_ref => {
-  let {
-    children,
-    position,
-    isHovered,
-    isFocused,
-    isDisabled,
-    isRotated,
-    theme,
-    ...props
-  } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$1n,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledTextMediaFigure",
-  componentId: "sc-1qepknj-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$o(props), props => sizeStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1n, props));
-StyledTextMediaFigure.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1m = 'forms.faux_input';
-const VALIDATION_HUES = {
-  success: 'successHue',
-  warning: 'warningHue',
-  error: 'dangerHue'
-};
-function getValidationHue(validation) {
-  let defaultHue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primaryHue';
-  if (validation) {
-    return VALIDATION_HUES[validation];
-  }
-  return defaultHue;
-}
-const colorStyles$n = props => {
-  const {
-    theme,
-    validation,
-    focusInset,
-    isBare,
-    isFocused
-  } = props;
-  return Ne(["", ""], focusStyles({
-    theme,
-    inset: focusInset,
-    condition: !isBare,
-    hue: getValidationHue(validation),
-    shade: validation === 'warning' ? 700 : 600,
-    selector: isFocused ? '&' : '&:focus-within',
-    styles: {
-      borderColor: getColorV8(getValidationHue(validation), 600, theme)
-    }
-  }));
-};
-const StyledTextFauxInput = styled(StyledTextInput).attrs(props => ({
-  as: 'div',
-  'aria-readonly': props.isReadOnly,
-  'aria-disabled': props.isDisabled,
-  'data-garden-id': COMPONENT_ID$1m,
-  'data-garden-version': '8.76.2'
-})).withConfig({
-  displayName: "StyledTextFauxInput",
-  componentId: "sc-yqw7j9-0"
-})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$n, StyledTextInput, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$1m, props));
-StyledTextFauxInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1l = 'forms.media_input';
-const StyledTextMediaInput = styled(StyledTextInput).attrs({
-  'data-garden-id': COMPONENT_ID$1l,
-  'data-garden-version': '8.76.2',
-  isBare: true
-}).withConfig({
-  displayName: "StyledTextMediaInput",
-  componentId: "sc-12i9xfi-0"
-})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$1l, props));
-StyledTextMediaInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1k = 'forms.radio_label';
-const sizeStyles$o = props => {
-  const size = props.theme.space.base * 4;
-  const padding = size + props.theme.space.base * 2;
-  const lineHeight = props.theme.space.base * 5;
-  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
-};
-const StyledRadioLabel = styled(StyledLabel$1).attrs({
-  'data-garden-id': COMPONENT_ID$1k,
-  'data-garden-version': '8.76.2',
-  isRadio: true
-}).withConfig({
-  displayName: "StyledRadioLabel",
-  componentId: "sc-1aq2e5t-0"
-})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$o(props), props => retrieveComponentStyles(COMPONENT_ID$1k, props));
-StyledRadioLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1j = 'forms.checkbox_label';
-const StyledCheckLabel = styled(StyledRadioLabel).attrs({
-  'data-garden-id': COMPONENT_ID$1j,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledCheckLabel",
-  componentId: "sc-x7nr1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1j, props));
-StyledCheckLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1i = 'forms.radio_hint';
-const StyledRadioHint = styled(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$1i,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledRadioHint",
-  componentId: "sc-eo8twg-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1i, props));
-StyledRadioHint.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1h = 'forms.checkbox_hint';
-const StyledCheckHint = styled(StyledRadioHint).attrs({
-  'data-garden-id': COMPONENT_ID$1h,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledCheckHint",
-  componentId: "sc-1kl8e8c-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1h, props));
-StyledCheckHint.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1g = 'forms.radio';
-const colorStyles$m = props => {
-  const SHADE = 600;
-  const borderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
-  const backgroundColor = getColorV8('background', 600 , props.theme);
-  const iconColor = backgroundColor;
-  const hoverBackgroundColor = getColorV8('primaryHue', SHADE, props.theme, 0.08);
-  const hoverBorderColor = getColorV8('primaryHue', SHADE, props.theme);
-  const focusBorderColor = hoverBorderColor;
-  const activeBackgroundColor = getColorV8('primaryHue', SHADE, props.theme, 0.2);
-  const activeBorderColor = focusBorderColor;
-  const checkedBorderColor = focusBorderColor;
-  const checkedBackgroundColor = checkedBorderColor;
-  const checkedHoverBorderColor = getColorV8('primaryHue', SHADE + 100, props.theme);
-  const checkedHoverBackgroundColor = checkedHoverBorderColor;
-  const checkedActiveBorderColor = getColorV8('primaryHue', SHADE + 200, props.theme);
-  const checkedActiveBackgroundColor = checkedActiveBorderColor;
-  const disabledBackgroundColor = getColorV8('neutralHue', SHADE - 400, props.theme);
-  return Ne(["& ~ ", "::before{border-color:", ";background-color:", ";}& ~ ", " > svg{color:", ";}& ~ ", ":hover::before{border-color:", ";background-color:", ";}", " & ~ ", ":active::before{border-color:", ";background-color:", ";}&:checked ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":hover::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledRadioLabel, borderColor, backgroundColor, StyledRadioLabel, iconColor, StyledRadioLabel, hoverBorderColor, hoverBackgroundColor, focusStyles({
-    theme: props.theme,
-    styles: {
-      borderColor: focusBorderColor
-    },
-    selector: `&:focus-visible ~ ${StyledRadioLabel}::before, &[data-garden-focus-visible='true'] ~ ${StyledRadioLabel}::before`
-  }), StyledRadioLabel, activeBorderColor, activeBackgroundColor, StyledRadioLabel, checkedBorderColor, checkedBackgroundColor, StyledRadioLabel, checkedHoverBorderColor, checkedHoverBackgroundColor, StyledRadioLabel, checkedActiveBorderColor, checkedActiveBackgroundColor, StyledRadioLabel, disabledBackgroundColor);
-};
-const sizeStyles$n = props => {
-  const lineHeight = `${props.theme.space.base * 5}px`;
-  const size = `${props.theme.space.base * 4}px`;
-  const top = math$1(`(${lineHeight} - ${size}) / 2`);
-  const iconSize = props.theme.iconSizes.sm;
-  const iconPosition = math$1(`(${size} - ${iconSize}) / 2`);
-  const iconTop = math$1(`${iconPosition} + ${top}`);
-  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
-};
-const StyledRadioInput = styled.input.attrs({
-  'data-garden-id': COMPONENT_ID$1g,
-  'data-garden-version': '8.76.2',
-  type: 'radio'
-}).withConfig({
-  displayName: "StyledRadioInput",
-  componentId: "sc-qsavpv-0"
-})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$n(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$m(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$1g, props));
-StyledRadioInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1f = 'forms.checkbox';
-const colorStyles$l = props => {
-  const SHADE = 600;
-  const indeterminateBorderColor = getColorV8('primaryHue', SHADE, props.theme);
-  const indeterminateBackgroundColor = indeterminateBorderColor;
-  const indeterminateActiveBorderColor = getColorV8('primaryHue', SHADE + 100, props.theme);
-  const indeterminateActiveBackgroundColor = indeterminateActiveBorderColor;
-  const indeterminateDisabledBackgroundColor = getColorV8('neutralHue', SHADE - 400, props.theme);
-  return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
-};
-const StyledCheckInput = styled(StyledRadioInput).attrs({
-  'data-garden-id': COMPONENT_ID$1f,
-  'data-garden-version': '8.76.2',
-  type: 'checkbox'
-}).withConfig({
-  displayName: "StyledCheckInput",
-  componentId: "sc-176jxxe-0"
-})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$l(props), props => retrieveComponentStyles(COMPONENT_ID$1f, props));
-StyledCheckInput.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1e = 'forms.radio_message';
-const StyledRadioMessage = styled(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$1e,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledRadioMessage",
-  componentId: "sc-1pmi0q8-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1e, props));
-StyledRadioMessage.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1d = 'forms.checkbox_message';
-const StyledCheckMessage = styled(StyledRadioMessage).attrs({
-  'data-garden-id': COMPONENT_ID$1d,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledCheckMessage",
-  componentId: "sc-s4p6kd-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1d, props));
-StyledCheckMessage.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$E;
-function _extends$K() { _extends$K = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$K.apply(this, arguments); }
-var SvgCheckSmFill = function SvgCheckSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$K({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$E || (_path$E = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    strokeWidth: 2,
-    d: "M3 6l2 2 4-4"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1c = 'forms.check_svg';
-const StyledCheckSvg = styled(SvgCheckSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$1c,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledCheckSvg",
-  componentId: "sc-fvxetk-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$1c, props));
-StyledCheckSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$D;
-function _extends$J() { _extends$J = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$J.apply(this, arguments); }
-var SvgDashFill = function SvgDashFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$J({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$D || (_path$D = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeWidth: 2,
-    d: "M3 6h6"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1b = 'forms.dash_svg';
-const StyledDashSvg = styled(SvgDashFill).attrs({
-  'data-garden-id': COMPONENT_ID$1b,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledDashSvg",
-  componentId: "sc-z3vq71-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$1b, props));
-StyledDashSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$1a = 'forms.file_upload';
-const colorStyles$k = props => {
-  const baseColor = getColorV8('primaryHue', 600, props.theme);
-  const hoverColor = getColorV8('primaryHue', 700, props.theme);
-  const activeColor = getColorV8('primaryHue', 800, props.theme);
-  const disabledBackgroundColor = getColorV8('neutralHue', 200, props.theme);
-  const disabledForegroundColor = getColorV8('neutralHue', 400, props.theme);
-  return Ne(["border-color:", ";background-color:", ";color:", ";&:hover{border-color:", ";background-color:", ";color:", ";}", " &:active{border-color:", ";background-color:", ";color:", ";}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], props.isDragging ? activeColor : getColorV8('neutralHue', 600, props.theme), props.isDragging && rgba$1(baseColor, 0.2), props.isDragging ? activeColor : baseColor, hoverColor, rgba$1(baseColor, 0.08), hoverColor, focusStyles({
-    theme: props.theme,
-    hue: baseColor
-  }), activeColor, rgba$1(baseColor, 0.2), activeColor, disabledForegroundColor, disabledBackgroundColor, disabledForegroundColor);
-};
-const sizeStyles$m = props => {
-  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
-  const paddingHorizontal = `${props.isCompact ? 2 : 4}em`;
-  const paddingVertical = math$1(`${props.theme.space.base * (props.isCompact ? 2.5 : 5)} - ${props.theme.borderWidths.sm}`);
-  const fontSize = props.theme.fontSizes.md;
-  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
-  return Ne(["padding:", " ", ";min-width:4em;line-height:", ";font-size:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], paddingVertical, paddingHorizontal, lineHeight, fontSize, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, marginTop);
-};
-const StyledFileUpload = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$1a,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFileUpload",
-  componentId: "sc-1rodjgn-0"
-})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$m, colorStyles$k, props => retrieveComponentStyles(COMPONENT_ID$1a, props));
-StyledFileUpload.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$19 = 'forms.file.close';
-const StyledFileClose = styled.button.attrs({
-  'data-garden-id': COMPONENT_ID$19,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFileClose",
-  componentId: "sc-1m31jbf-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => getColorV8('foreground', 600 , props.theme), props => retrieveComponentStyles(COMPONENT_ID$19, props));
-StyledFileClose.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$18 = 'forms.file';
-const colorStyles$j = props => {
-  let borderColor;
-  let focusBorderColor;
-  let foregroundColor;
-  if (props.validation === 'success') {
-    borderColor = getColorV8('successHue', 600, props.theme);
-    focusBorderColor = borderColor;
-    foregroundColor = borderColor;
-  } else if (props.validation === 'error') {
-    borderColor = getColorV8('dangerHue', 600, props.theme);
-    focusBorderColor = borderColor;
-    foregroundColor = borderColor;
-  } else {
-    borderColor = getColorV8('neutralHue', 300, props.theme);
-    focusBorderColor = getColorV8('primaryHue', 600, props.theme);
-    foregroundColor = getColorV8('foreground', 600 , props.theme);
-  }
-  return Ne(["border-color:", ";color:", ";", ""], borderColor, foregroundColor, focusStyles({
-    theme: props.theme,
-    inset: props.focusInset,
-    hue: focusBorderColor,
-    styles: {
-      borderColor: focusBorderColor
-    }
-  }));
-};
-const sizeStyles$l = props => {
-  const size = `${props.theme.space.base * (props.isCompact ? 7 : 10)}px`;
-  const spacing = `${props.theme.space.base * (props.isCompact ? 2 : 3)}px`;
-  const fontSize = props.theme.fontSizes.md;
-  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
-  return `
-    box-sizing: border-box;
-    border: ${props.theme.borders.sm};
-    border-radius: ${props.theme.borderRadii.md};
-    padding: 0 ${spacing};
-    height: ${size};
-    line-height: ${lineHeight};
-    font-size: ${fontSize};
-
-    & > span {
-      width: 100%;
-    }
-
-    & > ${StyledFileClose} {
-      width: ${size};
-      height: ${size};
-      margin-${props.theme.rtl ? 'left' : 'right'}: -${spacing};
-    }
-  `;
-};
-const StyledFile = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$18,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFile",
-  componentId: "sc-195lzp1-0"
-})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$l, colorStyles$j, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$18, props));
-StyledFile.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$17 = 'forms.file.delete';
-const StyledFileDelete = styled(StyledFileClose).attrs({
-  'data-garden-id': COMPONENT_ID$17,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFileDelete",
-  componentId: "sc-a8nnhx-0"
-})(["color:", ";", ";"], props => getColorV8('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$17, props));
-StyledFileDelete.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$16 = 'forms.file.icon';
-const StyledFileIcon = styled(_ref => {
-  let {
-    children,
-    isCompact,
-    theme,
-    ...props
-  } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$16,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFileIcon",
-  componentId: "sc-7b3q0c-0"
-})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$16, props));
-StyledFileIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$15 = 'forms.file_list';
-const StyledFileList = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$15,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFileList",
-  componentId: "sc-gbahjg-0"
-})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$15, props));
-StyledFileList.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$14 = 'forms.file_list.item';
-const StyledFileListItem = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$14,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFileListItem",
-  componentId: "sc-1ova3lo-0"
-})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload, StyledFileList, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$14, props));
-StyledFileListItem.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _circle$5;
-function _extends$I() { _extends$I = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$I.apply(this, arguments); }
-var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$I({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _circle$5 || (_circle$5 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 6,
-    cy: 6,
-    r: 2,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$13 = 'forms.radio_svg';
-const StyledRadioSvg = styled(SvgCircleSmFill$1).attrs({
-  'data-garden-id': COMPONENT_ID$13,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledRadioSvg",
-  componentId: "sc-1r1qtr1-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$13, props));
-StyledRadioSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$12 = 'forms.toggle_label';
-const sizeStyles$k = props => {
-  const size = props.theme.space.base * 10;
-  const padding = size + props.theme.space.base * 2;
-  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size);
-};
-const StyledToggleLabel = styled(StyledCheckLabel).attrs({
-  'data-garden-id': COMPONENT_ID$12,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledToggleLabel",
-  componentId: "sc-e0asdk-0"
-})(["", ";", ";"], props => sizeStyles$k(props), props => retrieveComponentStyles(COMPONENT_ID$12, props));
-StyledToggleLabel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$11 = 'forms.toggle_hint';
-const StyledToggleHint = styled(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$11,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledToggleHint",
-  componentId: "sc-nziggu-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$11, props));
-StyledToggleHint.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$10 = 'forms.toggle_message';
-const StyledToggleMessage = styled(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$10,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledToggleMessage",
-  componentId: "sc-13vuvl1-0"
-})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$10, props));
-StyledToggleMessage.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _circle$4;
-function _extends$H() { _extends$H = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$H.apply(this, arguments); }
-var SvgCircleSmFill = function SvgCircleSmFill(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$H({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _circle$4 || (_circle$4 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 8,
-    cy: 8,
-    r: 6,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$$ = 'forms.toggle_svg';
-const StyledToggleSvg = styled(SvgCircleSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$$,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledToggleSvg",
-  componentId: "sc-162xbyx-0"
-})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$$, props));
-StyledToggleSvg.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Field$1 = React__default.forwardRef((props, ref) => {
-  const [hasHint, setHasHint] = reactExports.useState(false);
-  const [hasMessage, setHasMessage] = reactExports.useState(false);
-  const [isLabelActive, setIsLabelActive] = reactExports.useState(false);
-  const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
-  const multiThumbRangeRef = reactExports.useRef(null);
-  const {
-    getInputProps,
-    getMessageProps,
-    ...propGetters
-  } = useField({
-    idPrefix: props.id,
-    hasHint,
-    hasMessage
-  });
-  const fieldProps = reactExports.useMemo(() => ({
-    ...propGetters,
-    getInputProps,
-    getMessageProps,
-    isLabelActive,
-    setIsLabelActive,
-    isLabelHovered,
-    setIsLabelHovered,
-    hasHint,
-    setHasHint,
-    hasMessage,
-    setHasMessage,
-    multiThumbRangeRef
-  }), [propGetters, getInputProps, getMessageProps, isLabelActive, isLabelHovered, hasHint, hasMessage]);
-  return React__default.createElement(FieldContext$1.Provider, {
-    value: fieldProps
-  }, React__default.createElement(StyledField$1, Object.assign({}, props, {
-    ref: ref
-  })));
-});
-Field$1.displayName = 'Field';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FieldsetContext = reactExports.createContext(undefined);
-const useFieldsetContext = () => {
-  const fieldsetContext = reactExports.useContext(FieldsetContext);
-  return fieldsetContext;
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const InputContext = reactExports.createContext(undefined);
-const useInputContext = () => {
-  return reactExports.useContext(InputContext);
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Hint$1 = React__default.forwardRef((props, ref) => {
-  const {
-    hasHint,
-    setHasHint,
-    getHintProps
-  } = useFieldContext$1() || {};
-  const type = useInputContext();
-  reactExports.useEffect(() => {
-    if (!hasHint && setHasHint) {
-      setHasHint(true);
-    }
-    return () => {
-      if (hasHint && setHasHint) {
-        setHasHint(false);
-      }
-    };
-  }, [hasHint, setHasHint]);
-  let HintComponent;
-  if (type === 'checkbox') {
-    HintComponent = StyledCheckHint;
-  } else if (type === 'radio') {
-    HintComponent = StyledRadioHint;
-  } else if (type === 'toggle') {
-    HintComponent = StyledToggleHint;
-  } else {
-    HintComponent = StyledHint$1;
-  }
-  let combinedProps = props;
-  if (getHintProps) {
-    combinedProps = getHintProps(combinedProps);
-  }
-  return React__default.createElement(HintComponent, Object.assign({
-    ref: ref
-  }, combinedProps));
-});
-Hint$1.displayName = 'Hint';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Label$2 = React__default.forwardRef((props, ref) => {
-  const fieldContext = useFieldContext$1();
-  const fieldsetContext = useFieldsetContext();
-  const type = useInputContext();
-  let combinedProps = props;
-  if (fieldContext) {
-    combinedProps = fieldContext.getLabelProps(combinedProps);
-    if (type === undefined) {
-      const {
-        setIsLabelActive,
-        setIsLabelHovered,
-        multiThumbRangeRef
-      } = fieldContext;
-      combinedProps = {
-        ...combinedProps,
-        onMouseUp: composeEventHandlers$5(props.onMouseUp, () => {
-          setIsLabelActive(false);
-        }),
-        onMouseDown: composeEventHandlers$5(props.onMouseDown, () => {
-          setIsLabelActive(true);
-        }),
-        onMouseEnter: composeEventHandlers$5(props.onMouseEnter, () => {
-          setIsLabelHovered(true);
-        }),
-        onMouseLeave: composeEventHandlers$5(props.onMouseLeave, () => {
-          setIsLabelHovered(false);
-        }),
-        onClick: composeEventHandlers$5(props.onClick, () => {
-          multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
-        })
-      };
-    }
-  }
-  if (fieldsetContext) {
-    combinedProps = {
-      ...combinedProps,
-      isRegular: combinedProps.isRegular === undefined ? true : combinedProps.isRegular
-    };
-  }
-  if (type === 'radio') {
-    return React__default.createElement(StyledRadioLabel, Object.assign({
-      ref: ref
-    }, combinedProps), React__default.createElement(StyledRadioSvg, null), props.children);
-  } else if (type === 'checkbox') {
-    const onLabelSelect = e => {
-      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-      if (fieldContext && isFirefox && e.target instanceof Element) {
-        const inputId = e.target.getAttribute('for');
-        if (!inputId) return;
-        const input = document.getElementById(inputId);
-        if (input && input.type === 'checkbox') {
-          if (e.shiftKey) {
-            input.click();
-            input.checked = true;
-          }
-          input.focus();
-        }
-      }
-    };
-    combinedProps = {
-      ...combinedProps,
-      onClick: composeEventHandlers$5(combinedProps.onClick, onLabelSelect)
-    };
-    return React__default.createElement(StyledCheckLabel, Object.assign({
-      ref: ref
-    }, combinedProps), React__default.createElement(StyledCheckSvg, null), React__default.createElement(StyledDashSvg, null), props.children);
-  } else if (type === 'toggle') {
-    return React__default.createElement(StyledToggleLabel, Object.assign({
-      ref: ref
-    }, combinedProps), React__default.createElement(StyledToggleSvg, null), props.children);
-  }
-  return React__default.createElement(StyledLabel$1, Object.assign({
-    ref: ref
-  }, combinedProps));
-});
-Label$2.displayName = 'Label';
-Label$2.propTypes = {
-  isRegular: PropTypes.bool
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-const VALIDATION = ['success', 'warning', 'error'];
-const FILE_VALIDATION = ['success', 'error'];
-const FILE_TYPE = ['pdf', 'zip', 'image', 'document', 'spreadsheet', 'presentation', 'generic'];
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Message$1 = React__default.forwardRef((_ref, ref) => {
-  let {
-    validation,
-    validationLabel,
-    children,
-    ...props
-  } = _ref;
-  const {
-    hasMessage,
-    setHasMessage,
-    getMessageProps
-  } = useFieldContext$1() || {};
-  const type = useInputContext();
-  reactExports.useEffect(() => {
-    if (!hasMessage && setHasMessage) {
-      setHasMessage(true);
-    }
-    return () => {
-      if (hasMessage && setHasMessage) {
-        setHasMessage(false);
-      }
-    };
-  }, [hasMessage, setHasMessage]);
-  let MessageComponent;
-  if (type === 'checkbox') {
-    MessageComponent = StyledCheckMessage;
-  } else if (type === 'radio') {
-    MessageComponent = StyledRadioMessage;
-  } else if (type === 'toggle') {
-    MessageComponent = StyledToggleMessage;
-  } else {
-    MessageComponent = StyledMessage$1;
-  }
-  let combinedProps = {
-    validation,
-    validationLabel,
-    ...props
-  };
-  if (getMessageProps) {
-    combinedProps = getMessageProps(combinedProps);
-  }
-  const ariaLabel = useText(Message$1, combinedProps, 'validationLabel', validation, validation !== undefined);
-  return React__default.createElement(MessageComponent, Object.assign({
-    ref: ref
-  }, combinedProps), validation && React__default.createElement(StyledMessageIcon, {
-    validation: validation,
-    "aria-label": ariaLabel
-  }), children);
-});
-Message$1.displayName = 'Message';
-Message$1.propTypes = {
-  validation: PropTypes.oneOf(VALIDATION),
-  validationLabel: PropTypes.string
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Checkbox = React__default.forwardRef((_ref, ref) => {
-  let {
-    indeterminate,
-    children,
-    ...props
-  } = _ref;
-  const fieldsetContext = useFieldsetContext();
-  const fieldContext = useFieldContext$1();
-  const inputRef = inputElement => {
-    inputElement && (inputElement.indeterminate = indeterminate);
-  };
-  const combinedRef = inputElement => {
-    [inputRef, ref].forEach(targetRef => {
-      if (targetRef) {
-        if (typeof targetRef === 'function') {
-          targetRef(inputElement);
-        } else {
-          targetRef.current = inputElement;
-        }
-      }
-    });
-  };
-  let combinedProps = {
-    ref: combinedRef,
-    ...props,
-    ...fieldsetContext
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(InputContext.Provider, {
-    value: "checkbox"
-  }, React__default.createElement(StyledCheckInput, combinedProps), children);
-});
-Checkbox.displayName = 'Checkbox';
-Checkbox.propTypes = {
-  isCompact: PropTypes.bool,
-  indeterminate: PropTypes.bool
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const InputGroupContext = reactExports.createContext(undefined);
-const useInputGroupContext = () => {
-  return reactExports.useContext(InputGroupContext);
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Input = React__default.forwardRef((_ref, ref) => {
-  let {
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  const inputGroupContext = useInputGroupContext();
-  const onSelectHandler = props.readOnly ? composeEventHandlers$5(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    ref,
-    onSelect: onSelectHandler,
-    ...props
-  };
-  if (inputGroupContext) {
-    combinedProps = {
-      ...combinedProps,
-      isCompact: inputGroupContext.isCompact || combinedProps.isCompact,
-      focusInset: props.focusInset === undefined ? true : props.focusInset
-    };
-  }
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(StyledTextInput, combinedProps);
-});
-Input.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION)
-};
-Input.displayName = 'Input';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const parseStyleValue = value => {
-  return parseInt(value, 10) || 0;
-};
-const Textarea = React__default.forwardRef((_ref, ref) => {
-  let {
-    minRows,
-    maxRows,
-    style,
-    onChange,
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  const textAreaRef = reactExports.useRef();
-  const shadowTextAreaRef = reactExports.useRef(null);
-  const [state, setState] = reactExports.useState({
-    overflow: false,
-    height: 0
-  });
-  const isControlled = props.value !== null && props.value !== undefined;
-  const isAutoResizable = (minRows !== undefined || maxRows !== undefined) && !props.isResizable;
-  const calculateHeight = reactExports.useCallback(() => {
-    if (!isAutoResizable) {
-      return;
-    }
-    const textarea = textAreaRef.current;
-    const computedStyle = window.getComputedStyle(textarea);
-    const shadowTextArea = shadowTextAreaRef.current;
-    shadowTextArea.style.width = computedStyle.width;
-    shadowTextArea.value = textarea.value || textarea.placeholder || ' ';
-    const boxSizing = computedStyle.boxSizing;
-    const padding = parseStyleValue(computedStyle.paddingBottom) + parseStyleValue(computedStyle.paddingTop);
-    const border = parseStyleValue(computedStyle.borderTopWidth) + parseStyleValue(computedStyle.borderBottomWidth);
-    const innerHeight = shadowTextArea.scrollHeight - padding;
-    shadowTextArea.value = 'x';
-    const singleRowHeight = shadowTextArea.scrollHeight - padding;
-    let outerHeight = innerHeight;
-    if (minRows) {
-      outerHeight = Math.max(Number(minRows) * singleRowHeight, outerHeight);
-    }
-    if (maxRows) {
-      outerHeight = Math.min(Number(maxRows) * singleRowHeight, outerHeight);
-    }
-    outerHeight = Math.max(outerHeight, singleRowHeight);
-    const updatedHeight = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
-    const overflow = Math.abs(outerHeight - innerHeight) <= 1;
-    setState(prevState => {
-      if (updatedHeight > 0 && Math.abs((prevState.height || 0) - updatedHeight) > 1 || prevState.overflow !== overflow) {
-        return {
-          overflow,
-          height: updatedHeight
-        };
-      }
-      return prevState;
-    });
-  }, [maxRows, minRows, textAreaRef, isAutoResizable]);
-  const onChangeHandler = reactExports.useCallback(e => {
-    if (!isControlled) {
-      calculateHeight();
-    }
-    if (onChange) {
-      onChange(e);
-    }
-  }, [calculateHeight, isControlled, onChange]);
-  reactExports.useLayoutEffect(() => {
-    calculateHeight();
-  });
-  const computedStyle = {};
-  if (isAutoResizable) {
-    computedStyle.height = state.height;
-    computedStyle.overflow = state.overflow ? 'hidden' : undefined;
-  }
-  const onSelectHandler = props.readOnly ? composeEventHandlers$5(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    ref: mergeRefs([textAreaRef, ref]),
-    rows: minRows,
-    onChange: onChangeHandler,
-    onSelect: onSelectHandler,
-    style: {
-      ...computedStyle,
-      ...style
-    },
-    ...props
-  };
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-  }
-  return React__default.createElement(React__default.Fragment, null, React__default.createElement(StyledTextarea, combinedProps), isAutoResizable && React__default.createElement(StyledTextarea, {
-    "aria-hidden": true,
-    readOnly: true,
-    isHidden: true,
-    className: props.className,
-    ref: shadowTextAreaRef,
-    tabIndex: -1,
-    isBare: props.isBare,
-    isCompact: props.isCompact,
-    style: style
-  }));
-});
-Textarea.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  isResizable: PropTypes.bool,
-  minRows: PropTypes.number,
-  maxRows: PropTypes.number,
-  validation: PropTypes.oneOf(VALIDATION)
-};
-Textarea.displayName = 'Textarea';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const StartIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure, Object.assign({
-  position: "start"
-}, props));
-StartIconComponent$1.displayName = 'FauxInput.StartIcon';
-const StartIcon$1 = StartIconComponent$1;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const EndIconComponent = props => React__default.createElement(StyledTextMediaFigure, Object.assign({
-  position: "end"
-}, props));
-EndIconComponent.displayName = 'FauxInput.EndIcon';
-const EndIcon = EndIconComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    onFocus,
-    onBlur,
-    disabled,
-    readOnly,
-    isFocused: controlledIsFocused,
-    ...props
-  } = _ref;
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const onFocusHandler = composeEventHandlers$5(onFocus, () => {
-    setIsFocused(true);
-  });
-  const onBlurHandler = composeEventHandlers$5(onBlur, () => {
-    setIsFocused(false);
-  });
-  return React__default.createElement(StyledTextFauxInput, Object.assign({
-    onFocus: onFocusHandler,
-    onBlur: onBlurHandler,
-    isFocused: controlledIsFocused === undefined ? isFocused : controlledIsFocused,
-    isReadOnly: readOnly,
-    isDisabled: disabled,
-    tabIndex: disabled ? undefined : 0
-  }, props, {
-    ref: ref
-  }));
-});
-FauxInputComponent.displayName = 'FauxInput';
-FauxInputComponent.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  disabled: PropTypes.bool,
-  readOnly: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION),
-  isFocused: PropTypes.bool,
-  isHovered: PropTypes.bool
-};
-const FauxInput = FauxInputComponent;
-FauxInput.EndIcon = EndIcon;
-FauxInput.StartIcon = StartIcon$1;
-
-/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString = objectProto.toString;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-    nativeMin = Math.min;
-
-/**
- * Gets the timestamp of the number of milliseconds that have elapsed since
- * the Unix epoch (1 January 1970 00:00:00 UTC).
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Date
- * @returns {number} Returns the timestamp.
- * @example
- *
- * _.defer(function(stamp) {
- *   console.log(_.now() - stamp);
- * }, _.now());
- * // => Logs the number of milliseconds it took for the deferred invocation.
- */
-var now = function() {
-  return root.Date.now();
-};
-
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce$2(func, wait, options) {
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject$1(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-
-  function invokeFunc(time) {
-    var args = lastArgs,
-        thisArg = lastThis;
-
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        result = wait - timeSinceLastCall;
-
-    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
-  }
-
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
-  }
-
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
-    }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
-
-  function trailingEdge(time) {
-    timerId = undefined;
-
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
-    }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
-
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
-    }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
-
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
-
-  function debounced() {
-    var time = now(),
-        isInvoking = shouldInvoke(time);
-
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
-
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject$1(value) {
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && objectToString.call(value) == symbolTag);
-}
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject$1(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject$1(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-var lodash_debounce = debounce$2;
-
-var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FileUpload = React__default.forwardRef((_ref, ref) => {
-  let {
-    disabled,
-    ...props
-  } = _ref;
-  return (
-    React__default.createElement(StyledFileUpload, Object.assign({
-      ref: ref,
-      "aria-disabled": disabled
-    }, props, {
-      role: "button"
-    }))
-  );
-});
-FileUpload.propTypes = {
-  isDragging: PropTypes.bool,
-  isCompact: PropTypes.bool,
-  disabled: PropTypes.bool
-};
-FileUpload.displayName = 'FileUpload';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const ItemComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    ...props
-  } = _ref;
-  return React__default.createElement(StyledFileListItem, Object.assign({}, props, {
-    ref: ref
-  }));
-});
-ItemComponent.displayName = 'FileList.Item';
-const Item = ItemComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FileListComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    ...props
-  } = _ref;
-  return React__default.createElement(StyledFileList, Object.assign({}, props, {
-    ref: ref
-  }));
-});
-FileListComponent.displayName = 'FileList';
-const FileList = FileListComponent;
-FileList.Item = Item;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$C;
-function _extends$G() { _extends$G = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$G.apply(this, arguments); }
-var SvgXStroke$3 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$G({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$C || (_path$C = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 9l6-6m0 6L3 3"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$B;
-function _extends$F() { _extends$F = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$F.apply(this, arguments); }
-var SvgXStroke$2 = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$F({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$B || (_path$B = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 13L13 3m0 10L3 3"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FileContext = reactExports.createContext(undefined);
-const useFileContext = () => {
-  return reactExports.useContext(FileContext);
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const CloseComponent$1 = React__default.forwardRef((props, ref) => {
-  const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$5(props.onMouseDown, event => event.preventDefault()
-  );
-  const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
-  return React__default.createElement(StyledFileClose, Object.assign({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1,
-    onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgXStroke$3, null) : React__default.createElement(SvgXStroke$2, null));
-});
-CloseComponent$1.displayName = 'File.Close';
-const Close$2 = CloseComponent$1;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$A;
-function _extends$E() { _extends$E = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$E.apply(this, arguments); }
-var SvgTrashStroke$1 = function SvgTrashStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$E({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$A || (_path$A = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M2 2.5h8m-5.5 7V5m3 4.5V5m-5-.5V11c0 .3.2.5.5.5h6c.3 0 .5-.2.5-.5V4.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$z;
-function _extends$D() { _extends$D = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$D.apply(this, arguments); }
-var SvgTrashStroke = function SvgTrashStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$D({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$z || (_path$z = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M6.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M3 2.5h10m-6.5 11v-8m3 8v-8m-6-1V15c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5V4.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const DeleteComponent = React__default.forwardRef((props, ref) => {
-  const fileContext = useFileContext();
-  const onMouseDown = composeEventHandlers$5(props.onMouseDown, event => event.preventDefault()
-  );
-  const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
-  return React__default.createElement(StyledFileDelete, Object.assign({
-    ref: ref,
-    "aria-label": ariaLabel
-  }, props, {
-    type: "button",
-    tabIndex: -1,
-    onMouseDown: onMouseDown
-  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgTrashStroke$1, null) : React__default.createElement(SvgTrashStroke, null));
-});
-DeleteComponent.displayName = 'File.Delete';
-const Delete = DeleteComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$y, _rect$2;
-function _extends$C() { _extends$C = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$C.apply(this, arguments); }
-var SvgFilePdfStroke$1 = function SvgFilePdfStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$C({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$y || (_path$y = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M10.5 3.21V11a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h5.79a.5.5 0 01.35.15l2.21 2.21a.5.5 0 01.15.35zM7.5.5V3a.5.5 0 00.5.5h2.5m-7 6h5"
-  })), _rect$2 || (_rect$2 = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 6,
-    height: 3,
-    x: 3,
-    y: 5,
-    fill: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$x;
-function _extends$B() { _extends$B = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$B.apply(this, arguments); }
-var SvgFileZipStroke$1 = function SvgFileZipStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$B({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$x || (_path$x = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5.5v8m0-6h1m-2 1h1m0 1h1m-2 1h1m0 1h1m-2 1h1m6-4.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$w, _circle$3;
-function _extends$A() { _extends$A = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$A.apply(this, arguments); }
-var SvgFileImageStroke$1 = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$A({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$w || (_path$w = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5m-7 6L5 8l1.5 1.5 1-1 1 1"
-  })), _circle$3 || (_circle$3 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 8,
-    cy: 6,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$v;
-function _extends$z() { _extends$z = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$z.apply(this, arguments); }
-var SvgFileDocumentStroke$1 = function SvgFileDocumentStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$z({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$v || (_path$v = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$u;
-function _extends$y() { _extends$y = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$y.apply(this, arguments); }
-var SvgFileSpreadsheetStroke$1 = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$y({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$u || (_path$u = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3.5 5.5h1m-1 2h1m-1 2h1m2-4h2m-2 2h2m-2 2h2m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$t;
-function _extends$x() { _extends$x = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$x.apply(this, arguments); }
-var SvgFilePresentationStroke$1 = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$x({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$t || (_path$t = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM6 9.5h2c.28 0 .5-.22.5-.5V8c0-.28-.22-.5-.5-.5H6c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm-2-2h2c.28 0 .5-.22.5-.5V6c0-.28-.22-.5-.5-.5H4c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm3.5-7V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$s;
-function _extends$w() { _extends$w = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$w.apply(this, arguments); }
-var SvgFileGenericStroke$1 = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$w({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$s || (_path$s = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _g$2;
-function _extends$v() { _extends$v = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$v.apply(this, arguments); }
-var SvgCheckCircleStroke$1 = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$v({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _g$2 || (_g$2 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M3.5 6l2 2L9 4.5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 6,
-    cy: 6,
-    r: 5.5
-  }))));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$r;
-function _extends$u() { _extends$u = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$u.apply(this, arguments); }
-var SvgFileErrorStroke$1 = function SvgFileErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$u({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    focusable: "false",
-    viewBox: "0 0 12 12",
-    "aria-hidden": "true"
-  }, props), _path$r || (_path$r = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5M4 9.5l4-4m0 4l-4-4"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$q, _rect$1;
-function _extends$t() { _extends$t = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$t.apply(this, arguments); }
-var SvgFilePdfStroke = function SvgFilePdfStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$t({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$q || (_path$q = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.2V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.85a.5.5 0 01.36.15l3.15 3.2a.5.5 0 01.14.35zm-10 8.3h7m-7-2h7m-1-10V4a.5.5 0 00.5.5h3.5"
-  })), _rect$1 || (_rect$1 = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 8,
-    height: 2,
-    x: 4,
-    y: 7,
-    fill: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$p;
-function _extends$s() { _extends$s = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$s.apply(this, arguments); }
-var SvgFileZipStroke = function SvgFileZipStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$s({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$p || (_path$p = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M6.5.5v11M5 2.5h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m8-6.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$o, _circle$2;
-function _extends$r() { _extends$r = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r.apply(this, arguments); }
-var SvgFileImageStroke = function SvgFileImageStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$r({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$o || (_path$o = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5m-11 9l2.65-2.65c.2-.2.51-.2.71 0l1.79 1.79c.2.2.51.2.71 0l.79-.79c.2-.2.51-.2.71 0l1.65 1.65"
-  })), _circle$2 || (_circle$2 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 10.5,
-    cy: 8.5,
-    r: 1.5,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$n;
-function _extends$q() { _extends$q = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$q.apply(this, arguments); }
-var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$q({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$n || (_path$n = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 7.5h7m-7 1.97h7m-7 2h7m3-7.27V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$m;
-function _extends$p() { _extends$p = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$p.apply(this, arguments); }
-var SvgFileSpreadsheetStroke = function SvgFileSpreadsheetStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$p({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$m || (_path$m = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M4.5 7.5h2m-2 2h2m-2 2h2m2-4h3m-3 2h3m-3 2h3m3-7.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$l;
-function _extends$o() { _extends$o = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$o.apply(this, arguments); }
-var SvgFilePresentationStroke = function SvgFilePresentationStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$o({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$l || (_path$l = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5M7 9.5h4c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5H7c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5zm-.5 2H5c-.28 0-.5-.22-.5-.5V8c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5v1.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$k;
-function _extends$n() { _extends$n = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$n.apply(this, arguments); }
-var SvgFileGenericStroke = function SvgFileGenericStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$n({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$k || (_path$k = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$j;
-function _extends$m() { _extends$m = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$m.apply(this, arguments); }
-var SvgFileErrorStroke = function SvgFileErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$m({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$j || (_path$j = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M14.5 4.205V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.853a.5.5 0 01.356.15l3.148 3.204a.5.5 0 01.143.35zM10.5.5V4a.5.5 0 00.5.5h3.5m-9 8l5-5m0 5l-5-5"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const fileIconsDefault = {
-  pdf: React__default.createElement(SvgFilePdfStroke, null),
-  zip: React__default.createElement(SvgFileZipStroke, null),
-  image: React__default.createElement(SvgFileImageStroke, null),
-  document: React__default.createElement(SvgFileDocumentStroke, null),
-  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke, null),
-  presentation: React__default.createElement(SvgFilePresentationStroke, null),
-  generic: React__default.createElement(SvgFileGenericStroke, null),
-  success: React__default.createElement(SvgCheckCircleStroke$2, null),
-  error: React__default.createElement(SvgFileErrorStroke, null)
-};
-const fileIconsCompact = {
-  pdf: React__default.createElement(SvgFilePdfStroke$1, null),
-  zip: React__default.createElement(SvgFileZipStroke$1, null),
-  image: React__default.createElement(SvgFileImageStroke$1, null),
-  document: React__default.createElement(SvgFileDocumentStroke$1, null),
-  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke$1, null),
-  presentation: React__default.createElement(SvgFilePresentationStroke$1, null),
-  generic: React__default.createElement(SvgFileGenericStroke$1, null),
-  success: React__default.createElement(SvgCheckCircleStroke$1, null),
-  error: React__default.createElement(SvgFileErrorStroke$1, null)
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FileComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    children,
-    type,
-    isCompact,
-    focusInset,
-    validation,
-    ...props
-  } = _ref;
-  const fileContextValue = reactExports.useMemo(() => ({
-    isCompact
-  }), [isCompact]);
-  const validationType = validation || type;
-  return React__default.createElement(FileContext.Provider, {
-    value: fileContextValue
-  }, React__default.createElement(StyledFile, Object.assign({}, props, {
-    isCompact: isCompact,
-    focusInset: focusInset,
-    validation: validation,
-    ref: ref
-  }), validationType && React__default.createElement(StyledFileIcon, {
-    isCompact: isCompact
-  }, isCompact ? fileIconsCompact[validationType] : fileIconsDefault[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? React__default.createElement("span", null, child) : child)));
-});
-FileComponent.displayName = 'File';
-FileComponent.propTypes = {
-  focusInset: PropTypes.bool,
-  isCompact: PropTypes.bool,
-  type: PropTypes.oneOf(FILE_TYPE),
-  validation: PropTypes.oneOf(FILE_VALIDATION)
-};
-const File = FileComponent;
-File.Close = Close$2;
-File.Delete = Delete;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const MediaInput = React__default.forwardRef((_ref, ref) => {
-  let {
-    start,
-    end,
-    disabled,
-    isCompact,
-    isBare,
-    focusInset,
-    readOnly,
-    validation,
-    wrapperProps = {},
-    wrapperRef,
-    onSelect,
-    ...props
-  } = _ref;
-  const fieldContext = useFieldContext$1();
-  const inputRef = reactExports.useRef();
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const [isHovered, setIsHovered] = reactExports.useState(false);
-  const {
-    onClick,
-    onFocus,
-    onBlur,
-    onMouseOver,
-    onMouseOut,
-    ...otherWrapperProps
-  } = wrapperProps;
-  const onFauxInputClickHandler = composeEventHandlers$5(onClick, () => {
-    inputRef.current && inputRef.current.focus();
-  });
-  const onFauxInputFocusHandler = composeEventHandlers$5(onFocus, () => {
-    setIsFocused(true);
-  });
-  const onFauxInputBlurHandler = composeEventHandlers$5(onBlur, () => {
-    setIsFocused(false);
-  });
-  const onFauxInputMouseOverHandler = composeEventHandlers$5(onMouseOver, () => {
-    setIsHovered(true);
-  });
-  const onFauxInputMouseOutHandler = composeEventHandlers$5(onMouseOut, () => {
-    setIsHovered(false);
-  });
-  const onSelectHandler = readOnly ? composeEventHandlers$5(onSelect, event => {
-    event.currentTarget.select();
-  }) : onSelect;
-  let combinedProps = {
-    disabled,
-    readOnly,
-    ref: mergeRefs([inputRef, ref]),
-    onSelect: onSelectHandler,
-    ...props
-  };
-  let isLabelHovered;
-  if (fieldContext) {
-    combinedProps = fieldContext.getInputProps(combinedProps);
-    isLabelHovered = fieldContext.isLabelHovered;
-  }
-  return React__default.createElement(FauxInput, Object.assign({
-    tabIndex: null,
-    onClick: onFauxInputClickHandler,
-    onFocus: onFauxInputFocusHandler,
-    onBlur: onFauxInputBlurHandler,
-    onMouseOver: onFauxInputMouseOverHandler,
-    onMouseOut: onFauxInputMouseOutHandler,
-    disabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered,
-    isCompact: isCompact,
-    isBare: isBare,
-    focusInset: focusInset,
-    readOnly: readOnly,
-    validation: validation,
-    mediaLayout: true
-  }, otherWrapperProps, {
-    ref: wrapperRef
-  }), start && React__default.createElement(FauxInput.StartIcon, {
-    isDisabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered
-  }, start), React__default.createElement(StyledTextMediaInput, combinedProps), end && React__default.createElement(FauxInput.EndIcon, {
-    isDisabled: disabled,
-    isFocused: isFocused,
-    isHovered: isHovered || isLabelHovered
-  }, end));
-});
-MediaInput.propTypes = {
-  isCompact: PropTypes.bool,
-  isBare: PropTypes.bool,
-  focusInset: PropTypes.bool,
-  validation: PropTypes.oneOf(VALIDATION),
-  start: PropTypes.node,
-  end: PropTypes.node,
-  wrapperProps: PropTypes.object,
-  wrapperRef: PropTypes.any
-};
-MediaInput.displayName = 'MediaInput';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-const SIZE$3 = ['small', 'medium', 'large'];
-['inherit', ...SIZE$3];
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$_ = 'typography.font';
-[...SIZE$3, 'extralarge', '2xlarge', '3xlarge'];
-const THEME_SIZES = {
-  small: 'sm',
-  medium: 'md',
-  large: 'lg',
-  extralarge: 'xl',
-  '2xlarge': 'xxl',
-  '3xlarge': 'xxxl'
-};
-const fontStyles = props => {
-  const monospace = props.isMonospace && ['inherit', 'small', 'medium', 'large'].indexOf(props.size) !== -1;
-  const fontFamily = monospace && props.theme.fonts.mono;
-  const direction = props.theme.rtl ? 'rtl' : 'ltr';
-  let fontSize;
-  let fontWeight;
-  let lineHeight;
-  let color;
-  if (monospace) {
-    if (props.size === 'inherit') {
-      fontSize = 'calc(1em - 1px)';
-      lineHeight = 'normal';
-    } else {
-      const themeSize = THEME_SIZES[props.size];
-      fontSize = math$1(`${props.theme.fontSizes[themeSize]} - 1px`);
-      lineHeight = math$1(`${props.theme.lineHeights[themeSize]} - 1px`);
-    }
-  } else if (props.size !== 'inherit') {
-    const themeSize = THEME_SIZES[props.size];
-    fontSize = props.theme.fontSizes[themeSize];
-    lineHeight = props.theme.lineHeights[themeSize];
-  }
-  if (props.isBold === true) {
-    fontWeight = props.theme.fontWeights.semibold;
-  } else if (props.isBold === false || props.size !== 'inherit') {
-    fontWeight = props.theme.fontWeights.regular;
-  }
-  if (props.hue) {
-    const shade = props.hue === 'yellow' ? 700 : 600;
-    color = getColorV8(props.hue, shade, props.theme);
-  }
-  return Ne(["line-height:", ";color:", ";font-family:", ";font-size:", ";font-weight:", ";direction:", ";"], lineHeight, color, fontFamily, fontSize, fontWeight, direction);
-};
-const StyledFont = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$_,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFont",
-  componentId: "sc-1iildbo-0"
-})(["", ";&[hidden]{display:inline;", ";}", ";"], props => !props.hidden && fontStyles(props), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$_, props));
-StyledFont.defaultProps = {
-  theme: DEFAULT_THEME,
-  size: 'inherit'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$Z = 'typography.icon';
-const sizeStyles$j = props => {
-  const margin = props.isStart && `${props.theme.space.base * 2}px`;
-  const size = props.theme.iconSizes.md;
-  return Ne(["margin-", ":", ";width:", ";height:", ";"], props.theme.rtl ? 'left' : 'right', margin, size, size);
-};
-const StyledIcon$1 = styled(_ref => {
-  let {
-    children,
-    isStart,
-    ...props
-  } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$Z,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledIcon",
-  componentId: "sc-10rfb5b-0"
-})(["position:relative;top:-1px;vertical-align:middle;", ";", ";"], props => sizeStyles$j(props), props => retrieveComponentStyles(COMPONENT_ID$Z, props));
-StyledIcon$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$Y = 'typography.paragraph';
-const StyledParagraph$1 = styled.p.attrs({
-  'data-garden-id': COMPONENT_ID$Y,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledParagraph",
-  componentId: "sc-zkuftz-0"
-})(["margin:0;padding:0;direction:", ";& + &,blockquote + &{margin-top:", ";}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.lineHeights[THEME_SIZES[props.size]], props => retrieveComponentStyles(COMPONENT_ID$Y, props));
-StyledParagraph$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const SM = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "small"
-  }, other));
-});
-SM.displayName = 'SM';
-SM.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool
-};
-SM.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const MD = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "medium"
-  }, other));
-});
-MD.displayName = 'MD';
-MD.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool
-};
-MD.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const LG = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "large"
-  }, other));
-});
-LG.displayName = 'LG';
-LG.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool
-};
-LG.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const XXXL = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "3xlarge"
-  }, other));
-});
-XXXL.displayName = 'XXXL';
-XXXL.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool
-};
-XXXL.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Paragraph = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph$1, Object.assign({
-  ref: ref
-}, props)));
-Paragraph.displayName = 'Paragraph';
-Paragraph.propTypes = {
-  size: PropTypes.oneOf(SIZE$3)
-};
-Paragraph.defaultProps = {
-  size: 'medium'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const StartIconComponent = props => React__default.createElement(StyledIcon$1, Object.assign({
-  isStart: true
-}, props));
-StartIconComponent.displayName = 'Span.StartIcon';
-const StartIcon = StartIconComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const IconComponent = props => React__default.createElement(StyledIcon$1, props);
-IconComponent.displayName = 'Span.Icon';
-const Icon = IconComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const SpanComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "inherit"
-  }, other));
-});
-SpanComponent.displayName = 'Span';
-SpanComponent.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool,
-  hue: PropTypes.string
-};
-SpanComponent.defaultProps = {
-  tag: 'span'
-};
-const Span = SpanComponent;
-Span.Icon = Icon;
-Span.StartIcon = StartIcon;
-
 let e=e=>"object"==typeof e&&null!=e&&1===e.nodeType,t=(e,t)=>(!t||"hidden"!==e)&&("visible"!==e&&"clip"!==e),n=(e,n)=>{if(e.clientHeight<e.scrollHeight||e.clientWidth<e.scrollWidth){let l=getComputedStyle(e,null);return t(l.overflowY,n)||t(l.overflowX,n)||(e=>{let t=(e=>{if(!e.ownerDocument||!e.ownerDocument.defaultView)return null;try{return e.ownerDocument.defaultView.frameElement}catch(e){return null}})(e);return !!t&&(t.clientHeight<e.scrollHeight||t.clientWidth<e.scrollWidth)})(e)}return !1},l=(e,t,n,l,i,o,r,d)=>o<e&&r>t||o>e&&r<t?0:o<=e&&d<=n||r>=t&&d>=n?o-e-l:r>t&&d<n||o<e&&d>n?r-t+i:0,i=e=>{let t=e.parentElement;return null==t?e.getRootNode().host||null:t};var o=(t,o)=>{var r,d,h,f,u,s;if("undefined"==typeof document)return [];let{scrollMode:a,block:c,inline:g,boundary:m,skipOverflowHiddenElements:p}=o,w="function"==typeof m?m:e=>e!==m;if(!e(t))throw new TypeError("Invalid target");let W=document.scrollingElement||document.documentElement,H=[],b=t;for(;e(b)&&w(b);){if(b=i(b),b===W){H.push(b);break}null!=b&&b===document.body&&n(b)&&!n(document.documentElement)||null!=b&&n(b,p)&&H.push(b);}let v=null!=(d=null==(r=window.visualViewport)?void 0:r.width)?d:innerWidth,y=null!=(f=null==(h=window.visualViewport)?void 0:h.height)?f:innerHeight,E=null!=(u=window.scrollX)?u:pageXOffset,M=null!=(s=window.scrollY)?s:pageYOffset,{height:x,width:I,top:C,right:R,bottom:T,left:V}=t.getBoundingClientRect(),k="start"===c||"nearest"===c?C:"end"===c?T:C+x/2,B="center"===g?V+I/2:"end"===g?R:V,D=[];for(let e=0;e<H.length;e++){let t=H[e],{height:n,width:i,top:o,right:r,bottom:d,left:h}=t.getBoundingClientRect();if("if-needed"===a&&C>=0&&V>=0&&T<=y&&R<=v&&C>=o&&T<=d&&V>=h&&R<=r)return D;let f=getComputedStyle(t),u=parseInt(f.borderLeftWidth,10),s=parseInt(f.borderTopWidth,10),m=parseInt(f.borderRightWidth,10),p=parseInt(f.borderBottomWidth,10),w=0,b=0,O="offsetWidth"in t?t.offsetWidth-t.clientWidth-u-m:0,X="offsetHeight"in t?t.offsetHeight-t.clientHeight-s-p:0,Y="offsetWidth"in t?0===t.offsetWidth?0:i/t.offsetWidth:0,L="offsetHeight"in t?0===t.offsetHeight?0:n/t.offsetHeight:0;if(W===t)w="start"===c?k:"end"===c?k-y:"nearest"===c?l(M,M+y,y,s,p,M+k,M+k+x,x):k-y/2,b="start"===g?B:"center"===g?B-v/2:"end"===g?B-v:l(E,E+v,v,u,m,E+B,E+B+I,I),w=Math.max(0,w+M),b=Math.max(0,b+E);else {w="start"===c?k-o-s:"end"===c?k-d+p+X:"nearest"===c?l(o,d,n,s,p+X,k,k+x,x):k-(o+n/2)+X/2,b="start"===g?B-h-u:"center"===g?B-(h+i/2)+O/2:"end"===g?B-r+m+O:l(h,r,i,u,m+O,B,B+I,I);let{scrollLeft:e,scrollTop:f}=t;w=Math.max(0,Math.min(f+w/L,t.scrollHeight-n/L+X)),b=Math.max(0,Math.min(e+b/Y,t.scrollWidth-i/Y+O)),k+=f-w,B+=e-b;}D.push({el:t,top:w,left:b});}return D};
 
 /******************************************************************************
@@ -13347,7 +10093,7 @@ function isOrContainsNode(parent, child, environment) {
  * @param {Number} time the time to wait
  * @return {Function} the debounced function
  */
-function debounce$1(fn, time) {
+function debounce$3(fn, time) {
   var timeoutId;
   function cancel() {
     if (timeoutId) {
@@ -13572,7 +10318,7 @@ function targetWithinDownshift(target, downshiftElements, environment, checkActi
   });
 }
 
-var cleanupStatus = debounce$1(function (documentProp) {
+var cleanupStatus = debounce$3(function (documentProp) {
   getStatusDiv(documentProp).textContent = '';
 }, 500);
 
@@ -13681,7 +10427,7 @@ function getA11ySelectionMessage(selectionParameters) {
 /**
  * Debounced call for updating the a11y message.
  */
-var updateA11yStatus = debounce$1(function (getA11yMessage, document) {
+var updateA11yStatus = debounce$3(function (getA11yMessage, document) {
   setStatus(getA11yMessage(), document);
 }, 200);
 
@@ -15569,6 +12315,2954 @@ const useCombobox = _ref => {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
+const FieldContext$1 = reactExports.createContext(undefined);
+const useFieldContext$1 = () => {
+  const fieldContext = reactExports.useContext(FieldContext$1);
+  return fieldContext;
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1u = 'forms.field';
+const StyledField$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$1u,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledField",
+  componentId: "sc-12gzfsu-0"
+})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$1u, props));
+StyledField$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1t = 'forms.input_label';
+const StyledLabel$1 = styled.label.attrs(props => ({
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1t,
+  'data-garden-version': props['data-garden-version'] || '8.76.2'
+})).withConfig({
+  displayName: "StyledLabel",
+  componentId: "sc-2utmsz-0"
+})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$1t, props));
+StyledLabel$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1s = 'forms.input_hint';
+const StyledHint$1 = styled.div.attrs(props => ({
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1s,
+  'data-garden-version': props['data-garden-version'] || '8.76.2'
+})).withConfig({
+  displayName: "StyledHint",
+  componentId: "sc-17c2wu8-0"
+})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1s, props));
+StyledHint$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _g$4, _circle$7;
+function _extends$N() { _extends$N = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$N.apply(this, arguments); }
+var SvgAlertErrorStroke$1 = function SvgAlertErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$N({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _g$4 || (_g$4 = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 8.5,
+    r: 7
+  }), /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    d: "M7.5 4.5V9"
+  }))), _circle$7 || (_circle$7 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 12,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$F, _circle$6;
+function _extends$M() { _extends$M = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$M.apply(this, arguments); }
+var SvgAlertWarningStroke$1 = function SvgAlertWarningStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$M({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$F || (_path$F = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M.88 13.77L7.06 1.86c.19-.36.7-.36.89 0l6.18 11.91c.17.33-.07.73-.44.73H1.32c-.37 0-.61-.4-.44-.73zM7.5 6v3.5"
+  })), _circle$6 || (_circle$6 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 12,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _g$3;
+function _extends$L() { _extends$L = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$L.apply(this, arguments); }
+var SvgCheckCircleStroke$2 = function SvgCheckCircleStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$L({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _g$3 || (_g$3 = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M4 9l2.5 2.5 5-5"
+  }), /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 8.5,
+    r: 7
+  }))));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const MessageIcon = _ref => {
+  let {
+    children,
+    validation,
+    ...props
+  } = _ref;
+  let retVal;
+  if (validation === 'error') {
+    retVal = React__default.createElement(SvgAlertErrorStroke$1, props);
+  } else if (validation === 'success') {
+    retVal = React__default.createElement(SvgCheckCircleStroke$2, props);
+  } else if (validation === 'warning') {
+    retVal = React__default.createElement(SvgAlertWarningStroke$1, props);
+  } else {
+    retVal = React__default.cloneElement(reactExports.Children.only(children));
+  }
+  return retVal;
+};
+const COMPONENT_ID$1r = 'forms.input_message_icon';
+const StyledMessageIcon = styled(MessageIcon).attrs({
+  'data-garden-id': COMPONENT_ID$1r,
+  'data-garden-version': '8.76.2',
+  'aria-hidden': null
+}).withConfig({
+  displayName: "StyledMessageIcon",
+  componentId: "sc-1ph2gba-0"
+})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1r, props));
+StyledMessageIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const validationStyles = props => {
+  const rtl = props.theme.rtl;
+  const padding = math$1(`${props.theme.space.base} * 2px + ${props.theme.iconSizes.md}`);
+  let color;
+  if (props.validation === 'error') {
+    color = getColorV8('dangerHue', 600, props.theme);
+  } else if (props.validation === 'success') {
+    color = getColorV8('successHue', 600, props.theme);
+  } else if (props.validation === 'warning') {
+    color = getColorV8('warningHue', 700, props.theme);
+  } else {
+    color = getColorV8('neutralHue', 700, props.theme);
+  }
+  return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
+};
+const COMPONENT_ID$1q = 'forms.input_message';
+const StyledMessage$1 = styled.div.attrs(props => ({
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1q,
+  'data-garden-version': props['data-garden-version'] || '8.76.2'
+})).withConfig({
+  displayName: "StyledMessage",
+  componentId: "sc-30hgg7-0"
+})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math$1(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$1q, props));
+StyledMessage$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1p = 'forms.input';
+const isInvalid = validation => {
+  return validation === 'warning' || validation === 'error';
+};
+const colorStyles$p = props => {
+  const HUE = 'primaryHue';
+  const SHADE = 600;
+  const placeholderColor = getColorV8('neutralHue', SHADE - 200, props.theme);
+  let borderColor;
+  let hoverBorderColor;
+  let focusBorderColor;
+  let focusRingHue = HUE;
+  let focusRingShade = SHADE;
+  if (props.validation) {
+    let hue = HUE;
+    if (props.validation === 'success') {
+      hue = 'successHue';
+    } else if (props.validation === 'warning') {
+      hue = 'warningHue';
+      focusRingShade = 700;
+    } else if (props.validation === 'error') {
+      hue = 'dangerHue';
+    }
+    borderColor = getColorV8(hue, SHADE, props.theme);
+    hoverBorderColor = borderColor;
+    focusBorderColor = borderColor;
+    focusRingHue = hue;
+  } else {
+    borderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
+    hoverBorderColor = getColorV8('primaryHue', SHADE, props.theme);
+    focusBorderColor = hoverBorderColor;
+  }
+  const readOnlyBackgroundColor = getColorV8('neutralHue', SHADE - 500, props.theme);
+  const readOnlyBorderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
+  const disabledBackgroundColor = readOnlyBackgroundColor;
+  const disabledBorderColor = getColorV8('neutralHue', SHADE - 400, props.theme);
+  const disabledForegroundColor = getColorV8('neutralHue', SHADE - 200, props.theme);
+  let controlledBorderColor = borderColor;
+  if (props.isFocused) {
+    controlledBorderColor = focusBorderColor;
+  }
+  if (props.isHovered) {
+    controlledBorderColor = hoverBorderColor;
+  }
+  return Ne(["border-color:", ";background-color:", ";color:", ";&::placeholder{color:", ";}&[readonly],&[aria-readonly='true']{border-color:", ";background-color:", ";}&:hover{border-color:", ";}", " &:disabled,&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], controlledBorderColor, props.isBare ? 'transparent' : getColorV8('background', 600 , props.theme), getColorV8('foreground', 600 , props.theme), placeholderColor, readOnlyBorderColor, !props.isBare && readOnlyBackgroundColor, hoverBorderColor, focusStyles({
+    theme: props.theme,
+    inset: props.focusInset,
+    condition: !props.isBare,
+    hue: focusRingHue,
+    shade: focusRingShade,
+    styles: {
+      borderColor: focusBorderColor
+    }
+  }), disabledBorderColor, !props.isBare && disabledBackgroundColor, disabledForegroundColor);
+};
+const sizeStyles$q = props => {
+  const fontSize = props.theme.fontSizes.md;
+  const paddingHorizontal = `${props.theme.space.base * 3}px`;
+  let height;
+  let paddingVertical;
+  let browseFontSize;
+  let swatchHeight;
+  if (props.isCompact) {
+    height = `${props.theme.space.base * 8}px`;
+    paddingVertical = `${props.theme.space.base * 1.5}px`;
+    browseFontSize = math$1(`${props.theme.fontSizes.sm} - 1`);
+    swatchHeight = `${props.theme.space.base * 6}px`;
+  } else {
+    height = `${props.theme.space.base * 10}px`;
+    paddingVertical = `${props.theme.space.base * 2.5}px`;
+    browseFontSize = props.theme.fontSizes.sm;
+    swatchHeight = `${props.theme.space.base * 7}px`;
+  }
+  const lineHeight = math$1(`${height} - (${paddingVertical} * 2) - (${props.theme.borderWidths.sm} * 2)`);
+  const padding = props.isBare ? '0' : `${em$1(paddingVertical, fontSize)} ${em$1(paddingHorizontal, fontSize)}`;
+  const swatchMarginVertical = math$1(`(${lineHeight} - ${swatchHeight}) / 2`);
+  const swatchMarginHorizontal = math$1(`${paddingVertical} + ${swatchMarginVertical} - ${paddingHorizontal}`);
+  return Ne(["padding:", ";min-height:", ";line-height:", ";font-size:", ";&::-ms-browse{font-size:", ";}&[type='date'],&[type='datetime-local'],&[type='file'],&[type='month'],&[type='time'],&[type='week']{max-height:", ";}&[type='file']{line-height:1;}@supports (-ms-ime-align:auto){&[type='color']{padding:", ";}}&::-moz-color-swatch{margin-top:", ";margin-left:", ";width:calc(100% + ", ");height:", ";}&::-webkit-color-swatch{margin:", " ", ";}", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& ~ ", "{margin-top:", "px;}"], padding, props.isBare ? '1em' : height, getLineHeight(lineHeight, fontSize), fontSize, browseFontSize, height, props.isCompact ? '0 2px' : '1px 3px', swatchMarginVertical, swatchMarginHorizontal, math$1(`${swatchMarginHorizontal} * -2`), swatchHeight, swatchMarginVertical, swatchMarginHorizontal, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props.theme.space.base * (props.isCompact ? 1 : 2));
+};
+const StyledTextInput = styled.input.attrs(props => ({
+  'data-garden-id': COMPONENT_ID$1p,
+  'data-garden-version': '8.76.2',
+  'aria-invalid': isInvalid(props.validation)
+})).withConfig({
+  displayName: "StyledTextInput",
+  componentId: "sc-k12n8x-0"
+})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$q(props), props => colorStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1p, props));
+StyledTextInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1o = 'forms.textarea';
+const hiddenStyles = `
+  visibility: hidden;
+  position: absolute;
+  overflow: hidden;
+  height: 0;
+  top: 0;
+  left: 0;
+  transform: translateZ(0);
+`;
+const StyledTextarea = styled(StyledTextInput).attrs({
+  as: 'textarea',
+  'data-garden-id': COMPONENT_ID$1o,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledTextarea",
+  componentId: "sc-wxschl-0"
+})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles, props => retrieveComponentStyles(COMPONENT_ID$1o, props));
+StyledTextarea.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1n = 'forms.media_figure';
+const colorStyles$o = props => {
+  let shade = 600;
+  if (props.isDisabled) {
+    shade = 400;
+  } else if (props.isHovered || props.isFocused) {
+    shade = 700;
+  }
+  return Ne(["color:", ";"], getColorV8('neutralHue', shade, props.theme));
+};
+const sizeStyles$p = props => {
+  const size = props.theme.iconSizes.md;
+  const marginFirst = `1px ${props.theme.space.base * 2}px auto 0`;
+  const marginLast = `1px 0 auto ${props.theme.space.base * 2}px`;
+  let margin;
+  if (props.position === 'start') {
+    margin = props.theme.rtl ? marginLast : marginFirst;
+  } else {
+    margin = props.theme.rtl ? marginFirst : marginLast;
+  }
+  return Ne(["margin:", ";width:", ";height:", ";"], margin, size, size);
+};
+const StyledTextMediaFigure = styled(
+_ref => {
+  let {
+    children,
+    position,
+    isHovered,
+    isFocused,
+    isDisabled,
+    isRotated,
+    theme,
+    ...props
+  } = _ref;
+  return React__default.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$1n,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledTextMediaFigure",
+  componentId: "sc-1qepknj-0"
+})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$o(props), props => sizeStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1n, props));
+StyledTextMediaFigure.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1m = 'forms.faux_input';
+const VALIDATION_HUES = {
+  success: 'successHue',
+  warning: 'warningHue',
+  error: 'dangerHue'
+};
+function getValidationHue(validation) {
+  let defaultHue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'primaryHue';
+  if (validation) {
+    return VALIDATION_HUES[validation];
+  }
+  return defaultHue;
+}
+const colorStyles$n = props => {
+  const {
+    theme,
+    validation,
+    focusInset,
+    isBare,
+    isFocused
+  } = props;
+  return Ne(["", ""], focusStyles({
+    theme,
+    inset: focusInset,
+    condition: !isBare,
+    hue: getValidationHue(validation),
+    shade: validation === 'warning' ? 700 : 600,
+    selector: isFocused ? '&' : '&:focus-within',
+    styles: {
+      borderColor: getColorV8(getValidationHue(validation), 600, theme)
+    }
+  }));
+};
+const StyledTextFauxInput = styled(StyledTextInput).attrs(props => ({
+  as: 'div',
+  'aria-readonly': props.isReadOnly,
+  'aria-disabled': props.isDisabled,
+  'data-garden-id': COMPONENT_ID$1m,
+  'data-garden-version': '8.76.2'
+})).withConfig({
+  displayName: "StyledTextFauxInput",
+  componentId: "sc-yqw7j9-0"
+})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$n, StyledTextInput, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$1m, props));
+StyledTextFauxInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1l = 'forms.media_input';
+const StyledTextMediaInput = styled(StyledTextInput).attrs({
+  'data-garden-id': COMPONENT_ID$1l,
+  'data-garden-version': '8.76.2',
+  isBare: true
+}).withConfig({
+  displayName: "StyledTextMediaInput",
+  componentId: "sc-12i9xfi-0"
+})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$1l, props));
+StyledTextMediaInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1k = 'forms.radio_label';
+const sizeStyles$o = props => {
+  const size = props.theme.space.base * 4;
+  const padding = size + props.theme.space.base * 2;
+  const lineHeight = props.theme.space.base * 5;
+  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
+};
+const StyledRadioLabel = styled(StyledLabel$1).attrs({
+  'data-garden-id': COMPONENT_ID$1k,
+  'data-garden-version': '8.76.2',
+  isRadio: true
+}).withConfig({
+  displayName: "StyledRadioLabel",
+  componentId: "sc-1aq2e5t-0"
+})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$o(props), props => retrieveComponentStyles(COMPONENT_ID$1k, props));
+StyledRadioLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1j = 'forms.checkbox_label';
+const StyledCheckLabel = styled(StyledRadioLabel).attrs({
+  'data-garden-id': COMPONENT_ID$1j,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledCheckLabel",
+  componentId: "sc-x7nr1-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1j, props));
+StyledCheckLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1i = 'forms.radio_hint';
+const StyledRadioHint = styled(StyledHint$1).attrs({
+  'data-garden-id': COMPONENT_ID$1i,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledRadioHint",
+  componentId: "sc-eo8twg-0"
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1i, props));
+StyledRadioHint.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1h = 'forms.checkbox_hint';
+const StyledCheckHint = styled(StyledRadioHint).attrs({
+  'data-garden-id': COMPONENT_ID$1h,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledCheckHint",
+  componentId: "sc-1kl8e8c-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1h, props));
+StyledCheckHint.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1g = 'forms.radio';
+const colorStyles$m = props => {
+  const SHADE = 600;
+  const borderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
+  const backgroundColor = getColorV8('background', 600 , props.theme);
+  const iconColor = backgroundColor;
+  const hoverBackgroundColor = getColorV8('primaryHue', SHADE, props.theme, 0.08);
+  const hoverBorderColor = getColorV8('primaryHue', SHADE, props.theme);
+  const focusBorderColor = hoverBorderColor;
+  const activeBackgroundColor = getColorV8('primaryHue', SHADE, props.theme, 0.2);
+  const activeBorderColor = focusBorderColor;
+  const checkedBorderColor = focusBorderColor;
+  const checkedBackgroundColor = checkedBorderColor;
+  const checkedHoverBorderColor = getColorV8('primaryHue', SHADE + 100, props.theme);
+  const checkedHoverBackgroundColor = checkedHoverBorderColor;
+  const checkedActiveBorderColor = getColorV8('primaryHue', SHADE + 200, props.theme);
+  const checkedActiveBackgroundColor = checkedActiveBorderColor;
+  const disabledBackgroundColor = getColorV8('neutralHue', SHADE - 400, props.theme);
+  return Ne(["& ~ ", "::before{border-color:", ";background-color:", ";}& ~ ", " > svg{color:", ";}& ~ ", ":hover::before{border-color:", ";background-color:", ";}", " & ~ ", ":active::before{border-color:", ";background-color:", ";}&:checked ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":hover::before{border-color:", ";background-color:", ";}&:enabled:checked ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledRadioLabel, borderColor, backgroundColor, StyledRadioLabel, iconColor, StyledRadioLabel, hoverBorderColor, hoverBackgroundColor, focusStyles({
+    theme: props.theme,
+    styles: {
+      borderColor: focusBorderColor
+    },
+    selector: `&:focus-visible ~ ${StyledRadioLabel}::before, &[data-garden-focus-visible='true'] ~ ${StyledRadioLabel}::before`
+  }), StyledRadioLabel, activeBorderColor, activeBackgroundColor, StyledRadioLabel, checkedBorderColor, checkedBackgroundColor, StyledRadioLabel, checkedHoverBorderColor, checkedHoverBackgroundColor, StyledRadioLabel, checkedActiveBorderColor, checkedActiveBackgroundColor, StyledRadioLabel, disabledBackgroundColor);
+};
+const sizeStyles$n = props => {
+  const lineHeight = `${props.theme.space.base * 5}px`;
+  const size = `${props.theme.space.base * 4}px`;
+  const top = math$1(`(${lineHeight} - ${size}) / 2`);
+  const iconSize = props.theme.iconSizes.sm;
+  const iconPosition = math$1(`(${size} - ${iconSize}) / 2`);
+  const iconTop = math$1(`${iconPosition} + ${top}`);
+  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
+  return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
+};
+const StyledRadioInput = styled.input.attrs({
+  'data-garden-id': COMPONENT_ID$1g,
+  'data-garden-version': '8.76.2',
+  type: 'radio'
+}).withConfig({
+  displayName: "StyledRadioInput",
+  componentId: "sc-qsavpv-0"
+})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$n(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$m(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$1g, props));
+StyledRadioInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1f = 'forms.checkbox';
+const colorStyles$l = props => {
+  const SHADE = 600;
+  const indeterminateBorderColor = getColorV8('primaryHue', SHADE, props.theme);
+  const indeterminateBackgroundColor = indeterminateBorderColor;
+  const indeterminateActiveBorderColor = getColorV8('primaryHue', SHADE + 100, props.theme);
+  const indeterminateActiveBackgroundColor = indeterminateActiveBorderColor;
+  const indeterminateDisabledBackgroundColor = getColorV8('neutralHue', SHADE - 400, props.theme);
+  return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
+};
+const StyledCheckInput = styled(StyledRadioInput).attrs({
+  'data-garden-id': COMPONENT_ID$1f,
+  'data-garden-version': '8.76.2',
+  type: 'checkbox'
+}).withConfig({
+  displayName: "StyledCheckInput",
+  componentId: "sc-176jxxe-0"
+})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$l(props), props => retrieveComponentStyles(COMPONENT_ID$1f, props));
+StyledCheckInput.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1e = 'forms.radio_message';
+const StyledRadioMessage = styled(StyledMessage$1).attrs({
+  'data-garden-id': COMPONENT_ID$1e,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledRadioMessage",
+  componentId: "sc-1pmi0q8-0"
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1e, props));
+StyledRadioMessage.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1d = 'forms.checkbox_message';
+const StyledCheckMessage = styled(StyledRadioMessage).attrs({
+  'data-garden-id': COMPONENT_ID$1d,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledCheckMessage",
+  componentId: "sc-s4p6kd-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1d, props));
+StyledCheckMessage.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$E;
+function _extends$K() { _extends$K = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$K.apply(this, arguments); }
+var SvgCheckSmFill = function SvgCheckSmFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$K({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$E || (_path$E = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    strokeWidth: 2,
+    d: "M3 6l2 2 4-4"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1c = 'forms.check_svg';
+const StyledCheckSvg = styled(SvgCheckSmFill).attrs({
+  'data-garden-id': COMPONENT_ID$1c,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledCheckSvg",
+  componentId: "sc-fvxetk-0"
+})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$1c, props));
+StyledCheckSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$D;
+function _extends$J() { _extends$J = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$J.apply(this, arguments); }
+var SvgDashFill = function SvgDashFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$J({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$D || (_path$D = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeWidth: 2,
+    d: "M3 6h6"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1b = 'forms.dash_svg';
+const StyledDashSvg = styled(SvgDashFill).attrs({
+  'data-garden-id': COMPONENT_ID$1b,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledDashSvg",
+  componentId: "sc-z3vq71-0"
+})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$1b, props));
+StyledDashSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1a = 'forms.file_upload';
+const colorStyles$k = props => {
+  const baseColor = getColorV8('primaryHue', 600, props.theme);
+  const hoverColor = getColorV8('primaryHue', 700, props.theme);
+  const activeColor = getColorV8('primaryHue', 800, props.theme);
+  const disabledBackgroundColor = getColorV8('neutralHue', 200, props.theme);
+  const disabledForegroundColor = getColorV8('neutralHue', 400, props.theme);
+  return Ne(["border-color:", ";background-color:", ";color:", ";&:hover{border-color:", ";background-color:", ";color:", ";}", " &:active{border-color:", ";background-color:", ";color:", ";}&[aria-disabled='true']{border-color:", ";background-color:", ";color:", ";}"], props.isDragging ? activeColor : getColorV8('neutralHue', 600, props.theme), props.isDragging && rgba$1(baseColor, 0.2), props.isDragging ? activeColor : baseColor, hoverColor, rgba$1(baseColor, 0.08), hoverColor, focusStyles({
+    theme: props.theme,
+    hue: baseColor
+  }), activeColor, rgba$1(baseColor, 0.2), activeColor, disabledForegroundColor, disabledBackgroundColor, disabledForegroundColor);
+};
+const sizeStyles$m = props => {
+  const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
+  const paddingHorizontal = `${props.isCompact ? 2 : 4}em`;
+  const paddingVertical = math$1(`${props.theme.space.base * (props.isCompact ? 2.5 : 5)} - ${props.theme.borderWidths.sm}`);
+  const fontSize = props.theme.fontSizes.md;
+  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
+  return Ne(["padding:", " ", ";min-width:4em;line-height:", ";font-size:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], paddingVertical, paddingHorizontal, lineHeight, fontSize, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, marginTop);
+};
+const StyledFileUpload = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$1a,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFileUpload",
+  componentId: "sc-1rodjgn-0"
+})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$m, colorStyles$k, props => retrieveComponentStyles(COMPONENT_ID$1a, props));
+StyledFileUpload.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$19 = 'forms.file.close';
+const StyledFileClose = styled.button.attrs({
+  'data-garden-id': COMPONENT_ID$19,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFileClose",
+  componentId: "sc-1m31jbf-0"
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => getColorV8('foreground', 600 , props.theme), props => retrieveComponentStyles(COMPONENT_ID$19, props));
+StyledFileClose.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$18 = 'forms.file';
+const colorStyles$j = props => {
+  let borderColor;
+  let focusBorderColor;
+  let foregroundColor;
+  if (props.validation === 'success') {
+    borderColor = getColorV8('successHue', 600, props.theme);
+    focusBorderColor = borderColor;
+    foregroundColor = borderColor;
+  } else if (props.validation === 'error') {
+    borderColor = getColorV8('dangerHue', 600, props.theme);
+    focusBorderColor = borderColor;
+    foregroundColor = borderColor;
+  } else {
+    borderColor = getColorV8('neutralHue', 300, props.theme);
+    focusBorderColor = getColorV8('primaryHue', 600, props.theme);
+    foregroundColor = getColorV8('foreground', 600 , props.theme);
+  }
+  return Ne(["border-color:", ";color:", ";", ""], borderColor, foregroundColor, focusStyles({
+    theme: props.theme,
+    inset: props.focusInset,
+    hue: focusBorderColor,
+    styles: {
+      borderColor: focusBorderColor
+    }
+  }));
+};
+const sizeStyles$l = props => {
+  const size = `${props.theme.space.base * (props.isCompact ? 7 : 10)}px`;
+  const spacing = `${props.theme.space.base * (props.isCompact ? 2 : 3)}px`;
+  const fontSize = props.theme.fontSizes.md;
+  const lineHeight = getLineHeight(props.theme.space.base * 5, fontSize);
+  return `
+    box-sizing: border-box;
+    border: ${props.theme.borders.sm};
+    border-radius: ${props.theme.borderRadii.md};
+    padding: 0 ${spacing};
+    height: ${size};
+    line-height: ${lineHeight};
+    font-size: ${fontSize};
+
+    & > span {
+      width: 100%;
+    }
+
+    & > ${StyledFileClose} {
+      width: ${size};
+      height: ${size};
+      margin-${props.theme.rtl ? 'left' : 'right'}: -${spacing};
+    }
+  `;
+};
+const StyledFile = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$18,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFile",
+  componentId: "sc-195lzp1-0"
+})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$l, colorStyles$j, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$18, props));
+StyledFile.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$17 = 'forms.file.delete';
+const StyledFileDelete = styled(StyledFileClose).attrs({
+  'data-garden-id': COMPONENT_ID$17,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFileDelete",
+  componentId: "sc-a8nnhx-0"
+})(["color:", ";", ";"], props => getColorV8('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$17, props));
+StyledFileDelete.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$16 = 'forms.file.icon';
+const StyledFileIcon = styled(_ref => {
+  let {
+    children,
+    isCompact,
+    theme,
+    ...props
+  } = _ref;
+  return React__default.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$16,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFileIcon",
+  componentId: "sc-7b3q0c-0"
+})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$16, props));
+StyledFileIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$15 = 'forms.file_list';
+const StyledFileList = styled.ul.attrs({
+  'data-garden-id': COMPONENT_ID$15,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFileList",
+  componentId: "sc-gbahjg-0"
+})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$15, props));
+StyledFileList.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$14 = 'forms.file_list.item';
+const StyledFileListItem = styled.li.attrs({
+  'data-garden-id': COMPONENT_ID$14,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFileListItem",
+  componentId: "sc-1ova3lo-0"
+})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload, StyledFileList, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$14, props));
+StyledFileListItem.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _circle$5;
+function _extends$I() { _extends$I = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$I.apply(this, arguments); }
+var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$I({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _circle$5 || (_circle$5 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 6,
+    cy: 6,
+    r: 2,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$13 = 'forms.radio_svg';
+const StyledRadioSvg = styled(SvgCircleSmFill$1).attrs({
+  'data-garden-id': COMPONENT_ID$13,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledRadioSvg",
+  componentId: "sc-1r1qtr1-0"
+})(["transition:opacity 0.25s ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$13, props));
+StyledRadioSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$12 = 'forms.toggle_label';
+const sizeStyles$k = props => {
+  const size = props.theme.space.base * 10;
+  const padding = size + props.theme.space.base * 2;
+  return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size);
+};
+const StyledToggleLabel = styled(StyledCheckLabel).attrs({
+  'data-garden-id': COMPONENT_ID$12,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledToggleLabel",
+  componentId: "sc-e0asdk-0"
+})(["", ";", ";"], props => sizeStyles$k(props), props => retrieveComponentStyles(COMPONENT_ID$12, props));
+StyledToggleLabel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$11 = 'forms.toggle_hint';
+const StyledToggleHint = styled(StyledHint$1).attrs({
+  'data-garden-id': COMPONENT_ID$11,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledToggleHint",
+  componentId: "sc-nziggu-0"
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$11, props));
+StyledToggleHint.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$10 = 'forms.toggle_message';
+const StyledToggleMessage = styled(StyledMessage$1).attrs({
+  'data-garden-id': COMPONENT_ID$10,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledToggleMessage",
+  componentId: "sc-13vuvl1-0"
+})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$10, props));
+StyledToggleMessage.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _circle$4;
+function _extends$H() { _extends$H = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$H.apply(this, arguments); }
+var SvgCircleSmFill = function SvgCircleSmFill(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$H({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _circle$4 || (_circle$4 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 8,
+    cy: 8,
+    r: 6,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$$ = 'forms.toggle_svg';
+const StyledToggleSvg = styled(SvgCircleSmFill).attrs({
+  'data-garden-id': COMPONENT_ID$$,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledToggleSvg",
+  componentId: "sc-162xbyx-0"
+})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$$, props));
+StyledToggleSvg.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Field$1 = React__default.forwardRef((props, ref) => {
+  const [hasHint, setHasHint] = reactExports.useState(false);
+  const [hasMessage, setHasMessage] = reactExports.useState(false);
+  const [isLabelActive, setIsLabelActive] = reactExports.useState(false);
+  const [isLabelHovered, setIsLabelHovered] = reactExports.useState(false);
+  const multiThumbRangeRef = reactExports.useRef(null);
+  const {
+    getInputProps,
+    getMessageProps,
+    ...propGetters
+  } = useField({
+    idPrefix: props.id,
+    hasHint,
+    hasMessage
+  });
+  const fieldProps = reactExports.useMemo(() => ({
+    ...propGetters,
+    getInputProps,
+    getMessageProps,
+    isLabelActive,
+    setIsLabelActive,
+    isLabelHovered,
+    setIsLabelHovered,
+    hasHint,
+    setHasHint,
+    hasMessage,
+    setHasMessage,
+    multiThumbRangeRef
+  }), [propGetters, getInputProps, getMessageProps, isLabelActive, isLabelHovered, hasHint, hasMessage]);
+  return React__default.createElement(FieldContext$1.Provider, {
+    value: fieldProps
+  }, React__default.createElement(StyledField$1, Object.assign({}, props, {
+    ref: ref
+  })));
+});
+Field$1.displayName = 'Field';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FieldsetContext = reactExports.createContext(undefined);
+const useFieldsetContext = () => {
+  const fieldsetContext = reactExports.useContext(FieldsetContext);
+  return fieldsetContext;
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const InputContext = reactExports.createContext(undefined);
+const useInputContext = () => {
+  return reactExports.useContext(InputContext);
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Hint$1 = React__default.forwardRef((props, ref) => {
+  const {
+    hasHint,
+    setHasHint,
+    getHintProps
+  } = useFieldContext$1() || {};
+  const type = useInputContext();
+  reactExports.useEffect(() => {
+    if (!hasHint && setHasHint) {
+      setHasHint(true);
+    }
+    return () => {
+      if (hasHint && setHasHint) {
+        setHasHint(false);
+      }
+    };
+  }, [hasHint, setHasHint]);
+  let HintComponent;
+  if (type === 'checkbox') {
+    HintComponent = StyledCheckHint;
+  } else if (type === 'radio') {
+    HintComponent = StyledRadioHint;
+  } else if (type === 'toggle') {
+    HintComponent = StyledToggleHint;
+  } else {
+    HintComponent = StyledHint$1;
+  }
+  let combinedProps = props;
+  if (getHintProps) {
+    combinedProps = getHintProps(combinedProps);
+  }
+  return React__default.createElement(HintComponent, Object.assign({
+    ref: ref
+  }, combinedProps));
+});
+Hint$1.displayName = 'Hint';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Label$2 = React__default.forwardRef((props, ref) => {
+  const fieldContext = useFieldContext$1();
+  const fieldsetContext = useFieldsetContext();
+  const type = useInputContext();
+  let combinedProps = props;
+  if (fieldContext) {
+    combinedProps = fieldContext.getLabelProps(combinedProps);
+    if (type === undefined) {
+      const {
+        setIsLabelActive,
+        setIsLabelHovered,
+        multiThumbRangeRef
+      } = fieldContext;
+      combinedProps = {
+        ...combinedProps,
+        onMouseUp: composeEventHandlers$5(props.onMouseUp, () => {
+          setIsLabelActive(false);
+        }),
+        onMouseDown: composeEventHandlers$5(props.onMouseDown, () => {
+          setIsLabelActive(true);
+        }),
+        onMouseEnter: composeEventHandlers$5(props.onMouseEnter, () => {
+          setIsLabelHovered(true);
+        }),
+        onMouseLeave: composeEventHandlers$5(props.onMouseLeave, () => {
+          setIsLabelHovered(false);
+        }),
+        onClick: composeEventHandlers$5(props.onClick, () => {
+          multiThumbRangeRef.current && multiThumbRangeRef.current.focus();
+        })
+      };
+    }
+  }
+  if (fieldsetContext) {
+    combinedProps = {
+      ...combinedProps,
+      isRegular: combinedProps.isRegular === undefined ? true : combinedProps.isRegular
+    };
+  }
+  if (type === 'radio') {
+    return React__default.createElement(StyledRadioLabel, Object.assign({
+      ref: ref
+    }, combinedProps), React__default.createElement(StyledRadioSvg, null), props.children);
+  } else if (type === 'checkbox') {
+    const onLabelSelect = e => {
+      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+      if (fieldContext && isFirefox && e.target instanceof Element) {
+        const inputId = e.target.getAttribute('for');
+        if (!inputId) return;
+        const input = document.getElementById(inputId);
+        if (input && input.type === 'checkbox') {
+          if (e.shiftKey) {
+            input.click();
+            input.checked = true;
+          }
+          input.focus();
+        }
+      }
+    };
+    combinedProps = {
+      ...combinedProps,
+      onClick: composeEventHandlers$5(combinedProps.onClick, onLabelSelect)
+    };
+    return React__default.createElement(StyledCheckLabel, Object.assign({
+      ref: ref
+    }, combinedProps), React__default.createElement(StyledCheckSvg, null), React__default.createElement(StyledDashSvg, null), props.children);
+  } else if (type === 'toggle') {
+    return React__default.createElement(StyledToggleLabel, Object.assign({
+      ref: ref
+    }, combinedProps), React__default.createElement(StyledToggleSvg, null), props.children);
+  }
+  return React__default.createElement(StyledLabel$1, Object.assign({
+    ref: ref
+  }, combinedProps));
+});
+Label$2.displayName = 'Label';
+Label$2.propTypes = {
+  isRegular: PropTypes.bool
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+const VALIDATION = ['success', 'warning', 'error'];
+const FILE_VALIDATION = ['success', 'error'];
+const FILE_TYPE = ['pdf', 'zip', 'image', 'document', 'spreadsheet', 'presentation', 'generic'];
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Message$1 = React__default.forwardRef((_ref, ref) => {
+  let {
+    validation,
+    validationLabel,
+    children,
+    ...props
+  } = _ref;
+  const {
+    hasMessage,
+    setHasMessage,
+    getMessageProps
+  } = useFieldContext$1() || {};
+  const type = useInputContext();
+  reactExports.useEffect(() => {
+    if (!hasMessage && setHasMessage) {
+      setHasMessage(true);
+    }
+    return () => {
+      if (hasMessage && setHasMessage) {
+        setHasMessage(false);
+      }
+    };
+  }, [hasMessage, setHasMessage]);
+  let MessageComponent;
+  if (type === 'checkbox') {
+    MessageComponent = StyledCheckMessage;
+  } else if (type === 'radio') {
+    MessageComponent = StyledRadioMessage;
+  } else if (type === 'toggle') {
+    MessageComponent = StyledToggleMessage;
+  } else {
+    MessageComponent = StyledMessage$1;
+  }
+  let combinedProps = {
+    validation,
+    validationLabel,
+    ...props
+  };
+  if (getMessageProps) {
+    combinedProps = getMessageProps(combinedProps);
+  }
+  const ariaLabel = useText(Message$1, combinedProps, 'validationLabel', validation, validation !== undefined);
+  return React__default.createElement(MessageComponent, Object.assign({
+    ref: ref
+  }, combinedProps), validation && React__default.createElement(StyledMessageIcon, {
+    validation: validation,
+    "aria-label": ariaLabel
+  }), children);
+});
+Message$1.displayName = 'Message';
+Message$1.propTypes = {
+  validation: PropTypes.oneOf(VALIDATION),
+  validationLabel: PropTypes.string
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Checkbox = React__default.forwardRef((_ref, ref) => {
+  let {
+    indeterminate,
+    children,
+    ...props
+  } = _ref;
+  const fieldsetContext = useFieldsetContext();
+  const fieldContext = useFieldContext$1();
+  const inputRef = inputElement => {
+    inputElement && (inputElement.indeterminate = indeterminate);
+  };
+  const combinedRef = inputElement => {
+    [inputRef, ref].forEach(targetRef => {
+      if (targetRef) {
+        if (typeof targetRef === 'function') {
+          targetRef(inputElement);
+        } else {
+          targetRef.current = inputElement;
+        }
+      }
+    });
+  };
+  let combinedProps = {
+    ref: combinedRef,
+    ...props,
+    ...fieldsetContext
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return React__default.createElement(InputContext.Provider, {
+    value: "checkbox"
+  }, React__default.createElement(StyledCheckInput, combinedProps), children);
+});
+Checkbox.displayName = 'Checkbox';
+Checkbox.propTypes = {
+  isCompact: PropTypes.bool,
+  indeterminate: PropTypes.bool
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const InputGroupContext = reactExports.createContext(undefined);
+const useInputGroupContext = () => {
+  return reactExports.useContext(InputGroupContext);
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Input = React__default.forwardRef((_ref, ref) => {
+  let {
+    onSelect,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  const inputGroupContext = useInputGroupContext();
+  const onSelectHandler = props.readOnly ? composeEventHandlers$5(onSelect, event => {
+    event.currentTarget.select();
+  }) : onSelect;
+  let combinedProps = {
+    ref,
+    onSelect: onSelectHandler,
+    ...props
+  };
+  if (inputGroupContext) {
+    combinedProps = {
+      ...combinedProps,
+      isCompact: inputGroupContext.isCompact || combinedProps.isCompact,
+      focusInset: props.focusInset === undefined ? true : props.focusInset
+    };
+  }
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return React__default.createElement(StyledTextInput, combinedProps);
+});
+Input.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION)
+};
+Input.displayName = 'Input';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const parseStyleValue = value => {
+  return parseInt(value, 10) || 0;
+};
+const Textarea = React__default.forwardRef((_ref, ref) => {
+  let {
+    minRows,
+    maxRows,
+    style,
+    onChange,
+    onSelect,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  const textAreaRef = reactExports.useRef();
+  const shadowTextAreaRef = reactExports.useRef(null);
+  const [state, setState] = reactExports.useState({
+    overflow: false,
+    height: 0
+  });
+  const isControlled = props.value !== null && props.value !== undefined;
+  const isAutoResizable = (minRows !== undefined || maxRows !== undefined) && !props.isResizable;
+  const calculateHeight = reactExports.useCallback(() => {
+    if (!isAutoResizable) {
+      return;
+    }
+    const textarea = textAreaRef.current;
+    const computedStyle = window.getComputedStyle(textarea);
+    const shadowTextArea = shadowTextAreaRef.current;
+    shadowTextArea.style.width = computedStyle.width;
+    shadowTextArea.value = textarea.value || textarea.placeholder || ' ';
+    const boxSizing = computedStyle.boxSizing;
+    const padding = parseStyleValue(computedStyle.paddingBottom) + parseStyleValue(computedStyle.paddingTop);
+    const border = parseStyleValue(computedStyle.borderTopWidth) + parseStyleValue(computedStyle.borderBottomWidth);
+    const innerHeight = shadowTextArea.scrollHeight - padding;
+    shadowTextArea.value = 'x';
+    const singleRowHeight = shadowTextArea.scrollHeight - padding;
+    let outerHeight = innerHeight;
+    if (minRows) {
+      outerHeight = Math.max(Number(minRows) * singleRowHeight, outerHeight);
+    }
+    if (maxRows) {
+      outerHeight = Math.min(Number(maxRows) * singleRowHeight, outerHeight);
+    }
+    outerHeight = Math.max(outerHeight, singleRowHeight);
+    const updatedHeight = outerHeight + (boxSizing === 'border-box' ? padding + border : 0);
+    const overflow = Math.abs(outerHeight - innerHeight) <= 1;
+    setState(prevState => {
+      if (updatedHeight > 0 && Math.abs((prevState.height || 0) - updatedHeight) > 1 || prevState.overflow !== overflow) {
+        return {
+          overflow,
+          height: updatedHeight
+        };
+      }
+      return prevState;
+    });
+  }, [maxRows, minRows, textAreaRef, isAutoResizable]);
+  const onChangeHandler = reactExports.useCallback(e => {
+    if (!isControlled) {
+      calculateHeight();
+    }
+    if (onChange) {
+      onChange(e);
+    }
+  }, [calculateHeight, isControlled, onChange]);
+  reactExports.useLayoutEffect(() => {
+    calculateHeight();
+  });
+  const computedStyle = {};
+  if (isAutoResizable) {
+    computedStyle.height = state.height;
+    computedStyle.overflow = state.overflow ? 'hidden' : undefined;
+  }
+  const onSelectHandler = props.readOnly ? composeEventHandlers$5(onSelect, event => {
+    event.currentTarget.select();
+  }) : onSelect;
+  let combinedProps = {
+    ref: mergeRefs([textAreaRef, ref]),
+    rows: minRows,
+    onChange: onChangeHandler,
+    onSelect: onSelectHandler,
+    style: {
+      ...computedStyle,
+      ...style
+    },
+    ...props
+  };
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+  }
+  return React__default.createElement(React__default.Fragment, null, React__default.createElement(StyledTextarea, combinedProps), isAutoResizable && React__default.createElement(StyledTextarea, {
+    "aria-hidden": true,
+    readOnly: true,
+    isHidden: true,
+    className: props.className,
+    ref: shadowTextAreaRef,
+    tabIndex: -1,
+    isBare: props.isBare,
+    isCompact: props.isCompact,
+    style: style
+  }));
+});
+Textarea.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  isResizable: PropTypes.bool,
+  minRows: PropTypes.number,
+  maxRows: PropTypes.number,
+  validation: PropTypes.oneOf(VALIDATION)
+};
+Textarea.displayName = 'Textarea';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const StartIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure, Object.assign({
+  position: "start"
+}, props));
+StartIconComponent$1.displayName = 'FauxInput.StartIcon';
+const StartIcon$1 = StartIconComponent$1;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const EndIconComponent = props => React__default.createElement(StyledTextMediaFigure, Object.assign({
+  position: "end"
+}, props));
+EndIconComponent.displayName = 'FauxInput.EndIcon';
+const EndIcon = EndIconComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FauxInputComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    onFocus,
+    onBlur,
+    disabled,
+    readOnly,
+    isFocused: controlledIsFocused,
+    ...props
+  } = _ref;
+  const [isFocused, setIsFocused] = reactExports.useState(false);
+  const onFocusHandler = composeEventHandlers$5(onFocus, () => {
+    setIsFocused(true);
+  });
+  const onBlurHandler = composeEventHandlers$5(onBlur, () => {
+    setIsFocused(false);
+  });
+  return React__default.createElement(StyledTextFauxInput, Object.assign({
+    onFocus: onFocusHandler,
+    onBlur: onBlurHandler,
+    isFocused: controlledIsFocused === undefined ? isFocused : controlledIsFocused,
+    isReadOnly: readOnly,
+    isDisabled: disabled,
+    tabIndex: disabled ? undefined : 0
+  }, props, {
+    ref: ref
+  }));
+});
+FauxInputComponent.displayName = 'FauxInput';
+FauxInputComponent.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  disabled: PropTypes.bool,
+  readOnly: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION),
+  isFocused: PropTypes.bool,
+  isHovered: PropTypes.bool
+};
+const FauxInput = FauxInputComponent;
+FauxInput.EndIcon = EndIcon;
+FauxInput.StartIcon = StartIcon$1;
+
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return root.Date.now();
+};
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce$1(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject$1(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        result = wait - timeSinceLastCall;
+
+    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject$1(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject$1(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject$1(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+var lodash_debounce = debounce$1;
+
+var debounce$2 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FileUpload = React__default.forwardRef((_ref, ref) => {
+  let {
+    disabled,
+    ...props
+  } = _ref;
+  return (
+    React__default.createElement(StyledFileUpload, Object.assign({
+      ref: ref,
+      "aria-disabled": disabled
+    }, props, {
+      role: "button"
+    }))
+  );
+});
+FileUpload.propTypes = {
+  isDragging: PropTypes.bool,
+  isCompact: PropTypes.bool,
+  disabled: PropTypes.bool
+};
+FileUpload.displayName = 'FileUpload';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const ItemComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    ...props
+  } = _ref;
+  return React__default.createElement(StyledFileListItem, Object.assign({}, props, {
+    ref: ref
+  }));
+});
+ItemComponent.displayName = 'FileList.Item';
+const Item = ItemComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FileListComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    ...props
+  } = _ref;
+  return React__default.createElement(StyledFileList, Object.assign({}, props, {
+    ref: ref
+  }));
+});
+FileListComponent.displayName = 'FileList';
+const FileList = FileListComponent;
+FileList.Item = Item;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$C;
+function _extends$G() { _extends$G = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$G.apply(this, arguments); }
+var SvgXStroke$3 = function SvgXStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$G({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$C || (_path$C = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3 9l6-6m0 6L3 3"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$B;
+function _extends$F() { _extends$F = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$F.apply(this, arguments); }
+var SvgXStroke$2 = function SvgXStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$F({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$B || (_path$B = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3 13L13 3m0 10L3 3"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FileContext = reactExports.createContext(undefined);
+const useFileContext = () => {
+  return reactExports.useContext(FileContext);
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const CloseComponent$1 = React__default.forwardRef((props, ref) => {
+  const fileContext = useFileContext();
+  const onMouseDown = composeEventHandlers$5(props.onMouseDown, event => event.preventDefault()
+  );
+  const ariaLabel = useText(CloseComponent$1, props, 'aria-label', 'Close');
+  return React__default.createElement(StyledFileClose, Object.assign({
+    ref: ref,
+    "aria-label": ariaLabel
+  }, props, {
+    type: "button",
+    tabIndex: -1,
+    onMouseDown: onMouseDown
+  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgXStroke$3, null) : React__default.createElement(SvgXStroke$2, null));
+});
+CloseComponent$1.displayName = 'File.Close';
+const Close$2 = CloseComponent$1;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$A;
+function _extends$E() { _extends$E = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$E.apply(this, arguments); }
+var SvgTrashStroke$1 = function SvgTrashStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$E({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$A || (_path$A = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M2 2.5h8m-5.5 7V5m3 4.5V5m-5-.5V11c0 .3.2.5.5.5h6c.3 0 .5-.2.5-.5V4.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$z;
+function _extends$D() { _extends$D = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$D.apply(this, arguments); }
+var SvgTrashStroke = function SvgTrashStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$D({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$z || (_path$z = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M6.5 2.5V1c0-.3.2-.5.5-.5h2c.3 0 .5.2.5.5v1.5M3 2.5h10m-6.5 11v-8m3 8v-8m-6-1V15c0 .3.2.5.5.5h8c.3 0 .5-.2.5-.5V4.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const DeleteComponent = React__default.forwardRef((props, ref) => {
+  const fileContext = useFileContext();
+  const onMouseDown = composeEventHandlers$5(props.onMouseDown, event => event.preventDefault()
+  );
+  const ariaLabel = useText(DeleteComponent, props, 'aria-label', 'Delete');
+  return React__default.createElement(StyledFileDelete, Object.assign({
+    ref: ref,
+    "aria-label": ariaLabel
+  }, props, {
+    type: "button",
+    tabIndex: -1,
+    onMouseDown: onMouseDown
+  }), fileContext && fileContext.isCompact ? React__default.createElement(SvgTrashStroke$1, null) : React__default.createElement(SvgTrashStroke, null));
+});
+DeleteComponent.displayName = 'File.Delete';
+const Delete = DeleteComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$y, _rect$2;
+function _extends$C() { _extends$C = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$C.apply(this, arguments); }
+var SvgFilePdfStroke$1 = function SvgFilePdfStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$C({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$y || (_path$y = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M10.5 3.21V11a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h5.79a.5.5 0 01.35.15l2.21 2.21a.5.5 0 01.15.35zM7.5.5V3a.5.5 0 00.5.5h2.5m-7 6h5"
+  })), _rect$2 || (_rect$2 = /*#__PURE__*/reactExports.createElement("rect", {
+    width: 6,
+    height: 3,
+    x: 3,
+    y: 5,
+    fill: "currentColor",
+    rx: 0.5,
+    ry: 0.5
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$x;
+function _extends$B() { _extends$B = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$B.apply(this, arguments); }
+var SvgFileZipStroke$1 = function SvgFileZipStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$B({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$x || (_path$x = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5.5v8m0-6h1m-2 1h1m0 1h1m-2 1h1m0 1h1m-2 1h1m6-4.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$w, _circle$3;
+function _extends$A() { _extends$A = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$A.apply(this, arguments); }
+var SvgFileImageStroke$1 = function SvgFileImageStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$A({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$w || (_path$w = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5m-7 6L5 8l1.5 1.5 1-1 1 1"
+  })), _circle$3 || (_circle$3 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 8,
+    cy: 6,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$v;
+function _extends$z() { _extends$z = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$z.apply(this, arguments); }
+var SvgFileDocumentStroke$1 = function SvgFileDocumentStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$z({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$v || (_path$v = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$u;
+function _extends$y() { _extends$y = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$y.apply(this, arguments); }
+var SvgFileSpreadsheetStroke$1 = function SvgFileSpreadsheetStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$y({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$u || (_path$u = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3.5 5.5h1m-1 2h1m-1 2h1m2-4h2m-2 2h2m-2 2h2m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$t;
+function _extends$x() { _extends$x = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$x.apply(this, arguments); }
+var SvgFilePresentationStroke$1 = function SvgFilePresentationStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$x({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$t || (_path$t = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM6 9.5h2c.28 0 .5-.22.5-.5V8c0-.28-.22-.5-.5-.5H6c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm-2-2h2c.28 0 .5-.22.5-.5V6c0-.28-.22-.5-.5-.5H4c-.28 0-.5.22-.5.5v1c0 .28.22.5.5.5zm3.5-7V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$s;
+function _extends$w() { _extends$w = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$w.apply(this, arguments); }
+var SvgFileGenericStroke$1 = function SvgFileGenericStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$w({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$s || (_path$s = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _g$2;
+function _extends$v() { _extends$v = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$v.apply(this, arguments); }
+var SvgCheckCircleStroke$1 = function SvgCheckCircleStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$v({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _g$2 || (_g$2 = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M3.5 6l2 2L9 4.5"
+  }), /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 6,
+    cy: 6,
+    r: 5.5
+  }))));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$r;
+function _extends$u() { _extends$u = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$u.apply(this, arguments); }
+var SvgFileErrorStroke$1 = function SvgFileErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$u({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    focusable: "false",
+    viewBox: "0 0 12 12",
+    "aria-hidden": "true"
+  }, props), _path$r || (_path$r = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M10.5 3.21V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5M4 9.5l4-4m0 4l-4-4"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$q, _rect$1;
+function _extends$t() { _extends$t = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$t.apply(this, arguments); }
+var SvgFilePdfStroke = function SvgFilePdfStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$t({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$q || (_path$q = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M14.5 4.2V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.85a.5.5 0 01.36.15l3.15 3.2a.5.5 0 01.14.35zm-10 8.3h7m-7-2h7m-1-10V4a.5.5 0 00.5.5h3.5"
+  })), _rect$1 || (_rect$1 = /*#__PURE__*/reactExports.createElement("rect", {
+    width: 8,
+    height: 2,
+    x: 4,
+    y: 7,
+    fill: "currentColor",
+    rx: 0.5,
+    ry: 0.5
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$p;
+function _extends$s() { _extends$s = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$s.apply(this, arguments); }
+var SvgFileZipStroke = function SvgFileZipStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$s({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$p || (_path$p = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M6.5.5v11M5 2.5h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m0 1H8m-3 1h1.5m8-6.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$o, _circle$2;
+function _extends$r() { _extends$r = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$r.apply(this, arguments); }
+var SvgFileImageStroke = function SvgFileImageStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$r({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$o || (_path$o = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5m-11 9l2.65-2.65c.2-.2.51-.2.71 0l1.79 1.79c.2.2.51.2.71 0l.79-.79c.2-.2.51-.2.71 0l1.65 1.65"
+  })), _circle$2 || (_circle$2 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 10.5,
+    cy: 8.5,
+    r: 1.5,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$n;
+function _extends$q() { _extends$q = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$q.apply(this, arguments); }
+var SvgFileDocumentStroke = function SvgFileDocumentStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$q({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$n || (_path$n = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5 7.5h7m-7 1.97h7m-7 2h7m3-7.27V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$m;
+function _extends$p() { _extends$p = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$p.apply(this, arguments); }
+var SvgFileSpreadsheetStroke = function SvgFileSpreadsheetStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$p({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$m || (_path$m = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M4.5 7.5h2m-2 2h2m-2 2h2m2-4h3m-3 2h3m-3 2h3m3-7.3V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$l;
+function _extends$o() { _extends$o = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$o.apply(this, arguments); }
+var SvgFilePresentationStroke = function SvgFilePresentationStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$o({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$l || (_path$l = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5M7 9.5h4c.28 0 .5.22.5.5v3c0 .28-.22.5-.5.5H7c-.28 0-.5-.22-.5-.5v-3c0-.28.22-.5.5-.5zm-.5 2H5c-.28 0-.5-.22-.5-.5V8c0-.28.22-.5.5-.5h4c.28 0 .5.22.5.5v1.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$k;
+function _extends$n() { _extends$n = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$n.apply(this, arguments); }
+var SvgFileGenericStroke = function SvgFileGenericStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$n({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$k || (_path$k = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    d: "M14.5 4.2V15c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h8.85c.13 0 .26.05.36.15l3.15 3.2c.09.1.14.22.14.35zm-4-3.7V4c0 .28.22.5.5.5h3.5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$j;
+function _extends$m() { _extends$m = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$m.apply(this, arguments); }
+var SvgFileErrorStroke = function SvgFileErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$m({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$j || (_path$j = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M14.5 4.205V15a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V1A.5.5 0 012 .5h8.853a.5.5 0 01.356.15l3.148 3.204a.5.5 0 01.143.35zM10.5.5V4a.5.5 0 00.5.5h3.5m-9 8l5-5m0 5l-5-5"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const fileIconsDefault = {
+  pdf: React__default.createElement(SvgFilePdfStroke, null),
+  zip: React__default.createElement(SvgFileZipStroke, null),
+  image: React__default.createElement(SvgFileImageStroke, null),
+  document: React__default.createElement(SvgFileDocumentStroke, null),
+  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke, null),
+  presentation: React__default.createElement(SvgFilePresentationStroke, null),
+  generic: React__default.createElement(SvgFileGenericStroke, null),
+  success: React__default.createElement(SvgCheckCircleStroke$2, null),
+  error: React__default.createElement(SvgFileErrorStroke, null)
+};
+const fileIconsCompact = {
+  pdf: React__default.createElement(SvgFilePdfStroke$1, null),
+  zip: React__default.createElement(SvgFileZipStroke$1, null),
+  image: React__default.createElement(SvgFileImageStroke$1, null),
+  document: React__default.createElement(SvgFileDocumentStroke$1, null),
+  spreadsheet: React__default.createElement(SvgFileSpreadsheetStroke$1, null),
+  presentation: React__default.createElement(SvgFilePresentationStroke$1, null),
+  generic: React__default.createElement(SvgFileGenericStroke$1, null),
+  success: React__default.createElement(SvgCheckCircleStroke$1, null),
+  error: React__default.createElement(SvgFileErrorStroke$1, null)
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FileComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    children,
+    type,
+    isCompact,
+    focusInset,
+    validation,
+    ...props
+  } = _ref;
+  const fileContextValue = reactExports.useMemo(() => ({
+    isCompact
+  }), [isCompact]);
+  const validationType = validation || type;
+  return React__default.createElement(FileContext.Provider, {
+    value: fileContextValue
+  }, React__default.createElement(StyledFile, Object.assign({}, props, {
+    isCompact: isCompact,
+    focusInset: focusInset,
+    validation: validation,
+    ref: ref
+  }), validationType && React__default.createElement(StyledFileIcon, {
+    isCompact: isCompact
+  }, isCompact ? fileIconsCompact[validationType] : fileIconsDefault[validationType]), reactExports.Children.map(children, child => typeof child === 'string' ? React__default.createElement("span", null, child) : child)));
+});
+FileComponent.displayName = 'File';
+FileComponent.propTypes = {
+  focusInset: PropTypes.bool,
+  isCompact: PropTypes.bool,
+  type: PropTypes.oneOf(FILE_TYPE),
+  validation: PropTypes.oneOf(FILE_VALIDATION)
+};
+const File = FileComponent;
+File.Close = Close$2;
+File.Delete = Delete;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const MediaInput = React__default.forwardRef((_ref, ref) => {
+  let {
+    start,
+    end,
+    disabled,
+    isCompact,
+    isBare,
+    focusInset,
+    readOnly,
+    validation,
+    wrapperProps = {},
+    wrapperRef,
+    onSelect,
+    ...props
+  } = _ref;
+  const fieldContext = useFieldContext$1();
+  const inputRef = reactExports.useRef();
+  const [isFocused, setIsFocused] = reactExports.useState(false);
+  const [isHovered, setIsHovered] = reactExports.useState(false);
+  const {
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseOver,
+    onMouseOut,
+    ...otherWrapperProps
+  } = wrapperProps;
+  const onFauxInputClickHandler = composeEventHandlers$5(onClick, () => {
+    inputRef.current && inputRef.current.focus();
+  });
+  const onFauxInputFocusHandler = composeEventHandlers$5(onFocus, () => {
+    setIsFocused(true);
+  });
+  const onFauxInputBlurHandler = composeEventHandlers$5(onBlur, () => {
+    setIsFocused(false);
+  });
+  const onFauxInputMouseOverHandler = composeEventHandlers$5(onMouseOver, () => {
+    setIsHovered(true);
+  });
+  const onFauxInputMouseOutHandler = composeEventHandlers$5(onMouseOut, () => {
+    setIsHovered(false);
+  });
+  const onSelectHandler = readOnly ? composeEventHandlers$5(onSelect, event => {
+    event.currentTarget.select();
+  }) : onSelect;
+  let combinedProps = {
+    disabled,
+    readOnly,
+    ref: mergeRefs([inputRef, ref]),
+    onSelect: onSelectHandler,
+    ...props
+  };
+  let isLabelHovered;
+  if (fieldContext) {
+    combinedProps = fieldContext.getInputProps(combinedProps);
+    isLabelHovered = fieldContext.isLabelHovered;
+  }
+  return React__default.createElement(FauxInput, Object.assign({
+    tabIndex: null,
+    onClick: onFauxInputClickHandler,
+    onFocus: onFauxInputFocusHandler,
+    onBlur: onFauxInputBlurHandler,
+    onMouseOver: onFauxInputMouseOverHandler,
+    onMouseOut: onFauxInputMouseOutHandler,
+    disabled: disabled,
+    isFocused: isFocused,
+    isHovered: isHovered || isLabelHovered,
+    isCompact: isCompact,
+    isBare: isBare,
+    focusInset: focusInset,
+    readOnly: readOnly,
+    validation: validation,
+    mediaLayout: true
+  }, otherWrapperProps, {
+    ref: wrapperRef
+  }), start && React__default.createElement(FauxInput.StartIcon, {
+    isDisabled: disabled,
+    isFocused: isFocused,
+    isHovered: isHovered || isLabelHovered
+  }, start), React__default.createElement(StyledTextMediaInput, combinedProps), end && React__default.createElement(FauxInput.EndIcon, {
+    isDisabled: disabled,
+    isFocused: isFocused,
+    isHovered: isHovered || isLabelHovered
+  }, end));
+});
+MediaInput.propTypes = {
+  isCompact: PropTypes.bool,
+  isBare: PropTypes.bool,
+  focusInset: PropTypes.bool,
+  validation: PropTypes.oneOf(VALIDATION),
+  start: PropTypes.node,
+  end: PropTypes.node,
+  wrapperProps: PropTypes.object,
+  wrapperRef: PropTypes.any
+};
+MediaInput.displayName = 'MediaInput';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
 var _path$i;
 function _extends$l() { _extends$l = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$l.apply(this, arguments); }
 var SvgChevronDownStroke$1 = function SvgChevronDownStroke(props) {
@@ -15624,14 +15318,14 @@ const useFieldContext = () => {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$X = 'dropdowns.combobox.label';
+const COMPONENT_ID$_ = 'dropdowns.combobox.label';
 const StyledLabel = styled(Label$2).attrs({
-  'data-garden-id': COMPONENT_ID$X,
+  'data-garden-id': COMPONENT_ID$_,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-1889zee-0"
-})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$X, props));
+})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$_, props));
 StyledLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15643,14 +15337,14 @@ StyledLabel.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$W = 'dropdowns.combobox.hint';
+const COMPONENT_ID$Z = 'dropdowns.combobox.hint';
 const StyledHint = styled(Hint$1).attrs({
-  'data-garden-id': COMPONENT_ID$W,
+  'data-garden-id': COMPONENT_ID$Z,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledHint",
   componentId: "sc-9kt30-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$W, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$Z, props));
 StyledHint.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15662,14 +15356,14 @@ StyledHint.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$V = 'dropdowns.combobox.message';
+const COMPONENT_ID$Y = 'dropdowns.combobox.message';
 const StyledMessage = styled(Message$1).attrs({
-  'data-garden-id': COMPONENT_ID$V,
+  'data-garden-id': COMPONENT_ID$Y,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-15eqzu4-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$V, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$Y, props));
 StyledMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15681,19 +15375,19 @@ StyledMessage.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$U = 'dropdowns.combobox';
-const sizeStyles$i = props => {
+const COMPONENT_ID$X = 'dropdowns.combobox';
+const sizeStyles$j = props => {
   const minWidth = `${props.isCompact ? 100 : 144}px`;
   const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   return Ne(["min-width:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], minWidth, StyledLabel, StyledHint, StyledMessage, StyledHint, StyledMessage, marginTop);
 };
 const StyledCombobox = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$U,
+  'data-garden-id': COMPONENT_ID$X,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledCombobox",
   componentId: "sc-1hs98ew-0"
-})(["", ";", ";"], sizeStyles$i, props => retrieveComponentStyles(COMPONENT_ID$U, props));
+})(["", ";", ";"], sizeStyles$j, props => retrieveComponentStyles(COMPONENT_ID$X, props));
 StyledCombobox.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15705,14 +15399,14 @@ StyledCombobox.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$T = 'dropdowns.combobox.container';
+const COMPONENT_ID$W = 'dropdowns.combobox.container';
 const StyledContainer = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$T,
+  'data-garden-id': COMPONENT_ID$W,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledContainer",
   componentId: "sc-18gcb1g-0"
-})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$T, props));
+})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$W, props));
 StyledContainer.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15724,14 +15418,14 @@ StyledContainer.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$S = 'dropdowns.combobox.field';
+const COMPONENT_ID$V = 'dropdowns.combobox.field';
 const StyledField = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$S,
+  'data-garden-id': COMPONENT_ID$V,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-k7y10k-0"
-})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$S, props));
+})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$V, props));
 StyledField.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15743,9 +15437,9 @@ StyledField.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$R = 'dropdowns.combobox.floating';
+const COMPONENT_ID$U = 'dropdowns.combobox.floating';
 const StyledFloatingListbox = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$R,
+  'data-garden-id': COMPONENT_ID$U,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFloatingListbox",
@@ -15755,7 +15449,7 @@ const StyledFloatingListbox = styled.div.attrs({
   hidden: props.isHidden,
   animationModifier: '[data-garden-animate="true"]',
   zIndex: props.zIndex
-}), props => retrieveComponentStyles(COMPONENT_ID$R, props));
+}), props => retrieveComponentStyles(COMPONENT_ID$U, props));
 StyledFloatingListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15767,7 +15461,7 @@ StyledFloatingListbox.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$Q = 'dropdowns.combobox.input';
+const COMPONENT_ID$T = 'dropdowns.combobox.input';
 const colorStyles$i = props => {
   const placeholderColor = getColorV8('neutralHue', 400, props.theme);
   return Ne(["background-color:inherit;color:inherit;&::placeholder{opacity:1;color:", ";}"], placeholderColor);
@@ -15778,7 +15472,7 @@ const getHeight = props => {
   }
   return props.theme.space.base * (props.isCompact ? 5 : 8);
 };
-const sizeStyles$h = props => {
+const sizeStyles$i = props => {
   const height = props.theme.space.base * 5;
   const fontSize = props.theme.fontSizes.md;
   const lineHeight = getLineHeight(height, fontSize);
@@ -15787,12 +15481,12 @@ const sizeStyles$h = props => {
   return Ne(["min-width:", ";height:", "px;line-height:", ";font-size:", ";&&{margin-top:", ";margin-bottom:", ";}"], minWidth, height, lineHeight, fontSize, margin, margin);
 };
 const StyledInput = styled.input.attrs({
-  'data-garden-id': COMPONENT_ID$Q,
+  'data-garden-id': COMPONENT_ID$T,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledInput",
   componentId: "sc-m2m56e-0"
-})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;&:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}&[aria-hidden='true']{display:none;}", ";"], sizeStyles$h, colorStyles$i, props => props.isEditable && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$Q, props));
+})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;&:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}&[aria-hidden='true']{display:none;}", ";"], sizeStyles$i, colorStyles$i, props => props.isEditable && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$T, props));
 StyledInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15804,18 +15498,18 @@ StyledInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$P = 'dropdowns.combobox.input_group';
-const sizeStyles$g = props => {
+const COMPONENT_ID$S = 'dropdowns.combobox.input_group';
+const sizeStyles$h = props => {
   const margin = props.theme.shadowWidths.sm;
   return Ne(["margin:-", ";min-width:0;& > *{margin:", ";}"], margin, margin);
 };
 const StyledInputGroup = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$P,
+  'data-garden-id': COMPONENT_ID$S,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-2agt8f-0"
-})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$g, props => retrieveComponentStyles(COMPONENT_ID$P, props));
+})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$h, props => retrieveComponentStyles(COMPONENT_ID$S, props));
 StyledInputGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15827,7 +15521,7 @@ StyledInputGroup.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$O = 'dropdowns.combobox.trigger';
+const COMPONENT_ID$R = 'dropdowns.combobox.trigger';
 const colorStyles$h = props => {
   const SHADE = 600;
   let hue = 'neutralHue';
@@ -15876,7 +15570,7 @@ const colorStyles$h = props => {
     condition: !props.isBare
   }), disabledBorderColor, disabledBackgroundColor, disabledForegroundColor);
 };
-const sizeStyles$f = props => {
+const sizeStyles$g = props => {
   const inputHeight = getHeight(props);
   let minHeight;
   let horizontalPadding;
@@ -15897,12 +15591,12 @@ const sizeStyles$f = props => {
   return Ne(["padding:", " ", ";min-height:", ";max-height:", ";font-size:", ";"], verticalPadding, horizontalPadding, minHeight, maxHeight, props.theme.fontSizes.md);
 };
 const StyledTrigger = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$O,
+  'data-garden-id': COMPONENT_ID$R,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTrigger",
   componentId: "sc-14t9k4c-0"
-})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$f, colorStyles$h, props => retrieveComponentStyles(COMPONENT_ID$O, props));
+})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$g, colorStyles$h, props => retrieveComponentStyles(COMPONENT_ID$R, props));
 StyledTrigger.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15914,14 +15608,14 @@ StyledTrigger.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$N = 'dropdowns.combobox.input_icon';
+const COMPONENT_ID$Q = 'dropdowns.combobox.input_icon';
 const colorStyles$g = props => {
   const color = getColorV8('neutralHue', 600, props.theme);
   const focusColor = getColorV8('neutralHue', 700, props.theme);
   const disabledColor = getColorV8('neutralHue', 400, props.theme);
   return Ne(["color:", ";", ":hover &,", ":focus-within &,", ":focus &,", "[data-garden-focus-visible='true'] &{color:", ";}", "[aria-disabled='true'] &{color:", ";}"], props.isLabelHovered ? focusColor : color, StyledTrigger, StyledTrigger, StyledTrigger, StyledTrigger, focusColor, StyledTrigger, disabledColor);
 };
-const sizeStyles$e = props => {
+const sizeStyles$f = props => {
   const size = props.theme.iconSizes.md;
   const position = math$1(`(${getHeight(props)} - ${size}) / 2`);
   const margin = `${props.theme.space.base * 2}px`;
@@ -15946,12 +15640,12 @@ const StyledInputIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$N,
+  'data-garden-id': COMPONENT_ID$Q,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledInputIcon",
   componentId: "sc-15ewmjl-0"
-})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$e, colorStyles$g, props => retrieveComponentStyles(COMPONENT_ID$N, props));
+})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$f, colorStyles$g, props => retrieveComponentStyles(COMPONENT_ID$Q, props));
 StyledInputIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15963,7 +15657,7 @@ StyledInputIcon.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$M = 'dropdowns.combobox.option';
+const COMPONENT_ID$P = 'dropdowns.combobox.option';
 const colorStyles$f = props => {
   let backgroundColor;
   let boxShadow;
@@ -15982,7 +15676,7 @@ const colorStyles$f = props => {
   return Ne(["box-shadow:", ";background-color:", ";color:", ";&[aria-disabled='true']{background-color:transparent;color:", ";}"], boxShadow, backgroundColor, foregroundColor, disabledForegroundColor);
 };
 const getMinHeight = props => props.theme.space.base * (props.isCompact ? 7 : 9);
-const sizeStyles$d = props => {
+const sizeStyles$e = props => {
   const lineHeight = props.theme.lineHeights.md;
   const minHeight = getMinHeight(props);
   const paddingHorizontal = props.$type === 'group' ? 0 : `${props.theme.space.base * 9}px`;
@@ -15990,12 +15684,12 @@ const sizeStyles$d = props => {
   return Ne(["box-sizing:border-box;padding:", " ", ";min-height:", "px;line-height:", ";"], paddingVertical, paddingHorizontal, minHeight, lineHeight);
 };
 const StyledOption = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$M,
+  'data-garden-id': COMPONENT_ID$P,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOption",
   componentId: "sc-1b5e09t-0"
-})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";overflow-wrap:anywhere;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}&[aria-hidden='true']{", ";}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$d, colorStyles$f, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$M, props));
+})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";overflow-wrap:anywhere;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}&[aria-hidden='true']{", ";}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$e, colorStyles$f, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$P, props));
 StyledOption.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16007,14 +15701,14 @@ StyledOption.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$L = 'dropdowns.combobox.option.content';
+const COMPONENT_ID$O = 'dropdowns.combobox.option.content';
 const StyledOptionContent = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$L,
+  'data-garden-id': COMPONENT_ID$O,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionContent",
   componentId: "sc-536085-0"
-})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$L, props));
+})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$O, props));
 StyledOptionContent.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16026,14 +15720,14 @@ StyledOptionContent.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$K = 'dropdowns.combobox.optgroup';
+const COMPONENT_ID$N = 'dropdowns.combobox.optgroup';
 const StyledOptGroup = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$K,
+  'data-garden-id': COMPONENT_ID$N,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptGroup",
   componentId: "sc-12dbq5s-0"
-})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$K, props));
+})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$N, props));
 StyledOptGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16045,23 +15739,23 @@ StyledOptGroup.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$J = 'dropdowns.combobox.separator';
+const COMPONENT_ID$M = 'dropdowns.combobox.separator';
 const colorStyles$e = props => {
   const backgroundColor = getColorV8('neutralHue', 200, props.theme);
   return Ne(["background-color:", ";"], backgroundColor);
 };
-const sizeStyles$c = props => {
+const sizeStyles$d = props => {
   const margin = `${props.theme.space.base}px`;
   const height = props.theme.borderWidths.sm;
   return Ne(["margin:", " 0;height:", ";"], margin, height);
 };
 const StyledListboxSeparator = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$J,
+  'data-garden-id': COMPONENT_ID$M,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledListboxSeparator",
   componentId: "sc-19umtmg-0"
-})(["cursor:default;", ";", ";", ";"], sizeStyles$c, colorStyles$e, props => retrieveComponentStyles(COMPONENT_ID$J, props));
+})(["cursor:default;", ";", ";", ";"], sizeStyles$d, colorStyles$e, props => retrieveComponentStyles(COMPONENT_ID$M, props));
 StyledListboxSeparator.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16073,19 +15767,19 @@ StyledListboxSeparator.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$I = 'dropdowns.combobox.listbox';
-const sizeStyles$b = props => {
+const COMPONENT_ID$L = 'dropdowns.combobox.listbox';
+const sizeStyles$c = props => {
   const padding = props.theme.space.base;
   const minHeight = props.minHeight === undefined ? `${getMinHeight(props) + padding * 2}px` : props.minHeight;
   return Ne(["min-height:", ";max-height:", ";&&&{padding-top:", "px;padding-bottom:", "px;}"], minHeight, props.maxHeight, padding, padding);
 };
 const StyledListbox = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$I,
+  'data-garden-id': COMPONENT_ID$L,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledListbox",
   componentId: "sc-4uxeym-0"
-})(["overflow-y:auto;list-style-type:none;", ";&&&{display:block;}", ":first-child ", " ", ":first-child ", "[role='none']:first-child{display:none;}"], sizeStyles$b, StyledOption, StyledOptionContent, StyledOptGroup, StyledListboxSeparator);
+})(["overflow-y:auto;list-style-type:none;", ";&&&{display:block;}", ":first-child ", " ", ":first-child ", "[role='none']:first-child{display:none;}"], sizeStyles$c, StyledOption, StyledOptionContent, StyledOptGroup, StyledListboxSeparator);
 StyledListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16097,8 +15791,8 @@ StyledListbox.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$H = 'dropdowns.combobox.option.icon';
-const sizeStyles$a = props => {
+const COMPONENT_ID$K = 'dropdowns.combobox.option.icon';
+const sizeStyles$b = props => {
   const size = props.theme.iconSizes.md;
   const marginTop = math$1(`(${props.theme.lineHeights.md} - ${size}) / 2`);
   const marginHorizontal = `${props.theme.space.base * 2}px`;
@@ -16112,12 +15806,12 @@ const StyledOptionIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$H,
+  'data-garden-id': COMPONENT_ID$K,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionIcon",
   componentId: "sc-3vecfi-0"
-})(["flex-shrink:0;", ";", ";"], sizeStyles$a, props => retrieveComponentStyles(COMPONENT_ID$H, props));
+})(["flex-shrink:0;", ";", ";"], sizeStyles$b, props => retrieveComponentStyles(COMPONENT_ID$K, props));
 StyledOptionIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16129,23 +15823,23 @@ StyledOptionIcon.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$G = 'dropdowns.combobox.option.meta';
+const COMPONENT_ID$J = 'dropdowns.combobox.option.meta';
 const colorStyles$d = props => {
   const color = getColorV8('neutralHue', props.isDisabled ? 400 : 600, props.theme);
   return Ne(["color:", ";"], color);
 };
-const sizeStyles$9 = props => {
+const sizeStyles$a = props => {
   const lineHeight = props.theme.lineHeights.sm;
   const fontSize = props.theme.fontSizes.sm;
   return Ne(["line-height:", ";font-size:", ";"], lineHeight, fontSize);
 };
 const StyledOptionMeta = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$G,
+  'data-garden-id': COMPONENT_ID$J,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionMeta",
   componentId: "sc-1nizjb3-0"
-})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$9, colorStyles$d, props => retrieveComponentStyles(COMPONENT_ID$G, props));
+})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$a, colorStyles$d, props => retrieveComponentStyles(COMPONENT_ID$J, props));
 StyledOptionMeta.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16157,7 +15851,7 @@ StyledOptionMeta.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$F = 'dropdowns.combobox.option.type_icon';
+const COMPONENT_ID$I = 'dropdowns.combobox.option.type_icon';
 const colorStyles$c = props => {
   const opacity = props.type && props.type !== 'danger' ? 1 : 0;
   let color;
@@ -16170,7 +15864,7 @@ const colorStyles$c = props => {
   }
   return Ne(["opacity:", ";color:", ";", "[aria-selected='true'] > &{opacity:1;}", "[aria-disabled='true'] > &{color:inherit;}"], opacity, color, StyledOption, StyledOption);
 };
-const sizeStyles$8 = props => {
+const sizeStyles$9 = props => {
   const size = props.theme.iconSizes.md;
   const position = `${props.theme.space.base * 3}px`;
   const top = math$1(`(${getMinHeight(props)} - ${size}) / 2`);
@@ -16192,12 +15886,12 @@ const StyledOptionTypeIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$F,
+  'data-garden-id': COMPONENT_ID$I,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionTypeIcon",
   componentId: "sc-vlhimu-0"
-})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$8, colorStyles$c, props => retrieveComponentStyles(COMPONENT_ID$F, props));
+})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$9, colorStyles$c, props => retrieveComponentStyles(COMPONENT_ID$I, props));
 StyledOptionTypeIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16208,7 +15902,7 @@ StyledOptionTypeIcon.defaultProps = {
 * Use of this source code is governed under the Apache License, Version 2.0
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
-const SIZE$2 = ['small', 'medium', 'large'];
+const SIZE$3 = ['small', 'medium', 'large'];
 
 /**
 * Copyright Zendesk, Inc.
@@ -16217,7 +15911,7 @@ const SIZE$2 = ['small', 'medium', 'large'];
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$E = 'tags.avatar';
+const COMPONENT_ID$H = 'tags.avatar';
 const StyledAvatar = styled(_ref => {
   let {
     children,
@@ -16225,12 +15919,12 @@ const StyledAvatar = styled(_ref => {
   } = _ref;
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$E,
+  'data-garden-id': COMPONENT_ID$H,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledAvatar",
   componentId: "sc-3kdmgt-0"
-})(["flex-shrink:0;font-size:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$E, props));
+})(["flex-shrink:0;font-size:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$H, props));
 StyledAvatar.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16242,14 +15936,14 @@ StyledAvatar.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$D = 'tags.close';
+const COMPONENT_ID$G = 'tags.close';
 const StyledClose$1 = styled.button.attrs({
-  'data-garden-id': COMPONENT_ID$D,
+  'data-garden-id': COMPONENT_ID$G,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-d6lrpn-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:0;background:transparent;cursor:pointer;padding:0;color:inherit;font-size:0;appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => retrieveComponentStyles(COMPONENT_ID$D, props));
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:0;background:transparent;cursor:pointer;padding:0;color:inherit;font-size:0;appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => retrieveComponentStyles(COMPONENT_ID$G, props));
 StyledClose$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16261,7 +15955,7 @@ StyledClose$1.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$C = 'tags.tag_view';
+const COMPONENT_ID$F = 'tags.tag_view';
 const colorStyles$b = props => {
   let backgroundColor;
   let foregroundColor;
@@ -16285,7 +15979,7 @@ const colorStyles$b = props => {
     selector: '&:focus'
   }), StyledClose$1, closeColor);
 };
-const sizeStyles$7 = props => {
+const sizeStyles$8 = props => {
   let borderRadius;
   let padding;
   let height;
@@ -16334,12 +16028,12 @@ const sizeStyles$7 = props => {
   return Ne(["border-radius:", ";padding:0 ", "px;min-width:", ";height:", "px;line-height:", ";font-size:", ";& > *{width:100%;min-width:", ";}& ", "{margin-", ":-", "px;margin-", ":", "px;border-radius:", ";width:", "px;min-width:", "px;height:", "px;}& ", "{margin-", ":-", "px;border-radius:", ";width:", "px;height:", "px;}"], borderRadius, padding, minWidth ? `${minWidth}px` : `calc(${padding * 2}px + 1ch)`, height, getLineHeight(height, fontSize), fontSize, minWidth ? `${minWidth - padding * 2}px` : '1ch', StyledAvatar, props.theme.rtl ? 'right' : 'left', padding - avatarMargin, props.theme.rtl ? 'left' : 'right', avatarTextMargin, avatarBorderRadius, avatarSize, avatarSize, avatarSize, StyledClose$1, props.theme.rtl ? 'left' : 'right', padding, borderRadius, height, height);
 };
 const StyledTag$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$C,
+  'data-garden-id': COMPONENT_ID$F,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1jvbe03-0"
-})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$7(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$b(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose$1, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$C, props));
+})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$8(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$b(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose$1, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$F, props));
 StyledTag$1.defaultProps = {
   size: 'medium',
   theme: DEFAULT_THEME
@@ -16421,7 +16115,7 @@ const TagComponent$1 = reactExports.forwardRef((_ref, ref) => {
 });
 TagComponent$1.displayName = 'Tag';
 TagComponent$1.propTypes = {
-  size: PropTypes.oneOf(SIZE$2),
+  size: PropTypes.oneOf(SIZE$3),
   hue: PropTypes.string,
   isPill: PropTypes.bool,
   isRound: PropTypes.bool,
@@ -16441,14 +16135,14 @@ Tag$1.Close = Close$1;
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$B = 'dropdowns.combobox.tag';
+const COMPONENT_ID$E = 'dropdowns.combobox.tag';
 const StyledTag = styled(Tag$1).attrs({
-  'data-garden-id': COMPONENT_ID$B,
+  'data-garden-id': COMPONENT_ID$E,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1mrab0f-0"
-})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColorV8('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$B, props));
+})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColorV8('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$E, props));
 StyledTag.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16460,13 +16154,13 @@ StyledTag.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$A = 'dropdowns.combobox.value';
+const COMPONENT_ID$D = 'dropdowns.combobox.value';
 const colorStyles$a = props => {
   const foregroundColor = props.isPlaceholder && getColorV8('neutralHue', 400, props.theme);
   return Ne(["color:", ";"], foregroundColor);
 };
 const StyledValue = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$A,
+  'data-garden-id': COMPONENT_ID$D,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledValue",
@@ -16476,7 +16170,7 @@ const StyledValue = styled.div.attrs({
     return 'default';
   }
   return props.isEditable && !props.isAutocomplete ? 'text' : 'pointer';
-}, sizeStyles$h, colorStyles$a, props => retrieveComponentStyles(COMPONENT_ID$A, props));
+}, sizeStyles$i, colorStyles$a, props => retrieveComponentStyles(COMPONENT_ID$D, props));
 StyledValue.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16488,19 +16182,19 @@ StyledValue.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$z = 'dropdowns.combobox.tags_button';
+const COMPONENT_ID$C = 'dropdowns.combobox.tags_button';
 const colorStyles$9 = props => {
   const color = getColorV8('primaryHue', 600, props.theme);
   return Ne(["color:", ";&:disabled{color:inherit;}"], color);
 };
 const StyledTagsButton = styled(StyledValue).attrs({
   as: 'button',
-  'data-garden-id': COMPONENT_ID$z,
+  'data-garden-id': COMPONENT_ID$C,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTagsButton",
   componentId: "sc-ewyffo-0"
-})(["display:inline-flex;flex:0 1 auto;align-items:center;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$z, props));
+})(["display:inline-flex;flex:0 1 auto;align-items:center;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$C, props));
 StyledTagsButton.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -22991,15 +22685,15 @@ function getArrowPosition(popperPlacement) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$y = 'tooltip.paragraph';
-const StyledParagraph = styled.p.attrs({
-  'data-garden-id': COMPONENT_ID$y,
+const COMPONENT_ID$B = 'tooltip.paragraph';
+const StyledParagraph$1 = styled.p.attrs({
+  'data-garden-id': COMPONENT_ID$B,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-wuqkfc-0"
-})(["margin:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$y, props));
-StyledParagraph.defaultProps = {
+})(["margin:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$B, props));
+StyledParagraph$1.defaultProps = {
   theme: DEFAULT_THEME
 };
 
@@ -23010,14 +22704,14 @@ StyledParagraph.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$x = 'tooltip.title';
+const COMPONENT_ID$A = 'tooltip.title';
 const StyledTitle = styled.strong.attrs({
-  'data-garden-id': COMPONENT_ID$x,
+  'data-garden-id': COMPONENT_ID$A,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-vnjcvz-0"
-})(["display:none;margin:0;font-weight:", ";", ";"], props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$x, props));
+})(["display:none;margin:0;font-weight:", ";", ";"], props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$A, props));
 StyledTitle.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -23029,8 +22723,8 @@ StyledTitle.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$w = 'tooltip.tooltip';
-const sizeStyles$6 = _ref => {
+const COMPONENT_ID$z = 'tooltip.tooltip';
+const sizeStyles$7 = _ref => {
   let {
     theme,
     size,
@@ -23094,7 +22788,7 @@ const sizeStyles$6 = _ref => {
   return Ne(["margin:", ";border-radius:", ";padding:", ";max-width:", ";line-height:", ";word-wrap:", ";white-space:", ";font-size:", ";overflow-wrap:", ";", ";", "{margin-top:", ";}", "{display:", ";}"], margin, borderRadius, padding, maxWidth, lineHeight, wordWrap, whiteSpace, fontSize, overflowWrap, hasArrow && arrowStyles(getArrowPosition(placement), {
     size: arrowSize,
     inset: arrowInset
-  }), StyledParagraph, paragraphMarginTop, StyledTitle, titleDisplay);
+  }), StyledParagraph$1, paragraphMarginTop, StyledTitle, titleDisplay);
 };
 const colorStyles$8 = _ref2 => {
   let {
@@ -23116,12 +22810,12 @@ const colorStyles$8 = _ref2 => {
   return Ne(["border:", ";box-shadow:", ";background-color:", ";color:", ";", "{color:", ";}"], border, boxShadow, backgroundColor, color, StyledTitle, titleColor);
 };
 const StyledTooltip = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$w,
+  'data-garden-id': COMPONENT_ID$z,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTooltip",
   componentId: "sc-gzzjq4-0"
-})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$6(props), colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$w, props));
+})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$7(props), colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$z, props));
 StyledTooltip.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -23149,7 +22843,7 @@ StyledTooltipWrapper.defaultProps = {
 */
 const SHARED_PLACEMENT$1 = ['auto', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end'];
 const PLACEMENT$1 = [...SHARED_PLACEMENT$1, 'end', 'end-top', 'end-bottom', 'start', 'start-top', 'start-bottom'];
-const SIZE$1 = ['small', 'medium', 'large', 'extra-large'];
+const SIZE$2 = ['small', 'medium', 'large', 'extra-large'];
 const TYPE = ['light', 'dark'];
 
 /**
@@ -23276,7 +22970,7 @@ Tooltip.propTypes = {
   content: PropTypes.node.isRequired,
   placement: PropTypes.oneOf(PLACEMENT$1),
   popperModifiers: PropTypes.any,
-  size: PropTypes.oneOf(SIZE$1),
+  size: PropTypes.oneOf(SIZE$2),
   type: PropTypes.oneOf(TYPE),
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   isInitialVisible: PropTypes.bool,
@@ -27255,7 +26949,7 @@ StyledProgressIndicator.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$v = 'loaders.skeleton';
+const COMPONENT_ID$y = 'loaders.skeleton';
 const fadeInAnimation = $e(["0%,60%{opacity:0;}100%{opacity:1;}"]);
 const skeletonAnimation = $e(["0%{transform:translateX(-100%);}100%{transform:translateX(100%);}"]);
 const skeletonRtlAnimation = $e(["0%{transform:translateX(100%);}100%{transform:translateX(-100%)}"]);
@@ -27286,12 +26980,12 @@ const retrieveSkeletonGradient = _ref3 => {
   return Ne(["background-image:linear-gradient( ", ",transparent,", ",transparent );"], theme.rtl ? '-45deg' : '45deg', isLight ? getColorV8('chromeHue', 700, theme, 0.4) : rgba$1(getColorV8('background', 600 , theme), 0.6));
 };
 const StyledSkeleton = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$v,
+  'data-garden-id': COMPONENT_ID$y,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledSkeleton",
   componentId: "sc-1raozze-0"
-})(["display:inline-block;position:relative;animation:", " 750ms linear;border-radius:", ";width:", ";height:", ";overflow:hidden;line-height:", ";", " &::before{position:absolute;top:0;width:1000px;height:100%;content:'';", " ", "}", ";"], fadeInAnimation, props => props.theme.borderRadii.md, props => props.customWidth, props => props.customHeight, props => getLineHeight(props.theme.fontSizes.sm, props.theme.space.base * 5), retrieveSkeletonBackgroundColor, retrieveSkeletonAnimation, retrieveSkeletonGradient, props => retrieveComponentStyles(COMPONENT_ID$v, props));
+})(["display:inline-block;position:relative;animation:", " 750ms linear;border-radius:", ";width:", ";height:", ";overflow:hidden;line-height:", ";", " &::before{position:absolute;top:0;width:1000px;height:100%;content:'';", " ", "}", ";"], fadeInAnimation, props => props.theme.borderRadii.md, props => props.customWidth, props => props.customHeight, props => getLineHeight(props.theme.fontSizes.sm, props.theme.space.base * 5), retrieveSkeletonBackgroundColor, retrieveSkeletonAnimation, retrieveSkeletonGradient, props => retrieveComponentStyles(COMPONENT_ID$y, props));
 StyledSkeleton.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -27302,7 +26996,7 @@ StyledSkeleton.defaultProps = {
 * Use of this source code is governed under the Apache License, Version 2.0
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
-const SIZE = ['small', 'medium', 'large'];
+const SIZE$1 = ['small', 'medium', 'large'];
 
 /**
 * Copyright Zendesk, Inc.
@@ -27311,7 +27005,7 @@ const SIZE = ['small', 'medium', 'large'];
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$u = 'loaders.progress';
+const COMPONENT_ID$x = 'loaders.progress';
 const Progress = React__default.forwardRef((_ref, ref) => {
   let {
     value,
@@ -27325,7 +27019,7 @@ const Progress = React__default.forwardRef((_ref, ref) => {
   }, 'aria-label', 'Progress');
   return (
     React__default.createElement(StyledProgressBackground, Object.assign({
-      "data-garden-id": COMPONENT_ID$u,
+      "data-garden-id": COMPONENT_ID$x,
       "data-garden-version": '8.76.2',
       "aria-valuemax": 100,
       "aria-valuemin": 0,
@@ -27344,7 +27038,7 @@ Progress.displayName = 'Progress';
 Progress.propTypes = {
   color: PropTypes.string,
   value: PropTypes.number.isRequired,
-  size: PropTypes.oneOf(SIZE)
+  size: PropTypes.oneOf(SIZE$1)
 };
 Progress.defaultProps = {
   value: 0,
@@ -27474,6 +27168,2853 @@ class Mime {
 _Mime_extensionToType = new WeakMap(), _Mime_typeToExtension = new WeakMap(), _Mime_typeToExtensions = new WeakMap();
 
 var mime = new Mime(types, types$1)._freeze();
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+const getCellDown = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const rowCount = matrix.length;
+  const colCount = matrix[0].length;
+  const lastRowLength = matrix[rowCount - 1].length;
+  const isLastCellFocused = rowIndex === rowCount - (colCount > lastRowLength ? 2 : 1) && colIndex === colCount - 1;
+  if (!isLastCellFocused) {
+    if (rowIndex === rowCount - (colIndex >= lastRowLength ? 2 : 1) ) {
+      if (wrap) {
+        retVal = [0, colIndex + 1];
+      }
+    } else {
+      retVal = [rowIndex + 1, colIndex];
+    }
+  }
+  return retVal;
+};
+const getCellLeft = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const colCount = matrix[0].length;
+  const isFirstCellFocused = rowIndex === 0 && colIndex === 0;
+  if (!isFirstCellFocused) {
+    if (colIndex === 0 ) {
+      if (wrap) {
+        retVal = [rowIndex - 1, colCount - 1];
+      }
+    } else {
+      retVal = [rowIndex, colIndex - 1];
+    }
+  }
+  return retVal;
+};
+const getCellRight = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const rowCount = matrix.length;
+  const colCount = matrix[0].length;
+  const lastRowIndex = rowCount - 1;
+  const lastColIndex = matrix[lastRowIndex].length - 1;
+  const isLastCellFocused = rowIndex === lastRowIndex && colIndex === lastColIndex;
+  if (!isLastCellFocused) {
+    if (colIndex === colCount - 1 ) {
+      if (wrap) {
+        retVal = [rowIndex + 1, 0];
+      }
+    } else {
+      retVal = [rowIndex, colIndex + 1];
+    }
+  }
+  return retVal;
+};
+const getCellUp = (matrix, rowIndex, colIndex, wrap) => {
+  let retVal = [];
+  const rowCount = matrix.length;
+  const isFirstCellFocused = rowIndex === 0 && colIndex === 0;
+  if (!isFirstCellFocused) {
+    if (rowIndex === 0 ) {
+      if (wrap) {
+        const lastRowLength = matrix[rowCount - 1].length;
+        const col = colIndex - 1;
+        const row = rowCount - (col >= lastRowLength ? 2 : 1);
+        retVal = [row, col];
+      }
+    } else {
+      retVal = [rowIndex - 1, colIndex];
+    }
+  }
+  return retVal;
+};
+const getId = (idPrefix, rowIndex, colIndex) => `${idPrefix}--R${rowIndex + 1}C${colIndex + 1}`;
+
+const GRID_KEYS = [KEYS$2.LEFT, KEYS$2.RIGHT, KEYS$2.UP, KEYS$2.DOWN, KEYS$2.HOME, KEYS$2.END];
+function useGrid(_ref) {
+  let {
+    rtl,
+    wrap,
+    matrix,
+    idPrefix,
+    onChange = () => undefined,
+    environment,
+    rowIndex: controlledRowIndex,
+    colIndex: controlledColIndex,
+    defaultRowIndex,
+    defaultColIndex
+  } = _ref;
+  const doc = environment || document;
+  const prefix = useId$2(idPrefix);
+  const [uncontrolledRowIndex, setUncontrolledRowIndex] = reactExports.useState(defaultRowIndex !== null && defaultRowIndex !== undefined ? defaultRowIndex : 0);
+  const [uncontrolledColIndex, setUncontrolledColIndex] = reactExports.useState(defaultColIndex !== null && defaultColIndex !== undefined ? defaultColIndex : 0);
+  const isControlled = controlledRowIndex !== null && controlledColIndex !== null && controlledRowIndex !== undefined && controlledColIndex !== undefined;
+  const rowIndex = isControlled ? controlledRowIndex : uncontrolledRowIndex;
+  const colIndex = isControlled ? controlledColIndex : uncontrolledColIndex;
+  reactExports.useEffect(() => {
+    const rowCount = matrix.length;
+    const colCount = matrix[0].length;
+    const isRowIndexInvalid = rowIndex >= rowCount;
+    const isColIndexInvalid = colIndex >= colCount;
+    if (isRowIndexInvalid || isColIndexInvalid) {
+      let _rowIndex = rowIndex;
+      let _colIndex = colIndex;
+      if (isRowIndexInvalid) {
+        _rowIndex = rowCount > 0 ? rowCount - 1 : 0;
+      }
+      if (isColIndexInvalid) {
+        _colIndex = colCount > 0 ? colCount - 1 : 0;
+      }
+      if (!isControlled) {
+        setUncontrolledRowIndex(_rowIndex);
+        setUncontrolledColIndex(_colIndex);
+      }
+      onChange(_rowIndex, _colIndex);
+    }
+  }, [matrix, rowIndex, colIndex, isControlled, setUncontrolledColIndex, onChange]);
+  const getGridProps = reactExports.useCallback(_ref2 => {
+    let {
+      role = 'grid',
+      ...other
+    } = _ref2;
+    return {
+      'data-garden-container-id': 'containers.grid',
+      'data-garden-container-version': '3.0.14',
+      role: role === null ? undefined : role,
+      ...other
+    };
+  }, []);
+  const getGridCellProps = reactExports.useCallback(function (_temp) {
+    let {
+      role = 'gridcell',
+      rowIndex: _rowIndex,
+      colIndex: _colIndex,
+      onFocus,
+      onKeyDown,
+      ...other
+    } = _temp === void 0 ? {
+      rowIndex: 0,
+      colIndex: 0
+    } : _temp;
+    const handleFocus = () => {
+      if (!isControlled) {
+        setUncontrolledRowIndex(_rowIndex);
+        setUncontrolledColIndex(_colIndex);
+      }
+      onChange(_rowIndex, _colIndex);
+    };
+    const handleKeyDown = event => {
+      if (GRID_KEYS.includes(event.key)) {
+        event.preventDefault();
+        let row = rowIndex;
+        let col = colIndex;
+        switch (event.key) {
+          case KEYS$2.RIGHT:
+            [row, col] = rtl ? getCellLeft(matrix, rowIndex, colIndex, wrap) : getCellRight(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS$2.LEFT:
+            [row, col] = rtl ? getCellRight(matrix, rowIndex, colIndex, wrap) : getCellLeft(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS$2.DOWN:
+            [row, col] = getCellDown(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS$2.UP:
+            [row, col] = getCellUp(matrix, rowIndex, colIndex, wrap);
+            break;
+          case KEYS$2.HOME:
+            row = event.ctrlKey ? 0 : rowIndex;
+            col = 0;
+            break;
+          case KEYS$2.END:
+            {
+              const rowCount = matrix.length;
+              const lastRowIndex = rowCount - 1;
+              const lastColIndex = matrix[lastRowIndex].length - 1;
+              row = event.ctrlKey ? lastRowIndex : rowIndex;
+              col = event.ctrlKey ? lastColIndex : matrix[rowIndex].length - 1;
+              break;
+            }
+        }
+        if (row !== rowIndex || col !== colIndex) {
+          const id = getId(prefix, row, col);
+          const element = doc.getElementById(id);
+          element?.focus();
+        }
+      }
+    };
+    return {
+      'data-garden-container-id': 'containers.grid.cell',
+      'data-garden-container-version': '3.0.14',
+      id: getId(prefix, _rowIndex, _colIndex),
+      role: role === null ? undefined : role,
+      tabIndex: rowIndex === _rowIndex && colIndex === _colIndex ? 0 : -1,
+      onFocus: composeEventHandlers$5(onFocus, handleFocus),
+      onKeyDown: composeEventHandlers$5(onKeyDown, handleKeyDown),
+      ...other
+    };
+  }, [matrix, rowIndex, colIndex, doc, prefix, isControlled, onChange, rtl, wrap]);
+  return reactExports.useMemo(() => ({
+    getGridProps,
+    getGridCellProps
+  }), [getGridProps, getGridCellProps]);
+}
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  rtl: PropTypes.bool,
+  wrap: PropTypes.bool,
+  matrix: PropTypes.any,
+  idPrefix: PropTypes.string,
+  rowIndex: PropTypes.number,
+  colIndex: PropTypes.number,
+  defaultRowIndex: PropTypes.number,
+  defaultColIndex: PropTypes.number,
+  onChange: PropTypes.func,
+  environment: PropTypes.any
+});
+
+var _path$c, _circle$1;
+function _extends$e() { _extends$e = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e.apply(this, arguments); }
+var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$e({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 12,
+    height: 12,
+    viewBox: "0 0 12 12"
+  }, props), _path$c || (_path$c = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "none",
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M5.06 1.27l-4.5 8.5c-.18.33.06.73.44.73h9c.38 0 .62-.4.44-.73l-4.5-8.5a.494.494 0 00-.88 0zM5.5 4v2"
+  })), _circle$1 || (_circle$1 = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 5.5,
+    cy: 8,
+    r: 0.8,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+const SIZE = ['small', 'medium', 'large'];
+['inherit', ...SIZE];
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$w = 'typography.font';
+[...SIZE, 'extralarge', '2xlarge', '3xlarge'];
+const THEME_SIZES = {
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  extralarge: 'xl',
+  '2xlarge': 'xxl',
+  '3xlarge': 'xxxl'
+};
+const fontStyles = props => {
+  const monospace = props.isMonospace && ['inherit', 'small', 'medium', 'large'].indexOf(props.size) !== -1;
+  const fontFamily = monospace && props.theme.fonts.mono;
+  const direction = props.theme.rtl ? 'rtl' : 'ltr';
+  let fontSize;
+  let fontWeight;
+  let lineHeight;
+  let color;
+  if (monospace) {
+    if (props.size === 'inherit') {
+      fontSize = 'calc(1em - 1px)';
+      lineHeight = 'normal';
+    } else {
+      const themeSize = THEME_SIZES[props.size];
+      fontSize = math$1(`${props.theme.fontSizes[themeSize]} - 1px`);
+      lineHeight = math$1(`${props.theme.lineHeights[themeSize]} - 1px`);
+    }
+  } else if (props.size !== 'inherit') {
+    const themeSize = THEME_SIZES[props.size];
+    fontSize = props.theme.fontSizes[themeSize];
+    lineHeight = props.theme.lineHeights[themeSize];
+  }
+  if (props.isBold === true) {
+    fontWeight = props.theme.fontWeights.semibold;
+  } else if (props.isBold === false || props.size !== 'inherit') {
+    fontWeight = props.theme.fontWeights.regular;
+  }
+  if (props.hue) {
+    const shade = props.hue === 'yellow' ? 700 : 600;
+    color = getColorV8(props.hue, shade, props.theme);
+  }
+  return Ne(["line-height:", ";color:", ";font-family:", ";font-size:", ";font-weight:", ";direction:", ";"], lineHeight, color, fontFamily, fontSize, fontWeight, direction);
+};
+const StyledFont = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$w,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFont",
+  componentId: "sc-1iildbo-0"
+})(["", ";&[hidden]{display:inline;", ";}", ";"], props => !props.hidden && fontStyles(props), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$w, props));
+StyledFont.defaultProps = {
+  theme: DEFAULT_THEME,
+  size: 'inherit'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$v = 'typography.icon';
+const sizeStyles$6 = props => {
+  const margin = props.isStart && `${props.theme.space.base * 2}px`;
+  const size = props.theme.iconSizes.md;
+  return Ne(["margin-", ":", ";width:", ";height:", ";"], props.theme.rtl ? 'left' : 'right', margin, size, size);
+};
+const StyledIcon$1 = styled(_ref => {
+  let {
+    children,
+    isStart,
+    ...props
+  } = _ref;
+  return React__default.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$v,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledIcon",
+  componentId: "sc-10rfb5b-0"
+})(["position:relative;top:-1px;vertical-align:middle;", ";", ";"], props => sizeStyles$6(props), props => retrieveComponentStyles(COMPONENT_ID$v, props));
+StyledIcon$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$u = 'typography.paragraph';
+const StyledParagraph = styled.p.attrs({
+  'data-garden-id': COMPONENT_ID$u,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledParagraph",
+  componentId: "sc-zkuftz-0"
+})(["margin:0;padding:0;direction:", ";& + &,blockquote + &{margin-top:", ";}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.lineHeights[THEME_SIZES[props.size]], props => retrieveComponentStyles(COMPONENT_ID$u, props));
+StyledParagraph.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const SM = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "small"
+  }, other));
+});
+SM.displayName = 'SM';
+SM.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+SM.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const MD = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "medium"
+  }, other));
+});
+MD.displayName = 'MD';
+MD.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+MD.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const LG = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "large"
+  }, other));
+});
+LG.displayName = 'LG';
+LG.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+LG.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const XXXL = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "3xlarge"
+  }, other));
+});
+XXXL.displayName = 'XXXL';
+XXXL.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool
+};
+XXXL.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Paragraph = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph, Object.assign({
+  ref: ref
+}, props)));
+Paragraph.displayName = 'Paragraph';
+Paragraph.propTypes = {
+  size: PropTypes.oneOf(SIZE)
+};
+Paragraph.defaultProps = {
+  size: 'medium'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const StartIconComponent = props => React__default.createElement(StyledIcon$1, Object.assign({
+  isStart: true
+}, props));
+StartIconComponent.displayName = 'Span.StartIcon';
+const StartIcon = StartIconComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const IconComponent = props => React__default.createElement(StyledIcon$1, props);
+IconComponent.displayName = 'Span.Icon';
+const Icon = IconComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const SpanComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "inherit"
+  }, other));
+});
+SpanComponent.displayName = 'Span';
+SpanComponent.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool,
+  hue: PropTypes.string
+};
+SpanComponent.defaultProps = {
+  tag: 'span'
+};
+const Span = SpanComponent;
+Span.Icon = Icon;
+Span.StartIcon = StartIcon;
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function composeEventHandlers$2() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+const KEYS$1 = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+
+var DocumentPosition$2;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition$2 || (DocumentPosition$2 = {}));
+
+let idCounter$1 = 0;
+const useId$1 = id => useId$3(id) || `id:${idCounter$1++}`;
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function composeEventHandlers$1() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+const KEYS = {
+  ALT: 'Alt',
+  ASTERISK: '*',
+  BACKSPACE: 'Backspace',
+  COMMA: ',',
+  DELETE: 'Delete',
+  DOWN: 'ArrowDown',
+  END: 'End',
+  ENTER: 'Enter',
+  ESCAPE: 'Escape',
+  HOME: 'Home',
+  LEFT: 'ArrowLeft',
+  NUMPAD_ADD: 'Add',
+  NUMPAD_DECIMAL: 'Decimal',
+  NUMPAD_DIVIDE: 'Divide',
+  NUMPAD_ENTER: 'Enter',
+  NUMPAD_MULTIPLY: 'Multiply',
+  NUMPAD_SUBTRACT: 'Subtract',
+  PAGE_DOWN: 'PageDown',
+  PAGE_UP: 'PageUp',
+  PERIOD: '.',
+  RIGHT: 'ArrowRight',
+  SHIFT: 'Shift',
+  SPACE: ' ',
+  TAB: 'Tab',
+  UNIDENTIFIED: 'Unidentified',
+  UP: 'ArrowUp'
+};
+
+var DocumentPosition$1;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition$1 || (DocumentPosition$1 = {}));
+
+/*!
+* tabbable 6.2.0
+* @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
+*/
+// NOTE: separate `:not()` selectors has broader browser support than the newer
+//  `:not([inert], [inert] *)` (Feb 2023)
+// CAREFUL: JSDom does not support `:not([inert] *)` as a selector; using it causes
+//  the entire query to fail, resulting in no nodes found, which will break a lot
+//  of things... so we have to rely on JS to identify nodes inside an inert container
+var candidateSelectors = ['input:not([inert])', 'select:not([inert])', 'textarea:not([inert])', 'a[href]:not([inert])', 'button:not([inert])', '[tabindex]:not(slot):not([inert])', 'audio[controls]:not([inert])', 'video[controls]:not([inert])', '[contenteditable]:not([contenteditable="false"]):not([inert])', 'details>summary:first-of-type:not([inert])', 'details:not([inert])'];
+var candidateSelector = /* #__PURE__ */candidateSelectors.join(',');
+var NoElement = typeof Element === 'undefined';
+var matches = NoElement ? function () {} : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+var getRootNode = !NoElement && Element.prototype.getRootNode ? function (element) {
+  var _element$getRootNode;
+  return element === null || element === void 0 ? void 0 : (_element$getRootNode = element.getRootNode) === null || _element$getRootNode === void 0 ? void 0 : _element$getRootNode.call(element);
+} : function (element) {
+  return element === null || element === void 0 ? void 0 : element.ownerDocument;
+};
+
+/**
+ * Determines if a node is inert or in an inert ancestor.
+ * @param {Element} [node]
+ * @param {boolean} [lookUp] If true and `node` is not inert, looks up at ancestors to
+ *  see if any of them are inert. If false, only `node` itself is considered.
+ * @returns {boolean} True if inert itself or by way of being in an inert ancestor.
+ *  False if `node` is falsy.
+ */
+var isInert = function isInert(node, lookUp) {
+  var _node$getAttribute;
+  if (lookUp === void 0) {
+    lookUp = true;
+  }
+  // CAREFUL: JSDom does not support inert at all, so we can't use the `HTMLElement.inert`
+  //  JS API property; we have to check the attribute, which can either be empty or 'true';
+  //  if it's `null` (not specified) or 'false', it's an active element
+  var inertAtt = node === null || node === void 0 ? void 0 : (_node$getAttribute = node.getAttribute) === null || _node$getAttribute === void 0 ? void 0 : _node$getAttribute.call(node, 'inert');
+  var inert = inertAtt === '' || inertAtt === 'true';
+
+  // NOTE: this could also be handled with `node.matches('[inert], :is([inert] *)')`
+  //  if it weren't for `matches()` not being a function on shadow roots; the following
+  //  code works for any kind of node
+  // CAREFUL: JSDom does not appear to support certain selectors like `:not([inert] *)`
+  //  so it likely would not support `:is([inert] *)` either...
+  var result = inert || lookUp && node && isInert(node.parentNode); // recursive
+
+  return result;
+};
+
+/**
+ * Determines if a node's content is editable.
+ * @param {Element} [node]
+ * @returns True if it's content-editable; false if it's not or `node` is falsy.
+ */
+var isContentEditable = function isContentEditable(node) {
+  var _node$getAttribute2;
+  // CAREFUL: JSDom does not support the `HTMLElement.isContentEditable` API so we have
+  //  to use the attribute directly to check for this, which can either be empty or 'true';
+  //  if it's `null` (not specified) or 'false', it's a non-editable element
+  var attValue = node === null || node === void 0 ? void 0 : (_node$getAttribute2 = node.getAttribute) === null || _node$getAttribute2 === void 0 ? void 0 : _node$getAttribute2.call(node, 'contenteditable');
+  return attValue === '' || attValue === 'true';
+};
+
+/**
+ * @param {Element} el container to check in
+ * @param {boolean} includeContainer add container to check
+ * @param {(node: Element) => boolean} filter filter candidates
+ * @returns {Element[]}
+ */
+var getCandidates = function getCandidates(el, includeContainer, filter) {
+  // even if `includeContainer=false`, we still have to check it for inertness because
+  //  if it's inert, all its children are inert
+  if (isInert(el)) {
+    return [];
+  }
+  var candidates = Array.prototype.slice.apply(el.querySelectorAll(candidateSelector));
+  if (includeContainer && matches.call(el, candidateSelector)) {
+    candidates.unshift(el);
+  }
+  candidates = candidates.filter(filter);
+  return candidates;
+};
+
+/**
+ * @callback GetShadowRoot
+ * @param {Element} element to check for shadow root
+ * @returns {ShadowRoot|boolean} ShadowRoot if available or boolean indicating if a shadowRoot is attached but not available.
+ */
+
+/**
+ * @callback ShadowRootFilter
+ * @param {Element} shadowHostNode the element which contains shadow content
+ * @returns {boolean} true if a shadow root could potentially contain valid candidates.
+ */
+
+/**
+ * @typedef {Object} CandidateScope
+ * @property {Element} scopeParent contains inner candidates
+ * @property {Element[]} candidates list of candidates found in the scope parent
+ */
+
+/**
+ * @typedef {Object} IterativeOptions
+ * @property {GetShadowRoot|boolean} getShadowRoot true if shadow support is enabled; falsy if not;
+ *  if a function, implies shadow support is enabled and either returns the shadow root of an element
+ *  or a boolean stating if it has an undisclosed shadow root
+ * @property {(node: Element) => boolean} filter filter candidates
+ * @property {boolean} flatten if true then result will flatten any CandidateScope into the returned list
+ * @property {ShadowRootFilter} shadowRootFilter filter shadow roots;
+ */
+
+/**
+ * @param {Element[]} elements list of element containers to match candidates from
+ * @param {boolean} includeContainer add container list to check
+ * @param {IterativeOptions} options
+ * @returns {Array.<Element|CandidateScope>}
+ */
+var getCandidatesIteratively = function getCandidatesIteratively(elements, includeContainer, options) {
+  var candidates = [];
+  var elementsToCheck = Array.from(elements);
+  while (elementsToCheck.length) {
+    var element = elementsToCheck.shift();
+    if (isInert(element, false)) {
+      // no need to look up since we're drilling down
+      // anything inside this container will also be inert
+      continue;
+    }
+    if (element.tagName === 'SLOT') {
+      // add shadow dom slot scope (slot itself cannot be focusable)
+      var assigned = element.assignedElements();
+      var content = assigned.length ? assigned : element.children;
+      var nestedCandidates = getCandidatesIteratively(content, true, options);
+      if (options.flatten) {
+        candidates.push.apply(candidates, nestedCandidates);
+      } else {
+        candidates.push({
+          scopeParent: element,
+          candidates: nestedCandidates
+        });
+      }
+    } else {
+      // check candidate element
+      var validCandidate = matches.call(element, candidateSelector);
+      if (validCandidate && options.filter(element) && (includeContainer || !elements.includes(element))) {
+        candidates.push(element);
+      }
+
+      // iterate over shadow content if possible
+      var shadowRoot = element.shadowRoot ||
+      // check for an undisclosed shadow
+      typeof options.getShadowRoot === 'function' && options.getShadowRoot(element);
+
+      // no inert look up because we're already drilling down and checking for inertness
+      //  on the way down, so all containers to this root node should have already been
+      //  vetted as non-inert
+      var validShadowRoot = !isInert(shadowRoot, false) && (!options.shadowRootFilter || options.shadowRootFilter(element));
+      if (shadowRoot && validShadowRoot) {
+        // add shadow dom scope IIF a shadow root node was given; otherwise, an undisclosed
+        //  shadow exists, so look at light dom children as fallback BUT create a scope for any
+        //  child candidates found because they're likely slotted elements (elements that are
+        //  children of the web component element (which has the shadow), in the light dom, but
+        //  slotted somewhere _inside_ the undisclosed shadow) -- the scope is created below,
+        //  _after_ we return from this recursive call
+        var _nestedCandidates = getCandidatesIteratively(shadowRoot === true ? element.children : shadowRoot.children, true, options);
+        if (options.flatten) {
+          candidates.push.apply(candidates, _nestedCandidates);
+        } else {
+          candidates.push({
+            scopeParent: element,
+            candidates: _nestedCandidates
+          });
+        }
+      } else {
+        // there's not shadow so just dig into the element's (light dom) children
+        //  __without__ giving the element special scope treatment
+        elementsToCheck.unshift.apply(elementsToCheck, element.children);
+      }
+    }
+  }
+  return candidates;
+};
+
+/**
+ * @private
+ * Determines if the node has an explicitly specified `tabindex` attribute.
+ * @param {HTMLElement} node
+ * @returns {boolean} True if so; false if not.
+ */
+var hasTabIndex = function hasTabIndex(node) {
+  return !isNaN(parseInt(node.getAttribute('tabindex'), 10));
+};
+
+/**
+ * Determine the tab index of a given node.
+ * @param {HTMLElement} node
+ * @returns {number} Tab order (negative, 0, or positive number).
+ * @throws {Error} If `node` is falsy.
+ */
+var getTabIndex = function getTabIndex(node) {
+  if (!node) {
+    throw new Error('No node provided');
+  }
+  if (node.tabIndex < 0) {
+    // in Chrome, <details/>, <audio controls/> and <video controls/> elements get a default
+    // `tabIndex` of -1 when the 'tabindex' attribute isn't specified in the DOM,
+    // yet they are still part of the regular tab order; in FF, they get a default
+    // `tabIndex` of 0; since Chrome still puts those elements in the regular tab
+    // order, consider their tab index to be 0.
+    // Also browsers do not return `tabIndex` correctly for contentEditable nodes;
+    // so if they don't have a tabindex attribute specifically set, assume it's 0.
+    if ((/^(AUDIO|VIDEO|DETAILS)$/.test(node.tagName) || isContentEditable(node)) && !hasTabIndex(node)) {
+      return 0;
+    }
+  }
+  return node.tabIndex;
+};
+
+/**
+ * Determine the tab index of a given node __for sort order purposes__.
+ * @param {HTMLElement} node
+ * @param {boolean} [isScope] True for a custom element with shadow root or slot that, by default,
+ *  has tabIndex -1, but needs to be sorted by document order in order for its content to be
+ *  inserted into the correct sort position.
+ * @returns {number} Tab order (negative, 0, or positive number).
+ */
+var getSortOrderTabIndex = function getSortOrderTabIndex(node, isScope) {
+  var tabIndex = getTabIndex(node);
+  if (tabIndex < 0 && isScope && !hasTabIndex(node)) {
+    return 0;
+  }
+  return tabIndex;
+};
+var sortOrderedTabbables = function sortOrderedTabbables(a, b) {
+  return a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex;
+};
+var isInput = function isInput(node) {
+  return node.tagName === 'INPUT';
+};
+var isHiddenInput = function isHiddenInput(node) {
+  return isInput(node) && node.type === 'hidden';
+};
+var isDetailsWithSummary = function isDetailsWithSummary(node) {
+  var r = node.tagName === 'DETAILS' && Array.prototype.slice.apply(node.children).some(function (child) {
+    return child.tagName === 'SUMMARY';
+  });
+  return r;
+};
+var getCheckedRadio = function getCheckedRadio(nodes, form) {
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].checked && nodes[i].form === form) {
+      return nodes[i];
+    }
+  }
+};
+var isTabbableRadio = function isTabbableRadio(node) {
+  if (!node.name) {
+    return true;
+  }
+  var radioScope = node.form || getRootNode(node);
+  var queryRadios = function queryRadios(name) {
+    return radioScope.querySelectorAll('input[type="radio"][name="' + name + '"]');
+  };
+  var radioSet;
+  if (typeof window !== 'undefined' && typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function') {
+    radioSet = queryRadios(window.CSS.escape(node.name));
+  } else {
+    try {
+      radioSet = queryRadios(node.name);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('Looks like you have a radio button with a name attribute containing invalid CSS selector characters and need the CSS.escape polyfill: %s', err.message);
+      return false;
+    }
+  }
+  var checked = getCheckedRadio(radioSet, node.form);
+  return !checked || checked === node;
+};
+var isRadio = function isRadio(node) {
+  return isInput(node) && node.type === 'radio';
+};
+var isNonTabbableRadio = function isNonTabbableRadio(node) {
+  return isRadio(node) && !isTabbableRadio(node);
+};
+
+// determines if a node is ultimately attached to the window's document
+var isNodeAttached = function isNodeAttached(node) {
+  var _nodeRoot;
+  // The root node is the shadow root if the node is in a shadow DOM; some document otherwise
+  //  (but NOT _the_ document; see second 'If' comment below for more).
+  // If rootNode is shadow root, it'll have a host, which is the element to which the shadow
+  //  is attached, and the one we need to check if it's in the document or not (because the
+  //  shadow, and all nodes it contains, is never considered in the document since shadows
+  //  behave like self-contained DOMs; but if the shadow's HOST, which is part of the document,
+  //  is hidden, or is not in the document itself but is detached, it will affect the shadow's
+  //  visibility, including all the nodes it contains). The host could be any normal node,
+  //  or a custom element (i.e. web component). Either way, that's the one that is considered
+  //  part of the document, not the shadow root, nor any of its children (i.e. the node being
+  //  tested).
+  // To further complicate things, we have to look all the way up until we find a shadow HOST
+  //  that is attached (or find none) because the node might be in nested shadows...
+  // If rootNode is not a shadow root, it won't have a host, and so rootNode should be the
+  //  document (per the docs) and while it's a Document-type object, that document does not
+  //  appear to be the same as the node's `ownerDocument` for some reason, so it's safer
+  //  to ignore the rootNode at this point, and use `node.ownerDocument`. Otherwise,
+  //  using `rootNode.contains(node)` will _always_ be true we'll get false-positives when
+  //  node is actually detached.
+  // NOTE: If `nodeRootHost` or `node` happens to be the `document` itself (which is possible
+  //  if a tabbable/focusable node was quickly added to the DOM, focused, and then removed
+  //  from the DOM as in https://github.com/focus-trap/focus-trap-react/issues/905), then
+  //  `ownerDocument` will be `null`, hence the optional chaining on it.
+  var nodeRoot = node && getRootNode(node);
+  var nodeRootHost = (_nodeRoot = nodeRoot) === null || _nodeRoot === void 0 ? void 0 : _nodeRoot.host;
+
+  // in some cases, a detached node will return itself as the root instead of a document or
+  //  shadow root object, in which case, we shouldn't try to look further up the host chain
+  var attached = false;
+  if (nodeRoot && nodeRoot !== node) {
+    var _nodeRootHost, _nodeRootHost$ownerDo, _node$ownerDocument;
+    attached = !!((_nodeRootHost = nodeRootHost) !== null && _nodeRootHost !== void 0 && (_nodeRootHost$ownerDo = _nodeRootHost.ownerDocument) !== null && _nodeRootHost$ownerDo !== void 0 && _nodeRootHost$ownerDo.contains(nodeRootHost) || node !== null && node !== void 0 && (_node$ownerDocument = node.ownerDocument) !== null && _node$ownerDocument !== void 0 && _node$ownerDocument.contains(node));
+    while (!attached && nodeRootHost) {
+      var _nodeRoot2, _nodeRootHost2, _nodeRootHost2$ownerD;
+      // since it's not attached and we have a root host, the node MUST be in a nested shadow DOM,
+      //  which means we need to get the host's host and check if that parent host is contained
+      //  in (i.e. attached to) the document
+      nodeRoot = getRootNode(nodeRootHost);
+      nodeRootHost = (_nodeRoot2 = nodeRoot) === null || _nodeRoot2 === void 0 ? void 0 : _nodeRoot2.host;
+      attached = !!((_nodeRootHost2 = nodeRootHost) !== null && _nodeRootHost2 !== void 0 && (_nodeRootHost2$ownerD = _nodeRootHost2.ownerDocument) !== null && _nodeRootHost2$ownerD !== void 0 && _nodeRootHost2$ownerD.contains(nodeRootHost));
+    }
+  }
+  return attached;
+};
+var isZeroArea = function isZeroArea(node) {
+  var _node$getBoundingClie = node.getBoundingClientRect(),
+    width = _node$getBoundingClie.width,
+    height = _node$getBoundingClie.height;
+  return width === 0 && height === 0;
+};
+var isHidden = function isHidden(node, _ref) {
+  var displayCheck = _ref.displayCheck,
+    getShadowRoot = _ref.getShadowRoot;
+  // NOTE: visibility will be `undefined` if node is detached from the document
+  //  (see notes about this further down), which means we will consider it visible
+  //  (this is legacy behavior from a very long way back)
+  // NOTE: we check this regardless of `displayCheck="none"` because this is a
+  //  _visibility_ check, not a _display_ check
+  if (getComputedStyle(node).visibility === 'hidden') {
+    return true;
+  }
+  var isDirectSummary = matches.call(node, 'details>summary:first-of-type');
+  var nodeUnderDetails = isDirectSummary ? node.parentElement : node;
+  if (matches.call(nodeUnderDetails, 'details:not([open]) *')) {
+    return true;
+  }
+  if (!displayCheck || displayCheck === 'full' || displayCheck === 'legacy-full') {
+    if (typeof getShadowRoot === 'function') {
+      // figure out if we should consider the node to be in an undisclosed shadow and use the
+      //  'non-zero-area' fallback
+      var originalNode = node;
+      while (node) {
+        var parentElement = node.parentElement;
+        var rootNode = getRootNode(node);
+        if (parentElement && !parentElement.shadowRoot && getShadowRoot(parentElement) === true // check if there's an undisclosed shadow
+        ) {
+          // node has an undisclosed shadow which means we can only treat it as a black box, so we
+          //  fall back to a non-zero-area test
+          return isZeroArea(node);
+        } else if (node.assignedSlot) {
+          // iterate up slot
+          node = node.assignedSlot;
+        } else if (!parentElement && rootNode !== node.ownerDocument) {
+          // cross shadow boundary
+          node = rootNode.host;
+        } else {
+          // iterate up normal dom
+          node = parentElement;
+        }
+      }
+      node = originalNode;
+    }
+    // else, `getShadowRoot` might be true, but all that does is enable shadow DOM support
+    //  (i.e. it does not also presume that all nodes might have undisclosed shadows); or
+    //  it might be a falsy value, which means shadow DOM support is disabled
+
+    // Since we didn't find it sitting in an undisclosed shadow (or shadows are disabled)
+    //  now we can just test to see if it would normally be visible or not, provided it's
+    //  attached to the main document.
+    // NOTE: We must consider case where node is inside a shadow DOM and given directly to
+    //  `isTabbable()` or `isFocusable()` -- regardless of `getShadowRoot` option setting.
+
+    if (isNodeAttached(node)) {
+      // this works wherever the node is: if there's at least one client rect, it's
+      //  somehow displayed; it also covers the CSS 'display: contents' case where the
+      //  node itself is hidden in place of its contents; and there's no need to search
+      //  up the hierarchy either
+      return !node.getClientRects().length;
+    }
+
+    // Else, the node isn't attached to the document, which means the `getClientRects()`
+    //  API will __always__ return zero rects (this can happen, for example, if React
+    //  is used to render nodes onto a detached tree, as confirmed in this thread:
+    //  https://github.com/facebook/react/issues/9117#issuecomment-284228870)
+    //
+    // It also means that even window.getComputedStyle(node).display will return `undefined`
+    //  because styles are only computed for nodes that are in the document.
+    //
+    // NOTE: THIS HAS BEEN THE CASE FOR YEARS. It is not new, nor is it caused by tabbable
+    //  somehow. Though it was never stated officially, anyone who has ever used tabbable
+    //  APIs on nodes in detached containers has actually implicitly used tabbable in what
+    //  was later (as of v5.2.0 on Apr 9, 2021) called `displayCheck="none"` mode -- essentially
+    //  considering __everything__ to be visible because of the innability to determine styles.
+    //
+    // v6.0.0: As of this major release, the default 'full' option __no longer treats detached
+    //  nodes as visible with the 'none' fallback.__
+    if (displayCheck !== 'legacy-full') {
+      return true; // hidden
+    }
+    // else, fallback to 'none' mode and consider the node visible
+  } else if (displayCheck === 'non-zero-area') {
+    // NOTE: Even though this tests that the node's client rect is non-zero to determine
+    //  whether it's displayed, and that a detached node will __always__ have a zero-area
+    //  client rect, we don't special-case for whether the node is attached or not. In
+    //  this mode, we do want to consider nodes that have a zero area to be hidden at all
+    //  times, and that includes attached or not.
+    return isZeroArea(node);
+  }
+
+  // visible, as far as we can tell, or per current `displayCheck=none` mode, we assume
+  //  it's visible
+  return false;
+};
+
+// form fields (nested) inside a disabled fieldset are not focusable/tabbable
+//  unless they are in the _first_ <legend> element of the top-most disabled
+//  fieldset
+var isDisabledFromFieldset = function isDisabledFromFieldset(node) {
+  if (/^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(node.tagName)) {
+    var parentNode = node.parentElement;
+    // check if `node` is contained in a disabled <fieldset>
+    while (parentNode) {
+      if (parentNode.tagName === 'FIELDSET' && parentNode.disabled) {
+        // look for the first <legend> among the children of the disabled <fieldset>
+        for (var i = 0; i < parentNode.children.length; i++) {
+          var child = parentNode.children.item(i);
+          // when the first <legend> (in document order) is found
+          if (child.tagName === 'LEGEND') {
+            // if its parent <fieldset> is not nested in another disabled <fieldset>,
+            // return whether `node` is a descendant of its first <legend>
+            return matches.call(parentNode, 'fieldset[disabled] *') ? true : !child.contains(node);
+          }
+        }
+        // the disabled <fieldset> containing `node` has no <legend>
+        return true;
+      }
+      parentNode = parentNode.parentElement;
+    }
+  }
+
+  // else, node's tabbable/focusable state should not be affected by a fieldset's
+  //  enabled/disabled state
+  return false;
+};
+var isNodeMatchingSelectorFocusable = function isNodeMatchingSelectorFocusable(options, node) {
+  if (node.disabled ||
+  // we must do an inert look up to filter out any elements inside an inert ancestor
+  //  because we're limited in the type of selectors we can use in JSDom (see related
+  //  note related to `candidateSelectors`)
+  isInert(node) || isHiddenInput(node) || isHidden(node, options) ||
+  // For a details element with a summary, the summary element gets the focus
+  isDetailsWithSummary(node) || isDisabledFromFieldset(node)) {
+    return false;
+  }
+  return true;
+};
+var isNodeMatchingSelectorTabbable = function isNodeMatchingSelectorTabbable(options, node) {
+  if (isNonTabbableRadio(node) || getTabIndex(node) < 0 || !isNodeMatchingSelectorFocusable(options, node)) {
+    return false;
+  }
+  return true;
+};
+var isValidShadowRootTabbable = function isValidShadowRootTabbable(shadowHostNode) {
+  var tabIndex = parseInt(shadowHostNode.getAttribute('tabindex'), 10);
+  if (isNaN(tabIndex) || tabIndex >= 0) {
+    return true;
+  }
+  // If a custom element has an explicit negative tabindex,
+  // browsers will not allow tab targeting said element's children.
+  return false;
+};
+
+/**
+ * @param {Array.<Element|CandidateScope>} candidates
+ * @returns Element[]
+ */
+var sortByOrder = function sortByOrder(candidates) {
+  var regularTabbables = [];
+  var orderedTabbables = [];
+  candidates.forEach(function (item, i) {
+    var isScope = !!item.scopeParent;
+    var element = isScope ? item.scopeParent : item;
+    var candidateTabindex = getSortOrderTabIndex(element, isScope);
+    var elements = isScope ? sortByOrder(item.candidates) : element;
+    if (candidateTabindex === 0) {
+      isScope ? regularTabbables.push.apply(regularTabbables, elements) : regularTabbables.push(element);
+    } else {
+      orderedTabbables.push({
+        documentOrder: i,
+        tabIndex: candidateTabindex,
+        item: item,
+        isScope: isScope,
+        content: elements
+      });
+    }
+  });
+  return orderedTabbables.sort(sortOrderedTabbables).reduce(function (acc, sortable) {
+    sortable.isScope ? acc.push.apply(acc, sortable.content) : acc.push(sortable.content);
+    return acc;
+  }, []).concat(regularTabbables);
+};
+var tabbable = function tabbable(container, options) {
+  options = options || {};
+  var candidates;
+  if (options.getShadowRoot) {
+    candidates = getCandidatesIteratively([container], options.includeContainer, {
+      filter: isNodeMatchingSelectorTabbable.bind(null, options),
+      flatten: false,
+      getShadowRoot: options.getShadowRoot,
+      shadowRootFilter: isValidShadowRootTabbable
+    });
+  } else {
+    candidates = getCandidates(container, options.includeContainer, isNodeMatchingSelectorTabbable.bind(null, options));
+  }
+  return sortByOrder(candidates);
+};
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function ownerDocument$1(node) {
+  return node && node.ownerDocument || document;
+}
+
+function activeElement(doc) {
+  if (doc === void 0) {
+    doc = ownerDocument$1();
+  }
+  try {
+    var active = doc.activeElement;
+    if (!active || !active.nodeName) return null;
+    return active;
+  } catch (e) {
+    return doc.body;
+  }
+}
+
+const useFocusJail = function (_temp) {
+  let {
+    focusOnMount = true,
+    restoreFocus = true,
+    environment,
+    focusElem,
+    containerRef
+  } = _temp === void 0 ? {
+    containerRef: reactExports.createRef()
+  } : _temp;
+  const restoreFocusElement = reactExports.useRef(null);
+  const [currentRef, setCurrentRef] = reactExports.useState(containerRef.current);
+  reactExports.useEffect(() => {
+    if (containerRef.current !== currentRef) {
+      setCurrentRef(containerRef.current);
+    }
+  });
+  const focusElement = reactExports.useCallback(element => {
+    const htmlElement = element;
+    if (focusElem) {
+      focusElem(htmlElement);
+    } else {
+      htmlElement && htmlElement.focus();
+    }
+  }, [focusElem]);
+  const validateContainerRef = () => {
+    if (!currentRef) {
+      throw new Error('Accessibility Error: You must apply the ref prop to your containing element.');
+    }
+  };
+  const getInitialFocusNode = () => {
+    const doc = environment ? environment : document;
+    const activeElem = activeElement(doc);
+    const containerElem = currentRef;
+    return containerElem.contains(activeElem) ? activeElem : containerElem;
+  };
+  const getTabbableNodes = () => {
+    const elements = tabbable(currentRef);
+    return {
+      firstItem: elements[0] || getInitialFocusNode(),
+      lastItem: elements[elements.length - 1] || getInitialFocusNode()
+    };
+  };
+  const getContainerProps = function (_temp2) {
+    let {
+      onKeyDown,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    return {
+      onKeyDown: composeEventHandlers$1(onKeyDown, event => {
+        if (event.key !== KEYS.TAB) {
+          return;
+        }
+        validateContainerRef();
+        const tabbableNodes = getTabbableNodes();
+        if (event.shiftKey && (event.target === tabbableNodes.firstItem || event.target === currentRef)) {
+          focusElement(tabbableNodes.lastItem);
+          event.preventDefault();
+        }
+        if (!event.shiftKey && event.target === tabbableNodes.lastItem) {
+          focusElement(tabbableNodes.firstItem);
+          event.preventDefault();
+        }
+      }),
+      'data-garden-container-id': 'containers.focusjail',
+      'data-garden-container-version': '2.0.12',
+      ...other
+    };
+  };
+  reactExports.useEffect(() => {
+    const doc = environment || document;
+    restoreFocusElement.current = activeElement(doc);
+    if (focusOnMount) {
+      focusElement(currentRef);
+    }
+    return () => {
+      const isBodyInactive = restoreFocusElement.current !== doc.body;
+      const hasActiveElement = restoreFocusElement.current !== null;
+      if (isBodyInactive && hasActiveElement && restoreFocus) {
+        focusElement(restoreFocusElement.current);
+      }
+    };
+  }, [focusOnMount, restoreFocus, environment, focusElement, currentRef]);
+  return {
+    getContainerProps,
+    focusElement
+  };
+};
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  focusOnMount: PropTypes.bool,
+  restoreFocus: PropTypes.bool,
+  environment: PropTypes.any,
+  containerRef: PropTypes.any.isRequired,
+  focusElem: PropTypes.func
+});
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+const useModal = _ref => {
+  let {
+    onClose,
+    modalRef,
+    idPrefix,
+    focusOnMount,
+    restoreFocus,
+    environment
+  } = _ref;
+  const prefix = useId$1(idPrefix);
+  const titleId = `${prefix}__title`;
+  const contentId = `${prefix}__content`;
+  const isModalMousedDownRef = reactExports.useRef(false);
+  const closeModal = event => {
+    onClose && onClose(event);
+  };
+  const getBackdropProps = function (_temp) {
+    let {
+      onMouseUp,
+      ...other
+    } = _temp === void 0 ? {} : _temp;
+    const containerId = 'containers.modal';
+    const handleMouseUp = event => {
+      const target = event.target;
+      const isModalContainer = containerId === target.getAttribute('data-garden-container-id');
+      if (!isModalMousedDownRef.current && isModalContainer) {
+        closeModal(event);
+      }
+      isModalMousedDownRef.current = false;
+    };
+    return {
+      onMouseUp: composeEventHandlers$2(onMouseUp, handleMouseUp),
+      'data-garden-container-id': containerId,
+      'data-garden-container-version': '1.0.12',
+      ...other
+    };
+  };
+  const getModalProps = function (_temp2) {
+    let {
+      role = 'dialog',
+      onKeyDown,
+      onMouseDown,
+      ...other
+    } = _temp2 === void 0 ? {} : _temp2;
+    return {
+      role: role === null ? undefined : role,
+      tabIndex: -1,
+      'aria-modal': true,
+      'aria-labelledby': titleId,
+      'aria-describedby': contentId,
+      onMouseDown: composeEventHandlers$2(onMouseDown, () => {
+        isModalMousedDownRef.current = true;
+      }),
+      onKeyDown: composeEventHandlers$2(onKeyDown, event => {
+        if (event.key === KEYS$1.ESCAPE) {
+          closeModal(event);
+        }
+      }),
+      ...other
+    };
+  };
+  const getTitleProps = function (_temp3) {
+    let {
+      id = titleId,
+      ...other
+    } = _temp3 === void 0 ? {} : _temp3;
+    return {
+      id,
+      ...other
+    };
+  };
+  const getContentProps = function (_temp4) {
+    let {
+      id = contentId,
+      ...other
+    } = _temp4 === void 0 ? {} : _temp4;
+    return {
+      id,
+      ...other
+    };
+  };
+  const getCloseProps = _ref2 => {
+    let {
+      onClick,
+      ...other
+    } = _ref2;
+    return {
+      onClick: composeEventHandlers$2(onClick, event => {
+        closeModal(event);
+      }),
+      ...other
+    };
+  };
+  const {
+    getContainerProps
+  } = useFocusJail({
+    containerRef: modalRef,
+    focusOnMount,
+    restoreFocus,
+    environment
+  });
+  return {
+    getBackdropProps,
+    getModalProps: props => getContainerProps(getModalProps(props)),
+    getTitleProps,
+    getContentProps,
+    getCloseProps,
+    closeModal
+  };
+};
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  onClose: PropTypes.func,
+  modalRef: PropTypes.any.isRequired,
+  idPrefix: PropTypes.string,
+  focusOnMount: PropTypes.bool,
+  restoreFocus: PropTypes.bool,
+  environment: PropTypes.any
+});
+
+function isDocument(element) {
+  return 'nodeType' in element && element.nodeType === document.DOCUMENT_NODE;
+}
+
+function isWindow(node) {
+  if ('window' in node && node.window === node) return node;
+  if (isDocument(node)) return node.defaultView || false;
+  return false;
+}
+
+/**
+ * Returns the owner document of a given element.
+ * 
+ * @param node the element
+ */
+function ownerDocument(node) {
+  return node && node.ownerDocument || document;
+}
+
+/**
+ * Returns the owner window of a given element.
+ * 
+ * @param node the element
+ */
+
+function ownerWindow(node) {
+  var doc = ownerDocument(node);
+  return doc && doc.defaultView || window;
+}
+
+/**
+ * Returns one or all computed style properties of an element.
+ * 
+ * @param node the element
+ * @param psuedoElement the style property
+ */
+
+function getComputedStyle$1(node, psuedoElement) {
+  return ownerWindow(node).getComputedStyle(node, psuedoElement);
+}
+
+var rUpper = /([A-Z])/g;
+function hyphenate(string) {
+  return string.replace(rUpper, '-$1').toLowerCase();
+}
+
+/**
+ * Copyright 2013-2014, Facebook, Inc.
+ * All rights reserved.
+ * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/hyphenateStyleName.js
+ */
+var msPattern = /^ms-/;
+function hyphenateStyleName(string) {
+  return hyphenate(string).replace(msPattern, '-ms-');
+}
+
+var supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
+function isTransform(value) {
+  return !!(value && supportedTransforms.test(value));
+}
+
+function style(node, property) {
+  var css = '';
+  var transforms = '';
+
+  if (typeof property === 'string') {
+    return node.style.getPropertyValue(hyphenateStyleName(property)) || getComputedStyle$1(node).getPropertyValue(hyphenateStyleName(property));
+  }
+
+  Object.keys(property).forEach(function (key) {
+    var value = property[key];
+
+    if (!value && value !== 0) {
+      node.style.removeProperty(hyphenateStyleName(key));
+    } else if (isTransform(key)) {
+      transforms += key + "(" + value + ") ";
+    } else {
+      css += hyphenateStyleName(key) + ": " + value + ";";
+    }
+  });
+
+  if (transforms) {
+    css += "transform: " + transforms + ";";
+  }
+
+  node.style.cssText += ";" + css;
+}
+
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+
+var size;
+function scrollbarSize(recalc) {
+  if (!size && size !== 0 || recalc) {
+    if (canUseDOM) {
+      var scrollDiv = document.createElement('div');
+      scrollDiv.style.position = 'absolute';
+      scrollDiv.style.top = '-9999px';
+      scrollDiv.style.width = '50px';
+      scrollDiv.style.height = '50px';
+      scrollDiv.style.overflow = 'scroll';
+      document.body.appendChild(scrollDiv);
+      size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+      document.body.removeChild(scrollDiv);
+    }
+  }
+
+  return size;
+}
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$t = 'modals.backdrop';
+const animationName$1 = $e(["0%{opacity:0;}100%{opacity:1;}"]);
+const animationStyles$1 = props => {
+  if (props.isAnimated) {
+    return Ne(["animation:", " 0.15s ease-in;"], animationName$1);
+  }
+  return '';
+};
+const StyledBackdrop = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$t,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledBackdrop",
+  componentId: "sc-mzdjpo-0"
+})(["display:flex;position:fixed;inset:0;align-items:", ";justify-content:", ";z-index:400;background-color:", ";overflow:auto;-webkit-overflow-scrolling:touch;font-family:", ";direction:", ";", ";", ";"], props => props.isCentered && 'center', props => props.isCentered && 'center', props => getColorV8('neutralHue', 800, props.theme, 0.85), props => props.theme.fonts.system, props => props.theme.rtl && 'rtl', animationStyles$1, props => retrieveComponentStyles(COMPONENT_ID$t, props));
+StyledBackdrop.defaultProps = {
+  theme: DEFAULT_THEME
+};
+StyledBackdrop.propTypes = {
+  isCentered: PropTypes.bool,
+  isAnimated: PropTypes.bool
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$s = 'modals.body';
+const StyledBody = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$s,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledBody",
+  componentId: "sc-14rzecg-0"
+})(["display:block;margin:0;padding:", ";height:100%;overflow:auto;line-height:", ";color:", ";font-size:", ";", ";"], props => `${props.theme.space.base * 5}px ${props.theme.space.base * 10}px`, props => getLineHeight(props.theme.lineHeights.md, props.theme.fontSizes.md), props => getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$s, props));
+StyledBody.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$r = 'modals.close';
+const colorStyles$7 = props => {
+  const backgroundColor = 'primaryHue';
+  const foregroundColor = 'neutralHue';
+  return Ne(["background-color:transparent;color:", ";&:hover{background-color:", ";color:", ";}", " &:active{transition:background-color 0.1s ease-in-out,color 0.1s ease-in-out;background-color:", ";color:", ";}"], getColorV8(foregroundColor, 600, props.theme), getColorV8(backgroundColor, 600, props.theme, 0.08), getColorV8(foregroundColor, 700, props.theme), focusStyles({
+    theme: props.theme,
+    hue: backgroundColor
+  }), getColorV8(backgroundColor, 600, props.theme, 0.2), getColorV8(foregroundColor, 800, props.theme));
+};
+const BASE_MULTIPLIERS = {
+  top: 2.5,
+  side: 6.5,
+  size: 10
+};
+const StyledClose = styled.button.attrs({
+  'data-garden-id': COMPONENT_ID$r,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledClose",
+  componentId: "sc-iseudj-0"
+})(["display:block;position:absolute;top:", "px;", ":", ";transition:box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:none;border-radius:50%;background-color:transparent;cursor:pointer;padding:0;width:", "px;height:", "px;overflow:hidden;text-decoration:none;font-size:0;user-select:none;&::-moz-focus-inner{border:0;}", " & > svg{vertical-align:middle;}", ";"], props => props.theme.space.base * BASE_MULTIPLIERS.top, props => props.theme.rtl ? 'left' : 'right', props => `${props.theme.space.base * BASE_MULTIPLIERS.side}px`, props => props.theme.space.base * BASE_MULTIPLIERS.size, props => props.theme.space.base * BASE_MULTIPLIERS.size, props => colorStyles$7(props), props => retrieveComponentStyles(COMPONENT_ID$r, props));
+StyledClose.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$q = 'modals.footer';
+const StyledFooter = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$q,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFooter",
+  componentId: "sc-d8pfdu-0"
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:flex-end;border-top:", ";padding:", ";", ";"], props => props.isLarge && `${props.theme.borders.sm} ${getColorV8('neutralHue', 200, props.theme)}`, props => props.isLarge ? `${props.theme.space.base * 8}px ${props.theme.space.base * 10}px` : `${props.theme.space.base * 5}px ${props.theme.space.base * 10}px ${props.theme.space.base * 8}px`, props => retrieveComponentStyles(COMPONENT_ID$q, props));
+StyledFooter.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$p = 'modals.footer_item';
+const StyledFooterItem = styled.span.attrs({
+  'data-garden-id': COMPONENT_ID$p,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFooterItem",
+  componentId: "sc-1mb76hl-0"
+})(["display:flex;margin-", ":", "px;min-width:0;&:first-child{margin-", ":0;}", ";"], props => props.theme.rtl ? 'right' : 'left', props => props.theme.space.base * 5, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$p, props));
+StyledFooterItem.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$o = 'modals.header';
+const StyledHeader$2 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$o,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledHeader",
+  componentId: "sc-1787r9v-0"
+})(["display:block;position:", ";margin:0;border-bottom:", " ", ";padding:", ";", "  line-height:", ";color:", ";font-size:", ";font-weight:", ";", ";"], props => props.isDanger && 'relative', props => props.theme.borders.sm, getColorV8('neutralHue', 200), props => `${props.theme.space.base * 5}px ${props.theme.space.base * 10}px`, props => props.isCloseButtonPresent && `padding-${props.theme.rtl ? 'left' : 'right'}: ${props.theme.space.base * (BASE_MULTIPLIERS.size + BASE_MULTIPLIERS.side + 2)}px;`, props => getLineHeight(props.theme.lineHeights.md, props.theme.fontSizes.md), props => props.isDanger ? getColorV8('dangerHue', 600, props.theme) : getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$o, props));
+StyledHeader$2.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _g$1, _circle;
+function _extends$d() { _extends$d = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
+var SvgAlertErrorStroke = function SvgAlertErrorStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$d({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _g$1 || (_g$1 = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 8.5,
+    r: 7
+  }), /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    d: "M7.5 4.5V9"
+  }))), _circle || (_circle = /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 12,
+    r: 1,
+    fill: "currentColor"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const StyledDangerIcon = styled(SvgAlertErrorStroke).withConfig({
+  displayName: "StyledDangerIcon",
+  componentId: "sc-1kwbb39-0"
+})(["position:absolute;top:", "px;", ":", ";"], props => props.theme.space.base * 5.5, props => props.theme.rtl ? 'right' : 'left', props => `${props.theme.space.base * 4}px`);
+StyledDangerIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$n = 'modals.modal';
+const animationName = $e(["0%{transform:scale(0);opacity:0;}50%{transform:scale(1.05);}100%{opacity:1;}"]);
+const animationStyles = props => {
+  if (props.isAnimated) {
+    return Ne(["animation:", " 0.3s ease-in;"], animationName);
+  }
+  return '';
+};
+const boxShadow = props => {
+  const {
+    theme
+  } = props;
+  const {
+    space,
+    shadows
+  } = theme;
+  const offsetY = `${space.base * 5}px`;
+  const blurRadius = `${space.base * 7}px`;
+  const color = getColorV8('neutralHue', 800, theme, 0.35);
+  return shadows.lg(offsetY, blurRadius, color);
+};
+const sizeStyles$5 = props => {
+  return Ne(["", "{width:", ";}"], mediaQuery('up', props.isLarge ? 'md' : 'sm', props.theme), props.isLarge ? props.theme.breakpoints.md : props.theme.breakpoints.sm);
+};
+const StyledModal = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$n,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledModal",
+  componentId: "sc-1pe1axu-0"
+})(["display:flex;position:fixed;flex-direction:column;animation-delay:0.01s;margin:", ";border-radius:", ";box-shadow:", ";background-color:", ";min-height:60px;max-height:calc(100vh - ", "px);overflow:auto;direction:", ";", ";", ";&:focus{outline:none;}@media (max-height:399px){top:", "px;bottom:auto;margin-bottom:", "px;max-height:none;}@media screen and (-ms-high-contrast:active),screen and (-ms-high-contrast:none){right:", ";bottom:", ";transform:", ";}", ";"], props => props.isCentered ? '0' : `${props.theme.space.base * 12}px`, props => props.theme.borderRadii.md, boxShadow, props => getColorV8('background', 600 , props.theme), props => props.theme.space.base * 24, props => props.theme.rtl && 'rtl', animationStyles, sizeStyles$5, props => props.theme.space.base * 6, props => props.theme.space.base * 6, props => props.isCentered && '50%', props => props.isCentered && '50%', props => props.isCentered && 'translate(50%, 50%)', props => retrieveComponentStyles(COMPONENT_ID$n, props));
+StyledModal.propTypes = {
+  isLarge: PropTypes.bool,
+  isAnimated: PropTypes.bool
+};
+StyledModal.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const ModalsContext = reactExports.createContext(undefined);
+const useModalContext = () => {
+  const context = reactExports.useContext(ModalsContext);
+  if (context === undefined) {
+    throw new Error('useModalContext must be used within a ModalsContext.Provider');
+  }
+  return context;
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const isOverflowing = element => {
+  const doc = ownerDocument(element);
+  const win = ownerWindow(doc);
+  const isBody = element && element.tagName.toLowerCase() === 'body';
+  if (!isWindow(doc) && !isBody) {
+    return element.scrollHeight > element.clientHeight;
+  }
+  const style = win.getComputedStyle(doc.body);
+  const marginLeft = parseInt(style.getPropertyValue('margin-left'), 10);
+  const marginRight = parseInt(style.getPropertyValue('margin-right'), 10);
+  return marginLeft + doc.body.clientWidth + marginRight < win.innerWidth;
+};
+const Modal = reactExports.forwardRef((_ref, ref) => {
+  let {
+    backdropProps,
+    children,
+    onClose,
+    isLarge,
+    isCentered,
+    isAnimated,
+    id,
+    appendToNode,
+    focusOnMount,
+    restoreFocus,
+    ...modalProps
+  } = _ref;
+  const theme = reactExports.useContext(Be);
+  const modalRef = reactExports.useRef(null);
+  const environment = useDocument(theme);
+  const [isCloseButtonPresent, setIsCloseButtonPresent] = reactExports.useState(false);
+  const [hasHeader, setHasHeader] = reactExports.useState(false);
+  const {
+    getBackdropProps,
+    getModalProps,
+    getTitleProps,
+    getContentProps,
+    getCloseProps
+  } = useModal({
+    idPrefix: id,
+    onClose,
+    modalRef,
+    focusOnMount,
+    restoreFocus
+  });
+  useFocusVisible({
+    scope: modalRef,
+    relativeDocument: environment
+  });
+  reactExports.useEffect(() => {
+    if (!environment) {
+      return undefined;
+    }
+    const htmlElement = environment.querySelector('html');
+    const bodyElement = environment.querySelector('body');
+    let previousHtmlOverflow;
+    let previousBodyPaddingRight;
+    if (bodyElement) {
+      if (isOverflowing(bodyElement)) {
+        const scrollbarSize$1 = scrollbarSize();
+        const bodyPaddingRight = parseInt(style(bodyElement, 'paddingRight') || '0', 10);
+        previousBodyPaddingRight = bodyElement.style.paddingRight;
+        bodyElement.style.paddingRight = `${bodyPaddingRight + scrollbarSize$1}px`;
+      }
+      if (htmlElement) {
+        previousHtmlOverflow = htmlElement.style.overflow;
+        htmlElement.style.overflow = 'hidden';
+      }
+      return () => {
+        if (htmlElement) {
+          htmlElement.style.overflow = previousHtmlOverflow;
+        }
+        bodyElement.style.paddingRight = previousBodyPaddingRight;
+      };
+    }
+    return undefined;
+  }, [environment]);
+  const rootNode = reactExports.useMemo(() => {
+    if (appendToNode) {
+      return appendToNode;
+    }
+    if (environment) {
+      return environment.body;
+    }
+    return undefined;
+  }, [appendToNode, environment]);
+  const value = reactExports.useMemo(() => ({
+    isLarge,
+    isCloseButtonPresent,
+    hasHeader,
+    setHasHeader,
+    getTitleProps,
+    getContentProps,
+    getCloseProps,
+    setIsCloseButtonPresent
+  }), [isLarge, hasHeader, isCloseButtonPresent, getTitleProps, getContentProps, getCloseProps]);
+  const modalContainerProps = getModalProps({
+    'aria-describedby': undefined,
+    ...(hasHeader ? {} : {
+      'aria-labelledby': undefined
+    })
+  });
+  const attribute = hasHeader ? 'aria-labelledby' : 'aria-label';
+  const defaultValue = hasHeader ? modalContainerProps['aria-labelledby'] : 'Modal dialog';
+  const labelValue = hasHeader ? modalContainerProps['aria-labelledby'] : modalProps['aria-label'];
+  const ariaProps = {
+    [attribute]: useText(Modal, {
+      [attribute]: labelValue
+    }, attribute, defaultValue)
+  };
+  if (!rootNode) {
+    return null;
+  }
+  return reactDomExports.createPortal( React__default.createElement(ModalsContext.Provider, {
+    value: value
+  }, React__default.createElement(StyledBackdrop, Object.assign({
+    isCentered: isCentered,
+    isAnimated: isAnimated
+  }, getBackdropProps(backdropProps)), React__default.createElement(StyledModal, Object.assign({
+    isCentered: isCentered,
+    isAnimated: isAnimated,
+    isLarge: isLarge
+  }, modalContainerProps, ariaProps, modalProps, {
+    ref: mergeRefs([ref, modalRef])
+  }), children))), rootNode);
+});
+Modal.displayName = 'Modal';
+Modal.propTypes = {
+  backdropProps: PropTypes.object,
+  isLarge: PropTypes.bool,
+  isAnimated: PropTypes.bool,
+  isCentered: PropTypes.bool,
+  focusOnMount: PropTypes.bool,
+  restoreFocus: PropTypes.bool,
+  onClose: PropTypes.func,
+  appendToNode: PropTypes.any
+};
+Modal.defaultProps = {
+  isAnimated: true,
+  isCentered: true
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Body = reactExports.forwardRef((props, ref) => {
+  const {
+    getContentProps
+  } = useModalContext();
+  return React__default.createElement(StyledBody, Object.assign({}, getContentProps(props), {
+    ref: ref
+  }));
+});
+Body.displayName = 'Body';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$b;
+function _extends$c() { _extends$c = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
+var SvgXStroke = function SvgXStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$c({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$b || (_path$b = /*#__PURE__*/reactExports.createElement("path", {
+    stroke: "currentColor",
+    strokeLinecap: "round",
+    d: "M3 13L13 3m0 10L3 3"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Close = reactExports.forwardRef((props, ref) => {
+  const {
+    getCloseProps,
+    setIsCloseButtonPresent
+  } = useModalContext();
+  reactExports.useEffect(() => {
+    setIsCloseButtonPresent(true);
+    return () => setIsCloseButtonPresent(false);
+  });
+  const ariaLabel = useText(Close, props, 'aria-label', 'Close modal');
+  return React__default.createElement(StyledClose, Object.assign({}, getCloseProps({
+    ...props,
+    'aria-label': ariaLabel
+  }), {
+    ref: ref
+  }), React__default.createElement(SvgXStroke, null));
+});
+Close.displayName = 'Close';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Footer = React__default.forwardRef((props, ref) => {
+  const {
+    isLarge
+  } = useModalContext();
+  return React__default.createElement(StyledFooter, Object.assign({
+    ref: ref,
+    isLarge: isLarge
+  }, props));
+});
+Footer.displayName = 'Footer';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const FooterItem = React__default.forwardRef((props, ref) => React__default.createElement(StyledFooterItem, Object.assign({
+  ref: ref
+}, props)));
+FooterItem.displayName = 'FooterItem';
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Header$1 = reactExports.forwardRef((_ref, ref) => {
+  let {
+    children,
+    tag,
+    ...other
+  } = _ref;
+  const {
+    isCloseButtonPresent,
+    hasHeader,
+    setHasHeader,
+    getTitleProps
+  } = useModalContext();
+  reactExports.useEffect(() => {
+    if (!hasHeader && setHasHeader) {
+      setHasHeader(true);
+    }
+    return () => {
+      if (hasHeader && setHasHeader) {
+        setHasHeader(false);
+      }
+    };
+  }, [hasHeader, setHasHeader]);
+  return React__default.createElement(StyledHeader$2, Object.assign({}, getTitleProps(other), {
+    as: tag,
+    isCloseButtonPresent: isCloseButtonPresent,
+    ref: ref
+  }), other.isDanger && React__default.createElement(StyledDangerIcon, null), children);
+});
+Header$1.displayName = 'Header';
+Header$1.propTypes = {
+  isDanger: PropTypes.bool,
+  tag: PropTypes.any
+};
+Header$1.defaultProps = {
+  tag: 'div'
+};
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function composeEventHandlers() {
+  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
+    fns[_key] = arguments[_key];
+  }
+  return function (event) {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+    return fns.some(fn => {
+      fn && fn(event, ...args);
+      return event && event.defaultPrevented;
+    });
+  };
+}
+
+function getControlledValue() {
+  for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
+    values[_key] = arguments[_key];
+  }
+  for (const value of values) {
+    if (value !== undefined) {
+      return value;
+    }
+  }
+  return undefined;
+}
+
+const KEY_CODES = {
+  ALT: 18,
+  ASTERISK: 170,
+  BACKSPACE: 8,
+  COMMA: 188,
+  DELETE: 46,
+  DOWN: 40,
+  END: 35,
+  ENTER: 13,
+  ESCAPE: 27,
+  HOME: 36,
+  LEFT: 37,
+  NUMPAD_ADD: 107,
+  NUMPAD_DECIMAL: 110,
+  NUMPAD_DIVIDE: 111,
+  NUMPAD_ENTER: 108,
+  NUMPAD_MULTIPLY: 106,
+  NUMPAD_SUBTRACT: 109,
+  PAGE_DOWN: 34,
+  PAGE_UP: 33,
+  PERIOD: 190,
+  RIGHT: 39,
+  SHIFT: 16,
+  SPACE: 32,
+  TAB: 9,
+  UP: 38
+};
+
+var DocumentPosition;
+(function (DocumentPosition) {
+  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
+  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
+  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
+  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
+  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
+  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
+})(DocumentPosition || (DocumentPosition = {}));
+
+let idCounter = 0;
+const useId = id => useId$3(id) || `id:${idCounter++}`;
+
+/**
+ * Copyright Zendesk, Inc.
+ *
+ * Use of this source code is governed under the Apache License, Version 2.0
+ * found at http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+function useAccordion(_ref) {
+  let {
+    idPrefix,
+    sections = [],
+    expandedSections,
+    defaultExpandedSections,
+    onChange = () => undefined,
+    expandable = true,
+    collapsible = true
+  } = _ref;
+  const prefix = useId(idPrefix);
+  const TRIGGER_ID = `${prefix}--trigger`;
+  const PANEL_ID = `${prefix}--panel`;
+  const isControlled = expandedSections !== null && expandedSections !== undefined;
+  const [expandedState, setExpandedState] = reactExports.useState(defaultExpandedSections || sections.slice(0, 1));
+  const [disabledState, setDisabledState] = reactExports.useState(collapsible ? [] : expandedState);
+  const internalExpandedState = getControlledValue(expandedSections, expandedState);
+  const toggle = reactExports.useCallback(value => {
+    const expanded = [];
+    const disabled = [];
+    sections.forEach(sectionValue => {
+      let isExpanded = false;
+      if (sectionValue === value) {
+        isExpanded = collapsible ? internalExpandedState.includes(sectionValue) === false : true;
+      } else if (expandable) {
+        isExpanded = internalExpandedState.includes(sectionValue);
+      }
+      if (isExpanded) {
+        expanded.push(sectionValue);
+        if (!collapsible) {
+          disabled.push(sectionValue);
+        }
+      }
+    });
+    onChange(value);
+    if (isControlled === false) {
+      setExpandedState(expanded);
+    }
+    setDisabledState(disabled);
+  }, [sections, internalExpandedState, collapsible, expandable, isControlled, onChange]);
+  const getHeaderProps = reactExports.useCallback(_ref2 => {
+    let {
+      role = 'heading',
+      'aria-level': ariaLevel,
+      ...props
+    } = _ref2;
+    return {
+      role: role === null ? undefined : role,
+      'aria-level': ariaLevel,
+      'data-garden-container-id': 'containers.accordion',
+      'data-garden-container-version': '3.0.4',
+      ...props
+    };
+  }, []);
+  const getTriggerProps = reactExports.useCallback(_ref3 => {
+    let {
+      value,
+      role = 'button',
+      tabIndex = 0,
+      ...props
+    } = _ref3;
+    return {
+      id: `${TRIGGER_ID}:${value}`,
+      role: role === null ? undefined : role,
+      tabIndex,
+      'aria-controls': `${PANEL_ID}:${value}`,
+      'aria-disabled': disabledState.includes(value) || undefined,
+      'aria-expanded': internalExpandedState.includes(value),
+      onClick: composeEventHandlers(props.onClick, () => toggle(value)),
+      onKeyDown: composeEventHandlers(props.onKeyDown, event => {
+        if (event.keyCode === KEY_CODES.SPACE || event.keyCode === KEY_CODES.ENTER) {
+          toggle(value);
+          event.preventDefault();
+        }
+      }),
+      ...props
+    };
+  }, [PANEL_ID, TRIGGER_ID, internalExpandedState, disabledState, toggle]);
+  const getPanelProps = reactExports.useCallback(_ref4 => {
+    let {
+      value,
+      role = 'region',
+      ...props
+    } = _ref4;
+    return {
+      id: `${PANEL_ID}:${value}`,
+      role: role === null ? undefined : role,
+      'aria-hidden': !internalExpandedState.includes(value),
+      'aria-labelledby': `${TRIGGER_ID}:${value}`,
+      ...props
+    };
+  }, [PANEL_ID, TRIGGER_ID, internalExpandedState]);
+  return reactExports.useMemo(() => ({
+    getHeaderProps,
+    getTriggerProps,
+    getPanelProps,
+    expandedSections: internalExpandedState,
+    disabledSections: disabledState
+  }), [getHeaderProps, getTriggerProps, getPanelProps, internalExpandedState, disabledState]);
+}
+({
+  children: PropTypes.func,
+  render: PropTypes.func,
+  sections: PropTypes.array.isRequired,
+  expandedSections: PropTypes.array,
+  defaultExpandedSections: PropTypes.array,
+  expandable: PropTypes.bool,
+  collapsible: PropTypes.bool,
+  idPrefix: PropTypes.string,
+  onChange: PropTypes.func
+});
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$m = 'accordions.accordion';
+const StyledAccordion = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$m,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledAccordion",
+  componentId: "sc-niv9ic-0"
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$m, props));
+StyledAccordion.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$l = 'accordions.panel';
+const colorStyles$6 = props => {
+  const {
+    theme,
+    isBare
+  } = props;
+  return Ne(["border-bottom-color:", ";"], isBare ? 'transparent' : getColorV8('neutralHue', 300, theme));
+};
+const sizeStyles$4 = props => {
+  const {
+    theme,
+    isCompact,
+    isExpanded
+  } = props;
+  const {
+    base
+  } = theme.space;
+  let paddingTop = base * 2;
+  let paddingHorizontal = base * 5;
+  let paddingBottom = base * 8;
+  if (isCompact) {
+    paddingTop = base * 2;
+    paddingHorizontal = base * 3;
+    paddingBottom = base * 4;
+  }
+  if (isExpanded === false) {
+    paddingTop = 0;
+    paddingBottom = 0;
+  }
+  return Ne(["grid-template-rows:", "fr;border-bottom:", ";padding:", "px ", "px ", "px;line-height:", ";font-size:", ";"], isExpanded ? 1 : 0, theme.borders.sm, paddingTop, paddingHorizontal, paddingBottom, getLineHeight(base * 5, theme.fontSizes.md), theme.fontSizes.md);
+};
+const StyledPanel = styled.section.attrs({
+  'data-garden-id': COMPONENT_ID$l,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledPanel",
+  componentId: "sc-1piryze-0"
+})(["display:grid;transition:", ";overflow:hidden;", " ", " ", ";"], props => props.isAnimated && 'padding 0.25s ease-in-out, grid-template-rows 0.25s ease-in-out', sizeStyles$4, colorStyles$6, props => retrieveComponentStyles(COMPONENT_ID$l, props));
+StyledPanel.defaultProps = {
+  isAnimated: true,
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$k = 'accordions.section';
+const StyledSection = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$k,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledSection",
+  componentId: "sc-v2t9bd-0"
+})(["&:last-child ", "{border:none;}", ";"], StyledPanel, props => retrieveComponentStyles(COMPONENT_ID$k, props));
+StyledSection.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$j = 'accordions.header';
+const StyledHeader$1 = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$j,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledHeader",
+  componentId: "sc-2c6rbr-0"
+})(["display:flex;align-items:center;transition:box-shadow 0.1s ease-in-out;font-size:", ";&:hover{cursor:", ";}", " ", ";"], props => props.theme.fontSizes.md, props => (props.isCollapsible || !props.isExpanded) && 'pointer', props => focusStyles({
+  theme: props.theme,
+  inset: true,
+  condition: props.isFocused,
+  selector: '&:focus-within'
+}), props => retrieveComponentStyles(COMPONENT_ID$j, props));
+StyledHeader$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$i = 'accordions.button';
+const colorStyles$5 = props => {
+  const showColor = props.isCollapsible || !props.isExpanded;
+  let color = getColorV8('foreground', 600 , props.theme);
+  if (showColor && props.isHovered) {
+    color = getColorV8('primaryHue', 600, props.theme);
+  }
+  return Ne(["color:", ";&:hover{cursor:", ";color:", ";}"], color, showColor && 'pointer', showColor && color);
+};
+const StyledButton = styled.button.attrs({
+  'data-garden-id': COMPONENT_ID$i,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledButton",
+  componentId: "sc-xj3hy7-0"
+})(["transition:color 0.1s ease-in-out;outline:none;border:none;background:transparent;padding:", ";width:100%;text-align:", ";line-height:", ";font-family:inherit;font-size:", ";font-weight:", ";", " &::-moz-focus-inner{border:0;}&:hover{cursor:", ";}", ";"], props => props.isCompact ? `${props.theme.space.base * 2}px ${props.theme.space.base * 3}px` : `${props.theme.space.base * 5}px`, props => props.theme.rtl ? 'right' : 'left', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, colorStyles$5, props => (props.isCollapsible || !props.isExpanded) && 'pointer', props => retrieveComponentStyles(COMPONENT_ID$i, props));
+StyledButton.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$h = 'accordions.step_inner_panel';
+const StyledInnerPanel = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$h,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledInnerPanel",
+  componentId: "sc-8nbueg-0"
+})(["overflow:hidden;line-height:inherit;font-size:inherit;", "[aria-hidden='true'] > &{transition:", ";visibility:hidden;}", "[aria-hidden='false'] > &{visibility:visible;}", ";"], StyledPanel, props => props.isAnimated && 'visibility 0s 0.25s', StyledPanel, props => retrieveComponentStyles(COMPONENT_ID$h, props));
+StyledInnerPanel.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$g = 'accordions.rotate_icon';
+const colorStyles$4 = props => {
+  const showColor = props.isCollapsible || !props.isRotated;
+  let color = getColorV8('neutralHue', 600, props.theme);
+  if (showColor && props.isHovered) {
+    color = getColorV8('primaryHue', 600, props.theme);
+  }
+  return Ne(["color:", ";&:hover{color:", ";}"], color, showColor && color);
+};
+const StyledRotateIcon = styled(
+_ref => {
+  let {
+    children,
+    isRotated,
+    isHovered,
+    isCompact,
+    isCollapsible,
+    ...props
+  } = _ref;
+  return reactExports.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$g,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledRotateIcon",
+  componentId: "sc-hp435q-0"
+})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.1s ease-in-out;box-sizing:content-box;padding:", ";width:", ";min-width:", ";height:", ";vertical-align:middle;", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => props.isCompact ? `${props.theme.space.base * 1.5}px ${props.theme.space.base * 3}px` : `${props.theme.space.base * 5}px`, props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, colorStyles$4, props => retrieveComponentStyles(COMPONENT_ID$g, props));
+StyledRotateIcon.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const AccordionContext = reactExports.createContext(undefined);
+const useAccordionContext = () => {
+  const context = reactExports.useContext(AccordionContext);
+  if (context === undefined) {
+    throw new Error('This component must be rendered within a Accordion component');
+  }
+  return context;
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const SectionContext = reactExports.createContext(undefined);
+const useSectionContext = () => {
+  const context = reactExports.useContext(SectionContext);
+  if (context === undefined) {
+    throw new Error('This component must be rendered within an Accordion component');
+  }
+  return context;
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const HeaderContext = reactExports.createContext(undefined);
+const useHeaderContext = () => {
+  const context = reactExports.useContext(HeaderContext);
+  if (context === undefined) {
+    throw new Error('This component must be rendered within a Accordion.Header component');
+  }
+  return context;
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const SectionComponent = reactExports.forwardRef((props, ref) => React__default.createElement(StyledSection, Object.assign({
+  ref: ref
+}, props)));
+SectionComponent.displayName = 'Accordion.Section';
+const Section = SectionComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+var _path$a;
+function _extends$b() { _extends$b = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
+var SvgChevronDownStroke = function SvgChevronDownStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$b({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    focusable: "false",
+    viewBox: "0 0 16 16",
+    "aria-hidden": "true"
+  }, props), _path$a || (_path$a = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "currentColor",
+    d: "M12.688 5.61a.5.5 0 01.69.718l-.066.062-5 4a.5.5 0 01-.542.054l-.082-.054-5-4a.5.5 0 01.55-.83l.074.05L8 9.359l4.688-3.75z"
+  })));
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const HeaderComponent = reactExports.forwardRef((props, ref) => {
+  const {
+    onClick,
+    onFocus,
+    onBlur,
+    onMouseOver,
+    onMouseOut,
+    role,
+    children,
+    ...other
+  } = props;
+  const {
+    level: ariaLevel,
+    isCompact,
+    isCollapsible,
+    getHeaderProps,
+    getTriggerProps,
+    expandedSections
+  } = useAccordionContext();
+  const sectionValue = useSectionContext();
+  const [isFocused, setIsFocused] = reactExports.useState(false);
+  const [isHovered, setIsHovered] = reactExports.useState(false);
+  const isExpanded = expandedSections.includes(sectionValue);
+  const {
+    onClick: onTriggerClick,
+    onKeyDown,
+    ...otherTriggerProps
+  } = getTriggerProps({
+    type: 'button',
+    value: sectionValue
+  });
+  const onHeaderFocus = e => {
+    e.persist();
+    setTimeout(() => {
+      const isAccordionButton = e.target.getAttribute('data-garden-id') === COMPONENT_ID$i;
+      const isFocusVisible = e.target.getAttribute('data-garden-focus-visible');
+      if (isAccordionButton && isFocusVisible) {
+        setIsFocused(true);
+      }
+    }, 0);
+  };
+  const value = reactExports.useMemo(() => ({
+    isHovered,
+    otherTriggerProps
+  }), [isHovered, otherTriggerProps]);
+  return React__default.createElement(HeaderContext.Provider, {
+    value: value
+  }, React__default.createElement(StyledHeader$1, Object.assign({
+    isCollapsible: isCollapsible,
+    isExpanded: isExpanded,
+    isFocused: isFocused
+  }, getHeaderProps({
+    ref,
+    'aria-level': ariaLevel,
+    role: role === undefined || role === null ? role : 'heading',
+    onClick: composeEventHandlers$5(onClick, onTriggerClick),
+    onFocus: composeEventHandlers$5(onFocus, onHeaderFocus),
+    onBlur: composeEventHandlers$5(onBlur, () => setIsFocused(false)),
+    onMouseOver: composeEventHandlers$5(onMouseOver, () => setIsHovered(true)),
+    onMouseOut: composeEventHandlers$5(onMouseOut, () => setIsHovered(false)),
+    ...other
+  })), children, React__default.createElement(StyledRotateIcon, {
+    isCompact: isCompact,
+    isHovered: isHovered,
+    isRotated: isExpanded,
+    isCollapsible: isCollapsible,
+    onMouseOver: composeEventHandlers$5(onMouseOver, () => setIsHovered(true)),
+    onMouseOut: composeEventHandlers$5(onMouseOut, () => setIsHovered(false))
+  }, React__default.createElement(SvgChevronDownStroke, null))));
+});
+HeaderComponent.displayName = 'Accordion.Header';
+const Header = HeaderComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const LabelComponent = reactExports.forwardRef((props, ref) => {
+  const sectionValue = useSectionContext();
+  const {
+    isCompact,
+    isCollapsible,
+    expandedSections
+  } = useAccordionContext();
+  const isExpanded = expandedSections.includes(sectionValue);
+  const {
+    isHovered,
+    otherTriggerProps
+  } = useHeaderContext();
+  return React__default.createElement(StyledButton, Object.assign({
+    ref: ref,
+    isCompact: isCompact,
+    isHovered: isHovered,
+    isExpanded: isExpanded,
+    isCollapsible: isCollapsible
+  }, otherTriggerProps, props));
+});
+LabelComponent.displayName = 'Accordion.Label';
+const Label = LabelComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const PanelComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    role,
+    children,
+    ...props
+  } = _ref;
+  const {
+    isAnimated,
+    isBare,
+    isCompact,
+    expandedSections,
+    getPanelProps
+  } = useAccordionContext();
+  const sectionValue = useSectionContext();
+  const isExpanded = expandedSections.includes(sectionValue);
+  return React__default.createElement(StyledPanel, Object.assign({
+    inert: isExpanded ? undefined : '',
+    isAnimated: isAnimated,
+    isBare: isBare,
+    isCompact: isCompact,
+    isExpanded: isExpanded
+  }, getPanelProps({
+    role: role === undefined ? null : 'region',
+    ref,
+    value: sectionValue,
+    ...props
+  })), React__default.createElement(StyledInnerPanel, {
+    isAnimated: isAnimated
+  }, children));
+});
+PanelComponent.displayName = 'Accordion.Panel';
+const Panel = PanelComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const AccordionComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    children,
+    isBare,
+    isCompact,
+    isAnimated,
+    isExpandable,
+    isCollapsible,
+    level,
+    onChange,
+    defaultExpandedSections,
+    expandedSections: controlledExpandedSections,
+    ...props
+  } = _ref;
+  const {
+    sections,
+    sectionChildren
+  } = reactExports.useMemo(() => reactExports.Children.toArray(children).filter(reactExports.isValidElement).map((child, index) => React__default.createElement(SectionContext.Provider, {
+    key: index,
+    value: index
+  }, child)).reduce((acc, child, index) => {
+    acc.sectionChildren.push(child);
+    acc.sections.push(index);
+    return acc;
+  }, {
+    sectionChildren: [],
+    sections: []
+  }), [children]);
+  const {
+    expandedSections,
+    getHeaderProps,
+    getTriggerProps,
+    getPanelProps
+  } = useAccordion({
+    sections,
+    defaultExpandedSections,
+    expandedSections: controlledExpandedSections,
+    collapsible: isCollapsible,
+    expandable: isExpandable || false,
+    onChange
+  });
+  const accordionContextValue = reactExports.useMemo(() => ({
+    level,
+    isBare,
+    isCompact,
+    isAnimated,
+    isCollapsible,
+    getPanelProps,
+    getHeaderProps,
+    getTriggerProps,
+    expandedSections
+  }), [level, isBare, isCompact, isAnimated, isCollapsible, getPanelProps, getHeaderProps, getTriggerProps, expandedSections]);
+  return React__default.createElement(AccordionContext.Provider, {
+    value: accordionContextValue
+  }, React__default.createElement(StyledAccordion, Object.assign({
+    ref: ref
+  }, props), sectionChildren));
+});
+AccordionComponent.displayName = 'Accordion';
+AccordionComponent.defaultProps = {
+  isAnimated: true,
+  isCollapsible: true
+};
+const Accordion = AccordionComponent;
+Accordion.Header = Header;
+Accordion.Label = Label;
+Accordion.Panel = Panel;
+Accordion.Section = Section;
+
+var _g;
+function _extends$a() { _extends$a = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
+var SvgCheckCircleStroke = function SvgCheckCircleStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$a({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    viewBox: "0 0 16 16"
+  }, props), _g || (_g = /*#__PURE__*/reactExports.createElement("g", {
+    fill: "none",
+    stroke: "currentColor"
+  }, /*#__PURE__*/reactExports.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M4 9l2.5 2.5 5-5"
+  }), /*#__PURE__*/reactExports.createElement("circle", {
+    cx: 7.5,
+    cy: 8.5,
+    r: 7
+  }))));
+};
+
+var _rect, _path$9;
+function _extends$9() { _extends$9 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
+var SvgCreditCardStroke = function SvgCreditCardStroke(props) {
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$9({
+    xmlns: "http://www.w3.org/2000/svg",
+    width: 16,
+    height: 16,
+    viewBox: "0 0 16 16"
+  }, props), _rect || (_rect = /*#__PURE__*/reactExports.createElement("rect", {
+    width: 15,
+    height: 11,
+    x: 0.5,
+    y: 2.5,
+    fill: "none",
+    stroke: "currentColor",
+    rx: 0.5,
+    ry: 0.5
+  })), _path$9 || (_path$9 = /*#__PURE__*/reactExports.createElement("path", {
+    fill: "currentColor",
+    d: "M.5 5h15v2H.5z"
+  })));
+};
 
 /**
 * Copyright Zendesk, Inc.
@@ -28121,14 +30662,14 @@ function getDate(date) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$t = 'datepickers.menu';
+const COMPONENT_ID$f = 'datepickers.menu';
 const StyledMenu = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$t,
+  'data-garden-id': COMPONENT_ID$f,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledMenu",
   componentId: "sc-1npbkk0-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$t, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$f, props));
 StyledMenu.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28140,7 +30681,7 @@ StyledMenu.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$s = 'datepickers.menu_wrapper';
+const COMPONENT_ID$e = 'datepickers.menu_wrapper';
 const StyledMenuWrapper = styled.div.attrs(props => ({
   className: props.isAnimated && 'is-animated'
 })).withConfig({
@@ -28152,7 +30693,7 @@ const StyledMenuWrapper = styled.div.attrs(props => ({
   margin: `${props.theme.space.base}px`,
   zIndex: props.zIndex,
   animationModifier: props.isAnimated ? '.is-animated' : undefined
-}), props => retrieveComponentStyles(COMPONENT_ID$s, props));
+}), props => retrieveComponentStyles(COMPONENT_ID$e, props));
 StyledMenuWrapper.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28164,7 +30705,7 @@ StyledMenuWrapper.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$r = 'datepickers.datepicker';
+const COMPONENT_ID$d = 'datepickers.datepicker';
 const retrievePadding = _ref => {
   let {
     isCompact,
@@ -28177,11 +30718,11 @@ const retrievePadding = _ref => {
   return `margin: ${value}px;`;
 };
 const StyledDatepicker = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$r
+  'data-garden-id': COMPONENT_ID$d
 }).withConfig({
   displayName: "StyledDatepicker",
   componentId: "sc-w3zqsp-0"
-})(["direction:", ";", " background-color:", ";color:", ";", ";"], props => props.theme.rtl && 'rtl', retrievePadding, props => getColorV8('background', 600 , props.theme), props => getColorV8('foreground', 600 , props.theme), props => retrieveComponentStyles(COMPONENT_ID$r, props));
+})(["direction:", ";", " background-color:", ";color:", ";", ";"], props => props.theme.rtl && 'rtl', retrievePadding, props => getColorV8('background', 600 , props.theme), props => getColorV8('foreground', 600 , props.theme), props => retrieveComponentStyles(COMPONENT_ID$d, props));
 StyledDatepicker.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28193,14 +30734,14 @@ StyledDatepicker.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$q = 'datepickers.header';
-const StyledHeader$2 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$q
+const COMPONENT_ID$c = 'datepickers.header';
+const StyledHeader = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$c
 }).withConfig({
   displayName: "StyledHeader",
   componentId: "sc-upq318-0"
-})(["display:flex;width:", "px;", ";"], props => props.isCompact ? props.theme.space.base * 56 : props.theme.space.base * 70, props => retrieveComponentStyles(COMPONENT_ID$q, props));
-StyledHeader$2.defaultProps = {
+})(["display:flex;width:", "px;", ";"], props => props.isCompact ? props.theme.space.base * 56 : props.theme.space.base * 70, props => retrieveComponentStyles(COMPONENT_ID$c, props));
+StyledHeader.defaultProps = {
   theme: DEFAULT_THEME
 };
 
@@ -28228,13 +30769,13 @@ const retrieveColor = _ref2 => {
   } = _ref2;
   return Ne([":hover{background-color:", ";color:", ";}:active{background-color:", ";color:", ";}color:", ";"], getColorV8('primaryHue', 600, theme, 0.08), getColorV8('foreground', 600 , theme), getColorV8('primaryHue', 600, theme, 0.2), getColorV8('foreground', 600 , theme), getColorV8('neutralHue', 600, theme));
 };
-const COMPONENT_ID$p = 'datepickers.header_paddle';
+const COMPONENT_ID$b = 'datepickers.header_paddle';
 const StyledHeaderPaddle = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$p
+  'data-garden-id': COMPONENT_ID$b
 }).withConfig({
   displayName: "StyledHeaderPaddle",
   componentId: "sc-2oqh0g-0"
-})(["display:flex;align-items:center;justify-content:center;transform:", ";visibility:", ";border-radius:50%;cursor:pointer;", " ", " svg{width:", ";height:", ";}", ";"], props => props.theme.rtl && 'rotate(180deg)', props => props.isHidden && 'hidden', retrieveSizing, retrieveColor, props => `${props.theme.iconSizes.md}`, props => `${props.theme.iconSizes.md}`, props => retrieveComponentStyles(COMPONENT_ID$p, props));
+})(["display:flex;align-items:center;justify-content:center;transform:", ";visibility:", ";border-radius:50%;cursor:pointer;", " ", " svg{width:", ";height:", ";}", ";"], props => props.theme.rtl && 'rotate(180deg)', props => props.isHidden && 'hidden', retrieveSizing, retrieveColor, props => `${props.theme.iconSizes.md}`, props => `${props.theme.iconSizes.md}`, props => retrieveComponentStyles(COMPONENT_ID$b, props));
 StyledHeaderPaddle.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28246,13 +30787,13 @@ StyledHeaderPaddle.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$o = 'datepickers.header_label';
+const COMPONENT_ID$a = 'datepickers.header_label';
 const StyledHeaderLabel = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$o
+  'data-garden-id': COMPONENT_ID$a
 }).withConfig({
   displayName: "StyledHeaderLabel",
   componentId: "sc-1ryf5ub-0"
-})(["display:flex;flex-grow:1;align-items:center;justify-content:center;font-size:", ";font-weight:", ";", ";"], props => props.isCompact ? props.theme.fontSizes.sm : props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$o, props));
+})(["display:flex;flex-grow:1;align-items:center;justify-content:center;font-size:", ";font-weight:", ";", ";"], props => props.isCompact ? props.theme.fontSizes.sm : props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$a, props));
 StyledHeaderLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28264,13 +30805,13 @@ StyledHeaderLabel.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$n = 'datepickers.calendar';
+const COMPONENT_ID$9 = 'datepickers.calendar';
 const StyledCalendar = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$n
+  'data-garden-id': COMPONENT_ID$9
 }).withConfig({
   displayName: "StyledCalendar",
   componentId: "sc-g5hoe8-0"
-})(["width:", "px;", ";"], props => props.isCompact ? props.theme.space.base * 56 : props.theme.space.base * 70, props => retrieveComponentStyles(COMPONENT_ID$n, props));
+})(["width:", "px;", ";"], props => props.isCompact ? props.theme.space.base * 56 : props.theme.space.base * 70, props => retrieveComponentStyles(COMPONENT_ID$9, props));
 StyledCalendar.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28282,7 +30823,7 @@ StyledCalendar.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$m = 'datepickers.calendar_item';
+const COMPONENT_ID$8 = 'datepickers.calendar_item';
 const retrieveSize = _ref => {
   let {
     isCompact,
@@ -28297,11 +30838,11 @@ const retrieveSize = _ref => {
   return Ne(["width:", ";height:", ";"], size, size);
 };
 const StyledCalendarItem = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$m
+  'data-garden-id': COMPONENT_ID$8
 }).withConfig({
   displayName: "StyledCalendarItem",
   componentId: "sc-143w8wb-0"
-})(["display:inline-block;position:relative;vertical-align:top;", " ", ";"], retrieveSize, props => retrieveComponentStyles(COMPONENT_ID$m, props));
+})(["display:inline-block;position:relative;vertical-align:top;", " ", ";"], retrieveSize, props => retrieveComponentStyles(COMPONENT_ID$8, props));
 StyledCalendarItem.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28313,13 +30854,13 @@ StyledCalendarItem.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$l = 'datepickers.day_label';
+const COMPONENT_ID$7 = 'datepickers.day_label';
 const StyledDayLabel = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$l
+  'data-garden-id': COMPONENT_ID$7
 }).withConfig({
   displayName: "StyledDayLabel",
   componentId: "sc-9bh1p7-0"
-})(["display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:", ";font-weight:", ";", ";"], props => props.isCompact ? props.theme.fontSizes.sm : props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$l, props));
+})(["display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:", ";font-weight:", ";", ";"], props => props.isCompact ? props.theme.fontSizes.sm : props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$7, props));
 StyledDayLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28363,14 +30904,14 @@ const retrieveStyledDayColors = _ref => {
       }
   `);
 };
-const COMPONENT_ID$k = 'datepickers.day';
+const COMPONENT_ID$6 = 'datepickers.day';
 const StyledDay = styled.div.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$k,
+  'data-garden-id': COMPONENT_ID$6,
   'aria-disabled': props.isDisabled ? 'true' : 'false'
 })).withConfig({
   displayName: "StyledDay",
   componentId: "sc-v42uk5-0"
-})(["display:flex;position:absolute;align-items:center;justify-content:center;border-radius:50%;cursor:", ";width:100%;height:100%;font-size:", ";font-weight:", ";", " ", ";"], props => props.isDisabled ? 'inherit' : 'pointer', props => props.isCompact ? props.theme.fontSizes.sm : props.theme.fontSizes.md, props => props.isToday && !props.isDisabled ? props.theme.fontWeights.semibold : 'inherit', retrieveStyledDayColors, props => retrieveComponentStyles(COMPONENT_ID$k, props));
+})(["display:flex;position:absolute;align-items:center;justify-content:center;border-radius:50%;cursor:", ";width:100%;height:100%;font-size:", ";font-weight:", ";", " ", ";"], props => props.isDisabled ? 'inherit' : 'pointer', props => props.isCompact ? props.theme.fontSizes.sm : props.theme.fontSizes.md, props => props.isToday && !props.isDisabled ? props.theme.fontWeights.semibold : 'inherit', retrieveStyledDayColors, props => retrieveComponentStyles(COMPONENT_ID$6, props));
 StyledDay.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -28481,17 +31022,17 @@ function getStartOfWeek(locale) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-var _path$c;
-function _extends$e() { _extends$e = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$e.apply(this, arguments); }
+var _path$8;
+function _extends$8() { _extends$8 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
 var SvgChevronLeftStroke$1 = function SvgChevronLeftStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$e({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$8({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$c || (_path$c = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$8 || (_path$8 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "currentColor",
     d: "M10.39 12.688a.5.5 0 01-.718.69l-.062-.066-4-5a.5.5 0 01-.054-.542l.054-.082 4-5a.5.5 0 01.83.55l-.05.074L6.641 8l3.75 4.688z"
   })));
@@ -28504,17 +31045,17 @@ var SvgChevronLeftStroke$1 = function SvgChevronLeftStroke(props) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-var _path$b;
-function _extends$d() { _extends$d = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$d.apply(this, arguments); }
+var _path$7;
+function _extends$7() { _extends$7 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
 var SvgChevronRightStroke$1 = function SvgChevronRightStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$d({
+  return /*#__PURE__*/reactExports.createElement("svg", _extends$7({
     xmlns: "http://www.w3.org/2000/svg",
     width: 16,
     height: 16,
     focusable: "false",
     viewBox: "0 0 16 16",
     "aria-hidden": "true"
-  }, props), _path$b || (_path$b = /*#__PURE__*/reactExports.createElement("path", {
+  }, props), _path$7 || (_path$7 = /*#__PURE__*/reactExports.createElement("path", {
     fill: "currentColor",
     d: "M5.61 3.312a.5.5 0 01.718-.69l.062.066 4 5a.5.5 0 01.054.542l-.054.082-4 5a.5.5 0 01-.83-.55l.05-.074L9.359 8l-3.75-4.688z"
   })));
@@ -28543,7 +31084,7 @@ const MonthSelector = _ref => {
     });
     return formatter.format(date);
   }, [locale]);
-  return React__default.createElement(StyledHeader$2, {
+  return React__default.createElement(StyledHeader, {
     isCompact: isCompact
   }, React__default.createElement(StyledHeaderPaddle, {
     isCompact: isCompact,
@@ -32927,2547 +35468,6 @@ Datepicker.defaultProps = {
   locale: 'en-US'
 };
 
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-const getCellDown = (matrix, rowIndex, colIndex, wrap) => {
-  let retVal = [];
-  const rowCount = matrix.length;
-  const colCount = matrix[0].length;
-  const lastRowLength = matrix[rowCount - 1].length;
-  const isLastCellFocused = rowIndex === rowCount - (colCount > lastRowLength ? 2 : 1) && colIndex === colCount - 1;
-  if (!isLastCellFocused) {
-    if (rowIndex === rowCount - (colIndex >= lastRowLength ? 2 : 1) ) {
-      if (wrap) {
-        retVal = [0, colIndex + 1];
-      }
-    } else {
-      retVal = [rowIndex + 1, colIndex];
-    }
-  }
-  return retVal;
-};
-const getCellLeft = (matrix, rowIndex, colIndex, wrap) => {
-  let retVal = [];
-  const colCount = matrix[0].length;
-  const isFirstCellFocused = rowIndex === 0 && colIndex === 0;
-  if (!isFirstCellFocused) {
-    if (colIndex === 0 ) {
-      if (wrap) {
-        retVal = [rowIndex - 1, colCount - 1];
-      }
-    } else {
-      retVal = [rowIndex, colIndex - 1];
-    }
-  }
-  return retVal;
-};
-const getCellRight = (matrix, rowIndex, colIndex, wrap) => {
-  let retVal = [];
-  const rowCount = matrix.length;
-  const colCount = matrix[0].length;
-  const lastRowIndex = rowCount - 1;
-  const lastColIndex = matrix[lastRowIndex].length - 1;
-  const isLastCellFocused = rowIndex === lastRowIndex && colIndex === lastColIndex;
-  if (!isLastCellFocused) {
-    if (colIndex === colCount - 1 ) {
-      if (wrap) {
-        retVal = [rowIndex + 1, 0];
-      }
-    } else {
-      retVal = [rowIndex, colIndex + 1];
-    }
-  }
-  return retVal;
-};
-const getCellUp = (matrix, rowIndex, colIndex, wrap) => {
-  let retVal = [];
-  const rowCount = matrix.length;
-  const isFirstCellFocused = rowIndex === 0 && colIndex === 0;
-  if (!isFirstCellFocused) {
-    if (rowIndex === 0 ) {
-      if (wrap) {
-        const lastRowLength = matrix[rowCount - 1].length;
-        const col = colIndex - 1;
-        const row = rowCount - (col >= lastRowLength ? 2 : 1);
-        retVal = [row, col];
-      }
-    } else {
-      retVal = [rowIndex - 1, colIndex];
-    }
-  }
-  return retVal;
-};
-const getId = (idPrefix, rowIndex, colIndex) => `${idPrefix}--R${rowIndex + 1}C${colIndex + 1}`;
-
-const GRID_KEYS = [KEYS$2.LEFT, KEYS$2.RIGHT, KEYS$2.UP, KEYS$2.DOWN, KEYS$2.HOME, KEYS$2.END];
-function useGrid(_ref) {
-  let {
-    rtl,
-    wrap,
-    matrix,
-    idPrefix,
-    onChange = () => undefined,
-    environment,
-    rowIndex: controlledRowIndex,
-    colIndex: controlledColIndex,
-    defaultRowIndex,
-    defaultColIndex
-  } = _ref;
-  const doc = environment || document;
-  const prefix = useId$2(idPrefix);
-  const [uncontrolledRowIndex, setUncontrolledRowIndex] = reactExports.useState(defaultRowIndex !== null && defaultRowIndex !== undefined ? defaultRowIndex : 0);
-  const [uncontrolledColIndex, setUncontrolledColIndex] = reactExports.useState(defaultColIndex !== null && defaultColIndex !== undefined ? defaultColIndex : 0);
-  const isControlled = controlledRowIndex !== null && controlledColIndex !== null && controlledRowIndex !== undefined && controlledColIndex !== undefined;
-  const rowIndex = isControlled ? controlledRowIndex : uncontrolledRowIndex;
-  const colIndex = isControlled ? controlledColIndex : uncontrolledColIndex;
-  reactExports.useEffect(() => {
-    const rowCount = matrix.length;
-    const colCount = matrix[0].length;
-    const isRowIndexInvalid = rowIndex >= rowCount;
-    const isColIndexInvalid = colIndex >= colCount;
-    if (isRowIndexInvalid || isColIndexInvalid) {
-      let _rowIndex = rowIndex;
-      let _colIndex = colIndex;
-      if (isRowIndexInvalid) {
-        _rowIndex = rowCount > 0 ? rowCount - 1 : 0;
-      }
-      if (isColIndexInvalid) {
-        _colIndex = colCount > 0 ? colCount - 1 : 0;
-      }
-      if (!isControlled) {
-        setUncontrolledRowIndex(_rowIndex);
-        setUncontrolledColIndex(_colIndex);
-      }
-      onChange(_rowIndex, _colIndex);
-    }
-  }, [matrix, rowIndex, colIndex, isControlled, setUncontrolledColIndex, onChange]);
-  const getGridProps = reactExports.useCallback(_ref2 => {
-    let {
-      role = 'grid',
-      ...other
-    } = _ref2;
-    return {
-      'data-garden-container-id': 'containers.grid',
-      'data-garden-container-version': '3.0.14',
-      role: role === null ? undefined : role,
-      ...other
-    };
-  }, []);
-  const getGridCellProps = reactExports.useCallback(function (_temp) {
-    let {
-      role = 'gridcell',
-      rowIndex: _rowIndex,
-      colIndex: _colIndex,
-      onFocus,
-      onKeyDown,
-      ...other
-    } = _temp === void 0 ? {
-      rowIndex: 0,
-      colIndex: 0
-    } : _temp;
-    const handleFocus = () => {
-      if (!isControlled) {
-        setUncontrolledRowIndex(_rowIndex);
-        setUncontrolledColIndex(_colIndex);
-      }
-      onChange(_rowIndex, _colIndex);
-    };
-    const handleKeyDown = event => {
-      if (GRID_KEYS.includes(event.key)) {
-        event.preventDefault();
-        let row = rowIndex;
-        let col = colIndex;
-        switch (event.key) {
-          case KEYS$2.RIGHT:
-            [row, col] = rtl ? getCellLeft(matrix, rowIndex, colIndex, wrap) : getCellRight(matrix, rowIndex, colIndex, wrap);
-            break;
-          case KEYS$2.LEFT:
-            [row, col] = rtl ? getCellRight(matrix, rowIndex, colIndex, wrap) : getCellLeft(matrix, rowIndex, colIndex, wrap);
-            break;
-          case KEYS$2.DOWN:
-            [row, col] = getCellDown(matrix, rowIndex, colIndex, wrap);
-            break;
-          case KEYS$2.UP:
-            [row, col] = getCellUp(matrix, rowIndex, colIndex, wrap);
-            break;
-          case KEYS$2.HOME:
-            row = event.ctrlKey ? 0 : rowIndex;
-            col = 0;
-            break;
-          case KEYS$2.END:
-            {
-              const rowCount = matrix.length;
-              const lastRowIndex = rowCount - 1;
-              const lastColIndex = matrix[lastRowIndex].length - 1;
-              row = event.ctrlKey ? lastRowIndex : rowIndex;
-              col = event.ctrlKey ? lastColIndex : matrix[rowIndex].length - 1;
-              break;
-            }
-        }
-        if (row !== rowIndex || col !== colIndex) {
-          const id = getId(prefix, row, col);
-          const element = doc.getElementById(id);
-          element?.focus();
-        }
-      }
-    };
-    return {
-      'data-garden-container-id': 'containers.grid.cell',
-      'data-garden-container-version': '3.0.14',
-      id: getId(prefix, _rowIndex, _colIndex),
-      role: role === null ? undefined : role,
-      tabIndex: rowIndex === _rowIndex && colIndex === _colIndex ? 0 : -1,
-      onFocus: composeEventHandlers$5(onFocus, handleFocus),
-      onKeyDown: composeEventHandlers$5(onKeyDown, handleKeyDown),
-      ...other
-    };
-  }, [matrix, rowIndex, colIndex, doc, prefix, isControlled, onChange, rtl, wrap]);
-  return reactExports.useMemo(() => ({
-    getGridProps,
-    getGridCellProps
-  }), [getGridProps, getGridCellProps]);
-}
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  rtl: PropTypes.bool,
-  wrap: PropTypes.bool,
-  matrix: PropTypes.any,
-  idPrefix: PropTypes.string,
-  rowIndex: PropTypes.number,
-  colIndex: PropTypes.number,
-  defaultRowIndex: PropTypes.number,
-  defaultColIndex: PropTypes.number,
-  onChange: PropTypes.func,
-  environment: PropTypes.any
-});
-
-var _path$a, _circle$1;
-function _extends$c() { _extends$c = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$c.apply(this, arguments); }
-var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$c({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 12,
-    height: 12,
-    viewBox: "0 0 12 12"
-  }, props), _path$a || (_path$a = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "none",
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M5.06 1.27l-4.5 8.5c-.18.33.06.73.44.73h9c.38 0 .62-.4.44-.73l-4.5-8.5a.494.494 0 00-.88 0zM5.5 4v2"
-  })), _circle$1 || (_circle$1 = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 5.5,
-    cy: 8,
-    r: 0.8,
-    fill: "currentColor"
-  })));
-};
-
-var _rect, _path$9;
-function _extends$b() { _extends$b = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$b.apply(this, arguments); }
-var SvgCreditCardStroke = function SvgCreditCardStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$b({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    viewBox: "0 0 16 16"
-  }, props), _rect || (_rect = /*#__PURE__*/reactExports.createElement("rect", {
-    width: 15,
-    height: 11,
-    x: 0.5,
-    y: 2.5,
-    fill: "none",
-    stroke: "currentColor",
-    rx: 0.5,
-    ry: 0.5
-  })), _path$9 || (_path$9 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "currentColor",
-    d: "M.5 5h15v2H.5z"
-  })));
-};
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-function composeEventHandlers$2() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-const KEYS$1 = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-
-var DocumentPosition$2;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$2 || (DocumentPosition$2 = {}));
-
-let idCounter$1 = 0;
-const useId$1 = id => useId$3(id) || `id:${idCounter$1++}`;
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-function composeEventHandlers$1() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-const KEYS = {
-  ALT: 'Alt',
-  ASTERISK: '*',
-  BACKSPACE: 'Backspace',
-  COMMA: ',',
-  DELETE: 'Delete',
-  DOWN: 'ArrowDown',
-  END: 'End',
-  ENTER: 'Enter',
-  ESCAPE: 'Escape',
-  HOME: 'Home',
-  LEFT: 'ArrowLeft',
-  NUMPAD_ADD: 'Add',
-  NUMPAD_DECIMAL: 'Decimal',
-  NUMPAD_DIVIDE: 'Divide',
-  NUMPAD_ENTER: 'Enter',
-  NUMPAD_MULTIPLY: 'Multiply',
-  NUMPAD_SUBTRACT: 'Subtract',
-  PAGE_DOWN: 'PageDown',
-  PAGE_UP: 'PageUp',
-  PERIOD: '.',
-  RIGHT: 'ArrowRight',
-  SHIFT: 'Shift',
-  SPACE: ' ',
-  TAB: 'Tab',
-  UNIDENTIFIED: 'Unidentified',
-  UP: 'ArrowUp'
-};
-
-var DocumentPosition$1;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition$1 || (DocumentPosition$1 = {}));
-
-/*!
-* tabbable 6.2.0
-* @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
-*/
-// NOTE: separate `:not()` selectors has broader browser support than the newer
-//  `:not([inert], [inert] *)` (Feb 2023)
-// CAREFUL: JSDom does not support `:not([inert] *)` as a selector; using it causes
-//  the entire query to fail, resulting in no nodes found, which will break a lot
-//  of things... so we have to rely on JS to identify nodes inside an inert container
-var candidateSelectors = ['input:not([inert])', 'select:not([inert])', 'textarea:not([inert])', 'a[href]:not([inert])', 'button:not([inert])', '[tabindex]:not(slot):not([inert])', 'audio[controls]:not([inert])', 'video[controls]:not([inert])', '[contenteditable]:not([contenteditable="false"]):not([inert])', 'details>summary:first-of-type:not([inert])', 'details:not([inert])'];
-var candidateSelector = /* #__PURE__ */candidateSelectors.join(',');
-var NoElement = typeof Element === 'undefined';
-var matches = NoElement ? function () {} : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-var getRootNode = !NoElement && Element.prototype.getRootNode ? function (element) {
-  var _element$getRootNode;
-  return element === null || element === void 0 ? void 0 : (_element$getRootNode = element.getRootNode) === null || _element$getRootNode === void 0 ? void 0 : _element$getRootNode.call(element);
-} : function (element) {
-  return element === null || element === void 0 ? void 0 : element.ownerDocument;
-};
-
-/**
- * Determines if a node is inert or in an inert ancestor.
- * @param {Element} [node]
- * @param {boolean} [lookUp] If true and `node` is not inert, looks up at ancestors to
- *  see if any of them are inert. If false, only `node` itself is considered.
- * @returns {boolean} True if inert itself or by way of being in an inert ancestor.
- *  False if `node` is falsy.
- */
-var isInert = function isInert(node, lookUp) {
-  var _node$getAttribute;
-  if (lookUp === void 0) {
-    lookUp = true;
-  }
-  // CAREFUL: JSDom does not support inert at all, so we can't use the `HTMLElement.inert`
-  //  JS API property; we have to check the attribute, which can either be empty or 'true';
-  //  if it's `null` (not specified) or 'false', it's an active element
-  var inertAtt = node === null || node === void 0 ? void 0 : (_node$getAttribute = node.getAttribute) === null || _node$getAttribute === void 0 ? void 0 : _node$getAttribute.call(node, 'inert');
-  var inert = inertAtt === '' || inertAtt === 'true';
-
-  // NOTE: this could also be handled with `node.matches('[inert], :is([inert] *)')`
-  //  if it weren't for `matches()` not being a function on shadow roots; the following
-  //  code works for any kind of node
-  // CAREFUL: JSDom does not appear to support certain selectors like `:not([inert] *)`
-  //  so it likely would not support `:is([inert] *)` either...
-  var result = inert || lookUp && node && isInert(node.parentNode); // recursive
-
-  return result;
-};
-
-/**
- * Determines if a node's content is editable.
- * @param {Element} [node]
- * @returns True if it's content-editable; false if it's not or `node` is falsy.
- */
-var isContentEditable = function isContentEditable(node) {
-  var _node$getAttribute2;
-  // CAREFUL: JSDom does not support the `HTMLElement.isContentEditable` API so we have
-  //  to use the attribute directly to check for this, which can either be empty or 'true';
-  //  if it's `null` (not specified) or 'false', it's a non-editable element
-  var attValue = node === null || node === void 0 ? void 0 : (_node$getAttribute2 = node.getAttribute) === null || _node$getAttribute2 === void 0 ? void 0 : _node$getAttribute2.call(node, 'contenteditable');
-  return attValue === '' || attValue === 'true';
-};
-
-/**
- * @param {Element} el container to check in
- * @param {boolean} includeContainer add container to check
- * @param {(node: Element) => boolean} filter filter candidates
- * @returns {Element[]}
- */
-var getCandidates = function getCandidates(el, includeContainer, filter) {
-  // even if `includeContainer=false`, we still have to check it for inertness because
-  //  if it's inert, all its children are inert
-  if (isInert(el)) {
-    return [];
-  }
-  var candidates = Array.prototype.slice.apply(el.querySelectorAll(candidateSelector));
-  if (includeContainer && matches.call(el, candidateSelector)) {
-    candidates.unshift(el);
-  }
-  candidates = candidates.filter(filter);
-  return candidates;
-};
-
-/**
- * @callback GetShadowRoot
- * @param {Element} element to check for shadow root
- * @returns {ShadowRoot|boolean} ShadowRoot if available or boolean indicating if a shadowRoot is attached but not available.
- */
-
-/**
- * @callback ShadowRootFilter
- * @param {Element} shadowHostNode the element which contains shadow content
- * @returns {boolean} true if a shadow root could potentially contain valid candidates.
- */
-
-/**
- * @typedef {Object} CandidateScope
- * @property {Element} scopeParent contains inner candidates
- * @property {Element[]} candidates list of candidates found in the scope parent
- */
-
-/**
- * @typedef {Object} IterativeOptions
- * @property {GetShadowRoot|boolean} getShadowRoot true if shadow support is enabled; falsy if not;
- *  if a function, implies shadow support is enabled and either returns the shadow root of an element
- *  or a boolean stating if it has an undisclosed shadow root
- * @property {(node: Element) => boolean} filter filter candidates
- * @property {boolean} flatten if true then result will flatten any CandidateScope into the returned list
- * @property {ShadowRootFilter} shadowRootFilter filter shadow roots;
- */
-
-/**
- * @param {Element[]} elements list of element containers to match candidates from
- * @param {boolean} includeContainer add container list to check
- * @param {IterativeOptions} options
- * @returns {Array.<Element|CandidateScope>}
- */
-var getCandidatesIteratively = function getCandidatesIteratively(elements, includeContainer, options) {
-  var candidates = [];
-  var elementsToCheck = Array.from(elements);
-  while (elementsToCheck.length) {
-    var element = elementsToCheck.shift();
-    if (isInert(element, false)) {
-      // no need to look up since we're drilling down
-      // anything inside this container will also be inert
-      continue;
-    }
-    if (element.tagName === 'SLOT') {
-      // add shadow dom slot scope (slot itself cannot be focusable)
-      var assigned = element.assignedElements();
-      var content = assigned.length ? assigned : element.children;
-      var nestedCandidates = getCandidatesIteratively(content, true, options);
-      if (options.flatten) {
-        candidates.push.apply(candidates, nestedCandidates);
-      } else {
-        candidates.push({
-          scopeParent: element,
-          candidates: nestedCandidates
-        });
-      }
-    } else {
-      // check candidate element
-      var validCandidate = matches.call(element, candidateSelector);
-      if (validCandidate && options.filter(element) && (includeContainer || !elements.includes(element))) {
-        candidates.push(element);
-      }
-
-      // iterate over shadow content if possible
-      var shadowRoot = element.shadowRoot ||
-      // check for an undisclosed shadow
-      typeof options.getShadowRoot === 'function' && options.getShadowRoot(element);
-
-      // no inert look up because we're already drilling down and checking for inertness
-      //  on the way down, so all containers to this root node should have already been
-      //  vetted as non-inert
-      var validShadowRoot = !isInert(shadowRoot, false) && (!options.shadowRootFilter || options.shadowRootFilter(element));
-      if (shadowRoot && validShadowRoot) {
-        // add shadow dom scope IIF a shadow root node was given; otherwise, an undisclosed
-        //  shadow exists, so look at light dom children as fallback BUT create a scope for any
-        //  child candidates found because they're likely slotted elements (elements that are
-        //  children of the web component element (which has the shadow), in the light dom, but
-        //  slotted somewhere _inside_ the undisclosed shadow) -- the scope is created below,
-        //  _after_ we return from this recursive call
-        var _nestedCandidates = getCandidatesIteratively(shadowRoot === true ? element.children : shadowRoot.children, true, options);
-        if (options.flatten) {
-          candidates.push.apply(candidates, _nestedCandidates);
-        } else {
-          candidates.push({
-            scopeParent: element,
-            candidates: _nestedCandidates
-          });
-        }
-      } else {
-        // there's not shadow so just dig into the element's (light dom) children
-        //  __without__ giving the element special scope treatment
-        elementsToCheck.unshift.apply(elementsToCheck, element.children);
-      }
-    }
-  }
-  return candidates;
-};
-
-/**
- * @private
- * Determines if the node has an explicitly specified `tabindex` attribute.
- * @param {HTMLElement} node
- * @returns {boolean} True if so; false if not.
- */
-var hasTabIndex = function hasTabIndex(node) {
-  return !isNaN(parseInt(node.getAttribute('tabindex'), 10));
-};
-
-/**
- * Determine the tab index of a given node.
- * @param {HTMLElement} node
- * @returns {number} Tab order (negative, 0, or positive number).
- * @throws {Error} If `node` is falsy.
- */
-var getTabIndex = function getTabIndex(node) {
-  if (!node) {
-    throw new Error('No node provided');
-  }
-  if (node.tabIndex < 0) {
-    // in Chrome, <details/>, <audio controls/> and <video controls/> elements get a default
-    // `tabIndex` of -1 when the 'tabindex' attribute isn't specified in the DOM,
-    // yet they are still part of the regular tab order; in FF, they get a default
-    // `tabIndex` of 0; since Chrome still puts those elements in the regular tab
-    // order, consider their tab index to be 0.
-    // Also browsers do not return `tabIndex` correctly for contentEditable nodes;
-    // so if they don't have a tabindex attribute specifically set, assume it's 0.
-    if ((/^(AUDIO|VIDEO|DETAILS)$/.test(node.tagName) || isContentEditable(node)) && !hasTabIndex(node)) {
-      return 0;
-    }
-  }
-  return node.tabIndex;
-};
-
-/**
- * Determine the tab index of a given node __for sort order purposes__.
- * @param {HTMLElement} node
- * @param {boolean} [isScope] True for a custom element with shadow root or slot that, by default,
- *  has tabIndex -1, but needs to be sorted by document order in order for its content to be
- *  inserted into the correct sort position.
- * @returns {number} Tab order (negative, 0, or positive number).
- */
-var getSortOrderTabIndex = function getSortOrderTabIndex(node, isScope) {
-  var tabIndex = getTabIndex(node);
-  if (tabIndex < 0 && isScope && !hasTabIndex(node)) {
-    return 0;
-  }
-  return tabIndex;
-};
-var sortOrderedTabbables = function sortOrderedTabbables(a, b) {
-  return a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex;
-};
-var isInput = function isInput(node) {
-  return node.tagName === 'INPUT';
-};
-var isHiddenInput = function isHiddenInput(node) {
-  return isInput(node) && node.type === 'hidden';
-};
-var isDetailsWithSummary = function isDetailsWithSummary(node) {
-  var r = node.tagName === 'DETAILS' && Array.prototype.slice.apply(node.children).some(function (child) {
-    return child.tagName === 'SUMMARY';
-  });
-  return r;
-};
-var getCheckedRadio = function getCheckedRadio(nodes, form) {
-  for (var i = 0; i < nodes.length; i++) {
-    if (nodes[i].checked && nodes[i].form === form) {
-      return nodes[i];
-    }
-  }
-};
-var isTabbableRadio = function isTabbableRadio(node) {
-  if (!node.name) {
-    return true;
-  }
-  var radioScope = node.form || getRootNode(node);
-  var queryRadios = function queryRadios(name) {
-    return radioScope.querySelectorAll('input[type="radio"][name="' + name + '"]');
-  };
-  var radioSet;
-  if (typeof window !== 'undefined' && typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function') {
-    radioSet = queryRadios(window.CSS.escape(node.name));
-  } else {
-    try {
-      radioSet = queryRadios(node.name);
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error('Looks like you have a radio button with a name attribute containing invalid CSS selector characters and need the CSS.escape polyfill: %s', err.message);
-      return false;
-    }
-  }
-  var checked = getCheckedRadio(radioSet, node.form);
-  return !checked || checked === node;
-};
-var isRadio = function isRadio(node) {
-  return isInput(node) && node.type === 'radio';
-};
-var isNonTabbableRadio = function isNonTabbableRadio(node) {
-  return isRadio(node) && !isTabbableRadio(node);
-};
-
-// determines if a node is ultimately attached to the window's document
-var isNodeAttached = function isNodeAttached(node) {
-  var _nodeRoot;
-  // The root node is the shadow root if the node is in a shadow DOM; some document otherwise
-  //  (but NOT _the_ document; see second 'If' comment below for more).
-  // If rootNode is shadow root, it'll have a host, which is the element to which the shadow
-  //  is attached, and the one we need to check if it's in the document or not (because the
-  //  shadow, and all nodes it contains, is never considered in the document since shadows
-  //  behave like self-contained DOMs; but if the shadow's HOST, which is part of the document,
-  //  is hidden, or is not in the document itself but is detached, it will affect the shadow's
-  //  visibility, including all the nodes it contains). The host could be any normal node,
-  //  or a custom element (i.e. web component). Either way, that's the one that is considered
-  //  part of the document, not the shadow root, nor any of its children (i.e. the node being
-  //  tested).
-  // To further complicate things, we have to look all the way up until we find a shadow HOST
-  //  that is attached (or find none) because the node might be in nested shadows...
-  // If rootNode is not a shadow root, it won't have a host, and so rootNode should be the
-  //  document (per the docs) and while it's a Document-type object, that document does not
-  //  appear to be the same as the node's `ownerDocument` for some reason, so it's safer
-  //  to ignore the rootNode at this point, and use `node.ownerDocument`. Otherwise,
-  //  using `rootNode.contains(node)` will _always_ be true we'll get false-positives when
-  //  node is actually detached.
-  // NOTE: If `nodeRootHost` or `node` happens to be the `document` itself (which is possible
-  //  if a tabbable/focusable node was quickly added to the DOM, focused, and then removed
-  //  from the DOM as in https://github.com/focus-trap/focus-trap-react/issues/905), then
-  //  `ownerDocument` will be `null`, hence the optional chaining on it.
-  var nodeRoot = node && getRootNode(node);
-  var nodeRootHost = (_nodeRoot = nodeRoot) === null || _nodeRoot === void 0 ? void 0 : _nodeRoot.host;
-
-  // in some cases, a detached node will return itself as the root instead of a document or
-  //  shadow root object, in which case, we shouldn't try to look further up the host chain
-  var attached = false;
-  if (nodeRoot && nodeRoot !== node) {
-    var _nodeRootHost, _nodeRootHost$ownerDo, _node$ownerDocument;
-    attached = !!((_nodeRootHost = nodeRootHost) !== null && _nodeRootHost !== void 0 && (_nodeRootHost$ownerDo = _nodeRootHost.ownerDocument) !== null && _nodeRootHost$ownerDo !== void 0 && _nodeRootHost$ownerDo.contains(nodeRootHost) || node !== null && node !== void 0 && (_node$ownerDocument = node.ownerDocument) !== null && _node$ownerDocument !== void 0 && _node$ownerDocument.contains(node));
-    while (!attached && nodeRootHost) {
-      var _nodeRoot2, _nodeRootHost2, _nodeRootHost2$ownerD;
-      // since it's not attached and we have a root host, the node MUST be in a nested shadow DOM,
-      //  which means we need to get the host's host and check if that parent host is contained
-      //  in (i.e. attached to) the document
-      nodeRoot = getRootNode(nodeRootHost);
-      nodeRootHost = (_nodeRoot2 = nodeRoot) === null || _nodeRoot2 === void 0 ? void 0 : _nodeRoot2.host;
-      attached = !!((_nodeRootHost2 = nodeRootHost) !== null && _nodeRootHost2 !== void 0 && (_nodeRootHost2$ownerD = _nodeRootHost2.ownerDocument) !== null && _nodeRootHost2$ownerD !== void 0 && _nodeRootHost2$ownerD.contains(nodeRootHost));
-    }
-  }
-  return attached;
-};
-var isZeroArea = function isZeroArea(node) {
-  var _node$getBoundingClie = node.getBoundingClientRect(),
-    width = _node$getBoundingClie.width,
-    height = _node$getBoundingClie.height;
-  return width === 0 && height === 0;
-};
-var isHidden = function isHidden(node, _ref) {
-  var displayCheck = _ref.displayCheck,
-    getShadowRoot = _ref.getShadowRoot;
-  // NOTE: visibility will be `undefined` if node is detached from the document
-  //  (see notes about this further down), which means we will consider it visible
-  //  (this is legacy behavior from a very long way back)
-  // NOTE: we check this regardless of `displayCheck="none"` because this is a
-  //  _visibility_ check, not a _display_ check
-  if (getComputedStyle(node).visibility === 'hidden') {
-    return true;
-  }
-  var isDirectSummary = matches.call(node, 'details>summary:first-of-type');
-  var nodeUnderDetails = isDirectSummary ? node.parentElement : node;
-  if (matches.call(nodeUnderDetails, 'details:not([open]) *')) {
-    return true;
-  }
-  if (!displayCheck || displayCheck === 'full' || displayCheck === 'legacy-full') {
-    if (typeof getShadowRoot === 'function') {
-      // figure out if we should consider the node to be in an undisclosed shadow and use the
-      //  'non-zero-area' fallback
-      var originalNode = node;
-      while (node) {
-        var parentElement = node.parentElement;
-        var rootNode = getRootNode(node);
-        if (parentElement && !parentElement.shadowRoot && getShadowRoot(parentElement) === true // check if there's an undisclosed shadow
-        ) {
-          // node has an undisclosed shadow which means we can only treat it as a black box, so we
-          //  fall back to a non-zero-area test
-          return isZeroArea(node);
-        } else if (node.assignedSlot) {
-          // iterate up slot
-          node = node.assignedSlot;
-        } else if (!parentElement && rootNode !== node.ownerDocument) {
-          // cross shadow boundary
-          node = rootNode.host;
-        } else {
-          // iterate up normal dom
-          node = parentElement;
-        }
-      }
-      node = originalNode;
-    }
-    // else, `getShadowRoot` might be true, but all that does is enable shadow DOM support
-    //  (i.e. it does not also presume that all nodes might have undisclosed shadows); or
-    //  it might be a falsy value, which means shadow DOM support is disabled
-
-    // Since we didn't find it sitting in an undisclosed shadow (or shadows are disabled)
-    //  now we can just test to see if it would normally be visible or not, provided it's
-    //  attached to the main document.
-    // NOTE: We must consider case where node is inside a shadow DOM and given directly to
-    //  `isTabbable()` or `isFocusable()` -- regardless of `getShadowRoot` option setting.
-
-    if (isNodeAttached(node)) {
-      // this works wherever the node is: if there's at least one client rect, it's
-      //  somehow displayed; it also covers the CSS 'display: contents' case where the
-      //  node itself is hidden in place of its contents; and there's no need to search
-      //  up the hierarchy either
-      return !node.getClientRects().length;
-    }
-
-    // Else, the node isn't attached to the document, which means the `getClientRects()`
-    //  API will __always__ return zero rects (this can happen, for example, if React
-    //  is used to render nodes onto a detached tree, as confirmed in this thread:
-    //  https://github.com/facebook/react/issues/9117#issuecomment-284228870)
-    //
-    // It also means that even window.getComputedStyle(node).display will return `undefined`
-    //  because styles are only computed for nodes that are in the document.
-    //
-    // NOTE: THIS HAS BEEN THE CASE FOR YEARS. It is not new, nor is it caused by tabbable
-    //  somehow. Though it was never stated officially, anyone who has ever used tabbable
-    //  APIs on nodes in detached containers has actually implicitly used tabbable in what
-    //  was later (as of v5.2.0 on Apr 9, 2021) called `displayCheck="none"` mode -- essentially
-    //  considering __everything__ to be visible because of the innability to determine styles.
-    //
-    // v6.0.0: As of this major release, the default 'full' option __no longer treats detached
-    //  nodes as visible with the 'none' fallback.__
-    if (displayCheck !== 'legacy-full') {
-      return true; // hidden
-    }
-    // else, fallback to 'none' mode and consider the node visible
-  } else if (displayCheck === 'non-zero-area') {
-    // NOTE: Even though this tests that the node's client rect is non-zero to determine
-    //  whether it's displayed, and that a detached node will __always__ have a zero-area
-    //  client rect, we don't special-case for whether the node is attached or not. In
-    //  this mode, we do want to consider nodes that have a zero area to be hidden at all
-    //  times, and that includes attached or not.
-    return isZeroArea(node);
-  }
-
-  // visible, as far as we can tell, or per current `displayCheck=none` mode, we assume
-  //  it's visible
-  return false;
-};
-
-// form fields (nested) inside a disabled fieldset are not focusable/tabbable
-//  unless they are in the _first_ <legend> element of the top-most disabled
-//  fieldset
-var isDisabledFromFieldset = function isDisabledFromFieldset(node) {
-  if (/^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(node.tagName)) {
-    var parentNode = node.parentElement;
-    // check if `node` is contained in a disabled <fieldset>
-    while (parentNode) {
-      if (parentNode.tagName === 'FIELDSET' && parentNode.disabled) {
-        // look for the first <legend> among the children of the disabled <fieldset>
-        for (var i = 0; i < parentNode.children.length; i++) {
-          var child = parentNode.children.item(i);
-          // when the first <legend> (in document order) is found
-          if (child.tagName === 'LEGEND') {
-            // if its parent <fieldset> is not nested in another disabled <fieldset>,
-            // return whether `node` is a descendant of its first <legend>
-            return matches.call(parentNode, 'fieldset[disabled] *') ? true : !child.contains(node);
-          }
-        }
-        // the disabled <fieldset> containing `node` has no <legend>
-        return true;
-      }
-      parentNode = parentNode.parentElement;
-    }
-  }
-
-  // else, node's tabbable/focusable state should not be affected by a fieldset's
-  //  enabled/disabled state
-  return false;
-};
-var isNodeMatchingSelectorFocusable = function isNodeMatchingSelectorFocusable(options, node) {
-  if (node.disabled ||
-  // we must do an inert look up to filter out any elements inside an inert ancestor
-  //  because we're limited in the type of selectors we can use in JSDom (see related
-  //  note related to `candidateSelectors`)
-  isInert(node) || isHiddenInput(node) || isHidden(node, options) ||
-  // For a details element with a summary, the summary element gets the focus
-  isDetailsWithSummary(node) || isDisabledFromFieldset(node)) {
-    return false;
-  }
-  return true;
-};
-var isNodeMatchingSelectorTabbable = function isNodeMatchingSelectorTabbable(options, node) {
-  if (isNonTabbableRadio(node) || getTabIndex(node) < 0 || !isNodeMatchingSelectorFocusable(options, node)) {
-    return false;
-  }
-  return true;
-};
-var isValidShadowRootTabbable = function isValidShadowRootTabbable(shadowHostNode) {
-  var tabIndex = parseInt(shadowHostNode.getAttribute('tabindex'), 10);
-  if (isNaN(tabIndex) || tabIndex >= 0) {
-    return true;
-  }
-  // If a custom element has an explicit negative tabindex,
-  // browsers will not allow tab targeting said element's children.
-  return false;
-};
-
-/**
- * @param {Array.<Element|CandidateScope>} candidates
- * @returns Element[]
- */
-var sortByOrder = function sortByOrder(candidates) {
-  var regularTabbables = [];
-  var orderedTabbables = [];
-  candidates.forEach(function (item, i) {
-    var isScope = !!item.scopeParent;
-    var element = isScope ? item.scopeParent : item;
-    var candidateTabindex = getSortOrderTabIndex(element, isScope);
-    var elements = isScope ? sortByOrder(item.candidates) : element;
-    if (candidateTabindex === 0) {
-      isScope ? regularTabbables.push.apply(regularTabbables, elements) : regularTabbables.push(element);
-    } else {
-      orderedTabbables.push({
-        documentOrder: i,
-        tabIndex: candidateTabindex,
-        item: item,
-        isScope: isScope,
-        content: elements
-      });
-    }
-  });
-  return orderedTabbables.sort(sortOrderedTabbables).reduce(function (acc, sortable) {
-    sortable.isScope ? acc.push.apply(acc, sortable.content) : acc.push(sortable.content);
-    return acc;
-  }, []).concat(regularTabbables);
-};
-var tabbable = function tabbable(container, options) {
-  options = options || {};
-  var candidates;
-  if (options.getShadowRoot) {
-    candidates = getCandidatesIteratively([container], options.includeContainer, {
-      filter: isNodeMatchingSelectorTabbable.bind(null, options),
-      flatten: false,
-      getShadowRoot: options.getShadowRoot,
-      shadowRootFilter: isValidShadowRootTabbable
-    });
-  } else {
-    candidates = getCandidates(container, options.includeContainer, isNodeMatchingSelectorTabbable.bind(null, options));
-  }
-  return sortByOrder(candidates);
-};
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-function ownerDocument$1(node) {
-  return node && node.ownerDocument || document;
-}
-
-function activeElement(doc) {
-  if (doc === void 0) {
-    doc = ownerDocument$1();
-  }
-  try {
-    var active = doc.activeElement;
-    if (!active || !active.nodeName) return null;
-    return active;
-  } catch (e) {
-    return doc.body;
-  }
-}
-
-const useFocusJail = function (_temp) {
-  let {
-    focusOnMount = true,
-    restoreFocus = true,
-    environment,
-    focusElem,
-    containerRef
-  } = _temp === void 0 ? {
-    containerRef: reactExports.createRef()
-  } : _temp;
-  const restoreFocusElement = reactExports.useRef(null);
-  const [currentRef, setCurrentRef] = reactExports.useState(containerRef.current);
-  reactExports.useEffect(() => {
-    if (containerRef.current !== currentRef) {
-      setCurrentRef(containerRef.current);
-    }
-  });
-  const focusElement = reactExports.useCallback(element => {
-    const htmlElement = element;
-    if (focusElem) {
-      focusElem(htmlElement);
-    } else {
-      htmlElement && htmlElement.focus();
-    }
-  }, [focusElem]);
-  const validateContainerRef = () => {
-    if (!currentRef) {
-      throw new Error('Accessibility Error: You must apply the ref prop to your containing element.');
-    }
-  };
-  const getInitialFocusNode = () => {
-    const doc = environment ? environment : document;
-    const activeElem = activeElement(doc);
-    const containerElem = currentRef;
-    return containerElem.contains(activeElem) ? activeElem : containerElem;
-  };
-  const getTabbableNodes = () => {
-    const elements = tabbable(currentRef);
-    return {
-      firstItem: elements[0] || getInitialFocusNode(),
-      lastItem: elements[elements.length - 1] || getInitialFocusNode()
-    };
-  };
-  const getContainerProps = function (_temp2) {
-    let {
-      onKeyDown,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    return {
-      onKeyDown: composeEventHandlers$1(onKeyDown, event => {
-        if (event.key !== KEYS.TAB) {
-          return;
-        }
-        validateContainerRef();
-        const tabbableNodes = getTabbableNodes();
-        if (event.shiftKey && (event.target === tabbableNodes.firstItem || event.target === currentRef)) {
-          focusElement(tabbableNodes.lastItem);
-          event.preventDefault();
-        }
-        if (!event.shiftKey && event.target === tabbableNodes.lastItem) {
-          focusElement(tabbableNodes.firstItem);
-          event.preventDefault();
-        }
-      }),
-      'data-garden-container-id': 'containers.focusjail',
-      'data-garden-container-version': '2.0.12',
-      ...other
-    };
-  };
-  reactExports.useEffect(() => {
-    const doc = environment || document;
-    restoreFocusElement.current = activeElement(doc);
-    if (focusOnMount) {
-      focusElement(currentRef);
-    }
-    return () => {
-      const isBodyInactive = restoreFocusElement.current !== doc.body;
-      const hasActiveElement = restoreFocusElement.current !== null;
-      if (isBodyInactive && hasActiveElement && restoreFocus) {
-        focusElement(restoreFocusElement.current);
-      }
-    };
-  }, [focusOnMount, restoreFocus, environment, focusElement, currentRef]);
-  return {
-    getContainerProps,
-    focusElement
-  };
-};
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  focusOnMount: PropTypes.bool,
-  restoreFocus: PropTypes.bool,
-  environment: PropTypes.any,
-  containerRef: PropTypes.any.isRequired,
-  focusElem: PropTypes.func
-});
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-const useModal = _ref => {
-  let {
-    onClose,
-    modalRef,
-    idPrefix,
-    focusOnMount,
-    restoreFocus,
-    environment
-  } = _ref;
-  const prefix = useId$1(idPrefix);
-  const titleId = `${prefix}__title`;
-  const contentId = `${prefix}__content`;
-  const isModalMousedDownRef = reactExports.useRef(false);
-  const closeModal = event => {
-    onClose && onClose(event);
-  };
-  const getBackdropProps = function (_temp) {
-    let {
-      onMouseUp,
-      ...other
-    } = _temp === void 0 ? {} : _temp;
-    const containerId = 'containers.modal';
-    const handleMouseUp = event => {
-      const target = event.target;
-      const isModalContainer = containerId === target.getAttribute('data-garden-container-id');
-      if (!isModalMousedDownRef.current && isModalContainer) {
-        closeModal(event);
-      }
-      isModalMousedDownRef.current = false;
-    };
-    return {
-      onMouseUp: composeEventHandlers$2(onMouseUp, handleMouseUp),
-      'data-garden-container-id': containerId,
-      'data-garden-container-version': '1.0.12',
-      ...other
-    };
-  };
-  const getModalProps = function (_temp2) {
-    let {
-      role = 'dialog',
-      onKeyDown,
-      onMouseDown,
-      ...other
-    } = _temp2 === void 0 ? {} : _temp2;
-    return {
-      role: role === null ? undefined : role,
-      tabIndex: -1,
-      'aria-modal': true,
-      'aria-labelledby': titleId,
-      'aria-describedby': contentId,
-      onMouseDown: composeEventHandlers$2(onMouseDown, () => {
-        isModalMousedDownRef.current = true;
-      }),
-      onKeyDown: composeEventHandlers$2(onKeyDown, event => {
-        if (event.key === KEYS$1.ESCAPE) {
-          closeModal(event);
-        }
-      }),
-      ...other
-    };
-  };
-  const getTitleProps = function (_temp3) {
-    let {
-      id = titleId,
-      ...other
-    } = _temp3 === void 0 ? {} : _temp3;
-    return {
-      id,
-      ...other
-    };
-  };
-  const getContentProps = function (_temp4) {
-    let {
-      id = contentId,
-      ...other
-    } = _temp4 === void 0 ? {} : _temp4;
-    return {
-      id,
-      ...other
-    };
-  };
-  const getCloseProps = _ref2 => {
-    let {
-      onClick,
-      ...other
-    } = _ref2;
-    return {
-      onClick: composeEventHandlers$2(onClick, event => {
-        closeModal(event);
-      }),
-      ...other
-    };
-  };
-  const {
-    getContainerProps
-  } = useFocusJail({
-    containerRef: modalRef,
-    focusOnMount,
-    restoreFocus,
-    environment
-  });
-  return {
-    getBackdropProps,
-    getModalProps: props => getContainerProps(getModalProps(props)),
-    getTitleProps,
-    getContentProps,
-    getCloseProps,
-    closeModal
-  };
-};
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  onClose: PropTypes.func,
-  modalRef: PropTypes.any.isRequired,
-  idPrefix: PropTypes.string,
-  focusOnMount: PropTypes.bool,
-  restoreFocus: PropTypes.bool,
-  environment: PropTypes.any
-});
-
-function isDocument(element) {
-  return 'nodeType' in element && element.nodeType === document.DOCUMENT_NODE;
-}
-
-function isWindow(node) {
-  if ('window' in node && node.window === node) return node;
-  if (isDocument(node)) return node.defaultView || false;
-  return false;
-}
-
-/**
- * Returns the owner document of a given element.
- * 
- * @param node the element
- */
-function ownerDocument(node) {
-  return node && node.ownerDocument || document;
-}
-
-/**
- * Returns the owner window of a given element.
- * 
- * @param node the element
- */
-
-function ownerWindow(node) {
-  var doc = ownerDocument(node);
-  return doc && doc.defaultView || window;
-}
-
-/**
- * Returns one or all computed style properties of an element.
- * 
- * @param node the element
- * @param psuedoElement the style property
- */
-
-function getComputedStyle$1(node, psuedoElement) {
-  return ownerWindow(node).getComputedStyle(node, psuedoElement);
-}
-
-var rUpper = /([A-Z])/g;
-function hyphenate(string) {
-  return string.replace(rUpper, '-$1').toLowerCase();
-}
-
-/**
- * Copyright 2013-2014, Facebook, Inc.
- * All rights reserved.
- * https://github.com/facebook/react/blob/2aeb8a2a6beb00617a4217f7f8284924fa2ad819/src/vendor/core/hyphenateStyleName.js
- */
-var msPattern = /^ms-/;
-function hyphenateStyleName(string) {
-  return hyphenate(string).replace(msPattern, '-ms-');
-}
-
-var supportedTransforms = /^((translate|rotate|scale)(X|Y|Z|3d)?|matrix(3d)?|perspective|skew(X|Y)?)$/i;
-function isTransform(value) {
-  return !!(value && supportedTransforms.test(value));
-}
-
-function style(node, property) {
-  var css = '';
-  var transforms = '';
-
-  if (typeof property === 'string') {
-    return node.style.getPropertyValue(hyphenateStyleName(property)) || getComputedStyle$1(node).getPropertyValue(hyphenateStyleName(property));
-  }
-
-  Object.keys(property).forEach(function (key) {
-    var value = property[key];
-
-    if (!value && value !== 0) {
-      node.style.removeProperty(hyphenateStyleName(key));
-    } else if (isTransform(key)) {
-      transforms += key + "(" + value + ") ";
-    } else {
-      css += hyphenateStyleName(key) + ": " + value + ";";
-    }
-  });
-
-  if (transforms) {
-    css += "transform: " + transforms + ";";
-  }
-
-  node.style.cssText += ";" + css;
-}
-
-var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-
-var size;
-function scrollbarSize(recalc) {
-  if (!size && size !== 0 || recalc) {
-    if (canUseDOM) {
-      var scrollDiv = document.createElement('div');
-      scrollDiv.style.position = 'absolute';
-      scrollDiv.style.top = '-9999px';
-      scrollDiv.style.width = '50px';
-      scrollDiv.style.height = '50px';
-      scrollDiv.style.overflow = 'scroll';
-      document.body.appendChild(scrollDiv);
-      size = scrollDiv.offsetWidth - scrollDiv.clientWidth;
-      document.body.removeChild(scrollDiv);
-    }
-  }
-
-  return size;
-}
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$j = 'modals.backdrop';
-const animationName$1 = $e(["0%{opacity:0;}100%{opacity:1;}"]);
-const animationStyles$1 = props => {
-  if (props.isAnimated) {
-    return Ne(["animation:", " 0.15s ease-in;"], animationName$1);
-  }
-  return '';
-};
-const StyledBackdrop = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$j,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledBackdrop",
-  componentId: "sc-mzdjpo-0"
-})(["display:flex;position:fixed;inset:0;align-items:", ";justify-content:", ";z-index:400;background-color:", ";overflow:auto;-webkit-overflow-scrolling:touch;font-family:", ";direction:", ";", ";", ";"], props => props.isCentered && 'center', props => props.isCentered && 'center', props => getColorV8('neutralHue', 800, props.theme, 0.85), props => props.theme.fonts.system, props => props.theme.rtl && 'rtl', animationStyles$1, props => retrieveComponentStyles(COMPONENT_ID$j, props));
-StyledBackdrop.defaultProps = {
-  theme: DEFAULT_THEME
-};
-StyledBackdrop.propTypes = {
-  isCentered: PropTypes.bool,
-  isAnimated: PropTypes.bool
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$i = 'modals.body';
-const StyledBody = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$i,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledBody",
-  componentId: "sc-14rzecg-0"
-})(["display:block;margin:0;padding:", ";height:100%;overflow:auto;line-height:", ";color:", ";font-size:", ";", ";"], props => `${props.theme.space.base * 5}px ${props.theme.space.base * 10}px`, props => getLineHeight(props.theme.lineHeights.md, props.theme.fontSizes.md), props => getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$i, props));
-StyledBody.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$h = 'modals.close';
-const colorStyles$7 = props => {
-  const backgroundColor = 'primaryHue';
-  const foregroundColor = 'neutralHue';
-  return Ne(["background-color:transparent;color:", ";&:hover{background-color:", ";color:", ";}", " &:active{transition:background-color 0.1s ease-in-out,color 0.1s ease-in-out;background-color:", ";color:", ";}"], getColorV8(foregroundColor, 600, props.theme), getColorV8(backgroundColor, 600, props.theme, 0.08), getColorV8(foregroundColor, 700, props.theme), focusStyles({
-    theme: props.theme,
-    hue: backgroundColor
-  }), getColorV8(backgroundColor, 600, props.theme, 0.2), getColorV8(foregroundColor, 800, props.theme));
-};
-const BASE_MULTIPLIERS = {
-  top: 2.5,
-  side: 6.5,
-  size: 10
-};
-const StyledClose = styled.button.attrs({
-  'data-garden-id': COMPONENT_ID$h,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledClose",
-  componentId: "sc-iseudj-0"
-})(["display:block;position:absolute;top:", "px;", ":", ";transition:box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:none;border-radius:50%;background-color:transparent;cursor:pointer;padding:0;width:", "px;height:", "px;overflow:hidden;text-decoration:none;font-size:0;user-select:none;&::-moz-focus-inner{border:0;}", " & > svg{vertical-align:middle;}", ";"], props => props.theme.space.base * BASE_MULTIPLIERS.top, props => props.theme.rtl ? 'left' : 'right', props => `${props.theme.space.base * BASE_MULTIPLIERS.side}px`, props => props.theme.space.base * BASE_MULTIPLIERS.size, props => props.theme.space.base * BASE_MULTIPLIERS.size, props => colorStyles$7(props), props => retrieveComponentStyles(COMPONENT_ID$h, props));
-StyledClose.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$g = 'modals.footer';
-const StyledFooter = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$g,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFooter",
-  componentId: "sc-d8pfdu-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:flex-end;border-top:", ";padding:", ";", ";"], props => props.isLarge && `${props.theme.borders.sm} ${getColorV8('neutralHue', 200, props.theme)}`, props => props.isLarge ? `${props.theme.space.base * 8}px ${props.theme.space.base * 10}px` : `${props.theme.space.base * 5}px ${props.theme.space.base * 10}px ${props.theme.space.base * 8}px`, props => retrieveComponentStyles(COMPONENT_ID$g, props));
-StyledFooter.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$f = 'modals.footer_item';
-const StyledFooterItem = styled.span.attrs({
-  'data-garden-id': COMPONENT_ID$f,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFooterItem",
-  componentId: "sc-1mb76hl-0"
-})(["display:flex;margin-", ":", "px;min-width:0;&:first-child{margin-", ":0;}", ";"], props => props.theme.rtl ? 'right' : 'left', props => props.theme.space.base * 5, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$f, props));
-StyledFooterItem.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$e = 'modals.header';
-const StyledHeader$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$e,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledHeader",
-  componentId: "sc-1787r9v-0"
-})(["display:block;position:", ";margin:0;border-bottom:", " ", ";padding:", ";", "  line-height:", ";color:", ";font-size:", ";font-weight:", ";", ";"], props => props.isDanger && 'relative', props => props.theme.borders.sm, getColorV8('neutralHue', 200), props => `${props.theme.space.base * 5}px ${props.theme.space.base * 10}px`, props => props.isCloseButtonPresent && `padding-${props.theme.rtl ? 'left' : 'right'}: ${props.theme.space.base * (BASE_MULTIPLIERS.size + BASE_MULTIPLIERS.side + 2)}px;`, props => getLineHeight(props.theme.lineHeights.md, props.theme.fontSizes.md), props => props.isDanger ? getColorV8('dangerHue', 600, props.theme) : getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$e, props));
-StyledHeader$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _g$1, _circle;
-function _extends$a() { _extends$a = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$a.apply(this, arguments); }
-var SvgAlertErrorStroke = function SvgAlertErrorStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$a({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _g$1 || (_g$1 = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }), /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    d: "M7.5 4.5V9"
-  }))), _circle || (_circle = /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 12,
-    r: 1,
-    fill: "currentColor"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const StyledDangerIcon = styled(SvgAlertErrorStroke).withConfig({
-  displayName: "StyledDangerIcon",
-  componentId: "sc-1kwbb39-0"
-})(["position:absolute;top:", "px;", ":", ";"], props => props.theme.space.base * 5.5, props => props.theme.rtl ? 'right' : 'left', props => `${props.theme.space.base * 4}px`);
-StyledDangerIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$d = 'modals.modal';
-const animationName = $e(["0%{transform:scale(0);opacity:0;}50%{transform:scale(1.05);}100%{opacity:1;}"]);
-const animationStyles = props => {
-  if (props.isAnimated) {
-    return Ne(["animation:", " 0.3s ease-in;"], animationName);
-  }
-  return '';
-};
-const boxShadow = props => {
-  const {
-    theme
-  } = props;
-  const {
-    space,
-    shadows
-  } = theme;
-  const offsetY = `${space.base * 5}px`;
-  const blurRadius = `${space.base * 7}px`;
-  const color = getColorV8('neutralHue', 800, theme, 0.35);
-  return shadows.lg(offsetY, blurRadius, color);
-};
-const sizeStyles$5 = props => {
-  return Ne(["", "{width:", ";}"], mediaQuery('up', props.isLarge ? 'md' : 'sm', props.theme), props.isLarge ? props.theme.breakpoints.md : props.theme.breakpoints.sm);
-};
-const StyledModal = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$d,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledModal",
-  componentId: "sc-1pe1axu-0"
-})(["display:flex;position:fixed;flex-direction:column;animation-delay:0.01s;margin:", ";border-radius:", ";box-shadow:", ";background-color:", ";min-height:60px;max-height:calc(100vh - ", "px);overflow:auto;direction:", ";", ";", ";&:focus{outline:none;}@media (max-height:399px){top:", "px;bottom:auto;margin-bottom:", "px;max-height:none;}@media screen and (-ms-high-contrast:active),screen and (-ms-high-contrast:none){right:", ";bottom:", ";transform:", ";}", ";"], props => props.isCentered ? '0' : `${props.theme.space.base * 12}px`, props => props.theme.borderRadii.md, boxShadow, props => getColorV8('background', 600 , props.theme), props => props.theme.space.base * 24, props => props.theme.rtl && 'rtl', animationStyles, sizeStyles$5, props => props.theme.space.base * 6, props => props.theme.space.base * 6, props => props.isCentered && '50%', props => props.isCentered && '50%', props => props.isCentered && 'translate(50%, 50%)', props => retrieveComponentStyles(COMPONENT_ID$d, props));
-StyledModal.propTypes = {
-  isLarge: PropTypes.bool,
-  isAnimated: PropTypes.bool
-};
-StyledModal.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const ModalsContext = reactExports.createContext(undefined);
-const useModalContext = () => {
-  const context = reactExports.useContext(ModalsContext);
-  if (context === undefined) {
-    throw new Error('useModalContext must be used within a ModalsContext.Provider');
-  }
-  return context;
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const isOverflowing = element => {
-  const doc = ownerDocument(element);
-  const win = ownerWindow(doc);
-  const isBody = element && element.tagName.toLowerCase() === 'body';
-  if (!isWindow(doc) && !isBody) {
-    return element.scrollHeight > element.clientHeight;
-  }
-  const style = win.getComputedStyle(doc.body);
-  const marginLeft = parseInt(style.getPropertyValue('margin-left'), 10);
-  const marginRight = parseInt(style.getPropertyValue('margin-right'), 10);
-  return marginLeft + doc.body.clientWidth + marginRight < win.innerWidth;
-};
-const Modal = reactExports.forwardRef((_ref, ref) => {
-  let {
-    backdropProps,
-    children,
-    onClose,
-    isLarge,
-    isCentered,
-    isAnimated,
-    id,
-    appendToNode,
-    focusOnMount,
-    restoreFocus,
-    ...modalProps
-  } = _ref;
-  const theme = reactExports.useContext(Be);
-  const modalRef = reactExports.useRef(null);
-  const environment = useDocument(theme);
-  const [isCloseButtonPresent, setIsCloseButtonPresent] = reactExports.useState(false);
-  const [hasHeader, setHasHeader] = reactExports.useState(false);
-  const {
-    getBackdropProps,
-    getModalProps,
-    getTitleProps,
-    getContentProps,
-    getCloseProps
-  } = useModal({
-    idPrefix: id,
-    onClose,
-    modalRef,
-    focusOnMount,
-    restoreFocus
-  });
-  useFocusVisible({
-    scope: modalRef,
-    relativeDocument: environment
-  });
-  reactExports.useEffect(() => {
-    if (!environment) {
-      return undefined;
-    }
-    const htmlElement = environment.querySelector('html');
-    const bodyElement = environment.querySelector('body');
-    let previousHtmlOverflow;
-    let previousBodyPaddingRight;
-    if (bodyElement) {
-      if (isOverflowing(bodyElement)) {
-        const scrollbarSize$1 = scrollbarSize();
-        const bodyPaddingRight = parseInt(style(bodyElement, 'paddingRight') || '0', 10);
-        previousBodyPaddingRight = bodyElement.style.paddingRight;
-        bodyElement.style.paddingRight = `${bodyPaddingRight + scrollbarSize$1}px`;
-      }
-      if (htmlElement) {
-        previousHtmlOverflow = htmlElement.style.overflow;
-        htmlElement.style.overflow = 'hidden';
-      }
-      return () => {
-        if (htmlElement) {
-          htmlElement.style.overflow = previousHtmlOverflow;
-        }
-        bodyElement.style.paddingRight = previousBodyPaddingRight;
-      };
-    }
-    return undefined;
-  }, [environment]);
-  const rootNode = reactExports.useMemo(() => {
-    if (appendToNode) {
-      return appendToNode;
-    }
-    if (environment) {
-      return environment.body;
-    }
-    return undefined;
-  }, [appendToNode, environment]);
-  const value = reactExports.useMemo(() => ({
-    isLarge,
-    isCloseButtonPresent,
-    hasHeader,
-    setHasHeader,
-    getTitleProps,
-    getContentProps,
-    getCloseProps,
-    setIsCloseButtonPresent
-  }), [isLarge, hasHeader, isCloseButtonPresent, getTitleProps, getContentProps, getCloseProps]);
-  const modalContainerProps = getModalProps({
-    'aria-describedby': undefined,
-    ...(hasHeader ? {} : {
-      'aria-labelledby': undefined
-    })
-  });
-  const attribute = hasHeader ? 'aria-labelledby' : 'aria-label';
-  const defaultValue = hasHeader ? modalContainerProps['aria-labelledby'] : 'Modal dialog';
-  const labelValue = hasHeader ? modalContainerProps['aria-labelledby'] : modalProps['aria-label'];
-  const ariaProps = {
-    [attribute]: useText(Modal, {
-      [attribute]: labelValue
-    }, attribute, defaultValue)
-  };
-  if (!rootNode) {
-    return null;
-  }
-  return reactDomExports.createPortal( React__default.createElement(ModalsContext.Provider, {
-    value: value
-  }, React__default.createElement(StyledBackdrop, Object.assign({
-    isCentered: isCentered,
-    isAnimated: isAnimated
-  }, getBackdropProps(backdropProps)), React__default.createElement(StyledModal, Object.assign({
-    isCentered: isCentered,
-    isAnimated: isAnimated,
-    isLarge: isLarge
-  }, modalContainerProps, ariaProps, modalProps, {
-    ref: mergeRefs([ref, modalRef])
-  }), children))), rootNode);
-});
-Modal.displayName = 'Modal';
-Modal.propTypes = {
-  backdropProps: PropTypes.object,
-  isLarge: PropTypes.bool,
-  isAnimated: PropTypes.bool,
-  isCentered: PropTypes.bool,
-  focusOnMount: PropTypes.bool,
-  restoreFocus: PropTypes.bool,
-  onClose: PropTypes.func,
-  appendToNode: PropTypes.any
-};
-Modal.defaultProps = {
-  isAnimated: true,
-  isCentered: true
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Body = reactExports.forwardRef((props, ref) => {
-  const {
-    getContentProps
-  } = useModalContext();
-  return React__default.createElement(StyledBody, Object.assign({}, getContentProps(props), {
-    ref: ref
-  }));
-});
-Body.displayName = 'Body';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$8;
-function _extends$9() { _extends$9 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$9.apply(this, arguments); }
-var SvgXStroke = function SvgXStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$9({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$8 || (_path$8 = /*#__PURE__*/reactExports.createElement("path", {
-    stroke: "currentColor",
-    strokeLinecap: "round",
-    d: "M3 13L13 3m0 10L3 3"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Close = reactExports.forwardRef((props, ref) => {
-  const {
-    getCloseProps,
-    setIsCloseButtonPresent
-  } = useModalContext();
-  reactExports.useEffect(() => {
-    setIsCloseButtonPresent(true);
-    return () => setIsCloseButtonPresent(false);
-  });
-  const ariaLabel = useText(Close, props, 'aria-label', 'Close modal');
-  return React__default.createElement(StyledClose, Object.assign({}, getCloseProps({
-    ...props,
-    'aria-label': ariaLabel
-  }), {
-    ref: ref
-  }), React__default.createElement(SvgXStroke, null));
-});
-Close.displayName = 'Close';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Footer = React__default.forwardRef((props, ref) => {
-  const {
-    isLarge
-  } = useModalContext();
-  return React__default.createElement(StyledFooter, Object.assign({
-    ref: ref,
-    isLarge: isLarge
-  }, props));
-});
-Footer.displayName = 'Footer';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const FooterItem = React__default.forwardRef((props, ref) => React__default.createElement(StyledFooterItem, Object.assign({
-  ref: ref
-}, props)));
-FooterItem.displayName = 'FooterItem';
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Header$1 = reactExports.forwardRef((_ref, ref) => {
-  let {
-    children,
-    tag,
-    ...other
-  } = _ref;
-  const {
-    isCloseButtonPresent,
-    hasHeader,
-    setHasHeader,
-    getTitleProps
-  } = useModalContext();
-  reactExports.useEffect(() => {
-    if (!hasHeader && setHasHeader) {
-      setHasHeader(true);
-    }
-    return () => {
-      if (hasHeader && setHasHeader) {
-        setHasHeader(false);
-      }
-    };
-  }, [hasHeader, setHasHeader]);
-  return React__default.createElement(StyledHeader$1, Object.assign({}, getTitleProps(other), {
-    as: tag,
-    isCloseButtonPresent: isCloseButtonPresent,
-    ref: ref
-  }), other.isDanger && React__default.createElement(StyledDangerIcon, null), children);
-});
-Header$1.displayName = 'Header';
-Header$1.propTypes = {
-  isDanger: PropTypes.bool,
-  tag: PropTypes.any
-};
-Header$1.defaultProps = {
-  tag: 'div'
-};
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-function composeEventHandlers() {
-  for (var _len = arguments.length, fns = new Array(_len), _key = 0; _key < _len; _key++) {
-    fns[_key] = arguments[_key];
-  }
-  return function (event) {
-    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-      args[_key2 - 1] = arguments[_key2];
-    }
-    return fns.some(fn => {
-      fn && fn(event, ...args);
-      return event && event.defaultPrevented;
-    });
-  };
-}
-
-function getControlledValue() {
-  for (var _len = arguments.length, values = new Array(_len), _key = 0; _key < _len; _key++) {
-    values[_key] = arguments[_key];
-  }
-  for (const value of values) {
-    if (value !== undefined) {
-      return value;
-    }
-  }
-  return undefined;
-}
-
-const KEY_CODES = {
-  ALT: 18,
-  ASTERISK: 170,
-  BACKSPACE: 8,
-  COMMA: 188,
-  DELETE: 46,
-  DOWN: 40,
-  END: 35,
-  ENTER: 13,
-  ESCAPE: 27,
-  HOME: 36,
-  LEFT: 37,
-  NUMPAD_ADD: 107,
-  NUMPAD_DECIMAL: 110,
-  NUMPAD_DIVIDE: 111,
-  NUMPAD_ENTER: 108,
-  NUMPAD_MULTIPLY: 106,
-  NUMPAD_SUBTRACT: 109,
-  PAGE_DOWN: 34,
-  PAGE_UP: 33,
-  PERIOD: 190,
-  RIGHT: 39,
-  SHIFT: 16,
-  SPACE: 32,
-  TAB: 9,
-  UP: 38
-};
-
-var DocumentPosition;
-(function (DocumentPosition) {
-  DocumentPosition[DocumentPosition["DISCONNECTED"] = 1] = "DISCONNECTED";
-  DocumentPosition[DocumentPosition["PRECEDING"] = 2] = "PRECEDING";
-  DocumentPosition[DocumentPosition["FOLLOWING"] = 4] = "FOLLOWING";
-  DocumentPosition[DocumentPosition["CONTAINS"] = 8] = "CONTAINS";
-  DocumentPosition[DocumentPosition["CONTAINED_BY"] = 16] = "CONTAINED_BY";
-  DocumentPosition[DocumentPosition["IMPLEMENTATION_SPECIFIC"] = 32] = "IMPLEMENTATION_SPECIFIC";
-})(DocumentPosition || (DocumentPosition = {}));
-
-let idCounter = 0;
-const useId = id => useId$3(id) || `id:${idCounter++}`;
-
-/**
- * Copyright Zendesk, Inc.
- *
- * Use of this source code is governed under the Apache License, Version 2.0
- * found at http://www.apache.org/licenses/LICENSE-2.0.
- */
-
-function useAccordion(_ref) {
-  let {
-    idPrefix,
-    sections = [],
-    expandedSections,
-    defaultExpandedSections,
-    onChange = () => undefined,
-    expandable = true,
-    collapsible = true
-  } = _ref;
-  const prefix = useId(idPrefix);
-  const TRIGGER_ID = `${prefix}--trigger`;
-  const PANEL_ID = `${prefix}--panel`;
-  const isControlled = expandedSections !== null && expandedSections !== undefined;
-  const [expandedState, setExpandedState] = reactExports.useState(defaultExpandedSections || sections.slice(0, 1));
-  const [disabledState, setDisabledState] = reactExports.useState(collapsible ? [] : expandedState);
-  const internalExpandedState = getControlledValue(expandedSections, expandedState);
-  const toggle = reactExports.useCallback(value => {
-    const expanded = [];
-    const disabled = [];
-    sections.forEach(sectionValue => {
-      let isExpanded = false;
-      if (sectionValue === value) {
-        isExpanded = collapsible ? internalExpandedState.includes(sectionValue) === false : true;
-      } else if (expandable) {
-        isExpanded = internalExpandedState.includes(sectionValue);
-      }
-      if (isExpanded) {
-        expanded.push(sectionValue);
-        if (!collapsible) {
-          disabled.push(sectionValue);
-        }
-      }
-    });
-    onChange(value);
-    if (isControlled === false) {
-      setExpandedState(expanded);
-    }
-    setDisabledState(disabled);
-  }, [sections, internalExpandedState, collapsible, expandable, isControlled, onChange]);
-  const getHeaderProps = reactExports.useCallback(_ref2 => {
-    let {
-      role = 'heading',
-      'aria-level': ariaLevel,
-      ...props
-    } = _ref2;
-    return {
-      role: role === null ? undefined : role,
-      'aria-level': ariaLevel,
-      'data-garden-container-id': 'containers.accordion',
-      'data-garden-container-version': '3.0.4',
-      ...props
-    };
-  }, []);
-  const getTriggerProps = reactExports.useCallback(_ref3 => {
-    let {
-      value,
-      role = 'button',
-      tabIndex = 0,
-      ...props
-    } = _ref3;
-    return {
-      id: `${TRIGGER_ID}:${value}`,
-      role: role === null ? undefined : role,
-      tabIndex,
-      'aria-controls': `${PANEL_ID}:${value}`,
-      'aria-disabled': disabledState.includes(value) || undefined,
-      'aria-expanded': internalExpandedState.includes(value),
-      onClick: composeEventHandlers(props.onClick, () => toggle(value)),
-      onKeyDown: composeEventHandlers(props.onKeyDown, event => {
-        if (event.keyCode === KEY_CODES.SPACE || event.keyCode === KEY_CODES.ENTER) {
-          toggle(value);
-          event.preventDefault();
-        }
-      }),
-      ...props
-    };
-  }, [PANEL_ID, TRIGGER_ID, internalExpandedState, disabledState, toggle]);
-  const getPanelProps = reactExports.useCallback(_ref4 => {
-    let {
-      value,
-      role = 'region',
-      ...props
-    } = _ref4;
-    return {
-      id: `${PANEL_ID}:${value}`,
-      role: role === null ? undefined : role,
-      'aria-hidden': !internalExpandedState.includes(value),
-      'aria-labelledby': `${TRIGGER_ID}:${value}`,
-      ...props
-    };
-  }, [PANEL_ID, TRIGGER_ID, internalExpandedState]);
-  return reactExports.useMemo(() => ({
-    getHeaderProps,
-    getTriggerProps,
-    getPanelProps,
-    expandedSections: internalExpandedState,
-    disabledSections: disabledState
-  }), [getHeaderProps, getTriggerProps, getPanelProps, internalExpandedState, disabledState]);
-}
-({
-  children: PropTypes.func,
-  render: PropTypes.func,
-  sections: PropTypes.array.isRequired,
-  expandedSections: PropTypes.array,
-  defaultExpandedSections: PropTypes.array,
-  expandable: PropTypes.bool,
-  collapsible: PropTypes.bool,
-  idPrefix: PropTypes.string,
-  onChange: PropTypes.func
-});
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$c = 'accordions.accordion';
-const StyledAccordion = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$c,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledAccordion",
-  componentId: "sc-niv9ic-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$c, props));
-StyledAccordion.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$b = 'accordions.panel';
-const colorStyles$6 = props => {
-  const {
-    theme,
-    isBare
-  } = props;
-  return Ne(["border-bottom-color:", ";"], isBare ? 'transparent' : getColorV8('neutralHue', 300, theme));
-};
-const sizeStyles$4 = props => {
-  const {
-    theme,
-    isCompact,
-    isExpanded
-  } = props;
-  const {
-    base
-  } = theme.space;
-  let paddingTop = base * 2;
-  let paddingHorizontal = base * 5;
-  let paddingBottom = base * 8;
-  if (isCompact) {
-    paddingTop = base * 2;
-    paddingHorizontal = base * 3;
-    paddingBottom = base * 4;
-  }
-  if (isExpanded === false) {
-    paddingTop = 0;
-    paddingBottom = 0;
-  }
-  return Ne(["grid-template-rows:", "fr;border-bottom:", ";padding:", "px ", "px ", "px;line-height:", ";font-size:", ";"], isExpanded ? 1 : 0, theme.borders.sm, paddingTop, paddingHorizontal, paddingBottom, getLineHeight(base * 5, theme.fontSizes.md), theme.fontSizes.md);
-};
-const StyledPanel = styled.section.attrs({
-  'data-garden-id': COMPONENT_ID$b,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledPanel",
-  componentId: "sc-1piryze-0"
-})(["display:grid;transition:", ";overflow:hidden;", " ", " ", ";"], props => props.isAnimated && 'padding 0.25s ease-in-out, grid-template-rows 0.25s ease-in-out', sizeStyles$4, colorStyles$6, props => retrieveComponentStyles(COMPONENT_ID$b, props));
-StyledPanel.defaultProps = {
-  isAnimated: true,
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$a = 'accordions.section';
-const StyledSection = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$a,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledSection",
-  componentId: "sc-v2t9bd-0"
-})(["&:last-child ", "{border:none;}", ";"], StyledPanel, props => retrieveComponentStyles(COMPONENT_ID$a, props));
-StyledSection.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$9 = 'accordions.header';
-const StyledHeader = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$9,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledHeader",
-  componentId: "sc-2c6rbr-0"
-})(["display:flex;align-items:center;transition:box-shadow 0.1s ease-in-out;font-size:", ";&:hover{cursor:", ";}", " ", ";"], props => props.theme.fontSizes.md, props => (props.isCollapsible || !props.isExpanded) && 'pointer', props => focusStyles({
-  theme: props.theme,
-  inset: true,
-  condition: props.isFocused,
-  selector: '&:focus-within'
-}), props => retrieveComponentStyles(COMPONENT_ID$9, props));
-StyledHeader.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$8 = 'accordions.button';
-const colorStyles$5 = props => {
-  const showColor = props.isCollapsible || !props.isExpanded;
-  let color = getColorV8('foreground', 600 , props.theme);
-  if (showColor && props.isHovered) {
-    color = getColorV8('primaryHue', 600, props.theme);
-  }
-  return Ne(["color:", ";&:hover{cursor:", ";color:", ";}"], color, showColor && 'pointer', showColor && color);
-};
-const StyledButton = styled.button.attrs({
-  'data-garden-id': COMPONENT_ID$8,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledButton",
-  componentId: "sc-xj3hy7-0"
-})(["transition:color 0.1s ease-in-out;outline:none;border:none;background:transparent;padding:", ";width:100%;text-align:", ";line-height:", ";font-family:inherit;font-size:", ";font-weight:", ";", " &::-moz-focus-inner{border:0;}&:hover{cursor:", ";}", ";"], props => props.isCompact ? `${props.theme.space.base * 2}px ${props.theme.space.base * 3}px` : `${props.theme.space.base * 5}px`, props => props.theme.rtl ? 'right' : 'left', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => props.theme.fontSizes.md, props => props.theme.fontWeights.semibold, colorStyles$5, props => (props.isCollapsible || !props.isExpanded) && 'pointer', props => retrieveComponentStyles(COMPONENT_ID$8, props));
-StyledButton.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$7 = 'accordions.step_inner_panel';
-const StyledInnerPanel = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$7,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledInnerPanel",
-  componentId: "sc-8nbueg-0"
-})(["overflow:hidden;line-height:inherit;font-size:inherit;", "[aria-hidden='true'] > &{transition:", ";visibility:hidden;}", "[aria-hidden='false'] > &{visibility:visible;}", ";"], StyledPanel, props => props.isAnimated && 'visibility 0s 0.25s', StyledPanel, props => retrieveComponentStyles(COMPONENT_ID$7, props));
-StyledInnerPanel.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$6 = 'accordions.rotate_icon';
-const colorStyles$4 = props => {
-  const showColor = props.isCollapsible || !props.isRotated;
-  let color = getColorV8('neutralHue', 600, props.theme);
-  if (showColor && props.isHovered) {
-    color = getColorV8('primaryHue', 600, props.theme);
-  }
-  return Ne(["color:", ";&:hover{color:", ";}"], color, showColor && color);
-};
-const StyledRotateIcon = styled(
-_ref => {
-  let {
-    children,
-    isRotated,
-    isHovered,
-    isCompact,
-    isCollapsible,
-    ...props
-  } = _ref;
-  return reactExports.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$6,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledRotateIcon",
-  componentId: "sc-hp435q-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.1s ease-in-out;box-sizing:content-box;padding:", ";width:", ";min-width:", ";height:", ";vertical-align:middle;", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => props.isCompact ? `${props.theme.space.base * 1.5}px ${props.theme.space.base * 3}px` : `${props.theme.space.base * 5}px`, props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, colorStyles$4, props => retrieveComponentStyles(COMPONENT_ID$6, props));
-StyledRotateIcon.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const AccordionContext = reactExports.createContext(undefined);
-const useAccordionContext = () => {
-  const context = reactExports.useContext(AccordionContext);
-  if (context === undefined) {
-    throw new Error('This component must be rendered within a Accordion component');
-  }
-  return context;
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const SectionContext = reactExports.createContext(undefined);
-const useSectionContext = () => {
-  const context = reactExports.useContext(SectionContext);
-  if (context === undefined) {
-    throw new Error('This component must be rendered within an Accordion component');
-  }
-  return context;
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const HeaderContext = reactExports.createContext(undefined);
-const useHeaderContext = () => {
-  const context = reactExports.useContext(HeaderContext);
-  if (context === undefined) {
-    throw new Error('This component must be rendered within a Accordion.Header component');
-  }
-  return context;
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const SectionComponent = reactExports.forwardRef((props, ref) => React__default.createElement(StyledSection, Object.assign({
-  ref: ref
-}, props)));
-SectionComponent.displayName = 'Accordion.Section';
-const Section = SectionComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-var _path$7;
-function _extends$8() { _extends$8 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$8.apply(this, arguments); }
-var SvgChevronDownStroke = function SvgChevronDownStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$8({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    focusable: "false",
-    viewBox: "0 0 16 16",
-    "aria-hidden": "true"
-  }, props), _path$7 || (_path$7 = /*#__PURE__*/reactExports.createElement("path", {
-    fill: "currentColor",
-    d: "M12.688 5.61a.5.5 0 01.69.718l-.066.062-5 4a.5.5 0 01-.542.054l-.082-.054-5-4a.5.5 0 01.55-.83l.074.05L8 9.359l4.688-3.75z"
-  })));
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const HeaderComponent = reactExports.forwardRef((props, ref) => {
-  const {
-    onClick,
-    onFocus,
-    onBlur,
-    onMouseOver,
-    onMouseOut,
-    role,
-    children,
-    ...other
-  } = props;
-  const {
-    level: ariaLevel,
-    isCompact,
-    isCollapsible,
-    getHeaderProps,
-    getTriggerProps,
-    expandedSections
-  } = useAccordionContext();
-  const sectionValue = useSectionContext();
-  const [isFocused, setIsFocused] = reactExports.useState(false);
-  const [isHovered, setIsHovered] = reactExports.useState(false);
-  const isExpanded = expandedSections.includes(sectionValue);
-  const {
-    onClick: onTriggerClick,
-    onKeyDown,
-    ...otherTriggerProps
-  } = getTriggerProps({
-    type: 'button',
-    value: sectionValue
-  });
-  const onHeaderFocus = e => {
-    e.persist();
-    setTimeout(() => {
-      const isAccordionButton = e.target.getAttribute('data-garden-id') === COMPONENT_ID$8;
-      const isFocusVisible = e.target.getAttribute('data-garden-focus-visible');
-      if (isAccordionButton && isFocusVisible) {
-        setIsFocused(true);
-      }
-    }, 0);
-  };
-  const value = reactExports.useMemo(() => ({
-    isHovered,
-    otherTriggerProps
-  }), [isHovered, otherTriggerProps]);
-  return React__default.createElement(HeaderContext.Provider, {
-    value: value
-  }, React__default.createElement(StyledHeader, Object.assign({
-    isCollapsible: isCollapsible,
-    isExpanded: isExpanded,
-    isFocused: isFocused
-  }, getHeaderProps({
-    ref,
-    'aria-level': ariaLevel,
-    role: role === undefined || role === null ? role : 'heading',
-    onClick: composeEventHandlers$5(onClick, onTriggerClick),
-    onFocus: composeEventHandlers$5(onFocus, onHeaderFocus),
-    onBlur: composeEventHandlers$5(onBlur, () => setIsFocused(false)),
-    onMouseOver: composeEventHandlers$5(onMouseOver, () => setIsHovered(true)),
-    onMouseOut: composeEventHandlers$5(onMouseOut, () => setIsHovered(false)),
-    ...other
-  })), children, React__default.createElement(StyledRotateIcon, {
-    isCompact: isCompact,
-    isHovered: isHovered,
-    isRotated: isExpanded,
-    isCollapsible: isCollapsible,
-    onMouseOver: composeEventHandlers$5(onMouseOver, () => setIsHovered(true)),
-    onMouseOut: composeEventHandlers$5(onMouseOut, () => setIsHovered(false))
-  }, React__default.createElement(SvgChevronDownStroke, null))));
-});
-HeaderComponent.displayName = 'Accordion.Header';
-const Header = HeaderComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const LabelComponent = reactExports.forwardRef((props, ref) => {
-  const sectionValue = useSectionContext();
-  const {
-    isCompact,
-    isCollapsible,
-    expandedSections
-  } = useAccordionContext();
-  const isExpanded = expandedSections.includes(sectionValue);
-  const {
-    isHovered,
-    otherTriggerProps
-  } = useHeaderContext();
-  return React__default.createElement(StyledButton, Object.assign({
-    ref: ref,
-    isCompact: isCompact,
-    isHovered: isHovered,
-    isExpanded: isExpanded,
-    isCollapsible: isCollapsible
-  }, otherTriggerProps, props));
-});
-LabelComponent.displayName = 'Accordion.Label';
-const Label = LabelComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const PanelComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    role,
-    children,
-    ...props
-  } = _ref;
-  const {
-    isAnimated,
-    isBare,
-    isCompact,
-    expandedSections,
-    getPanelProps
-  } = useAccordionContext();
-  const sectionValue = useSectionContext();
-  const isExpanded = expandedSections.includes(sectionValue);
-  return React__default.createElement(StyledPanel, Object.assign({
-    inert: isExpanded ? undefined : '',
-    isAnimated: isAnimated,
-    isBare: isBare,
-    isCompact: isCompact,
-    isExpanded: isExpanded
-  }, getPanelProps({
-    role: role === undefined ? null : 'region',
-    ref,
-    value: sectionValue,
-    ...props
-  })), React__default.createElement(StyledInnerPanel, {
-    isAnimated: isAnimated
-  }, children));
-});
-PanelComponent.displayName = 'Accordion.Panel';
-const Panel = PanelComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const AccordionComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    children,
-    isBare,
-    isCompact,
-    isAnimated,
-    isExpandable,
-    isCollapsible,
-    level,
-    onChange,
-    defaultExpandedSections,
-    expandedSections: controlledExpandedSections,
-    ...props
-  } = _ref;
-  const {
-    sections,
-    sectionChildren
-  } = reactExports.useMemo(() => reactExports.Children.toArray(children).filter(reactExports.isValidElement).map((child, index) => React__default.createElement(SectionContext.Provider, {
-    key: index,
-    value: index
-  }, child)).reduce((acc, child, index) => {
-    acc.sectionChildren.push(child);
-    acc.sections.push(index);
-    return acc;
-  }, {
-    sectionChildren: [],
-    sections: []
-  }), [children]);
-  const {
-    expandedSections,
-    getHeaderProps,
-    getTriggerProps,
-    getPanelProps
-  } = useAccordion({
-    sections,
-    defaultExpandedSections,
-    expandedSections: controlledExpandedSections,
-    collapsible: isCollapsible,
-    expandable: isExpandable || false,
-    onChange
-  });
-  const accordionContextValue = reactExports.useMemo(() => ({
-    level,
-    isBare,
-    isCompact,
-    isAnimated,
-    isCollapsible,
-    getPanelProps,
-    getHeaderProps,
-    getTriggerProps,
-    expandedSections
-  }), [level, isBare, isCompact, isAnimated, isCollapsible, getPanelProps, getHeaderProps, getTriggerProps, expandedSections]);
-  return React__default.createElement(AccordionContext.Provider, {
-    value: accordionContextValue
-  }, React__default.createElement(StyledAccordion, Object.assign({
-    ref: ref
-  }, props), sectionChildren));
-});
-AccordionComponent.displayName = 'Accordion';
-AccordionComponent.defaultProps = {
-  isAnimated: true,
-  isCollapsible: true
-};
-const Accordion = AccordionComponent;
-Accordion.Header = Header;
-Accordion.Label = Label;
-Accordion.Panel = Panel;
-Accordion.Section = Section;
-
-var _g;
-function _extends$7() { _extends$7 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$7.apply(this, arguments); }
-var SvgCheckCircleStroke = function SvgCheckCircleStroke(props) {
-  return /*#__PURE__*/reactExports.createElement("svg", _extends$7({
-    xmlns: "http://www.w3.org/2000/svg",
-    width: 16,
-    height: 16,
-    viewBox: "0 0 16 16"
-  }, props), _g || (_g = /*#__PURE__*/reactExports.createElement("g", {
-    fill: "none",
-    stroke: "currentColor"
-  }, /*#__PURE__*/reactExports.createElement("path", {
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    d: "M4 9l2.5 2.5 5-5"
-  }), /*#__PURE__*/reactExports.createElement("circle", {
-    cx: 7.5,
-    cy: 8.5,
-    r: 7
-  }))));
-};
-
 var _path$6;
 function _extends$6() { _extends$6 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$6.apply(this, arguments); }
 var SvgShapesFill = function SvgShapesFill(props) {
@@ -37556,4 +37556,4 @@ var SvgChevronDownFill = function SvgChevronDownFill(props) {
   })));
 };
 
-export { $e as $, Anchor as A, SvgAlertWarningStroke as B, Close$3 as C, Datepicker as D, MediaInput as E, Field$1 as F, SvgCreditCardStroke as G, Hint$1 as H, Input as I, getColorV8 as J, Header$1 as K, Label$2 as L, Message$1 as M, Notification as N, Option as O, Progress as P, SvgCheckCircleStroke as Q, useModalContainer as R, Span as S, Title as T, Modal as U, Body as V, Accordion as W, Paragraph as X, Footer as Y, FooterItem as Z, Button as _, useTranslation as a, Close as a0, addFlashNotification as a1, debounce$3 as a2, Alert as a3, initI18next as a4, loadTranslations as a5, reactDomExports as a6, ThemeProviders as a7, createTheme as a8, FLASH_NOTIFICATIONS_KEY as a9, SvgShapesFill as aa, Grid as ab, Col as ac, Row as ad, Skeleton as ae, MD as af, SM as ag, LG as ah, CursorPagination as ai, XXXL as aj, SvgChevronUpFill as ak, SvgChevronDownFill as al, Textarea as b, commonjsGlobal as c, Field as d, Label$1 as e, Hint as f, getDefaultExportFromCjs as g, Combobox as h, Message as i, jsxRuntimeExports as j, Checkbox as k, OptGroup as l, FileList as m, File as n, Tooltip as o, purify as p, mime as q, reactExports as r, styled as s, useDropzone as t, useToast as u, FileUpload as v, useGrid as w, focusStyles as x, FauxInput as y, Tag$1 as z };
+export { $e as $, Anchor as A, focusStyles as B, Checkbox as C, Datepicker as D, FauxInput as E, Field$1 as F, Tag$1 as G, Hint$1 as H, Input as I, SvgAlertWarningStroke as J, getColorV8 as K, Label$2 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Header$1 as Q, SvgCheckCircleStroke as R, Span as S, Title as T, useModalContainer as U, Modal as V, Body as W, Accordion as X, Paragraph as Y, Footer as Z, FooterItem as _, MediaInput as a, Button as a0, Close as a1, addFlashNotification as a2, Alert as a3, initI18next as a4, loadTranslations as a5, reactDomExports as a6, ThemeProviders as a7, createTheme as a8, FLASH_NOTIFICATIONS_KEY as a9, SvgShapesFill as aa, Grid as ab, Col as ac, Row as ad, Skeleton as ae, MD as af, SM as ag, LG as ah, CursorPagination as ai, XXXL as aj, SvgChevronUpFill as ak, SvgChevronDownFill as al, SvgCreditCardStroke as b, useToast as c, Close$3 as d, Textarea as e, Field as f, Label$1 as g, Hint as h, Combobox as i, jsxRuntimeExports as j, Message as k, OptGroup as l, debounce$2 as m, getDefaultExportFromCjs as n, commonjsGlobal as o, purify as p, FileList as q, reactExports as r, styled as s, File as t, useTranslation as u, Tooltip as v, mime as w, useDropzone as x, FileUpload as y, useGrid as z };

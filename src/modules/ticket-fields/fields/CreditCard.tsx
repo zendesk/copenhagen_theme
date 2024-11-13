@@ -5,7 +5,7 @@ import {
   MediaInput,
   Message,
 } from "@zendeskgarden/react-forms";
-import type { Field } from "../data-types";
+import type { Field } from "../data-types/Field";
 import { Span } from "@zendeskgarden/react-typography";
 import { useTranslation } from "react-i18next";
 import CreditCardIcon from "@zendeskgarden/svg-icons/src/16/credit-card-stroke.svg";
@@ -43,7 +43,10 @@ export function CreditCard({ field, onChange }: CreditCardProps): JSX.Element {
         {label}
         {required && <Span aria-hidden="true">*</Span>}
         <DigitsHintSpan>
-          {t("new-request-form.credit-card-digits-hint", "(Last 4 digits)")}
+          {t(
+            "cph-theme-ticket-fields.credit-card-digits-hint",
+            "(Last 4 digits)"
+          )}
         </DigitsHintSpan>
       </Label>
       {description && (

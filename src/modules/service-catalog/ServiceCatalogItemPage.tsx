@@ -7,6 +7,9 @@ import ChevronUp from "@zendeskgarden/svg-icons/src/16/chevron-up-fill.svg";
 import ChevronDown from "@zendeskgarden/svg-icons/src/16/chevron-down-fill.svg";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
+import { useItemFormFields } from "./components/useItemFormFields";
+import { ItemRequestForm } from "./components/service-catalog-item/ItemRequestForm";
+import type { Organization } from "../ticket-fields";
 
 const ItemTitle = styled(XXXL)`
   font-weight: ${(props) => props.theme.fontWeights.semibold};
@@ -39,9 +42,28 @@ const Container = styled.div`
 
 const LeftColumn = styled.div`
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.lg};
+  margin-right: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-right: 0;
+  }
+`;
+
+const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}
     ${(props) => getColorV8("grey", 300, props.theme)};
   padding-bottom: ${(props) => props.theme.space.lg};
+  margin-right: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-right: 0;
+  }
+`;
+
+const FromFieldsWrapper = styled.div`
   margin-right: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
@@ -57,6 +79,10 @@ const RightColumn = styled.div`
     position: sticky;
     bottom: 0;
     margin-left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -78,23 +104,48 @@ const ButtonWrapper = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
-    bottom: 0;
+    top: 0;
     background: ${(props) => props.theme.colors.background};
-    padding: ${(props) => props.theme.space.md};
+    padding: ${(props) => props.theme.space.lg};
     border: none;
     border-top: ${(props) => props.theme.borders.sm}
       ${(props) => getColorV8("grey", 300, props.theme)};
+    width: 100vw;
+    left: 0;
+    right: 0;
   }
 `;
-interface ServiceCatalogItemPageProps {
+
+export interface ServiceCatalogItemPageProps {
   serviceCatalogItem: ServiceCatalogItem;
+  baseLocale: string;
+  hasAtMentions: boolean;
+  userRole: string;
+  userId: number;
+  brandId: number;
+  organizations: Array<Organization>;
+  wysiwyg: boolean;
 }
 
 export function ServiceCatalogItemPage({
   serviceCatalogItem,
+  baseLocale,
+  hasAtMentions,
+  userRole,
+  organizations,
+  userId,
+  brandId,
 }: ServiceCatalogItemPageProps) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const { requestFields, handleChange } = useItemFormFields(
+    serviceCatalogItem,
+    baseLocale
+  );
   const { t } = useTranslation();
+  const defaultOrganizationId =
+    organizations.length > 0 && organizations[0]?.id
+      ? organizations[0]?.id?.toString()
+      : null;
 
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
@@ -103,18 +154,32 @@ export function ServiceCatalogItemPage({
   return (
     <Container>
       <LeftColumn>
-        <ItemTitle tag="h1">{serviceCatalogItem.name}</ItemTitle>
-        <CollapsibleDescription expanded={isExpanded}>
-          {serviceCatalogItem.description}
-        </CollapsibleDescription>
-        <ToggleButton aria-hidden="true" isLink onClick={toggleDescription}>
-          {isExpanded
-            ? t("service-catalog.item.read-less", "Read less")
-            : t("service-catalog.item.read-more", "Read more")}
-          <Button.EndIcon>
-            {isExpanded ? <ChevronUp /> : <ChevronDown />}
-          </Button.EndIcon>
-        </ToggleButton>
+        <DescriptionWrapper>
+          <ItemTitle tag="h1">{serviceCatalogItem.name}</ItemTitle>
+          <CollapsibleDescription expanded={isExpanded}>
+            {serviceCatalogItem.description}
+          </CollapsibleDescription>
+          <ToggleButton isLink onClick={toggleDescription}>
+            {isExpanded
+              ? t("service-catalog.item.read-less", "Read less")
+              : t("service-catalog.item.read-more", "Read more")}
+            <Button.EndIcon>
+              {isExpanded ? <ChevronUp /> : <ChevronDown />}
+            </Button.EndIcon>
+          </ToggleButton>
+        </DescriptionWrapper>
+        <FromFieldsWrapper>
+          <ItemRequestForm
+            requestFields={requestFields}
+            baseLocale={baseLocale}
+            hasAtMentions={hasAtMentions}
+            userRole={userRole}
+            userId={userId}
+            brandId={brandId}
+            defaultOrganizationId={defaultOrganizationId}
+            handleChange={handleChange}
+          />
+        </FromFieldsWrapper>
       </LeftColumn>
       <RightColumn>
         <ButtonWrapper>

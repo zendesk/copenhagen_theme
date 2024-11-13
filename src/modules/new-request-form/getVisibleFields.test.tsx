@@ -1,4 +1,5 @@
-import type { EndUserCondition, Field } from "./data-types";
+import type { Field } from "../ticket-fields/data-types/Field";
+import type { EndUserCondition } from "./data-types";
 import { getVisibleFields } from "./getVisibleFields";
 
 const dropdownField: Field = {

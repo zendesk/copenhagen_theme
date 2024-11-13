@@ -6,9 +6,9 @@ import {
   Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../../data-types";
 import { useWysiwyg } from "./useWysiwyg";
 import styled from "styled-components";
+import type { Field } from "../../data-types/Field";
 
 interface TextAreaProps {
   field: Field;
