@@ -3,41 +3,35 @@
 .blocks {
   &-list {
     @include tablet {
-      margin: 0 -15px;
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    list-style: none;
-    padding: 0;
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   &-item {
-    @include tablet {
-      margin: 0 15px 30px;
-    }
-
-    border: 1px solid $brand_color;
     border-radius: 4px;
     box-sizing: border-box;
     color: $brand_color;
-    display: flex;
-    flex: 1 0 340px;
-    margin: 0 0 30px;
-    max-width: 100%;
-    text-align: center;
+    /* Shadow-L */
+    box-shadow: 0px 2px 8px 0px rgba(88, 97, 118, 0.12);
 
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: $brand_color;
+    // &:hover,
+    // &:focus,
+    // &:active {
+    //   background-color: $brand_color;
 
-      * {
-        color: $brand_text_color;
-        text-decoration: none;
-      }
-    }
+    //   * {
+    //     color: $brand_text_color;
+    //     text-decoration: none;
+    //   }
+    // }
 
     &-internal {
       background-color: transparent;
@@ -56,12 +50,10 @@
 
   &-item-link {
     color: $brand_color;
-    padding: 20px 30px;
     display: flex;
     flex-direction: column;
-    flex: 1;
-    justify-content: center;
-    border-radius: inherit;
+    gap: 8px;
+    padding: 24px;
 
     &:visited,
     &:hover,
@@ -77,15 +69,16 @@
   }
 
   &-item-title {
-    margin-bottom: 0;
+    margin: 0;
     font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
   }
 
   &-item-description {
     margin: 0;
-  }
-
-  &-item-description:not(:empty) {
-    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px; 
   }
 }

@@ -215,7 +215,7 @@ h1 {
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 18px;
 }
 
 h3 {
@@ -1126,7 +1126,7 @@ ul {
   background-image: url($homepage_background_image);
   background-position: center;
   background-size: cover;
-  height: 300px;
+  height: 324px;
   text-align: center;
   width: 100%;
   position: relative;
@@ -1236,39 +1236,26 @@ ul {
 /***** Blocks *****/
 /* Used in Homepage#categories and Community#topics */
 .blocks-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  list-style: none;
-  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 @media (min-width: 768px) {
   .blocks-list {
-    margin: 0 -15px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .blocks-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 .blocks-item {
-  border: 1px solid $brand_color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $brand_color;
-  display: flex;
-  flex: 1 0 340px;
-  margin: 0 0 30px;
-  max-width: 100%;
-  text-align: center;
-}
-@media (min-width: 768px) {
-  .blocks-item {
-    margin: 0 15px 30px;
-  }
-}
-.blocks-item:hover, .blocks-item:focus, .blocks-item:active {
-  background-color: $brand_color;
-}
-.blocks-item:hover *, .blocks-item:focus *, .blocks-item:active * {
-  color: $brand_text_color;
-  text-decoration: none;
+  /* Shadow-L */
+  box-shadow: 0px 2px 8px 0px rgba(88, 97, 118, 0.12);
 }
 .blocks-item-internal {
   background-color: transparent;
@@ -1285,12 +1272,10 @@ ul {
 }
 .blocks-item-link {
   color: $brand_color;
-  padding: 20px 30px;
   display: flex;
   flex-direction: column;
-  flex: 1;
-  justify-content: center;
-  border-radius: inherit;
+  gap: 8px;
+  padding: 24px;
 }
 .blocks-item-link:visited, .blocks-item-link:hover, .blocks-item-link:active {
   color: inherit;
@@ -1302,29 +1287,30 @@ ul {
   text-decoration: none;
 }
 .blocks-item-title {
-  margin-bottom: 0;
+  margin: 0;
   font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
 }
 .blocks-item-description {
   margin: 0;
-}
-.blocks-item-description:not(:empty) {
-  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 /***** Homepage *****/
 .section {
   margin-bottom: 40px;
 }
-@media (min-width: 768px) {
-  .section {
-    margin-bottom: 60px;
-  }
-}
 
 .home-section h2 {
   margin-bottom: 10px;
   text-align: center;
+}
+
+.categories {
+  margin-bottom: 40px;
 }
 
 /***** Promoted articles *****/
