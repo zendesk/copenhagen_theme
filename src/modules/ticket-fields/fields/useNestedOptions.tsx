@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import type { FieldOption } from "../data-types";
 import { type IOptionProps } from "@zendeskgarden/react-dropdowns.next";
+import type { FieldOption } from "../data-types/Field";
 
 interface OptionProps {
   value: string;

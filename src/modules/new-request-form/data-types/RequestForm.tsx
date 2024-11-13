@@ -1,7 +1,7 @@
-import type { Field } from "./Field";
 import type { EndUserCondition } from "./EndUserCondition";
 import type { AttachmentField } from "./AttachmentsField";
 import type { HiddenField } from "./HiddenField";
+import type { Field } from "../../ticket-fields/data-types/Field";
 
 export interface RequestForm {
   accept_charset: string;

@@ -12,10 +12,10 @@ import {
   OptGroup,
 } from "@zendeskgarden/react-dropdowns.next";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types";
 import { useState, useRef, useEffect } from "react";
 import { useNestedOptions } from "./useNestedOptions";
 import { EmptyValueOption } from "./EmptyValueOption";
+import type { Field } from "../data-types/Field";
 
 interface TaggerProps {
   field: Field;

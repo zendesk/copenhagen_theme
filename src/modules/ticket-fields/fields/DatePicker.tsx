@@ -7,7 +7,7 @@ import {
   Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types";
+import type { Field } from "../data-types/Field";
 import type { ChangeEventHandler } from "react";
 import { useState } from "react";
 

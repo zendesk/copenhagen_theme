@@ -1,7 +1,7 @@
 import type { FormEventHandler } from "react";
 import { useRef, useCallback } from "react";
-import type { Field } from "./data-types";
 import { fetchCsrfToken } from "./fetchCsrfToken";
+import type { Field } from "../ticket-fields/data-types/Field";
 
 interface UseFormSubmit {
   formRefCallback: (ref: HTMLFormElement) => void;

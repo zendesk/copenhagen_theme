@@ -8,7 +8,7 @@ import {
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types";
+import type { Field } from "../data-types/Field";
 import { useRef, useEffect } from "react";
 import { EmptyValueOption } from "./EmptyValueOption";
 

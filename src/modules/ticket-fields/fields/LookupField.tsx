@@ -8,13 +8,13 @@ import {
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Field, FieldOption } from "../data-types";
+import type { Field, FieldOption } from "../data-types/Field";
 import { Span } from "@zendeskgarden/react-typography";
 import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 
-function getCustomObjectKey(targetType: string) {
+export function getCustomObjectKey(targetType: string) {
   return targetType.replace("zen:custom_object:", "");
 }
 
@@ -60,7 +60,7 @@ export function LookupField({
 
   const loadingOption = {
     name: t(
-      "new-request-form.lookup-field.loading-options",
+      "cph-theme-ticket-fields.lookup-field.loading-options",
       "Loading items..."
     ),
     id: "loading",
@@ -68,7 +68,7 @@ export function LookupField({
 
   const noResultsOption = {
     name: t(
-      "new-request-form.lookup-field.no-matches-found",
+      "cph-theme-ticket-fields.lookup-field.no-matches-found",
       "No matches found"
     ),
     id: "no-results",
@@ -205,7 +205,7 @@ export function LookupField({
         selectionValue={selectedOption?.value}
         isAutocomplete
         placeholder={t(
-          "new-request-form.lookup-field.placeholder",
+          "cph-theme-ticket-fields.lookup-field.placeholder",
           "Search {{label}}",
           { label: label.toLowerCase() }
         )}

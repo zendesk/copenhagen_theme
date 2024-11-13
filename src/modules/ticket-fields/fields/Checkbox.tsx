@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 import { useState } from "react";
-import type { Field } from "../data-types";
+import type { Field } from "../data-types/Field";
 import {
   Label,
   Field as GardenField,

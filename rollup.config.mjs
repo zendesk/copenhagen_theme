@@ -52,6 +52,10 @@ export default defineConfig([
           return "shared";
         }
 
+        if (id.includes("src/modules/ticket-fields")) {
+          return "ticket-fields";
+        }
+
         // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`
         const translationFileMatch = id.match(TRANSLATION_FILE_REGEX);
         if (translationFileMatch) {

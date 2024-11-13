@@ -56,11 +56,19 @@ export function ServiceCatalogList({
               id,
               name,
               custom_object_fields,
+              custom_object_key,
             }: {
               id: number;
               name: string;
-              custom_object_fields: { description: string };
-            }) => ({ id, name, description: custom_object_fields.description })
+              custom_object_fields: { description: string; form_id: string };
+              custom_object_key: string;
+            }) => ({
+              id,
+              name,
+              description: custom_object_fields.description,
+              form_id: custom_object_fields.form_id,
+              custom_object_key,
+            })
           );
           setMeta(data.meta);
           setServiceCatalogItems(records);
