@@ -67,7 +67,7 @@ const ServiceCatalogListItem = ({
   serviceItem: ServiceCatalogItem;
 }) => {
   return (
-    <ItemContainer href="/hc/en-us/p/service_catalog_item">
+    <ItemContainer href="/hc/en-us/services/123456">
       <IconContainer>
         <ShapesIcon />
       </IconContainer>

@@ -55,7 +55,7 @@ const IconContainer = styled.div `
   align-content: center;
 `;
 const ServiceCatalogListItem = ({ serviceItem, }) => {
-    return (jsxRuntimeExports.jsxs(ItemContainer, { href: "/hc/en-us/p/service_catalog_item", children: [jsxRuntimeExports.jsx(IconContainer, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(TextContainer$1, { children: [jsxRuntimeExports.jsx(ItemTitle$1, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
+    return (jsxRuntimeExports.jsxs(ItemContainer, { href: "/hc/en-us/services/123456", children: [jsxRuntimeExports.jsx(IconContainer, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(TextContainer$1, { children: [jsxRuntimeExports.jsx(ItemTitle$1, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
 };
 
 const SkeletonItem = styled.div `
