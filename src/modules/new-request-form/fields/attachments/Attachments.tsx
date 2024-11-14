@@ -4,6 +4,7 @@ import {
   Input,
   Label,
   Message,
+  FileList,
 } from "@zendeskgarden/react-forms";
 import {
   Close,
@@ -202,15 +203,17 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
         )}
         <Input {...getInputProps()} />
       </FileUpload>
-      {files.map((file) => (
-        <FileListItem
-          key={file.status === "pending" ? file.id : file.value.id}
-          file={file}
-          onRemove={() => {
-            handleRemove(file);
-          }}
-        />
-      ))}
+      <FileList>
+        {files.map((file) => (
+          <FileListItem
+            key={file.status === "pending" ? file.id : file.value.id}
+            file={file}
+            onRemove={() => {
+              handleRemove(file);
+            }}
+          />
+        ))}
+      </FileList>
       {files.map(
         (file) =>
           file.status === "uploaded" && (
