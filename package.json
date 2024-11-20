@@ -110,5 +110,9 @@
       "@commitlint/config-conventional"
     ]
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@1.22.22",
+  "volta": {
+    "yarn": "1.22.22",
+    "node": "20.10.0"
+  }
 }
