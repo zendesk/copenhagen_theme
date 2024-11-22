@@ -14,6 +14,9 @@
   const settings = {{json settings}};
   const container = document.getElementById("service-catalog-item");
 
+  // Extract the ID from the URL
+  const id = window.location.pathname.split("/").pop()
+
   const props = {
     baseLocale: {{json help_center.base_locale}},
     hasAtMentions: {{json help_center.at_mentions_enabled}},
@@ -21,6 +24,7 @@
     userId: {{json user.id}},
     brandId: {{json brand.id}},
     organizations: {{json user.organizations}},
+    serviceCatalogItemId: id,
   }
 
   renderServiceCatalogItem(container, settings, props);

@@ -83,24 +83,26 @@ const fetchTicketFields = async (
 };
 
 export function useItemFormFields(
-  serviceCatalogItem: ServiceCatalogItem,
+  serviceCatalogItem: ServiceCatalogItem | undefined,
   baseLocale: string
 ) {
   const [requestFields, setRequestFields] = useState<Field[]>([]);
 
   useEffect(() => {
     const fetchAndSetFields = async () => {
-      try {
-        await fetchTicketFields(serviceCatalogItem.form_id, baseLocale).then(
-          (ticketFields) => setRequestFields(ticketFields)
-        );
-      } catch (error) {
-        console.error("Error fetching ticket fields:", error);
+      if (serviceCatalogItem && serviceCatalogItem.form_id) {
+        try {
+          await fetchTicketFields(serviceCatalogItem.form_id, baseLocale).then(
+            (ticketFields) => setRequestFields(ticketFields)
+          );
+        } catch (error) {
+          console.error("Error fetching ticket fields:", error);
+        }
       }
     };
 
     fetchAndSetFields();
-  }, [baseLocale, serviceCatalogItem.form_id]);
+  }, [baseLocale, serviceCatalogItem]);
 
   const handleChange = useCallback(
     (field: Field, value: Field["value"]) => {

@@ -55,7 +55,7 @@ const IconContainer = styled.div `
   align-content: center;
 `;
 const ServiceCatalogListItem = ({ serviceItem, }) => {
-    return (jsxRuntimeExports.jsxs(ItemContainer, { href: "/hc/en-us/services/123456", children: [jsxRuntimeExports.jsx(IconContainer, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(TextContainer$1, { children: [jsxRuntimeExports.jsx(ItemTitle$1, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
+    return (jsxRuntimeExports.jsxs(ItemContainer, { href: `/hc/en-us/services/${serviceItem.id}`, children: [jsxRuntimeExports.jsx(IconContainer, { children: jsxRuntimeExports.jsx(SvgShapesFill, {}) }), jsxRuntimeExports.jsxs(TextContainer$1, { children: [jsxRuntimeExports.jsx(ItemTitle$1, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { children: serviceItem.description })] })] }));
 };
 
 const SkeletonItem = styled.div `
@@ -118,6 +118,7 @@ const Container$1 = styled.div `
 const StyledGrid = styled(Grid) `
   padding: 0;
 `;
+const PAGE_SIZE = 16;
 function ServiceCatalogList({ helpCenterPath, }) {
     const [serviceCatalogItems, setServiceCatalogItems] = reactExports.useState([]);
     const [meta, setMeta] = reactExports.useState(null);
@@ -129,19 +130,12 @@ function ServiceCatalogList({ helpCenterPath, }) {
             setIsLoading(true);
             try {
                 const response = await fetch(currentCursor
-                    ? `/api/v2/custom_objects/service_catalog_item/records?page[size]=16&${currentCursor}`
-                    : `/api/v2/custom_objects/service_catalog_item/records?page[size]=16`);
+                    ? `/api/v2/help_center/service_catalog/items?page[size]=${PAGE_SIZE}&${currentCursor}`
+                    : `/api/v2/help_center/service_catalog/items?page[size]=${PAGE_SIZE}`);
                 const data = await response.json();
                 if (response.ok) {
-                    const records = data.custom_object_records.map(({ id, name, custom_object_fields, custom_object_key, }) => ({
-                        id,
-                        name,
-                        description: custom_object_fields.description,
-                        form_id: custom_object_fields.form_id,
-                        custom_object_key,
-                    }));
                     setMeta(data.meta);
-                    setServiceCatalogItems(records);
+                    setServiceCatalogItems(data.service_catalog_items);
                     setIsLoading(false);
                 }
             }
@@ -230,15 +224,17 @@ function useItemFormFields(serviceCatalogItem, baseLocale) {
     const [requestFields, setRequestFields] = reactExports.useState([]);
     reactExports.useEffect(() => {
         const fetchAndSetFields = async () => {
-            try {
-                await fetchTicketFields(serviceCatalogItem.form_id, baseLocale).then((ticketFields) => setRequestFields(ticketFields));
-            }
-            catch (error) {
-                console.error("Error fetching ticket fields:", error);
+            if (serviceCatalogItem && serviceCatalogItem.form_id) {
+                try {
+                    await fetchTicketFields(serviceCatalogItem.form_id, baseLocale).then((ticketFields) => setRequestFields(ticketFields));
+                }
+                catch (error) {
+                    console.error("Error fetching ticket fields:", error);
+                }
             }
         };
         fetchAndSetFields();
-    }, [baseLocale, serviceCatalogItem.form_id]);
+    }, [baseLocale, serviceCatalogItem]);
     const handleChange = reactExports.useCallback((field, value) => {
         setRequestFields(requestFields.map((ticketField) => ticketField.name === field.name
             ? { ...ticketField, value }
@@ -256,10 +252,20 @@ const ItemRequestForm = ({ requestFields, baseLocale, hasAtMentions, userRole, u
     return (jsxRuntimeExports.jsx(Form, { children: requestFields.map((field) => (jsxRuntimeExports.jsx(TicketField, { field: field, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange }, field.id))) }));
 };
 
+const DescriptionWrapper = styled.div `
+  border-bottom: ${(props) => props.theme.borders.sm}
+    ${(props) => getColorV8("grey", 300, props.theme)};
+  padding-bottom: ${(props) => props.theme.space.lg};
+  margin-right: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-right: 0;
+  }
+`;
 const ItemTitle = styled(XXXL) `
   font-weight: ${(props) => props.theme.fontWeights.semibold};
 `;
-const CollapsibleDescription = styled.div `
+const CollapsibleText = styled.div `
   font-size: ${(props) => props.theme.fontSizes.md};
   text-align: left;
   display: -webkit-box;
@@ -273,6 +279,49 @@ const CollapsibleDescription = styled.div `
     padding-right: 0;
   }
 `;
+const ToggleButton = styled(Button) `
+  margin-top: ${(props) => props.theme.space.sm};
+  font-size: ${(props) => props.theme.fontSizes.md};
+  &:hover {
+    text-decoration: none;
+  }
+`;
+const DESCRIPTION_LENGTH_THRESHOLD = 270;
+const CollapsibleDescription = ({ title, description, }) => {
+    const [isExpanded, setIsExpanded] = reactExports.useState(false);
+    const { t } = useTranslation();
+    const showToggleButton = description.length > DESCRIPTION_LENGTH_THRESHOLD;
+    const toggleDescription = () => {
+        setIsExpanded(!isExpanded);
+    };
+    return (jsxRuntimeExports.jsxs(DescriptionWrapper, { children: [jsxRuntimeExports.jsx(ItemTitle, { tag: "h1", children: title }), jsxRuntimeExports.jsx(CollapsibleText, { expanded: isExpanded || !showToggleButton, children: description }), showToggleButton && (jsxRuntimeExports.jsxs(ToggleButton, { isLink: true, onClick: toggleDescription, children: [isExpanded
+                        ? t("service-catalog.item.read-less", "Read less")
+                        : t("service-catalog.item.read-more", "Read more"), jsxRuntimeExports.jsx(Button.EndIcon, { children: isExpanded ? jsxRuntimeExports.jsx(SvgChevronUpFill, {}) : jsxRuntimeExports.jsx(SvgChevronDownFill, {}) })] }))] }));
+};
+
+function useServiceCatalogItem(serviceItemId) {
+    const [serviceCatalogItem, setServiceCatalogItem] = reactExports.useState();
+    reactExports.useEffect(() => {
+        const fetchServiceCatalogItem = async () => {
+            try {
+                const response = await fetch(`/api/v2/help_center/service_catalog/items/${serviceItemId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setServiceCatalogItem(data.service_catalog_item);
+                }
+                else {
+                    throw new Error("Error fetching service catalog item");
+                }
+            }
+            catch (error) {
+                console.error(error);
+            }
+        };
+        fetchServiceCatalogItem();
+    }, [serviceItemId]);
+    return serviceCatalogItem;
+}
+
 const Container = styled.div `
   display: flex;
   flex-direction: row;
@@ -288,16 +337,6 @@ const LeftColumn = styled.div `
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg};
-  margin-right: ${(props) => props.theme.space.xl};
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-right: 0;
-  }
-`;
-const DescriptionWrapper = styled.div `
-  border-bottom: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
-  padding-bottom: ${(props) => props.theme.space.lg};
   margin-right: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
@@ -325,13 +364,6 @@ const RightColumn = styled.div `
     align-items: center;
   }
 `;
-const ToggleButton = styled(Button) `
-  margin-top: ${(props) => props.theme.space.sm};
-  font-size: ${(props) => props.theme.fontSizes.md};
-  &:hover {
-    text-decoration: none;
-  }
-`;
 const ButtonWrapper = styled.div `
   padding: ${(props) => props.theme.space.lg};
   border: ${(props) => props.theme.borders.sm}
@@ -353,34 +385,18 @@ const ButtonWrapper = styled.div `
     right: 0;
   }
 `;
-function ServiceCatalogItemPage({ serviceCatalogItem, baseLocale, hasAtMentions, userRole, organizations, userId, brandId, }) {
-    const [isExpanded, setIsExpanded] = reactExports.useState(false);
+function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMentions, userRole, organizations, userId, brandId, }) {
+    const serviceCatalogItem = useServiceCatalogItem(serviceCatalogItemId);
     const { requestFields, handleChange } = useItemFormFields(serviceCatalogItem, baseLocale);
     const { t } = useTranslation();
     const defaultOrganizationId = organizations.length > 0 && organizations[0]?.id
         ? organizations[0]?.id?.toString()
         : null;
-    const toggleDescription = () => {
-        setIsExpanded(!isExpanded);
-    };
-    return (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsxs(DescriptionWrapper, { children: [jsxRuntimeExports.jsx(ItemTitle, { tag: "h1", children: serviceCatalogItem.name }), jsxRuntimeExports.jsx(CollapsibleDescription, { expanded: isExpanded, children: serviceCatalogItem.description }), jsxRuntimeExports.jsxs(ToggleButton, { isLink: true, onClick: toggleDescription, children: [isExpanded
-                                        ? t("service-catalog.item.read-less", "Read less")
-                                        : t("service-catalog.item.read-more", "Read more"), jsxRuntimeExports.jsx(Button.EndIcon, { children: isExpanded ? jsxRuntimeExports.jsx(SvgChevronUpFill, {}) : jsxRuntimeExports.jsx(SvgChevronDownFill, {}) })] })] }), jsxRuntimeExports.jsx(FromFieldsWrapper, { children: jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange }) })] }), jsxRuntimeExports.jsx(RightColumn, { children: jsxRuntimeExports.jsx(ButtonWrapper, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, size: "large", isStretched: true, children: t("service-catalog.item.submit-button", "Submit request") }) }) })] }));
+    return serviceCatalogItem ? (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(CollapsibleDescription, { title: serviceCatalogItem.name, description: serviceCatalogItem.description }), jsxRuntimeExports.jsx(FromFieldsWrapper, { children: jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange }) })] }), jsxRuntimeExports.jsx(RightColumn, { children: jsxRuntimeExports.jsx(ButtonWrapper, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, size: "large", isStretched: true, children: t("service-catalog.item.submit-button", "Submit request") }) }) })] })) : null;
 }
 
-//data mocked for now
-const serviceCatalogItem = {
-    id: 1,
-    name: "Apple MacBook Pro",
-    description: "Request for a new Apple MacBook Pro. The MacBook Pro is equipped with Apple's powerful M3 Pro chip, featuring a 12-core CPU, 18-core GPU, and a 16-core Neural Engine, making it ideal for high-performance tasks. It comes with a 140W USB-C power adapter, three Thunderbolt 4 ports, HDMI, SDXC card slot, headphone jack, and MagSafe 3 port. The backlit Magic Keyboard with Touch ID enhances security and usability. Exclusively for Engineering, Design, and Marketing departments, the 16-inch model includes up to 36+ GB of memory and 1+ TB of storage, while other departments can request machines with up to 36 GB of memory and 512 GB of storage.",
-    form_id: "8448527509374",
-};
 async function renderServiceCatalogItem(container, settings, props) {
-    const extendedProps = {
-        ...props,
-        serviceCatalogItem: serviceCatalogItem,
-    };
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogItemPage, { ...extendedProps }) }), container);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogItemPage, { ...props }) }), container);
 }
 
 export { renderServiceCatalogItem, renderServiceCatalogList };
