@@ -29,7 +29,6 @@ function ParentTicketField({ field, }) {
     return jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: value });
 }
 
-// NOTE: This is a temporary handling of the CSRF token
 async function fetchCsrfToken$1() {
     const response = await fetch("/api/v2/help_center/sessions.json");
     const { current_session } = await response.json();

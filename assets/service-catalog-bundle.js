@@ -1,4 +1,4 @@
-import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, r as reactExports, ai as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as XXXL, ak as SvgChevronUpFill, al as SvgChevronDownFill } from 'shared';
+import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, r as reactExports, ai as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as XXXL, ak as SvgChevronUpFill, al as SvgChevronDownFill, c as useToast, a2 as addFlashNotification, N as Notification, T as Title, d as Close } from 'shared';
 import { g as getCustomObjectKey, a as TicketField } from 'ticket-fields';
 
 const ItemContainer = styled.a `
@@ -183,7 +183,10 @@ const formatField = (field) => {
 };
 const isAssociatedLookupField = (field) => {
     const customObjectKey = getCustomObjectKey(field.relationship_target_type);
-    return customObjectKey === "service_catalog_item";
+    if (customObjectKey === "service_catalog_item") {
+        return true;
+    }
+    return false;
 };
 const fetchTicketFields = async (form_id, baseLocale) => {
     try {
@@ -201,32 +204,41 @@ const fetchTicketFields = async (form_id, baseLocale) => {
         const fieldsData = await fieldsResponse.json();
         const ids = formData.ticket_form.ticket_field_ids;
         const ticketFieldsData = fieldsData.ticket_fields;
+        let associatedLookupField = null;
         const requestFields = ids
             .map((id) => {
             const ticketField = ticketFieldsData.find((field) => field.id === id);
             if (ticketField &&
-                !(ticketField.type === "lookup" &&
-                    isAssociatedLookupField(ticketField)) &&
+                ticketField.type !== "subject" &&
+                ticketField.type !== "description" &&
                 ticketField.editable_in_portal) {
+                if (ticketField.type === "lookup" &&
+                    isAssociatedLookupField(ticketField)) {
+                    associatedLookupField = ticketField;
+                    return null;
+                }
                 return formatField(ticketField);
             }
             return null;
         })
             .filter(Boolean);
-        return requestFields;
+        return { requestFields, associatedLookupField };
     }
     catch (error) {
         console.error("Error fetching ticket fields:", error);
-        return [];
+        return { requestFields: [], associatedLookupField: null };
     }
 };
 function useItemFormFields(serviceCatalogItem, baseLocale) {
     const [requestFields, setRequestFields] = reactExports.useState([]);
+    const [associatedLookupField, setAssociatedLookupField] = reactExports.useState();
     reactExports.useEffect(() => {
         const fetchAndSetFields = async () => {
             if (serviceCatalogItem && serviceCatalogItem.form_id) {
                 try {
-                    await fetchTicketFields(serviceCatalogItem.form_id, baseLocale).then((ticketFields) => setRequestFields(ticketFields));
+                    const { requestFields, associatedLookupField } = await fetchTicketFields(serviceCatalogItem.form_id, baseLocale);
+                    setRequestFields(requestFields);
+                    setAssociatedLookupField(associatedLookupField);
                 }
                 catch (error) {
                     console.error("Error fetching ticket fields:", error);
@@ -240,17 +252,13 @@ function useItemFormFields(serviceCatalogItem, baseLocale) {
             ? { ...ticketField, value }
             : ticketField));
     }, [requestFields]);
-    return { requestFields, handleChange };
+    return {
+        requestFields,
+        associatedLookupField,
+        setRequestFields,
+        handleChange,
+    };
 }
-
-const Form = styled.form `
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.theme.space.md};
-`;
-const ItemRequestForm = ({ requestFields, baseLocale, hasAtMentions, userRole, userId, brandId, defaultOrganizationId, handleChange, }) => {
-    return (jsxRuntimeExports.jsx(Form, { children: requestFields.map((field) => (jsxRuntimeExports.jsx(TicketField, { field: field, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange }, field.id))) }));
-};
 
 const DescriptionWrapper = styled.div `
   border-bottom: ${(props) => props.theme.borders.sm}
@@ -299,6 +307,77 @@ const CollapsibleDescription = ({ title, description, }) => {
                         : t("service-catalog.item.read-more", "Read more"), jsxRuntimeExports.jsx(Button.EndIcon, { children: isExpanded ? jsxRuntimeExports.jsx(SvgChevronUpFill, {}) : jsxRuntimeExports.jsx(SvgChevronDownFill, {}) })] }))] }));
 };
 
+const Form = styled.form `
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: ${(props) => props.theme.space.md};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    flex-direction: column;
+  }
+`;
+const FieldsContainer = styled.div `
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.md};
+  margin-right: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-right: 0;
+  }
+`;
+const ButtonWrapper = styled.div `
+  flex: 1;
+  margin-left: ${(props) => props.theme.space.xl};
+  padding: ${(props) => props.theme.space.lg};
+  border: ${(props) => props.theme.borders.sm}
+    ${(props) => getColorV8("grey", 300, props.theme)};
+  height: fit-content;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    position: sticky;
+    top: 0;
+    background: ${(props) => props.theme.colors.background};
+    padding: ${(props) => props.theme.space.lg};
+    border: none;
+    border-top: ${(props) => props.theme.borders.sm}
+      ${(props) => getColorV8("grey", 300, props.theme)};
+    width: 100vw;
+    margin-left: 0;
+  }
+`;
+const RightColumn = styled.div `
+  flex: 1;
+  margin-left: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    position: sticky;
+    bottom: 0;
+    margin-left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+const LeftColumn = styled.div `
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.lg};
+  margin-right: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-right: 0;
+  }
+`;
+function ItemRequestForm({ requestFields, serviceCatalogItem, baseLocale, hasAtMentions, userRole, userId, brandId, defaultOrganizationId, handleChange, onSubmit, }) {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsxs(Form, { onSubmit: onSubmit, noValidate: true, children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(CollapsibleDescription, { title: serviceCatalogItem.name, description: serviceCatalogItem.description }), jsxRuntimeExports.jsx(FieldsContainer, { children: requestFields.map((field) => (jsxRuntimeExports.jsx(TicketField, { field: field, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange }, field.id))) })] }), jsxRuntimeExports.jsx(RightColumn, { children: jsxRuntimeExports.jsx(ButtonWrapper, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, size: "large", isStretched: true, type: "submit", children: t("service-catalog.item.submit-button", "Submit request") }) }) })] }));
+}
+
 function useServiceCatalogItem(serviceItemId) {
     const [serviceCatalogItem, setServiceCatalogItem] = reactExports.useState();
     reactExports.useEffect(() => {
@@ -322,77 +401,100 @@ function useServiceCatalogItem(serviceItemId) {
     return serviceCatalogItem;
 }
 
+async function submitServiceItemRequest(serviceCatalogItem, requestFields, associatedLookupField, baseLocale) {
+    try {
+        const currentUserRequest = await fetch("/api/v2/users/me.json");
+        if (!currentUserRequest.ok) {
+            throw new Error("Error fetching current user data");
+        }
+        const currentUser = await currentUserRequest.json();
+        const customFields = requestFields.map((field) => {
+            return {
+                id: field.id,
+                value: field.value,
+            };
+        });
+        const response = await fetch("/api/v2/requests", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": currentUser.user.authenticity_token,
+            },
+            body: JSON.stringify({
+                request: {
+                    subject: `Service request: ${serviceCatalogItem.name}`,
+                    comment: {
+                        body: `Hi, I would like to request ${serviceCatalogItem.name}. ${serviceCatalogItem.description.substring(0, 100)}`,
+                    },
+                    ticket_form_id: serviceCatalogItem.form_id,
+                    custom_fields: [
+                        ...customFields,
+                        { id: associatedLookupField.id, value: serviceCatalogItem.id },
+                    ],
+                    via: {
+                        channel: "web form",
+                        source: 50,
+                    },
+                    locale: baseLocale,
+                },
+            }),
+        });
+        return response;
+    }
+    catch (error) {
+        console.error("Error submitting service request:", error);
+        return;
+    }
+}
+
 const Container = styled.div `
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  gap: ${(props) => props.theme.space.xxl};
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex-direction: column;
-  }
-`;
-const LeftColumn = styled.div `
-  flex: 2;
-  display: flex;
   flex-direction: column;
-  gap: ${(props) => props.theme.space.lg};
-  margin-right: ${(props) => props.theme.space.xl};
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-right: 0;
-  }
-`;
-const FromFieldsWrapper = styled.div `
-  margin-right: ${(props) => props.theme.space.xl};
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-right: 0;
-  }
-`;
-const RightColumn = styled.div `
-  flex: 1;
-  margin-left: ${(props) => props.theme.space.xl};
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    position: sticky;
-    bottom: 0;
-    margin-left: 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
-const ButtonWrapper = styled.div `
-  padding: ${(props) => props.theme.space.lg};
-  border: ${(props) => props.theme.borders.sm}
-    ${(props) => getColorV8("grey", 300, props.theme)};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    position: sticky;
-    top: 0;
-    background: ${(props) => props.theme.colors.background};
-    padding: ${(props) => props.theme.space.lg};
-    border: none;
-    border-top: ${(props) => props.theme.borders.sm}
-      ${(props) => getColorV8("grey", 300, props.theme)};
-    width: 100vw;
-    left: 0;
-    right: 0;
-  }
 `;
 function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMentions, userRole, organizations, userId, brandId, }) {
     const serviceCatalogItem = useServiceCatalogItem(serviceCatalogItemId);
-    const { requestFields, handleChange } = useItemFormFields(serviceCatalogItem, baseLocale);
+    const { requestFields, associatedLookupField, setRequestFields, handleChange, } = useItemFormFields(serviceCatalogItem, baseLocale);
     const { t } = useTranslation();
+    const { addToast } = useToast();
+    const notifyError = () => {
+        addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: "error", children: [jsxRuntimeExports.jsx(Title, { children: t("service-catalog.item.service-request-error-title", "Service couldn't be submitted") }), t("service-catalog.item.service-request-error-message", "Give it a moment and try it again"), jsxRuntimeExports.jsx(Close, { "aria-label": t("new-request-form.close-label", "Close"), onClick: close })] })));
+    };
+    const handleRequestSubmit = async (e) => {
+        e.preventDefault();
+        if (!serviceCatalogItem || !associatedLookupField) {
+            return;
+        }
+        const response = await submitServiceItemRequest(serviceCatalogItem, requestFields, associatedLookupField, baseLocale);
+        if (!response?.ok) {
+            if (response?.status === 422) {
+                const errorData = await response.json();
+                const invalidFieldErrors = errorData.details.base;
+                const updatedFields = requestFields.map((field) => {
+                    const errorField = invalidFieldErrors.find((errorField) => errorField.field_key === field.id);
+                    return errorField
+                        ? { ...field, error: errorField.description }
+                        : field;
+                });
+                setRequestFields(updatedFields);
+            }
+            else {
+                notifyError();
+            }
+        }
+        else if (response && response.ok) {
+            addFlashNotification({
+                type: "success",
+                message: t("service-catalog.item.service-request-submitted", "Service request submitted"),
+            });
+            const data = await response?.json();
+            const redirectUrl = "/hc/requests/" + data.request.id;
+            window.location.href = redirectUrl;
+        }
+    };
     const defaultOrganizationId = organizations.length > 0 && organizations[0]?.id
         ? organizations[0]?.id?.toString()
         : null;
-    return serviceCatalogItem ? (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(CollapsibleDescription, { title: serviceCatalogItem.name, description: serviceCatalogItem.description }), jsxRuntimeExports.jsx(FromFieldsWrapper, { children: jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange }) })] }), jsxRuntimeExports.jsx(RightColumn, { children: jsxRuntimeExports.jsx(ButtonWrapper, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, size: "large", isStretched: true, children: t("service-catalog.item.submit-button", "Submit request") }) }) })] })) : null;
+    return serviceCatalogItem ? (jsxRuntimeExports.jsx(Container, { children: serviceCatalogItem && (jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, serviceCatalogItem: serviceCatalogItem, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, onSubmit: handleRequestSubmit })) })) : null;
 }
 
 async function renderServiceCatalogItem(container, settings, props) {
