@@ -1,3 +1,10 @@
+## [4.2.4](https://github.com/zendesk/copenhagen_theme/compare/v4.2.3...v4.2.4) (2024-11-25)
+
+
+### Bug Fixes
+
+* add aria label for removing attachment ([6127e57](https://github.com/zendesk/copenhagen_theme/commit/6127e579dc3dec233b39eefbceb76137da3b95aa))
+
 ## [4.2.3](https://github.com/zendesk/copenhagen_theme/compare/v4.2.2...v4.2.3) (2024-10-30)
 
 
