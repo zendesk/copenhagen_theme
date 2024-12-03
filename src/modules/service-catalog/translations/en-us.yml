@@ -54,4 +54,24 @@ parts:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
-      value: "Submit request"            
+      value: "Submit request"   
+  - translation:
+      key: "service-catalog.item.service-request-submitted"
+      title: "Success notification after submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1aQ1IdVF-RzhWslCtIAsYb3vAL9kt4gUE/view?usp=drive_link"
+      value: "Service request submitted"
+  - translation:
+      key: "service-catalog.item.service-request-error-title"
+      title: "Error notification title after unsuccessfulsubmitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
+      value: "Service couldn't be submitted"           
+  - translation:
+      key: "service-catalog.item.service-request-error-message"
+      title: "Error notification after unsuccessfulsubmitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
+      value: "Give it a moment and try it again"  
+  - translation:
+      key: "service-catalog.item.service-request-error.close-label"
+      title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
+      screenshot: ""
+      value: "Close"  

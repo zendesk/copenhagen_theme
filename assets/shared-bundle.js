@@ -578,6 +578,7 @@ var ReactDOM = /*@__PURE__*/getDefaultExportFromCjs(reactDomExports);
 
 const FLASH_NOTIFICATIONS_KEY = "HC_FLASH_NOTIFICATIONS";
 
+//These notifications are shown only on the next page when the user is redirected.
 function addFlashNotification(notification) {
     try {
         const currentValue = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
