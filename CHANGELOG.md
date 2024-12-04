@@ -1,3 +1,10 @@
+## [4.2.5](https://github.com/zendesk/copenhagen_theme/compare/v4.2.4...v4.2.5) (2024-12-04)
+
+
+### Bug Fixes
+
+* line-break strict for correct text wrapping ([1c568c7](https://github.com/zendesk/copenhagen_theme/commit/1c568c7b53aca9471e1b50850e6869145a9400c9))
+
 ## [4.2.4](https://github.com/zendesk/copenhagen_theme/compare/v4.2.3...v4.2.4) (2024-11-25)
 
 
