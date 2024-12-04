@@ -1,0 +1,88 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
+title: "Copenhagen Theme Service catalog"
+packages:
+  - "service-catalog"
+parts:
+  - translation:
+      key: "service-catalog.pagination.previous"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Previous"
+  - translation:
+      key: "service-catalog.pagination.next"
+      title: "Pagination button"
+      screenshot: "https://drive.google.com/file/d/1mTkDVLmlIztGl_uy3ICXn46-TF4wj1YA/view?usp=drive_link"
+      value: "Next"
+  - translation:
+      key: "service-catalog.empty-state.no-services"
+      title: "Empty state no services"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "No services in sight"    
+  - translation:
+      key: "service-catalog.empty-state.description"
+      title: "Empty state description"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "Once services are added to catalog, you'll find them here."    
+  - translation:
+      key: "service-catalog.empty-state.support-article-link"
+      title: "Empty state support article link"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "Learn about the service catalog"    
+  - translation:
+      key: "service-catalog.empty-state.go-to-homepage"
+      title: "Empty state go to homepage link"
+      screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
+      value: "Go to the homepage"    
+  - translation:
+      key: "service-catalog.item.read-more"
+      title: "Button to show whole description of the service catalog item"
+      screenshot: "https://drive.google.com/file/d/12NmVTiEng1AUB20Hj68WrU6Q2ZBSnwVd/view?usp=drive_link"
+      value: "Read more"
+  - translation:
+      key: "service-catalog.item.read-less"
+      title: "Button to hide part of the description of the service catalog item"
+      screenshot: "https://drive.google.com/file/d/1BYDLuhii7aQs18TkKflGCpReb_UCKSeD/view?usp=drive_link"
+      value: "Read less"    
+  - translation:
+      key: "service-catalog.item.submit-button"
+      title: "Button to submit a request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
+      value: "Submit request"   
+  - translation:
+      key: "service-catalog.item.service-request-submitted"
+      title: "Success notification after submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1aQ1IdVF-RzhWslCtIAsYb3vAL9kt4gUE/view?usp=drive_link"
+      value: "Service request submitted"
+  - translation:
+      key: "service-catalog.item.service-request-error-title"
+      title: "Error notification title after unsuccessful submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
+      value: "Service couldn't be submitted"           
+  - translation:
+      key: "service-catalog.item.service-request-error-message"
+      title: "Error notification after unsuccessful submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
+      value: "Give it a moment and try it again"  
+  - translation:
+      key: "service-catalog.item.service-request-error.close-label"
+      title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
+      screenshot: ""
+      value: "Close"
+  - translation:
+      key: "service-catalog.service-list-error-title"
+      title: "Error notification title when there is problem with loading the list of services"
+      screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
+      value: "Services couldn't be loaded"           
+  - translation:
+      key: "service-catalog.service-list-error-message"
+      title: "Error notification when there is problem with loading the list of services"
+      screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
+      value: "Give it a moment and try it again"
+      
