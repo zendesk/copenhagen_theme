@@ -1,0 +1,37 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
+title: "Copenhagen Theme Ticket Fields"
+packages:
+  - "cph-theme-ticket-fields"
+parts:
+  - translation:
+      key: "cph-theme-ticket-fields.dropdown.empty-option"
+      title: "[A11Y] Hidden label for screen readers, describing an empty option in a dropdown"
+      screenshot: "https://drive.google.com/file/d/1enaOJceIEIVn_uYqvaF4AHlE1_RIpjqe/view?usp=drive_link"
+      value: "Select an option"
+  - translation:
+      key: "cph-theme-ticket-fields.lookup-field.loading-options"
+      title: "Message shown in combobox when searched options are loading"
+      screenshot: "https://drive.google.com/file/d/1_TeqU5hihEJb03q6adVI0-nuklYask1d/view?usp=drive_link"
+      value: "Loading items..."
+  - translation:
+      key: "cph-theme-ticket-fields.lookup-field.no-matches-found"
+      title: "Message shown in combobox when searched option is not found"
+      screenshot: "https://drive.google.com/file/d/1zwRLhFj0I0N0JV07O7wpoEZO5tBBK8JF/view?usp=drive_link"
+      value: "No matches found"
+  - translation:
+      key: "cph-theme-ticket-fields.lookup-field.placeholder"
+      title: "Placeholder shown in combobox, {{label}} will be replaced by field label. Alternative English for languages with grammar/declension issues: [Search label {{label}}]."
+      screenshot: "https://drive.google.com/file/d/1nlnj_I-L7bkIs9Hn93Btrl8bh_HJfL6h/view?usp=drive_link"
+      value: "Search {{label}}"
+  - translation:
+      key: "cph-theme-ticket-fields.credit-card-digits-hint"
+      title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
+      screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
+      value: "(Last 4 digits)"    
