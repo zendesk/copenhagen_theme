@@ -1,4 +1,4 @@
-import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, r as reactExports, ai as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as XXXL, ak as SvgChevronUpFill, al as SvgChevronDownFill, c as useToast, a2 as addFlashNotification, N as Notification, T as Title, d as Close } from 'shared';
+import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, r as reactExports, ai as CursorPagination, a4 as initI18next, a5 as loadTranslations, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as XXXL, ak as SvgChevronUpFill, al as SvgChevronDownFill, c as useToast, a2 as addFlashNotification, N as Notification, T as Title, d as Close } from 'shared';
 import { g as getCustomObjectKey, a as TicketField } from 'ticket-fields';
 
 const ItemContainer = styled.a `
@@ -163,7 +163,22 @@ function ServiceCatalogList({ helpCenterPath, }) {
                                 (currentCursor == null && !meta?.has_more), children: t("service-catalog.pagination.next", "Next") })] }))] })) }));
 }
 
-async function renderServiceCatalogList(container, settings, helpCenterPath) {
+function __variableDynamicImportRuntime0__$1(path) {
+  switch (path) {
+
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+async function renderServiceCatalogList(container, settings, helpCenterPath, baseLocale) {
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__$1(`./translations/locales/${baseLocale}.json`),
+        //() => import(`./ticket-fields/translations/locales/${baseLocale}.json`),
+    ]);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogList, { helpCenterPath: helpCenterPath }) }), container);
 }
 
@@ -497,7 +512,23 @@ function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMention
     return serviceCatalogItem ? (jsxRuntimeExports.jsx(Container, { children: serviceCatalogItem && (jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, serviceCatalogItem: serviceCatalogItem, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, onSubmit: handleRequestSubmit })) })) : null;
 }
 
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
 async function renderServiceCatalogItem(container, settings, props) {
+    const { baseLocale } = props;
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`),
+        //() => import(`./ticket-fields/translations/locales/${baseLocale}.json`),
+    ]);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogItemPage, { ...props }) }), container);
 }
 

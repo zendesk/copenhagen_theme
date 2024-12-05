@@ -927,7 +927,10 @@ function __variableDynamicImportRuntime0__(path) {
 async function renderNewRequestForm(settings, props, container) {
     const { baseLocale } = props;
     initI18next(baseLocale);
-    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`),
+        //() => import(`./ticket-fields/translations/locales/${baseLocale}.json`),
+    ]);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 
