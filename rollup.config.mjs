@@ -56,6 +56,10 @@ export default defineConfig([
           return "ticket-fields";
         }
 
+        if (id.includes("src/modules/error-boundary")) {
+          return "error-boundary";
+        }
+
         // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`
         const translationFileMatch = id.match(TRANSLATION_FILE_REGEX);
         if (translationFileMatch) {

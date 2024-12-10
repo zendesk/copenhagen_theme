@@ -37529,6 +37529,34 @@ CursorPagination.Next = Next;
 CursorPagination.Previous = Previous;
 CursorPagination.Last = Last;
 
+const ErrorScreen = () => {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx("h1", { children: t("cph-theme-error-boundary.title", "Something went wrong.") }), jsxRuntimeExports.jsx("p", { children: t("cph-theme-error-boundary.message", "Please try again later") })] }));
+};
+class ErrorBoundaryClass extends reactExports.Component {
+    constructor(props) {
+        super(props);
+        this.state = { error: null };
+    }
+    static getDerivedStateFromError(error) {
+        return { error: error };
+    }
+    componentDidCatch(error, errorInfo) {
+        if (error) {
+            console.error("ErrorBoundary caught an error", error, errorInfo);
+        }
+    }
+    render() {
+        if (this.state.error) {
+            return this.props.fallback || jsxRuntimeExports.jsx(ErrorScreen, {});
+        }
+        return this.props.children;
+    }
+}
+const ErrorBoundary = ({ children, fallback, }) => {
+    return (jsxRuntimeExports.jsx(ErrorBoundaryClass, { fallback: fallback, children: children }));
+};
+
 var _path$1;
 function _extends$1() { _extends$1 = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends$1.apply(this, arguments); }
 var SvgChevronUpFill = function SvgChevronUpFill(props) {
@@ -37557,4 +37585,4 @@ var SvgChevronDownFill = function SvgChevronDownFill(props) {
   })));
 };
 
-export { $e as $, Anchor as A, focusStyles as B, Checkbox as C, Datepicker as D, FauxInput as E, Field$1 as F, Tag$1 as G, Hint$1 as H, Input as I, SvgAlertWarningStroke as J, getColorV8 as K, Label$2 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Header$1 as Q, SvgCheckCircleStroke as R, Span as S, Title as T, useModalContainer as U, Modal as V, Body as W, Accordion as X, Paragraph as Y, Footer as Z, FooterItem as _, MediaInput as a, Button as a0, Close as a1, addFlashNotification as a2, Alert as a3, initI18next as a4, loadTranslations as a5, reactDomExports as a6, ThemeProviders as a7, createTheme as a8, FLASH_NOTIFICATIONS_KEY as a9, SvgShapesFill as aa, Grid as ab, Col as ac, Row as ad, Skeleton as ae, MD as af, SM as ag, LG as ah, CursorPagination as ai, XXXL as aj, SvgChevronUpFill as ak, SvgChevronDownFill as al, SvgCreditCardStroke as b, useToast as c, Close$3 as d, Textarea as e, Field as f, Label$1 as g, Hint as h, Combobox as i, jsxRuntimeExports as j, Message as k, OptGroup as l, debounce$2 as m, getDefaultExportFromCjs as n, commonjsGlobal as o, purify as p, FileList as q, reactExports as r, styled as s, File as t, useTranslation as u, Tooltip as v, mime as w, useDropzone as x, FileUpload as y, useGrid as z };
+export { $e as $, Anchor as A, focusStyles as B, Checkbox as C, Datepicker as D, FauxInput as E, Field$1 as F, Tag$1 as G, Hint$1 as H, Input as I, SvgAlertWarningStroke as J, getColorV8 as K, Label$2 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Header$1 as Q, SvgCheckCircleStroke as R, Span as S, Title as T, useModalContainer as U, Modal as V, Body as W, Accordion as X, Paragraph as Y, Footer as Z, FooterItem as _, MediaInput as a, Button as a0, Close as a1, addFlashNotification as a2, Alert as a3, initI18next as a4, loadTranslations as a5, reactDomExports as a6, ThemeProviders as a7, createTheme as a8, FLASH_NOTIFICATIONS_KEY as a9, SvgShapesFill as aa, Grid as ab, Col as ac, Row as ad, Skeleton as ae, MD as af, SM as ag, LG as ah, CursorPagination as ai, ErrorBoundary as aj, XXXL as ak, SvgChevronUpFill as al, SvgChevronDownFill as am, SvgCreditCardStroke as b, useToast as c, Close$3 as d, Textarea as e, Field as f, Label$1 as g, Hint as h, Combobox as i, jsxRuntimeExports as j, Message as k, OptGroup as l, debounce$2 as m, getDefaultExportFromCjs as n, commonjsGlobal as o, purify as p, FileList as q, reactExports as r, styled as s, File as t, useTranslation as u, Tooltip as v, mime as w, useDropzone as x, FileUpload as y, useGrid as z };
