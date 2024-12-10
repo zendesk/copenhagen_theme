@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import type { ServiceCatalogItem } from "./data-types/ServiceCatalogItem";
 
-export function useServiceCatalogItem(
-  serviceItemId: number
-): ServiceCatalogItem | undefined {
+export function useServiceCatalogItem(serviceItemId: number): {
+  serviceCatalogItem: ServiceCatalogItem | undefined;
+  errorFetchingItem: unknown;
+} {
   const [serviceCatalogItem, setServiceCatalogItem] = useState<
     ServiceCatalogItem | undefined
   >();
+  const [errorFetchingItem, setError] = useState<unknown>(null);
 
   useEffect(() => {
     const fetchServiceCatalogItem = async () => {
@@ -21,11 +23,11 @@ export function useServiceCatalogItem(
           throw new Error("Error fetching service catalog item");
         }
       } catch (error) {
-        console.error(error);
+        setError(error);
       }
     };
     fetchServiceCatalogItem();
   }, [serviceItemId]);
 
-  return serviceCatalogItem;
+  return { serviceCatalogItem, errorFetchingItem };
 }

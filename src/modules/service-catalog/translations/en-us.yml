@@ -74,4 +74,14 @@ parts:
       key: "service-catalog.item.service-request-error.close-label"
       title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
       screenshot: ""
-      value: "Close"  
+      value: "Close"
+  - translation:
+      key: "service-catalog.service-list-error-title"
+      title: "Error notification title when there is problem with loading the list of services"
+      screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
+      value: "Services couldn't be loaded"           
+  - translation:
+      key: "service-catalog.service-list-error-message"
+      title: "Error notification when there is problem with loading the list of services"
+      screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
+      value: "Give it a moment and try it again"
