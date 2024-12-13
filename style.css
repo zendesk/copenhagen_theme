@@ -360,12 +360,21 @@ ul {
   white-space: nowrap;
 }
 
-.row {
+.bg-subtle {
+  background-color: #f8f8f8;
+}
+
+.bg-neutral {
+  background-color: #ffffff;
+}
+
+.row, .row-cols-3 {
+  display: flex;
   margin-right: -8px;
   margin-left: -8px;
 }
 
-.row > * {
+.row > *, .row-cols-3 > * {
   padding-right: 8px;
   padding-left: 8px;
 }
@@ -404,6 +413,7 @@ ul {
 .category-thumbnail .category-copy .category-title {
   font-size: 1.125em;
   font-weight: bold;
+  display: block;
 }
 .category-thumbnail .category-copy .category-description {
   font-size: 1em;

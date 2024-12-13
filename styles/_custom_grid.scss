@@ -1,6 +1,7 @@
 @use "sass:map";
 
 .row {
+    display: flex;
     margin-right: calc(-.5 * $gutter);
     margin-left: calc(-.5 * $gutter);
 }
@@ -10,10 +11,16 @@
     padding-left: calc($gutter * .5);
 }
 
-.row-cols-3 > * {
-    flex: 0 0 auto;
-    width: 33.33333333%;
+.row-cols-3 {
+
+    @extend .row;
+
+    & > * {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
 }
+
 
 @media (min-width: map.get($breakpoints, md)) {
     .row-cols-md-3>* {

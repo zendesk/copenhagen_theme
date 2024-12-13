@@ -22,16 +22,17 @@
       <div class="categories-list row-cols-md-3">
         {{#each categories}}
           {{#if ../has_multiple_categories}}
-
-            <div class="category-thumbnail">
-              <div class="category-icon">
-                <img src="{{../settings.category_icon}}">
-              </div>
-              <div class="category-copy">
-                <a class="category-link" href="{{url}}">
-                <span class="category-title">{{name}}</span>
-                <span class="category-description">{{excerpt description}}</span>
-                </a>
+            <div class="category-container">
+              <div class="category-thumbnail bg-subtle">
+                <div class="category-icon">
+                  <img src="{{../settings.category_icon}}">
+                </div>
+                <div class="category-copy">
+                  <a class="category-link" href="{{url}}">
+                  <span class="category-title">{{name}}</span>
+                  <span class="category-description">{{excerpt description}}</span>
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -43,15 +44,17 @@
             </li> -->
           {{else}}
             {{#each sections}}
-            <div class="category-thumbnail">
-              <div class="category-icon">
-                <img src="{{../../settings.category_icon}}">
-              </div>
-              <div class="category-copy">
-                <a class="category-link" href="{{url}}">
-                <span class="category-title">{{name}}</span>
-                <span class="category-description">{{excerpt description}}</span>
-                </a>
+            <div class="category-container">
+              <div class="category-thumbnail bg-subtle">
+                <div class="category-icon">
+                  <img src="{{../../settings.category_icon}}">
+                </div>
+                <div class="category-copy">
+                  <a class="category-link" href="{{url}}">
+                  <span class="category-title">{{name}}</span>
+                  <span class="category-description">{{excerpt description}}</span>
+                  </a>
+                </div>
               </div>
             </div>
             <!--
