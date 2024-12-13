@@ -1,21 +1,39 @@
-.category-thumbnail {
-    position: relative;
-    display: flex;
-    justify-content: stretch;
+.categories-list {
 
-    .category-icon {
-        width: 50px;
-    }
+    @extend .row-cols-3;
 
-    .category-copy {
-        width: auto;
+    .category-thumbnail {
+        position: relative;
+        display: flex;
+        justify-content: stretch;
+        padding: $gutter;
 
-        .category-title {
-            font-size: $font-size-h4;
+        .category-icon {
+            width: 23px;
+            margin-right: $gutter;
         }
 
-        .category-description {
-            font-size: $font-size-base;
+        .category-link {
+            color: inherit;
+
+            &:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+        }
+
+        .category-copy {
+            width: auto;
+
+            .category-title {
+                font-size: $font-size-h5;
+                font-weight: bold;
+            }
+
+            .category-description {
+                font-size: $font-size-base;
+            }
         }
     }
+    
 }

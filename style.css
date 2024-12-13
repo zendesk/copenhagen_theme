@@ -210,6 +210,10 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -221,20 +225,28 @@ h6 {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: 2.625em;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: 1.875em;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 1.625em;
   font-weight: 600;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 1.375em;
+}
+
+h5 {
+  font-size: 1.125em;
+}
+
+h6 {
+  font-size: 1em;
 }
 
 a {
@@ -348,6 +360,27 @@ ul {
   white-space: nowrap;
 }
 
+.row {
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.row > * {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.row-cols-3 > * {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+
+@media (min-width: 768px) {
+  .row-cols-md-3 > * {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+  }
+}
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .article-subscribe button, .section-subscribe button, .split-button button {
   background-color: transparent;

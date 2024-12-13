@@ -1,0 +1,23 @@
+@use "sass:map";
+
+.row {
+    margin-right: calc(-.5 * $gutter);
+    margin-left: calc(-.5 * $gutter);
+}
+
+.row>*{
+    padding-right: calc($gutter * .5);
+    padding-left: calc($gutter * .5);
+}
+
+.row-cols-3 > * {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+
+@media (min-width: map.get($breakpoints, md)) {
+    .row-cols-md-3>* {
+        flex: 0 0 auto;
+        width: 33.33333333%;
+    }
+}

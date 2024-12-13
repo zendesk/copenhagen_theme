@@ -29,31 +29,43 @@ body {
   }
 }
 
+img {
+  max-width: 100%;
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: Quicksand, Arial, Helvetica, sans-serif;
+  font-family: $text_font;
   margin-top: 0;
 }
 
 h1 {
-  font-size: 32px;
+  font-size: $font-size-h1;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: $font-size-h2;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: $font-size-h3;
   font-weight: $font-weight-semibold;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: $font-size-h4;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h6 {
+  font-size: $font-size-h6;
 }
 
 a {

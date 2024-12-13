@@ -56,25 +56,14 @@ $field-text-color: $secondary-text-color;
 $field-text-focus-color: darken($secondary-text-color, 3%);
 
 
-// Bootstrap Grid
-$prefix: q-;
-$grid-columns:      12;
-$grid-gutter-width: 1.5rem;
-$grid-row-columns:  6;
+// Grid
+$gutter: 16px;
 
-$grid-breakpoints: (
+$breakpoints: (
   xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,
   xl: 1200px,
   xxl: 1400px
-);
-
-$container-max-widths: (
-  sm: 540px,
-  md: 720px,
-  lg: 960px,
-  xl: 1140px,
-  xxl: 1320px
-);
+)
