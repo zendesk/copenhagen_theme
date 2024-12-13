@@ -381,6 +381,34 @@ ul {
     width: 33.33333333%;
   }
 }
+.category-thumbnail {
+  position: relative;
+  display: flex;
+  justify-content: stretch;
+  padding: 16px;
+}
+.category-thumbnail .category-icon {
+  width: 23px;
+  margin-right: 16px;
+}
+.category-thumbnail .category-link {
+  color: inherit;
+}
+.category-thumbnail .category-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.category-thumbnail .category-copy {
+  width: auto;
+}
+.category-thumbnail .category-copy .category-title {
+  font-size: 1.125em;
+  font-weight: bold;
+}
+.category-thumbnail .category-copy .category-description {
+  font-size: 1em;
+}
+
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .article-subscribe button, .section-subscribe button, .split-button button {
   background-color: transparent;
