@@ -4,10 +4,10 @@
 }
 
 body {
-  background-color: \$background_color;
+  background-color: $background_color;
   color: $text_color;
-  font-family: \$text_font;
-  font-size: \$font-size-base;
+  font-family: $text_font;
+  font-size: $font-size-base;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 

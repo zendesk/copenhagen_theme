@@ -1,0 +1,21 @@
+.category-thumbnail {
+    position: relative;
+    display: flex;
+    justify-content: stretch;
+
+    .category-icon {
+        width: 50px;
+    }
+
+    .category-copy {
+        width: auto;
+
+        .category-title {
+            font-size: $font-size-h4;
+        }
+
+        .category-description {
+            font-size: $font-size-base;
+        }
+    }
+}
