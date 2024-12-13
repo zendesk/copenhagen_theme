@@ -30,8 +30,8 @@
         {
           "identifier": "website",
           "type": "text",
-          "description": "website_url",
-          "label": "website_url",
+          "description": "Where the header logo links to.",
+          "label": "Website URL",
           "value": "qoria.com"
         }
       ]
