@@ -59,7 +59,7 @@
         },{
           "identifier": "category_icon",
           "type": "file",
-          "description": "",
+          "description": "Icon on category cards",
           "label": "Category icon"
         }
       ]
