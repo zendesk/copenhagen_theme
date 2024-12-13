@@ -189,7 +189,7 @@ template {
 
 @font-face {
   font-family: "Quicksand";
-  src: url("$assets-quicksand-variablefont-wght-woff2") format("woff2 supports variations"), url("$assets-quicksand-variablefont-wght-woff2") format("woff2-variations");
+  src: url("$assets-quicksand-variablefont_wght-woff2") format("woff2 supports variations"), url("$assets-quicksand-variablefont_wght-woff2") format("woff2-variations");
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
