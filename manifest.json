@@ -56,7 +56,8 @@
           "type": "file",
           "description": "community_image_description",
           "label": "community_image_label"
-        },{
+        },
+        {
           "identifier": "category_icon",
           "type": "file",
           "description": "Icon on category cards",
