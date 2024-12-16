@@ -312,11 +312,14 @@ const ToggleButton = styled(Button) `
     text-decoration: none;
   }
 `;
-const DESCRIPTION_LENGTH_THRESHOLD = 270;
+const shouldShowToggleButton = (description) => {
+    const DESCRIPTION_LENGTH_THRESHOLD = 270;
+    return typeof description === 'string' && description.length > DESCRIPTION_LENGTH_THRESHOLD;
+};
 const CollapsibleDescription = ({ title, description, }) => {
     const [isExpanded, setIsExpanded] = reactExports.useState(false);
     const { t } = useTranslation();
-    const showToggleButton = description.length > DESCRIPTION_LENGTH_THRESHOLD;
+    const showToggleButton = shouldShowToggleButton(description);
     const toggleDescription = () => {
         setIsExpanded(!isExpanded);
     };

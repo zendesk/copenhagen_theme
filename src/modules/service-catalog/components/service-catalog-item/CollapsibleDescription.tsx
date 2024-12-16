@@ -52,6 +52,11 @@ interface CollapsibleDescriptionProps {
 
 const DESCRIPTION_LENGTH_THRESHOLD = 270;
 
+export const shouldShowToggleButton = (description: string | null | undefined): boolean => {
+  const DESCRIPTION_LENGTH_THRESHOLD = 270;
+  return typeof description === 'string' && description.length > DESCRIPTION_LENGTH_THRESHOLD;
+};
+
 export const CollapsibleDescription = ({
   title,
   description,
@@ -59,8 +64,7 @@ export const CollapsibleDescription = ({
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const { t } = useTranslation();
 
-  const showToggleButton = description.length > DESCRIPTION_LENGTH_THRESHOLD;
-
+  const showToggleButton = shouldShowToggleButton(description);
   const toggleDescription = () => {
     setIsExpanded(!isExpanded);
   };
