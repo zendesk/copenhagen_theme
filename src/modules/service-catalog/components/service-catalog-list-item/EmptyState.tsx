@@ -33,7 +33,7 @@ export const EmptyState = ({ helpCenterPath }: { helpCenterPath: string }) => {
         <MD>
           {t(
             "service-catalog.empty-state.description",
-            "Once services are added to catalog, you’ll find them here."
+            "Once services are added to catalog, you'll find them here."
           )}
         </MD>
         <Anchor isExternal href="#" target="_blank">

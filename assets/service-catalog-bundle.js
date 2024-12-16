@@ -1,4 +1,4 @@
-import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, r as reactExports, ai as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as XXXL, ak as SvgChevronUpFill, al as SvgChevronDownFill, c as useToast, a2 as addFlashNotification, N as Notification, T as Title, d as Close } from 'shared';
+import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, c as useToast, N as Notification, T as Title, d as Close, r as reactExports, ai as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as ErrorBoundary, ak as XXXL, al as SvgChevronUpFill, am as SvgChevronDownFill, a2 as addFlashNotification } from 'shared';
 import { g as getCustomObjectKey, a as TicketField } from 'ticket-fields';
 
 const ItemContainer = styled.a `
@@ -106,7 +106,16 @@ const EmptyState = ({ helpCenterPath }) => {
         window.location.href = helpCenterPath;
     };
     const { t } = useTranslation();
-    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsxs(TextContainer, { children: [jsxRuntimeExports.jsx(LG, { children: t("service-catalog.empty-state.no-services", "No services in sight") }), jsxRuntimeExports.jsx(MD, { children: t("service-catalog.empty-state.description", "Once services are added to catalog, you’ll find them here.") }), jsxRuntimeExports.jsx(Anchor, { isExternal: true, href: "#", target: "_blank", children: t("service-catalog.empty-state.support-article-link", "Learn about the service catalog") })] }), jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleRedirect, children: t("service-catalog.empty-state.go-to-homepage", "Go to the homepage") })] }));
+    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsxs(TextContainer, { children: [jsxRuntimeExports.jsx(LG, { children: t("service-catalog.empty-state.no-services", "No services in sight") }), jsxRuntimeExports.jsx(MD, { children: t("service-catalog.empty-state.description", "Once services are added to catalog, you'll find them here.") }), jsxRuntimeExports.jsx(Anchor, { isExternal: true, href: "#", target: "_blank", children: t("service-catalog.empty-state.support-article-link", "Learn about the service catalog") })] }), jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleRedirect, children: t("service-catalog.empty-state.go-to-homepage", "Go to the homepage") })] }));
+};
+
+const useNotifyError = () => {
+    const { addToast } = useToast();
+    const { t } = useTranslation();
+    const notifyError = (title, message) => {
+        addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: "error", children: [jsxRuntimeExports.jsx(Title, { children: title }), message, jsxRuntimeExports.jsx(Close, { "aria-label": t("new-request-form.close-label", "Close"), onClick: close })] })));
+    };
+    return notifyError;
 };
 
 const StyledCol = styled(Col) `
@@ -124,7 +133,12 @@ function ServiceCatalogList({ helpCenterPath, }) {
     const [meta, setMeta] = reactExports.useState(null);
     const [currentCursor, setCurrentCursor] = reactExports.useState(null);
     const [isLoading, setIsLoading] = reactExports.useState(false);
+    const [error, setError] = reactExports.useState(null);
+    const notifyError = useNotifyError();
     const { t } = useTranslation();
+    if (error) {
+        throw error;
+    }
     reactExports.useEffect(() => {
         async function fetchData() {
             setIsLoading(true);
@@ -138,10 +152,15 @@ function ServiceCatalogList({ helpCenterPath, }) {
                     setServiceCatalogItems(data.service_catalog_items);
                     setIsLoading(false);
                 }
+                if (!response.ok) {
+                    setIsLoading(false);
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
             }
             catch (error) {
                 setIsLoading(false);
-                console.error("Error fetching service catalog items:", error);
+                notifyError(t("service-catalog.service-list-error-title", "Services couldn't be loaded"), t("service-catalog.service-list-error-message", "Give it a moment and try it again"));
+                setError(error);
             }
         }
         fetchData();
@@ -164,7 +183,7 @@ function ServiceCatalogList({ helpCenterPath, }) {
 }
 
 async function renderServiceCatalogList(container, settings, helpCenterPath) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogList, { helpCenterPath: helpCenterPath }) }), container);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ServiceCatalogList, { helpCenterPath: helpCenterPath }) }) }), container);
 }
 
 const formatField = (field) => {
@@ -189,49 +208,47 @@ const isAssociatedLookupField = (field) => {
     return false;
 };
 const fetchTicketFields = async (form_id, baseLocale) => {
-    try {
-        const [formResponse, fieldsResponse] = await Promise.all([
-            fetch(`/api/v2/ticket_forms/${form_id}`),
-            fetch(`/api/v2/ticket_fields?locale=${baseLocale}`),
-        ]);
-        if (!formResponse.ok) {
-            throw new Error("Error fetching form data");
-        }
-        if (!fieldsResponse.ok) {
-            throw new Error("Error fetching fields data");
-        }
-        const formData = await formResponse.json();
-        const fieldsData = await fieldsResponse.json();
-        const ids = formData.ticket_form.ticket_field_ids;
-        const ticketFieldsData = fieldsData.ticket_fields;
-        let associatedLookupField = null;
-        const requestFields = ids
-            .map((id) => {
-            const ticketField = ticketFieldsData.find((field) => field.id === id);
-            if (ticketField &&
-                ticketField.type !== "subject" &&
-                ticketField.type !== "description" &&
-                ticketField.editable_in_portal) {
-                if (ticketField.type === "lookup" &&
-                    isAssociatedLookupField(ticketField)) {
-                    associatedLookupField = ticketField;
-                    return null;
-                }
-                return formatField(ticketField);
+    const [formResponse, fieldsResponse] = await Promise.all([
+        fetch(`/api/v2/ticket_forms/${form_id}`),
+        fetch(`/api/v2/ticket_fields?locale=${baseLocale}`),
+    ]);
+    if (!formResponse.ok) {
+        throw new Error("Error fetching form data");
+    }
+    if (!fieldsResponse.ok) {
+        throw new Error("Error fetching fields data");
+    }
+    const formData = await formResponse.json();
+    const fieldsData = await fieldsResponse.json();
+    const ids = formData.ticket_form.ticket_field_ids;
+    const ticketFieldsData = fieldsData.ticket_fields;
+    let associatedLookupField = null;
+    const requestFields = ids
+        .map((id) => {
+        const ticketField = ticketFieldsData.find((field) => field.id === id);
+        if (ticketField &&
+            ticketField.type !== "subject" &&
+            ticketField.type !== "description" &&
+            ticketField.editable_in_portal) {
+            if (ticketField.type === "lookup" &&
+                isAssociatedLookupField(ticketField)) {
+                associatedLookupField = ticketField;
+                return null;
             }
-            return null;
-        })
-            .filter(Boolean);
-        return { requestFields, associatedLookupField };
+            return formatField(ticketField);
+        }
+        return null;
+    })
+        .filter(Boolean);
+    if (!associatedLookupField) {
+        throw new Error("Associated lookup field not found");
     }
-    catch (error) {
-        console.error("Error fetching ticket fields:", error);
-        return { requestFields: [], associatedLookupField: null };
-    }
+    return { requestFields, associatedLookupField };
 };
 function useItemFormFields(serviceCatalogItem, baseLocale) {
     const [requestFields, setRequestFields] = reactExports.useState([]);
     const [associatedLookupField, setAssociatedLookupField] = reactExports.useState();
+    const [error, setError] = reactExports.useState(null);
     reactExports.useEffect(() => {
         const fetchAndSetFields = async () => {
             if (serviceCatalogItem && serviceCatalogItem.form_id) {
@@ -241,7 +258,7 @@ function useItemFormFields(serviceCatalogItem, baseLocale) {
                     setAssociatedLookupField(associatedLookupField);
                 }
                 catch (error) {
-                    console.error("Error fetching ticket fields:", error);
+                    setError(error);
                 }
             }
         };
@@ -255,6 +272,7 @@ function useItemFormFields(serviceCatalogItem, baseLocale) {
     return {
         requestFields,
         associatedLookupField,
+        error,
         setRequestFields,
         handleChange,
     };
@@ -380,6 +398,7 @@ function ItemRequestForm({ requestFields, serviceCatalogItem, baseLocale, hasAtM
 
 function useServiceCatalogItem(serviceItemId) {
     const [serviceCatalogItem, setServiceCatalogItem] = reactExports.useState();
+    const [errorFetchingItem, setError] = reactExports.useState(null);
     reactExports.useEffect(() => {
         const fetchServiceCatalogItem = async () => {
             try {
@@ -393,12 +412,12 @@ function useServiceCatalogItem(serviceItemId) {
                 }
             }
             catch (error) {
-                console.error(error);
+                setError(error);
             }
         };
         fetchServiceCatalogItem();
     }, [serviceItemId]);
-    return serviceCatalogItem;
+    return { serviceCatalogItem, errorFetchingItem };
 }
 
 async function submitServiceItemRequest(serviceCatalogItem, requestFields, associatedLookupField, baseLocale) {
@@ -452,13 +471,16 @@ const Container = styled.div `
   flex-direction: column;
 `;
 function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMentions, userRole, organizations, userId, brandId, }) {
-    const serviceCatalogItem = useServiceCatalogItem(serviceCatalogItemId);
-    const { requestFields, associatedLookupField, setRequestFields, handleChange, } = useItemFormFields(serviceCatalogItem, baseLocale);
+    const { serviceCatalogItem, errorFetchingItem } = useServiceCatalogItem(serviceCatalogItemId);
+    const { requestFields, associatedLookupField, error, setRequestFields, handleChange, } = useItemFormFields(serviceCatalogItem, baseLocale);
     const { t } = useTranslation();
-    const { addToast } = useToast();
-    const notifyError = () => {
-        addToast(({ close }) => (jsxRuntimeExports.jsxs(Notification, { type: "error", children: [jsxRuntimeExports.jsx(Title, { children: t("service-catalog.item.service-request-error-title", "Service couldn't be submitted") }), t("service-catalog.item.service-request-error-message", "Give it a moment and try it again"), jsxRuntimeExports.jsx(Close, { "aria-label": t("new-request-form.close-label", "Close"), onClick: close })] })));
-    };
+    const notifyError = useNotifyError();
+    if (error) {
+        throw error;
+    }
+    if (errorFetchingItem) {
+        throw errorFetchingItem;
+    }
     const handleRequestSubmit = async (e) => {
         e.preventDefault();
         if (!serviceCatalogItem || !associatedLookupField) {
@@ -478,7 +500,7 @@ function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMention
                 setRequestFields(updatedFields);
             }
             else {
-                notifyError();
+                notifyError(t("service-catalog.item.service-request-error-title", "Service couldn't be submitted"), t("service-catalog.item.service-request-error-message", "Give it a moment and try it again"));
             }
         }
         else if (response && response.ok) {
@@ -494,11 +516,11 @@ function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMention
     const defaultOrganizationId = organizations.length > 0 && organizations[0]?.id
         ? organizations[0]?.id?.toString()
         : null;
-    return serviceCatalogItem ? (jsxRuntimeExports.jsx(Container, { children: serviceCatalogItem && (jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, serviceCatalogItem: serviceCatalogItem, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, onSubmit: handleRequestSubmit })) })) : null;
+    return (jsxRuntimeExports.jsx(Container, { children: serviceCatalogItem && (jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, serviceCatalogItem: serviceCatalogItem, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, onSubmit: handleRequestSubmit })) }));
 }
 
-async function renderServiceCatalogItem(container, settings, props) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ServiceCatalogItemPage, { ...props }) }), container);
+async function renderServiceCatalogItem(container, settings, props, helpCenterPath) {
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ServiceCatalogItemPage, { ...props }) }) }), container);
 }
 
 export { renderServiceCatalogItem, renderServiceCatalogList };

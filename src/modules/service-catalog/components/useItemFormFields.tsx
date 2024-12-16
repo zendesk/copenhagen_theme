@@ -46,55 +46,53 @@ const fetchTicketFields = async (
   form_id: string,
   baseLocale: string
 ): Promise<FetchTicketFieldsResult> => {
-  try {
-    const [formResponse, fieldsResponse] = await Promise.all([
-      fetch(`/api/v2/ticket_forms/${form_id}`),
-      fetch(`/api/v2/ticket_fields?locale=${baseLocale}`),
-    ]);
+  const [formResponse, fieldsResponse] = await Promise.all([
+    fetch(`/api/v2/ticket_forms/${form_id}`),
+    fetch(`/api/v2/ticket_fields?locale=${baseLocale}`),
+  ]);
 
-    if (!formResponse.ok) {
-      throw new Error("Error fetching form data");
-    }
-    if (!fieldsResponse.ok) {
-      throw new Error("Error fetching fields data");
-    }
-
-    const formData = await formResponse.json();
-    const fieldsData = await fieldsResponse.json();
-
-    const ids = formData.ticket_form.ticket_field_ids;
-    const ticketFieldsData = fieldsData.ticket_fields;
-    let associatedLookupField = null;
-
-    const requestFields = ids
-      .map((id: number) => {
-        const ticketField = ticketFieldsData.find(
-          (field: TicketField) => field.id === id
-        );
-        if (
-          ticketField &&
-          ticketField.type !== "subject" &&
-          ticketField.type !== "description" &&
-          ticketField.editable_in_portal
-        ) {
-          if (
-            ticketField.type === "lookup" &&
-            isAssociatedLookupField(ticketField)
-          ) {
-            associatedLookupField = ticketField;
-
-            return null;
-          }
-          return formatField(ticketField);
-        }
-        return null;
-      })
-      .filter(Boolean);
-    return { requestFields, associatedLookupField };
-  } catch (error) {
-    console.error("Error fetching ticket fields:", error);
-    return { requestFields: [], associatedLookupField: null };
+  if (!formResponse.ok) {
+    throw new Error("Error fetching form data");
   }
+  if (!fieldsResponse.ok) {
+    throw new Error("Error fetching fields data");
+  }
+
+  const formData = await formResponse.json();
+  const fieldsData = await fieldsResponse.json();
+
+  const ids = formData.ticket_form.ticket_field_ids;
+  const ticketFieldsData = fieldsData.ticket_fields;
+  let associatedLookupField: Field | null = null;
+
+  const requestFields = ids
+    .map((id: number) => {
+      const ticketField = ticketFieldsData.find(
+        (field: TicketField) => field.id === id
+      );
+      if (
+        ticketField &&
+        ticketField.type !== "subject" &&
+        ticketField.type !== "description" &&
+        ticketField.editable_in_portal
+      ) {
+        if (
+          ticketField.type === "lookup" &&
+          isAssociatedLookupField(ticketField)
+        ) {
+          associatedLookupField = ticketField;
+
+          return null;
+        }
+        return formatField(ticketField);
+      }
+      return null;
+    })
+    .filter(Boolean);
+  if (!associatedLookupField) {
+    throw new Error("Associated lookup field not found");
+  }
+  return { requestFields, associatedLookupField };
 };
 
 export function useItemFormFields(
@@ -104,7 +102,7 @@ export function useItemFormFields(
   const [requestFields, setRequestFields] = useState<Field[]>([]);
   const [associatedLookupField, setAssociatedLookupField] =
     useState<Field | null>();
-
+  const [error, setError] = useState<unknown>(null);
   useEffect(() => {
     const fetchAndSetFields = async () => {
       if (serviceCatalogItem && serviceCatalogItem.form_id) {
@@ -114,7 +112,7 @@ export function useItemFormFields(
           setRequestFields(requestFields);
           setAssociatedLookupField(associatedLookupField);
         } catch (error) {
-          console.error("Error fetching ticket fields:", error);
+          setError(error);
         }
       }
     };
@@ -138,6 +136,7 @@ export function useItemFormFields(
   return {
     requestFields,
     associatedLookupField,
+    error,
     setRequestFields,
     handleChange,
   };

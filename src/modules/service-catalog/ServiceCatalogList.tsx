@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { CursorPagination } from "@zendeskgarden/react-pagination";
 import { LoadingState } from "./components/service-catalog-list-item/LoadingState";
 import { EmptyState } from "./components/service-catalog-list-item/EmptyState";
+import { useNotifyError } from "./useNotifyError";
 
 const StyledCol = styled(Col)`
   margin-bottom: ${(props) => props.theme.space.md};
@@ -40,7 +41,13 @@ export function ServiceCatalogList({
   const [meta, setMeta] = useState<Meta | null>(null);
   const [currentCursor, setCurrentCursor] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<unknown>(null);
+  const notifyError = useNotifyError();
   const { t } = useTranslation();
+
+  if (error) {
+    throw error;
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -57,9 +64,23 @@ export function ServiceCatalogList({
           setServiceCatalogItems(data.service_catalog_items);
           setIsLoading(false);
         }
+        if (!response.ok) {
+          setIsLoading(false);
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
       } catch (error) {
         setIsLoading(false);
-        console.error("Error fetching service catalog items:", error);
+        notifyError(
+          t(
+            "service-catalog.service-list-error-title",
+            "Services couldn't be loaded"
+          ),
+          t(
+            "service-catalog.service-list-error-message",
+            "Give it a moment and try it again"
+          )
+        );
+        setError(error);
       }
     }
     fetchData();

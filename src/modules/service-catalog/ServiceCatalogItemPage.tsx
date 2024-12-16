@@ -7,12 +7,7 @@ import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import type { ServiceRequestResponse } from "./data-types/ServiceRequestResponse";
 import { addFlashNotification } from "../shared";
 import { useTranslation } from "react-i18next";
-import {
-  useToast,
-  Close,
-  Notification,
-  Title,
-} from "@zendeskgarden/react-notifications";
+import { useNotifyError } from "./useNotifyError";
 
 const Container = styled.div`
   display: flex;
@@ -39,36 +34,25 @@ export function ServiceCatalogItemPage({
   userId,
   brandId,
 }: ServiceCatalogItemPageProps) {
-  const serviceCatalogItem = useServiceCatalogItem(serviceCatalogItemId);
+  const { serviceCatalogItem, errorFetchingItem } =
+    useServiceCatalogItem(serviceCatalogItemId);
   const {
     requestFields,
     associatedLookupField,
+    error,
     setRequestFields,
     handleChange,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
-  const { addToast } = useToast();
-  const notifyError = () => {
-    addToast(({ close }) => (
-      <Notification type="error">
-        <Title>
-          {t(
-            "service-catalog.item.service-request-error-title",
-            "Service couldn't be submitted"
-          )}
-        </Title>
-        {t(
-          "service-catalog.item.service-request-error-message",
-          "Give it a moment and try it again"
-        )}
+  const notifyError = useNotifyError();
 
-        <Close
-          aria-label={t("new-request-form.close-label", "Close")}
-          onClick={close}
-        />
-      </Notification>
-    ));
-  };
+  if (error) {
+    throw error;
+  }
+
+  if (errorFetchingItem) {
+    throw errorFetchingItem;
+  }
 
   const handleRequestSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -96,7 +80,16 @@ export function ServiceCatalogItemPage({
         });
         setRequestFields(updatedFields);
       } else {
-        notifyError();
+        notifyError(
+          t(
+            "service-catalog.item.service-request-error-title",
+            "Service couldn't be submitted"
+          ),
+          t(
+            "service-catalog.item.service-request-error-message",
+            "Give it a moment and try it again"
+          )
+        );
       }
     } else if (response && response.ok) {
       addFlashNotification({
@@ -117,7 +110,7 @@ export function ServiceCatalogItemPage({
       ? organizations[0]?.id?.toString()
       : null;
 
-  return serviceCatalogItem ? (
+  return (
     <Container>
       {serviceCatalogItem && (
         <ItemRequestForm
@@ -134,5 +127,5 @@ export function ServiceCatalogItemPage({
         />
       )}
     </Container>
-  ) : null;
+  );
 }

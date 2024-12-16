@@ -9851,6 +9851,731 @@ function useModalContainer() {
 }
 
 /**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+const SIZE$3 = ['small', 'medium', 'large'];
+['inherit', ...SIZE$3];
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1u = 'typography.font';
+[...SIZE$3, 'extralarge', '2xlarge', '3xlarge'];
+const THEME_SIZES = {
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
+  extralarge: 'xl',
+  '2xlarge': 'xxl',
+  '3xlarge': 'xxxl'
+};
+const fontStyles = props => {
+  const monospace = props.isMonospace && ['inherit', 'small', 'medium', 'large'].indexOf(props.size) !== -1;
+  const fontFamily = monospace && props.theme.fonts.mono;
+  const direction = props.theme.rtl ? 'rtl' : 'ltr';
+  let fontSize;
+  let fontWeight;
+  let lineHeight;
+  let color;
+  if (monospace) {
+    if (props.size === 'inherit') {
+      fontSize = 'calc(1em - 1px)';
+      lineHeight = 'normal';
+    } else {
+      const themeSize = THEME_SIZES[props.size];
+      fontSize = math$1(`${props.theme.fontSizes[themeSize]} - 1px`);
+      lineHeight = math$1(`${props.theme.lineHeights[themeSize]} - 1px`);
+    }
+  } else if (props.size !== 'inherit') {
+    const themeSize = THEME_SIZES[props.size];
+    fontSize = props.theme.fontSizes[themeSize];
+    lineHeight = props.theme.lineHeights[themeSize];
+  }
+  if (props.isBold === true) {
+    fontWeight = props.theme.fontWeights.semibold;
+  } else if (props.isBold === false || props.size !== 'inherit') {
+    fontWeight = props.theme.fontWeights.regular;
+  }
+  if (props.hue) {
+    const shade = props.hue === 'yellow' ? 700 : 600;
+    color = getColorV8(props.hue, shade, props.theme);
+  }
+  return Ne(["line-height:", ";color:", ";font-family:", ";font-size:", ";font-weight:", ";direction:", ";"], lineHeight, color, fontFamily, fontSize, fontWeight, direction);
+};
+const StyledFont = styled.div.attrs({
+  'data-garden-id': COMPONENT_ID$1u,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledFont",
+  componentId: "sc-1iildbo-0"
+})(["", ";&[hidden]{display:inline;", ";}", ";"], props => !props.hidden && fontStyles(props), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$1u, props));
+StyledFont.defaultProps = {
+  theme: DEFAULT_THEME,
+  size: 'inherit'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1t = 'typography.icon';
+const sizeStyles$q = props => {
+  const margin = props.isStart && `${props.theme.space.base * 2}px`;
+  const size = props.theme.iconSizes.md;
+  return Ne(["margin-", ":", ";width:", ";height:", ";"], props.theme.rtl ? 'left' : 'right', margin, size, size);
+};
+const StyledIcon$1 = styled(_ref => {
+  let {
+    children,
+    isStart,
+    ...props
+  } = _ref;
+  return React__default.cloneElement(reactExports.Children.only(children), props);
+}).attrs({
+  'data-garden-id': COMPONENT_ID$1t,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledIcon",
+  componentId: "sc-10rfb5b-0"
+})(["position:relative;top:-1px;vertical-align:middle;", ";", ";"], props => sizeStyles$q(props), props => retrieveComponentStyles(COMPONENT_ID$1t, props));
+StyledIcon$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const COMPONENT_ID$1s = 'typography.paragraph';
+const StyledParagraph$1 = styled.p.attrs({
+  'data-garden-id': COMPONENT_ID$1s,
+  'data-garden-version': '8.76.2'
+}).withConfig({
+  displayName: "StyledParagraph",
+  componentId: "sc-zkuftz-0"
+})(["margin:0;padding:0;direction:", ";& + &,blockquote + &{margin-top:", ";}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.lineHeights[THEME_SIZES[props.size]], props => retrieveComponentStyles(COMPONENT_ID$1s, props));
+StyledParagraph$1.defaultProps = {
+  theme: DEFAULT_THEME
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const SM = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "small"
+  }, other));
+});
+SM.displayName = 'SM';
+SM.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+SM.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const MD = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "medium"
+  }, other));
+});
+MD.displayName = 'MD';
+MD.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+MD.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const LG = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "large"
+  }, other));
+});
+LG.displayName = 'LG';
+LG.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool
+};
+LG.defaultProps = {
+  tag: 'div'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const XXXL = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "3xlarge"
+  }, other));
+});
+XXXL.displayName = 'XXXL';
+XXXL.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool
+};
+XXXL.defaultProps = {
+  tag: 'div'
+};
+
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */
+
+/** Used as the `TypeError` message for "Functions" methods. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/** Used as references for various `Number` constants. */
+var NAN = 0 / 0;
+
+/** `Object#toString` result references. */
+var symbolTag = '[object Symbol]';
+
+/** Used to match leading and trailing whitespace. */
+var reTrim = /^\s+|\s+$/g;
+
+/** Used to detect bad signed hexadecimal string values. */
+var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+
+/** Used to detect binary string values. */
+var reIsBinary = /^0b[01]+$/i;
+
+/** Used to detect octal string values. */
+var reIsOctal = /^0o[0-7]+$/i;
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseInt = parseInt;
+
+/** Detect free variable `global` from Node.js. */
+var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
+
+/** Detect free variable `self`. */
+var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
+
+/** Used as a reference to the global object. */
+var root = freeGlobal || freeSelf || Function('return this')();
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */
+var objectToString = objectProto.toString;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMax = Math.max,
+    nativeMin = Math.min;
+
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */
+var now = function() {
+  return root.Date.now();
+};
+
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */
+function debounce$2(func, wait, options) {
+  var lastArgs,
+      lastThis,
+      maxWait,
+      result,
+      timerId,
+      lastCallTime,
+      lastInvokeTime = 0,
+      leading = false,
+      maxing = false,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  wait = toNumber(wait) || 0;
+  if (isObject$1(options)) {
+    leading = !!options.leading;
+    maxing = 'maxWait' in options;
+    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+
+  function invokeFunc(time) {
+    var args = lastArgs,
+        thisArg = lastThis;
+
+    lastArgs = lastThis = undefined;
+    lastInvokeTime = time;
+    result = func.apply(thisArg, args);
+    return result;
+  }
+
+  function leadingEdge(time) {
+    // Reset any `maxWait` timer.
+    lastInvokeTime = time;
+    // Start the timer for the trailing edge.
+    timerId = setTimeout(timerExpired, wait);
+    // Invoke the leading edge.
+    return leading ? invokeFunc(time) : result;
+  }
+
+  function remainingWait(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime,
+        result = wait - timeSinceLastCall;
+
+    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+  }
+
+  function shouldInvoke(time) {
+    var timeSinceLastCall = time - lastCallTime,
+        timeSinceLastInvoke = time - lastInvokeTime;
+
+    // Either this is the first call, activity has stopped and we're at the
+    // trailing edge, the system time has gone backwards and we're treating
+    // it as the trailing edge, or we've hit the `maxWait` limit.
+    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
+      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
+  }
+
+  function timerExpired() {
+    var time = now();
+    if (shouldInvoke(time)) {
+      return trailingEdge(time);
+    }
+    // Restart the timer.
+    timerId = setTimeout(timerExpired, remainingWait(time));
+  }
+
+  function trailingEdge(time) {
+    timerId = undefined;
+
+    // Only invoke if we have `lastArgs` which means `func` has been
+    // debounced at least once.
+    if (trailing && lastArgs) {
+      return invokeFunc(time);
+    }
+    lastArgs = lastThis = undefined;
+    return result;
+  }
+
+  function cancel() {
+    if (timerId !== undefined) {
+      clearTimeout(timerId);
+    }
+    lastInvokeTime = 0;
+    lastArgs = lastCallTime = lastThis = timerId = undefined;
+  }
+
+  function flush() {
+    return timerId === undefined ? result : trailingEdge(now());
+  }
+
+  function debounced() {
+    var time = now(),
+        isInvoking = shouldInvoke(time);
+
+    lastArgs = arguments;
+    lastThis = this;
+    lastCallTime = time;
+
+    if (isInvoking) {
+      if (timerId === undefined) {
+        return leadingEdge(lastCallTime);
+      }
+      if (maxing) {
+        // Handle invocations in a tight loop.
+        timerId = setTimeout(timerExpired, wait);
+        return invokeFunc(lastCallTime);
+      }
+    }
+    if (timerId === undefined) {
+      timerId = setTimeout(timerExpired, wait);
+    }
+    return result;
+  }
+  debounced.cancel = cancel;
+  debounced.flush = flush;
+  return debounced;
+}
+
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */
+function isObject$1(value) {
+  var type = typeof value;
+  return !!value && (type == 'object' || type == 'function');
+}
+
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */
+function isObjectLike(value) {
+  return !!value && typeof value == 'object';
+}
+
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */
+function isSymbol(value) {
+  return typeof value == 'symbol' ||
+    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+}
+
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */
+function toNumber(value) {
+  if (typeof value == 'number') {
+    return value;
+  }
+  if (isSymbol(value)) {
+    return NAN;
+  }
+  if (isObject$1(value)) {
+    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
+    value = isObject$1(other) ? (other + '') : other;
+  }
+  if (typeof value != 'string') {
+    return value === 0 ? value : +value;
+  }
+  value = value.replace(reTrim, '');
+  var isBinary = reIsBinary.test(value);
+  return (isBinary || reIsOctal.test(value))
+    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
+    : (reIsBadHex.test(value) ? NAN : +value);
+}
+
+var lodash_debounce = debounce$2;
+
+var debounce$3 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const Paragraph = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph$1, Object.assign({
+  ref: ref
+}, props)));
+Paragraph.displayName = 'Paragraph';
+Paragraph.propTypes = {
+  size: PropTypes.oneOf(SIZE$3)
+};
+Paragraph.defaultProps = {
+  size: 'medium'
+};
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const StartIconComponent$1 = props => React__default.createElement(StyledIcon$1, Object.assign({
+  isStart: true
+}, props));
+StartIconComponent$1.displayName = 'Span.StartIcon';
+const StartIcon$1 = StartIconComponent$1;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const IconComponent = props => React__default.createElement(StyledIcon$1, props);
+IconComponent.displayName = 'Span.Icon';
+const Icon = IconComponent;
+
+/**
+* Copyright Zendesk, Inc.
+*
+* Use of this source code is governed under the Apache License, Version 2.0
+* found at http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+const SpanComponent = reactExports.forwardRef((_ref, ref) => {
+  let {
+    tag,
+    ...other
+  } = _ref;
+  return React__default.createElement(StyledFont, Object.assign({
+    as: tag,
+    ref: ref,
+    size: "inherit"
+  }, other));
+});
+SpanComponent.displayName = 'Span';
+SpanComponent.propTypes = {
+  tag: PropTypes.any,
+  isBold: PropTypes.bool,
+  isMonospace: PropTypes.bool,
+  hue: PropTypes.string
+};
+SpanComponent.defaultProps = {
+  tag: 'span'
+};
+const Span = SpanComponent;
+Span.Icon = Icon;
+Span.StartIcon = StartIcon$1;
+
+const Container = styled.div `
+  padding: ${(p) => p.theme.space.xl} 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: ${(props) => props.theme.space.md};
+`;
+const TextContainer = styled.div `
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: ${(props) => props.theme.space.xxs};
+`;
+const ErrorScreen = ({ helpCenterPath, }) => {
+    const { t } = useTranslation();
+    const handleRedirect = () => {
+        if (helpCenterPath)
+            window.location.href = helpCenterPath;
+    };
+    return (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(TextContainer, { children: [jsxRuntimeExports.jsx(LG, { children: t("cph-theme-error-boundary.title", "Something went wrong.") }), jsxRuntimeExports.jsx(MD, { children: t("cph-theme-error-boundary.message", "Give it a moment and try again later") })] }), helpCenterPath && (jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleRedirect, children: t("cph-theme-error-boundary.go-to-homepage", "Go to the homepage") }))] }));
+};
+
+class ErrorBoundary extends reactExports.Component {
+    constructor(props) {
+        super(props);
+        this.state = { error: null };
+    }
+    static getDerivedStateFromError(error) {
+        return { error: error };
+    }
+    render() {
+        if (this.state.error) {
+            return (this.props.fallback || (jsxRuntimeExports.jsx(ErrorScreen, { helpCenterPath: this.props.helpCenterPath })));
+        }
+        return this.props.children;
+    }
+}
+
+/**
  * Copyright Zendesk, Inc.
  *
  * Use of this source code is governed under the Apache License, Version 2.0
@@ -10094,7 +10819,7 @@ function isOrContainsNode(parent, child, environment) {
  * @param {Number} time the time to wait
  * @return {Function} the debounced function
  */
-function debounce$3(fn, time) {
+function debounce$1(fn, time) {
   var timeoutId;
   function cancel() {
     if (timeoutId) {
@@ -10319,7 +11044,7 @@ function targetWithinDownshift(target, downshiftElements, environment, checkActi
   });
 }
 
-var cleanupStatus = debounce$3(function (documentProp) {
+var cleanupStatus = debounce$1(function (documentProp) {
   getStatusDiv(documentProp).textContent = '';
 }, 500);
 
@@ -10428,7 +11153,7 @@ function getA11ySelectionMessage(selectionParameters) {
 /**
  * Debounced call for updating the a11y message.
  */
-var updateA11yStatus = debounce$3(function (getA11yMessage, document) {
+var updateA11yStatus = debounce$1(function (getA11yMessage, document) {
   setStatus(getA11yMessage(), document);
 }, 200);
 
@@ -12329,14 +13054,14 @@ const useFieldContext$1 = () => {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1u = 'forms.field';
+const COMPONENT_ID$1r = 'forms.field';
 const StyledField$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$1u,
+  'data-garden-id': COMPONENT_ID$1r,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-12gzfsu-0"
-})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$1u, props));
+})(["position:relative;direction:", ";margin:0;border:0;padding:0;font-size:0;", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$1r, props));
 StyledField$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12348,14 +13073,14 @@ StyledField$1.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1t = 'forms.input_label';
+const COMPONENT_ID$1q = 'forms.input_label';
 const StyledLabel$1 = styled.label.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1t,
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1q,
   'data-garden-version': props['data-garden-version'] || '8.76.2'
 })).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-2utmsz-0"
-})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$1t, props));
+})(["direction:", ";vertical-align:middle;line-height:", ";color:", ";font-size:", ";font-weight:", ";&[hidden]{display:", ";vertical-align:", ";text-indent:", ";font-size:", ";", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('foreground', 600 , props.theme), props => props.theme.fontSizes.md, props => props.isRegular ? props.theme.fontWeights.regular : props.theme.fontWeights.semibold, props => props.isRadio ? 'inline-block' : 'inline', props => props.isRadio && 'top', props => props.isRadio && '-100%', props => props.isRadio && '0', props => !props.isRadio && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$1q, props));
 StyledLabel$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12367,14 +13092,14 @@ StyledLabel$1.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1s = 'forms.input_hint';
+const COMPONENT_ID$1p = 'forms.input_hint';
 const StyledHint$1 = styled.div.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1s,
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1p,
   'data-garden-version': props['data-garden-version'] || '8.76.2'
 })).withConfig({
   displayName: "StyledHint",
   componentId: "sc-17c2wu8-0"
-})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1s, props));
+})(["direction:", ";display:block;vertical-align:middle;line-height:", ";color:", ";font-size:", ";", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.space.base * 5, props.theme.fontSizes.md), props => getColorV8('neutralHue', 600, props.theme), props => props.theme.fontSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1p, props));
 StyledHint$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12500,15 +13225,15 @@ const MessageIcon = _ref => {
   }
   return retVal;
 };
-const COMPONENT_ID$1r = 'forms.input_message_icon';
+const COMPONENT_ID$1o = 'forms.input_message_icon';
 const StyledMessageIcon = styled(MessageIcon).attrs({
-  'data-garden-id': COMPONENT_ID$1r,
+  'data-garden-id': COMPONENT_ID$1o,
   'data-garden-version': '8.76.2',
   'aria-hidden': null
 }).withConfig({
   displayName: "StyledMessageIcon",
   componentId: "sc-1ph2gba-0"
-})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1r, props));
+})(["width:", ";height:", ";", ";"], props => props.theme.iconSizes.md, props => props.theme.iconSizes.md, props => retrieveComponentStyles(COMPONENT_ID$1o, props));
 StyledMessageIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12535,14 +13260,14 @@ const validationStyles = props => {
   }
   return Ne(["padding-", ":", ";color:", ";"], rtl ? 'right' : 'left', props.validation && padding, color);
 };
-const COMPONENT_ID$1q = 'forms.input_message';
+const COMPONENT_ID$1n = 'forms.input_message';
 const StyledMessage$1 = styled.div.attrs(props => ({
-  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1q,
+  'data-garden-id': props['data-garden-id'] || COMPONENT_ID$1n,
   'data-garden-version': props['data-garden-version'] || '8.76.2'
 })).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-30hgg7-0"
-})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math$1(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$1q, props));
+})(["direction:", ";display:inline-block;position:relative;vertical-align:middle;line-height:", ";font-size:", ";", ";& ", "{position:absolute;top:-1px;", ":0;}", ":not([hidden]) + &{display:block;margin-top:", ";}", ";"], props => props.theme.rtl && 'rtl', props => getLineHeight(props.theme.iconSizes.md, props.theme.fontSizes.sm), props => props.theme.fontSizes.sm, props => validationStyles(props), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', StyledLabel$1, props => math$1(`${props.theme.space.base} * 1px`), props => retrieveComponentStyles(COMPONENT_ID$1n, props));
 StyledMessage$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12554,7 +13279,7 @@ StyledMessage$1.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1p = 'forms.input';
+const COMPONENT_ID$1m = 'forms.input';
 const isInvalid = validation => {
   return validation === 'warning' || validation === 'error';
 };
@@ -12609,7 +13334,7 @@ const colorStyles$p = props => {
     }
   }), disabledBorderColor, !props.isBare && disabledBackgroundColor, disabledForegroundColor);
 };
-const sizeStyles$q = props => {
+const sizeStyles$p = props => {
   const fontSize = props.theme.fontSizes.md;
   const paddingHorizontal = `${props.theme.space.base * 3}px`;
   let height;
@@ -12634,13 +13359,13 @@ const sizeStyles$q = props => {
   return Ne(["padding:", ";min-height:", ";line-height:", ";font-size:", ";&::-ms-browse{font-size:", ";}&[type='date'],&[type='datetime-local'],&[type='file'],&[type='month'],&[type='time'],&[type='week']{max-height:", ";}&[type='file']{line-height:1;}@supports (-ms-ime-align:auto){&[type='color']{padding:", ";}}&::-moz-color-swatch{margin-top:", ";margin-left:", ";width:calc(100% + ", ");height:", ";}&::-webkit-color-swatch{margin:", " ", ";}", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& ~ ", "{margin-top:", "px;}"], padding, props.isBare ? '1em' : height, getLineHeight(lineHeight, fontSize), fontSize, browseFontSize, height, props.isCompact ? '0 2px' : '1px 3px', swatchMarginVertical, swatchMarginHorizontal, math$1(`${swatchMarginHorizontal} * -2`), swatchHeight, swatchMarginVertical, swatchMarginHorizontal, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, props.theme.space.base * (props.isCompact ? 1 : 2));
 };
 const StyledTextInput = styled.input.attrs(props => ({
-  'data-garden-id': COMPONENT_ID$1p,
+  'data-garden-id': COMPONENT_ID$1m,
   'data-garden-version': '8.76.2',
   'aria-invalid': isInvalid(props.validation)
 })).withConfig({
   displayName: "StyledTextInput",
   componentId: "sc-k12n8x-0"
-})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$q(props), props => colorStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1p, props));
+})(["appearance:none;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out,z-index 0.25s ease-in-out;direction:", ";border:", ";border-radius:", ";width:100%;box-sizing:border-box;vertical-align:middle;font-family:inherit;&::-ms-browse{border-radius:", ";}&::-ms-clear,&::-ms-reveal{display:none;}&::-moz-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch{border:none;border-radius:", ";}&::-webkit-color-swatch-wrapper{padding:0;}&::-webkit-clear-button,&::-webkit-inner-spin-button,&::-webkit-search-cancel-button,&::-webkit-search-results-button{display:none;}&::-webkit-datetime-edit{direction:", ";line-height:1;}&::placeholder{opacity:1;}&:invalid{box-shadow:none;}&[type='file']::-ms-value{display:none;}@media screen and (min--moz-device-pixel-ratio:0){&[type='number']{appearance:textfield;}}", ";", ";&:disabled{cursor:default;}", ";"], props => props.theme.rtl && 'rtl', props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.borderRadii.sm, props => props.theme.rtl && 'rtl', props => sizeStyles$p(props), props => colorStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1m, props));
 StyledTextInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12652,7 +13377,7 @@ StyledTextInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1o = 'forms.textarea';
+const COMPONENT_ID$1l = 'forms.textarea';
 const hiddenStyles = `
   visibility: hidden;
   position: absolute;
@@ -12664,12 +13389,12 @@ const hiddenStyles = `
 `;
 const StyledTextarea = styled(StyledTextInput).attrs({
   as: 'textarea',
-  'data-garden-id': COMPONENT_ID$1o,
+  'data-garden-id': COMPONENT_ID$1l,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTextarea",
   componentId: "sc-wxschl-0"
-})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles, props => retrieveComponentStyles(COMPONENT_ID$1o, props));
+})(["resize:", ";overflow:auto;", ";", ";"], props => props.isResizable ? 'vertical' : 'none', props => props.isHidden && hiddenStyles, props => retrieveComponentStyles(COMPONENT_ID$1l, props));
 StyledTextarea.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12681,7 +13406,7 @@ StyledTextarea.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1n = 'forms.media_figure';
+const COMPONENT_ID$1k = 'forms.media_figure';
 const colorStyles$o = props => {
   let shade = 600;
   if (props.isDisabled) {
@@ -12691,7 +13416,7 @@ const colorStyles$o = props => {
   }
   return Ne(["color:", ";"], getColorV8('neutralHue', shade, props.theme));
 };
-const sizeStyles$p = props => {
+const sizeStyles$o = props => {
   const size = props.theme.iconSizes.md;
   const marginFirst = `1px ${props.theme.space.base * 2}px auto 0`;
   const marginLast = `1px 0 auto ${props.theme.space.base * 2}px`;
@@ -12717,12 +13442,12 @@ _ref => {
   } = _ref;
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$1n,
+  'data-garden-id': COMPONENT_ID$1k,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTextMediaFigure",
   componentId: "sc-1qepknj-0"
-})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$o(props), props => sizeStyles$p(props), props => retrieveComponentStyles(COMPONENT_ID$1n, props));
+})(["transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", " ", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, props => colorStyles$o(props), props => sizeStyles$o(props), props => retrieveComponentStyles(COMPONENT_ID$1k, props));
 StyledTextMediaFigure.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12734,7 +13459,7 @@ StyledTextMediaFigure.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1m = 'forms.faux_input';
+const COMPONENT_ID$1j = 'forms.faux_input';
 const VALIDATION_HUES = {
   success: 'successHue',
   warning: 'warningHue',
@@ -12771,12 +13496,12 @@ const StyledTextFauxInput = styled(StyledTextInput).attrs(props => ({
   as: 'div',
   'aria-readonly': props.isReadOnly,
   'aria-disabled': props.isDisabled,
-  'data-garden-id': COMPONENT_ID$1m,
+  'data-garden-id': COMPONENT_ID$1j,
   'data-garden-version': '8.76.2'
 })).withConfig({
   displayName: "StyledTextFauxInput",
   componentId: "sc-yqw7j9-0"
-})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$n, StyledTextInput, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$1m, props));
+})(["display:", ";align-items:", ";cursor:", ";overflow:hidden;", " & > ", "{vertical-align:", ";", "{box-shadow:unset;}}& > ", "{flex-shrink:", ";}", ";"], props => props.mediaLayout ? 'inline-flex' : 'inline-block', props => props.mediaLayout && 'baseline', props => props.mediaLayout && !props.isDisabled ? 'text' : 'default', colorStyles$n, StyledTextInput, props => !props.mediaLayout && 'baseline', SELECTOR_FOCUS_VISIBLE, StyledTextMediaFigure, props => props.mediaLayout && '0', props => retrieveComponentStyles(COMPONENT_ID$1j, props));
 StyledTextFauxInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12788,15 +13513,15 @@ StyledTextFauxInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1l = 'forms.media_input';
+const COMPONENT_ID$1i = 'forms.media_input';
 const StyledTextMediaInput = styled(StyledTextInput).attrs({
-  'data-garden-id': COMPONENT_ID$1l,
+  'data-garden-id': COMPONENT_ID$1i,
   'data-garden-version': '8.76.2',
   isBare: true
 }).withConfig({
   displayName: "StyledTextMediaInput",
   componentId: "sc-12i9xfi-0"
-})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$1l, props));
+})(["flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$1i, props));
 StyledTextMediaInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12808,21 +13533,21 @@ StyledTextMediaInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1k = 'forms.radio_label';
-const sizeStyles$o = props => {
+const COMPONENT_ID$1h = 'forms.radio_label';
+const sizeStyles$n = props => {
   const size = props.theme.space.base * 4;
   const padding = size + props.theme.space.base * 2;
   const lineHeight = props.theme.space.base * 5;
   return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;line-height:", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size, lineHeight);
 };
 const StyledRadioLabel = styled(StyledLabel$1).attrs({
-  'data-garden-id': COMPONENT_ID$1k,
+  'data-garden-id': COMPONENT_ID$1h,
   'data-garden-version': '8.76.2',
   isRadio: true
 }).withConfig({
   displayName: "StyledRadioLabel",
   componentId: "sc-1aq2e5t-0"
-})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$o(props), props => retrieveComponentStyles(COMPONENT_ID$1k, props));
+})(["display:inline-block;position:relative;cursor:pointer;", ";", ";"], props => sizeStyles$n(props), props => retrieveComponentStyles(COMPONENT_ID$1h, props));
 StyledRadioLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12834,14 +13559,14 @@ StyledRadioLabel.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1j = 'forms.checkbox_label';
+const COMPONENT_ID$1g = 'forms.checkbox_label';
 const StyledCheckLabel = styled(StyledRadioLabel).attrs({
-  'data-garden-id': COMPONENT_ID$1j,
+  'data-garden-id': COMPONENT_ID$1g,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledCheckLabel",
   componentId: "sc-x7nr1-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1j, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1g, props));
 StyledCheckLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12853,14 +13578,14 @@ StyledCheckLabel.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1i = 'forms.radio_hint';
+const COMPONENT_ID$1f = 'forms.radio_hint';
 const StyledRadioHint = styled(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$1i,
+  'data-garden-id': COMPONENT_ID$1f,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledRadioHint",
   componentId: "sc-eo8twg-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1i, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1f, props));
 StyledRadioHint.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12872,14 +13597,14 @@ StyledRadioHint.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1h = 'forms.checkbox_hint';
+const COMPONENT_ID$1e = 'forms.checkbox_hint';
 const StyledCheckHint = styled(StyledRadioHint).attrs({
-  'data-garden-id': COMPONENT_ID$1h,
+  'data-garden-id': COMPONENT_ID$1e,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledCheckHint",
   componentId: "sc-1kl8e8c-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1h, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1e, props));
 StyledCheckHint.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12891,7 +13616,7 @@ StyledCheckHint.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1g = 'forms.radio';
+const COMPONENT_ID$1d = 'forms.radio';
 const colorStyles$m = props => {
   const SHADE = 600;
   const borderColor = getColorV8('neutralHue', SHADE - 300, props.theme);
@@ -12917,7 +13642,7 @@ const colorStyles$m = props => {
     selector: `&:focus-visible ~ ${StyledRadioLabel}::before, &[data-garden-focus-visible='true'] ~ ${StyledRadioLabel}::before`
   }), StyledRadioLabel, activeBorderColor, activeBackgroundColor, StyledRadioLabel, checkedBorderColor, checkedBackgroundColor, StyledRadioLabel, checkedHoverBorderColor, checkedHoverBackgroundColor, StyledRadioLabel, checkedActiveBorderColor, checkedActiveBackgroundColor, StyledRadioLabel, disabledBackgroundColor);
 };
-const sizeStyles$n = props => {
+const sizeStyles$m = props => {
   const lineHeight = `${props.theme.space.base * 5}px`;
   const size = `${props.theme.space.base * 4}px`;
   const top = math$1(`(${lineHeight} - ${size}) / 2`);
@@ -12928,13 +13653,13 @@ const sizeStyles$n = props => {
   return Ne(["top:", ";width:", ";height:", ";& ~ ", "::before{top:", ";background-size:", ";width:", ";height:", ";box-sizing:border-box;}& ~ ", " > svg{top:", ";", ":", ";width:", ";height:", ";}&& ~ ", " ~ ", "{margin-top:", ";}"], top, size, size, StyledRadioLabel, top, props.theme.iconSizes.sm, size, size, StyledRadioLabel, iconTop, props.theme.rtl ? 'right' : 'left', iconPosition, iconSize, iconSize, StyledRadioLabel, StyledMessage$1, marginTop);
 };
 const StyledRadioInput = styled.input.attrs({
-  'data-garden-id': COMPONENT_ID$1g,
+  'data-garden-id': COMPONENT_ID$1d,
   'data-garden-version': '8.76.2',
   type: 'radio'
 }).withConfig({
   displayName: "StyledRadioInput",
   componentId: "sc-qsavpv-0"
-})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$n(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$m(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$1g, props));
+})(["position:absolute;opacity:0;margin:0;& ~ ", "::before{position:absolute;", ":0;transition:border-color .25s ease-in-out,box-shadow .1s ease-in-out,background-color .25s ease-in-out,color .25s ease-in-out;border:", ";border-radius:50%;background-repeat:no-repeat;background-position:center;content:'';}& ~ ", " > svg{position:absolute;}", ";&:focus ~ ", "::before{outline:none;}& ~ ", ":active::before{transition:border-color 0.1s ease-in-out,background-color 0.1s ease-in-out,color 0.1s ease-in-out;}", ";&:disabled ~ ", "{cursor:default;}", ";"], StyledRadioLabel, props => props.theme.rtl ? 'right' : 'left', props => props.theme.borders.sm, StyledRadioLabel, props => sizeStyles$m(props), StyledRadioLabel, StyledRadioLabel, props => colorStyles$m(props), StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$1d, props));
 StyledRadioInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12946,7 +13671,7 @@ StyledRadioInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1f = 'forms.checkbox';
+const COMPONENT_ID$1c = 'forms.checkbox';
 const colorStyles$l = props => {
   const SHADE = 600;
   const indeterminateBorderColor = getColorV8('primaryHue', SHADE, props.theme);
@@ -12957,13 +13682,13 @@ const colorStyles$l = props => {
   return Ne(["&:indeterminate ~ ", "::before{border-color:", ";background-color:", ";}&:enabled:indeterminate ~ ", ":active::before{border-color:", ";background-color:", ";}&:disabled:indeterminate ~ ", "::before{border-color:transparent;background-color:", ";}"], StyledCheckLabel, indeterminateBorderColor, indeterminateBackgroundColor, StyledCheckLabel, indeterminateActiveBorderColor, indeterminateActiveBackgroundColor, StyledCheckLabel, indeterminateDisabledBackgroundColor);
 };
 const StyledCheckInput = styled(StyledRadioInput).attrs({
-  'data-garden-id': COMPONENT_ID$1f,
+  'data-garden-id': COMPONENT_ID$1c,
   'data-garden-version': '8.76.2',
   type: 'checkbox'
 }).withConfig({
   displayName: "StyledCheckInput",
   componentId: "sc-176jxxe-0"
-})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$l(props), props => retrieveComponentStyles(COMPONENT_ID$1f, props));
+})(["& ~ ", "::before{border-radius:", ";}", ";", ";"], StyledCheckLabel, props => props.theme.borderRadii.md, props => colorStyles$l(props), props => retrieveComponentStyles(COMPONENT_ID$1c, props));
 StyledCheckInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12975,14 +13700,14 @@ StyledCheckInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1e = 'forms.radio_message';
+const COMPONENT_ID$1b = 'forms.radio_message';
 const StyledRadioMessage = styled(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$1e,
+  'data-garden-id': COMPONENT_ID$1b,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledRadioMessage",
   componentId: "sc-1pmi0q8-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1e, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 6px`), props => retrieveComponentStyles(COMPONENT_ID$1b, props));
 StyledRadioMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -12994,14 +13719,14 @@ StyledRadioMessage.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1d = 'forms.checkbox_message';
+const COMPONENT_ID$1a = 'forms.checkbox_message';
 const StyledCheckMessage = styled(StyledRadioMessage).attrs({
-  'data-garden-id': COMPONENT_ID$1d,
+  'data-garden-id': COMPONENT_ID$1a,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledCheckMessage",
   componentId: "sc-s4p6kd-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1d, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$1a, props));
 StyledCheckMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13040,14 +13765,14 @@ var SvgCheckSmFill = function SvgCheckSmFill(props) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1c = 'forms.check_svg';
+const COMPONENT_ID$19 = 'forms.check_svg';
 const StyledCheckSvg = styled(SvgCheckSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$1c,
+  'data-garden-id': COMPONENT_ID$19,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledCheckSvg",
   componentId: "sc-fvxetk-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$1c, props));
+})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":checked ~ ", " > &{opacity:1;}", ":indeterminate ~ ", " > &{opacity:0;}", ";"], StyledCheckInput, StyledCheckLabel, StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$19, props));
 StyledCheckSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13084,14 +13809,14 @@ var SvgDashFill = function SvgDashFill(props) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1b = 'forms.dash_svg';
+const COMPONENT_ID$18 = 'forms.dash_svg';
 const StyledDashSvg = styled(SvgDashFill).attrs({
-  'data-garden-id': COMPONENT_ID$1b,
+  'data-garden-id': COMPONENT_ID$18,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledDashSvg",
   componentId: "sc-z3vq71-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$1b, props));
+})(["transition:opacity 0.25s ease-in-out;opacity:0;pointer-events:none;", ":indeterminate ~ ", " > &{opacity:1;}", ";"], StyledCheckInput, StyledCheckLabel, props => retrieveComponentStyles(COMPONENT_ID$18, props));
 StyledDashSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13103,7 +13828,7 @@ StyledDashSvg.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$1a = 'forms.file_upload';
+const COMPONENT_ID$17 = 'forms.file_upload';
 const colorStyles$k = props => {
   const baseColor = getColorV8('primaryHue', 600, props.theme);
   const hoverColor = getColorV8('primaryHue', 700, props.theme);
@@ -13115,7 +13840,7 @@ const colorStyles$k = props => {
     hue: baseColor
   }), activeColor, rgba$1(baseColor, 0.2), activeColor, disabledForegroundColor, disabledBackgroundColor, disabledForegroundColor);
 };
-const sizeStyles$m = props => {
+const sizeStyles$l = props => {
   const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   const paddingHorizontal = `${props.isCompact ? 2 : 4}em`;
   const paddingVertical = math$1(`${props.theme.space.base * (props.isCompact ? 2.5 : 5)} - ${props.theme.borderWidths.sm}`);
@@ -13124,12 +13849,12 @@ const sizeStyles$m = props => {
   return Ne(["padding:", " ", ";min-width:4em;line-height:", ";font-size:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], paddingVertical, paddingHorizontal, lineHeight, fontSize, StyledLabel$1, StyledHint$1, StyledMessage$1, StyledHint$1, StyledMessage$1, marginTop);
 };
 const StyledFileUpload = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$1a,
+  'data-garden-id': COMPONENT_ID$17,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFileUpload",
   componentId: "sc-1rodjgn-0"
-})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$m, colorStyles$k, props => retrieveComponentStyles(COMPONENT_ID$1a, props));
+})(["display:flex;align-items:center;justify-content:center;box-sizing:border-box;direction:", ";transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:dashed ", ";border-radius:", ";cursor:pointer;text-align:center;user-select:none;", ";&[aria-disabled='true']{cursor:default;}", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.borderWidths.sm, props => props.theme.borderRadii.md, sizeStyles$l, colorStyles$k, props => retrieveComponentStyles(COMPONENT_ID$17, props));
 StyledFileUpload.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13141,14 +13866,14 @@ StyledFileUpload.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$19 = 'forms.file.close';
+const COMPONENT_ID$16 = 'forms.file.close';
 const StyledFileClose = styled.button.attrs({
-  'data-garden-id': COMPONENT_ID$19,
+  'data-garden-id': COMPONENT_ID$16,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFileClose",
   componentId: "sc-1m31jbf-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => getColorV8('foreground', 600 , props.theme), props => retrieveComponentStyles(COMPONENT_ID$19, props));
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:none;background:transparent;cursor:pointer;color:", ";appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => getColorV8('foreground', 600 , props.theme), props => retrieveComponentStyles(COMPONENT_ID$16, props));
 StyledFileClose.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13160,7 +13885,7 @@ StyledFileClose.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$18 = 'forms.file';
+const COMPONENT_ID$15 = 'forms.file';
 const colorStyles$j = props => {
   let borderColor;
   let focusBorderColor;
@@ -13187,7 +13912,7 @@ const colorStyles$j = props => {
     }
   }));
 };
-const sizeStyles$l = props => {
+const sizeStyles$k = props => {
   const size = `${props.theme.space.base * (props.isCompact ? 7 : 10)}px`;
   const spacing = `${props.theme.space.base * (props.isCompact ? 2 : 3)}px`;
   const fontSize = props.theme.fontSizes.md;
@@ -13213,12 +13938,12 @@ const sizeStyles$l = props => {
   `;
 };
 const StyledFile = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$18,
+  'data-garden-id': COMPONENT_ID$15,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFile",
   componentId: "sc-195lzp1-0"
-})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$l, colorStyles$j, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$18, props));
+})(["display:flex;position:relative;flex-wrap:nowrap;align-items:center;transition:box-shadow 0.1s ease-in-out;", ";", ";& > span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}& > [role='progressbar']{position:absolute;bottom:0;left:0;transition:opacity 0.2s ease-in-out;margin:0;border-top-left-radius:0;border-top-right-radius:0;width:100%;& > div{border-top-", "-radius:0;}}& > [role='progressbar'][aria-valuenow='0'],& > [role='progressbar'][aria-valuenow='100']{opacity:0;}", ";"], sizeStyles$k, colorStyles$j, props => props.theme.rtl ? 'right' : 'left', props => retrieveComponentStyles(COMPONENT_ID$15, props));
 StyledFile.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13230,14 +13955,14 @@ StyledFile.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$17 = 'forms.file.delete';
+const COMPONENT_ID$14 = 'forms.file.delete';
 const StyledFileDelete = styled(StyledFileClose).attrs({
-  'data-garden-id': COMPONENT_ID$17,
+  'data-garden-id': COMPONENT_ID$14,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFileDelete",
   componentId: "sc-a8nnhx-0"
-})(["color:", ";", ";"], props => getColorV8('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$17, props));
+})(["color:", ";", ";"], props => getColorV8('dangerHue', 600, props.theme), props => retrieveComponentStyles(COMPONENT_ID$14, props));
 StyledFileDelete.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13249,7 +13974,7 @@ StyledFileDelete.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$16 = 'forms.file.icon';
+const COMPONENT_ID$13 = 'forms.file.icon';
 const StyledFileIcon = styled(_ref => {
   let {
     children,
@@ -13259,12 +13984,12 @@ const StyledFileIcon = styled(_ref => {
   } = _ref;
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$16,
+  'data-garden-id': COMPONENT_ID$13,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFileIcon",
   componentId: "sc-7b3q0c-0"
-})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$16, props));
+})(["flex-shrink:0;width:", ";margin-", ":", "px;", ";"], props => props.isCompact ? props.theme.iconSizes.sm : props.theme.iconSizes.md, props => props.theme.rtl ? 'left' : 'right', props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$13, props));
 StyledFileIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13276,14 +14001,14 @@ StyledFileIcon.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$15 = 'forms.file_list';
+const COMPONENT_ID$12 = 'forms.file_list';
 const StyledFileList = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$15,
+  'data-garden-id': COMPONENT_ID$12,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFileList",
   componentId: "sc-gbahjg-0"
-})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$15, props));
+})(["margin:0;padding:0;list-style:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$12, props));
 StyledFileList.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13295,14 +14020,14 @@ StyledFileList.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$14 = 'forms.file_list.item';
+const COMPONENT_ID$11 = 'forms.file_list.item';
 const StyledFileListItem = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$14,
+  'data-garden-id': COMPONENT_ID$11,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFileListItem",
   componentId: "sc-1ova3lo-0"
-})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload, StyledFileList, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$14, props));
+})(["&:not(:first-child),", " ~ ", " > &:first-child{margin-top:", "px;}", ";"], StyledFileUpload, StyledFileList, props => props.theme.space.base * 2, props => retrieveComponentStyles(COMPONENT_ID$11, props));
 StyledFileListItem.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13339,14 +14064,14 @@ var SvgCircleSmFill$1 = function SvgCircleSmFill(props) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$13 = 'forms.radio_svg';
+const COMPONENT_ID$10 = 'forms.radio_svg';
 const StyledRadioSvg = styled(SvgCircleSmFill$1).attrs({
-  'data-garden-id': COMPONENT_ID$13,
+  'data-garden-id': COMPONENT_ID$10,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledRadioSvg",
   componentId: "sc-1r1qtr1-0"
-})(["transition:opacity 0.25s ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$13, props));
+})(["transition:opacity 0.25s ease-in-out;opacity:0;", ":checked ~ ", " > &{opacity:1;}", ";"], StyledRadioInput, StyledRadioLabel, props => retrieveComponentStyles(COMPONENT_ID$10, props));
 StyledRadioSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13358,19 +14083,19 @@ StyledRadioSvg.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$12 = 'forms.toggle_label';
-const sizeStyles$k = props => {
+const COMPONENT_ID$$ = 'forms.toggle_label';
+const sizeStyles$j = props => {
   const size = props.theme.space.base * 10;
   const padding = size + props.theme.space.base * 2;
   return Ne(["padding-", ":", "px;&[hidden]{padding-", ":", "px;}"], props.theme.rtl ? 'right' : 'left', padding, props.theme.rtl ? 'right' : 'left', size);
 };
 const StyledToggleLabel = styled(StyledCheckLabel).attrs({
-  'data-garden-id': COMPONENT_ID$12,
+  'data-garden-id': COMPONENT_ID$$,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledToggleLabel",
   componentId: "sc-e0asdk-0"
-})(["", ";", ";"], props => sizeStyles$k(props), props => retrieveComponentStyles(COMPONENT_ID$12, props));
+})(["", ";", ";"], props => sizeStyles$j(props), props => retrieveComponentStyles(COMPONENT_ID$$, props));
 StyledToggleLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13382,14 +14107,14 @@ StyledToggleLabel.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$11 = 'forms.toggle_hint';
+const COMPONENT_ID$_ = 'forms.toggle_hint';
 const StyledToggleHint = styled(StyledHint$1).attrs({
-  'data-garden-id': COMPONENT_ID$11,
+  'data-garden-id': COMPONENT_ID$_,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledToggleHint",
   componentId: "sc-nziggu-0"
-})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$11, props));
+})(["padding-", ":", ";", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), props => retrieveComponentStyles(COMPONENT_ID$_, props));
 StyledToggleHint.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13401,14 +14126,14 @@ StyledToggleHint.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$10 = 'forms.toggle_message';
+const COMPONENT_ID$Z = 'forms.toggle_message';
 const StyledToggleMessage = styled(StyledMessage$1).attrs({
-  'data-garden-id': COMPONENT_ID$10,
+  'data-garden-id': COMPONENT_ID$Z,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledToggleMessage",
   componentId: "sc-13vuvl1-0"
-})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$10, props));
+})(["padding-", ":", ";& ", "{", ":", ";}", ";"], props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 12px`), StyledMessageIcon, props => props.theme.rtl ? 'right' : 'left', props => math$1(`${props.theme.space.base} * 10px - ${props.theme.iconSizes.md}`), props => retrieveComponentStyles(COMPONENT_ID$Z, props));
 StyledToggleMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13445,14 +14170,14 @@ var SvgCircleSmFill = function SvgCircleSmFill(props) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$$ = 'forms.toggle_svg';
+const COMPONENT_ID$Y = 'forms.toggle_svg';
 const StyledToggleSvg = styled(SvgCircleSmFill).attrs({
-  'data-garden-id': COMPONENT_ID$$,
+  'data-garden-id': COMPONENT_ID$Y,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledToggleSvg",
   componentId: "sc-162xbyx-0"
-})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$$, props));
+})(["transition:all 0.15s ease-in-out;", ";"], props => retrieveComponentStyles(COMPONENT_ID$Y, props));
 StyledToggleSvg.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -13956,11 +14681,11 @@ Textarea.displayName = 'Textarea';
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const StartIconComponent$1 = props => React__default.createElement(StyledTextMediaFigure, Object.assign({
+const StartIconComponent = props => React__default.createElement(StyledTextMediaFigure, Object.assign({
   position: "start"
 }, props));
-StartIconComponent$1.displayName = 'FauxInput.StartIcon';
-const StartIcon$1 = StartIconComponent$1;
+StartIconComponent.displayName = 'FauxInput.StartIcon';
+const StartIcon = StartIconComponent;
 
 /**
 * Copyright Zendesk, Inc.
@@ -14022,387 +14747,7 @@ FauxInputComponent.propTypes = {
 };
 const FauxInput = FauxInputComponent;
 FauxInput.EndIcon = EndIcon;
-FauxInput.StartIcon = StartIcon$1;
-
-/**
- * lodash (Custom Build) <https://lodash.com/>
- * Build: `lodash modularize exports="npm" -o ./`
- * Copyright jQuery Foundation and other contributors <https://jquery.org/>
- * Released under MIT license <https://lodash.com/license>
- * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
- * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
- */
-
-/** Used as the `TypeError` message for "Functions" methods. */
-var FUNC_ERROR_TEXT = 'Expected a function';
-
-/** Used as references for various `Number` constants. */
-var NAN = 0 / 0;
-
-/** `Object#toString` result references. */
-var symbolTag = '[object Symbol]';
-
-/** Used to match leading and trailing whitespace. */
-var reTrim = /^\s+|\s+$/g;
-
-/** Used to detect bad signed hexadecimal string values. */
-var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
-
-/** Used to detect binary string values. */
-var reIsBinary = /^0b[01]+$/i;
-
-/** Used to detect octal string values. */
-var reIsOctal = /^0o[0-7]+$/i;
-
-/** Built-in method references without a dependency on `root`. */
-var freeParseInt = parseInt;
-
-/** Detect free variable `global` from Node.js. */
-var freeGlobal = typeof commonjsGlobal == 'object' && commonjsGlobal && commonjsGlobal.Object === Object && commonjsGlobal;
-
-/** Detect free variable `self`. */
-var freeSelf = typeof self == 'object' && self && self.Object === Object && self;
-
-/** Used as a reference to the global object. */
-var root = freeGlobal || freeSelf || Function('return this')();
-
-/** Used for built-in method references. */
-var objectProto = Object.prototype;
-
-/**
- * Used to resolve the
- * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
- * of values.
- */
-var objectToString = objectProto.toString;
-
-/* Built-in method references for those with the same name as other `lodash` methods. */
-var nativeMax = Math.max,
-    nativeMin = Math.min;
-
-/**
- * Gets the timestamp of the number of milliseconds that have elapsed since
- * the Unix epoch (1 January 1970 00:00:00 UTC).
- *
- * @static
- * @memberOf _
- * @since 2.4.0
- * @category Date
- * @returns {number} Returns the timestamp.
- * @example
- *
- * _.defer(function(stamp) {
- *   console.log(_.now() - stamp);
- * }, _.now());
- * // => Logs the number of milliseconds it took for the deferred invocation.
- */
-var now = function() {
-  return root.Date.now();
-};
-
-/**
- * Creates a debounced function that delays invoking `func` until after `wait`
- * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed `func` invocations and a `flush` method to immediately invoke them.
- * Provide `options` to indicate whether `func` should be invoked on the
- * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
- * with the last arguments provided to the debounced function. Subsequent
- * calls to the debounced function return the result of the last `func`
- * invocation.
- *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is
- * invoked on the trailing edge of the timeout only if the debounced function
- * is invoked more than once during the `wait` timeout.
- *
- * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
- * until to the next tick, similar to `setTimeout` with a timeout of `0`.
- *
- * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
- * for details over the differences between `_.debounce` and `_.throttle`.
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Function
- * @param {Function} func The function to debounce.
- * @param {number} [wait=0] The number of milliseconds to delay.
- * @param {Object} [options={}] The options object.
- * @param {boolean} [options.leading=false]
- *  Specify invoking on the leading edge of the timeout.
- * @param {number} [options.maxWait]
- *  The maximum time `func` is allowed to be delayed before it's invoked.
- * @param {boolean} [options.trailing=true]
- *  Specify invoking on the trailing edge of the timeout.
- * @returns {Function} Returns the new debounced function.
- * @example
- *
- * // Avoid costly calculations while the window size is in flux.
- * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
- *
- * // Invoke `sendMail` when clicked, debouncing subsequent calls.
- * jQuery(element).on('click', _.debounce(sendMail, 300, {
- *   'leading': true,
- *   'trailing': false
- * }));
- *
- * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
- * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
- * var source = new EventSource('/stream');
- * jQuery(source).on('message', debounced);
- *
- * // Cancel the trailing debounced invocation.
- * jQuery(window).on('popstate', debounced.cancel);
- */
-function debounce$1(func, wait, options) {
-  var lastArgs,
-      lastThis,
-      maxWait,
-      result,
-      timerId,
-      lastCallTime,
-      lastInvokeTime = 0,
-      leading = false,
-      maxing = false,
-      trailing = true;
-
-  if (typeof func != 'function') {
-    throw new TypeError(FUNC_ERROR_TEXT);
-  }
-  wait = toNumber(wait) || 0;
-  if (isObject$1(options)) {
-    leading = !!options.leading;
-    maxing = 'maxWait' in options;
-    maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
-    trailing = 'trailing' in options ? !!options.trailing : trailing;
-  }
-
-  function invokeFunc(time) {
-    var args = lastArgs,
-        thisArg = lastThis;
-
-    lastArgs = lastThis = undefined;
-    lastInvokeTime = time;
-    result = func.apply(thisArg, args);
-    return result;
-  }
-
-  function leadingEdge(time) {
-    // Reset any `maxWait` timer.
-    lastInvokeTime = time;
-    // Start the timer for the trailing edge.
-    timerId = setTimeout(timerExpired, wait);
-    // Invoke the leading edge.
-    return leading ? invokeFunc(time) : result;
-  }
-
-  function remainingWait(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime,
-        result = wait - timeSinceLastCall;
-
-    return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
-  }
-
-  function shouldInvoke(time) {
-    var timeSinceLastCall = time - lastCallTime,
-        timeSinceLastInvoke = time - lastInvokeTime;
-
-    // Either this is the first call, activity has stopped and we're at the
-    // trailing edge, the system time has gone backwards and we're treating
-    // it as the trailing edge, or we've hit the `maxWait` limit.
-    return (lastCallTime === undefined || (timeSinceLastCall >= wait) ||
-      (timeSinceLastCall < 0) || (maxing && timeSinceLastInvoke >= maxWait));
-  }
-
-  function timerExpired() {
-    var time = now();
-    if (shouldInvoke(time)) {
-      return trailingEdge(time);
-    }
-    // Restart the timer.
-    timerId = setTimeout(timerExpired, remainingWait(time));
-  }
-
-  function trailingEdge(time) {
-    timerId = undefined;
-
-    // Only invoke if we have `lastArgs` which means `func` has been
-    // debounced at least once.
-    if (trailing && lastArgs) {
-      return invokeFunc(time);
-    }
-    lastArgs = lastThis = undefined;
-    return result;
-  }
-
-  function cancel() {
-    if (timerId !== undefined) {
-      clearTimeout(timerId);
-    }
-    lastInvokeTime = 0;
-    lastArgs = lastCallTime = lastThis = timerId = undefined;
-  }
-
-  function flush() {
-    return timerId === undefined ? result : trailingEdge(now());
-  }
-
-  function debounced() {
-    var time = now(),
-        isInvoking = shouldInvoke(time);
-
-    lastArgs = arguments;
-    lastThis = this;
-    lastCallTime = time;
-
-    if (isInvoking) {
-      if (timerId === undefined) {
-        return leadingEdge(lastCallTime);
-      }
-      if (maxing) {
-        // Handle invocations in a tight loop.
-        timerId = setTimeout(timerExpired, wait);
-        return invokeFunc(lastCallTime);
-      }
-    }
-    if (timerId === undefined) {
-      timerId = setTimeout(timerExpired, wait);
-    }
-    return result;
-  }
-  debounced.cancel = cancel;
-  debounced.flush = flush;
-  return debounced;
-}
-
-/**
- * Checks if `value` is the
- * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
- * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
- *
- * @static
- * @memberOf _
- * @since 0.1.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
- * @example
- *
- * _.isObject({});
- * // => true
- *
- * _.isObject([1, 2, 3]);
- * // => true
- *
- * _.isObject(_.noop);
- * // => true
- *
- * _.isObject(null);
- * // => false
- */
-function isObject$1(value) {
-  var type = typeof value;
-  return !!value && (type == 'object' || type == 'function');
-}
-
-/**
- * Checks if `value` is object-like. A value is object-like if it's not `null`
- * and has a `typeof` result of "object".
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
- * @example
- *
- * _.isObjectLike({});
- * // => true
- *
- * _.isObjectLike([1, 2, 3]);
- * // => true
- *
- * _.isObjectLike(_.noop);
- * // => false
- *
- * _.isObjectLike(null);
- * // => false
- */
-function isObjectLike(value) {
-  return !!value && typeof value == 'object';
-}
-
-/**
- * Checks if `value` is classified as a `Symbol` primitive or object.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
- * @example
- *
- * _.isSymbol(Symbol.iterator);
- * // => true
- *
- * _.isSymbol('abc');
- * // => false
- */
-function isSymbol(value) {
-  return typeof value == 'symbol' ||
-    (isObjectLike(value) && objectToString.call(value) == symbolTag);
-}
-
-/**
- * Converts `value` to a number.
- *
- * @static
- * @memberOf _
- * @since 4.0.0
- * @category Lang
- * @param {*} value The value to process.
- * @returns {number} Returns the number.
- * @example
- *
- * _.toNumber(3.2);
- * // => 3.2
- *
- * _.toNumber(Number.MIN_VALUE);
- * // => 5e-324
- *
- * _.toNumber(Infinity);
- * // => Infinity
- *
- * _.toNumber('3.2');
- * // => 3.2
- */
-function toNumber(value) {
-  if (typeof value == 'number') {
-    return value;
-  }
-  if (isSymbol(value)) {
-    return NAN;
-  }
-  if (isObject$1(value)) {
-    var other = typeof value.valueOf == 'function' ? value.valueOf() : value;
-    value = isObject$1(other) ? (other + '') : other;
-  }
-  if (typeof value != 'string') {
-    return value === 0 ? value : +value;
-  }
-  value = value.replace(reTrim, '');
-  var isBinary = reIsBinary.test(value);
-  return (isBinary || reIsOctal.test(value))
-    ? freeParseInt(value.slice(2), isBinary ? 2 : 8)
-    : (reIsBadHex.test(value) ? NAN : +value);
-}
-
-var lodash_debounce = debounce$1;
-
-var debounce$2 = /*@__PURE__*/getDefaultExportFromCjs(lodash_debounce);
+FauxInput.StartIcon = StartIcon;
 
 /**
 * Copyright Zendesk, Inc.
@@ -15319,14 +15664,14 @@ const useFieldContext = () => {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$_ = 'dropdowns.combobox.label';
+const COMPONENT_ID$X = 'dropdowns.combobox.label';
 const StyledLabel = styled(Label$2).attrs({
-  'data-garden-id': COMPONENT_ID$_,
+  'data-garden-id': COMPONENT_ID$X,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledLabel",
   componentId: "sc-1889zee-0"
-})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$_, props));
+})(["vertical-align:revert;", ";"], props => retrieveComponentStyles(COMPONENT_ID$X, props));
 StyledLabel.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15338,14 +15683,14 @@ StyledLabel.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$Z = 'dropdowns.combobox.hint';
+const COMPONENT_ID$W = 'dropdowns.combobox.hint';
 const StyledHint = styled(Hint$1).attrs({
-  'data-garden-id': COMPONENT_ID$Z,
+  'data-garden-id': COMPONENT_ID$W,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledHint",
   componentId: "sc-9kt30-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$Z, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$W, props));
 StyledHint.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15357,14 +15702,14 @@ StyledHint.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$Y = 'dropdowns.combobox.message';
+const COMPONENT_ID$V = 'dropdowns.combobox.message';
 const StyledMessage = styled(Message$1).attrs({
-  'data-garden-id': COMPONENT_ID$Y,
+  'data-garden-id': COMPONENT_ID$V,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledMessage",
   componentId: "sc-15eqzu4-0"
-})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$Y, props));
+})(["", ";"], props => retrieveComponentStyles(COMPONENT_ID$V, props));
 StyledMessage.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15376,19 +15721,19 @@ StyledMessage.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$X = 'dropdowns.combobox';
-const sizeStyles$j = props => {
+const COMPONENT_ID$U = 'dropdowns.combobox';
+const sizeStyles$i = props => {
   const minWidth = `${props.isCompact ? 100 : 144}px`;
   const marginTop = `${props.theme.space.base * (props.isCompact ? 1 : 2)}px`;
   return Ne(["min-width:", ";", ":not([hidden]) + &&,", " + &&,", " + &&,&& + ", ",&& + ", "{margin-top:", ";}"], minWidth, StyledLabel, StyledHint, StyledMessage, StyledHint, StyledMessage, marginTop);
 };
 const StyledCombobox = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$X,
+  'data-garden-id': COMPONENT_ID$U,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledCombobox",
   componentId: "sc-1hs98ew-0"
-})(["", ";", ";"], sizeStyles$j, props => retrieveComponentStyles(COMPONENT_ID$X, props));
+})(["", ";", ";"], sizeStyles$i, props => retrieveComponentStyles(COMPONENT_ID$U, props));
 StyledCombobox.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15400,14 +15745,14 @@ StyledCombobox.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$W = 'dropdowns.combobox.container';
+const COMPONENT_ID$T = 'dropdowns.combobox.container';
 const StyledContainer = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$W,
+  'data-garden-id': COMPONENT_ID$T,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledContainer",
   componentId: "sc-18gcb1g-0"
-})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$W, props));
+})(["display:flex;", ";"], props => retrieveComponentStyles(COMPONENT_ID$T, props));
 StyledContainer.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15419,14 +15764,14 @@ StyledContainer.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$V = 'dropdowns.combobox.field';
+const COMPONENT_ID$S = 'dropdowns.combobox.field';
 const StyledField = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$V,
+  'data-garden-id': COMPONENT_ID$S,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledField",
   componentId: "sc-k7y10k-0"
-})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$V, props));
+})(["direction:", ";", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => retrieveComponentStyles(COMPONENT_ID$S, props));
 StyledField.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15438,9 +15783,9 @@ StyledField.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$U = 'dropdowns.combobox.floating';
+const COMPONENT_ID$R = 'dropdowns.combobox.floating';
 const StyledFloatingListbox = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$U,
+  'data-garden-id': COMPONENT_ID$R,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledFloatingListbox",
@@ -15450,7 +15795,7 @@ const StyledFloatingListbox = styled.div.attrs({
   hidden: props.isHidden,
   animationModifier: '[data-garden-animate="true"]',
   zIndex: props.zIndex
-}), props => retrieveComponentStyles(COMPONENT_ID$U, props));
+}), props => retrieveComponentStyles(COMPONENT_ID$R, props));
 StyledFloatingListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15462,7 +15807,7 @@ StyledFloatingListbox.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$T = 'dropdowns.combobox.input';
+const COMPONENT_ID$Q = 'dropdowns.combobox.input';
 const colorStyles$i = props => {
   const placeholderColor = getColorV8('neutralHue', 400, props.theme);
   return Ne(["background-color:inherit;color:inherit;&::placeholder{opacity:1;color:", ";}"], placeholderColor);
@@ -15473,7 +15818,7 @@ const getHeight = props => {
   }
   return props.theme.space.base * (props.isCompact ? 5 : 8);
 };
-const sizeStyles$i = props => {
+const sizeStyles$h = props => {
   const height = props.theme.space.base * 5;
   const fontSize = props.theme.fontSizes.md;
   const lineHeight = getLineHeight(height, fontSize);
@@ -15482,12 +15827,12 @@ const sizeStyles$i = props => {
   return Ne(["min-width:", ";height:", "px;line-height:", ";font-size:", ";&&{margin-top:", ";margin-bottom:", ";}"], minWidth, height, lineHeight, fontSize, margin, margin);
 };
 const StyledInput = styled.input.attrs({
-  'data-garden-id': COMPONENT_ID$T,
+  'data-garden-id': COMPONENT_ID$Q,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledInput",
   componentId: "sc-m2m56e-0"
-})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;&:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}&[aria-hidden='true']{display:none;}", ";"], sizeStyles$i, colorStyles$i, props => props.isEditable && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$T, props));
+})(["flex-basis:0;flex-grow:1;border:none;padding:0;font-family:inherit;&:focus{outline:none;}", ";", ";&[hidden]{display:revert;", "}&[aria-hidden='true']{display:none;}", ";"], sizeStyles$h, colorStyles$i, props => props.isEditable && hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$Q, props));
 StyledInput.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15499,18 +15844,18 @@ StyledInput.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$S = 'dropdowns.combobox.input_group';
-const sizeStyles$h = props => {
+const COMPONENT_ID$P = 'dropdowns.combobox.input_group';
+const sizeStyles$g = props => {
   const margin = props.theme.shadowWidths.sm;
   return Ne(["margin:-", ";min-width:0;& > *{margin:", ";}"], margin, margin);
 };
 const StyledInputGroup = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$S,
+  'data-garden-id': COMPONENT_ID$P,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledInputGroup",
   componentId: "sc-2agt8f-0"
-})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$h, props => retrieveComponentStyles(COMPONENT_ID$S, props));
+})(["display:flex;flex-grow:1;flex-wrap:wrap;", ";", ";"], sizeStyles$g, props => retrieveComponentStyles(COMPONENT_ID$P, props));
 StyledInputGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15522,7 +15867,7 @@ StyledInputGroup.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$R = 'dropdowns.combobox.trigger';
+const COMPONENT_ID$O = 'dropdowns.combobox.trigger';
 const colorStyles$h = props => {
   const SHADE = 600;
   let hue = 'neutralHue';
@@ -15571,7 +15916,7 @@ const colorStyles$h = props => {
     condition: !props.isBare
   }), disabledBorderColor, disabledBackgroundColor, disabledForegroundColor);
 };
-const sizeStyles$g = props => {
+const sizeStyles$f = props => {
   const inputHeight = getHeight(props);
   let minHeight;
   let horizontalPadding;
@@ -15592,12 +15937,12 @@ const sizeStyles$g = props => {
   return Ne(["padding:", " ", ";min-height:", ";max-height:", ";font-size:", ";"], verticalPadding, horizontalPadding, minHeight, maxHeight, props.theme.fontSizes.md);
 };
 const StyledTrigger = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$R,
+  'data-garden-id': COMPONENT_ID$O,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTrigger",
   componentId: "sc-14t9k4c-0"
-})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$g, colorStyles$h, props => retrieveComponentStyles(COMPONENT_ID$R, props));
+})(["overflow-y:auto;transition:border-color 0.25s ease-in-out,box-shadow 0.1s ease-in-out,background-color 0.25s ease-in-out,color 0.25s ease-in-out;border:", ";border-radius:", ";cursor:", ";box-sizing:border-box;", ";&:focus{outline:none;}", ";&[aria-disabled='true']{cursor:default;}", ";"], props => props.isBare ? 'none' : props.theme.borders.sm, props => props.isBare ? '0' : props.theme.borderRadii.md, props => !props.isAutocomplete && props.isEditable ? 'text' : 'pointer', sizeStyles$f, colorStyles$h, props => retrieveComponentStyles(COMPONENT_ID$O, props));
 StyledTrigger.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15609,14 +15954,14 @@ StyledTrigger.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$Q = 'dropdowns.combobox.input_icon';
+const COMPONENT_ID$N = 'dropdowns.combobox.input_icon';
 const colorStyles$g = props => {
   const color = getColorV8('neutralHue', 600, props.theme);
   const focusColor = getColorV8('neutralHue', 700, props.theme);
   const disabledColor = getColorV8('neutralHue', 400, props.theme);
   return Ne(["color:", ";", ":hover &,", ":focus-within &,", ":focus &,", "[data-garden-focus-visible='true'] &{color:", ";}", "[aria-disabled='true'] &{color:", ";}"], props.isLabelHovered ? focusColor : color, StyledTrigger, StyledTrigger, StyledTrigger, StyledTrigger, focusColor, StyledTrigger, disabledColor);
 };
-const sizeStyles$f = props => {
+const sizeStyles$e = props => {
   const size = props.theme.iconSizes.md;
   const position = math$1(`(${getHeight(props)} - ${size}) / 2`);
   const margin = `${props.theme.space.base * 2}px`;
@@ -15641,12 +15986,12 @@ const StyledInputIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$Q,
+  'data-garden-id': COMPONENT_ID$N,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledInputIcon",
   componentId: "sc-15ewmjl-0"
-})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$f, colorStyles$g, props => retrieveComponentStyles(COMPONENT_ID$Q, props));
+})(["position:sticky;flex-shrink:0;transform:", ";transition:transform 0.25s ease-in-out,color 0.25s ease-in-out;", ";", ";", ";"], props => props.isRotated && `rotate(${props.theme.rtl ? '-' : '+'}180deg)`, sizeStyles$e, colorStyles$g, props => retrieveComponentStyles(COMPONENT_ID$N, props));
 StyledInputIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15658,7 +16003,7 @@ StyledInputIcon.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$P = 'dropdowns.combobox.option';
+const COMPONENT_ID$M = 'dropdowns.combobox.option';
 const colorStyles$f = props => {
   let backgroundColor;
   let boxShadow;
@@ -15677,7 +16022,7 @@ const colorStyles$f = props => {
   return Ne(["box-shadow:", ";background-color:", ";color:", ";&[aria-disabled='true']{background-color:transparent;color:", ";}"], boxShadow, backgroundColor, foregroundColor, disabledForegroundColor);
 };
 const getMinHeight = props => props.theme.space.base * (props.isCompact ? 7 : 9);
-const sizeStyles$e = props => {
+const sizeStyles$d = props => {
   const lineHeight = props.theme.lineHeights.md;
   const minHeight = getMinHeight(props);
   const paddingHorizontal = props.$type === 'group' ? 0 : `${props.theme.space.base * 9}px`;
@@ -15685,12 +16030,12 @@ const sizeStyles$e = props => {
   return Ne(["box-sizing:border-box;padding:", " ", ";min-height:", "px;line-height:", ";"], paddingVertical, paddingHorizontal, minHeight, lineHeight);
 };
 const StyledOption = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$P,
+  'data-garden-id': COMPONENT_ID$M,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOption",
   componentId: "sc-1b5e09t-0"
-})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";overflow-wrap:anywhere;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}&[aria-hidden='true']{", ";}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$e, colorStyles$f, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$P, props));
+})(["display:flex;position:relative;transition:color 0.25s ease-in-out;cursor:", ";overflow-wrap:anywhere;font-weight:", ";user-select:none;&:focus{outline:none;}", ";", ";&[aria-disabled='true']{cursor:default;}&[aria-hidden='true']{", ";}", ";"], props => props.$type === 'group' || props.$type === 'header' ? 'default' : 'pointer', props => props.$type === 'header' || props.$type === 'previous' ? props.theme.fontWeights.semibold : props.theme.fontWeights.regular, sizeStyles$d, colorStyles$f, hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$M, props));
 StyledOption.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15702,14 +16047,14 @@ StyledOption.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$O = 'dropdowns.combobox.option.content';
+const COMPONENT_ID$L = 'dropdowns.combobox.option.content';
 const StyledOptionContent = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$O,
+  'data-garden-id': COMPONENT_ID$L,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionContent",
   componentId: "sc-536085-0"
-})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$O, props));
+})(["display:flex;flex-direction:column;flex-grow:1;", ";"], props => retrieveComponentStyles(COMPONENT_ID$L, props));
 StyledOptionContent.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15721,14 +16066,14 @@ StyledOptionContent.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$N = 'dropdowns.combobox.optgroup';
+const COMPONENT_ID$K = 'dropdowns.combobox.optgroup';
 const StyledOptGroup = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$N,
+  'data-garden-id': COMPONENT_ID$K,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptGroup",
   componentId: "sc-12dbq5s-0"
-})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$N, props));
+})(["margin:0;padding:0;list-style-type:none;", ";"], props => retrieveComponentStyles(COMPONENT_ID$K, props));
 StyledOptGroup.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15740,23 +16085,23 @@ StyledOptGroup.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$M = 'dropdowns.combobox.separator';
+const COMPONENT_ID$J = 'dropdowns.combobox.separator';
 const colorStyles$e = props => {
   const backgroundColor = getColorV8('neutralHue', 200, props.theme);
   return Ne(["background-color:", ";"], backgroundColor);
 };
-const sizeStyles$d = props => {
+const sizeStyles$c = props => {
   const margin = `${props.theme.space.base}px`;
   const height = props.theme.borderWidths.sm;
   return Ne(["margin:", " 0;height:", ";"], margin, height);
 };
 const StyledListboxSeparator = styled.li.attrs({
-  'data-garden-id': COMPONENT_ID$M,
+  'data-garden-id': COMPONENT_ID$J,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledListboxSeparator",
   componentId: "sc-19umtmg-0"
-})(["cursor:default;", ";", ";", ";"], sizeStyles$d, colorStyles$e, props => retrieveComponentStyles(COMPONENT_ID$M, props));
+})(["cursor:default;", ";", ";", ";"], sizeStyles$c, colorStyles$e, props => retrieveComponentStyles(COMPONENT_ID$J, props));
 StyledListboxSeparator.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15768,19 +16113,19 @@ StyledListboxSeparator.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$L = 'dropdowns.combobox.listbox';
-const sizeStyles$c = props => {
+const COMPONENT_ID$I = 'dropdowns.combobox.listbox';
+const sizeStyles$b = props => {
   const padding = props.theme.space.base;
   const minHeight = props.minHeight === undefined ? `${getMinHeight(props) + padding * 2}px` : props.minHeight;
   return Ne(["min-height:", ";max-height:", ";&&&{padding-top:", "px;padding-bottom:", "px;}"], minHeight, props.maxHeight, padding, padding);
 };
 const StyledListbox = styled.ul.attrs({
-  'data-garden-id': COMPONENT_ID$L,
+  'data-garden-id': COMPONENT_ID$I,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledListbox",
   componentId: "sc-4uxeym-0"
-})(["overflow-y:auto;list-style-type:none;", ";&&&{display:block;}", ":first-child ", " ", ":first-child ", "[role='none']:first-child{display:none;}"], sizeStyles$c, StyledOption, StyledOptionContent, StyledOptGroup, StyledListboxSeparator);
+})(["overflow-y:auto;list-style-type:none;", ";&&&{display:block;}", ":first-child ", " ", ":first-child ", "[role='none']:first-child{display:none;}"], sizeStyles$b, StyledOption, StyledOptionContent, StyledOptGroup, StyledListboxSeparator);
 StyledListbox.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15792,8 +16137,8 @@ StyledListbox.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$K = 'dropdowns.combobox.option.icon';
-const sizeStyles$b = props => {
+const COMPONENT_ID$H = 'dropdowns.combobox.option.icon';
+const sizeStyles$a = props => {
   const size = props.theme.iconSizes.md;
   const marginTop = math$1(`(${props.theme.lineHeights.md} - ${size}) / 2`);
   const marginHorizontal = `${props.theme.space.base * 2}px`;
@@ -15807,12 +16152,12 @@ const StyledOptionIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$K,
+  'data-garden-id': COMPONENT_ID$H,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionIcon",
   componentId: "sc-3vecfi-0"
-})(["flex-shrink:0;", ";", ";"], sizeStyles$b, props => retrieveComponentStyles(COMPONENT_ID$K, props));
+})(["flex-shrink:0;", ";", ";"], sizeStyles$a, props => retrieveComponentStyles(COMPONENT_ID$H, props));
 StyledOptionIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15824,23 +16169,23 @@ StyledOptionIcon.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$J = 'dropdowns.combobox.option.meta';
+const COMPONENT_ID$G = 'dropdowns.combobox.option.meta';
 const colorStyles$d = props => {
   const color = getColorV8('neutralHue', props.isDisabled ? 400 : 600, props.theme);
   return Ne(["color:", ";"], color);
 };
-const sizeStyles$a = props => {
+const sizeStyles$9 = props => {
   const lineHeight = props.theme.lineHeights.sm;
   const fontSize = props.theme.fontSizes.sm;
   return Ne(["line-height:", ";font-size:", ";"], lineHeight, fontSize);
 };
 const StyledOptionMeta = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$J,
+  'data-garden-id': COMPONENT_ID$G,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionMeta",
   componentId: "sc-1nizjb3-0"
-})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$a, colorStyles$d, props => retrieveComponentStyles(COMPONENT_ID$J, props));
+})(["transition:color 0.25s ease-in-out;font-weight:", ";", ";", ";", ";"], props => props.theme.fontWeights.regular, sizeStyles$9, colorStyles$d, props => retrieveComponentStyles(COMPONENT_ID$G, props));
 StyledOptionMeta.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15852,7 +16197,7 @@ StyledOptionMeta.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$I = 'dropdowns.combobox.option.type_icon';
+const COMPONENT_ID$F = 'dropdowns.combobox.option.type_icon';
 const colorStyles$c = props => {
   const opacity = props.type && props.type !== 'danger' ? 1 : 0;
   let color;
@@ -15865,7 +16210,7 @@ const colorStyles$c = props => {
   }
   return Ne(["opacity:", ";color:", ";", "[aria-selected='true'] > &{opacity:1;}", "[aria-disabled='true'] > &{color:inherit;}"], opacity, color, StyledOption, StyledOption);
 };
-const sizeStyles$9 = props => {
+const sizeStyles$8 = props => {
   const size = props.theme.iconSizes.md;
   const position = `${props.theme.space.base * 3}px`;
   const top = math$1(`(${getMinHeight(props)} - ${size}) / 2`);
@@ -15887,12 +16232,12 @@ const StyledOptionTypeIcon = styled(_ref => {
   } = _ref;
   return reactExports.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$I,
+  'data-garden-id': COMPONENT_ID$F,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledOptionTypeIcon",
   componentId: "sc-vlhimu-0"
-})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$9, colorStyles$c, props => retrieveComponentStyles(COMPONENT_ID$I, props));
+})(["position:absolute;transform:", ";transition:opacity 0.1s ease-in-out;", ";", ";", ";"], props => props.theme.rtl && (props.type === 'next' || props.type === 'previous') && 'rotate(180deg)', sizeStyles$8, colorStyles$c, props => retrieveComponentStyles(COMPONENT_ID$F, props));
 StyledOptionTypeIcon.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15903,7 +16248,7 @@ StyledOptionTypeIcon.defaultProps = {
 * Use of this source code is governed under the Apache License, Version 2.0
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
-const SIZE$3 = ['small', 'medium', 'large'];
+const SIZE$2 = ['small', 'medium', 'large'];
 
 /**
 * Copyright Zendesk, Inc.
@@ -15912,7 +16257,7 @@ const SIZE$3 = ['small', 'medium', 'large'];
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$H = 'tags.avatar';
+const COMPONENT_ID$E = 'tags.avatar';
 const StyledAvatar = styled(_ref => {
   let {
     children,
@@ -15920,12 +16265,12 @@ const StyledAvatar = styled(_ref => {
   } = _ref;
   return React__default.cloneElement(reactExports.Children.only(children), props);
 }).attrs({
-  'data-garden-id': COMPONENT_ID$H,
+  'data-garden-id': COMPONENT_ID$E,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledAvatar",
   componentId: "sc-3kdmgt-0"
-})(["flex-shrink:0;font-size:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$H, props));
+})(["flex-shrink:0;font-size:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$E, props));
 StyledAvatar.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15937,14 +16282,14 @@ StyledAvatar.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$G = 'tags.close';
+const COMPONENT_ID$D = 'tags.close';
 const StyledClose$1 = styled.button.attrs({
-  'data-garden-id': COMPONENT_ID$G,
+  'data-garden-id': COMPONENT_ID$D,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledClose",
   componentId: "sc-d6lrpn-0"
-})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:0;background:transparent;cursor:pointer;padding:0;color:inherit;font-size:0;appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => retrieveComponentStyles(COMPONENT_ID$G, props));
+})(["display:flex;flex-shrink:0;align-items:center;justify-content:center;transition:opacity 0.25s ease-in-out;opacity:0.8;border:0;background:transparent;cursor:pointer;padding:0;color:inherit;font-size:0;appearance:none;&:hover{opacity:0.9;}&:focus{outline:none;}", ";"], props => retrieveComponentStyles(COMPONENT_ID$D, props));
 StyledClose$1.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -15956,7 +16301,7 @@ StyledClose$1.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$F = 'tags.tag_view';
+const COMPONENT_ID$C = 'tags.tag_view';
 const colorStyles$b = props => {
   let backgroundColor;
   let foregroundColor;
@@ -15980,7 +16325,7 @@ const colorStyles$b = props => {
     selector: '&:focus'
   }), StyledClose$1, closeColor);
 };
-const sizeStyles$8 = props => {
+const sizeStyles$7 = props => {
   let borderRadius;
   let padding;
   let height;
@@ -16029,12 +16374,12 @@ const sizeStyles$8 = props => {
   return Ne(["border-radius:", ";padding:0 ", "px;min-width:", ";height:", "px;line-height:", ";font-size:", ";& > *{width:100%;min-width:", ";}& ", "{margin-", ":-", "px;margin-", ":", "px;border-radius:", ";width:", "px;min-width:", "px;height:", "px;}& ", "{margin-", ":-", "px;border-radius:", ";width:", "px;height:", "px;}"], borderRadius, padding, minWidth ? `${minWidth}px` : `calc(${padding * 2}px + 1ch)`, height, getLineHeight(height, fontSize), fontSize, minWidth ? `${minWidth - padding * 2}px` : '1ch', StyledAvatar, props.theme.rtl ? 'right' : 'left', padding - avatarMargin, props.theme.rtl ? 'left' : 'right', avatarTextMargin, avatarBorderRadius, avatarSize, avatarSize, avatarSize, StyledClose$1, props.theme.rtl ? 'left' : 'right', padding, borderRadius, height, height);
 };
 const StyledTag$1 = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$F,
+  'data-garden-id': COMPONENT_ID$C,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1jvbe03-0"
-})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$8(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$b(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose$1, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$F, props));
+})(["display:inline-flex;flex-wrap:nowrap;align-items:center;justify-content:", ";transition:box-shadow 0.1s ease-in-out;box-sizing:border-box;border:0;max-width:100%;overflow:hidden;vertical-align:middle;text-decoration:none;white-space:nowrap;font-weight:", ";direction:", ";", ";&:hover{cursor:default;text-decoration:none;}&:link:hover,&:visited:hover{cursor:pointer;}&:any-link:hover{cursor:pointer;}", "{text-decoration:none;}", ";& > *{overflow:hidden;text-align:center;text-overflow:ellipsis;white-space:nowrap;}& b{font-weight:", ";}& ", "{display:", ";}& ", "{display:", ";}", ";"], props => props.isRound && 'center', props => !props.isRegular && props.theme.fontWeights.semibold, props => props.theme.rtl ? 'rtl' : 'ltr', props => sizeStyles$7(props), SELECTOR_FOCUS_VISIBLE, props => colorStyles$b(props), props => props.theme.fontWeights.semibold, StyledAvatar, props => (props.isRound || props.size === 'small') && 'none', StyledClose$1, props => props.isRound && 'none', props => retrieveComponentStyles(COMPONENT_ID$C, props));
 StyledTag$1.defaultProps = {
   size: 'medium',
   theme: DEFAULT_THEME
@@ -16116,7 +16461,7 @@ const TagComponent$1 = reactExports.forwardRef((_ref, ref) => {
 });
 TagComponent$1.displayName = 'Tag';
 TagComponent$1.propTypes = {
-  size: PropTypes.oneOf(SIZE$3),
+  size: PropTypes.oneOf(SIZE$2),
   hue: PropTypes.string,
   isPill: PropTypes.bool,
   isRound: PropTypes.bool,
@@ -16136,14 +16481,14 @@ Tag$1.Close = Close$1;
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$E = 'dropdowns.combobox.tag';
+const COMPONENT_ID$B = 'dropdowns.combobox.tag';
 const StyledTag = styled(Tag$1).attrs({
-  'data-garden-id': COMPONENT_ID$E,
+  'data-garden-id': COMPONENT_ID$B,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTag",
   componentId: "sc-1mrab0f-0"
-})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColorV8('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$E, props));
+})(["&[aria-disabled='true']{color:", ";}&[hidden]{display:revert;", "}", ";"], props => props.hue ? undefined : getColorV8('neutralHue', 400, props.theme), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$B, props));
 StyledTag.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16155,13 +16500,13 @@ StyledTag.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$D = 'dropdowns.combobox.value';
+const COMPONENT_ID$A = 'dropdowns.combobox.value';
 const colorStyles$a = props => {
   const foregroundColor = props.isPlaceholder && getColorV8('neutralHue', 400, props.theme);
   return Ne(["color:", ";"], foregroundColor);
 };
 const StyledValue = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$D,
+  'data-garden-id': COMPONENT_ID$A,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledValue",
@@ -16171,7 +16516,7 @@ const StyledValue = styled.div.attrs({
     return 'default';
   }
   return props.isEditable && !props.isAutocomplete ? 'text' : 'pointer';
-}, sizeStyles$i, colorStyles$a, props => retrieveComponentStyles(COMPONENT_ID$D, props));
+}, sizeStyles$h, colorStyles$a, props => retrieveComponentStyles(COMPONENT_ID$A, props));
 StyledValue.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -16183,19 +16528,19 @@ StyledValue.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$C = 'dropdowns.combobox.tags_button';
+const COMPONENT_ID$z = 'dropdowns.combobox.tags_button';
 const colorStyles$9 = props => {
   const color = getColorV8('primaryHue', 600, props.theme);
   return Ne(["color:", ";&:disabled{color:inherit;}"], color);
 };
 const StyledTagsButton = styled(StyledValue).attrs({
   as: 'button',
-  'data-garden-id': COMPONENT_ID$C,
+  'data-garden-id': COMPONENT_ID$z,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTagsButton",
   componentId: "sc-ewyffo-0"
-})(["display:inline-flex;flex:0 1 auto;align-items:center;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$C, props));
+})(["display:inline-flex;flex:0 1 auto;align-items:center;border:none;background-color:transparent;cursor:pointer;min-width:auto;font-family:inherit;&:hover{text-decoration:underline;}", ";&:disabled{cursor:default;text-decoration:none;}", ";"], colorStyles$9, props => retrieveComponentStyles(COMPONENT_ID$z, props));
 StyledTagsButton.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -22686,15 +23031,15 @@ function getArrowPosition(popperPlacement) {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$B = 'tooltip.paragraph';
-const StyledParagraph$1 = styled.p.attrs({
-  'data-garden-id': COMPONENT_ID$B,
+const COMPONENT_ID$y = 'tooltip.paragraph';
+const StyledParagraph = styled.p.attrs({
+  'data-garden-id': COMPONENT_ID$y,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledParagraph",
   componentId: "sc-wuqkfc-0"
-})(["margin:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$B, props));
-StyledParagraph$1.defaultProps = {
+})(["margin:0;", ";"], props => retrieveComponentStyles(COMPONENT_ID$y, props));
+StyledParagraph.defaultProps = {
   theme: DEFAULT_THEME
 };
 
@@ -22705,14 +23050,14 @@ StyledParagraph$1.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$A = 'tooltip.title';
+const COMPONENT_ID$x = 'tooltip.title';
 const StyledTitle = styled.strong.attrs({
-  'data-garden-id': COMPONENT_ID$A,
+  'data-garden-id': COMPONENT_ID$x,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTitle",
   componentId: "sc-vnjcvz-0"
-})(["display:none;margin:0;font-weight:", ";", ";"], props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$A, props));
+})(["display:none;margin:0;font-weight:", ";", ";"], props => props.theme.fontWeights.semibold, props => retrieveComponentStyles(COMPONENT_ID$x, props));
 StyledTitle.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -22724,8 +23069,8 @@ StyledTitle.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$z = 'tooltip.tooltip';
-const sizeStyles$7 = _ref => {
+const COMPONENT_ID$w = 'tooltip.tooltip';
+const sizeStyles$6 = _ref => {
   let {
     theme,
     size,
@@ -22789,7 +23134,7 @@ const sizeStyles$7 = _ref => {
   return Ne(["margin:", ";border-radius:", ";padding:", ";max-width:", ";line-height:", ";word-wrap:", ";white-space:", ";font-size:", ";overflow-wrap:", ";", ";", "{margin-top:", ";}", "{display:", ";}"], margin, borderRadius, padding, maxWidth, lineHeight, wordWrap, whiteSpace, fontSize, overflowWrap, hasArrow && arrowStyles(getArrowPosition(placement), {
     size: arrowSize,
     inset: arrowInset
-  }), StyledParagraph$1, paragraphMarginTop, StyledTitle, titleDisplay);
+  }), StyledParagraph, paragraphMarginTop, StyledTitle, titleDisplay);
 };
 const colorStyles$8 = _ref2 => {
   let {
@@ -22811,12 +23156,12 @@ const colorStyles$8 = _ref2 => {
   return Ne(["border:", ";box-shadow:", ";background-color:", ";color:", ";", "{color:", ";}"], border, boxShadow, backgroundColor, color, StyledTitle, titleColor);
 };
 const StyledTooltip = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$z,
+  'data-garden-id': COMPONENT_ID$w,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledTooltip",
   componentId: "sc-gzzjq4-0"
-})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$7(props), colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$z, props));
+})(["display:inline-block;box-sizing:border-box;direction:", ";text-align:", ";font-weight:", ";", ";&[aria-hidden='true']{display:none;}", ";", ";"], props => props.theme.rtl && 'rtl', props => props.theme.rtl ? 'right' : 'left', props => props.theme.fontWeights.regular, props => sizeStyles$6(props), colorStyles$8, props => retrieveComponentStyles(COMPONENT_ID$w, props));
 StyledTooltip.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -22844,7 +23189,7 @@ StyledTooltipWrapper.defaultProps = {
 */
 const SHARED_PLACEMENT$1 = ['auto', 'top', 'top-start', 'top-end', 'bottom', 'bottom-start', 'bottom-end'];
 const PLACEMENT$1 = [...SHARED_PLACEMENT$1, 'end', 'end-top', 'end-bottom', 'start', 'start-top', 'start-bottom'];
-const SIZE$2 = ['small', 'medium', 'large', 'extra-large'];
+const SIZE$1 = ['small', 'medium', 'large', 'extra-large'];
 const TYPE = ['light', 'dark'];
 
 /**
@@ -22971,7 +23316,7 @@ Tooltip.propTypes = {
   content: PropTypes.node.isRequired,
   placement: PropTypes.oneOf(PLACEMENT$1),
   popperModifiers: PropTypes.any,
-  size: PropTypes.oneOf(SIZE$2),
+  size: PropTypes.oneOf(SIZE$1),
   type: PropTypes.oneOf(TYPE),
   zIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   isInitialVisible: PropTypes.bool,
@@ -26950,7 +27295,7 @@ StyledProgressIndicator.defaultProps = {
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$y = 'loaders.skeleton';
+const COMPONENT_ID$v = 'loaders.skeleton';
 const fadeInAnimation = $e(["0%,60%{opacity:0;}100%{opacity:1;}"]);
 const skeletonAnimation = $e(["0%{transform:translateX(-100%);}100%{transform:translateX(100%);}"]);
 const skeletonRtlAnimation = $e(["0%{transform:translateX(100%);}100%{transform:translateX(-100%)}"]);
@@ -26981,12 +27326,12 @@ const retrieveSkeletonGradient = _ref3 => {
   return Ne(["background-image:linear-gradient( ", ",transparent,", ",transparent );"], theme.rtl ? '-45deg' : '45deg', isLight ? getColorV8('chromeHue', 700, theme, 0.4) : rgba$1(getColorV8('background', 600 , theme), 0.6));
 };
 const StyledSkeleton = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$y,
+  'data-garden-id': COMPONENT_ID$v,
   'data-garden-version': '8.76.2'
 }).withConfig({
   displayName: "StyledSkeleton",
   componentId: "sc-1raozze-0"
-})(["display:inline-block;position:relative;animation:", " 750ms linear;border-radius:", ";width:", ";height:", ";overflow:hidden;line-height:", ";", " &::before{position:absolute;top:0;width:1000px;height:100%;content:'';", " ", "}", ";"], fadeInAnimation, props => props.theme.borderRadii.md, props => props.customWidth, props => props.customHeight, props => getLineHeight(props.theme.fontSizes.sm, props.theme.space.base * 5), retrieveSkeletonBackgroundColor, retrieveSkeletonAnimation, retrieveSkeletonGradient, props => retrieveComponentStyles(COMPONENT_ID$y, props));
+})(["display:inline-block;position:relative;animation:", " 750ms linear;border-radius:", ";width:", ";height:", ";overflow:hidden;line-height:", ";", " &::before{position:absolute;top:0;width:1000px;height:100%;content:'';", " ", "}", ";"], fadeInAnimation, props => props.theme.borderRadii.md, props => props.customWidth, props => props.customHeight, props => getLineHeight(props.theme.fontSizes.sm, props.theme.space.base * 5), retrieveSkeletonBackgroundColor, retrieveSkeletonAnimation, retrieveSkeletonGradient, props => retrieveComponentStyles(COMPONENT_ID$v, props));
 StyledSkeleton.defaultProps = {
   theme: DEFAULT_THEME
 };
@@ -26997,7 +27342,7 @@ StyledSkeleton.defaultProps = {
 * Use of this source code is governed under the Apache License, Version 2.0
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
-const SIZE$1 = ['small', 'medium', 'large'];
+const SIZE = ['small', 'medium', 'large'];
 
 /**
 * Copyright Zendesk, Inc.
@@ -27006,7 +27351,7 @@ const SIZE$1 = ['small', 'medium', 'large'];
 * found at http://www.apache.org/licenses/LICENSE-2.0.
 */
 
-const COMPONENT_ID$x = 'loaders.progress';
+const COMPONENT_ID$u = 'loaders.progress';
 const Progress = React__default.forwardRef((_ref, ref) => {
   let {
     value,
@@ -27020,7 +27365,7 @@ const Progress = React__default.forwardRef((_ref, ref) => {
   }, 'aria-label', 'Progress');
   return (
     React__default.createElement(StyledProgressBackground, Object.assign({
-      "data-garden-id": COMPONENT_ID$x,
+      "data-garden-id": COMPONENT_ID$u,
       "data-garden-version": '8.76.2',
       "aria-valuemax": 100,
       "aria-valuemin": 0,
@@ -27039,7 +27384,7 @@ Progress.displayName = 'Progress';
 Progress.propTypes = {
   color: PropTypes.string,
   value: PropTypes.number.isRequired,
-  size: PropTypes.oneOf(SIZE$1)
+  size: PropTypes.oneOf(SIZE)
 };
 Progress.defaultProps = {
   value: 0,
@@ -27410,312 +27755,6 @@ var SvgAlertWarningStroke = function SvgAlertWarningStroke(props) {
     fill: "currentColor"
   })));
 };
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-const SIZE = ['small', 'medium', 'large'];
-['inherit', ...SIZE];
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$w = 'typography.font';
-[...SIZE, 'extralarge', '2xlarge', '3xlarge'];
-const THEME_SIZES = {
-  small: 'sm',
-  medium: 'md',
-  large: 'lg',
-  extralarge: 'xl',
-  '2xlarge': 'xxl',
-  '3xlarge': 'xxxl'
-};
-const fontStyles = props => {
-  const monospace = props.isMonospace && ['inherit', 'small', 'medium', 'large'].indexOf(props.size) !== -1;
-  const fontFamily = monospace && props.theme.fonts.mono;
-  const direction = props.theme.rtl ? 'rtl' : 'ltr';
-  let fontSize;
-  let fontWeight;
-  let lineHeight;
-  let color;
-  if (monospace) {
-    if (props.size === 'inherit') {
-      fontSize = 'calc(1em - 1px)';
-      lineHeight = 'normal';
-    } else {
-      const themeSize = THEME_SIZES[props.size];
-      fontSize = math$1(`${props.theme.fontSizes[themeSize]} - 1px`);
-      lineHeight = math$1(`${props.theme.lineHeights[themeSize]} - 1px`);
-    }
-  } else if (props.size !== 'inherit') {
-    const themeSize = THEME_SIZES[props.size];
-    fontSize = props.theme.fontSizes[themeSize];
-    lineHeight = props.theme.lineHeights[themeSize];
-  }
-  if (props.isBold === true) {
-    fontWeight = props.theme.fontWeights.semibold;
-  } else if (props.isBold === false || props.size !== 'inherit') {
-    fontWeight = props.theme.fontWeights.regular;
-  }
-  if (props.hue) {
-    const shade = props.hue === 'yellow' ? 700 : 600;
-    color = getColorV8(props.hue, shade, props.theme);
-  }
-  return Ne(["line-height:", ";color:", ";font-family:", ";font-size:", ";font-weight:", ";direction:", ";"], lineHeight, color, fontFamily, fontSize, fontWeight, direction);
-};
-const StyledFont = styled.div.attrs({
-  'data-garden-id': COMPONENT_ID$w,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledFont",
-  componentId: "sc-1iildbo-0"
-})(["", ";&[hidden]{display:inline;", ";}", ";"], props => !props.hidden && fontStyles(props), hideVisually(), props => retrieveComponentStyles(COMPONENT_ID$w, props));
-StyledFont.defaultProps = {
-  theme: DEFAULT_THEME,
-  size: 'inherit'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$v = 'typography.icon';
-const sizeStyles$6 = props => {
-  const margin = props.isStart && `${props.theme.space.base * 2}px`;
-  const size = props.theme.iconSizes.md;
-  return Ne(["margin-", ":", ";width:", ";height:", ";"], props.theme.rtl ? 'left' : 'right', margin, size, size);
-};
-const StyledIcon$1 = styled(_ref => {
-  let {
-    children,
-    isStart,
-    ...props
-  } = _ref;
-  return React__default.cloneElement(reactExports.Children.only(children), props);
-}).attrs({
-  'data-garden-id': COMPONENT_ID$v,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledIcon",
-  componentId: "sc-10rfb5b-0"
-})(["position:relative;top:-1px;vertical-align:middle;", ";", ";"], props => sizeStyles$6(props), props => retrieveComponentStyles(COMPONENT_ID$v, props));
-StyledIcon$1.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const COMPONENT_ID$u = 'typography.paragraph';
-const StyledParagraph = styled.p.attrs({
-  'data-garden-id': COMPONENT_ID$u,
-  'data-garden-version': '8.76.2'
-}).withConfig({
-  displayName: "StyledParagraph",
-  componentId: "sc-zkuftz-0"
-})(["margin:0;padding:0;direction:", ";& + &,blockquote + &{margin-top:", ";}", ";"], props => props.theme.rtl ? 'rtl' : 'ltr', props => props.theme.lineHeights[THEME_SIZES[props.size]], props => retrieveComponentStyles(COMPONENT_ID$u, props));
-StyledParagraph.defaultProps = {
-  theme: DEFAULT_THEME
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const SM = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "small"
-  }, other));
-});
-SM.displayName = 'SM';
-SM.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool
-};
-SM.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const MD = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "medium"
-  }, other));
-});
-MD.displayName = 'MD';
-MD.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool
-};
-MD.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const LG = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "large"
-  }, other));
-});
-LG.displayName = 'LG';
-LG.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool
-};
-LG.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const XXXL = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "3xlarge"
-  }, other));
-});
-XXXL.displayName = 'XXXL';
-XXXL.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool
-};
-XXXL.defaultProps = {
-  tag: 'div'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const Paragraph = reactExports.forwardRef((props, ref) => React__default.createElement(StyledParagraph, Object.assign({
-  ref: ref
-}, props)));
-Paragraph.displayName = 'Paragraph';
-Paragraph.propTypes = {
-  size: PropTypes.oneOf(SIZE)
-};
-Paragraph.defaultProps = {
-  size: 'medium'
-};
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const StartIconComponent = props => React__default.createElement(StyledIcon$1, Object.assign({
-  isStart: true
-}, props));
-StartIconComponent.displayName = 'Span.StartIcon';
-const StartIcon = StartIconComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const IconComponent = props => React__default.createElement(StyledIcon$1, props);
-IconComponent.displayName = 'Span.Icon';
-const Icon = IconComponent;
-
-/**
-* Copyright Zendesk, Inc.
-*
-* Use of this source code is governed under the Apache License, Version 2.0
-* found at http://www.apache.org/licenses/LICENSE-2.0.
-*/
-
-const SpanComponent = reactExports.forwardRef((_ref, ref) => {
-  let {
-    tag,
-    ...other
-  } = _ref;
-  return React__default.createElement(StyledFont, Object.assign({
-    as: tag,
-    ref: ref,
-    size: "inherit"
-  }, other));
-});
-SpanComponent.displayName = 'Span';
-SpanComponent.propTypes = {
-  tag: PropTypes.any,
-  isBold: PropTypes.bool,
-  isMonospace: PropTypes.bool,
-  hue: PropTypes.string
-};
-SpanComponent.defaultProps = {
-  tag: 'span'
-};
-const Span = SpanComponent;
-Span.Icon = Icon;
-Span.StartIcon = StartIcon;
 
 /**
  * Copyright Zendesk, Inc.
@@ -37557,4 +37596,4 @@ var SvgChevronDownFill = function SvgChevronDownFill(props) {
   })));
 };
 
-export { $e as $, Anchor as A, focusStyles as B, Checkbox as C, Datepicker as D, FauxInput as E, Field$1 as F, Tag$1 as G, Hint$1 as H, Input as I, SvgAlertWarningStroke as J, getColorV8 as K, Label$2 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Header$1 as Q, SvgCheckCircleStroke as R, Span as S, Title as T, useModalContainer as U, Modal as V, Body as W, Accordion as X, Paragraph as Y, Footer as Z, FooterItem as _, MediaInput as a, Button as a0, Close as a1, addFlashNotification as a2, Alert as a3, initI18next as a4, loadTranslations as a5, reactDomExports as a6, ThemeProviders as a7, createTheme as a8, FLASH_NOTIFICATIONS_KEY as a9, SvgShapesFill as aa, Grid as ab, Col as ac, Row as ad, Skeleton as ae, MD as af, SM as ag, LG as ah, CursorPagination as ai, XXXL as aj, SvgChevronUpFill as ak, SvgChevronDownFill as al, SvgCreditCardStroke as b, useToast as c, Close$3 as d, Textarea as e, Field as f, Label$1 as g, Hint as h, Combobox as i, jsxRuntimeExports as j, Message as k, OptGroup as l, debounce$2 as m, getDefaultExportFromCjs as n, commonjsGlobal as o, purify as p, FileList as q, reactExports as r, styled as s, File as t, useTranslation as u, Tooltip as v, mime as w, useDropzone as x, FileUpload as y, useGrid as z };
+export { $e as $, Anchor as A, focusStyles as B, Checkbox as C, Datepicker as D, FauxInput as E, Field$1 as F, Tag$1 as G, Hint$1 as H, Input as I, SvgAlertWarningStroke as J, getColorV8 as K, Label$2 as L, Message$1 as M, Notification as N, Option as O, Progress as P, Header$1 as Q, SvgCheckCircleStroke as R, Span as S, Title as T, useModalContainer as U, Modal as V, Body as W, Accordion as X, Paragraph as Y, Footer as Z, FooterItem as _, MediaInput as a, Button as a0, Close as a1, addFlashNotification as a2, Alert as a3, initI18next as a4, loadTranslations as a5, reactDomExports as a6, ThemeProviders as a7, createTheme as a8, FLASH_NOTIFICATIONS_KEY as a9, SvgShapesFill as aa, Grid as ab, Col as ac, Row as ad, Skeleton as ae, MD as af, SM as ag, LG as ah, CursorPagination as ai, ErrorBoundary as aj, XXXL as ak, SvgChevronUpFill as al, SvgChevronDownFill as am, SvgCreditCardStroke as b, useToast as c, Close$3 as d, Textarea as e, Field as f, Label$1 as g, Hint as h, Combobox as i, jsxRuntimeExports as j, Message as k, OptGroup as l, debounce$3 as m, getDefaultExportFromCjs as n, commonjsGlobal as o, purify as p, FileList as q, reactExports as r, styled as s, File as t, useTranslation as u, Tooltip as v, mime as w, useDropzone as x, FileUpload as y, useGrid as z };
