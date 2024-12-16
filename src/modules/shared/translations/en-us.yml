@@ -1,0 +1,27 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
+title: "Copenhagen Theme Shared Translations"
+packages:
+  - "cph-theme-shared"
+parts:
+  - translation:
+      key: "cph-theme-error-boundary.title"
+      title: "Message shown when an error occurs"
+      screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
+      value: "Something went wrong."
+  - translation:
+      key: "cph-theme-error-boundary.message"
+      title: "Message shown when an error occurs"
+      screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
+      value: "Give it a moment and try again later"
+  - translation:
+      key: "cph-theme-error-boundary.go-to-homepage"
+      title: "Error state go to the homepage link"
+      screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
+      value: "Go to the homepage"
