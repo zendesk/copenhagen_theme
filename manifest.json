@@ -364,6 +364,13 @@
           "description": "contact_us_description",
           "label": "contact_us_label",
           "value": "https://ocw.mit.edu/contact/"
+        },
+        {
+          "identifier": "gtm_id",
+          "type": "text",
+          "description": "gtm_id_description",
+          "label": "gtm_id_label",
+          "value": "GTM-NMQZ25T"
         }
       ]
     },
