@@ -50,11 +50,14 @@ interface CollapsibleDescriptionProps {
   description: string;
 }
 
-const DESCRIPTION_LENGTH_THRESHOLD = 270;
-
-export const shouldShowToggleButton = (description: string | null | undefined): boolean => {
+export const shouldShowToggleButton = (
+  description: string | null | undefined
+): boolean => {
   const DESCRIPTION_LENGTH_THRESHOLD = 270;
-  return typeof description === 'string' && description.length > DESCRIPTION_LENGTH_THRESHOLD;
+  return (
+    typeof description === "string" &&
+    description.length > DESCRIPTION_LENGTH_THRESHOLD
+  );
 };
 
 export const CollapsibleDescription = ({

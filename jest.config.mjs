@@ -5,6 +5,9 @@ const config = {
   transform: {
     "^.+.tsx?$": ["ts-jest", {}],
   },
+  moduleNameMapper: {
+    '\\.svg$': '<rootDir>/__mocks__/svgMock.js',
+  },
   setupFilesAfterEnv: ["@testing-library/jest-dom"],
 };
 

@@ -1,23 +1,24 @@
-import { shouldShowToggleButton } from './CollapsibleDescription';
+import { describe, expect, test } from "@jest/globals";
+import { shouldShowToggleButton } from "./CollapsibleDescription";
 
-describe('shouldShowToggleButton', () => {
-  test('returns false for empty string', () => {
+describe("shouldShowToggleButton", () => {
+  test("returns false for empty string", () => {
     expect(shouldShowToggleButton("")).toBe(false);
   });
 
-  test('returns false for null', () => {
+  test("returns false for null", () => {
     expect(shouldShowToggleButton(null)).toBe(false);
   });
 
-  test('returns false for undefined', () => {
+  test("returns false for undefined", () => {
     expect(shouldShowToggleButton(undefined)).toBe(false);
   });
 
-  test('returns false for short description', () => {
+  test("returns false for short description", () => {
     expect(shouldShowToggleButton("Short description")).toBe(false);
   });
 
-  test('returns true for long description', () => {
+  test("returns true for long description", () => {
     const longDescription = "A".repeat(300);
     expect(shouldShowToggleButton(longDescription)).toBe(true);
   });
