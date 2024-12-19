@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "In caso affermativo, possiamo chiudere la recente richiesta {{requestId}}",
-  "new-request-form.answer-bot-modal.footer-title": "Questo articolo risponde alla domanda?",
   "new-request-form.answer-bot-modal.mark-irrelevant": "No, ho bisogno di aiuto",
   "new-request-form.answer-bot-modal.request-closed": "Ottimo! La richiesta è stata chiusa.",
   "new-request-form.answer-bot-modal.request-submitted": "La richiesta è stata inviata correttamente",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "Visualizza articolo",
   "new-request-form.attachments.choose-file-label": "Scegli un file o trascinalo qui",
   "new-request-form.attachments.drop-files-label": "Trascina qui i file",
+  "new-request-form.attachments.file": "File: {{fileName}}, premi Canc per rimuoverlo",
   "new-request-form.attachments.remove-file": "Rimuovi file",
+  "new-request-form.attachments.remove-file-aria-label": "Rimuovi file: {{fileName}}",
   "new-request-form.attachments.stop-upload": "Interrompi caricamento",
+  "new-request-form.attachments.stop-upload-aria-label": "Interrompi il caricamento di {{fileName}}",
   "new-request-form.attachments.upload-error-description": "Errore durante il caricamento di {{fileName}}. Riprova o carica un altro file.",
   "new-request-form.attachments.upload-error-title": "Errore nel caricamento",
   "new-request-form.attachments.uploading": "Caricamento di {{fileName}}",

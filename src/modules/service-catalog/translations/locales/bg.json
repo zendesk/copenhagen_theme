@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "След като в каталога бъдат добавени услуги, ще ги намерите тук.",
+  "service-catalog.empty-state.go-to-homepage": "Към началната страница",
+  "service-catalog.empty-state.no-services": "Все още няма услуги",
+  "service-catalog.empty-state.support-article-link": "Научете повече относно каталога на услугите",
+  "service-catalog.item.read-less": "По-кратко",
+  "service-catalog.item.read-more": "По-подробно",
+  "service-catalog.item.service-request-error-message": "Опитайте отново след малко",
+  "service-catalog.item.service-request-error-title": "Услугата не беше подадена",
+  "service-catalog.item.service-request-error.close-label": "Затвори",
+  "service-catalog.item.service-request-submitted": "Заявката за услуга е подадена",
+  "service-catalog.item.submit-button": "Подаване на заявката",
+  "service-catalog.pagination.next": "Следваща",
+  "service-catalog.pagination.previous": "Предишна",
+  "service-catalog.service-list-error-message": "Опитайте отново след малко",
+  "service-catalog.service-list-error-title": "Услугите не бяха заредени"
+}

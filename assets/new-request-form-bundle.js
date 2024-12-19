@@ -828,6 +828,17 @@ function NewRequestForm({ requestForm, wysiwyg, newRequestPath, parentId, parent
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { authToken: answerBot.auth_token, interactionAccessToken: answerBot.interaction_access_token, articles: answerBot.articles, requestId: answerBot.request_id, ...answerBotModal }))] }));
 }
 
+function __variableDynamicImportRuntime1__(path) {
+  switch (path) {
+
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
 function __variableDynamicImportRuntime0__(path) {
   switch (path) {
     case './translations/locales/af.json': return import('new-request-form-translations').then(function (n) { return n.a; });
@@ -928,6 +939,7 @@ async function renderNewRequestForm(settings, props, container) {
     const { baseLocale } = props;
     initI18next(baseLocale);
     await loadTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
+    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime1__(`./ticket-fields/translations/locales/${baseLocale}.json`));
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 

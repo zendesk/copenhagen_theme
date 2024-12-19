@@ -21,6 +21,10 @@ export async function renderNewRequestForm(
     baseLocale,
     () => import(`./translations/locales/${baseLocale}.json`)
   );
+  await loadTranslations(
+    baseLocale,
+    () => import(`./ticket-fields/translations/locales/${baseLocale}.json`)
+  );
 
   render(
     <ThemeProviders theme={createTheme(settings)}>
