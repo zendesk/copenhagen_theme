@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Μόλις προστεθούν υπηρεσίες στον κατάλογο, θα τις βρείτε εδώ.",
+  "service-catalog.empty-state.go-to-homepage": "Μετάβαση στην αρχική σελίδα",
+  "service-catalog.empty-state.no-services": "Δεν υπάρχουν υπηρεσίες",
+  "service-catalog.empty-state.support-article-link": "Μάθετε για τον κατάλογο υπηρεσιών",
+  "service-catalog.item.read-less": "Εμφάνιση λιγότερων",
+  "service-catalog.item.read-more": "Εμφάνιση περισσότερων",
+  "service-catalog.item.service-request-error-message": "Περιμένετε λίγο και δοκιμάστε ξανά",
+  "service-catalog.item.service-request-error-title": "Δεν ήταν δυνατή η υποβολή της υπηρεσίας",
+  "service-catalog.item.service-request-error.close-label": "Κλείσιμο",
+  "service-catalog.item.service-request-submitted": "Υποβλήθηκε αίτημα υπηρεσίας",
+  "service-catalog.item.submit-button": "Υποβολή αιτήματος",
+  "service-catalog.pagination.next": "Επόμενη",
+  "service-catalog.pagination.previous": "Προηγούμενη",
+  "service-catalog.service-list-error-message": "Περιμένετε λίγο και δοκιμάστε ξανά",
+  "service-catalog.service-list-error-title": "Δεν ήταν δυνατή η φόρτωση των υπηρεσιών"
+}

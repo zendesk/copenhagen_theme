@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "当服务添加到目录后，您将在这里找到它们。",
+  "service-catalog.empty-state.go-to-homepage": "转到主页",
+  "service-catalog.empty-state.no-services": "没有服务",
+  "service-catalog.empty-state.support-article-link": "了解关于服务目录的信息",
+  "service-catalog.item.read-less": "阅读更少",
+  "service-catalog.item.read-more": "阅读更多",
+  "service-catalog.item.service-request-error-message": "请稍候片刻再重试",
+  "service-catalog.item.service-request-error-title": "服务无法提交",
+  "service-catalog.item.service-request-error.close-label": "关闭",
+  "service-catalog.item.service-request-submitted": "服务请求已提交",
+  "service-catalog.item.submit-button": "提交请求",
+  "service-catalog.pagination.next": "下一页",
+  "service-catalog.pagination.previous": "上一页",
+  "service-catalog.service-list-error-message": "请稍候片刻再重试",
+  "service-catalog.service-list-error-title": "无法加载服务"
+}

@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(4 viimeistä numeroa)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Valitse vaihtoehto",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Ladataan kohteita...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Vastineita ei löytynyt",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Hae {{label}}"
+}

@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "Nếu có, chúng tôi có thể đóng yêu cầu hiện tại {{requestId}}",
-  "new-request-form.answer-bot-modal.footer-title": "Bài viết này có giải đáp được câu hỏi của bạn không?",
   "new-request-form.answer-bot-modal.mark-irrelevant": "Không, tôi cần trợ giúp",
   "new-request-form.answer-bot-modal.request-closed": "Tuyệt. Yêu cầu đã được đóng lại.",
   "new-request-form.answer-bot-modal.request-submitted": "Yêu cầu của bạn đã được gửi thành công",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "Xem bài viết",
   "new-request-form.attachments.choose-file-label": "Chọn một tập tin hoặc kéo và thả ở đây",
   "new-request-form.attachments.drop-files-label": "Thả tập tin vào đây",
+  "new-request-form.attachments.file": "Tập tin: {{fileName}}, nhấn xóa để loại bỏ",
   "new-request-form.attachments.remove-file": "Xóa tập tin",
+  "new-request-form.attachments.remove-file-aria-label": "Loại bỏ tập tin: {{fileName}}",
   "new-request-form.attachments.stop-upload": "Dừng tải lên",
+  "new-request-form.attachments.stop-upload-aria-label": "Dừng tải lên {{fileName}}",
   "new-request-form.attachments.upload-error-description": "Đã xảy ra lỗi khi tải lên {{fileName}}. Hãy thử lại hoặc tải lên một tệp khác.",
   "new-request-form.attachments.upload-error-title": "Lỗi tải lên",
   "new-request-form.attachments.uploading": "Đang tải lên {{fileName}}",
