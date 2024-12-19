@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(ostatnie 4 cyfry)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Wybierz opcję",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Ładowanie elementów...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nie znaleziono dopasowań",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Szukaj {{label}}"
+}

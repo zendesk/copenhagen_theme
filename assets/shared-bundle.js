@@ -2968,13 +2968,15 @@ instance.hasLoadedNamespace;
 instance.loadNamespaces;
 instance.loadLanguages;
 
-async function loadTranslations(locale, dynamicImport) {
+async function loadTranslations(locale, dynamicImports) {
     try {
-        const { default: translations } = await dynamicImport();
-        instance.addResourceBundle(locale, "translation", translations);
+        const translationsArray = await Promise.all(dynamicImports.map((importFunc) => importFunc()));
+        translationsArray.forEach(({ default: translations }) => {
+            instance.addResourceBundle(locale, "translation", translations);
+        });
     }
     catch (e) {
-        console.error(`Cannot load translations for ${locale}`);
+        console.error(`Cannot load translations for ${locale}`, e);
     }
 }
 

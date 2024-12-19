@@ -3,7 +3,7 @@
  * This script is used for downloading the latest Zendesk official translation files for the modules in the `src/module` folder.
  *
  */
-import { writeFile } from "node:fs/promises";
+import { writeFile, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 
 /**
@@ -11,6 +11,8 @@ import { resolve } from "node:path";
  */
 const MODULES = {
   "new-request-form": "new-request-form",
+  "service-catalog": "service-catalog",
+  "ticket-fields": "cph-theme-ticket-fields",
 };
 
 const BASE_URL = `https://static.zdassets.com/translations`;
@@ -37,6 +39,7 @@ async function fetchModuleTranslations(moduleName, packageName) {
       process.cwd(),
       `src/modules/${moduleName}/translations/locales`
     );
+    await mkdir(outputDir, { recursive: true });
 
     const { json } = await manifestResponse.json();
 

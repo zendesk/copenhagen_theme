@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "그렇다면 최근 요청 {{requestId}}을(를) 종료할 수 있습니다.",
-  "new-request-form.answer-bot-modal.footer-title": "이 문서가 질문에 대한 답이 되었나요?",
   "new-request-form.answer-bot-modal.mark-irrelevant": "아니요, 도움이 필요합니다.",
   "new-request-form.answer-bot-modal.request-closed": "도움이 되었다니 기쁩니다. 요청이 종료되었습니다.",
   "new-request-form.answer-bot-modal.request-submitted": "요청을 제출했습니다.",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "문서 보기",
   "new-request-form.attachments.choose-file-label": "파일을 선택하거나 여기에 드래그 앤 드롭하세요.",
   "new-request-form.attachments.drop-files-label": "파일을 여기에 드롭하세요",
+  "new-request-form.attachments.file": "파일: {{fileName}}, 삭제하려면 delete 키를 누르세요.",
   "new-request-form.attachments.remove-file": "파일 제거",
+  "new-request-form.attachments.remove-file-aria-label": "파일 제거: {{fileName}}",
   "new-request-form.attachments.stop-upload": "업로드 중지",
+  "new-request-form.attachments.stop-upload-aria-label": "{{fileName}} 업로드 중지",
   "new-request-form.attachments.upload-error-description": "{{fileName}}을(를) 업로드하는 중 오류가 발생했습니다. 다시 시도하거나 다른 파일을 업로드하세요.",
   "new-request-form.attachments.upload-error-title": "업로드 오류",
   "new-request-form.attachments.uploading": "{{fileName}} 업로드 중",
