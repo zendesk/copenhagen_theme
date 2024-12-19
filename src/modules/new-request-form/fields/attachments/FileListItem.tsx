@@ -101,7 +101,7 @@ export function FileListItem({
             <Tooltip content={removeFileLabel}>
               <File.Delete
                 aria-label={t(
-                  "new-request-form.attachments.remove-file-arria-label",
+                  "new-request-form.attachments.remove-file-aria-label",
                   "Remove file: {{fileName}}",
                   { fileName }
                 )}

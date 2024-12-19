@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "質問が解決していれば、最新のリクエスト{{requestId}}を終了します",
-  "new-request-form.answer-bot-modal.footer-title": "この記事で疑問が解消されましたか？",
   "new-request-form.answer-bot-modal.mark-irrelevant": "いいえ、ヘルプが必要です",
   "new-request-form.answer-bot-modal.request-closed": "お役に立てて嬉しいです。リクエストは終了しました。",
   "new-request-form.answer-bot-modal.request-submitted": "リクエストは正しく送信されました",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "記事を表示",
   "new-request-form.attachments.choose-file-label": "ファイルを選択するか、ここにドラッグアンドドロップします",
   "new-request-form.attachments.drop-files-label": "ファイルをここにドロップ",
+  "new-request-form.attachments.file": "ファイル：{{fileName}}、Deleteキーを押して削除",
   "new-request-form.attachments.remove-file": "ファイル削除",
+  "new-request-form.attachments.remove-file-aria-label": "ファイルを削除：{{fileName}}",
   "new-request-form.attachments.stop-upload": "アップロードを停止",
+  "new-request-form.attachments.stop-upload-aria-label": "{{fileName}}のアップロードを停止",
   "new-request-form.attachments.upload-error-description": "{{fileName}}のアップロード中にエラーが発生しました。もう一度やり直すか、別のファイルをアップロードしてください。",
   "new-request-form.attachments.upload-error-title": "アップロードエラー",
   "new-request-form.attachments.uploading": "{{fileName}}をアップロード中",
