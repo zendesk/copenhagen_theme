@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "在目錄中新增服務後，即會顯示在這裡。",
+  "service-catalog.empty-state.go-to-homepage": "前往主頁",
+  "service-catalog.empty-state.no-services": "目前沒有服務",
+  "service-catalog.empty-state.support-article-link": "瞭解服務目錄",
+  "service-catalog.item.read-less": "顯示較少",
+  "service-catalog.item.read-more": "顯示更多",
+  "service-catalog.item.service-request-error-message": "請稍後再試一次",
+  "service-catalog.item.service-request-error-title": "無法提交服務",
+  "service-catalog.item.service-request-error.close-label": "關閉",
+  "service-catalog.item.service-request-submitted": "已提交服務請求",
+  "service-catalog.item.submit-button": "提交請求",
+  "service-catalog.pagination.next": "下一頁",
+  "service-catalog.pagination.previous": "上一頁",
+  "service-catalog.service-list-error-message": "請稍後再試一次",
+  "service-catalog.service-list-error-title": "無法載入服務"
+}

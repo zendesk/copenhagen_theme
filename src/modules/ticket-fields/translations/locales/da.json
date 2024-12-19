@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(Sidste 4 cifre)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Foretag et valg",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Indlæser elementer...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Ingen matchende resultater",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Søgning i {{label}}"
+}

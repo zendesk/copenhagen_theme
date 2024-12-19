@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(마지막 4자리)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "옵션 선택",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "항목 로드 중...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "일치 항목을 찾지 못함",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} 검색"
+}
