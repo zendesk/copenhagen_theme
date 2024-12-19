@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "بمجرد إضافة الخدمات إلى الكتالوج، سوف تجدها هنا.",
+  "service-catalog.empty-state.go-to-homepage": "انتقال إلى الصفحة الرئيسية",
+  "service-catalog.empty-state.no-services": "لا توجد خدمات في الأفق",
+  "service-catalog.empty-state.support-article-link": "تعرف على كتالوج الخدمة",
+  "service-catalog.item.read-less": "قراءة أقل",
+  "service-catalog.item.read-more": "قراءة المزيد",
+  "service-catalog.item.service-request-error-message": "انتظر لحظة ثم أعِد المحاولة",
+  "service-catalog.item.service-request-error-title": "تعذر إرسال الخدمة",
+  "service-catalog.item.service-request-error.close-label": "إغلاق",
+  "service-catalog.item.service-request-submitted": "تم إرسال طلب الخدمة",
+  "service-catalog.item.submit-button": "إرسال طلب",
+  "service-catalog.pagination.next": "التالي",
+  "service-catalog.pagination.previous": "السابق",
+  "service-catalog.service-list-error-message": "انتظر لحظة ثم أعِد المحاولة",
+  "service-catalog.service-list-error-title": "تعذر تحميل الخدمات"
+}

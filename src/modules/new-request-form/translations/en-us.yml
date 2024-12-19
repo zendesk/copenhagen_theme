@@ -61,6 +61,7 @@ parts:
       title: "[A11Y] Hidden label for screen readers, describing an empty option in a dropdown"
       screenshot: "https://drive.google.com/file/d/1enaOJceIEIVn_uYqvaF4AHlE1_RIpjqe/view?usp=drive_link"
       value: "Select an option"
+      obsolete: "2025-03-19"
   - translation:
       key: "new-request-form.suggested-articles"
       title: "Title for the suggested articles section"
@@ -156,18 +157,22 @@ parts:
       title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
       screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
       value: "(Last 4 digits)"
+      obsolete: "2025-03-19"
   - translation:
       key: "new-request-form.lookup-field.loading-options"
       title: "Message shown in combobox when searched options are loading"
       screenshot: "https://drive.google.com/file/d/1_TeqU5hihEJb03q6adVI0-nuklYask1d/view?usp=drive_link"
       value: "Loading items..."
+      obsolete: "2025-03-19"
   - translation:
       key: "new-request-form.lookup-field.no-matches-found"
       title: "Message shown in combobox when searched option is not found"
       screenshot: "https://drive.google.com/file/d/1zwRLhFj0I0N0JV07O7wpoEZO5tBBK8JF/view?usp=drive_link"
       value: "No matches found"
+      obsolete: "2025-03-19"
   - translation:
       key: "new-request-form.lookup-field.placeholder"
       title: "Placeholder shown in combobox, {{label}} will be replaced by field label"
       screenshot: "https://drive.google.com/file/d/1nlnj_I-L7bkIs9Hn93Btrl8bh_HJfL6h/view?usp=drive_link"
-      value: "Search {{label}}"    
+      value: "Search {{label}}"
+      obsolete: "2025-03-19"    

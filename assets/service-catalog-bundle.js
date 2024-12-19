@@ -1,4 +1,4 @@
-import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, c as useToast, N as Notification, T as Title, d as Close, r as reactExports, ai as CursorPagination, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as ErrorBoundary, ak as XXXL, al as SvgChevronUpFill, am as SvgChevronDownFill, a2 as addFlashNotification } from 'shared';
+import { s as styled, K as getColorV8, j as jsxRuntimeExports, aa as SvgShapesFill, ab as Grid, ac as Col, ad as Row, ae as Skeleton, af as MD, ag as SM, u as useTranslation, ah as LG, A as Anchor, a0 as Button, c as useToast, N as Notification, T as Title, d as Close, r as reactExports, ai as CursorPagination, a4 as initI18next, a5 as loadTranslations, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme, aj as ErrorBoundary, ak as XXXL, al as SvgChevronUpFill, am as SvgChevronDownFill, a2 as addFlashNotification } from 'shared';
 import { g as getCustomObjectKey, a as TicketField } from 'ticket-fields';
 
 const ItemContainer = styled.a `
@@ -182,7 +182,117 @@ function ServiceCatalogList({ helpCenterPath, }) {
                                 (currentCursor == null && !meta?.has_more), children: t("service-catalog.pagination.next", "Next") })] }))] })) }));
 }
 
-async function renderServiceCatalogList(container, settings, helpCenterPath) {
+function __variableDynamicImportRuntime1__$1(path) {
+  switch (path) {
+
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime0__$1(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('service-catalog-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('service-catalog-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('service-catalog-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('service-catalog-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('service-catalog-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('service-catalog-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('service-catalog-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('service-catalog-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('service-catalog-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('service-catalog-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('service-catalog-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('service-catalog-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('service-catalog-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('service-catalog-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('service-catalog-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('service-catalog-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('service-catalog-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('service-catalog-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('service-catalog-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('service-catalog-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('service-catalog-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('service-catalog-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('service-catalog-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('service-catalog-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('service-catalog-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('service-catalog-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('service-catalog-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('service-catalog-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('service-catalog-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-es.json': return import('service-catalog-translations').then(function (n) { return n.F; });
+    case './translations/locales/es.json': return import('service-catalog-translations').then(function (n) { return n.G; });
+    case './translations/locales/et.json': return import('service-catalog-translations').then(function (n) { return n.H; });
+    case './translations/locales/eu.json': return import('service-catalog-translations').then(function (n) { return n.I; });
+    case './translations/locales/fa-af.json': return import('service-catalog-translations').then(function (n) { return n.J; });
+    case './translations/locales/fa.json': return import('service-catalog-translations').then(function (n) { return n.K; });
+    case './translations/locales/fi.json': return import('service-catalog-translations').then(function (n) { return n.L; });
+    case './translations/locales/fil.json': return import('service-catalog-translations').then(function (n) { return n.M; });
+    case './translations/locales/fo.json': return import('service-catalog-translations').then(function (n) { return n.N; });
+    case './translations/locales/fr-ca.json': return import('service-catalog-translations').then(function (n) { return n.O; });
+    case './translations/locales/fr.json': return import('service-catalog-translations').then(function (n) { return n.P; });
+    case './translations/locales/ga.json': return import('service-catalog-translations').then(function (n) { return n.Q; });
+    case './translations/locales/he.json': return import('service-catalog-translations').then(function (n) { return n.R; });
+    case './translations/locales/hi.json': return import('service-catalog-translations').then(function (n) { return n.S; });
+    case './translations/locales/hr.json': return import('service-catalog-translations').then(function (n) { return n.T; });
+    case './translations/locales/hu.json': return import('service-catalog-translations').then(function (n) { return n.U; });
+    case './translations/locales/hy.json': return import('service-catalog-translations').then(function (n) { return n.V; });
+    case './translations/locales/id.json': return import('service-catalog-translations').then(function (n) { return n.W; });
+    case './translations/locales/is.json': return import('service-catalog-translations').then(function (n) { return n.X; });
+    case './translations/locales/it-ch.json': return import('service-catalog-translations').then(function (n) { return n.Y; });
+    case './translations/locales/it.json': return import('service-catalog-translations').then(function (n) { return n.Z; });
+    case './translations/locales/ja.json': return import('service-catalog-translations').then(function (n) { return n._; });
+    case './translations/locales/ka.json': return import('service-catalog-translations').then(function (n) { return n.$; });
+    case './translations/locales/kk.json': return import('service-catalog-translations').then(function (n) { return n.a0; });
+    case './translations/locales/kl-dk.json': return import('service-catalog-translations').then(function (n) { return n.a1; });
+    case './translations/locales/ko.json': return import('service-catalog-translations').then(function (n) { return n.a2; });
+    case './translations/locales/ku.json': return import('service-catalog-translations').then(function (n) { return n.a3; });
+    case './translations/locales/lt.json': return import('service-catalog-translations').then(function (n) { return n.a4; });
+    case './translations/locales/lv.json': return import('service-catalog-translations').then(function (n) { return n.a5; });
+    case './translations/locales/mk.json': return import('service-catalog-translations').then(function (n) { return n.a6; });
+    case './translations/locales/mn.json': return import('service-catalog-translations').then(function (n) { return n.a7; });
+    case './translations/locales/ms.json': return import('service-catalog-translations').then(function (n) { return n.a8; });
+    case './translations/locales/mt.json': return import('service-catalog-translations').then(function (n) { return n.a9; });
+    case './translations/locales/my.json': return import('service-catalog-translations').then(function (n) { return n.aa; });
+    case './translations/locales/nl-be.json': return import('service-catalog-translations').then(function (n) { return n.ab; });
+    case './translations/locales/nl.json': return import('service-catalog-translations').then(function (n) { return n.ac; });
+    case './translations/locales/no.json': return import('service-catalog-translations').then(function (n) { return n.ad; });
+    case './translations/locales/pl.json': return import('service-catalog-translations').then(function (n) { return n.ae; });
+    case './translations/locales/pt-br.json': return import('service-catalog-translations').then(function (n) { return n.af; });
+    case './translations/locales/pt.json': return import('service-catalog-translations').then(function (n) { return n.ag; });
+    case './translations/locales/ro.json': return import('service-catalog-translations').then(function (n) { return n.ah; });
+    case './translations/locales/ru.json': return import('service-catalog-translations').then(function (n) { return n.ai; });
+    case './translations/locales/sk.json': return import('service-catalog-translations').then(function (n) { return n.aj; });
+    case './translations/locales/sl.json': return import('service-catalog-translations').then(function (n) { return n.ak; });
+    case './translations/locales/sq.json': return import('service-catalog-translations').then(function (n) { return n.al; });
+    case './translations/locales/sr-me.json': return import('service-catalog-translations').then(function (n) { return n.am; });
+    case './translations/locales/sr.json': return import('service-catalog-translations').then(function (n) { return n.an; });
+    case './translations/locales/sv.json': return import('service-catalog-translations').then(function (n) { return n.ao; });
+    case './translations/locales/th.json': return import('service-catalog-translations').then(function (n) { return n.ap; });
+    case './translations/locales/tr.json': return import('service-catalog-translations').then(function (n) { return n.aq; });
+    case './translations/locales/uk.json': return import('service-catalog-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ur.json': return import('service-catalog-translations').then(function (n) { return n.as; });
+    case './translations/locales/uz.json': return import('service-catalog-translations').then(function (n) { return n.at; });
+    case './translations/locales/vi.json': return import('service-catalog-translations').then(function (n) { return n.au; });
+    case './translations/locales/zh-cn.json': return import('service-catalog-translations').then(function (n) { return n.av; });
+    case './translations/locales/zh-tw.json': return import('service-catalog-translations').then(function (n) { return n.aw; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+async function renderServiceCatalogList(container, settings, helpCenterPath, baseLocale) {
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime0__$1(`./translations/locales/${baseLocale}.json`));
+    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime1__$1(`./ticket-fields/translations/locales/${baseLocale}.json`));
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ServiceCatalogList, { helpCenterPath: helpCenterPath }) }) }), container);
 }
 
@@ -519,7 +629,118 @@ function ServiceCatalogItemPage({ serviceCatalogItemId, baseLocale, hasAtMention
     return (jsxRuntimeExports.jsx(Container, { children: serviceCatalogItem && (jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, serviceCatalogItem: serviceCatalogItem, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, onSubmit: handleRequestSubmit })) }));
 }
 
+function __variableDynamicImportRuntime1__(path) {
+  switch (path) {
+
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('service-catalog-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('service-catalog-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('service-catalog-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('service-catalog-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('service-catalog-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('service-catalog-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('service-catalog-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('service-catalog-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('service-catalog-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('service-catalog-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('service-catalog-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('service-catalog-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('service-catalog-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('service-catalog-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('service-catalog-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('service-catalog-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('service-catalog-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('service-catalog-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('service-catalog-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('service-catalog-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('service-catalog-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('service-catalog-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('service-catalog-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('service-catalog-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('service-catalog-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('service-catalog-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('service-catalog-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('service-catalog-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('service-catalog-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-es.json': return import('service-catalog-translations').then(function (n) { return n.F; });
+    case './translations/locales/es.json': return import('service-catalog-translations').then(function (n) { return n.G; });
+    case './translations/locales/et.json': return import('service-catalog-translations').then(function (n) { return n.H; });
+    case './translations/locales/eu.json': return import('service-catalog-translations').then(function (n) { return n.I; });
+    case './translations/locales/fa-af.json': return import('service-catalog-translations').then(function (n) { return n.J; });
+    case './translations/locales/fa.json': return import('service-catalog-translations').then(function (n) { return n.K; });
+    case './translations/locales/fi.json': return import('service-catalog-translations').then(function (n) { return n.L; });
+    case './translations/locales/fil.json': return import('service-catalog-translations').then(function (n) { return n.M; });
+    case './translations/locales/fo.json': return import('service-catalog-translations').then(function (n) { return n.N; });
+    case './translations/locales/fr-ca.json': return import('service-catalog-translations').then(function (n) { return n.O; });
+    case './translations/locales/fr.json': return import('service-catalog-translations').then(function (n) { return n.P; });
+    case './translations/locales/ga.json': return import('service-catalog-translations').then(function (n) { return n.Q; });
+    case './translations/locales/he.json': return import('service-catalog-translations').then(function (n) { return n.R; });
+    case './translations/locales/hi.json': return import('service-catalog-translations').then(function (n) { return n.S; });
+    case './translations/locales/hr.json': return import('service-catalog-translations').then(function (n) { return n.T; });
+    case './translations/locales/hu.json': return import('service-catalog-translations').then(function (n) { return n.U; });
+    case './translations/locales/hy.json': return import('service-catalog-translations').then(function (n) { return n.V; });
+    case './translations/locales/id.json': return import('service-catalog-translations').then(function (n) { return n.W; });
+    case './translations/locales/is.json': return import('service-catalog-translations').then(function (n) { return n.X; });
+    case './translations/locales/it-ch.json': return import('service-catalog-translations').then(function (n) { return n.Y; });
+    case './translations/locales/it.json': return import('service-catalog-translations').then(function (n) { return n.Z; });
+    case './translations/locales/ja.json': return import('service-catalog-translations').then(function (n) { return n._; });
+    case './translations/locales/ka.json': return import('service-catalog-translations').then(function (n) { return n.$; });
+    case './translations/locales/kk.json': return import('service-catalog-translations').then(function (n) { return n.a0; });
+    case './translations/locales/kl-dk.json': return import('service-catalog-translations').then(function (n) { return n.a1; });
+    case './translations/locales/ko.json': return import('service-catalog-translations').then(function (n) { return n.a2; });
+    case './translations/locales/ku.json': return import('service-catalog-translations').then(function (n) { return n.a3; });
+    case './translations/locales/lt.json': return import('service-catalog-translations').then(function (n) { return n.a4; });
+    case './translations/locales/lv.json': return import('service-catalog-translations').then(function (n) { return n.a5; });
+    case './translations/locales/mk.json': return import('service-catalog-translations').then(function (n) { return n.a6; });
+    case './translations/locales/mn.json': return import('service-catalog-translations').then(function (n) { return n.a7; });
+    case './translations/locales/ms.json': return import('service-catalog-translations').then(function (n) { return n.a8; });
+    case './translations/locales/mt.json': return import('service-catalog-translations').then(function (n) { return n.a9; });
+    case './translations/locales/my.json': return import('service-catalog-translations').then(function (n) { return n.aa; });
+    case './translations/locales/nl-be.json': return import('service-catalog-translations').then(function (n) { return n.ab; });
+    case './translations/locales/nl.json': return import('service-catalog-translations').then(function (n) { return n.ac; });
+    case './translations/locales/no.json': return import('service-catalog-translations').then(function (n) { return n.ad; });
+    case './translations/locales/pl.json': return import('service-catalog-translations').then(function (n) { return n.ae; });
+    case './translations/locales/pt-br.json': return import('service-catalog-translations').then(function (n) { return n.af; });
+    case './translations/locales/pt.json': return import('service-catalog-translations').then(function (n) { return n.ag; });
+    case './translations/locales/ro.json': return import('service-catalog-translations').then(function (n) { return n.ah; });
+    case './translations/locales/ru.json': return import('service-catalog-translations').then(function (n) { return n.ai; });
+    case './translations/locales/sk.json': return import('service-catalog-translations').then(function (n) { return n.aj; });
+    case './translations/locales/sl.json': return import('service-catalog-translations').then(function (n) { return n.ak; });
+    case './translations/locales/sq.json': return import('service-catalog-translations').then(function (n) { return n.al; });
+    case './translations/locales/sr-me.json': return import('service-catalog-translations').then(function (n) { return n.am; });
+    case './translations/locales/sr.json': return import('service-catalog-translations').then(function (n) { return n.an; });
+    case './translations/locales/sv.json': return import('service-catalog-translations').then(function (n) { return n.ao; });
+    case './translations/locales/th.json': return import('service-catalog-translations').then(function (n) { return n.ap; });
+    case './translations/locales/tr.json': return import('service-catalog-translations').then(function (n) { return n.aq; });
+    case './translations/locales/uk.json': return import('service-catalog-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ur.json': return import('service-catalog-translations').then(function (n) { return n.as; });
+    case './translations/locales/uz.json': return import('service-catalog-translations').then(function (n) { return n.at; });
+    case './translations/locales/vi.json': return import('service-catalog-translations').then(function (n) { return n.au; });
+    case './translations/locales/zh-cn.json': return import('service-catalog-translations').then(function (n) { return n.av; });
+    case './translations/locales/zh-tw.json': return import('service-catalog-translations').then(function (n) { return n.aw; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
 async function renderServiceCatalogItem(container, settings, props, helpCenterPath) {
+    const { baseLocale } = props;
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
+    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime1__(`./ticket-fields/translations/locales/${baseLocale}.json`));
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ServiceCatalogItemPage, { ...props }) }) }), container);
 }
 

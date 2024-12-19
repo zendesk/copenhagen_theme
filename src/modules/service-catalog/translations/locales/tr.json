@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Kataloğa eklenen hizmetleri burada bulursunuz.",
+  "service-catalog.empty-state.go-to-homepage": "Ana sayfaya git",
+  "service-catalog.empty-state.no-services": "Görünürde hizmet yok",
+  "service-catalog.empty-state.support-article-link": "Hizmet kataloğu hakkında bilgi edinin",
+  "service-catalog.item.read-less": "Daha az oku",
+  "service-catalog.item.read-more": "Daha fazlasını oku",
+  "service-catalog.item.service-request-error-message": "Kısa bir süre bekleyip yeniden deneyin",
+  "service-catalog.item.service-request-error-title": "Hizmet gönderilemedi",
+  "service-catalog.item.service-request-error.close-label": "Kapat",
+  "service-catalog.item.service-request-submitted": "Hizmet talebi gönderildi",
+  "service-catalog.item.submit-button": "Talebi gönder",
+  "service-catalog.pagination.next": "İleri",
+  "service-catalog.pagination.previous": "Geri",
+  "service-catalog.service-list-error-message": "Kısa bir süre bekleyip yeniden deneyin",
+  "service-catalog.service-list-error-title": "Hizmetler yüklenemedi"
+}
