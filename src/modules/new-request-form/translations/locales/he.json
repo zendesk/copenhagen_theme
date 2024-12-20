@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "אם כן, נוכל לסגור את בקשה {{requestId}} ששלחת לאחרונה",
-  "new-request-form.answer-bot-modal.footer-title": "האם המאמר הזה עונה על השאלה?",
   "new-request-form.answer-bot-modal.mark-irrelevant": "לא, אני צריך עזרה",
   "new-request-form.answer-bot-modal.request-closed": "נחמד. הבקשה נסגרה.",
   "new-request-form.answer-bot-modal.request-submitted": "בקשתך נשלחה",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "הצג מאמר",
   "new-request-form.attachments.choose-file-label": "בחר קובץ או גרור ושחרר כאן",
   "new-request-form.attachments.drop-files-label": "שחרר את הקבצים כאן",
+  "new-request-form.attachments.file": "קובץ: {{fileName}}, הקש Delete כדי להסיר",
   "new-request-form.attachments.remove-file": "הסר קובץ",
+  "new-request-form.attachments.remove-file-aria-label": "הסר קובץ: {{fileName}}",
   "new-request-form.attachments.stop-upload": "עצור העלאה",
+  "new-request-form.attachments.stop-upload-aria-label": "הפסק את ההעלאה של {{fileName}}",
   "new-request-form.attachments.upload-error-description": "אירעה שגיאה בהעלאת הקובץ {{fileName}}. נסה שוב או העלה קובץ אחר.",
   "new-request-form.attachments.upload-error-title": "שגיאת העלאה",
   "new-request-form.attachments.uploading": "מעלה את {{fileName}}",

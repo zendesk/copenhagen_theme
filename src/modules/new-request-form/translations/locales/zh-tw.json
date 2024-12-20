@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "若是，我們可關閉近期的請求 {{requestId}}",
-  "new-request-form.answer-bot-modal.footer-title": "此文章是否已回答該問題？",
   "new-request-form.answer-bot-modal.mark-irrelevant": "不，我仍需要幫助",
   "new-request-form.answer-bot-modal.request-closed": "太好了。此請求已關閉。",
   "new-request-form.answer-bot-modal.request-submitted": "已成功提交請求",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "檢視文章",
   "new-request-form.attachments.choose-file-label": "選擇檔案，或將檔案拖放到這裡",
   "new-request-form.attachments.drop-files-label": "將檔案放置在此處",
+  "new-request-form.attachments.file": "檔案為「{{fileName}}」，按一下 Delete 即可移除",
   "new-request-form.attachments.remove-file": "移除檔案",
+  "new-request-form.attachments.remove-file-aria-label": "移除檔案：{{fileName}}",
   "new-request-form.attachments.stop-upload": "停止上傳",
+  "new-request-form.attachments.stop-upload-aria-label": "停止上傳「{{fileName}}」",
   "new-request-form.attachments.upload-error-description": "上傳 {{fileName}} 時發生錯誤。請再試一次，或上傳另一個檔案。",
   "new-request-form.attachments.upload-error-title": "上傳錯誤",
   "new-request-form.attachments.uploading": "正在上傳 {{fileName}}",
