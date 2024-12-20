@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(последните 4 цифри)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Изберете опция",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Зареждане на елементите…",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Няма открити съвпадения",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Търсене на {{label}}"
+}

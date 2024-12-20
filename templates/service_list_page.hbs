@@ -4,7 +4,8 @@
     {{breadcrumbs}}
   </div>
 
-  <h1>{{t 'services'}}</h1>
+  {{!-- <h1>{{t 'Services'}}</h1> //this translation is missing in HC --}}
+  <h1>Services</h1>
 
   <div id="main-content">
      <div id="service-catalog"></div>
@@ -17,6 +18,7 @@
   const settings = {{json settings}};
   const helpCenterPath = {{json (page_path 'help_center')}};
   const container = document.getElementById("service-catalog");
+  const baseLocale = {{json help_center.base_locale}};
 
-  renderServiceCatalogList(container, settings, helpCenterPath);
+  renderServiceCatalogList(container, settings, helpCenterPath, baseLocale);
 </script>

@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Добавленные в каталог услуги будут отображаться здесь.",
+  "service-catalog.empty-state.go-to-homepage": "Перейти на главную страницу",
+  "service-catalog.empty-state.no-services": "Нет отображаемых услуг",
+  "service-catalog.empty-state.support-article-link": "Подробнее о каталоге услуг",
+  "service-catalog.item.read-less": "Меньше",
+  "service-catalog.item.read-more": "Подробнее",
+  "service-catalog.item.service-request-error-message": "Подождите немного и повторите попытку",
+  "service-catalog.item.service-request-error-title": "Не удалось отправить услугу",
+  "service-catalog.item.service-request-error.close-label": "Закрыть",
+  "service-catalog.item.service-request-submitted": "Запрос на обслуживание отправлен",
+  "service-catalog.item.submit-button": "Отправить запрос",
+  "service-catalog.pagination.next": "Следующая",
+  "service-catalog.pagination.previous": "Предыдущая",
+  "service-catalog.service-list-error-message": "Подождите немного и повторите попытку",
+  "service-catalog.service-list-error-title": "Не удалось загрузить услуги"
+}

@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Una vez que los servicios se agreguen al catálogo, los encontrará aquí.",
+  "service-catalog.empty-state.go-to-homepage": "Ir a la página principal",
+  "service-catalog.empty-state.no-services": "No hay servicios a la vista",
+  "service-catalog.empty-state.support-article-link": "Más información sobre el catálogo de servicios",
+  "service-catalog.item.read-less": "Leer menos",
+  "service-catalog.item.read-more": "Más información",
+  "service-catalog.item.service-request-error-message": "Espere un momento y vuelva a intentarlo",
+  "service-catalog.item.service-request-error-title": "No se pudo enviar el servicio",
+  "service-catalog.item.service-request-error.close-label": "Cerrar",
+  "service-catalog.item.service-request-submitted": "Solicitud de servicio enviada",
+  "service-catalog.item.submit-button": "Enviar solicitud",
+  "service-catalog.pagination.next": "Siguiente",
+  "service-catalog.pagination.previous": "Anterior",
+  "service-catalog.service-list-error-message": "Espere un momento y vuelva a intentarlo",
+  "service-catalog.service-list-error-title": "No se pudieron cargar los servicios"
+}

@@ -828,6 +828,103 @@ function NewRequestForm({ requestForm, wysiwyg, newRequestPath, parentId, parent
                 answerBot.request_id && (jsxRuntimeExports.jsx(AnswerBotModal, { authToken: answerBot.auth_token, interactionAccessToken: answerBot.interaction_access_token, articles: answerBot.articles, requestId: answerBot.request_id, ...answerBotModal }))] }));
 }
 
+function __variableDynamicImportRuntime1__(path) {
+  switch (path) {
+    case '../ticket-fields/translations/locales/af.json': return import('ticket-fields').then(function (n) { return n.b; });
+    case '../ticket-fields/translations/locales/ar-x-pseudo.json': return import('ticket-fields').then(function (n) { return n.c; });
+    case '../ticket-fields/translations/locales/ar.json': return import('ticket-fields').then(function (n) { return n.d; });
+    case '../ticket-fields/translations/locales/az.json': return import('ticket-fields').then(function (n) { return n.e; });
+    case '../ticket-fields/translations/locales/be.json': return import('ticket-fields').then(function (n) { return n.f; });
+    case '../ticket-fields/translations/locales/bg.json': return import('ticket-fields').then(function (n) { return n.h; });
+    case '../ticket-fields/translations/locales/bn.json': return import('ticket-fields').then(function (n) { return n.i; });
+    case '../ticket-fields/translations/locales/bs.json': return import('ticket-fields').then(function (n) { return n.j; });
+    case '../ticket-fields/translations/locales/ca.json': return import('ticket-fields').then(function (n) { return n.k; });
+    case '../ticket-fields/translations/locales/cs.json': return import('ticket-fields').then(function (n) { return n.l; });
+    case '../ticket-fields/translations/locales/cy.json': return import('ticket-fields').then(function (n) { return n.m; });
+    case '../ticket-fields/translations/locales/da.json': return import('ticket-fields').then(function (n) { return n.n; });
+    case '../ticket-fields/translations/locales/de-de.json': return import('ticket-fields').then(function (n) { return n.o; });
+    case '../ticket-fields/translations/locales/de-x-informal.json': return import('ticket-fields').then(function (n) { return n.p; });
+    case '../ticket-fields/translations/locales/de.json': return import('ticket-fields').then(function (n) { return n.q; });
+    case '../ticket-fields/translations/locales/el.json': return import('ticket-fields').then(function (n) { return n.r; });
+    case '../ticket-fields/translations/locales/en-001.json': return import('ticket-fields').then(function (n) { return n.s; });
+    case '../ticket-fields/translations/locales/en-150.json': return import('ticket-fields').then(function (n) { return n.t; });
+    case '../ticket-fields/translations/locales/en-au.json': return import('ticket-fields').then(function (n) { return n.u; });
+    case '../ticket-fields/translations/locales/en-ca.json': return import('ticket-fields').then(function (n) { return n.v; });
+    case '../ticket-fields/translations/locales/en-gb.json': return import('ticket-fields').then(function (n) { return n.w; });
+    case '../ticket-fields/translations/locales/en-my.json': return import('ticket-fields').then(function (n) { return n.x; });
+    case '../ticket-fields/translations/locales/en-ph.json': return import('ticket-fields').then(function (n) { return n.y; });
+    case '../ticket-fields/translations/locales/en-se.json': return import('ticket-fields').then(function (n) { return n.z; });
+    case '../ticket-fields/translations/locales/en-us.json': return import('ticket-fields').then(function (n) { return n.A; });
+    case '../ticket-fields/translations/locales/en-x-dev.json': return import('ticket-fields').then(function (n) { return n.B; });
+    case '../ticket-fields/translations/locales/en-x-keys.json': return import('ticket-fields').then(function (n) { return n.C; });
+    case '../ticket-fields/translations/locales/en-x-obsolete.json': return import('ticket-fields').then(function (n) { return n.E; });
+    case '../ticket-fields/translations/locales/en-x-pseudo.json': return import('ticket-fields').then(function (n) { return n.F; });
+    case '../ticket-fields/translations/locales/en-x-test.json': return import('ticket-fields').then(function (n) { return n.G; });
+    case '../ticket-fields/translations/locales/es-419.json': return import('ticket-fields').then(function (n) { return n.H; });
+    case '../ticket-fields/translations/locales/es-es.json': return import('ticket-fields').then(function (n) { return n.J; });
+    case '../ticket-fields/translations/locales/es.json': return import('ticket-fields').then(function (n) { return n.K; });
+    case '../ticket-fields/translations/locales/et.json': return import('ticket-fields').then(function (n) { return n.L; });
+    case '../ticket-fields/translations/locales/eu.json': return import('ticket-fields').then(function (n) { return n.M; });
+    case '../ticket-fields/translations/locales/fa-af.json': return import('ticket-fields').then(function (n) { return n.N; });
+    case '../ticket-fields/translations/locales/fa.json': return import('ticket-fields').then(function (n) { return n.O; });
+    case '../ticket-fields/translations/locales/fi.json': return import('ticket-fields').then(function (n) { return n.P; });
+    case '../ticket-fields/translations/locales/fil.json': return import('ticket-fields').then(function (n) { return n.Q; });
+    case '../ticket-fields/translations/locales/fo.json': return import('ticket-fields').then(function (n) { return n.R; });
+    case '../ticket-fields/translations/locales/fr-ca.json': return import('ticket-fields').then(function (n) { return n.S; });
+    case '../ticket-fields/translations/locales/fr.json': return import('ticket-fields').then(function (n) { return n.U; });
+    case '../ticket-fields/translations/locales/ga.json': return import('ticket-fields').then(function (n) { return n.V; });
+    case '../ticket-fields/translations/locales/he.json': return import('ticket-fields').then(function (n) { return n.W; });
+    case '../ticket-fields/translations/locales/hi.json': return import('ticket-fields').then(function (n) { return n.X; });
+    case '../ticket-fields/translations/locales/hr.json': return import('ticket-fields').then(function (n) { return n.Y; });
+    case '../ticket-fields/translations/locales/hu.json': return import('ticket-fields').then(function (n) { return n.Z; });
+    case '../ticket-fields/translations/locales/hy.json': return import('ticket-fields').then(function (n) { return n._; });
+    case '../ticket-fields/translations/locales/id.json': return import('ticket-fields').then(function (n) { return n.$; });
+    case '../ticket-fields/translations/locales/is.json': return import('ticket-fields').then(function (n) { return n.a0; });
+    case '../ticket-fields/translations/locales/it-ch.json': return import('ticket-fields').then(function (n) { return n.a1; });
+    case '../ticket-fields/translations/locales/it.json': return import('ticket-fields').then(function (n) { return n.a2; });
+    case '../ticket-fields/translations/locales/ja.json': return import('ticket-fields').then(function (n) { return n.a3; });
+    case '../ticket-fields/translations/locales/ka.json': return import('ticket-fields').then(function (n) { return n.a4; });
+    case '../ticket-fields/translations/locales/kk.json': return import('ticket-fields').then(function (n) { return n.a5; });
+    case '../ticket-fields/translations/locales/kl-dk.json': return import('ticket-fields').then(function (n) { return n.a6; });
+    case '../ticket-fields/translations/locales/ko.json': return import('ticket-fields').then(function (n) { return n.a7; });
+    case '../ticket-fields/translations/locales/ku.json': return import('ticket-fields').then(function (n) { return n.a8; });
+    case '../ticket-fields/translations/locales/lt.json': return import('ticket-fields').then(function (n) { return n.a9; });
+    case '../ticket-fields/translations/locales/lv.json': return import('ticket-fields').then(function (n) { return n.aa; });
+    case '../ticket-fields/translations/locales/mk.json': return import('ticket-fields').then(function (n) { return n.ab; });
+    case '../ticket-fields/translations/locales/mn.json': return import('ticket-fields').then(function (n) { return n.ac; });
+    case '../ticket-fields/translations/locales/ms.json': return import('ticket-fields').then(function (n) { return n.ad; });
+    case '../ticket-fields/translations/locales/mt.json': return import('ticket-fields').then(function (n) { return n.ae; });
+    case '../ticket-fields/translations/locales/my.json': return import('ticket-fields').then(function (n) { return n.af; });
+    case '../ticket-fields/translations/locales/nl-be.json': return import('ticket-fields').then(function (n) { return n.ag; });
+    case '../ticket-fields/translations/locales/nl.json': return import('ticket-fields').then(function (n) { return n.ah; });
+    case '../ticket-fields/translations/locales/no.json': return import('ticket-fields').then(function (n) { return n.ai; });
+    case '../ticket-fields/translations/locales/pl.json': return import('ticket-fields').then(function (n) { return n.aj; });
+    case '../ticket-fields/translations/locales/pt-br.json': return import('ticket-fields').then(function (n) { return n.ak; });
+    case '../ticket-fields/translations/locales/pt.json': return import('ticket-fields').then(function (n) { return n.al; });
+    case '../ticket-fields/translations/locales/ro.json': return import('ticket-fields').then(function (n) { return n.am; });
+    case '../ticket-fields/translations/locales/ru.json': return import('ticket-fields').then(function (n) { return n.an; });
+    case '../ticket-fields/translations/locales/sk.json': return import('ticket-fields').then(function (n) { return n.ao; });
+    case '../ticket-fields/translations/locales/sl.json': return import('ticket-fields').then(function (n) { return n.ap; });
+    case '../ticket-fields/translations/locales/sq.json': return import('ticket-fields').then(function (n) { return n.aq; });
+    case '../ticket-fields/translations/locales/sr-me.json': return import('ticket-fields').then(function (n) { return n.ar; });
+    case '../ticket-fields/translations/locales/sr.json': return import('ticket-fields').then(function (n) { return n.as; });
+    case '../ticket-fields/translations/locales/sv.json': return import('ticket-fields').then(function (n) { return n.at; });
+    case '../ticket-fields/translations/locales/th.json': return import('ticket-fields').then(function (n) { return n.au; });
+    case '../ticket-fields/translations/locales/tr.json': return import('ticket-fields').then(function (n) { return n.av; });
+    case '../ticket-fields/translations/locales/uk.json': return import('ticket-fields').then(function (n) { return n.aw; });
+    case '../ticket-fields/translations/locales/ur.json': return import('ticket-fields').then(function (n) { return n.ax; });
+    case '../ticket-fields/translations/locales/uz.json': return import('ticket-fields').then(function (n) { return n.ay; });
+    case '../ticket-fields/translations/locales/vi.json': return import('ticket-fields').then(function (n) { return n.az; });
+    case '../ticket-fields/translations/locales/zh-cn.json': return import('ticket-fields').then(function (n) { return n.aA; });
+    case '../ticket-fields/translations/locales/zh-tw.json': return import('ticket-fields').then(function (n) { return n.aB; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
 function __variableDynamicImportRuntime0__(path) {
   switch (path) {
     case './translations/locales/af.json': return import('new-request-form-translations').then(function (n) { return n.a; });
@@ -927,7 +1024,10 @@ function __variableDynamicImportRuntime0__(path) {
 async function renderNewRequestForm(settings, props, container) {
     const { baseLocale } = props;
     initI18next(baseLocale);
-    await loadTranslations(baseLocale, () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`));
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`),
+        () => __variableDynamicImportRuntime1__(`../ticket-fields/translations/locales/${baseLocale}.json`),
+    ]);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(NewRequestForm, { ...props }) }), container);
 }
 

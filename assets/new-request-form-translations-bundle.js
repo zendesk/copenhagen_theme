@@ -1,6 +1,5 @@
 var af = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -10,8 +9,11 @@ var af = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -40,7 +42,6 @@ var af$1 = /*#__PURE__*/Object.freeze({
 
 var arXPseudo = {
 	"new-request-form.answer-bot-modal.footer-content": "[ผู้龍ḬḬϝ ḭḭṭ ḍṓṓḛḛṡ, ẁḛḛ ͼααṇ ͼḽṓṓṡḛḛ ẏẏṓṓṵṵṛ ṛḛḛͼḛḛṇṭ ṛḛḛʠṵṵḛḛṡṭ {{requestId}}龍ผู้]",
-	"new-request-form.answer-bot-modal.footer-title": "[ผู้龍Ḍṓṓḛḛṡ ṭḥḭḭṡ ααṛṭḭḭͼḽḛḛ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "[ผู้龍Ṅṓṓ, ḬḬ ṇḛḛḛḛḍ ḥḛḛḽṗ龍ผู้]",
 	"new-request-form.answer-bot-modal.request-closed": "[ผู้龍Ṅḭḭͼḛḛ. ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ḥααṡ ḅḛḛḛḛṇ ͼḽṓṓṡḛḛḍ.龍ผู้]",
 	"new-request-form.answer-bot-modal.request-submitted": "[ผู้龍ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ẁααṡ ṡṵṵͼͼḛḛṡṡϝṵṵḽḽẏẏ ṡṵṵḅṃḭḭṭṭḛḛḍ龍ผู้]",
@@ -50,8 +51,11 @@ var arXPseudo = {
 	"new-request-form.answer-bot-modal.view-article": "[ผู้龍Ṿḭḭḛḛẁ ααṛṭḭḭͼḽḛḛ龍ผู้]",
 	"new-request-form.attachments.choose-file-label": "[ผู้龍Ḉḥṓṓṓṓṡḛḛ αα ϝḭḭḽḛḛ ṓṓṛ ḍṛααḡ ααṇḍ ḍṛṓṓṗ ḥḛḛṛḛḛ龍ผู้]",
 	"new-request-form.attachments.drop-files-label": "[ผู้龍Ḍṛṓṓṗ ϝḭḭḽḛḛṡ ḥḛḛṛḛḛ龍ผู้]",
+	"new-request-form.attachments.file": "[ผู้龍Ḟḭḭḽḛḛ: {{fileName}}, ṗṛḛḛṡṡ ḍḛḛḽḛḛṭḛḛ ṭṓṓ ṛḛḛṃṓṓṽḛḛ龍ผู้]",
 	"new-request-form.attachments.remove-file": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ龍ผู้]",
+	"new-request-form.attachments.remove-file-aria-label": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ: {{fileName}}龍ผู้]",
 	"new-request-form.attachments.stop-upload": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍ龍ผู้]",
+	"new-request-form.attachments.stop-upload-aria-label": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
 	"new-request-form.attachments.upload-error-description": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}. Ṫṛẏẏ ααḡααḭḭṇ ṓṓṛ ṵṵṗḽṓṓααḍ ααṇṓṓṭḥḛḛṛ ϝḭḭḽḛḛ.龍ผู้]",
 	"new-request-form.attachments.upload-error-title": "[ผู้龍ṲṲṗḽṓṓααḍ ḛḛṛṛṓṓṛ龍ผู้]",
 	"new-request-form.attachments.uploading": "[ผู้龍ṲṲṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
@@ -80,7 +84,6 @@ var arXPseudo$1 = /*#__PURE__*/Object.freeze({
 
 var ar = {
 	"new-request-form.answer-bot-modal.footer-content": "في هذه الحالة يمكننا إغلاق الطلب الأخير {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "هل يجيب هذا المقال عن سؤالك؟",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "كلا، أحتاج إلى مساعدة",
 	"new-request-form.answer-bot-modal.request-closed": "رائع. تم إغلاق طلبك.",
 	"new-request-form.answer-bot-modal.request-submitted": "تم إرسال طلبك بنجاح",
@@ -90,8 +93,11 @@ var ar = {
 	"new-request-form.answer-bot-modal.view-article": "عرض المقال",
 	"new-request-form.attachments.choose-file-label": "اختر ملفًا أو قم بالسحب والإسقاط هنا",
 	"new-request-form.attachments.drop-files-label": "أسقِط الملفات هنا",
+	"new-request-form.attachments.file": "الملف: {{fileName}}، اضغط على حذف لإزالته",
 	"new-request-form.attachments.remove-file": "إزالة الملف",
+	"new-request-form.attachments.remove-file-aria-label": "إزالة الملف: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "إيقاف التحميل",
+	"new-request-form.attachments.stop-upload-aria-label": "توقف عن تحميل {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "حدث خطأ أثناء تحميل {{fileName}}. حاول مرة أخرى أو قم بتحميل ملف آخر.",
 	"new-request-form.attachments.upload-error-title": "خطأ في التحميل",
 	"new-request-form.attachments.uploading": "جارٍ تحميل {{fileName}}",
@@ -120,7 +126,6 @@ var ar$1 = /*#__PURE__*/Object.freeze({
 
 var az = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -130,8 +135,11 @@ var az = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -160,7 +168,6 @@ var az$1 = /*#__PURE__*/Object.freeze({
 
 var be = {
 	"new-request-form.answer-bot-modal.footer-content": "Если да, мы можем закрыть запрос {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Есть ли в этой статье ответ на вопрос?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Нет, мне нужна помощь",
 	"new-request-form.answer-bot-modal.request-closed": "Превосходно. Запрос закрыт.",
 	"new-request-form.answer-bot-modal.request-submitted": "Ваш запрос отправлен",
@@ -170,8 +177,11 @@ var be = {
 	"new-request-form.answer-bot-modal.view-article": "Просмотреть статью",
 	"new-request-form.attachments.choose-file-label": "Выберите файл или перетащите его сюда",
 	"new-request-form.attachments.drop-files-label": "Перетащите файлы сюда",
+	"new-request-form.attachments.file": "Файл: «{{fileName}}», нажмите «Удалить» для удаления",
 	"new-request-form.attachments.remove-file": "Удалить файл",
+	"new-request-form.attachments.remove-file-aria-label": "Удалить файл: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Остановить выкладывание",
+	"new-request-form.attachments.stop-upload-aria-label": "Остановить выкладывание {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Ошибка при выкладывании {{fileName}}. Повторите попытку или выложите другой файл.",
 	"new-request-form.attachments.upload-error-title": "Ошибка выкладывания",
 	"new-request-form.attachments.uploading": "Выкладывание {{fileName}}",
@@ -200,7 +210,6 @@ var be$1 = /*#__PURE__*/Object.freeze({
 
 var bg = {
 	"new-request-form.answer-bot-modal.footer-content": "Ако отговаря, можем да затворим заявката {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Отговори ли тази статия на въпроса ви?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Не, трябва ми помощ",
 	"new-request-form.answer-bot-modal.request-closed": "Чудесно. Заявката е затворена.",
 	"new-request-form.answer-bot-modal.request-submitted": "Заявката ви беше подадена успешно",
@@ -210,8 +219,11 @@ var bg = {
 	"new-request-form.answer-bot-modal.view-article": "Преглед на статията",
 	"new-request-form.attachments.choose-file-label": "Изберете файл или го плъзнете и пуснете тук",
 	"new-request-form.attachments.drop-files-label": "Пуснете файловете тук",
+	"new-request-form.attachments.file": "Файл: {{fileName}}, натиснете „Изтриване“ за премахване",
 	"new-request-form.attachments.remove-file": "Премахване на файл",
+	"new-request-form.attachments.remove-file-aria-label": "Премахване на файл: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Спиране на качването",
+	"new-request-form.attachments.stop-upload-aria-label": "Спиране на качването на {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Възникна грешка при качването на {{fileName}}. Опитайте отново или качете друг файл.",
 	"new-request-form.attachments.upload-error-title": "Грешка при качването",
 	"new-request-form.attachments.uploading": "Качва се {{fileName}}",
@@ -240,7 +252,6 @@ var bg$1 = /*#__PURE__*/Object.freeze({
 
 var bn = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -250,8 +261,11 @@ var bn = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -280,7 +294,6 @@ var bn$1 = /*#__PURE__*/Object.freeze({
 
 var bs = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -290,8 +303,11 @@ var bs = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -320,7 +336,6 @@ var bs$1 = /*#__PURE__*/Object.freeze({
 
 var ca = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
 	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
@@ -330,8 +345,11 @@ var ca = {
 	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
 	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
 	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.file": "Archivo: {{fileName}} presione Borrar para eliminar",
 	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.remove-file-aria-label": "Eliminar archivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.stop-upload-aria-label": "Dejar de cargar {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
 	"new-request-form.attachments.upload-error-title": "Error de carga",
 	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
@@ -360,7 +378,6 @@ var ca$1 = /*#__PURE__*/Object.freeze({
 
 var cs = {
 	"new-request-form.answer-bot-modal.footer-content": "Pokud ano, můžeme uzavřít nedávný požadavek {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Odpověděl tento článek na vaši otázku?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Ne, potřebuji pomoc",
 	"new-request-form.answer-bot-modal.request-closed": "Prima. Požadavek byl uzavřen.",
 	"new-request-form.answer-bot-modal.request-submitted": "Váš požadavek byl úspěšně odeslán.",
@@ -370,8 +387,11 @@ var cs = {
 	"new-request-form.answer-bot-modal.view-article": "Zobrazit článek",
 	"new-request-form.attachments.choose-file-label": "Vyberte soubor nebo ho sem přetáhněte",
 	"new-request-form.attachments.drop-files-label": "Sem přetáhněte soubory.",
+	"new-request-form.attachments.file": "Soubor: {{fileName}}, stisknutím klávesy delete jej smažete",
 	"new-request-form.attachments.remove-file": "Odstranit soubor",
+	"new-request-form.attachments.remove-file-aria-label": "Odstranit soubor: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Zastavit upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Zastavit nahrávání souboru {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Při uploadování souboru {{fileName}}došlo k chybě. Zkuste to znovu nebo uploadujte jiný soubor.",
 	"new-request-form.attachments.upload-error-title": "Chyba při uploadu",
 	"new-request-form.attachments.uploading": "Uploaduje se soubor {{fileName}}",
@@ -400,7 +420,6 @@ var cs$1 = /*#__PURE__*/Object.freeze({
 
 var cy = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -410,8 +429,11 @@ var cy = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -440,7 +462,6 @@ var cy$1 = /*#__PURE__*/Object.freeze({
 
 var da = {
 	"new-request-form.answer-bot-modal.footer-content": "Hvis den gør, kan vi lukke den seneste anmodning {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Besvarede denne artikel dit spørgsmål?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nej, jeg har brug for hjælp",
 	"new-request-form.answer-bot-modal.request-closed": "Fint. Anmodningen er blevet lukket.",
 	"new-request-form.answer-bot-modal.request-submitted": "Din anmodning er blevet sendt",
@@ -450,8 +471,11 @@ var da = {
 	"new-request-form.answer-bot-modal.view-article": "Se artikel",
 	"new-request-form.attachments.choose-file-label": "Vælg en fil eller træk og slip her",
 	"new-request-form.attachments.drop-files-label": "Slip filerne her",
+	"new-request-form.attachments.file": "Tryk på tasten Delete for at fjerne filen {{fileName}}",
 	"new-request-form.attachments.remove-file": "Fjern fil",
+	"new-request-form.attachments.remove-file-aria-label": "Fjern fil: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading af {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Der opstod en fejl under upload {{fileName}}. Prøv igen eller upload en anden fil.",
 	"new-request-form.attachments.upload-error-title": "Fejl under upload",
 	"new-request-form.attachments.uploading": "Uploader {{fileName}}",
@@ -480,7 +504,6 @@ var da$1 = /*#__PURE__*/Object.freeze({
 
 var deDe = {
 	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
-	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
 	"new-request-form.answer-bot-modal.request-closed": "Sehr gut. Ihre Anfrage wurde geschlossen.",
 	"new-request-form.answer-bot-modal.request-submitted": "Ihre Anfrage wurde erfolgreich eingereicht",
@@ -490,8 +513,11 @@ var deDe = {
 	"new-request-form.answer-bot-modal.view-article": "Beitrag anzeigen",
 	"new-request-form.attachments.choose-file-label": "Datei auswählen oder hierher ziehen",
 	"new-request-form.attachments.drop-files-label": "Dateien hier ablegen",
+	"new-request-form.attachments.file": "Datei: {{fileName}}, zum Entfernen die Löschtaste drücken",
 	"new-request-form.attachments.remove-file": "Datei entfernen",
+	"new-request-form.attachments.remove-file-aria-label": "Datei entfernen: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Upload anhalten",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}} nicht mehr hochladen",
 	"new-request-form.attachments.upload-error-description": "Fehler beim Hochladen von {{fileName}}. Versuchen Sie es erneut oder laden Sie eine andere Datei hoch.",
 	"new-request-form.attachments.upload-error-title": "Fehler beim Hochladen",
 	"new-request-form.attachments.uploading": "{{fileName}} wird hochgeladen",
@@ -520,7 +546,6 @@ var deDe$1 = /*#__PURE__*/Object.freeze({
 
 var deXInformal = {
 	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
-	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
 	"new-request-form.answer-bot-modal.request-closed": "Sehr gut. Ihre Anfrage wurde geschlossen.",
 	"new-request-form.answer-bot-modal.request-submitted": "Ihre Anfrage wurde erfolgreich eingereicht",
@@ -530,8 +555,11 @@ var deXInformal = {
 	"new-request-form.answer-bot-modal.view-article": "Beitrag anzeigen",
 	"new-request-form.attachments.choose-file-label": "Datei auswählen oder hierher ziehen",
 	"new-request-form.attachments.drop-files-label": "Dateien hier ablegen",
+	"new-request-form.attachments.file": "Datei: {{fileName}}, zum Entfernen die Löschtaste drücken",
 	"new-request-form.attachments.remove-file": "Datei entfernen",
+	"new-request-form.attachments.remove-file-aria-label": "Datei entfernen: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Upload anhalten",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}} nicht mehr hochladen",
 	"new-request-form.attachments.upload-error-description": "Fehler beim Hochladen von {{fileName}}. Versuchen Sie es erneut oder laden Sie eine andere Datei hoch.",
 	"new-request-form.attachments.upload-error-title": "Fehler beim Hochladen",
 	"new-request-form.attachments.uploading": "{{fileName}} wird hochgeladen",
@@ -560,7 +588,6 @@ var deXInformal$1 = /*#__PURE__*/Object.freeze({
 
 var de = {
 	"new-request-form.answer-bot-modal.footer-content": "Wenn ja, können wir die Anfrage {{requestId}} schließen.",
-	"new-request-form.answer-bot-modal.footer-title": "Hat dieser Beitrag die Frage beantwortet?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nein, ich brauche weitere Hilfe",
 	"new-request-form.answer-bot-modal.request-closed": "Sehr gut. Ihre Anfrage wurde geschlossen.",
 	"new-request-form.answer-bot-modal.request-submitted": "Ihre Anfrage wurde erfolgreich eingereicht",
@@ -570,8 +597,11 @@ var de = {
 	"new-request-form.answer-bot-modal.view-article": "Beitrag anzeigen",
 	"new-request-form.attachments.choose-file-label": "Datei auswählen oder hierher ziehen",
 	"new-request-form.attachments.drop-files-label": "Dateien hier ablegen",
+	"new-request-form.attachments.file": "Datei: {{fileName}}, zum Entfernen die Löschtaste drücken",
 	"new-request-form.attachments.remove-file": "Datei entfernen",
+	"new-request-form.attachments.remove-file-aria-label": "Datei entfernen: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Upload anhalten",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}} nicht mehr hochladen",
 	"new-request-form.attachments.upload-error-description": "Fehler beim Hochladen von {{fileName}}. Versuchen Sie es erneut oder laden Sie eine andere Datei hoch.",
 	"new-request-form.attachments.upload-error-title": "Fehler beim Hochladen",
 	"new-request-form.attachments.uploading": "{{fileName}} wird hochgeladen",
@@ -600,7 +630,6 @@ var de$1 = /*#__PURE__*/Object.freeze({
 
 var el = {
 	"new-request-form.answer-bot-modal.footer-content": "Αν ναι, μπορούμε να κλείσουμε το πρόσφατο αίτημα {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Απαντά στην ερώτηση το άρθρο;",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Όχι, χρειάζομαι βοήθεια",
 	"new-request-form.answer-bot-modal.request-closed": "Ωραία. Το αίτημα έχει κλείσει.",
 	"new-request-form.answer-bot-modal.request-submitted": "Το αίτημά σας υπεβλήθη με επιτυχία",
@@ -610,8 +639,11 @@ var el = {
 	"new-request-form.answer-bot-modal.view-article": "Προβολή άρθρου",
 	"new-request-form.attachments.choose-file-label": "Επιλέξτε ένα αρχείο ή σύρετε και αποθέστε εδώ",
 	"new-request-form.attachments.drop-files-label": "Αποθέστε τα αρχεία εδώ",
+	"new-request-form.attachments.file": "Αρχείο: {{fileName}}, πατήστε Delete για αφαίρεση",
 	"new-request-form.attachments.remove-file": "Κατάργηση αρχείου",
+	"new-request-form.attachments.remove-file-aria-label": "Αφαίρεση αρχείου: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Διακοπή αποστολής",
+	"new-request-form.attachments.stop-upload-aria-label": "Διακοπή αποστολής του {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Υπήρξε σφάλμα κατά την αποστολή του {{fileName}}. Δοκιμάστε ξανά ή ανεβάστε άλλο αρχείο.",
 	"new-request-form.attachments.upload-error-title": "Σφάλμα αποστολής",
 	"new-request-form.attachments.uploading": "Γίνεται αποστολή {{fileName}}",
@@ -640,7 +672,6 @@ var el$1 = /*#__PURE__*/Object.freeze({
 
 var en001 = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -650,8 +681,11 @@ var en001 = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -680,7 +714,6 @@ var en001$1 = /*#__PURE__*/Object.freeze({
 
 var en150 = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -690,8 +723,11 @@ var en150 = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -720,7 +756,6 @@ var en150$1 = /*#__PURE__*/Object.freeze({
 
 var enAu = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -730,8 +765,11 @@ var enAu = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -760,7 +798,6 @@ var enAu$1 = /*#__PURE__*/Object.freeze({
 
 var enCa = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -770,8 +807,11 @@ var enCa = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -800,7 +840,6 @@ var enCa$1 = /*#__PURE__*/Object.freeze({
 
 var enGb = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -810,8 +849,11 @@ var enGb = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -840,7 +882,6 @@ var enGb$1 = /*#__PURE__*/Object.freeze({
 
 var enMy = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -850,8 +891,11 @@ var enMy = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -880,7 +924,6 @@ var enMy$1 = /*#__PURE__*/Object.freeze({
 
 var enPh = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -890,8 +933,11 @@ var enPh = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -920,7 +966,6 @@ var enPh$1 = /*#__PURE__*/Object.freeze({
 
 var enSe = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -930,8 +975,11 @@ var enSe = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -960,7 +1008,6 @@ var enSe$1 = /*#__PURE__*/Object.freeze({
 
 var enUs = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -970,8 +1017,11 @@ var enUs = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1000,7 +1050,6 @@ var enUs$1 = /*#__PURE__*/Object.freeze({
 
 var enXDev = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1010,8 +1059,11 @@ var enXDev = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1040,7 +1092,6 @@ var enXDev$1 = /*#__PURE__*/Object.freeze({
 
 var enXKeys = {
 	"new-request-form.answer-bot-modal.footer-content": "new-request-form.answer-bot-modal.footer-content",
-	"new-request-form.answer-bot-modal.footer-title": "new-request-form.answer-bot-modal.footer-title",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "new-request-form.answer-bot-modal.mark-irrelevant",
 	"new-request-form.answer-bot-modal.request-closed": "new-request-form.answer-bot-modal.request-closed",
 	"new-request-form.answer-bot-modal.request-submitted": "new-request-form.answer-bot-modal.request-submitted",
@@ -1050,8 +1101,11 @@ var enXKeys = {
 	"new-request-form.answer-bot-modal.view-article": "new-request-form.answer-bot-modal.view-article",
 	"new-request-form.attachments.choose-file-label": "new-request-form.attachments.choose-file-label",
 	"new-request-form.attachments.drop-files-label": "new-request-form.attachments.drop-files-label",
+	"new-request-form.attachments.file": "new-request-form.attachments.file",
 	"new-request-form.attachments.remove-file": "new-request-form.attachments.remove-file",
+	"new-request-form.attachments.remove-file-aria-label": "new-request-form.attachments.remove-file-aria-label",
 	"new-request-form.attachments.stop-upload": "new-request-form.attachments.stop-upload",
+	"new-request-form.attachments.stop-upload-aria-label": "new-request-form.attachments.stop-upload-aria-label",
 	"new-request-form.attachments.upload-error-description": "new-request-form.attachments.upload-error-description",
 	"new-request-form.attachments.upload-error-title": "new-request-form.attachments.upload-error-title",
 	"new-request-form.attachments.uploading": "new-request-form.attachments.uploading",
@@ -1080,7 +1134,6 @@ var enXKeys$1 = /*#__PURE__*/Object.freeze({
 
 var enXObsolete = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1090,8 +1143,11 @@ var enXObsolete = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1120,7 +1176,6 @@ var enXObsolete$1 = /*#__PURE__*/Object.freeze({
 
 var enXPseudo = {
 	"new-request-form.answer-bot-modal.footer-content": "[ผู้龍ḬḬϝ ḭḭṭ ḍṓṓḛḛṡ, ẁḛḛ ͼααṇ ͼḽṓṓṡḛḛ ẏẏṓṓṵṵṛ ṛḛḛͼḛḛṇṭ ṛḛḛʠṵṵḛḛṡṭ {{requestId}}龍ผู้]",
-	"new-request-form.answer-bot-modal.footer-title": "[ผู้龍Ḍṓṓḛḛṡ ṭḥḭḭṡ ααṛṭḭḭͼḽḛḛ ααṇṡẁḛḛṛ ẏẏṓṓṵṵṛ ʠṵṵḛḛṡṭḭḭṓṓṇ?龍ผู้]",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "[ผู้龍Ṅṓṓ, ḬḬ ṇḛḛḛḛḍ ḥḛḛḽṗ龍ผู้]",
 	"new-request-form.answer-bot-modal.request-closed": "[ผู้龍Ṅḭḭͼḛḛ. ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ḥααṡ ḅḛḛḛḛṇ ͼḽṓṓṡḛḛḍ.龍ผู้]",
 	"new-request-form.answer-bot-modal.request-submitted": "[ผู้龍ŶŶṓṓṵṵṛ ṛḛḛʠṵṵḛḛṡṭ ẁααṡ ṡṵṵͼͼḛḛṡṡϝṵṵḽḽẏẏ ṡṵṵḅṃḭḭṭṭḛḛḍ龍ผู้]",
@@ -1130,8 +1185,11 @@ var enXPseudo = {
 	"new-request-form.answer-bot-modal.view-article": "[ผู้龍Ṿḭḭḛḛẁ ααṛṭḭḭͼḽḛḛ龍ผู้]",
 	"new-request-form.attachments.choose-file-label": "[ผู้龍Ḉḥṓṓṓṓṡḛḛ αα ϝḭḭḽḛḛ ṓṓṛ ḍṛααḡ ααṇḍ ḍṛṓṓṗ ḥḛḛṛḛḛ龍ผู้]",
 	"new-request-form.attachments.drop-files-label": "[ผู้龍Ḍṛṓṓṗ ϝḭḭḽḛḛṡ ḥḛḛṛḛḛ龍ผู้]",
+	"new-request-form.attachments.file": "[ผู้龍Ḟḭḭḽḛḛ: {{fileName}}, ṗṛḛḛṡṡ ḍḛḛḽḛḛṭḛḛ ṭṓṓ ṛḛḛṃṓṓṽḛḛ龍ผู้]",
 	"new-request-form.attachments.remove-file": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ龍ผู้]",
+	"new-request-form.attachments.remove-file-aria-label": "[ผู้龍Ṛḛḛṃṓṓṽḛḛ ϝḭḭḽḛḛ: {{fileName}}龍ผู้]",
 	"new-request-form.attachments.stop-upload": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍ龍ผู้]",
+	"new-request-form.attachments.stop-upload-aria-label": "[ผู้龍Ṣṭṓṓṗ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
 	"new-request-form.attachments.upload-error-description": "[ผู้龍Ṫḥḛḛṛḛḛ ẁααṡ ααṇ ḛḛṛṛṓṓṛ ṵṵṗḽṓṓααḍḭḭṇḡ {{fileName}}. Ṫṛẏẏ ααḡααḭḭṇ ṓṓṛ ṵṵṗḽṓṓααḍ ααṇṓṓṭḥḛḛṛ ϝḭḭḽḛḛ.龍ผู้]",
 	"new-request-form.attachments.upload-error-title": "[ผู้龍ṲṲṗḽṓṓααḍ ḛḛṛṛṓṓṛ龍ผู้]",
 	"new-request-form.attachments.uploading": "[ผู้龍ṲṲṗḽṓṓααḍḭḭṇḡ {{fileName}}龍ผู้]",
@@ -1160,7 +1218,6 @@ var enXPseudo$1 = /*#__PURE__*/Object.freeze({
 
 var enXTest = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1170,8 +1227,11 @@ var enXTest = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1200,7 +1260,6 @@ var enXTest$1 = /*#__PURE__*/Object.freeze({
 
 var es419 = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
 	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
@@ -1210,8 +1269,11 @@ var es419 = {
 	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
 	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
 	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.file": "Archivo: {{fileName}} presione Borrar para eliminar",
 	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.remove-file-aria-label": "Eliminar archivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.stop-upload-aria-label": "Dejar de cargar {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
 	"new-request-form.attachments.upload-error-title": "Error de carga",
 	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
@@ -1240,7 +1302,6 @@ var es419$1 = /*#__PURE__*/Object.freeze({
 
 var esEs = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
 	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
@@ -1250,8 +1311,11 @@ var esEs = {
 	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
 	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
 	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.file": "Archivo: {{fileName}} presione Borrar para eliminar",
 	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.remove-file-aria-label": "Eliminar archivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.stop-upload-aria-label": "Dejar de cargar {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
 	"new-request-form.attachments.upload-error-title": "Error de carga",
 	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
@@ -1280,7 +1344,6 @@ var esEs$1 = /*#__PURE__*/Object.freeze({
 
 var es = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
 	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
@@ -1290,8 +1353,11 @@ var es = {
 	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
 	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
 	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.file": "Archivo: {{fileName}} presione Borrar para eliminar",
 	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.remove-file-aria-label": "Eliminar archivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.stop-upload-aria-label": "Dejar de cargar {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
 	"new-request-form.attachments.upload-error-title": "Error de carga",
 	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
@@ -1320,7 +1386,6 @@ var es$1 = /*#__PURE__*/Object.freeze({
 
 var et = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1330,8 +1395,11 @@ var et = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1360,7 +1428,6 @@ var et$1 = /*#__PURE__*/Object.freeze({
 
 var eu = {
 	"new-request-form.answer-bot-modal.footer-content": "De ser así, podemos cerrar la reciente solicitud {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "¿Responde la pregunta este artículo?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, necesito ayuda",
 	"new-request-form.answer-bot-modal.request-closed": "Excelente. La solicitud fue cerrada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Su solicitud se envió correctamente.",
@@ -1370,8 +1437,11 @@ var eu = {
 	"new-request-form.answer-bot-modal.view-article": "Ver artículo",
 	"new-request-form.attachments.choose-file-label": "Elegir un archivo o arrastrar y soltar uno aquí",
 	"new-request-form.attachments.drop-files-label": "Suelte los archivos aquí",
+	"new-request-form.attachments.file": "Archivo: {{fileName}} presione Borrar para eliminar",
 	"new-request-form.attachments.remove-file": "Eliminar archivo",
+	"new-request-form.attachments.remove-file-aria-label": "Eliminar archivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Detener carga",
+	"new-request-form.attachments.stop-upload-aria-label": "Dejar de cargar {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Hubo un error al cargar {{fileName}}. Vuelva a intentarlo o cargue otro archivo.",
 	"new-request-form.attachments.upload-error-title": "Error de carga",
 	"new-request-form.attachments.uploading": "Cargando {{fileName}}",
@@ -1400,7 +1470,6 @@ var eu$1 = /*#__PURE__*/Object.freeze({
 
 var faAf = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1410,8 +1479,11 @@ var faAf = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1440,7 +1512,6 @@ var faAf$1 = /*#__PURE__*/Object.freeze({
 
 var fa = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1450,8 +1521,11 @@ var fa = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1480,7 +1554,6 @@ var fa$1 = /*#__PURE__*/Object.freeze({
 
 var fi = {
 	"new-request-form.answer-bot-modal.footer-content": "Jos se vastaa, voimme sulkea äskettäisen pyyntösi {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Vastaako tämä artikkeli kysymykseesi?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Ei, tarvitsen apua",
 	"new-request-form.answer-bot-modal.request-closed": "Hienoa. Pyyntösi on suljettu.",
 	"new-request-form.answer-bot-modal.request-submitted": "Pyyntösi lähettäminen onnistui",
@@ -1490,8 +1563,11 @@ var fi = {
 	"new-request-form.answer-bot-modal.view-article": "Näytä artikkeli",
 	"new-request-form.attachments.choose-file-label": "Valitse tiedosto tai vedä ja pudota se tähän",
 	"new-request-form.attachments.drop-files-label": "Pudota tiedostot tähän",
+	"new-request-form.attachments.file": "Tiedosto: {{fileName}}, poista painamalla Poista-painiketta",
 	"new-request-form.attachments.remove-file": "Poista tiedosto",
+	"new-request-form.attachments.remove-file-aria-label": "Poista tiedosto: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Lopeta lataaminen",
+	"new-request-form.attachments.stop-upload-aria-label": "Lopeta tiedoston {{fileName}} lataaminen",
 	"new-request-form.attachments.upload-error-description": "Virhe ladattaessa tiedostoa {{fileName}}. Yritä uudelleen tai lataa toinen tiedosto.",
 	"new-request-form.attachments.upload-error-title": "Latausvirhe",
 	"new-request-form.attachments.uploading": "Ladataan tiedostoa {{fileName}}",
@@ -1520,7 +1596,6 @@ var fi$1 = /*#__PURE__*/Object.freeze({
 
 var fil = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1530,8 +1605,11 @@ var fil = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1560,7 +1638,6 @@ var fil$1 = /*#__PURE__*/Object.freeze({
 
 var fo = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1570,8 +1647,11 @@ var fo = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1600,7 +1680,6 @@ var fo$1 = /*#__PURE__*/Object.freeze({
 
 var frCa = {
 	"new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore la demande {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
 	"new-request-form.answer-bot-modal.request-closed": "Super. La demande a été close.",
 	"new-request-form.answer-bot-modal.request-submitted": "Votre demande a été envoyée",
@@ -1610,8 +1689,11 @@ var frCa = {
 	"new-request-form.answer-bot-modal.view-article": "Afficher l’article",
 	"new-request-form.attachments.choose-file-label": "Choisissez un fichier ou faites glisser et déposez ici",
 	"new-request-form.attachments.drop-files-label": "Déposez les fichiers ici",
+	"new-request-form.attachments.file": "Fichier : {{fileName}}, appuyez sur Supprimer pour le supprimer",
 	"new-request-form.attachments.remove-file": "Supprimer le fichier",
+	"new-request-form.attachments.remove-file-aria-label": "Supprimer le fichier : {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Arrêter le chargement",
+	"new-request-form.attachments.stop-upload-aria-label": "Arrêter le chargement de {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Une erreur est survenue lors du téléversement de {{fileName}}. Réessayez ou téléversez un autre fichier.",
 	"new-request-form.attachments.upload-error-title": "Erreur de téléversement",
 	"new-request-form.attachments.uploading": "Téléversement de {{fileName}}en cours…",
@@ -1640,7 +1722,6 @@ var frCa$1 = /*#__PURE__*/Object.freeze({
 
 var fr = {
 	"new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore votre demande récente {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question ?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
 	"new-request-form.answer-bot-modal.request-closed": "Super. Votre demande a été fermée.",
 	"new-request-form.answer-bot-modal.request-submitted": "Votre demande a été envoyée",
@@ -1650,8 +1731,11 @@ var fr = {
 	"new-request-form.answer-bot-modal.view-article": "Afficher l’article",
 	"new-request-form.attachments.choose-file-label": "Choisissez un fichier ou faites un glisser-déposer ici",
 	"new-request-form.attachments.drop-files-label": "Déposez les fichiers ici",
+	"new-request-form.attachments.file": "Fichier : {{fileName}}, appuyez sur Supprimer pour le supprimer",
 	"new-request-form.attachments.remove-file": "Supprimer le fichier",
+	"new-request-form.attachments.remove-file-aria-label": "Supprimer le fichier : {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Arrêter le chargement",
+	"new-request-form.attachments.stop-upload-aria-label": "Arrêter le chargement de {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Une erreur est survenue lors du chargement de {{fileName}}. Réessayez ou chargez un autre fichier.",
 	"new-request-form.attachments.upload-error-title": "Erreur de chargement",
 	"new-request-form.attachments.uploading": "Chargement du fichier {{fileName}} en cours",
@@ -1680,7 +1764,6 @@ var fr$1 = /*#__PURE__*/Object.freeze({
 
 var ga = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1690,8 +1773,11 @@ var ga = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1720,7 +1806,6 @@ var ga$1 = /*#__PURE__*/Object.freeze({
 
 var he = {
 	"new-request-form.answer-bot-modal.footer-content": "אם כן, נוכל לסגור את בקשה {{requestId}} ששלחת לאחרונה",
-	"new-request-form.answer-bot-modal.footer-title": "האם המאמר הזה עונה על השאלה?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "לא, אני צריך עזרה",
 	"new-request-form.answer-bot-modal.request-closed": "נחמד. הבקשה נסגרה.",
 	"new-request-form.answer-bot-modal.request-submitted": "בקשתך נשלחה",
@@ -1730,8 +1815,11 @@ var he = {
 	"new-request-form.answer-bot-modal.view-article": "הצג מאמר",
 	"new-request-form.attachments.choose-file-label": "בחר קובץ או גרור ושחרר כאן",
 	"new-request-form.attachments.drop-files-label": "שחרר את הקבצים כאן",
+	"new-request-form.attachments.file": "קובץ: {{fileName}}, הקש Delete כדי להסיר",
 	"new-request-form.attachments.remove-file": "הסר קובץ",
+	"new-request-form.attachments.remove-file-aria-label": "הסר קובץ: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "עצור העלאה",
+	"new-request-form.attachments.stop-upload-aria-label": "הפסק את ההעלאה של {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "אירעה שגיאה בהעלאת הקובץ {{fileName}}. נסה שוב או העלה קובץ אחר.",
 	"new-request-form.attachments.upload-error-title": "שגיאת העלאה",
 	"new-request-form.attachments.uploading": "מעלה את {{fileName}}",
@@ -1760,7 +1848,6 @@ var he$1 = /*#__PURE__*/Object.freeze({
 
 var hi = {
 	"new-request-form.answer-bot-modal.footer-content": "यदि ऐसा है, तो हम आपका हाल ही का अनुरोध बंद कर सकते है {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "क्या इस आलेख में आपके प्रश्न का उत्तर मिला?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "नहीं, मुझे सहायता चाहिए",
 	"new-request-form.answer-bot-modal.request-closed": "बढ़िया! आपका अनुरोध बंद कर दिया गया है।",
 	"new-request-form.answer-bot-modal.request-submitted": "आपका अनुरोध सफलतापूर्वक भेजा गया था",
@@ -1770,8 +1857,11 @@ var hi = {
 	"new-request-form.answer-bot-modal.view-article": "आलेख देखें",
 	"new-request-form.attachments.choose-file-label": "कोई फ़ाइल चुनें या यहां खींचें और छोड़ें",
 	"new-request-form.attachments.drop-files-label": "फाइलों को यहां छोड़ें",
+	"new-request-form.attachments.file": "फ़ाइल: {{fileName}}, हटाने के लिए डिलीट दबाएँ",
 	"new-request-form.attachments.remove-file": "फ़ाइल हटाएं",
+	"new-request-form.attachments.remove-file-aria-label": "फ़ाइल हटाएँ: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "अपलोड बंद करें",
+	"new-request-form.attachments.stop-upload-aria-label": "अपलोड करना बंद करें {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "{{fileName}}अपलोड करने में कोई त्रुटि थी। पुनः प्रयास करें या कोई अन्य फ़ाइल अपलोड करें।",
 	"new-request-form.attachments.upload-error-title": "त्रुटि अपलोड करें",
 	"new-request-form.attachments.uploading": "{{fileName}} अपलोड हो रहा है",
@@ -1800,7 +1890,6 @@ var hi$1 = /*#__PURE__*/Object.freeze({
 
 var hr = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1810,8 +1899,11 @@ var hr = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1840,7 +1932,6 @@ var hr$1 = /*#__PURE__*/Object.freeze({
 
 var hu = {
 	"new-request-form.answer-bot-modal.footer-content": "Ha igen, lezárhatjuk a legutóbbi kérelmét ({{requestId}})",
-	"new-request-form.answer-bot-modal.footer-title": "Megválaszolta a cikk a kérdését?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nem, segítségre van szükségem",
 	"new-request-form.answer-bot-modal.request-closed": "Remek! A kérelme ezzel le lett zárva.",
 	"new-request-form.answer-bot-modal.request-submitted": "A kérelme sikeresen be lett küldve",
@@ -1850,8 +1941,11 @@ var hu = {
 	"new-request-form.answer-bot-modal.view-article": "Cikk megtekintése",
 	"new-request-form.attachments.choose-file-label": "Válassza ki vagy húzza ide a kívánt fájlt",
 	"new-request-form.attachments.drop-files-label": "Húzza ide a fájlokat",
+	"new-request-form.attachments.file": "Fájl: {{fileName}}, az eltávolításához nyomja meg a Delete billentyűt",
 	"new-request-form.attachments.remove-file": "Fájl eltávolítása",
+	"new-request-form.attachments.remove-file-aria-label": "Fájl eltávolítása: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Feltöltés leállítása",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}} feltöltésének leállítása",
 	"new-request-form.attachments.upload-error-description": "Hiba történt a(z) {{fileName}} fájl feltöltése során. Próbálja meg újra, vagy töltsön fel egy másik fájlt.",
 	"new-request-form.attachments.upload-error-title": "Feltöltési hiba",
 	"new-request-form.attachments.uploading": "A(z) {{fileName}} fájl feltöltése folyamatban van",
@@ -1880,7 +1974,6 @@ var hu$1 = /*#__PURE__*/Object.freeze({
 
 var hy = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1890,8 +1983,11 @@ var hy = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -1920,7 +2016,6 @@ var hy$1 = /*#__PURE__*/Object.freeze({
 
 var id = {
 	"new-request-form.answer-bot-modal.footer-content": "Jika demikian, kami dapat menutup permintaan Anda baru-baru ini {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Apakah artikel ini menjawab pertanyaan Anda?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Tidak, saya perlu bantuan",
 	"new-request-form.answer-bot-modal.request-closed": "Bagus. Permintaan Anda telah ditutup.",
 	"new-request-form.answer-bot-modal.request-submitted": "Permintaan Anda berhasil dikirimkan",
@@ -1930,8 +2025,11 @@ var id = {
 	"new-request-form.answer-bot-modal.view-article": "Lihat artikel",
 	"new-request-form.attachments.choose-file-label": "Pilih file atau tarik dan letakkan di sini",
 	"new-request-form.attachments.drop-files-label": "Letakkan file di sini",
+	"new-request-form.attachments.file": "File: {{fileName}}, tekan hapus untuk menghapus",
 	"new-request-form.attachments.remove-file": "Hapus file",
+	"new-request-form.attachments.remove-file-aria-label": "Hapus File: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Berhenti mengunggah",
+	"new-request-form.attachments.stop-upload-aria-label": "Berhenti mengunggah {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Terjadi kesalahan saat mengunggah {{fileName}}. Cobalah lagi atau unggah file lain.",
 	"new-request-form.attachments.upload-error-title": "Kesalahan Mengunggah",
 	"new-request-form.attachments.uploading": "Mengunggah {{fileName}}",
@@ -1960,7 +2058,6 @@ var id$1 = /*#__PURE__*/Object.freeze({
 
 var is = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -1970,8 +2067,11 @@ var is = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2000,7 +2100,6 @@ var is$1 = /*#__PURE__*/Object.freeze({
 
 var itCh = {
 	"new-request-form.answer-bot-modal.footer-content": "In caso affermativo, possiamo chiudere la recente richiesta {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Questo articolo risponde alla domanda?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, ho bisogno di aiuto",
 	"new-request-form.answer-bot-modal.request-closed": "Ottimo! La richiesta è stata chiusa.",
 	"new-request-form.answer-bot-modal.request-submitted": "La richiesta è stata inviata correttamente",
@@ -2010,8 +2109,11 @@ var itCh = {
 	"new-request-form.answer-bot-modal.view-article": "Visualizza articolo",
 	"new-request-form.attachments.choose-file-label": "Scegli un file o trascinalo qui",
 	"new-request-form.attachments.drop-files-label": "Trascina qui i file",
+	"new-request-form.attachments.file": "File: {{fileName}}, premi Canc per rimuoverlo",
 	"new-request-form.attachments.remove-file": "Rimuovi file",
+	"new-request-form.attachments.remove-file-aria-label": "Rimuovi file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Interrompi caricamento",
+	"new-request-form.attachments.stop-upload-aria-label": "Interrompi il caricamento di {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Errore durante il caricamento di {{fileName}}. Riprova o carica un altro file.",
 	"new-request-form.attachments.upload-error-title": "Errore nel caricamento",
 	"new-request-form.attachments.uploading": "Caricamento di {{fileName}}",
@@ -2040,7 +2142,6 @@ var itCh$1 = /*#__PURE__*/Object.freeze({
 
 var it = {
 	"new-request-form.answer-bot-modal.footer-content": "In caso affermativo, possiamo chiudere la recente richiesta {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Questo articolo risponde alla domanda?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, ho bisogno di aiuto",
 	"new-request-form.answer-bot-modal.request-closed": "Ottimo! La richiesta è stata chiusa.",
 	"new-request-form.answer-bot-modal.request-submitted": "La richiesta è stata inviata correttamente",
@@ -2050,8 +2151,11 @@ var it = {
 	"new-request-form.answer-bot-modal.view-article": "Visualizza articolo",
 	"new-request-form.attachments.choose-file-label": "Scegli un file o trascinalo qui",
 	"new-request-form.attachments.drop-files-label": "Trascina qui i file",
+	"new-request-form.attachments.file": "File: {{fileName}}, premi Canc per rimuoverlo",
 	"new-request-form.attachments.remove-file": "Rimuovi file",
+	"new-request-form.attachments.remove-file-aria-label": "Rimuovi file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Interrompi caricamento",
+	"new-request-form.attachments.stop-upload-aria-label": "Interrompi il caricamento di {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Errore durante il caricamento di {{fileName}}. Riprova o carica un altro file.",
 	"new-request-form.attachments.upload-error-title": "Errore nel caricamento",
 	"new-request-form.attachments.uploading": "Caricamento di {{fileName}}",
@@ -2080,7 +2184,6 @@ var it$1 = /*#__PURE__*/Object.freeze({
 
 var ja = {
 	"new-request-form.answer-bot-modal.footer-content": "質問が解決していれば、最新のリクエスト{{requestId}}を終了します",
-	"new-request-form.answer-bot-modal.footer-title": "この記事で疑問が解消されましたか？",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "いいえ、ヘルプが必要です",
 	"new-request-form.answer-bot-modal.request-closed": "お役に立てて嬉しいです。リクエストは終了しました。",
 	"new-request-form.answer-bot-modal.request-submitted": "リクエストは正しく送信されました",
@@ -2090,8 +2193,11 @@ var ja = {
 	"new-request-form.answer-bot-modal.view-article": "記事を表示",
 	"new-request-form.attachments.choose-file-label": "ファイルを選択するか、ここにドラッグアンドドロップします",
 	"new-request-form.attachments.drop-files-label": "ファイルをここにドロップ",
+	"new-request-form.attachments.file": "ファイル：{{fileName}}、Deleteキーを押して削除",
 	"new-request-form.attachments.remove-file": "ファイル削除",
+	"new-request-form.attachments.remove-file-aria-label": "ファイルを削除：{{fileName}}",
 	"new-request-form.attachments.stop-upload": "アップロードを停止",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}}のアップロードを停止",
 	"new-request-form.attachments.upload-error-description": "{{fileName}}のアップロード中にエラーが発生しました。もう一度やり直すか、別のファイルをアップロードしてください。",
 	"new-request-form.attachments.upload-error-title": "アップロードエラー",
 	"new-request-form.attachments.uploading": "{{fileName}}をアップロード中",
@@ -2120,7 +2226,6 @@ var ja$1 = /*#__PURE__*/Object.freeze({
 
 var ka = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2130,8 +2235,11 @@ var ka = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2160,7 +2268,6 @@ var ka$1 = /*#__PURE__*/Object.freeze({
 
 var kk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2170,8 +2277,11 @@ var kk = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2200,7 +2310,6 @@ var kk$1 = /*#__PURE__*/Object.freeze({
 
 var klDk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2210,8 +2319,11 @@ var klDk = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2240,7 +2352,6 @@ var klDk$1 = /*#__PURE__*/Object.freeze({
 
 var ko = {
 	"new-request-form.answer-bot-modal.footer-content": "그렇다면 최근 요청 {{requestId}}을(를) 종료할 수 있습니다.",
-	"new-request-form.answer-bot-modal.footer-title": "이 문서가 질문에 대한 답이 되었나요?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "아니요, 도움이 필요합니다.",
 	"new-request-form.answer-bot-modal.request-closed": "도움이 되었다니 기쁩니다. 요청이 종료되었습니다.",
 	"new-request-form.answer-bot-modal.request-submitted": "요청을 제출했습니다.",
@@ -2250,8 +2361,11 @@ var ko = {
 	"new-request-form.answer-bot-modal.view-article": "문서 보기",
 	"new-request-form.attachments.choose-file-label": "파일을 선택하거나 여기에 드래그 앤 드롭하세요.",
 	"new-request-form.attachments.drop-files-label": "파일을 여기에 드롭하세요",
+	"new-request-form.attachments.file": "파일: {{fileName}}, 삭제하려면 delete 키를 누르세요.",
 	"new-request-form.attachments.remove-file": "파일 제거",
+	"new-request-form.attachments.remove-file-aria-label": "파일 제거: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "업로드 중지",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}} 업로드 중지",
 	"new-request-form.attachments.upload-error-description": "{{fileName}}을(를) 업로드하는 중 오류가 발생했습니다. 다시 시도하거나 다른 파일을 업로드하세요.",
 	"new-request-form.attachments.upload-error-title": "업로드 오류",
 	"new-request-form.attachments.uploading": "{{fileName}} 업로드 중",
@@ -2280,7 +2394,6 @@ var ko$1 = /*#__PURE__*/Object.freeze({
 
 var ku = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2290,8 +2403,11 @@ var ku = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2320,7 +2436,6 @@ var ku$1 = /*#__PURE__*/Object.freeze({
 
 var lt = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2330,8 +2445,11 @@ var lt = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2360,7 +2478,6 @@ var lt$1 = /*#__PURE__*/Object.freeze({
 
 var lv = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2370,8 +2487,11 @@ var lv = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2400,7 +2520,6 @@ var lv$1 = /*#__PURE__*/Object.freeze({
 
 var mk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2410,8 +2529,11 @@ var mk = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2440,7 +2562,6 @@ var mk$1 = /*#__PURE__*/Object.freeze({
 
 var mn = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2450,8 +2571,11 @@ var mn = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2480,7 +2604,6 @@ var mn$1 = /*#__PURE__*/Object.freeze({
 
 var ms = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2490,8 +2613,11 @@ var ms = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2520,7 +2646,6 @@ var ms$1 = /*#__PURE__*/Object.freeze({
 
 var mt = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2530,8 +2655,11 @@ var mt = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2560,7 +2688,6 @@ var mt$1 = /*#__PURE__*/Object.freeze({
 
 var my = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2570,8 +2697,11 @@ var my = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2600,7 +2730,6 @@ var my$1 = /*#__PURE__*/Object.freeze({
 
 var nlBe = {
 	"new-request-form.answer-bot-modal.footer-content": "Als dat het geval is, kunnen wij uw recente aanvraag {{requestId}} sluiten",
-	"new-request-form.answer-bot-modal.footer-title": "Beantwoordt dit artikel uw vraag?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nee, ik heb hulp nodig",
 	"new-request-form.answer-bot-modal.request-closed": "Fijn. Uw aanvraag is gesloten.",
 	"new-request-form.answer-bot-modal.request-submitted": "Uw aanvraag is verzonden",
@@ -2610,8 +2739,11 @@ var nlBe = {
 	"new-request-form.answer-bot-modal.view-article": "Artikel weergeven",
 	"new-request-form.attachments.choose-file-label": "Kies een bestand of versleep het hierheen",
 	"new-request-form.attachments.drop-files-label": "Zet bestanden hier neer",
+	"new-request-form.attachments.file": "Bestand: {{fileName}}, druk op Delete om te verwijderen",
 	"new-request-form.attachments.remove-file": "Bestand verwijderen",
+	"new-request-form.attachments.remove-file-aria-label": "Bestand {{fileName}} verwijderen",
 	"new-request-form.attachments.stop-upload": "Upload stoppen",
+	"new-request-form.attachments.stop-upload-aria-label": "Stoppen met uploaden van {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Fout tijdens uploaden van {{fileName}}. Probeer het opnieuw of upload een ander bestand.",
 	"new-request-form.attachments.upload-error-title": "Fout bij uploaden",
 	"new-request-form.attachments.uploading": "{{fileName}} wordt geüpload",
@@ -2640,7 +2772,6 @@ var nlBe$1 = /*#__PURE__*/Object.freeze({
 
 var nl = {
 	"new-request-form.answer-bot-modal.footer-content": "Als dat het geval is, kunnen wij uw recente aanvraag {{requestId}} sluiten",
-	"new-request-form.answer-bot-modal.footer-title": "Beantwoordt dit artikel uw vraag?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nee, ik heb hulp nodig",
 	"new-request-form.answer-bot-modal.request-closed": "Fijn. Uw aanvraag is gesloten.",
 	"new-request-form.answer-bot-modal.request-submitted": "Uw aanvraag is verzonden",
@@ -2650,8 +2781,11 @@ var nl = {
 	"new-request-form.answer-bot-modal.view-article": "Artikel weergeven",
 	"new-request-form.attachments.choose-file-label": "Kies een bestand of versleep het hierheen",
 	"new-request-form.attachments.drop-files-label": "Zet bestanden hier neer",
+	"new-request-form.attachments.file": "Bestand: {{fileName}}, druk op Delete om te verwijderen",
 	"new-request-form.attachments.remove-file": "Bestand verwijderen",
+	"new-request-form.attachments.remove-file-aria-label": "Bestand {{fileName}} verwijderen",
 	"new-request-form.attachments.stop-upload": "Upload stoppen",
+	"new-request-form.attachments.stop-upload-aria-label": "Stoppen met uploaden van {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Fout tijdens uploaden van {{fileName}}. Probeer het opnieuw of upload een ander bestand.",
 	"new-request-form.attachments.upload-error-title": "Fout bij uploaden",
 	"new-request-form.attachments.uploading": "{{fileName}} wordt geüpload",
@@ -2680,7 +2814,6 @@ var nl$1 = /*#__PURE__*/Object.freeze({
 
 var no = {
 	"new-request-form.answer-bot-modal.footer-content": "Hvis den gjør det, kan vi avslutte den nylige forespørselen {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Fant du svar på spørsmålet i denne artikkelen?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nei, jeg trenger hjelp",
 	"new-request-form.answer-bot-modal.request-closed": "Flott! Forespørselen er avsluttet.",
 	"new-request-form.answer-bot-modal.request-submitted": "Forespørselen ble sendt inn",
@@ -2690,8 +2823,11 @@ var no = {
 	"new-request-form.answer-bot-modal.view-article": "Vis artikkel",
 	"new-request-form.attachments.choose-file-label": "Velg en fil eller dra og slipp her",
 	"new-request-form.attachments.drop-files-label": "Slipp filene her",
+	"new-request-form.attachments.file": "Fil: {{fileName}}, trykk på sletteknappen for å fjerne",
 	"new-request-form.attachments.remove-file": "Fjern fil",
+	"new-request-form.attachments.remove-file-aria-label": "Fjern fil: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stopp opplastingen",
+	"new-request-form.attachments.stop-upload-aria-label": "Stopp opplastingen {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Det oppstod en feil under opplastingen {{fileName}}. Prøv på nytt eller last opp en annen fil.",
 	"new-request-form.attachments.upload-error-title": "Feil under opplasting",
 	"new-request-form.attachments.uploading": "Laster opp {{fileName}}",
@@ -2720,7 +2856,6 @@ var no$1 = /*#__PURE__*/Object.freeze({
 
 var pl = {
 	"new-request-form.answer-bot-modal.footer-content": "Jeśli tak, możemy zamknąć zlecenie {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Czy artykuł dostarczył odpowiedzi na pytanie?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nie, potrzebuję pomocy",
 	"new-request-form.answer-bot-modal.request-closed": "Świetnie. Zlecenie zostało zamknięte.",
 	"new-request-form.answer-bot-modal.request-submitted": "Zlecenie zostało wysłane",
@@ -2730,8 +2865,11 @@ var pl = {
 	"new-request-form.answer-bot-modal.view-article": "Wyświetl artykuł",
 	"new-request-form.attachments.choose-file-label": "Wybierz plik lub przeciągnij i upuść go tutaj",
 	"new-request-form.attachments.drop-files-label": "Upuść pliki tutaj",
+	"new-request-form.attachments.file": "Plik: {{fileName}}, naciśnij Usuń, aby go usunąć",
 	"new-request-form.attachments.remove-file": "Usuń plik",
+	"new-request-form.attachments.remove-file-aria-label": "Usuń plik: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Zatrzymaj przesyłanie",
+	"new-request-form.attachments.stop-upload-aria-label": "Zatrzymaj przesyłanie {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Podczas przesyłania wystąpił błąd {{fileName}}. Spróbuj ponownie lub prześlij inny plik.",
 	"new-request-form.attachments.upload-error-title": "Błąd przesyłania",
 	"new-request-form.attachments.uploading": "Przesyłanie {{fileName}}",
@@ -2760,7 +2898,6 @@ var pl$1 = /*#__PURE__*/Object.freeze({
 
 var ptBr = {
 	"new-request-form.answer-bot-modal.footer-content": "Se sim, podemos fechar a solicitação recente {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Esse artigo responde à pergunta?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Não, preciso de ajuda",
 	"new-request-form.answer-bot-modal.request-closed": "Legal! A solicitação foi fechada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Sua solicitação foi enviada com êxito",
@@ -2770,8 +2907,11 @@ var ptBr = {
 	"new-request-form.answer-bot-modal.view-article": "Exibir artigo",
 	"new-request-form.attachments.choose-file-label": "Escolha um arquivo ou arraste e solte aqui",
 	"new-request-form.attachments.drop-files-label": "Solte os arquivos aqui",
+	"new-request-form.attachments.file": "Arquivo: {{fileName}}, pressione Apagar para remover",
 	"new-request-form.attachments.remove-file": "Remover arquivo",
+	"new-request-form.attachments.remove-file-aria-label": "Remover arquivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Interromper carregamento",
+	"new-request-form.attachments.stop-upload-aria-label": "Interromper carregamento do arquivo {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Erro ao carregar {{fileName}}. Tente novamente ou carregue outro arquivo.",
 	"new-request-form.attachments.upload-error-title": "Erro de carregamento",
 	"new-request-form.attachments.uploading": "Carregando {{fileName}}",
@@ -2800,7 +2940,6 @@ var ptBr$1 = /*#__PURE__*/Object.freeze({
 
 var pt = {
 	"new-request-form.answer-bot-modal.footer-content": "Se sim, podemos fechar a solicitação recente {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Esse artigo responde à pergunta?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Não, preciso de ajuda",
 	"new-request-form.answer-bot-modal.request-closed": "Legal! A solicitação foi fechada.",
 	"new-request-form.answer-bot-modal.request-submitted": "Sua solicitação foi enviada com êxito",
@@ -2810,8 +2949,11 @@ var pt = {
 	"new-request-form.answer-bot-modal.view-article": "Exibir artigo",
 	"new-request-form.attachments.choose-file-label": "Escolha um arquivo ou arraste e solte aqui",
 	"new-request-form.attachments.drop-files-label": "Solte os arquivos aqui",
+	"new-request-form.attachments.file": "Arquivo: {{fileName}}, pressione Apagar para remover",
 	"new-request-form.attachments.remove-file": "Remover arquivo",
+	"new-request-form.attachments.remove-file-aria-label": "Remover arquivo: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Interromper carregamento",
+	"new-request-form.attachments.stop-upload-aria-label": "Interromper carregamento do arquivo {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Erro ao carregar {{fileName}}. Tente novamente ou carregue outro arquivo.",
 	"new-request-form.attachments.upload-error-title": "Erro de carregamento",
 	"new-request-form.attachments.uploading": "Carregando {{fileName}}",
@@ -2840,7 +2982,6 @@ var pt$1 = /*#__PURE__*/Object.freeze({
 
 var ro = {
 	"new-request-form.answer-bot-modal.footer-content": "Dacă reușește, putem închide solicitarea recentă {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Acest articol răspunde la întrebare?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nu, am nevoie de ajutor",
 	"new-request-form.answer-bot-modal.request-closed": "Grozav. Solicitarea a fost închisă.",
 	"new-request-form.answer-bot-modal.request-submitted": "Solicitarea a fost transmisă cu succes",
@@ -2850,8 +2991,11 @@ var ro = {
 	"new-request-form.answer-bot-modal.view-article": "Vizualizare articol",
 	"new-request-form.attachments.choose-file-label": "Alegeți un fișier sau glisați și fixați aici",
 	"new-request-form.attachments.drop-files-label": "Glisați fișierele aici",
+	"new-request-form.attachments.file": "Fișier: {{fileName}} apăsați pe Ștergere pentru a elimina",
 	"new-request-form.attachments.remove-file": "Eliminare fișier",
+	"new-request-form.attachments.remove-file-aria-label": "Eliminare fișier: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Oprire încărcare",
+	"new-request-form.attachments.stop-upload-aria-label": "Opriți încărcarea {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "A apărut o eroare la încărcarea {{fileName}}. Încercați din nou sau încărcați un alt fișier.",
 	"new-request-form.attachments.upload-error-title": "Eroare de încărcare",
 	"new-request-form.attachments.uploading": "Se încarcă {{fileName}}",
@@ -2880,7 +3024,6 @@ var ro$1 = /*#__PURE__*/Object.freeze({
 
 var ru = {
 	"new-request-form.answer-bot-modal.footer-content": "Если да, мы можем закрыть запрос {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Есть ли в этой статье ответ на вопрос?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Нет, мне нужна помощь",
 	"new-request-form.answer-bot-modal.request-closed": "Превосходно. Запрос закрыт.",
 	"new-request-form.answer-bot-modal.request-submitted": "Ваш запрос отправлен",
@@ -2890,8 +3033,11 @@ var ru = {
 	"new-request-form.answer-bot-modal.view-article": "Просмотреть статью",
 	"new-request-form.attachments.choose-file-label": "Выберите файл или перетащите его сюда",
 	"new-request-form.attachments.drop-files-label": "Перетащите файлы сюда",
+	"new-request-form.attachments.file": "Файл: «{{fileName}}», нажмите «Удалить» для удаления",
 	"new-request-form.attachments.remove-file": "Удалить файл",
+	"new-request-form.attachments.remove-file-aria-label": "Удалить файл: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Остановить выкладывание",
+	"new-request-form.attachments.stop-upload-aria-label": "Остановить выкладывание {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Ошибка при выкладывании {{fileName}}. Повторите попытку или выложите другой файл.",
 	"new-request-form.attachments.upload-error-title": "Ошибка выкладывания",
 	"new-request-form.attachments.uploading": "Выкладывание {{fileName}}",
@@ -2920,7 +3066,6 @@ var ru$1 = /*#__PURE__*/Object.freeze({
 
 var sk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2930,8 +3075,11 @@ var sk = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -2960,7 +3108,6 @@ var sk$1 = /*#__PURE__*/Object.freeze({
 
 var sl = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -2970,8 +3117,11 @@ var sl = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3000,7 +3150,6 @@ var sl$1 = /*#__PURE__*/Object.freeze({
 
 var sq = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -3010,8 +3159,11 @@ var sq = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3040,7 +3192,6 @@ var sq$1 = /*#__PURE__*/Object.freeze({
 
 var srMe = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -3050,8 +3201,11 @@ var srMe = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3080,7 +3234,6 @@ var srMe$1 = /*#__PURE__*/Object.freeze({
 
 var sr = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -3090,8 +3243,11 @@ var sr = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3120,7 +3276,6 @@ var sr$1 = /*#__PURE__*/Object.freeze({
 
 var sv = {
 	"new-request-form.answer-bot-modal.footer-content": "Om den gör det kan vi stänga din förfrågan {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Besvarar denna artikel din fråga?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Nej, jag behöver hjälp",
 	"new-request-form.answer-bot-modal.request-closed": "Utmärkt. Din förfrågan har stängts.",
 	"new-request-form.answer-bot-modal.request-submitted": "Din förfrågan har skickats in",
@@ -3130,8 +3285,11 @@ var sv = {
 	"new-request-form.answer-bot-modal.view-article": "Visa artikel",
 	"new-request-form.attachments.choose-file-label": "Välj en fil eller dra och släpp den här",
 	"new-request-form.attachments.drop-files-label": "Släpp filer här",
+	"new-request-form.attachments.file": "Fil: {{fileName}}, tryck på delete-tangenten för att ta bort",
 	"new-request-form.attachments.remove-file": "Ta bort fil",
+	"new-request-form.attachments.remove-file-aria-label": "Ta bort fil: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stoppa uppladdning",
+	"new-request-form.attachments.stop-upload-aria-label": "Stoppa uppladdning {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Ett fel inträffade vid uppladdning av {{fileName}}. Försök igen eller ladda upp en annan fil.",
 	"new-request-form.attachments.upload-error-title": "Uppladdningsfel",
 	"new-request-form.attachments.uploading": "Laddar upp {{fileName}}",
@@ -3160,7 +3318,6 @@ var sv$1 = /*#__PURE__*/Object.freeze({
 
 var th = {
 	"new-request-form.answer-bot-modal.footer-content": "หากใช่ เราจะสามารถปิดคำร้องขอ {{requestId}} ของคุณได้",
-	"new-request-form.answer-bot-modal.footer-title": "บทความนี้ได้ตอบข้อสงสัยของคุณหรือไม่",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "ไม่ ฉันต้องการความช่วยเหลือ",
 	"new-request-form.answer-bot-modal.request-closed": "ยอดเลย คำร้องขอของคุณปิดลงแล้ว",
 	"new-request-form.answer-bot-modal.request-submitted": "ส่งคำร้องขอของคุณเรียบร้อยแล้ว",
@@ -3170,8 +3327,11 @@ var th = {
 	"new-request-form.answer-bot-modal.view-article": "ดูบทความ",
 	"new-request-form.attachments.choose-file-label": "เลือกไฟล์หรือลากแล้ววางที่นี่",
 	"new-request-form.attachments.drop-files-label": "วางไฟล์ที่นี่",
+	"new-request-form.attachments.file": "ไฟล์: {{fileName}} กดลบเพื่อนำออก",
 	"new-request-form.attachments.remove-file": "ลบไฟล์ออก",
+	"new-request-form.attachments.remove-file-aria-label": "ลบไฟล์ออก: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "หยุดการอัปโหลด",
+	"new-request-form.attachments.stop-upload-aria-label": "หยุดการอัปโหลด {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "เกิดข้อผิดพลาดในการอัปโหลด {{fileName}} ลองอีกครั้งหรืออัปโหลดไฟล์อื่น",
 	"new-request-form.attachments.upload-error-title": "เกิดข้อผิดพลาดในการอัปโหลด",
 	"new-request-form.attachments.uploading": "กำลังอัปโหลด {{fileName}}",
@@ -3200,7 +3360,6 @@ var th$1 = /*#__PURE__*/Object.freeze({
 
 var tr = {
 	"new-request-form.answer-bot-modal.footer-content": "Yanıtlıyorsa, bu son talebinizi kapatabiliriz {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Bu makale sorunuzu yanıtlıyor mu?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Hayır, yardıma ihtiyacım var",
 	"new-request-form.answer-bot-modal.request-closed": "Güzel! Talebiniz kapatıldı.",
 	"new-request-form.answer-bot-modal.request-submitted": "Talebiniz başarıyla gönderildi",
@@ -3210,8 +3369,11 @@ var tr = {
 	"new-request-form.answer-bot-modal.view-article": "Makaleyi görüntüle",
 	"new-request-form.attachments.choose-file-label": "Bir dosya seçin veya buraya sürükleyip bırakın",
 	"new-request-form.attachments.drop-files-label": "Dosyaları buraya bırakın",
+	"new-request-form.attachments.file": "Dosya:{{fileName}}, kaldırmak için Sil tuşuna basın",
 	"new-request-form.attachments.remove-file": "Dosyayı kaldır",
+	"new-request-form.attachments.remove-file-aria-label": "Dosyayı kaldır: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Karşıya yüklemeyi durdur",
+	"new-request-form.attachments.stop-upload-aria-label": "{{fileName}} dosyasını karşıya yüklemeyi durdur",
 	"new-request-form.attachments.upload-error-description": "{{fileName}} karşıya yüklenirken bir hata oluştu. Yeniden deneyin veya başka bir dosya yükleyin.",
 	"new-request-form.attachments.upload-error-title": "Karşıya yükleme hatası",
 	"new-request-form.attachments.uploading": "{{fileName}} karşıya yükleniyor",
@@ -3240,7 +3402,6 @@ var tr$1 = /*#__PURE__*/Object.freeze({
 
 var uk = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -3250,8 +3411,11 @@ var uk = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3280,7 +3444,6 @@ var uk$1 = /*#__PURE__*/Object.freeze({
 
 var ur = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -3290,8 +3453,11 @@ var ur = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3320,7 +3486,6 @@ var ur$1 = /*#__PURE__*/Object.freeze({
 
 var uz = {
 	"new-request-form.answer-bot-modal.footer-content": "If it does, we can close your recent request {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Does this article answer your question?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "No, I need help",
 	"new-request-form.answer-bot-modal.request-closed": "Nice. Your request has been closed.",
 	"new-request-form.answer-bot-modal.request-submitted": "Your request was successfully submitted",
@@ -3330,8 +3495,11 @@ var uz = {
 	"new-request-form.answer-bot-modal.view-article": "View article",
 	"new-request-form.attachments.choose-file-label": "Choose a file or drag and drop here",
 	"new-request-form.attachments.drop-files-label": "Drop files here",
+	"new-request-form.attachments.file": "File: {{fileName}}, press delete to remove",
 	"new-request-form.attachments.remove-file": "Remove file",
+	"new-request-form.attachments.remove-file-aria-label": "Remove file: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Stop upload",
+	"new-request-form.attachments.stop-upload-aria-label": "Stop uploading {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "There was an error uploading {{fileName}}. Try again or upload another file.",
 	"new-request-form.attachments.upload-error-title": "Upload error",
 	"new-request-form.attachments.uploading": "Uploading {{fileName}}",
@@ -3360,7 +3528,6 @@ var uz$1 = /*#__PURE__*/Object.freeze({
 
 var vi = {
 	"new-request-form.answer-bot-modal.footer-content": "Nếu có, chúng tôi có thể đóng yêu cầu hiện tại {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "Bài viết này có giải đáp được câu hỏi của bạn không?",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "Không, tôi cần trợ giúp",
 	"new-request-form.answer-bot-modal.request-closed": "Tuyệt. Yêu cầu đã được đóng lại.",
 	"new-request-form.answer-bot-modal.request-submitted": "Yêu cầu của bạn đã được gửi thành công",
@@ -3370,8 +3537,11 @@ var vi = {
 	"new-request-form.answer-bot-modal.view-article": "Xem bài viết",
 	"new-request-form.attachments.choose-file-label": "Chọn một tập tin hoặc kéo và thả ở đây",
 	"new-request-form.attachments.drop-files-label": "Thả tập tin vào đây",
+	"new-request-form.attachments.file": "Tập tin: {{fileName}}, nhấn xóa để loại bỏ",
 	"new-request-form.attachments.remove-file": "Xóa tập tin",
+	"new-request-form.attachments.remove-file-aria-label": "Loại bỏ tập tin: {{fileName}}",
 	"new-request-form.attachments.stop-upload": "Dừng tải lên",
+	"new-request-form.attachments.stop-upload-aria-label": "Dừng tải lên {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "Đã xảy ra lỗi khi tải lên {{fileName}}. Hãy thử lại hoặc tải lên một tệp khác.",
 	"new-request-form.attachments.upload-error-title": "Lỗi tải lên",
 	"new-request-form.attachments.uploading": "Đang tải lên {{fileName}}",
@@ -3400,7 +3570,6 @@ var vi$1 = /*#__PURE__*/Object.freeze({
 
 var zhCn = {
 	"new-request-form.answer-bot-modal.footer-content": "如果是的话，我们将关闭最近的请求 {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "此文章解答该问题了吗？",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "没有，我需要帮助",
 	"new-request-form.answer-bot-modal.request-closed": "很好。此请求已关闭。",
 	"new-request-form.answer-bot-modal.request-submitted": "您的请求已成功提交",
@@ -3410,8 +3579,11 @@ var zhCn = {
 	"new-request-form.answer-bot-modal.view-article": "查看文章",
 	"new-request-form.attachments.choose-file-label": "选择文件或拖放到此处",
 	"new-request-form.attachments.drop-files-label": "将文件放在此处",
+	"new-request-form.attachments.file": "文件：{{fileName}}，按删除键移除",
 	"new-request-form.attachments.remove-file": "移除文件",
+	"new-request-form.attachments.remove-file-aria-label": "移除文件：{{fileName}}",
 	"new-request-form.attachments.stop-upload": "停止上传",
+	"new-request-form.attachments.stop-upload-aria-label": "停止上传 {{fileName}}",
 	"new-request-form.attachments.upload-error-description": "上传 {{fileName}} 时出错。请重试或上传另一个文件。",
 	"new-request-form.attachments.upload-error-title": "上传错误",
 	"new-request-form.attachments.uploading": "上传 {{fileName}}",
@@ -3440,7 +3612,6 @@ var zhCn$1 = /*#__PURE__*/Object.freeze({
 
 var zhTw = {
 	"new-request-form.answer-bot-modal.footer-content": "若是，我們可關閉近期的請求 {{requestId}}",
-	"new-request-form.answer-bot-modal.footer-title": "此文章是否已回答該問題？",
 	"new-request-form.answer-bot-modal.mark-irrelevant": "不，我仍需要幫助",
 	"new-request-form.answer-bot-modal.request-closed": "太好了。此請求已關閉。",
 	"new-request-form.answer-bot-modal.request-submitted": "已成功提交請求",
@@ -3450,8 +3621,11 @@ var zhTw = {
 	"new-request-form.answer-bot-modal.view-article": "檢視文章",
 	"new-request-form.attachments.choose-file-label": "選擇檔案，或將檔案拖放到這裡",
 	"new-request-form.attachments.drop-files-label": "將檔案放置在此處",
+	"new-request-form.attachments.file": "檔案為「{{fileName}}」，按一下 Delete 即可移除",
 	"new-request-form.attachments.remove-file": "移除檔案",
+	"new-request-form.attachments.remove-file-aria-label": "移除檔案：{{fileName}}",
 	"new-request-form.attachments.stop-upload": "停止上傳",
+	"new-request-form.attachments.stop-upload-aria-label": "停止上傳「{{fileName}}」",
 	"new-request-form.attachments.upload-error-description": "上傳 {{fileName}} 時發生錯誤。請再試一次，或上傳另一個檔案。",
 	"new-request-form.attachments.upload-error-title": "上傳錯誤",
 	"new-request-form.attachments.uploading": "正在上傳 {{fileName}}",

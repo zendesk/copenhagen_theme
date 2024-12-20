@@ -170,4 +170,4 @@ parts:
       key: "new-request-form.lookup-field.placeholder"
       title: "Placeholder shown in combobox, {{label}} will be replaced by field label"
       screenshot: "https://drive.google.com/file/d/1nlnj_I-L7bkIs9Hn93Btrl8bh_HJfL6h/view?usp=drive_link"
-      value: "Search {{label}}"    
+      value: "Search {{label}}"
