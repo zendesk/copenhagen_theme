@@ -22,8 +22,6 @@
  * The script uses the i18next-parser library for extracting the strings and it adds a custom transformer for creating
  * the file in the required YAML format.
  */
-// Usage:   node bin/extract-strings.mjs [PACKAGE_NAME] [SOURCE_FILES_GLOB] [OUTPUT_PATH]
-// Example: node bin/extract-strings.mjs new-request-form 'src/modules/new-request-form/**/*.{ts,tsx}' src/modules/new-request-form/translations
 import vfs from "vinyl-fs";
 import Vinyl from "vinyl";
 import { transform as I18NextTransform } from "i18next-parser";
@@ -32,9 +30,15 @@ import { existsSync, readFileSync } from "node:fs";
 import { load, dump } from "js-yaml";
 import { resolve } from "node:path";
 
-const PACKAGE_NAME = process.argv[2];
-const INPUT_GLOB = `${process.cwd()}/${process.argv[3]}`;
-const OUTPUT_DIR = resolve(process.cwd(), process.argv[4]);
+/**
+ *  Maps each folder in the `src/modules` directory with its package name on the translation system
+ */
+const MODULES = {
+  "new-request-form": "new-request-form",
+  "service-catalog": "service-catalog",
+  "ticket-fields": "cph-theme-ticket-fields",
+  shared: "cph-theme-shared",
+};
 
 const OUTPUT_YML_FILE_NAME = "en-us.yml";
 
@@ -62,11 +66,9 @@ const config = {
 };
 
 class SourceYmlTransform extends Transform {
-  #defaultContent = {
-    title: "",
-    packages: [PACKAGE_NAME],
-    parts: [],
-  };
+  #defaultContent;
+  #outputDir;
+  #packageName;
 
   #counters = {
     added: 0,
@@ -74,8 +76,16 @@ class SourceYmlTransform extends Transform {
     mismatch: 0,
   };
 
-  constructor() {
+  constructor(packageName, outputDir) {
     super({ objectMode: true });
+
+    this.#packageName = packageName;
+    this.#defaultContent = {
+      title: "",
+      packages: [packageName],
+      parts: [],
+    };
+    this.#outputDir = outputDir;
   }
 
   _transform(file, encoding, done) {
@@ -125,7 +135,7 @@ class SourceYmlTransform extends Transform {
       });
       this.push(virtualFile);
 
-      console.log(`String extraction completed!
+      console.log(`Module ${this.#packageName} - String extraction completed!
       Added strings: ${this.#counters.added}
       Removed strings (marked as obsolete): ${this.#counters.obsolete}
       Strings with mismatched value: ${this.#counters.mismatch}`);
@@ -138,7 +148,7 @@ class SourceYmlTransform extends Transform {
   }
 
   #getSourceYmlContent() {
-    const outputPath = resolve(OUTPUT_DIR, OUTPUT_YML_FILE_NAME);
+    const outputPath = resolve(this.#outputDir, OUTPUT_YML_FILE_NAME);
     if (existsSync(outputPath)) {
       return load(readFileSync(outputPath, "utf-8"));
     }
@@ -153,8 +163,18 @@ class SourceYmlTransform extends Transform {
   }
 }
 
-vfs
-  .src([INPUT_GLOB])
-  .pipe(new I18NextTransform(config))
-  .pipe(new SourceYmlTransform())
-  .pipe(vfs.dest(OUTPUT_DIR));
+// Example: node bin/extract-strings.mjs new-request-form 'src/modules/new-request-form/**/*.{ts,tsx}' src/modules/new-request-form/translations
+
+for (const [moduleName, packageName] of Object.entries(MODULES)) {
+  const inputGlob = `${process.cwd()}/src/modules/${moduleName}/**/*.{ts,tsx}`;
+  const outputDir = resolve(
+    process.cwd(),
+    `src/modules/${moduleName}/translations`
+  );
+
+  vfs
+    .src([inputGlob])
+    .pipe(new I18NextTransform(config))
+    .pipe(new SourceYmlTransform(packageName, outputDir))
+    .pipe(vfs.dest(outputDir));
+}
