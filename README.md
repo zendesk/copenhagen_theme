@@ -189,6 +189,32 @@ t("my-key", {
 })
 ```
 
+#### HTML Interpolation
+
+Our translation system doesn't allow HTML tags in the translation strings, and it is recommended to use placeholders instead. For example, a string containing a link should be written like `This is a {{#a}}link{{/a}}` instead of `This is a <a>link</a>`, which is the default behavior of the `react-i18next` library. To achieve this, we use can use the `Trans` component provided by the `react-i18next`, using the [components prop](https://react.i18next.com/latest/trans-component#alternative-usage-which-lists-the-components-v11.6.0) and passing the `customMarkup` post processor that replaces the placeholders with the actual HTML tags.
+
+Example with a link:
+```tsx
+<Trans
+  i18nKey="my-key"
+  defaults="This is a link: {{#a}}Click here{{/a}}"
+  components={{
+    a: <Anchor href="https://example.com" target="_blank" isExternal />,
+  }}
+  tOptions={{ postProcess: "customMarkup" }}
+/>
+```
+
+Example with a self-closing tag:
+```tsx
+<Trans
+  i18nKey="my-key"
+  defaults="This is an icon: {{#icon/}}"
+  components={{ icon: <MyIcon /> }}
+  tOptions={{ postProcess: "customMarkup" }}
+/>
+```
+
 #### String extraction
 
 The `bin/extract-strings.mjs` script can be used to extract translation strings from the source code and put them in the YAML file that is picked up by our internal translation system. The usage of the script is documented in the script itself.
