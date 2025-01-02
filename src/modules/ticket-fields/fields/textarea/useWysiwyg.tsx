@@ -1,11 +1,5 @@
 import { useCallback, useRef } from "react";
-import {
-  Close,
-  Notification,
-  Title,
-  useToast,
-} from "@zendeskgarden/react-notifications";
-import { useTranslation } from "react-i18next";
+import { useNotify } from "../../../shared/notifications/useNotify";
 
 interface UseWysiwygOptions {
   hasWysiwyg: boolean;
@@ -23,8 +17,7 @@ export function useWysiwyg({
   brandId,
 }: UseWysiwygOptions) {
   const isInitializedRef = useRef(false);
-  const { addToast } = useToast();
-  const { t } = useTranslation();
+  const notify = useNotify();
 
   return useCallback(
     async (ref: HTMLTextAreaElement) => {
@@ -63,20 +56,11 @@ export function useWysiwyg({
 
             const { type, title } = data;
 
-            addToast(({ close }) => (
-              <Notification type={type}>
-                <Title>{title}</Title>
-                {message}
-                <Close
-                  aria-label={t("new-request-form.close-label", "Close")}
-                  onClick={close}
-                />
-              </Notification>
-            ));
+            notify({ type, title, message });
           }
         );
       }
     },
-    [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, addToast, t]
+    [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, notify]
   );
 }

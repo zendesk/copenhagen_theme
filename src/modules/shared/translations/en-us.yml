@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme Shared Translations"
 packages:
   - "cph-theme-shared"
@@ -25,3 +26,7 @@ parts:
       title: "Error state go to the homepage link"
       screenshot: "https://drive.google.com/file/d/1rJ9c4mW0YWnL5d6KWWZaY9TJBEH5otLL/view?usp=drive_link"
       value: "Go to the homepage"
+  - translation:
+      key: "cph-theme-shared.close-label"
+      title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
+      value: "Close"

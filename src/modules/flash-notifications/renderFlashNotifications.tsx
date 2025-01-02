@@ -3,13 +3,15 @@ import {
   ThemeProviders,
   createTheme,
   FLASH_NOTIFICATIONS_KEY,
+  initI18next,
+  loadTranslations,
 } from "../shared";
 import type { Settings, ToastNotification } from "../shared";
 import { FlashNotifications } from "./FlashNotifications";
 
-export function renderFlashNotifications(
+export async function renderFlashNotifications(
   settings: Settings,
-  closeLabel: string
+  baseLocale: string
 ) {
   const flashNotifications = window.sessionStorage.getItem(
     FLASH_NOTIFICATIONS_KEY
@@ -18,6 +20,11 @@ export function renderFlashNotifications(
   if (flashNotifications === null) {
     return;
   }
+
+  initI18next(baseLocale);
+  await loadTranslations(baseLocale, [
+    () => import(`../shared/translations/locales/${baseLocale}.json`),
+  ]);
 
   window.sessionStorage.removeItem(FLASH_NOTIFICATIONS_KEY);
 
@@ -31,10 +38,7 @@ export function renderFlashNotifications(
 
     render(
       <ThemeProviders theme={createTheme(settings)}>
-        <FlashNotifications
-          notifications={parsedNotifications}
-          closeLabel={closeLabel}
-        />
+        <FlashNotifications notifications={parsedNotifications} />
       </ThemeProviders>,
       container
     );

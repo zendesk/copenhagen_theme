@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme Ticket Fields"
 packages:
   - "cph-theme-ticket-fields"
@@ -34,4 +35,4 @@ parts:
       key: "cph-theme-ticket-fields.credit-card-digits-hint"
       title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
       screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
-      value: "(Last 4 digits)"    
+      value: "(Last 4 digits)"
