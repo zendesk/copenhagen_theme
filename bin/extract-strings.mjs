@@ -83,10 +83,10 @@ const OUTPUT_BANNER = `#
 
 /** @type {import("i18next-parser").UserConfig} */
 const config = {
-  // Our translation system requires that we add ".zero", ".one", ".other" keys for plurals
+  // Our translation system requires that we add all 6 forms (zero, one, two, few, many, other) keys for plurals
   // i18next-parser extracts plural keys based on the target locale, so we are passing a
-  // locale that need exactly the ".zero", ".one", ".other" keys, even if we are extracting English strings
-  locales: ["lv"],
+  // locale that need exactly the 6 forms, even if we are extracting English strings
+  locales: ["ar"],
   keySeparator: false,
   namespaceSeparator: false,
   pluralSeparator: ".",
@@ -132,7 +132,9 @@ class SourceYmlTransform extends Transform {
       }
 
       // Add new keys to the source YAML or log mismatched value
-      for (const [key, value] of Object.entries(strings)) {
+      for (let [key, value] of Object.entries(strings)) {
+        value = this.#fixPluralValue(key, value, strings);
+
         const existingPart = outputContent.parts.find(
           (part) => part.translation.key === key
         );
@@ -204,6 +206,32 @@ class SourceYmlTransform extends Transform {
     }
 
     return result;
+  }
+
+  // if the key ends with .zero, .one, .two, .few, .many, .other and the value is empty
+  // find the same key with the `.other` suffix in strings and return the value
+  #fixPluralValue(key, value, strings) {
+    if (key.endsWith(".zero") && value === "") {
+      return strings[key.replace(".zero", ".other")] || "";
+    }
+
+    if (key.endsWith(".one") && value === "") {
+      return strings[key.replace(".one", ".other")] || "";
+    }
+
+    if (key.endsWith(".two") && value === "") {
+      return strings[key.replace(".two", ".other")] || "";
+    }
+
+    if (key.endsWith(".few") && value === "") {
+      return strings[key.replace(".few", ".other")] || "";
+    }
+
+    if (key.endsWith(".many") && value === "") {
+      return strings[key.replace(".many", ".other")] || "";
+    }
+
+    return value;
   }
 }
 
