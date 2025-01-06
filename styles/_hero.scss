@@ -34,9 +34,12 @@
       background-color: $brand_color;
       background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
     }
-    background-color: $background-subtle;
-    padding: 32px;
+    .hero-faqs-inner {
+      background-color: $background-subtle;
+      padding: 32px;
+    }
   }
+  
 }
 
 

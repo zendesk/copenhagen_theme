@@ -1312,10 +1312,6 @@ ul {
   padding: 0.06em 1.8em 0.15em 1.5rem;
   color: #fff;
 }
-.hero .hero-faqs {
-  background-color: #f8f8f8;
-  padding: 32px;
-}
 .hero .hero-faqs::before {
   display: block;
   height: 8px;
@@ -1323,6 +1319,10 @@ ul {
   content: "";
   background-color: #515ba5;
   background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
+}
+.hero .hero-faqs .hero-faqs-inner {
+  background-color: #f8f8f8;
+  padding: 32px;
 }
 
 .page-header {

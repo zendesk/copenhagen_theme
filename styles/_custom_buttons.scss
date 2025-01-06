@@ -3,7 +3,7 @@
     @include tablet { width: auto; }
 
     //default colours
-    background-color: #f8f8f8;
+    background-color: $background-subtle;
     color: $text_color;
 
     padding: 16px 38px;
