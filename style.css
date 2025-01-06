@@ -1290,8 +1290,7 @@ ul {
   background-image: url(\$knowledge_base_banner);
   background-position: center;
   background-size: cover;
-  height: 300px;
-  padding: 0 20px;
+  padding: 140px 20px 40px 20px;
   text-align: center;
   width: 100%;
 }
