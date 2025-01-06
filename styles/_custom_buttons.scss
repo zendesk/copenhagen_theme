@@ -1,0 +1,97 @@
+/***** Buttons *****/
+.button {
+    @include tablet { width: auto; }
+
+    //default colours
+    background-color: #f8f8f8;
+    color: $text_color;
+
+    padding: 16px 38px;
+    font-size: $font-size-smaller;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+    user-select: none;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-touch-callout: none;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #ebebeb;
+      color: $text_color;
+      text-decoration: none;
+    }
+
+    &.button-primary {
+      background-color: $brand_color;
+      color: $brand_text_color;
+      text-decoration: none;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $hover-brand-color;
+        border-color: $hover-brand-color;
+      }
+    }
+  
+    &[data-disabled] {
+      cursor: default;
+    }
+  }
+  
+  .button-large, .hbs-form input[type="submit"] {
+    @include tablet {
+      width: auto;
+    }
+  
+    cursor: pointer;
+    background-color: $button-color;
+    border: 0;
+    border-radius: 4px;
+    color: $brand_text_color;
+    font-size: 14px;
+    line-height: 2.72;
+    min-width: 190px;
+    padding: 0 1.9286em;
+    width: 100%;
+  
+    &:visited {
+      color: $brand_text_color;
+    }
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: $hover-button-color;
+    }
+  
+  
+    &[disabled] {
+      background-color: #ddd;
+    }
+  }
+  
+  .button-secondary {
+    color: $secondary-text-color;
+    border: 1px solid $high-contrast-border-color;
+    background-color: transparent;
+  
+    &:visited {
+      color: $secondary-text-color;
+    }
+  
+    &:hover,
+    &:focus,
+    &:active {
+      color: $text_color;
+      border: 1px solid $high-contrast-border-color;
+      background-color: $primary-shade;
+    }
+  }
+  

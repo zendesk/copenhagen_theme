@@ -6,8 +6,8 @@ $text_font: Quicksand, Arial, Helvetica, sans-serif;
 $font-size-bigger: 1.375em;
 $font-size-base: 1em;
 $font-size-navigation: .9375em;
-$font-size-small: .9375em;
-$font-size-smaller: .875em;
+$font-size-small: .9375em; // 15px
+$font-size-smaller: .875em; // 14px
 
 $font-size-display-4: 3.125em; // 50px - homepage heading
 $font-size-h1: 2.625em; // 42px - article title
@@ -43,6 +43,9 @@ $visited_link_color: darken($primary_accent, 20%);
 // Buttons
 
 $button-color: $brand_color;
+$border-radius: 4px;
+$hover_brand_color: #454D8C;
+$brand_text_color: #fff;
 
 // Borders
 
