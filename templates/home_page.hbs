@@ -173,7 +173,8 @@
         title.innerHTML = `${article.title}`;
         a.href = `${article.html_url}`;
         a.classList.add("stretched-link");
-        description.innerHTML = String(article.body).replace(/<\/?[^>]+>/g, '').replace(/\r?\n/g, '');
+        // return the first sentence to use as the description
+        description.innerHTML = String(article.body).replace(/<\/?[^>]+>/g, '').replace(/\r?\n/g, '').split(".")[0];
 
         li.appendChild(title);
         li.appendChild(description);
