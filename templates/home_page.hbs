@@ -10,23 +10,9 @@
       <div class="hero-faqs">
         <div class="hero-faqs-inner">
           <h2>FAQs</h2>
-          <ul>
+          <ul id="faqArticles">
 
           </ul>
-          fetch('https://api.example.url.com/data')
-          .then(response => {
-          if (!response.ok) {
-          throw new Error('Network response error');
-          }
-          return response.json();
-          })
-          .then(data => {
-          console.log(data);
-          })
-          .catch(error => {
-          console.error('Fetch error:', error);
-          });
-          /api/v2/help_center/en-us/articles.json?label_names=photos,camera
         </div>
       </div>
       {{/if}}
@@ -166,15 +152,38 @@
 
 {{#if settings.show_faqs}}
 <script>
-  fetch('{{help_center.url}}/api/v2/help_center/{{help_center.locale}}/articles.json?label_names=faq')
+  fetch('/api/v2/help_center/{{help_center.locale}}/articles.json?label_names=faq')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response error');
       }
       return response.json();
     })
-    .then(data => {
-      console.log(data);
+    .then((data) => {
+      const faqArticles = document.createDocumentFragment();
+      let articles = data.articles;
+
+      articles.map((article) => {
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        let title = document.createElement('h5');
+        let description = document.createElement('p');
+
+        li.style = "position: relative;";
+        title.innerHTML = `${article.title}`;
+        a.href = `${article.html_url}`;
+        a.classList.add("stretched-link");
+        description.innerHTML = String(article.body).replace(/<\/?[^>]+>/g, '').replace(/\r?\n/g, '');
+
+        li.appendChild(title);
+        li.appendChild(description);
+        li.appendChild(a);
+
+        faqArticles.appendChild(li);
+
+        document.getElementById("faqArticles").appendChild(faqArticles);
+      });
+      //console.log(data);
     })
     .catch(error => {
       console.error('Fetch error:', error);
