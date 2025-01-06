@@ -222,6 +222,7 @@ h5,
 h6 {
   font-family: Quicksand, Arial, Helvetica, sans-serif;
   margin-top: 0;
+  font-weight: 500;
 }
 
 h1 {
@@ -234,7 +235,6 @@ h2 {
 
 h3 {
   font-size: 1.625em;
-  font-weight: 600;
 }
 
 h4 {
@@ -368,13 +368,35 @@ ul {
   background-color: #ffffff;
 }
 
-.row, .row-cols-3, .row-cols-md-3 {
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+@media (min-width: 1160px) {
+  .container {
+    padding: 0;
+    width: 90%;
+  }
+}
+
+.container {
+  --gutter-x: 16px;
+  --gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.row, .row-cols-md-3 {
   display: flex;
   margin-right: -8px;
   margin-left: -8px;
 }
 
-.row > *, .row-cols-3 > * {
+.row > * {
   padding-right: 8px;
   padding-left: 8px;
 }
@@ -395,6 +417,7 @@ ul {
   display: flex;
   justify-content: stretch;
   padding: 16px;
+  height: 100%;
 }
 .category-thumbnail .category-icon {
   width: 23px;
@@ -406,6 +429,15 @@ ul {
 .category-thumbnail .category-link:hover {
   color: inherit;
   text-decoration: none;
+}
+.category-thumbnail .category-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
 }
 .category-thumbnail .category-copy {
   width: auto;

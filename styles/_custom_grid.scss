@@ -1,5 +1,19 @@
 @use "sass:map";
 
+.container {
+    @include max-width-container;
+  }
+  
+.container {
+    --gutter-x: #{$gutter};
+    --gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--gutter-x) * .5);
+    padding-left: calc(var(--gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .row, .row-cols-md-3 {
     display: flex;
     margin-right: calc(-.5 * $gutter);
@@ -14,8 +28,6 @@
 
 
 .row-cols-3 {
-
-    @extend .row;
 
     & > * {
         flex: 0 0 auto;

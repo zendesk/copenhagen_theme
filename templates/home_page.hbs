@@ -17,9 +17,9 @@
 
 <div class="container">
   <section class="section knowledge-base">
-    <h2 class="visibility-hidden">{{ t 'categories' }}</h2> 
+      <h2>{{ t 'categories' }}</h2>
     <section class="categories blocks">
-      <div class="categories-list row-cols-md-3">
+      <div class="categories-list row row-cols-md-3">
         {{#each categories}}
           {{#if ../has_multiple_categories}}
             <div class="single-category">
