@@ -1310,6 +1310,7 @@ ul {
   line-height: 1.6em;
   padding: 0.06em 1.8em 0.15em 1.5rem;
   color: #fff;
+  font-weight: 900;
 }
 .hero .hero-faqs::before {
   display: block;

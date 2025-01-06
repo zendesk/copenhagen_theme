@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.31",
+  "version": "1.0.32",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -102,9 +102,16 @@
           "value": true
         },
         {
+          "identifier": "show_faqs",
+          "type": "checkbox",
+          "description": "show_faqs_description",
+          "label": "Show FAQs",
+          "value": true
+        },
+        {
           "identifier": "welcome_message",
           "type": "text",
-          "description": "Welcome message.",
+          "description": "welcome_message_description",
           "label": "Welcome message",
           "value": "Welcome to the Qoria Help Center"
         }

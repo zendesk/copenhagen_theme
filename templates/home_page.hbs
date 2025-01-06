@@ -6,10 +6,30 @@
       <div>
         <p class="h1">{{ settings.welcome_message }}</p>
       </div>
+      {{#if settings.show_faqs }}
       <div class="hero-faqs">
-        <div class="hero-faqs-inner"></div>
+        <div class="hero-faqs-inner">
+          <h2>FAQs</h2>
+          <ul>
 
+          </ul>
+          fetch('https://api.example.url.com/data')
+          .then(response => {
+          if (!response.ok) {
+          throw new Error('Network response error');
+          }
+          return response.json();
+          })
+          .then(data => {
+          console.log(data);
+          })
+          .catch(error => {
+          console.error('Fetch error:', error);
+          });
+          /api/v2/help_center/en-us/articles.json?label_names=photos,camera
+        </div>
       </div>
+      {{/if}}
     </div>
   </div>
 </section>
@@ -143,3 +163,21 @@
     {{/if}}
   </section>
 </div>
+
+{{#if settings.show_faqs}}
+<script>
+  fetch('{{help_center.url}}/api/v2/help_center/{{help_center.locale}}/articlesjson?label_names=faq')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response error');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+</script>
+{{/if}}
