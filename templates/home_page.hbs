@@ -166,7 +166,7 @@
 
 {{#if settings.show_faqs}}
 <script>
-  fetch('{{help_center.url}}/api/v2/help_center/{{help_center.locale}}/articlesjson?label_names=faq')
+  fetch('{{help_center.url}}/api/v2/help_center/{{help_center.locale}}/articles.json?label_names=faq')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response error');
