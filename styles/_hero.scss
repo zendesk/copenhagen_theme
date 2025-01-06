@@ -4,7 +4,7 @@
   background-position: center;
   background-size: cover;
   padding: 140px 20px 40px 20px;
-  text-align: center;
+  text-align: left;
   width: 100%;
 
   &-inner {
@@ -37,7 +37,19 @@
     .hero-faqs-inner {
       background-color: $background-subtle;
       padding: 32px;
+
+      ul li {
+        h5, p {
+          margin-bottom: 0;
+          margin-top: 0;
+        }
+        p {
+          max-height: 3em;
+          overflow: hidden;
+        }
+      }
     }
+    max-width: 400px;
   }
   
 }
