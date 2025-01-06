@@ -43,7 +43,7 @@ $input-background: #f8f8f8;
     &-full .clear-button {
         border-color: #fff;
     }
-    
+
     input[type="submit"] {
         @extend .button;
     }
@@ -56,9 +56,11 @@ $input-background: #f8f8f8;
         border-width: 1px;
         padding: 16px;
         padding-left: 40px;
-        appearance: none;
+        appearance: none;    
+        max-width: 700px;
         -webkit-appearance: none;
         box-sizing: border-box;
+        margin-right: 12px;
         color: $text_color;
         flex: 1 1 auto;
         height: auto;

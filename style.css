@@ -491,6 +491,8 @@ ul {
   line-height: 1;
   text-align: center;
   margin: 0;
+  border: 0;
+  font-weight: 700;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -1185,8 +1187,10 @@ ul {
   padding-left: 40px;
   -moz-appearance: none;
        appearance: none;
+  max-width: 700px;
   -webkit-appearance: none;
   box-sizing: border-box;
+  margin-right: 12px;
   color: #1d1e1c;
   flex: 1 1 auto;
   height: auto;
@@ -1291,6 +1295,15 @@ ul {
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
+}
+.hero .h1 {
+  background-color: #58b78e;
+  background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  display: inline;
+  line-height: 1.6em;
+  padding: 0.06em 1.8em 0.15em 1.5rem;
 }
 
 .page-header {

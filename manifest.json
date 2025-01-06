@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.26",
+  "version": "1.0.27",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -100,6 +100,13 @@
           "description": "recent_activity_description",
           "label": "recent_activity_label",
           "value": true
+        },
+        {
+          "identifier": "welcome_message",
+          "type": "text",
+          "description": "Welcome message.",
+          "label": "Welcome message",
+          "value": "Welcome to the Qoria Help Center"
         }
       ]
     },
