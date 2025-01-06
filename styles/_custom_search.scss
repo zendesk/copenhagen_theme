@@ -1,0 +1,167 @@
+@use "sass:color";
+
+/***** Search field *****/
+
+$icon-color: #000;
+$padding-left: 40px;
+$padding-right: 20px;
+$input-background: #f8f8f8;
+
+.search-container {
+  position: relative;
+}
+
+.search {
+  border-width: 0px;
+  display: flex;
+  position: relative;
+  transition: $input-transition;
+
+  &::before {
+    content: "\f002";
+    font-family: 'Font Awesome 6 Pro';
+    font-style:normal;
+    font-weight:400;
+  }
+
+
+  &-full input[type="search"], 
+  &-full .clear-button {
+    border-color: #fff;
+  }
+
+  input[type="search"] {
+
+    background-color: color.adjust($input-background, $alpha: 0.8);
+    border-color: color.adjust($input-background, $alpha: 0.8);
+    border-style: solid;
+    border-width: 1px;
+    padding: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    box-sizing: border-box;
+    color: $text_color;
+    flex: 1 1 auto;
+    height: auto;
+    width: 100%;
+
+    &:focus {
+      color: $field-text-focus-color;
+      border-color: $brand_color;
+    }
+
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      -webkit-appearance: none;
+    }
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0 1000px #fff inset;
+    }
+
+  }
+
+  .clear-button {
+    align-items: center;
+    box-sizing: border-box;
+    color: $icon-color;
+    cursor: pointer;
+    display: none;
+    flex: none;
+    justify-content: center;
+    padding: 0 15px;
+
+    &:hover {
+      background-color: $brand_color;
+      color: #fff;
+    }
+
+    &:focus {
+      @include focus-ring;
+    }
+
+  }
+
+  &-has-value .clear-button {
+    display: flex;
+  }
+
+}
+
+[dir="ltr"] .search {
+  input[type="search"] {
+    padding-left: $padding-left;
+    padding-right: $padding-right;
+  }
+
+  &-has-value input[type="search"] {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right-color: transparent;
+
+    &:focus {
+      border-right-color: $brand_color;
+    }
+
+  }
+
+  .clear-button {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left-color: transparent;
+
+    &:focus {
+      border-left-color: $brand_color;
+    }
+    
+  }
+}
+
+[dir="rtl"] .search {
+  input[type="search"] {
+    padding-left: $padding-right;
+    padding-right: $padding-left;
+  }
+
+  &-has-value input[type="search"] {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left-color: transparent;
+
+    &:focus {
+      border-left-color: $brand_color;
+    }
+
+  }
+
+  .clear-button {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right-color: transparent;
+
+    &:focus {
+      border-right-color: $brand_color;
+    }
+
+  }
+}
+
+.search-icon {
+  @include vertical-align;
+  position: absolute;
+  left: 15px;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  color: $icon-color;
+  pointer-events: none;
+
+  [dir="rtl"] & {
+    left: auto;
+    right: 15px;
+  }
+}
