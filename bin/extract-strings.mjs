@@ -13,7 +13,8 @@
  *       value: "My value"
  * ```
  *
- * If a string present in the source YAML file is not found in the source code, it will be marked as obsolete
+ * If a string present in the source YAML file is not found in the source code, it will be marked as obsolete if the
+ * `--mark-obsolete` flag is passed.
  *
  * If the value in the YAML file differs from the value in the source code, a warning will be printed in the console,
  * since the script cannot know which one is correct and cannot write back in the source code files. This can happen for
@@ -21,20 +22,52 @@
  *
  * The script uses the i18next-parser library for extracting the strings and it adds a custom transformer for creating
  * the file in the required YAML format.
+ *
+ * For usage instructions, run `node extract-strings.mjs --help`
  */
-// Usage:   node bin/extract-strings.mjs [PACKAGE_NAME] [SOURCE_FILES_GLOB] [OUTPUT_PATH]
-// Example: node bin/extract-strings.mjs new-request-form 'src/modules/new-request-form/**/*.{ts,tsx}' src/modules/new-request-form/translations
 import vfs from "vinyl-fs";
 import Vinyl from "vinyl";
 import { transform as I18NextTransform } from "i18next-parser";
 import { Transform } from "node:stream";
-import { existsSync, readFileSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { load, dump } from "js-yaml";
 import { resolve } from "node:path";
+import { glob } from "glob";
+import { parseArgs } from "node:util";
 
-const PACKAGE_NAME = process.argv[2];
-const INPUT_GLOB = `${process.cwd()}/${process.argv[3]}`;
-const OUTPUT_DIR = resolve(process.cwd(), process.argv[4]);
+const { values: args } = parseArgs({
+  options: {
+    "mark-obsolete": {
+      type: "boolean",
+    },
+    module: {
+      type: "string",
+    },
+    help: {
+      type: "boolean",
+    },
+  },
+});
+
+if (args.help) {
+  const helpMessage = `
+  Usage: extract-strings.mjs [options]
+
+  Options:
+    --mark-obsolete   Mark removed strings as obsolete in the source YAML file
+    --module          Extract strings only for the specified module. The module name should match the folder name in the src/modules folder
+                      If not specified, the script will extract strings for all modules
+    --help            Display this help message
+
+  Examples:
+    node extract-strings.mjs
+    node extract-strings.mjs --mark-obsolete
+    node extract-strings.mjs --module=ticket-fields
+  `;
+
+  console.log(helpMessage);
+  process.exit(0);
+}
 
 const OUTPUT_YML_FILE_NAME = "en-us.yml";
 
@@ -50,10 +83,10 @@ const OUTPUT_BANNER = `#
 
 /** @type {import("i18next-parser").UserConfig} */
 const config = {
-  // Our translation system requires that we add ".zero", ".one", ".other" keys for plurals
+  // Our translation system requires that we add all 6 forms (zero, one, two, few, many, other) keys for plurals
   // i18next-parser extracts plural keys based on the target locale, so we are passing a
-  // locale that need exactly the ".zero", ".one", ".other" keys, even if we are extracting English strings
-  locales: ["lv"],
+  // locale that need exactly the 6 forms, even if we are extracting English strings
+  locales: ["ar"],
   keySeparator: false,
   namespaceSeparator: false,
   pluralSeparator: ".",
@@ -62,11 +95,8 @@ const config = {
 };
 
 class SourceYmlTransform extends Transform {
-  #defaultContent = {
-    title: "",
-    packages: [PACKAGE_NAME],
-    parts: [],
-  };
+  #parsedInitialContent;
+  #outputDir;
 
   #counters = {
     added: 0,
@@ -74,25 +104,37 @@ class SourceYmlTransform extends Transform {
     mismatch: 0,
   };
 
-  constructor() {
+  constructor(outputDir) {
     super({ objectMode: true });
+
+    this.#outputDir = outputDir;
+    this.#parsedInitialContent = this.#getSourceYmlContent();
   }
 
   _transform(file, encoding, done) {
     try {
       const strings = JSON.parse(file.contents.toString(encoding));
-      const outputContent = this.#getSourceYmlContent();
 
-      // Mark removed keys as obsolete
+      const outputContent = {
+        ...this.#parsedInitialContent,
+        parts: this.#parsedInitialContent.parts || [],
+      };
+
+      // Find obsolete keys
       for (const { translation } of outputContent.parts) {
         if (!(translation.key in strings) && !translation.obsolete) {
-          translation.obsolete = this.#getObsoleteDate();
           this.#counters.obsolete++;
+
+          if (args["mark-obsolete"]) {
+            translation.obsolete = this.#getObsoleteDate();
+          }
         }
       }
 
       // Add new keys to the source YAML or log mismatched value
-      for (const [key, value] of Object.entries(strings)) {
+      for (let [key, value] of Object.entries(strings)) {
+        value = this.#fixPluralValue(key, value, strings);
+
         const existingPart = outputContent.parts.find(
           (part) => part.translation.key === key
         );
@@ -124,12 +166,7 @@ class SourceYmlTransform extends Transform {
         ),
       });
       this.push(virtualFile);
-
-      console.log(`String extraction completed!
-      Added strings: ${this.#counters.added}
-      Removed strings (marked as obsolete): ${this.#counters.obsolete}
-      Strings with mismatched value: ${this.#counters.mismatch}`);
-
+      this.#printInfo();
       done();
     } catch (e) {
       console.error(e);
@@ -138,12 +175,8 @@ class SourceYmlTransform extends Transform {
   }
 
   #getSourceYmlContent() {
-    const outputPath = resolve(OUTPUT_DIR, OUTPUT_YML_FILE_NAME);
-    if (existsSync(outputPath)) {
-      return load(readFileSync(outputPath, "utf-8"));
-    }
-
-    return this.#defaultContent;
+    const outputPath = resolve(this.#outputDir, OUTPUT_YML_FILE_NAME);
+    return load(readFileSync(outputPath, "utf-8"));
   }
 
   #getObsoleteDate() {
@@ -151,10 +184,73 @@ class SourceYmlTransform extends Transform {
     const obsolete = new Date(today.setMonth(today.getMonth() + 3));
     return obsolete.toISOString().split("T")[0];
   }
+
+  #printInfo() {
+    const message = `Package ${this.#parsedInitialContent.packages[0]}
+    Added strings: ${this.#counters.added}
+    ${this.#getObsoleteInfoMessage()}
+    Strings with mismatched value: ${this.#counters.mismatch}
+    `;
+
+    console.log(message);
+  }
+
+  #getObsoleteInfoMessage() {
+    if (args["mark-obsolete"]) {
+      return `Removed strings (marked as obsolete): ${this.#counters.obsolete}`;
+    }
+
+    let result = `Obsolete strings: ${this.#counters.obsolete}`;
+    if (this.#counters.obsolete > 0) {
+      result += " - Use --mark-obsolete to mark them as obsolete";
+    }
+
+    return result;
+  }
+
+  // if the key ends with .zero, .one, .two, .few, .many, .other and the value is empty
+  // find the same key with the `.other` suffix in strings and return the value
+  #fixPluralValue(key, value, strings) {
+    if (key.endsWith(".zero") && value === "") {
+      return strings[key.replace(".zero", ".other")] || "";
+    }
+
+    if (key.endsWith(".one") && value === "") {
+      return strings[key.replace(".one", ".other")] || "";
+    }
+
+    if (key.endsWith(".two") && value === "") {
+      return strings[key.replace(".two", ".other")] || "";
+    }
+
+    if (key.endsWith(".few") && value === "") {
+      return strings[key.replace(".few", ".other")] || "";
+    }
+
+    if (key.endsWith(".many") && value === "") {
+      return strings[key.replace(".many", ".other")] || "";
+    }
+
+    return value;
+  }
 }
 
-vfs
-  .src([INPUT_GLOB])
-  .pipe(new I18NextTransform(config))
-  .pipe(new SourceYmlTransform())
-  .pipe(vfs.dest(OUTPUT_DIR));
+const sourceFilesGlob = args.module
+  ? `src/modules/${args.module}/translations/en-us.yml`
+  : "src/modules/**/translations/en-us.yml";
+
+const sourceFiles = await glob(sourceFilesGlob);
+for (const sourceFile of sourceFiles) {
+  const moduleName = sourceFile.split("/")[2];
+  const inputGlob = `src/modules/${moduleName}/**/*.{ts,tsx}`;
+  const outputDir = resolve(
+    process.cwd(),
+    `src/modules/${moduleName}/translations`
+  );
+
+  vfs
+    .src([inputGlob])
+    .pipe(new I18NextTransform(config))
+    .pipe(new SourceYmlTransform(outputDir))
+    .pipe(vfs.dest(outputDir));
+}
