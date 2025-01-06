@@ -12,7 +12,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("{{ get_asset_url('/q-theme/assets/fontawesome6/webfonts/fa-regular-400.woff2') }}") format("woff2"), url("{{ get_asset_url('/q-theme/assets/fontawesome6/webfonts/fa-regular-400.ttf') }}") format("truetype"); }
+  src: url("$assets-fa-regular-400-woff2") format("woff2"), url("$assets-fa-regular-400-ttf") format("truetype"); }
 
 .far,
 .fa-regular {
