@@ -14,7 +14,7 @@ main {
   display: block;
 }
 
-h1 {
+h1, .hero .h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -253,38 +253,44 @@ img {
   max-width: 100%;
 }
 
-h1,
+h1, .hero .h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-family: Quicksand, Arial, Helvetica, sans-serif;
   margin-top: 0;
   font-weight: 500;
 }
 
-h1 {
+h1, .hero .h1, .h1 {
   font-size: 2.625em;
 }
 
-h2 {
+h2, .h2 {
   font-size: 1.875em;
 }
 
-h3 {
+h3, .h3 {
   font-size: 1.625em;
 }
 
-h4 {
+h4, .h4 {
   font-size: 1.375em;
 }
 
-h5 {
+h5, .h5 {
   font-size: 1.125em;
 }
 
-h6 {
+h6, .h6 {
   font-size: 1em;
 }
 
@@ -1304,6 +1310,19 @@ ul {
   display: inline;
   line-height: 1.6em;
   padding: 0.06em 1.8em 0.15em 1.5rem;
+  color: #fff;
+}
+.hero .hero-faqs {
+  background-color: #f8f8f8;
+  padding: 32px;
+}
+.hero .hero-faqs::before {
+  display: block;
+  height: 8px;
+  width: 100%;
+  content: "";
+  background-color: #515ba5;
+  background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
 }
 
 .page-header {
@@ -1331,7 +1350,7 @@ ul {
     margin-bottom: 0;
   }
 }
-.page-header h1 {
+.page-header h1, .page-header .hero .h1, .hero .page-header .h1 {
   flex-grow: 1;
   margin-bottom: 10px;
 }
@@ -2830,12 +2849,12 @@ ul {
     padding-right: 10px;
   }
 }
-.post-title h1 {
+.post-title h1, .post-title .hero .h1, .hero .post-title .h1 {
   display: inline;
   vertical-align: middle;
 }
 @media (min-width: 768px) {
-  .post-title h1 {
+  .post-title h1, .post-title .hero .h1, .hero .post-title .h1 {
     margin-right: 5px;
   }
 }

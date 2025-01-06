@@ -14,6 +14,7 @@
     margin: 0 auto;
   }
   .h1 {
+    @extend h1;
     background-color: #58b78e;
     background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
     box-decoration-break: clone;
@@ -21,5 +22,21 @@
     display: inline;
     line-height: 1.6em;
     padding: .06em 1.8em .15em 1.5rem;
+    color: #fff;
+  }
+
+  .hero-faqs {
+    &::before {
+      display: block;
+      height: 8px;
+      width: 100%;
+      content: "";
+      background-color: $brand_color;
+      background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
+    }
+    background-color: $background-subtle;
+    padding: 32px;
   }
 }
+
+
