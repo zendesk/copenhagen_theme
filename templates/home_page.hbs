@@ -1,9 +1,13 @@
 <h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
-  <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <p class="h1">{{ settings.welcome_message }}</p>
+  <div class="container">
+    <div class="">
+      <p class="h1">{{ settings.welcome_message }}</p>
+    </div>
+    <div class="hero-faqs">
+      
+    </div>
   </div>
 </section>
 
@@ -14,7 +18,8 @@
 <div class="container">
   <!-- search bar -->
   <section class="section site-search">
-    <h2>How can we help you today?</h2>
+    <p class="h2">How can we help you today?</p>
+    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
     {{search instant=settings.instant_search class='search search-full'}}
   </section>
 
