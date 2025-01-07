@@ -1,0 +1,20 @@
+<div class="container-divider"></div>
+<div class="container">
+  <div class="sub-nav">
+    {{!-- MKTODO: add breadcrumbs --}}
+  </div>
+
+  {{! MKTODO: add translation for page header }}
+  <h1>Approval Request</h1>
+
+  <div id="main-content">
+    <div id="approval-request"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderApprovalRequest } from "approval-requests"; 
+  const helpCenterPath ={{json (page_path "help_center")}}; 
+  const container = document.getElementById("approval-request");
+  renderApprovalRequest(container, helpCenterPath);
+</script>
