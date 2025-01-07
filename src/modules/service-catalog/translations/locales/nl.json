@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Eens services zijn toegevoegd aan catalogus, vindt u ze hier.",
+  "service-catalog.empty-state.go-to-homepage": "Naar de startpagina",
+  "service-catalog.empty-state.no-services": "Geen services te zien",
+  "service-catalog.empty-state.support-article-link": "Meer informatie over de servicecatalogus",
+  "service-catalog.item.read-less": "Minder lezen",
+  "service-catalog.item.read-more": "Meer lezen",
+  "service-catalog.item.service-request-error-message": "Probeer het na korte tijd opnieuw",
+  "service-catalog.item.service-request-error-title": "Service kan niet worden verzonden",
+  "service-catalog.item.service-request-error.close-label": "Sluiten",
+  "service-catalog.item.service-request-submitted": "Serviceaanvraag verzonden",
+  "service-catalog.item.submit-button": "Aanvraag verzenden",
+  "service-catalog.pagination.next": "Volgende",
+  "service-catalog.pagination.previous": "Vorige",
+  "service-catalog.service-list-error-message": "Probeer het na korte tijd opnieuw",
+  "service-catalog.service-list-error-title": "Services kunnen niet worden geladen"
+}

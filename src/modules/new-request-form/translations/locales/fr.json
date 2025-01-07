@@ -1,6 +1,5 @@
 {
   "new-request-form.answer-bot-modal.footer-content": "S’il y répond, nous pouvons clore votre demande récente {{requestId}}",
-  "new-request-form.answer-bot-modal.footer-title": "Cet article répond-il à la question ?",
   "new-request-form.answer-bot-modal.mark-irrelevant": "Non, j’ai besoin d’aide",
   "new-request-form.answer-bot-modal.request-closed": "Super. Votre demande a été fermée.",
   "new-request-form.answer-bot-modal.request-submitted": "Votre demande a été envoyée",
@@ -10,8 +9,11 @@
   "new-request-form.answer-bot-modal.view-article": "Afficher l’article",
   "new-request-form.attachments.choose-file-label": "Choisissez un fichier ou faites un glisser-déposer ici",
   "new-request-form.attachments.drop-files-label": "Déposez les fichiers ici",
+  "new-request-form.attachments.file": "Fichier : {{fileName}}, appuyez sur Supprimer pour le supprimer",
   "new-request-form.attachments.remove-file": "Supprimer le fichier",
+  "new-request-form.attachments.remove-file-aria-label": "Supprimer le fichier : {{fileName}}",
   "new-request-form.attachments.stop-upload": "Arrêter le chargement",
+  "new-request-form.attachments.stop-upload-aria-label": "Arrêter le chargement de {{fileName}}",
   "new-request-form.attachments.upload-error-description": "Une erreur est survenue lors du chargement de {{fileName}}. Réessayez ou chargez un autre fichier.",
   "new-request-form.attachments.upload-error-title": "Erreur de chargement",
   "new-request-form.attachments.uploading": "Chargement du fichier {{fileName}} en cours",
