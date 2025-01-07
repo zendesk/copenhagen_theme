@@ -1,3 +1,10 @@
+## [4.2.7](https://github.com/zendesk/copenhagen_theme/compare/v4.2.6...v4.2.7) (2025-01-07)
+
+
+### Bug Fixes
+
+* upload translations ([f811fd5](https://github.com/zendesk/copenhagen_theme/commit/f811fd5ccd41168903e9fcdd6314d24b96b844b0))
+
 ## [4.2.6](https://github.com/zendesk/copenhagen_theme/compare/v4.2.5...v4.2.6) (2025-01-07)
 
 
