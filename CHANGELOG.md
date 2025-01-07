@@ -1,3 +1,10 @@
+## [4.2.6](https://github.com/zendesk/copenhagen_theme/compare/v4.2.5...v4.2.6) (2025-01-07)
+
+
+### Bug Fixes
+
+* update zendeskgarden packages to v8.76.9 ([cacde81](https://github.com/zendesk/copenhagen_theme/commit/cacde8136f3a43b1d8f6f348cd88000b4eef436f))
+
 ## [4.2.5](https://github.com/zendesk/copenhagen_theme/compare/v4.2.4...v4.2.5) (2024-12-04)
 
 
