@@ -4,9 +4,6 @@
     {{!-- MKTODO: add breadcrumbs --}}
   </div>
 
-  {{! MKTODO: add translation for page header }}
-  <h1>Approval Request List Page</h1>
-
   <div id="main-content">
     <div id="approval-request-list"></div>
   </div>
@@ -14,7 +11,14 @@
 
 <script type="module">
   import { renderApprovalRequestList } from "approval-requests"; 
+
+  const settings = {{json settings}};
   const helpCenterPath ={{json (page_path "help_center")}}; 
   const container = document.getElementById("approval-request-list");
-  renderApprovalRequestList(container, helpCenterPath);
+
+  const props = {
+    baseLocale: {{json help_center.base_locale}},
+  }
+
+  renderApprovalRequestList(container, settings, props, helpCenterPath);
 </script>
