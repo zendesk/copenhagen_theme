@@ -24,6 +24,7 @@
     "@zendeskgarden/react-buttons": "8.76.9",
     "@zendeskgarden/react-datepickers": "8.76.9",
     "@zendeskgarden/react-dropdowns.next": "8.76.9",
+    "@zendeskgarden/react-grid": "8.76.9",
     "@zendeskgarden/react-forms": "8.76.9",
     "@zendeskgarden/react-loaders": "8.76.9",
     "@zendeskgarden/react-modals": "8.76.9",

@@ -11,7 +11,6 @@ export async function renderApprovalRequest(
   settings: Settings,
   props: ApprovalRequestPageProps
 ) {
-  console.log("renderApprovalRequest");
   render(
     <ThemeProviders theme={createTheme(settings)}>
       {/* MKTODO: add ErrorBoundary from shared once service catalog PR is merged */}
