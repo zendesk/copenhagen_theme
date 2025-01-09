@@ -62,12 +62,12 @@ parts:
       value: "Service request submitted"
   - translation:
       key: "service-catalog.item.service-request-error-title"
-      title: "Error notification title after unsuccessfulsubmitting request for service catalog item"
+      title: "Error notification title after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
       value: "Service couldn't be submitted"           
   - translation:
       key: "service-catalog.item.service-request-error-message"
-      title: "Error notification after unsuccessfulsubmitting request for service catalog item"
+      title: "Error notification after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
       value: "Give it a moment and try it again"  
   - translation:
@@ -85,3 +85,4 @@ parts:
       title: "Error notification when there is problem with loading the list of services"
       screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
       value: "Give it a moment and try it again"
+      
