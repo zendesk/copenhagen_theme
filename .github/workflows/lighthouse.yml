@@ -11,6 +11,10 @@ jobs:
         uses: zendesk/setup-node@v3
         with:
           node-version-file: '.nvmrc'
+      # The following step is needed to run puppeteer with ubuntu >= 23.10
+      # ref: https://pptr.dev/troubleshooting#issues-with-apparmor-on-ubuntu
+      - name: Disable AppArmor
+        run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - name: Install node_modules
         run: yarn install --frozen-lockfile
       - name: Build
