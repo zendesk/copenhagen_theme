@@ -55,13 +55,27 @@ export function FileListItem({
 
   return (
     <FileList.Item>
-      <File type="generic" title={fileName} onKeyDown={handleFileKeyDown}>
+      <File
+        type="generic"
+        tabIndex={0}
+        aria-label={t(
+          "new-request-form.attachments.file",
+          "File: {{fileName}}, press delete to remove",
+          { fileName }
+        )}
+        onKeyDown={handleFileKeyDown}
+      >
         {file.status === "pending" ? (
           <>
             <FileNameWrapper>{fileName}</FileNameWrapper>
             <Tooltip content={stopUploadLabel}>
               <File.Close
-                aria-label={stopUploadLabel}
+                aria-label={t(
+                  "new-request-form.attachments.stop-upload-aria-label",
+                  "Stop uploading {{fileName}}",
+                  { fileName }
+                )}
+                aria-describedby={undefined}
                 onClick={() => {
                   onRemove();
                 }}
@@ -86,7 +100,12 @@ export function FileListItem({
             </FileNameWrapper>
             <Tooltip content={removeFileLabel}>
               <File.Delete
-                aria-label={removeFileLabel}
+                aria-label={t(
+                  "new-request-form.attachments.remove-file-aria-label",
+                  "Remove file: {{fileName}}",
+                  { fileName }
+                )}
+                aria-describedby={undefined}
                 onClick={() => {
                   onRemove();
                 }}

@@ -97,10 +97,25 @@ parts:
       screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
       value: "Remove file"
   - translation:
+      key: "new-request-form.attachments.stop-upload-aria-label"
+      title: "[A11Y] Hidden label for screen readers for stopping the upload of an attachment. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Stop uploading the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
+      value: "Stop uploading {{fileName}}"
+  - translation:
+      key: "new-request-form.attachments.remove-file-aria-label"
+      title: "[A11Y] Hidden label for screen readers for removing an attachment. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Removing the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "Remove file: {{fileName}}"
+  - translation:
       key: "new-request-form.attachments.uploading"
       title: "[A11Y] Hidden label for screen readers for the upload attachment progress bar. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Uploading the file {{fileName}}]"
       screenshot: "https://drive.google.com/file/d/1Y6yeqp3fbfJbuq7tT8VutsLa80GZju-V/view?usp=drive_link"
       value: "Uploading {{fileName}}"
+  - translation:
+      key: "new-request-form.attachments.file"
+      title: "[A11Y] Hidden label for screen readers informing how they can remove the file with keyboard navigation. {{fileName}} will be replaced by file name, e.g., [image.png]. Alternative English if you encounter declension issues: [Press Delete to remove the file {{fileName}}]"
+      screenshot: "https://drive.google.com/file/d/1JFVE2twzUkg-U6gGAs2EHqD-3jPvtJDA/view?usp=drive_link"
+      value: "File: {{fileName}}, press delete to remove"
   - translation:
       key: "new-request-form.submit"
       title: "Submit button for the New Request Form"

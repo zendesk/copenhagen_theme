@@ -178,11 +178,11 @@ function MyComponent() {
 Providing the default English value in the code makes it possible to use it as a fallback value when strings are not yet translated and to extract the strings from the source code to the translations YAML file.
 
 #### Plurals 
-When using [plurals](https://www.i18next.com/translation-function/plurals), we need to provide default values for the `zero`, `one`, and `other` values, as requested by our translation system. This can be done by passing the default values in the [options](https://www.i18next.com/translation-function/essentials#overview-options) of the `t` function.
+When using [plurals](https://www.i18next.com/translation-function/plurals), you need to provide default values for at least the `one` and `other` forms. You can also pass a default value for the `zero` form, if you want it to be different from the `other` form. This can be done by passing the default values in the [options](https://www.i18next.com/translation-function/essentials#overview-options) of the `t` function.
 
 ```ts
 t("my-key", {
-  "defaultValue.zero": "{{count}} items",
+  "defaultValue.zero": "No items",
   "defaultValue.one": "{{count}} item",
   "defaultValue.other": "{{count}} items",
   count: ...
@@ -191,22 +191,41 @@ t("my-key", {
 
 #### String extraction
 
-The `bin/extract-strings.mjs` script can be used to extract translation strings from the source code and put them in the YAML file that is picked up by our internal translation system. The usage of the script is documented in the script itself.
+The `bin/extract-strings.mjs` script can be used to extract translation strings from the source code and put them in the YAML file that is picked up by our internal translation system.
+
+To extract the strings for all the modules, run:
+
+```bash
+yarn i18n:extract
+```
+
+To extract the strings for a specific module, run:
+
+```bash
+yarn i18n:extract --module=module-name
+```
+
+You can also pass the `--mark-obsolete` flag to mark removed strings as obsolete:
+
+```bash
+yarn i18n:extract --mark-obsolete
+```
+
+If you are adding a new module, you need first to create the initial `src/modules/[MODULE]/translations/en-us.yml` file with the header containing the title and package name:
+
+```yaml
+title: "My Module"
+packages:
+  - "package-name"
+```
 
 The script wraps the `i18next-parser` tool and converts its output to the YAML format used internally. It is possible to use a similar approach in a custom theme, either using the standard `i18next-parser` output as the source for translations or implementing a custom transformer.
 
 #### Updating translation files
 
-Use the `bin/update-modules-translations.mjs` to download the latest translations for all the modules. All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
+You can run `yarn i18n:update-translations` to download the latest translations files for all the modules. The script downloads all the locale files for each module, fetching the package name from the `src/modules/[MODULE]/translations/en-us.yml` file, and saves them in the `src/modules/[MODULE]/translations/locales` folder.
 
-The first time that translations are added to a module, you need to add a mapping between the module folder and the package name on the translations systems to the `MODULE` variable in the script. For example, if a module is located in `src/modules/my-module` and the package name is `cph-theme-my-module`, you need to add:
-
-```js
-const MODULES = {
-  ...,
-  "my-module": "cph-theme-my-module"
-}
-```
+All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
 
 # Accessibility testing
 
