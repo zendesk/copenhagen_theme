@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Grid, Row, Col } from "@zendeskgarden/react-grid";
-import type { MockApprovalRequest } from "../types";
+import type { MockApprovalRequest } from "../../types";
 import { ApprovalStatusTag } from "./ApprovalStatusTag";
+import { formatApprovalRequestDate } from "../../utils";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
@@ -26,18 +27,6 @@ const DetailRow = styled(Row)`
     margin-bottom: 0;
   }
 `;
-
-export const formatApprovalRequestDate = (timestamp: string) => {
-  const date = new Date(timestamp);
-  return `${date.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  })} ${date.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-  })}`;
-};
 
 interface ApprovalRequestDetailsProps {
   approvalRequest: MockApprovalRequest;
