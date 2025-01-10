@@ -7,8 +7,6 @@ const ButtonContainer = styled.div`
   gap: ${(props) => props.theme.space.md}; /* 20px */
 `;
 
-// interface ApproverActionsProps {}
-
 export function ApproverActions() {
   return (
     <ButtonContainer>

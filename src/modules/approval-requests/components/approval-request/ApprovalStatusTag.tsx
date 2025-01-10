@@ -5,6 +5,7 @@ const APPROVAL_REQUEST_STATES = {
   APPROVED: "APPROVED",
   REJECTED: "REJECTED",
   CLARIFICATION_REQUESTED: "CLARIFICATION_REQUESTED",
+  WITHDRAWN: "WITHDRAWN",
 } as const;
 
 const statusTagConfig: Record<
@@ -15,9 +16,10 @@ const statusTagConfig: Record<
   [APPROVAL_REQUEST_STATES.APPROVED]: { hue: "green", label: "Approved" },
   [APPROVAL_REQUEST_STATES.REJECTED]: { hue: "red", label: "Denied" },
   [APPROVAL_REQUEST_STATES.CLARIFICATION_REQUESTED]: {
-    hue: "grey",
-    label: "Clarification Needed",
+    hue: "yellow",
+    label: "Info needed",
   },
+  [APPROVAL_REQUEST_STATES.WITHDRAWN]: { hue: "grey", label: "Withdrawn" },
 };
 
 interface ApprovalStatusTagProps {

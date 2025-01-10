@@ -9,13 +9,13 @@ import type { Settings } from "../shared";
 export async function renderApprovalRequestList(
   container: HTMLElement,
   settings: Settings,
-  props: ApprovalRequestListPageProps
+  props: ApprovalRequestListPageProps,
+  helpCenterPath: string
 ) {
-  console.log("renderApprovalRequestList", container, settings, props);
   render(
     <ThemeProviders theme={createTheme(settings)}>
       {/* MKTODO: add ErrorBoundary from shared once service catalog PR is merged */}
-      <ApprovalRequestListPage {...props} />
+      <ApprovalRequestListPage {...props} helpCenterPath={helpCenterPath} />
     </ThemeProviders>,
     container
   );
