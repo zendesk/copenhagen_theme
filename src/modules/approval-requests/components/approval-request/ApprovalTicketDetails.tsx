@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Grid, Row, Col } from "@zendeskgarden/react-grid";
-import type { MockTicket } from "../types";
+import type { MockTicket } from "../../types";
 
 const TicketContainer = styled(Grid)`
   padding: ${(props) => props.theme.space.md}; /* 20px */

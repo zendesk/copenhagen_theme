@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { MD, XXL } from "@zendeskgarden/react-typography";
 import { fetchMockApprovalRequest, fetchMockTicket } from "./mockApi";
 import type { MockApprovalRequest, MockTicket } from "./types";
-import { ApprovalRequestDetails } from "./components/ApprovalRequestDetails";
-import { ApprovalTicketDetails } from "./components/ApprovalTicketDetails";
-import { ApproverActions } from "./components/ApproverActions";
+import { ApprovalRequestDetails } from "./components/approval-request/ApprovalRequestDetails";
+import { ApprovalTicketDetails } from "./components/approval-request/ApprovalTicketDetails";
+import { ApproverActions } from "./components/approval-request/ApproverActions";
 
 const Container = styled.div`
   display: flex;
