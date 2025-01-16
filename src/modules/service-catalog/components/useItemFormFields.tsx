@@ -18,7 +18,7 @@ const formatField = (field: TicketField): Field => {
     id,
     type,
     name: `custom_fields_${id}`,
-    description,
+    description: description || "",
     label: title_in_portal,
     options: custom_field_options,
     required: required_in_portal,
