@@ -26,7 +26,7 @@
   import { renderFlashNotifications } from "flash-notifications";
 
   const settings = {{json settings}};
-  const closeLabel = {{json (t 'close')}}
+  const baseLocale = {{json help_center.base_locale}};
 
-  renderFlashNotifications(settings, closeLabel);
+  renderFlashNotifications(settings, baseLocale);
 </script>

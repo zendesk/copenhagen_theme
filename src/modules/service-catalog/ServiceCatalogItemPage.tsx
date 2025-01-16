@@ -7,7 +7,7 @@ import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import type { ServiceRequestResponse } from "./data-types/ServiceRequestResponse";
 import { addFlashNotification } from "../shared";
 import { useTranslation } from "react-i18next";
-import { useNotifyError } from "./useNotifyError";
+import { useNotify } from "../shared/notifications/useNotify";
 
 const Container = styled.div`
   display: flex;
@@ -44,7 +44,7 @@ export function ServiceCatalogItemPage({
     handleChange,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
-  const notifyError = useNotifyError();
+  const notify = useNotify();
 
   if (error) {
     throw error;
@@ -80,16 +80,17 @@ export function ServiceCatalogItemPage({
         });
         setRequestFields(updatedFields);
       } else {
-        notifyError(
-          t(
+        notify({
+          title: t(
             "service-catalog.item.service-request-error-title",
             "Service couldn't be submitted"
           ),
-          t(
+          message: t(
             "service-catalog.item.service-request-error-message",
             "Give it a moment and try it again"
-          )
-        );
+          ),
+          type: "error",
+        });
       }
     } else if (response && response.ok) {
       addFlashNotification({

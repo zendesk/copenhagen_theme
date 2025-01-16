@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { CursorPagination } from "@zendeskgarden/react-pagination";
 import { LoadingState } from "./components/service-catalog-list-item/LoadingState";
 import { EmptyState } from "./components/service-catalog-list-item/EmptyState";
-import { useNotifyError } from "./useNotifyError";
+import { useNotify } from "../shared/notifications/useNotify";
 
 const StyledCol = styled(Col)`
   margin-bottom: ${(props) => props.theme.space.md};
@@ -42,7 +42,7 @@ export function ServiceCatalogList({
   const [currentCursor, setCurrentCursor] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
-  const notifyError = useNotifyError();
+  const notify = useNotify();
   const { t } = useTranslation();
 
   if (error) {
@@ -70,21 +70,22 @@ export function ServiceCatalogList({
         }
       } catch (error) {
         setIsLoading(false);
-        notifyError(
-          t(
+        notify({
+          title: t(
             "service-catalog.service-list-error-title",
             "Services couldn't be loaded"
           ),
-          t(
+          message: t(
             "service-catalog.service-list-error-message",
             "Give it a moment and try it again"
-          )
-        );
+          ),
+          type: "error",
+        });
         setError(error);
       }
     }
     fetchData();
-  }, [currentCursor]);
+  }, [currentCursor, notify, t]);
 
   const handleNextClick = () => {
     if (meta && meta.after_cursor) {
