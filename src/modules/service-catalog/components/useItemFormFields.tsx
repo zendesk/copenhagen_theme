@@ -31,7 +31,7 @@ const isAssociatedLookupField = (field: TicketField) => {
   const customObjectKey = getCustomObjectKey(
     field.relationship_target_type as string
   );
-  if (customObjectKey === "standard::service_catalog_item") {
+  if (customObjectKey === "service_catalog_item") {
     return true;
   }
   return false;
