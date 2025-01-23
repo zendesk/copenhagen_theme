@@ -43,7 +43,7 @@ interface FetchTicketFieldsResult {
 }
 
 const fetchTicketFields = async (
-  form_id: string,
+  form_id: number,
   baseLocale: string
 ): Promise<FetchTicketFieldsResult> => {
   const [formResponse, fieldsResponse] = await Promise.all([
