@@ -1,65 +1,57 @@
-import type {
-  MockApprovalRequest,
-  MockTicket,
-  MockSearchApprovalRequest,
-} from "./types";
+import type { ApprovalRequest, MockSearchApprovalRequest } from "./types";
 
-export const fetchMockApprovalRequest =
-  async (): Promise<MockApprovalRequest> => {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-
-    return {
-      id: 1234,
-      subject: "New Laptop Request",
-      message: "I need a new laptop for development work",
-      status: "PENDING",
-      created_at: "2023-07-20T10:00:00Z",
-      assignee_user: {
-        id: 101,
-        name: "Jane Smith",
-        photo: {
-          content_url: "https://example.com/100/100",
-        },
-      },
-      created_by_user: {
-        id: 102,
-        name: "John Doe",
-        photo: {
-          content_url: "https://example.com/101/101",
-        },
-      },
-    };
-  };
-
-export const fetchMockTicket = async (): Promise<MockTicket> => {
+export const fetchMockApprovalRequest = async (): Promise<ApprovalRequest> => {
   // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 500));
 
   return {
-    id: 5678,
-    priority: "high",
-    requester: {
+    id: "1234",
+    subject: "New Laptop Request",
+    message: "I need a new laptop for development work",
+    status: "PENDING",
+    created_at: "2023-07-20T10:00:00Z",
+    assignee_user: {
+      id: 101,
+      name: "Jane Smith",
+      photo: {
+        content_url: "https://example.com/100/100",
+      },
+    },
+    created_by_user: {
       id: 102,
       name: "John Doe",
       photo: {
         content_url: "https://example.com/101/101",
       },
     },
-    custom_fields: [
-      {
-        display_name: "Software",
-        display_value: "Adobe Creative Suite",
+    ticket_details: {
+      id: "5678",
+      priority: "high",
+      requester: {
+        id: 102,
+        name: "John Doe",
+        photo: {
+          content_url: "https://example.com/101/101",
+        },
       },
-      {
-        display_name: "Cost per user",
-        display_value: "$15 monthly",
-      },
-      {
-        display_name: "Role",
-        display_value: "Editor",
-      },
-    ],
+      custom_fields: [
+        {
+          title_in_portal: "Software",
+          id: "6746",
+          value: "Adobe Creative Suite",
+        },
+        {
+          title_in_portal: "Cost per user",
+          id: "6747",
+          value: "$15 monthly",
+        },
+        {
+          title_in_portal: "Role",
+          id: "6748",
+          value: "Editor",
+        },
+      ],
+    },
   };
 };
 

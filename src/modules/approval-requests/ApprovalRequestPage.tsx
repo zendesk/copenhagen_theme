@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { memo } from "react";
 import styled from "styled-components";
 import { MD, XXL } from "@zendeskgarden/react-typography";
-import { fetchMockApprovalRequest, fetchMockTicket } from "./mockApi";
-import type { MockApprovalRequest, MockTicket } from "./types";
-import { ApprovalRequestDetails } from "./components/approval-request/ApprovalRequestDetails";
-import { ApprovalTicketDetails } from "./components/approval-request/ApprovalTicketDetails";
-import { ApproverActions } from "./components/approval-request/ApproverActions";
+import ApprovalRequestDetails from "./components/approval-request/ApprovalRequestDetails";
+import ApprovalTicketDetails from "./components/approval-request/ApprovalTicketDetails";
+import ApproverActions from "./components/approval-request/ApproverActions";
+import { useApprovalRequest } from "./hooks/useApprovalRequest";
 
 const Container = styled.div`
   display: flex;
@@ -40,48 +39,37 @@ const RightColumn = styled.div`
   // MKTODO: add media query for mobile
 `;
 
-export interface ApprovalRequestPageProps {}
+export interface ApprovalRequestPageProps {
+  approvalRequestId: string;
+  userId: number;
+}
 
-export function ApprovalRequestPage() {
-  const [approvalRequest, setApprovalRequest] =
-    useState<MockApprovalRequest | null>(null);
-  const [ticket, setTicket] = useState<MockTicket | null>(null);
-  const [status, setStatus] = useState("pending");
+function ApprovalRequestPage({
+  approvalRequestId,
+  userId,
+}: ApprovalRequestPageProps) {
+  const { approvalRequest, errorFetchingApprovalRequest: error } =
+    useApprovalRequest(approvalRequestId);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [approvalData, ticketData] = await Promise.all([
-          fetchMockApprovalRequest(),
-          fetchMockTicket(),
-        ]);
-        setApprovalRequest(approvalData);
-        setTicket(ticketData);
-      } catch (error) {
-        setStatus("error");
-        console.error("Error fetching data:", error);
-      } finally {
-        setStatus("resolved");
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  // MKTODO: handle error state
-
-  if (status === "pending") {
-    // MKTODO: build out loading state with Skeleton components
-    return <Container>Loading...</Container>;
+  if (error) {
+    throw error;
   }
+
+  // MKTODO: add loading state
+
+  const showApproverActions =
+    userId === approvalRequest?.assignee_user?.id &&
+    approvalRequest?.status === "ACTIVE";
 
   return (
     <Container>
       <LeftColumn>
         <XXL isBold>{approvalRequest?.subject}</XXL>
         <MD>{approvalRequest?.message}</MD>
-        {ticket && <ApprovalTicketDetails ticket={ticket} />}
-        <ApproverActions />
+        {approvalRequest?.ticket_details && (
+          <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
+        )}
+        {showApproverActions && <ApproverActions />}
       </LeftColumn>
       <RightColumn>
         {approvalRequest && (
@@ -91,3 +79,5 @@ export function ApprovalRequestPage() {
     </Container>
   );
 }
+
+export default memo(ApprovalRequestPage);

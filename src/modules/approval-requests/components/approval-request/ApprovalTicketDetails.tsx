@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styled from "styled-components";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
@@ -19,11 +20,18 @@ const FieldLabel = styled(MD)`
   color: ${(props) => getColorV8("grey", 600, props.theme)};
 `;
 
+const CustomFieldsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${(props) => props.theme.space.md}; /* 20px */
+  margin-top: ${(props) => props.theme.space.md}; /* 20px */
+`;
+
 interface ApprovalTicketDetailsProps {
   ticket: MockTicket;
 }
 
-export function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
+function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
   return (
     <TicketContainer>
       <TicketDetailsHeader isBold>Ticket Details</TicketDetailsHeader>
@@ -41,6 +49,16 @@ export function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
           <MD>{ticket.priority}</MD>
         </Col>
       </Row>
+      <CustomFieldsGrid>
+        {ticket.custom_fields.map((field) => (
+          <div key={field.id}>
+            <FieldLabel>{field.title_in_portal}</FieldLabel>
+            <MD>{field.value}</MD>
+          </div>
+        ))}
+      </CustomFieldsGrid>
     </TicketContainer>
   );
 }
+
+export default memo(ApprovalTicketDetails);

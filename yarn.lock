@@ -4018,6 +4018,13 @@
   dependencies:
     "@zendeskgarden/container-pagination" "^1.0.0"
     "@zendeskgarden/container-utilities" "^2.0.0"
+"@zendeskgarden/react-tables@8.76.9":
+  version "8.76.9"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-tables/-/react-tables-8.76.9.tgz#6a417fa087ddb7e9758c5c6f7fb335d85a2f2a95"
+  integrity sha512-EnePRplpYlCTu9oBHs+t/FZ5dOH9SPcgAHLFKGjf59dDKAjxY37BvwNqUTIgWyPMOBFg0ZOMSmWU1WnQ/yqEHg==
+  dependencies:
+    "@zendeskgarden/container-utilities" "^2.0.0"
+    dom-helpers "^5.1.0"
     polished "^4.3.1"
     prop-types "^15.5.7"
 
@@ -11072,13 +11079,6 @@ pluralize@^8.0.0:
   version "8.0.0"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-8.0.0.tgz#1a6fa16a38d12a1901e0320fa017051c539ce3b1"
   integrity sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==
-
-polished@^4.3.1:
-  version "4.3.1"
-  resolved "https://registry.yarnpkg.com/polished/-/polished-4.3.1.tgz#5a00ae32715609f83d89f6f31d0f0261c6170548"
-  integrity sha512-OBatVyC/N7SCW/FaDHrSd+vn0o5cS855TOmYi4OkdWUMSJCET/xip//ch8xGUvtr3i44X9LVyWwQlRMTN3pwSA==
-  dependencies:
-    "@babel/runtime" "^7.17.8"
 
 polished@^4.3.1:
   version "4.3.1"

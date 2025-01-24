@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Tag } from "@zendeskgarden/react-tags";
 
 const APPROVAL_REQUEST_STATES = {
@@ -7,6 +8,8 @@ const APPROVAL_REQUEST_STATES = {
   CLARIFICATION_REQUESTED: "CLARIFICATION_REQUESTED",
   WITHDRAWN: "WITHDRAWN",
 } as const;
+
+const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
 
 const statusTagConfig: Record<
   keyof typeof APPROVAL_REQUEST_STATES,
@@ -23,10 +26,13 @@ const statusTagConfig: Record<
 };
 
 interface ApprovalStatusTagProps {
-  status: keyof typeof APPROVAL_REQUEST_STATES;
+  status: string;
 }
 
-export function ApprovalStatusTag({ status }: ApprovalStatusTagProps) {
-  const { hue, label } = statusTagConfig[status];
-  return <Tag hue={hue}>{label}</Tag>;
+function ApprovalStatusTag({ status }: ApprovalStatusTagProps) {
+  const config =
+    statusTagConfig[status as keyof typeof APPROVAL_REQUEST_STATES] ||
+    DEFAULT_STATUS_CONFIG;
+  return <Tag hue={config.hue}>{config.label}</Tag>;
 }
+export default memo(ApprovalStatusTag);
