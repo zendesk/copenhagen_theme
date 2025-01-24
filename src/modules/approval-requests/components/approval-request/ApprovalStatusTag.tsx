@@ -8,6 +8,8 @@ const APPROVAL_REQUEST_STATES = {
   WITHDRAWN: "WITHDRAWN",
 } as const;
 
+const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
+
 const statusTagConfig: Record<
   keyof typeof APPROVAL_REQUEST_STATES,
   { hue: string; label: string }
@@ -23,10 +25,12 @@ const statusTagConfig: Record<
 };
 
 interface ApprovalStatusTagProps {
-  status: keyof typeof APPROVAL_REQUEST_STATES;
+  status: string;
 }
 
 export function ApprovalStatusTag({ status }: ApprovalStatusTagProps) {
-  const { hue, label } = statusTagConfig[status];
-  return <Tag hue={hue}>{label}</Tag>;
+  const config =
+    statusTagConfig[status as keyof typeof APPROVAL_REQUEST_STATES] ||
+    DEFAULT_STATUS_CONFIG;
+  return <Tag hue={config.hue}>{config.label}</Tag>;
 }

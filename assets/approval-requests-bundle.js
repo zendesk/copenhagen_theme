@@ -1,59 +1,5 @@
-import { j as jsxRuntimeExports, z as Tag, s as styled, J as getColorV8, d as Field, E as MediaInput, A as Anchor, r as reactExports, ab as XXL, e as Label, ac as SvgSearchStroke, h as Combobox, O as Option, ad as Table, ae as Head, af as HeaderRow, ag as HeaderCell, ah as Body, ai as Row, aj as Cell, a7 as reactDomExports, a8 as ThemeProviders, a9 as createTheme, ak as Grid, al as MD, am as Row$1, an as Col, a0 as Button } from 'shared';
+import { s as styled, d as Field, E as MediaInput, j as jsxRuntimeExports, e as Label, ab as SvgSearchStroke, h as Combobox, O as Option, z as Tag, J as getColorV8, A as Anchor, ac as Table, ad as Head, ae as HeaderRow, af as HeaderCell, ag as Body, ah as Row, ai as Cell, r as reactExports, aj as XXL, a7 as reactDomExports, a8 as ThemeProviders, a9 as createTheme, ak as Grid, al as MD, am as Row$1, an as Col, F as Field$1, L as Label$1, b as Textarea, a0 as Button } from 'shared';
 
-const fetchMockApprovalRequest = async () => {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return {
-        id: 1234,
-        subject: "New Laptop Request",
-        message: "I need a new laptop for development work",
-        status: "PENDING",
-        created_at: "2023-07-20T10:00:00Z",
-        assignee_user: {
-            id: 101,
-            name: "Jane Smith",
-            photo: {
-                content_url: "https://example.com/100/100",
-            },
-        },
-        created_by_user: {
-            id: 102,
-            name: "John Doe",
-            photo: {
-                content_url: "https://example.com/101/101",
-            },
-        },
-    };
-};
-const fetchMockTicket = async () => {
-    // Simulate API delay
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    return {
-        id: 5678,
-        priority: "high",
-        requester: {
-            id: 102,
-            name: "John Doe",
-            photo: {
-                content_url: "https://example.com/101/101",
-            },
-        },
-        custom_fields: [
-            {
-                display_name: "Software",
-                display_value: "Adobe Creative Suite",
-            },
-            {
-                display_name: "Cost per user",
-                display_value: "$15 monthly",
-            },
-            {
-                display_name: "Role",
-                display_value: "Editor",
-            },
-        ],
-    };
-};
 const fetchMockSearchApprovalRequestList = async () => {
     // Simulate API delay
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -85,6 +31,24 @@ const fetchMockSearchApprovalRequestList = async () => {
     ];
 };
 
+const FiltersContainer = styled.div `
+  display: flex;
+  gap: ${(props) => props.theme.space.base * 17}px; /* 68px */
+  align-items: flex-end;
+`;
+const SearchField = styled(Field) `
+  flex: 3;
+`;
+const StyledMediaInput = styled(MediaInput) `
+  border-radius: 25px;
+`;
+const DropdownFilterField = styled(Field) `
+  flex: 1;
+`;
+function ApprovalRequestListFilters() {
+    return (jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: "Search approval requests" }), jsxRuntimeExports.jsx(StyledMediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: "Search approval requests" })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: "Status:" }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, children: [jsxRuntimeExports.jsx(Option, { value: "ALL", isSelected: true, label: "Any" }), jsxRuntimeExports.jsx(Option, { value: "PENDING", label: "Decision pending" }), jsxRuntimeExports.jsx(Option, { value: "CLARIFICATION_REQUESTED", label: "Info needed" }), jsxRuntimeExports.jsx(Option, { value: "APPROVED", label: "Approved" }), jsxRuntimeExports.jsx(Option, { value: "REJECTED", label: "Denied" }), jsxRuntimeExports.jsx(Option, { value: "WITHDRAWN", label: "Withdrawn" })] })] })] }));
+}
+
 const APPROVAL_REQUEST_STATES = {
     PENDING: "PENDING",
     APPROVED: "APPROVED",
@@ -92,6 +56,7 @@ const APPROVAL_REQUEST_STATES = {
     CLARIFICATION_REQUESTED: "CLARIFICATION_REQUESTED",
     WITHDRAWN: "WITHDRAWN",
 };
+const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
 const statusTagConfig = {
     [APPROVAL_REQUEST_STATES.PENDING]: { hue: "blue", label: "Decision pending" },
     [APPROVAL_REQUEST_STATES.APPROVED]: { hue: "green", label: "Approved" },
@@ -103,8 +68,9 @@ const statusTagConfig = {
     [APPROVAL_REQUEST_STATES.WITHDRAWN]: { hue: "grey", label: "Withdrawn" },
 };
 function ApprovalStatusTag({ status }) {
-    const { hue, label } = statusTagConfig[status];
-    return jsxRuntimeExports.jsx(Tag, { hue: hue, children: label });
+    const config = statusTagConfig[status] ||
+        DEFAULT_STATUS_CONFIG;
+    return jsxRuntimeExports.jsx(Tag, { hue: config.hue, children: config.label });
 }
 
 // MKTODO: update to proper locale
@@ -120,29 +86,19 @@ const formatApprovalRequestDate = (timestamp, monthFormat = "long") => {
     })}`;
 };
 
-const Container$2 = styled.div `
-  display: flex;
-  flex-direction: column;
-  gap: ${(props) => props.theme.space.lg};
-`;
-const FiltersContainer = styled.div `
-  display: flex;
-  gap: ${(props) => props.theme.space.base * 17}px; /* 68px */
-  align-items: flex-end;
-`;
-const SearchField = styled(Field) `
-  flex: 3;
-`;
-const StyledMediaInput = styled(MediaInput) `
-  border-radius: 25px;
-`;
-const DropdownFilterField = styled(Field) `
-  flex: 1;
-`;
 const ApprovalRequestAnchor = styled(Anchor) `
   &:visited {
     color: ${(props) => getColorV8("blue", 600, props.theme)};
   }
+`;
+function ApprovalRequestListTable({ requests, helpCenterPath, }) {
+    return (jsxRuntimeExports.jsxs(Table, { size: "large", children: [jsxRuntimeExports.jsx(Head, { children: jsxRuntimeExports.jsxs(HeaderRow, { children: [jsxRuntimeExports.jsx(HeaderCell, { width: "40%", children: "Subject" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Requester" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Sent by" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Sent on" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Approval status" })] }) }), jsxRuntimeExports.jsx(Body, { children: requests.map((request) => (jsxRuntimeExports.jsxs(Row, { children: [jsxRuntimeExports.jsx(Cell, { children: jsxRuntimeExports.jsx(ApprovalRequestAnchor, { href: `${helpCenterPath}/approval_requests/${request.id}`, children: request.subject }) }), jsxRuntimeExports.jsx(Cell, { children: request.requester_name }), jsxRuntimeExports.jsx(Cell, { children: request.created_by_name }), jsxRuntimeExports.jsx(Cell, { children: formatApprovalRequestDate(request.created_at, "short") }), jsxRuntimeExports.jsx(Cell, { children: jsxRuntimeExports.jsx(ApprovalStatusTag, { status: request.status }) })] }, request.id))) })] }));
+}
+
+const Container$2 = styled.div `
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.lg};
 `;
 function ApprovalRequestListPage({ helpCenterPath, }) {
     const [requests, setRequests] = reactExports.useState([]);
@@ -164,7 +120,7 @@ function ApprovalRequestListPage({ helpCenterPath, }) {
     if (status === "pending") {
         return jsxRuntimeExports.jsx(Container$2, { children: "Loading..." });
     }
-    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: "Approval requests" }), jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: "Search approval requests" }), jsxRuntimeExports.jsx(StyledMediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: "Search approval requests" })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: "Status:" }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, children: [jsxRuntimeExports.jsx(Option, { value: "ALL", label: "Any" }), jsxRuntimeExports.jsx(Option, { value: "PENDING", isSelected: true, label: "Decision pending" }), jsxRuntimeExports.jsx(Option, { value: "CLARIFICATION_REQUESTED", label: "Clarification Needed" }), jsxRuntimeExports.jsx(Option, { value: "APPROVED", label: "Approved" }), jsxRuntimeExports.jsx(Option, { value: "REJECTED", label: "Denied" }), jsxRuntimeExports.jsx(Option, { value: "WITHDRAWN", label: "Withdrawn" })] })] })] }), jsxRuntimeExports.jsxs(Table, { size: "large", children: [jsxRuntimeExports.jsx(Head, { children: jsxRuntimeExports.jsxs(HeaderRow, { children: [jsxRuntimeExports.jsx(HeaderCell, { width: "40%", children: "Subject" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Requester" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Sent by" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Sent on" }), jsxRuntimeExports.jsx(HeaderCell, { children: "Approval status" })] }) }), jsxRuntimeExports.jsx(Body, { children: requests.map((request) => (jsxRuntimeExports.jsxs(Row, { children: [jsxRuntimeExports.jsx(Cell, { children: jsxRuntimeExports.jsx(ApprovalRequestAnchor, { href: `${helpCenterPath}/approval_requests/${request.id}`, children: request.subject }) }), jsxRuntimeExports.jsx(Cell, { children: request.requester_name }), jsxRuntimeExports.jsx(Cell, { children: request.created_by_name }), jsxRuntimeExports.jsx(Cell, { children: formatApprovalRequestDate(request.created_at, "short") }), jsxRuntimeExports.jsx(Cell, { children: jsxRuntimeExports.jsx(ApprovalStatusTag, { status: request.status }) })] }, request.id))) })] })] }));
+    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: "Approval requests" }), jsxRuntimeExports.jsx(ApprovalRequestListFilters, {}), jsxRuntimeExports.jsx(ApprovalRequestListTable, { requests: requests, helpCenterPath: helpCenterPath })] }));
 }
 
 async function renderApprovalRequestList(container, settings, props, helpCenterPath) {
@@ -205,8 +161,14 @@ const TicketDetailsHeader = styled(MD) `
 const FieldLabel = styled(MD) `
   color: ${(props) => getColorV8("grey", 600, props.theme)};
 `;
+const CustomFieldsGrid = styled.div `
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: ${(props) => props.theme.space.md}; /* 20px */
+  margin-top: ${(props) => props.theme.space.md}; /* 20px */
+`;
 function ApprovalTicketDetails({ ticket }) {
-    return (jsxRuntimeExports.jsxs(TicketContainer, { children: [jsxRuntimeExports.jsx(TicketDetailsHeader, { isBold: true, children: "Ticket Details" }), jsxRuntimeExports.jsxs(Row$1, { children: [jsxRuntimeExports.jsxs(Col, { size: 4, children: [jsxRuntimeExports.jsx(FieldLabel, { children: "Requester" }), jsxRuntimeExports.jsx(MD, { children: ticket.requester.name })] }), jsxRuntimeExports.jsxs(Col, { size: 4, children: [jsxRuntimeExports.jsx(FieldLabel, { children: "ID" }), jsxRuntimeExports.jsx(MD, { children: ticket.id })] }), jsxRuntimeExports.jsxs(Col, { size: 4, children: [jsxRuntimeExports.jsx(FieldLabel, { children: "Priority" }), jsxRuntimeExports.jsx(MD, { children: ticket.priority })] })] })] }));
+    return (jsxRuntimeExports.jsxs(TicketContainer, { children: [jsxRuntimeExports.jsx(TicketDetailsHeader, { isBold: true, children: "Ticket Details" }), jsxRuntimeExports.jsxs(Row$1, { children: [jsxRuntimeExports.jsxs(Col, { size: 4, children: [jsxRuntimeExports.jsx(FieldLabel, { children: "Requester" }), jsxRuntimeExports.jsx(MD, { children: ticket.requester.name })] }), jsxRuntimeExports.jsxs(Col, { size: 4, children: [jsxRuntimeExports.jsx(FieldLabel, { children: "ID" }), jsxRuntimeExports.jsx(MD, { children: ticket.id })] }), jsxRuntimeExports.jsxs(Col, { size: 4, children: [jsxRuntimeExports.jsx(FieldLabel, { children: "Priority" }), jsxRuntimeExports.jsx(MD, { children: ticket.priority })] })] }), jsxRuntimeExports.jsx(CustomFieldsGrid, { children: ticket.custom_fields.map((field) => (jsxRuntimeExports.jsxs("div", { children: [jsxRuntimeExports.jsx(FieldLabel, { children: field.title_in_portal }), jsxRuntimeExports.jsx(MD, { children: field.value })] }, field.id))) })] }));
 }
 
 const ButtonContainer = styled.div `
@@ -214,8 +176,55 @@ const ButtonContainer = styled.div `
   flex-direction: row;
   gap: ${(props) => props.theme.space.md}; /* 20px */
 `;
+const CommentSection = styled.div `
+  display: flex;
+  flex-direction: column;
+  gap: ${(props) => props.theme.space.lg}; /* 32px */
+`;
 function ApproverActions() {
-    return (jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, children: "Approve request" }), jsxRuntimeExports.jsx(Button, { children: "Deny request" })] }));
+    const [comment, setComment] = reactExports.useState("");
+    const [pendingStatus, setPendingStatus] = reactExports.useState(null);
+    const handleApproveRequestClick = reactExports.useCallback(() => {
+        setPendingStatus("APPROVED");
+    }, []);
+    const handleDenyRequestClick = reactExports.useCallback(() => {
+        setPendingStatus("REJECTED");
+    }, []);
+    const handleInputValueChange = reactExports.useCallback((e) => {
+        setComment(e.target.value);
+    }, []);
+    const handleCancelClick = reactExports.useCallback(() => {
+        setPendingStatus(null);
+        setComment("");
+    }, []);
+    if (pendingStatus) {
+        return (jsxRuntimeExports.jsxs(CommentSection, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: "Additional note" }), jsxRuntimeExports.jsx(Textarea, { minRows: 5, value: comment, onChange: handleInputValueChange })] }), jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: pendingStatus === "APPROVED", children: pendingStatus === "APPROVED" ? "Submit approval" : "Submit denial" }), jsxRuntimeExports.jsx(Button, { onClick: handleCancelClick, children: "Cancel" })] })] }));
+    }
+    return (jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleApproveRequestClick, children: "Approve request" }), jsxRuntimeExports.jsx(Button, { onClick: handleDenyRequestClick, children: "Deny request" })] }));
+}
+
+function useApprovalRequest(approvalRequestId) {
+    const [approvalRequest, setApprovalRequest] = reactExports.useState();
+    const [error, setError] = reactExports.useState(null);
+    reactExports.useEffect(() => {
+        const fetchApprovalRequest = async () => {
+            try {
+                const response = await fetch(`/api/v2/approval_workflow_instances/${approvalRequestId}/approval_requests/${approvalRequestId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setApprovalRequest(data.approval_request);
+                }
+                else {
+                    throw new Error("Error fetching approval request");
+                }
+            }
+            catch (error) {
+                setError(error);
+            }
+        };
+        fetchApprovalRequest();
+    }, [approvalRequestId]);
+    return { approvalRequest, errorFetchingApprovalRequest: error };
 }
 
 const Container = styled.div `
@@ -248,36 +257,16 @@ const RightColumn = styled.div `
 
   // MKTODO: add media query for mobile
 `;
-function ApprovalRequestPage() {
-    const [approvalRequest, setApprovalRequest] = reactExports.useState(null);
-    const [ticket, setTicket] = reactExports.useState(null);
-    const [status, setStatus] = reactExports.useState("pending");
-    reactExports.useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const [approvalData, ticketData] = await Promise.all([
-                    fetchMockApprovalRequest(),
-                    fetchMockTicket(),
-                ]);
-                setApprovalRequest(approvalData);
-                setTicket(ticketData);
-            }
-            catch (error) {
-                setStatus("error");
-                console.error("Error fetching data:", error);
-            }
-            finally {
-                setStatus("resolved");
-            }
-        };
-        fetchData();
-    }, []);
+function ApprovalRequestPage({ approvalRequestId, userId, }) {
+    const { approvalRequest } = useApprovalRequest(approvalRequestId);
+    const showApproverActions = userId === approvalRequest?.assignee_user?.id &&
+        approvalRequest?.status === "ACTIVE";
     // MKTODO: handle error state
-    if (status === "pending") {
-        // MKTODO: build out loading state with Skeleton components
-        return jsxRuntimeExports.jsx(Container, { children: "Loading..." });
-    }
-    return (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), ticket && jsxRuntimeExports.jsx(ApprovalTicketDetails, { ticket: ticket }), jsxRuntimeExports.jsx(ApproverActions, {})] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails, { approvalRequest: approvalRequest })) })] }));
+    // if (status === "pending") {
+    //   // MKTODO: build out loading state with Skeleton components
+    //   return <Container>Loading...</Container>;
+    // }(
+    return (jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails, { ticket: approvalRequest.ticket_details })), showApproverActions && jsxRuntimeExports.jsx(ApproverActions, {})] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails, { approvalRequest: approvalRequest })) })] }));
 }
 
 async function renderApprovalRequest(container, settings, props) {

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Grid, Row, Col } from "@zendeskgarden/react-grid";
-import type { MockApprovalRequest } from "../../types";
+import type { ApprovalRequest } from "../../types";
 import { ApprovalStatusTag } from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
 
@@ -29,7 +29,7 @@ const DetailRow = styled(Row)`
 `;
 
 interface ApprovalRequestDetailsProps {
-  approvalRequest: MockApprovalRequest;
+  approvalRequest: ApprovalRequest;
 }
 
 export function ApprovalRequestDetails({

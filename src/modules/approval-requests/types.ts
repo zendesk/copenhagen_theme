@@ -3,7 +3,7 @@ interface MockUser {
   id: number;
   name: string;
   photo: {
-    content_url: string;
+    content_url: string | null;
   };
 }
 
@@ -14,21 +14,22 @@ type MockApprovalRequestStatus =
   | "CLARIFICATION_REQUESTED"
   | "WITHDRAWN";
 
-export interface MockApprovalRequest {
-  id: number;
+export interface ApprovalRequest {
+  id: string;
   subject: string;
   message: string;
-  status: MockApprovalRequestStatus;
+  status: string;
   created_at: string;
   assignee_user: MockUser;
   created_by_user: MockUser;
+  ticket_details: MockTicket;
 }
 
 export interface MockTicket {
-  id: number;
+  id: string;
   priority: string;
+  custom_fields: Array<Record<string, string>>;
   requester: MockUser;
-  custom_fields: Record<string, string>[];
 }
 
 export interface MockSearchApprovalRequest {
