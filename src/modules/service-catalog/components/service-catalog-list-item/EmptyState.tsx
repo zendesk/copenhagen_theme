@@ -1,4 +1,4 @@
-import { Anchor, Button } from "@zendeskgarden/react-buttons";
+import { Button } from "@zendeskgarden/react-buttons";
 import { LG, MD } from "@zendeskgarden/react-typography";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
@@ -36,13 +36,6 @@ export const EmptyState = ({ helpCenterPath }: { helpCenterPath: string }) => {
             "Once services are added to catalog, you'll find them here."
           )}
         </MD>
-        <Anchor isExternal href="#" target="_blank">
-          {/* Link will be updated when we will have support article */}
-          {t(
-            "service-catalog.empty-state.support-article-link",
-            "Learn about the service catalog"
-          )}
-        </Anchor>
       </TextContainer>
       <Button isPrimary onClick={handleRedirect}>
         {t("service-catalog.empty-state.go-to-homepage", "Go to the homepage")}
