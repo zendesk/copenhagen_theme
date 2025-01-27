@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import type { Field } from "./data-types";
 import DOMPurify from "dompurify";
+import type { Field } from "../ticket-fields/data-types/Field";
 
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";

@@ -6,12 +6,6 @@ import {
   Message,
   FileList,
 } from "@zendeskgarden/react-forms";
-import {
-  Close,
-  Notification,
-  Title,
-  useToast,
-} from "@zendeskgarden/react-notifications";
 import { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import { useTranslation } from "react-i18next";
@@ -20,6 +14,7 @@ import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
 import mime from "mime";
+import { useNotify } from "../../../shared/notifications/useNotify";
 
 interface AttachmentProps {
   field: AttachmentField;
@@ -59,33 +54,25 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
     })) ?? []
   );
 
-  const { addToast } = useToast();
+  const notify = useNotify();
   const { t } = useTranslation();
 
   const notifyError = useCallback(
     (fileName: string) => {
-      addToast(({ close }) => (
-        <Notification type="error">
-          <Title>
-            {t(
-              "new-request-form.attachments.upload-error-title",
-              "Upload error"
-            )}
-          </Title>
-          {t(
-            "new-request-form.attachments.upload-error-description",
-            "There was an error uploading {{fileName}}. Try again or upload another file.",
-            { fileName }
-          )}
-
-          <Close
-            aria-label={t("new-request-form.close-label", "Close")}
-            onClick={close}
-          />
-        </Notification>
-      ));
+      notify({
+        title: t(
+          "new-request-form.attachments.upload-error-title",
+          "Upload error"
+        ),
+        message: t(
+          "new-request-form.attachments.upload-error-description",
+          "There was an error uploading {{fileName}}. Try again or upload another file.",
+          { fileName }
+        ),
+        type: "error",
+      });
     },
-    [addToast, t]
+    [notify, t]
   );
 
   const onDrop = useCallback(

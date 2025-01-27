@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Nachdem Sie Services zum Katalog hinzugefügt haben, erscheinen sie hier.",
+  "service-catalog.empty-state.go-to-homepage": "Zur Homepage gehen",
+  "service-catalog.empty-state.no-services": "Keine Services vorhanden",
+  "service-catalog.empty-state.support-article-link": "Weitere Infos zum Servicekatalog",
+  "service-catalog.item.read-less": "Weniger lesen",
+  "service-catalog.item.read-more": "Weiterlesen",
+  "service-catalog.item.service-request-error-message": "Versuchen Sie es in Kürze erneut",
+  "service-catalog.item.service-request-error-title": "Service konnte nicht eingereicht werden",
+  "service-catalog.item.service-request-error.close-label": "Schließen",
+  "service-catalog.item.service-request-submitted": "Serviceanfrage eingereicht",
+  "service-catalog.item.submit-button": "Anfrage einreichen",
+  "service-catalog.pagination.next": "Weiter",
+  "service-catalog.pagination.previous": "Zurück",
+  "service-catalog.service-list-error-message": "Versuchen Sie es in Kürze erneut",
+  "service-catalog.service-list-error-title": "Services konnten nicht geladen werden"
+}

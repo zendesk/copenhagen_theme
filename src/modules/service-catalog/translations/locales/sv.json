@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "När tjänsterna har lagts till i katalogen hittar du dem här.",
+  "service-catalog.empty-state.go-to-homepage": "Gå till startsidan",
+  "service-catalog.empty-state.no-services": "För närvarande inga tjänster",
+  "service-catalog.empty-state.support-article-link": "Ta reda på mer om tjänstekatalog",
+  "service-catalog.item.read-less": "Visa mindre",
+  "service-catalog.item.read-more": "Läs mer",
+  "service-catalog.item.service-request-error-message": "Vänta en stund och försök med det igen",
+  "service-catalog.item.service-request-error-title": "Det gick inte att skicka in tjänsten",
+  "service-catalog.item.service-request-error.close-label": "Stäng",
+  "service-catalog.item.service-request-submitted": "Serviceförfrågan inskickad",
+  "service-catalog.item.submit-button": "Skicka in förfrågan",
+  "service-catalog.pagination.next": "Nästa",
+  "service-catalog.pagination.previous": "Föregående",
+  "service-catalog.service-list-error-message": "Vänta en stund och försök med det igen",
+  "service-catalog.service-list-error-title": "Det gick inte att läsa in tjänster"
+}

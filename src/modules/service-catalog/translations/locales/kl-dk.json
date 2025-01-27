@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Once services are added to catalog, you'll find them here.",
+  "service-catalog.empty-state.go-to-homepage": "Go to the homepage",
+  "service-catalog.empty-state.no-services": "No services in sight",
+  "service-catalog.empty-state.support-article-link": "Learn about the service catalog",
+  "service-catalog.item.read-less": "Read less",
+  "service-catalog.item.read-more": "Read more",
+  "service-catalog.item.service-request-error-message": "Give it a moment and try it again",
+  "service-catalog.item.service-request-error-title": "Service couldn't be submitted",
+  "service-catalog.item.service-request-error.close-label": "Close",
+  "service-catalog.item.service-request-submitted": "Service request submitted",
+  "service-catalog.item.submit-button": "Submit request",
+  "service-catalog.pagination.next": "Next",
+  "service-catalog.pagination.previous": "Previous",
+  "service-catalog.service-list-error-message": "Give it a moment and try it again",
+  "service-catalog.service-list-error-title": "Services couldn't be loaded"
+}

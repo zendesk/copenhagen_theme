@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "เมื่อเพิ่มบริการลงในแค็ตตาล็อกแล้ว คุณจะพบบริการเหล่านี้ได้ที่นี่",
+  "service-catalog.empty-state.go-to-homepage": "ไปที่หน้าหลัก",
+  "service-catalog.empty-state.no-services": "ไม่มีบริการ",
+  "service-catalog.empty-state.support-article-link": "อ่านเกี่ยวกับแค็ตตาล็อกบริการ",
+  "service-catalog.item.read-less": "อ่านแบบย่อ",
+  "service-catalog.item.read-more": "อ่านเพิ่มเติม",
+  "service-catalog.item.service-request-error-message": "โปรดรอสักครู่และลองอีกครั้ง",
+  "service-catalog.item.service-request-error-title": "ไม่สามารถส่งบริการได้",
+  "service-catalog.item.service-request-error.close-label": "ปิด",
+  "service-catalog.item.service-request-submitted": "ส่งคําร้องขอบริการแล้ว",
+  "service-catalog.item.submit-button": "ส่งคำร้องขอ",
+  "service-catalog.pagination.next": "ถัดไป",
+  "service-catalog.pagination.previous": "ก่อนหน้า",
+  "service-catalog.service-list-error-message": "โปรดรอสักครู่และลองอีกครั้ง",
+  "service-catalog.service-list-error-title": "ไม่สามารถโหลดบริการได้"
+}
