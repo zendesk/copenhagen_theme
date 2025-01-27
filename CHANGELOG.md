@@ -1,3 +1,26 @@
+# [4.3.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.2.7...v4.3.0-beta.1) (2025-01-27)
+
+
+### Bug Fixes
+
+* added useNotify hook and fixed shared close translation ([288ce02](https://github.com/zendesk/copenhagen_theme/commit/288ce028c85ecdcb1b4ea17c188e3f4f0fc6849e))
+* removed link to service catalog documentation ([c730efc](https://github.com/zendesk/copenhagen_theme/commit/c730efc8ad73a7864306c07d525611527f115875))
+* use service catalog platform object ([feb3efd](https://github.com/zendesk/copenhagen_theme/commit/feb3efdf4a6d350ba657ad1b378db333b05e8a9f))
+
+
+### Features
+
+* add error boundary for service catalog ([c47c9c6](https://github.com/zendesk/copenhagen_theme/commit/c47c9c6e80595d34435b0b0efca65ef36a64660a))
+* add new template and module for service catalog ([9d1b514](https://github.com/zendesk/copenhagen_theme/commit/9d1b514ff1599d94a7f6ba5981bd3c083c6abe4e))
+* add proper link to service catalog list ([92229cc](https://github.com/zendesk/copenhagen_theme/commit/92229cc00afe043fa9296f4f78ed508bd75fbb7f))
+* add unstyled list of service catalog items ([d020e14](https://github.com/zendesk/copenhagen_theme/commit/d020e147af3c0bcc65b2d40cc4eada925ebcc272))
+* added form fields to service item ([a835c3c](https://github.com/zendesk/copenhagen_theme/commit/a835c3c5e80f53deb11e4b8dafddec8b4528c0c7))
+* added list of service catalog items ([be3c34d](https://github.com/zendesk/copenhagen_theme/commit/be3c34d9ea6392aa4f93fe768fb1626a16641111))
+* added service catalog item page ([482b957](https://github.com/zendesk/copenhagen_theme/commit/482b9575de76c2f9a48a6add4a0287de2f2e3d30))
+* move from custom pages to core pages ([5bc1500](https://github.com/zendesk/copenhagen_theme/commit/5bc1500dc0e1396d751d817e8be3ae39e242014a))
+* post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
+* use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
+
 ## [4.2.7](https://github.com/zendesk/copenhagen_theme/compare/v4.2.6...v4.2.7) (2025-01-07)
 
 
