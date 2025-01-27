@@ -6,7 +6,7 @@ import {
   Label,
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
-import type { Field } from "../data-types";
+import type { Field } from "../../ticket-fields/data-types/Field";
 
 interface TicketFormFieldProps {
   field: Field;

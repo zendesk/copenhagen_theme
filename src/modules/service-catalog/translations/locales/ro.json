@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "Odată ce serviciile sunt adăugate în catalog, le veți găsi aici.",
+  "service-catalog.empty-state.go-to-homepage": "Mergeți la pagina de pornire",
+  "service-catalog.empty-state.no-services": "Niciun serviciu disponibil",
+  "service-catalog.empty-state.support-article-link": "Aflați despre catalogul de servicii",
+  "service-catalog.item.read-less": "Citiți mai puțin",
+  "service-catalog.item.read-more": "Citiți mai mult",
+  "service-catalog.item.service-request-error-message": "Așteptați un moment și apoi încercați din nou",
+  "service-catalog.item.service-request-error-title": "Serviciul nu a putut fi trimis",
+  "service-catalog.item.service-request-error.close-label": "Închidere",
+  "service-catalog.item.service-request-submitted": "Solicitare de serviciu trimisă",
+  "service-catalog.item.submit-button": "Trimitere solicitare",
+  "service-catalog.pagination.next": "Înainte",
+  "service-catalog.pagination.previous": "Înapoi",
+  "service-catalog.service-list-error-message": "Așteptați un moment și apoi încercați din nou",
+  "service-catalog.service-list-error-title": "Serviciile nu au putut fi încărcate"
+}

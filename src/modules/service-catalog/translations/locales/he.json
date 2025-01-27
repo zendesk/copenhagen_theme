@@ -1,0 +1,17 @@
+{
+  "service-catalog.empty-state.description": "לאחר הוספת שירותים לקטלוג, תמצא אותם כאן.",
+  "service-catalog.empty-state.go-to-homepage": "עבור לדף הבית",
+  "service-catalog.empty-state.no-services": "אין שירותים באופק",
+  "service-catalog.empty-state.support-article-link": "למידע על קטלוג שירותים",
+  "service-catalog.item.read-less": "הצג פחות",
+  "service-catalog.item.read-more": "מידע נוסף",
+  "service-catalog.item.service-request-error-message": "המתן רגע ונסה שוב",
+  "service-catalog.item.service-request-error-title": "לא הייתה אפשרות לשלוח את השירות",
+  "service-catalog.item.service-request-error.close-label": "סגור",
+  "service-catalog.item.service-request-submitted": "נשלחה בקשת שירות",
+  "service-catalog.item.submit-button": "שלח בקשה",
+  "service-catalog.pagination.next": "הבא",
+  "service-catalog.pagination.previous": "הקודם",
+  "service-catalog.service-list-error-message": "המתן רגע ונסה שוב",
+  "service-catalog.service-list-error-title": "לא הייתה אפשרות לטעון שירותים"
+}
