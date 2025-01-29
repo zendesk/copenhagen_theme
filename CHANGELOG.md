@@ -1,3 +1,10 @@
+# [4.3.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.1...v4.3.0-beta.2) (2025-01-29)
+
+
+### Bug Fixes
+
+* change type of service catalog form id ([c48ff7a](https://github.com/zendesk/copenhagen_theme/commit/c48ff7a86804d153c220ac1920b72b3cb86cd811))
+
 # [4.3.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.2.7...v4.3.0-beta.1) (2025-01-27)
 
 
