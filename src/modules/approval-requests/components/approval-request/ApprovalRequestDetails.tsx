@@ -49,7 +49,6 @@ function ApprovalRequestDetails({
           <MD>{approvalRequest.created_by_user.name}</MD>
         </Col>
       </DetailRow>
-
       <DetailRow>
         <Col size={4}>
           <FieldLabel>Sent on</FieldLabel>
@@ -58,7 +57,6 @@ function ApprovalRequestDetails({
           <MD>{formatApprovalRequestDate(approvalRequest.created_at)}</MD>
         </Col>
       </DetailRow>
-
       <DetailRow>
         <Col size={4}>
           <FieldLabel>Approver</FieldLabel>
@@ -67,7 +65,6 @@ function ApprovalRequestDetails({
           <MD>{approvalRequest.assignee_user.name}</MD>
         </Col>
       </DetailRow>
-
       <DetailRow>
         <Col size={4}>
           <FieldLabel>Status</FieldLabel>
@@ -78,6 +75,7 @@ function ApprovalRequestDetails({
           </MD>
         </Col>
       </DetailRow>
+      {/* MKTODO: need to add decided at and decision notes */}
     </Container>
   );
 }

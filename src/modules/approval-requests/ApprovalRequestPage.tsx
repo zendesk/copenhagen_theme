@@ -9,6 +9,12 @@ import { useApprovalRequest } from "./hooks/useApprovalRequest";
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  margin-bottom: ${(props) => props.theme.space.lg}; /* 32px */
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    flex-direction: column;
+    margin-bottom: ${(props) => props.theme.space.xl}; /* 40px */
+  }
 `;
 
 const LeftColumn = styled.div`
@@ -29,27 +35,34 @@ const LeftColumn = styled.div`
     margin-bottom: 0;
   }
 
-  // MKTODO: add media query for mobile
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-right: 0;
+    margin-bottom: ${(props) => props.theme.space.lg};
+  }
 `;
 
 const RightColumn = styled.div`
   flex: 1;
   margin-left: ${(props) => props.theme.space.xl};
 
-  // MKTODO: add media query for mobile
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    margin-left: 0;
+  }
 `;
 
 export interface ApprovalRequestPageProps {
+  approvalWorkflowInstanceId: string;
   approvalRequestId: string;
   userId: number;
 }
 
 function ApprovalRequestPage({
+  approvalWorkflowInstanceId,
   approvalRequestId,
   userId,
 }: ApprovalRequestPageProps) {
   const { approvalRequest, errorFetchingApprovalRequest: error } =
-    useApprovalRequest(approvalRequestId);
+    useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
 
   if (error) {
     throw error;
@@ -57,26 +70,33 @@ function ApprovalRequestPage({
 
   // MKTODO: add loading state
 
-  const showApproverActions =
-    userId === approvalRequest?.assignee_user?.id &&
-    approvalRequest?.status === "ACTIVE";
+  const showApproverActions = userId === approvalRequest?.assignee_user?.id;
+  // MKTODO: uncomment when the correct status is returning
+  // && approvalRequest?.status === "ACTIVE";
 
   return (
-    <Container>
-      <LeftColumn>
-        <XXL isBold>{approvalRequest?.subject}</XXL>
-        <MD>{approvalRequest?.message}</MD>
-        {approvalRequest?.ticket_details && (
-          <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
-        )}
-        {showApproverActions && <ApproverActions />}
-      </LeftColumn>
-      <RightColumn>
-        {approvalRequest && (
-          <ApprovalRequestDetails approvalRequest={approvalRequest} />
-        )}
-      </RightColumn>
-    </Container>
+    <>
+      <Container>
+        <LeftColumn>
+          <XXL isBold>{approvalRequest?.subject}</XXL>
+          <MD>{approvalRequest?.message}</MD>
+          {approvalRequest?.ticket_details && (
+            <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
+          )}
+        </LeftColumn>
+        <RightColumn>
+          {approvalRequest && (
+            <ApprovalRequestDetails approvalRequest={approvalRequest} />
+          )}
+        </RightColumn>
+      </Container>
+      {showApproverActions && (
+        <ApproverActions
+          approvalWorkflowInstanceId={approvalWorkflowInstanceId}
+          approvalRequestId={approvalRequestId}
+        />
+      )}
+    </>
   );
 }
 

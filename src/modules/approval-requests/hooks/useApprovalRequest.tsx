@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import type { ApprovalRequest } from "../types";
 
-export function useApprovalRequest(approvalRequestId: string): {
+export function useApprovalRequest(
+  approvalWorkflowInstanceId: string,
+  approvalRequestId: string
+): {
   approvalRequest: ApprovalRequest | undefined;
   errorFetchingApprovalRequest: unknown;
 } {
@@ -14,11 +17,10 @@ export function useApprovalRequest(approvalRequestId: string): {
     const fetchApprovalRequest = async () => {
       try {
         const response = await fetch(
-          `/api/v2/approval_workflow_instances/${approvalRequestId}/approval_requests/${approvalRequestId}`
+          `/api/v2/approval_workflow_instances/${approvalWorkflowInstanceId}/approval_requests/${approvalRequestId}`
         );
 
         if (response.ok) {
-          throw new Error("Error fetching approval request");
           const data = await response.json();
           setApprovalRequest(data.approval_request);
         } else {
@@ -29,7 +31,7 @@ export function useApprovalRequest(approvalRequestId: string): {
       }
     };
     fetchApprovalRequest();
-  }, [approvalRequestId]);
+  }, [approvalRequestId, approvalWorkflowInstanceId]);
 
   return { approvalRequest, errorFetchingApprovalRequest: error };
 }

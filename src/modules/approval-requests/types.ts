@@ -28,7 +28,9 @@ export interface ApprovalRequest {
 export interface MockTicket {
   id: string;
   priority: string;
-  custom_fields: Array<Record<string, string>>;
+  custom_fields: Array<
+    Record<string, string | boolean | Array<string> | undefined>
+  >;
   requester: MockUser;
 }
 
