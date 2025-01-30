@@ -4,6 +4,11 @@ import type { TicketField } from "../data-types/TicketField";
 import type { Field } from "../../ticket-fields/data-types/Field";
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 
+const getFieldValue = (field: TicketField) =>
+  field.type === "tagger"
+    ? field.custom_field_options.find((option) => option.default)?.value
+    : undefined;
+
 const formatField = (field: TicketField): Field => {
   const {
     id,
@@ -24,6 +29,7 @@ const formatField = (field: TicketField): Field => {
     required: required_in_portal,
     relationship_target_type,
     error: null,
+    value: getFieldValue(field),
   };
 };
 
