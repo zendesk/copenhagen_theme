@@ -1,3 +1,10 @@
+# [4.3.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.2...v4.3.0-beta.3) (2025-01-30)
+
+
+### Bug Fixes
+
+* set default value for Service Catalog fields ([aa2c16e](https://github.com/zendesk/copenhagen_theme/commit/aa2c16e9012643fc32aebab9360debac9c485340))
+
 # [4.3.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.1...v4.3.0-beta.2) (2025-01-29)
 
 
