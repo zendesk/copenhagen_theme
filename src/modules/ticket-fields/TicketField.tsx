@@ -85,7 +85,12 @@ export const TicketField = ({
         />
       );
     case "multiselect":
-      return <MultiSelect field={field} />;
+      return (
+        <MultiSelect
+          field={field}
+          onChange={(value: string[]) => handleChange(field, value)}
+        />
+      );
     case "tagger":
       return (
         <Tagger
