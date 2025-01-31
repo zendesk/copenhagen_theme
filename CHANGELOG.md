@@ -1,3 +1,10 @@
+# [4.3.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.3...v4.3.0-beta.4) (2025-01-31)
+
+
+### Bug Fixes
+
+* correctly send multiselect field values ([5466125](https://github.com/zendesk/copenhagen_theme/commit/546612508bd712eb712ede0f37eaf0e9bc6fdb93))
+
 # [4.3.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.2...v4.3.0-beta.3) (2025-01-30)
 
 
