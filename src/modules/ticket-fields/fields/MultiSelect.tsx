@@ -15,9 +15,13 @@ import type { Field } from "../data-types/Field";
 
 interface MultiSelectProps {
   field: Field;
+  onChange: (value: string[]) => void;
 }
 
-export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
+export function MultiSelect({
+  field,
+  onChange,
+}: MultiSelectProps): JSX.Element {
   const { label, options, error, value, name, required, description } = field;
   const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } =
     useNestedOptions({
@@ -45,6 +49,7 @@ export function MultiSelect({ field }: MultiSelectProps): JSX.Element {
         setCurrentGroupByIdentifier(lastSelectedItem);
       } else {
         setSelectValues(changes.selectionValue as string[]);
+        onChange(changes.selectionValue as string[]);
       }
     }
   };
