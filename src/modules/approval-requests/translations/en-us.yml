@@ -147,7 +147,7 @@ parts:
       value: "Status"
   - translation:
       key: "approval-requests.list.status-dropdown.any"
-      title: "Label for any dropdown option within the status dropdown on the approval requests list page"
+      title: "Label for any dropdown option within the status dropdown on the approval requests list page - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/1dIURRxQu-EkQD9f1U0gKj_4mIBqBSRz3/view?usp=drive_link"
       value: "Any"
   - translation:
@@ -177,26 +177,26 @@ parts:
       value: "Approval status"
   - translation:
       key: "approval-requests.status.decision-pending"
-      title: "Status label for the decision pending status of an approval request"
+      title: "Status label for the decision pending status of an approval request - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/1wMA0ZAm8f_Mw0wgj7UKl7wkBU8XGH_ox/view?usp=drive_link"
       value: "Decision pending"
   - translation:
       key: "approval-requests.status.info-needed"
-      title: "Status label for the info needed status of an approval request"
+      title: "Status label for the info needed status of an approval request - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/11Isf_F0qGOFh6Dv5RnR44ta5yJxX9n_4/view?usp=drive_link"
       value: "Info needed"
   - translation:
       key: "approval-requests.status.approved"
-      title: "Status label for the approved status of an approval request - Subject: 'approval request'"
+      title: "Status label for the approved status of an approval request - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/1Xc8uehxpLHQR2Pjxfyo-wbvooPwe8-WX/view?usp=drive_link"
       value: "Approved"
   - translation:
       key: "approval-requests.status.denied"
-      title: "Status label for the denied status of an approval request - Subject: 'approval request'"
+      title: "Status label for the denied status of an approval request - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/13qjrnfFVk61r5QMxd4CL_B8RY4cYzO1r/view?usp=drive_link"
       value: "Denied"
   - translation:
       key: "approval-requests.status.withdrawn"
-      title: "Status label for the withdrawn status of an approval request - Subject: 'approval request'"
+      title: "Status label for the withdrawn status of an approval request - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/1iOTsHEB5xae4LGZbjr4ibtdSDf0h9BOE/view?usp=drive_link"
       value: "Withdrawn"
