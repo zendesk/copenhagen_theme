@@ -1,6 +1,7 @@
 import { memo } from "react";
 import styled from "styled-components";
 import { MD, XXL } from "@zendeskgarden/react-typography";
+import { Spinner } from "@zendeskgarden/react-loaders";
 import ApprovalRequestDetails from "./components/approval-request/ApprovalRequestDetails";
 import ApprovalTicketDetails from "./components/approval-request/ApprovalTicketDetails";
 import ApproverActions from "./components/approval-request/ApproverActions";
@@ -15,6 +16,12 @@ const Container = styled.div`
     flex-direction: column;
     margin-bottom: ${(props) => props.theme.space.xl}; /* 40px */
   }
+`;
+
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const LeftColumn = styled.div`
@@ -53,26 +60,38 @@ const RightColumn = styled.div`
 export interface ApprovalRequestPageProps {
   approvalWorkflowInstanceId: string;
   approvalRequestId: string;
+  baseLocale: string;
   userId: number;
 }
 
 function ApprovalRequestPage({
   approvalWorkflowInstanceId,
   approvalRequestId,
+  baseLocale,
   userId,
 }: ApprovalRequestPageProps) {
-  const { approvalRequest, errorFetchingApprovalRequest: error } =
-    useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
+  const {
+    approvalRequest,
+    setApprovalRequest,
+    errorFetchingApprovalRequest: error,
+    isLoading,
+  } = useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
 
   if (error) {
     throw error;
   }
 
-  // MKTODO: add loading state
+  if (isLoading) {
+    return (
+      <LoadingContainer>
+        <Spinner size="64" />
+      </LoadingContainer>
+    );
+  }
 
-  const showApproverActions = userId === approvalRequest?.assignee_user?.id;
-  // MKTODO: uncomment when the correct status is returning
-  // && approvalRequest?.status === "ACTIVE";
+  const showApproverActions =
+    userId === approvalRequest?.assignee_user?.id &&
+    approvalRequest?.status === "active";
 
   return (
     <>
@@ -86,7 +105,10 @@ function ApprovalRequestPage({
         </LeftColumn>
         <RightColumn>
           {approvalRequest && (
-            <ApprovalRequestDetails approvalRequest={approvalRequest} />
+            <ApprovalRequestDetails
+              approvalRequest={approvalRequest}
+              baseLocale={baseLocale}
+            />
           )}
         </RightColumn>
       </Container>
@@ -94,6 +116,7 @@ function ApprovalRequestPage({
         <ApproverActions
           approvalWorkflowInstanceId={approvalWorkflowInstanceId}
           approvalRequestId={approvalRequestId}
+          setApprovalRequest={setApprovalRequest}
         />
       )}
     </>

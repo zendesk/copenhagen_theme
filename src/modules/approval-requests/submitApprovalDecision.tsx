@@ -3,7 +3,8 @@ export type ApprovalDecision = "approved" | "rejected";
 export async function submitApprovalDecision(
   approvalWorkflowInstanceId: string,
   approvalRequestId: string,
-  decision: ApprovalDecision
+  decision: ApprovalDecision,
+  decisionNote: string
 ) {
   try {
     const currentUserRequest = await fetch("/api/v2/users/me.json");
@@ -22,6 +23,7 @@ export async function submitApprovalDecision(
         },
         body: JSON.stringify({
           status: decision,
+          notes: decisionNote,
         }),
       }
     );

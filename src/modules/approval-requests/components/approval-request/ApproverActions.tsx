@@ -5,6 +5,7 @@ import { Field, Label, Message, Textarea } from "@zendeskgarden/react-forms";
 import { submitApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalDecision } from "../../submitApprovalDecision";
 import { useNotify } from "../../../shared/notifications/useNotify";
+import type { ApprovalRequest } from "../../types";
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -26,11 +27,13 @@ const CommentSection = styled.div`
 interface ApproverActionsProps {
   approvalRequestId: string;
   approvalWorkflowInstanceId: string;
+  setApprovalRequest: (approvalRequest: ApprovalRequest) => void;
 }
 
 function ApproverActions({
   approvalRequestId,
   approvalWorkflowInstanceId,
+  setApprovalRequest,
 }: ApproverActionsProps) {
   const notify = useNotify();
   const [comment, setComment] = useState("");
@@ -77,10 +80,14 @@ function ApproverActions({
       const response = await submitApprovalDecision(
         approvalWorkflowInstanceId,
         approvalRequestId,
-        decision
+        decision,
+        comment
       );
 
       if (response.ok) {
+        const data = await response.json();
+        setApprovalRequest(data.approval_request);
+
         const notificationTitle =
           decision === "approved" ? "Approval submitted" : "Denial submitted";
         notify({

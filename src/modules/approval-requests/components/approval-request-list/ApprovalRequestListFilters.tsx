@@ -1,5 +1,12 @@
-import { memo } from "react";
+import {
+  memo,
+  useCallback,
+  type Dispatch,
+  type SetStateAction,
+  useMemo,
+} from "react";
 import styled from "styled-components";
+import debounce from "lodash.debounce";
 import SearchIcon from "@zendeskgarden/svg-icons/src/16/search-stroke.svg";
 import {
   Field,
@@ -8,11 +15,19 @@ import {
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
 import { MediaInput } from "@zendeskgarden/react-forms";
+import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
+import type { ApprovalRequestDropdownStatus } from "../../types";
 
 const FiltersContainer = styled.div`
   display: flex;
   gap: ${(props) => props.theme.space.base * 17}px; /* 68px */
   align-items: flex-end;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    flex-direction: column;
+    align-items: normal;
+    gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  }
 `;
 
 const SearchField = styled(Field)`
@@ -27,7 +42,43 @@ const DropdownFilterField = styled(Field)`
   flex: 1;
 `;
 
-function ApprovalRequestListFilters() {
+interface ApprovalRequestListFiltersProps {
+  setApprovalRequestStatus: Dispatch<
+    SetStateAction<ApprovalRequestDropdownStatus>
+  >;
+  setSearchTerm: Dispatch<SetStateAction<string>>;
+}
+
+function ApprovalRequestListFilters({
+  setApprovalRequestStatus,
+  setSearchTerm,
+}: ApprovalRequestListFiltersProps) {
+  const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
+    (changes) => {
+      if (!changes.selectionValue) {
+        return;
+      }
+
+      setApprovalRequestStatus(
+        changes.selectionValue as ApprovalRequestDropdownStatus
+      );
+      setSearchTerm(""); // Reset search term when changing status
+    },
+    [setApprovalRequestStatus]
+  );
+
+  const debouncedSetSearchTerm = useMemo(
+    () => debounce((value: string) => setSearchTerm(value), 300),
+    [setSearchTerm]
+  );
+
+  const handleSearch = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      debouncedSetSearchTerm(event.target.value);
+    },
+    [debouncedSetSearchTerm]
+  );
+
   return (
     <FiltersContainer>
       <SearchField>
@@ -35,17 +86,18 @@ function ApprovalRequestListFilters() {
         <StyledMediaInput
           start={<SearchIcon />}
           placeholder="Search approval requests"
+          onChange={handleSearch}
         />
       </SearchField>
       <DropdownFilterField>
         <Label>Status:</Label>
-        <Combobox isEditable={false}>
-          <Option value="ALL" isSelected label="Any" />
-          <Option value="PENDING" label="Decision pending" />
-          <Option value="CLARIFICATION_REQUESTED" label="Info needed" />
-          <Option value="APPROVED" label="Approved" />
-          <Option value="REJECTED" label="Denied" />
-          <Option value="WITHDRAWN" label="Withdrawn" />
+        <Combobox isEditable={false} onChange={handleChange}>
+          <Option value="any" isSelected label="Any" />
+          <Option value="active" label="Decision pending" />
+          {/* <Option value="clarification_requested" label="Info needed" /> */}
+          <Option value="approved" label="Approved" />
+          <Option value="rejected" label="Denied" />
+          <Option value="withdrawn" label="Withdrawn" />
         </Combobox>
       </DropdownFilterField>
     </FiltersContainer>

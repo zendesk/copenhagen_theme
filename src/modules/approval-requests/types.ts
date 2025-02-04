@@ -1,5 +1,4 @@
-// NOTE: these interfaces are temporary and will be replaced by the actual ones
-interface MockUser {
+interface ApprovalRequestUser {
   id: number;
   name: string;
   photo: {
@@ -7,38 +6,40 @@ interface MockUser {
   };
 }
 
-type MockApprovalRequestStatus =
-  | "PENDING"
-  | "APPROVED"
-  | "REJECTED"
-  | "CLARIFICATION_REQUESTED"
-  | "WITHDRAWN";
+export type ApprovalRequestStatus =
+  | "active"
+  | "approved"
+  | "rejected"
+  // | "clarification_requested"
+  | "withdrawn";
+
+export type ApprovalRequestDropdownStatus = ApprovalRequestStatus | "any";
 
 export interface ApprovalRequest {
   id: string;
   subject: string;
   message: string;
-  status: string;
+  status: ApprovalRequestStatus;
   created_at: string;
-  assignee_user: MockUser;
-  created_by_user: MockUser;
-  ticket_details: MockTicket;
+  assignee_user: ApprovalRequestUser;
+  created_by_user: ApprovalRequestUser;
+  ticket_details: ApprovalRequestTicket;
 }
 
-export interface MockTicket {
+export interface ApprovalRequestTicket {
   id: string;
   priority: string;
   custom_fields: Array<
     Record<string, string | boolean | Array<string> | undefined>
   >;
-  requester: MockUser;
+  requester: ApprovalRequestUser;
 }
 
-export interface MockSearchApprovalRequest {
+export interface SearchApprovalRequest {
   id: number;
   subject: string;
   requester_name: string;
   created_by_name: string;
   created_at: string;
-  status: MockApprovalRequestStatus;
+  status: ApprovalRequestStatus;
 }

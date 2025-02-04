@@ -7,14 +7,18 @@ export function useApprovalRequest(
 ): {
   approvalRequest: ApprovalRequest | undefined;
   errorFetchingApprovalRequest: unknown;
+  isLoading: boolean;
+  setApprovalRequest: (approvalRequest: ApprovalRequest) => void;
 } {
   const [approvalRequest, setApprovalRequest] = useState<
     ApprovalRequest | undefined
   >();
   const [error, setError] = useState<unknown>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchApprovalRequest = async () => {
+      setIsLoading(true);
       try {
         const response = await fetch(
           `/api/v2/approval_workflow_instances/${approvalWorkflowInstanceId}/approval_requests/${approvalRequestId}`
@@ -28,10 +32,17 @@ export function useApprovalRequest(
         }
       } catch (error) {
         setError(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchApprovalRequest();
   }, [approvalRequestId, approvalWorkflowInstanceId]);
 
-  return { approvalRequest, errorFetchingApprovalRequest: error };
+  return {
+    approvalRequest,
+    errorFetchingApprovalRequest: error,
+    isLoading,
+    setApprovalRequest,
+  };
 }

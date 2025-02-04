@@ -13,7 +13,7 @@ import { Anchor } from "@zendeskgarden/react-buttons";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import ApprovalStatusTag from "../approval-request/ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
-import type { MockSearchApprovalRequest } from "../../types";
+import type { SearchApprovalRequest } from "../../types";
 
 const ApprovalRequestAnchor = styled(Anchor)`
   &:visited {
@@ -22,41 +22,49 @@ const ApprovalRequestAnchor = styled(Anchor)`
 `;
 
 interface ApprovalRequestListTableProps {
-  requests: MockSearchApprovalRequest[];
+  requests: SearchApprovalRequest[];
   helpCenterPath: string;
+  baseLocale: string;
 }
 
 function ApprovalRequestListTable({
   requests,
   helpCenterPath,
+  baseLocale,
 }: ApprovalRequestListTableProps) {
   return (
     <Table size="large">
       <Head>
         <HeaderRow>
-          <HeaderCell width="40%">Subject</HeaderCell>
-          <HeaderCell>Requester</HeaderCell>
-          <HeaderCell>Sent by</HeaderCell>
-          <HeaderCell>Sent on</HeaderCell>
-          <HeaderCell>Approval status</HeaderCell>
+          <HeaderCell width="40%" isTruncated>
+            Subject
+          </HeaderCell>
+          <HeaderCell isTruncated>Requester</HeaderCell>
+          <HeaderCell isTruncated>Sent by</HeaderCell>
+          <HeaderCell isTruncated>Sent on</HeaderCell>
+          <HeaderCell isTruncated>Approval status</HeaderCell>
         </HeaderRow>
       </Head>
       <Body>
         {requests.map((request) => (
           <Row key={request.id}>
-            <Cell>
+            <Cell isTruncated>
               <ApprovalRequestAnchor
                 href={`${helpCenterPath}/approval_requests/${request.id}`}
               >
                 {request.subject}
               </ApprovalRequestAnchor>
             </Cell>
-            <Cell>{request.requester_name}</Cell>
-            <Cell>{request.created_by_name}</Cell>
-            <Cell>
-              {formatApprovalRequestDate(request.created_at, "short")}
+            <Cell isTruncated>{request.requester_name}</Cell>
+            <Cell isTruncated>{request.created_by_name}</Cell>
+            <Cell isTruncated>
+              {formatApprovalRequestDate(
+                request.created_at,
+                baseLocale,
+                "short"
+              )}
             </Cell>
-            <Cell>
+            <Cell isTruncated>
               <ApprovalStatusTag status={request.status} />
             </Cell>
           </Row>

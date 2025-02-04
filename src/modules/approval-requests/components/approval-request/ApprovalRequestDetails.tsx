@@ -31,10 +31,12 @@ const DetailRow = styled(Row)`
 
 interface ApprovalRequestDetailsProps {
   approvalRequest: ApprovalRequest;
+  baseLocale: string;
 }
 
 function ApprovalRequestDetails({
   approvalRequest,
+  baseLocale,
 }: ApprovalRequestDetailsProps) {
   return (
     <Container>
@@ -54,7 +56,9 @@ function ApprovalRequestDetails({
           <FieldLabel>Sent on</FieldLabel>
         </Col>
         <Col size={8}>
-          <MD>{formatApprovalRequestDate(approvalRequest.created_at)}</MD>
+          <MD>
+            {formatApprovalRequestDate(approvalRequest.created_at, baseLocale)}
+          </MD>
         </Col>
       </DetailRow>
       <DetailRow>
@@ -75,7 +79,7 @@ function ApprovalRequestDetails({
           </MD>
         </Col>
       </DetailRow>
-      {/* MKTODO: need to add decided at and decision notes */}
+      {/* MKTODO: need to add decided at and decision notes when returning from the API */}
     </Container>
   );
 }
