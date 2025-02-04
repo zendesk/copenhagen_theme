@@ -47,12 +47,12 @@ parts:
       value: "Approval request details"
   - translation:
       key: "approval-requests.request.approval-request-details.sent-by"
-      title: "Label for the person who submitted the approval request"
+      title: "Label for the person who submitted the approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1-RFlHvEdegvChs6TuVTXxx6ubeSab-hc/view?usp=drive_link"
       value: "Sent by"
   - translation:
       key: "approval-requests.request.approval-request-details.sent-on"
-      title: "Label for the date that the approval request was submitted"
+      title: "Label for the date that the approval request was submitted - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1Kmy-XgNfCE5dgh-oipsc1P_sZ3gmvjD6/view?usp=drive_link"
       value: "Sent on"
   - translation:
@@ -67,17 +67,17 @@ parts:
       value: "Status"
   - translation:
       key: "approval-requests.request.approval-request-details.comment"
-      title: "Label for the decision comment on an approval request"
+      title: ""Noun - Label for the decision comment on an approval request"
       screenshot: "https://drive.google.com/file/d/1j9IzjnAa1AVXzWq6r4x4QcaQN-Y64lM5/view?usp=drive_link"
       value: "Comment"
   - translation:
-      key: "approval-requests.request.approval-request-details.decided"
+      key: "approval-requests.request.approval-request-details.decided - Subject: 'approval request'"
       title: "Label for the decision date on an approval request"
       screenshot: "https://drive.google.com/file/d/1xpM_3Rt3hCD8aE-U7mEbL0Sh5dsC0ScN/view?usp=drive_link"
       value: "Decided"
   - translation:
       key: "approval-requests.request.approval-request-details.withdrawn-on"
-      title: "Label for the withdrawn date on an approval request"
+      title: "Label for the withdrawn date on an approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1hkgy-71WFkLQnZ0PmEHFaWhfnuguiUmv/view?usp=drive_link"
       value: "Withdrawn on"
   - translation:
@@ -162,12 +162,12 @@ parts:
       value: "Requester"
   - translation:
       key: "approval-requests.list.table.sent-by"
-      title: "Header cell label for the sent by column of the approval requests list table"
+      title: "Header cell label for the sent by column of the approval requests list table - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1k49KpSKk1OT4NYfeZqdb7WZLEwJZndpq/view?usp=drive_link"
       value: "Sent by"
   - translation:
       key: "approval-requests.list.table.sent-on"
-      title: "Header cell label for the sent on column of the approval requests list table"
+      title: "Header cell label for the sent on column of the approval requests list table - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1i2fKqUDlWbNnYRZdxp041dAPhMsFznXO/view?usp=drive_link"
       value: "Sent on"
   - translation:
@@ -187,16 +187,16 @@ parts:
       value: "Info needed"
   - translation:
       key: "approval-requests.status.approved"
-      title: "Status label for the approved status of an approval request"
+      title: "Status label for the approved status of an approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1Xc8uehxpLHQR2Pjxfyo-wbvooPwe8-WX/view?usp=drive_link"
       value: "Approved"
   - translation:
       key: "approval-requests.status.denied"
-      title: "Status label for the denied status of an approval request"
+      title: "Status label for the denied status of an approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/13qjrnfFVk61r5QMxd4CL_B8RY4cYzO1r/view?usp=drive_link"
       value: "Denied"
   - translation:
       key: "approval-requests.status.withdrawn"
-      title: "Status label for the withdrawn status of an approval request"
+      title: "Status label for the withdrawn status of an approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1iOTsHEB5xae4LGZbjr4ibtdSDf0h9BOE/view?usp=drive_link"
       value: "Withdrawn"
