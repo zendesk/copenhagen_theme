@@ -43,10 +43,7 @@ function CustomFieldValue({
 }: {
   value: string | boolean | Array<string> | undefined;
 }) {
-  if (!value) {
-    return <MD>{NULL_VALUE_PLACEHOLDER}</MD>;
-  }
-  if (Array.isArray(value)) {
+  if (Array.isArray(value) && value.length > 0) {
     return (
       <MD>
         {value.map((val) => (
@@ -60,6 +57,10 @@ function CustomFieldValue({
 
   if (typeof value === "boolean") {
     return <MD>{value ? "Yes" : "No"}</MD>;
+  }
+
+  if (!value || (Array.isArray(value) && value.length === 0)) {
+    return <MD>{NULL_VALUE_PLACEHOLDER}</MD>;
   }
 
   return <MD>{value}</MD>;

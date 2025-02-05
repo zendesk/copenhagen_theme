@@ -34,7 +34,9 @@ module.exports = {
     "@typescript-eslint/consistent-type-imports": "error",
     "check-file/folder-naming-convention": [
       "error",
-      { "src/**/": "KEBAB_CASE" },
+      {
+        "src/**/!(__tests__)/": "KEBAB_CASE",
+      },
     ],
     "check-file/filename-naming-convention": [
       "error",
