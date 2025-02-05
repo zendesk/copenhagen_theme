@@ -79,7 +79,31 @@ function ApprovalRequestDetails({
           </MD>
         </Col>
       </DetailRow>
-      {/* MKTODO: need to add decided at and decision notes when returning from the API */}
+      {approvalRequest.decided_at && (
+        <DetailRow>
+          <Col size={4}>
+            <FieldLabel>Decided</FieldLabel>
+          </Col>
+          <Col size={8}>
+            <MD>
+              {formatApprovalRequestDate(
+                approvalRequest.decided_at,
+                baseLocale
+              )}
+            </MD>
+          </Col>
+        </DetailRow>
+      )}
+      {approvalRequest.decision_notes.length > 0 && (
+        <DetailRow>
+          <Col size={4}>
+            <FieldLabel>Comment</FieldLabel>
+          </Col>
+          <Col size={8}>
+            <MD>{approvalRequest.decision_notes[0]}</MD>
+          </Col>
+        </DetailRow>
+      )}
     </Container>
   );
 }

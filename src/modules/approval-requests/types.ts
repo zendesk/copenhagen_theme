@@ -21,8 +21,10 @@ export interface ApprovalRequest {
   message: string;
   status: ApprovalRequestStatus;
   created_at: string;
-  assignee_user: ApprovalRequestUser;
   created_by_user: ApprovalRequestUser;
+  decided_at: string | null;
+  decision_notes: string[];
+  assignee_user: ApprovalRequestUser;
   ticket_details: ApprovalRequestTicket;
 }
 

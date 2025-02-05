@@ -7,6 +7,7 @@ import type {
 export function useSearchApprovalRequests(): {
   approvalRequests: SearchApprovalRequest[];
   errorFetchingApprovalRequests: unknown;
+  approvalRequestStatus: ApprovalRequestDropdownStatus;
   setApprovalRequestStatus: Dispatch<
     SetStateAction<ApprovalRequestDropdownStatus>
   >;
@@ -66,6 +67,7 @@ export function useSearchApprovalRequests(): {
   return {
     approvalRequests,
     errorFetchingApprovalRequests: error,
+    approvalRequestStatus,
     setApprovalRequestStatus,
     isLoading: isLoading,
   };

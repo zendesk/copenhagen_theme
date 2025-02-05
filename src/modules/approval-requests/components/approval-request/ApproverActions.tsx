@@ -2,10 +2,15 @@ import { useState, useCallback, memo } from "react";
 import styled from "styled-components";
 import { Button } from "@zendeskgarden/react-buttons";
 import { Field, Label, Message, Textarea } from "@zendeskgarden/react-forms";
+import { useNotify } from "../../../shared/notifications/useNotify";
 import { submitApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalDecision } from "../../submitApprovalDecision";
-import { useNotify } from "../../../shared/notifications/useNotify";
 import type { ApprovalRequest } from "../../types";
+
+const PENDING_APPROVAL_STATUS = {
+  APPROVED: "APPROVED",
+  REJECTED: "REJECTED",
+} as const;
 
 const ButtonContainer = styled.div`
   display: flex;
@@ -38,21 +43,23 @@ function ApproverActions({
   const notify = useNotify();
   const [comment, setComment] = useState("");
   const [pendingStatus, setPendingStatus] = useState<
-    "APPROVED" | "REJECTED" | null
+    | (typeof PENDING_APPROVAL_STATUS)[keyof typeof PENDING_APPROVAL_STATUS]
+    | null
   >(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showValidation, setShowValidation] = useState(false);
 
-  const isCommentValid = pendingStatus !== "REJECTED" || comment.trim() !== "";
+  const isCommentValid =
+    pendingStatus !== PENDING_APPROVAL_STATUS.REJECTED || comment.trim() !== "";
   const shouldShowValidationError = showValidation && !isCommentValid;
 
   const handleApproveRequestClick = useCallback(() => {
-    setPendingStatus("APPROVED");
+    setPendingStatus(PENDING_APPROVAL_STATUS.APPROVED);
     setShowValidation(false);
   }, []);
 
   const handleDenyRequestClick = useCallback(() => {
-    setPendingStatus("REJECTED");
+    setPendingStatus(PENDING_APPROVAL_STATUS.REJECTED);
     setShowValidation(false);
   }, []);
 
@@ -76,7 +83,9 @@ function ApproverActions({
     setIsSubmitting(true);
     try {
       const decision: ApprovalDecision =
-        pendingStatus === "APPROVED" ? "approved" : "rejected";
+        pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
+          ? "approved"
+          : "rejected";
       const response = await submitApprovalDecision(
         approvalWorkflowInstanceId,
         approvalRequestId,
@@ -111,7 +120,7 @@ function ApproverActions({
 
   if (pendingStatus) {
     const fieldLabel =
-      pendingStatus === "APPROVED"
+      pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
         ? "Additional note"
         : "Reason for denial* (Required)";
     return (
@@ -131,11 +140,13 @@ function ApproverActions({
         </Field>
         <ButtonContainer>
           <Button
-            isPrimary={pendingStatus === "APPROVED"}
+            isPrimary={pendingStatus === PENDING_APPROVAL_STATUS.APPROVED}
             onClick={handleSubmitDecisionClick}
             disabled={isSubmitting}
           >
-            {pendingStatus === "APPROVED" ? "Submit approval" : "Submit denial"}
+            {pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
+              ? "Submit approval"
+              : "Submit denial"}
           </Button>
           <Button onClick={handleCancelClick} disabled={isSubmitting}>
             Cancel

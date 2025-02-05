@@ -42,7 +42,16 @@ const DropdownFilterField = styled(Field)`
   flex: 1;
 `;
 
+const ApprovalRequestStatusInputMap = {
+  any: "Any",
+  active: "Decision pending",
+  approved: "Approved",
+  rejected: "Denied",
+  withdrawn: "Withdrawn",
+};
+
 interface ApprovalRequestListFiltersProps {
+  approvalRequestStatus: ApprovalRequestDropdownStatus;
   setApprovalRequestStatus: Dispatch<
     SetStateAction<ApprovalRequestDropdownStatus>
   >;
@@ -50,6 +59,7 @@ interface ApprovalRequestListFiltersProps {
 }
 
 function ApprovalRequestListFilters({
+  approvalRequestStatus,
   setApprovalRequestStatus,
   setSearchTerm,
 }: ApprovalRequestListFiltersProps) {
@@ -91,8 +101,13 @@ function ApprovalRequestListFilters({
       </SearchField>
       <DropdownFilterField>
         <Label>Status:</Label>
-        <Combobox isEditable={false} onChange={handleChange}>
-          <Option value="any" isSelected label="Any" />
+        <Combobox
+          isEditable={false}
+          onChange={handleChange}
+          selectionValue={approvalRequestStatus}
+          inputValue={ApprovalRequestStatusInputMap[approvalRequestStatus]}
+        >
+          <Option value="any" label="Any" />
           <Option value="active" label="Decision pending" />
           {/* <Option value="clarification_requested" label="Info needed" /> */}
           <Option value="approved" label="Approved" />

@@ -31,6 +31,7 @@ function ApprovalRequestListPage({
   const {
     approvalRequests,
     errorFetchingApprovalRequests: error,
+    approvalRequestStatus,
     setApprovalRequestStatus,
     isLoading,
   } = useSearchApprovalRequests();
@@ -60,6 +61,7 @@ function ApprovalRequestListPage({
     <Container>
       <XXL isBold>Approval requests</XXL>
       <ApprovalRequestListFilters
+        approvalRequestStatus={approvalRequestStatus}
         setApprovalRequestStatus={setApprovalRequestStatus}
         setSearchTerm={setSearchTerm}
       />

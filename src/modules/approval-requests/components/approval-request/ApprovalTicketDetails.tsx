@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Grid } from "@zendeskgarden/react-grid";
-import type { MockTicket } from "../../types";
 import { Tag } from "@zendeskgarden/react-tags";
+import type { ApprovalRequestTicket } from "../../types";
 
 const TicketContainer = styled(Grid)`
   padding: ${(props) => props.theme.space.md}; /* 20px */
@@ -36,11 +36,16 @@ const CustomFieldsGrid = styled.div`
   }
 `;
 
+const NULL_VALUE_PLACEHOLDER = "-";
+
 function CustomFieldValue({
   value,
 }: {
   value: string | boolean | Array<string> | undefined;
 }) {
+  if (!value) {
+    return <MD>{NULL_VALUE_PLACEHOLDER}</MD>;
+  }
   if (Array.isArray(value)) {
     return (
       <MD>
@@ -61,7 +66,7 @@ function CustomFieldValue({
 }
 
 interface ApprovalTicketDetailsProps {
-  ticket: MockTicket;
+  ticket: ApprovalRequestTicket;
 }
 
 function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
