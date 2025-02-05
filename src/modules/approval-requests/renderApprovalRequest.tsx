@@ -15,7 +15,7 @@ export async function renderApprovalRequest(
   render(
     <ThemeProviders theme={createTheme(settings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ApprovalRequestPage {...props} />
+        <ApprovalRequestPage {...props} helpCenterPath={helpCenterPath} />
       </ErrorBoundary>
     </ThemeProviders>,
     container

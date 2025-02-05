@@ -6,10 +6,13 @@ import ApprovalRequestDetails from "./components/approval-request/ApprovalReques
 import ApprovalTicketDetails from "./components/approval-request/ApprovalTicketDetails";
 import ApproverActions from "./components/approval-request/ApproverActions";
 import { useApprovalRequest } from "./hooks/useApprovalRequest";
+import type { Organization } from "../ticket-fields";
+import ApprovalRequestBreadcrumbs from "./components/approval-request/ApprovalRequestBreadcrumbs";
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  margin-top: ${(props) => props.theme.space.xl}; /* 40px */
   margin-bottom: ${(props) => props.theme.space.lg}; /* 32px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
@@ -61,6 +64,8 @@ export interface ApprovalRequestPageProps {
   approvalWorkflowInstanceId: string;
   approvalRequestId: string;
   baseLocale: string;
+  helpCenterPath: string;
+  organizations: Array<Organization>;
   userId: number;
 }
 
@@ -68,6 +73,8 @@ function ApprovalRequestPage({
   approvalWorkflowInstanceId,
   approvalRequestId,
   baseLocale,
+  helpCenterPath,
+  organizations,
   userId,
 }: ApprovalRequestPageProps) {
   const {
@@ -95,6 +102,11 @@ function ApprovalRequestPage({
 
   return (
     <>
+      <ApprovalRequestBreadcrumbs
+        helpCenterPath={helpCenterPath}
+        organizations={organizations}
+        isApprovalRequestPage
+      />
       <Container>
         <LeftColumn>
           <XXL isBold>{approvalRequest?.subject}</XXL>

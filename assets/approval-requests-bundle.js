@@ -1,4 +1,4 @@
-import { r as reactExports, s as styled, d as Field, a as MediaInput, k as debounce, j as jsxRuntimeExports, e as Label, al as SvgSearchStroke, g as Combobox, O as Option, B as Tag, am as Ellipsis, G as getColorV8, A as Anchor, an as Table, ao as Head, ap as HeaderRow, aq as HeaderCell, ar as Body, as as Row, at as Cell, au as Spinner, av as XXL, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme, ah as ErrorBoundary, a9 as Grid, ad as MD, ab as Row$1, aa as Col, c as useNotify, F as Field$1, L as Label$1, T as Textarea, M as Message, Z as Button } from 'shared';
+import { r as reactExports, s as styled, d as Field, a as MediaInput, k as debounce, j as jsxRuntimeExports, e as Label, al as SvgSearchStroke, g as Combobox, O as Option, B as Tag, am as Ellipsis, G as getColorV8, A as Anchor, an as Table, ao as Head, ap as HeaderRow, aq as HeaderCell, ar as Body, as as Row, at as Cell, ad as MD, au as Spinner, av as XXL, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme, ah as ErrorBoundary, a9 as Grid, ab as Row$1, aa as Col, c as useNotify, F as Field$1, L as Label$1, T as Textarea, M as Message, Z as Button, aw as Breadcrumb } from 'shared';
 
 function useSearchApprovalRequests() {
     const [approvalRequests, setApprovalRequests] = reactExports.useState([]);
@@ -144,11 +144,15 @@ const Container$2 = styled.div `
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg};
+  margin-top: ${(props) => props.theme.space.xl}; /* 40px */
 `;
 const LoadingContainer$1 = styled.div `
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const NoApprovalRequestsText = styled(MD) `
+  color: ${(props) => getColorV8("grey", 600, props.theme)};
 `;
 function ApprovalRequestListPage({ baseLocale, helpCenterPath, }) {
     const [searchTerm, setSearchTerm] = reactExports.useState("");
@@ -165,7 +169,7 @@ function ApprovalRequestListPage({ baseLocale, helpCenterPath, }) {
     if (isLoading) {
         return (jsxRuntimeExports.jsx(LoadingContainer$1, { children: jsxRuntimeExports.jsx(Spinner, { size: "64" }) }));
     }
-    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: "Approval requests" }), jsxRuntimeExports.jsx(ApprovalRequestListFilters$1, { approvalRequestStatus: approvalRequestStatus, setApprovalRequestStatus: setApprovalRequestStatus, setSearchTerm: setSearchTerm }), jsxRuntimeExports.jsx(ApprovalRequestListTable$1, { requests: filteredRequests, baseLocale: baseLocale, helpCenterPath: helpCenterPath })] }));
+    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: "Approval requests" }), jsxRuntimeExports.jsx(ApprovalRequestListFilters$1, { approvalRequestStatus: approvalRequestStatus, setApprovalRequestStatus: setApprovalRequestStatus, setSearchTerm: setSearchTerm }), approvalRequests.length === 0 ? (jsxRuntimeExports.jsx(NoApprovalRequestsText, { children: "No approval requests found." })) : (jsxRuntimeExports.jsx(ApprovalRequestListTable$1, { requests: filteredRequests, baseLocale: baseLocale, helpCenterPath: helpCenterPath }))] }));
 }
 var ApprovalRequestListPage$1 = reactExports.memo(ApprovalRequestListPage);
 
@@ -389,9 +393,28 @@ function useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId) {
     };
 }
 
+const StyledBreadcrumb = styled(Breadcrumb) `
+  margin-top: ${(props) => props.theme.space.lg}; /* 32px */
+`;
+const BreadcrumbAnchor = styled(Anchor) `
+  &:visited {
+    color: ${(props) => getColorV8("blue", 600, props.theme)};
+  }
+`;
+function ApprovalRequestBreadcrumbs({ organizations, helpCenterPath, isApprovalRequestPage = false, }) {
+    console.log(organizations, helpCenterPath, isApprovalRequestPage);
+    const defaultOrganizationName = organizations.length > 0 ? organizations[0]?.name : null;
+    if (isApprovalRequestPage) {
+        return (jsxRuntimeExports.jsxs(StyledBreadcrumb, { children: [jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }), jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: "Approval requests" })] }));
+    }
+    return (jsxRuntimeExports.jsx(StyledBreadcrumb, { children: jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }) }));
+}
+var ApprovalRequestBreadcrumbs$1 = reactExports.memo(ApprovalRequestBreadcrumbs);
+
 const Container = styled.div `
   display: flex;
   flex-direction: row;
+  margin-top: ${(props) => props.theme.space.xl}; /* 40px */
   margin-bottom: ${(props) => props.theme.space.lg}; /* 32px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
@@ -435,7 +458,7 @@ const RightColumn = styled.div `
     margin-left: 0;
   }
 `;
-function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, baseLocale, userId, }) {
+function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, baseLocale, helpCenterPath, organizations, userId, }) {
     const { approvalRequest, setApprovalRequest, errorFetchingApprovalRequest: error, isLoading, } = useApprovalRequest(approvalWorkflowInstanceId, approvalRequestId);
     if (error) {
         throw error;
@@ -445,12 +468,12 @@ function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, ba
     }
     const showApproverActions = userId === approvalRequest?.assignee_user?.id &&
         approvalRequest?.status === "active";
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest }))] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ApprovalRequestBreadcrumbs$1, { helpCenterPath: helpCenterPath, organizations: organizations, isApprovalRequestPage: true }), jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest }))] }));
 }
 var ApprovalRequestPage$1 = reactExports.memo(ApprovalRequestPage);
 
 async function renderApprovalRequest(container, settings, props, helpCenterPath) {
-    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ApprovalRequestPage$1, { ...props }) }) }), container);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ApprovalRequestPage$1, { ...props, helpCenterPath: helpCenterPath }) }) }), container);
 }
 
 export { renderApprovalRequest, renderApprovalRequestList };
