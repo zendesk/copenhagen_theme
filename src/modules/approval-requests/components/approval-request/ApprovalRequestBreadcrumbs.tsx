@@ -17,21 +17,17 @@ const BreadcrumbAnchor = styled(Anchor)`
 
 interface ApprovalRequestBreadcrumbsProps {
   helpCenterPath: string;
-  logoUrl?: string;
   organizations: Array<Organization>;
-  isApprovalRequestPage?: boolean;
 }
 
 function ApprovalRequestBreadcrumbs({
   organizations,
   helpCenterPath,
-  isApprovalRequestPage = false,
 }: ApprovalRequestBreadcrumbsProps) {
-  console.log(organizations, helpCenterPath, isApprovalRequestPage);
   const defaultOrganizationName =
     organizations.length > 0 ? organizations[0]?.name : null;
 
-  if (isApprovalRequestPage) {
+  if (defaultOrganizationName) {
     return (
       <StyledBreadcrumb>
         <BreadcrumbAnchor href={helpCenterPath}>
@@ -46,8 +42,8 @@ function ApprovalRequestBreadcrumbs({
 
   return (
     <StyledBreadcrumb>
-      <BreadcrumbAnchor href={helpCenterPath}>
-        {defaultOrganizationName}
+      <BreadcrumbAnchor href={`${helpCenterPath}/approval_requests`}>
+        Approval requests
       </BreadcrumbAnchor>
     </StyledBreadcrumb>
   );

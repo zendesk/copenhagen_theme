@@ -227,14 +227,14 @@ const CustomFieldsGrid = styled.div `
 `;
 const NULL_VALUE_PLACEHOLDER = "-";
 function CustomFieldValue({ value, }) {
-    if (!value) {
-        return jsxRuntimeExports.jsx(MD, { children: NULL_VALUE_PLACEHOLDER });
-    }
-    if (Array.isArray(value)) {
+    if (Array.isArray(value) && value.length > 0) {
         return (jsxRuntimeExports.jsx(MD, { children: value.map((val) => (jsxRuntimeExports.jsx(MultiselectTag, { hue: "grey", children: val }, val))) }));
     }
     if (typeof value === "boolean") {
         return jsxRuntimeExports.jsx(MD, { children: value ? "Yes" : "No" });
+    }
+    if (!value || (Array.isArray(value) && value.length === 0)) {
+        return jsxRuntimeExports.jsx(MD, { children: NULL_VALUE_PLACEHOLDER });
     }
     return jsxRuntimeExports.jsx(MD, { children: value });
 }
@@ -401,13 +401,12 @@ const BreadcrumbAnchor = styled(Anchor) `
     color: ${(props) => getColorV8("blue", 600, props.theme)};
   }
 `;
-function ApprovalRequestBreadcrumbs({ organizations, helpCenterPath, isApprovalRequestPage = false, }) {
-    console.log(organizations, helpCenterPath, isApprovalRequestPage);
+function ApprovalRequestBreadcrumbs({ organizations, helpCenterPath, }) {
     const defaultOrganizationName = organizations.length > 0 ? organizations[0]?.name : null;
-    if (isApprovalRequestPage) {
+    if (defaultOrganizationName) {
         return (jsxRuntimeExports.jsxs(StyledBreadcrumb, { children: [jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }), jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: "Approval requests" })] }));
     }
-    return (jsxRuntimeExports.jsx(StyledBreadcrumb, { children: jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }) }));
+    return (jsxRuntimeExports.jsx(StyledBreadcrumb, { children: jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: "Approval requests" }) }));
 }
 var ApprovalRequestBreadcrumbs$1 = reactExports.memo(ApprovalRequestBreadcrumbs);
 
@@ -468,7 +467,7 @@ function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, ba
     }
     const showApproverActions = userId === approvalRequest?.assignee_user?.id &&
         approvalRequest?.status === "active";
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ApprovalRequestBreadcrumbs$1, { helpCenterPath: helpCenterPath, organizations: organizations, isApprovalRequestPage: true }), jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest }))] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ApprovalRequestBreadcrumbs$1, { helpCenterPath: helpCenterPath, organizations: organizations }), jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest }))] }));
 }
 var ApprovalRequestPage$1 = reactExports.memo(ApprovalRequestPage);
 

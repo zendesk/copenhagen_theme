@@ -105,7 +105,6 @@ function ApprovalRequestPage({
       <ApprovalRequestBreadcrumbs
         helpCenterPath={helpCenterPath}
         organizations={organizations}
-        isApprovalRequestPage
       />
       <Container>
         <LeftColumn>
