@@ -29,11 +29,14 @@ export interface ApprovalRequestListPageProps {
   helpCenterPath: string;
 }
 
+type SortDirection = "asc" | "desc" | undefined;
+
 function ApprovalRequestListPage({
   baseLocale,
   helpCenterPath,
 }: ApprovalRequestListPageProps) {
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortDirection, setSortDirection] = useState<SortDirection>(undefined);
   const {
     approvalRequests,
     errorFetchingApprovalRequests: error,
@@ -42,14 +45,28 @@ function ApprovalRequestListPage({
     isLoading,
   } = useSearchApprovalRequests();
 
-  const filteredRequests = useMemo(() => {
-    if (!searchTerm) return approvalRequests;
+  const sortedAndFilteredRequests = useMemo(() => {
+    let results = [...approvalRequests];
 
-    const term = searchTerm.toLowerCase();
-    return approvalRequests.filter((request) =>
-      request.subject.toLowerCase().includes(term)
-    );
-  }, [approvalRequests, searchTerm]);
+    // Apply search filter
+    if (searchTerm) {
+      const term = searchTerm.toLowerCase();
+      results = results.filter((request) =>
+        request.subject.toLowerCase().includes(term)
+      );
+    }
+
+    // Apply sorting
+    if (sortDirection) {
+      results.sort((a, b) => {
+        const dateA = new Date(a.created_at).getTime();
+        const dateB = new Date(b.created_at).getTime();
+        return sortDirection === "asc" ? dateA - dateB : dateB - dateA;
+      });
+    }
+
+    return results;
+  }, [approvalRequests, searchTerm, sortDirection]);
 
   if (error) {
     throw error;
@@ -77,9 +94,11 @@ function ApprovalRequestListPage({
         </NoApprovalRequestsText>
       ) : (
         <ApprovalRequestListTable
-          requests={filteredRequests}
+          requests={sortedAndFilteredRequests}
           baseLocale={baseLocale}
           helpCenterPath={helpCenterPath}
+          sortDirection={sortDirection}
+          onSortChange={setSortDirection}
         />
       )}
     </Container>

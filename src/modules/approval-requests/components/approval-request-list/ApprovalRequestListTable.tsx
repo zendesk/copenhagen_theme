@@ -8,6 +8,7 @@ import {
   Body,
   HeaderRow,
   HeaderCell,
+  SortableCell,
 } from "@zendeskgarden/react-tables";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import { getColorV8 } from "@zendeskgarden/react-theming";
@@ -21,17 +22,39 @@ const ApprovalRequestAnchor = styled(Anchor)`
   }
 `;
 
+const sortableCellProps = {
+  style: {
+    paddingTop: "22px",
+    paddingBottom: "22px",
+  },
+  isTruncated: true,
+};
+
 interface ApprovalRequestListTableProps {
   requests: SearchApprovalRequest[];
   helpCenterPath: string;
   baseLocale: string;
+  sortDirection: "asc" | "desc" | undefined;
+  onSortChange: (direction: "asc" | "desc" | undefined) => void;
 }
 
 function ApprovalRequestListTable({
   requests,
   helpCenterPath,
   baseLocale,
+  sortDirection,
+  onSortChange,
 }: ApprovalRequestListTableProps) {
+  const handleSortClick = () => {
+    if (sortDirection === "asc") {
+      onSortChange("desc");
+    } else if (sortDirection === "desc") {
+      onSortChange(undefined);
+    } else {
+      onSortChange("asc");
+    }
+  };
+
   return (
     <Table size="large">
       <Head>
@@ -41,7 +64,13 @@ function ApprovalRequestListTable({
           </HeaderCell>
           <HeaderCell isTruncated>Requester</HeaderCell>
           <HeaderCell isTruncated>Sent by</HeaderCell>
-          <HeaderCell isTruncated>Sent on</HeaderCell>
+          <SortableCell
+            onClick={handleSortClick}
+            sort={sortDirection}
+            cellProps={sortableCellProps}
+          >
+            Sent on
+          </SortableCell>
           <HeaderCell isTruncated>Approval status</HeaderCell>
         </HeaderRow>
       </Head>
@@ -58,11 +87,7 @@ function ApprovalRequestListTable({
             <Cell isTruncated>{request.requester_name}</Cell>
             <Cell isTruncated>{request.created_by_name}</Cell>
             <Cell isTruncated>
-              {formatApprovalRequestDate(
-                request.created_at,
-                baseLocale,
-                "short"
-              )}
+              {formatApprovalRequestDate(request.created_at, baseLocale)}
             </Cell>
             <Cell isTruncated>
               <ApprovalStatusTag status={request.status} />

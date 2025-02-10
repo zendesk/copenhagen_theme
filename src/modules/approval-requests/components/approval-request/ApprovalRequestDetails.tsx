@@ -79,6 +79,16 @@ function ApprovalRequestDetails({
           </MD>
         </Col>
       </DetailRow>
+      {approvalRequest.decision_notes.length > 0 && (
+        <DetailRow>
+          <Col size={4}>
+            <FieldLabel>Comment</FieldLabel>
+          </Col>
+          <Col size={8}>
+            <MD>{approvalRequest.decision_notes[0]}</MD>
+          </Col>
+        </DetailRow>
+      )}
       {approvalRequest.decided_at && (
         <DetailRow>
           <Col size={4}>
@@ -91,16 +101,6 @@ function ApprovalRequestDetails({
                 baseLocale
               )}
             </MD>
-          </Col>
-        </DetailRow>
-      )}
-      {approvalRequest.decision_notes.length > 0 && (
-        <DetailRow>
-          <Col size={4}>
-            <FieldLabel>Comment</FieldLabel>
-          </Col>
-          <Col size={8}>
-            <MD>{approvalRequest.decision_notes[0]}</MD>
           </Col>
         </DetailRow>
       )}

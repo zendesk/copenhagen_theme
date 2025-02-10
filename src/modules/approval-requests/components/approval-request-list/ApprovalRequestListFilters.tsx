@@ -34,10 +34,6 @@ const SearchField = styled(Field)`
   flex: 3;
 `;
 
-const StyledMediaInput = styled(MediaInput)`
-  border-radius: 25px;
-`;
-
 const DropdownFilterField = styled(Field)`
   flex: 1;
 `;
@@ -93,7 +89,7 @@ function ApprovalRequestListFilters({
     <FiltersContainer>
       <SearchField>
         <Label hidden>Search approval requests</Label>
-        <StyledMediaInput
+        <MediaInput
           start={<SearchIcon />}
           placeholder="Search approval requests"
           onChange={handleSearch}

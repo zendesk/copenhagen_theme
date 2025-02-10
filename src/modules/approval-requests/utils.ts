@@ -1,7 +1,7 @@
 export const formatApprovalRequestDate = (
   timestamp: string,
   locale: string,
-  monthFormat: Intl.DateTimeFormatOptions["month"] = "long"
+  monthFormat: Intl.DateTimeFormatOptions["month"] = "short"
 ) => {
   const date = new Date(timestamp);
   return `${date.toLocaleDateString(locale, {
@@ -11,5 +11,6 @@ export const formatApprovalRequestDate = (
   })} ${date.toLocaleTimeString(locale, {
     hour: "2-digit",
     minute: "2-digit",
+    hour12: false,
   })}`;
 };
