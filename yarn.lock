@@ -3946,6 +3946,14 @@
     polished "^4.3.1"
     prop-types "^15.5.7"
 
+"@zendeskgarden/react-avatars@8.76.9":
+  version "8.76.9"
+  resolved "https://registry.yarnpkg.com/@zendeskgarden/react-avatars/-/react-avatars-8.76.9.tgz#a093e7de455659fc891d18b57b61c52fd47e6394"
+  integrity sha512-W6WCm/CvrH1e1PSPI08Hj7ezJjc2HohlxWZi0QkfHGqa8DPd8f4ecHQvkLrjtM/2+/76XcqYgf2GxZK127MvPg==
+  dependencies:
+    polished "^4.3.1"
+    prop-types "^15.5.7"
+
 "@zendeskgarden/react-breadcrumbs@8.76.9":
   version "8.76.9"
   resolved "https://registry.yarnpkg.com/@zendeskgarden/react-breadcrumbs/-/react-breadcrumbs-8.76.9.tgz#a12e3e278dbb7035d45271b6b1a1cfe6c99cd1ad"

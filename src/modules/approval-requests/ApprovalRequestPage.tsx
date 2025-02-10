@@ -29,9 +29,6 @@ const LoadingContainer = styled.div`
 
 const LeftColumn = styled.div`
   flex: 2;
-  display: grid;
-  grid-template-rows: auto;
-  margin-right: ${(props) => props.theme.space.xl};
 
   & > *:first-child {
     margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
@@ -46,6 +43,7 @@ const LeftColumn = styled.div`
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    flex: 1;
     margin-right: 0;
     margin-bottom: ${(props) => props.theme.space.lg};
   }
@@ -53,7 +51,7 @@ const LeftColumn = styled.div`
 
 const RightColumn = styled.div`
   flex: 1;
-  margin-left: ${(props) => props.theme.space.xl};
+  margin-left: ${(props) => props.theme.space.base * 6}px; /* 24px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-left: 0;
@@ -128,6 +126,7 @@ function ApprovalRequestPage({
           approvalWorkflowInstanceId={approvalWorkflowInstanceId}
           approvalRequestId={approvalRequestId}
           setApprovalRequest={setApprovalRequest}
+          assigneeUser={approvalRequest?.assignee_user}
         />
       )}
     </>

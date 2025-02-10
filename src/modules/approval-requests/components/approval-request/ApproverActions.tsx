@@ -2,6 +2,7 @@ import { useState, useCallback, memo } from "react";
 import styled from "styled-components";
 import { Button } from "@zendeskgarden/react-buttons";
 import { Field, Label, Message, Textarea } from "@zendeskgarden/react-forms";
+import { Avatar } from "@zendeskgarden/react-avatars";
 import { useNotify } from "../../../shared/notifications/useNotify";
 import { submitApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalDecision } from "../../submitApprovalDecision";
@@ -12,13 +13,19 @@ const PENDING_APPROVAL_STATUS = {
   REJECTED: "REJECTED",
 } as const;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div<{
+  hasAvatar?: boolean;
+  isSubmitButton?: boolean;
+}>`
   display: flex;
   flex-direction: row;
   gap: ${(props) => props.theme.space.md}; /* 20px */
+  margin-left: ${(props) =>
+    props.hasAvatar ? "55px" : "0"}; // avatar width + margin + border
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex-direction: column;
+    flex-direction: ${(props) =>
+      props.isSubmitButton ? "row-reverse" : "column"};
     gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
   }
 `;
@@ -27,18 +34,42 @@ const CommentSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg}; /* 32px */
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  }
+`;
+
+const ActionWrapper = styled.div`
+  width: calc(
+    (100% * 2) / 3 - 16px
+  ); /* matches the width of the LeftColumn in the parent container */
+  margin-top: ${(props) => props.theme.space.lg}; /* 32px */
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 100%;
+  }
+`;
+
+const TextAreaContainer = styled.div`
+  display: flex;
+  gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  margin-top: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  align-items: flex-start;
 `;
 
 interface ApproverActionsProps {
   approvalRequestId: string;
   approvalWorkflowInstanceId: string;
   setApprovalRequest: (approvalRequest: ApprovalRequest) => void;
+  assigneeUser: ApprovalRequest["assignee_user"];
 }
 
 function ApproverActions({
   approvalRequestId,
   approvalWorkflowInstanceId,
   setApprovalRequest,
+  assigneeUser,
 }: ApproverActionsProps) {
   const notify = useNotify();
   const [comment, setComment] = useState("");
@@ -123,46 +154,62 @@ function ApproverActions({
       pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
         ? "Additional note"
         : "Reason for denial* (Required)";
+    const shouldShowAvatar = Boolean(assigneeUser?.photo?.content_url);
+
     return (
-      <CommentSection>
-        <Field>
-          <Label>{fieldLabel}</Label>
-          <Textarea
-            minRows={5}
-            value={comment}
-            onChange={handleInputValueChange}
-            disabled={isSubmitting}
-            validation={shouldShowValidationError ? "error" : undefined}
-          />
-          {shouldShowValidationError && (
-            <Message validation="error">Enter a reason for denial</Message>
-          )}
-        </Field>
-        <ButtonContainer>
-          <Button
-            isPrimary={pendingStatus === PENDING_APPROVAL_STATUS.APPROVED}
-            onClick={handleSubmitDecisionClick}
-            disabled={isSubmitting}
-          >
-            {pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-              ? "Submit approval"
-              : "Submit denial"}
-          </Button>
-          <Button onClick={handleCancelClick} disabled={isSubmitting}>
-            Cancel
-          </Button>
-        </ButtonContainer>
-      </CommentSection>
+      <ActionWrapper>
+        <CommentSection>
+          <Field>
+            <Label>{fieldLabel}</Label>
+            <TextAreaContainer>
+              {shouldShowAvatar && (
+                <Avatar>
+                  <img
+                    alt="Assignee avatar"
+                    src={assigneeUser.photo.content_url ?? undefined}
+                  />
+                </Avatar>
+              )}
+              <Textarea
+                minRows={5}
+                value={comment}
+                onChange={handleInputValueChange}
+                disabled={isSubmitting}
+                validation={shouldShowValidationError ? "error" : undefined}
+              />
+            </TextAreaContainer>
+            {shouldShowValidationError && (
+              <Message validation="error">Enter a reason for denial</Message>
+            )}
+          </Field>
+          <ButtonContainer hasAvatar={shouldShowAvatar} isSubmitButton>
+            <Button
+              isPrimary={pendingStatus === PENDING_APPROVAL_STATUS.APPROVED}
+              onClick={handleSubmitDecisionClick}
+              disabled={isSubmitting}
+            >
+              {pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
+                ? "Submit approval"
+                : "Submit denial"}
+            </Button>
+            <Button onClick={handleCancelClick} disabled={isSubmitting}>
+              Cancel
+            </Button>
+          </ButtonContainer>
+        </CommentSection>
+      </ActionWrapper>
     );
   }
 
   return (
-    <ButtonContainer>
-      <Button isPrimary onClick={handleApproveRequestClick}>
-        Approve request
-      </Button>
-      <Button onClick={handleDenyRequestClick}>Deny request</Button>
-    </ButtonContainer>
+    <ActionWrapper>
+      <ButtonContainer>
+        <Button isPrimary onClick={handleApproveRequestClick}>
+          Approve request
+        </Button>
+        <Button onClick={handleDenyRequestClick}>Deny request</Button>
+      </ButtonContainer>
+    </ActionWrapper>
   );
 }
 

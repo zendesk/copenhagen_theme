@@ -21,6 +21,7 @@
     "@zendeskgarden/container-grid": "^3.0.14",
     "@zendeskgarden/container-utilities": "^2.0.2",
     "@zendeskgarden/react-accordions": "8.76.9",
+    "@zendeskgarden/react-avatars": "8.76.9",
     "@zendeskgarden/react-breadcrumbs": "8.76.9",
     "@zendeskgarden/react-buttons": "8.76.9",
     "@zendeskgarden/react-datepickers": "8.76.9",

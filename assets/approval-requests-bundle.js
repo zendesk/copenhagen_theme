@@ -1,4 +1,4 @@
-import { r as reactExports, s as styled, d as Field, a as MediaInput, k as debounce, j as jsxRuntimeExports, e as Label, al as SvgSearchStroke, g as Combobox, O as Option, B as Tag, am as Ellipsis, G as getColorV8, A as Anchor, an as Table, ao as Head, ap as HeaderRow, aq as HeaderCell, ar as Body, as as Row, at as Cell, ad as MD, au as Spinner, av as XXL, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme, ah as ErrorBoundary, a9 as Grid, ab as Row$1, aa as Col, c as useNotify, F as Field$1, L as Label$1, T as Textarea, M as Message, Z as Button, aw as Breadcrumb } from 'shared';
+import { r as reactExports, s as styled, d as Field, a as MediaInput, k as debounce, j as jsxRuntimeExports, e as Label, al as SvgSearchStroke, g as Combobox, O as Option, B as Tag, am as Ellipsis, G as getColorV8, A as Anchor, an as Table, ao as Head, ap as HeaderRow, aq as HeaderCell, ar as Body, as as Row, at as Cell, ad as MD, au as Spinner, av as XXL, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme, ah as ErrorBoundary, a9 as Grid, ab as Row$1, aa as Col, c as useNotify, F as Field$1, L as Label$1, aw as Avatar, T as Textarea, M as Message, Z as Button, ax as Breadcrumb } from 'shared';
 
 function useSearchApprovalRequests() {
     const [approvalRequests, setApprovalRequests] = reactExports.useState([]);
@@ -277,9 +277,10 @@ const ButtonContainer = styled.div `
   display: flex;
   flex-direction: row;
   gap: ${(props) => props.theme.space.md}; /* 20px */
+  margin-left: ${(props) => props.hasAvatar ? "55px" : "0"}; // avatar width + margin + border
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex-direction: column;
+    flex-direction: ${(props) => props.isSubmitButton ? "row-reverse" : "column"};
     gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
   }
 `;
@@ -287,8 +288,28 @@ const CommentSection = styled.div `
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg}; /* 32px */
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  }
 `;
-function ApproverActions({ approvalRequestId, approvalWorkflowInstanceId, setApprovalRequest, }) {
+const ActionWrapper = styled.div `
+  width: calc(
+    (100% * 2) / 3 - 16px
+  ); /* matches the width of the LeftColumn in the parent container */
+  margin-top: ${(props) => props.theme.space.lg}; /* 32px */
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    width: 100%;
+  }
+`;
+const TextAreaContainer = styled.div `
+  display: flex;
+  gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
+  margin-top: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  align-items: flex-start;
+`;
+function ApproverActions({ approvalRequestId, approvalWorkflowInstanceId, setApprovalRequest, assigneeUser, }) {
     const notify = useNotify();
     const [comment, setComment] = reactExports.useState("");
     const [pendingStatus, setPendingStatus] = reactExports.useState(null);
@@ -351,11 +372,12 @@ function ApproverActions({ approvalRequestId, approvalWorkflowInstanceId, setApp
         const fieldLabel = pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
             ? "Additional note"
             : "Reason for denial* (Required)";
-        return (jsxRuntimeExports.jsxs(CommentSection, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: fieldLabel }), jsxRuntimeExports.jsx(Textarea, { minRows: 5, value: comment, onChange: handleInputValueChange, disabled: isSubmitting, validation: shouldShowValidationError ? "error" : undefined }), shouldShowValidationError && (jsxRuntimeExports.jsx(Message, { validation: "error", children: "Enter a reason for denial" }))] }), jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED, onClick: handleSubmitDecisionClick, disabled: isSubmitting, children: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-                                ? "Submit approval"
-                                : "Submit denial" }), jsxRuntimeExports.jsx(Button, { onClick: handleCancelClick, disabled: isSubmitting, children: "Cancel" })] })] }));
+        const shouldShowAvatar = Boolean(assigneeUser?.photo?.content_url);
+        return (jsxRuntimeExports.jsx(ActionWrapper, { children: jsxRuntimeExports.jsxs(CommentSection, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: fieldLabel }), jsxRuntimeExports.jsxs(TextAreaContainer, { children: [shouldShowAvatar && (jsxRuntimeExports.jsx(Avatar, { children: jsxRuntimeExports.jsx("img", { alt: "Assignee avatar", src: assigneeUser.photo.content_url ?? undefined }) })), jsxRuntimeExports.jsx(Textarea, { minRows: 5, value: comment, onChange: handleInputValueChange, disabled: isSubmitting, validation: shouldShowValidationError ? "error" : undefined })] }), shouldShowValidationError && (jsxRuntimeExports.jsx(Message, { validation: "error", children: "Enter a reason for denial" }))] }), jsxRuntimeExports.jsxs(ButtonContainer, { hasAvatar: shouldShowAvatar, isSubmitButton: true, children: [jsxRuntimeExports.jsx(Button, { isPrimary: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED, onClick: handleSubmitDecisionClick, disabled: isSubmitting, children: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
+                                    ? "Submit approval"
+                                    : "Submit denial" }), jsxRuntimeExports.jsx(Button, { onClick: handleCancelClick, disabled: isSubmitting, children: "Cancel" })] })] }) }));
     }
-    return (jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleApproveRequestClick, children: "Approve request" }), jsxRuntimeExports.jsx(Button, { onClick: handleDenyRequestClick, children: "Deny request" })] }));
+    return (jsxRuntimeExports.jsx(ActionWrapper, { children: jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleApproveRequestClick, children: "Approve request" }), jsxRuntimeExports.jsx(Button, { onClick: handleDenyRequestClick, children: "Deny request" })] }) }));
 }
 var ApproverActions$1 = reactExports.memo(ApproverActions);
 
@@ -428,9 +450,6 @@ const LoadingContainer = styled.div `
 `;
 const LeftColumn = styled.div `
   flex: 2;
-  display: grid;
-  grid-template-rows: auto;
-  margin-right: ${(props) => props.theme.space.xl};
 
   & > *:first-child {
     margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
@@ -445,13 +464,14 @@ const LeftColumn = styled.div `
   }
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    flex: 1;
     margin-right: 0;
     margin-bottom: ${(props) => props.theme.space.lg};
   }
 `;
 const RightColumn = styled.div `
   flex: 1;
-  margin-left: ${(props) => props.theme.space.xl};
+  margin-left: ${(props) => props.theme.space.base * 6}px; /* 24px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-left: 0;
@@ -467,7 +487,7 @@ function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, ba
     }
     const showApproverActions = userId === approvalRequest?.assignee_user?.id &&
         approvalRequest?.status === "active";
-    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ApprovalRequestBreadcrumbs$1, { helpCenterPath: helpCenterPath, organizations: organizations }), jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest }))] }));
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(ApprovalRequestBreadcrumbs$1, { helpCenterPath: helpCenterPath, organizations: organizations }), jsxRuntimeExports.jsxs(Container, { children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: approvalRequest?.subject }), jsxRuntimeExports.jsx(MD, { children: approvalRequest?.message }), approvalRequest?.ticket_details && (jsxRuntimeExports.jsx(ApprovalTicketDetails$1, { ticket: approvalRequest.ticket_details }))] }), jsxRuntimeExports.jsx(RightColumn, { children: approvalRequest && (jsxRuntimeExports.jsx(ApprovalRequestDetails$1, { approvalRequest: approvalRequest, baseLocale: baseLocale })) })] }), showApproverActions && (jsxRuntimeExports.jsx(ApproverActions$1, { approvalWorkflowInstanceId: approvalWorkflowInstanceId, approvalRequestId: approvalRequestId, setApprovalRequest: setApprovalRequest, assigneeUser: approvalRequest?.assignee_user }))] }));
 }
 var ApprovalRequestPage$1 = reactExports.memo(ApprovalRequestPage);
 

@@ -19,6 +19,11 @@ const defaultProps = {
   approvalRequestId: "123",
   approvalWorkflowInstanceId: "456",
   setApprovalRequest: jest.fn(),
+  assigneeUser: {
+    id: 123,
+    name: "Test User",
+    photo: { content_url: null },
+  },
 };
 
 const renderWithTheme = (ui: ReactElement) => {
@@ -47,6 +52,37 @@ describe("ApproverActions", () => {
     expect(screen.getByText("Additional note")).toBeInTheDocument();
     expect(screen.getByText("Submit approval")).toBeInTheDocument();
     expect(screen.getByText("Cancel")).toBeInTheDocument();
+  });
+
+  it("does not show the Avatar when assigneeUser has no photo", async () => {
+    const user = userEvent.setup();
+    renderWithTheme(<ApproverActions {...defaultProps} />);
+
+    await user.click(screen.getByText("Approve request"));
+
+    expect(screen.queryByRole("img")).not.toBeInTheDocument();
+  });
+
+  it("shows the Avatar when assigneeUser has a photo", async () => {
+    const assigneeUserWithPhoto = {
+      id: 123,
+      name: "Test User",
+      photo: {
+        content_url: "https://example.com/avatar.jpg",
+      },
+    };
+
+    const user = userEvent.setup();
+    renderWithTheme(
+      <ApproverActions {...defaultProps} assigneeUser={assigneeUserWithPhoto} />
+    );
+
+    await user.click(screen.getByText("Approve request"));
+
+    const avatar = screen.getByRole("img");
+    expect(avatar).toBeInTheDocument();
+    expect(avatar).toHaveAttribute("src", "https://example.com/avatar.jpg");
+    expect(avatar).toHaveAttribute("alt", "Assignee avatar");
   });
 
   it("shows the comment section with required field when clicking Deny request", async () => {
