@@ -978,6 +978,7 @@ ul {
   margin: 0 0 15px 0;
   padding: 0;
   display: flex;
+  flex-wrap: nowrap;
 }
 @media (min-width: 768px) {
   .breadcrumbs {
@@ -990,6 +991,7 @@ ul {
   max-width: 450px;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap; 
 }
 .breadcrumbs li + li::before {
   content: ">";
