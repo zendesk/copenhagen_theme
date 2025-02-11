@@ -67,7 +67,7 @@ parts:
       value: "Status"
   - translation:
       key: "approval-requests.request.approval-request-details.comment"
-      title: ""Noun - Label for the decision comment on an approval request"
+      title: "Noun - Label for the decision comment on an approval request"
       screenshot: "https://drive.google.com/file/d/1j9IzjnAa1AVXzWq6r4x4QcaQN-Y64lM5/view?usp=drive_link"
       value: "Comment"
   - translation:
