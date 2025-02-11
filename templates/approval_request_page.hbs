@@ -1,0 +1,27 @@
+<div class="container-divider"></div>
+<div class="container">
+  <div id="main-content">
+    <div id="approval-request"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderApprovalRequest } from "approval-requests"; 
+  
+  const settings = {{json settings}};
+  const helpCenterPath ={{json (page_path "help_center")}}; 
+  const container = document.getElementById("approval-request");
+  
+  // Extract the ID from the URL
+  const id = window.location.pathname.split("/").pop()
+
+  const props = {
+    baseLocale: {{json help_center.base_locale}},
+    approvalWorkflowInstanceId: id,
+    approvalRequestId: id,
+    organizations: {{json user.organizations}},
+    userId: {{json user.id}},
+  }
+
+  renderApprovalRequest(container, settings, props, helpCenterPath);
+</script>

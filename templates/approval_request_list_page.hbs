@@ -1,0 +1,20 @@
+<div class="container-divider"></div>
+<div class="container">
+  <div id="main-content">
+    <div id="approval-request-list"></div>
+  </div>
+</div>
+
+<script type="module">
+  import { renderApprovalRequestList } from "approval-requests"; 
+
+  const settings = {{json settings}};
+  const helpCenterPath ={{json (page_path "help_center")}}; 
+  const container = document.getElementById("approval-request-list");
+
+  const props = {
+    baseLocale: {{json help_center.base_locale}},
+  }
+
+  renderApprovalRequestList(container, settings, props, helpCenterPath);
+</script>
