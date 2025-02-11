@@ -25,7 +25,7 @@ describe("ApprovalTicketDetails", () => {
   it("renders basic ticket details", () => {
     renderWithTheme(<ApprovalTicketDetails ticket={mockTicket} />);
 
-    expect(screen.getByText("Ticket Details")).toBeInTheDocument();
+    expect(screen.getByText("Ticket details")).toBeInTheDocument();
     expect(screen.getByText("John Requester")).toBeInTheDocument();
     expect(screen.getByText("123")).toBeInTheDocument();
     expect(screen.getByText("normal")).toBeInTheDocument();

@@ -47,7 +47,7 @@ function ApprovalRequestListPage({
     isLoading,
   } = useSearchApprovalRequests();
 
-  const sortedAndFilteredRequests = useMemo(() => {
+  const sortedAndFilteredApprovalRequests = useMemo(() => {
     let results = [...approvalRequests];
 
     // Apply search filter
@@ -101,7 +101,7 @@ function ApprovalRequestListPage({
         </NoApprovalRequestsText>
       ) : (
         <ApprovalRequestListTable
-          requests={sortedAndFilteredRequests}
+          approvalRequests={sortedAndFilteredApprovalRequests}
           baseLocale={baseLocale}
           helpCenterPath={helpCenterPath}
           sortDirection={sortDirection}

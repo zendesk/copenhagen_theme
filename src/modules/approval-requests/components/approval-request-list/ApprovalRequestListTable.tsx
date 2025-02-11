@@ -32,7 +32,7 @@ const sortableCellProps = {
 };
 
 interface ApprovalRequestListTableProps {
-  requests: SearchApprovalRequest[];
+  approvalRequests: SearchApprovalRequest[];
   helpCenterPath: string;
   baseLocale: string;
   sortDirection: "asc" | "desc" | undefined;
@@ -40,7 +40,7 @@ interface ApprovalRequestListTableProps {
 }
 
 function ApprovalRequestListTable({
-  requests,
+  approvalRequests,
   helpCenterPath,
   baseLocale,
   sortDirection,
@@ -87,22 +87,25 @@ function ApprovalRequestListTable({
         </HeaderRow>
       </Head>
       <Body>
-        {requests.map((request) => (
-          <Row key={request.id}>
+        {approvalRequests.map((approvalRequest) => (
+          <Row key={approvalRequest.id}>
             <Cell isTruncated>
               <ApprovalRequestAnchor
-                href={`${helpCenterPath}/approval_requests/${request.id}`}
+                href={`${helpCenterPath}/approval_requests/${approvalRequest.id}`}
               >
-                {request.subject}
+                {approvalRequest.subject}
               </ApprovalRequestAnchor>
             </Cell>
-            <Cell isTruncated>{request.requester_name}</Cell>
-            <Cell isTruncated>{request.created_by_name}</Cell>
+            <Cell isTruncated>{approvalRequest.requester_name}</Cell>
+            <Cell isTruncated>{approvalRequest.created_by_name}</Cell>
             <Cell isTruncated>
-              {formatApprovalRequestDate(request.created_at, baseLocale)}
+              {formatApprovalRequestDate(
+                approvalRequest.created_at,
+                baseLocale
+              )}
             </Cell>
             <Cell isTruncated>
-              <ApprovalStatusTag status={request.status} />
+              <ApprovalStatusTag status={approvalRequest.status} />
             </Cell>
           </Row>
         ))}

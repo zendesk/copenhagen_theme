@@ -15,16 +15,14 @@ jest.mock("../../../submitApprovalDecision", () => ({
     mockSubmitApprovalDecision(...args),
 }));
 
-const defaultProps = {
-  approvalRequestId: "123",
-  approvalWorkflowInstanceId: "456",
-  setApprovalRequest: jest.fn(),
-  assigneeUser: {
-    id: 123,
-    name: "Test User",
-    photo: { content_url: null },
-  },
+const mockAssigneeUser = {
+  id: 123,
+  name: "Test User",
+  photo: { content_url: null },
 };
+const mockApprovalRequestId = "123";
+const mockApprovalWorkflowInstanceId = "456";
+const mockSetApprovalRequest = jest.fn();
 
 const renderWithTheme = (ui: ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);
@@ -36,7 +34,14 @@ describe("ApproverActions", () => {
   });
 
   it("initially renders the approve and deny buttons", () => {
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     expect(screen.getByText("Approve request")).toBeInTheDocument();
     expect(screen.getByText("Deny request")).toBeInTheDocument();
@@ -45,7 +50,14 @@ describe("ApproverActions", () => {
   it("shows the comment section when clicking Approve request", async () => {
     const user = userEvent.setup();
 
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Approve request"));
 
@@ -56,7 +68,14 @@ describe("ApproverActions", () => {
 
   it("does not show the Avatar when assigneeUser has no photo", async () => {
     const user = userEvent.setup();
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Approve request"));
 
@@ -74,7 +93,12 @@ describe("ApproverActions", () => {
 
     const user = userEvent.setup();
     renderWithTheme(
-      <ApproverActions {...defaultProps} assigneeUser={assigneeUserWithPhoto} />
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={assigneeUserWithPhoto}
+      />
     );
 
     await user.click(screen.getByText("Approve request"));
@@ -87,7 +111,14 @@ describe("ApproverActions", () => {
 
   it("shows the comment section with required field when clicking Deny request", async () => {
     const user = userEvent.setup();
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Deny request"));
 
@@ -100,7 +131,14 @@ describe("ApproverActions", () => {
 
   it("shows the validation error when submitting an empty denial", async () => {
     const user = userEvent.setup();
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Deny request"));
     await user.click(screen.getByText("Submit denial"));
@@ -111,7 +149,14 @@ describe("ApproverActions", () => {
 
   it("returns to initial state when clicking Cancel", async () => {
     const user = userEvent.setup();
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Approve request"));
     await user.click(screen.getByText("Cancel"));
@@ -127,7 +172,14 @@ describe("ApproverActions", () => {
       json: () => Promise.resolve({ approval_request: { id: "123" } }),
     });
 
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Approve request"));
     await user.type(screen.getByRole("textbox"), "Test comment");
@@ -161,7 +213,14 @@ describe("ApproverActions", () => {
       json: () => Promise.resolve({ approval_request: { id: "123" } }),
     });
 
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Deny request"));
     await user.type(screen.getByRole("textbox"), "Denial reason");
@@ -192,7 +251,14 @@ describe("ApproverActions", () => {
     const user = userEvent.setup();
     mockSubmitApprovalDecision.mockResolvedValue({ ok: false });
 
-    renderWithTheme(<ApproverActions {...defaultProps} />);
+    renderWithTheme(
+      <ApproverActions
+        approvalRequestId={mockApprovalRequestId}
+        approvalWorkflowInstanceId={mockApprovalWorkflowInstanceId}
+        setApprovalRequest={mockSetApprovalRequest}
+        assigneeUser={mockAssigneeUser}
+      />
+    );
 
     await user.click(screen.getByText("Approve request"));
 
