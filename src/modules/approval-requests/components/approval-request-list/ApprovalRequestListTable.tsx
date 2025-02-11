@@ -1,5 +1,6 @@
 import { memo } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import {
   Table,
   Head,
@@ -45,6 +46,8 @@ function ApprovalRequestListTable({
   sortDirection,
   onSortChange,
 }: ApprovalRequestListTableProps) {
+  const { t } = useTranslation();
+
   const handleSortClick = () => {
     if (sortDirection === "asc") {
       onSortChange("desc");
@@ -60,18 +63,27 @@ function ApprovalRequestListTable({
       <Head>
         <HeaderRow>
           <HeaderCell width="40%" isTruncated>
-            Subject
+            {t("approval-requests.list.table.subject", "Subject")}
           </HeaderCell>
-          <HeaderCell isTruncated>Requester</HeaderCell>
-          <HeaderCell isTruncated>Sent by</HeaderCell>
+          <HeaderCell isTruncated>
+            {t("approval-requests.list.table.requester", "Requester")}
+          </HeaderCell>
+          <HeaderCell isTruncated>
+            {t("approval-requests.list.table.sent-by", "Sent by")}
+          </HeaderCell>
           <SortableCell
             onClick={handleSortClick}
             sort={sortDirection}
             cellProps={sortableCellProps}
           >
-            Sent on
+            {t("approval-requests.list.table.sent-on", "Sent on")}
           </SortableCell>
-          <HeaderCell isTruncated>Approval status</HeaderCell>
+          <HeaderCell isTruncated>
+            {t(
+              "approval-requests.list.table.approval-status",
+              "Approval status"
+            )}
+          </HeaderCell>
         </HeaderRow>
       </Head>
       <Body>

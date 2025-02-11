@@ -1,5 +1,6 @@
 import { memo } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Grid, Row, Col } from "@zendeskgarden/react-grid";
@@ -38,14 +39,24 @@ function ApprovalRequestDetails({
   approvalRequest,
   baseLocale,
 }: ApprovalRequestDetailsProps) {
+  const { t } = useTranslation();
+
   return (
     <Container>
       <ApprovalRequestHeader isBold>
-        Approval request details
+        {t(
+          "approval-requests.request.approval-request-details.header",
+          "Approval request details"
+        )}
       </ApprovalRequestHeader>
       <DetailRow>
         <Col size={4}>
-          <FieldLabel>Sent by</FieldLabel>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.sent-by",
+              "Sent by"
+            )}
+          </FieldLabel>
         </Col>
         <Col size={8}>
           <MD>{approvalRequest.created_by_user.name}</MD>
@@ -53,7 +64,12 @@ function ApprovalRequestDetails({
       </DetailRow>
       <DetailRow>
         <Col size={4}>
-          <FieldLabel>Sent on</FieldLabel>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.sent-on",
+              "Sent on"
+            )}
+          </FieldLabel>
         </Col>
         <Col size={8}>
           <MD>
@@ -63,7 +79,12 @@ function ApprovalRequestDetails({
       </DetailRow>
       <DetailRow>
         <Col size={4}>
-          <FieldLabel>Approver</FieldLabel>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.approver",
+              "Approver"
+            )}
+          </FieldLabel>
         </Col>
         <Col size={8}>
           <MD>{approvalRequest.assignee_user.name}</MD>
@@ -71,7 +92,12 @@ function ApprovalRequestDetails({
       </DetailRow>
       <DetailRow>
         <Col size={4}>
-          <FieldLabel>Status</FieldLabel>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.approval-request-details.status",
+              "Status"
+            )}
+          </FieldLabel>
         </Col>
         <Col size={8}>
           <MD>
@@ -82,7 +108,12 @@ function ApprovalRequestDetails({
       {approvalRequest.decision_notes.length > 0 && (
         <DetailRow>
           <Col size={4}>
-            <FieldLabel>Comment</FieldLabel>
+            <FieldLabel>
+              {t(
+                "approval-requests.request.approval-request-details.comment",
+                "Comment"
+              )}
+            </FieldLabel>
           </Col>
           <Col size={8}>
             <MD>{approvalRequest.decision_notes[0]}</MD>
@@ -92,7 +123,16 @@ function ApprovalRequestDetails({
       {approvalRequest.decided_at && (
         <DetailRow>
           <Col size={4}>
-            <FieldLabel>Decided</FieldLabel>
+            <FieldLabel>
+              {t(
+                approvalRequest.status === "withdrawn"
+                  ? "approval-requests.request.approval-request-details.withdrawn-on"
+                  : "approval-requests.request.approval-request-details.decided",
+                approvalRequest.status === "withdrawn"
+                  ? "Withdrawn on"
+                  : "Decided"
+              )}
+            </FieldLabel>
           </Col>
           <Col size={8}>
             <MD>

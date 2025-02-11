@@ -6,6 +6,7 @@ import {
   useMemo,
 } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import debounce from "lodash.debounce";
 import SearchIcon from "@zendeskgarden/svg-icons/src/16/search-stroke.svg";
 import {
@@ -59,6 +60,8 @@ function ApprovalRequestListFilters({
   setApprovalRequestStatus,
   setSearchTerm,
 }: ApprovalRequestListFiltersProps) {
+  const { t } = useTranslation();
+
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     (changes) => {
       if (!changes.selectionValue) {
@@ -88,27 +91,54 @@ function ApprovalRequestListFilters({
   return (
     <FiltersContainer>
       <SearchField>
-        <Label hidden>Search approval requests</Label>
+        <Label hidden>
+          {t(
+            "approval-requests.list.search-placeholder",
+            "Search approval requests"
+          )}
+        </Label>
         <MediaInput
           start={<SearchIcon />}
-          placeholder="Search approval requests"
+          placeholder={t(
+            "approval-requests.list.search-placeholder",
+            "Search approval requests"
+          )}
           onChange={handleSearch}
         />
       </SearchField>
       <DropdownFilterField>
-        <Label>Status:</Label>
+        <Label>
+          {t("approval-requests.list.status-dropdown.label", "Status:")}
+        </Label>
         <Combobox
           isEditable={false}
           onChange={handleChange}
           selectionValue={approvalRequestStatus}
           inputValue={ApprovalRequestStatusInputMap[approvalRequestStatus]}
         >
-          <Option value="any" label="Any" />
-          <Option value="active" label="Decision pending" />
-          {/* <Option value="clarification_requested" label="Info needed" /> */}
-          <Option value="approved" label="Approved" />
-          <Option value="rejected" label="Denied" />
-          <Option value="withdrawn" label="Withdrawn" />
+          <Option
+            value="any"
+            label={t("approval-requests.list.status-dropdown.any", "Any")}
+          />
+          <Option
+            value="active"
+            label={t(
+              "approval-requests.status.decision-pending",
+              "Decision pending"
+            )}
+          />
+          <Option
+            value="approved"
+            label={t("approval-requests.status.approved", "Approved")}
+          />
+          <Option
+            value="rejected"
+            label={t("approval-requests.status.denied", "Denied")}
+          />
+          <Option
+            value="withdrawn"
+            label={t("approval-requests.status.withdrawn", "Withdrawn")}
+          />
         </Combobox>
       </DropdownFilterField>
     </FiltersContainer>

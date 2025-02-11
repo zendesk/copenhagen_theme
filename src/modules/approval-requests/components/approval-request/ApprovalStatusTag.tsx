@@ -1,4 +1,5 @@
 import { memo } from "react";
+import { useTranslation } from "react-i18next";
 import { Tag } from "@zendeskgarden/react-tags";
 import { Ellipsis } from "@zendeskgarden/react-typography";
 import type { ApprovalRequestStatus } from "../../types";
@@ -13,26 +14,37 @@ const APPROVAL_REQUEST_STATES = {
 
 const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
 
-const statusTagConfig: Record<
-  ApprovalRequestStatus,
-  { hue: string; label: string }
-> = {
-  [APPROVAL_REQUEST_STATES.ACTIVE]: { hue: "blue", label: "Decision pending" },
-  [APPROVAL_REQUEST_STATES.APPROVED]: { hue: "green", label: "Approved" },
-  [APPROVAL_REQUEST_STATES.REJECTED]: { hue: "red", label: "Denied" },
-  // [APPROVAL_REQUEST_STATES.CLARIFICATION_REQUESTED]: {
-  //   hue: "yellow",
-  //   label: "Info needed",
-  // },
-  [APPROVAL_REQUEST_STATES.WITHDRAWN]: { hue: "grey", label: "Withdrawn" },
-};
-
 interface ApprovalStatusTagProps {
   status: ApprovalRequestStatus;
 }
 
 function ApprovalStatusTag({ status }: ApprovalStatusTagProps) {
-  const config = statusTagConfig[status] || DEFAULT_STATUS_CONFIG;
+  const { t } = useTranslation();
+
+  const statusTagMap = {
+    [APPROVAL_REQUEST_STATES.ACTIVE]: {
+      hue: "blue",
+      label: t("approval-requests.status.decision-pending", "Decision pending"),
+    },
+    [APPROVAL_REQUEST_STATES.APPROVED]: {
+      hue: "green",
+      label: t("approval-requests.status.approved", "Approved"),
+    },
+    [APPROVAL_REQUEST_STATES.REJECTED]: {
+      hue: "red",
+      label: t("approval-requests.status.denied", "Denied"),
+    },
+    // [APPROVAL_REQUEST_STATES.CLARIFICATION_REQUESTED]: {
+    //   hue: "yellow",
+    //   label: t("approval-requests.status.info-needed", "Info needed"),
+    // },
+    [APPROVAL_REQUEST_STATES.WITHDRAWN]: {
+      hue: "grey",
+      label: t("approval-requests.status.withdrawn", "Withdrawn"),
+    },
+  };
+
+  const config = statusTagMap[status] || DEFAULT_STATUS_CONFIG;
   return (
     <Tag hue={config.hue}>
       <Ellipsis>{config.label}</Ellipsis>

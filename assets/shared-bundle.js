@@ -157,17 +157,17 @@ var l=requireObjectAssign(),n=60103,p=60106;react_production_min.Fragment=60107;
 	return react_production_min;
 }
 
-var hasRequiredReact;
-
-function requireReact () {
-	if (hasRequiredReact) return react.exports;
-	hasRequiredReact = 1;
-
-	{
-	  react.exports = requireReact_production_min();
-	}
-	return react.exports;
+{
+  react.exports = requireReact_production_min();
 }
+
+var reactExports = react.exports;
+var React__default = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
+
+var React = /*#__PURE__*/_mergeNamespaces({
+	__proto__: null,
+	default: React__default
+}, [reactExports]);
 
 /** @license React v17.0.2
  * react-jsx-runtime.production.min.js
@@ -183,7 +183,7 @@ var hasRequiredReactJsxRuntime_production_min;
 function requireReactJsxRuntime_production_min () {
 	if (hasRequiredReactJsxRuntime_production_min) return reactJsxRuntime_production_min;
 	hasRequiredReactJsxRuntime_production_min = 1;
-requireObjectAssign();var f=requireReact(),g=60103;reactJsxRuntime_production_min.Fragment=60107;if("function"===typeof Symbol&&Symbol.for){var h=Symbol.for;g=h("react.element");reactJsxRuntime_production_min.Fragment=h("react.fragment");}var m=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,n=Object.prototype.hasOwnProperty,p={key:!0,ref:!0,__self:!0,__source:!0};
+requireObjectAssign();var f=reactExports,g=60103;reactJsxRuntime_production_min.Fragment=60107;if("function"===typeof Symbol&&Symbol.for){var h=Symbol.for;g=h("react.element");reactJsxRuntime_production_min.Fragment=h("react.fragment");}var m=f.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner,n=Object.prototype.hasOwnProperty,p={key:!0,ref:!0,__self:!0,__source:!0};
 	function q(c,a,k){var b,d={},e=null,l=null;void 0!==k&&(e=""+k);void 0!==a.key&&(e=""+a.key);void 0!==a.ref&&(l=a.ref);for(b in a)n.call(a,b)&&!p.hasOwnProperty(b)&&(d[b]=a[b]);if(c&&c.defaultProps)for(b in a=c.defaultProps,a)void 0===d[b]&&(d[b]=a[b]);return {$$typeof:g,type:c,key:e,ref:l,props:d,_owner:m.current}}reactJsxRuntime_production_min.jsx=q;reactJsxRuntime_production_min.jsxs=q;
 	return reactJsxRuntime_production_min;
 }
@@ -259,7 +259,7 @@ var hasRequiredReactDom_production_min;
 function requireReactDom_production_min () {
 	if (hasRequiredReactDom_production_min) return reactDom_production_min;
 	hasRequiredReactDom_production_min = 1;
-var aa=requireReact(),m=requireObjectAssign(),r=requireScheduler();function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return "Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b);}
+var aa=reactExports,m=requireObjectAssign(),r=requireScheduler();function y(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return "Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}if(!aa)throw Error(y(227));var ba=new Set,ca={};function da(a,b){ea(a,b);ea(a+"Capture",b);}
 	function ea(a,b){ca[a]=b;for(a=0;a<b.length;a++)ba.add(b[a]);}
 	var fa=!("undefined"===typeof window||"undefined"===typeof window.document||"undefined"===typeof window.document.createElement),ha=/^[:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD][:A-Z_a-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\-.0-9\u00B7\u0300-\u036F\u203F-\u2040]*$/,ia=Object.prototype.hasOwnProperty,
 	ja={},ka={};function la(a){if(ia.call(ka,a))return !0;if(ia.call(ja,a))return !1;if(ha.test(a))return ka[a]=!0;ja[a]=!0;return !1}function ma(a,b,c,d){if(null!==c&&0===c.type)return !1;switch(typeof b){case "function":case "symbol":return !0;case "boolean":if(d)return !1;if(null!==c)return !c.acceptsBooleans;a=a.toLowerCase().slice(0,5);return "data-"!==a&&"aria-"!==a;default:return !1}}
@@ -2979,14 +2979,6 @@ async function loadTranslations(locale, dynamicImports) {
         console.error(`Cannot load translations for ${locale}`, e);
     }
 }
-
-var reactExports = requireReact();
-var React__default = /*@__PURE__*/getDefaultExportFromCjs(reactExports);
-
-var React = /*#__PURE__*/_mergeNamespaces({
-	__proto__: null,
-	default: React__default
-}, [reactExports]);
 
 function warn() {
   if (console && console.warn) {
@@ -23130,7 +23122,7 @@ implementation.exports;
 
 	exports.__esModule = true;
 
-	var _react = requireReact();
+	var _react = reactExports;
 
 	_interopRequireDefault(_react);
 
@@ -23329,7 +23321,7 @@ lib.exports;
 
 	exports.__esModule = true;
 
-	var _react = requireReact();
+	var _react = reactExports;
 
 	var _react2 = _interopRequireDefault(_react);
 

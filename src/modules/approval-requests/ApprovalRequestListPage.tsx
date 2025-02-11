@@ -1,4 +1,5 @@
 import { memo, useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { MD, XXL } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
@@ -35,6 +36,7 @@ function ApprovalRequestListPage({
   baseLocale,
   helpCenterPath,
 }: ApprovalRequestListPageProps) {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState("");
   const [sortDirection, setSortDirection] = useState<SortDirection>(undefined);
   const {
@@ -82,7 +84,9 @@ function ApprovalRequestListPage({
 
   return (
     <Container>
-      <XXL isBold>Approval requests</XXL>
+      <XXL isBold>
+        {t("approval-requests.list.header", "Approval requests")}
+      </XXL>
       <ApprovalRequestListFilters
         approvalRequestStatus={approvalRequestStatus}
         setApprovalRequestStatus={setApprovalRequestStatus}
@@ -90,7 +94,10 @@ function ApprovalRequestListPage({
       />
       {approvalRequests.length === 0 ? (
         <NoApprovalRequestsText>
-          No approval requests found.
+          {t(
+            "approval-requests.list.no-requests",
+            "No approval requests found."
+          )}
         </NoApprovalRequestsText>
       ) : (
         <ApprovalRequestListTable

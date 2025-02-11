@@ -1,5 +1,6 @@
 import { memo } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { MD } from "@zendeskgarden/react-typography";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Grid } from "@zendeskgarden/react-grid";
@@ -43,6 +44,8 @@ function CustomFieldValue({
 }: {
   value: string | boolean | Array<string> | undefined;
 }) {
+  const { t } = useTranslation();
+
   if (Array.isArray(value) && value.length > 0) {
     return (
       <MD>
@@ -56,7 +59,19 @@ function CustomFieldValue({
   }
 
   if (typeof value === "boolean") {
-    return <MD>{value ? "Yes" : "No"}</MD>;
+    return (
+      <MD>
+        {value
+          ? t(
+              "approval-requests.request.ticket-details.checkbox-value.yes",
+              "Yes"
+            )
+          : t(
+              "approval-requests.request.ticket-details.checkbox-value.no",
+              "No"
+            )}
+      </MD>
+    );
   }
 
   if (!value || (Array.isArray(value) && value.length === 0)) {
@@ -71,20 +86,33 @@ interface ApprovalTicketDetailsProps {
 }
 
 function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
+  const { t } = useTranslation();
+
   return (
     <TicketContainer>
-      <TicketDetailsHeader isBold>Ticket Details</TicketDetailsHeader>
+      <TicketDetailsHeader isBold>
+        {t("approval-requests.request.ticket-details.header", "Ticket details")}
+      </TicketDetailsHeader>
       <CustomFieldsGrid>
         <div>
-          <FieldLabel>Requester</FieldLabel>
+          <FieldLabel>
+            {t(
+              "approval-requests.request.ticket-details.requester",
+              "Requester"
+            )}
+          </FieldLabel>
           <MD>{ticket.requester.name}</MD>
         </div>
         <div>
-          <FieldLabel>ID</FieldLabel>
+          <FieldLabel>
+            {t("approval-requests.request.ticket-details.id", "ID")}
+          </FieldLabel>
           <MD>{ticket.id}</MD>
         </div>
         <div>
-          <FieldLabel>Priority</FieldLabel>
+          <FieldLabel>
+            {t("approval-requests.request.ticket-details.priority", "Priority")}
+          </FieldLabel>
           <MD>{ticket.priority}</MD>
         </div>
         {ticket.custom_fields.map((field) => (
