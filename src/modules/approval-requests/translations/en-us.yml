@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme Approval requests"
 packages:
   - "approval-requests"
@@ -71,8 +72,8 @@ parts:
       screenshot: "https://drive.google.com/file/d/1j9IzjnAa1AVXzWq6r4x4QcaQN-Y64lM5/view?usp=drive_link"
       value: "Comment"
   - translation:
-      key: "approval-requests.request.approval-request-details.decided - Subject: 'approval request'"
-      title: "Label for the decision date on an approval request"
+      key: "approval-requests.request.approval-request-details.decided"
+      title: "Label for the decision date on an approval request - Subject: 'approval request'"
       screenshot: "https://drive.google.com/file/d/1xpM_3Rt3hCD8aE-U7mEbL0Sh5dsC0ScN/view?usp=drive_link"
       value: "Decided"
   - translation:
@@ -141,10 +142,15 @@ parts:
       screenshot: "https://drive.google.com/file/d/10Mdnw0YkIq3w4CjdDOSD9efAAxDapzYr/view?usp=drive_link"
       value: "Search approval requests"
   - translation:
+      key: "approval-requests.list.no-requests"
+      title: "Text to convey that no approval requests exist on the approval requests list page."
+      screenshot: "https://drive.google.com/file/d/1rrZ1MZKAsY7mNo89McYaZNwEB5pDjKtk/view?usp=sharing"
+      value: "No approval requests found."
+  - translation:
       key: "approval-requests.list.status-dropdown.label"
       title: "Label for the status dropdown on the approval requests list page"
       screenshot: "https://drive.google.com/file/d/18_4fS0yROAMC1yVdDYLfYvjKWeUdWCDH/view?usp=drive_link"
-      value: "Status"
+      value: "Status:"
   - translation:
       key: "approval-requests.list.status-dropdown.any"
       title: "Label for any dropdown option within the status dropdown on the approval requests list page - Subject: 'status'"
