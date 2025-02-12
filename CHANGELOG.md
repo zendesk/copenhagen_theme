@@ -1,3 +1,10 @@
+# [4.3.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.4...v4.3.0-beta.5) (2025-02-12)
+
+
+### Bug Fixes
+
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+
 # [4.3.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.3...v4.3.0-beta.4) (2025-01-31)
 
 
