@@ -1,3 +1,10 @@
+## [4.2.10](https://github.com/zendesk/copenhagen_theme/compare/v4.2.9...v4.2.10) (2025-02-13)
+
+
+### Bug Fixes
+
+* **a11y:** removed menuitem role from user mobile navbar ([c953d7b](https://github.com/zendesk/copenhagen_theme/commit/c953d7bc1c2d59913a0d6533b6da5c1a23f05d67))
+
 ## [4.2.9](https://github.com/zendesk/copenhagen_theme/compare/v4.2.8...v4.2.9) (2025-02-13)
 
 
