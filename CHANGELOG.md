@@ -1,3 +1,10 @@
+## [4.2.9](https://github.com/zendesk/copenhagen_theme/compare/v4.2.8...v4.2.9) (2025-02-13)
+
+
+### Bug Fixes
+
+* apply end user conditions for checkbox fields correctly ([62971c3](https://github.com/zendesk/copenhagen_theme/commit/62971c393e7b3687252be71f298d5cd48a6bb726))
+
 ## [4.2.8](https://github.com/zendesk/copenhagen_theme/compare/v4.2.7...v4.2.8) (2025-02-11)
 
 
