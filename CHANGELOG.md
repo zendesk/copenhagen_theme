@@ -1,3 +1,10 @@
+# [4.3.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.5...v4.3.0-beta.6) (2025-02-13)
+
+
+### Bug Fixes
+
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+
 # [4.3.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.4...v4.3.0-beta.5) (2025-02-12)
 
 
