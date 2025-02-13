@@ -35,6 +35,7 @@ parts:
       title: "Empty state support article link"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
       value: "Learn about the service catalog"    
+      obsolete: "2025-04-22"
   - translation:
       key: "service-catalog.empty-state.go-to-homepage"
       title: "Empty state go to homepage link"
@@ -75,6 +76,7 @@ parts:
       title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
       screenshot: ""
       value: "Close"
+      obsolete: "2025-04-22"
   - translation:
       key: "service-catalog.service-list-error-title"
       title: "Error notification title when there is problem with loading the list of services"
