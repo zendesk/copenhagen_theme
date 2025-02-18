@@ -8,6 +8,7 @@ import { useNotify } from "../../../shared/notifications/useNotify";
 import { submitApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalRequest } from "../../types";
+import { APPROVAL_REQUEST_STATES } from "../../constants";
 
 const PENDING_APPROVAL_STATUS = {
   APPROVED: "APPROVED",
@@ -117,8 +118,8 @@ function ApproverActions({
     try {
       const decision: ApprovalDecision =
         pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-          ? "approved"
-          : "rejected";
+          ? APPROVAL_REQUEST_STATES.APPROVED
+          : APPROVAL_REQUEST_STATES.REJECTED;
       const response = await submitApprovalDecision(
         approvalWorkflowInstanceId,
         approvalRequestId,
@@ -131,7 +132,7 @@ function ApproverActions({
         setApprovalRequest(data.approval_request);
 
         const notificationTitle =
-          decision === "approved"
+          decision === APPROVAL_REQUEST_STATES.APPROVED
             ? t(
                 "approval-requests.request.notification.approval-submitted",
                 "Approval submitted"

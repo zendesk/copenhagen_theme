@@ -1,5 +1,6 @@
 import { memo } from "react";
 import { Breadcrumb } from "@zendeskgarden/react-breadcrumbs";
+import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import type { Organization } from "../../../ticket-fields";
 import styled from "styled-components";
@@ -24,6 +25,8 @@ function ApprovalRequestBreadcrumbs({
   organizations,
   helpCenterPath,
 }: ApprovalRequestBreadcrumbsProps) {
+  const { t } = useTranslation();
+
   const defaultOrganizationName =
     organizations.length > 0 ? organizations[0]?.name : null;
 
@@ -34,7 +37,7 @@ function ApprovalRequestBreadcrumbs({
           {defaultOrganizationName}
         </BreadcrumbAnchor>
         <BreadcrumbAnchor href={`${helpCenterPath}/approval_requests`}>
-          Approval requests
+          {t("approval-requests.list.header", "Approval requests")}
         </BreadcrumbAnchor>
       </StyledBreadcrumb>
     );
@@ -43,7 +46,7 @@ function ApprovalRequestBreadcrumbs({
   return (
     <StyledBreadcrumb>
       <BreadcrumbAnchor href={`${helpCenterPath}/approval_requests`}>
-        Approval requests
+        {t("approval-requests.list.header", "Approval requests")}
       </BreadcrumbAnchor>
     </StyledBreadcrumb>
   );

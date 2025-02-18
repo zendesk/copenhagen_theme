@@ -18,6 +18,7 @@ import {
 import { MediaInput } from "@zendeskgarden/react-forms";
 import type { IComboboxProps } from "@zendeskgarden/react-dropdowns.next";
 import type { ApprovalRequestDropdownStatus } from "../../types";
+import { APPROVAL_REQUEST_STATES } from "../../constants";
 
 const FiltersContainer = styled.div`
   display: flex;
@@ -73,7 +74,7 @@ function ApprovalRequestListFilters({
       );
       setSearchTerm(""); // Reset search term when changing status
     },
-    [setApprovalRequestStatus]
+    [setApprovalRequestStatus, setSearchTerm]
   );
 
   const debouncedSetSearchTerm = useMemo(
@@ -121,22 +122,22 @@ function ApprovalRequestListFilters({
             label={t("approval-requests.list.status-dropdown.any", "Any")}
           />
           <Option
-            value="active"
+            value={APPROVAL_REQUEST_STATES.ACTIVE}
             label={t(
               "approval-requests.status.decision-pending",
               "Decision pending"
             )}
           />
           <Option
-            value="approved"
+            value={APPROVAL_REQUEST_STATES.APPROVED}
             label={t("approval-requests.status.approved", "Approved")}
           />
           <Option
-            value="rejected"
+            value={APPROVAL_REQUEST_STATES.REJECTED}
             label={t("approval-requests.status.denied", "Denied")}
           />
           <Option
-            value="withdrawn"
+            value={APPROVAL_REQUEST_STATES.WITHDRAWN}
             label={t("approval-requests.status.withdrawn", "Withdrawn")}
           />
         </Combobox>

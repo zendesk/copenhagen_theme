@@ -51,6 +51,14 @@ function useSearchApprovalRequests() {
     };
 }
 
+const APPROVAL_REQUEST_STATES = {
+    ACTIVE: "active",
+    APPROVED: "approved",
+    REJECTED: "rejected",
+    // CLARIFICATION_REQUESTED: "clarification_requested",
+    WITHDRAWN: "withdrawn",
+};
+
 const FiltersContainer = styled.div `
   display: flex;
   gap: ${(props) => props.theme.space.base * 17}px; /* 68px */
@@ -83,22 +91,15 @@ function ApprovalRequestListFilters({ approvalRequestStatus, setApprovalRequestS
         }
         setApprovalRequestStatus(changes.selectionValue);
         setSearchTerm(""); // Reset search term when changing status
-    }, [setApprovalRequestStatus]);
+    }, [setApprovalRequestStatus, setSearchTerm]);
     const debouncedSetSearchTerm = reactExports.useMemo(() => debounce((value) => setSearchTerm(value), 300), [setSearchTerm]);
     const handleSearch = reactExports.useCallback((event) => {
         debouncedSetSearchTerm(event.target.value);
     }, [debouncedSetSearchTerm]);
-    return (jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: t("approval-requests.list.search-placeholder", "Search approval requests") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: t("approval-requests.list.search-placeholder", "Search approval requests"), onChange: handleSearch })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: t("approval-requests.list.status-dropdown.label", "Status:") }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, onChange: handleChange, selectionValue: approvalRequestStatus, inputValue: ApprovalRequestStatusInputMap[approvalRequestStatus], children: [jsxRuntimeExports.jsx(Option, { value: "any", label: t("approval-requests.list.status-dropdown.any", "Any") }), jsxRuntimeExports.jsx(Option, { value: "active", label: t("approval-requests.status.decision-pending", "Decision pending") }), jsxRuntimeExports.jsx(Option, { value: "approved", label: t("approval-requests.status.approved", "Approved") }), jsxRuntimeExports.jsx(Option, { value: "rejected", label: t("approval-requests.status.denied", "Denied") }), jsxRuntimeExports.jsx(Option, { value: "withdrawn", label: t("approval-requests.status.withdrawn", "Withdrawn") })] })] })] }));
+    return (jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: t("approval-requests.list.search-placeholder", "Search approval requests") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: t("approval-requests.list.search-placeholder", "Search approval requests"), onChange: handleSearch })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: t("approval-requests.list.status-dropdown.label", "Status:") }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, onChange: handleChange, selectionValue: approvalRequestStatus, inputValue: ApprovalRequestStatusInputMap[approvalRequestStatus], children: [jsxRuntimeExports.jsx(Option, { value: "any", label: t("approval-requests.list.status-dropdown.any", "Any") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.ACTIVE, label: t("approval-requests.status.decision-pending", "Decision pending") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.APPROVED, label: t("approval-requests.status.approved", "Approved") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.REJECTED, label: t("approval-requests.status.denied", "Denied") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.WITHDRAWN, label: t("approval-requests.status.withdrawn", "Withdrawn") })] })] })] }));
 }
 var ApprovalRequestListFilters$1 = reactExports.memo(ApprovalRequestListFilters);
 
-const APPROVAL_REQUEST_STATES = {
-    ACTIVE: "active",
-    APPROVED: "approved",
-    REJECTED: "rejected",
-    // CLARIFICATION_REQUESTED: "clarification_requested",
-    WITHDRAWN: "withdrawn",
-};
 const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
 function ApprovalStatusTag({ status }) {
     const { t } = useTranslation();
@@ -154,7 +155,7 @@ const sortableCellProps = {
     },
     isTruncated: true,
 };
-function ApprovalRequestListTable({ requests, helpCenterPath, baseLocale, sortDirection, onSortChange, }) {
+function ApprovalRequestListTable({ approvalRequests, helpCenterPath, baseLocale, sortDirection, onSortChange, }) {
     const { t } = useTranslation();
     const handleSortClick = () => {
         if (sortDirection === "asc") {
@@ -167,7 +168,7 @@ function ApprovalRequestListTable({ requests, helpCenterPath, baseLocale, sortDi
             onSortChange("asc");
         }
     };
-    return (jsxRuntimeExports.jsxs(Table, { size: "large", children: [jsxRuntimeExports.jsx(Head, { children: jsxRuntimeExports.jsxs(HeaderRow, { children: [jsxRuntimeExports.jsx(HeaderCell, { width: "40%", isTruncated: true, children: t("approval-requests.list.table.subject", "Subject") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.requester", "Requester") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.sent-by", "Sent by") }), jsxRuntimeExports.jsx(SortableCell, { onClick: handleSortClick, sort: sortDirection, cellProps: sortableCellProps, children: t("approval-requests.list.table.sent-on", "Sent on") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.approval-status", "Approval status") })] }) }), jsxRuntimeExports.jsx(Body, { children: requests.map((request) => (jsxRuntimeExports.jsxs(Row, { children: [jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: jsxRuntimeExports.jsx(ApprovalRequestAnchor, { href: `${helpCenterPath}/approval_requests/${request.id}`, children: request.subject }) }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: request.requester_name }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: request.created_by_name }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: formatApprovalRequestDate(request.created_at, baseLocale) }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: jsxRuntimeExports.jsx(ApprovalStatusTag$1, { status: request.status }) })] }, request.id))) })] }));
+    return (jsxRuntimeExports.jsxs(Table, { size: "large", children: [jsxRuntimeExports.jsx(Head, { children: jsxRuntimeExports.jsxs(HeaderRow, { children: [jsxRuntimeExports.jsx(HeaderCell, { width: "40%", isTruncated: true, children: t("approval-requests.list.table.subject", "Subject") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.requester", "Requester") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.sent-by", "Sent by") }), jsxRuntimeExports.jsx(SortableCell, { onClick: handleSortClick, sort: sortDirection, cellProps: sortableCellProps, children: t("approval-requests.list.table.sent-on", "Sent on") }), jsxRuntimeExports.jsx(HeaderCell, { isTruncated: true, children: t("approval-requests.list.table.approval-status", "Approval status") })] }) }), jsxRuntimeExports.jsx(Body, { children: approvalRequests.map((approvalRequest) => (jsxRuntimeExports.jsxs(Row, { children: [jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: jsxRuntimeExports.jsx(ApprovalRequestAnchor, { href: `${helpCenterPath}/approval_requests/${approvalRequest.id}`, children: approvalRequest.subject }) }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: approvalRequest.requester_name }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: approvalRequest.created_by_name }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: formatApprovalRequestDate(approvalRequest.created_at, baseLocale) }), jsxRuntimeExports.jsx(Cell, { isTruncated: true, children: jsxRuntimeExports.jsx(ApprovalStatusTag$1, { status: approvalRequest.status }) })] }, approvalRequest.id))) })] }));
 }
 var ApprovalRequestListTable$1 = reactExports.memo(ApprovalRequestListTable);
 
@@ -190,7 +191,7 @@ function ApprovalRequestListPage({ baseLocale, helpCenterPath, }) {
     const [searchTerm, setSearchTerm] = reactExports.useState("");
     const [sortDirection, setSortDirection] = reactExports.useState(undefined);
     const { approvalRequests, errorFetchingApprovalRequests: error, approvalRequestStatus, setApprovalRequestStatus, isLoading, } = useSearchApprovalRequests();
-    const sortedAndFilteredRequests = reactExports.useMemo(() => {
+    const sortedAndFilteredApprovalRequests = reactExports.useMemo(() => {
         let results = [...approvalRequests];
         // Apply search filter
         if (searchTerm) {
@@ -213,7 +214,7 @@ function ApprovalRequestListPage({ baseLocale, helpCenterPath, }) {
     if (isLoading) {
         return (jsxRuntimeExports.jsx(LoadingContainer$1, { children: jsxRuntimeExports.jsx(Spinner, { size: "64" }) }));
     }
-    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: t("approval-requests.list.header", "Approval requests") }), jsxRuntimeExports.jsx(ApprovalRequestListFilters$1, { approvalRequestStatus: approvalRequestStatus, setApprovalRequestStatus: setApprovalRequestStatus, setSearchTerm: setSearchTerm }), approvalRequests.length === 0 ? (jsxRuntimeExports.jsx(NoApprovalRequestsText, { children: t("approval-requests.list.no-requests", "No approval requests found.") })) : (jsxRuntimeExports.jsx(ApprovalRequestListTable$1, { requests: sortedAndFilteredRequests, baseLocale: baseLocale, helpCenterPath: helpCenterPath, sortDirection: sortDirection, onSortChange: setSortDirection }))] }));
+    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsx(XXL, { isBold: true, children: t("approval-requests.list.header", "Approval requests") }), jsxRuntimeExports.jsx(ApprovalRequestListFilters$1, { approvalRequestStatus: approvalRequestStatus, setApprovalRequestStatus: setApprovalRequestStatus, setSearchTerm: setSearchTerm }), approvalRequests.length === 0 ? (jsxRuntimeExports.jsx(NoApprovalRequestsText, { children: t("approval-requests.list.no-requests", "No approval requests found.") })) : (jsxRuntimeExports.jsx(ApprovalRequestListTable$1, { approvalRequests: sortedAndFilteredApprovalRequests, baseLocale: baseLocale, helpCenterPath: helpCenterPath, sortDirection: sortDirection, onSortChange: setSortDirection }))] }));
 }
 var ApprovalRequestListPage$1 = reactExports.memo(ApprovalRequestListPage);
 
@@ -241,9 +242,9 @@ const DetailRow = styled(Row$1) `
 `;
 function ApprovalRequestDetails({ approvalRequest, baseLocale, }) {
     const { t } = useTranslation();
-    return (jsxRuntimeExports.jsxs(Container$1, { children: [jsxRuntimeExports.jsx(ApprovalRequestHeader, { isBold: true, children: t("approval-requests.request.approval-request-details.header", "Approval request details") }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.sent-by", "Sent by") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: approvalRequest.created_by_user.name }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.sent-on", "Sent on") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: formatApprovalRequestDate(approvalRequest.created_at, baseLocale) }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.approver", "Approver") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: approvalRequest.assignee_user.name }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.status", "Status") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: jsxRuntimeExports.jsx(ApprovalStatusTag$1, { status: approvalRequest.status }) }) })] }), approvalRequest.decision_notes.length > 0 && (jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.comment", "Comment") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: approvalRequest.decision_notes[0] }) })] })), approvalRequest.decided_at && (jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t(approvalRequest.status === "withdrawn"
+    return (jsxRuntimeExports.jsxs(Container$1, { children: [jsxRuntimeExports.jsx(ApprovalRequestHeader, { isBold: true, children: t("approval-requests.request.approval-request-details.header", "Approval request details") }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.sent-by", "Sent by") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: approvalRequest.created_by_user.name }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.sent-on", "Sent on") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: formatApprovalRequestDate(approvalRequest.created_at, baseLocale) }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.approver", "Approver") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: approvalRequest.assignee_user.name }) })] }), jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.status", "Status") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: jsxRuntimeExports.jsx(ApprovalStatusTag$1, { status: approvalRequest.status }) }) })] }), approvalRequest.decision_notes.length > 0 && (jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t("approval-requests.request.approval-request-details.comment", "Comment") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: approvalRequest.decision_notes[0] }) })] })), approvalRequest.decided_at && (jsxRuntimeExports.jsxs(DetailRow, { children: [jsxRuntimeExports.jsx(Col, { size: 4, children: jsxRuntimeExports.jsx(FieldLabel$1, { children: t(approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                                 ? "approval-requests.request.approval-request-details.withdrawn-on"
-                                : "approval-requests.request.approval-request-details.decided", approvalRequest.status === "withdrawn"
+                                : "approval-requests.request.approval-request-details.decided", approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                                 ? "Withdrawn on"
                                 : "Decided") }) }), jsxRuntimeExports.jsx(Col, { size: 8, children: jsxRuntimeExports.jsx(MD, { children: formatApprovalRequestDate(approvalRequest.decided_at, baseLocale) }) })] }))] }));
 }
@@ -394,13 +395,13 @@ function ApproverActions({ approvalRequestId, approvalWorkflowInstanceId, setApp
         setIsSubmitting(true);
         try {
             const decision = pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-                ? "approved"
-                : "rejected";
+                ? APPROVAL_REQUEST_STATES.APPROVED
+                : APPROVAL_REQUEST_STATES.REJECTED;
             const response = await submitApprovalDecision(approvalWorkflowInstanceId, approvalRequestId, decision, comment);
             if (response.ok) {
                 const data = await response.json();
                 setApprovalRequest(data.approval_request);
-                const notificationTitle = decision === "approved"
+                const notificationTitle = decision === APPROVAL_REQUEST_STATES.APPROVED
                     ? t("approval-requests.request.notification.approval-submitted", "Approval submitted")
                     : t("approval-requests.request.notification.denial-submitted", "Denial submitted");
                 notify({
@@ -480,11 +481,12 @@ const BreadcrumbAnchor = styled(Anchor) `
   }
 `;
 function ApprovalRequestBreadcrumbs({ organizations, helpCenterPath, }) {
+    const { t } = useTranslation();
     const defaultOrganizationName = organizations.length > 0 ? organizations[0]?.name : null;
     if (defaultOrganizationName) {
-        return (jsxRuntimeExports.jsxs(StyledBreadcrumb, { children: [jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }), jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: "Approval requests" })] }));
+        return (jsxRuntimeExports.jsxs(StyledBreadcrumb, { children: [jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: helpCenterPath, children: defaultOrganizationName }), jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: t("approval-requests.list.header", "Approval requests") })] }));
     }
-    return (jsxRuntimeExports.jsx(StyledBreadcrumb, { children: jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: "Approval requests" }) }));
+    return (jsxRuntimeExports.jsx(StyledBreadcrumb, { children: jsxRuntimeExports.jsx(BreadcrumbAnchor, { href: `${helpCenterPath}/approval_requests`, children: t("approval-requests.list.header", "Approval requests") }) }));
 }
 var ApprovalRequestBreadcrumbs$1 = reactExports.memo(ApprovalRequestBreadcrumbs);
 

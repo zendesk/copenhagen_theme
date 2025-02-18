@@ -3,14 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Tag } from "@zendeskgarden/react-tags";
 import { Ellipsis } from "@zendeskgarden/react-typography";
 import type { ApprovalRequestStatus } from "../../types";
-
-const APPROVAL_REQUEST_STATES = {
-  ACTIVE: "active",
-  APPROVED: "approved",
-  REJECTED: "rejected",
-  // CLARIFICATION_REQUESTED: "clarification_requested",
-  WITHDRAWN: "withdrawn",
-} as const;
+import { APPROVAL_REQUEST_STATES } from "../../constants";
 
 const DEFAULT_STATUS_CONFIG = { hue: "grey", label: "Unknown status" };
 

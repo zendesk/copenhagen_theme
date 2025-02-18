@@ -7,6 +7,7 @@ import { Grid, Row, Col } from "@zendeskgarden/react-grid";
 import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
+import { APPROVAL_REQUEST_STATES } from "../../constants";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
@@ -125,10 +126,10 @@ function ApprovalRequestDetails({
           <Col size={4}>
             <FieldLabel>
               {t(
-                approvalRequest.status === "withdrawn"
+                approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                   ? "approval-requests.request.approval-request-details.withdrawn-on"
                   : "approval-requests.request.approval-request-details.decided",
-                approvalRequest.status === "withdrawn"
+                approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                   ? "Withdrawn on"
                   : "Decided"
               )}
