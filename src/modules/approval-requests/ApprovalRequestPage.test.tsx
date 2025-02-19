@@ -1,11 +1,11 @@
 import { screen, render } from "@testing-library/react";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestPage from "../ApprovalRequestPage";
-import { useApprovalRequest } from "../hooks/useApprovalRequest";
+import ApprovalRequestPage from "./ApprovalRequestPage";
+import { useApprovalRequest } from "./hooks/useApprovalRequest";
 import { ToastProvider } from "@zendeskgarden/react-notifications";
 
-jest.mock("../hooks/useApprovalRequest");
+jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
 
 const renderWithTheme = (ui: ReactElement) => {

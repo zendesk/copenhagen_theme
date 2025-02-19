@@ -2,15 +2,15 @@ import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestListPage from "../ApprovalRequestListPage";
-import { useSearchApprovalRequests } from "../hooks/useSearchApprovalRequests";
+import ApprovalRequestListPage from "./ApprovalRequestListPage";
+import { useSearchApprovalRequests } from "./hooks/useSearchApprovalRequests";
 
 jest.mock(
   "@zendeskgarden/svg-icons/src/16/search-stroke.svg",
   () => "svg-mock"
 );
 
-jest.mock("../hooks/useSearchApprovalRequests");
+jest.mock("./hooks/useSearchApprovalRequests");
 const mockUseSearchApprovalRequests = useSearchApprovalRequests as jest.Mock;
 
 const renderWithTheme = (ui: ReactElement) => {

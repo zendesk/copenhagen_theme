@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalStatusTag from "../ApprovalStatusTag";
+import ApprovalStatusTag from "./ApprovalStatusTag";
 
 const renderWithTheme = (ui: React.ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);

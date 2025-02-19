@@ -2,15 +2,15 @@ import { screen, render, waitFor, act } from "@testing-library/react";
 import type { ReactElement } from "react";
 import userEvent from "@testing-library/user-event";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApproverActions from "../ApproverActions";
+import ApproverActions from "./ApproverActions";
 
 const mockNotify = jest.fn();
-jest.mock("../../../../shared/notifications/useNotify", () => ({
+jest.mock("../../../shared/notifications/useNotify", () => ({
   useNotify: () => mockNotify,
 }));
 
 const mockSubmitApprovalDecision = jest.fn();
-jest.mock("../../../submitApprovalDecision", () => ({
+jest.mock("../../submitApprovalDecision", () => ({
   submitApprovalDecision: (...args: unknown[]) =>
     mockSubmitApprovalDecision(...args),
 }));

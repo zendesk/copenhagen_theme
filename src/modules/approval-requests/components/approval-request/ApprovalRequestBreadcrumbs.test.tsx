@@ -1,7 +1,7 @@
 import { screen, render } from "@testing-library/react";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestBreadcrumbs from "../ApprovalRequestBreadcrumbs";
+import ApprovalRequestBreadcrumbs from "./ApprovalRequestBreadcrumbs";
 
 const renderWithTheme = (ui: ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);

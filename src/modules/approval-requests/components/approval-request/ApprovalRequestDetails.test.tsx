@@ -1,8 +1,8 @@
 import { screen, render } from "@testing-library/react";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestDetails from "../ApprovalRequestDetails";
-import type { ApprovalRequest } from "../../../types";
+import ApprovalRequestDetails from "./ApprovalRequestDetails";
+import type { ApprovalRequest } from "../../types";
 
 const renderWithTheme = (ui: ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);

@@ -2,8 +2,8 @@ import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestListTable from "../ApprovalRequestListTable";
-import type { SearchApprovalRequest } from "../../../types";
+import ApprovalRequestListTable from "./ApprovalRequestListTable";
+import type { SearchApprovalRequest } from "../../types";
 
 const renderWithTheme = (ui: ReactElement) => {
   return render(<ThemeProvider>{ui}</ThemeProvider>);

@@ -2,7 +2,7 @@ import { screen, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
-import ApprovalRequestListFilters from "../ApprovalRequestListFilters";
+import ApprovalRequestListFilters from "./ApprovalRequestListFilters";
 
 jest.mock(
   "@zendeskgarden/svg-icons/src/16/search-stroke.svg",
