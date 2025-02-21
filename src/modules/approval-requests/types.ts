@@ -6,7 +6,7 @@ interface ApprovalRequestUser {
   };
 }
 
-interface ApprovalDecisions {
+export interface ApprovalDecision {
   decided_at: string | null;
   decided_by_user: {
     id: number;
@@ -16,6 +16,7 @@ interface ApprovalDecisions {
     };
   };
   decision_notes: string | null;
+  status: ApprovalRequestStatus;
 }
 
 export type ApprovalRequestStatus =
@@ -35,9 +36,10 @@ export interface ApprovalRequest {
   created_at: string;
   created_by_user: ApprovalRequestUser;
   decided_at: string | null;
-  decisions: ApprovalDecisions;
+  decisions: ApprovalDecision[];
   assignee_user: ApprovalRequestUser;
   ticket_details: ApprovalRequestTicket;
+  withdrawn_reason: string | null;
 }
 
 export interface ApprovalRequestTicket {

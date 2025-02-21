@@ -29,17 +29,8 @@ const mockApprovalRequest: ApprovalRequest = {
     },
   },
   decided_at: null,
-  decisions: {
-    decided_at: null,
-    decided_by_user: {
-      id: 456,
-      name: "Jane Approver",
-      photo: {
-        content_url: null,
-      },
-    },
-    decision_notes: null,
-  },
+  decisions: [],
+  withdrawn_reason: null,
   ticket_details: {
     id: "789",
     priority: "normal",
@@ -76,17 +67,20 @@ describe("ApprovalRequestDetails", () => {
       ...mockApprovalRequest,
       status: "approved",
       decided_at: "2024-02-21T15:45:00Z",
-      decisions: {
-        decision_notes: "This looks good to me",
-        decided_at: "2024-02-21T15:45:00Z",
-        decided_by_user: {
-          id: 456,
-          name: "Jane Approver",
-          photo: {
-            content_url: null,
+      decisions: [
+        {
+          decision_notes: "This looks good to me",
+          decided_at: "2024-02-21T15:45:00Z",
+          decided_by_user: {
+            id: 456,
+            name: "Jane Approver",
+            photo: {
+              content_url: null,
+            },
           },
+          status: "approved",
         },
-      },
+      ],
     };
 
     renderWithTheme(
@@ -100,5 +94,89 @@ describe("ApprovalRequestDetails", () => {
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
     expect(screen.getByText("Decided")).toBeInTheDocument();
     expect(screen.getByText(/this looks good to me/i)).toBeInTheDocument();
+  });
+
+  it("renders a withdrawn approval request with the withdrawal reason", () => {
+    const withdrawnRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      status: "withdrawn",
+      withdrawn_reason: "No longer needed",
+      decided_at: "2024-02-21T15:45:00Z",
+    };
+
+    renderWithTheme(
+      <ApprovalRequestDetails
+        approvalRequest={withdrawnRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("Withdrawn on")).toBeInTheDocument();
+    expect(screen.getByText("No longer needed")).toBeInTheDocument();
+  });
+
+  it("shows the previous decision when an approval request is withdrawn with prior approval", () => {
+    const withdrawnWithPriorApproval: ApprovalRequest = {
+      ...mockApprovalRequest,
+      status: "withdrawn",
+      withdrawn_reason: "Changed my mind",
+      decided_at: "2024-02-21T15:45:00Z",
+      decisions: [
+        {
+          decision_notes: "Originally stamped",
+          decided_at: "2024-02-20T10:30:00Z",
+          decided_by_user: {
+            id: 456,
+            name: "Jane Approver",
+            photo: {
+              content_url: null,
+            },
+          },
+          status: "approved",
+        },
+      ],
+    };
+
+    renderWithTheme(
+      <ApprovalRequestDetails
+        approvalRequest={withdrawnWithPriorApproval}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.getByText("Previous decision")).toBeInTheDocument();
+    expect(screen.getByText(/approved/i)).toBeInTheDocument();
+    expect(screen.getByText(/"Originally stamped"/)).toBeInTheDocument();
+  });
+
+  it("does not show the previous decision for non-withdrawn requests", () => {
+    const approvedRequest: ApprovalRequest = {
+      ...mockApprovalRequest,
+      status: "approved",
+      decided_at: "2024-02-21T15:45:00Z",
+      decisions: [
+        {
+          decision_notes: "Looks good",
+          decided_at: "2024-02-21T15:45:00Z",
+          decided_by_user: {
+            id: 456,
+            name: "Jane Approver",
+            photo: {
+              content_url: null,
+            },
+          },
+          status: "approved",
+        },
+      ],
+    };
+
+    renderWithTheme(
+      <ApprovalRequestDetails
+        approvalRequest={approvedRequest}
+        baseLocale="en-US"
+      />
+    );
+
+    expect(screen.queryByText("Previous decision")).not.toBeInTheDocument();
   });
 });

@@ -32,9 +32,9 @@ describe("ApprovalRequestListFilters", () => {
       />
     );
 
-    expect(screen.getByLabelText("Status:")).toBeInTheDocument();
+    expect(screen.getByLabelText("Status")).toBeInTheDocument();
     const combobox = screen.getByRole("combobox", {
-      name: /status:/i,
+      name: /status/i,
     });
 
     await user.click(combobox);
@@ -64,7 +64,7 @@ describe("ApprovalRequestListFilters", () => {
     );
 
     const combobox = screen.getByRole("combobox", {
-      name: /status:/i,
+      name: /status/i,
     });
 
     await user.click(combobox);
