@@ -29,7 +29,17 @@ const mockApprovalRequest: ApprovalRequest = {
     },
   },
   decided_at: null,
-  decision_notes: [],
+  decisions: {
+    decided_at: null,
+    decided_by_user: {
+      id: 456,
+      name: "Jane Approver",
+      photo: {
+        content_url: null,
+      },
+    },
+    decision_notes: null,
+  },
   ticket_details: {
     id: "789",
     priority: "normal",
@@ -66,7 +76,17 @@ describe("ApprovalRequestDetails", () => {
       ...mockApprovalRequest,
       status: "approved",
       decided_at: "2024-02-21T15:45:00Z",
-      decision_notes: ["This looks good to me"],
+      decisions: {
+        decision_notes: "This looks good to me",
+        decided_at: "2024-02-21T15:45:00Z",
+        decided_by_user: {
+          id: 456,
+          name: "Jane Approver",
+          photo: {
+            content_url: null,
+          },
+        },
+      },
     };
 
     renderWithTheme(
