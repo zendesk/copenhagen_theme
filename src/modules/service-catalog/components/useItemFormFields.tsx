@@ -4,10 +4,14 @@ import type { TicketField } from "../data-types/TicketField";
 import type { Field } from "../../ticket-fields/data-types/Field";
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 
-const getFieldValue = (field: TicketField) =>
-  field.type === "tagger"
-    ? field.custom_field_options.find((option) => option.default)?.value
-    : undefined;
+const getFieldValue = (field: TicketField) => {
+  if (field.type === "tagger") {
+    return (
+      field.custom_field_options.find((option) => option.default)?.value ?? null
+    );
+  }
+  return null;
+};
 
 const formatField = (field: TicketField): Field => {
   const {
