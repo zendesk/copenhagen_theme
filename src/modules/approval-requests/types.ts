@@ -6,6 +6,19 @@ interface ApprovalRequestUser {
   };
 }
 
+export interface ApprovalDecision {
+  decided_at: string | null;
+  decided_by_user: {
+    id: number;
+    name: string;
+    photo: {
+      content_url: string | null;
+    };
+  };
+  decision_notes: string | null;
+  status: ApprovalRequestStatus;
+}
+
 export type ApprovalRequestStatus =
   | "active"
   | "approved"
@@ -23,9 +36,10 @@ export interface ApprovalRequest {
   created_at: string;
   created_by_user: ApprovalRequestUser;
   decided_at: string | null;
-  decision_notes: string[];
+  decisions: ApprovalDecision[];
   assignee_user: ApprovalRequestUser;
   ticket_details: ApprovalRequestTicket;
+  withdrawn_reason: string | null;
 }
 
 export interface ApprovalRequestTicket {

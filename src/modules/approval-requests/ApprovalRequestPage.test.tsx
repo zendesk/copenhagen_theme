@@ -4,6 +4,7 @@ import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApprovalRequestPage from "./ApprovalRequestPage";
 import { useApprovalRequest } from "./hooks/useApprovalRequest";
 import { ToastProvider } from "@zendeskgarden/react-notifications";
+import type { ApprovalRequest } from "./types";
 
 jest.mock("./hooks/useApprovalRequest");
 const mockUseApprovalRequest = useApprovalRequest as jest.Mock;
@@ -16,7 +17,7 @@ const renderWithTheme = (ui: ReactElement) => {
   );
 };
 
-const mockApprovalRequest = {
+const mockApprovalRequest: ApprovalRequest = {
   id: "123",
   subject: "Test Request",
   message: "Please approve this request",
@@ -33,7 +34,8 @@ const mockApprovalRequest = {
     photo: { content_url: null },
   },
   decided_at: null,
-  decision_notes: [],
+  decisions: [],
+  withdrawn_reason: null,
   ticket_details: {
     id: "T123",
     priority: "normal",

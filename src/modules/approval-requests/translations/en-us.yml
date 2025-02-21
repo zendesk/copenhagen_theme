@@ -82,6 +82,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1hkgy-71WFkLQnZ0PmEHFaWhfnuguiUmv/view?usp=drive_link"
       value: "Withdrawn on"
   - translation:
+      key: "approval-requests.request.approval-request-details.previous-decision"
+      title: "The Previous Decision label on an approval request - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1R55CIlKhowOKZ9J22ChB81qiMz2NifYO/view?usp=drive_link"
+      value: "Previous decision"
+  - translation:
       key: "approval-requests.request.approver-actions.approve-request"
       title: "Label for the approve request button to begin approving an approval request"
       screenshot: "https://drive.google.com/file/d/1uWDMNa7cfF2EdD5HpDxcTVHTa6M07v81/view?usp=drive_link"
@@ -149,8 +154,8 @@ parts:
   - translation:
       key: "approval-requests.list.status-dropdown.label"
       title: "Label for the status dropdown on the approval requests list page"
-      screenshot: "https://drive.google.com/file/d/18_4fS0yROAMC1yVdDYLfYvjKWeUdWCDH/view?usp=drive_link"
-      value: "Status:"
+      screenshot: "https://drive.google.com/file/d/1T7BGzFgCWC74RIoUBBZ8tZzAvcksIw1r/view?usp=drive_link"
+      value: "Status"
   - translation:
       key: "approval-requests.list.status-dropdown.any"
       title: "Label for any dropdown option within the status dropdown on the approval requests list page - Subject: 'status'"

@@ -8,6 +8,7 @@ import type { ApprovalRequest } from "../../types";
 import ApprovalStatusTag from "./ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
 import { APPROVAL_REQUEST_STATES } from "../../constants";
+import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
@@ -24,7 +25,7 @@ const FieldLabel = styled(MD)`
 `;
 
 const DetailRow = styled(Row)`
-  margin-bottom: ${(props) => props.theme.space.sm}; /* 8px */
+  margin-bottom: ${(props) => props.theme.space.sm}; /* 12px */
 
   &:last-child {
     margin-bottom: 0;
@@ -42,6 +43,13 @@ function ApprovalRequestDetails({
 }: ApprovalRequestDetailsProps) {
   const { t } = useTranslation();
 
+  const shouldShowApprovalRequestComment =
+    approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
+      ? Boolean(approvalRequest.withdrawn_reason)
+      : approvalRequest.decisions.length > 0;
+  const shouldShowPreviousDecision =
+    approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN &&
+    approvalRequest.decisions.length > 0;
   return (
     <Container>
       <ApprovalRequestHeader isBold>
@@ -106,7 +114,7 @@ function ApprovalRequestDetails({
           </MD>
         </Col>
       </DetailRow>
-      {approvalRequest.decision_notes.length > 0 && (
+      {shouldShowApprovalRequestComment && (
         <DetailRow>
           <Col size={4}>
             <FieldLabel>
@@ -117,7 +125,11 @@ function ApprovalRequestDetails({
             </FieldLabel>
           </Col>
           <Col size={8}>
-            <MD>{approvalRequest.decision_notes[0]}</MD>
+            <MD>
+              {approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
+                ? approvalRequest.withdrawn_reason
+                : approvalRequest.decisions[0]?.decision_notes}
+            </MD>
           </Col>
         </DetailRow>
       )}
@@ -144,6 +156,12 @@ function ApprovalRequestDetails({
             </MD>
           </Col>
         </DetailRow>
+      )}
+      {shouldShowPreviousDecision && approvalRequest.decisions[0] && (
+        <ApprovalRequestPreviousDecision
+          decision={approvalRequest.decisions[0]}
+          baseLocale={baseLocale}
+        />
       )}
     </Container>
   );
