@@ -89,7 +89,7 @@ interface ItemRequestFormProps {
   defaultOrganizationId: string | null;
   handleChange: (
     field: Field,
-    value: string | string[] | boolean | undefined
+    value: string | string[] | boolean | null
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 }
