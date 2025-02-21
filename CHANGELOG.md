@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/zendesk/copenhagen_theme/compare/v4.2.10...v4.3.0) (2025-02-21)
+
+
+### Features
+
+* added generative_answers helper to search results page ([d98c59e](https://github.com/zendesk/copenhagen_theme/commit/d98c59eb26579697d27641ec187538f447c99744))
+
 ## [4.2.10](https://github.com/zendesk/copenhagen_theme/compare/v4.2.9...v4.2.10) (2025-02-13)
 
 
