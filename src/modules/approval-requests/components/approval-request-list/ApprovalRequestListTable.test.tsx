@@ -81,6 +81,20 @@ describe("ApprovalRequestListTable", () => {
     expect(screen.getByText("Approved")).toBeInTheDocument();
   });
 
+  it("renders the no approval requests text when the filtered approval requests are empty", () => {
+    renderWithTheme(
+      <ApprovalRequestListTable
+        approvalRequests={[]}
+        helpCenterPath="/hc/en-us"
+        baseLocale="en-US"
+        sortDirection={undefined}
+        onSortChange={mockOnSortChange}
+      />
+    );
+
+    expect(screen.getByText("No approval requests found.")).toBeInTheDocument();
+  });
+
   it("calls the onSortChange function if the Sent On sortable header cell is clicked", async () => {
     const user = userEvent.setup();
 

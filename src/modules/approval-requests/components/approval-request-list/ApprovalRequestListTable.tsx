@@ -16,6 +16,7 @@ import { getColorV8 } from "@zendeskgarden/react-theming";
 import ApprovalStatusTag from "../approval-request/ApprovalStatusTag";
 import { formatApprovalRequestDate } from "../../utils";
 import type { SearchApprovalRequest } from "../../types";
+import NoApprovalRequestsText from "./NoApprovalRequestsText";
 
 const ApprovalRequestAnchor = styled(Anchor)`
   &:visited {
@@ -87,28 +88,36 @@ function ApprovalRequestListTable({
         </HeaderRow>
       </Head>
       <Body>
-        {approvalRequests.map((approvalRequest) => (
-          <Row key={approvalRequest.id}>
-            <Cell isTruncated>
-              <ApprovalRequestAnchor
-                href={`${helpCenterPath}/approval_requests/${approvalRequest.id}`}
-              >
-                {approvalRequest.subject}
-              </ApprovalRequestAnchor>
-            </Cell>
-            <Cell isTruncated>{approvalRequest.requester_name}</Cell>
-            <Cell isTruncated>{approvalRequest.created_by_name}</Cell>
-            <Cell isTruncated>
-              {formatApprovalRequestDate(
-                approvalRequest.created_at,
-                baseLocale
-              )}
-            </Cell>
-            <Cell isTruncated>
-              <ApprovalStatusTag status={approvalRequest.status} />
+        {approvalRequests.length === 0 ? (
+          <Row>
+            <Cell colSpan={5}>
+              <NoApprovalRequestsText />
             </Cell>
           </Row>
-        ))}
+        ) : (
+          approvalRequests.map((approvalRequest) => (
+            <Row key={approvalRequest.id}>
+              <Cell isTruncated>
+                <ApprovalRequestAnchor
+                  href={`${helpCenterPath}/approval_requests/${approvalRequest.id}`}
+                >
+                  {approvalRequest.subject}
+                </ApprovalRequestAnchor>
+              </Cell>
+              <Cell isTruncated>{approvalRequest.requester_name}</Cell>
+              <Cell isTruncated>{approvalRequest.created_by_name}</Cell>
+              <Cell isTruncated>
+                {formatApprovalRequestDate(
+                  approvalRequest.created_at,
+                  baseLocale
+                )}
+              </Cell>
+              <Cell isTruncated>
+                <ApprovalStatusTag status={approvalRequest.status} />
+              </Cell>
+            </Row>
+          ))
+        )}
       </Body>
     </Table>
   );

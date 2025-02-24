@@ -1,12 +1,12 @@
 import { memo, useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
-import { MD, XXL } from "@zendeskgarden/react-typography";
-import { getColorV8 } from "@zendeskgarden/react-theming";
+import { XXL } from "@zendeskgarden/react-typography";
 import { Spinner } from "@zendeskgarden/react-loaders";
 import { useSearchApprovalRequests } from "./hooks/useSearchApprovalRequests";
 import ApprovalRequestListFilters from "./components/approval-request-list/ApprovalRequestListFilters";
 import ApprovalRequestListTable from "./components/approval-request-list/ApprovalRequestListTable";
+import NoApprovalRequestsText from "./components/approval-request-list/NoApprovalRequestsText";
 
 const Container = styled.div`
   display: flex;
@@ -19,10 +19,6 @@ const LoadingContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const NoApprovalRequestsText = styled(MD)`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
 `;
 
 export interface ApprovalRequestListPageProps {
@@ -93,12 +89,7 @@ function ApprovalRequestListPage({
         setSearchTerm={setSearchTerm}
       />
       {approvalRequests.length === 0 ? (
-        <NoApprovalRequestsText>
-          {t(
-            "approval-requests.list.no-requests",
-            "No approval requests found."
-          )}
-        </NoApprovalRequestsText>
+        <NoApprovalRequestsText />
       ) : (
         <ApprovalRequestListTable
           approvalRequests={sortedAndFilteredApprovalRequests}

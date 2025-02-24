@@ -109,7 +109,7 @@ function ApprovalRequestListFilters({
       </SearchField>
       <DropdownFilterField>
         <Label>
-          {t("approval-requests.list.status-dropdown.label", "Status")}
+          {t("approval-requests.list.status-dropdown.label_v2", "Status")}
         </Label>
         <Combobox
           isEditable={false}
