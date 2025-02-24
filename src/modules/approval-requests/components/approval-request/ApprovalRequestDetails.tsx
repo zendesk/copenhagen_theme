@@ -128,7 +128,7 @@ function ApprovalRequestDetails({
             <MD>
               {approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                 ? approvalRequest.withdrawn_reason
-                : approvalRequest.decisions[0]?.decision_notes}
+                : approvalRequest.decisions[0]?.decision_notes ?? '-'}
             </MD>
           </Col>
         </DetailRow>
