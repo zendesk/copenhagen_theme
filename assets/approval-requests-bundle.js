@@ -1,4 +1,4 @@
-import { r as reactExports, s as styled, d as Field, u as useTranslation, k as debounce, j as jsxRuntimeExports, e as Label, a as MediaInput, al as SvgSearchStroke, g as Combobox, O as Option, B as Tag, am as Ellipsis, G as getColorV8, ad as MD, A as Anchor, an as Table, ao as Head, ap as HeaderRow, aq as HeaderCell, ar as SortableCell, as as Body, at as Row, au as Cell, av as Spinner, aw as XXL, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme, ah as ErrorBoundary, a9 as Grid, ab as Row$1, aa as Col, c as useNotify, F as Field$1, L as Label$1, ax as Avatar, T as Textarea, M as Message, Z as Button, ay as Breadcrumb } from 'shared';
+import { r as reactExports, s as styled, d as Field, u as useTranslation, k as debounce, j as jsxRuntimeExports, e as Label, a as MediaInput, al as SvgSearchStroke, g as Combobox, O as Option, B as Tag, am as Ellipsis, G as getColorV8, ad as MD, A as Anchor, an as Table, ao as Head, ap as HeaderRow, aq as HeaderCell, ar as SortableCell, as as Body, at as Row, au as Cell, av as Spinner, aw as XXL, a2 as initI18next, a3 as loadTranslations, a4 as reactDomExports, a5 as ThemeProviders, a6 as createTheme, ah as ErrorBoundary, a9 as Grid, ab as Row$1, aa as Col, c as useNotify, F as Field$1, L as Label$1, ax as Avatar, T as Textarea, M as Message, Z as Button, ay as Breadcrumb } from 'shared';
 
 function useSearchApprovalRequests() {
     const [approvalRequests, setApprovalRequests] = reactExports.useState([]);
@@ -224,7 +224,108 @@ function ApprovalRequestListPage({ baseLocale, helpCenterPath, }) {
 }
 var ApprovalRequestListPage$1 = reactExports.memo(ApprovalRequestListPage);
 
+function __variableDynamicImportRuntime0__$1(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('approval-requests-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('approval-requests-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('approval-requests-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('approval-requests-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('approval-requests-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('approval-requests-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('approval-requests-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('approval-requests-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('approval-requests-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('approval-requests-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('approval-requests-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('approval-requests-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('approval-requests-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('approval-requests-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('approval-requests-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('approval-requests-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('approval-requests-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('approval-requests-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('approval-requests-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('approval-requests-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('approval-requests-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('approval-requests-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('approval-requests-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('approval-requests-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('approval-requests-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('approval-requests-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('approval-requests-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('approval-requests-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('approval-requests-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-es.json': return import('approval-requests-translations').then(function (n) { return n.F; });
+    case './translations/locales/es.json': return import('approval-requests-translations').then(function (n) { return n.G; });
+    case './translations/locales/et.json': return import('approval-requests-translations').then(function (n) { return n.H; });
+    case './translations/locales/eu.json': return import('approval-requests-translations').then(function (n) { return n.I; });
+    case './translations/locales/fa-af.json': return import('approval-requests-translations').then(function (n) { return n.J; });
+    case './translations/locales/fa.json': return import('approval-requests-translations').then(function (n) { return n.K; });
+    case './translations/locales/fi.json': return import('approval-requests-translations').then(function (n) { return n.L; });
+    case './translations/locales/fil.json': return import('approval-requests-translations').then(function (n) { return n.M; });
+    case './translations/locales/fo.json': return import('approval-requests-translations').then(function (n) { return n.N; });
+    case './translations/locales/fr-ca.json': return import('approval-requests-translations').then(function (n) { return n.O; });
+    case './translations/locales/fr.json': return import('approval-requests-translations').then(function (n) { return n.P; });
+    case './translations/locales/ga.json': return import('approval-requests-translations').then(function (n) { return n.Q; });
+    case './translations/locales/he.json': return import('approval-requests-translations').then(function (n) { return n.R; });
+    case './translations/locales/hi.json': return import('approval-requests-translations').then(function (n) { return n.S; });
+    case './translations/locales/hr.json': return import('approval-requests-translations').then(function (n) { return n.T; });
+    case './translations/locales/hu.json': return import('approval-requests-translations').then(function (n) { return n.U; });
+    case './translations/locales/hy.json': return import('approval-requests-translations').then(function (n) { return n.V; });
+    case './translations/locales/id.json': return import('approval-requests-translations').then(function (n) { return n.W; });
+    case './translations/locales/is.json': return import('approval-requests-translations').then(function (n) { return n.X; });
+    case './translations/locales/it-ch.json': return import('approval-requests-translations').then(function (n) { return n.Y; });
+    case './translations/locales/it.json': return import('approval-requests-translations').then(function (n) { return n.Z; });
+    case './translations/locales/ja.json': return import('approval-requests-translations').then(function (n) { return n._; });
+    case './translations/locales/ka.json': return import('approval-requests-translations').then(function (n) { return n.$; });
+    case './translations/locales/kk.json': return import('approval-requests-translations').then(function (n) { return n.a0; });
+    case './translations/locales/kl-dk.json': return import('approval-requests-translations').then(function (n) { return n.a1; });
+    case './translations/locales/ko.json': return import('approval-requests-translations').then(function (n) { return n.a2; });
+    case './translations/locales/ku.json': return import('approval-requests-translations').then(function (n) { return n.a3; });
+    case './translations/locales/lt.json': return import('approval-requests-translations').then(function (n) { return n.a4; });
+    case './translations/locales/lv.json': return import('approval-requests-translations').then(function (n) { return n.a5; });
+    case './translations/locales/mk.json': return import('approval-requests-translations').then(function (n) { return n.a6; });
+    case './translations/locales/mn.json': return import('approval-requests-translations').then(function (n) { return n.a7; });
+    case './translations/locales/ms.json': return import('approval-requests-translations').then(function (n) { return n.a8; });
+    case './translations/locales/mt.json': return import('approval-requests-translations').then(function (n) { return n.a9; });
+    case './translations/locales/my.json': return import('approval-requests-translations').then(function (n) { return n.aa; });
+    case './translations/locales/nl-be.json': return import('approval-requests-translations').then(function (n) { return n.ab; });
+    case './translations/locales/nl.json': return import('approval-requests-translations').then(function (n) { return n.ac; });
+    case './translations/locales/no.json': return import('approval-requests-translations').then(function (n) { return n.ad; });
+    case './translations/locales/pl.json': return import('approval-requests-translations').then(function (n) { return n.ae; });
+    case './translations/locales/pt-br.json': return import('approval-requests-translations').then(function (n) { return n.af; });
+    case './translations/locales/pt.json': return import('approval-requests-translations').then(function (n) { return n.ag; });
+    case './translations/locales/ro.json': return import('approval-requests-translations').then(function (n) { return n.ah; });
+    case './translations/locales/ru.json': return import('approval-requests-translations').then(function (n) { return n.ai; });
+    case './translations/locales/sk.json': return import('approval-requests-translations').then(function (n) { return n.aj; });
+    case './translations/locales/sl.json': return import('approval-requests-translations').then(function (n) { return n.ak; });
+    case './translations/locales/sq.json': return import('approval-requests-translations').then(function (n) { return n.al; });
+    case './translations/locales/sr-me.json': return import('approval-requests-translations').then(function (n) { return n.am; });
+    case './translations/locales/sr.json': return import('approval-requests-translations').then(function (n) { return n.an; });
+    case './translations/locales/sv.json': return import('approval-requests-translations').then(function (n) { return n.ao; });
+    case './translations/locales/th.json': return import('approval-requests-translations').then(function (n) { return n.ap; });
+    case './translations/locales/tr.json': return import('approval-requests-translations').then(function (n) { return n.aq; });
+    case './translations/locales/uk.json': return import('approval-requests-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ur.json': return import('approval-requests-translations').then(function (n) { return n.as; });
+    case './translations/locales/uz.json': return import('approval-requests-translations').then(function (n) { return n.at; });
+    case './translations/locales/vi.json': return import('approval-requests-translations').then(function (n) { return n.au; });
+    case './translations/locales/zh-cn.json': return import('approval-requests-translations').then(function (n) { return n.av; });
+    case './translations/locales/zh-tw.json': return import('approval-requests-translations').then(function (n) { return n.aw; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
 async function renderApprovalRequestList(container, settings, props, helpCenterPath) {
+    const { baseLocale } = props;
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__$1(`./translations/locales/${baseLocale}.json`),
+    ]);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ApprovalRequestListPage$1, { ...props, helpCenterPath: helpCenterPath }) }) }), container);
 }
 
@@ -592,7 +693,108 @@ function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, ba
 }
 var ApprovalRequestPage$1 = reactExports.memo(ApprovalRequestPage);
 
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('approval-requests-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('approval-requests-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('approval-requests-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('approval-requests-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('approval-requests-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('approval-requests-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('approval-requests-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('approval-requests-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('approval-requests-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('approval-requests-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('approval-requests-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('approval-requests-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('approval-requests-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('approval-requests-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('approval-requests-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('approval-requests-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('approval-requests-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('approval-requests-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('approval-requests-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('approval-requests-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('approval-requests-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('approval-requests-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('approval-requests-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('approval-requests-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('approval-requests-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('approval-requests-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('approval-requests-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('approval-requests-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('approval-requests-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('approval-requests-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-es.json': return import('approval-requests-translations').then(function (n) { return n.F; });
+    case './translations/locales/es.json': return import('approval-requests-translations').then(function (n) { return n.G; });
+    case './translations/locales/et.json': return import('approval-requests-translations').then(function (n) { return n.H; });
+    case './translations/locales/eu.json': return import('approval-requests-translations').then(function (n) { return n.I; });
+    case './translations/locales/fa-af.json': return import('approval-requests-translations').then(function (n) { return n.J; });
+    case './translations/locales/fa.json': return import('approval-requests-translations').then(function (n) { return n.K; });
+    case './translations/locales/fi.json': return import('approval-requests-translations').then(function (n) { return n.L; });
+    case './translations/locales/fil.json': return import('approval-requests-translations').then(function (n) { return n.M; });
+    case './translations/locales/fo.json': return import('approval-requests-translations').then(function (n) { return n.N; });
+    case './translations/locales/fr-ca.json': return import('approval-requests-translations').then(function (n) { return n.O; });
+    case './translations/locales/fr.json': return import('approval-requests-translations').then(function (n) { return n.P; });
+    case './translations/locales/ga.json': return import('approval-requests-translations').then(function (n) { return n.Q; });
+    case './translations/locales/he.json': return import('approval-requests-translations').then(function (n) { return n.R; });
+    case './translations/locales/hi.json': return import('approval-requests-translations').then(function (n) { return n.S; });
+    case './translations/locales/hr.json': return import('approval-requests-translations').then(function (n) { return n.T; });
+    case './translations/locales/hu.json': return import('approval-requests-translations').then(function (n) { return n.U; });
+    case './translations/locales/hy.json': return import('approval-requests-translations').then(function (n) { return n.V; });
+    case './translations/locales/id.json': return import('approval-requests-translations').then(function (n) { return n.W; });
+    case './translations/locales/is.json': return import('approval-requests-translations').then(function (n) { return n.X; });
+    case './translations/locales/it-ch.json': return import('approval-requests-translations').then(function (n) { return n.Y; });
+    case './translations/locales/it.json': return import('approval-requests-translations').then(function (n) { return n.Z; });
+    case './translations/locales/ja.json': return import('approval-requests-translations').then(function (n) { return n._; });
+    case './translations/locales/ka.json': return import('approval-requests-translations').then(function (n) { return n.$; });
+    case './translations/locales/kk.json': return import('approval-requests-translations').then(function (n) { return n.a0; });
+    case './translations/locales/kl-dk.json': return import('approval-requests-translations').then(function (n) { return n.a1; });
+    case './translations/locales/ko.json': return import('approval-requests-translations').then(function (n) { return n.a2; });
+    case './translations/locales/ku.json': return import('approval-requests-translations').then(function (n) { return n.a3; });
+    case './translations/locales/lt.json': return import('approval-requests-translations').then(function (n) { return n.a4; });
+    case './translations/locales/lv.json': return import('approval-requests-translations').then(function (n) { return n.a5; });
+    case './translations/locales/mk.json': return import('approval-requests-translations').then(function (n) { return n.a6; });
+    case './translations/locales/mn.json': return import('approval-requests-translations').then(function (n) { return n.a7; });
+    case './translations/locales/ms.json': return import('approval-requests-translations').then(function (n) { return n.a8; });
+    case './translations/locales/mt.json': return import('approval-requests-translations').then(function (n) { return n.a9; });
+    case './translations/locales/my.json': return import('approval-requests-translations').then(function (n) { return n.aa; });
+    case './translations/locales/nl-be.json': return import('approval-requests-translations').then(function (n) { return n.ab; });
+    case './translations/locales/nl.json': return import('approval-requests-translations').then(function (n) { return n.ac; });
+    case './translations/locales/no.json': return import('approval-requests-translations').then(function (n) { return n.ad; });
+    case './translations/locales/pl.json': return import('approval-requests-translations').then(function (n) { return n.ae; });
+    case './translations/locales/pt-br.json': return import('approval-requests-translations').then(function (n) { return n.af; });
+    case './translations/locales/pt.json': return import('approval-requests-translations').then(function (n) { return n.ag; });
+    case './translations/locales/ro.json': return import('approval-requests-translations').then(function (n) { return n.ah; });
+    case './translations/locales/ru.json': return import('approval-requests-translations').then(function (n) { return n.ai; });
+    case './translations/locales/sk.json': return import('approval-requests-translations').then(function (n) { return n.aj; });
+    case './translations/locales/sl.json': return import('approval-requests-translations').then(function (n) { return n.ak; });
+    case './translations/locales/sq.json': return import('approval-requests-translations').then(function (n) { return n.al; });
+    case './translations/locales/sr-me.json': return import('approval-requests-translations').then(function (n) { return n.am; });
+    case './translations/locales/sr.json': return import('approval-requests-translations').then(function (n) { return n.an; });
+    case './translations/locales/sv.json': return import('approval-requests-translations').then(function (n) { return n.ao; });
+    case './translations/locales/th.json': return import('approval-requests-translations').then(function (n) { return n.ap; });
+    case './translations/locales/tr.json': return import('approval-requests-translations').then(function (n) { return n.aq; });
+    case './translations/locales/uk.json': return import('approval-requests-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ur.json': return import('approval-requests-translations').then(function (n) { return n.as; });
+    case './translations/locales/uz.json': return import('approval-requests-translations').then(function (n) { return n.at; });
+    case './translations/locales/vi.json': return import('approval-requests-translations').then(function (n) { return n.au; });
+    case './translations/locales/zh-cn.json': return import('approval-requests-translations').then(function (n) { return n.av; });
+    case './translations/locales/zh-tw.json': return import('approval-requests-translations').then(function (n) { return n.aw; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
 async function renderApprovalRequest(container, settings, props, helpCenterPath) {
+    const { baseLocale } = props;
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`),
+    ]);
     reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ApprovalRequestPage$1, { ...props, helpCenterPath: helpCenterPath }) }) }), container);
 }
 

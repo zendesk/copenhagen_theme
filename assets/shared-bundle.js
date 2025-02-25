@@ -38489,7 +38489,8 @@ Breadcrumb.displayName = 'Breadcrumb';
 var af = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var af$1 = /*#__PURE__*/Object.freeze({
@@ -38500,7 +38501,8 @@ var af$1 = /*#__PURE__*/Object.freeze({
 var arXPseudo = {
 	"cph-theme-error-boundary.go-to-homepage": "[ผู้龍Ḡṓṓ ṭṓṓ ṭḥḛḛ ḥṓṓṃḛḛṗααḡḛḛ龍ผู้]",
 	"cph-theme-error-boundary.message": "[ผู้龍Ḡḭḭṽḛḛ ḭḭṭ αα ṃṓṓṃḛḛṇṭ ααṇḍ ṭṛẏẏ ααḡααḭḭṇ ḽααṭḛḛṛ龍ผู้]",
-	"cph-theme-error-boundary.title": "[ผู้龍Ṣṓṓṃḛḛṭḥḭḭṇḡ ẁḛḛṇṭ ẁṛṓṓṇḡ.龍ผู้]"
+	"cph-theme-error-boundary.title": "[ผู้龍Ṣṓṓṃḛḛṭḥḭḭṇḡ ẁḛḛṇṭ ẁṛṓṓṇḡ.龍ผู้]",
+	"cph-theme-shared.close-label": "[ผู้龍Ḉḽṓṓṡḛḛ龍ผู้]"
 };
 
 var arXPseudo$1 = /*#__PURE__*/Object.freeze({
@@ -38511,7 +38513,8 @@ var arXPseudo$1 = /*#__PURE__*/Object.freeze({
 var ar = {
 	"cph-theme-error-boundary.go-to-homepage": "انتقال إلى الصفحة الرئيسية",
 	"cph-theme-error-boundary.message": "انتظر لحظة وحاول مرة أخرى لاحقًا",
-	"cph-theme-error-boundary.title": "حدث خطأ."
+	"cph-theme-error-boundary.title": "حدث خطأ.",
+	"cph-theme-shared.close-label": "إغلاق"
 };
 
 var ar$1 = /*#__PURE__*/Object.freeze({
@@ -38522,7 +38525,8 @@ var ar$1 = /*#__PURE__*/Object.freeze({
 var az = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var az$1 = /*#__PURE__*/Object.freeze({
@@ -38533,7 +38537,8 @@ var az$1 = /*#__PURE__*/Object.freeze({
 var be = {
 	"cph-theme-error-boundary.go-to-homepage": "Перейти на главную страницу",
 	"cph-theme-error-boundary.message": "Подождите немного и повторите попытку позже",
-	"cph-theme-error-boundary.title": "Возникла неполадка."
+	"cph-theme-error-boundary.title": "Возникла неполадка.",
+	"cph-theme-shared.close-label": "Закрыть"
 };
 
 var be$1 = /*#__PURE__*/Object.freeze({
@@ -38544,7 +38549,8 @@ var be$1 = /*#__PURE__*/Object.freeze({
 var bg = {
 	"cph-theme-error-boundary.go-to-homepage": "Към началната страница",
 	"cph-theme-error-boundary.message": "Изчакайте малко и опитайте отново по-късно",
-	"cph-theme-error-boundary.title": "Възникна грешка."
+	"cph-theme-error-boundary.title": "Възникна грешка.",
+	"cph-theme-shared.close-label": "Затвори"
 };
 
 var bg$1 = /*#__PURE__*/Object.freeze({
@@ -38555,7 +38561,8 @@ var bg$1 = /*#__PURE__*/Object.freeze({
 var bn = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var bn$1 = /*#__PURE__*/Object.freeze({
@@ -38566,7 +38573,8 @@ var bn$1 = /*#__PURE__*/Object.freeze({
 var bs = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var bs$1 = /*#__PURE__*/Object.freeze({
@@ -38577,7 +38585,8 @@ var bs$1 = /*#__PURE__*/Object.freeze({
 var ca = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir a la página principal",
 	"cph-theme-error-boundary.message": "Espere un momento y vuelva a intentarlo más tarde",
-	"cph-theme-error-boundary.title": "Algo salió mal."
+	"cph-theme-error-boundary.title": "Algo salió mal.",
+	"cph-theme-shared.close-label": "Cerrar"
 };
 
 var ca$1 = /*#__PURE__*/Object.freeze({
@@ -38588,7 +38597,8 @@ var ca$1 = /*#__PURE__*/Object.freeze({
 var cs = {
 	"cph-theme-error-boundary.go-to-homepage": "Přejít na domovskou stránku",
 	"cph-theme-error-boundary.message": "Chvilku počkejte a zkuste to znovu později.",
-	"cph-theme-error-boundary.title": "Něco se nepovedlo."
+	"cph-theme-error-boundary.title": "Něco se nepovedlo.",
+	"cph-theme-shared.close-label": "Zavřít"
 };
 
 var cs$1 = /*#__PURE__*/Object.freeze({
@@ -38599,7 +38609,8 @@ var cs$1 = /*#__PURE__*/Object.freeze({
 var cy = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var cy$1 = /*#__PURE__*/Object.freeze({
@@ -38610,7 +38621,8 @@ var cy$1 = /*#__PURE__*/Object.freeze({
 var da = {
 	"cph-theme-error-boundary.go-to-homepage": "Gå til startsiden",
 	"cph-theme-error-boundary.message": "Vent et øjeblik og prøv igen senere",
-	"cph-theme-error-boundary.title": "Noget gik galt."
+	"cph-theme-error-boundary.title": "Noget gik galt.",
+	"cph-theme-shared.close-label": "Luk"
 };
 
 var da$1 = /*#__PURE__*/Object.freeze({
@@ -38621,7 +38633,8 @@ var da$1 = /*#__PURE__*/Object.freeze({
 var deDe = {
 	"cph-theme-error-boundary.go-to-homepage": "Zur Homepage gehen",
 	"cph-theme-error-boundary.message": "Versuchen Sie es in Kürze erneut.",
-	"cph-theme-error-boundary.title": "Ein Fehler ist aufgetreten."
+	"cph-theme-error-boundary.title": "Ein Fehler ist aufgetreten.",
+	"cph-theme-shared.close-label": "Schließen"
 };
 
 var deDe$1 = /*#__PURE__*/Object.freeze({
@@ -38632,7 +38645,8 @@ var deDe$1 = /*#__PURE__*/Object.freeze({
 var deXInformal = {
 	"cph-theme-error-boundary.go-to-homepage": "Zur Homepage gehen",
 	"cph-theme-error-boundary.message": "Versuchen Sie es in Kürze erneut.",
-	"cph-theme-error-boundary.title": "Ein Fehler ist aufgetreten."
+	"cph-theme-error-boundary.title": "Ein Fehler ist aufgetreten.",
+	"cph-theme-shared.close-label": "Schließen"
 };
 
 var deXInformal$1 = /*#__PURE__*/Object.freeze({
@@ -38643,7 +38657,8 @@ var deXInformal$1 = /*#__PURE__*/Object.freeze({
 var de = {
 	"cph-theme-error-boundary.go-to-homepage": "Zur Homepage gehen",
 	"cph-theme-error-boundary.message": "Versuchen Sie es in Kürze erneut.",
-	"cph-theme-error-boundary.title": "Ein Fehler ist aufgetreten."
+	"cph-theme-error-boundary.title": "Ein Fehler ist aufgetreten.",
+	"cph-theme-shared.close-label": "Schließen"
 };
 
 var de$1 = /*#__PURE__*/Object.freeze({
@@ -38654,7 +38669,8 @@ var de$1 = /*#__PURE__*/Object.freeze({
 var el = {
 	"cph-theme-error-boundary.go-to-homepage": "Μετάβαση στην αρχική σελίδα",
 	"cph-theme-error-boundary.message": "Περιμένετε λίγο και δοκιμάστε ξανά αργότερα",
-	"cph-theme-error-boundary.title": "Παρουσιάστηκε κάποιο πρόβλημα."
+	"cph-theme-error-boundary.title": "Παρουσιάστηκε κάποιο πρόβλημα.",
+	"cph-theme-shared.close-label": "Κλείσιμο"
 };
 
 var el$1 = /*#__PURE__*/Object.freeze({
@@ -38665,7 +38681,8 @@ var el$1 = /*#__PURE__*/Object.freeze({
 var en001 = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var en001$1 = /*#__PURE__*/Object.freeze({
@@ -38676,7 +38693,8 @@ var en001$1 = /*#__PURE__*/Object.freeze({
 var en150 = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var en150$1 = /*#__PURE__*/Object.freeze({
@@ -38687,7 +38705,8 @@ var en150$1 = /*#__PURE__*/Object.freeze({
 var enAu = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enAu$1 = /*#__PURE__*/Object.freeze({
@@ -38698,7 +38717,8 @@ var enAu$1 = /*#__PURE__*/Object.freeze({
 var enCa = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enCa$1 = /*#__PURE__*/Object.freeze({
@@ -38709,7 +38729,8 @@ var enCa$1 = /*#__PURE__*/Object.freeze({
 var enGb = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enGb$1 = /*#__PURE__*/Object.freeze({
@@ -38720,7 +38741,8 @@ var enGb$1 = /*#__PURE__*/Object.freeze({
 var enMy = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enMy$1 = /*#__PURE__*/Object.freeze({
@@ -38731,7 +38753,8 @@ var enMy$1 = /*#__PURE__*/Object.freeze({
 var enPh = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enPh$1 = /*#__PURE__*/Object.freeze({
@@ -38742,7 +38765,8 @@ var enPh$1 = /*#__PURE__*/Object.freeze({
 var enSe = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enSe$1 = /*#__PURE__*/Object.freeze({
@@ -38753,7 +38777,8 @@ var enSe$1 = /*#__PURE__*/Object.freeze({
 var enUs = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enUs$1 = /*#__PURE__*/Object.freeze({
@@ -38764,7 +38789,8 @@ var enUs$1 = /*#__PURE__*/Object.freeze({
 var enXDev = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enXDev$1 = /*#__PURE__*/Object.freeze({
@@ -38775,7 +38801,8 @@ var enXDev$1 = /*#__PURE__*/Object.freeze({
 var enXKeys = {
 	"cph-theme-error-boundary.go-to-homepage": "cph-theme-error-boundary.go-to-homepage",
 	"cph-theme-error-boundary.message": "cph-theme-error-boundary.message",
-	"cph-theme-error-boundary.title": "cph-theme-error-boundary.title"
+	"cph-theme-error-boundary.title": "cph-theme-error-boundary.title",
+	"cph-theme-shared.close-label": "cph-theme-shared.close-label"
 };
 
 var enXKeys$1 = /*#__PURE__*/Object.freeze({
@@ -38786,7 +38813,8 @@ var enXKeys$1 = /*#__PURE__*/Object.freeze({
 var enXObsolete = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enXObsolete$1 = /*#__PURE__*/Object.freeze({
@@ -38797,7 +38825,8 @@ var enXObsolete$1 = /*#__PURE__*/Object.freeze({
 var enXPseudo = {
 	"cph-theme-error-boundary.go-to-homepage": "[ผู้龍Ḡṓṓ ṭṓṓ ṭḥḛḛ ḥṓṓṃḛḛṗααḡḛḛ龍ผู้]",
 	"cph-theme-error-boundary.message": "[ผู้龍Ḡḭḭṽḛḛ ḭḭṭ αα ṃṓṓṃḛḛṇṭ ααṇḍ ṭṛẏẏ ααḡααḭḭṇ ḽααṭḛḛṛ龍ผู้]",
-	"cph-theme-error-boundary.title": "[ผู้龍Ṣṓṓṃḛḛṭḥḭḭṇḡ ẁḛḛṇṭ ẁṛṓṓṇḡ.龍ผู้]"
+	"cph-theme-error-boundary.title": "[ผู้龍Ṣṓṓṃḛḛṭḥḭḭṇḡ ẁḛḛṇṭ ẁṛṓṓṇḡ.龍ผู้]",
+	"cph-theme-shared.close-label": "[ผู้龍Ḉḽṓṓṡḛḛ龍ผู้]"
 };
 
 var enXPseudo$1 = /*#__PURE__*/Object.freeze({
@@ -38808,7 +38837,8 @@ var enXPseudo$1 = /*#__PURE__*/Object.freeze({
 var enXTest = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var enXTest$1 = /*#__PURE__*/Object.freeze({
@@ -38819,7 +38849,8 @@ var enXTest$1 = /*#__PURE__*/Object.freeze({
 var es419 = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir a la página principal",
 	"cph-theme-error-boundary.message": "Espere un momento y vuelva a intentarlo más tarde",
-	"cph-theme-error-boundary.title": "Algo salió mal."
+	"cph-theme-error-boundary.title": "Algo salió mal.",
+	"cph-theme-shared.close-label": "Cerrar"
 };
 
 var es419$1 = /*#__PURE__*/Object.freeze({
@@ -38830,7 +38861,8 @@ var es419$1 = /*#__PURE__*/Object.freeze({
 var esEs = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir a la página principal",
 	"cph-theme-error-boundary.message": "Espere un momento y vuelva a intentarlo más tarde",
-	"cph-theme-error-boundary.title": "Algo salió mal."
+	"cph-theme-error-boundary.title": "Algo salió mal.",
+	"cph-theme-shared.close-label": "Cerrar"
 };
 
 var esEs$1 = /*#__PURE__*/Object.freeze({
@@ -38841,7 +38873,8 @@ var esEs$1 = /*#__PURE__*/Object.freeze({
 var es = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir a la página principal",
 	"cph-theme-error-boundary.message": "Espere un momento y vuelva a intentarlo más tarde",
-	"cph-theme-error-boundary.title": "Algo salió mal."
+	"cph-theme-error-boundary.title": "Algo salió mal.",
+	"cph-theme-shared.close-label": "Cerrar"
 };
 
 var es$1 = /*#__PURE__*/Object.freeze({
@@ -38852,7 +38885,8 @@ var es$1 = /*#__PURE__*/Object.freeze({
 var et = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var et$1 = /*#__PURE__*/Object.freeze({
@@ -38863,7 +38897,8 @@ var et$1 = /*#__PURE__*/Object.freeze({
 var eu = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir a la página principal",
 	"cph-theme-error-boundary.message": "Espere un momento y vuelva a intentarlo más tarde",
-	"cph-theme-error-boundary.title": "Algo salió mal."
+	"cph-theme-error-boundary.title": "Algo salió mal.",
+	"cph-theme-shared.close-label": "Cerrar"
 };
 
 var eu$1 = /*#__PURE__*/Object.freeze({
@@ -38874,7 +38909,8 @@ var eu$1 = /*#__PURE__*/Object.freeze({
 var faAf = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var faAf$1 = /*#__PURE__*/Object.freeze({
@@ -38885,7 +38921,8 @@ var faAf$1 = /*#__PURE__*/Object.freeze({
 var fa = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var fa$1 = /*#__PURE__*/Object.freeze({
@@ -38896,7 +38933,8 @@ var fa$1 = /*#__PURE__*/Object.freeze({
 var fi = {
 	"cph-theme-error-boundary.go-to-homepage": "Siirry kotisivulle",
 	"cph-theme-error-boundary.message": "Odota hetki ja yritä myöhemmin uudelleen",
-	"cph-theme-error-boundary.title": "Jotain meni pieleen."
+	"cph-theme-error-boundary.title": "Jotain meni pieleen.",
+	"cph-theme-shared.close-label": "Sulje"
 };
 
 var fi$1 = /*#__PURE__*/Object.freeze({
@@ -38907,7 +38945,8 @@ var fi$1 = /*#__PURE__*/Object.freeze({
 var fil = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var fil$1 = /*#__PURE__*/Object.freeze({
@@ -38918,7 +38957,8 @@ var fil$1 = /*#__PURE__*/Object.freeze({
 var fo = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var fo$1 = /*#__PURE__*/Object.freeze({
@@ -38929,7 +38969,8 @@ var fo$1 = /*#__PURE__*/Object.freeze({
 var frCa = {
 	"cph-theme-error-boundary.go-to-homepage": "Aller à la page d’accueil",
 	"cph-theme-error-boundary.message": "Patientez quelques instants et réessayez ultérieurement",
-	"cph-theme-error-boundary.title": "Un problème est survenu."
+	"cph-theme-error-boundary.title": "Un problème est survenu.",
+	"cph-theme-shared.close-label": "Fermer"
 };
 
 var frCa$1 = /*#__PURE__*/Object.freeze({
@@ -38940,7 +38981,8 @@ var frCa$1 = /*#__PURE__*/Object.freeze({
 var fr = {
 	"cph-theme-error-boundary.go-to-homepage": "Aller à la page d’accueil",
 	"cph-theme-error-boundary.message": "Patientez quelques instants et réessayez ultérieurement",
-	"cph-theme-error-boundary.title": "Un problème est survenu."
+	"cph-theme-error-boundary.title": "Un problème est survenu.",
+	"cph-theme-shared.close-label": "Fermer"
 };
 
 var fr$1 = /*#__PURE__*/Object.freeze({
@@ -38951,7 +38993,8 @@ var fr$1 = /*#__PURE__*/Object.freeze({
 var ga = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var ga$1 = /*#__PURE__*/Object.freeze({
@@ -38962,7 +39005,8 @@ var ga$1 = /*#__PURE__*/Object.freeze({
 var he = {
 	"cph-theme-error-boundary.go-to-homepage": "עבור לדף הבית",
 	"cph-theme-error-boundary.message": "המתן רגע ונסה שוב מאוחר יותר",
-	"cph-theme-error-boundary.title": "משהו השתבש."
+	"cph-theme-error-boundary.title": "משהו השתבש.",
+	"cph-theme-shared.close-label": "סגור"
 };
 
 var he$1 = /*#__PURE__*/Object.freeze({
@@ -38973,7 +39017,8 @@ var he$1 = /*#__PURE__*/Object.freeze({
 var hi = {
 	"cph-theme-error-boundary.go-to-homepage": "होमपेज पर जाएं",
 	"cph-theme-error-boundary.message": "थोड़ा ठहरकर पुनः प्रयास करें।",
-	"cph-theme-error-boundary.title": "कोई गड़बड़ी हुई है।"
+	"cph-theme-error-boundary.title": "कोई गड़बड़ी हुई है।",
+	"cph-theme-shared.close-label": "बंद करें"
 };
 
 var hi$1 = /*#__PURE__*/Object.freeze({
@@ -38984,7 +39029,8 @@ var hi$1 = /*#__PURE__*/Object.freeze({
 var hr = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var hr$1 = /*#__PURE__*/Object.freeze({
@@ -38995,7 +39041,8 @@ var hr$1 = /*#__PURE__*/Object.freeze({
 var hu = {
 	"cph-theme-error-boundary.go-to-homepage": "Ugrás a kezdőlapra",
 	"cph-theme-error-boundary.message": "Várjon egy percet, majd próbálkozzon újra később",
-	"cph-theme-error-boundary.title": "Hiba történt."
+	"cph-theme-error-boundary.title": "Hiba történt.",
+	"cph-theme-shared.close-label": "Bezárás"
 };
 
 var hu$1 = /*#__PURE__*/Object.freeze({
@@ -39006,7 +39053,8 @@ var hu$1 = /*#__PURE__*/Object.freeze({
 var hy = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var hy$1 = /*#__PURE__*/Object.freeze({
@@ -39017,7 +39065,8 @@ var hy$1 = /*#__PURE__*/Object.freeze({
 var id = {
 	"cph-theme-error-boundary.go-to-homepage": "Pergi ke beranda",
 	"cph-theme-error-boundary.message": "Tunggu sebentar dan coba lagi nanti",
-	"cph-theme-error-boundary.title": "Terjadi kesalahan."
+	"cph-theme-error-boundary.title": "Terjadi kesalahan.",
+	"cph-theme-shared.close-label": "Tutup"
 };
 
 var id$1 = /*#__PURE__*/Object.freeze({
@@ -39028,7 +39077,8 @@ var id$1 = /*#__PURE__*/Object.freeze({
 var is = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var is$1 = /*#__PURE__*/Object.freeze({
@@ -39039,7 +39089,8 @@ var is$1 = /*#__PURE__*/Object.freeze({
 var itCh = {
 	"cph-theme-error-boundary.go-to-homepage": "Vai alla home page",
 	"cph-theme-error-boundary.message": "Attendi un attimo e riprova più tardi",
-	"cph-theme-error-boundary.title": "Si è verificato un problema."
+	"cph-theme-error-boundary.title": "Si è verificato un problema.",
+	"cph-theme-shared.close-label": "Chiudi"
 };
 
 var itCh$1 = /*#__PURE__*/Object.freeze({
@@ -39050,7 +39101,8 @@ var itCh$1 = /*#__PURE__*/Object.freeze({
 var it = {
 	"cph-theme-error-boundary.go-to-homepage": "Vai alla home page",
 	"cph-theme-error-boundary.message": "Attendi un attimo e riprova più tardi",
-	"cph-theme-error-boundary.title": "Si è verificato un problema."
+	"cph-theme-error-boundary.title": "Si è verificato un problema.",
+	"cph-theme-shared.close-label": "Chiudi"
 };
 
 var it$1 = /*#__PURE__*/Object.freeze({
@@ -39061,7 +39113,8 @@ var it$1 = /*#__PURE__*/Object.freeze({
 var ja = {
 	"cph-theme-error-boundary.go-to-homepage": "ホームページに移動",
 	"cph-theme-error-boundary.message": "少し待ってからもう一度やり直してください",
-	"cph-theme-error-boundary.title": "問題が発生したようです。"
+	"cph-theme-error-boundary.title": "問題が発生したようです。",
+	"cph-theme-shared.close-label": "閉じる"
 };
 
 var ja$1 = /*#__PURE__*/Object.freeze({
@@ -39072,7 +39125,8 @@ var ja$1 = /*#__PURE__*/Object.freeze({
 var ka = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var ka$1 = /*#__PURE__*/Object.freeze({
@@ -39083,7 +39137,8 @@ var ka$1 = /*#__PURE__*/Object.freeze({
 var kk = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var kk$1 = /*#__PURE__*/Object.freeze({
@@ -39094,7 +39149,8 @@ var kk$1 = /*#__PURE__*/Object.freeze({
 var klDk = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var klDk$1 = /*#__PURE__*/Object.freeze({
@@ -39105,7 +39161,8 @@ var klDk$1 = /*#__PURE__*/Object.freeze({
 var ko = {
 	"cph-theme-error-boundary.go-to-homepage": "홈페이지로 이동",
 	"cph-theme-error-boundary.message": "잠시 후 다시 시도하세요.",
-	"cph-theme-error-boundary.title": "문제가 발생했습니다."
+	"cph-theme-error-boundary.title": "문제가 발생했습니다.",
+	"cph-theme-shared.close-label": "닫기"
 };
 
 var ko$1 = /*#__PURE__*/Object.freeze({
@@ -39116,7 +39173,8 @@ var ko$1 = /*#__PURE__*/Object.freeze({
 var ku = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var ku$1 = /*#__PURE__*/Object.freeze({
@@ -39127,7 +39185,8 @@ var ku$1 = /*#__PURE__*/Object.freeze({
 var lt = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var lt$1 = /*#__PURE__*/Object.freeze({
@@ -39138,7 +39197,8 @@ var lt$1 = /*#__PURE__*/Object.freeze({
 var lv = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var lv$1 = /*#__PURE__*/Object.freeze({
@@ -39149,7 +39209,8 @@ var lv$1 = /*#__PURE__*/Object.freeze({
 var mk = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var mk$1 = /*#__PURE__*/Object.freeze({
@@ -39160,7 +39221,8 @@ var mk$1 = /*#__PURE__*/Object.freeze({
 var mn = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var mn$1 = /*#__PURE__*/Object.freeze({
@@ -39171,7 +39233,8 @@ var mn$1 = /*#__PURE__*/Object.freeze({
 var ms = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var ms$1 = /*#__PURE__*/Object.freeze({
@@ -39182,7 +39245,8 @@ var ms$1 = /*#__PURE__*/Object.freeze({
 var mt = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var mt$1 = /*#__PURE__*/Object.freeze({
@@ -39193,7 +39257,8 @@ var mt$1 = /*#__PURE__*/Object.freeze({
 var my = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var my$1 = /*#__PURE__*/Object.freeze({
@@ -39204,7 +39269,8 @@ var my$1 = /*#__PURE__*/Object.freeze({
 var nlBe = {
 	"cph-theme-error-boundary.go-to-homepage": "Naar de startpagina",
 	"cph-theme-error-boundary.message": "Probeer het na korte tijd opnieuw",
-	"cph-theme-error-boundary.title": "Er is iets fout gegaan."
+	"cph-theme-error-boundary.title": "Er is iets fout gegaan.",
+	"cph-theme-shared.close-label": "Sluiten"
 };
 
 var nlBe$1 = /*#__PURE__*/Object.freeze({
@@ -39215,7 +39281,8 @@ var nlBe$1 = /*#__PURE__*/Object.freeze({
 var nl = {
 	"cph-theme-error-boundary.go-to-homepage": "Naar de startpagina",
 	"cph-theme-error-boundary.message": "Probeer het na korte tijd opnieuw",
-	"cph-theme-error-boundary.title": "Er is iets fout gegaan."
+	"cph-theme-error-boundary.title": "Er is iets fout gegaan.",
+	"cph-theme-shared.close-label": "Sluiten"
 };
 
 var nl$1 = /*#__PURE__*/Object.freeze({
@@ -39226,7 +39293,8 @@ var nl$1 = /*#__PURE__*/Object.freeze({
 var no = {
 	"cph-theme-error-boundary.go-to-homepage": "Gå til hjemmesiden",
 	"cph-theme-error-boundary.message": "Vent et øyeblikk og prøv på nytt senere",
-	"cph-theme-error-boundary.title": "Noe gikk galt."
+	"cph-theme-error-boundary.title": "Noe gikk galt.",
+	"cph-theme-shared.close-label": "Lukk"
 };
 
 var no$1 = /*#__PURE__*/Object.freeze({
@@ -39237,7 +39305,8 @@ var no$1 = /*#__PURE__*/Object.freeze({
 var pl = {
 	"cph-theme-error-boundary.go-to-homepage": "Przejdź do strony głównej",
 	"cph-theme-error-boundary.message": "Poczekaj chwilę i spróbuj ponownie później",
-	"cph-theme-error-boundary.title": "Wystąpił jakiś problem."
+	"cph-theme-error-boundary.title": "Wystąpił jakiś problem.",
+	"cph-theme-shared.close-label": "Zamknij"
 };
 
 var pl$1 = /*#__PURE__*/Object.freeze({
@@ -39248,7 +39317,8 @@ var pl$1 = /*#__PURE__*/Object.freeze({
 var ptBr = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir para a página inicial",
 	"cph-theme-error-boundary.message": "Aguarde um momento e tente novamente mais tarde",
-	"cph-theme-error-boundary.title": "Algo deu errado."
+	"cph-theme-error-boundary.title": "Algo deu errado.",
+	"cph-theme-shared.close-label": "Fechar"
 };
 
 var ptBr$1 = /*#__PURE__*/Object.freeze({
@@ -39259,7 +39329,8 @@ var ptBr$1 = /*#__PURE__*/Object.freeze({
 var pt = {
 	"cph-theme-error-boundary.go-to-homepage": "Ir para a página inicial",
 	"cph-theme-error-boundary.message": "Aguarde um momento e tente novamente mais tarde",
-	"cph-theme-error-boundary.title": "Algo deu errado."
+	"cph-theme-error-boundary.title": "Algo deu errado.",
+	"cph-theme-shared.close-label": "Fechar"
 };
 
 var pt$1 = /*#__PURE__*/Object.freeze({
@@ -39270,7 +39341,8 @@ var pt$1 = /*#__PURE__*/Object.freeze({
 var ro = {
 	"cph-theme-error-boundary.go-to-homepage": "Mergeți la pagina de pornire",
 	"cph-theme-error-boundary.message": "Așteptați un moment, apoi încercați din nou mai târziu",
-	"cph-theme-error-boundary.title": "A apărut o problemă."
+	"cph-theme-error-boundary.title": "A apărut o problemă.",
+	"cph-theme-shared.close-label": "Închidere"
 };
 
 var ro$1 = /*#__PURE__*/Object.freeze({
@@ -39281,7 +39353,8 @@ var ro$1 = /*#__PURE__*/Object.freeze({
 var ru = {
 	"cph-theme-error-boundary.go-to-homepage": "Перейти на главную страницу",
 	"cph-theme-error-boundary.message": "Подождите немного и повторите попытку позже",
-	"cph-theme-error-boundary.title": "Возникла неполадка."
+	"cph-theme-error-boundary.title": "Возникла неполадка.",
+	"cph-theme-shared.close-label": "Закрыть"
 };
 
 var ru$1 = /*#__PURE__*/Object.freeze({
@@ -39292,7 +39365,8 @@ var ru$1 = /*#__PURE__*/Object.freeze({
 var sk = {
 	"cph-theme-error-boundary.go-to-homepage": "Prejsť na domovskú stránku",
 	"cph-theme-error-boundary.message": "Chvíľu počkajte a skúste to znova neskôr",
-	"cph-theme-error-boundary.title": "Niekde sa stala chyba."
+	"cph-theme-error-boundary.title": "Niekde sa stala chyba.",
+	"cph-theme-shared.close-label": "Zatvoriť"
 };
 
 var sk$1 = /*#__PURE__*/Object.freeze({
@@ -39303,7 +39377,8 @@ var sk$1 = /*#__PURE__*/Object.freeze({
 var sl = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var sl$1 = /*#__PURE__*/Object.freeze({
@@ -39314,7 +39389,8 @@ var sl$1 = /*#__PURE__*/Object.freeze({
 var sq = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var sq$1 = /*#__PURE__*/Object.freeze({
@@ -39325,7 +39401,8 @@ var sq$1 = /*#__PURE__*/Object.freeze({
 var srMe = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var srMe$1 = /*#__PURE__*/Object.freeze({
@@ -39336,7 +39413,8 @@ var srMe$1 = /*#__PURE__*/Object.freeze({
 var sr = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var sr$1 = /*#__PURE__*/Object.freeze({
@@ -39347,7 +39425,8 @@ var sr$1 = /*#__PURE__*/Object.freeze({
 var sv = {
 	"cph-theme-error-boundary.go-to-homepage": "Gå till startsidan",
 	"cph-theme-error-boundary.message": "Vänta en stund och försök igen senare",
-	"cph-theme-error-boundary.title": "Något gick fel."
+	"cph-theme-error-boundary.title": "Något gick fel.",
+	"cph-theme-shared.close-label": "Stäng"
 };
 
 var sv$1 = /*#__PURE__*/Object.freeze({
@@ -39358,7 +39437,8 @@ var sv$1 = /*#__PURE__*/Object.freeze({
 var th = {
 	"cph-theme-error-boundary.go-to-homepage": "ไปที่หน้าหลัก",
 	"cph-theme-error-boundary.message": "รอสักครู่แล้วลองอีกครั้งในภายหลัง",
-	"cph-theme-error-boundary.title": "มีบางอย่างผิดพลาด"
+	"cph-theme-error-boundary.title": "มีบางอย่างผิดพลาด",
+	"cph-theme-shared.close-label": "ปิด"
 };
 
 var th$1 = /*#__PURE__*/Object.freeze({
@@ -39369,7 +39449,8 @@ var th$1 = /*#__PURE__*/Object.freeze({
 var tr = {
 	"cph-theme-error-boundary.go-to-homepage": "Ana sayfaya git",
 	"cph-theme-error-boundary.message": "Kısa bir süre bekleyip yeniden deneyin",
-	"cph-theme-error-boundary.title": "Bir sorun oluştu."
+	"cph-theme-error-boundary.title": "Bir sorun oluştu.",
+	"cph-theme-shared.close-label": "Kapat"
 };
 
 var tr$1 = /*#__PURE__*/Object.freeze({
@@ -39380,7 +39461,8 @@ var tr$1 = /*#__PURE__*/Object.freeze({
 var uk = {
 	"cph-theme-error-boundary.go-to-homepage": "Перейти на домашню сторінку",
 	"cph-theme-error-boundary.message": "Зачекайте хвилину й спробуйте ще раз пізніше",
-	"cph-theme-error-boundary.title": "Сталася помилка."
+	"cph-theme-error-boundary.title": "Сталася помилка.",
+	"cph-theme-shared.close-label": "Закрити"
 };
 
 var uk$1 = /*#__PURE__*/Object.freeze({
@@ -39391,7 +39473,8 @@ var uk$1 = /*#__PURE__*/Object.freeze({
 var ur = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var ur$1 = /*#__PURE__*/Object.freeze({
@@ -39402,7 +39485,8 @@ var ur$1 = /*#__PURE__*/Object.freeze({
 var uz = {
 	"cph-theme-error-boundary.go-to-homepage": "Go to the homepage",
 	"cph-theme-error-boundary.message": "Give it a moment and try again later",
-	"cph-theme-error-boundary.title": "Something went wrong."
+	"cph-theme-error-boundary.title": "Something went wrong.",
+	"cph-theme-shared.close-label": "Close"
 };
 
 var uz$1 = /*#__PURE__*/Object.freeze({
@@ -39413,7 +39497,8 @@ var uz$1 = /*#__PURE__*/Object.freeze({
 var vi = {
 	"cph-theme-error-boundary.go-to-homepage": "Đi đến trang chủ",
 	"cph-theme-error-boundary.message": "Hãy chờ một lát và thử lại sau",
-	"cph-theme-error-boundary.title": "Đã xảy ra sự cố."
+	"cph-theme-error-boundary.title": "Đã xảy ra sự cố.",
+	"cph-theme-shared.close-label": "Đóng"
 };
 
 var vi$1 = /*#__PURE__*/Object.freeze({
@@ -39424,7 +39509,8 @@ var vi$1 = /*#__PURE__*/Object.freeze({
 var zhCn = {
 	"cph-theme-error-boundary.go-to-homepage": "转到主页",
 	"cph-theme-error-boundary.message": "请稍候片刻再重试",
-	"cph-theme-error-boundary.title": "出错了。"
+	"cph-theme-error-boundary.title": "出错了。",
+	"cph-theme-shared.close-label": "关闭"
 };
 
 var zhCn$1 = /*#__PURE__*/Object.freeze({
@@ -39435,7 +39521,8 @@ var zhCn$1 = /*#__PURE__*/Object.freeze({
 var zhTw = {
 	"cph-theme-error-boundary.go-to-homepage": "前往主頁",
 	"cph-theme-error-boundary.message": "請稍候片刻，然後再試一次",
-	"cph-theme-error-boundary.title": "發生問題。"
+	"cph-theme-error-boundary.title": "發生問題。",
+	"cph-theme-shared.close-label": "關閉"
 };
 
 var zhTw$1 = /*#__PURE__*/Object.freeze({
