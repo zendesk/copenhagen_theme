@@ -1161,7 +1161,7 @@ var id = {
 	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 digit terakhir)",
 	"cph-theme-ticket-fields.dropdown.empty-option": "Pilih opsi",
 	"cph-theme-ticket-fields.lookup-field.loading-options": "Memuat item...",
-	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Tidak ada kecocokan yang ditemukan",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Tidak ditemukan kecocokan",
 	"cph-theme-ticket-fields.lookup-field.placeholder": "Cari {{label}}"
 };
 
