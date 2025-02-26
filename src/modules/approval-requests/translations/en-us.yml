@@ -1,0 +1,219 @@
+#
+# This file is used for the internal Zendesk translation system, and it is generated from the extract-strings.mjs script.
+# It contains the English strings to be translated, which are used for generating the JSON files containing the translation strings
+# for each language.
+#
+# If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
+# your translations with a different method.
+#
+
+title: "Copenhagen Theme Approval requests"
+packages:
+  - "approval-requests"
+parts:
+  - translation:
+      key: "approval-requests.request.ticket-details.header"
+      title: "Header for the ticket details section displayed on the individual approval request page"
+      screenshot: "https://drive.google.com/file/d/1-mngvtPAewxxavZdD5s9XZrIUgtGW4Vj/view?usp=drive_link"
+      value: "Ticket details"
+  - translation:
+      key: "approval-requests.request.ticket-details.requester"
+      title: "Label for the person who submitted the ticket associated with the approval request"
+      screenshot: "https://drive.google.com/file/d/14qPWuPcsMFDC6J_HhOBbNlI9hBeLMKA-/view?usp=sharing"
+      value: "Requester"
+  - translation:
+      key: "approval-requests.request.ticket-details.id"
+      title: "Label for the unique identifier of the ticket associated with the approval request"
+      screenshot: "https://drive.google.com/file/d/1IJdg-vXQAUtcgS-JWWwgVOyRg5IO8Cey/view?usp=drive_link"
+      value: "ID"
+  - translation:
+      key: "approval-requests.request.ticket-details.priority"
+      title: "Label for the priority of the ticket associated with the approval request"
+      screenshot: "https://drive.google.com/file/d/1rB8uGfpnaDXGATBlsNyRdbntZKvS4BeW/view?usp=sharing"
+      value: "Priority"
+  - translation:
+      key: "approval-requests.request.ticket-details.checkbox-value.yes"
+      title: "Value representing true for a checkbox custom field"
+      screenshot: "https://drive.google.com/file/d/1Vk8x7k2DzF7t9DT5Q-KfmEbCZRmFOBeE/view?usp=drive_link"
+      value: "Yes"
+  - translation:
+      key: "approval-requests.request.ticket-details.checkbox-value.no"
+      title: "Value representing false for a checkbox custom field"
+      screenshot: "https://drive.google.com/file/d/1AiuLQXnW6qELTJtIFQX0JaBCA7zViMXA/view?usp=drive_link"
+      value: "No"
+  - translation:
+      key: "approval-requests.request.approval-request-details.header"
+      title: "Header for the approval request section displayed on the individual approval request page"
+      screenshot: "https://drive.google.com/file/d/1fteldN_Z4yTgd7UPzQi0xYv8TTPJxX9c/view?usp=drive_link"
+      value: "Approval request details"
+  - translation:
+      key: "approval-requests.request.approval-request-details.sent-by"
+      title: "Label for the person who submitted the approval request - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1-RFlHvEdegvChs6TuVTXxx6ubeSab-hc/view?usp=drive_link"
+      value: "Sent by"
+  - translation:
+      key: "approval-requests.request.approval-request-details.sent-on"
+      title: "Label for the date that the approval request was submitted - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1Kmy-XgNfCE5dgh-oipsc1P_sZ3gmvjD6/view?usp=drive_link"
+      value: "Sent on"
+  - translation:
+      key: "approval-requests.request.approval-request-details.approver"
+      title: "Label for the individual assigned to review and approve the request"
+      screenshot: "https://drive.google.com/file/d/1VnGlaQE9sSsKqwY3iKZn-AiJK8RnfUL8/view?usp=drive_link"
+      value: "Approver"
+  - translation:
+      key: "approval-requests.request.approval-request-details.status"
+      title: "Label for the current status of the approval request"
+      screenshot: "https://drive.google.com/file/d/11G6qZpoQoMzyEUxncBo4RovT93thSuXx/view?usp=drive_link"
+      value: "Status"
+  - translation:
+      key: "approval-requests.request.approval-request-details.comment"
+      title: "Noun - Label for the decision comment on an approval request"
+      screenshot: "https://drive.google.com/file/d/1j9IzjnAa1AVXzWq6r4x4QcaQN-Y64lM5/view?usp=drive_link"
+      value: "Comment"
+  - translation:
+      key: "approval-requests.request.approval-request-details.decided"
+      title: "Label for the decision date on an approval request - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1xpM_3Rt3hCD8aE-U7mEbL0Sh5dsC0ScN/view?usp=drive_link"
+      value: "Decided"
+  - translation:
+      key: "approval-requests.request.approval-request-details.withdrawn-on"
+      title: "Label for the withdrawn date on an approval request - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1hkgy-71WFkLQnZ0PmEHFaWhfnuguiUmv/view?usp=drive_link"
+      value: "Withdrawn on"
+  - translation:
+      key: "approval-requests.request.approval-request-details.previous-decision"
+      title: "Label in approval request details component"
+      screenshot: "https://drive.google.com/file/d/1R55CIlKhowOKZ9J22ChB81qiMz2NifYO/view?usp=drive_link"
+      value: "Previous decision"
+  - translation:
+      key: "approval-requests.request.approver-actions.approve-request"
+      title: "Label for the approve request button to begin approving an approval request"
+      screenshot: "https://drive.google.com/file/d/1uWDMNa7cfF2EdD5HpDxcTVHTa6M07v81/view?usp=drive_link"
+      value: "Approve request"
+  - translation:
+      key: "approval-requests.request.approver-actions.deny-request"
+      title: "Label for the deny request button to begin denying an approval request"
+      screenshot: "https://drive.google.com/file/d/1sEO2wxGJU6Jz1ZClBvkYDTXCXT9yqsGZ/view?usp=drive_link"
+      value: "Deny request"
+  - translation:
+      key: "approval-requests.request.approver-actions.denial-reason-label"
+      title: "Label for the input box where the reason for denying an approval request is provided"
+      screenshot: "https://drive.google.com/file/d/1WZx7DbwkudNbNYMIEwF56npryQGIpsG7/view?usp=drive_link"
+      value: "Reason for denial* (Required)"
+  - translation:
+      key: "approval-requests.request.approver-actions.denial-reason-validation"
+      title: "Validation message shown when attempting to deny an approval request without a reason for denial"
+      screenshot: "https://drive.google.com/file/d/1-wo8BGxMuV6bHD7mjlX8Lm3OTc_9RyFz/view?usp=drive_link"
+      value: "Enter a reason for denial"
+  - translation:
+      key: "approval-requests.request.approver-actions.additional-note-label"
+      title: "Label for the input box where the additional note when approving an approval request is provided"
+      screenshot: "https://drive.google.com/file/d/1gacesWd8MkyIY6UXvQSatv2ok67ZhbKk/view?usp=drive_link"
+      value: "Additional note"
+  - translation:
+      key: "approval-requests.request.approver-actions.submit-approval"
+      title: "Label for the submit approval button when approving an approval request"
+      screenshot: "https://drive.google.com/file/d/12C2F8zoCD_nMU-jSeu4kaMWwTeJNE3HJ/view?usp=drive_link"
+      value: "Submit approval"
+  - translation:
+      key: "approval-requests.request.approver-actions.submit-denial"
+      title: "Label for the submit denial button when denying an approval request"
+      screenshot: "https://drive.google.com/file/d/153Idb3CgJ_eFfWxLE4esAdB0DceOH8gj/view?usp=drive_link"
+      value: "Submit denial"
+  - translation:
+      key: "approval-requests.request.approver-actions.cancel"
+      title: "Label for the cancel button when approving or denying an approval request"
+      screenshot: "https://drive.google.com/file/d/1TjjF7CrDr-VYbZ-rpGs0pLCersevq9uL/view?usp=drive_link"
+      value: "Cancel"
+  - translation:
+      key: "approval-requests.request.notification.denial-submitted"
+      title: "Notification message shown when the denial of an approval request was submitted"
+      screenshot: "https://drive.google.com/file/d/1_Af2Xi2l6kcKI9QmFFQxH3SvI_Eaarg5/view?usp=drive_link"
+      value: "Denial submitted"
+  - translation:
+      key: "approval-requests.request.notification.approval-submitted"
+      title: "Notification message shown when the approval of an approval request was submitted"
+      screenshot: "https://drive.google.com/file/d/16BOEFXrbM29me3KdGgROerXXO5ns-7oh/view?usp=drive_link"
+      value: "Approval submitted"
+  - translation:
+      key: "approval-requests.list.header"
+      title: "Header for the approval requests list page"
+      screenshot: "https://drive.google.com/file/d/1MUj23YI3kUT-Udmh1LA0rt85-q078SMj/view?usp=drive_link"
+      value: "Approval requests"
+  - translation:
+      key: "approval-requests.list.search-placeholder"
+      title: "Placeholder for the search dropdown on the approval requests list page"
+      screenshot: "https://drive.google.com/file/d/10Mdnw0YkIq3w4CjdDOSD9efAAxDapzYr/view?usp=drive_link"
+      value: "Search approval requests"
+  - translation:
+      key: "approval-requests.list.no-requests"
+      title: "Text to convey that no approval requests exist on the approval requests list page."
+      screenshot: "https://drive.google.com/file/d/1rrZ1MZKAsY7mNo89McYaZNwEB5pDjKtk/view?usp=sharing"
+      value: "No approval requests found."
+  - translation:
+      key: "approval-requests.list.status-dropdown.label"
+      title: "Label for the status dropdown on the approval requests list page"
+      screenshot: "https://drive.google.com/file/d/18_4fS0yROAMC1yVdDYLfYvjKWeUdWCDH/view?usp=drive_link"
+      value: "Status:"
+      obsolete: "2025-05-24"
+  - translation:
+      key: "approval-requests.list.status-dropdown.label_v2"
+      title: "Label for the status dropdown on the approval requests list page"
+      screenshot: "https://drive.google.com/file/d/1T7BGzFgCWC74RIoUBBZ8tZzAvcksIw1r/view?usp=drive_link"
+      value: "Status"
+  - translation:
+      key: "approval-requests.list.status-dropdown.any"
+      title: "Label for any dropdown option within the status dropdown on the approval requests list page - Subject: 'status'"
+      screenshot: "https://drive.google.com/file/d/1dIURRxQu-EkQD9f1U0gKj_4mIBqBSRz3/view?usp=drive_link"
+      value: "Any"
+  - translation:
+      key: "approval-requests.list.table.subject"
+      title: "Header cell label for the subject column of the approval requests list table"
+      screenshot: "https://drive.google.com/file/d/1AfMOHvrRQoTODXWor5gtn7wn8AFI_5n-/view?usp=drive_link"
+      value: "Subject"
+  - translation:
+      key: "approval-requests.list.table.requester"
+      title: "Header cell label for the requester column of the approval requests list table"
+      screenshot: "https://drive.google.com/file/d/1tUTbmtSZCYxxDVbpQtZ6C50QDYlJU88I/view?usp=drive_link"
+      value: "Requester"
+  - translation:
+      key: "approval-requests.list.table.sent-by"
+      title: "Header cell label for the sent by column of the approval requests list table - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1k49KpSKk1OT4NYfeZqdb7WZLEwJZndpq/view?usp=drive_link"
+      value: "Sent by"
+  - translation:
+      key: "approval-requests.list.table.sent-on"
+      title: "Header cell label for the sent on column of the approval requests list table - Subject: 'approval request'"
+      screenshot: "https://drive.google.com/file/d/1i2fKqUDlWbNnYRZdxp041dAPhMsFznXO/view?usp=drive_link"
+      value: "Sent on"
+  - translation:
+      key: "approval-requests.list.table.approval-status"
+      title: "Header cell label for the approval status column of the approval requests list table"
+      screenshot: "https://drive.google.com/file/d/1ltG2DXbLbR1-6CaK_su1pbKQeN7kVMMV/view?usp=drive_link"
+      value: "Approval status"
+  - translation:
+      key: "approval-requests.status.decision-pending"
+      title: "Status label for the decision pending status of an approval request - Subject: 'status'"
+      screenshot: "https://drive.google.com/file/d/1wMA0ZAm8f_Mw0wgj7UKl7wkBU8XGH_ox/view?usp=drive_link"
+      value: "Decision pending"
+  - translation:
+      key: "approval-requests.status.info-needed"
+      title: "Status label for the info needed status of an approval request - Subject: 'status'"
+      screenshot: "https://drive.google.com/file/d/11Isf_F0qGOFh6Dv5RnR44ta5yJxX9n_4/view?usp=drive_link"
+      value: "Info needed"
+  - translation:
+      key: "approval-requests.status.approved"
+      title: "Status label for the approved status of an approval request - Subject: 'status'"
+      screenshot: "https://drive.google.com/file/d/1Xc8uehxpLHQR2Pjxfyo-wbvooPwe8-WX/view?usp=drive_link"
+      value: "Approved"
+  - translation:
+      key: "approval-requests.status.denied"
+      title: "Status label for the denied status of an approval request - Subject: 'status'"
+      screenshot: "https://drive.google.com/file/d/13qjrnfFVk61r5QMxd4CL_B8RY4cYzO1r/view?usp=drive_link"
+      value: "Denied"
+  - translation:
+      key: "approval-requests.status.withdrawn"
+      title: "Status label for the withdrawn status of an approval request - Subject: 'status'"
+      screenshot: "https://drive.google.com/file/d/1iOTsHEB5xae4LGZbjr4ibtdSDf0h9BOE/view?usp=drive_link"
+      value: "Withdrawn"
