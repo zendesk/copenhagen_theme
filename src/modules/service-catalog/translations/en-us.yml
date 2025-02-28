@@ -118,3 +118,13 @@ parts:
       title: "Label indicating number of services currently being listed, the default plural form."
       screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
       value: "{{count}} services"
+  - translation:
+      key: "service-catalog.search-services"
+      title: "Search for services in the Service List"
+      screenshot: "https://drive.google.com/file/d/1JHDB_jxDaL0ozmpUTYIhYMaCm4-4SN27/view?usp=drive_link"
+      value: "Search for services"
+  - translation: 
+      key: "service-catalog.empty-state.search-description"
+      title: "Empty state with search description"
+      screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"
+      value: "Enter your keywords in the search field."
