@@ -1,3 +1,73 @@
+# [4.4.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0...v4.4.0-beta.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* added useNotify hook and fixed shared close translation ([288ce02](https://github.com/zendesk/copenhagen_theme/commit/288ce028c85ecdcb1b4ea17c188e3f4f0fc6849e))
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+* change type of service catalog form id ([c48ff7a](https://github.com/zendesk/copenhagen_theme/commit/c48ff7a86804d153c220ac1920b72b3cb86cd811))
+* correctly send multiselect field values ([5466125](https://github.com/zendesk/copenhagen_theme/commit/546612508bd712eb712ede0f37eaf0e9bc6fdb93))
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+* removed link to service catalog documentation ([c730efc](https://github.com/zendesk/copenhagen_theme/commit/c730efc8ad73a7864306c07d525611527f115875))
+* set default value for Service Catalog fields ([aa2c16e](https://github.com/zendesk/copenhagen_theme/commit/aa2c16e9012643fc32aebab9360debac9c485340))
+* use service catalog platform object ([feb3efd](https://github.com/zendesk/copenhagen_theme/commit/feb3efdf4a6d350ba657ad1b378db333b05e8a9f))
+
+
+### Features
+
+* add error boundary for service catalog ([c47c9c6](https://github.com/zendesk/copenhagen_theme/commit/c47c9c6e80595d34435b0b0efca65ef36a64660a))
+* add new template and module for service catalog ([9d1b514](https://github.com/zendesk/copenhagen_theme/commit/9d1b514ff1599d94a7f6ba5981bd3c083c6abe4e))
+* add proper link to service catalog list ([92229cc](https://github.com/zendesk/copenhagen_theme/commit/92229cc00afe043fa9296f4f78ed508bd75fbb7f))
+* add unstyled list of service catalog items ([d020e14](https://github.com/zendesk/copenhagen_theme/commit/d020e147af3c0bcc65b2d40cc4eada925ebcc272))
+* added form fields to service item ([a835c3c](https://github.com/zendesk/copenhagen_theme/commit/a835c3c5e80f53deb11e4b8dafddec8b4528c0c7))
+* added list of service catalog items ([be3c34d](https://github.com/zendesk/copenhagen_theme/commit/be3c34d9ea6392aa4f93fe768fb1626a16641111))
+* added service catalog item page ([482b957](https://github.com/zendesk/copenhagen_theme/commit/482b9575de76c2f9a48a6add4a0287de2f2e3d30))
+* move from custom pages to core pages ([5bc1500](https://github.com/zendesk/copenhagen_theme/commit/5bc1500dc0e1396d751d817e8be3ae39e242014a))
+* post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
+* use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
+
+# [4.3.0](https://github.com/zendesk/copenhagen_theme/compare/v4.2.10...v4.3.0) (2025-02-21)
+
+
+### Features
+
+* added generative_answers helper to search results page ([d98c59e](https://github.com/zendesk/copenhagen_theme/commit/d98c59eb26579697d27641ec187538f447c99744))
+
+## [4.2.10](https://github.com/zendesk/copenhagen_theme/compare/v4.2.9...v4.2.10) (2025-02-13)
+
+
+### Bug Fixes
+
+* **a11y:** removed menuitem role from user mobile navbar ([c953d7b](https://github.com/zendesk/copenhagen_theme/commit/c953d7bc1c2d59913a0d6533b6da5c1a23f05d67))
+
+## [4.2.9](https://github.com/zendesk/copenhagen_theme/compare/v4.2.8...v4.2.9) (2025-02-13)
+
+
+### Bug Fixes
+
+* apply end user conditions for checkbox fields correctly ([62971c3](https://github.com/zendesk/copenhagen_theme/commit/62971c393e7b3687252be71f298d5cd48a6bb726))
+
+## [4.2.8](https://github.com/zendesk/copenhagen_theme/compare/v4.2.7...v4.2.8) (2025-02-11)
+
+
+### Bug Fixes
+
+* update translation files and fix typo ([49f99cd](https://github.com/zendesk/copenhagen_theme/commit/49f99cd7fedac333ebbaba6696f1c4970b1b0a10))
+
+# [4.3.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.5...v4.3.0-beta.6) (2025-02-13)
+
+
+### Bug Fixes
+
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+
+# [4.3.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.4...v4.3.0-beta.5) (2025-02-12)
+
+
+### Bug Fixes
+
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+
 # [4.3.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.3...v4.3.0-beta.4) (2025-01-31)
 
 

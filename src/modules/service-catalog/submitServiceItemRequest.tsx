@@ -20,7 +20,7 @@ export async function submitServiceItemRequest(
         value: field.value,
       };
     });
-    const response = await fetch("/api/v2/requests", {
+    const response = await fetch(`/api/v2/requests?locale=${baseLocale}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,6 @@ export async function submitServiceItemRequest(
             channel: "web form",
             source: 50,
           },
-          locale: baseLocale,
         },
       }),
     });
