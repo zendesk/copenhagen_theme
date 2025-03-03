@@ -40,14 +40,6 @@ const DropdownFilterField = styled(Field)`
   flex: 1;
 `;
 
-const ApprovalRequestStatusInputMap = {
-  any: "Any",
-  active: "Decision pending",
-  approved: "Approved",
-  rejected: "Denied",
-  withdrawn: "Withdrawn",
-};
-
 interface ApprovalRequestListFiltersProps {
   approvalRequestStatus: ApprovalRequestDropdownStatus;
   setApprovalRequestStatus: Dispatch<
@@ -62,6 +54,27 @@ function ApprovalRequestListFilters({
   setSearchTerm,
 }: ApprovalRequestListFiltersProps) {
   const { t } = useTranslation();
+
+  const getStatusLabel = useCallback(
+    (status: ApprovalRequestDropdownStatus) => {
+      switch (status) {
+        case "any":
+          return t("approval-requests.list.status-dropdown.any", "Any");
+        case "active":
+          return t(
+            "approval-requests.status.decision-pending",
+            "Decision pending"
+          );
+        case "approved":
+          return t("approval-requests.status.approved", "Approved");
+        case "rejected":
+          return t("approval-requests.status.denied", "Denied");
+        case "withdrawn":
+          return t("approval-requests.status.withdrawn", "Withdrawn");
+      }
+    },
+    [t]
+  );
 
   const handleChange = useCallback<NonNullable<IComboboxProps["onChange"]>>(
     (changes) => {
@@ -115,7 +128,7 @@ function ApprovalRequestListFilters({
           isEditable={false}
           onChange={handleChange}
           selectionValue={approvalRequestStatus}
-          inputValue={ApprovalRequestStatusInputMap[approvalRequestStatus]}
+          inputValue={getStatusLabel(approvalRequestStatus)}
         >
           <Option
             value="any"

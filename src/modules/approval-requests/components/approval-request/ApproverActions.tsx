@@ -22,7 +22,7 @@ const ButtonContainer = styled.div<{
   display: flex;
   flex-direction: row;
   gap: ${(props) => props.theme.space.md}; /* 20px */
-  margin-left: ${(props) =>
+  margin-inline-start: ${(props) =>
     props.hasAvatar ? "55px" : "0"}; // avatar width + margin + border
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {

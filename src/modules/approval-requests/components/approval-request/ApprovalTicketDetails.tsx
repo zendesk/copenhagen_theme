@@ -23,7 +23,7 @@ const FieldLabel = styled(MD)`
 `;
 
 const MultiselectTag = styled(Tag)`
-  margin-right: ${(props) => props.theme.space.xxs}; /* 4px */
+  margin-inline-end: ${(props) => props.theme.space.xxs}; /* 4px */
 `;
 
 const CustomFieldsGrid = styled.div`
