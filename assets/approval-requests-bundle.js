@@ -76,15 +76,22 @@ const SearchField = styled(Field) `
 const DropdownFilterField = styled(Field) `
   flex: 1;
 `;
-const ApprovalRequestStatusInputMap = {
-    any: "Any",
-    active: "Decision pending",
-    approved: "Approved",
-    rejected: "Denied",
-    withdrawn: "Withdrawn",
-};
 function ApprovalRequestListFilters({ approvalRequestStatus, setApprovalRequestStatus, setSearchTerm, }) {
     const { t } = useTranslation();
+    const getStatusLabel = reactExports.useCallback((status) => {
+        switch (status) {
+            case "any":
+                return t("approval-requests.list.status-dropdown.any", "Any");
+            case "active":
+                return t("approval-requests.status.decision-pending", "Decision pending");
+            case "approved":
+                return t("approval-requests.status.approved", "Approved");
+            case "rejected":
+                return t("approval-requests.status.denied", "Denied");
+            case "withdrawn":
+                return t("approval-requests.status.withdrawn", "Withdrawn");
+        }
+    }, [t]);
     const handleChange = reactExports.useCallback((changes) => {
         if (!changes.selectionValue) {
             return;
@@ -96,7 +103,7 @@ function ApprovalRequestListFilters({ approvalRequestStatus, setApprovalRequestS
     const handleSearch = reactExports.useCallback((event) => {
         debouncedSetSearchTerm(event.target.value);
     }, [debouncedSetSearchTerm]);
-    return (jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: t("approval-requests.list.search-placeholder", "Search approval requests") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: t("approval-requests.list.search-placeholder", "Search approval requests"), onChange: handleSearch })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: t("approval-requests.list.status-dropdown.label_v2", "Status") }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, onChange: handleChange, selectionValue: approvalRequestStatus, inputValue: ApprovalRequestStatusInputMap[approvalRequestStatus], children: [jsxRuntimeExports.jsx(Option, { value: "any", label: t("approval-requests.list.status-dropdown.any", "Any") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.ACTIVE, label: t("approval-requests.status.decision-pending", "Decision pending") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.APPROVED, label: t("approval-requests.status.approved", "Approved") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.REJECTED, label: t("approval-requests.status.denied", "Denied") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.WITHDRAWN, label: t("approval-requests.status.withdrawn", "Withdrawn") })] })] })] }));
+    return (jsxRuntimeExports.jsxs(FiltersContainer, { children: [jsxRuntimeExports.jsxs(SearchField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: t("approval-requests.list.search-placeholder", "Search approval requests") }), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), placeholder: t("approval-requests.list.search-placeholder", "Search approval requests"), onChange: handleSearch })] }), jsxRuntimeExports.jsxs(DropdownFilterField, { children: [jsxRuntimeExports.jsx(Label, { children: t("approval-requests.list.status-dropdown.label_v2", "Status") }), jsxRuntimeExports.jsxs(Combobox, { isEditable: false, onChange: handleChange, selectionValue: approvalRequestStatus, inputValue: getStatusLabel(approvalRequestStatus), children: [jsxRuntimeExports.jsx(Option, { value: "any", label: t("approval-requests.list.status-dropdown.any", "Any") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.ACTIVE, label: t("approval-requests.status.decision-pending", "Decision pending") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.APPROVED, label: t("approval-requests.status.approved", "Approved") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.REJECTED, label: t("approval-requests.status.denied", "Denied") }), jsxRuntimeExports.jsx(Option, { value: APPROVAL_REQUEST_STATES.WITHDRAWN, label: t("approval-requests.status.withdrawn", "Withdrawn") })] })] })] }));
 }
 var ApprovalRequestListFilters$1 = reactExports.memo(ApprovalRequestListFilters);
 
@@ -407,7 +414,7 @@ const FieldLabel = styled(MD) `
   color: ${(props) => getColorV8("grey", 600, props.theme)};
 `;
 const MultiselectTag = styled(Tag) `
-  margin-right: ${(props) => props.theme.space.xxs}; /* 4px */
+  margin-inline-end: ${(props) => props.theme.space.xxs}; /* 4px */
 `;
 const CustomFieldsGrid = styled.div `
   display: grid;
@@ -475,7 +482,7 @@ const ButtonContainer = styled.div `
   display: flex;
   flex-direction: row;
   gap: ${(props) => props.theme.space.md}; /* 20px */
-  margin-left: ${(props) => props.hasAvatar ? "55px" : "0"}; // avatar width + margin + border
+  margin-inline-start: ${(props) => props.hasAvatar ? "55px" : "0"}; // avatar width + margin + border
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex-direction: ${(props) => props.isSubmitButton ? "row-reverse" : "column"};
@@ -667,16 +674,16 @@ const LeftColumn = styled.div `
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex: 1;
-    margin-right: 0;
+    margin-inline-end: 0;
     margin-bottom: ${(props) => props.theme.space.lg};
   }
 `;
 const RightColumn = styled.div `
   flex: 1;
-  margin-left: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  margin-inline-start: ${(props) => props.theme.space.base * 6}px; /* 24px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 `;
 function ApprovalRequestPage({ approvalWorkflowInstanceId, approvalRequestId, baseLocale, helpCenterPath, organizations, userId, }) {

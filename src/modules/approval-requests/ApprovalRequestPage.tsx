@@ -44,17 +44,17 @@ const LeftColumn = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex: 1;
-    margin-right: 0;
+    margin-inline-end: 0;
     margin-bottom: ${(props) => props.theme.space.lg};
   }
 `;
 
 const RightColumn = styled.div`
   flex: 1;
-  margin-left: ${(props) => props.theme.space.base * 6}px; /* 24px */
+  margin-inline-start: ${(props) => props.theme.space.base * 6}px; /* 24px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 `;
 
