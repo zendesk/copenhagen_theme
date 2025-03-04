@@ -1,3 +1,34 @@
+# [4.4.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.1...v4.4.0-beta.2) (2025-03-04)
+
+
+### Bug Fixes
+
+* commit generated bundle file updates ([e574128](https://github.com/zendesk/copenhagen_theme/commit/e5741289c8e32c8fcd14008c86cdd430069d97f8))
+* lint fix ([f0858da](https://github.com/zendesk/copenhagen_theme/commit/f0858dacd08307f5bd183017fee1f3f039f8f068))
+* remove commented out CLARIFICATION_REQUESTED approval request state ([e055211](https://github.com/zendesk/copenhagen_theme/commit/e0552119b211b581052c62dfdf1bb32e4081f89a))
+* **TAA-136:** addresses type error, wires up now returning decision notes ([c44cbc5](https://github.com/zendesk/copenhagen_theme/commit/c44cbc5a6b68e3367cc65ec2a423f494aed0e708))
+* **TAA-136:** commit assets/ changes, without the custom_theme was throwing an error page ([e0b910c](https://github.com/zendesk/copenhagen_theme/commit/e0b910c15cc86cde1bef167c931b1d4b0afa5ae6))
+* **TAA-364:** update decision textarea to match design and include avatar ([b828012](https://github.com/zendesk/copenhagen_theme/commit/b8280121d82bc3de694cd9b6914dcb57239bdb9d))
+* **TAA-370:** remove border radius, add sortable sent on cell, and adjust date format ([3968b2c](https://github.com/zendesk/copenhagen_theme/commit/3968b2cff06dcba5e3e32c3039c0f36b129df82b))
+* **TAA-399:** update the ApprovalRequestListTable to show no approval requests text when filtering ([4389c1f](https://github.com/zendesk/copenhagen_theme/commit/4389c1fea58768507c02a110f38639e1aaf217d2))
+* updated to display hyphen incase of empty comment ([f14a94d](https://github.com/zendesk/copenhagen_theme/commit/f14a94df138c972983670b34acf6977dbb77b4bd))
+* updated UI to accomodate api change for decision ([aff1fa6](https://github.com/zendesk/copenhagen_theme/commit/aff1fa60a2237ee6182d9e336f865c52ea87678c))
+
+
+### Features
+
+* **TAA-136:** address PR feedback re: using constant and missed translation ([a2fb5d7](https://github.com/zendesk/copenhagen_theme/commit/a2fb5d7227bfe99b33ac4479688783308c7c5aca))
+* **TAA-163:** add Breadcrumbs to the Approval Request page ([6e2bf42](https://github.com/zendesk/copenhagen_theme/commit/6e2bf42b56ab6198f72342686ef5c78aefb03f52))
+* **TAA-163:** add hardcoded link in dropdown for Approval requests ([350abd6](https://github.com/zendesk/copenhagen_theme/commit/350abd691665dbca8ee847fdf5784c2e333a1827))
+* **TAA-163:** begin integrating with the decision API ([aa08970](https://github.com/zendesk/copenhagen_theme/commit/aa08970afcb7d5920f2414d08bc5b92057fffcac))
+* **TAA-163:** build out initial Approval Request List skeleton UI with mock data ([e1e3c55](https://github.com/zendesk/copenhagen_theme/commit/e1e3c5575186520bd0120eabf61e63ff79afc7ba))
+* **TAA-163:** build out initial Approval Request skeleton UI with mock data ([548391f](https://github.com/zendesk/copenhagen_theme/commit/548391f4892bb3190008610ffdeb0008af51fa57))
+* **TAA-163:** create approval requests module and placeholder templates ([c979b49](https://github.com/zendesk/copenhagen_theme/commit/c979b49359ed971f352557a882697cab1932b59f))
+* **TAA-163:** wire up individual approval request to first API endpoint ([a378675](https://github.com/zendesk/copenhagen_theme/commit/a378675565969333a815af940ed6c3356c7c1da0))
+* **TAA-163:** wire up the Approval Request List to the REST API  and update decision to send notes ([bd686d0](https://github.com/zendesk/copenhagen_theme/commit/bd686d0334e478d2feee959dc782b47624f1f0d5))
+* **TAA-360:** add the Previous Decision display on a withdrawn Approval Request ([33af78c](https://github.com/zendesk/copenhagen_theme/commit/33af78cafab01dd659233f6d1b9f786ae0119123))
+* update to use translation function with English fallbacks ([9ae1976](https://github.com/zendesk/copenhagen_theme/commit/9ae197627abbe7dcac06eeae40c516735266fc3d))
+
 # [4.4.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0...v4.4.0-beta.1) (2025-02-26)
 
 
