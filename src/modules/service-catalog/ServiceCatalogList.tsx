@@ -125,6 +125,7 @@ export function ServiceCatalogList({
                     <ServiceCatalogListItem
                       key={record.id}
                       serviceItem={record}
+                      helpCenterPath={helpCenterPath}
                     />
                   </StyledCol>
                 ))}
