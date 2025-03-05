@@ -39,7 +39,7 @@ const Container = styled(FauxInput)`
 
 const GridCell = styled.span`
   display: inline-block;
-  margin-right: ${(props) => props.theme.space.sm};
+  margin-inline-end: ${(props) => props.theme.space.sm};
 `;
 
 const StyledTag = styled(Tag)`
