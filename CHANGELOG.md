@@ -1,3 +1,12 @@
+# [4.4.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.2...v4.4.0-beta.3) (2025-03-05)
+
+
+### Bug Fixes
+
+* fixed RTL styles for CC field ([f1a751b](https://github.com/zendesk/copenhagen_theme/commit/f1a751b187f35001bfb4cc519d45ebf122e86ec4))
+* fixed RTL styles for Credit Card field ([fc35188](https://github.com/zendesk/copenhagen_theme/commit/fc351883cae493db52aa17e1299f57f7acd8d6f2))
+* fixed RTL styles for Service Catalog item page ([a868204](https://github.com/zendesk/copenhagen_theme/commit/a86820498addb15e85162e9e5389fd18ec56fce1))
+
 # [4.4.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.1...v4.4.0-beta.2) (2025-03-04)
 
 

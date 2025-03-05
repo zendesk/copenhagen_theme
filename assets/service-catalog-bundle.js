@@ -74,10 +74,10 @@ import{s as e,G as n,j as t,a8 as s,a9 as r,aa as a,ab as o,ac as i,u as l,ad as
   border-bottom: ${e=>e.theme.borders.sm}
     ${e=>n("grey",300,e.theme)};
   padding-bottom: ${e=>e.theme.space.lg};
-  margin-right: ${e=>e.theme.space.xl};
+  margin-inline-end: ${e=>e.theme.space.xl};
 
   @media (max-width: ${e=>e.theme.breakpoints.md}) {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 `,D=e(x)`
   font-weight: ${e=>e.theme.fontWeights.semibold};
@@ -89,10 +89,10 @@ import{s as e,G as n,j as t,a8 as s,a9 as r,aa as a,ab as o,ac as i,u as l,ad as
   -webkit-line-clamp: ${e=>e.expanded?"none":3};
   overflow: hidden;
   margin-top: ${e=>e.theme.space.md};
-  padding-right: ${e=>e.theme.space.xl};
+  padding-inline-end: ${e=>e.theme.space.xl};
 
   @media (max-width: ${e=>e.theme.breakpoints.md}) {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 `,X=e(d)`
   margin-top: ${e=>e.theme.space.sm};
@@ -114,14 +114,14 @@ import{s as e,G as n,j as t,a8 as s,a9 as r,aa as a,ab as o,ac as i,u as l,ad as
   display: flex;
   flex-direction: column;
   gap: ${e=>e.theme.space.md};
-  margin-right: ${e=>e.theme.space.xl};
+  margin-inline-end: ${e=>e.theme.space.xl};
 
   @media (max-width: ${e=>e.theme.breakpoints.md}) {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 `,ne=e.div`
   flex: 1;
-  margin-left: ${e=>e.theme.space.xl};
+  margin-inline-start: ${e=>e.theme.space.xl};
   padding: ${e=>e.theme.space.lg};
   border: ${e=>e.theme.borders.sm}
     ${e=>n("grey",300,e.theme)};
@@ -136,16 +136,16 @@ import{s as e,G as n,j as t,a8 as s,a9 as r,aa as a,ab as o,ac as i,u as l,ad as
     border-top: ${e=>e.theme.borders.sm}
       ${e=>n("grey",300,e.theme)};
     width: 100vw;
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 `,te=e.div`
   flex: 1;
-  margin-left: ${e=>e.theme.space.xl};
+  margin-inline-start: ${e=>e.theme.space.xl};
 
   @media (max-width: ${e=>e.theme.breakpoints.md}) {
     position: sticky;
     bottom: 0;
-    margin-left: 0;
+    margin-inline-start: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -156,10 +156,10 @@ import{s as e,G as n,j as t,a8 as s,a9 as r,aa as a,ab as o,ac as i,u as l,ad as
   display: flex;
   flex-direction: column;
   gap: ${e=>e.theme.space.lg};
-  margin-right: ${e=>e.theme.space.xl};
+  margin-inline-end: ${e=>e.theme.space.xl};
 
   @media (max-width: ${e=>e.theme.breakpoints.md}) {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 `;function re({requestFields:e,serviceCatalogItem:n,baseLocale:s,hasAtMentions:r,userRole:a,userId:o,brandId:i,defaultOrganizationId:c,handleChange:u,onSubmit:h}){const{t:j}=l();return t.jsxs(Y,{onSubmit:h,noValidate:!0,children:[t.jsxs(se,{children:[t.jsx(Z,{title:n.name,description:n.description}),t.jsx(ee,{children:e.map((e=>t.jsx(q,{field:e,baseLocale:s,hasAtMentions:r,userRole:a,userId:o,brandId:i,defaultOrganizationId:c,handleChange:u},e.id)))})]}),t.jsx(te,{children:t.jsx(ne,{children:t.jsx(d,{isPrimary:!0,size:"large",isStretched:!0,type:"submit",children:j("service-catalog.item.submit-button","Submit request")})})})]})}const ae=e.div`
   display: flex;

@@ -12,7 +12,7 @@ import{r as e,j as n,d as t,e as s,g as r,O as a,p as o,s as i,u as l,n as u,o a
   line-height: var(--line-height);
 `,qe=i.span`
   display: inline-block;
-  margin-right: ${e=>e.theme.space.sm};
+  margin-inline-end: ${e=>e.theme.space.sm};
 `,xe=i(C)`
   ${e=>y({theme:e.theme,shadowWidth:"sm",selector:"&:focus"})}
 `,ve=i.div`
