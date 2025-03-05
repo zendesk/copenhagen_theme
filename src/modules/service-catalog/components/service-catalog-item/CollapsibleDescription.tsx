@@ -11,10 +11,10 @@ const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}
     ${(props) => getColorV8("grey", 300, props.theme)};
   padding-bottom: ${(props) => props.theme.space.lg};
-  margin-right: ${(props) => props.theme.space.xl};
+  margin-inline-end: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 `;
 
@@ -30,10 +30,10 @@ const CollapsibleText = styled.div<{ expanded: boolean }>`
   -webkit-line-clamp: ${(props) => (props.expanded ? "none" : 3)};
   overflow: hidden;
   margin-top: ${(props) => props.theme.space.md};
-  padding-right: ${(props) => props.theme.space.xl};
+  padding-inline-end: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    padding-right: 0;
+    padding-inline-end: 0;
   }
 `;
 

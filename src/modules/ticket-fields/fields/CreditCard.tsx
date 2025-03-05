@@ -28,7 +28,7 @@ function getLastDigits(value: string): string {
 }
 
 const DigitsHintSpan = styled(Span)`
-  margin-left: ${(props) => props.theme.space.xxs};
+  margin-inline-start: ${(props) => props.theme.space.xxs};
   font-weight: ${(props) => props.theme.fontWeights.medium};
 `;
 

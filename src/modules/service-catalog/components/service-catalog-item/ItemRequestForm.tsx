@@ -23,16 +23,16 @@ const FieldsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.md};
-  margin-right: ${(props) => props.theme.space.xl};
+  margin-inline-end: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 `;
 
 const ButtonWrapper = styled.div`
   flex: 1;
-  margin-left: ${(props) => props.theme.space.xl};
+  margin-inline-start: ${(props) => props.theme.space.xl};
   padding: ${(props) => props.theme.space.lg};
   border: ${(props) => props.theme.borders.sm}
     ${(props) => getColorV8("grey", 300, props.theme)};
@@ -47,18 +47,18 @@ const ButtonWrapper = styled.div`
     border-top: ${(props) => props.theme.borders.sm}
       ${(props) => getColorV8("grey", 300, props.theme)};
     width: 100vw;
-    margin-left: 0;
+    margin-inline-start: 0;
   }
 `;
 
 const RightColumn = styled.div`
   flex: 1;
-  margin-left: ${(props) => props.theme.space.xl};
+  margin-inline-start: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
     bottom: 0;
-    margin-left: 0;
+    margin-inline-start: 0;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -71,10 +71,10 @@ const LeftColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg};
-  margin-right: ${(props) => props.theme.space.xl};
+  margin-inline-end: ${(props) => props.theme.space.xl};
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    margin-right: 0;
+    margin-inline-end: 0;
   }
 `;
 
