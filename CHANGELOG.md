@@ -1,3 +1,10 @@
+# [4.4.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.4...v4.4.0-beta.5) (2025-03-06)
+
+
+### Bug Fixes
+
+* **service-catalog:** fixed language defaulting to English when navigating around ([f6141cb](https://github.com/zendesk/copenhagen_theme/commit/f6141cbf73b372281c01cf45034a3c7f133a4f62))
+
 # [4.4.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.3...v4.4.0-beta.4) (2025-03-06)
 
 
