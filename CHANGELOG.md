@@ -1,3 +1,10 @@
+# [4.4.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.3...v4.4.0-beta.4) (2025-03-06)
+
+
+### Features
+
+* add service count to Service List ([7a03cb0](https://github.com/zendesk/copenhagen_theme/commit/7a03cb085ec3da45954bde4b8f894dd17c3f0400))
+
 # [4.4.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.2...v4.4.0-beta.3) (2025-03-05)
 
 
