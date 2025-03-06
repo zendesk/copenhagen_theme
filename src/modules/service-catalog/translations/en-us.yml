@@ -88,3 +88,33 @@ parts:
       title: "Error notification when there is problem with loading the list of services"
       screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
       value: "Give it a moment and try it again"
+  - translation:
+      key: "service-catalog.service-count.zero"
+      title: "Label indicating number of services currently being listed, when there are 0 requests."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.one"
+      title: "Label indicating number of services currently being listed, when there is 1 request."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} service"
+  - translation:
+      key: "service-catalog.service-count.two"
+      title: "Label indicating number of services currently being listed, when there are 2 requests."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.few"
+      title: "Label indicating number of services currently being listed, when the few plural form applies."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.many"
+      title: "Label indicating number of services currently being listed, when the many plural form applies."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"
+  - translation:
+      key: "service-catalog.service-count.other"
+      title: "Label indicating number of services currently being listed, the default plural form."
+      screenshot: "https://drive.google.com/file/d/1uP3fyDR1vE2Z8lHXiNXaZD7LeTEgLCSw/view?usp=drive_link"
+      value: "{{count}} services"

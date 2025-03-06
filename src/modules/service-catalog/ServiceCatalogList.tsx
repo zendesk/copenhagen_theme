@@ -16,6 +16,9 @@ const StyledCol = styled(Col)`
 
 const Container = styled.div`
   padding-top: ${(props) => props.theme.space.sm};
+  gap: ${(props) => `${props.theme.space.base * 6}px`};
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledGrid = styled(Grid)`
@@ -40,6 +43,7 @@ export function ServiceCatalogList({
   >([]);
   const [meta, setMeta] = useState<Meta | null>(null);
   const [currentCursor, setCurrentCursor] = useState<string | null>(null);
+  const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<unknown>(null);
   const notify = useNotify();
@@ -62,6 +66,7 @@ export function ServiceCatalogList({
         if (response.ok) {
           setMeta(data.meta);
           setServiceCatalogItems(data.service_catalog_items);
+          setCount(data.count);
           setIsLoading(false);
         }
         if (!response.ok) {
@@ -101,6 +106,13 @@ export function ServiceCatalogList({
 
   return (
     <Container>
+      <span>
+        {t("service-catalog.service-count", {
+          "defaultValue.one": "{{count}} service",
+          "defaultValue.other": "{{count}} services",
+          count: count,
+        })}
+      </span>
       {isLoading ? (
         <LoadingState />
       ) : (
