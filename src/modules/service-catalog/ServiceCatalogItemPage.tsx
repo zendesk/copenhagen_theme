@@ -22,7 +22,7 @@ export interface ServiceCatalogItemPageProps {
   userId: number;
   brandId: number;
   organizations: Array<Organization>;
-  wysiwyg: boolean;
+  helpCenterPath: string;
 }
 
 export function ServiceCatalogItemPage({
@@ -33,6 +33,7 @@ export function ServiceCatalogItemPage({
   organizations,
   userId,
   brandId,
+  helpCenterPath,
 }: ServiceCatalogItemPageProps) {
   const { serviceCatalogItem, errorFetchingItem } =
     useServiceCatalogItem(serviceCatalogItemId);
@@ -101,7 +102,7 @@ export function ServiceCatalogItemPage({
         ),
       });
       const data = await response?.json();
-      const redirectUrl = "/hc/requests/" + data.request.id;
+      const redirectUrl = `${helpCenterPath}/requests/${data.request.id}`;
       window.location.href = redirectUrl;
     }
   };

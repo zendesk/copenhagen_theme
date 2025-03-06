@@ -15,10 +15,9 @@ import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 export async function renderServiceCatalogItem(
   container: HTMLElement,
   settings: Settings,
-  props: ServiceCatalogItemPageProps,
-  helpCenterPath: string
+  props: ServiceCatalogItemPageProps
 ) {
-  const { baseLocale } = props;
+  const { baseLocale, helpCenterPath } = props;
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
     () => import(`./translations/locales/${baseLocale}.json`),

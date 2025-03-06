@@ -63,11 +63,13 @@ const IconContainer = styled.div`
 
 const ServiceCatalogListItem = ({
   serviceItem,
+  helpCenterPath,
 }: {
   serviceItem: ServiceCatalogItem;
+  helpCenterPath: string;
 }) => {
   return (
-    <ItemContainer href={`/hc/en-us/services/${serviceItem.id}`}>
+    <ItemContainer href={`${helpCenterPath}/services/${serviceItem.id}`}>
       <IconContainer>
         <ShapesIcon />
       </IconContainer>

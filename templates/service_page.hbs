@@ -13,7 +13,6 @@
   import { renderServiceCatalogItem } from "service-catalog";
 
   const settings = {{json settings}};
-  const helpCenterPath = {{json (page_path 'help_center')}};
   const container = document.getElementById("service-catalog-item");
 
   // Extract the ID from the URL
@@ -27,7 +26,8 @@
     brandId: {{json brand.id}},
     organizations: {{json user.organizations}},
     serviceCatalogItemId: id,
+    helpCenterPath: {{json (page_path 'help_center')}},
   }
 
-  renderServiceCatalogItem(container, settings, props, helpCenterPath);
+  renderServiceCatalogItem(container, settings, props);
 </script>
