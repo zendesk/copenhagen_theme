@@ -129,7 +129,7 @@ export const TicketField = ({
           field={field}
           userId={userId}
           organizationId={
-            organizationField !== undefined
+            organizationField !== null
               ? (organizationField?.value as string)
               : defaultOrganizationId
           }
