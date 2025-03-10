@@ -1,3 +1,10 @@
+# [4.4.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.5...v4.4.0-beta.6) (2025-03-10)
+
+
+### Bug Fixes
+
+* update organizationField equality check so that it is consistent with master branch ([685c4c2](https://github.com/zendesk/copenhagen_theme/commit/685c4c2c23b6fce2de4be1759538de4fdf120fde))
+
 # [4.4.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.4...v4.4.0-beta.5) (2025-03-06)
 
 
