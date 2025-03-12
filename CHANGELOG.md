@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.1...v4.3.2) (2025-03-12)
+
+
+### Bug Fixes
+
+* **new-request-form:** updated sk translations ([4344a27](https://github.com/zendesk/copenhagen_theme/commit/4344a27b9c6818bca1d4d5d992205a3333e109d9))
+
 ## [4.3.1](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0...v4.3.1) (2025-03-11)
 
 
