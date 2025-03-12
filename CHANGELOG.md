@@ -1,3 +1,10 @@
+## [4.3.3](https://github.com/zendesk/copenhagen_theme/compare/v4.3.2...v4.3.3) (2025-03-12)
+
+
+### Bug Fixes
+
+* **new-request-form:** update dompurify ([a8111ab](https://github.com/zendesk/copenhagen_theme/commit/a8111ab75b40b7b5aca2aec6e65fff2d401289a1))
+
 ## [4.3.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.1...v4.3.2) (2025-03-12)
 
 
