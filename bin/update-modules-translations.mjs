@@ -7,8 +7,17 @@ import { writeFile, readFile, mkdir } from "node:fs/promises";
 import { resolve } from "node:path";
 import { glob } from "glob";
 import { load } from "js-yaml";
+import { parseArgs } from "node:util";
 
 const BASE_URL = `https://static.zdassets.com/translations`;
+
+const { values: args } = parseArgs({
+  options: {
+    module: {
+      type: "string",
+    },
+  },
+});
 
 async function writeLocaleFile(name, filePath, outputDir) {
   const response = await fetch(`${BASE_URL}${filePath}`);
@@ -50,7 +59,10 @@ async function fetchModuleTranslations(moduleName, packageName) {
 // search for `src/modules/**/translations/en-us.yml` files, read it contents and return a map of module names and package names
 async function getModules() {
   const result = {};
-  const files = await glob("src/modules/**/translations/en-us.yml");
+  const sourceFilesGlob = args.module
+    ? `src/modules/${args.module}/translations/en-us.yml`
+    : "src/modules/**/translations/en-us.yml";
+  const files = await glob(sourceFilesGlob);
 
   for (const file of files) {
     const content = await readFile(file);
