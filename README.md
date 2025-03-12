@@ -223,7 +223,7 @@ The script wraps the `i18next-parser` tool and converts its output to the YAML f
 
 #### Updating translation files
 
-You can run `yarn i18n:update-translations` to download the latest translations files for all the modules. The script downloads all the locale files for each module, fetching the package name from the `src/modules/[MODULE]/translations/en-us.yml` file, and saves them in the `src/modules/[MODULE]/translations/locales` folder.
+You can run `yarn i18n:update-translations` to download the latest translations files for all the modules. The script downloads all the locale files for each module, fetching the package name from the `src/modules/[MODULE]/translations/en-us.yml` file, and saves them in the `src/modules/[MODULE]/translations/locales` folder. As for the extraction script, you can pass the `--module` flag to update translations for a specific module.
 
 All files are then bundled by the build process in a single `[MODULE]-translations-bundle.js` file.
 
