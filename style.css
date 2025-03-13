@@ -4720,3 +4720,7 @@ zd-summary-block {
 [dir=rtl] zd-summary-block {
   border-right-color: #859fa1;
 }
+
+.form-field.select.optional {
+  display:none;
+}

@@ -7,6 +7,8 @@ export interface Field {
   required: boolean;
   description: string;
   type: string;
+  termsOfUseLink?: string;
+  privacyNoticeLink?: string;
   options: FieldOption[];
   relationship_target_type?: string;
 }
