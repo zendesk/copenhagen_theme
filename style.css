@@ -4724,3 +4724,6 @@ zd-summary-block {
 .form-field.select.optional {
   display:none;
 }
+.hint-pre-wrap {
+  white-space: pre-wrap;
+}

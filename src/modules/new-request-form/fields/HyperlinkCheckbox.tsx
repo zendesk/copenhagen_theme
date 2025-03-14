@@ -54,7 +54,7 @@ export function HyperLinkCheckbox({ field, onChange }: CheckboxProps): JSX.Eleme
         </Label>
       </GardenCheckbox>
       {description && (
-        <Hint>{description}</Hint>
+        <Hint className="hint-pre-wrap">{description}</Hint>
       )}
       {error && <Message validation="error">{error}</Message>}
     </GardenField>
