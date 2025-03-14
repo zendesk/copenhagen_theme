@@ -8,53 +8,57 @@
       {{satisfaction}}
       <ul class="comment-list">
         {{#each comments}}
-          <li id="{{anchor}}" class="comment">
-            <div class="comment-wrapper">
-              <div class="comment-info">
-                <div class="comment-author">
-                  <div class="avatar comment-avatar">
-                    {{#if author.agent}}
-                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" aria-hidden="true" viewBox="0 0 12 12" class="icon-agent" aria-label="{{t 'team_member' name=author.name}}">
-                        <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
-                      </svg>
-                    {{/if}}
-                    <img src="{{author.avatar_url}}" alt="" class="user-avatar"/>
-                  </div>
-
-                  <div class="comment-meta">
-                    <span title="{{author.name}}">
-                      {{#link 'user_profile' id=author.id}}
-                        {{author.name}}
-                      {{/link}}
-                    </span>
-
-                    <div class="meta-group">
-                      <span class="meta-data">{{date created_at timeago=true}}</span>
-                    </div>
-                  </div>
+        <li id="{{anchor}}" class="comment">
+          <div class="comment-wrapper">
+            <div class="comment-info">
+              <div class="comment-author">
+                <div class="avatar comment-avatar">
+                  {{#if author.agent}}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" aria-hidden="true"
+                    viewBox="0 0 12 12" class="icon-agent" aria-label="{{t 'team_member' name=author.name}}">
+                    <path fill="currentColor"
+                      d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z" />
+                  </svg>
+                  {{/if}}
+                  <img src="{{author.avatar_url}}" alt="" class="user-avatar" />
                 </div>
 
-                <section class="comment-body">{{body}}</section>
+                <div class="comment-meta">
+                  <span title="{{author.name}}">
+                    {{#link 'user_profile' id=author.id}}
+                    {{author.name}}
+                    {{/link}}
+                  </span>
 
-                {{#if attachments}}
-                  <ul class="attachments">
-                    {{#each attachments}}
-                      <li class="attachment-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
-                          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
-                        </svg>
-                        <a href="{{url}}" target="_blank">{{name}}</a>
-                        <div class="attachment-meta meta-group">
-                          <span class="attachment-meta-item meta-data">{{size}}</span>
-                          <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-                        </div>
-                      </li>
-                    {{/each}}
-                  </ul>
-                {{/if}}
+                  <div class="meta-group">
+                    <span class="meta-data">{{date created_at timeago=true}}</span>
+                  </div>
+                </div>
               </div>
+
+              <section class="comment-body">{{body}}</section>
+
+              {{#if attachments}}
+              <ul class="attachments">
+                {{#each attachments}}
+                <li class="attachment-item">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16"
+                    class="attachment-icon">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round"
+                      d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4" />
+                  </svg>
+                  <a href="{{url}}" target="_blank">{{name}}</a>
+                  <div class="attachment-meta meta-group">
+                    <span class="attachment-meta-item meta-data">{{size}}</span>
+                    <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                  </div>
+                </li>
+                {{/each}}
+              </ul>
+              {{/if}}
             </div>
-          </li>
+          </div>
+        </li>
         {{/each}}
       </ul>
 
@@ -65,55 +69,58 @@
       </div>
 
       {{#form 'comment' class='comment-form hbs-form'}}
-        <div class="avatar comment-avatar">
-          {{user_avatar class='user-avatar'}}
+      <div class="avatar comment-avatar">
+        {{user_avatar class='user-avatar'}}
+      </div>
+
+      <div class="comment-container">
+        <button type="button" class="comment-show-container {{#validate 'body'}}hidden{{/validate}}">
+          {{t 'add_to_conversation'}}
+        </button>
+
+        <div class="comment-fields {{#validate 'body'}}shown{{/validate}}">
+          {{#if help_center.request_ccs_enabled}}
+          <div class="comment-ccs form-field">
+            {{token_field 'ccs' class='ccs-input'}}
+          </div>
+          {{/if}}
+
+          {{wysiwyg 'body' rows='7'}}
+
+          <div class="comment-attachments">
+            {{upload}}
+          </div>
         </div>
 
-        <div class="comment-container">
-          <button type="button" class="comment-show-container {{#validate 'body'}}hidden{{/validate}}">
-            {{t 'add_to_conversation'}}
+        <div class="comment-form-controls">
+          {{checkbox 'mark_as_solved'}}
+
+          {{#if request.can_be_marked_as_solved}}
+          <button type="button" class="button-large button-secondary mark-as-solved"
+            data-solve-translation="{{t 'mark_as_solved'}}"
+            data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}">
+            {{t 'mark_as_solved'}}
           </button>
+          {{/if}}
 
-          <div class="comment-fields {{#validate 'body'}}shown{{/validate}}">
-            {{#if help_center.request_ccs_enabled}}
-              <div class="comment-ccs form-field">
-               {{token_field 'ccs' class='ccs-input'}}
-              </div>
-            {{/if}}
-
-            {{wysiwyg 'body' rows='7'}}
-
-            <div class="comment-attachments">
-              {{upload}}
-            </div>
-          </div>
-
-          <div class="comment-form-controls">
-            {{checkbox 'mark_as_solved'}}
-
-            {{#if request.can_be_marked_as_solved}}
-              <button type="button" class="button-large button-secondary mark-as-solved"
-                data-solve-translation="{{t 'mark_as_solved'}}"
-                data-solve-and-submit-translation="{{t 'mark_as_solved_and_submit'}}">
-                {{t 'mark_as_solved'}}
-              </button>
-            {{/if}}
-
-            <span class="request-submit-comment {{#validate 'body'}}shown{{/validate}}">
-              {{input type='submit' class="button button-large"}}
-            </span>
-          </div>
+          <span class="request-submit-comment {{#validate 'body'}}shown{{/validate}}">
+            {{input type='submit' class="button button-large"}}
+          </span>
         </div>
+      </div>
       {{/form}}
     </section>
 
     <section class="request-sidebar collapsible-sidebar">
-      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+      <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="request-sidebar-title"
+        aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
+          aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5" />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12"
+          aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
+          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3" />
         </svg>
       </button>
       <h2 id="request-sidebar-title" class="collapsible-sidebar-title">
@@ -121,46 +128,46 @@
       </h2>
       <div class="collapsible-sidebar-body">
         {{#if request.followup_source_id}}
-          <dl class="request-details">
-            <dt>{{t 'followup'}}</dt>
-            <dd>{{link 'request' id=request.followup_source_id}}</dd>
-          </dl>
+        <dl class="request-details">
+          <dt>{{t 'followup'}}</dt>
+          <dd>{{link 'request' id=request.followup_source_id}}</dd>
+        </dl>
         {{/if}}
 
         {{#with satisfaction_response}}
-          {{#with rating}}
-            <dl class="request-details">
-              <dt>{{t 'rating'}}</dt>
-              <dd>
-                <div>
-                  {{#is scale_type 'numeric'}}
-                    {{t 'numerical_rating' value=value max_value=max_value}}
-                  {{else}}
-                    {{scale_value}}
-                  {{/is}}
-                </div>
+        {{#with rating}}
+        <dl class="request-details">
+          <dt>{{t 'rating'}}</dt>
+          <dd>
+            <div>
+              {{#is scale_type 'numeric'}}
+              {{t 'numerical_rating' value=value max_value=max_value}}
+              {{else}}
+              {{scale_value}}
+              {{/is}}
+            </div>
 
-                {{#link 'survey_response' id=../id}}
-                  {{#if ../editable}}
-                    {{t 'edit_feedback'}}
-                  {{else}}
-                    {{t 'view_feedback'}}
-                  {{/if}}
-                {{/link}}
-              </dd>
-            </dl>
-          {{else}}
-            {{#if editable}}
-              <dl class="request-details">
-                <dt>{{t 'rating'}}</dt>
-                <dd>
-                  {{#link 'survey_response' id=id}}
-                    {{t 'add_feedback'}}
-                  {{/link}}
-                </dd>
-              </dl>
+            {{#link 'survey_response' id=../id}}
+            {{#if ../editable}}
+            {{t 'edit_feedback'}}
+            {{else}}
+            {{t 'view_feedback'}}
             {{/if}}
-          {{/with}}
+            {{/link}}
+          </dd>
+        </dl>
+        {{else}}
+        {{#if editable}}
+        <dl class="request-details">
+          <dt>{{t 'rating'}}</dt>
+          <dd>
+            {{#link 'survey_response' id=id}}
+            {{t 'add_feedback'}}
+            {{/link}}
+          </dd>
+        </dl>
+        {{/if}}
+        {{/with}}
         {{/with}}
 
         <dl class="request-details">
@@ -174,92 +181,105 @@
           <dd>{{date request.updated_at}}</dd>
 
           {{#if collaborators}}
-            <dt>{{t 'ccs'}}</dt>
-            <dd>
-              <ul class="request-collaborators">
-                {{#each collaborators}}
-                  <li title="{{name}}">{{name}}</li>
-                {{/each}}
-              </ul>
-            </dd>
+          <dt>{{t 'ccs'}}</dt>
+          <dd>
+            <ul class="request-collaborators">
+              {{#each collaborators}}
+              <li title="{{name}}">{{name}}</li>
+              {{/each}}
+            </ul>
+          </dd>
           {{/if}}
         </dl>
 
         <dl class="request-details">
           {{#if assignee}}
-            <dt>{{t 'assignee'}}</dt>
-            <dd>
-              {{assignee.name}}
-            </dd>
+          <dt>{{t 'assignee'}}</dt>
+          <dd>
+            {{assignee.name}}
+          </dd>
           {{/if}}
 
           <dt>{{t 'id'}}</dt>
           <dd>#{{request.id}}</dd>
 
           {{#form 'organization' id='request-organization' class='hbs-form'}}
-            <dt>{{t 'organization'}}</dt>
-            <dd>{{select 'organization'}}</dd>
+          <dt>{{t 'organization'}}</dt>
+          <dd>{{select 'organization'}}</dd>
           {{/form}}
 
           {{#if group}}
-            <dt>{{t 'group'}}</dt>
-            <dd>
-              {{group.name}}
-            </dd>
+          <dt>{{t 'group'}}</dt>
+          <dd>
+            {{group.name}}
+          </dd>
           {{/if}}
 
           <dt>{{t 'status'}}</dt>
           <dd>
-            <span class="status-label status-label-request status-label-{{request.status}}" title="{{request.status_description}}">
+            <span class="status-label status-label-request status-label-{{request.status}}"
+              title="{{request.status_description}}">
               {{request.status_name}}
             </span>
           </dd>
 
           {{#if request.type}}
-            <dt>{{request.type_title}}</dt>
-            <dd>
-              {{request.type_name}}
-              {{#is request.type 'task'}}
-                {{t 'task_due_date' due_date=request.due_date}}
-              {{/is}}
-            </dd>
+          <dt>{{request.type_title}}</dt>
+          <dd>
+            {{request.type_name}}
+            {{#is request.type 'task'}}
+            {{t 'task_due_date' due_date=request.due_date}}
+            {{/is}}
+          </dd>
           {{/if}}
 
           {{#if request.priority}}
-            <dt>{{request.priority_title}}</dt>
-            <dd>
-              {{request.priority_name}}
-            </dd>
+          <dt>{{request.priority_title}}</dt>
+          <dd>
+            {{request.priority_name}}
+          </dd>
           {{/if}}
 
           {{#each custom_fields}}
-            <dt>{{title}}</dt>
-            <dd>
-              {{value}}
-            </dd>
+          {{#is id "123456789"}}
+          <dt>{{title}}</dt>
+          <dd>
+            <input type="checkbox" id="custom-checkbox" required>
+            <label for="custom-checkbox">
+              I agree to the
+              <a href="{{dc 'terms_conditions_link'}}" target="_blank">Terms of Use</a> and
+              <a href="{{dc 'privacy_notice_link'}}" target="_blank">Privacy Notice</a>.
+            </label>
+          </dd>
+          {{else}}
+          <dt>{{title}}</dt>
+          <dd>{{value}}</dd>
+          {{/is}}
           {{/each}}
         </dl>
 
         {{#if attachments}}
-          <dl class="request-details request-attachments">
-            <dt>{{t 'attachments_heading'}}</dt>
-            <dd>
-              <ul class="attachments">
-                {{#each attachments}}
-                  <li class="attachment-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
-                    </svg>
-                    <a href="{{url}}" target="_blank">{{name}}</a>
-                    <div class="attachment-meta meta-group">
-                      <span class="attachment-meta-item meta-data">{{size}}</span>
-                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-                    </div>
-                  </li>
-                {{/each}}
-              </ul>
-            </dd>
-          </dl>
+        <dl class="request-details request-attachments">
+          <dt>{{t 'attachments_heading'}}</dt>
+          <dd>
+            <ul class="attachments">
+              {{#each attachments}}
+              <li class="attachment-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16"
+                  class="attachment-icon">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round"
+                    d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4" />
+                </svg>
+                <a href="{{url}}" target="_blank">{{name}}</a>
+                <div class="attachment-meta meta-group">
+                  <span class="attachment-meta-item meta-data">{{size}}</span>
+                  <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </dd>
+        </dl>
         {{/if}}
       </div>
     </section>
