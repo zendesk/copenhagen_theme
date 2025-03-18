@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import ServiceCatalogListItem from "./components/service-catalog-list-item/ServiceCatalogListItem";
 import type { ServiceCatalogItem } from "./data-types/ServiceCatalogItem";
 import { Col, Grid, Row } from "@zendeskgarden/react-grid";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
-
 import { CursorPagination } from "@zendeskgarden/react-pagination";
 import { LoadingState } from "./components/service-catalog-list-item/LoadingState";
 import { EmptyState } from "./components/service-catalog-list-item/EmptyState";
+import { Search } from "./components/service-catalog-list-item/Search";
+import debounce from "lodash.debounce";
+import { useServiceCatalogItems } from "./useServiceCatalogItems";
 import { useNotify } from "../shared/notifications/useNotify";
 
 const StyledCol = styled(Col)`
@@ -25,83 +27,74 @@ const StyledGrid = styled(Grid)`
   padding: 0;
 `;
 
-const PAGE_SIZE = 16;
-
-type Meta = {
-  before_cursor: string;
-  after_cursor: string;
-  has_more: boolean;
-};
-
 export function ServiceCatalogList({
   helpCenterPath,
 }: {
   helpCenterPath: string;
 }) {
-  const [serviceCatalogItems, setServiceCatalogItems] = useState<
-    ServiceCatalogItem[]
-  >([]);
-  const [meta, setMeta] = useState<Meta | null>(null);
-  const [currentCursor, setCurrentCursor] = useState<string | null>(null);
-  const [count, setCount] = useState(0);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<unknown>(null);
-  const notify = useNotify();
-  const { t } = useTranslation();
+  const [searchInputValue, setSearchInputValue] = useState("");
 
-  if (error) {
-    throw error;
+  const { t } = useTranslation();
+  const notify = useNotify();
+
+  const {
+    serviceCatalogItems,
+    meta,
+    count,
+    isLoading,
+    errorFetchingItems,
+    fetchServiceCatalogItems,
+  } = useServiceCatalogItems();
+
+  if (errorFetchingItems) {
+    notify({
+      title: t(
+        "service-catalog.service-list-error-title",
+        "Services couldn't be loaded"
+      ),
+      message: t(
+        "service-catalog.service-list-error-message",
+        "Give it a moment and try it again"
+      ),
+      type: "error",
+    });
+    throw errorFetchingItems;
   }
 
+  const debouncedUpdateServiceCatalogItems = useMemo(
+    () => debounce(fetchServiceCatalogItems, 300),
+    [fetchServiceCatalogItems]
+  );
+
   useEffect(() => {
-    async function fetchData() {
-      setIsLoading(true);
-      try {
-        const response = await fetch(
-          currentCursor
-            ? `/api/v2/help_center/service_catalog/items?page[size]=${PAGE_SIZE}&${currentCursor}`
-            : `/api/v2/help_center/service_catalog/items?page[size]=${PAGE_SIZE}`
-        );
-        const data = await response.json();
-        if (response.ok) {
-          setMeta(data.meta);
-          setServiceCatalogItems(data.service_catalog_items);
-          setCount(data.count);
-          setIsLoading(false);
-        }
-        if (!response.ok) {
-          setIsLoading(false);
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-      } catch (error) {
-        setIsLoading(false);
-        notify({
-          title: t(
-            "service-catalog.service-list-error-title",
-            "Services couldn't be loaded"
-          ),
-          message: t(
-            "service-catalog.service-list-error-message",
-            "Give it a moment and try it again"
-          ),
-          type: "error",
-        });
-        setError(error);
-      }
-    }
-    fetchData();
-  }, [currentCursor, notify, t]);
+    fetchServiceCatalogItems("", null);
+  }, [fetchServiceCatalogItems]);
+
+  useEffect(() => {
+    return () => debouncedUpdateServiceCatalogItems.cancel();
+  }, [debouncedUpdateServiceCatalogItems]);
 
   const handleNextClick = () => {
     if (meta && meta.after_cursor) {
-      setCurrentCursor(`page[after]=${meta.after_cursor}`);
+      fetchServiceCatalogItems(
+        searchInputValue,
+        "page[after]=" + meta.after_cursor
+      );
     }
   };
 
   const handlePreviousClick = () => {
     if (meta && meta.before_cursor) {
-      setCurrentCursor(`page[before]=${meta?.before_cursor}`);
+      fetchServiceCatalogItems(
+        searchInputValue,
+        "page[before]=" + meta.before_cursor
+      );
     }
+  };
+
+  const handleInputChange = (value: string) => {
+    setSearchInputValue(value);
+    debouncedUpdateServiceCatalogItems(value, null);
   };
 
   return (
@@ -113,6 +106,11 @@ export function ServiceCatalogList({
           count: count,
         })}
       </span>
+      <Search
+        searchInputValue={searchInputValue}
+        isLoading={isLoading}
+        onChange={handleInputChange}
+      />
       {isLoading ? (
         <LoadingState />
       ) : (
@@ -132,26 +130,22 @@ export function ServiceCatalogList({
             </Row>
           </StyledGrid>
           {serviceCatalogItems.length === 0 && (
-            <EmptyState helpCenterPath={helpCenterPath} />
+            <EmptyState
+              helpCenterPath={helpCenterPath}
+              searchInputValue={searchInputValue}
+            />
           )}
           {serviceCatalogItems.length > 0 && (
             <CursorPagination>
               <CursorPagination.Previous
                 onClick={handlePreviousClick}
-                disabled={
-                  !currentCursor ||
-                  (currentCursor?.startsWith("page[before]") && !meta?.has_more)
-                }
+                disabled={meta?.before_cursor == null}
               >
                 {t("service-catalog.pagination.previous", "Previous")}
               </CursorPagination.Previous>
               <CursorPagination.Next
                 onClick={handleNextClick}
-                disabled={
-                  (currentCursor?.startsWith("page[after]") &&
-                    !meta?.has_more) ||
-                  (currentCursor == null && !meta?.has_more)
-                }
+                disabled={meta?.after_cursor == null}
               >
                 {t("service-catalog.pagination.next", "Next")}
               </CursorPagination.Next>

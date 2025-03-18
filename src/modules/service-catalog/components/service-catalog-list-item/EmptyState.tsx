@@ -19,7 +19,13 @@ const TextContainer = styled.div`
   gap: ${(props) => props.theme.space.xxs};
 `;
 
-export const EmptyState = ({ helpCenterPath }: { helpCenterPath: string }) => {
+export const EmptyState = ({
+  helpCenterPath,
+  searchInputValue,
+}: {
+  helpCenterPath: string;
+  searchInputValue: string;
+}) => {
   const handleRedirect = () => {
     window.location.href = helpCenterPath;
   };
@@ -30,16 +36,30 @@ export const EmptyState = ({ helpCenterPath }: { helpCenterPath: string }) => {
         <LG>
           {t("service-catalog.empty-state.no-services", "No services in sight")}
         </LG>
-        <MD>
-          {t(
-            "service-catalog.empty-state.description",
-            "Once services are added to catalog, you'll find them here."
-          )}
-        </MD>
+        {searchInputValue === "" ? (
+          <MD>
+            {t(
+              "service-catalog.empty-state.description",
+              "Once services are added to catalog, you'll find them here."
+            )}
+          </MD>
+        ) : (
+          <MD>
+            {t(
+              "service-catalog.empty-state.search-description",
+              "Enter your keywords in the search field."
+            )}
+          </MD>
+        )}
       </TextContainer>
-      <Button isPrimary onClick={handleRedirect}>
-        {t("service-catalog.empty-state.go-to-homepage", "Go to the homepage")}
-      </Button>
+      {searchInputValue === "" && (
+        <Button isPrimary onClick={handleRedirect}>
+          {t(
+            "service-catalog.empty-state.go-to-homepage",
+            "Go to the homepage"
+          )}
+        </Button>
+      )}
     </Container>
   );
 };
