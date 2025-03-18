@@ -1,3 +1,10 @@
+# [4.4.0-beta.7](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.6...v4.4.0-beta.7) (2025-03-18)
+
+
+### Features
+
+* add search to Services List ([c2c1f67](https://github.com/zendesk/copenhagen_theme/commit/c2c1f67ff800c2e16fdd6fdabe9da85cf7e1b22f))
+
 # [4.4.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.5...v4.4.0-beta.6) (2025-03-10)
 
 
