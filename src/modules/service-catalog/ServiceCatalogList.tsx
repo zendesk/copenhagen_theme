@@ -135,17 +135,17 @@ export function ServiceCatalogList({
               searchInputValue={searchInputValue}
             />
           )}
-          {serviceCatalogItems.length > 0 && (
+          {meta && (meta.before_cursor || meta.after_cursor) && (
             <CursorPagination>
               <CursorPagination.Previous
                 onClick={handlePreviousClick}
-                disabled={meta?.before_cursor == null}
+                disabled={meta.before_cursor == null}
               >
                 {t("service-catalog.pagination.previous", "Previous")}
               </CursorPagination.Previous>
               <CursorPagination.Next
                 onClick={handleNextClick}
-                disabled={meta?.after_cursor == null}
+                disabled={meta.after_cursor == null}
               >
                 {t("service-catalog.pagination.next", "Next")}
               </CursorPagination.Next>
