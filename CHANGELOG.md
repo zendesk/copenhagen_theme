@@ -1,3 +1,10 @@
+# [4.4.0-beta.10](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.9...v4.4.0-beta.10) (2025-03-20)
+
+
+### Bug Fixes
+
+* move Services count below search bar ([326cd64](https://github.com/zendesk/copenhagen_theme/commit/326cd6410c287d728f25014a9cf5727dca86bae9))
+
 # [4.4.0-beta.9](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.8...v4.4.0-beta.9) (2025-03-20)
 
 
