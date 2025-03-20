@@ -1,3 +1,10 @@
+# [4.4.0-beta.9](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.8...v4.4.0-beta.9) (2025-03-20)
+
+
+### Features
+
+* handle missing forms for Service Catalog requests ([7edc3c8](https://github.com/zendesk/copenhagen_theme/commit/7edc3c806f436b6754844cd61fe4c9982754ba51))
+
 # [4.4.0-beta.8](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.7...v4.4.0-beta.8) (2025-03-20)
 
 
