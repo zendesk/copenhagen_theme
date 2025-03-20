@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Филтрирано търсене в общността",
   "scoped_knowledge_base_search_description": "Резултатите от търсенето са ограничени до категорията, в която е потребителят",
   "scoped_knowledge_base_search_label": "Филтрирано търсене в базата знания",
+  "scoped_knowledge_base_search_label_v2": "Търсен обхват в помощния център",
   "search_group_label": "Настройки за търсене",
   "section_page_group_label": "Елементи на страницата на раздел",
   "show_brand_name_description": "Показване на името на помощния център до логото",

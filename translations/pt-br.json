@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Pesquisa dentro do escopo na Comunidade",
   "scoped_knowledge_base_search_description": "Os resultados da pesquisa estão restritos à categoria que o usuário está visitando",
   "scoped_knowledge_base_search_label": "Pesquisa dentro do escopo na base de conhecimento",
+  "scoped_knowledge_base_search_label_v2": "Pesquisa com escopo na central de ajuda",
   "search_group_label": "Configurações de pesquisa",
   "section_page_group_label": "Elementos da página da seção",
   "show_brand_name_description": "Exibir o nome da Central de Ajuda ao lado do logotipo",

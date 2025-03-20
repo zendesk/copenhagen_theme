@@ -62,6 +62,7 @@
   "scoped_community_search_label": "社区中有范围限制的搜索",
   "scoped_knowledge_base_search_description": "搜索结果限制在用户所在的类别内",
   "scoped_knowledge_base_search_label": "知识库中有范围限制的搜索",
+  "scoped_knowledge_base_search_label_v2": "帮助中心范围内搜索",
   "search_group_label": "搜索设置",
   "section_page_group_label": "组别页面元素",
   "show_brand_name_description": "在徽标旁显示帮助中心名称",

@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Εστιασμένη αναζήτηση στην Κοινότητα",
   "scoped_knowledge_base_search_description": "Τα αποτελέσματα αναζήτησης περιορίζονται στην κατηγορία στην οποία βρίσκεται ο χρήστης",
   "scoped_knowledge_base_search_label": "Εστιασμένη αναζήτηση στη Γνωσιακή βάση",
+  "scoped_knowledge_base_search_label_v2": "Εστιασμένη αναζήτηση στο κέντρο βοήθειας",
   "search_group_label": "Ρυθμίσεις αναζήτησης",
   "section_page_group_label": "Στοιχεία σελίδας ενοτήτων",
   "show_brand_name_description": "Εμφάνιση του ονόματος κέντρου βοήθειας δίπλα στο λογότυπο",

@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Obmedzený rozsah vyhľadávania v komunite",
   "scoped_knowledge_base_search_description": "Výsledky vyhľadávania sú obmedzené na kategóriu, v ktorej sa nachádza používateľ",
   "scoped_knowledge_base_search_label": "Obmedzený rozsah vyhľadávania vo vedomostnej databáze",
+  "scoped_knowledge_base_search_label_v2": "Obmedzený rozsah vyhľadávania v centre pomoci",
   "search_group_label": "Nastavenia vyhľadávania",
   "section_page_group_label": "Prvky stránky sekcií",
   "show_brand_name_description": "Zobrazenie názvu Centra pomoci vedľa loga",

@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Ricerca limitata nella Community",
   "scoped_knowledge_base_search_description": "Risultati di ricerca limitati alla categoria visualizzata dall’utente",
   "scoped_knowledge_base_search_label": "Ricerca limitata nella Knowledge base",
+  "scoped_knowledge_base_search_label_v2": "Ricerca con ambito nel centro assistenza",
   "search_group_label": "Impostazioni di ricerca",
   "section_page_group_label": "Elementi pagina sezione",
   "show_brand_name_description": "Visualizza il nome del Centro assistenza accanto al logo",

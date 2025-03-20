@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Suodatettu haku yhteisössä",
   "scoped_knowledge_base_search_description": "Hakutulokset rajoitetaan kategoriaan, jossa käyttäjä on",
   "scoped_knowledge_base_search_label": "Suodatettu haku ratkaisutietokannasta",
+  "scoped_knowledge_base_search_label_v2": "Suodatettu haku tukiportaalissa",
   "search_group_label": "Hakutulokset",
   "section_page_group_label": "Osio-sivun elementit",
   "show_brand_name_description": "Näytä Tukiportaalin nimi logon vieressä",
