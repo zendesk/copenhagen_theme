@@ -71,6 +71,10 @@ const fetchTicketFields = async (
   const formData = await formResponse.json();
   const fieldsData = await fieldsResponse.json();
 
+  if (!formData.ticket_form.active) {
+    throw new Error("Associated ticket form is not active");
+  }
+
   const ids = formData.ticket_form.ticket_field_ids;
   const ticketFieldsData = fieldsData.ticket_fields;
   let associatedLookupField: Field | null = null;
