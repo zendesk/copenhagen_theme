@@ -1,3 +1,10 @@
+# [4.4.0-beta.8](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.7...v4.4.0-beta.8) (2025-03-20)
+
+
+### Features
+
+* conditionally render pagination in Services page ([5403fb3](https://github.com/zendesk/copenhagen_theme/commit/5403fb3faf79b8ca3d4ea45a0ba9ab3c222bf546))
+
 # [4.4.0-beta.7](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.6...v4.4.0-beta.7) (2025-03-18)
 
 
