@@ -99,6 +99,11 @@ export function ServiceCatalogList({
 
   return (
     <Container>
+      <Search
+        searchInputValue={searchInputValue}
+        isLoading={isLoading}
+        onChange={handleInputChange}
+      />
       <span>
         {t("service-catalog.service-count", {
           "defaultValue.one": "{{count}} service",
@@ -106,11 +111,6 @@ export function ServiceCatalogList({
           count: count,
         })}
       </span>
-      <Search
-        searchInputValue={searchInputValue}
-        isLoading={isLoading}
-        onChange={handleInputChange}
-      />
       {isLoading ? (
         <LoadingState />
       ) : (
