@@ -62,6 +62,7 @@
   "scoped_community_search_label": "コミュニティの範囲限定検索",
   "scoped_knowledge_base_search_description": "検索結果はユーザーが閲覧中のカテゴリに限定されます",
   "scoped_knowledge_base_search_label": "ナレッジベースの範囲限定検索",
+  "scoped_knowledge_base_search_label_v2": "ヘルプセンター内の範囲限定検索",
   "search_group_label": "検索設定",
   "section_page_group_label": "セクションページの要素",
   "show_brand_name_description": "ロゴの横にヘルプセンターの名前を表示します",

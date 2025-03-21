@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Căutare filtrată în Comunitate",
   "scoped_knowledge_base_search_description": "Rezultatele căutării sunt limitate la categoria în care se află utilizatorul",
   "scoped_knowledge_base_search_label": "Căutare filtrată în Baza de cunoștințe",
+  "scoped_knowledge_base_search_label_v2": "Căutare cu scop în centrul de asistență",
   "search_group_label": "Setări căutare",
   "section_page_group_label": "Elemente pagină de secțiune",
   "show_brand_name_description": "Afișați numele Centrului de asistență lângă siglă",

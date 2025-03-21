@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Célzott keresés a közösségben",
   "scoped_knowledge_base_search_description": "A keresési eredmények azokra a kategóriákra korlátozódnak, amelyekben a felhasználó megtalálható",
   "scoped_knowledge_base_search_label": "Célzott keresés a Tudásbázisban",
+  "scoped_knowledge_base_search_label_v2": "Célzott keresés a súgóközpontban",
   "search_group_label": "Keresési beállítások",
   "section_page_group_label": "Szakaszoldal elemei",
   "show_brand_name_description": "A Súgóközpont nevének megjelenítése az embléma mellett",

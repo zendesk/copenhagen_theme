@@ -62,6 +62,7 @@
   "scoped_community_search_label": "ขอบเขตการค้นหาในชุมชน",
   "scoped_knowledge_base_search_description": "ผลการค้นหาจะจำกัดเฉพาะหมวดหมู่ที่ผู้ใช้สนใจ",
   "scoped_knowledge_base_search_label": "ขอบเขตการค้นหาในฐานความรู้",
+  "scoped_knowledge_base_search_label_v2": "การค้นหาตามขอบเขตในศูนย์ความช่วยเหลือ",
   "search_group_label": "การตั้งค่าการค้นหา",
   "section_page_group_label": "องค์ประกอบของหน้าหมวด",
   "show_brand_name_description": "แสดงชื่อศูนย์ความช่วยเหลือถัดจากโลโก้",

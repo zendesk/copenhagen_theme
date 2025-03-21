@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Begränsad sökning i communityn",
   "scoped_knowledge_base_search_description": "Sökresultaten begränsas till den kategori användaren befinner sig i",
   "scoped_knowledge_base_search_label": "Begränsad sökning i kunskapsbasen",
+  "scoped_knowledge_base_search_label_v2": "Begränsad sökning i helpcenter",
   "search_group_label": "Sökinställningar",
   "section_page_group_label": "Element på avsnittssidan",
   "show_brand_name_description": "Visa Helpcenter-namnet bredvid logotypen",

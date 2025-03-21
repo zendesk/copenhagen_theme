@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Recherche limitée dans la communauté",
   "scoped_knowledge_base_search_description": "Les résultats de la recherche sont limités à la catégorie dans laquelle se trouve l’utilisateur",
   "scoped_knowledge_base_search_label": "Recherche limitée dans la base de connaissances",
+  "scoped_knowledge_base_search_label_v2": "Recherche ciblée dans le centre d’aide",
   "search_group_label": "Paramètres de recherche",
   "section_page_group_label": "Éléments de la page de section",
   "show_brand_name_description": "Affichez le nom du Centre d’aide en regard du logo",

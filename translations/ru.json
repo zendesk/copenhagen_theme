@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Ограниченный поиск в сообществе",
   "scoped_knowledge_base_search_description": "Результаты поиска ограничены категорией, в которой находится пользователь",
   "scoped_knowledge_base_search_label": "Ограниченный поиск в базе знаний",
+  "scoped_knowledge_base_search_label_v2": "Ограниченный поиск в справочном центре",
   "search_group_label": "Настройки поиска",
   "section_page_group_label": "Элементы страницы раздела",
   "show_brand_name_description": "Показывать около логотипа название Справочного центра",

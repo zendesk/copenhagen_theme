@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Búsqueda filtrada en la comunidad",
   "scoped_knowledge_base_search_description": "Los resultados de la búsqueda se limitan a la categoría en la que se encuentra el usuario",
   "scoped_knowledge_base_search_label": "Búsqueda filtrada en la base de conocimientos",
+  "scoped_knowledge_base_search_label_v2": "Búsqueda limitada en el centro de ayuda",
   "search_group_label": "Configuración de la búsqueda",
   "section_page_group_label": "Elementos de página de la sección",
   "show_brand_name_description": "Muestre el nombre del Centro de ayuda junto al logotipo",

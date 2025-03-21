@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Масштабований пошук у спільноті",
   "scoped_knowledge_base_search_description": "Результати пошуку обмежені категорією, до якої належить користувач",
   "scoped_knowledge_base_search_label": "Масштабний пошук у Базі знань",
+  "scoped_knowledge_base_search_label_v2": "Обмежений пошук у довідковому центрі",
   "search_group_label": "Налаштування пошуку",
   "section_page_group_label": "Елементи сторінки розділу",
   "show_brand_name_description": "Відображення назви Довідкового центру поруч із логотипом",
