@@ -1,3 +1,10 @@
+## [4.3.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.4...v4.3.5) (2025-03-21)
+
+
+### Bug Fixes
+
+* fixed upload of some type of attachments ([f69c061](https://github.com/zendesk/copenhagen_theme/commit/f69c061b67f33de334f1f5b49a15ac862a7eafd9)), closes [#520](https://github.com/zendesk/copenhagen_theme/issues/520)
+
 ## [4.3.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.3...v4.3.4) (2025-03-14)
 
 
