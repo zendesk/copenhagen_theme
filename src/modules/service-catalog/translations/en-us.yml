@@ -124,6 +124,11 @@ parts:
       screenshot: "https://drive.google.com/file/d/1JHDB_jxDaL0ozmpUTYIhYMaCm4-4SN27/view?usp=drive_link"
       value: "Search for services"
   - translation: 
+      key: "service-catalog.clear-search"
+      title: "Clear search button"
+      screenshot: "https://drive.google.com/file/d/11u8u7DOlPvAMZcFlsj_aPU1mPOSzjBxY/view?usp=drive_link"
+      value: "Clear search"
+  - translation: 
       key: "service-catalog.empty-state.search-description"
       title: "Empty state with search description"
       screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"
