@@ -9,7 +9,7 @@
     "eslint": "eslint src",
     "prepare": "husky install",
     "download-locales": "node ./bin/update-translations",
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test-a11y": "node bin/lighthouse/index.js",
     "i18n:extract": "node bin/extract-strings.mjs",
     "i18n:update-translations": "node bin/update-modules-translations.mjs",
