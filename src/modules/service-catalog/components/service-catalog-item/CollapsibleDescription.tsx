@@ -24,7 +24,6 @@ const ItemTitle = styled(XXXL)`
 
 const CollapsibleText = styled.div<{ expanded: boolean }>`
   font-size: ${(props) => props.theme.fontSizes.md};
-  text-align: left;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: ${(props) => (props.expanded ? "none" : 3)};
