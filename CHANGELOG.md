@@ -1,3 +1,10 @@
+# [4.4.0-beta.11](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.10...v4.4.0-beta.11) (2025-03-31)
+
+
+### Bug Fixes
+
+* **service-catalog:** fix description alignment in RTL languages ([0c70a97](https://github.com/zendesk/copenhagen_theme/commit/0c70a9743c353b4f02d72366124bada0141d12cd))
+
 # [4.4.0-beta.10](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.9...v4.4.0-beta.10) (2025-03-20)
 
 

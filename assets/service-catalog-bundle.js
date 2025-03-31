@@ -93,7 +93,6 @@ import{s as e,G as n,j as t,a8 as s,a9 as r,aa as a,ab as o,ac as i,u as l,ad as
   font-weight: ${e=>e.theme.fontWeights.semibold};
 `,re=e.div`
   font-size: ${e=>e.theme.fontSizes.md};
-  text-align: left;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: ${e=>e.expanded?"none":3};
