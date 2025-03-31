@@ -1,3 +1,10 @@
+# [4.4.0-beta.12](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.11...v4.4.0-beta.12) (2025-03-31)
+
+
+### Features
+
+* add clear all to Services search bar ([e4d50c7](https://github.com/zendesk/copenhagen_theme/commit/e4d50c722085f959c23ddf6f105851ddc783b397))
+
 # [4.4.0-beta.11](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.10...v4.4.0-beta.11) (2025-03-31)
 
 
