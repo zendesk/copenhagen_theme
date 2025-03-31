@@ -12,6 +12,7 @@
 
 import { isValid, isBefore, parse, parseISO } from "date-fns";
 
+
 export const supportedLanguages = {
   ar: () => import("date-fns/locale/ar"),
   bg: () => import("date-fns/locale/bg"),
@@ -19,7 +20,7 @@ export const supportedLanguages = {
   da: () => import("date-fns/locale/da"),
   de: () => import("date-fns/locale/de"),
   el: () => import("date-fns/locale/el"),
-  "en-150": () => import("date-fns/locale/en-GB"),
+  "en-gb": () => import("date-fns/locale/en-GB"),
   "en-us": () => import("date-fns/locale/en-US"),
   es: () => import("date-fns/locale/es"),
   fa: () => import("date-fns/locale/fa-IR"),
@@ -41,22 +42,28 @@ export const supportedLanguages = {
   ro: () => import("date-fns/locale/ro"),
   ru: () => import("date-fns/locale/ru"),
   sv: () => import("date-fns/locale/sv"),
+  th: () => import("date-fns/locale/th"),
   tr: () => import("date-fns/locale/tr"),
   vi: () => import("date-fns/locale/vi"),
   "zh-cn": () => import("date-fns/locale/zh-CN"),
-  "zh-tw": () => import("date-fns/locale/zh-TW"),
+  "zh-tw": () => import("date-fns/locale/zh-TW")
 };
 
 const fallbackLanguages = {
-  nb: "no",
-  "en-001": "en-150",
-  "en-ca": "en-us",
-  "en-gb": "en-150",
+  "en-001": "en-gb",
+  "en-150": "en-gb",
+  "en-au": "en-gb",
+  "en-my": "en-gb",
+  "en-ph": "en-gb",
+  "en-se": "en-gb",
   "es-419": "es",
   "es-es": "es",
+  "it-ch": "it",
   "fr-ca": "fr",
-  "pt-br": "pt",
+  "nl-be": "nl",
+  "pt-br": "pt"
 };
+
 
 const defaultLocale = "en-us";
 

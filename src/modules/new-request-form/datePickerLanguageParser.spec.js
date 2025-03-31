@@ -6,7 +6,7 @@ import {
   parseAndValidateDate,
 } from "./datePickerLanguageParser";
 
-describe("dateFnsLocalesMapper", () => {
+describe("datePickerLanguageParser", () => {
   describe("supportedLanguages", () => {
     it("imports all items successfully", async () => {
       for (var key in supportedLanguages) {
@@ -21,11 +21,17 @@ describe("dateFnsLocalesMapper", () => {
 
   describe("localeToLoad", () => {
     it("returns a close match when specific locales are not available", () => {
-      expect(localeToLoad("en-gb")).toEqual("en-150");
+      expect(localeToLoad("en-001")).toEqual("en-gb");
+      expect(localeToLoad("en-150")).toEqual("en-gb");
+      expect(localeToLoad("en-au")).toEqual("en-gb");
+      expect(localeToLoad("en-my")).toEqual("en-gb");
+      expect(localeToLoad("en-ph")).toEqual("en-gb");
+      expect(localeToLoad("en-se")).toEqual("en-gb");
       expect(localeToLoad("es-419")).toEqual("es");
-      expect(localeToLoad("fr-ca")).toEqual("fr");
       expect(localeToLoad("es-es")).toEqual("es");
-      expect(localeToLoad("nb")).toEqual("no");
+      expect(localeToLoad("it-ch")).toEqual("it");
+      expect(localeToLoad("fr-ca")).toEqual("fr");
+      expect(localeToLoad("nl-be")).toEqual("nl");
       expect(localeToLoad("pt-br")).toEqual("pt");
     });
 
@@ -47,6 +53,20 @@ describe("dateFnsLocalesMapper", () => {
       const parseResult = parseAndValidateDate("6 march 2026", locale);
 
       expect(parseResult.toString()).toContain("Mar 06 2026");
+    });
+
+    it("considers long format dates in short format en valid", async () => {
+      const locale = await getLocale("en-001");
+      const parseResult = parseAndValidateDate("6/03/2026", locale);
+
+      expect(parseResult.toString()).toContain("Mar 06 2026");
+    });
+
+    it("considers long format dates in short format en au valid", async () => {
+      const locale = await getLocale("en-au");
+      const parseResult = parseAndValidateDate("2026-06-03", locale);
+
+      expect(parseResult.toString()).toContain("Jun 03 2026");
     });
 
     it("considers long format dates in japanese valid", async () => {

@@ -301,7 +301,7 @@ export function NewRequestForm({
                       field={field}
                       locale={baseLocale}
                       valueFormat="date"
-                      onChange={(value) => handleChange(field, value)}
+                      onChange={(value) => handleDueDateChange(value)}
                     />
                   ) : null}
                 </Fragment>
