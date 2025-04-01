@@ -105,10 +105,9 @@ export function ServiceCatalogList({
         onChange={handleInputChange}
       />
       <span>
-        {t("service-catalog.service-count", {
+        {t("service-catalog.service-count", "{{count}} services", {
           "defaultValue.one": "{{count}} service",
-          "defaultValue.other": "{{count}} services",
-          count: count,
+          count,
         })}
       </span>
       {isLoading ? (
