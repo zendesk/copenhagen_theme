@@ -1,3 +1,10 @@
+# [4.4.0-beta.13](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.12...v4.4.0-beta.13) (2025-04-01)
+
+
+### Bug Fixes
+
+* add count default value for other variants ([75d7be4](https://github.com/zendesk/copenhagen_theme/commit/75d7be45a676a65635b711707b6abb3e17e22c0b))
+
 # [4.4.0-beta.12](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.11...v4.4.0-beta.12) (2025-03-31)
 
 
