@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Filtreret søgning i community",
   "scoped_knowledge_base_search_description": "Søgeresultater er begrænset til den kategori, som brugeren befinder sig i",
   "scoped_knowledge_base_search_label": "Filtreret søgning i vidensbase",
+  "scoped_knowledge_base_search_label_v2": "Filtreret søgning i hjælpecenter",
   "search_group_label": "Søgeindstillinger",
   "section_page_group_label": "Sektionssideelementer",
   "show_brand_name_description": "Vis navnet på hjælpecenteret ved siden af logoet",

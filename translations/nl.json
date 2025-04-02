@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Gefilterde zoekopdracht in community",
   "scoped_knowledge_base_search_description": "Zoekresultaten zijn beperkt tot de categorie waarbinnen de gebruiker zich bevindt",
   "scoped_knowledge_base_search_label": "Gefilterde zoekopdracht in kennisbank",
+  "scoped_knowledge_base_search_label_v2": "Zoeken met bereiken in helpcenter",
   "search_group_label": "Zoekinstellingen",
   "section_page_group_label": "Elementen op sectiepagina",
   "show_brand_name_description": "Geef de naam van het Helpcentrum weer naast het logo",
