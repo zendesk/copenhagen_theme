@@ -1,3 +1,15 @@
+# [4.4.0-beta.14](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.13...v4.4.0-beta.14) (2025-04-03)
+
+
+### Bug Fixes
+
+* added new settings translations for sk and uk ([fbcf222](https://github.com/zendesk/copenhagen_theme/commit/fbcf222a469b2e1f88c519cfaa56a5ca5025d13a))
+* fixed upload of some type of attachments ([f69c061](https://github.com/zendesk/copenhagen_theme/commit/f69c061b67f33de334f1f5b49a15ac862a7eafd9)), closes [#520](https://github.com/zendesk/copenhagen_theme/issues/520)
+* **new-request-form:** fixed rendering issues with conditional fields ([14a6898](https://github.com/zendesk/copenhagen_theme/commit/14a68986eb0e670d450a721f1dfb55374ea4e7f3))
+* **new-request-form:** update dompurify ([a8111ab](https://github.com/zendesk/copenhagen_theme/commit/a8111ab75b40b7b5aca2aec6e65fff2d401289a1))
+* **new-request-form:** updated sk translations ([4344a27](https://github.com/zendesk/copenhagen_theme/commit/4344a27b9c6818bca1d4d5d992205a3333e109d9))
+* updated scoped search in help center setting label ([79c3d91](https://github.com/zendesk/copenhagen_theme/commit/79c3d91c4ce03c5428c6860220905008544c0fef))
+
 # [4.4.0-beta.13](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.12...v4.4.0-beta.13) (2025-04-01)
 
 
