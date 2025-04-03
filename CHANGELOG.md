@@ -136,6 +136,48 @@
 * post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
 * use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
 
+## [4.3.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.5...v4.3.6) (2025-03-21)
+
+
+### Bug Fixes
+
+* updated scoped search in help center setting label ([79c3d91](https://github.com/zendesk/copenhagen_theme/commit/79c3d91c4ce03c5428c6860220905008544c0fef))
+
+## [4.3.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.4...v4.3.5) (2025-03-21)
+
+
+### Bug Fixes
+
+* fixed upload of some type of attachments ([f69c061](https://github.com/zendesk/copenhagen_theme/commit/f69c061b67f33de334f1f5b49a15ac862a7eafd9)), closes [#520](https://github.com/zendesk/copenhagen_theme/issues/520)
+
+## [4.3.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.3...v4.3.4) (2025-03-14)
+
+
+### Bug Fixes
+
+* added new settings translations for sk and uk ([fbcf222](https://github.com/zendesk/copenhagen_theme/commit/fbcf222a469b2e1f88c519cfaa56a5ca5025d13a))
+
+## [4.3.3](https://github.com/zendesk/copenhagen_theme/compare/v4.3.2...v4.3.3) (2025-03-12)
+
+
+### Bug Fixes
+
+* **new-request-form:** update dompurify ([a8111ab](https://github.com/zendesk/copenhagen_theme/commit/a8111ab75b40b7b5aca2aec6e65fff2d401289a1))
+
+## [4.3.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.1...v4.3.2) (2025-03-12)
+
+
+### Bug Fixes
+
+* **new-request-form:** updated sk translations ([4344a27](https://github.com/zendesk/copenhagen_theme/commit/4344a27b9c6818bca1d4d5d992205a3333e109d9))
+
+## [4.3.1](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0...v4.3.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **new-request-form:** fixed rendering issues with conditional fields ([14a6898](https://github.com/zendesk/copenhagen_theme/commit/14a68986eb0e670d450a721f1dfb55374ea4e7f3))
+
 # [4.3.0](https://github.com/zendesk/copenhagen_theme/compare/v4.2.10...v4.3.0) (2025-02-21)
 
 

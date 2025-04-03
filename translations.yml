@@ -192,6 +192,12 @@ parts:
       title: "Label for the scoped knowledge base search setting"
       screenshot: "https://drive.google.com/open?id=1uZaNe12E-A_snTd_7AjcqirB4ROLF4bB"
       value: "Scoped search in Knowledge Base"
+      obsolete: "2025-06-12"
+  - translation:
+      key: "txt.help_center_copenhagen_theme.scoped_knowledge_base_search_label_v2"
+      title: "Label for the scoped knowledge base search setting"
+      screenshot: "https://drive.google.com/file/d/13n_GJuyQJJ7uHAmLD8fobxnmfs3Y9G04/view?usp=drive_link"
+      value: "Scoped search in help center"
   - translation:
       key: "txt.help_center_copenhagen_theme.scoped_knowledge_base_search_description"
       title: "Description for the scoped knowledge base search search setting"

@@ -62,6 +62,7 @@
   "scoped_community_search_label": "חיפוש מתוחם בקהילה",
   "scoped_knowledge_base_search_description": "תוצאות החיפוש מוגבלות לקטגוריה שהמשתמש נמצא בה",
   "scoped_knowledge_base_search_label": "חיפוש מתוחם במאגר הידע",
+  "scoped_knowledge_base_search_label_v2": "חיפוש מתוחם במרכז התמיכה",
   "search_group_label": "הגדרות חיפוש",
   "section_page_group_label": "רכיבי דף קטגוריית משנה",
   "show_brand_name_description": "הצג את שם מרכז התמיכה ליד הלוגו",

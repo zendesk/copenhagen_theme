@@ -1,5 +1,5 @@
 import type { AnswerBot, RequestForm } from "./data-types";
-import { useCallback, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { TicketFormField } from "./ticket-form-field/TicketFormField";
 import { ParentTicketField } from "./parent-ticket-field/ParentTicketField";
 import { Anchor, Button } from "@zendeskgarden/react-buttons";
@@ -196,9 +196,8 @@ export function NewRequestForm({
         {visibleFields.map((field) => {
           if (field.type === "subject") {
             return (
-              <>
+              <Fragment key={field.name}>
                 <Input
-                  key={field.name}
                   field={field}
                   onChange={(value) => handleChange(field, value)}
                 />
@@ -206,13 +205,12 @@ export function NewRequestForm({
                   query={field.value as string | undefined}
                   locale={locale}
                 />
-              </>
+              </Fragment>
             );
           } else if (field.type === "description") {
             return (
-              <>
+              <Fragment key={field.name}>
                 <TextArea
-                  key={field.name}
                   field={field}
                   hasWysiwyg={wysiwyg}
                   baseLocale={baseLocale}
@@ -226,7 +224,7 @@ export function NewRequestForm({
                   name={description_mimetype_field.name}
                   value={wysiwyg ? "text/html" : "text/plain"}
                 />
-              </>
+              </Fragment>
             );
           } else {
             return (

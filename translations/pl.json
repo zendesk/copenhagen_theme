@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Filtrowane wyszukiwanie w społeczności",
   "scoped_knowledge_base_search_description": "Wyniki wyszukiwania są zawężone do kategorii, w której znajduje się użytkownik",
   "scoped_knowledge_base_search_label": "Filtrowane wyszukiwanie w bazie wiedzy",
+  "scoped_knowledge_base_search_label_v2": "Filtrowane wyszukiwanie w centrum pomocy",
   "search_group_label": "Ustawienia wyszukiwania",
   "section_page_group_label": "Elementy strony sekcji",
   "show_brand_name_description": "Wyświetl nazwę Centrum pomocy obok logo",
