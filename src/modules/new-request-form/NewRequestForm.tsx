@@ -1,5 +1,5 @@
 import type { AnswerBot, Field, RequestForm } from "./data-types";
-import { Fragment, useCallback, useState } from "react";
+import { Fragment, useCallback, useState, useEffect } from "react";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/textarea/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -24,6 +24,7 @@ import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
 import { LookupField } from "./fields/LookupField";
 import type { Organization } from "./data-types/Organization";
+import { getLocale, parseAndValidateDate } from "./datePickerLanguageParser";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -120,6 +121,13 @@ export function NewRequestForm({
     organizations.length > 0 && organizations[0]?.id
       ? organizations[0]?.id?.toString()
       : null;
+
+  const [localeObject, setLocaleObject] = useState(null);
+  const [dateObject, setdateObject] = useState(null);
+
+  useEffect(() => {
+    getLocale(baseLocale).then((locale) => setLocaleObject(locale));
+  }, [baseLocale]);
 
   const handleChange = useCallback(
     (field: Field, value: Field["value"]) => {
@@ -276,16 +284,26 @@ export function NewRequestForm({
                     field={field}
                     onChange={(value) => handleChange(field, value)}
                   />
-                  {field.value === "task" && (
+                  {field.value === "task" && localeObject ? (
                     <DatePicker
-                      field={dueDateField}
+                      key={field.name}
+                      field={field}
                       locale={baseLocale}
-                      valueFormat="dateTime"
-                      onChange={(value) => {
-                        handleDueDateChange(value);
-                      }}
+                      valueFormat="date"
+                      onChange={(value) => handleDueDateChange(value)}
+                      customParseDate={(inputString) =>
+                        parseAndValidateDate(inputString, localeObject)
+                      }
                     />
-                  )}
+                  ) : field.value === "task" ? (
+                    <DatePicker
+                      key={field.name}
+                      field={field}
+                      locale={baseLocale}
+                      valueFormat="date"
+                      onChange={(value) => handleDueDateChange(value)}
+                    />
+                  ) : null}
                 </Fragment>
               );
             case "checkbox":
@@ -297,7 +315,18 @@ export function NewRequestForm({
                 />
               );
             case "date":
-              return (
+              return localeObject ? (
+                <DatePicker
+                  key={field.name}
+                  field={field}
+                  locale={baseLocale}
+                  valueFormat="date"
+                  onChange={(value) => handleChange(field, value)}
+                  customParseDate={(inputString) =>
+                    parseAndValidateDate(inputString, localeObject)
+                  }
+                />
+              ) : (
                 <DatePicker
                   key={field.name}
                   field={field}

@@ -15,6 +15,7 @@ interface DatePickerProps {
   field: Field;
   locale: string;
   valueFormat: "date" | "dateTime";
+  customParseDate?: (inputValue: string) => Date;
   onChange: (value: string) => void;
 }
 
