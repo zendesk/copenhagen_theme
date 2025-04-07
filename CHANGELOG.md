@@ -1,3 +1,10 @@
+# [4.4.0-beta.15](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.14...v4.4.0-beta.15) (2025-04-07)
+
+
+### Bug Fixes
+
+* use translation string for services page title ([a395763](https://github.com/zendesk/copenhagen_theme/commit/a39576372e0eba8fe0e354527eae234e0882de0e))
+
 # [4.4.0-beta.14](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.13...v4.4.0-beta.14) (2025-04-03)
 
 
