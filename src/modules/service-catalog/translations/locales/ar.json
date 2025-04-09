@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "إرسال طلب",
   "service-catalog.pagination.next": "التالي",
   "service-catalog.pagination.previous": "السابق",
+  "service-catalog.service-count.few": "{{count}} من الخدمات",
+  "service-catalog.service-count.many": "{{count}} من الخدمات",
+  "service-catalog.service-count.one": "{{count}} خدمة",
+  "service-catalog.service-count.other": "{{count}} من الخدمات",
+  "service-catalog.service-count.two": "خدمتان ({{count}})",
+  "service-catalog.service-count.zero": "{{count}} خدمات",
   "service-catalog.service-list-error-message": "انتظر لحظة ثم أعِد المحاولة",
   "service-catalog.service-list-error-title": "تعذر تحميل الخدمات"
 }

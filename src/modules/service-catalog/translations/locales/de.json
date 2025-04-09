@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Anfrage einreichen",
   "service-catalog.pagination.next": "Weiter",
   "service-catalog.pagination.previous": "Zurück",
+  "service-catalog.service-count.few": "{{count}} Services",
+  "service-catalog.service-count.many": "{{count}} Services",
+  "service-catalog.service-count.one": "{{count}} Service",
+  "service-catalog.service-count.other": "{{count}} Services",
+  "service-catalog.service-count.two": "{{count}} Services",
+  "service-catalog.service-count.zero": "{{count}} Services",
   "service-catalog.service-list-error-message": "Versuchen Sie es in Kürze erneut",
   "service-catalog.service-list-error-title": "Services konnten nicht geladen werden"
 }

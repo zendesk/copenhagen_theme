@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Prześlij prośbę",
   "service-catalog.pagination.next": "Następna",
   "service-catalog.pagination.previous": "Poprzednia",
+  "service-catalog.service-count.few": "{{count}} usługi",
+  "service-catalog.service-count.many": "{{count}} usługi",
+  "service-catalog.service-count.one": "{{count}} usługa",
+  "service-catalog.service-count.other": "{{count}} usługi",
+  "service-catalog.service-count.two": "{{count}} usługi",
+  "service-catalog.service-count.zero": "{{count}} usług",
   "service-catalog.service-list-error-message": "Poczekaj chwilę i spróbuj ponownie",
   "service-catalog.service-list-error-title": "Nie udało się załadować usług"
 }

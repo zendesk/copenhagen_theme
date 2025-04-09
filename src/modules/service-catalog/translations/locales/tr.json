@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Talebi gönder",
   "service-catalog.pagination.next": "İleri",
   "service-catalog.pagination.previous": "Geri",
+  "service-catalog.service-count.few": "{{count}} hizmet",
+  "service-catalog.service-count.many": "{{count}} hizmet",
+  "service-catalog.service-count.one": "{{count}}hizmet",
+  "service-catalog.service-count.other": "{{count}} hizmet",
+  "service-catalog.service-count.two": "{{count}} hizmet",
+  "service-catalog.service-count.zero": "{{count}} hizmet",
   "service-catalog.service-list-error-message": "Kısa bir süre bekleyip yeniden deneyin",
   "service-catalog.service-list-error-title": "Hizmetler yüklenemedi"
 }

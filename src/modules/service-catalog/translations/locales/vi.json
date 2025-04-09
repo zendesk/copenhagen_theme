@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Gửi yêu cầu",
   "service-catalog.pagination.next": "Tiếp theo",
   "service-catalog.pagination.previous": "Trước",
+  "service-catalog.service-count.few": "{{count}} dịch vụ",
+  "service-catalog.service-count.many": "{{count}} dịch vụ",
+  "service-catalog.service-count.one": "{{count}} dịch vụ",
+  "service-catalog.service-count.other": "{{count}} dịch vụ",
+  "service-catalog.service-count.two": "{{count}} dịch vụ",
+  "service-catalog.service-count.zero": "{{count}} dịch vụ",
   "service-catalog.service-list-error-message": "Hãy chờ một lát và thử lại",
   "service-catalog.service-list-error-title": "Không thể tải các dịch vụ"
 }

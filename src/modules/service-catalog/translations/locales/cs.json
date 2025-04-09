@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Odeslat požadavek",
   "service-catalog.pagination.next": "Další",
   "service-catalog.pagination.previous": "Předchozí",
+  "service-catalog.service-count.few": "Počet služeb: {{count}}",
+  "service-catalog.service-count.many": "Počet služeb: {{count}}",
+  "service-catalog.service-count.one": "{{count}}služba",
+  "service-catalog.service-count.other": "Počet služeb: {{count}}",
+  "service-catalog.service-count.two": "Počet služeb: {{count}}",
+  "service-catalog.service-count.zero": "Počet služeb: {{count}}",
   "service-catalog.service-list-error-message": "Chvilku počkejte a zkuste to znovu.",
   "service-catalog.service-list-error-title": "Služby nelze načíst"
 }

@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "リクエストを送信",
   "service-catalog.pagination.next": "次へ",
   "service-catalog.pagination.previous": "前へ",
+  "service-catalog.service-count.few": "{{count}}サービス",
+  "service-catalog.service-count.many": "{{count}}サービス",
+  "service-catalog.service-count.one": "{{count}}サービス",
+  "service-catalog.service-count.other": "{{count}}サービス",
+  "service-catalog.service-count.two": "{{count}}サービス",
+  "service-catalog.service-count.zero": "{{count}}サービス",
   "service-catalog.service-list-error-message": "少し時間をおいて、再度お試しください",
   "service-catalog.service-list-error-title": "サービスを読み込めませんでした"
 }

@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "שלח בקשה",
   "service-catalog.pagination.next": "הבא",
   "service-catalog.pagination.previous": "הקודם",
+  "service-catalog.service-count.few": "{{count}} שירותים",
+  "service-catalog.service-count.many": "{{count}} שירותים",
+  "service-catalog.service-count.one": "שירות {{count}}",
+  "service-catalog.service-count.other": "{{count}} שירותים",
+  "service-catalog.service-count.two": "{{count}} שירותים",
+  "service-catalog.service-count.zero": "{{count}} שירותים",
   "service-catalog.service-list-error-message": "המתן רגע ונסה שוב",
   "service-catalog.service-list-error-title": "לא הייתה אפשרות לטעון שירותים"
 }

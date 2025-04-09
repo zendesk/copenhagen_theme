@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "अनुरोध भेजें",
   "service-catalog.pagination.next": "आगे बढ़ें",
   "service-catalog.pagination.previous": "पिछला",
+  "service-catalog.service-count.few": "{{count}} सेवाएँ",
+  "service-catalog.service-count.many": "{{count}} सेवाएँ",
+  "service-catalog.service-count.one": "{{count}} सेवा",
+  "service-catalog.service-count.other": "{{count}} सेवाएँ",
+  "service-catalog.service-count.two": "{{count}} सेवाएँ",
+  "service-catalog.service-count.zero": "{{count}} सेवाएँ",
   "service-catalog.service-list-error-message": "थोड़ा रुककर फिर से कोशिश करें",
   "service-catalog.service-list-error-title": "सेवाएँ लोड नहीं की जा सकीं"
 }

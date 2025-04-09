@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Indsend anmodning",
   "service-catalog.pagination.next": "Næste",
   "service-catalog.pagination.previous": "Forrige",
+  "service-catalog.service-count.few": "{{count}} serviceydelser",
+  "service-catalog.service-count.many": "{{count}} serviceydelser",
+  "service-catalog.service-count.one": "{{count}} serviceydelse",
+  "service-catalog.service-count.other": "{{count}} serviceydelser",
+  "service-catalog.service-count.two": "{{count}} serviceydelser",
+  "service-catalog.service-count.zero": "{{count}} serviceydelser",
   "service-catalog.service-list-error-message": "Vent et øjeblik og prøv igen",
   "service-catalog.service-list-error-title": "Tjenester kunne ikke indlæses"
 }

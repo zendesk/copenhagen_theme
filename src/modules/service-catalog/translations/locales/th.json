@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "ส่งคำร้องขอ",
   "service-catalog.pagination.next": "ถัดไป",
   "service-catalog.pagination.previous": "ก่อนหน้า",
+  "service-catalog.service-count.few": "บริการ {{count}} รายการ",
+  "service-catalog.service-count.many": "บริการ {{count}} รายการ",
+  "service-catalog.service-count.one": "บริการ {{count}} รายการ",
+  "service-catalog.service-count.other": "บริการ {{count}} รายการ",
+  "service-catalog.service-count.two": "บริการ {{count}} รายการ",
+  "service-catalog.service-count.zero": "บริการ {{count}} รายการ",
   "service-catalog.service-list-error-message": "โปรดรอสักครู่และลองอีกครั้ง",
   "service-catalog.service-list-error-title": "ไม่สามารถโหลดบริการได้"
 }

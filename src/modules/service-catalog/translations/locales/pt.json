@@ -10,8 +10,14 @@
   "service-catalog.item.service-request-error.close-label": "Fechar",
   "service-catalog.item.service-request-submitted": "Solicitação de serviço enviada",
   "service-catalog.item.submit-button": "Enviar solicitação",
-  "service-catalog.pagination.next": "Avançar",
+  "service-catalog.pagination.next": "Próximo",
   "service-catalog.pagination.previous": "Anterior",
+  "service-catalog.service-count.few": "{{count}} serviços",
+  "service-catalog.service-count.many": "{{count}} serviços",
+  "service-catalog.service-count.one": "{{count}} serviço",
+  "service-catalog.service-count.other": "{{count}} serviços",
+  "service-catalog.service-count.two": "{{count}} serviços",
+  "service-catalog.service-count.zero": "{{count}} serviços",
   "service-catalog.service-list-error-message": "Aguarde um momento e tente novamente",
   "service-catalog.service-list-error-title": "Não foi possível carregar os serviços"
 }

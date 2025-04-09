@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Submit request",
   "service-catalog.pagination.next": "Next",
   "service-catalog.pagination.previous": "Previous",
+  "service-catalog.service-count.few": "{{count}} services",
+  "service-catalog.service-count.many": "{{count}} services",
+  "service-catalog.service-count.one": "{{count}} service",
+  "service-catalog.service-count.other": "{{count}} services",
+  "service-catalog.service-count.two": "{{count}} services",
+  "service-catalog.service-count.zero": "{{count}} services",
   "service-catalog.service-list-error-message": "Give it a moment and try it again",
   "service-catalog.service-list-error-title": "Services couldn't be loaded"
 }

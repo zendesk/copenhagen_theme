@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "service-catalog.item.submit-button",
   "service-catalog.pagination.next": "service-catalog.pagination.next",
   "service-catalog.pagination.previous": "service-catalog.pagination.previous",
+  "service-catalog.service-count.few": "service-catalog.service-count.few",
+  "service-catalog.service-count.many": "service-catalog.service-count.many",
+  "service-catalog.service-count.one": "service-catalog.service-count.one",
+  "service-catalog.service-count.other": "service-catalog.service-count.other",
+  "service-catalog.service-count.two": "service-catalog.service-count.two",
+  "service-catalog.service-count.zero": "service-catalog.service-count.zero",
   "service-catalog.service-list-error-message": "service-catalog.service-list-error-message",
   "service-catalog.service-list-error-title": "service-catalog.service-list-error-title"
 }

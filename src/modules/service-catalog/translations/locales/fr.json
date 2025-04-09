@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Envoyer la demande",
   "service-catalog.pagination.next": "Suiv.",
   "service-catalog.pagination.previous": "Préc.",
+  "service-catalog.service-count.few": "{{count}} services",
+  "service-catalog.service-count.many": "{{count}} services",
+  "service-catalog.service-count.one": "{{count}} service",
+  "service-catalog.service-count.other": "{{count}} services",
+  "service-catalog.service-count.two": "{{count}} services",
+  "service-catalog.service-count.zero": "{{count}} service",
   "service-catalog.service-list-error-message": "Patientez quelques instants et réessayez",
   "service-catalog.service-list-error-title": "Impossible de charger les services"
 }

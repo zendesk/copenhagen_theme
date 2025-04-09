@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "요청 제출",
   "service-catalog.pagination.next": "다음",
   "service-catalog.pagination.previous": "이전",
+  "service-catalog.service-count.few": "{{count}}개 서비스",
+  "service-catalog.service-count.many": "{{count}}개 서비스",
+  "service-catalog.service-count.one": "{{count}}개 서비스",
+  "service-catalog.service-count.other": "{{count}}개 서비스",
+  "service-catalog.service-count.two": "{{count}}개 서비스",
+  "service-catalog.service-count.zero": "{{count}}개 서비스",
   "service-catalog.service-list-error-message": "잠시 후 다시 시도하세요.",
   "service-catalog.service-list-error-title": "서비스를 로드할 수 없음"
 }

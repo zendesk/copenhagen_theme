@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Подаване на заявката",
   "service-catalog.pagination.next": "Следваща",
   "service-catalog.pagination.previous": "Предишна",
+  "service-catalog.service-count.few": "{{count}} услуги",
+  "service-catalog.service-count.many": "{{count}} услуги",
+  "service-catalog.service-count.one": "{{count}} услуга",
+  "service-catalog.service-count.other": "{{count}} услуги",
+  "service-catalog.service-count.two": "{{count}} услуги",
+  "service-catalog.service-count.zero": "{{count}} услуги",
   "service-catalog.service-list-error-message": "Опитайте отново след малко",
   "service-catalog.service-list-error-title": "Услугите не бяха заредени"
 }

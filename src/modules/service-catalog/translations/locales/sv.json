@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Skicka in förfrågan",
   "service-catalog.pagination.next": "Nästa",
   "service-catalog.pagination.previous": "Föregående",
+  "service-catalog.service-count.few": "{{count}} tjänster",
+  "service-catalog.service-count.many": "{{count}} tjänster",
+  "service-catalog.service-count.one": "{{count}} tjänst",
+  "service-catalog.service-count.other": "{{count}} tjänster",
+  "service-catalog.service-count.two": "{{count}} tjänster",
+  "service-catalog.service-count.zero": "{{count}} tjänster",
   "service-catalog.service-list-error-message": "Vänta en stund och försök med det igen",
   "service-catalog.service-list-error-title": "Det gick inte att läsa in tjänster"
 }
