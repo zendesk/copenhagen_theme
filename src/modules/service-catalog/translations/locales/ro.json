@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Trimitere solicitare",
   "service-catalog.pagination.next": "Înainte",
   "service-catalog.pagination.previous": "Înapoi",
+  "service-catalog.service-count.few": "{{count}} servicii",
+  "service-catalog.service-count.many": "{{count}} servicii",
+  "service-catalog.service-count.one": "{{count}} serviciu",
+  "service-catalog.service-count.other": "{{count}} servicii",
+  "service-catalog.service-count.two": "{{count}} servicii",
+  "service-catalog.service-count.zero": "{{count}} servicii",
   "service-catalog.service-list-error-message": "Așteptați un moment și apoi încercați din nou",
   "service-catalog.service-list-error-title": "Serviciile nu au putut fi încărcate"
 }

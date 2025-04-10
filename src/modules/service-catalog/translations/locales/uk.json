@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Надіслати запит",
   "service-catalog.pagination.next": "Далі",
   "service-catalog.pagination.previous": "Попередня",
+  "service-catalog.service-count.few": "Кількість послуг: {{count}}",
+  "service-catalog.service-count.many": "Кількість послуг: {{count}}",
+  "service-catalog.service-count.one": "{{count}} послуга",
+  "service-catalog.service-count.other": "Кількість послуг: {{count}}",
+  "service-catalog.service-count.two": "Кількість послуг: {{count}}",
+  "service-catalog.service-count.zero": "Кількість послуг: {{count}}",
   "service-catalog.service-list-error-message": "Зачекайте хвилину й спробуйте ще раз",
   "service-catalog.service-list-error-title": "Не вдалося завантажити послуги"
 }

@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Aanvraag verzenden",
   "service-catalog.pagination.next": "Volgende",
   "service-catalog.pagination.previous": "Vorige",
+  "service-catalog.service-count.few": "{{count}} services",
+  "service-catalog.service-count.many": "{{count}} services",
+  "service-catalog.service-count.one": "{{count}} service",
+  "service-catalog.service-count.other": "{{count}} services",
+  "service-catalog.service-count.two": "{{count}} services",
+  "service-catalog.service-count.zero": "{{count}} services",
   "service-catalog.service-list-error-message": "Probeer het na korte tijd opnieuw",
   "service-catalog.service-list-error-title": "Services kunnen niet worden geladen"
 }

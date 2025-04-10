@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Υποβολή αιτήματος",
   "service-catalog.pagination.next": "Επόμενη",
   "service-catalog.pagination.previous": "Προηγούμενη",
+  "service-catalog.service-count.few": "{{count}} υπηρεσίες",
+  "service-catalog.service-count.many": "{{count}} υπηρεσίες",
+  "service-catalog.service-count.one": "{{count}} υπηρεσία",
+  "service-catalog.service-count.other": "{{count}} υπηρεσίες",
+  "service-catalog.service-count.two": "{{count}} υπηρεσίες",
+  "service-catalog.service-count.zero": "{{count}} υπηρεσίες",
   "service-catalog.service-list-error-message": "Περιμένετε λίγο και δοκιμάστε ξανά",
   "service-catalog.service-list-error-title": "Δεν ήταν δυνατή η φόρτωση των υπηρεσιών"
 }

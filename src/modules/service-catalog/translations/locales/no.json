@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Send inn forespørsel",
   "service-catalog.pagination.next": "Neste",
   "service-catalog.pagination.previous": "Forrige",
+  "service-catalog.service-count.few": "{{count}} tjenester",
+  "service-catalog.service-count.many": "{{count}} tjenester",
+  "service-catalog.service-count.one": "{{count}} tjeneste",
+  "service-catalog.service-count.other": "{{count}} tjenester",
+  "service-catalog.service-count.two": "{{count}} tjenester",
+  "service-catalog.service-count.zero": "{{count}} tjenester",
   "service-catalog.service-list-error-message": "La oss vente et øyeblikk før du prøver igjen",
   "service-catalog.service-list-error-title": "Tjenestene kunne ikke lastes inn"
 }

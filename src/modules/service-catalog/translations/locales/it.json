@@ -1,7 +1,7 @@
 {
   "service-catalog.empty-state.description": "Una volta aggiunti al catalogo, i servizi saranno disponibili qui.",
   "service-catalog.empty-state.go-to-homepage": "Vai alla home page",
-  "service-catalog.empty-state.no-services": "Nessun servizio in vista",
+  "service-catalog.empty-state.no-services": "Nessun servizio trovato",
   "service-catalog.empty-state.support-article-link": "Ulteriori informazioni sul catalogo servizi",
   "service-catalog.item.read-less": "Mostra di meno",
   "service-catalog.item.read-more": "Mostra di più",
@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Invia richiesta",
   "service-catalog.pagination.next": "Avanti",
   "service-catalog.pagination.previous": "Indietro",
+  "service-catalog.service-count.few": "{{count}} servizi",
+  "service-catalog.service-count.many": "{{count}} servizi",
+  "service-catalog.service-count.one": "{{count}} servizio",
+  "service-catalog.service-count.other": "{{count}} servizi",
+  "service-catalog.service-count.two": "{{count}} servizi",
+  "service-catalog.service-count.zero": "{{count}} servizi",
   "service-catalog.service-list-error-message": "Attendi un attimo e poi riprova",
   "service-catalog.service-list-error-title": "Impossibile caricare i servizi"
 }

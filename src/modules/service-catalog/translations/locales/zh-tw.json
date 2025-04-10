@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "提交請求",
   "service-catalog.pagination.next": "下一頁",
   "service-catalog.pagination.previous": "上一頁",
+  "service-catalog.service-count.few": "{{count}} 個服務",
+  "service-catalog.service-count.many": "{{count}} 個服務",
+  "service-catalog.service-count.one": "{{count}} 個服務",
+  "service-catalog.service-count.other": "{{count}} 個服務",
+  "service-catalog.service-count.two": "{{count}} 個服務",
+  "service-catalog.service-count.zero": "{{count}} 個服務",
   "service-catalog.service-list-error-message": "請稍後再試一次",
   "service-catalog.service-list-error-title": "無法載入服務"
 }

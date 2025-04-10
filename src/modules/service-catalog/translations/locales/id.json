@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Kirim permintaan",
   "service-catalog.pagination.next": "Berikutnya",
   "service-catalog.pagination.previous": "Sebelumnya",
+  "service-catalog.service-count.few": "{{count}} layanan",
+  "service-catalog.service-count.many": "{{count}} layanan",
+  "service-catalog.service-count.one": "{{count}} layanan",
+  "service-catalog.service-count.other": "{{count}} layanan",
+  "service-catalog.service-count.two": "{{count}} layanan",
+  "service-catalog.service-count.zero": "{{count}} layanan",
   "service-catalog.service-list-error-message": "Tunggu sebentar dan coba lagi",
   "service-catalog.service-list-error-title": "Layanan tidak dapat dimuat"
 }

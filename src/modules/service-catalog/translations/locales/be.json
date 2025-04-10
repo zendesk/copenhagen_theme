@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Отправить запрос",
   "service-catalog.pagination.next": "Следующая",
   "service-catalog.pagination.previous": "Предыдущая",
+  "service-catalog.service-count.few": "Услуг: {{count}}",
+  "service-catalog.service-count.many": "Услуг: {{count}}",
+  "service-catalog.service-count.one": "{{count}} услуга",
+  "service-catalog.service-count.other": "Услуг: {{count}}",
+  "service-catalog.service-count.two": "Услуг: {{count}}",
+  "service-catalog.service-count.zero": "Услуг: {{count}}",
   "service-catalog.service-list-error-message": "Подождите немного и повторите попытку",
   "service-catalog.service-list-error-title": "Не удалось загрузить услуги"
 }

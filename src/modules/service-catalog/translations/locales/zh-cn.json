@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "提交请求",
   "service-catalog.pagination.next": "下一页",
   "service-catalog.pagination.previous": "上一页",
+  "service-catalog.service-count.few": "{{count}} 项服务",
+  "service-catalog.service-count.many": "{{count}} 项服务",
+  "service-catalog.service-count.one": "{{count}} 项服务",
+  "service-catalog.service-count.other": "{{count}} 项服务",
+  "service-catalog.service-count.two": "{{count}} 项服务",
+  "service-catalog.service-count.zero": "{{count}} 项服务",
   "service-catalog.service-list-error-message": "请稍候片刻再重试",
   "service-catalog.service-list-error-title": "无法加载服务"
 }

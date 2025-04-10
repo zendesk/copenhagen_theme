@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Kérelem beküldése",
   "service-catalog.pagination.next": "Következő",
   "service-catalog.pagination.previous": "Előző",
+  "service-catalog.service-count.few": "{{count}} szolgáltatás",
+  "service-catalog.service-count.many": "{{count}} szolgáltatás",
+  "service-catalog.service-count.one": "{{count}} szolgáltatás",
+  "service-catalog.service-count.other": "{{count}} szolgáltatás",
+  "service-catalog.service-count.two": "{{count}} szolgáltatás",
+  "service-catalog.service-count.zero": "{{count}} szolgáltatás",
   "service-catalog.service-list-error-message": "Várjon egy percet, majd próbálkozzon újra",
   "service-catalog.service-list-error-title": "A szolgáltatások betöltése sikertelen volt"
 }

@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "[ผู้龍Ṣṵṵḅṃḭḭṭ ṛḛḛʠṵṵḛḛṡṭ龍ผู้]",
   "service-catalog.pagination.next": "[ผู้龍Ṅḛḛẋṭ龍ผู้]",
   "service-catalog.pagination.previous": "[ผู้龍Ṕṛḛḛṽḭḭṓṓṵṵṡ龍ผู้]",
+  "service-catalog.service-count.few": "[ผู้龍{{count}} ṡḛḛṛṽḭḭͼḛḛṡ龍ผู้]",
+  "service-catalog.service-count.many": "[ผู้龍{{count}} ṡḛḛṛṽḭḭͼḛḛṡ龍ผู้]",
+  "service-catalog.service-count.one": "[ผู้龍{{count}} ṡḛḛṛṽḭḭͼḛḛ龍ผู้]",
+  "service-catalog.service-count.other": "[ผู้龍{{count}} ṡḛḛṛṽḭḭͼḛḛṡ龍ผู้]",
+  "service-catalog.service-count.two": "[ผู้龍{{count}} ṡḛḛṛṽḭḭͼḛḛṡ龍ผู้]",
+  "service-catalog.service-count.zero": "[ผู้龍{{count}} ṡḛḛṛṽḭḭͼḛḛṡ龍ผู้]",
   "service-catalog.service-list-error-message": "[ผู้龍Ḡḭḭṽḛḛ ḭḭṭ αα ṃṓṓṃḛḛṇṭ ααṇḍ ṭṛẏẏ ḭḭṭ ααḡααḭḭṇ龍ผู้]",
   "service-catalog.service-list-error-title": "[ผู้龍Ṣḛḛṛṽḭḭͼḛḛṡ ͼṓṓṵṵḽḍṇ'ṭ ḅḛḛ ḽṓṓααḍḛḛḍ龍ผู้]"
 }

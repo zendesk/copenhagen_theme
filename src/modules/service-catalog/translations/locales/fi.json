@@ -12,6 +12,12 @@
   "service-catalog.item.submit-button": "Lähetä pyyntö",
   "service-catalog.pagination.next": "Seuraava",
   "service-catalog.pagination.previous": "Edellinen",
+  "service-catalog.service-count.few": "{{count}} palvelua",
+  "service-catalog.service-count.many": "{{count}} palvelua",
+  "service-catalog.service-count.one": "{{count}} palvelu",
+  "service-catalog.service-count.other": "{{count}} palvelua",
+  "service-catalog.service-count.two": "{{count}} palvelua",
+  "service-catalog.service-count.zero": "{{count}} palvelua",
   "service-catalog.service-list-error-message": "Odota hetki ja yritä sitten uudelleen",
   "service-catalog.service-list-error-title": "Palveluja ei voitu ladata"
 }
