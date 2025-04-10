@@ -1,3 +1,10 @@
+# [4.4.0-beta.16](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.15...v4.4.0-beta.16) (2025-04-10)
+
+
+### Bug Fixes
+
+* **service-catalog:** updated translations ([19904a3](https://github.com/zendesk/copenhagen_theme/commit/19904a3661f633533c03293605eea9cccf4b9ebb))
+
 # [4.4.0-beta.15](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.14...v4.4.0-beta.15) (2025-04-07)
 
 
