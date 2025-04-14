@@ -4,14 +4,14 @@
 }
 
 body {
-  background-color: $background_color;
+  background-color: #F8FDFF;
   color: $text_color;
   font-family: $text_font;
   font-size: $font-size-base;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 
-  > main {
+  >main {
     @include desktop {
       min-height: 65vh;
     }
@@ -23,25 +23,37 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-family: $heading_font;
+  font-weight: 600;
   margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
-h1 {
+h1,
+.h1 {
   font-size: 32px;
 }
 
-h2 {
-  font-size: 22px;
+h2,
+.h2 {
+  font-size: 28px;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 18px;
   font-weight: $font-weight-semibold;
 }
 
-h4 {
+h4,
+.h4 {
   font-size: 16px;
 }
 
@@ -49,48 +61,69 @@ a {
   color: $link_color;
   text-decoration: none;
 
-  &:visited {
-    color: $visited_link_color;
-  }
-
   &:hover,
   &:active,
   &:focus {
     text-decoration: underline;
   }
+
+  &.external-link {
+    &::after {
+      content: "";
+      mask-image: $open-external-icon;
+      mask-size: 100%;
+      width: 18px;
+      height: 18px;
+      background-color: #fff;
+      opacity: 1;
+      margin-left: 0.25rem;
+    }
+  }
 }
 
-.hbs-form, .search {
+hr {
+  margin: 1rem 0;
+  border: unset;
+  height: 1px;
+  background-color: #ddd;
+
+  @include tablet {
+    margin: 2rem 0;
+  }
+}
+
+.hbs-form,
+.search {
+
   input,
   textarea {
     color: #000;
     font-size: $input-font-size;
   }
-  
+
   input {
     max-width: 100%;
     box-sizing: border-box;
     transition: $input-transition;
-  
+
     /* We use the :where selector to not increase the specificity of the selector */
     &:where(:not([type="checkbox"])) {
       outline: none;
-  
+
       &:focus {
         border: 1px solid $brand_color;
       }
     }
   }
-  
+
   input[disabled] {
     background-color: #ddd;
   }
-  
+
   select {
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A")
-      no-repeat #fff;
+    background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
     background-position: right 10px center;
     border: 1px solid $high-contrast-border-color;
     border-radius: 4px;
@@ -98,16 +131,16 @@ a {
     outline: none;
     color: $field-text-focus-color;
     width: 100%;
-  
+
     &:focus {
       border: 1px solid $brand_color;
     }
-  
+
     &::-ms-expand {
       display: none;
     }
   }
-  
+
   textarea {
     border: 1px solid $high-contrast-border-color;
     border-radius: 2px;
@@ -115,7 +148,7 @@ a {
     width: 100%;
     outline: none;
     padding: 10px;
-  
+
     &:focus {
       border: 1px solid $brand_color;
     }
@@ -140,8 +173,22 @@ ul {
 
 .error-page {
   @include max-width-container;
+
+  .error {
+    padding-top: 20%;
+    text-align: center
+  }
 }
 
 .visibility-hidden {
   @include visually-hidden;
+}
+
+.section-content {
+  width: 100%;
+}
+
+nabucasa-zigbee-flasher {
+  --mdc-theme-primary: $brand_color;
+  --mdc-theme-on-primary: #fff;
 }

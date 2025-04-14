@@ -1,0 +1,238 @@
+@use "sass:map";
+/***** Item Cards *****/
+
+@each $product, $details in $home-assistant-products {
+  $slug: str-replace($product, " ", "-");
+  $lowercase-slug: to-lower-case($slug);
+
+  main>.visibility-hidden:has(ol li a[href$="#{$slug}"]),
+  section.section.hero[data-category="Home Assistant #{$product}"] {
+    ~.container .layout .column.sidebar .item-card.product.product-#{$lowercase-slug} {
+      @debug "Found product card for #{$lowercase-slug}";
+      display: flex;
+    }
+  }
+}
+
+.item-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &.horizontal {
+    @include tablet {
+      flex-direction: row;
+
+      .item-card {
+        flex-basis: 0;
+        flex-grow: 1;
+
+        &-content {
+          height: 100%;
+        }
+
+        &-description {
+          flex-grow: 1;
+        }
+      }
+    }
+  }
+
+
+  a.item-card {
+    cursor: pointer;
+    transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .item-card {
+    background-color: #fff;
+    display: flex;
+    border: 1px solid #CCC;
+    border-radius: 8px;
+    color: #000;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    position: relative;
+    overflow: hidden;
+
+    @include tablet {
+      padding: 2rem;
+      gap: 1.5rem;
+    }
+
+
+    &:before {
+      display: block;
+      height: 44px;
+      width: 44px;
+      flex-shrink: 0;
+    }
+
+    @each $product, $details in $home-assistant-products {
+      &[data-name="Home Assistant #{$product}"] {
+        &:before {
+          background-image: url(map-get($details, icon));
+          content: '';
+        }
+
+        &:hover {
+          border-color: map-get($details, color);
+        }
+      }
+    }
+
+
+    &.primary {
+      background-color: #CCEFFE;
+      border-color: #99DFFC;
+
+      .item-card-description {
+        color: #174B62;
+      }
+    }
+
+    &.small {
+      padding: 1.25rem 1.4rem;
+
+      .item-card-content {
+        gap: .5rem;
+      }
+
+      .item-card-title {
+        font-size: 20px;
+      }
+    }
+
+    &.product {
+      background-position: center;
+      background-size: cover;
+      height: 16rem;
+      padding: 1rem;
+
+      &[data-product-card-hide] {
+        display: none;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+        z-index: 0;
+      }
+
+      &,
+      .item-card-description {
+        color: #fff;
+      }
+
+      .item-card-title,
+      .item-card-description {
+        z-index: 1;
+      }
+
+      .item-card-details {
+        justify-content: flex-end;
+      }
+
+      .item-card-content {
+        gap: .5rem;
+      }
+
+      .item-card-title {
+        font-size: 18px;
+
+        @include tablet {
+          font-size: 22px;
+        }
+      }
+
+      .item-card-description {
+        font-size: 14px;
+      }
+
+      @each $product, $details in $home-assistant-products {
+        &-#{to-lower-case(str-replace($product, " ", "-"))} {
+          background-image: url(map-get($details, product-image));
+        }
+      }
+
+    }
+
+    &-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      @include tablet {
+        gap: 1.5rem;
+      }
+    }
+
+    &-content {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: .5rem;
+
+      @include tablet {
+        gap: 1rem;
+      }
+    }
+
+    &-title {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.2;
+      text-wrap: balance;
+
+      @include tablet {
+        font-size: 28px;
+      }
+    }
+
+    &-description {
+      color: $secondary-text-color;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: .5rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    &-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    &-pill {
+      background-color: #CCEFFE;
+      color: #5A7D8C;
+      padding: 4px 8px;
+      font-weight: 500;
+      font-size: 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+
+      &:hover {
+        background-color: #00AEF8;
+        color: #fff;
+      }
+    }
+  }
+}

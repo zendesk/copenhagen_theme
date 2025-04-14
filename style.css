@@ -90,6 +90,11 @@ textarea {
 button,
 input {
   overflow: visible;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  outline: 0;
 }
 
 button,
@@ -187,10 +192,10 @@ template {
 }
 
 body {
-  background-color: $background_color;
-  color: $text_color;
-  font-family: $text_font;
-  font-size: 15px;
+  background-color: #F8FDFF;
+  color: #000;
+  font-family: "Figtree", serif;
+  font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -205,25 +210,37 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: $heading_font;
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: "Figtree", serif;
+  font-weight: 600;
   margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 
-h1 {
+h1,
+.h1 {
   font-size: 32px;
 }
 
-h2 {
-  font-size: 22px;
+h2,
+.h2 {
+  font-size: 28px;
 }
 
-h3 {
+h3,
+.h3 {
   font-size: 18px;
   font-weight: 600;
 }
 
-h4 {
+h4,
+.h4 {
   font-size: 16px;
 }
 
@@ -231,35 +248,60 @@ a {
   color: $link_color;
   text-decoration: none;
 }
-a:visited {
-  color: $visited_link_color;
-}
 a:hover, a:active, a:focus {
   text-decoration: underline;
 }
+a.external-link::after {
+  content: "";
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='currentColor'%3E%3Cpath d='M212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h222.3q12.77 0 21.39 8.62 8.61 8.61 8.61 21.38T456-768.62q-8.62 8.62-21.39 8.62h-222.3q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-222.3q0-12.77 8.62-21.39 8.61-8.61 21.38-8.61t21.38 8.61q8.62 8.62 8.62 21.39v222.3Q820-182 799-161q-21 21-51.31 21H212.31ZM760-717.85 409.85-367.69q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L717.85-760H590q-12.77 0-21.38-8.62Q560-777.23 560-790t8.62-21.38Q577.23-820 590-820h193.84q15.47 0 25.81 10.35Q820-799.31 820-783.84V-590q0 12.77-8.62 21.38Q802.77-560 790-560t-21.38-8.62Q760-577.23 760-590v-127.85Z'/%3E%3C/svg%3E");
+  mask-size: 100%;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  opacity: 1;
+  margin-left: 0.25rem;
+}
+
+hr {
+  margin: 1rem 0;
+  border: unset;
+  height: 1px;
+  background-color: #ddd;
+}
+@media (min-width: 768px) {
+  hr {
+    margin: 2rem 0;
+  }
+}
 
 .hbs-form input,
-.hbs-form textarea, .search input,
+.hbs-form textarea,
+.search input,
 .search textarea {
   color: #000;
   font-size: 14px;
 }
-.hbs-form input, .search input {
+.hbs-form input,
+.search input {
   max-width: 100%;
   box-sizing: border-box;
   transition: border 0.12s ease-in-out;
   /* We use the :where selector to not increase the specificity of the selector */
 }
-.hbs-form input:where(:not([type=checkbox])), .search input:where(:not([type=checkbox])) {
+.hbs-form input:where(:not([type=checkbox])),
+.search input:where(:not([type=checkbox])) {
   outline: none;
 }
-.hbs-form input:where(:not([type=checkbox])):focus, .search input:where(:not([type=checkbox])):focus {
+.hbs-form input:where(:not([type=checkbox])):focus,
+.search input:where(:not([type=checkbox])):focus {
   border: 1px solid $brand_color;
 }
-.hbs-form input[disabled], .search input[disabled] {
+.hbs-form input[disabled],
+.search input[disabled] {
   background-color: #ddd;
 }
-.hbs-form select, .search select {
+.hbs-form select,
+.search select {
   -webkit-appearance: none;
   -moz-appearance: none;
   background: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23CCC' d='M0 0h10L5 6 0 0z'/%3E%3C/svg%3E%0A") no-repeat #fff;
@@ -271,13 +313,16 @@ a:hover, a:active, a:focus {
   color: #555;
   width: 100%;
 }
-.hbs-form select:focus, .search select:focus {
+.hbs-form select:focus,
+.search select:focus {
   border: 1px solid $brand_color;
 }
-.hbs-form select::-ms-expand, .search select::-ms-expand {
+.hbs-form select::-ms-expand,
+.search select::-ms-expand {
   display: none;
 }
-.hbs-form textarea, .search textarea {
+.hbs-form textarea,
+.search textarea {
   border: 1px solid #87929D;
   border-radius: 2px;
   resize: vertical;
@@ -285,20 +330,16 @@ a:hover, a:active, a:focus {
   outline: none;
   padding: 10px;
 }
-.hbs-form textarea:focus, .search textarea:focus {
+.hbs-form textarea:focus,
+.search textarea:focus {
   border: 1px solid $brand_color;
 }
 
 .container {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 5%;
-}
-@media (min-width: 1160px) {
-  .container {
-    padding: 0;
-    width: 90%;
-  }
+  padding: 0 1rem;
+  width: 100%;
 }
 
 .container-divider {
@@ -315,13 +356,12 @@ ul {
 .error-page {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 1rem;
+  width: 100%;
 }
-@media (min-width: 1160px) {
-  .error-page {
-    padding: 0;
-    width: 90%;
-  }
+.error-page .error {
+  padding-top: 20%;
+  text-align: center;
 }
 
 .visibility-hidden {
@@ -336,6 +376,15 @@ ul {
   position: absolute;
   width: 1px;
   white-space: nowrap;
+}
+
+.section-content {
+  width: 100%;
+}
+
+nabucasa-zigbee-flasher {
+  --mdc-theme-primary: $brand_color;
+  --mdc-theme-on-primary: #fff;
 }
 
 /***** Buttons *****/
@@ -378,7 +427,8 @@ ul {
   cursor: default;
 }
 
-.button-large, .hbs-form input[type=submit] {
+.button-large,
+.hbs-form input[type=submit] {
   cursor: pointer;
   background-color: $brand_color;
   border: 0;
@@ -391,32 +441,102 @@ ul {
   width: 100%;
 }
 @media (min-width: 768px) {
-  .button-large, .hbs-form input[type=submit] {
+  .button-large,
+  .hbs-form input[type=submit] {
     width: auto;
   }
 }
-.button-large:visited, .hbs-form input[type=submit]:visited {
+.button-large:visited,
+.hbs-form input[type=submit]:visited {
   color: $brand_text_color;
 }
-.button-large:hover, .button-large:active, .button-large:focus, .hbs-form input[type=submit]:hover, .hbs-form input[type=submit]:active, .hbs-form input[type=submit]:focus {
+.button-large:hover, .button-large:active, .button-large:focus,
+.hbs-form input[type=submit]:hover,
+.hbs-form input[type=submit]:active,
+.hbs-form input[type=submit]:focus {
   background-color: darken($brand_color, 20%);
 }
-.button-large[disabled], .hbs-form input[type=submit][disabled] {
+.button-large[disabled],
+.hbs-form input[type=submit][disabled] {
   background-color: #ddd;
 }
 
 .button-secondary {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   border: 1px solid #87929D;
   background-color: transparent;
 }
 .button-secondary:visited {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 .button-secondary:hover, .button-secondary:focus, .button-secondary:active {
-  color: $text_color;
+  color: #000;
   border: 1px solid #87929D;
   background-color: darken($background_color, 3%);
+}
+
+.btn {
+  align-items: center;
+  border-radius: 2rem;
+  display: inline-flex;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  padding: 12px 18px;
+}
+.btn-large {
+  height: 54px;
+  padding: 16px 36px;
+}
+.btn:hover {
+  text-decoration: none;
+}
+.btn.btn-primary {
+  background-color: #00AEF8;
+  color: #FFFFFF;
+}
+.btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
+  background-color: #008BC6;
+}
+.btn.btn-dark {
+  background-color: #174B62;
+  color: #FFFFFF;
+}
+.btn.btn-dark:hover, .btn.btn-dark:focus, .btn.btn-dark:active {
+  background-color: #0D303F;
+}
+.btn.btn-light {
+  background-color: #CCEFFE;
+  color: #174B62;
+}
+.btn.btn-light:hover, .btn.btn-light:focus, .btn.btn-light:active {
+  background-color: #AED9EC;
+  color: #00344A;
+}
+.btn.btn-white {
+  background-color: #fff;
+  color: #174B62;
+}
+.btn.btn-white:hover, .btn.btn-white:focus, .btn.btn-white:active {
+  background-color: #f3f3f3;
+  color: #00344A;
+}
+.btn.btn-text {
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+}
+.btn.btn-text:hover {
+  text-decoration: underline;
+}
+.btn.btn-text.btn-text-light, .btn.btn-text.btn-text-light:hover, .btn.btn-text.btn-text-light:focus, .btn.btn-text.btn-text-light:active {
+  color: #ffffff;
+}
+.btn.btn-text.btn-text-dark, .btn.btn-text.btn-text-dark:hover, .btn.btn-text.btn-text-dark:focus, .btn.btn-text.btn-text-dark:active {
+  color: #174B62;
 }
 
 /***** Split button *****/
@@ -475,8 +595,8 @@ ul {
 }
 .table th,
 .table th a {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
   text-align: left;
 }
 [dir=rtl] .table th,
@@ -524,7 +644,7 @@ ul {
 
 .form-field label {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 5px;
 }
 
@@ -582,12 +702,12 @@ ul {
 }
 
 .form-field .optional {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   margin-left: 4px;
 }
 
 .form-field p {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   font-size: 12px;
   margin: 5px 0;
 }
@@ -598,13 +718,13 @@ ul {
 }
 
 .form footer a {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   cursor: pointer;
   margin-right: 15px;
 }
 
 .form .suggestion-list {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 30px;
 }
 .form .suggestion-list label {
@@ -615,26 +735,23 @@ ul {
 .form .suggestion-list li {
   padding: 10px 0;
 }
-.form .suggestion-list li a:visited {
-  color: $visited_link_color;
-}
 
 /***** Header *****/
 .header {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 5%;
+  background-color: #174B62;
   position: relative;
   align-items: center;
   display: flex;
-  height: 71px;
-  justify-content: space-between;
+  height: 74px;
+  justify-content: center;
 }
-@media (min-width: 1160px) {
-  .header {
-    padding: 0;
-    width: 90%;
-  }
+.header a {
+  color: #fff;
+}
+.header-inner {
+  align-items: center;
+  display: flex;
+  width: 100%;
 }
 
 .logo img {
@@ -651,7 +768,9 @@ ul {
   display: inline-block;
 }
 
-.logo a:hover, .logo a:focus, .logo a:active {
+.logo a:hover,
+.logo a:focus,
+.logo a:active {
   text-decoration: none;
 }
 
@@ -671,7 +790,7 @@ ul {
   border: solid 1px #ddd;
   right: 0;
   left: 0;
-  top: 71px;
+  top: 74px;
   z-index: 1;
 }
 .user-nav[aria-expanded=true] > a {
@@ -687,13 +806,21 @@ ul {
 }
 
 .user-nav-list {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   list-style: none;
 }
 .user-nav-list > li {
   display: inline-block;
 }
 
+.nav-wrapper-desktop {
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  flex-grow: 1;
+}
 @media (max-width: 768px) {
   .nav-wrapper-desktop {
     display: none;
@@ -706,41 +833,42 @@ ul {
 }
 @media (min-width: 1024px) {
   .nav-wrapper-desktop {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: flex-end;
   }
 }
 .nav-wrapper-desktop a {
-  border: 0;
-  color: $link_color;
   display: none;
-  font-size: 14px;
-  padding: 0 20px 0 0;
-  width: auto;
 }
 @media (min-width: 768px) {
   .nav-wrapper-desktop a {
-    display: inline-block;
+    display: inline-flex;
   }
 }
 [dir=rtl] .nav-wrapper-desktop a {
   padding: 0 0 0 20px;
 }
-.nav-wrapper-desktop a:hover, .nav-wrapper-desktop a:focus, .nav-wrapper-desktop a:active {
-  background-color: transparent;
-  color: $link_color;
-  text-decoration: underline;
-}
 
 @media (min-width: 1024px) {
-  .nav-wrapper-mobile {
+  .header .nav-wrapper-mobile {
     display: none;
   }
 }
+
+.nav-wrapper-mobile {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
 .nav-wrapper-mobile .menu-button-mobile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   background: none;
   border: 0;
   width: auto;
-  min-width: 71px;
+  color: #fff;
+  padding: 0;
   cursor: pointer;
 }
 .nav-wrapper-mobile .menu-button-mobile .icon-menu {
@@ -751,7 +879,8 @@ ul {
   border-radius: 50%;
 }
 .nav-wrapper-mobile .menu-button-mobile[aria-expanded=true] .icon-menu {
-  background: #f3f3f3;
+  color: #174B62;
+  background: #F8FDFF;
 }
 .nav-wrapper-mobile .menu-list-mobile {
   position: absolute;
@@ -761,7 +890,7 @@ ul {
   border-bottom: solid 1px #ddd;
   right: 0;
   left: 0;
-  top: 71px;
+  top: 74px;
   z-index: 2;
 }
 .nav-wrapper-mobile .menu-list-mobile[aria-expanded=false] {
@@ -787,9 +916,9 @@ ul {
   background: none;
   border: none;
   padding: 8px 24px;
+  color: #fff;
   width: 100%;
   height: 100%;
-  color: $text_color;
   cursor: pointer;
   text-align: start;
 }
@@ -802,7 +931,7 @@ ul {
   padding: 8px 24px;
   width: 100%;
   height: 100%;
-  color: $text_color;
+  color: #000;
 }
 .nav-wrapper-mobile .menu-list-mobile-items a:active, .nav-wrapper-mobile .menu-list-mobile-items a:focus, .nav-wrapper-mobile .menu-list-mobile-items a:hover {
   background-color: #f3f3f3;
@@ -816,8 +945,8 @@ ul {
   color: #68737D;
 }
 .nav-wrapper-mobile .menu-list-mobile-items .menu-profile-avatar {
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   display: inline-block;
   margin-right: 8px;
@@ -866,7 +995,7 @@ ul {
 
 /***** User info in header *****/
 .user-info {
-  display: inline-block;
+  display: inline-flex;
 }
 .user-info .dropdown-toggle::after {
   display: none;
@@ -877,18 +1006,18 @@ ul {
   }
 }
 .user-info > button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 16px;
   border: 0;
-  color: $link_color;
+  color: #fff;
   min-width: 0;
   padding: 0;
   white-space: nowrap;
 }
-.user-info > button:hover, .user-info > button:focus {
-  color: $link_color;
-  background-color: transparent;
-}
 .user-info > button::after {
-  color: $link_color;
+  color: #fff;
   padding-right: 15px;
 }
 [dir=rtl] .user-info > button::after {
@@ -911,8 +1040,8 @@ ul {
 
 /***** User avatar *****/
 .user-avatar {
-  height: 25px;
-  width: 25px;
+  height: 44px;
+  width: 44px;
   border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
@@ -944,40 +1073,36 @@ ul {
 /***** Footer *****/
 .footer {
   border-top: 1px solid #ddd;
-  margin-top: 60px;
+  margin-top: 2rem;
   padding: 30px 0;
 }
+@media (min-width: 768px) {
+  .footer {
+    margin-top: 4rem;
+  }
+}
 .footer a {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 .footer-inner {
   max-width: 1160px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 1rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
-@media (min-width: 1160px) {
-  .footer-inner {
-    padding: 0;
-    width: 90%;
-  }
-}
 .footer-language-selector button {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   display: inline-block;
-}
-
-.powered-by-zendesk a,
-.powered-by-zendesk a:visited {
-  color: lighten($text_color, 20%);
 }
 
 /***** Breadcrumbs *****/
 .breadcrumbs {
-  margin: 0 0 15px 0;
-  padding: 0;
+  padding: 1rem 0;
   display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 @media (min-width: 768px) {
   .breadcrumbs {
@@ -985,18 +1110,29 @@ ul {
   }
 }
 .breadcrumbs li {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
   max-width: 450px;
   overflow: hidden;
+  font-weight: 400;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .breadcrumbs li + li::before {
-  content: ">";
-  margin: 0 4px;
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='7' viewBox='0 0 4 7' fill='none'%3E%3Cpath d='M0.383721 6.79995C0.281395 6.79995 0.19186 6.76478 0.115116 6.69443C0.0383721 6.62408 0 6.53135 0 6.41623V0.583672C0 0.468556 0.0383721 0.375823 0.115116 0.305474C0.19186 0.235126 0.281395 0.199951 0.383721 0.199951C0.409302 0.199951 0.498837 0.238323 0.652326 0.315067L3.4343 3.09704C3.49826 3.161 3.54302 3.22495 3.5686 3.2889C3.59419 3.35286 3.60698 3.42321 3.60698 3.49995C3.60698 3.5767 3.59419 3.64704 3.5686 3.711C3.54302 3.77495 3.49826 3.8389 3.4343 3.90286L0.652326 6.68484C0.613954 6.72321 0.572384 6.75199 0.527616 6.77117C0.482849 6.79036 0.434884 6.79995 0.383721 6.79995Z' fill='%237C7F80'/%3E%3C/svg%3E");
+  width: 4px;
+  height: 7px;
 }
-.breadcrumbs li a:visited {
-  color: $link_color;
+.breadcrumbs li:last-child {
+  color: #000;
+  pointer-events: none;
+  font-weight: 600;
+}
+.breadcrumbs li a {
+  color: #7C7F80;
 }
 
 /***** Search field *****/
@@ -1004,17 +1140,38 @@ ul {
   position: relative;
 }
 
+.search-wrapper {
+  display: flex;
+  max-width: 734px;
+  margin: 0 auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+@media (min-width: 768px) {
+  .search-wrapper {
+    flex-wrap: nowrap;
+  }
+}
+
+.search-wrapper form {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.search-wrapper input {
+  height: 54px;
+}
+
+.search-wrapper form + button {
+  cursor: pointer;
+  order: 1;
+  margin-left: 1rem;
+}
+
 .search {
-  border-color: #87929D;
-  border-radius: 30px;
-  border-style: solid;
-  border-width: 1px;
   display: flex;
   position: relative;
   transition: border 0.12s ease-in-out;
-}
-.search:focus-within {
-  border-color: $brand_color;
 }
 .search input[type=search],
 .search .clear-button {
@@ -1031,17 +1188,17 @@ ul {
   box-sizing: border-box;
   color: #666;
   flex: 1 1 auto;
-  height: 40px;
   width: 100%;
+  font-size: 18px;
+}
+.search input[type=search]::placeholder {
+  color: #B1E2F8;
 }
 .search input[type=search]:focus {
   color: #555;
 }
 .search input[type=search]::-webkit-search-decoration, .search input[type=search]::-webkit-search-cancel-button, .search input[type=search]::-webkit-search-results-button, .search input[type=search]::-webkit-search-results-decoration {
   -webkit-appearance: none;
-}
-.search input[type=search]:-webkit-autofill, .search input[type=search]:-webkit-autofill:hover, .search input[type=search]:-webkit-autofill:focus {
-  -webkit-box-shadow: 0 0 0 1000px #fff inset;
 }
 .search .clear-button {
   align-items: center;
@@ -1052,14 +1209,6 @@ ul {
   flex: none;
   justify-content: center;
   padding: 0 15px;
-}
-.search .clear-button:hover {
-  background-color: $brand_color;
-  color: #fff;
-}
-.search .clear-button:focus {
-  outline: 0;
-  box-shadow: 0 0 0 3px $brand_color;
 }
 .search-has-value .clear-button {
   display: flex;
@@ -1124,22 +1273,345 @@ ul {
   right: 15px;
 }
 
+.search-wrapper.small {
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: unset;
+}
+.search-wrapper.small form {
+  margin-bottom: 0;
+}
+.search-wrapper.small .search input[type=search] {
+  height: 42px;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #d6d6d6;
+}
+.search-wrapper.small .search input[type=search]::placeholder {
+  color: #7C7F80;
+}
+.search-wrapper.small form + button {
+  height: 42px;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+  padding: 0 1rem;
+}
+
+.sub-nav {
+  flex-grow: 1;
+}
+
+.error-page .search-wrapper .search input[type=search] {
+  border: 1px solid #d6d6d6;
+}
+.error-page .search-wrapper .search input[type=search]::placeholder {
+  color: #7C7F80;
+}
+
 /***** Hero component *****/
+main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero,
+section.section.hero[data-category="Home Assistant Green"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-green.webp");
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero,
+  section.section.hero[data-category="Home Assistant Green"] {
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero,
+  section.section.hero[data-category="Home Assistant Green"] {
+    margin-bottom: 1rem;
+  }
+}
+main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero:after,
+section.section.hero[data-category="Home Assistant Green"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero .hero-inner,
+section.section.hero[data-category="Home Assistant Green"] .hero-inner {
+  color: #fff;
+}
+main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero [data-title]:before,
+section.section.hero[data-category="Home Assistant Green"] [data-title]:before {
+  content: "Home Assistant Green";
+}
+main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero [data-description]:before,
+section.section.hero[data-category="Home Assistant Green"] [data-description]:before {
+  content: "The affordable Home Assistant Green is the easiest way you can start using Home Assistant. It's plug-and-play and comes with Home Assistant already installed.";
+}
+
+main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero,
+section.section.hero[data-category="Home Assistant Yellow"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-yellow.webp");
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero,
+  section.section.hero[data-category="Home Assistant Yellow"] {
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero,
+  section.section.hero[data-category="Home Assistant Yellow"] {
+    margin-bottom: 1rem;
+  }
+}
+main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero:after,
+section.section.hero[data-category="Home Assistant Yellow"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero .hero-inner,
+section.section.hero[data-category="Home Assistant Yellow"] .hero-inner {
+  color: #fff;
+}
+main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero [data-title]:before,
+section.section.hero[data-category="Home Assistant Yellow"] [data-title]:before {
+  content: "Home Assistant Yellow";
+}
+main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero [data-description]:before,
+section.section.hero[data-category="Home Assistant Yellow"] [data-description]:before {
+  content: "The foundation of your smart home needs to be local and private. Home Assistant Yellow is that foundation.";
+}
+
+main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero,
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-voice-pe.webp");
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero,
+  section.section.hero[data-category="Home Assistant Voice Preview Edition"] {
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero,
+  section.section.hero[data-category="Home Assistant Voice Preview Edition"] {
+    margin-bottom: 1rem;
+  }
+}
+main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero:after,
+section.section.hero[data-category="Home Assistant Voice Preview Edition"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero .hero-inner,
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] .hero-inner {
+  color: #fff;
+}
+main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero [data-title]:before,
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] [data-title]:before {
+  content: "Home Assistant Voice Preview Edition";
+}
+main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero [data-description]:before,
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] [data-description]:before {
+  content: "Built for Home Assistant - Easy Setup - one USB-C cable and setup wizard, no assembly required.";
+}
+
+main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero,
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-zbt-1.webp");
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero,
+  section.section.hero[data-category="Home Assistant Connect ZBT-1"] {
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero,
+  section.section.hero[data-category="Home Assistant Connect ZBT-1"] {
+    margin-bottom: 1rem;
+  }
+}
+main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero:after,
+section.section.hero[data-category="Home Assistant Connect ZBT-1"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero .hero-inner,
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] .hero-inner {
+  color: #fff;
+}
+main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero [data-title]:before,
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] [data-title]:before {
+  content: "Home Assistant Connect ZBT-1";
+}
+main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero [data-description]:before,
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] [data-description]:before {
+  content: "The easiest way to add Zigbee support to your Home Assistant instance.";
+}
+
+main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero,
+section.section.hero[data-category="Home Assistant Cloud"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp");
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero,
+  section.section.hero[data-category="Home Assistant Cloud"] {
+    margin-bottom: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero,
+  section.section.hero[data-category="Home Assistant Cloud"] {
+    margin-bottom: 1rem;
+  }
+}
+main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero:after,
+section.section.hero[data-category="Home Assistant Cloud"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero .hero-inner,
+section.section.hero[data-category="Home Assistant Cloud"] .hero-inner {
+  color: #fff;
+}
+main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero [data-title]:before,
+section.section.hero[data-category="Home Assistant Cloud"] [data-title]:before {
+  content: "Home Assistant Cloud";
+}
+section.section.hero {
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  section.section.hero {
+    margin-bottom: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  section.section.hero {
+    margin-bottom: 2.5rem;
+  }
+}
+section.section.hero[data-category="Home Assistant Green"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-green.webp");
+}
+section.section.hero[data-category="Home Assistant Green"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+section.section.hero[data-category="Home Assistant Green"] .hero-inner {
+  color: #fff;
+}
+section.section.hero[data-category="Home Assistant Yellow"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-yellow.webp");
+}
+section.section.hero[data-category="Home Assistant Yellow"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+section.section.hero[data-category="Home Assistant Yellow"] .hero-inner {
+  color: #fff;
+}
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-voice-pe.webp");
+}
+section.section.hero[data-category="Home Assistant Voice Preview Edition"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] .hero-inner {
+  color: #fff;
+}
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-zbt-1.webp");
+}
+section.section.hero[data-category="Home Assistant Connect ZBT-1"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] .hero-inner {
+  color: #fff;
+}
+section.section.hero[data-category="Home Assistant Cloud"] {
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp");
+}
+section.section.hero[data-category="Home Assistant Cloud"]:after {
+  content: "";
+  background-color: rgba(23, 75, 98, 0.58);
+  position: absolute;
+  inset: 0;
+}
+section.section.hero[data-category="Home Assistant Cloud"] .hero-inner {
+  color: #fff;
+}
+
 .hero {
-  background-image: url($homepage_background_image);
+  background-color: #c5f4fb;
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp");
   background-position: center;
   background-size: cover;
-  height: 300px;
-  padding: 0 20px;
+  padding: 36px 0px;
   text-align: center;
   width: 100%;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .hero {
+    padding: 88px 0px;
+  }
 }
 .hero-inner {
   position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 610px;
+  z-index: 1;
+}
+.hero-inner h2 {
+  font-size: 48px;
+  line-height: 1;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+}
+@media (min-width: 768px) {
+  .hero-inner h2 {
+    font-size: 74px;
+  }
+}
+.hero-inner p {
+  max-width: 800px;
   margin: 0 auto;
+  text-wrap: balance;
+  font-weight: 300;
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .hero-inner p {
+    font-size: 24px;
+  }
+}
+.hero .search-wrapper {
+  margin-top: 32px;
+}
+@media (min-width: 768px) {
+  .hero .search-wrapper {
+    margin-top: 80px;
+  }
 }
 
 .page-header {
@@ -1147,14 +1619,12 @@ ul {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 10px 0;
 }
 @media (min-width: 768px) {
   .page-header {
     align-items: baseline;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 16px;
     margin: 0;
   }
 }
@@ -1169,16 +1639,15 @@ ul {
 }
 .page-header h1 {
   flex-grow: 1;
-  margin-bottom: 10px;
+  margin-bottom: 0;
 }
 .page-header-description {
-  font-style: italic;
-  margin: 0 0 30px 0;
   word-break: break-word;
 }
 @media (min-width: 1024px) {
   .page-header-description {
     flex-basis: 100%;
+    margin: 0 0 32px 0;
   }
 }
 .page-header .icon-lock {
@@ -1196,11 +1665,11 @@ ul {
   flex-wrap: wrap;
   gap: 15px 30px;
   justify-content: space-between;
-  margin-bottom: 55px;
 }
 @media (min-width: 768px) {
   .sub-nav {
     flex-direction: row;
+    margin-bottom: 1rem;
   }
 }
 .sub-nav .breadcrumbs {
@@ -1216,7 +1685,20 @@ ul {
   }
 }
 .sub-nav input[type=search]::after {
-  font-size: 15px;
+  font-size: 16px;
+}
+
+.sub-hero {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0rem 1rem;
+  margin-bottom: 1rem;
+}
+.sub-hero .sub-nav {
+  flex-grow: 1;
+  margin: 0;
 }
 
 /***** Blocks *****/
@@ -1267,7 +1749,7 @@ ul {
   position: relative;
 }
 .blocks-item-internal a {
-  color: $text_color;
+  color: #000;
 }
 .blocks-item-link {
   color: $brand_color;
@@ -1332,7 +1814,8 @@ ul {
     align-self: flex-end;
     flex: 0 0 auto;
     padding-right: 30px;
-    width: 33%; /* Three columns on desktop */
+    width: 33%;
+    /* Three columns on desktop */
   }
   [dir=rtl] .promoted-articles-item {
     padding: 0 0 0 30px;
@@ -1424,7 +1907,7 @@ ul {
   text-overflow: ellipsis;
 }
 .recent-activity-item-meta {
-  color: $text_color;
+  color: #000;
   margin: 15px 0 0 0;
   float: none;
 }
@@ -1439,7 +1922,7 @@ ul {
 }
 .recent-activity-item-time, .recent-activity-item-comment {
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
 }
 .recent-activity-item-comment {
   padding-left: 5px;
@@ -1491,19 +1974,259 @@ ul {
   margin-right: 3px;
 }
 
+/***** Item Cards *****/
+main > .visibility-hidden:has(ol li a[href$=Green]) ~ .container .layout .column.sidebar .item-card.product.product-green,
+section.section.hero[data-category="Home Assistant Green"] ~ .container .layout .column.sidebar .item-card.product.product-green {
+  display: flex;
+}
+
+main > .visibility-hidden:has(ol li a[href$=Yellow]) ~ .container .layout .column.sidebar .item-card.product.product-yellow,
+section.section.hero[data-category="Home Assistant Yellow"] ~ .container .layout .column.sidebar .item-card.product.product-yellow {
+  display: flex;
+}
+
+main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) ~ .container .layout .column.sidebar .item-card.product.product-voice-preview-edition,
+section.section.hero[data-category="Home Assistant Voice Preview Edition"] ~ .container .layout .column.sidebar .item-card.product.product-voice-preview-edition {
+  display: flex;
+}
+
+main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) ~ .container .layout .column.sidebar .item-card.product.product-connect-zbt-1,
+section.section.hero[data-category="Home Assistant Connect ZBT-1"] ~ .container .layout .column.sidebar .item-card.product.product-connect-zbt-1 {
+  display: flex;
+}
+
+main > .visibility-hidden:has(ol li a[href$=Cloud]) ~ .container .layout .column.sidebar .item-card.product.product-cloud,
+section.section.hero[data-category="Home Assistant Cloud"] ~ .container .layout .column.sidebar .item-card.product.product-cloud {
+  display: flex;
+}
+
+.item-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .item-cards.horizontal {
+    flex-direction: row;
+  }
+  .item-cards.horizontal .item-card {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+  .item-cards.horizontal .item-card-content {
+    height: 100%;
+  }
+  .item-cards.horizontal .item-card-description {
+    flex-grow: 1;
+  }
+}
+.item-cards a.item-card {
+  cursor: pointer;
+  transition: box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+.item-cards a.item-card:hover {
+  box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+.item-cards a.item-card:focus {
+  text-decoration: none;
+}
+.item-cards .item-card {
+  background-color: #fff;
+  display: flex;
+  border: 1px solid #CCC;
+  border-radius: 8px;
+  color: #000;
+  padding: 1.5rem;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .item-cards .item-card {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+}
+.item-cards .item-card:before {
+  display: block;
+  height: 44px;
+  width: 44px;
+  flex-shrink: 0;
+}
+.item-cards .item-card[data-name="Home Assistant Green"]:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%2314CC9E'/%3E%3Cpath d='M30.0231 28.9584C30.0231 29.5441 29.5417 30.0233 28.9533 30.0233H15.0459C14.4575 30.0233 13.9761 29.5441 13.9761 28.9584V23.1012C13.9761 22.5155 14.3184 21.6955 14.7303 21.2855L21.24 14.8054C21.6573 14.3901 22.3366 14.3901 22.7538 14.8054L29.2636 21.2855C29.6808 21.7008 30.0231 22.5181 30.0231 23.1038V28.9584Z' fill='%23fff'/%3E%3C/svg%3E");
+  content: "";
+}
+.item-cards .item-card[data-name="Home Assistant Green"]:hover {
+  border-color: #14CC9E;
+}
+.item-cards .item-card[data-name="Home Assistant Yellow"]:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23FBB03B'/%3E%3Cpath d='M30.0241 28.9591C30.0241 29.5448 29.5427 30.024 28.9543 30.024H15.0469C14.4585 30.024 13.9771 29.5448 13.9771 28.9591V23.102C13.9771 22.5162 14.3194 21.6962 14.7313 21.2862L21.241 14.8061C21.6582 14.3908 22.3376 14.3908 22.7548 14.8061L29.2645 21.2862C29.6818 21.7016 30.0241 22.5188 30.0241 23.1045V28.9591Z' fill='white'/%3E%3C/svg%3E");
+  content: "";
+}
+.item-cards .item-card[data-name="Home Assistant Yellow"]:hover {
+  border-color: #FBB03B;
+}
+.item-cards .item-card[data-name="Home Assistant Voice Preview Edition"]:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23DB582E'/%3E%3Cpath d='M22 29.5059C17.8634 29.5059 14.4941 26.1366 14.4941 22C14.4941 17.8634 17.8634 14.4941 22 14.4941C26.1366 14.4941 29.5059 17.8634 29.5059 22C29.5059 26.1366 26.1366 29.5059 22 29.5059Z' fill='white'/%3E%3C/svg%3E");
+  content: "";
+}
+.item-cards .item-card[data-name="Home Assistant Voice Preview Edition"]:hover {
+  border-color: #DB582E;
+}
+.item-cards .item-card[data-name="Home Assistant Connect ZBT-1"]:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%2300AEF8'/%3E%3Cpath d='M27.9527 13.6545C27.9527 12.6887 27.154 11.9058 26.1688 11.9058H18.3488C17.3637 11.9058 16.5649 12.6887 16.5649 13.6545L16.5649 28.4705H18.6355V33.6469H25.8826V28.4705H27.9532L27.9527 13.6545Z' fill='white'/%3E%3C/svg%3E");
+  content: "";
+}
+.item-cards .item-card[data-name="Home Assistant Connect ZBT-1"]:hover {
+  border-color: #00AEF8;
+}
+.item-cards .item-card[data-name="Home Assistant Cloud"]:before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23174B62'/%3E%3Cpath d='M31.6404 21.9952C31.6404 21.9201 31.6466 21.8461 31.6466 21.7701C31.6454 20.1893 31.1182 18.6516 30.1445 17.3895C29.1708 16.1276 27.8037 15.2098 26.2494 14.775C24.6953 14.3402 23.0386 14.4118 21.5297 14.9793C20.0209 15.5467 18.7418 16.579 17.886 17.9201C17.0104 17.6077 16.0757 17.4867 15.1473 17.5653C14.2188 17.644 13.3193 17.9208 12.5119 18.3758C11.7046 18.831 11.0088 19.4535 10.4738 20.1997C9.93869 20.9459 9.57737 21.7977 9.415 22.6953C9.25263 23.5927 9.29318 24.5141 9.53389 25.3946C9.77459 26.2751 10.2096 27.0934 10.8083 27.7918C11.4071 28.4902 12.1549 29.052 12.9994 29.4375C13.8438 29.8231 14.7644 30.023 15.6961 30.0233H25.9792L26.1412 30.0234H26.4L27.6954 30.0233H31.0521C32.099 30.0293 33.1089 29.6456 33.8771 28.9502C34.6453 28.2548 35.1145 27.2998 35.1892 26.2785C35.2641 25.2574 34.939 24.2465 34.2798 23.4511C33.6209 22.6557 32.6774 22.1352 31.6404 21.9952Z' fill='white'/%3E%3C/svg%3E");
+  content: "";
+}
+.item-cards .item-card[data-name="Home Assistant Cloud"]:hover {
+  border-color: #174B62;
+}
+.item-cards .item-card.primary {
+  background-color: #CCEFFE;
+  border-color: #99DFFC;
+}
+.item-cards .item-card.primary .item-card-description {
+  color: #174B62;
+}
+.item-cards .item-card.small {
+  padding: 1.25rem 1.4rem;
+}
+.item-cards .item-card.small .item-card-content {
+  gap: 0.5rem;
+}
+.item-cards .item-card.small .item-card-title {
+  font-size: 20px;
+}
+.item-cards .item-card.product {
+  background-position: center;
+  background-size: cover;
+  height: 16rem;
+  padding: 1rem;
+}
+.item-cards .item-card.product[data-product-card-hide] {
+  display: none;
+}
+.item-cards .item-card.product:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+  z-index: 0;
+}
+.item-cards .item-card.product,
+.item-cards .item-card.product .item-card-description {
+  color: #fff;
+}
+.item-cards .item-card.product .item-card-title,
+.item-cards .item-card.product .item-card-description {
+  z-index: 1;
+}
+.item-cards .item-card.product .item-card-details {
+  justify-content: flex-end;
+}
+.item-cards .item-card.product .item-card-content {
+  gap: 0.5rem;
+}
+.item-cards .item-card.product .item-card-title {
+  font-size: 18px;
+}
+@media (min-width: 768px) {
+  .item-cards .item-card.product .item-card-title {
+    font-size: 22px;
+  }
+}
+.item-cards .item-card.product .item-card-description {
+  font-size: 14px;
+}
+.item-cards .item-card.product-green {
+  background-image: url("https://www.home-assistant.io/images/frontpage/green-frontpage.jpg");
+}
+.item-cards .item-card.product-yellow {
+  background-image: url("https://www.home-assistant.io/images/frontpage/yellow-frontpage.jpg");
+}
+.item-cards .item-card.product-voice-preview-edition {
+  background-image: url("https://www.home-assistant.io/images/frontpage/voice-pe-frontpage.jpg");
+}
+.item-cards .item-card.product-connect-zbt-1 {
+  background-image: url("https://www.home-assistant.io/images/frontpage/feature-zbt1.jpg");
+}
+.item-cards .item-card.product-cloud {
+  background-image: url();
+}
+.item-cards .item-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .item-cards .item-card-details {
+    gap: 1.5rem;
+  }
+}
+.item-cards .item-card-content {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+@media (min-width: 768px) {
+  .item-cards .item-card-content {
+    gap: 1rem;
+  }
+}
+.item-cards .item-card-title {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+@media (min-width: 768px) {
+  .item-cards .item-card-title {
+    font-size: 28px;
+  }
+}
+.item-cards .item-card-description {
+  color: #7C7F80;
+}
+.item-cards .item-card-buttons {
+  display: flex;
+  gap: 0.5rem 1rem;
+  flex-wrap: wrap;
+}
+.item-cards .item-card-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.item-cards .item-card-pill {
+  background-color: #CCEFFE;
+  color: #5A7D8C;
+  padding: 4px 8px;
+  font-weight: 500;
+  font-size: 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+.item-cards .item-card-pill:hover {
+  background-color: #00AEF8;
+  color: #fff;
+}
+
 /***** Category pages *****/
 .category-container {
   display: flex;
-  justify-content: flex-end;
-}
-.category-content {
-  flex: 1;
-  max-width: 100%;
-}
-@media (min-width: 1024px) {
-  .category-content {
-    flex: 0 0 80%;
-  }
 }
 
 .section-tree {
@@ -1512,19 +2235,9 @@ ul {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-@media (min-width: 768px) {
-  .section-tree {
-    flex-direction: row;
-  }
-}
 .section-tree .section {
   flex: initial;
   max-width: 100%;
-}
-@media (min-width: 768px) {
-  .section-tree .section {
-    flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */
-  }
 }
 .section-tree-title {
   margin-bottom: 0;
@@ -1532,7 +2245,7 @@ ul {
   font-weight: 600;
 }
 .section-tree-title a {
-  color: $text_color;
+  color: #000;
 }
 .section-tree .see-all-articles {
   display: block;
@@ -1546,7 +2259,7 @@ ul {
   overflow: hidden;
 }
 .article-list-item a {
-  color: $text_color;
+  color: #000;
 }
 
 .icon-star {
@@ -1557,16 +2270,6 @@ ul {
 /***** Section pages *****/
 .section-container {
   display: flex;
-  justify-content: flex-end;
-}
-.section-content {
-  flex: 1;
-  max-width: 100%;
-}
-@media (min-width: 1024px) {
-  .section-content {
-    flex: 0 0 80%;
-  }
 }
 .section-list {
   margin: 40px 0;
@@ -1582,7 +2285,7 @@ ul {
 }
 .section-list-item a {
   align-items: center;
-  color: $text_color;
+  color: #000;
   display: flex;
   justify-content: space-between;
 }
@@ -1597,31 +2300,42 @@ ul {
   display: none;
 }
 
-/***** Article *****/
-.article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-  */
-  flex: 1 0 auto;
-}
-@media (min-width: 1024px) {
-  .article {
-    flex: 1 0 66%;
-    max-width: 66%;
-    min-width: 640px;
-    padding: 0 30px;
-  }
-}
-.article-container {
+/***** Layout *****/
+.layout {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
 }
-@media (min-width: 1024px) {
-  .article-container {
+@media (min-width: 768px) {
+  .layout {
     flex-direction: row;
   }
+}
+.layout .column {
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .layout .column.sidebar {
+    flex: 0 0 300px;
+  }
+}
+.layout .column .section {
+  margin-bottom: 1rem;
+}
+@media (min-width: 768px) {
+  .layout .column .section {
+    margin-bottom: 2rem;
+  }
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+/***** Article *****/
+.article {
+  flex: 1 0 auto;
 }
 .article-header {
   align-items: flex-start;
@@ -1629,14 +2343,15 @@ ul {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 40px;
-  margin-top: 20px;
 }
 @media (min-width: 768px) {
   .article-header {
     flex-direction: row;
     margin-top: 0;
   }
+}
+.article-header h1 {
+  margin: 0;
 }
 .article-avatar {
   margin-right: 10px;
@@ -1651,7 +2366,8 @@ ul {
 }
 @media (min-width: 768px) {
   .article-title {
-    flex-basis: 100%; /* Take entire row */
+    flex-basis: 100%;
+    /* Take entire row */
   }
 }
 .article-title .icon-lock {
@@ -1660,7 +2376,8 @@ ul {
   vertical-align: baseline;
 }
 .article [role=button] {
-  flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
+  flex-shrink: 0;
+  /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
   width: 100%;
 }
 @media (min-width: 768px) {
@@ -1779,16 +2496,35 @@ ul {
 }
 .article-body blockquote {
   border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   font-style: italic;
   padding: 0 15px;
 }
 .article-body > p:last-child {
   margin-bottom: 0;
 }
+.article-body a.gh-edit {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 1;
+  color: #000;
+  text-decoration: underline;
+}
+.article-body a.gh-edit:before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z'%3E%3C/path%3E%3C/svg%3E");
+  background-size: 100%;
+  width: 14px;
+  height: 14px;
+  display: inline-block;
+  margin-top: -2px;
+}
 .article-content {
   line-height: 1.6;
-  margin: 40px 0;
+  margin-bottom: 40px;
   word-wrap: break-word;
 }
 .article-footer {
@@ -1798,7 +2534,7 @@ ul {
   padding-bottom: 20px;
 }
 .article-comment-count {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 .article-comment-count:hover {
   text-decoration: none;
@@ -1855,7 +2591,7 @@ ul {
   text-align: center;
 }
 .article-votes-question {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: normal;
   margin-bottom: 0;
 }
@@ -1887,7 +2623,7 @@ ul {
   }
 }
 .article-return-to-top a {
-  color: $text_color;
+  color: #000;
   display: block;
   padding: 20px 0;
 }
@@ -1907,7 +2643,7 @@ ul {
 }
 
 .sidenav-title {
-  font-size: 15px;
+  font-size: 16px;
   position: relative;
   font-weight: 600;
 }
@@ -1935,7 +2671,7 @@ ul {
   margin-bottom: 0;
 }
 .attachments .attachment-item .attachment-icon {
-  color: $text_color;
+  color: #000;
   left: 0;
   position: absolute;
   top: 5px;
@@ -1950,7 +2686,7 @@ ul {
 }
 
 .upload-dropzone span {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 
 /***** Social share links *****/
@@ -1969,7 +2705,7 @@ ul {
 }
 
 .share a {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 .share a:hover {
   text-decoration: none;
@@ -2003,9 +2739,9 @@ ul {
   margin-top: 0;
 }
 .comment-callout {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   display: inline-block;
-  font-size: 13px;
+  font-size: 14px;
   margin-bottom: 0;
 }
 .comment-callout a {
@@ -2023,8 +2759,8 @@ ul {
   float: right;
 }
 .comment-sorter .dropdown-toggle {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
 }
 [dir=rtl] .comment-sorter {
   float: left;
@@ -2143,7 +2879,7 @@ ul {
   word-break: break-word;
   word-wrap: break-word;
   display: flow-root;
-  font-family: $text_font;
+  font-family: "Figtree", serif;
   line-height: 1.6;
   overflow-x: auto;
 }
@@ -2248,7 +2984,7 @@ ul {
 }
 .comment-body blockquote {
   border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   font-style: italic;
   padding: 0 15px;
 }
@@ -2268,7 +3004,7 @@ ul {
 }
 
 .vote-sum {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   display: block;
   margin: 3px 0;
 }
@@ -2292,7 +3028,7 @@ ul {
   appearance: none;
   background-color: transparent;
   border: none;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   cursor: pointer;
   min-height: 35px;
   min-width: 35px;
@@ -2380,7 +3116,7 @@ ul {
 /* Community topic page */
 .topic-header {
   border-bottom: 1px solid #ddd;
-  font-size: 13px;
+  font-size: 14px;
 }
 @media (min-width: 768px) {
   .topic-header {
@@ -2452,7 +3188,7 @@ ul {
   content: attr(data-follower-count);
   color: $brand_color;
   display: inline-block;
-  font-family: $heading_font;
+  font-family: "Figtree", serif;
   margin-left: 15px;
   padding-left: 10px;
   position: absolute;
@@ -2507,8 +3243,8 @@ ul {
   margin: 5px 0;
 }
 .striped-list-count {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
   justify-content: flex-start;
   text-transform: capitalize;
 }
@@ -2537,7 +3273,7 @@ ul {
 }
 @media (min-width: 768px) {
   .striped-list-number {
-    color: $text_color;
+    color: #000;
     display: block;
   }
 }
@@ -2584,7 +3320,7 @@ ul {
 }
 .status-label-not-planned, .status-label-closed {
   background-color: #e9ebed;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 .status-label-pending, .status-label-pending-moderation {
   background-color: #1f73b7;
@@ -2684,7 +3420,7 @@ ul {
   margin-bottom: 30px;
 }
 .post-content {
-  font-family: $text_font;
+  font-family: "Figtree", serif;
   line-height: 1.6;
   word-break: break-word;
 }
@@ -2815,7 +3551,7 @@ ul {
 }
 .post-body blockquote {
   border-left: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   font-style: italic;
   padding: 0 15px;
 }
@@ -2826,7 +3562,7 @@ ul {
   padding-bottom: 20px;
 }
 .post-comment-count {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 .post-comment-count:hover {
   text-decoration: none;
@@ -2996,7 +3732,7 @@ ul {
   }
 }
 .collapsible-nav-list li {
-  color: $text_color;
+  color: #000;
   line-height: 45px;
   order: 1;
 }
@@ -3015,7 +3751,7 @@ ul {
   }
 }
 .collapsible-nav-list li a {
-  color: $text_color;
+  color: #000;
   display: block;
 }
 @media (min-width: 768px) {
@@ -3056,7 +3792,7 @@ ul {
 }
 .collapsible-nav-list li[aria-selected=true] a,
 .collapsible-nav-list li.current a {
-  color: $text_color;
+  color: #000;
 }
 
 .collapsible-nav[aria-expanded=true] li:not([aria-selected=true]),
@@ -3223,7 +3959,7 @@ ul {
   }
 }
 .requests-table-toolbar .request-filter-label {
-  font-size: 13px;
+  font-size: 14px;
   margin-top: 30px;
 }
 @media (min-width: 768px) {
@@ -3333,8 +4069,8 @@ ul {
 
 /* Contributions table */
 .contributions-table td:last-child {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
 }
 @media (min-width: 768px) {
   .contributions-table td:last-child {
@@ -3345,7 +4081,7 @@ ul {
 }
 
 .no-activities {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
 }
 
 /***** Request *****/
@@ -3401,7 +4137,7 @@ ul {
 .request-main .comment-show-container {
   border-radius: 2px;
   border: 1px solid #ddd;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   text-align: inherit;
   padding: 8px 25px;
   width: 100%;
@@ -3454,14 +4190,14 @@ ul {
   .request-sidebar {
     background-color: darken($background_color, 3%);
     border: 0;
-    font-size: 13px;
+    font-size: 14px;
     flex: 0 0 auto;
     padding: 0 20px;
     width: 30%;
   }
 }
 .request-sidebar h2 {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   position: relative;
 }
@@ -3482,7 +4218,7 @@ ul {
 .request-details dt, .request-details dd {
   display: inline-block;
   vertical-align: top;
-  font-size: 13px;
+  font-size: 14px;
   margin: 20px 0 0 0;
 }
 .request-details dd {
@@ -3495,7 +4231,7 @@ ul {
 }
 .request-details dt {
   line-break: strict;
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   width: 40%;
 }
 .request-details .request-collaborators {
@@ -3581,12 +4317,12 @@ ul {
 }
 
 .meta-data {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
 }
 .meta-data:not(:last-child)::after {
   content: "·";
-  margin: 0 5px;
+  margin: 0 5px 0 8px;
 }
 
 /* User Profiles */
@@ -3697,7 +4433,7 @@ ul {
 }
 
 .profile-stats {
-  font-size: 13px;
+  font-size: 14px;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -3709,7 +4445,7 @@ ul {
 }
 
 .profile-stats .stat-label {
-  color: lighten($text_color, 20%);
+  color: #7C7F80;
   flex: 0 0 100px;
   margin-right: 10px;
 }
@@ -3859,8 +4595,8 @@ ul {
 .profile-section-description {
   flex-basis: 100%;
   padding: 10px 0;
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -3875,7 +4611,7 @@ ul {
 .profile-section-sorter {
   flex-basis: 100%;
   border-top: solid 1px #eee;
-  font-size: 13px;
+  font-size: 14px;
 }
 .profile-section-sorter .dropdown-toggle {
   padding: 10px 0;
@@ -3935,15 +4671,15 @@ ul {
   margin-right: 0;
 }
 .profile-badges-item-title, .profile-badges-item-metadata-title {
-  font-size: 15px;
+  font-size: 16px;
   margin-bottom: 10px;
 }
 .profile-badges-item-title {
   font-weight: 600;
 }
 .profile-badges-item-description, .profile-badges-item-metadata-description {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
   margin: 0;
 }
 .profile-badges-item-metadata {
@@ -4221,7 +4957,7 @@ ul {
   border-radius: 4px;
   padding: 10px 36px;
   margin-bottom: 4px;
-  color: $text_color;
+  color: #000;
 }
 .search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
   background-color: #e9ebed;
@@ -4344,8 +5080,8 @@ ul {
   margin-bottom: 0;
 }
 .search-result-votes, .search-result-meta-count {
-  color: lighten($text_color, 20%);
-  font-size: 13px;
+  color: #7C7F80;
+  font-size: 14px;
 }
 .search-result-votes-icon, .search-result-meta-count-icon {
   color: $brand_color;
@@ -4546,7 +5282,7 @@ html[dir=rtl] .notification-left-aligned {
 
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 }
 
 .dropdown-toggle {
@@ -4556,7 +5292,6 @@ html[dir=rtl] .notification-left-aligned {
   display: inline-block;
   padding: 0;
   text-align: initial;
-  vertical-align: middle;
 }
 .dropdown-toggle:hover {
   text-decoration: none;
@@ -4578,7 +5313,7 @@ html[dir=rtl] .notification-left-aligned {
   font-style: normal;
   font-weight: normal;
   left: 0;
-  margin-top: 1px;
+  top: calc(100% + 8px);
   min-width: 170px;
   padding: 10px 0;
   position: absolute;

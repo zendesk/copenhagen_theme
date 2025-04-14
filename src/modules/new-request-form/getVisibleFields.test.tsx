@@ -13,7 +13,6 @@ const dropdownField: Field = {
     { name: "One", value: "one" },
     { name: "Two", value: "two" },
   ],
-  value: null,
 };
 
 const secondDropdownField: Field = {
@@ -28,7 +27,6 @@ const secondDropdownField: Field = {
     { name: "Three", value: "three" },
     { name: "Four", value: "four" },
   ],
-  value: null,
 };
 
 const textField: Field = {
@@ -40,7 +38,6 @@ const textField: Field = {
   description: "",
   type: "text",
   options: [],
-  value: null,
 };
 
 const integerField: Field = {
@@ -52,43 +49,6 @@ const integerField: Field = {
   description: "",
   type: "number",
   options: [],
-  value: null,
-};
-
-const defaultValueCheckboxField: Field = {
-  id: 102,
-  name: "request[custom_fields][102]",
-  required: false,
-  error: null,
-  label: "Checkbox Field",
-  description: "",
-  type: "checkbox",
-  options: [],
-  value: null,
-};
-
-const unselectedCheckboxField: Field = {
-  id: 103,
-  name: "request[custom_fields][103]",
-  required: false,
-  error: null,
-  label: "Checkbox Field",
-  description: "",
-  type: "checkbox",
-  options: [],
-  value: false,
-};
-
-const selectedCheckboxField: Field = {
-  id: 104,
-  name: "request[custom_fields][104]",
-  required: false,
-  error: null,
-  label: "Checkbox Field",
-  description: "",
-  type: "checkbox",
-  options: [],
-  value: true,
 };
 
 describe("getVisibleFields", () => {
@@ -305,53 +265,5 @@ describe("getVisibleFields", () => {
       { ...textField, value: "text" },
       { ...integerField, required: true },
     ]);
-  });
-
-  it("should show fields for unselected checkbox condition when the field has a default null value", () => {
-    const fields = [defaultValueCheckboxField, textField];
-    const endUserConditions: EndUserCondition[] = [
-      {
-        parent_field_id: defaultValueCheckboxField.id,
-        parent_field_type: "checkbox",
-        value: false,
-        child_fields: [{ id: textField.id, is_required: false }],
-      },
-    ];
-
-    const result = getVisibleFields(fields, endUserConditions);
-
-    expect(result).toEqual([defaultValueCheckboxField, textField]);
-  });
-
-  it("should show fields for unselected checkbox condition when the field has a false value", () => {
-    const fields = [unselectedCheckboxField, textField];
-    const endUserConditions: EndUserCondition[] = [
-      {
-        parent_field_id: unselectedCheckboxField.id,
-        parent_field_type: "checkbox",
-        value: false,
-        child_fields: [{ id: textField.id, is_required: false }],
-      },
-    ];
-
-    const result = getVisibleFields(fields, endUserConditions);
-
-    expect(result).toEqual([unselectedCheckboxField, textField]);
-  });
-
-  it("should show fields for selected checkbox condition when the field has a true value", () => {
-    const fields = [selectedCheckboxField, textField];
-    const endUserConditions: EndUserCondition[] = [
-      {
-        parent_field_id: selectedCheckboxField.id,
-        parent_field_type: "checkbox",
-        value: true,
-        child_fields: [{ id: textField.id, is_required: false }],
-      },
-    ];
-
-    const result = getVisibleFields(fields, endUserConditions);
-
-    expect(result).toEqual([selectedCheckboxField, textField]);
   });
 });

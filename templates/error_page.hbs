@@ -1,21 +1,29 @@
 <div class="container-divider"></div>
 <div id="main-content" class="error-page">
-  <h1>{{t 'oops'}}</h1>
+  <div class="error">
+    <h1>Uh oh!</h1>
+    {{#is error 'unauthorized'}}
+      <h2>{{link 'sign_in'}}</h2>
+    {{/is}}
 
-  {{#is error 'unauthorized'}}
-    <h2>{{link 'sign_in'}}</h2>
-  {{/is}}
+    {{#is error 'forbidden'}}
+      <h2>{{t 'not_authorized'}}</h2>
+    {{/is}}
 
-  {{#is error 'forbidden'}}
-    <h2>{{t 'not_authorized'}}</h2>
-  {{/is}}
+    {{#is error 'not_found'}}
+      <h2>{{t 'nonexistent_page'}}</h2>
+      <p>{{t 'mistyped_address_or_moved_page'}}</p>
+    {{/is}}
 
-  {{#is error 'not_found'}}
-    <h2>{{t 'nonexistent_page'}}</h2>
-    <p>{{t 'mistyped_address_or_moved_page'}}</p>
-  {{/is}}
+    <div class="search-wrapper">
+      {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search for articles'}}
+      <button class="btn btn-dark btn-large" onclick="document.querySelector('form[role=search]').submit()">Search</button>
+    </div>
+    <p>or</p>
+    {{#link 'help_center'}}
+      {{t 'back_to_homepage'}}
+    {{/link}}
 
-  {{#link 'help_center'}}
-    {{t 'back_to_homepage'}}
-  {{/link}}
+
+  </div>
 </div>

@@ -1,6 +1,6 @@
 .dropdown {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 }
 
 .dropdown-toggle {
@@ -10,17 +10,16 @@
   display: inline-block;
   padding: 0;
   text-align: initial;
-  vertical-align: middle;
 
   &:hover {
     text-decoration: none;
   }
 
-  > * {
+  >* {
     display: inline-block;
   }
 
-  &[aria-expanded="true"] + .dropdown-menu {
+  &[aria-expanded="true"]+.dropdown-menu {
     display: block;
   }
 }
@@ -35,7 +34,7 @@
   font-style: normal;
   font-weight: normal;
   left: 0;
-  margin-top: 1px;
+  top: calc(100% + 8px);
   min-width: 170px;
   padding: 10px 0;
   position: absolute;
@@ -68,6 +67,7 @@
     [dir="rtl"] & {
       padding: 7px 20px 7px 40px;
     }
+
     &:hover,
     &:focus {
       background: rgba(31, 115, 183, 0.08);
@@ -97,7 +97,8 @@
 
     }
 
-    &[hidden], &[aria-hidden="true"] {
+    &[hidden],
+    &[aria-hidden="true"] {
       display: none !important;
     }
   }

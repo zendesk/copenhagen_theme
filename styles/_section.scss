@@ -2,19 +2,11 @@
 .section {
   &-container {
     display: flex;
-    justify-content: flex-end;
-  }
-
-  &-content {
-    @include desktop {
-      flex: 0 0 80%;
-    }
-    flex: 1;
-    max-width: 100%
   }
 
   &-subscribe button {
     @extend .button;
+
     &[data-selected="true"] {
       @extend .button-primary;
     }

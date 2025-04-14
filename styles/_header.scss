@@ -1,13 +1,21 @@
 /***** Header *****/
-$header-height: 71px;
-
 .header {
-  @include max-width-container;
+  background-color: #174B62;
   position: relative;
   align-items: center;
   display: flex;
   height: $header-height;
-  justify-content: space-between;
+  justify-content: center;
+
+  a {
+    color: #fff;
+  }
+
+  &-inner {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
 }
 
 .logo img {
@@ -24,12 +32,17 @@ $header-height: 71px;
   display: inline-block;
 }
 
-.logo a:hover, .logo a:focus, .logo a:active {
+.logo a:hover,
+.logo a:focus,
+.logo a:active {
   text-decoration: none;
 }
 
 .user-nav {
-  @include tablet { position: relative; }
+  @include tablet {
+    position: relative;
+  }
+
   display: inline-block;
   position: absolute;
   white-space: nowrap;
@@ -43,12 +56,12 @@ $header-height: 71px;
     top: $header-height;
     z-index: 1;
 
-    > a {
+    >a {
       display: block;
       margin: 20px;
     }
 
-    > .user-nav-list {
+    >.user-nav-list {
       li {
         display: block;
       }
@@ -62,51 +75,70 @@ $header-height: 71px;
 }
 
 .user-nav-list {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   list-style: none;
 
-  > li {
+  >li {
     display: inline-block;
   }
 }
 
 .nav-wrapper-desktop {
-  @include mobile { display: none; }
-  @include tablet { display: none; }
-  @include desktop { display: inline-block; }
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  flex-grow: 1;
+
+  @include mobile {
+    display: none;
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  @include desktop {
+    display: inline-flex;
+    justify-content: flex-end;
+  }
 
   a {
+    display: none;
+
     @include tablet {
-      display: inline-block;
+      display: inline-flex;
     }
 
-    border: 0;
-    color: $link_color;
-    display: none;
-    font-size: 14px;
-    padding: 0 20px 0 0;
-    width: auto;
-
-    [dir="rtl"] & { padding: 0 0 0 20px;}
-
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-      color: $link_color;
-      text-decoration: underline;
+    [dir="rtl"] & {
+      padding: 0 0 0 20px;
     }
   }
 }
 
+
+.header .nav-wrapper-mobile {
+  @include desktop {
+    display: none;
+  }
+}
+
 .nav-wrapper-mobile {
-  @include desktop { display: none; }
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+
 
   .menu-button-mobile {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
     background: none;
     border: 0;
     width: auto;
-    min-width: 71px;
+    color: #fff;
+    padding: 0;
     cursor: pointer;
 
     .icon-menu {
@@ -119,7 +151,8 @@ $header-height: 71px;
 
     &[aria-expanded="true"] {
       .icon-menu {
-        background: #f3f3f3;
+        color: #174B62;
+        background: #F8FDFF;
       }
     }
   }
@@ -149,7 +182,7 @@ $header-height: 71px;
       margin: 4px 0;
     }
 
-    li:empty:not(.nav-divider){
+    li:empty:not(.nav-divider) {
       display: none;
     }
 
@@ -166,14 +199,15 @@ $header-height: 71px;
       background: none;
       border: none;
       padding: 8px 24px;
-
+      color: #fff;
       width: 100%;
       height: 100%;
-      color: $text_color;
       cursor: pointer;
       text-align: start;
 
-      &:active, &:focus, &:hover {
+      &:active,
+      &:focus,
+      &:hover {
         background-color: #f3f3f3;
         text-decoration: underline;
       }
@@ -186,7 +220,9 @@ $header-height: 71px;
       height: 100%;
       color: $text_color;
 
-      &:active, &:focus, &:hover {
+      &:active,
+      &:focus,
+      &:hover {
         background-color: #f3f3f3;
       }
     }
@@ -202,8 +238,8 @@ $header-height: 71px;
     }
 
     .menu-profile-avatar {
-      height: 20px;
-      width: 20px;
+      height: 40px;
+      width: 40px;
       border-radius: 50%;
       display: inline-block;
       margin-right: 8px;
@@ -248,14 +284,14 @@ $header-height: 71px;
     z-index: 999;
 
 
-  [dir="rtl"] & {
-    left: initial;
-    right: auto;
-  }
+    [dir="rtl"] & {
+      left: initial;
+      right: auto;
+    }
   }
 }
 
 // Disable the skip-navigation link when modals are open
-#zd-modal-container ~ .skip-navigation {
+#zd-modal-container~.skip-navigation {
   display: none;
 }

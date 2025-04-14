@@ -1,17 +1,26 @@
 // Variables
 
+// SVGs
+$github-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='98' height='96'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z' fill='%2324292f'/%3E%3C/svg%3E");
+$pencil-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1em' height='1em' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83l3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z'%3E%3C/path%3E%3C/svg%3E");
+$open-external-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 -960 960 960' width='24px' fill='currentColor'%3E%3Cpath d='M212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h222.3q12.77 0 21.39 8.62 8.61 8.61 8.61 21.38T456-768.62q-8.62 8.62-21.39 8.62h-222.3q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-222.3q0-12.77 8.62-21.39 8.61-8.61 21.38-8.61t21.38 8.61q8.62 8.62 8.62 21.39v222.3Q820-182 799-161q-21 21-51.31 21H212.31ZM760-717.85 409.85-367.69q-8.31 8.3-20.89 8.5-12.57.19-21.27-8.5-8.69-8.7-8.69-21.08 0-12.38 8.69-21.08L717.85-760H590q-12.77 0-21.38-8.62Q560-777.23 560-790t8.62-21.38Q577.23-820 590-820h193.84q15.47 0 25.81 10.35Q820-799.31 820-783.84V-590q0 12.77-8.62 21.38Q802.77-560 790-560t-21.38-8.62Q760-577.23 760-590v-127.85Z'/%3E%3C/svg%3E");
+
 // Colors
 $hover-button-color: zass-darken($brand_color, 20%);
-$secondary-text-color: zass-lighten($text_color, 20%);
+$text-color: #000;
+$secondary-text-color: #7C7F80;
 
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
+$text-font: "Figtree", serif;
+$heading-font: "Figtree", serif;
+
 $font-size-bigger: 16px;
-$font-size-base: 15px;
+$font-size-base: 16px;
 $font-size-navigation: 14px;
-$font-size-small: 13px;
-$font-size-smaller: 11px;
+$font-size-small: 14px;
+$font-size-smaller: 14px;
 
 $high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
 $low-contrast-border-color: #ddd; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
@@ -32,3 +41,39 @@ $font-weight-semibold: 600;
 
 // Transitions
 $input-transition: border .12s ease-in-out;
+
+// Header
+$header-height: 74px;
+
+// Home Assistant Definitions
+$generic-hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp";
+
+$home-assistant-products: (
+  "Green": (color: #14CC9E,
+    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%2314CC9E'/%3E%3Cpath d='M30.0231 28.9584C30.0231 29.5441 29.5417 30.0233 28.9533 30.0233H15.0459C14.4575 30.0233 13.9761 29.5441 13.9761 28.9584V23.1012C13.9761 22.5155 14.3184 21.6955 14.7303 21.2855L21.24 14.8054C21.6573 14.3901 22.3366 14.3901 22.7538 14.8054L29.2636 21.2855C29.6808 21.7008 30.0231 22.5181 30.0231 23.1038V28.9584Z' fill='%23fff'/%3E%3C/svg%3E",
+    product-image: "https://www.home-assistant.io/images/frontpage/green-frontpage.jpg",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-green.webp",
+    description: "The affordable Home Assistant Green is the easiest way you can start using Home Assistant. It's plug-and-play and comes with Home Assistant already installed."
+  ),
+  "Yellow": (color: #FBB03B,
+    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23FBB03B'/%3E%3Cpath d='M30.0241 28.9591C30.0241 29.5448 29.5427 30.024 28.9543 30.024H15.0469C14.4585 30.024 13.9771 29.5448 13.9771 28.9591V23.102C13.9771 22.5162 14.3194 21.6962 14.7313 21.2862L21.241 14.8061C21.6582 14.3908 22.3376 14.3908 22.7548 14.8061L29.2645 21.2862C29.6818 21.7016 30.0241 22.5188 30.0241 23.1045V28.9591Z' fill='white'/%3E%3C/svg%3E",
+    product-image: "https://www.home-assistant.io/images/frontpage/yellow-frontpage.jpg",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-yellow.webp",
+    description: "The foundation of your smart home needs to be local and private. Home Assistant Yellow is that foundation."
+  ),
+  "Voice Preview Edition": (color: #DB582E,
+    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23DB582E'/%3E%3Cpath d='M22 29.5059C17.8634 29.5059 14.4941 26.1366 14.4941 22C14.4941 17.8634 17.8634 14.4941 22 14.4941C26.1366 14.4941 29.5059 17.8634 29.5059 22C29.5059 26.1366 26.1366 29.5059 22 29.5059Z' fill='white'/%3E%3C/svg%3E",
+    product-image: "https://www.home-assistant.io/images/frontpage/voice-pe-frontpage.jpg",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-voice-pe.webp",
+    description: "Built for Home Assistant - Easy Setup - one USB-C cable and setup wizard, no assembly required."
+  ),
+  "Connect ZBT-1": (color: #00AEF8,
+    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%2300AEF8'/%3E%3Cpath d='M27.9527 13.6545C27.9527 12.6887 27.154 11.9058 26.1688 11.9058H18.3488C17.3637 11.9058 16.5649 12.6887 16.5649 13.6545L16.5649 28.4705H18.6355V33.6469H25.8826V28.4705H27.9532L27.9527 13.6545Z' fill='white'/%3E%3C/svg%3E",
+    product-image: "https://www.home-assistant.io/images/frontpage/feature-zbt1.jpg",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-zbt-1.webp",
+    description: "The easiest way to add Zigbee support to your Home Assistant instance."
+  ),
+  "Cloud": (color: #174B62,
+    icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23174B62'/%3E%3Cpath d='M31.6404 21.9952C31.6404 21.9201 31.6466 21.8461 31.6466 21.7701C31.6454 20.1893 31.1182 18.6516 30.1445 17.3895C29.1708 16.1276 27.8037 15.2098 26.2494 14.775C24.6953 14.3402 23.0386 14.4118 21.5297 14.9793C20.0209 15.5467 18.7418 16.579 17.886 17.9201C17.0104 17.6077 16.0757 17.4867 15.1473 17.5653C14.2188 17.644 13.3193 17.9208 12.5119 18.3758C11.7046 18.831 11.0088 19.4535 10.4738 20.1997C9.93869 20.9459 9.57737 21.7977 9.415 22.6953C9.25263 23.5927 9.29318 24.5141 9.53389 25.3946C9.77459 26.2751 10.2096 27.0934 10.8083 27.7918C11.4071 28.4902 12.1549 29.052 12.9994 29.4375C13.8438 29.8231 14.7644 30.023 15.6961 30.0233H25.9792L26.1412 30.0234H26.4L27.6954 30.0233H31.0521C32.099 30.0293 33.1089 29.6456 33.8771 28.9502C34.6453 28.2548 35.1145 27.2998 35.1892 26.2785C35.2641 25.2574 34.939 24.2465 34.2798 23.4511C33.6209 22.6557 32.6774 22.1352 31.6404 21.9952Z' fill='white'/%3E%3C/svg%3E",
+    hero-image: $generic-hero-image )
+);

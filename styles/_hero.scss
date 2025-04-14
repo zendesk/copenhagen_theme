@@ -1,16 +1,124 @@
 /***** Hero component *****/
+// if .visibility-hidden has a ol li a. Where the a has an href ending in Home-Assistant-Yellow, set the adjacent section hero (adjacent to the visibility-hidden)
+@each $product, $details in $home-assistant-products {
+  $slug: str-replace($product, " ", "-");
+
+  main>.visibility-hidden:has(ol li a[href$="#{$slug}"])+section.hero,
+  section.section.hero[data-category="Home Assistant #{$product}"] {
+    background-image: url(map-get($details, hero-image));
+
+    margin-bottom: 1rem;
+
+    @include tablet {
+      margin-bottom: 1rem;
+    }
+
+    @include desktop {
+      margin-bottom: 1rem;
+    }
+
+    &:after {
+      content: '';
+      background-color: rgba(23, 75, 98, .58);
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-inner {
+      color: #fff;
+    }
+
+    [data-title]:before {
+      content: "Home Assistant #{$product}";
+    }
+
+    [data-description]:before {
+      content: map-get($details, description);
+    }
+  }
+}
+
+
+section.section.hero {
+  margin-bottom: 1rem;
+
+  @include tablet {
+    margin-bottom: 2rem;
+  }
+
+  @include desktop {
+    margin-bottom: 2.5rem;
+  }
+
+  @each $product, $details in $home-assistant-products {
+    &[data-category="Home Assistant #{$product}"] {
+
+      background-image: url(map-get($details, hero-image));
+
+      &:after {
+        content: '';
+        background-color: rgba(23, 75, 98, .58);
+        position: absolute;
+        inset: 0;
+      }
+
+      .hero-inner {
+        color: #fff;
+      }
+    }
+  }
+}
+
+
 .hero {
-  background-image: url($homepage_background_image);
+  background-color: #c5f4fb;
+  background-image: url($generic-hero-image);
   background-position: center;
   background-size: cover;
-  height: 300px;
-  padding: 0 20px;
+  padding: 36px 0px;
   text-align: center;
   width: 100%;
+  position: relative;
+
+  @include tablet {
+    padding: 88px 0px;
+  }
 
   &-inner {
-    @include vertical-align;
-    max-width: 610px;
+    position: relative;
+    z-index: 1;
+  }
+
+  &-inner h2 {
+    font-size: 48px;
+    line-height: 1;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+  }
+
+  &-inner h2 {
+    @include tablet {
+      font-size: 74px;
+    }
+  }
+
+  &-inner p {
+    max-width: 800px;
     margin: 0 auto;
+    text-wrap: balance;
+    font-weight: 300;
+    font-size: 18px;
+
+    @include tablet {
+      font-size: 24px;
+    }
+  }
+
+  .search-wrapper {
+    margin-top: 32px;
+
+    @include tablet {
+      margin-top: 80px;
+    }
   }
 }

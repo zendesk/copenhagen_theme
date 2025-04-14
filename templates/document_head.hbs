@@ -1,12 +1,24 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta
+  name="google-site-verification"
+  content="zfpEAeEJdY1RTn0qRWi3F-VEi-Zc0jVuzDDWJ8LdkjQ"
+/>
+<meta name="robots" content="noindex" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+  rel="stylesheet"
+/>
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
-<script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>
+<script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t
+    "search_clear"
+  }}";</script>
 <script type="text/javascript">
-  // Load ES module polyfill only for browsers that don't support ES modules
-  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
-    document.write('<script async src="{{asset 'es-module-shims.js'}}"><\/script>');
-  }
+  // Load ES module polyfill only for browsers that don't support ES modules if
+  (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
+  document.write('<script async src="{{asset
+    "es-module-shims.js"
+  }}"><\/script>'); }
 </script>
 <script type="importmap">
 {
@@ -20,10 +32,10 @@
 }
 </script>
 <script type="module">
-  import { renderFlashNotifications } from "flash-notifications";
-
-  const settings = {{json settings}};
-  const closeLabel = {{json (t 'close')}}
+  import { renderFlashNotifications } from "flash-notifications"; const settings
+  =
+  {{json settings}}; const closeLabel =
+  {{json (t "close")}}
 
   renderFlashNotifications(settings, closeLabel);
 </script>

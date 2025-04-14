@@ -4,7 +4,7 @@
   max-width: 650px;
 }
 
-.form-field ~ .form-field {
+.form-field~.form-field {
   margin-top: 25px;
 }
 
@@ -20,14 +20,18 @@
   padding: 10px;
   width: 100%;
 
-  &:focus { border: 1px solid $brand_color; }
+  &:focus {
+    border: 1px solid $brand_color;
+  }
 }
 
 .form-field input[type="text"] {
   border: 1px solid $high-contrast-border-color;
   border-radius: 4px;
 
-  &:focus { border: 1px solid $brand_color; }
+  &:focus {
+    border: 1px solid $brand_color;
+  }
 }
 
 .form-field input[type="checkbox"] {
@@ -65,7 +69,7 @@
   vertical-align: middle;
 }
 
-.form-field input[type="checkbox"] + label {
+.form-field input[type="checkbox"]+label {
   margin: 0 0 0 10px;
 }
 
@@ -103,7 +107,5 @@
 
   li {
     padding: 10px 0;
-
-    a:visited { color: $visited_link_color; }
   }
 }

@@ -1,6 +1,7 @@
 @import "normalize";
 @import "variables";
 @import "mixins";
+@import "functions";
 @import "base";
 @import "buttons";
 @import "split_button";
@@ -17,8 +18,10 @@
 @import "blocks";
 @import "home-page";
 @import "recent-activity";
+@import "item-cards";
 @import "category";
 @import "section";
+@import "layout";
 @import "article";
 @import "attachments";
 @import "share";

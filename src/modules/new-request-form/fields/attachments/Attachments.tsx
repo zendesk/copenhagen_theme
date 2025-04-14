@@ -19,6 +19,7 @@ import type { AttachmentField } from "../../data-types";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
+import mime from "mime";
 
 interface AttachmentProps {
   field: AttachmentField;
@@ -99,12 +100,17 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
         xhr.open("POST", url);
 
         // If the browser returns a type for the file, use it as the Content-Type header,
-        // otherwise we fall back to application/octet-stream and let the backend
-        // determine the file type.
+        // otherwise try to determine the mime type from the file extension using the mime
+        // library. If we can't determine the mime type, we'll fall back to a generic
+        // application/octet-stream.
         if (file.type) {
           xhr.setRequestHeader("Content-Type", file.type);
         } else {
-          xhr.setRequestHeader("Content-Type", "application/octet-stream");
+          const mimeType = mime.getType(file.name);
+          xhr.setRequestHeader(
+            "Content-Type",
+            mimeType || "application/octet-stream"
+          );
         }
         xhr.setRequestHeader("X-CSRF-Token", csrfToken);
         xhr.responseType = "json";

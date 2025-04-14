@@ -8,27 +8,46 @@ $padding-right: 20px;
   position: relative;
 }
 
+.search-wrapper {
+  display: flex;
+  max-width: 734px;
+  margin: 0 auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  @include tablet {
+    flex-wrap: nowrap;
+  }
+}
+
+.search-wrapper form {
+  flex-grow: 1;
+  margin-bottom: 1rem;
+}
+
+.search-wrapper input {
+  height: 54px;
+}
+
+.search-wrapper form+button {
+  cursor: pointer;
+  order: 1;
+  margin-left: 1rem;
+}
+
 .search {
-  border-color: $high-contrast-border-color;
-  border-radius: 30px;
-  border-style: solid;
-  border-width: 1px;
   display: flex;
   position: relative;
   transition: $input-transition;
 
-  &:focus-within {
-    border-color: $brand_color;
-  }
-
-  input[type="search"], 
+  input[type="search"],
   .clear-button {
     background-color: #fff;
     border-radius: 30px;
     border: none;
   }
 
-  &-full input[type="search"], 
+  &-full input[type="search"],
   &-full .clear-button {
     border-color: #fff;
   }
@@ -39,8 +58,12 @@ $padding-right: 20px;
     box-sizing: border-box;
     color: $field-text-color;
     flex: 1 1 auto;
-    height: 40px;
     width: 100%;
+    font-size: 18px;
+
+    &::placeholder {
+      color: #B1E2F8;
+    }
 
     &:focus {
       color: $field-text-focus-color;
@@ -53,11 +76,6 @@ $padding-right: 20px;
       -webkit-appearance: none;
     }
 
-    &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
-    &:-webkit-autofill:focus {
-      -webkit-box-shadow: 0 0 0 1000px #fff inset;
-    }
 
   }
 
@@ -70,16 +88,6 @@ $padding-right: 20px;
     flex: none;
     justify-content: center;
     padding: 0 15px;
-
-    &:hover {
-      background-color: $brand_color;
-      color: #fff;
-    }
-
-    &:focus {
-      @include focus-ring;
-    }
-
   }
 
   &-has-value .clear-button {
@@ -113,7 +121,7 @@ $padding-right: 20px;
     &:focus {
       border-left-color: $brand_color;
     }
-    
+
   }
 }
 
@@ -159,5 +167,49 @@ $padding-right: 20px;
   [dir="rtl"] & {
     left: auto;
     right: 15px;
+  }
+}
+
+.search-wrapper.small {
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: unset;
+
+  form {
+    margin-bottom: 0;
+  }
+
+  .search input[type="search"] {
+    height: 42px;
+    padding: 1rem;
+    font-size: 1rem;
+    border: 1px solid #d6d6d6;
+
+    &::placeholder {
+      color: #7C7F80;
+    }
+  }
+
+  form+button {
+    height: 42px;
+    font-size: 1rem;
+    margin-left: .5rem;
+    padding: 0 1rem;
+  }
+}
+
+.sub-nav {
+  flex-grow: 1;
+}
+
+.error-page {
+  .search-wrapper {
+    .search input[type="search"] {
+      border: 1px solid #d6d6d6;
+
+      &::placeholder {
+        color: #7C7F80;
+      }
+    }
   }
 }

@@ -18,14 +18,10 @@
 }
 
 @mixin max-width-container {
-  @media (min-width: #{$max-width-container}) {
-    padding: 0;
-    width: 90%;
-  }
-
   max-width: $max-width-container;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 1rem;
+  width: 100%;
 }
 
 @mixin vertical-align {
@@ -96,7 +92,7 @@
     max-width: 100%;
   }
 
-  p > img {
+  p>img {
     @include image-alignment;
   }
 
@@ -105,7 +101,7 @@
 
     margin: 0 auto;
 
-    > img {
+    >img {
       display: block;
       width: 100%;
     }
@@ -136,12 +132,12 @@
   }
 
   // Sub level list
-  ul > ul,
-  ol > ol,
-  ol > ul,
-  ul > ol,
-  li > ul,
-  li > ol {
+  ul>ul,
+  ol>ol,
+  ol>ul,
+  ul>ol,
+  li>ul,
+  li>ol {
     margin: 0;
   }
 
@@ -149,7 +145,7 @@
     list-style-type: disc;
   }
 
-  :not(pre) > code {
+  :not(pre)>code {
     background: $primary-shade;
     border: 1px solid $low-contrast-border-color;
     border-radius: 3px;

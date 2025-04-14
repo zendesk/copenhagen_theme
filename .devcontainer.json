@@ -1,0 +1,42 @@
+{
+  "name": "NabuCasa/support",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:bullseye",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bierner.lit-html",
+        "runem.lit-plugin",
+        "davidanson.vscode-markdownlint",
+        "editorconfig.editorconfig",
+        "GitHub.vscode-pull-request-github",
+        "mrmlnc.vscode-scss",
+        "streetsidesoftware.code-spell-checker",
+        "taichi.vscode-textlint",
+        "yzhang.markdown-all-in-one"
+      ],
+      "settings": {
+        "files.eol": "\n",
+        "editor.tabSize": 2,
+        "editor.formatOnPaste": false,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "[typescript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "files.trimTrailingWhitespace": true
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "postCreateCommand": {
+    "node": ". ${NVM_DIR}/nvm.sh && nvm install && nvm alias default $(cat .nvmrc) && npm install"
+  },
+  "remoteUser": "node"
+}

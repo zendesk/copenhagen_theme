@@ -16,7 +16,10 @@
 /***** Promoted articles *****/
 
 .promoted-articles {
-  @include desktop { flex-direction: row; }
+  @include desktop {
+    flex-direction: row;
+  }
+
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -26,9 +29,12 @@
       align-self: flex-end;
       flex: 0 0 auto;
       padding-right: 30px;
-      width: 33%; /* Three columns on desktop */
+      width: 33%;
+      /* Three columns on desktop */
 
-      [dir="rtl"] & { padding: 0 0 0 30px; }
+      [dir="rtl"] & {
+        padding: 0 0 0 30px;
+      }
     }
 
     flex: 1 0 auto;

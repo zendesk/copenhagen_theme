@@ -1,69 +1,100 @@
-<h1 class="visibility-hidden">{{ help_center.name }}</h1>
 
 <section id="main-content" class="section hero">
   <div class="hero-inner">
-    <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-      <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-      <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-    </svg>
-    {{search submit=false instant=settings.instant_search class='search search-full'}}
+    <div class="container">
+      <div class="hero-heading">
+        <h1 class="visibility-hidden">{{ help_center.name }}</h1>
+        <h2>Nabu Casa Support</h2>
+        <p>Get the support you need for your Nabu Casa products, including detailed documentation and links to contact support.</p>
+      </div>
+      <div class="search-wrapper">
+        {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search for articles'}}
+        <button class="btn btn-dark btn-large" onclick="document.querySelector('form[role=search]').submit()">Search</button>
+      </div>
+    </div>
   </div>
 </section>
-
 <div class="container">
-  <section class="section knowledge-base">
-    <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
-    <section class="categories blocks">
-      <ul class="blocks-list">
-        {{#each categories}}
-          {{#if ../has_multiple_categories}}
-            <li class="blocks-item">
-              <a href='{{url}}' class="blocks-item-link">
-                <span class="blocks-item-title">{{name}}</span>
-                <span class="blocks-item-description">{{excerpt description}}</span>
-              </a>
-            </li>
-          {{else}}
-            {{#each sections}}
-              <li class="blocks-item">
-                <a href='{{url}}' class="blocks-item-link">
-                  <span class="blocks-item-title">
-                    {{name}}
-                  </span>
-                  <span class="blocks-item-description">{{excerpt description}}</span>
+  <h2>Choose a category</h2>
+  <div class="layout">
+    <div class="column">
+      <section class="section knowledge-base">
+        <section class="categories blocks">
+          <div class="item-cards">
+            {{#each categories}}
+              {{#if ../has_multiple_categories}}
+                <a href='{{url}}' class="item-card" data-name="{{ name }}">
+                  <div class="item-card-details">
+                    <div class="item-card-content">
+                      <span class="item-card-title">{{name}}</span>
+                      <span class="item-card-description">{{description}}</span>
+                    </div>
+                  </div>
                 </a>
-              </li>
+              {{else}}
+                <a href='{{url}}' class="item-card" data-name="{{ name }}">
+                  <div class="item-card-details">
+                    <div class="item-card-content">
+                      <span class="item-card-title">{{name}}</span>
+                      <span class="item-card-description">{{description}}</span>
+                    </div>
+                  </div>
+                </a>
+              {{/if}}
             {{/each}}
-          {{/if}}
-        {{/each}}
-      </ul>
-      {{pagination}}
-    </section>
-
-    {{#if promoted_articles}}
-      <section class="articles">
-        <h2>{{t 'promoted_articles'}}</h2>
-        <ul class="article-list promoted-articles">
-          {{#each promoted_articles}}
-            <li class="promoted-articles-item">
-                <a href="{{url}}">
-                  {{title}}
-
-                  {{#if internal}}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                      <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                      <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                    </svg>
-                  {{/if}}
-                </a>
-            </li>
-          {{/each}}
-        </ul>
+          </div>
+          {{pagination}}
+        </section>
+        {{#if promoted_articles}}
+          <section class="articles">
+            <h2>{{t 'promoted_articles'}}</h2>
+            <ul class="article-list promoted-articles">
+              {{#each promoted_articles}}
+                <li class="promoted-articles-item">
+                    <a href="{{url}}">
+                      {{title}}
+                      {{#if internal}}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
+                          <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
+                          <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
+                        </svg>
+                      {{/if}}
+                    </a>
+                </li>
+              {{/each}}
+            </ul>
+          </section>
+        {{/if}}
       </section>
-    {{/if}}
-  </section>
+    </div>
+    <div class="column sidebar">
+      <div class="item-cards">
+        <div class="item-card primary">
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Still need help?</span>
+              <span class="item-card-description">Feel free to open a ticket and talk with our Customer Service team</span>
+              {{#link 'new_request' class='item-card-button btn btn-primary'}}Submit a ticket{{/link}}
+            </div>
+          </div>
+        </div>
+        <div class="item-card">
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Our community</span>
+              <span class="item-card-description">The community is happy to be of help, just visit the forums or join our Discord server</span>
+              <div class="item-card-buttons">
+                <a href="https://community.home-assistant.io" class="item-card-button btn btn-primary external-link" target="_blank" rel="noopener">Community forum</a>
+                <a href="https://www.home-assistant.io/join-chat/" class="item-card-button btn btn-primary external-link" target="_blank" rel="noopener">Discord server</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  {{#if false}}
   {{#if help_center.community_enabled}}
     <section class="section home-section community">
       <h2>{{t 'community'}}</h2>
@@ -80,4 +111,5 @@
       {{recent_activity}}
     {{/if}}
   </section>
+  {{/if}}
 </div>

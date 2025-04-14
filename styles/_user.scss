@@ -1,27 +1,28 @@
 /***** User info in header *****/
 .user-info {
-  display: inline-block;
+  display: inline-flex;
 
   .dropdown-toggle::after {
-    @include tablet { display: inline-block;}
+    @include tablet {
+      display: inline-block;
+    }
+
     display: none;
   }
 
-  > button {
+  >button {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: $font-size-base;
     border: 0;
-    color: $link_color;
+    color: #fff;
     min-width: 0;
     padding: 0;
     white-space: nowrap;
 
-    &:hover,
-    &:focus {
-      color: $link_color;
-      background-color: transparent;
-    }
-
     &::after {
-      color: $link_color;
+      color: #fff;
       padding-right: 15px;
 
       [dir="rtl"] & {
@@ -34,17 +35,22 @@
 
 // Selector is this strong to override the styles set with ids
 #user #user-name {
-  @include tablet { display: inline-block; }
+  @include tablet {
+    display: inline-block;
+  }
+
   display: none;
   font-size: 14px;
 
-  &:hover { text-decoration: underline; }
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 /***** User avatar *****/
 .user-avatar {
-  height: 25px;
-  width: 25px;
+  height: 44px;
+  width: 44px;
   border-radius: 50%;
   display: inline-block;
   vertical-align: middle;

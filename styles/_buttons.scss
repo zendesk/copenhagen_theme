@@ -1,6 +1,8 @@
 /***** Buttons *****/
 .button {
-  @include tablet { width: auto; }
+  @include tablet {
+    width: auto;
+  }
 
   background-color: transparent;
   border: 1px solid $button-color;
@@ -13,7 +15,9 @@
   margin: 0;
   padding: 0 20px;
   text-align: center;
-  transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+  transition: background-color .12s ease-in-out,
+  border-color .12s ease-in-out,
+  color .15s ease-in-out;
   user-select: none;
   white-space: nowrap;
   width: 100%;
@@ -33,6 +37,7 @@
   }
 
   &.button-primary {
+
     &:hover,
     &:focus,
     &:active {
@@ -46,7 +51,8 @@
   }
 }
 
-.button-large, .hbs-form input[type="submit"] {
+.button-large,
+.hbs-form input[type="submit"] {
   @include tablet {
     width: auto;
   }
@@ -93,5 +99,100 @@
     color: $text_color;
     border: 1px solid $high-contrast-border-color;
     background-color: $primary-shade;
+  }
+}
+
+
+.btn {
+  align-items: center;
+  border-radius: 2rem;
+  display: inline-flex;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  padding: 12px 18px;
+
+  &-large {
+    height: 54px;
+    padding: 16px 36px;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &.btn-primary {
+    background-color: #00AEF8;
+    color: #FFFFFF;
+  }
+
+  &.btn-primary:hover,
+  &.btn-primary:focus,
+  &.btn-primary:active {
+    background-color: #008BC6;
+  }
+
+  &.btn-dark {
+    background-color: #174B62;
+    color: #FFFFFF;
+  }
+
+  &.btn-dark:hover,
+  &.btn-dark:focus,
+  &.btn-dark:active {
+    background-color: #0D303F;
+  }
+
+  &.btn-light {
+    background-color: #CCEFFE;
+    color: #174B62;
+  }
+
+  &.btn-light:hover,
+  &.btn-light:focus,
+  &.btn-light:active {
+    background-color: #AED9EC;
+    color: #00344A;
+  }
+
+  &.btn-white {
+    background-color: #fff;
+    color: #174B62;
+  }
+
+  &.btn-white:hover,
+  &.btn-white:focus,
+  &.btn-white:active {
+    background-color: #f3f3f3;
+    color: #00344A;
+  }
+
+
+  &.btn-text {
+    border-radius: 0;
+    padding: 0;
+    background-color: transparent;
+
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.btn-text-light,
+    &.btn-text-light:hover,
+    &.btn-text-light:focus,
+    &.btn-text-light:active {
+      color: #ffffff;
+    }
+
+    &.btn-text-dark,
+    &.btn-text-dark:hover,
+    &.btn-text-dark:focus,
+    &.btn-text-dark:active {
+      color: #174B62;
+    }
   }
 }

@@ -5,10 +5,10 @@
   flex-wrap: wrap;
   gap: 15px 30px;
   justify-content: space-between;
-  margin-bottom: 55px;
 
   @include tablet {
     flex-direction: row;
+    margin-bottom: 1rem;
   }
 
   // Inner pages breadcrumbs
@@ -27,8 +27,23 @@
   }
 
   input[type="search"] {
-    &::after { 
-      font-size: $font-size-base; 
+    &::after {
+      font-size: $font-size-base;
     }
   }
+}
+
+.sub-hero {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 0rem 1rem;
+
+  .sub-nav {
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  margin-bottom: 1rem;
 }

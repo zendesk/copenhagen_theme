@@ -2,28 +2,18 @@
 .category {
   &-container {
     display: flex;
-    justify-content: flex-end;
+
   }
 
-  &-content {
-    @include desktop {
-      flex: 0 0 80%;
-    }
-
-    flex: 1;
-    max-width: 100%;
-  }
 }
 
 .section-tree {
-  @include tablet { flex-direction: row; }
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
 
   .section {
-    @include tablet { flex: 0 0 45%; /* Two columns for tablet and desktop. Leaving 5% separation between columns */ }
     flex: initial;
     max-width: 100%;
   }
@@ -33,7 +23,9 @@
     font-size: 18px;
     font-weight: $font-weight-semibold;
 
-    a { color: $text_color; }
+    a {
+      color: $text_color;
+    }
   }
 
   .see-all-articles {
@@ -49,7 +41,9 @@
     text-overflow: ellipsis;
     overflow: hidden;
 
-    a { color: $text_color; }
+    a {
+      color: $text_color;
+    }
   }
 }
 

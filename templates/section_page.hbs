@@ -1,72 +1,140 @@
-<div class="container-divider"></div>
-<div class="container">
-  <div class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search scoped=settings.scoped_kb_search submit=false}}
+<div class="visibility-hidden">{{ breadcrumbs }}</div>
+<section id="main-content" class="section hero">
+  <div class="hero-inner">
+    <div class="container">
+      <div class="hero-heading">
+        <h1 class="visibility-hidden" data-title=""></h1>
+        <h2 data-title=""></h2>
+        <p data-description=""></p>
+      </div>
     </div>
   </div>
-
-  <div class="section-container">
-    <section id="main-content" class="section-content">
+</section>
+<div class="container">
+  <div class="layout">
+    <div class="sub-hero">
+      <div class="sub-nav">
+        {{breadcrumbs}}
+      </div>
+      <div class="search-wrapper small">
+        {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search for articles'}}
+        <button class="btn btn-dark btn-large" onclick="document.querySelector('form[role=search]').submit()">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="layout">
+    <div class="column">
       <header class="page-header">
-        <h1>{{section.name}}</h1>
-        {{#if settings.show_follow_section}}
-          <div class="section-subscribe">{{subscribe}}</div>
-        {{/if}}
+        <h2>{{section.name}}</h2>
         {{#if section.description}}
           <p class="page-header-description">{{section.description}}</p>
         {{/if}}
       </header>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="column">
+      <div class="section-container">
+        <section id="main-content" class="section-content">
+          {{#if section.sections}}
+            <ul class="section-list">
+              {{#each section.sections}}
+              <li class="section-list-item">
+                  <a href="{{url}}">
+                    <span>{{name}}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+                      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 14.5l6.1-6.1c.2-.2.2-.5 0-.7L5 1.5"/>
+                    </svg>
+                  </a>
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
 
-      {{#if section.sections}}
-        <ul class="section-list">
-          {{#each section.sections}}
-          <li class="section-list-item">
-              <a href="{{url}}">
-                <span>{{name}}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
-                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 14.5l6.1-6.1c.2-.2.2-.5 0-.7L5 1.5"/>
-                </svg>
+          {{pagination "section.sections"}}
+
+          {{#if section.articles}}
+            <div class="item-cards">
+            {{#each section.articles}}
+              <a href='{{url}}' class="item-card small">
+                <div class="item-card-details">
+                  <div class="item-card-content">
+                    <span class="item-card-title">{{title}}</span>
+                    <span class="item-card-description">{{snippet}}</span>
+                  </div>
+                </div>
               </a>
-            </li>
-          {{/each}}
-        </ul>
-      {{/if}}
+            {{/each}}
+          </div>
+          {{else}}
+            <i class="section-empty">
+              <a href="{{section.url}}">{{t 'empty'}}</a>
+            </i>
+          {{/if}}
 
-      {{pagination "section.sections"}}
+          {{pagination "section.articles"}}
 
-      {{#if section.articles}}
-        <ul class="article-list">
-          {{#each section.articles}}
-            <li class="article-list-item {{#if promoted}} article-promoted{{/if}}">
-              {{#if promoted}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 12 12" class="icon-star" title="{{t 'promoted'}}">
-                  <path fill="currentColor" d="M2.88 11.73c-.19 0-.39-.06-.55-.18a.938.938 0 01-.37-1.01l.8-3L.35 5.57a.938.938 0 01-.3-1.03c.12-.37.45-.63.85-.65L4 3.73 5.12.83c.14-.37.49-.61.88-.61s.74.24.88.6L8 3.73l3.11.17a.946.946 0 01.55 1.68L9.24 7.53l.8 3a.95.95 0 01-1.43 1.04L6 9.88l-2.61 1.69c-.16.1-.34.16-.51.16z"/>
-                </svg>
-              {{/if}}
-              <a href="{{url}}" class="article-list-link">{{title}}</a>
-              {{#if internal}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-lock" title="{{t 'internal'}}">
-                  <rect width="12" height="9" x="2" y="7" fill="currentColor" rx="1" ry="1"/>
-                  <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5"/>
-                </svg>
-              {{/if}}
-            </li>
-          {{/each}}
-        </ul>
-      {{else}}
-        <i class="section-empty">
-          <a href="{{section.url}}">{{t 'empty'}}</a>
-        </i>
-      {{/if}}
-
-      {{pagination "section.articles"}}
-
-    </section>
+        </section>
+      </div>
+    </div>
+    <div class="column sidebar">
+      <div class="item-cards">
+        <a href="https://www.home-assistant.io/green" class="item-card product product-green" data-product-card-hide>
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Home Assistant Green</span>
+              <span class="item-card-description">Click here to learn more about the device and where to buy</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.home-assistant.io/yellow" class="item-card product product-yellow" data-product-card-hide>
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Home Assistant Yellow</span>
+              <span class="item-card-description">Click here to learn more about the device and where to buy</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.home-assistant.io/voice-pe" class="item-card product product-voice-preview-edition" data-product-card-hide>
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Home Assistant Voice Preview Edition</span>
+              <span class="item-card-description">Click here to learn more about the device and where to buy</span>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.home-assistant.io/connectzbt1" class="item-card product product-connect-zbt-1" data-product-card-hide>
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Home Assistant Connect ZBT-1</span>
+              <span class="item-card-description">Click here to learn more about the device and where to buy</span>
+            </div>
+          </div>
+        </a>
+        <div class="item-card primary">
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Still need help?</span>
+              <span class="item-card-description">Feel free to open a ticket and talk with our Customer Service team</span>
+              {{#link 'new_request' class='item-card-button btn btn-primary'}}Submit a ticket{{/link}}
+            </div>
+          </div>
+        </div>
+        <div class="item-card">
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Our community</span>
+              <span class="item-card-description">The community is happy to be of help, just visit the forums or join our Discord server</span>
+              <div class="item-card-buttons">
+                <a href="https://community.home-assistant.io" class="item-card-button btn btn-primary external-link" target="_blank" rel="noopener">Community forum</a>
+                <a href="https://www.home-assistant.io/join-chat/" class="item-card-button btn btn-primary external-link" target="_blank" rel="noopener">Discord server</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

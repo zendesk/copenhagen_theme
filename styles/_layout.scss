@@ -1,0 +1,35 @@
+/***** Layout *****/
+.layout {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  .column {
+    flex: 1;
+
+    &.sidebar {
+      @include tablet {
+        flex: 0 0 300px;
+      }
+    }
+
+    .section {
+      margin-bottom: 1rem;
+
+      @include tablet {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+}
+
+.mt {
+  &-0 {
+    margin-top: 0;
+  }
+}

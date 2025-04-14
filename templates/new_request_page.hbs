@@ -1,24 +1,68 @@
-<div class="container-divider"></div>
-<div class="container">
-  <div class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
+<section id="main-content" class="section hero">
+  <div class="hero-inner">
+    <div class="container">
+      <div class="hero-heading">
+        <h1 class="visibility-hidden">{{ help_center.name }}</h1>
+        <h2>Nabu Casa Support</h2>
+        <p>Get the support you need for your Nabu Casa products, including detailed documentation and links to contact support.</p>
+      </div>
+      <div class="search-wrapper">
+        {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search for articles'}}
+        <button class="btn btn-dark btn-large" onclick="document.querySelector('form[role=search]').submit()">Search</button>
+      </div>
     </div>
   </div>
-
-  <h1>
-    {{t 'submit_a_request'}}
-  </h1>
-
-  <div id="main-content" class="form">
-    <div id="new-request-form"></div>
+</section>
+<div class="container">
+  <div class="layout">
+    <div class="sub-hero">
+      <div class="sub-nav">
+        {{breadcrumbs}}
+      </div>
+      <div class="search-wrapper small">
+        {{search submit=false instant=settings.instant_search class='search search-full' placeholder='Search for articles'}}
+        <button class="btn btn-dark btn-large" onclick="document.querySelector('form[role=search]').submit()">Search</button>
+      </div>
+    </div>
   </div>
 </div>
+<div class="container">
+  <div class="layout">
+    <div class="column">
+      <header class="page-header">
+        <h2>{{t 'submit_a_request'}}</h2>
+      </header>
+    </div>
+  </div>
+  <div class="layout">
+    <div class="column">
+      <div class="section-container">
+        <section id="main-content">
+          <div id="main-content" class="form">
+            <div id="new-request-form"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="column sidebar">
+      <div class="item-cards">
+        <div class="item-card">
+          <div class="item-card-details">
+            <div class="item-card-content">
+              <span class="item-card-title">Our community</span>
+              <span class="item-card-description">The community is happy to be of help, just visit the forums or join our Discord server</span>
+              <div class="item-card-buttons">
+                <a href="https://community.home-assistant.io" class="item-card-button btn btn-primary external-link" target="_blank" rel="noopener">Community forum</a>
+                <a href="https://www.home-assistant.io/join-chat/" class="item-card-button btn btn-primary external-link" target="_blank" rel="noopener">Discord server</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script type="module">
   import { renderNewRequestForm } from "new-request-form";

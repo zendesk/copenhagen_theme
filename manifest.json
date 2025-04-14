@@ -1,7 +1,7 @@
 {
-  "name": "Copenhagen",
-  "author": "Zendesk",
-  "version": "4.3.6",
+  "name": "Nabu Casa Zendesk Theme",
+  "author": "Nabu Casa",
+  "version": "1.0.22",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -271,7 +271,7 @@
           "identifier": "scoped_kb_search",
           "type": "checkbox",
           "description": "scoped_knowledge_base_search_description",
-          "label": "scoped_knowledge_base_search_label_v2",
+          "label": "scoped_knowledge_base_search_label",
           "value": true
         },
         {

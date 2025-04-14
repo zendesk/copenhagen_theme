@@ -1,27 +1,8 @@
 /***** Article *****/
 .article {
-  /*
-  * The article grid is defined this way to optimize readability:
-  * Sidebar | Content | Free space
-  * 17%     | 66%     | 17%
-  */
-  @include desktop {
-    flex: 1 0 66%;
-    max-width: 66%;
-    min-width: 640px;
-    padding: 0 30px;
-  }
-
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
 
-  &-container {
-    @include desktop {
-      flex-direction: row;
-    }
-
-    display: flex;
-    flex-direction: column;
-  }
+  &-container {}
 
   &-header {
     @include tablet {
@@ -29,13 +10,16 @@
       margin-top: 0;
     }
 
+    h1 {
+      margin: 0;
+    }
+
     align-items: flex-start;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
+
   }
 
   &-avatar {
@@ -52,7 +36,8 @@
     max-width: 100%;
 
     @include tablet {
-      flex-basis: 100%; /* Take entire row */
+      flex-basis: 100%;
+      /* Take entire row */
     }
 
     .icon-lock {
@@ -66,7 +51,9 @@
     @include tablet {
       width: auto;
     }
-    flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
+
+    flex-shrink: 0;
+    /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
     width: 100%;
   }
 
@@ -81,14 +68,36 @@
 
   &-body {
     @include content-body;
-    > p:last-child {
+
+    >p:last-child {
       margin-bottom: 0;
+    }
+
+    a.gh-edit {
+      display: flex;
+      gap: .25rem;
+      align-items: center;
+      font-size: 14px;
+      text-decoration: none;
+      line-height: 1;
+      color: $text-color;
+      text-decoration: underline;
+
+      &:before {
+        content: "";
+        background-image: $pencil-icon;
+        background-size: 100%;
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        margin-top: -2px;
+      }
     }
   }
 
   &-content {
     line-height: 1.6;
-    margin: 40px 0;
+    margin-bottom: 40px;
     word-wrap: break-word;
   }
 
@@ -139,7 +148,7 @@
     flex-direction: column;
     padding: 20px 0;
 
-    > * {
+    >* {
       flex: 1 0 50%; //Explicit values needed whith flex-direction: column for IE11
       min-width: 50%;
       overflow-wrap: break-word;
@@ -160,7 +169,8 @@
     padding: 30px 0;
     text-align: center;
 
-    &-question { // Explicit values for rendering h2 like a span for accessibility.
+    &-question {
+      // Explicit values for rendering h2 like a span for accessibility.
       font-size: $font-size-base;
       font-weight: normal;
       margin-bottom: 0;
@@ -204,18 +214,19 @@
 
   &-subscribe button {
     @extend .button;
+
     &[data-selected="true"] {
       @extend .button-primary;
     }
   }
 
-  td > p:first-child,
-  th > p:first-child {
+  td>p:first-child,
+  th>p:first-child {
     margin-top: 0;
   }
 
-  td > p:last-child,
-  th > p:last-child {
+  td>p:last-child,
+  th>p:last-child {
     margin-bottom: 0;
   }
 }

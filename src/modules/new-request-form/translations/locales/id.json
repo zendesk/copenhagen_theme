@@ -27,7 +27,7 @@
   "new-request-form.credit-card-digits-hint": "(4 digit terakhir)",
   "new-request-form.dropdown.empty-option": "Pilih opsi",
   "new-request-form.lookup-field.loading-options": "Memuat item...",
-  "new-request-form.lookup-field.no-matches-found": "Tidak ditemukan kecocokan",
+  "new-request-form.lookup-field.no-matches-found": "Tidak ada kecocokan yang ditemukan",
   "new-request-form.lookup-field.placeholder": "Cari {{label}}",
   "new-request-form.parent-request-link": "Tindak lanjut atas permintaan {{parentId}}",
   "new-request-form.required-fields-info": "Bidang yang ditandai dengan tanda bintang (*) wajib diisi.",

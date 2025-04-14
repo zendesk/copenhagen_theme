@@ -5,7 +5,6 @@
     align-items: baseline;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 16px;
     margin: 0;
   }
 
@@ -13,7 +12,6 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 10px 0;
 
   .section-subscribe {
     @include tablet {
@@ -26,15 +24,15 @@
 
   h1 {
     flex-grow: 1;
-    margin-bottom: 10px;
+    margin-bottom: 0;
   }
 
   &-description {
     @include desktop {
       flex-basis: 100%;
+      margin: 0 0 32px 0;
     }
-    font-style: italic;
-    margin: 0 0 30px 0;
+
     word-break: break-word;
   }
 
