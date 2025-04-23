@@ -46,31 +46,31 @@ $input-transition: border .12s ease-in-out;
 $header-height: 74px;
 
 // Home Assistant Definitions
-$generic-hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp";
+$generic-hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-generic.webp";
 
 $home-assistant-products: (
   "Green": (color: #14CC9E,
     icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%2314CC9E'/%3E%3Cpath d='M30.0231 28.9584C30.0231 29.5441 29.5417 30.0233 28.9533 30.0233H15.0459C14.4575 30.0233 13.9761 29.5441 13.9761 28.9584V23.1012C13.9761 22.5155 14.3184 21.6955 14.7303 21.2855L21.24 14.8054C21.6573 14.3901 22.3366 14.3901 22.7538 14.8054L29.2636 21.2855C29.6808 21.7008 30.0231 22.5181 30.0231 23.1038V28.9584Z' fill='%23fff'/%3E%3C/svg%3E",
     product-image: "https://www.home-assistant.io/images/frontpage/green-frontpage.jpg",
-    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-green.webp",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-green.webp",
     description: "The affordable Home Assistant Green is the easiest way you can start using Home Assistant. It's plug-and-play and comes with Home Assistant already installed."
   ),
   "Yellow": (color: #FBB03B,
     icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23FBB03B'/%3E%3Cpath d='M30.0241 28.9591C30.0241 29.5448 29.5427 30.024 28.9543 30.024H15.0469C14.4585 30.024 13.9771 29.5448 13.9771 28.9591V23.102C13.9771 22.5162 14.3194 21.6962 14.7313 21.2862L21.241 14.8061C21.6582 14.3908 22.3376 14.3908 22.7548 14.8061L29.2645 21.2862C29.6818 21.7016 30.0241 22.5188 30.0241 23.1045V28.9591Z' fill='white'/%3E%3C/svg%3E",
     product-image: "https://www.home-assistant.io/images/frontpage/yellow-frontpage.jpg",
-    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-yellow.webp",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-yellow.webp",
     description: "The foundation of your smart home needs to be local and private. Home Assistant Yellow is that foundation."
   ),
   "Voice Preview Edition": (color: #DB582E,
     icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%23DB582E'/%3E%3Cpath d='M22 29.5059C17.8634 29.5059 14.4941 26.1366 14.4941 22C14.4941 17.8634 17.8634 14.4941 22 14.4941C26.1366 14.4941 29.5059 17.8634 29.5059 22C29.5059 26.1366 26.1366 29.5059 22 29.5059Z' fill='white'/%3E%3C/svg%3E",
     product-image: "https://www.home-assistant.io/images/frontpage/voice-pe-frontpage.jpg",
-    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-voice-pe.webp",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-voice-pe.webp",
     description: "Built for Home Assistant - Easy Setup - one USB-C cable and setup wizard, no assembly required."
   ),
   "Connect ZBT-1": (color: #00AEF8,
     icon: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44' fill='none'%3E%3Cpath d='M40 0H4C1.79086 0 0 1.79086 0 4V40C0 42.2091 1.79086 44 4 44H40C42.2091 44 44 42.2091 44 40V4C44 1.79086 42.2091 0 40 0Z' fill='%2300AEF8'/%3E%3Cpath d='M27.9527 13.6545C27.9527 12.6887 27.154 11.9058 26.1688 11.9058H18.3488C17.3637 11.9058 16.5649 12.6887 16.5649 13.6545L16.5649 28.4705H18.6355V33.6469H25.8826V28.4705H27.9532L27.9527 13.6545Z' fill='white'/%3E%3C/svg%3E",
     product-image: "https://www.home-assistant.io/images/frontpage/feature-zbt1.jpg",
-    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-zbt-1.webp",
+    hero-image: "https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-zbt-1.webp",
     description: "The easiest way to add Zigbee support to your Home Assistant instance."
   ),
   "Cloud": (color: #174B62,

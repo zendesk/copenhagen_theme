@@ -1311,7 +1311,7 @@ nabucasa-zigbee-flasher {
 /***** Hero component *****/
 main > .visibility-hidden:has(ol li a[href$=Green]) + section.hero,
 section.section.hero[data-category="Home Assistant Green"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-green.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-green.webp");
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -1348,7 +1348,7 @@ section.section.hero[data-category="Home Assistant Green"] [data-description]:be
 
 main > .visibility-hidden:has(ol li a[href$=Yellow]) + section.hero,
 section.section.hero[data-category="Home Assistant Yellow"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-yellow.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-yellow.webp");
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -1385,7 +1385,7 @@ section.section.hero[data-category="Home Assistant Yellow"] [data-description]:b
 
 main > .visibility-hidden:has(ol li a[href$=Voice-Preview-Edition]) + section.hero,
 section.section.hero[data-category="Home Assistant Voice Preview Edition"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-voice-pe.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-voice-pe.webp");
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -1422,7 +1422,7 @@ section.section.hero[data-category="Home Assistant Voice Preview Edition"] [data
 
 main > .visibility-hidden:has(ol li a[href$=Connect-ZBT-1]) + section.hero,
 section.section.hero[data-category="Home Assistant Connect ZBT-1"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-zbt-1.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-zbt-1.webp");
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -1459,7 +1459,7 @@ section.section.hero[data-category="Home Assistant Connect ZBT-1"] [data-descrip
 
 main > .visibility-hidden:has(ol li a[href$=Cloud]) + section.hero,
 section.section.hero[data-category="Home Assistant Cloud"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-generic.webp");
   margin-bottom: 1rem;
 }
 @media (min-width: 768px) {
@@ -1503,7 +1503,7 @@ section.section.hero {
   }
 }
 section.section.hero[data-category="Home Assistant Green"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-green.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-green.webp");
 }
 section.section.hero[data-category="Home Assistant Green"]:after {
   content: "";
@@ -1515,7 +1515,7 @@ section.section.hero[data-category="Home Assistant Green"] .hero-inner {
   color: #fff;
 }
 section.section.hero[data-category="Home Assistant Yellow"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-yellow.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-yellow.webp");
 }
 section.section.hero[data-category="Home Assistant Yellow"]:after {
   content: "";
@@ -1527,7 +1527,7 @@ section.section.hero[data-category="Home Assistant Yellow"] .hero-inner {
   color: #fff;
 }
 section.section.hero[data-category="Home Assistant Voice Preview Edition"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-voice-pe.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-voice-pe.webp");
 }
 section.section.hero[data-category="Home Assistant Voice Preview Edition"]:after {
   content: "";
@@ -1539,7 +1539,7 @@ section.section.hero[data-category="Home Assistant Voice Preview Edition"] .hero
   color: #fff;
 }
 section.section.hero[data-category="Home Assistant Connect ZBT-1"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-zbt-1.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-zbt-1.webp");
 }
 section.section.hero[data-category="Home Assistant Connect ZBT-1"]:after {
   content: "";
@@ -1551,7 +1551,7 @@ section.section.hero[data-category="Home Assistant Connect ZBT-1"] .hero-inner {
   color: #fff;
 }
 section.section.hero[data-category="Home Assistant Cloud"] {
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-generic.webp");
 }
 section.section.hero[data-category="Home Assistant Cloud"]:after {
   content: "";
@@ -1565,7 +1565,7 @@ section.section.hero[data-category="Home Assistant Cloud"] .hero-inner {
 
 .hero {
   background-color: #c5f4fb;
-  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/static/img/hero-generic.webp");
+  background-image: url("https://raw.githubusercontent.com/NabuCasa/support/refs/heads/main/static/img/hero-generic.webp");
   background-position: center;
   background-size: cover;
   padding: 36px 0px;
