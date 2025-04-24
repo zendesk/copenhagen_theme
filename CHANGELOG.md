@@ -1,3 +1,10 @@
+## [4.3.7](https://github.com/zendesk/copenhagen_theme/compare/v4.3.6...v4.3.7) (2025-04-24)
+
+
+### Bug Fixes
+
+* add approval request priorty level translations ([36fd4ab](https://github.com/zendesk/copenhagen_theme/commit/36fd4ab6c98e3d4e2c871e6267ee791fe031d1cd))
+
 ## [4.3.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.5...v4.3.6) (2025-03-21)
 
 
