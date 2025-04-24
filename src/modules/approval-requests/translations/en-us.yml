@@ -32,22 +32,22 @@ parts:
       screenshot: "https://drive.google.com/file/d/1rB8uGfpnaDXGATBlsNyRdbntZKvS4BeW/view?usp=sharing"
       value: "Priority"
   - translation:
-      key: "approval-requests.request.ticket-details.priority.low"
+      key: "approval-requests.request.ticket-details.priority_low"
       title: "Low priority level for a ticket associated with an approval request"
       screenshot: "https://drive.google.com/file/d/1-RB1gY755d5Ffr_1rirtajAk1wxnmC_L/view?usp=sharing"
       value: "Low"
   - translation:
-      key: "approval-requests.request.ticket-details.priority.normal"
+      key: "approval-requests.request.ticket-details.priority_normal"
       title: "Normal priority level for a ticket associated with an approval request"
       screenshot: "https://drive.google.com/file/d/1WYuPkB_Ju-CcfjX4E6R3cY8plXMhfzu5/view?usp=sharing"
       value: "Normal" 
   - translation:
-      key: "approval-requests.request.ticket-details.priority.high"
+      key: "approval-requests.request.ticket-details.priority_high"
       title: "High priority level for a ticket associated with an approval request"
       screenshot: "https://drive.google.com/file/d/17M5eebl-XR_Z8mrF5VNwkRSOCH8qbPqQ/view?usp=sharing"
       value: "High"
   - translation:
-      key: "approval-requests.request.ticket-details.priority.urgent"
+      key: "approval-requests.request.ticket-details.priority_urgent"
       title: "Urgent priority level for a ticket associated with an approval request"
       screenshot: "https://drive.google.com/file/d/1PsUJkvvePPAL7GuEXLiV6AeRSleu9lib/view?usp=sharing"
       value: "Urgent"
