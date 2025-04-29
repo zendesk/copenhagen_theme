@@ -13,13 +13,6 @@
           <ul class="user-nav-list">
             <li><a href="https://community.home-assistant.io" target="_blank" rel="noopener" class="btn btn-text btn-text-light external-link">Community</a></li>
             <li>{{#link 'new_request' class='submit-a-request btn btn-white'}}Submit a ticket{{/link}}</li>
-            {{#unless signed_in}}
-              <li>
-                {{#link "sign_in" class="sign-in btn btn-light"}}
-                  {{t 'sign_in'}}
-                {{/link}}
-              </li>
-            {{/unless}}
           </ul>
         </nav>
         {{#if signed_in}}
