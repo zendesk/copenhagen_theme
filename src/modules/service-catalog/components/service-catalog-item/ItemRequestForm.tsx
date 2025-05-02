@@ -126,6 +126,7 @@ export function ItemRequestForm({
               brandId={brandId}
               defaultOrganizationId={defaultOrganizationId}
               handleChange={handleChange}
+              organizationField={null}
             />
           ))}
         </FieldsContainer>
