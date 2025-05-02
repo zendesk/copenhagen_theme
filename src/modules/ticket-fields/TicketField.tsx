@@ -16,7 +16,7 @@ interface TicketFieldProps {
   userRole: string;
   userId: number;
   defaultOrganizationId: string | null;
-  organizationField?: Field | null;
+  organizationField: Field | null;
   brandId: number;
   dueDateField?: Field;
   handleDueDateChange?: (value: string) => void;
