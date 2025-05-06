@@ -95,6 +95,15 @@ const TicketPriorityKeys = {
 function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
   const { t } = useTranslation();
 
+  const displayPriority = TicketPriorityKeys[
+    ticket.priority as keyof typeof TicketPriorityKeys
+  ]
+    ? t(
+        TicketPriorityKeys[ticket.priority as keyof typeof TicketPriorityKeys],
+        ticket.priority
+      )
+    : ticket.priority;
+
   return (
     <TicketContainer>
       <TicketDetailsHeader isBold>
@@ -120,14 +129,7 @@ function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
           <FieldLabel>
             {t("approval-requests.request.ticket-details.priority", "Priority")}
           </FieldLabel>
-          <MD>
-            {t(
-              TicketPriorityKeys[
-                ticket.priority as keyof typeof TicketPriorityKeys
-              ],
-              ticket.priority
-            )}
-          </MD>
+          <MD>{displayPriority}</MD>
         </div>
         {ticket.custom_fields.map((field) => (
           <div key={String(field.id)}>
