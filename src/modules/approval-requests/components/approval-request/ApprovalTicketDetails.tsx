@@ -85,6 +85,13 @@ interface ApprovalTicketDetailsProps {
   ticket: ApprovalRequestTicket;
 }
 
+const TicketPriorityKeys = {
+  Low: "approval-requests.request.ticket-details.priority_low",
+  Normal: "approval-requests.request.ticket-details.priority_normal",
+  High: "approval-requests.request.ticket-details.priority_high",
+  Urgent: "approval-requests.request.ticket-details.priority_urgent",
+};
+
 function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
   const { t } = useTranslation();
 
@@ -113,7 +120,14 @@ function ApprovalTicketDetails({ ticket }: ApprovalTicketDetailsProps) {
           <FieldLabel>
             {t("approval-requests.request.ticket-details.priority", "Priority")}
           </FieldLabel>
-          <MD>{ticket.priority}</MD>
+          <MD>
+            {t(
+              TicketPriorityKeys[
+                ticket.priority as keyof typeof TicketPriorityKeys
+              ],
+              ticket.priority
+            )}
+          </MD>
         </div>
         {ticket.custom_fields.map((field) => (
           <div key={String(field.id)}>
