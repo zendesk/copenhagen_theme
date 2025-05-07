@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme New Request Form"
 packages:
   - "new-request-form"
@@ -185,4 +186,14 @@ parts:
       key: "new-request-form.lookup-field.placeholder"
       title: "Placeholder shown in combobox, {{label}} will be replaced by field label"
       screenshot: "https://drive.google.com/file/d/1nlnj_I-L7bkIs9Hn93Btrl8bh_HJfL6h/view?usp=drive_link"
-      value: "Search {{label}}"    
+      value: "Search {{label}}"
+  - translation:
+      key: "new-request-form.attachments.upload-failed-title"
+      title: "Title of the notification shown when the upload of an attachment failed"
+      screenshot: "https://drive.google.com/file/d/1HaYFIjlr89IWfu-HweJbTRjC23u3bLP-/view?usp=sharing"
+      value: "{{fileName}} upload failed"
+  - translation:
+      key: "new-request-form.attachments.error-separator"
+      title: "Separator between errors for the same file - please localize according to your language's punctuation rules"
+      screenshot: "https://drive.google.com/file/d/1z8VM5w7BLz9E5iJlAzX1mVuvv9Jz0XGL/view?usp=sharing"
+      value: "; "
