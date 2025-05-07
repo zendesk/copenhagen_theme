@@ -1,7 +1,9 @@
 {
+  "service-catalog.clear-search": "Clear search",
   "service-catalog.empty-state.description": "Once services are added to catalogue, you'll find them here.",
   "service-catalog.empty-state.go-to-homepage": "Go to the homepage",
   "service-catalog.empty-state.no-services": "No services in sight",
+  "service-catalog.empty-state.search-description": "Enter your keywords in the search field.",
   "service-catalog.empty-state.support-article-link": "Learn about the service catalogue",
   "service-catalog.item.read-less": "Read less",
   "service-catalog.item.read-more": "Read more",
@@ -12,6 +14,7 @@
   "service-catalog.item.submit-button": "Submit request",
   "service-catalog.pagination.next": "Next",
   "service-catalog.pagination.previous": "Previous",
+  "service-catalog.search-services": "Search for services",
   "service-catalog.service-count.few": "{{count}} services",
   "service-catalog.service-count.many": "{{count}} services",
   "service-catalog.service-count.one": "{{count}} service",

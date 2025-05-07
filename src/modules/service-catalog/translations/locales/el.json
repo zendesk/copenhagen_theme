@@ -1,7 +1,9 @@
 {
+  "service-catalog.clear-search": "Εκκαθάριση αναζήτησης",
   "service-catalog.empty-state.description": "Μόλις προστεθούν υπηρεσίες στον κατάλογο, θα τις βρείτε εδώ.",
   "service-catalog.empty-state.go-to-homepage": "Μετάβαση στην αρχική σελίδα",
   "service-catalog.empty-state.no-services": "Δεν υπάρχουν υπηρεσίες",
+  "service-catalog.empty-state.search-description": "Εισαγάγετε τις λέξεις-κλειδιά σας στο πεδίο αναζήτησης.",
   "service-catalog.empty-state.support-article-link": "Μάθετε για τον κατάλογο υπηρεσιών",
   "service-catalog.item.read-less": "Εμφάνιση λιγότερων",
   "service-catalog.item.read-more": "Εμφάνιση περισσότερων",
@@ -12,6 +14,7 @@
   "service-catalog.item.submit-button": "Υποβολή αιτήματος",
   "service-catalog.pagination.next": "Επόμενη",
   "service-catalog.pagination.previous": "Προηγούμενη",
+  "service-catalog.search-services": "Αναζήτηση υπηρεσιών",
   "service-catalog.service-count.few": "{{count}} υπηρεσίες",
   "service-catalog.service-count.many": "{{count}} υπηρεσίες",
   "service-catalog.service-count.one": "{{count}} υπηρεσία",

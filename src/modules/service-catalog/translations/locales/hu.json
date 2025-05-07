@@ -1,7 +1,9 @@
 {
+  "service-catalog.clear-search": "Keresés törlése",
   "service-catalog.empty-state.description": "Miután hozzáad szolgáltatásokat a katalógushoz, itt láthatja majd őket.",
   "service-catalog.empty-state.go-to-homepage": "Ugrás a kezdőlapra",
   "service-catalog.empty-state.no-services": "Nincsenek szolgáltatások a láthatáron",
+  "service-catalog.empty-state.search-description": "Írja be a kívánt kulcsszavakat a keresőmezőbe.",
   "service-catalog.empty-state.support-article-link": "Tudnivalók a szolgáltatáskatalógusról",
   "service-catalog.item.read-less": "Rövidebb szöveg",
   "service-catalog.item.read-more": "Hosszabb szöveg",
@@ -12,6 +14,7 @@
   "service-catalog.item.submit-button": "Kérelem beküldése",
   "service-catalog.pagination.next": "Következő",
   "service-catalog.pagination.previous": "Előző",
+  "service-catalog.search-services": "Szolgáltatások keresése",
   "service-catalog.service-count.few": "{{count}} szolgáltatás",
   "service-catalog.service-count.many": "{{count}} szolgáltatás",
   "service-catalog.service-count.one": "{{count}} szolgáltatás",

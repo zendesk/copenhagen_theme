@@ -30,7 +30,7 @@
   "new-request-form.lookup-field.no-matches-found": "No se encontraron coincidencias",
   "new-request-form.lookup-field.placeholder": "Buscar {{label}}",
   "new-request-form.parent-request-link": "Seguimiento de la solicitud {{parentId}}",
-  "new-request-form.required-fields-info": "Los campos marcados con un asterisco (*) son obligatorios.",
+  "new-request-form.required-fields-info": "Izar batekin (*) markatutako eremuak derrigorrezkoak dira",
   "new-request-form.submit": "Enviar",
   "new-request-form.suggested-articles": "Artículos recomendados"
 }

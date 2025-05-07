@@ -1,7 +1,9 @@
 {
+  "service-catalog.clear-search": "Effacer la recherche",
   "service-catalog.empty-state.description": "Une fois les services ajoutés au catalogue, vous les trouverez ici.",
   "service-catalog.empty-state.go-to-homepage": "Aller à la page d’accueil",
   "service-catalog.empty-state.no-services": "Aucun service en vue",
+  "service-catalog.empty-state.search-description": "Saisissez vos mots-clés dans le champ de recherche.",
   "service-catalog.empty-state.support-article-link": "En savoir plus sur le catalogue de services",
   "service-catalog.item.read-less": "Voir moins",
   "service-catalog.item.read-more": "Voir plus",
@@ -12,6 +14,7 @@
   "service-catalog.item.submit-button": "Envoyer la demande",
   "service-catalog.pagination.next": "Suiv.",
   "service-catalog.pagination.previous": "Préc.",
+  "service-catalog.search-services": "Rechercher des services",
   "service-catalog.service-count.few": "{{count}} services",
   "service-catalog.service-count.many": "{{count}} services",
   "service-catalog.service-count.one": "{{count}} service",
