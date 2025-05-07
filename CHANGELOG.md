@@ -1,3 +1,12 @@
+# [4.4.0-beta.17](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.16...v4.4.0-beta.17) (2025-05-07)
+
+
+### Bug Fixes
+
+* [SW-3056]Approvals - add approval details priority level translations ([a338716](https://github.com/zendesk/copenhagen_theme/commit/a338716b049efab39bf71eab5945d1c545e6519e))
+* account for no priority level case ([830bbb4](https://github.com/zendesk/copenhagen_theme/commit/830bbb4d29910a9a931b3f1f14abf4dc2c7a84ea))
+* add approval request priorty level translations ([36fd4ab](https://github.com/zendesk/copenhagen_theme/commit/36fd4ab6c98e3d4e2c871e6267ee791fe031d1cd))
+
 # [4.4.0-beta.16](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.15...v4.4.0-beta.16) (2025-04-10)
 
 
