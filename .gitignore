@@ -4,3 +4,4 @@ node_modules/
 .a11yrc.json
 *.DS_Store
 coverage/
+.idea/
