@@ -1,0 +1,45 @@
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .step-header {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 22px;
+      gap: 0 .5rem;
+
+      .step-number {
+        font-weight: 600;
+      }
+    }
+
+    .step-content-wrapper {
+      align-items: flex-start;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+
+      >img {
+        border-radius: .5rem;
+        max-width: 400px;
+        width: 100%;
+      }
+
+      .step-content {
+        flex-basis: 300px;
+        flex-grow: 1;
+
+        ol,
+        ul {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

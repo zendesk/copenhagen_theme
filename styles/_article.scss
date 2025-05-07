@@ -93,6 +93,12 @@
         margin-top: -2px;
       }
     }
+
+    .videoWrapper iframe {
+      aspect-ratio: 16/9;
+      height: auto;
+      width: 100%;
+    }
   }
 
   &-content {

@@ -1,0 +1,40 @@
+.callout {
+  align-items: flex-start;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  line-height: 1.3;
+  margin: 1rem 0;
+  padding: 1rem;
+
+  .callout-content {
+    flex-basis: 300px;
+    flex-grow: 1;
+  }
+
+  .callout-prefix {
+    align-items: center;
+    display: flex;
+    font-weight: 600;
+    gap: 0.5rem;
+
+    svg {
+      height: 18px;
+    }
+  }
+
+  &.note {
+    background: #FFFFFF;
+  }
+
+  &.important {
+    background: #EEEEEE; // or #E0E0E0
+  }
+
+  &.tip {
+    background: #C8E6C9; // or #E8F5E9
+  }
+}

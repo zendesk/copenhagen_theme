@@ -1,0 +1,27 @@
+.step-info {
+  display: inline-flex;
+  gap: 0 .25rem;
+
+  &.note {
+    background: #FFFFFF;
+  }
+
+  &.important {
+    background: #EEEEEE; // or #E0E0E0
+  }
+
+  &.tip {
+    background: #C8E6C9; // or #E8F5E9
+  }
+
+  &-prefix {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-weight: 600;
+
+    svg {
+      height: 18px;
+    }
+  }
+}
