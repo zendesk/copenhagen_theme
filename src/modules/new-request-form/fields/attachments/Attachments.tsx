@@ -61,8 +61,20 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
   const { addToast } = useToast();
   const { t } = useTranslation();
 
+  const errorMessage = (file: File, xhr: XMLHttpRequest) => {
+    if (xhr.response?.error == "RecordInvalid") {
+      return xhr.response?.details?.base?.[0]?.description;
+    } else {
+      return t(
+        "new-request-form.attachments.upload-error-description",
+        "There was an error uploading {{fileName}}. Try again or upload another file.",
+        { fileName: file.name }
+      );
+    }
+  };
+
   const notifyError = useCallback(
-    (fileName: string) => {
+    (errorMessage: string) => {
       addToast(({ close }) => (
         <Notification type="error">
           <Title>
@@ -71,12 +83,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
               "Upload error"
             )}
           </Title>
-          {t(
-            "new-request-form.attachments.upload-error-description",
-            "There was an error uploading {{fileName}}. Try again or upload another file.",
-            { fileName }
-          )}
-
+          {errorMessage}
           <Close
             aria-label={t("new-request-form.close-label", "Close")}
             onClick={close}
@@ -134,13 +141,13 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
             } = xhr.response as UploadFileResponse;
             setUploaded(pendingId, { id: token, file_name, url: content_url });
           } else {
-            notifyError(file.name);
+            notifyError(errorMessage(file, xhr));
             removePendingFile(pendingId);
           }
         });
 
         xhr.addEventListener("error", () => {
-          notifyError(file.name);
+          notifyError(errorMessage(file, xhr));
           removePendingFile(pendingId);
         });
 
