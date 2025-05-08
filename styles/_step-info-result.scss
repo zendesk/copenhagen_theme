@@ -15,10 +15,28 @@
   }
 
   &-prefix {
-    display: flex;
     align-items: center;
-    gap: 0.25rem;
+    display: flex;
     font-weight: 600;
+    gap: 0.25rem;
+    height: 26px;
+
+    svg {
+      height: 18px;
+    }
+  }
+}
+
+.step-result {
+  display: inline-flex;
+  gap: 0 .25rem;
+
+  &-prefix {
+    align-items: center;
+    display: flex;
+    font-weight: 600;
+    gap: 0.25rem;
+    height: 26px;
 
     svg {
       height: 18px;
