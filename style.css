@@ -5539,12 +5539,28 @@ zd-summary-block {
   background: #C8E6C9;
 }
 .step-info-prefix {
-  display: flex;
   align-items: center;
-  gap: 0.25rem;
+  display: flex;
   font-weight: 600;
+  gap: 0.25rem;
+  height: 26px;
 }
 .step-info-prefix svg {
+  height: 18px;
+}
+
+.step-result {
+  display: inline-flex;
+  gap: 0 0.25rem;
+}
+.step-result-prefix {
+  align-items: center;
+  display: flex;
+  font-weight: 600;
+  gap: 0.25rem;
+  height: 26px;
+}
+.step-result-prefix svg {
   height: 18px;
 }
 
