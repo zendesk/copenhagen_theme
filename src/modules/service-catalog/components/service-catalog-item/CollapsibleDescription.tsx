@@ -67,9 +67,12 @@ export const CollapsibleDescription = ({
   return (
     <DescriptionWrapper>
       <ItemTitle tag="h1">{title}</ItemTitle>
-      <CollapsibleText expanded={isExpanded || !showToggleButton}>
-        {description}
-      </CollapsibleText>
+      {description && (
+        <CollapsibleText
+          expanded={isExpanded || !showToggleButton}
+          dangerouslySetInnerHTML={{ __html: description }}
+        ></CollapsibleText>
+      )}
       {showToggleButton && (
         <ToggleButton isLink onClick={toggleDescription}>
           {isExpanded

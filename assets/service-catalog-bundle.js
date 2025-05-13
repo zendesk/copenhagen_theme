@@ -115,7 +115,7 @@ import{s as e,E as n,j as t,a7 as s,a8 as r,a9 as a,aa as o,ab as i,u as l,ac as
   &:hover {
     text-decoration: none;
   }
-`,he=({title:e,description:n})=>{const[s,r]=v.useState(!1),{t:a}=l(),o=n.length>270;return t.jsxs(le,{children:[t.jsx(ce,{tag:"h1",children:e}),t.jsx(ue,{expanded:s||!o,children:n}),o&&t.jsxs(de,{isLink:!0,onClick:()=>{r(!s)},children:[s?a("service-catalog.item.read-less","Read less"):a("service-catalog.item.read-more","Read more"),t.jsx(d.EndIcon,{children:s?t.jsx(E,{}):t.jsx(P,{})})]})]})},je=e.form`
+`,he=({title:e,description:n})=>{const[s,r]=v.useState(!1),{t:a}=l(),o=n.length>270;return t.jsxs(le,{children:[t.jsx(ce,{tag:"h1",children:e}),n&&t.jsx(ue,{expanded:s||!o,dangerouslySetInnerHTML:{__html:n}}),o&&t.jsxs(de,{isLink:!0,onClick:()=>{r(!s)},children:[s?a("service-catalog.item.read-less","Read less"):a("service-catalog.item.read-more","Read more"),t.jsx(d.EndIcon,{children:s?t.jsx(E,{}):t.jsx(P,{})})]})]})},je=e.form`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
