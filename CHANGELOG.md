@@ -1,3 +1,10 @@
+# [4.4.0-beta.18](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.17...v4.4.0-beta.18) (2025-05-13)
+
+
+### Features
+
+* render service item description with html in service item page ([ae24575](https://github.com/zendesk/copenhagen_theme/commit/ae24575af9c2caf817358ca0dea2acf7270a00f9))
+
 # [4.4.0-beta.17](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.16...v4.4.0-beta.17) (2025-05-07)
 
 
