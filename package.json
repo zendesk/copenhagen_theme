@@ -89,7 +89,7 @@
     "lighthouse": "10.0.1",
     "prettier": "2.8.4",
     "puppeteer": "19.4.1",
-    "rollup": "3.17.3",
+    "rollup": "3.29.5",
     "rollup-jest": "^3.1.0",
     "rollup-plugin-sass": "1.12.18",
     "sass": "1.58.3",
