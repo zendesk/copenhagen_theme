@@ -486,6 +486,45 @@ ul {
   font-size: 1em;
 }
 
+.article-thumbnail {
+  position: relative;
+  display: flex;
+  justify-content: stretch;
+  padding: 16px;
+  height: 100%;
+}
+.article-thumbnail .article-icon {
+  width: 23px;
+  margin-right: 16px;
+}
+.article-thumbnail .article-link {
+  color: inherit;
+}
+.article-thumbnail .article-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.article-thumbnail .article-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+.article-thumbnail .article-copy {
+  width: auto;
+}
+.article-thumbnail .article-copy .article-title {
+  font-size: 1.125em;
+  font-weight: bold;
+  display: block;
+}
+.article-thumbnail .article-copy .article-description {
+  font-size: 1em;
+}
+
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
   background-color: #f8f8f8;
@@ -1195,7 +1234,6 @@ ul {
   padding-left: 40px;
   -moz-appearance: none;
        appearance: none;
-  max-width: 700px;
   -webkit-appearance: none;
   box-sizing: border-box;
   margin-right: 12px;
@@ -1492,6 +1530,8 @@ ul {
 
 /***** Homepage *****/
 .section {
+  padding-left: 20px;
+  padding-right: 20px;
   margin-bottom: 40px;
 }
 @media (min-width: 768px) {
@@ -1510,6 +1550,7 @@ ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  background-color: #f8f8f8;
 }
 @media (min-width: 1024px) {
   .promoted-articles {
@@ -1583,6 +1624,7 @@ ul {
   background-color: #FFFFFF;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2) !important;
   padding: 20px;
+  margin-top: -40px;
 }
 @media (min-width: 1024px) {
   .section.site-search {
