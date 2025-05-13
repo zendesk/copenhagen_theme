@@ -242,6 +242,7 @@ body {
   font-size: 1em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-weight: 300;
 }
 @media (min-width: 1024px) {
   body > main {
@@ -288,6 +289,7 @@ h4, .h4 {
 
 h5, .h5 {
   font-size: 1.125em;
+  font-weight: 600;
 }
 
 h6, .h6 {
@@ -368,11 +370,11 @@ ul {
 }
 
 .error-page {
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 5%;
 }
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .error-page {
     padding: 0;
     width: 90%;
@@ -402,11 +404,11 @@ ul {
 }
 
 .container {
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 5%;
 }
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .container {
     padding: 0;
     width: 90%;
@@ -772,7 +774,7 @@ ul {
 
 /***** Header *****/
 .header {
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 5%;
   position: relative;
@@ -781,7 +783,7 @@ ul {
   height: 71px;
   justify-content: space-between;
 }
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .header {
     padding: 0;
     width: 90%;
@@ -1102,13 +1104,13 @@ ul {
   color: #50534d;
 }
 .footer-inner {
-  max-width: 1160px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 5%;
   display: flex;
   justify-content: space-between;
 }
-@media (min-width: 1160px) {
+@media (min-width: 1280px) {
   .footer-inner {
     padding: 0;
     width: 90%;
@@ -1313,7 +1315,7 @@ ul {
   font-weight: 900;
 }
 .hero .hero-faqs {
-  max-width: 400px;
+  max-width: 480px;
 }
 .hero .hero-faqs::before {
   display: block;
@@ -1330,10 +1332,6 @@ ul {
 .hero .hero-faqs .hero-faqs-inner ul li h5, .hero .hero-faqs .hero-faqs-inner ul li p {
   margin-bottom: 0;
   margin-top: 0;
-}
-.hero .hero-faqs .hero-faqs-inner ul li p {
-  max-height: 3em;
-  overflow: hidden;
 }
 
 .page-header {
@@ -1579,6 +1577,17 @@ ul {
 .activity {
   border-top: 1px solid #ddd;
   padding: 30px 0;
+}
+
+.section.site-search {
+  background-color: #FFFFFF;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2) !important;
+  padding: 20px;
+}
+@media (min-width: 1024px) {
+  .section.site-search {
+    padding: 40px;
+  }
 }
 
 /***** Recent activity *****/

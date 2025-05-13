@@ -63,6 +63,7 @@ $field-text-focus-color: darken($secondary-text-color, 3%);
 
 // Grid
 $gutter: 16px;
+$max-width-container: 1280px;
 
 $breakpoints: (
   xs: 0,
