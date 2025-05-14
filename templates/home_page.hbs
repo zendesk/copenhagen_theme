@@ -12,7 +12,7 @@
 
   <div id="main-content">
     <!-- search bar -->
-    <section class="section">
+    <section class="section" style="padding-top: 0; padding-bottom: 0;">
       <div class="container site-search">
         <p class="h2 strong">How can we help you today?</p>
         <h2 class="visibility-hidden">{{ t 'search' }}</h2>
@@ -72,7 +72,7 @@
         <h2>{{t 'promoted_articles'}}</h2>
         <div class="articles-list row row-cols-md-3">
           {{#each promoted_articles}}
-          <!-- add a top border to the cards after the first 3 in desktop view -->
+          
           <div class="single-article">
             <div class="article-thumbnail">
               <div class="article-icon">
@@ -100,6 +100,63 @@
 
 
     {{/if}}
+
+
+    <section class="section bg-subtle">
+      <div class="container knowledge-base promoted-products">
+        <!-- other knowledge bases -->
+        <h2>Help with other Qoria products</h2>
+        <div class="products-list row row-cols-md-3">
+          <!-- Knowledge Base Card 1 -->
+          <div class="single-product">
+            <div class="product-thumbnail">
+              <div class="product-icon">
+                <img src="{{../settings.product_1_icon}}">
+              </div>
+              <div class="product-copy">
+                <a class="product-link" href="{{../settings.product_1_link}}">
+                  <span class="product-title">{{../settings.product_1_name}}</span>
+                  <span class="product-description">{{../settings.product_1_description}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End Knowledge Base Card 1 -->
+          <!-- Knowledge Base Card 2 -->
+          <div class="single-product">
+            <div class="product-thumbnail">
+              <div class="product-icon">
+                <img src="{{../settings.product_2_icon}}">
+              </div>
+              <div class="product-copy">
+                <a class="product-link" href="{{../settings.product_2_link}}">
+                  <span class="product-title">{{../settings.product_2_name}}</span>
+                  <span class="product-description">{{../settings.product_2_description}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End Knowledge Base Card 2 -->
+          <!-- Knowledge Base Card 3 -->
+          <div class="single-product">
+            <div class="product-thumbnail">
+              <div class="product-icon">
+                <img src="{{../settings.product_3_icon}}">
+              </div>
+              <div class="product-copy">
+                <a class="product-link" href="{{../settings.product_3_link}}">
+                  <span class="product-title">{{../settings.product_3_name}}</span>
+                  <span class="product-description">{{../settings.product_3_description}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End Knowledge Base Card 3 -->
+        </div>
+      </div>
+    </section>
+
+    
 
 
 

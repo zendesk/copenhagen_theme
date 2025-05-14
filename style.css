@@ -467,6 +467,7 @@ ul {
 .category-thumbnail .category-icon {
   width: 23px;
   margin-right: 16px;
+  flex-shrink: 0;
 }
 .category-thumbnail .category-link {
   color: inherit;
@@ -506,6 +507,7 @@ ul {
 .article-thumbnail .article-icon {
   width: 23px;
   margin-right: 16px;
+  flex-shrink: 0;
 }
 .article-thumbnail .article-link {
   color: inherit;
@@ -1602,10 +1604,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     border-bottom: 1px solid #ddd;
   }
 }
-.promoted-articles .articles-list.row-cols-md-3 .single-article {
-  border-top: 1px solid #000000;
+.promoted-articles .articles-list.row-cols-md-3 .single-article .article-thumbnail {
+  border-top: 1px solid #87929D;
 }
-.promoted-articles .articles-list.row-cols-md-3 .single-article:first-child, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(2), .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(3) {
+.promoted-articles .articles-list.row-cols-md-3 .single-article:first-child .article-thumbnail, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(2) .article-thumbnail, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(3) .article-thumbnail {
   border-top: 0;
 }
 

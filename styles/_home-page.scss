@@ -61,9 +61,13 @@
 
   .articles-list.row-cols-md-3 {
     .single-article {
-      border-top: 1px solid #000000;
+      .article-thumbnail {
+        border-top: 1px solid $high-contrast-border-color;
+      }
       &:first-child, &:nth-child(2), &:nth-child(3) {
-        border-top: 0;
+        .article-thumbnail {
+          border-top: 0;
+        }
       }
     }
   }

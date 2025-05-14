@@ -9,6 +9,7 @@
     .category-icon {
         width: 23px;
         margin-right: $gutter;
+        flex-shrink: 0;
     }
 
     .category-link {
@@ -56,6 +57,7 @@
     .article-icon {
         width: 23px;
         margin-right: $gutter;
+        flex-shrink: 0;
     }
 
     .article-link {
