@@ -82,12 +82,13 @@
                   <path fill="none" stroke="currentColor" d="M4.5 7.5V4a3.5 3.5 0 017 0v3.5" />
                 </svg>
                 {{/if}}
-                <span class="article-description"></span>
+                <span class="article-description">{{snippet}}</span>
               </a>
             </div>
           </div>
         </div>
         {{/each}}
+      </div>
     </section>
 
 
@@ -135,45 +136,3 @@
       {{/if}}
     </section>
   </div>
-
-{{#if settings.show_faqs}}
-<script>
-  fetch('/api/v2/help_center/{{help_center.locale}}/articles.json?label_names=faq')
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response error');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const faqArticles = document.createDocumentFragment();
-      let articles = data.articles;
-
-      articles.map((article) => {
-        let li = document.createElement('li');
-        let a = document.createElement('a');
-        let title = document.createElement('h5');
-        let description = document.createElement('p');
-
-        li.style = "position: relative;";
-        title.innerHTML = `${article.title}`;
-        a.href = `${article.html_url}`;
-        a.classList.add("stretched-link");
-        // return the first sentence to use as the description
-        description.innerHTML = String(article.body).replace(/<\/?[^>]+>/g, '').replace(/\r?\n/g, '').split(".")[0];
-
-        li.appendChild(title);
-        li.appendChild(description);
-        li.appendChild(a);
-
-        faqArticles.appendChild(li);
-
-        document.getElementById("faqArticles").appendChild(faqArticles);
-      });
-      //console.log(data);
-    })
-    .catch(error => {
-      console.error('Fetch error:', error);
-    });
-</script>
-{{/if}}
