@@ -53,6 +53,62 @@
           "description": "'Contact us' in the footer.",
           "label": "Contact Link",
           "value": "https://qoria.com/contact"
+        },
+        {
+          "identifier": "show_facebook_link",
+          "type": "checkbox",
+          "description": "",
+          "label": "Show Facebook link",
+          "value": true
+        },
+        {
+          "identifier": "facebook_link",
+          "type": "text",
+          "description": "",
+          "label": "Facebook",
+          "value": "https://www.facebook.com/linewize/"
+        },
+        {
+          "identifier": "show_linkedin_link",
+          "type": "checkbox",
+          "description": "",
+          "label": "Show LinkedIn link",
+          "value": true
+        },
+        {
+          "identifier": "linkedin_link",
+          "type": "text",
+          "description": "",
+          "label": "LinkedIn",
+          "value": "https://www.linkedin.com/company/linewize-usa/"
+        },
+        {
+          "identifier": "show_youtube_link",
+          "type": "checkbox",
+          "description": "",
+          "label": "Show YouTube link",
+          "value": true
+        },
+        {
+          "identifier": "youtube_link",
+          "type": "text",
+          "description": "",
+          "label": "YouTube",
+          "value": "https://www.youtube.com/channel/UCz3yOmUS37o_KhE7ryHKOeA"
+        },
+        {
+          "identifier": "show_xitter_link",
+          "type": "checkbox",
+          "description": "",
+          "label": "Show Twitter link",
+          "value": true
+        },
+        {
+          "identifier": "xitter_link",
+          "type": "text",
+          "description": "",
+          "label": "Twitter",
+          "value": "https://x.com/linewize"
         }
       ]
     },
