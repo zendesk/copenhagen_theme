@@ -501,7 +501,6 @@ ul {
   position: relative;
   display: flex;
   justify-content: stretch;
-  padding: 16px;
   height: 100%;
 }
 .article-thumbnail .article-icon {
