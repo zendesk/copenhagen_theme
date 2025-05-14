@@ -1,7 +1,7 @@
 
 $text_font: Quicksand, Arial, Helvetica, sans-serif;
 
-// Font sizes
+/* Font sizes */
 
 $font-size-bigger: 1.375em;
 $font-size-base: 1em;
@@ -17,7 +17,7 @@ $font-size-h4: 1.375em; // 22px (name of the help center in the header)
 $font-size-h5: 1.125em; // 18px (search result heading, card heading)
 $font-size-h6: 1em; // 16px
 
-// Colours
+/* Colours */
 
 $brand_color: #515ba5;
 $background-color: #ffffff;
@@ -25,7 +25,7 @@ $background-subtle: #f8f8f8;
 $background-neutral: #ffffff;
 $primary_accent: $brand_color;
 
-// Text
+/* Text */
 
 $text_color: #1d1e1c;
 $brand_text_color: #ffffff;
@@ -34,34 +34,34 @@ $secondary-text-color: lighten($text_color, 20%);
 $primary-shade: darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: darken($background_color, 5%); //#f2f2f2 for the default background_color
 
-// Links
+/* Links */
 
 $link_color: $primary_accent;
 $hover_link_color: darken($primary_accent, 20%);
 $visited_link_color: darken($primary_accent, 20%);
 
-// Buttons
+/* Buttons */
 
 $button-color: $brand_color;
 $border-radius: 4px;
 $hover_brand_color: #454D8C;
 $brand_text_color: #fff;
 
-// Borders
+/* Borders */
 
 $high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
 $low-contrast-border-color: #ddd; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
 $menu-border-color: #d8dcde;
 
 
-// Forms
+/* Forms */
 
 $input-font-size: 14px;
 $field-text-color: $secondary-text-color;
 $field-text-focus-color: darken($secondary-text-color, 3%);
 
 
-// Grid
+/* Grid */
 $gutter: 16px;
 $max-width-container: 1280px;
 
