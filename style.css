@@ -536,6 +536,45 @@ ul {
   font-size: 1em;
 }
 
+.product-thumbnail {
+  position: relative;
+  display: flex;
+  justify-content: stretch;
+  height: 100%;
+}
+.product-thumbnail .product-icon {
+  width: 23px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+.product-thumbnail .product-link {
+  color: inherit;
+}
+.product-thumbnail .product-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.product-thumbnail .product-link::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  content: "";
+}
+.product-thumbnail .product-copy {
+  width: auto;
+}
+.product-thumbnail .product-copy .product-title {
+  font-size: 1.125em;
+  font-weight: bold;
+  display: block;
+}
+.product-thumbnail .product-copy .product-description {
+  font-size: 1em;
+}
+
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
   background-color: #f8f8f8;
