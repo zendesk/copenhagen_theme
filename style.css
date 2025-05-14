@@ -1234,6 +1234,7 @@ ul {
   padding-left: 40px;
   -moz-appearance: none;
        appearance: none;
+  /* max-width: 700px; */
   -webkit-appearance: none;
   box-sizing: border-box;
   margin-right: 12px;
