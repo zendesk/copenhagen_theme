@@ -53,34 +53,6 @@
           "description": "'Contact us' in the footer.",
           "label": "Contact Link",
           "value": "https://qoria.com/contact"
-        },
-        {
-          "identifier": "facebook_link",
-          "type": "text",
-          "description": "",
-          "label": "Facebook",
-          "value": "https://www.facebook.com/linewize/"
-        },
-        {
-          "identifier": "linkedin_link",
-          "type": "text",
-          "description": "",
-          "label": "LinkedIn",
-          "value": "https://www.linkedin.com/company/linewize-usa/"
-        },
-        {
-          "identifier": "youtube_link",
-          "type": "text",
-          "description": "",
-          "label": "YouTube",
-          "value": "https://www.youtube.com/channel/UCz3yOmUS37o_KhE7ryHKOeA"
-        },
-        {
-          "identifier": "xitter_link",
-          "type": "text",
-          "description": "",
-          "label": "Twitter",
-          "value": "https://x.com/linewize"
         }
       ]
     },
