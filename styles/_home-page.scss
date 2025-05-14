@@ -61,12 +61,14 @@
 
   .articles-list.row-cols-md-3 {
     .single-article {
-      .article-thumbnail {
+      .article-border {
         border-top: 1px solid $high-contrast-border-color;
+        padding-top: $gutter;
       }
       &:first-child, &:nth-child(2), &:nth-child(3) {
-        .article-thumbnail {
-          border-top: 0;
+        .article-border {
+          border-top: none;
+          padding-top: 0;
         }
       }
     }

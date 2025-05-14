@@ -1604,11 +1604,13 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     border-bottom: 1px solid #ddd;
   }
 }
-.promoted-articles .articles-list.row-cols-md-3 .single-article .article-thumbnail {
+.promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
   border-top: 1px solid #87929D;
+  padding-top: 16px;
 }
-.promoted-articles .articles-list.row-cols-md-3 .single-article:first-child .article-thumbnail, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(2) .article-thumbnail, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(3) .article-thumbnail {
-  border-top: 0;
+.promoted-articles .articles-list.row-cols-md-3 .single-article:first-child .article-border, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(2) .article-border, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(3) .article-border {
+  border-top: none;
+  padding-top: 0;
 }
 
 /***** Community section in homepage *****/
