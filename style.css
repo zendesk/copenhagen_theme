@@ -367,7 +367,7 @@ a:hover, a:active, a:focus {
 }
 
 .container-divider {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   margin-bottom: 20px;
 }
 
@@ -443,7 +443,6 @@ ul {
 .row > * {
   padding-right: 8px;
   padding-left: 8px;
-  margin-bottom: 16px;
 }
 
 .row-cols-3 > * {
@@ -457,6 +456,10 @@ ul {
     width: 33.33333333%;
   }
 }
+.single-category, .single-product {
+  margin-bottom: 16px;
+}
+
 .category-thumbnail {
   position: relative;
   display: flex;
@@ -726,7 +729,7 @@ ul {
   text-align: right;
 }
 .table tr {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   display: block;
   padding: 20px 0;
 }
@@ -850,7 +853,7 @@ ul {
   margin-top: 30px;
 }
 .form .suggestion-list label {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   display: block;
   padding-bottom: 5px;
 }
@@ -1185,7 +1188,7 @@ ul {
 
 /***** Footer *****/
 .footer {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   margin-top: 60px;
   padding: 30px 0;
 }
@@ -1539,7 +1542,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .blocks-item-internal {
   background-color: transparent;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
 }
 .blocks-item-internal .icon-lock {
   height: 15px;
@@ -1628,7 +1631,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .promoted-articles-item a {
   display: block;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   padding: 15px 0;
 }
 .promoted-articles-item .icon-lock {
@@ -1639,12 +1642,13 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 @media (min-width: 1024px) {
   .promoted-articles-item:last-child a {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #B0B0B0;
   }
 }
 .promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
-  border-top: 1px solid #87929D;
-  padding-top: 16px;
+  border-top: 1px solid #B0B0B0;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 .promoted-articles .articles-list.row-cols-md-3 .single-article:first-child .article-border, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(2) .article-border, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(3) .article-border {
   border-top: none;
@@ -1676,7 +1680,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 .community,
 .activity {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   padding: 30px 0;
 }
 
@@ -1701,7 +1705,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 0;
 }
 .recent-activity-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   overflow: auto;
   padding: 20px 0;
 }
@@ -1878,12 +1882,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 .section-list-item {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   font-size: 1.375em;
   padding: 15px 0;
 }
 .section-list-item:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
 }
 .section-list-item a {
   align-items: center;
@@ -2069,21 +2073,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .article-body :not(pre) > code {
   background: #f7f7f7;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
 }
 .article-body pre {
   background: #f7f7f7;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
   white-space: pre;
 }
 .article-body blockquote {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #B0B0B0;
   color: #50534d;
   font-style: italic;
   padding: 0 15px;
@@ -2115,8 +2119,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   height: 18px;
 }
 .article-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
+  border-top: 1px solid #B0B0B0;
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -2130,7 +2134,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .article-relatives {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   display: flex;
   flex-direction: column;
   padding: 20px 0;
@@ -2155,7 +2159,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .article-votes {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   padding: 30px 0;
   text-align: center;
 }
@@ -2289,7 +2293,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 /***** Comments *****/
 /* Styles comments inside articles, posts and requests */
 .comment {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   padding: 20px 0;
 }
 .comment-heading, .recent-articles-title,
@@ -2300,8 +2304,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   font-weight: 600;
 }
 .comment-overview {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
+  border-top: 1px solid #B0B0B0;
   padding: 20px 0;
 }
 .comment-overview p {
@@ -2538,21 +2542,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .comment-body :not(pre) > code {
   background: #f7f7f7;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
 }
 .comment-body pre {
   background: #f7f7f7;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
   white-space: pre;
 }
 .comment-body blockquote {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #B0B0B0;
   color: #50534d;
   font-style: italic;
   padding: 0 15px;
@@ -2684,7 +2688,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 /* Community topic page */
 .topic-header {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   font-size: 0.9375em;
 }
 @media (min-width: 768px) {
@@ -2694,7 +2698,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .topic-header .dropdown {
   display: block;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   padding: 10px 0;
 }
 @media (min-width: 768px) {
@@ -2782,7 +2786,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .striped-list-item {
   align-items: flex-start;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -3105,21 +3109,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .post-body :not(pre) > code {
   background: #f7f7f7;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   border-radius: 3px;
   padding: 0 5px;
   margin: 0 2px;
 }
 .post-body pre {
   background: #f7f7f7;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   border-radius: 3px;
   padding: 10px 15px;
   overflow: auto;
   white-space: pre;
 }
 .post-body blockquote {
-  border-left: 1px solid #ddd;
+  border-left: 1px solid #B0B0B0;
   color: #50534d;
   font-style: italic;
   padding: 0 15px;
@@ -3145,7 +3149,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   vertical-align: middle;
 }
 .post-sidebar {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   flex: 1;
   padding: 30px 0;
   text-align: center;
@@ -3247,8 +3251,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 .collapsible-nav-border {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
+  border-top: 1px solid #B0B0B0;
 }
 @media (min-width: 768px) {
   .collapsible-nav-border {
@@ -3705,7 +3709,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .request-main .comment-show-container {
   border-radius: 2px;
-  border: 1px solid #ddd;
+  border: 1px solid #B0B0B0;
   color: #50534d;
   text-align: inherit;
   padding: 8px 25px;
@@ -3743,15 +3747,15 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 @media (min-width: 1024px) {
   .request-title {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #B0B0B0;
     margin-bottom: 0;
     max-width: 66%;
     padding-bottom: 20px;
   }
 }
 .request-sidebar {
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
+  border-top: 1px solid #B0B0B0;
   flex: 1 0 auto;
   order: 0;
 }
@@ -3776,7 +3780,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .request-details {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #B0B0B0;
   font-size: 0;
   margin: 0;
   padding-bottom: 20px;
@@ -4215,7 +4219,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-top: 25px;
 }
 .profile-badges-item {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   display: flex;
   flex: 1;
   flex-direction: row;
@@ -4509,7 +4513,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .search-results-sidebar {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
@@ -4609,7 +4613,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 20px 0;
 }
 .search-results-list > li:first-child {
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #B0B0B0;
 }
 .search-results .no-results {
   display: flex;

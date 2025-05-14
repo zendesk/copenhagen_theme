@@ -62,8 +62,9 @@
   .articles-list.row-cols-md-3 {
     .single-article {
       .article-border {
-        border-top: 1px solid $high-contrast-border-color;
-        padding-top: $gutter;
+        border-top: 1px solid $low-contrast-border-color;
+        padding-top: calc($gutter * 2);
+        padding-bottom: calc($gutter * 2);
       }
       &:first-child, &:nth-child(2), &:nth-child(3) {
         .article-border {
