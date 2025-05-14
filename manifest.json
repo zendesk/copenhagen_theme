@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.50",
+  "version": "1.0.49",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -53,6 +53,20 @@
           "description": "'Contact us' in the footer.",
           "label": "Contact Link",
           "value": "https://qoria.com/contact"
+        },
+        {
+          "identifier": "show_facebook_link",
+          "type": "checkbox",
+          "description": "show_facebook_link_description",
+          "label": "Show Facebook Link",
+          "value": true
+        },
+        {
+          "identifier": "facebook_link",
+          "type": "text",
+          "description": "Facebook link in the footer.",
+          "label": "Facebook Link",
+          "value": "https://www.facebook.com/linewize/"
         }
       ]
     },
