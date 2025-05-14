@@ -88,6 +88,7 @@
         .article-title {
             font-size: $font-size-h5;
             font-weight: bold;
+            color: $brand_color;
             display: block;
         }
 
@@ -97,50 +98,61 @@
     }
 }
 
-
-.product-thumbnail {
-    position: relative;
-    display: flex;
-    justify-content: stretch;
-    height: 100%;
-
-
-    .product-icon {
-        width: 23px;
-        margin-right: $gutter;
-        flex-shrink: 0;
+.single-product .single-product-inner {
+    background-color: $background-neutral;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    &:before {    
+        content: "";
+        height: 8px;
+        width: 100%;
+        display: block;
+        background: linear-gradient(90deg, #58b78e, #515ba5);
     }
 
-    .product-link {
-        color: inherit;
+    .product-thumbnail {
+        position: relative;
+        display: flex;
+        justify-content: stretch;
+        height: 100%;
+        padding: 1rem;
 
-        &:hover {
+        .product-icon {
+            width: 23px;
+            margin-right: $gutter;
+            flex-shrink: 0;
+        }
+
+        .product-link {
             color: inherit;
-            text-decoration: none;
-        }
-        
-        &::after {
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 1;
-            content: "";
-        }
-    }
 
-    .product-copy {
-        width: auto;
-
-        .product-title {
-            font-size: $font-size-h5;
-            font-weight: bold;
-            display: block;
+            &:hover {
+                color: inherit;
+                text-decoration: none;
+            }
+            
+            &::after {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                content: "";
+            }
         }
 
-        .product-description {
-            font-size: $font-size-base;
+        .product-copy {
+            width: auto;
+
+            .product-title {
+                font-size: $font-size-h5;
+                font-weight: bold;
+                display: block;
+            }
+
+            .product-description {
+                font-size: $font-size-base;
+            }
         }
     }
 }
