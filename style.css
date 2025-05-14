@@ -312,7 +312,7 @@ a:visited {
   color: #2f3561;
 }
 a:hover, a:active, a:focus {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .hbs-form input,
@@ -1200,10 +1200,39 @@ ul {
 }
 
 /***** Footer *****/
+/* 
 .footer {
-  border-top: 1px solid #B0B0B0;
+  border-top: 1px solid $low-contrast-border-color;
   margin-top: 60px;
   padding: 30px 0;
+
+  a {
+    color: $secondary-text-color;
+  }
+
+  &-inner {
+    @include max-width-container;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-language-selector button {
+    color: $secondary-text-color;
+    display: inline-block;
+  }
+}
+
+.powered-by-zendesk {
+  a,
+  a:visited {
+    color: $secondary-text-color;
+  }
+}
+
+*/
+.footer {
+  background: linear-gradient(60deg, #515ba5, #58b78e);
+  color: #FFFFFF;
 }
 .footer a {
   color: #50534d;

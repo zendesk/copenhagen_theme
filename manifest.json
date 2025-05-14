@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.48",
+  "version": "1.0.49",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -13,6 +13,12 @@
           "type": "file",
           "description": "logo_description",
           "label": "logo_label"
+        },
+        {
+          "identifier": "logo_inverse",
+          "type": "file",
+          "description": "logo_inverse",
+          "label": "Logo Inverse"
         },
         {
           "identifier": "show_brand_name",
@@ -30,9 +36,51 @@
         {
           "identifier": "website",
           "type": "text",
-          "description": "Where the header logo links to.",
+          "description": "'Back to [Website string]' in the footer.",
           "label": "Website URL",
+          "value": "https://qoria.com"
+        },
+        {
+          "identifier": "website_string",
+          "type": "text",
+          "description": "'Back to [Website string]' in the footer.",
+          "label": "Website string",
           "value": "qoria.com"
+        },
+        {
+          "identifier": "contact_link",
+          "type": "text",
+          "description": "'Contact us' in the footer.",
+          "label": "Contact Link",
+          "value": "https://qoria.com/contact"
+        },
+        {
+          "identifier": "facebook_link",
+          "type": "text",
+          "description": "",
+          "label": "Facebook",
+          "value": "https://www.facebook.com/linewize/"
+        },
+        {
+          "identifier": "linkedin_link",
+          "type": "text",
+          "description": "",
+          "label": "LinkedIn",
+          "value": "https://www.linkedin.com/company/linewize-usa/"
+        },
+        {
+          "identifier": "youtube_link",
+          "type": "text",
+          "description": "",
+          "label": "YouTube",
+          "value": "https://www.youtube.com/channel/UCz3yOmUS37o_KhE7ryHKOeA"
+        },
+        {
+          "identifier": "xitter_link",
+          "type": "text",
+          "description": "",
+          "label": "Twitter",
+          "value": "https://x.com/linewize"
         }
       ]
     },
