@@ -2,11 +2,13 @@
 
 .section {
   @include tablet {
-    margin-bottom: 60px;
+    padding-bottom: 60px;
+    padding-top: 60px;
   }
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  padding-top: 40px;
 }
 
 .home-section h2 {
@@ -58,8 +60,8 @@
   }
 
   .articles-list.row-cols-md-3 {
-    border-top: 1px solid #000000;
     .single-article {
+      border-top: 1px solid #000000;
       &:first-child, &:nth-child(2), &:nth-child(3) {
         border-top: 0;
       }

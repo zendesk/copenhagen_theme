@@ -16,6 +16,7 @@
 
 .row, .row-cols-md-3 {
     display: flex;
+    flex-wrap: wrap;
     margin-right: calc(-.5 * $gutter);
     margin-left: calc(-.5 * $gutter);
 }
@@ -23,6 +24,7 @@
 .row>*{
     padding-right: calc($gutter * .5);
     padding-left: calc($gutter * .5);
+    margin-bottom: $gutter;
 }
 
 

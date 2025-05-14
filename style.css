@@ -14,7 +14,7 @@ main {
   display: block;
 }
 
-h1, .hero .h1 {
+h1, section.hero .h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -262,7 +262,7 @@ img {
   max-width: 100%;
 }
 
-h1, .hero .h1,
+h1, section.hero .h1,
 h2,
 h3,
 h4,
@@ -279,7 +279,7 @@ h6,
   font-weight: 500;
 }
 
-h1, .hero .h1, .h1 {
+h1, section.hero .h1, .h1 {
   font-size: 2.625em;
 }
 
@@ -435,6 +435,7 @@ ul {
 
 .row, .row-cols-md-3 {
   display: flex;
+  flex-wrap: wrap;
   margin-right: -8px;
   margin-left: -8px;
 }
@@ -442,6 +443,7 @@ ul {
 .row > * {
   padding-right: 8px;
   padding-left: 8px;
+  margin-bottom: 16px;
 }
 
 .row-cols-3 > * {
@@ -1335,22 +1337,22 @@ ul {
 }
 
 /***** Hero component *****/
-.hero {
+section.hero {
   background-image: url(\$knowledge_base_banner);
   background-position: center;
   background-size: cover;
-  padding: 140px 20px 40px 20px;
+  padding: 140px 20px 80px 20px;
   text-align: left;
   width: 100%;
 }
-.hero-inner {
+section.hero-inner {
   position: relative;
   top: 50%;
   transform: translateY(-50%);
   max-width: 610px;
   margin: 0 auto;
 }
-.hero .h1 {
+section.hero .h1 {
   background-color: #58b78e;
   background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
   box-decoration-break: clone;
@@ -1361,10 +1363,10 @@ ul {
   color: #fff;
   font-weight: 900;
 }
-.hero .hero-faqs {
+section.hero .hero-faqs {
   max-width: 480px;
 }
-.hero .hero-faqs::before {
+section.hero .hero-faqs::before {
   display: block;
   height: 8px;
   width: 100%;
@@ -1372,11 +1374,11 @@ ul {
   background-color: #515ba5;
   background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
 }
-.hero .hero-faqs .hero-faqs-inner {
+section.hero .hero-faqs .hero-faqs-inner {
   background-color: #f8f8f8;
   padding: 32px;
 }
-.hero .hero-faqs .hero-faqs-inner ul li h5, .hero .hero-faqs .hero-faqs-inner ul li p {
+section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero-faqs-inner ul li p {
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -1406,7 +1408,7 @@ ul {
     margin-bottom: 0;
   }
 }
-.page-header h1, .page-header .hero .h1, .hero .page-header .h1 {
+.page-header h1, .page-header section.hero .h1, section.hero .page-header .h1 {
   flex-grow: 1;
   margin-bottom: 10px;
 }
@@ -1541,11 +1543,13 @@ ul {
 .section {
   padding-left: 20px;
   padding-right: 20px;
-  margin-bottom: 40px;
+  padding-bottom: 40px;
+  padding-top: 40px;
 }
 @media (min-width: 768px) {
   .section {
-    margin-bottom: 60px;
+    padding-bottom: 60px;
+    padding-top: 60px;
   }
 }
 
@@ -1598,7 +1602,7 @@ ul {
     border-bottom: 1px solid #ddd;
   }
 }
-.promoted-articles .articles-list.row-cols-md-3 {
+.promoted-articles .articles-list.row-cols-md-3 .single-article {
   border-top: 1px solid #000000;
 }
 .promoted-articles .articles-list.row-cols-md-3 .single-article:first-child, .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(2), .promoted-articles .articles-list.row-cols-md-3 .single-article:nth-child(3) {
@@ -2925,12 +2929,12 @@ ul {
     padding-right: 10px;
   }
 }
-.post-title h1, .post-title .hero .h1, .hero .post-title .h1 {
+.post-title h1, .post-title section.hero .h1, section.hero .post-title .h1 {
   display: inline;
   vertical-align: middle;
 }
 @media (min-width: 768px) {
-  .post-title h1, .post-title .hero .h1, .hero .post-title .h1 {
+  .post-title h1, .post-title section.hero .h1, section.hero .post-title .h1 {
     margin-right: 5px;
   }
 }
