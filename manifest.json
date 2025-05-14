@@ -62,6 +62,18 @@
           "type": "file",
           "description": "Icon on category cards",
           "label": "Category icon"
+        },
+        {
+          "identifier": "promoted_icon",
+          "type": "file",
+          "description": "Icon on promoted article cards",
+          "label": "Promoted icon"
+        },
+        {
+          "identifier": "tiled_bg",
+          "type": "file",
+          "description": "Tiled background",
+          "label": "Tiled background"
         }
       ]
     },
