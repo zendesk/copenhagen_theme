@@ -443,6 +443,12 @@ ul {
 .row > * {
   padding-right: 8px;
   padding-left: 8px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.col {
+  flex: 1 0 0;
 }
 
 .row-cols-3 > * {

@@ -24,9 +24,13 @@
 .row>*{
     padding-right: calc($gutter * .5);
     padding-left: calc($gutter * .5);
+    width: 100%;
+    max-width: 100%;
 }
 
-
+.col {
+    flex: 1 0 0;
+}
 
 .row-cols-3 {
 

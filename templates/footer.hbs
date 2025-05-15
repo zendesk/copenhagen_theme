@@ -46,15 +46,30 @@
               </a>
             </h6>
           </li>
-          {{#if settings.show_facebook_link}}
             <li>
               <h6>
-                <a href="{{settings.facebook_link}}">
-                  <i class="fa fa-brands fab  fa-lg fa-facebook-f"></i>
-                </a>
+                {{#if settings.show_facebook_link}}
+                  <a href="{{settings.facebook_link}}">
+                    <i class="fa fa-brands fab  fa-lg fa-facebook-f me-3"></i>
+                  </a>
+                {{/if}}
+                {{#if settings.show_linkedin_link}}
+                  <a href="{{settings.linkedin_link}}">
+                    <i class="fa fa-brands fab  fa-lg fa-linkedin-in me-3"></i>
+                  </a>
+                {{/if}}
+                {{#if settings.show_youtube_link}}
+                  <a href="{{settings.youtube_link}}">
+                    <i class="fa fa-brands fab  fa-lg fa-youtube me-3"></i>
+                  </a>
+                {{/if}}
+                {{#if settings.show_xitter_link}}
+                  <a href="{{settings.xitter_link}}">
+                    <i class="fa fa-brands fab  fa-lg fa-x-twitter"></i>
+                  </a>
+                {{/if}}
               </h6>
             </li>
-          {{/if}}
         </ul>
       </div>
     </div>
