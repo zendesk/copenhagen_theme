@@ -67,6 +67,48 @@
           "description": "Facebook link in the footer.",
           "label": "Facebook Link",
           "value": "https://www.facebook.com/linewize/"
+        },
+        {
+          "identifier": "show_linkedin_link",
+          "type": "checkbox",
+          "description": "show_linkedin_link_description",
+          "label": "Show LinkedIn Link",
+          "value": true
+        },
+        {
+          "identifier": "linkedin_link",
+          "type": "text",
+          "description": "LinkedIn link in the footer.",
+          "label": "LinkedIn Link",
+          "value": "https://www.facebook.com/linewize/"
+        },
+        {
+          "identifier": "show_youtube_link",
+          "type": "checkbox",
+          "description": "show_youtube_link_description",
+          "label": "Show YouTube Link",
+          "value": true
+        },
+        {
+          "identifier": "youtube_link",
+          "type": "text",
+          "description": "YouTube link in the footer.",
+          "label": "YouTube Link",
+          "value": "https://www.facebook.com/linewize/"
+        },
+        {
+          "identifier": "show_xitter_link",
+          "type": "checkbox",
+          "description": "show_xitter_link_description",
+          "label": "Show X Link",
+          "value": true
+        },
+        {
+          "identifier": "xitter_link",
+          "type": "text",
+          "description": "X link in the footer.",
+          "label": "X Link",
+          "value": "https://www.facebook.com/linewize/"
         }
       ]
     },
