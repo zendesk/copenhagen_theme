@@ -7,6 +7,26 @@
         <img src="{{settings.logo_inverse}}">
       </div>
 
+      <div class="col">
+        <ul>
+          <li>
+            <h6>
+              <a href="{{settings.contact_link}}">
+                Contact us
+              </a>
+            </h6>
+          </li>
+          {{#if settings.show_facebook_link}}
+            <li>
+              <h6>
+                <a href="{{settings.facebook_link}}">
+                  <i class="fa fa-brands fab  fa-lg fa-facebook-f"></i>
+                </a>
+              </h6>
+            </li>
+          {{/if}}
+        </ul>
+      </div>
     </div>
     
     <div class="footer-inner">
