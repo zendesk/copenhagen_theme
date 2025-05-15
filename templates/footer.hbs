@@ -1,19 +1,25 @@
 <footer class="footer">
   <div class="container">
-    <hr>
+    <div class="row">
+      <div class="col">
+        <hr style="margin: 32px 0;">
+      </div>
+    </div>
     <div class="row">
 
       <div class="col">
-        <img src="{{settings.logo_inverse}}">
+        <img src="{{settings.logo_inverse}}" style="width: 180px;">
       </div>
 
       <div class="col">
         <ul>
-          <li>
-            <h6>
-              {{link 'new_request'}}
-            </h6>
-          </li>
+          {{#link 'new_request'}}
+            <li>
+              <h6>
+                Submit a request
+              </h6>
+            </li>
+          {{/link}}
           <li>
             <h6>
               <a href="https://fzo.statuspage.io/">
