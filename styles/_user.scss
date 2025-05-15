@@ -9,7 +9,7 @@
 
   > button {
     border: 0;
-    color: $link_color;
+//    color: $link_color;
     min-width: 0;
     padding: 0;
     white-space: nowrap;
@@ -30,6 +30,11 @@
       }
     }
   }
+  > button {
+    color: $text_color;
+    font-weight: 600;
+  }
+
 }
 
 // Selector is this strong to override the styles set with ids

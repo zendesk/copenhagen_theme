@@ -3,17 +3,19 @@
 <header class="header">
   <div class="logo">
     {{#link 'help_center'}}
-      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" />
+      <img src="{{settings.logo}}" alt="{{t 'home_page' name=help_center.name}}" style=""/>
       {{#if settings.show_brand_name}}
+      <div class="vr"></div>
         <span aria-hidden="true">{{help_center.name}}</span>
       {{/if}}
     {{/link}}
   </div>
 
+
   <div class="nav-wrapper-desktop">
     <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
       <ul class="user-nav-list">
-        <li>{{link 'community'}}</li>
+        <li><a href="https://fzo.statuspage.io/">Status page</a></li>
         <li>{{link 'new_request' class='submit-a-request'}}</li>
         {{#unless signed_in}}
           <li>

@@ -911,8 +911,28 @@ ul {
   color: #515ba5;
 }
 
+.logo span {
+  margin: 0;
+  font-size: 22px;
+  color: #1d1e1c;
+  font-weight: 400;
+}
+
 .logo a {
   display: inline-block;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
+.vr {
+  margin: 0 32px;
+  border-right: 1px solid #1d1e1c;
+  width: 0;
+  height: 100%;
+  display: block;
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {
@@ -975,11 +995,12 @@ ul {
 }
 .nav-wrapper-desktop a {
   border: 0;
-  color: #515ba5;
+  color: #1d1e1c;
   display: none;
-  font-size: 14px;
+  font-size: 1rem;
   padding: 0 20px 0 0;
   width: auto;
+  font-weight: 600;
 }
 @media (min-width: 768px) {
   .nav-wrapper-desktop a {
@@ -991,7 +1012,7 @@ ul {
 }
 .nav-wrapper-desktop a:hover, .nav-wrapper-desktop a:focus, .nav-wrapper-desktop a:active {
   background-color: transparent;
-  color: #515ba5;
+  color: #1d1e1c;
   text-decoration: underline;
 }
 
@@ -1142,7 +1163,6 @@ ul {
 }
 .user-info > button {
   border: 0;
-  color: #515ba5;
   min-width: 0;
   padding: 0;
   white-space: nowrap;
@@ -1158,6 +1178,10 @@ ul {
 [dir=rtl] .user-info > button::after {
   padding-left: 15px;
   padding-right: 0;
+}
+.user-info > button {
+  color: #1d1e1c;
+  font-weight: 600;
 }
 
 #user #user-name {
@@ -1241,7 +1265,10 @@ ul {
   color: #FFFFFF;
 }
 .footer a {
-  color: #50534d;
+  color: #fff;
+}
+.footer h6 {
+  margin-bottom: 1rem;
 }
 .footer-inner {
   max-width: 1280px;

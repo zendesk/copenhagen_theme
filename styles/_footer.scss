@@ -35,7 +35,11 @@
   color: #FFFFFF;
 
   a {
-    color: $secondary-text-color;
+    color: $brand_text_color;
+  }
+
+  h6 {
+    margin-bottom: 1rem;
   }
 
   &-inner {

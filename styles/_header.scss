@@ -20,8 +20,28 @@ $header-height: 71px;
   color: $brand_color;
 }
 
+.logo span {
+  margin: 0;
+  font-size: 22px;
+  color: $text_color;
+  font-weight: 400;
+}
+
 .logo a {
   display: inline-block;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+}
+
+.vr {
+  margin: 0 32px; 
+  border-right: 1px solid #1d1e1c; 
+  width: 0; 
+  height: 100%; 
+  display: block;
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {
@@ -81,11 +101,12 @@ $header-height: 71px;
     }
 
     border: 0;
-    color: $link_color;
+    color: $text_color;
     display: none;
-    font-size: 14px;
+    font-size: 1rem;
     padding: 0 20px 0 0;
     width: auto;
+    font-weight: 600;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
 
@@ -93,7 +114,7 @@ $header-height: 71px;
     &:focus,
     &:active {
       background-color: transparent;
-      color: $link_color;
+      color: $text_color;
       text-decoration: underline;
     }
   }

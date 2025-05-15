@@ -5,10 +5,12 @@
         <hr style="margin: 32px 0;">
       </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-bottom: 64px;">
 
       <div class="col">
-        <img src="{{settings.logo_inverse}}" style="width: 180px;">
+        {{#link 'help_center'}}
+          <img src="{{settings.logo_inverse}}" style="width: 180px;">
+        {{/link}}
       </div>
 
       <div class="col">
@@ -46,56 +48,36 @@
               </a>
             </h6>
           </li>
-            <li>
-              <h6>
-                {{#if settings.show_facebook_link}}
-                  <a href="{{settings.facebook_link}}">
-                    <i class="fa fa-brands fab  fa-lg fa-facebook-f me-3"></i>
-                  </a>
-                {{/if}}
-                {{#if settings.show_linkedin_link}}
-                  <a href="{{settings.linkedin_link}}">
-                    <i class="fa fa-brands fab  fa-lg fa-linkedin-in me-3"></i>
-                  </a>
-                {{/if}}
-                {{#if settings.show_youtube_link}}
-                  <a href="{{settings.youtube_link}}">
-                    <i class="fa fa-brands fab  fa-lg fa-youtube me-3"></i>
-                  </a>
-                {{/if}}
-                {{#if settings.show_xitter_link}}
-                  <a href="{{settings.xitter_link}}">
-                    <i class="fa fa-brands fab  fa-lg fa-x-twitter"></i>
-                  </a>
-                {{/if}}
-              </h6>
-            </li>
+          <li>
+            <h6>
+              {{#if settings.show_facebook_link}}
+                <a href="{{settings.facebook_link}}">
+                  <i class="fa fa-brands fab fa-lg fa-facebook-square me-3" style="margin-right: 0.5em;"></i>
+                </a>
+              {{/if}}
+              {{#if settings.show_linkedin_link}}
+                <a href="{{settings.linkedin_link}}">
+                  <i class="fa fa-brands fab fa-lg fa-linkedin me-3" style="margin-right: 0.5em;"></i>
+                </a>
+              {{/if}}
+              {{#if settings.show_youtube_link}}
+                <a href="{{settings.youtube_link}}">
+                  <i class="fa fa-brands fab fa-lg fa-youtube-square me-3" style="margin-right: 0.5em;"></i>
+                </a>
+              {{/if}}
+              {{#if settings.show_xitter_link}}
+                <a href="{{settings.xitter_link}}">
+                  <i class="fa fa-brands fab fa-lg fa-x-twitter"></i>
+                </a>
+              {{/if}}
+            </h6>
+          </li>
         </ul>
       </div>
     </div>
     
     <div class="footer-inner">
-      {{#link 'help_center'}}{{help_center.name}}{{/link}}
 
-      <div class="footer-language-selector">
-        {{#if alternative_locales}}
-          <div class="dropdown language-selector">
-            <button class="dropdown-toggle" aria-haspopup="true">
-              {{current_locale.name}}
-              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-              </svg>
-            </button>
-            <span class="dropdown-menu dropdown-menu-end" role="menu">
-              {{#each alternative_locales}}
-                <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
-                  {{name}}
-                </a>
-              {{/each}}
-            </span>
-          </div>
-        {{/if}}
-      </div>
     </div>
   </div>
 </footer>
