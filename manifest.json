@@ -80,7 +80,7 @@
           "type": "text",
           "description": "LinkedIn link in the footer.",
           "label": "LinkedIn Link",
-          "value": "https://www.facebook.com/linewize/"
+          "value": "https://www.linkedin.com/company/linewize-usa/"
         },
         {
           "identifier": "show_youtube_link",
@@ -94,7 +94,7 @@
           "type": "text",
           "description": "YouTube link in the footer.",
           "label": "YouTube Link",
-          "value": "https://www.facebook.com/linewize/"
+          "value": "https://www.youtube.com/channel/UCz3yOmUS37o_KhE7ryHKOeA"
         },
         {
           "identifier": "show_xitter_link",
@@ -108,7 +108,7 @@
           "type": "text",
           "description": "X link in the footer.",
           "label": "X Link",
-          "value": "https://www.facebook.com/linewize/"
+          "value": "https://x.com/linewize"
         }
       ]
     },
