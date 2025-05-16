@@ -1494,10 +1494,6 @@ ul {
 
 /***** Hero component *****/
 section.hero {
-  background: linear-gradient(90deg, #515ba5, #58b78e);
-  background-image: url(\$tiled_bg);
-  background-position: center;
-  background-size: cover;
   padding: 80px 20px 80px 20px;
   text-align: left;
   width: 100%;
@@ -1507,9 +1503,20 @@ section.hero-article, section.hero-search-results {
   padding-top: 140px;
   margin-bottom: -10rem;
 }
+section.hero-article:before, section.hero-search-results:before {
+  content: "";
+  height: 200%;
+  width: 200%;
+  display: block;
+  background: url(\$tiled_bg), linear-gradient(90deg, #515ba5, #58b78e);
+  transform: rotate(40deg);
+  background-size: auto;
+}
 section.hero-home {
   background-image: url(\$knowledge_base_banner);
   padding-top: 140px;
+  background-size: cover;
+  background-position: center;
 }
 section.hero-inner {
   position: relative;
