@@ -62,7 +62,9 @@
   .articles-list.row-cols-md-3 {
     .single-article {
       .article-border {
+        @include desktop { 
         border-top: 1px solid $low-contrast-border-color;
+        }
         padding-top: calc($gutter * 2);
         padding-bottom: calc($gutter * 2);
       }
