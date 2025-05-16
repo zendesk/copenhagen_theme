@@ -918,7 +918,7 @@ ul {
   font-weight: 500;
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .logo span {
     font-size: 22px;
     color: #1d1e1c;
@@ -930,7 +930,7 @@ ul {
 .logo .vr {
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .logo .vr {
     display: inline-block;
   }
@@ -1494,12 +1494,22 @@ ul {
 
 /***** Hero component *****/
 section.hero {
-  background-image: url(\$knowledge_base_banner);
+  background: linear-gradient(90deg, #515ba5, #58b78e);
+  background-image: url(\$tiled_bg);
   background-position: center;
   background-size: cover;
-  padding: 140px 20px 80px 20px;
+  padding: 80px 20px 80px 20px;
   text-align: left;
   width: 100%;
+}
+section.hero-article, section.hero-search-results {
+  padding-bottom: 14rem;
+  padding-top: 140px;
+  margin-bottom: -10rem;
+}
+section.hero-home {
+  background-image: url(\$knowledge_base_banner);
+  padding-top: 140px;
 }
 section.hero-inner {
   position: relative;
@@ -1759,10 +1769,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
-  padding: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
   border: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
     padding-top: 32px;
     padding-bottom: 32px;

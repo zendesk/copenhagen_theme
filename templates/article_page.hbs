@@ -1,7 +1,34 @@
+<section class="section hero hero-article" style="margin-bottom: 0;">
+  <div class="container">
+    <div class="row">
+      <div class="">
+        {{breadcrumbs}}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <p class="h1">{{article.title}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        {{#is article.created_at article.edited_at}}
+          <span class="meta-data">{{date article.created_at timeago=true}}</span>
+        {{else}}
+          <span class="meta-data">{{date article.edited_at timeago=true}}</span>
+          <span class="meta-data">{{t 'updated'}}</span>
+        {{/is}}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
 <div class="container-divider"></div>
 <div class="container">
   <div class="sub-nav">
-    {{breadcrumbs}}
     <div class="search-container">
       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
         <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
