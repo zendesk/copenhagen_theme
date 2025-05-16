@@ -16,6 +16,10 @@ $input-background: $background-subtle;
     display: flex;
     position: relative;
     transition: $input-transition;
+    flex-direction: column;
+    @include desktop {
+        flex-direction: row;
+    }
 
     [dir="ltr"] &::before {
         content: "\f002";
@@ -23,9 +27,9 @@ $input-background: $background-subtle;
         font-style: normal;
         font-weight: 400;
         position: absolute;
-        top: 50%;
+        top: 1rem;
+        line-height: 1;
         left: 1em;
-        transform: translateY(-50%);
     }
 
     [dir="rtl"] &::after {
@@ -34,9 +38,9 @@ $input-background: $background-subtle;
         font-style: normal;
         font-weight: 400;
         position: absolute;
-        top: 50%;
+        top: 1rem;
+        line-height: 1;
         right: 1em;
-        transform: translateY(-50%);
     }
 
     &-full input[type="search"],
@@ -66,6 +70,10 @@ $input-background: $background-subtle;
         height: auto;
         width: 100%;
         font-size: $font-size-smaller;
+        margin-bottom: 8px;
+        @include desktop {
+            margin-bottom: 0px;
+        }
 
         &::placeholder {
             opacity: 1;

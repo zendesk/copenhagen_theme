@@ -22,9 +22,23 @@ $header-height: 71px;
 
 .logo span {
   margin: 0;
-  font-size: 22px;
+  font-size: 1rem;
   color: $text_color;
-  font-weight: 400;
+  font-weight: 500;
+  display: none;
+  @include desktop {
+    font-size: 22px;
+    color: $text_color;
+    font-weight: 400;
+    display: inline-block;
+  }
+}
+
+.logo .vr {
+  display: none;
+  @include desktop {
+    display: inline-block;
+  }
 }
 
 .logo a {
@@ -37,10 +51,14 @@ $header-height: 71px;
 }
 
 .vr {
-  margin: 0 32px; 
   border-right: 1px solid #1d1e1c; 
   width: 0; 
   display: block;
+  height: 37px;
+  margin: 0 16px; 
+  @include desktop {
+    margin: 0 32px; 
+  }
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {

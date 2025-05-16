@@ -62,11 +62,13 @@
   .articles-list.row-cols-md-3 {
     .single-article {
       .article-border {
+        padding: 0;
+        border: none;
         @include desktop { 
-        border-top: 1px solid $low-contrast-border-color;
-        }
         padding-top: calc($gutter * 2);
         padding-bottom: calc($gutter * 2);
+        border-top: 1px solid $low-contrast-border-color;
+        }
       }
       &:first-child, &:nth-child(2), &:nth-child(3) {
         .article-border {

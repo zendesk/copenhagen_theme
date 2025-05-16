@@ -913,9 +913,27 @@ ul {
 
 .logo span {
   margin: 0;
-  font-size: 22px;
+  font-size: 1rem;
   color: #1d1e1c;
-  font-weight: 400;
+  font-weight: 500;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .logo span {
+    font-size: 22px;
+    color: #1d1e1c;
+    font-weight: 400;
+    display: inline-block;
+  }
+}
+
+.logo .vr {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .logo .vr {
+    display: inline-block;
+  }
 }
 
 .logo a {
@@ -928,10 +946,16 @@ ul {
 }
 
 .vr {
-  margin: 0 32px;
   border-right: 1px solid #1d1e1c;
   width: 0;
   display: block;
+  height: 37px;
+  margin: 0 16px;
+}
+@media (min-width: 1024px) {
+  .vr {
+    margin: 0 32px;
+  }
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {
@@ -1331,6 +1355,12 @@ ul {
   display: flex;
   position: relative;
   transition: border 0.12s ease-in-out;
+  flex-direction: column;
+}
+@media (min-width: 1024px) {
+  .search {
+    flex-direction: row;
+  }
 }
 [dir=ltr] .search::before {
   content: "\f002";
@@ -1338,9 +1368,9 @@ ul {
   font-style: normal;
   font-weight: 400;
   position: absolute;
-  top: 50%;
+  top: 1rem;
+  line-height: 1;
   left: 1em;
-  transform: translateY(-50%);
 }
 [dir=rtl] .search::after {
   content: "\f002";
@@ -1348,9 +1378,9 @@ ul {
   font-style: normal;
   font-weight: 400;
   position: absolute;
-  top: 50%;
+  top: 1rem;
+  line-height: 1;
   right: 1em;
-  transform: translateY(-50%);
 }
 .search-full input[type=search], .search-full .clear-button {
   border-color: #fff;
@@ -1373,6 +1403,12 @@ ul {
   height: auto;
   width: 100%;
   font-size: 0.875em;
+  margin-bottom: 8px;
+}
+@media (min-width: 1024px) {
+  .search input[type=search] {
+    margin-bottom: 0px;
+  }
 }
 .search input[type=search]::-moz-placeholder {
   opacity: 1;
@@ -1723,11 +1759,13 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding: 0;
+  border: none;
 }
 @media (min-width: 1024px) {
   .promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
+    padding-top: 32px;
+    padding-bottom: 32px;
     border-top: 1px solid #B0B0B0;
   }
 }
