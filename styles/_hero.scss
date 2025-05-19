@@ -18,15 +18,22 @@ section.hero {
       width: 200vw;
       display: block;
       background: url(\$tiled_bg);
-      background-size: 180px;    
+      background-size: 180px;
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
-
     }
+
     > .container {
       position: relative;
+      color: #ffffff;
+    }
+
+    .h1 {
+      font-weight: 600;    
+      font-size: 2.625rem;
+      margin-bottom: 0;
     }
   }
 
@@ -35,24 +42,26 @@ section.hero {
     padding-top: 140px;
     background-size: cover;
     background-position: center;
+
+    .h1 {
+      @extend h1;
+      background-color: #58b78e;
+      background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      display: inline;
+      line-height: 1.6em;
+      padding: .06em 1.8em .15em 1.5rem;
+      color: #fff;
+      font-weight: 900;
+    }
+
   }
 
   &-inner {
     @include vertical-align;
     max-width: 610px;
     margin: 0 auto;
-  }
-  .h1 {
-    @extend h1;
-    background-color: #58b78e;
-    background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-    display: inline;
-    line-height: 1.6em;
-    padding: .06em 1.8em .15em 1.5rem;
-    color: #fff;
-    font-weight: 900;
   }
 
   .hero-faqs {

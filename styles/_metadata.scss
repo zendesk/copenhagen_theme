@@ -16,8 +16,10 @@
 }
 
 .meta-data {
-  color: $secondary-text-color;
+  color: inherit;
+  font-weight: 500;
   font-size: $font-size-small;
+
 
   &:not(:last-child)::after {
     content: "\00B7";

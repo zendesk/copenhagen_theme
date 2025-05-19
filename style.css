@@ -14,7 +14,7 @@ main {
   display: block;
 }
 
-h1, section.hero .h1 {
+h1, section.hero-home .h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
@@ -262,7 +262,7 @@ img {
   max-width: 100%;
 }
 
-h1, section.hero .h1,
+h1, section.hero-home .h1,
 h2,
 h3,
 h4,
@@ -279,7 +279,7 @@ h6,
   font-weight: 500;
 }
 
-h1, section.hero .h1, .h1 {
+h1, section.hero-home .h1, .h1 {
   font-size: 2.625rem;
 }
 
@@ -1325,24 +1325,23 @@ ul {
   padding: 0;
   display: flex;
 }
-@media (min-width: 768px) {
-  .breadcrumbs {
-    margin: 0;
-  }
-}
 .breadcrumbs li {
-  color: #50534d;
+  color: inherit;
   font-size: 0.9375em;
   max-width: 450px;
+  font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
+  a-color: inherit;
 }
 .breadcrumbs li + li::before {
-  content: ">";
-  margin: 0 4px;
+  content: "\f054";
+  font-size: 0.8em;
+  font-family: "Font Awesome 6 Pro";
+  margin: 0 8px;
 }
 .breadcrumbs li a:visited {
-  color: #515ba5;
+  color: inherit;
 }
 
 /***** Search field *****/
@@ -1502,8 +1501,8 @@ section.hero-article, section.hero-search-results {
   padding-bottom: 14rem;
   padding-top: 140px;
   margin-bottom: -10rem;
-  background: linear-gradient(90deg, #515ba5, #58b78e);
   position: relative;
+  background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
 section.hero-article:before, section.hero-search-results:before {
@@ -1512,8 +1511,7 @@ section.hero-article:before, section.hero-search-results:before {
   width: 200vw;
   display: block;
   background: url(\$tiled_bg);
-  transform: rotate(-40deg);
-  background-size: auto;
+  background-size: 180px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1521,6 +1519,12 @@ section.hero-article:before, section.hero-search-results:before {
 }
 section.hero-article > .container, section.hero-search-results > .container {
   position: relative;
+  color: #ffffff;
+}
+section.hero-article .h1, section.hero-search-results .h1 {
+  font-weight: 600;
+  font-size: 2.625rem;
+  margin-bottom: 0;
 }
 section.hero-home {
   background-image: url(\$knowledge_base_banner);
@@ -1528,14 +1532,7 @@ section.hero-home {
   background-size: cover;
   background-position: center;
 }
-section.hero-inner {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  max-width: 610px;
-  margin: 0 auto;
-}
-section.hero .h1 {
+section.hero-home .h1 {
   background-color: #58b78e;
   background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
   box-decoration-break: clone;
@@ -1545,6 +1542,13 @@ section.hero .h1 {
   padding: 0.06em 1.8em 0.15em 1.5rem;
   color: #fff;
   font-weight: 900;
+}
+section.hero-inner {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  max-width: 610px;
+  margin: 0 auto;
 }
 section.hero .hero-faqs {
   max-width: 480px;
@@ -1591,7 +1595,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     margin-bottom: 0;
   }
 }
-.page-header h1, .page-header section.hero .h1, section.hero .page-header .h1 {
+.page-header h1, .page-header section.hero-home .h1, section.hero-home .page-header .h1 {
   flex-grow: 1;
   margin-bottom: 10px;
 }
@@ -3123,12 +3127,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     padding-right: 10px;
   }
 }
-.post-title h1, .post-title section.hero .h1, section.hero .post-title .h1 {
+.post-title h1, .post-title section.hero-home .h1, section.hero-home .post-title .h1 {
   display: inline;
   vertical-align: middle;
 }
 @media (min-width: 768px) {
-  .post-title h1, .post-title section.hero .h1, section.hero .post-title .h1 {
+  .post-title h1, .post-title section.hero-home .h1, section.hero-home .post-title .h1 {
     margin-right: 5px;
   }
 }
@@ -4037,7 +4041,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 .meta-data {
-  color: #50534d;
+  color: inherit;
+  font-weight: 500;
   font-size: 0.9375em;
 }
 .meta-data:not(:last-child)::after {

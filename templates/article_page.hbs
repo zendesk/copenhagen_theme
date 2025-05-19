@@ -13,10 +13,9 @@
     <div class="row">
       <div>
         {{#is article.created_at article.edited_at}}
-          <span class="meta-data">{{date article.created_at timeago=true}}</span>
+          <span class="meta-data">{{t 'updated'}} {{date article.created_at timeago=true}}</span>
         {{else}}
-          <span class="meta-data">{{date article.edited_at timeago=true}}</span>
-          <span class="meta-data">{{t 'updated'}}</span>
+          <span class="meta-data">{{t 'updated'}} {{date article.edited_at timeago=true}}</span>
         {{/is}}
       </div>
     </div>

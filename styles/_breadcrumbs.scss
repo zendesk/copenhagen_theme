@@ -1,27 +1,32 @@
 /***** Breadcrumbs *****/
 .breadcrumbs {
-  @include tablet {
-    margin: 0;
-  }
 
   margin: 0 0 15px 0;
   padding: 0;
   display: flex;
 
   li {
-    color: $secondary-text-color;
+    color: inherit;
     font-size: $font-size-small;
     max-width: 450px;
+    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
 
     + li::before {
-      content: ">";
-      margin: 0 4px;
+      content: "\f054";
+      font-size: .8em;
+      font-family: 'Font Awesome 6 Pro';
+      margin: 0 8px;
     }
 
     a:visited {
-      color: $link_color;
+      color: inherit;
     }
+
+    a: {
+      color: inherit;
+    }
+
   }
 }
