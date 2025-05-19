@@ -12,11 +12,12 @@ $input-background: $background-subtle;
 }
 
 .search {
+    
     border-width: 0px;
     display: flex;
     position: relative;
     transition: $input-transition;
-    flex-direction: column;
+
     @include desktop {
         flex-direction: row;
     }
@@ -43,13 +44,15 @@ $input-background: $background-subtle;
         right: 1em;
     }
 
-    &-full input[type="search"],
-    &-full .clear-button {
-        border-color: #fff;
+    &-home {
+        input[type="search"] {
+            margin-right: 12px;
+        }
     }
 
     input[type="submit"] {
         @extend .button;
+        margin-right: 12px;
     }
 
     input[type="search"] {
@@ -59,21 +62,15 @@ $input-background: $background-subtle;
         border-style: solid;
         border-width: 1px;
         padding: 16px;
-        padding-left: 40px;
         appearance: none;    
-        /* max-width: 700px; */
         -webkit-appearance: none;
         box-sizing: border-box;
-        margin-right: 12px;
         color: $text_color;
         flex: 1 1 auto;
         height: auto;
         width: 100%;
         font-size: $font-size-smaller;
-        margin-bottom: 8px;
-        @include desktop {
-            margin-bottom: 0px;
-        }
+        margin-bottom: 0px;
 
         &::placeholder {
             opacity: 1;
