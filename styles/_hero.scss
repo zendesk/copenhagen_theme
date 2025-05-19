@@ -8,14 +8,25 @@ section.hero {
     padding-bottom: 14rem;
     padding-top: 140px;
     margin-bottom: -10rem;
+    position: relative;
+    background: linear-gradient(90deg, #515ba5, #58b78e);
+    overflow: clip;
+    
     &:before {
       content: "";
-      height: 200%;
-      width: 200%;
+      height: 200vw;
+      width: 200vw;
       display: block;
-      background: url(\$tiled_bg), linear-gradient(90deg, #515ba5, #58b78e);
-      transform: rotate(40deg);
-      background-size: auto;
+      background: url(\$tiled_bg);
+      background-size: 180px;    
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
+
+    }
+    > .container {
+      position: relative;
     }
   }
 

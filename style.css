@@ -1502,15 +1502,25 @@ section.hero-article, section.hero-search-results {
   padding-bottom: 14rem;
   padding-top: 140px;
   margin-bottom: -10rem;
+  background: linear-gradient(90deg, #515ba5, #58b78e);
+  position: relative;
+  overflow: clip;
 }
 section.hero-article:before, section.hero-search-results:before {
   content: "";
-  height: 200%;
-  width: 200%;
+  height: 200vw;
+  width: 200vw;
   display: block;
-  background: url(\$tiled_bg), linear-gradient(90deg, #515ba5, #58b78e);
-  transform: rotate(40deg);
+  background: url(\$tiled_bg);
+  transform: rotate(-40deg);
   background-size: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
+}
+section.hero-article > .container, section.hero-search-results > .container {
+  position: relative;
 }
 section.hero-home {
   background-image: url(\$knowledge_base_banner);
