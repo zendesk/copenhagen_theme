@@ -37,7 +37,7 @@
         {{search scoped=settings.scoped_kb_search submit=false}}
       </div>
       {{#if settings.show_articles_in_section}}
-        <div class="collapsible-sidebar">
+        <div class="collapsible-sidebar" style="">
           <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
@@ -74,7 +74,7 @@
         <h1 title="{{article.title}}" class="article-title">
           {{article.title}}
           {{#if article.internal}}
-          <i class="fa far fa-lock-alt" title="{{t 'internal'}}"></i>
+          <i class="fal fa-lock-alt" title="{{t 'internal'}}"></i>
           {{/if}}
         </h1>
 

@@ -7,8 +7,12 @@
   flex: 1;
   max-height: 45px;
   overflow: hidden;
-  padding: 10px 0;
   position: relative;
+
+  
+  background: #FFFFFF;
+  padding: $padding;
+  margin-top: $gutter;
 
   &-title {
     margin-top: 0;

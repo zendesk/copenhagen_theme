@@ -2075,6 +2075,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-container {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 @media (min-width: 1024px) {
   .article-container {
@@ -2268,10 +2269,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   height: 18px;
 }
 .article-sidebar {
-  background: #FFFFFF;
   flex: 1 0 auto;
   margin-bottom: 16px;
-  padding: 32px;
 }
 @media (min-width: 1024px) {
   .article-sidebar {
@@ -3527,8 +3526,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex: 1;
   max-height: 45px;
   overflow: hidden;
-  padding: 10px 0;
   position: relative;
+  background: #FFFFFF;
+  padding: 32px;
+  margin-top: 16px;
 }
 @media (min-width: 1024px) {
   .collapsible-sidebar {
