@@ -2,6 +2,7 @@ export interface Attachment {
   id: string;
   file_name: string;
   url: string;
+  error?: string;
 }
 
 export interface AttachmentField {

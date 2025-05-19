@@ -51,6 +51,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
     setUploaded,
     removePendingFile,
     removeUploadedFile,
+    setError
   } = useAttachedFiles(
     attachments.map((value) => ({
       status: "uploaded",
@@ -141,8 +142,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
             } = xhr.response as UploadFileResponse;
             setUploaded(pendingId, { id: token, file_name, url: content_url });
           } else {
-            notifyError(errorMessage(file, xhr));
-            removePendingFile(pendingId);
+            setError(pendingId, errorMessage(file, xhr));
           }
         });
 
@@ -160,6 +160,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
       setPendingFileProgress,
       setUploaded,
       notifyError,
+      setError,
     ]
   );
 
@@ -170,6 +171,8 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
   const handleRemove = async (file: AttachedFile) => {
     if (file.status === "pending") {
       file.xhr.abort();
+      removePendingFile(file.id);
+    } else if (file.status === "error") {
       removePendingFile(file.id);
     } else {
       const csrfToken = await fetchCsrfToken();
@@ -207,7 +210,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
       <FileList>
         {files.map((file) => (
           <FileListItem
-            key={file.status === "pending" ? file.id : file.value.id}
+            key={file.status === "pending" || file.status === "error" ? file.id : file.value.id}
             file={file}
             onRemove={() => {
               handleRemove(file);

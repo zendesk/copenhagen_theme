@@ -16,6 +16,11 @@ const FileNameWrapper = styled.div`
   flex: 1;
 `;
 
+const FileNameErrorWrapper = styled.div`
+  flex: 1;
+  color: red;
+`;
+
 export function FileListItem({
   file,
   onRemove,
@@ -42,7 +47,7 @@ export function FileListItem({
   };
 
   const fileName =
-    file.status === "pending" ? file.file_name : file.value.file_name;
+    file.status === "pending" || file.status == "error" ? file.file_name : file.value.file_name;
 
   const stopUploadLabel = t(
     "new-request-form.attachments.stop-upload",
@@ -65,7 +70,7 @@ export function FileListItem({
         )}
         onKeyDown={handleFileKeyDown}
       >
-        {file.status === "pending" ? (
+        {file.status === "pending" && (
           <>
             <FileNameWrapper>{fileName}</FileNameWrapper>
             <Tooltip content={stopUploadLabel}>
@@ -91,7 +96,14 @@ export function FileListItem({
               )}
             />
           </>
-        ) : (
+        )}
+        {file.status === "error" && (
+            <>
+              <FileNameErrorWrapper>{fileName}: {file.error}</FileNameErrorWrapper>
+              <Progress value={100} aria-hidden="true" />
+            </>
+        )}
+        {file.status === "uploaded" && (
           <>
             <FileNameWrapper>
               <Anchor isExternal href={file.value.url} target="_blank">

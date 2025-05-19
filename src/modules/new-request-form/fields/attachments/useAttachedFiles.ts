@@ -14,7 +14,14 @@ export interface UploadedFile {
   value: Attachment;
 }
 
-export type AttachedFile = PendingFile | UploadedFile;
+export interface ErrorFile {
+  status: "error";
+  id: string;
+  file_name: string;
+  error: string;
+}
+
+export type AttachedFile = PendingFile | UploadedFile | ErrorFile;
 
 export function useAttachedFiles(initialValue: AttachedFile[]) {
   const [files, setFiles] = useState(initialValue);
@@ -63,6 +70,16 @@ export function useAttachedFiles(initialValue: AttachedFile[]) {
     );
   }, []);
 
+  const setError = useCallback((pendingId: string, error: string) => {
+    setFiles((current) => {
+      return current.map((file) =>
+          file.status === "pending" && file.id === pendingId
+              ? {status: "error", id: pendingId, file_name: file.file_name, error}
+              : file
+      )
+    });
+  }, []);
+
   return {
     files,
     addPendingFile,
@@ -70,5 +87,6 @@ export function useAttachedFiles(initialValue: AttachedFile[]) {
     removePendingFile,
     removeUploadedFile,
     setUploaded,
+    setError
   };
 }
