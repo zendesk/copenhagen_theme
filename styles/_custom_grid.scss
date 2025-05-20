@@ -32,6 +32,7 @@
     flex: 1 0 0;
 }
 
+
 .row-cols-3 {
 
     & > * {
@@ -47,4 +48,10 @@
         flex: 0 0 auto;
         width: 33.33333333%;
     }
+
+    .col-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
 }

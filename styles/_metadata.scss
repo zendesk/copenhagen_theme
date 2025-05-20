@@ -26,3 +26,17 @@
     margin: 0 5px;
   }
 }
+
+
+.metadata-left, .metadata-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.metadata-left {
+  justify-content: start;
+}
+
+.metadata-right {
+  justify-content: right;
+}

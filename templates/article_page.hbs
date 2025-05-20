@@ -11,14 +11,14 @@
       </div>
     </div>
     <div class="row">
-      <div>
+      <div class="col metadata-left">
         {{#is article.created_at article.edited_at}}
           <span class="meta-data">{{t 'updated'}} {{date article.created_at timeago=true}}</span>
         {{else}}
           <span class="meta-data">{{t 'updated'}} {{date article.edited_at timeago=true}}</span>
         {{/is}}
       </div>
-      <div>
+      <div class="col metadata-right">
           <button class="" onclick="javascript:print();">
             <span class="fa far fa-print" aria-hidden="true">
             </span>

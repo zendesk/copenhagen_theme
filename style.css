@@ -461,6 +461,10 @@ ul {
     flex: 0 0 auto;
     width: 33.33333333%;
   }
+  .col-6 {
+    flex: 0 0 auto;
+    width: 50%;
+  }
 }
 .single-category, .single-product {
   margin-bottom: 16px;
@@ -640,6 +644,11 @@ ul {
 }
 .button[data-disabled], [data-disabled].pagination-next-link, [data-disabled].pagination-prev-link, [data-disabled].pagination-first-link, [data-disabled].pagination-last-link, .subscriptions-subscribe button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .community-follow button[data-disabled], .article-subscribe button[data-disabled], .section-subscribe button[data-disabled], .search input[data-disabled][type=submit], .split-button button[data-disabled] {
   cursor: default;
+}
+.button-unstyled {
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .button-large, .hbs-form input[type=submit] {
@@ -1362,7 +1371,7 @@ ul {
     flex-direction: row;
   }
 }
-[dir=ltr] .search::before {
+[dir=ltr] .search::after {
   content: "\f002";
   font-family: "Font Awesome 6 Pro";
   font-style: normal;
@@ -1372,7 +1381,7 @@ ul {
   line-height: 1;
   left: 1em;
 }
-[dir=rtl] .search::after {
+[dir=rtl] .search::before {
   content: "\f002";
   font-family: "Font Awesome 6 Pro";
   font-style: normal;
@@ -1384,6 +1393,18 @@ ul {
 }
 .search-home input[type=search] {
   margin-right: 12px;
+  padding-left: 40px;
+  padding-right: 16px;
+}
+.search-home input[type=search]::before {
+  content: "\f002";
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  top: 1rem;
+  line-height: 1;
+  left: 1em;
 }
 .search input[type=submit] {
   margin-right: 12px;
@@ -1446,8 +1467,8 @@ ul {
 }
 
 [dir=ltr] .search input[type=search] {
-  padding-left: 40px;
-  padding-right: 16px;
+  padding-left: 16px;
+  padding-right: 40px;
 }
 [dir=ltr] .search-has-value input[type=search] {
   border-bottom-right-radius: 0;
@@ -1467,8 +1488,8 @@ ul {
 }
 
 [dir=rtl] .search input[type=search] {
-  padding-left: 16px;
-  padding-right: 40px;
+  padding-left: 40px;
+  padding-right: 16px;
 }
 [dir=rtl] .search-has-value input[type=search] {
   border-bottom-left-radius: 0;
@@ -1485,6 +1506,11 @@ ul {
 }
 [dir=rtl] .search .clear-button:focus {
   border-right-color: #515ba5;
+}
+
+.article-sidebar input[type=search] {
+  background: rgba(248, 248, 248, 0.8);
+  border-color: rgba(248, 248, 248, 0.8);
 }
 
 /***** Hero component *****/
@@ -4046,6 +4072,19 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .meta-data:not(:last-child)::after {
   content: "·";
   margin: 0 5px;
+}
+
+.metadata-left, .metadata-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.metadata-left {
+  justify-content: start;
+}
+
+.metadata-right {
+  justify-content: right;
 }
 
 /* User Profiles */

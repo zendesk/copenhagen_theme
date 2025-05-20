@@ -3,13 +3,15 @@
 /***** Search field *****/
 
 $icon-color: #000;
-$padding-left: 40px;
-$padding-right: 16px;
+$padding-left: 16px;
+$padding-right: 40px;
 $input-background: $background-subtle;
 
 .search-container {
     position: relative;
 }
+
+
 
 .search {
     
@@ -22,7 +24,7 @@ $input-background: $background-subtle;
         flex-direction: row;
     }
 
-    [dir="ltr"] &::before {
+    [dir="ltr"] &::after {
         content: "\f002";
         font-family: 'Font Awesome 6 Pro';
         font-style: normal;
@@ -33,7 +35,7 @@ $input-background: $background-subtle;
         left: 1em;
     }
 
-    [dir="rtl"] &::after {
+    [dir="rtl"] &::before {
         content: "\f002";
         font-family: 'Font Awesome 6 Pro';
         font-style: normal;
@@ -47,7 +49,21 @@ $input-background: $background-subtle;
     &-home {
         input[type="search"] {
             margin-right: 12px;
+            padding-left: $padding-right;
+            padding-right: $padding-left;
+            &::before {
+                content: "\f002";
+                font-family: 'Font Awesome 6 Pro';
+                font-style: normal;
+                font-weight: 400;
+                position: absolute;
+                top: 1rem;
+                line-height: 1;
+                left: 1em;
+            }
         }
+
+
     }
 
     input[type="submit"] {
@@ -180,4 +196,10 @@ $input-background: $background-subtle;
         }
 
     }
+}
+
+
+.article-sidebar input[type="search"] {
+    background: color.scale($input-background, $alpha: -20%);
+    border-color: color.scale($input-background, $alpha: -20%);
 }

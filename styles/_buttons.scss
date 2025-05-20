@@ -46,12 +46,6 @@
   }
 }
 
-.button-unstyled {
-  background: transparent;
-  border: none;
-  padding: 0;
-}
-
 .button-large, .hbs-form input[type="submit"] {
   @include tablet {
     width: auto;
