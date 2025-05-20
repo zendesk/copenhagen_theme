@@ -2,7 +2,6 @@
 .collapsible-sidebar {
   @include desktop {
     max-height: none;
-    padding: 0;
   }
   flex: 1;
   max-height: 45px;

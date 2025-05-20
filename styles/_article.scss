@@ -204,8 +204,14 @@
 
   &-subscribe button {
     @extend .button;
+    :before {
+      content: "+ ";
+    }
     &[data-selected="true"] {
-      @extend .button-primary;
+      @extend .button;
+      :before {
+        content: "- ";
+      }
     }
   }
 

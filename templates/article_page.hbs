@@ -19,8 +19,8 @@
         {{/is}}
       </div>
       <div class="col metadata-right">
-          <button class="" onclick="javascript:print();">
-            <span class="fa far fa-print" aria-hidden="true">
+          <button class="button-unstyled" style="margin-right: 25px; color: inherit;" onclick="javascript:print();">
+            <span class="fal fa-print" aria-hidden="true">
             </span>
           </button>
           <div class="article-subscribe">{{subscribe}}</div>
@@ -35,6 +35,9 @@
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
       <div class="search-container">
         {{search scoped=settings.scoped_kb_search submit=false}}
+      </div>
+      <div class="collapsible-sidebar table-of-contents">
+        
       </div>
       {{#if settings.show_articles_in_section}}
         <div class="collapsible-sidebar" style="">

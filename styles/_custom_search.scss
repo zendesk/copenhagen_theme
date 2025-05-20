@@ -11,8 +11,6 @@ $input-background: $background-subtle;
     position: relative;
 }
 
-
-
 .search {
     
     border-width: 0px;
@@ -32,7 +30,7 @@ $input-background: $background-subtle;
         position: absolute;
         top: 1rem;
         line-height: 1;
-        left: 1em;
+        right: 1em;
     }
 
     [dir="rtl"] &::before {
@@ -43,7 +41,7 @@ $input-background: $background-subtle;
         position: absolute;
         top: 1rem;
         line-height: 1;
-        right: 1em;
+        left: 1em;
     }
 
     &-home {
