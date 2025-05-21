@@ -82,7 +82,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "glob": "^10.4.5",
     "husky": "8.0.2",
-    "i18next-parser": "^8.13.0",
+    "i18next-parser": "^9.3.0",
     "jest": "^29.6.1",
     "jest-environment-jsdom": "^29.6.1",
     "js-yaml": "^4.1.0",
