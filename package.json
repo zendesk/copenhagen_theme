@@ -88,7 +88,7 @@
     "js-yaml": "^4.1.0",
     "lighthouse": "12.6.0",
     "prettier": "2.8.4",
-    "puppeteer": "22.8.2",
+    "puppeteer": "24.9.0",
     "rollup": "3.29.5",
     "rollup-jest": "^3.1.0",
     "rollup-plugin-sass": "1.12.18",
@@ -102,8 +102,7 @@
     "wait-on": "7.0.1"
   },
   "resolutions": {
-    "@types/react": "^17.x",
-    "ws": "^8.17.1"
+    "@types/react": "^17.x"
   },
   "commitlint": {
     "extends": [
