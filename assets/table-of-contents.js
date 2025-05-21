@@ -15,10 +15,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
         const id = heading.innerText.toLowerCase().replaceAll(" ", "_");
         heading.setAttribute("id", id);
         const anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
+        const keyPointer = `<li>${anchorElement}</li>`;
         if (index === 0) {
-            const keyPointer = `<li class="active">${anchorElement}</li>`;
+            keyPointer = `<li class="active">${anchorElement}</li>`;
         } else {
-            const keyPointer = `<li>${anchorElement}</li>`;
+            keyPointer = `<li>${anchorElement}</li>`;
         }
         ul.insertAdjacentHTML("beforeend", keyPointer);
     });
