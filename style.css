@@ -3659,6 +3659,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .table-of-contents li.active {
   border-left: 1px solid #515ba5;
+  background-color: #f8f8f8;
 }
 
 /***** My activities *****/
