@@ -2441,11 +2441,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-bottom: 15px;
 }
 
-.table-of-contents {
-  position: sticky;
-  top: 100px;
-}
-
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
 .attachments .attachment-item {
