@@ -15,6 +15,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ul.insertAdjacentHTML("beforeend", keyPointer);
     });
 
+});
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    
     const tocAnchors = tocContainer.querySelectorAll("a");
     const obFunc = (entries) => {
         entries.forEach((entry) => {
@@ -34,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         rootMargin: "-30px 0% -77%",
         threshold: 1
     };
-    
+
     const observer = new IntersectionObserver(obFunc, obOption);
     headings.forEach((hTwo) => observer.observe(hTwo));
 
