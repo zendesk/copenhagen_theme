@@ -893,20 +893,18 @@ ul {
 
 /***** Header *****/
 .header {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 5%;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  box-shadow: 0px 2px 4px rgba(28, 29, 27, 0.0784313725);
+}
+
+.header-inner {
   position: relative;
   align-items: center;
   display: flex;
   height: 71px;
   justify-content: space-between;
-}
-@media (min-width: 1280px) {
-  .header {
-    padding: 0;
-    width: 90%;
-  }
 }
 
 .logo img {

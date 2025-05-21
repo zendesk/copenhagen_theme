@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         })
     };
     const obOption = {
-        rootMargin: "-100px 0% -20%",
+        rootMargin: "0px 0% -20%",
         threshold: 1
     };
 
