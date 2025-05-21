@@ -1393,31 +1393,12 @@ ul {
 .search:focus-within {
   border-color: #FFF;
 }
-.search-home::before {
-  content: "\f002";
-  font-family: "Font Awesome 6 Pro";
-  font-style: normal;
-  font-weight: 400;
-  position: absolute;
-  top: 1rem;
-  line-height: 1;
-  left: 1em;
-}
-.search-home::after {
-  content: "";
-}
-.search-home input[type=search] {
-  margin-right: 12px;
-  padding-left: 40px;
-  padding-right: 16px;
-}
 .search input[type=submit] {
   margin-right: 12px;
 }
 .search input[type=search],
 .search .clear-button {
   background-color: #fff;
-  border-radius: 30px;
   border: none;
 }
 .search input[type=search] {
@@ -1475,6 +1456,24 @@ ul {
 }
 .search-has-value .clear-button {
   display: flex;
+}
+.search-home::before {
+  content: "\f002";
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 400;
+  position: absolute;
+  top: 1rem;
+  line-height: 1;
+  left: 1em;
+}
+.search-home::after {
+  content: "";
+}
+.search-home input[type=search] {
+  margin-right: 12px;
+  padding-left: 40px;
+  padding-right: 16px;
 }
 
 [dir=ltr] .search input[type=search] {

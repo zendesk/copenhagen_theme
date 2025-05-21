@@ -47,29 +47,6 @@ $input-background: $background-subtle;
     border-color: #FFF;
   }
 
-  &-home {
-    &::before {
-        content: "\f002";
-        font-family: 'Font Awesome 6 Pro';
-        font-style: normal;
-        font-weight: 400;
-        position: absolute;
-        top: 1rem;
-        line-height: 1;
-        left: 1em;
-    }
-
-    &::after {
-      content: "";
-    }
-
-    input[type="search"] {
-        margin-right: 12px;
-        padding-left: $padding-right;
-        padding-right: $padding-left;
-    }
-  }
-
   input[type="submit"] {
       @extend .button;
       margin-right: 12px;
@@ -78,7 +55,6 @@ $input-background: $background-subtle;
   input[type="search"], 
   .clear-button {
     background-color: #fff;
-    border-radius: 30px;
     border: none;
   }
 
@@ -148,6 +124,29 @@ $input-background: $background-subtle;
 
   &-has-value .clear-button {
       display: flex;
+  }
+
+  &-home {
+    &::before {
+        content: "\f002";
+        font-family: 'Font Awesome 6 Pro';
+        font-style: normal;
+        font-weight: 400;
+        position: absolute;
+        top: 1rem;
+        line-height: 1;
+        left: 1em;
+    }
+
+    &::after {
+      content: "";
+    }
+
+    input[type="search"] {
+        margin-right: 12px;
+        padding-left: $padding-right;
+        padding-right: $padding-left;
+    }
   }
 
 }
