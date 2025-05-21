@@ -1,3 +1,10 @@
+# [4.4.0-beta.19](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.18...v4.4.0-beta.19) (2025-05-21)
+
+
+### Bug Fixes
+
+* added styles for service catalog description ([884ca6a](https://github.com/zendesk/copenhagen_theme/commit/884ca6a84d323aa75ce5ba0facc9a61a8b01d844))
+
 # [4.4.0-beta.18](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.17...v4.4.0-beta.18) (2025-05-13)
 
 
