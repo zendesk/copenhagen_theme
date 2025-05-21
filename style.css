@@ -896,6 +896,7 @@ ul {
   background-color: #ffffff;
   position: sticky;
   top: 0;
+  z-index: 2;
   box-shadow: 0px 2px 4px rgba(28, 29, 27, 0.0784313725);
 }
 
