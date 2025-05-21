@@ -12,7 +12,7 @@ section.hero {
     background: linear-gradient(90deg, #515ba5, #58b78e);
     overflow: clip;
     
-    &:before {
+    &::before {
       content: "";
       height: 200vw;
       width: 200vw;

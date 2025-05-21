@@ -109,7 +109,6 @@ $input-background: $background-subtle;
 
   input[type="submit"] {
       @extend .button;
-      margin-right: 12px;
   }
 
   input[type="search"], 
@@ -199,7 +198,7 @@ $input-background: $background-subtle;
     }
 
     &::after {
-      content: "";
+      content: "" !important;
     }
 
     input[type="search"] {

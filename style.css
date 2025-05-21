@@ -1435,9 +1435,6 @@ ul {
 .search:focus-within {
   border-color: transparent;
 }
-.search input[type=submit] {
-  margin-right: 12px;
-}
 .search input[type=search],
 .search .clear-button {
   background-color: #fff;
@@ -1510,7 +1507,7 @@ ul {
   left: 1em;
 }
 .search-home::after {
-  content: "";
+  content: "" !important;
 }
 .search-home input[type=search] {
   margin-right: 12px;
@@ -1553,7 +1550,7 @@ section.hero-article, section.hero-search-results {
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article:before, section.hero-search-results:before {
+section.hero-article::before, section.hero-search-results::before {
   content: "";
   height: 200vw;
   width: 200vw;
@@ -2407,10 +2404,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-return-to-top-icon {
   transform: rotate(0.5turn);
 }
-.article-subscribe button :before {
+.article-subscribe button::before {
   content: "+ ";
 }
-.article-subscribe button[data-selected=true] :before {
+.article-subscribe button[data-selected=true]::before {
   content: "- ";
 }
 .article td > p:first-child,

@@ -206,12 +206,12 @@
 
   &-subscribe button {
     @extend .button;
-    :before {
+    &::before {
       content: "+ ";
     }
     &[data-selected="true"] {
       @extend .button;
-      :before {
+      &::before {
         content: "- ";
       }
     }
