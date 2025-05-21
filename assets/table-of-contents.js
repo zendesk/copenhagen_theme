@@ -24,16 +24,16 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const tocAnchors = tocContainer.querySelectorAll("a");
     const obFunc = (entries) => {
         entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            const index = headings.indexOf(entry.target);
-            tocAnchors.forEach((tab) => {
-                tab.classList.remove("active");
-            });
-            tocAnchors[index].classList.add("active");
-            tocAnchors[index].scrollIntoView({
-                block: "nearest"
-            });
-        }
+            if (entry.isIntersecting) {
+                const index = headings.indexOf(entry.target);
+                tocAnchors.forEach((tab) => {
+                    tab.classList.remove("active");
+                });
+                tocAnchors[index].classList.add("active");
+                tocAnchors[index].scrollIntoView({
+                    block: "nearest"
+                });
+            }
         })
     };
     const obOption = {
