@@ -104,7 +104,7 @@ $input-background: $background-subtle;
   }
 
   &:focus-within {
-    border-color: #FFF;
+    border-color: transparent;
   }
 
   input[type="submit"] {
@@ -121,7 +121,7 @@ $input-background: $background-subtle;
   input[type="search"] {
 
     background-color: color.adjust($input-background, $alpha: 0.8);
-    border-color: color.adjust($input-background, $alpha: 0.8);
+    border-color: transparent;
     border-style: solid;
     border-width: 1px;
     padding: 16px;
@@ -229,5 +229,6 @@ $input-background: $background-subtle;
 
 .article-sidebar input[type="search"] {
     background: color.scale($input-background, $alpha: -20%);
-    border-color: color.scale($input-background, $alpha: -20%);
+    border-color: none;
+    border: none;
 }
