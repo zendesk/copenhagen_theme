@@ -6,7 +6,7 @@
   * 25%     | 75%     | 0%
   */
   @include desktop {
-    flex: 1 0 75%;
+    flex: 1 1 75%;
     max-width: 75%;
     min-width: 640px;
   }

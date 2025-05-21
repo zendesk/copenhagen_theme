@@ -1547,7 +1547,7 @@ section.hero {
 section.hero-article, section.hero-search-results {
   padding-bottom: 14rem;
   padding-top: 140px;
-  margin-bottom: -10rem;
+  margin-bottom: -12rem;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
@@ -2119,7 +2119,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 @media (min-width: 1024px) {
   .article {
-    flex: 1 0 75%;
+    flex: 1 1 75%;
     max-width: 75%;
     min-width: 640px;
   }
