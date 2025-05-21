@@ -99,7 +99,7 @@
     "url-pattern": "1.0.3",
     "vinyl": "^3.0.0",
     "vinyl-fs": "^4.0.0",
-    "wait-on": "7.0.1"
+    "wait-on": "8.0.3"
   },
   "resolutions": {
     "@types/react": "^17.x"
