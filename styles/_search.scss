@@ -1,24 +1,78 @@
+@use "sass:color";
+
 /***** Search field *****/
 
-$icon-color: #777;
-$padding-left: 40px;
-$padding-right: 20px;
+$icon-color: #000;
+$padding-left: 16px;
+$padding-right: 40px;
+$input-background: $background-subtle;
 
 .search-container {
   position: relative;
 }
 
 .search {
-  border-color: $high-contrast-border-color;
-  border-radius: 30px;
-  border-style: solid;
-  border-width: 1px;
+  border-width: 0px;
   display: flex;
   position: relative;
   transition: $input-transition;
 
+  @include desktop {
+      flex-direction: row;
+  }
+  
+  [dir="ltr"] &::after {
+      content: "\f002";
+      font-family: 'Font Awesome 6 Pro';
+      font-style: normal;
+      font-weight: 400;
+      position: absolute;
+      top: 1rem;
+      line-height: 1;
+      right: 1em;
+  }
+
+  [dir="rtl"] &::before {
+      content: "\f002";
+      font-family: 'Font Awesome 6 Pro';
+      font-style: normal;
+      font-weight: 400;
+      position: absolute;
+      top: 1rem;
+      line-height: 1;
+      left: 1em;
+  }
+
   &:focus-within {
-    border-color: $brand_color;
+    border-color: #FFF;
+  }
+
+  &-home {
+    &::before {
+        content: "\f002";
+        font-family: 'Font Awesome 6 Pro';
+        font-style: normal;
+        font-weight: 400;
+        position: absolute;
+        top: 1rem;
+        line-height: 1;
+        left: 1em;
+    }
+
+    &::after {
+      content: "";
+    }
+
+    input[type="search"] {
+        margin-right: 12px;
+        padding-left: $padding-right;
+        padding-right: $padding-left;
+    }
+  }
+
+  input[type="submit"] {
+      @extend .button;
+      margin-right: 12px;
   }
 
   input[type="search"], 
@@ -28,94 +82,106 @@ $padding-right: 20px;
     border: none;
   }
 
-  &-full input[type="search"], 
-  &-full .clear-button {
-    border-color: #fff;
-  }
-
   input[type="search"] {
-    appearance: none;
+
+    background-color: color.adjust($input-background, $alpha: 0.8);
+    border-color: color.adjust($input-background, $alpha: 0.8);
+    border-style: solid;
+    border-width: 1px;
+    padding: 16px;
+    appearance: none;    
     -webkit-appearance: none;
     box-sizing: border-box;
-    color: $field-text-color;
+    color: $text_color;
     flex: 1 1 auto;
-    height: 40px;
+    height: auto;
     width: 100%;
+    font-size: $font-size-smaller;
+    margin-bottom: 0px;
+
+    &::placeholder {
+        opacity: 1;
+        color: $text_color;
+    }
 
     &:focus {
-      color: $field-text-focus-color;
+        color: $field-text-focus-color;
+        border-color: $brand_color;
     }
 
     &::-webkit-search-decoration,
     &::-webkit-search-cancel-button,
     &::-webkit-search-results-button,
     &::-webkit-search-results-decoration {
-      -webkit-appearance: none;
+        -webkit-appearance: none;
     }
 
     &:-webkit-autofill,
-    &:-webkit-autofill:hover, 
+    &:-webkit-autofill:hover,
     &:-webkit-autofill:focus {
-      -webkit-box-shadow: 0 0 0 1000px #fff inset;
+        -webkit-box-shadow: 0 0 0 1000px #fff inset;
     }
 
   }
 
+
   .clear-button {
-    align-items: center;
-    box-sizing: border-box;
-    color: $icon-color;
-    cursor: pointer;
-    display: none;
-    flex: none;
-    justify-content: center;
-    padding: 0 15px;
+      align-items: center;
+      box-sizing: border-box;
+      color: $icon-color;
+      cursor: pointer;
+      display: none;
+      flex: none;
+      justify-content: center;
+      padding: 0 15px;
 
-    &:hover {
-      background-color: $brand_color;
-      color: #fff;
-    }
+      &:hover {
+          background-color: $brand_color;
+          color: #fff;
+      }
 
-    &:focus {
-      @include focus-ring;
-    }
+      &:focus {
+          @include focus-ring;
+      }
 
   }
 
   &-has-value .clear-button {
-    display: flex;
+      display: flex;
   }
 
 }
 
 [dir="ltr"] .search {
-  input[type="search"] {
-    padding-left: $padding-left;
-    padding-right: $padding-right;
-  }
-
-  &-has-value input[type="search"] {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-right-color: transparent;
-
-    &:focus {
-      border-right-color: $brand_color;
+    input[type="search"] {
+        padding-left: $padding-left;
+        padding-right: $padding-right;
     }
 
-  }
+    &-has-value input[type="search"] {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right-color: transparent;
 
-  .clear-button {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-left-color: transparent;
+        &:focus {
+            border-right-color: $brand_color;
+        }
 
-    &:focus {
-      border-left-color: $brand_color;
     }
-    
-  }
+
+    .clear-button {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left-color: transparent;
+
+        &:focus {
+            border-left-color: $brand_color;
+        }
+
+    }
 }
+
+
 
 [dir="rtl"] .search {
   input[type="search"] {
@@ -146,7 +212,7 @@ $padding-right: 20px;
   }
 }
 
-.search-icon {
+/* .search-icon {
   @include vertical-align;
   position: absolute;
   left: 15px;
@@ -160,4 +226,9 @@ $padding-right: 20px;
     left: auto;
     right: 15px;
   }
+} */
+
+.article-sidebar input[type="search"] {
+    background: color.scale($input-background, $alpha: -20%);
+    border-color: color.scale($input-background, $alpha: -20%);
 }

@@ -15,4 +15,28 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ul.insertAdjacentHTML("beforeend", keyPointer);
     });
 
+    const tocAnchors = tocContainer.querySelectorAll("a");
+    const obFunc = (entries) => {
+        entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const index = headings.indexOf(entry.target);
+            tocAnchors.forEach((tab) => {
+                tab.classList.remove("active");
+            });
+            tocAnchors[index].classList.add("active");
+            tocAnchors[index].scrollIntoView({
+                block: "nearest"
+            });
+        }
+        })
+    };
+    const obOption = {
+        rootMargin: "-30px 0% -77%",
+        threshold: 1
+    };
+    
+    const observer = new IntersectionObserver(obFunc, obOption);
+    headings.forEach((hTwo) => observer.observe(hTwo));
+
 });
+

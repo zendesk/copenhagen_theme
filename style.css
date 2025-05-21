@@ -182,13 +182,12 @@ template {
   display: none;
 }
 
-/* Font sizes */
-/* Colours */
-/* Text */
+/* Variables */
 /* Links */
-/* Buttons */
 /* Borders */
+/* Buttons */
 /* Forms */
+/* Breakpoints variables */
 /* Grid */
 /*!
  * Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com
@@ -1391,12 +1390,10 @@ ul {
   line-height: 1;
   left: 1em;
 }
-.search-home input[type=search] {
-  margin-right: 12px;
-  padding-left: 40px;
-  padding-right: 16px;
+.search:focus-within {
+  border-color: #FFF;
 }
-.search-home input[type=search]::before {
+.search-home::before {
   content: "\f002";
   font-family: "Font Awesome 6 Pro";
   font-style: normal;
@@ -1406,8 +1403,22 @@ ul {
   line-height: 1;
   left: 1em;
 }
+.search-home::after {
+  content: "";
+}
+.search-home input[type=search] {
+  margin-right: 12px;
+  padding-left: 40px;
+  padding-right: 16px;
+}
 .search input[type=submit] {
   margin-right: 12px;
+}
+.search input[type=search],
+.search .clear-button {
+  background-color: #fff;
+  border-radius: 30px;
+  border: none;
 }
 .search input[type=search] {
   background-color: #f8f8f8;
@@ -1508,6 +1519,21 @@ ul {
   border-right-color: #515ba5;
 }
 
+/* .search-icon {
+  @include vertical-align;
+  position: absolute;
+  left: 15px;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  color: $icon-color;
+  pointer-events: none;
+
+  [dir="rtl"] & {
+    left: auto;
+    right: 15px;
+  }
+} */
 .article-sidebar input[type=search] {
   background: rgba(248, 248, 248, 0.8);
   border-color: rgba(248, 248, 248, 0.8);
@@ -2090,6 +2116,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   background: #FFFFFF;
   padding: 32px;
   flex: 1 0 auto;
+  box-shadow: 1px 18px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 80px;
 }
 @media (min-width: 1024px) {
   .article {
@@ -2411,6 +2439,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .recent-articles li,
 .related-articles li {
   margin-bottom: 15px;
+}
+
+.table-of-contents {
+  position: sticky;
+  top: 100px;
 }
 
 /***** Attachments *****/
@@ -3620,6 +3653,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: block;
 }
 
+/* TOC */
+.table-of-contents {
+  position: sticky;
+  top: 100px;
+}
+
 /***** My activities *****/
 .my-activities-nav {
   background-color: #f2f2f2;
@@ -4086,10 +4125,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 .metadata-left {
   justify-content: start;
+  align-items: center;
 }
 
 .metadata-right {
   justify-content: right;
+  align-items: center;
 }
 
 /* User Profiles */

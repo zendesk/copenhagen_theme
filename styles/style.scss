@@ -1,6 +1,5 @@
 @import "normalize";
 @import "variables";
-@import "custom_variables";
 
 // fontawesome
 //@import "fontawesome";
@@ -10,13 +9,10 @@
 @import "custom_functions";
 @import "mixins";
 @import "base";
-@import "custom_grid";
+@import "grid";
 @import "custom_thumbnails";
 @import "custom_utilities";
-//@import "buttons";
-
-@import "custom_buttons";
-
+@import "buttons";
 @import "split_button";
 @import "tables";
 @import "forms";
@@ -24,8 +20,7 @@
 @import "user";
 @import "footer";
 @import "breadcrumbs";
-@import "custom_search";
-// @import "search";
+@import "search";
 @import "hero";
 @import "page_header";
 @import "sub-nav";
@@ -47,6 +42,7 @@
 @import "community_badge";
 @import "collapsible-nav";
 @import "collapsible-sidebar";
+@import "table-of-contents";
 @import "my-activities";
 @import "request";
 @import "pagination";

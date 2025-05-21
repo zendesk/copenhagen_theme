@@ -1,37 +1,88 @@
-// Variables
+/* Variables */
+
+$text_font: Quicksand, Arial, Helvetica, sans-serif;
 
 // Colors
-$hover-button-color: zass-darken(\$brand_color, 20%);
-$secondary-text-color: zass-lighten(\$text_color, 20%);
 
-$primary-shade: zass-darken(\$background_color, 3%); //#f8f8f8 for the default background_color
-$secondary-shade: zass-darken(\$background_color, 5%); //#f2f2f2 for the default background_color
-
-$font-size-bigger: 16px;
-$font-size-base: 15px;
-$font-size-navigation: 14px;
-$font-size-small: 13px;
-$font-size-smaller: 11px;
-
+$brand_color: #515ba5;
+$background-color: #ffffff;
+$background-subtle: #f8f8f8;
+$background-neutral: #ffffff;
 $dark: #1d1e1c;
+$primary_accent: $brand_color;
 
-$high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
-$low-contrast-border-color: #ddd; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
-$menu-border-color: #d8dcde;
+$primary-shade: darken($background_color, 3%); //#f8f8f8 for the default background_color
+$secondary-shade: darken($background_color, 5%); //#f2f2f2 for the default background_color
 
-$button-color: \$brand_color;
+// Text
 
-$input-font-size: 14px;
-$field-text-color: #666;
-$field-text-focus-color: #555;
+$text_color: $dark;
+$brand_text_color: #ffffff;
 
+$hover-button-color: darken($primary_accent, 20%);
+$secondary-text-color: lighten($text_color, 20%);
 
-// Breakpoints variables
-$tablet-width: 768px;
-$desktop-width: 1024px;
-$max-width-container: 1160px;
+$font-size-bigger: 1.375rem;
+$font-size-base: 1rem;
+$font-size-navigation: .9375em;
+$font-size-small: .9375em; // 15px
+$font-size-smaller: .875em; // 14px
+
+$font-size-display-4: 3.125rem; // 50px - homepage heading
+$font-size-h1: 2.625rem; // 42px - article title
+$font-size-h2: 1.875rem; // 30px - section titles
+$font-size-h3:  1.625rem; // 26px - search results header
+$font-size-h4: 1.375rem; // 22px (name of the help center in the header)
+$font-size-h5: 1.125rem; // 18px (search result heading, card heading)
+$font-size-h6: 1rem; // 16px
 
 $font-weight-semibold: 600;
 
+/* Links */
+
+$link_color: $primary_accent;
+$hover_link_color: darken($primary_accent, 20%);
+$visited_link_color: darken($primary_accent, 20%);
+
+/* Borders */
+
+$high-contrast-border-color: #87929D; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
+$low-contrast-border-color: #B0B0B0; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
+$menu-border-color: #d8dcde;
+
+/* Buttons */
+
+$button-color: $brand_color;
+$border-radius: 4px;
+$hover_brand_color: #454D8C;
+$brand_text_color: #fff;
+
+/* Forms */
+
+$input-font-size: 14px;
+$field-text-color: $secondary-text-color;
+$field-text-focus-color: darken($secondary-text-color, 3%);
+
+/* Breakpoints variables */
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$max-width-container: 1160px;
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+/* Grid */
+
+$gutter: 16px;
+$max-width-container: 1280px;
+$padding: 32px;
+
 // Transitions
+
 $input-transition: border .12s ease-in-out;

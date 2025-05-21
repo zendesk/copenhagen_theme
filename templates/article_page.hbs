@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       <div>
-        <h1 class="h1">{{article.title}}</p>
+        <h1 title="{{article.title}}" class="article-title h1">{{article.title}}</p>
       </div>
     </div>
     <div class="row">
@@ -39,81 +39,9 @@
       <div class="collapsible-sidebar table-of-contents">
         
       </div>
-      {{#if settings.show_articles_in_section}}
-        <div class="collapsible-sidebar" style="">
-          <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon">
-              <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-            </svg>
-          </button>
-          <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
-          </span>
-          <div class="collapsible-sidebar-body">
-            <ul>
-              {{#each section.articles}}
-                <li>
-                  <a href="{{url}}" 
-                     class="sidenav-item {{#is id ../article.id}}current-article{{/is}}"
-                     {{#is id ../article.id}}aria-current="page"{{/is}}>
-                       {{title}}
-                  </a>
-                </li>
-              {{/each}}
-            </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
-          </div>
-        </div>
-      {{/if}}
     </aside>
 
     <article id="main-content" class="article">
-      <header class="article-header">
-        <h1 title="{{article.title}}" class="article-title">
-          {{article.title}}
-          {{#if article.internal}}
-          <i class="fal fa-lock-alt" title="{{t 'internal'}}"></i>
-          {{/if}}
-        </h1>
-
-        <div class="article-author">
-          {{#if settings.show_article_author}}
-            <div class="avatar article-avatar">
-              {{#if article.author.agent}}
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" aria-hidden="true" viewBox="0 0 12 12" class="icon-agent" aria-label="{{t 'team_member' name=article.author.name}}">
-                  <path fill="currentColor" d="M6 0C2.7 0 0 2.7 0 6s2.7 6 6 6 6-2.7 6-6-2.7-6-6-6zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm2.3 7H3.7c-.3 0-.4-.3-.3-.5C3.9 7.6 4.9 7 6 7s2.1.6 2.6 1.5c.1.2 0 .5-.3.5z"/>
-                </svg>
-              {{/if}}
-              <img src="{{article.author.avatar_url}}" alt="" class="user-avatar"/>
-            </div>
-          {{/if}}
-          <div class="article-meta">
-            {{#if settings.show_article_author}}
-              {{#link 'user_profile' id=article.author.id}}
-                {{article.author.name}}
-              {{/link}}
-            {{/if}}
-
-            <div class="meta-group">
-              {{#is article.created_at article.edited_at}}
-                <span class="meta-data">{{date article.created_at timeago=true}}</span>
-              {{else}}
-                <span class="meta-data">{{date article.edited_at timeago=true}}</span>
-                <span class="meta-data">{{t 'updated'}}</span>
-              {{/is}}
-            </div>
-          </div>
-        </div>
-
-        {{#if settings.show_follow_article}}
-          <div class="article-subscribe">{{subscribe}}</div>
-        {{/if}}
-      </header>
 
       <section class="article-info">
         <div class="article-content">
