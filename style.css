@@ -1559,7 +1559,6 @@ section.hero-article:before, section.hero-search-results:before {
   width: 200vw;
   display: block;
   background: url(\$tiled_bg);
-  background-size: 180px;
   position: absolute;
   top: 50%;
   left: 50%;
