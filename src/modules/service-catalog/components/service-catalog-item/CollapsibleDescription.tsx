@@ -69,6 +69,7 @@ export const CollapsibleDescription = ({
       <ItemTitle tag="h1">{title}</ItemTitle>
       {description && (
         <CollapsibleText
+          className="service-catalog-description"
           expanded={isExpanded || !showToggleButton}
           dangerouslySetInnerHTML={{ __html: description }}
         ></CollapsibleText>
