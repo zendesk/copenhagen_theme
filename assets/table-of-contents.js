@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 document.addEventListener("DOMContentLoaded", function(event) {
     
+    const tocContainer = document.querySelector(".table-of-contents");
     const tocAnchors = tocContainer.querySelectorAll("a");
     const obFunc = (entries) => {
         entries.forEach((entry) => {
