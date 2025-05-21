@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     tocContainer.appendChild(heading);
     tocContainer.appendChild(ul);
-    headings.map((heading) => {
+    headings.map((heading, index) => {
         const id = heading.innerText.toLowerCase().replaceAll(" ", "_");
         heading.setAttribute("id", id);
         const anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
