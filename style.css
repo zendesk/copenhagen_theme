@@ -1359,6 +1359,48 @@ ul {
   position: relative;
 }
 
+[dir=ltr] .search input[type=search] {
+  padding-left: 16px;
+  padding-right: 40px;
+}
+[dir=ltr] .search-has-value input[type=search] {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-right-color: transparent;
+}
+[dir=ltr] .search-has-value input[type=search]:focus {
+  border-right-color: #515ba5;
+}
+[dir=ltr] .search .clear-button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left-color: transparent;
+}
+[dir=ltr] .search .clear-button:focus {
+  border-left-color: #515ba5;
+}
+
+[dir=rtl] .search input[type=search] {
+  padding-left: 40px;
+  padding-right: 16px;
+}
+[dir=rtl] .search-has-value input[type=search] {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-left-color: transparent;
+}
+[dir=rtl] .search-has-value input[type=search]:focus {
+  border-left-color: #515ba5;
+}
+[dir=rtl] .search .clear-button {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-right-color: transparent;
+}
+[dir=rtl] .search .clear-button:focus {
+  border-right-color: #515ba5;
+}
+
 .search {
   border-width: 0px;
   display: flex;
@@ -1472,50 +1514,8 @@ ul {
 }
 .search-home input[type=search] {
   margin-right: 12px;
-  padding-left: 40px;
-  padding-right: 16px;
-}
-
-[dir=ltr] .search input[type=search] {
-  padding-left: 16px;
-  padding-right: 40px;
-}
-[dir=ltr] .search-has-value input[type=search] {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  border-right-color: transparent;
-}
-[dir=ltr] .search-has-value input[type=search]:focus {
-  border-right-color: #515ba5;
-}
-[dir=ltr] .search .clear-button {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-left-color: transparent;
-}
-[dir=ltr] .search .clear-button:focus {
-  border-left-color: #515ba5;
-}
-
-[dir=rtl] .search input[type=search] {
-  padding-left: 40px;
-  padding-right: 16px;
-}
-[dir=rtl] .search-has-value input[type=search] {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  border-left-color: transparent;
-}
-[dir=rtl] .search-has-value input[type=search]:focus {
-  border-left-color: #515ba5;
-}
-[dir=rtl] .search .clear-button {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  border-right-color: transparent;
-}
-[dir=rtl] .search .clear-button:focus {
-  border-right-color: #515ba5;
+  padding-left: 16px !important;
+  padding-right: 40px !important;
 }
 
 /* .search-icon {

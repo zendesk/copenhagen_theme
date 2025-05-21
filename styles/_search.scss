@@ -11,6 +11,66 @@ $input-background: $background-subtle;
   position: relative;
 }
 
+[dir="ltr"] .search {
+    input[type="search"] {
+        padding-left: $padding-left;
+        padding-right: $padding-right;
+    }
+
+    &-has-value input[type="search"] {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        border-right-color: transparent;
+
+        &:focus {
+            border-right-color: $brand_color;
+        }
+
+    }
+
+    .clear-button {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+        border-left-color: transparent;
+
+        &:focus {
+            border-left-color: $brand_color;
+        }
+
+    }
+}
+
+
+
+[dir="rtl"] .search {
+  input[type="search"] {
+    padding-left: $padding-right;
+    padding-right: $padding-left;
+  }
+
+  &-has-value input[type="search"] {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-left-color: transparent;
+
+    &:focus {
+      border-left-color: $brand_color;
+    }
+
+  }
+
+  .clear-button {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-right-color: transparent;
+
+    &:focus {
+      border-right-color: $brand_color;
+    }
+
+  }
+}
+
 .search {
   border-width: 0px;
   display: flex;
@@ -144,71 +204,11 @@ $input-background: $background-subtle;
 
     input[type="search"] {
         margin-right: 12px;
-        padding-left: $padding-right;
-        padding-right: $padding-left;
+        padding-left: $padding-left !important;
+        padding-right: $padding-right !important;
     }
   }
 
-}
-
-[dir="ltr"] .search {
-    input[type="search"] {
-        padding-left: $padding-left;
-        padding-right: $padding-right;
-    }
-
-    &-has-value input[type="search"] {
-        border-bottom-right-radius: 0;
-        border-top-right-radius: 0;
-        border-right-color: transparent;
-
-        &:focus {
-            border-right-color: $brand_color;
-        }
-
-    }
-
-    .clear-button {
-        border-bottom-left-radius: 0;
-        border-top-left-radius: 0;
-        border-left-color: transparent;
-
-        &:focus {
-            border-left-color: $brand_color;
-        }
-
-    }
-}
-
-
-
-[dir="rtl"] .search {
-  input[type="search"] {
-    padding-left: $padding-right;
-    padding-right: $padding-left;
-  }
-
-  &-has-value input[type="search"] {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-left-color: transparent;
-
-    &:focus {
-      border-left-color: $brand_color;
-    }
-
-  }
-
-  .clear-button {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    border-right-color: transparent;
-
-    &:focus {
-      border-right-color: $brand_color;
-    }
-
-  }
 }
 
 /* .search-icon {
