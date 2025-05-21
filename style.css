@@ -1514,8 +1514,8 @@ ul {
 }
 .search-home input[type=search] {
   margin-right: 12px;
-  padding-left: 16px !important;
-  padding-right: 40px !important;
+  padding-right: 16px !important;
+  padding-left: 40px !important;
 }
 
 /* .search-icon {
@@ -1547,7 +1547,7 @@ section.hero {
 section.hero-article, section.hero-search-results {
   padding-bottom: 14rem;
   padding-top: 140px;
-  margin-bottom: -12rem;
+  margin-bottom: -13rem;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
