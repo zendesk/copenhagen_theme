@@ -3651,6 +3651,17 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   position: sticky;
   top: 100px;
 }
+.table-of-contents a {
+  font-size: 1rem;
+  color: #000;
+}
+.table-of-contents li {
+  padding: 5px 5px 5px 16px;
+  border-left: 1px solid #cbcbcb;
+}
+.table-of-contents li.active {
+  border-left: 1px solid #515ba5;
+}
 
 /***** My activities *****/
 .my-activities-nav {

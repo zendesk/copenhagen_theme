@@ -4,5 +4,19 @@
 .table-of-contents {
   position: sticky;
   top: 100px;
+  
+  a {
+    font-size:  1rem;
+    color: #000;
+  }
+
+  li {
+      padding: 5px 5px 5px 16px;
+      border-left: 1px solid #cbcbcb;
+
+      &.active {
+        border-left: 1px solid #515ba5;
+      }
+  }
 }
 
