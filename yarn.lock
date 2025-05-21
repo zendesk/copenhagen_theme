@@ -3690,14 +3690,14 @@
     "@zendeskgarden/svg-icons" "7.0.0"
     lodash.debounce "4.0.8"
 
-"@zendesk/zcli-apps@^1.0.0-beta.34":
-  version "1.0.0-beta.34"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli-apps/-/zcli-apps-1.0.0-beta.34.tgz#a1039cbbe1879ae55aefdf4d0cc924df6ec72a70"
-  integrity sha512-pIUyFRr+BPLtXuzbr7BJQFXVManEaZZGGy5qYePPhECRW1cyY7Xt0la1ER69K4kyvyjgSq4dHrIWalG30vj8yQ==
+"@zendesk/zcli-apps@^1.0.0-beta.50":
+  version "1.0.0-beta.50"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli-apps/-/zcli-apps-1.0.0-beta.50.tgz#9ef325bd8c7c5bfd48b1018569df744ffa10d41f"
+  integrity sha512-Rkc4gyDPx3rETAY7hnhb/G1236UuLZxC54yLrsMaBocHz4/vWf3wWhKZWLCj+kOjdwXrEmVG84LomMO+EllgWw==
   dependencies:
-    adm-zip "^0.5.6"
+    adm-zip "0.5.10"
     archiver "^5.3.1"
-    axios "^0.27.2"
+    axios "^1.7.5"
     chalk "^4.1.2"
     cors "^2.8.5"
     express "^4.17.1"
@@ -3709,48 +3709,48 @@
     tslib "^2.4.0"
     uuid "^8.3.2"
 
-"@zendesk/zcli-core@^1.0.0-beta.38":
-  version "1.0.0-beta.38"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli-core/-/zcli-core-1.0.0-beta.38.tgz#91ee8d10bccb3b186d094fd96ef4f77bbeb0fea0"
-  integrity sha512-8pC5UVvHsUsWsZ4I9PF2NjBM/CwvAtzrPvNg+TnQ1Mu2VJm2LCjyecWO7LioP/46zeg2tEofSHnlGD8emylHpA==
+"@zendesk/zcli-core@^1.0.0-beta.49":
+  version "1.0.0-beta.49"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli-core/-/zcli-core-1.0.0-beta.49.tgz#842a7e156ce46c020a8b1349be7d32678b5e60a7"
+  integrity sha512-pHuqd7llkEoZ1HcbJKFNqoZr5HrdH/gVR+/ERosUWbCHBMLzimNu3z93wwVoewZwV7ZBBsOdhi6v1TdcRORB7g==
   dependencies:
     "@oclif/plugin-plugins" "=2.1.12"
-    axios "^0.27.2"
+    axios "^1.7.5"
     chalk "^4.1.2"
     fs-extra "^10.1.0"
   optionalDependencies:
     keytar "^7.9.0"
 
-"@zendesk/zcli-themes@^1.0.0-beta.40":
-  version "1.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli-themes/-/zcli-themes-1.0.0-beta.40.tgz#45488fa97be35a519d96c54bdaa626d7ccc4122d"
-  integrity sha512-ef+/HW7jURbVdf0ImjfeSmo/gNc5ZhXDt4pKQrKMistdXeLBnUWJaenWhzVg7cGRvOIWqeBWNvMNklctB7stZg==
+"@zendesk/zcli-themes@^1.0.0-beta.52":
+  version "1.0.0-beta.52"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli-themes/-/zcli-themes-1.0.0-beta.52.tgz#da7c64ef2844492ae6ef10121411c4481bcb476d"
+  integrity sha512-UcVL7lTwSiFAI493aE99kvajubt73fdgIzxEu8l+e5W9WK81ze6AsNhJDJlXnrUMsmS4MBMhjlSU7oDiF46Odw==
   dependencies:
     "@types/inquirer" "^8.0.0"
     "@types/ws" "^8.5.4"
-    axios "^0.27.2"
+    axios "^1.7.5"
     chalk "^4.1.2"
     chokidar "^3.5.3"
     cors "^2.8.5"
     express "^4.17.1"
     glob "^10.1.0"
     inquirer "^8.0.0"
-    sass "^1.60.0"
+    sass "1.60.0"
     ws "^8.13.0"
 
-"@zendesk/zcli@1.0.0-beta.40":
-  version "1.0.0-beta.40"
-  resolved "https://registry.yarnpkg.com/@zendesk/zcli/-/zcli-1.0.0-beta.40.tgz#cdfe5c99161dcbeda8dc15084041e16ede30ce6d"
-  integrity sha512-/yFApqptYvHj3bQIgkqrySq8/FvyoXQta5UFa+rbHMwPkUz29P+t8GoDNsxz51pTBScMy4lPcx7L7UTxyZwfMw==
+"@zendesk/zcli@1.0.0-beta.52":
+  version "1.0.0-beta.52"
+  resolved "https://registry.yarnpkg.com/@zendesk/zcli/-/zcli-1.0.0-beta.52.tgz#46e0ed496359cd2afbb595900e11aa5e74bfd10e"
+  integrity sha512-G+R5LWnj7YiCfSkpcnXABWDcIHzMiKF9RYTtGrh2VV+pUv5FAngAb52BXsTxNhpyToLaHfdZqDvRFZZe2PZR7w==
   dependencies:
     "@oclif/plugin-autocomplete" "=1.3.10"
     "@oclif/plugin-help" "=5.1.23"
     "@oclif/plugin-not-found" "=2.3.16"
     "@oclif/plugin-update" "=3.0.13"
     "@oclif/plugin-warn-if-update-available" "=2.0.20"
-    "@zendesk/zcli-apps" "^1.0.0-beta.34"
-    "@zendesk/zcli-core" "^1.0.0-beta.38"
-    "@zendesk/zcli-themes" "^1.0.0-beta.40"
+    "@zendesk/zcli-apps" "^1.0.0-beta.50"
+    "@zendesk/zcli-core" "^1.0.0-beta.49"
+    "@zendesk/zcli-themes" "^1.0.0-beta.52"
     chalk "^4.1.2"
     tslib "^2.4.0"
 
@@ -4104,7 +4104,7 @@ acorn@^8.8.2:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.11.3.tgz#71e0b14e13a4ec160724b38fb7b0f233b1b81d7a"
   integrity sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==
 
-adm-zip@^0.5.6:
+adm-zip@0.5.10:
   version "0.5.10"
   resolved "https://registry.yarnpkg.com/adm-zip/-/adm-zip-0.5.10.tgz#4a51d5ab544b1f5ce51e1b9043139b639afff45b"
   integrity sha512-x0HvcHqVJNTPk/Bw8JbLWlWoo6Wwnsug0fnYYro1HBrjxZ3G7/AZk7Ahv8JwDe1uIcz8eBqvu86FuF1POiG7vQ==
@@ -4571,6 +4571,15 @@ axios@^0.27.2:
   dependencies:
     follow-redirects "^1.14.9"
     form-data "^4.0.0"
+
+axios@^1.7.5:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.9.0.tgz#25534e3b72b54540077d33046f77e3b8d7081901"
+  integrity sha512-re4CqKTJaURpzbLHtIi6XpDv20/CnpXOtjRY5/CU32L8gU8ek9UIivcfvSWvmKEngmVbrUtPpdDwWDWL7DNHvg==
+  dependencies:
+    follow-redirects "^1.15.6"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
 
 axobject-query@^3.2.1:
   version "3.2.1"
@@ -7331,7 +7340,7 @@ flatted@^3.2.7:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-follow-redirects@^1.14.9:
+follow-redirects@^1.14.9, follow-redirects@^1.15.6:
   version "1.15.9"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.9.tgz#a604fa10e443bf98ca94228d9eebcc2e8a2c8ee1"
   integrity sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==
@@ -12105,7 +12114,16 @@ sass@1.58.3:
     immutable "^4.0.0"
     source-map-js ">=0.6.2 <2.0.0"
 
-sass@^1.60.0, sass@^1.7.2:
+sass@1.60.0:
+  version "1.60.0"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.60.0.tgz#657f0c23a302ac494b09a5ba8497b739fb5b5a81"
+  integrity sha512-updbwW6fNb5gGm8qMXzVO7V4sWf7LMXnMly/JEyfbfERbVH46Fn6q02BX7/eHTdKpE7d+oTkMMQpFWNUMfFbgQ==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
+sass@^1.7.2:
   version "1.66.1"
   resolved "https://registry.yarnpkg.com/sass/-/sass-1.66.1.tgz#04b51c4671e4650aa393740e66a4e58b44d055b1"
   integrity sha512-50c+zTsZOJVgFfTgwwEzkjA3/QACgdNsKueWPyAR0mRINIvLAStVQBbPg14iuqEQ74NPDbXzJARJ/O4SI1zftA==
