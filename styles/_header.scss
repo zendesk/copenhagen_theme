@@ -15,6 +15,7 @@ $header-height: 71px;
   display: flex;
   height: $header-height;
   justify-content: space-between;
+  @include max-width-container;
 }
 
 .logo img {

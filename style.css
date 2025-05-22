@@ -403,7 +403,7 @@ ul {
 }
 
 .bg-subtle {
-  background-color: #f8f8f8;
+  background-color: #f4f4f4;
 }
 
 .bg-neutral {
@@ -602,7 +602,7 @@ ul {
 
 /***** Buttons *****/
 .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .article-subscribe button[data-selected=true], .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
-  background-color: #f8f8f8;
+  background-color: #f4f4f4;
   color: #1d1e1c;
   padding: 16px 38px;
   font-size: 0.875em;
@@ -906,6 +906,15 @@ ul {
   display: flex;
   height: 71px;
   justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+@media (min-width: 1280px) {
+  .header-inner {
+    padding: 0;
+    width: 90%;
+  }
 }
 
 .logo img {
@@ -1440,7 +1449,7 @@ ul {
   border: none;
 }
 .search input[type=search] {
-  background-color: #f8f8f8;
+  background-color: #f4f4f4;
   border-color: transparent;
   border-style: solid;
   border-width: 1px;
@@ -1530,7 +1539,7 @@ ul {
   }
 } */
 .article-sidebar input[type=search] {
-  background: rgba(248, 248, 248, 0.8);
+  background: rgba(244, 244, 244, 0.8);
   border-color: none;
   border: none;
 }
@@ -1605,7 +1614,7 @@ section.hero .hero-faqs::before {
   background: linear-gradient(45deg, #515ba5, #58b78e 63%) border-box;
 }
 section.hero .hero-faqs .hero-faqs-inner {
-  background-color: #f8f8f8;
+  background-color: #f4f4f4;
   padding: 32px;
 }
 section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero-faqs-inner ul li p {

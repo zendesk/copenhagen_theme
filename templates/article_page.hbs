@@ -36,7 +36,7 @@
       <div class="search-container">
         {{search scoped=settings.scoped_kb_search submit=false}}
       </div>
-      <div class="collapsible-sidebar table-of-contents">
+      <div class="table-of-contents">
         
       </div>
     </aside>
@@ -46,7 +46,7 @@
       <section class="article-info">
         <div class="article-content">
           <div class="article-body">{{article.body}}</div>
-
+<!--
           {{#if (compare article.content_tags.length ">" 0)}}
             <section class="content-tags">
               <p>{{t 'content_tags_label'}}</p>
@@ -61,7 +61,8 @@
               </ul>
             </section>
           {{/if}}
-
+          -->
+<!--
           {{#if attachments}}
             <div class="article-attachments">
               <ul class="attachments">
@@ -80,6 +81,7 @@
               </ul>
             </div>
           {{/if}}
+          -->
         </div>
       </section>
       <footer>

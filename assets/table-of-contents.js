@@ -13,13 +13,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
     tocContainer.appendChild(ul);
     headings.map((heading, index) => {
         const id = heading.innerText.toLowerCase().replaceAll(" ", "_");
+        var level = 1;
+        if (heading.tagName == "H2") {
+            level = 1; 
+        } else if (heading.tagName == "H3") {
+            level = 2;
+        }
         heading.setAttribute("id", id);
         const anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
-        var keyPointer = `<li>${anchorElement}</li>`;
+        var keyPointer = `<li class="toc-level-${level}">${anchorElement}</li>`;
         if (index === 0) {
-            keyPointer = `<li class="active">${anchorElement}</li>`;
+            keyPointer = `<li class="toc-level-${level} active">${anchorElement}</li>`;
         } else {
-            keyPointer = `<li>${anchorElement}</li>`;
+            keyPointer = `<li class="toc-level-${level}">${anchorElement}</li>`;
         }
         ul.insertAdjacentHTML("beforeend", keyPointer);
     });
