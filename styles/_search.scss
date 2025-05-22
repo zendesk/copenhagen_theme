@@ -23,7 +23,7 @@ $input-background: $background-subtle;
         border-right-color: transparent;
 
         &:focus {
-            border-right-color: $brand_color;
+            border-right-color: $brand-color;
         }
 
     }
@@ -34,7 +34,7 @@ $input-background: $background-subtle;
         border-left-color: transparent;
 
         &:focus {
-            border-left-color: $brand_color;
+            border-left-color: $brand-color;
         }
 
     }
@@ -54,7 +54,7 @@ $input-background: $background-subtle;
     border-left-color: transparent;
 
     &:focus {
-      border-left-color: $brand_color;
+      border-left-color: $brand-color;
     }
 
   }
@@ -65,7 +65,7 @@ $input-background: $background-subtle;
     border-right-color: transparent;
 
     &:focus {
-      border-right-color: $brand_color;
+      border-right-color: $brand-color;
     }
 
   }
@@ -141,7 +141,7 @@ $input-background: $background-subtle;
 
     &:focus {
         color: $field-text-focus-color;
-        border-color: $brand_color;
+        border-color: $brand-color;
     }
 
     &::-webkit-search-decoration,
@@ -171,7 +171,7 @@ $input-background: $background-subtle;
       padding: 0 15px;
 
       &:hover {
-          background-color: $brand_color;
+          background-color: $brand-color;
           color: #fff;
       }
 

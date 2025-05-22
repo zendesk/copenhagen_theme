@@ -30,7 +30,7 @@
 
 .vote-up:hover,
 .vote-down:hover {
-  color: $brand_color;
+  color: $brand-color;
 }
 
 .vote-up, .vote-down {
@@ -49,7 +49,7 @@
 }
 
 .vote-voted {
-  color: $brand_color;
+  color: $brand-color;
 }
 
 .vote-voted:hover {

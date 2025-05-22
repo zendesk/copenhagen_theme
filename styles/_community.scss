@@ -99,7 +99,7 @@
     position: relative;
     width: 100%;
 
-    &:hover { background-color: $brand_color; }
+    &:hover { background-color: $brand-color; }
 
     &:hover::after, &:focus::after {
       border-color: $brand_text_color;
@@ -107,7 +107,7 @@
     }
 
     &[data-selected="true"] {
-      background-color: $brand_color;
+      background-color: $brand-color;
       color: $brand_text_color;
 
       &::after {

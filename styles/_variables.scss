@@ -4,23 +4,347 @@ $text_font: Quicksand, Arial, Helvetica, sans-serif;
 
 // Colors
 
-$brand_color: #515ba5;
-$background-color: #ffffff;
-$background-subtle: #f4f4f4;
-$background-neutral: #ffffff;
-$dark: #1d1e1c;
-$primary_accent: $brand_color;
+// brand
+
+$q-brand-primary: ( 
+  10: #f4f6ff,
+  50: #e1e7ff,
+  100: #d1d9fd,
+  200: #b6c1f5,
+  300: #9eabeb,
+  400: #7e8ad4,
+  500: #6371bb,
+  600: #515ba5,
+  700: #3a3879,
+  800: #262a6e,
+  900: #110a4e
+);
+$q-brand-success: (
+  10: #e8f8ef,
+  50: #ceeddd,
+  100: #a4dbc0,
+  200: #7ecaa7,
+  300: #58b78e,
+  400: #3e9f78,
+  500: #268460,
+  600: #1b6f50,
+  700: #00563a,
+  800: #084630,
+  900: #003925
+);
+
+$q-brand-info: (
+  10: #e3f8ff,
+  50: #c5ecf9,
+  100: #95daf1,
+  200: #69c9e7,
+  300: #3fb6d8,
+  400: #1da0c1,
+  500: #007f9c,
+  600: #006981,
+  700: #004f62,
+  800: #003b49,
+  900: #00232d
+);
+
+$q-brand-danger: (
+  10: #ffeeee,
+  50: #ffdadb,
+  100: #ffc5c6,
+  200: #ffafb1,
+  300: #f48b90,
+  400: #d96a71,
+  500: #b84c56,
+  600: #a03b46,
+  700: #7c2731,
+  800: #651a24,
+  900: #4a0513,
+);
+
+$q-brand-warning: (
+  10: #fff8ea,
+  50: #ffecc6,
+  100: #fbd892,
+  200: #f2c464,
+  300: #dba54d,
+  400: #b7873d,
+  500: #956e31,
+  600: #785926,
+  700: #564119,
+  800: #3f3010,
+  900: #2d1f00,
+);
+
+$q-brand-neutral: (
+  10: #ffffff,
+  50: #f1f5f9,
+  100: #e2e8f0,
+  200: #d2dae5,
+  300: #a0adc0,
+  400: #7d8ca1,
+  500: #68768b,
+  600: #4d5a6b,
+  700: #364255,
+  800: #0f172a,
+  900: #020617,
+);
+
+// accent
+
+$q-accent-blue: (
+  10: #e9f3ff,
+  50: #d6e8ff,
+  100: #b4d6ff,
+  200: #8ec2ff,
+  300: #58a6ff,
+  400: #2591ff,
+  500: #0075db,
+  600: #005fb4,
+  700: #00427f,
+  800: #002c58,
+  900: #001027,
+);
+
+$q-accent-lime: (
+  10: #ebfcda,
+  50: #cfedad,
+  100: #bae389,
+  200: #9dcd5b,
+  300: #83b435,
+  400: #709f18,
+  500: #598200,
+  600: #436400,
+  700: #304900,
+  800: #233600,
+  900: #121f00,
+);
+
+$q-accent-tangerine: (
+  10: #ffefe5,
+  50: #ffdcc5,
+  100: #ffc59e,
+  200: #ffa96d,
+  300: #fc8338,
+  400: #e66e1c,
+  500: #c15600,
+  600: #9b4200,
+  700: #6d2c00,
+  800: #512000,
+  900: #310f00,
+);
+
+$q-accent-magenta: (
+  10: #ffe8ed,
+  50: #ffd9e1,
+  100: #ffbacb,
+  200: #ff9cb6,
+  300: #ff759f,
+  400: #f05187,
+  500: #db2f72,
+  600: #b40056,
+  700: #86003f,
+  800: #60002b,
+  900: #380016,
+);
+
+$q-accent-orchid: (
+  10: #fff3fa,
+  50: #ffe5f5,
+  100: #ffbbe8,
+  200: #f79dd9,
+  300: #f17ed2,
+  400: #e252bb,
+  500: #c637a1,
+  600: #a51685,
+  700: #76005e,
+  800: #530041,
+  900: #3a002d,
+);
+
+$q-accent-turquoise: (
+  10: #ddfbf7,
+  50: #b1f4ec,
+  100: #93eae0,
+  200: #69dcd1,
+  300: #00c5b8,
+  400: #00a297,
+  500: #00837b,
+  600: #006b64,
+  700: #004c47,
+  800: #003632,
+  900: #00201d,
+);
+
+$q-accent-purple: (
+  10: #faf1ff,
+  50: #f1e0fb,
+  100: #e9c9fc,
+  200: #deabfe,
+  300: #d08bff,
+  400: #bf66ff,
+  500: #a446e9,
+  600: #7d0ec9,
+  700: #6700aa,
+  800: #4c067d,
+  900: #37025d,
+);
+
+$q-accent-shark: (
+  10: #ffffff,
+  50: #f7f7f7,
+  100: #ededed,
+  200: #d7d7d7,
+  300: #bebebe,
+  400: #949494,
+  500: #707070,
+  600: #515151,
+  700: #393939,
+  800: #272727,
+  900: #171717,
+);
+
+// background
+
+$q-bg-neutral: map-get($q-brand-neutral,10);
+$q-bg-subtle: map-get($q-brand-neutral,50);
+$q-bg-weaker: map-get($q-brand-neutral,100);
+$q-bg-weak: map-get($q-brand-neutral,200);
+$q-bg-medium: map-get($q-brand-neutral,300);
+$q-bg-strong: map-get($q-brand-neutral,500);
+$q-bg-backdrop: #000000;
+
+$q-bg-brand-strong: map-get($q-brand-primary,600);
+$q-bg-brand-strong-hover: map-get($q-brand-primary,700);
+$q-bg-brand-medium: map-get($q-brand-primary,400);
+$q-bg-brand-medium-hover: map-get($q-brand-primary,500);
+$q-bg-brand-weak: map-get($q-brand-primary,50);
+$q-bg-brand-weak-hover: map-get($q-brand-primary,100);
+$q-bg-brand-weaker: map-get($q-brand-primary,10);
+$q-bg-brand-weaker-hover: map-get($q-brand-primary,50);
+
+$q-bg-success-strong: map-get($q-brand-success,500);
+$q-bg-success-medium: map-get($q-brand-success,400);
+$q-bg-success-weak: map-get($q-brand-success,50);
+$q-bg-success-weaker: map-get($q-brand-success,10);
+$q-bg-success-strong-hover: map-get($q-brand-success,600);
+$q-bg-success-medium-hover: map-get($q-brand-success,500);
+$q-bg-success-weak-hover: map-get($q-brand-success,100);
+$q-bg-success-weaker-hover: map-get($q-brand-success,50);
+
+$q-bg-warning-strong: map-get($q-brand-warning,200);
+$q-bg-warning-strong-hover: map-get($q-brand-warning,300);
+$q-bg-warning-medium: map-get($q-brand-warning,100);
+$q-bg-warning-medium-hover: map-get($q-brand-warning,200);
+$q-bg-warning-weak: map-get($q-brand-warning,50);
+$q-bg-warning-weak-hover: map-get($q-brand-warning,100);
+$q-bg-warning-weaker: map-get($q-brand-warning,10);
+$q-bg-warning-weaker-hover: map-get($q-brand-warning,50);
+
+$q-bg-danger-strong: map-get($q-brand-danger,500);
+$q-bg-danger-strong-hover: map-get($q-brand-danger,600);
+$q-bg-danger-medium: map-get($q-brand-danger,400);
+$q-bg-danger-medium-hover: map-get($q-brand-danger,500);
+$q-bg-danger-weak: map-get($q-brand-danger,50);
+$q-bg-danger-weak-hover: map-get($q-brand-danger,100);
+$q-bg-danger-weaker: map-get($q-brand-danger,10);
+$q-bg-danger-weaker-hover: map-get($q-brand-danger,50);
+
+$q-bg-info-strong: map-get($q-brand-info,500);
+$q-bg-info-weak: map-get($q-brand-info,50);
+$q-bg-info-weaker: map-get($q-brand-info,10);
+$q-bg-info-strong-hover: map-get($q-brand-info,600);
+$q-bg-info-weak-hover: map-get($q-brand-info,100);
+$q-bg-info-weaker-hover: map-get($q-brand-info,50);
+
+$q-bg-selected-brand: $q-bg-brand-strong;
+$q-bg-selected-brand-disabled: $q-bg-brand-medium;
+$q-bg-selected-brand-weak: $q-bg-brand-weaker;
+$q-bg-selected-error: $q-bg-danger-strong;
+$q-bg-selected-success: $q-bg-success-strong;
+$q-bg-selected-success-disabled: $q-bg-success-weak;
+
+$q-bg-disabled-strong: map-get($q-brand-neutral,200);
+$q-bg-disabled-medium: map-get($q-brand-neutral,100);
+$q-bg-disabled-weak: map-get($q-brand-neutral,50);
+
+$q-bg-inverse-stronger: map-get($q-brand-neutral,800);
+$q-bg-inverse-strong: map-get($q-brand-neutral,600);
+$q-bg-inverse-strong-hover: map-get($q-brand-neutral,700);
+
+// border colours
+
+$q-border-stronger: map-get($q-brand-neutral,800);
+$q-border-strong: map-get($q-brand-neutral,300);
+$q-border-medium: map-get($q-brand-neutral,200);
+$q-border-weak: map-get($q-brand-neutral,100);
+$q-border-inverse: map-get($q-brand-neutral,10);
+$q-border-brand-strong: map-get($q-brand-primary,500);
+$q-border-brand-medium: map-get($q-brand-primary,400);
+$q-border-brand-weak: map-get($q-brand-primary,200);
+$q-border-success-strong: map-get($q-brand-success,500);
+$q-border-success-medium: map-get($q-brand-success,400);
+$q-border-success-weak: map-get($q-brand-success,200);
+$q-border-info-strong: map-get($q-brand-info,500);
+$q-border-info-medium: map-get($q-brand-info,400);
+$q-border-info-weak: map-get($q-brand-info,200);
+$q-border-warning-strong: map-get($q-brand-warning,500);
+$q-border-warning-medium: map-get($q-brand-warning,400);
+$q-border-warning-weak: map-get($q-brand-warning,200);
+$q-border-danger-strong: map-get($q-brand-danger,500);
+$q-border-danger-medium: map-get($q-brand-danger,400);
+$q-border-danger-weak: map-get($q-brand-danger,200);
+
+// text colours
+
+$q-text-strong: map-get($q-brand-neutral,800);
+$q-text-medium: map-get($q-brand-neutral,700);
+$q-text-weak: map-get($q-brand-neutral,600);
+$q-text-weaker: map-get($q-brand-neutral,500);
+$q-text-brand: map-get($q-brand-primary,600);
+$q-text-success: map-get($q-brand-success,600);
+$q-text-warning: map-get($q-brand-warning,600);
+$q-text-info: map-get($q-brand-info,600);
+$q-text-danger: map-get($q-brand-danger,600);
+$q-text-link: map-get($q-brand-primary,600);
+$q-text-link-hover: map-get($q-brand-primary,700);
+$q-text-inverse-strong: map-get($q-brand-neutral,10);
+$q-text-inverse-medium: map-get($q-brand-neutral,100);
+$q-text-inverse-weak: map-get($q-brand-neutral,200);
+$q-text-inverse-weaker: map-get($q-brand-neutral,300);
+$q-text-onbrand-strong: $q-text-inverse-strong;
+$q-text-onbrand-medium: map-get($q-brand-primary,600);
+$q-text-onsuccess-strong: $q-text-inverse-strong;
+$q-text-onsuccess-medium: map-get($q-brand-success,700);
+$q-text-onwarning-strong: $q-text-strong;
+$q-text-onwarning-medium: map-get($q-brand-warning,600);
+$q-text-onwarning-weak: map-get($q-brand-warning,700);
+$q-text-ondanger-strong: $q-text-inverse-strong;
+$q-text-ondanger-medium: map-get($q-brand-danger,700);
+$q-text-oninfo-strong: $q-text-inverse-strong;
+$q-text-oninfo-medium: map-get($q-brand-info,700);
+
+
+
+$brand-color: map-get($q-brand-primary,600);
+$brand-subtle: map-get($q-brand-primary, 10);
+$secondary-color: map-get($q-brand-success, 300); 
+$background-subtle: map-get($q-brand-neutral,50);
+$background-neutral: map-get($q-brand-neutral,10);
+$background-color: $background-neutral;
+$secondary-subtle: map-get($q-brand-success, 10);
+$primary-accent: $brand-color;
+
 
 $primary-shade: darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: darken($background_color, 5%); //#f2f2f2 for the default background_color
 
 // Text
 
-$text_color: $dark;
+$text_color: map-get($q-brand-neutral, 800);
 $brand_text_color: #ffffff;
 
-$hover-button-color: darken($primary_accent, 20%);
-$secondary-text-color: lighten($text_color, 20%);
+$hover-button-color: map-get($q-brand-primary, 700);
+$secondary-text-color: $q-text-medium;
 
 $font-size-bigger: 1.375rem;
 $font-size-base: 1rem;
@@ -40,9 +364,9 @@ $font-weight-semibold: 600;
 
 /* Links */
 
-$link_color: $primary_accent;
-$hover_link_color: darken($primary_accent, 20%);
-$visited_link_color: darken($primary_accent, 20%);
+$link_color: $primary-accent;
+$hover_link_color: darken($primary-accent, 20%);
+$visited_link_color: darken($primary-accent, 20%);
 
 /* Borders */
 
@@ -52,7 +376,7 @@ $menu-border-color: #d8dcde;
 
 /* Buttons */
 
-$button-color: $brand_color;
+$button-color: $brand-color;
 $border-radius: 4px;
 $hover_brand_color: #454D8C;
 $brand_text_color: #fff;

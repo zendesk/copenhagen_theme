@@ -1,0 +1,47 @@
+/* CALLOUT */
+
+[dir='ltr'] .callout {
+    border-left-style: solid;
+    border-left-width: 5px;
+}
+
+[dir='rtl'] .callout {
+    border-right-style: solid;
+    border-right-width: 5px;
+}
+
+
+.callout {
+    padding: $padding;
+    margin: $padding 0;
+    background-color: $brand-subtle;
+
+    &--dashed {
+        border-style: dashed;
+        border-width: 1px;
+    }
+
+    &--info {
+        color: $q-text-info;
+        background-color: $q-bg-info-weaker;
+        border-color: $q-border-info-strong;
+    }
+
+    &--warning {
+        background-color: $brand-subtle;
+    }
+
+    &--danger {
+        background-color: $brand-subtle;
+    }
+
+    &--success {
+        background-color: $brand-subtle;
+    }
+
+    &--transparent {
+        background-color: $brand-subtle;
+    }
+
+}
+
