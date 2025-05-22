@@ -51,8 +51,26 @@ module.exports = {
       ],
       "td-has-header": [
         {
-          path: "/hc/en-us/subscriptions",
+          path: "/hc/:locale/subscriptions",
           selector: "main > div.container > div#main-content > table.table",
+        },
+      ],
+      "label-content-name-mismatch": [
+        {
+          path: "/hc/:locale/articles/:id",
+          selector:
+            "footer > div.article-votes > div.article-votes-controls > button.button",
+        },
+      ],
+      "target-size": [
+        {
+          path: "/hc/:locale/search",
+          selector:
+            "header > div.search-result-title-container > h2.search-result-title > a",
+        },
+        {
+          path: "/hc/:locale/search",
+          selector: "nav > ol.breadcrumbs > li > a",
         },
       ],
     },
