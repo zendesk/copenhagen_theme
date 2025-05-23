@@ -89,6 +89,7 @@ $input-background: $background-subtle;
       position: absolute;
       top: 1rem;
       line-height: 1;
+      color: $text_color;
       right: 1em;
   }
 
@@ -98,6 +99,7 @@ $input-background: $background-subtle;
       font-style: normal;
       font-weight: 400;
       position: absolute;
+      color: $text_color;
       top: 1rem;
       line-height: 1;
       left: 1em;

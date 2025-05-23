@@ -19,6 +19,9 @@
       @extend .button-primary;
     }
   }
+  ~ .section {
+    padding-top: 0;
+  }
 }
 
 .section-list {

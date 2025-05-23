@@ -4,10 +4,9 @@ section.hero {
   text-align: left;
   width: 100%;
 
+
   &-article, &-search-results, &-category {
-    padding-bottom: 14rem;
-    padding-top: 64px;
-    margin-bottom: -13rem;
+    padding: 64px 0;
     position: relative;
     background: linear-gradient(90deg, #515ba5, #58b78e);
     overflow: clip;
@@ -35,6 +34,11 @@ section.hero {
       line-height: 1;
       margin: $padding 0;
     }
+  }
+
+  &-article {
+    padding-bottom: 14rem;
+    margin-bottom: -13rem;
   }
 
   &-home {
