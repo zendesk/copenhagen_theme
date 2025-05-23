@@ -1550,7 +1550,7 @@ section.hero {
   text-align: left;
   width: 100%;
 }
-section.hero-article, section.hero-search-results {
+section.hero-article, section.hero-search-results, section.hero-category {
   padding-bottom: 14rem;
   padding-top: 64px;
   margin-bottom: -13rem;
@@ -1558,7 +1558,7 @@ section.hero-article, section.hero-search-results {
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article::before, section.hero-search-results::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before {
   content: "";
   height: 200vw;
   width: 200vw;
@@ -1569,11 +1569,11 @@ section.hero-article::before, section.hero-search-results::before {
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
 }
-section.hero-article > .container, section.hero-search-results > .container {
+section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container {
   position: relative;
   color: #ffffff;
 }
-section.hero-article .h1, section.hero-search-results .h1 {
+section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1 {
   font-weight: 600;
   font-size: 2.625rem;
   line-height: 1;
