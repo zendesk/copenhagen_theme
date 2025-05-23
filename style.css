@@ -2877,16 +2877,34 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   border-color: #007f9c;
 }
 .callout--warning {
-  background-color: #f4f6ff;
+  color: #785926;
+  background-color: #fff8ea;
+  border-color: #956e31;
 }
 .callout--danger {
-  background-color: #f4f6ff;
+  color: #a03b46;
+  background-color: #ffeeee;
+  border-color: #b84c56;
 }
 .callout--success {
-  background-color: #f4f6ff;
+  color: #1b6f50;
+  background-color: #e8f8ef;
+  border-color: #268460;
 }
 .callout--transparent {
-  background-color: #f4f6ff;
+  background-color: transparent;
+}
+.callout__title {
+  font-size: 1.2em;
+  font-weight: 800;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.callout p {
+  margin-top: 0;
+}
+.callout p:last-child {
+  margin-bottom: 0;
 }
 
 /***** Community *****/

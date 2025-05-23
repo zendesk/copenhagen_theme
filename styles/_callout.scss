@@ -28,20 +28,40 @@
     }
 
     &--warning {
-        background-color: $brand-subtle;
+        color: $q-text-warning;
+        background-color: $q-bg-warning-weaker;
+        border-color: $q-border-warning-strong;
     }
 
     &--danger {
-        background-color: $brand-subtle;
+        color: $q-text-danger;
+        background-color: $q-bg-danger-weaker;
+        border-color: $q-border-danger-strong;
     }
 
     &--success {
-        background-color: $brand-subtle;
+        color: $q-text-success;
+        background-color: $q-bg-success-weaker;
+        border-color: $q-border-success-strong;
     }
 
     &--transparent {
-        background-color: $brand-subtle;
+        background-color: transparent;
+    }
+
+    &__title {
+        font-size: 1.2em;
+        font-weight: 800;
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    p:last-child {
+        margin-bottom: 0;
     }
 
 }
-
