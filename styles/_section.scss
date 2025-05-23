@@ -19,10 +19,13 @@
       @extend .button-primary;
     }
   }
-  ~ .section {
+
+  &-merged ~ .section-merged {
     padding-top: 0;
   }
 }
+
+
 
 .section-list {
   margin: 40px 0;
