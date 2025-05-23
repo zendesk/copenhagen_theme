@@ -32,7 +32,8 @@ section.hero {
     .h1 {
       font-weight: 600;    
       font-size: 2.625rem;
-      margin-bottom: 15px;
+      line-height: 1;
+      margin: $padding 0;
     }
   }
 
