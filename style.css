@@ -1499,6 +1499,11 @@ ul {
 .search input[type=search]:-webkit-autofill, .search input[type=search]:-webkit-autofill:hover, .search input[type=search]:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px #fff inset;
 }
+.search-transparent input[type=search] {
+  background-color: rgba(241, 245, 249, 0.8);
+  border-color: none;
+  border: none;
+}
 .search .clear-button {
   align-items: center;
   box-sizing: border-box;
@@ -4850,6 +4855,27 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex: 1 0 auto;
   margin-bottom: 20px;
   padding: 0;
+  background: #FFFFFF;
+  padding: 32px;
+  margin-top: 16px;
+}
+@media (min-width: 768px) {
+  .search-results-sidebar {
+    position: sticky;
+    top: 100px;
+  }
+}
+.search-results-sidebar a {
+  font-size: 1rem;
+  color: #000;
+}
+.search-results-sidebar li {
+  padding: 5px 5px 5px 16px;
+  border-left: 1px solid #cbcbcb;
+}
+.search-results-sidebar li.active {
+  border-left: 1px solid #515ba5;
+  background-color: #f8f8f8;
 }
 @media (min-width: 1024px) {
   .search-results-sidebar {

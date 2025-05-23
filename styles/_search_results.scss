@@ -23,6 +23,42 @@
     margin-bottom: 20px;
     padding: 0;
 
+
+
+
+
+    
+  background: #FFFFFF;
+  padding: $padding;
+  margin-top: $gutter;
+
+  @include tablet {
+    position: sticky;
+    top: 100px;
+  }
+
+  a {
+    font-size:  1rem;
+    color: #000;
+  }
+
+  li {
+      padding: 5px 5px 5px 16px;
+      border-left: 1px solid #cbcbcb;
+
+      &.active {
+        border-left: 1px solid #515ba5;
+        background-color: #f8f8f8;
+      }
+  }
+
+
+
+
+
+
+
+
     @include desktop {
       border: 0;
       flex: 0 0 20%;

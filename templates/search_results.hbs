@@ -1,18 +1,31 @@
-<div class="container-divider"></div>
-<div class="container">
-  <div class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search submit=false}}
+<section class="section hero hero-category">
+  <div class="container">
+    <div class="row">
+      <div class="">
+        {{breadcrumbs}}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <p class="h2 strong">How can we help you today?</p>
+        <p class="page-header-description">Search our knowledge base for answers to common questions</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        {{search scoped=true submit=false class="search search-full search-transparent"}}
+      </div>
     </div>
   </div>
+</section>
 
-  <div class="search-results">
-    <aside class="search-results-sidebar">
+
+
+
+
+<div class="container">
+  <div class="search-results-container" id="search-results-container">
+    <aside class="search-results-sidebar" aria-labelledby="search-results">
       {{#if source_filters}}
         <section class="filters-in-section collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_source_menu'}}">
@@ -138,8 +151,8 @@
         </section>
       {{/if}}
     </aside>
+    <article id="main-content" class="search-results">
 
-    <section id="main-content" class="search-results-column">
       <h1 class="search-results-subheading">
         {{#if results}}
           {{#is current_filter.identifier 'unified'}}
@@ -165,6 +178,7 @@
           {{/is}}
         {{/if}}
       </h1>
+
       {{#if results}}
         <ul class="search-results-list">
           {{#each results}}
@@ -259,7 +273,7 @@
             </div> 
           </div>
       {{/if}}
-    </section>
+      {{pagination}}
+    </article>
   </div>
-  {{pagination}}
 </div>

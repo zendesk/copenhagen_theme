@@ -161,6 +161,13 @@ $input-background: $background-subtle;
 
   }
 
+  &-transparent {
+    input[type="search"] {
+      background-color: color.scale($input-background, $alpha: -20%);
+      border-color: none;
+      border: none;
+    }
+  }
 
   .clear-button {
       align-items: center;
