@@ -12,7 +12,7 @@
 
 
 .callout {
-    padding: $padding;
+    padding: $padding/2;
     margin: $padding 0;
     background-color: $brand-subtle;
 
@@ -46,7 +46,8 @@
     }
 
     &--transparent {
-        background-color: transparent;
+        background-color: transparent;    
+        box-shadow: 1px 1px 4px #00000026;
     }
 
     &__title {

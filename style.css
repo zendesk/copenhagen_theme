@@ -2863,7 +2863,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 .callout {
-  padding: 32px;
+  padding: 16px;
   margin: 32px 0;
   background-color: #f4f6ff;
 }
@@ -2893,6 +2893,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .callout--transparent {
   background-color: transparent;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1490196078);
 }
 .callout__title {
   font-size: 1.2em;
