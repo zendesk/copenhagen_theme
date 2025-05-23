@@ -32,6 +32,9 @@
             {{#each articles}}
               <div class="single-category {{#if promoted}} article-promoted{{/if}}">
                 <div class="category-thumbnail bg-subtle">
+                  <div class="category-icon">
+                    <img src="{{../../settings.category_icon}}">
+                  </div>
                   <div class="category-copy">
                     <a href="{{url}}" class="article-list-link">
                       <span class="category-title">{{title}}</span>
