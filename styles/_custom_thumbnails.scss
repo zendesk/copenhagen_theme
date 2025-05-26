@@ -56,6 +56,11 @@
     justify-content: stretch;
     height: 100%;
 
+    .internal-article-icon {
+        position: absolute;
+        top: 2px;
+        right: 0;
+    }
 
     .article-icon {
         width: 23px;
@@ -90,6 +95,7 @@
             font-weight: bold;
             color: $brand-color;
             display: block;
+            width: calc(100% - 1em);
         }
 
         .article-description {

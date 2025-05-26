@@ -1,5 +1,7 @@
 /* CALLOUT */
 
+@use "sass:math";
+
 [dir='ltr'] .callout {
     border-left-style: solid;
     border-left-width: 5px;
@@ -12,7 +14,7 @@
 
 
 .callout {
-    padding: $padding/2;
+    padding: math.div($padding,2);
     margin: $padding 0;
     background-color: $brand-subtle;
 

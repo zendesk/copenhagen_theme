@@ -529,6 +529,11 @@ ul {
   justify-content: stretch;
   height: 100%;
 }
+.article-thumbnail .internal-article-icon {
+  position: absolute;
+  top: 2px;
+  right: 0;
+}
 .article-thumbnail .article-icon {
   width: 23px;
   margin-right: 16px;
@@ -558,6 +563,7 @@ ul {
   font-weight: bold;
   color: #515ba5;
   display: block;
+  width: calc(100% - 1em);
 }
 .article-thumbnail .article-copy .article-description {
   font-size: 1rem;
@@ -4840,6 +4846,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 @media (min-width: 1024px) {
   .search-results {
     flex-direction: row;
+    flex: 1 1 75%;
+    max-width: 75%;
+    min-width: 640px;
   }
 }
 .search-results-column {
@@ -4848,6 +4857,16 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 @media (min-width: 1024px) {
   .search-results-column {
     flex: 0 0 75%;
+  }
+}
+.search-results-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+@media (min-width: 1024px) {
+  .search-results-container {
+    flex-direction: row;
   }
 }
 .search-results-sidebar {

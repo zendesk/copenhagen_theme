@@ -2,6 +2,9 @@
 .search-results {
   @include desktop {
     flex-direction: row;
+    flex: 1 1 75%;
+    max-width: 75%;
+    min-width: 640px;
   }
 
   display: flex;
@@ -15,6 +18,16 @@
     }
 
     flex: 1;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    @include desktop {        
+      flex-direction: row;
+    }
   }
 
 
