@@ -10,7 +10,9 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-between;    
+  padding: $padding;
+  margin-top: $gutter;
 
   &-column {
     @include desktop {
@@ -32,6 +34,8 @@
 
 
   &-sidebar {
+    @extend .table-of-contents;
+
     @include desktop {
       border: 0;
       flex: 0 0 25%;
@@ -39,6 +43,8 @@
       max-width: 25%;
       margin-right: $gutter;
     }
+
+    
 
     flex: 1 0 auto; //Explicit values needed with flex-direction: column for IE11
     margin-bottom: $gutter;
@@ -49,133 +55,106 @@
   //  margin-bottom: 20px;
   //  padding: 0;
 
-  background: #FFFFFF;
-  padding: $padding;
-  margin-top: $gutter;
-
-  @include tablet {
-    position: sticky;
-    top: 100px;
-  }
-
-  a {
-    font-size:  1rem;
-    color: #000;
-  }
-
-  li {
-      padding: 5px 5px 5px 16px;
-      border-left: 1px solid #cbcbcb;
-
-      &.active {
-        border-left: 1px solid #515ba5;
-        background-color: #f8f8f8;
-      }
-  }
 
 
+//    @include desktop {
+//      border: 0;
+//      flex: 0 0 20%;
+//      height: auto;
+//    }
 
+//    .sidenav-item {
+//
+//
+//      border-radius: 4px;
+//      padding: 10px 36px;
+//      margin-bottom: 4px;
+//      color: $text_color;
+//
+//      &:hover,
+//      &.current {
+//        background-color: #e9ebed;
+//        text-decoration: none;
+//      }
+//    }
 
+//    .sidenav-subitem {
+//      unicode-bidi: embed;
+//    }
 
+//    .sidenav-tag {
+//      display: flex;
+//      flex-direction: row;
+//      align-items: flex-start;
+//      flex-grow: 0;
+//
+//      .content-tag {
+//        background: #E9EBED;
+//        border-radius: 4px;
+//        padding: 4px 12px;
+//        text-decoration: none;
+//
+//        .label {
+//          font-style: normal;
+//          font-weight: 600;
+//          font-size: 12px;
+//          line-height: 24px;
+//          text-align: center;
+//          letter-spacing: -0.000427656px;
+//          color: #49545C;
+//          flex-grow: 0;
+//          vertical-align: middle;
+//          display: inline-block;
+//        }
+//
+//        .close-icon {
+//          color: #555555;
+//          vertical-align: middle;
+//          display: inline-block;
+//        }
+//      }
+//    }
 
+//    .collapsible-sidebar {
+//      margin-bottom: 30px;
+//
+//      &[aria-expanded="false"] {
+//        .multibrand-filter-list {
+//          display: none;
+//          @include desktop { display: block; }
+//        }
+//      }
+//    }
 
+//    .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
+//      display: none;
+//    }
+//
+//    .multibrand-filter-list .doc-count {
+//      color: $field-text-color;
+//    }
 
-    @include desktop {
-      border: 0;
-      flex: 0 0 20%;
-      height: auto;
-    }
-
-    .sidenav-item {
-      border-radius: 4px;
-      padding: 10px 36px;
-      margin-bottom: 4px;
-      color: $text_color;
-
-      &:hover,
-      &.current {
-        background-color: #e9ebed;
-        text-decoration: none;
-      }
-    }
-
-    .sidenav-subitem {
-      unicode-bidi: embed;
-    }
-
-    .sidenav-tag {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      flex-grow: 0;
-
-      .content-tag {
-        background: #E9EBED;
-        border-radius: 4px;
-        padding: 4px 12px;
-        text-decoration: none;
-
-        .label {
-          font-style: normal;
-          font-weight: 600;
-          font-size: 12px;
-          line-height: 24px;
-          text-align: center;
-          letter-spacing: -0.000427656px;
-          color: #49545C;
-          flex-grow: 0;
-          vertical-align: middle;
-          display: inline-block;
-        }
-
-        .close-icon {
-          color: #555555;
-          vertical-align: middle;
-          display: inline-block;
-        }
-      }
-    }
-
-    .collapsible-sidebar {
-      margin-bottom: 30px;
-
-      &[aria-expanded="false"] {
-        .multibrand-filter-list {
-          display: none;
-          @include desktop { display: block; }
-        }
-      }
-    }
-
-    .multibrand-filter-list--collapsed li:nth-child(1n + 6) {
-      display: none;
-    }
-
-    .multibrand-filter-list .doc-count {
-      color: $field-text-color;
-    }
-
-    .see-all-filters {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: block;
-      padding: 10px;
-      color: $link_color;
-
-      &[aria-hidden="true"] {
-        display: none;
-      }
-
-      &:hover {
-        text-decoration: underline;
-      }
-
-      &::after {
-        content: ' \2304';
-        font-weight: bold;
-      }
-    }
+//    .see-all-filters {
+//      background: none;
+//      border: none;
+//      cursor: pointer;
+//      display: block;
+//      padding: 10px;
+//      color: $link_color;
+//
+//      &[aria-hidden="true"] {
+//        display: none;
+//      }
+//
+//      &:hover {
+//        text-decoration: underline;
+//      }
+//
+//      &::after {
+//        content: ' \2304';
+//        font-weight: bold;
+//      }
+//    }
   }
 
   &-subheading {

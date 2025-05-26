@@ -3740,30 +3740,30 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 /* TOC */
-.table-of-contents {
+.table-of-contents, .search-results-sidebar {
   background: #FFFFFF;
   padding: 32px;
   margin-top: 16px;
 }
 @media (min-width: 768px) {
-  .table-of-contents {
+  .table-of-contents, .search-results-sidebar {
     position: sticky;
     top: 100px;
   }
 }
-.table-of-contents a {
+.table-of-contents a, .search-results-sidebar a {
   font-size: 1rem;
   color: #000;
 }
-.table-of-contents li {
+.table-of-contents li, .search-results-sidebar li {
   padding: 5px 5px 5px 16px;
   border-left: 1px solid #cbcbcb;
 }
-.table-of-contents li.active {
+.table-of-contents li.active, .search-results-sidebar li.active {
   border-left: 1px solid #515ba5;
   background-color: #f8f8f8;
 }
-.table-of-contents li.toc-level-2 {
+.table-of-contents li.toc-level-2, .search-results-sidebar li.toc-level-2 {
   padding-left: 32px;
 }
 
@@ -4842,6 +4842,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 32px;
+  margin-top: 16px;
 }
 @media (min-width: 1024px) {
   .search-results {
@@ -4872,9 +4874,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .search-results-sidebar {
   flex: 1 0 auto;
   margin-bottom: 16px;
-  background: #FFFFFF;
-  padding: 32px;
-  margin-top: 16px;
 }
 @media (min-width: 1024px) {
   .search-results-sidebar {
@@ -4884,108 +4883,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     max-width: 25%;
     margin-right: 16px;
   }
-}
-@media (min-width: 768px) {
-  .search-results-sidebar {
-    position: sticky;
-    top: 100px;
-  }
-}
-.search-results-sidebar a {
-  font-size: 1rem;
-  color: #000;
-}
-.search-results-sidebar li {
-  padding: 5px 5px 5px 16px;
-  border-left: 1px solid #cbcbcb;
-}
-.search-results-sidebar li.active {
-  border-left: 1px solid #515ba5;
-  background-color: #f8f8f8;
-}
-@media (min-width: 1024px) {
-  .search-results-sidebar {
-    border: 0;
-    flex: 0 0 20%;
-    height: auto;
-  }
-}
-.search-results-sidebar .sidenav-item {
-  border-radius: 4px;
-  padding: 10px 36px;
-  margin-bottom: 4px;
-  color: #0f172a;
-}
-.search-results-sidebar .sidenav-item:hover, .search-results-sidebar .sidenav-item.current {
-  background-color: #e9ebed;
-  text-decoration: none;
-}
-.search-results-sidebar .sidenav-subitem {
-  unicode-bidi: embed;
-}
-.search-results-sidebar .sidenav-tag {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-grow: 0;
-}
-.search-results-sidebar .sidenav-tag .content-tag {
-  background: #E9EBED;
-  border-radius: 4px;
-  padding: 4px 12px;
-  text-decoration: none;
-}
-.search-results-sidebar .sidenav-tag .content-tag .label {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 24px;
-  text-align: center;
-  letter-spacing: -0.000427656px;
-  color: #49545C;
-  flex-grow: 0;
-  vertical-align: middle;
-  display: inline-block;
-}
-.search-results-sidebar .sidenav-tag .content-tag .close-icon {
-  color: #555555;
-  vertical-align: middle;
-  display: inline-block;
-}
-.search-results-sidebar .collapsible-sidebar {
-  margin-bottom: 30px;
-}
-.search-results-sidebar .collapsible-sidebar[aria-expanded=false] .multibrand-filter-list {
-  display: none;
-}
-@media (min-width: 1024px) {
-  .search-results-sidebar .collapsible-sidebar[aria-expanded=false] .multibrand-filter-list {
-    display: block;
-  }
-}
-.search-results-sidebar .multibrand-filter-list--collapsed li:nth-child(1n+6) {
-  display: none;
-}
-.search-results-sidebar .multibrand-filter-list .doc-count {
-  color: #364255;
-}
-.search-results-sidebar .see-all-filters {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: block;
-  padding: 10px;
-  color: #515ba5;
-}
-.search-results-sidebar .see-all-filters[aria-hidden=true] {
-  display: none;
-}
-.search-results-sidebar .see-all-filters:hover {
-  text-decoration: underline;
-}
-.search-results-sidebar .see-all-filters::after {
-  content: " ⌄";
-  font-weight: bold;
 }
 .search-results-subheading {
   font-size: 18px;
