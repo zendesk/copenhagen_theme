@@ -2460,19 +2460,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-bottom: 0;
 }
 
-.sidenav-title {
-  font-size: 1rem;
-  position: relative;
-  font-weight: 600;
-}
-.sidenav-item {
-  display: block;
-  margin-top: 10px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .recent-articles li,
 .related-articles li {
   margin-bottom: 15px;
@@ -3763,6 +3750,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   border-left: 1px solid #515ba5;
   background-color: #f8f8f8;
 }
+.table-of-contents li:hover, .search-results-sidebar li:hover {
+  background-color: #f8f8f8;
+}
 .table-of-contents li.toc-level-2, .search-results-sidebar li.toc-level-2 {
   padding-left: 32px;
 }
@@ -4883,6 +4873,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     max-width: 25%;
     margin-right: 16px;
   }
+}
+.search-results-sidebar section {
+  margin-bottom: 16px;
 }
 .search-results-subheading {
   font-size: 18px;
