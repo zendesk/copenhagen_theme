@@ -202,7 +202,7 @@
   }
 
   &-title {
-    font-size: $font-size-bigger;
+    @extend h5;
     margin-bottom: 0;
   }
 
@@ -257,13 +257,26 @@
   }
 
   &-breadcrumbs {
-    margin: 0;
+    @extend .breadcrumbs;
+    li {
+      font-weight: 300;
+    }
   }
 
   &-description {
-    margin-top: 10px;
-    margin-bottom: 0;
+    margin-top: calc($gutter/4);
+    margin-bottom: calc($gutter/4);
+    background-color: $background-subtle;
+    padding: $padding;
     word-break: break-word;
+    line-height: 1.5;
+    em {
+      font-style: normal;
+      background-color: $q-bg-brand-weak;
+      padding: 0 4px;
+      color: $q-text-brand-strong;
+      font-weight: 800;
+    }
   }
 }
 

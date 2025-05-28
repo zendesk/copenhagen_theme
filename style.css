@@ -267,6 +267,7 @@ h3,
 .search-results-subheading,
 h4,
 h5,
+.search-result-title,
 h6,
 .h1,
 .h2,
@@ -284,6 +285,7 @@ h3 a,
 .search-results-subheading a,
 h4 a,
 h5 a,
+.search-result-title a,
 h6 a,
 .h1 a,
 .h2 a,
@@ -310,7 +312,7 @@ h4, .h4 {
   font-size: 1.375rem;
 }
 
-h5, .h5 {
+h5, .search-result-title, .h5 {
   font-size: 1.125rem;
   font-weight: 600;
 }
@@ -1385,12 +1387,12 @@ ul {
 }
 
 /***** Breadcrumbs *****/
-.breadcrumbs {
+.breadcrumbs, .search-result-breadcrumbs {
   margin: 0;
   padding: 0;
   display: flex;
 }
-.breadcrumbs li {
+.breadcrumbs li, .search-result-breadcrumbs li {
   color: inherit;
   font-size: 0.9375em;
   max-width: 450px;
@@ -1398,16 +1400,16 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.breadcrumbs li + li::before {
+.breadcrumbs li + li::before, .search-result-breadcrumbs li + li::before {
   content: "\f054";
   font-size: 0.8em;
   font-family: "Font Awesome 6 Pro";
   margin: 0 8px;
 }
-.breadcrumbs li a:visited {
+.breadcrumbs li a:visited, .search-result-breadcrumbs li a:visited {
   color: inherit;
 }
-.breadcrumbs li a {
+.breadcrumbs li a, .search-result-breadcrumbs li a {
   color: inherit;
 }
 
@@ -1690,7 +1692,7 @@ section.hero .hero-faqs .hero-faqs-inner {
   background-color: #f1f5f9;
   padding: 32px;
 }
-section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero-faqs-inner ul li p {
+section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero-faqs-inner ul li .search-result-title, section.hero .hero-faqs .hero-faqs-inner ul li p {
   margin-bottom: 0;
   margin-top: 0;
 }
@@ -1755,7 +1757,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     flex-direction: row;
   }
 }
-.sub-nav .breadcrumbs {
+.sub-nav .breadcrumbs, .sub-nav .search-result-breadcrumbs {
   margin: 0;
 }
 .sub-nav .search-container {
@@ -3787,6 +3789,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   border-left: 1px solid #cbcbcb;
   color: #000;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .table-of-contents li a.active, .search-results-sidebar li a.active {
   border-left: 1px solid #515ba5;
@@ -4964,7 +4968,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   align-items: center;
 }
 .search-result-title {
-  font-size: 1.375rem;
   margin-bottom: 0;
 }
 .search-result-votes, .search-result-meta-count {
@@ -5012,13 +5015,23 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .search-result-meta-container .meta-data::after {
   content: none;
 }
-.search-result-breadcrumbs {
-  margin: 0;
+.search-result-breadcrumbs li {
+  font-weight: 300;
 }
 .search-result-description {
-  margin-top: 10px;
-  margin-bottom: 0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  background-color: #f1f5f9;
+  padding: 32px;
   word-break: break-word;
+  line-height: 1.5;
+}
+.search-result-description em {
+  font-style: normal;
+  background-color: #e1e7ff;
+  padding: 0 4px;
+  color: #3a3879;
+  font-weight: 800;
 }
 
 /* By default use bold instead of italic to highlight */

@@ -19,6 +19,8 @@
           border-left: 1px solid #cbcbcb;
           color: #000;
           display: flex;
+          justify-content: space-between;
+          align-items: center;
       &.active {
         border-left: 1px solid #515ba5;
         background-color: #f8f8f8;
