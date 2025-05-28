@@ -233,9 +233,11 @@
     flex-direction: column;
 
     .vr {
-      height: 100%;
+      height: auto;
       border-right: 1px solid currentColor;
-      margin: 0 $gutter;
+      margin: 2px $gutter;
+      align-self: stretch;
+
     }
 
     @include desktop {
@@ -248,14 +250,6 @@
     }
 
     .meta-data {
-      [dir="ltr"] & {
-        @include desktop { margin-right: $gutter; }
-      }
-
-      [dir="rtl"] & {
-        @include desktop { margin-left: $gutter; }
-      }
-
       &::after {
         content: none;
       }
@@ -272,8 +266,8 @@
 
   &-description-container {
 
-    margin-top: calc($gutter/4);
-    margin-bottom: calc($gutter/4);
+    margin-top: calc($gutter/2);
+    margin-bottom: calc($gutter/2);
     background-color: $background-subtle;
     padding: calc($padding/2);
     word-break: break-word;

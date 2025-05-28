@@ -4992,9 +4992,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex-direction: column;
 }
 .search-result-meta-container .vr {
-  height: 100%;
+  height: auto;
   border-right: 1px solid currentColor;
-  margin: 0 16px;
+  margin: 2px 16px;
+  align-self: stretch;
 }
 @media (min-width: 1024px) {
   .search-result-meta-container {
@@ -5007,16 +5008,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     flex: 1;
   }
 }
-@media (min-width: 1024px) {
-  [dir=ltr] .search-result-meta-container .meta-data {
-    margin-right: 16px;
-  }
-}
-@media (min-width: 1024px) {
-  [dir=rtl] .search-result-meta-container .meta-data {
-    margin-left: 16px;
-  }
-}
 .search-result-meta-container .meta-data::after {
   content: none;
 }
@@ -5025,8 +5016,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   color: #0f172a;
 }
 .search-result-description-container {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   background-color: #f1f5f9;
   padding: 16px;
   word-break: break-word;
