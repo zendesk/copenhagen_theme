@@ -1516,6 +1516,7 @@ ul {
   color: #000;
   cursor: pointer;
   display: none;
+  z-index: 1;
   flex: none;
   justify-content: center;
   padding: 0 15px;
@@ -1527,6 +1528,16 @@ ul {
 .search .clear-button:focus {
   outline: 0;
   box-shadow: 0 0 0 3px #515ba5;
+}
+.search .clear-button::after {
+  display: block;
+  content: "\f00d";
+  line-height: 1em;
+  width: 1em;
+  font-family: "Font Awesome 6 Pro";
+}
+.search .clear-button svg {
+  display: none;
 }
 .search-has-value .clear-button {
   display: flex;
@@ -3699,13 +3710,13 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   right: auto;
 }
 .collapsible-sidebar-toggle-icon {
-  display: none;
+  display: none !important;
 }
 .collapsible-sidebar-toggle[aria-expanded=false] .chevron-icon {
-  display: inline-block;
+  display: inline-block !important;
 }
 .collapsible-sidebar-toggle[aria-expanded=true] .x-icon {
-  display: inline-block;
+  display: inline-block !important;
 }
 .collapsible-sidebar-toggle:focus {
   outline: none;

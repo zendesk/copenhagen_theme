@@ -174,7 +174,8 @@ $input-background: $background-subtle;
       box-sizing: border-box;
       color: $icon-color;
       cursor: pointer;
-      display: none;
+      display: none;    
+      z-index: 1;
       flex: none;
       justify-content: center;
       padding: 0 15px;
@@ -187,6 +188,16 @@ $input-background: $background-subtle;
       &:focus {
           @include focus-ring;
       }
+
+      &::after {
+        display: block;
+        content: "\f00d";
+        line-height: 1em;
+        width: 1em;
+        font-family: 'Font Awesome 6 Pro';
+      }
+
+      svg {display: none;}
 
   }
 

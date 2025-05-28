@@ -31,18 +31,18 @@
     }
 
     &-icon {
-      display: none;
+      display: none !important;
     }
   
     &[aria-expanded="false"] {
       .chevron-icon {
-        display: inline-block;
+        display: inline-block !important;
       }
     }
     
     &[aria-expanded="true"] {
       .x-icon {
-        display: inline-block;
+        display: inline-block !important;
       }
     }
 
