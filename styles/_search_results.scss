@@ -149,8 +149,7 @@
   }
 
   &-subheading {
-    font-size: 18px;
-    font-weight: $font-weight-semibold;
+    @extend h3;
   }
 
   &-list {

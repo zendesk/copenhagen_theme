@@ -6,10 +6,11 @@
     color: $text_color;
     display: inline-block;
     font-size: $font-size-smaller;
-    line-height: 1;
+    line-height: $font-size-smaller * 1.5;
     margin: 0;
     border: 0;
     font-weight: 700;
+    padding: 0 12px;
     white-space: nowrap;
 }
 

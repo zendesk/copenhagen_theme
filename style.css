@@ -264,6 +264,7 @@ img {
 h1, section.hero-home .h1,
 h2,
 h3,
+.search-results-subheading,
 h4,
 h5,
 h6,
@@ -280,6 +281,7 @@ h6,
 h1 a, section.hero-home .h1 a,
 h2 a,
 h3 a,
+.search-results-subheading a,
 h4 a,
 h5 a,
 h6 a,
@@ -300,7 +302,7 @@ h2, .h2 {
   font-size: 1.875rem;
 }
 
-h3, .h3 {
+h3, .search-results-subheading, .h3 {
   font-size: 1.625rem;
 }
 
@@ -760,10 +762,11 @@ ul {
   color: #0f172a;
   display: inline-block;
   font-size: 0.875em;
-  line-height: 1;
+  line-height: 1.3125em;
   margin: 0;
   border: 0;
   font-weight: 700;
+  padding: 0 12px;
   white-space: nowrap;
 }
 
@@ -1982,7 +1985,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   overflow: auto;
   padding: 20px 0;
 }
-.recent-activity-item h3 {
+.recent-activity-item h3, .recent-activity-item .search-results-subheading {
   margin: 0;
 }
 .recent-activity-item-parent {
@@ -3783,7 +3786,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 5px 5px 5px 16px;
   border-left: 1px solid #cbcbcb;
   color: #000;
-  display: block;
+  display: flex;
 }
 .table-of-contents li a.active, .search-results-sidebar li a.active {
   border-left: 1px solid #515ba5;
@@ -4918,10 +4921,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .search-results-sidebar .see-all-filters[aria-hidden=true] {
   display: none;
-}
-.search-results-subheading {
-  font-size: 18px;
-  font-weight: 600;
 }
 .search-results-list {
   margin-bottom: 25px;
