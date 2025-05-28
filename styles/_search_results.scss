@@ -271,7 +271,7 @@
   }
 
   &-description-container {
-    
+
     margin-top: calc($gutter/4);
     margin-bottom: calc($gutter/4);
     background-color: $background-subtle;
@@ -279,6 +279,7 @@
     word-break: break-word;
     line-height: 1.5;
 
+    }
     &-description {
       height: 1.5em;
       overflow: hidden;
@@ -289,7 +290,6 @@
         color: $q-text-brand-strong;
         font-weight: 800;
       }
-    }
   }
 
 }
