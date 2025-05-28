@@ -155,9 +155,9 @@
   &-list {
     margin-bottom: 25px;
     > li {
-      padding: 20px 0;
-      &:first-child {
-        border-top: 1px solid $low-contrast-border-color;
+      padding: 24px 0;
+      &:not(:last-of-type) {
+        border-bottom: 1px solid $q-border-weak;
       }
     }
   }
@@ -199,6 +199,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: $gutter;
   }
 
   &-title {
@@ -228,9 +229,14 @@
   }
 
   &-meta-container {
-    color: #666;
     display: flex;
     flex-direction: column;
+
+    .vr {
+      height: 100%;
+      border-right: 1px solid currentColor;
+      margin: 0 $gutter;
+    }
 
     @include desktop {
       flex-direction: row;
@@ -243,11 +249,11 @@
 
     .meta-data {
       [dir="ltr"] & {
-        @include desktop { margin-left: 20px; }
+        @include desktop { margin-right: $gutter; }
       }
 
       [dir="rtl"] & {
-        @include desktop { margin-right: 20px; }
+        @include desktop { margin-left: $gutter; }
       }
 
       &::after {
@@ -260,24 +266,32 @@
     @extend .breadcrumbs;
     li {
       font-weight: 300;
+      color: $text_color;
     }
   }
 
-  &-description {
+  &-description-container {
+    
     margin-top: calc($gutter/4);
     margin-bottom: calc($gutter/4);
     background-color: $background-subtle;
-    padding: $padding;
+    padding: calc($padding/2);
     word-break: break-word;
     line-height: 1.5;
-    em {
-      font-style: normal;
-      background-color: $q-bg-brand-weak;
-      padding: 0 4px;
-      color: $q-text-brand-strong;
-      font-weight: 800;
+
+    &-description {
+      height: 1.5em;
+      overflow: hidden;
+      em {
+        font-style: normal;
+        background-color: $q-bg-brand-weak;
+        padding: 0 4px;
+        color: $q-text-brand-strong;
+        font-weight: 800;
+      }
     }
   }
+
 }
 
 /* By default use bold instead of italic to highlight */

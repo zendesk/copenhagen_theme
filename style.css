@@ -4930,10 +4930,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-bottom: 25px;
 }
 .search-results-list > li {
-  padding: 20px 0;
+  padding: 24px 0;
 }
-.search-results-list > li:first-child {
-  border-top: 1px solid #B0B0B0;
+.search-results-list > li:not(:last-of-type) {
+  border-bottom: 1px solid #e2e8f0;
 }
 .search-results .no-results {
   display: flex;
@@ -4966,6 +4966,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
 }
 .search-result-title {
   margin-bottom: 0;
@@ -4987,9 +4988,13 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-right: 20px;
 }
 .search-result-meta-container {
-  color: #666;
   display: flex;
   flex-direction: column;
+}
+.search-result-meta-container .vr {
+  height: 100%;
+  border-right: 1px solid currentColor;
+  margin: 0 16px;
 }
 @media (min-width: 1024px) {
   .search-result-meta-container {
@@ -5004,12 +5009,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 @media (min-width: 1024px) {
   [dir=ltr] .search-result-meta-container .meta-data {
-    margin-left: 20px;
+    margin-right: 16px;
   }
 }
 @media (min-width: 1024px) {
   [dir=rtl] .search-result-meta-container .meta-data {
-    margin-right: 20px;
+    margin-left: 16px;
   }
 }
 .search-result-meta-container .meta-data::after {
@@ -5017,16 +5022,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .search-result-breadcrumbs li {
   font-weight: 300;
+  color: #0f172a;
 }
-.search-result-description {
+.search-result-description-container {
   margin-top: 4px;
   margin-bottom: 4px;
   background-color: #f1f5f9;
-  padding: 32px;
+  padding: 16px;
   word-break: break-word;
   line-height: 1.5;
 }
-.search-result-description em {
+.search-result-description-container-description {
+  height: 1.5em;
+  overflow: hidden;
+}
+.search-result-description-container-description em {
   font-style: normal;
   background-color: #e1e7ff;
   padding: 0 4px;

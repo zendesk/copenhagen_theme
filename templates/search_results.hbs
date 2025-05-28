@@ -228,10 +228,12 @@
                     </nav>
                   </div>
                 </header>
-                <p class="search-result-description">{{text}}</p>
+                  <div class="search-result-description-container">
+                    <p class="search-result-description">{{text}}</p>
+                  </div>
                   <div class="search-result-meta-container">
                     {{#unless is_external}}
-                      <span class="meta-data">{{author.name}}</span> |
+                      <span class="meta-data">{{author.name}}</span><span class="vr"></span>
                     {{/unless}}
                     <span class="meta-data">{{date edited_at}}</span>
                   </div>
