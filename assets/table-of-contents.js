@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
             level = 2;
         }
         heading.setAttribute("id", id);
-        const anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
-        var keyPointer = `<li class="toc-level-${level}">${anchorElement}</li>`;
+        var anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
         if (index === 0) {
-            keyPointer = `<li class="toc-level-${level} active">${anchorElement}</li>`;
+            anchorElement = `<a href="#${id}" class="toc-level-${level} active">${heading.textContent}</a>`;
         } else {
-            keyPointer = `<li class="toc-level-${level}">${anchorElement}</li>`;
+            anchorElement = `<a href="#${id}" class="toc-level-${level}">${heading.textContent}</a>`;
         }
+        var keyPointer = `<li>${anchorElement}</li>`;
         ul.insertAdjacentHTML("beforeend", keyPointer);
     });
 

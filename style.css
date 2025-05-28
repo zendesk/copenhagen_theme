@@ -3738,22 +3738,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     top: 100px;
   }
 }
-.table-of-contents a, .search-results-sidebar a {
+.table-of-contents li a, .search-results-sidebar li a {
   font-size: 1rem;
-  color: #000;
-}
-.table-of-contents li, .search-results-sidebar li {
   padding: 5px 5px 5px 16px;
   border-left: 1px solid #cbcbcb;
+  color: #000;
+  display: block;
 }
-.table-of-contents li.active, .search-results-sidebar li.active {
+.table-of-contents li a.active, .search-results-sidebar li a.active {
   border-left: 1px solid #515ba5;
   background-color: #f8f8f8;
 }
-.table-of-contents li:hover, .search-results-sidebar li:hover {
+.table-of-contents li a:hover, .search-results-sidebar li a:hover {
   background-color: #f8f8f8;
 }
-.table-of-contents li.toc-level-2, .search-results-sidebar li.toc-level-2 {
+.table-of-contents li a.toc-level-2, .search-results-sidebar li a.toc-level-2 {
   padding-left: 32px;
 }
 
