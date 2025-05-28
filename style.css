@@ -249,7 +249,7 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-weight: 300;
+  font-weight: 400;
 }
 @media (min-width: 1024px) {
   body > main {
@@ -4254,7 +4254,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 .meta-data {
   color: inherit;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 0.9375em;
 }
 .meta-data:not(:last-child)::after {
@@ -5012,7 +5012,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   content: none;
 }
 .search-result-breadcrumbs li {
-  font-weight: 300;
+  font-weight: 400;
   color: #0f172a;
 }
 .search-result-description-container {
@@ -5026,6 +5026,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .search-result-description {
   height: 1.5em;
   overflow: hidden;
+  margin: 0;
 }
 .search-result-description em {
   font-style: normal;

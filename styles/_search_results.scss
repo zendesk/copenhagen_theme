@@ -259,7 +259,7 @@
   &-breadcrumbs {
     @extend .breadcrumbs;
     li {
-      font-weight: 300;
+      font-weight: 400;
       color: $text_color;
     }
   }
@@ -276,7 +276,8 @@
     }
     &-description {
       height: 1.5em;
-      overflow: hidden;
+      overflow: hidden;    
+      margin: 0;
       em {
         font-style: normal;
         background-color: $q-bg-brand-weak;
