@@ -134,31 +134,18 @@
 //      display: none;
 //    }
 //
-//    .multibrand-filter-list .doc-count {
-//      color: $field-text-color;
-//    }
+    .multibrand-filter-list .doc-count {
+      @extend .badge-primary;
+    }
 
-//    .see-all-filters {
-//      background: none;
-//      border: none;
-//      cursor: pointer;
-//      display: block;
-//      padding: 10px;
-//      color: $link_color;
-//
-//      &[aria-hidden="true"] {
-//        display: none;
-//      }
-//
-//      &:hover {
-//        text-decoration: underline;
-//      }
-//
-//      &::after {
-//        content: ' \2304';
-//        font-weight: bold;
-//      }
-//    }
+    .see-all-filters {
+      @extend .button-primary;
+
+      &[aria-hidden="true"] {
+        display: none;
+      }
+
+    }
   }
 
   &-subheading {

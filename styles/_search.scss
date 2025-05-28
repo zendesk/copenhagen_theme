@@ -22,6 +22,10 @@ $input-background: $background-subtle;
         border-top-right-radius: 0;
         border-right-color: transparent;
 
+        &::after { 
+          content: ""; 
+        }
+
         &:focus {
             border-right-color: $brand-color;
         }
@@ -115,7 +119,7 @@ $input-background: $background-subtle;
 
   input[type="search"], 
   .clear-button {
-    background-color: #fff;
+    background-color: color.adjust($input-background, $alpha: 0.8);
     border: none;
   }
 

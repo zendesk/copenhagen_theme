@@ -1,0 +1,28 @@
+/* Badge */
+
+.badge {
+    border-radius: $border-radius;
+    background-color: $background-subtle;
+    color: $text_color;
+    display: inline-block;
+    font-size: $font-size-smaller;
+    line-height: 1;
+    margin: 0;
+    border: 0;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.badge-primary {
+    @extend .badge;
+    background-color: $brand-color;
+    color: $brand_text_color;
+    text-decoration: none;
+}
+
+.badge-secondary {
+    @extend .badge;
+    background-color: $secondary-color;
+    color: $brand_text_color;
+    text-decoration: none;
+}
