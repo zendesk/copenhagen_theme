@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     
     const headings = Array.from(document.getElementById("main-content").getElementsByTagName('h2', 'h3'));
     const tocContainer = document.querySelector(".table-of-contents");
-    const tocAnchors = tocContainer.querySelectorAll("li");
+    const tocAnchors = tocContainer.querySelectorAll("a");
     const obFunc = (entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {

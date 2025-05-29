@@ -30,18 +30,18 @@
           <h2><a href="{{url}}">{{name}}</a></h2>
           <div class="categories-list row row-cols-md-3">
             {{#each articles}}
-              <div class="single-article {{#if promoted}} article-promoted{{/if}}">
-                <div class="article-thumbnail bg-subtle">
-                  <div class="article-icon">
+              <div class="single-category {{#if promoted}} article-promoted{{/if}}">
+                <div class="category-thumbnail bg-subtle">
+                  <div class="category-icon">
                     <img src="{{../../settings.category_icon}}">
                   </div>
-                  <div class="article-category-copy">
-                    <a href="{{url}}" class="article-link">
-                      <span class="article-title">{{title}}</span>
+                  <div class="category-copy">
+                    <a href="{{url}}" class="category-link">
+                      <span class="category-title">{{title}}</span>
                       {{#if internal}}
                         <i class="fa far fa-lock-alt internal-article-icon" title="{{t 'internal'}}"></i>
                       {{/if}}
-                      <span class="article-description">{{excerpt snippet}}</span>
+                      <span class="category-description">{{excerpt snippet}}</span>
                     </a>
                   </div>
                 </div>

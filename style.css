@@ -2240,7 +2240,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-bottom: 10px;
 }
 .article-title {
-  overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
 }
