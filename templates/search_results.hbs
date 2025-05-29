@@ -235,10 +235,10 @@
                     {{#unless is_external}}
                       <span class="meta-data">{{author.name}}</span><span class="vr"></span>
                     {{/unless}}
-                    {{#if edited_at}}
-                    <span class="meta-data">{{date edited_at}}</span>
-                    {{else}}
+                    {{#is edited_at created_at}}
                     <span class="meta-data">{{date created_at}}</span>
+                    {{else}}
+                    <span class="meta-data">{{date edited_at}}</span>
                     {{/if}}
                   </div>
               </article>
