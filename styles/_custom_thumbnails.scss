@@ -11,8 +11,8 @@
 
     .internal-article-icon {
         position: absolute;
-        top: calc($padding + 5px);
-        right: $padding;
+        top: calc($gutter + 5px);
+        right: $gutter;
     }
 
     .category-icon {

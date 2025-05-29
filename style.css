@@ -496,8 +496,8 @@ ul {
 }
 .category-thumbnail .internal-article-icon {
   position: absolute;
-  top: 37px;
-  right: 32px;
+  top: 21px;
+  right: 16px;
 }
 .category-thumbnail .category-icon {
   width: 23px;
@@ -806,6 +806,9 @@ ul {
     table-layout: auto;
   }
 }
+.table-scroll {
+  overflow: auto;
+}
 .table th,
 .table th a {
   color: #364255;
@@ -816,10 +819,13 @@ ul {
 [dir=rtl] .table th a {
   text-align: right;
 }
+.table--color-header th {
+  background-color: #515ba5;
+  color: #ffffff;
+}
 .table tr {
   border-bottom: 1px solid #B0B0B0;
   display: block;
-  padding: 20px 0;
 }
 @media (min-width: 768px) {
   .table tr {
@@ -836,13 +842,12 @@ ul {
 }
 @media (min-width: 1024px) {
   .table td, .table th {
-    padding: 20px 30px;
+    padding: 8px 16px;
   }
 }
 @media (min-width: 768px) {
   .table td, .table th {
-    padding: 10px 20px;
-    height: 60px;
+    padding: 4px 8px;
   }
 }
 

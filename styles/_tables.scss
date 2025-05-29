@@ -1,3 +1,5 @@
+@use "sass:math";
+
 /***** Tables *****/
 .table {
   @include tablet { table-layout: auto; }
@@ -6,6 +8,10 @@
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0;
+
+  &-scroll {
+    overflow: auto;
+  }
 
   th,
   th a {
@@ -16,12 +22,18 @@
     [dir="rtl"] & { text-align: right; }
   }
 
+  &--color-header {
+    th {
+      background-color: $q-bg-brand-strong;
+      color: $q-text-onbrand-strong;
+    }
+  }
+
   tr {
     @include tablet { display: table-row; }
 
     border-bottom: 1px solid $low-contrast-border-color;
     display: block;
-    padding: 20px 0;
   }
 
   td {
@@ -34,11 +46,10 @@
 
   td, th {
     @include desktop {
-      padding: 20px 30px;
+      padding: math.div($gutter, 2) $gutter;
     }
     @include tablet {
-      padding: 10px 20px;
-      height: 60px;
+      padding: math.div($gutter, 4) math.div($gutter, 2);
     }
   }
 }
