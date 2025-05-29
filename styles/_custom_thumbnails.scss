@@ -11,8 +11,8 @@
 
     .internal-article-icon {
         position: absolute;
-        top: 2px;
-        right: 0;
+        top: calc($padding + 5px);
+        right: $padding;
     }
 
     .category-icon {
@@ -67,7 +67,7 @@
 
     .internal-article-icon {
         position: absolute;
-        top: 2px;
+        top: 5px;
         right: 0;
     }
 

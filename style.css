@@ -496,8 +496,8 @@ ul {
 }
 .category-thumbnail .internal-article-icon {
   position: absolute;
-  top: 2px;
-  right: 0;
+  top: 37px;
+  right: 32px;
 }
 .category-thumbnail .category-icon {
   width: 23px;
@@ -543,7 +543,7 @@ ul {
 }
 .article-thumbnail .internal-article-icon {
   position: absolute;
-  top: 2px;
+  top: 5px;
   right: 0;
 }
 .article-thumbnail .article-icon {
