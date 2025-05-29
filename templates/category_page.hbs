@@ -37,7 +37,7 @@
                   </div>
                   <div class="category-copy">
                     <a href="{{url}}" class="category-link">
-                      <span class="category-title">{{title}}</span>
+                      <span class="category-title{{#if internal}} category-title-internal{{/if}}">{{title}}</span>
                       {{#if internal}}
                         <i class="fa far fa-lock-alt internal-article-icon" title="{{t 'internal'}}"></i>
                       {{/if}}

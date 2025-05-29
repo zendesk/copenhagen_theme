@@ -523,6 +523,9 @@ ul {
   font-weight: bold;
   display: block;
 }
+.category-thumbnail .category-copy .category-title-internal {
+  width: calc(100% - 1em);
+}
 .category-thumbnail .category-copy .category-description {
   font-size: 1rem;
 }
@@ -567,6 +570,8 @@ ul {
   font-weight: bold;
   color: #515ba5;
   display: block;
+}
+.article-thumbnail .article-copy .article-title-internal {
   width: calc(100% - 1em);
 }
 .article-thumbnail .article-copy .article-description {

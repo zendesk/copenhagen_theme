@@ -9,7 +9,6 @@
     padding: $gutter;    
     height: 100%;
 
-
     .category-icon {
         width: 23px;
         margin-right: $gutter;
@@ -42,6 +41,10 @@
             font-size: $font-size-h5;
             font-weight: bold;
             display: block;
+
+            &-internal {
+                width: calc(100% - 1em);
+            }
         }
 
         .category-description {
@@ -95,7 +98,10 @@
             font-weight: bold;
             color: $brand-color;
             display: block;
-            width: calc(100% - 1em);
+            
+            &-internal {
+                width: calc(100% - 1em);
+            }
         }
 
         .article-description {

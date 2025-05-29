@@ -81,7 +81,7 @@
                 </div>
                 <div class="article-copy">
                   <a class="article-link" href="{{url}}">
-                    <span class="article-title">{{title}}</span>
+                    <span class="article-title{{#if internal}} article-title-internal{{/if}}">{{title}}</span>
                     {{#if internal}}
                       <i class="fa far fa-lock-alt internal-article-icon" title="{{t 'internal'}}"></i>
                     {{/if}}
