@@ -494,6 +494,11 @@ ul {
   padding: 16px;
   height: 100%;
 }
+.category-thumbnail .internal-article-icon {
+  position: absolute;
+  top: 2px;
+  right: 0;
+}
 .category-thumbnail .category-icon {
   width: 23px;
   margin-right: 16px;

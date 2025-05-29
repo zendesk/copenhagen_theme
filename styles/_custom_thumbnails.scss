@@ -9,6 +9,12 @@
     padding: $gutter;    
     height: 100%;
 
+    .internal-article-icon {
+        position: absolute;
+        top: 2px;
+        right: 0;
+    }
+
     .category-icon {
         width: 23px;
         margin-right: $gutter;
@@ -98,7 +104,7 @@
             font-weight: bold;
             color: $brand-color;
             display: block;
-            
+
             &-internal {
                 width: calc(100% - 1em);
             }
