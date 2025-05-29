@@ -45,11 +45,11 @@
   }
 
   td, th {
-    @include desktop {
-      padding: math.div($gutter, 2) $gutter;
-    }
     @include tablet {
       padding: math.div($gutter, 4) math.div($gutter, 2);
+    }
+    @include desktop {
+      padding: math.div($gutter, 2) $gutter;
     }
   }
 }

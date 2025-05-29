@@ -840,14 +840,14 @@ ul {
     display: table-cell;
   }
 }
-@media (min-width: 1024px) {
-  .table td, .table th {
-    padding: 8px 16px;
-  }
-}
 @media (min-width: 768px) {
   .table td, .table th {
     padding: 4px 8px;
+  }
+}
+@media (min-width: 1024px) {
+  .table td, .table th {
+    padding: 8px 16px;
   }
 }
 
