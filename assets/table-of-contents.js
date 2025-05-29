@@ -5,11 +5,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const headings = Array.from(document.getElementById("main-content").getElementsByTagName('h2', 'h3'));
     const tocContainer = document.querySelector(".table-of-contents");
     const ul = document.createElement("ul");
-    const heading = document.createElement("h4");
-
-    heading.innerText = "Table of contents";
-
-    tocContainer.appendChild(heading);
+    
+    ul.classList.add("collapsible-sidebar-body");
     tocContainer.appendChild(ul);
     headings.map((heading, index) => {
         const id = heading.innerText.toLowerCase().replaceAll(" ", "_");
@@ -22,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         heading.setAttribute("id", id);
         var anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
         if (index === 0) {
-            anchorElement = `<a href="#${id}" class="toc-level-${level} active">${heading.textContent}</a>`;
+            anchorElement = `<a href="#${id}" class="toc-level-${level} active current">${heading.textContent}</a>`;
         } else {
             anchorElement = `<a href="#${id}" class="toc-level-${level}">${heading.textContent}</a>`;
         }
@@ -42,12 +39,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
             if (entry.isIntersecting) {
                 const index = headings.indexOf(entry.target);
                 tocAnchors.forEach((tab) => {
-                    tab.classList.remove("active");
+                    tab.classList.remove("active", "current");
                 });
-                tocAnchors[index].classList.add("active");
-                tocAnchors[index].scrollIntoView({
-                    block: "nearest"
-                });
+                tocAnchors[index].classList.add("active", "current");
             }
         })
     };
