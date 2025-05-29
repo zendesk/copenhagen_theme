@@ -4,13 +4,14 @@
 .table-of-contents {
   
   background: #FFFFFF;
-  padding: $padding;
+  padding: $gutter;
   padding-bottom: 0;
   margin-top: $gutter;
 
   @include tablet {
     position: sticky;
     top: 100px;
+    padding: $padding;
   }
 
   li {
