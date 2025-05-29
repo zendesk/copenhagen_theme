@@ -1,23 +1,28 @@
+@use "sass:math";
+
 /* Sidebar navigation that collapses on mobile */
 .collapsible-sidebar {
   @include desktop {
     max-height: none;
   }
   flex: 1;
-  max-height: 45px;
   overflow: hidden;
   position: relative;
 
   &-title {
+    font-size: 1em;
+  @include desktop {
+    font-size: $font-size-h4;
+  }
     margin-top: 0;
+    margin-bottom: 16px;
   }
 
   &-toggle {
     @include desktop { display: none; }
     position: absolute;
-    top: calc(45px / 2);
-    transform: translateY(-50%);
-    right: 0;
+    top: $gutter;
+    right: math.div($gutter,2);
     padding: 0;
     border: 0;
     background: none;

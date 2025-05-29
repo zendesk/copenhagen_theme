@@ -2,10 +2,7 @@
 
 /***** Tables *****/
 .table {
-  @include tablet { table-layout: auto; }
-
   width: 100%;
-  table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0;
 
@@ -30,19 +27,9 @@
   }
 
   tr {
-    @include tablet { display: table-row; }
-
     border-bottom: 1px solid $low-contrast-border-color;
-    display: block;
   }
 
-  td {
-    @include tablet {
-      display: table-cell;
-    }
-
-    display: block;
-  }
 
   td, th {
     @include tablet {
