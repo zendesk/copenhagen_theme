@@ -22,7 +22,7 @@ export interface ApprovalDecision {
 export type ApprovalRequestStatus =
   | "active"
   | "approved"
-  | "rejected"
+  | "denied"
   | "withdrawn";
 
 export type ApprovalRequestDropdownStatus = ApprovalRequestStatus | "any";

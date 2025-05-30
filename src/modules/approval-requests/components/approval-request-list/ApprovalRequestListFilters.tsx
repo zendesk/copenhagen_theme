@@ -67,7 +67,7 @@ function ApprovalRequestListFilters({
           );
         case "approved":
           return t("approval-requests.status.approved", "Approved");
-        case "rejected":
+        case "denied":
           return t("approval-requests.status.denied", "Denied");
         case "withdrawn":
           return t("approval-requests.status.withdrawn", "Withdrawn");
@@ -146,7 +146,7 @@ function ApprovalRequestListFilters({
             label={t("approval-requests.status.approved", "Approved")}
           />
           <Option
-            value={APPROVAL_REQUEST_STATES.REJECTED}
+            value={APPROVAL_REQUEST_STATES.DENIED}
             label={t("approval-requests.status.denied", "Denied")}
           />
           <Option
