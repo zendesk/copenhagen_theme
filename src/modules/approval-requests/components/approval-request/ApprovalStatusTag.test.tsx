@@ -19,8 +19,14 @@ describe("ApprovalStatusTag", () => {
     expect(screen.getByText("Approved")).toBeInTheDocument();
   });
 
-  it("renders the rejected status tag correctly", () => {
+  it("renders the denied status tag correctly", () => {
     renderWithTheme(<ApprovalStatusTag status="rejected" />);
+
+    expect(screen.getByText("Denied")).toBeInTheDocument();
+  });
+
+  it("renders the denied status tag correctly for 'denied' status", () => {
+    renderWithTheme(<ApprovalStatusTag status="denied" />);
 
     expect(screen.getByText("Denied")).toBeInTheDocument();
   });

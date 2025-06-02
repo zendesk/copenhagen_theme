@@ -233,7 +233,7 @@ describe("ApproverActions", () => {
       expect(mockSubmitApprovalDecision).toHaveBeenCalledWith(
         "456",
         "123",
-        "rejected",
+        "denied",
         "Denial reason"
       );
     });

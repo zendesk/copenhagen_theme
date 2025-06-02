@@ -12,6 +12,7 @@ import { APPROVAL_REQUEST_STATES } from "../../constants";
 
 const PENDING_APPROVAL_STATUS = {
   APPROVED: "APPROVED",
+  DENIED: "DENIED",
   REJECTED: "REJECTED",
 } as const;
 
@@ -84,7 +85,9 @@ function ApproverActions({
   const [showValidation, setShowValidation] = useState(false);
 
   const isCommentValid =
-    pendingStatus !== PENDING_APPROVAL_STATUS.REJECTED || comment.trim() !== "";
+    (pendingStatus !== PENDING_APPROVAL_STATUS.DENIED &&
+      PENDING_APPROVAL_STATUS.REJECTED) ||
+    comment.trim() !== "";
   const shouldShowValidationError = showValidation && !isCommentValid;
 
   const handleApproveRequestClick = useCallback(() => {
@@ -93,7 +96,7 @@ function ApproverActions({
   }, []);
 
   const handleDenyRequestClick = useCallback(() => {
-    setPendingStatus(PENDING_APPROVAL_STATUS.REJECTED);
+    setPendingStatus(PENDING_APPROVAL_STATUS.DENIED);
     setShowValidation(false);
   }, []);
 
@@ -119,7 +122,7 @@ function ApproverActions({
       const decision: ApprovalDecision =
         pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
           ? APPROVAL_REQUEST_STATES.APPROVED
-          : APPROVAL_REQUEST_STATES.REJECTED;
+          : APPROVAL_REQUEST_STATES.DENIED;
       const response = await submitApprovalDecision(
         approvalWorkflowInstanceId,
         approvalRequestId,
