@@ -1,4 +1,4 @@
-export type ApprovalDecision = "approved" | "denied";
+export type ApprovalDecision = "approved" | "denied" | "rejected";
 
 export async function submitApprovalDecision(
   approvalWorkflowInstanceId: string,

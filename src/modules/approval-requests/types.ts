@@ -23,6 +23,7 @@ export type ApprovalRequestStatus =
   | "active"
   | "approved"
   | "denied"
+  | "rejected"
   | "withdrawn";
 
 export type ApprovalRequestDropdownStatus = ApprovalRequestStatus | "any";

@@ -27,6 +27,10 @@ function ApprovalStatusTag({ status }: ApprovalStatusTagProps) {
       hue: "red",
       label: t("approval-requests.status.denied", "Denied"),
     },
+    [APPROVAL_REQUEST_STATES.REJECTED]: {
+      hue: "red",
+      label: t("approval-requests.status.denied", "Denied"),
+    },
     [APPROVAL_REQUEST_STATES.WITHDRAWN]: {
       hue: "grey",
       label: t("approval-requests.status.withdrawn", "Withdrawn"),

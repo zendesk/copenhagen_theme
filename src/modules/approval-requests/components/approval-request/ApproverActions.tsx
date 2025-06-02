@@ -13,6 +13,7 @@ import { APPROVAL_REQUEST_STATES } from "../../constants";
 const PENDING_APPROVAL_STATUS = {
   APPROVED: "APPROVED",
   DENIED: "DENIED",
+  REJECTED: "REJECTED",
 } as const;
 
 const ButtonContainer = styled.div<{
@@ -84,7 +85,9 @@ function ApproverActions({
   const [showValidation, setShowValidation] = useState(false);
 
   const isCommentValid =
-    pendingStatus !== PENDING_APPROVAL_STATUS.DENIED || comment.trim() !== "";
+    (pendingStatus !== PENDING_APPROVAL_STATUS.DENIED &&
+      PENDING_APPROVAL_STATUS.REJECTED) ||
+    comment.trim() !== "";
   const shouldShowValidationError = showValidation && !isCommentValid;
 
   const handleApproveRequestClick = useCallback(() => {

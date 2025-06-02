@@ -28,6 +28,8 @@ function getPreviousDecisionFallbackLabel(status: string) {
       return "Approved";
     case APPROVAL_REQUEST_STATES.DENIED:
       return "Denied";
+    case APPROVAL_REQUEST_STATES.REJECTED:
+      return "Rejected";
     default:
       return status;
   }
