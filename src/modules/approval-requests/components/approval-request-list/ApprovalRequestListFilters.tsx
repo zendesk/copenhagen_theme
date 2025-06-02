@@ -153,6 +153,10 @@ function ApprovalRequestListFilters({
             value={APPROVAL_REQUEST_STATES.WITHDRAWN}
             label={t("approval-requests.status.withdrawn", "Withdrawn")}
           />
+          <Option
+            value="random"
+            label={t("approval-requests.status.random", "Random")}
+          />
         </Combobox>
       </DropdownFilterField>
     </FiltersContainer>

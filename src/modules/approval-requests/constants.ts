@@ -4,4 +4,5 @@ export const APPROVAL_REQUEST_STATES = {
   DENIED: "denied",
   REJECTED: "rejected",
   WITHDRAWN: "withdrawn",
+  RANDOM: "random",
 } as const;
