@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.125",
+  "version": "1.0.126",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -377,60 +377,6 @@
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "Form Requirements",
-      "variables": [
-        {
-          "identifier": "brand_color",
-          "type": "color",
-          "description": "brand_color_description",
-          "label": "brand_color_label",
-          "value": "#17494D"
-        },
-        {
-          "identifier": "brand_text_color",
-          "type": "color",
-          "description": "brand_text_color_description",
-          "label": "brand_text_color_label",
-          "value": "#FFFFFF"
-        },
-        {
-          "identifier": "text_color",
-          "type": "color",
-          "description": "text_color_description",
-          "label": "text_color_label",
-          "value": "#2F3941"
-        },
-        {
-          "identifier": "link_color",
-          "type": "color",
-          "description": "link_color_description",
-          "label": "link_color_label",
-          "value": "#1F73B7"
-        },
-        {
-          "identifier": "hover_link_color",
-          "type": "color",
-          "description": "hover_link_color_description",
-          "label": "hover_link_color_label",
-          "value": "#0F3554"
-        },
-        {
-          "identifier": "visited_link_color",
-          "type": "color",
-          "description": "visited_link_color_description",
-          "label": "visited_link_color_label",
-          "value": "#9358B0"
-        },
-        {
-          "identifier": "background_color",
-          "type": "color",
-          "description": "background_color_description",
-          "label": "background_color_label",
-          "value": "#FFFFFF"
         }
       ]
     },
