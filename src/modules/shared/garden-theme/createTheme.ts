@@ -19,29 +19,29 @@ export function createTheme(settings: Settings): IGardenTheme {
     rtl: document.dir === "rtl",
     colors: {
       ...DEFAULT_THEME.colors,
-      background: settings.background_color,
-      foreground: settings.text_color,
-      primaryHue: settings.brand_color,
+      background: "#FFFFFF",
+      foreground: "#0f172a",
+      primaryHue: "#515ba5",
     },
     components: {
       "buttons.anchor": css`
-        color: ${settings.link_color};
+        color: #515ba5;
 
         :hover,
         :active,
         :focus {
-          color: ${settings.hover_link_color};
+          color: #2f3561;
         }
 
         &:visited {
-          color: ${settings.visited_link_color};
+          color: #2f3561;
         }
       `,
       "buttons.button": css`
         ${(props: IButtonProps) =>
           props.isPrimary &&
           css`
-            color: ${settings.brand_text_color};
+            color: #515ba5;
           `}
       `,
     },
