@@ -165,7 +165,7 @@ export function createTheme(settings: Settings): IGardenTheme {
           props.isPrimary &&
           css`
             color: #ffffff;
-            background-color: #515ba5;
+            background-color: #ff0000;
           `}
       `,
     },
