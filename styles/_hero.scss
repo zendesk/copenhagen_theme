@@ -5,7 +5,7 @@ section.hero {
   width: 100%;
 
 
-  &-article, &-search-results, &-category {
+  &-article, &-search-results, &-category, &-request {
     padding: 64px 0;
     position: relative;
     background: linear-gradient(90deg, #515ba5, #58b78e);
@@ -36,7 +36,7 @@ section.hero {
     }
   }
 
-  &-article {
+  &-article, &-request {
     padding-bottom: 14rem;
     margin-bottom: -13rem;
   }
