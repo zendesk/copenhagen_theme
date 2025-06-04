@@ -8,11 +8,44 @@ import {
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { Field, FieldOption } from "../data-types";
+import type {
+  Field,
+  FieldOption,
+  LookupRelationshipFieldFilter,
+} from "../data-types";
 import { Span } from "@zendeskgarden/react-typography";
 import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
+
+export function buildAdvancedDynamicFilterParams(
+  filter?: LookupRelationshipFieldFilter,
+  fields: Field[] = []
+) {
+  const dynamicFilters = filter
+    ? [
+        ...filter.all.filter(
+          (filter) =>
+            filter.operator === "matches" || filter.operator === "not_matches"
+        ),
+        ...filter.any.filter(
+          (filter) =>
+            filter.operator === "matches" || filter.operator === "not_matches"
+        ),
+      ]
+    : [];
+
+  const parsedFilterId =
+    dynamicFilters && dynamicFilters[0]?.value.split("ticket_fields_")[1];
+
+  const field = fields.find((field) => {
+    const parsedFieldId = field.id.toString();
+
+    return parsedFieldId === parsedFilterId;
+  });
+
+  return [dynamicFilters[0]?.value, field?.value];
+}
 
 function getCustomObjectKey(targetType: string) {
   return targetType.replace("zen:custom_object:", "");
@@ -28,6 +61,7 @@ interface LookupFieldProps {
   userId: number;
   organizationId: string | null;
   onChange: (value: string) => void;
+  visibleFields: Field[];
 }
 
 export function LookupField({
@@ -35,6 +69,7 @@ export function LookupField({
   userId,
   organizationId,
   onChange,
+  visibleFields,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -46,6 +81,7 @@ export function LookupField({
     description,
     relationship_target_type,
   } = field;
+
   const [options, setOptions] = useState<FieldOption[]>([]);
   const [selectedOption, setSelectedOption] = useState<FieldOption | null>(
     null
@@ -103,8 +139,21 @@ export function LookupField({
       searchParams.set("source", "zen:ticket");
       searchParams.set("field_id", fieldId.toString());
       searchParams.set("requester_id", userId.toString());
+
+      const [filterValue, fieldValue] = buildAdvancedDynamicFilterParams(
+        field.relationship_filter,
+        visibleFields
+      );
+
+      const fieldValueParam = fieldValue?.toString() || "";
+      const filterValueParam = `filter[dynamic_values][${filterValue}]`;
+
+      if (filterValue !== null)
+        searchParams.set(filterValueParam, fieldValueParam);
+
       if (organizationId !== null)
         searchParams.set("organization_id", organizationId);
+
       setIsLoadingOptions(true);
       try {
         const response = await fetch(
@@ -136,7 +185,15 @@ export function LookupField({
         setIsLoadingOptions(false);
       }
     },
-    [customObjectKey, fieldId, organizationId, selectedOption, userId]
+    [
+      customObjectKey,
+      field.relationship_filter,
+      fieldId,
+      organizationId,
+      selectedOption,
+      userId,
+      visibleFields,
+    ]
   );
 
   const debouncedFetchOptions = useMemo(
