@@ -16,11 +16,7 @@ export interface Settings {
 export function createTheme(settings: Settings): IGardenTheme {
   return {
 
-
-
     ...DEFAULT_THEME,
-
-
 
   borders: {
     sm: "1px solid",
@@ -168,7 +164,8 @@ export function createTheme(settings: Settings): IGardenTheme {
         ${(props: IButtonProps) =>
           props.isPrimary &&
           css`
-            color: #515ba5;
+            color: #ffffff;
+            background-color: #515ba5;
           `}
       `,
     },
@@ -235,13 +232,5 @@ export function createTheme(settings: Settings): IGardenTheme {
     xl: "40px",
     xxl: "48px"
   }
-
-
-
-
-
-
-
-
   };
 }
