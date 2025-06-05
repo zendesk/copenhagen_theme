@@ -2,6 +2,10 @@
 
 <section id="main-content" class="section hero">
   <div class="hero-inner">
+    <div class="home-page">
+      {{!-- <title> タグを document_head.hbs に追加したところ、もともとある <title> element に加え二重で <title> element が生成されてしまったため、一旦 h1 でこちらに追加 --}}
+      <h1>{{brand.name}}</h1>
+    </div>
     <h2 class="visibility-hidden">{{ t 'search' }}</h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
       <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
@@ -13,6 +17,8 @@
 
 <div class="container">
   <section class="section knowledge-base">
+    {{!-- TODO: 言語ごとに出力できるようにしたい --}}
+    <h2 class="welcome-message">ようこそ！</h2>
     <h2 class="visibility-hidden">{{ t 'categories' }}</h2>
     <section class="categories blocks">
       <ul class="blocks-list">

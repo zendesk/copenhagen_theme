@@ -1,5 +1,19 @@
 /***** Homepage *****/
 
+.home-page {
+  color: #fff;
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.2),
+    0 2px 1px rgba(0, 0, 0, 0.2),
+    0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.2),
+    0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-message {
+  text-align: center;
+}
+
 .section {
   @include tablet {
     margin-bottom: 60px;

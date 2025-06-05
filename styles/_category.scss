@@ -29,11 +29,12 @@
   }
 
   &-title {
+    color: #a00;
     margin-bottom: 0;
     font-size: 18px;
     font-weight: $font-weight-semibold;
 
-    a { color: $text_color; }
+    a { color: inherit; }
   }
 
   .see-all-articles {
@@ -56,4 +57,8 @@
 .icon-star {
   color: $brand_color;
   font-size: 18px;
+}
+
+.category-container .category-content h1 {
+  color: #f00;
 }

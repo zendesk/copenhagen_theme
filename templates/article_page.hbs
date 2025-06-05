@@ -326,4 +326,10 @@
       {{/if}}
     </article>
   </div>
+
+  <footer class="article-footer-year">
+      {{!-- 本来は現在の年を表示したいが、date の出力が空になるため article 作成時刻を参照 --}}
+      {{!-- 本来は "YYYY" で年だけ出したいが、format が効かないため年月日＋時刻で表示 --}}
+      created_at {{date article.created_at format="YYYY"}}
+  </footer>
 </div>
