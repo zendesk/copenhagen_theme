@@ -1,3 +1,10 @@
+# [4.4.0](https://github.com/zendesk/copenhagen_theme/compare/v4.3.7...v4.4.0) (2025-06-02)
+
+
+### Features
+
+* display any file validation errors that can occur when the "Allowed file types" setting is on ([32ef11c](https://github.com/zendesk/copenhagen_theme/commit/32ef11c589bc934d1bd2cda1bd0847396f4a9354))
+
 ## [4.3.7](https://github.com/zendesk/copenhagen_theme/compare/v4.3.6...v4.3.7) (2025-04-24)
 
 
