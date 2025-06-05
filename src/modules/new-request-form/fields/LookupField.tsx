@@ -148,11 +148,9 @@ export function LookupField({
       const fieldValueParam = fieldValue?.toString() || "";
       const filterValueParam = `filter[dynamic_values][${filterValue}]`;
 
-      if (filterValue !== null)
-        searchParams.set(filterValueParam, fieldValueParam);
+      if (filterValue) searchParams.set(filterValueParam, fieldValueParam);
 
-      if (organizationId !== null)
-        searchParams.set("organization_id", organizationId);
+      if (organizationId) searchParams.set("organization_id", organizationId);
 
       setIsLoadingOptions(true);
       try {
