@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "repository": "katiesfz/qoria_zendesk_theme",
   "scripts": {
-    "start": "concurrently -k -r 'rollup -c -w' 'wait-on script.js style.css && zcli themes:preview'",
+    "start": "concurrently -k -r \"rollup -c -w\" \"wait-on script.js style.css && zcli themes:preview\"",
     "build": "NODE_ENV=production rollup -c",
     "prebuild": "rm -f assets/*-bundle.js",
     "eslint": "eslint src",
@@ -90,7 +90,7 @@
     "lighthouse": "10.0.1",
     "prettier": "2.8.4",
     "puppeteer": "19.4.1",
-    "rollup": "3.17.3",
+    "rollup": "^3.17.3",
     "rollup-jest": "^3.1.0",
     "rollup-plugin-sass": "1.12.18",
     "sass": "1.58.3",
