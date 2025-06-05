@@ -328,6 +328,7 @@ export function NewRequestForm({
                       : defaultOrganizationId
                   }
                   onChange={(value) => handleChange(field, value)}
+                  visibleFields={visibleFields}
                 />
               );
             default:
