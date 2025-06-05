@@ -1,3 +1,15 @@
+# [4.5.0](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0...v4.5.0) (2025-06-05)
+
+
+### Bug Fixes
+
+* handles falsy values for dynamic query params ([2f61403](https://github.com/zendesk/copenhagen_theme/commit/2f614031901b588bbd6f09e9edfefe14cd92d295))
+
+
+### Features
+
+* includes dynamic filter params for lookup autocomplete calls ([b65e8bd](https://github.com/zendesk/copenhagen_theme/commit/b65e8bddb0c36a46495616fdc92631c1cfc78296))
+
 # [4.4.0](https://github.com/zendesk/copenhagen_theme/compare/v4.3.7...v4.4.0) (2025-06-02)
 
 
