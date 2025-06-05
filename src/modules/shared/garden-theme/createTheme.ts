@@ -97,32 +97,12 @@ export function createTheme(settings: Settings): IGardenTheme {
     xxl: "44px",
     xxxl: "50px"
   },
-  opacity: {
-    100: 0.08,
-    200: 0.16,
-    300: 0.24,
-    400: 0.32,
-    500: 0.4,
-    600: 0.48,
-    700: 0.56,
-    800: 0.64,
-    900: 0.72,
-    1000: 0.8,
-    1100: 0.88,
-    1200: 0.96
-  },
   palette: { /* see API for details */ },
   rtl: document.dir === "rtl",
   shadowWidths: {
     xs: "1px",
     sm: "2px",
     md: "3px"
-  },
-  shadows: {
-    xs: " => expression",
-    sm: " => expression",
-    md: " => expression",
-    lg: "(e,t,n) => expression"
   },
   space: {
     base: 4,

@@ -104,12 +104,6 @@ function createTheme(settings) {
             sm: "2px",
             md: "3px"
         },
-        shadows: {
-            xs: " => expression",
-            sm: " => expression",
-            md: " => expression",
-            lg: "(e,t,n) => expression"
-        },
         space: {
             base: 4,
             xxs: "4px",

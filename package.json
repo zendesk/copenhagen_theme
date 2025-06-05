@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "repository": "katiesfz/qoria_zendesk_theme",
   "scripts": {
-    "start": "concurrently -k -r \"rollup -c -w\" \"wait-on script.js style.css && zcli themes:preview\"",
+    "start": "concurrently -k -r \"rollup -c -w\" \"wait-on script.js style.css\"",
     "build": "NODE_ENV=production rollup -c",
     "prebuild": "rm -f assets/*-bundle.js",
     "eslint": "eslint src",
