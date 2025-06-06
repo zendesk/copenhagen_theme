@@ -4,10 +4,15 @@
  */
 
 #request-container {
+
+	.ck-sticky-panel {
+		--ck-color-base-background: 								#e2e8f0;
+	}
 	--ck-color-base-foreground: 								hsl(0, 0%, 98%);
 //	--ck-color-base-background: 								hsl(0, 0%, 100%);
 	--ck-color-base-background: 								#f1f5f9;
-	--ck-color-base-border: 									hsl(220, 6%, 81%);
+//	--ck-color-base-border: 									hsl(220, 6%, 81%);
+	--ck-color-base-border: 									transparent;
 //	--ck-color-base-action: 									hsl(104, 50.2%, 42.5%);
 	--ck-color-base-action: 									#268460;
 //	--ck-color-base-focus: 										hsl(209, 92%, 70%);
