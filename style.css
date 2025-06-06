@@ -37,8 +37,7 @@ a {
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 b,
@@ -651,9 +650,7 @@ ul {
   margin: 0;
   border: 0;
   font-weight: 700;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   white-space: nowrap;
   width: 100%;
   -webkit-touch-callout: none;
@@ -1516,8 +1513,7 @@ ul {
   border-style: solid;
   border-width: 1px;
   padding: 16px;
-  -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
   color: #0f172a;
@@ -1526,10 +1522,6 @@ ul {
   width: 100%;
   font-size: 0.875em;
   margin-bottom: 0px;
-}
-.search input[type=search]::-moz-placeholder {
-  opacity: 1;
-  color: #0f172a;
 }
 .search input[type=search]::placeholder {
   opacity: 1;
@@ -1639,7 +1631,7 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   height: 200vw;
   width: 200vw;
   display: block;
-  background: url(\$tiled_bg);
+  background: url($tiled_bg);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1660,7 +1652,7 @@ section.hero-article, section.hero-request {
   margin-bottom: -13rem;
 }
 section.hero-home {
-  background-image: url(\$knowledge_base_banner);
+  background-image: url($knowledge_base_banner);
   padding-top: 140px;
   background-size: cover;
   background-position: center;
@@ -1946,7 +1938,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .community-image {
   min-height: 300px;
   margin-top: 32px;
-  background-image: url(\$community_image);
+  background-image: url($community_image);
   background-position: center;
   background-repeat: no-repeat;
   max-width: 100%;
@@ -2979,7 +2971,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 /***** Community *****/
 .community-hero {
-  background-image: url(\$community_background_image);
+  background-image: url($community_background_image);
   margin-bottom: 10px;
 }
 .community-footer {
@@ -5368,14 +5360,14 @@ html[dir=rtl] .notification-left-aligned {
  */
 :root {
   --ck-color-base-foreground:	hsl(0, 0%, 98%);
-  --ck-color-base-background:	hsl(0, 0%, 100%);
+  --ck-color-base-background:	#f1f5f9;
   --ck-color-base-border:	hsl(220, 6%, 81%);
-  --ck-color-base-action:	hsl(104, 50.2%, 42.5%);
+  --ck-color-base-action:	#268460;
   --ck-color-base-focus:	hsl(209, 92%, 70%);
-  --ck-color-base-text:	hsl(0, 0%, 20%);
+  --ck-color-base-text:	#020617;
   --ck-color-base-active:	hsl(218.1, 100%, 58%);
   --ck-color-base-active-focus:	hsl(218.2, 100%, 52.5%);
-  --ck-color-base-error:	hsl(15, 100%, 43%);
+  --ck-color-base-error:	#b84c56;
   /* -- Generic colors ------------------------------------------------------------------------ */
   --ck-color-focus-border-coordinates:	218, 81.8%, 56.9%;
   --ck-color-focus-border:	hsl(var(--ck-color-focus-border-coordinates));

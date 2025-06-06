@@ -7423,15 +7423,33 @@ function createTheme(settings) {
                 Ne `
             color: #ffffff;
             background-color: #515ba5;
+            border-radius: 4px;
+            :hover,
+            :active,
+            :focus {
+            background-color: #3a3879;}
           `}
       `,
             "forms.faux_input": Ne `
-            background-color: #f1f5f9;
-            border: 0;
-            border-radius: 0;
+        background-color: #f1f5f9;
+        border: 0;
+        border-radius: 0;
       `,
-            "typography.paragraph": Ne `
-            margin-top: 0;
+            'forms.input': Ne `
+        background-color: #f1f5f9;
+        border: 0;
+        border-radius: 0;
+      `,
+            'typography.paragraph': Ne `
+        margin-top: 0;
+      `,
+            'forms.file_upload': Ne `
+        background-color: #f1f5f9;
+          :hover,
+          :active,
+          :focus {
+            background-color: #d2dae5;
+            }
       `,
         },
         fonts: {

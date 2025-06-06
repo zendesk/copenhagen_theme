@@ -5,14 +5,21 @@
 
 :root {
 	--ck-color-base-foreground: 								hsl(0, 0%, 98%);
-	--ck-color-base-background: 								hsl(0, 0%, 100%);
+//	--ck-color-base-background: 								hsl(0, 0%, 100%);
+	--ck-color-base-background: 								#f1f5f9;
 	--ck-color-base-border: 									hsl(220, 6%, 81%);
-	--ck-color-base-action: 									hsl(104, 50.2%, 42.5%);
+//	--ck-color-base-action: 									hsl(104, 50.2%, 42.5%);
+	--ck-color-base-action: 									#268460;
+//	--ck-color-base-focus: 										hsl(209, 92%, 70%);
+//	--ck-color-base-text: 										hsl(0, 0%, 20%);
+//	--ck-color-base-active: 									hsl(218.1, 100%, 58%);
+//	--ck-color-base-active-focus:								hsl(218.2, 100%, 52.5%);
+//	--ck-color-base-error:										hsl(15, 100%, 43%);
 	--ck-color-base-focus: 										hsl(209, 92%, 70%);
-	--ck-color-base-text: 										hsl(0, 0%, 20%);
+	--ck-color-base-text: 										#020617;
 	--ck-color-base-active: 									hsl(218.1, 100%, 58%);
 	--ck-color-base-active-focus:								hsl(218.2, 100%, 52.5%);
-	--ck-color-base-error:										hsl(15, 100%, 43%);
+	--ck-color-base-error:										#b84c56;
 
 	/* -- Generic colors ------------------------------------------------------------------------ */
 
