@@ -71,6 +71,7 @@ export function createTheme(settings: Settings): IGardenTheme {
         display: inline-block;
         line-height: 1;
         text-align: center;
+        height: auto;
         margin: 0;
         border: 0;
         font-weight: 700;
@@ -78,7 +79,7 @@ export function createTheme(settings: Settings): IGardenTheme {
         -moz-user-select: none;
         user-select: none;
         white-space: nowrap;
-        width: 100%;
+        width: auto;
         -webkit-touch-callout: none;
 
         ${(props: IButtonProps) =>

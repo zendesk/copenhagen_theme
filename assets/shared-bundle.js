@@ -7427,6 +7427,7 @@ function createTheme(settings) {
         display: inline-block;
         line-height: 1;
         text-align: center;
+        height: auto;
         margin: 0;
         border: 0;
         font-weight: 700;
@@ -7434,7 +7435,7 @@ function createTheme(settings) {
         -moz-user-select: none;
         user-select: none;
         white-space: nowrap;
-        width: 100%;
+        width: auto;
         -webkit-touch-callout: none;
 
         ${(props) => props.isPrimary &&
