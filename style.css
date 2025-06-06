@@ -4040,6 +4040,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex: 1 0 auto;
   box-shadow: 1px 18px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 80px;
+  position: relative;
 }
 .request-form {
   width: 100%;

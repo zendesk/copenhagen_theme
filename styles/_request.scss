@@ -6,6 +6,7 @@
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
   box-shadow: 1px 18px 20px #00000033;
   margin-bottom: 80px;
+  position: relative;
 
   &-form {
     width: 100%;
