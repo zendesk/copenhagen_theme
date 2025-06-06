@@ -4034,6 +4034,16 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 /***** Request *****/
+.request {
+  background: #FFFFFF;
+  padding: 32px;
+  flex: 1 0 auto;
+  box-shadow: 1px 18px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 80px;
+}
+.request-form {
+  width: 100%;
+}
 .request-container {
   display: flex;
   flex-direction: column;
@@ -4121,14 +4131,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .request-title {
   width: 100%;
 }
-@media (min-width: 1024px) {
-  .request-title {
-    border-bottom: 1px solid #B0B0B0;
-    margin-bottom: 0;
-    max-width: 66%;
-    padding-bottom: 20px;
-  }
-}
 .request-sidebar {
   border-bottom: 1px solid #B0B0B0;
   border-top: 1px solid #B0B0B0;
@@ -4156,7 +4158,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .request-details {
-  border-bottom: 1px solid #B0B0B0;
   font-size: 0;
   margin: 0;
   padding-bottom: 20px;
@@ -5354,6 +5355,276 @@ html[dir=rtl] .notification-left-aligned {
 /***** WYSIWYG Editor *****/
 #hc-wysiwyg {
   border: 1px solid #87929D;
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  --ck-color-base-foreground:	hsl(0, 0%, 98%);
+  --ck-color-base-background:	hsl(0, 0%, 100%);
+  --ck-color-base-border:	hsl(220, 6%, 81%);
+  --ck-color-base-action:	hsl(104, 50.2%, 42.5%);
+  --ck-color-base-focus:	hsl(209, 92%, 70%);
+  --ck-color-base-text:	hsl(0, 0%, 20%);
+  --ck-color-base-active:	hsl(218.1, 100%, 58%);
+  --ck-color-base-active-focus:	hsl(218.2, 100%, 52.5%);
+  --ck-color-base-error:	hsl(15, 100%, 43%);
+  /* -- Generic colors ------------------------------------------------------------------------ */
+  --ck-color-focus-border-coordinates:	218, 81.8%, 56.9%;
+  --ck-color-focus-border:	hsl(var(--ck-color-focus-border-coordinates));
+  --ck-color-focus-outer-shadow:	hsl(212.4, 89.3%, 89%);
+  --ck-color-focus-disabled-shadow:	hsla(209, 90%, 72%,.3);
+  --ck-color-focus-error-shadow:	hsla(9,100%,56%,.3);
+  --ck-color-text:	var(--ck-color-base-text);
+  --ck-color-shadow-drop:	hsla(0, 0%, 0%, 0.15);
+  --ck-color-shadow-drop-active:	hsla(0, 0%, 0%, 0.2);
+  --ck-color-shadow-inner:	hsla(0, 0%, 0%, 0.1);
+  /* -- Buttons ------------------------------------------------------------------------------- */
+  --ck-color-button-default-background:	transparent;
+  --ck-color-button-default-hover-background:	hsl(0, 0%, 94.1%);
+  --ck-color-button-default-active-background:	hsl(0, 0%, 94.1%);
+  --ck-color-button-default-disabled-background:	transparent;
+  --ck-color-button-on-background:	hsl(212, 100%, 97.1%);
+  --ck-color-button-on-hover-background:	hsl(211.7, 100%, 92.9%);
+  --ck-color-button-on-active-background:	hsl(211.7, 100%, 92.9%);
+  --ck-color-button-on-disabled-background:	hsl(211, 15%, 95%);
+  --ck-color-button-on-color:	hsl(218.1, 100%, 58%);
+  --ck-color-button-action-background:	var(--ck-color-base-action);
+  --ck-color-button-action-hover-background:	hsl(104, 53.2%, 40.2%);
+  --ck-color-button-action-active-background:	hsl(104, 53.2%, 40.2%);
+  --ck-color-button-action-disabled-background:	hsl(104, 44%, 58%);
+  --ck-color-button-action-text:	var(--ck-color-base-background);
+  --ck-color-button-save:	hsl(120, 100%, 27%);
+  --ck-color-button-cancel:	hsl(15, 100%, 43%);
+  --ck-color-switch-button-off-background:	hsl(0, 0%, 57.6%);
+  --ck-color-switch-button-off-hover-background:	hsl(0, 0%, 49%);
+  --ck-color-switch-button-on-background:	var(--ck-color-button-action-background);
+  --ck-color-switch-button-on-hover-background:	hsl(104, 53.2%, 40.2%);
+  --ck-color-switch-button-inner-background:	var(--ck-color-base-background);
+  --ck-color-switch-button-inner-shadow:	hsla(0, 0%, 0%, 0.1);
+  /* -- Dropdown ------------------------------------------------------------------------------ */
+  --ck-color-dropdown-panel-background:	var(--ck-color-base-background);
+  --ck-color-dropdown-panel-border:	var(--ck-color-base-border);
+  /* -- Dialog -------------------------------------------------------------------------------- */
+  --ck-color-dialog-background:	var(--ck-custom-background);
+  --ck-color-dialog-form-header-border:	var(--ck-custom-border);
+  /* -- Input --------------------------------------------------------------------------------- */
+  --ck-color-input-background:	var(--ck-color-base-background);
+  --ck-color-input-border:	var(--ck-color-base-border);
+  --ck-color-input-error-border:	var(--ck-color-base-error);
+  --ck-color-input-text:	var(--ck-color-base-text);
+  --ck-color-input-disabled-background:	hsl(0, 0%, 95%);
+  --ck-color-input-disabled-border:	var(--ck-color-base-border);
+  --ck-color-input-disabled-text:	hsl(0, 0%, 46%);
+  /* -- List ---------------------------------------------------------------------------------- */
+  --ck-color-list-background:	var(--ck-color-base-background);
+  --ck-color-list-button-hover-background:	var(--ck-color-button-default-hover-background);
+  --ck-color-list-button-on-background:	var(--ck-color-button-on-color);
+  --ck-color-list-button-on-background-focus:	var(--ck-color-button-on-color);
+  --ck-color-list-button-on-text:	var(--ck-color-base-background);
+  /* -- Panel --------------------------------------------------------------------------------- */
+  --ck-color-panel-background:	var(--ck-color-base-background);
+  --ck-color-panel-border:	var(--ck-color-base-border);
+  /* -- Toolbar ------------------------------------------------------------------------------- */
+  --ck-color-toolbar-background:	var(--ck-color-base-background);
+  --ck-color-toolbar-border:	var(--ck-color-base-border);
+  /* -- Tooltip ------------------------------------------------------------------------------- */
+  --ck-color-tooltip-background:	var(--ck-color-base-text);
+  --ck-color-tooltip-text:	var(--ck-color-base-background);
+  /* -- Engine -------------------------------------------------------------------------------- */
+  --ck-color-engine-placeholder-text:	hsl(0, 0%, 44%);
+  /* -- Upload -------------------------------------------------------------------------------- */
+  --ck-color-upload-bar-background:	hsl(209, 92%, 70%);
+  /* -- Link -------------------------------------------------------------------------------- */
+  --ck-color-link-default:	hsl(240, 100%, 47%);
+  --ck-color-link-selected-background:	hsla(201, 100%, 56%, 0.1);
+  --ck-color-link-fake-selection:	hsla(201, 100%, 56%, 0.3);
+  /* -- Search result highlight ---------------------------------------------------------------- */
+  --ck-color-highlight-background:	hsl(60, 100%, 50%);
+  /* -- Generic colors ------------------------------------------------------------------------- */
+  --ck-color-light-red:	hsl(0, 100%, 90%);
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  /**
+   * An opacity value of disabled UI item.
+   */
+  --ck-disabled-opacity: .5;
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  /**
+   * The geometry of the of focused element's outer shadow.
+   */
+  --ck-focus-outer-shadow-geometry: 0 0 0 3px;
+  /**
+   * A visual style of focused element's outer shadow.
+   */
+  --ck-focus-outer-shadow: var(--ck-focus-outer-shadow-geometry) var(--ck-color-focus-outer-shadow);
+  /**
+   * A visual style of focused element's outer shadow (when disabled).
+   */
+  --ck-focus-disabled-outer-shadow: var(--ck-focus-outer-shadow-geometry) var(--ck-color-focus-disabled-shadow);
+  /**
+   * A visual style of focused element's outer shadow (when has errors).
+   */
+  --ck-focus-error-outer-shadow: var(--ck-focus-outer-shadow-geometry) var(--ck-color-focus-error-shadow);
+  /**
+   * A visual style of focused element's border or outline.
+   */
+  --ck-focus-ring: 1px solid var(--ck-color-focus-border);
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  --ck-font-size-base: 13px;
+  --ck-line-height-base: 1.84615;
+  --ck-font-face: Quicksand, Helvetica, Arial, Tahoma, Verdana, Sans-Serif;
+  --ck-font-size-tiny: 0.7em;
+  --ck-font-size-small: 0.75em;
+  --ck-font-size-normal: 1em;
+  --ck-font-size-big: 1.4em;
+  --ck-font-size-large: 1.8em;
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  /* This is super-important. This is **manually** adjusted so a button without an icon
+  is never smaller than a button with icon, additionally making sure that text-less buttons
+  are perfect squares. The value is also shared by other components which should stay "in-line"
+  with buttons. */
+  --ck-ui-component-min-height: 2.3em;
+}
+
+/**
+ * Resets an element, ignoring its children.
+ */
+.ck.ck-reset,
+.ck.ck-reset_all,
+.ck-reset_all *:not(.ck-reset_all-excluded *) {
+  /* Do not include inheritable rules here. */
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  text-decoration: none;
+  vertical-align: middle;
+  transition: none;
+  /* https://github.com/ckeditor/ckeditor5-theme-lark/issues/105 */
+  word-wrap: break-word;
+}
+
+/**
+ * Resets an element AND its children.
+ */
+.ck.ck-reset_all,
+.ck-reset_all *:not(.ck-reset_all-excluded *) {
+  /* These are rule inherited by all children elements. */
+  border-collapse: collapse;
+  font: normal normal normal var(--ck-font-size-base)/var(--ck-line-height-base) var(--ck-font-face);
+  color: var(--ck-color-text);
+  text-align: left;
+  white-space: nowrap;
+  cursor: auto;
+  float: none;
+}
+
+.ck-reset_all .ck-rtl *:not(.ck-reset_all-excluded *) {
+  text-align: right;
+}
+.ck-reset_all iframe:not(.ck-reset_all-excluded *) {
+  /* For IE */
+  vertical-align: inherit;
+}
+.ck-reset_all textarea:not(.ck-reset_all-excluded *) {
+  white-space: pre-wrap;
+}
+.ck-reset_all textarea:not(.ck-reset_all-excluded *), .ck-reset_all input[type=text]:not(.ck-reset_all-excluded *), .ck-reset_all input[type=password]:not(.ck-reset_all-excluded *) {
+  cursor: text;
+}
+.ck-reset_all textarea[disabled]:not(.ck-reset_all-excluded *), .ck-reset_all input[type=text][disabled]:not(.ck-reset_all-excluded *), .ck-reset_all input[type=password][disabled]:not(.ck-reset_all-excluded *) {
+  cursor: default;
+}
+.ck-reset_all fieldset:not(.ck-reset_all-excluded *) {
+  padding: 10px;
+  border: 2px groove hsl(255, 7%, 88%);
+}
+.ck-reset_all button:not(.ck-reset_all-excluded *)::-moz-focus-inner {
+  /* See http://stackoverflow.com/questions/5517744/remove-extra-button-spacing-padding-in-firefox */
+  padding: 0;
+  border: 0;
+}
+
+/**
+ * Default UI rules for RTL languages.
+ */
+.ck[dir=rtl],
+.ck[dir=rtl] .ck {
+  text-align: right;
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+/**
+ * Default border-radius value.
+ */
+:root {
+  --ck-border-radius: 0;
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  /**
+   * A visual style of element's inner shadow (i.e. input).
+   */
+  --ck-inner-shadow: 2px 2px 3px var(--ck-color-shadow-inner) inset;
+  /**
+   * A visual style of element's drop shadow (i.e. panel).
+   */
+  --ck-drop-shadow: 0 1px 2px 1px var(--ck-color-shadow-drop);
+  /**
+   * A visual style of element's active shadow (i.e. comment or suggestion).
+   */
+  --ck-drop-shadow-active: 0 3px 6px 1px var(--ck-color-shadow-drop-active);
+}
+
+/*
+ * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
+ */
+:root {
+  --ck-spacing-unit:	0.6em;
+  --ck-spacing-large:	calc(var(--ck-spacing-unit) * 1.5);
+  --ck-spacing-standard:	var(--ck-spacing-unit);
+  --ck-spacing-medium:	calc(var(--ck-spacing-unit) * 0.8);
+  --ck-spacing-small:	calc(var(--ck-spacing-unit) * 0.5);
+  --ck-spacing-tiny:	calc(var(--ck-spacing-unit) * 0.3);
+  --ck-spacing-extra-tiny:	calc(var(--ck-spacing-unit) * 0.16);
 }
 
 /***** Upload Dropzone *****/

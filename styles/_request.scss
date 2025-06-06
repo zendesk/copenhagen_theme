@@ -1,5 +1,16 @@
 /***** Request *****/
 .request {
+  
+  background: #FFFFFF;
+  padding: $padding;
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+  box-shadow: 1px 18px 20px #00000033;
+  margin-bottom: 80px;
+
+  &-form {
+    width: 100%;
+  }
+
   &-container {
     @include desktop {
       align-items: flex-start;
@@ -89,10 +100,6 @@
 
   &-title {
     @include desktop {
-      border-bottom: 1px solid $low-contrast-border-color;
-      margin-bottom: 0;
-      max-width: 66%; //Same as main container
-      padding-bottom: 20px;
     }
 
     width: 100%;
@@ -125,7 +132,6 @@
   }
 
   &-details {
-    border-bottom: 1px solid $low-contrast-border-color;
     font-size: 0; // To remove whitespace and do a 40%/60% split
     margin: 0;
     padding-bottom: 20px;

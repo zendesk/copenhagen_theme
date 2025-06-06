@@ -74,16 +74,14 @@ export function createTheme(settings: Settings): IGardenTheme {
             background-color: #f1f5f9;
             border: 0;
             border-radius: 0;
-
-        :hover,
-        :active,
-        :focus {
-          color: #2f3561;
-        }
-
-        &:visited {
-          color: #2f3561;
-        }
+      `,
+      'forms.input': css`
+            background-color: #f1f5f9;
+            border: 0;
+            border-radius: 0;
+      `,
+      "typography.paragraph": css`
+            margin-top: 0;
       `,
     },
   fonts: {
