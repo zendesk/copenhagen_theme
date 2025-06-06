@@ -80,8 +80,9 @@ $input-background: $background-subtle;
   display: flex;
   position: relative;
   transition: $input-transition;
+  flex-direction: column;
 
-  @include desktop {
+  @include tablet {
       flex-direction: row;
   }
   
@@ -114,6 +115,10 @@ $input-background: $background-subtle;
   }
 
   input[type="submit"] {
+    margin-top: 8px;
+      @include tablet {
+        margin-top: 0;
+      }
       @extend .button;
   }
 

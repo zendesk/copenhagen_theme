@@ -19,12 +19,12 @@ export function createTheme(settings: Settings): IGardenTheme {
     ...DEFAULT_THEME,
 
   borders: {
-    sm: "1px solid",
-    md: "3px solid"
+    sm: "0px solid",
+    md: "0px solid"
   },
   borderRadii: {
-    sm: "2px",
-    md: "4px"
+    sm: "0px",
+    md: "0px"
   },
   borderWidths: {
     sm: "1px",
@@ -42,11 +42,11 @@ export function createTheme(settings: Settings): IGardenTheme {
         foreground: "#0f172a",
         primaryHue: "#515ba5",
     base: "light",
-    dangerHue: "red",
-    warningHue: "yellow",
-    successHue: "green",
-    neutralHue: "grey",
-    chromeHue: "kale",
+    dangerHue: "#b84c56",
+    warningHue: "#f2c464",
+    successHue: "#268460",
+    neutralHue: "#68768b",
+    chromeHue: "#515ba5",
   },
   components: {
       "buttons.anchor": css`
@@ -67,8 +67,23 @@ export function createTheme(settings: Settings): IGardenTheme {
           props.isPrimary &&
           css`
             color: #ffffff;
-            background-color: #ff0000;
+            background-color: #515ba5;
           `}
+      `,
+      "forms.faux_input": css`
+            background-color: #f1f5f9;
+            border: 0;
+            border-radius: 0;
+
+        :hover,
+        :active,
+        :focus {
+          color: #2f3561;
+        }
+
+        &:visited {
+          color: #2f3561;
+        }
       `,
     },
   fonts: {
@@ -76,8 +91,8 @@ export function createTheme(settings: Settings): IGardenTheme {
     system: "Quicksand, Arial, Helvetica, sans-serif"
   },
   fontSizes: {
-    xs: "10px",
-    sm: "12px",
+    xs: "12px",
+    sm: "14px",
     md: "16px",
     lg: "18px",
     xl: "22px",
@@ -109,7 +124,7 @@ export function createTheme(settings: Settings): IGardenTheme {
     xxs: "4px",
     xs: "8px",
     sm: "12px",
-    md: "20px",
+    md: "16px",
     lg: "32px",
     xl: "40px",
     xxl: "48px"

@@ -13,10 +13,6 @@ import { defineConfig } from "rollup";
 
 const fileNames = "[name]-bundle.js";
 const isProduction = process.env.NODE_ENV === "production";
-const TRANSLATION_FILE_REGEX =
-  /src\/modules\/(.+?)\/translations\/locales\/.+?\.json$/;
-const TRANSLATION_FILE_REGEX2 =
-  /translations\/.+?\.json$/;
 
 export default defineConfig([
   // Configuration for bundling the script.js file
@@ -42,28 +38,27 @@ export default defineConfig([
       dir: "assets",
       format: "es",
       manualChunks: (id) => {
+
         if (
-          id.includes("node_modules/@zendesk/help-center-wysiwyg") ||
-          id.includes("node_modules/@ckeditor5")
+          id.includes("node_modules\\@zendesk\\help-center-wysiwyg") ||
+          id.includes("node_modules\\@ckeditor5")
         ) {
+          console.log(id + " is wysiwyg");
           return "wysiwyg";
-        }
-
-        if (id.includes("node_modules") || id.includes("src/modules/shared")) {
+        } else if (id.includes("node_modules") || id.includes("src\\modules\\shared")) {
+          console.log(id + " is shared");
           return "shared";
-        }
-
-        // Bundle all files from `translations` to `translations.js`
-        const translationFileMatch2 = id.match(TRANSLATION_FILE_REGEX2);
-        if (translationFileMatch) {
-          return "translations";
-        }
-
-        // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`
-        const translationFileMatch = id.match(TRANSLATION_FILE_REGEX);
-        if (translationFileMatch) {
-          return `${translationFileMatch[1]}-translations`;
-        }
+        } else if (id.includes("translations\\locales\\")) {
+          // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`
+          const TRANSLATION_FILE_REGEX = /\\src\\modules\\(.+?)\\translations\\locales\\.+?\.json$/;
+          const translationFileMatch = id.match(TRANSLATION_FILE_REGEX);
+          if (translationFileMatch) {
+            console.log(id + " translation match");
+            return `${translationFileMatch[1]}-translations`; 
+          }
+        } else {
+            return null;
+          }
       },
       entryFileNames: fileNames,
       chunkFileNames: fileNames,

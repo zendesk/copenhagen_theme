@@ -6,12 +6,12 @@ function createTheme(settings) {
     return {
         ...DEFAULT_THEME,
         borders: {
-            sm: "1px solid",
-            md: "3px solid"
+            sm: "0px solid",
+            md: "0px solid"
         },
         borderRadii: {
-            sm: "2px",
-            md: "4px"
+            sm: "0px",
+            md: "0px"
         },
         borderWidths: {
             sm: "1px",
@@ -29,11 +29,11 @@ function createTheme(settings) {
             foreground: "#0f172a",
             primaryHue: "#515ba5",
             base: "light",
-            dangerHue: "red",
-            warningHue: "yellow",
-            successHue: "green",
-            neutralHue: "grey",
-            chromeHue: "kale",
+            dangerHue: "#b84c56",
+            warningHue: "#f2c464",
+            successHue: "#268460",
+            neutralHue: "#68768b",
+            chromeHue: "#515ba5",
         },
         components: {
             "buttons.anchor": Ne `
@@ -53,8 +53,23 @@ function createTheme(settings) {
         ${(props) => props.isPrimary &&
                 Ne `
             color: #ffffff;
-            background-color: #ff0000;
+            background-color: #515ba5;
           `}
+      `,
+            "forms.faux_input": Ne `
+            background-color: #f1f5f9;
+            border: 0;
+            border-radius: 0;
+
+        :hover,
+        :active,
+        :focus {
+          color: #2f3561;
+        }
+
+        &:visited {
+          color: #2f3561;
+        }
       `,
         },
         fonts: {
@@ -62,8 +77,8 @@ function createTheme(settings) {
             system: "Quicksand, Arial, Helvetica, sans-serif"
         },
         fontSizes: {
-            xs: "10px",
-            sm: "12px",
+            xs: "12px",
+            sm: "14px",
             md: "16px",
             lg: "18px",
             xl: "22px",
@@ -83,20 +98,6 @@ function createTheme(settings) {
             xxl: "44px",
             xxxl: "50px"
         },
-        opacity: {
-            100: 0.08,
-            200: 0.16,
-            300: 0.24,
-            400: 0.32,
-            500: 0.4,
-            600: 0.48,
-            700: 0.56,
-            800: 0.64,
-            900: 0.72,
-            1000: 0.8,
-            1100: 0.88,
-            1200: 0.96
-        },
         palette: { /* see API for details */},
         rtl: document.dir === "rtl",
         shadowWidths: {
@@ -109,7 +110,7 @@ function createTheme(settings) {
             xxs: "4px",
             xs: "8px",
             sm: "12px",
-            md: "20px",
+            md: "16px",
             lg: "32px",
             xl: "40px",
             xxl: "48px"

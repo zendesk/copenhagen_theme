@@ -1,52 +1,4 @@
-import { i as instance, a as initReactI18next, r as reactExports, j as jsxRuntimeExports, F as Field, L as Label, S as Span, H as Hint, I as Input$1, M as Message, u as useToast, b as useTranslation, N as Notification, T as Title, C as Close, s as styled, c as Textarea, d as Field$1, e as Label$1, f as Hint$1, g as Combobox, O as Option, h as Message$1, k as Checkbox$1, l as OptGroup, p as purify, n as FileList, o as File, q as Tooltip, P as Progress, A as Anchor, t as mime, v as useDropzone, w as FileUpload, D as Datepicker, x as useGrid, K as KEYS, y as focusStyles, z as FauxInput, B as Tag, E as SvgAlertWarningStroke, G as MediaInput, J as SvgCreditCardStroke, $ as $e, Q as getColorV8, R as Header, U as SvgCheckCircleStroke, V as Modal, W as Body, X as Accordion, Y as Paragraph, Z as Footer$1, _ as FooterItem, a0 as Button, a1 as Close$1, a2 as debounce, a3 as Alert, a4 as reactDomExports } from 'shared';
-import { F as FLASH_NOTIFICATIONS_KEY, M as ModalContainerContext, T as ThemeProviders, c as createTheme } from 'ThemeProviders';
-
-function addFlashNotification(notification) {
-    try {
-        const currentValue = window.sessionStorage.getItem(FLASH_NOTIFICATIONS_KEY);
-        const notifications = currentValue
-            ? JSON.parse(currentValue)
-            : [];
-        notifications.push(notification);
-        window.sessionStorage.setItem(FLASH_NOTIFICATIONS_KEY, JSON.stringify(notifications));
-    }
-    catch (e) {
-        console.error("Cannot add flash notification", e);
-    }
-}
-
-async function loadTranslations(locale, dynamicImport) {
-    try {
-        const { default: translations } = await dynamicImport();
-        instance.addResourceBundle(locale, "translation", translations);
-    }
-    catch (e) {
-        console.error(`Cannot load translations for ${locale}`);
-    }
-}
-
-function initI18next(locale) {
-    instance.use(initReactI18next).init({
-        resources: {
-            [`${locale}`]: {},
-        },
-        lng: locale,
-        lowerCaseLng: true,
-        interpolation: {
-            escapeValue: false,
-        },
-        keySeparator: false,
-        pluralSeparator: ".",
-    });
-}
-
-function useModalContainer() {
-    const modalContainer = reactExports.useContext(ModalContainerContext);
-    if (modalContainer === null) {
-        throw new Error("useModalContainer should be used inside a ModalContainerProvider");
-    }
-    return modalContainer;
-}
+import { j as jsxRuntimeExports, F as Field, L as Label, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, d as Field$1, e as Label$1, f as Hint$1, h as Combobox, O as Option, i as Message$1, k as Checkbox$1, l as OptGroup, p as purify, m as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as mime, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, K as KEYS, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as getColorV8, Q as Header, R as SvgCheckCircleStroke, U as useModalContainer, V as Modal, W as Body, X as Accordion, Y as Paragraph, Z as Footer$1, _ as FooterItem, a0 as Button, a1 as Close$1, a2 as addFlashNotification, a3 as debounce, a4 as Alert, a5 as initI18next, a6 as loadTranslations, a7 as reactDomExports, a8 as ThemeProviders, a9 as createTheme } from 'shared';
 
 function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
@@ -69,7 +21,7 @@ function useWysiwyg({ hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, 
     return reactExports.useCallback(async (ref) => {
         if (hasWysiwyg && ref && !isInitializedRef.current) {
             isInitializedRef.current = true;
-            const { createEditor } = await import('shared').then(function (n) { return n.m; });
+            const { createEditor } = await import('wysiwyg').then(function (n) { return n.m; });
             const editor = await createEditor(ref, {
                 editorType: "supportRequests",
                 hasAtMentions,
@@ -1401,93 +1353,93 @@ function NewRequestForm({ requestForm, wysiwyg, newRequestPath, parentId, parent
 
 function __variableDynamicImportRuntime0__(path) {
   switch (path) {
-    case './translations/locales/af.json': return import('af');
-    case './translations/locales/ar-x-pseudo.json': return import('ar-x-pseudo');
-    case './translations/locales/ar.json': return import('ar');
-    case './translations/locales/az.json': return import('az');
-    case './translations/locales/be.json': return import('be');
-    case './translations/locales/bg.json': return import('bg');
-    case './translations/locales/bn.json': return import('bn');
-    case './translations/locales/bs.json': return import('bs');
-    case './translations/locales/ca.json': return import('ca');
-    case './translations/locales/cs.json': return import('cs');
-    case './translations/locales/cy.json': return import('cy');
-    case './translations/locales/da.json': return import('da');
-    case './translations/locales/de-de.json': return import('de-de');
-    case './translations/locales/de-x-informal.json': return import('de-x-informal');
-    case './translations/locales/de.json': return import('de');
-    case './translations/locales/el.json': return import('el');
-    case './translations/locales/en-001.json': return import('en-001');
-    case './translations/locales/en-150.json': return import('en-150');
-    case './translations/locales/en-au.json': return import('en-au');
-    case './translations/locales/en-ca.json': return import('en-ca');
-    case './translations/locales/en-gb.json': return import('en-gb');
-    case './translations/locales/en-my.json': return import('en-my');
-    case './translations/locales/en-ph.json': return import('en-ph');
-    case './translations/locales/en-se.json': return import('en-se');
-    case './translations/locales/en-us.json': return import('en-us');
-    case './translations/locales/en-x-dev.json': return import('en-x-dev');
-    case './translations/locales/en-x-keys.json': return import('en-x-keys');
-    case './translations/locales/en-x-obsolete.json': return import('en-x-obsolete');
-    case './translations/locales/en-x-pseudo.json': return import('en-x-pseudo');
-    case './translations/locales/en-x-test.json': return import('en-x-test');
-    case './translations/locales/es-419.json': return import('es-419');
-    case './translations/locales/es-es.json': return import('es-es');
-    case './translations/locales/es.json': return import('es');
-    case './translations/locales/et.json': return import('et');
-    case './translations/locales/eu.json': return import('eu');
-    case './translations/locales/fa-af.json': return import('fa-af');
-    case './translations/locales/fa.json': return import('fa');
-    case './translations/locales/fi.json': return import('fi');
-    case './translations/locales/fil.json': return import('fil');
-    case './translations/locales/fo.json': return import('fo');
-    case './translations/locales/fr-ca.json': return import('fr-ca');
-    case './translations/locales/fr.json': return import('fr');
-    case './translations/locales/ga.json': return import('ga');
-    case './translations/locales/he.json': return import('he');
-    case './translations/locales/hi.json': return import('hi');
-    case './translations/locales/hr.json': return import('hr');
-    case './translations/locales/hu.json': return import('hu');
-    case './translations/locales/hy.json': return import('hy');
-    case './translations/locales/id.json': return import('id');
-    case './translations/locales/is.json': return import('is');
-    case './translations/locales/it-ch.json': return import('it-ch');
-    case './translations/locales/it.json': return import('it');
-    case './translations/locales/ja.json': return import('ja');
-    case './translations/locales/ka.json': return import('ka');
-    case './translations/locales/kk.json': return import('kk');
-    case './translations/locales/kl-dk.json': return import('kl-dk');
-    case './translations/locales/ko.json': return import('ko');
-    case './translations/locales/ku.json': return import('ku');
-    case './translations/locales/lt.json': return import('lt');
-    case './translations/locales/lv.json': return import('lv');
-    case './translations/locales/mk.json': return import('mk');
-    case './translations/locales/mn.json': return import('mn');
-    case './translations/locales/ms.json': return import('ms');
-    case './translations/locales/mt.json': return import('mt');
-    case './translations/locales/my.json': return import('my');
-    case './translations/locales/nl-be.json': return import('nl-be');
-    case './translations/locales/nl.json': return import('nl');
-    case './translations/locales/no.json': return import('no');
-    case './translations/locales/pl.json': return import('pl');
-    case './translations/locales/pt-br.json': return import('pt-br');
-    case './translations/locales/pt.json': return import('pt');
-    case './translations/locales/ro.json': return import('ro');
-    case './translations/locales/ru.json': return import('ru');
-    case './translations/locales/sk.json': return import('sk');
-    case './translations/locales/sl.json': return import('sl');
-    case './translations/locales/sq.json': return import('sq');
-    case './translations/locales/sr-me.json': return import('sr-me');
-    case './translations/locales/sr.json': return import('sr');
-    case './translations/locales/sv.json': return import('sv');
-    case './translations/locales/th.json': return import('th');
-    case './translations/locales/tr.json': return import('tr');
-    case './translations/locales/uk.json': return import('uk');
-    case './translations/locales/ur.json': return import('ur');
-    case './translations/locales/uz.json': return import('uz');
-    case './translations/locales/vi.json': return import('vi');
-    case './translations/locales/zh-cn.json': return import('zh-cn');
-    case './translations/locales/zh-tw.json': return import('zh-tw');
+    case './translations/locales/af.json': return import('new-request-form-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('new-request-form-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('new-request-form-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('new-request-form-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('new-request-form-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('new-request-form-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('new-request-form-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('new-request-form-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('new-request-form-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('new-request-form-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('new-request-form-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('new-request-form-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('new-request-form-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('new-request-form-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('new-request-form-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('new-request-form-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('new-request-form-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('new-request-form-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('new-request-form-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('new-request-form-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('new-request-form-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('new-request-form-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('new-request-form-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('new-request-form-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('new-request-form-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('new-request-form-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('new-request-form-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('new-request-form-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('new-request-form-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('new-request-form-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('new-request-form-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-es.json': return import('new-request-form-translations').then(function (n) { return n.F; });
+    case './translations/locales/es.json': return import('new-request-form-translations').then(function (n) { return n.G; });
+    case './translations/locales/et.json': return import('new-request-form-translations').then(function (n) { return n.H; });
+    case './translations/locales/eu.json': return import('new-request-form-translations').then(function (n) { return n.I; });
+    case './translations/locales/fa-af.json': return import('new-request-form-translations').then(function (n) { return n.J; });
+    case './translations/locales/fa.json': return import('new-request-form-translations').then(function (n) { return n.K; });
+    case './translations/locales/fi.json': return import('new-request-form-translations').then(function (n) { return n.L; });
+    case './translations/locales/fil.json': return import('new-request-form-translations').then(function (n) { return n.M; });
+    case './translations/locales/fo.json': return import('new-request-form-translations').then(function (n) { return n.N; });
+    case './translations/locales/fr-ca.json': return import('new-request-form-translations').then(function (n) { return n.O; });
+    case './translations/locales/fr.json': return import('new-request-form-translations').then(function (n) { return n.P; });
+    case './translations/locales/ga.json': return import('new-request-form-translations').then(function (n) { return n.Q; });
+    case './translations/locales/he.json': return import('new-request-form-translations').then(function (n) { return n.R; });
+    case './translations/locales/hi.json': return import('new-request-form-translations').then(function (n) { return n.S; });
+    case './translations/locales/hr.json': return import('new-request-form-translations').then(function (n) { return n.T; });
+    case './translations/locales/hu.json': return import('new-request-form-translations').then(function (n) { return n.U; });
+    case './translations/locales/hy.json': return import('new-request-form-translations').then(function (n) { return n.V; });
+    case './translations/locales/id.json': return import('new-request-form-translations').then(function (n) { return n.W; });
+    case './translations/locales/is.json': return import('new-request-form-translations').then(function (n) { return n.X; });
+    case './translations/locales/it-ch.json': return import('new-request-form-translations').then(function (n) { return n.Y; });
+    case './translations/locales/it.json': return import('new-request-form-translations').then(function (n) { return n.Z; });
+    case './translations/locales/ja.json': return import('new-request-form-translations').then(function (n) { return n._; });
+    case './translations/locales/ka.json': return import('new-request-form-translations').then(function (n) { return n.$; });
+    case './translations/locales/kk.json': return import('new-request-form-translations').then(function (n) { return n.a0; });
+    case './translations/locales/kl-dk.json': return import('new-request-form-translations').then(function (n) { return n.a1; });
+    case './translations/locales/ko.json': return import('new-request-form-translations').then(function (n) { return n.a2; });
+    case './translations/locales/ku.json': return import('new-request-form-translations').then(function (n) { return n.a3; });
+    case './translations/locales/lt.json': return import('new-request-form-translations').then(function (n) { return n.a4; });
+    case './translations/locales/lv.json': return import('new-request-form-translations').then(function (n) { return n.a5; });
+    case './translations/locales/mk.json': return import('new-request-form-translations').then(function (n) { return n.a6; });
+    case './translations/locales/mn.json': return import('new-request-form-translations').then(function (n) { return n.a7; });
+    case './translations/locales/ms.json': return import('new-request-form-translations').then(function (n) { return n.a8; });
+    case './translations/locales/mt.json': return import('new-request-form-translations').then(function (n) { return n.a9; });
+    case './translations/locales/my.json': return import('new-request-form-translations').then(function (n) { return n.aa; });
+    case './translations/locales/nl-be.json': return import('new-request-form-translations').then(function (n) { return n.ab; });
+    case './translations/locales/nl.json': return import('new-request-form-translations').then(function (n) { return n.ac; });
+    case './translations/locales/no.json': return import('new-request-form-translations').then(function (n) { return n.ad; });
+    case './translations/locales/pl.json': return import('new-request-form-translations').then(function (n) { return n.ae; });
+    case './translations/locales/pt-br.json': return import('new-request-form-translations').then(function (n) { return n.af; });
+    case './translations/locales/pt.json': return import('new-request-form-translations').then(function (n) { return n.ag; });
+    case './translations/locales/ro.json': return import('new-request-form-translations').then(function (n) { return n.ah; });
+    case './translations/locales/ru.json': return import('new-request-form-translations').then(function (n) { return n.ai; });
+    case './translations/locales/sk.json': return import('new-request-form-translations').then(function (n) { return n.aj; });
+    case './translations/locales/sl.json': return import('new-request-form-translations').then(function (n) { return n.ak; });
+    case './translations/locales/sq.json': return import('new-request-form-translations').then(function (n) { return n.al; });
+    case './translations/locales/sr-me.json': return import('new-request-form-translations').then(function (n) { return n.am; });
+    case './translations/locales/sr.json': return import('new-request-form-translations').then(function (n) { return n.an; });
+    case './translations/locales/sv.json': return import('new-request-form-translations').then(function (n) { return n.ao; });
+    case './translations/locales/th.json': return import('new-request-form-translations').then(function (n) { return n.ap; });
+    case './translations/locales/tr.json': return import('new-request-form-translations').then(function (n) { return n.aq; });
+    case './translations/locales/uk.json': return import('new-request-form-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ur.json': return import('new-request-form-translations').then(function (n) { return n.as; });
+    case './translations/locales/uz.json': return import('new-request-form-translations').then(function (n) { return n.at; });
+    case './translations/locales/vi.json': return import('new-request-form-translations').then(function (n) { return n.au; });
+    case './translations/locales/zh-cn.json': return import('new-request-form-translations').then(function (n) { return n.av; });
+    case './translations/locales/zh-tw.json': return import('new-request-form-translations').then(function (n) { return n.aw; });
     default: return new Promise(function(resolve, reject) {
       (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
         reject.bind(null, new Error("Unknown variable dynamic import: " + path))

@@ -37,7 +37,8 @@ a {
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 b,
@@ -492,6 +493,7 @@ ul {
   justify-content: stretch;
   padding: 16px;
   height: 100%;
+  width: 100%;
 }
 .category-thumbnail .internal-article-icon {
   position: absolute;
@@ -539,6 +541,7 @@ ul {
   display: flex;
   justify-content: stretch;
   height: 100%;
+  margin-bottom: 8px;
 }
 .article-thumbnail .internal-article-icon {
   position: absolute;
@@ -648,7 +651,9 @@ ul {
   margin: 0;
   border: 0;
   font-weight: 700;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   white-space: nowrap;
   width: 100%;
   -webkit-touch-callout: none;
@@ -1460,8 +1465,9 @@ ul {
   display: flex;
   position: relative;
   transition: border 0.12s ease-in-out;
+  flex-direction: column;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .search {
     flex-direction: row;
   }
@@ -1491,6 +1497,14 @@ ul {
 .search:focus-within {
   border-color: transparent;
 }
+.search input[type=submit] {
+  margin-top: 8px;
+}
+@media (min-width: 768px) {
+  .search input[type=submit] {
+    margin-top: 0;
+  }
+}
 .search input[type=search],
 .search .clear-button {
   background-color: #f1f5f9;
@@ -1502,7 +1516,8 @@ ul {
   border-style: solid;
   border-width: 1px;
   padding: 16px;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
   color: #0f172a;
@@ -1511,6 +1526,10 @@ ul {
   width: 100%;
   font-size: 0.875em;
   margin-bottom: 0px;
+}
+.search input[type=search]::-moz-placeholder {
+  opacity: 1;
+  color: #0f172a;
 }
 .search input[type=search]::placeholder {
   opacity: 1;
@@ -1620,7 +1639,7 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   height: 200vw;
   width: 200vw;
   display: block;
-  background: url($tiled_bg);
+  background: url(\$tiled_bg);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1641,7 +1660,7 @@ section.hero-article, section.hero-request {
   margin-bottom: -13rem;
 }
 section.hero-home {
-  background-image: url($knowledge_base_banner);
+  background-image: url(\$knowledge_base_banner);
   padding-top: 140px;
   background-size: cover;
   background-position: center;
@@ -1927,7 +1946,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .community-image {
   min-height: 300px;
   margin-top: 32px;
-  background-image: url($community_image);
+  background-image: url(\$community_image);
   background-position: center;
   background-repeat: no-repeat;
   max-width: 100%;
@@ -2960,7 +2979,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 /***** Community *****/
 .community-hero {
-  background-image: url($community_background_image);
+  background-image: url(\$community_background_image);
   margin-bottom: 10px;
 }
 .community-footer {
