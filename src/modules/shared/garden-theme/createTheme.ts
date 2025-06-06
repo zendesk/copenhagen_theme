@@ -63,6 +63,24 @@ export function createTheme(settings: Settings): IGardenTheme {
         }
       `,
       "buttons.button": css`
+        padding: 16px 38px;
+        font-size: 0.875em;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.12s ease-in-out, border-color 0.12s ease-in-out, color 0.15s ease-in-out;
+        display: inline-block;
+        line-height: 1;
+        text-align: center;
+        margin: 0;
+        border: 0;
+        font-weight: 700;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        white-space: nowrap;
+        width: 100%;
+        -webkit-touch-callout: none;
+
         ${(props: IButtonProps) =>
           props.isPrimary &&
           css`

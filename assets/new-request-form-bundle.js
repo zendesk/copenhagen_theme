@@ -1258,7 +1258,7 @@ function LookupField({ field, userId, organizationId, onChange, }) {
 }
 
 const StyledParagraph = styled(Paragraph) `
-  margin: ${(props) => props.theme.space.md} 0;
+  margin: 0 0 ${(props) => props.theme.space.md} 0;
 `;
 const Form = styled.form `
   display: flex;

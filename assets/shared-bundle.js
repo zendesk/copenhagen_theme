@@ -7419,6 +7419,24 @@ function createTheme(settings) {
         }
       `,
             "buttons.button": Ne `
+        padding: 16px 38px;
+        font-size: 0.875em;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.12s ease-in-out, border-color 0.12s ease-in-out, color 0.15s ease-in-out;
+        display: inline-block;
+        line-height: 1;
+        text-align: center;
+        margin: 0;
+        border: 0;
+        font-weight: 700;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        white-space: nowrap;
+        width: 100%;
+        -webkit-touch-callout: none;
+
         ${(props) => props.isPrimary &&
                 Ne `
             color: #ffffff;
@@ -19098,29 +19116,20 @@ var getIntrinsic = function GetIntrinsic(name, allowMissing) {
 
 var callBind$3 = {exports: {}};
 
-var esDefineProperty;
-var hasRequiredEsDefineProperty;
+var GetIntrinsic$3 = getIntrinsic;
 
-function requireEsDefineProperty () {
-	if (hasRequiredEsDefineProperty) return esDefineProperty;
-	hasRequiredEsDefineProperty = 1;
-
-	var GetIntrinsic = getIntrinsic;
-
-	/** @type {import('.')} */
-	var $defineProperty = GetIntrinsic('%Object.defineProperty%', true) || false;
-	if ($defineProperty) {
-		try {
-			$defineProperty({}, 'a', { value: 1 });
-		} catch (e) {
-			// IE 8 has a broken defineProperty
-			$defineProperty = false;
-		}
+/** @type {import('.')} */
+var $defineProperty$2 = GetIntrinsic$3('%Object.defineProperty%', true) || false;
+if ($defineProperty$2) {
+	try {
+		$defineProperty$2({}, 'a', { value: 1 });
+	} catch (e) {
+		// IE 8 has a broken defineProperty
+		$defineProperty$2 = false;
 	}
-
-	esDefineProperty = $defineProperty;
-	return esDefineProperty;
 }
+
+var esDefineProperty = $defineProperty$2;
 
 var GetIntrinsic$2 = getIntrinsic;
 
@@ -19137,7 +19146,7 @@ if ($gOPD$1) {
 
 var gopd$1 = $gOPD$1;
 
-var $defineProperty$1 = requireEsDefineProperty();
+var $defineProperty$1 = esDefineProperty;
 
 var $SyntaxError = syntax;
 var $TypeError$3 = type;
@@ -19192,7 +19201,7 @@ var defineDataProperty$1 = function defineDataProperty(
 	}
 };
 
-var $defineProperty = requireEsDefineProperty();
+var $defineProperty = esDefineProperty;
 
 var hasPropertyDescriptors = function hasPropertyDescriptors() {
 	return !!$defineProperty;
@@ -19267,7 +19276,7 @@ callBind$3.exports;
 	var $call = GetIntrinsic('%Function.prototype.call%');
 	var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
 
-	var $defineProperty = requireEsDefineProperty();
+	var $defineProperty = esDefineProperty;
 	var $max = GetIntrinsic('%Math.max%');
 
 	module.exports = function callBind(originalFunction) {

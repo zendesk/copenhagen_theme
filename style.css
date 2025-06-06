@@ -5453,6 +5453,7 @@ html[dir=rtl] .notification-left-aligned {
 }
 #request-container .ck-sticky-panel {
   --ck-color-base-background:	#e2e8f0;
+  background-color: var(--ck-color-base-background);
 }
 
 /*
