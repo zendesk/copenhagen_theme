@@ -37,7 +37,8 @@ a {
 abbr[title] {
   border-bottom: none;
   text-decoration: underline;
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 b,
@@ -650,7 +651,9 @@ ul {
   margin: 0;
   border: 0;
   font-weight: 700;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   white-space: nowrap;
   width: 100%;
   -webkit-touch-callout: none;
@@ -1513,7 +1516,8 @@ ul {
   border-style: solid;
   border-width: 1px;
   padding: 16px;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
   color: #0f172a;
@@ -1522,6 +1526,10 @@ ul {
   width: 100%;
   font-size: 0.875em;
   margin-bottom: 0px;
+}
+.search input[type=search]::-moz-placeholder {
+  opacity: 1;
+  color: #0f172a;
 }
 .search input[type=search]::placeholder {
   opacity: 1;
@@ -1631,7 +1639,7 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   height: 200vw;
   width: 200vw;
   display: block;
-  background: url($tiled_bg);
+  background: url(\$tiled_bg);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1652,7 +1660,7 @@ section.hero-article, section.hero-request {
   margin-bottom: -13rem;
 }
 section.hero-home {
-  background-image: url($knowledge_base_banner);
+  background-image: url(\$knowledge_base_banner);
   padding-top: 140px;
   background-size: cover;
   background-position: center;
@@ -1938,7 +1946,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .community-image {
   min-height: 300px;
   margin-top: 32px;
-  background-image: url($community_image);
+  background-image: url(\$community_image);
   background-position: center;
   background-repeat: no-repeat;
   max-width: 100%;
@@ -2971,7 +2979,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 /***** Community *****/
 .community-hero {
-  background-image: url($community_background_image);
+  background-image: url(\$community_background_image);
   margin-bottom: 10px;
 }
 .community-footer {
@@ -5358,7 +5366,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   --ck-color-base-foreground:	hsl(0, 0%, 98%);
   --ck-color-base-background:	#f1f5f9;
   --ck-color-base-border:	hsl(220, 6%, 81%);
@@ -5448,7 +5456,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   /**
    * An opacity value of disabled UI item.
    */
@@ -5459,7 +5467,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   /**
    * The geometry of the of focused element's outer shadow.
    */
@@ -5486,7 +5494,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   --ck-font-size-base: 13px;
   --ck-line-height-base: 1.84615;
   --ck-font-face: Quicksand, Helvetica, Arial, Tahoma, Verdana, Sans-Serif;
@@ -5501,7 +5509,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   /* This is super-important. This is **manually** adjusted so a button without an icon
   is never smaller than a button with icon, additionally making sure that text-less buttons
   are perfect squares. The value is also shared by other components which should stay "in-line"
@@ -5583,7 +5591,7 @@ html[dir=rtl] .notification-left-aligned {
 /**
  * Default border-radius value.
  */
-:root {
+#request-container {
   --ck-border-radius: 0;
 }
 
@@ -5591,7 +5599,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   /**
    * A visual style of element's inner shadow (i.e. input).
    */
@@ -5610,7 +5618,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-:root {
+#request-container {
   --ck-spacing-unit:	0.6em;
   --ck-spacing-large:	calc(var(--ck-spacing-unit) * 1.5);
   --ck-spacing-standard:	var(--ck-spacing-unit);
