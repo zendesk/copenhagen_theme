@@ -98,6 +98,7 @@
   &-footer {
     align-items: center;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding-bottom: 20px;
   }
@@ -160,7 +161,20 @@
     border-top: 1px solid $low-contrast-border-color;
     border-bottom: 1px solid $low-contrast-border-color;
     padding: $padding 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
     text-align: left;
+
+    @include tablet {
+      flex-direction: row;
+    }
+
+    &-controls {
+      display: flex;
+    }
 
     &-question { // Explicit values for rendering h2 like a span for accessibility.
     //  font-size: $font-size-base;
@@ -170,9 +184,30 @@
   }
 
   &-vote {
-    margin: 10px 5px;
+    /* margin: 10px 5px; */
     min-width: 90px;
     width: auto;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    /* height: 100%; */
+
+    &-up {
+      &:before {
+        font-size: 2rem;
+        content: "\f164";
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: 300;
+      }
+    }
+    &-down {
+      &:before {
+        font-size: 2rem;
+        content: "\f165";
+        font-family: 'Font Awesome 6 Pro';
+        font-weight: 300;
+      }
+    }
   }
 
   &-more-questions {

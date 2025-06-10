@@ -2401,6 +2401,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-footer {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding-bottom: 20px;
 }
@@ -2458,15 +2459,44 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   border-top: 1px solid #B0B0B0;
   border-bottom: 1px solid #B0B0B0;
   padding: 32px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
   text-align: left;
+}
+@media (min-width: 768px) {
+  .article-votes {
+    flex-direction: row;
+  }
+}
+.article-votes-controls {
+  display: flex;
 }
 .article-votes-question {
   margin-bottom: 0;
 }
 .article-vote {
-  margin: 10px 5px;
+  /* margin: 10px 5px; */
   min-width: 90px;
   width: auto;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  /* height: 100%; */
+}
+.article-vote-up:before {
+  font-size: 2rem;
+  content: "\f164";
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 300;
+}
+.article-vote-down:before {
+  font-size: 2rem;
+  content: "\f165";
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 300;
 }
 .article-more-questions {
   margin: 10px 0 20px;
