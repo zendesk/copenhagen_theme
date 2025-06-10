@@ -450,23 +450,21 @@ ul {
   margin-left: auto;
 }
 
-.row, .row-cols-md-3 {
+.row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -8px;
   margin-left: -8px;
 }
-.row.g-2, .row-cols-md-3.g-2 {
+.row.g-2 {
   margin-right: -16px;
   margin-left: -16px;
 }
-.row.g-2 > *, .row-cols-md-3.g-2 > * {
+.row.g-2 > * {
   padding-right: 16px;
   padding-left: 16px;
-  width: 100%;
-  max-width: 100%;
 }
-.row > *, .row-cols-md-3 > * {
+.row > * {
   padding-right: 8px;
   padding-left: 8px;
   width: 100%;
@@ -1937,8 +1935,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 @media (min-width: 768px) {
   .promoted-articles .articles-list.row-cols-md-3 .single-article .article-border {
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding-top: 24px;
+    padding-bottom: 24px;
     border-top: 1px solid #B0B0B0;
   }
 }

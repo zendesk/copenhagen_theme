@@ -14,7 +14,7 @@
     margin-left: auto;
 }
 
-.row, .row-cols-md-3 {
+.row {
     display: flex;
     flex-wrap: wrap;
     margin-right: calc(-.5 * $gutter);
@@ -28,8 +28,6 @@
         > * {
             padding-right: calc($gutter * 1);
             padding-left: calc($gutter * 1);
-            width: 100%;
-            max-width: 100%;
         }
 
     }
