@@ -1635,13 +1635,13 @@ section.hero {
   text-align: left;
   width: 100%;
 }
-section.hero-article, section.hero-search-results, section.hero-category, section.hero-request {
+section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section {
   padding: 64px 0;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before {
   content: "";
   height: 200vw;
   width: 200vw;
@@ -1652,11 +1652,11 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
 }
-section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container {
+section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container {
   position: relative;
   color: #ffffff;
 }
-section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1 {
+section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1 {
   font-weight: 600;
   font-size: 2.625rem;
   line-height: 1;
@@ -2456,12 +2456,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .article-votes {
   border-top: 1px solid #B0B0B0;
-  padding: 30px 0;
-  text-align: center;
+  border-bottom: 1px solid #B0B0B0;
+  padding: 32px 0;
+  text-align: left;
 }
 .article-votes-question {
-  font-size: 1rem;
-  font-weight: normal;
   margin-bottom: 0;
 }
 .article-vote {
@@ -2482,9 +2481,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .article-more-questions a:hover, .article-more-questions a:active, .article-more-questions a:focus {
   color: #2f3561;
-}
-.article-return-to-top {
-  border-top: 1px solid #87929D;
 }
 @media (min-width: 1024px) {
   .article-return-to-top {
@@ -3789,7 +3785,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 /* TOC */
-.table-of-contents, .search-results-sidebar {
+.table-of-contents-container, .search-results-sidebar {
   background: #FFFFFF;
   padding: 16px;
   padding-bottom: 0;
@@ -3798,11 +3794,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   top: 100px;
 }
 @media (min-width: 1024px) {
-  .table-of-contents, .search-results-sidebar {
+  .table-of-contents-container, .search-results-sidebar {
     padding: 32px;
   }
 }
-.table-of-contents li a, .search-results-sidebar li a {
+.table-of-contents-container li a, .search-results-sidebar li a {
   font-size: 1rem;
   padding: 5px 5px 5px 16px;
   border-left: 1px solid #cbcbcb;
@@ -3811,14 +3807,14 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   justify-content: space-between;
   align-items: center;
 }
-.table-of-contents li a.active, .search-results-sidebar li a.active {
+.table-of-contents-container li a.active, .search-results-sidebar li a.active {
   border-left: 1px solid #515ba5;
   background-color: #f8f8f8;
 }
-.table-of-contents li a:hover, .search-results-sidebar li a:hover {
+.table-of-contents-container li a:hover, .search-results-sidebar li a:hover {
   background-color: #f8f8f8;
 }
-.table-of-contents li a.toc-level-2, .search-results-sidebar li a.toc-level-2 {
+.table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2 {
   padding-left: 32px;
 }
 

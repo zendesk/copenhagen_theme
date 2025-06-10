@@ -36,13 +36,24 @@
       <div class="search-container">
         {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
       </div>
-      <div class="table-of-contents collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
-            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
-            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
-          </button>
-          <h4 class="collapsible-sidebar-title sidenav-title">Table of contents</h4>
+      <div class="table-of-contents-container collapsible-sidebar">
+        <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+          <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+          <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+        </button>
+        <h4 class="collapsible-sidebar-title sidenav-title">Table of contents</h4>
+        <div class="table-of-contents">
+        </div>
+        <div class="article-return-to-top">
+          <a href="#article-container">
+            <i class="fa far fa-arrow-up"></i>
+            {{t 'return_to_top'}}
+          </a>
+        </div>
       </div>
+      {{#if settings.show_article_sharing}}
+        <div class="article-share">{{share}}</div>
+      {{/if}}
     </aside>
 
     <article id="main-content" class="article">
@@ -90,10 +101,28 @@
       </section>
       <footer>
         <div class="article-footer">
-          {{#if settings.show_article_sharing}}
-            <div class="article-share">{{share}}</div>
-          {{/if}}
+        {{#with article}}
+          <div class="article-votes">
+            <h3 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h3>
+            <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+              {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
+              {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+            </div>
+            <!--<small class="article-votes-count">
+              {{vote 'label' class='article-vote-label'}}
+            </small>-->
+          </div>
+        {{/with}}
           {{#if settings.show_article_comments}}
+
+            {{#form 'comment' class='comment-form'}}
+              <div class="comment-avatar">{{user_avatar class='user-avatar'}}</div>
+              <div class="comment-container">
+                {{wysiwyg 'body' rows='4'}}
+                <div class="comment-form-controls">{{input type='submit'}}</div>
+              </div>
+            {{/form}}
+
             {{#if comments}}
               <a href="#article-comments" class="article-comment-count">
                 <svg role="img" aria-labelledby="article-comments-title article-comments-desc" xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="article-comment-count-icon">
@@ -106,29 +135,9 @@
             {{/if}}
           {{/if}}
         </div>
-        {{#with article}}
-          <div class="article-votes">
-            <h2 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h2>
-            <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-              {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
-              {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
-            </div>
-            <small class="article-votes-count">
-              {{vote 'label' class='article-vote-label'}}
-            </small>
-          </div>
-        {{/with}}
 
         <div class="article-more-questions">
           {{request_callout}}
-        </div>
-        <div class="article-return-to-top">
-          <a href="#article-container">
-            {{t 'return_to_top'}}
-            <svg xmlns="http://www.w3.org/2000/svg" class="article-return-to-top-icon" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
-              <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-            </svg>
-          </a>
         </div>
       </footer>
     </article>

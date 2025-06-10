@@ -34,7 +34,7 @@
 
 
   &-sidebar {
-    @extend .table-of-contents;
+    @extend .table-of-contents-container;
 
     @include desktop {
       border: 0;

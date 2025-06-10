@@ -158,12 +158,13 @@
 
   &-votes {
     border-top: 1px solid $low-contrast-border-color;
-    padding: 30px 0;
-    text-align: center;
+    border-bottom: 1px solid $low-contrast-border-color;
+    padding: $padding 0;
+    text-align: left;
 
     &-question { // Explicit values for rendering h2 like a span for accessibility.
-      font-size: $font-size-base;
-      font-weight: normal;
+    //  font-size: $font-size-base;
+    //  font-weight: normal;
       margin-bottom: 0;
     }
   }
@@ -185,7 +186,7 @@
       display: none;
     }
 
-    border-top: 1px solid $high-contrast-border-color;
+   // border-top: 1px solid $high-contrast-border-color;
 
     a {
       color: $text_color;
