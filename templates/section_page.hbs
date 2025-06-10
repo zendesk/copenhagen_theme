@@ -1,27 +1,41 @@
-<div class="container-divider"></div>
-<div class="container">
-  <div class="sub-nav">
-    {{breadcrumbs}}
-    <div class="search-container">
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
-        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
-        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
-      </svg>
-      {{search scoped=settings.scoped_kb_search submit=false}}
+<section class="section hero hero-section">
+  <div class="container">
+    <div class="row">
+      <div class="">
+        {{breadcrumbs}}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <h1 title="{{section.name}}" class="section-title h1">{{section.name}}</h1>
+      </div>
+    </div>
+    <div class="row">
+      {{#if section.description}}
+        <div class="col">
+            <p class="page-header-description">{{section.description}}</p>
+        </div>
+      {{/if}}
+      {{#if settings.show_follow_section}}
+      <div class="col metadata-right">
+          <div class="section-subscribe">{{subscribe}}</div>
+      </div>
+      {{/if}}
+    </div>
+    <div class="row">
+      <div class="col">
+        {{search scoped=true submit=false class="search search-full search-transparent"}}
+      </div>
     </div>
   </div>
+</section>
+
+
+
+
 
   <div class="section-container">
     <section id="main-content" class="section-content">
-      <header class="page-header">
-        <h1>{{section.name}}</h1>
-        {{#if settings.show_follow_section}}
-          <div class="section-subscribe">{{subscribe}}</div>
-        {{/if}}
-        {{#if section.description}}
-          <p class="page-header-description">{{section.description}}</p>
-        {{/if}}
-      </header>
 
       {{#if section.sections}}
         <ul class="section-list">
