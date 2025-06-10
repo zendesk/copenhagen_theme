@@ -184,12 +184,7 @@ export function NewRequestForm({
       >
         {errors && <Alert type="error">{errors}</Alert>}
         {parent_id_field && <ParentTicketField field={parent_id_field} />}
-        {ticket_form_field.options.length > 0 && (
-          <TicketFormField
-            field={ticket_form_field}
-            newRequestPath={newRequestPath}
-          />
-        )}
+
         {emailField && <Input key={emailField.name} field={emailField} />}
         {ccField && <CcField field={ccField} />}
         {organizationField && (
