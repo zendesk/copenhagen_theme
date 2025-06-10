@@ -19,13 +19,27 @@
     flex-wrap: wrap;
     margin-right: calc(-.5 * $gutter);
     margin-left: calc(-.5 * $gutter);
-}
 
-.row>*{
-    padding-right: calc($gutter * .5);
-    padding-left: calc($gutter * .5);
-    width: 100%;
-    max-width: 100%;
+    &.g-2 {
+        // double the gutters
+        margin-right: calc(-1 * $gutter);
+        margin-left: calc(-1 * $gutter);
+
+        > * {
+            padding-right: calc($gutter * 1);
+            padding-left: calc($gutter * 1);
+            width: 100%;
+            max-width: 100%;
+        }
+
+    }
+
+    > * {
+        padding-right: calc($gutter * .5);
+        padding-left: calc($gutter * .5);
+        width: 100%;
+        max-width: 100%;
+    }
 }
 
 .col {
