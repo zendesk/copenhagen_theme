@@ -117,27 +117,31 @@
         <div class="article-more-questions">
           {{request_callout}}
         </div>
-          {{#if settings.show_article_comments}}
+        {{#if settings.show_article_comments}}
 
-            {{#form 'comment' class='comment-form'}}
-              <div class="comment-avatar">{{user_avatar class='user-avatar'}}</div>
-              <div class="comment-container">
-                {{wysiwyg 'body' rows='4'}}
-                <div class="comment-form-controls">{{input type='submit'}}</div>
+          {{#form 'comment' class='comment-form'}}
+            <div class="comment-avatar">{{user_avatar class='user-avatar'}}</div>
+            <div class="comment-container">
+              {{wysiwyg 'body' rows='4'}}
+              <div class="comment-form-controls">{{input type='submit'}}</div>
+            </div>
+          {{/form}}
+
+
+          <section class="article-comments">
+            <div class="article-comments-header">
+              <h2>Comments</h2>
+              <p>{{article.comment_count}} comment{{#unless (compare article.comment_count.length "==" 1)}}s{{/unless}}</p>
+
+              {{#if comments}}
+              <div class="comment-sorters">
+                {{#each comment_sorters}}
+                  <a aria-selected="{{selected}}" href="{{url}}">{{name}}</a>
+                {{/each}}
               </div>
-            {{/form}}
-
-            <section class="article-comments">
-              <div class="article-comments-header">
-                <h2>Comments</h2>
-                <p>{{article.comment_count}} comment{{#unless (compare article.comment_count.length "==" 1)}}s{{/unless}}</p>
-
-                <div class="comment-sorters">
-                  {{#each comment_sorters}}
-                    <a aria-selected="{{selected}}" href="{{url}}">{{name}}</a>
-                  {{/each}}
-                </div>
-              </div>
+              {{/if}}
+            </div>
+            {{#if comments}}
               <ul>
               {{#each comments}}
                 <li class="comment">
@@ -152,8 +156,9 @@
                 </li>
               {{/each}}
               </ul>
-            </section>
-          {{/if}}
+            {{/if}}
+          </section>
+        {{/if}}
         </div>
 
       </footer>
