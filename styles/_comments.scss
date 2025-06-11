@@ -130,12 +130,13 @@
 
     input[type="submit"] {
       @include desktop {
-        margin-left: 15px;
+        margin-left: 0;
         [dir="rtl"] & {
           margin-left: 0;
-          margin-right: 15px;
+          margin-right: 0;
         }
       }
+      @extend .button;
       @extend .button-primary;
       margin-top: 15px;
     }
