@@ -131,7 +131,7 @@
           <section class="article-comments">
             <div class="article-comments-header">
               <h2>Comments</h2>
-              <p>{{article.comment_count}} comment{{#unless (compare article.comment_count.length "==" 1)}}s{{/unless}}</p>
+              <p>{{article.comment_count}} comment{{#unless (compare article.comment_count "==" 1)}}s{{/unless}}</p>
 
               {{#if comments}}
               <div class="comment-sorters">
