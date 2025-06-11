@@ -84,18 +84,18 @@
       cursor: default;
 
       &::after {
-        content: "";
-        background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 7l3 3 7-7'%3E%3C/path%3E%3C/svg%3E");
-        display: inline-block;
-        height: 12px;
-        margin-left: 10px;
-        width: 12px;
+      //  content: "";
+      //  background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 7l3 3 7-7'%3E%3C/path%3E%3C/svg%3E");
+      //  display: inline-block;
+      //  height: 12px;
+      //  margin-left: 10px;
+      //  width: 12px;
 
-        [dir="rtl"] & {
-          margin-left: 0;
-          margin-right: 10px;
-          float: left;
-        }
+      //  [dir="rtl"] & {
+      //    margin-left: 0;
+      //    margin-right: 10px;
+      //    float: left;
+      //  }
 
       }
 

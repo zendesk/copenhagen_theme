@@ -1,0 +1,56 @@
+/*!
+ * Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2023 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-classic: 'Font Awesome 6 Pro';
+  --fa-font-thin: normal 100 1em/1 'Font Awesome 6 Pro';
+  --fa-font-light: normal 300 1em/1 'Font Awesome 6 Pro';
+  --fa-font-regular: normal 400 1em/1 'Font Awesome 6 Pro'; 
+  --fa-font-solid: normal 900 1em/1 'Font Awesome 6 Pro';
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Pro';
+  font-style: normal;
+  font-weight: 100;
+  font-display: block;
+  src: url("$assets-fa-thin-100-woff2') }}") format("woff2"), url("$assets-fa-thin-100-ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Font Awesome 6 Pro';
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("$assets-fa-light-300-woff2") format("woff2"), url("$assets-fa-light-300-ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Font Awesome 6 Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("$assets-fa-regular-400-woff2") format("woff2"), url("$assets-fa-regular-400-ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'Font Awesome 6 Pro';
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("$assets-fa-solid-900-woff2") format("woff2"), url("$assets-fa-solid-900-ttf") format("truetype"); }
+
+.fat,
+.fa-thin {
+  font-weight: 100; }
+
+.fal,
+.fa-light {
+  font-weight: 300; }
+
+.far,
+.fa-regular {
+  font-weight: 400; }
+
+.fas,
+.fa-solid {
+  font-weight: 900; }

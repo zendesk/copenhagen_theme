@@ -131,7 +131,12 @@
                   <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
                     <span>
                       <span>
-                        <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> Sort by
+                        <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> Sort by 
+                          {{#each comment_sorters}}
+                            {{#is selected "true"}}
+                              {{name}}
+                            {{/is}}
+                          {{/each}}
                       </span>
                       <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
                     </span>

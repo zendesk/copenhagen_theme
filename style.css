@@ -189,6 +189,84 @@ template {
 /* Forms */
 /* Breakpoints variables */
 /* Grid */
+/*!
+ * Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2023 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-brands: "Font Awesome 6 Brands";
+  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("$assets-fa-brands-400-woff2") format("woff2"), url("$assets-fa-brands-400-ttf") format("truetype");
+}
+/*!
+ * Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com
+ * License - https://fontawesome.com/license (Commercial License)
+ * Copyright 2023 Fonticons, Inc.
+ */
+:root, :host {
+  --fa-style-family-classic: "Font Awesome 6 Pro";
+  --fa-font-thin: normal 100 1em/1 "Font Awesome 6 Pro";
+  --fa-font-light: normal 300 1em/1 "Font Awesome 6 Pro";
+  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Pro";
+  --fa-font-solid: normal 900 1em/1 "Font Awesome 6 Pro";
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 100;
+  font-display: block;
+  src: url("$assets-fa-thin-100-woff2') }}") format("woff2"), url("$assets-fa-thin-100-ttf") format("truetype");
+}
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 300;
+  font-display: block;
+  src: url("$assets-fa-light-300-woff2") format("woff2"), url("$assets-fa-light-300-ttf") format("truetype");
+}
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("$assets-fa-regular-400-woff2") format("woff2"), url("$assets-fa-regular-400-ttf") format("truetype");
+}
+@font-face {
+  font-family: "Font Awesome 6 Pro";
+  font-style: normal;
+  font-weight: 900;
+  font-display: block;
+  src: url("$assets-fa-solid-900-woff2") format("woff2"), url("$assets-fa-solid-900-ttf") format("truetype");
+}
+.fat,
+.fa-thin {
+  font-weight: 100;
+}
+
+.fal,
+.fa-light {
+  font-weight: 300;
+}
+
+.far,
+.fa-regular {
+  font-weight: 400;
+}
+
+.fas,
+.fa-solid {
+  font-weight: 900;
+}
+
 /***** Base *****/
 * {
   box-sizing: border-box;
@@ -5315,23 +5393,6 @@ html[dir=rtl] .notification-left-aligned {
 .dropdown-menu [role=menuitemradio][aria-selected=true],
 .dropdown-menu [role=menuitemradio][aria-checked=true] {
   cursor: default;
-}
-.dropdown-menu [role=menuitem][aria-selected=true]::after, .dropdown-menu [role=menuitem][aria-checked=true]::after,
-.dropdown-menu [role=menuitemradio][aria-selected=true]::after,
-.dropdown-menu [role=menuitemradio][aria-checked=true]::after {
-  content: "";
-  background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M1 7l3 3 7-7'%3E%3C/path%3E%3C/svg%3E");
-  display: inline-block;
-  height: 12px;
-  margin-left: 10px;
-  width: 12px;
-}
-[dir=rtl] .dropdown-menu [role=menuitem][aria-selected=true]::after, [dir=rtl] .dropdown-menu [role=menuitem][aria-checked=true]::after,
-[dir=rtl] .dropdown-menu [role=menuitemradio][aria-selected=true]::after,
-[dir=rtl] .dropdown-menu [role=menuitemradio][aria-checked=true]::after {
-  margin-left: 0;
-  margin-right: 10px;
-  float: left;
 }
 .dropdown-menu [role=menuitem][hidden], .dropdown-menu [role=menuitem][aria-hidden=true],
 .dropdown-menu [role=menuitemradio][hidden],
