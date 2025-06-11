@@ -21,10 +21,10 @@
 //	--ck-color-base-active: 									hsl(218.1, 100%, 58%);
 //	--ck-color-base-active-focus:								hsl(218.2, 100%, 52.5%);
 //	--ck-color-base-error:										hsl(15, 100%, 43%);
-	--ck-color-base-focus: 										hsl(209, 92%, 70%);
+	--ck-color-base-focus: 										#515ba5;
 	--ck-color-base-text: 										#020617;
-	--ck-color-base-active: 									hsl(218.1, 100%, 58%);
-	--ck-color-base-active-focus:								hsl(218.2, 100%, 52.5%);
+	--ck-color-base-active: 									#515ba5;
+	--ck-color-base-active-focus:								#515ba5;
 	--ck-color-base-error:										#b84c56;
 
 	/* -- Generic colors ------------------------------------------------------------------------ */
@@ -105,8 +105,8 @@
 	/* -- Toolbar ------------------------------------------------------------------------------- */
 
 	// --ck-color-toolbar-background: 								var(--ck-color-base-background);
-	--ck-color-toolbar-background: 								#e2e8f0;
-	--ck-color-toolbar-border: 									var(--ck-color-base-border);
+	--ck-color-toolbar-background: 								var(--ck-color-base-background);
+	--ck-color-toolbar-border: 									#e2e8f0;
 
 	/* -- Tooltip ------------------------------------------------------------------------------- */
 

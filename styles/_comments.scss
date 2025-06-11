@@ -109,12 +109,19 @@
     width: 100%;
   }
 
-  &-container { width: 100%; }
+  &-container { 
+    width: 100%; 
+    textarea {
+      width: 100%;
+      border: 0;
+      background: $q-bg-subtle;
+    }
+  }
 
   &-form-controls {
     @include tablet {
       [dir="ltr"] & {
-        text-align: right;
+        text-align: left;
       }
     }
     display: none;
@@ -129,6 +136,7 @@
           margin-right: 15px;
         }
       }
+      @extend .button-primary;
       margin-top: 15px;
     }
 
