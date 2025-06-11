@@ -101,23 +101,73 @@
       </section>
       <footer>
         <div class="article-footer">
-        {{#with article}}
-          <div class="article-votes">
-            <h3 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h3>
-            <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-              {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
-              {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+          {{#with article}}
+            <div class="article-votes">
+              <h3 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h3>
+              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+                {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
+                {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+              </div>
+              <!--<small class="article-votes-count">
+                {{vote 'label' class='article-vote-label'}}
+              </small>-->
             </div>
-            <!--<small class="article-votes-count">
-              {{vote 'label' class='article-vote-label'}}
-            </small>-->
+          {{/with}}
+          
+          <div class="article-more-questions">
+            {{request_callout}}
           </div>
-        {{/with}}
-        
-        <div class="article-more-questions">
-          {{request_callout}}
-        </div>
-        {{#if settings.show_article_comments}}
+          {{#if settings.show_article_comments}}
+
+            <section class="article-comments">
+              <div class="article-comments-header">
+                <div>
+                  <h2 class="comment-heading">{{t 'comments'}}</h2>
+                  <p class="comment-total">{{article.comment_count}} comment{{#is article.comment_count 1}}s{{/is}}</p>
+                </div>
+                {{#if comments}}
+                
+                <div class="comment-sorters dropdown">
+                  <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
+                    <span>
+                      <span>
+                        <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> Sort by
+                      </span>
+                      <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
+                    </span>
+                  </button>
+                  <div class="dropdown-menu" role="menu" id="comment-sorters-list" aria-labelledby="comment-sorters" tabindex="-1">
+                    {{#each comment_sorters}}
+                      <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{name}}</a>
+                    {{/each}}
+                  </div>
+                </div>
+
+
+                {{/if}}
+              </div>
+              {{#if comments}}
+                <ul>
+                {{#each comments}}
+                  <li class="comment">
+                    <div class="comment-container">
+                      <div class="comment-head">
+                        <h5 class="comment-author">{{author.name}}</h5>
+                        <p class="comment-date">{{date created_at}}</p>
+                      </div>
+                      <div class="comment-body">{{body}}</div>
+                    </div>
+                    <div class="comment-vote vote">
+                      {{vote 'up' class='vote-up' selected_class='vote-voted'}}
+                      {{vote 'down' class='vote-down' selected_class='vote-voted'}}
+                      {{vote 'sum' class='vote-sum'}}
+                    </div>
+                  </li>
+                {{/each}}
+                </ul>
+              {{/if}}
+            </section>
+          {{/if}}
 
           {{#form 'comment' class='comment-form'}}
             <!--<div class="comment-avatar">{{user_avatar class='user-avatar'}}</div> -->
@@ -127,54 +177,6 @@
             </div>
           {{/form}}
 
-
-          <section class="article-comments">
-            <div class="article-comments-header">
-              <div>
-                <h2 class="comment-heading">{{t 'comments'}}</h2>
-                <p class="comment-total">{{article.comment_count}} comment{{#is article.comment_count 1}}s{{/is}}</p>
-              </div>
-              {{#if comments}}
-              
-              <div class="comment-sorters dropdown">
-                <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
-                  <span>
-                    <span>
-                      <i class="fa far fa-arrow-up-arrow-down"></i> Sort by
-                    </span>
-                    <i class="fa far fa-chevron-down" aria-hidden="true" focusable="false"></i>
-                  </span>
-                </button>
-                <div class="dropdown-menu" role="menu" id="comment-sorters-list" aria-labelledby="comment-sorters" tabindex="-1">
-                  {{#each comment_sorters}}
-                    <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{name}}</a>
-                  {{/each}}
-                </div>
-              </div>
-
-
-              {{/if}}
-            </div>
-            {{#if comments}}
-              <ul>
-              {{#each comments}}
-                <li class="comment">
-                  <div class="comment-container">
-                    <h5>{{author.name}}</h5>
-                    <p class="small">{{date created_at}}</p>
-                    <div class="comment-body">{{body}}</div>
-                  </div>
-                  <div class="comment-vote vote">
-                    {{vote 'up' class='vote-up' selected_class='vote-voted'}}
-                    {{vote 'down' class='vote-down' selected_class='vote-voted'}}
-                    {{vote 'sum' class='vote-sum'}}
-                  </div>
-                </li>
-              {{/each}}
-              </ul>
-            {{/if}}
-          </section>
-        {{/if}}
         </div>
 
       </footer>

@@ -2682,15 +2682,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding-left: 20px;
 }
 .comment-author {
-  align-items: flex-end;
-  display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  margin-right: 16px;
 }
-@media (min-width: 768px) {
-  .comment-author {
-    justify-content: space-between;
-  }
+.comment-date {
+  margin: 0;
+  color: #4d5a6b;
 }
 .comment-avatar {
   margin-right: 10px;
@@ -2771,6 +2768,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .comment-attachments a {
   color: #515ba5;
+}
+.comment-head {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-start;
 }
 .comment-body {
   -moz-hyphens: auto;
@@ -2899,7 +2902,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-comments-header {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
+  margin-bottom: 32px;
 }
 
 /***** Vote *****/
@@ -5329,7 +5333,7 @@ html[dir=rtl] .notification-left-aligned {
 .dropdown-menu [role=menuitem]:hover, .dropdown-menu [role=menuitem]:focus,
 .dropdown-menu [role=menuitemradio]:hover,
 .dropdown-menu [role=menuitemradio]:focus {
-  background: rgba(31, 115, 183, 0.08);
+  background: #f1f5f9;
   text-decoration: none;
   color: #2f3941;
 }

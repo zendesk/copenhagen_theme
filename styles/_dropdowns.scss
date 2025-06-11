@@ -12,6 +12,10 @@
   text-align: initial;
   vertical-align: middle;
 
+  .fa {
+    color: $q-text-weak;
+  }
+
   &:hover {
     text-decoration: none;
   }
@@ -70,7 +74,7 @@
     }
     &:hover,
     &:focus {
-      background: rgba(31, 115, 183, 0.08);
+      background: $background-subtle;
       text-decoration: none;
       color: #2f3941;
     }

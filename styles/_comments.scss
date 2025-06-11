@@ -12,6 +12,7 @@
   &-total {
     margin: 0;
     line-height: 1;
+    color: $q-text-weak;
   }
 
   &-overview {
@@ -70,12 +71,20 @@
   }
 
   &-author {
-    align-items: flex-end;
-    display: flex;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
+  //  align-items: flex-end;
+  //  display: flex;
+  //  flex-wrap: wrap;
+  //  margin-bottom: 20px;
 
-    @include tablet { justify-content: space-between; }
+  margin-bottom: 0;
+  margin-right: $gutter;
+
+  //  @include tablet { justify-content: space-between; }
+  }
+
+  &-date {
+    margin: 0;
+    color: $q-text-weak;
   }
 
   &-avatar {
@@ -160,6 +169,13 @@
     a { color: $brand-color; }
   }
 
+  &-head {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
   &-body {
     @include text-overflow;
     @include content-body;
@@ -180,6 +196,7 @@
   &-header {
     display: flex;
     justify-content: space-between;
-    align-items: end;
+    align-items: flex-end;    
+    margin-bottom: $padding;
   }
 }

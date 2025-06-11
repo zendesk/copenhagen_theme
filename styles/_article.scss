@@ -184,12 +184,13 @@
   }
 
   &-vote {
-    /* margin: 10px 5px; */
-    min-width: 90px;
+    margin: 0 0 0 $padding;
+    // min-width: 90px;
     width: auto;
     background-color: transparent;
     border: 0;
     color: $q-text-brand;
+    padding: 
     cursor: pointer;
     font-size: 0;
     /* height: 100%; */
