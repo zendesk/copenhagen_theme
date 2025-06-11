@@ -2617,14 +2617,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .comment-heading, .recent-articles-title,
 .related-articles-title {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   margin-top: 0;
-  font-size: 18px;
-  font-weight: 600;
-}
-.comment-heading, .recent-articles-title,
-.related-articles-title {
-  margin-bottom: 0;
 }
 .comment-total {
   margin: 0;
@@ -2901,6 +2895,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-comments {
   width: 100%;
   margin-top: 32px;
+}
+.article-comments-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 }
 
 /***** Vote *****/

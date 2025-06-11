@@ -130,15 +130,29 @@
 
           <section class="article-comments">
             <div class="article-comments-header">
-              <h2 class="comment-heading">Comments</h2>
-              <p class"comment-total">{{article.comment_count}} comment{{#is article.comment_count 1}}s{{/is}}</p>
-
-              {{#if comments}}
-              <div class="comment-sorters">
-                {{#each comment_sorters}}
-                  <a aria-selected="{{selected}}" href="{{url}}">Sort by {{name}}</a>
-                {{/each}}
+              <div>
+                <h2 class="comment-heading">{{t 'comments'}}</h2>
+                <p class="comment-total">{{article.comment_count}} comment{{#is article.comment_count 1}}s{{/is}}</p>
               </div>
+              {{#if comments}}
+              
+              <div class="comment-sorters dropdown">
+                <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
+                  <span>
+                    <span>
+                      <i class="fa far fa-arrow-up-arrow-down"></i> Sort by
+                    </span>
+                    <i class="fa far fa-chevron-down" aria-hidden="true" focusable="false"></i>
+                  </span>
+                </button>
+                <div class="dropdown-menu" role="menu" id="comment-sorters-list" aria-labelledby="comment-sorters" tabindex="-1">
+                  {{#each comment_sorters}}
+                    <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{name}}</a>
+                  {{/each}}
+                </div>
+              </div>
+
+
               {{/if}}
             </div>
             {{#if comments}}

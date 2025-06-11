@@ -5,14 +5,8 @@
   padding: 20px 0;
 
   &-heading {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
     margin-top: 0;
-    font-size: 18px;
-    font-weight: $font-weight-semibold;
-  }
-
-  &-heading {
-    margin-bottom: 0;
   }
 
   &-total {
@@ -183,4 +177,9 @@
 .article-comments { 
   width:100%; 
   margin-top: $padding;
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
 }
