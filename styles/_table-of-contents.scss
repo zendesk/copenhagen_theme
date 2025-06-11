@@ -26,10 +26,10 @@
           align-items: center;
       &.active {
         border-left: 1px solid #515ba5;
-        background-color: #f8f8f8;
+        background-color: $background-subtle;
       }
       &:hover {
-        background-color: #f8f8f8;
+        background-color: $background-subtle;
       }
 
       &.toc-level-2 {

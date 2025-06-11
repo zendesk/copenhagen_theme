@@ -683,6 +683,7 @@ ul {
 .button-primary:hover, .search-results-sidebar .see-all-filters:hover, .subscriptions-subscribe button[data-selected=true]:hover, .requests-table-toolbar .organization-subscribe button[data-selected=true]:hover, .comment-form-controls input[type=submit]:hover, .section-subscribe button[data-selected=true]:hover, .split-button button:hover, .button-primary:focus, .search-results-sidebar .see-all-filters:focus, .subscriptions-subscribe button[data-selected=true]:focus, .requests-table-toolbar .organization-subscribe button[data-selected=true]:focus, .comment-form-controls input[type=submit]:focus, .section-subscribe button[data-selected=true]:focus, .button-primary:active, .search-results-sidebar .see-all-filters:active, .subscriptions-subscribe button[data-selected=true]:active, .requests-table-toolbar .organization-subscribe button[data-selected=true]:active, .comment-form-controls input[type=submit]:active, .section-subscribe button[data-selected=true]:active {
   background-color: #454D8C;
   border-color: #454D8C;
+  color: #fff;
 }
 .button[data-disabled], [data-disabled].pagination-next-link, [data-disabled].pagination-prev-link, [data-disabled].pagination-first-link, [data-disabled].pagination-last-link, .subscriptions-subscribe button[data-disabled], .requests-table-toolbar .organization-subscribe button[data-disabled], .community-follow button[data-disabled], .comment-form-controls input[data-disabled][type=submit], .article-subscribe button[data-disabled], .section-subscribe button[data-disabled], .search input[data-disabled][type=submit], .split-button button[data-disabled] {
   cursor: default;
@@ -3849,10 +3850,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .table-of-contents-container li a.active, .search-results-sidebar li a.active {
   border-left: 1px solid #515ba5;
-  background-color: #f8f8f8;
+  background-color: #f1f5f9;
 }
 .table-of-contents-container li a:hover, .search-results-sidebar li a:hover {
-  background-color: #f8f8f8;
+  background-color: #f1f5f9;
 }
 .table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2 {
   padding-left: 32px;
@@ -5497,6 +5498,7 @@ html[dir=rtl] .notification-left-aligned {
 .ck .ck-sticky-panel {
   --ck-color-base-background:	#e2e8f0;
   background-color: var(--ck-color-base-background);
+  border-bottom: 1pc solid #e2e8f0;
 }
 
 /*
