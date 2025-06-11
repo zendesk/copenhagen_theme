@@ -133,9 +133,9 @@
                       <span>
                         <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> Sort by 
                           {{#each comment_sorters}}
-                            {{#is selected "true"}}
+                            {{#if selected}}
                               {{name}}
-                            {{/is}}
+                            {{/if}}
                           {{/each}}
                       </span>
                       <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
