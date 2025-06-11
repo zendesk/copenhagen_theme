@@ -189,23 +189,28 @@
     width: auto;
     background-color: transparent;
     border: 0;
+    color: $q-text-brand;
     cursor: pointer;
+    font-size: 0;
     /* height: 100%; */
+    font-family: 'Font Awesome 6 Pro';
+    font-weight: 300;
+
+    &:hover {
+      background-color: transparent;
+      color: $q-text-brand-strong;
+    }
 
     &-up {
-      &:before {
+      &::before {
         font-size: 2rem;
         content: "\f164";
-        font-family: 'Font Awesome 6 Pro';
-        font-weight: 300;
       }
     }
     &-down {
-      &:before {
+      &::before {
         font-size: 2rem;
         content: "\f165";
-        font-family: 'Font Awesome 6 Pro';
-        font-weight: 300;
       }
     }
   }

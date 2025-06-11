@@ -2483,20 +2483,24 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   width: auto;
   background-color: transparent;
   border: 0;
+  color: #515ba5;
   cursor: pointer;
+  font-size: 0;
   /* height: 100%; */
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 300;
 }
-.article-vote-up:before {
+.article-vote:hover {
+  background-color: transparent;
+  color: #3a3879;
+}
+.article-vote-up::before {
   font-size: 2rem;
   content: "\f164";
-  font-family: "Font Awesome 6 Pro";
-  font-weight: 300;
 }
-.article-vote-down:before {
+.article-vote-down::before {
   font-size: 2rem;
   content: "\f165";
-  font-family: "Font Awesome 6 Pro";
-  font-weight: 300;
 }
 .article-more-questions {
   margin: 10px 0 20px;
@@ -2716,6 +2720,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: flex;
   padding-top: 30px;
   word-wrap: break-word;
+  width: 100%;
 }
 .comment-container {
   width: 100%;
@@ -5399,7 +5404,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   --ck-color-base-foreground:	hsl(0, 0%, 98%);
   --ck-color-base-background:	#f1f5f9;
   --ck-color-base-border:	transparent;
@@ -5484,7 +5489,7 @@ html[dir=rtl] .notification-left-aligned {
   /* -- Generic colors ------------------------------------------------------------------------- */
   --ck-color-light-red:	hsl(0, 100%, 90%);
 }
-#request-container .ck-sticky-panel {
+.ck .ck-sticky-panel {
   --ck-color-base-background:	#e2e8f0;
   background-color: var(--ck-color-base-background);
 }
@@ -5493,7 +5498,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   /**
    * An opacity value of disabled UI item.
    */
@@ -5504,7 +5509,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   /**
    * The geometry of the of focused element's outer shadow.
    */
@@ -5531,7 +5536,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   --ck-font-size-base: 13px;
   --ck-line-height-base: 1.84615;
   --ck-font-face: Quicksand, Helvetica, Arial, Tahoma, Verdana, Sans-Serif;
@@ -5546,7 +5551,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   /* This is super-important. This is **manually** adjusted so a button without an icon
   is never smaller than a button with icon, additionally making sure that text-less buttons
   are perfect squares. The value is also shared by other components which should stay "in-line"
@@ -5628,7 +5633,7 @@ html[dir=rtl] .notification-left-aligned {
 /**
  * Default border-radius value.
  */
-#request-container {
+.ck {
   --ck-border-radius: 0;
 }
 
@@ -5636,7 +5641,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   /**
    * A visual style of element's inner shadow (i.e. input).
    */
@@ -5655,7 +5660,7 @@ html[dir=rtl] .notification-left-aligned {
  * Copyright (c) 2003-2024, CKSource Holding sp. z o.o. All rights reserved.
  * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-oss-license
  */
-#request-container {
+.ck {
   --ck-spacing-unit:	0.6em;
   --ck-spacing-large:	calc(var(--ck-spacing-unit) * 1.5);
   --ck-spacing-standard:	var(--ck-spacing-unit);
