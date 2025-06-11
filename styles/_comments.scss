@@ -182,6 +182,9 @@
     font-family: $text_font;
     line-height: 1.6;
     overflow-x: auto;
+    p {
+      margin: calc($gutter / 2);
+    }
   }
 
   &-mark-as-solved {

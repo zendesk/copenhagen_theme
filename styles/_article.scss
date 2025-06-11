@@ -101,6 +101,7 @@
     flex-direction: column;
     justify-content: space-between;
     padding-bottom: 20px;
+    margin-top: $padding;
   }
 
   &-comment-count {
@@ -190,7 +191,7 @@
     background-color: transparent;
     border: 0;
     color: $q-text-brand;
-    padding: 
+    padding: 0;
     cursor: pointer;
     font-size: 0;
     /* height: 100%; */

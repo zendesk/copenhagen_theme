@@ -39,7 +39,7 @@
   appearance: none;
   background-color: transparent;
   border: none;
-  color: $secondary-text-color;
+  color: $q-text-weak;
   cursor: pointer;
   min-height: 35px;
   min-width: 35px;
@@ -53,7 +53,12 @@
 
 .vote-up::before {    
   content: "\f164";
-    font-size: 1rem;
+  font-size: 1rem;
+}
+
+.vote-down::before {
+  content: "\f165";
+  font-size: 1rem;
 }
 
 .vote-voted {

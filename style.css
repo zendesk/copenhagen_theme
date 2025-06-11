@@ -189,45 +189,6 @@ template {
 /* Forms */
 /* Breakpoints variables */
 /* Grid */
-/*!
- * Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license (Commercial License)
- * Copyright 2023 Fonticons, Inc.
- */
-:root, :host {
-  --fa-style-family-brands: "Font Awesome 6 Brands";
-  --fa-font-brands: normal 400 1em/1 "Font Awesome 6 Brands";
-}
-
-@font-face {
-  font-family: "Font Awesome 6 Brands";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("$assets-fa-brands-400-woff2") format("woff2"), url("$assets-fa-brands-400-ttf") format("truetype");
-}
-/*!
- * Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com
- * License - https://fontawesome.com/license (Commercial License)
- * Copyright 2023 Fonticons, Inc.
- */
-:root, :host {
-  --fa-style-family-classic: "Font Awesome 6 Pro";
-  --fa-font-regular: normal 400 1em/1 "Font Awesome 6 Pro";
-}
-
-@font-face {
-  font-family: "Font Awesome 6 Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-display: block;
-  src: url("$assets-fa-regular-400-woff2") format("woff2"), url("$assets-fa-regular-400-ttf") format("truetype");
-}
-.far,
-.fa-regular {
-  font-weight: 400;
-}
-
 /***** Base *****/
 * {
   box-sizing: border-box;
@@ -2404,6 +2365,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 20px;
+  margin-top: 32px;
 }
 .article-comment-count {
   color: #364255;
@@ -2478,12 +2440,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-bottom: 0;
 }
 .article-vote {
-  /* margin: 10px 5px; */
-  min-width: 90px;
+  margin: 0 0 0 32px;
   width: auto;
   background-color: transparent;
   border: 0;
   color: #515ba5;
+  padding: 0;
   cursor: pointer;
   font-size: 0;
   /* height: 100%; */
@@ -2623,6 +2585,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .comment-total {
   margin: 0;
   line-height: 1;
+  color: #4d5a6b;
 }
 .comment-overview {
   border-bottom: 1px solid #B0B0B0;
@@ -2891,6 +2854,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   font-style: italic;
   padding: 0 15px;
 }
+.comment-body p {
+  margin: 8px;
+}
 .comment-mark-as-solved {
   display: inline-block;
 }
@@ -2942,7 +2908,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   appearance: none;
   background-color: transparent;
   border: none;
-  color: #364255;
+  color: #4d5a6b;
   cursor: pointer;
   min-height: 35px;
   min-width: 35px;
@@ -2956,6 +2922,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 .vote-up::before {
   content: "\f164";
+  font-size: 1rem;
+}
+
+.vote-down::before {
+  content: "\f165";
   font-size: 1rem;
 }
 
@@ -5277,6 +5248,9 @@ html[dir=rtl] .notification-left-aligned {
   padding: 0;
   text-align: initial;
   vertical-align: middle;
+}
+.dropdown-toggle .fa {
+  color: #4d5a6b;
 }
 .dropdown-toggle:hover {
   text-decoration: none;
