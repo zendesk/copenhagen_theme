@@ -2,7 +2,7 @@
 /* Used in article comments, post comments and post */
 .vote {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
   a {
     &:active,
@@ -46,6 +46,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Font Awesome 6 Pro';
+  font-weight: 500;
+  font-size: 0;
+}
+
+.vote-up::before {    
+  content: "\f164";
+    font-size: 1rem;
 }
 
 .vote-voted {

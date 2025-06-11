@@ -11,6 +11,15 @@
     font-weight: $font-weight-semibold;
   }
 
+  &-heading {
+    margin-bottom: 0;
+  }
+
+  &-total {
+    margin: 0;
+    line-height: 1;
+  }
+
   &-overview {
     border-bottom: 1px solid $low-contrast-border-color;
     border-top: 1px solid $low-contrast-border-color;
@@ -168,4 +177,10 @@
   &-mark-as-solved {
     display: inline-block;
   }
+}
+
+
+.article-comments { 
+  width:100%; 
+  margin-top: $padding;
 }

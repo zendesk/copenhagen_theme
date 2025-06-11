@@ -120,7 +120,7 @@
         {{#if settings.show_article_comments}}
 
           {{#form 'comment' class='comment-form'}}
-            <div class="comment-avatar">{{user_avatar class='user-avatar'}}</div>
+            <!--<div class="comment-avatar">{{user_avatar class='user-avatar'}}</div> -->
             <div class="comment-container">
               {{wysiwyg 'body' rows='4'}}
               <div class="comment-form-controls">{{input type='submit'}}</div>
@@ -130,13 +130,13 @@
 
           <section class="article-comments">
             <div class="article-comments-header">
-              <h2>Comments</h2>
-              <p>{{article.comment_count}} comment{{#unless (compare article.comment_count "==" 1)}}s{{/unless}}</p>
+              <h2 class="comment-heading">Comments</h2>
+              <p class"comment-total">{{article.comment_count}} comment{{#is article.comment_count 1)}}s{{/is}}</p>
 
               {{#if comments}}
               <div class="comment-sorters">
                 {{#each comment_sorters}}
-                  <a aria-selected="{{selected}}" href="{{url}}">{{name}}</a>
+                  <a aria-selected="{{selected}}" href="{{url}}">Sort by {{name}}</a>
                 {{/each}}
               </div>
               {{/if}}
@@ -145,13 +145,15 @@
               <ul>
               {{#each comments}}
                 <li class="comment">
+                  <div class="comment-container">
+                    <h5>{{author.name}}</h5>
+                    <p class="small">{{date created_at}}</p>
+                    <div class="comment-body">{{body}}</div>
+                  </div>
                   <div class="comment-vote vote">
                     {{vote 'up' class='vote-up' selected_class='vote-voted'}}
-                    {{vote 'sum' class='vote-sum'}}
                     {{vote 'down' class='vote-down' selected_class='vote-voted'}}
-                  </div>
-                  <div class="comment-container">
-                    On {{date created_at}}, {{author.name}} wrote: {{body}}
+                    {{vote 'sum' class='vote-sum'}}
                   </div>
                 </li>
               {{/each}}

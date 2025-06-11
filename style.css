@@ -2212,7 +2212,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   background: #FFFFFF;
   padding: 32px;
   flex: 1 0 auto;
-  box-shadow: 1px 18px 20px rgba(0, 0, 0, 0.2);
   margin-bottom: 80px;
 }
 @media (min-width: 1024px) {
@@ -2623,6 +2622,14 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   font-size: 18px;
   font-weight: 600;
 }
+.comment-heading, .recent-articles-title,
+.related-articles-title {
+  margin-bottom: 0;
+}
+.comment-total {
+  margin: 0;
+  line-height: 1;
+}
 .comment-overview {
   border-bottom: 1px solid #B0B0B0;
   border-top: 1px solid #B0B0B0;
@@ -2891,11 +2898,16 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: inline-block;
 }
 
+.article-comments {
+  width: 100%;
+  margin-top: 32px;
+}
+
 /***** Vote *****/
 /* Used in article comments, post comments and post */
 .vote {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
 }
 .vote a:active, .vote a:hover, .vote a:focus {
@@ -2934,6 +2946,14 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: "Font Awesome 6 Pro";
+  font-weight: 500;
+  font-size: 0;
+}
+
+.vote-up::before {
+  content: "\f164";
+  font-size: 1rem;
 }
 
 .vote-voted {
