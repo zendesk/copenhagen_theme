@@ -2460,6 +2460,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-sidebar {
   flex: 1 0 auto;
   margin-bottom: 16px;
+  position: sticky;
+  top: 0px;
 }
 @media (min-width: 1024px) {
   .article-sidebar {
@@ -2469,6 +2471,23 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     max-width: 25%;
     margin-right: 16px;
   }
+}
+.article-sidebar-sticky {
+  position: sticky;
+  top: 71px;
+}
+.article-sidebar .article-share {
+  display: none;
+}
+@media (min-width: 768px) {
+  .article-sidebar .article-share {
+    display: block;
+  }
+}
+.article-share {
+  background: #FFFFFF;
+  padding: 16px;
+  margin-top: 16px;
 }
 .article-relatives {
   border-top: 1px solid #B0B0B0;
@@ -2626,6 +2645,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 0;
   white-space: nowrap;
 }
+.share-facebook ::before {
+  content: "\f082";
+  font-family: "Font Awesome 6 Brands";
+  font-size: 1.5rem;
+}
+.share-linkedin ::before {
+  content: "\f08c";
+  font-family: "Font Awesome 6 Brands";
+  font-size: 1.5rem;
+}
+.share-twitter ::before {
+  content: "\e61a";
+  font-family: "Font Awesome 6 Brands";
+  font-size: 1.5rem;
+}
 
 .share li, .share a {
   display: inline-block;
@@ -2637,7 +2671,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 .share a {
-  color: #364255;
+  color: #4d5a6b;
 }
 .share a:hover {
   text-decoration: none;
@@ -2646,7 +2680,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .share a svg {
   height: 18px;
   width: 18px;
-  display: block;
+  display: none;
 }
 
 /***** Comments *****/
@@ -3912,7 +3946,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding-bottom: 0;
   margin-top: 16px;
   position: sticky;
-  top: 100px;
+  top: 71px;
 }
 @media (min-width: 1024px) {
   .table-of-contents-container, .search-results-sidebar {

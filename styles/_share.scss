@@ -3,6 +3,28 @@
 .share {
   padding: 0;
   white-space: nowrap;
+
+  &-facebook {
+    ::before {    
+      content: "\f082";
+      font-family: 'Font Awesome 6 Brands';
+      font-size: 1.5rem;
+    }
+  }
+  &-linkedin {
+    ::before {    
+      content: "\f08c";
+      font-family: 'Font Awesome 6 Brands';
+      font-size: 1.5rem;
+    }
+  }
+  &-twitter {
+    ::before {    
+      content: "\e61a";
+      font-family: 'Font Awesome 6 Brands';
+      font-size: 1.5rem;
+    }
+  }
 }
 
 .share li, .share a {
@@ -15,7 +37,7 @@
 }
 
 .share a {
-  color: $secondary-text-color;
+  color: $q-text-weak;
   &:hover {
     text-decoration: none;
     color: $brand-color;
@@ -24,6 +46,7 @@
   & svg {
     height: 18px;
     width: 18px;
-    display: block;  
+    // display: block;
+    display: none;  
   }
 }

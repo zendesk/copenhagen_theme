@@ -8,8 +8,6 @@
   padding-bottom: 0;
   margin-top: $gutter;
   
-  position: sticky;
-  top: 100px;
 
   @include desktop {
     padding: $padding;

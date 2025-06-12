@@ -130,6 +130,26 @@
 
     flex: 1 0 auto; //Explicit values needed with flex-direction: column for IE11
     margin-bottom: $gutter;
+    position: sticky;
+    top: 0px;
+
+    &-sticky {
+      position: sticky;
+      top: 71px;
+    }
+
+    .article-share {
+      display: none;
+      @include tablet {
+      display: block;
+    }
+    }
+  }
+
+  &-share {
+    background: #FFFFFF;
+    padding: 16px;
+    margin-top: 16px;
   }
 
   &-relatives {

@@ -36,26 +36,29 @@
       <div class="search-container">
         {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
       </div>
-      <div class="table-of-contents-container collapsible-sidebar">
-        <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
-          <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
-          <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
-        </button>
-        <h4 class="collapsible-sidebar-title sidenav-title">Table of contents</h4>
-        <div class="table-of-contents">
+      <div class="article-sidebar-sticky">
+        <div class="table-of-contents-container collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+          </button>
+          <h4 class="collapsible-sidebar-title sidenav-title">Table of contents</h4>
+          <div class="table-of-contents">
+          </div>
+          <div class="article-return-to-top collapsible-sidebar-body">
+            <a href="#article-container">
+              <i class="fa far fa-arrow-up"></i>
+              {{t 'return_to_top'}}
+            </a>
+          </div>
         </div>
-        <div class="article-return-to-top">
-          <a href="#article-container">
-            <i class="fa far fa-arrow-up"></i>
-            {{t 'return_to_top'}}
-          </a>
-        </div>
+        {{#if settings.show_article_sharing}}
+          <div class="article-share">
+            <h4 class="sidenav-title collapsible-sidebar-title">Share this article</h4>
+            {{share}}
+          </div>
+        {{/if}}
       </div>
-      {{#if settings.show_article_sharing}}
-        <div class="article-share">
-        <h4 class="sidenav-title">Share this article</h4>
-        {{share}}</div>
-      {{/if}}
     </aside>
 
     <article id="main-content" class="article">
