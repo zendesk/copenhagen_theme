@@ -2265,7 +2265,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex-direction: column;
   position: relative;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .article-container {
     flex-direction: row;
   }
@@ -2445,7 +2445,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding-bottom: 20px;
   margin-top: 32px;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .article-footer .article-share {
     display: none;
   }
@@ -2484,7 +2484,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-sidebar .article-share {
   display: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .article-sidebar .article-share {
     display: block;
   }

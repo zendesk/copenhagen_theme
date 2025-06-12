@@ -18,7 +18,7 @@
   margin-bottom: 80px;
 
   &-container {
-    @include tablet {
+    @include desktop {
       flex-direction: row;
     }
 
@@ -104,7 +104,7 @@
     margin-top: $padding;
 
     .article-share {
-      @include tablet {
+      @include desktop {
         display: none;
       }
     }
@@ -146,7 +146,7 @@
 
     .article-share {
       display: none;
-      @include tablet {
+      @include desktop {
       display: block;
     }
     }
