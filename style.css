@@ -2249,7 +2249,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   * 25%     | 75%     | 0%
   */
   background: #FFFFFF;
-  padding: 32px;
+  padding: 16px;
   flex: 1 0 auto;
   margin-bottom: 80px;
 }
@@ -2258,6 +2258,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     flex: 1 1 75%;
     max-width: 75%;
     min-width: 640px;
+    padding: 32px;
   }
 }
 .article-container {
@@ -2429,6 +2430,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   font-style: italic;
   padding: 0 15px;
 }
+.article-body > *:first-child {
+  margin-top: 0;
+}
 .article-body > p:last-child {
   margin-bottom: 0;
 }
@@ -2457,6 +2461,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 32px 0;
   margin-top: 0;
   width: 100%;
+  text-align: center;
 }
 @media (min-width: 768px) {
   .article-footer .article-share {
@@ -2548,12 +2553,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .article-votes-controls {
   display: flex;
+  margin-top: 16px;
 }
 .article-votes-question {
   margin-bottom: 0;
 }
 .article-vote {
-  margin: 0 0 0 32px;
   width: auto;
   background-color: transparent;
   border: 0;
@@ -2572,6 +2577,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-vote-up::before {
   font-size: 2rem;
   content: "\f164";
+}
+.article-vote-down {
+  margin: 0 0 0 32px;
 }
 .article-vote-down::before {
   font-size: 2rem;
@@ -2630,26 +2638,35 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
 .attachments .attachment-item {
-  padding-left: 20px;
+  padding: 16px;
   position: relative;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
+  background-color: #f1f5f9;
+  border-radius: 4px;
+  padding-left: 48px;
 }
 .attachments .attachment-item:last-child {
   margin-bottom: 0;
 }
 .attachments .attachment-item .attachment-icon {
   color: #0f172a;
-  left: 0;
+}
+.attachments .attachment-item .attachment-icon::before {
+  content: "\f0c6";
+  font-family: "Font Awesome 6 Pro";
   position: absolute;
-  top: 5px;
+  top: 16px;
+  left: 16px;
+}
+.attachments .attachment-item .attachment-icon svg {
+  display: none;
 }
 [dir=rtl] .attachments .attachment-item {
-  padding-left: 0;
-  padding-right: 20px;
+  padding-left: 16px;
+  padding-right: 48px;
 }
-[dir=rtl] .attachments .attachment-item .attachment-icon {
-  left: auto;
-  right: 0;
+[dir=rtl] .attachments .attachment-item .attachment-icon::before {
+  right: 16px;
 }
 
 .upload-dropzone span {
@@ -2660,24 +2677,21 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .share {
   padding: 0;
   white-space: nowrap;
+  font-size: 1.5rem;
+  font-family: "Font Awesome 6 Brands";
 }
 .share-facebook::before {
   content: "\f082";
-  font-family: "Font Awesome 6 Brands";
-  font-size: 1.5rem;
 }
 .share-linkedin::before {
   content: "\f08c";
-  font-family: "Font Awesome 6 Brands";
-  font-size: 1.5rem;
 }
 .share-twitter::before {
   content: "\e61a";
-  font-family: "Font Awesome 6 Brands";
-  font-size: 1.5rem;
 }
+
 .share-header {
-  margin-bottom: 0;
+  margin-bottom: 16px;
 }
 
 .share li, .share a {
@@ -2685,8 +2699,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 
 .share li {
-  height: 25px;
-  width: 25px;
+  padding: 4px;
+  line-height: 1;
 }
 
 .share a {

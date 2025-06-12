@@ -9,10 +9,11 @@
     flex: 1 1 75%;
     max-width: 75%;
     min-width: 640px;
+    padding: $padding;
   }
 
   background: #FFFFFF;
-  padding: $padding;
+  padding: calc($padding / 2);
   flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
   // box-shadow: 1px 18px 20px #00000033;
   margin-bottom: 80px;
@@ -84,6 +85,10 @@
 
   &-body {
     @include content-body;
+    >*:first-child {
+      margin-top: 0;
+    }
+    
     > p:last-child {
       margin-bottom: 0;
     }
@@ -119,6 +124,7 @@
       padding: 32px 0;
       margin-top: 0;
       width: 100%;
+      text-align: center;
     }
   }
 
@@ -211,6 +217,7 @@
 
     &-controls {
       display: flex;
+      margin-top: $gutter;
     }
 
     &-question { // Explicit values for rendering h2 like a span for accessibility.
@@ -221,7 +228,6 @@
   }
 
   &-vote {
-    margin: 0 0 0 $padding;
     // min-width: 90px;
     width: auto;
     background-color: transparent;
@@ -246,6 +252,7 @@
       }
     }
     &-down {
+      margin: 0 0 0 $padding;
       &::before {
         font-size: 2rem;
         content: "\f165";

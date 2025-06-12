@@ -2,26 +2,43 @@
 /* Styles attachments inside posts, articles and comments */
 .attachments {
   .attachment-item {
-    padding-left: 20px;
+    // padding-left: 20px;
+    // position: relative;
+    // margin-bottom: 10px;
+
+    padding: $gutter;
     position: relative;
-    margin-bottom: 10px;
+    margin-bottom: $gutter;
+    background-color: $q-bg-subtle;
+    border-radius: 4px;
+    padding-left: calc($gutter * 3);
 
     &:last-child { margin-bottom: 0; }
 
     .attachment-icon {
       color: $text_color;
-      left: 0;
-      position: absolute;
-      top: 5px;
+
+      &::before {
+        content: "\f0c6";
+        font-family: 'Font Awesome 6 Pro';
+        position: absolute;
+        top: 16px;
+        left: 16px;
+      }
+
+      svg {
+        display: none;
+      }
     }
 
     [dir="rtl"] & {
-      padding-left: 0;
-      padding-right: 20px;
+      padding-left: $gutter;
+      padding-right: calc($gutter * 3);
 
       .attachment-icon {
-        left: auto;
-        right: 0;
+        &::before {
+          right: 16px;
+        }
       }
     }
   }

@@ -3,41 +3,38 @@
 .share {
   padding: 0;
   white-space: nowrap;
+  font-size: 1.5rem;
+  font-family: 'Font Awesome 6 Brands';
 
   &-facebook {
     &::before {    
       content: "\f082";
-      font-family: 'Font Awesome 6 Brands';
-      font-size: 1.5rem;
     }
   }
   &-linkedin {
     &::before {    
       content: "\f08c";
-      font-family: 'Font Awesome 6 Brands';
-      font-size: 1.5rem;
     }
   }
   &-twitter {
     &::before {    
       content: "\e61a";
-      font-family: 'Font Awesome 6 Brands';
-      font-size: 1.5rem;
     }
   }
 
-  &-header {
-    margin-bottom: 0;
-  }
 }
+
+.share-header {
+    margin-bottom: $gutter;
+  }
 
 .share li, .share a {
   display: inline-block;
 }
 
 .share li {
-  height: 25px;
-  width: 25px;
+    padding: 4px;
+    line-height: 1;
 }
 
 .share a {
