@@ -106,6 +106,12 @@
       </section>
       <footer>
         <div class="article-footer">
+          {{#if settings.show_article_sharing}}
+            <div class="article-share">
+              <h6 class="">Share this article</h6>
+              {{share}}
+            </div>
+          {{/if}}
           {{#with article}}
             <div class="article-votes">
               <h3 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h3>

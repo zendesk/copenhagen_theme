@@ -2445,6 +2445,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding-bottom: 20px;
   margin-top: 32px;
 }
+@media (min-width: 768px) {
+  .article-footer .article-share {
+    display: none;
+  }
+}
 .article-comment-count {
   color: #364255;
 }
