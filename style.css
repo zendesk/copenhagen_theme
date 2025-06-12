@@ -2253,7 +2253,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex: 1 0 auto;
   margin-bottom: 80px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article {
     flex: 1 1 75%;
     max-width: 75%;
@@ -2265,7 +2265,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex-direction: column;
   position: relative;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article-container {
     flex-direction: row;
   }
@@ -2445,7 +2445,20 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding-bottom: 20px;
   margin-top: 32px;
 }
-@media (min-width: 1024px) {
+.article-footer .share-and-vote {
+  display: flex;
+  justify-content: stretch;
+  width: 100%;
+  border-top: 1px solid #B0B0B0;
+  border-bottom: 1px solid #B0B0B0;
+}
+.article-footer .article-share {
+  background: transparent;
+  padding: 32px 0;
+  margin-top: 0;
+  width: 100%;
+}
+@media (min-width: 768px) {
   .article-footer .article-share {
     display: none;
   }
@@ -2468,7 +2481,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   position: sticky;
   top: 0px;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article-sidebar {
     border: 0;
     flex: 0 0 25%;
@@ -2484,7 +2497,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-sidebar .article-share {
   display: none;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article-sidebar .article-share {
     display: block;
   }
@@ -2520,8 +2533,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 .article-votes {
-  border-top: 1px solid #B0B0B0;
-  border-bottom: 1px solid #B0B0B0;
   padding: 32px 0;
   display: flex;
   flex-direction: column;
@@ -2580,7 +2591,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-more-questions a:hover, .article-more-questions a:active, .article-more-questions a:focus {
   color: #2f3561;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article-return-to-top {
     display: none;
   }
@@ -2664,6 +2675,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   content: "\e61a";
   font-family: "Font Awesome 6 Brands";
   font-size: 1.5rem;
+}
+.share-header {
+  margin-bottom: 0;
 }
 
 .share li, .share a {

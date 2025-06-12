@@ -106,24 +106,26 @@
       </section>
       <footer>
         <div class="article-footer">
-          {{#if settings.show_article_sharing}}
-            <div class="article-share">
-              <h6 class="">Share this article</h6>
-              {{share}}
-            </div>
-          {{/if}}
-          {{#with article}}
-            <div class="article-votes">
-              <h3 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h3>
-              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-                {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
-                {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+          <div class="share-and-vote">
+            {{#if settings.show_article_sharing}}
+              <div class="article-share">
+                <h4 class="share-header">Share this article</h4>
+                {{share}}
               </div>
-              <!--<small class="article-votes-count">
-                {{vote 'label' class='article-vote-label'}}
-              </small>-->
-            </div>
-          {{/with}}
+            {{/if}}
+            {{#with article}}
+              <div class="article-votes">
+                <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
+                <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+                  {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
+                  {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+                </div>
+                <!--<small class="article-votes-count">
+                  {{vote 'label' class='article-vote-label'}}
+                </small>-->
+              </div>
+            {{/with}}
+          </div>
           
           <div class="article-more-questions">
             {{request_callout}}

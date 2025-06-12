@@ -5,7 +5,7 @@
   * Sidebar | Content | Free space
   * 25%     | 75%     | 0%
   */
-  @include desktop {
+  @include tablet {
     flex: 1 1 75%;
     max-width: 75%;
     min-width: 640px;
@@ -18,7 +18,7 @@
   margin-bottom: 80px;
 
   &-container {
-    @include desktop {
+    @include tablet {
       flex-direction: row;
     }
 
@@ -103,10 +103,22 @@
     padding-bottom: 20px;
     margin-top: $padding;
 
+    .share-and-vote {
+      display: flex;
+      justify-content: stretch;
+      width: 100%;
+    border-top: 1px solid $low-contrast-border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
+    }
+
     .article-share {
-      @include desktop {
+      @include tablet {
         display: none;
-      }
+      }    
+      background: transparent;
+      padding: 32px 0;
+      margin-top: 0;
+      width: 100%;
     }
   }
 
@@ -126,7 +138,7 @@
   }
 
   &-sidebar {
-    @include desktop {
+    @include tablet {
       border: 0;
       flex: 0 0 25%;
       height: auto;
@@ -146,7 +158,7 @@
 
     .article-share {
       display: none;
-      @include desktop {
+      @include tablet {
       display: block;
     }
     }
@@ -185,8 +197,6 @@
   }
 
   &-votes {
-    border-top: 1px solid $low-contrast-border-color;
-    border-bottom: 1px solid $low-contrast-border-color;
     padding: $padding 0;
     display: flex;
     flex-direction: column;
@@ -250,7 +260,7 @@
   }
 
   &-return-to-top {
-    @include desktop {
+    @include tablet {
       display: none;
     }
 
