@@ -52,7 +52,9 @@
         </div>
       </div>
       {{#if settings.show_article_sharing}}
-        <div class="article-share">{{share}}</div>
+        <div class="article-share">
+        <h4 class="sidenav-title">Share this article</h4>
+        {{share}}</div>
       {{/if}}
     </aside>
 
@@ -131,10 +133,10 @@
                   <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
                     <span>
                       <span>
-                        <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> Sort by 
+                        <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
                           {{#each comment_sorters}}
                             {{#if selected}}
-                              {{name}}
+                              {{#is name "Votes"}}Most popular{{/is}}{{#is name "Date"}}Most recent{{/is}}
                             {{/if}}
                           {{/each}}
                       </span>
@@ -143,7 +145,7 @@
                   </button>
                   <div class="dropdown-menu" role="menu" id="comment-sorters-list" aria-labelledby="comment-sorters" tabindex="-1">
                     {{#each comment_sorters}}
-                      <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{name}}</a>
+                      <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{#is name "Votes"}}Most popular{{/is}}{{#is name "Date"}}Most recent{{/is}}</a>
                     {{/each}}
                   </div>
                 </div>
@@ -155,17 +157,17 @@
                 <ul>
                 {{#each comments}}
                   <li class="comment">
+                    <div class="comment-vote vote">
+                      {{vote 'up' class='vote-up' selected_class='vote-voted'}}
+                      {{vote 'sum' class='vote-sum'}}
+                      {{vote 'down' class='vote-down' selected_class='vote-voted'}}
+                    </div>
                     <div class="comment-container">
                       <div class="comment-head">
                         <h5 class="comment-author">{{author.name}}</h5>
                         <p class="comment-date">{{date created_at}}</p>
                       </div>
                       <div class="comment-body">{{body}}</div>
-                    </div>
-                    <div class="comment-vote vote">
-                      {{vote 'up' class='vote-up' selected_class='vote-voted'}}
-                      {{vote 'down' class='vote-down' selected_class='vote-voted'}}
-                      {{vote 'sum' class='vote-sum'}}
                     </div>
                   </li>
                 {{/each}}

@@ -2,8 +2,11 @@
 /* Used in article comments, post comments and post */
 .vote {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   text-align: center;
+  margin-right: $gutter;
+  align-self: flex-start;
+
   a {
     &:active,
     &:hover,
@@ -14,9 +17,11 @@
 }
 
 .vote-sum {
-  color: $secondary-text-color;
+  //color: $brand-color;
   display: block;
-  margin: 3px 0;
+  margin: 0;
+  color: $q-text-weak;
+  font-weight: 800;
 
   [dir="rtl"] & {
     direction: ltr;
@@ -47,22 +52,25 @@
   align-items: center;
   justify-content: center;
   font-family: 'Font Awesome 6 Pro';
-  font-weight: 500;
+  font-weight: 300;
   font-size: 0;
 }
 
 .vote-up::before {    
-  content: "\f164";
+  // content: "\f164";
+  content: "\f357";
   font-size: 1rem;
 }
 
 .vote-down::before {
-  content: "\f165";
+  //content: "\f165";
+  content: "\f354";
   font-size: 1rem;
 }
 
 .vote-voted {
   color: $brand-color;
+  font-weight: 900;
 }
 
 .vote-voted:hover {

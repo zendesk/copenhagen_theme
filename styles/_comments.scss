@@ -3,6 +3,8 @@
 .comment {
   border-bottom: 1px solid $low-contrast-border-color;
   padding: 20px 0;
+  display: flex;
+  flex-direction: row;
 
   &-heading {
     margin-bottom: 0px;
@@ -123,10 +125,12 @@
 
   &-container { 
     width: 100%; 
+    align-self: center;
     textarea {
       width: 100%;
       border: 0;
       background: $q-bg-subtle;
+      height: 14em;
     }
   }
 
@@ -183,7 +187,7 @@
     line-height: 1.6;
     overflow-x: auto;
     p {
-      margin: calc($gutter / 2);
+      margin: calc($gutter / 2) 0;
     }
   }
 
