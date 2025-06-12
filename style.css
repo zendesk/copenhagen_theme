@@ -2265,7 +2265,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex-direction: column;
   position: relative;
 }
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .article-container {
     flex-direction: row;
   }

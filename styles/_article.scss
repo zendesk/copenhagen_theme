@@ -18,7 +18,7 @@
   margin-bottom: 80px;
 
   &-container {
-    @include desktop {
+    @include tablet {
       flex-direction: row;
     }
 
