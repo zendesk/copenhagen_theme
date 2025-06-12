@@ -2645,17 +2645,17 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 0;
   white-space: nowrap;
 }
-.share-facebook ::before {
+.share-facebook::before {
   content: "\f082";
   font-family: "Font Awesome 6 Brands";
   font-size: 1.5rem;
 }
-.share-linkedin ::before {
+.share-linkedin::before {
   content: "\f08c";
   font-family: "Font Awesome 6 Brands";
   font-size: 1.5rem;
 }
-.share-twitter ::before {
+.share-twitter::before {
   content: "\e61a";
   font-family: "Font Awesome 6 Brands";
   font-size: 1.5rem;

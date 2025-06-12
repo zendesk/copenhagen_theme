@@ -5,21 +5,21 @@
   white-space: nowrap;
 
   &-facebook {
-    ::before {    
+    &::before {    
       content: "\f082";
       font-family: 'Font Awesome 6 Brands';
       font-size: 1.5rem;
     }
   }
   &-linkedin {
-    ::before {    
+    &::before {    
       content: "\f08c";
       font-family: 'Font Awesome 6 Brands';
       font-size: 1.5rem;
     }
   }
   &-twitter {
-    ::before {    
+    &::before {    
       content: "\e61a";
       font-family: 'Font Awesome 6 Brands';
       font-size: 1.5rem;
