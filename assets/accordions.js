@@ -15,7 +15,7 @@ function getSiblingIndex(element) {
 }
 
 const accordionItems = document.getElementsByClassName("accordion__item");
-const accordionTitles = document.getElementsByClassName("accordion__item-title");
+const accordionTitles = Array.from(document.getElementsByClassName("accordion__item-title"));
 
 accordionTitles.forEach((el, index) => {
     const text = el.innerText;
