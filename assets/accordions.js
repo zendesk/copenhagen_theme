@@ -1,5 +1,52 @@
 // Use the Lotus accordion classes to avoid breaking existing articles, but we convert to javascript because jquery too heavy to be justified
 
+// sliding functionality
+
+function slideToggle(element, duration = 400, callback) {
+    if (element.style.display === 'none') {
+      slideDown(element, duration, callback)
+    } else {
+        slideUp(element, duration, callback)
+    }
+}
+
+
+function slideUp(element, duration = 400, callback) {
+  element.style.transition = `height ${duration}ms ease-in-out`;
+  element.style.overflow = 'hidden';
+  element.style.height = `${element.offsetHeight}px`;
+  setTimeout(() => {
+    element.style.height = '0';
+    setTimeout(() => {
+      element.style.display = 'none';
+      element.style.height = ''; // Reset height
+      element.style.overflow = ''; // Reset overflow
+      element.style.transition = ''; // Reset transition
+      if (callback) callback();
+    }, duration);
+  }, 0);
+}
+
+function slideDown(element, duration = 400, callback) {
+  element.style.transition = `height ${duration}ms ease-in-out`;
+  element.style.overflow = 'hidden';
+  element.style.display = '';
+  element.style.height = '0';
+  setTimeout(() => {
+    element.style.height = `${element.scrollHeight}px`;
+    setTimeout(() => {
+      element.style.height = ''; // Reset height
+      element.style.overflow = ''; // Reset overflow
+      element.style.transition = ''; // Reset transition
+      if (callback) callback();
+    }, duration);
+  }, 0);
+}
+
+
+
+
+
 
 /**
  * Accordions
@@ -14,24 +61,51 @@ function getSiblingIndex(element) {
   return siblings.indexOf(element);
 }
 
-const accordionItems = document.getElementsByClassName("accordion__item");
+const accordionItems = Array.from(document.getElementsByClassName("accordion__item"));
 const accordionTitles = Array.from(document.getElementsByClassName("accordion__item-title"));
+const accordionContents = Array.from(document.getElementsByClassName("accordion__item-content"));
 
 accordionTitles.forEach((el, index) => {
     const text = el.innerText;
-    const newButtonTag = document.createElement("BUTTON")[0];
+    const newButtonTag = document.createElement("button");
     const parentIndex = getSiblingIndex(el.closest('.accordion'));
 
-    for (var i=0; el.attributes.length < i; i++) {
+    for (let i = 0; el.attributes.length < i; i++) {
         newButtonTag.setAttribute(el.attributes[i].name, el.attributes[i].value);
     }
+
     newButtonTag.setAttribute('aria-expanded', false);
     newButtonTag.setAttribute('aria-controls', `content-${parentIndex}-${index}`);
     newButtonTag.innerText = text;
 
-
     el.replaceWith(newButtonTag);
 });
+
+accordionContents.forEach((el, index) => {
+    const parentIndex = getSiblingIndex(el.closest('.accordion'));
+    el.setAttribute("id", `content-${parentIndex}-${index}`);
+});
+
+
+const accordionTitlesButtons = Array.from(document.getElementsByClassName("accordion__item-title"));
+
+accordionTitlesButtons.forEach((el, index) => {
+  el.addEventListener('click', (event) => {
+    event.preventDefault();
+    
+    const isExpanded = event.currentTarget.attr('aria-expanded') === "true";
+
+    (event.currentTarget).classList.toggle('accordion__item-title--active');
+
+    slideToggle(
+      (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 500
+    );
+
+    (event.currentTarget).setAttribute('aria-expanded', !isExpanded);
+
+  })
+});
+
 
 /*
 
