@@ -72,8 +72,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const newButtonTag = document.createElement("button");
       const parentIndex = getSiblingIndex(el.closest('.accordion'));
 
-      for (let i = 0; el.attributes.length < i; i++) {
-          newButtonTag.setAttribute(el.attributes[i].name, el.attributes[i].value);
+      var linkAttributes = el.attributes;
+
+      for (attribute of linkAttributes) {
+          newButtonTag.setAttribute(attribute.name, attribute.value);
       }
 
       newButtonTag.setAttribute('aria-expanded', false);
@@ -98,7 +100,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const isExpanded = event.currentTarget.attr('aria-expanded') === "true";
 
       (event.currentTarget).classList.toggle('accordion__item-title--active');
-
       slideToggle(
         (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 500
       );
