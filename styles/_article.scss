@@ -210,7 +210,9 @@
     width: 100%;
     align-items: center;
     text-align: left;
-
+    border-top: 1px solid $low-contrast-border-color;
+    border-bottom: 1px solid $low-contrast-border-color;
+    
     @include tablet {
       flex-direction: row;
     }

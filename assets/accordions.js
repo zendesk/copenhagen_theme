@@ -1,4 +1,4 @@
-// Use the Lotus accordion classes to avoid breaking existing articles, but we convert to javascript because jquery too heavy to be justified
+// Use the Lotus accordion classes to avoid breaking existing articles, but we convert the script to javascript because jquery is a chonker
 
 // sliding functionality
 
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     el.addEventListener('click', (event) => {
       event.preventDefault();
       
-      const isExpanded = event.currentTarget.attr('aria-expanded') === "true";
+      const isExpanded = event.currentTarget.getAttribute('aria-expanded') === "true";
 
       (event.currentTarget).classList.toggle('accordion__item-title--active');
       slideToggle(
