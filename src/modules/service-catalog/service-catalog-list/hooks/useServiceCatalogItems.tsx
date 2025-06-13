@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
-import type { Meta } from "./data-types/Meta";
-import type { ServiceCatalogItem } from "./data-types/ServiceCatalogItem";
+import type { Meta } from "../../data-types/Meta";
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 
 const PAGE_SIZE = 16;
 

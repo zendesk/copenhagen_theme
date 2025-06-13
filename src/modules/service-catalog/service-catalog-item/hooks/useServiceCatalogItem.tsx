@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { ServiceCatalogItem } from "./data-types/ServiceCatalogItem";
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 
 export function useServiceCatalogItem(serviceItemId: number): {
   serviceCatalogItem: ServiceCatalogItem | undefined;

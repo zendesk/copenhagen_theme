@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
-import type { TicketField } from "../data-types/TicketField";
-import type { Field } from "../../ticket-fields/data-types/Field";
-import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
+import type { TicketField } from "../../data-types/TicketField";
+import type { Field } from "../../../ticket-fields/data-types/Field";
+import { getCustomObjectKey } from "../../../ticket-fields/fields/LookupField";
 
 const getFieldValue = (field: TicketField) => {
   if (field.type === "tagger") {

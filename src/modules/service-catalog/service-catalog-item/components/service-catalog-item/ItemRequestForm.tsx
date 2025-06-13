@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { TicketField } from "../../../ticket-fields";
-import type { Field } from "../../../ticket-fields";
+import { TicketField } from "../../../../ticket-fields";
+import type { Field } from "../../../../ticket-fields";
 import { Button } from "@zendeskgarden/react-buttons";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
+import type { ServiceCatalogItem } from "../../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
-import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 
 const Form = styled.form`
   display: flex;

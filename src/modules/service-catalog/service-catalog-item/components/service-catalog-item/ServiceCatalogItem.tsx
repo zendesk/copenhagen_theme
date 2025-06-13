@@ -1,20 +1,20 @@
 import styled from "styled-components";
-import { useItemFormFields } from "./components/useItemFormFields";
-import { ItemRequestForm } from "./components/service-catalog-item/ItemRequestForm";
-import type { Organization } from "../ticket-fields";
-import { useServiceCatalogItem } from "./useServiceCatalogItem";
+import { useItemFormFields } from "../../hooks/useItemFormFields";
+import { ItemRequestForm } from "./ItemRequestForm";
+import type { Organization } from "../../../../ticket-fields";
+import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
-import type { ServiceRequestResponse } from "./data-types/ServiceRequestResponse";
-import { addFlashNotification } from "../shared";
+import type { ServiceRequestResponse } from "../../../data-types/ServiceRequestResponse";
+import { addFlashNotification } from "../../../../shared";
 import { useTranslation } from "react-i18next";
-import { useNotify } from "../shared/notifications/useNotify";
+import { useNotify } from "../../../../shared/notifications/useNotify";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export interface ServiceCatalogItemPageProps {
+export interface ServiceCatalogItemProps {
   serviceCatalogItemId: number;
   baseLocale: string;
   hasAtMentions: boolean;
@@ -25,7 +25,7 @@ export interface ServiceCatalogItemPageProps {
   helpCenterPath: string;
 }
 
-export function ServiceCatalogItemPage({
+export function ServiceCatalogItem({
   serviceCatalogItemId,
   baseLocale,
   hasAtMentions,
@@ -34,7 +34,7 @@ export function ServiceCatalogItemPage({
   userId,
   brandId,
   helpCenterPath,
-}: ServiceCatalogItemPageProps) {
+}: ServiceCatalogItemProps) {
   const { serviceCatalogItem, errorFetchingItem } =
     useServiceCatalogItem(serviceCatalogItemId);
   const {
