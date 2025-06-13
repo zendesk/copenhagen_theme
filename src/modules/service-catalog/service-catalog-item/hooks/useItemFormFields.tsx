@@ -22,6 +22,7 @@ const formatField = (field: TicketField): TicketFieldObject => {
     custom_field_options,
     required_in_portal,
     relationship_target_type,
+    relationship_filter,
   } = field;
   return {
     id,
@@ -32,6 +33,7 @@ const formatField = (field: TicketField): TicketFieldObject => {
     options: custom_field_options,
     required: required_in_portal,
     relationship_target_type,
+    relationship_filter,
     error: null,
     value: getFieldValue(field),
   };
