@@ -240,6 +240,7 @@ export function NewRequestForm({
                 handleDueDateChange={handleDueDateChange}
                 organizationField={organizationField}
                 defaultOrganizationId={defaultOrganizationId}
+                visibleFields={visibleFields}
                 handleChange={handleChange}
               />
             );

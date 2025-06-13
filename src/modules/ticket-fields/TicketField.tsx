@@ -19,6 +19,7 @@ interface TicketFieldProps {
   organizationField?: Field | null;
   brandId: number;
   dueDateField?: Field;
+  visibleFields: Field[];
   handleDueDateChange?: (value: string) => void;
   handleChange: (field: Field, value: Field["value"]) => void;
 }
@@ -33,6 +34,7 @@ export const TicketField = ({
   organizationField,
   brandId,
   dueDateField,
+  visibleFields,
   handleDueDateChange,
   handleChange,
 }: TicketFieldProps) => {
@@ -133,6 +135,7 @@ export const TicketField = ({
               ? (organizationField?.value as string)
               : defaultOrganizationId
           }
+          visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
         />
       );
