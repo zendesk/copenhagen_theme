@@ -61,51 +61,53 @@ function getSiblingIndex(element) {
   return siblings.indexOf(element);
 }
 
-const accordionItems = Array.from(document.getElementsByClassName("accordion__item"));
-const accordionTitles = Array.from(document.getElementsByClassName("accordion__item-title"));
-const accordionContents = Array.from(document.getElementsByClassName("accordion__item-content"));
 
-accordionTitles.forEach((el, index) => {
-    const text = el.innerText;
-    const newButtonTag = document.createElement("button");
-    const parentIndex = getSiblingIndex(el.closest('.accordion'));
+document.addEventListener("DOMContentLoaded", function(event) {
+  const accordionItems = Array.from(document.getElementsByClassName("accordion__item"));
+  const accordionTitles = Array.from(document.getElementsByClassName("accordion__item-title"));
+  const accordionContents = Array.from(document.getElementsByClassName("accordion__item-content"));
 
-    for (let i = 0; el.attributes.length < i; i++) {
-        newButtonTag.setAttribute(el.attributes[i].name, el.attributes[i].value);
-    }
+  accordionTitles.forEach((el, index) => {
+      const text = el.innerText;
+      const newButtonTag = document.createElement("button");
+      const parentIndex = getSiblingIndex(el.closest('.accordion'));
 
-    newButtonTag.setAttribute('aria-expanded', false);
-    newButtonTag.setAttribute('aria-controls', `content-${parentIndex}-${index}`);
-    newButtonTag.innerText = text;
+      for (let i = 0; el.attributes.length < i; i++) {
+          newButtonTag.setAttribute(el.attributes[i].name, el.attributes[i].value);
+      }
 
-    el.replaceWith(newButtonTag);
+      newButtonTag.setAttribute('aria-expanded', false);
+      newButtonTag.setAttribute('aria-controls', `content-${parentIndex}-${index}`);
+      newButtonTag.innerText = text;
+
+      el.replaceWith(newButtonTag);
+  });
+
+  accordionContents.forEach((el, index) => {
+      const parentIndex = getSiblingIndex(el.closest('.accordion'));
+      el.setAttribute("id", `content-${parentIndex}-${index}`);
+  });
+
+
+  const accordionTitlesButtons = Array.from(document.getElementsByClassName("accordion__item-title"));
+
+  accordionTitlesButtons.forEach((el, index) => {
+    el.addEventListener('click', (event) => {
+      event.preventDefault();
+      
+      const isExpanded = event.currentTarget.attr('aria-expanded') === "true";
+
+      (event.currentTarget).classList.toggle('accordion__item-title--active');
+
+      slideToggle(
+        (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 500
+      );
+
+      (event.currentTarget).setAttribute('aria-expanded', !isExpanded);
+
+    })
+  });
 });
-
-accordionContents.forEach((el, index) => {
-    const parentIndex = getSiblingIndex(el.closest('.accordion'));
-    el.setAttribute("id", `content-${parentIndex}-${index}`);
-});
-
-
-const accordionTitlesButtons = Array.from(document.getElementsByClassName("accordion__item-title"));
-
-accordionTitlesButtons.forEach((el, index) => {
-  el.addEventListener('click', (event) => {
-    event.preventDefault();
-    
-    const isExpanded = event.currentTarget.attr('aria-expanded') === "true";
-
-    (event.currentTarget).classList.toggle('accordion__item-title--active');
-
-    slideToggle(
-      (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 500
-    );
-
-    (event.currentTarget).setAttribute('aria-expanded', !isExpanded);
-
-  })
-});
-
 
 /*
 
