@@ -8,10 +8,10 @@ import {
 import { Span } from "@zendeskgarden/react-typography";
 import { useWysiwyg } from "./useWysiwyg";
 import styled from "styled-components";
-import type { Field } from "../../data-types/Field";
+import type { TicketFieldObject } from "../../data-types/TicketFieldObject";
 
 interface TextAreaProps {
-  field: Field;
+  field: TicketFieldObject;
   hasWysiwyg: boolean;
   baseLocale: string;
   hasAtMentions: boolean;

@@ -8,12 +8,12 @@ import {
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types/Field";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import { useRef, useEffect } from "react";
 import { EmptyValueOption } from "./EmptyValueOption";
 
 interface DropDownProps {
-  field: Field;
+  field: TicketFieldObject;
   onChange: (value: string) => void;
 }
 

@@ -1,6 +1,6 @@
 import type { ChangeEvent } from "react";
 import { useState } from "react";
-import type { Field } from "../data-types/Field";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import {
   Label,
   Field as GardenField,
@@ -11,7 +11,7 @@ import {
 import { Span } from "@zendeskgarden/react-typography";
 
 interface CheckboxProps {
-  field: Field;
+  field: TicketFieldObject;
   onChange: (value: boolean) => void;
 }
 

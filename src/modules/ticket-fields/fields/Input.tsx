@@ -6,10 +6,10 @@ import {
   Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types/Field";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 
 interface InputProps {
-  field: Field;
+  field: TicketFieldObject;
   onChange?: (value: string) => void;
 }
 

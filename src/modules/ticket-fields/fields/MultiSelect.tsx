@@ -11,10 +11,10 @@ import {
 import { Span } from "@zendeskgarden/react-typography";
 import { useState, useRef, useEffect } from "react";
 import { useNestedOptions } from "./useNestedOptions";
-import type { Field } from "../data-types/Field";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 
 interface MultiSelectProps {
-  field: Field;
+  field: TicketFieldObject;
   onChange: (value: string[]) => void;
 }
 

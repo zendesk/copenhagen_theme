@@ -1,4 +1,4 @@
-import type { Field } from "./data-types/Field";
+import type { TicketFieldObject } from "./data-types/TicketFieldObject";
 import { Checkbox } from "./fields/Checkbox";
 import { CreditCard } from "./fields/CreditCard";
 import { DatePicker } from "./fields/DatePicker";
@@ -9,22 +9,25 @@ import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
 
-interface TicketFieldProps {
-  field: Field;
+interface RequestFormFieldProps {
+  field: TicketFieldObject;
   baseLocale: string;
   hasAtMentions: boolean;
   userRole: string;
   userId: number;
   defaultOrganizationId: string | null;
-  organizationField?: Field | null;
+  organizationField?: TicketFieldObject | null;
   brandId: number;
-  dueDateField?: Field;
-  visibleFields: Field[];
+  dueDateField?: TicketFieldObject;
+  visibleFields: TicketFieldObject[];
   handleDueDateChange?: (value: string) => void;
-  handleChange: (field: Field, value: Field["value"]) => void;
+  handleChange: (
+    field: TicketFieldObject,
+    value: TicketFieldObject["value"]
+  ) => void;
 }
 
-export const TicketField = ({
+export const RequestFormField = ({
   field,
   baseLocale,
   hasAtMentions,
@@ -37,7 +40,7 @@ export const TicketField = ({
   visibleFields,
   handleDueDateChange,
   handleChange,
-}: TicketFieldProps) => {
+}: RequestFormFieldProps) => {
   switch (field.type) {
     case "text":
     case "integer":

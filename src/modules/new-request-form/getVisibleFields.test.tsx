@@ -1,8 +1,8 @@
-import type { Field } from "../ticket-fields/data-types/Field";
+import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
 import type { EndUserCondition } from "./data-types";
 import { getVisibleFields } from "./getVisibleFields";
 
-const dropdownField: Field = {
+const dropdownField: TicketFieldObject = {
   id: 123,
   name: "request[custom_fields][123]",
   required: false,
@@ -17,7 +17,7 @@ const dropdownField: Field = {
   value: null,
 };
 
-const secondDropdownField: Field = {
+const secondDropdownField: TicketFieldObject = {
   id: 456,
   name: "request[custom_fields][456]",
   required: false,
@@ -32,7 +32,7 @@ const secondDropdownField: Field = {
   value: null,
 };
 
-const textField: Field = {
+const textField: TicketFieldObject = {
   id: 789,
   name: "request[custom_fields][789]",
   required: false,
@@ -44,7 +44,7 @@ const textField: Field = {
   value: null,
 };
 
-const integerField: Field = {
+const integerField: TicketFieldObject = {
   id: 101,
   name: "request[custom_fields][101]",
   required: false,
@@ -56,7 +56,7 @@ const integerField: Field = {
   value: null,
 };
 
-const defaultValueCheckboxField: Field = {
+const defaultValueCheckboxField: TicketFieldObject = {
   id: 102,
   name: "request[custom_fields][102]",
   required: false,
@@ -68,7 +68,7 @@ const defaultValueCheckboxField: Field = {
   value: null,
 };
 
-const unselectedCheckboxField: Field = {
+const unselectedCheckboxField: TicketFieldObject = {
   id: 103,
   name: "request[custom_fields][103]",
   required: false,
@@ -80,7 +80,7 @@ const unselectedCheckboxField: Field = {
   value: false,
 };
 
-const selectedCheckboxField: Field = {
+const selectedCheckboxField: TicketFieldObject = {
   id: 104,
   name: "request[custom_fields][104]",
   required: false,

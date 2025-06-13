@@ -9,18 +9,18 @@ import {
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
-  Field,
+  TicketFieldObject,
   FieldOption,
-  LookupRelationshipFieldFilter,
-} from "../data-types/Field";
+} from "../data-types/TicketFieldObject";
 import { Span } from "@zendeskgarden/react-typography";
 import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
+import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
-  fields: Field[] = []
+  fields: TicketFieldObject[] = []
 ) {
   const dynamicFilters = filter
     ? [
@@ -57,11 +57,11 @@ const EMPTY_OPTION = {
 };
 
 interface LookupFieldProps {
-  field: Field;
+  field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
   onChange: (value: string) => void;
-  visibleFields: Field[];
+  visibleFields: TicketFieldObject[];
 }
 
 export function LookupField({

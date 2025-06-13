@@ -5,14 +5,14 @@ import {
   MediaInput,
   Message,
 } from "@zendeskgarden/react-forms";
-import type { Field } from "../data-types/Field";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import { Span } from "@zendeskgarden/react-typography";
 import { useTranslation } from "react-i18next";
 import CreditCardIcon from "@zendeskgarden/svg-icons/src/16/credit-card-stroke.svg";
 import styled from "styled-components";
 
 interface CreditCardProps {
-  field: Field;
+  field: TicketFieldObject;
   onChange: (value: string) => void;
 }
 

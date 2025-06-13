@@ -9,21 +9,14 @@ export interface LookupRelationshipFieldFilter {
   any: FilterCondition[];
 }
 
-export interface Field {
+/**
+ * This interface represents the base structure of a ticket field,
+ * shared between TicketFieldObject and TicketField.
+ */
+export interface BaseTicketField {
   id: number;
-  name: string;
-  value: string | string[] | boolean | null;
-  error: string | null;
-  label: string;
-  required: boolean;
-  description: string;
   type: string;
-  options: FieldOption[];
+  description: string;
   relationship_target_type?: string;
   relationship_filter?: LookupRelationshipFieldFilter;
-}
-
-export interface FieldOption {
-  name: string;
-  value: string;
 }
