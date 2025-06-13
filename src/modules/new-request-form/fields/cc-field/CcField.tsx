@@ -15,10 +15,10 @@ import { Tooltip } from "@zendeskgarden/react-tooltips";
 import AlertWarningStroke from "@zendeskgarden/svg-icons/src/12/alert-warning-stroke.svg";
 import { useTranslation } from "react-i18next";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../../../ticket-fields/data-types/Field";
+import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
 
 interface CcFieldProps {
-  field: Field;
+  field: TicketFieldObject;
 }
 
 const EMAIL_REGEX =

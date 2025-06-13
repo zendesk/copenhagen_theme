@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
-import type { Organization } from "../../../../ticket-fields";
+import type { Organization } from "../../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import type { ServiceRequestResponse } from "../../../data-types/ServiceRequestResponse";

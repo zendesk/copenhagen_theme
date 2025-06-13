@@ -14,8 +14,9 @@ import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
 import { useTranslation } from "react-i18next";
 import { Paragraph } from "@zendeskgarden/react-typography";
-import { DropDown, Input, TextArea, TicketField } from "../ticket-fields";
-import type { Field, Organization } from "../ticket-fields";
+import { DropDown, Input, TextArea, RequestFormField } from "../ticket-fields";
+import type { Organization } from "../ticket-fields/data-types/Organization";
+import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -114,7 +115,7 @@ export function NewRequestForm({
       : null;
 
   const handleChange = useCallback(
-    (field: Field, value: Field["value"]) => {
+    (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
       setTicketFields(
         ticketFields.map((ticketField) =>
           ticketField.name === field.name
@@ -228,7 +229,7 @@ export function NewRequestForm({
             );
           } else {
             return (
-              <TicketField
+              <RequestFormField
                 key={field.name}
                 field={field}
                 baseLocale={baseLocale}

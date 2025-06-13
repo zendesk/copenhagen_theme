@@ -1,5 +1,7 @@
-import type { Field, LookupRelationshipFieldFilter } from "../data-types";
+import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import { buildAdvancedDynamicFilterParams } from "./LookupField";
+
 describe("buildAdvancedDynamicFilterParams", () => {
   it('returns correct dynamic filter value and matching field value for operator "matches"', () => {
     const filter: LookupRelationshipFieldFilter = {
@@ -13,7 +15,7 @@ describe("buildAdvancedDynamicFilterParams", () => {
       ],
       any: [],
     };
-    const fields: Field[] = [
+    const fields: TicketFieldObject[] = [
       {
         id: 12345,
         name: "Test Field 1",
@@ -58,7 +60,7 @@ describe("buildAdvancedDynamicFilterParams", () => {
         },
       ],
     };
-    const fields: Field[] = [
+    const fields: TicketFieldObject[] = [
       {
         id: 12345,
         name: "Test Field 1",
@@ -97,7 +99,7 @@ describe("buildAdvancedDynamicFilterParams", () => {
       all: [{ field: "someField", operator: "is", value: "foo" }],
       any: [{ field: "anotherField", operator: "is", value: "foo" }],
     };
-    const fields: Field[] = [
+    const fields: TicketFieldObject[] = [
       {
         id: 12345,
         name: "Test Field 1",
@@ -132,7 +134,7 @@ describe("buildAdvancedDynamicFilterParams", () => {
   });
 
   it("returns [undefined, undefined] when filter is undefined", () => {
-    const fields: Field[] = [
+    const fields: TicketFieldObject[] = [
       {
         id: 12345,
         name: "Test Field 1",

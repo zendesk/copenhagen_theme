@@ -1,10 +1,10 @@
-import type { Field } from "../../../../ticket-fields";
+import type { TicketFieldObject } from "../../../../ticket-fields/data-types/TicketFieldObject";
 import type { ServiceCatalogItem } from "../../../data-types/ServiceCatalogItem";
 
 export async function submitServiceItemRequest(
   serviceCatalogItem: ServiceCatalogItem,
-  requestFields: Field[],
-  associatedLookupField: Field,
+  requestFields: TicketFieldObject[],
+  associatedLookupField: TicketFieldObject,
   baseLocale: string
 ) {
   try {

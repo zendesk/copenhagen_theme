@@ -1,11 +1,11 @@
 import styled from "styled-components";
-import { TicketField } from "../../../../ticket-fields";
-import type { Field } from "../../../../ticket-fields";
+import { RequestFormField } from "../../../../ticket-fields";
 import { Button } from "@zendeskgarden/react-buttons";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
+import type { TicketFieldObject } from "../../../../ticket-fields/data-types/TicketFieldObject";
 
 const Form = styled.form`
   display: flex;
@@ -79,7 +79,7 @@ const LeftColumn = styled.div`
 `;
 
 interface ItemRequestFormProps {
-  requestFields: Field[];
+  requestFields: TicketFieldObject[];
   serviceCatalogItem: ServiceCatalogItem;
   baseLocale: string;
   hasAtMentions: boolean;
@@ -88,7 +88,7 @@ interface ItemRequestFormProps {
   brandId: number;
   defaultOrganizationId: string | null;
   handleChange: (
-    field: Field,
+    field: TicketFieldObject,
     value: string | string[] | boolean | null
   ) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -116,7 +116,7 @@ export function ItemRequestForm({
         />
         <FieldsContainer>
           {requestFields.map((field) => (
-            <TicketField
+            <RequestFormField
               key={field.id}
               field={field}
               baseLocale={baseLocale}

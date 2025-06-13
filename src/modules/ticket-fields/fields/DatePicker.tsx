@@ -7,12 +7,12 @@ import {
   Message,
 } from "@zendeskgarden/react-forms";
 import { Span } from "@zendeskgarden/react-typography";
-import type { Field } from "../data-types/Field";
+import type { TicketFieldObject } from "../data-types/TicketFieldObject";
 import type { ChangeEventHandler } from "react";
 import { useCallback, useState } from "react";
 
 interface DatePickerProps {
-  field: Field;
+  field: TicketFieldObject;
   locale: string;
   valueFormat: "date" | "dateTime";
   onChange: (value: string) => void;
