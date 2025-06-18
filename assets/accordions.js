@@ -89,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const parentIndex = getSiblingIndex(el.closest('.accordion'));
       el.setAttribute("id", `content-${parentIndex}-${index}`);
       el.style.display = "none";
+      e.closest('.accordion__item').classList.add('collapsed');
   });
 
 
@@ -101,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const isExpanded = event.currentTarget.getAttribute('aria-expanded') === "true";
 
       (event.currentTarget).classList.toggle('accordion__item-title--active');
+      (event.currentTarget).closest('.accordion__item').classList.toggle('collapsed');
       slideToggle(
         (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 500
       );

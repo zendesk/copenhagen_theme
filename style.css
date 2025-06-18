@@ -2637,6 +2637,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-bottom: 15px;
 }
 
+.accordion__item {
+  position: relative;
+}
 .accordion__item::before {
   content: " ";
   width: 0.25rem;
@@ -2649,13 +2652,16 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   background-size: 100% 300%;
   background-position: 50% 0%;
 }
+.accordion__item.collapsed::before {
+  background-position: 50% 100%;
+}
 .accordion__item-title {
   position: relative;
   display: flex;
   align-items: center;
   margin-left: 0.25rem;
   width: calc(100% - 0.25rem);
-  padding: 8px;
+  padding: 16px;
   font-size: 1.125rem;
   color: #0f172a;
   text-align: left;
@@ -2665,11 +2671,30 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   overflow-anchor: none;
   transition: height 500ms ease-in-out, background-color 500ms ease;
 }
+.accordion__item-title::before {
+  content: "\f067";
+  margin-right: 16px;
+  line-height: 1em;
+  width: 1em;
+  text-align: center;
+  font-family: "Font Awesome 6 Pro";
+  height: 1em;
+  transition: all 300ms;
+}
 .accordion__item-title--active {
   color: #0f172a;
   background-color: #f1f5f9;
   box-shadow: inset 0 calc(-1 * var(--q-accordion-border-width)) 0 var(--q-accordion-border-color);
 }
+.accordion__item-title--active::before {
+  transform: rotate(45deg);
+}
+.accordion__item-content {
+  padding: 16px;
+  padding-left: calc(16px + 1em + 16px + 4px);
+  background-color: #f1f5f9;
+}
+
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
 .attachments .attachment-item {
