@@ -1,6 +1,7 @@
 .accordion {
     &__item {
-
+        position: relative;
+        
         &::before {
             content: " ";
             width: .25rem;
@@ -19,8 +20,6 @@
                 background-position: 50% 100%;
             }
         }
-
-        position: relative;
 
         &-title {
             position: relative;
