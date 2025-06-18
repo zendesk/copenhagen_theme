@@ -32,9 +32,9 @@ function slideUp(element, duration = 400, callback) {
 }
 
 function slideDown(element, duration = 400, callback) {
-  element.style.transition = `height ${duration}ms ease-in-out, padding-top ${duration}ms ease-in-out, padding-bottom ${duration}ms ease-in-out`;
-  let paddingTop = getComputedStyle(element).paddingTop;
-  let paddingBottom = getComputedStyle(element).paddingBottom;
+  element.style.transition = `all ${duration}ms ease-in-out`;
+  var paddingTop = getComputedStyle(element).getPropertyValue("padding-top");
+  var paddingBottom = getComputedStyle(element).getPropertyValue("padding-bottom");
   element.style.overflow = 'hidden';
   element.style.display = '';
   element.style.height = '0';
