@@ -12,7 +12,7 @@ function slideToggle(element, duration = 400, callback) {
 
 
 function slideUp(element, duration = 400, callback) {
-  element.style.transition = `height ${duration}ms ease-in-out, padding-top ${duration}ms ease-in-out, padding-bottom ${duration}ms ease-in-out`;
+  element.style.transition = `all ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.height = `${element.offsetHeight}px`;
   setTimeout(() => {
@@ -33,17 +33,17 @@ function slideUp(element, duration = 400, callback) {
 
 function slideDown(element, duration = 400, callback) {
   element.style.transition = `all ${duration}ms ease-in-out`;
-  var paddingTop = getComputedStyle(element).getPropertyValue("padding-top");
-  var paddingBottom = getComputedStyle(element).getPropertyValue("padding-bottom");
+  const paddingTop = getComputedStyle(element).getPropertyValue("padding-top");
+  const paddingBottom = getComputedStyle(element).getPropertyValue("padding-bottom");
   element.style.overflow = 'hidden';
   element.style.display = '';
   element.style.height = '0';
   element.style.paddingTop = '0';
   element.style.paddingBottom = '0';
   setTimeout(() => {
-    element.style.height = `${element.scrollHeight}px`;
-    element.style.paddingBottom = `${paddingBottom}px`;
-    element.style.paddingTop = `${paddingTop}px`;
+    element.style.height = `${element.clientHeight}px`;
+    element.style.paddingBottom = `0px`;
+    element.style.paddingTop = `0px`;
     setTimeout(() => {
       element.style.height = ''; // Reset height
       element.style.padding = ''; // Reset padding
