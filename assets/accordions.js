@@ -12,45 +12,32 @@ function slideToggle(element, duration = 400, callback) {
 
 
 function slideUp(element, duration = 400, callback) {
-  element.style.transition = `all ${duration}ms ease-in-out`;
+  element.style.transition = `height ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.height = `${element.offsetHeight}px`;
   setTimeout(() => {
     element.style.height = '0';
-    element.style.paddingTop = '0';
-    element.style.paddingBottom = '0';
     setTimeout(() => {
       element.style.display = 'none';
       element.style.height = ''; // Reset height
       element.style.overflow = ''; // Reset overflow
       element.style.transition = ''; // Reset transition
-      element.style.paddingTop = '';
-      element.style.paddingBottom = ''; // Reset padding
       if (callback) callback();
     }, duration);
   }, 0);
 }
 
 function slideDown(element, duration = 400, callback) {
-  element.style.transition = `all ${duration}ms ease-in-out`;
-  const paddingTop = getComputedStyle(element).getPropertyValue("padding-top");
-  const paddingBottom = getComputedStyle(element).getPropertyValue("padding-bottom");
+  element.style.transition = `height ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.display = '';
   element.style.height = '0';
-  element.style.paddingTop = '0';
-  element.style.paddingBottom = '0';
   setTimeout(() => {
-    element.style.height = `${element.clientHeight}px`;
-    element.style.paddingBottom = `0px`;
-    element.style.paddingTop = `0px`;
+    element.style.height = `${element.scrollHeight}px`;
     setTimeout(() => {
       element.style.height = ''; // Reset height
-      element.style.padding = ''; // Reset padding
       element.style.overflow = ''; // Reset overflow
       element.style.transition = ''; // Reset transition
-      element.style.paddingBottom = '';
-      element.style.paddingTop = ''; // Reset padding
       if (callback) callback();
     }, duration);
   }, 0);
@@ -117,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       (event.currentTarget).classList.toggle('accordion__item-title--active');
       (event.currentTarget).closest('.accordion__item').classList.toggle('collapsed');
       slideToggle(
-        (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 5000
+        (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 300
       );
 
       (event.currentTarget).setAttribute('aria-expanded', !isExpanded);
