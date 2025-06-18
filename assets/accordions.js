@@ -12,7 +12,7 @@ function slideToggle(element, duration = 400, callback) {
 
 
 function slideUp(element, duration = 400, callback) {
-  element.style.transition = `height ${duration}ms ease-in-out`;
+  element.style.transition = `all ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.height = `${element.offsetHeight}px`;
   setTimeout(() => {
@@ -24,6 +24,8 @@ function slideUp(element, duration = 400, callback) {
       element.style.height = ''; // Reset height
       element.style.overflow = ''; // Reset overflow
       element.style.transition = ''; // Reset transition
+      element.style.paddingTop = '';
+      element.style.paddingBottom = '';
       if (callback) callback();
     }, duration);
   }, 0);
