@@ -2673,7 +2673,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   border: 0;
   border-radius: 0;
   overflow-anchor: none;
-  transition: height 300ms ease-in-out, background-color 300ms ease;
+  transition: background-color 300ms ease;
 }
 .accordion__item-title::before {
   content: "\f067";

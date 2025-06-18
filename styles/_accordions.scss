@@ -40,7 +40,7 @@
             border: 0;
             border-radius: 0;
             overflow-anchor: none;
-            transition: height 300ms ease-in-out, background-color 300ms ease;
+            transition: background-color 300ms ease;
 
             &::before {
                 content: "\f067";
