@@ -5,6 +5,7 @@
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: $padding;
 
   &-scroll {
     overflow: auto;
@@ -34,14 +35,14 @@
 
       border: 1px solid $q-border-weak;
 
-    [dir='ltr'] {
+    :dir(ltr) {
       td, th {
         border-left: 1px solid $q-border-weak;
       }
     }
 
-    [dir='rtl'] {
-      td, th {
+    :dir(rtl) {
+       td, th {
         border-right: 1px solid $q-border-weak;
       }
     }
@@ -64,7 +65,7 @@
   }
 
   tr {
-    border-bottom: 1px solid $low-contrast-border-color;
+    border-bottom: 1px solid $q-border-weak;
   }
 
 

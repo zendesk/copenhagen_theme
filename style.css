@@ -848,6 +848,7 @@ ul {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
+  margin-bottom: 32px;
 }
 .table-scroll {
   overflow: auto;
@@ -872,10 +873,10 @@ ul {
 .table--bordered {
   border: 1px solid #e2e8f0;
 }
-.table--bordered [dir=ltr] td, .table--bordered [dir=ltr] th {
+.table--bordered :dir(ltr) td, .table--bordered :dir(ltr) th {
   border-left: 1px solid #e2e8f0;
 }
-.table--bordered [dir=rtl] td, .table--bordered [dir=rtl] th {
+.table--bordered :dir(rtl) td, .table--bordered :dir(rtl) th {
   border-right: 1px solid #e2e8f0;
 }
 .table--striped th, .table--striped td, .table--striped thead th {
@@ -890,7 +891,7 @@ ul {
   background-color: #f1f5f9;
 }
 .table tr {
-  border-bottom: 1px solid #B0B0B0;
+  border-bottom: 1px solid #e2e8f0;
 }
 @media (min-width: 768px) {
   .table td, .table th {
