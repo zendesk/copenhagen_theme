@@ -1,4 +1,4 @@
-import type { ServiceCatalogItem } from "../../../data-types/ServiceCatalogItem";
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import ShapesIcon from "@zendeskgarden/svg-icons/src/16/shapes-fill.svg";
 import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";

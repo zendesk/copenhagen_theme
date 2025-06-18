@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
 import { ItemRequestForm } from "./ItemRequestForm";
-import type { Organization } from "../../../../ticket-fields/data-types/Organization";
+import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
-import type { ServiceRequestResponse } from "../../../data-types/ServiceRequestResponse";
-import { addFlashNotification } from "../../../../shared";
+import type { ServiceRequestResponse } from "../../data-types/ServiceRequestResponse";
+import { addFlashNotification } from "../../../shared";
 import { useTranslation } from "react-i18next";
-import { useNotify } from "../../../../shared/notifications/useNotify";
+import { useNotify } from "../../../shared/notifications/useNotify";
 
 const Container = styled.div`
   display: flex;

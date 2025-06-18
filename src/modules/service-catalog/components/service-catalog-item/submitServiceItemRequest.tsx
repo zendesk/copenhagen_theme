@@ -1,5 +1,5 @@
-import type { TicketFieldObject } from "../../../../ticket-fields/data-types/TicketFieldObject";
-import type { ServiceCatalogItem } from "../../../data-types/ServiceCatalogItem";
+import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 
 export async function submitServiceItemRequest(
   serviceCatalogItem: ServiceCatalogItem,

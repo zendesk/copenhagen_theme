@@ -1,16 +1,16 @@
 import { useEffect, useMemo, useState } from "react";
-import ServiceCatalogListItem from "../service-catalog-list-item/ServiceCatalogListItem";
-import type { ServiceCatalogItem } from "../../../data-types/ServiceCatalogItem";
+import ServiceCatalogListItem from "./ServiceCatalogListItem";
+import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { Col, Grid, Row } from "@zendeskgarden/react-grid";
 import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { CursorPagination } from "@zendeskgarden/react-pagination";
-import { LoadingState } from "../service-catalog-list-item/LoadingState";
-import { EmptyState } from "../service-catalog-list-item/EmptyState";
-import { Search } from "../service-catalog-list-item/Search";
+import { LoadingState } from "./LoadingState";
+import { EmptyState } from "./EmptyState";
+import { Search } from "./Search";
 import debounce from "lodash.debounce";
 import { useServiceCatalogItems } from "../../hooks/useServiceCatalogItems";
-import { useNotify } from "../../../../shared/notifications/useNotify";
+import { useNotify } from "../../../shared/notifications/useNotify";
 
 const StyledCol = styled(Col)`
   margin-bottom: ${(props) => props.theme.space.md};

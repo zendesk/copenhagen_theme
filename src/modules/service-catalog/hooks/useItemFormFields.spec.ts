@@ -1,5 +1,5 @@
 import { act, renderHook } from "@testing-library/react-hooks";
-import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
+import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
 import { useItemFormFields } from "./useItemFormFields";
 
 describe("useItemFormFields", () => {
