@@ -68,6 +68,15 @@
             padding: $gutter;
             padding-left: calc($gutter + 1em + $gutter + 4px);
             background-color: $q-bg-subtle;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            &:first-child {
+                margin-top: 0;
+            }
+            
         }
     }
 }
