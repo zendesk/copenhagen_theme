@@ -12,7 +12,7 @@ function slideToggle(element, duration = 400, callback) {
 
 
 function slideUp(element, duration = 400, callback) {
-  element.style.transition = `height ${duration}ms ease-in-out`;
+  element.style.transition = `height ${duration}ms ease-in-out, padding-top ${duration}ms ease-in-out, padding-bottom ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.height = `${element.offsetHeight}px`;
   setTimeout(() => {
@@ -32,7 +32,7 @@ function slideUp(element, duration = 400, callback) {
 }
 
 function slideDown(element, duration = 400, callback) {
-  element.style.transition = `height ${duration}ms ease-in-out`;
+  element.style.transition = `height ${duration}ms ease-in-out, padding-top ${duration}ms ease-in-out, padding-bottom ${duration}ms ease-in-out`;
   let paddingTop = getComputedStyle(element).paddingTop;
   let paddingBottom = getComputedStyle(element).paddingBottom;
   element.style.overflow = 'hidden';
