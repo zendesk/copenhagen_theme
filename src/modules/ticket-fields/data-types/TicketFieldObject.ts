@@ -12,10 +12,10 @@ export interface TicketFieldObject extends BaseTicketField {
   error: string | null;
   label: string;
   required: boolean;
-  options: FieldOption[];
+  options: TicketFieldOptionObject[];
 }
 
-export interface FieldOption {
+export interface TicketFieldOptionObject {
   name: string;
   value: string;
 }
