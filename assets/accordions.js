@@ -15,7 +15,6 @@ function slideUp(element, duration = 400, callback) {
   element.style.transition = `height ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.height = `${element.offsetHeight}px`;
-  element.getComputedStyle.getPropertyValue('padding-top') = `${element.offsetHeight}px`;
   setTimeout(() => {
     element.style.height = '0';
     element.style.paddingTop = '0';
