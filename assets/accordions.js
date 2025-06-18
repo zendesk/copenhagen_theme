@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       const parentIndex = getSiblingIndex(el.closest('.accordion'));
       el.setAttribute("id", `content-${parentIndex}-${index}`);
       el.style.display = "none";
-      e.closest('.accordion__item').classList.add('collapsed');
+      el.closest('.accordion__item').classList.add('collapsed');
   });
 
 
