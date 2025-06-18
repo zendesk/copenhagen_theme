@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       (event.currentTarget).classList.toggle('accordion__item-title--active');
       (event.currentTarget).closest('.accordion__item').classList.toggle('collapsed');
       slideToggle(
-        (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 300
+        (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 5000
       );
 
       (event.currentTarget).setAttribute('aria-expanded', !isExpanded);
