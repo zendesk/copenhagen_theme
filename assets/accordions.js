@@ -32,16 +32,20 @@ function slideUp(element, duration = 400, callback) {
 }
 
 function slideDown(element, duration = 400, callback) {
-  element.style.transition = `height ${duration}ms ease-in-out`;
+  element.style.transition = `all ${duration}ms ease-in-out`;
   element.style.overflow = 'hidden';
   element.style.display = '';
   element.style.height = '0';
+      element.style.paddingTop = '0';
+      element.style.paddingBottom = '0';
   setTimeout(() => {
     element.style.height = `${element.scrollHeight}px`;
     setTimeout(() => {
       element.style.height = ''; // Reset height
       element.style.overflow = ''; // Reset overflow
       element.style.transition = ''; // Reset transition
+      element.style.paddingTop = '';
+      element.style.paddingBottom = '';
       if (callback) callback();
     }, duration);
   }, 0);
