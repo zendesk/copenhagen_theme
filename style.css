@@ -2698,10 +2698,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding-left: calc(16px + 1em + 16px + 4px);
   background-color: #f1f5f9;
 }
-.accordion__item-content :last-child {
+.accordion__item-content *:last-child {
   margin-bottom: 0;
 }
-.accordion__item-content :first-child {
+.accordion__item-content *:first-child {
   margin-top: 0;
 }
 
