@@ -341,7 +341,7 @@ $secondary-shade: darken($background_color, 5%); //#f2f2f2 for the default backg
 
 // Text
 
-$text_color: map-get($q-brand-neutral, 800);
+$text_color: $q-text-strong;
 $brand_text_color: #ffffff;
 
 $hover-button-color: map-get($q-brand-primary, 700);

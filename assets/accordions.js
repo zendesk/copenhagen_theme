@@ -88,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
   accordionContents.forEach((el, index) => {
       const parentIndex = getSiblingIndex(el.closest('.accordion'));
       el.setAttribute("id", `content-${parentIndex}-${index}`);
+      el.style.display == "none";
   });
 
 
