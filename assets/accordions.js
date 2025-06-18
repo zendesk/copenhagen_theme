@@ -2,56 +2,104 @@
 
 // sliding functionality
 
-function slideToggle(element, duration = 400, callback) {
-    if (element.style.display === 'none') {
-      slideDown(element, duration, callback)
+
+function slideToggle(element, duration = 300) {
+    const computedStyle = window.getComputedStyle(element);
+    const originalPaddingTop = computedStyle.paddingTop;
+    const originalPaddingBottom = computedStyle.paddingBottom;
+
+    if (element.style.display === "none" || computedStyle.display === "none") {
+        element.style.display = "block";
+        element.style.height = "0px";
+        element.style.overflow = "hidden";
+        element.style.paddingTop = "0px";
+        element.style.paddingBottom = "0px";
+
+        let targetHeight = element.scrollHeight;
+
+        element.animate([
+            { height: "0px", paddingTop: "0px", paddingBottom: "0px" },
+            { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom }
+        ], { duration, easing: "ease-in-out" });
+
+        setTimeout(() => {
+            element.style.height = "";
+            element.style.paddingTop = originalPaddingTop;
+            element.style.paddingBottom = originalPaddingBottom;
+        }, duration);
     } else {
-        slideUp(element, duration, callback)
+        let targetHeight = element.scrollHeight;
+        element.style.height = `${targetHeight}px`;
+        element.style.overflow = "hidden";
+
+        element.animate([
+            { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom },
+            { height: "0px", paddingTop: "0px", paddingBottom: "0px" }
+        ], { duration, easing: "ease-in-out" });
+
+        setTimeout(() => {
+            element.style.display = "none";
+            element.style.height = "";
+            element.style.paddingTop = "";
+            element.style.paddingBottom = "";
+        }, duration);
     }
 }
 
 
-function slideUp(element, duration = 400, callback) {
-  element.style.transition = `all ${duration}ms ease-in-out`;
-  element.style.overflow = 'hidden';
-  element.style.height = `${element.offsetHeight}px`;
-  setTimeout(() => {
-    element.style.height = '0';
-    element.style.paddingTop = '0';
-    element.style.paddingBottom = '0';
-    setTimeout(() => {
-      element.style.display = 'none';
-      element.style.height = ''; // Reset height
-      element.style.overflow = ''; // Reset overflow
-      element.style.transition = ''; // Reset transition
-      element.style.paddingTop = '';
-      element.style.paddingBottom = '';
-      if (callback) callback();
-    }, duration);
-  }, 0);
-}
 
-function slideDown(element, duration = 400, callback) {
-  element.style.transition = `all ${duration}ms ease-in-out`;
-  element.style.overflow = 'hidden';
-  element.style.display = '';
-  element.style.height = '0';
-      element.style.paddingTop = '0';
-      element.style.paddingBottom = '0';
-  setTimeout(() => {
-    element.style.height = `${element.scrollHeight}px`;
-    element.style.paddingTop = '16px';
-    element.style.paddingBottom = '16px';
-    setTimeout(() => {
-      element.style.height = ''; // Reset height
-      element.style.overflow = ''; // Reset overflow
-      element.style.transition = ''; // Reset transition
-      element.style.paddingTop = '';
-      element.style.paddingBottom = '';
-      if (callback) callback();
-    }, duration);
-  }, 0);
-}
+
+
+//     function slideToggle(element, duration = 400, callback) {
+//         if (element.style.display === 'none') {
+//           slideDown(element, duration, callback)
+//         } else {
+//             slideUp(element, duration, callback)
+//         }
+//     }
+//     
+//     
+//     function slideUp(element, duration = 400, callback) {
+//       element.style.transition = `all ${duration}ms ease-in-out`;
+//       element.style.overflow = 'hidden';
+//       element.style.height = `${element.offsetHeight}px`;
+//       setTimeout(() => {
+//         element.style.height = '0';
+//         element.style.paddingTop = '0';
+//         element.style.paddingBottom = '0';
+//         setTimeout(() => {
+//           element.style.display = 'none';
+//           element.style.height = ''; // Reset height
+//           element.style.overflow = ''; // Reset overflow
+//           element.style.transition = ''; // Reset transition
+//           element.style.paddingTop = '';
+//           element.style.paddingBottom = '';
+//           if (callback) callback();
+//         }, duration);
+//       }, 0);
+//     }
+//     
+//     function slideDown(element, duration = 400, callback) {
+//       element.style.transition = `all ${duration}ms ease-in-out`;
+//       element.style.overflow = 'hidden';
+//       element.style.display = '';
+//       element.style.height = '0';
+//           element.style.paddingTop = '0';
+//           element.style.paddingBottom = '0';
+//       setTimeout(() => {
+//         element.style.height = `${element.scrollHeight}px`;
+//         element.style.paddingTop = '16px';
+//         element.style.paddingBottom = '16px';
+//         setTimeout(() => {
+//           element.style.height = ''; // Reset height
+//           element.style.overflow = ''; // Reset overflow
+//           element.style.transition = ''; // Reset transition
+//           element.style.paddingTop = '';
+//           element.style.paddingBottom = '';
+//           if (callback) callback();
+//         }, duration);
+//       }, 0);
+//     }
 
 
 
