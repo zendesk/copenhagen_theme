@@ -2718,10 +2718,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .tabs-menu .tabs-link {
   display: block;
-  padding: 16px;
+  padding: 8px 16px;
   font-size: 0.9375em;
+  text-decoration: none;
   font-weight: inherit;
-  color: #364255;
+  color: #4d5a6b;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2729,17 +2730,18 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   outline: none;
   cursor: pointer;
   margin-bottom: -1px;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 2px solid #e2e8f0;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  background-color: #f1f5f9;
+  font-weight: 600;
 }
 .tabs-menu .tabs-link:hover {
-  border-color: #ffffff;
-  color: #0f172a;
+  border-color: #d2dae5;
+  color: #364255;
 }
 .tabs-menu .tabs-link.is-active {
-  background-color: #ffffff;
+  border-color: #6371bb;
+  color: #0f172a;
 }
 .tabs .tab {
   display: block;

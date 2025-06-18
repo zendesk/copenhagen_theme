@@ -13,10 +13,11 @@
         .tabs-link {
 
             display: block;
-            padding: $gutter;
+            padding: calc($gutter/2) $gutter;
             font-size: $font-size-navigation;
+            text-decoration: none;
             font-weight: inherit;
-            color: $q-text-medium;
+            color: $q-text-weak;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 
             appearance: none;
@@ -25,20 +26,20 @@
             cursor: pointer;
             
             margin-bottom: calc(-1 * 1px);
-            border: 1px solid rgba(0, 0, 0, 0);
+            border-bottom: 2px solid $q-border-weak;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
+            font-weight: 600;
             
-            background-color: $q-bg-subtle;
-
             &:hover {
-                border-color: $q-bg-neutral;
-                color: $q-text-strong;
+                border-color: $q-border-medium;
+                color: $q-text-medium;
             }
             
 
             &.is-active {
-                background-color: $q-bg-neutral;
+                border-color: $q-border-brand-strong;
+                color: $q-text-strong;
             }
 
         }
