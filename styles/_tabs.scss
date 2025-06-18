@@ -1,0 +1,203 @@
+.tabs {
+
+    margin-bottom: $padding;
+
+    &-menu {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        justify-content: flex-start;
+
+        .tabs-link {
+
+            display: block;
+            padding: $gutter;
+            font-size: $font-size-navigation;
+            font-weight: inherit;
+            color: $q-text-medium;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+
+            appearance: none;
+            outline: none;
+                    
+            cursor: pointer;
+            
+            margin-bottom: calc(-1 * 1px);
+            border: 1px solid rgba(0, 0, 0, 0);
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            
+            background-color: $q-bg-subtle;
+
+            &:hover {
+                border-color: $q-bg-neutral;
+                color: $q-text-strong;
+            }
+            
+
+            &.is-active {
+                background-color: $q-bg-neutral;
+            }
+
+        }
+    }
+
+    .tab {
+        display: block;
+        background-color: #FFFFFF;
+        padding: $padding;
+
+        &.is-hidden {
+            display: none;
+        }
+
+        *:first-child {
+            margin-top: 0;
+        }
+
+        *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////
+
+//   .tabs {
+//     margin-bottom: calc(var(--line-height-computed));
+//   }
+//   
+//   .tab {
+//     display: block;
+//     padding: 30px;
+//     margin-top: -1px;
+//     border: 1px solid #ddd;
+//     border-bottom-right-radius: $border_radius_base;
+//     border-bottom-left-radius: $border_radius_base;
+//   }
+//   
+//   .tab p:last-child {
+//     margin-bottom: 0;
+//   }
+//   
+//   @media (min-width: 576px) {
+//     .tab {
+//       border-top-left-radius: $border_radius_base;
+//       border-top-right-radius: $border_radius_base;
+//     }
+//   }
+//   
+//   [dir='ltr'] .tab:nth-child(2) {
+//     border-top-left-radius: 0;
+//   }
+//   
+//   [dir='rtl'] .tab:nth-child(2) {
+//     border-top-right-radius: 0;
+//   }
+//   
+//   .tabs-link {
+//     display: block;
+//     padding: 8px 30px;
+//     margin: 0;
+//     font-weight: var(--strong-font-weight);
+//     color: $text_color;
+//     cursor: pointer;
+//     border-color: transparent;
+//     border-style: solid;
+//     border-width: 1px 1px 0;
+//   }
+//   
+//   .tabs-link:hover {
+//     color: $brand_primary;
+//   }
+//   
+//   @media (max-width: 575px) {
+//     .tabs-link {
+//       border-top-color: #ddd;
+//       border-right-color: #ddd;
+//       border-left-color: #ddd;
+//     }
+//   
+//     .tabs-link:first-child {
+//       border-top-left-radius: $border_radius_base;
+//       border-top-right-radius: $border_radius_base;
+//     }
+//   }
+//   
+//   @media (min-width: 576px) {
+//     .tabs-link {
+//       display: inline-block;
+//     }
+//   }
+//   
+//   .is-hidden {
+//     display: none;
+//   }
+//   
+//   .tabs-link.is-active {
+//     color: $brand_primary;
+//     cursor: pointer;
+//     border-color: #ddd;
+//   }
+//   
+//   .tabs-link.is-active:hover {
+//     color: $brand_primary;
+//     cursor: default;
+//   }
+//   
+//   @media (min-width: 576px) {
+//     .tabs-link.is-active {
+//       border-bottom: 1px solid #fff;
+//       border-top-left-radius: $border_radius_base;
+//       border-top-right-radius: $border_radius_base;
+//     }
+//   }
+//   
+//   .tabs--colored-1 .tab {
+//     background-color: var(--gray-lightest) !important;
+//   }
+//   
+//   .tabs--colored-1 .tabs-link.is-active {
+//     background-color: var(--gray-lightest);
+//     border-bottom-color: var(--gray-lightest);
+//   }
+//   
+//   .tabs--colored-2 .tabs-link:hover {
+//     color: $brand_primary;
+//   }
+//   
+//   .tabs--colored-2 .tabs-link.is-active {
+//     color: #fff;
+//     background-color: $brand_primary;
+//     border-color: $brand_primary;
+//   }
+//   
+//   .tabs--colored-2 .tabs-link.is-active:hover {
+//     color: #fff;
+//   }
+//   
+//   .tabs--colored-2 .tab {
+//     background-color: var(--gray-lightest) !important;
+//   }

@@ -2705,6 +2705,57 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   margin-top: 0;
 }
 
+.tabs {
+  margin-bottom: 32px;
+}
+.tabs-menu {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+  justify-content: flex-start;
+}
+.tabs-menu .tabs-link {
+  display: block;
+  padding: 16px;
+  font-size: 0.9375em;
+  font-weight: inherit;
+  color: #364255;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: -1px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: #f1f5f9;
+}
+.tabs-menu .tabs-link:hover {
+  border-color: #ffffff;
+  color: #0f172a;
+}
+.tabs-menu .tabs-link.is-active {
+  background-color: #ffffff;
+}
+.tabs .tab {
+  display: block;
+  background-color: #FFFFFF;
+  padding: 32px;
+}
+.tabs .tab.is-hidden {
+  display: none;
+}
+.tabs .tab *:first-child {
+  margin-top: 0;
+}
+.tabs .tab *:last-child {
+  margin-bottom: 0;
+}
+
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
 .attachments .attachment-item {
