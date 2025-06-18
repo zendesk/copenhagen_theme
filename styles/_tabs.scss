@@ -70,20 +70,17 @@
             color: $q-text-weaker;
             background: $q-bg-subtle;
             margin-right: 1px;
+            border-bottom: none;
             
             &:hover {
                 background-color: $q-bg-weaker;
                 color: $q-text-weak;
             }
             
-
             &.is-active {
                 background-color: $q-bg-brand-strong;
                 color: $q-text-onbrand-strong;
-                border-color: $q-bg-brand-strong;
-
             }
-
         }
     }
 }
