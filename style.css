@@ -2557,6 +2557,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: flex;
   margin-top: 16px;
 }
+@media (min-width: 768px) {
+  .article-votes-controls {
+    margin-top: 0;
+  }
+}
 .article-votes-question {
   margin-bottom: 0;
 }

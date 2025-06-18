@@ -220,6 +220,9 @@
     &-controls {
       display: flex;
       margin-top: $gutter;
+      @include tablet {
+        margin-top: 0;
+      }
     }
 
     &-question { // Explicit values for rendering h2 like a span for accessibility.
