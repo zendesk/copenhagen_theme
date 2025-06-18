@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".image-with-lightbox").forEach(image => {
     image.addEventListener("click", event => {
       event.preventDefault();
-      const lightbox = basicLightbox.create(`<img src="${image.href}" alt="${image.alt}">`);
+      const img = image.querySelector("img");
+      const lightbox = basicLightbox.create(`<img src="${image.href}" alt="${img.alt}">`);
       lightbox.show();
     });
   });
