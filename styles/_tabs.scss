@@ -6,7 +6,7 @@
         display: flex;
         flex-wrap: wrap;
         padding-left: 0;
-        margin-bottom: 0;
+        margin-bottom: $gutter;
         list-style: none;
         justify-content: flex-start;
 
@@ -16,8 +16,7 @@
             padding: calc($gutter/2) $gutter;
             font-size: $font-size-navigation;
             text-decoration: none;
-            font-weight: inherit;
-            color: $q-text-weak;
+            color: $q-text-weaker;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
 
             appearance: none;
@@ -33,7 +32,7 @@
             
             &:hover {
                 border-color: $q-border-medium;
-                color: $q-text-medium;
+                color: $q-text-weak;
             }
             
 
@@ -48,7 +47,7 @@
     .tab {
         display: block;
         background-color: #FFFFFF;
-        padding: $padding;
+        padding: 0;
 
         &.is-hidden {
             display: none;
@@ -57,17 +56,37 @@
         *:first-child {
             margin-top: 0;
         }
-
-        *:last-child {
-            margin-bottom: 0;
-        }
     }
 }
 
 
 
+.tabs--colored-2 {
 
+    &-menu {
 
+        .tabs-link {
+
+            color: $q-text-weaker;
+            background: $q-bg-subtle;
+            margin-right: 1px;
+            
+            &:hover {
+                background-color: $q-bg-weaker;
+                color: $q-text-weak;
+            }
+            
+
+            &.is-active {
+                background-color: $q-bg-brand-strong;
+                color: $q-text-onbrand-strong;
+                border-color: $q-bg-brand-strong;
+
+            }
+
+        }
+    }
+}
 
 
 

@@ -2712,7 +2712,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
-  margin-bottom: 0;
+  margin-bottom: 16px;
   list-style: none;
   justify-content: flex-start;
 }
@@ -2721,8 +2721,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 8px 16px;
   font-size: 0.9375em;
   text-decoration: none;
-  font-weight: inherit;
-  color: #4d5a6b;
+  color: #68768b;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -2737,7 +2736,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .tabs-menu .tabs-link:hover {
   border-color: #d2dae5;
-  color: #364255;
+  color: #4d5a6b;
 }
 .tabs-menu .tabs-link.is-active {
   border-color: #6371bb;
@@ -2746,7 +2745,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .tabs .tab {
   display: block;
   background-color: #FFFFFF;
-  padding: 32px;
+  padding: 0;
 }
 .tabs .tab.is-hidden {
   display: none;
@@ -2754,8 +2753,20 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .tabs .tab *:first-child {
   margin-top: 0;
 }
-.tabs .tab *:last-child {
-  margin-bottom: 0;
+
+.tabs--colored-2-menu .tabs-link {
+  color: #68768b;
+  background: #f1f5f9;
+  margin-right: 1px;
+}
+.tabs--colored-2-menu .tabs-link:hover {
+  background-color: #e2e8f0;
+  color: #4d5a6b;
+}
+.tabs--colored-2-menu .tabs-link.is-active {
+  background-color: #515ba5;
+  color: #ffffff;
+  border-color: #515ba5;
 }
 
 /***** Attachments *****/
