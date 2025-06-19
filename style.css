@@ -2879,9 +2879,9 @@ img.image-with-border {
 
 [dir=ltr] .list-bullet > li::before {
   position: absolute;
-  top: -2px;
+  top: 0;
+  left: 0;
   font-family: "Font Awesome 6 Pro";
-  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   color: #3a3879;
