@@ -1,3 +1,10 @@
+# [4.6.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.1...v4.6.0-beta.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* handle relashionship_filter in service catalog form ([aecf77e](https://github.com/zendesk/copenhagen_theme/commit/aecf77e95ddea95b09ed9ee13da0837547bc76d3))
+
 # [4.6.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.5.0...v4.6.0-beta.1) (2025-06-13)
 
 
