@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
-import type { TicketField } from "../data-types/TicketField";
-import type { Field } from "../../ticket-fields/data-types/Field";
+import type { TicketField } from "../../ticket-fields/data-types/TicketField";
+import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
 
 const getFieldValue = (field: TicketField) => {
@@ -13,7 +13,7 @@ const getFieldValue = (field: TicketField) => {
   return null;
 };
 
-const formatField = (field: TicketField): Field => {
+const formatField = (field: TicketField): TicketFieldObject => {
   const {
     id,
     type,
@@ -22,6 +22,7 @@ const formatField = (field: TicketField): Field => {
     custom_field_options,
     required_in_portal,
     relationship_target_type,
+    relationship_filter,
   } = field;
   return {
     id,
@@ -32,6 +33,7 @@ const formatField = (field: TicketField): Field => {
     options: custom_field_options,
     required: required_in_portal,
     relationship_target_type,
+    relationship_filter,
     error: null,
     value: getFieldValue(field),
   };
@@ -48,8 +50,8 @@ const isAssociatedLookupField = (field: TicketField) => {
 };
 
 interface FetchTicketFieldsResult {
-  requestFields: Field[];
-  associatedLookupField: Field | null;
+  requestFields: TicketFieldObject[];
+  associatedLookupField: TicketFieldObject | null;
 }
 
 const fetchTicketFields = async (
@@ -77,7 +79,7 @@ const fetchTicketFields = async (
 
   const ids = formData.ticket_form.ticket_field_ids;
   const ticketFieldsData = fieldsData.ticket_fields;
-  let associatedLookupField: Field | null = null;
+  let associatedLookupField: TicketFieldObject | null = null;
 
   const requestFields = ids
     .map((id: number) => {
@@ -113,9 +115,9 @@ export function useItemFormFields(
   serviceCatalogItem: ServiceCatalogItem | undefined,
   baseLocale: string
 ) {
-  const [requestFields, setRequestFields] = useState<Field[]>([]);
+  const [requestFields, setRequestFields] = useState<TicketFieldObject[]>([]);
   const [associatedLookupField, setAssociatedLookupField] =
-    useState<Field | null>();
+    useState<TicketFieldObject | null>();
   const [error, setError] = useState<unknown>(null);
   useEffect(() => {
     const fetchAndSetFields = async () => {
@@ -135,7 +137,7 @@ export function useItemFormFields(
   }, [baseLocale, serviceCatalogItem]);
 
   const handleChange = useCallback(
-    (field: Field, value: Field["value"]) => {
+    (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
       setRequestFields(
         requestFields.map((ticketField) =>
           ticketField.name === field.name

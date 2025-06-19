@@ -1,6 +1,6 @@
 import { render } from "react-dom";
 
-import { ServiceCatalogList } from "./ServiceCatalogList";
+import { ServiceCatalogList } from "./components/service-catalog-list/ServiceCatalogList";
 import {
   createTheme,
   ThemeProviders,

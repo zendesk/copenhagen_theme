@@ -9,18 +9,18 @@ import {
 } from "@zendeskgarden/react-dropdowns.next";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
-  Field,
-  FieldOption,
-  LookupRelationshipFieldFilter,
-} from "../data-types/Field";
+  TicketFieldObject,
+  TicketFieldOptionObject,
+} from "../data-types/TicketFieldObject";
 import { Span } from "@zendeskgarden/react-typography";
 import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
+import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
-  fields: Field[] = []
+  fields: TicketFieldObject[] = []
 ) {
   const dynamicFilters = filter
     ? [
@@ -57,11 +57,11 @@ const EMPTY_OPTION = {
 };
 
 interface LookupFieldProps {
-  field: Field;
+  field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
   onChange: (value: string) => void;
-  visibleFields: Field[];
+  visibleFields: TicketFieldObject[];
 }
 
 export function LookupField({
@@ -82,10 +82,9 @@ export function LookupField({
     relationship_target_type,
   } = field;
 
-  const [options, setOptions] = useState<FieldOption[]>([]);
-  const [selectedOption, setSelectedOption] = useState<FieldOption | null>(
-    null
-  );
+  const [options, setOptions] = useState<TicketFieldOptionObject[]>([]);
+  const [selectedOption, setSelectedOption] =
+    useState<TicketFieldOptionObject | null>(null);
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const { t } = useTranslation();
@@ -168,7 +167,8 @@ export function LookupField({
           );
           if (selectedOption) {
             fetchedOptions = fetchedOptions.filter(
-              (option: FieldOption) => option.value !== selectedOption.value
+              (option: TicketFieldOptionObject) =>
+                option.value !== selectedOption.value
             );
             fetchedOptions = [selectedOption, ...fetchedOptions];
           }

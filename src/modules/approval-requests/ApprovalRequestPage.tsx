@@ -6,7 +6,7 @@ import ApprovalRequestDetails from "./components/approval-request/ApprovalReques
 import ApprovalTicketDetails from "./components/approval-request/ApprovalTicketDetails";
 import ApproverActions from "./components/approval-request/ApproverActions";
 import { useApprovalRequest } from "./hooks/useApprovalRequest";
-import type { Organization } from "../ticket-fields";
+import type { Organization } from "../ticket-fields/data-types/Organization";
 import ApprovalRequestBreadcrumbs from "./components/approval-request/ApprovalRequestBreadcrumbs";
 
 const Container = styled.div`

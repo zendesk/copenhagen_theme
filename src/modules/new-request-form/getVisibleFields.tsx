@@ -1,4 +1,4 @@
-import type { Field } from "../ticket-fields/data-types/Field";
+import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
 import type { EndUserCondition } from "./data-types";
 
 function getFieldConditions(
@@ -11,7 +11,7 @@ function getFieldConditions(
 }
 
 function isMatchingValue(
-  fieldValue: Field["value"],
+  fieldValue: TicketFieldObject["value"],
   condition: EndUserCondition
 ): boolean {
   if (condition.parent_field_type === "checkbox" && condition.value === false) {
@@ -24,7 +24,7 @@ function isMatchingValue(
 function getAppliedConditions(
   fieldConditions: EndUserCondition[],
   allConditions: EndUserCondition[],
-  fields: Field[]
+  fields: TicketFieldObject[]
 ): EndUserCondition[] {
   return fieldConditions.filter((condition) => {
     const parentField = fields.find(
@@ -52,14 +52,14 @@ function getAppliedConditions(
 }
 
 export function getVisibleFields(
-  fields: Field[],
+  fields: TicketFieldObject[],
   endUserConditions: EndUserCondition[]
-): Field[] {
+): TicketFieldObject[] {
   if (endUserConditions.length === 0) {
     return fields;
   }
 
-  return fields.reduce((acc: Field[], field) => {
+  return fields.reduce((acc: TicketFieldObject[], field) => {
     const fieldConditions = getFieldConditions(field.id, endUserConditions);
 
     if (fieldConditions.length === 0) {

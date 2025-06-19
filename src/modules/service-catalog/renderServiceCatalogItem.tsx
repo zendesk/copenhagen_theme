@@ -1,8 +1,8 @@
 import { render } from "react-dom";
 
-import { ServiceCatalogItemPage } from "./ServiceCatalogItemPage";
+import { ServiceCatalogItem } from "./components/service-catalog-item/ServiceCatalogItem";
 
-import type { ServiceCatalogItemPageProps } from "./ServiceCatalogItemPage";
+import type { ServiceCatalogItemProps } from "./components/service-catalog-item/ServiceCatalogItem";
 import {
   createTheme,
   ThemeProviders,
@@ -15,7 +15,7 @@ import { ErrorBoundary } from "../shared/error-boundary/ErrorBoundary";
 export async function renderServiceCatalogItem(
   container: HTMLElement,
   settings: Settings,
-  props: ServiceCatalogItemPageProps
+  props: ServiceCatalogItemProps
 ) {
   const { baseLocale, helpCenterPath } = props;
   initI18next(baseLocale);
@@ -27,7 +27,7 @@ export async function renderServiceCatalogItem(
   render(
     <ThemeProviders theme={createTheme(settings)}>
       <ErrorBoundary helpCenterPath={helpCenterPath}>
-        <ServiceCatalogItemPage {...props} />
+        <ServiceCatalogItem {...props} />
       </ErrorBoundary>
     </ThemeProviders>,
     container

@@ -2,7 +2,7 @@ import { memo } from "react";
 import { Breadcrumb } from "@zendeskgarden/react-breadcrumbs";
 import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
-import type { Organization } from "../../../ticket-fields";
+import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 

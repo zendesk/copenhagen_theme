@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { type IOptionProps } from "@zendeskgarden/react-dropdowns.next";
-import type { FieldOption } from "../data-types/Field";
+import type { TicketFieldOptionObject } from "../data-types/TicketFieldObject";
 
 interface OptionProps {
   value: string;
@@ -120,7 +120,7 @@ function buildSubGroupOptions(groupNames: string[]): SubGroup {
  * @returns nested options
  */
 function buildNestedOptions(
-  options: FieldOption[],
+  options: TicketFieldOptionObject[],
   hasEmptyOption: boolean
 ): NestedOptions {
   const result: NestedOptions = {
@@ -209,7 +209,7 @@ function getInitialGroup(nestedOptions: NestedOptions): RootGroup {
 }
 
 interface UseNestedOptionsProps {
-  options: FieldOption[];
+  options: TicketFieldOptionObject[];
   hasEmptyOption: boolean;
 }
 
