@@ -2848,6 +2848,7 @@ img.image-with-border {
 
 [dir=ltr] .list-colored, [dir=ltr] .list-bullet {
   padding-left: 0 !important;
+  list-style-type: none;
 }
 
 .list-colored, .list-bullet {
@@ -2855,8 +2856,8 @@ img.image-with-border {
   counter-reset: list;
 }
 .list-colored > li, .list-bullet > li {
-  padding-left: calc(var(--padding-base-horizontal) + 30px);
-  margin-bottom: calc(var(--line-height-computed) / 2);
+  padding-left: 32px;
+  margin-bottom: 16px;
   position: relative;
   counter-increment: list;
 }
@@ -2864,10 +2865,11 @@ img.image-with-border {
 [dir=ltr] .list-colored > li::before {
   position: absolute;
   top: 0px;
+  left: 0;
   z-index: 1;
   font-weight: 600;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   font-size: 1em;
   line-height: inherit;
   color: #3a3879;

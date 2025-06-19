@@ -1,13 +1,14 @@
 [dir='ltr'] .list-colored, [dir='ltr'] .list-bullet {
     padding-left: 0 !important;
+    list-style-type: none;
 }
 
 .list-colored, .list-bullet {
     list-style-type: none;
     counter-reset: list;
     > li {
-        padding-left: calc(var(--padding-base-horizontal) + 30px);
-        margin-bottom: calc(var(--line-height-computed) / 2);
+        padding-left: $padding;
+        margin-bottom: $gutter;
         position: relative;
         counter-increment: list;
     }
@@ -19,10 +20,11 @@
         &::before {
             position: absolute;
             top: 0px;
+            left: 0;
             z-index: 1;
             font-weight: 600;
-            width: 25px;
-            height: 25px;
+            width: calc($padding - 8px);
+            height: calc($padding - 8px);
             font-size: 1em;
             line-height: inherit;
             color: $q-text-brand-strong;
