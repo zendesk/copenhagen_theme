@@ -1,0 +1,51 @@
+[dir='ltr'] .list-colored, [dir='ltr'] .list-bullet {
+    padding-left: 0 !important;
+}
+
+.list-colored, .list-bullet {
+    list-style-type: none;
+    counter-reset: list;
+    > li {
+        padding-left: calc(var(--padding-base-horizontal) + 30px);
+        margin-bottom: calc(var(--line-height-computed) / 2);
+        position: relative;
+        counter-increment: list;
+    }
+}
+
+[dir='ltr'] .list-colored {
+    > li {
+
+        &::before {
+            position: absolute;
+            top: 0px;
+            z-index: 1;
+            font-weight: 600;
+            width: 25px;
+            height: 25px;
+            font-size: 1em;
+            line-height: inherit;
+            color: $q-text-brand-strong;
+            text-align: right;
+            content: counter(list) ".";
+        }
+    }
+
+}
+
+[dir='ltr'] .list-bullet {
+    > li {
+
+        &::before {
+            position: absolute;
+            top: -2px;
+            font-family: "Font Awesome 6 Pro";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 400;
+            color: $q-text-brand-strong;
+            content: '\f058';
+        }
+    }
+
+}

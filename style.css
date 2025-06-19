@@ -2798,6 +2798,16 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   color: #ffffff;
 }
 
+img.image-with-shadow {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+img.image-with-border {
+  padding: 8px;
+  border: 1px solid #a0adc0;
+  border-radius: 4px;
+}
+
 /***** Attachments *****/
 /* Styles attachments inside posts, articles and comments */
 .attachments .attachment-item {

@@ -1,0 +1,9 @@
+img.image-with-shadow {
+    box-shadow: 2px 2px 8px rgb(0 0 0 / 25%);
+}
+
+img.image-with-border {
+    padding: calc($gutter / 2);
+    border: 1px solid $q-border-strong;
+    border-radius: 4px;
+}
