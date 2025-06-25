@@ -5,24 +5,23 @@ section.hero {
   width: 100%;
 
 
-  &-article, &-search-results, &-category, &-request, &-section {
+  &-article, &-search-results, &-category, &-request, &-section, &-user-profile {
     padding: 64px 0;
     position: relative;
     background: linear-gradient(90deg, #515ba5, #58b78e);
     overflow: clip;
-    
+
     &::before {
       content: "";
       height: 200vw;
       width: 200vw;
       display: block;
-      background: url(\$tiled_bg);
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
     }
-
+    
     > .container {
       position: relative;
       color: #ffffff;
@@ -36,7 +35,19 @@ section.hero {
     }
   }
 
-  &-article, &-request {
+  &-article, &-search-results, &-category, &-request, &-section {
+    &::before {
+      background: url(\$tiled_bg);
+    }
+  }
+
+  &-user-profile {
+    &::before {
+      background: url(\$assets-qoria-bg-png);
+    }
+  }
+
+  &-article, &-request, &-user-profile {
     padding-bottom: 14rem;
     margin-bottom: -13rem;
   }

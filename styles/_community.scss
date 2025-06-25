@@ -94,54 +94,65 @@
     @extend .button;
     @include tablet { width: auto;}
 
-    line-height: 30px;
-    padding: 0 10px 0 15px;
-    position: relative;
-    width: 100%;
+  //  line-height: 30px;
+  //  padding: 0 10px 0 15px;
+  //  position: relative;
+  //  width: 100%;
 
-    &:hover { background-color: $brand-color; }
+  //  &:hover { background-color: $brand-color; }
+//
+  //  &:hover::after, &:focus::after {
+  //    border-color: $brand_text_color;
+  //    color: $brand_text_color;
+  //  }
 
-    &:hover::after, &:focus::after {
-      border-color: $brand_text_color;
-      color: $brand_text_color;
+    
+    &::before {
+      content: "+ ";
     }
-
     &[data-selected="true"] {
-      background-color: $brand-color;
-      color: $brand_text_color;
-
-      &::after {
-        border-left: 1px solid $brand_text_color;
-        color: $brand_text_color;
-      }
-
-      &:hover {
-        background-color: $hover-button-color;
-        border-color: $hover-button-color;
+      @extend .button;
+      &::before {
+        content: "- ";
       }
     }
 
-    &::after {
-      @include tablet {
-        position: static;
-      }
+  //  &[data-selected="true"] {
+    //  background-color: $brand-color;
+    //  color: $brand_text_color;
 
-      border-left: 1px solid $button-color;
-      content: attr(data-follower-count);
-      color: $button-color;
-      display: inline-block;
-      font-family: Quicksand, Arial, Helvetica, sans-serif;
-      margin-left: 15px;
-      padding-left: 10px;
-      position: absolute;
-      right: 10px;
+    //  &::after {
+    //    border-left: 1px solid $brand_text_color;
+    //    color: $brand_text_color;
+    //  }
 
-      [dir="rtl"] & {
-        border-left: 0;
-        border-right: 1px solid $button-color;
-        margin: 0 10px 0 0;
-        padding: 0 10px 0 0;
-      }
-    }
+    //  &:hover {
+    //    background-color: $hover-button-color;
+    //    border-color: $hover-button-color;
+    //  }
+  //  }
+
+  //  &::after {
+  //    @include tablet {
+  //      position: static;
+  //    }
+//
+  //    border-left: 1px solid $button-color;
+  //    content: attr(data-follower-count);
+  //    color: $button-color;
+  //    display: inline-block;
+  //    font-family: Quicksand, Arial, Helvetica, sans-serif;
+  //    margin-left: 15px;
+  //    padding-left: 10px;
+  //    position: absolute;
+  //    right: 10px;
+//
+  //    [dir="rtl"] & {
+  //      border-left: 0;
+  //      border-right: 1px solid $button-color;
+  //      margin: 0 10px 0 0;
+  //      padding: 0 10px 0 0;
+  //    }
+  //  }
   }
 }

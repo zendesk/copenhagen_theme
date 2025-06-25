@@ -68,20 +68,20 @@
         .tabs-link {
 
             color: $q-text-weaker;
-            background: $q-bg-brand-weaker;
+            background: $q-bg-weaker;
             margin-right: 1px;
             border-bottom: none;
             
             &:hover {
-                background-color: $q-bg-brand-weak;
+                background-color: $q-bg-weak;
                 color: $q-text-weak;
             }
             
             &.is-active {
                 background-color: $q-bg-neutral;
-                color: $q-text-brand-strong;
+                color: $q-text-brand;
                 border-width: 1px 1px 0 1px;
-                border-color: $q-border-strong;
+                border-color: $q-bg-subtle;
                 border-style: solid;
             }
         }

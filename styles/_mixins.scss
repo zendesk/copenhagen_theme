@@ -160,6 +160,18 @@
   padding: 0;
   }
 
+  pre:not(:has(> code)) {
+    border-radius: 4px;
+  border: 1px solid $q-border-medium;
+  //  margin: 0 2px;
+  //  background-color: $q-bg-backdrop;
+  //  border: none;
+  //  padding: $padding;
+  //  font-family: "Courier Prime", monospace;
+  //  color: $q-text-inverse-strong;
+  padding: $gutter;
+  }
+
 
   :not(pre) > code {
  //   background: $primary-shade;

@@ -225,7 +225,7 @@ template {
   font-style: normal;
   font-weight: 100;
   font-display: block;
-  src: url("$assets-fa-thin-100-woff2') }}") format("woff2"), url("$assets-fa-thin-100-ttf") format("truetype");
+  src: url("$assets-fa-thin-100-woff2')") format("woff2"), url("$assets-fa-thin-100-ttf") format("truetype");
 }
 @font-face {
   font-family: "Font Awesome 6 Pro";
@@ -701,7 +701,7 @@ ul {
 }
 
 /***** Buttons *****/
-.button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .comment-form-controls input[type=submit], .article-subscribe button[data-selected=true], .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
+.button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button[data-selected=true], .community-follow button, .comment-form-controls input[type=submit], .article-subscribe button[data-selected=true], .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
   background-color: #f1f5f9;
   color: #0f172a;
   padding: 16px 38px;
@@ -723,7 +723,7 @@ ul {
   -webkit-touch-callout: none;
 }
 @media (min-width: 768px) {
-  .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button, .comment-form-controls input[type=submit], .article-subscribe button[data-selected=true], .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
+  .button, .pagination-next-link, .pagination-prev-link, .pagination-first-link, .pagination-last-link, .subscriptions-subscribe button, .requests-table-toolbar .organization-subscribe button, .community-follow button[data-selected=true], .community-follow button, .comment-form-controls input[type=submit], .article-subscribe button[data-selected=true], .article-subscribe button, .section-subscribe button, .search input[type=submit], .split-button button {
     width: auto;
   }
 }
@@ -1718,34 +1718,39 @@ section.hero {
   text-align: left;
   width: 100%;
 }
-section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section {
+section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile {
   padding: 64px 0;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before {
   content: "";
   height: 200vw;
   width: 200vw;
   display: block;
-  background: url(\$tiled_bg);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
 }
-section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container {
+section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container {
   position: relative;
   color: #ffffff;
 }
-section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1 {
+section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1 {
   font-weight: 600;
   font-size: 2.625rem;
   line-height: 1;
   margin: 32px 0;
 }
-section.hero-article, section.hero-request {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before {
+  background: url(\$tiled_bg);
+}
+section.hero-user-profile::before {
+  background: url(\$assets-qoria-bg-png);
+}
+section.hero-article, section.hero-request, section.hero-user-profile {
   padding-bottom: 14rem;
   margin-bottom: -13rem;
 }
@@ -2455,6 +2460,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-body pre:has(> code) {
   padding: 0;
 }
+.article-body pre:not(:has(> code)) {
+  border-radius: 4px;
+  border: 1px solid #d2dae5;
+  padding: 16px;
+}
 .article-body :not(pre) > code {
   background: #364255;
   color: #ffffff;
@@ -2801,19 +2811,19 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 .tabs--colored-2 .tabs-menu .tabs-link {
   color: #68768b;
-  background: #f4f6ff;
+  background: #e2e8f0;
   margin-right: 1px;
   border-bottom: none;
 }
 .tabs--colored-2 .tabs-menu .tabs-link:hover {
-  background-color: #e1e7ff;
+  background-color: #d2dae5;
   color: #4d5a6b;
 }
 .tabs--colored-2 .tabs-menu .tabs-link.is-active {
   background-color: #ffffff;
-  color: #3a3879;
+  color: #515ba5;
   border-width: 1px 1px 0 1px;
-  border-color: #a0adc0;
+  border-color: #f1f5f9;
   border-style: solid;
 }
 .tabs--colored-2 .tab {
@@ -3363,6 +3373,11 @@ code.hljs {
 .comment-body pre:has(> code) {
   padding: 0;
 }
+.comment-body pre:not(:has(> code)) {
+  border-radius: 4px;
+  border: 1px solid #d2dae5;
+  padding: 16px;
+}
 .comment-body :not(pre) > code {
   background: #364255;
   color: #ffffff;
@@ -3632,57 +3647,16 @@ code.hljs {
     width: auto;
   }
 }
-.community-follow button {
-  line-height: 30px;
-  padding: 0 10px 0 15px;
-  position: relative;
-  width: 100%;
-}
 @media (min-width: 768px) {
   .community-follow button {
     width: auto;
   }
 }
-.community-follow button:hover {
-  background-color: #515ba5;
+.community-follow button::before {
+  content: "+ ";
 }
-.community-follow button:hover::after, .community-follow button:focus::after {
-  border-color: #fff;
-  color: #fff;
-}
-.community-follow button[data-selected=true] {
-  background-color: #515ba5;
-  color: #fff;
-}
-.community-follow button[data-selected=true]::after {
-  border-left: 1px solid #fff;
-  color: #fff;
-}
-.community-follow button[data-selected=true]:hover {
-  background-color: #3a3879;
-  border-color: #3a3879;
-}
-.community-follow button::after {
-  border-left: 1px solid #515ba5;
-  content: attr(data-follower-count);
-  color: #515ba5;
-  display: inline-block;
-  font-family: Quicksand, Arial, Helvetica, sans-serif;
-  margin-left: 15px;
-  padding-left: 10px;
-  position: absolute;
-  right: 10px;
-}
-@media (min-width: 768px) {
-  .community-follow button::after {
-    position: static;
-  }
-}
-[dir=rtl] .community-follow button::after {
-  border-left: 0;
-  border-right: 1px solid #515ba5;
-  margin: 0 10px 0 0;
-  padding: 0 10px 0 0;
+.community-follow button[data-selected=true]::before {
+  content: "- ";
 }
 
 /***** Striped list *****/
@@ -4015,6 +3989,11 @@ code.hljs {
 }
 .post-body pre:has(> code) {
   padding: 0;
+}
+.post-body pre:not(:has(> code)) {
+  border-radius: 4px;
+  border: 1px solid #d2dae5;
+  padding: 16px;
 }
 .post-body :not(pre) > code {
   background: #364255;
