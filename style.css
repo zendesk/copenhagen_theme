@@ -2462,10 +2462,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   white-space: pre;
 }
 .article-body blockquote {
-  border-left: 1px solid #B0B0B0;
-  color: #364255;
-  font-style: italic;
-  padding: 0 15px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-left: 4px solid #515ba5;
+  box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
 }
 .article-body > *:first-child {
   margin-top: 0;
@@ -3330,10 +3330,10 @@ code.hljs {
   white-space: pre;
 }
 .comment-body blockquote {
-  border-left: 1px solid #B0B0B0;
-  color: #364255;
-  font-style: italic;
-  padding: 0 15px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-left: 4px solid #515ba5;
+  box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
 }
 .comment-body p {
   margin: 8px 0;
@@ -3987,10 +3987,10 @@ code.hljs {
   white-space: pre;
 }
 .post-body blockquote {
-  border-left: 1px solid #B0B0B0;
-  color: #364255;
-  font-style: italic;
-  padding: 0 15px;
+  padding: 32px;
+  background-color: #ffffff;
+  border-left: 4px solid #515ba5;
+  box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
 }
 .post-footer {
   align-items: center;

@@ -185,8 +185,8 @@
   //  padding: 0 15px;
     padding: $padding;
     background-color: $q-bg-neutral;
-    border-left: 4px solid $q-brand-primary;
-    box-shadow: $q-
+    border-left: 4px solid map-get($q-brand-primary,600);
+    box-shadow: $q-shadow-sm;
   }
 }
 
