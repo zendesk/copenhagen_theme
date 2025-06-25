@@ -49,7 +49,7 @@
 
     &--transparent {
         background-color: transparent;    
-        box-shadow: 1px 1px 4px #00000026;
+        box-shadow: $q-shadow-sm;
     }
 
     &__title {

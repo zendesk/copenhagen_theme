@@ -163,15 +163,15 @@ a {
   }
 }
 
-code {
-    border-radius: 4px;
-    margin: 0 2px;
-    display: block;
-    background-color: $q-bg-subtle;
-    border: none;
-    padding: $padding;
-    font-family: "Courier Prime", monospace;
-}
+//.article-body :not(pre) > code  {
+//    border-radius: 4px;
+//    margin: 0 2px;
+//    display: block;
+//    background-color: $q-bg-subtle;
+//    border: none;
+//    padding: $padding;
+//    font-family: "Courier Prime", monospace;
+//}
 
 
 

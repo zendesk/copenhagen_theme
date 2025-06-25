@@ -1,3 +1,26 @@
+<script>
+
+// show code highlighting if there is a code block in the article
+document.addEventListener('DOMContentLoaded', (event) => {
+
+  if (document.querySelector("pre code")) {
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "{{asset 'highlight.min.js'}}";
+    document.head.appendChild(script);
+
+    script.onload = function(){
+      document.querySelectorAll('pre code').forEach((el) => {
+        hljs.highlightElement(el);
+      });
+    }
+  }
+
+});
+
+</script>
+
+
 <section class="section hero hero-article">
   <div class="container">
     <div class="row">
@@ -183,7 +206,6 @@
                 </ul>
               {{/if}}
             </section>
-          {{/if}}
 
           {{#form 'comment' class='comment-form'}}
             <!--<div class="comment-avatar">{{user_avatar class='user-avatar'}}</div> -->
@@ -193,6 +215,7 @@
             </div>
           {{/form}}
 
+          {{/if}}
         </div>
 
       </footer>

@@ -121,7 +121,7 @@
 
 .single-product .single-product-inner {
     background-color: $background-neutral;
-    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    box-shadow: $q-shadow-sm;
     &:before {    
         content: "";
         height: 8px;

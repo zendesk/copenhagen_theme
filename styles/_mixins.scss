@@ -149,13 +149,25 @@
     list-style-type: disc;
   }
 
-  :not(pre) > code {
-    background: $primary-shade;
-    border: 1px solid $low-contrast-border-color;
-    border-radius: 3px;
-    padding: 0 5px;
+  pre:has(> code) {
+    border-radius: 4px;
     margin: 0 2px;
+    background-color: $q-bg-backdrop;
+    border: none;
+    padding: $padding;
+    font-family: "Courier Prime", monospace;
+    color: $q-text-inverse-strong;
   }
+
+
+ // :not(pre) > code {
+ //   background: $primary-shade;
+ //   border: 1px solid $low-contrast-border-color;
+ //   border-radius: 3px;
+ //   padding: 0 5px;
+ //   margin: 0 2px;
+ // 
+ // }
 
   pre {
     background: $primary-shade;
@@ -167,10 +179,14 @@
   }
 
   blockquote {
-    border-left: 1px solid $low-contrast-border-color;
-    color: $secondary-text-color;
-    font-style: italic;
-    padding: 0 15px;
+  //  border-left: 1px solid $low-contrast-border-color;
+  //  color: $secondary-text-color;
+  //  font-style: italic;
+  //  padding: 0 15px;
+    padding: $padding;
+    background-color: $q-bg-neutral;
+    border-left: 4px solid $q-brand-primary;
+    box-shadow: $q-
   }
 }
 

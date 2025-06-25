@@ -1,0 +1,91 @@
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+code.hljs {
+  padding: 3px 5px
+}
+/*!
+  Theme for Highlight.js for the Qoria Knowledge Base
+  @katiesfz
+*/
+.hljs {
+  background: $q-bg-backdrop;
+  color: $q-text-inverse-strong;
+}
+/* Comment */
+.hljs-comment,
+.hljs-quote {
+  color: map-get($q-brand-warning, 50);
+}
+/* Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+  color: map-get($q-brand-danger, 100)
+}
+/* Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+  color: map-get($q-accent-tangerine, 200)
+}
+/* Yellow */
+.hljs-attribute {
+  color: map-get($q-brand-warning, 200)
+}
+/* Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+  color: map-get($q-brand-success, 200)
+}
+/* Blue */
+.hljs-title,
+.hljs-section {
+  color: map-get($q-brand-info, 200)
+}
+/* Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+  color: map-get($q-accent-purple, 200)
+}
+.hljs-emphasis {
+  font-style: italic
+}
+.hljs-strong {
+  font-weight: bold
+}
+@media screen and (-ms-high-contrast: active) {
+  .hljs-addition,
+  .hljs-attribute,
+  .hljs-built_in,
+  .hljs-bullet,
+  .hljs-comment,
+  .hljs-link,
+  .hljs-literal,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-params,
+  .hljs-string,
+  .hljs-symbol,
+  .hljs-type,
+  .hljs-quote {
+    color: highlight
+  }
+  .hljs-keyword,
+  .hljs-selector-tag {
+    font-weight: bold
+  }
+}

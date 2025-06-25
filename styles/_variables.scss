@@ -211,7 +211,7 @@ $q-bg-weaker: map-get($q-brand-neutral,100);
 $q-bg-weak: map-get($q-brand-neutral,200);
 $q-bg-medium: map-get($q-brand-neutral,300);
 $q-bg-strong: map-get($q-brand-neutral,500);
-$q-bg-backdrop: #000000;
+$q-bg-backdrop: map-get($q-brand-neutral,700);;
 
 $q-bg-brand-strong: map-get($q-brand-primary,600);
 $q-bg-brand-strong-hover: map-get($q-brand-primary,700);
@@ -362,6 +362,13 @@ $font-size-h5: 1.125rem; // 18px (search result heading, card heading)
 $font-size-h6: 1rem; // 16px
 
 $font-weight-semibold: 600;
+
+
+/* Shadows */
+
+$q-shadow-sm: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
+$q-shadow-md: 0 .5rem 1.5rem rgba(28, 29, 27, 0.1);
+$q-shadow-lg: 0 1rem 3rem rgba(28, 29, 27, 0.2);
 
 /* Links */
 
