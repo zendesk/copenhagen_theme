@@ -150,30 +150,35 @@
   }
 
   pre:has(> code) {
-    border-radius: 4px;
-    margin: 0 2px;
-    background-color: $q-bg-backdrop;
-    border: none;
-    padding: $padding;
-    font-family: "Courier Prime", monospace;
-    color: $q-text-inverse-strong;
+  //  border-radius: 4px;
+  //  margin: 0 2px;
+  //  background-color: $q-bg-backdrop;
+  //  border: none;
+  //  padding: $padding;
+  //  font-family: "Courier Prime", monospace;
+  //  color: $q-text-inverse-strong;
+  padding: 0;
   }
 
 
- // :not(pre) > code {
+  :not(pre) > code {
  //   background: $primary-shade;
  //   border: 1px solid $low-contrast-border-color;
  //   border-radius: 3px;
  //   padding: 0 5px;
  //   margin: 0 2px;
  // 
- // }
+  background: $q-bg-backdrop;
+  color: $q-text-inverse-strong;
+  padding: $gutter;
+  border-radius: 4px;
+  }
 
   pre {
-    background: $primary-shade;
-    border: 1px solid $low-contrast-border-color;
-    border-radius: 3px;
-    padding: 10px 15px;
+  //  background: $primary-shade;
+  //  border: 1px solid $low-contrast-border-color;
+  //  border-radius: 3px;
+  //  padding: 10px 15px;
     overflow: auto;
     white-space: pre;
   }
@@ -183,7 +188,7 @@
   //  color: $secondary-text-color;
   //  font-style: italic;
   //  padding: 0 15px;
-    padding: $padding;
+    padding: $gutter;
     background-color: $q-bg-neutral;
     border-left: 4px solid map-get($q-brand-primary,600);
     box-shadow: $q-shadow-sm;

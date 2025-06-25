@@ -381,6 +381,14 @@ a:hover, a:active, a:focus {
   text-decoration: none;
 }
 
+p:last-child {
+  margin-bottom: 0;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
 .hbs-form input,
 .hbs-form textarea, .search input,
 .search textarea {
@@ -2445,24 +2453,20 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   list-style-type: disc;
 }
 .article-body pre:has(> code) {
-  border-radius: 4px;
-  margin: 0 2px;
-  background-color: #364255;
-  border: none;
-  padding: 32px;
-  font-family: "Courier Prime", monospace;
+  padding: 0;
+}
+.article-body :not(pre) > code {
+  background: #364255;
   color: #ffffff;
+  padding: 16px;
+  border-radius: 4px;
 }
 .article-body pre {
-  background: #f7f7f7;
-  border: 1px solid #B0B0B0;
-  border-radius: 3px;
-  padding: 10px 15px;
   overflow: auto;
   white-space: pre;
 }
 .article-body blockquote {
-  padding: 32px;
+  padding: 16px;
   background-color: #ffffff;
   border-left: 4px solid #515ba5;
   box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
@@ -2753,7 +2757,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
-  margin-bottom: 16px;
   list-style: none;
   justify-content: flex-start;
 }
@@ -2770,13 +2773,13 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   outline: none;
   cursor: pointer;
   margin-bottom: -1px;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 4px solid transparent;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   font-weight: 600;
 }
 .tabs-menu .tabs-link:hover {
-  border-color: #d2dae5;
+  border-color: #e2e8f0;
   color: #4d5a6b;
 }
 .tabs-menu .tabs-link.is-active {
@@ -2786,7 +2789,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .tabs .tab {
   display: block;
   background-color: #FFFFFF;
-  padding: 0;
+  padding: 16px;
+  border: 1px solid #f1f5f9;
 }
 .tabs .tab.is-hidden {
   display: none;
@@ -2797,17 +2801,24 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 
 .tabs--colored-2 .tabs-menu .tabs-link {
   color: #68768b;
-  background: #f1f5f9;
+  background: #f4f6ff;
   margin-right: 1px;
   border-bottom: none;
 }
 .tabs--colored-2 .tabs-menu .tabs-link:hover {
-  background-color: #e2e8f0;
+  background-color: #e1e7ff;
   color: #4d5a6b;
 }
 .tabs--colored-2 .tabs-menu .tabs-link.is-active {
-  background-color: #515ba5;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #3a3879;
+  border-width: 1px 1px 0 1px;
+  border-color: #a0adc0;
+  border-style: solid;
+}
+.tabs--colored-2 .tab {
+  padding: 16px;
+  border: 1px solid #f1f5f9;
 }
 
 img.image-with-shadow {
@@ -2862,6 +2873,7 @@ pre code.hljs {
   display: block;
   overflow-x: auto;
   padding: 1em;
+  border-radius: 4px;
 }
 
 code.hljs {
@@ -2961,6 +2973,42 @@ code.hljs {
     font-weight: bold;
   }
 }
+.image-with-video-icon {
+  position: relative;
+  display: flex;
+}
+.image-with-video-icon img {
+  width: 100%;
+}
+.image-with-video-icon::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.image-with-video-icon::before {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  content: "";
+  border-style: solid;
+  transition: transform 0.6s ease;
+  left: 50%;
+  border-color: transparent transparent transparent #fff;
+  border-width: 32px 0 32px 54.4px;
+  transform: translate(-50%, -50%);
+}
+.image-with-video-icon:hover::before {
+  border-color: transparent transparent transparent #f1f5f9;
+}
+
 [dir=ltr] .list-colored, [dir=ltr] .list-bullet {
   padding-left: 0 !important;
   list-style-type: none;
@@ -3313,24 +3361,20 @@ code.hljs {
   list-style-type: disc;
 }
 .comment-body pre:has(> code) {
-  border-radius: 4px;
-  margin: 0 2px;
-  background-color: #364255;
-  border: none;
-  padding: 32px;
-  font-family: "Courier Prime", monospace;
+  padding: 0;
+}
+.comment-body :not(pre) > code {
+  background: #364255;
   color: #ffffff;
+  padding: 16px;
+  border-radius: 4px;
 }
 .comment-body pre {
-  background: #f7f7f7;
-  border: 1px solid #B0B0B0;
-  border-radius: 3px;
-  padding: 10px 15px;
   overflow: auto;
   white-space: pre;
 }
 .comment-body blockquote {
-  padding: 32px;
+  padding: 16px;
   background-color: #ffffff;
   border-left: 4px solid #515ba5;
   box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
@@ -3970,24 +4014,20 @@ code.hljs {
   list-style-type: disc;
 }
 .post-body pre:has(> code) {
-  border-radius: 4px;
-  margin: 0 2px;
-  background-color: #364255;
-  border: none;
-  padding: 32px;
-  font-family: "Courier Prime", monospace;
+  padding: 0;
+}
+.post-body :not(pre) > code {
+  background: #364255;
   color: #ffffff;
+  padding: 16px;
+  border-radius: 4px;
 }
 .post-body pre {
-  background: #f7f7f7;
-  border: 1px solid #B0B0B0;
-  border-radius: 3px;
-  padding: 10px 15px;
   overflow: auto;
   white-space: pre;
 }
 .post-body blockquote {
-  padding: 32px;
+  padding: 16px;
   background-color: #ffffff;
   border-left: 4px solid #515ba5;
   box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);

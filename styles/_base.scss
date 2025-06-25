@@ -101,6 +101,13 @@ a {
   }
 }
 
+p:last-child {
+    margin-bottom: 0;
+}
+p:first-child {
+    margin-top: 0;
+}
+
 .hbs-form, .search {
   input,
   textarea {

@@ -1,0 +1,39 @@
+.image-with-video-icon {
+    position: relative;
+    display: flex;
+
+    img {
+        width: 100%;
+    }
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        content: '';
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    &::before {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        width: 0;
+        height: 0;
+        font-size: 0;
+        content: '';
+        border-style: solid;
+        transition: transform 0.6s ease;
+        left: 50%;
+        border-color: transparent transparent transparent #fff;
+        border-width: $padding 0 $padding calc($padding * 1.7);
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover::before {
+        border-color: transparent transparent transparent $q-bg-subtle;
+    }
+}
