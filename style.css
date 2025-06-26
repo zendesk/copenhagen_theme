@@ -732,12 +732,12 @@ ul {
   color: #0f172a;
   text-decoration: none;
 }
-.button-primary, .search-results-sidebar .see-all-filters, .subscriptions-subscribe button[data-selected=true], .requests-table-toolbar .organization-subscribe button[data-selected=true], .comment-form-controls input[type=submit], .section-subscribe button[data-selected=true], .split-button button:hover {
+.button-primary, .search-results-sidebar .see-all-filters, .subscriptions-subscribe button[data-selected=true], .requests-table-toolbar .organization-subscribe button[data-selected=true], .comment-form-controls input[type=submit], .section-subscribe button[data-selected=true] {
   background-color: #515ba5;
   color: #fff;
   text-decoration: none;
 }
-.button-primary:hover, .search-results-sidebar .see-all-filters:hover, .subscriptions-subscribe button[data-selected=true]:hover, .requests-table-toolbar .organization-subscribe button[data-selected=true]:hover, .comment-form-controls input[type=submit]:hover, .section-subscribe button[data-selected=true]:hover, .split-button button:hover, .button-primary:focus, .search-results-sidebar .see-all-filters:focus, .subscriptions-subscribe button[data-selected=true]:focus, .requests-table-toolbar .organization-subscribe button[data-selected=true]:focus, .comment-form-controls input[type=submit]:focus, .section-subscribe button[data-selected=true]:focus, .button-primary:active, .search-results-sidebar .see-all-filters:active, .subscriptions-subscribe button[data-selected=true]:active, .requests-table-toolbar .organization-subscribe button[data-selected=true]:active, .comment-form-controls input[type=submit]:active, .section-subscribe button[data-selected=true]:active {
+.button-primary:hover, .search-results-sidebar .see-all-filters:hover, .subscriptions-subscribe button[data-selected=true]:hover, .requests-table-toolbar .organization-subscribe button[data-selected=true]:hover, .comment-form-controls input[type=submit]:hover, .section-subscribe button[data-selected=true]:hover, .button-primary:focus, .search-results-sidebar .see-all-filters:focus, .subscriptions-subscribe button[data-selected=true]:focus, .requests-table-toolbar .organization-subscribe button[data-selected=true]:focus, .comment-form-controls input[type=submit]:focus, .section-subscribe button[data-selected=true]:focus, .button-primary:active, .search-results-sidebar .see-all-filters:active, .subscriptions-subscribe button[data-selected=true]:active, .requests-table-toolbar .organization-subscribe button[data-selected=true]:active, .comment-form-controls input[type=submit]:active, .section-subscribe button[data-selected=true]:active {
   background-color: #454D8C;
   border-color: #454D8C;
   color: #fff;
@@ -796,15 +796,6 @@ ul {
 /***** Split button *****/
 .split-button {
   display: flex;
-}
-
-.split-button button {
-  background-color: #515ba5;
-  border: 0;
-  color: #fff;
-  height: 32px;
-  line-height: 16px;
-  outline-color: #515ba5;
 }
 
 [dir=rtl] .split-button button:not(:only-child):first-child {
@@ -4926,7 +4917,8 @@ code.hljs {
 }
 
 .user-profile-actions {
-  width: 100%;
+  width: 100%;    
+  justify-content: end;
   margin-bottom: 15px;
 }
 
