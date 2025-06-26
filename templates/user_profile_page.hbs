@@ -296,8 +296,82 @@
                       <ul class="profile-contribution-list profile-{{current_filter.identifier}}">
                         {{#each contributions}}
 
-                          <li class="profile-contribution">
-                            <span class="profile-contribution-icon" aria-hidden="true">
+                          <li class="profile-activity profile-activity-{{type}}">
+
+
+                            <header class="profile-activity-header">
+                              <img class="user-avatar" src="{{../user.avatar_url}}" alt=""/>
+                              <p class="profile-activity-description">{{label}}</p>
+                            </header>
+
+                            {{#with contribution}}
+                              <div class="profile-activity-contribution profile-contribution">
+                                <header class="profile-contribution-header">
+                                  {{#isnt object_type 'comment'}}
+                                    <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
+                                  {{/isnt}}
+
+                                  {{#isnt status 'none'}}
+                                      <span class="status-label status-label-{{status_dasherized}}">{{status_name}}</span>
+                                  {{/isnt}}
+
+                                  {{#if pending}}
+                                    <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
+                                  {{/if}}
+
+                                  {{#if official}}
+                                    <span class="status-label status-label-official">{{t 'official_comment'}}</span>
+                                  {{/if}}
+                                </header>
+                                {{#unless object_type 'comment'}}
+                                  <nav
+                                    {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                                    {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                                    {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
+                                  >
+                                    <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                                      {{#each path_steps}}
+                                        <li><a href="{{url}}">{{name}}</a></li>
+                                      {{/each}}
+                                    </ol>
+                                  </nav>
+                                {{/unless}}
+
+                                <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
+
+                                <div class="meta-group">
+                                  {{#is object_type 'comment'}}
+                                    <span class="meta-data">
+                                      <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
+                                    </span>
+                                  {{/is}}<!--
+                                  <span class="meta-data">{{author.name}}</span> -->
+                                  {{#if editor}}
+                                    <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
+                                    <span class="meta-data">
+                                      {{#is object_type 'article'}}
+                                        {{t 'updated'}}
+                                      {{else}}
+                                        {{t 'edited'}}
+                                      {{/is}}
+                                    </span>
+                                  {{else}}
+                                    <!-- <span class="meta-data">{{date created_at timeago=true}}</span> -->
+                                  {{/if}}
+                                  {{#each stats}}
+                                    <span class="meta-data">{{label}}</span>
+                                  {{/each}}
+                                </div>
+                              </div>
+                            {{/with}}
+
+
+
+
+<!--
+
+                          <li class="profile-contribution"> -->
+                            <!--<span class="profile-contribution-icon" aria-hidden="true">
                               {{#is object_type "article"}}
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
                                   <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"/>
@@ -313,8 +387,8 @@
                                   <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
                                 </svg>
                               {{/is}}
-                            </span>
-                            <header class="profile-contribution-header">
+                            </span>-->
+                    <!--        <header class="profile-contribution-header">
                               {{#isnt object_type 'comment'}}
                                 <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
                               {{/isnt}}
@@ -330,8 +404,8 @@
                               {{#if official}}
                                 <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                               {{/if}}
-                            </header>
-                            <nav
+                            </header> -->
+                        <!--    <nav
                               {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
                               {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
                               {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
@@ -342,7 +416,7 @@
                                 {{/each}}
                               </ol>
                             </nav>
-
+--><!--
                             <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
                             <div class="meta-group">
@@ -368,8 +442,8 @@
                                 <span class="meta-data">{{label}}</span>
                               {{/each}}
                             </div>
+                          </li>-->
                           </li>
-
                         {{/each}}
                       </ul>
 
