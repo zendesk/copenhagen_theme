@@ -4867,6 +4867,14 @@ code.hljs {
     margin-right: 16px;
   }
 }
+.profile-stats {
+  margin-top: 32px;
+  font-size: 0.9375em;
+}
+.profile-stats .stat .stat-label {
+  display: block;
+  font-weight: bold;
+}
 
 /*
 
