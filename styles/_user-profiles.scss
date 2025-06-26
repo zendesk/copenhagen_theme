@@ -47,13 +47,20 @@
     font-size: $font-size-small;
 
     .stat {
+
+      padding: 5px 0;
+
       .stat-label {
         display: block;
         font-weight: bold;
       }
     }
   }
+  .description {
+    margin-top: $padding;
+  }
 }
+
 
 
 
@@ -310,7 +317,7 @@
   background-color: $secondary-shade;
   margin-bottom: 37px;
 }
-
+*/
 // Sections
 
 .profile-section {
@@ -685,4 +692,3 @@
   height: 1em;
   margin: auto;
 }
-*/
