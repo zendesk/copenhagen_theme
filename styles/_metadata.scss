@@ -21,10 +21,18 @@
   font-size: $font-size-small;
 
 
-  &:not(:last-child)::after {
-    content: "\00B7";
-    margin: 0 5px;
-  }
+//  &:not(:last-child)::after {
+//    content: "\00B7";
+//    margin: 0 5px;
+//  }
+
+
+
+ &:not(:last-child) {
+    border-right: 1px solid $q-bg-neutral;
+    padding-right: $gutter;
+    margin-right: $gutter;
+ }
 }
 
 

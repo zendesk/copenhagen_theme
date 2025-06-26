@@ -1,87 +1,169 @@
 /* User Profiles */
 
-// Header
 
-.profile-header {
-  padding: 30px 0;
-  background-color: $primary-shade;
-}
-
-.profile-header .container {
-  display: flex;
-  flex-wrap: wrap;
+.profile {
 
   @include tablet {
-    flex-wrap: nowrap;
+    flex: 1 1 75%;
+    max-width: 75%;
+    min-width: 640px;
+    padding: $padding;
   }
-}
 
-.profile-header .profile-info {
-  flex-basis: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  min-width: 0;
-}
+  background: #FFFFFF;
+  padding: calc($padding / 2);
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+  // box-shadow: 1px 18px 20px #00000033;
+  margin-bottom: 80px;
 
-.profile-avatar {
-  position: relative;
-  line-height: 0;
-  align-self: center;
-  margin-right: 10px;
-
-  [dir="rtl"] & {
-    margin-left: 10px;
-    margin-right: 0;
-  }
-}
-
-.profile-avatar .user-avatar {
-  width: 80px;
-  height: 80px;
-}
-
-.profile-avatar .icon-agent {
-  bottom: 0;
-  right: 0;
-}
-
-.profile-header .basic-info {
-  @include text-overflow;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-grow: 1;
-  flex-basis: 0;
-  min-width: 0;
-
-  .name {
-    margin: 0;
-    line-height: 25px;
-    vertical-align: middle;
-    display: inline;
-  }
-}
-
-.profile-header .options {
-  display: flex;
-  flex-basis: 100%;
-  margin-top: 12px;
-  align-items: flex-start;
-  flex-wrap: wrap;
-
-  @include tablet {
-    flex-wrap: nowrap;
-    flex-basis: auto;
-    margin-top: 0;
-    margin-left: 10px;
-
-    [dir="rtl"] & {
-      margin-left: 0;
-      margin-right: 10px;
+  &-container {
+    @include tablet {
+      flex-direction: row;
     }
 
-    > :not(:last-child) {
-      margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-sidebar {
+    @include tablet {
+      border: 0;
+      flex: 0 0 25%;
+      height: auto;
+      max-width: 25%;
+      margin-right: $gutter;
+    }
+
+    flex: 1 0 auto; //Explicit values needed with flex-direction: column for IE11
+    margin-bottom: $gutter;
+    position: sticky;
+    top: 0px;
+
+  }
+}
+
+
+
+
+/*
+
+.profile {
+
+  &-header {
+    padding: 30px 0;
+    background-color: $primary-shade;
+    
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+
+      @include tablet {
+      flex-wrap: nowrap;
+      }
+    }
+
+    .profile-info {
+      flex-basis: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      min-width: 0;
+    }
+
+    .basic-info {
+      @include text-overflow;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 1;
+      flex-basis: 0;
+      min-width: 0;
+
+      .name {
+        margin: 0;
+        line-height: 25px;
+        vertical-align: middle;
+        display: inline;
+      }
+    }
+
+    .options {
+      display: flex;
+      flex-basis: 100%;
+      margin-top: 12px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+
+      @include tablet {
+        flex-wrap: nowrap;
+        flex-basis: auto;
+        margin-top: 0;
+        margin-left: 10px;
+
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: 10px;
+        }
+
+        > :not(:last-child) {
+          margin-bottom: 0;
+          margin-right: 10px;
+
+          [dir="rtl"] & {
+            margin-left: 10px;
+            margin-right: 0;
+          }
+        }
+      }
+    }
+
+    .description {
+      @include text-overflow;
+      margin: 15px 0;
+      flex-basis: 100%;
+    }
+
+  }
+
+  &-avatar {
+    position: relative;
+    line-height: 0;
+    align-self: center;
+    margin-right: 10px;
+
+    [dir="rtl"] & {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+
+    .user-avatar {
+      width: 80px;
+      height: 80px;
+    }
+
+    .icon-agent {
+      bottom: 0;
+      right: 0;
+    }
+
+  }
+    
+// Stats
+
+  &-stats {
+  font-size: $font-size-small;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+
+    .stat {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      color: $secondary-text-color;
+      flex: 0 0 100px;
       margin-right: 10px;
 
       [dir="rtl"] & {
@@ -89,136 +171,107 @@
         margin-right: 0;
       }
     }
+
+    &-activity {
+      border-top: solid 1px #ddd;
+      margin-top: 15px;
+
+      @include tablet {
+        border-top: 0;
+        flex-direction: row;
+      }
+
+      .stat {
+        @include tablet {
+          flex-direction: column;
+        }
+
+        &:first-child {
+          margin-top: 10px;
+
+          @include tablet {
+            margin-top: 0;
+          }
+        }
+
+        &:not(:last-child) {
+          @include tablet {
+            margin-right: 40px;
+
+            [dir="rtl"] & {
+              margin-left: 40px;
+              margin-right: 0;
+            }
+          }
+        }
+      }
+      
+      .stat-label {
+        @include tablet {
+          flex: 0 1 auto;
+        }
+      }
+    }
+
+    &-counters {
+      border-bottom: solid 1px #ddd;
+
+      @include tablet {
+        flex: 0 0 200px;
+        border-bottom: 0;
+        margin-left: 40px;
+
+        [dir="rtl"] & {
+          margin-left: 0;
+          margin-right: 40px;
+        }
+      }
+
+      @include desktop {
+        flex: 0 0 270px;
+        margin-left: 60px;
+
+        [dir="rtl"] & {
+          margin-right: 60px;
+          margin-left: 0;
+        }
+      }
+
+      .stat {
+        @include tablet {
+          flex-direction: column;
+        }
+
+        @include desktop {
+          flex-direction: row;
+        }
+
+        &:not(:last-child) {
+          @include tablet {
+            margin-bottom: 15px;
+          }
+        }
+      }
+      
+      .stat-label {
+        @include tablet {
+          flex: 0 1 auto;
+        }
+
+        @include desktop {
+          flex: 0 0 100px;
+        }
+      }
+    }
   }
 }
+
 
 .user-profile-actions {
   width: 100%;
   margin-bottom: 15px;
 }
 
-.profile-header .description {
-  @include text-overflow;
-  margin: 15px 0;
-  flex-basis: 100%;
-}
-
-// Stats
-
-.profile-stats {
-  font-size: $font-size-small;
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-}
-
-.profile-stats .stat {
-  display: flex;
-  margin-bottom: 10px;
-}
-
-.profile-stats .stat-label {
-  color: $secondary-text-color;
-  flex: 0 0 100px;
-  margin-right: 10px;
-
-  [dir="rtl"] & {
-    margin-left: 10px;
-    margin-right: 0;
-  }
-}
-
-.profile-stats-activity {
-  border-top: solid 1px #ddd;
-  margin-top: 15px;
-
-  @include tablet {
-    border-top: 0;
-    flex-direction: row;
-  }
-}
-
-.profile-stats-activity .stat {
-  @include tablet {
-    flex-direction: column;
-  }
-}
-
-.profile-stats-activity .stat:first-child {
-  margin-top: 10px;
-
-  @include tablet {
-    margin-top: 0;
-  }
-}
-
-.profile-stats-activity .stat:not(:last-child) {
-  @include tablet {
-    margin-right: 40px;
-
-    [dir="rtl"] & {
-      margin-left: 40px;
-      margin-right: 0;
-    }
-  }
-}
-
-.profile-stats-activity .stat-label {
-  @include tablet {
-    flex: 0 1 auto;
-  }
-}
-
-.profile-stats-counters {
-  border-bottom: solid 1px #ddd;
-
-  @include tablet {
-    flex: 0 0 200px;
-    border-bottom: 0;
-    margin-left: 40px;
-
-    [dir="rtl"] & {
-      margin-left: 0;
-      margin-right: 40px;
-    }
-  }
-
-  @include desktop {
-    flex: 0 0 270px;
-    margin-left: 60px;
-
-    [dir="rtl"] & {
-      margin-right: 60px;
-      margin-left: 0;
-    }
-  }
-}
-
-.profile-stats-counters .stat {
-  @include tablet {
-    flex-direction: column;
-  }
-
-  @include desktop {
-    flex-direction: row;
-  }
-}
-
-.profile-stats-counters .stat:not(:last-child) {
-  @include tablet {
-    margin-bottom: 15px;
-  }
-}
-
-.profile-stats-counters .stat-label {
-  @include tablet {
-    flex: 0 1 auto;
-  }
-
-  @include desktop {
-    flex: 0 0 100px;
-  }
-}
 
 .profile-private-badge {
   flex-basis: 100%;
@@ -620,3 +673,4 @@
   height: 1em;
   margin: auto;
 }
+*/
