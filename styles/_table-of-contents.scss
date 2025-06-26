@@ -1,12 +1,11 @@
 /* TOC */
 
 
-.table-of-contents-container {
+.table-of-contents-container, .activity-filter-container {
   
   background: #FFFFFF;
   padding: $gutter;
   padding-bottom: 0;
-  margin-top: $gutter;
   
 
   @include desktop {

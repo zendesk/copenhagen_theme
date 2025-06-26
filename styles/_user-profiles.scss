@@ -41,6 +41,18 @@
     top: 0px;
 
   }
+
+  &-stats {
+    margin-top: $padding;
+    font-size: $font-size-small;
+
+    .stat {
+      .stat-label {
+        display: block;
+        font-weight: bold;
+      }
+    }
+  }
 }
 
 

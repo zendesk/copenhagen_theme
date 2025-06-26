@@ -22,11 +22,6 @@
         {{else}}
           <span class="meta-data">{{t 'no_activity_yet'}}</span>
         {{/if}}
-        {{#if last_activity_at}}
-          {{#if member_since}}
-            <div class="vr"></div>
-          {{/if}}
-        {{/if}}
         {{#if member_since}}
           <span class="meta-data">{{t 'member_since'}} {{date member_since format='medium'}}</span>
         {{/if}}
@@ -48,57 +43,59 @@
 <div class="container">
   <div class="profile-container" id="profile-container">
     <aside class="profile-sidebar" aria-labelledby="section-profile-title">
-      <div class="profile-sidebar">
-        <div class="table-of-contents-container collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
-            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
-            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
-          </button>
-          <h4 class="collapsible-sidebar-title sidenav-title">Activity</h4>
-          <div class="collapsible-sidebar-body">
-            {{#if visible}}
-              {{#if member_since}}
-                <ul class="">
-                  {{#each filters}}
-                    {{#if selected}}
-                      <li class="current active"><a href="{{url}}" aria-current="page">{{name}}</a></li>
-                    {{else}}
-                      <li><a href="{{url}}">{{name}}</a></li>
-                    {{/if}}
-                  {{/each}}
-                </ul>
-              {{/if}}
+      <div class="activity-filter-container collapsible-sidebar">
+        <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+          <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+          <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+        </button>
+        <h4 class="collapsible-sidebar-title sidenav-title">Activity</h4>
+        <div class="collapsible-sidebar-body">
+          {{#if visible}}
+            {{#if member_since}}
+              <ul class="">
+                {{#each filters}}
+                  {{#if selected}}
+                    <li class=""><a href="{{url}}" class="current active" aria-current="page">{{name}}</a></li>
+                  {{else}}
+                    <li><a href="{{url}}">{{name}}</a></li>
+                  {{/if}}
+                {{/each}}
+              </ul>
             {{/if}}
+          {{/if}}
 
-            <ul class="profile-stats profile-stats-counters">
-              <li class="stat">
-                <span class="stat-label">{{t 'following_users'}}</span>
-                <span class="stat-value" id="following-count">{{t 'users_count' count=following_count}}</span>
+          <ul class="profile-stats profile-stats-counters">
+            <li class="stat">
+              <span class="stat-label">{{t 'total_activity'}}</span>
+              <span class="stat-value" id="total-activity">{{total_activity}}</span>
+            </li>
+            <li class="stat">
+              <span class="stat-label">{{t 'following_users'}}</span>
+              <span class="stat-value" id="following-count">{{t 'users_count' count=following_count}}</span>
+            </li>
+            <li class="stat">
+              <span class="stat-label">{{t 'followed_by'}}</span>
+              <span class="stat-value" id="follower-count">{{t 'users_count' count=follower_count}}</span>
+            </li>
+            <li class="stat">
+              <span class="stat-label">{{t 'votes'}}</span>
+              <span class="stat-value" id="vote-count">{{vote_count}}</span>
+            </li>
+            <li class="stat">
+              <span class="stat-label">{{t 'subscriptions'}}</span>
+              <span class="stat-value" id="subscription-count">{{subscription_count}}</span>
+            </li>
+          </ul>
+          {{#if description}}
+            <p class="description">{{description}}</p>
+          {{/if}}
+          <ul aria-label="{{t 'badges'}}" class="community-badge-titles">
+            {{#each (filter user.badges on="category_slug" equals="titles")}}
+              <li class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
+                {{name}}
               </li>
-              <li class="stat">
-                <span class="stat-label">{{t 'followed_by'}}</span>
-                <span class="stat-value" id="follower-count">{{t 'users_count' count=follower_count}}</span>
-              </li>
-              <li class="stat">
-                <span class="stat-label">{{t 'votes'}}</span>
-                <span class="stat-value" id="vote-count">{{vote_count}}</span>
-              </li>
-              <li class="stat">
-                <span class="stat-label">{{t 'subscriptions'}}</span>
-                <span class="stat-value" id="subscription-count">{{subscription_count}}</span>
-              </li>
-            </ul>
-            {{#if description}}
-              <p class="description">{{description}}</p>
-            {{/if}}
-            <ul aria-label="{{t 'badges'}}" class="community-badge-titles">
-              {{#each (filter user.badges on="category_slug" equals="titles")}}
-                <li class="community-badge community-badge-title" title="{{description}}" aria-label="{{name}}">
-                  {{name}}
-                </li>
-              {{/each}}
-            </ul>
-          </div>
+            {{/each}}
+          </ul>
         </div>
       </div>
     </aside>
