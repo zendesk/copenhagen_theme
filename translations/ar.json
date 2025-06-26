@@ -62,6 +62,7 @@
   "scoped_community_search_label": "البحث في إطار مجال في المجتمع",
   "scoped_knowledge_base_search_description": "تقتصر نتائج البحث على الفئة الحالية للمستخدم",
   "scoped_knowledge_base_search_label": "البحث في إطار مجال في قاعدة المعرفة",
+  "scoped_knowledge_base_search_label_v2": "بحث محدد النطاق في مركز المساعدة",
   "search_group_label": "إعدادات البحث",
   "section_page_group_label": "عناصر صفحة الجزء",
   "show_brand_name_description": "عرض اسم مركز المساعدة إلى جانب الشعار",

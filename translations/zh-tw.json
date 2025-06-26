@@ -62,6 +62,7 @@
   "scoped_community_search_label": "社區內的限定範圍搜尋",
   "scoped_knowledge_base_search_description": "搜尋結果限於使用者所在類別",
   "scoped_knowledge_base_search_label": "知識庫內的限定範圍搜尋",
+  "scoped_knowledge_base_search_label_v2": "客服中心的限定範圍搜尋",
   "search_group_label": "搜尋設定值",
   "section_page_group_label": "段落頁面元素",
   "show_brand_name_description": "在標誌的旁邊顯示客服中心名稱",

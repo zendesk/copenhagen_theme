@@ -19,7 +19,6 @@ import type { AttachmentField } from "../../data-types";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
-import mime from "mime";
 
 interface AttachmentProps {
   field: AttachmentField;
@@ -62,22 +61,55 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
   const { addToast } = useToast();
   const { t } = useTranslation();
 
+  const convertError = (file: File, xhr: XMLHttpRequest) => {
+    if (
+      xhr.response?.error == "RecordInvalid" &&
+      !!xhr.response?.details?.base
+    ) {
+      const errorMessage = xhr.response?.details?.base
+        ?.map((errorString) => errorString?.description)
+        .join(t("new-request-form.attachments.error-separator", "; "));
+      return {
+        title: uploadFailedTitle(file),
+        errorMessage,
+      };
+    } else if (
+      xhr.response?.error == "AttachmentFilenameTooLong" ||
+      xhr.response?.error == "AttachmentTooLarge"
+    ) {
+      return {
+        title: uploadFailedTitle(file),
+        errorMessage: xhr.response?.description,
+      };
+    } else {
+      return {
+        title: t(
+          "new-request-form.attachments.upload-error-title",
+          "Upload error"
+        ),
+        errorMessage: t(
+          "new-request-form.attachments.upload-error-description",
+          "There was an error uploading {{fileName}}. Try again or upload another file.",
+          { fileName: file.name }
+        ),
+      };
+    }
+  };
+
+  const uploadFailedTitle = (file: File) => {
+    return t(
+      "new-request-form.attachments.upload-failed-title",
+      "Upload failed",
+      { fileName: file.name }
+    );
+  };
+
   const notifyError = useCallback(
-    (fileName: string) => {
+    (title: string, errorMessage: string) => {
       addToast(({ close }) => (
         <Notification type="error">
-          <Title>
-            {t(
-              "new-request-form.attachments.upload-error-title",
-              "Upload error"
-            )}
-          </Title>
-          {t(
-            "new-request-form.attachments.upload-error-description",
-            "There was an error uploading {{fileName}}. Try again or upload another file.",
-            { fileName }
-          )}
-
+          <Title>{title}</Title>
+          {errorMessage}
           <Close
             aria-label={t("new-request-form.close-label", "Close")}
             onClick={close}
@@ -100,17 +132,12 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
         xhr.open("POST", url);
 
         // If the browser returns a type for the file, use it as the Content-Type header,
-        // otherwise try to determine the mime type from the file extension using the mime
-        // library. If we can't determine the mime type, we'll fall back to a generic
-        // application/octet-stream.
+        // otherwise we fall back to application/octet-stream and let the backend
+        // determine the file type.
         if (file.type) {
           xhr.setRequestHeader("Content-Type", file.type);
         } else {
-          const mimeType = mime.getType(file.name);
-          xhr.setRequestHeader(
-            "Content-Type",
-            mimeType || "application/octet-stream"
-          );
+          xhr.setRequestHeader("Content-Type", "application/octet-stream");
         }
         xhr.setRequestHeader("X-CSRF-Token", csrfToken);
         xhr.responseType = "json";
@@ -140,13 +167,15 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
             } = xhr.response as UploadFileResponse;
             setUploaded(pendingId, { id: token, file_name, url: content_url });
           } else {
-            notifyError(file.name);
+            const { title, errorMessage } = convertError(file, xhr);
+            notifyError(title, errorMessage);
             removePendingFile(pendingId);
           }
         });
 
         xhr.addEventListener("error", () => {
-          notifyError(file.name);
+          const { title, errorMessage } = convertError(file, xhr);
+          notifyError(title, errorMessage);
           removePendingFile(pendingId);
         });
 

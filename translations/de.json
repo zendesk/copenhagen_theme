@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Begrenzte Suche in Community",
   "scoped_knowledge_base_search_description": "Suchergebnisse sind auf die jeweilige Kategorie begrenzt",
   "scoped_knowledge_base_search_label": "Begrenzte Suche in Wissensdatenbank",
+  "scoped_knowledge_base_search_label_v2": "Begrenzte Suche im Help Center",
   "search_group_label": "Sucheinstellungen",
   "section_page_group_label": "Elemente auf Abschnittsseiten",
   "show_brand_name_description": "Namen des Help Centers neben dem Logo anzeigen",

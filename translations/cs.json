@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Cílené hledání v komunitě",
   "scoped_knowledge_base_search_description": "Omezí výsledky hledání na kategorii, ve které uživatel právě je.",
   "scoped_knowledge_base_search_label": "Cílené hledání ve znalostní bázi",
+  "scoped_knowledge_base_search_label_v2": "Cílené vyhledávání v centru nápovědy",
   "search_group_label": "Nastavení hledání",
   "section_page_group_label": "Elementy stránky oddílu",
   "show_brand_name_description": "Zobrazí název Centra nápovědy vedle loga.",

@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Toplulukta kapsamı belirli arama",
   "scoped_knowledge_base_search_description": "Arama sonuçları, kullanıcının içinde bulunduğu kategoriyle sınırlıdır",
   "scoped_knowledge_base_search_label": "Bilgi Bankasında kapsamı belirli arama",
+  "scoped_knowledge_base_search_label_v2": "Yardım merkezinde kapsamlı arama",
   "search_group_label": "Arama ayarları",
   "section_page_group_label": "Bölüm sayfası öğeleri",
   "show_brand_name_description": "Yardım Merkezi adını logonun yanında görüntüleyin",

@@ -62,6 +62,7 @@
   "scoped_community_search_label": "커뮤니티에서만 검색",
   "scoped_knowledge_base_search_description": "검색 결과의 범위를 사용자가 속한 카테고리로 제한",
   "scoped_knowledge_base_search_label": "지식창고에서만 검색",
+  "scoped_knowledge_base_search_label_v2": "헬프 센터의 범위 지정 검색",
   "search_group_label": "검색 설정",
   "section_page_group_label": "섹션 페이지 요소",
   "show_brand_name_description": "로고 옆에 헬프 센터 이름 표시",

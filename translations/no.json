@@ -62,6 +62,7 @@
   "scoped_community_search_label": "Begrenset søk i Nettsamfunn",
   "scoped_knowledge_base_search_description": "Søkeresultater er begrenset til kategorien brukeren er i",
   "scoped_knowledge_base_search_label": "Begrenset søk i Kunnskapsbase",
+  "scoped_knowledge_base_search_label_v2": "Begrenset søk i kundesenter",
   "search_group_label": "Søk-innstillinger",
   "section_page_group_label": "Seksjonssideelementer",
   "show_brand_name_description": "Vis kundesenternavnet ved siden av logoen",

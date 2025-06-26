@@ -1,3 +1,99 @@
+# [4.5.0](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0...v4.5.0) (2025-06-05)
+
+
+### Bug Fixes
+
+* handles falsy values for dynamic query params ([2f61403](https://github.com/zendesk/copenhagen_theme/commit/2f614031901b588bbd6f09e9edfefe14cd92d295))
+
+
+### Features
+
+* includes dynamic filter params for lookup autocomplete calls ([b65e8bd](https://github.com/zendesk/copenhagen_theme/commit/b65e8bddb0c36a46495616fdc92631c1cfc78296))
+
+# [4.4.0](https://github.com/zendesk/copenhagen_theme/compare/v4.3.7...v4.4.0) (2025-06-02)
+
+
+### Features
+
+* display any file validation errors that can occur when the "Allowed file types" setting is on ([32ef11c](https://github.com/zendesk/copenhagen_theme/commit/32ef11c589bc934d1bd2cda1bd0847396f4a9354))
+
+## [4.3.7](https://github.com/zendesk/copenhagen_theme/compare/v4.3.6...v4.3.7) (2025-04-24)
+
+
+### Bug Fixes
+
+* add approval request priorty level translations ([36fd4ab](https://github.com/zendesk/copenhagen_theme/commit/36fd4ab6c98e3d4e2c871e6267ee791fe031d1cd))
+
+## [4.3.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.5...v4.3.6) (2025-03-21)
+
+
+### Bug Fixes
+
+* updated scoped search in help center setting label ([79c3d91](https://github.com/zendesk/copenhagen_theme/commit/79c3d91c4ce03c5428c6860220905008544c0fef))
+
+## [4.3.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.4...v4.3.5) (2025-03-21)
+
+
+### Bug Fixes
+
+* fixed upload of some type of attachments ([f69c061](https://github.com/zendesk/copenhagen_theme/commit/f69c061b67f33de334f1f5b49a15ac862a7eafd9)), closes [#520](https://github.com/zendesk/copenhagen_theme/issues/520)
+
+## [4.3.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.3...v4.3.4) (2025-03-14)
+
+
+### Bug Fixes
+
+* added new settings translations for sk and uk ([fbcf222](https://github.com/zendesk/copenhagen_theme/commit/fbcf222a469b2e1f88c519cfaa56a5ca5025d13a))
+
+## [4.3.3](https://github.com/zendesk/copenhagen_theme/compare/v4.3.2...v4.3.3) (2025-03-12)
+
+
+### Bug Fixes
+
+* **new-request-form:** update dompurify ([a8111ab](https://github.com/zendesk/copenhagen_theme/commit/a8111ab75b40b7b5aca2aec6e65fff2d401289a1))
+
+## [4.3.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.1...v4.3.2) (2025-03-12)
+
+
+### Bug Fixes
+
+* **new-request-form:** updated sk translations ([4344a27](https://github.com/zendesk/copenhagen_theme/commit/4344a27b9c6818bca1d4d5d992205a3333e109d9))
+
+## [4.3.1](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0...v4.3.1) (2025-03-11)
+
+
+### Bug Fixes
+
+* **new-request-form:** fixed rendering issues with conditional fields ([14a6898](https://github.com/zendesk/copenhagen_theme/commit/14a68986eb0e670d450a721f1dfb55374ea4e7f3))
+
+# [4.3.0](https://github.com/zendesk/copenhagen_theme/compare/v4.2.10...v4.3.0) (2025-02-21)
+
+
+### Features
+
+* added generative_answers helper to search results page ([d98c59e](https://github.com/zendesk/copenhagen_theme/commit/d98c59eb26579697d27641ec187538f447c99744))
+
+## [4.2.10](https://github.com/zendesk/copenhagen_theme/compare/v4.2.9...v4.2.10) (2025-02-13)
+
+
+### Bug Fixes
+
+* **a11y:** removed menuitem role from user mobile navbar ([c953d7b](https://github.com/zendesk/copenhagen_theme/commit/c953d7bc1c2d59913a0d6533b6da5c1a23f05d67))
+
+## [4.2.9](https://github.com/zendesk/copenhagen_theme/compare/v4.2.8...v4.2.9) (2025-02-13)
+
+
+### Bug Fixes
+
+* apply end user conditions for checkbox fields correctly ([62971c3](https://github.com/zendesk/copenhagen_theme/commit/62971c393e7b3687252be71f298d5cd48a6bb726))
+
+## [4.2.8](https://github.com/zendesk/copenhagen_theme/compare/v4.2.7...v4.2.8) (2025-02-11)
+
+
+### Bug Fixes
+
+* update translation files and fix typo ([49f99cd](https://github.com/zendesk/copenhagen_theme/commit/49f99cd7fedac333ebbaba6696f1c4970b1b0a10))
+
 ## [4.2.7](https://github.com/zendesk/copenhagen_theme/compare/v4.2.6...v4.2.7) (2025-01-07)
 
 

@@ -9,6 +9,17 @@ function getFieldConditions(
   });
 }
 
+function isMatchingValue(
+  fieldValue: Field["value"],
+  condition: EndUserCondition
+): boolean {
+  if (condition.parent_field_type === "checkbox" && condition.value === false) {
+    return fieldValue === false || fieldValue === null;
+  }
+
+  return fieldValue === condition.value;
+}
+
 function getAppliedConditions(
   fieldConditions: EndUserCondition[],
   allConditions: EndUserCondition[],
@@ -31,7 +42,7 @@ function getAppliedConditions(
     // the condition is applied if the parent field value matches the condition value
     // and if the parent field has no conditions or if the parent field conditions are met
     return (
-      parentField.value === condition.value &&
+      isMatchingValue(parentField.value, condition) &&
       (parentFieldConditions.length === 0 ||
         getAppliedConditions(parentFieldConditions, allConditions, fields)
           .length > 0)

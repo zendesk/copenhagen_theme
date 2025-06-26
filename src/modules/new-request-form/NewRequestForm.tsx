@@ -1,5 +1,5 @@
 import type { AnswerBot, Field, RequestForm } from "./data-types";
-import { useCallback, useState } from "react";
+import { Fragment, useCallback, useState } from "react";
 import { Input } from "./fields/Input";
 import { TextArea } from "./fields/textarea/TextArea";
 import { DropDown } from "./fields/DropDown";
@@ -205,9 +205,8 @@ export function NewRequestForm({
           switch (field.type) {
             case "subject":
               return (
-                <>
+                <Fragment key={field.name}>
                   <Input
-                    key={field.name}
                     field={field}
                     onChange={(value) => handleChange(field, value)}
                   />
@@ -215,7 +214,7 @@ export function NewRequestForm({
                     query={field.value as string | undefined}
                     locale={locale}
                   />
-                </>
+                </Fragment>
               );
             case "text":
             case "integer":
@@ -231,15 +230,15 @@ export function NewRequestForm({
             case "partialcreditcard":
               return (
                 <CreditCard
+                  key={field.name}
                   field={field}
                   onChange={(value) => handleChange(field, value)}
                 />
               );
             case "description":
               return (
-                <>
+                <Fragment key={field.name}>
                   <TextArea
-                    key={field.name}
                     field={field}
                     hasWysiwyg={wysiwyg}
                     baseLocale={baseLocale}
@@ -253,7 +252,7 @@ export function NewRequestForm({
                     name={description_mimetype_field.name}
                     value={wysiwyg ? "text/html" : "text/plain"}
                   />
-                </>
+                </Fragment>
               );
             case "textarea":
               return (
@@ -272,9 +271,8 @@ export function NewRequestForm({
             case "basic_priority":
             case "tickettype":
               return (
-                <>
+                <Fragment key={field.name}>
                   <DropDown
-                    key={field.name}
                     field={field}
                     onChange={(value) => handleChange(field, value)}
                   />
@@ -288,11 +286,12 @@ export function NewRequestForm({
                       }}
                     />
                   )}
-                </>
+                </Fragment>
               );
             case "checkbox":
               return (
                 <Checkbox
+                  key={field.name}
                   field={field}
                   onChange={(value: boolean) => handleChange(field, value)}
                 />
@@ -300,6 +299,7 @@ export function NewRequestForm({
             case "date":
               return (
                 <DatePicker
+                  key={field.name}
                   field={field}
                   locale={baseLocale}
                   valueFormat="date"
@@ -307,7 +307,7 @@ export function NewRequestForm({
                 />
               );
             case "multiselect":
-              return <MultiSelect field={field} />;
+              return <MultiSelect key={field.name} field={field} />;
             case "tagger":
               return (
                 <Tagger
@@ -328,10 +328,11 @@ export function NewRequestForm({
                       : defaultOrganizationId
                   }
                   onChange={(value) => handleChange(field, value)}
+                  visibleFields={visibleFields}
                 />
               );
             default:
-              return <></>;
+              return <Fragment key={field.name}></Fragment>;
           }
         })}
         {attachments_field && <Attachments field={attachments_field} />}

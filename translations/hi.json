@@ -62,6 +62,7 @@
   "scoped_community_search_label": "समुदाय में सीमित खोज",
   "scoped_knowledge_base_search_description": "खोज परिणाम उस श्रेणी तक ही सीमित हैं, जिसमें उपयोगकर्ता है",
   "scoped_knowledge_base_search_label": "जानकारी के आधार में सीमित खोज",
+  "scoped_knowledge_base_search_label_v2": "सहायता केंद्र में सीमित खोज",
   "search_group_label": "खोज सेटिंग",
   "section_page_group_label": "अनुभाग पृष्ठ तत्व",
   "show_brand_name_description": "लोगो के आगे सहायता केंद्र का नाम दिखाएं",
