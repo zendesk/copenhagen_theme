@@ -12,12 +12,16 @@
     font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    align-items: flex-start;
+    line-height: $font-size-small;
 
     + li::before {
       content: "\f054";
       font-size: .8em;
       font-family: 'Font Awesome 6 Pro';
       margin: 0 8px;
+      line-height: $font-size-small;
     }
 
     a:visited {

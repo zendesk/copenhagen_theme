@@ -705,7 +705,7 @@ ul {
   background-color: #f1f5f9;
   color: #0f172a;
   padding: 16px 38px;
-  font-size: 0.875em;
+  font-size: 0.875rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.12s ease-in-out, border-color 0.12s ease-in-out, color 0.15s ease-in-out;
@@ -832,8 +832,8 @@ ul {
   background-color: #f1f5f9;
   color: #0f172a;
   display: inline-block;
-  font-size: 0.875em;
-  line-height: 1.3125em;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
   margin: 0;
   border: 0;
   font-weight: 700;
@@ -866,7 +866,7 @@ ul {
 .table th,
 .table th a {
   color: #364255;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   text-align: left;
 }
 [dir=rtl] .table th,
@@ -925,7 +925,7 @@ ul {
 
 .form-field label {
   display: block;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   margin-bottom: 5px;
 }
 
@@ -1005,7 +1005,7 @@ ul {
 }
 
 .form .suggestion-list {
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   margin-top: 30px;
 }
 .form .suggestion-list label {
@@ -1472,17 +1472,21 @@ ul {
 }
 .breadcrumbs li, .search-result-breadcrumbs li {
   color: inherit;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   max-width: 450px;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: flex;
+  align-items: flex-start;
+  line-height: 0.9375rem;
 }
 .breadcrumbs li + li::before, .search-result-breadcrumbs li + li::before {
   content: "\f054";
   font-size: 0.8em;
   font-family: "Font Awesome 6 Pro";
   margin: 0 8px;
+  line-height: 0.9375rem;
 }
 .breadcrumbs li a:visited, .search-result-breadcrumbs li a:visited {
   color: inherit;
@@ -1605,7 +1609,7 @@ ul {
   flex: 1 1 auto;
   height: auto;
   width: 100%;
-  font-size: 0.875em;
+  font-size: 0.875rem;
   margin-bottom: 0px;
 }
 .search input[type=search]::-moz-placeholder {
@@ -2118,7 +2122,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .recent-activity-item-time, .recent-activity-item-comment {
   display: inline-block;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 .recent-activity-item-comment {
   padding-left: 5px;
@@ -2767,7 +2771,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .tabs-menu .tabs-link {
   display: block;
   padding: 8px 16px;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   text-decoration: none;
   color: #68768b;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
@@ -3127,7 +3131,7 @@ code.hljs {
 .comment-callout {
   color: #364255;
   display: inline-block;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   margin-bottom: 0;
 }
 .comment-callout a {
@@ -3146,7 +3150,7 @@ code.hljs {
 }
 .comment-sorter .dropdown-toggle {
   color: #364255;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 [dir=rtl] .comment-sorter {
   float: left;
@@ -3604,7 +3608,7 @@ code.hljs {
 /* Community topic page */
 .topic-header {
   border-bottom: 1px solid #B0B0B0;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 @media (min-width: 768px) {
   .topic-header {
@@ -3691,7 +3695,7 @@ code.hljs {
 }
 .striped-list-count {
   color: #364255;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   justify-content: flex-start;
   text-transform: capitalize;
 }
@@ -4118,7 +4122,7 @@ code.hljs {
 /* Navigation element that collapses on mobile */
 .collapsible-nav {
   flex-direction: column;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   position: relative;
 }
 @media (min-width: 768px) {
@@ -4443,7 +4447,7 @@ code.hljs {
   }
 }
 .requests-table-toolbar .request-filter-label {
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   margin-top: 30px;
 }
 @media (min-width: 768px) {
@@ -4554,7 +4558,7 @@ code.hljs {
 /* Contributions table */
 .contributions-table td:last-child {
   color: #364255;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 @media (min-width: 768px) {
   .contributions-table td:last-child {
@@ -4677,7 +4681,7 @@ code.hljs {
   .request-sidebar {
     background-color: #f7f7f7;
     border: 0;
-    font-size: 0.9375em;
+    font-size: 0.9375rem;
     flex: 0 0 auto;
     padding: 0 20px;
     width: 30%;
@@ -4704,7 +4708,7 @@ code.hljs {
 .request-details dt, .request-details dd {
   display: inline-block;
   vertical-align: top;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
   margin: 20px 0 0 0;
 }
 .request-details dd {
@@ -4804,7 +4808,7 @@ code.hljs {
 .meta-data {
   color: inherit;
   font-weight: 400;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 .meta-data:not(:last-child) {
   border-right-width: 1px;
@@ -4871,7 +4875,7 @@ code.hljs {
 }
 .profile-stats {
   margin-top: 32px;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 .profile-stats .stat {
   padding: 5px 0;
@@ -4906,10 +4910,13 @@ code.hljs {
 }
 .profile-contribution-title {
   font-weight: bold;
+}
+.profile-contribution-header {
   margin-bottom: 8px;
 }
 .profile-contribution nav {
   margin-bottom: 8px;
+  font-size: 0.9375rem;
 }
 .profile-contribution-body {
   padding: 0;
@@ -4917,7 +4924,7 @@ code.hljs {
   margin-bottom: 8px;
 }
 .profile-contribution .meta-data {
-  color: #4d5a6b;
+  color: #68768b;
 }
 
 /*
@@ -5648,7 +5655,7 @@ code.hljs {
 }
 .search-result-votes, .search-result-meta-count {
   color: #364255;
-  font-size: 0.9375em;
+  font-size: 0.9375rem;
 }
 .search-result-votes-icon, .search-result-meta-count-icon {
   color: #515ba5;

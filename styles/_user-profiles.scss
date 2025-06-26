@@ -89,11 +89,15 @@
 
     &-title {
       font-weight: bold;
+    }
+
+    &-header {
       margin-bottom: calc($gutter/2)
     }
 
     nav {
-      margin-bottom: calc($gutter/2)
+      margin-bottom: calc($gutter/2);
+      font-size: $font-size-small;
     }
 
     &-body {
@@ -103,7 +107,7 @@
     }
 
     .meta-data {
-      color: $q-text-weak;
+      color: $q-text-weaker;
     }
   }
 

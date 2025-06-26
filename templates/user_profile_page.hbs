@@ -162,17 +162,19 @@
                                   <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                                 {{/if}}
                               </header>
-                              <nav
-                                {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
-                                {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
-                                {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
-                              >
-                                <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                                  {{#each path_steps}}
-                                    <li><a href="{{url}}">{{name}}</a></li>
-                                  {{/each}}
-                                </ol>
-                              </nav>
+                              {{#unless object_type 'comment'}}
+                                <nav
+                                  {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                                  {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                                  {{#is object_type 'comment'}}aria-label='{{t 'comment_location_with_author_name' author_name=author.name}}'{{/is}}
+                                >
+                                  <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                                    {{#each path_steps}}
+                                      <li><a href="{{url}}">{{name}}</a></li>
+                                    {{/each}}
+                                  </ol>
+                                </nav>
+                              {{/unless}}
 
                               <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
@@ -254,8 +256,8 @@
                         
                     {{#if contributions}}
 
-                      <h2 class="profile-section-title">{{t current_filter.identifier}}</h2>
-                      {{#if sorters}}
+                     <h2 class="profile-section-title">{{t current_filter.identifier}}</h2>
+                      {{#if sorters}}<!--
                         <span class="profile-section-description">{{sorter_description}}</span>
                         <span class="profile-section-sorter dropdown">
                           <button class="dropdown-toggle" aria-haspopup="true">
@@ -272,6 +274,23 @@
                             {{/each}}
                           </span>
                         </span>
+-->
+                        <div class="profile-sorters dropdown">
+                          <button class="dropdown-toggle" aria-haspopup="true" id="profile-sorters" aria-controls="profile-sorters-list">
+                            <span>
+                              <span>
+                                <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
+                                {{#is current_sorter.label "Votes"}}Most popular{{/is}}{{#is current_sorter.label "Recent activity"}}Most recent{{/is}}
+                              </span>
+                              <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
+                            </span>
+                          </button>
+                          <div class="dropdown-menu" role="menu" id="profile-sorters-list" aria-labelledby="profile-sorters" tabindex="-1">
+                            {{#each sorters}}
+                              <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{#is label "Votes"}}Most popular{{/is}}{{#is label "Recent activity"}}Most recent{{/is}}</a>
+                            {{/each}}
+                          </div>
+                        </div>
                       {{/if}}
 
                       <ul class="profile-contribution-list profile-{{current_filter.identifier}}">
