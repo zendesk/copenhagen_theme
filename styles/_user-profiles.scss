@@ -59,6 +59,54 @@
   .description {
     margin-top: $padding;
   }
+
+  &-activity {
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-bottom: $gutter;
+
+      .user-avatar {
+        height: 32px;
+        width: 32px;
+        margin-right: 8px;
+      }
+
+    }
+
+    &-description {
+      margin-top: 0;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &-contribution {
+    padding: $padding;
+    background-color: $q-bg-subtle;
+
+    &-title {
+      font-weight: bold;
+      margin-bottom: calc($gutter/2)
+    }
+
+    nav {
+      margin-bottom: calc($gutter/2)
+    }
+
+    &-body {
+      padding: 0;
+      margin: 0;
+      margin-bottom: calc($gutter/2)
+    }
+
+    .meta-data {
+      color: $q-text-weak;
+    }
+  }
+
 }
 
 
@@ -319,7 +367,7 @@
 }
 */
 // Sections
-
+/*
 .profile-section {
   width: 100%;
 
@@ -692,3 +740,4 @@
   height: 1em;
   margin: auto;
 }
+  */

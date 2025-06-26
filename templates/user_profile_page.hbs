@@ -115,13 +115,13 @@
                   {{#if activities}}
 
                     <h2 class="profile-section-title">{{t 'activity_overview'}}</h2>
-                    <span class="profile-section-description">{{t 'latest_activity' name=user.name}}</span>
+                   <!-- <span class="profile-section-description">{{t 'latest_activity' name=user.name}}</span> -->
 
                     <ul class="profile-activity-list">
                       {{#each activities}}
 
                         <li class="profile-activity profile-activity-{{type}}">
-                          <span aria-hidden="true" class="profile-activity-icon">
+                         <!-- <span aria-hidden="true" class="profile-activity-icon">
                             {{#contains type "article"}}
                               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" focusable="false" viewBox="0 0 12 12">
                                 <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3.5 5.5h5m-5 2h5m-5 2h5m2-6.29V11c0 .28-.22.5-.5.5H2c-.28 0-.5-.22-.5-.5V1c0-.28.22-.5.5-.5h5.79c.13 0 .26.05.35.15l2.21 2.21c.1.09.15.21.15.35zM7.5.5V3c0 .28.22.5.5.5h2.5"/>
@@ -137,7 +137,7 @@
                                 <path fill="none" stroke="currentColor" d="M1 .5h10c.3 0 .5.2.5.5v7c0 .3-.2.5-.5.5H6l-2.6 2.6c-.3.3-.9.1-.9-.4V8.5H1C.7 8.5.5 8.3.5 8V1C.5.7.7.5 1 .5z"/>
                               </svg>
                             {{/contains}}
-                          </span>
+                          </span> -->
                           <header class="profile-activity-header">
                             <img class="user-avatar" src="{{../user.avatar_url}}" alt=""/>
                             <p class="profile-activity-description">{{label}}</p>
@@ -147,7 +147,7 @@
                             <div class="profile-activity-contribution profile-contribution">
                               <header class="profile-contribution-header">
                                 {{#isnt object_type 'comment'}}
-                                  <h3 class="profile-contribution-title"><a href="{{url}}">{{title}}</a></h3>
+                                  <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
                                 {{/isnt}}
 
                                 {{#isnt status 'none'}}
@@ -181,10 +181,10 @@
                                   <span class="meta-data">
                                     <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
                                   </span>
-                                {{/is}}
-                                <span class="meta-data">{{author.name}}</span>
+                                {{/is}}<!--
+                                <span class="meta-data">{{author.name}}</span> -->
                                 {{#if editor}}
-                                  <span class="meta-data">{{date edited_at timeago=true}}</span>
+                                  <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
                                   <span class="meta-data">
                                     {{#is object_type 'article'}}
                                       {{t 'updated'}}
@@ -193,7 +193,7 @@
                                     {{/is}}
                                   </span>
                                 {{else}}
-                                  <span class="meta-data">{{date created_at timeago=true}}</span>
+                                  <!-- <span class="meta-data">{{date created_at timeago=true}}</span> -->
                                 {{/if}}
                                 {{#each stats}}
                                   <span class="meta-data">{{label}}</span>
@@ -297,7 +297,7 @@
                             </span>
                             <header class="profile-contribution-header">
                               {{#isnt object_type 'comment'}}
-                                <h3 class="profile-contribution-title"><a href="{{url}}">{{title}}</a></h3>
+                                <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
                               {{/isnt}}
 
                               {{#isnt status 'none'}}

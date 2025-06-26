@@ -29,11 +29,15 @@
 
 
  &:not(:last-child) {
-    border-right: 1px solid $q-bg-neutral;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-right-color: currentColor;
     padding-right: $gutter;
     margin-right: $gutter;
  }
 }
+
+
 
 
 .metadata-left, .metadata-right {
