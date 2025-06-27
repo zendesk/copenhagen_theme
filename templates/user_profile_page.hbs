@@ -143,65 +143,6 @@
                             <p class="profile-activity-description">{{label}}</p>
                           </header>
 
-                          {{#with contribution}}
-                            <div class="profile-activity-contribution profile-contribution">
-                              <header class="profile-contribution-header">
-                                {{#isnt object_type 'comment'}}
-                                  <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
-                                {{/isnt}}
-
-                                {{#isnt status 'none'}}
-                                    <span class="status-label status-label-{{status_dasherized}}">{{status_name}}</span>
-                                {{/isnt}}
-
-                                {{#if pending}}
-                                  <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
-                                {{/if}}
-
-                                {{#if official}}
-                                  <span class="status-label status-label-official">{{t 'official_comment'}}</span>
-                                {{/if}}
-                              </header>
-                              {{#isnt object_type 'comment'}}
-                                <nav
-                                  {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
-                                  {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
-                                >
-                                  <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                                    {{#each path_steps}}
-                                      <li><a href="{{url}}">{{name}}</a></li>
-                                    {{/each}}
-                                  </ol>
-                                </nav>
-                              {{/isnt}}
-
-                              <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
-
-                              <div class="meta-group">
-                                {{#is object_type 'comment'}}
-                                  <span class="meta-data">
-                                    <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
-                                  </span>
-                                {{/is}}<!--
-                                <span class="meta-data">{{author.name}}</span> -->
-                                {{#if editor}}
-                                  <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
-                                  <span class="meta-data">
-                                    {{#is object_type 'article'}}
-                                      {{t 'updated'}}
-                                    {{else}}
-                                      {{t 'edited'}}
-                                    {{/is}}
-                                  </span>
-                                {{else}}
-                                  <!-- <span class="meta-data">{{date created_at timeago=true}}</span> -->
-                                {{/if}}
-                                {{#each stats}}
-                                  <span class="meta-data">{{label}}</span>
-                                {{/each}}
-                              </div>
-                            </div>
-                          {{/with}}
                         </li>
 
                       {{/each}}
@@ -369,7 +310,6 @@
 
                           </li>
                         {{/each}}
-
 
 
 
