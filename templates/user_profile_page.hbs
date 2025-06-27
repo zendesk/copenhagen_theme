@@ -211,6 +211,44 @@
 
                 {{/is}}
 
+                {{#is current_filter.identifier 'badges'}}
+
+                  {{#if user.badges}}
+                    <h2 class="profile-section-title">{{t 'badges'}}</h2>
+                    <span class="profile-section-description">{{t 'badges_description' name=user.name}}</span>
+
+                    <ul class="profile-badges-items">
+                      {{#each user.badges}}
+                        <li role="region" class="profile-badges-item" aria-labelledby="title-{{id}}" aria-describedby="desc-{{id}}">
+                          <div class="profile-badges-item-image">
+                            {{#if icon_url}}
+                              <img class="badge" src="{{icon_url}}" alt="">
+                            {{/if}}
+                          </div>
+                          <div>
+                            <div id="title-{{id}}" class="profile-badges-item-title">
+                              {{name}}
+                            </div>
+                            <p id="desc-{{id}}" class="profile-badges-item-description">
+                              {{description}}
+                            </p>
+                          </div>
+                          <div class="profile-badges-item-metadata">
+                            <div class="profile-badges-item-metadata-title">
+                              {{t 'badges_awarded'}}
+                            </div>
+                            <p class="profile-badges-item-metadata-description">
+                              {{date assigned_at format='medium'}}
+                            </p>
+                          </div>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{else}}
+                    <span class="no-activity">{{t 'no_badges'}}</span>
+                  {{/if}}
+
+                {{/is}}
 
               {{else}}
                 {{t 'no_content_yet'}}
