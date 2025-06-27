@@ -253,7 +253,7 @@
                 {{#isnt current_filter.identifier 'activities'}}
                   {{#isnt current_filter.identifier 'badges'}}
                         
-                    {{#if contributions}}
+                    {{#if activities}}
 
                      <h2 class="profile-section-title">{{t current_filter.identifier}}</h2>
                       {{#if sorters}}
@@ -280,14 +280,14 @@
                             <span>
                               <span>
                                 <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
-                                {{current_sorter.label}}
+                                {{is current_sorter.label "Recent activity"}}Most recent{{/is}}{{is current_sorter.label "Votes"}}Most popular{{/is}}
                               </span>
                               <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
                             </span>
                           </button>
                           <div class="dropdown-menu" role="menu" id="profile-sorters-list" aria-labelledby="profile-sorters" tabindex="-1">
                             {{#each sorters}}
-                              <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{name}}</a>
+                              <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{is name "Recent activity"}}Most recent{{/is}}{{is name "Votes"}}Most popular{{/is}}</a>
                             {{/each}}
                           </div>
                         </div>
@@ -295,76 +295,76 @@
 
                       <ul class="profile-contribution-list profile-{{current_filter.identifier}}">
 
-
-
-
-                        {{#each contributions}}
+                        {{#each activities}}
 
                           <li class="profile-activity profile-activity-{{type}}">
 
 
                             <header class="profile-activity-header">
+                              {{#with contribution}}
                               <img class="user-avatar" src="{{author.avatar_url}}" alt=""/>
-                              <p class="profile-activity-description">{{author.name}}</p>
+                              {{/with}}
+                              <p class="profile-activity-description">{{label}}</p>
                             </header>
+                            {{#with contribution}}
+                              <div class="profile-activity-contribution profile-contribution">
+                                <header class="profile-contribution-header">
+                                  {{#isnt object_type 'comment'}}
+                                    <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
+                                  {{/isnt}}
 
-                            <div class="profile-activity-contribution profile-contribution">
-                              <header class="profile-contribution-header">
+                                  {{#isnt status 'none'}}
+                                      <span class="status-label status-label-{{status_dasherized}}">{{status_name}}</span>
+                                  {{/isnt}}
+
+                                  {{#if pending}}
+                                    <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
+                                  {{/if}}
+
+                                  {{#if official}}
+                                    <span class="status-label status-label-official">{{t 'official_comment'}}</span>
+                                  {{/if}}
+                                </header>
                                 {{#isnt object_type 'comment'}}
-                                  <p class="profile-contribution-title"><a href="{{url}}">{{title}}</a></p>
+                                  <nav
+                                    {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
+                                    {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
+                                  >
+                                    <ol class="breadcrumbs profile-contribution-breadcrumbs">
+                                      {{#each path_steps}}
+                                        <li><a href="{{url}}">{{name}}</a></li>
+                                      {{/each}}
+                                    </ol>
+                                  </nav>
                                 {{/isnt}}
 
-                                {{#isnt status 'none'}}
-                                    <span class="status-label status-label-{{status_dasherized}}">{{status_name}}</span>
-                                {{/isnt}}
+                                <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
 
-                                {{#if pending}}
-                                  <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
-                                {{/if}}
-
-                                {{#if official}}
-                                  <span class="status-label status-label-official">{{t 'official_comment'}}</span>
-                                {{/if}}
-                              </header>
-                              {{#isnt object_type 'comment'}}
-                                <nav
-                                  {{#is object_type 'article'}}aria-label='{{t 'article_location_with_title' title=title}}'{{/is}}
-                                  {{#is object_type 'post'}}aria-label='{{t 'post_location_with_title' title=title}}'{{/is}}
-                                >
-                                  <ol class="breadcrumbs profile-contribution-breadcrumbs">
-                                    {{#each path_steps}}
-                                      <li><a href="{{url}}">{{name}}</a></li>
-                                    {{/each}}
-                                  </ol>
-                                </nav>
-                              {{/isnt}}
-
-                              <p class="profile-contribution-body">{{excerpt body characters=200}}</p>
-
-                              <div class="meta-group">
-                                {{#is object_type 'comment'}}
-                                  <span class="meta-data">
-                                    <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
-                                  </span>
-                                {{/is}}<!--
-                                <span class="meta-data">{{author.name}}</span> -->
-                                {{#if editor}}
-                                  <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
-                                  <span class="meta-data">
-                                    {{#is object_type 'article'}}
-                                      {{t 'updated'}}
-                                    {{else}}
-                                      {{t 'edited'}}
-                                    {{/is}}
-                                  </span>
-                                {{else}}
-                                  <!-- <span class="meta-data">{{date created_at timeago=true}}</span> -->
-                                {{/if}}
-                                {{#each stats}}
-                                  <span class="meta-data">{{label}}</span>
-                                {{/each}}
+                                <div class="meta-group">
+                                  {{#is object_type 'comment'}}
+                                    <span class="meta-data">
+                                      <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
+                                    </span>
+                                  {{/is}}<!--
+                                  <span class="meta-data">{{author.name}}</span> -->
+                                  {{#if editor}}
+                                    <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
+                                    <span class="meta-data">
+                                      {{#is object_type 'article'}}
+                                        {{t 'updated'}}
+                                      {{else}}
+                                        {{t 'edited'}}
+                                      {{/is}}
+                                    </span>
+                                  {{else}}
+                                    <!-- <span class="meta-data">{{date created_at timeago=true}}</span> -->
+                                  {{/if}}
+                                  {{#each stats}}
+                                    <span class="meta-data">{{label}}</span>
+                                  {{/each}}
+                                </div>
                               </div>
-                            </div>
+                            {{/with}}
 
 
                           </li>

@@ -4929,6 +4929,10 @@ code.hljs {
 .profile-contribution .meta-data {
   color: #68768b;
 }
+.profile-sorters {
+  width: 100%;
+  text-align: right;
+}
 
 /*
 
