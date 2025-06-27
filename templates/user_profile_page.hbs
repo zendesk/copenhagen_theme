@@ -236,7 +236,7 @@
                 {{#isnt current_filter.identifier 'activities'}}
                   {{#isnt current_filter.identifier 'badges'}}
                         
-                    {{#if activities}}
+                    {{#if contributions}}
 
                      <h2 class="profile-section-title">{{t current_filter.identifier}}</h2>
                       {{#if sorters}}
@@ -260,17 +260,16 @@
 
                       <ul class="profile-contribution-list profile-{{current_filter.identifier}}">
 
-                        {{#each activities}}
+                        {{#each contributions}}
 
                           <li class="profile-activity profile-activity-{{type}}">
 
 
                             <header class="profile-activity-header">
-                              <img class="user-avatar" src="{{../user.avatar_url}}" alt=""/>
+                              <img class="user-avatar" src="{{author.avatar_url}}" alt=""/>
                               <p class="profile-activity-description">{{label}}</p>
                             </header>
 
-                            {{#with contribution}}
                               <div class="profile-activity-contribution profile-contribution">
                                 <header class="profile-contribution-header">
                                   {{#isnt object_type 'comment'}}
@@ -328,7 +327,6 @@
                                   {{/each}}
                                 </div>
                               </div>
-                            {{/with}}
 
                           </li>
                         {{/each}}
