@@ -28,7 +28,7 @@ export async function submitServiceItemRequest(
       },
       body: JSON.stringify({
         request: {
-          subject: `Service request: ${serviceCatalogItem.name}`,
+          subject: `${serviceCatalogItem.name}`,
           comment: {
             body: `Hi, I would like to request ${
               serviceCatalogItem.name
