@@ -245,7 +245,8 @@
                             <span>
                               <span>
                                 <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
-                                {{#is current_sorter.label "Recent activity"}}Most recent{{/is}}{{#is current_sorter.label "Votes"}}Most popular{{/is}}
+                                {{#is current_sorter.label "Recent activity"}}Most recent{{/is}}
+                                {{#is current_sorter.label "Votes"}}Most popular{{/is}}
                               </span>
                               <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
                             </span>
@@ -267,7 +268,7 @@
 
                             <header class="profile-activity-header">
                               <img class="user-avatar" src="{{author.avatar_url}}" alt=""/>
-                              <p class="profile-activity-description">{{label}}</p>
+                              <p class="profile-activity-description">{{author.name}}, {{date created_at timeago=true}}</p>
                             </header>
 
                               <div class="profile-activity-contribution profile-contribution">
