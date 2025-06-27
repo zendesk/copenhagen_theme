@@ -165,10 +165,10 @@
                                   <span class="meta-data">
                                     <a class="comment-link" href={{url}}>{{t 'view_comment'}}</a>
                                   </span>
+                                  <span class="meta-data">{{date created_at}}</span>
                                 {{/is}}<!--
                                 <span class="meta-data">{{author.name}}</span> -->
                                 {{#if editor}}
-                                  <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
                                   <span class="meta-data">
                                     {{#is object_type 'article'}}
                                       {{t 'updated'}}
@@ -244,10 +244,9 @@
                           <button class="dropdown-toggle" aria-haspopup="true" id="profile-sorters" aria-controls="profile-sorters-list">
                             <span>
                               <span>
-                                <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
-                                {{current_sorter.label}}
-                                {{#is current_sorter.label "Recent activity"}}Most recent{{/is}}
-                                {{#is current_sorter.label "Votes"}}Most popular{{/is}}
+                                <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i>
+                                {{#is current_sorter.label "Sort by recent activity"}}Most recent{{/is}}
+                                {{#is current_sorter.label "Sort by votes"}}Most popular{{/is}}
                               </span>
                               <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
                             </span>
