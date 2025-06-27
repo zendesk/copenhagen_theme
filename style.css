@@ -4887,6 +4887,9 @@ code.hljs {
 .profile .description {
   margin-top: 32px;
 }
+.profile-activity:not(:last-child) {
+  margin-bottom: 32px;
+}
 .profile-activity-header {
   display: flex;
   align-items: center;

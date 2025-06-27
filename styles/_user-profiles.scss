@@ -61,6 +61,11 @@
   }
 
   &-activity {
+
+    &:not(:last-child) {
+      margin-bottom: $padding;
+    }
+
     &-header {
       display: flex;
       align-items: center;
