@@ -56,6 +56,11 @@
     margin: 4px 0;
   }
 
+  &-right {
+    left: auto;
+    right: 0;
+  }
+
   [role="menuitem"],
   [role="menuitemradio"] {
     color: #2f3941;

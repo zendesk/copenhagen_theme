@@ -116,9 +116,13 @@
     }
   }
 
+  &-body{
+    display: flex;
+    flex-direction: column;
+  }
+
   &-sorters {
-    width: 100%;
-    text-align: right;
+    align-self: end;
   }
 
 }

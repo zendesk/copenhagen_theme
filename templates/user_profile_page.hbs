@@ -251,7 +251,7 @@
                               <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
                             </span>
                           </button>
-                          <div class="dropdown-menu" role="menu" id="profile-sorters-list" aria-labelledby="profile-sorters" tabindex="-1">
+                          <div class="dropdown-menu dropdown-menu-right" role="menu" id="profile-sorters-list" aria-labelledby="profile-sorters" tabindex="-1">
                             {{#each sorters}}
                               <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{#is name "Recent activity"}}Most recent{{/is}}{{#is name "Votes"}}Most popular{{/is}}</a>
                             {{/each}}

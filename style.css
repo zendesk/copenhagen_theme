@@ -4929,9 +4929,12 @@ code.hljs {
 .profile-contribution .meta-data {
   color: #68768b;
 }
+.profile-body {
+  display: flex;
+  flex-direction: column;
+}
 .profile-sorters {
-  width: 100%;
-  text-align: right;
+  align-self: end;
 }
 
 /*
@@ -5922,6 +5925,10 @@ html[dir=rtl] .notification-left-aligned {
 .dropdown-menu [role=separator] {
   border-bottom: 1px solid #e9ebed;
   margin: 4px 0;
+}
+.dropdown-menu-right {
+  left: auto;
+  right: 0;
 }
 .dropdown-menu [role=menuitem],
 .dropdown-menu [role=menuitemradio] {
