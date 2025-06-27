@@ -4935,6 +4935,7 @@ code.hljs {
 }
 .profile-sorters {
   align-self: end;
+  margin-bottom: 32px;
 }
 
 /*
