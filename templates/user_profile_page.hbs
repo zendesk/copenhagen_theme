@@ -286,7 +286,7 @@
                           </button>
                           <div class="dropdown-menu" role="menu" id="profile-sorters-list" aria-labelledby="profile-sorters" tabindex="-1">
                             {{#each sorters}}
-                              <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{current_sorter.label}}</a>
+                              <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{label}}</a>
                             {{/each}}
                           </div>
                         </div>
