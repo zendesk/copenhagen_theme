@@ -266,10 +266,10 @@
                           <li class="profile-activity profile-activity-{{type}}">
 
 
-                            <header class="profile-activity-header">
+                            <!-- <header class="profile-activity-header">
                               <img class="user-avatar" src="{{author.avatar_url}}" alt=""/>
                               <p class="profile-activity-description">{{author.name}}, {{date created_at timeago=true}}</p>
-                            </header>
+                            </header> -->
 
                               <div class="profile-activity-contribution profile-contribution">
                                 <header class="profile-contribution-header">
@@ -312,7 +312,7 @@
                                   {{/is}}<!--
                                   <span class="meta-data">{{author.name}}</span> -->
                                   {{#if editor}}
-                                    <!--<span class="meta-data">{{date edited_at timeago=true}}</span> -->
+                                    <span class="meta-data">{{date edited_at timeago=true}}</span>
                                     <span class="meta-data">
                                       {{#is object_type 'article'}}
                                         {{t 'updated'}}
