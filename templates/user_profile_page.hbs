@@ -136,14 +136,17 @@
                                 {{#isnt status 'none'}}
                                     <span class="status-label status-label-{{status_dasherized}}">{{status_name}}</span>
                                 {{/isnt}}
+                                    <span class="status-label status-label-{{status_dasherized}}">{{status_name}}</span>
 
                                 {{#if pending}}
                                   <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
                                 {{/if}}
+                                  <span class="status-label status-label-pending-moderation">{{t 'pending_approval'}}</span>
 
                                 {{#if official}}
                                   <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                                 {{/if}}
+                                  <span class="status-label status-label-official">{{t 'official_comment'}}</span>
                               </header>
                               {{#isnt object_type 'comment'}}
                                 <nav
