@@ -1,6 +1,6 @@
 import { screen, render, waitFor, act } from "@testing-library/react";
 import type { ReactElement } from "react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApproverActions from "./ApproverActions";
 
