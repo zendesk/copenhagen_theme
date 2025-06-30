@@ -28,11 +28,9 @@ export async function submitServiceItemRequest(
       },
       body: JSON.stringify({
         request: {
-          subject: `Service request: ${serviceCatalogItem.name}`,
+          subject: `${serviceCatalogItem.name}`,
           comment: {
-            body: `Hi, I would like to request ${
-              serviceCatalogItem.name
-            }. ${serviceCatalogItem.description.substring(0, 100)}`,
+            html_body: `<a href="/hc/en-us/services/${serviceCatalogItem.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${serviceCatalogItem.name}</a>`,
           },
           ticket_form_id: serviceCatalogItem.form_id,
           custom_fields: [
