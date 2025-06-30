@@ -1,3 +1,12 @@
+# [4.6.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.2...v4.6.0-beta.3) (2025-06-30)
+
+
+### Features
+
+* add underline to description link ([4411613](https://github.com/zendesk/copenhagen_theme/commit/4411613b1221767c3469106277df3d1461f2f30e))
+* change request description to a link ([3e4d5a3](https://github.com/zendesk/copenhagen_theme/commit/3e4d5a3c059efa8b5492a1fab3bdf253cc0c62c8))
+* change request subject ([0d2f4b9](https://github.com/zendesk/copenhagen_theme/commit/0d2f4b949ad2ec2577d38b4d914f583f3a6cd127))
+
 # [4.6.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.1...v4.6.0-beta.2) (2025-06-19)
 
 
