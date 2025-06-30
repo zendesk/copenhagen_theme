@@ -90,8 +90,6 @@ describe("ServiceCatalogListItem", () => {
       const itemTitle = screen.getByTestId("service-catalog-list-item");
       const defaultBorderColor = "#d8dcde";
 
-      await user.unhover(itemTitle);
-
       expect(itemTitle).toHaveStyle(`border-color: ${defaultBorderColor}`);
 
       await user.hover(itemTitle);
