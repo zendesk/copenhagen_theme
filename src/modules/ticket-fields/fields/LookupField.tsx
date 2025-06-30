@@ -22,29 +22,27 @@ export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
   fields: TicketFieldObject[] = []
 ) {
-  const dynamicFilters = filter
-    ? [
-        ...filter.all.filter(
-          (filter) =>
-            filter.operator === "matches" || filter.operator === "not_matches"
-        ),
-        ...filter.any.filter(
-          (filter) =>
-            filter.operator === "matches" || filter.operator === "not_matches"
-        ),
-      ]
-    : [];
+  if (!filter) return [];
 
-  const parsedFilterId =
-    dynamicFilters && dynamicFilters[0]?.value.split("ticket_fields_")[1];
+  const dynamicFilters = [
+    ...filter.all.filter(
+      (f) => f.operator === "matches" || f.operator === "not_matches"
+    ),
+    ...filter.any.filter(
+      (f) => f.operator === "matches" || f.operator === "not_matches"
+    ),
+  ];
 
-  const field = fields.find((field) => {
-    const parsedFieldId = field.id.toString();
-
-    return parsedFieldId === parsedFilterId;
+  return dynamicFilters.map((f) => {
+    const parsedFilterId = f.value.split("ticket_fields_")[1];
+    const field = fields.find(
+      (field) => field.id.toString() === parsedFilterId
+    );
+    return {
+      key: f.value,
+      value: field?.value ?? null,
+    };
   });
-
-  return [dynamicFilters[0]?.value, field?.value];
 }
 
 export function getCustomObjectKey(targetType: string) {
@@ -139,15 +137,18 @@ export function LookupField({
       searchParams.set("field_id", fieldId.toString());
       searchParams.set("requester_id", userId.toString());
 
-      const [filterValue, fieldValue] = buildAdvancedDynamicFilterParams(
+      const filterPairs = buildAdvancedDynamicFilterParams(
         field.relationship_filter,
         visibleFields
       );
 
-      const fieldValueParam = fieldValue?.toString() || "";
-      const filterValueParam = `filter[dynamic_values][${filterValue}]`;
-
-      if (filterValue) searchParams.set(filterValueParam, fieldValueParam);
+      for (const { key: filterValue, value: fieldValue } of filterPairs) {
+        if (filterValue) {
+          const filterValueParam = `filter[dynamic_values][${filterValue}]`;
+          const fieldValueParam = fieldValue?.toString() || "";
+          searchParams.set(filterValueParam, fieldValueParam);
+        }
+      }
 
       if (organizationId) searchParams.set("organization_id", organizationId);
 
