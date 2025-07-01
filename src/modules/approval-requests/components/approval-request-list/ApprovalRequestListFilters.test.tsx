@@ -1,5 +1,5 @@
 import { screen, render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 import type { ReactElement } from "react";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApprovalRequestListFilters from "./ApprovalRequestListFilters";
