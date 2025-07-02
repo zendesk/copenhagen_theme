@@ -1,5 +1,5 @@
-import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
-import type { EndUserCondition } from "./data-types";
+import type { TicketFieldObject } from "./data-types/TicketFieldObject";
+import type { EndUserCondition } from "./data-types/EndUserCondition";
 
 function getFieldConditions(
   fieldId: number,
