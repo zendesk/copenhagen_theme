@@ -54,12 +54,12 @@ const TextContainer = styled.div`
 const StyledAvatar = styled(Avatar)`
   background-color: ${(props) => getColorV8("grey", 100, props.theme)};
   margin-bottom: ${(props) => props.theme.space.sm};
-`;
 
-const StyledShapesIcon = styled(ShapesIcon)`
-  height: 16px !important;
-  width: 16px !important;
-  color: ${(props) => getColorV8("grey", 600, props.theme)} !important;
+  && > svg {
+    width: 16px;
+    height: 16px;
+    color: ${(props) => getColorV8("grey", 600, props.theme)};
+  }
 `;
 
 const ServiceCatalogListItem = ({
@@ -78,7 +78,7 @@ const ServiceCatalogListItem = ({
         {serviceItem.thumbnail_url ? (
           <img src={serviceItem.thumbnail_url} alt="" />
         ) : (
-          <StyledShapesIcon aria-hidden="true" />
+          <ShapesIcon aria-hidden="true" />
         )}
       </StyledAvatar>
       <TextContainer>

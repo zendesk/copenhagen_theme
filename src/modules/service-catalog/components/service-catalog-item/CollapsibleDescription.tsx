@@ -58,12 +58,12 @@ const StyledAvatar = styled(Avatar)`
   width: 72px !important;
   height: 72px !important;
   background-color: ${(props) => getColorV8("grey", 100, props.theme)};
-`;
 
-const StyledShapesIcon = styled(ShapesIcon)`s
-  width: 28px !important;
-  height: 28px !important;
-  color: ${(props) => getColorV8("grey", 600, props.theme)} !important;
+  && > svg {
+    width: 28px;
+    height: 28px;
+    color: ${(props) => getColorV8("grey", 600, props.theme)};
+  }
 `;
 
 interface CollapsibleDescriptionProps {
@@ -95,7 +95,7 @@ export const CollapsibleDescription = ({
           {thumbnailUrl ? (
             <img src={thumbnailUrl} alt="" />
           ) : (
-            <StyledShapesIcon aria-hidden="true" />
+            <ShapesIcon aria-hidden="true" />
           )}
         </StyledAvatar>
         <ItemTitle tag="h1">{title}</ItemTitle>
