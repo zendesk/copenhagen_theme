@@ -2,6 +2,7 @@ import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import ShapesIcon from "@zendeskgarden/svg-icons/src/16/shapes-fill.svg";
 import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";
+import { Avatar } from "@zendeskgarden/react-avatars";
 
 const ItemContainer = styled.a`
   display: flex;
@@ -56,8 +57,20 @@ const IconContainer = styled.div`
   margin-bottom: ${(props) => props.theme.space.sm};
   width: ${(props) => props.theme.space.xl};
   height: ${(props) => props.theme.space.xl};
-  text-align: center;
-  align-content: center;
+  border-radius: ${({ theme }) => theme.borderRadii.md};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const StyledAvatar = styled(Avatar)`
+  background-color: ${(props) => getColorV8("grey", 100, props.theme)};
+`;
+
+const StyledShapesIcon = styled(ShapesIcon)`
+  height: 16px !important;
+  width: 16px !important;
+  color: ${(props) => getColorV8("grey", 600, props.theme)} !important;
 `;
 
 const ServiceCatalogListItem = ({
@@ -73,7 +86,13 @@ const ServiceCatalogListItem = ({
       href={`${helpCenterPath}/services/${serviceItem.id}`}
     >
       <IconContainer>
-        <ShapesIcon />
+        <StyledAvatar size="extraextrasmall" isSystem>
+          {serviceItem.thumbnail_url ? (
+            <img src={serviceItem.thumbnail_url} alt="" />
+          ) : (
+            <StyledShapesIcon aria-hidden="true" />
+          )}
+        </StyledAvatar>
       </IconContainer>
       <TextContainer>
         <ItemTitle>{serviceItem.name}</ItemTitle>
