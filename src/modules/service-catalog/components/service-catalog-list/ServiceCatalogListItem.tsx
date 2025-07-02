@@ -51,20 +51,9 @@ const TextContainer = styled.div`
   color: ${(props) => props.theme.colors.foreground};
 `;
 
-const IconContainer = styled.div`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
-  background-color: ${(props) => getColorV8("grey", 100, props.theme)};
-  margin-bottom: ${(props) => props.theme.space.sm};
-  width: ${(props) => props.theme.space.xl};
-  height: ${(props) => props.theme.space.xl};
-  border-radius: ${({ theme }) => theme.borderRadii.md};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 const StyledAvatar = styled(Avatar)`
   background-color: ${(props) => getColorV8("grey", 100, props.theme)};
+  margin-bottom: ${(props) => props.theme.space.sm};
 `;
 
 const StyledShapesIcon = styled(ShapesIcon)`
@@ -85,15 +74,13 @@ const ServiceCatalogListItem = ({
       data-testid="service-catalog-list-item-container"
       href={`${helpCenterPath}/services/${serviceItem.id}`}
     >
-      <IconContainer>
-        <StyledAvatar size="extraextrasmall" isSystem>
-          {serviceItem.thumbnail_url ? (
-            <img src={serviceItem.thumbnail_url} alt="" />
-          ) : (
-            <StyledShapesIcon aria-hidden="true" />
-          )}
-        </StyledAvatar>
-      </IconContainer>
+      <StyledAvatar size="medium" isSystem>
+        {serviceItem.thumbnail_url ? (
+          <img src={serviceItem.thumbnail_url} alt="" />
+        ) : (
+          <StyledShapesIcon aria-hidden="true" />
+        )}
+      </StyledAvatar>
       <TextContainer>
         <ItemTitle>{serviceItem.name}</ItemTitle>
         <ItemDescription>{serviceItem.description}</ItemDescription>
