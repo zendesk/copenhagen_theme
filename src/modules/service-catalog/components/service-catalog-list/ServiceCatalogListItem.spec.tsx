@@ -74,8 +74,10 @@ describe("ServiceCatalogListItem", () => {
         />
       );
 
-      const itemTitle = screen.getByTestId("service-catalog-list-item");
-      expect(itemTitle).toHaveStyle(`color: ${theme.colors.foreground}`);
+      const itemContainer = screen.getByTestId(
+        "service-catalog-list-item-container"
+      );
+      expect(itemContainer).toHaveStyle(`color: ${theme.colors.foreground}`);
     });
 
     it("should use primaryHue as card border color on hover", async () => {
@@ -87,14 +89,19 @@ describe("ServiceCatalogListItem", () => {
       );
 
       const user = userEvent.setup();
-      const itemTitle = screen.getByTestId("service-catalog-list-item");
-      const defaultBorderColor = "#d8dcde";
+      const itemContainer = screen.getByTestId(
+        "service-catalog-list-item-container"
+      );
+      const defaultBorderColor = DEFAULT_THEME.palette.grey?.[300];
 
-      expect(itemTitle).toHaveStyle(`border-color: ${defaultBorderColor}`);
+      expect(defaultBorderColor).toBeTruthy();
+      expect(itemContainer).toHaveStyle(`border-color: ${defaultBorderColor}`);
 
-      await user.hover(itemTitle);
+      await user.hover(itemContainer);
 
-      expect(itemTitle).toHaveStyle(`border-color: ${theme.colors.primaryHue}`);
+      expect(itemContainer).toHaveStyle(
+        `border-color: ${theme.colors.primaryHue}`
+      );
     });
   });
 });

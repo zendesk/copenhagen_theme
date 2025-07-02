@@ -69,7 +69,7 @@ const ServiceCatalogListItem = ({
 }) => {
   return (
     <ItemContainer
-      data-testid="service-catalog-list-item"
+      data-testid="service-catalog-list-item-container"
       href={`${helpCenterPath}/services/${serviceItem.id}`}
     >
       <IconContainer>
