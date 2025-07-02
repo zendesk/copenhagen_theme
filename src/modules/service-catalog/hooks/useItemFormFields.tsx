@@ -2,7 +2,9 @@ import { useCallback, useEffect, useState } from "react";
 import type { ServiceCatalogItem } from "../data-types/ServiceCatalogItem";
 import type { TicketField } from "../../ticket-fields/data-types/TicketField";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
+import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCondition";
 import { getCustomObjectKey } from "../../ticket-fields/fields/LookupField";
+import { getVisibleFields } from "../../ticket-fields/getVisibleFields";
 
 const getFieldValue = (field: TicketField) => {
   if (field.type === "tagger") {
@@ -52,6 +54,7 @@ const isAssociatedLookupField = (field: TicketField) => {
 interface FetchTicketFieldsResult {
   requestFields: TicketFieldObject[];
   associatedLookupField: TicketFieldObject | null;
+  endUserConditions: EndUserCondition[];
 }
 
 const fetchTicketFields = async (
@@ -77,7 +80,10 @@ const fetchTicketFields = async (
     throw new Error("Associated ticket form is not active");
   }
 
-  const ids = formData.ticket_form.ticket_field_ids;
+  const ticketForm = formData.ticket_form;
+  const ids = ticketForm.ticket_field_ids;
+  const endUserConditions = ticketForm.end_user_conditions || [];
+
   const ticketFieldsData = fieldsData.ticket_fields;
   let associatedLookupField: TicketFieldObject | null = null;
 
@@ -86,6 +92,7 @@ const fetchTicketFields = async (
       const ticketField = ticketFieldsData.find(
         (field: TicketField) => field.id === id
       );
+
       if (
         ticketField &&
         ticketField.type !== "subject" &&
@@ -105,28 +112,37 @@ const fetchTicketFields = async (
       return null;
     })
     .filter(Boolean);
+
   if (!associatedLookupField) {
     throw new Error("Associated lookup field not found");
   }
-  return { requestFields, associatedLookupField };
+
+  return { requestFields, associatedLookupField, endUserConditions };
 };
 
 export function useItemFormFields(
   serviceCatalogItem: ServiceCatalogItem | undefined,
   baseLocale: string
 ) {
-  const [requestFields, setRequestFields] = useState<TicketFieldObject[]>([]);
+  const [allRequestFields, setAllRequestFields] = useState<TicketFieldObject[]>(
+    []
+  );
+  const [endUserConditions, setEndUserConditions] = useState<
+    EndUserCondition[]
+  >([]);
   const [associatedLookupField, setAssociatedLookupField] =
     useState<TicketFieldObject | null>();
   const [error, setError] = useState<unknown>(null);
+
   useEffect(() => {
     const fetchAndSetFields = async () => {
       if (serviceCatalogItem && serviceCatalogItem.form_id) {
         try {
-          const { requestFields, associatedLookupField } =
+          const { requestFields, associatedLookupField, endUserConditions } =
             await fetchTicketFields(serviceCatalogItem.form_id, baseLocale);
-          setRequestFields(requestFields);
           setAssociatedLookupField(associatedLookupField);
+          setEndUserConditions(endUserConditions);
+          setAllRequestFields(requestFields);
         } catch (error) {
           setError(error);
         }
@@ -138,22 +154,24 @@ export function useItemFormFields(
 
   const handleChange = useCallback(
     (field: TicketFieldObject, value: TicketFieldObject["value"]) => {
-      setRequestFields(
-        requestFields.map((ticketField) =>
-          ticketField.name === field.name
-            ? { ...ticketField, value }
-            : ticketField
-        )
+      const updatedFields = allRequestFields.map((ticketField) =>
+        ticketField.name === field.name
+          ? { ...ticketField, value }
+          : ticketField
       );
+
+      setAllRequestFields(updatedFields);
     },
-    [requestFields]
+    [allRequestFields]
   );
+
+  const requestFields = getVisibleFields(allRequestFields, endUserConditions);
 
   return {
     requestFields,
     associatedLookupField,
     error,
-    setRequestFields,
+    setRequestFields: setAllRequestFields,
     handleChange,
   };
 }
