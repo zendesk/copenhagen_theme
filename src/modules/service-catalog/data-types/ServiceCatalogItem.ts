@@ -3,4 +3,5 @@ export interface ServiceCatalogItem {
   name: string;
   description: string;
   form_id: number;
+  thumbnail_url: string;
 }

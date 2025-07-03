@@ -6,6 +6,7 @@ import ChevronDown from "@zendeskgarden/svg-icons/src/16/chevron-down-fill.svg";
 import { useTranslation } from "react-i18next";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { XXXL } from "@zendeskgarden/react-typography";
+import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 
 const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}
@@ -20,6 +21,7 @@ const DescriptionWrapper = styled.div`
 
 const ItemTitle = styled(XXXL)`
   font-weight: ${(props) => props.theme.fontWeights.semibold};
+  margin-bottom: 0;
 `;
 
 const CollapsibleText = styled.div<{ expanded: boolean }>`
@@ -44,9 +46,17 @@ const ToggleButton = styled(Button)`
   }
 `;
 
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: ${(props) => props.theme.space.md};
+`;
+
 interface CollapsibleDescriptionProps {
   title: string;
   description: string;
+  thumbnailUrl: string;
 }
 
 const DESCRIPTION_LENGTH_THRESHOLD = 270;
@@ -54,6 +64,7 @@ const DESCRIPTION_LENGTH_THRESHOLD = 270;
 export const CollapsibleDescription = ({
   title,
   description,
+  thumbnailUrl,
 }: CollapsibleDescriptionProps) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const { t } = useTranslation();
@@ -66,7 +77,10 @@ export const CollapsibleDescription = ({
 
   return (
     <DescriptionWrapper>
-      <ItemTitle tag="h1">{title}</ItemTitle>
+      <HeaderContainer>
+        <ItemThumbnail size="large" url={thumbnailUrl} />
+        <ItemTitle tag="h1">{title}</ItemTitle>
+      </HeaderContainer>
       {description && (
         <CollapsibleText
           className="service-catalog-description"

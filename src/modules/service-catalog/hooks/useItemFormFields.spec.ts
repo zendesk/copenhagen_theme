@@ -8,6 +8,7 @@ describe("useItemFormFields", () => {
     name: "Test Item",
     description: "Test Description",
     form_id: 1,
+    thumbnail_url: "",
   };
 
   const textField = {

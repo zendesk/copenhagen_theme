@@ -1,7 +1,7 @@
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
-import ShapesIcon from "@zendeskgarden/svg-icons/src/16/shapes-fill.svg";
 import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";
+import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 
 const ItemContainer = styled.a`
   display: flex;
@@ -48,16 +48,7 @@ const TextContainer = styled.div`
   align-items: flex-start;
   gap: ${(props) => props.theme.space.xxs};
   color: ${(props) => props.theme.colors.foreground};
-`;
-
-const IconContainer = styled.div`
-  color: ${(props) => getColorV8("grey", 600, props.theme)};
-  background-color: ${(props) => getColorV8("grey", 100, props.theme)};
-  margin-bottom: ${(props) => props.theme.space.sm};
-  width: ${(props) => props.theme.space.xl};
-  height: ${(props) => props.theme.space.xl};
-  text-align: center;
-  align-content: center;
+  margin-top: ${(props) => props.theme.space.sm};
 `;
 
 const ServiceCatalogListItem = ({
@@ -72,9 +63,7 @@ const ServiceCatalogListItem = ({
       data-testid="service-catalog-list-item-container"
       href={`${helpCenterPath}/services/${serviceItem.id}`}
     >
-      <IconContainer>
-        <ShapesIcon />
-      </IconContainer>
+      <ItemThumbnail size="medium" url={serviceItem.thumbnail_url} />
       <TextContainer>
         <ItemTitle>{serviceItem.name}</ItemTitle>
         <ItemDescription>{serviceItem.description}</ItemDescription>

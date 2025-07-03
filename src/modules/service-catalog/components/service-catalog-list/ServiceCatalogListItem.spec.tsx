@@ -30,6 +30,7 @@ describe("ServiceCatalogListItem", () => {
     name: "Atl Nacional keyboard",
     description: "This is a keyboard from Atl Nacional",
     form_id: 456,
+    thumbnail_url: "",
   };
 
   const mockHelpCenterPath = "/hc/en-us";

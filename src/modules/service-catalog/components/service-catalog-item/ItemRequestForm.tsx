@@ -113,6 +113,7 @@ export function ItemRequestForm({
         <CollapsibleDescription
           title={serviceCatalogItem.name}
           description={serviceCatalogItem.description}
+          thumbnailUrl={serviceCatalogItem.thumbnail_url}
         />
         <FieldsContainer>
           {requestFields.map((field) => (
