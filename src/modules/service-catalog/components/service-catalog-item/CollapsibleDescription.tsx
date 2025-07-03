@@ -6,7 +6,7 @@ import ChevronDown from "@zendeskgarden/svg-icons/src/16/chevron-down-fill.svg";
 import { useTranslation } from "react-i18next";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { XXXL } from "@zendeskgarden/react-typography";
-import ItemThumbnail from "../service-catalog-list/ItemThumbnail";
+import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 
 const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}

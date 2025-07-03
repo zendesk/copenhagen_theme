@@ -1,7 +1,7 @@
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";
-import ItemThumbnail from "./ItemThumbnail";
+import { ItemThumbnail } from "../item-thumbnail/ItemThumbnail";
 
 const ItemContainer = styled.a`
   display: flex;

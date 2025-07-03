@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { Avatar } from "@zendeskgarden/react-avatars";
 
-const StyledAvatar = styled(Avatar)<{ size: string }>`
+const StyledAvatar = styled(Avatar)<{ size: "medium" | "large" }>`
   background-color: ${(props) => getColorV8("grey", 100, props.theme)};
   width: ${(props) => (props.size === "large" ? 72 : 40)}px !important;
   height: ${(props) => (props.size === "large" ? 72 : 40)}px !important;
@@ -20,12 +20,10 @@ type ItemThumbnailProps = {
   url?: string | null;
 };
 
-const ItemThumbnail = ({ size, url }: ItemThumbnailProps) => {
+export const ItemThumbnail = ({ size, url }: ItemThumbnailProps) => {
   return (
     <StyledAvatar size={size} isSystem>
       {url ? <img src={url} alt="" /> : <ShapesIcon aria-hidden="true" />}
     </StyledAvatar>
   );
 };
-
-export default ItemThumbnail;
