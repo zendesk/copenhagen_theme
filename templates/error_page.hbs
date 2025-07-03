@@ -11,6 +11,7 @@
   {{/is}}
 
   {{#is error 'not_found'}}
+
     <h2>{{t 'nonexistent_page'}}</h2>
     <p>{{t 'mistyped_address_or_moved_page'}}</p>
   {{/is}}
@@ -19,3 +20,65 @@
     {{t 'back_to_homepage'}}
   {{/link}}
 </div>
+
+
+<section class="section hero hero-error" style="margin-bottom: 0;">
+  <div class="container">
+    <div class="row">
+      <div>
+        <p class="h1">Looks like that page can't be found.</p>
+        <p class="lead">Don't worry, it's easy to get lost in the digital environment. Let's get you back on track.</p>
+        <a href="/" class="button">Return home</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="main-content">
+    <!-- search bar -->
+    <section class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="container site-search">
+        <p class="h2 strong">Let us help find what you were looking for</p>
+        <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+        {{search instant=settings.instant_search class='search search-full search-home'}}
+      </div>
+    </section>
+
+
+
+    {{#if promoted_articles}}
+
+    <section class="section">
+      <div class="container knowledge-base promoted-articles">
+        <!-- promoted articles -->
+        <h2>{{t 'promoted_articles'}}</h2>
+        <div class="articles-list row row-cols-md-3 g-2">
+          {{#each promoted_articles}}
+          
+          <div class="single-article">
+            <div class="article-border">
+              <div class="article-thumbnail">
+                <div class="article-icon">
+                  <img src="{{../settings.promoted_icon}}">
+                </div>
+                <div class="article-copy">
+                  <a class="article-link" href="{{url}}">
+                    <span class="article-title{{#if internal}} article-title-internal{{/if}}">{{title}}</span>
+                    {{#if internal}}
+                      <i class="fa far fa-lock-alt internal-article-icon" title="{{t 'internal'}}"></i>
+                    {{/if}}
+                    <span class="article-description">{{snippet}}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+
+    {{/if}}
+
+    </div>

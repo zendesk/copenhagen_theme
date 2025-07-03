@@ -1,13 +1,13 @@
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
-  background-color: #038153;
+  background-color: $q-bg-success-strong;
   border-radius: 4px;
-  color: #fff;
+  color: $q-text-inverse-strong;
   font-size: 12px;
   font-weight: $font-weight-semibold;
   margin-right: 2px;
-  padding: 3px 10px;
+  padding: 4px 12px;
   vertical-align: middle;
   white-space: nowrap;
   display: inline-block;
@@ -47,21 +47,25 @@
 
   &-not-planned,
   &-closed {
-    background-color: #e9ebed;
-    color: $secondary-text-color;
+    background-color: $q-bg-weaker;
+  //  background-color: #e9ebed;
+    color: $q-text-strong;
   }
 
   &-pending,
   &-pending-moderation {
-    background-color: #1f73b7;
+  //  background-color: #1f73b7;
+    background-color: $q-bg-info-strong;
     text-align: center;
   }
 
   &-open {
-    background-color: #c72a1c;
+  //  background-color: #c72a1c;
+    background-color: $q-bg-danger-strong;
   }
 
   &-solved {
+    background-color: #68737d;
     background-color: #68737d;
   }
 

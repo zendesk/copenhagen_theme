@@ -20,7 +20,45 @@
       </div>
     </section>
 
+    
+
+    {{#if promoted_articles}}
+
     <section class="section">
+      <div class="container knowledge-base promoted-articles">
+        <!-- promoted articles -->
+        <h2>{{t 'promoted_articles'}}</h2>
+        <div class="articles-list row row-cols-md-3 g-2">
+          {{#each promoted_articles}}
+          
+          <div class="single-article">
+            <div class="article-border">
+              <div class="article-thumbnail">
+                <div class="article-icon">
+                  <img src="{{../settings.promoted_icon}}">
+                </div>
+                <div class="article-copy">
+                  <a class="article-link" href="{{url}}">
+                    <span class="article-title{{#if internal}} article-title-internal{{/if}}">{{title}}</span>
+                    {{#if internal}}
+                      <i class="fa far fa-lock-alt internal-article-icon" title="{{t 'internal'}}"></i>
+                    {{/if}}
+                    <span class="article-description">{{snippet}}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+      </div>
+    </section>
+
+
+    {{/if}}
+
+
+    <section class="section bg-subtle">
       <div class="container knowledge-base categories">
         <!-- categories -->
         <h2>{{ t 'categories' }}</h2>
@@ -62,42 +100,6 @@
         </div>
       </div>
     </section>
-
-
-    {{#if promoted_articles}}
-
-    <section class="section bg-subtle">
-      <div class="container knowledge-base promoted-articles">
-        <!-- promoted articles -->
-        <h2>{{t 'promoted_articles'}}</h2>
-        <div class="articles-list row row-cols-md-3 g-2">
-          {{#each promoted_articles}}
-          
-          <div class="single-article">
-            <div class="article-border">
-              <div class="article-thumbnail">
-                <div class="article-icon">
-                  <img src="{{../settings.promoted_icon}}">
-                </div>
-                <div class="article-copy">
-                  <a class="article-link" href="{{url}}">
-                    <span class="article-title{{#if internal}} article-title-internal{{/if}}">{{title}}</span>
-                    {{#if internal}}
-                      <i class="fa far fa-lock-alt internal-article-icon" title="{{t 'internal'}}"></i>
-                    {{/if}}
-                    <span class="article-description">{{snippet}}</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{/each}}
-        </div>
-      </div>
-    </section>
-
-
-    {{/if}}
 
 
     <section class="section">
