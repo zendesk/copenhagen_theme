@@ -6,8 +6,7 @@ import ChevronDown from "@zendeskgarden/svg-icons/src/16/chevron-down-fill.svg";
 import { useTranslation } from "react-i18next";
 import { getColorV8 } from "@zendeskgarden/react-theming";
 import { XXXL } from "@zendeskgarden/react-typography";
-import { Avatar } from "@zendeskgarden/react-avatars";
-import ShapesIcon from "@zendeskgarden/svg-icons/src/16/shapes-fill.svg";
+import ItemThumbnail from "../service-catalog-list/ItemThumbnail";
 
 const DescriptionWrapper = styled.div`
   border-bottom: ${(props) => props.theme.borders.sm}
@@ -54,18 +53,6 @@ const HeaderContainer = styled.div`
   gap: ${(props) => props.theme.space.md};
 `;
 
-const StyledAvatar = styled(Avatar)`
-  width: 72px !important;
-  height: 72px !important;
-  background-color: ${(props) => getColorV8("grey", 100, props.theme)};
-
-  && > svg {
-    width: 28px;
-    height: 28px;
-    color: ${(props) => getColorV8("grey", 600, props.theme)};
-  }
-`;
-
 interface CollapsibleDescriptionProps {
   title: string;
   description: string;
@@ -91,13 +78,7 @@ export const CollapsibleDescription = ({
   return (
     <DescriptionWrapper>
       <HeaderContainer>
-        <StyledAvatar isSystem>
-          {thumbnailUrl ? (
-            <img src={thumbnailUrl} alt="" />
-          ) : (
-            <ShapesIcon aria-hidden="true" />
-          )}
-        </StyledAvatar>
+        <ItemThumbnail size="large" url={thumbnailUrl} />
         <ItemTitle tag="h1">{title}</ItemTitle>
       </HeaderContainer>
       {description && (
