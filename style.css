@@ -1713,13 +1713,13 @@ section.hero {
   text-align: left;
   width: 100%;
 }
-section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile {
+section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile, section.hero-error {
   padding: 64px 0;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before, section.hero-error::before {
   content: "";
   height: 200vw;
   width: 200vw;
@@ -1729,11 +1729,11 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
 }
-section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container {
+section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container, section.hero-error > .container {
   position: relative;
   color: #ffffff;
 }
-section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1 {
+section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1, section.hero-error .h1 {
   font-weight: 600;
   font-size: 2.625rem;
   line-height: 1;
@@ -3732,13 +3732,13 @@ code.hljs {
 /***** Status labels *****/
 /* Styles labels used in posts, articles and requests */
 .status-label {
-  background-color: #038153;
+  background-color: #268460;
   border-radius: 4px;
-  color: #fff;
+  color: #ffffff;
   font-size: 12px;
   font-weight: 600;
   margin-right: 2px;
-  padding: 3px 10px;
+  padding: 4px 12px;
   vertical-align: middle;
   white-space: nowrap;
   display: inline-block;
@@ -3770,17 +3770,18 @@ code.hljs {
   right: auto;
 }
 .status-label-not-planned, .status-label-closed {
-  background-color: #e9ebed;
-  color: #364255;
+  background-color: #e2e8f0;
+  color: #0f172a;
 }
 .status-label-pending, .status-label-pending-moderation {
-  background-color: #1f73b7;
+  background-color: #007f9c;
   text-align: center;
 }
 .status-label-open {
-  background-color: #c72a1c;
+  background-color: #b84c56;
 }
 .status-label-solved {
+  background-color: #68737d;
   background-color: #68737d;
 }
 .status-label-new {
@@ -4910,6 +4911,7 @@ code.hljs {
 .profile-contribution {
   padding: 32px;
   background-color: #f1f5f9;
+  position: relative;
 }
 .profile-contribution-title {
   font-weight: bold;
