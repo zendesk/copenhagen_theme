@@ -109,7 +109,8 @@
     "wait-on": "8.0.3"
   },
   "resolutions": {
-    "@types/react": "^17.x"
+    "@types/react": "^17.x",
+    "nwsapi": "^2.2.20"
   },
   "commitlint": {
     "extends": [

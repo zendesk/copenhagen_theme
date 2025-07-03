@@ -11,17 +11,15 @@ const ItemContainer = styled.a`
   padding: ${(props) => props.theme.space.md};
   border: ${(props) => props.theme.borders.sm}
     ${(props) => getColorV8("grey", 300, props.theme)};
-  color: ${(props) => getColorV8("grey", 800, props.theme)};
+  color: ${(props) => props.theme.colors.foreground};
 
   &:hover {
-    text-decoration: none;
-    border: ${(props) => props.theme.borders.sm};
-    border-color: ${(props) => getColorV8("blue", 600, props.theme)};
+    border-color: ${(props) => props.theme.colors.primaryHue};
   }
 
+  &:hover,
   &:visited {
     text-decoration: none;
-    color: ${(props) => getColorV8("grey", 800, props.theme)};
   }
 `;
 
@@ -49,6 +47,7 @@ const TextContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: ${(props) => props.theme.space.xxs};
+  color: ${(props) => props.theme.colors.foreground};
 `;
 
 const IconContainer = styled.div`
@@ -69,7 +68,10 @@ const ServiceCatalogListItem = ({
   helpCenterPath: string;
 }) => {
   return (
-    <ItemContainer href={`${helpCenterPath}/services/${serviceItem.id}`}>
+    <ItemContainer
+      data-testid="service-catalog-list-item-container"
+      href={`${helpCenterPath}/services/${serviceItem.id}`}
+    >
       <IconContainer>
         <ShapesIcon />
       </IconContainer>
