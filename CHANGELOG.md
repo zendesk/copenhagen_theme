@@ -1,3 +1,18 @@
+# [4.6.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.4...v4.6.0-beta.5) (2025-07-03)
+
+
+### Bug Fixes
+
+* enlarge thumbnail icons on Service Catalog list page to full 40px ([251aefd](https://github.com/zendesk/copenhagen_theme/commit/251aefd766da29dc95a094ac69f284afd860d5de))
+* extract Service Catalog thumbnail to separate component ([5c6a5c2](https://github.com/zendesk/copenhagen_theme/commit/5c6a5c2c64de544f7b85b8598a748ba15e552224))
+* refactore ShapesIcon for thumbnails to avoid unnecessary css important ([98be572](https://github.com/zendesk/copenhagen_theme/commit/98be572314c07bd4315a001b75a3826054606c3b))
+
+
+### Features
+
+* display thumbnail on Service Catalog item page ([c48db69](https://github.com/zendesk/copenhagen_theme/commit/c48db69eaa92585cb01660427e527fe379700035))
+* display thumbnails in the services item list ([43652e0](https://github.com/zendesk/copenhagen_theme/commit/43652e0826a35bd74c17e52897eb7f378530bc84))
+
 # [4.6.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.3...v4.6.0-beta.4) (2025-07-03)
 
 
