@@ -6,17 +6,15 @@ import{s as e,B as n,j as t,a6 as s,a7 as r,a8 as a,a9 as o,aa as i,u as l,ab as
   padding: ${e=>e.theme.space.md};
   border: ${e=>e.theme.borders.sm}
     ${e=>n("grey",300,e.theme)};
-  color: ${e=>n("grey",800,e.theme)};
+  color: ${e=>e.theme.colors.foreground};
 
   &:hover {
-    text-decoration: none;
-    border: ${e=>e.theme.borders.sm};
-    border-color: ${e=>n("blue",600,e.theme)};
+    border-color: ${e=>e.theme.colors.primaryHue};
   }
 
+  &:hover,
   &:visited {
     text-decoration: none;
-    color: ${e=>n("grey",800,e.theme)};
   }
 `,R=e.div`
   font-size: ${e=>e.theme.fontSizes.md};
@@ -38,6 +36,7 @@ import{s as e,B as n,j as t,a6 as s,a7 as r,a8 as a,a9 as o,aa as i,u as l,ab as
   flex-direction: column;
   align-items: flex-start;
   gap: ${e=>e.theme.space.xxs};
+  color: ${e=>e.theme.colors.foreground};
 `,O=e.div`
   color: ${e=>n("grey",600,e.theme)};
   background-color: ${e=>n("grey",100,e.theme)};
@@ -46,7 +45,7 @@ import{s as e,B as n,j as t,a6 as s,a7 as r,a8 as a,a9 as o,aa as i,u as l,ab as
   height: ${e=>e.theme.space.xl};
   text-align: center;
   align-content: center;
-`,V=({serviceItem:e,helpCenterPath:n})=>t.jsxs(A,{href:`${n}/services/${e.id}`,children:[t.jsx(O,{children:t.jsx(s,{})}),t.jsxs(U,{children:[t.jsx(R,{children:e.name}),t.jsx(T,{children:e.description})]})]}),N=e(r)`
+`,V=({serviceItem:e,helpCenterPath:n})=>t.jsxs(A,{"data-testid":"service-catalog-list-item-container",href:`${n}/services/${e.id}`,children:[t.jsx(O,{children:t.jsx(s,{})}),t.jsxs(U,{children:[t.jsx(R,{children:e.name}),t.jsx(T,{children:e.description})]})]}),N=e(r)`
   padding: 0;
 `,B=e(a)`
   @media (min-width: 0px) {

@@ -1,3 +1,10 @@
+# [4.6.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.3...v4.6.0-beta.4) (2025-07-03)
+
+
+### Bug Fixes
+
+* **theme:** use colors from theme settings ([87ae95e](https://github.com/zendesk/copenhagen_theme/commit/87ae95e8bac774762973614025f12bbcd217672a))
+
 # [4.6.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.2...v4.6.0-beta.3) (2025-06-30)
 
 
