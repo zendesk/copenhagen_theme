@@ -1,4 +1,4 @@
-import type { EndUserCondition } from "./EndUserCondition";
+import type { EndUserCondition } from "../../ticket-fields/data-types/EndUserCondition";
 import type { AttachmentField } from "./AttachmentsField";
 import type { HiddenField } from "./HiddenField";
 import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";

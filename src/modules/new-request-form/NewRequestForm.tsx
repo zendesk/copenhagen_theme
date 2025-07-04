@@ -8,7 +8,7 @@ import { Alert } from "@zendeskgarden/react-notifications";
 import { useFormSubmit } from "./useFormSubmit";
 import { usePrefilledTicketFields } from "./usePrefilledTicketFields";
 import { Attachments } from "./fields/attachments/Attachments";
-import { getVisibleFields } from "./getVisibleFields";
+import { getVisibleFields } from "../ticket-fields/getVisibleFields";
 import { CcField } from "./fields/cc-field/CcField";
 import { SuggestedArticles } from "./suggested-articles/SuggestedArticles";
 import { AnswerBotModal } from "./answer-bot-modal/AnswerBotModal";
