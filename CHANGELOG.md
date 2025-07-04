@@ -1,3 +1,10 @@
+# [4.6.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.5...v4.6.0-beta.6) (2025-07-04)
+
+
+### Features
+
+* filter fields in Item page by end user conditions ([e86714e](https://github.com/zendesk/copenhagen_theme/commit/e86714eb023be0c37769aad367c6f0e3a03abe0a))
+
 # [4.6.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.4...v4.6.0-beta.5) (2025-07-03)
 
 
