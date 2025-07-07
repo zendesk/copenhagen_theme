@@ -40,7 +40,7 @@
   "approval-requests.request.ticket-details.priority_urgent": "مستعجلة",
   "approval-requests.request.ticket-details.requester": "الطالب",
   "approval-requests.status.approved": "مقبول",
-  "approval-requests.status.decision-pending": "القرار قيد العمل",
+  "approval-requests.status.decision-pending": "بانتظار صدور قرار",
   "approval-requests.status.denied": "مرفوض",
   "approval-requests.status.info-needed": "هناك حاجة إلى معلومات",
   "approval-requests.status.withdrawn": "تم السحب"
