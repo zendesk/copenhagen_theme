@@ -1,3 +1,10 @@
+# [4.6.0-beta.7](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.6...v4.6.0-beta.7) (2025-07-07)
+
+
+### Bug Fixes
+
+* updated translations ([23c76a3](https://github.com/zendesk/copenhagen_theme/commit/23c76a32ece8d03115bc6a57e32bcf067b0cad15))
+
 # [4.6.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.5...v4.6.0-beta.6) (2025-07-04)
 
 
