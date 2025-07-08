@@ -1,7 +1,7 @@
 import { expect, jest, describe, it, beforeEach } from "@jest/globals";
 import crypto from "crypto";
 import { fireEvent, screen } from "@testing-library/dom";
-import userEvent from "@testing-library/user-event";
+import { userEvent } from "@testing-library/user-event";
 
 import Dropdown from "./Dropdown";
 

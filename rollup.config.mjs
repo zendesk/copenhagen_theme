@@ -35,6 +35,8 @@ export default defineConfig([
     input: {
       "new-request-form": "src/modules/new-request-form/index.tsx",
       "flash-notifications": "src/modules/flash-notifications/index.ts",
+      "service-catalog": "src/modules/service-catalog/index.tsx",
+      "approval-requests": "src/modules/approval-requests/index.tsx",
     },
     output: {
       dir: "assets",
@@ -49,6 +51,10 @@ export default defineConfig([
 
         if (id.includes("node_modules") || id.includes("src/modules/shared")) {
           return "shared";
+        }
+
+        if (id.includes("src/modules/ticket-fields")) {
+          return "ticket-fields";
         }
 
         // Bundle all files from `src/modules/MODULE_NAME/translations/locales/*.json to `${MODULE_NAME}-translations.js`

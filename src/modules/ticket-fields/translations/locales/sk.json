@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(posledné 4 číslice)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Vyberte možnosť",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Načítavajú sa položky…",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenašli sa žiadne zhody",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Vyhľadávať {{label}}"
+}

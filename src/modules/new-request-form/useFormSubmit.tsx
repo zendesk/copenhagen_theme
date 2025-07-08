@@ -1,7 +1,7 @@
 import type { FormEventHandler } from "react";
 import { useRef, useCallback } from "react";
-import type { Field } from "./data-types";
 import { fetchCsrfToken } from "./fetchCsrfToken";
+import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
 
 interface UseFormSubmit {
   formRefCallback: (ref: HTMLFormElement) => void;
@@ -16,7 +16,9 @@ interface UseFormSubmit {
  * @param ticketFields array of ticket fields for the form
  * @returns a Ref callback and a submit handler
  */
-export function useFormSubmit(ticketFields: Field[]): UseFormSubmit {
+export function useFormSubmit(
+  ticketFields: TicketFieldObject[]
+): UseFormSubmit {
   const initialized = useRef(false);
   const isSubmitting = useRef(false);
 

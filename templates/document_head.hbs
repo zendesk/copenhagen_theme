@@ -13,8 +13,13 @@
   "imports": {
     "new-request-form": "{{asset 'new-request-form-bundle.js'}}",
     "flash-notifications": "{{asset 'flash-notifications-bundle.js'}}",
+    "service-catalog": "{{asset 'service-catalog-bundle.js'}}",
+    "approval-requests": "{{asset 'approval-requests-bundle.js'}}",
+    "approval-requests-translations": "{{asset 'approval-requests-translations-bundle.js'}}",
     "new-request-form-translations": "{{asset 'new-request-form-translations-bundle.js'}}",
+    "service-catalog-translations": "{{asset 'service-catalog-translations-bundle.js'}}",
     "shared": "{{asset 'shared-bundle.js'}}",
+    "ticket-fields": "{{asset 'ticket-fields-bundle.js'}}",
     "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}"
   }
 }
@@ -23,7 +28,7 @@
   import { renderFlashNotifications } from "flash-notifications";
 
   const settings = {{json settings}};
-  const closeLabel = {{json (t 'close')}}
+  const baseLocale = {{json help_center.base_locale}};
 
-  renderFlashNotifications(settings, closeLabel);
+  renderFlashNotifications(settings, baseLocale);
 </script>

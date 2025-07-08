@@ -14,6 +14,7 @@
     <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
       <ul class="user-nav-list">
         <li>{{link 'community'}}</li>
+        <li>{{link 'service_catalog'}}</li>
         <li>{{link 'new_request' class='submit-a-request'}}</li>
         {{#unless signed_in}}
           <li>
@@ -39,6 +40,7 @@
           {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
           {{link "requests" role="menuitem"}}
           {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
+          {{link "approval_requests" role="menuitem"}}
           {{contact_details role="menuitem"}}
           {{change_password role="menuitem"}}
           <div class="separator" role="separator"></div>
@@ -71,6 +73,7 @@
           </li>
           <li class="item">{{link "requests"}}</li>
           <li class="item">{{#link "contributions"}}{{t "activities"}}{{/link}}</li>
+          <li class="item">{{link "approval_requests"}}</li>
           <li class="item">{{contact_details}}</li>
           <li class="item">{{change_password class='change-password'}}</li>
           <li class="nav-divider"></li>
@@ -84,6 +87,7 @@
         {{/if}}
         <li class="item">{{link 'community'}}</li>
         <li class="item">{{link 'new_request' class='submit-a-request'}}</li>
+        <li class="item">{{link 'service_catalog'}}</li>
         <li class="nav-divider"></li>
         {{#if signed_in}}
           <li class="item">
