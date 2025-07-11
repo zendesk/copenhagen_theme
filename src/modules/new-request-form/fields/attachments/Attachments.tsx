@@ -17,6 +17,7 @@ import { useNotify } from "../../../shared/notifications/useNotify";
 
 interface AttachmentProps {
   field: AttachmentField;
+  locale?: string;
 }
 
 async function fetchCsrfToken() {
@@ -37,7 +38,7 @@ export interface UploadFileResponse {
   };
 }
 
-export function Attachments({ field }: AttachmentProps): JSX.Element {
+export function Attachments({ field, locale }: AttachmentProps): JSX.Element {
   const { label, error, name, attachments } = field;
   const {
     files,
@@ -127,6 +128,7 @@ export function Attachments({ field }: AttachmentProps): JSX.Element {
 
         const url = new URL(`${window.location.origin}/api/v2/uploads.json`);
         url.searchParams.append("filename", file.name);
+        url.searchParams.append("locale", locale);
         xhr.open("POST", url);
 
         // If the browser returns a type for the file, use it as the Content-Type header,

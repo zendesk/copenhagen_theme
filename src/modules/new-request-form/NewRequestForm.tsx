@@ -247,7 +247,9 @@ export function NewRequestForm({
             );
           }
         })}
-        {attachments_field && <Attachments field={attachments_field} />}
+        {attachments_field && (
+          <Attachments field={attachments_field} locale={locale} />
+        )}
         {inline_attachments_fields.map(({ type, name, value }, index) => (
           <input key={index} type={type} name={name} value={value} />
         ))}
