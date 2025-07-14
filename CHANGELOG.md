@@ -1,3 +1,10 @@
+# [4.7.0](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0...v4.7.0) (2025-07-14)
+
+
+### Features
+
+* adds support for multiple dynamic filters ([2605a4b](https://github.com/zendesk/copenhagen_theme/commit/2605a4b9c5cae1e9f358f8db16a157117a3885f6))
+
 # [4.6.0](https://github.com/zendesk/copenhagen_theme/compare/v4.5.0...v4.6.0) (2025-07-08)
 
 
