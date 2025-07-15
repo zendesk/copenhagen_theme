@@ -4741,6 +4741,58 @@ code.hljs {
   padding-top: 20px;
 }
 
+.requests {
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 25%     | 75%     | 0%
+  */
+  background: #FFFFFF;
+  padding: 16px;
+  flex: 1 0 auto;
+  margin-bottom: 80px;
+}
+@media (min-width: 768px) {
+  .requests {
+    flex: 1 1 75%;
+    max-width: 75%;
+    min-width: 640px;
+    padding: 32px;
+  }
+}
+.requests-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .requests-container {
+    flex-direction: row;
+  }
+}
+.requests-sidebar {
+  flex: 1 0 auto;
+  margin-bottom: 16px;
+  position: sticky;
+  top: 0px;
+}
+@media (min-width: 768px) {
+  .requests-sidebar {
+    border: 0;
+    flex: 0 0 25%;
+    height: auto;
+    max-width: 25%;
+    margin-right: 16px;
+  }
+}
+.requests-sidebar-sticky {
+  position: sticky;
+  top: 71px;
+}
+.requests-sidebar .search-container {
+  margin-bottom: 16px;
+}
+
 /***** Pagination *****/
 .pagination {
   margin: 20px 0;
