@@ -1,4 +1,4 @@
-<section class="section hero hero-following">
+<section class="section hero hero-activities">
   <div class="container">
     <div class="row">
       <div class="">
@@ -13,8 +13,86 @@
   </div>
 </section>
 
+<div class="container">
+  <div class="activities-container" id="activities-container">
+    <aside class="activities-sidebar" aria-labelledby="section-activities-title">
+      <div class="activities-sidebar-sticky activities-filter-container">
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+          </button>
+          
+          <h4 class="collapsible-sidebar-title sidenav-title">Activities</h4>
+          <div class="collapsible-sidebar-body">
+            <ul>
+              <li>{{link 'contributions'}}</li>
+              <li class="current">
+                <a href="{{page_path 'following'}}" aria-current="page">{{ t 'following' }}</a>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+          </button>
+        
+          <h4 class="collapsible-sidebar-title sidenav-title">Filter by type</h4>
+              {{#each filters}}
+                {{#if selected}}
+                  <li class=""><a href="{{url}}" class="current active" aria-current="page">{{name}}</a></li>
+                {{else}}
+                  <li><a href="{{url}}">{{name}}</a></li>
+                {{/if}}
+              {{/each}}
+        </section>
+      </div>
+    </aside>
 
-
-
-
-
+    <article id="main-content" class="requests">
+      <section class="article-info">
+        <div class="article-content">
+          <div class="article-body">
+            <h2>{{ t 'following' }}</h2>
+            {{#if subscriptions}}
+              <table class="table my-activities-table subscriptions-table">
+                <thead>
+                  <tr>
+                    <th>{{t 'title'}}</th>
+                    <th>{{t 'type'}}</th>
+                    <th>{{t 'subscription'}}</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each subscriptions}}
+                    <tr>
+                      <td>
+                        {{#is type 'user'}}
+                          <img class="user-avatar" src="{{avatar_url}}" alt="">
+                        {{/is}}
+                        <a href="{{url}}" title="{{title}}" class="striped-list-title">
+                          {{excerpt title characters=60}}
+                        </a>
+                      </td>
+                      <td>{{name}}</td>
+                      <td>{{following}}</td>
+                      <td class="subscriptions-subscribe">
+                        {{subscribe}}
+                      </td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            {{pagination}}
+            {{else}}
+              <p class="no-activities">{{t 'not_following'}}</p>
+            {{/if}}
+          </div>
+        </div>
+      </section>
+    </article>
+  </div>
+</div>

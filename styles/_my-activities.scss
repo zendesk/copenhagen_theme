@@ -181,6 +181,68 @@
   }
 }
 
+.requests {
+  /*
+  * The article grid is defined this way to optimize readability:
+  * Sidebar | Content | Free space
+  * 25%     | 75%     | 0%
+  */
+  @include tablet {
+    flex: 1 1 75%;
+    max-width: 75%;
+    min-width: 640px;
+    padding: $padding;
+  }
+
+  background: #FFFFFF;
+  padding: calc($padding / 2);
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+  // box-shadow: 1px 18px 20px #00000033;
+  margin-bottom: 80px;
+
+  &-container {
+    @include tablet {
+      flex-direction: row;
+    }
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  &-subheading {
+    @extend h3;
+  }
+
+  &-sidebar {
+    @include tablet {
+      border: 0;
+      flex: 0 0 25%;
+      height: auto;
+      max-width: 25%;
+      margin-right: $gutter;
+    }
+
+    flex: 1 0 auto; //Explicit values needed with flex-direction: column for IE11
+    margin-bottom: $gutter;
+    position: sticky;
+    top: 0px;
+
+    &-sticky {
+      position: sticky;
+      top: 71px;
+    }
+
+    section {
+      margin-bottom: $padding;
+    }
+
+    .search-container {
+      margin-bottom: $gutter;
+    }
+  }
+}
+
 /* Following table */
 .subscriptions {
   &-subscribe button {
@@ -228,3 +290,110 @@
 }
 
 .no-activities { color: $secondary-text-color; }
+
+.my-activities {
+
+  @include tablet {
+    flex: 1 1 75%;
+    max-width: 75%;
+    min-width: 640px;
+    padding: $padding;
+  }
+
+  background: #FFFFFF;
+  padding: calc($padding / 2);
+  flex: 1 0 auto; //Explicit values needed whith flex-direction: column for IE11
+  // box-shadow: 1px 18px 20px #00000033;
+  margin-bottom: 80px;
+
+  &-container {
+    @include tablet {
+      flex-direction: row;
+    }
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  &-header {
+    @include tablet {
+      flex-direction: row;
+      margin-top: 0;
+    }
+
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+
+  &-title {
+    text-overflow: ellipsis;
+    max-width: 100%;
+
+    @include tablet {
+      flex-basis: 100%; /* Take entire row */
+    }
+
+  }
+
+  [role="button"] {
+    @include tablet {
+      width: auto;
+    }
+    flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
+    width: 100%;
+  }
+
+  &-body {
+    @include content-body;
+    >*:first-child {
+      margin-top: 0;
+    }
+    
+    > p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &-content {
+    line-height: 1.6;
+    margin: 0;
+    word-wrap: break-word;
+  }
+
+  &-sidebar {
+    @include tablet {
+      border: 0;
+      flex: 0 0 25%;
+      height: auto;
+      max-width: 25%;
+      margin-right: $gutter;
+    }
+
+    flex: 1 0 auto; //Explicit values needed with flex-direction: column for IE11
+    margin-bottom: $gutter;
+    position: sticky;
+    top: 0px;
+
+    &-sticky {
+      position: sticky;
+      top: 71px;
+    }
+
+  }
+
+  td > p:first-child,
+  th > p:first-child {
+    margin-top: 0;
+  }
+
+  td > p:last-child,
+  th > p:last-child {
+    margin-bottom: 0;
+  }
+}
