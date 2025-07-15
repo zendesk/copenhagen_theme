@@ -1,3 +1,10 @@
+# [4.8.0](https://github.com/zendesk/copenhagen_theme/compare/v4.7.0...v4.8.0) (2025-07-15)
+
+
+### Features
+
+* pass locale param to api/v2/uploads endpoint so that errors can be properly translated ([ce4a564](https://github.com/zendesk/copenhagen_theme/commit/ce4a5645af2a3f344749165a8a61291cff2c6086))
+
 # [4.7.0](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0...v4.7.0) (2025-07-14)
 
 
