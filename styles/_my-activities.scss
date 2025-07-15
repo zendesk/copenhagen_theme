@@ -385,6 +385,23 @@
       top: 71px;
     }
 
+    section {
+      margin-bottom: $padding;
+    }
+
+    .subscriptions-subscribe button {
+      @extend .button;
+      &::before {
+        content: "+ ";
+      }
+      &[data-selected="true"] {
+        @extend .button;
+        &::before {
+          content: "- ";
+        }
+      }
+    }
+
   }
 
   td > p:first-child,

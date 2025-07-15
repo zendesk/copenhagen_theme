@@ -27,8 +27,8 @@
           <div class="collapsible-sidebar-body">
             <ul>
               <li>{{link 'contributions'}}</li>
-              <li class="current">
-                <a href="{{page_path 'following'}}" aria-current="page">{{ t 'following' }}</a>
+              <li>
+                <a href="{{page_path 'following'}}" class="current active" aria-current="page">{{ t 'following' }}</a>
               </li>
             </ul>
           </div>
@@ -59,7 +59,7 @@
           <div class="article-body">
             <h2>{{ t 'following' }}</h2>
             {{#if subscriptions}}
-              <table class="table my-activities-table subscriptions-table">
+              <table class="table my-activities-table subscriptions-table table--striped">
                 <thead>
                   <tr>
                     <th>{{t 'title'}}</th>
