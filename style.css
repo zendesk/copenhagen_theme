@@ -4320,17 +4320,17 @@ code.hljs {
 }
 
 /* TOC */
-.table-of-contents-container, .search-results-sidebar, .activity-filter-container {
+.table-of-contents-container, .search-results-sidebar, .activity-filter-container, .request-filter-container {
   background: #FFFFFF;
   padding: 16px;
   padding-bottom: 0;
 }
 @media (min-width: 1024px) {
-  .table-of-contents-container, .search-results-sidebar, .activity-filter-container {
+  .table-of-contents-container, .search-results-sidebar, .activity-filter-container, .request-filter-container {
     padding: 32px;
   }
 }
-.table-of-contents-container li a, .search-results-sidebar li a, .activity-filter-container li a {
+.table-of-contents-container li a, .search-results-sidebar li a, .activity-filter-container li a, .request-filter-container li a {
   font-size: 1rem;
   padding: 5px 5px 5px 16px;
   border-left: 1px solid #cbcbcb;
@@ -4339,14 +4339,14 @@ code.hljs {
   justify-content: space-between;
   align-items: center;
 }
-.table-of-contents-container li a.active, .search-results-sidebar li a.active, .activity-filter-container li a.active {
+.table-of-contents-container li a.active, .search-results-sidebar li a.active, .activity-filter-container li a.active, .request-filter-container li a.active {
   border-left: 1px solid #515ba5;
   background-color: #f1f5f9;
 }
-.table-of-contents-container li a:hover, .search-results-sidebar li a:hover, .activity-filter-container li a:hover {
+.table-of-contents-container li a:hover, .search-results-sidebar li a:hover, .activity-filter-container li a:hover, .request-filter-container li a:hover {
   background-color: #f1f5f9;
 }
-.table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2, .activity-filter-container li a.toc-level-2 {
+.table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2, .activity-filter-container li a.toc-level-2, .request-filter-container li a.toc-level-2 {
   padding-left: 32px;
 }
 
