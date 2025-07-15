@@ -1470,6 +1470,7 @@ ul {
   max-width: 450px;
   font-weight: 500;
   overflow: hidden;
+  padding: 2px 0;
   text-overflow: ellipsis;
   display: flex;
   align-items: flex-start;
@@ -4784,7 +4785,7 @@ code.hljs {
   top: 71px;
 }
 .requests-sidebar section {
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 }
 .requests-sidebar .search-container {
   margin-bottom: 16px;

@@ -80,66 +80,69 @@
       <section class="article-info">
         <div class="article-content">
           <div class="article-body">
-                  {{#if requests}}
-        <table class="table my-activities-table requests-table {{current_filter.identifier}}-requests">
-          <thead>
-            <tr>
-              <th>{{t 'subject'}}</th>
-              <th>{{t 'id'}}</th>
-              <th>
-                {{#is current_filter.identifier 'my'}}
-                  {{#link 'requests' sort_by='created_at'}}{{t 'created'}}{{/link}}
-                {{else}}
-                  {{t 'requester'}}
-                {{/is}}
-              </th>
-              <th>{{#link 'requests' sort_by='updated_at'}}{{t 'last_activity'}}{{/link}}</th>
-              <th>
-                {{t 'status'}}
-              </th>
-            </tr>
-          </thead>
+            <h2>{{current_filter.name}}</h2>
+            {{#if requests}}
+              <table class="table my-activities-table requests-table {{current_filter.identifier}}-requests">
+                <thead>
+                  <tr>
+                    <th>{{t 'subject'}}</th>
+                    <th>{{t 'id'}}</th>
+                    <th>
+                      {{#is current_filter.identifier 'my'}}
+                        {{#link 'requests' sort_by='created_at'}}{{t 'created'}}{{/link}}
+                      {{else}}
+                        {{t 'requester'}}
+                      {{/is}}
+                    </th>
+                    <th>{{#link 'requests' sort_by='updated_at'}}{{t 'last_activity'}}{{/link}}</th>
+                    <th>
+                      {{t 'status'}}
+                    </th>
+                  </tr>
+                </thead>
 
-          <tbody>
-            {{#each requests}}
-              <tr {{#is status 'closed'}} class="request-closed" {{/is}}>
-                <td class="request-info requests-table-info">
-                  <a href="{{url}}" class="striped-list-title" title="{{subject}}">
-                    {{#if subject}}
-                      {{subject}}
-                    {{else}}
-                      {{excerpt description characters=50}}
-                    {{/if}}
-                  </a>
+                <tbody>
+                  {{#each requests}}
+                    <tr {{#is status 'closed'}} class="request-closed" {{/is}}>
+                      <td class="request-info requests-table-info">
+                        <a href="{{url}}" class="striped-list-title" title="{{subject}}">
+                          {{#if subject}}
+                            {{subject}}
+                          {{else}}
+                            {{excerpt description characters=50}}
+                          {{/if}}
+                        </a>
 
-                  <!-- Visible on mobile -->
-                  <div class="requests-table-meta">
-                    <span class="meta-data">#{{id}}</span>
-                    <span class="meta-data">{{date created_at timeago=true}}</span>
-                    <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
-                      {{status_name}}
-                    </span>
-                  </div>
-                </td>
-                <td>#{{id}}</td>
-                <td>
-                  {{#is ../current_filter.identifier 'my'}}
-                    {{date created_at timeago=true}}
-                  {{else}}
-                    {{requester.name}}
-                  {{/is}}
-                </td>
-                <td>{{date updated_at timeago=true}}</td>
-                <td class="requests-table-status">
-                  <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
-                    {{status_name}}
-                  </span>
-                </td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-      {{/if}}
+                        <!-- Visible on mobile -->
+                        <div class="requests-table-meta">
+                          <span class="meta-data">#{{id}}</span>
+                          <span class="meta-data">{{date created_at timeago=true}}</span>
+                          <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
+                            {{status_name}}
+                          </span>
+                        </div>
+                      </td>
+                      <td>#{{id}}</td>
+                      <td>
+                        {{#is ../current_filter.identifier 'my'}}
+                          {{date created_at timeago=true}}
+                        {{else}}
+                          {{requester.name}}
+                        {{/is}}
+                      </td>
+                      <td>{{date updated_at timeago=true}}</td>
+                      <td class="requests-table-status">
+                        <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
+                          {{status_name}}
+                        </span>
+                      </td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            {{else}}
+            <p>No requests found.</p>
+            {{/if}}
           </div>
         </div>
       </section>
