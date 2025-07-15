@@ -16,9 +16,31 @@
 
 <div class="container">
   <div class="requests-container" id="requests-container">
-    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+    <aside class="requests-sidebar" aria-labelledby="section-requests-title">
       <div class="search-container">
-        {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
+            
+        {{#form 'requests_filter' id="main-content" class='requests-table-toolbar hbs-form search search-full search-transparent'}}
+          <div class="search">
+            {{label 'query' for='quick-search' class='visibility-hidden'}}
+            {{input 'query' id='quick-search' type='search' class='requests-search search search-full search-transparent'}}
+          </div>
+          {{#if help_center.multiple_organizations_enabled}}
+            <div class="request-table-filter">
+              {{label 'organization' for='request-organization-select' class='request-filter request-filter-label'}}
+              {{select 'organization' id='request-organization-select' class='request-filter'}}
+            </div>
+          {{/if}}
+    <!--
+          <div class="request-table-filter organization-subscribe">
+            {{subscribe}}
+          </div>
+    -->
+          <div class="request-table-filter">
+            {{label 'status' for='request-status-select' class='request-filter request-filter-label'}}
+            {{select 'status' id='request-status-select' class='request-filter'}}
+          </div>
+        {{/form}}
+
       </div>
       <div class="article-sidebar-sticky">
         <div class="table-of-contents-container collapsible-sidebar">
@@ -26,73 +48,93 @@
             <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
             <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
           </button>
-          <h4 class="collapsible-sidebar-title sidenav-title">Table of contents</h4>
-          <div class="table-of-contents">
-          </div>
-          <div class="article-return-to-top collapsible-sidebar-body">
-            <a href="#article-container">
-              <i class="fas fa-arrow-up" style="margin-right: 10px;"></i>
-              {{t 'return_to_top'}}
-            </a>
+          
+          <h4 class="collapsible-sidebar-title sidenav-title">Request type</h4>
+          <div class="collapsible-sidebar-body">
+            <ul>
+              {{#each filters}}
+                {{#if selected}}
+                  <li class=""><a href="{{url}}" class="current active" aria-current="page">{{name}}</a></li>
+                {{else}}
+                  <li><a href="{{url}}">{{name}}</a></li>
+                {{/if}}
+              {{/each}}
+            </ul>
           </div>
         </div>
-        {{#if settings.show_article_sharing}}
-          <div class="article-share">
-            <h4 class="sidenav-title collapsible-sidebar-title">Share this article</h4>
-            {{share}}
-          </div>
-        {{/if}}
       </div>
     </aside>
 
-    <article id="main-content" class="article">
+    <article id="main-content" class="requests">
 
       <section class="article-info">
         <div class="article-content">
-          <div class="article-body">{{article.body}}</div>
-<!--
-          {{#if (compare article.content_tags.length ">" 0)}}
-            <section class="content-tags">
-              <p>{{t 'content_tags_label'}}</p>
-              <ul class="content-tag-list">
-                {{#each article.content_tags}}
-                  <li class="content-tag-item" data-content-tag-id="{{id}}">
-                    {{#link "search_result" content_tag_id=id}}
-                      {{name}}
-                    {{/link}}
-                  </li>
-                {{/each}}
-              </ul>
-            </section>
-          {{/if}}
-          -->
-          
+          <div class="article-body">
+                  {{#if requests}}
+        <table class="table my-activities-table requests-table {{current_filter.identifier}}-requests">
+          <thead>
+            <tr>
+              <th>{{t 'subject'}}</th>
+              <th>{{t 'id'}}</th>
+              <th>
+                {{#is current_filter.identifier 'my'}}
+                  {{#link 'requests' sort_by='created_at'}}{{t 'created'}}{{/link}}
+                {{else}}
+                  {{t 'requester'}}
+                {{/is}}
+              </th>
+              <th>{{#link 'requests' sort_by='updated_at'}}{{t 'last_activity'}}{{/link}}</th>
+              <th>
+                {{t 'status'}}
+              </th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {{#each requests}}
+              <tr {{#is status 'closed'}} class="request-closed" {{/is}}>
+                <td class="request-info requests-table-info">
+                  <a href="{{url}}" class="striped-list-title" title="{{subject}}">
+                    {{#if subject}}
+                      {{subject}}
+                    {{else}}
+                      {{excerpt description characters=50}}
+                    {{/if}}
+                  </a>
+
+                  <!-- Visible on mobile -->
+                  <div class="requests-table-meta">
+                    <span class="meta-data">#{{id}}</span>
+                    <span class="meta-data">{{date created_at timeago=true}}</span>
+                    <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
+                      {{status_name}}
+                    </span>
+                  </div>
+                </td>
+                <td>#{{id}}</td>
+                <td>
+                  {{#is ../current_filter.identifier 'my'}}
+                    {{date created_at timeago=true}}
+                  {{else}}
+                    {{requester.name}}
+                  {{/is}}
+                </td>
+                <td>{{date updated_at timeago=true}}</td>
+                <td class="requests-table-status">
+                  <span class="status-label status-label-request status-label-{{status}}" title="{{status_description}}">
+                    {{status_name}}
+                  </span>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      {{/if}}
+          </div>
         </div>
       </section>
       <footer>
         <div class="article-footer">
-          {{#if settings.show_article_sharing}}
-            <div class="article-share">
-              <h4 class="share-header">Share this article</h4>
-              {{share}}
-            </div>
-          {{/if}}
-          {{#with article}}
-            <div class="article-votes">
-              <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
-              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-                {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
-                {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
-              </div>
-              <!--<small class="article-votes-count">
-                {{vote 'label' class='article-vote-label'}}
-              </small>-->
-            </div>
-          {{/with}}
-          
-          <div class="article-more-questions">
-            {{request_callout}}
-          </div>
         </div>
 
       </footer>
@@ -131,6 +173,7 @@
 
 
 
+<!--
 
 
 
@@ -241,7 +284,7 @@
                     {{/if}}
                   </a>
 
-                  <!-- Visible on mobile -->
+                  // Visible on mobile 
                   <div class="requests-table-meta">
                     <span class="meta-data">#{{id}}</span>
                     <span class="meta-data">{{date created_at timeago=true}}</span>
@@ -274,3 +317,4 @@
     {{pagination}}
   {{/if}}
 </div>
+-->
