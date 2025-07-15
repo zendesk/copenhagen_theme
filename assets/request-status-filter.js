@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         const rsfAnchors = rsfContainer.querySelectorAll("a");
 
         rsfAnchors.forEach((anchor) => {
-            anchor.addEventListener("click", (event) => {
+            anchor.addEventListener("click", function(event) {
                 event.preventDefault();
                 statusSelect.value = this.dataset.value;
             })
