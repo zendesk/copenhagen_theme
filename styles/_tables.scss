@@ -53,7 +53,7 @@
       border-color: #fff;
     }
 
-    tbody tr:nth-child(odd) {
+    tbody tr:nth-child(even) {
       color: inherit;
       background-color: $q-bg-subtle;
     }
@@ -64,7 +64,7 @@
     background-color: $q-bg-subtle;
   }
 
-  tr {
+  thead tr {
     border-bottom: 1px solid $q-border-weak;
   }
 

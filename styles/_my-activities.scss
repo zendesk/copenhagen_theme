@@ -389,6 +389,9 @@
       margin-bottom: $padding;
     }
 
+
+  }
+
     .subscriptions-subscribe button {
       @extend .button;
       &::before {
@@ -401,9 +404,7 @@
         }
       }
     }
-
-  }
-
+    
   td > p:first-child,
   th > p:first-child {
     margin-top: 0;
