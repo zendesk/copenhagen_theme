@@ -1708,13 +1708,13 @@ section.hero {
   text-align: left;
   width: 100%;
 }
-section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile, section.hero-error, section.hero-search {
+section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile, section.hero-error, section.hero-search, section.hero-following {
   padding: 64px 0;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before, section.hero-error::before, section.hero-search::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before, section.hero-error::before, section.hero-search::before, section.hero-following::before {
   content: "";
   height: 200vw;
   width: 200vw;
@@ -1724,11 +1724,11 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
 }
-section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container, section.hero-error > .container, section.hero-search > .container {
+section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container, section.hero-error > .container, section.hero-search > .container, section.hero-following > .container {
   position: relative;
   color: #ffffff;
 }
-section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1, section.hero-error .h1, section.hero-search .h1 {
+section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1, section.hero-error .h1, section.hero-search .h1, section.hero-following .h1 {
   font-weight: 600;
   font-size: 2.625rem;
   line-height: 1;

@@ -1,87 +1,20 @@
-
-
-
-
-
-<div class="my-activities-nav">
+<section class="section hero hero-following">
   <div class="container">
-    <nav class="collapsible-nav">
-      <button type="button" class="collapsible-nav-toggle" aria-label="{{t 'toggle_navigation'}}" aria-expanded="false">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon chevron-icon">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-nav-toggle-icon x-icon">
-          <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-        </svg>
-      </button>
-      <ul class="collapsible-nav-list">
-        <li>{{link 'contributions'}}</li>
-        <li class="current">
-          <a href="{{page_path 'following'}}" aria-current="page">{{ t 'following' }}</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="row">
+      <div class="">
+        {{breadcrumbs}}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <h1 title="{{t 'following'}}" class="following-title h1">{{t 'following'}}</h1>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="container">
-  <header class="my-activities-header">
-    <h1>{{t 'following'}}</h1>
-  </header>
 
-  <div class="my-activities-following-header">
-    <span class="dropdown">
-      <button class="dropdown-toggle" aria-haspopup="true">
-        {{current_filter.label}}
-        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon">
-          <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-        </svg>
-      </button>
-      <span class="dropdown-menu" role="menu">
-        {{#each filters}}
-          <a href="{{url}}" aria-checked="{{selected}}" role="menuitemradio">
-            {{name}}
-          </a>
-        {{/each}}
-      </span>
-    </span>
-  </div>
 
-  <div id="main-content" class="requests">
-    {{#if subscriptions}}
-      <table class="table my-activities-table subscriptions-table">
-        <thead>
-          <tr>
-            <th>{{t 'title'}}</th>
-            <th>{{t 'type'}}</th>
-            <th>{{t 'subscription'}}</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each subscriptions}}
-            <tr>
-              <td>
-                {{#is type 'user'}}
-                  <img class="user-avatar" src="{{avatar_url}}" alt="">
-                {{/is}}
-                <a href="{{url}}" title="{{title}}" class="striped-list-title">
-                  {{excerpt title characters=60}}
-                </a>
-              </td>
-              <td>{{name}}</td>
-              <td>{{following}}</td>
-              <td class="subscriptions-subscribe">
-                {{subscribe}}
-              </td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
 
-    {{pagination}}
-    {{else}}
-      <p class="no-activities">{{t 'not_following'}}</p>
-    {{/if}}
-  </div>
-</div>
+
+
