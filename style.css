@@ -2063,6 +2063,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2) !important;
   padding: 20px;
   margin-top: -40px;
+  position: relative;
 }
 @media (min-width: 1024px) {
   .container.site-search {

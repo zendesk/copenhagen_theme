@@ -1,3 +1,139 @@
+<section class="section hero hero-request">
+  <div class="container">
+    <div class="row">
+      <div class="">
+        {{breadcrumbs}}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <h1 title="{{t 'my_requests'}}" class="request-title h1">{{t 'my_requests'}}</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="container">
+  <div class="requests-container" id="requests-container">
+    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+      <div class="search-container">
+        {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
+      </div>
+      <div class="article-sidebar-sticky">
+        <div class="table-of-contents-container collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+          </button>
+          <h4 class="collapsible-sidebar-title sidenav-title">Table of contents</h4>
+          <div class="table-of-contents">
+          </div>
+          <div class="article-return-to-top collapsible-sidebar-body">
+            <a href="#article-container">
+              <i class="fas fa-arrow-up" style="margin-right: 10px;"></i>
+              {{t 'return_to_top'}}
+            </a>
+          </div>
+        </div>
+        {{#if settings.show_article_sharing}}
+          <div class="article-share">
+            <h4 class="sidenav-title collapsible-sidebar-title">Share this article</h4>
+            {{share}}
+          </div>
+        {{/if}}
+      </div>
+    </aside>
+
+    <article id="main-content" class="article">
+
+      <section class="article-info">
+        <div class="article-content">
+          <div class="article-body">{{article.body}}</div>
+<!--
+          {{#if (compare article.content_tags.length ">" 0)}}
+            <section class="content-tags">
+              <p>{{t 'content_tags_label'}}</p>
+              <ul class="content-tag-list">
+                {{#each article.content_tags}}
+                  <li class="content-tag-item" data-content-tag-id="{{id}}">
+                    {{#link "search_result" content_tag_id=id}}
+                      {{name}}
+                    {{/link}}
+                  </li>
+                {{/each}}
+              </ul>
+            </section>
+          {{/if}}
+          -->
+          
+        </div>
+      </section>
+      <footer>
+        <div class="article-footer">
+          {{#if settings.show_article_sharing}}
+            <div class="article-share">
+              <h4 class="share-header">Share this article</h4>
+              {{share}}
+            </div>
+          {{/if}}
+          {{#with article}}
+            <div class="article-votes">
+              <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
+              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+                {{vote 'up' class='button article-vote article-vote-up' selected_class="button-primary"}}
+                {{vote 'down' class='button article-vote article-vote-down' selected_class="button-primary"}}
+              </div>
+              <!--<small class="article-votes-count">
+                {{vote 'label' class='article-vote-label'}}
+              </small>-->
+            </div>
+          {{/with}}
+          
+          <div class="article-more-questions">
+            {{request_callout}}
+          </div>
+        </div>
+
+      </footer>
+    </article>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container">
   {{#if settings.request_list_beta}}
     <header class="my-activities-header">
