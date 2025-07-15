@@ -16,7 +16,7 @@
 <div class="container">
   <div class="activities-container" id="activities-container">
     <aside class="activities-sidebar" aria-labelledby="section-activities-title">
-      <div class="activities-sidebar-sticky activities-filter-container">
+      <div class="activities-sidebar-sticky activity-filter-container">
         <section class="filters-in-section collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
             <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
@@ -40,13 +40,15 @@
           </button>
         
           <h4 class="collapsible-sidebar-title sidenav-title">Filter by type</h4>
-              {{#each filters}}
-                {{#if selected}}
-                  <li class=""><a href="{{url}}" class="current active" aria-current="page">{{name}}</a></li>
-                {{else}}
-                  <li><a href="{{url}}">{{name}}</a></li>
-                {{/if}}
-              {{/each}}
+          <ul>
+            {{#each filters}}
+              {{#if selected}}
+                <li class=""><a href="{{url}}" class="current active" aria-current="page">{{name}}</a></li>
+              {{else}}
+                <li><a href="{{url}}">{{name}}</a></li>
+              {{/if}}
+            {{/each}}
+          </ul>
         </section>
       </div>
     </aside>
