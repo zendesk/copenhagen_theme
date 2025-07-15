@@ -1740,7 +1740,7 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
 section.hero-user-profile::before {
   background: url(\$assets-qoria-bg-png);
 }
-section.hero-article, section.hero-request, section.hero-user-profile {
+section.hero-article, section.hero-request, section.hero-user-profile, section.hero-activities {
   padding-bottom: 14rem;
   margin-bottom: -13rem;
 }
@@ -4624,31 +4624,31 @@ code.hljs {
   color: #364255;
 }
 
-.my-activities {
+.activities {
   background: #FFFFFF;
   padding: 16px;
   flex: 1 0 auto;
   margin-bottom: 80px;
 }
 @media (min-width: 768px) {
-  .my-activities {
+  .activities {
     flex: 1 1 75%;
     max-width: 75%;
     min-width: 640px;
     padding: 32px;
   }
 }
-.my-activities-container {
+.activities-container {
   display: flex;
   flex-direction: column;
   position: relative;
 }
 @media (min-width: 768px) {
-  .my-activities-container {
+  .activities-container {
     flex-direction: row;
   }
 }
-.my-activities-header {
+.activities-header {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -4658,159 +4658,159 @@ code.hljs {
   margin-top: 20px;
 }
 @media (min-width: 768px) {
-  .my-activities-header {
+  .activities-header {
     flex-direction: row;
     margin-top: 0;
   }
 }
-.my-activities-title {
+.activities-title {
   text-overflow: ellipsis;
   max-width: 100%;
 }
 @media (min-width: 768px) {
-  .my-activities-title {
+  .activities-title {
     flex-basis: 100%; /* Take entire row */
   }
 }
-.my-activities [role=button] {
+.activities [role=button] {
   flex-shrink: 0; /*Avoid collapsing elements in Safari (https://github.com/philipwalton/flexbugs#1-minimum-content-sizing-of-flex-items-not-honored)*/
   width: 100%;
 }
 @media (min-width: 768px) {
-  .my-activities [role=button] {
+  .activities [role=button] {
     width: auto;
   }
 }
-.my-activities-body {
+.activities-body {
   display: flow-root;
 }
-.my-activities-body a {
+.activities-body a {
   color: #515ba5;
   text-decoration: underline;
 }
-.my-activities-body a:visited {
+.activities-body a:visited {
   color: #2f3561;
 }
-.my-activities-body a:hover, .my-activities-body a:active, .my-activities-body a:focus {
+.activities-body a:hover, .activities-body a:active, .activities-body a:focus {
   color: #2f3561;
 }
-.my-activities-body img {
+.activities-body img {
   height: auto;
   max-width: 100%;
 }
-.my-activities-body p > img.image-style-align-left {
+.activities-body p > img.image-style-align-left {
   float: left;
   margin: 8px 20px 6px 0;
 }
-.my-activities-body p > img.image-style-align-right {
+.activities-body p > img.image-style-align-right {
   float: right;
   margin: 8px 0px 6px 20px;
 }
-.my-activities-body p > img.image-style-block-align-right {
+.activities-body p > img.image-style-block-align-right {
   margin-left: auto;
   margin-right: 0;
 }
-.my-activities-body p > img.image-style-block-align-left {
+.activities-body p > img.image-style-block-align-left {
   margin-left: 0;
   margin-right: auto;
 }
-.my-activities-body figure.image {
+.activities-body figure.image {
   display: table;
   margin: 0 auto;
 }
-.my-activities-body figure.image > img {
+.activities-body figure.image > img {
   display: block;
   width: 100%;
 }
-.my-activities-body figure.image.image-style-align-left {
+.activities-body figure.image.image-style-align-left {
   float: left;
   margin: 8px 20px 6px 0;
 }
-.my-activities-body figure.image.image-style-align-right {
+.activities-body figure.image.image-style-align-right {
   float: right;
   margin: 8px 0px 6px 20px;
 }
-.my-activities-body figure.image.image-style-block-align-right {
+.activities-body figure.image.image-style-block-align-right {
   margin-left: auto;
   margin-right: 0;
 }
-.my-activities-body figure.image.image-style-block-align-left {
+.activities-body figure.image.image-style-block-align-left {
   margin-left: 0;
   margin-right: auto;
 }
-.my-activities-body figcaption {
+.activities-body figcaption {
   padding: 10px 0;
   font-size: 12px;
   text-align: center;
   background-color: #f2f2f2;
 }
-.my-activities-body ul,
-.my-activities-body ol {
+.activities-body ul,
+.activities-body ol {
   padding-left: 20px;
   list-style-position: outside;
   margin: 20px 0 20px 20px;
 }
-[dir=rtl] .my-activities-body ul,
-[dir=rtl] .my-activities-body ol {
+[dir=rtl] .activities-body ul,
+[dir=rtl] .activities-body ol {
   padding-right: 20px;
   padding-left: 0;
   margin-left: 0;
   margin-right: 20px;
 }
-.my-activities-body ul > ul,
-.my-activities-body ol > ol,
-.my-activities-body ol > ul,
-.my-activities-body ul > ol,
-.my-activities-body li > ul,
-.my-activities-body li > ol {
+.activities-body ul > ul,
+.activities-body ol > ol,
+.activities-body ol > ul,
+.activities-body ul > ol,
+.activities-body li > ul,
+.activities-body li > ol {
   margin: 0;
 }
-.my-activities-body ul {
+.activities-body ul {
   list-style-type: disc;
 }
-.my-activities-body pre:has(> code) {
+.activities-body pre:has(> code) {
   padding: 0;
 }
-.my-activities-body pre:not(:has(> code)) {
+.activities-body pre:not(:has(> code)) {
   border-radius: 4px;
   border: 1px solid #d2dae5;
   padding: 16px;
 }
-.my-activities-body :not(pre) > code {
+.activities-body :not(pre) > code {
   background: #364255;
   color: #ffffff;
   padding: 16px;
   border-radius: 4px;
 }
-.my-activities-body pre {
+.activities-body pre {
   overflow: auto;
   white-space: pre;
 }
-.my-activities-body blockquote {
+.activities-body blockquote {
   padding: 16px;
   background-color: #ffffff;
   border-left: 4px solid #515ba5;
   box-shadow: 0 0.125rem 0.25rem rgba(28, 29, 27, 0.075);
 }
-.my-activities-body > *:first-child {
+.activities-body > *:first-child {
   margin-top: 0;
 }
-.my-activities-body > p:last-child {
+.activities-body > p:last-child {
   margin-bottom: 0;
 }
-.my-activities-content {
+.activities-content {
   line-height: 1.6;
   margin: 0;
   word-wrap: break-word;
 }
-.my-activities-sidebar {
+.activities-sidebar {
   flex: 1 0 auto;
   margin-bottom: 16px;
   position: sticky;
   top: 0px;
 }
 @media (min-width: 768px) {
-  .my-activities-sidebar {
+  .activities-sidebar {
     border: 0;
     flex: 0 0 25%;
     height: auto;
@@ -4818,16 +4818,16 @@ code.hljs {
     margin-right: 16px;
   }
 }
-.my-activities-sidebar-sticky {
+.activities-sidebar-sticky {
   position: sticky;
   top: 71px;
 }
-.my-activities td > p:first-child,
-.my-activities th > p:first-child {
+.activities td > p:first-child,
+.activities th > p:first-child {
   margin-top: 0;
 }
-.my-activities td > p:last-child,
-.my-activities th > p:last-child {
+.activities td > p:last-child,
+.activities th > p:last-child {
   margin-bottom: 0;
 }
 
