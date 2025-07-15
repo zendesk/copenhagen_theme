@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
             anchor.addEventListener("click", function(event) {
                 event.preventDefault();
                 statusSelect.value = this.dataset.value;
+                statusSelect.form.submit();
             })
         })
 
