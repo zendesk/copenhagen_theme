@@ -35,7 +35,7 @@
             {{subscribe}}
           </div>
     -->
-          <div class="request-table-filter">
+          <div class="request-table-filter  visibility-hidden">
             {{label 'status' for='request-status-select' class='request-filter request-filter-label'}}
             {{select 'status' id='request-status-select' class='request-filter'}}
           </div>
@@ -62,15 +62,7 @@
             </ul>
           </div>
           <h4 class="collapsible-sidebar-title sidenav-title">Request by status</h4>
-          <div class="collapsible-sidebar-body">
-            <ul>
-              <li>
-                <a href="?status=">All</a>
-              </li>
-              <li>
-                <a href="?status=open">Open</a>
-              </li>
-            </ul>
+          <div class="collapsible-sidebar-body request-status-filters">
           </div>
         </div>
       </div>
