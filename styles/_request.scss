@@ -214,8 +214,14 @@
     flex-direction: column;
     position: relative;
   }
+  
+  &-subheading {
+    @extend h3;
+  }
 
   &-sidebar {
+    @extend .table-of-contents-container;
+
     @include tablet {
       border: 0;
       flex: 0 0 25%;
@@ -232,6 +238,10 @@
     &-sticky {
       position: sticky;
       top: 71px;
+    }
+
+    section {
+      margin-bottom: $gutter;
     }
 
     .search-container {

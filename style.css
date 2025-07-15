@@ -314,6 +314,7 @@ h1, section.hero-home .h1,
 h2,
 h3,
 .search-results-subheading,
+.requests-subheading,
 h4,
 h5,
 .search-result-title,
@@ -332,6 +333,7 @@ h1 a, section.hero-home .h1 a,
 h2 a,
 h3 a,
 .search-results-subheading a,
+.requests-subheading a,
 h4 a,
 h5 a,
 .search-result-title a,
@@ -353,7 +355,7 @@ h2, .h2 {
   font-size: 1.875rem;
 }
 
-h3, .search-results-subheading, .h3 {
+h3, .search-results-subheading, .requests-subheading, .h3 {
   font-size: 1.625rem;
 }
 
@@ -379,14 +381,6 @@ a:visited {
 }
 a:hover, a:active, a:focus {
   text-decoration: none;
-}
-
-p:last-child {
-  margin-bottom: 0;
-}
-
-p:first-child {
-  margin-top: 0;
 }
 
 .hbs-form input,
@@ -1713,13 +1707,13 @@ section.hero {
   text-align: left;
   width: 100%;
 }
-section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile, section.hero-error {
+section.hero-article, section.hero-search-results, section.hero-category, section.hero-request, section.hero-section, section.hero-user-profile, section.hero-error, section.hero-search {
   padding: 64px 0;
   position: relative;
   background: linear-gradient(90deg, #515ba5, #58b78e);
   overflow: clip;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before, section.hero-error::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-user-profile::before, section.hero-error::before, section.hero-search::before {
   content: "";
   height: 200vw;
   width: 200vw;
@@ -1729,17 +1723,17 @@ section.hero-article::before, section.hero-search-results::before, section.hero-
   left: 50%;
   transform: translateX(-50%) translateY(-50%) rotate(-40deg) !important;
 }
-section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container, section.hero-error > .container {
+section.hero-article > .container, section.hero-search-results > .container, section.hero-category > .container, section.hero-request > .container, section.hero-section > .container, section.hero-user-profile > .container, section.hero-error > .container, section.hero-search > .container {
   position: relative;
   color: #ffffff;
 }
-section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1, section.hero-error .h1 {
+section.hero-article .h1, section.hero-search-results .h1, section.hero-category .h1, section.hero-request .h1, section.hero-section .h1, section.hero-user-profile .h1, section.hero-error .h1, section.hero-search .h1 {
   font-weight: 600;
   font-size: 2.625rem;
   line-height: 1;
   margin: 32px 0;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-search::before {
   background: url(\$tiled_bg);
 }
 section.hero-user-profile::before {
@@ -2084,7 +2078,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   overflow: auto;
   padding: 20px 0;
 }
-.recent-activity-item h3, .recent-activity-item .search-results-subheading {
+.recent-activity-item h3, .recent-activity-item .search-results-subheading, .recent-activity-item .requests-subheading {
   margin: 0;
 }
 .recent-activity-item-parent {
@@ -4326,17 +4320,17 @@ code.hljs {
 }
 
 /* TOC */
-.table-of-contents-container, .search-results-sidebar, .activity-filter-container {
+.table-of-contents-container, .search-results-sidebar, .requests-sidebar, .activity-filter-container {
   background: #FFFFFF;
   padding: 16px;
   padding-bottom: 0;
 }
 @media (min-width: 1024px) {
-  .table-of-contents-container, .search-results-sidebar, .activity-filter-container {
+  .table-of-contents-container, .search-results-sidebar, .requests-sidebar, .activity-filter-container {
     padding: 32px;
   }
 }
-.table-of-contents-container li a, .search-results-sidebar li a, .activity-filter-container li a {
+.table-of-contents-container li a, .search-results-sidebar li a, .requests-sidebar li a, .activity-filter-container li a {
   font-size: 1rem;
   padding: 5px 5px 5px 16px;
   border-left: 1px solid #cbcbcb;
@@ -4345,14 +4339,14 @@ code.hljs {
   justify-content: space-between;
   align-items: center;
 }
-.table-of-contents-container li a.active, .search-results-sidebar li a.active, .activity-filter-container li a.active {
+.table-of-contents-container li a.active, .search-results-sidebar li a.active, .requests-sidebar li a.active, .activity-filter-container li a.active {
   border-left: 1px solid #515ba5;
   background-color: #f1f5f9;
 }
-.table-of-contents-container li a:hover, .search-results-sidebar li a:hover, .activity-filter-container li a:hover {
+.table-of-contents-container li a:hover, .search-results-sidebar li a:hover, .requests-sidebar li a:hover, .activity-filter-container li a:hover {
   background-color: #f1f5f9;
 }
-.table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2, .activity-filter-container li a.toc-level-2 {
+.table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2, .requests-sidebar li a.toc-level-2, .activity-filter-container li a.toc-level-2 {
   padding-left: 32px;
 }
 
@@ -4788,6 +4782,9 @@ code.hljs {
 .requests-sidebar-sticky {
   position: sticky;
   top: 71px;
+}
+.requests-sidebar section {
+  margin-bottom: 16px;
 }
 .requests-sidebar .search-container {
   margin-bottom: 16px;

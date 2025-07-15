@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 statusSelect.form.submit();
             })
         })
-
     }
-
 });
 

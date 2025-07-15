@@ -5,7 +5,7 @@ section.hero {
   width: 100%;
 
 
-  &-article, &-search-results, &-category, &-request, &-section, &-user-profile, &-error {
+  &-article, &-search-results, &-category, &-request, &-section, &-user-profile, &-error, &-search {
     padding: 64px 0;
     position: relative;
     background: linear-gradient(90deg, #515ba5, #58b78e);
@@ -35,7 +35,7 @@ section.hero {
     }
   }
 
-  &-article, &-search-results, &-category, &-request, &-section {
+  &-article, &-search-results, &-category, &-request, &-section, &-search {
     &::before {
       background: url(\$tiled_bg);
     }

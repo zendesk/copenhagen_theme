@@ -43,7 +43,7 @@
 
       </div>
       <div class="article-sidebar-sticky">
-        <div class="table-of-contents-container collapsible-sidebar">
+        <section class="filters-in-section collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
             <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
             <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
@@ -61,10 +61,17 @@
               {{/each}}
             </ul>
           </div>
+        </section>
+        <section class="filters-in-section collapsible-sidebar">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+          </button>
+        
           <h4 class="collapsible-sidebar-title sidenav-title">Request by status</h4>
           <div class="collapsible-sidebar-body request-status-filters">
           </div>
-        </div>
+        </section>
       </div>
     </aside>
 
