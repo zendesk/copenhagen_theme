@@ -955,6 +955,50 @@ ul {
   width: 17px;
 }
 
+/***** Custom Header Buttons *****/
+.support-link {
+  font-weight: 700;
+  margin: 0 36px;
+}
+
+.support-pill {
+  font-size: 10px;
+  font-weight: 500;
+  color: white;
+  border: 1px solid #3BB54A;
+  border-radius: 12px;
+  padding: 4px 8px;
+  background-color: #3BB54A;
+}
+
+.sign-in-btn {
+  border: 1px solid black !important;
+  border-radius: 10px;
+  padding: 4px 12px !important;
+  font-weight: 500;
+  transition: all;
+  transition-duration: 0.3s;
+}
+.sign-in-btn:hover, .sign-in-btn:focus .sign-in-btn:active {
+  background-color: #E9E9E9 !important;
+}
+
+.panel-btn {
+  border: 1px solid #3BB54A !important;
+  background-color: #3BB54A;
+  border-radius: 10px;
+  padding: 4px 12px !important;
+  margin-left: 8px;
+  font-weight: 500;
+  color: white !important;
+  transition: all;
+  transition-duration: 0.3s;
+}
+.panel-btn:hover, .panel-btn:focus .panel-btn:active {
+  border-color: #109648 !important;
+  background-color: #109648 !important;
+}
+
 /***** Footer *****/
 .footer {
   border-top: 1px solid #ddd;
@@ -4739,48 +4783,4 @@ zd-summary-block {
 }
 [dir=rtl] zd-summary-block {
   border-right-color: #859fa1;
-}
-
-/***** Custom Styles *****/
-.support-link {
-  font-weight: 700;
-  margin: 0 36px;
-}
-
-.support-pill {
-  font-size: 10px;
-  font-weight: 500;
-  color: white;
-  border: 1px solid #3BB54A;
-  border-radius: 12px;
-  padding: 4px 8px;
-  background-color: #3BB54A;
-}
-
-.sign-in-btn {
-  border: 1px solid black !important;
-  border-radius: 10px;
-  padding: 4px 12px !important;
-  font-weight: 500;
-  transition: all;
-  transition-duration: 0.3s;
-}
-.sign-in-btn:hover, .sign-in-btn:focus .sign-in-btn:active {
-  background-color: #E9E9E9 !important;
-}
-
-.panel-btn {
-  border: 1px solid #3BB54A !important;
-  background-color: #3BB54A;
-  border-radius: 10px;
-  padding: 4px 12px !important;
-  margin-left: 8px;
-  font-weight: 500;
-  color: white !important;
-  transition: all;
-  transition-duration: 0.3s;
-}
-.panel-btn:hover, .panel-btn:focus .panel-btn:active {
-  border-color: #109648 !important;
-  background-color: #109648 !important;
 }
