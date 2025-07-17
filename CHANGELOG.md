@@ -1,3 +1,217 @@
+# [4.8.0](https://github.com/zendesk/copenhagen_theme/compare/v4.7.0...v4.8.0) (2025-07-15)
+
+
+### Features
+
+* pass locale param to api/v2/uploads endpoint so that errors can be properly translated ([ce4a564](https://github.com/zendesk/copenhagen_theme/commit/ce4a5645af2a3f344749165a8a61291cff2c6086))
+
+# [4.7.0](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0...v4.7.0) (2025-07-14)
+
+
+### Features
+
+* adds support for multiple dynamic filters ([2605a4b](https://github.com/zendesk/copenhagen_theme/commit/2605a4b9c5cae1e9f358f8db16a157117a3885f6))
+
+# [4.6.0](https://github.com/zendesk/copenhagen_theme/compare/v4.5.0...v4.6.0) (2025-07-08)
+
+
+### Bug Fixes
+
+* [SW-3056]Approvals - add approval details priority level translations ([a338716](https://github.com/zendesk/copenhagen_theme/commit/a338716b049efab39bf71eab5945d1c545e6519e))
+* account for no priority level case ([830bbb4](https://github.com/zendesk/copenhagen_theme/commit/830bbb4d29910a9a931b3f1f14abf4dc2c7a84ea))
+* add count default value for other variants ([75d7be4](https://github.com/zendesk/copenhagen_theme/commit/75d7be45a676a65635b711707b6abb3e17e22c0b))
+* added styles for service catalog description ([884ca6a](https://github.com/zendesk/copenhagen_theme/commit/884ca6a84d323aa75ce5ba0facc9a61a8b01d844))
+* added useNotify hook and fixed shared close translation ([288ce02](https://github.com/zendesk/copenhagen_theme/commit/288ce028c85ecdcb1b4ea17c188e3f4f0fc6849e))
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+* change type of service catalog form id ([c48ff7a](https://github.com/zendesk/copenhagen_theme/commit/c48ff7a86804d153c220ac1920b72b3cb86cd811))
+* commit generated bundle file updates ([e574128](https://github.com/zendesk/copenhagen_theme/commit/e5741289c8e32c8fcd14008c86cdd430069d97f8))
+* correctly send multiselect field values ([5466125](https://github.com/zendesk/copenhagen_theme/commit/546612508bd712eb712ede0f37eaf0e9bc6fdb93))
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+* enlarge thumbnail icons on Service Catalog list page to full 40px ([251aefd](https://github.com/zendesk/copenhagen_theme/commit/251aefd766da29dc95a094ac69f284afd860d5de))
+* extract Service Catalog thumbnail to separate component ([5c6a5c2](https://github.com/zendesk/copenhagen_theme/commit/5c6a5c2c64de544f7b85b8598a748ba15e552224))
+* fixed RTL styles for CC field ([f1a751b](https://github.com/zendesk/copenhagen_theme/commit/f1a751b187f35001bfb4cc519d45ebf122e86ec4))
+* fixed RTL styles for Credit Card field ([fc35188](https://github.com/zendesk/copenhagen_theme/commit/fc351883cae493db52aa17e1299f57f7acd8d6f2))
+* fixed RTL styles for Service Catalog item page ([a868204](https://github.com/zendesk/copenhagen_theme/commit/a86820498addb15e85162e9e5389fd18ec56fce1))
+* handle relashionship_filter in service catalog form ([aecf77e](https://github.com/zendesk/copenhagen_theme/commit/aecf77e95ddea95b09ed9ee13da0837547bc76d3))
+* lint fix ([f0858da](https://github.com/zendesk/copenhagen_theme/commit/f0858dacd08307f5bd183017fee1f3f039f8f068))
+* move Services count below search bar ([326cd64](https://github.com/zendesk/copenhagen_theme/commit/326cd6410c287d728f25014a9cf5727dca86bae9))
+* refactore ShapesIcon for thumbnails to avoid unnecessary css important ([98be572](https://github.com/zendesk/copenhagen_theme/commit/98be572314c07bd4315a001b75a3826054606c3b))
+* remove commented out CLARIFICATION_REQUESTED approval request state ([e055211](https://github.com/zendesk/copenhagen_theme/commit/e0552119b211b581052c62dfdf1bb32e4081f89a))
+* removed link to service catalog documentation ([c730efc](https://github.com/zendesk/copenhagen_theme/commit/c730efc8ad73a7864306c07d525611527f115875))
+* **service-catalog:** fix description alignment in RTL languages ([0c70a97](https://github.com/zendesk/copenhagen_theme/commit/0c70a9743c353b4f02d72366124bada0141d12cd))
+* **service-catalog:** fixed language defaulting to English when navigating around ([f6141cb](https://github.com/zendesk/copenhagen_theme/commit/f6141cbf73b372281c01cf45034a3c7f133a4f62))
+* **service-catalog:** updated translations ([19904a3](https://github.com/zendesk/copenhagen_theme/commit/19904a3661f633533c03293605eea9cccf4b9ebb))
+* set default value for Service Catalog fields ([aa2c16e](https://github.com/zendesk/copenhagen_theme/commit/aa2c16e9012643fc32aebab9360debac9c485340))
+* **TAA-136:** addresses type error, wires up now returning decision notes ([c44cbc5](https://github.com/zendesk/copenhagen_theme/commit/c44cbc5a6b68e3367cc65ec2a423f494aed0e708))
+* **TAA-136:** commit assets/ changes, without the custom_theme was throwing an error page ([e0b910c](https://github.com/zendesk/copenhagen_theme/commit/e0b910c15cc86cde1bef167c931b1d4b0afa5ae6))
+* **TAA-364:** update decision textarea to match design and include avatar ([b828012](https://github.com/zendesk/copenhagen_theme/commit/b8280121d82bc3de694cd9b6914dcb57239bdb9d))
+* **TAA-370:** remove border radius, add sortable sent on cell, and adjust date format ([3968b2c](https://github.com/zendesk/copenhagen_theme/commit/3968b2cff06dcba5e3e32c3039c0f36b129df82b))
+* **TAA-399:** update the ApprovalRequestListTable to show no approval requests text when filtering ([4389c1f](https://github.com/zendesk/copenhagen_theme/commit/4389c1fea58768507c02a110f38639e1aaf217d2))
+* **theme:** use colors from theme settings ([87ae95e](https://github.com/zendesk/copenhagen_theme/commit/87ae95e8bac774762973614025f12bbcd217672a))
+* update organizationField equality check so that it is consistent with master branch ([685c4c2](https://github.com/zendesk/copenhagen_theme/commit/685c4c2c23b6fce2de4be1759538de4fdf120fde))
+* updated to display hyphen incase of empty comment ([f14a94d](https://github.com/zendesk/copenhagen_theme/commit/f14a94df138c972983670b34acf6977dbb77b4bd))
+* updated translations ([23c76a3](https://github.com/zendesk/copenhagen_theme/commit/23c76a32ece8d03115bc6a57e32bcf067b0cad15))
+* updated UI to accomodate api change for decision ([aff1fa6](https://github.com/zendesk/copenhagen_theme/commit/aff1fa60a2237ee6182d9e336f865c52ea87678c))
+* use service catalog platform object ([feb3efd](https://github.com/zendesk/copenhagen_theme/commit/feb3efdf4a6d350ba657ad1b378db333b05e8a9f))
+* use translation string for services page title ([a395763](https://github.com/zendesk/copenhagen_theme/commit/a39576372e0eba8fe0e354527eae234e0882de0e))
+
+
+### Features
+
+* add clear all to Services search bar ([e4d50c7](https://github.com/zendesk/copenhagen_theme/commit/e4d50c722085f959c23ddf6f105851ddc783b397))
+* add error boundary for service catalog ([c47c9c6](https://github.com/zendesk/copenhagen_theme/commit/c47c9c6e80595d34435b0b0efca65ef36a64660a))
+* add new template and module for service catalog ([9d1b514](https://github.com/zendesk/copenhagen_theme/commit/9d1b514ff1599d94a7f6ba5981bd3c083c6abe4e))
+* add proper link to service catalog list ([92229cc](https://github.com/zendesk/copenhagen_theme/commit/92229cc00afe043fa9296f4f78ed508bd75fbb7f))
+* add search to Services List ([c2c1f67](https://github.com/zendesk/copenhagen_theme/commit/c2c1f67ff800c2e16fdd6fdabe9da85cf7e1b22f))
+* add service count to Service List ([7a03cb0](https://github.com/zendesk/copenhagen_theme/commit/7a03cb085ec3da45954bde4b8f894dd17c3f0400))
+* add underline to description link ([4411613](https://github.com/zendesk/copenhagen_theme/commit/4411613b1221767c3469106277df3d1461f2f30e))
+* add unstyled list of service catalog items ([d020e14](https://github.com/zendesk/copenhagen_theme/commit/d020e147af3c0bcc65b2d40cc4eada925ebcc272))
+* added form fields to service item ([a835c3c](https://github.com/zendesk/copenhagen_theme/commit/a835c3c5e80f53deb11e4b8dafddec8b4528c0c7))
+* added list of service catalog items ([be3c34d](https://github.com/zendesk/copenhagen_theme/commit/be3c34d9ea6392aa4f93fe768fb1626a16641111))
+* added service catalog item page ([482b957](https://github.com/zendesk/copenhagen_theme/commit/482b9575de76c2f9a48a6add4a0287de2f2e3d30))
+* change request description to a link ([3e4d5a3](https://github.com/zendesk/copenhagen_theme/commit/3e4d5a3c059efa8b5492a1fab3bdf253cc0c62c8))
+* change request subject ([0d2f4b9](https://github.com/zendesk/copenhagen_theme/commit/0d2f4b949ad2ec2577d38b4d914f583f3a6cd127))
+* conditionally render pagination in Services page ([5403fb3](https://github.com/zendesk/copenhagen_theme/commit/5403fb3faf79b8ca3d4ea45a0ba9ab3c222bf546))
+* display thumbnail on Service Catalog item page ([c48db69](https://github.com/zendesk/copenhagen_theme/commit/c48db69eaa92585cb01660427e527fe379700035))
+* display thumbnails in the services item list ([43652e0](https://github.com/zendesk/copenhagen_theme/commit/43652e0826a35bd74c17e52897eb7f378530bc84))
+* filter fields in Item page by end user conditions ([e86714e](https://github.com/zendesk/copenhagen_theme/commit/e86714eb023be0c37769aad367c6f0e3a03abe0a))
+* handle missing forms for Service Catalog requests ([7edc3c8](https://github.com/zendesk/copenhagen_theme/commit/7edc3c806f436b6754844cd61fe4c9982754ba51))
+* move from custom pages to core pages ([5bc1500](https://github.com/zendesk/copenhagen_theme/commit/5bc1500dc0e1396d751d817e8be3ae39e242014a))
+* post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
+* render service item description with html in service item page ([ae24575](https://github.com/zendesk/copenhagen_theme/commit/ae24575af9c2caf817358ca0dea2acf7270a00f9))
+* **TAA-136:** address PR feedback re: using constant and missed translation ([a2fb5d7](https://github.com/zendesk/copenhagen_theme/commit/a2fb5d7227bfe99b33ac4479688783308c7c5aca))
+* **TAA-163:** add Breadcrumbs to the Approval Request page ([6e2bf42](https://github.com/zendesk/copenhagen_theme/commit/6e2bf42b56ab6198f72342686ef5c78aefb03f52))
+* **TAA-163:** add hardcoded link in dropdown for Approval requests ([350abd6](https://github.com/zendesk/copenhagen_theme/commit/350abd691665dbca8ee847fdf5784c2e333a1827))
+* **TAA-163:** begin integrating with the decision API ([aa08970](https://github.com/zendesk/copenhagen_theme/commit/aa08970afcb7d5920f2414d08bc5b92057fffcac))
+* **TAA-163:** build out initial Approval Request List skeleton UI with mock data ([e1e3c55](https://github.com/zendesk/copenhagen_theme/commit/e1e3c5575186520bd0120eabf61e63ff79afc7ba))
+* **TAA-163:** build out initial Approval Request skeleton UI with mock data ([548391f](https://github.com/zendesk/copenhagen_theme/commit/548391f4892bb3190008610ffdeb0008af51fa57))
+* **TAA-163:** create approval requests module and placeholder templates ([c979b49](https://github.com/zendesk/copenhagen_theme/commit/c979b49359ed971f352557a882697cab1932b59f))
+* **TAA-163:** wire up individual approval request to first API endpoint ([a378675](https://github.com/zendesk/copenhagen_theme/commit/a378675565969333a815af940ed6c3356c7c1da0))
+* **TAA-163:** wire up the Approval Request List to the REST API  and update decision to send notes ([bd686d0](https://github.com/zendesk/copenhagen_theme/commit/bd686d0334e478d2feee959dc782b47624f1f0d5))
+* **TAA-360:** add the Previous Decision display on a withdrawn Approval Request ([33af78c](https://github.com/zendesk/copenhagen_theme/commit/33af78cafab01dd659233f6d1b9f786ae0119123))
+* update to use translation function with English fallbacks ([9ae1976](https://github.com/zendesk/copenhagen_theme/commit/9ae197627abbe7dcac06eeae40c516735266fc3d))
+* use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
+
+# [4.6.0-beta.7](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.6...v4.6.0-beta.7) (2025-07-07)
+
+
+### Bug Fixes
+
+* updated translations ([23c76a3](https://github.com/zendesk/copenhagen_theme/commit/23c76a32ece8d03115bc6a57e32bcf067b0cad15))
+
+# [4.6.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.5...v4.6.0-beta.6) (2025-07-04)
+
+
+### Features
+
+* filter fields in Item page by end user conditions ([e86714e](https://github.com/zendesk/copenhagen_theme/commit/e86714eb023be0c37769aad367c6f0e3a03abe0a))
+
+# [4.6.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.4...v4.6.0-beta.5) (2025-07-03)
+
+
+### Bug Fixes
+
+* enlarge thumbnail icons on Service Catalog list page to full 40px ([251aefd](https://github.com/zendesk/copenhagen_theme/commit/251aefd766da29dc95a094ac69f284afd860d5de))
+* extract Service Catalog thumbnail to separate component ([5c6a5c2](https://github.com/zendesk/copenhagen_theme/commit/5c6a5c2c64de544f7b85b8598a748ba15e552224))
+* refactore ShapesIcon for thumbnails to avoid unnecessary css important ([98be572](https://github.com/zendesk/copenhagen_theme/commit/98be572314c07bd4315a001b75a3826054606c3b))
+
+
+### Features
+
+* display thumbnail on Service Catalog item page ([c48db69](https://github.com/zendesk/copenhagen_theme/commit/c48db69eaa92585cb01660427e527fe379700035))
+* display thumbnails in the services item list ([43652e0](https://github.com/zendesk/copenhagen_theme/commit/43652e0826a35bd74c17e52897eb7f378530bc84))
+
+# [4.6.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.3...v4.6.0-beta.4) (2025-07-03)
+
+
+### Bug Fixes
+
+* **theme:** use colors from theme settings ([87ae95e](https://github.com/zendesk/copenhagen_theme/commit/87ae95e8bac774762973614025f12bbcd217672a))
+
+# [4.6.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.2...v4.6.0-beta.3) (2025-06-30)
+
+
+### Features
+
+* add underline to description link ([4411613](https://github.com/zendesk/copenhagen_theme/commit/4411613b1221767c3469106277df3d1461f2f30e))
+* change request description to a link ([3e4d5a3](https://github.com/zendesk/copenhagen_theme/commit/3e4d5a3c059efa8b5492a1fab3bdf253cc0c62c8))
+* change request subject ([0d2f4b9](https://github.com/zendesk/copenhagen_theme/commit/0d2f4b949ad2ec2577d38b4d914f583f3a6cd127))
+
+# [4.6.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.6.0-beta.1...v4.6.0-beta.2) (2025-06-19)
+
+
+### Bug Fixes
+
+* handle relashionship_filter in service catalog form ([aecf77e](https://github.com/zendesk/copenhagen_theme/commit/aecf77e95ddea95b09ed9ee13da0837547bc76d3))
+
+# [4.6.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.5.0...v4.6.0-beta.1) (2025-06-13)
+
+
+### Bug Fixes
+
+* [SW-3056]Approvals - add approval details priority level translations ([a338716](https://github.com/zendesk/copenhagen_theme/commit/a338716b049efab39bf71eab5945d1c545e6519e))
+* account for no priority level case ([830bbb4](https://github.com/zendesk/copenhagen_theme/commit/830bbb4d29910a9a931b3f1f14abf4dc2c7a84ea))
+* add count default value for other variants ([75d7be4](https://github.com/zendesk/copenhagen_theme/commit/75d7be45a676a65635b711707b6abb3e17e22c0b))
+* added styles for service catalog description ([884ca6a](https://github.com/zendesk/copenhagen_theme/commit/884ca6a84d323aa75ce5ba0facc9a61a8b01d844))
+* added useNotify hook and fixed shared close translation ([288ce02](https://github.com/zendesk/copenhagen_theme/commit/288ce028c85ecdcb1b4ea17c188e3f4f0fc6849e))
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+* change type of service catalog form id ([c48ff7a](https://github.com/zendesk/copenhagen_theme/commit/c48ff7a86804d153c220ac1920b72b3cb86cd811))
+* commit generated bundle file updates ([e574128](https://github.com/zendesk/copenhagen_theme/commit/e5741289c8e32c8fcd14008c86cdd430069d97f8))
+* correctly send multiselect field values ([5466125](https://github.com/zendesk/copenhagen_theme/commit/546612508bd712eb712ede0f37eaf0e9bc6fdb93))
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+* fixed RTL styles for CC field ([f1a751b](https://github.com/zendesk/copenhagen_theme/commit/f1a751b187f35001bfb4cc519d45ebf122e86ec4))
+* fixed RTL styles for Credit Card field ([fc35188](https://github.com/zendesk/copenhagen_theme/commit/fc351883cae493db52aa17e1299f57f7acd8d6f2))
+* fixed RTL styles for Service Catalog item page ([a868204](https://github.com/zendesk/copenhagen_theme/commit/a86820498addb15e85162e9e5389fd18ec56fce1))
+* lint fix ([f0858da](https://github.com/zendesk/copenhagen_theme/commit/f0858dacd08307f5bd183017fee1f3f039f8f068))
+* move Services count below search bar ([326cd64](https://github.com/zendesk/copenhagen_theme/commit/326cd6410c287d728f25014a9cf5727dca86bae9))
+* remove commented out CLARIFICATION_REQUESTED approval request state ([e055211](https://github.com/zendesk/copenhagen_theme/commit/e0552119b211b581052c62dfdf1bb32e4081f89a))
+* removed link to service catalog documentation ([c730efc](https://github.com/zendesk/copenhagen_theme/commit/c730efc8ad73a7864306c07d525611527f115875))
+* **service-catalog:** fix description alignment in RTL languages ([0c70a97](https://github.com/zendesk/copenhagen_theme/commit/0c70a9743c353b4f02d72366124bada0141d12cd))
+* **service-catalog:** fixed language defaulting to English when navigating around ([f6141cb](https://github.com/zendesk/copenhagen_theme/commit/f6141cbf73b372281c01cf45034a3c7f133a4f62))
+* **service-catalog:** updated translations ([19904a3](https://github.com/zendesk/copenhagen_theme/commit/19904a3661f633533c03293605eea9cccf4b9ebb))
+* set default value for Service Catalog fields ([aa2c16e](https://github.com/zendesk/copenhagen_theme/commit/aa2c16e9012643fc32aebab9360debac9c485340))
+* **TAA-136:** addresses type error, wires up now returning decision notes ([c44cbc5](https://github.com/zendesk/copenhagen_theme/commit/c44cbc5a6b68e3367cc65ec2a423f494aed0e708))
+* **TAA-136:** commit assets/ changes, without the custom_theme was throwing an error page ([e0b910c](https://github.com/zendesk/copenhagen_theme/commit/e0b910c15cc86cde1bef167c931b1d4b0afa5ae6))
+* **TAA-364:** update decision textarea to match design and include avatar ([b828012](https://github.com/zendesk/copenhagen_theme/commit/b8280121d82bc3de694cd9b6914dcb57239bdb9d))
+* **TAA-370:** remove border radius, add sortable sent on cell, and adjust date format ([3968b2c](https://github.com/zendesk/copenhagen_theme/commit/3968b2cff06dcba5e3e32c3039c0f36b129df82b))
+* **TAA-399:** update the ApprovalRequestListTable to show no approval requests text when filtering ([4389c1f](https://github.com/zendesk/copenhagen_theme/commit/4389c1fea58768507c02a110f38639e1aaf217d2))
+* update organizationField equality check so that it is consistent with master branch ([685c4c2](https://github.com/zendesk/copenhagen_theme/commit/685c4c2c23b6fce2de4be1759538de4fdf120fde))
+* updated to display hyphen incase of empty comment ([f14a94d](https://github.com/zendesk/copenhagen_theme/commit/f14a94df138c972983670b34acf6977dbb77b4bd))
+* updated UI to accomodate api change for decision ([aff1fa6](https://github.com/zendesk/copenhagen_theme/commit/aff1fa60a2237ee6182d9e336f865c52ea87678c))
+* use service catalog platform object ([feb3efd](https://github.com/zendesk/copenhagen_theme/commit/feb3efdf4a6d350ba657ad1b378db333b05e8a9f))
+* use translation string for services page title ([a395763](https://github.com/zendesk/copenhagen_theme/commit/a39576372e0eba8fe0e354527eae234e0882de0e))
+
+
+### Features
+
+* add clear all to Services search bar ([e4d50c7](https://github.com/zendesk/copenhagen_theme/commit/e4d50c722085f959c23ddf6f105851ddc783b397))
+* add error boundary for service catalog ([c47c9c6](https://github.com/zendesk/copenhagen_theme/commit/c47c9c6e80595d34435b0b0efca65ef36a64660a))
+* add new template and module for service catalog ([9d1b514](https://github.com/zendesk/copenhagen_theme/commit/9d1b514ff1599d94a7f6ba5981bd3c083c6abe4e))
+* add proper link to service catalog list ([92229cc](https://github.com/zendesk/copenhagen_theme/commit/92229cc00afe043fa9296f4f78ed508bd75fbb7f))
+* add search to Services List ([c2c1f67](https://github.com/zendesk/copenhagen_theme/commit/c2c1f67ff800c2e16fdd6fdabe9da85cf7e1b22f))
+* add service count to Service List ([7a03cb0](https://github.com/zendesk/copenhagen_theme/commit/7a03cb085ec3da45954bde4b8f894dd17c3f0400))
+* add unstyled list of service catalog items ([d020e14](https://github.com/zendesk/copenhagen_theme/commit/d020e147af3c0bcc65b2d40cc4eada925ebcc272))
+* added form fields to service item ([a835c3c](https://github.com/zendesk/copenhagen_theme/commit/a835c3c5e80f53deb11e4b8dafddec8b4528c0c7))
+* added list of service catalog items ([be3c34d](https://github.com/zendesk/copenhagen_theme/commit/be3c34d9ea6392aa4f93fe768fb1626a16641111))
+* added service catalog item page ([482b957](https://github.com/zendesk/copenhagen_theme/commit/482b9575de76c2f9a48a6add4a0287de2f2e3d30))
+* conditionally render pagination in Services page ([5403fb3](https://github.com/zendesk/copenhagen_theme/commit/5403fb3faf79b8ca3d4ea45a0ba9ab3c222bf546))
+* handle missing forms for Service Catalog requests ([7edc3c8](https://github.com/zendesk/copenhagen_theme/commit/7edc3c806f436b6754844cd61fe4c9982754ba51))
+* move from custom pages to core pages ([5bc1500](https://github.com/zendesk/copenhagen_theme/commit/5bc1500dc0e1396d751d817e8be3ae39e242014a))
+* post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
+* render service item description with html in service item page ([ae24575](https://github.com/zendesk/copenhagen_theme/commit/ae24575af9c2caf817358ca0dea2acf7270a00f9))
+* **TAA-136:** address PR feedback re: using constant and missed translation ([a2fb5d7](https://github.com/zendesk/copenhagen_theme/commit/a2fb5d7227bfe99b33ac4479688783308c7c5aca))
+* **TAA-163:** add Breadcrumbs to the Approval Request page ([6e2bf42](https://github.com/zendesk/copenhagen_theme/commit/6e2bf42b56ab6198f72342686ef5c78aefb03f52))
+* **TAA-163:** add hardcoded link in dropdown for Approval requests ([350abd6](https://github.com/zendesk/copenhagen_theme/commit/350abd691665dbca8ee847fdf5784c2e333a1827))
+* **TAA-163:** begin integrating with the decision API ([aa08970](https://github.com/zendesk/copenhagen_theme/commit/aa08970afcb7d5920f2414d08bc5b92057fffcac))
+* **TAA-163:** build out initial Approval Request List skeleton UI with mock data ([e1e3c55](https://github.com/zendesk/copenhagen_theme/commit/e1e3c5575186520bd0120eabf61e63ff79afc7ba))
+* **TAA-163:** build out initial Approval Request skeleton UI with mock data ([548391f](https://github.com/zendesk/copenhagen_theme/commit/548391f4892bb3190008610ffdeb0008af51fa57))
+* **TAA-163:** create approval requests module and placeholder templates ([c979b49](https://github.com/zendesk/copenhagen_theme/commit/c979b49359ed971f352557a882697cab1932b59f))
+* **TAA-163:** wire up individual approval request to first API endpoint ([a378675](https://github.com/zendesk/copenhagen_theme/commit/a378675565969333a815af940ed6c3356c7c1da0))
+* **TAA-163:** wire up the Approval Request List to the REST API  and update decision to send notes ([bd686d0](https://github.com/zendesk/copenhagen_theme/commit/bd686d0334e478d2feee959dc782b47624f1f0d5))
+* **TAA-360:** add the Previous Decision display on a withdrawn Approval Request ([33af78c](https://github.com/zendesk/copenhagen_theme/commit/33af78cafab01dd659233f6d1b9f786ae0119123))
+* update to use translation function with English fallbacks ([9ae1976](https://github.com/zendesk/copenhagen_theme/commit/9ae197627abbe7dcac06eeae40c516735266fc3d))
+* use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
+
 # [4.5.0](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0...v4.5.0) (2025-06-05)
 
 
@@ -17,12 +231,192 @@
 
 * display any file validation errors that can occur when the "Allowed file types" setting is on ([32ef11c](https://github.com/zendesk/copenhagen_theme/commit/32ef11c589bc934d1bd2cda1bd0847396f4a9354))
 
-## [4.3.7](https://github.com/zendesk/copenhagen_theme/compare/v4.3.6...v4.3.7) (2025-04-24)
+# [4.4.0-beta.19](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.18...v4.4.0-beta.19) (2025-05-21)
 
 
 ### Bug Fixes
 
+* added styles for service catalog description ([884ca6a](https://github.com/zendesk/copenhagen_theme/commit/884ca6a84d323aa75ce5ba0facc9a61a8b01d844))
+
+# [4.4.0-beta.18](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.17...v4.4.0-beta.18) (2025-05-13)
+
+
+### Features
+
+* render service item description with html in service item page ([ae24575](https://github.com/zendesk/copenhagen_theme/commit/ae24575af9c2caf817358ca0dea2acf7270a00f9))
+
+# [4.4.0-beta.17](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.16...v4.4.0-beta.17) (2025-05-07)
+
+
+### Bug Fixes
+
+* [SW-3056]Approvals - add approval details priority level translations ([a338716](https://github.com/zendesk/copenhagen_theme/commit/a338716b049efab39bf71eab5945d1c545e6519e))
+* account for no priority level case ([830bbb4](https://github.com/zendesk/copenhagen_theme/commit/830bbb4d29910a9a931b3f1f14abf4dc2c7a84ea))
 * add approval request priorty level translations ([36fd4ab](https://github.com/zendesk/copenhagen_theme/commit/36fd4ab6c98e3d4e2c871e6267ee791fe031d1cd))
+
+# [4.4.0-beta.16](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.15...v4.4.0-beta.16) (2025-04-10)
+
+
+### Bug Fixes
+
+* **service-catalog:** updated translations ([19904a3](https://github.com/zendesk/copenhagen_theme/commit/19904a3661f633533c03293605eea9cccf4b9ebb))
+
+# [4.4.0-beta.15](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.14...v4.4.0-beta.15) (2025-04-07)
+
+
+### Bug Fixes
+
+* use translation string for services page title ([a395763](https://github.com/zendesk/copenhagen_theme/commit/a39576372e0eba8fe0e354527eae234e0882de0e))
+
+# [4.4.0-beta.14](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.13...v4.4.0-beta.14) (2025-04-03)
+
+
+### Bug Fixes
+
+* added new settings translations for sk and uk ([fbcf222](https://github.com/zendesk/copenhagen_theme/commit/fbcf222a469b2e1f88c519cfaa56a5ca5025d13a))
+* fixed upload of some type of attachments ([f69c061](https://github.com/zendesk/copenhagen_theme/commit/f69c061b67f33de334f1f5b49a15ac862a7eafd9)), closes [#520](https://github.com/zendesk/copenhagen_theme/issues/520)
+* **new-request-form:** fixed rendering issues with conditional fields ([14a6898](https://github.com/zendesk/copenhagen_theme/commit/14a68986eb0e670d450a721f1dfb55374ea4e7f3))
+* **new-request-form:** update dompurify ([a8111ab](https://github.com/zendesk/copenhagen_theme/commit/a8111ab75b40b7b5aca2aec6e65fff2d401289a1))
+* **new-request-form:** updated sk translations ([4344a27](https://github.com/zendesk/copenhagen_theme/commit/4344a27b9c6818bca1d4d5d992205a3333e109d9))
+* updated scoped search in help center setting label ([79c3d91](https://github.com/zendesk/copenhagen_theme/commit/79c3d91c4ce03c5428c6860220905008544c0fef))
+
+# [4.4.0-beta.13](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.12...v4.4.0-beta.13) (2025-04-01)
+
+
+### Bug Fixes
+
+* add count default value for other variants ([75d7be4](https://github.com/zendesk/copenhagen_theme/commit/75d7be45a676a65635b711707b6abb3e17e22c0b))
+
+# [4.4.0-beta.12](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.11...v4.4.0-beta.12) (2025-03-31)
+
+
+### Features
+
+* add clear all to Services search bar ([e4d50c7](https://github.com/zendesk/copenhagen_theme/commit/e4d50c722085f959c23ddf6f105851ddc783b397))
+
+# [4.4.0-beta.11](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.10...v4.4.0-beta.11) (2025-03-31)
+
+
+### Bug Fixes
+
+* **service-catalog:** fix description alignment in RTL languages ([0c70a97](https://github.com/zendesk/copenhagen_theme/commit/0c70a9743c353b4f02d72366124bada0141d12cd))
+
+# [4.4.0-beta.10](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.9...v4.4.0-beta.10) (2025-03-20)
+
+
+### Bug Fixes
+
+* move Services count below search bar ([326cd64](https://github.com/zendesk/copenhagen_theme/commit/326cd6410c287d728f25014a9cf5727dca86bae9))
+
+# [4.4.0-beta.9](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.8...v4.4.0-beta.9) (2025-03-20)
+
+
+### Features
+
+* handle missing forms for Service Catalog requests ([7edc3c8](https://github.com/zendesk/copenhagen_theme/commit/7edc3c806f436b6754844cd61fe4c9982754ba51))
+
+# [4.4.0-beta.8](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.7...v4.4.0-beta.8) (2025-03-20)
+
+
+### Features
+
+* conditionally render pagination in Services page ([5403fb3](https://github.com/zendesk/copenhagen_theme/commit/5403fb3faf79b8ca3d4ea45a0ba9ab3c222bf546))
+
+# [4.4.0-beta.7](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.6...v4.4.0-beta.7) (2025-03-18)
+
+
+### Features
+
+* add search to Services List ([c2c1f67](https://github.com/zendesk/copenhagen_theme/commit/c2c1f67ff800c2e16fdd6fdabe9da85cf7e1b22f))
+
+# [4.4.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.5...v4.4.0-beta.6) (2025-03-10)
+
+
+### Bug Fixes
+
+* update organizationField equality check so that it is consistent with master branch ([685c4c2](https://github.com/zendesk/copenhagen_theme/commit/685c4c2c23b6fce2de4be1759538de4fdf120fde))
+
+# [4.4.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.4...v4.4.0-beta.5) (2025-03-06)
+
+
+### Bug Fixes
+
+* **service-catalog:** fixed language defaulting to English when navigating around ([f6141cb](https://github.com/zendesk/copenhagen_theme/commit/f6141cbf73b372281c01cf45034a3c7f133a4f62))
+
+# [4.4.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.3...v4.4.0-beta.4) (2025-03-06)
+
+
+### Features
+
+* add service count to Service List ([7a03cb0](https://github.com/zendesk/copenhagen_theme/commit/7a03cb085ec3da45954bde4b8f894dd17c3f0400))
+
+# [4.4.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.2...v4.4.0-beta.3) (2025-03-05)
+
+
+### Bug Fixes
+
+* fixed RTL styles for CC field ([f1a751b](https://github.com/zendesk/copenhagen_theme/commit/f1a751b187f35001bfb4cc519d45ebf122e86ec4))
+* fixed RTL styles for Credit Card field ([fc35188](https://github.com/zendesk/copenhagen_theme/commit/fc351883cae493db52aa17e1299f57f7acd8d6f2))
+* fixed RTL styles for Service Catalog item page ([a868204](https://github.com/zendesk/copenhagen_theme/commit/a86820498addb15e85162e9e5389fd18ec56fce1))
+
+# [4.4.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.4.0-beta.1...v4.4.0-beta.2) (2025-03-04)
+
+
+### Bug Fixes
+
+* commit generated bundle file updates ([e574128](https://github.com/zendesk/copenhagen_theme/commit/e5741289c8e32c8fcd14008c86cdd430069d97f8))
+* lint fix ([f0858da](https://github.com/zendesk/copenhagen_theme/commit/f0858dacd08307f5bd183017fee1f3f039f8f068))
+* remove commented out CLARIFICATION_REQUESTED approval request state ([e055211](https://github.com/zendesk/copenhagen_theme/commit/e0552119b211b581052c62dfdf1bb32e4081f89a))
+* **TAA-136:** addresses type error, wires up now returning decision notes ([c44cbc5](https://github.com/zendesk/copenhagen_theme/commit/c44cbc5a6b68e3367cc65ec2a423f494aed0e708))
+* **TAA-136:** commit assets/ changes, without the custom_theme was throwing an error page ([e0b910c](https://github.com/zendesk/copenhagen_theme/commit/e0b910c15cc86cde1bef167c931b1d4b0afa5ae6))
+* **TAA-364:** update decision textarea to match design and include avatar ([b828012](https://github.com/zendesk/copenhagen_theme/commit/b8280121d82bc3de694cd9b6914dcb57239bdb9d))
+* **TAA-370:** remove border radius, add sortable sent on cell, and adjust date format ([3968b2c](https://github.com/zendesk/copenhagen_theme/commit/3968b2cff06dcba5e3e32c3039c0f36b129df82b))
+* **TAA-399:** update the ApprovalRequestListTable to show no approval requests text when filtering ([4389c1f](https://github.com/zendesk/copenhagen_theme/commit/4389c1fea58768507c02a110f38639e1aaf217d2))
+* updated to display hyphen incase of empty comment ([f14a94d](https://github.com/zendesk/copenhagen_theme/commit/f14a94df138c972983670b34acf6977dbb77b4bd))
+* updated UI to accomodate api change for decision ([aff1fa6](https://github.com/zendesk/copenhagen_theme/commit/aff1fa60a2237ee6182d9e336f865c52ea87678c))
+
+
+### Features
+
+* **TAA-136:** address PR feedback re: using constant and missed translation ([a2fb5d7](https://github.com/zendesk/copenhagen_theme/commit/a2fb5d7227bfe99b33ac4479688783308c7c5aca))
+* **TAA-163:** add Breadcrumbs to the Approval Request page ([6e2bf42](https://github.com/zendesk/copenhagen_theme/commit/6e2bf42b56ab6198f72342686ef5c78aefb03f52))
+* **TAA-163:** add hardcoded link in dropdown for Approval requests ([350abd6](https://github.com/zendesk/copenhagen_theme/commit/350abd691665dbca8ee847fdf5784c2e333a1827))
+* **TAA-163:** begin integrating with the decision API ([aa08970](https://github.com/zendesk/copenhagen_theme/commit/aa08970afcb7d5920f2414d08bc5b92057fffcac))
+* **TAA-163:** build out initial Approval Request List skeleton UI with mock data ([e1e3c55](https://github.com/zendesk/copenhagen_theme/commit/e1e3c5575186520bd0120eabf61e63ff79afc7ba))
+* **TAA-163:** build out initial Approval Request skeleton UI with mock data ([548391f](https://github.com/zendesk/copenhagen_theme/commit/548391f4892bb3190008610ffdeb0008af51fa57))
+* **TAA-163:** create approval requests module and placeholder templates ([c979b49](https://github.com/zendesk/copenhagen_theme/commit/c979b49359ed971f352557a882697cab1932b59f))
+* **TAA-163:** wire up individual approval request to first API endpoint ([a378675](https://github.com/zendesk/copenhagen_theme/commit/a378675565969333a815af940ed6c3356c7c1da0))
+* **TAA-163:** wire up the Approval Request List to the REST API  and update decision to send notes ([bd686d0](https://github.com/zendesk/copenhagen_theme/commit/bd686d0334e478d2feee959dc782b47624f1f0d5))
+* **TAA-360:** add the Previous Decision display on a withdrawn Approval Request ([33af78c](https://github.com/zendesk/copenhagen_theme/commit/33af78cafab01dd659233f6d1b9f786ae0119123))
+* update to use translation function with English fallbacks ([9ae1976](https://github.com/zendesk/copenhagen_theme/commit/9ae197627abbe7dcac06eeae40c516735266fc3d))
+
+# [4.4.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0...v4.4.0-beta.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* added useNotify hook and fixed shared close translation ([288ce02](https://github.com/zendesk/copenhagen_theme/commit/288ce028c85ecdcb1b4ea17c188e3f4f0fc6849e))
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+* change type of service catalog form id ([c48ff7a](https://github.com/zendesk/copenhagen_theme/commit/c48ff7a86804d153c220ac1920b72b3cb86cd811))
+* correctly send multiselect field values ([5466125](https://github.com/zendesk/copenhagen_theme/commit/546612508bd712eb712ede0f37eaf0e9bc6fdb93))
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+* removed link to service catalog documentation ([c730efc](https://github.com/zendesk/copenhagen_theme/commit/c730efc8ad73a7864306c07d525611527f115875))
+* set default value for Service Catalog fields ([aa2c16e](https://github.com/zendesk/copenhagen_theme/commit/aa2c16e9012643fc32aebab9360debac9c485340))
+* use service catalog platform object ([feb3efd](https://github.com/zendesk/copenhagen_theme/commit/feb3efdf4a6d350ba657ad1b378db333b05e8a9f))
+
+
+### Features
+
+* add error boundary for service catalog ([c47c9c6](https://github.com/zendesk/copenhagen_theme/commit/c47c9c6e80595d34435b0b0efca65ef36a64660a))
+* add new template and module for service catalog ([9d1b514](https://github.com/zendesk/copenhagen_theme/commit/9d1b514ff1599d94a7f6ba5981bd3c083c6abe4e))
+* add proper link to service catalog list ([92229cc](https://github.com/zendesk/copenhagen_theme/commit/92229cc00afe043fa9296f4f78ed508bd75fbb7f))
+* add unstyled list of service catalog items ([d020e14](https://github.com/zendesk/copenhagen_theme/commit/d020e147af3c0bcc65b2d40cc4eada925ebcc272))
+* added form fields to service item ([a835c3c](https://github.com/zendesk/copenhagen_theme/commit/a835c3c5e80f53deb11e4b8dafddec8b4528c0c7))
+* added list of service catalog items ([be3c34d](https://github.com/zendesk/copenhagen_theme/commit/be3c34d9ea6392aa4f93fe768fb1626a16641111))
+* added service catalog item page ([482b957](https://github.com/zendesk/copenhagen_theme/commit/482b9575de76c2f9a48a6add4a0287de2f2e3d30))
+* move from custom pages to core pages ([5bc1500](https://github.com/zendesk/copenhagen_theme/commit/5bc1500dc0e1396d751d817e8be3ae39e242014a))
+* post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
+* use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
 
 ## [4.3.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.5...v4.3.6) (2025-03-21)
 
@@ -93,6 +487,64 @@
 ### Bug Fixes
 
 * update translation files and fix typo ([49f99cd](https://github.com/zendesk/copenhagen_theme/commit/49f99cd7fedac333ebbaba6696f1c4970b1b0a10))
+
+# [4.3.0-beta.6](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.5...v4.3.0-beta.6) (2025-02-13)
+
+
+### Bug Fixes
+
+* change loading state for services ([bf318b7](https://github.com/zendesk/copenhagen_theme/commit/bf318b7cbb431c66a80fe4d82197c4cfcd93dd3d))
+
+# [4.3.0-beta.5](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.4...v4.3.0-beta.5) (2025-02-12)
+
+
+### Bug Fixes
+
+* display translated error messages for service submission ([2890f01](https://github.com/zendesk/copenhagen_theme/commit/2890f017153e406d5692b272317546803cbec26a))
+
+# [4.3.0-beta.4](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.3...v4.3.0-beta.4) (2025-01-31)
+
+
+### Bug Fixes
+
+* correctly send multiselect field values ([5466125](https://github.com/zendesk/copenhagen_theme/commit/546612508bd712eb712ede0f37eaf0e9bc6fdb93))
+
+# [4.3.0-beta.3](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.2...v4.3.0-beta.3) (2025-01-30)
+
+
+### Bug Fixes
+
+* set default value for Service Catalog fields ([aa2c16e](https://github.com/zendesk/copenhagen_theme/commit/aa2c16e9012643fc32aebab9360debac9c485340))
+
+# [4.3.0-beta.2](https://github.com/zendesk/copenhagen_theme/compare/v4.3.0-beta.1...v4.3.0-beta.2) (2025-01-29)
+
+
+### Bug Fixes
+
+* change type of service catalog form id ([c48ff7a](https://github.com/zendesk/copenhagen_theme/commit/c48ff7a86804d153c220ac1920b72b3cb86cd811))
+
+# [4.3.0-beta.1](https://github.com/zendesk/copenhagen_theme/compare/v4.2.7...v4.3.0-beta.1) (2025-01-27)
+
+
+### Bug Fixes
+
+* added useNotify hook and fixed shared close translation ([288ce02](https://github.com/zendesk/copenhagen_theme/commit/288ce028c85ecdcb1b4ea17c188e3f4f0fc6849e))
+* removed link to service catalog documentation ([c730efc](https://github.com/zendesk/copenhagen_theme/commit/c730efc8ad73a7864306c07d525611527f115875))
+* use service catalog platform object ([feb3efd](https://github.com/zendesk/copenhagen_theme/commit/feb3efdf4a6d350ba657ad1b378db333b05e8a9f))
+
+
+### Features
+
+* add error boundary for service catalog ([c47c9c6](https://github.com/zendesk/copenhagen_theme/commit/c47c9c6e80595d34435b0b0efca65ef36a64660a))
+* add new template and module for service catalog ([9d1b514](https://github.com/zendesk/copenhagen_theme/commit/9d1b514ff1599d94a7f6ba5981bd3c083c6abe4e))
+* add proper link to service catalog list ([92229cc](https://github.com/zendesk/copenhagen_theme/commit/92229cc00afe043fa9296f4f78ed508bd75fbb7f))
+* add unstyled list of service catalog items ([d020e14](https://github.com/zendesk/copenhagen_theme/commit/d020e147af3c0bcc65b2d40cc4eada925ebcc272))
+* added form fields to service item ([a835c3c](https://github.com/zendesk/copenhagen_theme/commit/a835c3c5e80f53deb11e4b8dafddec8b4528c0c7))
+* added list of service catalog items ([be3c34d](https://github.com/zendesk/copenhagen_theme/commit/be3c34d9ea6392aa4f93fe768fb1626a16641111))
+* added service catalog item page ([482b957](https://github.com/zendesk/copenhagen_theme/commit/482b9575de76c2f9a48a6add4a0287de2f2e3d30))
+* move from custom pages to core pages ([5bc1500](https://github.com/zendesk/copenhagen_theme/commit/5bc1500dc0e1396d751d817e8be3ae39e242014a))
+* post a service catalog item request ([81071cc](https://github.com/zendesk/copenhagen_theme/commit/81071ccc8fdf171f8d0d2742f7f1efb552853750))
+* use endpoints for service catalog ([36320e2](https://github.com/zendesk/copenhagen_theme/commit/36320e272a564e6f9d2ca80540e421e68bb4e677))
 
 ## [4.2.7](https://github.com/zendesk/copenhagen_theme/compare/v4.2.6...v4.2.7) (2025-01-07)
 

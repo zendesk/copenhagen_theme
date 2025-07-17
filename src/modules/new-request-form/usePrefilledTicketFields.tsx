@@ -1,6 +1,6 @@
 import { useMemo } from "react";
-import type { Field } from "./data-types";
 import DOMPurify from "dompurify";
+import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
 
 const MAX_URL_LENGTH = 2048;
 const TICKET_FIELD_PREFIX = "tf_";
@@ -25,11 +25,11 @@ const ALLOWED_HTML_TAGS = [
 ];
 
 interface Fields {
-  ticketFields: Field[];
-  emailField: Field | null;
-  ccField: Field | null;
-  organizationField: Field | null;
-  dueDateField: Field;
+  ticketFields: TicketFieldObject[];
+  emailField: TicketFieldObject | null;
+  ccField: TicketFieldObject | null;
+  organizationField: TicketFieldObject | null;
+  dueDateField: TicketFieldObject;
 }
 
 function getFieldFromId(id: string, prefilledTicketFields: Fields) {

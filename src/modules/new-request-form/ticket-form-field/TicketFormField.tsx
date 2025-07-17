@@ -6,10 +6,10 @@ import {
   Label,
   Option,
 } from "@zendeskgarden/react-dropdowns.next";
-import type { Field } from "../data-types";
+import type { TicketFieldObject } from "../../ticket-fields/data-types/TicketFieldObject";
 
 interface TicketFormFieldProps {
-  field: Field;
+  field: TicketFieldObject;
   newRequestPath: string;
 }
 

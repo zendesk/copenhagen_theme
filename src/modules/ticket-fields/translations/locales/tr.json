@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(Son 4 hane)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Bir seçim yapın",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Öğeler yükleniyor...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Eşleşme bulunamadı",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Ara {{label}}"
+}

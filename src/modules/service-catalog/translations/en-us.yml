@@ -6,6 +6,7 @@
 # If you are building your own theme, you can remove this file and just load the translation JSON files, or provide
 # your translations with a different method.
 #
+
 title: "Copenhagen Theme Service catalog"
 packages:
   - "service-catalog"
@@ -24,23 +25,23 @@ parts:
       key: "service-catalog.empty-state.no-services"
       title: "Empty state no services"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "No services in sight"    
+      value: "No services in sight"
   - translation:
       key: "service-catalog.empty-state.description"
       title: "Empty state description"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "Once services are added to catalog, you'll find them here."    
+      value: "Once services are added to catalog, you'll find them here."
   - translation:
       key: "service-catalog.empty-state.support-article-link"
       title: "Empty state support article link"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "Learn about the service catalog"    
+      value: "Learn about the service catalog"
       obsolete: "2025-04-22"
   - translation:
       key: "service-catalog.empty-state.go-to-homepage"
       title: "Empty state go to homepage link"
       screenshot: "https://drive.google.com/file/d/1D_3VXzWSuj9f34PsFPa0b4uELz8-T9ll/view?usp=drive_link"
-      value: "Go to the homepage"    
+      value: "Go to the homepage"
   - translation:
       key: "service-catalog.item.read-more"
       title: "Button to show whole description of the service catalog item"
@@ -50,12 +51,12 @@ parts:
       key: "service-catalog.item.read-less"
       title: "Button to hide part of the description of the service catalog item"
       screenshot: "https://drive.google.com/file/d/1BYDLuhii7aQs18TkKflGCpReb_UCKSeD/view?usp=drive_link"
-      value: "Read less"    
+      value: "Read less"
   - translation:
       key: "service-catalog.item.submit-button"
       title: "Button to submit a request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1kuv7v6Vtx787TdVz8AOmD6v0ow79Xd6c/view?usp=drive_link"
-      value: "Submit request"   
+      value: "Submit request"
   - translation:
       key: "service-catalog.item.service-request-submitted"
       title: "Success notification after submitting request for service catalog item"
@@ -65,12 +66,12 @@ parts:
       key: "service-catalog.item.service-request-error-title"
       title: "Error notification title after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
-      value: "Service couldn't be submitted"           
+      value: "Service couldn't be submitted"
   - translation:
       key: "service-catalog.item.service-request-error-message"
       title: "Error notification after unsuccessful submitting request for service catalog item"
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
-      value: "Give it a moment and try it again"  
+      value: "Give it a moment and try it again"
   - translation:
       key: "service-catalog.item.service-request-error.close-label"
       title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
@@ -81,7 +82,7 @@ parts:
       key: "service-catalog.service-list-error-title"
       title: "Error notification title when there is problem with loading the list of services"
       screenshot: "https://drive.google.com/file/d/1vIeLVSOOV9-vUj-Kh9-ZwyFSC9jN6AFs/view?usp=drive_link"
-      value: "Services couldn't be loaded"           
+      value: "Services couldn't be loaded"
   - translation:
       key: "service-catalog.service-list-error-message"
       title: "Error notification when there is problem with loading the list of services"
@@ -122,12 +123,12 @@ parts:
       title: "Search for services in the Service List"
       screenshot: "https://drive.google.com/file/d/1JHDB_jxDaL0ozmpUTYIhYMaCm4-4SN27/view?usp=drive_link"
       value: "Search for services"
-  - translation:
+  - translation: 
       key: "service-catalog.clear-search"
       title: "Clear search button"
       screenshot: "https://drive.google.com/file/d/11u8u7DOlPvAMZcFlsj_aPU1mPOSzjBxY/view?usp=drive_link"
       value: "Clear search"
-  - translation:
+  - translation: 
       key: "service-catalog.empty-state.search-description"
       title: "Empty state with search description"
       screenshot: "https://drive.google.com/file/d/10DiQB3DDf9x13owivlJs9QMNWVXCKdOd/view?usp=drive_link"

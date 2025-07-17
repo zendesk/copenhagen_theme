@@ -1,0 +1,7 @@
+{
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(เลข 4 หลักสุดท้าย)",
+  "cph-theme-ticket-fields.dropdown.empty-option": "เลือกตัวเลือก",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "กำลังโหลดรายการ...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "ไม่พบรายการที่ตรงกัน",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "ค้นหา {{label}}"
+}
