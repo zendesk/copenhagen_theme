@@ -1141,6 +1141,25 @@ ul {
   max-width: 610px;
   margin: 0 auto;
 }
+.hero-title {
+  color: white;
+  font-size: 48px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.kb-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+.kb-description {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.faq-link {
+  color: #109648;
+}
 
 .page-header {
   display: flex;
@@ -1260,6 +1279,17 @@ ul {
 .help-list .blocks-item:nth-child(1),
 .help-list .blocks-item:nth-child(2) {
   flex: 1 0 266px;
+}
+.blocks-list .blocks-item .blocks-item-title,
+.help-list .blocks-item .blocks-item-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D7DBE0;
+}
+.help-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 18px 0 48px;
 }
 @media (min-width: 768px) {
   .blocks-list {

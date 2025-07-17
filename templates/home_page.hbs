@@ -2,7 +2,7 @@
 
 <section id="main-content" class="section hero">
   <div class="hero-inner">
-    <h2 style="color: white; font-size: 48px; font-weight: 600; margin-bottom: 0;">Help Center</h2>
+    <h2 class="hero-title">Help Center</h2>
     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true" style="top: 82%;">
       <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
       <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
@@ -13,18 +13,18 @@
 
 <div class="container">
   <section class="section knowledge-base">
-    <h2 style="text-align: center; font-size: 24px; font-weight: 400; margin-bottom: 24px;">Need Help? We've Got Your Back.</h2>
-    <p style="text-align: center; margin-bottom: 48px;">
+    <h2 class="kb-title">Need Help? We've Got Your Back.</h2>
+    <p class="kb-description">
         From game servers to Discord bots, learn how to use your BisectHosting services.
         <br />
-        Got a question and not sure where to start? <a href="https://www.meloncube.net/c/faq/" target="_blank" style="color: #109648;">View our FAQ</a>
+        Got a question and not sure where to start? <a href="https://www.meloncube.net/c/faq/" target="_blank" class="faq-link">View our FAQ</a>
     </p>
     <section class="categories blocks">
       <ul class="prominent-list">
           {{#each categories}}
               <li class="blocks-item">
                   <a href='{{url}}' class="blocks-item-link">
-                      <img src="{{asset 'rocket.svg'}}" height="106px" width="106px" />
+                      <img src="{{asset id prefix="category_" suffix=".svg"}}" height="106px" width="106px" />
                       <div class="blocks-item-text">
                         <span class="blocks-item-title">{{name}}</span>
                         <span class="blocks-item-description">{{excerpt description}}</span>
@@ -37,8 +37,8 @@
         {{#each categories}}
             <li class="blocks-item">
                 <a href='{{url}}' class="blocks-item-link">
-                    <img src="{{asset 'rocket.svg'}}" height="106px" width="106px" />
-                    <span class="blocks-item-title" style="padding-bottom: 10px; border-bottom: 1px solid #D7DBE0;">{{name}}</span>
+                    <img src="{{asset id prefix="category_" suffix=".svg"}}" height="106px" width="106px" />
+                    <span class="blocks-item-title">{{name}}</span>
                     <span class="blocks-item-description">{{excerpt description}}</span>
                 </a>
             </li>
@@ -47,19 +47,19 @@
       {{pagination}}
     </section>
 
-    <h2 style="text-align: center; font-size: 24px; font-weight: 400; margin-bottom: 48px; margin-top: 18px;">Other Ways To Find Help</h2>
+    <h2 class="help-title">Other Ways To Find Help</h2>
     <ul class="help-list">
       <li class="blocks-item">
           <a href='https://www.bisecthosting.com/discord' target="_blank" class="blocks-item-link">
             <img src="{{asset 'discord.svg'}}" height="106px" width="106px" />
-            <span class="blocks-item-title" style="padding-bottom: 10px; border-bottom: 1px solid #D7DBE0;">Discord Community</span>
+            <span class="blocks-item-title">Discord Community</span>
             <span class="blocks-item-description">We've got our ear to the ground. Here's what you need to know.</span>
           </a>
       </li>
       <li class="blocks-item">
           <a href='https://games.bisecthosting.com/docs' target="_blank" class="blocks-item-link">
             <img src="{{asset 'chatBubble.svg'}}" height="106px" width="106px" />
-            <span class="blocks-item-title" style="padding-bottom: 10px; border-bottom: 1px solid #D7DBE0;">Submit a Ticket</span>
+            <span class="blocks-item-title">Submit a Ticket</span>
             <span class="blocks-item-description">We've got our ear to the ground. Here's what you need to know.</span>
           </a>
       </li>
