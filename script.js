@@ -658,4 +658,58 @@
     }
   });
 
+  // Style blockquotes in article content based on their first word
+  window.addEventListener("DOMContentLoaded", () => {
+    const articleContent = document.querySelector('.article-content');
+    if (!articleContent) return;
+
+    const blockquotes = articleContent.querySelectorAll('blockquote');
+    
+    blockquotes.forEach((blockquote) => {
+      const text = blockquote.textContent.trim();
+      const firstWord = text.split(/\s+/)[0];
+      
+      if (firstWord === 'Note:' || firstWord === 'Requirement:') {
+        const parts = text.split(':');
+        const label = parts[0];
+        const content = parts.slice(1).join(':').trim();
+
+        let svgIcon = '';
+        if (firstWord === 'Note:') {
+          svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="blockquote-icon" aria-hidden="true">
+            <circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path fill="currentColor" d="M8 4a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm0 3.5a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V8a.5.5 0 0 1 .5-.5z"/>
+          </svg>`;
+        } else if (firstWord === 'Requirement:') {
+          svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="blockquote-icon" aria-hidden="true">
+            <rect x="2" y="3" width="3" height="3" rx="2" fill="currentColor"/>
+            <rect x="2" y="7" width="3" height="3" rx="2" fill="currentColor"/>
+            <rect x="2" y="11" width="3" height="3" rx="2" fill="currentColor"/>
+            <rect x="6" y="3.5" width="10" height="2" rx="1" fill="currentColor"/>
+            <rect x="6" y="7.5" width="10" height="2" rx="1" fill="currentColor"/>
+            <rect x="6" y="11.5" width="10" height="2" rx="1" fill="currentColor"/>
+          </svg>`;
+        }
+        
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'blockquote-label';
+        labelSpan.innerHTML = svgIcon + label;
+        
+        const contentSpan = document.createElement('span');
+        contentSpan.className = 'blockquote-content';
+        contentSpan.textContent = content;
+        
+        blockquote.innerHTML = '';
+        blockquote.appendChild(labelSpan);
+        blockquote.appendChild(contentSpan);
+        
+        if (firstWord === 'Note:') {
+          blockquote.classList.add('blockquote-note');
+        } else if (firstWord === 'Requirement:') {
+          blockquote.classList.add('blockquote-requirement');
+        }
+      }
+    });
+  });
+
 })();
