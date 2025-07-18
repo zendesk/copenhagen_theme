@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { type IOptionProps } from "@zendeskgarden/react-dropdowns.next";
 import type { TicketFieldOptionObject } from "../data-types/TicketFieldObject";
+import { useTranslation } from "react-i18next";
 
 interface OptionProps {
   value: string;
@@ -61,7 +62,10 @@ function getGroupAndOptionNames(
   return [namesList.slice(0, -1), namesList.slice(-1)[0]!];
 }
 
-function buildSubGroupOptions(groupNames: string[]): SubGroup {
+function buildSubGroupOptions(
+  groupNames: string[],
+  backLabel: string
+): SubGroup {
   const parentGroupNames = groupNames.slice(0, -1);
   const parentGroupIdentifier = getGroupIdentifier(parentGroupNames);
   const name = groupNames[groupNames.length - 1] as string;
@@ -70,7 +74,7 @@ function buildSubGroupOptions(groupNames: string[]): SubGroup {
     name,
     backOption: {
       type: "previous",
-      label: "Back",
+      label: backLabel,
       value: parentGroupIdentifier,
     },
     options: [],
@@ -121,7 +125,8 @@ function buildSubGroupOptions(groupNames: string[]): SubGroup {
  */
 function buildNestedOptions(
   options: TicketFieldOptionObject[],
-  hasEmptyOption: boolean
+  hasEmptyOption: boolean,
+  backLabel: string
 ): NestedOptions {
   const result: NestedOptions = {
     [ROOT_GROUP_IDENTIFIER]: {
@@ -143,7 +148,7 @@ function buildNestedOptions(
       const groupIdentifier = getGroupIdentifier(groupNames);
 
       if (!result[groupIdentifier]) {
-        result[groupIdentifier] = buildSubGroupOptions(groupNames);
+        result[groupIdentifier] = buildSubGroupOptions(groupNames, backLabel);
       }
 
       result[groupIdentifier]?.options.push({
@@ -160,8 +165,10 @@ function buildNestedOptions(
         const nextGroupIdentifier = getGroupIdentifier(nextGroupNames);
 
         if (!result[parentGroupIdentifier]) {
-          result[parentGroupIdentifier] =
-            buildSubGroupOptions(parentGroupNames);
+          result[parentGroupIdentifier] = buildSubGroupOptions(
+            parentGroupNames,
+            backLabel
+          );
         }
 
         if (
@@ -217,9 +224,15 @@ export function useNestedOptions({
   options,
   hasEmptyOption,
 }: UseNestedOptionsProps) {
+  const { t } = useTranslation();
   const nestedOptions: NestedOptions = useMemo(
-    () => buildNestedOptions(options, hasEmptyOption),
-    [options, hasEmptyOption]
+    () =>
+      buildNestedOptions(
+        options,
+        hasEmptyOption,
+        t("cph-theme-ticket-fields.dropdown.back-option-label", "Back")
+      ),
+    [options, hasEmptyOption, t]
   );
 
   const [currentGroup, setCurrentGroup] = useState<OptionGroup>(
