@@ -36,3 +36,8 @@ parts:
       title: "Additional label shown above the credit card field, informing the user that only the last 4 digits are required."
       screenshot: "https://drive.google.com/file/d/13Pz2p5q7FHX9FKT6MUR6Sg5vWy55X0kP/view?usp=drive_link"
       value: "(Last 4 digits)"
+  - translation:
+      key: "cph-theme-ticket-fields.dropdown.back-option-label"
+      title: "Label for the back option in a multi-level dropdown, used to return to the previous menu."
+      screenshot: "https://drive.google.com/file/d/1u_eLJAGP8bGvQE7cteCQyCNJT13_9dOu/view?usp=drive_link"
+      value: "Back"
