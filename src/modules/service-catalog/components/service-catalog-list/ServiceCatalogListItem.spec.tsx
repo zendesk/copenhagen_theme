@@ -28,7 +28,7 @@ describe("ServiceCatalogListItem", () => {
   const mockServiceItem: ServiceCatalogItem = {
     id: 1989,
     name: "Atl Nacional keyboard",
-    description: "This is a keyboard from Atl Nacional",
+    description: "This is a keyboard &quot;from&quot; Atl Nacional",
     form_id: 456,
     thumbnail_url: "",
   };
@@ -47,7 +47,9 @@ describe("ServiceCatalogListItem", () => {
       );
 
       expect(screen.getByText(mockServiceItem.name)).toBeInTheDocument();
-      expect(screen.getByText(mockServiceItem.description)).toBeInTheDocument();
+      expect(
+        screen.getByText('This is a keyboard "from" Atl Nacional')
+      ).toBeInTheDocument();
       expect(screen.getByTestId("atl-nacional")).toBeInTheDocument();
     });
 
