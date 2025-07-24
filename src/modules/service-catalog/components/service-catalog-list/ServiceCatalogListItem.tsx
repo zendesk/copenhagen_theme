@@ -66,7 +66,9 @@ const ServiceCatalogListItem = ({
       <ItemThumbnail size="medium" url={serviceItem.thumbnail_url} />
       <TextContainer>
         <ItemTitle>{serviceItem.name}</ItemTitle>
-        <ItemDescription>{serviceItem.description}</ItemDescription>
+        <ItemDescription
+          dangerouslySetInnerHTML={{ __html: serviceItem.description }}
+        />
       </TextContainer>
     </ItemContainer>
   );
