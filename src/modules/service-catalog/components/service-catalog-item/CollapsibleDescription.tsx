@@ -13,6 +13,7 @@ const DescriptionWrapper = styled.div`
     ${(props) => getColorV8("grey", 300, props.theme)};
   padding-bottom: ${(props) => props.theme.space.lg};
   margin-inline-end: ${(props) => props.theme.space.xl};
+  word-break: break-all;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-end: 0;
