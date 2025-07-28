@@ -1,3 +1,10 @@
+## [4.8.1](https://github.com/zendesk/copenhagen_theme/compare/v4.8.0...v4.8.1) (2025-07-24)
+
+
+### Bug Fixes
+
+* allow html formatting to display as text ([e2486ab](https://github.com/zendesk/copenhagen_theme/commit/e2486ab992aa72c0c2e9287aab2995a33fe29fd5))
+
 # [4.8.0](https://github.com/zendesk/copenhagen_theme/compare/v4.7.0...v4.8.0) (2025-07-15)
 
 

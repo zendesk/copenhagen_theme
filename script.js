@@ -658,6 +658,27 @@
     }
   });
 
+  // Footer dropdown functionality
+  window.toggleFooterDropdown = function(button) {
+    const column = button.closest('.links-column');
+    const isOpen = column.getAttribute('data-open') === 'true';
+    
+    // Close all other dropdowns first
+    const allColumns = document.querySelectorAll('.links-column');
+    allColumns.forEach(col => {
+      if (col !== column) {
+        col.removeAttribute('data-open');
+      }
+    });
+    
+    // Toggle current dropdown
+    if (isOpen) {
+      column.removeAttribute('data-open');
+    } else {
+      column.setAttribute('data-open', 'true');
+    }
+  };
+
   // Style blockquotes in article content based on their first word
   window.addEventListener("DOMContentLoaded", () => {
     const articleContent = document.querySelector('.article-content');
