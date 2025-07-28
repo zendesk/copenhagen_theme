@@ -10,6 +10,10 @@ $header-height: 71px;
   justify-content: space-between;
 }
 
+.hero-title {
+  font-family: $heading_font;
+}
+
 .logo img {
   max-height: 37px;
   vertical-align: middle;

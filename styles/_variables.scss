@@ -1,5 +1,14 @@
 // Variables
 
+// Fonts
+$text_font: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$heading_font: 'Cal Sans', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+:root {
+    --heading-font: $heading_font;
+    --text-font: $text_font;
+}
+
 // Colors
 $hover-button-color: zass-darken($brand_color, 20%);
 $secondary-text-color: zass-lighten($text_color, 20%);
