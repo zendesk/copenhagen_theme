@@ -72,6 +72,7 @@ const LeftColumn = styled.div`
   flex-direction: column;
   gap: ${(props) => props.theme.space.lg};
   margin-inline-end: ${(props) => props.theme.space.xl};
+  min-width: 0;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-end: 0;
