@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Nenhuma solicitação de aprovação encontrada.",
   "approval-requests.list.search-placeholder": "Pesquisar solicitações de aprovação",
   "approval-requests.list.status-dropdown.any": "Qualquer um",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Status de aprovação",
   "approval-requests.list.table.requester": "Solicitante",

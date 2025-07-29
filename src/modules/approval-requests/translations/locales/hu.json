@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Nem találhatók jóváhagyási kérelmek.",
   "approval-requests.list.search-placeholder": "Jóváhagyási kérelmek keresése",
   "approval-requests.list.status-dropdown.any": "Bármely",
-  "approval-requests.list.status-dropdown.label": "Állapot:",
   "approval-requests.list.status-dropdown.label_v2": "Állapot",
   "approval-requests.list.table.approval-status": "Jóváhagyás állapota",
   "approval-requests.list.table.requester": "Igénylő",

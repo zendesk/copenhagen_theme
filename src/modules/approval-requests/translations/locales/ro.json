@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Nu s-au găsit solicitări de aprobare.",
   "approval-requests.list.search-placeholder": "Solicitări de aprobare a căutării",
   "approval-requests.list.status-dropdown.any": "Oricare",
-  "approval-requests.list.status-dropdown.label": "Stare:",
   "approval-requests.list.status-dropdown.label_v2": "Stare",
   "approval-requests.list.table.approval-status": "Starea aprobării",
   "approval-requests.list.table.requester": "Solicitant",

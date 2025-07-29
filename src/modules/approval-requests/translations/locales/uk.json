@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Запитів на затвердження не знайдено.",
   "approval-requests.list.search-placeholder": "Пошук запитів на затвердження",
   "approval-requests.list.status-dropdown.any": "Будь-який",
-  "approval-requests.list.status-dropdown.label": "Статус:",
   "approval-requests.list.status-dropdown.label_v2": "Статус",
   "approval-requests.list.table.approval-status": "Статус затвердження",
   "approval-requests.list.table.requester": "Ініціатор",

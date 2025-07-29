@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "कोई अनुमोदन अनुरोध नहीं मिला।",
   "approval-requests.list.search-placeholder": "अनुमोदन अनुरोध खोजें",
   "approval-requests.list.status-dropdown.any": "कोई भी",
-  "approval-requests.list.status-dropdown.label": "स्थिति:",
   "approval-requests.list.status-dropdown.label_v2": "स्थिति",
   "approval-requests.list.table.approval-status": "अनुमोदन की स्थिति",
   "approval-requests.list.table.requester": "अनुरोधकर्ता",

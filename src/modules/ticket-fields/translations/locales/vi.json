@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 chữ số cuối)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Quay lại",
   "cph-theme-ticket-fields.dropdown.empty-option": "Chọn một tùy chọn",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Đang tải các mục...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Không tìm thấy kết quả phù hợp",

@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Không tìm thấy yêu cầu phê duyệt.",
   "approval-requests.list.search-placeholder": "Tìm kiếm yêu cầu phê duyệt",
   "approval-requests.list.status-dropdown.any": "Bất kỳ",
-  "approval-requests.list.status-dropdown.label": "Trạng thái:",
   "approval-requests.list.status-dropdown.label_v2": "Trạng thái",
   "approval-requests.list.table.approval-status": "Trạng thái phê duyệt",
   "approval-requests.list.table.requester": "Người yêu cầu",

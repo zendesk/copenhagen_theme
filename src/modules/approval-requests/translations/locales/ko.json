@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "승인 요청을 찾을 수 없습니다.",
   "approval-requests.list.search-placeholder": "승인 요청 검색",
   "approval-requests.list.status-dropdown.any": "모두",
-  "approval-requests.list.status-dropdown.label": "상태:",
   "approval-requests.list.status-dropdown.label_v2": "상태",
   "approval-requests.list.table.approval-status": "승인 상태",
   "approval-requests.list.table.requester": "요청자",

@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "（最後 4 位數）",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "返回",
   "cph-theme-ticket-fields.dropdown.empty-option": "請選取一項",
   "cph-theme-ticket-fields.lookup-field.loading-options": "項目載入中...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "找不到符合項目",

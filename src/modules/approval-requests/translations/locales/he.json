@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "לא נמצאו בקשות אישור.",
   "approval-requests.list.search-placeholder": "חיפוש בקשות אישור",
   "approval-requests.list.status-dropdown.any": "כלשהו",
-  "approval-requests.list.status-dropdown.label": "סטטוס:",
   "approval-requests.list.status-dropdown.label_v2": "סטטוס",
   "approval-requests.list.table.approval-status": "סטטוס אישור",
   "approval-requests.list.table.requester": "המבקש",
