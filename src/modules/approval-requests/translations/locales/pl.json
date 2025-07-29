@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Nie znaleziono próśb o zatwierdzenie.",
   "approval-requests.list.search-placeholder": "Szukaj próśb o zatwierdzenie",
   "approval-requests.list.status-dropdown.any": "Dowolny",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Status zatwierdzenia",
   "approval-requests.list.table.requester": "Osoba zlecająca",

@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Finner ingen forespørsler om godkjenning.",
   "approval-requests.list.search-placeholder": "Søk i forespørsler om godkjenning",
   "approval-requests.list.status-dropdown.any": "Hvilken som helst",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Godkjenningsstatus",
   "approval-requests.list.table.requester": "Sender",

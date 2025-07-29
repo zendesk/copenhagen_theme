@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Δεν βρέθηκαν αιτήματα έγκρισης.",
   "approval-requests.list.search-placeholder": "Αναζητήστε αιτήματα έγκρισης",
   "approval-requests.list.status-dropdown.any": "Οποιαδήποτε",
-  "approval-requests.list.status-dropdown.label": "Κατάσταση:",
   "approval-requests.list.status-dropdown.label_v2": "Κατάσταση",
   "approval-requests.list.table.approval-status": "Κατάσταση έγκρισης",
   "approval-requests.list.table.requester": "Αιτών",

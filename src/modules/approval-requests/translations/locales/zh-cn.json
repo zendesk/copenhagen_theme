@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "未找到批准请求。",
   "approval-requests.list.search-placeholder": "搜索批准请求",
   "approval-requests.list.status-dropdown.any": "任意",
-  "approval-requests.list.status-dropdown.label": "状态：",
   "approval-requests.list.status-dropdown.label_v2": "状态",
   "approval-requests.list.table.approval-status": "批准状态",
   "approval-requests.list.table.requester": "请求者",

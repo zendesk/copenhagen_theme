@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Geen goedkeuringsaanvragen gevonden.",
   "approval-requests.list.search-placeholder": "Zoek goedkeuringsaanvragen",
   "approval-requests.list.status-dropdown.any": "Een of meer",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Goedkeuringsstatus",
   "approval-requests.list.table.requester": "Aanvrager",

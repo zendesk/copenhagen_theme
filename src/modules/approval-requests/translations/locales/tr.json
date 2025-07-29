@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Onay talebi bulunamadı.",
   "approval-requests.list.search-placeholder": "Arama onay talepleri",
   "approval-requests.list.status-dropdown.any": "Herhangi biri",
-  "approval-requests.list.status-dropdown.label": "Durum:",
   "approval-requests.list.status-dropdown.label_v2": "Durum",
   "approval-requests.list.table.approval-status": "Onay durumu",
   "approval-requests.list.table.requester": "Talep eden",

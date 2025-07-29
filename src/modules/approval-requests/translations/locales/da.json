@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Der blev ikke fundet nogen anmodninger om godkendelse.",
   "approval-requests.list.search-placeholder": "Søg i anmodninger om godkendelse",
   "approval-requests.list.status-dropdown.any": "Alle",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Godkendelsesstatus",
   "approval-requests.list.table.requester": "Anmoder",
