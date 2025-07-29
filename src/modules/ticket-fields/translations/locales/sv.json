@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 sista siffror)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Tillbaka",
   "cph-theme-ticket-fields.dropdown.empty-option": "Välj ett alternativ",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Läser in objekt...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Inga träffar hittades",

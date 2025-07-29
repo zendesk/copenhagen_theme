@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Не са намерени заявки за одобрение.",
   "approval-requests.list.search-placeholder": "Търсене на заявки за одобрение",
   "approval-requests.list.status-dropdown.any": "Всеки",
-  "approval-requests.list.status-dropdown.label": "Статус:",
   "approval-requests.list.status-dropdown.label_v2": "Статус",
   "approval-requests.list.table.approval-status": "Статус на одобрение",
   "approval-requests.list.table.requester": "Заявител",

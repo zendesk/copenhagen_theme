@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "承認リクエストがありません。",
   "approval-requests.list.search-placeholder": "承認リクエストを検索",
   "approval-requests.list.status-dropdown.any": "すべて",
-  "approval-requests.list.status-dropdown.label": "ステータス：",
   "approval-requests.list.status-dropdown.label_v2": "ステータス",
   "approval-requests.list.table.approval-status": "承認ステータス",
   "approval-requests.list.table.requester": "リクエスタ",

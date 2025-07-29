@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "ไม่พบคําร้องขอการอนุมัติ",
   "approval-requests.list.search-placeholder": "ค้นหาคําร้องขอการอนุมัติ",
   "approval-requests.list.status-dropdown.any": "ทั้งหมด",
-  "approval-requests.list.status-dropdown.label": "สถานะ:",
   "approval-requests.list.status-dropdown.label_v2": "สถานะ",
   "approval-requests.list.table.approval-status": "สถานะการอนุมัติ",
   "approval-requests.list.table.requester": "ผู้ร้องขอ",

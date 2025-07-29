@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Poslední 4 číslice)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Zpět",
   "cph-theme-ticket-fields.dropdown.empty-option": "Vyberte možnost",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Načítání položek…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nebyly nalezeny žádné shody",

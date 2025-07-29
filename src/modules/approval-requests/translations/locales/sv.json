@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Inga förfrågningar om godkännande hittades.",
   "approval-requests.list.search-placeholder": "Sök efter förfrågningar om godkännande",
   "approval-requests.list.status-dropdown.any": "Alla",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Status för godkännande",
   "approval-requests.list.table.requester": "Frågeställare",

@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Ultimele 4 cifre)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Înapoi",
   "cph-theme-ticket-fields.dropdown.empty-option": "Selectați o opțiune",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Se încarcă articolele...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nu s-au găsit corespondențe",

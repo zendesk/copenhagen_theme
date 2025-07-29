@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Tidak ada permintaan persetujuan yang ditemukan.",
   "approval-requests.list.search-placeholder": "Cari permintaan persetujuan",
   "approval-requests.list.status-dropdown.any": "Mana saja",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Status persetujuan",
   "approval-requests.list.table.requester": "Pemohon",

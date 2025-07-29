@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Nenašli sa žiadne požiadavky na schválenie.",
   "approval-requests.list.search-placeholder": "Vyhľadať požiadavky na schválenie",
   "approval-requests.list.status-dropdown.any": "Všetky",
-  "approval-requests.list.status-dropdown.label": "Stav:",
   "approval-requests.list.status-dropdown.label_v2": "Stav",
   "approval-requests.list.table.approval-status": "Stav schválenia",
   "approval-requests.list.table.requester": "Žiadateľ",

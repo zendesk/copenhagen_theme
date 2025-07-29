@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(आखिरी 4 अक्षर)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "पीछे",
   "cph-theme-ticket-fields.dropdown.empty-option": "कोई विकल्प चुनें",
   "cph-theme-ticket-fields.lookup-field.loading-options": "आइटम लोड हो रहे हैं...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "कोई मिलान नहीं मिले",

@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "（最后 4 位数）",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "返回",
   "cph-theme-ticket-fields.dropdown.empty-option": "选择一个选项",
   "cph-theme-ticket-fields.lookup-field.loading-options": "正在加载项目…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "未找到匹配项",

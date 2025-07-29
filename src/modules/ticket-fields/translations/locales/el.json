@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(4 τελευταία ψηφία)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Προηγούμενο",
   "cph-theme-ticket-fields.dropdown.empty-option": "Ορίστε μια επιλογή",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Φόρτωση στοιχείων...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Δεν βρέθηκαν αποτελέσματα",

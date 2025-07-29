@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Нет запросов на утверждение.",
   "approval-requests.list.search-placeholder": "Поиск запросов на утверждение",
   "approval-requests.list.status-dropdown.any": "Любой",
-  "approval-requests.list.status-dropdown.label": "Статус:",
   "approval-requests.list.status-dropdown.label_v2": "Статус",
   "approval-requests.list.table.approval-status": "Статус утверждения",
   "approval-requests.list.table.requester": "Инициатор",

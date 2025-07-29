@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Keine Genehmigungsanfragen gefunden.",
   "approval-requests.list.search-placeholder": "Genehmigungsanfragen suchen",
   "approval-requests.list.status-dropdown.any": "Beliebig",
-  "approval-requests.list.status-dropdown.label": "Status:",
   "approval-requests.list.status-dropdown.label_v2": "Status",
   "approval-requests.list.table.approval-status": "Genehmigungsstatus",
   "approval-requests.list.table.requester": "Anfragender",
