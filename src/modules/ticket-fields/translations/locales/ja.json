@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "（下4桁）",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "戻る",
   "cph-theme-ticket-fields.dropdown.empty-option": "オプションを選択",
   "cph-theme-ticket-fields.lookup-field.loading-options": "アイテムを読み込んでいます...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "一致するものが見つかりません",

@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "Hyväksyntäpyyntöjä ei löytynyt.",
   "approval-requests.list.search-placeholder": "Hae hyväksyntäpyyntöjä",
   "approval-requests.list.status-dropdown.any": "Mikä tahansa",
-  "approval-requests.list.status-dropdown.label": "Tila:",
   "approval-requests.list.status-dropdown.label_v2": "Tila",
   "approval-requests.list.table.approval-status": "Hyväksynnän tila",
   "approval-requests.list.table.requester": "Pyynnön tekijä",

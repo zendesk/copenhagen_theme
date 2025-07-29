@@ -1,3 +1,10 @@
+## [4.8.2](https://github.com/zendesk/copenhagen_theme/compare/v4.8.1...v4.8.2) (2025-07-29)
+
+
+### Bug Fixes
+
+* fixed missing translation for multi-level dropdown back option ([5ba271b](https://github.com/zendesk/copenhagen_theme/commit/5ba271bb4b8ce74777390f916507c1b685400312))
+
 ## [4.8.1](https://github.com/zendesk/copenhagen_theme/compare/v4.8.0...v4.8.1) (2025-07-24)
 
 

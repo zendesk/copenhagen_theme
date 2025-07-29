@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(آخر 4 أرقام)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "السابق",
   "cph-theme-ticket-fields.dropdown.empty-option": "حدّد خيارًا",
   "cph-theme-ticket-fields.lookup-field.loading-options": "جارٍ تحميل العناصر...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "لم يتم العثور على نتائج مطابقة",

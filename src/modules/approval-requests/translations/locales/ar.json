@@ -3,7 +3,6 @@
   "approval-requests.list.no-requests": "لم يتم العثور على طلبات الموافقة.",
   "approval-requests.list.search-placeholder": "طلبات الموافقة على البحث",
   "approval-requests.list.status-dropdown.any": "أي عنصر",
-  "approval-requests.list.status-dropdown.label": "الحالة:",
   "approval-requests.list.status-dropdown.label_v2": "الحالة",
   "approval-requests.list.table.approval-status": "حالة الموافقة",
   "approval-requests.list.table.requester": "الطالب",

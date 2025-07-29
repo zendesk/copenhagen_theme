@@ -1,7 +1,8 @@
 {
-  "cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
-  "cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
-  "cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
-  "cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
-  "cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+  "cph-theme-ticket-fields.credit-card-digits-hint": "(Paskutiniai 4 skaitmenys)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+  "cph-theme-ticket-fields.dropdown.empty-option": "Pasirinkti parinktį",
+  "cph-theme-ticket-fields.lookup-field.loading-options": "Įkeliami elementai...",
+  "cph-theme-ticket-fields.lookup-field.no-matches-found": "Rungtynių nerasta",
+  "cph-theme-ticket-fields.lookup-field.placeholder": "Ieškoti {{label}}"
 }

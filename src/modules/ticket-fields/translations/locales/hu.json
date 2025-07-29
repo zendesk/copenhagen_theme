@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Utolsó négy számjegy)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Vissza",
   "cph-theme-ticket-fields.dropdown.empty-option": "Lehetőség kiválasztása",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Elemek betöltése…",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nincs találat",

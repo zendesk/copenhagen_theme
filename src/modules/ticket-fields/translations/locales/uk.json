@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Останні 4 цифри)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
   "cph-theme-ticket-fields.dropdown.empty-option": "Виберіть варіант",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Завантаження елементів...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Збігів не знайдено",

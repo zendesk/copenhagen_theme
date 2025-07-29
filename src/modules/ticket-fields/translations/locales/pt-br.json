@@ -1,5 +1,6 @@
 {
   "cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+  "cph-theme-ticket-fields.dropdown.back-option-label": "Voltar",
   "cph-theme-ticket-fields.dropdown.empty-option": "Selecionar uma opção",
   "cph-theme-ticket-fields.lookup-field.loading-options": "Carregando itens...",
   "cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenhuma correspondência encontrada",
