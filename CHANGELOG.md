@@ -1,3 +1,10 @@
+## [4.8.5](https://github.com/zendesk/copenhagen_theme/compare/v4.8.4...v4.8.5) (2025-07-30)
+
+
+### Bug Fixes
+
+* hide deactivated Fields on the ServiceCatalog Item page ([f7c6d34](https://github.com/zendesk/copenhagen_theme/commit/f7c6d3455c37a172dda6611cbda124fa739d8028))
+
 ## [4.8.4](https://github.com/zendesk/copenhagen_theme/compare/v4.8.3...v4.8.4) (2025-07-30)
 
 
