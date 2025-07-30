@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { Button } from "@zendeskgarden/react-buttons";
 import ChevronUp from "@zendeskgarden/svg-icons/src/16/chevron-up-fill.svg";
@@ -24,11 +24,11 @@ const ItemTitle = styled(XXXL)`
   margin-bottom: 0;
 `;
 
-const CollapsibleText = styled.div<{ expanded: boolean }>`
+const CollapsibleText = styled.div<{ isCollapsed: boolean }>`
   font-size: ${(props) => props.theme.fontSizes.md};
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: ${(props) => (props.expanded ? "none" : 3)};
+  -webkit-line-clamp: ${(props) => (props.isCollapsed ? 3 : "none")};
   overflow: hidden;
   margin-top: ${(props) => props.theme.space.md};
   padding-inline-end: ${(props) => props.theme.space.xl};
@@ -59,20 +59,34 @@ interface CollapsibleDescriptionProps {
   thumbnailUrl: string;
 }
 
-const DESCRIPTION_LENGTH_THRESHOLD = 270;
-
 export const CollapsibleDescription = ({
   title,
   description,
   thumbnailUrl,
 }: CollapsibleDescriptionProps) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
+  const [isClamped, setIsClamped] = useState<boolean>(false);
   const { t } = useTranslation();
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  const showToggleButton = description.length > DESCRIPTION_LENGTH_THRESHOLD;
+  useEffect(() => {
+    const el = contentRef.current;
+    if (el) {
+      const checkClamped = () => {
+        const visibleBoxHeight = el.getBoundingClientRect().height;
+        const fullContentHeight = el.scrollHeight;
+        const clamped = fullContentHeight - visibleBoxHeight > 1;
+        setIsClamped(clamped);
+        if (!clamped) {
+          setIsCollapsed(false);
+        }
+      };
+      requestAnimationFrame(checkClamped);
+    }
+  }, [description]);
 
   const toggleDescription = () => {
-    setIsExpanded(!isExpanded);
+    setIsCollapsed(!isCollapsed);
   };
 
   return (
@@ -83,18 +97,19 @@ export const CollapsibleDescription = ({
       </HeaderContainer>
       {description && (
         <CollapsibleText
+          ref={contentRef}
           className="service-catalog-description"
-          expanded={isExpanded || !showToggleButton}
+          isCollapsed={isCollapsed}
           dangerouslySetInnerHTML={{ __html: description }}
         ></CollapsibleText>
       )}
-      {showToggleButton && (
+      {isClamped && (
         <ToggleButton isLink onClick={toggleDescription}>
-          {isExpanded
+          {!isCollapsed
             ? t("service-catalog.item.read-less", "Read less")
             : t("service-catalog.item.read-more", "Read more")}
           <Button.EndIcon>
-            {isExpanded ? <ChevronUp /> : <ChevronDown />}
+            {!isCollapsed ? <ChevronUp /> : <ChevronDown />}
           </Button.EndIcon>
         </ToggleButton>
       )}
