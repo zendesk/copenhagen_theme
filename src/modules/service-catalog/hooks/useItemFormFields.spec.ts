@@ -18,6 +18,7 @@ describe("useItemFormFields", () => {
     title_in_portal: "Test Title",
     editable_in_portal: true,
     required_in_portal: true,
+    active: true,
   };
 
   const lookupField = {
@@ -28,6 +29,7 @@ describe("useItemFormFields", () => {
     editable_in_portal: true,
     relationship_target_type: "standard::service_catalog_item",
     required_in_portal: true,
+    active: true,
   };
 
   const expectedTextField = {
@@ -51,6 +53,7 @@ describe("useItemFormFields", () => {
     required_in_portal: true,
     title_in_portal: "Service",
     type: "lookup",
+    active: true,
   };
 
   const additionalTextField = {
@@ -392,5 +395,91 @@ describe("useItemFormFields", () => {
         value: "Test Value",
       },
     ]);
+  });
+
+  it("should not include fields with type 'subject', type 'description', active false, or editable_in_portal false in requestFields", async () => {
+    const formResponse = {
+      ticket_form: {
+        id: 1,
+        ticket_field_ids: [1, 2, 3, 4, 5, 6, 7],
+        active: true,
+      },
+    };
+    const ticketFieldResponse = {
+      ticket_fields: [
+        {
+          ...textField,
+          id: 1,
+          type: "text",
+          active: true,
+          editable_in_portal: true,
+          required_in_portal: true,
+        }, // should be present
+        {
+          ...textField,
+          id: 2,
+          type: "subject",
+          active: true,
+          editable_in_portal: true,
+          required_in_portal: true,
+        }, // should be filtered out
+        {
+          ...textField,
+          id: 3,
+          type: "description",
+          active: true,
+          editable_in_portal: true,
+          required_in_portal: true,
+        }, // should be filtered out
+        {
+          ...textField,
+          id: 4,
+          type: "text",
+          active: false,
+          editable_in_portal: true,
+          required_in_portal: true,
+        }, // should be filtered out
+        {
+          ...textField,
+          id: 5,
+          type: "text",
+          active: true,
+          editable_in_portal: false,
+          required_in_portal: true,
+        }, // should be filtered out
+        {
+          ...textField,
+          id: 6,
+          type: "text",
+          active: true,
+          editable_in_portal: true,
+          required_in_portal: true,
+        }, // should be present
+        {
+          ...lookupField,
+          id: 7,
+        }, // should be filtered out
+      ],
+    };
+    (globalThis.fetch as jest.Mock) = jest.fn((url) => {
+      return Promise.resolve({
+        json: () =>
+          Promise.resolve(
+            url.includes("/api/v2/ticket_forms/1")
+              ? formResponse
+              : url.includes(`/api/v2/ticket_fields?locale=${baseLocale}`)
+              ? ticketFieldResponse
+              : {}
+          ),
+        status: 200,
+        ok: true,
+      });
+    });
+    const { result, waitForNextUpdate } = renderHook(() =>
+      useItemFormFields(serviceCatalogItem, baseLocale)
+    );
+    await waitForNextUpdate();
+    const presentIds = result.current.requestFields.map((f) => f.id);
+    expect(presentIds).toEqual([1, 6]);
   });
 });
