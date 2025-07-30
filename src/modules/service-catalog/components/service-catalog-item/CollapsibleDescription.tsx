@@ -22,6 +22,8 @@ const DescriptionWrapper = styled.div`
 const ItemTitle = styled(XXXL)`
   font-weight: ${(props) => props.theme.fontWeights.semibold};
   margin-bottom: 0;
+  overflow-wrap: break-word;
+  max-width: 100%;
 `;
 
 const CollapsibleText = styled.div<{ isCollapsed: boolean }>`
@@ -32,6 +34,7 @@ const CollapsibleText = styled.div<{ isCollapsed: boolean }>`
   overflow: hidden;
   margin-top: ${(props) => props.theme.space.md};
   padding-inline-end: ${(props) => props.theme.space.xl};
+  overflow-wrap: break-word;
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     padding-inline-end: 0;
