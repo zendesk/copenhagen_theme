@@ -97,6 +97,7 @@ const fetchTicketFields = async (
         ticketField &&
         ticketField.type !== "subject" &&
         ticketField.type !== "description" &&
+        ticketField.active &&
         ticketField.editable_in_portal
       ) {
         if (
