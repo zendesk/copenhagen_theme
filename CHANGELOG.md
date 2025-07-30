@@ -1,3 +1,10 @@
+## [4.8.3](https://github.com/zendesk/copenhagen_theme/compare/v4.8.2...v4.8.3) (2025-07-30)
+
+
+### Bug Fixes
+
+* avoid unnecessary toggle ([f7b3d89](https://github.com/zendesk/copenhagen_theme/commit/f7b3d89f6128a943ef3cc47b71c4d37f1c4ba9d9))
+
 ## [4.8.2](https://github.com/zendesk/copenhagen_theme/compare/v4.8.1...v4.8.2) (2025-07-29)
 
 
