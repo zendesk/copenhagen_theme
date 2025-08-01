@@ -1,11 +1,10 @@
 /***** Buttons *****/
 .button {
-    @include tablet { width: auto; }
 
+    @include tablet { width: auto; }
     //default colours
     background-color: $background-subtle;
     color: $text_color;
-
     padding: 16px 38px;
     font-size: $font-size-smaller;
     border-radius: $border-radius;
@@ -52,6 +51,59 @@
     border: none;
     padding: 0;
     cursor: pointer;
+  }
+
+  &-outline {
+    @include tablet { width: auto; }
+
+    //default colours
+    background-color: transparent;
+    color: $text_color;
+
+    
+    background-color: $brand-color;
+    color: $brand_text_color;
+    text-decoration: none;
+
+    padding: 16px 38px;
+    font-size: $font-size-smaller;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: background-color .12s ease-in-out, border-color .12s ease-in-out, color .15s ease-in-out;
+    display: inline-block;
+    line-height: 1;
+    text-align: center;
+    margin: 0;
+    border: 0;
+    font-weight: 700;
+    user-select: none;
+    white-space: nowrap;
+    width: 100%;
+    -webkit-touch-callout: none;
+  
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #ebebeb;
+      color: $text_color;
+      text-decoration: none;
+      background-color: $hover-brand-color;
+      border-color: $hover-brand-color;
+      color: $brand_text_color;
+    }
+
+    &-primary {
+      background-color: $brand-color;
+      color: $brand_text_color;
+      text-decoration: none;
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $hover-brand-color;
+        border-color: $hover-brand-color;
+        color: $brand_text_color;
+      }
+    }
   }
   
 }
@@ -105,4 +157,3 @@
       background-color: $primary-shade;
     }
   }
-  

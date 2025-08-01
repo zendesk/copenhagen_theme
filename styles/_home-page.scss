@@ -111,13 +111,17 @@
   padding: 30px 0;
 }
 
-.container.site-search {
+.site-search {
   background-color: #FFFFFF;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, .2) !important;
-  padding: 20px;    
+  padding: $gutter;    
   margin-top: -40px;
   position: relative;
   @include desktop {
-    padding: 40px;
+    padding: $padding;
+  }
+
+  h2 {
+    margin-bottom: $gutter;
   }
 }
