@@ -25,14 +25,14 @@
 <div id="main-content">
   <!-- subcategories -->
   {{#if section.sections}}
-    <section class="section section-merged">
+    <section class="section bg-neutral">
       <div class="container knowledge-base subcategories">
         <div class="categories-list row row-cols-md-3">
           {{#each section.sections}}
             <div class="single-category">
               <div class="category-thumbnail bg-subtle">
                 <div class="category-icon">
-                  <img src="">
+                  <img src="{{../settings.category_icon}}">
                 </div>
                 <div class="category-copy">
                   <a href="{{url}}" class="category-link">
@@ -49,14 +49,14 @@
   {{pagination "section.sections"}}
 
   {{#if section.articles}}
-    <section class="section section-merged">
+    <section class="section">
       <div class="container knowledge-base subcategories">
         <div class="categories-list row row-cols-md-3">
           {{#each section.articles}}
             <div class="single-category {{#if promoted}} article-promoted{{/if}}">
-              <div class="category-thumbnail bg-subtle">
+              <div class="category-thumbnail bg-neutral">
                 <div class="category-icon">
-                  <img src="">
+                  <img src="{{../settings.category_icon}}">
                 </div>
                 <div class="category-copy">
                   <a href="{{url}}" class="category-link">
