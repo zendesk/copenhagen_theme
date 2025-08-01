@@ -29,8 +29,8 @@
     <section class="section">
       <div class="container knowledge-base promoted-articles">
         <!-- promoted articles -->
-        {{#if settings.promoted_articles}}
-        <h2>{{settings.promoted_articles}}</h2>
+        {{#if settings.promoted_articles_title}}
+        <h2>{{settings.promoted_articles_title}}</h2>
         {{else}}
         <h2>{{t 'promoted_articles'}}</h2>
         {{/if}}
@@ -67,8 +67,8 @@
     <section class="section bg-subtle">
       <div class="container knowledge-base categories">
         <!-- categories -->
-        {{#if settings.categories}}
-        <h2>{{settings.categories}}</h2>
+        {{#if settings.categories_title}}
+        <h2>{{settings.categories_title}}</h2>
         {{else}}
         <h2>{{ t 'categories' }}</h2>
         {{/if}}
