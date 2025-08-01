@@ -1499,6 +1499,10 @@ ul {
   display: inline-block;
 }
 
+.copyright {
+  font-size: 0.875rem;
+}
+
 .powered-by-zendesk {
   display: none;
 }
