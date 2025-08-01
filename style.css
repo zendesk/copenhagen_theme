@@ -2114,7 +2114,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     padding: 32px;
   }
 }
-.site-search h2 {
+.site-search > .h2 {
   margin-bottom: 16px;
 }
 
