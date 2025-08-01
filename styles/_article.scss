@@ -266,6 +266,7 @@
     }
     &-down {
       margin: 0 0 0 $padding;
+      transform: scaleX(-1);
       &::before {
         font-size: 2rem;
         content: "\f165";

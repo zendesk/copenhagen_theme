@@ -75,9 +75,12 @@
         </ul>
       </div>
     </div>
-    
-    <div class="footer-inner">
-
+    {{#if settings.copyright_message}}
+    <div class="row">
+      <div class="col">
+        &copy; {{date}} {{settings.copyright_message}}
+      </div>
     </div>
+    {{/if}}
   </div>
 </footer>

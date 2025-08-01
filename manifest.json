@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.263",
+  "version": "1.0.264",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -109,6 +109,13 @@
           "description": "X link in the footer.",
           "label": "X Link",
           "value": "https://x.com/linewize"
+        },
+        {
+          "identifier": "copyright_message",
+          "type": "text",
+          "description": "Copyright message",
+          "label": "Copyright message",
+          "value": "Qoria Limited | All Rights Reserved"
         }
       ]
     },

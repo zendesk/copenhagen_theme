@@ -2686,6 +2686,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .article-vote-down {
   margin: 0 0 0 32px;
+  transform: scaleX(-1);
 }
 .article-vote-down::before {
   font-size: 2rem;
