@@ -78,9 +78,17 @@
     {{#if settings.copyright_message}}
     <div class="row">
       <div class="col">
-        &copy; {{date now}} {{settings.copyright_message}}
+        &copy; <span id="currentYear"></span> {{settings.copyright_message}}
       </div>
     </div>
     {{/if}}
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const span = document.getElementById('currentYear');
+      const year = new Date().getFullYear();
+      span.textContent = year;
+  });
+</script>
