@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.255",
+  "version": "1.0.256",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -202,6 +202,20 @@
           "description": "welcome_message_description",
           "label": "Welcome message",
           "value": "Welcome to the Qoria Help Center"
+        },
+        {
+          "identifier": "promoted_articles",
+          "type": "text",
+          "description": "",
+          "label": "Promoted Articles custom title",
+          "value": ""
+        },
+        {
+          "identifier": "categories",
+          "type": "text",
+          "description": "",
+          "label": "Categories custom title",
+          "value": ""
         },
         {
           "identifier": "product_1_name",
