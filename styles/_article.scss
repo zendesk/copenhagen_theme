@@ -249,7 +249,11 @@
     font-family: 'Font Awesome 6 Pro';
     font-weight: 300;
 
-    &:hover {
+    &-voted {
+      font-weight: 600;
+    }
+
+    &:hover, &:focus {
       background-color: transparent;
       color: $q-text-brand-strong;
     }

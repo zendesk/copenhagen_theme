@@ -2673,7 +2673,10 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   font-family: "Font Awesome 6 Pro";
   font-weight: 300;
 }
-.article-vote:hover {
+.article-vote-voted {
+  font-weight: 600;
+}
+.article-vote:hover, .article-vote:focus {
   background-color: transparent;
   color: #3a3879;
 }
