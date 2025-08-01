@@ -13,11 +13,13 @@
 <div id="main-content">
     <!-- search bar -->
     <section class="section" style="padding-top: 0; padding-bottom: 0;">
-      <div class="container site-search">
-        <p class="h2 strong">How can we help you today?</p>
-        <h2 class="visibility-hidden">{{ t 'search' }}</h2>
-        {{search instant=settings.instant_search class='search search-full search-home'}}
-      </div>
+      <div class="container">
+        <div class="site-search">
+          <p class="h2 strong">How can we help you today?</p>
+          <h2 class="visibility-hidden">{{ t 'search' }}</h2>
+          {{search instant=settings.instant_search class='search search-full search-home'}}
+        </div>
+      </div> 
     </section>
 
     
@@ -27,7 +29,11 @@
     <section class="section">
       <div class="container knowledge-base promoted-articles">
         <!-- promoted articles -->
+        {{#if settings.promoted_articles}}
+        <h2>{{settings.promoted_articles}}</h2>
+        {{else}}
         <h2>{{t 'promoted_articles'}}</h2>
+        {{/if}}
         <div class="articles-list row row-cols-md-3 g-2">
           {{#each promoted_articles}}
           
@@ -61,7 +67,11 @@
     <section class="section bg-subtle">
       <div class="container knowledge-base categories">
         <!-- categories -->
+        {{#if settings.categories}}
+        <h2>{{settings.categories}}</h2>
+        {{else}}
         <h2>{{ t 'categories' }}</h2>
+        {{/if}}
         <div class="categories-list row row-cols-md-3">
           {{#each categories}}
           {{#if ../has_multiple_categories}}
