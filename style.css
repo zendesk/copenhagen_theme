@@ -1668,8 +1668,6 @@ ul {
   -webkit-appearance: none;
   box-sizing: border-box;
   color: #0f172a;
-  flex: 1 1 auto;
-  height: auto;
   width: 100%;
   font-size: 0.875rem;
   margin-bottom: 0px;
