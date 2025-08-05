@@ -131,19 +131,14 @@ $input-background: $background-subtle;
 
   input[type="search"], 
   .clear-button {
-    background-color: color.adjust($input-background, $alpha: 0.8);
     border: none;
-
     grid-column: left / span 1;
     grid-row: top / span 1;
-    position: absolute;
-    right: 0;
-    top: 0;
     height: 100%;
   }
+  
 
   input[type="search"] {
-
     background-color: color.adjust($input-background, $alpha: 0.8);
     border-color: transparent;
     border-style: solid;
@@ -200,6 +195,8 @@ $input-background: $background-subtle;
       display: none;    
       z-index: 1;
       flex: none;
+      align-self: stretch;
+      justify-self: end;
       justify-content: center;
       padding: 0 15px;
 
