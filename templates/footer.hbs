@@ -89,8 +89,38 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+      // add current year to copyright message
       const span = document.getElementById('currentYear');
       const year = new Date().getFullYear();
       span.textContent = year;
+
+      // hide chat widget
+      zE('messenger', 'hide');
+
   });
 </script>
+
+
+
+{{#if settings.show_chat}}
+
+  {{settings.chat_snippet}}
+
+  {{#if settings.chat_gated}}
+    {{#if signed_in}}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // show chat
+          zE('messenger', 'show');
+        });
+      </script>
+    {{/if}}
+  {{else}}
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // show chat
+          zE('messenger', 'show');
+        });
+      </script>
+  {{/if}}
+{{/if}}

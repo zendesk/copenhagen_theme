@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.275",
+  "version": "1.0.276",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -116,6 +116,28 @@
           "description": "Copyright message",
           "label": "Copyright message",
           "value": "Qoria Limited | All Rights Reserved"
+        },
+        {
+          "identifier": "show_chat",
+          "type": "checkbox",
+          "description": "show_chat",
+          "label": "Show chat",
+          "value": false
+        },
+        {
+          "identifier": "chat_gated",
+          "type": "checkbox",
+          "description": "gated_support_chat_description",
+          "label": "Gate support chat to logged-in users",
+          "value": false
+        },
+        {
+          "identifier": "chat_snippet",
+          "type": "text",
+          "description": "Chat snippet",
+          "label": "Chat snippet",
+          "value": ""
+
         }
       ]
     },
