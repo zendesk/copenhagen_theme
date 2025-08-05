@@ -120,7 +120,8 @@ $input-background: $background-subtle;
   }
 
   input[type="submit"] {
-    margin-top: 8px;
+      grid-column: 2 / span 1;
+      grid-row: 2 / span 1;
       @include tablet {
         margin-top: 0;
       }
@@ -243,9 +244,11 @@ $input-background: $background-subtle;
     }
 
     input[type="search"] {
-        margin-right: 12px;
+    //    margin-right: 12px;
         padding-right: $padding-left !important;
         padding-left: $padding-right !important;
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
     }
   }
 

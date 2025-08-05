@@ -1637,7 +1637,8 @@ ul {
   border-color: transparent;
 }
 .search input[type=submit] {
-  margin-top: 8px;
+  grid-column: 2/span 1;
+  grid-row: 2/span 1;
 }
 @media (min-width: 768px) {
   .search input[type=submit] {
@@ -1741,9 +1742,10 @@ ul {
   content: "" !important;
 }
 .search-home input[type=search] {
-  margin-right: 12px;
   padding-right: 16px !important;
   padding-left: 40px !important;
+  grid-column: 1/span 1;
+  grid-row: 1/span 1;
 }
 
 /* .search-icon {
