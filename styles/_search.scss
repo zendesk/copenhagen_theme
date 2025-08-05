@@ -77,13 +77,18 @@ $input-background: $background-subtle;
 
 .search {
   border-width: 0px;
-  display: flex;
   position: relative;
   transition: $input-transition;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: [left] 1fr [right];
+  grid-template-rows: [top] auto [center] auto [bottom];
+  column-gap: 8px;
 
   @include tablet {
-      flex-direction: row;
+      display: grid;
+      grid-template-rows: [top] 1fr [bottom];
+      grid-template-columns: [left] 1fr [center] auto [right];
+      row-gap: 8px;
   }
   
   [dir="ltr"] &::after {
@@ -126,6 +131,13 @@ $input-background: $background-subtle;
   .clear-button {
     background-color: color.adjust($input-background, $alpha: 0.8);
     border: none;
+
+    grid-column: left / span 1;
+    grid-row: top / span 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
   }
 
   input[type="search"] {

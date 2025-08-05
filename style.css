@@ -1595,14 +1595,20 @@ ul {
 
 .search {
   border-width: 0px;
-  display: flex;
   position: relative;
   transition: border 0.12s ease-in-out;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: [left] 1fr [right];
+  grid-template-rows: [top] auto [center] auto [bottom];
+  -moz-column-gap: 8px;
+       column-gap: 8px;
 }
 @media (min-width: 768px) {
   .search {
-    flex-direction: row;
+    display: grid;
+    grid-template-rows: [top] 1fr [bottom];
+    grid-template-columns: [left] 1fr [center] auto [right];
+    row-gap: 8px;
   }
 }
 [dir=ltr] .search::after {
@@ -1642,6 +1648,12 @@ ul {
 .search .clear-button {
   background-color: #f1f5f9;
   border: none;
+  grid-column: left/span 1;
+  grid-row: top/span 1;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
 }
 .search input[type=search] {
   background-color: #f1f5f9;
