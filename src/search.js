@@ -24,7 +24,7 @@ function clearSearchInput(event) {
   if (event.target.tagName === "INPUT") {
     input = event.target;
   } else if (event.target.tagName === "BUTTON") {
-    input = event.target.previousElementSibling;
+    input = event.target.parentNode.querySelector("input[type='search']");
   } else {
     input = event.target.closest("button").previousElementSibling;
   }
