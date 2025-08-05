@@ -1,4 +1,4 @@
-import { j as jsxRuntimeExports, F as Field, L as Label, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, s as styled, b as Textarea, d as Field$1, e as Label$1, f as Hint$1, h as Combobox, O as Option, i as Message$1, k as Checkbox$1, l as OptGroup, p as purify, m as FileList, n as File, o as Tooltip, P as Progress, A as Anchor, q as mime, t as useDropzone, v as FileUpload, D as Datepicker, w as useGrid, K as KEYS, x as focusStyles, y as FauxInput, z as Tag, B as SvgAlertWarningStroke, E as MediaInput, G as SvgCreditCardStroke, $ as $e, J as getColorV8, Q as Header, R as SvgCheckCircleStroke, U as useModalContainer, V as Modal, W as Body, X as Accordion, Y as Paragraph, Z as Footer$1, _ as FooterItem, a0 as Button, a1 as Close$1, a2 as addFlashNotification, a3 as debounce, a4 as Alert, a5 as initI18next, a6 as loadTranslations, a7 as reactDomExports, a8 as ThemeProviders, a9 as createTheme } from 'shared';
+import { j as jsxRuntimeExports, F as Field, L as Label, S as Span, H as Hint, I as Input$1, M as Message, r as reactExports, u as useToast, a as useTranslation, N as Notification, T as Title, C as Close, Y as Ye, b as Textarea, d as Field$1, e as Label$1, f as Hint$1, g as Combobox, O as Option, h as Message$1, i as Checkbox$1, k as OptGroup, p as purify, l as FileList, m as File, n as Tooltip, P as Progress, A as Anchor, o as mime, q as useDropzone, s as FileUpload, D as Datepicker, t as useGrid, K as KEYS, v as FauxInput, w as focusStyles, x as Tag, y as SvgAlertWarningStroke, z as MediaInput, B as SvgCreditCardStroke, $ as $e, E as getColorV8, G as Header, J as SvgCheckCircleStroke, Q as useModalContainer, R as Modal, U as Body, V as Accordion, W as Paragraph, X as Footer$1, Z as FooterItem, _ as Button, a0 as Close$1, a1 as addFlashNotification, a2 as debounce, a3 as Alert, a4 as initI18next, a5 as loadTranslations, a6 as reactDomExports, a7 as ThemeProviders, a8 as createTheme } from 'shared';
 
 function Input({ field, onChange }) {
     const { label, error, value, name, required, description, type } = field;
@@ -43,12 +43,12 @@ function useWysiwyg({ hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, 
     }, [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, addToast, t]);
 }
 
-const StyledField = styled(Field) `
+const StyledField = Ye(Field) `
   .ck.ck-editor {
     margin-top: ${(props) => props.theme.space.xs};
   }
 `;
-const StyledMessage = styled(Message) `
+const StyledMessage = Ye(Message) `
   .ck.ck-editor + & {
     margin-top: ${(props) => props.theme.space.xs};
   }
@@ -470,7 +470,7 @@ function usePrefilledTicketFields({ ticketFields, ccField, dueDateField, emailFi
     }), [ticketFields, ccField, dueDateField, emailField, organizationField]);
 }
 
-const FileNameWrapper = styled.div `
+const FileNameWrapper = Ye.div `
   flex: 1;
 `;
 function FileListItem({ file, onRemove, }) {
@@ -839,7 +839,7 @@ function useTagsInputContainer({ tags, onTagsChange, inputValue, onInputValueCha
 }
 
 const EMAIL_REGEX = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const Container$1 = styled(FauxInput) `
+const Container$1 = Ye(FauxInput) `
   padding: ${(props) => `${props.theme.space.xxs} ${props.theme.space.sm}`};
 
   // Removes white spaces for inline elements
@@ -850,22 +850,22 @@ const Container$1 = styled(FauxInput) `
   --line-height: ${(props) => props.theme.space.base * 8 + props.theme.space.base}px;
   line-height: var(--line-height);
 `;
-const GridCell = styled.span `
+const GridCell = Ye.span `
   display: inline-block;
   margin-right: ${(props) => props.theme.space.sm};
 `;
-const StyledTag = styled(Tag) `
+const StyledTag = Ye(Tag) `
   ${(props) => focusStyles({
     theme: props.theme,
     shadowWidth: "sm",
     selector: "&:focus",
 })}
 `;
-const InputWrapper = styled.div `
+const InputWrapper = Ye.div `
   display: inline-block;
   position: relative;
 `;
-const InputMirror = styled(FauxInput) `
+const InputMirror = Ye(FauxInput) `
   display: inline-block;
   min-width: 200px;
   opacity: 0;
@@ -873,7 +873,7 @@ const InputMirror = styled(FauxInput) `
   height: var(--line-height);
   line-height: var(--line-height);
 `;
-const StyledInput = styled(Input$1) `
+const StyledInput = Ye(Input$1) `
   position: absolute;
   top: 0;
   left: 0;
@@ -924,7 +924,7 @@ function CcField({ field }) {
 function getLastDigits(value) {
     return value ? value.replaceAll("X", "") : "";
 }
-const DigitsHintSpan = styled(Span) `
+const DigitsHintSpan = Ye(Span) `
   margin-left: ${(props) => props.theme.space.xxs};
   font-weight: ${(props) => props.theme.fontWeights.medium};
 `;
@@ -985,19 +985,19 @@ const slideIn = $e `
     grid-template-rows: 1fr;
   }
 `;
-const Container = styled.div `
+const Container = Ye.div `
   display: grid;
   animation: ${slideIn} 200ms forwards;
 `;
-const InnerContainer = styled.div `
+const InnerContainer = Ye.div `
   overflow: hidden;
 `;
-const UnstyledList = styled.ul `
+const UnstyledList = Ye.ul `
   list-style: none;
   padding: 0;
   margin: 0;
 `;
-const ListItem = styled.li `
+const ListItem = Ye.li `
   margin: ${(props) => props.theme.space.sm} 0;
 `;
 function hasMinLength(value) {
@@ -1045,19 +1045,19 @@ function SuggestedArticles({ query: inputQuery, locale, }) {
     return articles.length > 0 ? (jsxRuntimeExports.jsx(Container, { "data-test-id": "suggested-articles", children: jsxRuntimeExports.jsxs(InnerContainer, { children: [jsxRuntimeExports.jsx("h2", { children: t("new-request-form.suggested-articles", "Suggested articles") }), jsxRuntimeExports.jsx(UnstyledList, { children: articles.map((article) => (jsxRuntimeExports.jsx(ListItem, { children: jsxRuntimeExports.jsx(Anchor, { href: article.html_url, children: article.name }) }, article.html_url))) })] }) })) : null;
 }
 
-const H3 = styled.h3 `
+const H3 = Ye.h3 `
   font-size: ${(props) => props.theme.fontSizes.md};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
-const StyledHeader = styled(Header) `
+const StyledHeader = Ye(Header) `
   color: ${(props) => getColorV8("successHue", 700, props.theme)};
 `;
-const StyledSuccessIcon = styled(SvgCheckCircleStroke) `
+const StyledSuccessIcon = Ye(SvgCheckCircleStroke) `
   position: absolute;
   top: ${(props) => props.theme.space.base * 5.5}px;
   inset-inline-start: ${(props) => `${props.theme.space.base * 4}px`};
 `;
-const ArticleLink = styled(Anchor) `
+const ArticleLink = Ye(Anchor) `
   display: inline-block;
   margin-top: ${(props) => props.theme.space.sm};
 `;
@@ -1257,15 +1257,15 @@ function LookupField({ field, userId, organizationId, onChange, }) {
                         options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name, "data-test-id": `option-${option.name}` }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: selectedOption?.value })] }));
 }
 
-const StyledParagraph = styled(Paragraph) `
+const StyledParagraph = Ye(Paragraph) `
   margin: 0 0 ${(props) => props.theme.space.md} 0;
 `;
-const Form = styled.form `
+const Form = Ye.form `
   display: flex;
   flex-direction: column;
   gap: ${(props) => props.theme.space.md};
 `;
-const Footer = styled.div `
+const Footer = Ye.div `
   margin-top: ${(props) => props.theme.space.md};
 `;
 function NewRequestForm({ requestForm, wysiwyg, newRequestPath, parentId, parentIdPath, locale, baseLocale, hasAtMentions, userRole, userId, brandId, organizations, answerBotModal, }) {
