@@ -105,7 +105,22 @@
 {{#if settings.show_chat}}
 
   {{#if settings.chat_snippet}}
-    {{{~settings.chat_snippet~}}}
+    <script>
+
+      function unescapeHTML(escapedStr) {
+        const textarea = document.createElement('textarea');
+        textarea.innerHTML = escapedStr;
+        return textarea.value;
+      }
+
+      const chatSnippetEsc = "{{~settings.chat_snippet~}}";
+      const chatSnippet = unescapeHTML(chatSnippetEsc);
+      const footer = document.getElementsByTagName("footer")[0];
+
+      footer.insertAdjacentHTML('afterend', chatSnippet);
+
+    </script>
+    
   {{/if}}
 
   {{#if settings.chat_gated}}
