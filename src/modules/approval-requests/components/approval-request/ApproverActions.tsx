@@ -43,9 +43,6 @@ const CommentSection = styled.div`
 `;
 
 const ActionWrapper = styled.div`
-  width: calc(
-    (100% * 2) / 3 - 16px
-  ); /* matches the width of the LeftColumn in the parent container */
   margin-top: ${(props) => props.theme.space.lg}; /* 32px */
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
@@ -58,6 +55,12 @@ const TextAreaContainer = styled.div`
   gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
   margin-top: ${(props) => props.theme.space.base * 6}px; /* 24px */
   align-items: flex-start;
+`;
+
+const TextAreaAndMessage = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 `;
 
 interface ApproverActionsProps {
@@ -187,26 +190,28 @@ function ApproverActions({
                   />
                 </Avatar>
               )}
-              <Textarea
-                minRows={5}
-                value={comment}
-                onChange={handleInputValueChange}
-                disabled={isSubmitting}
-                validation={shouldShowValidationError ? "error" : undefined}
-              />
-            </TextAreaContainer>
-            {shouldShowValidationError && (
-              <Message validation="error">
-                {t(
-                  "approval-requests.request.approver-actions.denial-reason-validation",
-                  "Enter a reason for denial"
+              <TextAreaAndMessage>
+                <Textarea
+                  minRows={5}
+                  value={comment}
+                  onChange={handleInputValueChange}
+                  disabled={isSubmitting}
+                  validation={shouldShowValidationError ? "error" : undefined}
+                />
+                {shouldShowValidationError && (
+                  <Message validation="error">
+                    {t(
+                      "approval-requests.request.approver-actions.denial-reason-validation",
+                      "Enter a reason for denial"
+                    )}
+                  </Message>
                 )}
-              </Message>
-            )}
+              </TextAreaAndMessage>
+            </TextAreaContainer>
           </Field>
           <ButtonContainer hasAvatar={shouldShowAvatar} isSubmitButton>
             <Button
-              isPrimary={pendingStatus === PENDING_APPROVAL_STATUS.APPROVED}
+              isPrimary
               onClick={handleSubmitDecisionClick}
               disabled={isSubmitting}
             >
