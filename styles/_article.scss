@@ -176,12 +176,14 @@
         display: block;
       }
     }
-    .search-container-mobile {
-      margin-bottom: $gutter;
-      display: block;
-      @include tablet {
-        display: none;
-      }
+
+  }
+
+  .search-container-mobile {
+    margin-bottom: $gutter;
+    display: block;
+    @include tablet {
+      display: none;
     }
   }
 

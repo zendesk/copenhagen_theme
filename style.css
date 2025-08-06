@@ -2625,12 +2625,12 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     display: block;
   }
 }
-.article-sidebar .search-container-mobile {
+.article .search-container-mobile {
   margin-bottom: 16px;
   display: block;
 }
 @media (min-width: 768px) {
-  .article-sidebar .search-container-mobile {
+  .article .search-container-mobile {
     display: none;
   }
 }
