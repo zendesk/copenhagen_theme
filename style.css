@@ -1803,7 +1803,7 @@ section.hero-article .h1, section.hero-search-results .h1, section.hero-category
   line-height: 1;
   margin: 32px 0;
 }
-section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-search::before, section.hero-activities::before {
+section.hero-article::before, section.hero-search-results::before, section.hero-category::before, section.hero-request::before, section.hero-section::before, section.hero-search::before, section.hero-activities::before, section.hero-error::before {
   background: url(\$tiled_bg);
 }
 section.hero-user-profile::before {

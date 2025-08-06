@@ -35,7 +35,7 @@ section.hero {
     }
   }
 
-  &-article, &-search-results, &-category, &-request, &-section, &-search, &-activities {
+  &-article, &-search-results, &-category, &-request, &-section, &-search, &-activities, &-error {
     &::before {
       background: url(\$tiled_bg);
     }

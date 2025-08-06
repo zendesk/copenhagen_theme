@@ -49,6 +49,20 @@
           </div>
         </div>
       {{/if}}
+      {{#if alternative_locales}}
+        <div class="dropdown language-selector">
+          <button class="dropdown-toggle" aria-haspopup="true">
+            {{current_locale.name}}
+          </button>
+          <span class="dropdown-menu dropdown-menu-end" role="menu">
+            {{#each alternative_locales}}
+              <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                {{name}}
+              </a>
+            {{/each}}
+          </span>
+        </div>
+      {{/if}}
     </div>
 
     <div class="nav-wrapper-mobile">
