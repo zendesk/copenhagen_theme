@@ -128,10 +128,12 @@
       chatScript.src = chatSrc;
       chatScript.type = 'text/javascript';
 
-      chatScript.onload = function(){
-        console.log("chat has loaded");
-        zE('messenger', 'show');
-      };
+      chatScript.addEventListener("load",function(){console.log("chat has loaded");zE('messenger', 'show');}, false);
+
+    //  chatScript.onload = function(){
+    //    console.log("chat has loaded");
+    //    zE('messenger', 'show');
+    //  };
 
       {{#if settings.chat_gated}}
         {{#if signed_in}}
