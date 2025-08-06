@@ -114,12 +114,13 @@
       }
       const chatSnippetEsc = "{{~settings.chat_snippet~}}";
       const chatSnippet = unescapeHTML(chatSnippetEsc);
+      var chatSrc = "";
 
       // check if snippet is zendesk chat widget
       if (chatSnippet.includes("ze-snippet")) {
         // zendesk snippet
         const zendeskChatRegex = /(?<=src=").*(?=")/g;
-        const chatSrc = chatSnippet.match(zendeskChatRegex);
+        chatSrc = chatSnippet.match(zendeskChatRegex);
       }
 
       const chatScript = document.createElement('script');
@@ -140,6 +141,7 @@
         {{/if}}
       });
       document.body.appendChild(chatScript);
+        
     </script>
     
   {{/if}}
