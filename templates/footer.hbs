@@ -128,6 +128,8 @@
       chatScript.src = chatSrc;
       chatScript.type = 'text/javascript';
 
+      chatScript.onload = zE('messenger', 'show');
+
       {{#if settings.chat_gated}}
         {{#if signed_in}}
           // chat is gated and user is signed in
