@@ -6,9 +6,18 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         const headings = Array.from(document.getElementById("main-content").getElementsByTagName('h2', 'h3'));
         const tocContainer = document.querySelector(".table-of-contents");
+        const tocOuterContainer = document.querySelector(".table-of-contents-container");
         const ul = document.createElement("ul");
         const mobileHeader = document.getElementById("tocHeading");
-        
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+                tocOuterContainer.classList.add("row");
+            } else {
+                tocOuterContainer.classList.remove("row");
+            }
+        };
+
         ul.classList.add("collapsible-sidebar-body");
         tocContainer.appendChild(ul);
         headings.map((heading, index) => {

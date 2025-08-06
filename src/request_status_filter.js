@@ -1,4 +1,4 @@
-/* TABLE OF CONTENTS */
+/* Request Status Filters */
     
 document.addEventListener("DOMContentLoaded", function(event) {
     
