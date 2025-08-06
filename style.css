@@ -2602,7 +2602,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   flex: 1 0 auto;
   margin-bottom: 16px;
   position: sticky;
-  top: 0px;
+  top: 71px;
 }
 @media (min-width: 768px) {
   .article-sidebar {
@@ -2612,10 +2612,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     max-width: 25%;
     margin-right: 16px;
   }
-}
-.article-sidebar-sticky {
-  position: sticky;
-  top: 71px;
 }
 .article-sidebar .article-share {
   display: none;
@@ -2766,6 +2762,23 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article td > p:last-child,
 .article th > p:last-child {
   margin-bottom: 0;
+}
+
+.sidenav-title-desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .sidenav-title-desktop {
+    display: block;
+  }
+}
+.sidenav-title-mobile {
+  display: block;
+}
+@media (min-width: 768px) {
+  .sidenav-title-mobile {
+    display: none;
+  }
 }
 
 .recent-articles li,

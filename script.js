@@ -667,6 +667,7 @@
           const headings = Array.from(document.getElementById("main-content").getElementsByTagName('h2', 'h3'));
           const tocContainer = document.querySelector(".table-of-contents");
           const ul = document.createElement("ul");
+          const mobileHeader = document.getElementById("tocHeading");
           
           ul.classList.add("collapsible-sidebar-body");
           tocContainer.appendChild(ul);
@@ -699,6 +700,7 @@
                           tab.classList.remove("active", "current");
                       });
                       tocAnchors[index].classList.add("active", "current");
+                      mobileHeader.innerText = tocAnchors[index].innerText;
                   }
               });
           };
