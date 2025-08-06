@@ -541,13 +541,6 @@ const CommentSection = styled.div `
     gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
   }
 `;
-const ActionWrapper = styled.div `
-  margin-top: ${(props) => props.theme.space.lg}; /* 32px */
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 100%;
-  }
-`;
 const TextAreaContainer = styled.div `
   display: flex;
   gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
@@ -626,11 +619,11 @@ function ApproverActions({ approvalRequestId, approvalWorkflowInstanceId, setApp
             ? t("approval-requests.request.approver-actions.additional-note-label", "Additional note")
             : t("approval-requests.request.approver-actions.denial-reason-label", "Reason for denial* (Required)");
         const shouldShowAvatar = Boolean(assigneeUser?.photo?.content_url);
-        return (jsxRuntimeExports.jsx(ActionWrapper, { children: jsxRuntimeExports.jsxs(CommentSection, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: fieldLabel }), jsxRuntimeExports.jsxs(TextAreaContainer, { children: [shouldShowAvatar && (jsxRuntimeExports.jsx(Avatar, { children: jsxRuntimeExports.jsx("img", { alt: "Assignee avatar", src: assigneeUser.photo.content_url ?? undefined }) })), jsxRuntimeExports.jsxs(TextAreaAndMessage, { children: [jsxRuntimeExports.jsx(Textarea, { minRows: 5, value: comment, onChange: handleInputValueChange, disabled: isSubmitting, validation: shouldShowValidationError ? "error" : undefined }), shouldShowValidationError && (jsxRuntimeExports.jsx(Message, { validation: "error", children: t("approval-requests.request.approver-actions.denial-reason-validation", "Enter a reason for denial") }))] })] })] }), jsxRuntimeExports.jsxs(ButtonContainer, { hasAvatar: shouldShowAvatar, isSubmitButton: true, children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleSubmitDecisionClick, disabled: isSubmitting, children: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-                                    ? t("approval-requests.request.approver-actions.submit-approval", "Submit approval")
-                                    : t("approval-requests.request.approver-actions.submit-denial", "Submit denial") }), jsxRuntimeExports.jsx(Button, { onClick: handleCancelClick, disabled: isSubmitting, children: t("approval-requests.request.approver-actions.cancel", "Cancel") })] })] }) }));
+        return (jsxRuntimeExports.jsxs(CommentSection, { children: [jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsx(Label$1, { children: fieldLabel }), jsxRuntimeExports.jsxs(TextAreaContainer, { children: [shouldShowAvatar && (jsxRuntimeExports.jsx(Avatar, { children: jsxRuntimeExports.jsx("img", { alt: "Assignee avatar", src: assigneeUser.photo.content_url ?? undefined }) })), jsxRuntimeExports.jsxs(TextAreaAndMessage, { children: [jsxRuntimeExports.jsx(Textarea, { minRows: 5, value: comment, onChange: handleInputValueChange, disabled: isSubmitting, validation: shouldShowValidationError ? "error" : undefined }), shouldShowValidationError && (jsxRuntimeExports.jsx(Message, { validation: "error", children: t("approval-requests.request.approver-actions.denial-reason-validation", "Enter a reason for denial") }))] })] })] }), jsxRuntimeExports.jsxs(ButtonContainer, { hasAvatar: shouldShowAvatar, isSubmitButton: true, children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleSubmitDecisionClick, disabled: isSubmitting, children: pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
+                                ? t("approval-requests.request.approver-actions.submit-approval", "Submit approval")
+                                : t("approval-requests.request.approver-actions.submit-denial", "Submit denial") }), jsxRuntimeExports.jsx(Button, { onClick: handleCancelClick, disabled: isSubmitting, children: t("approval-requests.request.approver-actions.cancel", "Cancel") })] })] }));
     }
-    return (jsxRuntimeExports.jsx(ActionWrapper, { children: jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleApproveRequestClick, children: t("approval-requests.request.approver-actions.approve-request", "Approve request") }), jsxRuntimeExports.jsx(Button, { onClick: handleDenyRequestClick, children: t("approval-requests.request.approver-actions.deny-request", "Deny request") })] }) }));
+    return (jsxRuntimeExports.jsxs(ButtonContainer, { children: [jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleApproveRequestClick, children: t("approval-requests.request.approver-actions.approve-request", "Approve request") }), jsxRuntimeExports.jsx(Button, { onClick: handleDenyRequestClick, children: t("approval-requests.request.approver-actions.deny-request", "Deny request") })] }));
 }
 var ApproverActions$1 = reactExports.memo(ApproverActions);
 

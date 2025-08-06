@@ -42,14 +42,6 @@ const CommentSection = styled.div`
   }
 `;
 
-const ActionWrapper = styled.div`
-  margin-top: ${(props) => props.theme.space.lg}; /* 32px */
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    width: 100%;
-  }
-`;
-
 const TextAreaContainer = styled.div`
   display: flex;
   gap: ${(props) => props.theme.space.base * 4}px; /* 16px */
@@ -177,80 +169,76 @@ function ApproverActions({
     const shouldShowAvatar = Boolean(assigneeUser?.photo?.content_url);
 
     return (
-      <ActionWrapper>
-        <CommentSection>
-          <Field>
-            <Label>{fieldLabel}</Label>
-            <TextAreaContainer>
-              {shouldShowAvatar && (
-                <Avatar>
-                  <img
-                    alt="Assignee avatar"
-                    src={assigneeUser.photo.content_url ?? undefined}
-                  />
-                </Avatar>
-              )}
-              <TextAreaAndMessage>
-                <Textarea
-                  minRows={5}
-                  value={comment}
-                  onChange={handleInputValueChange}
-                  disabled={isSubmitting}
-                  validation={shouldShowValidationError ? "error" : undefined}
+      <CommentSection>
+        <Field>
+          <Label>{fieldLabel}</Label>
+          <TextAreaContainer>
+            {shouldShowAvatar && (
+              <Avatar>
+                <img
+                  alt="Assignee avatar"
+                  src={assigneeUser.photo.content_url ?? undefined}
                 />
-                {shouldShowValidationError && (
-                  <Message validation="error">
-                    {t(
-                      "approval-requests.request.approver-actions.denial-reason-validation",
-                      "Enter a reason for denial"
-                    )}
-                  </Message>
-                )}
-              </TextAreaAndMessage>
-            </TextAreaContainer>
-          </Field>
-          <ButtonContainer hasAvatar={shouldShowAvatar} isSubmitButton>
-            <Button
-              isPrimary
-              onClick={handleSubmitDecisionClick}
-              disabled={isSubmitting}
-            >
-              {pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
-                ? t(
-                    "approval-requests.request.approver-actions.submit-approval",
-                    "Submit approval"
-                  )
-                : t(
-                    "approval-requests.request.approver-actions.submit-denial",
-                    "Submit denial"
+              </Avatar>
+            )}
+            <TextAreaAndMessage>
+              <Textarea
+                minRows={5}
+                value={comment}
+                onChange={handleInputValueChange}
+                disabled={isSubmitting}
+                validation={shouldShowValidationError ? "error" : undefined}
+              />
+              {shouldShowValidationError && (
+                <Message validation="error">
+                  {t(
+                    "approval-requests.request.approver-actions.denial-reason-validation",
+                    "Enter a reason for denial"
                   )}
-            </Button>
-            <Button onClick={handleCancelClick} disabled={isSubmitting}>
-              {t("approval-requests.request.approver-actions.cancel", "Cancel")}
-            </Button>
-          </ButtonContainer>
-        </CommentSection>
-      </ActionWrapper>
+                </Message>
+              )}
+            </TextAreaAndMessage>
+          </TextAreaContainer>
+        </Field>
+        <ButtonContainer hasAvatar={shouldShowAvatar} isSubmitButton>
+          <Button
+            isPrimary
+            onClick={handleSubmitDecisionClick}
+            disabled={isSubmitting}
+          >
+            {pendingStatus === PENDING_APPROVAL_STATUS.APPROVED
+              ? t(
+                  "approval-requests.request.approver-actions.submit-approval",
+                  "Submit approval"
+                )
+              : t(
+                  "approval-requests.request.approver-actions.submit-denial",
+                  "Submit denial"
+                )}
+          </Button>
+          <Button onClick={handleCancelClick} disabled={isSubmitting}>
+            {t("approval-requests.request.approver-actions.cancel", "Cancel")}
+          </Button>
+        </ButtonContainer>
+      </CommentSection>
     );
   }
 
   return (
-    <ActionWrapper>
-      <ButtonContainer>
-        <Button isPrimary onClick={handleApproveRequestClick}>
-          {t(
-            "approval-requests.request.approver-actions.approve-request",
-            "Approve request"
-          )}
-        </Button>
-        <Button onClick={handleDenyRequestClick}>
-          {t(
-            "approval-requests.request.approver-actions.deny-request",
-            "Deny request"
-          )}
-        </Button>
-      </ButtonContainer>
-    </ActionWrapper>
+    <ButtonContainer>
+      <Button isPrimary onClick={handleApproveRequestClick}>
+        {t(
+          "approval-requests.request.approver-actions.approve-request",
+          "Approve request"
+        )}
+      </Button>
+      <Button onClick={handleDenyRequestClick}>
+        {t(
+          "approval-requests.request.approver-actions.deny-request",
+          "Deny request"
+        )}
+      </Button>
+    </ButtonContainer>
   );
 }
 
