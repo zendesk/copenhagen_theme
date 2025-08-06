@@ -126,8 +126,9 @@
       const chatScript = document.createElement('script');
       chatScript.id = "ze-snippet";
       chatScript.src = chatSrc;
+      chatScript.type = 'text/javascript';
 
-      chatScript.onload(function(){
+      chatScript.onload = function(){
         zE('messenger', 'hide');
 
         {{#if settings.chat_gated}}
@@ -139,7 +140,7 @@
                 // show chat
                 zE('messenger', 'show');
         {{/if}}
-      });
+      };
       document.body.appendChild(chatScript);
         
     </script>
