@@ -6,10 +6,13 @@
   background: #FFFFFF;
   padding: $gutter;
   padding-bottom: 0;
+
   
 
   @include desktop {
     padding: $padding;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   li {

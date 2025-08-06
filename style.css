@@ -4417,6 +4417,8 @@ code.hljs {
 @media (min-width: 1024px) {
   .table-of-contents-container, .search-results-sidebar, .activity-filter-container, .request-filter-container {
     padding: 32px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 .table-of-contents-container li a, .search-results-sidebar li a, .activity-filter-container li a, .request-filter-container li a {

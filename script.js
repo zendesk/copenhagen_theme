@@ -671,7 +671,7 @@
           const mobileHeader = document.getElementById("tocHeading");
 
           window.onscroll = function() {
-              if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+              if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
                   tocOuterContainer.classList.add("row");
               } else {
                   tocOuterContainer.classList.remove("row");
