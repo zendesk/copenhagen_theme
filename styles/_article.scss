@@ -26,6 +26,16 @@
     display: flex;
     flex-direction: column;
     position: relative;
+
+    
+    .search-container-mobile {
+      margin-bottom: $gutter;
+      display: block;
+      @include tablet {
+        display: none;
+      }
+    }
+
   }
 
   &-header {
@@ -177,14 +187,6 @@
       }
     }
 
-  }
-
-  .search-container-mobile {
-    margin-bottom: $gutter;
-    display: block;
-    @include tablet {
-      display: none;
-    }
   }
 
   &-share {

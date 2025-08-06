@@ -2377,6 +2377,15 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
     flex-direction: row;
   }
 }
+.article-container .search-container-mobile {
+  margin-bottom: 16px;
+  display: block;
+}
+@media (min-width: 768px) {
+  .article-container .search-container-mobile {
+    display: none;
+  }
+}
 .article-header {
   align-items: flex-start;
   display: flex;
@@ -2623,15 +2632,6 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 @media (min-width: 768px) {
   .article-sidebar .search-container-desktop {
     display: block;
-  }
-}
-.article .search-container-mobile {
-  margin-bottom: 16px;
-  display: block;
-}
-@media (min-width: 768px) {
-  .article .search-container-mobile {
-    display: none;
   }
 }
 .article-share {
