@@ -94,7 +94,7 @@
       const year = new Date().getFullYear();
       span.textContent = year;
 
-      // hide chat widget
+      // hide chat widget if it's shown by default
       zE('messenger', 'hide');
 
   });
@@ -112,12 +112,26 @@
         textarea.innerHTML = escapedStr;
         return textarea.value;
       }
-
       const chatSnippetEsc = "{{~settings.chat_snippet~}}";
       const chatSnippet = unescapeHTML(chatSnippetEsc);
-      const footer = document.getElementsByTagName("footer")[0];
 
-      footer.insertAdjacentHTML('afterend', chatSnippet);
+      // check if snippet is zendesk chat widget
+      if (chatSnippet.includes("ze-snippet")) {
+        // zendesk snippet
+        const zendeskChatRegex = /(?<=src=").*(?=")/g;
+        const chatSrc = chatSnippet.match(zendeskChatRegex);
+      }
+
+      const chatScript = document.createElement('script');
+      chatScript.id = "ze-snippet";
+      chatScript.src = chatSrc;
+
+      chatScript.onload(function(){
+          zE('messenger', 'hide');
+      });
+      document.body.appendChild(chatScript);
+
+
 
     </script>
     
