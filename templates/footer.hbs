@@ -98,7 +98,6 @@
 </script>
 
 
-
 {{#if settings.show_chat}}
 
   {{#if settings.chat_snippet}}
@@ -152,21 +151,21 @@
       }
 
 
-if (showChat == true) {
-      // Step 3: Load the script and run the function
-      loadScript(chatSrc, "ze-snippet")
-        .then(() => {
-          if (typeof zE === 'function') {
-            zE('messenger', 'show'); // Step 4: Call the function from the loaded script
-            console.log("show chat");
-          } else {
-            console.error('zE is not defined or not a function.');
-          }
-        })
-        .catch(err => console.error(err));
-} else {
-  zE('messenger', 'hide');
-}
+      if (showChat == true) {
+            // Step 3: Load the script and run the function
+            loadScript(chatSrc, "ze-snippet")
+              .then(() => {
+                if (typeof zE === 'function') {
+                  zE('messenger', 'show'); // Step 4: Call the function from the loaded script
+                  console.log("show chat");
+                } else {
+                  console.error('zE is not defined or not a function.');
+                }
+              })
+              .catch(err => console.error(err));
+      } else {
+        zE('messenger', 'hide');
+      }
 
     </script>
     

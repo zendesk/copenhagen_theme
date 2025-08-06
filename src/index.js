@@ -5,3 +5,5 @@ import "./dropdowns";
 import "./share";
 import "./search";
 import "./forms";
+import "./table_of_contents";
+import "./tabs";
