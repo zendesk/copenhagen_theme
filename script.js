@@ -794,4 +794,185 @@
     });
   });
 
+  /* TABLE OF CONTENTS */
+      
+  document.addEventListener("DOMContentLoaded", function(event) {
+      
+      if (document.getElementsByClassName("request-status-filters").length > 0) {
+
+          const statuses = Array.from(document.getElementById("request-status-select").getElementsByTagName("option"));
+          const statusSelect = document.getElementById("request-status-select");
+
+       //   const headings = Array.from(document.getElementById("main-content").getElementsByTagName('h2', 'h3'));
+          const rsfContainer = document.querySelector(".request-status-filters");
+          const ul = document.createElement("ul");
+          
+          ul.classList.add("collapsible-sidebar-body");
+          rsfContainer.appendChild(ul);
+          statuses.map((status, index) => {
+              // for each status, build a li with a styled link
+              
+              const id = status.value;
+              const urlParams = new URLSearchParams(window.location.search);
+
+              var anchorElement = `<a href="#${id}">${status.textContent}</a>`;
+
+              if (urlParams.get('status') == id) {
+                  anchorElement = `<a href="#" data-value="${id}" class="active current">${status.textContent}</a>`;
+              } else {
+                  anchorElement = `<a href="#" data-value="${id}">${status.textContent}</a>`;
+              }
+              var listItem = `<li>${anchorElement}</li>`;
+              ul.insertAdjacentHTML("beforeend", listItem);
+          });
+
+          const rsfAnchors = rsfContainer.querySelectorAll("a");
+
+          rsfAnchors.forEach((anchor) => {
+              anchor.addEventListener("click", function(event) {
+                  event.preventDefault();
+                  statusSelect.value = this.dataset.value;
+                  statusSelect.form.submit();
+              });
+          });
+      }
+  });
+
+  // Use the Lotus accordion classes to avoid breaking existing articles, but we convert the script to javascript because jquery is a chonker
+
+  // sliding functionality
+
+
+  function slideToggle(element, duration = 300) {
+      const computedStyle = window.getComputedStyle(element);
+      const originalPaddingTop = computedStyle.paddingTop;
+      const originalPaddingBottom = computedStyle.paddingBottom;
+
+      if (element.style.display === "none" || computedStyle.display === "none") {
+          element.style.display = "block";
+          element.style.height = "0px";
+          element.style.overflow = "hidden";
+          element.style.paddingTop = "0px";
+          element.style.paddingBottom = "0px";
+
+          let targetHeight = element.scrollHeight;
+
+          element.animate([
+              { height: "0px", paddingTop: "0px", paddingBottom: "0px" },
+              { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom }
+          ], { duration, easing: "ease-in-out" });
+
+          setTimeout(() => {
+              element.style.height = "";
+              element.style.paddingTop = originalPaddingTop;
+              element.style.paddingBottom = originalPaddingBottom;
+          }, duration);
+      } else {
+          let targetHeight = element.scrollHeight;
+          element.style.height = `${targetHeight}px`;
+          element.style.overflow = "hidden";
+
+          element.animate([
+              { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom },
+              { height: "0px", paddingTop: "0px", paddingBottom: "0px" }
+          ], { duration, easing: "ease-in-out" });
+
+          setTimeout(() => {
+              element.style.display = "none";
+              element.style.height = "";
+              element.style.paddingTop = "";
+              element.style.paddingBottom = "";
+          }, duration);
+      }
+  }
+
+
+  /**
+   * Accordions
+   */
+
+  function getSiblingIndex(element) {
+    if (!element || !element.parentNode) {
+      return -1; // Handle cases where the element or parent doesn't exist
+    }
+
+    const siblings = Array.from(element.parentNode.children);
+    return siblings.indexOf(element);
+  }
+
+
+  document.addEventListener("DOMContentLoaded", function(event) {
+    Array.from(document.getElementsByClassName("accordion__item"));
+    const accordionTitles = Array.from(document.getElementsByClassName("accordion__item-title"));
+    const accordionContents = Array.from(document.getElementsByClassName("accordion__item-content"));
+
+    accordionTitles.forEach((el, index) => {
+        const text = el.innerText;
+        const newButtonTag = document.createElement("button");
+        const parentIndex = getSiblingIndex(el.closest('.accordion'));
+
+        var linkAttributes = el.attributes;
+
+        for (attribute of linkAttributes) {
+            newButtonTag.setAttribute(attribute.name, attribute.value);
+        }
+
+        newButtonTag.setAttribute('aria-expanded', false);
+        newButtonTag.setAttribute('aria-controls', `content-${parentIndex}-${index}`);
+        newButtonTag.innerText = text;
+
+        el.replaceWith(newButtonTag);
+    });
+
+    accordionContents.forEach((el, index) => {
+        const parentIndex = getSiblingIndex(el.closest('.accordion'));
+        el.setAttribute("id", `content-${parentIndex}-${index}`);
+        el.style.display = "none";
+        el.closest('.accordion__item').classList.add('collapsed');
+    });
+
+
+    const accordionTitlesButtons = Array.from(document.getElementsByClassName("accordion__item-title"));
+
+    accordionTitlesButtons.forEach((el, index) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        
+        const isExpanded = event.currentTarget.getAttribute('aria-expanded') === "true";
+
+        (event.currentTarget).classList.toggle('accordion__item-title--active');
+        (event.currentTarget).closest('.accordion__item').classList.toggle('collapsed');
+        slideToggle(
+          (event.currentTarget).closest('.accordion__item').querySelector('.accordion__item-content'), 300
+        );
+
+        (event.currentTarget).setAttribute('aria-expanded', !isExpanded);
+
+      });
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Initialize lightbox for images
+    document.querySelectorAll(".image-with-lightbox").forEach(image => {
+      image.addEventListener("click", event => {
+        event.preventDefault();
+        const img = image.querySelector("img");
+        const lightbox = basicLightbox.create(`<img src="${image.href}" alt="${img.alt}">`);
+        lightbox.show();
+      });
+    });
+
+    // Initialize lightbox for videos
+    document.querySelectorAll(".image-with-video-icon").forEach(video => {
+      video.addEventListener("click", event => {
+        event.preventDefault();
+        const lightbox = basicLightbox.create(`
+        <iframe src="${video.href}" frameborder="0" allowfullscreen></iframe>
+      `);
+        lightbox.show();
+      });
+    });
+  });
+
 })();
