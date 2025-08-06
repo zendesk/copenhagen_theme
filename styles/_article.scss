@@ -165,12 +165,23 @@
     .article-share {
       display: none;
       @include tablet {
-      display: block;
-    }
+        display: block;
+      }
     }
 
-    .search-container {
+    .search-container-desktop {
       margin-bottom: $gutter;
+      display: none;
+      @include tablet {
+        display: block;
+      }
+    }
+    .search-container-mobile {
+      margin-bottom: $gutter;
+      display: block;
+      @include tablet {
+        display: none;
+      }
     }
   }
 

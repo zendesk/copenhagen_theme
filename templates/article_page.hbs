@@ -55,8 +55,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 <div class="container">
   <div class="article-container" id="article-container">
+    <div class="search-container-mobile">
+      {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
+    </div>
     <aside class="article-sidebar" aria-labelledby="section-articles-title">
-      <div class="search-container">
+      <div class="search-container-desktop">
         {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
       </div>
       <div class="article-sidebar-sticky">

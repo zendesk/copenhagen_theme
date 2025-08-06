@@ -193,6 +193,7 @@ $input-background: $background-subtle;
       color: $icon-color;
       cursor: pointer;
       display: none;    
+      background-color: transparent;
       z-index: 1;
       flex: none;
       align-self: stretch;
