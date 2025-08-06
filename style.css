@@ -1686,6 +1686,10 @@ ul {
 .search input[type=search]:-webkit-autofill, .search input[type=search]:-webkit-autofill:hover, .search input[type=search]:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0 1000px #fff inset;
 }
+.search-full {
+  grid-template-rows: [top] 1fr [bottom];
+  grid-template-columns: [left] 1fr [right];
+}
 .search-transparent input[type=search] {
   background-color: rgba(241, 245, 249, 0.8);
   border-color: none;

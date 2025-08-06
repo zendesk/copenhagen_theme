@@ -179,6 +179,11 @@ $input-background: $background-subtle;
 
   }
 
+  &-full {
+    grid-template-rows: [top] 1fr [bottom];
+    grid-template-columns: [left] 1fr [right];
+  }
+
   &-transparent {
     input[type="search"] {
       background-color: color.scale($input-background, $alpha: -20%);
