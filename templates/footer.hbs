@@ -127,31 +127,21 @@
       chatScript.src = chatSrc;
 
       chatScript.onload(function(){
-          zE('messenger', 'hide');
+        zE('messenger', 'hide');
+
+        {{#if settings.chat_gated}}
+          {{#if signed_in}}
+                // show chat
+                zE('messenger', 'show');
+          {{/if}}
+        {{else}}
+                // show chat
+                zE('messenger', 'show');
+        {{/if}}
       });
       document.body.appendChild(chatScript);
-
-
-
     </script>
     
   {{/if}}
 
-  {{#if settings.chat_gated}}
-    {{#if signed_in}}
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          // show chat
-          zE('messenger', 'show');
-        });
-      </script>
-    {{/if}}
-  {{else}}
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          // show chat
-          zE('messenger', 'show');
-        });
-      </script>
-  {{/if}}
 {{/if}}
