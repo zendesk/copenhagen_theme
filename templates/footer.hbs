@@ -94,9 +94,6 @@
       const year = new Date().getFullYear();
       span.textContent = year;
 
-      // hide chat widget if it's shown by default
-      zE('messenger', 'hide');
-
   });
 </script>
 
@@ -106,12 +103,43 @@
 
   {{#if settings.chat_snippet}}
     <script>
+      var showChat = false;
+    </script>
+    {{#if settings.chat_gated}}
+      {{#if signed_in}}
+        <script>
+          showChat = true;
+        </script>
+      {{/if}}
+    {{else}}
+      <script>
+        showChat = true;
+      </script>
+    {{/if}}
 
+
+    <script>
       function unescapeHTML(escapedStr) {
         const textarea = document.createElement('textarea');
         textarea.innerHTML = escapedStr;
         return textarea.value;
       }
+
+      function loadScript(src, id) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.id = id;
+          script.src = src;
+          script.async = true;
+          script.type = 'text/javascript';
+
+          script.onload = () => resolve();
+          script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
+
+          document.body.appendChild(script);
+        });
+      }
+
       const chatSnippetEsc = "{{~settings.chat_snippet~}}";
       const chatSnippet = unescapeHTML(chatSnippetEsc);
       var chatSrc = "";
@@ -123,32 +151,30 @@
         chatSrc = chatSnippet.match(zendeskChatRegex);
       }
 
-      const chatScript = document.createElement('script');
-      chatScript.id = "ze-snippet";
-      chatScript.src = chatSrc;
-      chatScript.type = 'text/javascript';
 
-      chatScript.addEventListener("load",function(){console.log("chat has loaded");zE("messenger", "show");}, false);
+if (showChat == true) {
+      // Step 3: Load the script and run the function
+      loadScript(chatSrc, "ze-snippet")
+        .then(() => {
+          if (typeof zE === 'function') {
+            zE('messenger', 'show'); // Step 4: Call the function from the loaded script
+            console.log("show chat");
+          } else {
+            console.error('zE is not defined or not a function.');
+          }
+        })
+        .catch(err => console.error(err));
+} else {
+  zE('messenger', 'hide');
+}
 
-    //  chatScript.onload = function(){
-    //    console.log("chat has loaded");
-    //    zE('messenger', 'show');
-    //  };
-
-      {{#if settings.chat_gated}}
-        {{#if signed_in}}
-          // chat is gated and user is signed in
-          document.body.appendChild(chatScript);
-        {{else}}
-          // chat is gated and user is not signed in
-        {{/if}}
-      {{else}}
-        // chat is not gated
-        document.body.appendChild(chatScript);
-      {{/if}}
-        
     </script>
     
   {{/if}}
 
+{{else}}
+  <script>
+    // hide chat widget if it's shown by default
+    zE('messenger', 'hide');
+  </script>
 {{/if}}
