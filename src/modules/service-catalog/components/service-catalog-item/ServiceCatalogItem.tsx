@@ -72,7 +72,8 @@ export function ServiceCatalogItem({
         const errorData: ServiceRequestResponse = await response.json();
         const invalidFieldErrors = errorData.details.base;
         const missingErrorFields = invalidFieldErrors.filter(
-          (errorField) => !requestFields.some(field => field.id === errorField.field_key)
+          (errorField) =>
+            !requestFields.some((field) => field.id === errorField.field_key)
         );
 
         if (missingErrorFields.length > 0) {
@@ -95,7 +96,7 @@ export function ServiceCatalogItem({
             },
           });
         }
-        
+
         const updatedFields = requestFields.map((field) => {
           const errorField = invalidFieldErrors.find(
             (errorField) => errorField.field_key === field.id

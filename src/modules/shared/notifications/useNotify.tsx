@@ -13,7 +13,7 @@ import styled from "styled-components";
 const StyledLink = styled(Anchor)`
   text-decoration: underline;
   display: block;
-  margin-top: ${props => props.theme.space.xxs}px;
+  margin-top: ${(props) => props.theme.space.xxs}px;
 `;
 
 export const useNotify = () => {
@@ -25,12 +25,8 @@ export const useNotify = () => {
       addToast(({ close }) => (
         <Notification type={type}>
           {title && <Title>{title}</Title>}
-            {message}
-            {link && (
-              <StyledLink href={link.href}>
-                {link.text}
-              </StyledLink>
-            )}
+          {message}
+          {link && <StyledLink href={link.href}>{link.text}</StyledLink>}
           <Close
             aria-label={t("cph-theme-shared.close-label", "Close")}
             onClick={close}
