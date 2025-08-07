@@ -71,6 +71,31 @@ export function ServiceCatalogItem({
       if (response?.status === 422) {
         const errorData: ServiceRequestResponse = await response.json();
         const invalidFieldErrors = errorData.details.base;
+        const missingErrorFields = invalidFieldErrors.filter(
+          (errorField) => !requestFields.some(field => field.id === errorField.field_key)
+        );
+
+        if (missingErrorFields.length > 0) {
+          notify({
+            type: "error",
+            title: t(
+              "service-catalog.item.service-request-error-title",
+              "Service couldn't be submitted"
+            ),
+            message: t(
+              "service-catalog.item.service-request-refresh-message",
+              "Refresh the page and try again in a few seconds."
+            ),
+            link: {
+              text: t(
+                "service-catalog.item.service-request-refresh-link-text",
+                "Refresh the page"
+              ),
+              href: `${helpCenterPath}/services/${serviceCatalogItem.id}`,
+            },
+          });
+        }
+        
         const updatedFields = requestFields.map((field) => {
           const errorField = invalidFieldErrors.find(
             (errorField) => errorField.field_key === field.id
