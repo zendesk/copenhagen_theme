@@ -25,9 +25,46 @@
               {{/link}}
             </li>
           {{/unless}}
+          <li>
+          {{#if signed_in}}
+            <li class="user-info dropdown">
+              <button class="dropdown-toggle" aria-haspopup="true">
+                {{user_avatar class="user-avatar"}}
+                <span>
+                  {{user_name}}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="dropdown-menu" role="menu">
+                {{#my_profile role="menuitem"}}{{t 'profile'}}{{/my_profile}}
+                {{link "requests" role="menuitem"}}
+                {{#link "contributions" role="menuitem"}}{{t "activities"}}{{/link}}
+                {{contact_details role="menuitem"}}
+                {{change_password role="menuitem"}}
+                <div class="separator" role="separator"></div>
+                {{link "sign_out" role="menuitem"}}
+              </div>
+            </li>
+          {{/if}}
+          {{#if alternative_locales}}
+            <li class="dropdown language-selector">
+              <button class="dropdown-toggle" aria-haspopup="true">
+                {{current_locale.name}}
+              </button>
+              <span class="dropdown-menu dropdown-menu-end" role="menu">
+                {{#each alternative_locales}}
+                  <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
+                    {{name}}
+                  </a>
+                {{/each}}
+              </span>
+            </li>
+          {{/if}}
         </ul>
       </nav>
-      {{#if signed_in}}
+   <!--   {{#if signed_in}}
         <div class="user-info dropdown">
           <button class="dropdown-toggle" aria-haspopup="true">
             {{user_avatar class="user-avatar"}}
@@ -48,7 +85,7 @@
             {{link "sign_out" role="menuitem"}}
           </div>
         </div>
-      {{/if}}
+      {{/if}} 
       {{#if alternative_locales}}
         <div class="dropdown language-selector">
           <button class="dropdown-toggle" aria-haspopup="true">
@@ -62,7 +99,7 @@
             {{/each}}
           </span>
         </div>
-      {{/if}}
+      {{/if}}-->
     </div>
 
     <div class="nav-wrapper-mobile">
