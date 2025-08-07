@@ -17,7 +17,7 @@
       <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
         <ul class="user-nav-list">
           <li><a href="https://fzo.statuspage.io/">Status page</a></li>
-          <li>{{link 'new_request' class='submit-a-request'}}</li>
+          <li>{{#link 'new_request' class='submit-a-request'}}Submit a request{{/link}}</li>
           {{#unless signed_in}}
             <li>
               {{#link "sign_in" class="sign-in"}}
@@ -25,9 +25,8 @@
               {{/link}}
             </li>
           {{/unless}}
-          <li>
           {{#if signed_in}}
-            <li class="user-info dropdown">
+            <li class="dropdown">
               <button class="dropdown-toggle" aria-haspopup="true">
                 {{user_avatar class="user-avatar"}}
                 <span>
@@ -49,11 +48,20 @@
             </li>
           {{/if}}
           {{#if alternative_locales}}
-            <li class="dropdown language-selector">
+            <li class="dropdown">
               <button class="dropdown-toggle" aria-haspopup="true">
+                <i class="fa far fa-globe"></i>
+                <span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+                  </svg>
+                </span>
                 {{current_locale.name}}
               </button>
               <span class="dropdown-menu dropdown-menu-end" role="menu">
+                  <a href="#" dir="ltr" rel="nofollow" class="active" role="menuitem">
+                    {{current_locale.name}}
+                  </a>
                 {{#each alternative_locales}}
                   <a href="{{url}}" dir="{{direction}}" rel="nofollow" role="menuitem">
                     {{name}}
