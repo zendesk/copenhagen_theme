@@ -73,6 +73,16 @@ parts:
       screenshot: "https://drive.google.com/file/d/1KlkSK4FQiAYn2ERUJwy1tSYfr1gtjW0E/view?usp=drive_link"
       value: "Give it a moment and try it again"
   - translation:
+      key: "service-catalog.item.service-request-refresh-message"
+      title: "Error notification message instructing user to refresh the page after unsuccessful submitting request for service catalog item"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Refresh the page and try again in a few seconds."
+  - translation:
+      key: "service-catalog.item.service-request-refresh-link-text"
+      title: "Refresh page link"
+      screenshot: "https://drive.google.com/file/d/1zo9CJBpN2F5J5qAjRM39Cr4ytheixdcn/view?usp=sharing"
+      value: "Refresh the page"
+  - translation:
       key: "service-catalog.item.service-request-error.close-label"
       title: "[A11Y] Hidden label for screen readers for close buttons (e.g. in modals and notifications)"
       screenshot: ""
