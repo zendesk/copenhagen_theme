@@ -98,6 +98,10 @@ $header-height: 71px;
         display: block;
       }
 
+      .user-avatar {
+        margin-right: 8px;
+      }
+
       a {
         display: block;
         margin: 20px;
@@ -106,8 +110,9 @@ $header-height: 71px;
   }
 }
 
-.user-nav-list {
-  display: block;
+.user-nav-list {    
+  display: flex;
+  align-items: center;
   list-style: none;
 
   > li {

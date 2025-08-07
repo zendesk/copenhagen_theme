@@ -7,7 +7,9 @@
   cursor: pointer;
   background: none;
   border: 0;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0;
   text-align: initial;
   vertical-align: middle;
@@ -140,4 +142,6 @@
 
 .dropdown-chevron-icon {
   vertical-align: middle;
+  margin-left: 8px;
 }
+
