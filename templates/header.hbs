@@ -17,12 +17,12 @@
       <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
         <ul class="user-nav-list">
           <li><a href="https://fzo.statuspage.io/">Status page</a></li>
-          <li>{{#link 'new_request' class='submit-a-request'}}Submit a request{{/link}}</li>
+          {{#unless user.agent}}
+          <li>{{link 'new_request' class='submit-a-request'}}</li>
+          {{/unless}}
           {{#unless signed_in}}
             <li>
-              {{#link "sign_in" class="sign-in"}}
-                {{t 'sign_in'}}
-              {{/link}}
+              {{link "sign_in" class="sign-in"}}
             </li>
           {{/unless}}
           {{#if signed_in}}
