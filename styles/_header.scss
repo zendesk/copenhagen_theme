@@ -112,6 +112,11 @@ $header-height: 71px;
 
   > li {
     display: inline-block;
+    padding: 0 20px 0 0;
+  }
+
+  a, button {
+    font-weight: 600;
   }
 }
 
@@ -121,17 +126,10 @@ $header-height: 71px;
   @include desktop { display: inline-block; }
 
   a {
-    @include tablet {
-      display: inline-block;
-    }
-
     border: 0;
     color: $text_color;
-    display: none;
     font-size: 1rem;
-    padding: 0 20px 0 0;
     width: auto;
-    font-weight: 600;
 
     [dir="rtl"] & { padding: 0 0 0 20px;}
 

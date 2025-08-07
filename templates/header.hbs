@@ -31,9 +31,7 @@
                 {{user_avatar class="user-avatar"}}
                 <span>
                   {{user_name}}
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-                  </svg>
+                  <i class="far fa-chevron-down fa-2xs"></i>
                 </span>
               </button>
               <div class="dropdown-menu" role="menu">
@@ -50,12 +48,8 @@
           {{#if alternative_locales}}
             <li class="dropdown">
               <button class="dropdown-toggle" aria-haspopup="true">
-                <i class="fa far fa-globe"></i>
-                <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="dropdown-chevron-icon" aria-hidden="true">
-                    <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
-                  </svg>
-                </span>
+                <i class="far fa-globe"></i>
+                <i class="far fa-chevron-down fa-2xs"></i>
                 {{current_locale.name}}
               </button>
               <span class="dropdown-menu dropdown-menu-end" role="menu">

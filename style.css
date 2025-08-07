@@ -1187,6 +1187,10 @@ ul {
 }
 .user-nav-list > li {
   display: inline-block;
+  padding: 0 20px 0 0;
+}
+.user-nav-list a, .user-nav-list button {
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {
@@ -1207,16 +1211,8 @@ ul {
 .nav-wrapper-desktop a {
   border: 0;
   color: #0f172a;
-  display: none;
   font-size: 1rem;
-  padding: 0 20px 0 0;
   width: auto;
-  font-weight: 600;
-}
-@media (min-width: 768px) {
-  .nav-wrapper-desktop a {
-    display: inline-block;
-  }
 }
 [dir=rtl] .nav-wrapper-desktop a {
   padding: 0 0 0 20px;
