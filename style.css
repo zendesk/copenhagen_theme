@@ -451,7 +451,8 @@ ul {
 .error-page {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
 }
 @media (min-width: 1280px) {
   .error-page {
@@ -484,7 +485,8 @@ ul {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
 }
 @media (min-width: 1280px) {
   .container {
@@ -1080,7 +1082,8 @@ ul {
   justify-content: space-between;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
 }
 @media (min-width: 1280px) {
   .header-inner {
@@ -1484,7 +1487,8 @@ ul {
 .footer-inner {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
   display: flex;
   justify-content: space-between;
 }

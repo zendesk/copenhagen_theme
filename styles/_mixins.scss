@@ -21,7 +21,8 @@
 
   max-width: $max-width-container;
   margin: 0 auto;
-  padding: 0 20px;
+  padding-right: calc(var(--gutter-x) * .5);
+  padding-left: calc(var(--gutter-x) * .5);
   
   @media (min-width: #{$max-width-container}) {
     padding: 0;
