@@ -79,6 +79,10 @@ $header-height: 71px;
   position: absolute;
   white-space: nowrap;
 
+  .user-avatar {
+    margin-right: 8px;
+  }
+  
   &[aria-expanded="true"] {
     background-color: #fff;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, .15), 0 4px 10px 0 rgba(0, 0, 0, .1);
@@ -87,6 +91,7 @@ $header-height: 71px;
     left: 0;
     top: $header-height;
     z-index: 1;
+
 
     > a {
       display: block;
@@ -98,9 +103,6 @@ $header-height: 71px;
         display: block;
       }
 
-      .user-avatar {
-        margin-right: 8px;
-      }
 
       a {
         display: block;

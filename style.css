@@ -1160,6 +1160,9 @@ ul {
     position: relative;
   }
 }
+.user-nav .user-avatar {
+  margin-right: 8px;
+}
 .user-nav[aria-expanded=true] {
   background-color: #fff;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.15), 0 4px 10px 0 rgba(0, 0, 0, 0.1);
@@ -1175,9 +1178,6 @@ ul {
 }
 .user-nav[aria-expanded=true] > .user-nav-list li {
   display: block;
-}
-.user-nav[aria-expanded=true] > .user-nav-list .user-avatar {
-  margin-right: 8px;
 }
 .user-nav[aria-expanded=true] > .user-nav-list a {
   display: block;

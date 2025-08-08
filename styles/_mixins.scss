@@ -21,7 +21,7 @@
 
   max-width: $max-width-container;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 20px;
   
   @media (min-width: #{$max-width-container}) {
     padding: 0;
