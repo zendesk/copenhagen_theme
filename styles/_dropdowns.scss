@@ -20,6 +20,10 @@
 
   &:hover {
     text-decoration: none;
+
+    .dropdown-label {
+      text-decoration: underline;
+    }
   }
 
   > * {

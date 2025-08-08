@@ -1194,7 +1194,7 @@ ul {
 }
 .user-nav-list > li {
   display: inline-block;
-  padding: 0 20px 0 0;
+  padding: 0 0 0 20px;
 }
 .user-nav-list a, .user-nav-list button {
   font-weight: 600;
@@ -6278,6 +6278,9 @@ html[dir=rtl] .notification-left-aligned {
 }
 .dropdown-toggle:hover {
   text-decoration: none;
+}
+.dropdown-toggle:hover .dropdown-label {
+  text-decoration: underline;
 }
 .dropdown-toggle > * {
   display: inline-block;
