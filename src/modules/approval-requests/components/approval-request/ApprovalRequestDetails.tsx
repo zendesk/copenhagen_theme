@@ -13,7 +13,7 @@ import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
   margin-left: 0;
-  background: ${(props) => getColorV8("grey", 100, props.theme)};
+  background: ${(props) => getColorV8("background", 650, props.theme)};
   border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
   max-width: 296px;
 
