@@ -209,7 +209,6 @@
     {
       "label": "Footer settings",
       "variables": [
-        
         {
           "identifier": "website",
           "type": "text",
