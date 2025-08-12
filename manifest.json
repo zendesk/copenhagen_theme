@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.319",
+  "version": "1.0.320",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -237,14 +237,14 @@
         {
           "identifier": "article_cta_link",
           "type": "text",
-          "description": "Article CTA link",
+          "description": "Defaults to the New Request page if left blank.",
           "label": "Article CTA link",
-          "value": "{{page_path 'new_request'}}"
+          "value": ""
         },
         {
           "identifier": "article_cta_link_label",
           "type": "text",
-          "description": "Article CTA link label",
+          "description": "Hides the button if left blank.",
           "label": "Article CTA link label",
           "value": "Submit a request"
         }

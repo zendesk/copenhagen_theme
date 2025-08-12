@@ -161,9 +161,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
               {{#if settings.article_cta_body}}
               <p>{{settings.article_cta_body}}</p>
               {{/if}}
-              {{#if settings.article_cta_link}}
-                {{#if settings.article_cta_link_label}}
-                  <a href="{{{settings.article_cta_link}}}">{{settings.article_cta_link_label}}</a>
+              {{#if settings.article_cta_link_label}}
+                {{#if settings.article_cta_link}}
+                  <a href="{{settings.article_cta_link}}" class="button">{{settings.article_cta_link_label}}</a>
+                {{else}}
+                  <a href="{{page_path 'new_request'}}" class="button">{{settings.article_cta_link_label}}</a>
                 {{/if}}
               {{/if}}
             </div>
