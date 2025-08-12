@@ -47,6 +47,7 @@
   "link_color_label": "Link colour",
   "logo_description": "Company logo",
   "logo_label": "Logo",
+  "logo_inverse": "Inverted logo",
   "post_sharing_description": "Show social media sharing on post",
   "post_sharing_label": "Social sharing",
   "recent_activity_description": "Show recent activity on home page",
