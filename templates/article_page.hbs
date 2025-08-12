@@ -139,6 +139,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
               {{share}}
             </div>
           {{/if}}
+
           {{#with article}}
             <div class="article-votes">
               <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
@@ -151,10 +152,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
               </small>-->
             </div>
           {{/with}}
-          
+
           <div class="article-more-questions">
             {{request_callout}}
           </div>
+
+          {{#if settings.show_article_cta}}
+            <div class="article-cta">
+              {{#if settings.article_cta_heading}}
+              <h3>{{settings.article_cta_heading}}</h3>
+              {{/if}}
+              {{#if settings.article_cta_body}}
+              <p>{{settings.article_cta_body}}</p>
+              {{/if}}
+              <p></p>
+            </div>
+          {{/if}}
+
           {{#if settings.show_article_comments}}
 
             <section class="article-comments">

@@ -290,6 +290,20 @@
     @include standalone-link;
   }
 
+  &-cta {
+    padding: $padding;
+    margin: $padding 0;
+    background-image: url(\$article_cta_bg);
+    background-size: cover;
+    background-color: black;
+    background-blend-mode: darken;
+
+    @include tablet {
+      padding: $padding * 2;
+    }
+
+  }
+
   &-return-to-top {
     @include tablet {
       display: none;

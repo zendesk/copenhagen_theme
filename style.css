@@ -2743,6 +2743,19 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 .article-more-questions a:hover, .article-more-questions a:active, .article-more-questions a:focus {
   color: rgb(47.4146341463, 53.2682926829, 96.5853658537);
 }
+.article-cta {
+  padding: 32px;
+  margin: 32px 0;
+  background-image: url(\$article_cta_bg);
+  background-size: cover;
+  background-color: black;
+  background-blend-mode: darken;
+}
+@media (min-width: 768px) {
+  .article-cta {
+    padding: 64px;
+  }
+}
 @media (min-width: 768px) {
   .article-return-to-top {
     display: none;
