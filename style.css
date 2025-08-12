@@ -1075,6 +1075,8 @@ ul {
 }
 
 .header-inner {
+  --gutter-x: 16px;
+  --gutter-y: 0;
   position: relative;
   align-items: center;
   display: flex;

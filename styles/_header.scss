@@ -10,6 +10,8 @@ $header-height: 71px;
 }
 
 .header-inner {
+  --gutter-x: #{$gutter};
+  --gutter-y: 0;
   position: relative;
   align-items: center;
   display: flex;
