@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.309",
+  "version": "1.0.310",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -151,18 +151,6 @@
           "label": "Knowledge base banner image"
         },
         {
-          "identifier": "community_background_image",
-          "type": "file",
-          "description": "community_background_image_description",
-          "label": "community_background_image_label"
-        },
-        {
-          "identifier": "community_image",
-          "type": "file",
-          "description": "community_image_description",
-          "label": "community_image_label"
-        },
-        {
           "identifier": "category_icon",
           "type": "file",
           "description": "Icon on category cards",
@@ -197,13 +185,6 @@
           "type": "checkbox",
           "description": "scoped_knowledge_base_search_description",
           "label": "scoped_knowledge_base_search_label",
-          "value": true
-        },
-        {
-          "identifier": "scoped_community_search",
-          "type": "checkbox",
-          "description": "scoped_community_search_description",
-          "label": "scoped_community_search_label",
           "value": true
         }
       ]
@@ -393,7 +374,7 @@
       ]
     },
     {
-      "label": "community_post_group_label",
+      "label": "Community settings",
       "variables": [
         {
           "identifier": "show_follow_post",
@@ -408,30 +389,13 @@
           "description": "post_sharing_description",
           "label": "post_sharing_label",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "community_topic_group_label",
-      "variables": [
+        },
         {
           "identifier": "show_follow_topic",
           "type": "checkbox",
           "description": "follow_topic_description",
           "label": "follow_topic_label",
           "value": true
-        }
-      ]
-    },
-    {
-      "label": "request_list_group_label",
-      "variables": [
-        {
-          "identifier": "request_list_beta",
-          "type": "checkbox",
-          "description": "request_list_beta_description",
-          "label": "request_list_beta_label",
-          "value": false
         }
       ]
     }
