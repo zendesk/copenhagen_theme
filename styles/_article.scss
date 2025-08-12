@@ -297,6 +297,7 @@
     background-size: cover;
     background-color: #373737;
     background-blend-mode: overlay;
+    color: #ffffff;
 
     @include tablet {
       padding: $padding;

@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.317",
+  "version": "1.0.318",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -233,6 +233,20 @@
           "description": "Article CTA body",
           "label": "Article CTA body",
           "value": "Still have questions? If you couldn't find the answer you needed, our friendly support team is here to help!"
+        },
+        {
+          "identifier": "article_cta_link",
+          "type": "text",
+          "description": "Article CTA link",
+          "label": "Article CTA link",
+          "value": "{{page_path 'new_request'}}"
+        },
+        {
+          "identifier": "article_cta_link_label",
+          "type": "text",
+          "description": "Article CTA link label",
+          "label": "Article CTA link label",
+          "value": "Submit a request"
         }
       ]
     },

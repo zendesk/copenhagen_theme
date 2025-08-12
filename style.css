@@ -2750,6 +2750,7 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   background-size: cover;
   background-color: #373737;
   background-blend-mode: overlay;
+  color: #ffffff;
 }
 @media (min-width: 768px) {
   .article-cta {

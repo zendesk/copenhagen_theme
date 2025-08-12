@@ -153,10 +153,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
             </div>
           {{/with}}
 
-          <div class="article-more-questions">
-            {{request_callout}}
-          </div>
-
           {{#if settings.show_article_cta}}
             <div class="article-cta">
               {{#if settings.article_cta_heading}}
@@ -164,6 +160,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
               {{/if}}
               {{#if settings.article_cta_body}}
               <p>{{settings.article_cta_body}}</p>
+              {{/if}}
+              {{#if settings.article_cta_link}}
+                {{#if settings.article_cta_link_label}}
+                  <a href="{{settings.article_cta_link}}">{{settings.article_cta_link_label}}</a>
+                {{/if}}
               {{/if}}
             </div>
           {{/if}}
