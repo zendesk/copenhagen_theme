@@ -223,14 +223,14 @@
         {
           "identifier": "article_cta_heading",
           "type": "text",
-          "description": "",
+          "description": "Article CTA Heading",
           "label": "Article CTA heading",
           "value": "Need more help?"
         },
         {
           "identifier": "article_cta_body",
           "type": "text",
-          "description": "",
+          "description": "Article CTA body",
           "label": "Article CTA body",
           "value": "Still have questions? If you couldn't find the answer you needed, our friendly support team is here to help!"
         }
