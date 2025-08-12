@@ -1075,6 +1075,10 @@ ul {
 }
 
 .header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-right: calc(var(--gutter-x) * 0.5);
+  padding-left: calc(var(--gutter-x) * 0.5);
   --gutter-x: 16px;
   --gutter-y: 0;
   position: relative;
@@ -1082,10 +1086,7 @@ ul {
   display: flex;
   height: 71px;
   justify-content: space-between;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding-right: calc(var(--gutter-x) * 0.5);
-  padding-left: calc(var(--gutter-x) * 0.5);
+  width: 100%;
 }
 @media (min-width: 1280px) {
   .header-inner {
