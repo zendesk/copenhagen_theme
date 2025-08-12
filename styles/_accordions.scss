@@ -26,6 +26,13 @@
             }
         }
 
+        &:not(.collapsed) {
+            .accordion__item-content { 
+                display: block; 
+            }
+        }
+
+
         &-title {
             position: relative;
             display: flex;
@@ -68,6 +75,9 @@
             padding: $gutter;
             padding-left: calc($gutter + 1em + $gutter + 4px);
             background-color: $q-bg-subtle;
+            will-change: height, padding;  // prevents flicker
+            display: none;  // prevents flicker
+
 
             *:last-child {
                 margin-bottom: 0;

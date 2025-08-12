@@ -855,46 +855,95 @@
 
 
   function slideToggle(element, duration = 300) {
-      const computedStyle = window.getComputedStyle(element);
-      const originalPaddingTop = computedStyle.paddingTop;
-      const originalPaddingBottom = computedStyle.paddingBottom;
+    const computedStyle = window.getComputedStyle(element);
+    const originalPaddingTop = computedStyle.paddingTop;
+    const originalPaddingBottom = computedStyle.paddingBottom;
 
-      if (element.style.display === "none" || computedStyle.display === "none") {
-          element.style.display = "block";
-          element.style.height = "0px";
-          element.style.overflow = "hidden";
-          element.style.paddingTop = "0px";
-          element.style.paddingBottom = "0px";
+    // Cancel any in-flight animation on this element
+    if (element._anim) {
+      element._anim.cancel();
+      element._anim = null;
+    }
 
-          let targetHeight = element.scrollHeight;
+    const isHidden = element.style.display === "none" || computedStyle.display === "none";
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const easing = "ease-in-out";
 
-          element.animate([
-              { height: "0px", paddingTop: "0px", paddingBottom: "0px" },
-              { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom }
-          ], { duration, easing: "ease-in-out" });
+    if (isHidden) {
+      // OPEN
+      element.style.display = "block";
+      element.style.overflow = "hidden";
 
-          setTimeout(() => {
-              element.style.height = "";
-              element.style.paddingTop = originalPaddingTop;
-              element.style.paddingBottom = originalPaddingBottom;
-          }, duration);
-      } else {
-          let targetHeight = element.scrollHeight;
-          element.style.height = `${targetHeight}px`;
-          element.style.overflow = "hidden";
+      // Measure with real padding in place
+      element.style.height = "auto";
+      const targetHeight = element.scrollHeight;
 
-          element.animate([
-              { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom },
-              { height: "0px", paddingTop: "0px", paddingBottom: "0px" }
-          ], { duration, easing: "ease-in-out" });
+      // Start state: collapsed
+      element.style.height = "0px";
+      element.style.paddingTop = "0px";
+      element.style.paddingBottom = "0px";
 
-          setTimeout(() => {
-              element.style.display = "none";
-              element.style.height = "";
-              element.style.paddingTop = "";
-              element.style.paddingBottom = "";
-          }, duration);
+      if (prefersReduced) {
+        // Jump to end state without animating
+        element.style.height = "";
+        element.style.paddingTop = originalPaddingTop;
+        element.style.paddingBottom = originalPaddingBottom;
+        element.style.overflow = "";
+        return;
       }
+
+      const anim = element.animate(
+        [
+          { height: "0px", paddingTop: "0px", paddingBottom: "0px" },
+          { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom }
+        ],
+        { duration, easing, fill: "forwards" }
+      );
+
+      element._anim = anim;
+      anim.onfinish = () => {
+        // Lock in the final styles and clean up
+        element.style.height = "";
+        element.style.paddingTop = originalPaddingTop;
+        element.style.paddingBottom = originalPaddingBottom;
+        element.style.overflow = "";
+        anim.cancel(); // release animation effect after committing
+        element._anim = null;
+      };
+    } else {
+      // CLOSE
+      const targetHeight = element.scrollHeight;
+      element.style.overflow = "hidden";
+      element.style.height = `${targetHeight}px`;
+
+      if (prefersReduced) {
+        element.style.display = "none";
+        element.style.height = "";
+        element.style.paddingTop = "";
+        element.style.paddingBottom = "";
+        element.style.overflow = "";
+        return;
+      }
+
+      const anim = element.animate(
+        [
+          { height: `${targetHeight}px`, paddingTop: originalPaddingTop, paddingBottom: originalPaddingBottom },
+          { height: "0px", paddingTop: "0px", paddingBottom: "0px" }
+        ],
+        { duration, easing, fill: "forwards" }
+      );
+
+      element._anim = anim;
+      anim.onfinish = () => {
+        element.style.display = "none";
+        element.style.height = "";
+        element.style.paddingTop = "";
+        element.style.paddingBottom = "";
+        element.style.overflow = "";
+        anim.cancel();
+        element._anim = null;
+      };
+    }
   }
 
 

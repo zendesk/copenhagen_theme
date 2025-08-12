@@ -2818,6 +2818,9 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   background-color: #ffffff;
   transition: background-color 300ms ease;
 }
+.accordion__item:not(.collapsed) .accordion__item-content {
+  display: block;
+}
 .accordion__item-title {
   position: relative;
   display: flex;
@@ -2855,6 +2858,8 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 16px;
   padding-left: calc(16px + 1em + 16px + 4px);
   background-color: #f1f5f9;
+  will-change: height, padding;
+  display: none;
 }
 .accordion__item-content *:last-child {
   margin-bottom: 0;
