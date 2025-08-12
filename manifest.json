@@ -32,7 +32,7 @@
           "type": "file",
           "description": "favicon_description",
           "label": "favicon_label"
-        },
+        }
       ]
     },
     {
@@ -120,7 +120,8 @@
           "description": "product_1_description_description",
           "label": "Product 1 description",
           "value": "Classwize gives teachers real-time visibility and control over students' online activities in class."
-        },{
+        },
+        {
           "identifier": "product_1_link",
           "type": "text",
           "description": "product_1_link_description",
@@ -146,7 +147,8 @@
           "description": "product_2_description_description",
           "label": "Product 2 description",
           "value": "Classwize gives teachers real-time visibility and control over students' online activities in class."
-        },{
+        },
+        {
           "identifier": "product_2_link",
           "type": "text",
           "description": "product_2_link_description",
@@ -172,7 +174,8 @@
           "description": "product_3_description_description",
           "label": "Product 3 description",
           "value": "Classwize gives teachers real-time visibility and control over students' online activities in class."
-        },{
+        },
+        {
           "identifier": "product_3_link",
           "type": "text",
           "description": "product_3_link_description",
