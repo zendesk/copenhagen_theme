@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       var linkAttributes = el.attributes;
 
-      for (attribute of linkAttributes) {
+      for (let attribute of linkAttributes) {
           newButtonTag.setAttribute(attribute.name, attribute.value);
       }
 
