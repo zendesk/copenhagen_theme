@@ -298,6 +298,10 @@
     background-color: #373737;
     background-blend-mode: overlay;
     color: #ffffff;
+    background-position: center center;
+    width: 100%;
+    border-radius: 4px;
+
 
     @include tablet {
       padding: $padding;
