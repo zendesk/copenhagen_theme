@@ -1,12 +1,2031 @@
-import{r as e,j as t,F as i,C as o,L as l,S as d,H as c,M as n,s as a,u as p,a as s,b as h,D as r,I as f,c as k,T as m,d as u,e as b,f as g,g as _,O as w,h as j,i as y,k as S}from"shared";function L(e,t){return t.filter((t=>t.child_fields.some((t=>t.id===e))))}function v(e,t,i){return e.filter((e=>{const o=i.find((t=>t.id===e.parent_field_id));if(!o)return!1;const l=L(o.id,t);return function(e,t){return"checkbox"===t.parent_field_type&&!1===t.value?!1===e||null===e:e===t.value}(o.value,e)&&(0===l.length||v(l,t,i).length>0)}))}function z(e,t){return 0===t.length?e:e.reduce(((i,o)=>{const l=L(o.id,t);if(0===l.length)return[...i,o];const d=v(l,t,e);return d.length>0?[...i,{...o,required:d.some((e=>e.child_fields.some((e=>e.id==o.id&&e.is_required))))}]:i}),[])}function x({field:a,onChange:p}){const{label:s,error:h,value:r,name:f,required:k,description:m}=a,[u,b]=e.useState(r);return t.jsxs(i,{children:[t.jsx("input",{type:"hidden",name:f,value:"off"}),t.jsxs(o,{name:f,required:k,defaultChecked:r,value:u?"on":"off",onChange:e=>{const{checked:t}=e.target;b(t),p(t)},children:[t.jsxs(l,{children:[s,k&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),m&&t.jsx(c,{dangerouslySetInnerHTML:{__html:m}})]}),h&&t.jsx(n,{validation:"error",children:h})]})}const O=a(d)`
-  margin-inline-start: ${e=>e.theme.space.xxs};
-  font-weight: ${e=>e.theme.fontWeights.medium};
-`;function N({field:e,onChange:o}){const{t:a}=p(),{label:r,error:f,value:k,name:m,required:u,description:b}=e,g=function(e){return e?e.replaceAll("X",""):""}(k);return t.jsxs(i,{children:[t.jsxs(l,{children:[r,u&&t.jsx(d,{"aria-hidden":"true",children:"*"}),t.jsx(O,{children:a("cph-theme-ticket-fields.credit-card-digits-hint","(Last 4 digits)")})]}),b&&t.jsx(c,{dangerouslySetInnerHTML:{__html:b}}),t.jsx(s,{start:t.jsx(h,{}),name:m,type:"text",value:g,onChange:e=>o(e.target.value),validation:f?"error":void 0,required:u,maxLength:4,placeholder:"XXXX"}),f&&t.jsx(n,{validation:"error",children:f})]})}function C({field:o,locale:a,valueFormat:p,onChange:s}){const{label:h,error:k,value:m,name:u,required:b,description:g}=o,[_,w]=e.useState(m?new Date(m):void 0),j=e.useCallback((e=>new Intl.DateTimeFormat(a,{month:"long",day:"numeric",year:"numeric",timeZone:"UTC"}).format(e)),[a]),y=e.useCallback((e=>{if(void 0===e)return"";const t=e.toISOString();return"dateTime"===p?t:t.split("T")[0]}),[p]),S=e.useCallback((e=>{const t=new Date(Date.UTC(e.getFullYear(),e.getMonth(),e.getDate(),12,0,0));w(t);const i=y(t);void 0!==i&&s(i)}),[s,y]);return t.jsxs(i,{children:[t.jsxs(l,{children:[h,b&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),g&&t.jsx(c,{dangerouslySetInnerHTML:{__html:g}}),t.jsx(r,{value:_,onChange:S,formatDate:j,locale:a,children:t.jsx(f,{required:b,lang:a,onChange:e=>{""===e.target.value&&(w(void 0),s(""))},validation:k?"error":void 0})}),k&&t.jsx(n,{validation:"error",children:k}),t.jsx("input",{type:"hidden",name:u,value:y(_)})]})}function B({field:e,onChange:o}){const{label:a,error:p,value:s,name:h,required:r,description:k,type:m}=e,u={},b="integer"===m||"decimal"===m?"number":"text";"integer"===m&&(u.step="1"),"decimal"===m&&(u.step="any");const g="anonymous_requester_email"===m?"email":void 0;return t.jsxs(i,{children:[t.jsxs(l,{children:[a,r&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),k&&t.jsx(c,{dangerouslySetInnerHTML:{__html:k}}),t.jsx(f,{name:h,type:b,defaultValue:s,validation:p?"error":void 0,required:r,onChange:e=>{o&&o(e.target.value)},autoComplete:g,...u}),p&&t.jsx(n,{validation:"error",children:p})]})}const I=a(i)`
+import { r as reactExports, j as jsxRuntimeExports, F as Field, C as Checkbox$1, L as Label, S as Span, H as Hint, M as Message, s as styled, u as useTranslation, a as MediaInput, b as SvgCreditCardStroke, D as Datepicker, I as Input$1, c as useNotify, T as Textarea, d as Field$1, e as Label$1, f as Hint$1, g as Combobox, O as Option, h as Message$1, i as OptGroup, k as debounce } from 'shared';
+
+function getFieldConditions(fieldId, endUserConditions) {
+    return endUserConditions.filter((condition) => {
+        return condition.child_fields.some((child) => child.id === fieldId);
+    });
+}
+function isMatchingValue(fieldValue, condition) {
+    if (condition.parent_field_type === "checkbox" && condition.value === false) {
+        return fieldValue === false || fieldValue === null;
+    }
+    return fieldValue === condition.value;
+}
+function getAppliedConditions(fieldConditions, allConditions, fields) {
+    return fieldConditions.filter((condition) => {
+        const parentField = fields.find((field) => field.id === condition.parent_field_id);
+        if (!parentField) {
+            return false;
+        }
+        const parentFieldConditions = getFieldConditions(parentField.id, allConditions);
+        // the condition is applied if the parent field value matches the condition value
+        // and if the parent field has no conditions or if the parent field conditions are met
+        return (isMatchingValue(parentField.value, condition) &&
+            (parentFieldConditions.length === 0 ||
+                getAppliedConditions(parentFieldConditions, allConditions, fields)
+                    .length > 0));
+    });
+}
+function getVisibleFields(fields, endUserConditions) {
+    if (endUserConditions.length === 0) {
+        return fields;
+    }
+    return fields.reduce((acc, field) => {
+        const fieldConditions = getFieldConditions(field.id, endUserConditions);
+        if (fieldConditions.length === 0) {
+            return [...acc, field];
+        }
+        const appliedConditions = getAppliedConditions(fieldConditions, endUserConditions, fields);
+        if (appliedConditions.length > 0) {
+            return [
+                ...acc,
+                {
+                    ...field,
+                    required: appliedConditions.some((condition) => condition.child_fields.some((child) => child.id == field.id && child.is_required)),
+                },
+            ];
+        }
+        return acc;
+    }, []);
+}
+
+function Checkbox({ field, onChange }) {
+    const { label, error, value, name, required, description } = field;
+    const [checkboxValue, setCheckboxValue] = reactExports.useState(value);
+    const handleChange = (e) => {
+        const { checked } = e.target;
+        setCheckboxValue(checked);
+        onChange(checked);
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: "off" }), jsxRuntimeExports.jsxs(Checkbox$1, { name: name, required: required, defaultChecked: value, value: checkboxValue ? "on" : "off", onChange: handleChange, children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } }))] }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+}
+
+/**
+ * When there is an error in the credit card field, the backend returns a redacted value with the last 4 digits prefixed with some Xs.
+ * This function removes the Xs from the value and returns the last 4 digits of the credit card
+ *
+ * @param value The value returned by the backend with last 4 digits prefixed with some Xs
+ * @returns The last 4 digits of the credit card
+ */
+function getLastDigits(value) {
+    return value ? value.replaceAll("X", "") : "";
+}
+const DigitsHintSpan = styled(Span) `
+  margin-inline-start: ${(props) => props.theme.space.xxs};
+  font-weight: ${(props) => props.theme.fontWeights.medium};
+`;
+function CreditCard({ field, onChange }) {
+    const { t } = useTranslation();
+    const { label, error, value, name, required, description } = field;
+    const digits = getLastDigits(value);
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" }), jsxRuntimeExports.jsx(DigitsHintSpan, { children: t("cph-theme-ticket-fields.credit-card-digits-hint", "(Last 4 digits)") })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(MediaInput, { start: jsxRuntimeExports.jsx(SvgCreditCardStroke, {}), name: name, type: "text", value: digits, onChange: (e) => onChange(e.target.value), validation: error ? "error" : undefined, required: required, maxLength: 4, placeholder: "XXXX" }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+}
+
+function DatePicker({ field, locale, valueFormat, onChange, }) {
+    const { label, error, value, name, required, description } = field;
+    const [date, setDate] = reactExports.useState(value ? new Date(value) : undefined);
+    /* Formats the date using the UTC time zone to prevent timezone-related issues.
+     * By creating a new Date object with only the date, the time defaults to 00:00:00 UTC.
+     * This avoids date shifts that can occur if formatted with the local time zone, as Garden does by default.
+     */
+    const formatDateInput = reactExports.useCallback((date) => {
+        const dateTimeFormat = new Intl.DateTimeFormat(locale, {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+            timeZone: "UTC",
+        });
+        return dateTimeFormat.format(date);
+    }, [locale]);
+    const formatDateValue = reactExports.useCallback((value) => {
+        if (value === undefined) {
+            return "";
+        }
+        const isoString = value.toISOString();
+        return valueFormat === "dateTime" ? isoString : isoString.split("T")[0];
+    }, [valueFormat]);
+    const handleChange = reactExports.useCallback((date) => {
+        // Set the time to 12:00:00 as this is also the expected behavior across Support and the API
+        const newDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0));
+        setDate(newDate);
+        const dateString = formatDateValue(newDate);
+        if (dateString !== undefined) {
+            onChange(dateString);
+        }
+    }, [onChange, formatDateValue]);
+    const handleInputChange = (e) => {
+        // Allow field to be cleared
+        if (e.target.value === "") {
+            setDate(undefined);
+            onChange("");
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Datepicker, { value: date, onChange: handleChange, formatDate: formatDateInput, locale: locale, children: jsxRuntimeExports.jsx(Input$1, { required: required, lang: locale, onChange: handleInputChange, validation: error ? "error" : undefined }) }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: formatDateValue(date) })] }));
+}
+
+function Input({ field, onChange }) {
+    const { label, error, value, name, required, description, type } = field;
+    const stepProp = {};
+    const inputType = type === "integer" || type === "decimal" ? "number" : "text";
+    if (type === "integer")
+        stepProp.step = "1";
+    if (type === "decimal")
+        stepProp.step = "any";
+    const autocomplete = type === "anonymous_requester_email" ? "email" : undefined;
+    return (jsxRuntimeExports.jsxs(Field, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Input$1, { name: name, type: inputType, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => {
+                    onChange && onChange(e.target.value);
+                }, autoComplete: autocomplete, ...stepProp }), error && jsxRuntimeExports.jsx(Message, { validation: "error", children: error })] }));
+}
+
+function useWysiwyg({ hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, }) {
+    const isInitializedRef = reactExports.useRef(false);
+    const notify = useNotify();
+    return reactExports.useCallback(async (ref) => {
+        if (hasWysiwyg && ref && !isInitializedRef.current) {
+            isInitializedRef.current = true;
+            const { createEditor } = await import('wysiwyg').then(function (n) { return n.m; });
+            const editor = await createEditor(ref, {
+                editorType: "supportRequests",
+                hasAtMentions,
+                userRole,
+                brandId,
+                baseLocale,
+            });
+            const notifications = editor.plugins.get("Notification");
+            // Handle generic notifications and errors with "toast" notifications
+            notifications.on("show", (event, data) => {
+                event.stop(); // Prevent the default notification from being shown via window.alert
+                const message = data.message instanceof Error
+                    ? data.message.message
+                    : data.message;
+                const { type, title } = data;
+                notify({ type, title, message });
+            });
+        }
+    }, [hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, notify]);
+}
+
+const StyledField = styled(Field) `
   .ck.ck-editor {
-    margin-top: ${e=>e.theme.space.xs};
+    margin-top: ${(props) => props.theme.space.xs};
   }
-`,V=a(n)`
+`;
+const StyledMessage = styled(Message) `
   .ck.ck-editor + & {
-    margin-top: ${e=>e.theme.space.xs};
+    margin-top: ${(props) => props.theme.space.xs};
   }
-`;function q({field:i,hasWysiwyg:o,baseLocale:n,hasAtMentions:a,userRole:p,brandId:s,onChange:h}){const{label:r,error:f,value:u,name:b,required:g,description:_}=i,w=function({hasWysiwyg:t,baseLocale:i,hasAtMentions:o,userRole:l,brandId:d}){const c=e.useRef(!1),n=k();return e.useCallback((async e=>{if(t&&e&&!c.current){c.current=!0;const{createEditor:t}=await import("wysiwyg").then((function(e){return e.m}));(await t(e,{editorType:"supportRequests",hasAtMentions:o,userRole:l,brandId:d,baseLocale:i})).plugins.get("Notification").on("show",((e,t)=>{e.stop();const i=t.message instanceof Error?t.message.message:t.message,{type:o,title:l}=t;n({type:o,title:l,message:i})}))}}),[t,i,o,l,d,n])}({hasWysiwyg:o,baseLocale:n,hasAtMentions:a,userRole:p,brandId:s});return t.jsxs(I,{children:[t.jsxs(l,{children:[r,g&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),_&&t.jsx(c,{dangerouslySetInnerHTML:{__html:_}}),t.jsx(m,{ref:w,name:b,defaultValue:u,validation:f?"error":void 0,required:g,onChange:e=>h(e.target.value),rows:6,isResizable:!0}),f&&t.jsx(V,{validation:"error",children:f})]})}function A(){const{t:e}=p();return t.jsxs(t.Fragment,{children:[t.jsx(d,{"aria-hidden":"true",children:"-"}),t.jsx(d,{hidden:!0,children:e("cph-theme-ticket-fields.dropdown.empty-option","Select an option")})]})}function E({field:i,onChange:o}){const{label:l,options:c,error:n,value:a,name:p,required:s,description:h}=i,r=null==a?"":a.toString(),f=e.useRef(null);return e.useEffect((()=>{if(f.current&&s){const e=f.current.querySelector("[role=combobox]");e?.setAttribute("aria-required","true")}}),[f,s]),t.jsxs(u,{children:[t.jsxs(b,{children:[l,s&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),h&&t.jsx(g,{dangerouslySetInnerHTML:{__html:h}}),t.jsxs(_,{ref:f,inputProps:{name:p,required:s},isEditable:!1,validation:n?"error":void 0,inputValue:r,selectionValue:r,renderValue:({selection:e})=>e?.label||t.jsx(A,{}),onChange:({selectionValue:e})=>{void 0!==e&&o(e)},children:[!s&&t.jsx(w,{value:"",label:"-",children:t.jsx(A,{})}),c.map((e=>t.jsx(w,{value:e.value.toString(),label:e.name},e.value)))]}),n&&t.jsx(j,{validation:"error",children:n})]})}const T="[]";function R(e){return`[${e.join("::")}]`}function M(e){return e.startsWith("[")&&e.endsWith("]")}function G(e,t){const i=R(e.slice(0,-1));return{type:"SubGroup",name:e[e.length-1],backOption:{type:"previous",label:t,value:i},options:[]}}function F({options:t,hasEmptyOption:i}){const{t:o}=p(),l=e.useMemo((()=>function(e,t,i){const o={[T]:{type:"RootGroup",options:t?[{label:"-",value:""}]:[]}};return e.forEach((e=>{const{name:t,value:l}=e;if(t.includes("::")){const[e,d]=function(e){const t=e.split("::");return[t.slice(0,-1),t.slice(-1)[0]]}(t),c=R(e);o[c]||(o[c]=G(e,i)),o[c]?.options.push({value:l,label:t.split("::").join(" > "),menuLabel:d});for(let t=0;t<e.length;t++){const l=e.slice(0,t),d=e.slice(0,t+1),c=R(l),n=R(d);o[c]||(o[c]=G(l,i)),void 0===o[c]?.options.find((e=>e.value===n))&&o[c]?.options.push({type:"next",label:d[d.length-1],value:n})}}else o[T].options.push({value:l,label:t})})),o}(t,i,o("cph-theme-ticket-fields.dropdown.back-option-label","Back"))),[t,i,o]),[d,c]=e.useState(function(e){const t={type:"RootGroup",options:[]};return Object.values(e).forEach((({options:e})=>{t.options.push(...e.filter((({type:e})=>void 0===e)))})),t}(l));e.useEffect((()=>{c(l[T])}),[l]);return{currentGroup:d,isGroupIdentifier:M,setCurrentGroupByIdentifier:e=>{const t=l[e];t&&c(t)}}}function H({field:i,onChange:o}){const{label:l,options:c,error:n,value:a,name:p,required:s,description:h}=i,{currentGroup:r,isGroupIdentifier:f,setCurrentGroupByIdentifier:k}=F({options:c,hasEmptyOption:!1}),[m,S]=e.useState(a||[]),L=e.useRef(null);e.useEffect((()=>{if(L.current&&s){const e=L.current.querySelector("[role=combobox]");e?.setAttribute("aria-required","true")}}),[L,s]);return t.jsxs(u,{children:[m.map((e=>t.jsx("input",{type:"hidden",name:`${p}[]`,value:e},e))),t.jsxs(b,{children:[l,s&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),h&&t.jsx(g,{dangerouslySetInnerHTML:{__html:h}}),t.jsxs(_,{ref:L,isMultiselectable:!0,inputProps:{required:s},isEditable:!1,validation:n?"error":void 0,onChange:e=>{if(Array.isArray(e.selectionValue)){const t=e.selectionValue.slice(-1).toString();f(t)?k(t):(S(e.selectionValue),o(e.selectionValue))}},selectionValue:m,maxHeight:"auto",children:["SubGroup"===r.type&&t.jsx(w,{...r.backOption}),"SubGroup"===r.type?t.jsx(y,{"aria-label":r.name,children:r.options.map((e=>t.jsx(w,{...e,children:e.menuLabel??e.label},e.value)))}):r.options.map((e=>t.jsx(w,{...e},e.value)))]}),n&&t.jsx(j,{validation:"error",children:n})]})}function D({field:i,onChange:o}){const{label:l,options:c,error:n,value:a,name:p,required:s,description:h}=i,{currentGroup:r,isGroupIdentifier:f,setCurrentGroupByIdentifier:k}=F({options:c,hasEmptyOption:!0}),m=a??"",[S,L]=e.useState(!1),v=e.useRef(null);e.useEffect((()=>{if(v.current&&s){const e=v.current.querySelector("[role=combobox]");e?.setAttribute("aria-required","true")}}),[v,s]);return t.jsxs(u,{children:[t.jsxs(b,{children:[l,s&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),h&&t.jsx(g,{dangerouslySetInnerHTML:{__html:h}}),t.jsxs(_,{ref:v,inputProps:{required:s,name:p},isEditable:!1,validation:n?"error":void 0,onChange:e=>{"string"==typeof e.selectionValue&&f(e.selectionValue)?k(e.selectionValue):("string"==typeof e.selectionValue&&o(e.selectionValue),void 0!==e.isExpanded&&L(e.isExpanded))},selectionValue:m,inputValue:m,renderValue:({selection:e})=>e?.label??t.jsx(A,{}),isExpanded:S,children:["SubGroup"===r.type&&t.jsx(w,{...r.backOption}),"SubGroup"===r.type?t.jsx(y,{"aria-label":r.name,children:r.options.map((e=>t.jsx(w,{...e,children:e.menuLabel??e.label},e.value)))}):r.options.map((e=>""===e.value?t.jsx(w,{...e,children:t.jsx(A,{})},e.value):t.jsx(w,{...e},e.value)))]}),n&&t.jsx(j,{validation:"error",children:n})]})}function P(e){return e.replace("zen:custom_object:","")}const W={value:"",name:"-"};function $({field:i,userId:o,organizationId:l,onChange:c,visibleFields:n}){const{id:a,label:s,error:h,value:r,name:f,required:k,description:m,relationship_target_type:y}=i,[L,v]=e.useState([]),[z,x]=e.useState(null),[O,N]=e.useState(r),[C,B]=e.useState(!1),{t:I}=p(),V=P(y),q={name:I("cph-theme-ticket-fields.lookup-field.loading-options","Loading items..."),id:"loading"},E={name:I("cph-theme-ticket-fields.lookup-field.no-matches-found","No matches found"),id:"no-results"},T=e.useCallback((async e=>{try{const t=await fetch(`/api/v2/custom_objects/${V}/records/${e}`);if(t.ok){const{custom_object_record:e}=await t.json(),i={name:e.name,value:e.id};x(i),N(e.name)}}catch(e){console.error(e)}}),[V]),R=e.useCallback((async e=>{const t=new URLSearchParams;t.set("name",e.toLocaleLowerCase()),t.set("source","zen:ticket"),t.set("field_id",a.toString()),t.set("requester_id",o.toString());const d=function(e,t=[]){return e?[...e.all.filter((e=>"matches"===e.operator||"not_matches"===e.operator)),...e.any.filter((e=>"matches"===e.operator||"not_matches"===e.operator))].map((e=>{const i=e.value.split("ticket_fields_")[1],o=t.find((e=>e.id.toString()===i));return{key:e.value,value:o?.value??null}})):[]}(i.relationship_filter,n);for(const{key:e,value:i}of d)if(e){const o=`filter[dynamic_values][${e}]`,l=i?.toString()||"";t.set(o,l)}l&&t.set("organization_id",l),B(!0);try{const e=await fetch(`/api/v2/custom_objects/${V}/records/autocomplete?${t.toString()}`),i=await e.json();if(e.ok){let e=i.custom_object_records.map((({name:e,id:t})=>({name:e,value:t})));z&&(e=e.filter((e=>e.value!==z.value)),e=[z,...e]),v(e)}else v([])}catch(e){console.error(e)}finally{B(!1)}}),[V,i.relationship_filter,a,l,z,o,n]),M=e.useMemo((()=>S(R,300)),[R]);e.useEffect((()=>()=>M.cancel()),[M]);const G=e.useCallback((({inputValue:e,selectionValue:t})=>{if(void 0!==t)if(""==t)x(W),N(W.name),v([]),c(W.value);else{const e=L.find((e=>e.value===t));e&&(N(e.name),x(e),v([e]),c(e.value))}void 0!==e&&(N(e),M(e))}),[M,c,L]);e.useEffect((()=>{r&&T(r)}),[]);return t.jsxs(u,{children:[t.jsxs(b,{children:[s,k&&t.jsx(d,{"aria-hidden":"true",children:"*"})]}),m&&t.jsx(g,{dangerouslySetInnerHTML:{__html:m}}),t.jsxs(_,{inputProps:{required:k},"data-test-id":"lookup-field-combobox",validation:h?"error":void 0,inputValue:O,selectionValue:z?.value,isAutocomplete:!0,placeholder:I("cph-theme-ticket-fields.lookup-field.placeholder","Search {{label}}",{label:s.toLowerCase()}),onFocus:()=>{N(""),R("*")},onChange:G,renderValue:()=>z?z?.name:W.name,children:[z?.name!==W.name&&t.jsx(w,{value:"",label:"-",children:t.jsx(A,{})}),C&&t.jsx(w,{isDisabled:!0,value:q.name},q.id),!C&&O?.length>0&&0===L.length&&t.jsx(w,{isDisabled:!0,value:E.name},E.id),!C&&0!==L.length&&L.map((e=>t.jsx(w,{value:e.value,label:e.name,"data-test-id":`option-${e.name}`},e.value)))]}),h&&t.jsx(j,{validation:"error",children:h}),t.jsx("input",{type:"hidden",name:f,value:z?.value})]})}const Z=({field:e,baseLocale:i,hasAtMentions:o,userRole:l,userId:d,defaultOrganizationId:c,organizationField:n,brandId:a,dueDateField:p,visibleFields:s,handleDueDateChange:h,handleChange:r})=>{switch(e.type){case"text":case"integer":case"decimal":case"regexp":return t.jsx(B,{field:e,onChange:t=>r(e,t)},e.name);case"partialcreditcard":return t.jsx(N,{field:e,onChange:t=>r(e,t)});case"textarea":return t.jsx(q,{field:e,hasWysiwyg:!1,baseLocale:i,hasAtMentions:o,userRole:l,brandId:a,onChange:t=>r(e,t)},e.name);case"checkbox":return t.jsx(x,{field:e,onChange:t=>r(e,t)});case"date":return t.jsx(C,{field:e,locale:i,valueFormat:"date",onChange:t=>r(e,t)});case"multiselect":return t.jsx(H,{field:e,onChange:t=>r(e,t)});case"tagger":return t.jsx(D,{field:e,onChange:t=>r(e,t)},e.name);case"priority":case"basic_priority":case"tickettype":return t.jsxs(t.Fragment,{children:[t.jsx(E,{field:e,onChange:t=>r(e,t)},e.name),"task"===e.value&&p&&h&&t.jsx(C,{field:p,locale:i,valueFormat:"dateTime",onChange:e=>{h(e)}})]});case"lookup":return t.jsx($,{field:e,userId:d,organizationId:null!==n?n?.value:c,visibleFields:s,onChange:t=>r(e,t)},e.name);default:return t.jsx(t.Fragment,{})}};var U=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),K=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"[ผู้龍(Ḻααṡṭ 4 ḍḭḭḡḭḭṭṡ)龍ผู้]","cph-theme-ticket-fields.dropdown.back-option-label":"[ผู้龍Ḃααͼḳ龍ผู้]","cph-theme-ticket-fields.dropdown.empty-option":"[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]","cph-theme-ticket-fields.lookup-field.loading-options":"[ผู้龍Ḻṓṓααḍḭḭṇḡ ḭḭṭḛḛṃṡ...龍ผู้]","cph-theme-ticket-fields.lookup-field.no-matches-found":"[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]","cph-theme-ticket-fields.lookup-field.placeholder":"[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]"}}),X=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(آخر 4 أرقام)","cph-theme-ticket-fields.dropdown.back-option-label":"السابق","cph-theme-ticket-fields.dropdown.empty-option":"حدّد خيارًا","cph-theme-ticket-fields.lookup-field.loading-options":"جارٍ تحميل العناصر...","cph-theme-ticket-fields.lookup-field.no-matches-found":"لم يتم العثور على نتائج مطابقة","cph-theme-ticket-fields.lookup-field.placeholder":"بحث في {{label}}"}}),Q=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),J=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(последние 4 цифры)","cph-theme-ticket-fields.dropdown.back-option-label":"Назад","cph-theme-ticket-fields.dropdown.empty-option":"Выберите вариант","cph-theme-ticket-fields.lookup-field.loading-options":"Загрузка элементов...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Соответствия не найдены","cph-theme-ticket-fields.lookup-field.placeholder":"Поиск: {{label}}"}}),Y=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(последните 4 цифри)","cph-theme-ticket-fields.dropdown.back-option-label":"Назад","cph-theme-ticket-fields.dropdown.empty-option":"Изберете опция","cph-theme-ticket-fields.lookup-field.loading-options":"Зареждане на елементите…","cph-theme-ticket-fields.lookup-field.no-matches-found":"Няма открити съвпадения","cph-theme-ticket-fields.lookup-field.placeholder":"Търсене на {{label}}"}}),ee=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),te=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ie=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),oe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Poslední 4 číslice)","cph-theme-ticket-fields.dropdown.back-option-label":"Zpět","cph-theme-ticket-fields.dropdown.empty-option":"Vyberte možnost","cph-theme-ticket-fields.lookup-field.loading-options":"Načítání položek…","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nebyly nalezeny žádné shody","cph-theme-ticket-fields.lookup-field.placeholder":"Hledat {{label}}"}}),le=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),de=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Sidste 4 cifre)","cph-theme-ticket-fields.dropdown.back-option-label":"Tilbage","cph-theme-ticket-fields.dropdown.empty-option":"Foretag et valg","cph-theme-ticket-fields.lookup-field.loading-options":"Indlæser elementer...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Ingen matchende resultater","cph-theme-ticket-fields.lookup-field.placeholder":"Søgning i {{label}}"}}),ce=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Letzte vier Ziffern)","cph-theme-ticket-fields.dropdown.back-option-label":"Zurück","cph-theme-ticket-fields.dropdown.empty-option":"Wählen Sie eine Option aus","cph-theme-ticket-fields.lookup-field.loading-options":"Elemente werden geladen...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Keine Übereinstimmungen gefunden","cph-theme-ticket-fields.lookup-field.placeholder":"Suche {{label}}"}}),ne=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Letzte vier Ziffern)","cph-theme-ticket-fields.dropdown.back-option-label":"Zurück","cph-theme-ticket-fields.dropdown.empty-option":"Wählen Sie eine Option aus","cph-theme-ticket-fields.lookup-field.loading-options":"Elemente werden geladen...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Keine Übereinstimmungen gefunden","cph-theme-ticket-fields.lookup-field.placeholder":"Suche {{label}}"}}),ae=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Letzte vier Ziffern)","cph-theme-ticket-fields.dropdown.back-option-label":"Zurück","cph-theme-ticket-fields.dropdown.empty-option":"Wählen Sie eine Option aus","cph-theme-ticket-fields.lookup-field.loading-options":"Elemente werden geladen...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Keine Übereinstimmungen gefunden","cph-theme-ticket-fields.lookup-field.placeholder":"Suche {{label}}"}}),pe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 τελευταία ψηφία)","cph-theme-ticket-fields.dropdown.back-option-label":"Προηγούμενο","cph-theme-ticket-fields.dropdown.empty-option":"Ορίστε μια επιλογή","cph-theme-ticket-fields.lookup-field.loading-options":"Φόρτωση στοιχείων...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Δεν βρέθηκαν αποτελέσματα","cph-theme-ticket-fields.lookup-field.placeholder":"Αναζήτηση για {{label}}"}}),se=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),he=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),re=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),fe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ke=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),me=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ue=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),be=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ge=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),_e=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),we=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"cph-theme-ticket-fields.credit-card-digits-hint","cph-theme-ticket-fields.dropdown.back-option-label":"cph-theme-ticket-fields.dropdown.back-option-label","cph-theme-ticket-fields.dropdown.empty-option":"cph-theme-ticket-fields.dropdown.empty-option","cph-theme-ticket-fields.lookup-field.loading-options":"cph-theme-ticket-fields.lookup-field.loading-options","cph-theme-ticket-fields.lookup-field.no-matches-found":"cph-theme-ticket-fields.lookup-field.no-matches-found","cph-theme-ticket-fields.lookup-field.placeholder":"cph-theme-ticket-fields.lookup-field.placeholder"}}),je=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ye=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"[ผู้龍(Ḻααṡṭ 4 ḍḭḭḡḭḭṭṡ)龍ผู้]","cph-theme-ticket-fields.dropdown.back-option-label":"[ผู้龍Ḃααͼḳ龍ผู้]","cph-theme-ticket-fields.dropdown.empty-option":"[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]","cph-theme-ticket-fields.lookup-field.loading-options":"[ผู้龍Ḻṓṓααḍḭḭṇḡ ḭḭṭḛḛṃṡ...龍ผู้]","cph-theme-ticket-fields.lookup-field.no-matches-found":"[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]","cph-theme-ticket-fields.lookup-field.placeholder":"[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]"}}),Se=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Le=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),ve=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),ze=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),xe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),Oe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),Ne=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),Ce=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),Be=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Ie=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Atrás","cph-theme-ticket-fields.dropdown.empty-option":"Seleccione una opción","cph-theme-ticket-fields.lookup-field.loading-options":"Cargando elementos...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No se encontraron coincidencias","cph-theme-ticket-fields.lookup-field.placeholder":"Buscar {{label}}"}}),Ve=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),qe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Ae=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 viimeistä numeroa)","cph-theme-ticket-fields.dropdown.back-option-label":"Takaisin","cph-theme-ticket-fields.dropdown.empty-option":"Valitse vaihtoehto","cph-theme-ticket-fields.lookup-field.loading-options":"Ladataan kohteita...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Vastineita ei löytynyt","cph-theme-ticket-fields.lookup-field.placeholder":"Hae {{label}}"}}),Ee=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Te=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Re=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 derniers chiffres)","cph-theme-ticket-fields.dropdown.back-option-label":"Retour","cph-theme-ticket-fields.dropdown.empty-option":"Sélectionnez une option","cph-theme-ticket-fields.lookup-field.loading-options":"Chargement des éléments en cours...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Aucun résultat","cph-theme-ticket-fields.lookup-field.placeholder":"Rechercher {{label}}"}}),Me=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 derniers chiffres)","cph-theme-ticket-fields.dropdown.back-option-label":"Retour","cph-theme-ticket-fields.dropdown.empty-option":"Sélectionner une option","cph-theme-ticket-fields.lookup-field.loading-options":"Chargement des éléments...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Aucun résultat","cph-theme-ticket-fields.lookup-field.placeholder":"Rechercher {{label}}"}}),Ge=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 derniers chiffres)","cph-theme-ticket-fields.dropdown.back-option-label":"Retour","cph-theme-ticket-fields.dropdown.empty-option":"Sélectionner une option","cph-theme-ticket-fields.lookup-field.loading-options":"Chargement des éléments...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Aucun résultat","cph-theme-ticket-fields.lookup-field.placeholder":"Rechercher {{label}}"}}),Fe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 derniers chiffres)","cph-theme-ticket-fields.dropdown.back-option-label":"Retour","cph-theme-ticket-fields.dropdown.empty-option":"Sélectionner une option","cph-theme-ticket-fields.lookup-field.loading-options":"Chargement des éléments...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Aucun résultat","cph-theme-ticket-fields.lookup-field.placeholder":"Rechercher {{label}}"}}),He=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),De=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 הספרות האחרונות)","cph-theme-ticket-fields.dropdown.back-option-label":"הקודם","cph-theme-ticket-fields.dropdown.empty-option":"בחר אפשרות","cph-theme-ticket-fields.lookup-field.loading-options":"טוען פריטים...","cph-theme-ticket-fields.lookup-field.no-matches-found":"לא נמצאו התאמות","cph-theme-ticket-fields.lookup-field.placeholder":"חיפוש {{label}}"}}),Pe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(आखिरी 4 अक्षर)","cph-theme-ticket-fields.dropdown.back-option-label":"पीछे","cph-theme-ticket-fields.dropdown.empty-option":"कोई विकल्प चुनें","cph-theme-ticket-fields.lookup-field.loading-options":"आइटम लोड हो रहे हैं...","cph-theme-ticket-fields.lookup-field.no-matches-found":"कोई मिलान नहीं मिले","cph-theme-ticket-fields.lookup-field.placeholder":"खोज {{label}}"}}),We=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),$e=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Utolsó négy számjegy)","cph-theme-ticket-fields.dropdown.back-option-label":"Vissza","cph-theme-ticket-fields.dropdown.empty-option":"Lehetőség kiválasztása","cph-theme-ticket-fields.lookup-field.loading-options":"Elemek betöltése…","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nincs találat","cph-theme-ticket-fields.lookup-field.placeholder":"{{label}} keresése"}}),Ze=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Ue=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 digit terakhir)","cph-theme-ticket-fields.dropdown.back-option-label":"Kembali","cph-theme-ticket-fields.dropdown.empty-option":"Pilih opsi","cph-theme-ticket-fields.lookup-field.loading-options":"Memuat item...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Tidak ditemukan kecocokan","cph-theme-ticket-fields.lookup-field.placeholder":"Cari {{label}}"}}),Ke=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Xe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Ultime 4 cifre)","cph-theme-ticket-fields.dropdown.back-option-label":"Indietro","cph-theme-ticket-fields.dropdown.empty-option":"Seleziona un’opzione","cph-theme-ticket-fields.lookup-field.loading-options":"Caricamento elementi in corso...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nessuna corrispondenza trovata","cph-theme-ticket-fields.lookup-field.placeholder":"Cerca {{label}}"}}),Qe=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Ultime 4 cifre)","cph-theme-ticket-fields.dropdown.back-option-label":"Indietro","cph-theme-ticket-fields.dropdown.empty-option":"Seleziona un’opzione","cph-theme-ticket-fields.lookup-field.loading-options":"Caricamento elementi in corso...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nessuna corrispondenza trovata","cph-theme-ticket-fields.lookup-field.placeholder":"Cerca {{label}}"}}),Je=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"（下4桁）","cph-theme-ticket-fields.dropdown.back-option-label":"戻る","cph-theme-ticket-fields.dropdown.empty-option":"オプションを選択","cph-theme-ticket-fields.lookup-field.loading-options":"アイテムを読み込んでいます...","cph-theme-ticket-fields.lookup-field.no-matches-found":"一致するものが見つかりません","cph-theme-ticket-fields.lookup-field.placeholder":"{{label}}を検索"}}),Ye=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),et=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),tt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),it=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ot=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(마지막 4자리)","cph-theme-ticket-fields.dropdown.back-option-label":"뒤로","cph-theme-ticket-fields.dropdown.empty-option":"옵션 선택","cph-theme-ticket-fields.lookup-field.loading-options":"항목 로드 중...","cph-theme-ticket-fields.lookup-field.no-matches-found":"일치 항목을 찾지 못함","cph-theme-ticket-fields.lookup-field.placeholder":"{{label}} 검색"}}),lt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),dt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ct=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Paskutiniai 4 skaitmenys)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Pasirinkti parinktį","cph-theme-ticket-fields.lookup-field.loading-options":"Įkeliami elementai...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Rungtynių nerasta","cph-theme-ticket-fields.lookup-field.placeholder":"Ieškoti {{label}}"}}),nt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),at=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),pt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),st=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ht=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),rt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),ft=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),kt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Laatste 4 cijfers)","cph-theme-ticket-fields.dropdown.back-option-label":"Terug","cph-theme-ticket-fields.dropdown.empty-option":"Selecteer een optie","cph-theme-ticket-fields.lookup-field.loading-options":"Items laden...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Geen overeenkomsten gevonden","cph-theme-ticket-fields.lookup-field.placeholder":"Zoek in {{label}}"}}),mt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Laatste 4 cijfers)","cph-theme-ticket-fields.dropdown.back-option-label":"Terug","cph-theme-ticket-fields.dropdown.empty-option":"Selecteer een optie","cph-theme-ticket-fields.lookup-field.loading-options":"Items laden...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Geen overeenkomsten gevonden","cph-theme-ticket-fields.lookup-field.placeholder":"Zoek in {{label}}"}}),ut=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 siste sifre)","cph-theme-ticket-fields.dropdown.back-option-label":"Tilbake","cph-theme-ticket-fields.dropdown.empty-option":"Velg et alternativ","cph-theme-ticket-fields.lookup-field.loading-options":"Laster inn elementer ...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Fant ingen samsvarende","cph-theme-ticket-fields.lookup-field.placeholder":"Søk {{label}}"}}),bt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(ostatnie 4 cyfry)","cph-theme-ticket-fields.dropdown.back-option-label":"Wstecz","cph-theme-ticket-fields.dropdown.empty-option":"Wybierz opcję","cph-theme-ticket-fields.lookup-field.loading-options":"Ładowanie elementów...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nie znaleziono dopasowań","cph-theme-ticket-fields.lookup-field.placeholder":"Szukaj {{label}}"}}),gt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Voltar","cph-theme-ticket-fields.dropdown.empty-option":"Selecionar uma opção","cph-theme-ticket-fields.lookup-field.loading-options":"Carregando itens...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nenhuma correspondência encontrada","cph-theme-ticket-fields.lookup-field.placeholder":"Pesquisar {{label}}"}}),_t=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Últimos 4 dígitos)","cph-theme-ticket-fields.dropdown.back-option-label":"Voltar","cph-theme-ticket-fields.dropdown.empty-option":"Selecionar uma opção","cph-theme-ticket-fields.lookup-field.loading-options":"Carregando itens...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nenhuma correspondência encontrada","cph-theme-ticket-fields.lookup-field.placeholder":"Pesquisar {{label}}"}}),wt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Ultimele 4 cifre)","cph-theme-ticket-fields.dropdown.back-option-label":"Înapoi","cph-theme-ticket-fields.dropdown.empty-option":"Selectați o opțiune","cph-theme-ticket-fields.lookup-field.loading-options":"Se încarcă articolele...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nu s-au găsit corespondențe","cph-theme-ticket-fields.lookup-field.placeholder":"Căutare {{label}}"}}),jt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Ultimele 4 cifre)","cph-theme-ticket-fields.dropdown.back-option-label":"Înapoi","cph-theme-ticket-fields.dropdown.empty-option":"Selectați o opțiune","cph-theme-ticket-fields.lookup-field.loading-options":"Se încarcă articolele...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nu s-au găsit corespondențe","cph-theme-ticket-fields.lookup-field.placeholder":"Căutare {{label}}"}}),yt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(последние 4 цифры)","cph-theme-ticket-fields.dropdown.back-option-label":"Назад","cph-theme-ticket-fields.dropdown.empty-option":"Выберите вариант","cph-theme-ticket-fields.lookup-field.loading-options":"Загрузка элементов...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Соответствия не найдены","cph-theme-ticket-fields.lookup-field.placeholder":"Поиск: {{label}}"}}),St=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Lt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(posledné 4 číslice)","cph-theme-ticket-fields.dropdown.back-option-label":"Späť","cph-theme-ticket-fields.dropdown.empty-option":"Vyberte možnosť","cph-theme-ticket-fields.lookup-field.loading-options":"Načítavajú sa položky…","cph-theme-ticket-fields.lookup-field.no-matches-found":"Nenašli sa žiadne zhody","cph-theme-ticket-fields.lookup-field.placeholder":"Vyhľadávať {{label}}"}}),vt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),zt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),xt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Ot=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Nt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 sista siffror)","cph-theme-ticket-fields.dropdown.back-option-label":"Tillbaka","cph-theme-ticket-fields.dropdown.empty-option":"Välj ett alternativ","cph-theme-ticket-fields.lookup-field.loading-options":"Läser in objekt...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Inga träffar hittades","cph-theme-ticket-fields.lookup-field.placeholder":"Sök {{label}}"}}),Ct=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Bt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),It=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(เลข 4 หลักสุดท้าย)","cph-theme-ticket-fields.dropdown.back-option-label":"ย้อนกลับ","cph-theme-ticket-fields.dropdown.empty-option":"เลือกตัวเลือก","cph-theme-ticket-fields.lookup-field.loading-options":"กำลังโหลดรายการ...","cph-theme-ticket-fields.lookup-field.no-matches-found":"ไม่พบรายการที่ตรงกัน","cph-theme-ticket-fields.lookup-field.placeholder":"ค้นหา {{label}}"}}),Vt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Son 4 hane)","cph-theme-ticket-fields.dropdown.back-option-label":"Geri","cph-theme-ticket-fields.dropdown.empty-option":"Bir seçim yapın","cph-theme-ticket-fields.lookup-field.loading-options":"Öğeler yükleniyor...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Eşleşme bulunamadı","cph-theme-ticket-fields.lookup-field.placeholder":"Ara {{label}}"}}),qt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Останні 4 цифри)","cph-theme-ticket-fields.dropdown.back-option-label":"Назад","cph-theme-ticket-fields.dropdown.empty-option":"Виберіть варіант","cph-theme-ticket-fields.lookup-field.loading-options":"Завантаження елементів...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Збігів не знайдено","cph-theme-ticket-fields.lookup-field.placeholder":"Пошук {{label}}"}}),At=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Et=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Tt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(Last 4 digits)","cph-theme-ticket-fields.dropdown.back-option-label":"Back","cph-theme-ticket-fields.dropdown.empty-option":"Select an option","cph-theme-ticket-fields.lookup-field.loading-options":"Loading items...","cph-theme-ticket-fields.lookup-field.no-matches-found":"No matches found","cph-theme-ticket-fields.lookup-field.placeholder":"Search {{label}}"}}),Rt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"(4 chữ số cuối)","cph-theme-ticket-fields.dropdown.back-option-label":"Quay lại","cph-theme-ticket-fields.dropdown.empty-option":"Chọn một tùy chọn","cph-theme-ticket-fields.lookup-field.loading-options":"Đang tải các mục...","cph-theme-ticket-fields.lookup-field.no-matches-found":"Không tìm thấy kết quả phù hợp","cph-theme-ticket-fields.lookup-field.placeholder":"Tìm kiếm {{label}}"}}),Mt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"（最后 4 位数）","cph-theme-ticket-fields.dropdown.back-option-label":"返回","cph-theme-ticket-fields.dropdown.empty-option":"选择一个选项","cph-theme-ticket-fields.lookup-field.loading-options":"正在加载项目…","cph-theme-ticket-fields.lookup-field.no-matches-found":"未找到匹配项","cph-theme-ticket-fields.lookup-field.placeholder":"搜索 {{label}}"}}),Gt=Object.freeze({__proto__:null,default:{"cph-theme-ticket-fields.credit-card-digits-hint":"（最後 4 位數）","cph-theme-ticket-fields.dropdown.back-option-label":"返回","cph-theme-ticket-fields.dropdown.empty-option":"請選取一項","cph-theme-ticket-fields.lookup-field.loading-options":"項目載入中...","cph-theme-ticket-fields.lookup-field.no-matches-found":"找不到符合項目","cph-theme-ticket-fields.lookup-field.placeholder":"搜尋「{{label}}」"}});export{Fe as $,ge as A,_e as B,we as C,E as D,je as E,ye as F,Se as G,Le as H,B as I,ve as J,ze as K,xe as L,Oe as M,Ne as N,Ce as O,Be as P,Ie as Q,Z as R,Ve as S,q as T,qe as U,Ae as V,Ee as W,Te as X,Re as Y,Me as Z,Ge as _,P as a,He as a0,De as a1,Pe as a2,We as a3,$e as a4,Ze as a5,Ue as a6,Ke as a7,Xe as a8,Qe as a9,Lt as aA,vt as aB,zt as aC,xt as aD,Ot as aE,Nt as aF,Ct as aG,Bt as aH,It as aI,Vt as aJ,qt as aK,At as aL,Et as aM,Tt as aN,Rt as aO,Mt as aP,Gt as aQ,Je as aa,Ye as ab,et as ac,tt as ad,it as ae,ot as af,lt as ag,dt as ah,ct as ai,nt as aj,at as ak,pt as al,st as am,ht as an,rt as ao,ft as ap,kt as aq,mt as ar,ut as as,bt as at,gt as au,_t as av,wt as aw,jt as ax,yt as ay,St as az,U as b,K as c,X as d,Q as e,J as f,z as g,Y as h,ee as i,te as j,ie as k,oe as l,le as m,de as n,ce as o,ne as p,ae as q,pe as r,se as s,he as t,re as u,fe as v,ke as w,me as x,ue as y,be as z};
+`;
+function TextArea({ field, hasWysiwyg, baseLocale, hasAtMentions, userRole, brandId, onChange, }) {
+    const { label, error, value, name, required, description } = field;
+    const ref = useWysiwyg({
+        hasWysiwyg,
+        baseLocale,
+        hasAtMentions,
+        userRole,
+        brandId,
+    });
+    return (jsxRuntimeExports.jsxs(StyledField, { children: [jsxRuntimeExports.jsxs(Label, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsx(Textarea, { ref: ref, name: name, defaultValue: value, validation: error ? "error" : undefined, required: required, onChange: (e) => onChange(e.target.value), rows: 6, isResizable: true }), error && jsxRuntimeExports.jsx(StyledMessage, { validation: "error", children: error })] }));
+}
+
+function EmptyValueOption() {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "-" }), jsxRuntimeExports.jsx(Span, { hidden: true, children: t("cph-theme-ticket-fields.dropdown.empty-option", "Select an option") })] }));
+}
+
+function DropDown({ field, onChange }) {
+    const { label, options, error, value, name, required, description } = field;
+    const selectionValue = value == null ? "" : value.toString();
+    const wrapperRef = reactExports.useRef(null);
+    reactExports.useEffect(() => {
+        if (wrapperRef.current && required) {
+            const combobox = wrapperRef.current.querySelector("[role=combobox]");
+            combobox?.setAttribute("aria-required", "true");
+        }
+    }, [wrapperRef, required]);
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, inputProps: { name, required }, isEditable: false, validation: error ? "error" : undefined, inputValue: selectionValue, selectionValue: selectionValue, renderValue: ({ selection }) => selection?.label || jsxRuntimeExports.jsx(EmptyValueOption, {}), onChange: ({ selectionValue }) => {
+                    if (selectionValue !== undefined) {
+                        onChange(selectionValue);
+                    }
+                }, children: [!required && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value.toString(), label: option.name }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+}
+
+/**
+ * The root group is identified by an empty string, to avoid possible clashes with a level with
+ * a "Root" name.
+ */
+const ROOT_GROUP_IDENTIFIER = "[]";
+function getGroupIdentifier(names) {
+    return `[${names.join("::")}]`;
+}
+function isGroupIdentifier(name) {
+    return name.startsWith("[") && name.endsWith("]");
+}
+function getGroupAndOptionNames(input) {
+    const namesList = input.split("::");
+    return [namesList.slice(0, -1), namesList.slice(-1)[0]];
+}
+function buildSubGroupOptions(groupNames, backLabel) {
+    const parentGroupNames = groupNames.slice(0, -1);
+    const parentGroupIdentifier = getGroupIdentifier(parentGroupNames);
+    const name = groupNames[groupNames.length - 1];
+    return {
+        type: "SubGroup",
+        name,
+        backOption: {
+            type: "previous",
+            label: backLabel,
+            value: parentGroupIdentifier,
+        },
+        options: [],
+    };
+}
+/**
+ * Maps a flat list of options to a nested structure
+ *
+ * For example, given the following options:
+ * [
+ *  { "name": "Bass::Fender::Precision", "value": "bass__fender__precision" },
+ *  { "name": "Bass::Fender::Jazz", "value": "bass__fender__jazz" }
+ *  { "name": "Drums", "value": "drums" },
+ * ]
+ *
+ * The following nested structure will be returned:
+ * {
+ *  "[]": {
+ *   "type": "RootGroup",
+ *   "options": [
+ *    { "label": "Bass", "value": "[Bass]", type: "next" },
+ *    { "label": "Drums", "value": "drums" },
+ *   ]
+ *  },
+ *  "[Bass]": {
+ *   "type": "SubGroup",
+ *   "name": "Bass",
+ *   "backOption": { "type": "previous", "label": "Back", "value": "[]" },
+ *   "options": [
+ *    { "label": "Fender", "value": "[Bass::Fender]", type: "next" },
+ *   ]
+ *  },
+ *  "[Bass::Fender]": {
+ *   "type": "SubGroup",
+ *   "name": "Fender",
+ *   "backOption": { "type": "previous", "label": "Back", "value": "[Bass]" },
+ *   "options": [
+ *    { "menuLabel": "Precision", "label": "Bass > Fender > Precision", "value": "bass__fender__precision" },
+ *    { "menuLabel": "Jazz", "label": "Bass > Fender > Jazz", "value": "bass__fender__jazz" },
+ *   ]
+ *  }
+ * }
+ *
+ * @param options original field options
+ * @param hasEmptyOption if true, adds an empty option to the root group
+ * @returns nested options
+ */
+function buildNestedOptions(options, hasEmptyOption, backLabel) {
+    const result = {
+        [ROOT_GROUP_IDENTIFIER]: {
+            type: "RootGroup",
+            options: hasEmptyOption ? [{ label: "-", value: "" }] : [],
+        },
+    };
+    options.forEach((option) => {
+        const { name, value } = option;
+        if (!name.includes("::")) {
+            result[ROOT_GROUP_IDENTIFIER].options.push({
+                value,
+                label: name,
+            });
+        }
+        else {
+            const [groupNames, optionName] = getGroupAndOptionNames(name);
+            const groupIdentifier = getGroupIdentifier(groupNames);
+            if (!result[groupIdentifier]) {
+                result[groupIdentifier] = buildSubGroupOptions(groupNames, backLabel);
+            }
+            result[groupIdentifier]?.options.push({
+                value,
+                label: name.split("::").join(" > "),
+                menuLabel: optionName,
+            });
+            // creates next options for each parent group, if they don't already exists
+            for (let i = 0; i < groupNames.length; i++) {
+                const parentGroupNames = groupNames.slice(0, i);
+                const nextGroupNames = groupNames.slice(0, i + 1);
+                const parentGroupIdentifier = getGroupIdentifier(parentGroupNames);
+                const nextGroupIdentifier = getGroupIdentifier(nextGroupNames);
+                if (!result[parentGroupIdentifier]) {
+                    result[parentGroupIdentifier] = buildSubGroupOptions(parentGroupNames, backLabel);
+                }
+                if (result[parentGroupIdentifier]?.options.find((o) => o.value === nextGroupIdentifier) === undefined) {
+                    result[parentGroupIdentifier]?.options.push({
+                        type: "next",
+                        label: nextGroupNames[nextGroupNames.length - 1],
+                        value: nextGroupIdentifier,
+                    });
+                }
+            }
+        }
+    });
+    return result;
+}
+/**
+ * When one or more options are selected, the Combobox component renders the label
+ * for an option in the input, searching for an option passed as a child with the
+ * same value as the selected option.
+ *
+ * In the first render we are passing only the root group options as children,
+ * and if we already have some selected values from a SubGroup, the component is not
+ * able to find the label for the selected option.
+ *
+ * We therefore need to pass all the non-navigation options as children in the first render.
+ * The passed options are cached by the Combobox component, so we can safely remove them
+ * after the first render and pass only the root group options.
+ */
+function getInitialGroup(nestedOptions) {
+    const result = {
+        type: "RootGroup",
+        options: [],
+    };
+    Object.values(nestedOptions).forEach(({ options }) => {
+        result.options.push(...options.filter(({ type }) => type === undefined));
+    });
+    return result;
+}
+function useNestedOptions({ options, hasEmptyOption, }) {
+    const { t } = useTranslation();
+    const nestedOptions = reactExports.useMemo(() => buildNestedOptions(options, hasEmptyOption, t("cph-theme-ticket-fields.dropdown.back-option-label", "Back")), [options, hasEmptyOption, t]);
+    const [currentGroup, setCurrentGroup] = reactExports.useState(getInitialGroup(nestedOptions));
+    reactExports.useEffect(() => {
+        setCurrentGroup(nestedOptions[ROOT_GROUP_IDENTIFIER]);
+    }, [nestedOptions]);
+    const setCurrentGroupByIdentifier = (identifier) => {
+        const group = nestedOptions[identifier];
+        if (group) {
+            setCurrentGroup(group);
+        }
+    };
+    return {
+        currentGroup,
+        isGroupIdentifier,
+        setCurrentGroupByIdentifier,
+    };
+}
+
+function MultiSelect({ field, onChange, }) {
+    const { label, options, error, value, name, required, description } = field;
+    const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } = useNestedOptions({
+        options,
+        hasEmptyOption: false,
+    });
+    const [selectedValues, setSelectValues] = reactExports.useState(value || []);
+    const wrapperRef = reactExports.useRef(null);
+    reactExports.useEffect(() => {
+        if (wrapperRef.current && required) {
+            const combobox = wrapperRef.current.querySelector("[role=combobox]");
+            combobox?.setAttribute("aria-required", "true");
+        }
+    }, [wrapperRef, required]);
+    const handleChange = (changes) => {
+        if (Array.isArray(changes.selectionValue)) {
+            const lastSelectedItem = changes.selectionValue.slice(-1).toString();
+            if (isGroupIdentifier(lastSelectedItem)) {
+                setCurrentGroupByIdentifier(lastSelectedItem);
+            }
+            else {
+                setSelectValues(changes.selectionValue);
+                onChange(changes.selectionValue);
+            }
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [selectedValues.map((selectedValue) => (jsxRuntimeExports.jsx("input", { type: "hidden", name: `${name}[]`, value: selectedValue }, selectedValue))), jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, isMultiselectable: true, inputProps: { required }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectedValues, maxHeight: "auto", children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+}
+
+function Tagger({ field, onChange }) {
+    const { label, options, error, value, name, required, description } = field;
+    const { currentGroup, isGroupIdentifier, setCurrentGroupByIdentifier } = useNestedOptions({
+        options,
+        hasEmptyOption: true,
+    });
+    const selectionValue = value ?? "";
+    const [isExpanded, setIsExpanded] = reactExports.useState(false);
+    const wrapperRef = reactExports.useRef(null);
+    reactExports.useEffect(() => {
+        if (wrapperRef.current && required) {
+            const combobox = wrapperRef.current.querySelector("[role=combobox]");
+            combobox?.setAttribute("aria-required", "true");
+        }
+    }, [wrapperRef, required]);
+    const handleChange = (changes) => {
+        if (typeof changes.selectionValue === "string" &&
+            isGroupIdentifier(changes.selectionValue)) {
+            setCurrentGroupByIdentifier(changes.selectionValue);
+            return;
+        }
+        if (typeof changes.selectionValue === "string") {
+            onChange(changes.selectionValue);
+        }
+        if (changes.isExpanded !== undefined) {
+            setIsExpanded(changes.isExpanded);
+        }
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { ref: wrapperRef, inputProps: { required, name }, isEditable: false, validation: error ? "error" : undefined, onChange: handleChange, selectionValue: selectionValue, inputValue: selectionValue, renderValue: ({ selection }) => selection?.label ?? jsxRuntimeExports.jsx(EmptyValueOption, {}), isExpanded: isExpanded, children: [currentGroup.type === "SubGroup" && (jsxRuntimeExports.jsx(Option, { ...currentGroup.backOption })), currentGroup.type === "SubGroup" ? (jsxRuntimeExports.jsx(OptGroup, { "aria-label": currentGroup.name, children: currentGroup.options.map((option) => (jsxRuntimeExports.jsx(Option, { ...option, children: option.menuLabel ?? option.label }, option.value))) })) : (currentGroup.options.map((option) => option.value === "" ? (jsxRuntimeExports.jsx(Option, { ...option, children: jsxRuntimeExports.jsx(EmptyValueOption, {}) }, option.value)) : (jsxRuntimeExports.jsx(Option, { ...option }, option.value))))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error })] }));
+}
+
+function buildAdvancedDynamicFilterParams(filter, fields = []) {
+    if (!filter)
+        return [];
+    const dynamicFilters = [
+        ...filter.all.filter((f) => f.operator === "matches" || f.operator === "not_matches"),
+        ...filter.any.filter((f) => f.operator === "matches" || f.operator === "not_matches"),
+    ];
+    return dynamicFilters.map((f) => {
+        const parsedFilterId = f.value.split("ticket_fields_")[1];
+        const field = fields.find((field) => field.id.toString() === parsedFilterId);
+        return {
+            key: f.value,
+            value: field?.value ?? null,
+        };
+    });
+}
+function getCustomObjectKey(targetType) {
+    return targetType.replace("zen:custom_object:", "");
+}
+const EMPTY_OPTION = {
+    value: "",
+    name: "-",
+};
+function LookupField({ field, userId, organizationId, onChange, visibleFields, }) {
+    const { id: fieldId, label, error, value, name, required, description, relationship_target_type, } = field;
+    const [options, setOptions] = reactExports.useState([]);
+    const [selectedOption, setSelectedOption] = reactExports.useState(null);
+    const [inputValue, setInputValue] = reactExports.useState(value);
+    const [isLoadingOptions, setIsLoadingOptions] = reactExports.useState(false);
+    const { t } = useTranslation();
+    const customObjectKey = getCustomObjectKey(relationship_target_type);
+    const loadingOption = {
+        name: t("cph-theme-ticket-fields.lookup-field.loading-options", "Loading items..."),
+        id: "loading",
+    };
+    const noResultsOption = {
+        name: t("cph-theme-ticket-fields.lookup-field.no-matches-found", "No matches found"),
+        id: "no-results",
+    };
+    const fetchSelectedOption = reactExports.useCallback(async (selectionValue) => {
+        try {
+            const res = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/${selectionValue}`);
+            if (res.ok) {
+                const { custom_object_record } = await res.json();
+                const newSelectedOption = {
+                    name: custom_object_record.name,
+                    value: custom_object_record.id,
+                };
+                setSelectedOption(newSelectedOption);
+                setInputValue(custom_object_record.name);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }, [customObjectKey]);
+    const fetchOptions = reactExports.useCallback(async (inputValue) => {
+        const searchParams = new URLSearchParams();
+        searchParams.set("name", inputValue.toLocaleLowerCase());
+        searchParams.set("source", "zen:ticket");
+        searchParams.set("field_id", fieldId.toString());
+        searchParams.set("requester_id", userId.toString());
+        const filterPairs = buildAdvancedDynamicFilterParams(field.relationship_filter, visibleFields);
+        for (const { key: filterValue, value: fieldValue } of filterPairs) {
+            if (filterValue) {
+                const filterValueParam = `filter[dynamic_values][${filterValue}]`;
+                const fieldValueParam = fieldValue?.toString() || "";
+                searchParams.set(filterValueParam, fieldValueParam);
+            }
+        }
+        if (organizationId)
+            searchParams.set("organization_id", organizationId);
+        setIsLoadingOptions(true);
+        try {
+            const response = await fetch(`/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`);
+            const data = await response.json();
+            if (response.ok) {
+                let fetchedOptions = data.custom_object_records.map(({ name, id }) => ({
+                    name,
+                    value: id,
+                }));
+                if (selectedOption) {
+                    fetchedOptions = fetchedOptions.filter((option) => option.value !== selectedOption.value);
+                    fetchedOptions = [selectedOption, ...fetchedOptions];
+                }
+                setOptions(fetchedOptions);
+            }
+            else {
+                setOptions([]);
+            }
+        }
+        catch (error) {
+            console.error(error);
+        }
+        finally {
+            setIsLoadingOptions(false);
+        }
+    }, [
+        customObjectKey,
+        field.relationship_filter,
+        fieldId,
+        organizationId,
+        selectedOption,
+        userId,
+        visibleFields,
+    ]);
+    const debouncedFetchOptions = reactExports.useMemo(() => debounce(fetchOptions, 300), [fetchOptions]);
+    reactExports.useEffect(() => {
+        return () => debouncedFetchOptions.cancel();
+    }, [debouncedFetchOptions]);
+    const handleChange = reactExports.useCallback(({ inputValue, selectionValue }) => {
+        if (selectionValue !== undefined) {
+            if (selectionValue == "") {
+                setSelectedOption(EMPTY_OPTION);
+                setInputValue(EMPTY_OPTION.name);
+                setOptions([]);
+                onChange(EMPTY_OPTION.value);
+            }
+            else {
+                const selectedOption = options.find((option) => option.value === selectionValue);
+                if (selectedOption) {
+                    setInputValue(selectedOption.name);
+                    setSelectedOption(selectedOption);
+                    setOptions([selectedOption]);
+                    onChange(selectedOption.value);
+                }
+            }
+        }
+        if (inputValue !== undefined) {
+            setInputValue(inputValue);
+            debouncedFetchOptions(inputValue);
+        }
+    }, [debouncedFetchOptions, onChange, options]);
+    reactExports.useEffect(() => {
+        if (value) {
+            fetchSelectedOption(value);
+        }
+    }, []); //we don't set dependency array as we want this hook to be called only once
+    const onFocus = () => {
+        setInputValue("");
+        fetchOptions("*");
+    };
+    return (jsxRuntimeExports.jsxs(Field$1, { children: [jsxRuntimeExports.jsxs(Label$1, { children: [label, required && jsxRuntimeExports.jsx(Span, { "aria-hidden": "true", children: "*" })] }), description && (jsxRuntimeExports.jsx(Hint$1, { dangerouslySetInnerHTML: { __html: description } })), jsxRuntimeExports.jsxs(Combobox, { inputProps: { required }, "data-test-id": "lookup-field-combobox", validation: error ? "error" : undefined, inputValue: inputValue, selectionValue: selectedOption?.value, isAutocomplete: true, placeholder: t("cph-theme-ticket-fields.lookup-field.placeholder", "Search {{label}}", { label: label.toLowerCase() }), onFocus: onFocus, onChange: handleChange, renderValue: () => selectedOption ? selectedOption?.name : EMPTY_OPTION.name, children: [selectedOption?.name !== EMPTY_OPTION.name && (jsxRuntimeExports.jsx(Option, { value: "", label: "-", children: jsxRuntimeExports.jsx(EmptyValueOption, {}) })), isLoadingOptions && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: loadingOption.name }, loadingOption.id)), !isLoadingOptions &&
+                        inputValue?.length > 0 &&
+                        options.length === 0 && (jsxRuntimeExports.jsx(Option, { isDisabled: true, value: noResultsOption.name }, noResultsOption.id)), !isLoadingOptions &&
+                        options.length !== 0 &&
+                        options.map((option) => (jsxRuntimeExports.jsx(Option, { value: option.value, label: option.name, "data-test-id": `option-${option.name}` }, option.value)))] }), error && jsxRuntimeExports.jsx(Message$1, { validation: "error", children: error }), jsxRuntimeExports.jsx("input", { type: "hidden", name: name, value: selectedOption?.value })] }));
+}
+
+const RequestFormField = ({ field, baseLocale, hasAtMentions, userRole, userId, defaultOrganizationId, organizationField, brandId, dueDateField, visibleFields, handleDueDateChange, handleChange, }) => {
+    switch (field.type) {
+        case "text":
+        case "integer":
+        case "decimal":
+        case "regexp":
+            return (jsxRuntimeExports.jsx(Input, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+        case "partialcreditcard":
+            return (jsxRuntimeExports.jsx(CreditCard, { field: field, onChange: (value) => handleChange(field, value) }));
+        case "textarea":
+            return (jsxRuntimeExports.jsx(TextArea, { field: field, hasWysiwyg: false, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, brandId: brandId, onChange: (value) => handleChange(field, value) }, field.name));
+        case "checkbox":
+            return (jsxRuntimeExports.jsx(Checkbox, { field: field, onChange: (value) => handleChange(field, value) }));
+        case "date":
+            return (jsxRuntimeExports.jsx(DatePicker, { field: field, locale: baseLocale, valueFormat: "date", onChange: (value) => handleChange(field, value) }));
+        case "multiselect":
+            return (jsxRuntimeExports.jsx(MultiSelect, { field: field, onChange: (value) => handleChange(field, value) }));
+        case "tagger":
+            return (jsxRuntimeExports.jsx(Tagger, { field: field, onChange: (value) => handleChange(field, value) }, field.name));
+        case "priority":
+        case "basic_priority":
+        case "tickettype":
+            return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(DropDown, { field: field, onChange: (value) => handleChange(field, value) }, field.name), field.value === "task" && dueDateField && handleDueDateChange && (jsxRuntimeExports.jsx(DatePicker, { field: dueDateField, locale: baseLocale, valueFormat: "dateTime", onChange: (value) => {
+                            handleDueDateChange(value);
+                        } }))] }));
+        case "lookup":
+            return (jsxRuntimeExports.jsx(LookupField, { field: field, userId: userId, organizationId: organizationField !== null
+                    ? organizationField?.value
+                    : defaultOrganizationId, visibleFields: visibleFields, onChange: (value) => handleChange(field, value) }, field.name));
+        default:
+            return jsxRuntimeExports.jsx(jsxRuntimeExports.Fragment, {});
+    }
+};
+
+var af = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var af$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: af
+});
+
+var arXPseudo = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "[ผู้龍(Ḻααṡṭ 4 ḍḭḭḡḭḭṭṡ)龍ผู้]",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "[ผู้龍Ḃααͼḳ龍ผู้]",
+	"cph-theme-ticket-fields.dropdown.empty-option": "[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "[ผู้龍Ḻṓṓααḍḭḭṇḡ ḭḭṭḛḛṃṡ...龍ผู้]",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]"
+};
+
+var arXPseudo$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: arXPseudo
+});
+
+var ar = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(آخر 4 أرقام)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "السابق",
+	"cph-theme-ticket-fields.dropdown.empty-option": "حدّد خيارًا",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "جارٍ تحميل العناصر...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "لم يتم العثور على نتائج مطابقة",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "بحث في {{label}}"
+};
+
+var ar$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ar
+});
+
+var az = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var az$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: az
+});
+
+var be = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(последние 4 цифры)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Выберите вариант",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Загрузка элементов...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Соответствия не найдены",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Поиск: {{label}}"
+};
+
+var be$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: be
+});
+
+var bg = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(последните 4 цифри)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Изберете опция",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Зареждане на елементите…",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Няма открити съвпадения",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Търсене на {{label}}"
+};
+
+var bg$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: bg
+});
+
+var bn = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var bn$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: bn
+});
+
+var bs = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var bs$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: bs
+});
+
+var ca = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var ca$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ca
+});
+
+var cs = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Poslední 4 číslice)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Zpět",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Vyberte možnost",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Načítání položek…",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nebyly nalezeny žádné shody",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Hledat {{label}}"
+};
+
+var cs$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: cs
+});
+
+var cy = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var cy$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: cy
+});
+
+var da = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Sidste 4 cifre)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Tilbage",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Foretag et valg",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Indlæser elementer...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Ingen matchende resultater",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Søgning i {{label}}"
+};
+
+var da$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: da
+});
+
+var deDe = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Letzte vier Ziffern)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Zurück",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Wählen Sie eine Option aus",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Elemente werden geladen...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Keine Übereinstimmungen gefunden",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Suche {{label}}"
+};
+
+var deDe$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: deDe
+});
+
+var deXInformal = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Letzte vier Ziffern)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Zurück",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Wählen Sie eine Option aus",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Elemente werden geladen...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Keine Übereinstimmungen gefunden",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Suche {{label}}"
+};
+
+var deXInformal$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: deXInformal
+});
+
+var de = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Letzte vier Ziffern)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Zurück",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Wählen Sie eine Option aus",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Elemente werden geladen...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Keine Übereinstimmungen gefunden",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Suche {{label}}"
+};
+
+var de$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: de
+});
+
+var el = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 τελευταία ψηφία)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Προηγούμενο",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Ορίστε μια επιλογή",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Φόρτωση στοιχείων...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Δεν βρέθηκαν αποτελέσματα",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Αναζήτηση για {{label}}"
+};
+
+var el$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: el
+});
+
+var en001 = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var en001$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: en001
+});
+
+var en150 = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var en150$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: en150
+});
+
+var enAu = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enAu$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enAu
+});
+
+var enCa = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enCa$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enCa
+});
+
+var enGb = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enGb$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enGb
+});
+
+var enMy = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enMy$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enMy
+});
+
+var enPh = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enPh$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enPh
+});
+
+var enSe = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enSe$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enSe
+});
+
+var enUs = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enUs$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enUs
+});
+
+var enXDev = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enXDev$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enXDev
+});
+
+var enXKeys = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "cph-theme-ticket-fields.credit-card-digits-hint",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "cph-theme-ticket-fields.dropdown.back-option-label",
+	"cph-theme-ticket-fields.dropdown.empty-option": "cph-theme-ticket-fields.dropdown.empty-option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "cph-theme-ticket-fields.lookup-field.loading-options",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "cph-theme-ticket-fields.lookup-field.no-matches-found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "cph-theme-ticket-fields.lookup-field.placeholder"
+};
+
+var enXKeys$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enXKeys
+});
+
+var enXObsolete = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enXObsolete$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enXObsolete
+});
+
+var enXPseudo = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "[ผู้龍(Ḻααṡṭ 4 ḍḭḭḡḭḭṭṡ)龍ผู้]",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "[ผู้龍Ḃααͼḳ龍ผู้]",
+	"cph-theme-ticket-fields.dropdown.empty-option": "[ผู้龍Ṣḛḛḽḛḛͼṭ ααṇ ṓṓṗṭḭḭṓṓṇ龍ผู้]",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "[ผู้龍Ḻṓṓααḍḭḭṇḡ ḭḭṭḛḛṃṡ...龍ผู้]",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "[ผู้龍Ṅṓṓ ṃααṭͼḥḛḛṡ ϝṓṓṵṵṇḍ龍ผู้]",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "[ผู้龍Ṣḛḛααṛͼḥ {{label}}龍ผู้]"
+};
+
+var enXPseudo$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enXPseudo
+});
+
+var enXTest = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var enXTest$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: enXTest
+});
+
+var es419 = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var es419$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: es419
+});
+
+var esAr = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var esAr$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: esAr
+});
+
+var esCl = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var esCl$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: esCl
+});
+
+var esEs = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var esEs$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: esEs
+});
+
+var esMx = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var esMx$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: esMx
+});
+
+var esPe = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var esPe$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: esPe
+});
+
+var es = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var es$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: es
+});
+
+var et = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var et$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: et
+});
+
+var eu = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Atrás",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleccione una opción",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Cargando elementos...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No se encontraron coincidencias",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Buscar {{label}}"
+};
+
+var eu$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: eu
+});
+
+var faAf = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var faAf$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: faAf
+});
+
+var fa = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var fa$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: fa
+});
+
+var fi = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 viimeistä numeroa)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Takaisin",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Valitse vaihtoehto",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Ladataan kohteita...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Vastineita ei löytynyt",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Hae {{label}}"
+};
+
+var fi$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: fi
+});
+
+var fil = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var fil$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: fil
+});
+
+var fo = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var fo$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: fo
+});
+
+var frCa = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 derniers chiffres)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Retour",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Sélectionnez une option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments en cours...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}"
+};
+
+var frCa$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: frCa
+});
+
+var frDz = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 derniers chiffres)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Retour",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Sélectionner une option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}"
+};
+
+var frDz$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: frDz
+});
+
+var frMu = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 derniers chiffres)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Retour",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Sélectionner une option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}"
+};
+
+var frMu$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: frMu
+});
+
+var fr = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 derniers chiffres)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Retour",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Sélectionner une option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Chargement des éléments...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Aucun résultat",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Rechercher {{label}}"
+};
+
+var fr$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: fr
+});
+
+var ga = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ga$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ga
+});
+
+var he = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 הספרות האחרונות)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "הקודם",
+	"cph-theme-ticket-fields.dropdown.empty-option": "בחר אפשרות",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "טוען פריטים...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "לא נמצאו התאמות",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "חיפוש {{label}}"
+};
+
+var he$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: he
+});
+
+var hi = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(आखिरी 4 अक्षर)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "पीछे",
+	"cph-theme-ticket-fields.dropdown.empty-option": "कोई विकल्प चुनें",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "आइटम लोड हो रहे हैं...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "कोई मिलान नहीं मिले",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "खोज {{label}}"
+};
+
+var hi$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: hi
+});
+
+var hr = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var hr$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: hr
+});
+
+var hu = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Utolsó négy számjegy)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Vissza",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Lehetőség kiválasztása",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Elemek betöltése…",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nincs találat",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} keresése"
+};
+
+var hu$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: hu
+});
+
+var hy = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var hy$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: hy
+});
+
+var id = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 digit terakhir)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Kembali",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Pilih opsi",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Memuat item...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Tidak ditemukan kecocokan",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Cari {{label}}"
+};
+
+var id$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: id
+});
+
+var is = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var is$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: is
+});
+
+var itCh = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Ultime 4 cifre)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Indietro",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleziona un’opzione",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Caricamento elementi in corso...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nessuna corrispondenza trovata",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Cerca {{label}}"
+};
+
+var itCh$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: itCh
+});
+
+var it = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Ultime 4 cifre)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Indietro",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Seleziona un’opzione",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Caricamento elementi in corso...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nessuna corrispondenza trovata",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Cerca {{label}}"
+};
+
+var it$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: it
+});
+
+var ja = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "（下4桁）",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "戻る",
+	"cph-theme-ticket-fields.dropdown.empty-option": "オプションを選択",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "アイテムを読み込んでいます...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "一致するものが見つかりません",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "{{label}}を検索"
+};
+
+var ja$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ja
+});
+
+var ka = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ka$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ka
+});
+
+var kk = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var kk$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: kk
+});
+
+var klDk = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var klDk$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: klDk
+});
+
+var km = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var km$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: km
+});
+
+var ko = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(마지막 4자리)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "뒤로",
+	"cph-theme-ticket-fields.dropdown.empty-option": "옵션 선택",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "항목 로드 중...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "일치 항목을 찾지 못함",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "{{label}} 검색"
+};
+
+var ko$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ko
+});
+
+var ku = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ku$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ku
+});
+
+var ky = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ky$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ky
+});
+
+var lt = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Paskutiniai 4 skaitmenys)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Pasirinkti parinktį",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Įkeliami elementai...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Rungtynių nerasta",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Ieškoti {{label}}"
+};
+
+var lt$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: lt
+});
+
+var lv = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var lv$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: lv
+});
+
+var mk = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var mk$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: mk
+});
+
+var mn = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var mn$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: mn
+});
+
+var ms = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ms$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ms
+});
+
+var mt = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var mt$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: mt
+});
+
+var my = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var my$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: my
+});
+
+var ne = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ne$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ne
+});
+
+var nlBe = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Laatste 4 cijfers)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Terug",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Selecteer een optie",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Items laden...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Geen overeenkomsten gevonden",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Zoek in {{label}}"
+};
+
+var nlBe$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: nlBe
+});
+
+var nl = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Laatste 4 cijfers)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Terug",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Selecteer een optie",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Items laden...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Geen overeenkomsten gevonden",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Zoek in {{label}}"
+};
+
+var nl$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: nl
+});
+
+var no = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 siste sifre)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Tilbake",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Velg et alternativ",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Laster inn elementer ...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Fant ingen samsvarende",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Søk {{label}}"
+};
+
+var no$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: no
+});
+
+var pl = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(ostatnie 4 cyfry)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Wstecz",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Wybierz opcję",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Ładowanie elementów...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nie znaleziono dopasowań",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Szukaj {{label}}"
+};
+
+var pl$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: pl
+});
+
+var ptBr = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Voltar",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Selecionar uma opção",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Carregando itens...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenhuma correspondência encontrada",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Pesquisar {{label}}"
+};
+
+var ptBr$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ptBr
+});
+
+var pt = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Últimos 4 dígitos)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Voltar",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Selecionar uma opção",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Carregando itens...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenhuma correspondência encontrada",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Pesquisar {{label}}"
+};
+
+var pt$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: pt
+});
+
+var roMd = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Ultimele 4 cifre)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Înapoi",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Selectați o opțiune",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Se încarcă articolele...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nu s-au găsit corespondențe",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Căutare {{label}}"
+};
+
+var roMd$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: roMd
+});
+
+var ro = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Ultimele 4 cifre)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Înapoi",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Selectați o opțiune",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Se încarcă articolele...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nu s-au găsit corespondențe",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Căutare {{label}}"
+};
+
+var ro$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ro
+});
+
+var ru = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(последние 4 цифры)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Выберите вариант",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Загрузка элементов...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Соответствия не найдены",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Поиск: {{label}}"
+};
+
+var ru$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ru
+});
+
+var si = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var si$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: si
+});
+
+var sk = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(posledné 4 číslice)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Späť",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Vyberte možnosť",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Načítavajú sa položky…",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Nenašli sa žiadne zhody",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Vyhľadávať {{label}}"
+};
+
+var sk$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: sk
+});
+
+var sl = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var sl$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: sl
+});
+
+var sq = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var sq$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: sq
+});
+
+var srMe = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var srMe$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: srMe
+});
+
+var sr = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var sr$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: sr
+});
+
+var sv = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 sista siffror)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Tillbaka",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Välj ett alternativ",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Läser in objekt...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Inga träffar hittades",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Sök {{label}}"
+};
+
+var sv$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: sv
+});
+
+var swKe = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var swKe$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: swKe
+});
+
+var ta = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ta$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ta
+});
+
+var th = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(เลข 4 หลักสุดท้าย)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "ย้อนกลับ",
+	"cph-theme-ticket-fields.dropdown.empty-option": "เลือกตัวเลือก",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "กำลังโหลดรายการ...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "ไม่พบรายการที่ตรงกัน",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "ค้นหา {{label}}"
+};
+
+var th$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: th
+});
+
+var tr = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Son 4 hane)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Geri",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Bir seçim yapın",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Öğeler yükleniyor...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Eşleşme bulunamadı",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Ara {{label}}"
+};
+
+var tr$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: tr
+});
+
+var uk = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Останні 4 цифри)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Назад",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Виберіть варіант",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Завантаження елементів...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Збігів не знайдено",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Пошук {{label}}"
+};
+
+var uk$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: uk
+});
+
+var urPk = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var urPk$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: urPk
+});
+
+var ur = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var ur$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: ur
+});
+
+var uz = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(Last 4 digits)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Back",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Select an option",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Loading items...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "No matches found",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Search {{label}}"
+};
+
+var uz$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: uz
+});
+
+var vi = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "(4 chữ số cuối)",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "Quay lại",
+	"cph-theme-ticket-fields.dropdown.empty-option": "Chọn một tùy chọn",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "Đang tải các mục...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "Không tìm thấy kết quả phù hợp",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "Tìm kiếm {{label}}"
+};
+
+var vi$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: vi
+});
+
+var zhCn = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "（最后 4 位数）",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "返回",
+	"cph-theme-ticket-fields.dropdown.empty-option": "选择一个选项",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "正在加载项目…",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "未找到匹配项",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "搜索 {{label}}"
+};
+
+var zhCn$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: zhCn
+});
+
+var zhTw = {
+	"cph-theme-ticket-fields.credit-card-digits-hint": "（最後 4 位數）",
+	"cph-theme-ticket-fields.dropdown.back-option-label": "返回",
+	"cph-theme-ticket-fields.dropdown.empty-option": "請選取一項",
+	"cph-theme-ticket-fields.lookup-field.loading-options": "項目載入中...",
+	"cph-theme-ticket-fields.lookup-field.no-matches-found": "找不到符合項目",
+	"cph-theme-ticket-fields.lookup-field.placeholder": "搜尋「{{label}}」"
+};
+
+var zhTw$1 = /*#__PURE__*/Object.freeze({
+    __proto__: null,
+    default: zhTw
+});
+
+export { fr$1 as $, enUs$1 as A, enXDev$1 as B, enXKeys$1 as C, DropDown as D, enXObsolete$1 as E, enXPseudo$1 as F, enXTest$1 as G, es419$1 as H, Input as I, esAr$1 as J, esCl$1 as K, esEs$1 as L, esMx$1 as M, esPe$1 as N, es$1 as O, et$1 as P, eu$1 as Q, RequestFormField as R, faAf$1 as S, TextArea as T, fa$1 as U, fi$1 as V, fil$1 as W, fo$1 as X, frCa$1 as Y, frDz$1 as Z, frMu$1 as _, getCustomObjectKey as a, ga$1 as a0, he$1 as a1, hi$1 as a2, hr$1 as a3, hu$1 as a4, hy$1 as a5, id$1 as a6, is$1 as a7, itCh$1 as a8, it$1 as a9, sk$1 as aA, sl$1 as aB, sq$1 as aC, srMe$1 as aD, sr$1 as aE, sv$1 as aF, swKe$1 as aG, ta$1 as aH, th$1 as aI, tr$1 as aJ, uk$1 as aK, urPk$1 as aL, ur$1 as aM, uz$1 as aN, vi$1 as aO, zhCn$1 as aP, zhTw$1 as aQ, ja$1 as aa, ka$1 as ab, kk$1 as ac, klDk$1 as ad, km$1 as ae, ko$1 as af, ku$1 as ag, ky$1 as ah, lt$1 as ai, lv$1 as aj, mk$1 as ak, mn$1 as al, ms$1 as am, mt$1 as an, my$1 as ao, ne$1 as ap, nlBe$1 as aq, nl$1 as ar, no$1 as as, pl$1 as at, ptBr$1 as au, pt$1 as av, roMd$1 as aw, ro$1 as ax, ru$1 as ay, si$1 as az, af$1 as b, arXPseudo$1 as c, ar$1 as d, az$1 as e, be$1 as f, getVisibleFields as g, bg$1 as h, bn$1 as i, bs$1 as j, ca$1 as k, cs$1 as l, cy$1 as m, da$1 as n, deDe$1 as o, deXInformal$1 as p, de$1 as q, el$1 as r, en001$1 as s, en150$1 as t, enAu$1 as u, enCa$1 as v, enGb$1 as w, enMy$1 as x, enPh$1 as y, enSe$1 as z };

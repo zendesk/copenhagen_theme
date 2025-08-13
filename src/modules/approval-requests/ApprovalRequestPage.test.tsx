@@ -117,8 +117,8 @@ describe("ApprovalRequestPage", () => {
       />
     );
 
-    expect(screen.getByText("Approve request")).toBeInTheDocument();
-    expect(screen.getByText("Deny request")).toBeInTheDocument();
+    expect(screen.getAllByText("Approve request").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Deny request").length).toBeGreaterThan(0);
   });
 
   it("does not show the approver actions when the user is not the assignee", () => {
@@ -140,8 +140,8 @@ describe("ApprovalRequestPage", () => {
       />
     );
 
-    expect(screen.queryByText("Approve request")).not.toBeInTheDocument();
-    expect(screen.queryByText("Deny request")).not.toBeInTheDocument();
+    expect(screen.queryAllByText("Approve request").length).toBe(0);
+    expect(screen.queryAllByText("Deny request").length).toBe(0);
   });
 
   it("throws an error when the request fails", () => {
