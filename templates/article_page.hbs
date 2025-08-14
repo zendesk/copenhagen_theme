@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 </script>
 
+<style>
+</style>
+
 
 <section class="section hero hero-article">
   <div class="container">
@@ -52,193 +55,194 @@ document.addEventListener('DOMContentLoaded', (event) => {
   </div>
 </section>
 
-
-<div class="container">
-  <div class="article-container" id="article-container">
-    <div class="search-container-mobile">
-      {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
-    </div>
-    <aside class="article-sidebar" aria-labelledby="section-articles-title">
-      <div class="search-container-desktop">
+<section class="section bg-subtle" style="padding-top: 0;">
+  <div class="container">
+    <div class="article-container" id="article-container">
+      <div class="search-container-mobile">
         {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
       </div>
-      <div class="article-sidebar-sticky">
-        <div class="table-of-contents-container collapsible-sidebar">
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
-            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
-            <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
-          </button>
-          <h4 class="collapsible-sidebar-title sidenav-title sidenav-title-desktop">Table of contents</h4>
-          <h4 class="collapsible-sidebar-title sidenav-title sidenav-title-mobile" id="tocHeading">Table of contents</h4>
-          <div class="table-of-contents">
-          </div>
-          <div class="article-return-to-top collapsible-sidebar-body">
-            <a href="#article-container">
-              <i class="fas fa-arrow-up" style="margin-right: 10px;"></i>
-              {{t 'return_to_top'}}
-            </a>
-          </div>
+      <aside class="article-sidebar" aria-labelledby="section-articles-title">
+        <div class="search-container-desktop">
+          {{search scoped=settings.scoped_kb_search submit=false class="search search-full search-transparent"}}
         </div>
-        {{#if settings.show_article_sharing}}
-          <div class="article-share">
-            <h4 class="sidenav-title collapsible-sidebar-title">Share this article</h4>
-            {{share}}
-          </div>
-        {{/if}}
-      </div>
-    </aside>
-
-    <article id="main-content" class="article">
-
-      <section class="article-info">
-        <div class="article-content">
-          <div class="article-body">{{article.body}}</div>
-<!--
-          {{#if (compare article.content_tags.length ">" 0)}}
-            <section class="content-tags">
-              <p>{{t 'content_tags_label'}}</p>
-              <ul class="content-tag-list">
-                {{#each article.content_tags}}
-                  <li class="content-tag-item" data-content-tag-id="{{id}}">
-                    {{#link "search_result" content_tag_id=id}}
-                      {{name}}
-                    {{/link}}
-                  </li>
-                {{/each}}
-              </ul>
-            </section>
-          {{/if}}
-          -->
-
-          {{#if attachments}}
-            <div class="article-attachments">
-              <ul class="attachments">
-                {{#each attachments}}
-                  <li class="attachment-item">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
-                      <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
-                    </svg>
-                    <a href="{{url}}" target="_blank">{{name}}</a>
-                    <div class="attachment-meta meta-group">
-                      <span class="attachment-meta-item meta-data">{{size}}</span>
-                      <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
-                    </div>
-                  </li>
-                {{/each}}
-              </ul>
+        <div class="article-sidebar-sticky">
+          <div class="table-of-contents-container collapsible-sidebar">
+            <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="">
+              <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon far fa-chevron-down"></i>
+              <i focusable="false" aria-hidden="true" class="collapsible-sidebar-toggle-icon x-icon far fa-times"></i>
+            </button>
+            <h4 class="collapsible-sidebar-title sidenav-title sidenav-title-desktop">Table of contents</h4>
+            <h4 class="collapsible-sidebar-title sidenav-title sidenav-title-mobile" id="tocHeading">Table of contents</h4>
+            <div class="table-of-contents">
             </div>
-          {{/if}}
-          
-        </div>
-      </section>
-      <footer>
-        <div class="article-footer">
+            <div class="article-return-to-top collapsible-sidebar-body">
+              <a href="#article-container">
+                <i class="fas fa-arrow-up" style="margin-right: 10px;"></i>
+                {{t 'return_to_top'}}
+              </a>
+            </div>
+          </div>
           {{#if settings.show_article_sharing}}
             <div class="article-share">
-              <h4 class="share-header">Share this article</h4>
+              <h4 class="sidenav-title collapsible-sidebar-title">Share this article</h4>
               {{share}}
             </div>
           {{/if}}
+        </div>
+      </aside>
 
-          {{#with article}}
-            <div class="article-votes">
-              <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
-              <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
-                {{vote 'up' class='button article-vote article-vote-up' selected_class="article-vote-voted"}}
-                {{vote 'down' class='button article-vote article-vote-down' selected_class="article-vote-voted"}}
+      <article id="main-content" class="article">
+
+        <section class="article-info">
+          <div class="article-content">
+            <div class="article-body">{{article.body}}</div>
+  <!--
+            {{#if (compare article.content_tags.length ">" 0)}}
+              <section class="content-tags">
+                <p>{{t 'content_tags_label'}}</p>
+                <ul class="content-tag-list">
+                  {{#each article.content_tags}}
+                    <li class="content-tag-item" data-content-tag-id="{{id}}">
+                      {{#link "search_result" content_tag_id=id}}
+                        {{name}}
+                      {{/link}}
+                    </li>
+                  {{/each}}
+                </ul>
+              </section>
+            {{/if}}
+            -->
+
+            {{#if attachments}}
+              <div class="article-attachments">
+                <ul class="attachments">
+                  {{#each attachments}}
+                    <li class="attachment-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="attachment-icon">
+                        <path fill="none" stroke="currentColor" stroke-linecap="round" d="M9.5 4v7.7c0 .8-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5V3C6.5 1.6 7.6.5 9 .5s2.5 1.1 2.5 2.5v9c0 1.9-1.6 3.5-3.5 3.5S4.5 13.9 4.5 12V4"/>
+                      </svg>
+                      <a href="{{url}}" target="_blank">{{name}}</a>
+                      <div class="attachment-meta meta-group">
+                        <span class="attachment-meta-item meta-data">{{size}}</span>
+                        <a href="{{url}}" target="_blank" class="attachment-meta-item meta-data">{{t 'download'}}</a>
+                      </div>
+                    </li>
+                  {{/each}}
+                </ul>
               </div>
-              <!--<small class="article-votes-count">
-                {{vote 'label' class='article-vote-label'}}
-              </small>-->
-            </div>
-          {{/with}}
+            {{/if}}
+            
+          </div>
+        </section>
+        <footer>
+          <div class="article-footer">
+            {{#if settings.show_article_sharing}}
+              <div class="article-share">
+                <h4 class="share-header">Share this article</h4>
+                {{share}}
+              </div>
+            {{/if}}
 
-          {{#if settings.show_article_cta}}
-            <div class="article-cta">
-              {{#if settings.article_cta_heading}}
-              <h3>{{settings.article_cta_heading}}</h3>
-              {{/if}}
-              {{#if settings.article_cta_body}}
-              <p>{{settings.article_cta_body}}</p>
-              {{/if}}
-              {{#if settings.article_cta_link_label}}
-                {{#if settings.article_cta_link}}
-                  <a href="{{settings.article_cta_link}}" class="button">{{settings.article_cta_link_label}}</a>
-                {{else}}
-                  <a href="{{page_path 'new_request'}}" class="button">{{settings.article_cta_link_label}}</a>
+            {{#with article}}
+              <div class="article-votes">
+                <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
+                <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
+                  {{vote 'up' class='button article-vote article-vote-up' selected_class="article-vote-voted"}}
+                  {{vote 'down' class='button article-vote article-vote-down' selected_class="article-vote-voted"}}
+                </div>
+                <!--<small class="article-votes-count">
+                  {{vote 'label' class='article-vote-label'}}
+                </small>-->
+              </div>
+            {{/with}}
+
+            {{#if settings.show_article_cta}}
+              <div class="article-cta">
+                {{#if settings.article_cta_heading}}
+                <h3>{{settings.article_cta_heading}}</h3>
                 {{/if}}
-              {{/if}}
-            </div>
-          {{/if}}
+                {{#if settings.article_cta_body}}
+                <p>{{settings.article_cta_body}}</p>
+                {{/if}}
+                {{#if settings.article_cta_link_label}}
+                  {{#if settings.article_cta_link}}
+                    <a href="{{settings.article_cta_link}}" class="button">{{settings.article_cta_link_label}}</a>
+                  {{else}}
+                    <a href="{{page_path 'new_request'}}" class="button">{{settings.article_cta_link_label}}</a>
+                  {{/if}}
+                {{/if}}
+              </div>
+            {{/if}}
 
-          {{#if settings.show_article_comments}}
+            {{#if settings.show_article_comments}}
 
-            <section class="article-comments">
-              <div class="article-comments-header">
-                <div>
-                  <h2 class="comment-heading">{{t 'comments'}}</h2>
-                  <p class="comment-total">{{article.comment_count}} comment{{#is article.comment_count 1}}s{{/is}}</p>
+              <section class="article-comments">
+                <div class="article-comments-header">
+                  <div>
+                    <h2 class="comment-heading">{{t 'comments'}}</h2>
+                    <p class="comment-total">{{article.comment_count}} comment{{#is article.comment_count 1}}s{{/is}}</p>
+                  </div>
+                  {{#if comments}}
+                  
+                  <div class="comment-sorters dropdown">
+                    <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
+                      <span>
+                        <span>
+                          <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
+                            {{#each comment_sorters}}
+                              {{#if selected}}
+                                {{#is name "Votes"}}Most popular{{/is}}{{#is name "Date"}}Most recent{{/is}}
+                              {{/if}}
+                            {{/each}}
+                        </span>
+                        <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
+                      </span>
+                    </button>
+                    <div class="dropdown-menu" role="menu" id="comment-sorters-list" aria-labelledby="comment-sorters" tabindex="-1">
+                      {{#each comment_sorters}}
+                        <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{#is name "Votes"}}Most popular{{/is}}{{#is name "Date"}}Most recent{{/is}}</a>
+                      {{/each}}
+                    </div>
+                  </div>
+
+
+                  {{/if}}
                 </div>
                 {{#if comments}}
-                
-                <div class="comment-sorters dropdown">
-                  <button class="dropdown-toggle" aria-haspopup="true" id="comment-sorters" aria-controls="comment-sorters-list">
-                    <span>
-                      <span>
-                        <i class="fa far fa-arrow-up-arrow-down" style="margin-right: 8px;"></i> 
-                          {{#each comment_sorters}}
-                            {{#if selected}}
-                              {{#is name "Votes"}}Most popular{{/is}}{{#is name "Date"}}Most recent{{/is}}
-                            {{/if}}
-                          {{/each}}
-                      </span>
-                      <i class="fa far fa-chevron-down dropdown-icon" style="margin-left: 8px;" aria-hidden="true" focusable="false"></i>
-                    </span>
-                  </button>
-                  <div class="dropdown-menu" role="menu" id="comment-sorters-list" aria-labelledby="comment-sorters" tabindex="-1">
-                    {{#each comment_sorters}}
-                      <a aria-selected="{{selected}}" role="menuitem" href="{{url}}" {{#is @index 0}}tabindex="0"{{else}}tabindex="-1"{{/is}}>{{#is name "Votes"}}Most popular{{/is}}{{#is name "Date"}}Most recent{{/is}}</a>
-                    {{/each}}
-                  </div>
-                </div>
-
-
-                {{/if}}
-              </div>
-              {{#if comments}}
-                <ul>
-                {{#each comments}}
-                  <li class="comment">
-                    <div class="comment-vote vote">
-                      {{vote 'up' class='vote-up' selected_class='vote-voted'}}
-                      {{vote 'sum' class='vote-sum'}}
-                      {{vote 'down' class='vote-down' selected_class='vote-voted'}}
-                    </div>
-                    <div class="comment-container">
-                      <div class="comment-head">
-                        <h5 class="comment-author">{{author.name}}</h5>
-                        <p class="comment-date">{{date created_at}}</p>
+                  <ul>
+                  {{#each comments}}
+                    <li class="comment">
+                      <div class="comment-vote vote">
+                        {{vote 'up' class='vote-up' selected_class='vote-voted'}}
+                        {{vote 'sum' class='vote-sum'}}
+                        {{vote 'down' class='vote-down' selected_class='vote-voted'}}
                       </div>
-                      <div class="comment-body">{{body}}</div>
-                    </div>
-                  </li>
-                {{/each}}
-                </ul>
-              {{/if}}
-            </section>
+                      <div class="comment-container">
+                        <div class="comment-head">
+                          <h5 class="comment-author">{{author.name}}</h5>
+                          <p class="comment-date">{{date created_at}}</p>
+                        </div>
+                        <div class="comment-body">{{body}}</div>
+                      </div>
+                    </li>
+                  {{/each}}
+                  </ul>
+                {{/if}}
+              </section>
 
-          {{#form 'comment' class='comment-form'}}
-            <!--<div class="comment-avatar">{{user_avatar class='user-avatar'}}</div> -->
-            <div class="comment-container">
-              {{wysiwyg 'body' rows='4'}}
-              <div class="comment-form-controls">{{input type='submit'}}</div>
-            </div>
-          {{/form}}
+            {{#form 'comment' class='comment-form'}}
+              <!--<div class="comment-avatar">{{user_avatar class='user-avatar'}}</div> -->
+              <div class="comment-container">
+                {{wysiwyg 'body' rows='4'}}
+                <div class="comment-form-controls">{{input type='submit'}}</div>
+              </div>
+            {{/form}}
 
-          {{/if}}
-        </div>
+            {{/if}}
+          </div>
 
-      </footer>
-    </article>
+        </footer>
+      </article>
+    </div>
   </div>
-</div>
+</section>

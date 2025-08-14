@@ -22,13 +22,15 @@
               </h6>
             </li>
           {{/link}}
+          {{#if settings.status_page_url}}
           <li>
             <h6>
-              <a href="https://fzo.statuspage.io/">
+              <a href="{{settings.status_page_url}}">
               Status page
               </a>
             </h6>
           </li>
+          {{/if}}
           <li>
             <h6>
               <a href="{{settings.website}}">
