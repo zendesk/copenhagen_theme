@@ -6044,32 +6044,6 @@ code.hljs {
 .search-results-list > li:not(:last-of-type) {
   border-bottom: 1px solid #e2e8f0;
 }
-.search-results .no-results {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 4rem;
-}
-.search-results .no-results .headline {
-  color: #2F3941;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
-  letter-spacing: -0.45px;
-}
-.search-results .no-results .action-prompt {
-  color: #68737D;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.154px;
-}
-.search-results .no-results .action-prompt a {
-  color: #515ba5;
-}
-.search-results .no-results .action-prompt a:visited {
-  color: #515ba5;
-}
 
 .search-result-title-container {
   display: flex;
@@ -6143,6 +6117,20 @@ code.hljs {
   padding: 0 4px;
   color: #3a3879;
   font-weight: 800;
+}
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 32px;
+  margin-top: 16px;
+}
+.no-results .action-prompt a {
+  color: #515ba5;
+}
+.no-results .action-prompt a:visited {
+  color: #515ba5;
 }
 
 /* By default use bold instead of italic to highlight */

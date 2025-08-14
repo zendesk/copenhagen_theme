@@ -161,37 +161,6 @@
       }
     }
   }
-
-  .no-results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 4rem;
-
-    .headline {
-      color: #2F3941;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: -0.45px;
-    }
-
-    .action-prompt {
-      color: #68737D;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: -0.154px;
-
-      a {
-        color: $link_color;
-
-        &:visited {
-          color: $link_color;
-        }
-      }
-    }
-  }
 }
 
 .search-result {
@@ -287,6 +256,40 @@
       }
   }
 
+}
+
+
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: $padding;
+  margin-top: $gutter;
+
+//  .headline {
+//    color: #2F3941;
+//    font-weight: 400;
+//    font-size: 18px;
+//    line-height: 24px;
+//    letter-spacing: -0.45px;
+//  }
+
+  .action-prompt {
+//    color: #68737D;
+//    font-weight: 400;
+//    font-size: 14px;
+//    line-height: 20px;
+//    letter-spacing: -0.154px;
+
+    a {
+      color: $link_color;
+
+      &:visited {
+        color: $link_color;
+      }
+    }
+  }
 }
 
 /* By default use bold instead of italic to highlight */
