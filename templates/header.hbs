@@ -16,7 +16,9 @@
     <div class="nav-wrapper-desktop">
       <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
         <ul class="user-nav-list">
-          <li><a href="https://fzo.statuspage.io/">Status page</a></li>
+          {{#if settings.status_page_url}}
+          <li><a href="{{settings.status_page_url}}">Status page</a></li>
+          {{/if}}
           {{#unless user.agent}}
           <li>{{link 'new_request' class='submit-a-request'}}</li>
           {{/unless}}

@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.0.320",
+  "version": "1.0.321",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -32,6 +32,13 @@
           "type": "file",
           "description": "favicon_description",
           "label": "favicon_label"
+        },
+        {
+          "identifier": "status_page_url",
+          "type": "text",
+          "description": "Url to status page",
+          "label": "Status page URL",
+          "value": "https://status.smoothwall.com/"
         }
       ]
     },
