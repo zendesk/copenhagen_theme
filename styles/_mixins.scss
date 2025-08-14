@@ -182,9 +182,11 @@
  //   padding: 0 5px;
  //   margin: 0 2px;
  // 
-  background: $q-bg-backdrop;
-  color: $q-text-inverse-strong;
-  padding: $gutter;
+  background: $q-bg-subtle;
+  color: $q-text-strong;
+  padding: 0 $gutter/2;
+  display: inline-block;
+  border: 1px solid $q-bg-weaker;
   border-radius: 4px;
   }
 

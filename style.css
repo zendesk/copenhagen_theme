@@ -2546,9 +2546,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   padding: 16px;
 }
 .article-body :not(pre) > code {
-  background: #364255;
-  color: #ffffff;
-  padding: 16px;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 0 8px;
+  display: inline-block;
+  border: 1px solid #e2e8f0;
   border-radius: 4px;
 }
 .article-body pre {
@@ -3507,9 +3509,11 @@ code.hljs {
   padding: 16px;
 }
 .comment-body :not(pre) > code {
-  background: #364255;
-  color: #ffffff;
-  padding: 16px;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 0 8px;
+  display: inline-block;
+  border: 1px solid #e2e8f0;
   border-radius: 4px;
 }
 .comment-body pre {
@@ -4124,9 +4128,11 @@ code.hljs {
   padding: 16px;
 }
 .post-body :not(pre) > code {
-  background: #364255;
-  color: #ffffff;
-  padding: 16px;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 0 8px;
+  display: inline-block;
+  border: 1px solid #e2e8f0;
   border-radius: 4px;
 }
 .post-body pre {
@@ -4916,9 +4922,11 @@ code.hljs {
   padding: 16px;
 }
 .activities-body :not(pre) > code {
-  background: #364255;
-  color: #ffffff;
-  padding: 16px;
+  background: #f1f5f9;
+  color: #0f172a;
+  padding: 0 8px;
+  display: inline-block;
+  border: 1px solid #e2e8f0;
   border-radius: 4px;
 }
 .activities-body pre {
