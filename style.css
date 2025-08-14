@@ -300,9 +300,6 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
 }
-body > main {
-  background-color: #f1f5f9;
-}
 @media (min-width: 1024px) {
   body > main {
     min-height: 65vh;
