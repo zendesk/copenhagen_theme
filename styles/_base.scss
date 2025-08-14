@@ -103,8 +103,12 @@ a {
   }
 
   &[target="_blank"]::after {
-    content: "\f08e";
+    content: " \f08e";
     font-family: 'Font Awesome 6 Pro';
+    font-size: .6em;
+    vertical-align: super;
+    line-height: 0;
+    
   }
 }
 

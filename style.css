@@ -383,8 +383,11 @@ a:hover, a:active, a:focus {
   text-decoration: none;
 }
 a[target=_blank]::after {
-  content: "\f08e";
+  content: " \f08e";
   font-family: "Font Awesome 6 Pro";
+  font-size: 0.6em;
+  vertical-align: super;
+  line-height: 0;
 }
 
 .hbs-form input,
