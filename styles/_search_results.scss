@@ -150,6 +150,10 @@
 
   &-subheading {
     @extend h3;
+
+    a, a:visited {
+      color: $link_color;
+    }
   }
 
   &-list {

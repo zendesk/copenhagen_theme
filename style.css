@@ -6035,6 +6035,9 @@ code.hljs {
 .search-results-sidebar .see-all-filters[aria-hidden=true] {
   display: none;
 }
+.search-results-subheading a, .search-results-subheading a:visited {
+  color: #515ba5;
+}
 .search-results-list {
   margin-bottom: 25px;
 }
