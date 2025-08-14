@@ -382,6 +382,10 @@ a:visited {
 a:hover, a:active, a:focus {
   text-decoration: none;
 }
+a[target=_blank]::after {
+  content: "\f08e";
+  font-family: "Font Awesome 6 Pro";
+}
 
 .hbs-form input,
 .hbs-form textarea, .search input,

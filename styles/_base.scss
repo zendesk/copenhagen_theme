@@ -101,6 +101,11 @@ a {
   &:focus {
     text-decoration: none;
   }
+
+  &[target="_blank"]::after {
+    content: "\f08e";
+    font-family: 'Font Awesome 6 Pro';
+  }
 }
 
 // p:last-child {
