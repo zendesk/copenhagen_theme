@@ -1629,6 +1629,9 @@ ul {
   color: #0f172a;
   right: 1em;
 }
+[dir=ltr] .search.search-has-value::after {
+  content: "";
+}
 [dir=rtl] .search::before {
   content: "\f002";
   font-family: "Font Awesome 6 Pro";

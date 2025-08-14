@@ -103,6 +103,10 @@ $input-background: $background-subtle;
       right: 1em;
   }
 
+  [dir="ltr"] &.search-has-value::after {
+    content: "";
+  }
+
   [dir="rtl"] &::before {
       content: "\f002";
       font-family: 'Font Awesome 6 Pro';
