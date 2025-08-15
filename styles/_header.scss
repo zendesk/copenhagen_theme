@@ -37,6 +37,8 @@ $header-height: 71px;
   color: $text_color;
   font-weight: 500;
   display: none;
+  white-space: nowrap;
+
   @include tablet {
     font-size: 22px;
     color: $text_color;
