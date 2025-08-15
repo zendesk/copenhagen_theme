@@ -1115,6 +1115,7 @@ ul {
   color: #0f172a;
   font-weight: 500;
   display: none;
+  white-space: nowrap;
 }
 @media (min-width: 768px) {
   .logo span {
