@@ -64,7 +64,7 @@
     {{/if}}
 
 
-    <section class="section bg-subtle">
+    <section class="section {{#if promoted_articles}}bg-subtle{{/if}}">
       <div class="container knowledge-base categories">
         <!-- categories -->
         {{#if settings.categories_title}}
@@ -76,7 +76,7 @@
           {{#each categories}}
           {{#if ../has_multiple_categories}}
           <div class="single-category">
-            <div class="category-thumbnail bg-neutral">
+            <div class="category-thumbnail {{#if promoted_articles}}bg-neutral{{else}}bg-subtle{{/if}}">
               <div class="category-icon">
                 <img src="{{../settings.category_icon}}">
               </div>
@@ -91,7 +91,7 @@
           {{else}}
           {{#each sections}}
           <div class="category-container">
-            <div class="category-thumbnail bg-neutral">
+            <div class="category-thumbnail {{#if promoted_articles}}bg-neutral{{else}}bg-subtle{{/if}}">
               <div class="category-icon">
                 <img src="{{../../settings.category_icon}}">
               </div>
@@ -112,7 +112,7 @@
     </section>
 
 
-    <section class="section">
+    <section class="section {{#unless promoted_articles}}bg-subtle{{/unless}}">
       <div class="container knowledge-base promoted-products">
         <!-- other knowledge bases -->
         <h2>Help with other Qoria products</h2>
