@@ -15,6 +15,13 @@
   }
 }
 
+
+.subcategories {
+  padding-bottom: 60px;
+  padding-top: 0px;
+}
+
+
 .section-tree {
   @include tablet { flex-direction: row; }
   display: flex;

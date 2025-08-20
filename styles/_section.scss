@@ -26,6 +26,22 @@
 }
 
 
+#main-content .section:nth-of-type(even) {
+  background-color: $background-subtle;
+
+  .category-thumbnail {
+    background-color: $background-neutral;
+  }
+}
+#main-content .section:nth-of-type(odd) {
+  background-color: $background-neutral;
+
+  .category-thumbnail {
+    background-color: $background-subtle;
+  }
+}
+
+
 
 .section-list {
   margin: 40px 0;

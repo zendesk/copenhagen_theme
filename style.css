@@ -2270,6 +2270,11 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
   }
 }
 
+.subcategories {
+  padding-bottom: 60px;
+  padding-top: 0px;
+}
+
 .section-tree {
   display: flex;
   flex-direction: column;
@@ -2334,6 +2339,20 @@ section.hero .hero-faqs .hero-faqs-inner ul li h5, section.hero .hero-faqs .hero
 }
 .section-merged ~ .section-merged {
   padding-top: 0;
+}
+
+#main-content .section:nth-of-type(even) {
+  background-color: #f1f5f9;
+}
+#main-content .section:nth-of-type(even) .category-thumbnail {
+  background-color: #ffffff;
+}
+
+#main-content .section:nth-of-type(odd) {
+  background-color: #ffffff;
+}
+#main-content .section:nth-of-type(odd) .category-thumbnail {
+  background-color: #f1f5f9;
 }
 
 .section-list {

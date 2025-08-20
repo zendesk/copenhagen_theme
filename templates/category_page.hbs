@@ -23,9 +23,9 @@
 
 <div id="main-content">
   <!-- subcategories -->
-  {{#each sections}}
-    {{#if articles}}
-      <section class="section section-merged">
+  <section class="section">
+    {{#each sections}}
+      {{#if articles}}
         <div class="container knowledge-base subcategories">
           <h2><a href="{{url}}">{{name}}</a></h2>
           <div class="categories-list row row-cols-md-3">
@@ -54,8 +54,8 @@
             {{/if}}
           </div>
         </div>
-      </section>
-    {{/if}}
-  {{else}}
-  {{/each}}
+      {{/if}}
+    {{else}}
+    {{/each}}
+  </section>
 </div>
