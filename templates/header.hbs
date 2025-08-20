@@ -24,7 +24,7 @@
           {{/unless}}
           {{#unless signed_in}}
             <li>
-              {{link "sign_in" class="sign-in"}}
+              {{#link "sign_in" class="sign-in"}}Sign in{{/link}}
             </li>
           {{/unless}}
           {{#if signed_in}}
