@@ -23,9 +23,7 @@
           <li>{{link 'new_request' class='submit-a-request'}}</li>
           {{/unless}}
           {{#unless signed_in}}
-            <li>
-              {{#link 'sign_in' class="sign-in"}}Sign in{{/link}}
-            </li>
+            <li><a href="{{page_path 'sign_in'}}">Sign in</a></li>
           {{/unless}}
           {{#if signed_in}}
             <li class="dropdown">
