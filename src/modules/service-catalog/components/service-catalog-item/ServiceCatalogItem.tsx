@@ -8,10 +8,17 @@ import type { ServiceRequestResponse } from "../../data-types/ServiceRequestResp
 import { addFlashNotification } from "../../../shared";
 import { useTranslation } from "react-i18next";
 import { useNotify } from "../../../shared/notifications/useNotify";
+import { Anchor } from "@zendeskgarden/react-buttons";
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const StyledNotificationLink = styled(Anchor)`
+  text-decoration: underline;
+  display: block;
+  margin-top: ${(props) => props.theme.space.xxs}px;
 `;
 
 export interface ServiceCatalogItemProps {
@@ -71,6 +78,37 @@ export function ServiceCatalogItem({
       if (response?.status === 422) {
         const errorData: ServiceRequestResponse = await response.json();
         const invalidFieldErrors = errorData.details.base;
+        const missingErrorFields = invalidFieldErrors.filter(
+          (errorField) =>
+            !requestFields.some((field) => field.id === errorField.field_key)
+        );
+
+        if (missingErrorFields.length > 0) {
+          notify({
+            type: "error",
+            title: t(
+              "service-catalog.item.service-request-error-title",
+              "Service couldn't be submitted"
+            ),
+            message: (
+              <>
+                {t(
+                  "service-catalog.item.service-request-refresh-message",
+                  "Refresh the page and try again in a few seconds."
+                )}{" "}
+                <StyledNotificationLink
+                  href={`${helpCenterPath}/services/${serviceCatalogItem.id}`}
+                >
+                  {t(
+                    "service-catalog.item.service-request-refresh-link-text",
+                    "Refresh the page"
+                  )}
+                </StyledNotificationLink>
+              </>
+            ),
+          });
+        }
+
         const updatedFields = requestFields.map((field) => {
           const errorField = invalidFieldErrors.find(
             (errorField) => errorField.field_key === field.id
