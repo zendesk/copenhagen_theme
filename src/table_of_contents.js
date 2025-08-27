@@ -21,14 +21,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ul.classList.add("collapsible-sidebar-body");
         tocContainer.appendChild(ul);
         headings.map((heading, index) => {
-            const id = heading.innerText.toLowerCase().replaceAll(" ", "_");
+            var id = "";
+            if (heading.id) {
+                id = heading.id;
+            } else {
+                id = heading.innerText.toLowerCase().replaceAll(" ", "_");
+                heading.setAttribute("id", id);
+            }
             var level = 1;
             if (heading.tagName == "H2") {
                 level = 1; 
             } else if (heading.tagName == "H3") {
                 level = 2;
             }
-            heading.setAttribute("id", id);
             var anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
             if (index === 0) {
                 anchorElement = `<a href="#${id}" class="toc-level-${level} active current">${heading.textContent}</a>`;
