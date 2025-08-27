@@ -229,9 +229,9 @@
                     <!--  <span class="meta-data">{{author.name}}</span> -->
                     {{/unless}}
                     {{#is edited_at created_at}}
-                    <span class="meta-data">{{date created_at}}</span>
+                    <span class="meta-data">Last updated {{date created_at}}</span>
                     {{else}}
-                    <span class="meta-data">{{date edited_at}}</span>
+                    <span class="meta-data">Last updated {{date edited_at}}</span>
                     {{/is}}
                   </div>
               </article>
