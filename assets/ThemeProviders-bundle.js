@@ -71,6 +71,21 @@ function createTheme(settings) {
           color: #2f3561;
         }
       `,
+            "dropdowns.combobox.trigger": Ne `
+            background-color: #f1f5f9;
+            border: 0;
+            border-radius: 0;
+
+        :hover,
+        :active,
+        :focus {
+          color: #2f3561;
+        }
+
+        &:visited {
+          color: #2f3561;
+        }
+      `,
         },
         fonts: {
             mono: "SFMono-Regular,Consolas,\"Liberation Mono\",Menlo,Courier,monospace",

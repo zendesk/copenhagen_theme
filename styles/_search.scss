@@ -186,6 +186,12 @@ $input-background: $background-subtle;
   &-full {
     grid-template-rows: [top] 1fr [bottom];
     grid-template-columns: [left] 1fr [right];
+    column-gap: 0;
+    row-gap: 0;
+    input[type="search"] {
+      column-gap: 0;
+      row-gap: 0;
+    }
   }
 
   &-transparent {
