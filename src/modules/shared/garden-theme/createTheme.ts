@@ -115,6 +115,11 @@ export function createTheme(settings: Settings): IGardenTheme {
             background-color: #d2dae5;
             }
       `,
+      'dropdowns.combobox.trigger': css`
+        background-color: #f1f5f9;
+        border: 0;
+        border-radius: 0;
+      `,
     },
   fonts: {
     mono: "SFMono-Regular,Consolas,\"Liberation Mono\",Menlo,Courier,monospace",
