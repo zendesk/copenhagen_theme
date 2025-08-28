@@ -7430,6 +7430,11 @@ function createTheme(settings) {
             background-color: #d2dae5;
             }
       `,
+            'dropdowns.combobox.trigger': Ne `
+        background-color: #f1f5f9;
+        border: 0;
+        border-radius: 0;
+      `,
         },
         fonts: {
             mono: "SFMono-Regular,Consolas,\"Liberation Mono\",Menlo,Courier,monospace",
