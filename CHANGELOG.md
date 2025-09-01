@@ -1,3 +1,13 @@
+## [4.8.6](https://github.com/zendesk/copenhagen_theme/compare/v4.8.5...v4.8.6) (2025-08-13)
+
+
+### Bug Fixes
+
+* approval details card theme color ([de0bd78](https://github.com/zendesk/copenhagen_theme/commit/de0bd78d1c6c5fbff0b73f550d5780f1e379dabb))
+* approval request page UI bugs ([0e8dfe0](https://github.com/zendesk/copenhagen_theme/commit/0e8dfe06c463aee0aadb05cce4271fd968eb968c))
+* remove unnecessary styling ([18f222f](https://github.com/zendesk/copenhagen_theme/commit/18f222f2c043e6f570984d006bc86fc7db4b1888))
+* tests ([23c4e43](https://github.com/zendesk/copenhagen_theme/commit/23c4e438d778af2961d96b661669614af4f36d66))
+
 ## [4.8.5](https://github.com/zendesk/copenhagen_theme/compare/v4.8.4...v4.8.5) (2025-07-30)
 
 

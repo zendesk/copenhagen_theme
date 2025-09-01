@@ -12,12 +12,23 @@ import ApprovalRequestPreviousDecision from "./ApprovalRequestPreviousDecision";
 
 const Container = styled(Grid)`
   padding: ${(props) => props.theme.space.base * 6}px; /* 24px */
-  background: ${(props) => getColorV8("grey", 100, props.theme)};
+  margin-left: 0;
+  background: ${(props) => getColorV8("background", 650, props.theme)};
   border-radius: ${(props) => props.theme.borderRadii.md}; /* 4px */
+  max-width: 296px;
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    max-width: 100%;
+  }
 `;
 
 const ApprovalRequestHeader = styled(MD)`
   margin-bottom: ${(props) => props.theme.space.base * 4}px; /* 16px */
+`;
+
+const WrappedText = styled(MD)`
+  white-space: normal;
+  overflow-wrap: break-word;
 `;
 
 const FieldLabel = styled(MD)`
@@ -29,6 +40,21 @@ const DetailRow = styled(Row)`
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.sm}) {
+    flex-direction: column; /* stack columns vertically */
+
+    > div {
+      width: 100% !important; /* full width for each Col */
+      max-width: 100% !important;
+      flex: none !important;
+      margin-bottom: ${(props) => props.theme.space.xxs}; /* 4px */
+    }
+
+    > div:last-child {
+      margin-bottom: 0;
+    }
   }
 `;
 
@@ -68,7 +94,7 @@ function ApprovalRequestDetails({
           </FieldLabel>
         </Col>
         <Col size={8}>
-          <MD>{approvalRequest.created_by_user.name}</MD>
+          <WrappedText>{approvalRequest.created_by_user.name}</WrappedText>
         </Col>
       </DetailRow>
       <DetailRow>
@@ -96,7 +122,7 @@ function ApprovalRequestDetails({
           </FieldLabel>
         </Col>
         <Col size={8}>
-          <MD>{approvalRequest.assignee_user.name}</MD>
+          <WrappedText>{approvalRequest.assignee_user.name}</WrappedText>
         </Col>
       </DetailRow>
       <DetailRow>
@@ -125,11 +151,11 @@ function ApprovalRequestDetails({
             </FieldLabel>
           </Col>
           <Col size={8}>
-            <MD>
+            <WrappedText>
               {approvalRequest.status === APPROVAL_REQUEST_STATES.WITHDRAWN
                 ? approvalRequest.withdrawn_reason
                 : approvalRequest.decisions[0]?.decision_notes ?? "-"}
-            </MD>
+            </WrappedText>
           </Col>
         </DetailRow>
       )}

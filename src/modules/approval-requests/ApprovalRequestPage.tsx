@@ -41,12 +41,6 @@ const LeftColumn = styled.div`
   & > *:last-child {
     margin-bottom: 0;
   }
-
-  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
-    flex: 1;
-    margin-inline-end: 0;
-    margin-bottom: ${(props) => props.theme.space.lg};
-  }
 `;
 
 const RightColumn = styled.div`
@@ -55,6 +49,24 @@ const RightColumn = styled.div`
 
   @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-start: 0;
+  }
+`;
+
+const ApproverActionsInLeft = styled.div`
+  display: block;
+  margin-top: ${(props) => props.theme.space.lg};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    display: none;
+  }
+`;
+
+const ApproverActionsBelowContainer = styled.div`
+  display: none;
+  margin-top: ${(props) => props.theme.space.lg};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
+    display: block;
   }
 `;
 
@@ -111,7 +123,19 @@ function ApprovalRequestPage({
           {approvalRequest?.ticket_details && (
             <ApprovalTicketDetails ticket={approvalRequest.ticket_details} />
           )}
+          {/* ApproverActions inside LeftColumn, shown on desktop */}
+          {showApproverActions && (
+            <ApproverActionsInLeft>
+              <ApproverActions
+                approvalWorkflowInstanceId={approvalWorkflowInstanceId}
+                approvalRequestId={approvalRequestId}
+                setApprovalRequest={setApprovalRequest}
+                assigneeUser={approvalRequest?.assignee_user}
+              />
+            </ApproverActionsInLeft>
+          )}
         </LeftColumn>
+
         <RightColumn>
           {approvalRequest && (
             <ApprovalRequestDetails
@@ -121,13 +145,17 @@ function ApprovalRequestPage({
           )}
         </RightColumn>
       </Container>
+
+      {/* ApproverActions below Container, shown on mobile/tablet */}
       {showApproverActions && (
-        <ApproverActions
-          approvalWorkflowInstanceId={approvalWorkflowInstanceId}
-          approvalRequestId={approvalRequestId}
-          setApprovalRequest={setApprovalRequest}
-          assigneeUser={approvalRequest?.assignee_user}
-        />
+        <ApproverActionsBelowContainer>
+          <ApproverActions
+            approvalWorkflowInstanceId={approvalWorkflowInstanceId}
+            approvalRequestId={approvalRequestId}
+            setApprovalRequest={setApprovalRequest}
+            assigneeUser={approvalRequest?.assignee_user}
+          />
+        </ApproverActionsBelowContainer>
       )}
     </>
   );
