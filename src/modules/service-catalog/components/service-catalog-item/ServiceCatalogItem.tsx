@@ -113,9 +113,7 @@ export function ServiceCatalogItem({
           const errorField = invalidFieldErrors.find(
             (errorField) => errorField.field_key === field.id
           );
-          return errorField
-            ? { ...field, error: errorField.description }
-            : field;
+          return { ...field, error: errorField?.description || null };
         });
         setRequestFields(updatedFields);
       } else {
