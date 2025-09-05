@@ -1,3 +1,10 @@
+## [4.9.1](https://github.com/zendesk/copenhagen_theme/compare/v4.9.0...v4.9.1) (2025-09-05)
+
+
+### Bug Fixes
+
+* fix: set error to null when it no longer exists in updateFields ([bcfc701](https://github.com/zendesk/copenhagen_theme/commit/bcfc7019847f4c2efa4cb946981ca1871230e57c))
+
 # [4.9.0](https://github.com/zendesk/copenhagen_theme/compare/v4.8.6...v4.9.0) (2025-09-01)
 
 
