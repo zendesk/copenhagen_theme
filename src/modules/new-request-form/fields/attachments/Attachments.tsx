@@ -13,7 +13,7 @@ import type { AttachmentField } from "../../data-types";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { notify } from "../../../shared";
 
 interface AttachmentProps {
   field: AttachmentField;
@@ -56,8 +56,6 @@ export function Attachments({
       value,
     })) ?? []
   );
-
-  const notify = useNotify();
   const { t } = useTranslation();
 
   const uploadFailedTitle = useCallback(
@@ -111,16 +109,13 @@ export function Attachments({
     [t, uploadFailedTitle]
   );
 
-  const notifyError = useCallback(
-    (title: string, errorMessage: string) => {
-      notify({
-        title,
-        message: errorMessage,
-        type: "error",
-      });
-    },
-    [notify]
-  );
+  const notifyError = useCallback((title: string, errorMessage: string) => {
+    notify({
+      title,
+      message: errorMessage,
+      type: "error",
+    });
+  }, []);
 
   const onDrop = useCallback(
     async (acceptedFiles: File[]) => {
