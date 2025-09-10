@@ -1,0 +1,32 @@
+
+import { render, screen, fireEvent } from "@testing-library/react";
+import { GlobalNotificationsProvider } from "./GlobalNotificationsProvider";
+import { useNotify } from "./hooks/useNotify";
+import type { INotificationProps } from "@zendeskgarden/react-notifications";
+
+const payload = {
+  title: "Integration Title",
+  message: "Integration Message",
+  type: "info" as INotificationProps["type"],
+};
+
+function TestTrigger() {
+  const notify = useNotify();
+  return <button data-testid="trigger" onClick={() => notify(payload)} />;
+}
+
+describe("GlobalNotificationsProvider", () => {
+  it("renders toast in DOM when notify() is called", async () => {
+    render(
+      <>
+        <GlobalNotificationsProvider />
+        <TestTrigger />
+      </>
+    );
+
+    fireEvent.click(screen.getByTestId("trigger"));
+
+    expect(await screen.findByText(payload.title)).toBeInTheDocument();
+    expect(await screen.findByText(payload.message)).toBeInTheDocument();
+  });
+});

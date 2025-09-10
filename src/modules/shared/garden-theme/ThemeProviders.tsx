@@ -14,9 +14,7 @@ export function ThemeProviders({
   return (
     <ThemeProvider theme={theme}>
       {/* ToastProvider z-index needs to be higher than the z-index of the admin navbar */}
-      <ToastProvider zIndex={2147483647}>
         <ModalContainerProvider>{children}</ModalContainerProvider>
-      </ToastProvider>
     </ThemeProvider>
   );
 }
