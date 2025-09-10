@@ -5,7 +5,7 @@ import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApproverActions from "./ApproverActions";
 
 const mockNotify = jest.fn();
-jest.mock("../../../shared/notifications/useNotify", () => ({
+jest.mock("../../../shared/notifications/hooks/useNotify", () => ({
   useNotify: () => mockNotify,
 }));
 

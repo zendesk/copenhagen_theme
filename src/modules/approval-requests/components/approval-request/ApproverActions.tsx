@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@zendeskgarden/react-buttons";
 import { Field, Label, Message, Textarea } from "@zendeskgarden/react-forms";
 import { Avatar } from "@zendeskgarden/react-avatars";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { useNotify } from "../../../shared/notifications/hooks/useNotify";
 import { submitApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalDecision } from "../../submitApprovalDecision";
 import type { ApprovalRequest } from "../../types";
