@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from "@testing-library/react";
 import { GlobalNotificationsProvider } from "./GlobalNotificationsProvider";
 import { useNotify } from "./hooks/useNotify";
