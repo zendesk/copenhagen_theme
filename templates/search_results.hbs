@@ -78,7 +78,7 @@
           {{#is current_filter.identifier 'community'}}
             <h3 class="collapsible-sidebar-title sidenav-title">{{t 'filter_by_topic'}}</h3>
           {{/is}}
-          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{t 'search_result_subfilter_menu'}}">
+          <button type="button" class="collapsible-sidebar-toggle" aria-expanded="false" aria-label="{{#is current_filter.identifier 'knowledge_base'}}{{t 'search_result_articles_menu'}}{{else}}{{#is current_filter.identifier 'community'}}{{t 'search_result_posts_menu'}}{{else}}{{t 'search_result_subfilter_menu'}}{{/is}}{{/is}}">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="collapsible-sidebar-toggle-icon chevron-icon">
               <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
             </svg>
