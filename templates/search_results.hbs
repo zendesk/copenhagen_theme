@@ -37,7 +37,9 @@
                 </a>
               </li>
             {{/each}}
-            <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_sources'}}">{{t 'show_more_sources'}}</button>
+            <li>
+              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_sources'}}">{{t 'show_more_sources'}}</button>
+            </li>
           </ul>
         </section>
       {{/if}}
@@ -98,10 +100,14 @@
               </li>
             {{/each}}
             {{#is current_filter.identifier 'knowledge_base'}}
-              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_categories'}}">{{t 'show_more_categories'}}</button>
+              <li>
+                <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_categories'}}">{{t 'show_more_categories'}}</button>
+              </li>
             {{/is}}
             {{#is current_filter.identifier 'community'}}
-              <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_topics'}}">{{t 'show_more_topics'}}</button>
+              <li>
+                <button class="see-all-filters" aria-hidden="true" aria-label="{{t 'show_more_topics'}}">{{t 'show_more_topics'}}</button>
+              </li>
             {{/is}}
           </ul>
         </section>
