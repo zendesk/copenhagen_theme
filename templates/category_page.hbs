@@ -26,37 +26,34 @@
   <section class="section">
     {{#each sections}}
     
-      {{#if sections}}
-        <div class="container knowledge-base subcategories">
-          <h2><a href="{{url}}">{{name}}</a></h2>
+      <div class="container knowledge-base subcategories">
+        <h2><a href="{{url}}">{{name}}</a></h2>
+        {{#if sections}}
           <div class="categories-list row row-cols-md-3">
-            {{#each sections}}
-              <div class="single-category">
-                <div class="category-thumbnail bg-subtle">
-                  <div class="category-icon">
-                    <img src="{{../../settings.promoted_icon}}">
-                  </div>
-                  <div class="category-copy">
-                    <a href="{{url}}" class="category-link">
-                      <span class="category-title">{{name}}</span>
-                      <span class="category-description">{{excerpt description}}</span>
-                    </a>
+              {{#each sections}}
+                <div class="single-category">
+                  <div class="category-thumbnail bg-subtle">
+                    <div class="category-icon">
+                      <img src="{{../../settings.promoted_icon}}">
+                    </div>
+                    <div class="category-copy">
+                      <a href="{{url}}" class="category-link">
+                        <span class="category-title">{{name}}</span>
+                        <span class="category-description">{{excerpt description}}</span>
+                      </a>
+                    </div>
                   </div>
                 </div>
-              </div>
-            {{/each}}
-            {{#if more_sections}}
-              <a href="{{url}}" class="see-all-articles">
-                Show all subcategories
-              </a>
-            {{/if}}
-          </div>
-        </div>
-      {{/if}}
+              {{/each}}
+              {{#if more_sections}}
+                <a href="{{url}}" class="see-all-articles">
+                  Show all subcategories
+                </a>
+              {{/if}}
+            </div>
+        {{/if}}
 
-      {{#if articles}}
-        <div class="container knowledge-base subcategories">
-          <h2><a href="{{url}}">{{name}}</a></h2>
+        {{#if articles}}
           <div class="categories-list row row-cols-md-3">
             {{#each articles}}
               <div class="single-category {{#if promoted}} article-promoted{{/if}}">
@@ -82,8 +79,9 @@
               </a>
             {{/if}}
           </div>
-        </div>
-      {{/if}}
+        {{/if}}
+          
+      </div>
     {{else}}
     {{/each}}
   </section>
