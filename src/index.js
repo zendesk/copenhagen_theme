@@ -1,5 +1,6 @@
 import "../styles/style.scss";
 
+import "./helpers";
 import "./navigation";
 import "./dropdowns";
 import "./share";
