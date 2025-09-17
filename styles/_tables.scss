@@ -53,9 +53,15 @@
       border-color: #fff;
     }
 
-    tbody tr:nth-child(even) {
-      color: inherit;
-      background-color: $q-bg-subtle;
+    tbody tr {
+      &:nth-child(even) {
+        color: inherit;
+        background-color: $q-bg-subtle;
+      }
+      &:nth-child(odd) {
+        color: inherit;
+        background-color: $q-bg-neutral;
+      }
     }
   }
 
