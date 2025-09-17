@@ -37,6 +37,9 @@
                 <div class="category-copy">
                   <a href="{{url}}" class="category-link">
                     <span class="category-title">{{name}}</span>
+                    {{#if description}}
+                      <span class="category-description">{{excerpt description}}</span>
+                    {{/if}}
                   </a>
                 </div>
               </div>
