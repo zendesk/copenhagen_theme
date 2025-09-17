@@ -1,13 +1,6 @@
 (function () {
   'use strict';
 
-  Handlebars.registerHelper('ifOr', function(a, b, options) {
-    if (a || b) {
-      return options.fn(this);
-    }
-    return options.inverse(this);
-  });
-
   // Key map
   const ENTER = 13;
   const ESCAPE = 27;
