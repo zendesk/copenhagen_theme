@@ -1,7 +1,7 @@
 {
   "name": "Qoria",
   "author": "Katie Sutcliffe",
-  "version": "1.1.20",
+  "version": "1.1.21",
   "api_version": 4,
   "default_locale": "en-us",
   "settings": [
@@ -39,6 +39,20 @@
           "description": "Url to status page",
           "label": "Status page URL",
           "value": "https://status.smoothwall.com/"
+        },
+        {
+          "identifier": "header_link_1_url",
+          "type": "text",
+          "description": "Url to header link 1",
+          "label": "Header link 1 URL",
+          "value": ""
+        },
+        {
+          "identifier": "header_link_1_label",
+          "type": "text",
+          "description": "Label to header link 1",
+          "label": "Header link 1 label",
+          "value": ""
         }
       ]
     },

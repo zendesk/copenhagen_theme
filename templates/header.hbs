@@ -16,6 +16,13 @@
     <div class="nav-wrapper-desktop">
       <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
         <ul class="user-nav-list">
+          {{#if settings.header_link_1_url}}
+            {{#if settings.header_link_1_label}}
+              <li><a href="{{settings.header_link_1_url}}">{{settings.header_link_1_label}}</a></li>
+            {{/if}}
+          {{/if}}
+          <li><a href="{{settings.status_page_url}}">Status page</a></li>
+          {{/if}}
           {{#if settings.status_page_url}}
           <li><a href="{{settings.status_page_url}}">Status page</a></li>
           {{/if}}
