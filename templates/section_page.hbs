@@ -27,6 +27,7 @@
   {{#if section.sections}}
     <section class="section bg-neutral">
       <div class="container knowledge-base subcategories">
+        <h2>Subcategories</h2>
         <div class="categories-list row row-cols-md-3">
           {{#each section.sections}}
             <div class="single-category">
@@ -54,6 +55,7 @@
   {{#if section.articles}}
     <section class="section">
       <div class="container knowledge-base subcategories">
+        <h2>Articles</h2>
         <div class="categories-list row row-cols-md-3">
           {{#each section.articles}}
             <div class="single-category {{#if promoted}} article-promoted{{/if}}">
