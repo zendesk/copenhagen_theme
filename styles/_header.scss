@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 /***** Header *****/
 $header-height: 71px;
 
@@ -28,6 +30,10 @@ $header-height: 71px;
   width: 100%;
   padding-top: $gutter;
   padding-bottom: $gutter;
+  &.shrink {
+    padding-top: math.div($gutter, 2);
+    padding-bottom: math.div($gutter, 2);
+  }
 }
 
 .logo img {

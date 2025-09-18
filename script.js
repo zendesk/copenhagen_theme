@@ -75,6 +75,18 @@
         });
       }
     });
+
+  });
+
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('header-inner');
+    const scrollThreshold = 200; 
+
+    if (window.scrollY > scrollThreshold) {
+      navbar.classList.add('shrink');
+    } else {
+      navbar.classList.remove('shrink');
+    }
   });
 
   const isPrintableChar = (str) => {
