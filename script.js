@@ -79,7 +79,7 @@
   });
 
   window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('header-inner');
+    const navbar = document.getElementById('headerInner');
     const scrollThreshold = 200; 
 
     if (window.scrollY > scrollThreshold) {
