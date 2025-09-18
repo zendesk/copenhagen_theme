@@ -336,7 +336,7 @@ $header-height: 71px;
 // announcements
 
 
-.announcement-box {
+.announcement {
   background: $q-bg-subtle;
   position: relative;
   z-index: 9999;
@@ -345,10 +345,43 @@ $header-height: 71px;
   font-size: $font-size-small;
   padding: 8px 16px;
   color: $text_color;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.announcement-title {
+  font-weight: bolder;
+  margin-right: 8px;
+}
+
+.announcement-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    @include mobile {
+      flex-direction: row;
+    }
 }
 
 .announcement p {
     margin: 0;
+}
+
+.announcement-close {
+  margin-left: 1em;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  text-align: initial;
+  vertical-align: middle;
+  justify-self: flex-end;
 }
 
 
