@@ -89,53 +89,42 @@
     }
   });
 
-  // MW-Notification Banner
+  // announcement
   document.addEventListener('DOMContentLoaded', async function () {
-    // Article label to be considered for the alerts
-    const label = 'alert';
 
-    // Get current help center locale
-    const locale = document
-      .querySelector('html')
-      .getAttribute('lang')
-      .toLowerCase();
-
-    // URL to be called to get the alert data
+    const label = 'announcement';
+    const locale = document.querySelector('html').getAttribute('lang').toLowerCase();
     const url = `/api/v2/help_center/${locale}/articles.json?label_names=${label}`;
-
-    // Raw data collected from the endpoint above
     const data = await (await fetch(url)).json();
-
-    // List of articles returned
     const articles = (data && data.articles) || [];
 
-    // Handle returned articles
     for (let i = 0; i < articles.length; i++) {
       const url = articles[i].html_url;
       const title = articles[i].title;
       const body = articles[i].body;
 
       const html = `
-      <div class="ns-box ns-bar ns-effect-slidetop ns-type-notice ns-show">
-        <div class="ns-box-inner">
-          <span class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg;"></span>
+      <div class="announcement-box">
+        <div class="announcement-inner">
+          <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
           <p>
             <a href="${url}">${title}</a>
             ${body }
           </p>
         </div>
-        <span class="ns-close"></span>
+        
+        <button type="button" aria-label="Close" class="announcement-close">
+          <i focusable="false" aria-hidden="true" class="x-icon far fa-times"></i>
+        </button>
       </div>
     `;
 
-      // Append current alert to the alertbox container
       document.querySelector('.announcement').insertAdjacentHTML('beforeend', html);
     }
   });
 
   document.addEventListener('click', function (event) {
-    // Close alertbox
-    if (event.target.matches('.ns-close')) {
+    if (event.target.matches('.announcement-close')) {
       event.preventDefault();
       event.target.parentElement.remove();
     }

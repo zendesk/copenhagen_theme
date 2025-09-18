@@ -335,11 +335,22 @@ $header-height: 71px;
 
 // announcements
 
-/*MW-Notificaiton Banner CSS */
-/* Common, default styles for the notification box */
 
-/* change the background color by editing "background"  */
-/* change the text color by editing "color"  */
+.announcement-box {
+  background: $q-bg-subtle;
+  position: relative;
+  z-index: 9999;
+  text-align: center;
+  border-bottom: 1px solid #ebebeb;
+  font-size: $font-size-small;
+  padding: 8px 16px;
+  color: $text_color;
+}
+
+
+/*
+
+
 .ns-box {
 	position: relative;
 	background: rgba(192, 57, 43,0.85);
@@ -423,15 +434,13 @@ $header-height: 71px;
 .ns-box-inner i {
     color: #fff;
     font-size: 3.8em;
-}
+} 
 
-.megaphone:before {
-  content:'\1F4E3';
-  font-family: "entypo";
-  font-size: 2.2em;
-}
+*/
 
 /* Top bar notifications */
+
+/*
 .ns-box.ns-bar {
 	top: 0;
 	left: 0;
@@ -458,8 +467,12 @@ $header-height: 71px;
 }
 
 
+*/
+
 
 /* Slide on top */
+
+/*
 .ns-effect-slidetop {
 	box-shadow: inset 5.4em 0 rgba(0,0,0,0.1);
 }
@@ -535,3 +548,5 @@ $header-height: 71px;
 	0% { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
 	100% { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
 }
+
+*/
