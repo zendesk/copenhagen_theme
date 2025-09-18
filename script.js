@@ -104,14 +104,15 @@
       const body = articles[i].body;
 
       const html = `
-      <div class="announcement-box">
+      <div class="announcement">
+        <div class="spacer"></div>
+        
         <div class="announcement-inner">
-          <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
-          
+          <span class="announcement-title">
+            <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
+            <a href="${url}">${title}</a>
+          </span>
           <div class="announcement-body">
-            <span class="announcement-title">
-              <a href="${url}">${title}</a>
-            </span>
             ${body }
           </div>
         </div>
@@ -122,7 +123,7 @@
       </div>
     `;
 
-      document.querySelector('.announcement').insertAdjacentHTML('beforeend', html);
+      document.querySelector('.announcements-container').insertAdjacentHTML('beforeend', html);
     }
   });
 
