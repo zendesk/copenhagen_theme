@@ -29,7 +29,8 @@ $header-height: 71px;
   justify-content: space-between;
   width: 100%;
   padding-top: $gutter;
-  padding-bottom: $gutter;
+  padding-bottom: $gutter;    
+  transition: padding-top 300ms, padding-bottom 300ms;
   &.shrink {
     padding-top: math.div($gutter, 2);
     padding-bottom: math.div($gutter, 2);
