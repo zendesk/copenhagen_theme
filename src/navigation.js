@@ -103,10 +103,13 @@ document.addEventListener('DOMContentLoaded', async function () {
       <div class="announcement-box">
         <div class="announcement-inner">
           <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
-          <p>
-            <a href="${url}">${title}</a>
+          
+          <div class="announcement-body">
+            <span class="announcement-title">
+              <a href="${url}">${title}</a>
+            </span>
             ${showArticleBody ? body : ''}
-          </p>
+          </div>
         </div>
         
         <button type="button" aria-label="Close" class="announcement-close">
