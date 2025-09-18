@@ -331,3 +331,207 @@ $header-height: 71px;
 #zd-modal-container ~ .skip-navigation {
   display: none;
 }
+
+
+// announcements
+
+/*MW-Notificaiton Banner CSS */
+/* Common, default styles for the notification box */
+
+/* change the background color by editing "background"  */
+/* change the text color by editing "color"  */
+.ns-box {
+	position: relative;
+	background: rgba(192, 57, 43,0.85);
+	padding: 10px 20px 20px 20px;
+	line-height: 1.4;
+	z-index: 1000;
+	pointer-events: none;
+	color: rgba(250,251,255,0.95);
+	font-size: 85%;
+  border-bottom: 1px solid #DDD;
+}
+
+.ns-box.ns-show {
+	pointer-events: auto;
+}
+
+.ns-box a {
+	color: inherit;
+  opacity: 0.7;
+	font-weight: 700;
+}
+
+.ns-box a:hover,
+.ns-box a:focus {
+	opacity: 1;
+}
+
+.ns-box p {
+    margin: 0;
+}
+
+.ns-box.ns-show,
+.ns-box.ns-visible {
+	pointer-events: auto;
+}
+
+.ns-close {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	right: 4px;
+	top: 4px;
+	overflow: hidden;
+	text-indent: 100%;
+	cursor: pointer;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.ns-close:hover,
+.ns-close:focus {
+	outline: none;
+}
+
+.ns-close::before,
+.ns-close::after {
+	content: '';
+	position: absolute;
+	width: 3px;
+	height: 60%;
+	top: 50%;
+	left: 50%;
+	background: #6e6e6e;
+}
+
+.ns-close:hover::before,
+.ns-close:hover::after {
+	background: #fff;
+}
+
+.ns-close::before {
+	-webkit-transform: translate(-50%,-50%) rotate(45deg);
+	transform: translate(-50%,-50%) rotate(45deg);
+}
+
+.ns-close::after {
+	-webkit-transform: translate(-50%,-50%) rotate(-45deg);
+	transform: translate(-50%,-50%) rotate(-45deg);
+}
+
+.ns-box-inner i {
+    color: #fff;
+    font-size: 3.8em;
+}
+
+.megaphone:before {
+  content:'\1F4E3';
+  font-family: "entypo";
+  font-size: 2.2em;
+}
+
+/* Top bar notifications */
+.ns-box.ns-bar {
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.ns-bar .ns-close {
+	background: transparent;
+	margin-top: 15px;
+	right: 20px;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.ns-bar .ns-close::before,
+.ns-bar .ns-close::after {
+	background: #b7b5b3;
+}
+
+[class^="ns-effect-"].ns-bar.ns-hide,
+[class*=" ns-effect-"].ns-bar.ns-hide {
+	-webkit-animation-direction: reverse;
+	animation-direction: reverse;
+}
+
+
+
+/* Slide on top */
+.ns-effect-slidetop {
+	box-shadow: inset 5.4em 0 rgba(0,0,0,0.1);
+}
+
+.ns-effect-slidetop .icon {
+	position: absolute;
+	display: block;
+	font-size: 109%;
+	top: 50%;
+	left: 1em;
+	-webkit-transform: translate3d(0,-20%,0);
+	transform: translate3d(0,-20%,0);
+}
+
+.ns-effect-slidetop p {
+	padding: 0 3.2em;
+	font-size: 1.2em;
+	display: inline-block;
+}
+
+.ns-effect-slidetop .ns-close::before,
+.ns-effect-slidetop .ns-close::after {
+	width: 2px;
+	background: #fff;
+}
+
+.ns-effect-slidetop .ns-close:hover::before,
+.ns-effect-slidetop .ns-close:hover::after {
+	background: #fff;
+}
+
+.ns-effect-slidetop.ns-show .icon,
+.ns-effect-slidetop.ns-show p {
+	-webkit-animation-name: animScaleUp;
+	animation-name: animScaleUp;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.ns-effect-slidetop.ns-show p {
+	-webkit-animation-name: animFade;
+	animation-name: animFade;
+}
+
+@-webkit-keyframes animScaleUp {
+	0% { opacity: 0; -webkit-transform: translate3d(0,-50%,0) scale3d(0,0,1); }
+	100% { opacity: 1; -webkit-transform: translate3d(0,-50%,0) scale3d(1,1,1); }
+}
+
+@keyframes animScaleUp {
+	0% { opacity: 0; -webkit-transform: translate3d(0,-50%,0) scale3d(0,0,1); transform: translate3d(0,-50%,0) scale3d(0,0,1); }
+	100% { opacity: 1; -webkit-transform: translate3d(0,-50%,0) scale3d(1,1,1); transform: translate3d(0,-50%,0) scale3d(1,1,1); }
+}
+
+.ns-effect-slidetop.ns-show,
+.ns-effect-slidetop.ns-hide {
+	-webkit-animation-name: animSlideTop;
+	animation-name: animSlideTop;
+	-webkit-animation-duration: 0.3s;
+	animation-duration: 0.3s;
+}
+
+@-webkit-keyframes animSlideTop {
+	0% { -webkit-transform: translate3d(0,-100%,0); }
+	100% { -webkit-transform: translate3d(0,0,0); }
+}
+
+@keyframes animSlideTop {
+	0% { -webkit-transform: translate3d(0,-100%,0); transform: translate3d(0,-100%,0); }
+	100% { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); }
+}
