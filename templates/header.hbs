@@ -1,4 +1,5 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
+<div class="announcements-container"></div>
 {{#if settings.banner_message}}
 <div class="announcements-container">
 
@@ -7,7 +8,7 @@
     
     <div class="announcement-inner">
         <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
-        {{settings.banner_message}}
+        <div class="" data-html="{{settings.banner_message}}"></div>
     </div>
     
     <button type="button" aria-label="Close" class="announcement-close">

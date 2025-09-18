@@ -84,8 +84,44 @@ window.addEventListener('scroll', function() {
   }
 });
 
+// announcement
+document.addEventListener('DOMContentLoaded', async function () {
 
-// closes announcement bar
+  const label = 'announcement';
+  const showArticleBody = true;
+  const locale = document.querySelector('html').getAttribute('lang').toLowerCase();
+  const url = `/api/v2/help_center/${locale}/articles.json?label_names=${label}`;
+  const data = await (await fetch(url)).json();
+  const articles = (data && data.articles) || [];
+
+  for (let i = 0; i < articles.length; i++) {
+    const url = articles[i].html_url;
+    const title = articles[i].title;
+    const body = articles[i].body;
+
+    const html = `
+      <div class="announcement">
+        <div class="spacer"></div>
+        
+        <div class="announcement-inner">
+          <span class="announcement-title">
+            <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
+            <a href="${url}">${title}</a>
+          </span>
+          <div class="announcement-body">
+            ${showArticleBody ? body : ''}
+          </div>
+        </div>
+        
+        <button type="button" aria-label="Close" class="announcement-close">
+          <i focusable="false" aria-hidden="true" class="x-icon far fa-times"></i>
+        </button>
+      </div>
+    `
+
+    document.querySelector('.announcements-container').insertAdjacentHTML('beforeend', html)
+  }
+})
 
 document.addEventListener('click', function (event) {
   if (event.target.matches('.announcement-close')) {
