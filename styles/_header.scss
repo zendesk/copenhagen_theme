@@ -10,15 +10,24 @@ $header-height: 71px;
 }
 
 .header-inner {
-  @include max-width-container;
+  // @include max-width-container;
+
   --gutter-x: #{$gutter};
   --gutter-y: 0;
+  
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding-right: calc(var(--gutter-x) * .5);
+  padding-left: calc(var(--gutter-x) * .5);
+
   position: relative;
   align-items: center;
   display: flex;
-  height: $header-height;
+//  height: $header-height;
   justify-content: space-between;
   width: 100%;
+  padding-top: $gutter;
+  padding-bottom: $gutter;
 }
 
 .logo img {
