@@ -337,7 +337,7 @@ $header-height: 71px;
 
 
 .announcement {
-  background: $q-bg-subtle;
+  background: #f8f8f8;
   position: relative;
   z-index: 9999;
   text-align: center;
@@ -360,9 +360,9 @@ $header-height: 71px;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     @include mobile {
-      flex-direction: row;
+      flex-direction: column;
     }
 }
 

@@ -1374,7 +1374,7 @@ ul {
 }
 
 .announcement {
-  background: #f1f5f9;
+  background: #f8f8f8;
   position: relative;
   z-index: 9999;
   text-align: center;
@@ -1397,11 +1397,11 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 @media (max-width: 768px) {
   .announcement-inner {
-    flex-direction: row;
+    flex-direction: column;
   }
 }
 
