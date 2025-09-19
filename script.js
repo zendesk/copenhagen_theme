@@ -125,13 +125,16 @@
 
       document.querySelector('.announcements-container').insertAdjacentHTML('beforeend', html);
     }
-  });
 
-  document.addEventListener('click', function (event) {
-    if (event.target.matches('.announcement-close')) {
-      event.preventDefault();
-      event.target.parentElement.remove();
-    }
+    document.addEventListener('click', function (event) {
+      if (event.target.matches('.announcement-close')) {
+        console.log("close clicked");
+        event.preventDefault();
+        event.target.parentElement.remove();
+        console.log("closed");
+      }
+    });
+
   });
 
   const isPrintableChar = (str) => {
