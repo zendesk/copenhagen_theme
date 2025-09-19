@@ -122,14 +122,14 @@ document.addEventListener('DOMContentLoaded', async function () {
     document.querySelector('.announcements-container').insertAdjacentHTML('beforeend', html)
   }
 
+})
+
+
   document.addEventListener('click', function (event) {
-    if (event.target.matches('.announcement-close')) {
+    if (event.target.closest('.announcement-close')) {
       console.log("close clicked");
       event.preventDefault();
-      event.target.parentElement.remove();
+      event.target.closest('.announcement-close').parentElement.remove();
       console.log("closed");
     }
   })
-
-})
-
