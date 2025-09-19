@@ -1,23 +1,5 @@
 <a class="skip-navigation" tabindex="1" href="#main-content">{{t 'skip_navigation' }}</a>
 <div class="announcements-container"></div>
-{{!-- {{#if settings.banner_message}} }}
-<div class="announcements-container">
-
-  <div class="announcement">
-    <div class="spacer"></div>
-    
-    <div class="announcement-inner">
-        <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
-        <div class="" data-html="{{settings.banner_message}}"></div>
-    </div>
-    
-    <button type="button" aria-label="Close" class="announcement-close">
-      <i focusable="false" aria-hidden="true" class="x-icon far fa-times"></i>
-    </button>
-  </div>
-
-</div>
-{{/if}} --}}
 <header class="header">
   <div class="header-inner" id="headerInner">
     <div class="logo">
@@ -132,6 +114,11 @@
       </button>
       <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
         <ul class="menu-list-mobile-items">
+          {{#if settings.header_link_1_url}}
+            {{#if settings.header_link_1_label}}
+              <li><a href="{{settings.header_link_1_url}}">{{settings.header_link_1_label}}</a></li>
+            {{/if}}
+          {{/if}}
           {{#if signed_in}}
             <li class="user-avatar-item item">
               {{#my_profile role="menuitem" class="my-profile"}}

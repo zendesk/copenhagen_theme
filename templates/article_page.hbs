@@ -138,14 +138,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
           <div class="article-footer">
             {{#if settings.show_article_sharing}}
               <div class="article-share">
-                <h4 class="share-header">Share this article</h4>
+                <h4 class="share-header no-toc">Share this article</h4>
                 {{share}}
               </div>
             {{/if}}
 
             {{#with article}}
               <div class="article-votes">
-                <h4 class="article-votes-question" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
+                <h4 class="article-votes-question no-toc" id="article-votes-label">{{t 'was_this_article_helpful'}}</h4>
                 <div class="article-votes-controls" role="group" aria-labelledby="article-votes-label">
                   {{vote 'up' class='button article-vote article-vote-up' selected_class="article-vote-voted"}}
                   {{vote 'down' class='button article-vote article-vote-down' selected_class="article-vote-voted"}}
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             {{#if settings.show_article_cta}}
               <div class="article-cta">
                 {{#if settings.article_cta_heading}}
-                <h3>{{settings.article_cta_heading}}</h3>
+                <h3 class="no-toc">{{settings.article_cta_heading}}</h3>
                 {{/if}}
                 {{#if settings.article_cta_body}}
                 <p>{{settings.article_cta_body}}</p>
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                       </div>
                       <div class="comment-container">
                         <div class="comment-head">
-                          <h5 class="comment-author">{{author.name}}</h5>
+                          <h5 class="comment-author no-toc">{{author.name}}</h5>
                           <p class="comment-date">{{date created_at}}</p>
                         </div>
                         <div class="comment-body">{{body}}</div>

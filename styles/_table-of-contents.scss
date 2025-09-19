@@ -7,8 +7,6 @@
   padding: $gutter;
   padding-bottom: 0;
 
-  
-
   @include desktop {
     padding: $padding;
   }
@@ -37,6 +35,10 @@
 
       &.toc-level-2 {
         padding-left: 32px;
+      }
+
+      &.toc-level-3 {
+        padding-left: 48px;
       }
     }
   }

@@ -4768,6 +4768,9 @@ code.hljs {
 .table-of-contents-container li a.toc-level-2, .search-results-sidebar li a.toc-level-2, .activity-filter-container li a.toc-level-2, .request-filter-container li a.toc-level-2 {
   padding-left: 32px;
 }
+.table-of-contents-container li a.toc-level-3, .search-results-sidebar li a.toc-level-3, .activity-filter-container li a.toc-level-3, .request-filter-container li a.toc-level-3 {
+  padding-left: 48px;
+}
 
 /***** My activities *****/
 .my-activities-nav {
