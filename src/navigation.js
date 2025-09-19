@@ -88,14 +88,12 @@ window.addEventListener('scroll', function() {
 document.addEventListener('DOMContentLoaded', async function () {
 
   const label = 'announcement';
-  const showArticleBody = true;
   const locale = document.querySelector('html').getAttribute('lang').toLowerCase();
   const url = `/api/v2/help_center/${locale}/articles.json?label_names=${label}`;
   const data = await (await fetch(url)).json();
   const articles = (data && data.articles) || [];
 
   for (let i = 0; i < articles.length; i++) {
-    const url = articles[i].html_url;
     const title = articles[i].title;
     const body = articles[i].body;
 
@@ -106,10 +104,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         <div class="announcement-inner">
           <span class="announcement-title">
             <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
-            <a href="${url}">${title}</a>
+            ${title}
           </span>
           <div class="announcement-body">
-            ${showArticleBody ? body : ''}
+            ${body}
           </div>
         </div>
         
@@ -127,9 +125,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
   document.addEventListener('click', function (event) {
     if (event.target.closest('.announcement-close')) {
-      console.log("close clicked");
+    //  console.log("close clicked");
       event.preventDefault();
       event.target.closest('.announcement-close').parentElement.remove();
-      console.log("closed");
+    //  console.log("closed");
     }
   })

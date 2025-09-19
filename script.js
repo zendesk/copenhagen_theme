@@ -99,7 +99,6 @@
     const articles = (data && data.articles) || [];
 
     for (let i = 0; i < articles.length; i++) {
-      const url = articles[i].html_url;
       const title = articles[i].title;
       const body = articles[i].body;
 
@@ -110,10 +109,10 @@
         <div class="announcement-inner">
           <span class="announcement-title">
             <i class="far fa-bullhorn fa-rotate-by" style="--fa-rotate-angle: -30deg; margin-right: 1rem;"></i>
-            <a href="${url}">${title}</a>
+            ${title}
           </span>
           <div class="announcement-body">
-            ${body }
+            ${body}
           </div>
         </div>
         
@@ -131,10 +130,10 @@
 
     document.addEventListener('click', function (event) {
       if (event.target.closest('.announcement-close')) {
-        console.log("close clicked");
+      //  console.log("close clicked");
         event.preventDefault();
         event.target.closest('.announcement-close').parentElement.remove();
-        console.log("closed");
+      //  console.log("closed");
       }
     });
 
