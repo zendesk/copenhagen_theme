@@ -21,29 +21,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
         ul.classList.add("collapsible-sidebar-body");
         tocContainer.appendChild(ul);
         headings.map((heading, index) => {
-            var id = "";
-            if (heading.id) {
-                id = heading.id;
+            if (heading.classList.contains("no-toc")) {
+                return;
             } else {
-                id = heading.innerText.toLowerCase().replaceAll(" ", "_");
-                heading.setAttribute("id", id);
+                var id = "";
+                if (heading.id) {
+                    id = heading.id;
+                } else {
+                    id = heading.innerText.toLowerCase().replaceAll(" ", "_");
+                    heading.setAttribute("id", id);
+                }
+                var level = 1;
+                if (heading.tagName == "H2") {
+                    level = 1; 
+                } else if (heading.tagName == "H3") {
+                    level = 2;
+                } else if (heading.tagName == "H4") {
+                    level = 3;
+                }
+                var anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
+                if (index === 0) {
+                    anchorElement = `<a href="#${id}" class="toc-level-${level} active current">${heading.textContent}</a>`;
+                } else {
+                    anchorElement = `<a href="#${id}" class="toc-level-${level}">${heading.textContent}</a>`;
+                }
+                var keyPointer = `<li>${anchorElement}</li>`;
+                ul.insertAdjacentHTML("beforeend", keyPointer);
             }
-            var level = 1;
-            if (heading.tagName == "H2") {
-                level = 1; 
-            } else if (heading.tagName == "H3") {
-                level = 2;
-            } else if (heading.tagName == "H4") {
-                level = 3;
-            }
-            var anchorElement = `<a href="#${id}">${heading.textContent}</a>`;
-            if (index === 0) {
-                anchorElement = `<a href="#${id}" class="toc-level-${level} active current">${heading.textContent}</a>`;
-            } else {
-                anchorElement = `<a href="#${id}" class="toc-level-${level}">${heading.textContent}</a>`;
-            }
-            var keyPointer = `<li>${anchorElement}</li>`;
-            ul.insertAdjacentHTML("beforeend", keyPointer);
         });
 
         const tocAnchors = tocContainer.querySelectorAll("a");
