@@ -724,7 +724,7 @@
       
       if (document.getElementsByClassName("table-of-contents").length > 0) {
 
-          const headings = Array.from(document.getElementById("main-content").querySelectorAll('h2, h3, h4'));
+          const headings = Array.from(document.getElementById("main-content").querySelector(".article-body").querySelectorAll('h2, h3, h4'));
           const tocContainer = document.querySelector(".table-of-contents");
           const tocOuterContainer = document.querySelector(".table-of-contents-container");
           const ul = document.createElement("ul");
