@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 document.addEventListener('click', function (event) {
   if (event.target.matches('.announcement-close')) {
-    event.preventDefault()
-    event.target.parentElement.remove()
+    event.preventDefault();
+    event.target.parentElement.remove();
   }
 })
