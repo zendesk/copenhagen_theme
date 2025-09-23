@@ -13,7 +13,10 @@ function addAltTextToImages() {
 
     imagesWithoutAlt.forEach((img) => {
       const position = Array.from(allImages).indexOf(img) + 1;
-      const altText = "Image " + position + " in article";
+      const altText = window.articleImageAltText.replace(
+        "{{position}}",
+        position
+      );
       img.setAttribute("alt", altText);
     });
   }
@@ -27,7 +30,7 @@ function addAltTextToImages() {
 
     imagesWithoutAlt.forEach((img) => {
       const position = Array.from(allImages).indexOf(img) + 1;
-      const altText = "Image " + position + " in post";
+      const altText = window.postImageAltText.replace("{{position}}", position);
       img.setAttribute("alt", altText);
     });
   }
