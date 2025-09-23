@@ -81,7 +81,7 @@
         {
           "identifier": "promoted_icon",
           "type": "file",
-          "description": "Icon on promoted article cards",
+          "description": "Icon on article cards",
           "label": "Promoted icon"
         },
         {
