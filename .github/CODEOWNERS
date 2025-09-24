@@ -3,3 +3,8 @@
 # LOCALIZATION
 **/translations/en-us.yml   @zendesk/localization
 translations.yml            @zendesk/localization
+
+# SERVICE_CATALOG
+src/modules/service-catalog       @zendesk/butlers
+templates/service_page.hbs        @zendesk/butlers
+templates/service_list_page.hbs   @zendesk/butlers
