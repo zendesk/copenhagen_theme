@@ -1,3 +1,10 @@
+## [4.10.1](https://github.com/zendesk/copenhagen_theme/compare/v4.10.0...v4.10.1) (2025-09-24)
+
+
+### Bug Fixes
+
+* include shared baseLocale translations in ApprovalRequest loader ([a7c5d3d](https://github.com/zendesk/copenhagen_theme/commit/a7c5d3d42ccc6816a20c46d09f62147e0ed2dbf6))
+
 # [4.10.0](https://github.com/zendesk/copenhagen_theme/compare/v4.9.1...v4.10.0) (2025-09-24)
 
 
