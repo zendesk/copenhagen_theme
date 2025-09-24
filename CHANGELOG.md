@@ -1,3 +1,10 @@
+# [4.10.0](https://github.com/zendesk/copenhagen_theme/compare/v4.9.1...v4.10.0) (2025-09-24)
+
+
+### Features
+
+* modify CODEOWNERS for service catalog ownership ([8910dc3](https://github.com/zendesk/copenhagen_theme/commit/8910dc358e5ba33fb779ac47672efe1de8a7e2ad))
+
 ## [4.9.1](https://github.com/zendesk/copenhagen_theme/compare/v4.9.0...v4.9.1) (2025-09-05)
 
 
