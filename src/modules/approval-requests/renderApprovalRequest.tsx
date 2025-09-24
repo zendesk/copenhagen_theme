@@ -21,6 +21,7 @@ export async function renderApprovalRequest(
   initI18next(baseLocale);
   await loadTranslations(baseLocale, [
     () => import(`./translations/locales/${baseLocale}.json`),
+    () => import(`../shared/translations/locales/${baseLocale}.json`),
   ]);
 
   render(
