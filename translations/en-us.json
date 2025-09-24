@@ -1,4 +1,6 @@
 {
+  "article_image_alt_text": "Image {{position}} in article",
+  "post_image_alt_text": "Image {{position}} in post",
   "article_author_description": "Show author image and name",
   "article_author_label": "Author",
   "article_comments_description": "Show comments on articles",
