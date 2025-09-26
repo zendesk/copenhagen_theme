@@ -1,5 +1,5 @@
 import { useCallback, useRef } from "react";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { useNotify } from "../../../shared/notifications/hooks/useNotify";
 
 interface UseWysiwygOptions {
   hasWysiwyg: boolean;

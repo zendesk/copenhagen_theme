@@ -10,7 +10,7 @@ import { EmptyState } from "./EmptyState";
 import { Search } from "./Search";
 import debounce from "lodash.debounce";
 import { useServiceCatalogItems } from "../../hooks/useServiceCatalogItems";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { useNotify } from "../../../shared/notifications/hooks/useNotify";
 
 const StyledCol = styled(Col)`
   margin-bottom: ${(props) => props.theme.space.md};

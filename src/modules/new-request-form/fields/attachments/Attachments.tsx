@@ -13,7 +13,7 @@ import type { AttachmentField } from "../../data-types";
 import { FileListItem } from "./FileListItem";
 import type { AttachedFile } from "./useAttachedFiles";
 import { useAttachedFiles } from "./useAttachedFiles";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { useNotify } from "../../../shared/notifications/hooks/useNotify";
 
 interface AttachmentProps {
   field: AttachmentField;

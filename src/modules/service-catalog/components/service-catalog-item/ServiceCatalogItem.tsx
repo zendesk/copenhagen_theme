@@ -7,8 +7,8 @@ import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import type { ServiceRequestResponse } from "../../data-types/ServiceRequestResponse";
 import { addFlashNotification } from "../../../shared";
 import { useTranslation } from "react-i18next";
-import { useNotify } from "../../../shared/notifications/useNotify";
 import { Anchor } from "@zendeskgarden/react-buttons";
+import { useNotify } from "../../../shared/notifications/hooks/useNotify";
 
 const Container = styled.div`
   display: flex;
@@ -53,7 +53,6 @@ export function ServiceCatalogItem({
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
   const notify = useNotify();
-
   if (error) {
     throw error;
   }
