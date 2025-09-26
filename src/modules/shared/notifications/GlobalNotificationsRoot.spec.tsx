@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { GlobalNotificationsProvider } from "./GlobalNotificationsProvider";
+import { GlobalNotificationsRoot } from "./GlobalNotificationsRoot";
 import { useNotify } from "./hooks/useNotify";
 import type { INotificationProps } from "@zendeskgarden/react-notifications";
 
@@ -14,11 +14,11 @@ function TestTrigger() {
   return <button data-testid="trigger" onClick={() => notify(payload)} />;
 }
 
-describe("GlobalNotificationsProvider", () => {
+describe("GlobalNotificationsRoot", () => {
   it("renders toast in DOM when notify() is called", async () => {
     render(
       <>
-        <GlobalNotificationsProvider />
+        <GlobalNotificationsRoot />
         <TestTrigger />
       </>
     );

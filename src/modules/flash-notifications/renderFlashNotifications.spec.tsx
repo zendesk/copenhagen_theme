@@ -1,13 +1,11 @@
 import { cleanup, screen } from "@testing-library/react";
 import { renderFlashNotifications } from "./renderFlashNotifications";
-import { emitNotify, resetNotifyBus } from "../shared/notifications/notifyBus";
-import type { Settings } from "../shared";
-import type { Content } from "@zendeskgarden/react-notifications/dist/typings/elements/toaster/useToast";
+import { emitNotify } from "../shared/notifications/notifyBus";
+import type { Settings, ToastNotification } from "../shared";
 
 afterEach(() => {
   cleanup();
   document.body.innerHTML = "";
-  resetNotifyBus();
 });
 
 describe("renderFlashNotifications", () => {
@@ -28,8 +26,13 @@ describe("renderFlashNotifications", () => {
     await renderFlashNotifications(settings, baseLocale);
 
     const testId = "toast-test";
-    const contentFn: Content = () => <div data-testid={testId} />;
-    emitNotify(contentFn);
+    const notification: ToastNotification = {
+      type: "success",
+      title: "Test",
+      message: <div data-testid={testId} />,
+    };
+
+    emitNotify(notification);
 
     expect(await screen.findByTestId(testId)).toBeInTheDocument();
   });

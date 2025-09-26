@@ -6,7 +6,13 @@ import {
   loadTranslations,
 } from "../shared";
 import type { Settings } from "../shared";
-import { GlobalNotificationsProvider } from "../shared/notifications/GlobalNotificationsProvider";
+import { GlobalNotificationsRoot } from "../shared/notifications/GlobalNotificationsRoot";
+
+/**
+ * Note: Historically named "flash notifications" after Rails flash messages.
+ * This function now renders all notifications, not only flash ones.
+ * The name is kept for backward compatibility with document_head.hbs.
+ */
 
 export async function renderFlashNotifications(
   settings: Settings,
@@ -22,7 +28,7 @@ export async function renderFlashNotifications(
     document.body.appendChild(container);
     render(
       <ThemeProviders theme={createTheme(settings)}>
-        <GlobalNotificationsProvider />
+        <GlobalNotificationsRoot />
       </ThemeProviders>,
       container
     );

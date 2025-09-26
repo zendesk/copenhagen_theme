@@ -1,30 +1,30 @@
-import type { Content } from "@zendeskgarden/react-notifications/dist/typings/elements/toaster/useToast";
+import type { ToastNotification } from "./ToastNotification";
 
-let listeners: ((render: Content) => void)[] = [];
-let queue: Content[] = [];
+let listeners: ((n: ToastNotification) => void)[] = [];
+let queue: ToastNotification[] = [];
 
 export function resetNotifyBus() {
   listeners = [];
   queue = [];
 }
 
-export function emitNotify(render: Content): void {
+export function emitNotify(notification: ToastNotification): void {
   if (listeners.length === 0) {
-    queue.push(render);
+    queue.push(notification);
   } else {
-    listeners.forEach((fn) => fn(render));
+    listeners.forEach((fn) => fn(notification));
   }
 }
 
-export function subscribeNotify(fn: (render: Content) => void): () => void {
+export function subscribeNotify(fn: (n: ToastNotification) => void): void {
   listeners.push(fn);
 
   if (queue.length) {
     queue.forEach(fn);
     queue = [];
   }
+}
 
-  return () => {
-    listeners = listeners.filter((l) => l !== fn);
-  };
+export function unsubscribeNotify(fn: (n: ToastNotification) => void): void {
+  listeners = listeners.filter((l) => l !== fn);
 }
