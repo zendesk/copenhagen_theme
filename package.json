@@ -25,8 +25,8 @@
     "@zendeskgarden/react-buttons": "8.76.9",
     "@zendeskgarden/react-datepickers": "8.76.9",
     "@zendeskgarden/react-dropdowns.next": "8.76.9",
-    "@zendeskgarden/react-grid": "8.76.9",
     "@zendeskgarden/react-forms": "8.76.9",
+    "@zendeskgarden/react-grid": "8.76.9",
     "@zendeskgarden/react-loaders": "8.76.9",
     "@zendeskgarden/react-modals": "8.76.9",
     "@zendeskgarden/react-notifications": "8.76.9",
@@ -68,8 +68,8 @@
     "@testing-library/dom": "^9.3.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^12.1.5",
-    "@testing-library/user-event": "^14.6.1",
     "@testing-library/react-hooks": "7.0.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/lodash.debounce": "^4.0.9",
     "@types/react": "^17.0.62",
     "@types/react-dom": "^17.0.20",
@@ -117,5 +117,5 @@
       "@commitlint/config-conventional"
     ]
   },
-  "packageManager": "yarn@1.22.22"
+  "packageManager": "yarn@4.10.3"
 }
