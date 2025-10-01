@@ -2,37 +2,36 @@
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
 <script type="text/javascript">
-  window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";
-  window.articleImageAltText = "{{t 'article_image_alt_text' position=0}}";
-  window.postImageAltText = "{{t 'post_image_alt_text' position=0}}";
+  window.searchClearButtonLabelLocalized = "{{t "search_clear"}}";
+  window.articleImageAltText = "{{t "article_image_alt_text" position=9999}}";
+  window.postImageAltText = "{{t "post_image_alt_text" position=9999}}";
 </script>
 <script type="text/javascript">
-  // Load ES module polyfill only for browsers that don't support ES modules
-  if (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
-    document.write('<script async src="{{asset 'es-module-shims.js'}}"><\/script>');
-  }
+  // Load ES module polyfill only for browsers that don't support ES modules if
+  (!(HTMLScriptElement.supports && HTMLScriptElement.supports('importmap'))) {
+  document.write('<script async src="{{asset
+    "es-module-shims.js"
+  }}"><\/script>'); }
 </script>
 <script type="importmap">
-{
-  "imports": {
-    "new-request-form": "{{asset 'new-request-form-bundle.js'}}",
-    "flash-notifications": "{{asset 'flash-notifications-bundle.js'}}",
-    "service-catalog": "{{asset 'service-catalog-bundle.js'}}",
-    "approval-requests": "{{asset 'approval-requests-bundle.js'}}",
-    "approval-requests-translations": "{{asset 'approval-requests-translations-bundle.js'}}",
-    "new-request-form-translations": "{{asset 'new-request-form-translations-bundle.js'}}",
-    "service-catalog-translations": "{{asset 'service-catalog-translations-bundle.js'}}",
-    "shared": "{{asset 'shared-bundle.js'}}",
-    "ticket-fields": "{{asset 'ticket-fields-bundle.js'}}",
-    "wysiwyg": "{{asset 'wysiwyg-bundle.js'}}"
-  }
-}
+  { "imports": { "new-request-form": "{{asset "new-request-form-bundle.js"}}",
+  "flash-notifications": "{{asset "flash-notifications-bundle.js"}}",
+  "service-catalog": "{{asset "service-catalog-bundle.js"}}",
+  "approval-requests": "{{asset "approval-requests-bundle.js"}}",
+  "approval-requests-translations": "{{asset
+    "approval-requests-translations-bundle.js"
+  }}", "new-request-form-translations": "{{asset
+    "new-request-form-translations-bundle.js"
+  }}", "service-catalog-translations": "{{asset
+    "service-catalog-translations-bundle.js"
+  }}", "shared": "{{asset "shared-bundle.js"}}", "ticket-fields": "{{asset
+    "ticket-fields-bundle.js"
+  }}", "wysiwyg": "{{asset "wysiwyg-bundle.js"}}" } }
 </script>
 <script type="module">
-  import { renderFlashNotifications } from "flash-notifications";
-
-  const settings = {{json settings}};
-  const baseLocale = {{json help_center.base_locale}};
-
-  renderFlashNotifications(settings, baseLocale);
+  import { renderFlashNotifications } from "flash-notifications"; const settings
+  =
+  {{json settings}}; const baseLocale =
+  {{json help_center.base_locale}}; renderFlashNotifications(settings,
+  baseLocale);
 </script>

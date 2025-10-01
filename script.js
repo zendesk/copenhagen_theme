@@ -662,7 +662,6 @@
    * Adds default alt text to images that don't have one
    */
   function addAltTextToImages() {
-
     const articleBody = document.querySelector(".article-body");
     const postBody = document.querySelectorAll(".post-body");
 
@@ -674,7 +673,7 @@
 
       imagesWithoutAlt.forEach((img) => {
         const position = Array.from(allImages).indexOf(img) + 1;
-        const altText = window.articleImageAltText.replace("{{position}}", position);
+        const altText = window.articleImageAltText.replace("9999", position);
         img.setAttribute("alt", altText);
       });
     }
@@ -688,7 +687,7 @@
 
       imagesWithoutAlt.forEach((img) => {
         const position = Array.from(allImages).indexOf(img) + 1;
-        const altText = window.postImageAltText.replace("{{position}}", position);
+        const altText = window.postImageAltText.replace("9999", position);
         img.setAttribute("alt", altText);
       });
     }
