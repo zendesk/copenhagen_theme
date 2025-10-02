@@ -142,7 +142,9 @@
             </li>
             <li class="nav-divider"></li>
           {{/if}}
-          <li><a href="https://fzo.statuspage.io/">Status page</a></li>
+          {{#if settings.status_page_url}}
+          <li><a href="{{settings.status_page_url}}">Status page</a></li>
+          {{/if}}
           <li class="item">{{link 'new_request' role="menuitem" class='submit-a-request'}}</li>
           <li class="nav-divider"></li>
           {{#if signed_in}}
