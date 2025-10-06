@@ -1,13 +1,13 @@
 async function login(browser, account) {
   const { email, password, loginUrl } = account;
-  
+
   const page = await browser.newPage();
   await page.goto(loginUrl);
-  await page.waitForSelector("input#user_email", { visible: true });
-  await page.type("input#user_email", email);
-  await page.type("input#user_password", password);
+  await page.waitForSelector('input[type="email"]', { visible: true });
+  await page.type('input[type="email"]', email);
+  await page.type('input[type="password"]', password);
   await Promise.all([
-    page.click("#sign-in-submit-button"),
+    page.click('button[type="submit"]'),
     page.waitForNavigation(),
   ]);
   await page.close();
