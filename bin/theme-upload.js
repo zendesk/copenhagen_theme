@@ -4,8 +4,14 @@ const brandId = process.env.BRAND_ID;
 const { execSync } = require("child_process");
 
 function zcli(command) {
-  const data = execSync(`yarn zcli ${command} --json`);
-  return JSON.parse(data.toString());
+  try {
+    const data = execSync(`yarn zcli ${command} --json`);
+    return JSON.parse(data.toString());
+  } catch (e) {
+    console.error(e.message);
+    console.error(e.stdout.toString());
+    process.exit(1);
+  }
 }
 
 const { themeId } = zcli(`themes:import --brandId=${brandId}`);
