@@ -251,7 +251,7 @@ parts:
       key: "txt.approval_requests.clarification.comment_form_aria_label"
       title: "[A11Y] Hidden accessibility label for the comment form in the single approval request sidebar panel"
       value: "Enter a comment to ask for additional information about this approval request"
-      screenshot: ""
+      screenshot: "https://drive.google.com/file/d/194B7-DmEvZJOB5X6QyNXNKGEyLsbjOdw/view?usp=sharing"
   - translation:
       key: "txt.approval_requests.clarification.submit_button"
       title: "Submit comment button label"
