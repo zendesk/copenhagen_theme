@@ -237,3 +237,83 @@ parts:
       title: "Status label for the withdrawn status of an approval request - Subject: 'status'"
       screenshot: "https://drive.google.com/file/d/1iOTsHEB5xae4LGZbjr4ibtdSDf0h9BOE/view?usp=drive_link"
       value: "Withdrawn"
+  - translation:
+      key: "txt.approval_requests.clarification.title"
+      title: "Title of the comments section"
+      value: "Comments"
+      screenshot: "https://drive.google.com/file/d/1_71h6mJIjYHEDXPYLZ6vjZt_y3Nx9ZDD/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.description"
+      title: "Description of the comments section"
+      value: "Add notes or ask for additional information about this request"
+      screenshot: "https://drive.google.com/file/d/1_71h6mJIjYHEDXPYLZ6vjZt_y3Nx9ZDD/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.comment_form_aria_label"
+      title: "[A11Y] Hidden accessibility label for the comment form in the single approval request sidebar panel"
+      value: "Enter a comment to ask for additional information about this approval request"
+      screenshot: "https://drive.google.com/file/d/194B7-DmEvZJOB5X6QyNXNKGEyLsbjOdw/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.submit_button"
+      title: "Submit comment button label"
+      value: "Send"
+      screenshot: "https://drive.google.com/file/d/1_71h6mJIjYHEDXPYLZ6vjZt_y3Nx9ZDD/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.cancel_button"
+      title: "Cancel comment button label"
+      value: "Cancel"
+      screenshot: "https://drive.google.com/file/d/1_71h6mJIjYHEDXPYLZ6vjZt_y3Nx9ZDD/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.characters_remaining.zero"
+      title: "Warning validation message informing the user that there are zero remaining characters before they reach the limit."
+      value: "{{numCharacters}} characters remaining"
+      screenshot: "https://drive.google.com/file/d/1MSVyUqRUqCu9vAYfRzaHgZw82vvF6qNv/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.characters_remaining.one"
+      title: "Warning validation message informing the user that there is one remaining character before they reach the limit."
+      value: "{{numCharacters}} character remaining"
+      screenshot: "https://drive.google.com/file/d/17nQCx_XH2IMJtXVomjPYTLRI1i-WYI1W/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.characters_remaining.two"
+      title: "Warning validation message informing the user that there are two remaining characters before they reach the limit."
+      value: "{{numCharacters}} characters remaining"
+      screenshot: "https://drive.google.com/file/d/1atQ7bIrRvXXUg8Wl3il26l1UC0CiDA6u/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.characters_remaining.few"
+      title: "Warning validation message informing the user of the number of characters left before the limit, when the few plural form applies"
+      value: "{{numCharacters}} characters remaining"
+      screenshot: "https://drive.google.com/file/d/1atQ7bIrRvXXUg8Wl3il26l1UC0CiDA6u/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.characters_remaining.many"
+      title: "Warning validation message informing the user of the number of characters left before the limit, when the many plural form applies"
+      value: "{{numCharacters}} characters remaining"
+      screenshot: "https://drive.google.com/file/d/1atQ7bIrRvXXUg8Wl3il26l1UC0CiDA6u/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.characters_remaining.other"
+      title: "Warning validation message informing the user of the number of characters left before the limit, when the default plural form applies"
+      value: "{{numCharacters}} characters remaining"
+      screenshot: "https://drive.google.com/file/d/1atQ7bIrRvXXUg8Wl3il26l1UC0CiDA6u/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.validation.empty_comment_error"
+      title: "Error validation message informing the user that the comment field is empty"
+      value: "Enter a comment"
+      screenshot: "https://drive.google.com/file/d/1EjO40n6Vg3H5gUpNqp3TKUXSdQ0Hyg6S/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.new_comment_indicator"
+      title: "This is the text that appears when a new comment is added to the approval request clarification section"
+      value: "New comment"
+      screenshot: "https://drive.google.com/file/d/1HngajEqfo_Y6Q5dU8CzCSfgmS1nLGeEQ/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.new_comments_indicator"
+      title: "This is the text that appears when multiple new comments are added to the approval request clarification section"
+      value: "New comments"
+      screenshot: "https://drive.google.com/file/d/1HusOTEN6w5Pc820fsdGhKtov0YGA-OZ9/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.max_comment_alert_title"
+      title: "This is the title for an alert notification that is shown when 40 comments has been added to the approval request clarification section"
+      value: "Comment limit reached"
+      screenshot: "https://drive.google.com/file/d/1zJ4YRvuaKSbgUhvXW7urZUmVYo-x0f4M/view?usp=sharing"
+  - translation:
+      key: "txt.approval_requests.clarification.max_comment_alert_message"
+      title: "This is the message for an alert notification that is shown when 40 comments has been added to the approval request clarification section"
+      value: "You can't add more comments, approvers can still approve or deny."
+      screenshot: "https://drive.google.com/file/d/1zJ4YRvuaKSbgUhvXW7urZUmVYo-x0f4M/view?usp=sharing"
