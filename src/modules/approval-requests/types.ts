@@ -58,3 +58,15 @@ export interface SearchApprovalRequest {
   created_at: string;
   status: ApprovalRequestStatus;
 }
+
+export type ApprovalClarificationFlowMessage = {
+  id: string;
+  author: {
+    id: string;
+    email?: string | null;
+    avatar: string;
+    name: string;
+  };
+  message: string;
+  createdAt: string;
+};
