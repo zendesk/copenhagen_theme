@@ -3,11 +3,13 @@ import type { ReactElement } from "react";
 import { userEvent } from "@testing-library/user-event";
 import { ThemeProvider } from "@zendeskgarden/react-theming";
 import ApproverActions from "./ApproverActions";
+import { notify } from "../../../shared";
 
-const mockNotify = jest.fn();
-jest.mock("../../../shared/notifications/useNotify", () => ({
-  useNotify: () => mockNotify,
+jest.mock("../../../shared/notifications", () => ({
+  notify: jest.fn(),
 }));
+
+const mockNotify = notify as jest.Mock;
 
 const mockSubmitApprovalDecision = jest.fn();
 jest.mock("../../submitApprovalDecision", () => ({
