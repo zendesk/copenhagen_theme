@@ -1,3 +1,10 @@
+# [4.11.0](https://github.com/zendesk/copenhagen_theme/compare/v4.10.1...v4.11.0) (2025-10-08)
+
+
+### Features
+
+* add global notification system ([3033578](https://github.com/zendesk/copenhagen_theme/commit/30335784d9bc0aaedd84de1931b6908eccf2c7e8))
+
 ## [4.10.1](https://github.com/zendesk/copenhagen_theme/compare/v4.10.0...v4.10.1) (2025-09-24)
 
 

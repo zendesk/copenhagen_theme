@@ -5,9 +5,8 @@ import type { Organization } from "../../../ticket-fields/data-types/Organizatio
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
 import type { ServiceRequestResponse } from "../../data-types/ServiceRequestResponse";
-import { addFlashNotification } from "../../../shared";
+import { addFlashNotification, notify } from "../../../shared";
 import { useTranslation } from "react-i18next";
-import { useNotify } from "../../../shared/notifications/useNotify";
 import { Anchor } from "@zendeskgarden/react-buttons";
 
 const Container = styled.div`
@@ -52,8 +51,6 @@ export function ServiceCatalogItem({
     handleChange,
   } = useItemFormFields(serviceCatalogItem, baseLocale);
   const { t } = useTranslation();
-  const notify = useNotify();
-
   if (error) {
     throw error;
   }

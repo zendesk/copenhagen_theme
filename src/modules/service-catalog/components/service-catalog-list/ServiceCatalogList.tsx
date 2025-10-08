@@ -10,7 +10,7 @@ import { EmptyState } from "./EmptyState";
 import { Search } from "./Search";
 import debounce from "lodash.debounce";
 import { useServiceCatalogItems } from "../../hooks/useServiceCatalogItems";
-import { useNotify } from "../../../shared/notifications/useNotify";
+import { notify } from "../../../shared";
 
 const StyledCol = styled(Col)`
   margin-bottom: ${(props) => props.theme.space.md};
@@ -35,7 +35,6 @@ export function ServiceCatalogList({
   const [searchInputValue, setSearchInputValue] = useState("");
 
   const { t } = useTranslation();
-  const notify = useNotify();
 
   const {
     serviceCatalogItems,
