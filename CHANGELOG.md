@@ -1,3 +1,10 @@
+## [4.11.1](https://github.com/zendesk/copenhagen_theme/compare/v4.11.0...v4.11.1) (2025-10-08)
+
+
+### Bug Fixes
+
+* add missing screenshot ([cea21cf](https://github.com/zendesk/copenhagen_theme/commit/cea21cf29a3ed7103344a02d968bad166cdda5e9))
+
 # [4.11.0](https://github.com/zendesk/copenhagen_theme/compare/v4.10.1...v4.11.0) (2025-10-08)
 
 
