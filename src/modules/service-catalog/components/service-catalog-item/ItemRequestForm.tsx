@@ -119,6 +119,7 @@ export function ItemRequestForm({
         <FieldsContainer>
           {requestFields.map((field) => (
             <RequestFormField
+              serviceCatalogItem={serviceCatalogItem}
               key={field.id}
               field={field}
               baseLocale={baseLocale}

@@ -7,7 +7,7 @@ import {
   Option,
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
@@ -17,6 +17,8 @@ import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
+import type { ServiceCatalogItem } from "../../service-catalog/data-types/ServiceCatalogItem";
+import { useAssignedAssetsAndTypes } from "../../service-catalog/hooks/useAssignedAssetAndTypes";
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
@@ -60,6 +62,7 @@ interface LookupFieldProps {
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
+  serviceCatalogItem?: ServiceCatalogItem;
 }
 
 export function LookupField({
@@ -68,6 +71,7 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
+  serviceCatalogItem,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -85,6 +89,19 @@ export function LookupField({
     useState<TicketFieldOptionObject | null>(null);
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
+  const isAssetType =
+    relationship_target_type === "zen:custom_object:standard::itam_asset_type";
+  const isAsset =
+    relationship_target_type === "zen:custom_object:standard::itam_asset";
+  const [isHiddenAssetType, setIsHiddenAssetType] = useState<boolean>(false);
+  const allowedIdsRef = useRef<string[] | null>(null);
+
+  const { fetchAssets, fetchAssetTypes } = useAssignedAssetsAndTypes(
+    serviceCatalogItem?.id
+  );
+
+  const shouldHide = isAssetType && isHiddenAssetType;
+
   const { t } = useTranslation();
 
   const customObjectKey = getCustomObjectKey(
@@ -161,17 +178,53 @@ export function LookupField({
         const data = await response.json();
         if (response.ok) {
           let fetchedOptions = data.custom_object_records.map(
-            ({ name, id }: { name: string; id: string }) => ({
+            ({
+              name,
+              id,
+              item_asset_type_id,
+            }: {
+              name: string;
+              id: string;
+              item_asset_type_id?: string;
+            }) => ({
               name,
               value: id,
+              item_asset_type_id,
             })
           );
-          if (selectedOption) {
+
+          const ids = allowedIdsRef.current;
+          if (ids?.length && isAsset) {
             fetchedOptions = fetchedOptions.filter(
-              (option: TicketFieldOptionObject) =>
-                option.value !== selectedOption.value
+              (o: {
+                name: string;
+                value: string;
+                item_asset_type_id: string;
+              }) => ids.includes(o.item_asset_type_id)
             );
-            fetchedOptions = [selectedOption, ...fetchedOptions];
+          }
+          if (ids?.length && isAssetType) {
+            fetchedOptions = fetchedOptions.filter(
+              (o: {
+                name: string;
+                value: string;
+                item_asset_type_id: string;
+              }) => ids.includes(o.value)
+            );
+          }
+
+          if (selectedOption) {
+            const idx = fetchedOptions.findIndex(
+              (o: {
+                name: string;
+                value: string;
+                item_asset_type_id: string;
+              }) => o.value === selectedOption.value
+            );
+            if (idx >= 0) {
+              const [sel] = fetchedOptions.splice(idx, 1);
+              fetchedOptions = [sel, ...fetchedOptions];
+            }
           }
 
           setOptions(fetchedOptions);
@@ -190,6 +243,8 @@ export function LookupField({
       fieldId,
       organizationId,
       selectedOption,
+      isAsset,
+      isAssetType,
       userId,
       visibleFields,
     ]
@@ -237,12 +292,53 @@ export function LookupField({
     if (value) {
       fetchSelectedOption(value as string);
     }
+
+    async function init() {
+      if (isAsset) {
+        const ids = await fetchAssets();
+        allowedIdsRef.current = ids.split(",").map((id: string) => id.trim());
+      } else if (isAssetType) {
+        const { assetTypeIds, isHiddenAssetsType } =
+          (await fetchAssetTypes()) || {
+            assetTypeIds: "",
+            isHiddenAssetsType: false,
+          };
+
+        const idsArray = assetTypeIds
+          ? assetTypeIds?.split(",").map((id): string => id.trim())
+          : [];
+
+        allowedIdsRef.current = idsArray;
+        setIsHiddenAssetType(!!isHiddenAssetsType);
+      }
+
+      await fetchOptions("*");
+    }
+
+    init();
   }, []); //we don't set dependency array as we want this hook to be called only once
 
   const onFocus = () => {
     setInputValue("");
     fetchOptions("*");
   };
+
+  if (shouldHide) {
+    return (
+      <>
+        <input
+          type="hidden"
+          name={field.name}
+          value={selectedOption?.value ?? allowedIdsRef.current?.[0] ?? ""}
+        />
+        <input
+          name="isAssetTypeHidden"
+          type="hidden"
+          value={isAssetType ? "true" : "false"}
+        />
+      </>
+    );
+  }
 
   return (
     <GardenField>

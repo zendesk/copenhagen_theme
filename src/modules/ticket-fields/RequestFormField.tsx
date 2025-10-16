@@ -8,8 +8,10 @@ import { LookupField } from "./fields/LookupField";
 import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
+import type { ServiceCatalogItem } from "../service-catalog/data-types/ServiceCatalogItem";
 
 interface RequestFormFieldProps {
+  serviceCatalogItem?: ServiceCatalogItem;
   field: TicketFieldObject;
   baseLocale: string;
   hasAtMentions: boolean;
@@ -29,6 +31,7 @@ interface RequestFormFieldProps {
 
 export const RequestFormField = ({
   field,
+  serviceCatalogItem,
   baseLocale,
   hasAtMentions,
   userRole,
@@ -130,6 +133,7 @@ export const RequestFormField = ({
     case "lookup":
       return (
         <LookupField
+          serviceCatalogItem={serviceCatalogItem}
           key={field.name}
           field={field}
           userId={userId}
