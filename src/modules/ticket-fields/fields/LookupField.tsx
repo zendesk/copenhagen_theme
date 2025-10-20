@@ -24,6 +24,11 @@ import {
   ASSET_KEY,
 } from "../../shared/asset-management/constants";
 
+import type {
+  AssetsApiResponse,
+  AssignedAssetFields,
+} from "../../service-catalog/data-types/Assets";
+
 type RawOption = {
   name: string;
   value: string;
@@ -40,23 +45,17 @@ export function filterAndPrioritizeOptions(
 
   if (allowedIds && allowedIds.length) {
     const key = flags.isAsset ? "item_asset_type_id" : "value";
-    filteredOptions = filteredOptions.filter((o) =>
-      allowedIds.includes(o[key] ?? "")
+    filteredOptions = filteredOptions.filter(
+      (o) => allowedIds.includes(o[key] ?? "") && o.value
     );
   }
-
   if (!selectedOption) return filteredOptions;
 
-  const isSelectedInList = filteredOptions.some(
-    (o) => o.value === selectedOption.value
-  );
-  if (!isSelectedInList) {
-    return [selectedOption, ...filteredOptions];
-  }
-  return [
-    filteredOptions.find((o) => o.value === selectedOption.value)!,
-    ...filteredOptions.filter((o) => o.value !== selectedOption.value),
-  ];
+  return filteredOptions.sort((a, b) => {
+    if (a.value === selectedOption?.value) return -1;
+    if (b.value === selectedOption?.value) return 1;
+    return 0;
+  });
 }
 
 export function buildAdvancedDynamicFilterParams(
@@ -130,7 +129,9 @@ export function LookupField({
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
   const isAssetType = relationship_target_type === ASSET_TYPE_KEY;
   const isAsset = relationship_target_type === ASSET_KEY;
-  const [isHiddenAssetType, setIsHiddenAssetType] = useState<boolean>(false);
+  const [isHiddenAssetType, setIsHiddenAssetType] = useState<boolean>(
+    () => isAssetType
+  );
   const allowedIdsRef = useRef<string[] | null>(null);
 
   const { fetchAssets, fetchAssetTypes } = useAssetDataFetchers(
@@ -219,25 +220,23 @@ export function LookupField({
           `/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`
         );
 
-        const data = await response.json();
+        const data: AssetsApiResponse = await response.json();
         if (seq !== reqSeqRef.current) return;
         if (response.ok) {
           const fetched: TicketFieldOptionObject[] =
-            data.custom_object_records.map(
-              ({
-                name,
-                id,
-                item_asset_type_id,
-              }: {
-                name: string;
-                id: string;
-                item_asset_type_id?: string;
-              }) => ({
-                name,
-                value: id,
-                item_asset_type_id,
-              })
-            );
+            data.custom_object_records.map((item) => {
+              const isAsset = item.custom_object_key === "standard::itam_asset";
+
+              return {
+                name: item.name,
+                value: item.id,
+                item_asset_type_id: isAsset
+                  ? (item.custom_object_fields as AssignedAssetFields)[
+                      "standard::asset_type"
+                    ] ?? ""
+                  : "",
+              };
+            });
 
           const filtered = filterAndPrioritizeOptions(
             fetched,
@@ -292,7 +291,9 @@ export function LookupField({
           );
           if (selectedOption) {
             setInputValue(selectedOption.name);
+            setOptions([selectedOption]);
             setSelectedOption(selectedOption);
+            setOptions([selectedOption]);
             onChange(selectedOption.value);
           }
         }
@@ -334,6 +335,16 @@ export function LookupField({
         } else if (isAssetType) {
           const res = await fetchAssetTypes();
           if (cancelled) return;
+
+          const hidden = Boolean(res?.isHiddenAssetsType);
+          setIsHiddenAssetType(hidden);
+
+          if (hidden) {
+            allowedIdsRef.current = [];
+            setOptions([]);
+            return;
+          }
+
           const idsStr = res?.assetTypeIds;
           idsArr =
             typeof idsStr === "string"
@@ -344,13 +355,12 @@ export function LookupField({
               : [];
           allowedIdsRef.current = idsArr;
 
-          if (!cancelled)
-            setIsHiddenAssetType(Boolean(res?.isHiddenAssetsType));
-        } else {
-          allowedIdsRef.current = [];
+          await fetchOptions("*");
+          return;
         }
 
-        if (!cancelled) await fetchOptions("*");
+        allowedIdsRef.current = [];
+        await fetchOptions("*");
       } catch (e) {
         console.error(e);
       }

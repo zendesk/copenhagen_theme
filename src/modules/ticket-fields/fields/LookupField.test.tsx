@@ -287,25 +287,6 @@ describe("filterAndPrioritizeOptions", () => {
     expect(result.map((o) => o.value)).toEqual(["VAL_MON", "VAL_LAPTOP"]);
   });
 
-  it("prepends selected if it is not returned from backend", () => {
-    const allowedIds = ["AT_LAPTOP"];
-    const selected = {
-      name: "Monitor",
-      value: "VAL_MON",
-      item_asset_type_id: "AT_MON",
-    };
-
-    const result = filterAndPrioritizeOptions(
-      baseOptions,
-      allowedIds,
-      { isAsset: true, isAssetType: false },
-      selected
-    );
-
-    expect(result[0]).toEqual(selected);
-    expect(result.map((o) => o.value)).toEqual(["VAL_MON", "VAL_LAPTOP"]);
-  });
-
   it("is immutable", () => {
     const original = [...baseOptions];
     const allowedIds = ["AT_LAPTOP"];
