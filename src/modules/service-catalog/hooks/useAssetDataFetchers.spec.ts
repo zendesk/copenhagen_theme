@@ -1,7 +1,7 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import { useAssignedAssetsAndTypes } from "./useAssignedAssetAndTypes";
+import { useAssetDataFetchers } from "./useAssetDataFetchers";
 
-describe("useAssignedAssetsAndTypes", () => {
+describe("useAssetDataFetchers", () => {
   const scItemId = 123;
 
   const hcPayload = (assetOptionId?: string, assetTypeOptionId?: string) => ({
@@ -53,7 +53,7 @@ describe("useAssignedAssetsAndTypes", () => {
         json: () => Promise.resolve(mockAssetResponse),
       }) as jest.Mock;
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
 
     let ids: string | undefined;
     await act(async () => {
@@ -78,7 +78,7 @@ describe("useAssignedAssetsAndTypes", () => {
       json: () => Promise.resolve(hcPayload(undefined, "AT-999")),
     }) as jest.Mock;
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
 
     let ids: string | undefined;
     await act(async () => {
@@ -92,7 +92,7 @@ describe("useAssignedAssetsAndTypes", () => {
   it("fetchAssets: returns undefined on error", async () => {
     global.fetch = jest.fn().mockRejectedValueOnce(new Error("boom"));
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
 
     let ids: string | undefined;
     await act(async () => {
@@ -117,7 +117,7 @@ describe("useAssignedAssetsAndTypes", () => {
         status: 200,
       });
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
 
     let out:
       | { assetTypeIds?: string; isHiddenAssetsType?: boolean }
@@ -145,7 +145,7 @@ describe("useAssignedAssetsAndTypes", () => {
       status: 200,
     });
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
 
     let out:
       | { assetTypeIds?: string; isHiddenAssetsType?: boolean }
@@ -169,7 +169,7 @@ describe("useAssignedAssetsAndTypes", () => {
       })
       .mockRejectedValueOnce(new Error("network"));
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
 
     let out:
       | { assetTypeIds?: string; isHiddenAssetsType?: boolean }
@@ -188,7 +188,7 @@ describe("useAssignedAssetsAndTypes", () => {
   it("gracefully handles undefined serviceCatalogItemId", async () => {
     global.fetch = jest.fn();
 
-    const { result } = renderHook(() => useAssignedAssetsAndTypes(undefined));
+    const { result } = renderHook(() => useAssetDataFetchers(undefined));
 
     let assets: string | undefined;
     let assetTypes:
