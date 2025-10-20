@@ -9,9 +9,7 @@ import { addFlashNotification, notify } from "../../../shared";
 import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
-
-export const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
-export const ASSET_KEY = "zen:custom_object:standard::itam_asset";
+import { ASSET_TYPE_KEY } from "../../../shared/asset-management/constants";
 
 const Container = styled.div`
   display: flex;

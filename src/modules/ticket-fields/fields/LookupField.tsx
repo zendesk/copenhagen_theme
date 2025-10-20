@@ -22,7 +22,7 @@ import { useAssetDataFetchers } from "../../service-catalog/hooks/useAssetDataFe
 import {
   ASSET_TYPE_KEY,
   ASSET_KEY,
-} from "../../service-catalog/components/service-catalog-item/ServiceCatalogItem";
+} from "../../shared/asset-management/constants";
 
 type RawOption = {
   name: string;
@@ -293,7 +293,6 @@ export function LookupField({
           if (selectedOption) {
             setInputValue(selectedOption.name);
             setSelectedOption(selectedOption);
-            // setOptions([selectedOption]);
             onChange(selectedOption.value);
           }
         }
@@ -357,12 +356,12 @@ export function LookupField({
       }
     };
 
-    initOptions();
+    void initOptions();
 
     return () => {
       cancelled = true;
     };
-  }, [isAsset, isAssetType, fetchAssets, fetchAssetTypes]);
+  }, [isAsset, isAssetType, fetchAssets, fetchAssetTypes, fetchOptions]);
 
   const onFocus = () => {
     setInputValue("");
