@@ -17,6 +17,7 @@ import { Paragraph } from "@zendeskgarden/react-typography";
 import { DropDown, Input, TextArea, RequestFormField } from "../ticket-fields";
 import type { Organization } from "../ticket-fields/data-types/Organization";
 import type { TicketFieldObject } from "../ticket-fields/data-types/TicketFieldObject";
+import { GenerativeAnswerBotModal } from "./answer-bot-generative-modal/GenerativeAnswerBotModal";
 
 export interface NewRequestFormProps {
   requestForm: RequestForm;
@@ -146,6 +147,15 @@ export function NewRequestForm({
     [dueDateField]
   );
 
+  const answerBotModalEnabled =
+    !!answerBot?.auth_token &&
+    !!answerBot?.interaction_access_token &&
+    !!answerBot?.articles?.length &&
+    !!answerBot?.request_id;
+
+  const answerBotGenerativeModalEnabled =
+    !answerBotModalEnabled && answerBot.request_id;
+
   return (
     <>
       {parentId && (
@@ -262,18 +272,21 @@ export function NewRequestForm({
           )}
         </Footer>
       </Form>
-      {answerBot.auth_token &&
-        answerBot.interaction_access_token &&
-        answerBot.articles.length > 0 &&
-        answerBot.request_id && (
-          <AnswerBotModal
-            authToken={answerBot.auth_token}
-            interactionAccessToken={answerBot.interaction_access_token}
-            articles={answerBot.articles}
-            requestId={answerBot.request_id}
-            {...answerBotModal}
-          />
-        )}
+      {answerBotModalEnabled && (
+        <AnswerBotModal
+          authToken={answerBot.auth_token!}
+          interactionAccessToken={answerBot.interaction_access_token!}
+          articles={answerBot.articles!}
+          requestId={answerBot.request_id!}
+          {...answerBotModal}
+        />
+      )}
+      {answerBotGenerativeModalEnabled && (
+        <GenerativeAnswerBotModal
+          requestId={Number(answerBot.request_id)}
+          redirectTo={answerBotModal.helpCenterPath}
+        />
+      )}
     </>
   );
 }

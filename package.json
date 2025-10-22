@@ -36,7 +36,7 @@
     "@zendeskgarden/react-theming": "8.76.9",
     "@zendeskgarden/react-tooltips": "8.76.9",
     "@zendeskgarden/react-typography": "8.76.9",
-    "@zendeskgarden/svg-icons": "^6.34.0",
+    "@zendeskgarden/svg-icons": "8.0.0",
     "dompurify": "3.2.5",
     "eslint-plugin-check-file": "^2.6.2",
     "i18next": "^23.10.1",

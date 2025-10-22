@@ -1,174 +1,831 @@
-import{s as e,B as t,a6 as n,j as s,a7 as r,a8 as a,a9 as o,aa as i,ab as l,u as c,ac as u,ad as d,X as h,ae as j,o as f,af as m,F as b,a as p,L as k,ag as g,ah as v,r as x,n as y,i as w,ai as _,a0 as $,a1 as z,a2 as C,a3 as S,a4 as q,aj as I,ak as E,al as F,am as A,A as P,Z as T}from"shared";import{g as L,a as M,R as H}from"ticket-fields";const R=e(n)`
-  background-color: ${e=>t("grey",100,e.theme)};
-  width: ${e=>"large"===e.size?72:40}px !important;
-  height: ${e=>"large"===e.size?72:40}px !important;
+import { s as styled, B as getColorV8, a0 as Avatar, j as jsxRuntimeExports, a9 as SvgShapesFill, aa as Grid, ab as Col, ac as Row, ad as Skeleton, u as useTranslation, ae as LG, af as MD, X as Button, ag as IconButton, o as Tooltip, ah as SvgXStroke, F as Field, a as MediaInput, L as Label, ai as SvgSearchStroke, a1 as Dots, r as reactExports, n as notify, i as debounce, aj as CursorPagination, a3 as initI18next, a4 as loadTranslations, a5 as reactDomExports, a6 as ThemeProviders, a7 as createTheme, ak as ErrorBoundary, al as XXXL, am as SvgChevronUpFill, an as SvgChevronDownFill, A as Anchor, Z as addFlashNotification } from 'shared';
+import { g as getVisibleFields, a as getCustomObjectKey, R as RequestFormField } from 'ticket-fields';
+
+const StyledAvatar = styled(Avatar) `
+  background-color: ${(props) => getColorV8("grey", 100, props.theme)};
+  width: ${(props) => (props.size === "large" ? 72 : 40)}px !important;
+  height: ${(props) => (props.size === "large" ? 72 : 40)}px !important;
 
   && > svg {
-    width: ${e=>"large"===e.size?28:16}px;
-    height: ${e=>"large"===e.size?28:16}px;
-    color: ${e=>t("grey",600,e.theme)};
+    width: ${(props) => (props.size === "large" ? 28 : 16)}px;
+    height: ${(props) => (props.size === "large" ? 28 : 16)}px;
+    color: ${(props) => getColorV8("grey", 600, props.theme)};
   }
-`,U=({size:e,url:t})=>s.jsx(R,{size:e,isSystem:!0,children:t?s.jsx("img",{src:t,alt:""}):s.jsx(r,{"aria-hidden":"true"})}),B=e.a`
+`;
+const ItemThumbnail = ({ size, url }) => {
+    return (jsxRuntimeExports.jsx(StyledAvatar, { size: size, isSystem: true, children: url ? jsxRuntimeExports.jsx("img", { src: url, alt: "" }) : jsxRuntimeExports.jsx(SvgShapesFill, { "aria-hidden": "true" }) }));
+};
+
+const ItemContainer = styled.a `
   display: flex;
   flex-direction: column;
   height: 100%;
-  border-radius: ${e=>e.theme.borderRadii.md};
-  padding: ${e=>e.theme.space.md};
-  border: ${e=>e.theme.borders.sm}
-    ${e=>t("grey",300,e.theme)};
-  color: ${e=>e.theme.colors.foreground};
+  border-radius: ${(props) => props.theme.borderRadii.md};
+  padding: ${(props) => props.theme.space.md};
+  border: ${(props) => props.theme.borders.sm}
+    ${(props) => getColorV8("grey", 300, props.theme)};
+  color: ${(props) => props.theme.colors.foreground};
 
   &:hover {
-    border-color: ${e=>e.theme.colors.primaryHue};
+    border-color: ${(props) => props.theme.colors.primaryHue};
   }
 
   &:hover,
   &:visited {
     text-decoration: none;
   }
-`,O=e.div`
-  font-size: ${e=>e.theme.fontSizes.md};
-  font-weight: ${e=>e.theme.fontWeights.semibold};
+`;
+const ItemTitle$1 = styled.div `
+  font-size: ${(props) => props.theme.fontSizes.md};
+  font-weight: ${(props) => props.theme.fontWeights.semibold};
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
   word-break: break-word;
-`,G=e.div`
-  font-size: ${e=>e.theme.fontSizes.sm};
+`;
+const ItemDescription = styled.div `
+  font-size: ${(props) => props.theme.fontSizes.sm};
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
   word-break: break-word;
-`,N=e.div`
+`;
+const TextContainer$1 = styled.div `
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: ${e=>e.theme.space.xxs};
-  color: ${e=>e.theme.colors.foreground};
-  margin-top: ${e=>e.theme.space.sm};
-`,V=({serviceItem:e,helpCenterPath:t})=>s.jsxs(B,{"data-testid":"service-catalog-list-item-container",href:`${t}/services/${e.id}`,children:[s.jsx(U,{size:"medium",url:e.thumbnail_url}),s.jsxs(N,{children:[s.jsx(O,{children:e.name}),s.jsx(G,{dangerouslySetInnerHTML:{__html:e.description}})]})]}),J=e(a)`
+  gap: ${(props) => props.theme.space.xxs};
+  color: ${(props) => props.theme.colors.foreground};
+  margin-top: ${(props) => props.theme.space.sm};
+`;
+const ServiceCatalogListItem = ({ serviceItem, helpCenterPath, }) => {
+    return (jsxRuntimeExports.jsxs(ItemContainer, { "data-testid": "service-catalog-list-item-container", href: `${helpCenterPath}/services/${serviceItem.id}`, children: [jsxRuntimeExports.jsx(ItemThumbnail, { size: "medium", url: serviceItem.thumbnail_url }), jsxRuntimeExports.jsxs(TextContainer$1, { children: [jsxRuntimeExports.jsx(ItemTitle$1, { children: serviceItem.name }), jsxRuntimeExports.jsx(ItemDescription, { dangerouslySetInnerHTML: { __html: serviceItem.description } })] })] }));
+};
+
+const StyledGrid$1 = styled(Grid) `
   padding: 0;
-`,D=e(o)`
+`;
+const StyledCol$1 = styled(Col) `
   @media (min-width: 0px) {
-    margin-bottom: ${e=>e.theme.space.md};
+    margin-bottom: ${(props) => props.theme.space.md};
   }
-`,K=()=>s.jsx(D,{xs:12,sm:6,md:4,lg:3,children:s.jsx(l,{width:"100%",height:"140px"})}),Q=()=>s.jsx(J,{children:s.jsxs(i,{wrap:"wrap",children:[s.jsx(K,{}),s.jsx(K,{}),s.jsx(K,{}),s.jsx(K,{})]})}),W=e.div`
-  padding: ${e=>e.theme.space.xl} 0;
+`;
+const SkeletonCol = () => (jsxRuntimeExports.jsx(StyledCol$1, { xs: 12, sm: 6, md: 4, lg: 3, children: jsxRuntimeExports.jsx(Skeleton, { width: "100%", height: "140px" }) }));
+const LoadingState = () => {
+    return (jsxRuntimeExports.jsx(StyledGrid$1, { children: jsxRuntimeExports.jsxs(Row, { wrap: "wrap", children: [jsxRuntimeExports.jsx(SkeletonCol, {}), jsxRuntimeExports.jsx(SkeletonCol, {}), jsxRuntimeExports.jsx(SkeletonCol, {}), jsxRuntimeExports.jsx(SkeletonCol, {})] }) }));
+};
+
+const Container$2 = styled.div `
+  padding: ${(p) => p.theme.space.xl} 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${e=>e.theme.space.md};
-`,X=e.div`
+  gap: ${(props) => props.theme.space.md};
+`;
+const TextContainer = styled.div `
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: ${e=>e.theme.space.xxs};
-`,Z=({helpCenterPath:e,searchInputValue:t})=>{const{t:n}=c();return s.jsxs(W,{children:[s.jsxs(X,{children:[s.jsx(u,{children:n("service-catalog.empty-state.no-services","No services in sight")}),""===t?s.jsx(d,{children:n("service-catalog.empty-state.description","Once services are added to catalog, you'll find them here.")}):s.jsx(d,{children:n("service-catalog.empty-state.search-description","Enter your keywords in the search field.")})]}),""===t&&s.jsx(h,{isPrimary:!0,onClick:()=>{window.location.href=e},children:n("service-catalog.empty-state.go-to-homepage","Go to the homepage")})]})},Y=e(j)`
+  gap: ${(props) => props.theme.space.xxs};
+`;
+const EmptyState = ({ helpCenterPath, searchInputValue, }) => {
+    const handleRedirect = () => {
+        window.location.href = helpCenterPath;
+    };
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsxs(Container$2, { children: [jsxRuntimeExports.jsxs(TextContainer, { children: [jsxRuntimeExports.jsx(LG, { children: t("service-catalog.empty-state.no-services", "No services in sight") }), searchInputValue === "" ? (jsxRuntimeExports.jsx(MD, { children: t("service-catalog.empty-state.description", "Once services are added to catalog, you'll find them here.") })) : (jsxRuntimeExports.jsx(MD, { children: t("service-catalog.empty-state.search-description", "Enter your keywords in the search field.") }))] }), searchInputValue === "" && (jsxRuntimeExports.jsx(Button, { isPrimary: true, onClick: handleRedirect, children: t("service-catalog.empty-state.go-to-homepage", "Go to the homepage") }))] }));
+};
+
+const StyledIconButton = styled(IconButton) `
   position: absolute;
   top: 4px;
   inset-inline-end: 4px;
-`,ee=({onChange:e})=>{const{t:t}=c();return s.jsx(f,{content:t("service-catalog.clear-search","Clear search"),placement:"bottom",size:"small",children:s.jsx(Y,{"aria-label":t("service-catalog.clear-search","Clear search"),size:"small",focusInset:!0,onClick:()=>e(""),children:s.jsx(m,{})})})},te=e(b)`
+`;
+const SearchClearIcon = ({ onChange }) => {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsx(Tooltip, { content: t("service-catalog.clear-search", "Clear search"), placement: "bottom", size: "small", children: jsxRuntimeExports.jsx(StyledIconButton, { "aria-label": t("service-catalog.clear-search", "Clear search"), size: "small", focusInset: true, onClick: () => onChange(""), children: jsxRuntimeExports.jsx(SvgXStroke, {}) }) }));
+};
+
+const StyledField = styled(Field) `
   align-items: center;
   width: 320px;
   @media (max-width: 768px) {
     width: 100%;
     display: flex;
   }
-`,ne=e(p)`
-  padding-inline-end: ${e=>7*e.theme.space.base}px;
-`,se=({searchInputValue:e,isLoading:t,onChange:n})=>{const{t:r}=c();return s.jsxs(te,{children:[s.jsx(k,{hidden:!0,children:r("service-catalog.search-services","Search for services")}),s.jsx(ne,{start:s.jsx(g,{}),type:"search",autoComplete:"off",end:t&&e?s.jsx(v,{}):void 0,value:e,placeholder:r("service-catalog.search-services","Search for services"),onChange:e=>n(e.target.value)}),!t&&e&&s.jsx(ee,{onChange:n})]})},re=16;const ae=e(o)`
-  margin-bottom: ${e=>e.theme.space.md};
-`,oe=e.div`
-  padding-top: ${e=>e.theme.space.sm};
-  gap: ${e=>6*e.theme.space.base+"px"};
+`;
+const StyledMediaInput = styled(MediaInput) `
+  padding-inline-end: ${(props) => props.theme.space.base * 7}px;
+`;
+const Search = ({ searchInputValue, isLoading, onChange, }) => {
+    const { t } = useTranslation();
+    return (jsxRuntimeExports.jsxs(StyledField, { children: [jsxRuntimeExports.jsx(Label, { hidden: true, children: t("service-catalog.search-services", "Search for services") }), jsxRuntimeExports.jsx(StyledMediaInput, { start: jsxRuntimeExports.jsx(SvgSearchStroke, {}), type: "search", autoComplete: "off", end: isLoading && searchInputValue ? jsxRuntimeExports.jsx(Dots, {}) : undefined, value: searchInputValue, placeholder: t("service-catalog.search-services", "Search for services"), onChange: (event) => onChange(event.target.value) }), !isLoading && searchInputValue && (jsxRuntimeExports.jsx(SearchClearIcon, { onChange: onChange }))] }));
+};
+
+const PAGE_SIZE = 16;
+function useServiceCatalogItems() {
+    const [meta, setMeta] = reactExports.useState(null);
+    const [count, setCount] = reactExports.useState(0);
+    const [isLoading, setIsLoading] = reactExports.useState(false);
+    const [error, setError] = reactExports.useState(null);
+    const [serviceCatalogItems, setServiceCatalogItems] = reactExports.useState([]);
+    const fetchData = reactExports.useCallback(async (searchInputValue, currentCursor) => {
+        setIsLoading(true);
+        const searchParams = new URLSearchParams();
+        searchParams.set("page[size]", PAGE_SIZE.toString());
+        if (currentCursor) {
+            const [cursorKey, cursorValue] = currentCursor.split("=");
+            cursorKey && cursorValue && searchParams.set(cursorKey, cursorValue);
+        }
+        if (searchInputValue) {
+            searchParams.set("query", searchInputValue);
+        }
+        try {
+            const response = await fetch(`/api/v2/help_center/service_catalog/items/search?${searchParams.toString()}`);
+            const data = await response.json();
+            if (response.ok) {
+                setMeta(data.meta);
+                setServiceCatalogItems(data.service_catalog_items);
+                setCount(data.count);
+                setIsLoading(false);
+            }
+            if (!response.ok) {
+                setIsLoading(false);
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+        }
+        catch (error) {
+            setIsLoading(false);
+            setError(error);
+        }
+    }, []);
+    return {
+        serviceCatalogItems,
+        meta,
+        count,
+        isLoading,
+        errorFetchingItems: error,
+        fetchServiceCatalogItems: fetchData,
+    };
+}
+
+const StyledCol = styled(Col) `
+  margin-bottom: ${(props) => props.theme.space.md};
+`;
+const Container$1 = styled.div `
+  padding-top: ${(props) => props.theme.space.sm};
+  gap: ${(props) => `${props.theme.space.base * 6}px`};
   display: flex;
   flex-direction: column;
-`,ie=e(a)`
+`;
+const StyledGrid = styled(Grid) `
   padding: 0;
-`;function le({helpCenterPath:e}){const[t,n]=x.useState(""),{t:r}=c(),{serviceCatalogItems:a,meta:o,count:l,isLoading:u,errorFetchingItems:d,fetchServiceCatalogItems:h}=function(){const[e,t]=x.useState(null),[n,s]=x.useState(0),[r,a]=x.useState(!1),[o,i]=x.useState(null),[l,c]=x.useState([]),u=x.useCallback((async(e,n)=>{a(!0);const r=new URLSearchParams;if(r.set("page[size]",re.toString()),n){const[e,t]=n.split("=");e&&t&&r.set(e,t)}e&&r.set("query",e);try{const e=await fetch(`/api/v2/help_center/service_catalog/items/search?${r.toString()}`),n=await e.json();if(e.ok&&(t(n.meta),c(n.service_catalog_items),s(n.count),a(!1)),!e.ok)throw a(!1),new Error(`HTTP error! status: ${e.status}`)}catch(e){a(!1),i(e)}}),[]);return{serviceCatalogItems:l,meta:e,count:n,isLoading:r,errorFetchingItems:o,fetchServiceCatalogItems:u}}();if(d)throw y({title:r("service-catalog.service-list-error-title","Services couldn't be loaded"),message:r("service-catalog.service-list-error-message","Give it a moment and try it again"),type:"error"}),d;const j=x.useMemo((()=>w(h,300)),[h]);x.useEffect((()=>{h("",null)}),[h]),x.useEffect((()=>()=>j.cancel()),[j]);return s.jsxs(oe,{children:[s.jsx(se,{searchInputValue:t,isLoading:u,onChange:e=>{n(e),j(e,null)}}),s.jsx("span",{children:r("service-catalog.service-count","{{count}} services",{"defaultValue.one":"{{count}} service",count:l})}),u?s.jsx(Q,{}):s.jsxs(s.Fragment,{children:[s.jsx(ie,{children:s.jsx(i,{wrap:"wrap",children:0!==a.length&&a.map((t=>s.jsx(ae,{xs:12,sm:6,md:4,lg:3,children:s.jsx(V,{serviceItem:t,helpCenterPath:e},t.id)},t.id)))})}),0===a.length&&s.jsx(Z,{helpCenterPath:e,searchInputValue:t}),o&&(o.before_cursor||o.after_cursor)&&s.jsxs(_,{children:[s.jsx(_.Previous,{onClick:()=>{o&&o.before_cursor&&h(t,"page[before]="+o.before_cursor)},disabled:null==o.before_cursor,children:r("service-catalog.pagination.previous","Previous")}),s.jsx(_.Next,{onClick:()=>{o&&o.after_cursor&&h(t,"page[after]="+o.after_cursor)},disabled:null==o.after_cursor,children:r("service-catalog.pagination.next","Next")})]})]})]})}async function ce(e,t,n,r){$(r),await z(r,[()=>function(e){switch(e){case"./translations/locales/af.json":return import("service-catalog-translations").then((function(e){return e.a}));case"./translations/locales/ar-x-pseudo.json":return import("service-catalog-translations").then((function(e){return e.b}));case"./translations/locales/ar.json":return import("service-catalog-translations").then((function(e){return e.c}));case"./translations/locales/az.json":return import("service-catalog-translations").then((function(e){return e.d}));case"./translations/locales/be.json":return import("service-catalog-translations").then((function(e){return e.e}));case"./translations/locales/bg.json":return import("service-catalog-translations").then((function(e){return e.f}));case"./translations/locales/bn.json":return import("service-catalog-translations").then((function(e){return e.g}));case"./translations/locales/bs.json":return import("service-catalog-translations").then((function(e){return e.h}));case"./translations/locales/ca.json":return import("service-catalog-translations").then((function(e){return e.i}));case"./translations/locales/cs.json":return import("service-catalog-translations").then((function(e){return e.j}));case"./translations/locales/cy.json":return import("service-catalog-translations").then((function(e){return e.k}));case"./translations/locales/da.json":return import("service-catalog-translations").then((function(e){return e.l}));case"./translations/locales/de-de.json":return import("service-catalog-translations").then((function(e){return e.m}));case"./translations/locales/de-x-informal.json":return import("service-catalog-translations").then((function(e){return e.n}));case"./translations/locales/de.json":return import("service-catalog-translations").then((function(e){return e.o}));case"./translations/locales/el.json":return import("service-catalog-translations").then((function(e){return e.p}));case"./translations/locales/en-001.json":return import("service-catalog-translations").then((function(e){return e.q}));case"./translations/locales/en-150.json":return import("service-catalog-translations").then((function(e){return e.r}));case"./translations/locales/en-au.json":return import("service-catalog-translations").then((function(e){return e.s}));case"./translations/locales/en-ca.json":return import("service-catalog-translations").then((function(e){return e.t}));case"./translations/locales/en-gb.json":return import("service-catalog-translations").then((function(e){return e.u}));case"./translations/locales/en-my.json":return import("service-catalog-translations").then((function(e){return e.v}));case"./translations/locales/en-ph.json":return import("service-catalog-translations").then((function(e){return e.w}));case"./translations/locales/en-se.json":return import("service-catalog-translations").then((function(e){return e.x}));case"./translations/locales/en-us.json":return import("service-catalog-translations").then((function(e){return e.y}));case"./translations/locales/en-x-dev.json":return import("service-catalog-translations").then((function(e){return e.z}));case"./translations/locales/en-x-keys.json":return import("service-catalog-translations").then((function(e){return e.A}));case"./translations/locales/en-x-obsolete.json":return import("service-catalog-translations").then((function(e){return e.B}));case"./translations/locales/en-x-pseudo.json":return import("service-catalog-translations").then((function(e){return e.C}));case"./translations/locales/en-x-test.json":return import("service-catalog-translations").then((function(e){return e.D}));case"./translations/locales/es-419.json":return import("service-catalog-translations").then((function(e){return e.E}));case"./translations/locales/es-ar.json":return import("service-catalog-translations").then((function(e){return e.F}));case"./translations/locales/es-cl.json":return import("service-catalog-translations").then((function(e){return e.G}));case"./translations/locales/es-es.json":return import("service-catalog-translations").then((function(e){return e.H}));case"./translations/locales/es-mx.json":return import("service-catalog-translations").then((function(e){return e.I}));case"./translations/locales/es-pe.json":return import("service-catalog-translations").then((function(e){return e.J}));case"./translations/locales/es.json":return import("service-catalog-translations").then((function(e){return e.K}));case"./translations/locales/et.json":return import("service-catalog-translations").then((function(e){return e.L}));case"./translations/locales/eu.json":return import("service-catalog-translations").then((function(e){return e.M}));case"./translations/locales/fa-af.json":return import("service-catalog-translations").then((function(e){return e.N}));case"./translations/locales/fa.json":return import("service-catalog-translations").then((function(e){return e.O}));case"./translations/locales/fi.json":return import("service-catalog-translations").then((function(e){return e.P}));case"./translations/locales/fil.json":return import("service-catalog-translations").then((function(e){return e.Q}));case"./translations/locales/fo.json":return import("service-catalog-translations").then((function(e){return e.R}));case"./translations/locales/fr-ca.json":return import("service-catalog-translations").then((function(e){return e.S}));case"./translations/locales/fr-dz.json":return import("service-catalog-translations").then((function(e){return e.T}));case"./translations/locales/fr-mu.json":return import("service-catalog-translations").then((function(e){return e.U}));case"./translations/locales/fr.json":return import("service-catalog-translations").then((function(e){return e.V}));case"./translations/locales/ga.json":return import("service-catalog-translations").then((function(e){return e.W}));case"./translations/locales/he.json":return import("service-catalog-translations").then((function(e){return e.X}));case"./translations/locales/hi.json":return import("service-catalog-translations").then((function(e){return e.Y}));case"./translations/locales/hr.json":return import("service-catalog-translations").then((function(e){return e.Z}));case"./translations/locales/hu.json":return import("service-catalog-translations").then((function(e){return e._}));case"./translations/locales/hy.json":return import("service-catalog-translations").then((function(e){return e.$}));case"./translations/locales/id.json":return import("service-catalog-translations").then((function(e){return e.a0}));case"./translations/locales/is.json":return import("service-catalog-translations").then((function(e){return e.a1}));case"./translations/locales/it-ch.json":return import("service-catalog-translations").then((function(e){return e.a2}));case"./translations/locales/it.json":return import("service-catalog-translations").then((function(e){return e.a3}));case"./translations/locales/ja.json":return import("service-catalog-translations").then((function(e){return e.a4}));case"./translations/locales/ka.json":return import("service-catalog-translations").then((function(e){return e.a5}));case"./translations/locales/kk.json":return import("service-catalog-translations").then((function(e){return e.a6}));case"./translations/locales/kl-dk.json":return import("service-catalog-translations").then((function(e){return e.a7}));case"./translations/locales/km.json":return import("service-catalog-translations").then((function(e){return e.a8}));case"./translations/locales/ko.json":return import("service-catalog-translations").then((function(e){return e.a9}));case"./translations/locales/ku.json":return import("service-catalog-translations").then((function(e){return e.aa}));case"./translations/locales/ky.json":return import("service-catalog-translations").then((function(e){return e.ab}));case"./translations/locales/lt.json":return import("service-catalog-translations").then((function(e){return e.ac}));case"./translations/locales/lv.json":return import("service-catalog-translations").then((function(e){return e.ad}));case"./translations/locales/mk.json":return import("service-catalog-translations").then((function(e){return e.ae}));case"./translations/locales/mn.json":return import("service-catalog-translations").then((function(e){return e.af}));case"./translations/locales/ms.json":return import("service-catalog-translations").then((function(e){return e.ag}));case"./translations/locales/mt.json":return import("service-catalog-translations").then((function(e){return e.ah}));case"./translations/locales/my.json":return import("service-catalog-translations").then((function(e){return e.ai}));case"./translations/locales/ne.json":return import("service-catalog-translations").then((function(e){return e.aj}));case"./translations/locales/nl-be.json":return import("service-catalog-translations").then((function(e){return e.ak}));case"./translations/locales/nl.json":return import("service-catalog-translations").then((function(e){return e.al}));case"./translations/locales/no.json":return import("service-catalog-translations").then((function(e){return e.am}));case"./translations/locales/pl.json":return import("service-catalog-translations").then((function(e){return e.an}));case"./translations/locales/pt-br.json":return import("service-catalog-translations").then((function(e){return e.ao}));case"./translations/locales/pt.json":return import("service-catalog-translations").then((function(e){return e.ap}));case"./translations/locales/ro-md.json":return import("service-catalog-translations").then((function(e){return e.aq}));case"./translations/locales/ro.json":return import("service-catalog-translations").then((function(e){return e.ar}));case"./translations/locales/ru.json":return import("service-catalog-translations").then((function(e){return e.as}));case"./translations/locales/si.json":return import("service-catalog-translations").then((function(e){return e.at}));case"./translations/locales/sk.json":return import("service-catalog-translations").then((function(e){return e.au}));case"./translations/locales/sl.json":return import("service-catalog-translations").then((function(e){return e.av}));case"./translations/locales/sq.json":return import("service-catalog-translations").then((function(e){return e.aw}));case"./translations/locales/sr-me.json":return import("service-catalog-translations").then((function(e){return e.ax}));case"./translations/locales/sr.json":return import("service-catalog-translations").then((function(e){return e.ay}));case"./translations/locales/sv.json":return import("service-catalog-translations").then((function(e){return e.az}));case"./translations/locales/sw-ke.json":return import("service-catalog-translations").then((function(e){return e.aA}));case"./translations/locales/ta.json":return import("service-catalog-translations").then((function(e){return e.aB}));case"./translations/locales/th.json":return import("service-catalog-translations").then((function(e){return e.aC}));case"./translations/locales/tr.json":return import("service-catalog-translations").then((function(e){return e.aD}));case"./translations/locales/uk.json":return import("service-catalog-translations").then((function(e){return e.aE}));case"./translations/locales/ur-pk.json":return import("service-catalog-translations").then((function(e){return e.aF}));case"./translations/locales/ur.json":return import("service-catalog-translations").then((function(e){return e.aG}));case"./translations/locales/uz.json":return import("service-catalog-translations").then((function(e){return e.aH}));case"./translations/locales/vi.json":return import("service-catalog-translations").then((function(e){return e.aI}));case"./translations/locales/zh-cn.json":return import("service-catalog-translations").then((function(e){return e.aJ}));case"./translations/locales/zh-tw.json":return import("service-catalog-translations").then((function(e){return e.aK}));default:return new Promise((function(t,n){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`./translations/locales/${r}.json`),()=>function(e){switch(e){case"../ticket-fields/translations/locales/af.json":return import("ticket-fields").then((function(e){return e.b}));case"../ticket-fields/translations/locales/ar-x-pseudo.json":return import("ticket-fields").then((function(e){return e.c}));case"../ticket-fields/translations/locales/ar.json":return import("ticket-fields").then((function(e){return e.d}));case"../ticket-fields/translations/locales/az.json":return import("ticket-fields").then((function(e){return e.e}));case"../ticket-fields/translations/locales/be.json":return import("ticket-fields").then((function(e){return e.f}));case"../ticket-fields/translations/locales/bg.json":return import("ticket-fields").then((function(e){return e.h}));case"../ticket-fields/translations/locales/bn.json":return import("ticket-fields").then((function(e){return e.i}));case"../ticket-fields/translations/locales/bs.json":return import("ticket-fields").then((function(e){return e.j}));case"../ticket-fields/translations/locales/ca.json":return import("ticket-fields").then((function(e){return e.k}));case"../ticket-fields/translations/locales/cs.json":return import("ticket-fields").then((function(e){return e.l}));case"../ticket-fields/translations/locales/cy.json":return import("ticket-fields").then((function(e){return e.m}));case"../ticket-fields/translations/locales/da.json":return import("ticket-fields").then((function(e){return e.n}));case"../ticket-fields/translations/locales/de-de.json":return import("ticket-fields").then((function(e){return e.o}));case"../ticket-fields/translations/locales/de-x-informal.json":return import("ticket-fields").then((function(e){return e.p}));case"../ticket-fields/translations/locales/de.json":return import("ticket-fields").then((function(e){return e.q}));case"../ticket-fields/translations/locales/el.json":return import("ticket-fields").then((function(e){return e.r}));case"../ticket-fields/translations/locales/en-001.json":return import("ticket-fields").then((function(e){return e.s}));case"../ticket-fields/translations/locales/en-150.json":return import("ticket-fields").then((function(e){return e.t}));case"../ticket-fields/translations/locales/en-au.json":return import("ticket-fields").then((function(e){return e.u}));case"../ticket-fields/translations/locales/en-ca.json":return import("ticket-fields").then((function(e){return e.v}));case"../ticket-fields/translations/locales/en-gb.json":return import("ticket-fields").then((function(e){return e.w}));case"../ticket-fields/translations/locales/en-my.json":return import("ticket-fields").then((function(e){return e.x}));case"../ticket-fields/translations/locales/en-ph.json":return import("ticket-fields").then((function(e){return e.y}));case"../ticket-fields/translations/locales/en-se.json":return import("ticket-fields").then((function(e){return e.z}));case"../ticket-fields/translations/locales/en-us.json":return import("ticket-fields").then((function(e){return e.A}));case"../ticket-fields/translations/locales/en-x-dev.json":return import("ticket-fields").then((function(e){return e.B}));case"../ticket-fields/translations/locales/en-x-keys.json":return import("ticket-fields").then((function(e){return e.C}));case"../ticket-fields/translations/locales/en-x-obsolete.json":return import("ticket-fields").then((function(e){return e.E}));case"../ticket-fields/translations/locales/en-x-pseudo.json":return import("ticket-fields").then((function(e){return e.F}));case"../ticket-fields/translations/locales/en-x-test.json":return import("ticket-fields").then((function(e){return e.G}));case"../ticket-fields/translations/locales/es-419.json":return import("ticket-fields").then((function(e){return e.H}));case"../ticket-fields/translations/locales/es-ar.json":return import("ticket-fields").then((function(e){return e.J}));case"../ticket-fields/translations/locales/es-cl.json":return import("ticket-fields").then((function(e){return e.K}));case"../ticket-fields/translations/locales/es-es.json":return import("ticket-fields").then((function(e){return e.L}));case"../ticket-fields/translations/locales/es-mx.json":return import("ticket-fields").then((function(e){return e.M}));case"../ticket-fields/translations/locales/es-pe.json":return import("ticket-fields").then((function(e){return e.N}));case"../ticket-fields/translations/locales/es.json":return import("ticket-fields").then((function(e){return e.O}));case"../ticket-fields/translations/locales/et.json":return import("ticket-fields").then((function(e){return e.P}));case"../ticket-fields/translations/locales/eu.json":return import("ticket-fields").then((function(e){return e.Q}));case"../ticket-fields/translations/locales/fa-af.json":return import("ticket-fields").then((function(e){return e.S}));case"../ticket-fields/translations/locales/fa.json":return import("ticket-fields").then((function(e){return e.U}));case"../ticket-fields/translations/locales/fi.json":return import("ticket-fields").then((function(e){return e.V}));case"../ticket-fields/translations/locales/fil.json":return import("ticket-fields").then((function(e){return e.W}));case"../ticket-fields/translations/locales/fo.json":return import("ticket-fields").then((function(e){return e.X}));case"../ticket-fields/translations/locales/fr-ca.json":return import("ticket-fields").then((function(e){return e.Y}));case"../ticket-fields/translations/locales/fr-dz.json":return import("ticket-fields").then((function(e){return e.Z}));case"../ticket-fields/translations/locales/fr-mu.json":return import("ticket-fields").then((function(e){return e._}));case"../ticket-fields/translations/locales/fr.json":return import("ticket-fields").then((function(e){return e.$}));case"../ticket-fields/translations/locales/ga.json":return import("ticket-fields").then((function(e){return e.a0}));case"../ticket-fields/translations/locales/he.json":return import("ticket-fields").then((function(e){return e.a1}));case"../ticket-fields/translations/locales/hi.json":return import("ticket-fields").then((function(e){return e.a2}));case"../ticket-fields/translations/locales/hr.json":return import("ticket-fields").then((function(e){return e.a3}));case"../ticket-fields/translations/locales/hu.json":return import("ticket-fields").then((function(e){return e.a4}));case"../ticket-fields/translations/locales/hy.json":return import("ticket-fields").then((function(e){return e.a5}));case"../ticket-fields/translations/locales/id.json":return import("ticket-fields").then((function(e){return e.a6}));case"../ticket-fields/translations/locales/is.json":return import("ticket-fields").then((function(e){return e.a7}));case"../ticket-fields/translations/locales/it-ch.json":return import("ticket-fields").then((function(e){return e.a8}));case"../ticket-fields/translations/locales/it.json":return import("ticket-fields").then((function(e){return e.a9}));case"../ticket-fields/translations/locales/ja.json":return import("ticket-fields").then((function(e){return e.aa}));case"../ticket-fields/translations/locales/ka.json":return import("ticket-fields").then((function(e){return e.ab}));case"../ticket-fields/translations/locales/kk.json":return import("ticket-fields").then((function(e){return e.ac}));case"../ticket-fields/translations/locales/kl-dk.json":return import("ticket-fields").then((function(e){return e.ad}));case"../ticket-fields/translations/locales/km.json":return import("ticket-fields").then((function(e){return e.ae}));case"../ticket-fields/translations/locales/ko.json":return import("ticket-fields").then((function(e){return e.af}));case"../ticket-fields/translations/locales/ku.json":return import("ticket-fields").then((function(e){return e.ag}));case"../ticket-fields/translations/locales/ky.json":return import("ticket-fields").then((function(e){return e.ah}));case"../ticket-fields/translations/locales/lt.json":return import("ticket-fields").then((function(e){return e.ai}));case"../ticket-fields/translations/locales/lv.json":return import("ticket-fields").then((function(e){return e.aj}));case"../ticket-fields/translations/locales/mk.json":return import("ticket-fields").then((function(e){return e.ak}));case"../ticket-fields/translations/locales/mn.json":return import("ticket-fields").then((function(e){return e.al}));case"../ticket-fields/translations/locales/ms.json":return import("ticket-fields").then((function(e){return e.am}));case"../ticket-fields/translations/locales/mt.json":return import("ticket-fields").then((function(e){return e.an}));case"../ticket-fields/translations/locales/my.json":return import("ticket-fields").then((function(e){return e.ao}));case"../ticket-fields/translations/locales/ne.json":return import("ticket-fields").then((function(e){return e.ap}));case"../ticket-fields/translations/locales/nl-be.json":return import("ticket-fields").then((function(e){return e.aq}));case"../ticket-fields/translations/locales/nl.json":return import("ticket-fields").then((function(e){return e.ar}));case"../ticket-fields/translations/locales/no.json":return import("ticket-fields").then((function(e){return e.as}));case"../ticket-fields/translations/locales/pl.json":return import("ticket-fields").then((function(e){return e.at}));case"../ticket-fields/translations/locales/pt-br.json":return import("ticket-fields").then((function(e){return e.au}));case"../ticket-fields/translations/locales/pt.json":return import("ticket-fields").then((function(e){return e.av}));case"../ticket-fields/translations/locales/ro-md.json":return import("ticket-fields").then((function(e){return e.aw}));case"../ticket-fields/translations/locales/ro.json":return import("ticket-fields").then((function(e){return e.ax}));case"../ticket-fields/translations/locales/ru.json":return import("ticket-fields").then((function(e){return e.ay}));case"../ticket-fields/translations/locales/si.json":return import("ticket-fields").then((function(e){return e.az}));case"../ticket-fields/translations/locales/sk.json":return import("ticket-fields").then((function(e){return e.aA}));case"../ticket-fields/translations/locales/sl.json":return import("ticket-fields").then((function(e){return e.aB}));case"../ticket-fields/translations/locales/sq.json":return import("ticket-fields").then((function(e){return e.aC}));case"../ticket-fields/translations/locales/sr-me.json":return import("ticket-fields").then((function(e){return e.aD}));case"../ticket-fields/translations/locales/sr.json":return import("ticket-fields").then((function(e){return e.aE}));case"../ticket-fields/translations/locales/sv.json":return import("ticket-fields").then((function(e){return e.aF}));case"../ticket-fields/translations/locales/sw-ke.json":return import("ticket-fields").then((function(e){return e.aG}));case"../ticket-fields/translations/locales/ta.json":return import("ticket-fields").then((function(e){return e.aH}));case"../ticket-fields/translations/locales/th.json":return import("ticket-fields").then((function(e){return e.aI}));case"../ticket-fields/translations/locales/tr.json":return import("ticket-fields").then((function(e){return e.aJ}));case"../ticket-fields/translations/locales/uk.json":return import("ticket-fields").then((function(e){return e.aK}));case"../ticket-fields/translations/locales/ur-pk.json":return import("ticket-fields").then((function(e){return e.aL}));case"../ticket-fields/translations/locales/ur.json":return import("ticket-fields").then((function(e){return e.aM}));case"../ticket-fields/translations/locales/uz.json":return import("ticket-fields").then((function(e){return e.aN}));case"../ticket-fields/translations/locales/vi.json":return import("ticket-fields").then((function(e){return e.aO}));case"../ticket-fields/translations/locales/zh-cn.json":return import("ticket-fields").then((function(e){return e.aP}));case"../ticket-fields/translations/locales/zh-tw.json":return import("ticket-fields").then((function(e){return e.aQ}));default:return new Promise((function(t,n){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`../ticket-fields/translations/locales/${r}.json`),()=>function(e){switch(e){case"../shared/translations/locales/af.json":return import("shared").then((function(e){return e.az}));case"../shared/translations/locales/ar-x-pseudo.json":return import("shared").then((function(e){return e.aA}));case"../shared/translations/locales/ar.json":return import("shared").then((function(e){return e.aB}));case"../shared/translations/locales/az.json":return import("shared").then((function(e){return e.aC}));case"../shared/translations/locales/be.json":return import("shared").then((function(e){return e.aD}));case"../shared/translations/locales/bg.json":return import("shared").then((function(e){return e.aE}));case"../shared/translations/locales/bn.json":return import("shared").then((function(e){return e.aF}));case"../shared/translations/locales/bs.json":return import("shared").then((function(e){return e.aG}));case"../shared/translations/locales/ca.json":return import("shared").then((function(e){return e.aH}));case"../shared/translations/locales/cs.json":return import("shared").then((function(e){return e.aI}));case"../shared/translations/locales/cy.json":return import("shared").then((function(e){return e.aJ}));case"../shared/translations/locales/da.json":return import("shared").then((function(e){return e.aK}));case"../shared/translations/locales/de-de.json":return import("shared").then((function(e){return e.aL}));case"../shared/translations/locales/de-x-informal.json":return import("shared").then((function(e){return e.aM}));case"../shared/translations/locales/de.json":return import("shared").then((function(e){return e.aN}));case"../shared/translations/locales/el.json":return import("shared").then((function(e){return e.aO}));case"../shared/translations/locales/en-001.json":return import("shared").then((function(e){return e.aP}));case"../shared/translations/locales/en-150.json":return import("shared").then((function(e){return e.aQ}));case"../shared/translations/locales/en-au.json":return import("shared").then((function(e){return e.aR}));case"../shared/translations/locales/en-ca.json":return import("shared").then((function(e){return e.aS}));case"../shared/translations/locales/en-gb.json":return import("shared").then((function(e){return e.aT}));case"../shared/translations/locales/en-my.json":return import("shared").then((function(e){return e.aU}));case"../shared/translations/locales/en-ph.json":return import("shared").then((function(e){return e.aV}));case"../shared/translations/locales/en-se.json":return import("shared").then((function(e){return e.aW}));case"../shared/translations/locales/en-us.json":return import("shared").then((function(e){return e.aX}));case"../shared/translations/locales/en-x-dev.json":return import("shared").then((function(e){return e.aY}));case"../shared/translations/locales/en-x-keys.json":return import("shared").then((function(e){return e.aZ}));case"../shared/translations/locales/en-x-obsolete.json":return import("shared").then((function(e){return e.a_}));case"../shared/translations/locales/en-x-pseudo.json":return import("shared").then((function(e){return e.a$}));case"../shared/translations/locales/en-x-test.json":return import("shared").then((function(e){return e.b0}));case"../shared/translations/locales/es-419.json":return import("shared").then((function(e){return e.b1}));case"../shared/translations/locales/es-ar.json":return import("shared").then((function(e){return e.b2}));case"../shared/translations/locales/es-cl.json":return import("shared").then((function(e){return e.b3}));case"../shared/translations/locales/es-es.json":return import("shared").then((function(e){return e.b4}));case"../shared/translations/locales/es-mx.json":return import("shared").then((function(e){return e.b5}));case"../shared/translations/locales/es-pe.json":return import("shared").then((function(e){return e.b6}));case"../shared/translations/locales/es.json":return import("shared").then((function(e){return e.b7}));case"../shared/translations/locales/et.json":return import("shared").then((function(e){return e.b8}));case"../shared/translations/locales/eu.json":return import("shared").then((function(e){return e.b9}));case"../shared/translations/locales/fa-af.json":return import("shared").then((function(e){return e.ba}));case"../shared/translations/locales/fa.json":return import("shared").then((function(e){return e.bb}));case"../shared/translations/locales/fi.json":return import("shared").then((function(e){return e.bc}));case"../shared/translations/locales/fil.json":return import("shared").then((function(e){return e.bd}));case"../shared/translations/locales/fo.json":return import("shared").then((function(e){return e.be}));case"../shared/translations/locales/fr-ca.json":return import("shared").then((function(e){return e.bf}));case"../shared/translations/locales/fr-dz.json":return import("shared").then((function(e){return e.bg}));case"../shared/translations/locales/fr-mu.json":return import("shared").then((function(e){return e.bh}));case"../shared/translations/locales/fr.json":return import("shared").then((function(e){return e.bi}));case"../shared/translations/locales/ga.json":return import("shared").then((function(e){return e.bj}));case"../shared/translations/locales/he.json":return import("shared").then((function(e){return e.bk}));case"../shared/translations/locales/hi.json":return import("shared").then((function(e){return e.bl}));case"../shared/translations/locales/hr.json":return import("shared").then((function(e){return e.bm}));case"../shared/translations/locales/hu.json":return import("shared").then((function(e){return e.bn}));case"../shared/translations/locales/hy.json":return import("shared").then((function(e){return e.bo}));case"../shared/translations/locales/id.json":return import("shared").then((function(e){return e.bp}));case"../shared/translations/locales/is.json":return import("shared").then((function(e){return e.bq}));case"../shared/translations/locales/it-ch.json":return import("shared").then((function(e){return e.br}));case"../shared/translations/locales/it.json":return import("shared").then((function(e){return e.bs}));case"../shared/translations/locales/ja.json":return import("shared").then((function(e){return e.bt}));case"../shared/translations/locales/ka.json":return import("shared").then((function(e){return e.bu}));case"../shared/translations/locales/kk.json":return import("shared").then((function(e){return e.bv}));case"../shared/translations/locales/kl-dk.json":return import("shared").then((function(e){return e.bw}));case"../shared/translations/locales/km.json":return import("shared").then((function(e){return e.bx}));case"../shared/translations/locales/ko.json":return import("shared").then((function(e){return e.by}));case"../shared/translations/locales/ku.json":return import("shared").then((function(e){return e.bz}));case"../shared/translations/locales/ky.json":return import("shared").then((function(e){return e.bA}));case"../shared/translations/locales/lt.json":return import("shared").then((function(e){return e.bB}));case"../shared/translations/locales/lv.json":return import("shared").then((function(e){return e.bC}));case"../shared/translations/locales/mk.json":return import("shared").then((function(e){return e.bD}));case"../shared/translations/locales/mn.json":return import("shared").then((function(e){return e.bE}));case"../shared/translations/locales/ms.json":return import("shared").then((function(e){return e.bF}));case"../shared/translations/locales/mt.json":return import("shared").then((function(e){return e.bG}));case"../shared/translations/locales/my.json":return import("shared").then((function(e){return e.bH}));case"../shared/translations/locales/ne.json":return import("shared").then((function(e){return e.bI}));case"../shared/translations/locales/nl-be.json":return import("shared").then((function(e){return e.bJ}));case"../shared/translations/locales/nl.json":return import("shared").then((function(e){return e.bK}));case"../shared/translations/locales/no.json":return import("shared").then((function(e){return e.bL}));case"../shared/translations/locales/pl.json":return import("shared").then((function(e){return e.bM}));case"../shared/translations/locales/pt-br.json":return import("shared").then((function(e){return e.bN}));case"../shared/translations/locales/pt.json":return import("shared").then((function(e){return e.bO}));case"../shared/translations/locales/ro-md.json":return import("shared").then((function(e){return e.bP}));case"../shared/translations/locales/ro.json":return import("shared").then((function(e){return e.bQ}));case"../shared/translations/locales/ru.json":return import("shared").then((function(e){return e.bR}));case"../shared/translations/locales/si.json":return import("shared").then((function(e){return e.bS}));case"../shared/translations/locales/sk.json":return import("shared").then((function(e){return e.bT}));case"../shared/translations/locales/sl.json":return import("shared").then((function(e){return e.bU}));case"../shared/translations/locales/sq.json":return import("shared").then((function(e){return e.bV}));case"../shared/translations/locales/sr-me.json":return import("shared").then((function(e){return e.bW}));case"../shared/translations/locales/sr.json":return import("shared").then((function(e){return e.bX}));case"../shared/translations/locales/sv.json":return import("shared").then((function(e){return e.bY}));case"../shared/translations/locales/sw-ke.json":return import("shared").then((function(e){return e.bZ}));case"../shared/translations/locales/ta.json":return import("shared").then((function(e){return e.b_}));case"../shared/translations/locales/th.json":return import("shared").then((function(e){return e.b$}));case"../shared/translations/locales/tr.json":return import("shared").then((function(e){return e.c0}));case"../shared/translations/locales/uk.json":return import("shared").then((function(e){return e.c1}));case"../shared/translations/locales/ur-pk.json":return import("shared").then((function(e){return e.c2}));case"../shared/translations/locales/ur.json":return import("shared").then((function(e){return e.c3}));case"../shared/translations/locales/uz.json":return import("shared").then((function(e){return e.c4}));case"../shared/translations/locales/vi.json":return import("shared").then((function(e){return e.c5}));case"../shared/translations/locales/zh-cn.json":return import("shared").then((function(e){return e.c6}));case"../shared/translations/locales/zh-tw.json":return import("shared").then((function(e){return e.c7}));default:return new Promise((function(t,n){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`../shared/translations/locales/${r}.json`)]),C.render(s.jsx(S,{theme:q(t),children:s.jsx(I,{helpCenterPath:n,children:s.jsx(le,{helpCenterPath:n})})}),e)}const ue=e=>"tagger"===e.type?e.custom_field_options.find((e=>e.default))?.value??null:null,de=async(e,t)=>{const[n,s]=await Promise.all([fetch(`/api/v2/ticket_forms/${e}`),fetch(`/api/v2/ticket_fields?locale=${t}`)]);if(!n.ok)throw new Error("Error fetching form data");if(!s.ok)throw new Error("Error fetching fields data");const r=await n.json(),a=await s.json();if(!r.ticket_form.active)throw new Error("Associated ticket form is not active");const o=r.ticket_form,i=o.ticket_field_ids,l=o.end_user_conditions||[],c=a.ticket_fields;let u=null;const d=i.map((e=>{const t=c.find((t=>t.id===e));return t&&"subject"!==t.type&&"description"!==t.type&&t.active&&t.editable_in_portal?"lookup"===t.type&&"standard::service_catalog_item"===M(t.relationship_target_type)?(u=t,null):(e=>{const{id:t,type:n,description:s,title_in_portal:r,custom_field_options:a,required_in_portal:o,relationship_target_type:i,relationship_filter:l}=e;return{id:t,type:n,name:`custom_fields_${t}`,description:s,label:r,options:a,required:o,relationship_target_type:i,relationship_filter:l,error:null,value:ue(e)}})(t):null})).filter(Boolean);if(!u)throw new Error("Associated lookup field not found");return{requestFields:d,associatedLookupField:u,endUserConditions:l}};const he=e.div`
-  border-bottom: ${e=>e.theme.borders.sm}
-    ${e=>t("grey",300,e.theme)};
-  padding-bottom: ${e=>e.theme.space.lg};
-  margin-inline-end: ${e=>e.theme.space.xl};
+`;
+function ServiceCatalogList({ helpCenterPath, }) {
+    const [searchInputValue, setSearchInputValue] = reactExports.useState("");
+    const { t } = useTranslation();
+    const { serviceCatalogItems, meta, count, isLoading, errorFetchingItems, fetchServiceCatalogItems, } = useServiceCatalogItems();
+    if (errorFetchingItems) {
+        notify({
+            title: t("service-catalog.service-list-error-title", "Services couldn't be loaded"),
+            message: t("service-catalog.service-list-error-message", "Give it a moment and try it again"),
+            type: "error",
+        });
+        throw errorFetchingItems;
+    }
+    const debouncedUpdateServiceCatalogItems = reactExports.useMemo(() => debounce(fetchServiceCatalogItems, 300), [fetchServiceCatalogItems]);
+    reactExports.useEffect(() => {
+        fetchServiceCatalogItems("", null);
+    }, [fetchServiceCatalogItems]);
+    reactExports.useEffect(() => {
+        return () => debouncedUpdateServiceCatalogItems.cancel();
+    }, [debouncedUpdateServiceCatalogItems]);
+    const handleNextClick = () => {
+        if (meta && meta.after_cursor) {
+            fetchServiceCatalogItems(searchInputValue, "page[after]=" + meta.after_cursor);
+        }
+    };
+    const handlePreviousClick = () => {
+        if (meta && meta.before_cursor) {
+            fetchServiceCatalogItems(searchInputValue, "page[before]=" + meta.before_cursor);
+        }
+    };
+    const handleInputChange = (value) => {
+        setSearchInputValue(value);
+        debouncedUpdateServiceCatalogItems(value, null);
+    };
+    return (jsxRuntimeExports.jsxs(Container$1, { children: [jsxRuntimeExports.jsx(Search, { searchInputValue: searchInputValue, isLoading: isLoading, onChange: handleInputChange }), jsxRuntimeExports.jsx("span", { children: t("service-catalog.service-count", "{{count}} services", {
+                    "defaultValue.one": "{{count}} service",
+                    count,
+                }) }), isLoading ? (jsxRuntimeExports.jsx(LoadingState, {})) : (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx(StyledGrid, { children: jsxRuntimeExports.jsx(Row, { wrap: "wrap", children: serviceCatalogItems.length !== 0 &&
+                                serviceCatalogItems.map((record) => (jsxRuntimeExports.jsx(StyledCol, { xs: 12, sm: 6, md: 4, lg: 3, children: jsxRuntimeExports.jsx(ServiceCatalogListItem, { serviceItem: record, helpCenterPath: helpCenterPath }, record.id) }, record.id))) }) }), serviceCatalogItems.length === 0 && (jsxRuntimeExports.jsx(EmptyState, { helpCenterPath: helpCenterPath, searchInputValue: searchInputValue })), meta && (meta.before_cursor || meta.after_cursor) && (jsxRuntimeExports.jsxs(CursorPagination, { children: [jsxRuntimeExports.jsx(CursorPagination.Previous, { onClick: handlePreviousClick, disabled: meta.before_cursor == null, children: t("service-catalog.pagination.previous", "Previous") }), jsxRuntimeExports.jsx(CursorPagination.Next, { onClick: handleNextClick, disabled: meta.after_cursor == null, children: t("service-catalog.pagination.next", "Next") })] }))] }))] }));
+}
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+function __variableDynamicImportRuntime2__$1(path) {
+  switch (path) {
+    case '../shared/translations/locales/af.json': return import('shared').then(function (n) { return n.aA; });
+    case '../shared/translations/locales/ar-x-pseudo.json': return import('shared').then(function (n) { return n.aB; });
+    case '../shared/translations/locales/ar.json': return import('shared').then(function (n) { return n.aC; });
+    case '../shared/translations/locales/az.json': return import('shared').then(function (n) { return n.aD; });
+    case '../shared/translations/locales/be.json': return import('shared').then(function (n) { return n.aE; });
+    case '../shared/translations/locales/bg.json': return import('shared').then(function (n) { return n.aF; });
+    case '../shared/translations/locales/bn.json': return import('shared').then(function (n) { return n.aG; });
+    case '../shared/translations/locales/bs.json': return import('shared').then(function (n) { return n.aH; });
+    case '../shared/translations/locales/ca.json': return import('shared').then(function (n) { return n.aI; });
+    case '../shared/translations/locales/cs.json': return import('shared').then(function (n) { return n.aJ; });
+    case '../shared/translations/locales/cy.json': return import('shared').then(function (n) { return n.aK; });
+    case '../shared/translations/locales/da.json': return import('shared').then(function (n) { return n.aL; });
+    case '../shared/translations/locales/de-de.json': return import('shared').then(function (n) { return n.aM; });
+    case '../shared/translations/locales/de-x-informal.json': return import('shared').then(function (n) { return n.aN; });
+    case '../shared/translations/locales/de.json': return import('shared').then(function (n) { return n.aO; });
+    case '../shared/translations/locales/el.json': return import('shared').then(function (n) { return n.aP; });
+    case '../shared/translations/locales/en-001.json': return import('shared').then(function (n) { return n.aQ; });
+    case '../shared/translations/locales/en-150.json': return import('shared').then(function (n) { return n.aR; });
+    case '../shared/translations/locales/en-au.json': return import('shared').then(function (n) { return n.aS; });
+    case '../shared/translations/locales/en-ca.json': return import('shared').then(function (n) { return n.aT; });
+    case '../shared/translations/locales/en-gb.json': return import('shared').then(function (n) { return n.aU; });
+    case '../shared/translations/locales/en-my.json': return import('shared').then(function (n) { return n.aV; });
+    case '../shared/translations/locales/en-ph.json': return import('shared').then(function (n) { return n.aW; });
+    case '../shared/translations/locales/en-se.json': return import('shared').then(function (n) { return n.aX; });
+    case '../shared/translations/locales/en-us.json': return import('shared').then(function (n) { return n.aY; });
+    case '../shared/translations/locales/en-x-dev.json': return import('shared').then(function (n) { return n.aZ; });
+    case '../shared/translations/locales/en-x-keys.json': return import('shared').then(function (n) { return n.a_; });
+    case '../shared/translations/locales/en-x-obsolete.json': return import('shared').then(function (n) { return n.a$; });
+    case '../shared/translations/locales/en-x-pseudo.json': return import('shared').then(function (n) { return n.b0; });
+    case '../shared/translations/locales/en-x-test.json': return import('shared').then(function (n) { return n.b1; });
+    case '../shared/translations/locales/es-419.json': return import('shared').then(function (n) { return n.b2; });
+    case '../shared/translations/locales/es-ar.json': return import('shared').then(function (n) { return n.b3; });
+    case '../shared/translations/locales/es-cl.json': return import('shared').then(function (n) { return n.b4; });
+    case '../shared/translations/locales/es-es.json': return import('shared').then(function (n) { return n.b5; });
+    case '../shared/translations/locales/es-mx.json': return import('shared').then(function (n) { return n.b6; });
+    case '../shared/translations/locales/es-pe.json': return import('shared').then(function (n) { return n.b7; });
+    case '../shared/translations/locales/es.json': return import('shared').then(function (n) { return n.b8; });
+    case '../shared/translations/locales/et.json': return import('shared').then(function (n) { return n.b9; });
+    case '../shared/translations/locales/eu.json': return import('shared').then(function (n) { return n.ba; });
+    case '../shared/translations/locales/fa-af.json': return import('shared').then(function (n) { return n.bb; });
+    case '../shared/translations/locales/fa.json': return import('shared').then(function (n) { return n.bc; });
+    case '../shared/translations/locales/fi.json': return import('shared').then(function (n) { return n.bd; });
+    case '../shared/translations/locales/fil.json': return import('shared').then(function (n) { return n.be; });
+    case '../shared/translations/locales/fo.json': return import('shared').then(function (n) { return n.bf; });
+    case '../shared/translations/locales/fr-ca.json': return import('shared').then(function (n) { return n.bg; });
+    case '../shared/translations/locales/fr-dz.json': return import('shared').then(function (n) { return n.bh; });
+    case '../shared/translations/locales/fr-mu.json': return import('shared').then(function (n) { return n.bi; });
+    case '../shared/translations/locales/fr.json': return import('shared').then(function (n) { return n.bj; });
+    case '../shared/translations/locales/ga.json': return import('shared').then(function (n) { return n.bk; });
+    case '../shared/translations/locales/he.json': return import('shared').then(function (n) { return n.bl; });
+    case '../shared/translations/locales/hi.json': return import('shared').then(function (n) { return n.bm; });
+    case '../shared/translations/locales/hr.json': return import('shared').then(function (n) { return n.bn; });
+    case '../shared/translations/locales/hu.json': return import('shared').then(function (n) { return n.bo; });
+    case '../shared/translations/locales/hy.json': return import('shared').then(function (n) { return n.bp; });
+    case '../shared/translations/locales/id.json': return import('shared').then(function (n) { return n.bq; });
+    case '../shared/translations/locales/is.json': return import('shared').then(function (n) { return n.br; });
+    case '../shared/translations/locales/it-ch.json': return import('shared').then(function (n) { return n.bs; });
+    case '../shared/translations/locales/it.json': return import('shared').then(function (n) { return n.bt; });
+    case '../shared/translations/locales/ja.json': return import('shared').then(function (n) { return n.bu; });
+    case '../shared/translations/locales/ka.json': return import('shared').then(function (n) { return n.bv; });
+    case '../shared/translations/locales/kk.json': return import('shared').then(function (n) { return n.bw; });
+    case '../shared/translations/locales/kl-dk.json': return import('shared').then(function (n) { return n.bx; });
+    case '../shared/translations/locales/km.json': return import('shared').then(function (n) { return n.by; });
+    case '../shared/translations/locales/ko.json': return import('shared').then(function (n) { return n.bz; });
+    case '../shared/translations/locales/ku.json': return import('shared').then(function (n) { return n.bA; });
+    case '../shared/translations/locales/ky.json': return import('shared').then(function (n) { return n.bB; });
+    case '../shared/translations/locales/lt.json': return import('shared').then(function (n) { return n.bC; });
+    case '../shared/translations/locales/lv.json': return import('shared').then(function (n) { return n.bD; });
+    case '../shared/translations/locales/mk.json': return import('shared').then(function (n) { return n.bE; });
+    case '../shared/translations/locales/mn.json': return import('shared').then(function (n) { return n.bF; });
+    case '../shared/translations/locales/ms.json': return import('shared').then(function (n) { return n.bG; });
+    case '../shared/translations/locales/mt.json': return import('shared').then(function (n) { return n.bH; });
+    case '../shared/translations/locales/my.json': return import('shared').then(function (n) { return n.bI; });
+    case '../shared/translations/locales/ne.json': return import('shared').then(function (n) { return n.bJ; });
+    case '../shared/translations/locales/nl-be.json': return import('shared').then(function (n) { return n.bK; });
+    case '../shared/translations/locales/nl.json': return import('shared').then(function (n) { return n.bL; });
+    case '../shared/translations/locales/no.json': return import('shared').then(function (n) { return n.bM; });
+    case '../shared/translations/locales/pl.json': return import('shared').then(function (n) { return n.bN; });
+    case '../shared/translations/locales/pt-br.json': return import('shared').then(function (n) { return n.bO; });
+    case '../shared/translations/locales/pt.json': return import('shared').then(function (n) { return n.bP; });
+    case '../shared/translations/locales/ro-md.json': return import('shared').then(function (n) { return n.bQ; });
+    case '../shared/translations/locales/ro.json': return import('shared').then(function (n) { return n.bR; });
+    case '../shared/translations/locales/ru.json': return import('shared').then(function (n) { return n.bS; });
+    case '../shared/translations/locales/si.json': return import('shared').then(function (n) { return n.bT; });
+    case '../shared/translations/locales/sk.json': return import('shared').then(function (n) { return n.bU; });
+    case '../shared/translations/locales/sl.json': return import('shared').then(function (n) { return n.bV; });
+    case '../shared/translations/locales/sq.json': return import('shared').then(function (n) { return n.bW; });
+    case '../shared/translations/locales/sr-me.json': return import('shared').then(function (n) { return n.bX; });
+    case '../shared/translations/locales/sr.json': return import('shared').then(function (n) { return n.bY; });
+    case '../shared/translations/locales/sv.json': return import('shared').then(function (n) { return n.bZ; });
+    case '../shared/translations/locales/sw-ke.json': return import('shared').then(function (n) { return n.b_; });
+    case '../shared/translations/locales/ta.json': return import('shared').then(function (n) { return n.b$; });
+    case '../shared/translations/locales/th.json': return import('shared').then(function (n) { return n.c0; });
+    case '../shared/translations/locales/tr.json': return import('shared').then(function (n) { return n.c1; });
+    case '../shared/translations/locales/uk.json': return import('shared').then(function (n) { return n.c2; });
+    case '../shared/translations/locales/ur-pk.json': return import('shared').then(function (n) { return n.c3; });
+    case '../shared/translations/locales/ur.json': return import('shared').then(function (n) { return n.c4; });
+    case '../shared/translations/locales/uz.json': return import('shared').then(function (n) { return n.c5; });
+    case '../shared/translations/locales/vi.json': return import('shared').then(function (n) { return n.c6; });
+    case '../shared/translations/locales/zh-cn.json': return import('shared').then(function (n) { return n.c7; });
+    case '../shared/translations/locales/zh-tw.json': return import('shared').then(function (n) { return n.c8; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime1__$1(path) {
+  switch (path) {
+    case '../ticket-fields/translations/locales/af.json': return import('ticket-fields').then(function (n) { return n.b; });
+    case '../ticket-fields/translations/locales/ar-x-pseudo.json': return import('ticket-fields').then(function (n) { return n.c; });
+    case '../ticket-fields/translations/locales/ar.json': return import('ticket-fields').then(function (n) { return n.d; });
+    case '../ticket-fields/translations/locales/az.json': return import('ticket-fields').then(function (n) { return n.e; });
+    case '../ticket-fields/translations/locales/be.json': return import('ticket-fields').then(function (n) { return n.f; });
+    case '../ticket-fields/translations/locales/bg.json': return import('ticket-fields').then(function (n) { return n.h; });
+    case '../ticket-fields/translations/locales/bn.json': return import('ticket-fields').then(function (n) { return n.i; });
+    case '../ticket-fields/translations/locales/bs.json': return import('ticket-fields').then(function (n) { return n.j; });
+    case '../ticket-fields/translations/locales/ca.json': return import('ticket-fields').then(function (n) { return n.k; });
+    case '../ticket-fields/translations/locales/cs.json': return import('ticket-fields').then(function (n) { return n.l; });
+    case '../ticket-fields/translations/locales/cy.json': return import('ticket-fields').then(function (n) { return n.m; });
+    case '../ticket-fields/translations/locales/da.json': return import('ticket-fields').then(function (n) { return n.n; });
+    case '../ticket-fields/translations/locales/de-de.json': return import('ticket-fields').then(function (n) { return n.o; });
+    case '../ticket-fields/translations/locales/de-x-informal.json': return import('ticket-fields').then(function (n) { return n.p; });
+    case '../ticket-fields/translations/locales/de.json': return import('ticket-fields').then(function (n) { return n.q; });
+    case '../ticket-fields/translations/locales/el.json': return import('ticket-fields').then(function (n) { return n.r; });
+    case '../ticket-fields/translations/locales/en-001.json': return import('ticket-fields').then(function (n) { return n.s; });
+    case '../ticket-fields/translations/locales/en-150.json': return import('ticket-fields').then(function (n) { return n.t; });
+    case '../ticket-fields/translations/locales/en-au.json': return import('ticket-fields').then(function (n) { return n.u; });
+    case '../ticket-fields/translations/locales/en-ca.json': return import('ticket-fields').then(function (n) { return n.v; });
+    case '../ticket-fields/translations/locales/en-gb.json': return import('ticket-fields').then(function (n) { return n.w; });
+    case '../ticket-fields/translations/locales/en-my.json': return import('ticket-fields').then(function (n) { return n.x; });
+    case '../ticket-fields/translations/locales/en-ph.json': return import('ticket-fields').then(function (n) { return n.y; });
+    case '../ticket-fields/translations/locales/en-se.json': return import('ticket-fields').then(function (n) { return n.z; });
+    case '../ticket-fields/translations/locales/en-us.json': return import('ticket-fields').then(function (n) { return n.A; });
+    case '../ticket-fields/translations/locales/en-x-dev.json': return import('ticket-fields').then(function (n) { return n.B; });
+    case '../ticket-fields/translations/locales/en-x-keys.json': return import('ticket-fields').then(function (n) { return n.C; });
+    case '../ticket-fields/translations/locales/en-x-obsolete.json': return import('ticket-fields').then(function (n) { return n.E; });
+    case '../ticket-fields/translations/locales/en-x-pseudo.json': return import('ticket-fields').then(function (n) { return n.F; });
+    case '../ticket-fields/translations/locales/en-x-test.json': return import('ticket-fields').then(function (n) { return n.G; });
+    case '../ticket-fields/translations/locales/es-419.json': return import('ticket-fields').then(function (n) { return n.H; });
+    case '../ticket-fields/translations/locales/es-ar.json': return import('ticket-fields').then(function (n) { return n.J; });
+    case '../ticket-fields/translations/locales/es-cl.json': return import('ticket-fields').then(function (n) { return n.K; });
+    case '../ticket-fields/translations/locales/es-es.json': return import('ticket-fields').then(function (n) { return n.L; });
+    case '../ticket-fields/translations/locales/es-mx.json': return import('ticket-fields').then(function (n) { return n.M; });
+    case '../ticket-fields/translations/locales/es-pe.json': return import('ticket-fields').then(function (n) { return n.N; });
+    case '../ticket-fields/translations/locales/es.json': return import('ticket-fields').then(function (n) { return n.O; });
+    case '../ticket-fields/translations/locales/et.json': return import('ticket-fields').then(function (n) { return n.P; });
+    case '../ticket-fields/translations/locales/eu.json': return import('ticket-fields').then(function (n) { return n.Q; });
+    case '../ticket-fields/translations/locales/fa-af.json': return import('ticket-fields').then(function (n) { return n.S; });
+    case '../ticket-fields/translations/locales/fa.json': return import('ticket-fields').then(function (n) { return n.U; });
+    case '../ticket-fields/translations/locales/fi.json': return import('ticket-fields').then(function (n) { return n.V; });
+    case '../ticket-fields/translations/locales/fil.json': return import('ticket-fields').then(function (n) { return n.W; });
+    case '../ticket-fields/translations/locales/fo.json': return import('ticket-fields').then(function (n) { return n.X; });
+    case '../ticket-fields/translations/locales/fr-ca.json': return import('ticket-fields').then(function (n) { return n.Y; });
+    case '../ticket-fields/translations/locales/fr-dz.json': return import('ticket-fields').then(function (n) { return n.Z; });
+    case '../ticket-fields/translations/locales/fr-mu.json': return import('ticket-fields').then(function (n) { return n._; });
+    case '../ticket-fields/translations/locales/fr.json': return import('ticket-fields').then(function (n) { return n.$; });
+    case '../ticket-fields/translations/locales/ga.json': return import('ticket-fields').then(function (n) { return n.a0; });
+    case '../ticket-fields/translations/locales/he.json': return import('ticket-fields').then(function (n) { return n.a1; });
+    case '../ticket-fields/translations/locales/hi.json': return import('ticket-fields').then(function (n) { return n.a2; });
+    case '../ticket-fields/translations/locales/hr.json': return import('ticket-fields').then(function (n) { return n.a3; });
+    case '../ticket-fields/translations/locales/hu.json': return import('ticket-fields').then(function (n) { return n.a4; });
+    case '../ticket-fields/translations/locales/hy.json': return import('ticket-fields').then(function (n) { return n.a5; });
+    case '../ticket-fields/translations/locales/id.json': return import('ticket-fields').then(function (n) { return n.a6; });
+    case '../ticket-fields/translations/locales/is.json': return import('ticket-fields').then(function (n) { return n.a7; });
+    case '../ticket-fields/translations/locales/it-ch.json': return import('ticket-fields').then(function (n) { return n.a8; });
+    case '../ticket-fields/translations/locales/it.json': return import('ticket-fields').then(function (n) { return n.a9; });
+    case '../ticket-fields/translations/locales/ja.json': return import('ticket-fields').then(function (n) { return n.aa; });
+    case '../ticket-fields/translations/locales/ka.json': return import('ticket-fields').then(function (n) { return n.ab; });
+    case '../ticket-fields/translations/locales/kk.json': return import('ticket-fields').then(function (n) { return n.ac; });
+    case '../ticket-fields/translations/locales/kl-dk.json': return import('ticket-fields').then(function (n) { return n.ad; });
+    case '../ticket-fields/translations/locales/km.json': return import('ticket-fields').then(function (n) { return n.ae; });
+    case '../ticket-fields/translations/locales/ko.json': return import('ticket-fields').then(function (n) { return n.af; });
+    case '../ticket-fields/translations/locales/ku.json': return import('ticket-fields').then(function (n) { return n.ag; });
+    case '../ticket-fields/translations/locales/ky.json': return import('ticket-fields').then(function (n) { return n.ah; });
+    case '../ticket-fields/translations/locales/lt.json': return import('ticket-fields').then(function (n) { return n.ai; });
+    case '../ticket-fields/translations/locales/lv.json': return import('ticket-fields').then(function (n) { return n.aj; });
+    case '../ticket-fields/translations/locales/mk.json': return import('ticket-fields').then(function (n) { return n.ak; });
+    case '../ticket-fields/translations/locales/mn.json': return import('ticket-fields').then(function (n) { return n.al; });
+    case '../ticket-fields/translations/locales/ms.json': return import('ticket-fields').then(function (n) { return n.am; });
+    case '../ticket-fields/translations/locales/mt.json': return import('ticket-fields').then(function (n) { return n.an; });
+    case '../ticket-fields/translations/locales/my.json': return import('ticket-fields').then(function (n) { return n.ao; });
+    case '../ticket-fields/translations/locales/ne.json': return import('ticket-fields').then(function (n) { return n.ap; });
+    case '../ticket-fields/translations/locales/nl-be.json': return import('ticket-fields').then(function (n) { return n.aq; });
+    case '../ticket-fields/translations/locales/nl.json': return import('ticket-fields').then(function (n) { return n.ar; });
+    case '../ticket-fields/translations/locales/no.json': return import('ticket-fields').then(function (n) { return n.as; });
+    case '../ticket-fields/translations/locales/pl.json': return import('ticket-fields').then(function (n) { return n.at; });
+    case '../ticket-fields/translations/locales/pt-br.json': return import('ticket-fields').then(function (n) { return n.au; });
+    case '../ticket-fields/translations/locales/pt.json': return import('ticket-fields').then(function (n) { return n.av; });
+    case '../ticket-fields/translations/locales/ro-md.json': return import('ticket-fields').then(function (n) { return n.aw; });
+    case '../ticket-fields/translations/locales/ro.json': return import('ticket-fields').then(function (n) { return n.ax; });
+    case '../ticket-fields/translations/locales/ru.json': return import('ticket-fields').then(function (n) { return n.ay; });
+    case '../ticket-fields/translations/locales/si.json': return import('ticket-fields').then(function (n) { return n.az; });
+    case '../ticket-fields/translations/locales/sk.json': return import('ticket-fields').then(function (n) { return n.aA; });
+    case '../ticket-fields/translations/locales/sl.json': return import('ticket-fields').then(function (n) { return n.aB; });
+    case '../ticket-fields/translations/locales/sq.json': return import('ticket-fields').then(function (n) { return n.aC; });
+    case '../ticket-fields/translations/locales/sr-me.json': return import('ticket-fields').then(function (n) { return n.aD; });
+    case '../ticket-fields/translations/locales/sr.json': return import('ticket-fields').then(function (n) { return n.aE; });
+    case '../ticket-fields/translations/locales/sv.json': return import('ticket-fields').then(function (n) { return n.aF; });
+    case '../ticket-fields/translations/locales/sw-ke.json': return import('ticket-fields').then(function (n) { return n.aG; });
+    case '../ticket-fields/translations/locales/ta.json': return import('ticket-fields').then(function (n) { return n.aH; });
+    case '../ticket-fields/translations/locales/th.json': return import('ticket-fields').then(function (n) { return n.aI; });
+    case '../ticket-fields/translations/locales/tr.json': return import('ticket-fields').then(function (n) { return n.aJ; });
+    case '../ticket-fields/translations/locales/uk.json': return import('ticket-fields').then(function (n) { return n.aK; });
+    case '../ticket-fields/translations/locales/ur-pk.json': return import('ticket-fields').then(function (n) { return n.aL; });
+    case '../ticket-fields/translations/locales/ur.json': return import('ticket-fields').then(function (n) { return n.aM; });
+    case '../ticket-fields/translations/locales/uz.json': return import('ticket-fields').then(function (n) { return n.aN; });
+    case '../ticket-fields/translations/locales/vi.json': return import('ticket-fields').then(function (n) { return n.aO; });
+    case '../ticket-fields/translations/locales/zh-cn.json': return import('ticket-fields').then(function (n) { return n.aP; });
+    case '../ticket-fields/translations/locales/zh-tw.json': return import('ticket-fields').then(function (n) { return n.aQ; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime0__$1(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('service-catalog-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('service-catalog-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('service-catalog-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('service-catalog-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('service-catalog-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('service-catalog-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('service-catalog-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('service-catalog-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('service-catalog-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('service-catalog-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('service-catalog-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('service-catalog-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('service-catalog-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('service-catalog-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('service-catalog-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('service-catalog-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('service-catalog-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('service-catalog-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('service-catalog-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('service-catalog-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('service-catalog-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('service-catalog-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('service-catalog-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('service-catalog-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('service-catalog-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('service-catalog-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('service-catalog-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('service-catalog-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('service-catalog-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-ar.json': return import('service-catalog-translations').then(function (n) { return n.F; });
+    case './translations/locales/es-cl.json': return import('service-catalog-translations').then(function (n) { return n.G; });
+    case './translations/locales/es-es.json': return import('service-catalog-translations').then(function (n) { return n.H; });
+    case './translations/locales/es-mx.json': return import('service-catalog-translations').then(function (n) { return n.I; });
+    case './translations/locales/es-pe.json': return import('service-catalog-translations').then(function (n) { return n.J; });
+    case './translations/locales/es.json': return import('service-catalog-translations').then(function (n) { return n.K; });
+    case './translations/locales/et.json': return import('service-catalog-translations').then(function (n) { return n.L; });
+    case './translations/locales/eu.json': return import('service-catalog-translations').then(function (n) { return n.M; });
+    case './translations/locales/fa-af.json': return import('service-catalog-translations').then(function (n) { return n.N; });
+    case './translations/locales/fa.json': return import('service-catalog-translations').then(function (n) { return n.O; });
+    case './translations/locales/fi.json': return import('service-catalog-translations').then(function (n) { return n.P; });
+    case './translations/locales/fil.json': return import('service-catalog-translations').then(function (n) { return n.Q; });
+    case './translations/locales/fo.json': return import('service-catalog-translations').then(function (n) { return n.R; });
+    case './translations/locales/fr-ca.json': return import('service-catalog-translations').then(function (n) { return n.S; });
+    case './translations/locales/fr-dz.json': return import('service-catalog-translations').then(function (n) { return n.T; });
+    case './translations/locales/fr-mu.json': return import('service-catalog-translations').then(function (n) { return n.U; });
+    case './translations/locales/fr.json': return import('service-catalog-translations').then(function (n) { return n.V; });
+    case './translations/locales/ga.json': return import('service-catalog-translations').then(function (n) { return n.W; });
+    case './translations/locales/he.json': return import('service-catalog-translations').then(function (n) { return n.X; });
+    case './translations/locales/hi.json': return import('service-catalog-translations').then(function (n) { return n.Y; });
+    case './translations/locales/hr.json': return import('service-catalog-translations').then(function (n) { return n.Z; });
+    case './translations/locales/hu.json': return import('service-catalog-translations').then(function (n) { return n._; });
+    case './translations/locales/hy.json': return import('service-catalog-translations').then(function (n) { return n.$; });
+    case './translations/locales/id.json': return import('service-catalog-translations').then(function (n) { return n.a0; });
+    case './translations/locales/is.json': return import('service-catalog-translations').then(function (n) { return n.a1; });
+    case './translations/locales/it-ch.json': return import('service-catalog-translations').then(function (n) { return n.a2; });
+    case './translations/locales/it.json': return import('service-catalog-translations').then(function (n) { return n.a3; });
+    case './translations/locales/ja.json': return import('service-catalog-translations').then(function (n) { return n.a4; });
+    case './translations/locales/ka.json': return import('service-catalog-translations').then(function (n) { return n.a5; });
+    case './translations/locales/kk.json': return import('service-catalog-translations').then(function (n) { return n.a6; });
+    case './translations/locales/kl-dk.json': return import('service-catalog-translations').then(function (n) { return n.a7; });
+    case './translations/locales/km.json': return import('service-catalog-translations').then(function (n) { return n.a8; });
+    case './translations/locales/ko.json': return import('service-catalog-translations').then(function (n) { return n.a9; });
+    case './translations/locales/ku.json': return import('service-catalog-translations').then(function (n) { return n.aa; });
+    case './translations/locales/ky.json': return import('service-catalog-translations').then(function (n) { return n.ab; });
+    case './translations/locales/lt.json': return import('service-catalog-translations').then(function (n) { return n.ac; });
+    case './translations/locales/lv.json': return import('service-catalog-translations').then(function (n) { return n.ad; });
+    case './translations/locales/mk.json': return import('service-catalog-translations').then(function (n) { return n.ae; });
+    case './translations/locales/mn.json': return import('service-catalog-translations').then(function (n) { return n.af; });
+    case './translations/locales/ms.json': return import('service-catalog-translations').then(function (n) { return n.ag; });
+    case './translations/locales/mt.json': return import('service-catalog-translations').then(function (n) { return n.ah; });
+    case './translations/locales/my.json': return import('service-catalog-translations').then(function (n) { return n.ai; });
+    case './translations/locales/ne.json': return import('service-catalog-translations').then(function (n) { return n.aj; });
+    case './translations/locales/nl-be.json': return import('service-catalog-translations').then(function (n) { return n.ak; });
+    case './translations/locales/nl.json': return import('service-catalog-translations').then(function (n) { return n.al; });
+    case './translations/locales/no.json': return import('service-catalog-translations').then(function (n) { return n.am; });
+    case './translations/locales/pl.json': return import('service-catalog-translations').then(function (n) { return n.an; });
+    case './translations/locales/pt-br.json': return import('service-catalog-translations').then(function (n) { return n.ao; });
+    case './translations/locales/pt.json': return import('service-catalog-translations').then(function (n) { return n.ap; });
+    case './translations/locales/ro-md.json': return import('service-catalog-translations').then(function (n) { return n.aq; });
+    case './translations/locales/ro.json': return import('service-catalog-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ru.json': return import('service-catalog-translations').then(function (n) { return n.as; });
+    case './translations/locales/si.json': return import('service-catalog-translations').then(function (n) { return n.at; });
+    case './translations/locales/sk.json': return import('service-catalog-translations').then(function (n) { return n.au; });
+    case './translations/locales/sl.json': return import('service-catalog-translations').then(function (n) { return n.av; });
+    case './translations/locales/sq.json': return import('service-catalog-translations').then(function (n) { return n.aw; });
+    case './translations/locales/sr-me.json': return import('service-catalog-translations').then(function (n) { return n.ax; });
+    case './translations/locales/sr.json': return import('service-catalog-translations').then(function (n) { return n.ay; });
+    case './translations/locales/sv.json': return import('service-catalog-translations').then(function (n) { return n.az; });
+    case './translations/locales/sw-ke.json': return import('service-catalog-translations').then(function (n) { return n.aA; });
+    case './translations/locales/ta.json': return import('service-catalog-translations').then(function (n) { return n.aB; });
+    case './translations/locales/th.json': return import('service-catalog-translations').then(function (n) { return n.aC; });
+    case './translations/locales/tr.json': return import('service-catalog-translations').then(function (n) { return n.aD; });
+    case './translations/locales/uk.json': return import('service-catalog-translations').then(function (n) { return n.aE; });
+    case './translations/locales/ur-pk.json': return import('service-catalog-translations').then(function (n) { return n.aF; });
+    case './translations/locales/ur.json': return import('service-catalog-translations').then(function (n) { return n.aG; });
+    case './translations/locales/uz.json': return import('service-catalog-translations').then(function (n) { return n.aH; });
+    case './translations/locales/vi.json': return import('service-catalog-translations').then(function (n) { return n.aI; });
+    case './translations/locales/zh-cn.json': return import('service-catalog-translations').then(function (n) { return n.aJ; });
+    case './translations/locales/zh-tw.json': return import('service-catalog-translations').then(function (n) { return n.aK; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+async function renderServiceCatalogList(container, settings, helpCenterPath, baseLocale) {
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__$1(`./translations/locales/${baseLocale}.json`),
+        () => __variableDynamicImportRuntime1__$1(`../ticket-fields/translations/locales/${baseLocale}.json`),
+        () => __variableDynamicImportRuntime2__$1(`../shared/translations/locales/${baseLocale}.json`),
+    ]);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ServiceCatalogList, { helpCenterPath: helpCenterPath }) }) }), container);
+}
+
+const getFieldValue = (field) => {
+    if (field.type === "tagger") {
+        return (field.custom_field_options.find((option) => option.default)?.value ?? null);
+    }
+    return null;
+};
+const formatField = (field) => {
+    const { id, type, description, title_in_portal, custom_field_options, required_in_portal, relationship_target_type, relationship_filter, } = field;
+    return {
+        id,
+        type,
+        name: `custom_fields_${id}`,
+        description,
+        label: title_in_portal,
+        options: custom_field_options,
+        required: required_in_portal,
+        relationship_target_type,
+        relationship_filter,
+        error: null,
+        value: getFieldValue(field),
+    };
+};
+const isAssociatedLookupField = (field) => {
+    const customObjectKey = getCustomObjectKey(field.relationship_target_type);
+    if (customObjectKey === "standard::service_catalog_item") {
+        return true;
+    }
+    return false;
+};
+const fetchTicketFields = async (form_id, baseLocale) => {
+    const [formResponse, fieldsResponse] = await Promise.all([
+        fetch(`/api/v2/ticket_forms/${form_id}`),
+        fetch(`/api/v2/ticket_fields?locale=${baseLocale}`),
+    ]);
+    if (!formResponse.ok) {
+        throw new Error("Error fetching form data");
+    }
+    if (!fieldsResponse.ok) {
+        throw new Error("Error fetching fields data");
+    }
+    const formData = await formResponse.json();
+    const fieldsData = await fieldsResponse.json();
+    if (!formData.ticket_form.active) {
+        throw new Error("Associated ticket form is not active");
+    }
+    const ticketForm = formData.ticket_form;
+    const ids = ticketForm.ticket_field_ids;
+    const endUserConditions = ticketForm.end_user_conditions || [];
+    const ticketFieldsData = fieldsData.ticket_fields;
+    let associatedLookupField = null;
+    const requestFields = ids
+        .map((id) => {
+        const ticketField = ticketFieldsData.find((field) => field.id === id);
+        if (ticketField &&
+            ticketField.type !== "subject" &&
+            ticketField.type !== "description" &&
+            ticketField.active &&
+            ticketField.editable_in_portal) {
+            if (ticketField.type === "lookup" &&
+                isAssociatedLookupField(ticketField)) {
+                associatedLookupField = ticketField;
+                return null;
+            }
+            return formatField(ticketField);
+        }
+        return null;
+    })
+        .filter(Boolean);
+    if (!associatedLookupField) {
+        throw new Error("Associated lookup field not found");
+    }
+    return { requestFields, associatedLookupField, endUserConditions };
+};
+function useItemFormFields(serviceCatalogItem, baseLocale) {
+    const [allRequestFields, setAllRequestFields] = reactExports.useState([]);
+    const [endUserConditions, setEndUserConditions] = reactExports.useState([]);
+    const [associatedLookupField, setAssociatedLookupField] = reactExports.useState();
+    const [error, setError] = reactExports.useState(null);
+    reactExports.useEffect(() => {
+        const fetchAndSetFields = async () => {
+            if (serviceCatalogItem && serviceCatalogItem.form_id) {
+                try {
+                    const { requestFields, associatedLookupField, endUserConditions } = await fetchTicketFields(serviceCatalogItem.form_id, baseLocale);
+                    setAssociatedLookupField(associatedLookupField);
+                    setEndUserConditions(endUserConditions);
+                    setAllRequestFields(requestFields);
+                }
+                catch (error) {
+                    setError(error);
+                }
+            }
+        };
+        fetchAndSetFields();
+    }, [baseLocale, serviceCatalogItem]);
+    const handleChange = reactExports.useCallback((field, value) => {
+        const updatedFields = allRequestFields.map((ticketField) => ticketField.name === field.name
+            ? { ...ticketField, value }
+            : ticketField);
+        setAllRequestFields(updatedFields);
+    }, [allRequestFields]);
+    const requestFields = getVisibleFields(allRequestFields, endUserConditions);
+    return {
+        requestFields,
+        associatedLookupField,
+        error,
+        setRequestFields: setAllRequestFields,
+        handleChange,
+    };
+}
+
+const DescriptionWrapper = styled.div `
+  border-bottom: ${(props) => props.theme.borders.sm}
+    ${(props) => getColorV8("grey", 300, props.theme)};
+  padding-bottom: ${(props) => props.theme.space.lg};
+  margin-inline-end: ${(props) => props.theme.space.xl};
+
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-end: 0;
   }
-`,je=e(E)`
-  font-weight: ${e=>e.theme.fontWeights.semibold};
+`;
+const ItemTitle = styled(XXXL) `
+  font-weight: ${(props) => props.theme.fontWeights.semibold};
   margin-bottom: 0;
   overflow-wrap: break-word;
   max-width: 100%;
-`,fe=e.div`
-  font-size: ${e=>e.theme.fontSizes.md};
+`;
+const CollapsibleText = styled.div `
+  font-size: ${(props) => props.theme.fontSizes.md};
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: ${e=>e.isCollapsed?3:"none"};
+  -webkit-line-clamp: ${(props) => (props.isCollapsed ? 3 : "none")};
   overflow: hidden;
-  margin-top: ${e=>e.theme.space.md};
-  padding-inline-end: ${e=>e.theme.space.xl};
+  margin-top: ${(props) => props.theme.space.md};
+  padding-inline-end: ${(props) => props.theme.space.xl};
   overflow-wrap: break-word;
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     padding-inline-end: 0;
   }
-`,me=e(h)`
-  margin-top: ${e=>e.theme.space.sm};
-  font-size: ${e=>e.theme.fontSizes.md};
+`;
+const ToggleButton = styled(Button) `
+  margin-top: ${(props) => props.theme.space.sm};
+  font-size: ${(props) => props.theme.fontSizes.md};
   &:hover {
     text-decoration: none;
   }
-`,be=e.div`
+`;
+const HeaderContainer = styled.div `
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: ${e=>e.theme.space.md};
-`,pe=({title:e,description:t,thumbnailUrl:n})=>{const[r,a]=x.useState(!0),[o,i]=x.useState(!1),{t:l}=c(),u=x.useRef(null);x.useEffect((()=>{const e=u.current;if(e){requestAnimationFrame((()=>{const t=e.getBoundingClientRect().height,n=e.scrollHeight-t>1;i(n),n||a(!1)}))}}),[t]);return s.jsxs(he,{children:[s.jsxs(be,{children:[s.jsx(U,{size:"large",url:n}),s.jsx(je,{tag:"h1",children:e})]}),t&&s.jsx(fe,{ref:u,className:"service-catalog-description",isCollapsed:r,dangerouslySetInnerHTML:{__html:t}}),o&&s.jsxs(me,{isLink:!0,onClick:()=>{a(!r)},children:[r?l("service-catalog.item.read-more","Read more"):l("service-catalog.item.read-less","Read less"),s.jsx(h.EndIcon,{children:r?s.jsx(A,{}):s.jsx(F,{})})]})]})},ke=(e,t)=>({fetchAssets:x.useCallback((async()=>{try{if(!e)return;const t=await fetch(`/api/v2/custom_objects/standard::service_catalog_asset_option/records/${e}`),n=await t.json(),s=n.custom_object_record.custom_object_fields?.["standard::asset_filter_ids"];return s}catch(e){return void console.error(e)}}),[e]),fetchAssetTypes:x.useCallback((async()=>{try{if(!t)return;const e=await fetch(`/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/${t}`),n=await e.json(),s=n.custom_object_record.custom_object_fields?.["standard::asset_type_ids"];return{assetTypeIds:s,isHiddenAssetsType:!!n.custom_object_record.custom_object_fields?.["standard::is_hidden"]}}catch(e){return console.error(e),{assetTypeIds:void 0,isHiddenAssetsType:void 0}}}),[t])}),ge=e.form`
+  gap: ${(props) => props.theme.space.md};
+`;
+const CollapsibleDescription = ({ title, description, thumbnailUrl, }) => {
+    const [isCollapsed, setIsCollapsed] = reactExports.useState(true);
+    const [isClamped, setIsClamped] = reactExports.useState(false);
+    const { t } = useTranslation();
+    const contentRef = reactExports.useRef(null);
+    reactExports.useEffect(() => {
+        const el = contentRef.current;
+        if (el) {
+            const checkClamped = () => {
+                const visibleBoxHeight = el.getBoundingClientRect().height;
+                const fullContentHeight = el.scrollHeight;
+                const clamped = fullContentHeight - visibleBoxHeight > 1;
+                setIsClamped(clamped);
+                if (!clamped) {
+                    setIsCollapsed(false);
+                }
+            };
+            requestAnimationFrame(checkClamped);
+        }
+    }, [description]);
+    const toggleDescription = () => {
+        setIsCollapsed(!isCollapsed);
+    };
+    return (jsxRuntimeExports.jsxs(DescriptionWrapper, { children: [jsxRuntimeExports.jsxs(HeaderContainer, { children: [jsxRuntimeExports.jsx(ItemThumbnail, { size: "large", url: thumbnailUrl }), jsxRuntimeExports.jsx(ItemTitle, { tag: "h1", children: title })] }), description && (jsxRuntimeExports.jsx(CollapsibleText, { ref: contentRef, className: "service-catalog-description", isCollapsed: isCollapsed, dangerouslySetInnerHTML: { __html: description } })), isClamped && (jsxRuntimeExports.jsxs(ToggleButton, { isLink: true, onClick: toggleDescription, children: [!isCollapsed
+                        ? t("service-catalog.item.read-less", "Read less")
+                        : t("service-catalog.item.read-more", "Read more"), jsxRuntimeExports.jsx(Button.EndIcon, { children: !isCollapsed ? jsxRuntimeExports.jsx(SvgChevronUpFill, {}) : jsxRuntimeExports.jsx(SvgChevronDownFill, {}) })] }))] }));
+};
+
+const useAssetDataFetchers = (assetOptionId, assetTypeOptionId) => {
+    const fetchAssets = reactExports.useCallback(async () => {
+        try {
+            if (!assetOptionId)
+                return undefined;
+            const res = await fetch(`/api/v2/custom_objects/standard::service_catalog_asset_option/records/${assetOptionId}`);
+            const data = await res.json();
+            const ids = data.custom_object_record.custom_object_fields?.["standard::asset_filter_ids"];
+            return ids;
+        }
+        catch (error) {
+            console.error(error);
+            return undefined;
+        }
+    }, [assetOptionId]);
+    const fetchAssetTypes = reactExports.useCallback(async () => {
+        try {
+            if (!assetTypeOptionId)
+                return undefined;
+            const res = await fetch(`/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/${assetTypeOptionId}`);
+            const data = await res.json();
+            const ids = data.custom_object_record.custom_object_fields?.["standard::asset_type_ids"];
+            const isHiddenAssetsType = !!data.custom_object_record.custom_object_fields?.["standard::is_hidden"];
+            return { assetTypeIds: ids, isHiddenAssetsType };
+        }
+        catch (error) {
+            console.error(error);
+            return { assetTypeIds: undefined, isHiddenAssetsType: undefined };
+        }
+    }, [assetTypeOptionId]);
+    return { fetchAssets, fetchAssetTypes };
+};
+
+const Form = styled.form `
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  gap: ${e=>e.theme.space.md};
+  gap: ${(props) => props.theme.space.md};
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     flex-direction: column;
   }
-`,ve=e.div`
+`;
+const FieldsContainer = styled.div `
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: ${e=>e.theme.space.md};
-  margin-inline-end: ${e=>e.theme.space.xl};
+  gap: ${(props) => props.theme.space.md};
+  margin-inline-end: ${(props) => props.theme.space.xl};
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-end: 0;
   }
-`,xe=e.div`
+`;
+const ButtonWrapper = styled.div `
   flex: 1;
-  margin-inline-start: ${e=>e.theme.space.xl};
-  padding: ${e=>e.theme.space.lg};
-  border: ${e=>e.theme.borders.sm}
-    ${e=>t("grey",300,e.theme)};
+  margin-inline-start: ${(props) => props.theme.space.xl};
+  padding: ${(props) => props.theme.space.lg};
+  border: ${(props) => props.theme.borders.sm}
+    ${(props) => getColorV8("grey", 300, props.theme)};
   height: fit-content;
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
     top: 0;
-    background: ${e=>e.theme.colors.background};
-    padding: ${e=>e.theme.space.lg};
+    background: ${(props) => props.theme.colors.background};
+    padding: ${(props) => props.theme.space.lg};
     border: none;
-    border-top: ${e=>e.theme.borders.sm}
-      ${e=>t("grey",300,e.theme)};
+    border-top: ${(props) => props.theme.borders.sm}
+      ${(props) => getColorV8("grey", 300, props.theme)};
     width: 100vw;
     margin-inline-start: 0;
   }
-`,ye=e.div`
+`;
+const RightColumn = styled.div `
   flex: 1;
-  margin-inline-start: ${e=>e.theme.space.xl};
+  margin-inline-start: ${(props) => props.theme.space.xl};
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     position: sticky;
     bottom: 0;
     margin-inline-start: 0;
@@ -177,22 +834,620 @@ import{s as e,B as t,a6 as n,j as s,a7 as r,a8 as a,a9 as o,aa as i,ab as l,u as
     flex-direction: column;
     align-items: center;
   }
-`,we=e.div`
+`;
+const LeftColumn = styled.div `
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: ${e=>e.theme.space.lg};
-  margin-inline-end: ${e=>e.theme.space.xl};
+  gap: ${(props) => props.theme.space.lg};
+  margin-inline-end: ${(props) => props.theme.space.xl};
   min-width: 0;
 
-  @media (max-width: ${e=>e.theme.breakpoints.md}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.md}) {
     margin-inline-end: 0;
   }
-`,_e="zen:custom_object:standard::itam_asset_type",$e=e=>"zen:custom_object:standard::itam_asset"===e.relationship_target_type,ze=e=>e.relationship_target_type===_e;function Ce({requestFields:e,serviceCatalogItem:t,baseLocale:n,hasAtMentions:r,userRole:a,userId:o,brandId:i,defaultOrganizationId:l,handleChange:u,onSubmit:d}){const{t:j}=c(),f=t?.custom_object_fields?.["standard::asset_option"],m=t?.custom_object_fields?.["standard::asset_type_option"],{fetchAssets:b,fetchAssetTypes:p}=ke(f,m),[k,g]=x.useState({ids:[],hidden:!1,ready:!1}),[v,y]=x.useState({ids:[],ready:!1}),[w,_]=x.useState(!1),$=k.hidden&&k.ids[0]?k.ids[0]:"";x.useEffect((()=>{let e=!0;return(async()=>{try{const t=await p();if(!e)return;const n=!!t?.isHiddenAssetsType,s=t?.assetTypeIds;let r=[];Array.isArray(s)?r=s.map(String):"string"==typeof s&&(r=s.split(",")),r=r.map((e=>e.trim())).filter(Boolean),g({ids:r,hidden:n,ready:!0}),_(n)}catch(t){if(!e)return;g({ids:[],hidden:!1,ready:!0})}try{const t=await b();if(!e)return;let n=[];"string"==typeof t?n=t.split(","):Array.isArray(t)&&(n=t.map(String)),n=n.map((e=>e.trim())).filter(Boolean),y({ids:n,ready:!0})}catch(t){if(!e)return;y({ids:[],ready:!0})}})(),()=>{e=!1}}),[p,b,u]);const z=async(e,t)=>{if(!Array.isArray(e)||0===e.length)return[];const n=e.map((e=>{const t={name:e.name,value:e.id};if("standard::itam_asset"===e.custom_object_key){const n=e.custom_object_fields??{};return{...t,item_asset_type_id:n["standard::asset_type"]??""}}return{...t,item_asset_type_id:""}}));if(ze(t))return k.hidden?[]:k.ids?.length?n.filter((e=>k.ids.includes(e.value))):[];if($e(t)){let e=n;return k.ids?.length&&(e=e.filter((e=>k.ids.includes(e.item_asset_type_id??"")))),v.ids?.length&&(e=e.filter((e=>v.ids.includes(e.value)))),e}return n.map((({name:e,value:t})=>({name:e,value:t})))};return s.jsxs(ge,{onSubmit:d,noValidate:!0,children:[s.jsxs(we,{children:[s.jsx(pe,{title:t.name,description:t.description,thumbnailUrl:t.thumbnail_url}),s.jsx(ve,{children:e.map((t=>ze(t)&&w?s.jsxs(s.Fragment,{children:[s.jsx("input",{type:"hidden",name:t.name,value:$}),s.jsx("input",{type:"hidden",name:"isAssetTypeHidden",value:"true"})]}):s.jsx(H,{field:t,baseLocale:n,hasAtMentions:r,userRole:a,userId:o,brandId:i,defaultOrganizationId:l,handleChange:u,visibleFields:e,buildLookupFieldOptions:z},t.id)))})]}),s.jsx(ye,{children:s.jsx(xe,{children:s.jsx(h,{isPrimary:!0,size:"large",isStretched:!0,type:"submit",children:j("service-catalog.item.submit-button","Submit request")})})})]})}const Se=e.div`
+`;
+const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
+const ASSET_KEY = "zen:custom_object:standard::itam_asset";
+const isAssetField = (f) => f.relationship_target_type === ASSET_KEY;
+const isAssetTypeField$1 = (f) => f.relationship_target_type === ASSET_TYPE_KEY;
+function ItemRequestForm({ requestFields, serviceCatalogItem, baseLocale, hasAtMentions, userRole, userId, brandId, defaultOrganizationId, handleChange, onSubmit, }) {
+    const { t } = useTranslation();
+    const assetOptionId = serviceCatalogItem?.custom_object_fields?.["standard::asset_option"];
+    const assetTypeOptionId = serviceCatalogItem?.custom_object_fields?.["standard::asset_type_option"];
+    const { fetchAssets, fetchAssetTypes } = useAssetDataFetchers(assetOptionId, assetTypeOptionId);
+    const [assetTypeState, setAssetTypeState] = reactExports.useState({
+        ids: [],
+        hidden: false,
+        ready: false,
+    });
+    const [assetState, setAssetState] = reactExports.useState({
+        ids: [],
+        ready: false,
+    });
+    const [isHiddenAssetsType, setIsHiddenAssetsType] = reactExports.useState(false);
+    const hiddenValue = assetTypeState.hidden && assetTypeState.ids[0] ? assetTypeState.ids[0] : "";
+    reactExports.useEffect(() => {
+        let alive = true;
+        const initAssets = async () => {
+            try {
+                const res = await fetchAssetTypes();
+                if (!alive)
+                    return;
+                const hidden = !!res?.isHiddenAssetsType;
+                const raw = res?.assetTypeIds;
+                let ids = [];
+                if (Array.isArray(raw)) {
+                    ids = raw.map(String);
+                }
+                else if (typeof raw === "string") {
+                    ids = raw.split(",");
+                }
+                ids = ids.map((s) => s.trim()).filter(Boolean);
+                setAssetTypeState({ ids, hidden, ready: true });
+                setIsHiddenAssetsType(hidden);
+            }
+            catch (e) {
+                if (!alive)
+                    return;
+                setAssetTypeState({ ids: [], hidden: false, ready: true });
+            }
+            try {
+                const idsStr = await fetchAssets();
+                if (!alive)
+                    return;
+                let ids = [];
+                if (typeof idsStr === "string") {
+                    ids = idsStr.split(",");
+                }
+                else if (Array.isArray(idsStr)) {
+                    ids = idsStr.map(String);
+                }
+                ids = ids.map((s) => s.trim()).filter(Boolean);
+                setAssetState({ ids, ready: true });
+            }
+            catch (e) {
+                if (!alive)
+                    return;
+                setAssetState({ ids: [], ready: true });
+            }
+        };
+        initAssets();
+        return () => {
+            alive = false;
+        };
+    }, [fetchAssetTypes, fetchAssets, handleChange]);
+    const buildLookupFieldOptions = async (records, field) => {
+        if (!Array.isArray(records) || records.length === 0)
+            return [];
+        const options = records.map((rec) => {
+            const base = { name: rec.name, value: rec.id };
+            if (rec.custom_object_key === "standard::itam_asset") {
+                const fields = (rec.custom_object_fields ?? {});
+                return {
+                    ...base,
+                    item_asset_type_id: fields["standard::asset_type"] ?? "",
+                };
+            }
+            return { ...base, item_asset_type_id: "" };
+        });
+        if (isAssetTypeField$1(field)) {
+            if (assetTypeState.hidden)
+                return [];
+            if (!assetTypeState.ids?.length)
+                return [];
+            return options.filter((o) => assetTypeState.ids.includes(o.value));
+        }
+        if (isAssetField(field)) {
+            let list = options;
+            if (assetTypeState.ids?.length) {
+                list = list.filter((o) => assetTypeState.ids.includes(o.item_asset_type_id ?? ""));
+            }
+            if (assetState.ids?.length) {
+                list = list.filter((o) => assetState.ids.includes(o.value));
+            }
+            return list;
+        }
+        return options.map(({ name, value }) => ({ name, value }));
+    };
+    return (jsxRuntimeExports.jsxs(Form, { onSubmit: onSubmit, noValidate: true, children: [jsxRuntimeExports.jsxs(LeftColumn, { children: [jsxRuntimeExports.jsx(CollapsibleDescription, { title: serviceCatalogItem.name, description: serviceCatalogItem.description, thumbnailUrl: serviceCatalogItem.thumbnail_url }), jsxRuntimeExports.jsx(FieldsContainer, { children: requestFields.map((field) => {
+                            if (isAssetTypeField$1(field) && isHiddenAssetsType) {
+                                return (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [jsxRuntimeExports.jsx("input", { type: "hidden", name: field.name, value: hiddenValue }), jsxRuntimeExports.jsx("input", { type: "hidden", name: "isAssetTypeHidden", value: "true" })] }));
+                            }
+                            return (jsxRuntimeExports.jsx(RequestFormField, { field: field, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, visibleFields: requestFields, buildLookupFieldOptions: buildLookupFieldOptions }, field.id));
+                        }) })] }), jsxRuntimeExports.jsx(RightColumn, { children: jsxRuntimeExports.jsx(ButtonWrapper, { children: jsxRuntimeExports.jsx(Button, { isPrimary: true, size: "large", isStretched: true, type: "submit", children: t("service-catalog.item.submit-button", "Submit request") }) }) })] }));
+}
+
+function useServiceCatalogItem(serviceItemId) {
+    const [serviceCatalogItem, setServiceCatalogItem] = reactExports.useState();
+    const [errorFetchingItem, setError] = reactExports.useState(null);
+    reactExports.useEffect(() => {
+        const fetchServiceCatalogItem = async () => {
+            try {
+                const response = await fetch(`/api/v2/help_center/service_catalog/items/${serviceItemId}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    setServiceCatalogItem(data.service_catalog_item);
+                }
+                else {
+                    throw new Error("Error fetching service catalog item");
+                }
+            }
+            catch (error) {
+                setError(error);
+            }
+        };
+        fetchServiceCatalogItem();
+    }, [serviceItemId]);
+    return { serviceCatalogItem, errorFetchingItem };
+}
+
+async function submitServiceItemRequest(serviceCatalogItem, requestFields, associatedLookupField, baseLocale) {
+    try {
+        const currentUserRequest = await fetch("/api/v2/users/me.json");
+        if (!currentUserRequest.ok) {
+            throw new Error("Error fetching current user data");
+        }
+        const currentUser = await currentUserRequest.json();
+        const customFields = requestFields.map((field) => {
+            return {
+                id: field.id,
+                value: field.value,
+            };
+        });
+        const response = await fetch(`/api/v2/requests?locale=${baseLocale}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-Token": currentUser.user.authenticity_token,
+            },
+            body: JSON.stringify({
+                request: {
+                    subject: `${serviceCatalogItem.name}`,
+                    comment: {
+                        html_body: `<a href="/hc/en-us/services/${serviceCatalogItem.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${serviceCatalogItem.name}</a>`,
+                    },
+                    ticket_form_id: serviceCatalogItem.form_id,
+                    custom_fields: [
+                        ...customFields,
+                        { id: associatedLookupField.id, value: serviceCatalogItem.id },
+                    ],
+                    via: {
+                        channel: "web form",
+                        source: 50,
+                    },
+                },
+            }),
+        });
+        return response;
+    }
+    catch (error) {
+        console.error("Error submitting service request:", error);
+        return;
+    }
+}
+
+const Container = styled.div `
   display: flex;
   flex-direction: column;
-`,qe=e(P)`
+`;
+const StyledNotificationLink = styled(Anchor) `
   text-decoration: underline;
   display: block;
-  margin-top: ${e=>e.theme.space.xxs}px;
-`,Ie=e=>e.relationship_target_type===_e;function Ee({serviceCatalogItemId:e,baseLocale:t,hasAtMentions:n,userRole:r,organizations:a,userId:o,brandId:i,helpCenterPath:l}){const{serviceCatalogItem:u,errorFetchingItem:d}=function(e){const[t,n]=x.useState(),[s,r]=x.useState(null);return x.useEffect((()=>{(async()=>{try{const t=await fetch(`/api/v2/help_center/service_catalog/items/${e}`);if(!t.ok)throw new Error("Error fetching service catalog item");{const e=await t.json();n(e.service_catalog_item)}}catch(e){r(e)}})()}),[e]),{serviceCatalogItem:t,errorFetchingItem:s}}(e),{requestFields:h,associatedLookupField:j,error:f,setRequestFields:m,handleChange:b}=function(e,t){const[n,s]=x.useState([]),[r,a]=x.useState([]),[o,i]=x.useState(),[l,c]=x.useState(null);x.useEffect((()=>{(async()=>{if(e&&e.form_id)try{const{requestFields:n,associatedLookupField:r,endUserConditions:o}=await de(e.form_id,t);i(r),a(o),s(n)}catch(e){c(e)}})()}),[t,e]);const u=x.useCallback(((e,t)=>{const r=n.map((n=>n.name===e.name?{...n,value:t}:n));s(r)}),[n]);return{requestFields:L(n,r),associatedLookupField:o,error:l,setRequestFields:s,handleChange:u}}(u,t),{t:p}=c();if(f)throw f;if(d)throw d;const k=a.length>0&&a[0]?.id?a[0]?.id?.toString():null;return s.jsx(Se,{children:u&&s.jsx(Ce,{requestFields:h,serviceCatalogItem:u,baseLocale:t,hasAtMentions:n,userRole:r,userId:o,brandId:i,defaultOrganizationId:k,handleChange:b,onSubmit:async e=>{e.preventDefault();const n=e.currentTarget,r=new FormData(n),a="true"===r.get("isAssetTypeHidden"),o=h.map((e=>Ie(e)&&a?{...e,value:r.get(e.name)}:e));if(!u||!j)return;const i=await async function(e,t,n,s){try{const r=await fetch("/api/v2/users/me.json");if(!r.ok)throw new Error("Error fetching current user data");const a=await r.json(),o=t.map((e=>({id:e.id,value:e.value})));return await fetch(`/api/v2/requests?locale=${s}`,{method:"POST",headers:{"Content-Type":"application/json","X-CSRF-Token":a.user.authenticity_token},body:JSON.stringify({request:{subject:`${e.name}`,comment:{html_body:`<a href="/hc/en-us/services/${e.id}" style="text-decoration: underline" target="_blank" rel="noopener noreferrer">${e.name}</a>`},ticket_form_id:e.form_id,custom_fields:[...o,{id:n.id,value:e.id}],via:{channel:"web form",source:50}}})})}catch(e){return void console.error("Error submitting service request:",e)}}(u,o,j,t);if(i?.ok){if(i&&i.ok){T({type:"success",message:p("service-catalog.item.service-request-submitted","Service request submitted")});const e=await(i?.json()),t=`${l}/requests/${e.request.id}`;window.location.href=t}}else if(422===i?.status){const e=(await i.json()).details.base;e.filter((e=>!h.some((t=>t.id===e.field_key)))).length>0&&y({type:"error",title:p("service-catalog.item.service-request-error-title","Service couldn't be submitted"),message:s.jsxs(s.Fragment,{children:[p("service-catalog.item.service-request-refresh-message","Refresh the page and try again in a few seconds.")," ",s.jsx(qe,{href:`${l}/services/${u.id}`,children:p("service-catalog.item.service-request-refresh-link-text","Refresh the page")})]})});const t=h.map((t=>{const n=e.find((e=>e.field_key===t.id));return{...t,error:n?.description||null}}));m(t)}else y({title:p("service-catalog.item.service-request-error-title","Service couldn't be submitted"),message:p("service-catalog.item.service-request-error-message","Give it a moment and try it again"),type:"error"})}})})}async function Fe(e,t,n){const{baseLocale:r,helpCenterPath:a}=n;$(r),await z(r,[()=>function(e){switch(e){case"./translations/locales/af.json":return import("service-catalog-translations").then((function(e){return e.a}));case"./translations/locales/ar-x-pseudo.json":return import("service-catalog-translations").then((function(e){return e.b}));case"./translations/locales/ar.json":return import("service-catalog-translations").then((function(e){return e.c}));case"./translations/locales/az.json":return import("service-catalog-translations").then((function(e){return e.d}));case"./translations/locales/be.json":return import("service-catalog-translations").then((function(e){return e.e}));case"./translations/locales/bg.json":return import("service-catalog-translations").then((function(e){return e.f}));case"./translations/locales/bn.json":return import("service-catalog-translations").then((function(e){return e.g}));case"./translations/locales/bs.json":return import("service-catalog-translations").then((function(e){return e.h}));case"./translations/locales/ca.json":return import("service-catalog-translations").then((function(e){return e.i}));case"./translations/locales/cs.json":return import("service-catalog-translations").then((function(e){return e.j}));case"./translations/locales/cy.json":return import("service-catalog-translations").then((function(e){return e.k}));case"./translations/locales/da.json":return import("service-catalog-translations").then((function(e){return e.l}));case"./translations/locales/de-de.json":return import("service-catalog-translations").then((function(e){return e.m}));case"./translations/locales/de-x-informal.json":return import("service-catalog-translations").then((function(e){return e.n}));case"./translations/locales/de.json":return import("service-catalog-translations").then((function(e){return e.o}));case"./translations/locales/el.json":return import("service-catalog-translations").then((function(e){return e.p}));case"./translations/locales/en-001.json":return import("service-catalog-translations").then((function(e){return e.q}));case"./translations/locales/en-150.json":return import("service-catalog-translations").then((function(e){return e.r}));case"./translations/locales/en-au.json":return import("service-catalog-translations").then((function(e){return e.s}));case"./translations/locales/en-ca.json":return import("service-catalog-translations").then((function(e){return e.t}));case"./translations/locales/en-gb.json":return import("service-catalog-translations").then((function(e){return e.u}));case"./translations/locales/en-my.json":return import("service-catalog-translations").then((function(e){return e.v}));case"./translations/locales/en-ph.json":return import("service-catalog-translations").then((function(e){return e.w}));case"./translations/locales/en-se.json":return import("service-catalog-translations").then((function(e){return e.x}));case"./translations/locales/en-us.json":return import("service-catalog-translations").then((function(e){return e.y}));case"./translations/locales/en-x-dev.json":return import("service-catalog-translations").then((function(e){return e.z}));case"./translations/locales/en-x-keys.json":return import("service-catalog-translations").then((function(e){return e.A}));case"./translations/locales/en-x-obsolete.json":return import("service-catalog-translations").then((function(e){return e.B}));case"./translations/locales/en-x-pseudo.json":return import("service-catalog-translations").then((function(e){return e.C}));case"./translations/locales/en-x-test.json":return import("service-catalog-translations").then((function(e){return e.D}));case"./translations/locales/es-419.json":return import("service-catalog-translations").then((function(e){return e.E}));case"./translations/locales/es-ar.json":return import("service-catalog-translations").then((function(e){return e.F}));case"./translations/locales/es-cl.json":return import("service-catalog-translations").then((function(e){return e.G}));case"./translations/locales/es-es.json":return import("service-catalog-translations").then((function(e){return e.H}));case"./translations/locales/es-mx.json":return import("service-catalog-translations").then((function(e){return e.I}));case"./translations/locales/es-pe.json":return import("service-catalog-translations").then((function(e){return e.J}));case"./translations/locales/es.json":return import("service-catalog-translations").then((function(e){return e.K}));case"./translations/locales/et.json":return import("service-catalog-translations").then((function(e){return e.L}));case"./translations/locales/eu.json":return import("service-catalog-translations").then((function(e){return e.M}));case"./translations/locales/fa-af.json":return import("service-catalog-translations").then((function(e){return e.N}));case"./translations/locales/fa.json":return import("service-catalog-translations").then((function(e){return e.O}));case"./translations/locales/fi.json":return import("service-catalog-translations").then((function(e){return e.P}));case"./translations/locales/fil.json":return import("service-catalog-translations").then((function(e){return e.Q}));case"./translations/locales/fo.json":return import("service-catalog-translations").then((function(e){return e.R}));case"./translations/locales/fr-ca.json":return import("service-catalog-translations").then((function(e){return e.S}));case"./translations/locales/fr-dz.json":return import("service-catalog-translations").then((function(e){return e.T}));case"./translations/locales/fr-mu.json":return import("service-catalog-translations").then((function(e){return e.U}));case"./translations/locales/fr.json":return import("service-catalog-translations").then((function(e){return e.V}));case"./translations/locales/ga.json":return import("service-catalog-translations").then((function(e){return e.W}));case"./translations/locales/he.json":return import("service-catalog-translations").then((function(e){return e.X}));case"./translations/locales/hi.json":return import("service-catalog-translations").then((function(e){return e.Y}));case"./translations/locales/hr.json":return import("service-catalog-translations").then((function(e){return e.Z}));case"./translations/locales/hu.json":return import("service-catalog-translations").then((function(e){return e._}));case"./translations/locales/hy.json":return import("service-catalog-translations").then((function(e){return e.$}));case"./translations/locales/id.json":return import("service-catalog-translations").then((function(e){return e.a0}));case"./translations/locales/is.json":return import("service-catalog-translations").then((function(e){return e.a1}));case"./translations/locales/it-ch.json":return import("service-catalog-translations").then((function(e){return e.a2}));case"./translations/locales/it.json":return import("service-catalog-translations").then((function(e){return e.a3}));case"./translations/locales/ja.json":return import("service-catalog-translations").then((function(e){return e.a4}));case"./translations/locales/ka.json":return import("service-catalog-translations").then((function(e){return e.a5}));case"./translations/locales/kk.json":return import("service-catalog-translations").then((function(e){return e.a6}));case"./translations/locales/kl-dk.json":return import("service-catalog-translations").then((function(e){return e.a7}));case"./translations/locales/km.json":return import("service-catalog-translations").then((function(e){return e.a8}));case"./translations/locales/ko.json":return import("service-catalog-translations").then((function(e){return e.a9}));case"./translations/locales/ku.json":return import("service-catalog-translations").then((function(e){return e.aa}));case"./translations/locales/ky.json":return import("service-catalog-translations").then((function(e){return e.ab}));case"./translations/locales/lt.json":return import("service-catalog-translations").then((function(e){return e.ac}));case"./translations/locales/lv.json":return import("service-catalog-translations").then((function(e){return e.ad}));case"./translations/locales/mk.json":return import("service-catalog-translations").then((function(e){return e.ae}));case"./translations/locales/mn.json":return import("service-catalog-translations").then((function(e){return e.af}));case"./translations/locales/ms.json":return import("service-catalog-translations").then((function(e){return e.ag}));case"./translations/locales/mt.json":return import("service-catalog-translations").then((function(e){return e.ah}));case"./translations/locales/my.json":return import("service-catalog-translations").then((function(e){return e.ai}));case"./translations/locales/ne.json":return import("service-catalog-translations").then((function(e){return e.aj}));case"./translations/locales/nl-be.json":return import("service-catalog-translations").then((function(e){return e.ak}));case"./translations/locales/nl.json":return import("service-catalog-translations").then((function(e){return e.al}));case"./translations/locales/no.json":return import("service-catalog-translations").then((function(e){return e.am}));case"./translations/locales/pl.json":return import("service-catalog-translations").then((function(e){return e.an}));case"./translations/locales/pt-br.json":return import("service-catalog-translations").then((function(e){return e.ao}));case"./translations/locales/pt.json":return import("service-catalog-translations").then((function(e){return e.ap}));case"./translations/locales/ro-md.json":return import("service-catalog-translations").then((function(e){return e.aq}));case"./translations/locales/ro.json":return import("service-catalog-translations").then((function(e){return e.ar}));case"./translations/locales/ru.json":return import("service-catalog-translations").then((function(e){return e.as}));case"./translations/locales/si.json":return import("service-catalog-translations").then((function(e){return e.at}));case"./translations/locales/sk.json":return import("service-catalog-translations").then((function(e){return e.au}));case"./translations/locales/sl.json":return import("service-catalog-translations").then((function(e){return e.av}));case"./translations/locales/sq.json":return import("service-catalog-translations").then((function(e){return e.aw}));case"./translations/locales/sr-me.json":return import("service-catalog-translations").then((function(e){return e.ax}));case"./translations/locales/sr.json":return import("service-catalog-translations").then((function(e){return e.ay}));case"./translations/locales/sv.json":return import("service-catalog-translations").then((function(e){return e.az}));case"./translations/locales/sw-ke.json":return import("service-catalog-translations").then((function(e){return e.aA}));case"./translations/locales/ta.json":return import("service-catalog-translations").then((function(e){return e.aB}));case"./translations/locales/th.json":return import("service-catalog-translations").then((function(e){return e.aC}));case"./translations/locales/tr.json":return import("service-catalog-translations").then((function(e){return e.aD}));case"./translations/locales/uk.json":return import("service-catalog-translations").then((function(e){return e.aE}));case"./translations/locales/ur-pk.json":return import("service-catalog-translations").then((function(e){return e.aF}));case"./translations/locales/ur.json":return import("service-catalog-translations").then((function(e){return e.aG}));case"./translations/locales/uz.json":return import("service-catalog-translations").then((function(e){return e.aH}));case"./translations/locales/vi.json":return import("service-catalog-translations").then((function(e){return e.aI}));case"./translations/locales/zh-cn.json":return import("service-catalog-translations").then((function(e){return e.aJ}));case"./translations/locales/zh-tw.json":return import("service-catalog-translations").then((function(e){return e.aK}));default:return new Promise((function(t,n){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`./translations/locales/${r}.json`),()=>function(e){switch(e){case"../ticket-fields/translations/locales/af.json":return import("ticket-fields").then((function(e){return e.b}));case"../ticket-fields/translations/locales/ar-x-pseudo.json":return import("ticket-fields").then((function(e){return e.c}));case"../ticket-fields/translations/locales/ar.json":return import("ticket-fields").then((function(e){return e.d}));case"../ticket-fields/translations/locales/az.json":return import("ticket-fields").then((function(e){return e.e}));case"../ticket-fields/translations/locales/be.json":return import("ticket-fields").then((function(e){return e.f}));case"../ticket-fields/translations/locales/bg.json":return import("ticket-fields").then((function(e){return e.h}));case"../ticket-fields/translations/locales/bn.json":return import("ticket-fields").then((function(e){return e.i}));case"../ticket-fields/translations/locales/bs.json":return import("ticket-fields").then((function(e){return e.j}));case"../ticket-fields/translations/locales/ca.json":return import("ticket-fields").then((function(e){return e.k}));case"../ticket-fields/translations/locales/cs.json":return import("ticket-fields").then((function(e){return e.l}));case"../ticket-fields/translations/locales/cy.json":return import("ticket-fields").then((function(e){return e.m}));case"../ticket-fields/translations/locales/da.json":return import("ticket-fields").then((function(e){return e.n}));case"../ticket-fields/translations/locales/de-de.json":return import("ticket-fields").then((function(e){return e.o}));case"../ticket-fields/translations/locales/de-x-informal.json":return import("ticket-fields").then((function(e){return e.p}));case"../ticket-fields/translations/locales/de.json":return import("ticket-fields").then((function(e){return e.q}));case"../ticket-fields/translations/locales/el.json":return import("ticket-fields").then((function(e){return e.r}));case"../ticket-fields/translations/locales/en-001.json":return import("ticket-fields").then((function(e){return e.s}));case"../ticket-fields/translations/locales/en-150.json":return import("ticket-fields").then((function(e){return e.t}));case"../ticket-fields/translations/locales/en-au.json":return import("ticket-fields").then((function(e){return e.u}));case"../ticket-fields/translations/locales/en-ca.json":return import("ticket-fields").then((function(e){return e.v}));case"../ticket-fields/translations/locales/en-gb.json":return import("ticket-fields").then((function(e){return e.w}));case"../ticket-fields/translations/locales/en-my.json":return import("ticket-fields").then((function(e){return e.x}));case"../ticket-fields/translations/locales/en-ph.json":return import("ticket-fields").then((function(e){return e.y}));case"../ticket-fields/translations/locales/en-se.json":return import("ticket-fields").then((function(e){return e.z}));case"../ticket-fields/translations/locales/en-us.json":return import("ticket-fields").then((function(e){return e.A}));case"../ticket-fields/translations/locales/en-x-dev.json":return import("ticket-fields").then((function(e){return e.B}));case"../ticket-fields/translations/locales/en-x-keys.json":return import("ticket-fields").then((function(e){return e.C}));case"../ticket-fields/translations/locales/en-x-obsolete.json":return import("ticket-fields").then((function(e){return e.E}));case"../ticket-fields/translations/locales/en-x-pseudo.json":return import("ticket-fields").then((function(e){return e.F}));case"../ticket-fields/translations/locales/en-x-test.json":return import("ticket-fields").then((function(e){return e.G}));case"../ticket-fields/translations/locales/es-419.json":return import("ticket-fields").then((function(e){return e.H}));case"../ticket-fields/translations/locales/es-ar.json":return import("ticket-fields").then((function(e){return e.J}));case"../ticket-fields/translations/locales/es-cl.json":return import("ticket-fields").then((function(e){return e.K}));case"../ticket-fields/translations/locales/es-es.json":return import("ticket-fields").then((function(e){return e.L}));case"../ticket-fields/translations/locales/es-mx.json":return import("ticket-fields").then((function(e){return e.M}));case"../ticket-fields/translations/locales/es-pe.json":return import("ticket-fields").then((function(e){return e.N}));case"../ticket-fields/translations/locales/es.json":return import("ticket-fields").then((function(e){return e.O}));case"../ticket-fields/translations/locales/et.json":return import("ticket-fields").then((function(e){return e.P}));case"../ticket-fields/translations/locales/eu.json":return import("ticket-fields").then((function(e){return e.Q}));case"../ticket-fields/translations/locales/fa-af.json":return import("ticket-fields").then((function(e){return e.S}));case"../ticket-fields/translations/locales/fa.json":return import("ticket-fields").then((function(e){return e.U}));case"../ticket-fields/translations/locales/fi.json":return import("ticket-fields").then((function(e){return e.V}));case"../ticket-fields/translations/locales/fil.json":return import("ticket-fields").then((function(e){return e.W}));case"../ticket-fields/translations/locales/fo.json":return import("ticket-fields").then((function(e){return e.X}));case"../ticket-fields/translations/locales/fr-ca.json":return import("ticket-fields").then((function(e){return e.Y}));case"../ticket-fields/translations/locales/fr-dz.json":return import("ticket-fields").then((function(e){return e.Z}));case"../ticket-fields/translations/locales/fr-mu.json":return import("ticket-fields").then((function(e){return e._}));case"../ticket-fields/translations/locales/fr.json":return import("ticket-fields").then((function(e){return e.$}));case"../ticket-fields/translations/locales/ga.json":return import("ticket-fields").then((function(e){return e.a0}));case"../ticket-fields/translations/locales/he.json":return import("ticket-fields").then((function(e){return e.a1}));case"../ticket-fields/translations/locales/hi.json":return import("ticket-fields").then((function(e){return e.a2}));case"../ticket-fields/translations/locales/hr.json":return import("ticket-fields").then((function(e){return e.a3}));case"../ticket-fields/translations/locales/hu.json":return import("ticket-fields").then((function(e){return e.a4}));case"../ticket-fields/translations/locales/hy.json":return import("ticket-fields").then((function(e){return e.a5}));case"../ticket-fields/translations/locales/id.json":return import("ticket-fields").then((function(e){return e.a6}));case"../ticket-fields/translations/locales/is.json":return import("ticket-fields").then((function(e){return e.a7}));case"../ticket-fields/translations/locales/it-ch.json":return import("ticket-fields").then((function(e){return e.a8}));case"../ticket-fields/translations/locales/it.json":return import("ticket-fields").then((function(e){return e.a9}));case"../ticket-fields/translations/locales/ja.json":return import("ticket-fields").then((function(e){return e.aa}));case"../ticket-fields/translations/locales/ka.json":return import("ticket-fields").then((function(e){return e.ab}));case"../ticket-fields/translations/locales/kk.json":return import("ticket-fields").then((function(e){return e.ac}));case"../ticket-fields/translations/locales/kl-dk.json":return import("ticket-fields").then((function(e){return e.ad}));case"../ticket-fields/translations/locales/km.json":return import("ticket-fields").then((function(e){return e.ae}));case"../ticket-fields/translations/locales/ko.json":return import("ticket-fields").then((function(e){return e.af}));case"../ticket-fields/translations/locales/ku.json":return import("ticket-fields").then((function(e){return e.ag}));case"../ticket-fields/translations/locales/ky.json":return import("ticket-fields").then((function(e){return e.ah}));case"../ticket-fields/translations/locales/lt.json":return import("ticket-fields").then((function(e){return e.ai}));case"../ticket-fields/translations/locales/lv.json":return import("ticket-fields").then((function(e){return e.aj}));case"../ticket-fields/translations/locales/mk.json":return import("ticket-fields").then((function(e){return e.ak}));case"../ticket-fields/translations/locales/mn.json":return import("ticket-fields").then((function(e){return e.al}));case"../ticket-fields/translations/locales/ms.json":return import("ticket-fields").then((function(e){return e.am}));case"../ticket-fields/translations/locales/mt.json":return import("ticket-fields").then((function(e){return e.an}));case"../ticket-fields/translations/locales/my.json":return import("ticket-fields").then((function(e){return e.ao}));case"../ticket-fields/translations/locales/ne.json":return import("ticket-fields").then((function(e){return e.ap}));case"../ticket-fields/translations/locales/nl-be.json":return import("ticket-fields").then((function(e){return e.aq}));case"../ticket-fields/translations/locales/nl.json":return import("ticket-fields").then((function(e){return e.ar}));case"../ticket-fields/translations/locales/no.json":return import("ticket-fields").then((function(e){return e.as}));case"../ticket-fields/translations/locales/pl.json":return import("ticket-fields").then((function(e){return e.at}));case"../ticket-fields/translations/locales/pt-br.json":return import("ticket-fields").then((function(e){return e.au}));case"../ticket-fields/translations/locales/pt.json":return import("ticket-fields").then((function(e){return e.av}));case"../ticket-fields/translations/locales/ro-md.json":return import("ticket-fields").then((function(e){return e.aw}));case"../ticket-fields/translations/locales/ro.json":return import("ticket-fields").then((function(e){return e.ax}));case"../ticket-fields/translations/locales/ru.json":return import("ticket-fields").then((function(e){return e.ay}));case"../ticket-fields/translations/locales/si.json":return import("ticket-fields").then((function(e){return e.az}));case"../ticket-fields/translations/locales/sk.json":return import("ticket-fields").then((function(e){return e.aA}));case"../ticket-fields/translations/locales/sl.json":return import("ticket-fields").then((function(e){return e.aB}));case"../ticket-fields/translations/locales/sq.json":return import("ticket-fields").then((function(e){return e.aC}));case"../ticket-fields/translations/locales/sr-me.json":return import("ticket-fields").then((function(e){return e.aD}));case"../ticket-fields/translations/locales/sr.json":return import("ticket-fields").then((function(e){return e.aE}));case"../ticket-fields/translations/locales/sv.json":return import("ticket-fields").then((function(e){return e.aF}));case"../ticket-fields/translations/locales/sw-ke.json":return import("ticket-fields").then((function(e){return e.aG}));case"../ticket-fields/translations/locales/ta.json":return import("ticket-fields").then((function(e){return e.aH}));case"../ticket-fields/translations/locales/th.json":return import("ticket-fields").then((function(e){return e.aI}));case"../ticket-fields/translations/locales/tr.json":return import("ticket-fields").then((function(e){return e.aJ}));case"../ticket-fields/translations/locales/uk.json":return import("ticket-fields").then((function(e){return e.aK}));case"../ticket-fields/translations/locales/ur-pk.json":return import("ticket-fields").then((function(e){return e.aL}));case"../ticket-fields/translations/locales/ur.json":return import("ticket-fields").then((function(e){return e.aM}));case"../ticket-fields/translations/locales/uz.json":return import("ticket-fields").then((function(e){return e.aN}));case"../ticket-fields/translations/locales/vi.json":return import("ticket-fields").then((function(e){return e.aO}));case"../ticket-fields/translations/locales/zh-cn.json":return import("ticket-fields").then((function(e){return e.aP}));case"../ticket-fields/translations/locales/zh-tw.json":return import("ticket-fields").then((function(e){return e.aQ}));default:return new Promise((function(t,n){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`../ticket-fields/translations/locales/${r}.json`),()=>function(e){switch(e){case"../shared/translations/locales/af.json":return import("shared").then((function(e){return e.az}));case"../shared/translations/locales/ar-x-pseudo.json":return import("shared").then((function(e){return e.aA}));case"../shared/translations/locales/ar.json":return import("shared").then((function(e){return e.aB}));case"../shared/translations/locales/az.json":return import("shared").then((function(e){return e.aC}));case"../shared/translations/locales/be.json":return import("shared").then((function(e){return e.aD}));case"../shared/translations/locales/bg.json":return import("shared").then((function(e){return e.aE}));case"../shared/translations/locales/bn.json":return import("shared").then((function(e){return e.aF}));case"../shared/translations/locales/bs.json":return import("shared").then((function(e){return e.aG}));case"../shared/translations/locales/ca.json":return import("shared").then((function(e){return e.aH}));case"../shared/translations/locales/cs.json":return import("shared").then((function(e){return e.aI}));case"../shared/translations/locales/cy.json":return import("shared").then((function(e){return e.aJ}));case"../shared/translations/locales/da.json":return import("shared").then((function(e){return e.aK}));case"../shared/translations/locales/de-de.json":return import("shared").then((function(e){return e.aL}));case"../shared/translations/locales/de-x-informal.json":return import("shared").then((function(e){return e.aM}));case"../shared/translations/locales/de.json":return import("shared").then((function(e){return e.aN}));case"../shared/translations/locales/el.json":return import("shared").then((function(e){return e.aO}));case"../shared/translations/locales/en-001.json":return import("shared").then((function(e){return e.aP}));case"../shared/translations/locales/en-150.json":return import("shared").then((function(e){return e.aQ}));case"../shared/translations/locales/en-au.json":return import("shared").then((function(e){return e.aR}));case"../shared/translations/locales/en-ca.json":return import("shared").then((function(e){return e.aS}));case"../shared/translations/locales/en-gb.json":return import("shared").then((function(e){return e.aT}));case"../shared/translations/locales/en-my.json":return import("shared").then((function(e){return e.aU}));case"../shared/translations/locales/en-ph.json":return import("shared").then((function(e){return e.aV}));case"../shared/translations/locales/en-se.json":return import("shared").then((function(e){return e.aW}));case"../shared/translations/locales/en-us.json":return import("shared").then((function(e){return e.aX}));case"../shared/translations/locales/en-x-dev.json":return import("shared").then((function(e){return e.aY}));case"../shared/translations/locales/en-x-keys.json":return import("shared").then((function(e){return e.aZ}));case"../shared/translations/locales/en-x-obsolete.json":return import("shared").then((function(e){return e.a_}));case"../shared/translations/locales/en-x-pseudo.json":return import("shared").then((function(e){return e.a$}));case"../shared/translations/locales/en-x-test.json":return import("shared").then((function(e){return e.b0}));case"../shared/translations/locales/es-419.json":return import("shared").then((function(e){return e.b1}));case"../shared/translations/locales/es-ar.json":return import("shared").then((function(e){return e.b2}));case"../shared/translations/locales/es-cl.json":return import("shared").then((function(e){return e.b3}));case"../shared/translations/locales/es-es.json":return import("shared").then((function(e){return e.b4}));case"../shared/translations/locales/es-mx.json":return import("shared").then((function(e){return e.b5}));case"../shared/translations/locales/es-pe.json":return import("shared").then((function(e){return e.b6}));case"../shared/translations/locales/es.json":return import("shared").then((function(e){return e.b7}));case"../shared/translations/locales/et.json":return import("shared").then((function(e){return e.b8}));case"../shared/translations/locales/eu.json":return import("shared").then((function(e){return e.b9}));case"../shared/translations/locales/fa-af.json":return import("shared").then((function(e){return e.ba}));case"../shared/translations/locales/fa.json":return import("shared").then((function(e){return e.bb}));case"../shared/translations/locales/fi.json":return import("shared").then((function(e){return e.bc}));case"../shared/translations/locales/fil.json":return import("shared").then((function(e){return e.bd}));case"../shared/translations/locales/fo.json":return import("shared").then((function(e){return e.be}));case"../shared/translations/locales/fr-ca.json":return import("shared").then((function(e){return e.bf}));case"../shared/translations/locales/fr-dz.json":return import("shared").then((function(e){return e.bg}));case"../shared/translations/locales/fr-mu.json":return import("shared").then((function(e){return e.bh}));case"../shared/translations/locales/fr.json":return import("shared").then((function(e){return e.bi}));case"../shared/translations/locales/ga.json":return import("shared").then((function(e){return e.bj}));case"../shared/translations/locales/he.json":return import("shared").then((function(e){return e.bk}));case"../shared/translations/locales/hi.json":return import("shared").then((function(e){return e.bl}));case"../shared/translations/locales/hr.json":return import("shared").then((function(e){return e.bm}));case"../shared/translations/locales/hu.json":return import("shared").then((function(e){return e.bn}));case"../shared/translations/locales/hy.json":return import("shared").then((function(e){return e.bo}));case"../shared/translations/locales/id.json":return import("shared").then((function(e){return e.bp}));case"../shared/translations/locales/is.json":return import("shared").then((function(e){return e.bq}));case"../shared/translations/locales/it-ch.json":return import("shared").then((function(e){return e.br}));case"../shared/translations/locales/it.json":return import("shared").then((function(e){return e.bs}));case"../shared/translations/locales/ja.json":return import("shared").then((function(e){return e.bt}));case"../shared/translations/locales/ka.json":return import("shared").then((function(e){return e.bu}));case"../shared/translations/locales/kk.json":return import("shared").then((function(e){return e.bv}));case"../shared/translations/locales/kl-dk.json":return import("shared").then((function(e){return e.bw}));case"../shared/translations/locales/km.json":return import("shared").then((function(e){return e.bx}));case"../shared/translations/locales/ko.json":return import("shared").then((function(e){return e.by}));case"../shared/translations/locales/ku.json":return import("shared").then((function(e){return e.bz}));case"../shared/translations/locales/ky.json":return import("shared").then((function(e){return e.bA}));case"../shared/translations/locales/lt.json":return import("shared").then((function(e){return e.bB}));case"../shared/translations/locales/lv.json":return import("shared").then((function(e){return e.bC}));case"../shared/translations/locales/mk.json":return import("shared").then((function(e){return e.bD}));case"../shared/translations/locales/mn.json":return import("shared").then((function(e){return e.bE}));case"../shared/translations/locales/ms.json":return import("shared").then((function(e){return e.bF}));case"../shared/translations/locales/mt.json":return import("shared").then((function(e){return e.bG}));case"../shared/translations/locales/my.json":return import("shared").then((function(e){return e.bH}));case"../shared/translations/locales/ne.json":return import("shared").then((function(e){return e.bI}));case"../shared/translations/locales/nl-be.json":return import("shared").then((function(e){return e.bJ}));case"../shared/translations/locales/nl.json":return import("shared").then((function(e){return e.bK}));case"../shared/translations/locales/no.json":return import("shared").then((function(e){return e.bL}));case"../shared/translations/locales/pl.json":return import("shared").then((function(e){return e.bM}));case"../shared/translations/locales/pt-br.json":return import("shared").then((function(e){return e.bN}));case"../shared/translations/locales/pt.json":return import("shared").then((function(e){return e.bO}));case"../shared/translations/locales/ro-md.json":return import("shared").then((function(e){return e.bP}));case"../shared/translations/locales/ro.json":return import("shared").then((function(e){return e.bQ}));case"../shared/translations/locales/ru.json":return import("shared").then((function(e){return e.bR}));case"../shared/translations/locales/si.json":return import("shared").then((function(e){return e.bS}));case"../shared/translations/locales/sk.json":return import("shared").then((function(e){return e.bT}));case"../shared/translations/locales/sl.json":return import("shared").then((function(e){return e.bU}));case"../shared/translations/locales/sq.json":return import("shared").then((function(e){return e.bV}));case"../shared/translations/locales/sr-me.json":return import("shared").then((function(e){return e.bW}));case"../shared/translations/locales/sr.json":return import("shared").then((function(e){return e.bX}));case"../shared/translations/locales/sv.json":return import("shared").then((function(e){return e.bY}));case"../shared/translations/locales/sw-ke.json":return import("shared").then((function(e){return e.bZ}));case"../shared/translations/locales/ta.json":return import("shared").then((function(e){return e.b_}));case"../shared/translations/locales/th.json":return import("shared").then((function(e){return e.b$}));case"../shared/translations/locales/tr.json":return import("shared").then((function(e){return e.c0}));case"../shared/translations/locales/uk.json":return import("shared").then((function(e){return e.c1}));case"../shared/translations/locales/ur-pk.json":return import("shared").then((function(e){return e.c2}));case"../shared/translations/locales/ur.json":return import("shared").then((function(e){return e.c3}));case"../shared/translations/locales/uz.json":return import("shared").then((function(e){return e.c4}));case"../shared/translations/locales/vi.json":return import("shared").then((function(e){return e.c5}));case"../shared/translations/locales/zh-cn.json":return import("shared").then((function(e){return e.c6}));case"../shared/translations/locales/zh-tw.json":return import("shared").then((function(e){return e.c7}));default:return new Promise((function(t,n){("function"==typeof queueMicrotask?queueMicrotask:setTimeout)(n.bind(null,new Error("Unknown variable dynamic import: "+e)))}))}}(`../shared/translations/locales/${r}.json`)]),C.render(s.jsx(S,{theme:q(t),children:s.jsx(I,{helpCenterPath:a,children:s.jsx(Ee,{...n})})}),e)}export{Fe as renderServiceCatalogItem,ce as renderServiceCatalogList};
+  margin-top: ${(props) => props.theme.space.xxs}px;
+`;
+const isAssetTypeField = (field) => field.relationship_target_type === ASSET_TYPE_KEY;
+function ServiceCatalogItem({ serviceCatalogItemId, baseLocale, hasAtMentions, userRole, organizations, userId, brandId, helpCenterPath, }) {
+    const { serviceCatalogItem, errorFetchingItem } = useServiceCatalogItem(serviceCatalogItemId);
+    const { requestFields, associatedLookupField, error, setRequestFields, handleChange, } = useItemFormFields(serviceCatalogItem, baseLocale);
+    const { t } = useTranslation();
+    if (error) {
+        throw error;
+    }
+    if (errorFetchingItem) {
+        throw errorFetchingItem;
+    }
+    const handleRequestSubmit = async (e) => {
+        e.preventDefault();
+        const form = e.currentTarget;
+        const formData = new FormData(form);
+        const isAssetTypeFieldHidden = formData.get("isAssetTypeHidden") === "true";
+        const requestFieldsWithFormData = requestFields.map((field) => {
+            if (isAssetTypeField(field) && isAssetTypeFieldHidden) {
+                return {
+                    ...field,
+                    value: formData.get(field.name),
+                };
+            }
+            return field;
+        });
+        if (!serviceCatalogItem || !associatedLookupField) {
+            return;
+        }
+        const response = await submitServiceItemRequest(serviceCatalogItem, requestFieldsWithFormData, associatedLookupField, baseLocale);
+        if (!response?.ok) {
+            if (response?.status === 422) {
+                const errorData = await response.json();
+                const invalidFieldErrors = errorData.details.base;
+                const missingErrorFields = invalidFieldErrors.filter((errorField) => !requestFields.some((field) => field.id === errorField.field_key));
+                if (missingErrorFields.length > 0) {
+                    notify({
+                        type: "error",
+                        title: t("service-catalog.item.service-request-error-title", "Service couldn't be submitted"),
+                        message: (jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment, { children: [t("service-catalog.item.service-request-refresh-message", "Refresh the page and try again in a few seconds."), " ", jsxRuntimeExports.jsx(StyledNotificationLink, { href: `${helpCenterPath}/services/${serviceCatalogItem.id}`, children: t("service-catalog.item.service-request-refresh-link-text", "Refresh the page") })] })),
+                    });
+                }
+                const updatedFields = requestFields.map((field) => {
+                    const errorField = invalidFieldErrors.find((errorField) => errorField.field_key === field.id);
+                    return { ...field, error: errorField?.description || null };
+                });
+                setRequestFields(updatedFields);
+            }
+            else {
+                notify({
+                    title: t("service-catalog.item.service-request-error-title", "Service couldn't be submitted"),
+                    message: t("service-catalog.item.service-request-error-message", "Give it a moment and try it again"),
+                    type: "error",
+                });
+            }
+        }
+        else if (response && response.ok) {
+            addFlashNotification({
+                type: "success",
+                message: t("service-catalog.item.service-request-submitted", "Service request submitted"),
+            });
+            const data = await response?.json();
+            const redirectUrl = `${helpCenterPath}/requests/${data.request.id}`;
+            window.location.href = redirectUrl;
+        }
+    };
+    const defaultOrganizationId = organizations.length > 0 && organizations[0]?.id
+        ? organizations[0]?.id?.toString()
+        : null;
+    return (jsxRuntimeExports.jsx(Container, { children: serviceCatalogItem && (jsxRuntimeExports.jsx(ItemRequestForm, { requestFields: requestFields, serviceCatalogItem: serviceCatalogItem, baseLocale: baseLocale, hasAtMentions: hasAtMentions, userRole: userRole, userId: userId, brandId: brandId, defaultOrganizationId: defaultOrganizationId, handleChange: handleChange, onSubmit: handleRequestSubmit })) }));
+}
+
+function __variableDynamicImportRuntime2__(path) {
+  switch (path) {
+    case '../shared/translations/locales/af.json': return import('shared').then(function (n) { return n.aA; });
+    case '../shared/translations/locales/ar-x-pseudo.json': return import('shared').then(function (n) { return n.aB; });
+    case '../shared/translations/locales/ar.json': return import('shared').then(function (n) { return n.aC; });
+    case '../shared/translations/locales/az.json': return import('shared').then(function (n) { return n.aD; });
+    case '../shared/translations/locales/be.json': return import('shared').then(function (n) { return n.aE; });
+    case '../shared/translations/locales/bg.json': return import('shared').then(function (n) { return n.aF; });
+    case '../shared/translations/locales/bn.json': return import('shared').then(function (n) { return n.aG; });
+    case '../shared/translations/locales/bs.json': return import('shared').then(function (n) { return n.aH; });
+    case '../shared/translations/locales/ca.json': return import('shared').then(function (n) { return n.aI; });
+    case '../shared/translations/locales/cs.json': return import('shared').then(function (n) { return n.aJ; });
+    case '../shared/translations/locales/cy.json': return import('shared').then(function (n) { return n.aK; });
+    case '../shared/translations/locales/da.json': return import('shared').then(function (n) { return n.aL; });
+    case '../shared/translations/locales/de-de.json': return import('shared').then(function (n) { return n.aM; });
+    case '../shared/translations/locales/de-x-informal.json': return import('shared').then(function (n) { return n.aN; });
+    case '../shared/translations/locales/de.json': return import('shared').then(function (n) { return n.aO; });
+    case '../shared/translations/locales/el.json': return import('shared').then(function (n) { return n.aP; });
+    case '../shared/translations/locales/en-001.json': return import('shared').then(function (n) { return n.aQ; });
+    case '../shared/translations/locales/en-150.json': return import('shared').then(function (n) { return n.aR; });
+    case '../shared/translations/locales/en-au.json': return import('shared').then(function (n) { return n.aS; });
+    case '../shared/translations/locales/en-ca.json': return import('shared').then(function (n) { return n.aT; });
+    case '../shared/translations/locales/en-gb.json': return import('shared').then(function (n) { return n.aU; });
+    case '../shared/translations/locales/en-my.json': return import('shared').then(function (n) { return n.aV; });
+    case '../shared/translations/locales/en-ph.json': return import('shared').then(function (n) { return n.aW; });
+    case '../shared/translations/locales/en-se.json': return import('shared').then(function (n) { return n.aX; });
+    case '../shared/translations/locales/en-us.json': return import('shared').then(function (n) { return n.aY; });
+    case '../shared/translations/locales/en-x-dev.json': return import('shared').then(function (n) { return n.aZ; });
+    case '../shared/translations/locales/en-x-keys.json': return import('shared').then(function (n) { return n.a_; });
+    case '../shared/translations/locales/en-x-obsolete.json': return import('shared').then(function (n) { return n.a$; });
+    case '../shared/translations/locales/en-x-pseudo.json': return import('shared').then(function (n) { return n.b0; });
+    case '../shared/translations/locales/en-x-test.json': return import('shared').then(function (n) { return n.b1; });
+    case '../shared/translations/locales/es-419.json': return import('shared').then(function (n) { return n.b2; });
+    case '../shared/translations/locales/es-ar.json': return import('shared').then(function (n) { return n.b3; });
+    case '../shared/translations/locales/es-cl.json': return import('shared').then(function (n) { return n.b4; });
+    case '../shared/translations/locales/es-es.json': return import('shared').then(function (n) { return n.b5; });
+    case '../shared/translations/locales/es-mx.json': return import('shared').then(function (n) { return n.b6; });
+    case '../shared/translations/locales/es-pe.json': return import('shared').then(function (n) { return n.b7; });
+    case '../shared/translations/locales/es.json': return import('shared').then(function (n) { return n.b8; });
+    case '../shared/translations/locales/et.json': return import('shared').then(function (n) { return n.b9; });
+    case '../shared/translations/locales/eu.json': return import('shared').then(function (n) { return n.ba; });
+    case '../shared/translations/locales/fa-af.json': return import('shared').then(function (n) { return n.bb; });
+    case '../shared/translations/locales/fa.json': return import('shared').then(function (n) { return n.bc; });
+    case '../shared/translations/locales/fi.json': return import('shared').then(function (n) { return n.bd; });
+    case '../shared/translations/locales/fil.json': return import('shared').then(function (n) { return n.be; });
+    case '../shared/translations/locales/fo.json': return import('shared').then(function (n) { return n.bf; });
+    case '../shared/translations/locales/fr-ca.json': return import('shared').then(function (n) { return n.bg; });
+    case '../shared/translations/locales/fr-dz.json': return import('shared').then(function (n) { return n.bh; });
+    case '../shared/translations/locales/fr-mu.json': return import('shared').then(function (n) { return n.bi; });
+    case '../shared/translations/locales/fr.json': return import('shared').then(function (n) { return n.bj; });
+    case '../shared/translations/locales/ga.json': return import('shared').then(function (n) { return n.bk; });
+    case '../shared/translations/locales/he.json': return import('shared').then(function (n) { return n.bl; });
+    case '../shared/translations/locales/hi.json': return import('shared').then(function (n) { return n.bm; });
+    case '../shared/translations/locales/hr.json': return import('shared').then(function (n) { return n.bn; });
+    case '../shared/translations/locales/hu.json': return import('shared').then(function (n) { return n.bo; });
+    case '../shared/translations/locales/hy.json': return import('shared').then(function (n) { return n.bp; });
+    case '../shared/translations/locales/id.json': return import('shared').then(function (n) { return n.bq; });
+    case '../shared/translations/locales/is.json': return import('shared').then(function (n) { return n.br; });
+    case '../shared/translations/locales/it-ch.json': return import('shared').then(function (n) { return n.bs; });
+    case '../shared/translations/locales/it.json': return import('shared').then(function (n) { return n.bt; });
+    case '../shared/translations/locales/ja.json': return import('shared').then(function (n) { return n.bu; });
+    case '../shared/translations/locales/ka.json': return import('shared').then(function (n) { return n.bv; });
+    case '../shared/translations/locales/kk.json': return import('shared').then(function (n) { return n.bw; });
+    case '../shared/translations/locales/kl-dk.json': return import('shared').then(function (n) { return n.bx; });
+    case '../shared/translations/locales/km.json': return import('shared').then(function (n) { return n.by; });
+    case '../shared/translations/locales/ko.json': return import('shared').then(function (n) { return n.bz; });
+    case '../shared/translations/locales/ku.json': return import('shared').then(function (n) { return n.bA; });
+    case '../shared/translations/locales/ky.json': return import('shared').then(function (n) { return n.bB; });
+    case '../shared/translations/locales/lt.json': return import('shared').then(function (n) { return n.bC; });
+    case '../shared/translations/locales/lv.json': return import('shared').then(function (n) { return n.bD; });
+    case '../shared/translations/locales/mk.json': return import('shared').then(function (n) { return n.bE; });
+    case '../shared/translations/locales/mn.json': return import('shared').then(function (n) { return n.bF; });
+    case '../shared/translations/locales/ms.json': return import('shared').then(function (n) { return n.bG; });
+    case '../shared/translations/locales/mt.json': return import('shared').then(function (n) { return n.bH; });
+    case '../shared/translations/locales/my.json': return import('shared').then(function (n) { return n.bI; });
+    case '../shared/translations/locales/ne.json': return import('shared').then(function (n) { return n.bJ; });
+    case '../shared/translations/locales/nl-be.json': return import('shared').then(function (n) { return n.bK; });
+    case '../shared/translations/locales/nl.json': return import('shared').then(function (n) { return n.bL; });
+    case '../shared/translations/locales/no.json': return import('shared').then(function (n) { return n.bM; });
+    case '../shared/translations/locales/pl.json': return import('shared').then(function (n) { return n.bN; });
+    case '../shared/translations/locales/pt-br.json': return import('shared').then(function (n) { return n.bO; });
+    case '../shared/translations/locales/pt.json': return import('shared').then(function (n) { return n.bP; });
+    case '../shared/translations/locales/ro-md.json': return import('shared').then(function (n) { return n.bQ; });
+    case '../shared/translations/locales/ro.json': return import('shared').then(function (n) { return n.bR; });
+    case '../shared/translations/locales/ru.json': return import('shared').then(function (n) { return n.bS; });
+    case '../shared/translations/locales/si.json': return import('shared').then(function (n) { return n.bT; });
+    case '../shared/translations/locales/sk.json': return import('shared').then(function (n) { return n.bU; });
+    case '../shared/translations/locales/sl.json': return import('shared').then(function (n) { return n.bV; });
+    case '../shared/translations/locales/sq.json': return import('shared').then(function (n) { return n.bW; });
+    case '../shared/translations/locales/sr-me.json': return import('shared').then(function (n) { return n.bX; });
+    case '../shared/translations/locales/sr.json': return import('shared').then(function (n) { return n.bY; });
+    case '../shared/translations/locales/sv.json': return import('shared').then(function (n) { return n.bZ; });
+    case '../shared/translations/locales/sw-ke.json': return import('shared').then(function (n) { return n.b_; });
+    case '../shared/translations/locales/ta.json': return import('shared').then(function (n) { return n.b$; });
+    case '../shared/translations/locales/th.json': return import('shared').then(function (n) { return n.c0; });
+    case '../shared/translations/locales/tr.json': return import('shared').then(function (n) { return n.c1; });
+    case '../shared/translations/locales/uk.json': return import('shared').then(function (n) { return n.c2; });
+    case '../shared/translations/locales/ur-pk.json': return import('shared').then(function (n) { return n.c3; });
+    case '../shared/translations/locales/ur.json': return import('shared').then(function (n) { return n.c4; });
+    case '../shared/translations/locales/uz.json': return import('shared').then(function (n) { return n.c5; });
+    case '../shared/translations/locales/vi.json': return import('shared').then(function (n) { return n.c6; });
+    case '../shared/translations/locales/zh-cn.json': return import('shared').then(function (n) { return n.c7; });
+    case '../shared/translations/locales/zh-tw.json': return import('shared').then(function (n) { return n.c8; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime1__(path) {
+  switch (path) {
+    case '../ticket-fields/translations/locales/af.json': return import('ticket-fields').then(function (n) { return n.b; });
+    case '../ticket-fields/translations/locales/ar-x-pseudo.json': return import('ticket-fields').then(function (n) { return n.c; });
+    case '../ticket-fields/translations/locales/ar.json': return import('ticket-fields').then(function (n) { return n.d; });
+    case '../ticket-fields/translations/locales/az.json': return import('ticket-fields').then(function (n) { return n.e; });
+    case '../ticket-fields/translations/locales/be.json': return import('ticket-fields').then(function (n) { return n.f; });
+    case '../ticket-fields/translations/locales/bg.json': return import('ticket-fields').then(function (n) { return n.h; });
+    case '../ticket-fields/translations/locales/bn.json': return import('ticket-fields').then(function (n) { return n.i; });
+    case '../ticket-fields/translations/locales/bs.json': return import('ticket-fields').then(function (n) { return n.j; });
+    case '../ticket-fields/translations/locales/ca.json': return import('ticket-fields').then(function (n) { return n.k; });
+    case '../ticket-fields/translations/locales/cs.json': return import('ticket-fields').then(function (n) { return n.l; });
+    case '../ticket-fields/translations/locales/cy.json': return import('ticket-fields').then(function (n) { return n.m; });
+    case '../ticket-fields/translations/locales/da.json': return import('ticket-fields').then(function (n) { return n.n; });
+    case '../ticket-fields/translations/locales/de-de.json': return import('ticket-fields').then(function (n) { return n.o; });
+    case '../ticket-fields/translations/locales/de-x-informal.json': return import('ticket-fields').then(function (n) { return n.p; });
+    case '../ticket-fields/translations/locales/de.json': return import('ticket-fields').then(function (n) { return n.q; });
+    case '../ticket-fields/translations/locales/el.json': return import('ticket-fields').then(function (n) { return n.r; });
+    case '../ticket-fields/translations/locales/en-001.json': return import('ticket-fields').then(function (n) { return n.s; });
+    case '../ticket-fields/translations/locales/en-150.json': return import('ticket-fields').then(function (n) { return n.t; });
+    case '../ticket-fields/translations/locales/en-au.json': return import('ticket-fields').then(function (n) { return n.u; });
+    case '../ticket-fields/translations/locales/en-ca.json': return import('ticket-fields').then(function (n) { return n.v; });
+    case '../ticket-fields/translations/locales/en-gb.json': return import('ticket-fields').then(function (n) { return n.w; });
+    case '../ticket-fields/translations/locales/en-my.json': return import('ticket-fields').then(function (n) { return n.x; });
+    case '../ticket-fields/translations/locales/en-ph.json': return import('ticket-fields').then(function (n) { return n.y; });
+    case '../ticket-fields/translations/locales/en-se.json': return import('ticket-fields').then(function (n) { return n.z; });
+    case '../ticket-fields/translations/locales/en-us.json': return import('ticket-fields').then(function (n) { return n.A; });
+    case '../ticket-fields/translations/locales/en-x-dev.json': return import('ticket-fields').then(function (n) { return n.B; });
+    case '../ticket-fields/translations/locales/en-x-keys.json': return import('ticket-fields').then(function (n) { return n.C; });
+    case '../ticket-fields/translations/locales/en-x-obsolete.json': return import('ticket-fields').then(function (n) { return n.E; });
+    case '../ticket-fields/translations/locales/en-x-pseudo.json': return import('ticket-fields').then(function (n) { return n.F; });
+    case '../ticket-fields/translations/locales/en-x-test.json': return import('ticket-fields').then(function (n) { return n.G; });
+    case '../ticket-fields/translations/locales/es-419.json': return import('ticket-fields').then(function (n) { return n.H; });
+    case '../ticket-fields/translations/locales/es-ar.json': return import('ticket-fields').then(function (n) { return n.J; });
+    case '../ticket-fields/translations/locales/es-cl.json': return import('ticket-fields').then(function (n) { return n.K; });
+    case '../ticket-fields/translations/locales/es-es.json': return import('ticket-fields').then(function (n) { return n.L; });
+    case '../ticket-fields/translations/locales/es-mx.json': return import('ticket-fields').then(function (n) { return n.M; });
+    case '../ticket-fields/translations/locales/es-pe.json': return import('ticket-fields').then(function (n) { return n.N; });
+    case '../ticket-fields/translations/locales/es.json': return import('ticket-fields').then(function (n) { return n.O; });
+    case '../ticket-fields/translations/locales/et.json': return import('ticket-fields').then(function (n) { return n.P; });
+    case '../ticket-fields/translations/locales/eu.json': return import('ticket-fields').then(function (n) { return n.Q; });
+    case '../ticket-fields/translations/locales/fa-af.json': return import('ticket-fields').then(function (n) { return n.S; });
+    case '../ticket-fields/translations/locales/fa.json': return import('ticket-fields').then(function (n) { return n.U; });
+    case '../ticket-fields/translations/locales/fi.json': return import('ticket-fields').then(function (n) { return n.V; });
+    case '../ticket-fields/translations/locales/fil.json': return import('ticket-fields').then(function (n) { return n.W; });
+    case '../ticket-fields/translations/locales/fo.json': return import('ticket-fields').then(function (n) { return n.X; });
+    case '../ticket-fields/translations/locales/fr-ca.json': return import('ticket-fields').then(function (n) { return n.Y; });
+    case '../ticket-fields/translations/locales/fr-dz.json': return import('ticket-fields').then(function (n) { return n.Z; });
+    case '../ticket-fields/translations/locales/fr-mu.json': return import('ticket-fields').then(function (n) { return n._; });
+    case '../ticket-fields/translations/locales/fr.json': return import('ticket-fields').then(function (n) { return n.$; });
+    case '../ticket-fields/translations/locales/ga.json': return import('ticket-fields').then(function (n) { return n.a0; });
+    case '../ticket-fields/translations/locales/he.json': return import('ticket-fields').then(function (n) { return n.a1; });
+    case '../ticket-fields/translations/locales/hi.json': return import('ticket-fields').then(function (n) { return n.a2; });
+    case '../ticket-fields/translations/locales/hr.json': return import('ticket-fields').then(function (n) { return n.a3; });
+    case '../ticket-fields/translations/locales/hu.json': return import('ticket-fields').then(function (n) { return n.a4; });
+    case '../ticket-fields/translations/locales/hy.json': return import('ticket-fields').then(function (n) { return n.a5; });
+    case '../ticket-fields/translations/locales/id.json': return import('ticket-fields').then(function (n) { return n.a6; });
+    case '../ticket-fields/translations/locales/is.json': return import('ticket-fields').then(function (n) { return n.a7; });
+    case '../ticket-fields/translations/locales/it-ch.json': return import('ticket-fields').then(function (n) { return n.a8; });
+    case '../ticket-fields/translations/locales/it.json': return import('ticket-fields').then(function (n) { return n.a9; });
+    case '../ticket-fields/translations/locales/ja.json': return import('ticket-fields').then(function (n) { return n.aa; });
+    case '../ticket-fields/translations/locales/ka.json': return import('ticket-fields').then(function (n) { return n.ab; });
+    case '../ticket-fields/translations/locales/kk.json': return import('ticket-fields').then(function (n) { return n.ac; });
+    case '../ticket-fields/translations/locales/kl-dk.json': return import('ticket-fields').then(function (n) { return n.ad; });
+    case '../ticket-fields/translations/locales/km.json': return import('ticket-fields').then(function (n) { return n.ae; });
+    case '../ticket-fields/translations/locales/ko.json': return import('ticket-fields').then(function (n) { return n.af; });
+    case '../ticket-fields/translations/locales/ku.json': return import('ticket-fields').then(function (n) { return n.ag; });
+    case '../ticket-fields/translations/locales/ky.json': return import('ticket-fields').then(function (n) { return n.ah; });
+    case '../ticket-fields/translations/locales/lt.json': return import('ticket-fields').then(function (n) { return n.ai; });
+    case '../ticket-fields/translations/locales/lv.json': return import('ticket-fields').then(function (n) { return n.aj; });
+    case '../ticket-fields/translations/locales/mk.json': return import('ticket-fields').then(function (n) { return n.ak; });
+    case '../ticket-fields/translations/locales/mn.json': return import('ticket-fields').then(function (n) { return n.al; });
+    case '../ticket-fields/translations/locales/ms.json': return import('ticket-fields').then(function (n) { return n.am; });
+    case '../ticket-fields/translations/locales/mt.json': return import('ticket-fields').then(function (n) { return n.an; });
+    case '../ticket-fields/translations/locales/my.json': return import('ticket-fields').then(function (n) { return n.ao; });
+    case '../ticket-fields/translations/locales/ne.json': return import('ticket-fields').then(function (n) { return n.ap; });
+    case '../ticket-fields/translations/locales/nl-be.json': return import('ticket-fields').then(function (n) { return n.aq; });
+    case '../ticket-fields/translations/locales/nl.json': return import('ticket-fields').then(function (n) { return n.ar; });
+    case '../ticket-fields/translations/locales/no.json': return import('ticket-fields').then(function (n) { return n.as; });
+    case '../ticket-fields/translations/locales/pl.json': return import('ticket-fields').then(function (n) { return n.at; });
+    case '../ticket-fields/translations/locales/pt-br.json': return import('ticket-fields').then(function (n) { return n.au; });
+    case '../ticket-fields/translations/locales/pt.json': return import('ticket-fields').then(function (n) { return n.av; });
+    case '../ticket-fields/translations/locales/ro-md.json': return import('ticket-fields').then(function (n) { return n.aw; });
+    case '../ticket-fields/translations/locales/ro.json': return import('ticket-fields').then(function (n) { return n.ax; });
+    case '../ticket-fields/translations/locales/ru.json': return import('ticket-fields').then(function (n) { return n.ay; });
+    case '../ticket-fields/translations/locales/si.json': return import('ticket-fields').then(function (n) { return n.az; });
+    case '../ticket-fields/translations/locales/sk.json': return import('ticket-fields').then(function (n) { return n.aA; });
+    case '../ticket-fields/translations/locales/sl.json': return import('ticket-fields').then(function (n) { return n.aB; });
+    case '../ticket-fields/translations/locales/sq.json': return import('ticket-fields').then(function (n) { return n.aC; });
+    case '../ticket-fields/translations/locales/sr-me.json': return import('ticket-fields').then(function (n) { return n.aD; });
+    case '../ticket-fields/translations/locales/sr.json': return import('ticket-fields').then(function (n) { return n.aE; });
+    case '../ticket-fields/translations/locales/sv.json': return import('ticket-fields').then(function (n) { return n.aF; });
+    case '../ticket-fields/translations/locales/sw-ke.json': return import('ticket-fields').then(function (n) { return n.aG; });
+    case '../ticket-fields/translations/locales/ta.json': return import('ticket-fields').then(function (n) { return n.aH; });
+    case '../ticket-fields/translations/locales/th.json': return import('ticket-fields').then(function (n) { return n.aI; });
+    case '../ticket-fields/translations/locales/tr.json': return import('ticket-fields').then(function (n) { return n.aJ; });
+    case '../ticket-fields/translations/locales/uk.json': return import('ticket-fields').then(function (n) { return n.aK; });
+    case '../ticket-fields/translations/locales/ur-pk.json': return import('ticket-fields').then(function (n) { return n.aL; });
+    case '../ticket-fields/translations/locales/ur.json': return import('ticket-fields').then(function (n) { return n.aM; });
+    case '../ticket-fields/translations/locales/uz.json': return import('ticket-fields').then(function (n) { return n.aN; });
+    case '../ticket-fields/translations/locales/vi.json': return import('ticket-fields').then(function (n) { return n.aO; });
+    case '../ticket-fields/translations/locales/zh-cn.json': return import('ticket-fields').then(function (n) { return n.aP; });
+    case '../ticket-fields/translations/locales/zh-tw.json': return import('ticket-fields').then(function (n) { return n.aQ; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+
+function __variableDynamicImportRuntime0__(path) {
+  switch (path) {
+    case './translations/locales/af.json': return import('service-catalog-translations').then(function (n) { return n.a; });
+    case './translations/locales/ar-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.b; });
+    case './translations/locales/ar.json': return import('service-catalog-translations').then(function (n) { return n.c; });
+    case './translations/locales/az.json': return import('service-catalog-translations').then(function (n) { return n.d; });
+    case './translations/locales/be.json': return import('service-catalog-translations').then(function (n) { return n.e; });
+    case './translations/locales/bg.json': return import('service-catalog-translations').then(function (n) { return n.f; });
+    case './translations/locales/bn.json': return import('service-catalog-translations').then(function (n) { return n.g; });
+    case './translations/locales/bs.json': return import('service-catalog-translations').then(function (n) { return n.h; });
+    case './translations/locales/ca.json': return import('service-catalog-translations').then(function (n) { return n.i; });
+    case './translations/locales/cs.json': return import('service-catalog-translations').then(function (n) { return n.j; });
+    case './translations/locales/cy.json': return import('service-catalog-translations').then(function (n) { return n.k; });
+    case './translations/locales/da.json': return import('service-catalog-translations').then(function (n) { return n.l; });
+    case './translations/locales/de-de.json': return import('service-catalog-translations').then(function (n) { return n.m; });
+    case './translations/locales/de-x-informal.json': return import('service-catalog-translations').then(function (n) { return n.n; });
+    case './translations/locales/de.json': return import('service-catalog-translations').then(function (n) { return n.o; });
+    case './translations/locales/el.json': return import('service-catalog-translations').then(function (n) { return n.p; });
+    case './translations/locales/en-001.json': return import('service-catalog-translations').then(function (n) { return n.q; });
+    case './translations/locales/en-150.json': return import('service-catalog-translations').then(function (n) { return n.r; });
+    case './translations/locales/en-au.json': return import('service-catalog-translations').then(function (n) { return n.s; });
+    case './translations/locales/en-ca.json': return import('service-catalog-translations').then(function (n) { return n.t; });
+    case './translations/locales/en-gb.json': return import('service-catalog-translations').then(function (n) { return n.u; });
+    case './translations/locales/en-my.json': return import('service-catalog-translations').then(function (n) { return n.v; });
+    case './translations/locales/en-ph.json': return import('service-catalog-translations').then(function (n) { return n.w; });
+    case './translations/locales/en-se.json': return import('service-catalog-translations').then(function (n) { return n.x; });
+    case './translations/locales/en-us.json': return import('service-catalog-translations').then(function (n) { return n.y; });
+    case './translations/locales/en-x-dev.json': return import('service-catalog-translations').then(function (n) { return n.z; });
+    case './translations/locales/en-x-keys.json': return import('service-catalog-translations').then(function (n) { return n.A; });
+    case './translations/locales/en-x-obsolete.json': return import('service-catalog-translations').then(function (n) { return n.B; });
+    case './translations/locales/en-x-pseudo.json': return import('service-catalog-translations').then(function (n) { return n.C; });
+    case './translations/locales/en-x-test.json': return import('service-catalog-translations').then(function (n) { return n.D; });
+    case './translations/locales/es-419.json': return import('service-catalog-translations').then(function (n) { return n.E; });
+    case './translations/locales/es-ar.json': return import('service-catalog-translations').then(function (n) { return n.F; });
+    case './translations/locales/es-cl.json': return import('service-catalog-translations').then(function (n) { return n.G; });
+    case './translations/locales/es-es.json': return import('service-catalog-translations').then(function (n) { return n.H; });
+    case './translations/locales/es-mx.json': return import('service-catalog-translations').then(function (n) { return n.I; });
+    case './translations/locales/es-pe.json': return import('service-catalog-translations').then(function (n) { return n.J; });
+    case './translations/locales/es.json': return import('service-catalog-translations').then(function (n) { return n.K; });
+    case './translations/locales/et.json': return import('service-catalog-translations').then(function (n) { return n.L; });
+    case './translations/locales/eu.json': return import('service-catalog-translations').then(function (n) { return n.M; });
+    case './translations/locales/fa-af.json': return import('service-catalog-translations').then(function (n) { return n.N; });
+    case './translations/locales/fa.json': return import('service-catalog-translations').then(function (n) { return n.O; });
+    case './translations/locales/fi.json': return import('service-catalog-translations').then(function (n) { return n.P; });
+    case './translations/locales/fil.json': return import('service-catalog-translations').then(function (n) { return n.Q; });
+    case './translations/locales/fo.json': return import('service-catalog-translations').then(function (n) { return n.R; });
+    case './translations/locales/fr-ca.json': return import('service-catalog-translations').then(function (n) { return n.S; });
+    case './translations/locales/fr-dz.json': return import('service-catalog-translations').then(function (n) { return n.T; });
+    case './translations/locales/fr-mu.json': return import('service-catalog-translations').then(function (n) { return n.U; });
+    case './translations/locales/fr.json': return import('service-catalog-translations').then(function (n) { return n.V; });
+    case './translations/locales/ga.json': return import('service-catalog-translations').then(function (n) { return n.W; });
+    case './translations/locales/he.json': return import('service-catalog-translations').then(function (n) { return n.X; });
+    case './translations/locales/hi.json': return import('service-catalog-translations').then(function (n) { return n.Y; });
+    case './translations/locales/hr.json': return import('service-catalog-translations').then(function (n) { return n.Z; });
+    case './translations/locales/hu.json': return import('service-catalog-translations').then(function (n) { return n._; });
+    case './translations/locales/hy.json': return import('service-catalog-translations').then(function (n) { return n.$; });
+    case './translations/locales/id.json': return import('service-catalog-translations').then(function (n) { return n.a0; });
+    case './translations/locales/is.json': return import('service-catalog-translations').then(function (n) { return n.a1; });
+    case './translations/locales/it-ch.json': return import('service-catalog-translations').then(function (n) { return n.a2; });
+    case './translations/locales/it.json': return import('service-catalog-translations').then(function (n) { return n.a3; });
+    case './translations/locales/ja.json': return import('service-catalog-translations').then(function (n) { return n.a4; });
+    case './translations/locales/ka.json': return import('service-catalog-translations').then(function (n) { return n.a5; });
+    case './translations/locales/kk.json': return import('service-catalog-translations').then(function (n) { return n.a6; });
+    case './translations/locales/kl-dk.json': return import('service-catalog-translations').then(function (n) { return n.a7; });
+    case './translations/locales/km.json': return import('service-catalog-translations').then(function (n) { return n.a8; });
+    case './translations/locales/ko.json': return import('service-catalog-translations').then(function (n) { return n.a9; });
+    case './translations/locales/ku.json': return import('service-catalog-translations').then(function (n) { return n.aa; });
+    case './translations/locales/ky.json': return import('service-catalog-translations').then(function (n) { return n.ab; });
+    case './translations/locales/lt.json': return import('service-catalog-translations').then(function (n) { return n.ac; });
+    case './translations/locales/lv.json': return import('service-catalog-translations').then(function (n) { return n.ad; });
+    case './translations/locales/mk.json': return import('service-catalog-translations').then(function (n) { return n.ae; });
+    case './translations/locales/mn.json': return import('service-catalog-translations').then(function (n) { return n.af; });
+    case './translations/locales/ms.json': return import('service-catalog-translations').then(function (n) { return n.ag; });
+    case './translations/locales/mt.json': return import('service-catalog-translations').then(function (n) { return n.ah; });
+    case './translations/locales/my.json': return import('service-catalog-translations').then(function (n) { return n.ai; });
+    case './translations/locales/ne.json': return import('service-catalog-translations').then(function (n) { return n.aj; });
+    case './translations/locales/nl-be.json': return import('service-catalog-translations').then(function (n) { return n.ak; });
+    case './translations/locales/nl.json': return import('service-catalog-translations').then(function (n) { return n.al; });
+    case './translations/locales/no.json': return import('service-catalog-translations').then(function (n) { return n.am; });
+    case './translations/locales/pl.json': return import('service-catalog-translations').then(function (n) { return n.an; });
+    case './translations/locales/pt-br.json': return import('service-catalog-translations').then(function (n) { return n.ao; });
+    case './translations/locales/pt.json': return import('service-catalog-translations').then(function (n) { return n.ap; });
+    case './translations/locales/ro-md.json': return import('service-catalog-translations').then(function (n) { return n.aq; });
+    case './translations/locales/ro.json': return import('service-catalog-translations').then(function (n) { return n.ar; });
+    case './translations/locales/ru.json': return import('service-catalog-translations').then(function (n) { return n.as; });
+    case './translations/locales/si.json': return import('service-catalog-translations').then(function (n) { return n.at; });
+    case './translations/locales/sk.json': return import('service-catalog-translations').then(function (n) { return n.au; });
+    case './translations/locales/sl.json': return import('service-catalog-translations').then(function (n) { return n.av; });
+    case './translations/locales/sq.json': return import('service-catalog-translations').then(function (n) { return n.aw; });
+    case './translations/locales/sr-me.json': return import('service-catalog-translations').then(function (n) { return n.ax; });
+    case './translations/locales/sr.json': return import('service-catalog-translations').then(function (n) { return n.ay; });
+    case './translations/locales/sv.json': return import('service-catalog-translations').then(function (n) { return n.az; });
+    case './translations/locales/sw-ke.json': return import('service-catalog-translations').then(function (n) { return n.aA; });
+    case './translations/locales/ta.json': return import('service-catalog-translations').then(function (n) { return n.aB; });
+    case './translations/locales/th.json': return import('service-catalog-translations').then(function (n) { return n.aC; });
+    case './translations/locales/tr.json': return import('service-catalog-translations').then(function (n) { return n.aD; });
+    case './translations/locales/uk.json': return import('service-catalog-translations').then(function (n) { return n.aE; });
+    case './translations/locales/ur-pk.json': return import('service-catalog-translations').then(function (n) { return n.aF; });
+    case './translations/locales/ur.json': return import('service-catalog-translations').then(function (n) { return n.aG; });
+    case './translations/locales/uz.json': return import('service-catalog-translations').then(function (n) { return n.aH; });
+    case './translations/locales/vi.json': return import('service-catalog-translations').then(function (n) { return n.aI; });
+    case './translations/locales/zh-cn.json': return import('service-catalog-translations').then(function (n) { return n.aJ; });
+    case './translations/locales/zh-tw.json': return import('service-catalog-translations').then(function (n) { return n.aK; });
+    default: return new Promise(function(resolve, reject) {
+      (typeof queueMicrotask === 'function' ? queueMicrotask : setTimeout)(
+        reject.bind(null, new Error("Unknown variable dynamic import: " + path))
+      );
+    })
+   }
+ }
+async function renderServiceCatalogItem(container, settings, props) {
+    const { baseLocale, helpCenterPath } = props;
+    initI18next(baseLocale);
+    await loadTranslations(baseLocale, [
+        () => __variableDynamicImportRuntime0__(`./translations/locales/${baseLocale}.json`),
+        () => __variableDynamicImportRuntime1__(`../ticket-fields/translations/locales/${baseLocale}.json`),
+        () => __variableDynamicImportRuntime2__(`../shared/translations/locales/${baseLocale}.json`),
+    ]);
+    reactDomExports.render(jsxRuntimeExports.jsx(ThemeProviders, { theme: createTheme(settings), children: jsxRuntimeExports.jsx(ErrorBoundary, { helpCenterPath: helpCenterPath, children: jsxRuntimeExports.jsx(ServiceCatalogItem, { ...props }) }) }), container);
+}
+
+export { renderServiceCatalogItem, renderServiceCatalogList };
