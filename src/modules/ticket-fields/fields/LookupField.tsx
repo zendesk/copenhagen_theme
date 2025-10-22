@@ -60,6 +60,7 @@ interface LookupFieldProps {
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
+  filteringCallback?: (options: any, field: TicketFieldObject) => Promise<any>;
 }
 
 export function LookupField({
@@ -68,6 +69,7 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
+  filteringCallback,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -166,6 +168,9 @@ export function LookupField({
               value: id,
             })
           );
+          if (filteringCallback) {
+            fetchedOptions = await filteringCallback(fetchedOptions, field);
+          }
           if (selectedOption) {
             fetchedOptions = fetchedOptions.filter(
               (option: TicketFieldOptionObject) =>
@@ -186,12 +191,13 @@ export function LookupField({
     },
     [
       customObjectKey,
-      field.relationship_filter,
+      field,
       fieldId,
       organizationId,
       selectedOption,
       userId,
       visibleFields,
+      filteringCallback,
     ]
   );
 

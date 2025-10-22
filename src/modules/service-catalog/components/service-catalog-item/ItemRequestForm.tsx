@@ -108,6 +108,26 @@ export function ItemRequestForm({
   onSubmit,
 }: ItemRequestFormProps) {
   const { t } = useTranslation();
+
+  async function filteringCallback(options: any, field: TicketFieldObject) {
+    const isITAM = [
+      "zen:custom_object:standard::itam_asset",
+      "zen:custom_object:standard::itam_asset_type",
+    ].includes(field.relationship_target_type || "");
+
+    if (isITAM) {
+      return Promise.resolve(
+        options.filter(
+          ({ value }) =>
+            value === "01K7KQTQJGPZGGPMAV7XBS3FJ4" ||
+            value === "01K85XN8V8ZAJQBTCTHQXEBMSD"
+        )
+      );
+    } else {
+      return Promise.resolve(options);
+    }
+  }
+
   return (
     <Form onSubmit={onSubmit} noValidate>
       <LeftColumn>
@@ -129,6 +149,7 @@ export function ItemRequestForm({
               defaultOrganizationId={defaultOrganizationId}
               handleChange={handleChange}
               visibleFields={requestFields}
+              filteringCallback={filteringCallback}
             />
           ))}
         </FieldsContainer>

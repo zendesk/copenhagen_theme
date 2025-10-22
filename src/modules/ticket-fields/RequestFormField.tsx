@@ -25,6 +25,7 @@ interface RequestFormFieldProps {
     field: TicketFieldObject,
     value: TicketFieldObject["value"]
   ) => void;
+  filteringCallback?: (options: any, field: TicketFieldObject) => Promise<any>;
 }
 
 export const RequestFormField = ({
@@ -40,6 +41,7 @@ export const RequestFormField = ({
   visibleFields,
   handleDueDateChange,
   handleChange,
+  filteringCallback,
 }: RequestFormFieldProps) => {
   switch (field.type) {
     case "text":
@@ -140,6 +142,7 @@ export const RequestFormField = ({
           }
           visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
+          filteringCallback={filteringCallback}
         />
       );
     default:
