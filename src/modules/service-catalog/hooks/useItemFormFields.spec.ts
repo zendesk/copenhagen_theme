@@ -9,6 +9,10 @@ describe("useItemFormFields", () => {
     description: "Test Description",
     form_id: 1,
     thumbnail_url: "",
+    custom_object_fields: {
+      "standard::asset_option": "",
+      "standard::asset_type_option": "",
+    },
   };
 
   const textField = {

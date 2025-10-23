@@ -7,7 +7,7 @@ import {
   Option,
   Message,
 } from "@zendeskgarden/react-dropdowns.next";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type {
   TicketFieldObject,
   TicketFieldOptionObject,
@@ -17,46 +17,12 @@ import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
-import type { ServiceCatalogItem } from "../../service-catalog/data-types/ServiceCatalogItem";
-import { useAssetDataFetchers } from "../../service-catalog/hooks/useAssetDataFetchers";
-import {
-  ASSET_TYPE_KEY,
-  ASSET_KEY,
-} from "../../shared/asset-management/constants";
-
+import { ASSET_TYPE_KEY } from "../../shared/asset-management/constants";
+import type { RawOption } from "../../service-catalog/components/service-catalog-item/ItemRequestForm";
 import type {
   AssetsApiResponse,
   AssignedAssetFields,
 } from "../../service-catalog/data-types/Assets";
-
-type RawOption = {
-  name: string;
-  value: string;
-  item_asset_type_id?: string;
-};
-
-export function filterAndPrioritizeOptions(
-  allOptions: RawOption[],
-  allowedIds: string[] | null | undefined,
-  flags: { isAsset: boolean; isAssetType: boolean },
-  selectedOption: RawOption | null
-) {
-  let filteredOptions = allOptions;
-
-  if (allowedIds && allowedIds.length) {
-    const key = flags.isAsset ? "item_asset_type_id" : "value";
-    filteredOptions = filteredOptions.filter(
-      (o) => allowedIds.includes(o[key] ?? "") && o.value
-    );
-  }
-  if (!selectedOption) return filteredOptions;
-
-  return filteredOptions.sort((a, b) => {
-    if (a.value === selectedOption?.value) return -1;
-    if (b.value === selectedOption?.value) return 1;
-    return 0;
-  });
-}
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
@@ -100,7 +66,12 @@ interface LookupFieldProps {
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
-  serviceCatalogItem?: ServiceCatalogItem;
+  applyAssetFiltersAsync?: (
+    field: TicketFieldObject,
+    options: RawOption[] | Promise<RawOption[]>
+  ) => Promise<RawOption[]>;
+  shouldHide: boolean;
+  hiddenValue: string;
 }
 
 export function LookupField({
@@ -109,7 +80,9 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
-  serviceCatalogItem,
+  applyAssetFiltersAsync,
+  shouldHide,
+  hiddenValue,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -127,19 +100,6 @@ export function LookupField({
     useState<TicketFieldOptionObject | null>(null);
   const [inputValue, setInputValue] = useState<string>(value as string);
   const [isLoadingOptions, setIsLoadingOptions] = useState<boolean>(false);
-  const isAssetType = relationship_target_type === ASSET_TYPE_KEY;
-  const isAsset = relationship_target_type === ASSET_KEY;
-  const [isHiddenAssetType, setIsHiddenAssetType] = useState<boolean>(
-    () => isAssetType
-  );
-  const allowedIdsRef = useRef<string[] | null>(null);
-
-  const { fetchAssets, fetchAssetTypes } = useAssetDataFetchers(
-    serviceCatalogItem?.id
-  );
-
-  const shouldHide = isAssetType && isHiddenAssetType;
-
   const { t } = useTranslation();
 
   const customObjectKey = getCustomObjectKey(
@@ -161,12 +121,6 @@ export function LookupField({
     ),
     id: "no-results",
   };
-
-  const selectedRef = useRef<TicketFieldOptionObject | null>(null);
-  useEffect(() => {
-    selectedRef.current = selectedOption;
-  }, [selectedOption]);
-  const reqSeqRef = useRef(0);
 
   const fetchSelectedOption = useCallback(
     async (selectionValue: string) => {
@@ -212,7 +166,6 @@ export function LookupField({
       }
 
       if (organizationId) searchParams.set("organization_id", organizationId);
-      const seq = ++reqSeqRef.current;
 
       setIsLoadingOptions(true);
       try {
@@ -221,9 +174,8 @@ export function LookupField({
         );
 
         const data: AssetsApiResponse = await response.json();
-        if (seq !== reqSeqRef.current) return;
         if (response.ok) {
-          const fetched: TicketFieldOptionObject[] =
+          let fetchedOptions: TicketFieldOptionObject[] =
             data.custom_object_records.map((item) => {
               const isAsset = item.custom_object_key === "standard::itam_asset";
 
@@ -238,21 +190,28 @@ export function LookupField({
               };
             });
 
-          const filtered = filterAndPrioritizeOptions(
-            fetched,
-            allowedIdsRef.current,
-            { isAsset, isAssetType },
-            selectedRef.current ?? null
-          );
+          if (applyAssetFiltersAsync) {
+            fetchedOptions = await applyAssetFiltersAsync(
+              field,
+              fetchedOptions
+            );
+          }
+          if (selectedOption) {
+            fetchedOptions = fetchedOptions.filter(
+              (option: TicketFieldOptionObject) =>
+                option.value !== selectedOption.value
+            );
+            fetchedOptions = [selectedOption, ...fetchedOptions];
+          }
 
-          if (seq === reqSeqRef.current) setOptions(filtered);
+          setOptions(fetchedOptions);
         } else {
-          if (seq === reqSeqRef.current) setOptions([]);
+          setOptions([]);
         }
       } catch (error) {
         console.error(error);
       } finally {
-        if (seq === reqSeqRef.current) setIsLoadingOptions(false);
+        setIsLoadingOptions(false);
       }
     },
     [
@@ -261,8 +220,6 @@ export function LookupField({
       fieldId,
       organizationId,
       selectedOption,
-      isAsset,
-      isAssetType,
       userId,
       visibleFields,
     ]
@@ -291,13 +248,11 @@ export function LookupField({
           );
           if (selectedOption) {
             setInputValue(selectedOption.name);
-            setOptions([selectedOption]);
             setSelectedOption(selectedOption);
             setOptions([selectedOption]);
             onChange(selectedOption.value);
           }
         }
-        return;
       }
 
       if (inputValue !== undefined) {
@@ -314,83 +269,16 @@ export function LookupField({
     }
   }, []); //we don't set dependency array as we want this hook to be called only once
 
-  useEffect(() => {
-    let cancelled = false;
-
-    const initOptions = async () => {
-      try {
-        let idsArr: string[] = [];
-
-        if (isAsset) {
-          const idsStr = await fetchAssets();
-          if (cancelled) return;
-          idsArr =
-            typeof idsStr === "string"
-              ? idsStr
-                  .split(",")
-                  .map((s) => s.trim())
-                  .filter(Boolean)
-              : [];
-          allowedIdsRef.current = idsArr;
-        } else if (isAssetType) {
-          const res = await fetchAssetTypes();
-          if (cancelled) return;
-
-          const hidden = Boolean(res?.isHiddenAssetsType);
-          setIsHiddenAssetType(hidden);
-
-          if (hidden) {
-            allowedIdsRef.current = [];
-            setOptions([]);
-            return;
-          }
-
-          const idsStr = res?.assetTypeIds;
-          idsArr =
-            typeof idsStr === "string"
-              ? idsStr
-                  .split(",")
-                  .map((s) => s.trim())
-                  .filter(Boolean)
-              : [];
-          allowedIdsRef.current = idsArr;
-
-          await fetchOptions("*");
-          return;
-        }
-
-        allowedIdsRef.current = [];
-        await fetchOptions("*");
-      } catch (e) {
-        console.error(e);
-      }
-    };
-
-    void initOptions();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [isAsset, isAssetType, fetchAssets, fetchAssetTypes, fetchOptions]);
-
   const onFocus = () => {
     setInputValue("");
     fetchOptions("*");
   };
 
-  if (shouldHide) {
+  if (shouldHide && field.relationship_target_type === ASSET_TYPE_KEY) {
     return (
       <>
-        <input
-          type="hidden"
-          name={field.name}
-          value={selectedOption?.value ?? allowedIdsRef.current?.[0] ?? ""}
-        />
-        <input
-          name="isAssetTypeHidden"
-          type="hidden"
-          value={isAssetType ? "true" : "false"}
-        />
+        <input type="hidden" name={field.name} value={hiddenValue} />
+        <input name="isAssetTypeHidden" type="hidden" value="true" />
       </>
     );
   }

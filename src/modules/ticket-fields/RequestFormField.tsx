@@ -8,10 +8,9 @@ import { LookupField } from "./fields/LookupField";
 import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
-import type { ServiceCatalogItem } from "../service-catalog/data-types/ServiceCatalogItem";
+import type { RawOption } from "../service-catalog/components/service-catalog-item/ItemRequestForm";
 
 interface RequestFormFieldProps {
-  serviceCatalogItem?: ServiceCatalogItem;
   field: TicketFieldObject;
   baseLocale: string;
   hasAtMentions: boolean;
@@ -27,11 +26,16 @@ interface RequestFormFieldProps {
     field: TicketFieldObject,
     value: TicketFieldObject["value"]
   ) => void;
+  applyAssetFiltersAsync?: (
+    field: TicketFieldObject,
+    options: RawOption[] | Promise<RawOption[]>
+  ) => Promise<RawOption[]>;
+  shouldHide: boolean;
+  hiddenValue: string;
 }
 
 export const RequestFormField = ({
   field,
-  serviceCatalogItem,
   baseLocale,
   hasAtMentions,
   userRole,
@@ -43,6 +47,9 @@ export const RequestFormField = ({
   visibleFields,
   handleDueDateChange,
   handleChange,
+  applyAssetFiltersAsync,
+  shouldHide,
+  hiddenValue,
 }: RequestFormFieldProps) => {
   switch (field.type) {
     case "text":
@@ -133,7 +140,6 @@ export const RequestFormField = ({
     case "lookup":
       return (
         <LookupField
-          serviceCatalogItem={serviceCatalogItem}
           key={field.name}
           field={field}
           userId={userId}
@@ -144,6 +150,9 @@ export const RequestFormField = ({
           }
           visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
+          applyAssetFiltersAsync={applyAssetFiltersAsync}
+          shouldHide={shouldHide}
+          hiddenValue={hiddenValue}
         />
       );
     default:

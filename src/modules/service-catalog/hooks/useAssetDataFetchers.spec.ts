@@ -1,20 +1,7 @@
 import { renderHook, act } from "@testing-library/react-hooks";
 import { useAssetDataFetchers } from "./useAssetDataFetchers";
 
-describe("useAssetDataFetchers", () => {
-  const scItemId = 123;
-
-  const hcPayload = (assetOptionId?: string, assetTypeOptionId?: string) => ({
-    service_catalog_item: {
-      custom_object_fields: {
-        ...(assetOptionId && { "standard::asset_option": assetOptionId }),
-        ...(assetTypeOptionId && {
-          "standard::asset_type_option": assetTypeOptionId,
-        }),
-      },
-    },
-  });
-
+describe("useAssetDataFetchers (direct option IDs)", () => {
   const assetOptionRecordPayload = (ids?: string) => ({
     custom_object_record: {
       custom_object_fields: {
@@ -40,59 +27,47 @@ describe("useAssetDataFetchers", () => {
   it("fetchAssets: returns ids when assetOptionId exists", async () => {
     const mockAssetResponse = assetOptionRecordPayload("a1,a2,a3");
 
-    global.fetch = jest
-      .fn()
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: () => Promise.resolve(hcPayload("AO-123", undefined)),
-      })
-      .mockResolvedValueOnce({
-        ok: true,
-        status: 200,
-        json: () => Promise.resolve(mockAssetResponse),
-      }) as jest.Mock;
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      json: () => Promise.resolve(mockAssetResponse),
+    });
 
-    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
+    const { result } = renderHook(() =>
+      useAssetDataFetchers("AO-123", "AT-999")
+    );
 
     let ids: string | undefined;
     await act(async () => {
       ids = await result.current.fetchAssets();
     });
 
-    expect(global.fetch).toHaveBeenNthCalledWith(
-      1,
-      `/api/v2/help_center/service_catalog/items/${scItemId}`
-    );
-    expect(global.fetch).toHaveBeenNthCalledWith(
-      2,
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith(
       `/api/v2/custom_objects/standard::service_catalog_asset_option/records/AO-123`
     );
     expect(ids).toBe("a1,a2,a3");
   });
 
   it("fetchAssets: returns undefined when assetOptionId is missing", async () => {
-    global.fetch = jest.fn().mockResolvedValueOnce({
-      ok: true,
-      status: 200,
-      json: () => Promise.resolve(hcPayload(undefined, "AT-999")),
-    }) as jest.Mock;
-
-    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
+    const { result } = renderHook(() =>
+      // @ts-expect-error: intentionally passing undefined for runtime path
+      useAssetDataFetchers(undefined, "AT-999")
+    );
 
     let ids: string | undefined;
     await act(async () => {
       ids = await result.current.fetchAssets();
     });
 
-    expect((global.fetch as jest.Mock).mock.calls.length).toBe(1);
+    expect(global.fetch).not.toHaveBeenCalled();
     expect(ids).toBeUndefined();
   });
 
   it("fetchAssets: returns undefined on error", async () => {
-    global.fetch = jest.fn().mockRejectedValueOnce(new Error("boom"));
+    (global.fetch as jest.Mock).mockRejectedValueOnce(new Error("boom"));
 
-    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
+    const { result } = renderHook(() =>
+      useAssetDataFetchers("AO-123", "AT-999")
+    );
 
     let ids: string | undefined;
     await act(async () => {
@@ -103,21 +78,11 @@ describe("useAssetDataFetchers", () => {
   });
 
   it("fetchAssetTypes: returns object with ids and hidden flag", async () => {
-    global.fetch = jest
-      .fn()
-      .mockResolvedValueOnce({
-        json: () => Promise.resolve(hcPayload(undefined, "AT-123")),
-        ok: true,
-        status: 200,
-      })
-      .mockResolvedValueOnce({
-        json: () =>
-          Promise.resolve(assetTypeOptionRecordPayload("t1,t2", true)),
-        ok: true,
-        status: 200,
-      });
+    (global.fetch as jest.Mock).mockResolvedValueOnce({
+      json: () => Promise.resolve(assetTypeOptionRecordPayload("t1,t2", true)),
+    });
 
-    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers("AO-1", "AT-123"));
 
     let out:
       | { assetTypeIds?: string; isHiddenAssetsType?: boolean }
@@ -127,25 +92,18 @@ describe("useAssetDataFetchers", () => {
       out = await result.current.fetchAssetTypes();
     });
 
-    expect(global.fetch).toHaveBeenNthCalledWith(
-      1,
-      `/api/v2/help_center/service_catalog/items/${scItemId}`
-    );
-    expect(global.fetch).toHaveBeenNthCalledWith(
-      2,
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledWith(
       `/api/v2/custom_objects/standard::service_catalog_asset_type_option/records/AT-123`
     );
     expect(out).toEqual({ assetTypeIds: "t1,t2", isHiddenAssetsType: true });
   });
 
   it("fetchAssetTypes: returns undefined when assetTypeOptionId is missing", async () => {
-    global.fetch = jest.fn().mockResolvedValueOnce({
-      json: () => Promise.resolve(hcPayload("AO-1", undefined)),
-      ok: true,
-      status: 200,
-    });
-
-    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
+    const { result } = renderHook(() =>
+      // @ts-expect-error: intentionally passing undefined for runtime path
+      useAssetDataFetchers("AO-1", undefined)
+    );
 
     let out:
       | { assetTypeIds?: string; isHiddenAssetsType?: boolean }
@@ -155,21 +113,14 @@ describe("useAssetDataFetchers", () => {
       out = await result.current.fetchAssetTypes();
     });
 
-    expect((global.fetch as jest.Mock).mock.calls.length).toBe(1);
+    expect(global.fetch).not.toHaveBeenCalled();
     expect(out).toBeUndefined();
   });
 
   it("fetchAssetTypes: returns { undefined, undefined } on error", async () => {
-    global.fetch = jest
-      .fn()
-      .mockResolvedValueOnce({
-        json: () => Promise.resolve(hcPayload(undefined, "AT-err")),
-        ok: true,
-        status: 200,
-      })
-      .mockRejectedValueOnce(new Error("network"));
+    (global.fetch as jest.Mock).mockRejectedValueOnce(new Error("network"));
 
-    const { result } = renderHook(() => useAssetDataFetchers(scItemId));
+    const { result } = renderHook(() => useAssetDataFetchers("AO-1", "AT-err"));
 
     let out:
       | { assetTypeIds?: string; isHiddenAssetsType?: boolean }
@@ -185,10 +136,11 @@ describe("useAssetDataFetchers", () => {
     });
   });
 
-  it("gracefully handles undefined serviceCatalogItemId", async () => {
-    global.fetch = jest.fn();
-
-    const { result } = renderHook(() => useAssetDataFetchers(undefined));
+  it("gracefully handles both option IDs undefined", async () => {
+    const { result } = renderHook(() =>
+      // @ts-expect-error: intentionally passing undefined for runtime path
+      useAssetDataFetchers(undefined, undefined)
+    );
 
     let assets: string | undefined;
     let assetTypes:
