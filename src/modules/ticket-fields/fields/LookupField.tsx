@@ -60,7 +60,7 @@ interface LookupFieldProps {
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
-  filteringCallback?: (options: any, field: TicketFieldObject) => Promise<any>;
+  buildOptions?: (options: any, field: TicketFieldObject) => Promise<any>;
 }
 
 export function LookupField({
@@ -69,7 +69,7 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
-  filteringCallback,
+  buildOptions,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -162,24 +162,30 @@ export function LookupField({
 
         const data = await response.json();
         if (response.ok) {
-          let fetchedOptions = data.custom_object_records.map(
-            ({ name, id }: { name: string; id: string }) => ({
-              name,
-              value: id,
-            })
-          );
-          if (filteringCallback) {
-            fetchedOptions = await filteringCallback(fetchedOptions, field);
+          const fetchedRecords = data.custom_object_records;
+
+          let options;
+
+          if (buildOptions) {
+            options = await buildOptions(fetchedRecords, field);
+          } else {
+            options = fetchedRecords.map(
+              ({ name, id }: { name: string; id: string }) => ({
+                name,
+                value: id,
+              })
+            );
           }
+
           if (selectedOption) {
-            fetchedOptions = fetchedOptions.filter(
+            options = options.filter(
               (option: TicketFieldOptionObject) =>
                 option.value !== selectedOption.value
             );
-            fetchedOptions = [selectedOption, ...fetchedOptions];
+            options = [selectedOption, ...options];
           }
 
-          setOptions(fetchedOptions);
+          setOptions(options);
         } else {
           setOptions([]);
         }
@@ -197,7 +203,7 @@ export function LookupField({
       selectedOption,
       userId,
       visibleFields,
-      filteringCallback,
+      buildOptions,
     ]
   );
 
