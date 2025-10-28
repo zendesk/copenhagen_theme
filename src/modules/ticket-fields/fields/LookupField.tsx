@@ -61,7 +61,7 @@ export interface LookupFieldProps {
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
-  buildOptions?: (
+  buildLookupFieldOptions?: (
     records: CustomObjectRecord[],
     field: TicketFieldObject
   ) => Promise<{ name: string; value: string }[]>;
@@ -73,7 +73,7 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
-  buildOptions,
+  buildLookupFieldOptions,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -170,8 +170,8 @@ export function LookupField({
 
           let options;
 
-          if (buildOptions) {
-            options = await buildOptions(fetchedRecords, field);
+          if (buildLookupFieldOptions) {
+            options = await buildLookupFieldOptions(fetchedRecords, field);
           } else {
             options = fetchedRecords.map(
               ({ name, id }: { name: string; id: string }) => ({
@@ -206,7 +206,7 @@ export function LookupField({
       selectedOption,
       userId,
       visibleFields,
-      buildOptions,
+      buildLookupFieldOptions,
     ]
   );
 

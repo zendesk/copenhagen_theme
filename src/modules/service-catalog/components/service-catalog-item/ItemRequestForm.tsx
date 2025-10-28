@@ -158,17 +158,15 @@ export function ItemRequestForm({
         const hidden = !!res?.isHiddenAssetsType;
         const raw = res?.assetTypeIds;
 
-        const ids = Array.isArray(raw)
-          ? raw
-              .map(String)
-              .map((s) => s.trim())
-              .filter(Boolean)
-          : typeof raw === "string"
-          ? raw
-              .split(",")
-              .map((s) => s.trim())
-              .filter(Boolean)
-          : [];
+        let ids: string[] = [];
+
+        if (Array.isArray(raw)) {
+          ids = raw.map(String);
+        } else if (typeof raw === "string") {
+          ids = raw.split(",");
+        }
+
+        ids = ids.map((s) => s.trim()).filter(Boolean);
 
         setAssetTypeState({ ids, hidden, ready: true });
         setIsHiddenAssetsType(hidden);
@@ -181,18 +179,15 @@ export function ItemRequestForm({
         const idsStr = await fetchAssets();
         if (!alive) return;
 
-        const ids =
-          typeof idsStr === "string"
-            ? idsStr
-                .split(",")
-                .map((s) => s.trim())
-                .filter(Boolean)
-            : Array.isArray(idsStr)
-            ? idsStr
-                .map(String)
-                .map((s) => s.trim())
-                .filter(Boolean)
-            : [];
+        let ids: string[] = [];
+
+        if (typeof idsStr === "string") {
+          ids = idsStr.split(",");
+        } else if (Array.isArray(idsStr)) {
+          ids = idsStr.map(String);
+        }
+
+        ids = ids.map((s) => s.trim()).filter(Boolean);
 
         setAssetState({ ids, ready: true });
       } catch (e) {
@@ -208,7 +203,7 @@ export function ItemRequestForm({
     };
   }, [fetchAssetTypes, fetchAssets, handleChange]);
 
-  const buildOptions = async (
+  const buildLookupFieldOptions = async (
     records: CustomObjectRecord[],
     field: TicketFieldObject
   ) => {
@@ -281,7 +276,7 @@ export function ItemRequestForm({
                 defaultOrganizationId={defaultOrganizationId}
                 handleChange={handleChange}
                 visibleFields={requestFields}
-                buildOptions={buildOptions}
+                buildLookupFieldOptions={buildLookupFieldOptions}
               />
             );
           })}

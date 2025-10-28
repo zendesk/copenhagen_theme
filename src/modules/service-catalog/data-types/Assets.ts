@@ -37,7 +37,6 @@ export interface AssignedAssetFields {
   "standard::vendor": string | null;
   "standard::warranty_expiration": string | null;
   test: string | null;
-  testttt: string | null;
 }
 
 export interface AssetTypeResponse {
