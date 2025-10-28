@@ -17,11 +17,7 @@ import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
-import type { LookupOption } from "../../service-catalog/components/service-catalog-item/ItemRequestForm";
-import type {
-  AssignedAssetRecord,
-  AssetTypeRecord,
-} from "../../service-catalog/data-types/Assets";
+import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
@@ -59,16 +55,16 @@ const EMPTY_OPTION = {
   name: "-",
 };
 
-interface LookupFieldProps {
+export interface LookupFieldProps {
   field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
   buildOptions?: (
-    records: AssignedAssetRecord[] | AssetTypeRecord[],
+    records: CustomObjectRecord[],
     field: TicketFieldObject
-  ) => Promise<LookupOption[]>;
+  ) => Promise<{ name: string; value: string }[]>;
 }
 
 export function LookupField({
@@ -204,12 +200,13 @@ export function LookupField({
     },
     [
       customObjectKey,
-      field.relationship_filter,
+      field,
       fieldId,
       organizationId,
       selectedOption,
       userId,
       visibleFields,
+      buildOptions,
     ]
   );
 

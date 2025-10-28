@@ -4,15 +4,11 @@ import { CreditCard } from "./fields/CreditCard";
 import { DatePicker } from "./fields/DatePicker";
 import { DropDown } from "./fields/DropDown";
 import { Input } from "./fields/Input";
+import type { LookupFieldProps } from "./fields/LookupField";
 import { LookupField } from "./fields/LookupField";
 import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
-import type { LookupOption } from "../service-catalog/components/service-catalog-item/ItemRequestForm";
-import type {
-  AssignedAssetRecord,
-  AssetTypeRecord,
-} from "../service-catalog/data-types/Assets";
 
 interface RequestFormFieldProps {
   field: TicketFieldObject;
@@ -30,10 +26,7 @@ interface RequestFormFieldProps {
     field: TicketFieldObject,
     value: TicketFieldObject["value"]
   ) => void;
-  buildOptions?: (
-    records: AssignedAssetRecord[] | AssetTypeRecord[],
-    field: TicketFieldObject
-  ) => Promise<LookupOption[]>;
+  buildOptions?: LookupFieldProps["buildOptions"];
 }
 
 export const RequestFormField = ({

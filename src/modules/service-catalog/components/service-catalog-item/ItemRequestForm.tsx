@@ -7,11 +7,8 @@ import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
+import type { CustomObjectRecord } from "../../../ticket-fields/data-types/CustomObjectRecord";
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
-import type {
-  AssignedAssetRecord,
-  AssetTypeRecord,
-} from "../../data-types/Assets";
 
 const Form = styled.form`
   display: flex;
@@ -95,17 +92,6 @@ const isAssetField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_KEY;
 const isAssetTypeField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_TYPE_KEY;
-
-export type LookupOption = {
-  name: string;
-  value: string;
-  item_asset_type_id?: string;
-};
-
-type BuildOptions = (
-  records: AssignedAssetRecord[] | AssetTypeRecord[],
-  field: TicketFieldObject
-) => Promise<LookupOption[]>;
 
 interface ItemRequestFormProps {
   requestFields: TicketFieldObject[];
@@ -222,11 +208,13 @@ export function ItemRequestForm({
     };
   }, [fetchAssetTypes, fetchAssets, handleChange]);
 
-  const buildOptions: BuildOptions = async (fetchedRecords, field) => {
-    if (!Array.isArray(fetchedRecords) || fetchedRecords.length === 0)
-      return [];
+  const buildOptions = async (
+    records: CustomObjectRecord[],
+    field: TicketFieldObject
+  ) => {
+    if (!Array.isArray(records) || records.length === 0) return [];
 
-    const options: LookupOption[] = fetchedRecords.map((rec) => {
+    const options = records.map((rec) => {
       const base = { name: rec.name, value: rec.id };
 
       if (rec.custom_object_key === "standard::itam_asset") {
@@ -260,7 +248,7 @@ export function ItemRequestForm({
       }
       return list;
     }
-    return options;
+    return options.map(({ name, value }) => ({ name, value }));
   };
 
   return (
