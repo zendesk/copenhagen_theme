@@ -8,7 +8,11 @@ import { LookupField } from "./fields/LookupField";
 import { MultiSelect } from "./fields/MultiSelect";
 import { Tagger } from "./fields/Tagger";
 import { TextArea } from "./fields/textarea/TextArea";
-import type { RawOption } from "../service-catalog/components/service-catalog-item/ItemRequestForm";
+import type { LookupOption } from "../service-catalog/components/service-catalog-item/ItemRequestForm";
+import type {
+  AssignedAssetRecord,
+  AssetTypeRecord,
+} from "../service-catalog/data-types/Assets";
 
 interface RequestFormFieldProps {
   field: TicketFieldObject;
@@ -26,12 +30,10 @@ interface RequestFormFieldProps {
     field: TicketFieldObject,
     value: TicketFieldObject["value"]
   ) => void;
-  applyAssetFiltersAsync?: (
-    field: TicketFieldObject,
-    options: RawOption[] | Promise<RawOption[]>
-  ) => Promise<RawOption[]>;
-  shouldHide: boolean;
-  hiddenValue: string;
+  buildOptions?: (
+    records: AssignedAssetRecord[] | AssetTypeRecord[],
+    field: TicketFieldObject
+  ) => Promise<LookupOption[]>;
 }
 
 export const RequestFormField = ({
@@ -47,9 +49,7 @@ export const RequestFormField = ({
   visibleFields,
   handleDueDateChange,
   handleChange,
-  applyAssetFiltersAsync,
-  shouldHide,
-  hiddenValue,
+  buildOptions,
 }: RequestFormFieldProps) => {
   switch (field.type) {
     case "text":
@@ -150,9 +150,7 @@ export const RequestFormField = ({
           }
           visibleFields={visibleFields}
           onChange={(value) => handleChange(field, value)}
-          applyAssetFiltersAsync={applyAssetFiltersAsync}
-          shouldHide={shouldHide}
-          hiddenValue={hiddenValue}
+          buildOptions={buildOptions}
         />
       );
     default:

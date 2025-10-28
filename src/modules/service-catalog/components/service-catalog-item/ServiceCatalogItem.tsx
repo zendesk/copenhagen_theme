@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useItemFormFields } from "../../hooks/useItemFormFields";
-import { ItemRequestForm } from "./ItemRequestForm";
+import { ItemRequestForm, ASSET_TYPE_KEY } from "./ItemRequestForm";
 import type { Organization } from "../../../ticket-fields/data-types/Organization";
 import { useServiceCatalogItem } from "../../hooks/useServiceCatalogItem";
 import { submitServiceItemRequest } from "./submitServiceItemRequest";
@@ -9,7 +9,6 @@ import { addFlashNotification, notify } from "../../../shared";
 import { useTranslation } from "react-i18next";
 import { Anchor } from "@zendeskgarden/react-buttons";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
-import { ASSET_TYPE_KEY } from "../../../shared/asset-management/constants";
 
 const Container = styled.div`
   display: flex;

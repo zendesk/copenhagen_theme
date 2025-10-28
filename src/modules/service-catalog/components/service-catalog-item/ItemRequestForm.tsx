@@ -7,11 +7,11 @@ import { useTranslation } from "react-i18next";
 import type { ServiceCatalogItem } from "../../data-types/ServiceCatalogItem";
 import { CollapsibleDescription } from "./CollapsibleDescription";
 import type { TicketFieldObject } from "../../../ticket-fields/data-types/TicketFieldObject";
-import {
-  ASSET_KEY,
-  ASSET_TYPE_KEY,
-} from "../../../shared/asset-management/constants";
 import { useAssetDataFetchers } from "../../../service-catalog/hooks/useAssetDataFetchers";
+import type {
+  AssignedAssetRecord,
+  AssetTypeRecord,
+} from "../../data-types/Assets";
 
 const Form = styled.form`
   display: flex;
@@ -85,6 +85,9 @@ const LeftColumn = styled.div`
   }
 `;
 
+export const ASSET_TYPE_KEY = "zen:custom_object:standard::itam_asset_type";
+export const ASSET_KEY = "zen:custom_object:standard::itam_asset";
+
 type AssetTypeState = { ids: string[]; hidden: boolean; ready: boolean };
 type AssetState = { ids: string[]; ready: boolean };
 
@@ -93,16 +96,16 @@ const isAssetField = (f: TicketFieldObject) =>
 const isAssetTypeField = (f: TicketFieldObject) =>
   f.relationship_target_type === ASSET_TYPE_KEY;
 
-export type RawOption = {
+export type LookupOption = {
   name: string;
   value: string;
   item_asset_type_id?: string;
 };
 
-type ApplyAssetFiltersAsync = (
-  field: TicketFieldObject,
-  options: RawOption[] | Promise<RawOption[]>
-) => Promise<RawOption[]>;
+type BuildOptions = (
+  records: AssignedAssetRecord[] | AssetTypeRecord[],
+  field: TicketFieldObject
+) => Promise<LookupOption[]>;
 
 interface ItemRequestFormProps {
   requestFields: TicketFieldObject[];
@@ -219,13 +222,24 @@ export function ItemRequestForm({
     };
   }, [fetchAssetTypes, fetchAssets, handleChange]);
 
-  const applyAssetFiltersAsync: ApplyAssetFiltersAsync = async (
-    field,
-    optionsOrPromise
-  ) => {
-    const options: RawOption[] = await optionsOrPromise;
+  const buildOptions: BuildOptions = async (fetchedRecords, field) => {
+    if (!Array.isArray(fetchedRecords) || fetchedRecords.length === 0)
+      return [];
 
-    if (!Array.isArray(options) || options.length === 0) return [];
+    const options: LookupOption[] = fetchedRecords.map((rec) => {
+      const base = { name: rec.name, value: rec.id };
+
+      if (rec.custom_object_key === "standard::itam_asset") {
+        const fields = (rec.custom_object_fields ?? {}) as {
+          "standard::asset_type"?: string;
+        };
+        return {
+          ...base,
+          item_asset_type_id: fields["standard::asset_type"] ?? "",
+        };
+      }
+      return { ...base, item_asset_type_id: "" };
+    });
 
     if (isAssetTypeField(field)) {
       if (assetTypeState.hidden) return [];
@@ -258,23 +272,31 @@ export function ItemRequestForm({
           thumbnailUrl={serviceCatalogItem.thumbnail_url}
         />
         <FieldsContainer>
-          {requestFields.map((field) => (
-            <RequestFormField
-              key={field.id}
-              field={field}
-              baseLocale={baseLocale}
-              hasAtMentions={hasAtMentions}
-              userRole={userRole}
-              userId={userId}
-              brandId={brandId}
-              defaultOrganizationId={defaultOrganizationId}
-              handleChange={handleChange}
-              visibleFields={requestFields}
-              applyAssetFiltersAsync={applyAssetFiltersAsync}
-              shouldHide={isHiddenAssetsType}
-              hiddenValue={hiddenValue}
-            />
-          ))}
+          {requestFields.map((field) => {
+            if (isAssetTypeField(field) && isHiddenAssetsType) {
+              return (
+                <>
+                  <input type="hidden" name={field.name} value={hiddenValue} />
+                  <input type="hidden" name="isAssetTypeHidden" value="true" />
+                </>
+              );
+            }
+            return (
+              <RequestFormField
+                key={field.id}
+                field={field}
+                baseLocale={baseLocale}
+                hasAtMentions={hasAtMentions}
+                userRole={userRole}
+                userId={userId}
+                brandId={brandId}
+                defaultOrganizationId={defaultOrganizationId}
+                handleChange={handleChange}
+                visibleFields={requestFields}
+                buildOptions={buildOptions}
+              />
+            );
+          })}
         </FieldsContainer>
       </LeftColumn>
       <RightColumn>

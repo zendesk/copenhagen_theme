@@ -17,11 +17,10 @@ import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
-import { ASSET_TYPE_KEY } from "../../shared/asset-management/constants";
-import type { RawOption } from "../../service-catalog/components/service-catalog-item/ItemRequestForm";
+import type { LookupOption } from "../../service-catalog/components/service-catalog-item/ItemRequestForm";
 import type {
-  AssetsApiResponse,
-  AssignedAssetFields,
+  AssignedAssetRecord,
+  AssetTypeRecord,
 } from "../../service-catalog/data-types/Assets";
 
 export function buildAdvancedDynamicFilterParams(
@@ -66,12 +65,10 @@ interface LookupFieldProps {
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
-  applyAssetFiltersAsync?: (
-    field: TicketFieldObject,
-    options: RawOption[] | Promise<RawOption[]>
-  ) => Promise<RawOption[]>;
-  shouldHide: boolean;
-  hiddenValue: string;
+  buildOptions?: (
+    records: AssignedAssetRecord[] | AssetTypeRecord[],
+    field: TicketFieldObject
+  ) => Promise<LookupOption[]>;
 }
 
 export function LookupField({
@@ -80,9 +77,7 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
-  applyAssetFiltersAsync,
-  shouldHide,
-  hiddenValue,
+  buildOptions,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -173,38 +168,31 @@ export function LookupField({
           `/api/v2/custom_objects/${customObjectKey}/records/autocomplete?${searchParams.toString()}`
         );
 
-        const data: AssetsApiResponse = await response.json();
+        const data = await response.json();
         if (response.ok) {
-          let fetchedOptions: TicketFieldOptionObject[] =
-            data.custom_object_records.map((item) => {
-              const isAsset = item.custom_object_key === "standard::itam_asset";
+          const fetchedRecords = data.custom_object_records;
 
-              return {
-                name: item.name,
-                value: item.id,
-                item_asset_type_id: isAsset
-                  ? (item.custom_object_fields as AssignedAssetFields)[
-                      "standard::asset_type"
-                    ] ?? ""
-                  : "",
-              };
-            });
+          let options;
 
-          if (applyAssetFiltersAsync) {
-            fetchedOptions = await applyAssetFiltersAsync(
-              field,
-              fetchedOptions
+          if (buildOptions) {
+            options = await buildOptions(fetchedRecords, field);
+          } else {
+            options = fetchedRecords.map(
+              ({ name, id }: { name: string; id: string }) => ({
+                name,
+                value: id,
+              })
             );
           }
           if (selectedOption) {
-            fetchedOptions = fetchedOptions.filter(
+            options = options.filter(
               (option: TicketFieldOptionObject) =>
                 option.value !== selectedOption.value
             );
-            fetchedOptions = [selectedOption, ...fetchedOptions];
+            options = [selectedOption, ...options];
           }
 
-          setOptions(fetchedOptions);
+          setOptions(options);
         } else {
           setOptions([]);
         }
@@ -273,15 +261,6 @@ export function LookupField({
     setInputValue("");
     fetchOptions("*");
   };
-
-  if (shouldHide && field.relationship_target_type === ASSET_TYPE_KEY) {
-    return (
-      <>
-        <input type="hidden" name={field.name} value={hiddenValue} />
-        <input name="isAssetTypeHidden" type="hidden" value="true" />
-      </>
-    );
-  }
 
   return (
     <GardenField>
