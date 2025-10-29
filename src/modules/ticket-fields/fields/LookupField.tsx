@@ -17,6 +17,7 @@ import debounce from "lodash.debounce";
 import { useTranslation } from "react-i18next";
 import { EmptyValueOption } from "./EmptyValueOption";
 import type { LookupRelationshipFieldFilter } from "../data-types/BaseTicketField";
+import type { CustomObjectRecord } from "../data-types/CustomObjectRecord";
 
 export function buildAdvancedDynamicFilterParams(
   filter?: LookupRelationshipFieldFilter,
@@ -54,12 +55,16 @@ const EMPTY_OPTION = {
   name: "-",
 };
 
-interface LookupFieldProps {
+export interface LookupFieldProps {
   field: TicketFieldObject;
   userId: number;
   organizationId: string | null;
   onChange: (value: string) => void;
   visibleFields: TicketFieldObject[];
+  buildLookupFieldOptions?: (
+    records: CustomObjectRecord[],
+    field: TicketFieldObject
+  ) => Promise<{ name: string; value: string }[]>;
 }
 
 export function LookupField({
@@ -68,6 +73,7 @@ export function LookupField({
   organizationId,
   onChange,
   visibleFields,
+  buildLookupFieldOptions,
 }: LookupFieldProps) {
   const {
     id: fieldId,
@@ -160,21 +166,29 @@ export function LookupField({
 
         const data = await response.json();
         if (response.ok) {
-          let fetchedOptions = data.custom_object_records.map(
-            ({ name, id }: { name: string; id: string }) => ({
-              name,
-              value: id,
-            })
-          );
+          const fetchedRecords = data.custom_object_records;
+
+          let options;
+
+          if (buildLookupFieldOptions) {
+            options = await buildLookupFieldOptions(fetchedRecords, field);
+          } else {
+            options = fetchedRecords.map(
+              ({ name, id }: { name: string; id: string }) => ({
+                name,
+                value: id,
+              })
+            );
+          }
           if (selectedOption) {
-            fetchedOptions = fetchedOptions.filter(
+            options = options.filter(
               (option: TicketFieldOptionObject) =>
                 option.value !== selectedOption.value
             );
-            fetchedOptions = [selectedOption, ...fetchedOptions];
+            options = [selectedOption, ...options];
           }
 
-          setOptions(fetchedOptions);
+          setOptions(options);
         } else {
           setOptions([]);
         }
@@ -186,12 +200,13 @@ export function LookupField({
     },
     [
       customObjectKey,
-      field.relationship_filter,
+      field,
       fieldId,
       organizationId,
       selectedOption,
       userId,
       visibleFields,
+      buildLookupFieldOptions,
     ]
   );
 
