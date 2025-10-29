@@ -1,3 +1,10 @@
+# [4.12.0](https://github.com/zendesk/copenhagen_theme/compare/v4.11.1...v4.12.0) (2025-10-29)
+
+
+### Features
+
+* add filtering against assets and asset types selected by admin ([193984b](https://github.com/zendesk/copenhagen_theme/commit/193984bb73ef0bb8727404c593ace62affc81b8b))
+
 ## [4.11.1](https://github.com/zendesk/copenhagen_theme/compare/v4.11.0...v4.11.1) (2025-10-08)
 
 
