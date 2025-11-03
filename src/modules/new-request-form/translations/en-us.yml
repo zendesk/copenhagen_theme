@@ -197,3 +197,98 @@ parts:
       title: "Separator between errors for the same file - please localize according to your language's punctuation rules"
       screenshot: "https://drive.google.com/file/d/1z8VM5w7BLz9E5iJlAzX1mVuvv9Jz0XGL/view?usp=sharing"
       value: "; "
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.request-submitted"
+      title: "Message shown when the user submits a new request"
+      screenshot: "https://drive.google.com/file/d/10Sxbr4VjAQOuiimQMwAcSDs-FoZRUl8V/view?usp=sharing"
+      value: "Your request has been submitted"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.feedback-error"
+      title: "Message shown when there is an error submitting feedback"
+      value: "There was an error submitting your feedback"
+      screenshot: "https://drive.google.com/file/d/1HI-hfWWHtNoSV27iWHZsokksteNrIwjH/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.error.title"
+      title: "Title shown when there is an error in the generative answer bot modal"
+      value: "An agent will be in touch soon"
+      screenshot: "https://drive.google.com/file/d/1OqGKPgp1S0W3iJhMHC0SuYGZJBAalchL/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.error.subtitle"
+      title: "Message shown when we aren't able to generate a reply"
+      value: "The AI wasn't able to find an answer this time. Don't worry, a human agent will get back to you by email shortly."
+      screenshot: "https://drive.google.com/file/d/1OsbWRmpmUR-58BjiCUb6ZYgJB-id79xe/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.buttons.ok"
+      title: "Label for the button to close the dialog"
+      value: "Ok"
+      screenshot: "https://drive.google.com/file/d/1cnGntvVad_G_EVk96tg9MN0iRHISuovw/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.default.title"
+      title: "Title shown when we are waiting for the generative reply"
+      value: "Your request was submitted successfully"
+      screenshot: "https://drive.google.com/file/d/10TFQkGLFl5ROyXIRrc8uUjGBCcCOLsjW/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.loading.subtitle"
+      title: "Message shown while the request to generate the reply is on-going"
+      value: "While you wait, an AI agent will try to find an answer to your request. If you close this window, you'll receive an email follow-up."
+      screenshot: "https://drive.google.com/file/d/1sbHu2JqC04Sh-P21TAfjMpkrKxAW8jGR/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.default.subtitle"
+      title: "Message shown when we get the generative reply"
+      value: "If the following information resolves your request and you no longer require assistance, you can inform us by clicking 'This helped, solve my request'."
+      screenshot: "https://drive.google.com/file/d/1eUFIvh-D1xArJyuUbVvESPTWl32FLa5D/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.loading.start"
+      title: "Message next to the AI Agent avatar shown when the request is loading"
+      value: "Thinking"
+      screenshot: "https://drive.google.com/file/d/1CyfQqoTZS59n-VPjUlPHeQcVgia7OPNO/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.loading.finished"
+      title: "Message next to the AI Agent avatar shown when we get the generative reply"
+      value: "I found something that might help..."
+      screenshot: "https://drive.google.com/file/d/1HMvsZs6QNLYCqZ-cWRYY0i9kuAd2FJQ3/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.buttons.close"
+      title: "Label for the button to close the dialog"
+      value: "Close"
+      screenshot: "https://drive.google.com/file/d/13f9BKuY_Cknlax10qo79NFUMjHD9uk0D/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.buttons.still_need_help"
+      title: "Label for the button to indicate further assistance is needed"
+      value: "I still need help"
+      screenshot: "https://drive.google.com/file/d/1XHNIRZSBC3tDxXqmrbCNQv4ogy8v_9wS/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.buttons.this_helped"
+      title: "Label for the footer button to acknowledge the answer helped"
+      value: "This helped, solve my request"
+      screenshot: "https://drive.google.com/file/d/1Mz8T0WrsBWFp0NHHa_cZoshijjp70s_p/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.sources_description"
+      title: "Label that explains how the message was generated"
+      value: "This message was automatically generated using AI and the following article sources:"
+      screenshot: "https://drive.google.com/file/d/1jZl35E1antnKmAq1G5SYR4hmOZOA3dJW/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.generated_by_ai"
+      title: "Label that indicates the answer is Generated by AI"
+      value: "Generated by AI"
+      screenshot: "https://drive.google.com/file/d/1EkMmIjaNYqdqGdoEEZJJFAXjp-2yvUjC/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.buttons.view_sources"
+      title: "Label for the button to display the sources on which the generated reply is based on"
+      value: "View sources"
+      screenshot: "https://drive.google.com/file/d/1XM7pZ8OfUukiYo-gBVT6pHWV3Xyp0G7k/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.request-closed"
+      title: "Flash notification shown when the request is closed"
+      value: "Your request has been solved."
+      screenshot: "https://drive.google.com/file/d/1fwzMCBosu0fTZJi7FoH8LcUSjlwHPjmv/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.ai_agent_avatar_alt"
+      title: "[A11Y] Alt value for the AI Agent avatar image"
+      value: "AI agent avatar"
+      screenshot: "https://drive.google.com/file/d/1tWu0fZXcEkd875waPfiL7RwboO91J-8I/view?usp=sharing"
+  - translation:
+      key: "new-request-form.answer-bot-generative-modal.close_modal_aria_label"
+      title: "[A11Y] Aria label value for the close modal button"
+      value: "Close modal"
+      screenshot: "https://drive.google.com/file/d/11qwmad1gcWHjtJ6LhyRxk1d9BlREjxwr/view?usp=sharing"

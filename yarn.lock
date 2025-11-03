@@ -5823,10 +5823,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@zendeskgarden/svg-icons@npm:^6.34.0":
-  version: 6.34.0
-  resolution: "@zendeskgarden/svg-icons@npm:6.34.0"
-  checksum: 10c0/15ebfeb1a97d9b1af6c713a14c5aab719950d672e67fd35d9e68d0c10927bbfe191a0dff5634e91c541555166e6fb15eb26db81d33359ef874fa486620979960
+"@zendeskgarden/svg-icons@npm:8.0.0":
+  version: 8.0.0
+  resolution: "@zendeskgarden/svg-icons@npm:8.0.0"
+  checksum: 10c0/1599ce39eb1ffbf15395c6dedae15352209b5cf0493704d5e79c50a1ffe08fb2872c5d2d2e17cc7174197c6ef35a3361910d768a2af6f3e9db42c8c847e95141
   languageName: node
   linkType: hard
 
@@ -7970,7 +7970,7 @@ __metadata:
     "@zendeskgarden/react-theming": "npm:8.76.9"
     "@zendeskgarden/react-tooltips": "npm:8.76.9"
     "@zendeskgarden/react-typography": "npm:8.76.9"
-    "@zendeskgarden/svg-icons": "npm:^6.34.0"
+    "@zendeskgarden/svg-icons": "npm:8.0.0"
     concurrently: "npm:8.0.1"
     dompurify: "npm:3.2.5"
     dotenv: "npm:16.0.3"
